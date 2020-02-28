@@ -1,0 +1,34 @@
+name: CI.REACT
+
+on:
+  pull_request:
+    branches:
+      - dev
+      - master
+    paths:
+      - 'web/packages/react/**'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install common
+        working-directory: ./web
+        run: yarn install
+      - name: Install
+        working-directory: ./web/packages/react
+        run: yarn install
+      - name: Install peers
+        working-directory: ./web/packages/react
+        run: yarn run install-peers
+      - name: Lint
+        working-directory: ./web/packages/react
+        run: yarn run lint
+      - name: Test
+        working-directory: ./web/packages/react
+        run: yarn run test
+      - name: Build
+        working-directory: ./web/packages/react
+        run: yarn run build

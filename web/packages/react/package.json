@@ -7,6 +7,7 @@
         "build/",
         "build.cjs/"
     ],
+    "license": "UNLICENSED",
     "scripts": {
         "install-peers": "install-self-peers -- --ignore-scripts",
         "build": "rm -rf ./build/*; tsc -p ./tsconfig.build.json",
