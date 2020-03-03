@@ -17,40 +17,9 @@
         "emitDecoratorMetadata": true,
         "sourceMap": true,
         "baseUrl": "./src/",
-        "outDir": "./build/",
         "declaration": true,
         "jsx": "react"
-
-
-
-//        "emitDecoratorMetadata": true,
-//        "experimentalDecorators": true,
-//        "noUnusedParameters": true,
-//        "noUnusedLocals": true,
-//        "removeComments": true,
-//        "declaration": true,
-//        "outDir": "./dist/",
-//        "sourceMap": true,
-//        "noImplicitAny": false,
-//        "moduleResolution": "node",
-//        "target": "es5",
-//        "module": "commonjs",
-//        "jsx": "react",
-//        "lib": [
-//            "es2015",
-//            "es2017",
-//            "dom",
-//            "esnext.asynciterable"
-//        ],
-//        "baseUrl": ""
-
     },
-    "exclude": [
-        "node_modules",
-        "build"
-    ],
-    "include": [
-        "src/**/*",
-        "src/globals.d.ts"
-    ]
+    "exclude": ["node_modules", "build", "build.cjs", "build.esm"],
+    "include": ["src/**/*", "src/globals.d.ts"]
 }

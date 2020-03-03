@@ -26,21 +26,25 @@
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
   * [Local usage](#local-usage)
+    * [Option 1: yarn link](#option-1-yarn-link)
+    * [Option 2: yalc](#option-2-yalc)
+    * [Troubleshooting](#troubleshooting)
   * [Manual deployment](#manual-deployment)
 * [Roadmap](#roadmap)
 * [Contributing](#contributing)
+  * [Branching model](#branching-model)
+  * [Contribution rules](#contribution-rules)
+  * [New component requirements](#new-component-requirements)
+  * [For maintainers](#for-maintainers)
 * [Contact](#contact)
 * [Built With](#built-with)
 
-<!-- ABOUT THE PROJECT -->
 ## About The Project
 
 Todo: when there is something inside, write a short intro to the project
 
-<!-- USAGE -->
 ## Usage
 
-<!-- Development -->
 ## Development
 
 ### Prerequisites
@@ -69,8 +73,9 @@ Todo: when there is something inside, write a short intro to the project
 
 ### Local usage
 
-You can use the development version of the library in local projects without bumping a new version to `npm`.<br />
-There are two ways to do so.
+It is not possible to bump a new version to `npm` out every time you change the library locally.
+Nevertheless, there is a way to develop simultaneously both the library and the application that consumes it locally.
+You have two options to do so.
 
 #### Option 1: yarn link
 
@@ -107,18 +112,20 @@ Further reading: [yalc docs](https://github.com/whitecolor/yalc).
 #### Troubleshooting
 
 * White screen of website death + Uncaught Error: Invalid hook call. Hooks can only be called inside of the body of a function component<br />
-    Probable cause: you got two instances of `styled-components`: one - from the app, second - from the linked module. Remove either one of them.
+    Probable cause: you got two instances of `styled-components`: one - from the app, another - from the linked module. Remove either one of them.
 
 ### Manual deployment
 
-Attention: manual deployment is not recommended and should be performed only if the fully-functional CI/CD is not available.
+⚠️ Attention: manual deployment is not recommended and should be performed only if the fully-functional CI/CD is not available.
 
-<!-- ROADMAP -->
+#### Setting up yarn
+
+Please, follow the instruction on <a href="https://confluence.deliveryhero.com/pages/viewpage.action?spaceKey=RPS&title=GitHub+as+package+registry" target="_blank">how to authenticate at the github package registry</a>.
+
 ## Roadmap
 
 Todo: put a link to the ticket system when it is ready
 
-<!-- BRANCHINGMODEL -->
 ## Branching model
 
 In this project we use a simplified Git Flow branching model:
@@ -126,17 +133,17 @@ In this project we use a simplified Git Flow branching model:
 * `dev` branch to combine several features and test them together before making a release
 * `feature branches` to develop separate features
 
-<!-- CONTRIBUTING -->
-## Contributing
+## Contribution rules
 
 Contributions are what really helps this project to advance. Any contributions you make are **greatly appreciated**.
-However, there are certain rules a contributor must follow in order to make the process straightforward and life of the maintainers easier.
+The project tries to maintain healthy balance between a comfortable development process and restrictions that prevent everything from falling into chaos.
+Therefore, there are certain rules a contributor must follow in order to make the process straightforward and error-proof.
 
 ### New component requirements
 
 // todo (tests, story, styleguide, rebuild)
 
-### Contribution steps
+### Contribution steps and requirements
 
 The algorithm of making a contribution:
 
@@ -147,38 +154,50 @@ The algorithm of making a contribution:
     ~~~
 1. Create your Feature Branch locally<br />
     Please, use conventional feature naming:
-    * prefix `feat/` - regular features
-    * prefix `fix/` - fixes
-    * branch name should be in `kebab` case
+    * prefix `feat/` for regular features,
+    * prefix `fix/` - for fixes,
+    * prefix `chore/` - for infrastructure/ci-cd pipeline/etc. changes.
+
+    Use of other prefixes like `test/` or `doc/` is allowed but not required.<br />
+    Branch name should be in `kebab` case.<br />
+    Example:
     ~~~bash
     git checkout -b feat/amazing-component
     ~~~
 3. Make one or several commits into your branch<br />
     You are free to use any commit message format, as it is there mostly for your personal needs.
+    Example:
     ~~~bash
-    git commit -m 'Added some AmazingComponent'
+    git commit -m 'added some AmazingComponent'
+    git commit -m 'the weather is so awesome today'
     ~~~
 4. Push to the remote Branch
+    Example:
     ~~~bash
     git push origin feat/amazing-component
     ~~~
 5. Open a Pull Request with the <a href="https://www.conventionalcommits.org/en/v1.0.0-beta.4/" target="_blank">conventional name</a>.
+    Examples:
+    * `feat: a new amazing component added`
+    * `fix: that annoying bug is finally caught`
+    * `chore: deployment pipeline fixed`
+    * `doc: fixed that old typo in readme`
 
 ### For maintainers
-When accepting a Pull Request
-* use `squash-and-merge` when merging to `dev`,
-* copy the PR name into the name of a squashed commit (it should be <a href="https://www.conventionalcommits.org/en/v1.0.0-beta.4/" target="_blank">conventional</a>).
 
-Please note that pushing directly to `master` or `dev` without making a PR is strictly prohibited and therefore not possible. Please respect other contributors and keep the process clear.
+When accepting a Pull Request:
+* use `Squash-and-Merge` when merging to `dev`,
+* copy the `PR` name to the name of a `squash commit` (it should be <a href="https://www.conventionalcommits.org/en/v1.0.0-beta.4/" target="_blank">conventional</a>).<br />
+    Example: `feat: a new amazing component added` => `feat: a new amazing component added`
 
-<!-- CONTACT -->
+Please note that pushing directly to `master` or `dev` without making a PR is strictly prohibited and therefore not possible.
+
 ## Contact
 
  - [Sergei Gannochenko](sergei.gannochenko@deliveryhero.com)
 
 Project Link: [https://github.com/deliveryhero/ui](https://github.com/deliveryhero/ui)
 
-<!-- BUILT WITH -->
 ### Built With
 
 <details>

@@ -2,17 +2,18 @@
     "name": "@deliveryhero/ui.react",
     "version": "0.0.0",
     "main": "build.cjs/index.js",
-    "module": "build/index.js",
+    "module": "build.esm/index.js",
     "files": [
-        "build/",
+        "build.esm/",
         "build.cjs/"
     ],
     "license": "UNLICENSED",
     "scripts": {
         "install-peers": "install-self-peers -- --ignore-scripts",
-        "build": "rm -rf ./build/*; tsc -p ./tsconfig.build.json",
+        "build": "yarn run build:esm; yarn run build:cjs",
+        "build:esm": "rm -rf ./build.esm/*; tsc -p tsconfig.build.esm.json",
         "build:cjs": "rm -rf ./build.cjs/*; tsc -p ./tsconfig.build.cjs.json",
-        "build:watch": "tsc -w -p .",
+        "build:watch": "tsc -w -p ./tsconfig.build.cjs.json",
         "test": "jest -c ./jest/config.js --passWithNoTests",
         "test:watch": "jest -c ./jest/config.js --watch",
         "lint": "eslint ./src --ext .js,.ts,.jsx,.tsx",
@@ -20,6 +21,10 @@
         "release": "./script/release.sh"
     },
     "dependencies": {},
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:deliveryhero/ui.git"
+    },
     "publishConfig": {
         "registry": "https://npm.pkg.github.com/"
     },
@@ -49,7 +54,7 @@
     },
     "peerDependencies": {
         "react": "^16.13.0",
-        "styled-components": "^5.0.0"
+        "styled-components": "^5.0.1"
     },
     "husky": {
         "hooks": {
