@@ -130,7 +130,9 @@ To manually publish a new version of the package, follow these steps:
     ./script/release.sh;
     ~~~
    and specify a desired version in the end.
-3. todo: re-build and re-publish Styleguidist
+   
+3. push version up made by `yarn` in `package.json`
+4. todo: re-build and re-publish Styleguidist
 
 ## Roadmap
 

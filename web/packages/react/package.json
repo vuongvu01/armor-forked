@@ -3,6 +3,7 @@
     "version": "0.0.0",
     "main": "build.cjs/index.js",
     "module": "build.esm/index.js",
+    "typings": "build.cjs/index.d.ts",
     "files": [
         "build.esm/",
         "build.cjs/"
