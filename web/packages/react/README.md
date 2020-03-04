@@ -66,9 +66,9 @@ Todo: when there is something inside, write a short intro to the project
     yarn;
     yarn run install-peers;
     ```
-3. Run Storybook
+3. Run `Storybook` and start developing!
     ```sh
-    // todo
+    yarn storybook
     ```
 
 ### Local usage
@@ -139,9 +139,14 @@ Contributions are what really helps this project to advance. Any contributions y
 The project tries to maintain healthy balance between a comfortable development process and restrictions that prevent everything from falling into chaos.
 Therefore, there are certain rules a contributor must follow in order to make the process straightforward and error-proof.
 
-### New component requirements
+### Component requirements
 
-// todo (tests, story, styleguide, rebuild)
+Every new component should have:
+* unit tests,
+* at least one story of Storybook.
+
+When modifying existing components:
+* try to support backward compatibility while making updates.
 
 ### Contribution steps and requirements
 
