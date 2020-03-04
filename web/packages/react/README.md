@@ -31,12 +31,13 @@
     * [Troubleshooting](#troubleshooting)
   * [Manual publishing](#manual-publishing)
 * [Roadmap](#roadmap)
-* [Contributing](#contributing)
-  * [Branching model](#branching-model)
-  * [For contributors](#for-contributors)
-      * [Contribution rules](#contribution-rules)
-      * [New component requirements](#new-component-requirements)
-  * [For maintainers](#for-maintainers)
+* [Branching model](#branching-model)
+  * [Contribution rules](#contribution-rules)
+      * [For contributors](#for-contributors)
+          * [Component requirements](#component-requirements)
+          * [Adding a new component](#adding-a-new-component)
+          * [Contribution steps and requirements](#contribution-steps-and-requirements)
+      * [For maintainers](#for-maintainers)
 * [Contact](#contact)
 * [Built With](#built-with)
 
@@ -161,6 +162,10 @@ Every new component should have:
 
 When modifying existing components:
 * try to support backward compatibility while making updates.
+
+#### Adding a new component
+
+// todo: explain how to use the code generator
 
 #### Contribution steps and requirements
 
