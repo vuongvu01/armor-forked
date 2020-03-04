@@ -33,8 +33,9 @@
 * [Roadmap](#roadmap)
 * [Contributing](#contributing)
   * [Branching model](#branching-model)
-  * [Contribution rules](#contribution-rules)
-  * [New component requirements](#new-component-requirements)
+  * [For contributors](#for-contributors)
+      * [Contribution rules](#contribution-rules)
+      * [New component requirements](#new-component-requirements)
   * [For maintainers](#for-maintainers)
 * [Contact](#contact)
 * [Built With](#built-with)
@@ -139,7 +140,9 @@ Contributions are what really helps this project to advance. Any contributions y
 The project tries to maintain healthy balance between a comfortable development process and restrictions that prevent everything from falling into chaos.
 Therefore, there are certain rules a contributor must follow in order to make the process straightforward and error-proof.
 
-### Component requirements
+### For contributors
+
+#### Component requirements
 
 Every new component should have:
 * unit tests,
@@ -148,7 +151,10 @@ Every new component should have:
 When modifying existing components:
 * try to support backward compatibility while making updates.
 
-### Contribution steps and requirements
+When modifying existing components:
+* try to support backward compatibility while making updates.
+
+#### Contribution steps and requirements
 
 The algorithm of making a contribution:
 
