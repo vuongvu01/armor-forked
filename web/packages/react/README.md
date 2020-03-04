@@ -115,13 +115,22 @@ Further reading: [yalc docs](https://github.com/whitecolor/yalc).
 * White screen of website death + Uncaught Error: Invalid hook call. Hooks can only be called inside of the body of a function component<br />
     Probable cause: you got two instances of `styled-components`: one - from the app, another - from the linked module. Remove either one of them.
 
-### Manual deployment
+### Manual publishing
 
-⚠️ Attention: manual deployment is not recommended and should be performed only if the fully-functional CI/CD is not available.
+⚠️ Attention: manual publishing is not recommended and should be performed only if the fully-functional CI/CD is not available.
 
-#### Setting up yarn
-
+*Setting up yarn (optional)*:
 Please, follow the instruction on <a href="https://confluence.deliveryhero.com/pages/viewpage.action?spaceKey=RPS&title=GitHub+as+package+registry" target="_blank">how to authenticate at the github package registry</a>.
+
+To manually publish a new version of the package, follow these steps:
+1. commit all your changes,
+2. run
+    ~~~bash
+    cd web/packages/react;
+    ./scripts/release.sh;
+    ~~~
+   and specify a desired version in the end.
+3. todo: re-build and re-publish Styleguidist
 
 ## Roadmap
 
@@ -147,9 +156,6 @@ Therefore, there are certain rules a contributor must follow in order to make th
 Every new component should have:
 * unit tests,
 * at least one story of Storybook.
-
-When modifying existing components:
-* try to support backward compatibility while making updates.
 
 When modifying existing components:
 * try to support backward compatibility while making updates.
