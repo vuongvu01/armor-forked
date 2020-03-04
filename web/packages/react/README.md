@@ -29,7 +29,7 @@
     * [Option 1: yarn link](#option-1-yarn-link)
     * [Option 2: yalc](#option-2-yalc)
     * [Troubleshooting](#troubleshooting)
-  * [Manual deployment](#manual-deployment)
+  * [Manual publishing](#manual-publishing)
 * [Roadmap](#roadmap)
 * [Contributing](#contributing)
   * [Branching model](#branching-model)
@@ -127,7 +127,7 @@ To manually publish a new version of the package, follow these steps:
 2. run
     ~~~bash
     cd web/packages/react;
-    ./scripts/release.sh;
+    ./script/release.sh;
     ~~~
    and specify a desired version in the end.
 3. todo: re-build and re-publish Styleguidist
