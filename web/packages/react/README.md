@@ -21,9 +21,9 @@
 ## Table of Contents
 
 * [About the Project](#about-the-project)
+* [Prerequisites](#prerequisites)
 * [Usage](#usage)
 * [Development](#development)
-  * [Prerequisites](#prerequisites)
   * [Installation](#installation)
   * [Local usage](#local-usage)
     * [Option 1: yarn link](#option-1-yarn-link)
@@ -45,14 +45,37 @@
 
 Todo: when there is something inside, write a short intro to the project
 
-## Usage
-
-## Development
-
-### Prerequisites
+## Prerequisites
 
 * [Node](https://nodesource.com/blog/installing-node-js-tutorial-using-nvm-on-mac-os-x-and-ubuntu/)
 * [Yarn](https://yarnpkg.com/lang/en/docs/install/)
+
+## Usage
+
+In order to use the package in your application, do the following:
+
+1. [Generate your own GitHUB token](https://github.com/settings/tokens)
+2. Add the token as an environment variable (you can use any other name for the variable):
+    ~~~sh
+    export GITHUB_DH_UI_TOKEN="<your-token-goes-here>";
+    ~~~
+3. In your application next to the `package.json` file create another file called `.npmrc` with the following content:
+    ~~~
+    @deliveryhero:registry="https://npm.pkg.github.com/"
+    //npm.pkg.github.com/:_authToken=${GITHUB_DH_UI_TOKEN}
+    ~~~
+
+4. Install the package
+    ~~~sh
+    yarn add @deliveryhero/ui.react
+    ~~~
+
+5. Start coding!
+    ~~~javascript
+    import { Button } from '@deliveryhero/ui.react';
+    ~~~
+
+## Development
 
 ### Installation
 
