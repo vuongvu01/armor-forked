@@ -7,24 +7,24 @@
 
 import React from 'react';
 import {
-    // fireEvent,
+    fireEvent,
     cleanup,
     render,
-    // prettyDOM,
-    // wait,
-    // waitForElement,
+    prettyDOM,
+    wait,
+    waitForElement,
 } from '@testing-library/react';
-// import userEvent from '@testing-library/user-event';
+import userEvent from '@testing-library/user-event';
 
-import { Drawer } from '../Drawer';
+import { Dialog } from '../Dialog';
 
-describe('<Drawer />', () => {
+describe('<Dialog />', () => {
     afterEach(async () => {
         cleanup();
     });
 
     it('should render itself without errors', async () => {
-        render(<Drawer />);
+        const { container, getByTestId } = render(<Dialog />);
 
         // // ///////////////////////
         // // a short cheat sheet

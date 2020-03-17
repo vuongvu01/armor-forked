@@ -1,6 +1,10 @@
 module.exports = {
-    stories: ['../src/**/*.story.tsx'],
-    addons: ['@storybook/addon-actions', '@storybook/addon-links'],
+    stories: ['../../src/**/*.story.tsx'],
+    addons: [
+        '@storybook/addon-actions',
+        '@storybook/addon-links',
+        'storybook-addon-styled-component-theme/dist/register',
+    ],
     webpackFinal: async config => {
         config.module.rules.push({
             test: /\.(ts|tsx)$/,
@@ -8,7 +12,6 @@ module.exports = {
                 {
                     loader: require.resolve('ts-loader'),
                 },
-                // Optional
                 {
                     loader: require.resolve('react-docgen-typescript-loader'),
                 },

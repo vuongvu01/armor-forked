@@ -1,38 +1,35 @@
 import React from 'react';
+
 import { css } from 'styled-components';
-import { Button } from '../Button';
+import { Dialog } from '../Dialog';
 
 export default {
-    title: 'Button',
-    component: Button,
+    title: 'Dialog',
+    component: Dialog,
     decorators: [],
     parameters: {},
 };
 
-export const Basic = () => <Button>Hello world!</Button>;
-export const CustomClassName = () => (
-    <Button className="Hello-Button">Hello world!</Button>
-);
+export const Basic = () => <Dialog>Hello, world!</Dialog>;
 export const StylesPassed = () => (
-    <Button
+    <Dialog
         styles={{
             root: props => css`
                 border: ${props.theme.spacing(1)} dashed red;
             `,
+            buttonYes: {
+                root: props => css`
+                    border: ${props.theme.spacing(1)} dashed red;
+                    margin: 0 !important;
+                `,
+            },
         }}
-    >
-        Hello world!
-    </Button>
-);
-
-export const AttributesOverridePassed = () => (
-    <Button
         attributes={{
-            root: {
+            buttonNo: {
                 primary: true,
             },
         }}
     >
         Hello world!
-    </Button>
+    </Dialog>
 );
