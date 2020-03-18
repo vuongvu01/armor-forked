@@ -1,17 +1,15 @@
 import { useMemo } from 'react';
 import {
-    AttributesOverrideDialog,
-    AttributesOverrideSafeDialog,
-    StylesOverrideDialog,
-    StylesOverrideSafeDialog,
+    AttributeOverrideDialogType,
+    StyleOverrideDialogType,
+    StyleOverrideSafeDialogType,
 } from './type';
-import { returnEmptyString } from '../../utils';
-import { ClassNames } from '../type';
-import { useClassName } from '../../utils/hooks';
+import { makeClassName, returnEmptyString } from '../../utils';
+import { ClassNamesType } from '../type';
 
 export const useStylesOverrideDialog = (
-    styles?: StylesOverrideDialog,
-): StylesOverrideSafeDialog => {
+    styles?: StyleOverrideDialogType,
+): StyleOverrideSafeDialogType => {
     return useMemo(() => {
         const { root, closeButton, buttonPanel, buttonYes, buttonNo } =
             styles || {};
@@ -26,13 +24,11 @@ export const useStylesOverrideDialog = (
 };
 
 export const useAttributesOverrideDialog = (
-    attributes?: AttributesOverrideDialog,
-): AttributesOverrideSafeDialog => {
+    attributes?: AttributeOverrideDialogType,
+): AttributeOverrideDialogType => {
     return useMemo(() => {
-        const { buttonYes, buttonNo } = attributes || {};
         return {
-            buttonYes: buttonYes || {},
-            buttonNo: buttonNo || {},
+            ...attributes,
         };
     }, [attributes]);
 };
@@ -40,33 +36,35 @@ export const useAttributesOverrideDialog = (
 export const useClassNames = (
     classPrefix: string,
     className?: string,
-    classNames?: ClassNames,
-) => {
-    return {
-        classNameRoot: useClassName(classPrefix, className, classNames),
-        classNameCloseButton: useClassName(
-            classPrefix,
-            undefined,
-            classNames,
-            'closeButton',
-        ),
-        classNameButtonPanel: useClassName(
-            classPrefix,
-            undefined,
-            classNames,
-            'buttonPanel',
-        ),
-        classNameButtonYes: useClassName(
-            classPrefix,
-            undefined,
-            classNames,
-            'buttonYes',
-        ),
-        classNameButtonNo: useClassName(
-            classPrefix,
-            undefined,
-            classNames,
-            'buttonNo',
-        ),
-    };
-};
+    classNames?: ClassNamesType,
+) =>
+    useMemo(
+        () => ({
+            classNameRoot: makeClassName(classPrefix, className, classNames),
+            classNameCloseButton: makeClassName(
+                classPrefix,
+                undefined,
+                classNames,
+                'closeButton',
+            ),
+            classNameButtonPanel: makeClassName(
+                classPrefix,
+                undefined,
+                classNames,
+                'buttonPanel',
+            ),
+            classNameButtonYes: makeClassName(
+                classPrefix,
+                undefined,
+                classNames,
+                'buttonYes',
+            ),
+            classNameButtonNo: makeClassName(
+                classPrefix,
+                undefined,
+                classNames,
+                'buttonNo',
+            ),
+        }),
+        [classPrefix, className, classNames],
+    );

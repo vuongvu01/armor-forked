@@ -1,14 +1,15 @@
 import React, { FunctionComponent } from 'react';
-import { useClassName, useObject } from '../../utils/hooks';
 import { useTheme } from '../../themes';
+import { useClassName, useObject } from '../../utils/hooks';
 
-import { ButtonRoot } from './style';
-import { PropsButtonType } from './type';
-import { useStylesOverrideButton } from './utils';
+import { BoxRoot } from './style';
 
-const classPrefix = 'Button';
+import { PropsBoxType } from './type';
+import { useStyleOverrideBox } from './utils';
 
-export const Button: FunctionComponent<PropsButtonType> = ({
+const classPrefix = 'Box';
+
+export const Box: FunctionComponent<PropsBoxType> = ({
     className,
     classNames,
     styles,
@@ -17,11 +18,11 @@ export const Button: FunctionComponent<PropsButtonType> = ({
 }) => {
     const theme = useTheme();
     const classNameRoot = useClassName(classPrefix, className, classNames);
-    const stylesSafe = useStylesOverrideButton(styles);
+    const stylesSafe = useStyleOverrideBox(styles);
     const attributesSafe = useObject(attributes);
 
     return (
-        <ButtonRoot
+        <BoxRoot
             {...restProps}
             {...attributesSafe.root}
             theme={theme}

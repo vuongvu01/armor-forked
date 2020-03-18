@@ -1,48 +1,47 @@
-import { ObjectLiteral } from '../type';
+import { ObjectLiteralType, ScalarType } from '../type';
 
-type Scalar = string | number;
-type Spacing = (value: Scalar) => Scalar;
-type SpacingOrConst = Spacing | number;
-type ZIndex = ObjectLiteral<number>;
-type Palette = ObjectLiteral<string | ObjectLiteral<string>>;
-type Shadows = string[];
-type Shape = {
+type SpacingFunctionType = (value: ScalarType) => ScalarType;
+type SpacingFunctionOrConstType = SpacingFunctionType | number;
+type ZIndexType = ObjectLiteralType<number>;
+type PaletteType = ObjectLiteralType<string | ObjectLiteralType<string>>;
+type ShadowsType = string[];
+type ShapeType = {
     borderRadius?: string;
 };
 
-interface Breakpoints {
+type BreakpointsType = {
     keys: string[];
-    values: ObjectLiteral<string>;
+    values: ObjectLiteralType<string>;
     up: () => {}; // todo
     down: () => {}; // todo
     between: () => {}; // todo
     only: () => {}; // todo
     width: () => {}; // todo
-}
-type Mixins = ObjectLiteral<(...args: any[]) => any>;
-interface Typography {
+};
+type MixinsType = ObjectLiteralType<(...args: any[]) => any>;
+type TypographyType = {
     htmlFontSize: number;
     fontFamily: string;
     fontSize: number;
-}
+};
 
 // it tries to be compatible with https://material-ui.com/customization/default-theme/
-export interface Theme {
-    breakpoints: Breakpoints;
-    mixins: Mixins;
-    palette: Palette;
-    shadows: Shadows;
-    typography: Typography;
-    spacing: Spacing;
-    shape: Shape;
-    zIndex: ZIndex;
+export type ThemeType = {
+    breakpoints: BreakpointsType;
+    mixins: MixinsType;
+    palette: PaletteType;
+    shadows: ShadowsType;
+    typography: TypographyType;
+    spacing: SpacingFunctionType;
+    shape: ShapeType;
+    zIndex: ZIndexType;
     [k: string]: any;
-}
+};
 
-export type ThemeDeclaration = Partial<
-    Pick<Theme, 'mixins' | 'palette' | 'shape' | 'zIndex'>
+export type ThemeDeclarationType = Partial<
+    Pick<ThemeType, 'mixins' | 'palette' | 'shape' | 'zIndex'>
 > & {
-    breakpoints?: Pick<Breakpoints, 'values'>;
-    spacing?: SpacingOrConst;
+    breakpoints?: Pick<BreakpointsType, 'values'>;
+    spacing?: SpacingFunctionOrConstType;
     [k: string]: any;
 };

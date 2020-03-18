@@ -1,33 +1,30 @@
 import { ButtonHTMLAttributes } from 'react';
-import {
-    OuterSpacingAttributes,
-    StandardAttributes,
-    StyleOverrideAttributes,
-    AttributeOverrideAttributes,
-    StylesFunctionOrStub,
-} from '../type';
+import { StylesFunctionOrStubType, ComponentAttributesType } from '../type';
+import { SpacingOuterAttributesType } from '../../system/attributes';
 
-type AttributesButton = ButtonHTMLAttributes<HTMLButtonElement>;
+type AttributesButtonType = ButtonHTMLAttributes<HTMLButtonElement>;
 
-export interface AttributesOverridableButton {
+export type AttributesOverridableButtonType = {
     primary?: boolean;
     secondary?: boolean;
     link?: boolean;
-}
-export interface AttributesOverrideButton {
-    root?: AttributesOverridableButton;
-}
-export interface StylesOverrideButton {
-    root?: StylesFunctionButton;
-}
+};
+export type AttributeOverrideButtonType = {
+    root?: AttributesOverridableButtonType;
+};
+export type StyleOverrideButtonType = {
+    root?: StylesFunctionButtonType;
+};
 
-export type StylesFunctionButton = StylesFunctionOrStub<AttributesButton>;
+export type StylesFunctionButtonType = StylesFunctionOrStubType<
+    AttributesButtonType
+>;
+export type StyleOverrideSafeButtonType = Required<StyleOverrideButtonType>;
 
-export type AttributesOverrideSafeButton = Required<AttributesOverrideButton>;
-export type StylesOverrideSafeButton = Required<StylesOverrideButton>;
-
-export type PropsButton = {} & AttributesOverridableButton &
-    AttributeOverrideAttributes<AttributesOverrideButton> &
-    StandardAttributes<AttributesButton> &
-    StyleOverrideAttributes<StylesOverrideButton> &
-    OuterSpacingAttributes;
+export type PropsButtonType = AttributesOverridableButtonType &
+    ComponentAttributesType<
+        AttributeOverrideButtonType,
+        AttributesButtonType,
+        StyleOverrideButtonType
+    > &
+    SpacingOuterAttributesType;

@@ -1,7 +1,7 @@
-export type Nullable<X = any> = X | null;
+export type ScalarType = string | number;
 
-export interface ObjectLiteral<P = any> {
+export type ObjectLiteralType<P = any> = {
     [k: string]: P;
-}
+};
 
-export type ReturnEmptyStringFunction = () => string;
+export type ReturnEmptyStringFunctionType = () => string;

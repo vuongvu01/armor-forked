@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
-import { ClassNames, Styles } from '../components/type';
+import { ClassNamesType } from '../components/type';
+import { makeClassName } from './index';
 
 /**
  * @internal
@@ -7,11 +8,14 @@ import { ClassNames, Styles } from '../components/type';
 export const useClassName = (
     classPrefix: string,
     className?: string,
-    classNames?: ClassNames,
+    classNames?: ClassNamesType,
     elementType = 'root',
 ) =>
     useMemo(() => {
-        return `${classPrefix}-${elementType} ${className || ''} ${
-            classNames && classNames[elementType] ? classNames[elementType] : ''
-        }`.trim();
+        return makeClassName(classPrefix, className, classNames, elementType);
     }, [classPrefix, elementType, className, classNames]);
+
+/**
+ * @internal
+ */
+export const useObject = (value: any) => useMemo(() => value || {}, [value]);

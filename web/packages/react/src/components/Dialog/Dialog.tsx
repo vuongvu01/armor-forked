@@ -1,19 +1,16 @@
 import React, { FunctionComponent } from 'react';
 import { useTheme } from '../../themes';
+import { useObject } from '../../utils/hooks';
 
 import { DialogRoot, ButtonPanel, CloseButton, ButtonYes } from './style';
-import { PropsDialog } from './type';
+import { PropsDialogType } from './type';
 
 import { Button } from '../Button';
-import {
-    useAttributesOverrideDialog,
-    useStylesOverrideDialog,
-    useClassNames,
-} from './utils';
+import { useStylesOverrideDialog, useClassNames } from './utils';
 
 const classPrefix = 'Dialog';
 
-export const Dialog: FunctionComponent<PropsDialog> = ({
+export const Dialog: FunctionComponent<PropsDialogType> = ({
     className,
     classNames,
     children,
@@ -30,7 +27,7 @@ export const Dialog: FunctionComponent<PropsDialog> = ({
         classNameButtonNo,
     } = useClassNames(classPrefix, className, classNames);
     const stylesSafe = useStylesOverrideDialog(styles);
-    const attributesSafe = useAttributesOverrideDialog(attributes);
+    const attributesSafe = useObject(attributes);
 
     return (
         <DialogRoot

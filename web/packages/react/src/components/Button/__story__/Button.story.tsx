@@ -36,3 +36,11 @@ export const AttributesOverridePassed = () => (
         Hello world!
     </Button>
 );
+
+export const OuterSpacingAttributesPassed = () => (
+    <Button margin={2}>Hello world!</Button>
+);
+
+export const OuterSpacingAttributesPassedAsString = () => (
+    <Button marginTop="2rem">Hello world!</Button>
+);

@@ -1,41 +1,36 @@
 import { HTMLAttributes } from 'react';
 import { FlattenSimpleInterpolation } from 'styled-components';
-import { ObjectLiteral, ReturnEmptyStringFunction } from '../type';
-import { Theme } from '../themes';
+import { ObjectLiteralType, ReturnEmptyStringFunctionType } from '../type';
+import { ThemeType } from '../themes';
 
-type BasicAttributes = HTMLAttributes<Element>;
+type BasicAttributesType = HTMLAttributes<Element>;
 
-export type ClassNames = ObjectLiteral<string>;
-export type StylesFunction<A extends BasicAttributes = BasicAttributes> = (
-    props: A & { theme: Theme },
-) => FlattenSimpleInterpolation;
-export type Styles<A> = ObjectLiteral<StylesFunction<A> | Styles<unknown>>;
-export type StylesFunctionOrStub<A = BasicAttributes> =
-    | StylesFunction<A>
-    | ReturnEmptyStringFunction;
+export type ClassNamesType = ObjectLiteralType<string>;
+export type StylesFunctionType<
+    A extends BasicAttributesType = BasicAttributesType
+> = (props: A & { theme: ThemeType }) => FlattenSimpleInterpolation;
 
-export type StandardAttributes<A extends BasicAttributes> = Pick<
+export type StylesFunctionOrStubType<A = BasicAttributesType> =
+    | StylesFunctionType<A>
+    | ReturnEmptyStringFunctionType;
+
+export type AttributeOverrideAttributesType<AO> = {
+    attributes?: AO;
+};
+
+export type StandardAttributesType<A extends BasicAttributesType> = Pick<
     A,
     'className'
 >;
 
-export interface StyleOverrideAttributes<S> {
-    classNames?: ClassNames;
+export type StyleOverrideAttributesType<S> = {
+    classNames?: ClassNamesType;
     styles?: S;
-    theme?: Theme;
-}
+    theme?: ThemeType;
+};
 
-export interface AttributeOverrideAttributes<S> {
-    attributes?: S;
-}
-
-// todo: rename to the material style
-export interface OuterSpacingAttributes {
-    m?: string;
-    mt?: string;
-    mb?: string;
-    ml?: string;
-    mr?: string;
-    my?: string;
-    mx?: string;
-}
+export type ComponentAttributesType<AO, A, S> = AttributeOverrideAttributesType<
+    AO
+> &
+    StandardAttributesType<A> &
+    StyleOverrideAttributesType<S>;

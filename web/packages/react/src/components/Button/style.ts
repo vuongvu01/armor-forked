@@ -1,10 +1,14 @@
 import styled, { css } from 'styled-components';
-import { Theme } from '../../themes';
-import { StylesFunctionButton } from './type';
+import { ThemeType } from '../../themes';
+import { StylesFunctionButtonType } from './type';
+import { spacingOuterAttributes } from '../../system/attributes';
 
 export const ButtonRoot = styled.button<{
-    theme: Theme;
-    styles: StylesFunctionButton;
+    theme: ThemeType;
+    styles: StylesFunctionButtonType;
+    primary?: boolean;
+    secondary?: boolean;
+    link?: boolean;
 }>`
     ${({ theme }) => css`
         background-color: ${theme.palette.primary};
@@ -14,5 +18,6 @@ export const ButtonRoot = styled.button<{
     `}
     border: 0 none;
     outline: none;
+    ${spacingOuterAttributes}
     ${props => props.styles(props)}
 `;

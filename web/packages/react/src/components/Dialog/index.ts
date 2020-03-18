@@ -1,4 +1,8 @@
-import { PropsDialog as Props } from './type';
+/**
+ * Use this file to define the list of <Dialog /> component symbols that is open to the end consumers.
+ */
+
+import { PropsDialogType as PropsType } from './type';
 
 export * from './Dialog';
-export type PropsDialog = Props;
+export type PropsDialogType = PropsType;

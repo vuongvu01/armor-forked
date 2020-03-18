@@ -1,11 +1,12 @@
 import styled, { css } from 'styled-components';
-import { Theme } from '../../themes';
-import { StylesFunctionDialog } from './type';
+import { ThemeType } from '../../themes';
+import { StylesFunctionDialogType } from './type';
 import { Button } from '../Button';
+import { spacingOuterAttributes } from '../../system/attributes';
 
 export const DialogRoot = styled.div<{
-    theme: Theme;
-    styles: StylesFunctionDialog;
+    theme: ThemeType;
+    styles: StylesFunctionDialogType;
 }>`
     position: relative;
     border: 1px solid gray;
@@ -14,20 +15,21 @@ export const DialogRoot = styled.div<{
         padding: ${theme.spacing(4)} ${theme.spacing(6)};
         min-width: ${theme.spacing(30)};
     `}
+    ${spacingOuterAttributes}
     ${props => props.styles(props)}
 `;
 
 export const ButtonPanel = styled.div<{
-    theme: Theme;
-    styles: StylesFunctionDialog;
+    theme: ThemeType;
+    styles: StylesFunctionDialogType;
 }>`
     text-align: right;
     ${props => props.styles(props)}
 `;
 
 export const CloseButton = styled.div<{
-    theme: Theme;
-    styles: StylesFunctionDialog;
+    theme: ThemeType;
+    styles: StylesFunctionDialogType;
 }>`
     ${props => props.styles(props)}
 `;
