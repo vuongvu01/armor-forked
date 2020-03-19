@@ -1,7 +1,49 @@
 import deepFreeze from 'deep-freeze-strict';
 import cloneDeep from 'clone-deep';
-import { ThemeDeclarationType, ThemeType } from './type';
-import { grid, cell, align } from '../system';
+import {
+    BreakpointsDeclarationType,
+    BreakpointsType,
+    ThemeDeclarationType,
+    ThemeType,
+} from './type';
+import {
+    grid,
+    cell,
+    align,
+    breakpointUp,
+    breakpointDown,
+    breakpointOnly,
+    breakpointBetween,
+    forwardBreakpoints,
+    forwardBreakpointsTwoArgs,
+} from '../system';
+
+const makeBreakpoints = (
+    breakpoints?: BreakpointsDeclarationType,
+): BreakpointsType => {
+    const {
+        values = {
+            xs: 0,
+            sm: 600,
+            md: 960,
+            lg: 1280,
+            xl: 1920,
+        },
+    } = breakpoints || {};
+
+    const base = {
+        values,
+        keys: Object.keys(values),
+    };
+
+    return {
+        ...base,
+        up: forwardBreakpoints(base, breakpointUp),
+        down: forwardBreakpoints(base, breakpointDown),
+        only: forwardBreakpoints(base, breakpointOnly),
+        between: forwardBreakpointsTwoArgs(base, breakpointBetween),
+    };
+};
 
 // todo: declaration could be a function like (theme) => newTheme, where theme is some other theme that we override.
 // todo: the usage will be then like this: const theme = makeTheme((theme) => ({...theme, something: 'blah'}), otherTheme);
@@ -33,6 +75,8 @@ export const makeTheme = (declaration: ThemeDeclarationType): ThemeType => {
         };
     }
 
+    theme.breakpoints = makeBreakpoints(theme.breakpoints);
+
     theme.mixins = theme.mixins || {};
 
     // todo: fix these helpers arguments
@@ -41,7 +85,6 @@ export const makeTheme = (declaration: ThemeDeclarationType): ThemeType => {
     theme.mixins.align = () => align();
 
     // todo: deal with this
-    theme.breakpoints = theme.breakpoints || { values: {} };
     theme.palette = theme.palette || {};
     theme.shape = theme.shape || {};
     theme.shadows = theme.shadows || [];

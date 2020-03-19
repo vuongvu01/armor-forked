@@ -16,8 +16,11 @@ export const CustomClassName = () => (
 export const StylesPassed = () => (
     <Button
         styles={{
-            root: props => css`
-                border: ${props.theme.spacing(1)} dashed red;
+            root: ({ theme }) => css`
+                border: ${theme.spacing(1)} dashed red;
+                ${theme.breakpoints.up('md')} {
+                    border-color: blue;
+                }
             `,
         }}
     >

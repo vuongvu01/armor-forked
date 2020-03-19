@@ -1,4 +1,8 @@
 import { ObjectLiteralType, ScalarType } from '../type';
+import {
+    BreakpointFunctionForwardedType,
+    BreakpointFunctionTwoArgsForwardedType,
+} from '../system/mixins/type';
 
 type SpacingFunctionType = (value: ScalarType) => ScalarType;
 type SpacingFunctionOrConstType = SpacingFunctionType | number;
@@ -9,15 +13,21 @@ type ShapeType = {
     borderRadius?: string;
 };
 
-type BreakpointsType = {
+export type BreakpointValuesType = ObjectLiteralType<number>;
+
+export type BreakpointsBaseType = {
     keys: string[];
-    values: ObjectLiteralType<string>;
-    up: () => {}; // todo
-    down: () => {}; // todo
-    between: () => {}; // todo
-    only: () => {}; // todo
-    width: () => {}; // todo
+    values: BreakpointValuesType;
 };
+
+export type BreakpointsType = BreakpointsBaseType & {
+    up: BreakpointFunctionForwardedType;
+    down: BreakpointFunctionForwardedType;
+    only: BreakpointFunctionForwardedType;
+    between: BreakpointFunctionTwoArgsForwardedType;
+};
+export type BreakpointsDeclarationType = Pick<BreakpointsType, 'values'>;
+
 type MixinsType = ObjectLiteralType<(...args: any[]) => any>;
 type TypographyType = {
     htmlFontSize: number;
@@ -41,7 +51,7 @@ export type ThemeType = {
 export type ThemeDeclarationType = Partial<
     Pick<ThemeType, 'mixins' | 'palette' | 'shape' | 'zIndex'>
 > & {
-    breakpoints?: Pick<BreakpointsType, 'values'>;
+    breakpoints?: BreakpointsDeclarationType;
     spacing?: SpacingFunctionOrConstType;
     [k: string]: any;
 };
