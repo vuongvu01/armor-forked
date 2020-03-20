@@ -19,7 +19,7 @@
         "sourceMap": true,
         "declaration": true,
         "jsx": "react",
-        "baseUrl": ".",
+        "baseUrl": "../",
         "paths": {
             "@storybook/addon-knobs": [
                 "storybook/node_modules/@storybook/addon-knobs"

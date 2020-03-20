@@ -1,11 +1,13 @@
 import React from 'react';
 import { css } from 'styled-components';
+// eslint-disable-next-line import/no-unresolved
+import { withKnobs, text, boolean, number } from '@storybook/addon-knobs';
 import { Button } from '../Button';
 
 export default {
     title: 'Button',
     component: Button,
-    decorators: [],
+    decorators: [withKnobs],
     parameters: {},
 };
 
@@ -15,6 +17,7 @@ export const CustomClassName = () => (
 );
 export const StylesPassed = () => (
     <Button
+        disabled={boolean('Disabled', false)}
         styles={{
             root: ({ theme }) => css`
                 border: ${theme.spacing(1)} dashed red;
@@ -24,7 +27,7 @@ export const StylesPassed = () => (
             `,
         }}
     >
-        Hello world!
+        {text('Label', 'Hello world!')}
     </Button>
 );
 

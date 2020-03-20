@@ -12,6 +12,8 @@
         "build.cjs",
         "build.esm",
         "**/**/*.test.ts",
-        "**/**/*.test.tsx"
+        "**/**/*.test.tsx",
+        "**/**/*.story.ts",
+        "**/**/*.story.tsx"
     ]
 }

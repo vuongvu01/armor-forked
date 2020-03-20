@@ -18,11 +18,6 @@ export type AttributeOverrideAttributesType<AO> = {
     attributes?: AO;
 };
 
-export type StandardAttributesType<A extends BasicAttributesType> = Pick<
-    A,
-    'className'
->;
-
 export type StyleOverrideAttributesType<S> = {
     classNames?: ClassNamesType;
     styles?: S;
@@ -32,5 +27,5 @@ export type StyleOverrideAttributesType<S> = {
 export type ComponentAttributesType<AO, A, S> = AttributeOverrideAttributesType<
     AO
 > &
-    StandardAttributesType<A> &
+    A &
     StyleOverrideAttributesType<S>;

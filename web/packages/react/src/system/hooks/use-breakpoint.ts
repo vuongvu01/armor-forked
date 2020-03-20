@@ -25,8 +25,7 @@ const useBreakpoint = (
             return () => {};
         }
 
-        const handler = throttle(100, (event: UIEvent) => {
-            const { target } = event;
+        const handler = throttle(100, ({ target }: UIEvent) => {
             if (target) {
                 const width = (target as Window).innerWidth;
                 setMatch(matchFunction(value, width));

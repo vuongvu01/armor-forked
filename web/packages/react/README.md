@@ -93,7 +93,7 @@ In order to use the package in your application, do the following:
     ```
 3. Run `Storybook` and start developing!
     ```sh
-    yarn storybook
+    yarn run dev
     ```
 
 ### Local usage
