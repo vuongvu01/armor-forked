@@ -52,13 +52,15 @@ Todo: when there is something inside, write a short intro to the project
 
 ## Usage
 
-In order to use the package in your application, do the following:
+To use the UI offered by this project you need to install an NPM package and consume it in the code of your application.
+In order to do that, following these steps:
 
 1. [Generate your own GitHUB token](https://github.com/settings/tokens)
 2. Add the token as an environment variable (you can use any other name for the variable):
     ~~~sh
     export GITHUB_DH_UI_TOKEN="<your-token-goes-here>";
     ~~~
+   Add the same line to `~/.bashrc` or `~/.bash_profile` (Mac) to keep this variable between laptop restarts.
 3. In your application next to the `package.json` file create another file called `.npmrc` with the following content:
     ~~~
     @deliveryhero:registry="https://npm.pkg.github.com/"
@@ -77,6 +79,8 @@ In order to use the package in your application, do the following:
 
 ## Development
 
+If you wish to make a contribution to the library, you need to setup the development environment on your local machine.
+
 ### Installation
 
 1. Clone the repo
@@ -91,22 +95,25 @@ In order to use the package in your application, do the following:
     yarn;
     yarn run install-peers;
     ```
-3. Run `Storybook` and start developing!
+3. We utilise `Storybook` as a primary tool for development. To launch `Storybook`, type
     ```sh
     yarn run dev
     ```
 
 ### Local usage
 
-It is not possible to bump a new version to `npm` out every time you change the library locally.
-Nevertheless, there is a way to develop simultaneously both the library and the application that consumes it locally.
-You have two options to do so.
+You may want to try out the latest changes you made in some locally installed React application without bumping out anything to NPM.
+You have two options here.
 
 #### Option 1: yarn link
 
-1. Link the package to `yarn`:
+0. Make sure that no peer dependencies installed by typing
     ~~~sh
     cd web/packages/react;
+    yarn;
+    ~~~
+1. Link the package to `yarn`:
+    ~~~sh
     yarn link;
     ~~~
 2. Link the package to the application:
@@ -114,6 +121,11 @@ You have two options to do so.
     cd <application-folder>;
     yarn link "@deliveryhero/ui.react";
     ~~~
+
+Note: in order to continue working in `Storybook` you need to install peer dependencies back by typing
+~~~bash
+yarn run install-peers;
+~~~
 
 #### Option 2: yalc
 
