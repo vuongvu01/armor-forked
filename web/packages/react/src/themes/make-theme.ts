@@ -5,6 +5,8 @@ import {
     BreakpointsType,
     ThemeDeclarationType,
     ThemeType,
+    TypographyInputType,
+    TypographyType,
 } from './type';
 import {
     grid,
@@ -45,10 +47,27 @@ const makeBreakpoints = (
     };
 };
 
+const makeTypography = (
+    typography: TypographyInputType = {},
+): TypographyType => {
+    const fontSize = typography.fontSize || 14;
+    const htmlFontSize = typography.htmlFontSize || 16;
+    const factor = fontSize / 14;
+    return {
+        fontFamily: typography.fontFamily || 'Roboto, sans-serif',
+        fontSize,
+        htmlFontSize,
+        pxToRem: size => `${(size / htmlFontSize) * factor}rem`,
+    };
+};
+
 // todo: declaration could be a function like (theme) => newTheme, where theme is some other theme that we override.
 // todo: the usage will be then like this: const theme = makeTheme((theme) => ({...theme, something: 'blah'}), otherTheme);
 // todo: if there is no second argument, then the defaultTheme is used
 // todo: make it MUI compatible: https://material-ui.com/customization/default-theme/
+// todo: support global component override: https://material-ui.com/customization/components/#global-theme-override
+// todo:
+
 export const makeTheme = (declaration: ThemeDeclarationType): ThemeType => {
     const theme = cloneDeep(declaration);
 
@@ -75,20 +94,20 @@ export const makeTheme = (declaration: ThemeDeclarationType): ThemeType => {
         };
     }
 
+    theme.shadows = theme.shadows || []; // todo: there might be a better way to declare shadows (elevation?)
     theme.breakpoints = makeBreakpoints(theme.breakpoints);
+    theme.typography = makeTypography(theme.typography);
 
     theme.mixins = theme.mixins || {};
 
     // todo: fix these helpers arguments
     theme.mixins.grid = () => grid();
     theme.mixins.cell = () => cell();
-    theme.mixins.align = () => align();
 
     // todo: deal with this
-    theme.palette = theme.palette || {};
+    theme.mixins.align = () => align();
+    // theme.palette = theme.palette || {};
     theme.shape = theme.shape || {};
-    theme.shadows = theme.shadows || [];
-    theme.typography = theme.typography || {};
     theme.zIndex = theme.zIndex || {};
 
     return deepFreeze(theme) as ThemeType;

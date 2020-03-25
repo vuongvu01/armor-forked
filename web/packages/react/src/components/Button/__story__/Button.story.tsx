@@ -1,52 +1,106 @@
 import React from 'react';
-import { css } from 'styled-components';
+import {
+    withKnobs,
+    text,
+    boolean,
+    number,
+    select,
+    // eslint-disable-next-line import/no-unresolved
+} from '@storybook/addon-knobs';
 // eslint-disable-next-line import/no-unresolved
-import { withKnobs, text, boolean, number } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
 import { Button } from '../Button';
+import { TagType } from '../type';
+import { EditIcon } from '../../../icons/EditIcon';
 
 export default {
-    title: 'Button',
+    title: 'Components/Button',
     component: Button,
     decorators: [withKnobs],
     parameters: {},
 };
 
-export const Basic = () => <Button>Hello world!</Button>;
-export const CustomClassName = () => (
-    <Button className="Hello-Button">Hello world!</Button>
-);
-export const StylesPassed = () => (
+const optionsTag = {
+    Button: 'button',
+    A: 'a',
+    Span: 'span',
+    Div: 'div',
+};
+
+const optionsType = {
+    Primary: 'primary',
+    Secondary: 'secondary',
+    Tertiary: 'tertiary',
+    Ghost: 'ghost',
+};
+
+const getTypeAttributes = (type: string) => ({
+    primary: false,
+    secondary: false,
+    tertiary: false,
+    ghost: false,
+    [type]: true,
+});
+
+export const Regular = () => (
     <Button
+        {...getTypeAttributes(select('Type', optionsType, 'primary'))}
+        tag={select('Tag', optionsTag, 'button') as TagType}
+        wide={boolean('Wide', false)}
+        small={boolean('Small', false)}
         disabled={boolean('Disabled', false)}
-        styles={{
-            root: ({ theme }) => css`
-                border: ${theme.spacing(1)} dashed red;
-                ${theme.breakpoints.up('md')} {
-                    border-color: blue;
-                }
-            `,
-        }}
+        onClick={action('button-click')}
+        href="https://google.com"
+        target="_blank"
+        iconRight={boolean('With icon', false) ? EditIcon : undefined}
+        className="custom-class-name"
+        classNames={{ root: 'custom-btn-root' }}
     >
-        {text('Label', 'Hello world!')}
+        {text('Label', 'Primary button')}
     </Button>
 );
 
-export const AttributesOverridePassed = () => (
+export const AsLink = () => (
+    <Button tag="link" href="https://www.google.com/" target="_blank">
+        Open Google
+    </Button>
+);
+
+export const WithMargins = () => (
     <Button
-        attributes={{
-            root: {
-                primary: true,
-            },
-        }}
+        marginTop={`${number('Margin top', 0)}px`}
+        marginBottom={`${number('Margin bottom', 0)}px`}
+        marginLeft={`${number('Margin left', 0)}px`}
+        marginRight={`${number('Margin right', 0)}px`}
     >
-        Hello world!
+        Primary button
     </Button>
 );
 
-export const OuterSpacingAttributesPassed = () => (
-    <Button margin={2}>Hello world!</Button>
+export const IconOnly = () => (
+    <Button
+        {...getTypeAttributes(select('Type', optionsType, 'primary'))}
+        tag={select('Tag', optionsTag, 'button') as TagType}
+        wide={boolean('Wide', false)}
+        small={boolean('Small', false)}
+        disabled={boolean('Disabled', false)}
+    >
+        <EditIcon />
+    </Button>
 );
 
-export const OuterSpacingAttributesPassedAsString = () => (
-    <Button marginTop="2rem">Hello world!</Button>
+export const WithMultilineContent = () => (
+    <Button
+        {...getTypeAttributes(select('Type', optionsType, 'primary'))}
+        tag={select('Tag', optionsTag, 'button') as TagType}
+        wide={boolean('Wide', false)}
+        small={boolean('Small', false)}
+        disabled={boolean('Disabled', false)}
+    >
+        Lorem ipsum
+        <br />
+        Lorem ipsum
+        <br />
+        Lorem ipsum
+    </Button>
 );

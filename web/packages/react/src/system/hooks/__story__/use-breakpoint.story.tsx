@@ -3,7 +3,7 @@ import { Button } from '../../../components';
 import { useBreakpointUp, useBreakpointDown } from '../use-breakpoint';
 
 export default {
-    title: 'useBreakpoint()',
+    title: 'System/Hooks/useBreakpoint',
     component: Button,
     decorators: [],
     parameters: {},

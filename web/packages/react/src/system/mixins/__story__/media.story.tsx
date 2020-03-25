@@ -3,7 +3,7 @@ import { css } from 'styled-components';
 import { Button } from '../../../components';
 
 export default {
-    title: 'Media',
+    title: 'System/Media',
     component: Button,
     decorators: [],
     parameters: {},

@@ -23,6 +23,9 @@
         "paths": {
             "@storybook/addon-knobs": [
                 "storybook/node_modules/@storybook/addon-knobs"
+            ],
+            "@storybook/addon-actions": [
+                "storybook/node_modules/@storybook/addon-actions"
             ]
         }
     },

@@ -1,18 +1,36 @@
 import { makeTheme } from './make-theme';
+import {
+    blue200,
+    green100,
+    green200,
+    grey300,
+    white,
+    shadow100,
+    blue300,
+} from '../tokens';
 
 export const defaultTheme = makeTheme({
+    typography: {
+        fontFamily: 'Roboto-Medium, sans-serif',
+    },
     palette: {
-        primary: '#3f51b5',
-        secondary: 'red',
-        backgroundColor: '#000',
-        contrastText: '#fff',
-        common: {
-            white: '#fff',
-            black: '#000',
+        primary: {
+            main: blue200,
+            dark: blue300,
+            contrastText: white,
+        },
+        secondary: {
+            main: green100,
+            contrastText: green200,
+        },
+        tertiary: {
+            main: blue200,
+            contrastText: grey300,
         },
     },
     shape: {
-        borderRadius: '5px',
+        borderRadius: '2px',
     },
-    spacing: 8,
+    shadows: [shadow100],
+    spacing: 4,
 });

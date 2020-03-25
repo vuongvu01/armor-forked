@@ -7,7 +7,14 @@ import {
 type SpacingFunctionType = (value: ScalarType) => ScalarType;
 type SpacingFunctionOrConstType = SpacingFunctionType | number;
 type ZIndexType = ObjectLiteralType<number>;
-type PaletteType = ObjectLiteralType<string | ObjectLiteralType<string>>;
+type PaletteType = {
+    primary: {
+        main: string;
+        contrastText: string;
+        [k: string]: any;
+    };
+    [k: string]: any;
+};
 type ShadowsType = string[];
 type ShapeType = {
     borderRadius?: string;
@@ -29,11 +36,16 @@ export type BreakpointsType = BreakpointsBaseType & {
 export type BreakpointsDeclarationType = Pick<BreakpointsType, 'values'>;
 
 type MixinsType = ObjectLiteralType<(...args: any[]) => any>;
-type TypographyType = {
+
+export type TypographyType = {
     htmlFontSize: number;
     fontFamily: string;
     fontSize: number;
+    pxToRem: (size: number) => string;
 };
+export type TypographyInputType = Partial<
+    Pick<TypographyType, 'htmlFontSize' | 'fontFamily' | 'fontSize'>
+>;
 
 // it tries to be compatible with https://material-ui.com/customization/default-theme/
 export type ThemeType = {
@@ -51,6 +63,7 @@ export type ThemeType = {
 export type ThemeDeclarationType = Partial<
     Pick<ThemeType, 'mixins' | 'palette' | 'shape' | 'zIndex'>
 > & {
+    typography?: Partial<TypographyType>;
     breakpoints?: BreakpointsDeclarationType;
     spacing?: SpacingFunctionOrConstType;
     [k: string]: any;

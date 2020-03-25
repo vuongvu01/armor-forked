@@ -4,7 +4,7 @@ import { css } from 'styled-components';
 import { Dialog } from '../Dialog';
 
 export default {
-    title: 'Dialog',
+    title: 'Components/Dialog',
     component: Dialog,
     decorators: [],
     parameters: {},

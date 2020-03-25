@@ -5,6 +5,7 @@ import {
     SpacingInnerAttributesType,
     SpacingOuterAttributesType,
 } from '../../system/attributes';
+import { ThemeType } from '../../themes';
 
 type AttributesBoxType = HTMLAttributes<HTMLElement>;
 
@@ -28,3 +29,8 @@ export type PropsBoxType = AttributesOverridableBoxType &
     SpacingOuterAttributesType &
     SpacingInnerAttributesType &
     SizingAttributesType;
+
+export type RootStylePropertiesBoxType = PropsBoxType & {
+    theme: ThemeType;
+    styles: StylesFunctionBoxType;
+};

@@ -4,7 +4,7 @@ import { css } from 'styled-components';
 import { Box } from '../Box';
 
 export default {
-    title: 'Box',
+    title: 'Components/Box',
     component: Box,
     decorators: [],
     parameters: {},

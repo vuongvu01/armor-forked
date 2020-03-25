@@ -1,6 +1,8 @@
 import { useMemo } from 'react';
 import { StyleOverrideButtonType, StyleOverrideSafeButtonType } from './type';
 import { returnEmptyString } from '../../utils';
+import { ClassNamesType } from '../type';
+import { makeBEM, makeClassName } from '../../utils/index';
 
 export const useStylesOverrideButton = (
     styles?: StyleOverrideButtonType,
@@ -12,3 +14,59 @@ export const useStylesOverrideButton = (
         };
     }, [styles]);
 };
+
+export const useClassNameButton = (
+    classPrefix: string,
+    className?: string,
+    classNames?: ClassNamesType,
+    disabled?: boolean,
+    small?: boolean,
+    wide?: boolean,
+    primary?: boolean,
+    secondary?: boolean,
+    tertiary?: boolean,
+    ghost?: boolean,
+) =>
+    useMemo(() => {
+        const baseClassNames = makeClassName(
+            classPrefix,
+            className,
+            classNames,
+            'root',
+        );
+        const stateClassNames: string[] = [];
+        if (disabled) {
+            stateClassNames.push(makeBEM(classPrefix, 'root', 'disabled'));
+        }
+        if (small) {
+            stateClassNames.push(makeBEM(classPrefix, 'root', 'small'));
+        }
+        if (wide) {
+            stateClassNames.push(makeBEM(classPrefix, 'root', 'wide'));
+        }
+        if (primary) {
+            stateClassNames.push(makeBEM(classPrefix, 'root', 'primary'));
+        }
+        if (secondary) {
+            stateClassNames.push(makeBEM(classPrefix, 'root', 'secondary'));
+        }
+        if (tertiary) {
+            stateClassNames.push(makeBEM(classPrefix, 'root', 'tertiary'));
+        }
+        if (ghost) {
+            stateClassNames.push(makeBEM(classPrefix, 'root', 'ghost'));
+        }
+
+        return `${baseClassNames} ${stateClassNames.join(' ')}`;
+    }, [
+        classPrefix,
+        className,
+        classNames,
+        disabled,
+        small,
+        wide,
+        primary,
+        secondary,
+        tertiary,
+        ghost,
+    ]);
