@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { throttle } from 'throttle-debounce';
 import { BreakpointCode } from '../mixins/type';
-import { useTheme } from '../../themes';
+import { useTheme } from '../../styling';
 import { MatchBreakpointFunctionType } from './type';
 
 const useBreakpoint = (

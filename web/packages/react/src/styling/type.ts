@@ -4,9 +4,8 @@ import {
     BreakpointFunctionTwoArgsForwardedType,
 } from '../system/mixins/type';
 
-type SpacingFunctionType = (value: ScalarType) => ScalarType;
-type SpacingFunctionOrConstType = SpacingFunctionType | number;
-type ZIndexType = ObjectLiteralType<number>;
+export type SpanFunctionType = (value: ScalarType) => ScalarType;
+export type SpanFunctionOrConstType = SpanFunctionType | number;
 type PaletteType = {
     primary: {
         main: string;
@@ -15,8 +14,8 @@ type PaletteType = {
     };
     [k: string]: any;
 };
-type ShadowsType = string[];
-type ShapeType = {
+
+type FigureType = {
     borderRadius?: string;
 };
 
@@ -42,21 +41,19 @@ export type TypographyType = {
     fontFamily: string;
     fontSize: number;
     pxToRem: (size: number) => string;
-};
+} & ObjectLiteralType;
+
 export type TypographyInputType = Partial<
     Pick<TypographyType, 'htmlFontSize' | 'fontFamily' | 'fontSize'>
 >;
 
-// it tries to be compatible with https://material-ui.com/customization/default-theme/
 export type ThemeType = {
     breakpoints: BreakpointsType;
-    mixins: MixinsType;
+    // mixins: MixinsType;
     palette: PaletteType;
-    shadows: ShadowsType;
     typography: TypographyType;
-    spacing: SpacingFunctionType;
-    shape: ShapeType;
-    zIndex: ZIndexType;
+    span: SpanFunctionType;
+    figure: FigureType;
     [k: string]: any;
 };
 
@@ -65,6 +62,10 @@ export type ThemeDeclarationType = Partial<
 > & {
     typography?: Partial<TypographyType>;
     breakpoints?: BreakpointsDeclarationType;
-    spacing?: SpacingFunctionOrConstType;
+    span?: SpanFunctionOrConstType;
     [k: string]: any;
+};
+
+export type ThemeFabricOptions = {
+    immutable?: boolean;
 };

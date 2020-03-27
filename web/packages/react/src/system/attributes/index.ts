@@ -1,4 +1,4 @@
-export * from './spacing-outer';
-export * from './spacing-inner';
-export * from './sizing';
+export * from './span-outer';
+export * from './span-inner';
+export * from './size';
 export * from './wide';

@@ -19,7 +19,7 @@ export const BreakpointUp = () => (
                         color: yellow;
                     `,
                 )};
-                border: ${theme.spacing(1)} dashed red;
+                border: ${theme.span(1)} dashed red;
             `,
         }}
     >

@@ -1,14 +1,14 @@
 import { css } from 'styled-components';
 import {
     BreakpointCode,
-    MediaCSSType,
     BreakpointFunctionType,
     BreakpointFunctionTwoArgsType,
 } from './type';
-import { BreakpointsBaseType } from '../../themes';
+import { BreakpointsBaseType } from '../../styling';
+import { CSSChunkType } from '../../type';
 
-const makeRule = (way: string, value: number, cssChunk?: MediaCSSType) => {
-    const mediaRule = `@media(${way}-width:${value}px)`;
+const makeRule = (way: string, value: number, cssChunk?: CSSChunkType) => {
+    const mediaRule = `@media (${way}-width:${value}px)`;
 
     if (cssChunk) {
         // prettier-ignore
@@ -38,7 +38,7 @@ export const breakpointOnly: BreakpointFunctionType = (
     const { keys } = breakpoints;
     const left = breakpoints.values[code];
 
-    let mediaRule = `@media(min-width:${left}px`;
+    let mediaRule = `@media (min-width:${left}px`;
 
     const rightIndex = keys.indexOf(code) + 1;
     if (rightIndex !== keys.length) {
@@ -64,7 +64,7 @@ export const breakpointBetween: BreakpointFunctionTwoArgsType = (
     const left = breakpoints.values[codeStart];
     const right = breakpoints.values[codeEnd] - 1;
 
-    const mediaRule = `@media(min-width:${left}px and max-width:${right}px)`;
+    const mediaRule = `@media (min-width:${left}px and max-width:${right}px)`;
 
     if (cssChunk) {
         // prettier-ignore
@@ -77,7 +77,7 @@ export const breakpointBetween: BreakpointFunctionTwoArgsType = (
 export const forwardBreakpoints = (
     breakpoints: BreakpointsBaseType,
     fn: BreakpointFunctionType,
-) => (code: BreakpointCode, cssChunk?: MediaCSSType) =>
+) => (code: BreakpointCode, cssChunk?: CSSChunkType) =>
     fn(breakpoints, code, cssChunk);
 
 export const forwardBreakpointsTwoArgs = (
@@ -86,5 +86,5 @@ export const forwardBreakpointsTwoArgs = (
 ) => (
     codeStart: BreakpointCode,
     codeEnd: BreakpointCode,
-    cssChunk?: MediaCSSType,
+    cssChunk?: CSSChunkType,
 ) => fn(breakpoints, codeStart, codeEnd, cssChunk);

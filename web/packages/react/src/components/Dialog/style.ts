@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
-import { ThemeType } from '../../themes';
+import { ThemeType } from '../../styling';
 import { StylesFunctionDialogType } from './type';
 import { Button } from '../Button';
-import { spacingOuterAttributes } from '../../system/attributes';
+import { spanOuterAttributes } from '../../system/attributes';
 
 export const DialogRoot = styled.div<{
     theme: ThemeType;
@@ -12,10 +12,10 @@ export const DialogRoot = styled.div<{
     border: 1px solid gray;
     max-width: 50vw;
     ${({ theme }) => css`
-        padding: ${theme.spacing(4)} ${theme.spacing(6)};
-        min-width: ${theme.spacing(30)};
+        padding: ${theme.span(4)} ${theme.span(6)};
+        min-width: ${theme.span(30)};
     `}
-    ${spacingOuterAttributes}
+    ${spanOuterAttributes}
     ${props => props.styles(props)}
 `;
 

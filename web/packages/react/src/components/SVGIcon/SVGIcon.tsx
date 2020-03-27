@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { useTheme } from '../../themes';
+import { useTheme } from '../../styling';
 import { fontSizeRegular } from '../../tokens/font-sizes';
 
 import { SVGIconRoot } from './style';

@@ -1,16 +1,17 @@
-import { makeTheme } from './make-theme';
 import {
     blue200,
     green100,
     green200,
     grey300,
     white,
-    shadow100,
     blue300,
-} from '../tokens';
+    fontSizeRegular,
+} from '../../tokens';
 
-export const defaultTheme = makeTheme({
+export const defaultThemeDeclaration = {
     typography: {
+        htmlFontSize: 16,
+        fontSize: fontSizeRegular,
         fontFamily: 'Roboto-Medium, sans-serif',
     },
     palette: {
@@ -28,9 +29,8 @@ export const defaultTheme = makeTheme({
             contrastText: grey300,
         },
     },
-    shape: {
+    figure: {
         borderRadius: '2px',
     },
-    shadows: [shadow100],
-    spacing: 4,
-});
+    span: 4,
+};

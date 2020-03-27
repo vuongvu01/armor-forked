@@ -1,11 +1,11 @@
 import { HTMLAttributes } from 'react';
 import { StylesFunctionOrStubType, ComponentAttributesType } from '../type';
 import {
-    SizingAttributesType,
-    SpacingInnerAttributesType,
-    SpacingOuterAttributesType,
+    SizeAttributesType,
+    SpanInnerAttributesType,
+    SpanOuterAttributesType,
 } from '../../system/attributes';
-import { ThemeType } from '../../themes';
+import { ThemeType } from '../../styling';
 
 type AttributesBoxType = HTMLAttributes<HTMLElement>;
 
@@ -26,9 +26,9 @@ export type PropsBoxType = AttributesOverridableBoxType &
         AttributesBoxType,
         StyleOverrideBoxType
     > &
-    SpacingOuterAttributesType &
-    SpacingInnerAttributesType &
-    SizingAttributesType;
+    SpanOuterAttributesType &
+    SpanInnerAttributesType &
+    SizeAttributesType;
 
 export type RootStylePropertiesBoxType = PropsBoxType & {
     theme: ThemeType;

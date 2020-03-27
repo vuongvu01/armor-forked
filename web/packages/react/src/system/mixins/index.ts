@@ -1,3 +1,8 @@
 export * from './align';
 export * from './grid';
-export * from './media';
+export {
+    breakpointUp,
+    breakpointDown,
+    breakpointBetween,
+    breakpointOnly,
+} from './breakpoints';

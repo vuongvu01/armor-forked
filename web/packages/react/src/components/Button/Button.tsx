@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { useObject } from '../../utils/hooks';
-import { useTheme } from '../../themes';
+import { useTheme } from '../../styling';
 import { useClassNameButton, useStylesOverrideButton } from './utils';
 
 import {
@@ -17,6 +17,7 @@ export const Button: FunctionComponent<PropsButtonType> = ({
     classNames,
     styles,
     attributes,
+    theme,
     tag,
     iconRight: IconRight,
     small,
@@ -29,7 +30,7 @@ export const Button: FunctionComponent<PropsButtonType> = ({
     ghost,
     ...restProps
 }) => {
-    const theme = useTheme();
+    const themeActual = useTheme(theme);
     const classNameRoot = useClassNameButton(
         classPrefix,
         className,
@@ -59,19 +60,19 @@ export const Button: FunctionComponent<PropsButtonType> = ({
             ghost={ghost}
             {...restProps}
             {...attributesSafe.root}
-            theme={theme}
+            theme={themeActual}
             className={classNameRoot}
             styles={stylesSafe.root}
         >
             <CentralContainer
-                theme={theme}
+                theme={themeActual}
                 small={small}
                 hasRightIcon={hasRightIcon}
             >
                 {children}
             </CentralContainer>
             {!!IconRight && (
-                <IconRightContainer theme={theme}>
+                <IconRightContainer theme={themeActual}>
                     <IconRight />
                 </IconRightContainer>
             )}

@@ -1,5 +1,5 @@
 import { SVGAttributes } from 'react';
-import { ThemeType } from '../../themes';
+import { ThemeType } from '../../styling';
 
 export type PropsSVGIconType = {
     title?: string;

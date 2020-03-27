@@ -1,7 +1,7 @@
-import { ThemeType } from '../../themes';
+import { ThemeType } from '../../styling';
 import { ScalarType } from '../../type';
 
-export type SpacingOuterAttributesType = {
+export type SpanOuterAttributesType = {
     margin?: ScalarType;
     marginTop?: ScalarType;
     marginBottom?: ScalarType;
@@ -11,9 +11,9 @@ export type SpacingOuterAttributesType = {
     marginY?: ScalarType;
 };
 
-type PropertiesType = { theme: ThemeType } & SpacingOuterAttributesType;
+type PropertiesType = { theme: ThemeType } & SpanOuterAttributesType;
 
-export const spacingOuterAttributes = ({
+export const spanOuterAttributes = ({
     theme,
     margin,
     marginTop,
@@ -26,26 +26,26 @@ export const spacingOuterAttributes = ({
     let result = '';
 
     if (typeof margin !== 'undefined') {
-        result += `margin: ${theme.spacing(margin)};`;
+        result += `margin: ${theme.span(margin)};`;
     }
     if (typeof marginTop !== 'undefined') {
-        result += `margin-top: ${theme.spacing(marginTop)};`;
+        result += `margin-top: ${theme.span(marginTop)};`;
     }
     if (typeof marginBottom !== 'undefined') {
-        result += `margin-bottom: ${theme.spacing(marginBottom)};`;
+        result += `margin-bottom: ${theme.span(marginBottom)};`;
     }
     if (typeof marginLeft !== 'undefined') {
-        result += `margin-left: ${theme.spacing(marginLeft)};`;
+        result += `margin-left: ${theme.span(marginLeft)};`;
     }
     if (typeof marginRight !== 'undefined') {
-        result += `margin-right: ${theme.spacing(marginRight)};`;
+        result += `margin-right: ${theme.span(marginRight)};`;
     }
     if (typeof marginX !== 'undefined') {
-        const value = theme.spacing(marginX);
+        const value = theme.span(marginX);
         result += `margin-right: ${value}; margin-left: ${value};`;
     }
     if (typeof marginY !== 'undefined') {
-        const value = theme.spacing(marginY);
+        const value = theme.span(marginY);
         result += `margin-top: ${value}; margin-bottom: ${value};`;
     }
 

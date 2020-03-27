@@ -15,11 +15,11 @@ export const StylesPassed = () => (
     <Dialog
         styles={{
             root: props => css`
-                border: ${props.theme.spacing(1)} dashed red;
+                border: ${props.theme.span(1)} dashed red;
             `,
             buttonYes: {
                 root: props => css`
-                    border: ${props.theme.spacing(1)} dashed red;
+                    border: ${props.theme.span(1)} dashed red;
                     margin: 0 !important;
                 `,
             },

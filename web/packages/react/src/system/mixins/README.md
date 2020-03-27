@@ -53,5 +53,5 @@ export const ButtonRoot = styled.button<{
 
 2. useMediaQuery
 ~~~jsx
-const match = useMediaQuery();
+const match = useBreakpointUp('md');
 ~~~

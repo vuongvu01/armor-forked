@@ -1,6 +1,6 @@
 import { HTMLAttributes } from 'react';
 import { StylesFunctionOrStubType, ComponentAttributesType } from '../type';
-import { SpacingOuterAttributesType } from '../../system/attributes';
+import { SpanOuterAttributesType } from '../../system/attributes';
 import {
     AttributesOverridableButtonType,
     StyleOverrideButtonType,
@@ -8,7 +8,9 @@ import {
 
 type AttributesDialogType = HTMLAttributes<HTMLElement>;
 
-export type AttributesOverridableDialogType = {};
+export type AttributesOverridableDialogType = {
+    megaprop?: string;
+};
 export type AttributeOverrideDialogType = {
     buttonYes?: AttributesOverridableButtonType;
     buttonNo?: AttributesOverridableButtonType;
@@ -32,4 +34,4 @@ export type PropsDialogType = AttributesOverridableDialogType &
         AttributesDialogType,
         StyleOverrideDialogType
     > &
-    SpacingOuterAttributesType;
+    SpanOuterAttributesType;

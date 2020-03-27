@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { useTheme } from '../../themes';
+import { useTheme } from '../../styling';
 import { useClassName, useObject } from '../../utils/hooks';
 
 import { BoxRoot } from './style';

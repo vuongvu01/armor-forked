@@ -5,10 +5,10 @@ import {
 } from 'react';
 import { StylesFunctionOrStubType, ComponentAttributesType } from '../type';
 import {
-    SpacingOuterAttributesType,
+    SpanOuterAttributesType,
     WideAttributesType,
 } from '../../system/attributes';
-import { ThemeType } from '../../themes';
+import { ThemeType } from '../../styling';
 
 type AttributesButtonType = ButtonHTMLAttributes<HTMLButtonElement> &
     Pick<AnchorHTMLAttributes<HTMLAnchorElement>, 'target' | 'href' | 'rel'>;
@@ -44,7 +44,7 @@ export type PropsButtonType = AttributesOverridableButtonType &
         StyleOverrideButtonType
     > &
     WideAttributesType &
-    SpacingOuterAttributesType;
+    SpanOuterAttributesType;
 
 export type RootStylePropertiesButtonType = PropsButtonType & {
     theme: ThemeType;

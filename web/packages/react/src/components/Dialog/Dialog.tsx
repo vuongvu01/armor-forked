@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { useTheme } from '../../themes';
+import { useTheme } from '../../styling';
 import { useObject } from '../../utils/hooks';
 
 import { DialogRoot, ButtonPanel, CloseButton, ButtonYes } from './style';
@@ -16,9 +16,10 @@ export const Dialog: FunctionComponent<PropsDialogType> = ({
     children,
     styles,
     attributes,
+    theme,
     ...restProps
 }) => {
-    const theme = useTheme();
+    const themeActual = useTheme(theme);
     const {
         classNameRoot,
         classNameCloseButton,
@@ -32,25 +33,25 @@ export const Dialog: FunctionComponent<PropsDialogType> = ({
     return (
         <DialogRoot
             {...restProps}
-            theme={theme}
+            theme={themeActual}
             className={classNameRoot}
             styles={stylesSafe.root}
         >
             <CloseButton
-                theme={theme}
+                theme={themeActual}
                 className={classNameCloseButton}
                 styles={stylesSafe.closeButton}
             />
             {children}
             <ButtonPanel
-                theme={theme}
+                theme={themeActual}
                 className={classNameButtonPanel}
                 styles={stylesSafe.buttonPanel}
             >
                 <ButtonYes
                     primary
                     {...attributesSafe.buttonYes}
-                    theme={theme}
+                    theme={themeActual}
                     className={classNameButtonYes}
                     styles={stylesSafe.buttonYes}
                 >
@@ -58,7 +59,7 @@ export const Dialog: FunctionComponent<PropsDialogType> = ({
                 </ButtonYes>
                 <Button
                     {...attributesSafe.buttonNo}
-                    theme={theme}
+                    theme={themeActual}
                     className={classNameButtonNo}
                     styles={stylesSafe.buttonNo}
                 >

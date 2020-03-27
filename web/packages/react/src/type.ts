@@ -1,3 +1,5 @@
+import { FlattenSimpleInterpolation } from 'styled-components';
+
 export type ScalarType = string | number;
 
 export type ObjectLiteralType<P = any> = {
@@ -5,3 +7,5 @@ export type ObjectLiteralType<P = any> = {
 };
 
 export type ReturnEmptyStringFunctionType = () => string;
+
+export type CSSChunkType = FlattenSimpleInterpolation | string;

@@ -1,14 +1,17 @@
 import { HTMLAttributes } from 'react';
-import { FlattenSimpleInterpolation } from 'styled-components';
-import { ObjectLiteralType, ReturnEmptyStringFunctionType } from '../type';
-import { ThemeType } from '../themes';
+import {
+    CSSChunkType,
+    ObjectLiteralType,
+    ReturnEmptyStringFunctionType,
+} from '../type';
+import { ThemeType } from '../styling';
 
 type BasicAttributesType = HTMLAttributes<Element>;
 
 export type ClassNamesType = ObjectLiteralType<string>;
 export type StylesFunctionType<
     A extends BasicAttributesType = BasicAttributesType
-> = (props: A & { theme: ThemeType }) => FlattenSimpleInterpolation;
+> = (props: A & { theme: ThemeType }) => CSSChunkType;
 
 export type StylesFunctionOrStubType<A = BasicAttributesType> =
     | StylesFunctionType<A>

@@ -1,7 +1,7 @@
-import { ThemeType } from '../../themes';
+import { ThemeType } from '../../styling';
 import { ScalarType } from '../../type';
 
-export type SpacingInnerAttributesType = {
+export type SpanInnerAttributesType = {
     padding?: ScalarType;
     paddingTop?: ScalarType;
     paddingBottom?: ScalarType;
@@ -11,9 +11,9 @@ export type SpacingInnerAttributesType = {
     paddingY?: ScalarType;
 };
 
-type PropertiesType = { theme: ThemeType } & SpacingInnerAttributesType;
+type PropertiesType = { theme: ThemeType } & SpanInnerAttributesType;
 
-export const spacingInnerAttributes = ({
+export const spanInnerAttributes = ({
     theme,
     padding,
     paddingTop,
@@ -26,26 +26,26 @@ export const spacingInnerAttributes = ({
     let result = '';
 
     if (typeof padding !== 'undefined') {
-        result += `padding: ${theme.spacing(padding)};`;
+        result += `padding: ${theme.span(padding)};`;
     }
     if (typeof paddingTop !== 'undefined') {
-        result += `padding-top: ${theme.spacing(paddingTop)};`;
+        result += `padding-top: ${theme.span(paddingTop)};`;
     }
     if (typeof paddingBottom !== 'undefined') {
-        result += `padding-bottom: ${theme.spacing(paddingBottom)};`;
+        result += `padding-bottom: ${theme.span(paddingBottom)};`;
     }
     if (typeof paddingLeft !== 'undefined') {
-        result += `padding-left: ${theme.spacing(paddingLeft)};`;
+        result += `padding-left: ${theme.span(paddingLeft)};`;
     }
     if (typeof paddingRight !== 'undefined') {
-        result += `padding-right: ${theme.spacing(paddingRight)};`;
+        result += `padding-right: ${theme.span(paddingRight)};`;
     }
     if (typeof paddingX !== 'undefined') {
-        const value = theme.spacing(paddingX);
+        const value = theme.span(paddingX);
         result += `padding-right: ${value}; padding-left: ${value};`;
     }
     if (typeof paddingY !== 'undefined') {
-        const value = theme.spacing(paddingY);
+        const value = theme.span(paddingY);
         result += `padding-top: ${value}; padding-bottom: ${value};`;
     }
 

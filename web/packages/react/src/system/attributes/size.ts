@@ -1,7 +1,7 @@
-import { ThemeType } from '../../themes';
+import { ThemeType } from '../../styling';
 import { ScalarType } from '../../type';
 
-export type SizingAttributesType = {
+export type SizeAttributesType = {
     width?: ScalarType;
     minWidth?: ScalarType;
     maxWidth?: ScalarType;
@@ -10,7 +10,7 @@ export type SizingAttributesType = {
     maxHeight?: ScalarType;
 };
 
-type PropertiesType = { theme: ThemeType } & SizingAttributesType;
+type PropertiesType = { theme: ThemeType } & SizeAttributesType;
 
 const makeCSS = (
     theme: ThemeType,
@@ -18,13 +18,13 @@ const makeCSS = (
     value?: ScalarType,
 ) => {
     if (typeof value !== 'undefined') {
-        return `${cssParameter}: ${theme.spacing(value)};`;
+        return `${cssParameter}: ${theme.span(value)};`;
     }
 
     return '';
 };
 
-export const sizingAttributes = ({
+export const sizeAttributes = ({
     theme,
     width,
     minWidth,

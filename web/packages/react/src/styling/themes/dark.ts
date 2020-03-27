@@ -1,4 +1,4 @@
-import { makeTheme } from './make-theme';
+import { makeTheme } from '../make/make-theme';
 
 export const darkTheme = makeTheme({
     palette: {
@@ -14,8 +14,4 @@ export const darkTheme = makeTheme({
             black: '#000',
         },
     },
-    shape: {
-        borderRadius: '2px',
-    },
-    spacing: 4,
 });
