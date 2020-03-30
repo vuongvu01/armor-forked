@@ -24,10 +24,4 @@ then
     exit 1;
 fi
 
-yarn run build:cjs;
-if ! [ $? -eq 0 ]
-then
-    exit 1;
-fi
-
 yarn publish;
