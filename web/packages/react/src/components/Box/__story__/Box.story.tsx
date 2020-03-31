@@ -10,7 +10,7 @@ export default {
     parameters: {},
 };
 
-export const Basic = () => <Box>Hello, world!</Box>;
+export const Playground = () => <Box>Hello, world!</Box>;
 export const StylesAndSpacingPassed = () => (
     <Box
         classNames={{

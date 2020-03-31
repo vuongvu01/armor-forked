@@ -10,7 +10,7 @@ export default {
     parameters: {},
 };
 
-export const Basic = () => <Dialog>Hello, world!</Dialog>;
+export const Playground = () => <Dialog>Hello, world!</Dialog>;
 export const StylesPassed = () => (
     <Dialog
         styles={{

@@ -17,7 +17,7 @@ export default {
     parameters: {},
 };
 
-export const Basic = () => (
+export const Playground = () => (
     <SVGIcon
         width={number('Size', 30)}
         title={text('Title', 'Edit icon')}

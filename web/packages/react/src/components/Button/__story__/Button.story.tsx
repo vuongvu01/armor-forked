@@ -42,7 +42,7 @@ const getTypeAttributes = (type: string) => ({
     [type]: true,
 });
 
-export const Regular = () => (
+export const Playground = () => (
     <Button
         {...getTypeAttributes(select('Type', optionsType, 'primary'))}
         tag={select('Tag', optionsTag, 'button') as TagType}

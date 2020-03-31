@@ -58,20 +58,19 @@ In order to do that, following these steps:
 1. [Generate your own GitHUB token](https://github.com/settings/tokens)
 2. Add the token as an environment variable (you can use any other name for the variable):
     ~~~sh
-    export GITHUB_DH_UI_TOKEN="<your-token-goes-here>";
+    export GITHUB_PKG_TOKEN="<your-token-goes-here>";
     ~~~
    Add the same line to `~/.bashrc` or `~/.bash_profile` (Mac) to keep this variable between laptop restarts.
 3. In your application next to the `package.json` file create another file called `.npmrc` with the following content:
     ~~~
     @deliveryhero:registry="https://npm.pkg.github.com/"
-    //npm.pkg.github.com/:_authToken=${GITHUB_DH_UI_TOKEN}
+    //npm.pkg.github.com/:_authToken=${GITHUB_PKG_TOKEN}
     ~~~
-
+    If you already have this file, just to append the lines above to it.
 4. Install the package
     ~~~sh
     yarn add @deliveryhero/ui.react
     ~~~
-
 5. Start coding!
     ~~~javascript
     import { Button } from '@deliveryhero/ui.react';
