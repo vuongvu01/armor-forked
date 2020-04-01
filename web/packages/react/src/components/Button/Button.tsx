@@ -3,34 +3,27 @@ import { useObject } from '../../utils/hooks';
 import { useTheme } from '../../styling';
 import { useClassNameButton, useStylesOverrideButton } from './utils';
 
-import {
-    useAppearanceButton,
-    CentralContainer,
-    IconRightContainer,
-} from './style';
-import { PropsButtonType } from './type';
+import { useAppearanceButton } from './style';
+import { ButtonPropsType } from './type';
 
 const classPrefix = 'Button';
 
-export const Button: FunctionComponent<PropsButtonType> = ({
+export const Button: FunctionComponent<ButtonPropsType> = ({
     className,
     classNames,
     styles,
     attributes,
-    theme,
     tag,
-    iconRight: IconRight,
     small,
     wide,
     disabled,
-    children,
     primary,
     secondary,
     tertiary,
     ghost,
     ...restProps
 }) => {
-    const themeActual = useTheme(theme);
+    const theme = useTheme();
     const classNameRoot = useClassNameButton(
         classPrefix,
         className,
@@ -47,8 +40,6 @@ export const Button: FunctionComponent<PropsButtonType> = ({
     const attributesSafe = useObject(attributes);
     const ButtonRoot = useAppearanceButton(tag);
 
-    const hasRightIcon = !!IconRight;
-
     return (
         <ButtonRoot
             disabled={disabled}
@@ -58,24 +49,11 @@ export const Button: FunctionComponent<PropsButtonType> = ({
             secondary={secondary}
             tertiary={tertiary}
             ghost={ghost}
+            theme={theme}
             {...restProps}
             {...attributesSafe.root}
-            theme={themeActual}
             className={classNameRoot}
             styles={stylesSafe.root}
-        >
-            <CentralContainer
-                theme={themeActual}
-                small={small}
-                hasRightIcon={hasRightIcon}
-            >
-                {children}
-            </CentralContainer>
-            {!!IconRight && (
-                <IconRightContainer theme={themeActual}>
-                    <IconRight />
-                </IconRightContainer>
-            )}
-        </ButtonRoot>
+        />
     );
 };

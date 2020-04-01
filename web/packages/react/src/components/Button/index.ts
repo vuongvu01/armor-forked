@@ -3,12 +3,12 @@
  */
 
 import {
-    PropsButtonType as PropsType,
+    ButtonPropsType as PropsType,
     AttributeOverrideButtonType as AttributeOverrideType,
     StyleOverrideButtonType as StyleOverrideType,
 } from './type';
 
 export * from './Button';
-export type PropsButtonType = PropsType;
+export type ButtonPropsType = PropsType;
 export type AttributeOverrideButtonType = AttributeOverrideType;
 export type StyleOverrideButtonType = StyleOverrideType;

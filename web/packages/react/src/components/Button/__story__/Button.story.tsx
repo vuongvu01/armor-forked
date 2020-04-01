@@ -12,6 +12,7 @@ import { action } from '@storybook/addon-actions';
 import { Button } from '../Button';
 import { TagType } from '../type';
 import { EditIcon } from '../../../icons/EditIcon';
+import { MaterialIcon } from '../../MaterialIcon';
 
 export default {
     title: 'Components/Button',
@@ -52,7 +53,6 @@ export const Playground = () => (
         onClick={action('button-click')}
         href="https://google.com"
         target="_blank"
-        iconRight={boolean('With icon', false) ? EditIcon : undefined}
         className="custom-class-name"
         classNames={{ root: 'custom-btn-root' }}
     >
@@ -77,6 +77,17 @@ export const WithMargins = () => (
     </Button>
 );
 
+export const WithBigIcon = () => (
+    <Button
+        {...getTypeAttributes(select('Type', optionsType, 'primary'))}
+        wide={boolean('Wide', false)}
+        small={boolean('Small', false)}
+    >
+        Icon is massive
+        <EditIcon fontSize="3rem" marginLeft={2} />
+    </Button>
+);
+
 export const IconOnly = () => (
     <Button
         {...getTypeAttributes(select('Type', optionsType, 'primary'))}
@@ -87,6 +98,110 @@ export const IconOnly = () => (
     >
         <EditIcon />
     </Button>
+);
+
+export const Comparison = () => (
+    // <div style={{ display: 'flex' }}>
+    <div>
+        <Button
+            {...getTypeAttributes(select('Type', optionsType, 'primary'))}
+            tag={select('Tag', optionsTag, 'button') as TagType}
+            small={boolean('Small', false)}
+        >
+            No Icon
+        </Button>
+        <Button
+            {...getTypeAttributes(select('Type', optionsType, 'primary'))}
+            tag={select('Tag', optionsTag, 'button') as TagType}
+            small={boolean('Small', false)}
+        >
+            With icon <EditIcon marginLeft={2} />
+        </Button>
+        <Button
+            {...getTypeAttributes(select('Type', optionsType, 'primary'))}
+            tag={select('Tag', optionsTag, 'button') as TagType}
+            small={boolean('Small', false)}
+        >
+            With MUI icon <MaterialIcon marginLeft={2}>edit</MaterialIcon>
+        </Button>
+        <Button
+            {...getTypeAttributes(select('Type', optionsType, 'primary'))}
+            tag={select('Tag', optionsTag, 'button') as TagType}
+            small={boolean('Small', false)}
+        >
+            With MUI icon{' '}
+            <MaterialIcon marginLeft={2} fontSize={20}>
+                edit
+            </MaterialIcon>
+        </Button>
+        <Button
+            {...getTypeAttributes(select('Type', optionsType, 'primary'))}
+            tag={select('Tag', optionsTag, 'button') as TagType}
+            small={boolean('Small', false)}
+        >
+            <EditIcon />
+        </Button>
+        <Button
+            tag={select('Tag', optionsTag, 'button') as TagType}
+            small={boolean('Small', false)}
+        >
+            <MaterialIcon>edit</MaterialIcon>
+        </Button>
+        <Button
+            tag={select('Tag', optionsTag, 'button') as TagType}
+            small={boolean('Small', false)}
+        >
+            <MaterialIcon>save</MaterialIcon>
+        </Button>
+    </div>
+);
+
+export const Comparison2 = () => (
+    <>
+        <Button small={boolean('Small', false)}>
+            Edit <MaterialIcon marginLeft={4}>edit</MaterialIcon>
+        </Button>
+        <Button small={boolean('Small', false)}>
+            <MaterialIcon marginRight={4}>save</MaterialIcon> Save{' '}
+            <MaterialIcon marginLeft={4}>save</MaterialIcon>
+        </Button>
+        <Button small={boolean('Small', false)}>
+            <MaterialIcon marginRight={4}>save</MaterialIcon> Save
+        </Button>
+        <Button small={boolean('Small', false)}>
+            <MaterialIcon marginRight={4} fontSize={22}>
+                save
+            </MaterialIcon>{' '}
+            Save
+        </Button>
+        <Button small={boolean('Small', false)}>
+            Save <MaterialIcon marginLeft={4}>save</MaterialIcon>
+        </Button>
+        <Button small={boolean('Small', false)}>
+            Add{' '}
+            <MaterialIcon marginLeft={4} fontSize={22}>
+                add
+            </MaterialIcon>
+        </Button>
+        <Button small={boolean('Small', false)}>
+            Remove <MaterialIcon marginLeft={4}>remove</MaterialIcon>
+        </Button>
+    </>
+);
+
+export const InText = () => (
+    <>
+        Feel free to{' '}
+        <Button small={boolean('Small', false)}>
+            eat <MaterialIcon marginLeft={2}>edit</MaterialIcon>
+        </Button>{' '}
+        that tasty pie and{' '}
+        <Button small={boolean('Small', false)}>
+            <MaterialIcon marginRight={2}>save</MaterialIcon> drink{' '}
+            <MaterialIcon marginLeft={2}>save</MaterialIcon>
+        </Button>{' '}
+        some tea.
+    </>
 );
 
 export const WithMultilineContent = () => (
@@ -102,5 +217,17 @@ export const WithMultilineContent = () => (
         Lorem ipsum
         <br />
         Lorem ipsum
+    </Button>
+);
+
+export const IconAndText = () => (
+    <Button
+        {...getTypeAttributes(select('Type', optionsType, 'primary'))}
+        tag={select('Tag', optionsTag, 'button') as TagType}
+        wide={boolean('Wide', false)}
+        small={boolean('Small', false)}
+    >
+        <MaterialIcon marginRight={2}>save</MaterialIcon>
+        Text
     </Button>
 );

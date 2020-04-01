@@ -1,16 +1,23 @@
 import { TypographyInputType, TypographyType } from '../type';
+import { fontSizeRegular, fontSizeHTML } from '../../tokens';
 
 export const makeTypography = (
     typography: TypographyInputType = {},
 ): TypographyType => {
-    const fontSize = typography.fontSize || 14;
-    const htmlFontSize = typography.htmlFontSize || 16;
-    const factor = fontSize / 14;
+    const fontSize = typography.fontSize || fontSizeRegular;
+    const htmlFontSize = typography.htmlFontSize || fontSizeHTML;
+    const factor = fontSize / fontSizeRegular;
     return {
         ...typography,
         fontFamily: typography.fontFamily || 'Roboto, sans-serif',
         fontSize,
         htmlFontSize,
-        pxToRem: size => `${(size / htmlFontSize) * factor}rem`,
+        pixelToRem: size => {
+            if (typeof size === 'string') {
+                return size;
+            }
+
+            return `${(size / htmlFontSize) * factor}rem`;
+        },
     };
 };

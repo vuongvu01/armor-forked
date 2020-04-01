@@ -40,7 +40,7 @@ export type TypographyType = {
     htmlFontSize: number;
     fontFamily: string;
     fontSize: number;
-    pxToRem: (size: number) => string;
+    pixelToRem: (size: ScalarType) => string;
 } & ObjectLiteralType;
 
 export type TypographyInputType = Partial<

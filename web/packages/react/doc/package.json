@@ -4,7 +4,7 @@
     "main": "index.js",
     "license": "UNLICENSED",
     "scripts": {
-        "guide": "styleguidist server"
+        "doc": "styleguidist server"
     },
     "dependencies": {
         "react-docgen-typescript": "^1.16.3",

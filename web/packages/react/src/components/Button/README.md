@@ -102,30 +102,22 @@ import { GroupHelper } from 'GroupHelper';
 </GroupHelper>
 ```
 
-#### Right icon
+#### Material icon
+
+See <a href="https://material.io/resources/icons/" target="_blank">all available icons</a>
 
 ```js
-import { EditIcon } from "../../icons/EditIcon";
 import { GroupHelper } from 'GroupHelper';
+import {MaterialIcon} from '../MaterialIcon';
 
 <GroupHelper>
-    <Button iconRight={EditIcon}>Edit</Button>
-    <Button iconRight={EditIcon} secondary>Edit</Button>
-    <Button iconRight={EditIcon} tertiary>Edit</Button>
-    <Button iconRight={EditIcon} ghost>Edit</Button>
-</GroupHelper>
-```
-
-#### Icon button
-
-```js
-import { EditIcon } from "../../icons/EditIcon";
-import { GroupHelper } from 'GroupHelper';
-
-<GroupHelper>
-    <Button iconRight={EditIcon} />
-    <Button><EditIcon /></Button>
-    <Button iconRight={EditIcon} small />
+    <Button>Edit <MaterialIcon marginLeft={2}>edit</MaterialIcon></Button>
+    <Button>Edit <MaterialIcon marginLeft={2} fontSize={22}>edit</MaterialIcon></Button>
+    <Button secondary>Save <MaterialIcon marginLeft={2}>save</MaterialIcon></Button>
+    <Button tertiary>Add <MaterialIcon marginLeft={2}>add</MaterialIcon></Button>
+    <Button ghost>Remove <MaterialIcon marginLeft={2}>remove</MaterialIcon></Button>
+    <Button primary><MaterialIcon marginRight={2}>save</MaterialIcon> Save</Button>
+    <Button primary><MaterialIcon marginRight={2} fontSize={22}>save</MaterialIcon> Save</Button>
 </GroupHelper>
 ```
 

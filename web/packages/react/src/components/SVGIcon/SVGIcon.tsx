@@ -1,30 +1,29 @@
 import React, { FunctionComponent } from 'react';
-import { useTheme } from '../../styling';
-import { fontSizeRegular } from '../../tokens/font-sizes';
 
 import { SVGIconRoot } from './style';
-import { PropsSVGIconType } from './type';
+import { SVGIconPropsType } from './type';
+import { useTheme } from '../../styling';
 
-export const SVGIcon: FunctionComponent<PropsSVGIconType> = ({
+export const SVGIcon: FunctionComponent<SVGIconPropsType> = ({
     children,
     title,
     viewBox = '0 0 14 14',
-    width,
-    height,
+    width = '1em',
+    height = '1em',
     color,
     ...restProps
 }) => {
-    const theme = useTheme();
     const fillColor = color || 'currentColor';
-    const defaultWidth = width || theme.typography.pxToRem(fontSizeRegular);
+    const theme = useTheme();
 
     return (
         <SVGIconRoot
-            width={defaultWidth}
-            height={height}
             viewBox={viewBox}
             focusable="false"
             color={fillColor}
+            iconWidth={width}
+            iconHeight={height}
+            theme={theme}
             {...restProps}
         >
             {!!title && <title>{title}</title>}

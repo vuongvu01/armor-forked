@@ -1,8 +1,4 @@
-import {
-    AnchorHTMLAttributes,
-    ButtonHTMLAttributes,
-    ComponentType,
-} from 'react';
+import { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from 'react';
 import { StylesFunctionOrStubType, ComponentAttributesType } from '../type';
 import {
     SpanOuterAttributesType,
@@ -21,7 +17,8 @@ export type AttributesOverridableButtonType = {
     secondary?: boolean;
     tertiary?: boolean;
     ghost?: boolean;
-    iconRight?: ComponentType;
+    iconRight?: ReactNode;
+    iconLeft?: ReactNode;
     href?: string;
     small?: boolean;
 };
@@ -37,7 +34,7 @@ export type StylesFunctionButtonType = StylesFunctionOrStubType<
 >;
 export type StyleOverrideSafeButtonType = Required<StyleOverrideButtonType>;
 
-export type PropsButtonType = AttributesOverridableButtonType &
+export type ButtonPropsType = AttributesOverridableButtonType &
     ComponentAttributesType<
         AttributeOverrideButtonType,
         AttributesButtonType,
@@ -46,16 +43,8 @@ export type PropsButtonType = AttributesOverridableButtonType &
     WideAttributesType &
     SpanOuterAttributesType;
 
-export type RootStylePropertiesButtonType = PropsButtonType & {
+// todo: update this
+export type RootStylePropertiesButtonType = ButtonPropsType & {
     theme: ThemeType;
     styles: StylesFunctionButtonType;
 };
-
-export type CentralStylePropertiesButtonType = {
-    hasRightIcon: boolean;
-} & Pick<RootStylePropertiesButtonType, 'small' | 'theme'>;
-
-export type RightIconStylePropertiesButtonType = Pick<
-    RootStylePropertiesButtonType,
-    'theme'
->;

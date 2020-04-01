@@ -1,9 +1,5 @@
 import styled, { css, StyledComponent } from 'styled-components';
-import {
-    RootStylePropertiesButtonType,
-    CentralStylePropertiesButtonType,
-    RightIconStylePropertiesButtonType,
-} from './type';
+import { RootStylePropertiesButtonType } from './type';
 import { spanOuterAttributes, wideAttributes } from '../../system/attributes';
 import {
     grey200,
@@ -65,21 +61,28 @@ const buttonRootStyle = (props: RootStylePropertiesButtonType) => css<
 >`
     display: inline-flex;
     justify-content: center;
-    align-items: stretch;
+    align-items: center;
+    position: relative;
+    vertical-align: middle;
     outline: none;
     user-select: none;
     text-decoration: none;
     text-align: center;
     box-sizing: border-box;
-    padding: 0;
-    border-radius: ${props.theme.figure.borderRadius};
     border: 1px solid transparent;
-    ${props.disabled ? '' : 'cursor: pointer;'}
     font-weight: ${fontWeightMedium};
-    font-family: ${props.theme.typography.fontFamily};
-    font-size: ${props.theme.typography.pxToRem(fontSizeRegular)};
     text-transform: uppercase;
     letter-spacing: 0;
+
+    ${({ theme, small, disabled }) => css<RootStylePropertiesButtonType>`
+        padding: ${theme.span(small ? 1 : 2)} ${theme.span(4)};
+        cursor: ${disabled ? 'default' : 'pointer'};
+        border-radius: ${theme.figure.borderRadius};
+        font-family: ${theme.typography.fontFamily};
+        font-size: ${theme.typography.pixelToRem(fontSizeRegular)};
+        line-height: 1.6;
+    `}
+    
     ${visualStyle}
     ${spanOuterAttributes}
     ${wideAttributes}
@@ -118,23 +121,3 @@ export const useAppearanceButton = (
             return Button;
     }
 };
-
-export const CentralContainer = styled.span<CentralStylePropertiesButtonType>`
-    flex-shrink: 0;
-    letter-spacing: inherit;
-    ${({ theme, small, hasRightIcon }) => css`
-        padding: ${theme.span(small ? 1 : 3)}
-            ${theme.span(hasRightIcon ? 0 : 4)} ${theme.span(small ? 1 : 3)}
-            ${theme.span(4)};
-    `}
-`;
-
-export const IconRightContainer = styled.span<
-    RightIconStylePropertiesButtonType
->`
-    flex-shrink: 0;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 ${props => props.theme.span(4)} 0 ${props => props.theme.span(3)};
-`;

@@ -1,8 +1,7 @@
 import { useMemo } from 'react';
 import { StyleOverrideButtonType, StyleOverrideSafeButtonType } from './type';
-import { returnEmptyString } from '../../utils';
+import { returnEmptyString, makeBEM, makeClassName } from '../../utils';
 import { ClassNamesType } from '../type';
-import { makeBEM, makeClassName } from '../../utils/index';
 
 export const useStylesOverrideButton = (
     styles?: StyleOverrideButtonType,

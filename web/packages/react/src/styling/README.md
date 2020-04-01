@@ -12,7 +12,7 @@ export const ActionButton = withStyles({
 Should be:
 
 ~~~js
-export const ActionButton = withStylesAndAttributes<PropsButtonType>({
+export const ActionButton = withStylesAndAttributes<ButtonPropsType>({
     root: () => css`letter-spacing: 0.5px; border-radius: 2px;`,
 }, {
     root: {

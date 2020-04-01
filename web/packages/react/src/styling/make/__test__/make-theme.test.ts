@@ -22,7 +22,7 @@ describe('makeTheme()', () => {
         expect(hybridTheme.figure.borderRadius).toEqual(
             `${hybridTheme.shape.borderRadius}px`,
         );
-        expect(hybridTheme.typography.pxToRem(14)).toEqual(
+        expect(hybridTheme.typography.pixelToRem(14)).toEqual(
             muiTheme.typography.pxToRem(14),
         );
 

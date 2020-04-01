@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-cd ./guide || exit;
-yarn run guide;
+cd ./doc || exit;
+yarn run doc;
