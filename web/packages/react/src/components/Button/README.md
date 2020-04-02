@@ -37,18 +37,6 @@ import { ClassNames } from 'ClassNames';
 ]}/>
 ```
 
-### Node structure
-
-The button component has a simple structure with only one `root` element.
-
-```js noeditor
-import { NodeStand } from 'NodeStand';
-
-<NodeStand>
-    {({ setNode, unSetNode, styles }) => <Button styles={styles} onMouseEnter={() => setNode('root')} onMouseLeave={() => unSetNode('root')}>Hello</Button>}
-</NodeStand>
-```
-
 ### Use-cases
 
 #### Appearance
@@ -97,8 +85,12 @@ import { GroupHelper } from 'GroupHelper';
 import { GroupHelper } from 'GroupHelper';
 
 <GroupHelper>
-    <Button tag="a" href="https://google.com" target="_blank">Open Google</Button>
-    <Button tag="a" href="https://facebook.com" target="_blank" ghost>Open Facebook</Button>
+    <Button tag="a" href="https://google.com" target="_blank">
+        Open Google
+    </Button>
+    <Button tag="a" href="https://facebook.com" target="_blank" ghost>
+        Open Facebook
+    </Button>
 </GroupHelper>
 ```
 
@@ -111,13 +103,34 @@ import { GroupHelper } from 'GroupHelper';
 import {MaterialIcon} from '../MaterialIcon';
 
 <GroupHelper>
-    <Button>Edit <MaterialIcon marginLeft={2}>edit</MaterialIcon></Button>
-    <Button>Edit <MaterialIcon marginLeft={2} fontSize={22}>edit</MaterialIcon></Button>
-    <Button secondary>Save <MaterialIcon marginLeft={2}>save</MaterialIcon></Button>
-    <Button tertiary>Add <MaterialIcon marginLeft={2}>add</MaterialIcon></Button>
-    <Button ghost>Remove <MaterialIcon marginLeft={2}>remove</MaterialIcon></Button>
-    <Button primary><MaterialIcon marginRight={2}>save</MaterialIcon> Save</Button>
-    <Button primary><MaterialIcon marginRight={2} fontSize={22}>save</MaterialIcon> Save</Button>
+    <Button>
+        Edit
+        <MaterialIcon marginLeft={2}>edit</MaterialIcon>
+    </Button>
+    <Button>
+        Edit
+        <MaterialIcon marginLeft={2} fontSize={22}>edit</MaterialIcon>
+    </Button>
+    <Button secondary>
+        Save
+        <MaterialIcon marginLeft={2}>save</MaterialIcon>
+    </Button>
+    <Button tertiary>
+        Add
+        <MaterialIcon marginLeft={2}>add</MaterialIcon>
+    </Button>
+    <Button ghost>
+        Remove
+        <MaterialIcon marginLeft={2}>remove</MaterialIcon>
+    </Button>
+    <Button primary>
+        <MaterialIcon marginRight={2}>save</MaterialIcon>
+        Save
+    </Button>
+    <Button primary>
+        <MaterialIcon marginRight={2} fontSize={22}>save</MaterialIcon>
+        Save
+    </Button>
 </GroupHelper>
 ```
 
@@ -143,7 +156,14 @@ const CustomTertiaryButton = withStyles(
 `Button` component supports atomic `margin` attributes. It accepts strings and numbers, if a number is passed, then `spacing` gets applied.
 
 ```js
-<Button marginTop={4} marginLeft={5} marginBottom="16px" marginRight={2}>We all fly down here</Button>
+<Button 
+    marginTop={4}
+    marginLeft={5}
+    marginBottom="16px"
+    marginRight={2}
+>
+    We all fly down here
+</Button>
 ```
 
 You can use CSS to override styles of elements based on global class names.
@@ -155,4 +175,16 @@ You can use CSS to override styles of elements based on global class names.
         <Button>Hello</Button>
     </div>
 </>
+```
+
+### Node structure (bonus, will be updated soon)
+
+The button component has a simple structure with only one `root` element.
+
+```js noeditor
+import { NodeStand } from 'NodeStand';
+
+<NodeStand>
+    {({ setNode, unSetNode, styles }) => <Button styles={styles} onMouseEnter={() => setNode('root')} onMouseLeave={() => unSetNode('root')}>Hello</Button>}
+</NodeStand>
 ```

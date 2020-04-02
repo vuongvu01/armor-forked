@@ -87,19 +87,18 @@ If you wish to make a contribution to the library, you need to setup the develop
     ```sh
     git clone git@github.com:deliveryhero/ui.git
     ```
-2. Install NPM packages
+2. Install NPM packages everywhere
     ```sh
-    cd web/;
+    cd ui/web/;
     yarn;
-    cd web/packages/react;
-    yarn;
-    yarn run install-peers;
+    cd packages/react/;
+    yarn setup;
     ```
 3. We utilise `Storybook` as a primary tool for development. To launch `Storybook`, type
     ```sh
-    yarn;
-    yarn run dev;
+    yarn dev;
     ```
+4. Open [http://localhost:6006/](http://localhost:6006/) and start developing :)
 
 ### Local usage
 
@@ -153,6 +152,15 @@ Further reading: [yalc docs](https://github.com/whitecolor/yalc).
     Probable cause: you got two instances of `styled-components`: one - from the app, another - from the linked module. Remove either one of them.
 
 ### Editing the documentation
+
+We use `Styleguidist` to provide user-oriented documentation. To update the documentation type:
+
+1. Run `Styleguidist`
+    ~~~bash
+    cd web/packages/ui/react/;
+    yarn doc;
+    ~~~
+2. Open [http://localhost:6060/](http://localhost:6060/) and start documenting :)
 
 ### Manual publishing
 
