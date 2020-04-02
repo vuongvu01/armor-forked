@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { SVGIconRootPropsType } from './type';
-import { spanOuterAttributes } from '../../system/attributes';
+import { marginAttributes } from '../../system/attributes';
 
 export const SVGIconRoot = styled.svg<SVGIconRootPropsType>`
     flex-shrink: 0;
@@ -13,5 +13,5 @@ export const SVGIconRoot = styled.svg<SVGIconRootPropsType>`
             ? theme.typography.pixelToRem(fontSize)
             : 'inherit'};
     `}
-    ${spanOuterAttributes}
+    ${marginAttributes}
 `;

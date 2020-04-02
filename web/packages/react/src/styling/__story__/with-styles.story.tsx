@@ -2,9 +2,9 @@ import React from 'react';
 import { Button, Dialog } from '../../components';
 import { withStyles } from '../with-styles';
 import {
-    StyleOverrideDialogType,
-    AttributeOverrideDialogType,
-    PropsDialogType,
+    DialogStyleOverrideType,
+    DialogAttributeOverrideType,
+    DialogPropsType,
 } from '../../components/Dialog/type';
 
 export default {
@@ -15,8 +15,8 @@ export default {
 };
 
 const withStylesDialog = withStyles<
-    StyleOverrideDialogType,
-    AttributeOverrideDialogType
+    DialogStyleOverrideType,
+    DialogAttributeOverrideType
 >(
     {
         root: props => `border: ${props.theme.span(1)} dashed red;`,
@@ -34,12 +34,12 @@ const withStylesDialog = withStyles<
 const CustomDialog = withStylesDialog(Dialog);
 const CustomDialogAlt = withStylesDialog(Dialog);
 
-const SuperCustomDialog = withStyles<StyleOverrideDialogType>({
+const SuperCustomDialog = withStyles<DialogStyleOverrideType>({
     root: props => `border: ${props.theme.span(1)} dashed red;`,
     buttonYes: {
         root: props => `border: ${props.theme.span(1)} dashed red;`,
     },
-})<PropsDialogType>(Dialog);
+})<DialogPropsType>(Dialog);
 
 export const Custom1 = () => <CustomDialog megaprop="lala" />;
 export const Custom2 = () => <CustomDialogAlt />;

@@ -1,17 +1,17 @@
 import { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from 'react';
 import { StylesFunctionOrStubType, ComponentAttributesType } from '../type';
 import {
-    SpanOuterAttributesType,
+    MarginAttributesType,
     WideAttributesType,
 } from '../../system/attributes';
 import { ThemeType } from '../../styling';
 
-type AttributesButtonType = ButtonHTMLAttributes<HTMLButtonElement> &
+type ButtonAttributesType = ButtonHTMLAttributes<HTMLButtonElement> &
     Pick<AnchorHTMLAttributes<HTMLAnchorElement>, 'target' | 'href' | 'rel'>;
 
 export type TagType = 'button' | 'a' | 'div' | 'span' | 'link';
 
-export type AttributesOverridableButtonType = {
+export type ButtonOverridableAttributesType = {
     tag?: TagType;
     primary?: boolean;
     secondary?: boolean;
@@ -22,29 +22,29 @@ export type AttributesOverridableButtonType = {
     href?: string;
     small?: boolean;
 };
-export type AttributeOverrideButtonType = {
-    root?: AttributesOverridableButtonType;
+export type ButtonAttributeOverrideType = {
+    root?: ButtonOverridableAttributesType;
 };
-export type StyleOverrideButtonType = {
-    root?: StylesFunctionButtonType;
+export type ButtonStyleOverrideType = {
+    root?: ButtonStylesFunctionType;
 };
 
-export type StylesFunctionButtonType = StylesFunctionOrStubType<
-    AttributesButtonType
+export type ButtonStylesFunctionType = StylesFunctionOrStubType<
+    ButtonAttributesType
 >;
-export type StyleOverrideSafeButtonType = Required<StyleOverrideButtonType>;
+export type ButtonStyleOverrideSafeType = Required<ButtonStyleOverrideType>;
 
-export type ButtonPropsType = AttributesOverridableButtonType &
+export type ButtonPropsType = ButtonOverridableAttributesType &
     ComponentAttributesType<
-        AttributeOverrideButtonType,
-        AttributesButtonType,
-        StyleOverrideButtonType
+        ButtonAttributeOverrideType,
+        ButtonAttributesType,
+        ButtonStyleOverrideType
     > &
     WideAttributesType &
-    SpanOuterAttributesType;
+    MarginAttributesType;
 
 // todo: update this
-export type RootStylePropertiesButtonType = ButtonPropsType & {
+export type ButtonRootStylePropsType = ButtonPropsType & {
     theme: ThemeType;
-    styles: StylesFunctionButtonType;
+    styles: ButtonStylesFunctionType;
 };

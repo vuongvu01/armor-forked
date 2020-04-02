@@ -3,14 +3,14 @@ import { useTheme } from '../../styling';
 import { useObject } from '../../utils/hooks';
 
 import { DialogRoot, ButtonPanel, CloseButton, ButtonYes } from './style';
-import { PropsDialogType } from './type';
+import { DialogPropsType } from './type';
 
 import { Button } from '../Button';
 import { useStylesOverrideDialog, useClassNames } from './utils';
 
 const classPrefix = 'Dialog';
 
-export const Dialog: FunctionComponent<PropsDialogType> = ({
+export const Dialog: FunctionComponent<DialogPropsType> = ({
     className,
     classNames,
     children,

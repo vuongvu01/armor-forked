@@ -4,12 +4,12 @@ import { useClassName, useObject } from '../../utils/hooks';
 
 import { BoxRoot } from './style';
 
-import { PropsBoxType } from './type';
+import { BoxPropsType } from './type';
 import { useStyleOverrideBox } from './utils';
 
 const classPrefix = 'Box';
 
-export const Box: FunctionComponent<PropsBoxType> = ({
+export const Box: FunctionComponent<BoxPropsType> = ({
     className,
     classNames,
     styles,

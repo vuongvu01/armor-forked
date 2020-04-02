@@ -2,35 +2,35 @@ import { HTMLAttributes } from 'react';
 import { StylesFunctionOrStubType, ComponentAttributesType } from '../type';
 import {
     SizeAttributesType,
-    SpanInnerAttributesType,
-    SpanOuterAttributesType,
+    PaddingAttributesType,
+    MarginAttributesType,
 } from '../../system/attributes';
 import { ThemeType } from '../../styling';
 
-type AttributesBoxType = HTMLAttributes<HTMLElement>;
+type BoxAttributesType = HTMLAttributes<HTMLElement>;
 
-export type AttributesOverridableBoxType = {};
-export type AttributeOverrideBoxType = {
-    root?: AttributesOverridableBoxType;
+export type BoxOverridableAttributesType = {};
+export type BoxAttributeOverrideType = {
+    root?: BoxOverridableAttributesType;
 };
-export type StyleOverrideBoxType = {
-    root?: StylesFunctionBoxType;
+export type BoxStyleOverrideType = {
+    root?: BoxStylesFunctionType;
 };
 
-export type StylesFunctionBoxType = StylesFunctionOrStubType<AttributesBoxType>;
-export type StyleOverrideSafeBoxType = Required<StyleOverrideBoxType>;
+export type BoxStylesFunctionType = StylesFunctionOrStubType<BoxAttributesType>;
+export type BoxStyleOverrideSafeType = Required<BoxStyleOverrideType>;
 
-export type PropsBoxType = AttributesOverridableBoxType &
+export type BoxPropsType = BoxOverridableAttributesType &
     ComponentAttributesType<
-        AttributeOverrideBoxType,
-        AttributesBoxType,
-        StyleOverrideBoxType
+        BoxAttributeOverrideType,
+        BoxAttributesType,
+        BoxStyleOverrideType
     > &
-    SpanOuterAttributesType &
-    SpanInnerAttributesType &
+    MarginAttributesType &
+    PaddingAttributesType &
     SizeAttributesType;
 
-export type RootStylePropertiesBoxType = PropsBoxType & {
+export type BoxRootStylePropsType = BoxPropsType & {
     theme: ThemeType;
-    styles: StylesFunctionBoxType;
+    styles: BoxStylesFunctionType;
 };

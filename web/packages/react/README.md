@@ -29,6 +29,7 @@
     * [Option 1: yarn link](#option-1-yarn-link)
     * [Option 2: yalc](#option-2-yalc)
     * [Troubleshooting](#troubleshooting)
+  * [Editing the documentation](#editing-the-documentation)
   * [Manual publishing](#manual-publishing)
 * [Roadmap](#roadmap)
 * [Branching model](#branching-model)
@@ -96,7 +97,8 @@ If you wish to make a contribution to the library, you need to setup the develop
     ```
 3. We utilise `Storybook` as a primary tool for development. To launch `Storybook`, type
     ```sh
-    yarn run dev
+    yarn;
+    yarn run dev;
     ```
 
 ### Local usage
@@ -149,6 +151,8 @@ Further reading: [yalc docs](https://github.com/whitecolor/yalc).
 
 * White screen of website death + Uncaught Error: Invalid hook call. Hooks can only be called inside of the body of a function component<br />
     Probable cause: you got two instances of `styled-components`: one - from the app, another - from the linked module. Remove either one of them.
+
+### Editing the documentation
 
 ### Manual publishing
 

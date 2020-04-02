@@ -1,6 +1,6 @@
 import { SVGAttributes } from 'react';
 import { ThemeType } from '../../styling';
-import { SpanOuterAttributesType } from '../../system/attributes';
+import { MarginAttributesType } from '../../system/attributes';
 import { ScalarType } from '../../type';
 
 export type SVGIconPropsType = {
@@ -9,7 +9,7 @@ export type SVGIconPropsType = {
     width?: ScalarType;
     height?: ScalarType;
     fontSize?: ScalarType;
-} & SpanOuterAttributesType &
+} & MarginAttributesType &
     SVGAttributes<SVGElement>;
 
 export type SVGIconRootPropsType = Omit<

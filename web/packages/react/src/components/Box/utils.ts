@@ -1,10 +1,10 @@
 import { useMemo } from 'react';
-import { StyleOverrideBoxType, StyleOverrideSafeBoxType } from './type';
+import { BoxStyleOverrideType, BoxStyleOverrideSafeType } from './type';
 import { returnEmptyString } from '../../utils';
 
 export const useStyleOverrideBox = (
-    styles?: StyleOverrideBoxType,
-): StyleOverrideSafeBoxType => {
+    styles?: BoxStyleOverrideType,
+): BoxStyleOverrideSafeType => {
     return useMemo(() => {
         const { root } = styles || {};
         return {

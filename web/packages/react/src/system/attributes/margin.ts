@@ -1,7 +1,7 @@
 import { ThemeType } from '../../styling';
 import { ScalarType } from '../../type';
 
-export type SpanOuterAttributesType = {
+export type MarginAttributesType = {
     margin?: ScalarType;
     marginTop?: ScalarType;
     marginBottom?: ScalarType;
@@ -11,9 +11,9 @@ export type SpanOuterAttributesType = {
     marginY?: ScalarType;
 };
 
-type PropertiesType = { theme: ThemeType } & SpanOuterAttributesType;
+type PropertiesType = { theme: ThemeType } & MarginAttributesType;
 
-export const spanOuterAttributes = ({
+export const marginAttributes = ({
     theme,
     margin,
     marginTop,

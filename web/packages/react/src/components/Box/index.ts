@@ -3,9 +3,9 @@
  */
 
 import {
-    PropsBoxType as PropsType,
-    AttributeOverrideBoxType as AttributeOverrideType,
-    StyleOverrideBoxType as StyleOverrideType,
+    BoxPropsType as PropsType,
+    BoxAttributeOverrideType as AttributeOverrideType,
+    BoxStyleOverrideType as StyleOverrideType,
 } from './type';
 
 export * from './Box';

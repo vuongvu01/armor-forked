@@ -4,8 +4,8 @@
 
 import {
     ButtonPropsType as PropsType,
-    AttributeOverrideButtonType as AttributeOverrideType,
-    StyleOverrideButtonType as StyleOverrideType,
+    ButtonAttributeOverrideType as AttributeOverrideType,
+    ButtonStyleOverrideType as StyleOverrideType,
 } from './type';
 
 export * from './Button';

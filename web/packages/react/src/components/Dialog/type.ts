@@ -1,37 +1,37 @@
 import { HTMLAttributes } from 'react';
 import { StylesFunctionOrStubType, ComponentAttributesType } from '../type';
-import { SpanOuterAttributesType } from '../../system/attributes';
+import { MarginAttributesType } from '../../system/attributes';
 import {
-    AttributesOverridableButtonType,
-    StyleOverrideButtonType,
+    ButtonOverridableAttributesType,
+    ButtonStyleOverrideType,
 } from '../Button/type';
 
-type AttributesDialogType = HTMLAttributes<HTMLElement>;
+type DialogAttributesType = HTMLAttributes<HTMLElement>;
 
-export type AttributesOverridableDialogType = {
+export type DialogOverridableAttributesType = {
     megaprop?: string;
 };
-export type AttributeOverrideDialogType = {
-    buttonYes?: AttributesOverridableButtonType;
-    buttonNo?: AttributesOverridableButtonType;
+export type DialogAttributeOverrideType = {
+    buttonYes?: ButtonOverridableAttributesType;
+    buttonNo?: ButtonOverridableAttributesType;
 };
-export type StyleOverrideDialogType = {
-    root?: StylesFunctionDialogType;
+export type DialogStyleOverrideType = {
+    root?: DialogStylesFunctionType;
     buttonPanel?: StylesFunctionOrStubType;
     closeButton?: StylesFunctionOrStubType;
-    buttonYes?: StyleOverrideButtonType;
-    buttonNo?: StyleOverrideButtonType;
+    buttonYes?: ButtonStyleOverrideType;
+    buttonNo?: ButtonStyleOverrideType;
 };
 
-export type StylesFunctionDialogType = StylesFunctionOrStubType<
-    AttributesDialogType
+export type DialogStylesFunctionType = StylesFunctionOrStubType<
+    DialogAttributesType
 >;
-export type StyleOverrideSafeDialogType = Required<StyleOverrideDialogType>;
+export type DialogStyleOverrideSafeType = Required<DialogStyleOverrideType>;
 
-export type PropsDialogType = AttributesOverridableDialogType &
+export type DialogPropsType = DialogOverridableAttributesType &
     ComponentAttributesType<
-        AttributeOverrideDialogType,
-        AttributesDialogType,
-        StyleOverrideDialogType
+        DialogAttributeOverrideType,
+        DialogAttributesType,
+        DialogStyleOverrideType
     > &
-    SpanOuterAttributesType;
+    MarginAttributesType;

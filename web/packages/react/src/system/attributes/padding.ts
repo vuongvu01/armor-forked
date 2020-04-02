@@ -1,7 +1,7 @@
 import { ThemeType } from '../../styling';
 import { ScalarType } from '../../type';
 
-export type SpanInnerAttributesType = {
+export type PaddingAttributesType = {
     padding?: ScalarType;
     paddingTop?: ScalarType;
     paddingBottom?: ScalarType;
@@ -11,9 +11,9 @@ export type SpanInnerAttributesType = {
     paddingY?: ScalarType;
 };
 
-type PropertiesType = { theme: ThemeType } & SpanInnerAttributesType;
+type PropertiesType = { theme: ThemeType } & PaddingAttributesType;
 
-export const spanInnerAttributes = ({
+export const paddingAttributes = ({
     theme,
     padding,
     paddingTop,

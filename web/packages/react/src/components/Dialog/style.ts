@@ -1,12 +1,12 @@
 import styled, { css } from 'styled-components';
 import { ThemeType } from '../../styling';
-import { StylesFunctionDialogType } from './type';
+import { DialogStylesFunctionType } from './type';
 import { Button } from '../Button';
-import { spanOuterAttributes } from '../../system/attributes';
+import { marginAttributes } from '../../system/attributes';
 
 export const DialogRoot = styled.div<{
     theme: ThemeType;
-    styles: StylesFunctionDialogType;
+    styles: DialogStylesFunctionType;
 }>`
     position: relative;
     border: 1px solid gray;
@@ -15,13 +15,13 @@ export const DialogRoot = styled.div<{
         padding: ${theme.span(4)} ${theme.span(6)};
         min-width: ${theme.span(30)};
     `}
-    ${spanOuterAttributes}
+    ${marginAttributes}
     ${props => props.styles(props)}
 `;
 
 export const ButtonPanel = styled.div<{
     theme: ThemeType;
-    styles: StylesFunctionDialogType;
+    styles: DialogStylesFunctionType;
 }>`
     text-align: right;
     ${props => props.styles(props)}
@@ -29,7 +29,7 @@ export const ButtonPanel = styled.div<{
 
 export const CloseButton = styled.div<{
     theme: ThemeType;
-    styles: StylesFunctionDialogType;
+    styles: DialogStylesFunctionType;
 }>`
     ${props => props.styles(props)}
 `;

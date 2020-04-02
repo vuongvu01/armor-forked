@@ -1,6 +1,6 @@
 import styled, { css, StyledComponent } from 'styled-components';
-import { RootStylePropertiesButtonType } from './type';
-import { spanOuterAttributes, wideAttributes } from '../../system/attributes';
+import { ButtonRootStylePropsType } from './type';
+import { marginAttributes, wideAttributes } from '../../system/attributes';
 import {
     grey200,
     white,
@@ -16,7 +16,7 @@ const visualStyle = ({
     tertiary,
     ghost,
     disabled,
-}: RootStylePropertiesButtonType) => {
+}: ButtonRootStylePropsType) => {
     const { palette } = theme;
 
     if (secondary) {
@@ -56,8 +56,8 @@ const visualStyle = ({
     `;
 };
 
-const buttonRootStyle = (props: RootStylePropertiesButtonType) => css<
-    RootStylePropertiesButtonType
+const buttonRootStyle = (props: ButtonRootStylePropsType) => css<
+    ButtonRootStylePropsType
 >`
     display: inline-flex;
     justify-content: center;
@@ -74,7 +74,7 @@ const buttonRootStyle = (props: RootStylePropertiesButtonType) => css<
     text-transform: uppercase;
     letter-spacing: 0;
 
-    ${({ theme, small, disabled }) => css<RootStylePropertiesButtonType>`
+    ${({ theme, small, disabled }) => css<ButtonRootStylePropsType>`
         padding: ${theme.span(small ? 1 : 2)} ${theme.span(4)};
         cursor: ${disabled ? 'default' : 'pointer'};
         border-radius: ${theme.figure.borderRadius};
@@ -84,24 +84,24 @@ const buttonRootStyle = (props: RootStylePropertiesButtonType) => css<
     `}
     
     ${visualStyle}
-    ${spanOuterAttributes}
+    ${marginAttributes}
     ${wideAttributes}
     ${props.styles(props)}
 `;
 
-const Button = styled.button<RootStylePropertiesButtonType>`
+const Button = styled.button<ButtonRootStylePropsType>`
     ${buttonRootStyle}
 `;
 
-const A = styled.a<RootStylePropertiesButtonType>`
+const A = styled.a<ButtonRootStylePropsType>`
     ${buttonRootStyle}
 `;
 
-const Span = styled.span<RootStylePropertiesButtonType>`
+const Span = styled.span<ButtonRootStylePropsType>`
     ${buttonRootStyle}
 `;
 
-const Div = styled.div<RootStylePropertiesButtonType>`
+const Div = styled.div<ButtonRootStylePropsType>`
     ${buttonRootStyle}
 `;
 

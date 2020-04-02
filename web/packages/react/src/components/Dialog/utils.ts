@@ -1,15 +1,15 @@
 import { useMemo } from 'react';
 import {
-    AttributeOverrideDialogType,
-    StyleOverrideDialogType,
-    StyleOverrideSafeDialogType,
+    DialogAttributeOverrideType,
+    DialogStyleOverrideType,
+    DialogStyleOverrideSafeType,
 } from './type';
 import { makeClassName, returnEmptyString } from '../../utils';
 import { ClassNamesType } from '../type';
 
 export const useStylesOverrideDialog = (
-    styles?: StyleOverrideDialogType,
-): StyleOverrideSafeDialogType => {
+    styles?: DialogStyleOverrideType,
+): DialogStyleOverrideSafeType => {
     return useMemo(() => {
         const { root, closeButton, buttonPanel, buttonYes, buttonNo } =
             styles || {};
@@ -24,8 +24,8 @@ export const useStylesOverrideDialog = (
 };
 
 export const useAttributesOverrideDialog = (
-    attributes?: AttributeOverrideDialogType,
-): AttributeOverrideDialogType => {
+    attributes?: DialogAttributeOverrideType,
+): DialogAttributeOverrideType => {
     return useMemo(() => {
         return {
             ...attributes,
