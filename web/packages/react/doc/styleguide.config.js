@@ -4,6 +4,7 @@ const pkg = require('../package.json');
 module.exports = {
     title: 'Design System',
     skipComponentsWithoutExample: true,
+    styleguideDir: 'build',
     ignore: [
         '**/*.test.{js,jsx,ts,tsx}',
         '**/*.story.{js,jsx,ts,tsx}',

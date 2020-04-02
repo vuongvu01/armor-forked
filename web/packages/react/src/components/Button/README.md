@@ -65,7 +65,7 @@ import { GroupHelper } from 'GroupHelper';
 
 <GroupHelper>
     <Button disabled>Primary</Button>
-    <Button disabled primary>Secondary</Button>
+    <Button disabled secondary>Secondary</Button>
     <Button disabled tertiary>Tertiary</Button>
 </GroupHelper>
 ```

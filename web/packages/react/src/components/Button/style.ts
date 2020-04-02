@@ -28,7 +28,7 @@ const visualStyle = ({
         return css`
             background-color: ${white};
             color: ${disabled ? grey050 : palette.secondary.contrastText};
-            border-color: ${blue200};
+            border-color: ${disabled ? grey100 : blue200};
 
             &:hover {
                 border-color: ${disabled ? grey100 : blue300};

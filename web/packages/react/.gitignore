@@ -1,4 +1,8 @@
 .idea
 .out
+doc/build
+dev/build
 src/**/*.d.ts
+doc/**/*.d.ts
+dev/**/*.d.ts
 !src/globals.d.ts

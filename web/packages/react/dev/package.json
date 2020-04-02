@@ -3,9 +3,9 @@
     "version": "0.0.0",
     "license": "UNLICENSED",
     "scripts": {
-        "storybook": "start-storybook -p 6006 --ci",
-        "storybook:build": "build-storybook -c .storybook -o .out",
-        "storybook:serve": "serve .out"
+        "start": "start-storybook -p 6006 --ci",
+        "build": "build-storybook -c .storybook -o .out",
+        "serve": "serve .out"
     },
     "devDependencies": {
         "@storybook/addon-actions": "^5.3.14",
