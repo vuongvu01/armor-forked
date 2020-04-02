@@ -29,16 +29,15 @@
     * [Option 1: yarn link](#option-1-yarn-link)
     * [Option 2: yalc](#option-2-yalc)
     * [Troubleshooting](#troubleshooting)
+  * [Branching model](#branching-model)
+  * [Contribution rules](#contribution-rules)
+        * [For contributors](#for-contributors)
+            * [Component requirements](#component-requirements)
+            * [Adding a new component](#adding-a-new-component)
+            * [Contribution steps and requirements](#contribution-steps-and-requirements)
+        * [For maintainers](#for-maintainers)
   * [Editing the documentation](#editing-the-documentation)
   * [Manual publishing](#manual-publishing)
-* [Roadmap](#roadmap)
-* [Branching model](#branching-model)
-  * [Contribution rules](#contribution-rules)
-      * [For contributors](#for-contributors)
-          * [Component requirements](#component-requirements)
-          * [Adding a new component](#adding-a-new-component)
-          * [Contribution steps and requirements](#contribution-steps-and-requirements)
-      * [For maintainers](#for-maintainers)
 * [Contact](#contact)
 * [Built With](#built-with)
 
@@ -151,40 +150,6 @@ Further reading: [yalc docs](https://github.com/whitecolor/yalc).
 * White screen of website death + Uncaught Error: Invalid hook call. Hooks can only be called inside of the body of a function component<br />
     Probable cause: you got two instances of `styled-components`: one - from the app, another - from the linked module. Remove either one of them.
 
-### Editing the documentation
-
-We use `Styleguidist` to provide user-oriented documentation. To update the documentation type:
-
-1. Run `Styleguidist`
-    ~~~bash
-    cd web/packages/ui/react/;
-    yarn doc;
-    ~~~
-2. Open [http://localhost:6060/](http://localhost:6060/) and start documenting :)
-
-### Manual publishing
-
-⚠️ Attention: manual publishing is not recommended and should be performed only if the fully-functional CI/CD is not available.
-
-*Setting up yarn (optional)*:
-Please, follow the instruction on <a href="https://confluence.deliveryhero.com/pages/viewpage.action?spaceKey=RPS&title=GitHub+as+package+registry" target="_blank">how to authenticate at the github package registry</a>.
-
-To manually publish a new version of the package, follow these steps:
-1. commit all your changes,
-2. run
-    ~~~bash
-    cd web/packages/react;
-    ./script/release.sh;
-    ~~~
-   and specify a desired version in the end.
-   
-3. push version up made by `yarn` in `package.json`
-4. todo: re-build and re-publish Styleguidist
-
-## Roadmap
-
-Todo: put a link to the ticket system when it is ready
-
 ## Branching model
 
 In this project we use a simplified Git Flow branching model:
@@ -261,6 +226,36 @@ When accepting a Pull Request:
     Example: `feat: a new amazing component added` => `feat: a new amazing component added`
 
 Please note that pushing directly to `master` or `dev` without making a PR is strictly prohibited and therefore not possible.
+
+### Editing the documentation
+
+We use `Styleguidist` to provide user-oriented documentation. To update the documentation type:
+
+1. Run `Styleguidist`
+    ~~~bash
+    cd web/packages/ui/react/;
+    yarn doc;
+    ~~~
+2. Open [http://localhost:6060/](http://localhost:6060/) and start documenting :)
+
+### Manual publishing
+
+⚠️ Attention: manual publishing is not recommended and should be performed only if the fully-functional CI/CD is not available.
+
+*Setting up yarn (optional)*:
+Please, follow the instruction on <a href="https://confluence.deliveryhero.com/pages/viewpage.action?spaceKey=RPS&title=GitHub+as+package+registry" target="_blank">how to authenticate at the github package registry</a>.
+
+To manually publish a new version of the package, follow these steps:
+1. commit all your changes,
+2. run
+    ~~~bash
+    cd web/packages/react;
+    ./script/release.sh;
+    ~~~
+   and specify a desired version in the end.
+   
+3. push version up made by `yarn` in `package.json`
+4. todo: re-build and re-publish Styleguidist
 
 ## Contact
 
