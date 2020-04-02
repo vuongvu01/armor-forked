@@ -5,4 +5,4 @@
 import { SVGIconPropsType as PropsType } from './type';
 
 export * from './SVGIcon';
-export type PropsSVGIconType = PropsType;
+export type SVGIconPropsType = PropsType;

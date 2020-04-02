@@ -20,7 +20,6 @@ export const Button: FunctionComponent<ButtonPropsType> = ({
     primary,
     secondary,
     tertiary,
-    ghost,
     ...restProps
 }) => {
     const theme = useTheme();
@@ -34,7 +33,6 @@ export const Button: FunctionComponent<ButtonPropsType> = ({
         primary,
         secondary,
         tertiary,
-        ghost,
     );
     const stylesSafe = useStylesOverrideButton(styles);
     const attributesSafe = useObject(attributes);
@@ -48,7 +46,6 @@ export const Button: FunctionComponent<ButtonPropsType> = ({
             primary={primary}
             secondary={secondary}
             tertiary={tertiary}
-            ghost={ghost}
             theme={theme}
             {...restProps}
             {...attributesSafe.root}

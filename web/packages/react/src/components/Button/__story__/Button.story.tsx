@@ -32,14 +32,12 @@ const optionsType = {
     Primary: 'primary',
     Secondary: 'secondary',
     Tertiary: 'tertiary',
-    Ghost: 'ghost',
 };
 
 const getTypeAttributes = (type: string) => ({
     primary: false,
     secondary: false,
     tertiary: false,
-    ghost: false,
     [type]: true,
 });
 

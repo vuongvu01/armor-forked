@@ -22,7 +22,7 @@ export const defaultThemeDeclaration = {
         },
         secondary: {
             main: green100,
-            contrastText: green200,
+            contrastText: blue200,
         },
         tertiary: {
             main: blue200,

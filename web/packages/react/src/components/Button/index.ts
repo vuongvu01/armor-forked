@@ -10,5 +10,5 @@ import {
 
 export * from './Button';
 export type ButtonPropsType = PropsType;
-export type AttributeOverrideButtonType = AttributeOverrideType;
-export type StyleOverrideButtonType = StyleOverrideType;
+export type ButtonAttributeOverrideType = AttributeOverrideType;
+export type ButtonStyleOverrideType = StyleOverrideType;

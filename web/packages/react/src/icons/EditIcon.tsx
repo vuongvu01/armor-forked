@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { PropsSVGIconType, SVGIcon } from '../components/SVGIcon';
+import { SVGIconPropsType, SVGIcon } from '../components/SVGIcon';
 
 export const EditIconShape = (
     <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
@@ -11,6 +11,6 @@ export const EditIconShape = (
     </g>
 );
 
-export const EditIcon: FunctionComponent<PropsSVGIconType> = props => {
+export const EditIcon: FunctionComponent<SVGIconPropsType> = props => {
     return <SVGIcon {...props}>{EditIconShape}</SVGIcon>;
 };

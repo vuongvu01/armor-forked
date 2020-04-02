@@ -6,4 +6,4 @@
 - do this before or along with merging
 
 ## Ticket 
-https://your-bugtracker.com/ticket/XXX/
+https://jira.deliveryhero.com/browse/LD-XYZ

@@ -16,7 +16,6 @@ export type ButtonOverridableAttributesType = {
     primary?: boolean;
     secondary?: boolean;
     tertiary?: boolean;
-    ghost?: boolean;
     iconRight?: ReactNode;
     iconLeft?: ReactNode;
     href?: string;

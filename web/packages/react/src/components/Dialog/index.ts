@@ -5,4 +5,4 @@
 import { DialogPropsType as PropsType } from './type';
 
 export * from './Dialog';
-export type PropsDialogType = PropsType;
+export type DialogPropsType = PropsType;

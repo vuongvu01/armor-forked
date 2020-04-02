@@ -1,4 +1,4 @@
-import { MaterialIconPropsType as Props } from './type';
+import { MaterialIconPropsType as PropsType } from './type';
 
 export * from './MaterialIcon';
-export type MaterialIconPropsType = Props;
+export type MaterialIconPropsType = PropsType;

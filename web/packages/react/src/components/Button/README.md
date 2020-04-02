@@ -30,10 +30,6 @@ import { ClassNames } from 'ClassNames';
         name: 'Button-root--tertiary',
         description: 'Root element modifier when the button is rendered as tertiary',
     },
-    {
-        name: 'Button-root--ghost',
-        description: 'Root element modifier when the button is rendered as ghost',
-    },
 ]}/>
 ```
 
@@ -48,7 +44,6 @@ import { GroupHelper } from 'GroupHelper';
     <Button>Primary</Button>
     <Button secondary>Secondary</Button>
     <Button tertiary>Tertiary</Button>
-    <Button ghost>Ghost</Button>
 </GroupHelper>
 ```
 
@@ -69,7 +64,9 @@ import { GroupHelper } from 'GroupHelper';
 import { GroupHelper } from 'GroupHelper';
 
 <GroupHelper>
-    <Button disabled>Disabled</Button>
+    <Button disabled>Primary</Button>
+    <Button disabled primary>Secondary</Button>
+    <Button disabled tertiary>Tertiary</Button>
 </GroupHelper>
 ```
 
@@ -87,9 +84,6 @@ import { GroupHelper } from 'GroupHelper';
 <GroupHelper>
     <Button tag="a" href="https://google.com" target="_blank">
         Open Google
-    </Button>
-    <Button tag="a" href="https://facebook.com" target="_blank" ghost>
-        Open Facebook
     </Button>
 </GroupHelper>
 ```
@@ -119,9 +113,9 @@ import {MaterialIcon} from '../MaterialIcon';
         Add
         <MaterialIcon marginLeft={2}>add</MaterialIcon>
     </Button>
-    <Button ghost>
-        Remove
-        <MaterialIcon marginLeft={2}>remove</MaterialIcon>
+    <Button tertiary>
+        Add
+        <MaterialIcon marginLeft={2} fontSize={22}>add</MaterialIcon>
     </Button>
     <Button primary>
         <MaterialIcon marginRight={2}>save</MaterialIcon>
@@ -141,16 +135,16 @@ The `withStyles()` HOC allows to create locally-defined custom versions of compo
 ```typescript jsx
 import { css, withStyles } from "../../";
 
-const CustomTertiaryButton = withStyles(
+const CustomPrimaryButton = withStyles(
     {
-        root: ({ disabled }) => css`background: linear-gradient(to bottom, #f0f9ff 0%,#cbebff 47%,#a1dbff 100%);`,
+        root: ({ disabled }) => css`background: linear-gradient(to bottom, rgba(243,197,189,1) 0%,rgba(232,108,87,1) 21%,rgba(232,108,87,1) 21%,rgba(234,40,3,1) 46%,rgba(255,102,0,1) 75%,rgba(199,34,0,1) 100%);`,
     },
     { 
-        root: { tertiary: true }
+        root: { primary: true }
     }
 )(Button);
 
-<CustomTertiaryButton>Hello</CustomTertiaryButton>
+<CustomPrimaryButton>Hello</CustomPrimaryButton>
 ```
 
 `Button` component supports atomic `margin` attributes. It accepts strings and numbers, if a number is passed, then `spacing` gets applied.

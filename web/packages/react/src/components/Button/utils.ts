@@ -24,7 +24,6 @@ export const useClassNameButton = (
     primary?: boolean,
     secondary?: boolean,
     tertiary?: boolean,
-    ghost?: boolean,
 ) =>
     useMemo(() => {
         const baseClassNames = makeClassName(
@@ -52,9 +51,6 @@ export const useClassNameButton = (
         if (tertiary) {
             stateClassNames.push(makeBEM(classPrefix, 'root', 'tertiary'));
         }
-        if (ghost) {
-            stateClassNames.push(makeBEM(classPrefix, 'root', 'ghost'));
-        }
 
         return `${baseClassNames} ${stateClassNames.join(' ')}`;
     }, [
@@ -67,5 +63,4 @@ export const useClassNameButton = (
         primary,
         secondary,
         tertiary,
-        ghost,
     ]);

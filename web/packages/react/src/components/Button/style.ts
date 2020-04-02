@@ -8,38 +8,44 @@ import {
     grey100,
     fontSizeRegular,
     shadow100,
-} from '../../tokens'; // todo: consuming tokens directly is not good
+    blue100,
+    grey050,
+    blue300,
+    blue200,
+    blue050,
+} from '../../tokens';
+import { durationNormal } from '../../tokens/durations'; // todo: consuming tokens directly is not good
 
 const visualStyle = ({
     theme,
     secondary,
     tertiary,
-    ghost,
     disabled,
 }: ButtonRootStylePropsType) => {
     const { palette } = theme;
 
     if (secondary) {
         return css`
-            box-shadow: ${shadow100};
-            background-color: ${palette.secondary.main};
-            color: ${palette.secondary.contrastText};
+            background-color: ${white};
+            color: ${disabled ? grey050 : palette.secondary.contrastText};
+            border-color: ${blue200};
+
+            &:hover {
+                border-color: ${disabled ? grey100 : blue300};
+            }
+            &:focus {
+                border-color: ${disabled ? grey100 : blue300};
+                background-color: ${disabled ? white : blue050};
+            }
         `;
     }
 
     if (tertiary) {
         return css`
-            box-shadow: ${shadow100};
-            background-color: ${white};
-            color: ${palette.secondary.contrastText};
-            border-color: ${grey200};
-        `;
-    }
-
-    if (ghost) {
-        return css`
-            color: ${palette.primary.main};
-            background-color: transparent;
+            text-transform: uppercase;
+            padding-left: 0;
+            padding-right: 0;
+            color: ${blue200};
         `;
     }
 
@@ -47,12 +53,13 @@ const visualStyle = ({
     return css`
         box-shadow: ${shadow100};
         background-color: ${disabled ? grey100 : palette.primary.main};
-        color: ${disabled ? grey200 : palette.primary.contrastText};
-        &:focus,
+        color: ${disabled ? grey050 : palette.primary.contrastText};
+        &:focus {
+            background-color: ${disabled ? grey100 : blue100};
+        }
         &:hover {
             background-color: ${disabled ? grey100 : palette.primary.dark};
         }
-        transition: background-color 200ms ease;
     `;
 };
 
@@ -71,7 +78,6 @@ const buttonRootStyle = (props: ButtonRootStylePropsType) => css<
     box-sizing: border-box;
     border: 1px solid transparent;
     font-weight: ${fontWeightMedium};
-    text-transform: uppercase;
     letter-spacing: 0;
 
     ${({ theme, small, disabled }) => css<ButtonRootStylePropsType>`
@@ -82,7 +88,9 @@ const buttonRootStyle = (props: ButtonRootStylePropsType) => css<
         font-size: ${theme.typography.pixelToRem(fontSizeRegular)};
         line-height: 1.6;
     `}
-    
+
+    transition: background-color ${durationNormal}ms ease, border-color ${durationNormal}ms ease;
+
     ${visualStyle}
     ${marginAttributes}
     ${wideAttributes}
