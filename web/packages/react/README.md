@@ -9,7 +9,7 @@
     This is a UX System that is used in the React projects of the company.
     <br />
     <br />
-    <a href="about:blank">View Demo</a>
+    <a href="https://deliveryhero.github.io/ui/">Docs</a>
     ·
     <a href="https://github.com/deliveryhero/ui/issues">Report Bug</a>
     ·

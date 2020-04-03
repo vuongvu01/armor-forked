@@ -45,7 +45,11 @@ const visualStyle = ({
             text-transform: uppercase;
             padding-left: 0;
             padding-right: 0;
-            color: ${blue200};
+            color: ${disabled ? grey050 : blue200};
+
+            &:hover {
+                color: ${disabled ? grey050 : blue300};
+            }
         `;
     }
 

@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-find ./doc/ -name "*.d.ts" -type f -delete
-find ./dev/ -name "*.d.ts" -type f -delete
+find ./doc/helpers/ -name "*.d.ts" -type f -delete
 
 find ./src/components/ -name "*.d.ts" -type f -delete
 find ./src/icons/ -name "*.d.ts" -type f -delete
