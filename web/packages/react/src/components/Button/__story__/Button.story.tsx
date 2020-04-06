@@ -263,3 +263,15 @@ export const WithCustomTheme = () => (
         </Button>
     </ThemeProvider>
 );
+
+export const TertiaryWithIcon = () => (
+    <>
+        <Button tertiary small={boolean('Small', false)}>
+            <MaterialIcon marginRight={2}>save</MaterialIcon>
+            Text
+        </Button>
+        <Button small={boolean('Small', false)}>
+            eat <MaterialIcon marginLeft={2}>edit</MaterialIcon>
+        </Button>
+    </>
+);

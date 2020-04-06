@@ -4,3 +4,6 @@ export * from './font-weight';
 export * from './font-sizes';
 export * from './z-indexes';
 export * from './durations';
+export * from './spans';
+export * from './border-radius';
+export * from './font-names';

@@ -1,27 +1,33 @@
 import {
-    blue050,
     blue100,
     blue200,
     blue300,
+    fontSizeHTML,
     fontSizeRegular,
     fontWeightMedium,
     grey050,
     grey100,
     shadow100,
     white,
+    borderRadiusNormal,
+    spanRegular,
+    fontNameRobotoRegular,
+    blue050,
+    blue070,
+    blue400,
 } from '../../tokens';
 
 export const defaultThemeDeclaration = {
     typography: {
-        htmlFontSize: 16,
+        htmlFontSize: fontSizeHTML,
         fontSize: fontSizeRegular,
-        fontFamily: 'Roboto-Medium, sans-serif',
+        fontFamily: fontNameRobotoRegular,
     },
     palette: {},
     figure: {
-        borderRadius: '2px',
+        borderRadius: borderRadiusNormal,
     },
-    span: 4,
+    span: spanRegular,
     components: {
         Button: {
             base: {
@@ -49,14 +55,14 @@ export const defaultThemeDeclaration = {
                 base: {
                     color: blue200,
                     borderColor: blue200,
-                    backgroundColor: white,
+                    backgroundColor: blue050,
                 },
                 hover: {
                     borderColor: blue300,
                 },
                 focus: {
                     borderColor: blue300,
-                    backgroundColor: blue050,
+                    backgroundColor: blue070,
                 },
                 disabled: {
                     color: grey100,
@@ -71,7 +77,9 @@ export const defaultThemeDeclaration = {
                 hover: {
                     color: blue300,
                 },
-                focus: {},
+                focus: {
+                    color: blue400,
+                },
                 disabled: {
                     color: grey100,
                 },

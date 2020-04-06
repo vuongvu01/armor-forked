@@ -1,1 +1,1 @@
-export const durationNormal = 200;
+export const durationRegular = 200;

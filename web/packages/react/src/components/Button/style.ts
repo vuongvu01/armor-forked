@@ -5,7 +5,7 @@ import {
     ButtonRootStylePropsType,
 } from './type';
 import { marginAttributes, wideAttributes } from '../../system/attributes';
-import { durationNormal } from '../../tokens';
+import { durationRegular } from '../../tokens';
 
 const makeCSSBasic = (declaration?: ButtonCSSParametersThemeType) => {
     if (!declaration) {
@@ -96,9 +96,9 @@ const buttonRootStyle = (props: ButtonRootStylePropsType) => css<
             theme.components.Button.base.fontSize,
         )};
         font-weight: ${theme.components.Button.base.fontWeight || 'normal'};
-        transition: background-color ${durationNormal}ms ease,
-            border-color ${durationNormal}ms ease,
-            color ${durationNormal}ms ease;
+        transition: background-color ${durationRegular}ms ease,
+            border-color ${durationRegular}ms ease,
+            color ${durationRegular}ms ease;
     `}
     ${visualStyle}
     ${marginAttributes}
