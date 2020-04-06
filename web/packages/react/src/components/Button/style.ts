@@ -1,70 +1,73 @@
 import styled, { css, StyledComponent } from 'styled-components';
-import { ButtonRootStylePropsType } from './type';
-import { marginAttributes, wideAttributes } from '../../system/attributes';
 import {
-    grey200,
-    white,
-    fontWeightMedium,
-    grey100,
-    fontSizeRegular,
-    shadow100,
-    blue100,
-    grey050,
-    blue300,
-    blue200,
-    blue050,
-} from '../../tokens';
-import { durationNormal } from '../../tokens/durations'; // todo: consuming tokens directly is not good
+    ButtonAppearanceThemeType,
+    ButtonCSSParametersThemeType,
+    ButtonRootStylePropsType,
+} from './type';
+import { marginAttributes, wideAttributes } from '../../system/attributes';
+import { durationNormal } from '../../tokens';
+
+const makeCSSBasic = (declaration?: ButtonCSSParametersThemeType) => {
+    if (!declaration) {
+        return '';
+    }
+
+    return `
+        ${declaration.color ? `color: ${declaration.color};` : ''}
+        ${
+            declaration.backgroundColor
+                ? `background-color: ${declaration.backgroundColor};`
+                : ''
+        }
+        ${
+            declaration.borderColor
+                ? `border-color: ${declaration.borderColor};`
+                : ''
+        }
+        ${
+            declaration.textTransform
+                ? `text-transform: ${declaration.textTransform};`
+                : ''
+        }
+    `;
+};
+
+const makeCSS = (style: ButtonAppearanceThemeType) => `
+    ${makeCSSBasic(style.base)}
+    &:hover {
+        ${makeCSSBasic(style.hover)}
+    }
+    &:focus {
+        ${makeCSSBasic(style.focus)}
+    }
+    &[disabled=""] {
+        ${makeCSSBasic(style.disabled)}
+    }
+`;
 
 const visualStyle = ({
     theme,
     secondary,
     tertiary,
-    disabled,
 }: ButtonRootStylePropsType) => {
-    const { palette } = theme;
+    const {
+        components: { Button },
+    } = theme;
 
     if (secondary) {
-        return css`
-            background-color: ${white};
-            color: ${disabled ? grey050 : palette.secondary.contrastText};
-            border-color: ${disabled ? grey100 : blue200};
-
-            &:hover {
-                border-color: ${disabled ? grey100 : blue300};
-            }
-            &:focus {
-                border-color: ${disabled ? grey100 : blue300};
-                background-color: ${disabled ? white : blue050};
-            }
-        `;
+        return makeCSS(Button.secondary).toString();
     }
 
     if (tertiary) {
         return css`
-            text-transform: uppercase;
+            ${makeCSS(Button.tertiary)}
             padding-left: 0;
             padding-right: 0;
-            color: ${disabled ? grey050 : blue200};
-
-            &:hover {
-                color: ${disabled ? grey050 : blue300};
-            }
         `;
     }
 
     // primary by default
-    return css`
-        box-shadow: ${shadow100};
-        background-color: ${disabled ? grey100 : palette.primary.main};
-        color: ${disabled ? grey050 : palette.primary.contrastText};
-        &:focus {
-            background-color: ${disabled ? grey100 : blue100};
-        }
-        &:hover {
-            background-color: ${disabled ? grey100 : palette.primary.dark};
-        }
-    `;
+    return makeCSS(Button.primary).toString();
 };
 
 const buttonRootStyle = (props: ButtonRootStylePropsType) => css<
@@ -81,20 +84,22 @@ const buttonRootStyle = (props: ButtonRootStylePropsType) => css<
     text-align: center;
     box-sizing: border-box;
     border: 1px solid transparent;
-    font-weight: ${fontWeightMedium};
     letter-spacing: 0;
+    line-height: 1.6;
 
     ${({ theme, small, disabled }) => css<ButtonRootStylePropsType>`
         padding: ${theme.span(small ? 1 : 2)} ${theme.span(4)};
         cursor: ${disabled ? 'default' : 'pointer'};
         border-radius: ${theme.figure.borderRadius};
         font-family: ${theme.typography.fontFamily};
-        font-size: ${theme.typography.pixelToRem(fontSizeRegular)};
-        line-height: 1.6;
+        font-size: ${theme.typography.pixelToRem(
+            theme.components.Button.base.fontSize,
+        )};
+        font-weight: ${theme.components.Button.base.fontWeight || 'normal'};
+        transition: background-color ${durationNormal}ms ease,
+            border-color ${durationNormal}ms ease,
+            color ${durationNormal}ms ease;
     `}
-
-    transition: background-color ${durationNormal}ms ease, border-color ${durationNormal}ms ease;
-
     ${visualStyle}
     ${marginAttributes}
     ${wideAttributes}

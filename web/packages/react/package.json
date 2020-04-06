@@ -27,7 +27,8 @@
     "dependencies": {
         "deep-freeze-strict": "1.1.1",
         "deepmerge": "4.2.2",
-        "throttle-debounce": "2.1.0"
+        "throttle-debounce": "2.1.0",
+        "ts-essentials": "6.0.4"
     },
     "repository": {
         "type": "git",
@@ -69,8 +70,8 @@
         "typescript": "^3.8.2"
     },
     "peerDependencies": {
-        "react": "^16.13.0",
-        "styled-components": "^4.0.0"
+        "react": ">=16.8.0",
+        "styled-components": ">=4.0.0"
     },
     "husky": {
         "hooks": {

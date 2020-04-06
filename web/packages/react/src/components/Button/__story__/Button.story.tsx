@@ -9,10 +9,12 @@ import {
 } from '@storybook/addon-knobs';
 // eslint-disable-next-line import/no-unresolved
 import { action } from '@storybook/addon-actions';
+import { ThemeProvider } from 'styled-components';
 import { Button } from '../Button';
 import { TagType } from '../type';
 import { EditIcon } from '../../../icons/EditIcon';
 import { MaterialIcon } from '../../MaterialIcon';
+import { makeTheme } from '../../../styling';
 
 export default {
     title: 'Components/Button',
@@ -228,4 +230,36 @@ export const IconAndText = () => (
         <MaterialIcon marginRight={2}>save</MaterialIcon>
         Text
     </Button>
+);
+
+const customTheme = makeTheme({
+    components: {
+        Button: {
+            base: {
+                fontWeight: 'bold',
+            },
+            primary: {
+                base: {
+                    borderColor: 'red',
+                },
+                hover: {
+                    borderColor: 'yellow',
+                },
+            },
+        },
+    },
+});
+
+export const WithCustomTheme = () => (
+    <ThemeProvider theme={customTheme}>
+        <Button
+            {...getTypeAttributes(select('Type', optionsType, 'primary'))}
+            tag={select('Tag', optionsTag, 'button') as TagType}
+            wide={boolean('Wide', false)}
+            small={boolean('Small', false)}
+        >
+            <MaterialIcon marginRight={2}>save</MaterialIcon>
+            With custom theme
+        </Button>
+    </ThemeProvider>
 );

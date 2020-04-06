@@ -5,6 +5,7 @@ import {
     WideAttributesType,
 } from '../../system/attributes';
 import { ThemeType } from '../../styling';
+import { ObjectLiteralType, ScalarType } from '../../type';
 
 type ButtonAttributesType = ButtonHTMLAttributes<HTMLButtonElement> &
     Pick<AnchorHTMLAttributes<HTMLAnchorElement>, 'target' | 'href' | 'rel'>;
@@ -42,8 +43,31 @@ export type ButtonPropsType = ButtonOverridableAttributesType &
     WideAttributesType &
     MarginAttributesType;
 
-// todo: update this
 export type ButtonRootStylePropsType = ButtonPropsType & {
     theme: ThemeType;
     styles: ButtonStylesFunctionType;
 };
+
+export type ButtonCSSParametersThemeType = {
+    color?: string;
+    backgroundColor?: string;
+    borderColor?: string;
+    textTransform?: string;
+} & ObjectLiteralType;
+
+export type ButtonAppearanceThemeType = {
+    base: ButtonCSSParametersThemeType;
+    hover: ButtonCSSParametersThemeType;
+    focus: ButtonCSSParametersThemeType;
+    disabled: ButtonCSSParametersThemeType;
+} & ObjectLiteralType;
+
+export type ButtonThemeType = {
+    base: {
+        fontSize: ScalarType;
+        fontWeight: ScalarType;
+    };
+    primary: ButtonAppearanceThemeType;
+    secondary: ButtonAppearanceThemeType;
+    tertiary: ButtonAppearanceThemeType;
+} & ObjectLiteralType;

@@ -5,6 +5,7 @@ import {
     ReturnEmptyStringFunctionType,
 } from '../type';
 import { ThemeType } from '../styling';
+import { ButtonThemeType } from './Button/type';
 
 type BasicAttributesType = HTMLAttributes<Element>;
 
@@ -32,3 +33,7 @@ export type ComponentAttributesType<AO, A, S> = AttributeOverrideAttributesType<
 > &
     A &
     StyleOverrideAttributesType<S>;
+
+export type ComponentsThemeType = {
+    Button: ButtonThemeType;
+};

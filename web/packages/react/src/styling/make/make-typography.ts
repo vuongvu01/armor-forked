@@ -13,6 +13,10 @@ export const makeTypography = (
         fontSize,
         htmlFontSize,
         pixelToRem: size => {
+            if (size === 0) {
+                return '0';
+            }
+
             if (typeof size === 'string') {
                 return size;
             }

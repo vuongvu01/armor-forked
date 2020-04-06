@@ -1,19 +1,14 @@
+import { DeepPartial } from 'ts-essentials';
 import { ObjectLiteralType, ScalarType } from '../type';
 import {
     BreakpointFunctionForwardedType,
     BreakpointFunctionTwoArgsForwardedType,
 } from '../system/mixins/type';
+import { ComponentsThemeType } from '../components/type';
 
 export type SpanFunctionType = (value: ScalarType) => ScalarType;
 export type SpanFunctionOrConstType = SpanFunctionType | number;
-type PaletteType = {
-    primary: {
-        main: string;
-        contrastText: string;
-        [k: string]: any;
-    };
-    [k: string]: any;
-};
+type PaletteType = ObjectLiteralType;
 
 type FigureType = {
     borderRadius?: string;
@@ -34,8 +29,6 @@ export type BreakpointsType = BreakpointsBaseType & {
 };
 export type BreakpointsDeclarationType = Pick<BreakpointsType, 'values'>;
 
-type MixinsType = ObjectLiteralType<(...args: any[]) => any>;
-
 export type TypographyType = {
     htmlFontSize: number;
     fontFamily: string;
@@ -49,13 +42,12 @@ export type TypographyInputType = Partial<
 
 export type ThemeType = {
     breakpoints: BreakpointsType;
-    // mixins: MixinsType;
     palette: PaletteType;
+    components: ComponentsThemeType;
     typography: TypographyType;
     span: SpanFunctionType;
     figure: FigureType;
-    [k: string]: any;
-};
+} & ObjectLiteralType;
 
 export type ThemeDeclarationType = Partial<
     Pick<ThemeType, 'mixins' | 'palette' | 'shape' | 'zIndex'>
@@ -63,8 +55,8 @@ export type ThemeDeclarationType = Partial<
     typography?: Partial<TypographyType>;
     breakpoints?: BreakpointsDeclarationType;
     span?: SpanFunctionOrConstType;
-    [k: string]: any;
-};
+    components?: DeepPartial<ComponentsThemeType>;
+} & ObjectLiteralType;
 
 export type ThemeFabricOptions = {
     immutable?: boolean;

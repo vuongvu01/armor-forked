@@ -6,8 +6,8 @@ export const blue100 = '#6393b5';
 export const blue200 = '#1e91d6';
 export const blue300 = '#166595';
 
-export const grey050 = '#cdcdcd';
-export const grey100 = '#e5e5e5';
+export const grey050 = '#e5e5e5';
+export const grey100 = '#cdcdcd';
 export const grey200 = '#828282';
 export const grey300 = '#464646';
 export const grey900 = '#121212';
