@@ -1,4 +1,5 @@
-import styled, { css, StyledComponent } from 'styled-components';
+import styled, { css } from 'styled-components';
+import { ReactElement } from 'react';
 import {
     ButtonAppearanceThemeType,
     ButtonCSSParametersThemeType,
@@ -40,7 +41,7 @@ const makeCSS = (style: ButtonAppearanceThemeType) => `
     &:focus {
         ${makeCSSBasic(style.focus)}
     }
-    &[disabled=""] {
+    &:disabled {
         ${makeCSSBasic(style.disabled)}
     }
 `;
@@ -70,9 +71,15 @@ const visualStyle = ({
     return makeCSS(Button.primary).toString();
 };
 
-const buttonRootStyle = (props: ButtonRootStylePropsType) => css<
-    ButtonRootStylePropsType
->`
+const Wrapper = ({
+    className,
+    children,
+}: {
+    className: string;
+    children: (className: string) => ReactElement;
+}) => children(className);
+
+export const ButtonWrapper = styled(Wrapper)<ButtonRootStylePropsType>`
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -80,6 +87,7 @@ const buttonRootStyle = (props: ButtonRootStylePropsType) => css<
     vertical-align: middle;
     outline: none;
     user-select: none;
+    appearance: none;
     text-decoration: none;
     text-align: center;
     box-sizing: border-box;
@@ -87,9 +95,16 @@ const buttonRootStyle = (props: ButtonRootStylePropsType) => css<
     letter-spacing: 0;
     line-height: 1.6;
 
-    ${({ theme, small, disabled }) => css<ButtonRootStylePropsType>`
+    &:hover, &:focus, &:disabled, &:active, &:visited {
+        text-decoration: none;
+        outline: none;
+    }
+    &:not(:disabled) {
+        cursor: pointer;
+    }
+
+    ${({ theme, small }) => css<ButtonRootStylePropsType>`
         padding: ${theme.span(small ? 1 : 2)} ${theme.span(4)};
-        cursor: ${disabled ? 'default' : 'pointer'};
         border-radius: ${theme.figure.borderRadius};
         font-family: ${theme.typography.fontFamily};
         font-size: ${theme.typography.pixelToRem(
@@ -103,38 +118,5 @@ const buttonRootStyle = (props: ButtonRootStylePropsType) => css<
     ${visualStyle}
     ${marginAttributes}
     ${wideAttributes}
-    ${props.styles(props)}
+    ${props => props.styles(props)}
 `;
-
-const Button = styled.button<ButtonRootStylePropsType>`
-    ${buttonRootStyle}
-`;
-
-const A = styled.a<ButtonRootStylePropsType>`
-    ${buttonRootStyle}
-`;
-
-const Span = styled.span<ButtonRootStylePropsType>`
-    ${buttonRootStyle}
-`;
-
-const Div = styled.div<ButtonRootStylePropsType>`
-    ${buttonRootStyle}
-`;
-
-export const useAppearanceButton = (
-    tagName?: string,
-): StyledComponent<any, any> => {
-    switch (tagName) {
-        case 'a':
-        case 'link':
-            return A;
-        case 'span':
-            return Span;
-        case 'div':
-            return Div;
-        case 'button':
-        default:
-            return Button;
-    }
-};

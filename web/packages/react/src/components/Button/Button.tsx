@@ -3,7 +3,7 @@ import { useObject } from '../../utils/hooks';
 import { useTheme } from '../../styling';
 import { useClassNameButton, useStylesOverrideButton } from './utils';
 
-import { useAppearanceButton } from './style';
+import { ButtonWrapper } from './style';
 import { ButtonPropsType } from './type';
 
 const classPrefix = 'Button';
@@ -13,13 +13,14 @@ export const Button: FunctionComponent<ButtonPropsType> = ({
     classNames,
     styles,
     attributes,
-    tag,
+    tag: Tag = 'button',
     small,
     wide,
     disabled,
     primary,
     secondary,
     tertiary,
+    children,
     ...restProps
 }) => {
     const theme = useTheme();
@@ -36,10 +37,9 @@ export const Button: FunctionComponent<ButtonPropsType> = ({
     );
     const stylesSafe = useStylesOverrideButton(styles);
     const attributesSafe = useObject(attributes);
-    const ButtonRoot = useAppearanceButton(tag);
 
     return (
-        <ButtonRoot
+        <ButtonWrapper
             disabled={disabled}
             small={small}
             wide={wide}
@@ -51,6 +51,17 @@ export const Button: FunctionComponent<ButtonPropsType> = ({
             {...attributesSafe.root}
             className={classNameRoot}
             styles={stylesSafe.root}
-        />
+        >
+            {(classNameFinal: string) => (
+                <Tag
+                    {...restProps}
+                    {...attributesSafe.root}
+                    disabled={disabled}
+                    className={classNameFinal}
+                >
+                    {children}
+                </Tag>
+            )}
+        </ButtonWrapper>
     );
 };

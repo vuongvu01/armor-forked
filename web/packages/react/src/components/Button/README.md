@@ -80,12 +80,18 @@ import { GroupHelper } from 'GroupHelper';
 
 ```js
 import { GroupHelper } from 'GroupHelper';
+import { BrowserRouter, Link } from 'react-router-dom';
 
-<GroupHelper>
-    <Button tag="a" href="https://google.com" target="_blank">
-        Open Google
-    </Button>
-</GroupHelper>
+<BrowserRouter>
+    <GroupHelper>
+        <Button tag="a" href="https://google.com" target="_blank">
+            Regular link
+        </Button>
+        <Button tag={Link} to="/homepage">
+            React router link
+        </Button>
+    </GroupHelper>
+</BrowserRouter>
 ```
 
 #### Material icon
@@ -115,14 +121,14 @@ import {MaterialIcon} from '../MaterialIcon';
     </Button>
     <Button tertiary>
         Add
-        <MaterialIcon marginLeft={2} fontSize={22}>add</MaterialIcon>
+        <MaterialIcon marginLeft={2} fontSize={22} icon="add" />
     </Button>
     <Button primary>
         <MaterialIcon marginRight={2}>save</MaterialIcon>
         Save
     </Button>
     <Button primary>
-        <MaterialIcon marginRight={2} fontSize={22}>save</MaterialIcon>
+        <MaterialIcon marginRight={2} fontSize={22} icon="save" />
         Save
     </Button>
 </GroupHelper>

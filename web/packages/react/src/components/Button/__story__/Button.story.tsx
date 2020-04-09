@@ -10,11 +10,17 @@ import {
 // eslint-disable-next-line import/no-unresolved
 import { action } from '@storybook/addon-actions';
 import { ThemeProvider } from 'styled-components';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { withStyles } from '@material-ui/core/styles';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { BrowserRouter, Link } from 'react-router-dom';
 import { Button } from '../Button';
 import { TagType } from '../type';
-import { EditIcon } from '../../../icons/EditIcon';
+import { EditIcon } from '../../../icons';
 import { MaterialIcon } from '../../MaterialIcon';
 import { makeTheme } from '../../../styling';
+import { fontSizeIconBig } from '../../../tokens';
+import { ObjectLiteralType } from '../../../type';
 
 export default {
     title: 'Components/Button',
@@ -61,7 +67,7 @@ export const Playground = () => (
 );
 
 export const AsLink = () => (
-    <Button tag="link" href="https://www.google.com/" target="_blank">
+    <Button tag="a" href="https://www.google.com/" target="_blank">
         Open Google
     </Button>
 );
@@ -169,7 +175,7 @@ export const Comparison2 = () => (
             <MaterialIcon marginRight={4}>save</MaterialIcon> Save
         </Button>
         <Button small={boolean('Small', false)}>
-            <MaterialIcon marginRight={4} fontSize={22}>
+            <MaterialIcon marginRight={4} fontSize={fontSizeIconBig}>
                 save
             </MaterialIcon>{' '}
             Save
@@ -179,7 +185,7 @@ export const Comparison2 = () => (
         </Button>
         <Button small={boolean('Small', false)}>
             Add{' '}
-            <MaterialIcon marginLeft={4} fontSize={22}>
+            <MaterialIcon marginLeft={4} fontSize={fontSizeIconBig}>
                 add
             </MaterialIcon>
         </Button>
@@ -198,7 +204,7 @@ export const InText = () => (
         that tasty pie and{' '}
         <Button small={boolean('Small', false)}>
             <MaterialIcon marginRight={2}>save</MaterialIcon> drink{' '}
-            <MaterialIcon marginLeft={2}>save</MaterialIcon>
+            <MaterialIcon marginLeft={2} icon="save" />
         </Button>{' '}
         some tea.
     </>
@@ -227,8 +233,10 @@ export const IconAndText = () => (
         wide={boolean('Wide', false)}
         small={boolean('Small', false)}
     >
-        <MaterialIcon marginRight={2}>save</MaterialIcon>
-        Text
+        <MaterialIcon marginRight={2} fontSize={fontSizeIconBig}>
+            add
+        </MaterialIcon>
+        Create workflow
     </Button>
 );
 
@@ -258,20 +266,39 @@ export const WithCustomTheme = () => (
             wide={boolean('Wide', false)}
             small={boolean('Small', false)}
         >
-            <MaterialIcon marginRight={2}>save</MaterialIcon>
+            <MaterialIcon marginRight={2} icon="save" />
             With custom theme
         </Button>
     </ThemeProvider>
 );
 
-export const TertiaryWithIcon = () => (
-    <>
-        <Button tertiary small={boolean('Small', false)}>
-            <MaterialIcon marginRight={2}>save</MaterialIcon>
-            Text
+export const AsRouterLink = () => (
+    <BrowserRouter>
+        <Button tag={Link} to="/homepage">
+            No route to host!
         </Button>
-        <Button small={boolean('Small', false)}>
-            eat <MaterialIcon marginLeft={2}>edit</MaterialIcon>
-        </Button>
-    </>
+    </BrowserRouter>
 );
+
+export const WithClassName = () => (
+    <BrowserRouter>
+        <Button className="custom-button">I am custom</Button>
+        <style
+            dangerouslySetInnerHTML={{
+                __html: `.custom-button { border: 1px solid red; };`,
+            }}
+        />
+    </BrowserRouter>
+);
+
+const CustomButtonWrapper = ({ classes }: { classes: ObjectLiteralType }) => (
+    <Button className={classes.customButton}>I am custom</Button>
+);
+
+const CustomButtonMUI = withStyles({
+    customButton: {
+        border: '1px solid red',
+    },
+})(CustomButtonWrapper);
+
+export const WithMUIStyles = () => <CustomButtonMUI />;

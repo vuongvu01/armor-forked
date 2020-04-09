@@ -1,18 +1,23 @@
-import { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from 'react';
+import {
+    AnchorHTMLAttributes,
+    ButtonHTMLAttributes,
+    ComponentType,
+    ReactNode,
+} from 'react';
 import { StylesFunctionOrStubType, ComponentAttributesType } from '../type';
 import {
     MarginAttributesType,
     WideAttributesType,
 } from '../../system/attributes';
 import { ThemeType } from '../../styling';
-import { ObjectLiteralType, ScalarType } from '../../type';
+import { Indexed, ScalarType } from '../../type';
 
 type ButtonAttributesType = ButtonHTMLAttributes<HTMLButtonElement> &
     Pick<AnchorHTMLAttributes<HTMLAnchorElement>, 'target' | 'href' | 'rel'>;
 
-export type TagType = 'button' | 'a' | 'div' | 'span' | 'link';
+export type TagType = string | ComponentType<any>;
 
-export type ButtonOverridableAttributesType = {
+export type ButtonOverridableAttributesType = Indexed<{
     tag?: TagType;
     primary?: boolean;
     secondary?: boolean;
@@ -21,7 +26,7 @@ export type ButtonOverridableAttributesType = {
     iconLeft?: ReactNode;
     href?: string;
     small?: boolean;
-};
+}>;
 export type ButtonAttributeOverrideType = {
     root?: ButtonOverridableAttributesType;
 };
@@ -48,21 +53,21 @@ export type ButtonRootStylePropsType = ButtonPropsType & {
     styles: ButtonStylesFunctionType;
 };
 
-export type ButtonCSSParametersThemeType = {
+export type ButtonCSSParametersThemeType = Indexed<{
     color?: string;
     backgroundColor?: string;
     borderColor?: string;
     textTransform?: string;
-} & ObjectLiteralType;
+}>;
 
-export type ButtonAppearanceThemeType = {
+export type ButtonAppearanceThemeType = Indexed<{
     base: ButtonCSSParametersThemeType;
     hover: ButtonCSSParametersThemeType;
     focus: ButtonCSSParametersThemeType;
     disabled: ButtonCSSParametersThemeType;
-} & ObjectLiteralType;
+}>;
 
-export type ButtonThemeType = {
+export type ButtonThemeType = Indexed<{
     base: {
         fontSize: ScalarType;
         fontWeight: ScalarType;
@@ -70,4 +75,4 @@ export type ButtonThemeType = {
     primary: ButtonAppearanceThemeType;
     secondary: ButtonAppearanceThemeType;
     tertiary: ButtonAppearanceThemeType;
-} & ObjectLiteralType;
+}>;

@@ -5,11 +5,15 @@ import { MaterialIconPropsType } from './type';
 
 export const MaterialIcon: FunctionComponent<MaterialIconPropsType> = ({
     fontSize = 'inherit',
+    icon,
+    children,
     ...restProps
 }) => {
     const theme = useTheme();
 
     return (
-        <MaterialIconRoot theme={theme} fontSize={fontSize} {...restProps} />
+        <MaterialIconRoot theme={theme} fontSize={fontSize} {...restProps}>
+            {icon || children}
+        </MaterialIconRoot>
     );
 };

@@ -1,5 +1,5 @@
 import { DeepPartial } from 'ts-essentials';
-import { ObjectLiteralType, ScalarType } from '../type';
+import { Indexed, ObjectLiteralType, ScalarType } from '../type';
 import {
     BreakpointFunctionForwardedType,
     BreakpointFunctionTwoArgsForwardedType,
@@ -29,34 +29,35 @@ export type BreakpointsType = BreakpointsBaseType & {
 };
 export type BreakpointsDeclarationType = Pick<BreakpointsType, 'values'>;
 
-export type TypographyType = {
+export type TypographyType = Indexed<{
     htmlFontSize: number;
     fontFamily: string;
     fontSize: number;
     pixelToRem: (size: ScalarType) => string;
-} & ObjectLiteralType;
+}>;
 
 export type TypographyInputType = Partial<
     Pick<TypographyType, 'htmlFontSize' | 'fontFamily' | 'fontSize'>
 >;
 
-export type ThemeType = {
+export type ThemeType = Indexed<{
     breakpoints: BreakpointsType;
     palette: PaletteType;
     components: ComponentsThemeType;
     typography: TypographyType;
     span: SpanFunctionType;
     figure: FigureType;
-} & ObjectLiteralType;
+}>;
 
 export type ThemeDeclarationType = Partial<
     Pick<ThemeType, 'mixins' | 'palette' | 'shape' | 'zIndex'>
-> & {
-    typography?: Partial<TypographyType>;
-    breakpoints?: BreakpointsDeclarationType;
-    span?: SpanFunctionOrConstType;
-    components?: DeepPartial<ComponentsThemeType>;
-} & ObjectLiteralType;
+> &
+    Indexed<{
+        typography?: Partial<TypographyType>;
+        breakpoints?: BreakpointsDeclarationType;
+        span?: SpanFunctionOrConstType;
+        components?: DeepPartial<ComponentsThemeType>;
+    }>;
 
 export type ThemeFabricOptions = {
     immutable?: boolean;

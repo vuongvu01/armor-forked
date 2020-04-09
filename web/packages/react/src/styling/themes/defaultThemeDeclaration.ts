@@ -41,9 +41,11 @@ export const defaultThemeDeclaration = {
                     shadow: shadow100,
                 },
                 hover: {
+                    color: white,
                     backgroundColor: blue300,
                 },
                 focus: {
+                    color: white,
                     backgroundColor: blue100,
                 },
                 disabled: {
@@ -73,6 +75,7 @@ export const defaultThemeDeclaration = {
                 base: {
                     color: blue200,
                     textTransform: 'uppercase',
+                    backgroundColor: 'transparent',
                 },
                 hover: {
                     color: blue300,

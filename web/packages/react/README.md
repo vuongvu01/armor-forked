@@ -26,7 +26,7 @@
 * [Development](#development)
   * [Installation](#installation)
   * [Local usage](#local-usage)
-    * [Option 1: yarn link](#option-1-yarn-link)
+    * [Option 1: yarn link](#option-1-yarn-link-or-npm-link)
     * [Option 2: yalc](#option-2-yalc)
     * [Troubleshooting](#troubleshooting)
   * [Branching model](#branching-model)
@@ -104,7 +104,7 @@ If you wish to make a contribution to the library, you need to setup the develop
 You may want to try out the latest changes you made in some locally installed React application without bumping out anything to NPM.
 You have two options here.
 
-#### Option 1: yarn link
+#### Option 1: yarn link or npm link
 
 0. Make sure that no peer dependencies installed by typing
     ~~~sh
@@ -115,10 +115,19 @@ You have two options here.
     ~~~sh
     yarn link;
     ~~~
+    or if the project uses `npm`:
+    ~~~sh
+    npm link;
+    ~~~
 2. Link the package to the application:
     ~~~sh
     cd <application-folder>;
     yarn link "@deliveryhero/ui.react";
+    ~~~
+    or if the project uses `npm`:
+    ~~~sh
+    cd <application-folder>;
+    npm link "@deliveryhero/ui.react";
     ~~~
 
 Note: in order to continue working in `Storybook` you need to install peer dependencies back by typing
