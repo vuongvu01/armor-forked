@@ -130,10 +130,12 @@ You have two options here.
     npm link "@deliveryhero/ui.react";
     ~~~
 
-Note: in order to continue working in `Storybook` you need to install peer dependencies back by typing
+⚠️ Note: in order to continue working in `Storybook` you need to install peer dependencies back by typing
 ~~~bash
 yarn run install-peers;
 ~~~
+
+⚠️ Note: if you use custom `webpack` config, make sure that `resolve.symlinks` is set to `false`.
 
 #### Option 2: yalc
 

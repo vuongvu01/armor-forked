@@ -65,3 +65,8 @@ export const Button: FunctionComponent<ButtonPropsType> = ({
         </ButtonWrapper>
     );
 };
+
+Button.defaultProps = {
+    type: 'button',
+    tag: 'button',
+};

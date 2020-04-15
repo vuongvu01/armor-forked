@@ -60,11 +60,7 @@ const visualStyle = ({
     }
 
     if (tertiary) {
-        return css`
-            ${makeCSS(Button.tertiary)}
-            padding-left: 0;
-            padding-right: 0;
-        `;
+        return makeCSS(Button.tertiary).toString();
     }
 
     // primary by default

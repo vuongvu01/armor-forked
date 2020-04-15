@@ -4,6 +4,7 @@ import {
     SizeAttributesType,
     PaddingAttributesType,
     MarginAttributesType,
+    TextAlignmentAttributesType,
 } from '../../system/attributes';
 import { ThemeType } from '../../styling';
 
@@ -28,7 +29,8 @@ export type BoxPropsType = BoxOverridableAttributesType &
     > &
     MarginAttributesType &
     PaddingAttributesType &
-    SizeAttributesType;
+    SizeAttributesType &
+    TextAlignmentAttributesType;
 
 export type BoxRootStylePropsType = BoxPropsType & {
     theme: ThemeType;

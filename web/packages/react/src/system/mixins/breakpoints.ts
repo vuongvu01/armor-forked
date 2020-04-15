@@ -18,18 +18,21 @@ const makeRule = (way: string, value: number, cssChunk?: CSSChunkType) => {
     return mediaRule;
 };
 
+// todo: move breakpoints to the last position and make optional
 export const breakpointUp: BreakpointFunctionType = (
     breakpoints,
     code,
     cssChunk,
 ) => makeRule('min', breakpoints.values[code], cssChunk);
 
+// todo: move breakpoints to the last position and make optional
 export const breakpointDown: BreakpointFunctionType = (
     breakpoints,
     code,
     cssChunk,
 ) => makeRule('max', breakpoints.values[code] - 1, cssChunk);
 
+// todo: move breakpoints to the last position and make optional
 export const breakpointOnly: BreakpointFunctionType = (
     breakpoints,
     code,
