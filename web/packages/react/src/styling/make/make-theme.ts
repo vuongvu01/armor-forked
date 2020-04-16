@@ -5,6 +5,7 @@ import { makeBreakpoints } from './make-breakpoints';
 import { makeTypography } from './make-typography';
 import { makeSpan } from './make-span';
 import { defaultThemeDeclaration } from '../themes/defaultThemeDeclaration';
+import { transformTheme } from './transform-theme';
 
 const overwriteMerge = (destinationArray: any[], sourceArray: any[]) =>
     sourceArray;
@@ -22,6 +23,8 @@ export const makeTheme = (
     theme.span = makeSpan(theme.span);
     theme.breakpoints = makeBreakpoints(theme.breakpoints);
     theme.typography = makeTypography(theme.typography);
+
+    transformTheme(theme as ThemeType);
 
     return (immutable ? deepFreeze(theme) : theme) as ThemeType;
 };

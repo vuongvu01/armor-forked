@@ -1,4 +1,4 @@
-export { ThemeProvider } from 'styled-components';
+export * from './theme-provider';
 export * from './themes/default';
 export * from './themes/dark';
 export * from './make/make-theme';

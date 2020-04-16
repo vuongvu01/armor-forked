@@ -7,7 +7,6 @@ import {
     fontWeightMedium,
     grey050,
     grey100,
-    shadow100,
     white,
     borderRadiusNormal,
     spanRegular,
@@ -33,59 +32,60 @@ export const defaultThemeDeclaration = {
             base: {
                 fontSize: fontSizeRegular,
                 fontWeight: fontWeightMedium,
+                paddingLeft: 4,
+                paddingRight: 4,
+                paddingTop: 2,
+                paddingBottom: 2,
             },
             primary: {
-                base: {
-                    color: white,
-                    backgroundColor: blue200,
-                    shadow: shadow100,
-                },
-                hover: {
+                color: white,
+                backgroundColor: blue200,
+                '&:hover': {
                     color: white,
                     backgroundColor: blue300,
                 },
-                focus: {
+                '&:focus': {
                     color: white,
                     backgroundColor: blue100,
                 },
-                disabled: {
+                '&:disabled': {
                     color: grey100,
                     backgroundColor: grey050,
                 },
             },
             secondary: {
-                base: {
-                    color: blue200,
-                    borderColor: blue200,
-                    backgroundColor: blue050,
-                },
-                hover: {
+                color: blue200,
+                borderColor: blue200,
+                backgroundColor: blue050,
+                '&:hover': {
                     borderColor: blue300,
                 },
-                focus: {
+                '&:focus': {
                     borderColor: blue300,
                     backgroundColor: blue070,
                 },
-                disabled: {
+                '&:disabled': {
                     color: grey100,
                     borderColor: grey050,
                 },
             },
             tertiary: {
-                base: {
-                    color: blue200,
-                    textTransform: 'uppercase',
-                    backgroundColor: 'transparent',
-                },
-                hover: {
+                color: blue200,
+                textTransform: 'uppercase',
+                backgroundColor: 'transparent',
+                '&:hover': {
                     color: blue300,
                 },
-                focus: {
+                '&:focus': {
                     color: blue400,
                 },
-                disabled: {
+                '&:disabled': {
                     color: grey100,
                 },
+            },
+            small: {
+                paddingTop: 1,
+                paddingBottom: 1,
             },
         },
     },

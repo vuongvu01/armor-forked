@@ -8,6 +8,9 @@ export type ObjectLiteralType<P = any> = {
 
 export type ReturnEmptyStringFunctionType = () => string;
 
-export type CSSChunkType = FlattenSimpleInterpolation | string;
+export type CSSChunkType =
+    | FlattenSimpleInterpolation
+    | string
+    | ObjectLiteralType;
 
 export type Indexed<T, P = any> = T & ObjectLiteralType<P>;

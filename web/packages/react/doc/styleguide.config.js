@@ -17,15 +17,15 @@ module.exports = {
         return `import { ${name} } from '${pkg.name}';`;
     },
     // https://github.com/styleguidist/react-docgen-typescript
-    propsParser: require('react-docgen-typescript').withDefaultConfig({
-        propFilter: (prop, component) => {
-            if (prop.parent) {
-                return !prop.parent.fileName.includes('node_modules');
-            }
-
-            return true;
-        },
-    }).parse,
+    // propsParser: require('react-docgen-typescript').withDefaultConfig({
+    //     propFilter: (prop, component) => {
+    //         if (prop.parent) {
+    //             return !prop.parent.fileName.includes('node_modules');
+    //         }
+    //
+    //         return true;
+    //     },
+    // }).parse,
     template: {
         head: {
             links: [

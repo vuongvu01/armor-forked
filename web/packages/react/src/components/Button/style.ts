@@ -1,50 +1,8 @@
 import styled, { css } from 'styled-components';
 import { ReactElement } from 'react';
-import {
-    ButtonAppearanceThemeType,
-    ButtonCSSParametersThemeType,
-    ButtonRootStylePropsType,
-} from './type';
+import { ButtonRootStylePropsType } from './type';
 import { marginAttributes, wideAttributes } from '../../system/attributes';
 import { durationRegular } from '../../tokens';
-
-const makeCSSBasic = (declaration?: ButtonCSSParametersThemeType) => {
-    if (!declaration) {
-        return '';
-    }
-
-    return `
-        ${declaration.color ? `color: ${declaration.color};` : ''}
-        ${
-            declaration.backgroundColor
-                ? `background-color: ${declaration.backgroundColor};`
-                : ''
-        }
-        ${
-            declaration.borderColor
-                ? `border-color: ${declaration.borderColor};`
-                : ''
-        }
-        ${
-            declaration.textTransform
-                ? `text-transform: ${declaration.textTransform};`
-                : ''
-        }
-    `;
-};
-
-const makeCSS = (style: ButtonAppearanceThemeType) => `
-    ${makeCSSBasic(style.base)}
-    &:hover {
-        ${makeCSSBasic(style.hover)}
-    }
-    &:focus {
-        ${makeCSSBasic(style.focus)}
-    }
-    &:disabled {
-        ${makeCSSBasic(style.disabled)}
-    }
-`;
 
 const visualStyle = ({
     theme,
@@ -56,15 +14,27 @@ const visualStyle = ({
     } = theme;
 
     if (secondary) {
-        return makeCSS(Button.secondary).toString();
+        return Button.secondary;
     }
 
     if (tertiary) {
-        return makeCSS(Button.tertiary).toString();
+        return Button.tertiary;
     }
 
     // primary by default
-    return makeCSS(Button.primary).toString();
+    return Button.primary;
+};
+
+const sizeStyle = ({ theme, small }: ButtonRootStylePropsType) => {
+    const {
+        components: { Button },
+    } = theme;
+
+    if (small) {
+        return Button.small;
+    }
+
+    return '';
 };
 
 const Wrapper = ({
@@ -74,6 +44,16 @@ const Wrapper = ({
     className: string;
     children: (className: string) => ReactElement;
 }) => children(className);
+
+const basicStyle = ({ theme }: ButtonRootStylePropsType) => css<
+    ButtonRootStylePropsType
+>`
+    border-radius: ${theme.figure.borderRadius};
+    font-family: ${theme.typography.fontFamily};
+    transition: background-color ${durationRegular}ms ease,
+        border-color ${durationRegular}ms ease, color ${durationRegular}ms ease;
+    ${theme.components.Button.base}
+`;
 
 export const ButtonWrapper = styled(Wrapper)<ButtonRootStylePropsType>`
     display: inline-flex;
@@ -99,19 +79,9 @@ export const ButtonWrapper = styled(Wrapper)<ButtonRootStylePropsType>`
         cursor: pointer;
     }
 
-    ${({ theme, small }) => css<ButtonRootStylePropsType>`
-        padding: ${theme.span(small ? 1 : 2)} ${theme.span(4)};
-        border-radius: ${theme.figure.borderRadius};
-        font-family: ${theme.typography.fontFamily};
-        font-size: ${theme.typography.pixelToRem(
-            theme.components.Button.base.fontSize,
-        )};
-        font-weight: ${theme.components.Button.base.fontWeight || 'normal'};
-        transition: background-color ${durationRegular}ms ease,
-            border-color ${durationRegular}ms ease,
-            color ${durationRegular}ms ease;
-    `}
+    ${basicStyle}
     ${visualStyle}
+    ${sizeStyle}
     ${marginAttributes}
     ${wideAttributes}
     ${props => props.styles(props)}
