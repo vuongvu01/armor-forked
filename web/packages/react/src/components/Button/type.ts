@@ -25,7 +25,7 @@ type ButtonAttributesType = ButtonHTMLAttributes<HTMLButtonElement> &
 
 export type TagType = string | ComponentType<any>;
 
-type ButtonOverridableAttributesType = Indexed<{
+export type ButtonOverridableAttributesType = Indexed<{
     tag?: TagType;
     primary?: boolean;
     secondary?: boolean;

@@ -42,7 +42,7 @@ export const useClassNameButton = (
         if (wide) {
             stateClassNames.push(makeBEM(classPrefix, 'root', 'wide'));
         }
-        if (primary) {
+        if (primary && !secondary && !tertiary) {
             stateClassNames.push(makeBEM(classPrefix, 'root', 'primary'));
         }
         if (secondary) {
