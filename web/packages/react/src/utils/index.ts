@@ -18,7 +18,7 @@ export const makeClassName = (
     classPrefix: string,
     className?: string,
     classNames?: ClassNamesType,
-    elementType = 'root',
+    elementType = 'Root',
 ) =>
     `${makeBEM(classPrefix, elementType)} ${className || ''} ${
         classNames && classNames[elementType] ? classNames[elementType] : ''

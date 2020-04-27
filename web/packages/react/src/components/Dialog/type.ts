@@ -1,37 +1,52 @@
 import { HTMLAttributes } from 'react';
 import { StylesFunctionOrStubType, ComponentAttributesType } from '../type';
-import { MarginAttributesType } from '../../system/attributes';
-import {
-    ButtonOverridableAttributesType,
-    ButtonStyleOverrideType,
-} from '../Button/type';
+import { WideAttributesType } from '../../system/attributes';
+import { ThemeType } from '../../styling';
+import { Indexed, ObjectLiteralType } from '../../type';
+import { ModalPropsType } from '../Modal/type';
 
-type DialogAttributesType = HTMLAttributes<HTMLElement>;
+export type DialogCustomPropsType = Indexed<{
+    disableOverlay?: boolean;
+    disableEffects?: boolean;
+    disableCloseButton?: boolean;
+    scroll?: 'document' | 'dialog';
+}> &
+    Pick<ModalPropsType, 'open' | 'onClose'>;
 
-export type DialogOverridableAttributesType = {
-    megaprop?: string;
-};
+type DialogHTMLPropsType = HTMLAttributes<HTMLElement>;
+
+export type DialogPropsType = DialogCustomPropsType &
+    ComponentAttributesType<
+        DialogAttributeOverrideType,
+        DialogHTMLPropsType,
+        DialogStyleOverrideType
+    > &
+    WideAttributesType;
+
 export type DialogAttributeOverrideType = {
-    buttonYes?: ButtonOverridableAttributesType;
-    buttonNo?: ButtonOverridableAttributesType;
+    Root?: DialogCustomPropsType;
 };
 export type DialogStyleOverrideType = {
-    root?: DialogStylesFunctionType;
-    buttonPanel?: StylesFunctionOrStubType;
-    closeButton?: StylesFunctionOrStubType;
-    buttonYes?: ButtonStyleOverrideType;
-    buttonNo?: ButtonStyleOverrideType;
+    Overlay?: DialogStylesFunctionType;
+    Container?: DialogStylesFunctionType;
+    Root?: DialogStylesFunctionType;
+    CloseButton?: DialogStylesFunctionType;
 };
 
 export type DialogStylesFunctionType = StylesFunctionOrStubType<
-    DialogAttributesType
+    DialogHTMLPropsType
 >;
 export type DialogStyleOverrideSafeType = Required<DialogStyleOverrideType>;
 
-export type DialogPropsType = DialogOverridableAttributesType &
-    ComponentAttributesType<
-        DialogAttributeOverrideType,
-        DialogAttributesType,
-        DialogStyleOverrideType
-    > &
-    MarginAttributesType;
+// for styling
+
+export type DialogRootStylePropsType = DialogPropsType & {
+    display: boolean;
+    effectToggle: boolean;
+    theme: ThemeType;
+    styles: DialogStylesFunctionType;
+};
+
+export type DialogThemeType = Indexed<{
+    base: ObjectLiteralType;
+}>;

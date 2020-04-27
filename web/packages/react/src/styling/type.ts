@@ -1,10 +1,8 @@
-import { DeepPartial } from 'ts-essentials';
 import { Indexed, ObjectLiteralType, ScalarType } from '../type';
 import {
     BreakpointFunctionForwardedType,
     BreakpointFunctionTwoArgsForwardedType,
 } from '../system/mixins/type';
-import { ComponentsThemeType } from '../components/type';
 
 export type SpanFunctionType = (value: ScalarType) => ScalarType;
 export type SpanFunctionOrConstType = SpanFunctionType | number;
@@ -43,7 +41,7 @@ export type TypographyInputType = Partial<
 export type ThemeType = Indexed<{
     breakpoints: BreakpointsType;
     palette: PaletteType;
-    components: ComponentsThemeType;
+    components: ObjectLiteralType;
     typography: TypographyType;
     span: SpanFunctionType;
     figure: FigureType;
@@ -56,7 +54,7 @@ export type ThemeDeclarationType = Partial<
         typography?: Partial<TypographyType>;
         breakpoints?: BreakpointsDeclarationType;
         span?: SpanFunctionOrConstType;
-        components?: DeepPartial<ComponentsThemeType>;
+        components?: ObjectLiteralType;
     }>;
 
 export type ThemeFabricOptions = {

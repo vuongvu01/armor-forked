@@ -1,1 +1,1 @@
-export const fontNameRobotoRegular = 'Roboto-Medium, sans-serif';
+export const fontFamilyRoboto = 'Roboto';

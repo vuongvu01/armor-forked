@@ -3,31 +3,31 @@ import { ClassNames } from 'ClassNames';
 
 <ClassNames data={[
     {
-        name: 'Button-root',
+        name: 'Button-Root',
         description: 'Root element',
     },
     {
-        name: 'Button-root--disabled',
+        name: 'Button-Root--disabled',
         description: 'Root element modifier when the button is disabled',
     },
     {
-        name: 'Button-root--small',
+        name: 'Button-Root--small',
         description: 'Root element modifier when the button is small',
     },
     {
-        name: 'Button-root--wide',
+        name: 'Button-Root--wide',
         description: 'Root element modifier when the button is wide',
     },
     {
-        name: 'Button-root--primary',
+        name: 'Button-Root--primary',
         description: 'Root element modifier when the button is rendered as primary',
     },
     {
-        name: 'Button-root--secondary',
+        name: 'Button-Root--secondary',
         description: 'Root element modifier when the button is rendered as secondary',
     },
     {
-        name: 'Button-root--tertiary',
+        name: 'Button-Root--tertiary',
         description: 'Root element modifier when the button is rendered as tertiary',
     },
 ]}/>
@@ -143,10 +143,10 @@ import { css, withStyles } from "../../";
 
 const CustomPrimaryButton = withStyles(
     {
-        root: ({ disabled }) => css`background: linear-gradient(to bottom, rgba(243,197,189,1) 0%,rgba(232,108,87,1) 21%,rgba(232,108,87,1) 21%,rgba(234,40,3,1) 46%,rgba(255,102,0,1) 75%,rgba(199,34,0,1) 100%);`,
+        Root: ({ disabled }) => css`background: linear-gradient(to bottom, rgba(243,197,189,1) 0%,rgba(232,108,87,1) 21%,rgba(232,108,87,1) 21%,rgba(234,40,3,1) 46%,rgba(255,102,0,1) 75%,rgba(199,34,0,1) 100%);`,
     },
     { 
-        root: { primary: true }
+        Root: { primary: true }
     }
 )(Button);
 
@@ -170,21 +170,9 @@ You can use CSS to override styles of elements based on global class names.
 
 ```js
 <>
-    <style dangerouslySetInnerHTML={{__html: `.Button-global-demo .Button-root { border: 1px solid red; };`}} />
+    <style dangerouslySetInnerHTML={{__html: `.Button-global-demo .Button-Root { border: 1px solid red; };`}} />
     <div className="Button-global-demo">
         <Button>Hello</Button>
     </div>
 </>
-```
-
-### Node structure (bonus, will be updated soon)
-
-The button component has a simple structure with only one `root` element.
-
-```js noeditor
-import { NodeStand } from 'NodeStand';
-
-<NodeStand>
-    {({ setNode, unSetNode, styles }) => <Button styles={styles} onMouseEnter={() => setNode('root')} onMouseLeave={() => unSetNode('root')}>Hello</Button>}
-</NodeStand>
 ```

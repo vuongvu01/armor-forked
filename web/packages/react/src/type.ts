@@ -14,3 +14,5 @@ export type CSSChunkType =
     | ObjectLiteralType;
 
 export type Indexed<T, P = any> = T & ObjectLiteralType<P>;
+
+export type Nullable<T = any> = T | null;

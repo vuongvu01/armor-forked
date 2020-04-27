@@ -11,16 +11,22 @@ import {
 import { action } from '@storybook/addon-actions';
 import { ThemeProvider } from 'styled-components';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles as withMaterialStyles } from '@material-ui/core/styles';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { BrowserRouter, Link } from 'react-router-dom';
 import { Button } from '../Button';
 import { TagType } from '../type';
 import { EditIcon } from '../../../icons';
 import { MaterialIcon } from '../../MaterialIcon';
-import { makeTheme } from '../../../styling';
+import { makeTheme, withStyles } from '../../../styling';
 import { fontSizeIconBig } from '../../../tokens';
 import { ObjectLiteralType } from '../../../type';
+import {
+    DialogAttributeOverrideType,
+    DialogPropsType,
+    DialogStyleOverrideType,
+} from '../../Dialog/type';
+import { Dialog } from '../../Dialog';
 
 export default {
     title: 'Components/Button',
@@ -243,15 +249,17 @@ export const IconAndText = () => (
 const customTheme = makeTheme({
     components: {
         Button: {
-            base: {
-                fontWeight: 'bold',
-            },
-            primary: {
+            Root: {
                 base: {
-                    borderColor: 'red',
+                    fontWeight: 'bold',
                 },
-                hover: {
-                    borderColor: 'yellow',
+                primary: {
+                    base: {
+                        borderColor: 'red',
+                    },
+                    hover: {
+                        borderColor: 'yellow',
+                    },
                 },
             },
         },
@@ -295,7 +303,7 @@ const CustomButtonWrapper = ({ classes }: { classes: ObjectLiteralType }) => (
     <Button className={classes.customButton}>I am custom</Button>
 );
 
-const CustomButtonMUI = withStyles({
+const CustomButtonMUI = withMaterialStyles({
     customButton: {
         border: '1px solid red',
     },

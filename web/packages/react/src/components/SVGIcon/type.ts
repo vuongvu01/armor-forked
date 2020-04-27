@@ -9,6 +9,7 @@ export type SVGIconPropsType = {
     width?: ScalarType;
     height?: ScalarType;
     fontSize?: ScalarType;
+    display?: 'inline-block' | 'block';
 } & MarginAttributesType &
     SVGAttributes<SVGElement>;
 

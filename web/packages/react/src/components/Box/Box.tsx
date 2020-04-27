@@ -7,7 +7,7 @@ import { BoxRoot } from './style';
 import { BoxPropsType } from './type';
 import { useStyleOverrideBox } from './utils';
 
-const classPrefix = 'Box';
+const CLASS_PREFIX = 'Box';
 
 export const Box: FunctionComponent<BoxPropsType> = ({
     className,
@@ -17,7 +17,7 @@ export const Box: FunctionComponent<BoxPropsType> = ({
     ...restProps
 }) => {
     const theme = useTheme();
-    const classNameRoot = useClassName(classPrefix, className, classNames);
+    const classNameRoot = useClassName(CLASS_PREFIX, className, classNames);
     const stylesSafe = useStyleOverrideBox(styles);
     const attributesSafe = useObject(attributes);
 
@@ -27,7 +27,7 @@ export const Box: FunctionComponent<BoxPropsType> = ({
             {...attributesSafe.root}
             theme={theme}
             className={classNameRoot}
-            styles={stylesSafe.root}
+            styles={stylesSafe.Root}
         />
     );
 };

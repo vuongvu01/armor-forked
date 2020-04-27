@@ -34,10 +34,10 @@ export type ButtonOverridableAttributesType = Indexed<{
     wide?: boolean;
 }>;
 export type ButtonAttributeOverrideType = {
-    root?: ButtonOverridableAttributesType;
+    Root?: ButtonOverridableAttributesType;
 };
 export type ButtonStyleOverrideType = {
-    root?: ButtonStylesFunctionType;
+    Root?: ButtonStylesFunctionType;
 };
 
 export type ButtonStylesFunctionType = StylesFunctionOrStubType<

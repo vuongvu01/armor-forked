@@ -12,7 +12,7 @@ export default {
 export const BreakpointUp = () => (
     <Button
         styles={{
-            root: ({ theme }) => css`
+            Root: ({ theme }) => css`
                 ${theme.breakpoints.up(
                     'lg',
                     css`

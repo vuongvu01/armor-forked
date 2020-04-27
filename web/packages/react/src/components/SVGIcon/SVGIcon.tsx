@@ -7,9 +7,9 @@ import { useTheme } from '../../styling';
 export const SVGIcon: FunctionComponent<SVGIconPropsType> = ({
     children,
     title,
-    viewBox = '0 0 14 14',
-    width = '1em',
-    height = '1em',
+    viewBox,
+    width,
+    height,
     color,
     ...restProps
 }) => {
@@ -30,4 +30,11 @@ export const SVGIcon: FunctionComponent<SVGIconPropsType> = ({
             {children}
         </SVGIconRoot>
     );
+};
+
+SVGIcon.defaultProps = {
+    display: 'inline-block',
+    height: '1em',
+    width: '1em',
+    viewBox: '0 0 10 10',
 };

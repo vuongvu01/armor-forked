@@ -9,7 +9,7 @@ export const useClassName = (
     classPrefix: string,
     className?: string,
     classNames?: ClassNamesType,
-    elementType = 'root',
+    elementType = 'Root',
 ) =>
     useMemo(() => {
         return makeClassName(classPrefix, className, classNames, elementType);

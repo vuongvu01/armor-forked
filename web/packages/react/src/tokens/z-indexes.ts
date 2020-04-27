@@ -1,1 +1,1 @@
-export const modalZIndex = 1000;
+export const zIndexModal = 1000;

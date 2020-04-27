@@ -14,15 +14,15 @@ const visualStyle = ({
     } = theme;
 
     if (secondary) {
-        return Button.secondary;
+        return Button.Root.secondary;
     }
 
     if (tertiary) {
-        return Button.tertiary;
+        return Button.Root.tertiary;
     }
 
     // primary by default
-    return Button.primary;
+    return Button.Root.primary;
 };
 
 const sizeStyle = ({ theme, small }: ButtonRootStylePropsType) => {
@@ -31,7 +31,7 @@ const sizeStyle = ({ theme, small }: ButtonRootStylePropsType) => {
     } = theme;
 
     if (small) {
-        return Button.small;
+        return Button.Root.small;
     }
 
     return '';
@@ -49,10 +49,9 @@ const basicStyle = ({ theme }: ButtonRootStylePropsType) => css<
     ButtonRootStylePropsType
 >`
     border-radius: ${theme.figure.borderRadius};
-    font-family: ${theme.typography.fontFamily};
     transition: background-color ${durationRegular}ms ease,
         border-color ${durationRegular}ms ease, color ${durationRegular}ms ease;
-    ${theme.components.Button.base}
+    ${theme.components.Button.Root.base}
 `;
 
 export const ButtonWrapper = styled(Wrapper)<ButtonRootStylePropsType>`
@@ -69,7 +68,6 @@ export const ButtonWrapper = styled(Wrapper)<ButtonRootStylePropsType>`
     box-sizing: border-box;
     border: 1px solid transparent;
     letter-spacing: 0;
-    line-height: 1.6;
 
     &:hover, &:focus, &:disabled, &:active, &:visited {
         text-decoration: none;

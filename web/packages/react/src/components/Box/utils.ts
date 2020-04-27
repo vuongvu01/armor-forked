@@ -6,9 +6,9 @@ export const useStyleOverrideBox = (
     styles?: BoxStyleOverrideType,
 ): BoxStyleOverrideSafeType => {
     return useMemo(() => {
-        const { root } = styles || {};
+        const { Root } = styles || {};
         return {
-            root: root || returnEmptyString,
+            Root: Root || returnEmptyString,
         };
     }, [styles]);
 };

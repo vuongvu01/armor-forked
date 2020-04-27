@@ -7,14 +7,14 @@
 
 import React from 'react';
 import {
-    fireEvent,
+    // fireEvent,
     cleanup,
     render,
-    prettyDOM,
-    wait,
-    waitForElement,
+    // prettyDOM,
+    // wait,
+    // waitForElement,
 } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+// import userEvent from '@testing-library/user-event';
 
 import { Dialog } from '../Dialog';
 

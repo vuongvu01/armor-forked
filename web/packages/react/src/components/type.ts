@@ -33,7 +33,3 @@ export type ComponentAttributesType<AO, A, S> = AttributeOverrideAttributesType<
 > &
     A &
     StyleOverrideAttributesType<S>;
-
-export type ComponentsThemeType = {
-    Button: ButtonThemeType;
-};

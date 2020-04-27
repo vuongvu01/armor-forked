@@ -12,10 +12,10 @@ type BoxAttributesType = HTMLAttributes<HTMLElement>;
 
 export type BoxOverridableAttributesType = {};
 export type BoxAttributeOverrideType = {
-    root?: BoxOverridableAttributesType;
+    Root?: BoxOverridableAttributesType;
 };
 export type BoxStyleOverrideType = {
-    root?: BoxStylesFunctionType;
+    Root?: BoxStylesFunctionType;
 };
 
 export type BoxStylesFunctionType = StylesFunctionOrStubType<BoxAttributesType>;

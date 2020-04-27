@@ -1,71 +1,137 @@
 import React, { FunctionComponent } from 'react';
-import { useTheme } from '../../styling';
+import PropTypes from 'prop-types';
 import { useObject } from '../../utils/hooks';
+import { useTheme } from '../../styling';
 
-import { DialogRoot, ButtonPanel, CloseButton, ButtonYes } from './style';
+import { useDialogClassNames, useDialogStylesOverride } from './utils';
+import {
+    DialogContainer,
+    DialogRoot,
+    DialogCloseButton,
+    DialogOverlay,
+} from './style';
 import { DialogPropsType } from './type';
+import { Modal } from '../Modal';
+import { CloseIcon } from '../../icons/CloseIcon';
+import { useDisplay } from '../Modal/utils';
+import { useContainerClickTrap } from '../DialogContent/utils';
 
-import { Button } from '../Button';
-import { useStylesOverrideDialog, useClassNames } from './utils';
-
-const classPrefix = 'Dialog';
+const CLASS_PREFIX = 'Dialog';
+export const DIALOG_SCROLL_DOCUMENT = 'document';
+export const DIALOG_SCROLL_DIALOG = 'dialog';
 
 export const Dialog: FunctionComponent<DialogPropsType> = ({
     className,
     classNames,
-    children,
     styles,
     attributes,
-    theme,
+    children,
+    open,
+    disableOverlay,
+    disableCloseButton,
+    disableEffects,
+    onClose,
+    scroll,
     ...restProps
 }) => {
-    const themeActual = useTheme(theme);
-    const {
-        classNameRoot,
-        classNameCloseButton,
-        classNameButtonPanel,
-        classNameButtonYes,
-        classNameButtonNo,
-    } = useClassNames(classPrefix, className, classNames);
-    const stylesSafe = useStylesOverrideDialog(styles);
-    const attributesSafe = useObject(attributes);
+    const theme = useTheme();
+    const classNameComponents = useDialogClassNames(
+        CLASS_PREFIX,
+        className,
+        classNames,
+    );
+    const stylesOverride = useDialogStylesOverride(styles);
+    const attributesOverride = useObject(attributes);
+
+    const [display, effectToggle] = useDisplay(open);
+    const { onContainerClick, containerRef } = useContainerClickTrap(
+        onClose,
+        disableOverlay,
+    );
 
     return (
-        <DialogRoot
-            {...restProps}
-            theme={themeActual}
-            className={classNameRoot}
-            styles={stylesSafe.root}
+        <Modal
+            theme={theme}
+            {...attributesOverride.Modal}
+            open={open}
+            onClose={onClose}
+            disableBackdrop={disableOverlay}
         >
-            <CloseButton
-                theme={themeActual}
-                className={classNameCloseButton}
-                styles={stylesSafe.closeButton}
-            />
-            {children}
-            <ButtonPanel
-                theme={themeActual}
-                className={classNameButtonPanel}
-                styles={stylesSafe.buttonPanel}
+            {!disableOverlay && (
+                <DialogOverlay
+                    theme={theme}
+                    {...attributesOverride.Overlay}
+                    className={classNameComponents.Overlay}
+                    styles={stylesOverride.Overlay}
+                    display={display}
+                    effectToggle={effectToggle}
+                    disableEffects={disableEffects}
+                />
+            )}
+            <DialogContainer
+                theme={theme}
+                {...attributesOverride.Container}
+                className={classNameComponents.Container}
+                styles={stylesOverride.Container}
+                display={display}
+                disableCloseButton={disableCloseButton}
+                ref={containerRef}
+                onClick={onContainerClick}
+                scroll={scroll}
             >
-                <ButtonYes
-                    primary
-                    {...attributesSafe.buttonYes}
-                    theme={themeActual}
-                    className={classNameButtonYes}
-                    styles={stylesSafe.buttonYes}
+                <DialogRoot
+                    theme={theme}
+                    {...restProps}
+                    {...attributesOverride.Root}
+                    className={classNameComponents.Root}
+                    dialogStyles={stylesOverride.Root}
+                    effectToggle={effectToggle}
+                    scroll={scroll}
+                    disableEffects={disableEffects}
                 >
-                    Yes
-                </ButtonYes>
-                <Button
-                    {...attributesSafe.buttonNo}
-                    theme={themeActual}
-                    className={classNameButtonNo}
-                    styles={stylesSafe.buttonNo}
-                >
-                    No
-                </Button>
-            </ButtonPanel>
-        </DialogRoot>
+                    {!disableCloseButton && (
+                        <DialogCloseButton
+                            theme={theme}
+                            tabIndex={-1}
+                            {...attributesOverride.CloseButton}
+                            className={classNameComponents.CloseButton}
+                            styles={stylesOverride.CloseButton}
+                            onClick={onClose}
+                        >
+                            <CloseIcon display="block" />
+                        </DialogCloseButton>
+                    )}
+                    {children}
+                </DialogRoot>
+            </DialogContainer>
+        </Modal>
     );
+};
+
+Dialog.defaultProps = {
+    open: false,
+    disableOverlay: false,
+    disableEffects: false,
+    disableCloseButton: false,
+    scroll: DIALOG_SCROLL_DIALOG,
+};
+
+/** Support of prop-types is here for project that don't use TypeScript */
+Dialog.propTypes = {
+    /** A flag that triggers the dialog display */
+    open: PropTypes.bool,
+    /** A flag that tells the dialog to not to show overlay (backdrop) */
+    disableOverlay: PropTypes.bool,
+    /** A flag that tells the dialog to not to run transition effects on show / hide */
+    disableEffects: PropTypes.bool,
+    /** A flag that tells the dialog to not to show the close button */
+    disableCloseButton: PropTypes.bool,
+    /** Allows to switch scroll type between "dialog" and "document" */
+    scroll: PropTypes.oneOf([DIALOG_SCROLL_DIALOG, DIALOG_SCROLL_DOCUMENT]),
+    /** A callback that is called when a user tries to close the dialog */
+    onClose: PropTypes.func,
+    /** Tells the dialog to occupy the entire width of it's parent (or expand to maxWidth constraint value) */
+    wide: PropTypes.bool,
+    /** Set maximum width of the dialog basing on the current theme.breakpoints */
+    maxWidth: PropTypes.string,
 };

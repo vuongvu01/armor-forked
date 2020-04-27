@@ -29,6 +29,7 @@
     "no-lonely-if": "off",
     "no-console": ["error", { "allow": ["error"]}],
     "@typescript-eslint/no-empty-interface": "off",
+    "@typescript-eslint/no-empty-function": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/ban-ts-ignore": "off",
     "no-useless-constructor": "off",

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useObject } from '../../utils/hooks';
 import { useTheme } from '../../styling';
 
-import { useClassNameButton, useStylesOverrideButton } from './utils';
+import { useButtonClassName, useButtonStylesOverride } from './utils';
 import { ButtonWrapper } from './style';
 import { ButtonPropsType } from './type';
 
@@ -25,7 +25,7 @@ export const Button: FunctionComponent<ButtonPropsType> = ({
     ...restProps
 }) => {
     const theme = useTheme();
-    const classNameRoot = useClassNameButton(
+    const classNameRoot = useButtonClassName(
         classPrefix,
         className,
         classNames,
@@ -36,8 +36,8 @@ export const Button: FunctionComponent<ButtonPropsType> = ({
         secondary,
         tertiary,
     );
-    const stylesSafe = useStylesOverrideButton(styles);
-    const attributesSafe = useObject(attributes);
+    const stylesOverride = useButtonStylesOverride(styles);
+    const attributesOverride = useObject(attributes);
 
     return (
         <ButtonWrapper
@@ -49,14 +49,14 @@ export const Button: FunctionComponent<ButtonPropsType> = ({
             tertiary={tertiary}
             theme={theme}
             {...restProps}
-            {...attributesSafe.root}
+            {...attributesOverride.Root}
             className={classNameRoot}
-            styles={stylesSafe.root}
+            styles={stylesOverride.Root}
         >
             {(classNameFinal: string) => (
                 <Tag
                     {...restProps}
-                    {...attributesSafe.root}
+                    {...attributesOverride.root}
                     disabled={disabled}
                     className={classNameFinal}
                 >

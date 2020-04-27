@@ -3,18 +3,18 @@ import { ButtonStyleOverrideType, ButtonStyleOverrideSafeType } from './type';
 import { returnEmptyString, makeBEM, makeClassName } from '../../utils';
 import { ClassNamesType } from '../type';
 
-export const useStylesOverrideButton = (
+export const useButtonStylesOverride = (
     styles?: ButtonStyleOverrideType,
 ): ButtonStyleOverrideSafeType => {
     return useMemo(() => {
-        const { root } = styles || {};
+        const { Root } = styles || {};
         return {
-            root: root || returnEmptyString,
+            Root: Root || returnEmptyString,
         };
     }, [styles]);
 };
 
-export const useClassNameButton = (
+export const useButtonClassName = (
     classPrefix: string,
     className?: string,
     classNames?: ClassNamesType,
@@ -34,22 +34,22 @@ export const useClassNameButton = (
         );
         const stateClassNames: string[] = [];
         if (disabled) {
-            stateClassNames.push(makeBEM(classPrefix, 'root', 'disabled'));
+            stateClassNames.push(makeBEM(classPrefix, 'Root', 'disabled'));
         }
         if (small) {
-            stateClassNames.push(makeBEM(classPrefix, 'root', 'small'));
+            stateClassNames.push(makeBEM(classPrefix, 'Root', 'small'));
         }
         if (wide) {
-            stateClassNames.push(makeBEM(classPrefix, 'root', 'wide'));
+            stateClassNames.push(makeBEM(classPrefix, 'Root', 'wide'));
         }
         if (primary && !secondary && !tertiary) {
-            stateClassNames.push(makeBEM(classPrefix, 'root', 'primary'));
+            stateClassNames.push(makeBEM(classPrefix, 'Root', 'primary'));
         }
         if (secondary) {
-            stateClassNames.push(makeBEM(classPrefix, 'root', 'secondary'));
+            stateClassNames.push(makeBEM(classPrefix, 'Root', 'secondary'));
         }
         if (tertiary) {
-            stateClassNames.push(makeBEM(classPrefix, 'root', 'tertiary'));
+            stateClassNames.push(makeBEM(classPrefix, 'Root', 'tertiary'));
         }
 
         return `${baseClassNames} ${stateClassNames.join(' ')}`;

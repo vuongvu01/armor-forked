@@ -14,10 +14,10 @@ export const Playground = () => <Box>Hello, world!</Box>;
 export const StylesAndSpacingPassed = () => (
     <Box
         classNames={{
-            root: 'blah',
+            Root: 'blah',
         }}
         styles={{
-            root: () => css`
+            Root: () => css`
                 border: 1px dashed red;
             `,
         }}
@@ -31,7 +31,7 @@ export const StylesAndSpacingPassed = () => (
 export const SizingPassed = () => (
     <Box
         styles={{
-            root: () => css`
+            Root: () => css`
                 border: 1px dashed red;
             `,
         }}
