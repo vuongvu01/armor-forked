@@ -8,12 +8,12 @@ export const DialogTitleRoot = styled.div<DialogTitleRootStylePropsType>`
     ${props => props.styles(props)}
 `;
 
-export const DialogTitleText = styled.div`
+export const DialogTitleText = styled.div<DialogTitleRootStylePropsType>`
     letter-spacing: 0;
     ${({ theme }) => theme.components.DialogTitle.Text.base}
 `;
 
-export const DialogTitleDescription = styled.div`
+export const DialogTitleDescription = styled.div<DialogTitleRootStylePropsType>`
     letter-spacing: 0;
     ${({ theme }) => theme.components.DialogTitle.Description.base}
 `;

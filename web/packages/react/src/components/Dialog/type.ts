@@ -28,9 +28,10 @@ export type DialogAttributeOverrideType = {
 };
 export type DialogStyleOverrideType = {
     Overlay?: DialogStylesFunctionType;
-    Container?: DialogStylesFunctionType;
+    AlignmentContainer?: DialogStylesFunctionType;
     Root?: DialogStylesFunctionType;
     CloseButton?: DialogStylesFunctionType;
+    Content?: DialogStylesFunctionType;
 };
 
 export type DialogStylesFunctionType = StylesFunctionOrStubType<

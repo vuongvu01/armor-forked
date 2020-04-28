@@ -38,13 +38,18 @@ export const DialogTitle: FunctionComponent<DialogTitlePropsType> = ({
             className={classNameComponents.Root}
             styles={stylesOverride.Root}
         >
-            <DialogTitleText theme={theme} className={classNameComponents.Text}>
+            <DialogTitleText
+                theme={theme}
+                className={classNameComponents.Text}
+                styles={stylesOverride.Text}
+            >
                 {children}
             </DialogTitleText>
             {!!description && (
                 <DialogTitleDescription
                     theme={theme}
                     className={classNameComponents.Description}
+                    styles={stylesOverride.Description}
                 >
                     {description}
                 </DialogTitleDescription>

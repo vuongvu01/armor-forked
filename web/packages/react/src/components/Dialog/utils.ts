@@ -7,12 +7,14 @@ export const useDialogStylesOverride = (
     styles?: DialogStyleOverrideType,
 ): DialogStyleOverrideSafeType => {
     return useMemo(() => {
-        const { Root, Overlay, CloseButton, Container } = styles || {};
+        const { Root, Overlay, CloseButton, AlignmentContainer, Content } =
+            styles || {};
         return {
             Root: Root || returnEmptyString,
-            Container: Container || returnEmptyString,
+            AlignmentContainer: AlignmentContainer || returnEmptyString,
             Overlay: Overlay || returnEmptyString,
             CloseButton: CloseButton || returnEmptyString,
+            Content: Content || returnEmptyString,
         };
     }, [styles]);
 };
@@ -30,11 +32,11 @@ export const useDialogClassNames = (
                 classNames,
                 'Overlay',
             ),
-            Container: makeClassName(
+            AlignmentContainer: makeClassName(
                 classPrefix,
                 className,
                 classNames,
-                'Container',
+                'AlignmentContainer',
             ),
             Root: makeClassName(classPrefix, className, classNames),
             CloseButton: makeClassName(
@@ -42,6 +44,12 @@ export const useDialogClassNames = (
                 className,
                 classNames,
                 'CloseButton',
+            ),
+            Content: makeClassName(
+                classPrefix,
+                className,
+                classNames,
+                'Content',
             ),
         };
     }, [classPrefix, className, classNames]);

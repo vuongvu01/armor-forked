@@ -369,3 +369,31 @@ export const FocusTrap = () => {
         </>
     );
 };
+
+export const ContentOnly = () => {
+    const [open, setOpen] = useState(true);
+
+    return (
+        <>
+            <LoremIpsum>
+                <Dialog
+                    open={open}
+                    onClose={() => setOpen(false)}
+                    disableCloseButton={boolean('Disable close button', false)}
+                >
+                    <DialogContent>
+                        <input />
+                        <br />
+                        <input />
+                        <br />
+                        <input />
+                        <br />
+                        <input />
+                        <br />
+                    </DialogContent>
+                </Dialog>
+            </LoremIpsum>
+            <LoremIpsum />
+        </>
+    );
+};

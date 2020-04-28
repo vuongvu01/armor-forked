@@ -48,7 +48,7 @@ export const DialogOverlay = styled.div<DialogRootStylePropsType>`
     ${props => props.styles(props)}
 `;
 
-export const DialogContainer = styled.div<DialogRootStylePropsType>`
+export const DialogAlignmentContainer = styled.div<DialogRootStylePropsType>`
     ${fixedCover}
     z-index: inherit;
     align-items: center;
@@ -89,6 +89,13 @@ export const DialogRoot = styled(Paper)<DialogRootStylePropsType>`
 
     ${sizeAttributes}
     ${props => props.dialogStyles(props)}
+`;
+
+export const DialogContent = styled.div`
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    overflow: auto;
 `;
 
 export const DialogCloseButton = styled.div<DialogRootStylePropsType>`

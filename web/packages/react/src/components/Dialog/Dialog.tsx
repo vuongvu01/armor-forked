@@ -5,10 +5,11 @@ import { useTheme } from '../../styling';
 
 import { useDialogClassNames, useDialogStylesOverride } from './utils';
 import {
-    DialogContainer,
+    DialogAlignmentContainer,
     DialogRoot,
     DialogCloseButton,
     DialogOverlay,
+    DialogContent,
 } from './style';
 import { DialogPropsType } from './type';
 import { Modal } from '../Modal';
@@ -68,11 +69,11 @@ export const Dialog: FunctionComponent<DialogPropsType> = ({
                     disableEffects={disableEffects}
                 />
             )}
-            <DialogContainer
+            <DialogAlignmentContainer
                 theme={theme}
-                {...attributesOverride.Container}
-                className={classNameComponents.Container}
-                styles={stylesOverride.Container}
+                {...attributesOverride.AlignmentContainer}
+                className={classNameComponents.AlignmentContainer}
+                styles={stylesOverride.AlignmentContainer}
                 display={display}
                 disableCloseButton={disableCloseButton}
                 ref={containerRef}
@@ -101,9 +102,16 @@ export const Dialog: FunctionComponent<DialogPropsType> = ({
                             <CloseIcon display="block" />
                         </DialogCloseButton>
                     )}
-                    {children}
+                    <DialogContent
+                        theme={theme}
+                        {...attributesOverride.Content}
+                        className={classNameComponents.Content}
+                        styles={stylesOverride.Content}
+                    >
+                        {children}
+                    </DialogContent>
                 </DialogRoot>
-            </DialogContainer>
+            </DialogAlignmentContainer>
         </Modal>
     );
 };

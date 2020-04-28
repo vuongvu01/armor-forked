@@ -7,8 +7,8 @@ import { ClassNames } from 'ClassNames';
         description: 'Overlay element',
     },
     {
-        name: 'Dialog-Container',
-        description: 'Container container',
+        name: 'Dialog-AlignmentContainer',
+        description: 'Outer container that is used to position the dialog',
     },
     {
         name: 'Dialog-Root',
@@ -17,6 +17,10 @@ import { ClassNames } from 'ClassNames';
     {
         name: 'Dialog-CloseButton',
         description: 'Close button element',
+    },
+    {
+        name: 'Dialog-Content',
+        description: 'Content wrapper element',
     },
 ]}/>
 ```

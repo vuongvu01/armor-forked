@@ -16,6 +16,12 @@ const spanableProperties = {
     bottom: true,
     left: true,
     right: true,
+    height: true,
+    minHeight: true,
+    maxHeight: true,
+    width: true,
+    minWidth: true,
+    maxWidth: true,
 
     // todo: hardcoded for now, but use an expression like "span(16)" later
     safeMargin: true,
