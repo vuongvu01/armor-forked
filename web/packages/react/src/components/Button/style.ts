@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { ReactElement } from 'react';
 import { ButtonRootStylePropsType } from './type';
-import { marginAttributes, wideAttributes } from '../../system/attributes';
+import { marginAttributes, sizeAttributes } from '../../system/attributes';
 import { durationRegular } from '../../tokens';
 
 const visualStyle = ({
@@ -81,6 +81,6 @@ export const ButtonWrapper = styled(Wrapper)<ButtonRootStylePropsType>`
     ${visualStyle}
     ${sizeStyle}
     ${marginAttributes}
-    ${wideAttributes}
+    ${sizeAttributes}
     ${props => props.styles(props)}
 `;

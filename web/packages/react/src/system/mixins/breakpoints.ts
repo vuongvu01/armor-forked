@@ -4,8 +4,8 @@ import {
     BreakpointFunctionType,
     BreakpointFunctionTwoArgsType,
 } from './type';
-import { BreakpointsBaseType } from '../../styling';
-import { CSSChunkType } from '../../type';
+import { BreakpointsBaseType, SpanFunctionType } from '../../styling';
+import { CSSChunkType, ScalarType } from '../../type';
 
 const makeRule = (way: string, value: number, cssChunk?: CSSChunkType) => {
     const mediaRule = `@media (${way}-width:${value}px)`;
@@ -16,6 +16,18 @@ const makeRule = (way: string, value: number, cssChunk?: CSSChunkType) => {
     }
 
     return mediaRule;
+};
+
+export const mapBreakpoint = (
+    breakpoints: BreakpointsBaseType,
+    value: ScalarType,
+    span: SpanFunctionType,
+) => {
+    if (typeof value === 'string' && value in breakpoints.values) {
+        return `${breakpoints.values[value]}px`;
+    }
+
+    return span(value);
 };
 
 // todo: move breakpoints to the last position and make optional

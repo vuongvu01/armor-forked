@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { fixedCover } from '../../system/mixins';
 import { DialogRootStylePropsType } from './type';
 import { Paper } from '../Paper';
-import { wideAttributes } from '../../system/attributes';
+import { sizeAttributes } from '../../system/attributes';
 import { DIALOG_SCROLL_DOCUMENT } from './Dialog';
 
 const dialogContainerOverflow = ({ scroll }: DialogRootStylePropsType) => {
@@ -87,7 +87,7 @@ export const DialogRoot = styled(Paper)<DialogRootStylePropsType>`
         ${theme.components.Dialog.Root.base}
     `}
 
-    ${wideAttributes}
+    ${sizeAttributes}
     ${props => props.dialogStyles(props)}
 `;
 

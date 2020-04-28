@@ -12,6 +12,7 @@
     "scripts": {
         "dev": "./script/dev.sh",
         "doc": "./script/doc.sh",
+        "doc:release": "./script/doc-release.sh",
         "setup": "./script/setup.sh",
         "install-peers": "install-self-peers -- --ignore-scripts",
         "build": "yarn run build:esm; yarn run build:cjs",

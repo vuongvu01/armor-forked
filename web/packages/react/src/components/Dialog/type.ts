@@ -1,6 +1,6 @@
 import { HTMLAttributes } from 'react';
 import { StylesFunctionOrStubType, ComponentAttributesType } from '../type';
-import { WideAttributesType } from '../../system/attributes';
+import { SizeAttributesType } from '../../system/attributes';
 import { ThemeType } from '../../styling';
 import { Indexed, ObjectLiteralType } from '../../type';
 import { ModalPropsType } from '../Modal/type';
@@ -21,7 +21,7 @@ export type DialogPropsType = DialogCustomPropsType &
         DialogHTMLPropsType,
         DialogStyleOverrideType
     > &
-    WideAttributesType;
+    SizeAttributesType;
 
 export type DialogAttributeOverrideType = {
     Root?: DialogCustomPropsType;

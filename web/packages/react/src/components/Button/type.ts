@@ -6,7 +6,7 @@ import {
 import { StylesFunctionOrStubType, ComponentAttributesType } from '../type';
 import {
     MarginAttributesType,
-    WideAttributesType,
+    SizeAttributesType,
 } from '../../system/attributes';
 import { ThemeType } from '../../styling';
 import { Indexed, ObjectLiteralType } from '../../type';
@@ -17,7 +17,7 @@ export type ButtonPropsType = ButtonOverridableAttributesType &
         ButtonAttributesType,
         ButtonStyleOverrideType
     > &
-    WideAttributesType &
+    SizeAttributesType &
     MarginAttributesType;
 
 type ButtonAttributesType = ButtonHTMLAttributes<HTMLButtonElement> &

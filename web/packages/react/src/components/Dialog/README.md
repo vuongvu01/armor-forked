@@ -289,14 +289,11 @@ It is possible to disable transition effect on show / hide, if this is required.
 
 ```typescript jsx
 import { useState } from 'react';
-import { GroupHelper } from 'GroupHelper';
 import {Button} from '../Button';
 import {DialogContent} from "../DialogContent";
 import {DialogTitle} from "../DialogTitle";
-import {LoremIpsum} from "../../doc-helpers/LoremIpsum";
 
 const [open, setOpen] = useState(false);
-const [scrollType, setScrollType] = useState('dialog');
 const onClose = () => setOpen(false);
 
 <>

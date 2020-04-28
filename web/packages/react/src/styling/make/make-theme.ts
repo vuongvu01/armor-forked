@@ -20,7 +20,7 @@ export const makeTheme = (
         arrayMerge: overwriteMerge,
     }) as ThemeDeclarationType;
 
-    theme.span = makeSpan(theme.span);
+    theme.span = makeSpan(theme);
     theme.breakpoints = makeBreakpoints(theme.breakpoints);
     theme.typography = makeTypography(theme.typography);
 

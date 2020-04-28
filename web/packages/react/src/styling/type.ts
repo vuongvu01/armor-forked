@@ -20,6 +20,7 @@ export type BreakpointsBaseType = {
 };
 
 export type BreakpointsType = BreakpointsBaseType & {
+    map: (value: ScalarType, span: SpanFunctionType) => ScalarType;
     up: BreakpointFunctionForwardedType;
     down: BreakpointFunctionForwardedType;
     only: BreakpointFunctionForwardedType;

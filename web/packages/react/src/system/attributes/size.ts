@@ -8,6 +8,8 @@ export type SizeAttributesType = {
     height?: ScalarType;
     minHeight?: ScalarType;
     maxHeight?: ScalarType;
+    wide?: boolean;
+    tall?: boolean;
 };
 
 type PropertiesType = { theme: ThemeType } & SizeAttributesType;
@@ -18,7 +20,7 @@ const makeCSS = (
     value?: ScalarType,
 ) => {
     if (typeof value !== 'undefined') {
-        return `${cssParameter}: ${theme.span(value)};`;
+        return `${cssParameter}: ${theme.breakpoints.map(value, theme.span)};`;
     }
 
     return '';
@@ -32,6 +34,8 @@ export const sizeAttributes = ({
     height,
     minHeight,
     maxHeight,
+    wide,
+    tall,
 }: PropertiesType) => `
     ${makeCSS(theme, 'width', width)}
     ${makeCSS(theme, 'min-width', minWidth)}
@@ -39,4 +43,6 @@ export const sizeAttributes = ({
     ${makeCSS(theme, 'height', height)}
     ${makeCSS(theme, 'min-height', minHeight)}
     ${makeCSS(theme, 'max-height', maxHeight)}
+    ${wide ? 'width: 100%;' : ''}
+    ${tall ? 'height: 100%;' : ''}
 `;
