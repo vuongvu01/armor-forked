@@ -28,7 +28,7 @@ const StyledBox = withStyles({
     Root: () => 'border: 1px solid black; border-radius: 5px;',
 })(Box);
 
-<StyledBox padding={5} marginY={5} textAlignment="center">Hi there, I have margin and padding</StyledBox>
+<StyledBox padding={5} marginY={5} textAlign="center">Hi there, I have margin and padding</StyledBox>
 ```
 
 #### Width based on the breakpoint

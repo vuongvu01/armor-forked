@@ -1,8 +1,8 @@
 export type TextAlignmentAttributesType = {
-    textAlignment?: 'left' | 'middle' | 'right';
+    textAlign?: 'left' | 'middle' | 'right';
 };
 
 export const textAlignmentAttributes = ({
-    textAlignment,
+    textAlign,
 }: TextAlignmentAttributesType) =>
-    textAlignment ? `text-align: ${textAlignment};` : '';
+    textAlign ? `text-align: ${textAlign};` : '';

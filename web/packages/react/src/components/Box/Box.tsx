@@ -79,5 +79,5 @@ Box.propTypes = {
     maxHeight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
     /** Defines element text alignment */
-    textAlignment: PropTypes.oneOf(['left', 'middle', 'right']),
+    textAlign: PropTypes.oneOf(['left', 'middle', 'right']),
 };
