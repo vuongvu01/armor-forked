@@ -10,7 +10,7 @@ const visualStyle = ({
     tertiary,
 }: ButtonRootStylePropsType) => {
     const {
-        components: { Button },
+        overrides: { Button },
     } = theme;
 
     if (secondary) {
@@ -27,7 +27,7 @@ const visualStyle = ({
 
 const sizeStyle = ({ theme, small }: ButtonRootStylePropsType) => {
     const {
-        components: { Button },
+        overrides: { Button },
     } = theme;
 
     if (small) {
@@ -51,7 +51,7 @@ const basicStyle = ({ theme }: ButtonRootStylePropsType) => css<
     border-radius: ${theme.figure.borderRadius};
     transition: background-color ${durationRegular}ms ease,
         border-color ${durationRegular}ms ease, color ${durationRegular}ms ease;
-    ${theme.components.Button.Root.base}
+    ${theme.overrides.Button.Root.base}
 `;
 
 export const ButtonWrapper = styled(Wrapper)<ButtonRootStylePropsType>`
@@ -77,8 +77,8 @@ export const ButtonWrapper = styled(Wrapper)<ButtonRootStylePropsType>`
         cursor: pointer;
     }
 
-    ${basicStyle}
     ${visualStyle}
+    ${basicStyle}
     ${sizeStyle}
     ${marginAttributes}
     ${sizeAttributes}

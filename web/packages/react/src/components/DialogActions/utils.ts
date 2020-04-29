@@ -6,16 +6,16 @@ import {
 import { returnEmptyString, makeClassName } from '../../utils';
 import { ClassNamesType } from '../type';
 
-export const useStylesOverrideDialogActions = (
+export const useDialogActionsStylesOverride = (
     styles?: DialogActionsStyleOverrideType,
-): DialogActionsStyleOverrideSafeType => {
-    return useMemo(() => {
-        const { Root } = styles || {};
-        return {
-            Root: Root || returnEmptyString,
-        };
-    }, [styles]);
-};
+): DialogActionsStyleOverrideSafeType =>
+    useMemo(
+        () => ({
+            Root: returnEmptyString,
+            ...styles,
+        }),
+        [styles],
+    );
 
 export const useDialogActionsClassName = (
     classPrefix: string,

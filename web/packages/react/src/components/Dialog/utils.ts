@@ -6,17 +6,17 @@ import { ClassNamesType } from '../type';
 export const useDialogStylesOverride = (
     styles?: DialogStyleOverrideType,
 ): DialogStyleOverrideSafeType => {
-    return useMemo(() => {
-        const { Root, Overlay, CloseButton, AlignmentContainer, Content } =
-            styles || {};
-        return {
-            Root: Root || returnEmptyString,
-            AlignmentContainer: AlignmentContainer || returnEmptyString,
-            Overlay: Overlay || returnEmptyString,
-            CloseButton: CloseButton || returnEmptyString,
-            Content: Content || returnEmptyString,
-        };
-    }, [styles]);
+    return useMemo(
+        () => ({
+            Root: returnEmptyString,
+            AlignmentContainer: returnEmptyString,
+            Overlay: returnEmptyString,
+            CloseButton: returnEmptyString,
+            Content: returnEmptyString,
+            ...styles,
+        }),
+        [styles],
+    );
 };
 
 export const useDialogClassNames = (

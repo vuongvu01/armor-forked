@@ -5,14 +5,14 @@ import { ClassNamesType } from '../type';
 
 export const useStylesOverridePaper = (
     styles?: PaperStyleOverrideType,
-): PaperStyleOverrideSafeType => {
-    return useMemo(() => {
-        const { Root } = styles || {};
-        return {
-            Root: Root || returnEmptyString,
-        };
-    }, [styles]);
-};
+): PaperStyleOverrideSafeType =>
+    useMemo(
+        () => ({
+            Root: returnEmptyString,
+            ...styles,
+        }),
+        [styles],
+    );
 
 export const useClassNamePaper = (
     classPrefix: string,

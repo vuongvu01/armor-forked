@@ -6,12 +6,13 @@ import { ClassNamesType } from '../type';
 export const useButtonStylesOverride = (
     styles?: ButtonStyleOverrideType,
 ): ButtonStyleOverrideSafeType => {
-    return useMemo(() => {
-        const { Root } = styles || {};
-        return {
-            Root: Root || returnEmptyString,
-        };
-    }, [styles]);
+    return useMemo(
+        () => ({
+            Root: returnEmptyString,
+            ...styles,
+        }),
+        [styles],
+    );
 };
 
 export const useButtonClassName = (
@@ -30,7 +31,6 @@ export const useButtonClassName = (
             classPrefix,
             className,
             classNames,
-            'root',
         );
         const stateClassNames: string[] = [];
         if (disabled) {

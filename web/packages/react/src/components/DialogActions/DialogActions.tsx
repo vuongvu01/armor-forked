@@ -1,13 +1,14 @@
 import React, { FunctionComponent } from 'react';
-// import PropTypes from 'prop-types';
 import { useTheme } from '../../styling';
 
 import {
     useDialogActionsClassName,
-    useStylesOverrideDialogActions,
+    useDialogActionsStylesOverride,
 } from './utils';
 import { DialogActionsRoot } from './style';
 import { DialogActionsPropsType } from './type';
+import { useThemeOverride } from '../../utils/hooks';
+import { dialogActionsDefaultTheme } from './theme';
 
 const CLASS_PREFIX = 'DialogActions';
 
@@ -18,12 +19,14 @@ export const DialogActions: FunctionComponent<DialogActionsPropsType> = ({
     ...restProps
 }) => {
     const theme = useTheme();
+    useThemeOverride(CLASS_PREFIX, theme, dialogActionsDefaultTheme);
+
     const classNameRoot = useDialogActionsClassName(
         CLASS_PREFIX,
         className,
         classNames,
     );
-    const stylesOverride = useStylesOverrideDialogActions(styles);
+    const stylesOverride = useDialogActionsStylesOverride(styles);
 
     return (
         <DialogActionsRoot

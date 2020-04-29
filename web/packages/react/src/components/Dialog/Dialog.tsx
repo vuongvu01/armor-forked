@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
-import { useObject } from '../../utils/hooks';
+import { useObject, useThemeOverride } from '../../utils/hooks';
 import { useTheme } from '../../styling';
 
 import { useDialogClassNames, useDialogStylesOverride } from './utils';
@@ -16,6 +16,7 @@ import { Modal } from '../Modal';
 import { CloseIcon } from '../../icons/CloseIcon';
 import { useDisplay } from '../Modal/utils';
 import { useContainerClickTrap } from '../DialogContent/utils';
+import { dialogDefaultTheme } from './theme';
 
 const CLASS_PREFIX = 'Dialog';
 export const DIALOG_SCROLL_DOCUMENT = 'document';
@@ -36,6 +37,8 @@ export const Dialog: FunctionComponent<DialogPropsType> = ({
     ...restProps
 }) => {
     const theme = useTheme();
+    useThemeOverride(CLASS_PREFIX, theme, dialogDefaultTheme);
+
     const classNameComponents = useDialogClassNames(
         CLASS_PREFIX,
         className,

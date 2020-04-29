@@ -12,6 +12,8 @@ import {
     DialogTitleDescription,
 } from './style';
 import { DialogTitlePropsType } from './type';
+import { useThemeOverride } from '../../utils/hooks';
+import { dialogTitleDefaultTheme } from './theme';
 
 const CLASS_PREFIX = 'DialogTitle';
 
@@ -24,6 +26,8 @@ export const DialogTitle: FunctionComponent<DialogTitlePropsType> = ({
     ...restProps
 }) => {
     const theme = useTheme();
+    useThemeOverride(CLASS_PREFIX, theme, dialogTitleDefaultTheme);
+
     const classNameComponents = useDialogTitleClassNames(
         CLASS_PREFIX,
         className,

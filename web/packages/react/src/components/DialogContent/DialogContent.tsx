@@ -8,6 +8,8 @@ import {
 } from './utils';
 import { DialogContentRoot } from './style';
 import { DialogContentPropsType } from './type';
+import { useThemeOverride } from '../../utils/hooks';
+import { dialogContentDefaultTheme } from './theme';
 
 const CLASS_PREFIX = 'DialogContent';
 
@@ -19,6 +21,8 @@ export const DialogContent: FunctionComponent<DialogContentPropsType> = ({
     ...restProps
 }) => {
     const theme = useTheme();
+    useThemeOverride(CLASS_PREFIX, theme, dialogContentDefaultTheme);
+
     const classNameRoot = useDialogContentClassName(
         CLASS_PREFIX,
         className,

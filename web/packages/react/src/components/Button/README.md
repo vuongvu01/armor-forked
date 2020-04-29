@@ -136,21 +136,122 @@ import {MaterialIcon} from '../MaterialIcon';
 
 ### How to customise
 
-The `withStyles()` HOC allows to create locally-defined custom versions of components by passing down `styles` and `attributes` override.
+Create a uniquely-styled button:
 
 ```typescript jsx
-import { css, withStyles } from "../../";
+import { GroupHelper } from 'GroupHelper';
+import { css, withStyles, shadow100 } from "../../";
+import {white} from "../../tokens/colors";
 
 const CustomPrimaryButton = withStyles(
     {
-        Root: ({ disabled }) => css`background: linear-gradient(to bottom, rgba(243,197,189,1) 0%,rgba(232,108,87,1) 21%,rgba(232,108,87,1) 21%,rgba(234,40,3,1) 46%,rgba(255,102,0,1) 75%,rgba(199,34,0,1) 100%);`,
+        Root: ({ disabled }) => css`
+            box-shadow: ${shadow100};
+            text-transform: uppercase;
+            color: #D3302F;
+            border: 2px solid #D61F26;
+            background-color: ${white};
+            border-radius: 4px;
+
+            &:hover, &:active, &:focus, &:visited {
+                color: #D3302F;
+                background-color: ${white};
+            }
+            &:hover {
+                background-color: #FAEAEB;
+            }
+        `,
     },
     { 
         Root: { primary: true }
     }
 )(Button);
 
-<CustomPrimaryButton>Hello</CustomPrimaryButton>
+<GroupHelper>
+    <CustomPrimaryButton>I am custom</CustomPrimaryButton>
+    <Button>I am still the same</Button>
+</GroupHelper>
+```
+
+Restyle all buttons in the application:
+
+```typescript jsx
+import { GroupHelper } from 'GroupHelper';
+import { shadow100 } from "../../";
+import {ThemeProvider} from "../../styling/theme-provider";
+import { makeTheme } from '../../styling/make/make-theme';
+import {white} from "../../tokens/colors";
+
+const theme = makeTheme({
+    components: {
+        Button: {
+            Root: {
+                base: {
+                    boxShadow: shadow100,
+                    textTransform: 'uppercase',
+                    color: '#D3302F',
+                    border: '2px solid #D61F26',
+                    backgroundColor: white,
+                    borderRadius: '4px',
+
+                    '&:hover, &:active, &:focus, &:visited': {
+                        color: '#D3302F',
+                        backgroundColor: white,
+                    },
+                    '&:hover': {
+                        backgroundColor: '#FAEAEB',
+                    },
+                },
+            },
+        },
+    },
+});
+
+<ThemeProvider theme={theme}>
+    <GroupHelper>
+        <Button>I am custom</Button>
+        <Button>Me too</Button>
+    </GroupHelper>
+</ThemeProvider>
+```
+
+Restyle buttons using CSS class names:
+
+```js
+import { shadow100 } from "../../";
+import {white} from "../../tokens/colors";
+
+<>
+    <style 
+        dangerouslySetInnerHTML={{
+            __html: `
+                .Button-global-demo .Button-Root {
+                    box-shadow: ${shadow100};
+                    text-transform: uppercase;
+                    color: #D3302F;
+                    border: 2px solid #D61F26;
+                    background-color: ${white};
+                    border-radius: 4px;
+                }
+
+                .Button-global-demo .Button-Root:hover,
+                .Button-global-demo .Button-Root:active,
+                .Button-global-demo .Button-Root:focus,
+                .Button-global-demo .Button-Root:visited {
+                    color: #D3302F;
+                    background-color: ${white};
+                }
+
+                .Button-global-demo .Button-Root:hover {
+                    background-color: #FAEAEB;
+                };
+            `
+        }}
+    />
+    <div className="Button-global-demo">
+        <Button>Hello</Button>
+    </div>
+</>
 ```
 
 `Button` component supports atomic `margin` attributes. It accepts strings and numbers, if a number is passed, then `spacing` gets applied.
@@ -166,13 +267,3 @@ const CustomPrimaryButton = withStyles(
 </Button>
 ```
 
-You can use CSS to override styles of elements based on global class names.
-
-```js
-<>
-    <style dangerouslySetInnerHTML={{__html: `.Button-global-demo .Button-Root { border: 1px solid red; };`}} />
-    <div className="Button-global-demo">
-        <Button>Hello</Button>
-    </div>
-</>
-```

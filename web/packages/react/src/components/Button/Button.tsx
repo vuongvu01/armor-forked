@@ -1,13 +1,14 @@
 import React, { FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
-import { useObject } from '../../utils/hooks';
+import { useObject, useThemeOverride } from '../../utils/hooks';
 import { useTheme } from '../../styling';
 
 import { useButtonClassName, useButtonStylesOverride } from './utils';
 import { ButtonWrapper } from './style';
 import { ButtonPropsType } from './type';
+import { buttonDefaultTheme } from './theme';
 
-const classPrefix = 'Button';
+const CLASS_PREFIX = 'Button';
 
 export const Button: FunctionComponent<ButtonPropsType> = ({
     className,
@@ -25,8 +26,10 @@ export const Button: FunctionComponent<ButtonPropsType> = ({
     ...restProps
 }) => {
     const theme = useTheme();
+    useThemeOverride(CLASS_PREFIX, theme, buttonDefaultTheme);
+
     const classNameRoot = useButtonClassName(
-        classPrefix,
+        CLASS_PREFIX,
         className,
         classNames,
         disabled,

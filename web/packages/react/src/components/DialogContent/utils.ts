@@ -8,14 +8,14 @@ import { ClassNamesType } from '../type';
 
 export const useDialogContentStylesOverride = (
     styles?: DialogContentStyleOverrideType,
-): DialogContentStyleOverrideSafeType => {
-    return useMemo(() => {
-        const { Root } = styles || {};
-        return {
-            Root: Root || returnEmptyString,
-        };
-    }, [styles]);
-};
+): DialogContentStyleOverrideSafeType =>
+    useMemo(
+        () => ({
+            Root: returnEmptyString,
+            ...styles,
+        }),
+        [styles],
+    );
 
 export const useDialogContentClassName = (
     classPrefix: string,

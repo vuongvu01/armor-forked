@@ -3,21 +3,21 @@ import {
     DialogTitleStyleOverrideType,
     DialogTitleStyleOverrideSafeType,
 } from './type';
-import { returnEmptyString, makeBEM, makeClassName } from '../../utils';
+import { returnEmptyString, makeClassName } from '../../utils';
 import { ClassNamesType } from '../type';
 
 export const useDialogTitleStylesOverride = (
     styles?: DialogTitleStyleOverrideType,
-): DialogTitleStyleOverrideSafeType => {
-    return useMemo(() => {
-        const { Root, Text, Description } = styles || {};
-        return {
-            Root: Root || returnEmptyString,
-            Text: Text || returnEmptyString,
-            Description: Description || returnEmptyString,
-        };
-    }, [styles]);
-};
+): DialogTitleStyleOverrideSafeType =>
+    useMemo(
+        () => ({
+            Root: returnEmptyString,
+            Text: returnEmptyString,
+            Description: returnEmptyString,
+            ...styles,
+        }),
+        [styles],
+    );
 
 export const useDialogTitleClassNames = (
     classPrefix: string,
