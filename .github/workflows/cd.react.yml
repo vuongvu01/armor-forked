@@ -1,9 +1,9 @@
-name: CI.REACT
+name: CD.REACT
 
 on:
-  pull_request:
+  push:
     branches:
-      - dev
+      - master-tmp
     paths:
       - "web/packages/react/**"
 
@@ -26,9 +26,9 @@ jobs:
         run: yarn run install-peers
         env:
           GITHUB_PKG_TOKEN: foo
-      - name: Lint
+      - name: Build
         working-directory: ./web/packages/react
-        run: yarn run lint
-      - name: Test
+        run: yarn run build
+      - name: Publish
         working-directory: ./web/packages/react
-        run: yarn run test
+        run: yarn publish
