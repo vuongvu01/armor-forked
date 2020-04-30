@@ -161,11 +161,39 @@ const CustomPrimaryButton = withStyles(
                 background-color: #FAEAEB;
             }
         `,
-    },
-    { 
-        Root: { primary: true }
     }
 )(Button);
+
+<GroupHelper>
+    <CustomPrimaryButton>I am custom</CustomPrimaryButton>
+    <Button>I am still the same</Button>
+</GroupHelper>
+```
+
+Same, but with `styled()` (you can only style `Root` element this way):
+
+```typescript jsx
+import { GroupHelper } from 'GroupHelper';
+import { shadow100 } from "../../";
+import styled from 'styled-components';
+import {white} from "../../tokens/colors";
+
+const CustomPrimaryButton = styled(Button)`
+      box-shadow: ${shadow100};
+      text-transform: uppercase;
+      color: #D3302F;
+      border: 2px solid #D61F26;
+      background-color: ${white};
+      border-radius: 4px;
+
+      &:hover, &:active, &:focus, &:visited {
+          color: #D3302F;
+          background-color: ${white};
+      }
+      &:hover {
+          background-color: #FAEAEB;
+      }
+  `;
 
 <GroupHelper>
     <CustomPrimaryButton>I am custom</CustomPrimaryButton>

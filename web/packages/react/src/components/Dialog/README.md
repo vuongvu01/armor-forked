@@ -337,24 +337,16 @@ const [open, setOpen] = useState(false);
 const onClose = () => setOpen(false);
 
 const UltraExpressiveDialog = withStyles({
-    Overlay: () =>
-        css`
-            background-color: darkblue;
-        `,
-    CloseButton: () =>
-        css`
-            color: white;
-        `,
+    // you can use tagged templates, objects or simple strings here
+    Overlay: () => 'background-color: darkblue;',
+    CloseButton: () => ({ color: 'white' }),
     Root: () => css`
         background: url(${boke});
     `,
 })(Dialog);
 
 const WhiteTitle = withStyles({
-    Root: () =>
-        css`
-            color: white;
-        `,
+    Root: () => 'color: white;',
 })(DialogTitle);
 
 <>
