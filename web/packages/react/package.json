@@ -1,6 +1,6 @@
 {
-    "name": "@deliveryhero/ui.react",
-    "version": "1.0.4",
+    "name": "@deliveryhero/armor",
+    "version": "0.0.0",
     "main": "build.cjs/index.js",
     "module": "build.esm/index.js",
     "typings": "build.cjs/index.d.ts",
@@ -35,7 +35,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git@github.com:deliveryhero/ui.git"
+        "url": "git@github.com:deliveryhero/armor.git"
     },
     "publishConfig": {
         "registry": "https://npm.pkg.github.com/"
