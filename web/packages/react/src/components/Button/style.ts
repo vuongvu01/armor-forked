@@ -48,7 +48,6 @@ const Wrapper = ({
 const basicStyle = ({ theme }: ButtonRootStylePropsType) => css<
     ButtonRootStylePropsType
 >`
-    border-radius: ${theme.figure.borderRadius};
     transition: background-color ${durationRegular}ms ease,
         border-color ${durationRegular}ms ease, color ${durationRegular}ms ease;
     ${theme.overrides.Button.Root.base}
