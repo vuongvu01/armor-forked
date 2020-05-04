@@ -3,7 +3,7 @@
 
 <p align="center">
   <h3 align="center">⚙️ + 🖍️ + 🍪 + 🗄️ + 🌐 + 🔎 = 😎</h3>
-  <h3 align="center">DeliveryHero UX System: React</h3>
+  <h3 align="center">DeliveryHero Armor Design System: React</h3>
 
   <p align="center">
     This is a UX System that is used in the React projects of the company.
