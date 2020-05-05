@@ -8,4 +8,4 @@ export * from './DialogActions';
 export * from './SVGIcon';
 export * from './MaterialIcon';
 
-export const meaningOfLife = 47;
+export const meaningOfLife = 48;
