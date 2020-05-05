@@ -1,0 +1,20 @@
+{
+    "plugins": [
+        ["@semantic-release/commit-analyzer", {
+            "preset": "angular",
+            "releaseRules": [
+                {"type": "refactor", "release": "minor"},
+                {"type": "feat", "release": "minor"},
+                {"type": "docs", "release": "patch"},
+                {"type": "chore", "release": "patch"},
+                {"type": "fix", "release": "patch"},
+                {"type": "style", "release": "patch"},
+                {"scope": "no-release", "release": false}
+            ],
+            "parserOpts": {
+                "noteKeywords": ["BREAKING CHANGE", "BREAKING CHANGES"]
+            }
+        }],
+        "@semantic-release/release-notes-generator"
+    ]
+}
