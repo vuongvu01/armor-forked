@@ -7,5 +7,3 @@ export * from './DialogContent';
 export * from './DialogActions';
 export * from './SVGIcon';
 export * from './MaterialIcon';
-
-export const meaningOfLife = 48;
