@@ -20,12 +20,12 @@ jobs:
         working-directory: ./web/packages/react
         run: yarn install
         env:
-          GITHUB_TOKEN: foo
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Install peers
         working-directory: ./web/packages/react
         run: yarn run install-peers
         env:
-          GITHUB_TOKEN: foo
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Build
         working-directory: ./web/packages/react
         run: yarn run build
@@ -33,4 +33,4 @@ jobs:
         working-directory: ./web/packages/react
         run: yarn semantic-release
         env:
-          GITHUB_TOKEN: foo
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
