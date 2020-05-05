@@ -21,12 +21,12 @@ jobs:
         working-directory: ./web/packages/react
         run: yarn install
         env:
-          GITHUB_PKG_TOKEN: foo
+          GITHUB_TOKEN: foo
       - name: Install peers
         working-directory: ./web/packages/react
         run: yarn run install-peers
         env:
-          GITHUB_PKG_TOKEN: foo
+          GITHUB_TOKEN: foo
       - name: Lint
         working-directory: ./web/packages/react
         run: yarn run lint

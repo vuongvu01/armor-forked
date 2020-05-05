@@ -58,13 +58,13 @@ In order to do that, follow these steps:
 1. [Generate your own GitHUB token](https://github.com/settings/tokens) with these permissions: **read:packages**, **repo**
 2. Add the token as an environment variable:
     ~~~sh
-    printf "\nexport GITHUB_PKG_TOKEN=<your-token-goes-here>\n" >> ~/.bash_profile; # .bashrc in linux
+    printf "\nexport GITHUB_TOKEN=<your-token-goes-here>\n" >> ~/.bash_profile; # .bashrc in linux
     source ~/.bash_profile;
     ~~~
 3. In your application next to the `package.json` file create another file called `.npmrc` with the following content:
     ~~~
     @deliveryhero:registry="https://npm.pkg.github.com/"
-    //npm.pkg.github.com/:_authToken=${GITHUB_PKG_TOKEN}
+    //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
     ~~~
     If you already have this file, just to append the lines above to it.
 4. Install the package
