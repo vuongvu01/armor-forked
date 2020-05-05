@@ -29,6 +29,8 @@ jobs:
       - name: Build
         working-directory: ./web/packages/react
         run: yarn run build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish
         working-directory: ./web/packages/react
         run: yarn semantic-release
