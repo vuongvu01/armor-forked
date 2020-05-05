@@ -43,7 +43,7 @@ module.exports = {
         },
     },
     ribbon: {
-        url: 'https://github.com/deliveryhero/ui/',
+        url: 'https://github.com/deliveryhero/armor/',
     },
     sections: [
         {

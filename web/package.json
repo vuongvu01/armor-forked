@@ -1,6 +1,4 @@
 {
-    "name": "deliveryhero",
-    "description": "",
     "license": "UNLICENSED",
     "scripts": {
         "build": "lerna run build --npm-client=yarn",

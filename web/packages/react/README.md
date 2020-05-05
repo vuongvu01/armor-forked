@@ -1,19 +1,19 @@
-[![Actions Status](https://github.com/deliveryhero/ui/workflows/CI.REACT/badge.svg)](https://github.com/deliveryhero/ui/actions)
+[![Actions Status](https://github.com/deliveryhero/armor/workflows/CI.REACT/badge.svg)](https://github.com/deliveryhero/armor/actions)
 ---
 
 <p align="center">
   <h3 align="center">⚙️ + 🖍️ + 🍪 + 🗄️ + 🌐 + 🔎 = 😎</h3>
-  <h3 align="center">DeliveryHero UX System: React</h3>
+  <h3 align="center">DeliveryHero Armor Design System: React</h3>
 
   <p align="center">
     This is a UX System that is used in the React projects of the company.
     <br />
     <br />
-    <a href="https://deliveryhero.github.io/ui/">Docs</a>
+    <a href="https://deliveryhero.github.io/armor/">Docs</a>
     ·
-    <a href="https://github.com/deliveryhero/ui/issues">Report Bug</a>
+    <a href="https://github.com/deliveryhero/armor/issues">Report Bug</a>
     ·
-    <a href="https://github.com/deliveryhero/ui/issues">Request Feature</a>
+    <a href="https://github.com/deliveryhero/armor/issues">Request Feature</a>
   </p>
 </p>
 
@@ -53,14 +53,14 @@ Todo: when there is something inside, write a short intro to the project
 ## Usage
 
 To use the UI offered by this project you need to install an NPM package and consume it in the code of your application.
-In order to do that, following these steps:
+In order to do that, follow these steps:
 
-1. [Generate your own GitHUB token](https://github.com/settings/tokens)
-2. Add the token as an environment variable (you can use any other name for the variable):
+1. [Generate your own GitHUB token](https://github.com/settings/tokens) with these permissions: **read:packages**, **repo**
+2. Add the token as an environment variable:
     ~~~sh
-    export GITHUB_PKG_TOKEN="<your-token-goes-here>";
+    printf "\nexport GITHUB_PKG_TOKEN=<your-token-goes-here>\n" >> ~/.bash_profile; # .bashrc in linux
+    source ~/.bash_profile;
     ~~~
-   Add the same line to `~/.bashrc` or `~/.bash_profile` (Mac) to keep this variable between laptop restarts.
 3. In your application next to the `package.json` file create another file called `.npmrc` with the following content:
     ~~~
     @deliveryhero:registry="https://npm.pkg.github.com/"
@@ -69,11 +69,11 @@ In order to do that, following these steps:
     If you already have this file, just to append the lines above to it.
 4. Install the package
     ~~~sh
-    yarn add @deliveryhero/ui.react
+    yarn add @deliveryhero/armor
     ~~~
 5. Start coding!
     ~~~javascript
-    import { Button } from '@deliveryhero/ui.react';
+    import { Button } from '@deliveryhero/armor';
     ~~~
 
 ## Development
@@ -84,7 +84,7 @@ If you wish to make a contribution to the library, you need to setup the develop
 
 1. Clone the repo
     ```sh
-    git clone git@github.com:deliveryhero/ui.git
+    git clone git@github.com:deliveryhero/armor.git
     ```
 2. Install NPM packages everywhere
     ```sh
@@ -122,12 +122,12 @@ You have two options here.
 2. Link the package to the application:
     ~~~sh
     cd <application-folder>;
-    yarn link "@deliveryhero/ui.react";
+    yarn link "@deliveryhero/armor";
     ~~~
     or if the project uses `npm`:
     ~~~sh
     cd <application-folder>;
-    npm link "@deliveryhero/ui.react";
+    npm link "@deliveryhero/armor";
     ~~~
 
 ⚠️ Note: in order to continue working in `Storybook` you need to install peer dependencies back by typing
@@ -151,7 +151,7 @@ yarn run install-peers;
 3. Link the package to the application:
     ~~~sh
     cd <application-folder>;
-    yalc link "@deliveryhero/ui.react";
+    yalc link "@deliveryhero/armor";
     ~~~
 
 Further reading: [yalc docs](https://github.com/whitecolor/yalc).
@@ -272,7 +272,7 @@ To manually publish a new version of the package, follow these steps:
 
  - [Sergei Gannochenko](sergei.gannochenko@deliveryhero.com)
 
-Project Link: [https://github.com/deliveryhero/ui](https://github.com/deliveryhero/ui)
+Project Link: [https://github.com/deliveryhero/armor](https://github.com/deliveryhero/armor)
 
 ### Built With
 

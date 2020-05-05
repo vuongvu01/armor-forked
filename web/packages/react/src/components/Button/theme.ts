@@ -19,11 +19,13 @@ export const buttonDefaultTheme = {
             fontSize: fontSizeRegular,
             fontWeight: fontWeightMedium,
             fontFamily: fontFamilyRoboto, // todo: link to typography.fontFamily
+            textTransform: 'uppercase',
             lineHeight: 1.6,
             paddingLeft: 4,
             paddingRight: 4,
             paddingTop: 2,
             paddingBottom: 2,
+            borderRadius: '4px',
         },
         primary: {
             color: white,
@@ -47,6 +49,7 @@ export const buttonDefaultTheme = {
             backgroundColor: blue050,
             '&:hover': {
                 borderColor: blue300,
+                backgroundColor: blue070,
             },
             '&:focus': {
                 borderColor: blue300,
@@ -60,13 +63,14 @@ export const buttonDefaultTheme = {
         },
         tertiary: {
             color: blue200,
-            textTransform: 'uppercase',
             backgroundColor: 'transparent',
             '&:hover': {
                 color: blue300,
+                backgroundColor: blue070,
             },
             '&:focus': {
                 color: blue400,
+                backgroundColor: blue070,
             },
             '&:disabled': {
                 color: grey100,
