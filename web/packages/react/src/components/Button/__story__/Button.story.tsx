@@ -254,10 +254,8 @@ const customTheme = makeTheme({
                     fontWeight: 'bold',
                 },
                 primary: {
-                    base: {
-                        borderColor: 'red',
-                    },
-                    hover: {
+                    borderColor: 'red',
+                    '&:hover': {
                         borderColor: 'yellow',
                     },
                 },

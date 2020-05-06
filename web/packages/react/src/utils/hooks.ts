@@ -34,18 +34,22 @@ const overwriteMerge = (destinationArray: any[], sourceArray: any[]) =>
 export const useThemeOverride = (
     classPrefix: string,
     theme: ThemeType,
-    override: ObjectLiteralType,
+    defaultComponentTheme: ObjectLiteralType,
 ) =>
     // this is supposed to be useEffect(), but we need this code running before the first render
     useMemo(() => {
         if (!(classPrefix in theme.overrides)) {
-            const chunk = merge(theme.components[classPrefix] || {}, override, {
-                arrayMerge: overwriteMerge,
-            });
+            const chunk = merge(
+                defaultComponentTheme,
+                theme.components[classPrefix] || {},
+                {
+                    arrayMerge: overwriteMerge,
+                },
+            );
 
             // eslint-disable-next-line no-param-reassign
             theme.overrides[classPrefix] = transformTheme(theme, chunk);
         }
 
         return true;
-    }, [classPrefix, theme, override]);
+    }, [classPrefix, theme, defaultComponentTheme]);
