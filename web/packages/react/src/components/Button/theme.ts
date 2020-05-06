@@ -63,7 +63,6 @@ export const buttonDefaultTheme = {
         },
         tertiary: {
             color: blue200,
-            backgroundColor: 'transparent',
             '&:hover': {
                 color: blue300,
                 backgroundColor: blue070,
@@ -74,6 +73,7 @@ export const buttonDefaultTheme = {
             },
             '&:disabled': {
                 color: grey100,
+                backgroundColor: 'transparent',
             },
         },
         small: {
