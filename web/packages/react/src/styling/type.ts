@@ -43,7 +43,8 @@ export type ThemeType = Indexed<{
     breakpoints: BreakpointsType;
     palette: PaletteType;
     components: ObjectLiteralType;
-    overrides: ObjectLiteralType;
+    componentOverrides: ObjectLiteralType;
+    referenceIndex: ObjectLiteralType;
     typography: TypographyType;
     span: SpanFunctionType;
     figure: FigureType;

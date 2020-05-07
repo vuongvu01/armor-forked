@@ -35,6 +35,7 @@ export const DialogTitle: FunctionComponent<DialogTitlePropsType> = ({
     );
     const stylesOverride = useDialogTitleStylesOverride(styles);
 
+    // todo: probably reuse Typography component as title
     return (
         <DialogTitleRoot
             theme={theme}

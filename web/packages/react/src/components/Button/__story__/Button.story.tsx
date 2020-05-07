@@ -27,6 +27,7 @@ import {
     DialogStyleOverrideType,
 } from '../../Dialog/type';
 import { Dialog } from '../../Dialog';
+import { makeHybridTheme } from '../../../doc-helpers/sample-mui-theme';
 
 export default {
     title: 'Components/Button',
@@ -308,3 +309,36 @@ const CustomButtonMUI = withMaterialStyles({
 })(CustomButtonWrapper);
 
 export const WithMUIStyles = () => <CustomButtonMUI />;
+
+const hybridTheme = makeHybridTheme({
+    components: {
+        Button: {
+            Root: {
+                base: {
+                    fontWeight: 'bold',
+                },
+                primary: {
+                    borderColor: '$palette.secondary.light',
+                    color: '$palette.secondary.main',
+                    '&:hover': {
+                        borderColor: '$palette.secondary.light',
+                    },
+                },
+            },
+        },
+    },
+});
+
+export const ReferencingTheme = () => (
+    <ThemeProvider theme={hybridTheme}>
+        <Button
+            {...getTypeAttributes(select('Type', optionsType, 'primary'))}
+            tag={select('Tag', optionsTag, 'button') as TagType}
+            wide={boolean('Wide', false)}
+            small={boolean('Small', false)}
+        >
+            <MaterialIcon marginRight={2} icon="save" />
+            With custom theme
+        </Button>
+    </ThemeProvider>
+);

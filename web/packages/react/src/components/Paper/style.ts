@@ -6,7 +6,7 @@ export const PaperRoot = styled.div<PaperRootStylePropsType>`
     position: relative;
     overflow-y: auto;
     overflow-x: hidden;
-    ${({ theme }) => theme.overrides.Paper.Root.base}
+    ${({ theme }) => theme.componentOverrides.Paper.Root.base}
     ${marginAttributes}
     ${props => props.styles(props)}
 `;

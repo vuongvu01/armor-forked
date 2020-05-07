@@ -1,42 +1,30 @@
-import {
-    blue050,
-    blue070,
-    blue100,
-    blue200,
-    blue300,
-    blue400,
-    fontFamilyRoboto,
-    fontSizeRegular,
-    fontWeightMedium,
-    grey050,
-    grey100,
-    white,
-} from '../../tokens';
+import { fontWeightMedium, grey050, grey100, white } from '../../tokens';
 
 export const buttonDefaultTheme = {
     Root: {
         base: {
-            fontSize: fontSizeRegular,
+            fontSize: '$typography.fontSize',
             fontWeight: fontWeightMedium,
-            fontFamily: fontFamilyRoboto, // todo: link to typography.fontFamily
+            fontFamily: '$typography.fontFamily',
             textTransform: 'uppercase',
             lineHeight: 1.6,
             paddingLeft: 4,
             paddingRight: 4,
             paddingTop: 2,
             paddingBottom: 2,
-            borderRadius: '4px',
+            borderRadius: '$figure.borderRadius',
+            backgroundColor: 'transparent',
         },
         primary: {
-            color: white,
-            backgroundColor: blue200,
+            color: '$palette.main.contrastText',
+            backgroundColor: '$palette.main.200',
             '&:hover': {
-                color: white,
-                backgroundColor: blue300,
+                color: '$palette.main.contrastText',
+                backgroundColor: '$palette.main.300',
             },
             '&:focus': {
-                color: white,
-                backgroundColor: blue100,
+                color: '$palette.main.contrastText',
+                backgroundColor: '$palette.main.100',
             },
             '&:disabled': {
                 color: grey100,
@@ -44,16 +32,16 @@ export const buttonDefaultTheme = {
             },
         },
         secondary: {
-            color: blue200,
-            borderColor: blue200,
-            backgroundColor: blue050,
+            color: '$palette.main.200',
+            borderColor: '$palette.main.200',
+            backgroundColor: '$palette.main.50',
             '&:hover': {
-                borderColor: blue300,
-                backgroundColor: blue070,
+                borderColor: '$palette.main.300',
+                backgroundColor: '$palette.main.70',
             },
             '&:focus': {
-                borderColor: blue300,
-                backgroundColor: blue070,
+                borderColor: '$palette.main.300',
+                backgroundColor: '$palette.main.70',
             },
             '&:disabled': {
                 color: grey100,
@@ -62,18 +50,17 @@ export const buttonDefaultTheme = {
             },
         },
         tertiary: {
-            color: blue200,
+            color: '$palette.main.200',
             '&:hover': {
-                color: blue300,
-                backgroundColor: blue070,
+                color: '$palette.main.300',
+                backgroundColor: '$palette.main.70',
             },
             '&:focus': {
-                color: blue400,
-                backgroundColor: blue070,
+                color: '$palette.main.400',
+                backgroundColor: '$palette.main.70',
             },
             '&:disabled': {
                 color: grey100,
-                backgroundColor: 'transparent',
             },
         },
         small: {
