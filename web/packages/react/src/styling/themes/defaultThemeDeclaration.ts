@@ -22,28 +22,21 @@ export const defaultThemeDeclaration = {
     },
     color: {
         primary: {
-            light: blue100,
-            base: blue200,
-            dark: blue300,
+            light30: blue050,
+            light20: blue070,
+            light10: blue100,
+            main: blue200,
+            dark10: blue300,
+            dark20: blue400,
             contrast: white,
-        },
-        secondary: {
-            light: blue050,
-            base: blue070,
-            dark: blue300,
-            contrast: blue200,
-        },
-        tertiary: {
-            light: blue070,
-            base: blue300,
-            dark: blue400,
-            contrast: blue200,
         },
         danger: {
-            base: red300,
+            main: red300,
             contrast: white,
         },
-        background: white,
+        background: {
+            main: white,
+        },
     },
     figure: {
         borderRadius: borderRadiusNormal,

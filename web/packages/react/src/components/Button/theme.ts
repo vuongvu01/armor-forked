@@ -17,14 +17,14 @@ export const buttonDefaultTheme = {
         },
         primary: {
             color: '$color.primary.contrast',
-            backgroundColor: '$color.primary.base',
+            backgroundColor: '$color.primary.main',
             '&:hover': {
                 color: '$color.primary.contrast',
-                backgroundColor: '$color.primary.dark',
+                backgroundColor: '$color.primary.dark10',
             },
             '&:focus': {
                 color: '$color.primary.contrast',
-                backgroundColor: '$color.primary.light',
+                backgroundColor: '$color.primary.light10',
             },
             '&:disabled': {
                 color: grey100, // todo: use shades of gray for theme
@@ -32,16 +32,16 @@ export const buttonDefaultTheme = {
             },
         },
         secondary: {
-            color: '$color.secondary.contrast',
-            borderColor: '$color.secondary.contrast',
-            backgroundColor: '$color.secondary.light',
+            color: '$color.primary.main',
+            borderColor: '$color.primary.main',
+            backgroundColor: '$color.primary.light30',
             '&:hover': {
-                borderColor: '$color.secondary.dark',
-                backgroundColor: '$color.secondary.base',
+                borderColor: '$color.primary.dark10',
+                backgroundColor: '$color.primary.light20',
             },
             '&:focus': {
-                borderColor: '$color.secondary.dark',
-                backgroundColor: '$color.secondary.base',
+                borderColor: '$color.primary.dark10',
+                backgroundColor: '$color.primary.light20',
             },
             '&:disabled': {
                 color: grey100, // todo: use shades of gray for theme
@@ -50,21 +50,21 @@ export const buttonDefaultTheme = {
             },
         },
         tertiary: {
-            color: '$color.tertiary.contrast',
+            color: '$color.primary.main',
             '&:hover': {
-                color: '$color.tertiary.base',
-                backgroundColor: '$color.tertiary.light',
+                color: '$color.primary.dark10',
+                backgroundColor: '$color.primary.light20',
             },
             '&:focus': {
-                color: '$color.tertiary.dark',
-                backgroundColor: '$color.tertiary.light',
+                color: '$color.primary.dark20',
+                backgroundColor: '$color.primary.light20',
             },
             '&:disabled': {
                 color: grey100, // todo: use shades of gray for theme
             },
         },
         danger: {
-            color: '$color.danger.base',
+            color: '$color.danger.main',
             '&:disabled': {
                 color: grey100, // todo: use shades of gray for theme
             },
