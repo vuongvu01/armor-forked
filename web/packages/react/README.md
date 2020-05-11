@@ -170,8 +170,8 @@ In this project we use a simplified Git Flow branching model:
 
 ## Contribution rules
 
-Contributions are what really helps this project to advance. Any contributions you make are **greatly appreciated**.
-The project tries to maintain healthy balance between a comfortable development process and restrictions that prevent everything from falling into chaos.
+Contributing on regular basis is what really helps this project to advance. Any contributions you make are **greatly appreciated**.
+The project tries to maintain healthy balance between comfortable development and restrictions that prevent everything from falling into chaos.
 Therefore, there are certain rules a contributor must follow in order to make the process straightforward and error-proof.
 
 ### For contributors
@@ -179,10 +179,12 @@ Therefore, there are certain rules a contributor must follow in order to make th
 #### Component requirements
 
 Every new component should have:
+
 * unit tests,
 * at least one story of Storybook.
 
 When modifying existing components:
+
 * try to support backward compatibility while making updates.
 
 #### Adding a new component
@@ -231,12 +233,29 @@ The algorithm of making a contribution:
 
 ### For maintainers
 
-When accepting a Pull Request:
-* use `Squash-and-Merge` when merging to `dev`,
-* copy the `PR` name to the name of a `squash commit` (it should be <a href="https://www.conventionalcommits.org/en/v1.0.0-beta.4/" target="_blank">conventional</a>).<br />
+#### Accepting a Pull Request to dev branch
+
+1. Use `Squash-and-Merge` when merging to `dev`,
+2. Copy the `PR` name to the name of a `squash commit` (it should be <a href="https://www.conventionalcommits.org/en/v1.0.0-beta.4/" target="_blank">conventional</a>).<br />
     Example: `feat: a new amazing component added` => `feat: a new amazing component added`
 
-Please note that pushing directly to `master` or `dev` without making a PR is strictly prohibited and therefore not possible.
+#### Deploying changes
+
+As soon as there are several features merged into `dev`, it is time to publish a new version. To do so:
+
+1. Create a PR from `dev` to `master`, wait for linter and tests finish with their work.
+2. Squash and merge the PR with the following prefix in the name:
+    1. add `fix:` prefix if the commits merged to `dev` had only `fix:` prefixes (this will increment `patch` version number),
+    2. add `feat:` prefix if one of the commits merged to `dev` had `feat:` prefix (this will increment `minor` version number),
+    3. add `BREAKING CHANGES` note into the commit name, if one of the commits merged into `dev` had `BREAKING CHANGES` in the name (this will increment `major` version number).
+
+    Use of `feat:` and `fix:` prefixes together is not allowed. This routine may be automated in future.
+3. As soon as the PR gets merged, [a new version will be published](https://github.com/deliveryhero/armor/packages/210156).
+4. An updated version of the [documentation](https://deliveryhero.github.io/armor/) will be published as well.
+5. There is no need to pull back the `master` branch locally after the CD process is done. In fact, you should not have the `master` branch locally at all.
+6. The package version in `package.json` will not be updated and this is absolutely normal, because the remote version only matters.
+
+Please note that pushing directly to `master` or `dev` without making a PR is strictly prohibited.
 
 ### Editing the documentation
 
