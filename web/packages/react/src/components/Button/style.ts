@@ -8,9 +8,10 @@ const visualStyle = ({
     theme,
     secondary,
     tertiary,
+    danger,
 }: ButtonRootStylePropsType) => {
     const {
-        overrides: { Button },
+        componentOverrides: { Button },
     } = theme;
 
     if (secondary) {
@@ -21,13 +22,17 @@ const visualStyle = ({
         return Button.Root.tertiary;
     }
 
+    if (danger) {
+        return Button.Root.danger;
+    }
+
     // primary by default
     return Button.Root.primary;
 };
 
 const sizeStyle = ({ theme, small }: ButtonRootStylePropsType) => {
     const {
-        overrides: { Button },
+        componentOverrides: { Button },
     } = theme;
 
     if (small) {
@@ -50,7 +55,7 @@ const basicStyle = ({ theme }: ButtonRootStylePropsType) => css<
 >`
     transition: background-color ${durationRegular}ms ease,
         border-color ${durationRegular}ms ease, color ${durationRegular}ms ease;
-    ${theme.overrides.Button.Root.base}
+    ${theme.componentOverrides.Button.Root.base}
 `;
 
 export const ButtonWrapper = styled(Wrapper)<ButtonRootStylePropsType>`
@@ -76,8 +81,8 @@ export const ButtonWrapper = styled(Wrapper)<ButtonRootStylePropsType>`
         cursor: pointer;
     }
 
-    ${visualStyle}
     ${basicStyle}
+    ${visualStyle}
     ${sizeStyle}
     ${marginAttributes}
     ${sizeAttributes}

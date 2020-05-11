@@ -29,7 +29,7 @@ import { Box } from '../Box';
 
 ```js
 import { Box } from '../Box';
-import {LoremIpsum} from "../../doc-helpers/LoremIpsum";
+import {LoremIpsum} from "../../helpers/LoremIpsum";
 import {withStyles} from "../../styling/with-styles";
 
 const NarrowPaper = withStyles({

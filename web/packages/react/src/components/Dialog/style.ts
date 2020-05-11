@@ -31,7 +31,7 @@ const dialogRootDisplay = ({ scroll }: DialogRootStylePropsType) => {
 const dialogRootMaxHeight = ({ scroll, theme }: DialogRootStylePropsType) => {
     return scroll === DIALOG_SCROLL_DOCUMENT
         ? 'none'
-        : `calc(100% - ${theme.overrides.Dialog.Root.safeMargin})`;
+        : `calc(100% - ${theme.componentOverrides.Dialog.Root.safeMargin})`;
 };
 
 export const DialogOverlay = styled.div<DialogRootStylePropsType>`
@@ -42,7 +42,7 @@ export const DialogOverlay = styled.div<DialogRootStylePropsType>`
         opacity: ${effectToggle ? 1 : 0};
         display: ${display ? 'initial' : 'none'};
         transition: ${disableEffects ? 'none' : 'opacity 100ms ease'};
-        ${theme.overrides.Dialog.Overlay.base}
+        ${theme.componentOverrides.Dialog.Overlay.base}
     `}
 
     ${props => props.styles(props)}
@@ -62,7 +62,9 @@ export const DialogAlignmentContainer = styled.div<DialogRootStylePropsType>`
         !disableCloseButton
             ? css`
                   .DialogTitle-Text {
-                      ${theme.overrides.Dialog.Container['DialogTitle-Text']}
+                      ${theme.componentOverrides.Dialog.Container[
+                          'DialogTitle-Text'
+                      ]}
                   }
               `
             : ''},
@@ -84,7 +86,7 @@ export const DialogRoot = styled(Paper)<DialogRootStylePropsType>`
         transform: translateY(${effectToggle ? 0 : '20px'});
         opacity: ${effectToggle ? 1 : 0};
 
-        ${theme.overrides.Dialog.Root.base}
+        ${theme.componentOverrides.Dialog.Root.base}
     `}
 
     ${sizeAttributes}
@@ -105,7 +107,7 @@ export const DialogCloseButton = styled.div<DialogRootStylePropsType>`
     outline: none;
     cursor: pointer;
     flex: 0 0 auto;
-    ${({ theme }) => theme.overrides.Dialog.CloseButton.base}
+    ${({ theme }) => theme.componentOverrides.Dialog.CloseButton.base}
 
     ${props => props.styles(props)}
 `;

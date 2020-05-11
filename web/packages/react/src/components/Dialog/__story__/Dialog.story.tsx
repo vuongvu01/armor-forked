@@ -17,8 +17,8 @@ import { DialogContent } from '../../DialogContent';
 import { DialogActions } from '../../DialogActions';
 import { Button } from '../../Button';
 import { withStyles } from '../../../styling';
-import { LoremIpsum } from '../../../doc-helpers/LoremIpsum';
-import { boke } from '../../../doc-helpers/boke';
+import { LoremIpsum } from '../../../helpers/LoremIpsum';
+import { boke } from '../../../helpers/boke';
 
 export default {
     title: 'Components/Dialog',

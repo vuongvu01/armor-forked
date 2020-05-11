@@ -37,3 +37,8 @@ jobs:
         run: yarn run test
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build
+        working-directory: ./web/packages/react
+        run: yarn run build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

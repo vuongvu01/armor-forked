@@ -139,7 +139,7 @@ import { GroupHelper } from 'GroupHelper';
 import {Button} from '../Button';
 import {DialogContent} from "../DialogContent";
 import {DialogTitle} from "../DialogTitle";
-import {LoremIpsum} from "../../doc-helpers/LoremIpsum";
+import {LoremIpsum} from "../../helpers/LoremIpsum";
 
 const [open, setOpen] = useState(false);
 const [maxWidth, setMaxWidth] = useState('xs');
@@ -251,7 +251,7 @@ import { GroupHelper } from 'GroupHelper';
 import {Button} from '../Button';
 import {DialogContent} from "../DialogContent";
 import {DialogTitle} from "../DialogTitle";
-import {LoremIpsum} from "../../doc-helpers/LoremIpsum";
+import {LoremIpsum} from "../../helpers/LoremIpsum";
 
 const [open, setOpen] = useState(false);
 const [scrollType, setScrollType] = useState('dialog');
@@ -331,7 +331,7 @@ import {DialogTitle} from '../DialogTitle';
 import {DialogContent} from '../DialogContent';
 import {DialogActions} from '../DialogActions';
 import { css, withStyles } from "../../";
-import { boke } from "../../doc-helpers/boke";
+import { boke } from "../../helpers/boke";
 
 const [open, setOpen] = useState(false);
 const onClose = () => setOpen(false);

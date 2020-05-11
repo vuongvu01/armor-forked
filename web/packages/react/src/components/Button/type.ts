@@ -23,13 +23,14 @@ export type ButtonPropsType = ButtonOverridableAttributesType &
 type ButtonAttributesType = ButtonHTMLAttributes<HTMLButtonElement> &
     Pick<AnchorHTMLAttributes<HTMLAnchorElement>, 'target' | 'href' | 'rel'>;
 
-export type TagType = string | ComponentType<any>;
+export type ButtonTagType = string | ComponentType<any>;
 
 export type ButtonOverridableAttributesType = Indexed<{
-    tag?: TagType;
+    tag?: ButtonTagType;
     primary?: boolean;
     secondary?: boolean;
     tertiary?: boolean;
+    danger?: boolean;
     small?: boolean;
     wide?: boolean;
 }>;

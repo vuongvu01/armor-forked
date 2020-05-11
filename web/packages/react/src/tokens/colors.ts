@@ -19,3 +19,4 @@ export const green200 = '#2c4d01';
 
 export const red100 = '#fbe9e9';
 export const red200 = '#801216';
+export const red300 = '#E22509';

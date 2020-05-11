@@ -1,10 +1,10 @@
-import { shadow200, white } from '../../tokens';
+import { shadow200 } from '../../tokens';
 
 export const paperDefaultTheme = {
     Root: {
         base: {
-            backgroundColor: white,
-            borderRadius: '4px',
+            backgroundColor: '$color.background',
+            borderRadius: '$figure.borderRadius',
             boxShadow: shadow200,
         },
     },

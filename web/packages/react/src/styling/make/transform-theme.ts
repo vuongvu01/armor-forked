@@ -34,15 +34,32 @@ export const transformTheme = (theme: ThemeType, chunk: ObjectLiteralType) => {
         typography: { pixelToRem },
     } = theme as ThemeType;
 
-    traverse(chunk).forEach(function transformThemeObject(x) {
+    traverse(chunk).forEach(function transformThemeObject(value) {
+        let newValue: any;
+        let update = false;
+
+        if (typeof value === 'string' && value[0] === '$') {
+            newValue = theme.referenceIndex[value.substr(1)];
+            update = true;
+        } else {
+            newValue = value;
+        }
+
         if (this.key === 'fontSize') {
-            this.update(pixelToRem(x));
+            newValue = pixelToRem(newValue);
+            update = true;
         }
         if (this.key === 'fontFamily') {
-            this.update(`${x}, sans-serif`);
+            newValue = `${newValue}, sans-serif`;
+            update = true;
         }
         if ((this.key as string) in spanableProperties) {
-            this.update(span(x));
+            newValue = span(newValue);
+            update = true;
+        }
+
+        if (update) {
+            this.update(newValue);
         }
     });
 

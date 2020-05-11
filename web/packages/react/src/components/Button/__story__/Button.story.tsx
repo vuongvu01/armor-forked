@@ -15,18 +15,13 @@ import { withStyles as withMaterialStyles } from '@material-ui/core/styles';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { BrowserRouter, Link } from 'react-router-dom';
 import { Button } from '../Button';
-import { TagType } from '../type';
+import { ButtonTagType } from '../type';
 import { EditIcon } from '../../../icons';
 import { MaterialIcon } from '../../MaterialIcon';
-import { makeTheme, withStyles } from '../../../styling';
+import { makeTheme } from '../../../styling';
 import { fontSizeIconBig } from '../../../tokens';
 import { ObjectLiteralType } from '../../../type';
-import {
-    DialogAttributeOverrideType,
-    DialogPropsType,
-    DialogStyleOverrideType,
-} from '../../Dialog/type';
-import { Dialog } from '../../Dialog';
+import { makeHybridTheme } from '../../../helpers/sample-mui-theme';
 
 export default {
     title: 'Components/Button',
@@ -46,6 +41,7 @@ const optionsType = {
     Primary: 'primary',
     Secondary: 'secondary',
     Tertiary: 'tertiary',
+    Danger: 'danger',
 };
 
 const getTypeAttributes = (type: string) => ({
@@ -58,7 +54,7 @@ const getTypeAttributes = (type: string) => ({
 export const Playground = () => (
     <Button
         {...getTypeAttributes(select('Type', optionsType, 'primary'))}
-        tag={select('Tag', optionsTag, 'button') as TagType}
+        tag={select('Tag', optionsTag, 'button') as ButtonTagType}
         wide={boolean('Wide', false)}
         small={boolean('Small', false)}
         disabled={boolean('Disabled', false)}
@@ -103,7 +99,7 @@ export const WithBigIcon = () => (
 export const IconOnly = () => (
     <Button
         {...getTypeAttributes(select('Type', optionsType, 'primary'))}
-        tag={select('Tag', optionsTag, 'button') as TagType}
+        tag={select('Tag', optionsTag, 'button') as ButtonTagType}
         wide={boolean('Wide', false)}
         small={boolean('Small', false)}
         disabled={boolean('Disabled', false)}
@@ -117,28 +113,28 @@ export const Comparison = () => (
     <div>
         <Button
             {...getTypeAttributes(select('Type', optionsType, 'primary'))}
-            tag={select('Tag', optionsTag, 'button') as TagType}
+            tag={select('Tag', optionsTag, 'button') as ButtonTagType}
             small={boolean('Small', false)}
         >
             No Icon
         </Button>
         <Button
             {...getTypeAttributes(select('Type', optionsType, 'primary'))}
-            tag={select('Tag', optionsTag, 'button') as TagType}
+            tag={select('Tag', optionsTag, 'button') as ButtonTagType}
             small={boolean('Small', false)}
         >
             With icon <EditIcon marginLeft={2} />
         </Button>
         <Button
             {...getTypeAttributes(select('Type', optionsType, 'primary'))}
-            tag={select('Tag', optionsTag, 'button') as TagType}
+            tag={select('Tag', optionsTag, 'button') as ButtonTagType}
             small={boolean('Small', false)}
         >
             With MUI icon <MaterialIcon marginLeft={2}>edit</MaterialIcon>
         </Button>
         <Button
             {...getTypeAttributes(select('Type', optionsType, 'primary'))}
-            tag={select('Tag', optionsTag, 'button') as TagType}
+            tag={select('Tag', optionsTag, 'button') as ButtonTagType}
             small={boolean('Small', false)}
         >
             With MUI icon{' '}
@@ -148,19 +144,19 @@ export const Comparison = () => (
         </Button>
         <Button
             {...getTypeAttributes(select('Type', optionsType, 'primary'))}
-            tag={select('Tag', optionsTag, 'button') as TagType}
+            tag={select('Tag', optionsTag, 'button') as ButtonTagType}
             small={boolean('Small', false)}
         >
             <EditIcon />
         </Button>
         <Button
-            tag={select('Tag', optionsTag, 'button') as TagType}
+            tag={select('Tag', optionsTag, 'button') as ButtonTagType}
             small={boolean('Small', false)}
         >
             <MaterialIcon>edit</MaterialIcon>
         </Button>
         <Button
-            tag={select('Tag', optionsTag, 'button') as TagType}
+            tag={select('Tag', optionsTag, 'button') as ButtonTagType}
             small={boolean('Small', false)}
         >
             <MaterialIcon>save</MaterialIcon>
@@ -219,7 +215,7 @@ export const InText = () => (
 export const WithMultilineContent = () => (
     <Button
         {...getTypeAttributes(select('Type', optionsType, 'primary'))}
-        tag={select('Tag', optionsTag, 'button') as TagType}
+        tag={select('Tag', optionsTag, 'button') as ButtonTagType}
         wide={boolean('Wide', false)}
         small={boolean('Small', false)}
         disabled={boolean('Disabled', false)}
@@ -235,7 +231,7 @@ export const WithMultilineContent = () => (
 export const IconAndText = () => (
     <Button
         {...getTypeAttributes(select('Type', optionsType, 'primary'))}
-        tag={select('Tag', optionsTag, 'button') as TagType}
+        tag={select('Tag', optionsTag, 'button') as ButtonTagType}
         wide={boolean('Wide', false)}
         small={boolean('Small', false)}
     >
@@ -254,10 +250,8 @@ const customTheme = makeTheme({
                     fontWeight: 'bold',
                 },
                 primary: {
-                    base: {
-                        borderColor: 'red',
-                    },
-                    hover: {
+                    borderColor: 'red',
+                    '&:hover': {
                         borderColor: 'yellow',
                     },
                 },
@@ -270,7 +264,7 @@ export const WithCustomTheme = () => (
     <ThemeProvider theme={customTheme}>
         <Button
             {...getTypeAttributes(select('Type', optionsType, 'primary'))}
-            tag={select('Tag', optionsTag, 'button') as TagType}
+            tag={select('Tag', optionsTag, 'button') as ButtonTagType}
             wide={boolean('Wide', false)}
             small={boolean('Small', false)}
         >
@@ -310,3 +304,43 @@ const CustomButtonMUI = withMaterialStyles({
 })(CustomButtonWrapper);
 
 export const WithMUIStyles = () => <CustomButtonMUI />;
+
+// const hybridTheme = makeHybridTheme({
+//     components: {
+//         Button: {
+//             Root: {
+//                 base: {
+//                     fontWeight: 'bold',
+//                 },
+//                 primary: {
+//                     borderColor: '$color.secondary.light',
+//                     color: '$color.secondary.main',
+//                     '&:hover': {
+//                         borderColor: '$color.secondary.light',
+//                     },
+//                 },
+//             },
+//         },
+//     },
+// });
+
+const hybridTheme = makeHybridTheme(
+    {},
+    {
+        adoptMaterialUI: true,
+    },
+);
+
+export const AdoptMaterialUITheme = () => (
+    <ThemeProvider theme={hybridTheme}>
+        <Button
+            {...getTypeAttributes(select('Type', optionsType, 'primary'))}
+            tag={select('Tag', optionsTag, 'button') as ButtonTagType}
+            wide={boolean('Wide', false)}
+            small={boolean('Small', false)}
+        >
+            <MaterialIcon marginRight={2} icon="save" />
+            With custom theme
+        </Button>
+    </ThemeProvider>
+);

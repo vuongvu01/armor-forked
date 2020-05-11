@@ -1,4 +1,5 @@
 import deepFreeze from 'deep-freeze-strict';
+import { flatten } from 'flat';
 import merge from 'deepmerge';
 import { ThemeDeclarationType, ThemeFabricOptions, ThemeType } from '../type';
 import { makeBreakpoints } from './make-breakpoints';
@@ -23,7 +24,16 @@ export const makeTheme = (
     theme.breakpoints = makeBreakpoints(theme.breakpoints);
     theme.typography = makeTypography(theme.typography);
 
-    // return (immutable ? deepFreeze(theme) : theme) as ThemeType;
+    theme.referenceIndex = flatten({
+        figure: theme.figure,
+        typography: theme.typography,
+        color: theme.color,
+    });
 
-    return theme as ThemeType;
+    return (immutable
+        ? {
+              ...deepFreeze(theme),
+              componentOverrides: {},
+          }
+        : theme) as ThemeType;
 };

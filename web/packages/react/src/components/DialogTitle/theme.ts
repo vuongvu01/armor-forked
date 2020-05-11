@@ -1,9 +1,4 @@
-import {
-    fontFamilyRoboto,
-    fontSizeRegular,
-    fontSizeTitle,
-    fontWeightRegular,
-} from '../../tokens';
+import { fontSizeTitle, fontWeightRegular } from '../../tokens';
 
 export const dialogTitleDefaultTheme = {
     Root: {
@@ -14,21 +9,22 @@ export const dialogTitleDefaultTheme = {
             },
         },
     },
+    // todo: probably reuse Typography component as title
     Text: {
         base: {
             fontSize: fontSizeTitle,
             fontWeight: fontWeightRegular,
-            fontFamily: fontFamilyRoboto,
+            fontFamily: '$typography.fontFamily',
             lineHeight: 1.6,
         },
     },
     Description: {
         base: {
             lineHeight: 1.7,
-            fontFamily: fontFamilyRoboto,
+            fontFamily: '$typography.fontFamily',
             fontWeight: fontWeightRegular,
+            fontSize: '$typography.fontSize',
             marginTop: 3,
-            fontSize: fontSizeRegular,
         },
     },
 };

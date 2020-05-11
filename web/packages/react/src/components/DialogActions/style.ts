@@ -7,6 +7,6 @@ export const DialogActionsRoot = styled.div<DialogActionsRootStylePropsType>`
     justify-content: flex-end;
     box-sizing: border-box;
     flex-shrink: 0;
-    ${({ theme }) => theme.overrides.DialogActions.Root.base}
+    ${({ theme }) => theme.componentOverrides.DialogActions.Root.base}
     ${props => props.styles(props)}
 `;
