@@ -61,6 +61,7 @@ export const buttonDefaultTheme = {
             },
             '&:disabled': {
                 color: grey100, // todo: use shades of gray for theme
+                backgroundColor: white, // todo: use shades of gray for theme
             },
         },
         danger: {
