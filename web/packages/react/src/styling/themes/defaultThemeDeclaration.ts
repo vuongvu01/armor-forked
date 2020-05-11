@@ -11,6 +11,7 @@ import {
     blue050,
     blue070,
     blue400,
+    red300,
 } from '../../tokens';
 
 export const defaultThemeDeclaration = {
@@ -19,15 +20,28 @@ export const defaultThemeDeclaration = {
         fontSize: fontSizeRegular,
         fontFamily: fontFamilyRoboto,
     },
-    palette: {
-        main: {
-            50: blue050,
-            70: blue070,
-            100: blue100,
-            200: blue200,
-            300: blue300,
-            400: blue400,
-            contrastText: white,
+    color: {
+        primary: {
+            light: blue100,
+            base: blue200,
+            dark: blue300,
+            contrast: white,
+        },
+        secondary: {
+            light: blue050,
+            base: blue070,
+            dark: blue300,
+            contrast: blue200,
+        },
+        tertiary: {
+            light: blue070,
+            base: blue300,
+            dark: blue400,
+            contrast: blue200,
+        },
+        danger: {
+            base: red300,
+            contrast: white,
         },
         background: white,
     },

@@ -36,10 +36,14 @@ const declaration = {
 
 export const theme = createMuiTheme(declaration);
 
-export const makeHybridTheme = (mixin: ObjectLiteralType) =>
+export const makeHybridTheme = (
+    mixin: ObjectLiteralType,
+    parameters: ObjectLiteralType,
+) =>
     makeTheme(
         createMuiTheme({
             ...declaration,
             ...mixin,
         }),
+        parameters,
     );

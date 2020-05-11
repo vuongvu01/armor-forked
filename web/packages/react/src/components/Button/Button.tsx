@@ -22,6 +22,7 @@ export const Button: FunctionComponent<ButtonPropsType> = ({
     primary,
     secondary,
     tertiary,
+    danger,
     children,
     ...restProps
 }) => {
@@ -38,6 +39,7 @@ export const Button: FunctionComponent<ButtonPropsType> = ({
         primary,
         secondary,
         tertiary,
+        danger,
     );
     const stylesOverride = useButtonStylesOverride(styles);
     const attributesOverride = useObject(attributes);
@@ -50,6 +52,7 @@ export const Button: FunctionComponent<ButtonPropsType> = ({
             primary={primary}
             secondary={secondary}
             tertiary={tertiary}
+            danger={danger}
             theme={theme}
             {...restProps}
             {...attributesOverride.Root}
@@ -74,6 +77,7 @@ Button.defaultProps = {
     primary: true,
     secondary: false,
     tertiary: false,
+    danger: false,
     small: false,
     wide: false,
     tag: 'button',
@@ -89,6 +93,8 @@ Button.propTypes = {
     secondary: PropTypes.bool,
     /** Renders the button as Tertiary */
     tertiary: PropTypes.bool,
+    /** Renders the button as Danger */
+    danger: PropTypes.bool,
     /** Decreases button height to 32px */
     small: PropTypes.bool,
     /** Tells to occupy entire width of a parent container */

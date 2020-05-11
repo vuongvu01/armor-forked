@@ -25,6 +25,7 @@ export const useButtonClassName = (
     primary?: boolean,
     secondary?: boolean,
     tertiary?: boolean,
+    danger?: boolean,
 ) =>
     useMemo(() => {
         const baseClassNames = makeClassName(
@@ -42,7 +43,7 @@ export const useButtonClassName = (
         if (wide) {
             stateClassNames.push(makeBEM(classPrefix, 'Root', 'wide'));
         }
-        if (primary && !secondary && !tertiary) {
+        if (primary && !secondary && !tertiary && !danger) {
             stateClassNames.push(makeBEM(classPrefix, 'Root', 'primary'));
         }
         if (secondary) {
@@ -50,6 +51,9 @@ export const useButtonClassName = (
         }
         if (tertiary) {
             stateClassNames.push(makeBEM(classPrefix, 'Root', 'tertiary'));
+        }
+        if (danger) {
+            stateClassNames.push(makeBEM(classPrefix, 'Root', 'danger'));
         }
 
         return `${baseClassNames} ${stateClassNames.join(' ')}`;
@@ -63,4 +67,5 @@ export const useButtonClassName = (
         primary,
         secondary,
         tertiary,
+        danger,
     ]);

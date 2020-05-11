@@ -8,6 +8,7 @@ const visualStyle = ({
     theme,
     secondary,
     tertiary,
+    danger,
 }: ButtonRootStylePropsType) => {
     const {
         componentOverrides: { Button },
@@ -19,6 +20,10 @@ const visualStyle = ({
 
     if (tertiary) {
         return Button.Root.tertiary;
+    }
+
+    if (danger) {
+        return Button.Root.danger;
     }
 
     // primary by default

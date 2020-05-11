@@ -27,7 +27,7 @@ export const makeTheme = (
     theme.referenceIndex = flatten({
         figure: theme.figure,
         typography: theme.typography,
-        palette: theme.palette,
+        color: theme.color,
     });
 
     return (immutable

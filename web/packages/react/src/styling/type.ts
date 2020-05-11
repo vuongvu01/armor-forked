@@ -6,7 +6,6 @@ import {
 
 export type SpanFunctionType = (value: ScalarType) => ScalarType;
 export type SpanFunctionOrConstType = SpanFunctionType | number;
-type PaletteType = ObjectLiteralType;
 
 type FigureType = {
     borderRadius?: string;
@@ -41,7 +40,7 @@ export type TypographyInputType = Partial<
 
 export type ThemeType = Indexed<{
     breakpoints: BreakpointsType;
-    palette: PaletteType;
+    color: ObjectLiteralType;
     components: ObjectLiteralType;
     componentOverrides: ObjectLiteralType;
     referenceIndex: ObjectLiteralType;

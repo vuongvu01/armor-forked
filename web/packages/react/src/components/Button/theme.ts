@@ -16,51 +16,57 @@ export const buttonDefaultTheme = {
             backgroundColor: 'transparent',
         },
         primary: {
-            color: '$palette.main.contrastText',
-            backgroundColor: '$palette.main.200',
+            color: '$color.primary.contrast',
+            backgroundColor: '$color.primary.base',
             '&:hover': {
-                color: '$palette.main.contrastText',
-                backgroundColor: '$palette.main.300',
+                color: '$color.primary.contrast',
+                backgroundColor: '$color.primary.dark',
             },
             '&:focus': {
-                color: '$palette.main.contrastText',
-                backgroundColor: '$palette.main.100',
+                color: '$color.primary.contrast',
+                backgroundColor: '$color.primary.light',
             },
             '&:disabled': {
-                color: grey100,
-                backgroundColor: grey050,
+                color: grey100, // todo: use shades of gray for theme
+                backgroundColor: grey050, // todo: use shades of gray for theme
             },
         },
         secondary: {
-            color: '$palette.main.200',
-            borderColor: '$palette.main.200',
-            backgroundColor: '$palette.main.50',
+            color: '$color.secondary.contrast',
+            borderColor: '$color.secondary.contrast',
+            backgroundColor: '$color.secondary.light',
             '&:hover': {
-                borderColor: '$palette.main.300',
-                backgroundColor: '$palette.main.70',
+                borderColor: '$color.secondary.dark',
+                backgroundColor: '$color.secondary.base',
             },
             '&:focus': {
-                borderColor: '$palette.main.300',
-                backgroundColor: '$palette.main.70',
+                borderColor: '$color.secondary.dark',
+                backgroundColor: '$color.secondary.base',
             },
             '&:disabled': {
-                color: grey100,
-                borderColor: grey050,
-                backgroundColor: white,
+                color: grey100, // todo: use shades of gray for theme
+                borderColor: grey050, // todo: use shades of gray for theme
+                backgroundColor: white, // todo: use shades of gray for theme
             },
         },
         tertiary: {
-            color: '$palette.main.200',
+            color: '$color.tertiary.contrast',
             '&:hover': {
-                color: '$palette.main.300',
-                backgroundColor: '$palette.main.70',
+                color: '$color.tertiary.base',
+                backgroundColor: '$color.tertiary.light',
             },
             '&:focus': {
-                color: '$palette.main.400',
-                backgroundColor: '$palette.main.70',
+                color: '$color.tertiary.dark',
+                backgroundColor: '$color.tertiary.light',
             },
             '&:disabled': {
-                color: grey100,
+                color: grey100, // todo: use shades of gray for theme
+            },
+        },
+        danger: {
+            color: '$color.danger.base',
+            '&:disabled': {
+                color: grey100, // todo: use shades of gray for theme
             },
         },
         small: {
