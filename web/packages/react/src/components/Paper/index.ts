@@ -4,11 +4,9 @@
 
 import {
     PaperPropsType as PropsType,
-    PaperAttributeOverrideType as AttributeOverrideType,
     PaperStyleOverrideType as StyleOverrideType,
 } from './type';
 
 export * from './Paper';
 export type PaperPropsType = PropsType;
-export type PaperAttributeOverrideType = AttributeOverrideType;
 export type PaperStyleOverrideType = StyleOverrideType;

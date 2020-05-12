@@ -5,20 +5,13 @@ import { ThemeType } from '../../styling';
 import { Indexed } from '../../type';
 
 export type PaperPropsType = PaperOverridableAttributesType &
-    ComponentAttributesType<
-        PaperAttributeOverrideType,
-        PaperAttributesType,
-        PaperStyleOverrideType
-    > &
+    ComponentAttributesType<PaperAttributesType, PaperStyleOverrideType> &
     MarginAttributesType;
 
 type PaperAttributesType = ButtonHTMLAttributes<HTMLButtonElement> &
     Pick<AnchorHTMLAttributes<HTMLAnchorElement>, 'target' | 'href' | 'rel'>;
 
 export type PaperOverridableAttributesType = Indexed<{}>;
-export type PaperAttributeOverrideType = {
-    Root?: PaperOverridableAttributesType;
-};
 export type PaperStyleOverrideType = {
     Root?: PaperStylesFunctionType;
 };

@@ -5,7 +5,6 @@ import { Indexed, ObjectLiteralType } from '../../type';
 
 export type DialogActionsPropsType = DialogActionsOverridableAttributesType &
     ComponentAttributesType<
-        DialogActionsAttributeOverrideType,
         DialogActionsAttributesType,
         DialogActionsStyleOverrideType
     >;
@@ -13,9 +12,6 @@ export type DialogActionsPropsType = DialogActionsOverridableAttributesType &
 type DialogActionsAttributesType = HTMLAttributes<HTMLDivElement>;
 
 export type DialogActionsOverridableAttributesType = Indexed<{}>;
-export type DialogActionsAttributeOverrideType = {
-    Root?: DialogActionsOverridableAttributesType;
-};
 export type DialogActionsStyleOverrideType = {
     Root?: DialogActionsStylesFunctionType;
 };

@@ -36,7 +36,7 @@ import { makeTheme } from '..';
 import { grey050, grey100, white } from '../../tokens';
 
 export default {
-    title: 'Styling/Theme',
+    title: 'Styling/Custom themes',
     decorators: [withKnobs],
     parameters: {},
 };
@@ -125,32 +125,6 @@ const getTypeAttributes = (type: string) => ({
     tertiary: false,
     [type]: true,
 });
-
-// const hybridTheme = makeHybridTheme({
-//     components: {
-//         Button: {
-//             Root: {
-//                 base: {
-//                     fontWeight: 'bold',
-//                 },
-//                 primary: {
-//                     borderColor: '$color.secondary.light',
-//                     color: '$color.secondary.main',
-//                     '&:hover': {
-//                         borderColor: '$color.secondary.light',
-//                     },
-//                 },
-//             },
-//         },
-//     },
-// });
-//
-// const hybridTheme = makeHybridTheme(
-//     {},
-//     {
-//         adoptMaterialUI: true,
-//     },
-// );
 
 export const DPS = () => (
     <ThemeProvider theme={hybridTheme}>

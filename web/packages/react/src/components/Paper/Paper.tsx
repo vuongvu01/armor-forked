@@ -14,7 +14,6 @@ export const Paper: FunctionComponent<PaperPropsType> = ({
     className,
     classNames,
     styles,
-    attributes,
     ...restProps
 }) => {
     const theme = useTheme();
@@ -26,13 +25,11 @@ export const Paper: FunctionComponent<PaperPropsType> = ({
         classNames,
     );
     const stylesSafe = useStylesOverridePaper(styles);
-    const attributesSafe = useObject(attributes);
 
     return (
         <PaperRoot
             theme={theme}
             {...restProps}
-            {...attributesSafe.Root}
             className={classNameRoot}
             styles={stylesSafe.Root}
         />

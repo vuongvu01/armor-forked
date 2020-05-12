@@ -4,11 +4,9 @@
 
 import {
     DialogTitlePropsType as PropsType,
-    DialogTitleAttributeOverrideType as AttributeOverrideType,
     DialogTitleStyleOverrideType as StyleOverrideType,
 } from './type';
 
 export * from './DialogTitle';
 export type DialogTitlePropsType = PropsType;
-export type DialogTitleAttributeOverrideType = AttributeOverrideType;
 export type DialogTitleStyleOverrideType = StyleOverrideType;

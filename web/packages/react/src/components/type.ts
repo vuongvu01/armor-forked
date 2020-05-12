@@ -18,18 +18,10 @@ export type StylesFunctionOrStubType<A = BasicAttributesType> =
     | StylesFunctionType<A>
     | ReturnEmptyStringFunctionType;
 
-export type AttributeOverrideAttributesType<AO> = {
-    attributes?: AO;
-};
-
 export type StyleOverrideAttributesType<S> = {
     classNames?: ClassNamesType;
     styles?: S;
     theme?: ThemeType;
 };
 
-export type ComponentAttributesType<AO, A, S> = AttributeOverrideAttributesType<
-    AO
-> &
-    A &
-    StyleOverrideAttributesType<S>;
+export type ComponentAttributesType<A, S> = A & StyleOverrideAttributesType<S>;

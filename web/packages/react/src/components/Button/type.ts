@@ -12,11 +12,7 @@ import { ThemeType } from '../../styling';
 import { Indexed, ObjectLiteralType } from '../../type';
 
 export type ButtonPropsType = ButtonOverridableAttributesType &
-    ComponentAttributesType<
-        ButtonAttributeOverrideType,
-        ButtonAttributesType,
-        ButtonStyleOverrideType
-    > &
+    ComponentAttributesType<ButtonAttributesType, ButtonStyleOverrideType> &
     SizeAttributesType &
     MarginAttributesType;
 
@@ -34,9 +30,7 @@ export type ButtonOverridableAttributesType = Indexed<{
     small?: boolean;
     wide?: boolean;
 }>;
-export type ButtonAttributeOverrideType = {
-    Root?: ButtonOverridableAttributesType;
-};
+
 export type ButtonStyleOverrideType = {
     Root?: ButtonStylesFunctionType;
 };

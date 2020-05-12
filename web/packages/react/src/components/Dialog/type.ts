@@ -16,16 +16,9 @@ export type DialogCustomPropsType = Indexed<{
 type DialogHTMLPropsType = HTMLAttributes<HTMLElement>;
 
 export type DialogPropsType = DialogCustomPropsType &
-    ComponentAttributesType<
-        DialogAttributeOverrideType,
-        DialogHTMLPropsType,
-        DialogStyleOverrideType
-    > &
+    ComponentAttributesType<DialogHTMLPropsType, DialogStyleOverrideType> &
     SizeAttributesType;
 
-export type DialogAttributeOverrideType = {
-    Root?: DialogCustomPropsType;
-};
 export type DialogStyleOverrideType = {
     Overlay?: DialogStylesFunctionType;
     AlignmentContainer?: DialogStylesFunctionType;

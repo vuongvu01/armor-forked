@@ -11,9 +11,6 @@ import { ThemeType } from '../../styling';
 type BoxAttributesType = HTMLAttributes<HTMLElement>;
 
 export type BoxOverridableAttributesType = {};
-export type BoxAttributeOverrideType = {
-    Root?: BoxOverridableAttributesType;
-};
 export type BoxStyleOverrideType = {
     Root?: BoxStylesFunctionType;
 };
@@ -22,11 +19,7 @@ export type BoxStylesFunctionType = StylesFunctionOrStubType<BoxAttributesType>;
 export type BoxStyleOverrideSafeType = Required<BoxStyleOverrideType>;
 
 export type BoxPropsType = BoxOverridableAttributesType &
-    ComponentAttributesType<
-        BoxAttributeOverrideType,
-        BoxAttributesType,
-        BoxStyleOverrideType
-    > &
+    ComponentAttributesType<BoxAttributesType, BoxStyleOverrideType> &
     MarginAttributesType &
     PaddingAttributesType &
     SizeAttributesType &

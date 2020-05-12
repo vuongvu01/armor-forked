@@ -5,7 +5,6 @@ import { Indexed, ObjectLiteralType } from '../../type';
 
 export type DialogTitlePropsType = DialogTitleOverridableAttributesType &
     ComponentAttributesType<
-        DialogTitleAttributeOverrideType,
         DialogTitleAttributesType,
         DialogTitleStyleOverrideType
     >;
@@ -15,9 +14,6 @@ type DialogTitleAttributesType = HTMLAttributes<HTMLDivElement>;
 export type DialogTitleOverridableAttributesType = Indexed<{
     description?: ReactNode;
 }>;
-export type DialogTitleAttributeOverrideType = {
-    Root?: DialogTitleOverridableAttributesType;
-};
 export type DialogTitleStyleOverrideType = {
     Root?: DialogTitleStylesFunctionType;
     Text?: DialogTitleStylesFunctionType;

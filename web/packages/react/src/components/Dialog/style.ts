@@ -93,11 +93,13 @@ export const DialogRoot = styled(Paper)<DialogRootStylePropsType>`
     ${props => props.dialogStyles(props)}
 `;
 
-export const DialogContent = styled.div`
+export const DialogContent = styled.div<DialogRootStylePropsType>`
     display: flex;
     flex-direction: column;
     max-height: 100%;
     overflow: auto;
+
+    ${props => props.styles(props)}
 `;
 
 export const DialogCloseButton = styled.div<DialogRootStylePropsType>`
