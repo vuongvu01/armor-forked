@@ -1,17 +1,24 @@
+/** Level 2 tokens */
+
 import {
     fontSizeHTML,
     fontSizeRegular,
     borderRadiusNormal,
     spanRegular,
     fontFamilyRoboto,
-    blue200,
-    blue300,
-    blue100,
-    white,
-    blue050,
-    blue070,
-    blue400,
     red300,
+    grey00,
+    grey70,
+    grey50,
+    grey20,
+    grey10,
+    grey05,
+    grey01,
+    blue60,
+    blue20,
+    blue05,
+    blue70,
+    blue80,
 } from '../../tokens';
 
 export const defaultThemeDeclaration = {
@@ -22,20 +29,28 @@ export const defaultThemeDeclaration = {
     },
     color: {
         primary: {
-            light30: blue050,
-            light20: blue070,
-            light10: blue100,
-            main: blue200,
-            dark10: blue300,
-            dark20: blue400,
-            contrast: white,
+            lighter: blue05,
+            light: blue20,
+            main: blue60,
+            dark: blue70,
+            darker: blue80,
+            contrast: grey00,
         },
         danger: {
             main: red300,
-            contrast: white,
+            contrast: grey00,
         },
         background: {
-            main: white,
+            main: grey00,
+        },
+        neutral: {
+            '00': grey00,
+            '01': grey01,
+            '02': grey05,
+            '03': grey10,
+            '04': grey20,
+            '05': grey50,
+            '06': grey70,
         },
     },
     figure: {

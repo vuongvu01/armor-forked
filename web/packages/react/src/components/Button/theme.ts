@@ -1,4 +1,4 @@
-import { fontWeightMedium, grey050, grey100, white } from '../../tokens';
+import { fontWeightMedium } from '../../tokens';
 
 export const buttonDefaultTheme = {
     Root: {
@@ -20,54 +20,54 @@ export const buttonDefaultTheme = {
             backgroundColor: '$color.primary.main',
             '&:hover': {
                 color: '$color.primary.contrast',
-                backgroundColor: '$color.primary.dark10',
+                backgroundColor: '$color.primary.dark',
             },
             '&:focus': {
                 color: '$color.primary.contrast',
-                backgroundColor: '$color.primary.light10',
+                backgroundColor: '$color.primary.light',
             },
             '&:disabled': {
-                color: grey100, // todo: use shades of gray for theme
-                backgroundColor: grey050, // todo: use shades of gray for theme
+                color: '$color.neutral.04',
+                backgroundColor: '$color.neutral.03',
             },
         },
         secondary: {
             color: '$color.primary.main',
             borderColor: '$color.primary.main',
-            backgroundColor: '$color.primary.light30',
+            backgroundColor: '$color.primary.lighter',
             '&:hover': {
-                borderColor: '$color.primary.dark10',
-                backgroundColor: '$color.primary.light20',
+                borderColor: '$color.primary.dark',
+                backgroundColor: '$color.primary.lighter',
             },
             '&:focus': {
-                borderColor: '$color.primary.dark10',
-                backgroundColor: '$color.primary.light20',
+                borderColor: '$color.primary.dark',
+                backgroundColor: '$color.primary.lighter',
             },
             '&:disabled': {
-                color: grey100, // todo: use shades of gray for theme
-                borderColor: grey050, // todo: use shades of gray for theme
-                backgroundColor: white, // todo: use shades of gray for theme
+                color: '$color.neutral.04',
+                borderColor: '$color.neutral.03',
+                backgroundColor: '$color.neutral.00',
             },
         },
         tertiary: {
             color: '$color.primary.main',
             '&:hover': {
-                color: '$color.primary.dark10',
-                backgroundColor: '$color.primary.light20',
+                color: '$color.primary.dark',
+                backgroundColor: '$color.primary.lighter',
             },
             '&:focus': {
-                color: '$color.primary.dark20',
-                backgroundColor: '$color.primary.light20',
+                color: '$color.primary.darker',
+                backgroundColor: '$color.primary.lighter',
             },
             '&:disabled': {
-                color: grey100, // todo: use shades of gray for theme
-                backgroundColor: white, // todo: use shades of gray for theme
+                color: '$color.neutral.04',
+                backgroundColor: '$color.neutral.00',
             },
         },
         danger: {
             color: '$color.danger.main',
             '&:disabled': {
-                color: grey100, // todo: use shades of gray for theme
+                color: '$color.neutral.04',
             },
         },
         small: {
