@@ -51,6 +51,10 @@ module.exports = {
             content: '../src/components/README.md',
             components: '../src/components/**/*.tsx',
         },
+        {
+            name: 'Troubleshooting',
+            content: './content/TROUBLESHOOTING.md',
+        },
     ],
     // sections: [
     //     // {

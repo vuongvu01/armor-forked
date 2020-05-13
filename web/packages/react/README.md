@@ -55,9 +55,11 @@ Todo: when there is something inside, write a short intro to the project
 To use the UI offered by this project you need to install an NPM package and consume it in the code of your application.
 In order to do that, follow these steps:
 
-1. [Generate your own GitHUB token](https://github.com/settings/tokens) with these permissions: **read:packages**, **repo**
+1. [Generate your own GitHUB token](https://github.com/settings/tokens) with the following conditions:
+    * permissions: **read:packages**, **repo**
+    * SSO: enabled
 2. Add the token as an environment variable:
-    ~~~sh
+    ~~~bash
     printf "\nexport GITHUB_TOKEN=<your-token-goes-here>\n" >> ~/.bash_profile; # .bashrc in linux
     source ~/.bash_profile;
     ~~~
@@ -68,7 +70,7 @@ In order to do that, follow these steps:
     ~~~
     If you already have this file, just to append the lines above to it.
 4. Install the package
-    ~~~sh
+    ~~~bash
     yarn add @deliveryhero/armor
     ~~~
 5. Start coding!
@@ -83,20 +85,20 @@ If you wish to make a contribution to the library, you need to setup the develop
 ### Installation
 
 1. Clone the repo
-    ```sh
+    ~~~bash
     git clone git@github.com:deliveryhero/armor.git
-    ```
+    ~~~
 2. Install NPM packages everywhere
-    ```sh
+    ~~~bash
     cd ui/web/;
     yarn;
     cd packages/react/;
     yarn setup;
-    ```
+    ~~~
 3. We utilise `Storybook` as a primary tool for development. To launch `Storybook`, type
-    ```sh
+    ~~~bash
     yarn dev;
-    ```
+    ~~~
 4. Open [http://localhost:6006/](http://localhost:6006/) and start developing :)
 
 ### Local usage
@@ -107,25 +109,25 @@ You have two options here.
 #### Option 1: yarn link or npm link
 
 0. Make sure that no peer dependencies installed by typing
-    ~~~sh
+    ~~~bash
     cd web/packages/react;
     yarn;
     ~~~
 1. Link the package to `yarn`:
-    ~~~sh
+    ~~~bash
     yarn link;
     ~~~
     or if the project uses `npm`:
-    ~~~sh
+    ~~~bash
     npm link;
     ~~~
 2. Link the package to the application:
-    ~~~sh
+    ~~~bash
     cd <application-folder>;
     yarn link "@deliveryhero/armor";
     ~~~
     or if the project uses `npm`:
-    ~~~sh
+    ~~~bash
     cd <application-folder>;
     npm link "@deliveryhero/armor";
     ~~~
@@ -140,16 +142,16 @@ yarn run install-peers;
 #### Option 2: yalc
 
 1. Install `yalc`:
-    ~~~sh
+    ~~~bash
     yarn global add yalc
     ~~~
 2. "Publish" the package to `yalc`:
-    ~~~sh
+    ~~~bash
     cd web/packages/react;
     yalc publish;
     ~~~
 3. Link the package to the application:
-    ~~~sh
+    ~~~bash
     cd <application-folder>;
     yalc link "@deliveryhero/armor";
     ~~~
