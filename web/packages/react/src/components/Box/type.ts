@@ -1,31 +1,41 @@
 import { HTMLAttributes } from 'react';
-import { StylesFunctionOrStubType, ComponentAttributesType } from '../type';
+import {
+    StyleNodePropsType,
+    StylePropsType,
+    StylesFunctionOrStubType,
+} from '../type';
 import {
     SizeAttributesType,
     PaddingAttributesType,
     MarginAttributesType,
     TextAlignmentAttributesType,
 } from '../../system/attributes';
-import { ThemeType } from '../../styling';
+import { Indexed } from '../../type';
 
-type BoxAttributesType = HTMLAttributes<HTMLElement>;
-
-export type BoxOverridableAttributesType = {};
-export type BoxStyleOverrideType = {
-    Root?: BoxStylesFunctionType;
-};
-
-export type BoxStylesFunctionType = StylesFunctionOrStubType<BoxAttributesType>;
-export type BoxStyleOverrideSafeType = Required<BoxStyleOverrideType>;
-
-export type BoxPropsType = BoxOverridableAttributesType &
-    ComponentAttributesType<BoxAttributesType, BoxStyleOverrideType> &
+type BoxEffectivePropsType = Indexed<{
+    // add other custom properties here
+}> &
     MarginAttributesType &
     PaddingAttributesType &
     SizeAttributesType &
-    TextAlignmentAttributesType;
+    TextAlignmentAttributesType &
+    HTMLAttributes<HTMLDivElement>; // includes all HTML Div attributes
 
-export type BoxRootStylePropsType = BoxPropsType & {
-    theme: ThemeType;
-    styles: BoxStylesFunctionType;
+/* Box component prop type */
+export type BoxPropsType = BoxEffectivePropsType &
+    StylePropsType<
+        {
+            Root?: string;
+            // add custom className for other nodes here
+        },
+        BoxStylesPropsType
+    >;
+
+export type BoxStylesPropsType = {
+    Root?: StylesFunctionOrStubType<BoxEffectivePropsType>;
+    // add style properties for other nodes here
 };
+
+/* Box Root node prop type */
+export type BoxRootPropsType = BoxEffectivePropsType &
+    StyleNodePropsType<BoxEffectivePropsType>;

@@ -20,11 +20,6 @@ export const useClassName = (
         return makeClassName(classPrefix, className, classNames, elementType);
     }, [classPrefix, elementType, className, classNames]);
 
-/**
- * @internal
- */
-export const useObject = (value: any) => useMemo(() => value || {}, [value]);
-
 const overwriteMerge = (destinationArray: any[], sourceArray: any[]) =>
     sourceArray;
 

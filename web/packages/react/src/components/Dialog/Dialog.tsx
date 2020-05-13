@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
-import { useObject, useThemeOverride } from '../../utils/hooks';
+import { useThemeOverride } from '../../utils/hooks';
 import { useTheme } from '../../styling';
 
 import { useDialogClassNames, useDialogStylesOverride } from './utils';

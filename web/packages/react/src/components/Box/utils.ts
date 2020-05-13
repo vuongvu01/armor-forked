@@ -1,10 +1,10 @@
 import { useMemo } from 'react';
-import { BoxStyleOverrideType, BoxStyleOverrideSafeType } from './type';
+import { BoxStylesPropsType } from './type';
 import { returnEmptyString } from '../../utils';
 
 export const useStyleOverrideBox = (
-    styles?: BoxStyleOverrideType,
-): BoxStyleOverrideSafeType =>
+    styles?: BoxStylesPropsType,
+): Required<BoxStylesPropsType> =>
     useMemo(
         () => ({
             Root: returnEmptyString,

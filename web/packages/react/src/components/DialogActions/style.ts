@@ -1,12 +1,13 @@
 import styled from 'styled-components';
-import { DialogActionsRootStylePropsType } from './type';
+import { DialogActionsRootPropsType } from './type';
 
-export const DialogActionsRoot = styled.div<DialogActionsRootStylePropsType>`
+export const DialogActionsRoot = styled.div<DialogActionsRootPropsType>`
     flex: 0 0;
     display: flex;
     justify-content: flex-end;
     box-sizing: border-box;
     flex-shrink: 0;
-    ${({ theme }) => theme.componentOverrides.DialogActions.Root.base}
-    ${props => props.styles(props)}
+    ${({ theme }: DialogActionsRootPropsType) =>
+        theme.componentOverrides.DialogActions.Root.base}
+    ${(props: DialogActionsRootPropsType) => props.styles(props)}
 `;

@@ -1,12 +1,12 @@
 import { useMemo } from 'react';
-import { DialogStyleOverrideType, DialogStyleOverrideSafeType } from './type';
-import { returnEmptyString, makeBEM, makeClassName } from '../../utils';
+import { DialogStylesPropsType } from './type';
+import { returnEmptyString, makeClassName } from '../../utils';
 import { ClassNamesType } from '../type';
 
 export const useDialogStylesOverride = (
-    styles?: DialogStyleOverrideType,
-): DialogStyleOverrideSafeType => {
-    return useMemo(
+    styles?: DialogStylesPropsType,
+): Required<DialogStylesPropsType> =>
+    useMemo(
         () => ({
             Root: returnEmptyString,
             AlignmentContainer: returnEmptyString,
@@ -17,7 +17,6 @@ export const useDialogStylesOverride = (
         }),
         [styles],
     );
-};
 
 export const useDialogClassNames = (
     classPrefix: string,

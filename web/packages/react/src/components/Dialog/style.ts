@@ -1,11 +1,19 @@
 import styled, { css } from 'styled-components';
 import { fixedCover } from '../../system/mixins';
-import { DialogRootStylePropsType } from './type';
+import {
+    DialogAlignmentContainerPropsType,
+    DialogCloseButtonPropsType,
+    DialogContentPropsType,
+    DialogOverlayPropsType,
+    DialogRootPropsType,
+} from './type';
 import { Paper } from '../Paper';
 import { sizeAttributes } from '../../system/attributes';
 import { DIALOG_SCROLL_DOCUMENT } from './Dialog';
 
-const dialogContainerOverflow = ({ scroll }: DialogRootStylePropsType) => {
+const dialogContainerOverflow = ({
+    scroll,
+}: DialogAlignmentContainerPropsType) => {
     if (scroll === DIALOG_SCROLL_DOCUMENT) {
         return 'auto';
     }
@@ -16,7 +24,7 @@ const dialogContainerOverflow = ({ scroll }: DialogRootStylePropsType) => {
 const dialogContainerDisplay = ({
     display,
     scroll,
-}: DialogRootStylePropsType) => {
+}: DialogAlignmentContainerPropsType) => {
     if (!display) {
         return 'none';
     }
@@ -24,32 +32,39 @@ const dialogContainerDisplay = ({
     return scroll === DIALOG_SCROLL_DOCUMENT ? 'block' : 'flex';
 };
 
-const dialogRootDisplay = ({ scroll }: DialogRootStylePropsType) => {
+const dialogRootDisplay = ({ scroll }: DialogRootPropsType) => {
     return scroll === DIALOG_SCROLL_DOCUMENT ? 'inline-block' : 'flex';
 };
 
-const dialogRootMaxHeight = ({ scroll, theme }: DialogRootStylePropsType) => {
+const dialogRootMaxHeight = ({ scroll, theme }: DialogRootPropsType) => {
     return scroll === DIALOG_SCROLL_DOCUMENT
         ? 'none'
         : `calc(100% - ${theme.componentOverrides.Dialog.Root.safeMargin})`;
 };
 
-export const DialogOverlay = styled.div<DialogRootStylePropsType>`
-    ${fixedCover}
+export const DialogOverlay = styled.div<DialogOverlayPropsType>`
+    ${fixedCover};
     z-index: inherit;
     pointer-events: none;
-    ${({ display, effectToggle, disableEffects, theme }) => css`
+    ${({
+        display,
+        effectToggle,
+        disableEffects,
+        theme,
+    }: DialogOverlayPropsType) => css`
         opacity: ${effectToggle ? 1 : 0};
         display: ${display ? 'initial' : 'none'};
         transition: ${disableEffects ? 'none' : 'opacity 100ms ease'};
-        ${theme.componentOverrides.Dialog.Overlay.base}
+        ${theme.componentOverrides.Dialog.Overlay.base};
     `}
 
-    ${props => props.styles(props)}
+    ${(props: DialogOverlayPropsType) => props.styles(props)}
 `;
 
-export const DialogAlignmentContainer = styled.div<DialogRootStylePropsType>`
-    ${fixedCover}
+export const DialogAlignmentContainer = styled.div<
+    DialogAlignmentContainerPropsType
+>`
+    ${fixedCover};
     z-index: inherit;
     align-items: center;
     justify-content: center;
@@ -58,7 +73,7 @@ export const DialogAlignmentContainer = styled.div<DialogRootStylePropsType>`
     overflow-y: ${dialogContainerOverflow};
     display: ${dialogContainerDisplay};
 
-    ${({ disableCloseButton, theme }) =>
+    ${({ disableCloseButton, theme }: DialogAlignmentContainerPropsType) =>
         !disableCloseButton
             ? css`
                   .DialogTitle-Text {
@@ -69,17 +84,17 @@ export const DialogAlignmentContainer = styled.div<DialogRootStylePropsType>`
               `
             : ''},
 
-    ${props => props.styles(props)}
+    ${(props: DialogAlignmentContainerPropsType) => props.styles(props)}
 `;
 
-export const DialogRoot = styled(Paper)<DialogRootStylePropsType>`
+export const DialogRoot = styled(Paper)<DialogRootPropsType>`
     flex-direction: column;
     text-align: left;
 
     display: ${dialogRootDisplay};
     max-height: ${dialogRootMaxHeight};
 
-    ${({ disableEffects, effectToggle, theme }) => css`
+    ${({ disableEffects, effectToggle, theme }: DialogRootPropsType) => css`
         transition: ${disableEffects
             ? 'none'
             : 'transform 100ms ease, opacity 100ms ease'};
@@ -90,26 +105,27 @@ export const DialogRoot = styled(Paper)<DialogRootStylePropsType>`
     `}
 
     ${sizeAttributes}
-    ${props => props.dialogStyles(props)}
+    ${(props: DialogRootPropsType) => props.dialogStyles(props)}
 `;
 
-export const DialogContent = styled.div<DialogRootStylePropsType>`
+export const DialogContent = styled.div<DialogContentPropsType>`
     display: flex;
     flex-direction: column;
     max-height: 100%;
     overflow: auto;
 
-    ${props => props.styles(props)}
+    ${(props: DialogContentPropsType) => props.styles(props)}
 `;
 
-export const DialogCloseButton = styled.div<DialogRootStylePropsType>`
+export const DialogCloseButton = styled.div<DialogCloseButtonPropsType>`
     position: absolute;
     border: 0 none;
     background-color: transparent;
     outline: none;
     cursor: pointer;
     flex: 0 0 auto;
-    ${({ theme }) => theme.componentOverrides.Dialog.CloseButton.base}
+    ${({ theme }: DialogCloseButtonPropsType) =>
+        theme.componentOverrides.Dialog.CloseButton.base}
 
-    ${props => props.styles(props)}
+    ${(props: DialogCloseButtonPropsType) => props.styles(props)}
 `;

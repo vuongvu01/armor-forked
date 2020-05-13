@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { BoxRootStylePropsType } from './type';
+import { BoxRootPropsType } from './type';
 import {
     marginAttributes,
     paddingAttributes,
@@ -7,10 +7,10 @@ import {
     textAlignmentAttributes,
 } from '../../system/attributes';
 
-export const BoxRoot = styled.div<BoxRootStylePropsType>`
+export const BoxRoot = styled.div<BoxRootPropsType>`
     ${marginAttributes}
     ${paddingAttributes}
     ${sizeAttributes}
     ${textAlignmentAttributes}
-    ${props => props.styles(props)}
+    ${(props: BoxRootPropsType) => props.styles(props)}
 `;

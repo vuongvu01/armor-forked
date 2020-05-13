@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 import { useTheme } from '../../styling';
 
-import { useClassName, useObject } from '../../utils/hooks';
+import { useClassName } from '../../utils/hooks';
 
 import { BoxRoot } from './style';
 import { BoxPropsType } from './type';

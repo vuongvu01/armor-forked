@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { ReactElement } from 'react';
-import { ButtonRootStylePropsType } from './type';
+import { ButtonRootPropsType } from './type';
 import { marginAttributes, sizeAttributes } from '../../system/attributes';
 import { durationRegular } from '../../tokens';
 
@@ -9,7 +9,7 @@ const visualStyle = ({
     secondary,
     tertiary,
     danger,
-}: ButtonRootStylePropsType) => {
+}: ButtonRootPropsType) => {
     const {
         componentOverrides: { Button },
     } = theme;
@@ -30,7 +30,7 @@ const visualStyle = ({
     return Button.Root.primary;
 };
 
-const sizeStyle = ({ theme, small }: ButtonRootStylePropsType) => {
+const sizeStyle = ({ theme, small }: ButtonRootPropsType) => {
     const {
         componentOverrides: { Button },
     } = theme;
@@ -50,15 +50,13 @@ const Wrapper = ({
     children: (className: string) => ReactElement;
 }) => children(className);
 
-const basicStyle = ({ theme }: ButtonRootStylePropsType) => css<
-    ButtonRootStylePropsType
->`
+const basicStyle = ({ theme }: ButtonRootPropsType) => css<ButtonRootPropsType>`
     transition: background-color ${durationRegular}ms ease,
         border-color ${durationRegular}ms ease, color ${durationRegular}ms ease;
     ${theme.componentOverrides.Button.Root.base}
 `;
 
-export const ButtonWrapper = styled(Wrapper)<ButtonRootStylePropsType>`
+export const ButtonWrapper = styled(Wrapper)<ButtonRootPropsType>`
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -86,5 +84,5 @@ export const ButtonWrapper = styled(Wrapper)<ButtonRootStylePropsType>`
     ${sizeStyle}
     ${marginAttributes}
     ${sizeAttributes}
-    ${props => props.styles(props)}
+    ${(props: ButtonRootPropsType) => props.styles(props)}
 `;

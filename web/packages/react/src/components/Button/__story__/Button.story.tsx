@@ -21,7 +21,6 @@ import { MaterialIcon } from '../../MaterialIcon';
 import { makeTheme } from '../../../styling';
 import { fontSizeIconBig } from '../../../tokens';
 import { ObjectLiteralType } from '../../../type';
-import { makeHybridTheme } from '../../../helpers/sample-mui-theme';
 
 export default {
     title: 'Components/Button',
@@ -62,7 +61,7 @@ export const Playground = () => (
         href="https://google.com"
         target="_blank"
         className="custom-class-name"
-        classNames={{ root: 'custom-btn-root' }}
+        classNames={{ Root: 'custom-btn-root' }}
     >
         {text('Label', 'Primary button')}
     </Button>

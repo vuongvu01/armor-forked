@@ -1,11 +1,11 @@
 import { useMemo } from 'react';
-import { PaperStyleOverrideType, PaperStyleOverrideSafeType } from './type';
+import { PaperStylesPropsType } from './type';
 import { returnEmptyString, makeBEM, makeClassName } from '../../utils';
 import { ClassNamesType } from '../type';
 
 export const useStylesOverridePaper = (
-    styles?: PaperStyleOverrideType,
-): PaperStyleOverrideSafeType =>
+    styles?: PaperStylesPropsType,
+): Required<PaperStylesPropsType> =>
     useMemo(
         () => ({
             Root: returnEmptyString,
