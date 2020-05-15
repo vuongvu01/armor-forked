@@ -1,9 +1,7 @@
-import { useMemo, useEffect } from 'react';
-import merge from 'deepmerge';
+import { useMemo } from 'react';
 import { ClassNamesType } from '../components/type';
-import { makeClassName } from './index';
+import { makeClassName, merge } from '.';
 import { ThemeType } from '../styling';
-import { defaultThemeDeclaration } from '../styling/themes/defaultThemeDeclaration';
 import { ObjectLiteralType } from '../type';
 import { transformTheme } from '../styling/make/transform-theme';
 
@@ -20,9 +18,6 @@ export const useClassName = (
         return makeClassName(classPrefix, className, classNames, elementType);
     }, [classPrefix, elementType, className, classNames]);
 
-const overwriteMerge = (destinationArray: any[], sourceArray: any[]) =>
-    sourceArray;
-
 /**
  * @internal
  */
@@ -36,10 +31,7 @@ export const useThemeOverride = (
         if (!(classPrefix in theme.componentOverrides)) {
             const chunk = merge(
                 defaultComponentTheme,
-                theme.components[classPrefix] || {},
-                {
-                    arrayMerge: overwriteMerge,
-                },
+                theme.components[classPrefix],
             );
 
             // eslint-disable-next-line no-param-reassign

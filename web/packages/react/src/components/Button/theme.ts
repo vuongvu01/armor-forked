@@ -20,11 +20,15 @@ export const buttonDefaultTheme = {
             backgroundColor: '$color.primary.main',
             '&:hover': {
                 color: '$color.primary.contrast',
-                backgroundColor: '$color.primary.dark',
+                backgroundColor: '$color.primary.light',
             },
             '&:focus': {
                 color: '$color.primary.contrast',
                 backgroundColor: '$color.primary.light',
+            },
+            '&:active': {
+                color: '$color.primary.contrast',
+                backgroundColor: '$color.primary.dark',
             },
             '&:disabled': {
                 color: '$color.neutral.04',
@@ -35,14 +39,9 @@ export const buttonDefaultTheme = {
             color: '$color.primary.main',
             borderColor: '$color.primary.main',
             backgroundColor: '$color.primary.lighter',
-            '&:hover': {
-                borderColor: '$color.primary.dark',
-                backgroundColor: '$color.primary.lighter',
-            },
-            '&:focus': {
-                borderColor: '$color.primary.dark',
-                backgroundColor: '$color.primary.lighter',
-            },
+            '&:hover': {},
+            '&:focus': {},
+            '&:active': {},
             '&:disabled': {
                 color: '$color.neutral.04',
                 borderColor: '$color.neutral.03',
@@ -59,6 +58,7 @@ export const buttonDefaultTheme = {
                 color: '$color.primary.darker',
                 backgroundColor: '$color.primary.lighter',
             },
+            '&:active': {},
             '&:disabled': {
                 color: '$color.neutral.04',
                 backgroundColor: '$color.neutral.00',
@@ -66,8 +66,19 @@ export const buttonDefaultTheme = {
         },
         danger: {
             color: '$color.danger.main',
+            borderColor: 'transparent',
+            '&:hover': {
+                backgroundColor: '$color.danger.lighter',
+            },
+            '&:focus': {
+                backgroundColor: '$color.danger.lighter',
+            },
+            '&:active': {
+                backgroundColor: '$color.danger.light',
+            },
             '&:disabled': {
                 color: '$color.neutral.04',
+                backgroundColor: 'transparent',
             },
         },
         small: {

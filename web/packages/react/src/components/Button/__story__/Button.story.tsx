@@ -21,6 +21,7 @@ import { MaterialIcon } from '../../MaterialIcon';
 import { makeTheme } from '../../../styling';
 import { fontSizeIconBig } from '../../../tokens';
 import { ObjectLiteralType } from '../../../type';
+import { GroupHelper } from '../../../helpers/GroupHelper';
 
 export default {
     title: 'Components/Button',
@@ -49,6 +50,48 @@ const getTypeAttributes = (type: string) => ({
     tertiary: false,
     [type]: true,
 });
+
+export const Types = () => (
+    <>
+        <h2>Buttons</h2>
+        <h3>Sizes</h3>
+        <GroupHelper>
+            <Button primary>
+                <MaterialIcon marginRight={2} icon="delete" />
+                Button text
+            </Button>
+            <Button primary>Button text</Button>
+            <Button primary small>
+                <MaterialIcon marginRight={2} icon="delete" />
+                Button text
+            </Button>
+            <Button primary small>
+                Button text
+            </Button>
+        </GroupHelper>
+        <h3>Types</h3>
+        <GroupHelper>
+            <Button primary>Primary</Button>
+            <Button secondary>Secondary</Button>
+            <Button tertiary>Tertiary</Button>
+            <Button danger>Danger</Button>
+        </GroupHelper>
+        <GroupHelper>
+            <Button primary disabled>
+                Primary
+            </Button>
+            <Button secondary disabled>
+                Secondary
+            </Button>
+            <Button tertiary disabled>
+                Tertiary
+            </Button>
+            <Button danger disabled>
+                Danger
+            </Button>
+        </GroupHelper>
+    </>
+);
 
 export const Playground = () => (
     <Button

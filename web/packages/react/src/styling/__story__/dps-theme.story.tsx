@@ -81,8 +81,8 @@ const declaration = {
         },
         danger: {
             light: '#F6D5D5',
-            main: 'rgba(211, 47, 47, 1)',
-            dark: 'rgba(198, 45, 45, 1)',
+            main: '#d32f2f',
+            dark: '#c62d2d',
             contrast: '#fff',
         },
     },
@@ -92,11 +92,36 @@ const declaration = {
                 base: {
                     borderWidth: '2px',
                 },
+                secondary: {
+                    backgroundColor: '$color.neutral.00',
+                    '&:hover': {
+                        backgroundColor: '$color.neutral.03',
+                    },
+                    '&:focus': {
+                        backgroundColor: '$color.neutral.03',
+                    },
+                    '&:active': {
+                        backgroundColor: '$color.neutral.04',
+                    },
+                    '&:disabled': {
+                        color: '$color.neutral.04',
+                        borderColor: '$color.neutral.03',
+                        backgroundColor: '$color.neutral.00',
+                    },
+                },
+                tertiary: {
+                    '&:hover': {
+                        backgroundColor: '$color.neutral.03',
+                    },
+                    '&:focus': {
+                        backgroundColor: '$color.neutral.03',
+                    },
+                    '&:active': {
+                        backgroundColor: '$color.neutral.04',
+                    },
+                },
                 danger: {
                     borderColor: '$color.secondary.base',
-                    '&:disabled': {
-                        borderColor: grey050, // todo: use shades of gray for theme
-                    },
                 },
             },
         },
@@ -106,50 +131,48 @@ const declaration = {
 const theme = createMuiTheme(declaration);
 const hybridTheme = makeTheme(theme);
 
-const optionsTag = {
-    Button: 'button',
-    A: 'a',
-    Span: 'span',
-    Div: 'div',
+export const DPS = () => {
+    const result = (
+        <ThemeProvider theme={hybridTheme}>
+            <h2>Buttons</h2>
+            <h3>Sizes</h3>
+            <GroupHelper>
+                <Button primary>
+                    <MaterialIcon marginRight={2} icon="delete" />
+                    Button text
+                </Button>
+                <Button primary>Button text</Button>
+                <Button primary small>
+                    <MaterialIcon marginRight={2} icon="delete" />
+                    Button text
+                </Button>
+                <Button primary small>
+                    Button text
+                </Button>
+            </GroupHelper>
+            <h3>Types</h3>
+            <GroupHelper>
+                <Button primary>Primary</Button>
+                <Button secondary>Secondary</Button>
+                <Button tertiary>Tertiary</Button>
+                <Button danger>Danger</Button>
+            </GroupHelper>
+            <GroupHelper>
+                <Button primary disabled>
+                    Primary
+                </Button>
+                <Button secondary disabled>
+                    Secondary
+                </Button>
+                <Button tertiary disabled>
+                    Tertiary
+                </Button>
+                <Button danger disabled>
+                    Danger
+                </Button>
+            </GroupHelper>
+        </ThemeProvider>
+    );
+
+    return result;
 };
-
-const optionsType = {
-    Primary: 'primary',
-    Secondary: 'secondary',
-    Tertiary: 'tertiary',
-};
-
-const getTypeAttributes = (type: string) => ({
-    primary: false,
-    secondary: false,
-    tertiary: false,
-    [type]: true,
-});
-
-export const DPS = () => (
-    <ThemeProvider theme={hybridTheme}>
-        <h2>Buttons</h2>
-        <h3>Sizes</h3>
-        <GroupHelper>
-            <Button primary>
-                <MaterialIcon marginRight={2} icon="delete" />
-                Button text
-            </Button>
-            <Button primary>Button text</Button>
-            <Button primary small>
-                <MaterialIcon marginRight={2} icon="delete" />
-                Button text
-            </Button>
-            <Button primary small>
-                Button text
-            </Button>
-        </GroupHelper>
-        <h3>Types</h3>
-        <GroupHelper>
-            <Button primary>Primary</Button>
-            <Button secondary>Secondary</Button>
-            <Button tertiary>Tertiary</Button>
-            <Button danger>Danger</Button>
-        </GroupHelper>
-    </ThemeProvider>
-);

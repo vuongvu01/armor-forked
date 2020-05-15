@@ -37,7 +37,11 @@ export const defaultThemeDeclaration = {
             contrast: grey00,
         },
         danger: {
+            lighter: '#FAEAEB',
+            light: '#F6D5D5',
             main: red300,
+            dark: red300,
+            darker: red300,
             contrast: grey00,
         },
         background: {
