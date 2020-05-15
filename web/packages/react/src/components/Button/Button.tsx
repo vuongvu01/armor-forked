@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
-import { useObject, useThemeOverride } from '../../utils/hooks';
+import { useThemeOverride } from '../../utils/hooks';
 import { useTheme } from '../../styling';
 
 import { useButtonClassName, useButtonStylesOverride } from './utils';
@@ -14,7 +14,6 @@ export const Button: FunctionComponent<ButtonPropsType> = ({
     className,
     classNames,
     styles,
-    attributes,
     tag: Tag = 'button',
     small,
     wide,
@@ -42,7 +41,6 @@ export const Button: FunctionComponent<ButtonPropsType> = ({
         danger,
     );
     const stylesOverride = useButtonStylesOverride(styles);
-    const attributesOverride = useObject(attributes);
 
     return (
         <ButtonWrapper
@@ -55,14 +53,12 @@ export const Button: FunctionComponent<ButtonPropsType> = ({
             danger={danger}
             theme={theme}
             {...restProps}
-            {...attributesOverride.Root}
             className={classNameRoot}
             styles={stylesOverride.Root}
         >
             {(classNameFinal: string) => (
                 <Tag
                     {...restProps}
-                    {...attributesOverride.root}
                     disabled={disabled}
                     className={classNameFinal}
                 >

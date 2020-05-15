@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { DialogContentRootStylePropsType } from './type';
+import { DialogContentRootPropsType } from './type';
 
-export const DialogContentRoot = styled.div<DialogContentRootStylePropsType>`
+export const DialogContentRoot = styled.div<DialogContentRootPropsType>`
     overflow-y: auto;
     ${({ theme }) => theme.componentOverrides.DialogContent.Root.base}
     ${props => props.styles(props)}

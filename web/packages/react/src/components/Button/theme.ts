@@ -1,4 +1,4 @@
-import { fontWeightMedium, grey050, grey100, white } from '../../tokens';
+import { fontWeightMedium } from '../../tokens';
 
 export const buttonDefaultTheme = {
     Root: {
@@ -17,56 +17,68 @@ export const buttonDefaultTheme = {
         },
         primary: {
             color: '$color.primary.contrast',
-            backgroundColor: '$color.primary.base',
+            backgroundColor: '$color.primary.main',
             '&:hover': {
                 color: '$color.primary.contrast',
-                backgroundColor: '$color.primary.dark',
+                backgroundColor: '$color.primary.light',
             },
             '&:focus': {
                 color: '$color.primary.contrast',
                 backgroundColor: '$color.primary.light',
             },
+            '&:active': {
+                color: '$color.primary.contrast',
+                backgroundColor: '$color.primary.dark',
+            },
             '&:disabled': {
-                color: grey100, // todo: use shades of gray for theme
-                backgroundColor: grey050, // todo: use shades of gray for theme
+                color: '$color.neutral.04',
+                backgroundColor: '$color.neutral.03',
             },
         },
         secondary: {
-            color: '$color.secondary.contrast',
-            borderColor: '$color.secondary.contrast',
-            backgroundColor: '$color.secondary.light',
-            '&:hover': {
-                borderColor: '$color.secondary.dark',
-                backgroundColor: '$color.secondary.base',
-            },
-            '&:focus': {
-                borderColor: '$color.secondary.dark',
-                backgroundColor: '$color.secondary.base',
-            },
+            color: '$color.primary.main',
+            borderColor: '$color.primary.main',
+            backgroundColor: '$color.primary.lighter',
+            '&:hover': {},
+            '&:focus': {},
+            '&:active': {},
             '&:disabled': {
-                color: grey100, // todo: use shades of gray for theme
-                borderColor: grey050, // todo: use shades of gray for theme
-                backgroundColor: white, // todo: use shades of gray for theme
+                color: '$color.neutral.04',
+                borderColor: '$color.neutral.03',
+                backgroundColor: '$color.neutral.00',
             },
         },
         tertiary: {
-            color: '$color.tertiary.contrast',
+            color: '$color.primary.main',
             '&:hover': {
-                color: '$color.tertiary.base',
-                backgroundColor: '$color.tertiary.light',
+                color: '$color.primary.dark',
+                backgroundColor: '$color.primary.lighter',
             },
             '&:focus': {
-                color: '$color.tertiary.dark',
-                backgroundColor: '$color.tertiary.light',
+                color: '$color.primary.darker',
+                backgroundColor: '$color.primary.lighter',
             },
+            '&:active': {},
             '&:disabled': {
-                color: grey100, // todo: use shades of gray for theme
+                color: '$color.neutral.04',
+                backgroundColor: '$color.neutral.00',
             },
         },
         danger: {
-            color: '$color.danger.base',
+            color: '$color.danger.main',
+            borderColor: 'transparent',
+            '&:hover': {
+                backgroundColor: '$color.danger.lighter',
+            },
+            '&:focus': {
+                backgroundColor: '$color.danger.lighter',
+            },
+            '&:active': {
+                backgroundColor: '$color.danger.light',
+            },
             '&:disabled': {
-                color: grey100, // todo: use shades of gray for theme
+                color: '$color.neutral.04',
+                backgroundColor: 'transparent',
             },
         },
         small: {

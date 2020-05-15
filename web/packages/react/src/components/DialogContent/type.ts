@@ -1,37 +1,31 @@
 import { HTMLAttributes } from 'react';
-import { StylesFunctionOrStubType, ComponentAttributesType } from '../type';
-import { ThemeType } from '../../styling';
-import { Indexed, ObjectLiteralType } from '../../type';
+import {
+    StyleNodePropsType,
+    StylePropsType,
+    StylesFunctionOrStubType,
+} from '../type';
+import { Indexed } from '../../type';
 
-export type DialogContentPropsType = DialogContentOverridableAttributesType &
-    ComponentAttributesType<
-        DialogContentAttributeOverrideType,
-        DialogContentAttributesType,
-        DialogContentStyleOverrideType
+type DialogContentEffectivePropsType = Indexed<{
+    // add other custom properties here
+}> &
+    HTMLAttributes<HTMLDivElement>; // includes all HTML Div attributes
+
+/* DialogContent component prop type */
+export type DialogContentPropsType = DialogContentEffectivePropsType &
+    StylePropsType<
+        {
+            Root?: string;
+            // add custom className for other nodes here
+        },
+        DialogContentStylesPropsType
     >;
 
-type DialogContentAttributesType = HTMLAttributes<HTMLDivElement>;
-
-export type DialogContentOverridableAttributesType = Indexed<{}>;
-export type DialogContentAttributeOverrideType = {
-    Root?: DialogContentOverridableAttributesType;
-};
-export type DialogContentStyleOverrideType = {
-    Root?: DialogContentStylesFunctionType;
+export type DialogContentStylesPropsType = {
+    Root?: StylesFunctionOrStubType<DialogContentEffectivePropsType>;
+    // add style properties for other nodes here
 };
 
-export type DialogContentStylesFunctionType = StylesFunctionOrStubType<
-    DialogContentAttributesType
->;
-export type DialogContentStyleOverrideSafeType = Required<
-    DialogContentStyleOverrideType
->;
-
-export type DialogContentRootStylePropsType = DialogContentPropsType & {
-    theme: ThemeType;
-    styles: DialogContentStylesFunctionType;
-};
-
-export type DialogContentThemeType = Indexed<{
-    base: ObjectLiteralType;
-}>;
+/* DialogContent Root node prop type */
+export type DialogContentRootPropsType = DialogContentEffectivePropsType &
+    StyleNodePropsType<DialogContentEffectivePropsType>;

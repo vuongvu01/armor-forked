@@ -3,29 +3,20 @@ import {
     ButtonHTMLAttributes,
     ComponentType,
 } from 'react';
-import { StylesFunctionOrStubType, ComponentAttributesType } from '../type';
+import {
+    StyleNodePropsType,
+    StylePropsType,
+    StylesFunctionOrStubType,
+} from '../type';
 import {
     MarginAttributesType,
     SizeAttributesType,
 } from '../../system/attributes';
-import { ThemeType } from '../../styling';
-import { Indexed, ObjectLiteralType } from '../../type';
-
-export type ButtonPropsType = ButtonOverridableAttributesType &
-    ComponentAttributesType<
-        ButtonAttributeOverrideType,
-        ButtonAttributesType,
-        ButtonStyleOverrideType
-    > &
-    SizeAttributesType &
-    MarginAttributesType;
-
-type ButtonAttributesType = ButtonHTMLAttributes<HTMLButtonElement> &
-    Pick<AnchorHTMLAttributes<HTMLAnchorElement>, 'target' | 'href' | 'rel'>;
+import { Indexed } from '../../type';
 
 export type ButtonTagType = string | ComponentType<any>;
 
-export type ButtonOverridableAttributesType = Indexed<{
+type ButtonEffectivePropsType = Indexed<{
     tag?: ButtonTagType;
     primary?: boolean;
     secondary?: boolean;
@@ -33,28 +24,28 @@ export type ButtonOverridableAttributesType = Indexed<{
     danger?: boolean;
     small?: boolean;
     wide?: boolean;
-}>;
-export type ButtonAttributeOverrideType = {
-    Root?: ButtonOverridableAttributesType;
-};
-export type ButtonStyleOverrideType = {
-    Root?: ButtonStylesFunctionType;
+    // add other custom properties here
+}> &
+    ButtonHTMLAttributes<HTMLButtonElement> & // includes all HTML Button attributes
+    Pick<AnchorHTMLAttributes<HTMLAnchorElement>, 'target' | 'href' | 'rel'> & // and 3 attributes from HTML Anchor
+    SizeAttributesType &
+    MarginAttributesType;
+
+/* Button component prop type */
+export type ButtonPropsType = ButtonEffectivePropsType &
+    StylePropsType<
+        {
+            Root?: string;
+            // add custom className for other nodes here
+        },
+        ButtonStylesPropsType
+    >;
+
+export type ButtonStylesPropsType = {
+    Root?: StylesFunctionOrStubType<ButtonEffectivePropsType>;
+    // add style properties for other nodes here
 };
 
-export type ButtonStylesFunctionType = StylesFunctionOrStubType<
-    ButtonAttributesType
->;
-export type ButtonStyleOverrideSafeType = Required<ButtonStyleOverrideType>;
-
-export type ButtonRootStylePropsType = ButtonPropsType & {
-    theme: ThemeType;
-    styles: ButtonStylesFunctionType;
-};
-
-export type ButtonThemeType = Indexed<{
-    base: ObjectLiteralType;
-    primary: ObjectLiteralType;
-    secondary: ObjectLiteralType;
-    tertiary: ObjectLiteralType;
-    small: ObjectLiteralType;
-}>;
+/* Button Root node prop type */
+export type ButtonRootPropsType = ButtonEffectivePropsType &
+    StyleNodePropsType<ButtonEffectivePropsType>;

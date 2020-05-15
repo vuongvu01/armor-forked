@@ -1,14 +1,11 @@
 import { useMemo } from 'react';
-import {
-    DialogTitleStyleOverrideType,
-    DialogTitleStyleOverrideSafeType,
-} from './type';
+import { DialogTitleStylesPropsType } from './type';
 import { returnEmptyString, makeClassName } from '../../utils';
 import { ClassNamesType } from '../type';
 
 export const useDialogTitleStylesOverride = (
-    styles?: DialogTitleStyleOverrideType,
-): DialogTitleStyleOverrideSafeType =>
+    styles?: DialogTitleStylesPropsType,
+): Required<DialogTitleStylesPropsType> =>
     useMemo(
         () => ({
             Root: returnEmptyString,

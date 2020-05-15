@@ -1,19 +1,18 @@
 import { useMemo } from 'react';
-import { ButtonStyleOverrideType, ButtonStyleOverrideSafeType } from './type';
+import { ButtonStylesPropsType } from './type';
 import { returnEmptyString, makeBEM, makeClassName } from '../../utils';
 import { ClassNamesType } from '../type';
 
 export const useButtonStylesOverride = (
-    styles?: ButtonStyleOverrideType,
-): ButtonStyleOverrideSafeType => {
-    return useMemo(
+    styles?: ButtonStylesPropsType,
+): Required<ButtonStylesPropsType> =>
+    useMemo(
         () => ({
             Root: returnEmptyString,
             ...styles,
         }),
         [styles],
     );
-};
 
 export const useButtonClassName = (
     classPrefix: string,

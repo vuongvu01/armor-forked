@@ -55,9 +55,11 @@ Todo: when there is something inside, write a short intro to the project
 To use the UI offered by this project you need to install an NPM package and consume it in the code of your application.
 In order to do that, follow these steps:
 
-1. [Generate your own GitHUB token](https://github.com/settings/tokens) with these permissions: **read:packages**, **repo**
+1. [Generate your own GitHUB token](https://github.com/settings/tokens) with the following conditions:
+    * permissions: **read:packages**, **repo**
+    * SSO: enabled
 2. Add the token as an environment variable:
-    ~~~sh
+    ~~~bash
     printf "\nexport GITHUB_TOKEN=<your-token-goes-here>\n" >> ~/.bash_profile; # .bashrc in linux
     source ~/.bash_profile;
     ~~~
@@ -68,7 +70,7 @@ In order to do that, follow these steps:
     ~~~
     If you already have this file, just to append the lines above to it.
 4. Install the package
-    ~~~sh
+    ~~~bash
     yarn add @deliveryhero/armor
     ~~~
 5. Start coding!
@@ -83,20 +85,20 @@ If you wish to make a contribution to the library, you need to setup the develop
 ### Installation
 
 1. Clone the repo
-    ```sh
+    ~~~bash
     git clone git@github.com:deliveryhero/armor.git
-    ```
+    ~~~
 2. Install NPM packages everywhere
-    ```sh
+    ~~~bash
     cd ui/web/;
     yarn;
     cd packages/react/;
     yarn setup;
-    ```
+    ~~~
 3. We utilise `Storybook` as a primary tool for development. To launch `Storybook`, type
-    ```sh
+    ~~~bash
     yarn dev;
-    ```
+    ~~~
 4. Open [http://localhost:6006/](http://localhost:6006/) and start developing :)
 
 ### Local usage
@@ -107,25 +109,25 @@ You have two options here.
 #### Option 1: yarn link or npm link
 
 0. Make sure that no peer dependencies installed by typing
-    ~~~sh
+    ~~~bash
     cd web/packages/react;
     yarn;
     ~~~
 1. Link the package to `yarn`:
-    ~~~sh
+    ~~~bash
     yarn link;
     ~~~
     or if the project uses `npm`:
-    ~~~sh
+    ~~~bash
     npm link;
     ~~~
 2. Link the package to the application:
-    ~~~sh
+    ~~~bash
     cd <application-folder>;
     yarn link "@deliveryhero/armor";
     ~~~
     or if the project uses `npm`:
-    ~~~sh
+    ~~~bash
     cd <application-folder>;
     npm link "@deliveryhero/armor";
     ~~~
@@ -140,16 +142,16 @@ yarn run install-peers;
 #### Option 2: yalc
 
 1. Install `yalc`:
-    ~~~sh
+    ~~~bash
     yarn global add yalc
     ~~~
 2. "Publish" the package to `yalc`:
-    ~~~sh
+    ~~~bash
     cd web/packages/react;
     yalc publish;
     ~~~
 3. Link the package to the application:
-    ~~~sh
+    ~~~bash
     cd <application-folder>;
     yalc link "@deliveryhero/armor";
     ~~~
@@ -170,8 +172,8 @@ In this project we use a simplified Git Flow branching model:
 
 ## Contribution rules
 
-Contributions are what really helps this project to advance. Any contributions you make are **greatly appreciated**.
-The project tries to maintain healthy balance between a comfortable development process and restrictions that prevent everything from falling into chaos.
+Contributing on regular basis is what really helps this project to advance. Any contributions you make are **greatly appreciated**.
+The project tries to maintain healthy balance between comfortable development and restrictions that prevent everything from falling into chaos.
 Therefore, there are certain rules a contributor must follow in order to make the process straightforward and error-proof.
 
 ### For contributors
@@ -179,10 +181,12 @@ Therefore, there are certain rules a contributor must follow in order to make th
 #### Component requirements
 
 Every new component should have:
+
 * unit tests,
 * at least one story of Storybook.
 
 When modifying existing components:
+
 * try to support backward compatibility while making updates.
 
 #### Adding a new component
@@ -231,12 +235,29 @@ The algorithm of making a contribution:
 
 ### For maintainers
 
-When accepting a Pull Request:
-* use `Squash-and-Merge` when merging to `dev`,
-* copy the `PR` name to the name of a `squash commit` (it should be <a href="https://www.conventionalcommits.org/en/v1.0.0-beta.4/" target="_blank">conventional</a>).<br />
+#### Accepting a Pull Request to dev branch
+
+1. Use `Squash-and-Merge` when merging to `dev`,
+2. Copy the `PR` name to the name of a `squash commit` (it should be <a href="https://www.conventionalcommits.org/en/v1.0.0-beta.4/" target="_blank">conventional</a>).<br />
     Example: `feat: a new amazing component added` => `feat: a new amazing component added`
 
-Please note that pushing directly to `master` or `dev` without making a PR is strictly prohibited and therefore not possible.
+#### Deploying changes
+
+As soon as there are several features merged into `dev`, it is time to publish a new version. To do so:
+
+1. Create a PR from `dev` to `master`, wait for linter and tests finish with their work.
+2. Squash and merge the PR with the following prefix in the name:
+    1. add `fix:` prefix if the commits merged to `dev` had only `fix:` prefixes (this will increment `patch` version number),
+    2. add `feat:` prefix if one of the commits merged to `dev` had `feat:` prefix (this will increment `minor` version number),
+    3. add `BREAKING CHANGES` note into the commit name, if one of the commits merged into `dev` had `BREAKING CHANGES` in the name (this will increment `major` version number).
+
+    Use of `feat:` and `fix:` prefixes together is not allowed. This routine may be automated in future.
+3. As soon as the PR gets merged, [a new version will be published](https://github.com/deliveryhero/armor/packages/210156).
+4. An updated version of the [documentation](https://deliveryhero.github.io/armor/) will be published as well.
+5. There is no need to pull back the `master` branch locally after the CD process is done. In fact, you should not have the `master` branch locally at all.
+6. The package version in `package.json` will not be updated and this is absolutely normal, because the remote version only matters.
+
+Please note that pushing directly to `master` or `dev` without making a PR is strictly prohibited.
 
 ### Editing the documentation
 

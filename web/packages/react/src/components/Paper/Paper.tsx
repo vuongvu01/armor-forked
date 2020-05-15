@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 // import PropTypes from 'prop-types';
-import { useObject, useThemeOverride } from '../../utils/hooks';
+import { useThemeOverride } from '../../utils/hooks';
 import { useTheme } from '../../styling';
 
 import { useClassNamePaper, useStylesOverridePaper } from './utils';
@@ -14,7 +14,6 @@ export const Paper: FunctionComponent<PaperPropsType> = ({
     className,
     classNames,
     styles,
-    attributes,
     ...restProps
 }) => {
     const theme = useTheme();
@@ -26,13 +25,11 @@ export const Paper: FunctionComponent<PaperPropsType> = ({
         classNames,
     );
     const stylesSafe = useStylesOverridePaper(styles);
-    const attributesSafe = useObject(attributes);
 
     return (
         <PaperRoot
             theme={theme}
             {...restProps}
-            {...attributesSafe.Root}
             className={classNameRoot}
             styles={stylesSafe.Root}
         />

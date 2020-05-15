@@ -1,20 +1,29 @@
 import styled from 'styled-components';
-import { DialogTitleRootStylePropsType } from './type';
+import {
+    DialogTitleRootPropsType,
+    DialogTitleTextPropsType,
+    DialogTitleDescriptionPropsType,
+} from './type';
 
-export const DialogTitleRoot = styled.div<DialogTitleRootStylePropsType>`
+export const DialogTitleRoot = styled.div<DialogTitleRootPropsType>`
     box-sizing: border-box;
     flex: 0 0;
-    ${({ theme }) => theme.componentOverrides.DialogTitle.Root.base}
-    ${props => props.styles(props)}
+    ${({ theme }: DialogTitleRootPropsType) =>
+        theme.componentOverrides.DialogTitle.Root.base}
+    ${(props: DialogTitleRootPropsType) => props.styles(props)}
 `;
 
 // todo: probably reuse Typography component as title
-export const DialogTitleText = styled.div<DialogTitleRootStylePropsType>`
+export const DialogTitleText = styled.div<DialogTitleTextPropsType>`
     letter-spacing: 0;
-    ${({ theme }) => theme.componentOverrides.DialogTitle.Text.base}
+    ${({ theme }: DialogTitleTextPropsType) =>
+        theme.componentOverrides.DialogTitle.Text.base}
 `;
 
-export const DialogTitleDescription = styled.div<DialogTitleRootStylePropsType>`
+export const DialogTitleDescription = styled.div<
+    DialogTitleDescriptionPropsType
+>`
     letter-spacing: 0;
-    ${({ theme }) => theme.componentOverrides.DialogTitle.Description.base}
+    ${({ theme }: DialogTitleDescriptionPropsType) =>
+        theme.componentOverrides.DialogTitle.Description.base}
 `;

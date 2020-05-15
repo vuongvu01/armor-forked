@@ -21,7 +21,7 @@ import { MaterialIcon } from '../../MaterialIcon';
 import { makeTheme } from '../../../styling';
 import { fontSizeIconBig } from '../../../tokens';
 import { ObjectLiteralType } from '../../../type';
-import { makeHybridTheme } from '../../../helpers/sample-mui-theme';
+import { GroupHelper } from '../../../helpers/GroupHelper';
 
 export default {
     title: 'Components/Button',
@@ -51,6 +51,48 @@ const getTypeAttributes = (type: string) => ({
     [type]: true,
 });
 
+export const Types = () => (
+    <>
+        <h2>Buttons</h2>
+        <h3>Sizes</h3>
+        <GroupHelper>
+            <Button primary>
+                <MaterialIcon marginRight={2} icon="delete" />
+                Button text
+            </Button>
+            <Button primary>Button text</Button>
+            <Button primary small>
+                <MaterialIcon marginRight={2} icon="delete" />
+                Button text
+            </Button>
+            <Button primary small>
+                Button text
+            </Button>
+        </GroupHelper>
+        <h3>Types</h3>
+        <GroupHelper>
+            <Button primary>Primary</Button>
+            <Button secondary>Secondary</Button>
+            <Button tertiary>Tertiary</Button>
+            <Button danger>Danger</Button>
+        </GroupHelper>
+        <GroupHelper>
+            <Button primary disabled>
+                Primary
+            </Button>
+            <Button secondary disabled>
+                Secondary
+            </Button>
+            <Button tertiary disabled>
+                Tertiary
+            </Button>
+            <Button danger disabled>
+                Danger
+            </Button>
+        </GroupHelper>
+    </>
+);
+
 export const Playground = () => (
     <Button
         {...getTypeAttributes(select('Type', optionsType, 'primary'))}
@@ -62,7 +104,7 @@ export const Playground = () => (
         href="https://google.com"
         target="_blank"
         className="custom-class-name"
-        classNames={{ root: 'custom-btn-root' }}
+        classNames={{ Root: 'custom-btn-root' }}
     >
         {text('Label', 'Primary button')}
     </Button>
@@ -76,10 +118,10 @@ export const AsLink = () => (
 
 export const WithMargins = () => (
     <Button
-        marginTop={`${number('Margin top', 0)}px`}
-        marginBottom={`${number('Margin bottom', 0)}px`}
-        marginLeft={`${number('Margin left', 0)}px`}
-        marginRight={`${number('Margin right', 0)}px`}
+        marginTop={number('Margin top', 0)}
+        marginBottom={number('Margin bottom', 0)}
+        marginLeft={number('Margin left', 0)}
+        marginRight={number('Margin right', 0)}
     >
         Primary button
     </Button>
@@ -304,43 +346,3 @@ const CustomButtonMUI = withMaterialStyles({
 })(CustomButtonWrapper);
 
 export const WithMUIStyles = () => <CustomButtonMUI />;
-
-// const hybridTheme = makeHybridTheme({
-//     components: {
-//         Button: {
-//             Root: {
-//                 base: {
-//                     fontWeight: 'bold',
-//                 },
-//                 primary: {
-//                     borderColor: '$color.secondary.light',
-//                     color: '$color.secondary.main',
-//                     '&:hover': {
-//                         borderColor: '$color.secondary.light',
-//                     },
-//                 },
-//             },
-//         },
-//     },
-// });
-
-const hybridTheme = makeHybridTheme(
-    {},
-    {
-        adoptMaterialUI: true,
-    },
-);
-
-export const AdoptMaterialUITheme = () => (
-    <ThemeProvider theme={hybridTheme}>
-        <Button
-            {...getTypeAttributes(select('Type', optionsType, 'primary'))}
-            tag={select('Tag', optionsTag, 'button') as ButtonTagType}
-            wide={boolean('Wide', false)}
-            small={boolean('Small', false)}
-        >
-            <MaterialIcon marginRight={2} icon="save" />
-            With custom theme
-        </Button>
-    </ThemeProvider>
-);

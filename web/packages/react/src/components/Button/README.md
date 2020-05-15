@@ -44,6 +44,7 @@ import { GroupHelper } from 'GroupHelper';
     <Button>Primary</Button>
     <Button secondary>Secondary</Button>
     <Button tertiary>Tertiary</Button>
+    <Button danger>Danger</Button>
 </GroupHelper>
 ```
 
@@ -67,6 +68,7 @@ import { GroupHelper } from 'GroupHelper';
     <Button disabled>Primary</Button>
     <Button disabled secondary>Secondary</Button>
     <Button disabled tertiary>Tertiary</Button>
+    <Button disabled danger>Danger</Button>
 </GroupHelper>
 ```
 
@@ -217,19 +219,22 @@ const theme = makeTheme({
                 base: {
                     boxShadow: shadow100,
                     textTransform: 'uppercase',
-                    color: '#D3302F',
-                    border: '2px solid #D61F26',
-                    backgroundColor: white,
+                    borderWidth: '2px',
                     borderRadius: '4px',
-
-                    '&:hover, &:active, &:focus, &:visited': {
+                },
+                primary: {
+                    color: '#D3302F',
+                    backgroundColor: white,
+                    borderColor: '#D61F26',
+                    '&:active, &:focus, &:visited': {
                         color: '#D3302F',
                         backgroundColor: white,
                     },
                     '&:hover': {
+                        color: '#D3302F',
                         backgroundColor: '#FAEAEB',
                     },
-                },
+                }
             },
         },
     },

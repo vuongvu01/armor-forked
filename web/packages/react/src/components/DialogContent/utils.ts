@@ -1,14 +1,11 @@
-import { useCallback, useMemo, useRef } from 'react';
-import {
-    DialogContentStyleOverrideType,
-    DialogContentStyleOverrideSafeType,
-} from './type';
+import { useCallback, useMemo, useRef, MouseEvent } from 'react';
+import { DialogContentStylesPropsType } from './type';
 import { returnEmptyString, makeClassName } from '../../utils';
 import { ClassNamesType } from '../type';
 
 export const useDialogContentStylesOverride = (
-    styles?: DialogContentStyleOverrideType,
-): DialogContentStyleOverrideSafeType =>
+    styles?: DialogContentStylesPropsType,
+): Required<DialogContentStylesPropsType> =>
     useMemo(
         () => ({
             Root: returnEmptyString,
@@ -34,7 +31,7 @@ export const useContainerClickTrap = (
 ) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const onContainerClick = useCallback(
-        (e: Event) => {
+        (e: MouseEvent<unknown>) => {
             if (
                 e.target === containerRef.current &&
                 !disableOverlay &&

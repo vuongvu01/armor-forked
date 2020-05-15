@@ -1,41 +1,42 @@
 import { HTMLAttributes, ReactNode } from 'react';
-import { StylesFunctionOrStubType, ComponentAttributesType } from '../type';
-import { ThemeType } from '../../styling';
-import { Indexed, ObjectLiteralType } from '../../type';
+import {
+    StyleNodePropsType,
+    StylePropsType,
+    StylesFunctionOrStubType,
+} from '../type';
+import { Indexed } from '../../type';
 
-export type DialogTitlePropsType = DialogTitleOverridableAttributesType &
-    ComponentAttributesType<
-        DialogTitleAttributeOverrideType,
-        DialogTitleAttributesType,
-        DialogTitleStyleOverrideType
+type DialogTitleEffectivePropsType = Indexed<{
+    description?: ReactNode;
+    // add other custom properties here
+}> &
+    HTMLAttributes<HTMLDivElement>; // includes all HTML Div attributes
+
+/* DialogTitle component prop type */
+export type DialogTitlePropsType = DialogTitleEffectivePropsType &
+    StylePropsType<
+        {
+            Root?: string;
+            Text?: string;
+            Description?: string;
+            // add custom className for other nodes here
+        },
+        DialogTitleStylesPropsType
     >;
 
-type DialogTitleAttributesType = HTMLAttributes<HTMLDivElement>;
-
-export type DialogTitleOverridableAttributesType = Indexed<{
-    description?: ReactNode;
-}>;
-export type DialogTitleAttributeOverrideType = {
-    Root?: DialogTitleOverridableAttributesType;
-};
-export type DialogTitleStyleOverrideType = {
-    Root?: DialogTitleStylesFunctionType;
-    Text?: DialogTitleStylesFunctionType;
-    Description?: DialogTitleStylesFunctionType;
+export type DialogTitleStylesPropsType = {
+    Root?: StylesFunctionOrStubType<DialogTitleEffectivePropsType>;
+    Text?: StylesFunctionOrStubType<{}>;
+    Description?: StylesFunctionOrStubType<{}>;
+    // add style properties for other nodes here
 };
 
-export type DialogTitleStylesFunctionType = StylesFunctionOrStubType<
-    DialogTitleAttributesType
->;
-export type DialogTitleStyleOverrideSafeType = Required<
-    DialogTitleStyleOverrideType
->;
+/* DialogTitle Root node prop type */
+export type DialogTitleRootPropsType = DialogTitleEffectivePropsType &
+    StyleNodePropsType<DialogTitleEffectivePropsType>;
 
-export type DialogTitleRootStylePropsType = DialogTitlePropsType & {
-    theme: ThemeType;
-    styles: DialogTitleStylesFunctionType;
-};
+/* DialogTitle Text node prop type */
+export type DialogTitleTextPropsType = StyleNodePropsType;
 
-export type DialogTitleThemeType = Indexed<{
-    base: ObjectLiteralType;
-}>;
+/* DialogTitle Description node prop type */
+export type DialogTitleDescriptionPropsType = StyleNodePropsType;

@@ -1,37 +1,31 @@
 import { HTMLAttributes } from 'react';
-import { StylesFunctionOrStubType, ComponentAttributesType } from '../type';
-import { ThemeType } from '../../styling';
-import { Indexed, ObjectLiteralType } from '../../type';
+import {
+    StyleNodePropsType,
+    StylePropsType,
+    StylesFunctionOrStubType,
+} from '../type';
+import { Indexed } from '../../type';
 
-export type DialogActionsPropsType = DialogActionsOverridableAttributesType &
-    ComponentAttributesType<
-        DialogActionsAttributeOverrideType,
-        DialogActionsAttributesType,
-        DialogActionsStyleOverrideType
+type DialogActionsEffectivePropsType = Indexed<{
+    // add other custom properties here
+}> &
+    HTMLAttributes<HTMLDivElement>; // includes all HTML Div attributes
+
+/* DialogActions component prop type */
+export type DialogActionsPropsType = DialogActionsEffectivePropsType &
+    StylePropsType<
+        {
+            Root?: string;
+            // add custom className for other nodes here
+        },
+        DialogActionsStylesPropsType
     >;
 
-type DialogActionsAttributesType = HTMLAttributes<HTMLDivElement>;
-
-export type DialogActionsOverridableAttributesType = Indexed<{}>;
-export type DialogActionsAttributeOverrideType = {
-    Root?: DialogActionsOverridableAttributesType;
-};
-export type DialogActionsStyleOverrideType = {
-    Root?: DialogActionsStylesFunctionType;
+export type DialogActionsStylesPropsType = {
+    Root?: StylesFunctionOrStubType<DialogActionsEffectivePropsType>;
+    // add style properties for other nodes here
 };
 
-export type DialogActionsStylesFunctionType = StylesFunctionOrStubType<
-    DialogActionsAttributesType
->;
-export type DialogActionsStyleOverrideSafeType = Required<
-    DialogActionsStyleOverrideType
->;
-
-export type DialogActionsRootStylePropsType = DialogActionsPropsType & {
-    theme: ThemeType;
-    styles: DialogActionsStylesFunctionType;
-};
-
-export type DialogActionsThemeType = Indexed<{
-    base: ObjectLiteralType;
-}>;
+/* DialogActions Root node prop type */
+export type DialogActionsRootPropsType = DialogActionsEffectivePropsType &
+    StyleNodePropsType<DialogActionsEffectivePropsType>;

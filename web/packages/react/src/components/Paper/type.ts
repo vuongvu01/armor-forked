@@ -1,34 +1,33 @@
-import { AnchorHTMLAttributes, ButtonHTMLAttributes } from 'react';
-import { StylesFunctionOrStubType, ComponentAttributesType } from '../type';
+import { HTMLAttributes } from 'react';
+import {
+    StyleNodePropsType,
+    StylePropsType,
+    StylesFunctionOrStubType,
+} from '../type';
 import { MarginAttributesType } from '../../system/attributes';
-import { ThemeType } from '../../styling';
 import { Indexed } from '../../type';
 
-export type PaperPropsType = PaperOverridableAttributesType &
-    ComponentAttributesType<
-        PaperAttributeOverrideType,
-        PaperAttributesType,
-        PaperStyleOverrideType
-    > &
-    MarginAttributesType;
+type PaperEffectivePropsType = Indexed<{
+    // add other custom properties here
+}> &
+    MarginAttributesType &
+    HTMLAttributes<HTMLDivElement>; // includes all HTML Div attributes
 
-type PaperAttributesType = ButtonHTMLAttributes<HTMLButtonElement> &
-    Pick<AnchorHTMLAttributes<HTMLAnchorElement>, 'target' | 'href' | 'rel'>;
+/* Paper component prop type */
+export type PaperPropsType = PaperEffectivePropsType &
+    StylePropsType<
+        {
+            Root?: string;
+            // add custom className for other nodes here
+        },
+        PaperStylesPropsType
+    >;
 
-export type PaperOverridableAttributesType = Indexed<{}>;
-export type PaperAttributeOverrideType = {
-    Root?: PaperOverridableAttributesType;
+export type PaperStylesPropsType = {
+    Root?: StylesFunctionOrStubType<PaperEffectivePropsType>;
+    // add style properties for other nodes here
 };
-export type PaperStyleOverrideType = {
-    Root?: PaperStylesFunctionType;
-};
 
-export type PaperStylesFunctionType = StylesFunctionOrStubType<
-    PaperAttributesType
->;
-export type PaperStyleOverrideSafeType = Required<PaperStyleOverrideType>;
-
-export type PaperRootStylePropsType = PaperPropsType & {
-    theme: ThemeType;
-    styles: PaperStylesFunctionType;
-};
+/* Paper Root node prop type */
+export type PaperRootPropsType = PaperEffectivePropsType &
+    StyleNodePropsType<PaperEffectivePropsType>;

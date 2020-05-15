@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
-import { useObject, useThemeOverride } from '../../utils/hooks';
+import { useThemeOverride } from '../../utils/hooks';
 import { useTheme } from '../../styling';
 
 import { useDialogClassNames, useDialogStylesOverride } from './utils';
@@ -26,7 +26,6 @@ export const Dialog: FunctionComponent<DialogPropsType> = ({
     className,
     classNames,
     styles,
-    attributes,
     children,
     open,
     disableOverlay,
@@ -45,7 +44,6 @@ export const Dialog: FunctionComponent<DialogPropsType> = ({
         classNames,
     );
     const stylesOverride = useDialogStylesOverride(styles);
-    const attributesOverride = useObject(attributes);
 
     const [display, effectToggle] = useDisplay(open);
     const { onContainerClick, containerRef } = useContainerClickTrap(
@@ -54,17 +52,10 @@ export const Dialog: FunctionComponent<DialogPropsType> = ({
     );
 
     return (
-        <Modal
-            theme={theme}
-            {...attributesOverride.Modal}
-            open={open}
-            onClose={onClose}
-            disableBackdrop={disableOverlay}
-        >
+        <Modal open={open} onClose={onClose} disableBackdrop={disableOverlay}>
             {!disableOverlay && (
                 <DialogOverlay
                     theme={theme}
-                    {...attributesOverride.Overlay}
                     className={classNameComponents.Overlay}
                     styles={stylesOverride.Overlay}
                     display={display}
@@ -74,7 +65,6 @@ export const Dialog: FunctionComponent<DialogPropsType> = ({
             )}
             <DialogAlignmentContainer
                 theme={theme}
-                {...attributesOverride.AlignmentContainer}
                 className={classNameComponents.AlignmentContainer}
                 styles={stylesOverride.AlignmentContainer}
                 display={display}
@@ -86,7 +76,6 @@ export const Dialog: FunctionComponent<DialogPropsType> = ({
                 <DialogRoot
                     theme={theme}
                     {...restProps}
-                    {...attributesOverride.Root}
                     className={classNameComponents.Root}
                     dialogStyles={stylesOverride.Root}
                     effectToggle={effectToggle}
@@ -97,7 +86,6 @@ export const Dialog: FunctionComponent<DialogPropsType> = ({
                         <DialogCloseButton
                             theme={theme}
                             tabIndex={-1}
-                            {...attributesOverride.CloseButton}
                             className={classNameComponents.CloseButton}
                             styles={stylesOverride.CloseButton}
                             onClick={onClose}
@@ -107,7 +95,6 @@ export const Dialog: FunctionComponent<DialogPropsType> = ({
                     )}
                     <DialogContent
                         theme={theme}
-                        {...attributesOverride.Content}
                         className={classNameComponents.Content}
                         styles={stylesOverride.Content}
                     >

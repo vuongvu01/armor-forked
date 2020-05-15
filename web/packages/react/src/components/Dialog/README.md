@@ -172,6 +172,9 @@ const onClose = () => setOpen(false);
             </GroupHelper>
         </DialogTitle>
         <DialogContent>
+            <span style={{color: 'red'}}>
+                This dialog always occupies as much of space as possible, because the content is huge.
+            </span>
             <LoremIpsum />
             <LoremIpsum />
         </DialogContent>
@@ -196,7 +199,7 @@ import {DialogTitle} from "../DialogTitle";
 
 const [open, setOpen] = useState(false);
 const [maxWidth, setMaxWidth] = useState('sm');
-const [wide, setWide] = useState(false);
+const [wide, setWide] = useState(true);
 const onClose = () => setOpen(false);
 
 <>
@@ -228,10 +231,12 @@ const onClose = () => setOpen(false);
             <br />
             <Button onClick={() => {
                 setWide(!wide);
-            }} secondary>Wide</Button>
+            }} secondary>{wide ? 'Shrink to auto with' : 'Expand to 100% width'}</Button>
         </DialogTitle>
         <DialogContent>
-            A short content
+            <span style={{color: 'red'}}>
+                This dialog has little content, but you can tell him to occupy all available space.
+            </span>
         </DialogContent>
     </Dialog>
 
