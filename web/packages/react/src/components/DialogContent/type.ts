@@ -1,6 +1,6 @@
 import { HTMLAttributes } from 'react';
 import {
-    StyleNodePropsType,
+    NodeStylePropsType,
     StylePropsType,
     StylesFunctionOrStubType,
 } from '../type';
@@ -28,4 +28,4 @@ export type DialogContentStylesPropsType = {
 
 /* DialogContent Root node prop type */
 export type DialogContentRootPropsType = DialogContentEffectivePropsType &
-    StyleNodePropsType<DialogContentEffectivePropsType>;
+    NodeStylePropsType<DialogContentEffectivePropsType>;

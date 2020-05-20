@@ -1,6 +1,6 @@
 import { HTMLAttributes, ReactNode } from 'react';
 import {
-    StyleNodePropsType,
+    NodeStylePropsType,
     StylePropsType,
     StylesFunctionOrStubType,
 } from '../type';
@@ -33,10 +33,10 @@ export type DialogTitleStylesPropsType = {
 
 /* DialogTitle Root node prop type */
 export type DialogTitleRootPropsType = DialogTitleEffectivePropsType &
-    StyleNodePropsType<DialogTitleEffectivePropsType>;
+    NodeStylePropsType<DialogTitleEffectivePropsType>;
 
 /* DialogTitle Text node prop type */
-export type DialogTitleTextPropsType = StyleNodePropsType;
+export type DialogTitleTextPropsType = NodeStylePropsType;
 
 /* DialogTitle Description node prop type */
-export type DialogTitleDescriptionPropsType = StyleNodePropsType;
+export type DialogTitleDescriptionPropsType = NodeStylePropsType;

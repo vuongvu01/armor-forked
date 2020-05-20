@@ -44,6 +44,9 @@ export const defaultThemeDeclaration = {
             darker: red300,
             contrast: grey00,
         },
+        text: {
+            main: '#050505',
+        },
         background: {
             main: grey00,
         },

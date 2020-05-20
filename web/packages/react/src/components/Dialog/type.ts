@@ -1,6 +1,6 @@
 import { HTMLAttributes } from 'react';
 import {
-    StyleNodePropsType,
+    NodeStylePropsType,
     StylePropsType,
     StylesFunctionOrStubType,
 } from '../type';
@@ -49,23 +49,23 @@ export type DialogOverlayPropsType = Pick<
 > & {
     display: boolean;
     effectToggle: boolean;
-} & StyleNodePropsType;
+} & NodeStylePropsType;
 
 /* Dialog AlignmentContainer node prop type */
 export type DialogAlignmentContainerPropsType = {
     display: boolean;
     disableCloseButton?: boolean;
     scroll?: ScrollType;
-} & StyleNodePropsType<DialogEffectivePropsType>;
+} & NodeStylePropsType<DialogEffectivePropsType>;
 
 /* Dialog Root node prop type */
 export type DialogRootPropsType = DialogEffectivePropsType &
-    StyleNodePropsType<DialogEffectivePropsType>;
+    NodeStylePropsType<DialogEffectivePropsType>;
 
 /* Dialog Content node prop type */
-export type DialogContentPropsType = StyleNodePropsType;
+export type DialogContentPropsType = NodeStylePropsType;
 
 /* Dialog Close Button node prop type */
-export type DialogCloseButtonPropsType = StyleNodePropsType;
+export type DialogCloseButtonPropsType = NodeStylePropsType;
 
 type ScrollType = 'document' | 'dialog';

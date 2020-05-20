@@ -1,4 +1,4 @@
-import { fontSizeTitle, fontWeightRegular } from '../../tokens';
+import { fontSizeTitle, fontWeightNormal } from '../../tokens';
 
 export const dialogTitleDefaultTheme = {
     Root: {
@@ -13,7 +13,7 @@ export const dialogTitleDefaultTheme = {
     Text: {
         base: {
             fontSize: fontSizeTitle,
-            fontWeight: fontWeightRegular,
+            fontWeight: fontWeightNormal,
             fontFamily: '$typography.fontFamily',
             lineHeight: 1.6,
         },
@@ -22,7 +22,7 @@ export const dialogTitleDefaultTheme = {
         base: {
             lineHeight: 1.7,
             fontFamily: '$typography.fontFamily',
-            fontWeight: fontWeightRegular,
+            fontWeight: fontWeightNormal,
             fontSize: '$typography.fontSize',
             marginTop: 3,
         },

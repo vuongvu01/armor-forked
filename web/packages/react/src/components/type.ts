@@ -20,8 +20,10 @@ export type StylePropsType<C extends ClassNamesType, S> = {
     theme?: ThemeType;
 };
 
-export type StyleNodePropsType<P = {}> = {
+export type NodeStylePropsType<P = {}> = {
     className: string;
     styles: StylesFunctionType<P>;
     theme: ThemeType;
 };
+
+export type PropsWithNodeStylePropsType<P = {}> = P & NodeStylePropsType<P>;

@@ -1,6 +1,6 @@
 import { HTMLAttributes } from 'react';
 import {
-    StyleNodePropsType,
+    NodeStylePropsType,
     StylePropsType,
     StylesFunctionOrStubType,
 } from '../type';
@@ -30,4 +30,4 @@ export type PaperStylesPropsType = {
 
 /* Paper Root node prop type */
 export type PaperRootPropsType = PaperEffectivePropsType &
-    StyleNodePropsType<PaperEffectivePropsType>;
+    NodeStylePropsType<PaperEffectivePropsType>;

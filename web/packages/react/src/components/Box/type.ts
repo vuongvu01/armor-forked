@@ -1,6 +1,6 @@
 import { HTMLAttributes } from 'react';
 import {
-    StyleNodePropsType,
+    NodeStylePropsType,
     StylePropsType,
     StylesFunctionOrStubType,
 } from '../type';
@@ -38,4 +38,4 @@ export type BoxStylesPropsType = {
 
 /* Box Root node prop type */
 export type BoxRootPropsType = BoxEffectivePropsType &
-    StyleNodePropsType<BoxEffectivePropsType>;
+    NodeStylePropsType<BoxEffectivePropsType>;

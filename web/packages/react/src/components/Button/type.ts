@@ -4,7 +4,7 @@ import {
     ComponentType,
 } from 'react';
 import {
-    StyleNodePropsType,
+    NodeStylePropsType,
     StylePropsType,
     StylesFunctionOrStubType,
 } from '../type';
@@ -48,4 +48,4 @@ export type ButtonStylesPropsType = {
 
 /* Button Root node prop type */
 export type ButtonRootPropsType = ButtonEffectivePropsType &
-    StyleNodePropsType<ButtonEffectivePropsType>;
+    NodeStylePropsType<ButtonEffectivePropsType>;
