@@ -36,18 +36,3 @@ jobs:
         run: yarn semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Install styleguidist
-        working-directory: ./web/packages/react/doc
-        run: yarn install
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build docs
-        working-directory: ./web/packages/react/doc
-        run: yarn build
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Publish docs
-        working-directory: ./web/packages/react/doc
-        run: yarn deploy
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
