@@ -16,7 +16,7 @@ import {
 } from '@testing-library/react';
 // import userEvent from '@testing-library/user-event';
 
-import { Typography } from '../Typography';
+import { Typography } from '../..';
 
 describe('<Typography />', () => {
     afterEach(async () => {

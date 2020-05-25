@@ -16,7 +16,7 @@ import {
 } from '@testing-library/react';
 // import userEvent from '@testing-library/user-event';
 
-import { DialogContent } from '../DialogContent';
+import { DialogContent } from '../..';
 
 describe('<DialogContent />', () => {
     afterEach(async () => {

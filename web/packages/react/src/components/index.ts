@@ -7,3 +7,7 @@ export * from './DialogContent';
 export * from './DialogActions';
 export * from './SVGIcon';
 export * from './MaterialIcon';
+export * from './Message';
+export * from './MessageAction';
+export * from './Paper';
+export * from './Typography';
