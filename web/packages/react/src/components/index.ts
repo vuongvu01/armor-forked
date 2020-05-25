@@ -1,4 +1,4 @@
-export const foo = 'bar';
+export const foo = 'bar1';
 export * from './Button';
 export * from './Box';
 export * from './Dummy';
