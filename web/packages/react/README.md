@@ -246,18 +246,22 @@ The algorithm of making a contribution:
 As soon as there are several features merged into `dev`, it is time to publish a new version. To do so:
 
 1. Create a PR from `dev` to `master`, wait for linter and tests finish with their work.
-2. Squash and merge the PR with the following prefix in the name:
+2. Merge the PR with the following prefix in the name:
     1. add `fix:` prefix if the commits merged to `dev` had only `fix:` prefixes (this will increment `patch` version number),
     2. add `feat:` prefix if one of the commits merged to `dev` had `feat:` prefix (this will increment `minor` version number),
     3. add `BREAKING CHANGES` note into the commit name, if one of the commits merged into `dev` had `BREAKING CHANGES` in the name (this will increment `major` version number).
 
-    Use of `feat:` and `fix:` prefixes together is not allowed. This routine may be automated in future.
+    ⚠️ Use of `feat:` and `fix:` prefixes together is not allowed.
+
+    ⚠️ Please don't use "Squash and merge" or "Rebase" when merging changes from `dev` to `master` as it will make GitHub really confused.
+    
+    ℹ️ This routine may be automated in future.
 3. As soon as the PR gets merged, [a new version will be published](https://github.com/deliveryhero/armor/packages/210156).
 4. An updated version of the [documentation](https://deliveryhero.github.io/armor/) will be published as well.
 5. There is no need to pull back the `master` branch locally after the CD process is done. In fact, you should not have the `master` branch locally at all.
 6. The package version in `package.json` will not be updated and this is absolutely normal, because the remote version only matters.
 
-Please note that pushing directly to `master` or `dev` without making a PR is strictly prohibited.
+⚠️ Please note that pushing directly to `master` or `dev` without making a PR is strictly prohibited.
 
 ### Editing the documentation
 
