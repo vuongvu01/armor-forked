@@ -1,3 +1,4 @@
+export const foo = 'bar';
 export * from './Button';
 export * from './Box';
 export * from './Dummy';
