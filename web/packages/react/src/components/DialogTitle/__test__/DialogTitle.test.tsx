@@ -16,7 +16,7 @@ import {
 } from '@testing-library/react';
 // import userEvent from '@testing-library/user-event';
 
-import { DialogTitle } from '../DialogTitle';
+import { DialogTitle } from '../..';
 
 describe('<DialogTitle />', () => {
     afterEach(async () => {

@@ -16,7 +16,7 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { MaterialIcon } from '../MaterialIcon';
+import { MaterialIcon } from '../..';
 
 describe('<MaterialIcon />', () => {
     afterEach(async () => {

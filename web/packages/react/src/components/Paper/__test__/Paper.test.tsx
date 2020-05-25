@@ -16,7 +16,7 @@ import {
 } from '@testing-library/react';
 // import userEvent from '@testing-library/user-event';
 
-import { Paper } from '../Paper';
+import { Paper } from '../..';
 
 describe('<Paper />', () => {
     afterEach(async () => {
