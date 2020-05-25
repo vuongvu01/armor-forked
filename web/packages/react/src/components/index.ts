@@ -9,4 +9,4 @@ export * from './DialogActions';
 export * from './SVGIcon';
 export * from './MaterialIcon';
 
-export const fix = '1';
+export const fix = '12';
