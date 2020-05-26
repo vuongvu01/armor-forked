@@ -32,8 +32,7 @@
         "flat": "^5.0.0",
         "prop-types": "^15.7.2",
         "throttle-debounce": "2.1.0",
-        "traverse": "^0.6.6",
-        "ts-essentials": "6.0.4"
+        "traverse": "^0.6.6"
     },
     "repository": {
         "type": "git",
@@ -77,6 +76,7 @@
         "react-docgen-typescript-loader": "^3.6.0",
         "react-router-dom": "^5.1.2",
         "semantic-release": "^17.0.7",
+        "ts-essentials": "^6.0.5",
         "ts-jest": "^25.2.1",
         "typescript": "^3.8.2"
     },
