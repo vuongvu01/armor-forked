@@ -1,0 +1,40 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { Typography } from '../../../src/components/';
+import { LoremIpsum } from '../../../src/helpers/LoremIpsum';
+import { Nodes } from '../../../src/helpers/Nodes';
+
+<Meta title="Components/Typography" component={Typography} />
+
+# Typography
+
+~~~
+import { Typography } from '@deliveryhero/armor';
+~~~
+
+## Basic usage
+
+<Preview>
+    <Story name="Basic usage">
+        <>
+            <Typography h6>
+                Header 6
+            </Typography>
+            <Typography>
+                <LoremIpsum short />
+            </Typography>
+        </>
+    </Story>
+</Preview>
+
+## Properties
+
+<Props of={Typography} />
+
+## Nodes
+
+<Nodes 
+    blockName="Typography"
+    nodes={[
+        { element: 'Root', modifier: 'h6', description: 'Root element, header level 6' },
+    ]}
+/>

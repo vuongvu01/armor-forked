@@ -1,0 +1,134 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { Button, MaterialIcon } from '../../../src/components/';
+import { BrowserRouter, Link } from 'react-router-dom';
+import { Nodes } from '../../../src/helpers/Nodes';
+
+<Meta title="Components/Button" component={Button} />
+
+# Button
+
+~~~
+import { Button } from '@deliveryhero/armor';
+~~~
+
+## Basic usage
+
+<Preview>
+    <Story name="Basic usage">
+        <Button>Click me</Button>
+    </Story>
+</Preview>
+
+
+## Appearance
+
+<Preview>
+    <Story name="Appearance">
+        <>
+            <Button marginRight={2}>Primary</Button>
+            <Button secondary marginRight={2}>Secondary</Button>
+            <Button tertiary marginRight={2}>Tertiary</Button>
+            <Button danger marginRight={2}>Danger</Button>
+        </>
+    </Story>
+</Preview>
+
+## Size
+
+<Preview>
+    <Story name="Size">
+        <>
+            <Button marginRight={2}>Regular</Button>
+            <Button small>Small</Button>
+        </>
+    </Story>
+</Preview>
+
+## Wide
+
+<Preview>
+    <Story name="Wide">
+        <Button wide>I occupy the entire parent width</Button>
+    </Story>
+</Preview>
+
+## Link
+
+It is possible to use any tag as a button. For instance, it can be used together with `react-router`.
+
+~~~js
+import { BrowserRouter, Link } from 'react-router-dom';
+~~~
+
+<Preview>
+    <Story name="Link">
+        <BrowserRouter>
+            <Button tag="a" href="https://google.com" target="_blank" marginRight={2}>
+                Regular link
+            </Button>
+            <Button tag={Link} to="/homepage">
+                React router link
+            </Button>
+        </BrowserRouter>
+    </Story>
+</Preview>
+
+## Material icon
+
+~~~
+import { Button, MaterialIcon } from '@deliveryhero/armor';
+~~~
+
+<Preview>
+    <Story name="Material icon">
+        <>
+           <Button marginRight={2}>
+               Edit
+               <MaterialIcon marginLeft={2}>edit</MaterialIcon>
+           </Button>
+           <Button marginRight={2}>
+               Edit
+               <MaterialIcon marginLeft={2} fontSize={22}>edit</MaterialIcon>
+           </Button>
+           <Button secondary marginRight={2}>
+               Save
+               <MaterialIcon marginLeft={2}>save</MaterialIcon>
+           </Button>
+           <Button tertiary marginRight={2}>
+               Add
+               <MaterialIcon marginLeft={2}>add</MaterialIcon>
+           </Button>
+           <Button tertiary marginRight={2}>
+               Add
+               <MaterialIcon marginLeft={2} fontSize={22} icon="add" />
+           </Button>
+           <Button primary marginRight={2}>
+               <MaterialIcon marginRight={2}>save</MaterialIcon>
+               Save
+           </Button>
+           <Button primary marginRight={2}>
+               <MaterialIcon marginRight={2} fontSize={22} icon="save" />
+               Save
+           </Button>
+        </>
+    </Story>
+</Preview>
+
+## Properties
+
+<Props of={Button} />
+
+## Nodes
+
+<Nodes 
+    blockName="Button"
+    nodes={[
+        { element: 'Root', modifier: 'primary', description: 'Root element, primary' },
+        { element: 'Root', modifier: 'secondary', description: 'Root element, secondary' },
+        { element: 'Root', modifier: 'tertiary', description: 'Root element, tertiary' },
+        { element: 'Root', modifier: 'danger', description: 'Root element, danger' },
+        { element: 'Root', modifier: 'disabled', description: 'Root element, disabled' },
+        { element: 'Root', modifier: 'small', description: 'Root element, small' },
+        { element: 'Root', modifier: 'wide', description: 'Root element, wide' },
+    ]}
+/>

@@ -25,24 +25,35 @@ export const useMessageClassNames = (
     className?: string,
     classNames?: ClassNamesType,
 ) =>
-    useMemo(() => {
-        const rootClassNames = makeClassName(
-            classPrefix,
-            className,
-            classNames,
-        );
-        const rootStateClassNames: string[] = [];
-        // if (exampleProperty) {
-        //     rootStateClassNames.push(makeBEM(classPrefix, 'root', 'example'));
-        // }
-
-        return {
-            Root: `${rootClassNames} ${rootStateClassNames.join(' ')}`,
-            Icon: '', // todo
-            Content: '', // todo
-            CloseButton: '', // todo
-            Central: '', // todo
-            Actions: '', // todo
-            Extra: '', // todo
-        };
-    }, [classPrefix, className, classNames]);
+    useMemo(
+        () => ({
+            Root: makeClassName(classPrefix, className, classNames),
+            Icon: makeClassName(classPrefix, className, classNames, 'Icon'),
+            Content: makeClassName(
+                classPrefix,
+                className,
+                classNames,
+                'Content',
+            ),
+            CloseButton: makeClassName(
+                classPrefix,
+                className,
+                classNames,
+                'CloseButton',
+            ),
+            Central: makeClassName(
+                classPrefix,
+                className,
+                classNames,
+                'Central',
+            ),
+            Actions: makeClassName(
+                classPrefix,
+                className,
+                classNames,
+                'Actions',
+            ),
+            Extra: makeClassName(classPrefix, className, classNames, 'Extra'),
+        }),
+        [classPrefix, className, classNames],
+    );
