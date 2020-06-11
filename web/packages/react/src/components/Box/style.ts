@@ -6,8 +6,11 @@ import {
     sizeAttributes,
     textAlignmentAttributes,
 } from '../../system/attributes';
+import { shouldForwardProp } from '../../utils';
 
-export const BoxRoot = styled.div<BoxRootPropsType>`
+export const BoxRoot = styled.div.withConfig({
+    shouldForwardProp: property => shouldForwardProp(property),
+})<BoxRootPropsType>`
     ${marginAttributes}
     ${paddingAttributes}
     ${sizeAttributes}

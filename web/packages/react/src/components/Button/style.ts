@@ -1,8 +1,21 @@
 import styled, { css } from 'styled-components';
-import { ReactElement } from 'react';
-import { ButtonRootPropsType } from './type';
+import { ReactElement, ReactNode } from 'react';
+import { ButtonRootPropsType, ButtonTagType } from './type';
 import { marginAttributes, sizeAttributes } from '../../system/attributes';
 import { durationRegular } from '../../tokens';
+import { shouldForwardProp } from '../../utils';
+import { ObjectLiteralType } from '../../type';
+
+const propertyList = {
+    tag: true,
+    primary: true,
+    secondary: true,
+    tertiary: true,
+    danger: true,
+    small: true,
+    wide: true,
+    // add other custom properties here
+} as ObjectLiteralType;
 
 const visualStyle = ({
     theme,
@@ -43,12 +56,11 @@ const sizeStyle = ({ theme, small }: ButtonRootPropsType) => {
 };
 
 const Wrapper = ({
-    className,
     children,
-}: {
-    className: string;
-    children: (className: string) => ReactElement;
-}) => children(className);
+    ...restProps
+}: ButtonRootPropsType & {
+    children: (props: ButtonRootPropsType) => ReactElement;
+}) => children({ ...restProps });
 
 const basicStyle = ({ theme }: ButtonRootPropsType) => css<ButtonRootPropsType>`
     transition: background-color ${durationRegular}ms ease,
@@ -56,7 +68,9 @@ const basicStyle = ({ theme }: ButtonRootPropsType) => css<ButtonRootPropsType>`
     ${theme.componentOverrides.Button.Root.base}
 `;
 
-export const ButtonWrapper = styled(Wrapper)<ButtonRootPropsType>`
+export const ButtonWrapper = styled(Wrapper).withConfig({
+    shouldForwardProp: property => shouldForwardProp(property, propertyList),
+})<ButtonRootPropsType>`
     display: inline-flex;
     justify-content: center;
     align-items: center;

@@ -32,8 +32,7 @@
         "flat": "^5.0.0",
         "prop-types": "^15.7.2",
         "throttle-debounce": "2.1.0",
-        "traverse": "^0.6.6",
-        "ts-essentials": "6.0.4"
+        "traverse": "^0.6.6"
     },
     "repository": {
         "type": "git",
@@ -65,6 +64,7 @@
         "@typescript-eslint/eslint-plugin": "^2.21.0",
         "@typescript-eslint/parser": "^2.21.0",
         "babel-loader": "^8.0.6",
+        "core-js": "^3.6.5",
         "eslint": "^6.8.0",
         "eslint-config-airbnb-base": "^14.0.0",
         "eslint-config-prettier": "^6.10.0",
@@ -77,13 +77,14 @@
         "react-docgen-typescript-loader": "^3.6.0",
         "react-router-dom": "^5.1.2",
         "semantic-release": "^17.0.7",
+        "ts-essentials": "^6.0.5",
         "ts-jest": "^25.2.1",
         "typescript": "^3.8.2"
     },
     "peerDependencies": {
         "react": ">=16.8.0",
         "react-dom": ">=16.8.0",
-        "styled-components": ">=4.0.0"
+        "styled-components": ">=5.1.0"
     },
     "husky": {
         "hooks": {

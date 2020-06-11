@@ -84,3 +84,9 @@ export const Basic = () => {
         </>
     );
 };
+
+export const WithCustomAttributes = () => (
+    <Message marginTop={30} disableCloseButton={false}>
+        Hello there!
+    </Message>
+);

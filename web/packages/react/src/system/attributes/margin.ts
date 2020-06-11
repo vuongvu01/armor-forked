@@ -13,6 +13,16 @@ export type MarginAttributesType = {
 
 type PropertiesType = { theme: ThemeType } & MarginAttributesType;
 
+export const marginAttributesList = {
+    margin: true,
+    marginTop: true,
+    marginBottom: true,
+    marginLeft: true,
+    marginRight: true,
+    marginX: true,
+    marginY: true,
+};
+
 export const marginAttributes = ({
     theme,
     margin,

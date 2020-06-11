@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-find ./doc/helpers/ -name "*.d.ts" -type f -delete
 find ./src/helpers/ -name "*.d.ts" -type f -delete
 
 find ./src/components/ -name "*.d.ts" -type f -delete

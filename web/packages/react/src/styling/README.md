@@ -5,11 +5,8 @@ import { ThemeProvider } from 'styled-components';
 import { makeTheme } from '..';
 import { GroupHelper } from 'GroupHelper';
 import { Button, MaterialIcon } from '../components'
-import {
-    createMuiTheme,
-} from '@material-ui/core/styles';
 
-const theme = makeTheme(createMuiTheme({
+const theme = makeTheme({
     color: {
         primary: {
             lighter: '#4F5C6E',
@@ -66,7 +63,7 @@ const theme = makeTheme(createMuiTheme({
             },
         },
     },
-}));
+});
 
 <ThemeProvider theme={theme}>
     <h2>Buttons</h2>

@@ -10,6 +10,21 @@ import {
 import { Paper } from '../Paper';
 import { sizeAttributes } from '../../system/attributes';
 import { DIALOG_SCROLL_DOCUMENT } from './Dialog';
+import { shouldForwardProp } from '../../utils';
+import { ObjectLiteralType } from '../../type';
+
+const propertyList = {
+    disableOverlay: true,
+    disableEffects: true,
+    disableCloseButton: true,
+    scroll: true,
+    open: true,
+    onClose: true,
+    // add other custom properties here
+
+    effectToggle: true,
+    display: true,
+} as ObjectLiteralType;
 
 const dialogContainerOverflow = ({
     scroll,
@@ -42,7 +57,9 @@ const dialogRootMaxHeight = ({ scroll, theme }: DialogRootPropsType) => {
         : `calc(100% - ${theme.componentOverrides.Dialog.Root.safeMargin})`;
 };
 
-export const DialogOverlay = styled.div<DialogOverlayPropsType>`
+export const DialogOverlay = styled.div.withConfig({
+    shouldForwardProp: property => shouldForwardProp(property, propertyList),
+})<DialogOverlayPropsType>`
     ${fixedCover};
     z-index: inherit;
     pointer-events: none;
@@ -61,9 +78,9 @@ export const DialogOverlay = styled.div<DialogOverlayPropsType>`
     ${(props: DialogOverlayPropsType) => props.styles(props)}
 `;
 
-export const DialogAlignmentContainer = styled.div<
-    DialogAlignmentContainerPropsType
->`
+export const DialogAlignmentContainer = styled.div.withConfig({
+    shouldForwardProp: property => shouldForwardProp(property, propertyList),
+})<DialogAlignmentContainerPropsType>`
     ${fixedCover};
     z-index: inherit;
     align-items: center;
@@ -87,7 +104,9 @@ export const DialogAlignmentContainer = styled.div<
     ${(props: DialogAlignmentContainerPropsType) => props.styles(props)}
 `;
 
-export const DialogRoot = styled(Paper)<DialogRootPropsType>`
+export const DialogRoot = styled(Paper).withConfig({
+    shouldForwardProp: property => shouldForwardProp(property, propertyList),
+})<DialogRootPropsType>`
     flex-direction: column;
     text-align: left;
 

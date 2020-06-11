@@ -13,6 +13,16 @@ export type PaddingAttributesType = {
 
 type PropertiesType = { theme: ThemeType } & PaddingAttributesType;
 
+export const paddingAttributesList = {
+    padding: true,
+    paddingTop: true,
+    paddingBottom: true,
+    paddingLeft: true,
+    paddingRight: true,
+    paddingX: true,
+    paddingY: true,
+};
+
 export const paddingAttributes = ({
     theme,
     padding,

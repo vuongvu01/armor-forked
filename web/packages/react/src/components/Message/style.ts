@@ -12,6 +12,22 @@ import {
 import { marginAttributes } from '../../system/attributes';
 import { MaterialIcon } from '../MaterialIcon';
 import { noTextInteraction } from '../../system/mixins';
+import { ObjectLiteralType } from '../../type';
+import { shouldForwardProp } from '../../utils';
+
+const propertyList = {
+    onClose: true,
+    disableCloseButton: true,
+    disableIcon: true,
+    actions: true,
+    extra: true,
+    level: true,
+    error: true,
+    warning: true,
+    info: true,
+    success: true,
+    // add other custom properties here
+} as ObjectLiteralType;
 
 const getIconAttributes = ({ level, error, success }: MessageIconPropsType) => {
     let icon = 'info';
@@ -53,7 +69,9 @@ const getLevelStyles = (
     return source.info;
 };
 
-export const MessageRoot = styled.div<MessageRootPropsType>`
+export const MessageRoot = styled.div.withConfig({
+    shouldForwardProp: property => shouldForwardProp(property, propertyList),
+})<MessageRootPropsType>`
     box-sizing: border-box;
     border: 1px solid transparent;
     display: flex;

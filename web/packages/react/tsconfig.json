@@ -26,7 +26,8 @@
             ],
             "@storybook/addon-actions": [
                 "dev/node_modules/@storybook/addon-actions"
-            ]
+            ],
+            "@storybook/components": ["doc/node_modules/@storybook/components"]
         }
     },
     "exclude": ["node_modules", "build", "build.cjs", "build.esm"],
