@@ -4,8 +4,17 @@ import {
     DialogTitleTextPropsType,
     DialogTitleDescriptionPropsType,
 } from './type';
+import { shouldForwardProp } from '../../utils';
+import { ObjectLiteralType } from '../../type';
 
-export const DialogTitleRoot = styled.div<DialogTitleRootPropsType>`
+const propertyList = {
+    description: true,
+    // add other custom properties here
+} as ObjectLiteralType;
+
+export const DialogTitleRoot = styled.div.withConfig({
+    shouldForwardProp: property => shouldForwardProp(property, propertyList),
+})<DialogTitleRootPropsType>`
     box-sizing: border-box;
     flex: 0 0;
     ${({ theme }: DialogTitleRootPropsType) =>

@@ -14,6 +14,17 @@ export type SizeAttributesType = {
 
 type PropertiesType = { theme: ThemeType } & SizeAttributesType;
 
+export const sizeAttributesList = {
+    width: true,
+    minWidth: true,
+    maxWidth: true,
+    height: true,
+    minHeight: true,
+    maxHeight: true,
+    wide: true,
+    tall: true,
+};
+
 const makeCSS = (
     theme: ThemeType,
     cssParameter: string,

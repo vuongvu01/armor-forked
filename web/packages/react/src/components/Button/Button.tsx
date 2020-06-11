@@ -56,14 +56,8 @@ export const Button: FunctionComponent<ButtonPropsType> = ({
             className={classNameRoot}
             styles={stylesOverride.Root}
         >
-            {(classNameFinal: string) => (
-                <Tag
-                    {...restProps}
-                    disabled={disabled}
-                    className={classNameFinal}
-                >
-                    {children}
-                </Tag>
+            {(forwardedProps: ButtonPropsType) => (
+                <Tag {...forwardedProps}>{children}</Tag>
             )}
         </ButtonWrapper>
     );

@@ -346,3 +346,7 @@ const CustomButtonMUI = withMaterialStyles({
 })(CustomButtonWrapper);
 
 export const WithMUIStyles = () => <CustomButtonMUI />;
+
+export const WithCustomAttributes = () => (
+    <Button marginLeft={2}>With custom attributes</Button>
+);

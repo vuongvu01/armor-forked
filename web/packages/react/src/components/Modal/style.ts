@@ -1,7 +1,16 @@
 import styled from 'styled-components';
 import { fixedCover } from '../../system/mixins';
+import { shouldForwardProp } from '../../utils';
+import { ObjectLiteralType } from '../../type';
 
-export const ModalRoot = styled.div<{ elevation: number }>`
+const propertyList = {
+    elevation: true,
+    // add other custom properties here
+} as ObjectLiteralType;
+
+export const ModalRoot = styled.div.withConfig({
+    shouldForwardProp: property => shouldForwardProp(property, propertyList),
+})<{ elevation: number }>`
     z-index ${({ elevation }) => elevation};
     position: relative;
 `;
