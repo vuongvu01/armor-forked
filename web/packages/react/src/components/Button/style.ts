@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { ReactElement, ReactNode } from 'react';
-import { ButtonRootPropsType, ButtonTagType } from './type';
+import { ButtonRootPropsType } from './type';
 import { marginAttributes, sizeAttributes } from '../../system/attributes';
 import { durationRegular } from '../../tokens';
 import { shouldForwardProp } from '../../utils';

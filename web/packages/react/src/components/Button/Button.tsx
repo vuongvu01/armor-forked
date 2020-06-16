@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { useThemeOverride } from '../../utils/hooks';
 import { useTheme } from '../../styling';
@@ -10,58 +10,65 @@ import { buttonDefaultTheme } from './theme';
 
 const CLASS_PREFIX = 'Button';
 
-export const Button: FunctionComponent<ButtonPropsType> = ({
-    className,
-    classNames,
-    styles,
-    tag: Tag = 'button',
-    small,
-    wide,
-    disabled,
-    primary,
-    secondary,
-    tertiary,
-    danger,
-    children,
-    ...restProps
-}) => {
-    const theme = useTheme();
-    useThemeOverride(CLASS_PREFIX, theme, buttonDefaultTheme);
+export const Button: FunctionComponent<ButtonPropsType> = forwardRef(
+    function Button(
+        {
+            className,
+            classNames,
+            styles,
+            tag: Tag = 'button',
+            small,
+            wide,
+            disabled,
+            primary,
+            secondary,
+            tertiary,
+            danger,
+            children,
+            ...restProps
+        },
+        ref,
+    ) {
+        const theme = useTheme();
+        useThemeOverride(CLASS_PREFIX, theme, buttonDefaultTheme);
 
-    const classNameRoot = useButtonClassName(
-        CLASS_PREFIX,
-        className,
-        classNames,
-        disabled,
-        small,
-        wide,
-        primary,
-        secondary,
-        tertiary,
-        danger,
-    );
-    const stylesOverride = useButtonStylesOverride(styles);
+        const classNameRoot = useButtonClassName(
+            CLASS_PREFIX,
+            className,
+            classNames,
+            disabled,
+            small,
+            wide,
+            primary,
+            secondary,
+            tertiary,
+            danger,
+        );
+        const stylesOverride = useButtonStylesOverride(styles);
 
-    return (
-        <ButtonWrapper
-            disabled={disabled}
-            small={small}
-            wide={wide}
-            primary={primary}
-            secondary={secondary}
-            tertiary={tertiary}
-            danger={danger}
-            theme={theme}
-            {...restProps}
-            className={classNameRoot}
-            styles={stylesOverride.Root}
-        >
-            {(forwardedProps: ButtonPropsType) => (
-                <Tag {...forwardedProps}>{children}</Tag>
-            )}
-        </ButtonWrapper>
-    );
-};
+        return (
+            <ButtonWrapper
+                disabled={disabled}
+                small={small}
+                wide={wide}
+                primary={primary}
+                secondary={secondary}
+                tertiary={tertiary}
+                danger={danger}
+                theme={theme}
+                {...restProps}
+                className={classNameRoot}
+                styles={stylesOverride.Root}
+            >
+                {(forwardedProps: ButtonPropsType) => (
+                    <Tag {...forwardedProps} ref={ref}>
+                        {children}
+                    </Tag>
+                )}
+            </ButtonWrapper>
+        );
+    },
+);
 
 Button.defaultProps = {
     primary: true,

@@ -191,7 +191,18 @@ When modifying existing components:
 
 #### Adding a new component
 
-// todo: explain how to use the code generator
+Checklist on how to add a component:
+
+1. Go to `src/components` folder and generate a component boilerplate
+2. Add `export * from './<component_name>';` to `src/components/index.js` (todo: automate this)
+3. Create a snippet story in `doc/stories` (todo: automate this)
+4. Check out what MaterialUI and other library have as best practices
+5. Think through the component logic and structure, create a layout
+6. Make sure that every layout node has:
+    1. theme entry
+    2. classname entry
+    3. style override entry
+    4. theme is forwarded as a property
 
 #### Contribution steps and requirements
 

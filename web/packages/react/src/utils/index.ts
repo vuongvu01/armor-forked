@@ -10,6 +10,7 @@ import {
     sizeAttributesList,
     styleAttributesList,
     textAlignmentAttributesList,
+    displayAttributesList,
 } from '../system/attributes';
 
 /**
@@ -51,6 +52,7 @@ const systemAttributeList = {
     ...styleAttributesList,
     ...sizeAttributesList,
     ...textAlignmentAttributesList,
+    ...displayAttributesList,
 };
 
 /**

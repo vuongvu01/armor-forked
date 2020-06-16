@@ -77,4 +77,15 @@ Box.propTypes = {
 
     /** Defines element text alignment */
     textAlign: PropTypes.oneOf(['left', 'middle', 'right']),
+
+    /** Defines element display type */
+    display: PropTypes.oneOf([
+        'initial',
+        'inherit',
+        'flex',
+        'inline-flex',
+        'block',
+        'inline-block',
+        'inline',
+    ]),
 };
