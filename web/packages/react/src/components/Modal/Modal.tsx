@@ -5,18 +5,20 @@ import PropTypes from 'prop-types';
 import { ModalBackdrop, ModalRoot } from './style';
 import { ModalPropsType } from './type';
 import { makeBEM } from '../../utils';
-import { useElevation } from './utils';
+import { useModalStack, useModalStackZIndex } from './utils';
 
 export const Modal: FunctionComponent<ModalPropsType> = ({
     children,
     open,
     onClose,
     disableBackdrop,
+    zIndex,
 }) => {
-    const elevation = useElevation(open);
+    const modalId = useModalStack(open, { zIndex });
+    const elementZIndex = useModalStackZIndex(modalId);
 
     return createPortal(
-        <ModalRoot elevation={elevation}>
+        <ModalRoot zIndex={elementZIndex}>
             {!!open && !disableBackdrop && (
                 <ModalBackdrop
                     onClick={onClose}

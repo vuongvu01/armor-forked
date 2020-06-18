@@ -11,6 +11,7 @@ import {
     TextAlignmentAttributesType,
 } from '../../system/attributes';
 import { Indexed } from '../../type';
+import { DisplayAttributesType } from '../../system/attributes/display';
 
 type BoxEffectivePropsType = Indexed<{
     // add other custom properties here
@@ -19,6 +20,7 @@ type BoxEffectivePropsType = Indexed<{
     PaddingAttributesType &
     SizeAttributesType &
     TextAlignmentAttributesType &
+    DisplayAttributesType &
     HTMLAttributes<HTMLDivElement>; // includes all HTML Div attributes
 
 /* Box component prop type */

@@ -1,0 +1,109 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { Tooltip, Button, Box } from '../../../src/components/';
+import { LoremIpsum } from '../../../src/helpers/LoremIpsum';
+import { Nodes } from '../../../src/helpers/Nodes';
+
+<Meta title="Components/Tooltip" component={Tooltip} />
+
+# Tooltip
+
+~~~
+import { Tooltip } from '@deliveryhero/armor';
+~~~
+
+## Basic usage
+
+<Preview>
+    <Story name="Basic usage">
+        <Box margin={10}>
+            <Tooltip content="This is a beautiful button">
+                <Button>A Button</Button>
+            </Tooltip>
+        </Box>
+    </Story>
+</Preview>
+
+## Rich content
+
+<Preview>
+    <Story name="Rich content">
+        <Box margin={10}>
+            <Tooltip 
+                content={<span>Buy this stuff only for <span style={{color: 'red'}}>99999.99</span> USD</span>}
+            >
+                <Button>Buy</Button>
+            </Tooltip>
+        </Box>
+    </Story>
+</Preview>
+
+## Position
+
+<Preview>
+    <Story name="Position">
+        <Box margin={10}>
+            <Tooltip content="Top-left aligned tooltip" align="top-start">
+                <Button marginRight={2}>Buy</Button>
+            </Tooltip>
+            <Tooltip content="Top-central aligned tooltip" align="top">
+                <Button>Sell</Button>
+            </Tooltip>
+            <Tooltip content="Top-right aligned tooltip" align="top-end">
+                <Button marginLeft={2}>Earn</Button>
+            </Tooltip>
+            <br />
+            <Tooltip content="Bottom-left aligned tooltip" align="bottom-start">
+                <Button marginRight={2} marginTop={2}>Buy</Button>
+            </Tooltip>
+            <Tooltip content="Bottom-central aligned tooltip" align="bottom">
+                <Button marginTop={2}>Sell</Button>
+            </Tooltip>
+            <Tooltip content="Bottom-right aligned tooltip" align="bottom-end">
+                <Button marginLeft={2} marginTop={2}>Earn</Button>
+            </Tooltip>
+        </Box>
+    </Story>
+</Preview>
+
+## Dark
+
+<Preview>
+    <Story name="Dark">
+        <Box margin={10}>
+            <Tooltip
+                dark
+                content={<span>Buy this stuff only for <span style={{color: 'red'}}>99999.99</span> USD</span>}
+            >
+                <Button>Buy</Button>
+            </Tooltip>
+        </Box>
+    </Story>
+</Preview>
+
+## Small
+
+<Preview>
+    <Story name="Small">
+        <Box margin={10}>
+            <Tooltip
+                small
+                content={<span>Buy this stuff only for <span style={{color: 'red'}}>99999.99</span> USD</span>}
+            >
+                <Button>Buy</Button>
+            </Tooltip>
+        </Box>
+    </Story>
+</Preview>
+
+## Properties
+
+<Props of={Tooltip} />
+
+## Nodes
+
+<Nodes 
+    blockName="Tooltip"
+    nodes={[
+        { element: 'Arrow', description: 'Arrow element' },
+    ]}
+/>

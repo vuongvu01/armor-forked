@@ -397,3 +397,47 @@ export const ContentOnly = () => {
         </>
     );
 };
+
+export const FixedZIndex = () => {
+    const [open, setOpen] = useState(false);
+    const onClose = () => setOpen(false);
+
+    return (
+        <>
+            <Dialog
+                open={open}
+                onClose={onClose}
+                maxWidth={text('Max width', 'sm')}
+                wide={boolean('Wide', false)}
+                zIndex={2000}
+            >
+                <DialogContent>
+                    Z-index is custom 1<br />
+                    1<br />
+                    1<br />
+                    1<br />
+                    1<br />
+                    1<br />
+                    1<br />
+                    1<br />
+                    1<br />
+                    1<br />
+                    1<br />
+                    1<br />
+                    1<br />
+                    1<br />
+                    1<br />
+                    1<br />
+                    1<br />
+                    1<br />
+                    1<br />
+                    1<br />
+                    1<br />
+                </DialogContent>
+            </Dialog>
+
+            <LoremIpsum style={{ zIndex: 1500 }} />
+            <Button onClick={() => setOpen(true)}>Open modal!</Button>
+        </>
+    );
+};

@@ -8,6 +8,7 @@ import {
 } from 'react';
 import { zIndexModal } from '../../tokens';
 import { Nullable } from '../../type';
+import { StackItemParametersType } from './type';
 
 // todo: come up with something more clever than this
 export const useDisplay = (open?: boolean) => {
@@ -30,16 +31,21 @@ export const useDisplay = (open?: boolean) => {
 
 type ModalDescriptor = {
     id: string;
-    elevation: number;
+    zIndex: number;
 };
 
 export class ModalManager {
     static stack: ModalDescriptor[] = [];
 
-    static push(id: string) {
+    static push(id: string, parameters?: StackItemParametersType) {
+        const { zIndex } = parameters || {};
+
         this.stack.push({
             id,
-            elevation: this.getTopElevation() + 10,
+            zIndex:
+                typeof zIndex !== 'undefined'
+                    ? zIndex
+                    : this.getTopElevation() + 10,
         });
     }
 
@@ -61,26 +67,35 @@ export class ModalManager {
         const top = this.getTop();
 
         if (top) {
-            return top.elevation;
+            return top.zIndex;
         }
 
         return zIndexModal;
     }
 }
 
-export const useElevation = (open?: boolean) => {
+export const useModalStack = (
+    open?: boolean,
+    parameters?: StackItemParametersType,
+) => {
+    const { zIndex } = parameters || {};
+
     const id = useMemo(() => (Math.random() * 1000).toString(), []);
-    const [elevation, setElevation] = useState(0);
     useEffect(() => {
         if (open) {
-            ModalManager.push(id);
-            setElevation(ModalManager.getTopElevation());
+            ModalManager.push(id, { zIndex });
         }
 
         return () => ModalManager.remove(id);
-    }, [id, open]);
+    }, [id, open, zIndex]);
 
-    return elevation;
+    return id;
+};
+
+// todo: use hashing here to memoize, don't do search every time
+export const useModalStackZIndex = (id: string) => {
+    const item = ModalManager.get(id);
+    return item ? item.zIndex : 0;
 };
 
 const cancelWheel = (event: Event) => event.preventDefault();

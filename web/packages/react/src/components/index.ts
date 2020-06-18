@@ -11,3 +11,4 @@ export * from './Message';
 export * from './MessageAction';
 export * from './Paper';
 export * from './Typography';
+export * from './Tooltip';

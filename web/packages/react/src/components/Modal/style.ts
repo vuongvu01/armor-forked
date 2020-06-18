@@ -4,14 +4,14 @@ import { shouldForwardProp } from '../../utils';
 import { ObjectLiteralType } from '../../type';
 
 const propertyList = {
-    elevation: true,
+    zIndex: true,
     // add other custom properties here
 } as ObjectLiteralType;
 
 export const ModalRoot = styled.div.withConfig({
     shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<{ elevation: number }>`
-    z-index ${({ elevation }) => elevation};
+})<{ zIndex: number }>`
+    z-index ${({ zIndex }) => zIndex};
     position: relative;
 `;
 
