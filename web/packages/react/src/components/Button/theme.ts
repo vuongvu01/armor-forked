@@ -20,11 +20,11 @@ export const buttonDefaultTheme = {
             backgroundColor: '$color.primary.main',
             '&:hover': {
                 color: '$color.primary.contrast',
-                backgroundColor: '$color.primary.light',
+                backgroundColor: '$color.primary.darker',
             },
             '&:focus': {
                 color: '$color.primary.contrast',
-                backgroundColor: '$color.primary.light',
+                backgroundColor: '$color.primary.darker',
             },
             '&:active': {
                 color: '$color.primary.contrast',
@@ -38,10 +38,19 @@ export const buttonDefaultTheme = {
         secondary: {
             color: '$color.primary.main',
             borderColor: '$color.primary.main',
-            backgroundColor: '$color.primary.lighter',
-            '&:hover': {},
-            '&:focus': {},
-            '&:active': {},
+            backgroundColor: '$color.neutral.00',
+            '&:hover': {
+                borderColor: '$color.primary.darker',
+                backgroundColor: '$color.primary.lighter',
+            },
+            '&:focus': {
+                borderColor: '$color.primary.darker',
+                backgroundColor: '$color.primary.light',
+            },
+            '&:active': {
+                borderColor: '$color.primary.darker',
+                backgroundColor: '$color.primary.light',
+            },
             '&:disabled': {
                 color: '$color.neutral.04',
                 borderColor: '$color.neutral.03',

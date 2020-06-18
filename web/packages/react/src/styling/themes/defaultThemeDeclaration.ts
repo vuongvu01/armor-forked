@@ -29,11 +29,11 @@ export const defaultThemeDeclaration = {
     },
     color: {
         primary: {
-            lighter: blue05,
-            light: blue20,
-            main: blue60,
-            dark: blue70,
-            darker: blue80,
+            lighter: '#f7fcff',
+            light: '#e9f6ff',
+            main: '#1e91d6',
+            dark: '#6393b5',
+            darker: '#166595',
             contrast: grey00,
         },
         danger: {
@@ -45,7 +45,7 @@ export const defaultThemeDeclaration = {
             contrast: grey00,
         },
         text: {
-            main: '#050505',
+            main: '#050505', // todo: move to typography
         },
         background: {
             main: grey00,

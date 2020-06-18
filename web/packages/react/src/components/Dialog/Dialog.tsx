@@ -33,6 +33,7 @@ export const Dialog: FunctionComponent<DialogPropsType> = ({
     disableEffects,
     onClose,
     scroll,
+    zIndex,
     ...restProps
 }) => {
     const theme = useTheme();
@@ -52,7 +53,12 @@ export const Dialog: FunctionComponent<DialogPropsType> = ({
     );
 
     return (
-        <Modal open={open} onClose={onClose} disableBackdrop={disableOverlay}>
+        <Modal
+            open={open}
+            onClose={onClose}
+            disableBackdrop={disableOverlay}
+            zIndex={zIndex}
+        >
             {!disableOverlay && (
                 <DialogOverlay
                     theme={theme}
