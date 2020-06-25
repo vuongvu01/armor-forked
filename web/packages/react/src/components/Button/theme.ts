@@ -6,7 +6,6 @@ export const buttonDefaultTheme = {
             fontSize: '$typography.fontSize',
             fontWeight: fontWeightMedium,
             fontFamily: '$typography.fontFamily',
-            textTransform: 'uppercase',
             lineHeight: 1.6,
             paddingLeft: 4,
             paddingRight: 4,
@@ -14,6 +13,10 @@ export const buttonDefaultTheme = {
             paddingBottom: 2,
             borderRadius: '$figure.borderRadius',
             backgroundColor: 'transparent',
+        },
+        small: {
+            paddingTop: 1,
+            paddingBottom: 1,
         },
         primary: {
             color: '$color.primary.contrast',
@@ -89,10 +92,6 @@ export const buttonDefaultTheme = {
                 color: '$color.neutral.04',
                 backgroundColor: 'transparent',
             },
-        },
-        small: {
-            paddingTop: 1,
-            paddingBottom: 1,
         },
     },
 };

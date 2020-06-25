@@ -5,10 +5,6 @@ import {
     PropsWithNodeStylePropsType,
 } from '../type';
 import { Indexed } from '../../type';
-import {
-    MarginAttributesType,
-    DisplayAttributesType,
-} from '../../system/attributes';
 
 // https://popper.js.org/docs/v2/constructors/
 export type TooltipAlignmentType =
@@ -22,6 +18,7 @@ export type TooltipAlignmentType =
 type TooltipEffectivePropsType = Indexed<{
     align?: TooltipAlignmentType;
     dark?: boolean;
+    error?: boolean;
     small?: boolean;
     content?: ReactNode;
     // add other custom properties here
@@ -54,5 +51,5 @@ export type TooltipRootPropsType = PropsWithNodeStylePropsType<
 
 /* Tooltip Arrow node prop type */
 export type TooltipArrowPropsType = PropsWithNodeStylePropsType<
-    Pick<TooltipEffectivePropsType, 'dark' | 'hide'>
+    Pick<TooltipEffectivePropsType, 'dark' | 'hide' | 'error'>
 >;

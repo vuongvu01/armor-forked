@@ -4,7 +4,7 @@ import { useThemeOverride } from '../../utils/hooks';
 import { useTheme } from '../../styling';
 
 import { useButtonClassName, useButtonStylesOverride } from './utils';
-import { ButtonWrapper } from './style';
+import { ButtonClassNameProvider } from './style';
 import { ButtonPropsType } from './type';
 import { buttonDefaultTheme } from './theme';
 
@@ -16,7 +16,7 @@ export const Button: FunctionComponent<ButtonPropsType> = forwardRef(
             className,
             classNames,
             styles,
-            tag: Tag = 'button',
+            tag: ButtonRoot = 'button',
             small,
             wide,
             disabled,
@@ -47,7 +47,7 @@ export const Button: FunctionComponent<ButtonPropsType> = forwardRef(
         const stylesOverride = useButtonStylesOverride(styles);
 
         return (
-            <ButtonWrapper
+            <ButtonClassNameProvider
                 disabled={disabled}
                 small={small}
                 wide={wide}
@@ -61,11 +61,11 @@ export const Button: FunctionComponent<ButtonPropsType> = forwardRef(
                 styles={stylesOverride.Root}
             >
                 {(forwardedProps: ButtonPropsType) => (
-                    <Tag {...forwardedProps} ref={ref}>
+                    <ButtonRoot {...forwardedProps} ref={ref}>
                         {children}
-                    </Tag>
+                    </ButtonRoot>
                 )}
-            </ButtonWrapper>
+            </ButtonClassNameProvider>
         );
     },
 );

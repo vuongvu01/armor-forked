@@ -1,4 +1,5 @@
 export * from './Button';
+export * from './Indicator';
 export * from './Box';
 export * from './Dummy';
 export * from './Dialog';
@@ -12,3 +13,7 @@ export * from './MessageAction';
 export * from './Paper';
 export * from './Typography';
 export * from './Tooltip';
+export * from './TextInput';
+export * from './FormField';
+export * from './FormFieldMessage';
+export * from './FormFieldTooltip';

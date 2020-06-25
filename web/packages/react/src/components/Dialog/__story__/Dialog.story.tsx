@@ -1,5 +1,5 @@
 import React, { ReactNode, useState } from 'react';
-import { css } from 'styled-components';
+import styled, { css } from 'styled-components';
 import {
     withKnobs,
     text,
@@ -111,26 +111,23 @@ export const RedDawn = () => (
     </Dialog>
 );
 
-const UltraExpressiveDialog = withStyles({
-    Overlay: () =>
-        css`
+const UltraExpressiveDialog = styled(Dialog)`
+    & {
+        .Dialog-Root {
+            background: url(${boke});
+        }
+        .Dialog-Overlay {
             background-color: darkblue;
-        `,
-    CloseButton: () =>
-        css`
+        }
+        .Dialog-CloseButton {
             color: white;
-        `,
-    Root: () => css`
-        background: url(${boke});
-    `,
-})(Dialog);
+        }
+    }
+`;
 
-const WhiteTitle = withStyles({
-    Root: () =>
-        css`
-            color: white;
-        `,
-})(DialogTitle);
+const WhiteTitle = styled(DialogTitle)`
+    color: white;
+`;
 
 export const UltraExpressive = () => {
     const [open, setOpen] = useState(false);

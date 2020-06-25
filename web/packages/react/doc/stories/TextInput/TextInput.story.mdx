@@ -1,0 +1,163 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { TextInput, Button, FormField, FormFieldMessage, Box, FormFieldTooltip } from '../../../src/components/';
+import { LoremIpsum } from '../../../src/helpers/LoremIpsum';
+import { StoryHelper } from './StoryHelper';
+import { Nodes } from '../../../src/helpers/Nodes';
+
+<Meta title="Components/TextInput" component={TextInput} />
+
+# TextInput
+
+~~~
+import { TextInput } from '@deliveryhero/armor';
+~~~
+
+## Basic usage
+
+<Preview>
+    <Story name="Basic usage">
+        <TextInput label="First name" name="first_name" />
+    </Story>
+</Preview>
+
+## Disabled
+
+<Preview>
+    <Story name="Disabled">
+        <TextInput label="First name" name="first_name" disabled />
+    </Story>
+</Preview>
+
+## Error state
+
+<Preview>
+    <Story name="Error state">
+        <TextInput label="First name" name="first_name" defaultValue="Joe" error />
+    </Story>
+</Preview>
+
+## Inline
+
+~~~
+import { TextInput, Button } from '@deliveryhero/armor';
+~~~
+
+<Preview>
+    <Story name="Inline">
+        <>
+            <TextInput label="First name" name="first_name" defaultValue="Joe" />
+            <TextInput label="Last name" name="last_name" defaultValue="Smith" marginLeft={2} />
+            <Button marginLeft={2}>Submit</Button>
+        </>
+    </Story>
+</Preview>
+
+## Wide
+
+<Preview>
+    <Story name="Wide">
+        <TextInput label="First name" name="first_name" wide />
+    </Story>
+</Preview>
+
+## Big
+
+<Preview>
+    <Story name="Big">
+        <>
+            <TextInput label="First name" name="first_name" defaultValue="Joe" />
+            <TextInput label="Last name" name="last_name" defaultValue="Smith" marginLeft={2} big />
+        </>
+    </Story>
+</Preview>
+
+## No autocomplete
+
+<Preview>
+    <Story name="No autocomplete">
+        <TextInput label="First name" name="first_name" autoComplete="off" />
+    </Story>
+</Preview>
+
+## Multiline
+
+<Preview>
+    <Story name="Multiline">
+        <TextInput label="Tell me how you have spent your summer" name="essay" multiline rows={5} minWidth="50%" />
+    </Story>
+</Preview>
+
+## With a hint
+
+~~~
+import { TextInput, FormFieldMessage, Box } from '@deliveryhero/armor';
+~~~
+
+<Preview>
+    <Story name="With a hint">
+        <Box width="50%">
+            <TextInput label="First name" name="first_name" defaultValue="Joe" wide />
+            <FormFieldMessage>Please specify your first name exactly how it is in your ID</FormFieldMessage>
+        </Box>
+    </Story>
+</Preview>
+
+## In a form field
+
+~~~
+import { TextInput, FormFieldMessage, FormField, FormFieldTooltip, Button } from '@deliveryhero/armor';
+~~~
+
+<Preview>
+    <Story name="In a form field">
+        <StoryHelper>
+            {({ error, setError }) => (
+                <>
+                    <h1>Droid search application form</h1>
+                    <FormField autoMargin>
+                        <TextInput
+                            label="Droid name"
+                            name="droid_name"
+                            error={!!error}
+                            wide
+                        />
+                        <FormFieldMessage error oneLine>
+                            {error}
+                        </FormFieldMessage>
+                        <FormFieldTooltip visible={!!error}>
+                            {error}
+                        </FormFieldTooltip>
+                    </FormField>
+                    <Button onClick={() => setError("Not the droids you are looking for")} type="button">
+                        Submit
+                    </Button>
+                    <Button
+                        tertiary
+                        onClick={() => setError("")}
+                        marginLeft={2}
+                    >
+                        Reset
+                    </Button>
+                </>
+            )}
+        </StoryHelper>
+    </Story>
+</Preview>
+
+## Properties
+
+<Props of={TextInput} />
+
+## Nodes
+
+<Nodes 
+    blockName="TextInput"
+    nodes={[
+        { element: 'Root', modifier: 'disabled', description: 'Root element when disabled' },
+        { element: 'Root', modifier: 'wide', description: 'Root element when big' },
+        { element: 'Root', modifier: 'error', description: 'Root element when errored' },
+        { element: 'Input', description: 'Native input element' },
+        { element: 'Label', description: 'Input label' },
+        { element: 'LabelBackground', description: 'Input label background' },
+    ]}
+/>

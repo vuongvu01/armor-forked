@@ -1,28 +1,43 @@
 import { ThemeType } from '../../styling';
 import { ScalarType } from '../../type';
 
-export type SizeAttributesType = {
+export type WidthAttributesType = {
     width?: ScalarType;
     minWidth?: ScalarType;
     maxWidth?: ScalarType;
+    wide?: boolean;
+};
+
+export type HeightAttributesType = {
     height?: ScalarType;
     minHeight?: ScalarType;
     maxHeight?: ScalarType;
-    wide?: boolean;
     tall?: boolean;
 };
 
+export type SizeAttributesType = WidthAttributesType & HeightAttributesType;
+
+type WidthPropertiesType = { theme: ThemeType } & WidthAttributesType;
+type HeightPropertiesType = { theme: ThemeType } & HeightAttributesType;
 type PropertiesType = { theme: ThemeType } & SizeAttributesType;
 
-export const sizeAttributesList = {
+export const widthAttributesList = {
     width: true,
     minWidth: true,
     maxWidth: true,
+    wide: true,
+};
+
+export const heightAttributesList = {
     height: true,
     minHeight: true,
     maxHeight: true,
-    wide: true,
     tall: true,
+};
+
+export const sizeAttributesList = {
+    ...heightAttributesList,
+    ...widthAttributesList,
 };
 
 const makeCSS = (
@@ -37,23 +52,33 @@ const makeCSS = (
     return '';
 };
 
-export const sizeAttributes = ({
+export const widthAttributes = ({
     theme,
     width,
     minWidth,
     maxWidth,
-    height,
-    minHeight,
-    maxHeight,
     wide,
-    tall,
-}: PropertiesType) => `
+}: WidthPropertiesType) => `
     ${makeCSS(theme, 'width', width)}
     ${makeCSS(theme, 'min-width', minWidth)}
     ${makeCSS(theme, 'max-width', maxWidth)}
+    ${wide ? 'width: 100%;' : ''}
+`;
+
+export const heightAttributes = ({
+    theme,
+    height,
+    minHeight,
+    maxHeight,
+    tall,
+}: HeightPropertiesType) => `
     ${makeCSS(theme, 'height', height)}
     ${makeCSS(theme, 'min-height', minHeight)}
     ${makeCSS(theme, 'max-height', maxHeight)}
-    ${wide ? 'width: 100%;' : ''}
     ${tall ? 'height: 100%;' : ''}
+`;
+
+export const sizeAttributes = (props: PropertiesType) => `
+    ${widthAttributes(props)}
+    ${heightAttributes(props)}
 `;
