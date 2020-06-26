@@ -7,9 +7,9 @@ import { Checkbox } from 'src/components/';
 
 # Checkbox
 
-```
+~~~
 import { Checkbox } from '@deliveryhero/armor';
-```
+~~~
 
 ## Basic usage
 
@@ -23,8 +23,12 @@ import { Checkbox } from '@deliveryhero/armor';
 
 <Preview>
     <Story name="Checkmark styles">
-        <Checkbox checked checkedIcon="tick" />
-        <Checkbox checked checkedIcon="dash" />
+       <>
+            <h4>Tick</h4>
+            <Checkbox checked checkedIcon="tick" />
+            <h4>Dash</h4>
+            <Checkbox checked checkedIcon="dash" />
+        </>
     </Story>
 </Preview>
 
@@ -32,20 +36,17 @@ import { Checkbox } from '@deliveryhero/armor';
 
 <Preview>
     <Story name="States">
-        <div>
-            <Checkbox /> Unchecked
-        </div>
-        <div>
-            <Checkbox checked /> Checked
-        </div>
-        <div>
-            <Checkbox checked /> Unchecked disabled
-        </div>
-        <div>
-            <Checkbox checked /> Checked disabled
-        </div>
-        <div>
-            <Checkbox checked checkedIcon="dash" /> Checked disabled dash
-        </div>
+        <>
+            <h4>Unchecked</h4>
+            <Checkbox />
+            <h4>Checked</h4>
+            <Checkbox checked />
+            <h4>Unchecked disabled</h4>
+            <Checkbox disabled />
+            <h4>Checked disabled</h4>
+            <Checkbox checked disabled />
+            <h4>Checked disabled dash</h4>
+            <Checkbox checked disabled checkedIcon="dash"  />
+        </>
     </Story>
 </Preview>
