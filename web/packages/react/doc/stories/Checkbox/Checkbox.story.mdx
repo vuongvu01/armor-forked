@@ -1,0 +1,51 @@
+import { BrowserRouter, Link } from 'react-router-dom';
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+
+import { Checkbox } from 'src/components/';
+
+<Meta title="Components/Checkbox" component={Button} />
+
+# Button
+
+~~~
+import { Checkbox } from '@deliveryhero/armor';
+~~~
+
+## Basic usage
+
+<Preview>
+    <Story name="Basic usage">
+        <Checkbox />
+    </Story>
+</Preview>
+
+## Checkmark styles
+
+<Preview>
+    <Story name="Checkmark styles">
+       <Checkbox checked checkedIcon="tick" />
+       <Checkbox checked checkedIcon="dash" />
+    </Story>
+</Preview>
+
+## States
+
+<Preview>
+    <Story name="States">
+        <div>
+            <Checkbox /> Unchecked
+        </div>
+        <div>
+            <Checkbox checked /> Checked
+        </div>
+        <div>
+            <Checkbox checked /> Unchecked disabled
+        </div>
+        <div>
+            <Checkbox checked /> Checked disabled
+        </div>
+        <div>
+            <Checkbox checked checkedIcon="dash"  /> Checked disabled dash
+        </div>
+    </Story>
+</Preview>

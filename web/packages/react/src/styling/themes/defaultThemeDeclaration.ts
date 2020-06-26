@@ -19,6 +19,11 @@ import {
     blue05,
     blue70,
     blue80,
+    green05,
+    green20,
+    green60,
+    green70,
+    green80,
 } from '../../tokens';
 
 export const defaultThemeDeclaration = {
@@ -34,6 +39,14 @@ export const defaultThemeDeclaration = {
             main: '#1e91d6',
             dark: '#6393b5',
             darker: '#166595',
+            contrast: grey00,
+        },
+        accent: {
+            lighter: green05,
+            light: green20,
+            main: green60,
+            dark: green70,
+            darker: green80,
             contrast: grey00,
         },
         danger: {
