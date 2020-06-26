@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { FormFieldRootPropsType } from './type';
-import { marginAttributes } from '../../system/attributes';
+import { marginAttributes, widthAttributes } from '../../system/attributes';
 import { ObjectLiteralType } from '../../type';
 import { shouldForwardProp } from '../../utils';
 
@@ -34,5 +34,6 @@ export const FormFieldRoot = styled.div.withConfig({
     ${getRootDynamicStyle}
     
     ${marginAttributes}
+    ${widthAttributes}
     ${(props: FormFieldRootPropsType) => props.styles(props)}
 `;

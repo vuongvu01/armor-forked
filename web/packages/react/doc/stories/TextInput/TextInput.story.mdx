@@ -28,6 +28,17 @@ import { TextInput } from '@deliveryhero/armor';
     </Story>
 </Preview>
 
+## Readonly
+
+<Preview>
+    <Story name="Readonly">
+        <>
+            <TextInput label="First name" name="first_name" readOnly defaultValue="Joe" />
+            <TextInput label="Last name" name="last_name" readOnly marginLeft={2} />
+        </>
+    </Story>
+</Preview>
+
 ## Error state
 
 <Preview>
@@ -112,9 +123,9 @@ import { TextInput, FormFieldMessage, FormField, FormFieldTooltip, Button } from
     <Story name="In a form field">
         <StoryHelper>
             {({ error, setError }) => (
-                <>
+                <form onSubmit={(event) => {setError("Not the droids you are looking for"); event.preventDefault();}}>
                     <h1>Droid search application form</h1>
-                    <FormField autoMargin>
+                    <FormField width="50%">
                         <TextInput
                             label="Droid name"
                             name="droid_name"
@@ -128,17 +139,28 @@ import { TextInput, FormFieldMessage, FormField, FormFieldTooltip, Button } from
                             {error}
                         </FormFieldTooltip>
                     </FormField>
-                    <Button onClick={() => setError("Not the droids you are looking for")} type="button">
+                    <FormField width="50%">
+                        <TextInput
+                            label="Owner name"
+                            name="owner_name"
+                            wide
+                        />
+                    </FormField>
+                    <Button 
+                        type="submit"
+                        marginTop={4}
+                    >
                         Submit
                     </Button>
                     <Button
                         tertiary
                         onClick={() => setError("")}
                         marginLeft={2}
+                        marginTop={4}
                     >
                         Reset
                     </Button>
-                </>
+                </form>
             )}
         </StoryHelper>
     </Story>

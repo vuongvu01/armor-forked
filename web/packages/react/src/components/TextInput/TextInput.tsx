@@ -90,6 +90,7 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
             onBlur,
             onMouseOut,
             onMouseOver,
+            readOnly,
         });
 
         const Tag = multiline ? 'textarea' : 'input';

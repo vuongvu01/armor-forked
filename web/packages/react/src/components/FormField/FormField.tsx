@@ -39,7 +39,7 @@ export const FormField: FunctionComponent<FormFieldPropsType> = forwardRef(
 );
 
 FormField.defaultProps = {
-    autoMargin: true,
+    autoMargin: false,
 };
 
 /** Support of prop-types is here for project that don't use TypeScript */

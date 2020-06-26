@@ -59,6 +59,7 @@ export const useEvents = ({
     onBlur,
     onMouseOver,
     onMouseOut,
+    readOnly,
 }: TextInputPropsType) => {
     const [isLabelInside, setLabelInside] = useState(
         !value && !defaultValue && !placeholder && !disableLabelEffect,
@@ -68,8 +69,7 @@ export const useEvents = ({
 
     const onInputFocus = useCallback(
         (event: FocusEvent<HTMLInputElement>) => {
-            // @ts-ignore
-            if (event.target && isLabelInside) {
+            if (event.target && isLabelInside && !readOnly) {
                 setLabelInside(false);
             }
 
@@ -79,14 +79,13 @@ export const useEvents = ({
                 onFocus(event);
             }
         },
-        [isLabelInside, setLabelInside, onFocus],
+        [isLabelInside, setLabelInside, onFocus, readOnly],
     );
 
     const onInputBlur = useCallback(
         (event: FocusEvent<HTMLInputElement>) => {
             if (
                 event.target &&
-                // @ts-ignore
                 !event.target.value &&
                 !placeholder &&
                 !disableLabelEffect

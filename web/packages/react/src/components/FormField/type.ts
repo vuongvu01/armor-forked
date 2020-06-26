@@ -4,7 +4,10 @@ import {
     StylePropsType,
     PropsWithNodeStylePropsType,
 } from '../type';
-import { MarginAttributesType } from '../../system/attributes';
+import {
+    MarginAttributesType,
+    WidthAttributesType,
+} from '../../system/attributes';
 import { Indexed } from '../../type';
 
 type FormFieldEffectivePropsType = Indexed<{
@@ -12,6 +15,7 @@ type FormFieldEffectivePropsType = Indexed<{
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
+    WidthAttributesType &
     MarginAttributesType;
 
 /* FormField component prop type */
