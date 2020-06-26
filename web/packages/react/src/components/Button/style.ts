@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
-import { ReactElement, ReactNode } from 'react';
+import { ReactElement } from 'react';
 import { ButtonRootPropsType } from './type';
-import { marginAttributes, sizeAttributes } from '../../system/attributes';
+import { marginAttributes, widthAttributes } from '../../system/attributes';
 import { durationRegular } from '../../tokens';
 import { shouldForwardProp } from '../../utils';
 import { ObjectLiteralType } from '../../type';
@@ -17,7 +17,15 @@ const propertyList = {
     // add other custom properties here
 } as ObjectLiteralType;
 
-const visualStyle = ({
+const getRootBasicStyle = ({ theme }: ButtonRootPropsType) => css<
+    ButtonRootPropsType
+>`
+    transition: background-color ${durationRegular}ms ease,
+        border-color ${durationRegular}ms ease, color ${durationRegular}ms ease;
+    ${theme.componentOverrides.Button.Root.base}
+`;
+
+const getRootDynamicVisualStyle = ({
     theme,
     secondary,
     tertiary,
@@ -43,7 +51,7 @@ const visualStyle = ({
     return Button.Root.primary;
 };
 
-const sizeStyle = ({ theme, small }: ButtonRootPropsType) => {
+const getRootDynamicSizeStyle = ({ theme, small }: ButtonRootPropsType) => {
     const {
         componentOverrides: { Button },
     } = theme;
@@ -62,13 +70,7 @@ const Wrapper = ({
     children: (props: ButtonRootPropsType) => ReactElement;
 }) => children({ ...restProps });
 
-const basicStyle = ({ theme }: ButtonRootPropsType) => css<ButtonRootPropsType>`
-    transition: background-color ${durationRegular}ms ease,
-        border-color ${durationRegular}ms ease, color ${durationRegular}ms ease;
-    ${theme.componentOverrides.Button.Root.base}
-`;
-
-export const ButtonWrapper = styled(Wrapper).withConfig({
+export const ButtonClassNameProvider = styled(Wrapper).withConfig({
     shouldForwardProp: property => shouldForwardProp(property, propertyList),
 })<ButtonRootPropsType>`
     display: inline-flex;
@@ -93,10 +95,10 @@ export const ButtonWrapper = styled(Wrapper).withConfig({
         cursor: pointer;
     }
 
-    ${basicStyle}
-    ${visualStyle}
-    ${sizeStyle}
+    ${getRootBasicStyle}
+    ${getRootDynamicVisualStyle}
+    ${getRootDynamicSizeStyle}
     ${marginAttributes}
-    ${sizeAttributes}
+    ${widthAttributes}
     ${(props: ButtonRootPropsType) => props.styles(props)}
 `;

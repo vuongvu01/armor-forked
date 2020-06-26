@@ -87,7 +87,7 @@ export const getPopperOptions = (
         {
             name: 'arrow',
             options: {
-                padding: 5, // todo: take from theme
+                // padding: 5, // todo: take from theme
                 element: arrowReference.current,
             },
         },

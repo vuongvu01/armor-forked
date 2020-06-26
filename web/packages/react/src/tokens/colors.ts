@@ -17,6 +17,12 @@ export const blue60 = '#0B53BF';
 export const blue20 = '#92BAF6';
 export const blue05 = '#E3EEFD';
 
+export const green80 = '#006f58';
+export const green70 = '#00BCA9';
+export const green60 = '#6CD0C2';
+export const green20 = '#A9E2DA';
+export const green05 = '#DDF3F1';
+
 // Deprecated tokens
 
 export const grey050 = '#e5e5e5';

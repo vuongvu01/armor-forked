@@ -18,6 +18,10 @@ export const tooltipDefaultTheme = {
             color: white,
             backgroundColor: '#333333',
         },
+        error: {
+            color: white,
+            backgroundColor: '#D73D44',
+        },
         small: {
             padding: 2,
         },
@@ -32,6 +36,11 @@ export const tooltipDefaultTheme = {
         dark: {
             '&:before': {
                 backgroundColor: '#333333',
+            },
+        },
+        error: {
+            '&:before': {
+                backgroundColor: '#D73D44',
             },
         },
     },

@@ -24,6 +24,7 @@ export const Tooltip: FunctionComponent<TooltipPropsType> = ({
     content,
     align,
     dark,
+    error,
     ...restProps
 }) => {
     const theme = useTheme();
@@ -65,6 +66,7 @@ export const Tooltip: FunctionComponent<TooltipPropsType> = ({
                 className={classNameComponents.Root}
                 styles={stylesOverride.Root}
                 dark={dark}
+                error={error}
                 ref={tooltipReference}
                 hidden={hidden}
             >
@@ -74,6 +76,7 @@ export const Tooltip: FunctionComponent<TooltipPropsType> = ({
                     className={classNameComponents.Arrow}
                     styles={stylesOverride.Arrow}
                     dark={dark}
+                    error={error}
                     // @ts-ignore: fixme: LD-97
                     ref={arrowReference}
                 />
@@ -85,6 +88,7 @@ export const Tooltip: FunctionComponent<TooltipPropsType> = ({
 Tooltip.defaultProps = {
     align: 'top',
     dark: false,
+    error: false,
     small: false,
 };
 

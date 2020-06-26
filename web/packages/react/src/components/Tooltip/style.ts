@@ -7,13 +7,14 @@ const propertyList = {
     align: true,
     hidden: true,
     dark: true,
+    error: true,
     small: true,
     // add other custom properties here
 } as ObjectLiteralType;
 
-const visualStyle = (
+const getDynamicStyle = (
     element: string,
-    { dark, theme }: TooltipRootPropsType | TooltipArrowPropsType,
+    { dark, error, theme }: TooltipRootPropsType | TooltipArrowPropsType,
 ): Interpolation<any> => {
     const {
         componentOverrides: { Tooltip },
@@ -23,14 +24,18 @@ const visualStyle = (
         return Tooltip[element].dark;
     }
 
+    if (error) {
+        return Tooltip[element].error;
+    }
+
     return Tooltip[element].normal;
 };
 
-const visualStyleRoot = (props: TooltipRootPropsType) =>
-    visualStyle('Root', props);
+const getRootDynamicStyle = (props: TooltipRootPropsType) =>
+    getDynamicStyle('Root', props);
 
-const visualStyleArrow = (props: TooltipArrowPropsType) =>
-    visualStyle('Arrow', props);
+const getArrowDynamicStyle = (props: TooltipArrowPropsType) =>
+    getDynamicStyle('Arrow', props);
 
 const sizeStyle = ({ small, theme }: TooltipRootPropsType) => {
     const {
@@ -71,7 +76,7 @@ export const TooltipRoot = styled.div.withConfig({
     }
 
     ${({ theme }) => theme.componentOverrides.Tooltip.Root.base}
-    ${visualStyleRoot}
+    ${getRootDynamicStyle}
     ${sizeStyle}
     ${(props: TooltipRootPropsType) => props.styles(props)}
 `;
@@ -98,6 +103,6 @@ export const TooltipArrow = styled.div.withConfig({
     }
 
     ${({ theme }) => theme.componentOverrides.Tooltip.Arrow.base}
-    ${visualStyleArrow}
+    ${getArrowDynamicStyle}
     ${(props: TooltipArrowPropsType) => props.styles(props)}
 `;

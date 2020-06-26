@@ -10,7 +10,7 @@ import {
 } from '../type';
 import {
     MarginAttributesType,
-    SizeAttributesType,
+    WidthAttributesType,
 } from '../../system/attributes';
 import { Indexed } from '../../type';
 
@@ -28,7 +28,7 @@ type ButtonEffectivePropsType = Indexed<{
 }> &
     ButtonHTMLAttributes<HTMLButtonElement> & // includes all HTML Button attributes
     Pick<AnchorHTMLAttributes<HTMLAnchorElement>, 'target' | 'href' | 'rel'> & // and 3 attributes from HTML Anchor
-    SizeAttributesType &
+    WidthAttributesType &
     MarginAttributesType;
 
 /* Button component prop type */

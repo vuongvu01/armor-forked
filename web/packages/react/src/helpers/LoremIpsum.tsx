@@ -5,14 +5,7 @@ const Paragraph = styled.p`
     position: relative;
 `;
 
-export const LoremIpsum: FunctionComponent<{
-    short?: boolean;
-    children?: ReactNode;
-} & HTMLAttributes<HTMLElement>> = ({ short, children, ...rest }) => (
-    <>
-        {!short && <h1>What is Lorem Ipsum?</h1>}
-        <Paragraph {...rest}>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
+export const loremIpsum = `Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry&apos;s standard dummy
             text ever since the 1500s, when an unknown printer took a galley of
             type and scrambled it to make a type specimen book. It has survived
@@ -20,8 +13,15 @@ export const LoremIpsum: FunctionComponent<{
             typesetting, remaining essentially unchanged. It was popularised in
             the 1960s with the release of Letraset sheets containing Lorem Ipsum
             passages, and more recently with desktop publishing software like
-            Aldus PageMaker including versions of Lorem Ipsum.
-        </Paragraph>
+            Aldus PageMaker including versions of Lorem Ipsum.`;
+
+export const LoremIpsum: FunctionComponent<{
+    short?: boolean;
+    children?: ReactNode;
+} & HTMLAttributes<HTMLElement>> = ({ short, children, ...rest }) => (
+    <>
+        {!short && <h1>What is Lorem Ipsum?</h1>}
+        <Paragraph {...rest}>{loremIpsum}</Paragraph>
 
         {!short && (
             <>
