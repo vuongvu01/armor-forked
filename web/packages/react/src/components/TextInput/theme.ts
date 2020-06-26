@@ -34,11 +34,12 @@ export const TextInputDefaultTheme = {
         base: {
             fontSize: fontSizeRegular,
             color: '#050505',
-            marginTop: 2,
-            marginBottom: 2,
-            marginLeft: 4,
-            marginRight: 4,
+            paddingTop: 2,
+            paddingBottom: 2,
+            paddingLeft: 4,
+            paddingRight: 4,
             backgroundColor: white,
+            borderRadius: '$figure.borderRadius',
 
             '&::placeholder': {
                 color: '#717171',
@@ -54,8 +55,8 @@ export const TextInputDefaultTheme = {
             },
         },
         big: {
-            marginTop: 3,
-            marginBottom: 3,
+            paddingTop: 3,
+            paddingBottom: 3,
         },
     },
     Label: {
