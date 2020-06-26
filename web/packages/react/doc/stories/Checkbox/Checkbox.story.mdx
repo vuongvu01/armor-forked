@@ -3,13 +3,13 @@ import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
 
 import { Checkbox } from 'src/components/';
 
-<Meta title="Components/Checkbox" component={Button} />
+<Meta title="Components/Checkbox" component={Checkbox} />
 
-# Button
+# Checkbox
 
-~~~
+```
 import { Checkbox } from '@deliveryhero/armor';
-~~~
+```
 
 ## Basic usage
 
@@ -23,8 +23,8 @@ import { Checkbox } from '@deliveryhero/armor';
 
 <Preview>
     <Story name="Checkmark styles">
-       <Checkbox checked checkedIcon="tick" />
-       <Checkbox checked checkedIcon="dash" />
+        <Checkbox checked checkedIcon="tick" />
+        <Checkbox checked checkedIcon="dash" />
     </Story>
 </Preview>
 
@@ -45,7 +45,7 @@ import { Checkbox } from '@deliveryhero/armor';
             <Checkbox checked /> Checked disabled
         </div>
         <div>
-            <Checkbox checked checkedIcon="dash"  /> Checked disabled dash
+            <Checkbox checked checkedIcon="dash" /> Checked disabled dash
         </div>
     </Story>
 </Preview>
