@@ -1,5 +1,5 @@
-import { ThemeType } from '../../styling';
-import { ScalarType } from '../../type';
+import { ThemeType } from 'src/styling';
+import { ScalarType } from 'src/type';
 
 export type WidthAttributesType = {
     width?: ScalarType;

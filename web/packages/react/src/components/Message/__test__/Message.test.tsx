@@ -24,7 +24,7 @@ describe('<Message />', () => {
     });
 
     it('should render itself without errors', async () => {
-        const { container, getByTestId } = render(<Message />);
+        render(<Message />);
 
         // // ///////////////////////
         // // a short cheat sheet

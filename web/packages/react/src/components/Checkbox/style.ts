@@ -1,8 +1,9 @@
 import styled, { css } from 'styled-components';
 
-import { marginAttributes } from '../../system/attributes';
-import { shouldForwardProp } from '../../utils';
-import { ObjectLiteralType } from '../../type';
+import { marginAttributes } from 'src/system/attributes';
+import { shouldForwardProp } from 'src/utils';
+import { mouseCursor } from 'src/styling';
+import { ObjectLiteralType } from 'src/type';
 import {
     CheckboxCheckmarkPropsType,
     CheckboxInputPropsType,
@@ -52,10 +53,6 @@ const checkmarkStyle = ({ checkedIcon }: CheckboxRootPropsType) =>
               height: 1px;
               border-width: 0 0 1px 0;
           `;
-
-const mouseCursor = ({ disabled }: CheckboxRootPropsType) => css`
-    cursor: ${disabled ? 'default' : 'pointer'};
-`;
 
 export const CheckboxRoot = styled.div.withConfig({
     shouldForwardProp: property => shouldForwardProp(property, propertyList),

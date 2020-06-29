@@ -1,13 +1,14 @@
 import deepFreeze from 'deep-freeze-strict';
 import { flatten } from 'flat';
-import { merge } from '../../utils';
-import { ThemeDeclarationType, ThemeFabricOptions, ThemeType } from '../type';
-import { makeBreakpoints } from './make-breakpoints';
-import { makeTypography } from './make-typography';
-import { makeSpan } from './make-span';
-import { defaultThemeDeclaration } from '../themes/defaultThemeDeclaration';
 
-export const makeTheme = (
+import { merge } from 'src/utils';
+import makeSpan from './makeSpan';
+import makeBreakpoints from './makeBreakpoints';
+import makeTypography from './makeTypography';
+import { defaultThemeDeclaration } from '../themes/defaultThemeDeclaration';
+import { ThemeDeclarationType, ThemeFabricOptions, ThemeType } from '../type';
+
+const makeTheme = (
     declaration: ThemeDeclarationType,
     options?: ThemeFabricOptions,
 ): ThemeType => {
@@ -35,3 +36,5 @@ export const makeTheme = (
           }
         : theme) as ThemeType;
 };
+
+export default makeTheme;

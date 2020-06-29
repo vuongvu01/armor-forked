@@ -2,16 +2,11 @@ import React, { useEffect, useRef } from 'react';
 import {
     withKnobs,
     text,
-    boolean,
-    number,
-    select,
     // eslint-disable-next-line import/no-unresolved
 } from '@storybook/addon-knobs';
-// eslint-disable-next-line import/no-unresolved
-import { action } from '@storybook/addon-actions';
 
+import { Button } from 'src/components/Button';
 import { Tooltip } from '../Tooltip';
-import { Button } from '../../Button';
 
 export default {
     title: 'Components/Tooltip',

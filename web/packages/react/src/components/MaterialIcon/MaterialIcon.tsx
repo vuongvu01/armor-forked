@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { useTheme } from '../../styling';
+import { useTheme } from 'src/styling';
 import { MaterialIconRoot } from './style';
 import { MaterialIconPropsType } from './type';
 

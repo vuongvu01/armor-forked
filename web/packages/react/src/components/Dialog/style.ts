@@ -1,5 +1,8 @@
 import styled, { css } from 'styled-components';
-import { fixedCover } from '../../system/mixins';
+
+import { fixedCover, sizeAttributes } from 'src/system';
+import { shouldForwardProp } from 'src/utils';
+import { ObjectLiteralType } from 'src/type';
 import {
     DialogAlignmentContainerPropsType,
     DialogCloseButtonPropsType,
@@ -7,11 +10,8 @@ import {
     DialogOverlayPropsType,
     DialogRootPropsType,
 } from './type';
-import { Paper } from '../Paper';
-import { sizeAttributes } from '../../system/attributes';
 import { DIALOG_SCROLL_DOCUMENT } from './Dialog';
-import { shouldForwardProp } from '../../utils';
-import { ObjectLiteralType } from '../../type';
+import { Paper } from '../Paper';
 
 const propertyList = {
     disableOverlay: true,

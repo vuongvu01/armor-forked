@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+
+import { marginAttributes } from 'src/system';
 import { PaperRootPropsType } from './type';
-import { marginAttributes } from '../../system/attributes';
 
 export const PaperRoot = styled.div<PaperRootPropsType>`
     position: relative;

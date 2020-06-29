@@ -24,7 +24,7 @@ describe('<Tooltip />', () => {
     });
 
     it('should render itself without errors', async () => {
-        const { container, getByTestId } = render(<Tooltip />);
+        render(<Tooltip />);
 
         // // ///////////////////////
         // // a short cheat sheet

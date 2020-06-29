@@ -24,7 +24,7 @@ describe('<Typography />', () => {
     });
 
     it('should render itself without errors', async () => {
-        const { container, getByTestId } = render(<Typography />);
+        render(<Typography />);
 
         // // ///////////////////////
         // // a short cheat sheet

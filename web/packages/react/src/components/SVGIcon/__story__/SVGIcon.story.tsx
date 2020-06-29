@@ -6,7 +6,7 @@ import {
     color,
     // eslint-disable-next-line import/no-unresolved
 } from '@storybook/addon-knobs';
-import { EditIconShape } from '../../../icons/EditIcon';
+import { EditIconShape } from 'src/icons/EditIcon';
 
 import { SVGIcon } from '../SVGIcon';
 

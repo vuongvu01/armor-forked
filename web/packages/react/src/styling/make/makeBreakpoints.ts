@@ -1,22 +1,22 @@
-import {
-    BreakpointsDeclarationType,
-    BreakpointsType,
-    SpanFunctionType,
-} from '../type';
+import { ScalarType } from 'src/type';
 import {
     breakpointBetween,
     breakpointDown,
     breakpointOnly,
     breakpointUp,
-} from '../../system/mixins';
+} from 'src/system/mixins';
 import {
     forwardBreakpoints,
     forwardBreakpointsTwoArgs,
     mapBreakpoint,
-} from '../../system/mixins/breakpoints';
-import { ScalarType } from '../../type';
+} from 'src/system/mixins/breakpoints';
+import {
+    BreakpointsDeclarationType,
+    BreakpointsType,
+    SpanFunctionType,
+} from '../type';
 
-export const makeBreakpoints = (
+const makeBreakpoints = (
     breakpoints?: BreakpointsDeclarationType,
 ): BreakpointsType => {
     const {
@@ -45,3 +45,5 @@ export const makeBreakpoints = (
         between: forwardBreakpointsTwoArgs(base, breakpointBetween),
     };
 };
+
+export default makeBreakpoints;

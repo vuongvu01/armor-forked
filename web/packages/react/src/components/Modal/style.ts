@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { fixedCover } from '../../system/mixins';
-import { shouldForwardProp } from '../../utils';
-import { ObjectLiteralType } from '../../type';
+import { fixedCover } from 'src/system/mixins';
+import { shouldForwardProp } from 'src/utils';
+import { ObjectLiteralType } from 'src/type';
 
 const propertyList = {
     zIndex: true,

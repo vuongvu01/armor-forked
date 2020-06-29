@@ -14,17 +14,14 @@ import {
     grey10,
     grey05,
     grey01,
-    blue60,
-    blue20,
-    blue05,
-    blue70,
-    blue80,
     green05,
     green20,
     green60,
     green70,
     green80,
-} from '../../tokens';
+} from 'src/tokens';
+
+const contrast = grey00;
 
 export const defaultThemeDeclaration = {
     typography: {
@@ -39,15 +36,15 @@ export const defaultThemeDeclaration = {
             main: '#1e91d6',
             dark: '#6393b5',
             darker: '#166595',
-            contrast: grey00,
+            contrast,
         },
-        accent: {
+        secondary: {
             lighter: green05,
             light: green20,
             main: green60,
             dark: green70,
             darker: green80,
-            contrast: grey00,
+            contrast,
         },
         danger: {
             lighter: '#FAEAEB',
@@ -55,7 +52,7 @@ export const defaultThemeDeclaration = {
             main: red300,
             dark: red300,
             darker: red300,
-            contrast: grey00,
+            contrast,
         },
         text: {
             main: '#050505', // todo: move to typography

@@ -24,7 +24,7 @@ describe('<DialogActions />', () => {
     });
 
     it('should render itself without errors', async () => {
-        const { container, getByTestId } = render(<DialogActions />);
+        render(<DialogActions />);
 
         // // ///////////////////////
         // // a short cheat sheet

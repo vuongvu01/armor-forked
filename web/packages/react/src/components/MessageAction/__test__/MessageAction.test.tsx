@@ -24,7 +24,7 @@ describe('<MessageAction />', () => {
     });
 
     it('should render itself without errors', async () => {
-        const { container, getByTestId } = render(<MessageAction />);
+        render(<MessageAction />);
 
         // // ///////////////////////
         // // a short cheat sheet

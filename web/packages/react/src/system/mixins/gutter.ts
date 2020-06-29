@@ -1,5 +1,5 @@
-import { ScalarType } from '../../type';
-import { SpanFunctionType } from '../../styling';
+import { ScalarType } from 'src/type';
+import { SpanFunctionType } from 'src/styling';
 
 export const gutter = (
     x: ScalarType = 0,
