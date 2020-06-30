@@ -46,7 +46,7 @@ const transformTheme = (theme: ThemeType, chunk: ObjectLiteralType) => {
             newValue = value;
         }
 
-        if (this.key === 'fontSize') {
+        if (this.key === 'fontSize' || this.key === 'lineHeight') {
             newValue = pixelToRem(newValue);
             update = true;
         }

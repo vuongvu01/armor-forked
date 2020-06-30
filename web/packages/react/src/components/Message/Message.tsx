@@ -137,7 +137,10 @@ Message.propTypes = {
     /** Extra data to be shown on the right side */
     extra: PropTypes.elementType,
     /** Data to be shown in the central part */
-    children: PropTypes.elementType,
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.element),
+        PropTypes.element,
+    ]),
     /** Message level */
     level: PropTypes.oneOf(['info', 'warning', 'error', 'success']),
     /** Message level: error */

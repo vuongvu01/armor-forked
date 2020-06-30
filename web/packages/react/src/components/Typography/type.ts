@@ -1,15 +1,24 @@
-import { HTMLAttributes } from 'react';
-
-import { Indexed } from 'src/type';
+import { ComponentType, HTMLAttributes } from 'react';
 import { MarginAttributesType } from 'src/system/attributes';
+import { Indexed } from 'src/type';
 import {
     StylesFunctionOrStubType,
     StylePropsType,
     NodeStylePropsType,
 } from '../type';
 
+export type TypographyTagType = string | ComponentType<any>;
+
 type TypographyEffectivePropsType = Indexed<{
-    h6?: boolean;
+    tag?: TypographyTagType;
+    pageTitle?: boolean;
+    sectionTitle?: boolean;
+    subSectionTitle?: boolean;
+    label?: boolean;
+    paragraph?: boolean;
+    large?: boolean;
+    medium?: boolean;
+    small?: boolean;
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
@@ -17,18 +26,10 @@ type TypographyEffectivePropsType = Indexed<{
 
 /* Typography component prop type */
 export type TypographyPropsType = TypographyEffectivePropsType &
-    StylePropsType<
-        {
-            Root?: string;
-            // add custom className for other nodes here
-        },
-        TypographyStylesPropsType
-    >;
-
-export type TypographyStylesPropsType = {
-    Root?: StylesFunctionOrStubType<TypographyEffectivePropsType>;
-    // add style properties for other nodes here
-};
+    StylePropsType<{
+        Root?: string;
+        // add custom className for other nodes here
+    }>;
 
 /* Typography Root node prop type */
 export type TypographyRootPropsType = TypographyEffectivePropsType &

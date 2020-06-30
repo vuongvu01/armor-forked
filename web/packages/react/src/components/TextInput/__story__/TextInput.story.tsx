@@ -287,9 +287,9 @@ export const States = () => {
     );
 };
 
-export const Big = () => (
+export const Large = () => (
     <Box marginTop={5}>
-        <TextInput label="This is big one" name="your_price" big />
+        <TextInput label="This is big one" name="your_price" large />
         <TextInput
             label="This one is normal"
             name="your_price"
@@ -346,7 +346,7 @@ export const EventHandlers = () => (
         <TextInput
             label="This is big one"
             name="your_price"
-            big
+            large
             onFocus={() => console.log('Focus')}
             onBlur={() => console.log('Blur')}
             onMouseOver={() => console.log('onMouseOver')}

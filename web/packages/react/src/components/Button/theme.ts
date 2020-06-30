@@ -6,7 +6,7 @@ export const buttonDefaultTheme = {
             fontSize: '$typography.fontSize',
             fontWeight: fontWeightMedium,
             fontFamily: '$typography.fontFamily',
-            lineHeight: 1.6,
+            lineHeight: '1.6',
             paddingLeft: 4,
             paddingRight: 4,
             paddingTop: 2,

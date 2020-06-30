@@ -15,12 +15,12 @@ export const dialogTitleDefaultTheme = {
             fontSize: fontSizeTitle,
             fontWeight: fontWeightNormal,
             fontFamily: '$typography.fontFamily',
-            lineHeight: 1.6,
+            lineHeight: '1.6',
         },
     },
     Description: {
         base: {
-            lineHeight: 1.7,
+            lineHeight: '1.7',
             fontFamily: '$typography.fontFamily',
             fontWeight: fontWeightNormal,
             fontSize: '$typography.fontSize',
