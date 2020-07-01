@@ -1,5 +1,9 @@
 import styled, { css } from 'styled-components';
 import { ReactElement } from 'react';
+
+import { marginAttributes, widthAttributes } from 'src/system';
+import { ObjectLiteralType } from 'src/type';
+import { shouldForwardProp } from 'src/utils';
 import {
     TextInputInputPropsType,
     TextInputInternalPropsWithThemeType,
@@ -7,9 +11,6 @@ import {
     TextInputLabelPropsType,
     TextInputRootPropsType,
 } from './type';
-import { marginAttributes, widthAttributes } from '../../system/attributes';
-import { ObjectLiteralType } from '../../type';
-import { shouldForwardProp } from '../../utils';
 
 const getDynamicStyle = (
     nodeName: string,

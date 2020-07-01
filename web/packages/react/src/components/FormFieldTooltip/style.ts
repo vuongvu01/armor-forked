@@ -1,10 +1,11 @@
 import styled, { css } from 'styled-components';
+
+import { ObjectLiteralType } from 'src/type';
+import { shouldForwardProp } from 'src/utils';
 import {
     FormFieldTooltipIndicatorPropsType,
     FormFieldTooltipRootPropsType,
 } from './type';
-import { ObjectLiteralType } from '../../type';
-import { shouldForwardProp } from '../../utils';
 import { Tooltip } from '../Tooltip';
 import { Indicator } from '../Indicator';
 

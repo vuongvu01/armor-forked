@@ -1,4 +1,4 @@
-import { fontSizeSmall, fontWeightNormal, white } from '../../tokens';
+import { fontSizeSmall, fontWeightNormal, white } from 'src/tokens';
 
 export const tooltipDefaultTheme = {
     Root: {

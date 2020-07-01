@@ -1,11 +1,12 @@
 import { HTMLAttributes } from 'react';
+
+import { MarginAttributesType } from 'src/system';
+import { Indexed } from 'src/type';
 import {
     StylesFunctionOrStubType,
     StylePropsType,
     PropsWithNodeStylePropsType,
 } from '../type';
-import { MarginAttributesType } from '../../system/attributes';
-import { Indexed } from '../../type';
 
 type IndicatorEffectivePropsType = Indexed<{
     exampleProperty?: boolean;
