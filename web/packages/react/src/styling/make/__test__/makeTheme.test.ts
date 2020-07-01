@@ -6,7 +6,7 @@
  */
 
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
-import { makeTheme } from '../make-theme';
+import { makeTheme } from 'src/styling/make';
 import { legacyThemeVendorMonitor } from './mock';
 
 describe('makeTheme()', () => {

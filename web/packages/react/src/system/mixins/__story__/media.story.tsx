@@ -1,6 +1,6 @@
 import React from 'react';
 import { css } from 'styled-components';
-import { Button } from '../../../components';
+import { Button } from 'src/components';
 
 export default {
     title: 'System/Media',

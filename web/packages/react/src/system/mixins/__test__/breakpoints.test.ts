@@ -1,4 +1,7 @@
 import { css } from 'styled-components';
+
+import { ObjectLiteralType } from 'src/type';
+import { breakpoints } from './mock';
 import {
     breakpointUp,
     breakpointDown,
@@ -7,8 +10,6 @@ import {
     forwardBreakpointsTwoArgs,
     breakpointBetween,
 } from '../breakpoints';
-import { breakpoints } from './mock';
-import { ObjectLiteralType } from '../../../type';
 
 let functions: ObjectLiteralType = {};
 

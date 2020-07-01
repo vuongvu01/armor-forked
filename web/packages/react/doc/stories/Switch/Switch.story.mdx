@@ -1,0 +1,38 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { Switch, MaterialIcon } from 'src/components';
+import { BrowserRouter, Link } from 'react-router-dom';
+import { Nodes } from 'src/helpers/Nodes';
+
+<Meta title="Components/Switch" component={Switch} />
+
+# Toggle
+
+```
+import { Switch } from '@deliveryhero/armor';
+```
+
+## Basic usage
+
+<Preview>
+    <Story name="Basic usage">
+        <Switch />
+    </Story>
+</Preview>
+
+## States
+
+<Preview>
+    <Story name="States">
+        <>
+            <h4>Off</h4>
+            <Switch />
+            <h4>On</h4>
+            <Switch checked />
+            <h4>Off disabled</h4>
+            <Switch disabled />
+            <h4>On disabled</h4>
+            <Switch checked disabled />
+        </>
+    </Story>
+</Preview>
+

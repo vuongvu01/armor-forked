@@ -1,6 +1,7 @@
 import traverse from 'traverse';
+
+import { ObjectLiteralType } from 'src/type';
 import { ThemeType } from '../type';
-import { ObjectLiteralType } from '../../type';
 
 const spanableProperties = {
     padding: true,
@@ -28,7 +29,7 @@ const spanableProperties = {
     safeMargin: true,
 };
 
-export const transformTheme = (theme: ThemeType, chunk: ObjectLiteralType) => {
+const transformTheme = (theme: ThemeType, chunk: ObjectLiteralType) => {
     const {
         span,
         typography: { pixelToRem },
@@ -45,7 +46,7 @@ export const transformTheme = (theme: ThemeType, chunk: ObjectLiteralType) => {
             newValue = value;
         }
 
-        if (this.key === 'fontSize') {
+        if (this.key === 'fontSize' || this.key === 'lineHeight') {
             newValue = pixelToRem(newValue);
             update = true;
         }
@@ -65,3 +66,5 @@ export const transformTheme = (theme: ThemeType, chunk: ObjectLiteralType) => {
 
     return chunk;
 };
+
+export default transformTheme;

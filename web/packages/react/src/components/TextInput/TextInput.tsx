@@ -31,7 +31,7 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
             disableLabelEffect,
             multiline,
             error,
-            big,
+            large,
             onMouseOut,
             onMouseOver,
 
@@ -68,7 +68,7 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
             className,
             classNames,
             disabled,
-            big,
+            large,
             error,
         );
         const stylesOverride = useTextInputStylesOverride(styles);
@@ -115,7 +115,7 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
                     styles={stylesOverride.Input}
                     ref={ref}
                     multiline={multiline}
-                    big={big}
+                    large={large}
                     autoComplete={autoComplete}
                     autoFocus={autoFocus}
                     defaultValue={defaultValue}
@@ -150,7 +150,7 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
                         theme={theme}
                         inside={isLabelInside}
                         disabled={disabled}
-                        big={big}
+                        large={large}
                         outlined={isMouseInside || isFocused}
                         error={error}
                     >
@@ -174,7 +174,7 @@ TextInput.defaultProps = {
     disableLabelEffect: false,
     multiline: false,
     error: false,
-    big: false,
+    large: false,
 };
 
 /** Support of prop-types is here for project that don't use TypeScript */
@@ -198,5 +198,5 @@ TextInput.propTypes = {
     /** Set component state to "errored" */
     error: PropTypes.bool,
     /** Increase vertical size */
-    big: PropTypes.bool,
+    large: PropTypes.bool,
 };

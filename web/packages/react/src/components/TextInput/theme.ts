@@ -14,7 +14,7 @@ export const TextInputDefaultTheme = {
             fontFamily: '$typography.fontFamily',
             fontWeight: fontWeightNormal,
             letterSpacing: '0.2px',
-            lineHeight: 1.6,
+            lineHeight: '1.6',
             borderColor: '#c2c2c2',
             borderRadius: '$figure.borderRadius',
             backgroundColor: white,
@@ -54,7 +54,7 @@ export const TextInputDefaultTheme = {
                 },
             },
         },
-        big: {
+        large: {
             paddingTop: 3,
             paddingBottom: 3,
         },
@@ -66,7 +66,7 @@ export const TextInputDefaultTheme = {
             fontWeight: fontWeightMedium,
             marginLeft: 3,
             marginRight: 3,
-            lineHeight: 1.6,
+            lineHeight: '1.6',
             top: '-10px',
         },
         inside: {
@@ -74,7 +74,7 @@ export const TextInputDefaultTheme = {
             fontWeight: fontWeightNormal,
             top: 2,
         },
-        inside__big: {
+        inside__large: {
             top: 3,
         },
         outlined: {

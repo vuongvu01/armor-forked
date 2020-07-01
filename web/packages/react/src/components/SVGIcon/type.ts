@@ -1,7 +1,7 @@
 import { SVGAttributes } from 'react';
-import { ThemeType } from '../../styling';
-import { MarginAttributesType } from '../../system/attributes';
-import { ScalarType } from '../../type';
+import { ThemeType } from 'src/styling';
+import { MarginAttributesType } from 'src/system/attributes';
+import { ScalarType } from 'src/type';
 
 export type SVGIconPropsType = {
     title?: string;

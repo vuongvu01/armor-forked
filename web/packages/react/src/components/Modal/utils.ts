@@ -1,6 +1,7 @@
 import { MutableRefObject, useEffect, useMemo, useState } from 'react';
-import { zIndexModal } from '../../tokens';
-import { Nullable } from '../../type';
+
+import { Nullable } from 'src/type';
+import { zIndexModal } from 'src/tokens';
 import { StackItemParametersType } from './type';
 
 // todo: come up with something more clever than this

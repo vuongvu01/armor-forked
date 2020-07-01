@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react';
 
-import { SVGIconRoot } from './style';
+import { useTheme } from 'src/styling';
 import { SVGIconPropsType } from './type';
-import { useTheme } from '../../styling';
+import { SVGIconRoot } from './style';
 
 export const SVGIcon: FunctionComponent<SVGIconPropsType> = ({
     children,

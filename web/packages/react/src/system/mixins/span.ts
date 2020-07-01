@@ -1,4 +1,4 @@
-import { ScalarType } from '../../type';
+import { ScalarType } from 'src/type';
 
 export const span = (value: ScalarType = 1, spacingFactor = 1) => {
     if (typeof value === 'string') {

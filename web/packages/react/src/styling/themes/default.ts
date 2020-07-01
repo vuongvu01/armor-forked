@@ -1,3 +1,3 @@
-import { makeTheme } from '../make/make-theme';
+import makeTheme from 'src/styling/make/makeTheme';
 
 export const defaultTheme = makeTheme({});

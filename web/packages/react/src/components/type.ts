@@ -14,7 +14,7 @@ export type StylesFunctionOrStubType<P = {}> =
     | StylesFunctionType<P>
     | ReturnEmptyStringFunctionType;
 
-export type StylePropsType<C extends ClassNamesType, S> = {
+export type StylePropsType<C extends ClassNamesType, S = {}> = {
     classNames?: C;
     styles?: S;
     theme?: ThemeType;

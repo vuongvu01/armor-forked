@@ -1,7 +1,7 @@
 import { TypographyInputType, TypographyType } from '../type';
 import { fontSizeRegular, fontSizeHTML } from '../../tokens';
 
-export const makeTypography = (
+const makeTypography = (
     typography: TypographyInputType = {},
 ): TypographyType => {
     const fontSize = typography.fontSize || fontSizeRegular;
@@ -25,3 +25,5 @@ export const makeTypography = (
         },
     };
 };
+
+export default makeTypography;

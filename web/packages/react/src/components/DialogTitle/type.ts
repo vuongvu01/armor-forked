@@ -1,10 +1,11 @@
 import { HTMLAttributes, ReactNode } from 'react';
+
+import { Indexed } from 'src/type';
 import {
     NodeStylePropsType,
     StylePropsType,
     StylesFunctionOrStubType,
 } from '../type';
-import { Indexed } from '../../type';
 
 type DialogTitleEffectivePropsType = Indexed<{
     description?: ReactNode;

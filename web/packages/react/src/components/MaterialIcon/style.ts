@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+
+import { marginAttributes } from 'src/system';
 import { MaterialIconPropsType } from './type';
-import { marginAttributes } from '../../system/attributes';
 
 export const MaterialIconRoot = styled.span<MaterialIconPropsType>`
     font-family: 'Material Icons', serif;

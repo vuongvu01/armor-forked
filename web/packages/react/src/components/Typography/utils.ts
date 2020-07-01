@@ -1,37 +1,90 @@
 import { useMemo } from 'react';
-import { TypographyStylesPropsType } from './type';
-import { returnEmptyString, makeBEM, makeClassName } from '../../utils';
+import { makeBEM, makeClassName } from 'src/utils';
 import { ClassNamesType } from '../type';
-
-export const useTypographyStylesOverride = (
-    styles?: TypographyStylesPropsType,
-): Required<TypographyStylesPropsType> =>
-    useMemo(
-        () => ({
-            Root: returnEmptyString,
-            ...styles,
-        }),
-        [styles],
-    );
+import { TypographyPropsType } from './type';
 
 export const useTypographyClassNames = (
     classPrefix: string,
     className?: string,
     classNames?: ClassNamesType,
-    h6?: boolean,
-) =>
-    useMemo(() => {
+    props?: TypographyPropsType,
+) => {
+    const {
+        paragraph,
+        label,
+        pageTitle,
+        subSectionTitle,
+        sectionTitle,
+        small,
+        medium,
+        large,
+    } = props || {};
+
+    return useMemo(() => {
         const rootClassNames = makeClassName(
             classPrefix,
             className,
             classNames,
         );
         const rootStateClassNames: string[] = [];
-        if (h6) {
-            rootStateClassNames.push(makeBEM(classPrefix, 'Root', 'h6'));
+        if (paragraph) {
+            rootStateClassNames.push(makeBEM(classPrefix, 'Root', 'paragraph'));
+        }
+        if (label) {
+            rootStateClassNames.push(makeBEM(classPrefix, 'Root', 'label'));
+        }
+        if (pageTitle) {
+            rootStateClassNames.push(makeBEM(classPrefix, 'Root', 'pageTitle'));
+        }
+        if (sectionTitle) {
+            rootStateClassNames.push(
+                makeBEM(classPrefix, 'Root', 'sectionTitle'),
+            );
+        }
+        if (subSectionTitle) {
+            rootStateClassNames.push(
+                makeBEM(classPrefix, 'Root', 'subSectionTitle'),
+            );
+        }
+
+        if (large) {
+            rootStateClassNames.push(makeBEM(classPrefix, 'Root', 'large'));
+        }
+        if (medium) {
+            rootStateClassNames.push(makeBEM(classPrefix, 'Root', 'medium'));
+        }
+        if (small) {
+            rootStateClassNames.push(makeBEM(classPrefix, 'Root', 'small'));
         }
 
         return {
             Root: `${rootClassNames} ${rootStateClassNames.join(' ')}`,
         };
-    }, [classPrefix, className, classNames, h6]);
+    }, [classPrefix, className, classNames]);
+};
+
+export const getTagName = (props: TypographyPropsType) => {
+    const { tag, paragraph, pageTitle, subSectionTitle, sectionTitle } = props;
+
+    if (tag) {
+        return tag;
+    }
+
+    if (paragraph) {
+        return 'p';
+    }
+
+    if (pageTitle) {
+        return 'h1';
+    }
+
+    if (subSectionTitle) {
+        return 'h2';
+    }
+
+    if (sectionTitle) {
+        return 'h3';
+    }
+
+    return 'div';
+};
