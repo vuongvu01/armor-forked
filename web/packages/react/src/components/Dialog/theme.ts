@@ -1,4 +1,4 @@
-import { fontSizeHTML, grey200 } from '../../tokens';
+import { fontSizeHTML, grey200 } from 'src/tokens';
 
 export const dialogDefaultTheme = {
     Overlay: {

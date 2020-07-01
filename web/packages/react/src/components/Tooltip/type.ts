@@ -1,10 +1,11 @@
 import { HTMLAttributes, ReactNode } from 'react';
+
+import { Indexed } from 'src/type';
 import {
     StylesFunctionOrStubType,
     StylePropsType,
     PropsWithNodeStylePropsType,
 } from '../type';
-import { Indexed } from '../../type';
 
 // https://popper.js.org/docs/v2/constructors/
 export type TooltipAlignmentType =

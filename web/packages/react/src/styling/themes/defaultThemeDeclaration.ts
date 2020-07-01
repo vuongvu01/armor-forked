@@ -37,7 +37,7 @@ import {
     lineHeight04,
     lineHeight05,
     componentSpacing01,
-} from '../../tokens';
+} from 'src/tokens';
 
 export const defaultThemeDeclaration = {
     typography: {

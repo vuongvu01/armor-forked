@@ -7,7 +7,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 
 import { Button } from 'src/components/Button';
 import { MaterialIcon } from 'src/components/MaterialIcon';
-// import { EditIcon } from '../../icons';
+// import { EditIcon } from 'src/icons';
 // import { withStyles } from '../with-styles';
 // import { fontSizeIconBig } from 'src/tokens';
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -18,7 +18,7 @@ import { MaterialIcon } from 'src/components/MaterialIcon';
 //     DialogPropsType,
 //     DialogStyleOverrideType,
 // } from '../../Dialog/type';
-// import { Dialog } from '../../components/Dialog';
+// import { Dialog } from 'src/components';
 import { GroupHelper } from 'src/helpers/GroupHelper';
 import { makeTheme } from '..';
 

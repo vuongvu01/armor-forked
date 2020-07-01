@@ -14,7 +14,6 @@ import {
     DialogActions,
     Button,
 } from 'src/components';
-import { withStyles } from 'src/styling';
 import { LoremIpsum, boke } from 'src/helpers';
 import { Dialog } from '../Dialog';
 

@@ -1,4 +1,4 @@
-import { fontSizeTitle, fontWeightNormal } from '../../tokens';
+import { fontSizeTitle, fontWeightNormal } from 'src/tokens';
 
 export const dialogTitleDefaultTheme = {
     Root: {
