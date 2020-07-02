@@ -1,4 +1,4 @@
-import makeTheme from 'src/styling/make/makeTheme';
+import { makeTheme } from '../make/make-theme';
 
 export const darkTheme = makeTheme({
     color: {},

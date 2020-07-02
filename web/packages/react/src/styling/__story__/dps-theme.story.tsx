@@ -1,26 +1,39 @@
 import React from 'react';
-import { ThemeProvider } from 'styled-components';
+import {
+    withKnobs,
+    text,
+    boolean,
+    number,
+    select,
+    // eslint-disable-next-line import/no-unresolved
+} from '@storybook/addon-knobs';
 // eslint-disable-next-line import/no-unresolved
-import { withKnobs } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
+import { ThemeProvider } from 'styled-components';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { createMuiTheme } from '@material-ui/core/styles';
-
-import { Button } from 'src/components/Button';
-import { MaterialIcon } from 'src/components/MaterialIcon';
-// import { EditIcon } from '../../icons';
-// import { withStyles } from '../with-styles';
-// import { fontSizeIconBig } from 'src/tokens';
+import {
+    createMuiTheme,
+    withStyles as withMaterialStyles,
+} from '@material-ui/core/styles';
 // eslint-disable-next-line import/no-extraneous-dependencies
 // import { BrowserRouter, Link } from 'react-router-dom';
-// import { ObjectLiteralType } from 'src/type';
+import { Button } from '../../components/Button';
+import { ButtonTagType } from '../../components/Button/type';
+// import { EditIcon } from '../../icons';
+import { MaterialIcon } from '../../components/MaterialIcon';
+// import { withStyles } from '../with-styles';
+// import { fontSizeIconBig } from '../../../tokens';
+// import { ObjectLiteralType } from '../../../type';
 // import {
 //     DialogAttributeOverrideType,
 //     DialogPropsType,
 //     DialogStyleOverrideType,
 // } from '../../Dialog/type';
 // import { Dialog } from '../../components/Dialog';
-import { GroupHelper } from 'src/helpers/GroupHelper';
+import { makeHybridTheme } from '../../helpers/sample-mui-theme';
+import { GroupHelper } from '../../helpers/GroupHelper';
 import { makeTheme } from '..';
+import { grey050, grey100, white } from '../../tokens';
 
 export default {
     title: 'Styling/Custom themes',

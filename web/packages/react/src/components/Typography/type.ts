@@ -1,12 +1,11 @@
 import { HTMLAttributes } from 'react';
-
-import { Indexed } from 'src/type';
-import { MarginAttributesType } from 'src/system/attributes';
 import {
     StylesFunctionOrStubType,
     StylePropsType,
     NodeStylePropsType,
 } from '../type';
+import { MarginAttributesType } from '../../system/attributes';
+import { Indexed } from '../../type';
 
 type TypographyEffectivePropsType = Indexed<{
     h6?: boolean;

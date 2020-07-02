@@ -18,13 +18,12 @@ import {
     StrictModifiers,
 } from '@popperjs/core';
 import { isFragment } from 'react-is';
-
-import { returnEmptyString, makeBEM, makeClassName } from 'src/utils';
 import {
     TooltipAlignmentType,
     TooltipPropsType,
     TooltipStylesPropsType,
 } from './type';
+import { returnEmptyString, makeBEM, makeClassName } from '../../utils';
 import { ClassNamesType } from '../type';
 
 export const useTooltipStylesOverride = (

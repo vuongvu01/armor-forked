@@ -1,7 +1,6 @@
 import { useMemo } from 'react';
-
-import { returnEmptyString, makeClassName } from 'src/utils';
 import { DialogStylesPropsType } from './type';
+import { returnEmptyString, makeClassName } from '../../utils';
 import { ClassNamesType } from '../type';
 
 export const useDialogStylesOverride = (

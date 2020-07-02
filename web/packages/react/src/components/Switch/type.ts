@@ -1,7 +1,7 @@
 import { InputHTMLAttributes } from 'react';
 
-import { MarginAttributesType } from 'src/system/attributes';
-import { Indexed } from 'src/type';
+import { MarginAttributesType } from '../../system/attributes';
+import { Indexed } from '../../type';
 import { ClassNamesType } from '../type';
 
 export type ClassBasedOnComponentType = {

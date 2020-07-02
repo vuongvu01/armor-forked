@@ -1,6 +1,6 @@
 import { HTMLAttributes } from 'react';
-import { MarginAttributesType } from 'src/system/attributes';
-import { ScalarType } from 'src/type';
+import { MarginAttributesType } from '../../system/attributes';
+import { ScalarType } from '../../type';
 
 export type MaterialIconPropsType = {
     fontSize?: ScalarType;

@@ -1,9 +1,8 @@
 import styled from 'styled-components';
-
-import { marginAttributes } from 'src/system/attributes';
-import { shouldForwardProp } from 'src/utils';
-import { ObjectLiteralType } from 'src/type';
 import { TypographyRootPropsType } from './type';
+import { marginAttributes } from '../../system/attributes';
+import { shouldForwardProp } from '../../utils';
+import { ObjectLiteralType } from '../../type';
 
 const propertyList = {
     h6: true,

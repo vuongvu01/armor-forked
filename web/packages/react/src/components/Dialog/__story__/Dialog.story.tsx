@@ -4,19 +4,21 @@ import {
     withKnobs,
     text,
     boolean,
+    number,
     select,
     // eslint-disable-next-line import/no-unresolved
 } from '@storybook/addon-knobs';
+// eslint-disable-next-line import/no-unresolved
+// import { action } from '@storybook/addon-actions';
 
-import {
-    DialogTitle,
-    DialogContent,
-    DialogActions,
-    Button,
-} from 'src/components';
-import { withStyles } from 'src/styling';
-import { LoremIpsum, boke } from 'src/helpers';
 import { Dialog } from '../Dialog';
+import { DialogTitle } from '../../DialogTitle';
+import { DialogContent } from '../../DialogContent';
+import { DialogActions } from '../../DialogActions';
+import { Button } from '../../Button';
+import { withStyles } from '../../../styling';
+import { LoremIpsum } from '../../../helpers/LoremIpsum';
+import { boke } from '../../../helpers/boke';
 
 export default {
     title: 'Components/Dialog',

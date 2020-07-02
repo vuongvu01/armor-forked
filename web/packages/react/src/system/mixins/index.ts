@@ -3,4 +3,9 @@ export * from './gutter';
 export * from './grid';
 export * from './fixed-cover';
 export * from './etc';
-export * from './breakpoints';
+export {
+    breakpointUp,
+    breakpointDown,
+    breakpointBetween,
+    breakpointOnly,
+} from './breakpoints';

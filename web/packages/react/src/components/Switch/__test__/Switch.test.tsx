@@ -8,7 +8,7 @@
 import React from 'react';
 import { cleanup, render } from '@testing-library/react';
 
-import { Switch } from 'src/components';
+import { Switch } from '../Switch';
 
 describe('<Switch />', () => {
     afterEach(async () => {

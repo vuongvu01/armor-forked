@@ -1,6 +1,6 @@
 import styled, { css, Interpolation } from 'styled-components';
-import { ObjectLiteralType } from 'src/type';
-import { shouldForwardProp } from 'src/utils';
+import { ObjectLiteralType } from '../../type';
+import { shouldForwardProp } from '../../utils';
 import { TooltipArrowPropsType, TooltipRootPropsType } from './type';
 
 const propertyList = {

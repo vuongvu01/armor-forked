@@ -3,14 +3,13 @@ import {
     ButtonHTMLAttributes,
     ComponentType,
 } from 'react';
-
-import { MarginAttributesType } from 'src/system';
-import { Indexed } from 'src/type';
 import {
     StylesFunctionOrStubType,
     StylePropsType,
     NodeStylePropsType,
 } from '../type';
+import { MarginAttributesType } from '../../system/attributes';
+import { Indexed } from '../../type';
 
 type MessageActionTagType = string | ComponentType<any>;
 
