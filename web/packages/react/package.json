@@ -27,10 +27,12 @@
     },
     "dependencies": {
         "@popperjs/core": "^2.4.2",
+        "@types/lodash.uniqueid": "^4.0.6",
         "deep-freeze-strict": "1.1.1",
         "deepclone": "^1.0.2",
         "deepmerge": "4.2.2",
         "flat": "^5.0.0",
+        "lodash.uniqueid": "^4.0.1",
         "prop-types": "^15.7.2",
         "throttle-debounce": "2.1.0",
         "traverse": "^0.6.6"
