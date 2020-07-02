@@ -2,8 +2,8 @@ import React from 'react';
 // eslint-disable-next-line import/no-unresolved
 import { withKnobs } from '@storybook/addon-knobs';
 
-import { GroupHelper } from 'src/helpers';
 import { Checkbox } from '../Checkbox';
+import { GroupHelper } from '../../../helpers/GroupHelper';
 
 export default {
     title: 'Components/Checkbox',

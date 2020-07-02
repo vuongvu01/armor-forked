@@ -1,5 +1,13 @@
 /* eslint-disable @typescript-eslint/camelcase */
 
+import {
+    fontSize05,
+    fontSizeHTML,
+    fontWeightMedium,
+    letterSpacingNone,
+    lineHeight05,
+} from '../../tokens';
+
 export const typographyDefaultTheme = {
     // place the default theme object here, it will be automatically processed
     Root: {

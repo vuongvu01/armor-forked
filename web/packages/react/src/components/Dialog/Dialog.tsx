@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
-
 import { useThemeOverride } from 'src/utils/hooks';
 import { useTheme } from 'src/styling';
-import { CloseIcon } from 'src/icons/CloseIcon';
+
+import { useDialogClassNames, useDialogStylesOverride } from './utils';
 import {
     DialogAlignmentContainer,
     DialogRoot,
@@ -11,11 +11,11 @@ import {
     DialogOverlay,
     DialogContent,
 } from './style';
+import { DialogPropsType } from './type';
 import { Modal } from '../Modal';
+import { CloseIcon } from '../../icons/CloseIcon';
 import { useDisplay } from '../Modal/utils';
 import { useContainerClickTrap } from '../DialogContent/utils';
-import { useDialogClassNames, useDialogStylesOverride } from './utils';
-import { DialogPropsType } from './type';
 import { dialogDefaultTheme } from './theme';
 
 const CLASS_PREFIX = 'Dialog';

@@ -1,7 +1,6 @@
 import { useMemo } from 'react';
-
-import { returnEmptyString, makeBEM, makeClassName } from 'src/utils';
 import { FormFieldMessageStylesPropsType } from './type';
+import { returnEmptyString, makeBEM, makeClassName } from '../../utils';
 import { ClassNamesType } from '../type';
 
 export const useFormFieldMessageStylesOverride = (

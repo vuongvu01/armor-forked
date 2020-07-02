@@ -6,8 +6,8 @@ import {
 } from '@storybook/addon-knobs';
 // eslint-disable-next-line import/no-unresolved
 
-import { loremIpsum } from 'src/helpers';
 import { Typography } from '../Typography';
+import { loremIpsum } from '../../../helpers/LoremIpsum';
 
 export default {
     title: 'Components/Typography',

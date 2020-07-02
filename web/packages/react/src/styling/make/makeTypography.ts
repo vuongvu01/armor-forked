@@ -1,5 +1,5 @@
-import { fontSizeRegular, fontSizeHTML } from 'src/tokens';
 import { TypographyInputType, TypographyType } from '../type';
+import { fontSizeRegular, fontSizeHTML } from '../../tokens';
 
 const makeTypography = (
     typography: TypographyInputType = {},

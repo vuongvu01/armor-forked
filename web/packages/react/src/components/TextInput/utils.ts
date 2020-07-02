@@ -1,7 +1,6 @@
 import { FocusEvent, MouseEvent, useCallback, useMemo, useState } from 'react';
-
-import { returnEmptyString, makeBEM, makeClassName } from 'src/utils';
 import { TextInputPropsType, TextInputStylesPropsType } from './type';
+import { returnEmptyString, makeBEM, makeClassName } from '../../utils';
 import { ClassNamesType } from '../type';
 
 export const useTextInputStylesOverride = (

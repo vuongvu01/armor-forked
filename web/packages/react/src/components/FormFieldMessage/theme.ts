@@ -1,4 +1,4 @@
-import { fontSizeSmall, fontWeightMedium } from 'src/tokens';
+import { fontSizeSmall, fontWeightMedium } from '../../tokens';
 
 export const formFieldMessageDefaultTheme = {
     Root: {

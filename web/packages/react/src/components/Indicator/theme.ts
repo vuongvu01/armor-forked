@@ -1,4 +1,4 @@
-import { fontSizeSmall, fontWeightNormal } from 'src/tokens';
+import { fontSizeSmall, fontWeightNormal } from '../../tokens';
 
 export const indicatorDefaultTheme = {
     // place the default theme object here, it will be automatically processed

@@ -1,4 +1,4 @@
-import { fontWeightMedium } from 'src/tokens';
+import { fontWeightMedium } from '../../tokens';
 
 export const buttonDefaultTheme = {
     Root: {

@@ -1,4 +1,4 @@
-import { shadow200 } from 'src/tokens';
+import { shadow200 } from '../../tokens';
 
 export const paperDefaultTheme = {
     Root: {

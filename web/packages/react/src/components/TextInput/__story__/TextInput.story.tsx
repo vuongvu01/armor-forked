@@ -3,20 +3,23 @@
 import React, { useState } from 'react';
 import {
     withKnobs,
+    text,
+    boolean,
+    number,
+    select,
     // eslint-disable-next-line import/no-unresolved
 } from '@storybook/addon-knobs';
 // eslint-disable-next-line import/no-unresolved
+import { action } from '@storybook/addon-actions';
 import styled from 'styled-components';
 
-import {
-    Button,
-    Box,
-    FormFieldMessage,
-    FormField,
-    FormFieldTooltip,
-} from 'src/components';
-import { loremIpsum } from 'src/helpers';
 import { TextInput } from '../TextInput';
+import { Button } from '../../Button';
+import { Box } from '../../Box';
+import { FormFieldMessage } from '../../FormFieldMessage';
+import { loremIpsum } from '../../../helpers/LoremIpsum';
+import { FormField } from '../../FormField';
+import { FormFieldTooltip } from '../../FormFieldTooltip';
 
 export default {
     title: 'Components/TextInput',
