@@ -1,8 +1,8 @@
 import React, { FunctionComponent, forwardRef, useState } from 'react';
 import PropTypes from 'prop-types';
+
 import { useThemeOverride } from '../../utils/hooks';
 import { useTheme } from '../../styling';
-
 import { useCheckboxClassName } from './utils';
 import { CheckboxInput, CheckboxCheckmark, CheckboxRoot } from './style';
 import { CheckboxPropsType } from './type';

@@ -1,5 +1,5 @@
-import { TypographyInputType, TypographyType } from '../type';
 import { fontSizeRegular, fontSizeHTML } from '../../tokens';
+import { TypographyInputType, TypographyType } from '../type';
 
 export const makeTypography = (
     typography: TypographyInputType = {},

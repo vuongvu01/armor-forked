@@ -1,6 +1,6 @@
 import React, { InputHTMLAttributes } from 'react';
 
-import { MarginAttributesType } from '../../system/attributes';
+import { MarginAttributesType } from '../../system';
 import { Indexed } from '../../type';
 import { ClassNamesType, NodeStylePropsType } from '../type';
 

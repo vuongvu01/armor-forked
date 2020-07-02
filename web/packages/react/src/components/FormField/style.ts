@@ -1,8 +1,9 @@
 import styled from 'styled-components';
-import { FormFieldRootPropsType } from './type';
-import { marginAttributes, widthAttributes } from '../../system/attributes';
+
+import { marginAttributes, widthAttributes } from '../../system';
 import { ObjectLiteralType } from '../../type';
 import { shouldForwardProp } from '../../utils';
+import { FormFieldRootPropsType } from './type';
 
 const propertyList = {
     autoMargin: true,

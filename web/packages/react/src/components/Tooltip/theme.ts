@@ -7,7 +7,7 @@ export const tooltipDefaultTheme = {
             fontWeight: fontWeightNormal,
             fontFamily: '$typography.fontFamily',
             borderRadius: '$figure.borderRadius',
-            lineHeight: 1.6,
+            lineHeight: '1.6',
             padding: 3,
         },
         normal: {

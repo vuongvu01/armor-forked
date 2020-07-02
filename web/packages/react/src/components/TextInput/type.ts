@@ -1,21 +1,19 @@
 import { InputHTMLAttributes, TextareaHTMLAttributes, ReactNode } from 'react';
+
+import { MarginAttributesType, WidthAttributesType } from '../../system';
+import { Indexed } from '../../type';
 import {
     StylesFunctionOrStubType,
     StylePropsType,
     PropsWithNodeStylePropsType,
 } from '../type';
-import {
-    MarginAttributesType,
-    WidthAttributesType,
-} from '../../system/attributes';
-import { Indexed } from '../../type';
 
 type TextInputEffectivePropsType = Indexed<{
     exampleProperty?: boolean;
     label?: string;
     before?: ReactNode;
     after?: ReactNode;
-    big?: boolean;
+    large?: boolean;
     error?: boolean;
     multiline?: boolean;
     disableLabelEffect?: boolean;
@@ -53,7 +51,7 @@ export type TextInputStylesPropsType = {
 
 type TextInputInternalPropsType = {
     outlined?: boolean;
-} & Pick<TextInputEffectivePropsType, 'disabled' | 'big' | 'error' | 'wide'>;
+} & Pick<TextInputEffectivePropsType, 'disabled' | 'large' | 'error' | 'wide'>;
 
 export type TextInputInternalPropsWithThemeType = TextInputInternalPropsType &
     Pick<TextInputRootPropsType, 'theme'>;

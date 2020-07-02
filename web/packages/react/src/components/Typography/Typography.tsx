@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { useThemeOverride } from '../../utils/hooks';
 import { useTheme } from '../../styling';
 
-import { useTypographyClassNames, useTypographyStylesOverride } from './utils';
-import { TypographyRoot } from './style';
+import { getTagName, useTypographyClassNames } from './utils';
+import { TypographyClassNameProvider } from './style';
 import { TypographyPropsType } from './type';
 import { typographyDefaultTheme } from './theme';
 
@@ -13,8 +13,7 @@ const CLASS_PREFIX = 'Typography';
 export const Typography: FunctionComponent<TypographyPropsType> = ({
     className,
     classNames,
-    styles,
-    h6,
+    children,
     ...restProps
 }) => {
     const theme = useTheme();
@@ -24,27 +23,45 @@ export const Typography: FunctionComponent<TypographyPropsType> = ({
         CLASS_PREFIX,
         className,
         classNames,
-        h6,
+        restProps,
     );
-    const stylesOverride = useTypographyStylesOverride(styles);
+
+    const TypographyRoot = getTagName(restProps);
 
     return (
-        <TypographyRoot
-            h6={h6}
-            theme={theme}
+        <TypographyClassNameProvider
             {...restProps}
+            theme={theme}
             className={classNameComponents.Root}
-            styles={stylesOverride.Root}
-        />
+        >
+            {(forwardedProps: TypographyPropsType) => (
+                <TypographyRoot {...forwardedProps}>{children}</TypographyRoot>
+            )}
+        </TypographyClassNameProvider>
     );
 };
 
 Typography.defaultProps = {
-    h6: false,
+    pageTitle: false,
+    sectionTitle: false,
+    subSectionTitle: false,
+    label: false,
+    paragraph: false,
+    large: false,
+    medium: false,
+    small: false,
 };
 
 /** Support of prop-types is here for project that don't use TypeScript */
 Typography.propTypes = {
-    /** Example description */
-    h6: PropTypes.bool,
+    pageTitle: PropTypes.bool,
+    sectionTitle: PropTypes.bool,
+    subSectionTitle: PropTypes.bool,
+    label: PropTypes.bool,
+    paragraph: PropTypes.bool,
+    large: PropTypes.bool,
+    medium: PropTypes.bool,
+    small: PropTypes.bool,
+    /** Tag name or component */
+    tag: PropTypes.oneOfType([PropTypes.elementType, PropTypes.string]),
 };

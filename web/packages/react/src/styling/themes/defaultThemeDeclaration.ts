@@ -4,7 +4,6 @@ import {
     fontSizeHTML,
     fontSizeRegular,
     borderRadiusNormal,
-    spanRegular,
     fontFamilyRoboto,
     red300,
     grey00,
@@ -24,6 +23,7 @@ import {
     green60,
     green70,
     green80,
+    spanRegular,
 } from '../../tokens';
 
 export const defaultThemeDeclaration = {

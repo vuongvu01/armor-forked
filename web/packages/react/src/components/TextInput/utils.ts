@@ -1,6 +1,7 @@
 import { FocusEvent, MouseEvent, useCallback, useMemo, useState } from 'react';
-import { TextInputPropsType, TextInputStylesPropsType } from './type';
+
 import { returnEmptyString, makeBEM, makeClassName } from '../../utils';
+import { TextInputPropsType, TextInputStylesPropsType } from './type';
 import { ClassNamesType } from '../type';
 
 export const useTextInputStylesOverride = (
@@ -22,7 +23,7 @@ export const useTextInputClassNames = (
     className?: string,
     classNames?: ClassNamesType,
     disabled?: boolean,
-    big?: boolean,
+    large?: boolean,
     error?: boolean,
 ) =>
     useMemo(() => {
@@ -35,8 +36,8 @@ export const useTextInputClassNames = (
         if (disabled) {
             rootStateClassNames.push(makeBEM(classPrefix, 'Root', 'disabled'));
         }
-        if (big) {
-            rootStateClassNames.push(makeBEM(classPrefix, 'Root', 'big'));
+        if (large) {
+            rootStateClassNames.push(makeBEM(classPrefix, 'Root', 'large'));
         }
         if (error) {
             rootStateClassNames.push(makeBEM(classPrefix, 'Root', 'error'));
@@ -48,7 +49,7 @@ export const useTextInputClassNames = (
             Label: makeBEM(classPrefix, 'Label'),
             LabelBackground: makeBEM(classPrefix, 'LabelBackground'),
         };
-    }, [classPrefix, className, classNames, disabled, big, error]);
+    }, [classPrefix, className, classNames, disabled, large, error]);
 
 export const useEvents = ({
     value,

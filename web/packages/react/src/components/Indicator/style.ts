@@ -1,8 +1,9 @@
 import styled from 'styled-components';
-import { IndicatorRootPropsType } from './type';
-import { marginAttributes } from '../../system/attributes';
+
+import { marginAttributes } from '../../system';
 import { ObjectLiteralType } from '../../type';
 import { shouldForwardProp } from '../../utils';
+import { IndicatorRootPropsType } from './type';
 
 const propertyList = {
     exampleProperty: true,

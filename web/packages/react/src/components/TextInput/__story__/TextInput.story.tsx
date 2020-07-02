@@ -3,23 +3,20 @@
 import React, { useState } from 'react';
 import {
     withKnobs,
-    text,
-    boolean,
-    number,
-    select,
     // eslint-disable-next-line import/no-unresolved
 } from '@storybook/addon-knobs';
 // eslint-disable-next-line import/no-unresolved
-import { action } from '@storybook/addon-actions';
 import styled from 'styled-components';
 
-import { TextInput } from '../TextInput';
-import { Button } from '../../Button';
-import { Box } from '../../Box';
-import { FormFieldMessage } from '../../FormFieldMessage';
+import {
+    Button,
+    Box,
+    FormFieldMessage,
+    FormField,
+    FormFieldTooltip,
+} from '../..';
 import { loremIpsum } from '../../../helpers/LoremIpsum';
-import { FormField } from '../../FormField';
-import { FormFieldTooltip } from '../../FormFieldTooltip';
+import { TextInput } from '../TextInput';
 
 export default {
     title: 'Components/TextInput',
@@ -287,9 +284,9 @@ export const States = () => {
     );
 };
 
-export const Big = () => (
+export const Large = () => (
     <Box marginTop={5}>
-        <TextInput label="This is big one" name="your_price" big />
+        <TextInput label="This is big one" name="your_price" large />
         <TextInput
             label="This one is normal"
             name="your_price"
@@ -346,7 +343,7 @@ export const EventHandlers = () => (
         <TextInput
             label="This is big one"
             name="your_price"
-            big
+            large
             onFocus={() => console.log('Focus')}
             onBlur={() => console.log('Blur')}
             onMouseOver={() => console.log('onMouseOver')}

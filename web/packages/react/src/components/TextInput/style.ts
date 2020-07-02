@@ -1,5 +1,9 @@
 import styled, { css } from 'styled-components';
 import { ReactElement } from 'react';
+
+import { marginAttributes, widthAttributes } from '../../system';
+import { ObjectLiteralType } from '../../type';
+import { shouldForwardProp } from '../../utils';
 import {
     TextInputInputPropsType,
     TextInputInternalPropsWithThemeType,
@@ -7,9 +11,6 @@ import {
     TextInputLabelPropsType,
     TextInputRootPropsType,
 } from './type';
-import { marginAttributes, widthAttributes } from '../../system/attributes';
-import { ObjectLiteralType } from '../../type';
-import { shouldForwardProp } from '../../utils';
 
 const getDynamicStyle = (
     nodeName: string,
@@ -18,7 +19,7 @@ const getDynamicStyle = (
         outlined,
         error,
         disabled,
-        big,
+        large,
     }: TextInputInternalPropsWithThemeType,
 ) => {
     const {
@@ -26,7 +27,7 @@ const getDynamicStyle = (
     } = theme;
 
     return css`
-        ${big ? TextInput[nodeName].big : ''}
+        ${large ? TextInput[nodeName].large : ''}
         ${outlined ? TextInput[nodeName].outlined : ''}
         ${error ? TextInput[nodeName].error : ''}
         ${disabled ? TextInput[nodeName].disabled : ''}
@@ -51,7 +52,7 @@ const propertyList = {
     label: true,
     before: true,
     after: true,
-    big: true,
+    large: true,
     multiline: true,
     outlined: true,
     error: true,
@@ -129,9 +130,9 @@ export const TextInputLabel = styled.span.withConfig({
         theme.componentOverrides.TextInput.Label.base}
     ${({ inside, theme }) =>
         inside ? theme.componentOverrides.TextInput.Label.inside : ''}
-    ${({ inside, big, theme }) =>
-        inside && big
-            ? theme.componentOverrides.TextInput.Label.inside__big
+    ${({ inside, large, theme }) =>
+        inside && large
+            ? theme.componentOverrides.TextInput.Label.inside__large
             : ''}
     ${getLabelDynamicStyle}
     ${(props: TextInputLabelPropsType) => props.styles(props)}
