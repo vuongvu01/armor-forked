@@ -24,7 +24,7 @@ describe('<Box />', () => {
     });
 
     it('should render itself without errors', async () => {
-        render(<Box />);
+        const { container, getByTestId } = render(<Box />);
 
         // // ///////////////////////
         // // a short cheat sheet

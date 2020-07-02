@@ -14,8 +14,8 @@ import {
     FormFieldMessage,
     FormField,
     FormFieldTooltip,
-} from 'src/components';
-import { loremIpsum } from 'src/helpers';
+} from '../..';
+import { loremIpsum } from '../../../helpers/LoremIpsum';
 import { TextInput } from '../TextInput';
 
 export default {

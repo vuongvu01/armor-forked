@@ -1,4 +1,4 @@
-import { fontWeightNormal } from 'src/tokens';
+import { fontWeightNormal } from '../../tokens';
 
 export const formFieldDefaultTheme = {
     Root: {

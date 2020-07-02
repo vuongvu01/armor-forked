@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components';
 import { ReactElement } from 'react';
 
-import { marginAttributes, widthAttributes } from 'src/system/attributes';
-import { durationRegular } from 'src/tokens';
-import { shouldForwardProp } from 'src/utils';
-import { ObjectLiteralType } from 'src/type';
+import { marginAttributes, widthAttributes } from '../../system/attributes';
+import { durationRegular } from '../../tokens';
+import { shouldForwardProp } from '../../utils';
+import { ObjectLiteralType } from '../../type';
 import { ButtonRootPropsType } from './type';
 
 const propertyList = {

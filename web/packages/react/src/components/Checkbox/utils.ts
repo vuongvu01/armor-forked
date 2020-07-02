@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-import { makeBEM, makeClassName } from 'src/utils';
+import { makeBEM, makeClassName } from '../../utils';
 import { ClassBasedOnComponentType } from './type';
 import { ClassNamesType } from '../type';
 

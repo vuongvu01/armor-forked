@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { makeBEM, makeClassName } from 'src/utils';
+import { makeBEM, makeClassName } from '../../utils';
 import { ClassNamesType } from '../type';
 import { TypographyPropsType } from './type';
 

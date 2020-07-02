@@ -1,7 +1,7 @@
 import React, { InputHTMLAttributes } from 'react';
 
-import { MarginAttributesType } from 'src/system';
-import { Indexed } from 'src/type';
+import { MarginAttributesType } from '../../system';
+import { Indexed } from '../../type';
 import { ClassNamesType, NodeStylePropsType } from '../type';
 
 export type CheckedIconType = 'tick' | 'dash';

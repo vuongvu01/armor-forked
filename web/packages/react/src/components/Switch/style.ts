@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
 
-import { marginAttributes } from 'src/system/attributes';
-import { shouldForwardProp } from 'src/utils';
-import { mouseCursor } from 'src/styling';
-import { ObjectLiteralType } from 'src/type';
+import { marginAttributes } from '../../system/attributes';
+import { shouldForwardProp } from '../../utils';
+import { mouseCursor } from '../../styling';
+import { ObjectLiteralType } from '../../type';
 import {
     SwitchCheckboxInputPropsType,
     SwitchLabelPropsType,

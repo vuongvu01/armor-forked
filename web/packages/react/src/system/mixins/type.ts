@@ -1,5 +1,5 @@
-import { BreakpointsBaseType } from 'src/styling';
-import { CSSChunkType } from 'src/type';
+import { BreakpointsBaseType } from '../../styling';
+import { CSSChunkType } from '../../type';
 
 export type BreakpointCode = string;
 export type BreakpointFunctionType = (

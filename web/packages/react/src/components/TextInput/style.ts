@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
 import { ReactElement } from 'react';
 
-import { marginAttributes, widthAttributes } from 'src/system';
-import { ObjectLiteralType } from 'src/type';
-import { shouldForwardProp } from 'src/utils';
+import { marginAttributes, widthAttributes } from '../../system';
+import { ObjectLiteralType } from '../../type';
+import { shouldForwardProp } from '../../utils';
 import {
     TextInputInputPropsType,
     TextInputInternalPropsWithThemeType,

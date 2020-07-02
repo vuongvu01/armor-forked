@@ -2,7 +2,7 @@ import React from 'react';
 // eslint-disable-next-line import/no-unresolved
 import { withKnobs } from '@storybook/addon-knobs';
 
-import { GroupHelper } from 'src/helpers/GroupHelper';
+import { GroupHelper } from '../../../helpers/GroupHelper';
 import { Switch } from '../Switch';
 
 export default {

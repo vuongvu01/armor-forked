@@ -6,7 +6,7 @@ import {
     fontWeightMedium,
     fontWeightNormal,
     white,
-} from 'src/tokens';
+} from '../../tokens';
 
 export const TextInputDefaultTheme = {
     Root: {

@@ -1,11 +1,10 @@
 import { HTMLAttributes } from 'react';
-
-import { Indexed } from 'src/type';
 import {
     NodeStylePropsType,
     StylePropsType,
     StylesFunctionOrStubType,
 } from '../type';
+import { Indexed } from '../../type';
 
 type DialogContentEffectivePropsType = Indexed<{
     // add other custom properties here

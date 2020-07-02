@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-import { marginAttributes, widthAttributes } from 'src/system';
-import { ObjectLiteralType } from 'src/type';
-import { shouldForwardProp } from 'src/utils';
+import { marginAttributes, widthAttributes } from '../../system';
+import { ObjectLiteralType } from '../../type';
+import { shouldForwardProp } from '../../utils';
 import { FormFieldRootPropsType } from './type';
 
 const propertyList = {

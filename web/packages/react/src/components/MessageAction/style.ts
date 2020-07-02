@@ -1,10 +1,9 @@
 import { ReactElement } from 'react';
 import styled from 'styled-components';
-
-import { marginAttributes } from 'src/system';
-import { ObjectLiteralType } from 'src/type';
-import { shouldForwardProp } from 'src/utils';
 import { MessageActionRootPropsType } from './type';
+import { marginAttributes } from '../../system/attributes';
+import { ObjectLiteralType } from '../../type';
+import { shouldForwardProp } from '../../utils';
 
 const propertyList = {
     tag: true,

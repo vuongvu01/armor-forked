@@ -7,5 +7,4 @@ module.exports = {
         '^.+\\.tsx?$': 'ts-jest',
     },
     testRegex: '\\.test\\.tsx?$',
-    moduleDirectories: ['node_modules', './'],
 };

@@ -4,8 +4,8 @@ import {
     ComponentType,
 } from 'react';
 
-import { MarginAttributesType, WidthAttributesType } from 'src/system';
-import { Indexed } from 'src/type';
+import { MarginAttributesType, WidthAttributesType } from '../../system';
+import { Indexed } from '../../type';
 import {
     NodeStylePropsType,
     StylePropsType,

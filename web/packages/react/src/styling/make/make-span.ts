@@ -1,8 +1,8 @@
-import { ScalarType } from 'src/type';
-import { span } from 'src/system/mixins/span';
 import { ThemeDeclarationType } from '../type';
+import { ScalarType } from '../../type';
+import { span } from '../../system/mixins/span';
 
-const makeSpan = (theme: ThemeDeclarationType) => {
+export const makeSpan = (theme: ThemeDeclarationType) => {
     if (typeof theme.span === 'function') {
         return theme.span;
     }
@@ -10,5 +10,3 @@ const makeSpan = (theme: ThemeDeclarationType) => {
     const spacingFactor = theme.span;
     return (value: ScalarType) => span(value, spacingFactor);
 };
-
-export default makeSpan;

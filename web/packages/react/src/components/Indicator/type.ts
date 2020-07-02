@@ -1,7 +1,7 @@
 import { HTMLAttributes } from 'react';
 
-import { MarginAttributesType } from 'src/system';
-import { Indexed } from 'src/type';
+import { MarginAttributesType } from '../../system';
+import { Indexed } from '../../type';
 import {
     StylesFunctionOrStubType,
     StylePropsType,

@@ -1,12 +1,11 @@
 import { css } from 'styled-components';
-
-import { BreakpointsBaseType, SpanFunctionType } from 'src/styling';
-import { CSSChunkType, ScalarType } from 'src/type';
 import {
     BreakpointCode,
     BreakpointFunctionType,
     BreakpointFunctionTwoArgsType,
 } from './type';
+import { BreakpointsBaseType, SpanFunctionType } from '../../styling';
+import { CSSChunkType, ScalarType } from '../../type';
 
 const makeRule = (way: string, value: number, cssChunk?: CSSChunkType) => {
     const mediaRule = `@media (${way}-width:${value}px)`;

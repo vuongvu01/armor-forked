@@ -1,5 +1,5 @@
-import { ThemeType } from 'src/styling';
-import { ScalarType } from 'src/type';
+import { ThemeType } from '../../styling';
+import { ScalarType } from '../../type';
 
 export type MarginAttributesType = {
     margin?: ScalarType;

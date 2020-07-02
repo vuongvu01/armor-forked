@@ -1,6 +1,6 @@
 import { FocusEvent, MouseEvent, useCallback, useMemo, useState } from 'react';
 
-import { returnEmptyString, makeBEM, makeClassName } from 'src/utils';
+import { returnEmptyString, makeBEM, makeClassName } from '../../utils';
 import { TextInputPropsType, TextInputStylesPropsType } from './type';
 import { ClassNamesType } from '../type';
 

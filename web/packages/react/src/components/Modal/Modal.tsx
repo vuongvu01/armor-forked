@@ -2,9 +2,9 @@ import React, { FunctionComponent } from 'react';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 
-import { makeBEM } from 'src/utils';
 import { ModalBackdrop, ModalRoot } from './style';
 import { ModalPropsType } from './type';
+import { makeBEM } from '../../utils';
 import { useModalStack, useModalStackZIndex } from './utils';
 
 export const Modal: FunctionComponent<ModalPropsType> = ({

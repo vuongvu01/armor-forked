@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
-import { useThemeOverride } from 'src/utils/hooks';
-import { useTheme } from 'src/styling';
+import { useThemeOverride } from '../../utils/hooks';
+import { useTheme } from '../../styling';
 
 import { useMessageClassNames, useMessageStylesOverride } from './utils';
 import {

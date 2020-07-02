@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-import { returnEmptyString, makeBEM, makeClassName } from 'src/utils';
+import { returnEmptyString, makeBEM, makeClassName } from '../../utils';
 import { FormFieldMessageStylesPropsType } from './type';
 import { ClassNamesType } from '../type';
 
