@@ -1,13 +1,12 @@
 import { HTMLAttributes, ReactNode } from 'react';
-
-import { MarginAttributesType } from 'src/system';
-import { Indexed } from 'src/type';
 import {
     StylesFunctionOrStubType,
     StylePropsType,
     NodeStylePropsType,
     PropsWithNodeStylePropsType,
 } from '../type';
+import { MarginAttributesType } from '../../system/attributes';
+import { Indexed } from '../../type';
 
 export type MessageLevelType = 'error' | 'warning' | 'info' | 'success';
 

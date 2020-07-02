@@ -1,8 +1,9 @@
 import styled, { css } from 'styled-components';
-import { FormFieldMessageRootPropsType } from './type';
-import { marginAttributes } from '../../system/attributes';
+
+import { marginAttributes } from '../../system';
 import { ObjectLiteralType } from '../../type';
 import { shouldForwardProp } from '../../utils';
+import { FormFieldMessageRootPropsType } from './type';
 
 const propertyList = {
     error: true,

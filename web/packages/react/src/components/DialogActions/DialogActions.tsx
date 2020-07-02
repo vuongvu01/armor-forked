@@ -1,13 +1,13 @@
 import React, { FunctionComponent } from 'react';
+import { useTheme } from '../../styling';
 
-import { useTheme } from 'src/styling';
-import { useThemeOverride } from 'src/utils/hooks';
 import {
     useDialogActionsClassName,
     useDialogActionsStylesOverride,
 } from './utils';
 import { DialogActionsRoot } from './style';
 import { DialogActionsPropsType } from './type';
+import { useThemeOverride } from '../../utils/hooks';
 import { dialogActionsDefaultTheme } from './theme';
 
 const CLASS_PREFIX = 'DialogActions';

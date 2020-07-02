@@ -6,7 +6,15 @@
  */
 
 import React from 'react';
-import { cleanup, render } from '@testing-library/react';
+import {
+    fireEvent,
+    cleanup,
+    render,
+    prettyDOM,
+    wait,
+    waitForElement,
+} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import { MaterialIcon } from '../..';
 
@@ -16,7 +24,9 @@ describe('<MaterialIcon />', () => {
     });
 
     it('should render itself without errors', async () => {
-        render(<MaterialIcon>save</MaterialIcon>);
+        const { container, getByTestId } = render(
+            <MaterialIcon>save</MaterialIcon>,
+        );
 
         // // ///////////////////////
         // // a short cheat sheet

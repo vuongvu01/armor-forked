@@ -1,10 +1,10 @@
 // Heavily inspired by: https://material-ui.com/components/use-media-query/
+
 import { useEffect, useState } from 'react';
 import { throttle } from 'throttle-debounce';
-
-import { useTheme } from 'src/styling';
-import { MatchBreakpointFunctionType } from './type';
 import { BreakpointCode } from '../mixins/type';
+import { useTheme } from '../../styling';
+import { MatchBreakpointFunctionType } from './type';
 
 const useBreakpoint = (
     code: BreakpointCode,

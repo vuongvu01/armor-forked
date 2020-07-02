@@ -2,12 +2,15 @@ import React from 'react';
 import {
     withKnobs,
     text,
+    boolean,
+    number,
+    select,
     // eslint-disable-next-line import/no-unresolved
 } from '@storybook/addon-knobs';
 // eslint-disable-next-line import/no-unresolved
 
-import { Typography } from '../Typography';
 import { loremIpsum } from '../../../helpers/LoremIpsum';
+import { Typography } from '../Typography';
 
 export default {
     title: 'Components/Typography',

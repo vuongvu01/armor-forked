@@ -1,4 +1,4 @@
-import { fontSizeRegular, fontWeightMedium } from 'src/tokens';
+import { fontSizeRegular, fontWeightMedium } from '../../tokens';
 
 export const messageActionDefaultTheme = {
     // place the default theme object here, it will be automatically processed

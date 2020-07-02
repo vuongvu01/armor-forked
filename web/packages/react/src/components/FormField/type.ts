@@ -1,14 +1,12 @@
 import { HTMLAttributes } from 'react';
+
+import { MarginAttributesType, WidthAttributesType } from '../../system';
+import { Indexed } from '../../type';
 import {
     StylesFunctionOrStubType,
     StylePropsType,
     PropsWithNodeStylePropsType,
 } from '../type';
-import {
-    MarginAttributesType,
-    WidthAttributesType,
-} from '../../system/attributes';
-import { Indexed } from '../../type';
 
 type FormFieldEffectivePropsType = Indexed<{
     autoMargin?: boolean;

@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
-import { IndicatorStylesPropsType } from './type';
+
 import { returnEmptyString, makeClassName } from '../../utils';
+import { IndicatorStylesPropsType } from './type';
 import { ClassNamesType } from '../type';
 
 export const useIndicatorStylesOverride = (

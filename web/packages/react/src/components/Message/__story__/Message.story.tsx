@@ -1,15 +1,21 @@
 import React from 'react';
 import {
     withKnobs,
+    text,
     boolean,
+    number,
     select,
     // eslint-disable-next-line import/no-unresolved
 } from '@storybook/addon-knobs';
-
+import styled from 'styled-components';
 // eslint-disable-next-line import/no-unresolved
-import { Typography, MessageAction } from 'src/components';
-import { Rick } from 'src/helpers/Rick';
+import { action } from '@storybook/addon-actions';
 import { Message } from '../Message';
+import { LoremIpsum } from '../../../helpers/LoremIpsum';
+import { Button } from '../../Button';
+import { Typography } from '../../Typography';
+import { MessageAction } from '../../MessageAction';
+import { Rick } from '../../../helpers/Rick';
 
 export default {
     title: 'Components/Message',

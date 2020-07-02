@@ -1,7 +1,6 @@
 import { useCallback, useMemo, useRef, MouseEvent } from 'react';
-
-import { returnEmptyString, makeClassName } from 'src/utils';
 import { DialogContentStylesPropsType } from './type';
+import { returnEmptyString, makeClassName } from '../../utils';
 import { ClassNamesType } from '../type';
 
 export const useDialogContentStylesOverride = (

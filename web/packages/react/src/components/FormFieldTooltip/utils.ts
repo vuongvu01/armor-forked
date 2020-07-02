@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
-import { FormFieldTooltipStylesPropsType } from './type';
+
 import { returnEmptyString, makeClassName } from '../../utils';
+import { FormFieldTooltipStylesPropsType } from './type';
 import { ClassNamesType } from '../type';
 
 export const useFormFieldTooltipStylesOverride = (

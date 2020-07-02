@@ -14,15 +14,14 @@ import { ThemeProvider } from 'styled-components';
 import { withStyles as withMaterialStyles } from '@material-ui/core/styles';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { BrowserRouter, Link } from 'react-router-dom';
-
-import makeTheme from 'src/styling/make/makeTheme';
-import { fontSizeIconBig } from 'src/tokens';
-import { ObjectLiteralType } from 'src/type';
-import { GroupHelper } from 'src/helpers/GroupHelper';
-import { MaterialIcon } from 'src/components';
-import { EditIcon } from 'src/icons';
 import { Button } from '../Button';
 import { ButtonTagType } from '../type';
+import { EditIcon } from '../../../icons';
+import { MaterialIcon } from '../../MaterialIcon';
+import { makeTheme } from '../../../styling';
+import { fontSizeIconBig } from '../../../tokens';
+import { ObjectLiteralType } from '../../../type';
+import { GroupHelper } from '../../../helpers/GroupHelper';
 
 export default {
     title: 'Components/Button',

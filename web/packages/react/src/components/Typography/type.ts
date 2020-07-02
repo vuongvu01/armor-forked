@@ -1,11 +1,7 @@
 import { ComponentType, HTMLAttributes } from 'react';
-import { MarginAttributesType } from 'src/system/attributes';
-import { Indexed } from 'src/type';
-import {
-    StylesFunctionOrStubType,
-    StylePropsType,
-    NodeStylePropsType,
-} from '../type';
+import { MarginAttributesType } from '../../system/attributes';
+import { Indexed } from '../../type';
+import { StylePropsType, NodeStylePropsType } from '../type';
 
 export type TypographyTagType = string | ComponentType<any>;
 

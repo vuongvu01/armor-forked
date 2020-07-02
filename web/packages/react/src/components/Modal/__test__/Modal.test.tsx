@@ -24,7 +24,7 @@ describe('<Modal />', () => {
     });
 
     it('should render itself without errors', async () => {
-        render(<Modal />);
+        const { container, getByTestId } = render(<Modal />);
 
         // // ///////////////////////
         // // a short cheat sheet

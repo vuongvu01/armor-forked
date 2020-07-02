@@ -1,10 +1,4 @@
 import styled from 'styled-components';
-
-import { marginAttributes } from 'src/system/attributes';
-import { MaterialIcon } from 'src/components';
-import { noTextInteraction } from 'src/system/mixins';
-import { ObjectLiteralType } from 'src/type';
-import { shouldForwardProp } from 'src/utils';
 import {
     MessageRootPropsType,
     MessageContentPropsType,
@@ -15,6 +9,11 @@ import {
     MessageCentralPropsType,
     MessageEffectivePropsLevelAndThemeType,
 } from './type';
+import { marginAttributes } from '../../system/attributes';
+import { MaterialIcon } from '../MaterialIcon';
+import { noTextInteraction } from '../../system/mixins';
+import { ObjectLiteralType } from '../../type';
+import { shouldForwardProp } from '../../utils';
 
 const propertyList = {
     onClose: true,

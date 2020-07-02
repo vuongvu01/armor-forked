@@ -24,7 +24,7 @@ describe('<DialogContent />', () => {
     });
 
     it('should render itself without errors', async () => {
-        render(<DialogContent />);
+        const { container, getByTestId } = render(<DialogContent />);
 
         // // ///////////////////////
         // // a short cheat sheet

@@ -3,16 +3,14 @@ import {
     ButtonHTMLAttributes,
     ComponentType,
 } from 'react';
+
+import { MarginAttributesType, WidthAttributesType } from '../../system';
+import { Indexed } from '../../type';
 import {
     NodeStylePropsType,
     StylePropsType,
     StylesFunctionOrStubType,
 } from '../type';
-import {
-    MarginAttributesType,
-    WidthAttributesType,
-} from '../../system/attributes';
-import { Indexed } from '../../type';
 
 export type ButtonTagType = string | ComponentType<any>;
 
