@@ -82,7 +82,7 @@ const Wrapper = ({
     children: (props: TypographyRootPropsType) => ReactElement;
 }) => children({ ...restProps });
 
-export const TypographyClassNameProvider = styled(Wrapper).withConfig({
+export const TypographyStyle = styled(Wrapper).withConfig({
     shouldForwardProp: property => shouldForwardProp(property, propertyList),
 })<TypographyRootPropsType>`
     box-sizing: border-box;

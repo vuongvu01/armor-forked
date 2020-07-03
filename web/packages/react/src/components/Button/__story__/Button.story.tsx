@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     withKnobs,
     text,
@@ -14,14 +14,18 @@ import { ThemeProvider } from 'styled-components';
 import { withStyles as withMaterialStyles } from '@material-ui/core/styles';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { BrowserRouter, Link } from 'react-router-dom';
-import { Button } from '../Button';
-import { ButtonTagType } from '../type';
+
 import { EditIcon } from '../../../icons';
 import { MaterialIcon } from '../../MaterialIcon';
+import { TextInput } from '../../TextInput';
 import { makeTheme } from '../../../styling';
 import { fontSizeIconBig } from '../../../tokens';
 import { ObjectLiteralType } from '../../../type';
 import { GroupHelper } from '../../../helpers/GroupHelper';
+import { Button } from '../Button';
+import { ButtonTagType } from '../type';
+import { armorTheme } from './custom-theme';
+import { defaultTheme } from '../../../styling';
 
 export default {
     title: 'Components/Button',
@@ -51,47 +55,72 @@ const getTypeAttributes = (type: string) => ({
     [type]: true,
 });
 
-export const Types = () => (
-    <>
-        <h2>Buttons</h2>
-        <h3>Sizes</h3>
-        <GroupHelper>
-            <Button primary>
-                <MaterialIcon marginRight={2} icon="delete" />
-                Button text
+export const Types = () => {
+    const [theme, setTheme] = useState(defaultTheme);
+
+    return (
+        <>
+            <Button marginRight={2} onClick={() => setTheme(defaultTheme)}>
+                Default
             </Button>
-            <Button primary>Button text</Button>
-            <Button primary small>
-                <MaterialIcon marginRight={2} icon="delete" />
-                Button text
-            </Button>
-            <Button primary small>
-                Button text
-            </Button>
-        </GroupHelper>
-        <h3>Types</h3>
-        <GroupHelper>
-            <Button primary>Primary</Button>
-            <Button secondary>Secondary</Button>
-            <Button tertiary>Tertiary</Button>
-            <Button danger>Danger</Button>
-        </GroupHelper>
-        <GroupHelper>
-            <Button primary disabled>
-                Primary
-            </Button>
-            <Button secondary disabled>
-                Secondary
-            </Button>
-            <Button tertiary disabled>
-                Tertiary
-            </Button>
-            <Button danger disabled>
-                Danger
-            </Button>
-        </GroupHelper>
-    </>
-);
+            <Button onClick={() => setTheme(armorTheme)}>DPS</Button>
+            <hr />
+            <ThemeProvider theme={theme}>
+                <h3>Sizes</h3>
+                <GroupHelper>
+                    <Button primary>
+                        <MaterialIcon marginRight={2} icon="delete" />
+                        Button text
+                    </Button>
+                    <Button primary>Button text</Button>
+                    <Button primary small>
+                        <MaterialIcon marginRight={2} icon="delete" />
+                        Button text
+                    </Button>
+                    <Button primary small>
+                        Button text
+                    </Button>
+                </GroupHelper>
+                <h3>Next to an input</h3>
+                <GroupHelper>
+                    <Button primary>
+                        <MaterialIcon marginRight={2} icon="delete" />
+                        Button text
+                    </Button>
+                    <TextInput label="Name your price" name="your_price" />
+                </GroupHelper>
+                <h3>Types</h3>
+                <GroupHelper>
+                    <Button primary>Primary</Button>
+                    <Button secondary>Secondary</Button>
+                    <Button tertiary>Tertiary</Button>
+                </GroupHelper>
+                <GroupHelper>
+                    <Button primary danger>
+                        Primary
+                    </Button>
+                    <Button secondary danger>
+                        Secondary
+                    </Button>
+                    <Button tertiary danger>
+                        Tertiary
+                    </Button>
+                </GroupHelper>
+                <GroupHelper>
+                    <Button primary disabled>
+                        Primary
+                    </Button>
+                    <Button secondary disabled>
+                        Secondary
+                    </Button>
+                    <Button tertiary disabled>
+                        Tertiary
+                    </Button>
+                </GroupHelper>
+            </ThemeProvider>
+        </>
+    );
+};
 
 export const Playground = () => (
     <Button

@@ -22,7 +22,7 @@ export type StylePropsType<C extends ClassNamesType, S = {}> = {
 
 export type NodeStylePropsType<P = {}> = {
     className: string;
-    styles: StylesFunctionType<P>;
+    styles: StylesFunctionType<P>; // todo: deprecated
     theme: ThemeType;
 };
 

@@ -1,97 +1,163 @@
-import { fontWeightMedium } from '../../tokens';
+/* eslint-disable @typescript-eslint/camelcase */
+
+import {
+    borderRadius03,
+    colorRed10,
+    colorRed60,
+    componentSpacing01,
+    componentSpacing02,
+    componentSpacing04,
+} from '../../tokens';
 
 export const buttonDefaultTheme = {
     Root: {
         base: {
-            fontSize: '$typography.fontSize',
-            fontWeight: fontWeightMedium,
-            fontFamily: '$typography.fontFamily',
-            lineHeight: '1.6',
-            paddingLeft: 4,
-            paddingRight: 4,
-            paddingTop: 2,
-            paddingBottom: 2,
-            borderRadius: '$figure.borderRadius',
+            fontSize: '$typography.labelMedium.fontSize',
+            fontWeight: '$typography.labelMedium.fontWeight',
+            fontFamily: '$typography.body.fontFamily',
+            letterSpacing: '$typography.labelMedium.letterSpacing',
+            lineHeight: '$typography.labelMedium.lineHeight',
+            borderRadius: borderRadius03,
             backgroundColor: 'transparent',
         },
-        small: {
-            paddingTop: 1,
-            paddingBottom: 1,
-        },
         primary: {
-            color: '$color.primary.contrast',
+            color: '$color.neutral.00',
+            borderColor: '$color.primary.main',
             backgroundColor: '$color.primary.main',
+
             '&:hover': {
-                color: '$color.primary.contrast',
-                backgroundColor: '$color.primary.darker',
+                color: '$color.neutral.00',
+                borderColor: '$color.primary.light',
+                backgroundColor: '$color.primary.light',
             },
             '&:focus': {
-                color: '$color.primary.contrast',
-                backgroundColor: '$color.primary.darker',
+                color: '$color.neutral.00',
+                borderColor: '$color.primary.light',
+                backgroundColor: '$color.primary.light',
             },
             '&:active': {
-                color: '$color.primary.contrast',
+                color: '$color.neutral.00',
+                borderColor: '$color.primary.dark',
                 backgroundColor: '$color.primary.dark',
             },
             '&:disabled': {
                 color: '$color.neutral.04',
+                borderColor: '$color.neutral.03',
                 backgroundColor: '$color.neutral.03',
+            },
+        },
+        primary__danger: {
+            borderColor: colorRed60,
+            backgroundColor: colorRed60,
+
+            '&:hover': {
+                borderColor: colorRed60,
+                backgroundColor: colorRed60,
+            },
+            '&:focus': {
+                borderColor: colorRed60,
+                backgroundColor: colorRed60,
+            },
+            '&:active': {
+                borderColor: colorRed60,
+                backgroundColor: colorRed60,
             },
         },
         secondary: {
             color: '$color.primary.main',
             borderColor: '$color.primary.main',
             backgroundColor: '$color.neutral.00',
+
             '&:hover': {
-                borderColor: '$color.primary.darker',
-                backgroundColor: '$color.primary.lighter',
+                color: '$color.primary.light',
+                borderColor: '$color.primary.light',
             },
             '&:focus': {
-                borderColor: '$color.primary.darker',
-                backgroundColor: '$color.primary.light',
+                color: '$color.primary.light',
+                borderColor: '$color.primary.light',
             },
             '&:active': {
-                borderColor: '$color.primary.darker',
-                backgroundColor: '$color.primary.light',
+                color: '$color.primary.dark',
+                borderColor: '$color.primary.light',
             },
             '&:disabled': {
                 color: '$color.neutral.04',
                 borderColor: '$color.neutral.03',
-                backgroundColor: '$color.neutral.00',
+                backgroundColor: '$color.neutral.03',
+            },
+        },
+        secondary__danger: {
+            color: colorRed60,
+            borderColor: colorRed60,
+
+            '&:hover': {
+                color: colorRed60,
+                borderColor: colorRed60,
+            },
+            '&:focus': {
+                color: colorRed60,
+                borderColor: colorRed60,
+            },
+            '&:active': {
+                color: colorRed60,
+                borderColor: colorRed60,
             },
         },
         tertiary: {
             color: '$color.primary.main',
+            borderColor: '$color.neutral.00',
+            backgroundColor: '$color.neutral.00',
+
             '&:hover': {
-                color: '$color.primary.dark',
-                backgroundColor: '$color.primary.lighter',
+                color: '$color.primary.light',
+                borderColor: '$color.neutral.02',
+                backgroundColor: '$color.neutral.02',
             },
             '&:focus': {
-                color: '$color.primary.darker',
-                backgroundColor: '$color.primary.lighter',
+                color: '$color.primary.light',
+                borderColor: '$color.neutral.02',
+                backgroundColor: '$color.neutral.02',
             },
             '&:active': {},
             '&:disabled': {
                 color: '$color.neutral.04',
-                backgroundColor: '$color.neutral.00',
+                borderColor: '$color.neutral.03',
+                backgroundColor: '$color.neutral.03',
             },
         },
-        danger: {
-            color: '$color.danger.main',
-            borderColor: 'transparent',
+        tertiary__danger: {
+            color: colorRed60,
+            borderColor: '$color.neutral.00',
+            backgroundColor: '$color.neutral.00',
+
             '&:hover': {
-                backgroundColor: '$color.danger.lighter',
+                color: colorRed60,
+                borderColor: colorRed10,
+                backgroundColor: colorRed10,
             },
             '&:focus': {
-                backgroundColor: '$color.danger.lighter',
+                color: colorRed60,
+                borderColor: colorRed10,
+                backgroundColor: colorRed10,
             },
             '&:active': {
-                backgroundColor: '$color.danger.light',
+                color: colorRed60,
+                borderColor: colorRed10,
+                backgroundColor: colorRed10,
             },
-            '&:disabled': {
-                color: '$color.neutral.04',
-                backgroundColor: 'transparent',
-            },
+        },
+    },
+    Content: {
+        base: {
+            borderRadius: borderRadius03,
+            paddingLeft: componentSpacing04,
+            paddingRight: componentSpacing04,
+            paddingTop: componentSpacing02,
+            paddingBottom: componentSpacing02,
+        },
+        small: {
+            paddingTop: componentSpacing01,
+            paddingBottom: componentSpacing01,
         },
     },
 };

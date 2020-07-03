@@ -4,7 +4,7 @@ import { useThemeOverride } from '../../utils/hooks';
 import { useTheme } from '../../styling';
 
 import { getTagName, useTypographyClassNames } from './utils';
-import { TypographyClassNameProvider } from './style';
+import { TypographyStyle } from './style';
 import { TypographyPropsType } from './type';
 import { typographyDefaultTheme } from './theme';
 
@@ -29,7 +29,7 @@ export const Typography: FunctionComponent<TypographyPropsType> = ({
     const TypographyRoot = getTagName(restProps);
 
     return (
-        <TypographyClassNameProvider
+        <TypographyStyle
             {...restProps}
             theme={theme}
             className={classNameComponents.Root}
@@ -37,7 +37,7 @@ export const Typography: FunctionComponent<TypographyPropsType> = ({
             {(forwardedProps: TypographyPropsType) => (
                 <TypographyRoot {...forwardedProps}>{children}</TypographyRoot>
             )}
-        </TypographyClassNameProvider>
+        </TypographyStyle>
     );
 };
 

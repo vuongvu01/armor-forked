@@ -1,7 +1,6 @@
 /** Level 2 tokens */
 
 import {
-    borderRadiusNormal,
     fontFamilyRoboto,
     colorGrey00,
     colorGrey01,
@@ -36,8 +35,18 @@ import {
     lineHeight03,
     lineHeight04,
     lineHeight05,
-    componentSpacing01,
+    borderRadius02,
+    colorGreen60,
+    colorGreen10,
+    colorYellow60,
+    colorYellow10,
+    colorRed70,
+    colorRed60,
+    colorRed50,
+    colorRed10,
 } from '../../tokens';
+
+const SPACING_FACTOR = 4;
 
 export const defaultThemeDeclaration = {
     typography: {
@@ -66,8 +75,10 @@ export const defaultThemeDeclaration = {
             letterSpacing: letterSpacingMedium,
         },
         labelMedium: {
-            lineHeight: lineHeight02,
+            fontSize: fontSize03,
+            fontWeight: fontWeightMedium,
             letterSpacing: letterSpacingLarge,
+            lineHeight: lineHeight02,
         },
         labelSmall: {
             fontSize: fontSize01,
@@ -102,7 +113,20 @@ export const defaultThemeDeclaration = {
             main: colorTurquoise70,
             light: colorTurquoise60,
         },
-        danger: {},
+        success: {
+            main: colorGreen60,
+            light: colorGreen10,
+        },
+        warning: {
+            main: colorYellow60,
+            light: colorYellow10,
+        },
+        error: {
+            dark: colorRed70,
+            main: colorRed60,
+            light: colorRed50,
+            lighter: colorRed10,
+        },
         neutral: {
             '00': colorGrey00,
             '01': colorGrey01,
@@ -114,9 +138,9 @@ export const defaultThemeDeclaration = {
         },
     },
     figure: {
-        borderRadius: borderRadiusNormal,
+        borderRadius: borderRadius02,
     },
-    span: componentSpacing01,
+    span: SPACING_FACTOR,
     componentOverrides: {},
     components: {},
 };

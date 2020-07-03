@@ -7,7 +7,7 @@ import {
     useMessageActionClassNames,
     useMessageActionStylesOverride,
 } from './utils';
-import { MessageActionRoot } from './style';
+import { MessageActionStyle } from './style';
 import { MessageActionPropsType } from './type';
 import { messageActionDefaultTheme } from './theme';
 
@@ -17,7 +17,7 @@ export const MessageAction: FunctionComponent<MessageActionPropsType> = ({
     className,
     classNames,
     styles,
-    tag: Tag = 'div',
+    tag: MessageActionRoot = 'div',
     useMessageColor,
     children,
     ...restProps
@@ -34,18 +34,18 @@ export const MessageAction: FunctionComponent<MessageActionPropsType> = ({
     const stylesOverride = useMessageActionStylesOverride(styles);
 
     return (
-        <MessageActionRoot
+        <MessageActionStyle
             theme={theme}
             {...restProps}
             className={classNameComponents.Root}
             styles={stylesOverride.Root}
         >
             {(classNameFinal: string) => (
-                <Tag {...restProps} className={classNameFinal}>
+                <MessageActionRoot {...restProps} className={classNameFinal}>
                     {children}
-                </Tag>
+                </MessageActionRoot>
             )}
-        </MessageActionRoot>
+        </MessageActionStyle>
     );
 };
 

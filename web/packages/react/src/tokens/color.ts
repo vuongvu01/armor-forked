@@ -17,7 +17,9 @@ export const colorTurquoise80 = '#00ad96';
 export const colorTurquoise70 = '#00bca9';
 export const colorTurquoise60 = '#6cd0c2';
 
+export const colorRed70 = '#c82a32';
 export const colorRed60 = '#d73d45';
+export const colorRed50 = '#e44a52';
 export const colorRed10 = '#fdd5d7';
 
 export const colorYellow60 = '#f4bd00';

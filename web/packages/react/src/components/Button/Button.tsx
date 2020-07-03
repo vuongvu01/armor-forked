@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { useThemeOverride } from '../../utils/hooks';
 import { useTheme } from '../../styling';
 
-import { useButtonClassName, useButtonStylesOverride } from './utils';
-import { ButtonClassNameProvider } from './style';
+import { useButtonClassName } from './utils';
+import { ButtonStyle, ButtonContent } from './style';
 import { ButtonPropsType } from './type';
 import { buttonDefaultTheme } from './theme';
 
@@ -15,7 +15,6 @@ export const Button: FunctionComponent<ButtonPropsType> = forwardRef(
         {
             className,
             classNames,
-            styles,
             tag: ButtonRoot = 'button',
             small,
             wide,
@@ -25,6 +24,8 @@ export const Button: FunctionComponent<ButtonPropsType> = forwardRef(
             tertiary,
             danger,
             children,
+            before,
+            after,
             ...restProps
         },
         ref,
@@ -44,10 +45,9 @@ export const Button: FunctionComponent<ButtonPropsType> = forwardRef(
             tertiary,
             danger,
         );
-        const stylesOverride = useButtonStylesOverride(styles);
 
         return (
-            <ButtonClassNameProvider
+            <ButtonStyle
                 disabled={disabled}
                 small={small}
                 wide={wide}
@@ -58,14 +58,21 @@ export const Button: FunctionComponent<ButtonPropsType> = forwardRef(
                 theme={theme}
                 {...restProps}
                 className={classNameRoot}
-                styles={stylesOverride.Root}
             >
                 {(forwardedProps: ButtonPropsType) => (
                     <ButtonRoot {...forwardedProps} ref={ref}>
-                        {children}
+                        {before}
+                        <ButtonContent
+                            theme={theme}
+                            className={classNameRoot}
+                            small={small}
+                        >
+                            {children}
+                        </ButtonContent>
+                        {after}
                     </ButtonRoot>
                 )}
-            </ButtonClassNameProvider>
+            </ButtonStyle>
         );
     },
 );
@@ -108,4 +115,14 @@ Button.propTypes = {
     rel: PropTypes.string,
     /** HTML Button disabled */
     disabled: PropTypes.bool,
+    /** Controls displayed before the text */
+    before: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.element),
+        PropTypes.element,
+    ]),
+    /** Controls displayed after the text */
+    after: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.element),
+        PropTypes.element,
+    ]),
 };

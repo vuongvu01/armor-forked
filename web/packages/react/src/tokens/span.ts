@@ -1,12 +1,12 @@
-export const componentSpacing01 = 4;
-export const componentSpacing02 = 8;
-export const componentSpacing03 = 12;
-export const componentSpacing04 = 16;
-export const componentSpacing05 = 20;
-export const componentSpacing06 = 24;
+export const componentSpacing01 = 1; // * 4 = 4px
+export const componentSpacing02 = 2; // * 4 = 8px
+export const componentSpacing03 = 3; // * 4 = 12px
+export const componentSpacing04 = 4; // * 4 = 16px
+export const componentSpacing05 = 5; // * 4 = 20px
+export const componentSpacing06 = 6; // * 4 = 24px
 
-export const layoutSpacing01 = 8;
-export const layoutSpacing02 = 16;
-export const layoutSpacing03 = 24;
-export const layoutSpacing04 = 32;
-export const layoutSpacing05 = 40;
+export const layoutSpacing01 = 2; // * 4 = 8px
+export const layoutSpacing02 = 3; // * 4 = 12px
+export const layoutSpacing03 = 6; // * 4 = 24px
+export const layoutSpacing04 = 8; // * 4 = 32px
+export const layoutSpacing05 = 10; // * 4 = 40px
