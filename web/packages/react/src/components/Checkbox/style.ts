@@ -26,11 +26,20 @@ const visualStyle = ({
     }
 
     if (checked) {
-        return css`${Checkbox.Root.base}${
-            disabled
-                ? Checkbox.Root.checked.disabled
-                : Checkbox.Root.checked.base
-        }`;
+        if (disabled) {
+            return css`${Checkbox.Root.base}${Checkbox.Root.checked.disabled}`;
+        }
+
+        return css`
+            background-repeat: no-repeat;
+            box-sizing: border-box;
+            background-positionx: left;
+            background-positiony: top;
+            border-width: 1px;
+            border-style: solid;
+            ${Checkbox.Root.base}
+            ${Checkbox.Root.checked.base}
+        `;
     }
 
     return css`${Checkbox.Root.base}${Checkbox.Root.primary}`;
@@ -63,17 +72,25 @@ export const CheckboxRoot = styled.div.withConfig({
 export const CheckboxInput = styled.input<CheckboxInputPropsType>`
     opacity: 0;
     margin: 0;
+    height: 0;
+    width: 0;
     pointer-events: none;
 `;
 
 export const CheckboxCheckmark = styled.span<CheckboxCheckmarkPropsType>`
+    ${visualStyle}
     display: inline-block;
     position: relative;
     width: 16px;
     height: 16px;
     border-radius: 2px;
     vertical-align: middle;
-    box-sizing: border-box;
+    box-sizing: content-box;
+    background-repeat: no-repeat;
+    background-positionx: 'left';
+    background-positiony: 'top';
+    border-width: 1px;
+    border-style: solid;
 
     &::after {
         content: '';
@@ -81,7 +98,5 @@ export const CheckboxCheckmark = styled.span<CheckboxCheckmarkPropsType>`
         border-style: solid;
         ${checkmarkStyle}
     }
-
-    ${visualStyle}
     ${mouseCursor}
 `;
