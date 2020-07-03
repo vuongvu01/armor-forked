@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
-import { ButtonStylesPropsType } from './type';
+
 import { returnEmptyString, makeBEM, makeClassName } from '../../utils';
+import { ButtonStylesPropsType } from './type';
 import { ClassNamesType } from '../type';
 
 export const useButtonStylesOverride = (

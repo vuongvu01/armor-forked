@@ -1,17 +1,18 @@
 import { HTMLAttributes } from 'react';
-import {
-    NodeStylePropsType,
-    StylePropsType,
-    StylesFunctionOrStubType,
-} from '../type';
+
 import {
     SizeAttributesType,
     PaddingAttributesType,
     MarginAttributesType,
     TextAlignmentAttributesType,
-} from '../../system/attributes';
+    DisplayAttributesType,
+} from '../../system';
 import { Indexed } from '../../type';
-import { DisplayAttributesType } from '../../system/attributes/display';
+import {
+    NodeStylePropsType,
+    StylePropsType,
+    StylesFunctionOrStubType,
+} from '../type';
 
 type BoxEffectivePropsType = Indexed<{
     // add other custom properties here

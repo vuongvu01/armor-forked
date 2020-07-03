@@ -1,9 +1,10 @@
 import { useMemo } from 'react';
+
 import { ClassNamesType } from '../components/type';
+import { transformTheme } from '../styling/make/transform-theme';
 import { makeClassName, merge } from '.';
 import { ThemeType } from '../styling';
 import { ObjectLiteralType } from '../type';
-import { transformTheme } from '../styling/make/transform-theme';
 
 /**
  * @internal

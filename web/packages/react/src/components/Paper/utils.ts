@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
-import { PaperStylesPropsType } from './type';
+
 import { returnEmptyString, makeBEM, makeClassName } from '../../utils';
+import { PaperStylesPropsType } from './type';
 import { ClassNamesType } from '../type';
 
 export const useStylesOverridePaper = (

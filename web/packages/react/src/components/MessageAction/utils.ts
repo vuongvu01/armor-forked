@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
-import { MessageActionStylesPropsType } from './type';
+
 import { returnEmptyString, makeBEM, makeClassName } from '../../utils';
+import { MessageActionStylesPropsType } from './type';
 import { ClassNamesType } from '../type';
 
 export const useMessageActionStylesOverride = (

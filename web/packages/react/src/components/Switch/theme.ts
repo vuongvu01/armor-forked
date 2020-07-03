@@ -9,10 +9,20 @@ const sizes = {
     },
 };
 
+const focusedState = {
+    backgroundColor: '$color.neutral.05',
+};
+
+const focusedStateChecked = {
+    backgroundColor: '$color.primary.light',
+};
+
 export const toggleDefaultTheme = {
     Root: {
         base: {
             backgroundColor: '$color.neutral.04',
+            '&:hover': focusedState,
+            '&:focus': focusedState,
         },
         disabled: {
             backgroundColor: '$color.neutral.03',
@@ -21,15 +31,17 @@ export const toggleDefaultTheme = {
         checked: {
             base: {
                 backgroundColor: '$color.primary.main',
+                '&:hover': focusedStateChecked,
+                '&:focus': focusedStateChecked,
             },
             disabled: {
-                backgroundColor: '#92BAF6', // TODO (nmelnikov 2020-06-19): hardcoded for now, until we settle on the colors
+                backgroundColor: '$color.primary.lighter',
                 pointerEvents: 'none',
             },
         },
     },
     Toggle: {
-        base: { backgroundColor: '$color.primary.contrast' },
+        base: { backgroundColor: '$color.neutral.00' },
         disabled: { backgroundColor: '$color.neutral.01' },
     },
     Label: {

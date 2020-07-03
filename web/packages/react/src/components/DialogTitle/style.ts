@@ -1,11 +1,12 @@
 import styled from 'styled-components';
+
+import { shouldForwardProp } from '../../utils';
+import { ObjectLiteralType } from '../../type';
 import {
     DialogTitleRootPropsType,
     DialogTitleTextPropsType,
     DialogTitleDescriptionPropsType,
 } from './type';
-import { shouldForwardProp } from '../../utils';
-import { ObjectLiteralType } from '../../type';
 
 const propertyList = {
     description: true,

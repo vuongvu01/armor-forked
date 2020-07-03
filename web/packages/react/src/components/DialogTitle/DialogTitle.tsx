@@ -1,7 +1,8 @@
 import React, { FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
-import { useTheme } from '../../styling';
 
+import { useTheme } from '../../styling';
+import { useThemeOverride } from '../../utils/hooks';
 import {
     useDialogTitleClassNames,
     useDialogTitleStylesOverride,
@@ -12,7 +13,6 @@ import {
     DialogTitleDescription,
 } from './style';
 import { DialogTitlePropsType } from './type';
-import { useThemeOverride } from '../../utils/hooks';
 import { dialogTitleDefaultTheme } from './theme';
 
 const CLASS_PREFIX = 'DialogTitle';
