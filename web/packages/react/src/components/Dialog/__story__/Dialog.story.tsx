@@ -4,6 +4,7 @@ import {
     withKnobs,
     text,
     boolean,
+    number,
     select,
     // eslint-disable-next-line import/no-unresolved
 } from '@storybook/addon-knobs';

@@ -20,7 +20,7 @@ export const States = () => (
         </GroupHelper>
         <h4>Checked</h4>
         <GroupHelper gap={2}>
-            <Checkbox checked onChange={() => {}} />
+            <Checkbox checked onChange={() => {}} />a
         </GroupHelper>
         <h4>Default disabled</h4>
         <GroupHelper gap={2}>

@@ -1,7 +1,8 @@
+import {useState} from 'react';
 import { BrowserRouter, Link } from 'react-router-dom';
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
 
-import { Checkbox } from '../../../src/components';
+import { Checkbox, Button } from '../../../src/components';
 
 <Meta title="Components/Checkbox" component={Checkbox} />
 
@@ -25,14 +26,25 @@ import { Checkbox } from '@deliveryhero/armor';
     <Story name="Checkmark styles">
        <>
             <h4>Tick</h4>
-            <Checkbox checked checkedIcon="tick" />
+            <Checkbox defaultChecked
+                       checkedIcon="tick" />
             <h4>Dash</h4>
-            <Checkbox checked checkedIcon="dash" />
+            <Checkbox defaultChecked checkedIcon="dash" />
         </>
     </Story>
 </Preview>
 
 ## States
+
+export const MyDynamicCheckbox = () => {
+  const [isChecked, setChecked] = useState(true);
+  return (
+    <>
+        <Button onClick={() => setChecked(!isChecked)}> Toggle checkbox state </Button>
+        <Checkbox checked={isChecked} onChange={() => {}}  />
+    </>
+  )
+}
 
 <Preview>
     <Story name="States">
@@ -40,7 +52,9 @@ import { Checkbox } from '@deliveryhero/armor';
             <h4>Unchecked</h4>
             <Checkbox />
             <h4>Checked</h4>
-            <Checkbox checked />
+            <Checkbox defaultChecked />
+            <h4>External control</h4>
+            <MyDynamicCheckbox />
             <h4>Unchecked disabled</h4>
             <Checkbox disabled />
             <h4>Checked disabled</h4>
