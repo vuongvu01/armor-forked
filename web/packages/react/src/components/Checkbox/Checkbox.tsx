@@ -1,4 +1,5 @@
-import React, { FunctionComponent, forwardRef, useState } from 'react';
+import React, { FunctionComponent, forwardRef } from 'react';
+import uniqueId from 'lodash.uniqueid';
 import PropTypes from 'prop-types';
 
 import { useThemeOverride } from '../../utils/hooks';
@@ -19,12 +20,14 @@ export const Checkbox: FunctionComponent<CheckboxPropsType> = forwardRef(
             checked,
             onChange,
             checkedIcon,
+            label = 'Label',
+            id: propsId,
             ...restProps
         },
         ref,
     ) {
-        const [isChecked, setChecked] = useState(checked);
         const theme = useTheme();
+        const id = propsId || uniqueId('label-id-');
 
         useThemeOverride(CLASS_PREFIX, theme, buttonDefaultTheme);
 
@@ -33,49 +36,44 @@ export const Checkbox: FunctionComponent<CheckboxPropsType> = forwardRef(
             className,
             classNames,
             disabled,
-            isChecked,
+            checked,
         );
 
-        const handleOnClick = (event: React.MouseEvent<HTMLInputElement>) => {
-            setChecked(!isChecked);
-
-            // TODO (nmelnikov 2020-06-26): hook onChange into <input> https://jira.deliveryhero.com/browse/LD-120
-            if (onChange) {
-                onChange(event);
-            }
-        };
+        const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+            onChange && onChange(event);
 
         return (
             <CheckboxRoot
+                className={classOverride.Root}
                 disabled={disabled}
                 theme={theme}
-                className={classOverride.Root}
             >
-                <span onClick={disabled ? () => {} : handleOnClick}>
-                    <CheckboxInput
-                        type="checkbox"
-                        checked={isChecked}
-                        checkedIcon={checkedIcon}
-                        theme={theme}
-                        ref={ref}
-                        className={classOverride.Input}
-                        {...restProps}
-                    />
-                    <CheckboxCheckmark
-                        disabled={disabled}
-                        checked={isChecked}
-                        theme={theme}
-                        className={classOverride.Checkmark}
-                        checkedIcon={checkedIcon}
-                    />
-                </span>
+                <CheckboxInput
+                    className={classOverride.Input}
+                    checked={checked}
+                    checkedIcon={checkedIcon}
+                    disabled={disabled}
+                    id={id}
+                    onChange={handleOnChange}
+                    ref={ref}
+                    theme={theme}
+                    type="checkbox"
+                    {...restProps}
+                />
+                <CheckboxCheckmark
+                    checked={checked}
+                    checkedIcon={checkedIcon}
+                    className={classOverride.Checkmark}
+                    disabled={disabled}
+                    for={id}
+                    theme={theme}
+                />
             </CheckboxRoot>
         );
     },
 );
 
 Checkbox.defaultProps = {
-    checked: false,
     disabled: false,
     checkedIcon: 'tick',
 };
@@ -85,6 +83,7 @@ Checkbox.propTypes = {
     checkedIcon: PropTypes.oneOf(['tick', 'dash']),
     disabled: PropTypes.bool,
     id: PropTypes.string,
+    label: PropTypes.string,
     onChange: PropTypes.func,
     ref: PropTypes.func,
 };

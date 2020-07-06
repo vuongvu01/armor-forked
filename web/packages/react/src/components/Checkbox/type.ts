@@ -30,15 +30,16 @@ export type CheckboxRootPropsType = CheckboxEffectivePropsType &
 
 export type CheckboxInputPropsType = Pick<
     CheckboxEffectivePropsType,
+    | 'autoFocus'
     | 'checked'
+    | 'checkedIcon'
     | 'defaultChecked'
+    | 'defaultValue'
     | 'disabled'
+    | 'form'
     | 'name'
     | 'ref'
-    | 'checkedIcon'
-    | 'autoFocus'
-    | 'defaultValue'
-    | 'form'
+    | 'theme'
 >;
 
 export type CheckboxCheckmarkPropsType = CheckboxEffectivePropsType &
