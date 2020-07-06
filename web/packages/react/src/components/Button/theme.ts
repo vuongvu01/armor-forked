@@ -1,9 +1,6 @@
 /* eslint-disable @typescript-eslint/camelcase */
 
 import {
-    borderRadius03,
-    colorRed10,
-    colorRed60,
     componentSpacing01,
     componentSpacing02,
     componentSpacing04,
@@ -12,12 +9,12 @@ import {
 export const buttonDefaultTheme = {
     Root: {
         base: {
-            fontSize: '$typography.labelMedium.fontSize',
-            fontWeight: '$typography.labelMedium.fontWeight',
+            fontWeight: '$typography.body.fontWeight',
+            letterSpacing: '$typography.body.letterSpacing',
+            fontSize: '$typography.body.fontSize',
             fontFamily: '$typography.body.fontFamily',
-            letterSpacing: '$typography.labelMedium.letterSpacing',
-            lineHeight: '$typography.labelMedium.lineHeight',
-            borderRadius: borderRadius03,
+            lineHeight: '$typography.sectionTitle.lineHeight',
+            borderRadius: '$figure.borderRadius.soft',
             backgroundColor: 'transparent',
         },
         primary: {
@@ -47,20 +44,20 @@ export const buttonDefaultTheme = {
             },
         },
         primary__danger: {
-            borderColor: colorRed60,
-            backgroundColor: colorRed60,
+            borderColor: '$color.error.main',
+            backgroundColor: '$color.error.main',
 
             '&:hover': {
-                borderColor: colorRed60,
-                backgroundColor: colorRed60,
+                borderColor: '$color.error.main',
+                backgroundColor: '$color.error.main',
             },
             '&:focus': {
-                borderColor: colorRed60,
-                backgroundColor: colorRed60,
+                borderColor: '$color.error.main',
+                backgroundColor: '$color.error.main',
             },
             '&:active': {
-                borderColor: colorRed60,
-                backgroundColor: colorRed60,
+                borderColor: '$color.error.main',
+                backgroundColor: '$color.error.main',
             },
         },
         secondary: {
@@ -87,20 +84,20 @@ export const buttonDefaultTheme = {
             },
         },
         secondary__danger: {
-            color: colorRed60,
-            borderColor: colorRed60,
+            color: '$color.error.main',
+            borderColor: '$color.error.main',
 
             '&:hover': {
-                color: colorRed60,
-                borderColor: colorRed60,
+                color: '$color.error.main',
+                borderColor: '$color.error.main',
             },
             '&:focus': {
-                color: colorRed60,
-                borderColor: colorRed60,
+                color: '$color.error.main',
+                borderColor: '$color.error.main',
             },
             '&:active': {
-                color: colorRed60,
-                borderColor: colorRed60,
+                color: '$color.error.main',
+                borderColor: '$color.error.main',
             },
         },
         tertiary: {
@@ -126,30 +123,30 @@ export const buttonDefaultTheme = {
             },
         },
         tertiary__danger: {
-            color: colorRed60,
+            color: '$color.error.main',
             borderColor: '$color.neutral.00',
             backgroundColor: '$color.neutral.00',
 
             '&:hover': {
-                color: colorRed60,
-                borderColor: colorRed10,
-                backgroundColor: colorRed10,
+                color: '$color.error.main',
+                borderColor: '$color.error.lighter',
+                backgroundColor: '$color.error.lighter',
             },
             '&:focus': {
-                color: colorRed60,
-                borderColor: colorRed10,
-                backgroundColor: colorRed10,
+                color: '$color.error.main',
+                borderColor: '$color.error.lighter',
+                backgroundColor: '$color.error.lighter',
             },
             '&:active': {
-                color: colorRed60,
-                borderColor: colorRed10,
-                backgroundColor: colorRed10,
+                color: '$color.error.main',
+                borderColor: '$color.error.lighter',
+                backgroundColor: '$color.error.lighter',
             },
         },
     },
     Content: {
         base: {
-            borderRadius: borderRadius03,
+            borderRadius: '$figure.borderRadius.soft',
             paddingLeft: componentSpacing04,
             paddingRight: componentSpacing04,
             paddingTop: componentSpacing02,

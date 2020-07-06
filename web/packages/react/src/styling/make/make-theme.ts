@@ -26,6 +26,7 @@ export const makeTheme = (
         figure: theme.figure,
         typography: theme.typography,
         color: theme.color,
+        elevation: theme.elevation,
     });
 
     return (immutable

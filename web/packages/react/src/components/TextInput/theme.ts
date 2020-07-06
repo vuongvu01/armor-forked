@@ -1,56 +1,47 @@
 /* eslint-disable @typescript-eslint/camelcase */
-
-import {
-    fontSizeRegular,
-    fontSizeSmall,
-    fontWeightMedium,
-    fontWeightNormal,
-    white,
-} from '../../tokens';
-
 export const TextInputDefaultTheme = {
     Root: {
         base: {
-            fontFamily: '$typography.fontFamily',
-            fontWeight: fontWeightNormal,
-            letterSpacing: '0.2px',
-            lineHeight: '1.6',
-            borderColor: '#c2c2c2',
-            borderRadius: '$figure.borderRadius',
-            backgroundColor: white,
+            fontFamily: '$typography.sectionTitle.fontFamily',
+            fontWeight: '$typography.sectionTitle.fontWeight',
+            letterSpacing: '$typography.sectionTitle.letterSpacing',
+            lineHeight: '$typography.sectionTitle.lineHeight',
+            borderColor: '$color.neutral.04',
+            borderRadius: '$figure.borderRadius.soft',
+            backgroundColor: '$color.neutral.00',
         },
         outlined: {
-            borderColor: '#3c7fe3',
+            borderColor: '$color.primary.main',
         },
         error: {
-            borderColor: '#d73d45',
+            borderColor: '$color.error.main',
         },
         disabled: {
-            backgroundColor: '#f7f7f7',
-            borderColor: '#c2c2c2',
+            backgroundColor: '$color.neutral.02',
+            borderColor: '$color.neutral.04',
         },
     },
     Input: {
         base: {
-            fontSize: fontSizeRegular,
-            color: '#050505',
+            fontSize: '$typography.paragraphMedium.fontSize',
+            color: '$color.neutral.06',
             paddingTop: 2,
             paddingBottom: 2,
             paddingLeft: 4,
             paddingRight: 4,
-            backgroundColor: white,
-            borderRadius: '$figure.borderRadius',
+            backgroundColor: '$color.neutral.00',
+            borderRadius: '$figure.borderRadius.soft',
 
             '&::placeholder': {
-                color: '#717171',
+                color: '$color.neutral.05',
             },
             '&:disabled': {
-                color: '#717171',
-                borderColor: '#dcdcdc',
-                backgroundColor: '#f7f7f7',
+                color: '$color.neutral.05',
+                borderColor: '$color.neutral.03',
+                backgroundColor: '$color.neutral.02',
 
                 '&::placeholder': {
-                    color: '#a7a7a7',
+                    color: '$color.neutral.04',
                 },
             },
         },
@@ -61,40 +52,40 @@ export const TextInputDefaultTheme = {
     },
     Label: {
         base: {
-            color: '#717171',
-            fontSize: fontSizeSmall,
-            fontWeight: fontWeightMedium,
+            color: '$color.neutral.05',
+            fontSize: '$typography.labelSmall.fontSize',
+            fontWeight: '$typography.body.fontWeight',
             marginLeft: 3,
             marginRight: 3,
             lineHeight: '1.6',
             top: '-10px',
         },
         inside: {
-            fontSize: fontSizeRegular,
-            fontWeight: fontWeightNormal,
-            top: 2,
+            fontSize: '$typography.paragraphMedium.fontSize',
+            fontWeight: '$typography.paragraphMedium.fontWeight',
+            top: 3,
         },
         inside__large: {
             top: 3,
         },
         outlined: {
-            color: '#050505',
+            color: '$color.neutral.06',
         },
         disabled: {
-            color: '#a7a7a7',
+            color: '$color.neutral.04',
         },
         error: {
-            color: '#d73d45',
+            color: '$color.error.main',
         },
     },
     LabelBackground: {
         base: {
-            backgroundColor: white,
+            backgroundColor: '$color.neutral.00',
             paddingLeft: 1,
             paddingRight: 1,
         },
         disabled: {
-            backgroundColor: '#f7f7f7',
+            backgroundColor: '$color.neutral.02',
         },
     },
 };

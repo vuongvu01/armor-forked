@@ -8,7 +8,13 @@ export type SpanFunctionType = (value: ScalarType) => ScalarType;
 export type SpanFunctionOrConstType = SpanFunctionType | number;
 
 type FigureType = {
-    borderRadius?: string;
+    borderRadius: {
+        sharp?: string;
+        medium?: string;
+        soft?: string;
+        round?: string;
+        dull?: string;
+    };
 };
 
 export type BreakpointValuesType = ObjectLiteralType<number>;
@@ -43,6 +49,7 @@ export type ThemeType = Indexed<{
     color: ObjectLiteralType;
     components: ObjectLiteralType;
     componentOverrides: ObjectLiteralType;
+    shadow: ObjectLiteralType;
     referenceIndex: ObjectLiteralType;
     typography: TypographyType;
     span: SpanFunctionType;

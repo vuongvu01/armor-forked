@@ -27,12 +27,3 @@ export const colorYellow10 = '#ffecb3';
 
 export const colorGreen60 = '#93d357';
 export const colorGreen10 = '#d8f9ba';
-
-// deprecated
-
-export const black = '#000';
-export const white = '#fff';
-
-export const grey050 = '#e5e5e5';
-export const grey100 = '#cdcdcd';
-export const grey200 = '#828282';
