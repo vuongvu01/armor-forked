@@ -1,5 +1,6 @@
 import React, { ChangeEvent, forwardRef, FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
+import uniqueId from 'lodash.uniqueid';
 
 import { useThemeOverride } from '../../utils/hooks';
 import { useTheme } from '../../styling';
@@ -12,7 +13,6 @@ import {
 } from './style';
 import { SwitchPropsType } from './type';
 import { toggleDefaultTheme } from './theme';
-import uniqueId from 'lodash.uniqueid';
 
 const CLASS_PREFIX = 'Switch';
 

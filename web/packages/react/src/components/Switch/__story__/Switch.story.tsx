@@ -22,33 +22,15 @@ export const Types = () => {
             <h2>Possible States</h2>
             <GroupHelper gap={gap}>
                 <p>Enabled / OFF</p>
-                <Switch
-                    onChange={event => {
-                        console.log('SWITCHED', {
-                            event: event.target.checked,
-                        });
-                    }}
-                />
+                <Switch onChange={() => {}} />
             </GroupHelper>
             <GroupHelper gap={gap}>
                 <p>Enabled / ON by default</p>
-                <Switch
-                    defaultChecked
-                    onChange={event => {
-                        console.log('SWITCHED', {
-                            event: event.target.checked,
-                        });
-                    }}
-                />
+                <Switch defaultChecked onChange={() => {}} />
             </GroupHelper>
             <GroupHelper gap={gap}>
                 <p>External control</p>
-                <Button
-                    onClick={() => {
-                        console.log({ isChecked, '!isChecked': !isChecked });
-                        return setChecked(!isChecked);
-                    }}
-                >
+                <Button onClick={() => setChecked(!isChecked)}>
                     Toggle switch
                 </Button>
                 <Switch checked={isChecked} />

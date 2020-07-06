@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import { shouldForwardProp } from '../../utils';
 import { mouseCursor } from '../../styling';
@@ -16,27 +16,6 @@ const sizeBase = ({
         componentOverrides: { Switch },
     },
 }: SwitchLabelPropsType) => Switch.Label.base;
-
-const visualStyle = ({
-    theme: {
-        componentOverrides: { Switch },
-    },
-    disabled,
-    checked,
-    defaultChecked,
-}: SwitchLabelPropsType) => {
-    if (disabled) {
-        return checked || defaultChecked
-            ? Switch.Root.checked.disabled
-            : Switch.Root.disabled;
-    }
-
-    if (checked || defaultChecked) {
-        return Switch.Root.checked.base;
-    }
-
-    return Switch.Root.base;
-};
 
 export const SwitchRoot = styled.p.withConfig({
     shouldForwardProp: property => shouldForwardProp(property, propertyList),
