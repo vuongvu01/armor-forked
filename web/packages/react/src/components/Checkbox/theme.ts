@@ -1,7 +1,7 @@
 const color = {
     main: '$color.primary.main',
-    dark: '$color.primary.dark',
-    contrast: '$color.primary.contrast',
+    light: '$color.primary.light',
+    contrast: '$color.neutral.00',
     neutral01: '$color.neutral.01',
     neutral03: '$color.neutral.03',
     neutral05: '$color.neutral.05',
@@ -15,8 +15,8 @@ export const buttonDefaultTheme = {
                 background: color.main,
             },
             hover: {
-                border: color.dark,
-                background: color.dark,
+                border: color.light,
+                background: color.light,
             },
             disabled: {
                 background: color.neutral01,
