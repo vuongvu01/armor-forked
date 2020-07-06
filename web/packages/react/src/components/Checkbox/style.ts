@@ -14,36 +14,44 @@ const propertyList = {
     // add other custom properties here
 } as ObjectLiteralType;
 
-const visualStyle = ({
-    theme: {
-        componentOverrides: { Checkbox },
-    },
-    disabled,
-    checked,
-}: CheckboxRootPropsType) => {
-    if (disabled && !checked) {
-        return css`${Checkbox.Root.base}${Checkbox.Root.disabled}`;
-    }
-
-    if (checked) {
-        return css`${Checkbox.Root.base}${
-            disabled
-                ? Checkbox.Root.checked.disabled
-                : Checkbox.Root.checked.base
-        }`;
-    }
-
-    return css`${Checkbox.Root.base}${Checkbox.Root.primary}`;
-};
-
 const checkmarkRotation = ({ checkedIcon }: CheckboxInputPropsType) => css`
     transform: ${checkedIcon === 'tick' ? ' rotate(45deg)' : ''};
 `;
 
-const checkmarkStyle = ({ checkedIcon, disabled }: CheckboxRootPropsType) => {
-    const checkmarkColor = `
-        color: ${disabled ? '#707070' : 'white'};
-    `;
+const checkedBefore = ({
+    theme: {
+        componentOverrides: { Checkbox },
+    },
+}: CheckboxInputPropsType) => Checkbox.Root.checked.base;
+
+const checkedHover = ({
+    theme: {
+        componentOverrides: { Checkbox },
+    },
+}: CheckboxInputPropsType) => Checkbox.Root.checked.hover;
+
+const disabledBefore = ({
+    theme: {
+        componentOverrides: { Checkbox },
+    },
+}: CheckboxInputPropsType) => Checkbox.Root.checked.disabled;
+
+const checkmarkBox = ({
+    theme: {
+        componentOverrides: { Checkbox },
+    },
+}: CheckboxCheckmarkPropsType) => Checkbox.Root.checkmark.box;
+
+const checkmarkStyle = ({
+    theme: {
+        componentOverrides: { Checkbox },
+    },
+    checkedIcon,
+    disabled,
+}: CheckboxRootPropsType) => {
+    const checkmarkColor = disabled
+        ? Checkbox.Root.checkmark.disabled
+        : Checkbox.Root.checkmark.base;
 
     const tickStyle =
         checkedIcon === 'tick'
@@ -87,11 +95,8 @@ export const CheckboxCheckmark = styled.label<CheckboxCheckmarkPropsType>`
         width: 16px;
         height: 16px;
         border-radius: 4px;
-        background: white;
-        border: #c2c2c2;
-        border-width: 1px;
         box-sizing: border-box;
-        border-style: solid;
+        ${checkmarkBox}
     }
 
     &::after {
@@ -125,8 +130,7 @@ export const CheckboxInput = styled.input<CheckboxInputPropsType>`
         + ${CheckboxCheckmark}:hover:before,
         &:not(:checked)
         + ${CheckboxCheckmark}:active:before {
-        background: #0b53bf;
-        border: #0b53bf;
+        ${checkedHover}
     }
 
     &:checked + ${CheckboxCheckmark}:after {
@@ -137,18 +141,16 @@ export const CheckboxInput = styled.input<CheckboxInputPropsType>`
 
     &:checked + ${CheckboxCheckmark}:before {
         opacity: 1;
-        background: #0042a5;
-        border: #0042a5;
         box-sizing: border-box;
+        ${checkedBefore}
     }
 
     &:disabled + ${CheckboxCheckmark}:before {
         box-shadow: none;
-        border-color: #e1e1e1;
         border-width: 1px;
         border-style: solid;
-        background: #f5f5f5;
         box-sizing: border-box;
+        ${disabledBefore}
     }
 
     &:not(:checked) + ${CheckboxCheckmark}:after {

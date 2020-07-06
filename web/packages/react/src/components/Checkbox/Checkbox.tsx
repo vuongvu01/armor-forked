@@ -56,6 +56,7 @@ export const Checkbox: FunctionComponent<CheckboxPropsType> = forwardRef(
                     id={id}
                     onChange={handleOnChange}
                     ref={ref}
+                    theme={theme}
                     type="checkbox"
                     {...restProps}
                 />
