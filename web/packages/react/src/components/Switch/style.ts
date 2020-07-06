@@ -1,15 +1,9 @@
 import styled, { css } from 'styled-components';
 
-import { marginAttributes } from '../../system/attributes';
 import { shouldForwardProp } from '../../utils';
 import { mouseCursor } from '../../styling';
 import { ObjectLiteralType } from '../../type';
-import {
-    SwitchCheckboxInputPropsType,
-    SwitchLabelPropsType,
-    SwitchRootPropsType,
-    SwitchSliderPropsType,
-} from './type';
+import { SwitchCheckboxInputPropsType, SwitchLabelPropsType } from './type';
 
 const propertyList = {
     // add custom properties here
@@ -21,7 +15,7 @@ const sizeBase = ({
     theme: {
         componentOverrides: { Switch },
     },
-}: SwitchRootPropsType) => Switch.Label.base;
+}: SwitchLabelPropsType) => Switch.Label.base;
 
 const visualStyle = ({
     theme: {
@@ -30,7 +24,7 @@ const visualStyle = ({
     disabled,
     checked,
     defaultChecked,
-}: SwitchRootPropsType) => {
+}: SwitchLabelPropsType) => {
     if (disabled) {
         return checked || defaultChecked
             ? Switch.Root.checked.disabled
@@ -44,67 +38,70 @@ const visualStyle = ({
     return Switch.Root.base;
 };
 
-const switchToggleLook = ({
-    disabled,
-    theme: {
-        componentOverrides: { Switch },
-    },
-}: SwitchRootPropsType) => {
-    const highlighting = disabled ? Switch.Toggle.disabled : Switch.Toggle.base;
-
-    return {
-        ...Switch.Slider.base,
-        ...highlighting,
-    };
-};
-
-const switchToggleAnimation = ({
-    checked,
-    theme: {
-        componentOverrides: { Switch },
-    },
-}: SwitchRootPropsType) => (checked ? Switch.Slider.translated : css``);
-
-export const SwitchRoot = styled.div.withConfig({
+export const SwitchRoot = styled.p.withConfig({
     shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<SwitchRootPropsType>`
-    position: relative;
-    display: inline-flex;
-
-    ${marginAttributes}
+})<SwitchLabelPropsType>`
+    display: flex;
+    align-items: center;
 `;
 
-export const SwitchLabel = styled.label<SwitchLabelPropsType>`
+// TODO (nmelnikov 2020-07-06): add a disabled state here as well
+export const SwitchLabel = styled.span<SwitchLabelPropsType>`
+    padding-left: 16px;
+`;
+
+export const SwitchToggle = styled.label.withConfig({
+    shouldForwardProp: property => shouldForwardProp(property, propertyList),
+})<SwitchLabelPropsType>`
     position: relative;
-    display: inline-block;
+    display: inline-flex;
     border-radius: 9999px;
     transition: ${transitionDurationInSec}s;
-    
-    ${sizeBase}
-    ${visualStyle}
+
+    background: grey;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 2px;
+        left: 2px;
+        width: 14px;
+        height: 14px;
+        background: #fff;
+        border-radius: 9999px;
+        transition: ${transitionDurationInSec}s;
+    }
+
     ${mouseCursor}
+    ${sizeBase}
 `;
 
 export const SwitchCheckboxInput = styled.input<SwitchCheckboxInputPropsType>`
     opacity: 0;
     margin: 0;
+    width: 0;
+    height: 0;
     pointer-events: none;
-`;
-
-export const SwitchSlider = styled.span<SwitchSliderPropsType>`
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    transition: ${transitionDurationInSec}s;
 
-    :before {
-        position: absolute;
-        content: '';
-        transition: ${transitionDurationInSec}s;
-        border-radius: 50%;
-        ${switchToggleLook}
-        ${switchToggleAnimation}
+    &:checked + ${SwitchToggle} {
+        background: #1e91d6;
+    }
+
+    &:checked + ${SwitchToggle}:after {
+        left: calc(100% - 2px);
+        transform: translateX(-100%);
+    }
+
+    &:disabled + ${SwitchToggle} {
+        background: #c2c2c2;
+    }
+
+    &:disabled:checked + ${SwitchToggle} {
+        background: #92baf6;
+    }
+
+    &:disabled + ${SwitchToggle}:after {
+        background: #efefef;
     }
 `;

@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 // eslint-disable-next-line import/no-unresolved
 import { withKnobs } from '@storybook/addon-knobs';
 
 import { GroupHelper } from '../../../helpers/GroupHelper';
 import { Switch } from '../Switch';
+import { Button } from '../../Button';
 
 export default {
     title: 'Components/Switch',
@@ -14,24 +15,52 @@ export default {
 
 const gap = 1.5;
 
-export const Types = () => (
-    <>
-        <h2>Possible States</h2>
-        <GroupHelper gap={gap}>
-            <p>OFF / Enabled</p>
-            <Switch onChange={() => {}} />
-        </GroupHelper>
-        <GroupHelper gap={gap}>
-            <p>ON / Enabled</p>
-            <Switch checked onChange={() => {}} />
-        </GroupHelper>
-        <GroupHelper gap={gap}>
-            <p>ON / Disabled</p>
-            <Switch defaultChecked disabled onChange={() => {}} />
-        </GroupHelper>
-        <GroupHelper gap={gap}>
-            <p>OFF / Disabled</p>
-            <Switch disabled onChange={() => {}} />
-        </GroupHelper>
-    </>
-);
+export const Types = () => {
+    const [isChecked, setChecked] = useState(true);
+    return (
+        <>
+            <h2>Possible States</h2>
+            <GroupHelper gap={gap}>
+                <p>Enabled / OFF</p>
+                <Switch
+                    onChange={event => {
+                        console.log('SWITCHED', {
+                            event: event.target.checked,
+                        });
+                    }}
+                />
+            </GroupHelper>
+            <GroupHelper gap={gap}>
+                <p>Enabled / ON by default</p>
+                <Switch
+                    defaultChecked
+                    onChange={event => {
+                        console.log('SWITCHED', {
+                            event: event.target.checked,
+                        });
+                    }}
+                />
+            </GroupHelper>
+            <GroupHelper gap={gap}>
+                <p>External control</p>
+                <Button
+                    onClick={() => {
+                        console.log({ isChecked, '!isChecked': !isChecked });
+                        return setChecked(!isChecked);
+                    }}
+                >
+                    Toggle switch
+                </Button>
+                <Switch checked={isChecked} />
+            </GroupHelper>
+            <GroupHelper gap={gap}>
+                <p>Disabled / OFF</p>
+                <Switch disabled onChange={() => {}} />
+            </GroupHelper>
+            <GroupHelper gap={gap}>
+                <p>Disabled / ON</p>
+                <Switch defaultChecked disabled onChange={() => {}} />
+            </GroupHelper>
+        </>
+    );
+};

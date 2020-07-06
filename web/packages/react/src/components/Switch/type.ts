@@ -19,15 +19,6 @@ type SwitchEffectivePropsType = Indexed<{}> &
 
 export type SwitchCheckboxInputPropsType = SwitchEffectivePropsType;
 
-type CommonProps = Pick<
-    SwitchEffectivePropsType,
-    'checked' | 'defaultChecked' | 'className' | 'disabled' | 'theme'
->;
-
-export type SwitchRootPropsType = CommonProps;
-
-export type SwitchLabelPropsType = CommonProps;
-
-export type SwitchSliderPropsType = CommonProps;
+export type SwitchLabelPropsType = SwitchEffectivePropsType;
 
 export type SwitchPropsType = SwitchEffectivePropsType;

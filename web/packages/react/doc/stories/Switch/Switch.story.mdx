@@ -1,5 +1,6 @@
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
-import { Switch, MaterialIcon } from '../../../src/components';
+import {useState} from 'react';
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
+import { Switch, Button } from '../../../src/components';
 import { BrowserRouter, Link } from 'react-router-dom';
 import { Nodes } from '../../../src/helpers/Nodes';
 
@@ -21,13 +22,25 @@ import { Switch } from '@deliveryhero/armor';
 
 ## States
 
+export const MyDynamicSwitch = () => {
+  const [isChecked, setChecked] = useState(true);
+  return (
+    <>
+        <h4>External control</h4>
+        <Button onClick={() => setChecked(!isChecked)}> Toggle checkbox state </Button>
+        <Switch checked={isChecked} onChange={() => {}}  />
+    </>
+  )
+}
+
 <Preview>
     <Story name="States">
         <>
             <h4>Off</h4>
             <Switch />
-            <h4>On</h4>
-            <Switch checked />
+            <h4>On by default</h4>
+            <Switch defaultChecked />
+            <MyDynamicSwitch />
             <h4>Off disabled</h4>
             <Switch disabled />
             <h4>On disabled</h4>
