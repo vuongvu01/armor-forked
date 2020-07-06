@@ -36,39 +36,38 @@ const visualStyle = ({
     return css`${Checkbox.Root.base}${Checkbox.Root.primary}`;
 };
 
-const checkmarkDisabledBefore = ({ disabled }: CheckboxRootPropsType) =>
-    disabled
-        ? css`
-              box-shadow: none;
-              border-color: #bbb;
-              background-color: #ddd;
-          `
-        : css``;
+const checkmarkRotation = ({ checkedIcon }: CheckboxInputPropsType) => css`
+    transform: ${checkedIcon === 'tick' ? ' rotate(45deg)' : ''};
+`;
 
-const checkmarkDisabledAfter = ({ disabled }: CheckboxRootPropsType) =>
-    disabled
-        ? css`
-              color: #999;
-          `
-        : css``;
+const checkmarkStyle = ({ checkedIcon, disabled }: CheckboxRootPropsType) => {
+    const checkmarkColor = `
+        color: ${disabled ? '#707070' : 'white'};
+    `;
 
-const checkmarkStyle = ({ checkedIcon }: CheckboxRootPropsType) =>
-    checkedIcon === 'tick'
-        ? css`
-              left: 5px;
-              top: 3px;
-              width: 4px;
-              height: 7px;
-              border-width: 0 1px 1px 0;
-              transform: rotate(45deg);
-          `
-        : css`
-              left: 4px;
-              top: 7px;
-              width: 8px;
-              height: 1px;
-              border-width: 0 0 1px 0;
-          `;
+    const tickStyle =
+        checkedIcon === 'tick'
+            ? `
+                  left: 5px;
+                  top: 3px;
+                  width: 4px;
+                  height: 7px;
+                  border-width: 0 1px 1px 0;
+                  border-style: solid;
+                  transform: rotate(45deg);
+              `
+            : `
+                  left: 4px;
+                  top: 7px;
+                  width: 8px;
+                  height: 1px;
+                  border-style: solid;
+                  border-width: 0 0 1px 0;
+                  transform: rotate(0);
+              `;
+
+    return css`${checkmarkColor}${tickStyle}`;
+};
 
 export const CheckboxRoot = styled.p.withConfig({
     shouldForwardProp: property => shouldForwardProp(property, propertyList),
@@ -78,62 +77,32 @@ export const CheckboxRoot = styled.p.withConfig({
 
 export const CheckboxCheckmark = styled.label<CheckboxCheckmarkPropsType>`
     position: relative;
-    padding-left: 1.95em;
+    padding-left: 32px;
 
     &::before {
         content: '';
         position: absolute;
         left: 0;
         top: 0;
-        width: 1.25em;
-        height: 1.25em;
-        border: 2px solid #ccc;
-        background: #fff;
+        width: 16px;
+        height: 16px;
         border-radius: 4px;
-        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-        background-color: 'white';
-        border: 'blue';
-        background-repeat: 'no-repeat';
-        background-positionx: 'left';
-        background-positiony: 'top';
-        border-width: '1px';
-        border-style: 'solid';
-        ${checkmarkDisabledBefore}
+        background: white;
+        border: #c2c2c2;
+        border-width: 1px;
+        box-sizing: border-box;
+        border-style: solid;
     }
 
     &::after {
-        content: '\\2713\\0020';
+        content: '';
         position: absolute;
-        top: 0.15em;
-        left: 0.22em;
-        font-size: 1.3em;
-        line-height: 0.8;
-        color: #09ad7e;
         transition: all 0.2s;
-        font-family: 'Lucida Sans Unicode', 'Arial Unicode MS', Arial;
-        ${checkmarkDisabledAfter}
+
         ${checkmarkStyle}
     }
 
     ${mouseCursor}
-
-    // display: inline-block;
-    // position: relative;
-    // width: 16px;
-    // height: 16px;
-    // border-radius: 2px;
-    // vertical-align: middle;
-    // box-sizing: border-box;
-    //
-    // &::after {
-    //     content: '';
-    //     position: absolute;
-    //     border-style: solid;
-    //     ${checkmarkStyle}
-    // }
-    //
-    // ${visualStyle}
-    // ${mouseCursor}
 `;
 
 export const CheckboxInput = styled.input<CheckboxInputPropsType>`
@@ -143,13 +112,46 @@ export const CheckboxInput = styled.input<CheckboxInputPropsType>`
     height: 0;
     width: 0;
 
+    &:not(:checked)
+        + ${CheckboxCheckmark}:hover:before,
+        &:not(:checked)
+        + ${CheckboxCheckmark}:active:before {
+        border: #0042a5;
+        border-width: 1px;
+        border-style: solid;
+    }
+
+    &:checked
+        + ${CheckboxCheckmark}:hover:before,
+        &:not(:checked)
+        + ${CheckboxCheckmark}:active:before {
+        background: #0b53bf;
+        border: #0b53bf;
+    }
+
     &:checked + ${CheckboxCheckmark}:after {
         opacity: 1;
         transform: scale(1);
+        ${checkmarkRotation}
+    }
+
+    &:checked + ${CheckboxCheckmark}:before {
+        opacity: 1;
+        background: #0042a5;
+        border: #0042a5;
+        box-sizing: border-box;
+    }
+
+    &:disabled + ${CheckboxCheckmark}:before {
+        box-shadow: none;
+        border-color: #e1e1e1;
+        border-width: 1px;
+        border-style: solid;
+        background: #f5f5f5;
+        box-sizing: border-box;
     }
 
     &:not(:checked) + ${CheckboxCheckmark}:after {
         opacity: 0;
-        transform: scale(0);
     }
 `;

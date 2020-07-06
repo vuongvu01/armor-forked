@@ -20,6 +20,7 @@ export const Checkbox: FunctionComponent<CheckboxPropsType> = forwardRef(
             checked,
             onChange,
             checkedIcon,
+            label = 'Label',
             id: propsId,
             ...restProps
         },
@@ -50,6 +51,8 @@ export const Checkbox: FunctionComponent<CheckboxPropsType> = forwardRef(
                 <CheckboxInput
                     className={classOverride.Input}
                     checked={checked}
+                    checkedIcon={checkedIcon}
+                    disabled={disabled}
                     id={id}
                     onChange={handleOnChange}
                     ref={ref}
@@ -57,15 +60,13 @@ export const Checkbox: FunctionComponent<CheckboxPropsType> = forwardRef(
                     {...restProps}
                 />
                 <CheckboxCheckmark
+                    checked={checked}
                     checkedIcon={checkedIcon}
                     className={classOverride.Checkmark}
                     disabled={disabled}
-                    checked={checked}
                     for={id}
                     theme={theme}
-                >
-                    Label
-                </CheckboxCheckmark>
+                />
             </CheckboxRoot>
         );
     },
@@ -81,6 +82,7 @@ Checkbox.propTypes = {
     checkedIcon: PropTypes.oneOf(['tick', 'dash']),
     disabled: PropTypes.bool,
     id: PropTypes.string,
+    label: PropTypes.string,
     onChange: PropTypes.func,
     ref: PropTypes.func,
 };

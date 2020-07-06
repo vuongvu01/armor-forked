@@ -25,12 +25,12 @@ export const States = () => {
             <GroupHelper gap={2}>
                 <Checkbox defaultChecked onChange={() => {}} />
             </GroupHelper>
-            <h4>Checked (external control)</h4>
+            <h4>External control</h4>
             <GroupHelper gap={2}>
-                <Checkbox checked={isChecked} onChange={() => {}} />
                 <Button onClick={() => setChecked(!isChecked)}>
-                    Change checkbox state
+                    Toggle checkbox state
                 </Button>
+                <Checkbox checked={isChecked} onChange={() => {}} />
             </GroupHelper>
             <h4>Default disabled</h4>
             <GroupHelper gap={2}>
