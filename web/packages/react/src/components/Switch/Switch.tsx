@@ -1,19 +1,15 @@
-import React, {
-    ChangeEvent,
-    forwardRef,
-    FunctionComponent,
-    useState,
-} from 'react';
+import React, { ChangeEvent, forwardRef, FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
+import uniqueId from 'lodash.uniqueid';
 
 import { useThemeOverride } from '../../utils/hooks';
 import { useTheme } from '../../styling';
 import { useSwitchClassName } from './utils';
 import {
     SwitchCheckboxInput,
-    SwitchLabel,
+    SwitchToggle,
     SwitchRoot,
-    SwitchSlider,
+    SwitchLabel,
 } from './style';
 import { SwitchPropsType } from './type';
 import { toggleDefaultTheme } from './theme';
@@ -27,14 +23,15 @@ export const Switch: FunctionComponent<SwitchPropsType> = forwardRef(
             classNames,
             disabled,
             checked,
-            defaultChecked,
             onChange,
+            label,
+            id: propsId,
             ...restProps
         },
         ref,
     ) {
-        const [isChecked, setChecked] = useState(defaultChecked || checked);
         const theme = useTheme();
+        const id = propsId || uniqueId('label-id-');
         useThemeOverride(CLASS_PREFIX, theme, toggleDefaultTheme);
 
         const classOverride = useSwitchClassName(
@@ -45,58 +42,43 @@ export const Switch: FunctionComponent<SwitchPropsType> = forwardRef(
             checked,
         );
 
-        const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
-            setChecked(!isChecked);
-
-            // TODO (nmelnikov 2020-06-29): hook onChange into <input> https://jira.deliveryhero.com/browse/LD-120
-            if (onChange) {
-                onChange(event);
-            }
-        };
+        const handleOnChange = (event: ChangeEvent<HTMLInputElement>) =>
+            onChange && onChange(event);
 
         return (
-            <SwitchRoot
-                checked={isChecked}
-                className={classOverride.Root}
-                disabled={disabled}
-                theme={theme}
-            >
-                <SwitchLabel
-                    checked={isChecked}
+            <SwitchRoot>
+                <SwitchCheckboxInput
+                    checked={checked}
+                    className={classOverride.CheckboxInput}
+                    disabled={disabled}
+                    id={id}
+                    onChange={handleOnChange}
+                    ref={ref}
+                    theme={theme}
+                    type="checkbox"
+                    {...restProps}
+                />
+                <SwitchToggle
                     className={classOverride.Label}
                     disabled={disabled}
                     theme={theme}
-                >
-                    <SwitchCheckboxInput
-                        type="checkbox"
-                        ref={ref}
-                        theme={theme}
-                        onChange={handleOnChange}
-                        className={classOverride.CheckboxInput}
-                        {...restProps}
-                    />
-                    <SwitchSlider
-                        checked={isChecked}
-                        className={classOverride.Slider}
-                        disabled={disabled}
-                        theme={theme}
-                    />
-                </SwitchLabel>
+                    htmlFor={id}
+                />
+                {label ? <SwitchLabel>{label}</SwitchLabel> : null}
             </SwitchRoot>
         );
     },
 );
 
 Switch.defaultProps = {
-    checked: false,
-    defaultChecked: false,
     disabled: false,
 };
 
 Switch.propTypes = {
     checked: PropTypes.bool,
-    defaultChecked: PropTypes.bool,
     disabled: PropTypes.bool,
+    id: PropTypes.string,
+    label: PropTypes.string,
     onChange: PropTypes.func,
     ref: PropTypes.func,
 };
