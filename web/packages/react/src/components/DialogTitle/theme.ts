@@ -1,5 +1,3 @@
-import { fontSizeTitle, fontWeightNormal } from '../../tokens';
-
 export const dialogTitleDefaultTheme = {
     Root: {
         base: {
@@ -12,18 +10,14 @@ export const dialogTitleDefaultTheme = {
     // todo: probably reuse Typography component as title
     Text: {
         base: {
-            fontSize: fontSizeTitle,
-            fontWeight: fontWeightNormal,
-            fontFamily: '$typography.fontFamily',
-            lineHeight: '1.6',
+            fontSize: '$typography.sectionTitle.fontSize',
+            lineHeight: '$typography.sectionTitle.lineHeight',
         },
     },
     Description: {
         base: {
-            lineHeight: '1.7',
-            fontFamily: '$typography.fontFamily',
-            fontWeight: fontWeightNormal,
-            fontSize: '$typography.fontSize',
+            lineHeight: '$typography.sectionTitle.lineHeight',
+            fontSize: '$typography.sectionTitle.fontSize',
             marginTop: 3,
         },
     },

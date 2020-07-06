@@ -73,7 +73,7 @@ export const TextInputRoot = styled.div.withConfig({
         display: ${displayMode === 'block' ? 'flex' : 'inline-flex'};
         ${multiline ? '' : 'align-items: center;'}
     `}
-
+    
     ${({ theme }: TextInputRootPropsType) =>
         theme.componentOverrides.TextInput.Root.base}
     ${getRootDynamicStyle}

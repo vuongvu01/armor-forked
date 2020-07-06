@@ -1,10 +1,8 @@
-import { fontWeightNormal } from '../../tokens';
-
 export const formFieldDefaultTheme = {
     Root: {
         base: {
-            fontFamily: '$typography.fontFamily',
-            fontWeight: fontWeightNormal,
+            fontFamily: '$typography.paragraphMedium.fontFamily',
+            fontWeight: '$typography.paragraphMedium.fontWeight',
         },
         autoMargin: {
             '&:not(:last-child)': {

@@ -1,26 +1,24 @@
-import { fontSizeSmall, fontWeightNormal, white } from '../../tokens';
-
 export const tooltipDefaultTheme = {
     Root: {
         base: {
-            fontSize: fontSizeSmall,
-            fontWeight: fontWeightNormal,
-            fontFamily: '$typography.fontFamily',
-            borderRadius: '$figure.borderRadius',
-            lineHeight: '1.6',
+            fontSize: '$typography.paragraphMedium.fontSize',
+            fontWeight: '$typography.paragraphMedium.fontWeight',
+            fontFamily: '$typography.paragraphMedium.fontFamily',
+            borderRadius: '$figure.borderRadius.soft',
+            lineHeight: '$typography.paragraphMedium.lineHeight',
             padding: 3,
         },
         normal: {
-            color: '#717171',
-            backgroundColor: white,
+            color: '$color.neutral.05',
+            backgroundColor: '$color.neutral.00',
         },
         dark: {
-            color: white,
-            backgroundColor: '#333333',
+            color: '$color.neutral.00',
+            backgroundColor: '$color.neutral.06',
         },
         error: {
-            color: white,
-            backgroundColor: '#D73D44',
+            color: '$color.neutral.00',
+            backgroundColor: '$color.error.main',
         },
         small: {
             padding: 2,
@@ -30,17 +28,17 @@ export const tooltipDefaultTheme = {
         base: {},
         normal: {
             '&:before': {
-                backgroundColor: white,
+                backgroundColor: '$color.neutral.00',
             },
         },
         dark: {
             '&:before': {
-                backgroundColor: '#333333',
+                backgroundColor: '$color.neutral.06',
             },
         },
         error: {
             '&:before': {
-                backgroundColor: '#D73D44',
+                backgroundColor: '$color.error.main',
             },
         },
     },

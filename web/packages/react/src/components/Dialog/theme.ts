@@ -1,5 +1,3 @@
-import { fontSizeHTML, grey200 } from '../../tokens';
-
 export const dialogDefaultTheme = {
     Overlay: {
         base: {
@@ -21,11 +19,11 @@ export const dialogDefaultTheme = {
     },
     CloseButton: {
         base: {
-            color: grey200,
+            color: '$color.neutral.05',
             padding: 3,
             top: 6.5,
             right: 6.5,
-            fontSize: fontSizeHTML,
+            fontSize: '$typography.body.fontSize',
         },
     },
 };

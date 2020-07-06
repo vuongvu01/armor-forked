@@ -19,7 +19,7 @@ import { EditIcon } from '../../../icons';
 import { MaterialIcon } from '../../MaterialIcon';
 import { TextInput } from '../../TextInput';
 import { makeTheme } from '../../../styling';
-import { fontSizeIconBig } from '../../../tokens';
+import { fontSize04 } from '../../../tokens';
 import { ObjectLiteralType } from '../../../type';
 import { GroupHelper } from '../../../helpers/GroupHelper';
 import { Button } from '../Button';
@@ -248,7 +248,7 @@ export const Comparison2 = () => (
             <MaterialIcon marginRight={4}>save</MaterialIcon> Save
         </Button>
         <Button small={boolean('Small', false)}>
-            <MaterialIcon marginRight={4} fontSize={fontSizeIconBig}>
+            <MaterialIcon marginRight={4} fontSize={fontSize04}>
                 save
             </MaterialIcon>{' '}
             Save
@@ -258,7 +258,7 @@ export const Comparison2 = () => (
         </Button>
         <Button small={boolean('Small', false)}>
             Add{' '}
-            <MaterialIcon marginLeft={4} fontSize={fontSizeIconBig}>
+            <MaterialIcon marginLeft={4} fontSize={fontSize04}>
                 add
             </MaterialIcon>
         </Button>
@@ -306,7 +306,7 @@ export const IconAndText = () => (
         wide={boolean('Wide', false)}
         small={boolean('Small', false)}
     >
-        <MaterialIcon marginRight={2} fontSize={fontSizeIconBig}>
+        <MaterialIcon marginRight={2} fontSize={fontSize04}>
             add
         </MaterialIcon>
         Create workflow

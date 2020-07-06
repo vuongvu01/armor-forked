@@ -1,16 +1,14 @@
-import { fontSizeSmall, fontWeightMedium } from '../../tokens';
-
 export const formFieldMessageDefaultTheme = {
     Root: {
         base: {
-            fontFamily: '$typography.fontFamily',
-            fontWeight: fontWeightMedium,
-            fontSize: fontSizeSmall,
-            color: '#717171',
+            fontFamily: '$typography.labelSmall.fontFamily',
+            fontWeight: '$typography.labelSmall.fontWeight',
+            fontSize: '$typography.labelSmall.fontSize',
+            color: '$color.neutral.05',
             margin: 2,
         },
         error: {
-            color: '#d73d45',
+            color: '$color.error.main',
         },
     },
 };
