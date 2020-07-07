@@ -3,16 +3,18 @@ import styled, { css } from 'styled-components';
 import { marginAttributes } from '../../system/attributes';
 import { shouldForwardProp } from '../../utils';
 import { mouseCursor } from '../../styling';
-import { ObjectLiteralType } from '../../type';
+import { transitionDurationInSec } from '../../constants';
 import {
     CheckboxCheckmarkPropsType,
     CheckboxInputPropsType,
     CheckboxRootPropsType,
 } from './type';
 
-const propertyList = {
-    // add other custom properties here
-} as ObjectLiteralType;
+const sizes = {
+    checkbox: {
+        side: 16,
+    },
+};
 
 const checkmarkRotation = ({ checkedIcon }: CheckboxInputPropsType) => css`
     transform: ${checkedIcon === 'tick' ? ' rotate(45deg)' : ''};
@@ -78,31 +80,32 @@ const checkmarkStyle = ({
 };
 
 export const CheckboxRoot = styled.p.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
+    shouldForwardProp: property => shouldForwardProp(property, {}),
 })<CheckboxRootPropsType>`
     ${marginAttributes}
 `;
 
 export const CheckboxCheckmark = styled.label<CheckboxCheckmarkPropsType>`
     position: relative;
-    padding-left: 32px;
+    padding-left: ${sizes.checkbox.side}px;
 
     &::before {
         content: '';
         position: absolute;
         left: 0;
         top: 0;
-        width: 16px;
-        height: 16px;
+        width: ${sizes.checkbox.side}px;
+        height: ${sizes.checkbox.side}px;
         border-radius: 4px;
         box-sizing: border-box;
+        transition: all ${transitionDurationInSec}s;
         ${checkmarkBox}
     }
 
     &::after {
         content: '';
         position: absolute;
-        transition: all 0.2s;
+        transition: all ${transitionDurationInSec}s;
 
         ${checkmarkStyle}
     }

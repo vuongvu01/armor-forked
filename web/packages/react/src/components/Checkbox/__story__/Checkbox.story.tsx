@@ -17,27 +17,27 @@ export const States = () => {
     const [isChecked, setChecked] = useState(true);
     return (
         <>
-            <h4>Default</h4>
-            <GroupHelper gap={2}>
+            <GroupHelper gap={4}>
+                <p>Default</p>
                 <Checkbox onChange={() => {}} />
             </GroupHelper>
-            <h4>Checked by default</h4>
-            <GroupHelper gap={2}>
+            <GroupHelper gap={4}>
+                <p>Checked by default</p>
                 <Checkbox defaultChecked onChange={() => {}} />
             </GroupHelper>
-            <h4>External control</h4>
-            <GroupHelper gap={2}>
+            <GroupHelper gap={4}>
+                <p>External control</p>
                 <Button onClick={() => setChecked(!isChecked)}>
                     Toggle checkbox state
                 </Button>
                 <Checkbox checked={isChecked} onChange={() => {}} />
             </GroupHelper>
-            <h4>Default disabled</h4>
-            <GroupHelper gap={2}>
+            <GroupHelper gap={4}>
+                <p>Default disabled</p>
                 <Checkbox disabled />
             </GroupHelper>
-            <h4>Default checked disabled</h4>
-            <GroupHelper gap={2}>
+            <GroupHelper gap={4}>
+                <p>Default checked disabled</p>
                 <Checkbox disabled checked onChange={() => {}} />
             </GroupHelper>
         </>
@@ -46,20 +46,20 @@ export const States = () => {
 
 export const CheckStyles = () => (
     <>
-        <h4>Tick</h4>
-        <GroupHelper gap={2}>
+        <GroupHelper gap={4}>
+            <p>Tick</p>
             <Checkbox defaultChecked onChange={() => {}} />
         </GroupHelper>
-        <h4>Dash</h4>
-        <GroupHelper gap={2}>
+        <GroupHelper gap={4}>
+            <p>Dash</p>
             <Checkbox defaultChecked onChange={() => {}} checkedIcon="dash" />
         </GroupHelper>
-        <h4>Disabled Tick</h4>
-        <GroupHelper gap={2}>
+        <GroupHelper gap={4}>
+            <p>Disabled Tick</p>
             <Checkbox checked disabled onChange={() => {}} />
         </GroupHelper>
-        <h4>Disabled Dash</h4>
-        <GroupHelper gap={2}>
+        <GroupHelper gap={4}>
+            <p>Disabled Dash</p>
             <Checkbox checked disabled onChange={() => {}} checkedIcon="dash" />
         </GroupHelper>
     </>

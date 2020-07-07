@@ -2,9 +2,19 @@ import styled from 'styled-components';
 
 import { shouldForwardProp } from '../../utils';
 import { mouseCursor } from '../../styling';
+import { transitionDurationInSec } from '../../constants';
 import { SwitchCheckboxInputPropsType, SwitchLabelPropsType } from './type';
 
-const transitionDurationInSec = 0.2;
+const sizes = {
+    dimensions: {
+        width: 32,
+        height: 18,
+        padding: 2,
+    },
+    toggle: {
+        side: 14,
+    },
+};
 
 const toggleDefault = ({
     theme: {
@@ -53,17 +63,6 @@ export const SwitchRoot = styled.p.withConfig({
 export const SwitchLabel = styled.span<SwitchLabelPropsType>`
     padding-left: 16px;
 `;
-
-const sizes = {
-    dimensions: {
-        width: 32,
-        height: 18,
-        padding: 2,
-    },
-    toggle: {
-        side: 14,
-    },
-};
 
 export const SwitchToggle = styled.label<SwitchLabelPropsType>`
     position: relative;
