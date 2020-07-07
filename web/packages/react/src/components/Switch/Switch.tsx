@@ -31,7 +31,7 @@ export const Switch: FunctionComponent<SwitchPropsType> = forwardRef(
         ref,
     ) {
         const theme = useTheme();
-        const id = propsId || uniqueId('label-id-');
+        const id = propsId || uniqueId('switch-id-');
         useThemeOverride(CLASS_PREFIX, theme, toggleDefaultTheme);
 
         const classOverride = useSwitchClassName(

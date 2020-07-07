@@ -20,14 +20,14 @@ export const Checkbox: FunctionComponent<CheckboxPropsType> = forwardRef(
             checked,
             onChange,
             checkedIcon,
-            label = 'Label',
+            label,
             id: propsId,
             ...restProps
         },
         ref,
     ) {
         const theme = useTheme();
-        const id = propsId || uniqueId('label-id-');
+        const id = propsId || uniqueId('checkbox-id-');
 
         useThemeOverride(CLASS_PREFIX, theme, buttonDefaultTheme);
 

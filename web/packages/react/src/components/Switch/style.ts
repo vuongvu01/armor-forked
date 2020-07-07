@@ -2,23 +2,48 @@ import styled from 'styled-components';
 
 import { shouldForwardProp } from '../../utils';
 import { mouseCursor } from '../../styling';
-import { ObjectLiteralType } from '../../type';
 import { SwitchCheckboxInputPropsType, SwitchLabelPropsType } from './type';
-
-const propertyList = {
-    // add custom properties here
-} as ObjectLiteralType;
 
 const transitionDurationInSec = 0.2;
 
-const sizeBase = ({
+const toggleDefault = ({
     theme: {
         componentOverrides: { Switch },
     },
-}: SwitchLabelPropsType) => Switch.Label.base;
+}: SwitchLabelPropsType) => Switch.Toggle.base;
+
+const disabledToggle = ({
+    theme: {
+        componentOverrides: { Switch },
+    },
+}: SwitchLabelPropsType) => Switch.Toggle.disabled;
+
+const checkedBackground = ({
+    theme: {
+        componentOverrides: { Switch },
+    },
+}: SwitchLabelPropsType) => Switch.Label.checked;
+
+const checkedHover = ({
+    theme: {
+        componentOverrides: { Switch },
+    },
+}: SwitchLabelPropsType) => Switch.Label.hover;
+
+const disabledBackground = ({
+    theme: {
+        componentOverrides: { Switch },
+    },
+}: SwitchLabelPropsType) => Switch.Label.disabled;
+
+const disabledCheckedBackground = ({
+    theme: {
+        componentOverrides: { Switch },
+    },
+}: SwitchLabelPropsType) => Switch.Label.disabled__checked;
 
 export const SwitchRoot = styled.p.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
+    shouldForwardProp: property => shouldForwardProp(property, {}),
 })<SwitchLabelPropsType>`
     display: flex;
     align-items: center;
@@ -29,30 +54,41 @@ export const SwitchLabel = styled.span<SwitchLabelPropsType>`
     padding-left: 16px;
 `;
 
-export const SwitchToggle = styled.label.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<SwitchLabelPropsType>`
+const sizes = {
+    dimensions: {
+        width: 32,
+        height: 18,
+        padding: 2,
+    },
+    toggle: {
+        side: 14,
+    },
+};
+
+export const SwitchToggle = styled.label<SwitchLabelPropsType>`
     position: relative;
     display: inline-flex;
     border-radius: 9999px;
     transition: ${transitionDurationInSec}s;
+    width: ${sizes.dimensions.width}px;
+    height: ${sizes.dimensions.height}px;
 
     background: grey;
 
     &::after {
         content: '';
         position: absolute;
-        bottom: 2px;
-        left: 2px;
-        width: 14px;
-        height: 14px;
-        background: #fff;
+        bottom: ${sizes.dimensions.padding}px;
+        left: ${sizes.dimensions.padding}px;
+        width: ${sizes.toggle.side}px;
+        height: ${sizes.toggle.side}px;
         border-radius: 9999px;
         transition: ${transitionDurationInSec}s;
+
+        ${toggleDefault}
     }
 
     ${mouseCursor}
-    ${sizeBase}
 `;
 
 export const SwitchCheckboxInput = styled.input<SwitchCheckboxInputPropsType>`
@@ -64,7 +100,11 @@ export const SwitchCheckboxInput = styled.input<SwitchCheckboxInputPropsType>`
     position: absolute;
 
     &:checked + ${SwitchToggle} {
-        background: #1e91d6;
+        ${checkedBackground}
+    }
+
+    &:checked + ${SwitchToggle}:hover {
+        ${checkedHover}
     }
 
     &:checked + ${SwitchToggle}:after {
@@ -73,14 +113,14 @@ export const SwitchCheckboxInput = styled.input<SwitchCheckboxInputPropsType>`
     }
 
     &:disabled + ${SwitchToggle} {
-        background: #c2c2c2;
+        ${disabledBackground}
     }
 
     &:disabled:checked + ${SwitchToggle} {
-        background: #92baf6;
+        ${disabledCheckedBackground}
     }
 
     &:disabled + ${SwitchToggle}:after {
-        background: #efefef;
+        ${disabledToggle}
     }
 `;
