@@ -110,13 +110,15 @@ export const ButtonStyle = styled(Wrapper).withConfig({
     border: 1px solid transparent;
     letter-spacing: 0;
     padding: 0;
+    cursor: pointer;
 
     &:hover, &:focus, &:disabled, &:active, &:visited {
         text-decoration: none;
         outline: none;
     }
-    &:not(:disabled) {
-        cursor: pointer;
+    
+    &:disabled {
+        cursor: not-allowed;
     }
 
     ${getRootBasicStyle}
@@ -127,6 +129,8 @@ export const ButtonStyle = styled(Wrapper).withConfig({
     ${widthAttributes}
 `;
 
+// TODO (nmelnikov 2020-07-07): once we settle/create our icon element, we need to differentiate here:
+// if the button contains just the icon - then the padding should be 8px on all sides (according to spec)
 const getContentBasicStyle = ({ theme }: ButtonContentPropsType) =>
     theme.componentOverrides.Button.Content.base;
 

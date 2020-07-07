@@ -89,6 +89,12 @@ export const Types = () => {
                     </Button>
                     <TextInput label="Name your price" name="your_price" />
                 </GroupHelper>
+                <h3>Icon only</h3>
+                <GroupHelper>
+                    <Button primary>
+                        <MaterialIcon icon="delete" />
+                    </Button>
+                </GroupHelper>
                 <h3>Types</h3>
                 <GroupHelper>
                     <Button primary>Primary</Button>
@@ -168,15 +174,53 @@ export const WithBigIcon = () => (
 );
 
 export const IconOnly = () => (
-    <Button
-        {...getTypeAttributes(select('Type', optionsType, 'primary'))}
-        tag={select('Tag', optionsTag, 'button') as ButtonTagType}
-        wide={boolean('Wide', false)}
-        small={boolean('Small', false)}
-        disabled={boolean('Disabled', false)}
-    >
-        <EditIcon />
-    </Button>
+    <>
+        <GroupHelper>
+            <Button
+                {...getTypeAttributes(select('Type', optionsType, 'primary'))}
+                tag={select('Tag', optionsTag, 'button') as ButtonTagType}
+                wide={boolean('Wide', false)}
+                small={boolean('Small', false)}
+                disabled={boolean('Disabled', false)}
+            >
+                <EditIcon />
+            </Button>
+        </GroupHelper>
+        <GroupHelper>
+            <Button
+                tag={select('Tag', optionsTag, 'button') as ButtonTagType}
+                wide={boolean('Wide', false)}
+                small={boolean('Small', false)}
+                disabled
+            >
+                <EditIcon />
+            </Button>
+        </GroupHelper>
+
+        <GroupHelper>
+            <Button
+                secondary
+                tag={select('Tag', optionsTag, 'button') as ButtonTagType}
+                wide={boolean('Wide', false)}
+                small={boolean('Small', false)}
+                disabled={boolean('Disabled', false)}
+            >
+                <EditIcon color="#1f67d3" />
+            </Button>
+        </GroupHelper>
+
+        <GroupHelper>
+            <Button
+                tertiary
+                tag={select('Tag', optionsTag, 'button') as ButtonTagType}
+                wide={boolean('Wide', false)}
+                small={boolean('Small', false)}
+                disabled={boolean('Disabled', false)}
+            >
+                <EditIcon color="#1f67d3" />
+            </Button>
+        </GroupHelper>
+    </>
 );
 
 export const Comparison = () => (

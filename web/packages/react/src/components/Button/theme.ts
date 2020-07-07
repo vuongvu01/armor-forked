@@ -1,19 +1,19 @@
 /* eslint-disable @typescript-eslint/camelcase */
 
 import {
-    componentSpacing01,
     componentSpacing02,
+    componentSpacing03,
     componentSpacing04,
 } from '../../tokens';
 
 export const buttonDefaultTheme = {
     Root: {
         base: {
-            fontWeight: '$typography.body.fontWeight',
-            letterSpacing: '$typography.body.letterSpacing',
-            fontSize: '$typography.body.fontSize',
-            fontFamily: '$typography.body.fontFamily',
-            lineHeight: '$typography.sectionTitle.lineHeight',
+            fontWeight: '$typography.labelMedium.fontWeight',
+            letterSpacing: '$typography.labelMedium.letterSpacing',
+            fontSize: '$typography.labelMedium.fontSize',
+            fontFamily: '$typography.labelMedium.fontFamily',
+            lineHeight: '$typography.labelMedium.lineHeight',
             borderRadius: '$figure.borderRadius.soft',
             backgroundColor: 'transparent',
         },
@@ -48,16 +48,16 @@ export const buttonDefaultTheme = {
             backgroundColor: '$color.error.main',
 
             '&:hover': {
-                borderColor: '$color.error.main',
-                backgroundColor: '$color.error.main',
+                borderColor: '$color.error.light',
+                backgroundColor: '$color.error.light',
             },
             '&:focus': {
-                borderColor: '$color.error.main',
-                backgroundColor: '$color.error.main',
+                borderColor: '$color.error.light',
+                backgroundColor: '$color.error.light',
             },
             '&:active': {
-                borderColor: '$color.error.main',
-                backgroundColor: '$color.error.main',
+                borderColor: '$color.error.dark',
+                backgroundColor: '$color.error.dark',
             },
         },
         secondary: {
@@ -75,7 +75,7 @@ export const buttonDefaultTheme = {
             },
             '&:active': {
                 color: '$color.primary.dark',
-                borderColor: '$color.primary.light',
+                borderColor: '$color.primary.dark',
             },
             '&:disabled': {
                 color: '$color.neutral.04',
@@ -88,16 +88,16 @@ export const buttonDefaultTheme = {
             borderColor: '$color.error.main',
 
             '&:hover': {
-                color: '$color.error.main',
-                borderColor: '$color.error.main',
+                color: '$color.error.light',
+                borderColor: '$color.error.light',
             },
             '&:focus': {
-                color: '$color.error.main',
-                borderColor: '$color.error.main',
+                color: '$color.error.light',
+                borderColor: '$color.error.light',
             },
             '&:active': {
-                color: '$color.error.main',
-                borderColor: '$color.error.main',
+                color: '$color.error.dark',
+                borderColor: '$color.error.dark',
             },
         },
         tertiary: {
@@ -115,7 +115,11 @@ export const buttonDefaultTheme = {
                 borderColor: '$color.neutral.02',
                 backgroundColor: '$color.neutral.02',
             },
-            '&:active': {},
+            '&:active': {
+                color: '$color.primary.dark',
+                borderColor: '$color.neutral.02',
+                backgroundColor: '$color.neutral.02',
+            },
             '&:disabled': {
                 color: '$color.neutral.04',
                 borderColor: '$color.neutral.03',
@@ -149,12 +153,12 @@ export const buttonDefaultTheme = {
             borderRadius: '$figure.borderRadius.soft',
             paddingLeft: componentSpacing04,
             paddingRight: componentSpacing04,
-            paddingTop: componentSpacing02,
-            paddingBottom: componentSpacing02,
+            paddingTop: componentSpacing03,
+            paddingBottom: componentSpacing03,
         },
         small: {
-            paddingTop: componentSpacing01,
-            paddingBottom: componentSpacing01,
+            paddingTop: componentSpacing02,
+            paddingBottom: componentSpacing02,
         },
     },
 };
