@@ -17,6 +17,8 @@ const gap = 1.5;
 
 export const Types = () => {
     const [isChecked, setChecked] = useState(true);
+    const [isDisabled, setDisabled] = useState(false);
+
     return (
         <>
             <h2>Possible States</h2>
@@ -30,10 +32,11 @@ export const Types = () => {
             </GroupHelper>
             <GroupHelper gap={gap}>
                 <p>External control</p>
-                <Button onClick={() => setChecked(!isChecked)}>
-                    Toggle switch
+                <Button onClick={() => setChecked(!isChecked)}>Toggle</Button>
+                <Button onClick={() => setDisabled(!isDisabled)}>
+                    Disable/Enable
                 </Button>
-                <Switch checked={isChecked} />
+                <Switch checked={isChecked} disabled={isDisabled} />
             </GroupHelper>
             <GroupHelper gap={gap}>
                 <p>Disabled / OFF</p>

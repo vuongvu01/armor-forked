@@ -3,9 +3,10 @@
 export const toggleDefaultTheme = {
     Toggle: {
         base: { backgroundColor: '$color.neutral.00' },
-        disabled: { backgroundColor: '$color.neutral.02' },
+        disabled_checked: { backgroundColor: '$color.neutral.02' },
     },
     Label: {
+        base: { backgroundColor: '$color.neutral.05' },
         disabled: { backgroundColor: '$color.neutral.03' },
         checked: { backgroundColor: '$color.primary.main' },
         hover: { backgroundColor: '$color.primary.light' },

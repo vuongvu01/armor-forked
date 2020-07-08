@@ -16,6 +16,12 @@ const sizes = {
     },
 };
 
+const switchColor = ({
+    theme: {
+        componentOverrides: { Switch },
+    },
+}: SwitchLabelPropsType) => Switch.Label.base;
+
 const toggleDefault = ({
     theme: {
         componentOverrides: { Switch },
@@ -26,31 +32,34 @@ const disabledToggle = ({
     theme: {
         componentOverrides: { Switch },
     },
-}: SwitchLabelPropsType) => Switch.Toggle.disabled;
+    checked,
+    defaultChecked,
+}: SwitchCheckboxInputPropsType) =>
+    !(checked || defaultChecked) ? Switch.Toggle.disabled_checked : '';
 
 const checkedBackground = ({
     theme: {
         componentOverrides: { Switch },
     },
-}: SwitchLabelPropsType) => Switch.Label.checked;
+}: SwitchCheckboxInputPropsType) => Switch.Label.checked;
 
 const checkedHover = ({
     theme: {
         componentOverrides: { Switch },
     },
-}: SwitchLabelPropsType) => Switch.Label.hover;
+}: SwitchCheckboxInputPropsType) => Switch.Label.hover;
 
 const disabledBackground = ({
     theme: {
         componentOverrides: { Switch },
     },
-}: SwitchLabelPropsType) => Switch.Label.disabled;
+}: SwitchCheckboxInputPropsType) => Switch.Label.disabled;
 
 const disabledCheckedBackground = ({
     theme: {
         componentOverrides: { Switch },
     },
-}: SwitchLabelPropsType) => Switch.Label.disabled__checked;
+}: SwitchCheckboxInputPropsType) => Switch.Label.disabled__checked;
 
 export const SwitchRoot = styled.p.withConfig({
     shouldForwardProp: property => shouldForwardProp(property, {}),
@@ -72,8 +81,6 @@ export const SwitchToggle = styled.label<SwitchLabelPropsType>`
     width: ${sizes.dimensions.width}px;
     height: ${sizes.dimensions.height}px;
 
-    background: grey;
-
     &::after {
         content: '';
         position: absolute;
@@ -88,6 +95,7 @@ export const SwitchToggle = styled.label<SwitchLabelPropsType>`
     }
 
     ${mouseCursor}
+    ${switchColor}
 `;
 
 export const SwitchCheckboxInput = styled.input<SwitchCheckboxInputPropsType>`

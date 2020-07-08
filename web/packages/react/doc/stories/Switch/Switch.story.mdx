@@ -24,11 +24,13 @@ import { Switch } from '@deliveryhero/armor';
 
 export const MyDynamicSwitch = () => {
   const [isChecked, setChecked] = useState(true);
+  const [isDisabled, setDisabled] = useState(false);
   return (
     <>
         <h4>External control</h4>
-        <Button onClick={() => setChecked(!isChecked)}> Toggle checkbox state </Button>
-        <Switch checked={isChecked} onChange={() => {}}  />
+        <Button onClick={() => setChecked(!isChecked)}>Toggle</Button>
+        <Button marginLeft={2} onClick={() => setDisabled(!isDisabled)} >Disable/Enable</Button>
+        <Switch checked={isChecked} disabled={isDisabled} />
     </>
   )
 }
