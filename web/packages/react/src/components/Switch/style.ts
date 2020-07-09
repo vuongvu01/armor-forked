@@ -77,7 +77,7 @@ export const SwitchToggle = styled.label<SwitchLabelPropsType>`
     position: relative;
     display: inline-flex;
     border-radius: 9999px;
-    transition: ${transitionDurationInSec}s;
+    transition: all ${transitionDurationInSec}s ease;
     width: ${sizes.dimensions.width}px;
     height: ${sizes.dimensions.height}px;
 
@@ -89,7 +89,7 @@ export const SwitchToggle = styled.label<SwitchLabelPropsType>`
         width: ${sizes.toggle.side}px;
         height: ${sizes.toggle.side}px;
         border-radius: 9999px;
-        transition: ${transitionDurationInSec}s;
+        transition: all ${transitionDurationInSec}s ease;
 
         ${toggleDefault}
     }

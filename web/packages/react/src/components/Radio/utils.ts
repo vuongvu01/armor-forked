@@ -27,7 +27,7 @@ const formClassBasedOnComponent = ({
     return `${baseClassNames} ${stateClassNames.join(' ')}`.trim();
 };
 
-export const useCheckboxClassName = (
+export const useRadioClassName = (
     classPrefix: string,
     className?: string,
     classNames?: ClassNamesType,

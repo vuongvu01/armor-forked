@@ -13,6 +13,7 @@ export * from './Message';
 export * from './MessageAction';
 export * from './Modal';
 export * from './Paper';
+export * from './Radio';
 export * from './SVGIcon';
 export * from './Switch';
 export * from './Tooltip';

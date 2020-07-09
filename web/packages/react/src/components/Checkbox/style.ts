@@ -98,14 +98,14 @@ export const CheckboxCheckmark = styled.label<CheckboxCheckmarkPropsType>`
         height: ${sizes.checkbox.side}px;
         border-radius: 4px;
         box-sizing: border-box;
-        transition: all ${transitionDurationInSec}s;
+        transition: all ${transitionDurationInSec}s ease;
         ${checkmarkBox}
     }
 
     &::after {
         content: '';
         position: absolute;
-        transition: all ${transitionDurationInSec}s;
+        transition: all ${transitionDurationInSec}s ease;
 
         ${checkmarkStyle}
     }

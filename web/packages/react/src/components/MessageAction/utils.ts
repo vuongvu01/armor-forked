@@ -35,6 +35,6 @@ export const useMessageActionClassNames = (
         }
 
         return {
-            Root: `${rootClassNames} ${rootStateClassNames.join(' ')}`,
+            Root: `${rootClassNames} ${rootStateClassNames.join(' ')}`.trim(),
         };
     }, [classPrefix, className, classNames]);

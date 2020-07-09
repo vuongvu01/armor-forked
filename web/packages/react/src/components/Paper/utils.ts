@@ -32,5 +32,5 @@ export const useClassNamePaper = (
             stateClassNames.push(makeBEM(classPrefix, 'root', 'example'));
         }
 
-        return `${baseClassNames} ${stateClassNames.join(' ')}`;
+        return `${baseClassNames} ${stateClassNames.join(' ')}`.trim();
     }, [classPrefix, className, classNames, exampleProperty]);

@@ -24,7 +24,7 @@ const formClassBasedOnComponent = ({
         stateClassNames.push(makeBEM(classPrefix, component, 'disabled'));
     }
 
-    return `${baseClassNames} ${stateClassNames.join(' ')}`;
+    return `${baseClassNames} ${stateClassNames.join(' ')}`.trim();
 };
 
 export const useSwitchClassName = (

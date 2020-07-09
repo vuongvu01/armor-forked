@@ -44,7 +44,7 @@ export const useButtonClassName = (
             stateClassNames.push(makeBEM(classPrefix, 'Root', 'danger'));
         }
 
-        return `${baseClassNames} ${stateClassNames.join(' ')}`;
+        return `${baseClassNames} ${stateClassNames.join(' ')}`.trim();
     }, [
         classPrefix,
         className,

@@ -63,7 +63,7 @@ export const useTooltipClassNames = (
         }
 
         return {
-            Root: `${rootClassNames} ${rootStateClassNames.join(' ')}`,
+            Root: `${rootClassNames} ${rootStateClassNames.join(' ')}`.trim(),
             Arrow: makeBEM(classPrefix, 'Arrow'),
         };
     }, [classPrefix, className, classNames, align]);
