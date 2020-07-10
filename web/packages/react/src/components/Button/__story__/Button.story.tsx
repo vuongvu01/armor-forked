@@ -17,15 +17,13 @@ import { BrowserRouter, Link } from 'react-router-dom';
 
 import { EditIcon } from '../../../icons';
 import { MaterialIcon } from '../../MaterialIcon';
-import { TextInput } from '../../TextInput';
-import { makeTheme } from '../../../styling';
+import { defaultTheme, makeTheme } from '../../../styling';
 import { fontSize04 } from '../../../tokens';
 import { ObjectLiteralType } from '../../../type';
 import { GroupHelper } from '../../../helpers/GroupHelper';
 import { Button } from '../Button';
 import { ButtonTagType } from '../type';
 import { armorTheme } from './custom-theme';
-import { defaultTheme } from '../../../styling';
 
 export default {
     title: 'Components/Button',
@@ -55,72 +53,192 @@ const getTypeAttributes = (type: string) => ({
     [type]: true,
 });
 
+const groupStyle = {
+    display: 'flex',
+    alignItems: 'flex-end',
+};
+
 export const Types = () => {
     const [theme, setTheme] = useState(defaultTheme);
 
     return (
         <>
+            <h3>Pick theme</h3>
             <Button marginRight={2} onClick={() => setTheme(defaultTheme)}>
-                Default
+                Default theme
             </Button>
-            <Button onClick={() => setTheme(armorTheme)}>DPS</Button>
+            <Button onClick={() => setTheme(armorTheme)}>DPS theme</Button>
             <hr />
             <ThemeProvider theme={theme}>
-                <h3>Sizes</h3>
-                <GroupHelper>
-                    <Button primary>
-                        <MaterialIcon marginRight={2} icon="delete" />
-                        Button text
-                    </Button>
-                    <Button primary>Button text</Button>
-                    <Button primary small>
-                        <MaterialIcon marginRight={2} icon="delete" />
-                        Button text
-                    </Button>
-                    <Button primary small>
-                        Button text
-                    </Button>
-                </GroupHelper>
-                <h3>Next to an input</h3>
-                <GroupHelper>
-                    <Button primary>
-                        <MaterialIcon marginRight={2} icon="delete" />
-                        Button text
-                    </Button>
-                    <TextInput label="Name your price" name="your_price" />
-                </GroupHelper>
-                <h3>Icon only</h3>
-                <GroupHelper>
-                    <Button primary>
-                        <MaterialIcon icon="delete" />
-                    </Button>
-                </GroupHelper>
                 <h3>Types</h3>
-                <GroupHelper>
+                <GroupHelper styles={groupStyle}>
                     <Button primary>Primary</Button>
-                    <Button secondary>Secondary</Button>
-                    <Button tertiary>Tertiary</Button>
-                </GroupHelper>
-                <GroupHelper>
+                    <Button primary>
+                        <MaterialIcon marginRight={2} icon="edit" />
+                        Primary with icon
+                    </Button>
+                    <Button primary>
+                        Primary with icon
+                        <MaterialIcon marginLeft={2} icon="edit" />
+                    </Button>
+                    <Button primary>
+                        <MaterialIcon icon="edit" />
+                    </Button>
                     <Button primary danger>
                         Primary
                     </Button>
-                    <Button secondary danger>
+                    <Button primary small>
+                        Primary
+                    </Button>
+                </GroupHelper>
+                <GroupHelper styles={groupStyle}>
+                    <Button disabled primary>
+                        Primary
+                    </Button>
+                    <Button disabled primary>
+                        <MaterialIcon marginRight={2} icon="edit" />
+                        Primary with icon
+                    </Button>
+                    <Button disabled primary>
+                        Primary with icon
+                        <MaterialIcon marginLeft={2} icon="edit" />
+                    </Button>
+                    <Button disabled primary>
+                        <MaterialIcon icon="edit" />
+                    </Button>
+                    <Button disabled primary danger>
+                        Primary
+                    </Button>
+                    <Button disabled primary small>
+                        Primary
+                    </Button>
+                </GroupHelper>
+                <br />
+                <br />
+                <GroupHelper styles={groupStyle}>
+                    <Button secondary>Secondary</Button>
+                    <Button secondary>
+                        <MaterialIcon marginRight={2} icon="edit" />
+                        Secondary with icon
+                    </Button>
+                    <Button secondary>
+                        Secondary with icon
+                        <MaterialIcon marginLeft={2} icon="edit" />
+                    </Button>
+                    <Button secondary>
+                        <MaterialIcon icon="edit" />
+                    </Button>
+                    <Button secondary small>
                         Secondary
+                    </Button>
+                </GroupHelper>
+                <GroupHelper styles={groupStyle}>
+                    <Button disabled secondary>
+                        Secondary
+                    </Button>
+                    <Button disabled secondary>
+                        <MaterialIcon marginRight={2} icon="edit" />
+                        Secondary with icon
+                    </Button>
+                    <Button disabled secondary>
+                        Secondary with icon
+                        <MaterialIcon marginLeft={2} icon="edit" />
+                    </Button>
+                    <Button disabled secondary>
+                        <MaterialIcon icon="edit" />
+                    </Button>
+                    <Button disabled secondary small>
+                        Secondary
+                    </Button>
+                </GroupHelper>
+                <br />
+                <br />
+                <GroupHelper styles={groupStyle}>
+                    <Button tertiary>Tertiary</Button>
+                    <Button tertiary>
+                        <MaterialIcon marginRight={2} icon="edit" />
+                        Tertiary with icon
+                    </Button>
+                    <Button tertiary>
+                        Tertiary with icon
+                        <MaterialIcon marginLeft={2} icon="edit" />
+                    </Button>
+                    <Button tertiary>
+                        <MaterialIcon icon="edit" />
                     </Button>
                     <Button tertiary danger>
                         Tertiary
                     </Button>
                 </GroupHelper>
-                <GroupHelper>
-                    <Button primary disabled>
-                        Primary
-                    </Button>
-                    <Button secondary disabled>
-                        Secondary
-                    </Button>
-                    <Button tertiary disabled>
+                <GroupHelper styles={groupStyle}>
+                    <Button disabled tertiary>
                         Tertiary
+                    </Button>
+                    <Button disabled tertiary>
+                        <MaterialIcon marginRight={2} icon="edit" />
+                        Tertiary with icon
+                    </Button>
+                    <Button disabled tertiary>
+                        Tertiary with icon
+                        <MaterialIcon marginLeft={2} icon="edit" />
+                    </Button>
+                    <Button disabled tertiary>
+                        <MaterialIcon icon="edit" />
+                    </Button>
+                    <Button disabled tertiary danger>
+                        Tertiary
+                    </Button>
+                </GroupHelper>
+                <h3>
+                    Bogus types (none should be displayed below, if any are
+                    displayed - please contact Armor team)
+                </h3>
+                <GroupHelper styles={groupStyle}>
+                    <Button primary>
+                        Button inception
+                        <MaterialIcon marginLeft={2} icon="edit" />
+                        <Button primary>
+                            <MaterialIcon icon="edit" />
+                        </Button>
+                    </Button>
+                    <Button primary>
+                        <MaterialIcon marginLeft={2} icon="edit" />
+                        <MaterialIcon marginLeft={2} icon="edit" />
+                    </Button>
+                    <Button primary>
+                        <MaterialIcon marginRight={2} icon="edit" />
+                        Two icons
+                        <MaterialIcon marginLeft={2} icon="edit" />
+                    </Button>
+                    <Button
+                        {...getTypeAttributes(
+                            select('Type', optionsType, 'primary'),
+                        )}
+                        tag={
+                            select('Tag', optionsTag, 'button') as ButtonTagType
+                        }
+                        wide={boolean('Wide', false)}
+                        small={boolean('Small', false)}
+                        disabled={boolean('Disabled', false)}
+                    >
+                        Lorem ipsum
+                        <br />
+                        Lorem ipsum
+                        <br />
+                        Lorem ipsum
+                    </Button>
+                    <Button
+                        {...getTypeAttributes(
+                            select('Type', optionsType, 'primary'),
+                        )}
+                        tag={
+                            select('Tag', optionsTag, 'button') as ButtonTagType
+                        }
+                        wide={boolean('Wide', false)}
+                        small={boolean('Small', false)}
+                        disabled={boolean('Disabled', false)}
+                    >
+                        <span style={{ color: 'red' }}>Lorem ipsum</span>
                     </Button>
                 </GroupHelper>
             </ThemeProvider>

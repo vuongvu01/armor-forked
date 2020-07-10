@@ -7,12 +7,7 @@ import {
 
 import { MarginAttributesType, WidthAttributesType } from '../../system';
 import { Indexed } from '../../type';
-import {
-    NodeStylePropsType,
-    StylePropsType,
-    StylesFunctionOrStubType,
-    PropsWithNodeStylePropsType,
-} from '../type';
+import { StylePropsType, PropsWithNodeStylePropsType } from '../type';
 
 export type ButtonTagType = string | ComponentType<any>;
 

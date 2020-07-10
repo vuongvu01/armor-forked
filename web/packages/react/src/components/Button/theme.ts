@@ -146,6 +146,11 @@ export const buttonDefaultTheme = {
                 borderColor: '$color.error.lighter',
                 backgroundColor: '$color.error.lighter',
             },
+            '&:disabled': {
+                color: '$color.neutral.04',
+                borderColor: '$color.neutral.03',
+                backgroundColor: '$color.neutral.03',
+            },
         },
     },
     Content: {

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useThemeOverride } from '../../utils/hooks';
 import { useTheme } from '../../styling';
 
-import { useButtonClassName } from './utils';
+import { useButtonClassName, isValidChildrenStructure } from './utils';
 import { ButtonStyle, ButtonContent } from './style';
 import { ButtonPropsType } from './type';
 import { buttonDefaultTheme } from './theme';
@@ -45,6 +45,13 @@ export const Button: FunctionComponent<ButtonPropsType> = forwardRef(
             tertiary,
             danger,
         );
+
+        if (!isValidChildrenStructure(children)) {
+            console.error(
+                'Please ensure that button contains only one of the following combinations: \n * icon \n * label \n * icon + label \n * label + icon',
+            );
+            return null;
+        }
 
         return (
             <ButtonStyle

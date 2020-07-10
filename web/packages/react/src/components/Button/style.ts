@@ -49,7 +49,9 @@ const getRootDynamicVisualStyle = ({
 };
 
 const getRootDynamicVisualDangerStyle = ({
-    theme,
+    theme: {
+        componentOverrides: { Button },
+    },
     secondary,
     tertiary,
     danger,
@@ -57,10 +59,6 @@ const getRootDynamicVisualDangerStyle = ({
     if (!danger) {
         return '';
     }
-
-    const {
-        componentOverrides: { Button },
-    } = theme;
 
     if (secondary) {
         return Button.Root.secondary__danger;
@@ -74,17 +72,12 @@ const getRootDynamicVisualDangerStyle = ({
     return Button.Root.primary__danger;
 };
 
-const getRootDynamicSizeStyle = ({ theme, small }: ButtonRootPropsType) => {
-    const {
+const getRootDynamicSizeStyle = ({
+    theme: {
         componentOverrides: { Button },
-    } = theme;
-
-    if (small) {
-        return Button.Root.small;
-    }
-
-    return '';
-};
+    },
+    small,
+}: ButtonRootPropsType) => (small ? Button.Root.small : '');
 
 const Wrapper = ({
     children,
@@ -131,23 +124,18 @@ export const ButtonStyle = styled(Wrapper).withConfig({
 
 // TODO (nmelnikov 2020-07-07): once we settle/create our icon element, we need to differentiate here:
 // if the button contains just the icon - then the padding should be 8px on all sides (according to spec)
-const getContentBasicStyle = ({ theme }: ButtonContentPropsType) =>
-    theme.componentOverrides.Button.Content.base;
+const getContentBasicStyle = ({
+    theme: {
+        componentOverrides: { Button },
+    },
+}: ButtonContentPropsType) => Button.Content.base;
 
 const getContentDynamicVisualStyle = ({
-    theme,
-    small,
-}: ButtonRootPropsType) => {
-    const {
+    theme: {
         componentOverrides: { Button },
-    } = theme;
-
-    if (small) {
-        return Button.Content.small;
-    }
-
-    return '';
-};
+    },
+    small,
+}: ButtonRootPropsType) => (small ? Button.Content.small : '');
 
 export const ButtonContent = styled.span.withConfig({
     shouldForwardProp: property => shouldForwardProp(property, propertyList),
