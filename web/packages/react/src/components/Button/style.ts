@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { ReactElement } from 'react';
+
 import { ButtonContentPropsType, ButtonRootPropsType } from './type';
 import { marginAttributes, widthAttributes } from '../../system/attributes';
 import { durationRegular } from '../../tokens';
@@ -16,6 +17,7 @@ const propertyList = {
     wide: true,
     before: true,
     after: true,
+    childrenSemantics: true,
     // add other custom properties here
 } as ObjectLiteralType;
 
@@ -78,6 +80,42 @@ const getRootDynamicSizeStyle = ({
     },
     small,
 }: ButtonRootPropsType) => (small ? Button.Root.small : '');
+
+const semanticAttributesButtonContent = ({
+    theme: {
+        componentOverrides: { Button },
+    },
+    childrenSemantics,
+}: ButtonRootPropsType) => {
+    if (!childrenSemantics) {
+        return '';
+    }
+
+    const { count, isIconPresent, isIconFirst } = childrenSemantics;
+
+    // TODO (nmelnikov 2020-07-10): investigate why this doesn't get applied from the start
+    const contentLineHeight = 'font-size: 14px; line-height: 16px;';
+
+    if (count === 1 && !isIconPresent) {
+        return contentLineHeight;
+    }
+
+    if (count === 1 && isIconPresent) {
+        return Button.SemanticContent.iconOnly;
+    }
+
+    if (count === 2) {
+        const padding = `${
+            isIconFirst
+                ? Button.SemanticContent.iconFirst
+                : Button.SemanticContent.iconLast
+        }`;
+
+        return css`${contentLineHeight}${padding}`;
+    }
+
+    return '';
+};
 
 const Wrapper = ({
     children,
@@ -147,4 +185,5 @@ export const ButtonContent = styled.span.withConfig({
 
     ${getContentBasicStyle}
     ${getContentDynamicVisualStyle}
+    ${semanticAttributesButtonContent}
 `;

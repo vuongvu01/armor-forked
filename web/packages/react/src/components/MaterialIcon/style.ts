@@ -6,8 +6,9 @@ import { MaterialIconPropsType } from './type';
 export const MaterialIconRoot = styled.span<MaterialIconPropsType>`
     font-family: 'Material Icons', serif;
     display: inline-block;
-    width: 1rem;
-    height: 1rem;
+    width: 16px;
+    height: 16px;
+    box-sizing: border-box;
     overflow: hidden;
     flex-shrink: 0;
     user-select: none;

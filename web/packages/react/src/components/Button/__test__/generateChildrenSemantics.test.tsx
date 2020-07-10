@@ -1,18 +1,20 @@
 import React, { ReactNode } from 'react';
 
-import { isValidChildrenStructure } from '../utils';
+import { generateChildrenSemantics } from '../utils';
 
-describe('isValidChildrenStructure', () => {
+describe('generateChildrenSemantics', () => {
     it('should allow to render a button with a label', async () => {
         const children = 'Submit';
+        const semantics = generateChildrenSemantics(children);
 
-        expect(isValidChildrenStructure(children)).toEqual(true);
+        expect(semantics.isValid).toEqual(true);
+        expect(semantics.isValid).toEqual(true);
     });
 
     it('should allow to render a button with an icon', async () => {
         const Icon = React.createElement('MaterialIcon', { icon: 'edit' });
 
-        expect(isValidChildrenStructure(Icon)).toEqual(true);
+        expect(generateChildrenSemantics(Icon).isValid).toEqual(true);
     });
 
     it('should allow to render a button with an icon followed by a label', async () => {
@@ -20,7 +22,7 @@ describe('isValidChildrenStructure', () => {
 
         const children = [Icon, 'Submit'];
 
-        expect(isValidChildrenStructure(children)).toEqual(true);
+        expect(generateChildrenSemantics(children).isValid).toEqual(true);
     });
 
     it('should allow to render a button with a label followed by an icon', async () => {
@@ -28,25 +30,25 @@ describe('isValidChildrenStructure', () => {
 
         const children = ['Submit', Icon];
 
-        expect(isValidChildrenStructure(children)).toEqual(true);
+        expect(generateChildrenSemantics(children).isValid).toEqual(true);
     });
 
     it('should not allow to render a button with no children', async () => {
-        expect(isValidChildrenStructure(null)).toEqual(false);
-        expect(isValidChildrenStructure([])).toEqual(false);
-        expect(isValidChildrenStructure(<></>)).toEqual(false);
+        expect(generateChildrenSemantics(null).isValid).toEqual(false);
+        expect(generateChildrenSemantics([]).isValid).toEqual(false);
+        expect(generateChildrenSemantics(<></>).isValid).toEqual(false);
     });
 
     it('should not allow to render a button with a node that is not an icon', async () => {
         const NotIcon = React.createElement('span', { icon: 'edit' });
 
-        expect(isValidChildrenStructure(NotIcon)).toEqual(false);
+        expect(generateChildrenSemantics(NotIcon).isValid).toEqual(false);
     });
 
     it('should not allow to render a button with a label that is not a primitive string', async () => {
         const NotIcon = (): ReactNode => <span>Submit</span>;
 
-        expect(isValidChildrenStructure(NotIcon)).toEqual(false);
+        expect(generateChildrenSemantics(NotIcon).isValid).toEqual(false);
     });
 
     it('should not allow to render a button with 2 icons', async () => {
@@ -55,7 +57,7 @@ describe('isValidChildrenStructure', () => {
 
         const children = [Icon1, Icon2];
 
-        expect(isValidChildrenStructure(children)).toEqual(false);
+        expect(generateChildrenSemantics(children).isValid).toEqual(false);
     });
 
     it('should not allow to render a button with children count > 2', async () => {
@@ -67,6 +69,6 @@ describe('isValidChildrenStructure', () => {
             'form',
         ];
 
-        expect(isValidChildrenStructure(children)).toEqual(false);
+        expect(generateChildrenSemantics(children).isValid).toEqual(false);
     });
 });

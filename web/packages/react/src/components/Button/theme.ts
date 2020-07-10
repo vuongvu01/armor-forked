@@ -166,4 +166,15 @@ export const buttonDefaultTheme = {
             paddingBottom: componentSpacing02,
         },
     },
+    SemanticContent: {
+        iconOnly: {
+            padding: componentSpacing03,
+        },
+        iconFirst: {
+            paddingLeft: componentSpacing03,
+        },
+        iconLast: {
+            paddingRight: componentSpacing03,
+        },
+    },
 };

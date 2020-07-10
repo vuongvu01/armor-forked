@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useThemeOverride } from '../../utils/hooks';
 import { useTheme } from '../../styling';
 
-import { useButtonClassName, isValidChildrenStructure } from './utils';
+import { useButtonClassName, generateChildrenSemantics } from './utils';
 import { ButtonStyle, ButtonContent } from './style';
 import { ButtonPropsType } from './type';
 import { buttonDefaultTheme } from './theme';
@@ -46,7 +46,9 @@ export const Button: FunctionComponent<ButtonPropsType> = forwardRef(
             danger,
         );
 
-        if (!isValidChildrenStructure(children)) {
+        const { isValid, childStructure } = generateChildrenSemantics(children);
+
+        if (!isValid) {
             console.error(
                 'Please ensure that button contains only one of the following combinations: \n * icon \n * label \n * icon + label \n * label + icon',
             );
@@ -73,6 +75,7 @@ export const Button: FunctionComponent<ButtonPropsType> = forwardRef(
                             theme={theme}
                             className={classNameRoot}
                             small={small}
+                            childrenSemantics={childStructure}
                         >
                             {children}
                         </ButtonContent>
