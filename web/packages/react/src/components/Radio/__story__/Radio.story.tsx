@@ -4,7 +4,7 @@ import { withKnobs } from '@storybook/addon-knobs';
 import get from 'lodash.get';
 
 import { GroupHelper } from '../../../helpers/GroupHelper';
-import { Radio } from '../Radio';
+import Radio from '../Radio';
 import { RadioGroup } from '../RadioGroup';
 import { Button } from '../../Button';
 

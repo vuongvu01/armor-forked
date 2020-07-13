@@ -11,67 +11,67 @@ import { buttonDefaultTheme } from './theme';
 
 export const RADIO_CLASS_PREFIX = 'Radio';
 
-export const Radio: FunctionComponent<RadioPropsType> = forwardRef(
-    function Radio(
-        {
-            checked,
-            className,
-            classNames,
-            disabled,
-            id: propsId,
-            label,
-            name,
-            onChange,
-            selectedValue,
-            value,
-            ...restProps
-        },
-        ref,
-    ) {
-        const theme = useTheme();
-        const id = propsId || uniqueId('radio-id-');
-        const isChecked = checked || value === selectedValue;
-
-        useThemeOverride(RADIO_CLASS_PREFIX, theme, buttonDefaultTheme);
-
-        const classOverride = useRadioClassName(
-            RADIO_CLASS_PREFIX,
-            className,
-            classNames,
-            disabled,
-            isChecked,
-        );
-
-        const handleOnChange = (event: ChangeEvent<HTMLInputElement>) =>
-            onChange && onChange(event);
-
-        return (
-            <RadioRoot className={classOverride.Root} theme={theme}>
-                <RadioInput
-                    checked={isChecked}
-                    className={classOverride.Input}
-                    disabled={disabled}
-                    id={id}
-                    name={name}
-                    onChange={handleOnChange}
-                    ref={ref}
-                    theme={theme}
-                    type="radio"
-                    value={value}
-                    {...restProps}
-                />
-                <RadioLabel
-                    className={classOverride.Label}
-                    disabled={disabled}
-                    htmlFor={id}
-                    theme={theme}
-                >
-                    {label}
-                </RadioLabel>
-            </RadioRoot>
-        );
+const Radio: FunctionComponent<RadioPropsType> = forwardRef(function Radio(
+    {
+        checked,
+        className,
+        classNames,
+        disabled,
+        id: propsId,
+        label,
+        name,
+        onChange,
+        selectedValue,
+        value,
+        ...restProps
     },
-);
+    ref,
+) {
+    const theme = useTheme();
+    const id = propsId || uniqueId('radio-id-');
+    const isChecked = checked || value === selectedValue;
+
+    useThemeOverride(RADIO_CLASS_PREFIX, theme, buttonDefaultTheme);
+
+    const classOverride = useRadioClassName(
+        RADIO_CLASS_PREFIX,
+        className,
+        classNames,
+        disabled,
+        isChecked,
+    );
+
+    const handleOnChange = (event: ChangeEvent<HTMLInputElement>) =>
+        onChange && onChange(event);
+
+    return (
+        <RadioRoot className={classOverride.Root} theme={theme}>
+            <RadioInput
+                checked={isChecked}
+                className={classOverride.Input}
+                disabled={disabled}
+                id={id}
+                name={name}
+                onChange={handleOnChange}
+                ref={ref}
+                theme={theme}
+                type="radio"
+                value={value}
+                {...restProps}
+            />
+            <RadioLabel
+                className={classOverride.Label}
+                disabled={disabled}
+                htmlFor={id}
+                theme={theme}
+            >
+                {label}
+            </RadioLabel>
+        </RadioRoot>
+    );
+});
+
+Radio.displayName = RADIO_CLASS_PREFIX;
 
 Radio.defaultProps = {
     checked: false,
@@ -88,3 +88,5 @@ Radio.propTypes = {
     selectedValue: PropTypes.string,
     value: PropTypes.string,
 };
+
+export default Radio;
