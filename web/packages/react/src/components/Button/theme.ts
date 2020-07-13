@@ -6,6 +6,29 @@ import {
     componentSpacing04,
 } from '../../tokens';
 
+const primaryInitialColors = {
+    color: '$color.neutral.00',
+    borderColor: '$color.primary.main',
+    backgroundColor: '$color.primary.main',
+};
+
+const primaryDangerInitialColors = {
+    borderColor: '$color.error.main',
+    backgroundColor: '$color.error.main',
+};
+
+const tertiaryInitialColors = {
+    color: '$color.primary.main',
+    borderColor: '$color.neutral.00',
+    backgroundColor: '$color.neutral.00',
+};
+
+const tertiaryDangerInitialColors = {
+    color: '$color.error.main',
+    borderColor: '$color.neutral.00',
+    backgroundColor: '$color.neutral.00',
+};
+
 export const buttonDefaultTheme = {
     Root: {
         base: {
@@ -18,10 +41,7 @@ export const buttonDefaultTheme = {
             backgroundColor: 'transparent',
         },
         primary: {
-            color: '$color.neutral.00',
-            borderColor: '$color.primary.main',
-            backgroundColor: '$color.primary.main',
-
+            ...primaryInitialColors,
             '&:hover': {
                 color: '$color.neutral.00',
                 borderColor: '$color.primary.light',
@@ -42,11 +62,12 @@ export const buttonDefaultTheme = {
                 borderColor: '$color.neutral.03',
                 backgroundColor: '$color.neutral.03',
             },
+            '&:focus:not(:active)': {
+                ...primaryInitialColors,
+            },
         },
         primary__danger: {
-            borderColor: '$color.error.main',
-            backgroundColor: '$color.error.main',
-
+            ...primaryDangerInitialColors,
             '&:hover': {
                 borderColor: '$color.error.light',
                 backgroundColor: '$color.error.light',
@@ -58,6 +79,9 @@ export const buttonDefaultTheme = {
             '&:active': {
                 borderColor: '$color.error.dark',
                 backgroundColor: '$color.error.dark',
+            },
+            '&:focus:not(:active)': {
+                ...primaryDangerInitialColors,
             },
         },
         secondary: {
@@ -101,10 +125,7 @@ export const buttonDefaultTheme = {
             },
         },
         tertiary: {
-            color: '$color.primary.main',
-            borderColor: '$color.neutral.00',
-            backgroundColor: '$color.neutral.00',
-
+            ...tertiaryInitialColors,
             '&:hover': {
                 color: '$color.primary.light',
                 borderColor: '$color.neutral.02',
@@ -125,12 +146,12 @@ export const buttonDefaultTheme = {
                 borderColor: '$color.neutral.03',
                 backgroundColor: '$color.neutral.03',
             },
+            '&:focus:not(:active)': {
+                ...tertiaryInitialColors,
+            },
         },
         tertiary__danger: {
-            color: '$color.error.main',
-            borderColor: '$color.neutral.00',
-            backgroundColor: '$color.neutral.00',
-
+            ...tertiaryDangerInitialColors,
             '&:hover': {
                 color: '$color.error.main',
                 borderColor: '$color.error.lighter',
@@ -150,6 +171,9 @@ export const buttonDefaultTheme = {
                 color: '$color.neutral.04',
                 borderColor: '$color.neutral.03',
                 backgroundColor: '$color.neutral.03',
+            },
+            '&:focus:not(:active)': {
+                ...tertiaryDangerInitialColors,
             },
         },
     },
