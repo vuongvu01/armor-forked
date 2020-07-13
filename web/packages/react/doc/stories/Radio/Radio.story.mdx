@@ -1,7 +1,101 @@
+import { useState } from 'react';
 import { BrowserRouter, Link } from 'react-router-dom';
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import get from 'lodash.get';
 
-import { Radio } from 'src/components';
+import { Button, Radio, RadioGroup } from 'src/components';
+
+export const States = () => {
+    const value = 'radio1';
+    const [firstItemIsChecked, setFirstItemIsChecked] = useState(false);
+    const [isChecked, setIsChecked] = useState(false);
+    const [isDisabled, setDisabled] = useState(false);
+    const handleChecked = event => {
+        if (event.target.value === value) {
+            setFirstItemIsChecked(true);
+        }
+    };
+    return (
+        <>
+            <GroupHelper gap={5}>
+                <h4>Unchecked</h4>
+                <Radio
+                    name="radioName1"
+                    value={value}
+                    onChange={handleChecked}
+                    checked={firstItemIsChecked}
+                />
+            </GroupHelper>
+            <GroupHelper gap={5}>
+                <h4>Checked</h4>
+                <Radio
+                    name="radioName2"
+                    value="2"
+                    onChange={() => {}}
+                    checked
+                />
+            </GroupHelper>
+            <GroupHelper gap={5}>
+                <h4>External control</h4>
+                <Button onClick={() => setIsChecked(!isChecked)}>Toggle</Button>
+                <Button onClick={() => setDisabled(!isDisabled)} marginLeft={2}>
+                    Disable/Enable
+                </Button>
+                <Radio
+                    name="radioName12"
+                    value="2"
+                    onChange={() => {}}
+                    checked={isChecked}
+                    disabled={isDisabled}
+                />
+            </GroupHelper>
+            <GroupHelper gap={2}>
+                <h4>Disabled</h4>
+                <Radio
+                    name="radioName3"
+                    value="3"
+                    onChange={() => {}}
+                    disabled
+                />
+            </GroupHelper>
+            <GroupHelper gap={2}>
+                <h4>Disabled checked</h4>
+                <Radio
+                    name="radioName3"
+                    value="3"
+                    onChange={() => {}}
+                    disabled
+                    checked
+                />
+            </GroupHelper>
+        </>
+    );
+};
+
+export const RadioButtonGroup = () => {
+    const groupName1 = 'radioName1';
+    const [group1SelectedValue, setSelectedValueGroup1] = useState('');
+    const handleChangeGroup1 = event => {
+        const selectedValue = get(event, 'target.value');
+        if (selectedValue) {
+            setSelectedValueGroup1(selectedValue);
+        }
+    };
+    return (
+        <GroupHelper gap={2}>
+            <h4>Radio group</h4>
+            <RadioGroup
+                name={groupName1}
+                selectedValue={group1SelectedValue}
+                onChange={handleChangeGroup1}
+            >
+                <Radio value="val1" />
+                <Radio value="val2" />
+                <Radio value="val3" />
+            </RadioGroup>
+        </GroupHelper>
+    );
+};
 
 <Meta title="Components/Radio" component={Radio} />
 
@@ -11,10 +105,26 @@ import { Radio } from 'src/components';
 import { Radio } from '@deliveryhero/armor';
 ```
 
-## Basic usage
+## States
 
 <Preview>
-    <Story name="Basic usage">
+    <Story name="States">
+        <States />
+    </Story>
+</Preview>
+
+## Radio Group
+
+<Preview>
+    <Story name="Radio Group">
+        <RadioButtonGroup />
+    </Story>
+</Preview>
+
+## Default value pre-selected
+
+<Preview>
+    <Story name="Default value pre-selected">
         <Radio />
     </Story>
 </Preview>

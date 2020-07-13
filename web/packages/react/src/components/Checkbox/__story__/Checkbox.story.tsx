@@ -15,6 +15,7 @@ export default {
 
 export const States = () => {
     const [isChecked, setChecked] = useState(true);
+    const [isDisabled, setDisabled] = useState(false);
     return (
         <>
             <GroupHelper gap={4}>
@@ -27,10 +28,17 @@ export const States = () => {
             </GroupHelper>
             <GroupHelper gap={4}>
                 <p>External control</p>
-                <Button onClick={() => setChecked(!isChecked)}>
-                    Toggle checkbox state
+                <Button small onClick={() => setChecked(!isChecked)}>
+                    On / Off
                 </Button>
-                <Checkbox checked={isChecked} onChange={() => {}} />
+                <Button small onClick={() => setDisabled(!isDisabled)}>
+                    Disable / Enable
+                </Button>
+                <Checkbox
+                    checked={isChecked}
+                    disabled={isDisabled}
+                    onChange={() => {}}
+                />
             </GroupHelper>
             <GroupHelper gap={4}>
                 <p>Default disabled</p>

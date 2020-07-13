@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 import { marginAttributes } from '../../system/attributes';
 import { shouldForwardProp } from '../../utils';
-import { mouseCursor } from '../../styling';
+import { mouseCursor, pointerEvents } from '../../styling';
 import { transitionDurationInSec } from '../../constants';
 import {
     CheckboxCheckmarkPropsType,
@@ -82,6 +82,7 @@ const checkmarkStyle = ({
 export const CheckboxRoot = styled.p.withConfig({
     shouldForwardProp: property => shouldForwardProp(property, {}),
 })<CheckboxRootPropsType>`
+    ${mouseCursor}
     ${marginAttributes}
 `;
 
@@ -110,7 +111,7 @@ export const CheckboxCheckmark = styled.label<CheckboxCheckmarkPropsType>`
         ${checkmarkStyle}
     }
 
-    ${mouseCursor}
+    ${pointerEvents}
 `;
 
 export const CheckboxInput = styled.input<CheckboxInputPropsType>`

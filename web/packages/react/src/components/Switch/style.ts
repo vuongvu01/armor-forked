@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { shouldForwardProp } from '../../utils';
-import { mouseCursor } from '../../styling';
+import { mouseCursor, pointerEvents } from '../../styling';
 import { transitionDurationInSec } from '../../constants';
 import { SwitchCheckboxInputPropsType, SwitchLabelPropsType } from './type';
 
@@ -66,6 +66,8 @@ export const SwitchRoot = styled.p.withConfig({
 })<SwitchLabelPropsType>`
     display: flex;
     align-items: center;
+
+    ${mouseCursor}
 `;
 
 // TODO (nmelnikov 2020-07-06): add a disabled state here as well
@@ -94,7 +96,7 @@ export const SwitchToggle = styled.label<SwitchLabelPropsType>`
         ${toggleDefault}
     }
 
-    ${mouseCursor}
+    ${pointerEvents}
     ${switchColor}
 `;
 

@@ -9,7 +9,7 @@ import { RadioLabel, RadioInput, RadioRoot } from './style';
 import { RadioPropsType } from './type';
 import { buttonDefaultTheme } from './theme';
 
-const CLASS_PREFIX = 'Radio';
+export const RADIO_CLASS_PREFIX = 'Radio';
 
 export const Radio: FunctionComponent<RadioPropsType> = forwardRef(
     function Radio(
@@ -22,6 +22,7 @@ export const Radio: FunctionComponent<RadioPropsType> = forwardRef(
             label,
             name,
             onChange,
+            selectedValue,
             value,
             ...restProps
         },
@@ -29,24 +30,25 @@ export const Radio: FunctionComponent<RadioPropsType> = forwardRef(
     ) {
         const theme = useTheme();
         const id = propsId || uniqueId('radio-id-');
+        const isChecked = checked || value === selectedValue;
 
-        useThemeOverride(CLASS_PREFIX, theme, buttonDefaultTheme);
+        useThemeOverride(RADIO_CLASS_PREFIX, theme, buttonDefaultTheme);
 
         const classOverride = useRadioClassName(
-            CLASS_PREFIX,
+            RADIO_CLASS_PREFIX,
             className,
             classNames,
             disabled,
-            checked,
+            isChecked,
         );
 
         const handleOnChange = (event: ChangeEvent<HTMLInputElement>) =>
             onChange && onChange(event);
 
         return (
-            <RadioRoot theme={theme} className={classOverride.Root}>
+            <RadioRoot className={classOverride.Root} theme={theme}>
                 <RadioInput
-                    checked={checked}
+                    checked={isChecked}
                     className={classOverride.Input}
                     disabled={disabled}
                     id={id}
@@ -59,7 +61,7 @@ export const Radio: FunctionComponent<RadioPropsType> = forwardRef(
                     {...restProps}
                 />
                 <RadioLabel
-                    className={classOverride.Checkmark}
+                    className={classOverride.Label}
                     disabled={disabled}
                     htmlFor={id}
                     theme={theme}
@@ -83,5 +85,6 @@ Radio.propTypes = {
     label: PropTypes.string,
     onChange: PropTypes.func,
     ref: PropTypes.func,
+    selectedValue: PropTypes.string,
     value: PropTypes.string,
 };

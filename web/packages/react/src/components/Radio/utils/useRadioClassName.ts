@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
 
-import { selectorClassGeneratorBasedOnComponent } from '../../styling';
-import { ClassNamesType } from '../type';
+import { selectorClassGeneratorBasedOnComponent } from '../../../styling';
+import { ClassNamesType } from '../../type';
 
-export const useCheckboxClassName = (
+const useRadioClassName = (
     classPrefix: string,
     className?: string,
     classNames?: ClassNamesType,
@@ -28,8 +28,8 @@ export const useCheckboxClassName = (
                 disabled,
                 checked,
             }),
-            Checkmark: selectorClassGeneratorBasedOnComponent({
-                component: 'Checkmark',
+            Label: selectorClassGeneratorBasedOnComponent({
+                component: 'Label',
                 classPrefix,
                 className,
                 classNames,
@@ -39,3 +39,5 @@ export const useCheckboxClassName = (
         }),
         [classPrefix, className, classNames, disabled, checked],
     );
+
+export default useRadioClassName;

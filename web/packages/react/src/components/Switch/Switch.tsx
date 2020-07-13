@@ -46,7 +46,7 @@ export const Switch: FunctionComponent<SwitchPropsType> = forwardRef(
             onChange && onChange(event);
 
         return (
-            <SwitchRoot>
+            <SwitchRoot disabled={disabled}>
                 <SwitchCheckboxInput
                     checked={checked}
                     className={classOverride.CheckboxInput}
