@@ -111,6 +111,9 @@ export const TextInputInput = styled(Wrapper).withConfig({
         theme.componentOverrides.TextInput.Input.base}
     ${getInputDynamicStyle}
     ${(props: TextInputInputPropsType) => props.styles(props)}
+    ${({ disabled }: { disabled?: boolean }) => css`
+        cursor: ${disabled ? 'not-allowed' : 'default'};
+    `}
 `;
 
 export const TextInputLabel = styled.span.withConfig({

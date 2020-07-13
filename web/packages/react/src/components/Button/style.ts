@@ -105,11 +105,9 @@ const semanticAttributesButtonContent = ({
     }
 
     if (count === 2) {
-        const padding = `${
-            isIconFirst
-                ? Button.SemanticContent.iconFirst
-                : Button.SemanticContent.iconLast
-        }`;
+        const padding = isIconFirst
+            ? Button.SemanticContent.iconFirst
+            : Button.SemanticContent.iconLast;
 
         return css`${contentLineHeight}${padding}`;
     }
