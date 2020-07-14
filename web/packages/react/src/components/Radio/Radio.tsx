@@ -4,8 +4,9 @@ import PropTypes from 'prop-types';
 
 import { useThemeOverride } from '../../utils/hooks';
 import { useTheme } from '../../styling';
+import SelectorLabel from '../SelectorLabel';
 import { useRadioClassName } from './utils';
-import { RadioLabel, RadioInput, RadioRoot } from './style';
+import { RadioMark, RadioInput, RadioRoot } from './style';
 import { RadioPropsType } from './type';
 import { buttonDefaultTheme } from './theme';
 
@@ -17,6 +18,7 @@ const Radio: FunctionComponent<RadioPropsType> = forwardRef(function Radio(
         className,
         classNames,
         disabled,
+        error,
         id: propsId,
         label,
         name,
@@ -39,13 +41,14 @@ const Radio: FunctionComponent<RadioPropsType> = forwardRef(function Radio(
         classNames,
         disabled,
         isChecked,
+        error,
     );
 
     const handleOnChange = (event: ChangeEvent<HTMLInputElement>) =>
         onChange && onChange(event);
 
     return (
-        <RadioRoot className={classOverride.Root} theme={theme}>
+        <RadioRoot className={classOverride.Root} theme={theme} for={id}>
             <RadioInput
                 checked={isChecked}
                 className={classOverride.Input}
@@ -59,14 +62,16 @@ const Radio: FunctionComponent<RadioPropsType> = forwardRef(function Radio(
                 value={value}
                 {...restProps}
             />
-            <RadioLabel
+            <RadioMark
                 className={classOverride.Label}
                 disabled={disabled}
                 htmlFor={id}
                 theme={theme}
             >
-                {label}
-            </RadioLabel>
+                <SelectorLabel disabled={disabled} error={error} theme={theme}>
+                    {label}
+                </SelectorLabel>
+            </RadioMark>
         </RadioRoot>
     );
 });
@@ -81,6 +86,7 @@ Radio.defaultProps = {
 Radio.propTypes = {
     checked: PropTypes.bool,
     disabled: PropTypes.bool,
+    error: PropTypes.bool,
     id: PropTypes.string,
     label: PropTypes.string,
     onChange: PropTypes.func,

@@ -32,6 +32,12 @@ const checkedHover = ({
     },
 }: CheckboxInputPropsType) => Checkbox.Root.checked.hover;
 
+const uncheckedHover = ({
+    theme: {
+        componentOverrides: { Checkbox },
+    },
+}: CheckboxInputPropsType) => Checkbox.Root.unchecked.hover;
+
 const disabledBefore = ({
     theme: {
         componentOverrides: { Checkbox },
@@ -79,14 +85,14 @@ const checkmarkStyle = ({
     return css`${checkmarkColor}${tickStyle}`;
 };
 
-export const CheckboxRoot = styled.p.withConfig({
+export const CheckboxRoot = styled.label.withConfig({
     shouldForwardProp: property => shouldForwardProp(property, {}),
 })<CheckboxRootPropsType>`
     ${mouseCursor}
     ${marginAttributes}
 `;
 
-export const CheckboxCheckmark = styled.label<CheckboxCheckmarkPropsType>`
+export const CheckboxCheckmark = styled.span<CheckboxCheckmarkPropsType>`
     position: relative;
     padding-left: ${sizes.checkbox.side}px;
 
@@ -99,8 +105,8 @@ export const CheckboxCheckmark = styled.label<CheckboxCheckmarkPropsType>`
         height: ${sizes.checkbox.side}px;
         border-radius: 4px;
         box-sizing: border-box;
-        transition: all ${transitionDurationInSec}s ease;
         ${checkmarkBox}
+        transition: all ${transitionDurationInSec}s ease;
     }
 
     &::after {
@@ -125,9 +131,9 @@ export const CheckboxInput = styled.input<CheckboxInputPropsType>`
         + ${CheckboxCheckmark}:hover:before,
         &:not(:checked)
         + ${CheckboxCheckmark}:active:before {
-        border: #0042a5;
         border-width: 1px;
         border-style: solid;
+        ${uncheckedHover}
     }
 
     &:checked

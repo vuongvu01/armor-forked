@@ -10,14 +10,14 @@ export const dialogTitleDefaultTheme = {
     // todo: probably reuse Typography component as title
     Text: {
         base: {
-            fontSize: '$typography.sectionTitle.fontSize',
-            lineHeight: '$typography.sectionTitle.lineHeight',
+            fontSize: '$typography.body.fontSize',
+            lineHeight: '$typography.body.lineHeight',
         },
     },
     Description: {
         base: {
-            lineHeight: '$typography.sectionTitle.lineHeight',
-            fontSize: '$typography.sectionTitle.fontSize',
+            lineHeight: '$typography.body.lineHeight',
+            fontSize: '$typography.body.fontSize',
             marginTop: 3,
         },
     },

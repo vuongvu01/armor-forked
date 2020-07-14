@@ -44,6 +44,7 @@ export type TypographyInputType = Partial<
     Pick<TypographyType, 'htmlFontSize' | 'fontFamily' | 'fontSize'>
 >;
 
+// TODO (nmelnikov 2020-07-14): need to ensure that this one is compliant with the newest token structure
 export type ThemeType = Indexed<{
     breakpoints: BreakpointsType;
     color: ObjectLiteralType;

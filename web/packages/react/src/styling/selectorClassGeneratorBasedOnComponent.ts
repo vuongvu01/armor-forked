@@ -8,6 +8,7 @@ const selectorClassGeneratorBasedOnComponent = ({
     classNames,
     disabled,
     checked,
+    error,
 }: ClassBasedOnComponentType) => {
     const baseClassNames = makeClassName(classPrefix, className, classNames);
 
@@ -19,6 +20,9 @@ const selectorClassGeneratorBasedOnComponent = ({
 
     if (disabled) {
         stateClassNames.push(makeBEM(classPrefix, component, 'disabled'));
+    }
+    if (error) {
+        stateClassNames.push(makeBEM(classPrefix, component, 'error'));
     }
 
     return `${baseClassNames} ${stateClassNames.join(' ')}`.trim();

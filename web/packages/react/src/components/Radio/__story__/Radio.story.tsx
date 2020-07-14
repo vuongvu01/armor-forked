@@ -6,7 +6,6 @@ import get from 'lodash.get';
 import { GroupHelper } from '../../../helpers/GroupHelper';
 import Radio from '../Radio';
 import { RadioGroup } from '../RadioGroup';
-import { Button } from '../../Button';
 
 export default {
     title: 'Components/Radio',
@@ -19,8 +18,6 @@ export const States = () => {
     const value1 = 'radio1';
     const value2 = 'radio2';
     const [firstItemIsChecked, setFirstItemIsChecked] = useState(false);
-    const [isChecked, setIsChecked] = useState(false);
-    const [isDisabled, setDisabled] = useState(false);
 
     const handleChecked = (event: ChangeEvent<HTMLInputElement>) => {
         if (event.target.value === value1) {
@@ -35,6 +32,7 @@ export const States = () => {
                 <Radio
                     name="radioName1"
                     value={value1}
+                    label="Pizza"
                     onChange={handleChecked}
                     selectedValue={firstItemIsChecked ? value1 : ''}
                 />
@@ -44,21 +42,8 @@ export const States = () => {
                 <Radio
                     name="radioName2"
                     value={value2}
+                    label="Pasta"
                     selectedValue={value2}
-                />
-            </GroupHelper>
-            <GroupHelper gap={2}>
-                <h4>External control</h4>
-                <Button onClick={() => setIsChecked(!isChecked)}>Toggle</Button>
-                <Button onClick={() => setDisabled(!isDisabled)} marginLeft={2}>
-                    Disable/Enable
-                </Button>
-                <Radio
-                    name="radioName12"
-                    value="2"
-                    onChange={() => {}}
-                    selectedValue={isChecked ? '2' : ''}
-                    disabled={isDisabled}
                 />
             </GroupHelper>
             <GroupHelper gap={2}>
@@ -66,13 +51,20 @@ export const States = () => {
                 <Radio
                     name="radioName3"
                     value="3"
+                    label="Pasta"
                     onChange={() => {}}
                     disabled
                 />
             </GroupHelper>
             <GroupHelper gap={2}>
                 <h4>Disabled, checked</h4>
-                <Radio name="radioName3" value="3" disabled selectedValue="3" />
+                <Radio
+                    name="radioName3"
+                    value="3"
+                    label="Pizza"
+                    disabled
+                    selectedValue="3"
+                />
             </GroupHelper>
         </>
     );
@@ -98,9 +90,9 @@ export const RadioButtonGroup = () => {
                 selectedValue={group1SelectedValue}
                 onChange={handleChangeGroup1}
             >
-                <Radio value="val1" />
-                <Radio value="val2" />
-                <Radio value="val3" />
+                <Radio value="val1" label="Pizza" />
+                <Radio value="val2" label="Pasta" />
+                <Radio value="val3" label="Risotto" />
             </RadioGroup>
         </GroupHelper>
     );
@@ -121,17 +113,17 @@ export const DefaultStates = () => {
 
     return (
         <GroupHelper gap={2}>
-            <h4>Default states (pre-selected and disabled)</h4>
+            <h4>Default states (pre-selected, disabled)</h4>
             <RadioGroup
                 name={groupName2}
                 selectedValue={group2SelectedValue}
                 onChange={handleChangeGroup2}
             >
-                <Radio value="val1" />
-                <Radio value={value2} />
-                <Radio value="val3" />
-                <Radio value="val4" />
-                <Radio disabled value="val5" />
+                <Radio value="val1" label="Pizza" />
+                <Radio value={value2} label="Pasta" />
+                <Radio value="val3" label="Risotto" />
+                <Radio value="val4" label="Frittata" />
+                <Radio disabled value="val5" label="Lasagne" />
             </RadioGroup>
         </GroupHelper>
     );

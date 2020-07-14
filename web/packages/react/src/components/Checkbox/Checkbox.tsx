@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import { useThemeOverride } from '../../utils/hooks';
 import { useTheme } from '../../styling';
+import SelectorLabel from '../SelectorLabel';
 import { useCheckboxClassName } from './utils';
 import { CheckboxInput, CheckboxCheckmark, CheckboxRoot } from './style';
 import { CheckboxPropsType } from './type';
@@ -14,14 +15,15 @@ const CLASS_PREFIX = 'Checkbox';
 export const Checkbox: FunctionComponent<CheckboxPropsType> = forwardRef(
     function Checkbox(
         {
+            checked,
+            checkedIcon,
             className,
             classNames,
             disabled,
-            checked,
-            onChange,
-            checkedIcon,
-            label,
+            error,
             id: propsId,
+            label,
+            onChange,
             ...restProps
         },
         ref,
@@ -37,6 +39,7 @@ export const Checkbox: FunctionComponent<CheckboxPropsType> = forwardRef(
             classNames,
             disabled,
             checked,
+            error,
         );
 
         const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) =>
@@ -47,6 +50,7 @@ export const Checkbox: FunctionComponent<CheckboxPropsType> = forwardRef(
                 className={classOverride.Root}
                 disabled={disabled}
                 theme={theme}
+                for={id}
             >
                 <CheckboxInput
                     className={classOverride.Input}
@@ -67,7 +71,15 @@ export const Checkbox: FunctionComponent<CheckboxPropsType> = forwardRef(
                     disabled={disabled}
                     for={id}
                     theme={theme}
-                />
+                >
+                    <SelectorLabel
+                        disabled={disabled}
+                        error={error}
+                        theme={theme}
+                    >
+                        {label}
+                    </SelectorLabel>
+                </CheckboxCheckmark>
             </CheckboxRoot>
         );
     },
@@ -82,6 +94,7 @@ Checkbox.propTypes = {
     checked: PropTypes.bool,
     checkedIcon: PropTypes.oneOf(['tick', 'dash']),
     disabled: PropTypes.bool,
+    error: PropTypes.bool,
     id: PropTypes.string,
     label: PropTypes.string,
     onChange: PropTypes.func,

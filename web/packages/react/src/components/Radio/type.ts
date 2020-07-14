@@ -11,11 +11,13 @@ export type ClassBasedOnComponentType = {
     classNames?: ClassNamesType;
     disabled?: boolean;
     checked?: boolean;
+    error?: boolean;
 };
 
 type RadioEffectivePropsType = Indexed<{
     // add other custom properties here
     selectedValue?: string;
+    error?: boolean;
 }> &
     InputHTMLAttributes<HTMLInputElement> &
     MarginAttributesType;
@@ -45,7 +47,7 @@ export type RadioInputPropsType = Pick<
     | 'theme'
 >;
 
-export type RadioLabelPropsType = Pick<
+export type RadioMarkPropsType = Pick<
     RadioEffectivePropsType,
     'disabled' | 'checked' | 'theme' | 'className' | 'name'
 >;

@@ -9,6 +9,7 @@ export const useCheckboxClassName = (
     classNames?: ClassNamesType,
     disabled?: boolean,
     checked?: boolean,
+    error?: boolean,
 ) =>
     useMemo(
         () => ({
@@ -19,6 +20,7 @@ export const useCheckboxClassName = (
                 classNames,
                 disabled,
                 checked,
+                error,
             }),
             Input: selectorClassGeneratorBasedOnComponent({
                 component: 'Input',
@@ -27,6 +29,7 @@ export const useCheckboxClassName = (
                 classNames,
                 disabled,
                 checked,
+                error,
             }),
             Checkmark: selectorClassGeneratorBasedOnComponent({
                 component: 'Checkmark',
@@ -35,7 +38,8 @@ export const useCheckboxClassName = (
                 classNames,
                 disabled,
                 checked,
+                error,
             }),
         }),
-        [classPrefix, className, classNames, disabled, checked],
+        [classPrefix, className, classNames, disabled, checked, error],
     );

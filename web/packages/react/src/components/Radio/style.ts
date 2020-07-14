@@ -5,7 +5,7 @@ import { shouldForwardProp } from '../../utils';
 import { mouseCursor } from '../../styling';
 import { transitionDurationInSec } from '../../constants';
 import {
-    RadioLabelPropsType,
+    RadioMarkPropsType,
     RadioInputPropsType,
     RadioRootPropsType,
 } from './type';
@@ -59,11 +59,11 @@ export const RadioRoot = styled.p.withConfig({
     ${marginAttributes}
 `;
 
-export const RadioLabel = styled.label<RadioLabelPropsType>`
+export const RadioMark = styled.label<RadioMarkPropsType>`
     position: relative;
-    padding-left: ${2 * sizes.container.side}px;
+    padding-left: ${sizes.container.side}px;
     cursor: pointer;
-    display: inline-block;
+    display: inline-flex;
 
     ${mouseCursor}
 `;
@@ -75,7 +75,7 @@ export const RadioInput = styled.input<RadioInputPropsType>`
     position: absolute;
     width: 0;
 
-    &:not(:checked) + ${RadioLabel}:before, &:checked + ${RadioLabel}:before {
+    &:not(:checked) + ${RadioMark}:before, &:checked + ${RadioMark}:before {
         content: '';
         position: absolute;
         left: 0;
@@ -88,7 +88,7 @@ export const RadioInput = styled.input<RadioInputPropsType>`
         ${containerStyle}
     }
 
-    &:not(:checked) + ${RadioLabel}:after, &:checked + ${RadioLabel}:after {
+    &:not(:checked) + ${RadioMark}:after, &:checked + ${RadioMark}:after {
         content: '';
         position: absolute;
         width: ${sizes.dot.side}px;
@@ -100,28 +100,28 @@ export const RadioInput = styled.input<RadioInputPropsType>`
         ${dotStyle}
     }
 
-    &:not(:checked) + ${RadioLabel}:after {
+    &:not(:checked) + ${RadioMark}:after {
         opacity: 0;
         transform: scale(0);
     }
 
-    &:checked + ${RadioLabel}:after {
+    &:checked + ${RadioMark}:after {
         opacity: 1;
         transform: scale(1);
     }
 
-    &:not(:disabled):checked + ${RadioLabel}:before {
+    &:not(:disabled):checked + ${RadioMark}:before {
         ${containerStyleHighlighted}
     }
 
     &:not(:disabled):checked
-        + ${RadioLabel}:hover:before,
+        + ${RadioMark}:hover:before,
         &:not(:disabled):not(:checked)
-        + ${RadioLabel}:hover:before {
+        + ${RadioMark}:hover:before {
         ${containerStyleOnHover}
     }
 
-    &:not(:disabled):checked + ${RadioLabel}:hover:after {
+    &:not(:disabled):checked + ${RadioMark}:hover:after {
         ${dotStyleOnHover}
     }
 `;

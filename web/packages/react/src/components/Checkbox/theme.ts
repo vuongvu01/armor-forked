@@ -1,6 +1,7 @@
 const color = {
     main: '$color.primary.main',
     light: '$color.primary.light',
+    dark: '$color.primary.dark',
     contrast: '$color.neutral.00',
     neutral01: '$color.neutral.01',
     neutral03: '$color.neutral.03',
@@ -21,6 +22,11 @@ export const buttonDefaultTheme = {
             disabled: {
                 background: color.neutral01,
                 borderColor: color.neutral03,
+            },
+        },
+        unchecked: {
+            hover: {
+                borderColor: color.dark,
             },
         },
         checkmark: {

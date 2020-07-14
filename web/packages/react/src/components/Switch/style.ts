@@ -61,21 +61,16 @@ const disabledCheckedBackground = ({
     },
 }: SwitchCheckboxInputPropsType) => Switch.Label.disabled__checked;
 
-export const SwitchRoot = styled.p.withConfig({
+export const SwitchRoot = styled.label.withConfig({
     shouldForwardProp: property => shouldForwardProp(property, {}),
 })<SwitchLabelPropsType>`
-    display: flex;
+    display: inline-flex;
     align-items: center;
 
     ${mouseCursor}
 `;
 
-// TODO (nmelnikov 2020-07-06): add a disabled state here as well
-export const SwitchLabel = styled.span<SwitchLabelPropsType>`
-    padding-left: 16px;
-`;
-
-export const SwitchToggle = styled.label<SwitchLabelPropsType>`
+export const SwitchToggle = styled.span<SwitchLabelPropsType>`
     position: relative;
     display: inline-flex;
     border-radius: 9999px;
@@ -98,6 +93,7 @@ export const SwitchToggle = styled.label<SwitchLabelPropsType>`
 
     ${pointerEvents}
     ${switchColor}
+    ${mouseCursor}
 `;
 
 export const SwitchCheckboxInput = styled.input<SwitchCheckboxInputPropsType>`

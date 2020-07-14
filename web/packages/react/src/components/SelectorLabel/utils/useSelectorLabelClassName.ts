@@ -3,7 +3,7 @@ import { useMemo } from 'react';
 import { selectorClassGeneratorBasedOnComponent } from '../../../styling';
 import { ClassNamesType } from '../../type';
 
-const useRadioClassName = (
+const useSelectorLabelClassName = (
     classPrefix: string,
     className?: string,
     classNames?: ClassNamesType,
@@ -13,24 +13,6 @@ const useRadioClassName = (
 ) =>
     useMemo(
         () => ({
-            Root: selectorClassGeneratorBasedOnComponent({
-                component: 'Root',
-                classPrefix,
-                className,
-                classNames,
-                disabled,
-                checked,
-                error,
-            }),
-            Input: selectorClassGeneratorBasedOnComponent({
-                component: 'Input',
-                classPrefix,
-                className,
-                classNames,
-                disabled,
-                checked,
-                error,
-            }),
             Label: selectorClassGeneratorBasedOnComponent({
                 component: 'Label',
                 classPrefix,
@@ -44,4 +26,4 @@ const useRadioClassName = (
         [classPrefix, className, classNames, disabled, checked, error],
     );
 
-export default useRadioClassName;
+export default useSelectorLabelClassName;
