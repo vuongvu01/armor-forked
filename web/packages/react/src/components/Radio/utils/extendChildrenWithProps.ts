@@ -2,7 +2,6 @@ import React, { Children } from 'react';
 import get from 'lodash.get';
 import uniq from 'lodash.uniq';
 
-import { storybookChildElementName } from '../../../constants';
 import { RADIO_CLASS_PREFIX } from '../Radio';
 import { RADIO_GROUP_CLASS_PREFIX } from '../RadioGroup';
 
@@ -13,12 +12,11 @@ const extendChildrenWithProps = (
     const values: any[] = [];
 
     const childrenWithExtendedProps = Children.map(children, child => {
-        let childName = get(child, 'type.displayName') || get(child, 'type');
+        const childName =
+            get(child, 'props.originalType.displayName') ||
+            get(child, 'type.displayName') ||
+            get(child, 'type');
         const value = get(child, 'props.value');
-
-        if (childName === storybookChildElementName) {
-            childName = get(child, 'props.mdxType');
-        }
 
         if (childName !== RADIO_CLASS_PREFIX) {
             console.error(
