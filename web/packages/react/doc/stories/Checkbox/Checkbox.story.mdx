@@ -8,22 +8,22 @@ import { Checkbox, Button } from '../../../src/components';
 
 # Checkbox
 
-~~~
+~~~js
 import { Checkbox } from '@deliveryhero/armor';
 ~~~
 
 ## Basic usage
 
 <Preview>
-    <Story name="Basic usage">
-        <Checkbox />
+    <Story name="Basic usage" height="75px">
+        <Checkbox label="add mozzarella" />
     </Story>
 </Preview>
 
 ## Checkmark styles
 
 <Preview>
-    <Story name="Checkmark styles">
+    <Story name="Checkmark styles" height="75px">
        <>
             <h4>Tick</h4>
             <Checkbox defaultChecked
@@ -47,7 +47,7 @@ export const MyDynamicCheckbox = () => {
 }
 
 <Preview>
-    <Story name="States">
+    <Story name="States" height="75px">
         <>
             <h4>Unchecked</h4>
             <Checkbox />
@@ -64,3 +64,7 @@ export const MyDynamicCheckbox = () => {
         </>
     </Story>
 </Preview>
+
+## Properties
+
+<Props of={Checkbox} />

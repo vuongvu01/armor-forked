@@ -81,14 +81,15 @@ export const defaultThemeDeclaration = {
             letterSpacing: letterSpacingMedium,
         },
         labelMedium: {
-            fontSize: fontSize02,
+            fontSize: fontSize03,
             fontWeight: fontWeightMedium,
             letterSpacing: letterSpacingLarge,
-            lineHeight: lineHeight01,
+            lineHeight: lineHeight02,
         },
         labelSmall: {
             fontSize: fontSize01,
             lineHeight: lineHeight01,
+            fontWeight: fontWeightMedium,
             letterSpacing: letterSpacingMedium,
         },
         paragraphLarge: {
