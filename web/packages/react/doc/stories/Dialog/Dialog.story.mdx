@@ -1,5 +1,5 @@
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
-import { Button, Dialog, DialogTitle, DialogContent, DialogActions } from '../../../src/components/';
+import { Button, Checkbox, Dialog, DialogTitle, DialogContent, DialogActions } from '../../../src/components/';
 import { StoryHelper } from './StoryHelper';
 import { LoremIpsum } from '../../../src/helpers/LoremIpsum';
 import { Nodes } from '../../../src/helpers/Nodes';
@@ -8,7 +8,7 @@ import { Nodes } from '../../../src/helpers/Nodes';
 
 # Dialog
 
-The `Dialog` component allows to display modal-ish dialog windows.
+The `Dialog` component allows to display modal windows.
 
 ~~~js
 import { Dialog, DialogTitle, DialogContent, DialogActions } from '@deliveryhero/armor';
@@ -32,7 +32,7 @@ import { Dialog, DialogTitle, DialogContent, DialogActions } from '@deliveryhero
                              <Button tertiary onClick={() => setOpen(false)}>
                                  No, I like pies
                              </Button>
-                             <Button>Yes, of course</Button>
+                             <Button onClick={() => setOpen(false)}>Yes, of course</Button>
                          </DialogActions>
                      </Dialog>
                      <Button onClick={() => setOpen(true)} secondary>Ask an important question</Button>
@@ -57,21 +57,16 @@ import { Dialog, DialogTitle, DialogContent, DialogActions } from '@deliveryhero
                              What would you like to buy?
                          </DialogTitle>
                          <DialogContent>
-                             <label>
-                                 <input type="checkbox" />
-                                 House
-                             </label><br />
-                             <label>
-                                 <input type="checkbox" />
-                                 Yacht
-                             </label><br />
-                             <label>
-                                 <input type="checkbox" />
-                                 Plane
-                             </label>
+                             <Checkbox label="Pizza" />
+                             <br />
+                             <br />
+                             <Checkbox label="Pasta" />
+                             <br />
+                             <br />
+                             <Checkbox label="Risotto" />
                          </DialogContent>
                          <DialogActions>
-                             <Button>Confirm order</Button>
+                             <Button onClick={() => setOpen(false)}>Confirm order</Button>
                          </DialogActions>
                      </Dialog>
                      <Button onClick={() => setOpen(true)} secondary>Shopping list</Button>
@@ -121,11 +116,11 @@ It is possible to control maximum width of the `Dialog` by utilizing `maxWidth` 
                      >
                          <DialogTitle>
                              I have different width<br /><br />
-                             <Button onClick={() => setMaxWidth('xs')} disabled={maxWidth === 'xs'} marginRight={2}>XS</Button>
-                              <Button onClick={() => setMaxWidth('sm')} disabled={maxWidth === 'sm'} marginRight={2}>SM</Button>
-                              <Button onClick={() => setMaxWidth('md')} disabled={maxWidth === 'md'} marginRight={2}>MD</Button>
-                              <Button onClick={() => setMaxWidth('lg')} disabled={maxWidth === 'lg'} marginRight={2}>LG</Button>
-                              <Button onClick={() => setMaxWidth('xl')} disabled={maxWidth === 'xl'}>XL</Button>
+                             <Button onClick={() => setMaxWidth('xs')} disabled={maxWidth === 'xs'}  marginRight={2} marginBottom={2}>XS</Button>
+                              <Button onClick={() => setMaxWidth('sm')} disabled={maxWidth === 'sm'} marginRight={2} marginBottom={2}>SM</Button>
+                              <Button onClick={() => setMaxWidth('md')} disabled={maxWidth === 'md'} marginRight={2} marginBottom={2}>MD</Button>
+                              <Button onClick={() => setMaxWidth('lg')} disabled={maxWidth === 'lg'} marginRight={2} marginBottom={2}>LG</Button>
+                              <Button onClick={() => setMaxWidth('xl')} disabled={maxWidth === 'xl'} marginRight={2} marginBottom={2}>XL</Button>
                          </DialogTitle>
                          <DialogContent>
                              This dialog always occupies as much of space as possible, because the content is huge.
@@ -157,16 +152,16 @@ It is also possible to expand width of the `Dialog` to 100% of the parent contai
                      >
                          <DialogTitle>
                               I have different width<br /><br />
-                              <Button onClick={() => setMaxWidth('xs')} disabled={maxWidth === 'xs'} marginRight={2}>XS</Button>
-                              <Button onClick={() => setMaxWidth('sm')} disabled={maxWidth === 'sm'} marginRight={2}>SM</Button>
-                              <Button onClick={() => setMaxWidth('md')} disabled={maxWidth === 'md'} marginRight={2}>MD</Button>
-                              <Button onClick={() => setMaxWidth('lg')} disabled={maxWidth === 'lg'} marginRight={2}>LG</Button>
-                              <Button onClick={() => setMaxWidth('xl')} disabled={maxWidth === 'xl'}>XL</Button>
+                              <Button onClick={() => setMaxWidth('xs')} disabled={maxWidth === 'xs'} marginRight={2} marginBottom={2}>XS</Button>
+                              <Button onClick={() => setMaxWidth('sm')} disabled={maxWidth === 'sm'} marginRight={2} marginBottom={2}>SM</Button>
+                              <Button onClick={() => setMaxWidth('md')} disabled={maxWidth === 'md'} marginRight={2} marginBottom={2}>MD</Button>
+                              <Button onClick={() => setMaxWidth('lg')} disabled={maxWidth === 'lg'} marginRight={2} marginBottom={2}>LG</Button>
+                              <Button onClick={() => setMaxWidth('xl')} disabled={maxWidth === 'xl'} marginRight={2} marginBottom={2}>XL</Button>
                               <br />
                               <Button onClick={() => setWide(!wide)} secondary marginTop={2}>{wide ? 'Shrink to auto with' : 'Expand to 100% width'}</Button>
                          </DialogTitle>
                          <DialogContent>
-                              This dialog has little content, but you can tell him to occupy all available space.
+                              This dialog has little content, but you can tell it to occupy all available space.
                          </DialogContent>
                      </Dialog>
                      <Button onClick={() => setOpen(true)} secondary>I have different width</Button>

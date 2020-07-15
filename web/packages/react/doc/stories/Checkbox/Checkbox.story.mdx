@@ -12,55 +12,34 @@ import { Checkbox, Button } from '../../../src/components';
 import { Checkbox } from '@deliveryhero/armor';
 ~~~
 
-## Basic usage
+## States
+
+
 
 <Preview>
-    <Story name="Basic usage" height="75px">
-        <Checkbox label="add mozzarella" />
+    <Story name="States" height="220px">
+        <>
+            <Checkbox label="Unchecked" />
+            <h1 />
+            <Checkbox defaultChecked label="Checked" />
+            <h1 />
+            <Checkbox disabled label="Unchecked disabled" />
+            <h1 />
+            <Checkbox checked disabled label="Checked disabled" />
+            <h1 />
+            <Checkbox checked disabled checkedIcon="dash" label="Checked disabled dash"  />
+        </>
     </Story>
 </Preview>
 
 ## Checkmark styles
 
 <Preview>
-    <Story name="Checkmark styles" height="75px">
+    <Story name="Checkmark styles" height="120px">
        <>
-            <h4>Tick</h4>
-            <Checkbox defaultChecked
-                       checkedIcon="tick" />
-            <h4>Dash</h4>
-            <Checkbox defaultChecked checkedIcon="dash" />
-        </>
-    </Story>
-</Preview>
-
-## States
-
-export const MyDynamicCheckbox = () => {
-  const [isChecked, setChecked] = useState(true);
-  return (
-    <>
-        <Button onClick={() => setChecked(!isChecked)}> Toggle checkbox state </Button>
-        <Checkbox checked={isChecked} onChange={() => {}}  />
-    </>
-  )
-}
-
-<Preview>
-    <Story name="States" height="75px">
-        <>
-            <h4>Unchecked</h4>
-            <Checkbox />
-            <h4>Checked</h4>
-            <Checkbox defaultChecked />
-            <h4>External control</h4>
-            <MyDynamicCheckbox />
-            <h4>Unchecked disabled</h4>
-            <Checkbox disabled />
-            <h4>Checked disabled</h4>
-            <Checkbox checked disabled />
-            <h4>Checked disabled dash</h4>
-            <Checkbox checked disabled checkedIcon="dash"  />
+            <Checkbox defaultChecked checkedIcon="tick" label="tick" />
+            <h1 />
+            <Checkbox defaultChecked checkedIcon="dash" label="dash" />
         </>
     </Story>
 </Preview>
