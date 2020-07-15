@@ -12,14 +12,6 @@ import { Nodes } from '../../../src/helpers/Nodes';
 import { Switch } from '@deliveryhero/armor';
 ```
 
-## Basic usage
-
-<Preview>
-    <Story name="Basic usage">
-        <Switch />
-    </Story>
-</Preview>
-
 ## States
 
 export const MyDynamicSwitch = () => {
@@ -27,26 +19,33 @@ export const MyDynamicSwitch = () => {
   const [isDisabled, setDisabled] = useState(false);
   return (
     <>
-        <h4>External control</h4>
         <Button onClick={() => setChecked(!isChecked)}>Toggle</Button>
         <Button marginLeft={2} onClick={() => setDisabled(!isDisabled)} >Disable/Enable</Button>
-        <Switch checked={isChecked} disabled={isDisabled} />
+        <br />
+        <br />
+        <Switch checked={isChecked} disabled={isDisabled} label="External control" />
     </>
   )
 }
 
 <Preview>
-    <Story name="States">
+    <Story name="States" height="360px">
         <>
-            <h4>Off</h4>
-            <Switch />
-            <h4>On by default</h4>
-            <Switch defaultChecked />
+            <Switch label="Default" />
+            <br />
+            <br />
+            <Switch defaultChecked label="Switched by default" />
+            <br />
+            <br />
+            <Switch disabled label="OFF, disabled" />
+            <br />
+            <br />
+            <Switch checked disabled label="ON, disabled" />
+            <br />
+            <br />
+            <br />
+            <br />
             <MyDynamicSwitch />
-            <h4>Off disabled</h4>
-            <Switch disabled />
-            <h4>On disabled</h4>
-            <Switch checked disabled />
         </>
     </Story>
 </Preview>
