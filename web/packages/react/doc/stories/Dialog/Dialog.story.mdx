@@ -20,25 +20,25 @@ import { Dialog, DialogTitle, DialogContent, DialogActions } from '@deliveryhero
     <Story name="Basic usage">
         <StoryHelper>
             {({ open, setOpen }) => (
-                 <>
-                     <Dialog
-                         open={open}
-                         onClose={() => setOpen(false)}
-                     >
-                         <DialogTitle description="Your answer will define Galaxy's fate">
-                             Would you like to have an icecream?
-                         </DialogTitle>
-                         <DialogActions>
-                             <Button tertiary onClick={() => setOpen(false)}>
-                                 No, I like pies
-                             </Button>
-                             <Button onClick={() => setOpen(false)}>Yes, of course</Button>
-                         </DialogActions>
-                     </Dialog>
-                     <Button onClick={() => setOpen(true)} secondary>Ask an important question</Button>
-                 </>
-            )}
-        </StoryHelper>
+     <>
+         <Dialog
+             open={open}
+             onClose={() => setOpen(false)}
+         >
+             <DialogTitle description="Your answer will define Galaxy's fate">
+                 Would you like to have an icecream?
+             </DialogTitle>
+             <DialogActions>
+                 <Button tertiary onClick={() => setOpen(false)}>
+                     No, I like pies
+                 </Button>
+                 <Button onClick={() => setOpen(false)}>Yes, of course</Button>
+             </DialogActions>
+         </Dialog>
+         <Button onClick={() => setOpen(true)} secondary>Ask an important question</Button>
+     </>
+)}
+</StoryHelper>
     </Story>
 </Preview>
 
@@ -48,31 +48,31 @@ import { Dialog, DialogTitle, DialogContent, DialogActions } from '@deliveryhero
     <Story name="Usage with content">
         <StoryHelper>
             {({ open, setOpen, onClose }) => (
-                 <>
-                     <Dialog
-                         open={open}
-                         onClose={onClose}
-                     >
-                         <DialogTitle>
-                             What would you like to buy?
-                         </DialogTitle>
-                         <DialogContent>
-                             <Checkbox label="Pizza" />
-                             <br />
-                             <br />
-                             <Checkbox label="Pasta" />
-                             <br />
-                             <br />
-                             <Checkbox label="Risotto" />
-                         </DialogContent>
-                         <DialogActions>
-                             <Button onClick={() => setOpen(false)}>Confirm order</Button>
-                         </DialogActions>
-                     </Dialog>
-                     <Button onClick={() => setOpen(true)} secondary>Shopping list</Button>
-                 </>
-            )}
-        </StoryHelper>
+     <>
+         <Dialog
+             open={open}
+             onClose={onClose}
+         >
+             <DialogTitle>
+                 What would you like to buy?
+             </DialogTitle>
+             <DialogContent>
+                 <Checkbox label="Pizza" />
+                 <br />
+                 <br />
+                 <Checkbox label="Pasta" />
+                 <br />
+                 <br />
+                 <Checkbox label="Risotto" />
+             </DialogContent>
+             <DialogActions>
+                 <Button onClick={() => setOpen(false)}>Confirm order</Button>
+             </DialogActions>
+         </Dialog>
+         <Button onClick={() => setOpen(true)} secondary>Shopping list</Button>
+     </>
+)}
+</StoryHelper>
     </Story>
 </Preview>
 
@@ -82,21 +82,21 @@ import { Dialog, DialogTitle, DialogContent, DialogActions } from '@deliveryhero
     <Story name="Disable overlay and close button">
         <StoryHelper>
             {({ open, setOpen, onClose }) => (
-                <>
-                    <Dialog
-                        open={open}
-                        onClose={onClose}
-                        disableOverlay
-                        disableCloseButton
-                    >
-                        <DialogTitle>
-                            You cant close me, humble yourself and refresh the page!
-                        </DialogTitle>
-                    </Dialog>
-                    <Button onClick={() => setOpen(true)} secondary>It's a trap</Button> 
-                </>
-            )}
-        </StoryHelper>
+    <>
+        <Dialog
+            open={open}
+            onClose={onClose}
+            disableOverlay
+            disableCloseButton
+        >
+            <DialogTitle>
+                You cant close me, humble yourself and refresh the page!
+            </DialogTitle>
+        </Dialog>
+        <Button onClick={() => setOpen(true)} secondary>It's a trap</Button>
+    </>
+)}
+</StoryHelper>
     </Story>
 </Preview>
 
@@ -108,30 +108,30 @@ It is possible to control maximum width of the `Dialog` by utilizing `maxWidth` 
     <Story name="Max width constraint">
         <StoryHelper>
             {({ open, setOpen, onClose, setMaxWidth, maxWidth }) => (
-                 <>
-                     <Dialog
-                         open={open}
-                         onClose={onClose}
-                         maxWidth={maxWidth}
-                     >
-                         <DialogTitle>
-                             I have different width<br /><br />
-                             <Button onClick={() => setMaxWidth('xs')} disabled={maxWidth === 'xs'}  marginRight={2} marginBottom={2}>XS</Button>
-                              <Button onClick={() => setMaxWidth('sm')} disabled={maxWidth === 'sm'} marginRight={2} marginBottom={2}>SM</Button>
-                              <Button onClick={() => setMaxWidth('md')} disabled={maxWidth === 'md'} marginRight={2} marginBottom={2}>MD</Button>
-                              <Button onClick={() => setMaxWidth('lg')} disabled={maxWidth === 'lg'} marginRight={2} marginBottom={2}>LG</Button>
-                              <Button onClick={() => setMaxWidth('xl')} disabled={maxWidth === 'xl'} marginRight={2} marginBottom={2}>XL</Button>
-                         </DialogTitle>
-                         <DialogContent>
-                             This dialog always occupies as much of space as possible, because the content is huge.
-                             <LoremIpsum />
-                             <LoremIpsum />
-                         </DialogContent>
-                     </Dialog>
-                     <Button onClick={() => setOpen(true)} secondary>I have different max width</Button>
-                 </>
-            )}
-        </StoryHelper>
+     <>
+         <Dialog
+             open={open}
+             onClose={onClose}
+             maxWidth={maxWidth}
+         >
+             <DialogTitle>
+                 I have different width<br /><br />
+                 <Button onClick={() => setMaxWidth('xs')} disabled={maxWidth === 'xs'}  marginRight={2} marginBottom={2}>XS</Button>
+                  <Button onClick={() => setMaxWidth('sm')} disabled={maxWidth === 'sm'} marginRight={2} marginBottom={2}>SM</Button>
+                  <Button onClick={() => setMaxWidth('md')} disabled={maxWidth === 'md'} marginRight={2} marginBottom={2}>MD</Button>
+                  <Button onClick={() => setMaxWidth('lg')} disabled={maxWidth === 'lg'} marginRight={2} marginBottom={2}>LG</Button>
+                  <Button onClick={() => setMaxWidth('xl')} disabled={maxWidth === 'xl'} marginRight={2} marginBottom={2}>XL</Button>
+             </DialogTitle>
+             <DialogContent>
+                 This dialog always occupies as much of space as possible, because the content is huge.
+                 <LoremIpsum />
+                 <LoremIpsum />
+             </DialogContent>
+         </Dialog>
+         <Button onClick={() => setOpen(true)} secondary>I have different max width</Button>
+     </>
+)}
+</StoryHelper>
     </Story>
 </Preview>
 
@@ -143,31 +143,31 @@ It is also possible to expand width of the `Dialog` to 100% of the parent contai
     <Story name="Wide dialog">
         <StoryHelper>
             {({ open, setOpen, onClose, wide, maxWidth, setMaxWidth, setWide }) => (
-                 <>
-                     <Dialog
-                         open={open}
-                         onClose={onClose}
-                         maxWidth={maxWidth}
-                         wide={wide}
-                     >
-                         <DialogTitle>
-                              I have different width<br /><br />
-                              <Button onClick={() => setMaxWidth('xs')} disabled={maxWidth === 'xs'} marginRight={2} marginBottom={2}>XS</Button>
-                              <Button onClick={() => setMaxWidth('sm')} disabled={maxWidth === 'sm'} marginRight={2} marginBottom={2}>SM</Button>
-                              <Button onClick={() => setMaxWidth('md')} disabled={maxWidth === 'md'} marginRight={2} marginBottom={2}>MD</Button>
-                              <Button onClick={() => setMaxWidth('lg')} disabled={maxWidth === 'lg'} marginRight={2} marginBottom={2}>LG</Button>
-                              <Button onClick={() => setMaxWidth('xl')} disabled={maxWidth === 'xl'} marginRight={2} marginBottom={2}>XL</Button>
-                              <br />
-                              <Button onClick={() => setWide(!wide)} secondary marginTop={2}>{wide ? 'Shrink to auto with' : 'Expand to 100% width'}</Button>
-                         </DialogTitle>
-                         <DialogContent>
-                              This dialog has little content, but you can tell it to occupy all available space.
-                         </DialogContent>
-                     </Dialog>
-                     <Button onClick={() => setOpen(true)} secondary>I have different width</Button>
-                 </>
-            )}
-        </StoryHelper>
+     <>
+         <Dialog
+             open={open}
+             onClose={onClose}
+             maxWidth={maxWidth}
+             wide={wide}
+         >
+             <DialogTitle>
+                  I have different width<br /><br />
+                  <Button onClick={() => setMaxWidth('xs')} disabled={maxWidth === 'xs'} marginRight={2} marginBottom={2}>XS</Button>
+                  <Button onClick={() => setMaxWidth('sm')} disabled={maxWidth === 'sm'} marginRight={2} marginBottom={2}>SM</Button>
+                  <Button onClick={() => setMaxWidth('md')} disabled={maxWidth === 'md'} marginRight={2} marginBottom={2}>MD</Button>
+                  <Button onClick={() => setMaxWidth('lg')} disabled={maxWidth === 'lg'} marginRight={2} marginBottom={2}>LG</Button>
+                  <Button onClick={() => setMaxWidth('xl')} disabled={maxWidth === 'xl'} marginRight={2} marginBottom={2}>XL</Button>
+                  <br />
+                  <Button onClick={() => setWide(!wide)} secondary marginTop={2}>{wide ? 'Shrink to auto with' : 'Expand to 100% width'}</Button>
+             </DialogTitle>
+             <DialogContent>
+                  This dialog has little content, but you can tell it to occupy all available space.
+             </DialogContent>
+         </Dialog>
+         <Button onClick={() => setOpen(true)} secondary>I have different width</Button>
+     </>
+)}
+</StoryHelper>
     </Story>
 </Preview>
 
@@ -179,33 +179,33 @@ It is also possible to expand width of the `Dialog` to 100% of the parent contai
     <Story name="Scroll type">
         <StoryHelper>
             {({ open, setOpen, onClose, scrollType, setScrollType }) => (
-                <>
-                    <Dialog
-                        open={open}
-                        onClose={onClose}
-                        maxWidth="md"
-                        scroll={scrollType}
-                    >
-                        <DialogTitle>
-                            I have different width<br /><br />
-                            <Button onClick={() => setScrollType('dialog')} disabled={scrollType === 'dialog'} marginRight={2}>
-                                Dialog
-                            </Button>
-                            <Button onClick={() => setScrollType('document')} disabled={scrollType === 'document'}>
-                                Document
-                            </Button>
-                        </DialogTitle>
-                        <DialogContent>
-                            <LoremIpsum />
-                            <LoremIpsum />
-                        </DialogContent>
-                    </Dialog>
-                    <Button onClick={() => setOpen(true)} secondary>
-                        I have different scroll types
-                    </Button>
-                </>
-            )}
-        </StoryHelper>
+    <>
+        <Dialog
+            open={open}
+            onClose={onClose}
+            maxWidth="md"
+            scroll={scrollType}
+        >
+            <DialogTitle>
+                I have different width<br /><br />
+                <Button onClick={() => setScrollType('dialog')} disabled={scrollType === 'dialog'} marginRight={2}>
+                    Dialog
+                </Button>
+                <Button onClick={() => setScrollType('document')} disabled={scrollType === 'document'}>
+                    Document
+                </Button>
+            </DialogTitle>
+            <DialogContent>
+                <LoremIpsum />
+                <LoremIpsum />
+            </DialogContent>
+        </Dialog>
+        <Button onClick={() => setOpen(true)} secondary>
+            I have different scroll types
+        </Button>
+    </>
+)}
+</StoryHelper>
     </Story>
 </Preview>
 
@@ -217,23 +217,23 @@ It is possible to disable transition effect on show / hide, if this is required.
     <Story name="Disable effects">
         <StoryHelper>
             {({ open, setOpen, onClose }) => (
-                 <>
-                     <Dialog
-                         open={open}
-                         onClose={onClose}
-                         disableEffects
-                     >
-                         <DialogTitle>
-                             I have no effects
-                         </DialogTitle>
-                         <DialogContent>
-                             1, 2, 3
-                         </DialogContent>
-                     </Dialog>
-                     <Button onClick={() => setOpen(true)} secondary>I have no effects</Button>
-                 </>
-            )}
-        </StoryHelper>
+     <>
+         <Dialog
+             open={open}
+             onClose={onClose}
+             disableEffects
+         >
+             <DialogTitle>
+                 I have no effects
+             </DialogTitle>
+             <DialogContent>
+                 1, 2, 3
+             </DialogContent>
+         </Dialog>
+         <Button onClick={() => setOpen(true)} secondary>I have no effects</Button>
+     </>
+)}
+</StoryHelper>
     </Story>
 </Preview>
 

@@ -14,10 +14,10 @@ import { Tooltip } from '@deliveryhero/armor';
 ## Basic usage
 
 <Preview>
-    <Story name="Basic usage">
-        <Box margin={10}>
-            <Tooltip content="This is a beautiful button">
-                <Button>A Button</Button>
+    <Story name="Basic usage" height="220px">
+        <Box margin={20}>
+            <Tooltip content="Sample tooltip content">
+                <Button>Investigate</Button>
             </Tooltip>
         </Box>
     </Story>
@@ -26,12 +26,12 @@ import { Tooltip } from '@deliveryhero/armor';
 ## Rich content
 
 <Preview>
-    <Story name="Rich content">
-        <Box margin={10}>
+    <Story name="Rich content" height="220px">
+        <Box margin={20}>
             <Tooltip 
-                content={<span>Buy this stuff only for <span style={{color: 'red'}}>99999.99</span> USD</span>}
+                content={<span>Place order for <span style={{color: 'blue'}}>17.98€</span></span>}
             >
-                <Button>Buy</Button>
+                <Button>Order</Button>
             </Tooltip>
         </Box>
     </Story>
@@ -40,26 +40,26 @@ import { Tooltip } from '@deliveryhero/armor';
 ## Position
 
 <Preview>
-    <Story name="Position">
-        <Box margin={10}>
+    <Story name="Position" height="260px">
+        <Box margin={20}>
             <Tooltip content="Top-left aligned tooltip" align="top-start">
-                <Button marginRight={2}>Buy</Button>
+                <Button marginRight={2}>Cook</Button>
             </Tooltip>
             <Tooltip content="Top-central aligned tooltip" align="top">
-                <Button>Sell</Button>
+                <Button>Eat</Button>
             </Tooltip>
             <Tooltip content="Top-right aligned tooltip" align="top-end">
-                <Button marginLeft={2}>Earn</Button>
+                <Button marginLeft={2}>Repeat</Button>
             </Tooltip>
             <br />
             <Tooltip content="Bottom-left aligned tooltip" align="bottom-start">
-                <Button marginRight={2} marginTop={2}>Buy</Button>
+                <Button marginRight={2} marginTop={2}>Cook</Button>
             </Tooltip>
             <Tooltip content="Bottom-central aligned tooltip" align="bottom">
-                <Button marginTop={2}>Sell</Button>
+                <Button marginTop={2}>Eat</Button>
             </Tooltip>
             <Tooltip content="Bottom-right aligned tooltip" align="bottom-end">
-                <Button marginLeft={2} marginTop={2}>Earn</Button>
+                <Button marginLeft={2} marginTop={2}>Repeat</Button>
             </Tooltip>
         </Box>
     </Story>
@@ -68,13 +68,13 @@ import { Tooltip } from '@deliveryhero/armor';
 ## Dark
 
 <Preview>
-    <Story name="Dark">
-        <Box margin={10}>
+    <Story name="Dark" height="220px">
+        <Box margin={20}>
             <Tooltip
                 dark
-                content={<span>Buy this stuff only for <span style={{color: 'red'}}>99999.99</span> USD</span>}
+                content={<span>Place order for <span style={{color: 'cyan'}}>17.98€</span></span>}
             >
-                <Button>Buy</Button>
+                <Button>Order</Button>
             </Tooltip>
         </Box>
     </Story>
@@ -83,13 +83,13 @@ import { Tooltip } from '@deliveryhero/armor';
 ## Error
 
 <Preview>
-    <Story name="Error">
-        <Box margin={10}>
+    <Story name="Error" height="220px">
+        <Box margin={20}>
             <Tooltip
                 error
-                content="Not enough minerals"
+                content="Not enough ingredients"
             >
-                <Button>Build</Button>
+                <Button>Prepare meal</Button>
             </Tooltip>
         </Box>
     </Story>
@@ -98,13 +98,13 @@ import { Tooltip } from '@deliveryhero/armor';
 ## Small
 
 <Preview>
-    <Story name="Small">
-        <Box margin={10}>
+    <Story name="Small" height="220px">
+        <Box margin={20}>
             <Tooltip
                 small
-                content={<span>Buy this stuff only for <span style={{color: 'red'}}>99999.99</span> USD</span>}
+                content={<span>Place order for <span style={{color: 'blue'}}>17.98€</span></span>}
             >
-                <Button>Buy</Button>
+                <Button>Order</Button>
             </Tooltip>
         </Box>
     </Story>
