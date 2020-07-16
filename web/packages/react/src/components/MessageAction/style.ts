@@ -1,9 +1,10 @@
 import { ReactElement } from 'react';
 import styled from 'styled-components';
-import { MessageActionRootPropsType } from './type';
-import { marginAttributes } from '../../system/attributes';
+
+import { marginAttributes } from '../../system';
 import { ObjectLiteralType } from '../../type';
 import { shouldForwardProp } from '../../utils';
+import { MessageActionRootPropsType } from './type';
 
 const propertyList = {
     tag: true,
@@ -19,7 +20,7 @@ const Wrapper = ({
     children: (className: string) => ReactElement;
 }) => children(className);
 
-export const MessageActionRoot = styled(Wrapper).withConfig({
+export const MessageActionStyle = styled(Wrapper).withConfig({
     shouldForwardProp: property => shouldForwardProp(property, propertyList),
 })<MessageActionRootPropsType>`
     box-sizing: border-box;

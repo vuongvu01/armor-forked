@@ -10,6 +10,7 @@
     ],
     "license": "UNLICENSED",
     "scripts": {
+        "commit": "npx git-cz",
         "dev": "./script/dev.sh",
         "doc": "./script/doc.sh",
         "doc:release": "./script/doc-release.sh",
@@ -27,11 +28,15 @@
     },
     "dependencies": {
         "@popperjs/core": "^2.4.2",
+        "@types/lodash.get": "^4.4.6",
+        "@types/lodash.uniq": "^4.5.6",
         "@types/lodash.uniqueid": "^4.0.6",
         "deep-freeze-strict": "1.1.1",
         "deepclone": "^1.0.2",
         "deepmerge": "4.2.2",
         "flat": "^5.0.0",
+        "lodash.get": "^4.4.2",
+        "lodash.uniq": "^4.5.0",
         "lodash.uniqueid": "^4.0.1",
         "prop-types": "^15.7.2",
         "throttle-debounce": "2.1.0",
@@ -68,6 +73,7 @@
         "@typescript-eslint/eslint-plugin": "^2.21.0",
         "@typescript-eslint/parser": "^2.21.0",
         "babel-loader": "^8.0.6",
+        "commitlint": "^9.0.1",
         "core-js": "^3.6.5",
         "eslint": "^6.8.0",
         "eslint-config-airbnb-base": "^14.0.0",
@@ -94,6 +100,11 @@
     "husky": {
         "hooks": {
             "pre-commit": "pretty-quick --staged"
+        }
+    },
+    "config": {
+        "commitizen": {
+            "path": "@commitlint/prompt"
         }
     }
 }

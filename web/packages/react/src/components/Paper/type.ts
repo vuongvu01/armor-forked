@@ -1,11 +1,12 @@
 import { HTMLAttributes } from 'react';
+
+import { Indexed } from '../../type';
+import { MarginAttributesType } from '../../system';
 import {
     NodeStylePropsType,
     StylePropsType,
     StylesFunctionOrStubType,
 } from '../type';
-import { MarginAttributesType } from '../../system/attributes';
-import { Indexed } from '../../type';
 
 type PaperEffectivePropsType = Indexed<{
     // add other custom properties here

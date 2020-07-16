@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 // eslint-disable-next-line import/no-unresolved
 import { withKnobs } from '@storybook/addon-knobs';
 
 import { GroupHelper } from '../../../helpers/GroupHelper';
 import { Checkbox } from '../Checkbox';
-import { Button } from '../../Button';
 
 export default {
     title: 'Components/Checkbox',
@@ -14,53 +13,74 @@ export default {
 };
 
 export const States = () => {
-    const [isChecked, setChecked] = useState(true);
     return (
         <>
-            <h4>Default</h4>
             <GroupHelper gap={2}>
-                <Checkbox onChange={() => {}} />
+                <p>Default</p>
+                <Checkbox onChange={() => {}} label="add mozzarella" />
             </GroupHelper>
-            <h4>Checked by default</h4>
             <GroupHelper gap={2}>
-                <Checkbox defaultChecked onChange={() => {}} />
+                <p>Checked by default</p>
+                <Checkbox
+                    defaultChecked
+                    onChange={() => {}}
+                    label="add olives"
+                />
             </GroupHelper>
-            <h4>External control</h4>
             <GroupHelper gap={2}>
-                <Button onClick={() => setChecked(!isChecked)}>
-                    Toggle checkbox state
-                </Button>
-                <Checkbox checked={isChecked} onChange={() => {}} />
+                <p>Default disabled</p>
+                <Checkbox disabled label="add olives" />
             </GroupHelper>
-            <h4>Default disabled</h4>
             <GroupHelper gap={2}>
-                <Checkbox disabled />
-            </GroupHelper>
-            <h4>Default checked disabled</h4>
-            <GroupHelper gap={2}>
-                <Checkbox disabled checked onChange={() => {}} />
+                <p>Default checked disabled</p>
+                <Checkbox
+                    disabled
+                    checked
+                    onChange={() => {}}
+                    label="add mozzarella"
+                />
             </GroupHelper>
         </>
     );
 };
 
-export const CheckStyles = () => (
+export const Checkmarks = () => (
     <>
-        <h4>Tick</h4>
         <GroupHelper gap={2}>
-            <Checkbox defaultChecked onChange={() => {}} />
+            <p>Tick</p>
+            <Checkbox
+                defaultChecked
+                onChange={() => {}}
+                label="add mozzarella"
+            />
         </GroupHelper>
-        <h4>Dash</h4>
         <GroupHelper gap={2}>
-            <Checkbox defaultChecked onChange={() => {}} checkedIcon="dash" />
+            <p>Dash</p>
+            <Checkbox
+                defaultChecked
+                onChange={() => {}}
+                checkedIcon="dash"
+                label="add olives"
+            />
         </GroupHelper>
-        <h4>Disabled Tick</h4>
         <GroupHelper gap={2}>
-            <Checkbox checked disabled onChange={() => {}} />
+            <p>Disabled Tick</p>
+            <Checkbox
+                checked
+                disabled
+                onChange={() => {}}
+                label="add mozzarella"
+            />
         </GroupHelper>
-        <h4>Disabled Dash</h4>
         <GroupHelper gap={2}>
-            <Checkbox checked disabled onChange={() => {}} checkedIcon="dash" />
+            <p>Disabled Dash</p>
+            <Checkbox
+                checked
+                disabled
+                onChange={() => {}}
+                checkedIcon="dash"
+                label="add olives"
+            />
         </GroupHelper>
     </>
 );

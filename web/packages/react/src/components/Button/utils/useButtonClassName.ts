@@ -1,20 +1,9 @@
 import { useMemo } from 'react';
-import { ButtonStylesPropsType } from './type';
-import { returnEmptyString, makeBEM, makeClassName } from '../../utils';
-import { ClassNamesType } from '../type';
 
-export const useButtonStylesOverride = (
-    styles?: ButtonStylesPropsType,
-): Required<ButtonStylesPropsType> =>
-    useMemo(
-        () => ({
-            Root: returnEmptyString,
-            ...styles,
-        }),
-        [styles],
-    );
+import { makeBEM, makeClassName } from '../../../utils';
+import { ClassNamesType } from '../../type';
 
-export const useButtonClassName = (
+const useButtonClassName = (
     classPrefix: string,
     className?: string,
     classNames?: ClassNamesType,
@@ -55,7 +44,7 @@ export const useButtonClassName = (
             stateClassNames.push(makeBEM(classPrefix, 'Root', 'danger'));
         }
 
-        return `${baseClassNames} ${stateClassNames.join(' ')}`;
+        return `${baseClassNames} ${stateClassNames.join(' ')}`.trim();
     }, [
         classPrefix,
         className,
@@ -68,3 +57,5 @@ export const useButtonClassName = (
         tertiary,
         danger,
     ]);
+
+export default useButtonClassName;

@@ -2,13 +2,9 @@ import React from 'react';
 import {
     withKnobs,
     text,
-    boolean,
-    number,
-    select,
     // eslint-disable-next-line import/no-unresolved
 } from '@storybook/addon-knobs';
 // eslint-disable-next-line import/no-unresolved
-import { action } from '@storybook/addon-actions';
 
 import { Paper } from '../Paper';
 
@@ -19,4 +15,8 @@ export default {
     parameters: {},
 };
 
-export const Basic = () => <Paper>{text('Children', 'Hello world!')}</Paper>;
+export const Basic = () => (
+    <Paper style={{ padding: '28px' }}>
+        {text('Children', 'Hello world!')}
+    </Paper>
+);

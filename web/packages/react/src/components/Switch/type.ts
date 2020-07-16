@@ -2,18 +2,10 @@ import { InputHTMLAttributes } from 'react';
 
 import { MarginAttributesType } from '../../system/attributes';
 import { Indexed } from '../../type';
-import { ClassNamesType } from '../type';
 
-export type ClassBasedOnComponentType = {
-    component: string;
-    classPrefix: string;
-    className?: string;
-    classNames?: ClassNamesType;
-    disabled?: boolean;
-    checked?: boolean;
-};
-
-type SwitchEffectivePropsType = Indexed<{}> &
+type SwitchEffectivePropsType = Indexed<{
+    error?: boolean;
+}> &
     InputHTMLAttributes<HTMLInputElement> &
     MarginAttributesType;
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     withKnobs,
     text,
@@ -14,14 +14,14 @@ import { ThemeProvider } from 'styled-components';
 import { withStyles as withMaterialStyles } from '@material-ui/core/styles';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { BrowserRouter, Link } from 'react-router-dom';
-import { Button } from '../Button';
-import { ButtonTagType } from '../type';
-import { EditIcon } from '../../../icons';
+
 import { MaterialIcon } from '../../MaterialIcon';
-import { makeTheme } from '../../../styling';
-import { fontSizeIconBig } from '../../../tokens';
+import { defaultTheme, makeTheme } from '../../../styling';
 import { ObjectLiteralType } from '../../../type';
 import { GroupHelper } from '../../../helpers/GroupHelper';
+import { Button } from '../Button';
+import { ButtonTagType } from '../type';
+import { armorTheme } from './custom-theme';
 
 export default {
     title: 'Components/Button',
@@ -51,47 +51,146 @@ const getTypeAttributes = (type: string) => ({
     [type]: true,
 });
 
-export const Types = () => (
-    <>
-        <h2>Buttons</h2>
-        <h3>Sizes</h3>
-        <GroupHelper>
-            <Button primary>
-                <MaterialIcon marginRight={2} icon="delete" />
-                Button text
+const groupStyle = {
+    display: 'flex',
+    alignItems: 'flex-end',
+};
+
+export const Types = () => {
+    const [theme, setTheme] = useState(defaultTheme);
+
+    return (
+        <>
+            <h3>Pick theme</h3>
+            <Button marginRight={2} onClick={() => setTheme(defaultTheme)}>
+                Default theme
             </Button>
-            <Button primary>Button text</Button>
-            <Button primary small>
-                <MaterialIcon marginRight={2} icon="delete" />
-                Button text
-            </Button>
-            <Button primary small>
-                Button text
-            </Button>
-        </GroupHelper>
-        <h3>Types</h3>
-        <GroupHelper>
-            <Button primary>Primary</Button>
-            <Button secondary>Secondary</Button>
-            <Button tertiary>Tertiary</Button>
-            <Button danger>Danger</Button>
-        </GroupHelper>
-        <GroupHelper>
-            <Button primary disabled>
-                Primary
-            </Button>
-            <Button secondary disabled>
-                Secondary
-            </Button>
-            <Button tertiary disabled>
-                Tertiary
-            </Button>
-            <Button danger disabled>
-                Danger
-            </Button>
-        </GroupHelper>
-    </>
-);
+            <Button onClick={() => setTheme(armorTheme)}>DPS theme</Button>
+            <hr />
+            <ThemeProvider theme={theme}>
+                <h3>Types</h3>
+                <GroupHelper styles={groupStyle}>
+                    <Button primary>Primary</Button>
+                    <Button primary>
+                        <MaterialIcon marginRight={2} icon="edit" />
+                        Primary with icon
+                    </Button>
+                    <Button primary>
+                        Primary with icon
+                        <MaterialIcon marginLeft={2} icon="edit" />
+                    </Button>
+                    <Button primary>
+                        <MaterialIcon icon="edit" />
+                    </Button>
+                    <Button primary danger>
+                        Primary
+                    </Button>
+                    <Button primary small>
+                        Primary
+                    </Button>
+                </GroupHelper>
+                <GroupHelper styles={groupStyle}>
+                    <Button disabled primary>
+                        Primary
+                    </Button>
+                    <Button disabled primary>
+                        <MaterialIcon marginRight={2} icon="edit" />
+                        Primary with icon
+                    </Button>
+                    <Button disabled primary>
+                        Primary with icon
+                        <MaterialIcon marginLeft={2} icon="edit" />
+                    </Button>
+                    <Button disabled primary>
+                        <MaterialIcon icon="edit" />
+                    </Button>
+                    <Button disabled primary danger>
+                        Primary
+                    </Button>
+                    <Button disabled primary small>
+                        Primary
+                    </Button>
+                </GroupHelper>
+                <br />
+                <br />
+                <GroupHelper styles={groupStyle}>
+                    <Button secondary>Secondary</Button>
+                    <Button secondary>
+                        <MaterialIcon marginRight={2} icon="edit" />
+                        Secondary with icon
+                    </Button>
+                    <Button secondary>
+                        Secondary with icon
+                        <MaterialIcon marginLeft={2} icon="edit" />
+                    </Button>
+                    <Button secondary>
+                        <MaterialIcon icon="edit" />
+                    </Button>
+                    <Button secondary small>
+                        Secondary
+                    </Button>
+                </GroupHelper>
+                <GroupHelper styles={groupStyle}>
+                    <Button disabled secondary>
+                        Secondary
+                    </Button>
+                    <Button disabled secondary>
+                        <MaterialIcon marginRight={2} icon="edit" />
+                        Secondary with icon
+                    </Button>
+                    <Button disabled secondary>
+                        Secondary with icon
+                        <MaterialIcon marginLeft={2} icon="edit" />
+                    </Button>
+                    <Button disabled secondary>
+                        <MaterialIcon icon="edit" />
+                    </Button>
+                    <Button disabled secondary small>
+                        Secondary
+                    </Button>
+                </GroupHelper>
+                <br />
+                <br />
+                <GroupHelper styles={groupStyle}>
+                    <Button tertiary>Tertiary</Button>
+                    <Button tertiary>
+                        <MaterialIcon marginRight={2} icon="edit" />
+                        Tertiary with icon
+                    </Button>
+                    <Button tertiary>
+                        Tertiary with icon
+                        <MaterialIcon marginLeft={2} icon="edit" />
+                    </Button>
+                    <Button tertiary>
+                        <MaterialIcon icon="edit" />
+                    </Button>
+                    <Button tertiary danger>
+                        Tertiary
+                    </Button>
+                </GroupHelper>
+                <GroupHelper styles={groupStyle}>
+                    <Button disabled tertiary>
+                        Tertiary
+                    </Button>
+                    <Button disabled tertiary>
+                        <MaterialIcon marginRight={2} icon="edit" />
+                        Tertiary with icon
+                    </Button>
+                    <Button disabled tertiary>
+                        Tertiary with icon
+                        <MaterialIcon marginLeft={2} icon="edit" />
+                    </Button>
+                    <Button disabled tertiary>
+                        <MaterialIcon icon="edit" />
+                    </Button>
+                    <Button disabled tertiary danger>
+                        Tertiary
+                    </Button>
+                </GroupHelper>
+            </ThemeProvider>
+        </>
+    );
+};
 
 export const Playground = () => (
     <Button
@@ -127,29 +226,6 @@ export const WithMargins = () => (
     </Button>
 );
 
-export const WithBigIcon = () => (
-    <Button
-        {...getTypeAttributes(select('Type', optionsType, 'primary'))}
-        wide={boolean('Wide', false)}
-        small={boolean('Small', false)}
-    >
-        Icon is massive
-        <EditIcon fontSize="3rem" marginLeft={2} />
-    </Button>
-);
-
-export const IconOnly = () => (
-    <Button
-        {...getTypeAttributes(select('Type', optionsType, 'primary'))}
-        tag={select('Tag', optionsTag, 'button') as ButtonTagType}
-        wide={boolean('Wide', false)}
-        small={boolean('Small', false)}
-        disabled={boolean('Disabled', false)}
-    >
-        <EditIcon />
-    </Button>
-);
-
 export const Comparison = () => (
     // <div style={{ display: 'flex' }}>
     <div>
@@ -161,13 +237,7 @@ export const Comparison = () => (
             No Icon
         </Button>
         <Button
-            {...getTypeAttributes(select('Type', optionsType, 'primary'))}
-            tag={select('Tag', optionsTag, 'button') as ButtonTagType}
-            small={boolean('Small', false)}
-        >
-            With icon <EditIcon marginLeft={2} />
-        </Button>
-        <Button
+            marginLeft={2}
             {...getTypeAttributes(select('Type', optionsType, 'primary'))}
             tag={select('Tag', optionsTag, 'button') as ButtonTagType}
             small={boolean('Small', false)}
@@ -175,6 +245,7 @@ export const Comparison = () => (
             With MUI icon <MaterialIcon marginLeft={2}>edit</MaterialIcon>
         </Button>
         <Button
+            marginLeft={2}
             {...getTypeAttributes(select('Type', optionsType, 'primary'))}
             tag={select('Tag', optionsTag, 'button') as ButtonTagType}
             small={boolean('Small', false)}
@@ -185,58 +256,40 @@ export const Comparison = () => (
             </MaterialIcon>
         </Button>
         <Button
-            {...getTypeAttributes(select('Type', optionsType, 'primary'))}
-            tag={select('Tag', optionsTag, 'button') as ButtonTagType}
-            small={boolean('Small', false)}
-        >
-            <EditIcon />
-        </Button>
-        <Button
+            marginLeft={2}
             tag={select('Tag', optionsTag, 'button') as ButtonTagType}
             small={boolean('Small', false)}
         >
             <MaterialIcon>edit</MaterialIcon>
         </Button>
         <Button
+            marginLeft={2}
             tag={select('Tag', optionsTag, 'button') as ButtonTagType}
             small={boolean('Small', false)}
         >
             <MaterialIcon>save</MaterialIcon>
         </Button>
-    </div>
-);
-
-export const Comparison2 = () => (
-    <>
-        <Button small={boolean('Small', false)}>
-            Edit <MaterialIcon marginLeft={4}>edit</MaterialIcon>
+        <Button marginLeft={2} small={boolean('Small', false)}>
+            Edit <MaterialIcon marginLeft={2}>edit</MaterialIcon>
         </Button>
-        <Button small={boolean('Small', false)}>
-            <MaterialIcon marginRight={4}>save</MaterialIcon> Save{' '}
-            <MaterialIcon marginLeft={4}>save</MaterialIcon>
+        <Button marginLeft={2} small={boolean('Small', false)}>
+            <MaterialIcon marginRight={2}>save</MaterialIcon> Save
         </Button>
-        <Button small={boolean('Small', false)}>
-            <MaterialIcon marginRight={4}>save</MaterialIcon> Save
-        </Button>
-        <Button small={boolean('Small', false)}>
-            <MaterialIcon marginRight={4} fontSize={fontSizeIconBig}>
-                save
-            </MaterialIcon>{' '}
+        <Button marginLeft={2} small={boolean('Small', false)}>
+            <MaterialIcon marginRight={2}>save</MaterialIcon>
             Save
         </Button>
-        <Button small={boolean('Small', false)}>
-            Save <MaterialIcon marginLeft={4}>save</MaterialIcon>
+        <Button marginLeft={2} small={boolean('Small', false)}>
+            Save <MaterialIcon marginLeft={2}>save</MaterialIcon>
         </Button>
-        <Button small={boolean('Small', false)}>
-            Add{' '}
-            <MaterialIcon marginLeft={4} fontSize={fontSizeIconBig}>
-                add
-            </MaterialIcon>
+        <Button marginLeft={2} small={boolean('Small', false)}>
+            Add
+            <MaterialIcon marginLeft={2}>add</MaterialIcon>
         </Button>
-        <Button small={boolean('Small', false)}>
-            Remove <MaterialIcon marginLeft={4}>remove</MaterialIcon>
+        <Button marginLeft={2} small={boolean('Small', false)}>
+            Remove <MaterialIcon marginLeft={2}>remove</MaterialIcon>
         </Button>
-    </>
+    </div>
 );
 
 export const InText = () => (
@@ -254,22 +307,6 @@ export const InText = () => (
     </>
 );
 
-export const WithMultilineContent = () => (
-    <Button
-        {...getTypeAttributes(select('Type', optionsType, 'primary'))}
-        tag={select('Tag', optionsTag, 'button') as ButtonTagType}
-        wide={boolean('Wide', false)}
-        small={boolean('Small', false)}
-        disabled={boolean('Disabled', false)}
-    >
-        Lorem ipsum
-        <br />
-        Lorem ipsum
-        <br />
-        Lorem ipsum
-    </Button>
-);
-
 export const IconAndText = () => (
     <Button
         {...getTypeAttributes(select('Type', optionsType, 'primary'))}
@@ -277,9 +314,7 @@ export const IconAndText = () => (
         wide={boolean('Wide', false)}
         small={boolean('Small', false)}
     >
-        <MaterialIcon marginRight={2} fontSize={fontSizeIconBig}>
-            add
-        </MaterialIcon>
+        <MaterialIcon marginRight={2}>add</MaterialIcon>
         Create workflow
     </Button>
 );

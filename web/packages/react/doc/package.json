@@ -4,8 +4,8 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start": "start-storybook -p 6006 --ci",
-        "build": "build-storybook -c .storybook -s static -o .out",
+        "start": "start-storybook --docs -p 6006 --ci",
+        "build": "build-storybook --docs -c .storybook -s static -o .out",
         "deploy": "storybook-to-ghpages --existing-output-dir .out"
     },
     "keywords": [],

@@ -1,0 +1,102 @@
+import { useState } from 'react';
+import { BrowserRouter, Link } from 'react-router-dom';
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import get from 'lodash.get';
+
+import { Button } from 'src/components';
+import Radio from 'src/components/Radio/Radio';
+import { RadioGroup } from 'src/components';
+
+<Meta title="Components/Radio" component={Radio} />
+
+# Radio
+
+```js
+import { Radio } from '@deliveryhero/armor';
+```
+
+## States
+
+<Preview>
+    <Story name="States" height="270px" >
+        {() => {
+             const [isChecked, setIsChecked] = useState(false);
+             const [isDisabled, setDisabled] = useState(false);
+             return (
+     <>
+             <Radio
+                 checked={false}
+                 label="Unchecked"
+                 name="name0"
+                 value="0"
+             />
+             <Radio
+                 checked
+                 label="Checked"
+                 name="name1"
+                 value="1"
+             />
+             <Radio
+                 label="Disabled"
+                 name="name2"
+                 value="2"
+                 disabled
+             />
+             <Radio
+                 label="Disabled checked"
+                 name="name3"
+                 value="3"
+                 disabled
+                 checked
+             />
+             <br />
+             <br />
+             <Button onClick={() => setIsChecked(!isChecked)}>Toggle</Button>
+             <Button onClick={() => setDisabled(!isDisabled)} marginLeft={2}>Disable/Enable</Button>
+             <Radio
+                 label="External control"
+                 name="name5"
+                 value="5"
+                 checked={isChecked}
+                 disabled={isDisabled}
+             />
+     </>
+             );
+         }}
+    </Story>
+</Preview>
+
+## Radio Group
+
+<Preview>
+    <Story name="Radio group" height="190px">
+        {() => {
+             const groupName = 'radioGroup';
+             const [groupSelectedValue, setSelectedValueGroup] = useState('');
+             const handleChange = event => {
+                 const selectedValue = event.target.value;
+                 if (selectedValue) {
+                     setSelectedValueGroup(selectedValue);
+                 }
+             };
+             return (
+        <>
+        <RadioGroup
+             name={groupName}
+             selectedValue={groupSelectedValue}
+             onChange={handleChange}
+        >
+            <Radio value="pizza" label="Pizza" />
+            <Radio value="pasta" label="Pasta" />
+            <Radio value="risotto" label="Risotto" />
+            <Radio disabled value="lasagne" label="Lasagne" />
+        </RadioGroup>
+    </>
+             );
+         }}
+    </Story>
+</Preview>
+
+## Properties
+
+<Props of={Radio} />

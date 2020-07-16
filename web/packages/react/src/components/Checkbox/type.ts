@@ -2,18 +2,9 @@ import React, { InputHTMLAttributes } from 'react';
 
 import { MarginAttributesType } from '../../system';
 import { Indexed } from '../../type';
-import { ClassNamesType, NodeStylePropsType } from '../type';
+import { NodeStylePropsType } from '../type';
 
 export type CheckedIconType = 'tick' | 'dash';
-
-export type ClassBasedOnComponentType = {
-    component: string;
-    classPrefix: string;
-    className?: string;
-    classNames?: ClassNamesType;
-    disabled?: boolean;
-    checked?: boolean;
-};
 
 type CheckboxEffectivePropsType = Indexed<{
     checkedIcon?: CheckedIconType;

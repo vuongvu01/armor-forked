@@ -18,12 +18,13 @@ import {
     StrictModifiers,
 } from '@popperjs/core';
 import { isFragment } from 'react-is';
+
+import { returnEmptyString, makeBEM, makeClassName } from '../../utils';
 import {
     TooltipAlignmentType,
     TooltipPropsType,
     TooltipStylesPropsType,
 } from './type';
-import { returnEmptyString, makeBEM, makeClassName } from '../../utils';
 import { ClassNamesType } from '../type';
 
 export const useTooltipStylesOverride = (
@@ -62,7 +63,7 @@ export const useTooltipClassNames = (
         }
 
         return {
-            Root: `${rootClassNames} ${rootStateClassNames.join(' ')}`,
+            Root: `${rootClassNames} ${rootStateClassNames.join(' ')}`.trim(),
             Arrow: makeBEM(classPrefix, 'Arrow'),
         };
     }, [classPrefix, className, classNames, align]);

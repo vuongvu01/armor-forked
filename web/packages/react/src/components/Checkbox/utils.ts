@@ -1,31 +1,7 @@
 import { useMemo } from 'react';
 
-import { makeBEM, makeClassName } from '../../utils';
-import { ClassBasedOnComponentType } from './type';
+import { selectorClassGeneratorBasedOnComponent } from '../../styling';
 import { ClassNamesType } from '../type';
-
-const formClassBasedOnComponent = ({
-    component,
-    classPrefix,
-    className,
-    classNames,
-    disabled,
-    checked,
-}: ClassBasedOnComponentType) => {
-    const baseClassNames = makeClassName(classPrefix, className, classNames);
-
-    const stateClassNames: string[] = [];
-
-    if (checked) {
-        stateClassNames.push(makeBEM(classPrefix, component, 'checked'));
-    }
-
-    if (disabled) {
-        stateClassNames.push(makeBEM(classPrefix, component, 'disabled'));
-    }
-
-    return `${baseClassNames} ${stateClassNames.join(' ')}`;
-};
 
 export const useCheckboxClassName = (
     classPrefix: string,
@@ -33,33 +9,37 @@ export const useCheckboxClassName = (
     classNames?: ClassNamesType,
     disabled?: boolean,
     checked?: boolean,
+    error?: boolean,
 ) =>
     useMemo(
         () => ({
-            Root: formClassBasedOnComponent({
+            Root: selectorClassGeneratorBasedOnComponent({
                 component: 'Root',
                 classPrefix,
                 className,
                 classNames,
                 disabled,
                 checked,
+                error,
             }),
-            Input: formClassBasedOnComponent({
+            Input: selectorClassGeneratorBasedOnComponent({
                 component: 'Input',
                 classPrefix,
                 className,
                 classNames,
                 disabled,
                 checked,
+                error,
             }),
-            Checkmark: formClassBasedOnComponent({
+            Checkmark: selectorClassGeneratorBasedOnComponent({
                 component: 'Checkmark',
                 classPrefix,
                 className,
                 classNames,
                 disabled,
                 checked,
+                error,
             }),
         }),
-        [classPrefix, className, classNames, disabled, checked],
+        [classPrefix, className, classNames, disabled, checked, error],
     );

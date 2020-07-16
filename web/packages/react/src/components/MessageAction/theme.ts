@@ -1,13 +1,10 @@
-import { fontSizeRegular, fontWeightMedium } from '../../tokens';
-
 export const messageActionDefaultTheme = {
-    // place the default theme object here, it will be automatically processed
     Root: {
         base: {
-            fontFamily: '$typography.fontFamily',
+            fontFamily: '$typography.paragraphMedium.fontFamily',
             color: '$color.text.main',
-            fontWeight: fontWeightMedium,
-            fontSize: fontSizeRegular,
+            fontWeight: '$typography.paragraphMedium.fontWeight',
+            fontSize: '$typography.paragraphMedium.fontSize',
         },
     },
 };

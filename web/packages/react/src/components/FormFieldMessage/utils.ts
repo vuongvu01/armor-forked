@@ -33,6 +33,6 @@ export const useFormFieldMessageClassNames = (
         }
 
         return {
-            Root: `${rootClassNames} ${rootStateClassNames.join(' ')}`,
+            Root: `${rootClassNames} ${rootStateClassNames.join(' ')}`.trim(),
         };
     }, [classPrefix, className, classNames, error]);

@@ -8,7 +8,13 @@ export type SpanFunctionType = (value: ScalarType) => ScalarType;
 export type SpanFunctionOrConstType = SpanFunctionType | number;
 
 type FigureType = {
-    borderRadius?: string;
+    borderRadius: {
+        sharp?: string;
+        medium?: string;
+        soft?: string;
+        round?: string;
+        dull?: string;
+    };
 };
 
 export type BreakpointValuesType = ObjectLiteralType<number>;
@@ -38,11 +44,13 @@ export type TypographyInputType = Partial<
     Pick<TypographyType, 'htmlFontSize' | 'fontFamily' | 'fontSize'>
 >;
 
+// TODO (nmelnikov 2020-07-14): need to ensure that this one is compliant with the newest token structure
 export type ThemeType = Indexed<{
     breakpoints: BreakpointsType;
     color: ObjectLiteralType;
     components: ObjectLiteralType;
     componentOverrides: ObjectLiteralType;
+    shadow: ObjectLiteralType;
     referenceIndex: ObjectLiteralType;
     typography: TypographyType;
     span: SpanFunctionType;

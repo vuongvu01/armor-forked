@@ -1,58 +1,99 @@
 import styled from 'styled-components';
 
 import { shouldForwardProp } from '../../utils';
-import { mouseCursor } from '../../styling';
-import { ObjectLiteralType } from '../../type';
+import { mouseCursor, pointerEvents } from '../../styling';
+import { transitionDurationInSec } from '../../constants';
 import { SwitchCheckboxInputPropsType, SwitchLabelPropsType } from './type';
 
-const propertyList = {
-    // add custom properties here
-} as ObjectLiteralType;
+const sizes = {
+    dimensions: {
+        width: 32,
+        height: 18,
+        padding: 2,
+    },
+    toggle: {
+        side: 14,
+    },
+};
 
-const transitionDurationInSec = 0.2;
-
-const sizeBase = ({
+const switchColor = ({
     theme: {
         componentOverrides: { Switch },
     },
 }: SwitchLabelPropsType) => Switch.Label.base;
 
-export const SwitchRoot = styled.p.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
+const toggleDefault = ({
+    theme: {
+        componentOverrides: { Switch },
+    },
+}: SwitchLabelPropsType) => Switch.Toggle.base;
+
+const disabledToggle = ({
+    theme: {
+        componentOverrides: { Switch },
+    },
+    checked,
+    defaultChecked,
+}: SwitchCheckboxInputPropsType) =>
+    !(checked || defaultChecked) ? Switch.Toggle.disabled__checked : '';
+
+const checkedBackground = ({
+    theme: {
+        componentOverrides: { Switch },
+    },
+}: SwitchCheckboxInputPropsType) => Switch.Label.checked;
+
+const checkedHover = ({
+    theme: {
+        componentOverrides: { Switch },
+    },
+}: SwitchCheckboxInputPropsType) => Switch.Label.hover;
+
+const disabledBackground = ({
+    theme: {
+        componentOverrides: { Switch },
+    },
+}: SwitchCheckboxInputPropsType) => Switch.Label.disabled;
+
+const disabledCheckedBackground = ({
+    theme: {
+        componentOverrides: { Switch },
+    },
+}: SwitchCheckboxInputPropsType) => Switch.Label.disabled__checked;
+
+export const SwitchRoot = styled.label.withConfig({
+    shouldForwardProp: property => shouldForwardProp(property, {}),
 })<SwitchLabelPropsType>`
-    display: flex;
+    display: inline-flex;
     align-items: center;
+
+    ${mouseCursor}
 `;
 
-// TODO (nmelnikov 2020-07-06): add a disabled state here as well
-export const SwitchLabel = styled.span<SwitchLabelPropsType>`
-    padding-left: 16px;
-`;
-
-export const SwitchToggle = styled.label.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<SwitchLabelPropsType>`
+export const SwitchToggle = styled.span<SwitchLabelPropsType>`
     position: relative;
     display: inline-flex;
     border-radius: 9999px;
-    transition: ${transitionDurationInSec}s;
-
-    background: grey;
+    transition: all ${transitionDurationInSec}s ease;
+    width: ${sizes.dimensions.width}px;
+    height: ${sizes.dimensions.height}px;
 
     &::after {
         content: '';
         position: absolute;
-        bottom: 2px;
-        left: 2px;
-        width: 14px;
-        height: 14px;
-        background: #fff;
+        bottom: ${sizes.dimensions.padding}px;
+        left: ${sizes.dimensions.padding}px;
+        width: ${sizes.toggle.side}px;
+        height: ${sizes.toggle.side}px;
         border-radius: 9999px;
-        transition: ${transitionDurationInSec}s;
+        transition: all ${transitionDurationInSec}s ease;
+
+        ${toggleDefault}
     }
 
+    ${pointerEvents}
+    ${switchColor}
     ${mouseCursor}
-    ${sizeBase}
 `;
 
 export const SwitchCheckboxInput = styled.input<SwitchCheckboxInputPropsType>`
@@ -64,7 +105,11 @@ export const SwitchCheckboxInput = styled.input<SwitchCheckboxInputPropsType>`
     position: absolute;
 
     &:checked + ${SwitchToggle} {
-        background: #1e91d6;
+        ${checkedBackground}
+    }
+
+    &:checked + ${SwitchToggle}:hover {
+        ${checkedHover}
     }
 
     &:checked + ${SwitchToggle}:after {
@@ -73,14 +118,14 @@ export const SwitchCheckboxInput = styled.input<SwitchCheckboxInputPropsType>`
     }
 
     &:disabled + ${SwitchToggle} {
-        background: #c2c2c2;
+        ${disabledBackground}
     }
 
     &:disabled:checked + ${SwitchToggle} {
-        background: #92baf6;
+        ${disabledCheckedBackground}
     }
 
     &:disabled + ${SwitchToggle}:after {
-        background: #efefef;
+        ${disabledToggle}
     }
 `;

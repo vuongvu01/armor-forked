@@ -1,12 +1,14 @@
 import styled from 'styled-components';
+
+import { marginAttributes } from '../../system';
 import { MaterialIconPropsType } from './type';
-import { marginAttributes } from '../../system/attributes';
 
 export const MaterialIconRoot = styled.span<MaterialIconPropsType>`
     font-family: 'Material Icons', serif;
     display: inline-block;
-    width: 1em;
-    height: 1em;
+    width: 16px;
+    height: 16px;
+    box-sizing: border-box;
     overflow: hidden;
     flex-shrink: 0;
     user-select: none;

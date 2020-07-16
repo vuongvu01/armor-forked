@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
+
+import { marginAttributes } from '../../system';
 import { SVGIconRootPropsType } from './type';
-import { marginAttributes } from '../../system/attributes';
 
 export const SVGIconRoot = styled.svg<SVGIconRootPropsType>`
     flex-shrink: 0;

@@ -1,97 +1,204 @@
-import { fontWeightMedium } from '../../tokens';
+/* eslint-disable @typescript-eslint/camelcase */
+
+import {
+    componentSpacing02,
+    componentSpacing03,
+    componentSpacing04,
+} from '../../tokens';
+
+const primaryInitialColors = {
+    color: '$color.neutral.00',
+    borderColor: '$color.primary.main',
+    backgroundColor: '$color.primary.main',
+};
+
+const primaryDangerInitialColors = {
+    borderColor: '$color.error.main',
+    backgroundColor: '$color.error.main',
+};
+
+const tertiaryInitialColors = {
+    color: '$color.primary.main',
+    borderColor: '$color.neutral.00',
+    backgroundColor: '$color.neutral.00',
+};
+
+const tertiaryDangerInitialColors = {
+    color: '$color.error.main',
+    borderColor: '$color.neutral.00',
+    backgroundColor: '$color.neutral.00',
+};
 
 export const buttonDefaultTheme = {
     Root: {
         base: {
-            fontSize: '$typography.fontSize',
-            fontWeight: fontWeightMedium,
-            fontFamily: '$typography.fontFamily',
-            lineHeight: '1.6',
-            paddingLeft: 4,
-            paddingRight: 4,
-            paddingTop: 2,
-            paddingBottom: 2,
-            borderRadius: '$figure.borderRadius',
+            fontWeight: '$typography.labelMedium.fontWeight',
+            letterSpacing: '$typography.labelMedium.letterSpacing',
+            fontSize: '$typography.labelMedium.fontSize',
+            fontFamily: '$typography.labelMedium.fontFamily',
+            lineHeight: '$typography.labelMedium.lineHeight',
+            borderRadius: '$figure.borderRadius.soft',
             backgroundColor: 'transparent',
         },
-        small: {
-            paddingTop: 1,
-            paddingBottom: 1,
-        },
         primary: {
-            color: '$color.primary.contrast',
-            backgroundColor: '$color.primary.main',
+            ...primaryInitialColors,
             '&:hover': {
-                color: '$color.primary.contrast',
-                backgroundColor: '$color.primary.darker',
+                color: '$color.neutral.00',
+                borderColor: '$color.primary.light',
+                backgroundColor: '$color.primary.light',
             },
             '&:focus': {
-                color: '$color.primary.contrast',
-                backgroundColor: '$color.primary.darker',
+                color: '$color.neutral.00',
+                borderColor: '$color.primary.light',
+                backgroundColor: '$color.primary.light',
             },
             '&:active': {
-                color: '$color.primary.contrast',
+                color: '$color.neutral.00',
+                borderColor: '$color.primary.dark',
                 backgroundColor: '$color.primary.dark',
             },
             '&:disabled': {
                 color: '$color.neutral.04',
+                borderColor: '$color.neutral.03',
                 backgroundColor: '$color.neutral.03',
+            },
+            '&:focus:not(:active)': {
+                ...primaryInitialColors,
+            },
+        },
+        primary__danger: {
+            ...primaryDangerInitialColors,
+            '&:hover': {
+                borderColor: '$color.error.light',
+                backgroundColor: '$color.error.light',
+            },
+            '&:focus': {
+                borderColor: '$color.error.light',
+                backgroundColor: '$color.error.light',
+            },
+            '&:active': {
+                borderColor: '$color.error.dark',
+                backgroundColor: '$color.error.dark',
+            },
+            '&:focus:not(:active)': {
+                ...primaryDangerInitialColors,
             },
         },
         secondary: {
             color: '$color.primary.main',
             borderColor: '$color.primary.main',
             backgroundColor: '$color.neutral.00',
+
             '&:hover': {
-                borderColor: '$color.primary.darker',
-                backgroundColor: '$color.primary.lighter',
+                color: '$color.primary.light',
+                borderColor: '$color.primary.light',
             },
             '&:focus': {
-                borderColor: '$color.primary.darker',
-                backgroundColor: '$color.primary.light',
+                color: '$color.primary.light',
+                borderColor: '$color.primary.light',
             },
             '&:active': {
-                borderColor: '$color.primary.darker',
-                backgroundColor: '$color.primary.light',
+                color: '$color.primary.dark',
+                borderColor: '$color.primary.dark',
             },
             '&:disabled': {
                 color: '$color.neutral.04',
                 borderColor: '$color.neutral.03',
-                backgroundColor: '$color.neutral.00',
+                backgroundColor: '$color.neutral.03',
+            },
+        },
+        secondary__danger: {
+            color: '$color.error.main',
+            borderColor: '$color.error.main',
+
+            '&:hover': {
+                color: '$color.error.light',
+                borderColor: '$color.error.light',
+            },
+            '&:focus': {
+                color: '$color.error.light',
+                borderColor: '$color.error.light',
+            },
+            '&:active': {
+                color: '$color.error.dark',
+                borderColor: '$color.error.dark',
             },
         },
         tertiary: {
-            color: '$color.primary.main',
+            ...tertiaryInitialColors,
             '&:hover': {
-                color: '$color.primary.dark',
-                backgroundColor: '$color.primary.lighter',
+                color: '$color.primary.light',
+                borderColor: '$color.neutral.02',
+                backgroundColor: '$color.neutral.02',
             },
             '&:focus': {
-                color: '$color.primary.darker',
-                backgroundColor: '$color.primary.lighter',
-            },
-            '&:active': {},
-            '&:disabled': {
-                color: '$color.neutral.04',
-                backgroundColor: '$color.neutral.00',
-            },
-        },
-        danger: {
-            color: '$color.danger.main',
-            borderColor: 'transparent',
-            '&:hover': {
-                backgroundColor: '$color.danger.lighter',
-            },
-            '&:focus': {
-                backgroundColor: '$color.danger.lighter',
+                color: '$color.primary.light',
+                borderColor: '$color.neutral.02',
+                backgroundColor: '$color.neutral.02',
             },
             '&:active': {
-                backgroundColor: '$color.danger.light',
+                color: '$color.primary.dark',
+                borderColor: '$color.neutral.02',
+                backgroundColor: '$color.neutral.02',
             },
             '&:disabled': {
                 color: '$color.neutral.04',
-                backgroundColor: 'transparent',
+                borderColor: '$color.neutral.03',
+                backgroundColor: '$color.neutral.03',
             },
+            '&:focus:not(:active)': {
+                ...tertiaryInitialColors,
+            },
+        },
+        tertiary__danger: {
+            ...tertiaryDangerInitialColors,
+            '&:hover': {
+                color: '$color.error.main',
+                borderColor: '$color.error.lighter',
+                backgroundColor: '$color.error.lighter',
+            },
+            '&:focus': {
+                color: '$color.error.main',
+                borderColor: '$color.error.lighter',
+                backgroundColor: '$color.error.lighter',
+            },
+            '&:active': {
+                color: '$color.error.main',
+                borderColor: '$color.error.lighter',
+                backgroundColor: '$color.error.lighter',
+            },
+            '&:disabled': {
+                color: '$color.neutral.04',
+                borderColor: '$color.neutral.03',
+                backgroundColor: '$color.neutral.03',
+            },
+            '&:focus:not(:active)': {
+                ...tertiaryDangerInitialColors,
+            },
+        },
+    },
+    Content: {
+        base: {
+            borderRadius: '$figure.borderRadius.soft',
+            paddingLeft: componentSpacing04,
+            paddingRight: componentSpacing04,
+            paddingTop: componentSpacing03,
+            paddingBottom: componentSpacing03,
+        },
+        small: {
+            paddingTop: componentSpacing02,
+            paddingBottom: componentSpacing02,
+        },
+    },
+    SemanticContent: {
+        iconOnly: {
+            padding: componentSpacing03,
+        },
+        iconFirst: {
+            paddingLeft: componentSpacing03,
+        },
+        iconLast: {
+            paddingRight: componentSpacing03,
         },
     },
 };

@@ -1,14 +1,13 @@
 import React, { FunctionComponent } from 'react';
-// import PropTypes from 'prop-types';
-import { useTheme } from '../../styling';
 
+import { useTheme } from '../../styling';
+import { useThemeOverride } from '../../utils/hooks';
 import {
     useDialogContentClassName,
     useDialogContentStylesOverride,
 } from './utils';
 import { DialogContentRoot } from './style';
 import { DialogContentPropsType } from './type';
-import { useThemeOverride } from '../../utils/hooks';
 import { dialogContentDefaultTheme } from './theme';
 
 const CLASS_PREFIX = 'DialogContent';

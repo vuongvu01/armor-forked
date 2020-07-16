@@ -47,6 +47,7 @@ export const Basic = () => {
                 }
                 extra={boolean('Show extra', true) ? <Rick /> : null}
                 level={select('Level', optionsLevel, 'error')}
+                disableIcon
             >
                 {boolean('Show title', true) && (
                     <Typography h6 marginBottom={1}>
@@ -86,7 +87,7 @@ export const Basic = () => {
 };
 
 export const WithCustomAttributes = () => (
-    <Message marginTop={30} disableCloseButton={false}>
+    <Message marginTop={30} disableCloseButton={false} disableIcon>
         Hello there!
     </Message>
 );

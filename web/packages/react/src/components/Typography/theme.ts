@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/camelcase */
-
 export const typographyDefaultTheme = {
     // place the default theme object here, it will be automatically processed
     Root: {

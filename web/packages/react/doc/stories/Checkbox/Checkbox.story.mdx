@@ -8,59 +8,51 @@ import { Checkbox, Button } from '../../../src/components';
 
 # Checkbox
 
-~~~
+~~~js
 import { Checkbox } from '@deliveryhero/armor';
 ~~~
 
-## Basic usage
+## States
+
+
 
 <Preview>
-    <Story name="Basic usage">
-        <Checkbox />
+    <Story name="States" height="220px">
+    {() => {
+       const [isChecked, setChecked] = useState(false);
+       return (
+ <>
+     <Checkbox checked={isChecked} label={isChecked ? 'Checked' : 'Unchecked'} onChange={() => setChecked(!isChecked)} />
+     <br />
+     <br />
+     <Checkbox defaultChecked label="Checked" />
+     <br />
+     <br />
+     <Checkbox disabled label="Unchecked disabled" />
+     <br />
+     <br />
+     <Checkbox checked disabled label="Checked disabled" />
+     <br />
+     <br />
+     <Checkbox checked disabled checkedIcon="dash" label="Checked disabled dash"  />
+ </>
+    )
+}}
     </Story>
 </Preview>
 
 ## Checkmark styles
 
 <Preview>
-    <Story name="Checkmark styles">
+    <Story name="Checkmark styles" height="120px">
        <>
-            <h4>Tick</h4>
-            <Checkbox defaultChecked
-                       checkedIcon="tick" />
-            <h4>Dash</h4>
-            <Checkbox defaultChecked checkedIcon="dash" />
+            <Checkbox defaultChecked checkedIcon="tick" label="tick" />
+            <h1 />
+            <Checkbox defaultChecked checkedIcon="dash" label="dash" />
         </>
     </Story>
 </Preview>
 
-## States
+## Properties
 
-export const MyDynamicCheckbox = () => {
-  const [isChecked, setChecked] = useState(true);
-  return (
-    <>
-        <Button onClick={() => setChecked(!isChecked)}> Toggle checkbox state </Button>
-        <Checkbox checked={isChecked} onChange={() => {}}  />
-    </>
-  )
-}
-
-<Preview>
-    <Story name="States">
-        <>
-            <h4>Unchecked</h4>
-            <Checkbox />
-            <h4>Checked</h4>
-            <Checkbox defaultChecked />
-            <h4>External control</h4>
-            <MyDynamicCheckbox />
-            <h4>Unchecked disabled</h4>
-            <Checkbox disabled />
-            <h4>Checked disabled</h4>
-            <Checkbox checked disabled />
-            <h4>Checked disabled dash</h4>
-            <Checkbox checked disabled checkedIcon="dash"  />
-        </>
-    </Story>
-</Preview>
+<Props of={Checkbox} />

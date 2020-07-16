@@ -1,12 +1,13 @@
 import { HTMLAttributes } from 'react';
+
+import { SizeAttributesType } from '../../system';
+import { Indexed } from '../../type';
+import { ModalPropsType } from '../Modal/type';
 import {
     NodeStylePropsType,
     StylePropsType,
     StylesFunctionOrStubType,
 } from '../type';
-import { SizeAttributesType } from '../../system/attributes';
-import { Indexed } from '../../type';
-import { ModalPropsType } from '../Modal/type';
 
 type DialogEffectivePropsType = Indexed<{
     disableOverlay?: boolean;

@@ -4,38 +4,35 @@ import uniqueId from 'lodash.uniqueid';
 
 import { useThemeOverride } from '../../utils/hooks';
 import { useTheme } from '../../styling';
+import SelectorLabel from '../SelectorLabel';
 import { useSwitchClassName } from './utils';
-import {
-    SwitchCheckboxInput,
-    SwitchToggle,
-    SwitchRoot,
-    SwitchLabel,
-} from './style';
+import { SwitchCheckboxInput, SwitchToggle, SwitchRoot } from './style';
 import { SwitchPropsType } from './type';
-import { toggleDefaultTheme } from './theme';
+import { switchDefaultTheme } from './theme';
 
-const CLASS_PREFIX = 'Switch';
+const SWITCH_CLASS_PREFIX = 'Switch';
 
 export const Switch: FunctionComponent<SwitchPropsType> = forwardRef(
     function Switch(
         {
+            checked,
             className,
             classNames,
             disabled,
-            checked,
-            onChange,
-            label,
+            error,
             id: propsId,
+            label,
+            onChange,
             ...restProps
         },
         ref,
     ) {
         const theme = useTheme();
-        const id = propsId || uniqueId('label-id-');
-        useThemeOverride(CLASS_PREFIX, theme, toggleDefaultTheme);
+        const id = propsId || uniqueId('switch-id-');
+        useThemeOverride(SWITCH_CLASS_PREFIX, theme, switchDefaultTheme);
 
         const classOverride = useSwitchClassName(
-            CLASS_PREFIX,
+            SWITCH_CLASS_PREFIX,
             className,
             classNames,
             disabled,
@@ -46,7 +43,7 @@ export const Switch: FunctionComponent<SwitchPropsType> = forwardRef(
             onChange && onChange(event);
 
         return (
-            <SwitchRoot>
+            <SwitchRoot disabled={disabled} for={id}>
                 <SwitchCheckboxInput
                     checked={checked}
                     className={classOverride.CheckboxInput}
@@ -64,19 +61,25 @@ export const Switch: FunctionComponent<SwitchPropsType> = forwardRef(
                     theme={theme}
                     htmlFor={id}
                 />
-                {label ? <SwitchLabel>{label}</SwitchLabel> : null}
+                <SelectorLabel disabled={disabled} error={error} theme={theme}>
+                    {label}
+                </SelectorLabel>
             </SwitchRoot>
         );
     },
 );
 
+Switch.displayName = SWITCH_CLASS_PREFIX;
+
 Switch.defaultProps = {
+    cehcked: false,
     disabled: false,
 };
 
 Switch.propTypes = {
     checked: PropTypes.bool,
     disabled: PropTypes.bool,
+    error: PropTypes.bool,
     id: PropTypes.string,
     label: PropTypes.string,
     onChange: PropTypes.func,

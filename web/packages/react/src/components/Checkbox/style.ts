@@ -2,17 +2,19 @@ import styled, { css } from 'styled-components';
 
 import { marginAttributes } from '../../system/attributes';
 import { shouldForwardProp } from '../../utils';
-import { mouseCursor } from '../../styling';
-import { ObjectLiteralType } from '../../type';
+import { mouseCursor, pointerEvents } from '../../styling';
+import { transitionDurationInSec } from '../../constants';
 import {
     CheckboxCheckmarkPropsType,
     CheckboxInputPropsType,
     CheckboxRootPropsType,
 } from './type';
 
-const propertyList = {
-    // add other custom properties here
-} as ObjectLiteralType;
+const sizes = {
+    checkbox: {
+        side: 16,
+    },
+};
 
 const checkmarkRotation = ({ checkedIcon }: CheckboxInputPropsType) => css`
     transform: ${checkedIcon === 'tick' ? ' rotate(45deg)' : ''};
@@ -29,6 +31,12 @@ const checkedHover = ({
         componentOverrides: { Checkbox },
     },
 }: CheckboxInputPropsType) => Checkbox.Root.checked.hover;
+
+const uncheckedHover = ({
+    theme: {
+        componentOverrides: { Checkbox },
+    },
+}: CheckboxInputPropsType) => Checkbox.Root.unchecked.hover;
 
 const disabledBefore = ({
     theme: {
@@ -77,37 +85,39 @@ const checkmarkStyle = ({
     return css`${checkmarkColor}${tickStyle}`;
 };
 
-export const CheckboxRoot = styled.p.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
+export const CheckboxRoot = styled.label.withConfig({
+    shouldForwardProp: property => shouldForwardProp(property, {}),
 })<CheckboxRootPropsType>`
+    ${mouseCursor}
     ${marginAttributes}
 `;
 
-export const CheckboxCheckmark = styled.label<CheckboxCheckmarkPropsType>`
+export const CheckboxCheckmark = styled.span<CheckboxCheckmarkPropsType>`
     position: relative;
-    padding-left: 32px;
+    padding-left: ${sizes.checkbox.side}px;
 
     &::before {
         content: '';
         position: absolute;
         left: 0;
         top: 0;
-        width: 16px;
-        height: 16px;
+        width: ${sizes.checkbox.side}px;
+        height: ${sizes.checkbox.side}px;
         border-radius: 4px;
         box-sizing: border-box;
         ${checkmarkBox}
+        transition: all ${transitionDurationInSec}s ease;
     }
 
     &::after {
         content: '';
         position: absolute;
-        transition: all 0.2s;
+        transition: all ${transitionDurationInSec}s ease;
 
         ${checkmarkStyle}
     }
 
-    ${mouseCursor}
+    ${pointerEvents}
 `;
 
 export const CheckboxInput = styled.input<CheckboxInputPropsType>`
@@ -121,9 +131,9 @@ export const CheckboxInput = styled.input<CheckboxInputPropsType>`
         + ${CheckboxCheckmark}:hover:before,
         &:not(:checked)
         + ${CheckboxCheckmark}:active:before {
-        border: #0042a5;
         border-width: 1px;
         border-style: solid;
+        ${uncheckedHover}
     }
 
     &:checked

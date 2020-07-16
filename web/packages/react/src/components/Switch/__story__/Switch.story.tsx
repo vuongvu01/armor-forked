@@ -15,33 +15,51 @@ export default {
 
 const gap = 1.5;
 
-export const Types = () => {
+export const States = () => {
     const [isChecked, setChecked] = useState(true);
+    const [isDisabled, setDisabled] = useState(false);
+
     return (
         <>
-            <h2>Possible States</h2>
+            <h2>States</h2>
             <GroupHelper gap={gap}>
                 <p>Enabled / OFF</p>
-                <Switch onChange={() => {}} />
+                <Switch onChange={() => {}} label="Enable location" />
             </GroupHelper>
             <GroupHelper gap={gap}>
                 <p>Enabled / ON by default</p>
-                <Switch defaultChecked onChange={() => {}} />
+                <Switch
+                    defaultChecked
+                    onChange={() => {}}
+                    label="Enable delivery"
+                />
             </GroupHelper>
             <GroupHelper gap={gap}>
                 <p>External control</p>
-                <Button onClick={() => setChecked(!isChecked)}>
-                    Toggle switch
+                <Button onClick={() => setChecked(!isChecked)}>Toggle</Button>
+                <Button onClick={() => setDisabled(!isDisabled)}>
+                    Disable/Enable
                 </Button>
-                <Switch checked={isChecked} />
+                <br />
+                <br />
+                <Switch
+                    checked={isChecked}
+                    disabled={isDisabled}
+                    label="Enable location"
+                />
             </GroupHelper>
             <GroupHelper gap={gap}>
                 <p>Disabled / OFF</p>
-                <Switch disabled onChange={() => {}} />
+                <Switch disabled onChange={() => {}} label="Enable delivery" />
             </GroupHelper>
             <GroupHelper gap={gap}>
                 <p>Disabled / ON</p>
-                <Switch defaultChecked disabled onChange={() => {}} />
+                <Switch
+                    defaultChecked
+                    disabled
+                    onChange={() => {}}
+                    label="Enable location"
+                />
             </GroupHelper>
         </>
     );

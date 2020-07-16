@@ -6,46 +6,52 @@ import { Nodes } from '../../../src/helpers/Nodes';
 
 <Meta title="Components/Switch" component={Switch} />
 
-# Toggle
+# Switch
 
-```
+```js
 import { Switch } from '@deliveryhero/armor';
 ```
 
-## Basic usage
-
-<Preview>
-    <Story name="Basic usage">
-        <Switch />
-    </Story>
-</Preview>
-
 ## States
 
-export const MyDynamicSwitch = () => {
-  const [isChecked, setChecked] = useState(true);
-  return (
-    <>
-        <h4>External control</h4>
-        <Button onClick={() => setChecked(!isChecked)}> Toggle checkbox state </Button>
-        <Switch checked={isChecked} onChange={() => {}}  />
-    </>
-  )
-}
-
 <Preview>
-    <Story name="States">
+    <Story name="States" height="200px">
         <>
-            <h4>Off</h4>
-            <Switch />
-            <h4>On by default</h4>
-            <Switch defaultChecked />
-            <MyDynamicSwitch />
-            <h4>Off disabled</h4>
-            <Switch disabled />
-            <h4>On disabled</h4>
-            <Switch checked disabled />
+            <Switch label="Default" />
+            <br />
+            <br />
+            <Switch defaultChecked label="Switched by default" />
+            <br />
+            <br />
+            <Switch disabled label="OFF, disabled" />
+            <br />
+            <br />
+            <Switch checked disabled label="ON, disabled" />
         </>
     </Story>
 </Preview>
+
+## External control
+
+<Preview>
+    <Story name="External control" height="150px">
+        {() => {
+   const [isChecked, setChecked] = useState(true);
+   const [isDisabled, setDisabled] = useState(false);
+   return (
+     <>
+         <Button onClick={() => setChecked(!isChecked)}>Toggle</Button>
+         <Button marginLeft={2} onClick={() => setDisabled(!isDisabled)} >Disable/Enable</Button>
+         <br />
+         <br />
+         <Switch checked={isChecked} disabled={isDisabled} label="External control" />
+     </>
+   )
+ }}
+    </Story>
+</Preview>
+
+## Properties
+
+<Props of={Switch} />
 

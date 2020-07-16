@@ -5,7 +5,6 @@ import {
     withKnobs,
     // eslint-disable-next-line import/no-unresolved
 } from '@storybook/addon-knobs';
-// eslint-disable-next-line import/no-unresolved
 import styled from 'styled-components';
 
 import {

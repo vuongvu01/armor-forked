@@ -1,31 +1,7 @@
 import { useMemo } from 'react';
 
-import { makeBEM, makeClassName } from '../../utils';
-import { ClassBasedOnComponentType } from './type';
+import { selectorClassGeneratorBasedOnComponent } from '../../styling';
 import { ClassNamesType } from '../type';
-
-const formClassBasedOnComponent = ({
-    component,
-    classPrefix,
-    className,
-    classNames,
-    disabled,
-    checked,
-}: ClassBasedOnComponentType) => {
-    const baseClassNames = makeClassName(classPrefix, className, classNames);
-
-    const stateClassNames: string[] = [];
-
-    if (checked) {
-        stateClassNames.push(makeBEM(classPrefix, component, 'checked'));
-    }
-
-    if (disabled) {
-        stateClassNames.push(makeBEM(classPrefix, component, 'disabled'));
-    }
-
-    return `${baseClassNames} ${stateClassNames.join(' ')}`;
-};
 
 export const useSwitchClassName = (
     classPrefix: string,
@@ -36,7 +12,7 @@ export const useSwitchClassName = (
 ) =>
     useMemo(
         () => ({
-            Root: formClassBasedOnComponent({
+            Root: selectorClassGeneratorBasedOnComponent({
                 component: 'Root',
                 classPrefix,
                 className,
@@ -44,7 +20,7 @@ export const useSwitchClassName = (
                 disabled,
                 checked,
             }),
-            Label: formClassBasedOnComponent({
+            Label: selectorClassGeneratorBasedOnComponent({
                 component: 'Label',
                 classPrefix,
                 className,
@@ -52,7 +28,7 @@ export const useSwitchClassName = (
                 disabled,
                 checked,
             }),
-            CheckboxInput: formClassBasedOnComponent({
+            CheckboxInput: selectorClassGeneratorBasedOnComponent({
                 component: 'CheckboxInput',
                 classPrefix,
                 className,
@@ -60,7 +36,7 @@ export const useSwitchClassName = (
                 disabled,
                 checked,
             }),
-            Slider: formClassBasedOnComponent({
+            Slider: selectorClassGeneratorBasedOnComponent({
                 component: 'Slider',
                 classPrefix,
                 className,

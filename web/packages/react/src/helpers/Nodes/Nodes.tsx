@@ -1,8 +1,8 @@
 import React, { FunctionComponent, useMemo } from 'react';
 
-import { Table, HeaderTR, TH, TR, TBody, TD } from './style';
-import { Props } from './type';
 import { makeBEM } from '../../utils';
+import { Props } from './type';
+import { Table, HeaderTR, TH, TR, TBody, TD } from './style';
 
 export const Nodes: FunctionComponent<Props> = ({ blockName, nodes }) => {
     const columns = useMemo(() => {

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { BoxRootPropsType } from './type';
+
 import {
     marginAttributes,
     paddingAttributes,
@@ -8,6 +8,7 @@ import {
     displayAttributes,
 } from '../../system/attributes';
 import { shouldForwardProp } from '../../utils';
+import { BoxRootPropsType } from './type';
 
 export const BoxRoot = styled.div.withConfig({
     shouldForwardProp: property => shouldForwardProp(property),

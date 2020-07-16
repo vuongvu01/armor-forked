@@ -1,10 +1,7 @@
-import { fontSizeRegular, fontWeightLight } from '../../tokens';
-
 export const messageDefaultTheme = {
-    // place the default theme object here, it will be automatically processed
     Root: {
         base: {
-            borderRadius: '$figure.borderRadius',
+            borderRadius: '$figure.borderRadius.soft',
             paddingLeft: 4,
             paddingRight: 4,
         },
@@ -12,31 +9,31 @@ export const messageDefaultTheme = {
             paddingRight: 10,
         },
         info: {
-            borderColor: '#3e84f3',
-            backgroundColor: '#f5f9fe',
+            borderColor: '$color.primary.main',
+            backgroundColor: '$color.neutral.01',
             '.MessageAction-Root--use-message-color': {
-                color: '#3e84f3',
+                color: '$color.primary.main',
             },
         },
         warning: {
-            borderColor: '#ffab01',
-            backgroundColor: '#fffbf2',
+            borderColor: '$color.warning.main',
+            backgroundColor: '$color.neutral.01',
             '.MessageAction-Root--use-message-color': {
-                color: '#ffab01',
+                color: '$color.warning.main',
             },
         },
         error: {
-            borderColor: '#ff5630',
-            backgroundColor: '#fff6f4',
+            borderColor: '$color.error.main',
+            backgroundColor: '$color.neutral.02',
             '.MessageAction-Root--use-message-color': {
-                color: '#ff5630',
+                color: '$color.error.main',
             },
         },
         success: {
-            borderColor: '#35b37e',
-            backgroundColor: '#f5fbf8',
+            borderColor: '$color.accent.main',
+            backgroundColor: '$color.neutral.01',
             '.MessageAction-Root--use-message-color': {
-                color: '#35b37e',
+                color: '$color.accent.main',
             },
         },
     },
@@ -48,16 +45,16 @@ export const messageDefaultTheme = {
             paddingBottom: 4,
         },
         info: {
-            color: '#3e84f3',
+            color: '$color.primary.main',
         },
         warning: {
-            color: '#ffab01',
+            color: '$color.warning.main',
         },
         error: {
-            color: '#ff5630',
+            color: '$color.error.main',
         },
         success: {
-            color: '#35b37e',
+            color: '$color.accent.main',
         },
     },
     Central: {
@@ -66,9 +63,9 @@ export const messageDefaultTheme = {
     Content: {
         base: {
             color: '$color.text.main',
-            fontWeight: fontWeightLight,
-            fontSize: fontSizeRegular,
-            fontFamily: '$typography.fontFamily',
+            fontWeight: '$typography.paragraphMedium.fontWeight',
+            fontSize: '$typography.paragraphMedium.fontSize',
+            fontFamily: '$typography.paragraphMedium.fontFamily',
 
             paddingTop: 4,
             paddingBottom: 4,
@@ -95,8 +92,8 @@ export const messageDefaultTheme = {
             right: 2,
             height: 6,
             width: 6,
-            color: '#707070',
-            fontSize: fontSizeRegular,
+            color: '$color.neutral.05',
+            fontSize: '$typography.paragraphMedium.fontSize',
         },
     },
 };

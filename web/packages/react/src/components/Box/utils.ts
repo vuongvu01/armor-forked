@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
-import { BoxStylesPropsType } from './type';
+
 import { returnEmptyString } from '../../utils';
+import { BoxStylesPropsType } from './type';
 
 export const useStyleOverrideBox = (
     styles?: BoxStylesPropsType,
