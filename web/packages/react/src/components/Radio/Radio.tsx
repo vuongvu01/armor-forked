@@ -8,7 +8,7 @@ import SelectorLabel from '../SelectorLabel';
 import { useRadioClassName } from './utils';
 import { RadioMark, RadioInput, RadioRoot } from './style';
 import { RadioPropsType } from './type';
-import { buttonDefaultTheme } from './theme';
+import { radioDefaultTheme } from './theme';
 
 export const RADIO_CLASS_PREFIX = 'Radio';
 
@@ -33,7 +33,7 @@ const Radio: FunctionComponent<RadioPropsType> = forwardRef(function Radio(
     const id = propsId || uniqueId('radio-id-');
     const isChecked = checked || value === selectedValue;
 
-    useThemeOverride(RADIO_CLASS_PREFIX, theme, buttonDefaultTheme);
+    useThemeOverride(RADIO_CLASS_PREFIX, theme, radioDefaultTheme);
 
     const classOverride = useRadioClassName(
         RADIO_CLASS_PREFIX,

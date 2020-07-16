@@ -8,7 +8,7 @@ const color = {
     neutral05: '$color.neutral.05',
 };
 
-export const buttonDefaultTheme = {
+export const checkboxDefaultTheme = {
     Root: {
         checked: {
             base: {

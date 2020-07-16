@@ -35,7 +35,7 @@ const disabledToggle = ({
     checked,
     defaultChecked,
 }: SwitchCheckboxInputPropsType) =>
-    !(checked || defaultChecked) ? Switch.Toggle.disabled_checked : '';
+    !(checked || defaultChecked) ? Switch.Toggle.disabled__checked : '';
 
 const checkedBackground = ({
     theme: {

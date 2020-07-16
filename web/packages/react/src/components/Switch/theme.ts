@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/camelcase */
 
-export const toggleDefaultTheme = {
+export const switchDefaultTheme = {
     Toggle: {
         base: { backgroundColor: '$color.neutral.00' },
-        disabled_checked: { backgroundColor: '$color.neutral.02' },
+        disabled__checked: { backgroundColor: '$color.neutral.02' },
     },
     Label: {
         base: { backgroundColor: '$color.neutral.05' },

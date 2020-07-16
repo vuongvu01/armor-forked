@@ -14,22 +14,8 @@ import { Switch } from '@deliveryhero/armor';
 
 ## States
 
-export const MyDynamicSwitch = () => {
-  const [isChecked, setChecked] = useState(true);
-  const [isDisabled, setDisabled] = useState(false);
-  return (
-    <>
-        <Button onClick={() => setChecked(!isChecked)}>Toggle</Button>
-        <Button marginLeft={2} onClick={() => setDisabled(!isDisabled)} >Disable/Enable</Button>
-        <br />
-        <br />
-        <Switch checked={isChecked} disabled={isDisabled} label="External control" />
-    </>
-  )
-}
-
 <Preview>
-    <Story name="States" height="360px">
+    <Story name="States" height="200px">
         <>
             <Switch label="Default" />
             <br />
@@ -41,12 +27,27 @@ export const MyDynamicSwitch = () => {
             <br />
             <br />
             <Switch checked disabled label="ON, disabled" />
-            <br />
-            <br />
-            <br />
-            <br />
-            <MyDynamicSwitch />
         </>
+    </Story>
+</Preview>
+
+## External control
+
+<Preview>
+    <Story name="External control" height="150px">
+        {() => {
+   const [isChecked, setChecked] = useState(true);
+   const [isDisabled, setDisabled] = useState(false);
+   return (
+     <>
+         <Button onClick={() => setChecked(!isChecked)}>Toggle</Button>
+         <Button marginLeft={2} onClick={() => setDisabled(!isDisabled)} >Disable/Enable</Button>
+         <br />
+         <br />
+         <Switch checked={isChecked} disabled={isDisabled} label="External control" />
+     </>
+   )
+ }}
     </Story>
 </Preview>
 

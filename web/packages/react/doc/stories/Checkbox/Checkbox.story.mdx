@@ -18,17 +18,26 @@ import { Checkbox } from '@deliveryhero/armor';
 
 <Preview>
     <Story name="States" height="220px">
-        <>
-            <Checkbox label="Unchecked" />
-            <h1 />
-            <Checkbox defaultChecked label="Checked" />
-            <h1 />
-            <Checkbox disabled label="Unchecked disabled" />
-            <h1 />
-            <Checkbox checked disabled label="Checked disabled" />
-            <h1 />
-            <Checkbox checked disabled checkedIcon="dash" label="Checked disabled dash"  />
-        </>
+    {() => {
+       const [isChecked, setChecked] = useState(false);
+       return (
+ <>
+     <Checkbox checked={isChecked} label={isChecked ? 'Checked' : 'Unchecked'} onChange={() => setChecked(!isChecked)} />
+     <br />
+     <br />
+     <Checkbox defaultChecked label="Checked" />
+     <br />
+     <br />
+     <Checkbox disabled label="Unchecked disabled" />
+     <br />
+     <br />
+     <Checkbox checked disabled label="Checked disabled" />
+     <br />
+     <br />
+     <Checkbox checked disabled checkedIcon="dash" label="Checked disabled dash"  />
+ </>
+    )
+}}
     </Story>
 </Preview>
 

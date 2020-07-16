@@ -30,14 +30,12 @@ const getRootBasicStyle = ({ theme }: ButtonRootPropsType) => css<
 `;
 
 const getRootDynamicVisualStyle = ({
-    theme,
+    theme: {
+        componentOverrides: { Button },
+    },
     secondary,
     tertiary,
 }: ButtonRootPropsType) => {
-    const {
-        componentOverrides: { Button },
-    } = theme;
-
     if (secondary) {
         return Button.Root.secondary;
     }
@@ -46,7 +44,6 @@ const getRootDynamicVisualStyle = ({
         return Button.Root.tertiary;
     }
 
-    // primary by default
     return Button.Root.primary;
 };
 
@@ -125,21 +122,21 @@ const Wrapper = ({
 export const ButtonStyle = styled(Wrapper).withConfig({
     shouldForwardProp: property => shouldForwardProp(property, propertyList),
 })<ButtonRootPropsType>`
+    align-items: center;
+    appearance: none;
+    border: 1px solid transparent;
+    box-sizing: border-box;
+    cursor: pointer;
     display: inline-flex;
     justify-content: center;
-    align-items: center;
-    position: relative;
-    vertical-align: middle;
     outline: none;
-    user-select: none;
-    appearance: none;
-    text-decoration: none;
-    text-align: center;
-    box-sizing: border-box;
-    border: 1px solid transparent;
-    letter-spacing: 0;
     padding: 0;
-    cursor: pointer;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    letter-spacing: 0;
+    user-select: none;
+    vertical-align: middle;
 
     &:hover, &:focus, &:disabled, &:active, &:visited {
         text-decoration: none;

@@ -7,7 +7,7 @@ const color = {
     neutral03: '$color.neutral.03',
 };
 
-export const buttonDefaultTheme = {
+export const radioDefaultTheme = {
     Container: {
         base: {
             backgroundColor: color.neutral00,

@@ -8,9 +8,9 @@ import SelectorLabel from '../SelectorLabel';
 import { useSwitchClassName } from './utils';
 import { SwitchCheckboxInput, SwitchToggle, SwitchRoot } from './style';
 import { SwitchPropsType } from './type';
-import { toggleDefaultTheme } from './theme';
+import { switchDefaultTheme } from './theme';
 
-const CLASS_PREFIX = 'Switch';
+const SWITCH_CLASS_PREFIX = 'Switch';
 
 export const Switch: FunctionComponent<SwitchPropsType> = forwardRef(
     function Switch(
@@ -29,10 +29,10 @@ export const Switch: FunctionComponent<SwitchPropsType> = forwardRef(
     ) {
         const theme = useTheme();
         const id = propsId || uniqueId('switch-id-');
-        useThemeOverride(CLASS_PREFIX, theme, toggleDefaultTheme);
+        useThemeOverride(SWITCH_CLASS_PREFIX, theme, switchDefaultTheme);
 
         const classOverride = useSwitchClassName(
-            CLASS_PREFIX,
+            SWITCH_CLASS_PREFIX,
             className,
             classNames,
             disabled,
@@ -69,7 +69,10 @@ export const Switch: FunctionComponent<SwitchPropsType> = forwardRef(
     },
 );
 
+Switch.displayName = SWITCH_CLASS_PREFIX;
+
 Switch.defaultProps = {
+    cehcked: false,
     disabled: false,
 };
 

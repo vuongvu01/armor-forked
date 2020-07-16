@@ -8,9 +8,9 @@ import SelectorLabel from '../SelectorLabel';
 import { useCheckboxClassName } from './utils';
 import { CheckboxInput, CheckboxCheckmark, CheckboxRoot } from './style';
 import { CheckboxPropsType } from './type';
-import { buttonDefaultTheme } from './theme';
+import { checkboxDefaultTheme } from './theme';
 
-const CLASS_PREFIX = 'Checkbox';
+const CHECKBOX_CLASS_PREFIX = 'Checkbox';
 
 export const Checkbox: FunctionComponent<CheckboxPropsType> = forwardRef(
     function Checkbox(
@@ -31,10 +31,10 @@ export const Checkbox: FunctionComponent<CheckboxPropsType> = forwardRef(
         const theme = useTheme();
         const id = propsId || uniqueId('checkbox-id-');
 
-        useThemeOverride(CLASS_PREFIX, theme, buttonDefaultTheme);
+        useThemeOverride(CHECKBOX_CLASS_PREFIX, theme, checkboxDefaultTheme);
 
         const classOverride = useCheckboxClassName(
-            CLASS_PREFIX,
+            CHECKBOX_CLASS_PREFIX,
             className,
             classNames,
             disabled,
@@ -85,9 +85,11 @@ export const Checkbox: FunctionComponent<CheckboxPropsType> = forwardRef(
     },
 );
 
+Checkbox.displayName = CHECKBOX_CLASS_PREFIX;
+
 Checkbox.defaultProps = {
-    disabled: false,
     checkedIcon: 'tick',
+    disabled: false,
 };
 
 Checkbox.propTypes = {
