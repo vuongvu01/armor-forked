@@ -15,20 +15,20 @@ import { Message, MessageAction } from '@deliveryhero/armor';
 ## Basic usage
 
 <Preview>
-    <Story name="Basic usage">
-        <Message>You have 99 new cookies!</Message>
+    <Story name="Basic usage" height="100px">
+        <Message disableIcon>You have 99 new cookies!</Message>
     </Story>
 </Preview>
 
 ## Levels of importance
 
 <Preview>
-    <Story name="Levels of importance">
+    <Story name="Levels of importance" height="300px">
         <>
-            <Message error marginBottom={2}>System failure. You ran out of cake.</Message>
-            <Message warning marginBottom={2}>Your payment is due.</Message>
-            <Message info marginBottom={2}>Your spacetrain arrives at 14:00.</Message>
-            <Message success>You have just received 500&euro;.</Message>
+            <Message disableIcon error marginBottom={2}>System failure. You ran out of cake.</Message>
+            <Message disableIcon warning marginBottom={2}>Your payment is due.</Message>
+            <Message disableIcon info marginBottom={2}>Your spacetrain arrives at 14:00.</Message>
+            <Message disableIcon success>You have just received 500&euro;.</Message>
         </>
     </Story>
 </Preview>
@@ -36,14 +36,14 @@ import { Message, MessageAction } from '@deliveryhero/armor';
 ## With title
 
 <Preview>
-    <Story name="With title">
-        <Message 
+    <Story name="With title" height="120px">
+        <Message disableIcon 
             info
         >
             <Typography label medium marginBottom={1}>
                 Important information
             </Typography>
-            The sun is orange
+            The sun is shining
         </Message>
     </Story>
 </Preview>
@@ -51,8 +51,8 @@ import { Message, MessageAction } from '@deliveryhero/armor';
 ## Without close icon
 
 <Preview>
-    <Story name="Without close icon">
-        <Message 
+    <Story name="Without close icon" height="100px">
+        <Message disableIcon 
             success
             disableCloseButton
         >
@@ -64,8 +64,8 @@ import { Message, MessageAction } from '@deliveryhero/armor';
 ## Without left icon
 
 <Preview>
-    <Story name="Without left icon">
-        <Message 
+    <Story name="Without left icon" height="100px">
+        <Message disableIcon 
             success
             disableIcon
         >
@@ -77,8 +77,8 @@ import { Message, MessageAction } from '@deliveryhero/armor';
 ## With action button on the right
 
 <Preview>
-    <Story name="With action button on the right">
-        <Message error disableCloseButton
+    <Story name="With action button on the right" height="100px">
+        <Message disableIcon error disableCloseButton
             actions={<MessageAction useMessageColor>Buy more cake</MessageAction>}
         >
             System failure. You ran out of cake.
@@ -89,15 +89,15 @@ import { Message, MessageAction } from '@deliveryhero/armor';
 ## With action button at the bottom
 
 <Preview>
-    <Story name="With action button at the bottom">
-        <Message 
+    <Story name="With action button at the bottom" height="120px">
+        <Message disableIcon 
             error
             disableCloseButton
         >
             System failure. You ran out of cake.
             <Box marginTop={2}>
                 <MessageAction marginRight={4}>
-                    Take action NOW
+                    Go to store
                 </MessageAction>
                 <MessageAction>
                     Pass
@@ -110,8 +110,8 @@ import { Message, MessageAction } from '@deliveryhero/armor';
 ## With extra data on the right
 
 <Preview>
-    <Story name="With extra data on the right">
-        <Message 
+    <Story name="With extra data on the right" height="200px">
+        <Message disableIcon 
             warning
             disableCloseButton
             extra={<Rick />}
@@ -124,8 +124,9 @@ import { Message, MessageAction } from '@deliveryhero/armor';
 ## With long content
 
 <Preview>
-    <Story name="With long content">
+    <Story name="With long content" height="300px">
         <Message
+            disableIcon
             disableCloseButton
             actions={<MessageAction useMessageColor>Buy more cake</MessageAction>}
         >

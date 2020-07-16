@@ -15,7 +15,7 @@ import { TextInput } from '@deliveryhero/armor';
 ## Basic usage
 
 <Preview>
-    <Story name="Basic usage">
+    <Story name="Basic usage" height="100px">
         <TextInput label="First name" name="first_name" />
     </Story>
 </Preview>
@@ -23,7 +23,7 @@ import { TextInput } from '@deliveryhero/armor';
 ## Disabled
 
 <Preview>
-    <Story name="Disabled">
+    <Story name="Disabled" height="100px">
         <TextInput label="First name" name="first_name" disabled />
     </Story>
 </Preview>
@@ -31,10 +31,10 @@ import { TextInput } from '@deliveryhero/armor';
 ## Readonly
 
 <Preview>
-    <Story name="Readonly">
+    <Story name="Readonly" height="100px">
         <>
             <TextInput label="First name" name="first_name" readOnly defaultValue="Joe" />
-            <TextInput label="Last name" name="last_name" readOnly marginLeft={2} />
+            <TextInput label="Last name missing" name="last_name" readOnly marginLeft={2} />
         </>
     </Story>
 </Preview>
@@ -42,19 +42,19 @@ import { TextInput } from '@deliveryhero/armor';
 ## Error state
 
 <Preview>
-    <Story name="Error state">
+    <Story name="Error state" height="100px">
         <TextInput label="First name" name="first_name" defaultValue="Joe" error />
     </Story>
 </Preview>
 
 ## Inline
 
-~~~
+~~~js
 import { TextInput, Button } from '@deliveryhero/armor';
 ~~~
 
 <Preview>
-    <Story name="Inline">
+    <Story name="Inline" height="100px">
         <>
             <TextInput label="First name" name="first_name" defaultValue="Joe" />
             <TextInput label="Last name" name="last_name" defaultValue="Smith" marginLeft={2} />
@@ -66,7 +66,7 @@ import { TextInput, Button } from '@deliveryhero/armor';
 ## Wide
 
 <Preview>
-    <Story name="Wide">
+    <Story name="Wide" height="100px">
         <TextInput label="First name" name="first_name" wide />
     </Story>
 </Preview>
@@ -74,7 +74,7 @@ import { TextInput, Button } from '@deliveryhero/armor';
 ## Large
 
 <Preview>
-    <Story name="Large">
+    <Story name="Large" height="100px">
         <>
             <TextInput label="First name" name="first_name" defaultValue="Joe" />
             <TextInput label="Last name" name="last_name" defaultValue="Smith" marginLeft={2} large />
@@ -85,7 +85,7 @@ import { TextInput, Button } from '@deliveryhero/armor';
 ## No autocomplete
 
 <Preview>
-    <Story name="No autocomplete">
+    <Story name="No autocomplete" height="100px">
         <TextInput label="First name" name="first_name" autoComplete="off" />
     </Story>
 </Preview>
@@ -93,19 +93,19 @@ import { TextInput, Button } from '@deliveryhero/armor';
 ## Multiline
 
 <Preview>
-    <Story name="Multiline">
+    <Story name="Multiline" height="240px">
         <TextInput label="Tell me how you have spent your summer" name="essay" multiline rows={5} minWidth="50%" />
     </Story>
 </Preview>
 
 ## With a hint
 
-~~~
+~~~js
 import { TextInput, FormFieldMessage, Box } from '@deliveryhero/armor';
 ~~~
 
 <Preview>
-    <Story name="With a hint">
+    <Story name="With a hint" height="100px">
         <Box width="50%">
             <TextInput label="First name" name="first_name" defaultValue="Joe" wide />
             <FormFieldMessage>Please specify your first name exactly how it is in your ID</FormFieldMessage>
@@ -115,54 +115,54 @@ import { TextInput, FormFieldMessage, Box } from '@deliveryhero/armor';
 
 ## In a form field
 
-~~~
+~~~js
 import { TextInput, FormFieldMessage, FormField, FormFieldTooltip, Button } from '@deliveryhero/armor';
 ~~~
 
 <Preview>
-    <Story name="In a form field">
+    <Story name="In a form field" height="320px">
         <StoryHelper>
             {({ error, setError }) => (
-                <form onSubmit={(event) => {setError("Not the droids you are looking for"); event.preventDefault();}}>
-                    <h1>Droid search application form</h1>
-                    <FormField width="50%">
-                        <TextInput
-                            label="Droid name"
-                            name="droid_name"
-                            error={!!error}
-                            wide
-                        />
-                        <FormFieldMessage error oneLine>
-                            {error}
-                        </FormFieldMessage>
-                        <FormFieldTooltip visible={!!error}>
-                            {error}
-                        </FormFieldTooltip>
-                    </FormField>
-                    <FormField width="50%">
-                        <TextInput
-                            label="Owner name"
-                            name="owner_name"
-                            wide
-                        />
-                    </FormField>
-                    <Button 
-                        type="submit"
-                        marginTop={4}
-                    >
-                        Submit
-                    </Button>
-                    <Button
-                        tertiary
-                        onClick={() => setError("")}
-                        marginLeft={2}
-                        marginTop={4}
-                    >
-                        Reset
-                    </Button>
-                </form>
-            )}
-        </StoryHelper>
+    <form onSubmit={(event) => {setError("Not the droids you are looking for"); event.preventDefault();}}>
+        <h1>Droid search application form</h1>
+        <FormField width="50%">
+            <TextInput
+                label="Droid name"
+                name="droid_name"
+                error={!!error}
+                wide
+            />
+            <FormFieldMessage error oneLine>
+                {error}
+            </FormFieldMessage>
+            <FormFieldTooltip visible={!!error}>
+                {error}
+            </FormFieldTooltip>
+        </FormField>
+        <FormField width="50%">
+            <TextInput
+                label="Owner name"
+                name="owner_name"
+                wide
+            />
+        </FormField>
+        <Button
+            type="submit"
+            marginTop={4}
+        >
+            Submit
+        </Button>
+        <Button
+            tertiary
+            onClick={() => setError("")}
+            marginLeft={2}
+            marginTop={4}
+        >
+            Reset
+        </Button>
+    </form>
+)}
+</StoryHelper>
     </Story>
 </Preview>
 

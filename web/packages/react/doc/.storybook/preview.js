@@ -7,6 +7,6 @@ addParameters({
     },
     options: {
         isToolshown: false,
-        showNav: false,
+        showNav: true,
     },
 });
