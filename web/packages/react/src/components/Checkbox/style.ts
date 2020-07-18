@@ -89,6 +89,7 @@ export const CheckboxRoot = styled.label.withConfig({
     shouldForwardProp: property => shouldForwardProp(property, {}),
 })<CheckboxRootPropsType>`
     display: inline-flex;
+    height: ${sizes.checkbox.side}px;
 
     ${mouseCursor}
     ${marginAttributes}
