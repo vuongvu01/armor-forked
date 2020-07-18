@@ -19,12 +19,28 @@ export const States = () => {
                 <p>Default</p>
                 <Checkbox onChange={() => {}} label="add mozzarella" />
             </GroupHelper>
-            <GroupHelper gap={2}>
+            <GroupHelper
+                gap={2}
+                styles={{ display: 'flex', flexDirection: 'column' }}
+            >
                 <p>Checked by default</p>
                 <Checkbox
                     defaultChecked
                     onChange={() => {}}
                     label="add olives"
+                    marginBottom={2}
+                />
+                <Checkbox
+                    defaultChecked
+                    onChange={() => {}}
+                    label="add mozzarella"
+                    marginBottom={2}
+                />
+                <Checkbox
+                    defaultChecked
+                    onChange={() => {}}
+                    label="add mozzarella"
+                    marginBottom={2}
                 />
             </GroupHelper>
             <GroupHelper gap={2}>
