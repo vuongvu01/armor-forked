@@ -77,10 +77,14 @@ export const Types = () => {
                     </Button>
                     <Button primary>
                         Primary with icon
-                        <MaterialIcon marginLeft={2} icon="edit" />
+                        <MaterialIcon
+                            marginLeft={2}
+                            fontSize={14}
+                            icon="edit"
+                        />
                     </Button>
                     <Button primary>
-                        <MaterialIcon icon="edit" />
+                        <MaterialIcon fontSize={14} icon="edit" />
                     </Button>
                     <Button primary danger>
                         Primary
@@ -99,10 +103,14 @@ export const Types = () => {
                     </Button>
                     <Button disabled primary>
                         Primary with icon
-                        <MaterialIcon marginLeft={2} icon="edit" />
+                        <MaterialIcon
+                            marginLeft={2}
+                            fontSize={14}
+                            icon="edit"
+                        />
                     </Button>
                     <Button disabled primary>
-                        <MaterialIcon icon="edit" />
+                        <MaterialIcon fontSize={14} icon="edit" />
                     </Button>
                     <Button disabled primary danger>
                         Primary
@@ -124,7 +132,7 @@ export const Types = () => {
                         <MaterialIcon marginLeft={2} icon="edit" />
                     </Button>
                     <Button secondary>
-                        <MaterialIcon icon="edit" />
+                        <MaterialIcon fontSize={14} icon="edit" />
                     </Button>
                     <Button secondary small>
                         Secondary
@@ -140,10 +148,14 @@ export const Types = () => {
                     </Button>
                     <Button disabled secondary>
                         Secondary with icon
-                        <MaterialIcon marginLeft={2} icon="edit" />
+                        <MaterialIcon
+                            fontSize={14}
+                            marginLeft={2}
+                            icon="edit"
+                        />
                     </Button>
                     <Button disabled secondary>
-                        <MaterialIcon icon="edit" />
+                        <MaterialIcon fontSize={14} icon="edit" />
                     </Button>
                     <Button disabled secondary small>
                         Secondary
@@ -159,10 +171,14 @@ export const Types = () => {
                     </Button>
                     <Button tertiary>
                         Tertiary with icon
-                        <MaterialIcon marginLeft={2} icon="edit" />
+                        <MaterialIcon
+                            marginLeft={2}
+                            fontSize={14}
+                            icon="edit"
+                        />
                     </Button>
                     <Button tertiary>
-                        <MaterialIcon icon="edit" />
+                        <MaterialIcon fontSize={14} icon="edit" />
                     </Button>
                     <Button tertiary danger>
                         Tertiary
@@ -178,10 +194,14 @@ export const Types = () => {
                     </Button>
                     <Button disabled tertiary>
                         Tertiary with icon
-                        <MaterialIcon marginLeft={2} icon="edit" />
+                        <MaterialIcon
+                            marginLeft={2}
+                            fontSize={14}
+                            icon="edit"
+                        />
                     </Button>
                     <Button disabled tertiary>
-                        <MaterialIcon icon="edit" />
+                        <MaterialIcon fontSize={14} icon="edit" />
                     </Button>
                     <Button disabled tertiary danger>
                         Tertiary

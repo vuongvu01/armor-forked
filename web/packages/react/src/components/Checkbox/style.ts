@@ -88,11 +88,15 @@ const checkmarkStyle = ({
 export const CheckboxRoot = styled.label.withConfig({
     shouldForwardProp: property => shouldForwardProp(property, {}),
 })<CheckboxRootPropsType>`
+    display: inline-flex;
+
     ${mouseCursor}
     ${marginAttributes}
 `;
 
 export const CheckboxCheckmark = styled.span<CheckboxCheckmarkPropsType>`
+    display: list-item;
+    list-style: none;
     position: relative;
     padding-left: ${sizes.checkbox.side}px;
 
