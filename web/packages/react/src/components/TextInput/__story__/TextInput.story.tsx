@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import {
     withKnobs,
     // eslint-disable-next-line import/no-unresolved
@@ -24,26 +24,49 @@ export default {
     parameters: {},
 };
 
-export const Basic = () => (
-    <>
-        <TextInput
-            label="Name your price"
-            placeholder="Name your price"
-            name="your_price"
-            marginTop={10}
-            displayMode="block"
-        />
-        <TextInput
-            defaultValue="10 USD"
-            label="Name your price"
-            placeholder="...and type it here..."
-            name="your_price"
-            disableLabelEffect
-            marginTop={10}
-            displayMode="block"
-        />
-    </>
-);
+export const Basic = () => {
+    const textInputRef = useRef(null);
+
+    return (
+        <>
+            <TextInput
+                label="Name your price"
+                placeholder="Name your price"
+                name="your_price"
+                marginTop={10}
+                displayMode="block"
+                ref={textInputRef}
+            />
+            <TextInput
+                defaultValue="10 USD"
+                label="Name your price"
+                placeholder="...and type it here..."
+                name="your_price"
+                disableLabelEffect
+                marginTop={10}
+                displayMode="block"
+            />
+        </>
+    );
+};
+
+export const Controlled = () => {
+    const [value, setValue] = useState('');
+
+    return (
+        <Box width="50%">
+            <TextInput
+                label="First name"
+                name="first_name"
+                wide
+                value={value}
+            />
+            <Button onClick={() => setValue(Math.random().toString())}>
+                Randomize timer
+            </Button>
+        </Box>
+    );
+};
 
 export const LabelAnimation = () => (
     <>
