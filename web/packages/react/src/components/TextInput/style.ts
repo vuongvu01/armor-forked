@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
 import { ReactElement } from 'react';
+import styled, { css } from 'styled-components';
 
 import { marginAttributes, widthAttributes } from '../../system';
 import { ObjectLiteralType } from '../../type';
@@ -120,6 +120,7 @@ export const TextInputLabel = styled.span.withConfig({
     shouldForwardProp: property => shouldForwardProp(property, propertyList),
 })<TextInputLabelPropsType>`
     position: absolute;
+    text-align: left;
     right: 0;
     left: 0;
     overflow-x: hidden;

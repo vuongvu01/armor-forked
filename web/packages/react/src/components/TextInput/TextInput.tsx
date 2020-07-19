@@ -110,36 +110,35 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
             >
                 {before}
                 <TextInputInput
-                    theme={theme}
-                    className={classNameComponents.Input}
-                    styles={stylesOverride.Input}
-                    ref={ref}
-                    multiline={multiline}
-                    large={large}
                     autoComplete={autoComplete}
                     autoFocus={autoFocus}
+                    className={classNameComponents.Input}
                     defaultValue={defaultValue}
                     disabled={disabled}
-                    name={name}
-                    placeholder={placeholder}
-                    readOnly={readOnly}
-                    rows={rows}
-                    value={value}
-                    onKeyDown={onKeyDown}
-                    onKeyUp={onKeyUp}
-                    onFocus={onInputFocus}
-                    onBlur={onInputBlur}
-                    onChange={onChange}
-                    type={multiline ? undefined : type}
+                    large={large}
                     max={max}
                     maxLength={maxLength}
                     min={min}
                     minLength={minLength}
+                    multiline={multiline}
+                    name={name}
+                    onBlur={onInputBlur}
+                    onChange={onChange}
+                    onFocus={onInputFocus}
+                    onKeyDown={onKeyDown}
+                    onKeyUp={onKeyUp}
+                    placeholder={!value ? placeholder : ''}
+                    readOnly={readOnly}
+                    rows={rows}
+                    styles={stylesOverride.Input}
                     tabIndex={tabIndex}
+                    theme={theme}
+                    type={multiline ? undefined : type}
+                    value={value}
                 >
                     {(forwardedProps: TextInputInputPropsType) => (
                         // @ts-ignore
-                        <Tag {...forwardedProps} />
+                        <Tag {...forwardedProps} ref={ref} />
                     )}
                 </TextInputInput>
                 {after}
@@ -154,14 +153,16 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
                         outlined={isMouseInside || isFocused}
                         error={error}
                     >
-                        <TextInputLabelBackground
-                            className={classNameComponents.LabelBackground}
-                            styles={stylesOverride.LabelBackground}
-                            theme={theme}
-                            disabled={disabled}
-                        >
-                            {label}
-                        </TextInputLabelBackground>
+                        {!value ? (
+                            <TextInputLabelBackground
+                                className={classNameComponents.LabelBackground}
+                                styles={stylesOverride.LabelBackground}
+                                theme={theme}
+                                disabled={disabled}
+                            >
+                                {label}
+                            </TextInputLabelBackground>
+                        ) : null}
                     </TextInputLabel>
                 )}
             </TextInputRoot>
