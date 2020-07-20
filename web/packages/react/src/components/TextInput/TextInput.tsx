@@ -45,6 +45,7 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
             readOnly,
             rows,
             value,
+            onClick,
             onKeyDown,
             onKeyUp,
             onFocus,
@@ -94,6 +95,7 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
         });
 
         const Tag = multiline ? 'textarea' : 'input';
+        const isOutlined = isMouseInside || isFocused;
 
         return (
             <TextInputRoot
@@ -102,7 +104,7 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
                 theme={theme}
                 multiline={multiline}
                 disabled={disabled}
-                outlined={isMouseInside || isFocused}
+                outlined={isOutlined}
                 error={error}
                 onMouseOver={onInputMouseOver}
                 onMouseOut={onInputMouseOut}
@@ -123,6 +125,7 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
                     multiline={multiline}
                     name={name}
                     onBlur={onInputBlur}
+                    onClick={onClick}
                     onChange={onChange}
                     onFocus={onInputFocus}
                     onKeyDown={onKeyDown}
@@ -150,19 +153,17 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
                         inside={isLabelInside}
                         disabled={disabled}
                         large={large}
-                        outlined={isMouseInside || isFocused}
+                        outlined={isOutlined}
                         error={error}
                     >
-                        {!value ? (
-                            <TextInputLabelBackground
-                                className={classNameComponents.LabelBackground}
-                                styles={stylesOverride.LabelBackground}
-                                theme={theme}
-                                disabled={disabled}
-                            >
-                                {label}
-                            </TextInputLabelBackground>
-                        ) : null}
+                        <TextInputLabelBackground
+                            className={classNameComponents.LabelBackground}
+                            styles={stylesOverride.LabelBackground}
+                            theme={theme}
+                            disabled={disabled}
+                        >
+                            {label}
+                        </TextInputLabelBackground>
                     </TextInputLabel>
                 )}
             </TextInputRoot>
