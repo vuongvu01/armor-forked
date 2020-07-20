@@ -1,4 +1,4 @@
-import { InputHTMLAttributes } from 'react';
+import { HTMLAttributes } from 'react';
 
 import { MarginAttributesType } from '../../system/attributes';
 import { Indexed } from '../../type';
@@ -13,14 +13,15 @@ export type ClassBasedOnComponentType = {
     isActive?: boolean;
 };
 
-type TabEffectivePropsType = Indexed<{
+type TabsEffectivePropsType = Indexed<{
     selectedValue?: string | number;
-    tabIndex?: number;
+    value?: string | number;
+    onSwitch: (tabIndex: number) => void;
 }> &
-    InputHTMLAttributes<HTMLInputElement> &
+    HTMLAttributes<HTMLElement> &
     MarginAttributesType;
 
-export type TabPropsType = TabEffectivePropsType;
+export type TabsPropsType = TabsEffectivePropsType;
 
-export type TabRootPropsType = TabEffectivePropsType &
-    NodeStylePropsType<TabEffectivePropsType>;
+export type TabsRootPropsType = TabsEffectivePropsType &
+    NodeStylePropsType<TabsEffectivePropsType>;

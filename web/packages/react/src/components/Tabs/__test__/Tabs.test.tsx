@@ -2,14 +2,14 @@
 import React from 'react';
 import { cleanup, render } from '@testing-library/react';
 
-import { Tab } from '../Tab';
+import { Tabs } from '../Tabs';
 
-describe('<Tab />', () => {
+describe('<Tabs />', () => {
     afterEach(async () => {
         cleanup();
     });
 
     it('should render itself without errors', async () => {
-        render(<Tab />);
+        render(<Tabs onSwitch={() => {}} />);
     });
 });

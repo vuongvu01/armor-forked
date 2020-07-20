@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 
 import { marginAttributes } from '../../system/attributes';
-import { shouldForwardProp } from '../../utils';
 import { mouseCursor } from '../../styling';
 import { TabRootPropsType } from './type';
 
@@ -21,14 +20,24 @@ const stateStyle = ({
 
     return Tab.Root.base;
 };
+const cursor = ({ disabled }: TabRootPropsType) => {
+    if (disabled) {
+        return css`
+            pointer-events: none;
+        `;
+    }
 
-export const TabRoot = styled.div.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property),
-})<TabRootPropsType>`
-    margin: auto;
+    return mouseCursor;
+};
+
+export const TabRoot = styled.div<TabRootPropsType>`
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
     text-align: center;
+    max-width: 240px;
   
     ${stateStyle} 
     ${marginAttributes}
-    ${mouseCursor}
+    ${cursor}
 `;

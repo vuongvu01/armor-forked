@@ -1,4 +1,4 @@
-import { InputHTMLAttributes } from 'react';
+import { HTMLAttributes } from 'react';
 
 import { MarginAttributesType } from '../../system/attributes';
 import { Indexed } from '../../type';
@@ -10,17 +10,16 @@ export type ClassBasedOnComponentType = {
     className?: string;
     classNames?: ClassNamesType;
     disabled?: boolean;
-    isActive?: boolean;
 };
 
-type TabEffectivePropsType = Indexed<{
+type TabViewEffectivePropsType = Indexed<{
     selectedValue?: string | number;
-    tabIndex?: number;
+    value?: string | number;
 }> &
-    InputHTMLAttributes<HTMLInputElement> &
+    HTMLAttributes<HTMLElement> &
     MarginAttributesType;
 
-export type TabPropsType = TabEffectivePropsType;
+export type TabViewPropsType = TabViewEffectivePropsType;
 
-export type TabRootPropsType = TabEffectivePropsType &
-    NodeStylePropsType<TabEffectivePropsType>;
+export type TabViewRootPropsType = TabViewEffectivePropsType &
+    NodeStylePropsType<TabViewEffectivePropsType>;

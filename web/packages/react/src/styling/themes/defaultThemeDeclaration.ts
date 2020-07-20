@@ -78,6 +78,7 @@ export const defaultThemeDeclaration = {
             fontWeight: fontWeightBold,
         },
         labelLarge: {
+            fontSize: fontSize03,
             letterSpacing: letterSpacingMedium,
         },
         labelMedium: {

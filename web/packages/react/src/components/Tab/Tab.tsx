@@ -11,22 +11,23 @@ import { tabDefaultTheme } from './theme';
 
 export const TAB_CLASS_PREFIX = 'Tab';
 
-const Tab: FunctionComponent<TabPropsType> = forwardRef(function Tab(
+export const Tab: FunctionComponent<TabPropsType> = forwardRef(function Tab(
     {
         className,
         classNames,
+        currentlyActiveTab,
         disabled,
         id: propsId,
         label,
-        onClick,
-        selectedValue,
-        value,
+        handleClick,
+        tabIndex,
+        ...otherProps
     },
     ref,
 ) {
     const theme = useTheme();
     const id = propsId || uniqueId('tab-id-');
-    const isActive = !!value && !!selectedValue && value === selectedValue;
+    const isActive = currentlyActiveTab === tabIndex;
 
     useThemeOverride(TAB_CLASS_PREFIX, theme, tabDefaultTheme);
 
@@ -38,15 +39,24 @@ const Tab: FunctionComponent<TabPropsType> = forwardRef(function Tab(
         isActive,
     );
 
+    const handleSelect = (
+        event: React.MouseEvent<HTMLInputElement, MouseEvent>,
+    ) => {
+        if (handleClick) {
+            handleClick(event, tabIndex);
+        }
+    };
+
     return (
         <TabRoot
             isActive={isActive}
             className={classOverride.Root}
             disabled={disabled}
             id={id}
-            onClick={onClick}
+            onClick={handleSelect}
             ref={ref}
             theme={theme}
+            {...otherProps}
         >
             {label}
         </TabRoot>
@@ -56,19 +66,14 @@ const Tab: FunctionComponent<TabPropsType> = forwardRef(function Tab(
 Tab.displayName = TAB_CLASS_PREFIX;
 
 Tab.defaultProps = {
-    isActive: false,
     disabled: false,
 };
 
 Tab.propTypes = {
     disabled: PropTypes.bool,
     id: PropTypes.string,
-    isActive: PropTypes.bool,
     label: PropTypes.string,
-    onClick: PropTypes.func,
+    handleClick: PropTypes.func,
     ref: PropTypes.func,
-    selectedValue: PropTypes.string,
-    value: PropTypes.string,
+    tabIndex: PropTypes.number,
 };
-
-export default Tab;
