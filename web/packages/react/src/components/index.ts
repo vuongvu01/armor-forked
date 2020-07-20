@@ -17,6 +17,8 @@ export * from './Radio/RadioGroup';
 export { default as Radio } from './Radio/Radio';
 export * from './SVGIcon';
 export * from './Switch';
+export * from './Tab';
+// export * from './Tabs';
 export * from './Tooltip';
 export * from './Typography';
 export * from './Tooltip';

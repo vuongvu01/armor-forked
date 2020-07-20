@@ -7,7 +7,7 @@ export type MarginAttributesType = {
     marginBottom?: ScalarType;
     marginLeft?: ScalarType;
     marginRight?: ScalarType;
-    marginX?: ScalarType;
+    marginX?: ScalarType; // TODO (nmelnikov 2020-07-17): may be we should consider renaming these as marginHorizontal and marginVertical
     marginY?: ScalarType;
 };
 
