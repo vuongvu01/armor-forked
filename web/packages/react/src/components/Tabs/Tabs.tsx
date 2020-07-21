@@ -43,10 +43,12 @@ export const Tabs: FunctionComponent<TabsPropsType> = forwardRef(function Tabs(
     const handleClick = (
         event: React.MouseEvent<HTMLInputElement, MouseEvent>,
         tabIndex: number,
+        contentValue: number,
     ) => {
         setCurrentlyActiveTab(tabIndex);
+
         if (onSwitch) {
-            onSwitch(tabIndex);
+            onSwitch(contentValue);
         }
     };
 

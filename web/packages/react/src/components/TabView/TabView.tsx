@@ -35,5 +35,5 @@ TabView.displayName = TAB_VIEW_CLASS_PREFIX;
 TabView.propTypes = {
     id: PropTypes.string,
     selectedValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    value: PropTypes.number,
 };

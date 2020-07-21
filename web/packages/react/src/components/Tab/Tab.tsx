@@ -22,12 +22,15 @@ export const Tab: FunctionComponent<TabPropsType> = forwardRef(function Tab(
         label,
         handleClick,
         tabIndex,
+        value,
         ...otherProps
     },
     ref,
 ) {
     const theme = useTheme();
     const id = propsId || uniqueId('tab-id-');
+    const matchingContentViewValue =
+        typeof value !== 'undefined' ? value : tabIndex;
     const isActive = currentlyActiveTab === tabIndex;
 
     useThemeOverride(TAB_CLASS_PREFIX, theme, tabDefaultTheme);
@@ -44,7 +47,7 @@ export const Tab: FunctionComponent<TabPropsType> = forwardRef(function Tab(
         event: React.MouseEvent<HTMLInputElement, MouseEvent>,
     ) => {
         if (handleClick) {
-            handleClick(event, tabIndex);
+            handleClick(event, tabIndex, matchingContentViewValue);
         }
     };
 
@@ -85,5 +88,5 @@ Tab.propTypes = {
     handleClick: PropTypes.func,
     ref: PropTypes.func,
     // tabIndex: PropTypes.number, // TODO (nmelnikov 2020-07-21): we need to hide internal props from storybook docs
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    value: PropTypes.number,
 };

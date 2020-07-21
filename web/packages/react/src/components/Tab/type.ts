@@ -14,7 +14,7 @@ export type ClassBasedOnComponentType = {
 };
 
 type TabEffectivePropsType = Indexed<{
-    selectedValue?: string | number;
+    value?: number;
     tabIndex?: number;
 }> &
     InputHTMLAttributes<HTMLInputElement> &
