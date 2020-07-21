@@ -22,5 +22,5 @@ type TabEffectivePropsType = Indexed<{
 
 export type TabPropsType = TabEffectivePropsType;
 
-export type TabRootPropsType = TabEffectivePropsType &
+export type TabContainerPropsType = TabEffectivePropsType &
     NodeStylePropsType<TabEffectivePropsType>;
