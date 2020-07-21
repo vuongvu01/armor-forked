@@ -1,0 +1,68 @@
+import { useState } from 'react';
+import { BrowserRouter, Link } from 'react-router-dom';
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import get from 'lodash.get';
+
+import { Box, Button,  Tab, Tabs, TabView  } from 'src/components';
+
+<Meta title="Components/Tab" component={Tab} />
+
+# Tab
+
+```js
+import { Tabs, Tab, TabView } from '@deliveryhero/armor';
+```
+
+## States
+
+<Preview>
+    <Story name="States" height="240px">
+        {() => {
+ const [selectedTabIndex, setSelectedTabIndex] = useState(0);
+ const handleChange = (tabIndex) => {
+    console.log({tabIndex})
+    setSelectedTabIndex(tabIndex)
+ };
+ return (
+     <>
+         <Box
+             padding={3}
+             margin={3}
+             style={{ width: 'fit-content' }}
+             >
+             <Tabs onSwitch={handleChange}>
+                 <Tab label="Pizza" value={1} />
+                 <Tab label="Pasta" value={2} />
+                 <Tab label="Risotto" disabled value={3} />
+                 <Tab label="Beverages" value={4} />
+                 <Tab label="Alcoholic beverages" disabled value={4} />
+             </Tabs>
+             <TabView value={0} selectedValue={selectedTabIndex}>
+                 <p>Pizza</p>
+             </TabView>
+             <TabView value={1} selectedValue={selectedTabIndex}>
+                 <p>Pasta</p>
+             </TabView>
+             <TabView value={2} selectedValue={selectedTabIndex}>
+                 <p>Risotto</p>
+             </TabView>
+             <TabView value={3} selectedValue={selectedTabIndex}>
+                 <p>Beverages</p>
+             </TabView>
+             <TabView value={4} selectedValue={selectedTabIndex}>
+                 <p>Alcoholic beverages</p>
+             </TabView>
+         </Box>
+     </>
+ );
+}}
+    </Story>
+</Preview>
+
+## Properties Tabs
+
+<Props of={Tabs} />
+
+## Properties Tab
+
+<Props of={Tab} />

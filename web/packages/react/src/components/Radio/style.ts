@@ -16,7 +16,7 @@ const sizes = {
     },
     dot: {
         side: 8,
-        offset: 5,
+        offset: 4,
     },
 };
 
@@ -60,10 +60,10 @@ export const RadioRoot = styled.p.withConfig({
 `;
 
 export const RadioMark = styled.label<RadioMarkPropsType>`
-    position: relative;
-    padding-left: ${sizes.container.side}px;
     cursor: pointer;
     display: inline-flex;
+    padding-left: ${sizes.container.side}px;
+    position: relative;
 
     ${mouseCursor}
 `;
@@ -76,26 +76,27 @@ export const RadioInput = styled.input<RadioInputPropsType>`
     width: 0;
 
     &:not(:checked) + ${RadioMark}:before, &:checked + ${RadioMark}:before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: ${sizes.container.side}px;
-        height: ${sizes.container.side}px;
         border-style: solid;
         border-width: 1px;
+        box-sizing: border-box;
+        content: '';
+        height: ${sizes.container.side}px;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: ${sizes.container.side}px;
 
         ${containerStyle}
     }
 
     &:not(:checked) + ${RadioMark}:after, &:checked + ${RadioMark}:after {
         content: '';
-        position: absolute;
-        width: ${sizes.dot.side}px;
         height: ${sizes.dot.side}px;
-        top: ${sizes.dot.offset}px;
         left: ${sizes.dot.offset}px;
+        position: absolute;
+        top: ${sizes.dot.offset}px;
         transition: all ${transitionDurationInSec}s ease;
+        width: ${sizes.dot.side}px;
 
         ${dotStyle}
     }
