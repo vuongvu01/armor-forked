@@ -3,37 +3,37 @@ import { BrowserRouter, Link } from 'react-router-dom';
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
 import get from 'lodash.get';
 
-import { Box, Button,  Tab, Tabs, TabView  } from 'src/components';
+import { Box, Button, Tab, Tabs, TabView  } from 'src/components';
 
-<Meta title="Components/Tab" component={Tab} />
+<Meta title="Components/Tabs" component={Tabs} />
 
-# Tab
+# Tabs
 
 ```js
 import { Tabs, Tab, TabView } from '@deliveryhero/armor';
 ```
 
-## States
+## Default Layout
 
 <Preview>
-    <Story name="States" height="240px">
+    <Story name="DefaultLayout" height="240px">
         {() => {
  const [selectedTabIndex, setSelectedTabIndex] = useState(0);
- const handleChange = (tabIndex) => {
-    console.log({tabIndex})
-    setSelectedTabIndex(tabIndex)
- };
+ const handleChange = (tabIndex) => setSelectedTabIndex(tabIndex);
  return (
      <>
          <Box
              padding={3}
-             margin={3}
-             style={{ width: 'fit-content' }}
-             >
+             style={{
+                 backgroundColor: '#F4F4F8',
+                 height: '500px',
+                 width: '600px',
+             }}
+         >
              <Tabs onSwitch={handleChange}>
                  <Tab label="Pizza" value={1} />
                  <Tab label="Pasta" value={2} />
-                 <Tab label="Risotto" disabled value={3} />
+                 <Tab label="Risotto" value={3} />
                  <Tab label="Beverages" value={4} />
                  <Tab label="Alcoholic beverages" disabled value={4} />
              </Tabs>
@@ -59,10 +59,58 @@ import { Tabs, Tab, TabView } from '@deliveryhero/armor';
     </Story>
 </Preview>
 
-## Properties Tabs
+## Full width
+
+<Preview>
+    <Story name="FullWidth" height="240px">
+        {() => {
+ const [selectedTabIndex, setSelectedTabIndex] = useState(0);
+ const handleChange = (tabIndex) => setSelectedTabIndex(tabIndex);
+ return (
+     <>
+         <GroupHelper gap={2}>
+             <Box
+                 padding={3}
+                 style={{
+                     height: '250px',
+                     backgroundColor: '#F4F4F8',
+                 }}
+             >
+                 <Tabs fullWidth onSwitch={handleChange}>
+                     <Tab label="Pizza" value={1} />
+                     <Tab label="Pasta" value={2} />
+                 </Tabs>
+                 <TabView value={0} selectedValue={selectedTabIndex}>
+                     <p>Pizza</p>
+                 </TabView>
+                 <TabView value={1} selectedValue={selectedTabIndex}>
+                     <p>Pasta</p>
+                 </TabView>
+                 <TabView value={2} selectedValue={selectedTabIndex}>
+                     <p>Risotto</p>
+                 </TabView>
+                 <TabView value={3} selectedValue={selectedTabIndex}>
+                     <p>Beverages</p>
+                 </TabView>
+                 <TabView value={4} selectedValue={selectedTabIndex}>
+                     <p>Alcoholic beverages</p>
+                 </TabView>
+             </Box>
+         </GroupHelper>
+     </>
+ );
+}}
+    </Story>
+</Preview>
+
+## `Tabs` Properties
 
 <Props of={Tabs} />
 
-## Properties Tab
+## `Tab` Properties
 
 <Props of={Tab} />
+
+## `TabView` Properties
+
+<Props of={TabView} />

@@ -84,5 +84,6 @@ Tab.propTypes = {
     label: PropTypes.string,
     handleClick: PropTypes.func,
     ref: PropTypes.func,
-    tabIndex: PropTypes.number,
+    // tabIndex: PropTypes.number, // TODO (nmelnikov 2020-07-21): we need to hide internal props from storybook docs
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };

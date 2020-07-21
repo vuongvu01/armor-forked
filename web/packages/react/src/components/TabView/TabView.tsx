@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react';
+import PropTypes from 'prop-types';
 
 import { Box } from '../Box';
 import { TabViewPropsType } from './type';
@@ -30,3 +31,9 @@ export const TabView: FunctionComponent<TabViewPropsType> = ({
 };
 
 TabView.displayName = TAB_VIEW_CLASS_PREFIX;
+
+TabView.propTypes = {
+    id: PropTypes.string,
+    selectedValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+};

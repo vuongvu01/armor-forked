@@ -15,7 +15,7 @@ export default {
     parameters: {},
 };
 
-export const SimpleLayout = () => {
+export const DefaultLayout = () => {
     const [selectedTabIndex, setSelectedTabIndex] = useState(0);
 
     const handleChange = (tabIndex: number) => setSelectedTabIndex(tabIndex);

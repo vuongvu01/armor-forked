@@ -23,6 +23,10 @@ export const tabDefaultTheme = {
         hover: {
             '&:hover': {
                 backgroundColor: '$color.primary.lightest',
+                borderBottom: '$color.primary.lightest',
+                borderBottomWidth: '2px',
+                borderBottomStyle: 'solid',
+                borderRadius: '0',
             },
         },
         disabled: {
