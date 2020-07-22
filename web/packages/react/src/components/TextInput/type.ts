@@ -62,7 +62,7 @@ export type TextInputRootPropsType = PropsWithNodeStylePropsType<
 >;
 
 /* TextInput Input node prop type */
-export type TextInputInputPropsType = PropsWithNodeStylePropsType<
+export type TextInputContainerPropsType = PropsWithNodeStylePropsType<
     TextInputEffectivePropsType
 >;
 

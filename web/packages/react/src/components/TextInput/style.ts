@@ -5,7 +5,7 @@ import { marginAttributes, widthAttributes } from '../../system';
 import { ObjectLiteralType } from '../../type';
 import { shouldForwardProp } from '../../utils';
 import {
-    TextInputInputPropsType,
+    TextInputContainerPropsType,
     TextInputInternalPropsWithThemeType,
     TextInputLabelBackgroundPropsType,
     TextInputLabelPropsType,
@@ -86,13 +86,13 @@ export const TextInputRoot = styled.div.withConfig({
 const Wrapper = ({
     children,
     ...restProps
-}: TextInputInputPropsType & {
-    children: (props: TextInputInputPropsType) => ReactElement;
+}: TextInputContainerPropsType & {
+    children: (props: TextInputContainerPropsType) => ReactElement;
 }) => children({ ...restProps });
 
-export const TextInputInput = styled(Wrapper).withConfig({
+export const TextInputContainer = styled(Wrapper).withConfig({
     shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<TextInputInputPropsType>`
+})<TextInputContainerPropsType>`
     box-sizing: border-box;
     border: 0 none;
     outline: none;
@@ -104,13 +104,13 @@ export const TextInputInput = styled(Wrapper).withConfig({
     flex-grow: 1;
     padding: 0;
     margin: 0;
-    min-width: ${({ multiline }: TextInputInputPropsType) =>
+    min-width: ${({ multiline }: TextInputContainerPropsType) =>
         multiline ? '100px' : '0'};
 
-    ${({ theme }: TextInputInputPropsType) =>
+    ${({ theme }: TextInputContainerPropsType) =>
         theme.componentOverrides.TextInput.Input.base}
     ${getInputDynamicStyle}
-    ${(props: TextInputInputPropsType) => props.styles(props)}
+    ${(props: TextInputContainerPropsType) => props.styles(props)}
     ${({ disabled }: { disabled?: boolean }) => css`
         cursor: ${disabled ? 'not-allowed' : 'default'};
     `}
@@ -121,8 +121,6 @@ export const TextInputLabel = styled.span.withConfig({
 })<TextInputLabelPropsType>`
     position: absolute;
     text-align: left;
-    right: 0;
-    left: 0;
     overflow-x: hidden;
     white-space: nowrap;
     user-select: none;
@@ -144,7 +142,7 @@ export const TextInputLabel = styled.span.withConfig({
 
 export const TextInputLabelBackground = styled.span.withConfig({
     shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<TextInputLabelBackgroundPropsType>`
+})<TextInputLabelBackgroundPropsType>` 
     ${({ theme }: TextInputLabelBackgroundPropsType) =>
         theme.componentOverrides.TextInput.LabelBackground.base}
     ${getLabelBackgroundDynamicStyle}
