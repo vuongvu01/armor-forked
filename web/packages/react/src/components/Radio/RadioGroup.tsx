@@ -11,6 +11,7 @@ export const RadioGroup: FunctionComponent<RadioGroupPropsType> = ({
     name,
     onChange,
     selectedValue,
+    typographyProps,
 }) => {
     if (Children.count(children) === 0) {
         console.error(
@@ -26,7 +27,7 @@ export const RadioGroup: FunctionComponent<RadioGroupPropsType> = ({
         return null;
     }
 
-    const additionalProps = { name, onChange, selectedValue };
+    const additionalProps = { name, onChange, selectedValue, typographyProps };
 
     const childrenWithExtendedProps = extendChildrenWithProps(
         children,
@@ -45,4 +46,5 @@ RadioGroup.defaultProps = {
 
 RadioGroup.propTypes = {
     selectedValue: PropTypes.string,
+    typographyProps: PropTypes.object,
 };

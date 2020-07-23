@@ -47,6 +47,46 @@ export const States = () => {
                 />
             </GroupHelper>
             <GroupHelper gap={2}>
+                <h4>Checked with custom label properties</h4>
+                <Radio
+                    name="radioName2"
+                    value={value2}
+                    label="Pasta"
+                    selectedValue={value2}
+                    typographyProps={{ sectionTitle: true }}
+                />
+                <p>
+                    Available <code>typographyProps=</code>
+                    <p>
+                        <code>{'{pageTitle: true}'}</code>
+                    </p>
+                    <p>
+                        <code>{'{sectionTitle: true}'}</code>
+                    </p>
+                    <p>
+                        <code>{'{subSectionTitle: true}'}</code>
+                    </p>
+                    <p>
+                        <code>{'{label: true, large: true}'}</code>
+                    </p>
+                    <p>
+                        <code>{'{label: true, medium: true}'}</code>
+                    </p>
+                    <p>
+                        <code>{'{label: true, small: true}'}</code>
+                    </p>
+                    <p>
+                        <code>{'{paragraph: true, large}'}</code>
+                    </p>
+                    <p>
+                        <code>{'{paragraph: true, medium}'}</code>
+                    </p>
+                    <p>
+                        <code>{'{paragraph: true, small}'}</code>
+                    </p>
+                </p>
+            </GroupHelper>
+            <GroupHelper gap={2}>
                 <h4>Disabled</h4>
                 <Radio
                     name="radioName3"
@@ -90,7 +130,12 @@ export const RadioButtonGroup = () => {
                 selectedValue={group1SelectedValue}
                 onChange={handleChangeGroup1}
             >
-                <Radio value="val1" label="Pizza" />
+                <Radio
+                    marginBottom={10}
+                    value="val1"
+                    label="Pizza"
+                    data-testid="123"
+                />
                 <Radio value="val2" label="Pasta" />
                 <Radio value="val3" label="Risotto" />
             </RadioGroup>
@@ -118,6 +163,7 @@ export const DefaultStates = () => {
                 name={groupName2}
                 selectedValue={group2SelectedValue}
                 onChange={handleChangeGroup2}
+                typographyProps={{ pageTitle: true }}
             >
                 <Radio value="val1" label="Pizza" />
                 <Radio value={value2} label="Pasta" />

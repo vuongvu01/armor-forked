@@ -14,6 +14,8 @@ export const Typography: FunctionComponent<TypographyPropsType> = ({
     className,
     classNames,
     children,
+    disabled,
+    error,
     ...restProps
 }) => {
     const theme = useTheme();
@@ -30,9 +32,11 @@ export const Typography: FunctionComponent<TypographyPropsType> = ({
 
     return (
         <TypographyStyle
-            {...restProps}
+            disabled={disabled}
+            error={error}
             theme={theme}
             className={classNameComponents.Root}
+            {...restProps}
         >
             {(forwardedProps: TypographyPropsType) => (
                 <TypographyRoot {...forwardedProps}>{children}</TypographyRoot>
@@ -42,26 +46,30 @@ export const Typography: FunctionComponent<TypographyPropsType> = ({
 };
 
 Typography.defaultProps = {
-    pageTitle: false,
-    sectionTitle: false,
-    subSectionTitle: false,
+    disabled: false,
+    error: false,
     label: false,
-    paragraph: false,
     large: false,
     medium: false,
+    pageTitle: false,
+    paragraph: false,
+    sectionTitle: false,
     small: false,
+    subSectionTitle: false,
 };
 
 /** Support of prop-types is here for project that don't use TypeScript */
 Typography.propTypes = {
-    pageTitle: PropTypes.bool,
-    sectionTitle: PropTypes.bool,
-    subSectionTitle: PropTypes.bool,
+    disabled: PropTypes.bool,
+    error: PropTypes.bool,
     label: PropTypes.bool,
-    paragraph: PropTypes.bool,
     large: PropTypes.bool,
     medium: PropTypes.bool,
+    pageTitle: PropTypes.bool,
+    paragraph: PropTypes.bool,
+    sectionTitle: PropTypes.bool,
     small: PropTypes.bool,
+    subSectionTitle: PropTypes.bool,
     /** Tag name or component */
     tag: PropTypes.oneOfType([PropTypes.elementType, PropTypes.string]),
 };

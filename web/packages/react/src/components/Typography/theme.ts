@@ -10,6 +10,15 @@ export const typographyDefaultTheme = {
             letterSpacing: '$typography.body.letterSpacing',
             color: '$typography.body.color',
         },
+        error__disabled: {
+            color: '$color.warning.light',
+        },
+        error: {
+            color: '$color.warning.main',
+        },
+        disabled: {
+            color: '$color.neutral.04',
+        },
         pageTitle: {
             fontSize: '$typography.pageTitle.fontSize',
             lineHeight: '$typography.pageTitle.lineHeight',

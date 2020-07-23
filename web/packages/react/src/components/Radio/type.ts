@@ -18,6 +18,7 @@ type RadioEffectivePropsType = Indexed<{
     // add other custom properties here
     selectedValue?: string;
     error?: boolean;
+    typographyProps?: object;
 }> &
     InputHTMLAttributes<HTMLInputElement> &
     MarginAttributesType;
@@ -29,6 +30,7 @@ export type RadioGroupPropsType = {
     name: string;
     onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
     selectedValue?: string;
+    typographyProps?: object;
 } & InputHTMLAttributes<HTMLInputElement> &
     MarginAttributesType;
 
