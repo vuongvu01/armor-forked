@@ -18,8 +18,27 @@ const propertyList = {
     // add other custom properties here
 } as ObjectLiteralType;
 
-const getRootBaseStyle = ({ theme }: TypographyRootPropsType) =>
-    theme.componentOverrides.Typography.Root.base;
+const getRootBaseStyle = ({
+    disabled,
+    error,
+    theme: {
+        componentOverrides: { Typography },
+    },
+}: TypographyRootPropsType) => {
+    if (error && disabled) {
+        return `${Typography.Root.base} ${Typography.Root.error_disabled}`;
+    }
+
+    if (error) {
+        return `${Typography.Root.base} ${Typography.Root.error}`;
+    }
+
+    if (disabled) {
+        return `${Typography.Root.base}`;
+    }
+
+    return Typography.Root.base;
+};
 
 const getRootDynamicStyle = ({
     theme,
@@ -58,6 +77,8 @@ const getRootDynamicStyle = ({
         if (small) {
             return Root.label__small;
         }
+
+        return Root.label__medium;
     }
 
     if (paragraph) {
@@ -70,6 +91,8 @@ const getRootDynamicStyle = ({
         if (small) {
             return Root.paragraph__small;
         }
+
+        return Root.paragraph__medium;
     }
 
     return {};

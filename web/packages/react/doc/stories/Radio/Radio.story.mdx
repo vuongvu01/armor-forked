@@ -18,7 +18,7 @@ import { Radio } from '@deliveryhero/armor';
 ## States
 
 <Preview>
-    <Story name="States" height="300px" >
+    <Story name="States" height="150px" >
         {() => {
              const [isChecked, setIsChecked] = useState(false);
              const [isDisabled, setDisabled] = useState(false);
@@ -36,33 +36,106 @@ import { Radio } from '@deliveryhero/armor';
                  name="name1"
                  value="1"
              />
-             <Radio
-                 label="Disabled"
-                 name="name2"
-                 value="2"
-                 disabled
-             />
-             <Radio
-                 label="Disabled checked"
-                 name="name3"
-                 value="3"
-                 disabled
-                 checked
-             />
-             <br />
-             <br />
-             <Button onClick={() => setIsChecked(!isChecked)}>Toggle</Button>
-             <Button onClick={() => setDisabled(!isDisabled)} marginLeft={2}>Disable/Enable</Button>
-             <Radio
-                 label="External control"
-                 name="name5"
-                 value="5"
-                 checked={isChecked}
-                 disabled={isDisabled}
-             />
+{/*              <Radio */}
+{/*                  label="Disabled" */}
+{/*                  name="name2" */}
+{/*                  value="2" */}
+{/*                  disabled */}
+{/*              /> */}
+{/*              <Radio */}
+{/*                  label="Disabled checked" */}
+{/*                  name="name3" */}
+{/*                  value="3" */}
+{/*                  disabled */}
+{/*                  checked */}
+{/*              /> */}
+{/*              <br /> */}
+{/*              <br /> */}
+{/*              <Button onClick={() => setIsChecked(!isChecked)}>Toggle</Button> */}
+{/*              <Button onClick={() => setDisabled(!isDisabled)} marginLeft={2}>Disable/Enable</Button> */}
+{/*              <Radio */}
+{/*                  label="External control" */}
+{/*                  name="name5" */}
+{/*                  value="5" */}
+{/*                  checked={isChecked} */}
+{/*                  disabled={isDisabled} */}
+{/*              /> */}
      </>
              );
          }}
+    </Story>
+</Preview>
+
+## Custom Label
+
+<Preview>
+    <Story name="CustomLabel" height="450px" >
+        <>
+            <h4>Pass custom label properties via <code>typographyProps=</code> on Radio or RadioGroup</h4>
+            <RadioGroup name="name0" typographyProps={{paragraph: true, small: true}}>
+                 <Radio
+                     checked={false}
+                     label="Label - {paragraph: true, small: true}"
+                     value="0"
+                 />
+                 <Radio
+                     checked
+                     label="Label - {paragraph: true, small: true}"
+                     value="1"
+                 />
+            </RadioGroup>
+            <br />
+            <br />
+            <Radio
+                name="name0"
+                value="val0"
+                label="Label - {paragraph: true, medium: true}"
+                typographyProps={{paragraph: true, medium: true}}
+            />
+            <Radio
+                name="name1"
+                value="val0"
+                label="Label - {paragraph: true, large: true}"
+                typographyProps={{paragraph: true, large: true}}
+            />
+            <Radio
+                name="name2"
+                value="val0"
+                label="Label - {label: true, small: true}"
+                typographyProps={{label: true, small: true}}
+            />
+            <Radio
+                name="name3"
+                value="val0"
+                label="Label - {label: true, medium: true}"
+                typographyProps={{label: true, medium: true}}
+            />
+            <Radio
+                name="name4"
+                value="val0"
+                label="Label - {label: true, large: true}"
+                selectedValue="val0"
+                typographyProps={{label: true, large: true}}
+            />
+            <Radio
+                name="name5"
+                value="val0"
+                label="Label - {subSectionTitle: true}"
+                typographyProps={{subSectionTitle: true}}
+            />
+            <Radio
+                name="name6"
+                value="val0"
+                label="Label - {sectionTitle: true}"
+                typographyProps={{sectionTitle: true}}
+            />
+            <Radio
+                name="name7"
+                value="val0"
+                label="Label - {pageTitle: true}"
+                typographyProps={{pageTitle: true}}
+            />
+     </>
     </Story>
 </Preview>
 
@@ -89,7 +162,6 @@ import { Radio } from '@deliveryhero/armor';
             <Radio value="pizza" label="Pizza" />
             <Radio value="pasta" label="Pasta" />
             <Radio value="risotto" label="Risotto" />
-            <Radio disabled value="lasagne" label="Lasagne" />
         </RadioGroup>
     </>
              );

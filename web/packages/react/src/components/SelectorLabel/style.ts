@@ -23,7 +23,8 @@ const labelStyle = ({
     return css`${SelectorLabel.Label.base}${enhancements}`;
 };
 
-export const Label = styled.span<SelectorLabelPropsType>`
+export const Label = styled.div<SelectorLabelPropsType>`
     transition: all ${transitionDurationInSec}s ease;
+
     ${labelStyle}
 `;

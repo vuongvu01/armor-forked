@@ -6,7 +6,7 @@ const selectorLabelDefaultTheme = {
     Label: {
         base: {
             paddingLeft: componentSpacing04,
-            fontSize: '$typography.labelSmall.fontSize',
+            // fontSize: '$typography.labelSmall.fontSize',
         },
         disabled: {
             color: '$color.neutral.04',

@@ -3,7 +3,7 @@ import uniqueId from 'lodash.uniqueid';
 import PropTypes from 'prop-types';
 
 import { useThemeOverride } from '../../utils/hooks';
-import { useTheme } from '../../styling';
+import { extractMarginProps, useTheme } from '../../styling';
 import SelectorLabel from '../SelectorLabel';
 import { useRadioClassName } from './utils';
 import { RadioMark, RadioInput, RadioRoot } from './style';
@@ -24,8 +24,9 @@ const Radio: FunctionComponent<RadioPropsType> = forwardRef(function Radio(
         name,
         onChange,
         selectedValue,
+        typographyProps,
         value,
-        ...restProps
+        ...otherProps
     },
     ref,
 ) {
@@ -47,8 +48,15 @@ const Radio: FunctionComponent<RadioPropsType> = forwardRef(function Radio(
     const handleOnChange = (event: ChangeEvent<HTMLInputElement>) =>
         onChange && onChange(event);
 
+    const { marginProps, ...restProps } = extractMarginProps(otherProps);
+
     return (
-        <RadioRoot className={classOverride.Root} theme={theme} for={id}>
+        <RadioRoot
+            className={classOverride.Root}
+            for={id}
+            theme={theme}
+            {...marginProps}
+        >
             <RadioInput
                 checked={isChecked}
                 className={classOverride.Input}
@@ -68,7 +76,12 @@ const Radio: FunctionComponent<RadioPropsType> = forwardRef(function Radio(
                 htmlFor={id}
                 theme={theme}
             >
-                <SelectorLabel disabled={disabled} error={error} theme={theme}>
+                <SelectorLabel
+                    disabled={disabled}
+                    error={error}
+                    theme={theme}
+                    typographyProps={typographyProps}
+                >
                     {label}
                 </SelectorLabel>
             </RadioMark>
@@ -92,6 +105,7 @@ Radio.propTypes = {
     onChange: PropTypes.func,
     ref: PropTypes.func,
     selectedValue: PropTypes.string,
+    typographyProps: PropTypes.object,
     value: PropTypes.string,
 };
 

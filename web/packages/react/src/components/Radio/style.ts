@@ -53,7 +53,7 @@ const dotStyle = ({
     disabled,
 }: RadioInputPropsType) => (disabled ? Radio.Dot.disabled : Radio.Dot.base);
 
-export const RadioRoot = styled.p.withConfig({
+export const RadioRoot = styled.div.withConfig({
     shouldForwardProp: property => shouldForwardProp(property),
 })<RadioRootPropsType>`
     ${marginAttributes}
@@ -78,10 +78,12 @@ export const RadioInput = styled.input<RadioInputPropsType>`
     &:not(:checked) + ${RadioMark}:before, &:checked + ${RadioMark}:before {
         border-style: solid;
         border-width: 1px;
+        bottom: 0;
         box-sizing: border-box;
         content: '';
         height: ${sizes.container.side}px;
         left: 0;
+        margin: auto;
         position: absolute;
         top: 0;
         width: ${sizes.container.side}px;
@@ -90,11 +92,13 @@ export const RadioInput = styled.input<RadioInputPropsType>`
     }
 
     &:not(:checked) + ${RadioMark}:after, &:checked + ${RadioMark}:after {
+        bottom: 0;
         content: '';
         height: ${sizes.dot.side}px;
         left: ${sizes.dot.offset}px;
+        margin: auto;
         position: absolute;
-        top: ${sizes.dot.offset}px;
+        top: 0;
         transition: all ${transitionDurationInSec}s ease;
         width: ${sizes.dot.side}px;
 
