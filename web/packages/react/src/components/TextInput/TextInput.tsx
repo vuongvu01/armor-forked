@@ -1,5 +1,6 @@
-import React, { FunctionComponent, forwardRef } from 'react';
+import React, { FunctionComponent, forwardRef, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
+
 import { useThemeOverride } from '../../utils/hooks';
 import { useTheme } from '../../styling';
 
@@ -10,11 +11,11 @@ import {
 } from './utils';
 import {
     TextInputRoot,
-    TextInputInput,
+    TextInputContainer,
     TextInputLabel,
     TextInputLabelBackground,
 } from './style';
-import { TextInputInputPropsType, TextInputPropsType } from './type';
+import { TextInputContainerPropsType, TextInputPropsType } from './type';
 import { TextInputDefaultTheme } from './theme';
 
 const CLASS_PREFIX = 'TextInput';
@@ -94,8 +95,23 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
             readOnly,
         });
 
+        const internalInputRef = useRef(null);
         const Tag = multiline ? 'textarea' : 'input';
         const isOutlined = isMouseInside || isFocused;
+
+        // Effects to control external value assignment
+        useEffect(() => {
+            const node = internalInputRef.current as any;
+
+            if (value && node && node.focus) {
+                node.focus();
+            }
+        }, [value]);
+        useEffect(() => {
+            if (ref && internalInputRef) {
+                Object.assign(ref, internalInputRef);
+            }
+        }, [internalInputRef]);
 
         return (
             <TextInputRoot
@@ -111,7 +127,7 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
                 {...restProps}
             >
                 {before}
-                <TextInputInput
+                <TextInputContainer
                     autoComplete={autoComplete}
                     autoFocus={autoFocus}
                     className={classNameComponents.Input}
@@ -130,7 +146,7 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
                     onFocus={onInputFocus}
                     onKeyDown={onKeyDown}
                     onKeyUp={onKeyUp}
-                    placeholder={!value ? placeholder : ''}
+                    placeholder={placeholder}
                     readOnly={readOnly}
                     rows={rows}
                     styles={stylesOverride.Input}
@@ -139,11 +155,11 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
                     type={multiline ? undefined : type}
                     value={value}
                 >
-                    {(forwardedProps: TextInputInputPropsType) => (
+                    {(forwardedProps: TextInputContainerPropsType) => (
                         // @ts-ignore
-                        <Tag {...forwardedProps} ref={ref} />
+                        <Tag {...forwardedProps} ref={internalInputRef} />
                     )}
-                </TextInputInput>
+                </TextInputContainer>
                 {after}
                 {!!label && (
                     <TextInputLabel

@@ -12,7 +12,15 @@ import { tabsDefaultTheme } from './theme';
 export const TABS_CLASS_PREFIX = 'Tabs';
 
 export const Tabs: FunctionComponent<TabsPropsType> = forwardRef(function Tabs(
-    { children, className, classNames, disabled, id: propsId, onSwitch },
+    {
+        children,
+        className,
+        classNames,
+        disabled,
+        fullWidth,
+        id: propsId,
+        onSwitch,
+    },
     ref,
 ) {
     if (!children) {
@@ -35,16 +43,19 @@ export const Tabs: FunctionComponent<TabsPropsType> = forwardRef(function Tabs(
     const handleClick = (
         event: React.MouseEvent<HTMLInputElement, MouseEvent>,
         tabIndex: number,
+        contentValue: number,
     ) => {
         setCurrentlyActiveTab(tabIndex);
+
         if (onSwitch) {
-            onSwitch(tabIndex);
+            onSwitch(contentValue);
         }
     };
 
     const extendedChildren = preProcessTabChildren(children, {
-        handleClick,
         currentlyActiveTab,
+        fullWidth,
+        handleClick,
     });
 
     return (
@@ -52,6 +63,7 @@ export const Tabs: FunctionComponent<TabsPropsType> = forwardRef(function Tabs(
             className={classOverride.Root}
             disabled={disabled}
             id={id}
+            fullWidth={fullWidth}
             ref={ref}
             theme={theme}
         >
@@ -64,11 +76,13 @@ Tabs.displayName = TABS_CLASS_PREFIX;
 
 Tabs.defaultProps = {
     disabled: false,
+    fullWidth: false,
 };
 
 Tabs.propTypes = {
     disabled: PropTypes.bool,
     id: PropTypes.string,
+    fullWidth: PropTypes.bool,
     onSwitch: PropTypes.func.isRequired,
     ref: PropTypes.func,
 };

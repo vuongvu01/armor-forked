@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { useThemeOverride } from '../../utils/hooks';
 import { useTheme } from '../../styling';
 import { useTabClassName } from './utils';
-import { TabRoot } from './style';
+import { TabContainer, TabLabel } from './style';
 import { TabPropsType } from './type';
 import { tabDefaultTheme } from './theme';
 
@@ -17,16 +17,20 @@ export const Tab: FunctionComponent<TabPropsType> = forwardRef(function Tab(
         classNames,
         currentlyActiveTab,
         disabled,
+        fullWidth,
         id: propsId,
         label,
         handleClick,
         tabIndex,
+        value,
         ...otherProps
     },
     ref,
 ) {
     const theme = useTheme();
     const id = propsId || uniqueId('tab-id-');
+    const matchingContentViewValue =
+        typeof value !== 'undefined' ? value : tabIndex;
     const isActive = currentlyActiveTab === tabIndex;
 
     useThemeOverride(TAB_CLASS_PREFIX, theme, tabDefaultTheme);
@@ -43,23 +47,30 @@ export const Tab: FunctionComponent<TabPropsType> = forwardRef(function Tab(
         event: React.MouseEvent<HTMLInputElement, MouseEvent>,
     ) => {
         if (handleClick) {
-            handleClick(event, tabIndex);
+            handleClick(event, tabIndex, matchingContentViewValue);
         }
     };
 
     return (
-        <TabRoot
-            isActive={isActive}
-            className={classOverride.Root}
+        <TabContainer
             disabled={disabled}
-            id={id}
-            onClick={handleSelect}
-            ref={ref}
+            isActive={isActive}
+            fullWidth={fullWidth}
             theme={theme}
             {...otherProps}
         >
-            {label}
-        </TabRoot>
+            <TabLabel
+                className={classOverride.Label}
+                disabled={disabled}
+                id={id}
+                isActive={isActive}
+                onClick={handleSelect}
+                ref={ref}
+                theme={theme}
+            >
+                {label}
+            </TabLabel>
+        </TabContainer>
     );
 });
 
@@ -71,9 +82,11 @@ Tab.defaultProps = {
 
 Tab.propTypes = {
     disabled: PropTypes.bool,
+    fullWidth: PropTypes.bool,
     id: PropTypes.string,
     label: PropTypes.string,
     handleClick: PropTypes.func,
     ref: PropTypes.func,
-    tabIndex: PropTypes.number,
+    // tabIndex: PropTypes.number, // TODO (nmelnikov 2020-07-21): we need to hide internal props from storybook docs
+    value: PropTypes.number,
 };

@@ -2,25 +2,44 @@ import styled, { css } from 'styled-components';
 
 import { marginAttributes } from '../../system/attributes';
 import { mouseCursor } from '../../styling';
-import { TabRootPropsType } from './type';
+import { TabContainerPropsType } from './type';
 
-const stateStyle = ({
+const containerStyle = ({
+    isActive,
+    fullWidth,
+    theme: {
+        componentOverrides: { Tab },
+    },
+}: TabContainerPropsType) => {
+    const activeStyleBase = isActive ? Tab.Container.active : '';
+
+    return fullWidth
+        ? css`
+              flex-grow: 1;
+              ${activeStyleBase}
+          `
+        : activeStyleBase;
+};
+
+const labelStyle = ({
     disabled,
     isActive,
     theme: {
         componentOverrides: { Tab },
     },
-}: TabRootPropsType) => {
+}: TabContainerPropsType) => {
     if (disabled) {
-        return css`${Tab.Root.base}${Tab.Root.disabled}`;
-    }
-    if (isActive) {
-        return css`${Tab.Root.base}${Tab.Root.active}`;
+        return css`${Tab.Label.base}${Tab.Label.disabled}`;
     }
 
-    return Tab.Root.base;
+    if (!isActive) {
+        return css`${Tab.Label.base}${Tab.Label.hover}`;
+    }
+
+    return Tab.Label.base;
 };
-const cursor = ({ disabled }: TabRootPropsType) => {
+
+const cursor = ({ disabled }: TabContainerPropsType) => {
     if (disabled) {
         return css`
             pointer-events: none;
@@ -30,14 +49,18 @@ const cursor = ({ disabled }: TabRootPropsType) => {
     return mouseCursor;
 };
 
-export const TabRoot = styled.div<TabRootPropsType>`
+export const TabContainer = styled.div<TabContainerPropsType>`
+    min-width: '100px';
+
+    ${containerStyle}
+`;
+
+export const TabLabel = styled.div<TabContainerPropsType>`
     align-items: center;
     box-sizing: border-box;
-    display: flex;
     text-align: center;
-    max-width: 240px;
-  
-    ${stateStyle} 
-    ${marginAttributes}
-    ${cursor}
+    
+    ${labelStyle} 
+    ${marginAttributes} 
+    ${cursor};
 `;

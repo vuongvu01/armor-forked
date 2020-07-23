@@ -1,4 +1,6 @@
 /* eslint-disable @typescript-eslint/camelcase */
+import { colorGrey00, colorGrey05 } from '../../tokens';
+
 export const TextInputDefaultTheme = {
     Root: {
         base: {
@@ -52,13 +54,14 @@ export const TextInputDefaultTheme = {
     },
     Label: {
         base: {
+            background: `linear-gradient(0, ${colorGrey00} 50%, transparent 50%)`,
             color: '$color.neutral.05',
             fontSize: '$typography.labelSmall.fontSize',
             fontWeight: '$typography.body.fontWeight',
             marginLeft: 3,
             marginRight: 3,
             lineHeight: '1.6',
-            top: '-10px',
+            top: '-13px',
         },
         inside: {
             fontSize: '$typography.paragraphMedium.fontSize',
@@ -72,6 +75,7 @@ export const TextInputDefaultTheme = {
             color: '$color.neutral.06',
         },
         disabled: {
+            background: 'transparent',
             color: '$color.neutral.04',
         },
         error: {
@@ -80,12 +84,11 @@ export const TextInputDefaultTheme = {
     },
     LabelBackground: {
         base: {
-            backgroundColor: '$color.neutral.00',
             paddingLeft: 1,
             paddingRight: 1,
         },
         disabled: {
-            backgroundColor: '$color.neutral.02',
+            background: `linear-gradient(0, ${colorGrey05} 50%, transparent 50%)`,
         },
     },
 };
