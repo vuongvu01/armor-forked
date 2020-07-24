@@ -32,10 +32,10 @@ export const Typography: FunctionComponent<TypographyPropsType> = ({
 
     return (
         <TypographyStyle
+            className={classNameComponents.Root}
             disabled={disabled}
             error={error}
             theme={theme}
-            className={classNameComponents.Root}
             {...restProps}
         >
             {(forwardedProps: TypographyPropsType) => (
@@ -46,8 +46,6 @@ export const Typography: FunctionComponent<TypographyPropsType> = ({
 };
 
 Typography.defaultProps = {
-    disabled: false,
-    error: false,
     label: false,
     large: false,
     medium: false,

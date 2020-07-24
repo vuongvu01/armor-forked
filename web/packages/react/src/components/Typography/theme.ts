@@ -11,10 +11,10 @@ export const typographyDefaultTheme = {
             color: '$typography.body.color',
         },
         error__disabled: {
-            color: '$color.warning.light',
+            color: '$color.error.lighter',
         },
         error: {
-            color: '$color.warning.main',
+            color: '$color.error.main',
         },
         disabled: {
             color: '$color.neutral.04',

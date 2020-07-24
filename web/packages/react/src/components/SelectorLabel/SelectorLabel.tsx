@@ -18,7 +18,7 @@ const SelectorLabel: FunctionComponent<SelectorLabelPropsType> = ({
     classNames,
     error,
     disabled,
-    typographyProps = { paragraph: true, small: true },
+    typographyProps,
 }) => {
     const theme = useTheme();
     useThemeOverride(
@@ -43,21 +43,23 @@ const SelectorLabel: FunctionComponent<SelectorLabelPropsType> = ({
             className={classOverride.Label}
             theme={theme}
         >
-            <Typography
-                disabled={disabled}
-                error={error}
-                margin={0}
-                theme={theme}
-                {...typographyProps}
-            >
-                {children}
-            </Typography>
+            {typographyProps ? (
+                <Typography
+                    disabled={disabled}
+                    error={error}
+                    margin={0}
+                    theme={theme}
+                    {...typographyProps}
+                >
+                    {children}
+                </Typography>
+            ) : (
+                children
+            )}
         </Label>
     ) : null;
 };
 
 SelectorLabel.displayName = SELECTOR_LABEL_CLASS_PREFIX;
-
-SelectorLabel.propTypes = {};
 
 export default SelectorLabel;

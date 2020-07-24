@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { ReactElement } from 'react';
 import { marginAttributes } from '../../system/attributes';
 import { shouldForwardProp } from '../../utils';
@@ -6,15 +6,17 @@ import { ObjectLiteralType } from '../../type';
 import { TypographyRootPropsType } from './type';
 
 const propertyList = {
-    tag: true,
-    pageTitle: true,
-    sectionTitle: true,
-    subSectionTitle: true,
+    disabled: true,
+    error: true,
     label: true,
-    paragraph: true,
     large: true,
     medium: true,
+    pageTitle: true,
+    paragraph: true,
+    sectionTitle: true,
     small: true,
+    subSectionTitle: true,
+    tag: true,
     // add other custom properties here
 } as ObjectLiteralType;
 
@@ -26,15 +28,21 @@ const getRootBaseStyle = ({
     },
 }: TypographyRootPropsType) => {
     if (error && disabled) {
-        return `${Typography.Root.base} ${Typography.Root.error_disabled}`;
+        return css`
+            ${Typography.Root.base} ${Typography.Root.error__disabled}
+        `;
     }
 
     if (error) {
-        return `${Typography.Root.base} ${Typography.Root.error}`;
+        return css`
+            ${Typography.Root.base} ${Typography.Root.error}
+        `;
     }
 
     if (disabled) {
-        return `${Typography.Root.base}`;
+        return css`
+            ${Typography.Root.base} ${Typography.Root.disabled}
+        `;
     }
 
     return Typography.Root.base;
