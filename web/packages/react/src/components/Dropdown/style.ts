@@ -45,14 +45,14 @@ export const DropdownContainer = styled.div.withConfig({
 })<DropdownRootPropsType>`
     display: flex;
     flex-direction: column;
-    width: 300px;
+    min-width: 150px;
 
     ${marginAttributes}
 `;
 
 export const DropdownOptionListContainer = styled.div<DropdownRootPropsType>`
     box-sizing: border-box;
-    margin-top: 4px;
+    margin: 4px 2px;
 `;
 
 export const DropdownOptionList = styled.div<DropdownRootPropsType>`
@@ -66,9 +66,7 @@ export const DropdownOptionList = styled.div<DropdownRootPropsType>`
     overflow: auto;
     padding-bottom: 0;
     padding-top: 0;
-    position: absolute;
     transition: ${transitionDurationInSec}s;
-    width: 300px;
     z-index: 1024;
 
     ${optionListStyle}
@@ -91,7 +89,8 @@ export const DropdownActionContainer = styled.div<DropdownRootPropsType>`
     display: flex;
     height: 100%;
     justify-content: center;
-    width: 15%;
+    min-width: 40px;
+    width: 50px;
 `;
 
 export const DropdownActionContent = styled.div<DropdownRootPropsType>`
@@ -118,6 +117,7 @@ export const DropdownAction = styled.div<DropdownRootPropsType>`
     border-top-style: solid;
     border-top-color: black;
     height: 8px;
+    margin: 2px 0 0;
     position: relative;
     transition: ${transitionDurationInSec}s;
     transform: rotate(45deg);

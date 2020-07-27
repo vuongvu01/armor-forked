@@ -17,51 +17,10 @@ export default {
 const boxStyle: object = {
     backgroundColor: '#F4F4F8',
     height: '500px',
-    width: '600px',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
 };
-
-const foodOptions = [
-    { value: 1, label: 'Pizza' },
-    { value: 2, label: 'Pasta' },
-    { value: 3, label: 'Risotto' },
-    { value: 4, label: 'Pepperoni' },
-    { value: 5, label: 'Pizza' },
-    { value: 6, label: 'Pasta' },
-    { value: 7, label: 'Risotto' },
-    { value: 8, label: 'Pepperoni' },
-    { value: 9, label: 'Pizza' },
-    { value: 10, label: 'Pasta' },
-    { value: 11, label: 'Risotto' },
-    { value: 12, label: 'Pepperoni' },
-    { value: 13, label: 'Pizza' },
-    { value: 14, label: 'Pasta' },
-    { value: 15, label: 'Risotto' },
-    { value: 16, label: 'Pepperoni' },
-];
-
-const foodOptionsString = [
-    'Pizza with a very long name that contains the list of ingredients',
-    'Pasta',
-    'Risotto',
-    'Pepperoni',
-    'Pizza',
-    'Pasta',
-    'Risotto',
-    'Pepperoni',
-    'Pizza',
-    'Pizza',
-    'Pasta',
-    'Risotto',
-    'Pepperoni',
-    'Pizza',
-    'Pasta',
-    'Risotto',
-    'Pepperoni',
-    'Pizza',
-];
 
 export const MinimumConfiguration = () => {
     const [selectedOption, setSelectedOption] = useState();
@@ -93,6 +52,24 @@ export const MinimumConfiguration = () => {
 };
 
 export const CustomOptionItemsFormat = () => {
+    const foodOptions = [
+        { value: 1, label: 'Pizza' },
+        { value: 2, label: 'Pasta' },
+        { value: 3, label: 'Risotto' },
+        { value: 4, label: 'Pepperoni' },
+        { value: 5, label: 'Pizza' },
+        { value: 6, label: 'Pasta' },
+        { value: 7, label: 'Risotto' },
+        { value: 8, label: 'Pepperoni' },
+        { value: 9, label: 'Pizza' },
+        { value: 10, label: 'Pasta' },
+        { value: 11, label: 'Risotto' },
+        { value: 12, label: 'Pepperoni' },
+        { value: 13, label: 'Pizza' },
+        { value: 14, label: 'Pasta' },
+        { value: 15, label: 'Risotto' },
+        { value: 16, label: 'Pepperoni' },
+    ];
     const [selectedOption, setSelectedOption] = useState();
     const handleChange = (option: any) => {
         setSelectedOption(option);
@@ -126,7 +103,7 @@ export const CustomOptionItemsFormat = () => {
                 </div>
                 <br />
                 <br />
-                <Box padding={3} style={boxStyle}>
+                <Box padding={3} style={{ ...boxStyle, width: '600px' }}>
                     <Dropdown
                         options={foodOptions}
                         onSelectionChange={handleChange}
@@ -142,6 +119,27 @@ export const CustomOptionItemsFormat = () => {
 };
 
 export const PreselectedValue = () => {
+    const foodOptionsString = [
+        'Pizza with a very long name that contains the list of ingredients',
+        'Pasta',
+        'Risotto',
+        'Pepperoni',
+        'Pizza',
+        'Pasta',
+        'Risotto',
+        'Pepperoni',
+        'Pizza',
+        'Pizza',
+        'Pasta',
+        'Risotto',
+        'Pepperoni',
+        'Pizza',
+        'Pasta',
+        'Risotto',
+        'Pepperoni',
+        'Pizza',
+    ];
+
     const initialSelectionIndex = 3;
     const [selectedOption, setSelectedOption] = useState(
         foodOptionsString[initialSelectionIndex],
@@ -153,7 +151,7 @@ export const PreselectedValue = () => {
     return (
         <>
             <GroupHelper gap={2}>
-                <Box padding={3} style={boxStyle}>
+                <Box padding={3} style={{ ...boxStyle, width: '600px' }}>
                     <Dropdown
                         options={foodOptionsString}
                         onSelectionChange={handleChange}
