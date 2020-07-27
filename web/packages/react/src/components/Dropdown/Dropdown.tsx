@@ -16,7 +16,6 @@ import {
     useDropdownClassName,
 } from './utils';
 import {
-    DropdownActionItem,
     DropdownContainer,
     DropdownOptionList,
     DropdownOptionListContainer,
@@ -24,6 +23,7 @@ import {
 } from './style';
 import { generateId } from '../../utils';
 import DropdownOptionItem from './DropdownOptionItem';
+import DropdownActionItem from './DropdownActionItem';
 import { DropdownPropsType } from './type';
 import { dropdownDefaultTheme } from './theme';
 import { TextInput } from '../TextInput';
@@ -152,6 +152,11 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
                     after={
                         <DropdownActionItem
                             className={classOverride.ActionItem}
+                            isFocused={
+                                isOptionListShown ||
+                                typeof selectedIndex.values().next().value ===
+                                    'number'
+                            }
                             isOptionListShown={isOptionListShown}
                             onClick={handleDisplayOptionListToggle}
                             theme={theme}

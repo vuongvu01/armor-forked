@@ -43,7 +43,7 @@ const foodOptions = [
 ];
 
 const foodOptionsString = [
-    'Pizza with a very long namePizza with a very long name',
+    'Pizza with a very long name that contains the list of ingredients',
     'Pasta',
     'Risotto',
     'Pepperoni',

@@ -30,6 +30,10 @@ const actionItemStyle = ({
         : ''}
 `;
 
+const displayBorder = ({ isFocused }: DropdownRootPropsType) => css`
+    ${isFocused ? ' border-left-color: #717171;' : ''}
+`;
+
 export const DropdownContainer = styled.div.withConfig({
     shouldForwardProp: property => shouldForwardProp(property),
 })<DropdownRootPropsType>`
@@ -41,8 +45,8 @@ export const DropdownContainer = styled.div.withConfig({
 `;
 
 export const DropdownOptionListContainer = styled.div<DropdownRootPropsType>`
-    margin-top: 4px;
     box-sizing: border-box;
+    margin-top: 4px;
 `;
 
 export const DropdownOptionList = styled.div<DropdownRootPropsType>`
@@ -72,7 +76,29 @@ export const DropdownOptionItem = styled.div<DropdownRootPropsType>`
     ${itemStyle}
 `;
 
-export const DropdownActionItem = styled.div<DropdownRootPropsType>`
+export const DropdownActionContainer = styled.div<DropdownRootPropsType>`
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    width: 15%;
+`;
+
+export const DropdownActionContent = styled.div<DropdownRootPropsType>`
+    align-items: center;
+    border-left-width: 1px;
+    border-left-style: solid;
+    border-left-color: transparent;
+    display: flex;
+    height: 70%;
+    justify-content: center;
+    transition: border-color ${transitionDurationInSec}s ease-in-out;
+    width: 100%;
+
+    ${displayBorder}
+`;
+
+export const DropdownAction = styled.div<DropdownRootPropsType>`
     border-bottom-width: 0;
     border-right-width: 0;
     border-left-width: 2px;
@@ -82,7 +108,6 @@ export const DropdownActionItem = styled.div<DropdownRootPropsType>`
     border-top-style: solid;
     border-top-color: black;
     height: 8px;
-    margin: 4px 20px 0 0;
     position: relative;
     transition: ${transitionDurationInSec}s all;
     transform: rotate(45deg);
@@ -95,8 +120,4 @@ export const dropdownTextInputStyle = {
     Label: () =>
         'transition: top ease 150ms, font-size ease 150ms, color ease 200ms; ' +
         'transition-delay: 150ms;',
-    Input: () =>
-        'border-right: 1px solid black; ' +
-        'margin-right: 16px; ' +
-        'border-radius: initial;',
 };
