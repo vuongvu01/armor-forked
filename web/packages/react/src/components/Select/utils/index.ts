@@ -1,3 +1,3 @@
 export { default as detectClickOutsideComponent } from './detectClickOutsideComponent';
 export { default as getItemLabel } from './getItemLabel';
-export { default as useDropdownClassName } from './useDropdownClassName';
+export { default as useSelectClassName } from './useSelectClassName';

@@ -3,46 +3,46 @@ import styled, { css } from 'styled-components';
 import { marginAttributes } from '../../system/attributes';
 import { transitionDurationInSec } from '../../constants';
 import { shouldForwardProp } from '../../utils';
-import { DropdownRootPropsType } from './type';
+import { SelectRootPropsType } from './type';
 
 const itemStyle = ({
     isSelected,
     theme: {
-        componentOverrides: { Dropdown },
+        componentOverrides: { Select },
     },
-}: DropdownRootPropsType) => {
+}: SelectRootPropsType) => {
     if (isSelected) {
         return css`
-            ${Dropdown.Root.base} ${Dropdown.Root.selected}
+            ${Select.Root.base} ${Select.Root.selected}
         `;
     }
-    return Dropdown.Root.base;
+    return Select.Root.base;
 };
 
 const actionItemStyle = ({
     isOptionListShown,
     theme: {
-        componentOverrides: { Dropdown },
+        componentOverrides: { Select },
     },
-}: DropdownRootPropsType) => css`
-    ${Dropdown.ActionItem.base} ${isOptionListShown
+}: SelectRootPropsType) => css`
+    ${Select.ActionItem.base} ${isOptionListShown
         ? 'transform: rotate(-135deg);'
         : ''}
 `;
 
-const optionListStyle = ({ isOptionListShown }: DropdownRootPropsType) => css`
+const optionListStyle = ({ isOptionListShown }: SelectRootPropsType) => css`
     ${isOptionListShown
         ? 'height: auto; padding-bottom: 16px; padding-top: 16px;'
         : ''}
 `;
 
-const displayBorder = ({ isFocused }: DropdownRootPropsType) => css`
+const displayBorder = ({ isFocused }: SelectRootPropsType) => css`
     ${isFocused ? ' border-left-color: #717171;' : ''}
 `;
 
-export const DropdownContainer = styled.div.withConfig({
+export const SelectContainer = styled.div.withConfig({
     shouldForwardProp: property => shouldForwardProp(property),
-})<DropdownRootPropsType>`
+})<SelectRootPropsType>`
     display: flex;
     flex-direction: column;
     min-width: 150px;
@@ -50,12 +50,12 @@ export const DropdownContainer = styled.div.withConfig({
     ${marginAttributes}
 `;
 
-export const DropdownOptionListContainer = styled.div<DropdownRootPropsType>`
+export const SelectOptionListContainer = styled.div<SelectRootPropsType>`
     box-sizing: border-box;
     margin: 4px 2px;
 `;
 
-export const DropdownOptionList = styled.div<DropdownRootPropsType>`
+export const SelectOptionList = styled.div<SelectRootPropsType>`
     background-color: white;
     box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.12);
     box-sizing: border-box;
@@ -72,7 +72,7 @@ export const DropdownOptionList = styled.div<DropdownRootPropsType>`
     ${optionListStyle}
 `;
 
-export const DropdownOptionItem = styled.div<DropdownRootPropsType>`
+export const SelectOptionItem = styled.div<SelectRootPropsType>`
     align-items: center;
     box-sizing: border-box;
     cursor: pointer;
@@ -84,7 +84,7 @@ export const DropdownOptionItem = styled.div<DropdownRootPropsType>`
     ${itemStyle}
 `;
 
-export const DropdownActionContainer = styled.div<DropdownRootPropsType>`
+export const SelectActionContainer = styled.div<SelectRootPropsType>`
     align-items: center;
     display: flex;
     height: 100%;
@@ -93,7 +93,7 @@ export const DropdownActionContainer = styled.div<DropdownRootPropsType>`
     width: 50px;
 `;
 
-export const DropdownActionContent = styled.div<DropdownRootPropsType>`
+export const SelectActionContent = styled.div<SelectRootPropsType>`
     align-items: center;
     border-left-width: 1px;
     border-left-style: solid;
@@ -107,7 +107,7 @@ export const DropdownActionContent = styled.div<DropdownRootPropsType>`
     ${displayBorder}
 `;
 
-export const DropdownAction = styled.div<DropdownRootPropsType>`
+export const SelectAction = styled.div<SelectRootPropsType>`
     border-bottom-width: 0;
     border-right-width: 0;
     border-left-width: 2px;
@@ -126,7 +126,7 @@ export const DropdownAction = styled.div<DropdownRootPropsType>`
     ${actionItemStyle}
 `;
 
-export const dropdownTextInputStyle = {
+export const selectTextInputStyle = {
     Label: () =>
         `transition: top ${transitionDurationInSec}s, font-size ${transitionDurationInSec}s, color ${transitionDurationInSec}s; 
         transition-delay: 150ms;`,

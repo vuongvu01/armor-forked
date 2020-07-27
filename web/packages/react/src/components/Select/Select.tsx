@@ -13,28 +13,24 @@ import { useTheme } from '../../styling';
 import {
     detectClickOutsideComponent,
     getItemLabel,
-    useDropdownClassName,
+    useSelectClassName,
 } from './utils';
 import {
-    DropdownContainer,
-    DropdownOptionList,
-    DropdownOptionListContainer,
-    dropdownTextInputStyle,
+    SelectContainer,
+    SelectOptionList,
+    SelectOptionListContainer,
+    selectTextInputStyle,
 } from './style';
 import { generateId } from '../../utils';
-import DropdownOptionItem from './DropdownOptionItem';
-import DropdownActionItem from './DropdownActionItem';
-import { DropdownPropsType } from './type';
-import { dropdownDefaultTheme } from './theme';
+import SelectOptionItem from './SelectOptionItem';
+import SelectActionItem from './SelectActionItem';
+import { SelectPropsType } from './type';
+import { selectDefaultTheme } from './theme';
 import { TextInput } from '../TextInput';
-import {
-    defaultLabel,
-    DROPDOWN_CLASS_PREFIX,
-    dropdownIdPrefix,
-} from './constants';
+import { defaultLabel, SELECT_CLASS_PREFIX, selectIdPrefix } from './constants';
 
-export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
-    function Dropdown(
+export const Select: FunctionComponent<SelectPropsType> = forwardRef(
+    function Select(
         {
             className,
             classNames,
@@ -66,8 +62,8 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
             isListExpanded,
         );
 
-        const classOverride = useDropdownClassName(
-            DROPDOWN_CLASS_PREFIX,
+        const classOverride = useSelectClassName(
+            SELECT_CLASS_PREFIX,
             className,
             classNames,
             disabled,
@@ -127,7 +123,7 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
             return undefined;
         }, []);
 
-        useThemeOverride(DROPDOWN_CLASS_PREFIX, theme, dropdownDefaultTheme);
+        useThemeOverride(SELECT_CLASS_PREFIX, theme, selectDefaultTheme);
 
         const hideOptions = () =>
             setTimeout(() => setIsOptionListShown(false), 0);
@@ -146,13 +142,10 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
         };
 
         return (
-            <DropdownContainer
-                className={classOverride.Container}
-                theme={theme}
-            >
+            <SelectContainer className={classOverride.Container} theme={theme}>
                 <TextInput
                     after={
-                        <DropdownActionItem
+                        <SelectActionItem
                             className={classOverride.ActionItem}
                             error={error}
                             isFocused={
@@ -169,48 +162,49 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
                     disabled={disabled}
                     displayMode="block"
                     error={error}
-                    id={generateId(id, dropdownIdPrefix)}
+                    id={generateId(id, selectIdPrefix)}
                     label={label || defaultLabel}
                     onChange={() => {}}
                     onClick={handleDisplayOptionListToggle}
                     ref={internalInputRef}
-                    styles={dropdownTextInputStyle}
+                    styles={selectTextInputStyle}
                     theme={theme}
                     value={selectedLabelValue || ''}
                     {...restProps}
                 />
-                <DropdownOptionListContainer
+                <SelectOptionListContainer
                     className={classOverride.OptionListContainer}
                     theme={theme}
                 >
                     {options && options.length > 0 ? (
-                        <DropdownOptionList
+                        <SelectOptionList
                             className={classOverride.OptionList}
                             isOptionListShown={isOptionListShown}
                             theme={theme}
                         >
                             {options.map((item, itemIndex: any) => (
-                                <DropdownOptionItem
+                                <SelectOptionItem
                                     className={classOverride.OptionItem}
                                     isSelected={selectedIndex.has(itemIndex)}
                                     item={item}
                                     itemIndex={itemIndex}
                                     key={uniqueId()}
                                     onOptionSelect={handleOnItemSelect}
+                                    theme={theme}
                                 />
                             ))}
-                        </DropdownOptionList>
+                        </SelectOptionList>
                     ) : null}
-                </DropdownOptionListContainer>
-            </DropdownContainer>
+                </SelectOptionListContainer>
+            </SelectContainer>
         );
     },
 );
 
-Dropdown.displayName = DROPDOWN_CLASS_PREFIX;
+Select.displayName = SELECT_CLASS_PREFIX;
 
-Dropdown.defaultProps = {};
+Select.defaultProps = {};
 
-Dropdown.propTypes = {
+Select.propTypes = {
     disabled: PropTypes.bool,
 };

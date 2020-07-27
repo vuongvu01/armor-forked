@@ -1,4 +1,4 @@
-export const dropdownDefaultTheme = {
+export const selectDefaultTheme = {
     Root: {
         base: {
             backgroundColor: '$color.neutral.00',

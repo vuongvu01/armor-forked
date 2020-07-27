@@ -3,13 +3,13 @@ import React, { useState } from 'react';
 import { withKnobs } from '@storybook/addon-knobs';
 
 import { GroupHelper } from '../../../helpers/GroupHelper';
-import { Dropdown } from '../Dropdown';
+import { Select } from '../Select';
 import { Box } from '../../Box';
 import { Typography } from '../../Typography';
 
 export default {
-    title: 'Components/Dropdown',
-    component: Dropdown,
+    title: 'Components/Select',
+    component: Select,
     decorators: [withKnobs],
     parameters: {},
 };
@@ -32,13 +32,8 @@ export const MinimumConfiguration = () => {
         <>
             <GroupHelper gap={2}>
                 <Box padding={3} style={boxStyle}>
-                    <Dropdown
-                        options={[
-                            { value: 1, label: 'Pizza' },
-                            { value: 2, label: 'Pasta' },
-                            { value: 3, label: 'Risotto' },
-                            { value: 4, label: 'Pepperoni' },
-                        ]}
+                    <Select
+                        options={['Pizza', 'Pasta', 'Risotto', 'Pepperoni']}
                         onSelectionChange={handleChange}
                         label="Choose one"
                     />
@@ -104,7 +99,7 @@ export const CustomOptionItemsFormat = () => {
                 <br />
                 <br />
                 <Box padding={3} style={{ ...boxStyle, width: '300px' }}>
-                    <Dropdown
+                    <Select
                         options={foodOptions}
                         onSelectionChange={handleChange}
                         label="Choose one"
@@ -152,7 +147,7 @@ export const PreselectedValue = () => {
         <>
             <GroupHelper gap={2}>
                 <Box padding={3} style={{ ...boxStyle, width: '300px' }}>
-                    <Dropdown
+                    <Select
                         options={foodOptionsString}
                         onSelectionChange={handleChange}
                         selectedIndex={initialSelectionIndex}
@@ -181,14 +176,9 @@ export const ErrorPropagation = () => {
             </p>
             <GroupHelper gap={2}>
                 <Box padding={3} style={{ ...boxStyle, width: '300px' }}>
-                    <Dropdown
+                    <Select
                         error={!selectedOption}
-                        options={[
-                            { value: 1, label: 'Pizza' },
-                            { value: 2, label: 'Pasta' },
-                            { value: 3, label: 'Risotto' },
-                            { value: 4, label: 'Pepperoni' },
-                        ]}
+                        options={['Pizza', 'Pasta', 'Risotto', 'Pepperoni']}
                         onSelectionChange={handleChange}
                         label="Choose one"
                     />

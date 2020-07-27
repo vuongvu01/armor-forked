@@ -1,0 +1,54 @@
+import {useState} from 'react'
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { Select, Box, Typography } from '../../../src/components';
+import { LoremIpsum } from '../../../src/helpers/LoremIpsum';
+import { GroupHelper } from '../../../src/helpers/GroupHelper';
+import { Nodes } from '../../../src/helpers/Nodes';
+
+<Meta title="Components/Select" component={Select} />
+
+# Select
+
+~~~js
+import { Select } from '@deliveryhero/armor';
+~~~
+
+## Minimum configuration
+
+<Preview>
+    <Story name="Minimum configuration" height="600px">
+         {() => {
+const boxStyle = {
+ backgroundColor: '#F4F4F8',
+ height: '500px',
+ display: 'flex',
+ flexDirection: 'column',
+ justifyContent: 'space-between',
+};
+const [selectedOption, setSelectedOption] = useState();
+const handleChange = (option) => {
+    setSelectedOption(option);
+};
+return (
+    <>
+        <GroupHelper gap={2}>
+            <Box padding={3} style={boxStyle}>
+                <Select
+                    options={['Pizza', 'Pasta', 'Risotto', 'Pepperoni']}
+                    onSelectionChange={handleChange}
+                    label="Choose one"
+                />
+                <Typography paragraph>
+                    Selected value: {JSON.stringify(selectedOption)}
+                </Typography>
+            </Box>
+        </GroupHelper>
+    </>
+);
+                 }}
+    </Story>
+</Preview>
+
+## Properties
+
+<Props of={Select} />

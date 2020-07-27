@@ -13,7 +13,7 @@ export type ClassBasedOnComponentType = {
     isActive?: boolean;
 };
 
-type DropdownEffectivePropsType = Indexed<{
+type SelectEffectivePropsType = Indexed<{
     disabled?: boolean;
     error?: boolean;
     isFocused?: boolean;
@@ -30,9 +30,9 @@ type DropdownEffectivePropsType = Indexed<{
     HTMLAttributes<HTMLElement> &
     MarginAttributesType;
 
-export type DropdownPropsType = DropdownEffectivePropsType;
-export type DropdownActionItemPropsType = Pick<
-    DropdownEffectivePropsType,
+export type SelectPropsType = SelectEffectivePropsType;
+export type SelectActionItemPropsType = Pick<
+    SelectEffectivePropsType,
     | 'className'
     | 'error'
     | 'isFocused'
@@ -40,10 +40,15 @@ export type DropdownActionItemPropsType = Pick<
     | 'theme'
     | 'onClick'
 >;
-export type DropdownOptionItemPropsType = Pick<
-    DropdownEffectivePropsType,
-    'className' | 'isSelected' | 'itemIndex' | 'item' | 'onOptionSelect'
+export type SelectOptionItemPropsType = Pick<
+    SelectEffectivePropsType,
+    | 'className'
+    | 'isSelected'
+    | 'itemIndex'
+    | 'item'
+    | 'onOptionSelect'
+    | 'theme'
 >;
 
-export type DropdownRootPropsType = DropdownEffectivePropsType &
-    NodeStylePropsType<DropdownEffectivePropsType>;
+export type SelectRootPropsType = SelectEffectivePropsType &
+    NodeStylePropsType<SelectEffectivePropsType>;
