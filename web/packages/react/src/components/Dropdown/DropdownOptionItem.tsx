@@ -10,7 +10,7 @@ const DropdownOptionItem: FunctionComponent<DropdownOptionItemPropsType> = ({
     itemIndex,
     item,
     onOptionSelect,
-    ...otherProps
+    ...restProps
 }) => {
     if (typeof itemIndex !== 'number' || !onOptionSelect) {
         console.error(
@@ -30,7 +30,7 @@ const DropdownOptionItem: FunctionComponent<DropdownOptionItemPropsType> = ({
         <DropdownOptionItemStyle
             isSelected={isSelected}
             onClick={handleItemClick}
-            {...otherProps}
+            {...restProps}
         >
             <Typography margin={0} small paragraph>
                 {getItemLabel(item)}

@@ -22,7 +22,7 @@ export const Tab: FunctionComponent<TabPropsType> = forwardRef(function Tab(
         handleClick,
         tabIndex,
         value,
-        ...otherProps
+        ...restProps
     },
     ref,
 ) {
@@ -56,7 +56,7 @@ export const Tab: FunctionComponent<TabPropsType> = forwardRef(function Tab(
             isActive={isActive}
             fullWidth={fullWidth}
             theme={theme}
-            {...otherProps}
+            {...restProps}
         >
             <TabLabel
                 className={classOverride.Label}

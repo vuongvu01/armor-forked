@@ -25,7 +25,7 @@ const Radio: FunctionComponent<RadioPropsType> = forwardRef(function Radio(
         selectedValue,
         typographyProps,
         value,
-        ...otherProps
+        ...restProps
     },
     ref,
 ) {
@@ -47,7 +47,7 @@ const Radio: FunctionComponent<RadioPropsType> = forwardRef(function Radio(
     const handleOnChange = (event: ChangeEvent<HTMLInputElement>) =>
         onChange && onChange(event);
 
-    const { marginProps, ...restProps } = extractMarginProps(otherProps);
+    const { marginProps, ...otherProps } = extractMarginProps(restProps);
 
     return (
         <RadioRoot
@@ -67,7 +67,7 @@ const Radio: FunctionComponent<RadioPropsType> = forwardRef(function Radio(
                 theme={theme}
                 type="radio"
                 value={value}
-                {...restProps}
+                {...otherProps}
             />
             <RadioMark
                 className={classOverride.Label}

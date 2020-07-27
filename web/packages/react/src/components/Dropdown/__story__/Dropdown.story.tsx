@@ -103,7 +103,7 @@ export const CustomOptionItemsFormat = () => {
                 </div>
                 <br />
                 <br />
-                <Box padding={3} style={{ ...boxStyle, width: '600px' }}>
+                <Box padding={3} style={{ ...boxStyle, width: '300px' }}>
                     <Dropdown
                         options={foodOptions}
                         onSelectionChange={handleChange}
@@ -120,7 +120,7 @@ export const CustomOptionItemsFormat = () => {
 
 export const PreselectedValue = () => {
     const foodOptionsString = [
-        'Pizza with a very long name that contains the list of ingredients',
+        'Pizza',
         'Pasta',
         'Risotto',
         'Pepperoni',
@@ -151,11 +151,45 @@ export const PreselectedValue = () => {
     return (
         <>
             <GroupHelper gap={2}>
-                <Box padding={3} style={{ ...boxStyle, width: '600px' }}>
+                <Box padding={3} style={{ ...boxStyle, width: '300px' }}>
                     <Dropdown
                         options={foodOptionsString}
                         onSelectionChange={handleChange}
                         selectedIndex={initialSelectionIndex}
+                        label="Choose one"
+                    />
+                    <Typography paragraph>
+                        Selected value: {JSON.stringify(selectedOption)}
+                    </Typography>
+                </Box>
+            </GroupHelper>
+        </>
+    );
+};
+
+export const ErrorPropagation = () => {
+    const [selectedOption, setSelectedOption] = useState();
+    const handleChange = (option: any) => {
+        setSelectedOption(option);
+    };
+
+    return (
+        <>
+            <p>
+                Provide user feedback in case of an invalid or incomplete
+                selection
+            </p>
+            <GroupHelper gap={2}>
+                <Box padding={3} style={{ ...boxStyle, width: '300px' }}>
+                    <Dropdown
+                        error={!selectedOption}
+                        options={[
+                            { value: 1, label: 'Pizza' },
+                            { value: 2, label: 'Pasta' },
+                            { value: 3, label: 'Risotto' },
+                            { value: 4, label: 'Pepperoni' },
+                        ]}
+                        onSelectionChange={handleChange}
                         label="Choose one"
                     />
                     <Typography paragraph>

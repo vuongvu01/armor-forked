@@ -39,12 +39,14 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
             className,
             classNames,
             disabled,
+            error,
             id,
             isListExpanded = false,
             label,
             onSelectionChange,
             options,
             selectedIndex: initialSelectedItemIndex,
+            ...restProps
         },
         ref,
     ) {
@@ -152,6 +154,7 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
                     after={
                         <DropdownActionItem
                             className={classOverride.ActionItem}
+                            error={error}
                             isFocused={
                                 isOptionListShown ||
                                 typeof selectedIndex.values().next().value ===
@@ -165,6 +168,7 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
                     className={classOverride.TextInput}
                     disabled={disabled}
                     displayMode="block"
+                    error={error}
                     id={generateId(id, dropdownIdPrefix)}
                     label={label || defaultLabel}
                     onChange={() => {}}
@@ -173,6 +177,7 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
                     styles={dropdownTextInputStyle}
                     theme={theme}
                     value={selectedLabelValue || ''}
+                    {...restProps}
                 />
                 <DropdownOptionListContainer
                     className={classOverride.OptionListContainer}

@@ -8,16 +8,18 @@ import {
 } from './style';
 
 const DropdownActionItem: FunctionComponent<DropdownActionItemPropsType> = ({
-    onClick,
+    error,
     className,
     isFocused,
     isOptionListShown,
+    onClick,
     theme,
 }) => (
     <DropdownActionContainer onClick={onClick}>
-        <DropdownActionContent isFocused={isFocused}>
+        <DropdownActionContent error={error} isFocused={isFocused}>
             <DropdownAction
                 className={className}
+                error={error}
                 isOptionListShown={isOptionListShown}
                 theme={theme}
             />

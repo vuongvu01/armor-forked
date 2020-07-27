@@ -15,6 +15,7 @@ export type ClassBasedOnComponentType = {
 
 type DropdownEffectivePropsType = Indexed<{
     disabled?: boolean;
+    error?: boolean;
     isFocused?: boolean;
     isOptionListShown?: boolean;
     onSelectionChange: (
@@ -32,7 +33,12 @@ type DropdownEffectivePropsType = Indexed<{
 export type DropdownPropsType = DropdownEffectivePropsType;
 export type DropdownActionItemPropsType = Pick<
     DropdownEffectivePropsType,
-    'className' | 'isFocused' | 'isOptionListShown' | 'theme' | 'onClick'
+    | 'className'
+    | 'error'
+    | 'isFocused'
+    | 'isOptionListShown'
+    | 'theme'
+    | 'onClick'
 >;
 export type DropdownOptionItemPropsType = Pick<
     DropdownEffectivePropsType,
