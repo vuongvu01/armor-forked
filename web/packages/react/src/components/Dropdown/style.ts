@@ -30,6 +30,12 @@ const actionItemStyle = ({
         : ''}
 `;
 
+const optionListStyle = ({ isOptionListShown }: DropdownRootPropsType) => css`
+    ${isOptionListShown
+        ? 'height: auto; padding-bottom: 16px; padding-top: 16px;'
+        : ''}
+`;
+
 const displayBorder = ({ isFocused }: DropdownRootPropsType) => css`
     ${isFocused ? ' border-left-color: #717171;' : ''}
 `;
@@ -50,18 +56,22 @@ export const DropdownOptionListContainer = styled.div<DropdownRootPropsType>`
 `;
 
 export const DropdownOptionList = styled.div<DropdownRootPropsType>`
+    background-color: white;
     box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.12);
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    height: 0;
     max-height: 400px;
     overflow: auto;
-    padding-bottom: 16px;
-    padding-top: 16px;
+    padding-bottom: 0;
+    padding-top: 0;
     position: absolute;
-    background-color: white;
+    transition: ${transitionDurationInSec}s;
     width: 300px;
     z-index: 1024;
+
+    ${optionListStyle}
 `;
 
 export const DropdownOptionItem = styled.div<DropdownRootPropsType>`
@@ -92,7 +102,7 @@ export const DropdownActionContent = styled.div<DropdownRootPropsType>`
     display: flex;
     height: 70%;
     justify-content: center;
-    transition: border-color ${transitionDurationInSec}s ease-in-out;
+    transition: border-color ${transitionDurationInSec}s;
     width: 100%;
 
     ${displayBorder}
@@ -109,7 +119,7 @@ export const DropdownAction = styled.div<DropdownRootPropsType>`
     border-top-color: black;
     height: 8px;
     position: relative;
-    transition: ${transitionDurationInSec}s all;
+    transition: ${transitionDurationInSec}s;
     transform: rotate(45deg);
     width: 8px;
 
@@ -118,6 +128,6 @@ export const DropdownAction = styled.div<DropdownRootPropsType>`
 
 export const dropdownTextInputStyle = {
     Label: () =>
-        'transition: top ease 150ms, font-size ease 150ms, color ease 200ms; ' +
-        'transition-delay: 150ms;',
+        `transition: top ${transitionDurationInSec}s, font-size ${transitionDurationInSec}s, color ${transitionDurationInSec}s; 
+        transition-delay: 150ms;`,
 };

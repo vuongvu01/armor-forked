@@ -74,7 +74,12 @@ export const MinimumConfiguration = () => {
             <GroupHelper gap={2}>
                 <Box padding={3} style={boxStyle}>
                     <Dropdown
-                        options={foodOptionsString}
+                        options={[
+                            { value: 1, label: 'Pizza' },
+                            { value: 2, label: 'Pasta' },
+                            { value: 3, label: 'Risotto' },
+                            { value: 4, label: 'Pepperoni' },
+                        ]}
                         onSelectionChange={handleChange}
                         label="Choose one"
                     />
@@ -87,7 +92,7 @@ export const MinimumConfiguration = () => {
     );
 };
 
-export const CustomOptionItems = () => {
+export const CustomOptionItemsFormat = () => {
     const [selectedOption, setSelectedOption] = useState();
     const handleChange = (option: any) => {
         setSelectedOption(option);

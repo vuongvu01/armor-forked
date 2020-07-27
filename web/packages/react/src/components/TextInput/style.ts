@@ -11,6 +11,7 @@ import {
     TextInputLabelPropsType,
     TextInputRootPropsType,
 } from './type';
+import { transitionDurationInSec } from '../../constants';
 
 const getDynamicStyle = (
     nodeName: string,
@@ -68,7 +69,7 @@ export const TextInputRoot = styled.div.withConfig({
     border-style: solid;
     border-width: 1px;
     vertical-align: middle;
-    transition: border 200ms ease;
+    transition: border ${transitionDurationInSec}s ease;
     ${({ displayMode, multiline }: TextInputRootPropsType) => css`
         display: ${displayMode === 'block' ? 'flex' : 'inline-flex'};
         ${multiline ? '' : 'align-items: center;'}
@@ -126,7 +127,7 @@ export const TextInputLabel = styled.span.withConfig({
     user-select: none;
     text-overflow: ellipsis;
     pointer-events: none;
-    transition: top ease 150ms, font-size ease 150ms, color ease 200ms;
+    transition: top ease ${transitionDurationInSec}s, font-size ease ${transitionDurationInSec}s, color ease ${transitionDurationInSec}s;
 
     ${({ theme }: TextInputLabelPropsType) =>
         theme.componentOverrides.TextInput.Label.base}

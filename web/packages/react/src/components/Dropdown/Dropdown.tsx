@@ -178,9 +178,10 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
                     className={classOverride.OptionListContainer}
                     theme={theme}
                 >
-                    {isOptionListShown && options && options.length > 0 ? (
+                    {options && options.length > 0 ? (
                         <DropdownOptionList
                             className={classOverride.OptionList}
+                            isOptionListShown={isOptionListShown}
                             theme={theme}
                         >
                             {options.map((item, itemIndex: any) => (
