@@ -147,6 +147,7 @@ export const Select: FunctionComponent<SelectPropsType> = forwardRef(
                     after={
                         <SelectActionItem
                             className={classOverride.ActionItem}
+                            disabled={disabled}
                             error={error}
                             isFocused={
                                 isOptionListShown ||
@@ -154,7 +155,11 @@ export const Select: FunctionComponent<SelectPropsType> = forwardRef(
                                     'number'
                             }
                             isOptionListShown={isOptionListShown}
-                            onClick={handleDisplayOptionListToggle}
+                            onClick={
+                                disabled
+                                    ? () => {}
+                                    : handleDisplayOptionListToggle
+                            }
                             theme={theme}
                         />
                     }

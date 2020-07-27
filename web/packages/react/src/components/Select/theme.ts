@@ -15,5 +15,12 @@ export const selectDefaultTheme = {
             borderLeftColor: '$color.primary.main',
             borderTopColor: '$color.primary.main',
         },
+        disabled: {
+            borderLeftColor: '$color.neutral.04',
+            borderTopColor: '$color.neutral.04',
+            '&:hover': {
+                cursor: 'not-allowed',
+            },
+        },
     },
 };

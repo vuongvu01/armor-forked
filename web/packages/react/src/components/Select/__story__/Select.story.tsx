@@ -17,7 +17,6 @@ export default {
 const boxStyle: object = {
     backgroundColor: '#F4F4F8',
     height: '500px',
-    display: 'flex',
     flexDirection: 'column',
 };
 
@@ -29,18 +28,14 @@ export const MinimumConfiguration = () => {
 
     return (
         <>
-            <GroupHelper gap={2}>
-                <Box padding={3} style={boxStyle}>
-                    <Select
-                        options={['Pizza ', 'Pasta', 'Risotto', 'Pepperoni']}
-                        onSelectionChange={handleChange}
-                        label="Choose one"
-                    />
-                    <Typography paragraph>
-                        Selected value: {JSON.stringify(selectedOption)}
-                    </Typography>
-                </Box>
-            </GroupHelper>
+            <Select
+                options={['Pizza ', 'Pasta', 'Risotto', 'Pepperoni']}
+                onSelectionChange={handleChange}
+                label="Choose one"
+            />
+            <Typography paragraph>
+                Selected value: {JSON.stringify(selectedOption)}
+            </Typography>
         </>
     );
 };
@@ -186,18 +181,23 @@ export const ErrorAndDisabledStatePropagation = () => {
                             Selected value: {JSON.stringify(selectedOption)}
                         </Typography>
                     </div>
+                    <br />
+                    <br />
                     <Select
                         disabled
                         label="Disabled"
                         options={['Pizza', 'Pasta', 'Risotto', 'Pepperoni']}
                         onSelectionChange={handleChange}
                     />
+                    <br />
+                    <br />
                     <Select
                         disabled
                         label="Disabled with pre-selected"
+                        name="disabled_selector"
                         options={['Pizza', 'Pasta', 'Risotto', 'Pepperoni']}
                         onSelectionChange={handleChange}
-                        selectedIndex={2}
+                        value={'Pasta'}
                     />
                 </Box>
             </GroupHelper>

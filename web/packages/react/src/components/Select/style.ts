@@ -19,16 +19,27 @@ const itemStyle = ({
     return Select.Root.base;
 };
 
-const actionItemStyle = ({
-    isOptionListShown,
+const actionItemContainerStyle = ({
+    disabled,
     theme: {
         componentOverrides: { Select },
     },
 }: SelectRootPropsType) => css`
-    ${Select.ActionItem.base} ${isOptionListShown
-        ? 'transform: rotate(-135deg);'
-        : ''}
+    ${disabled ? Select.ActionItem.disabled : ''}
 `;
+
+const actionItemStyle = ({
+    disabled,
+    isOptionListShown,
+    theme: {
+        componentOverrides: { Select },
+    },
+}: SelectRootPropsType) =>
+    css`
+        ${Select.ActionItem.base} ${
+        disabled ? Select.ActionItem.disabled : ''
+    } ${isOptionListShown ? 'transform: rotate(-135deg);' : ''}
+    `;
 
 const optionListStyle = ({ isOptionListShown }: SelectRootPropsType) => css`
     ${isOptionListShown
@@ -95,6 +106,8 @@ export const SelectActionContainer = styled.div<SelectRootPropsType>`
     justify-content: center;
     min-width: 40px;
     width: 50px;
+
+    ${actionItemContainerStyle}
 `;
 
 export const SelectActionContent = styled.div<SelectRootPropsType>`

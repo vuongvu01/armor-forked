@@ -8,17 +8,19 @@ import {
 } from './style';
 
 const SelectActionItem: FunctionComponent<SelectActionItemPropsType> = ({
-    error,
     className,
+    disabled,
+    error,
     isFocused,
     isOptionListShown,
     onClick,
     theme,
 }) => (
-    <SelectActionContainer onClick={onClick}>
+    <SelectActionContainer disabled={disabled} onClick={onClick} theme={theme}>
         <SelectActionContent error={error} isFocused={isFocused}>
             <SelectAction
                 className={className}
+                disabled={disabled}
                 error={error}
                 isOptionListShown={isOptionListShown}
                 theme={theme}

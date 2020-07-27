@@ -18,7 +18,7 @@ type SelectEffectivePropsType = Indexed<{
     error?: boolean;
     isFocused?: boolean;
     isOptionListShown?: boolean;
-    onSelectionChange: (
+    onSelectionChange?: (
         selectedOption: string | object,
         itemIndex?: number,
     ) => void;
@@ -34,6 +34,7 @@ export type SelectPropsType = SelectEffectivePropsType;
 export type SelectActionItemPropsType = Pick<
     SelectEffectivePropsType,
     | 'className'
+    | 'disabled'
     | 'error'
     | 'isFocused'
     | 'isOptionListShown'

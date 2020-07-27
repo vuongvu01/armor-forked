@@ -18,13 +18,6 @@ import { Select } from '@deliveryhero/armor';
 <Preview>
     <Story name="Minimum configuration" height="600px">
          {() => {
-const boxStyle = {
- backgroundColor: '#F4F4F8',
- height: '500px',
- display: 'flex',
- flexDirection: 'column',
- justifyContent: 'space-between',
-};
 const [selectedOption, setSelectedOption] = useState();
 const handleChange = (option) => {
     setSelectedOption(option);
@@ -32,7 +25,7 @@ const handleChange = (option) => {
 return (
     <>
         <GroupHelper gap={2}>
-            <Box padding={3} style={boxStyle}>
+            <Box padding={3}>
                 <Select
                     options={['Pizza', 'Pasta', 'Risotto', 'Pepperoni']}
                     onSelectionChange={handleChange}
