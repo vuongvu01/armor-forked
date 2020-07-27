@@ -19,7 +19,6 @@ const boxStyle: object = {
     height: '500px',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'space-between',
 };
 
 export const MinimumConfiguration = () => {
@@ -33,7 +32,7 @@ export const MinimumConfiguration = () => {
             <GroupHelper gap={2}>
                 <Box padding={3} style={boxStyle}>
                     <Select
-                        options={['Pizza', 'Pasta', 'Risotto', 'Pepperoni']}
+                        options={['Pizza ', 'Pasta', 'Risotto', 'Pepperoni']}
                         onSelectionChange={handleChange}
                         label="Choose one"
                     />
@@ -162,7 +161,7 @@ export const PreselectedValue = () => {
     );
 };
 
-export const ErrorPropagation = () => {
+export const ErrorAndDisabledStatePropagation = () => {
     const [selectedOption, setSelectedOption] = useState();
     const handleChange = (option: any) => {
         setSelectedOption(option);
@@ -176,15 +175,30 @@ export const ErrorPropagation = () => {
             </p>
             <GroupHelper gap={2}>
                 <Box padding={3} style={{ ...boxStyle, width: '300px' }}>
+                    <div>
+                        <Select
+                            error={!selectedOption}
+                            label="Choose one"
+                            options={['Pizza', 'Pasta', 'Risotto', 'Pepperoni']}
+                            onSelectionChange={handleChange}
+                        />
+                        <Typography paragraph>
+                            Selected value: {JSON.stringify(selectedOption)}
+                        </Typography>
+                    </div>
                     <Select
-                        error={!selectedOption}
+                        disabled
+                        label="Disabled"
                         options={['Pizza', 'Pasta', 'Risotto', 'Pepperoni']}
                         onSelectionChange={handleChange}
-                        label="Choose one"
                     />
-                    <Typography paragraph>
-                        Selected value: {JSON.stringify(selectedOption)}
-                    </Typography>
+                    <Select
+                        disabled
+                        label="Disabled with pre-selected"
+                        options={['Pizza', 'Pasta', 'Risotto', 'Pepperoni']}
+                        onSelectionChange={handleChange}
+                        selectedIndex={2}
+                    />
                 </Box>
             </GroupHelper>
         </>

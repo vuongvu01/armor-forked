@@ -37,7 +37,7 @@ const optionListStyle = ({ isOptionListShown }: SelectRootPropsType) => css`
 `;
 
 const displayBorder = ({ isFocused }: SelectRootPropsType) => css`
-    ${isFocused ? ' border-left-color: #717171;' : ''}
+    ${isFocused ? ' border-left-color: #a7a7a7;' : ''}
 `;
 
 export const SelectContainer = styled.div.withConfig({
@@ -53,6 +53,7 @@ export const SelectContainer = styled.div.withConfig({
 export const SelectOptionListContainer = styled.div<SelectRootPropsType>`
     box-sizing: border-box;
     margin: 4px 2px;
+    position: relative;
 `;
 
 export const SelectOptionList = styled.div<SelectRootPropsType>`
@@ -62,10 +63,13 @@ export const SelectOptionList = styled.div<SelectRootPropsType>`
     display: flex;
     flex-direction: column;
     height: 0;
+    left: 0;
     max-height: 400px;
     overflow: auto;
     padding-bottom: 0;
     padding-top: 0;
+    position: absolute;
+    right: 0;
     transition: ${transitionDurationInSec}s;
     z-index: 1024;
 
