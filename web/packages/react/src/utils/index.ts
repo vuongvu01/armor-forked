@@ -13,6 +13,8 @@ import {
     displayAttributesList,
 } from '../system/attributes';
 
+export { default as generateId } from './generateId';
+
 /**
  * @internal
  */

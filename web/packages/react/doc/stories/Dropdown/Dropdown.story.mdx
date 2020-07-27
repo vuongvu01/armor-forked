@@ -1,0 +1,90 @@
+import {useState} from 'react'
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { Dropdown, Box, Typography } from '../../../src/components/';
+import { LoremIpsum } from '../../../src/helpers/LoremIpsum';
+import { GroupHelper } from '../../../src/helpers/GroupHelper';
+import { Nodes } from '../../../src/helpers/Nodes';
+
+<Meta title="Components/Dropdown" component={Dropdown} />
+
+# Dropdown
+
+~~~js
+import { Dropdown } from '@deliveryhero/armor';
+~~~
+
+## Minimum configuration
+
+<Preview>
+    <Story name="Minimum configuration">
+         {() => {
+                     const [selectedOption, setSelectedOption] = useState([]);
+                     const handleChange = (option) => {
+                         setSelectedOption(option);
+                     };
+                     return (
+         <>
+         <Dropdown
+                  options={
+                  [
+                      'Pizza',
+                      'Pasta',
+                      'Risotto',
+                      'Pepperoni',
+                   ]
+                   }
+                  onSelectionChange={handleChange}
+                  label="Choose one"
+              />
+          <Typography paragraph>
+              Selected value: {JSON.stringify(selectedOption)}
+          </Typography>
+         </>
+                     )
+                 }}
+    </Story>
+</Preview>
+
+## Custom Options Format
+
+<Preview>
+    <Story name="Custom Options Format">
+        {() => {
+            const [selectedOption, setSelectedOption] = useState([]);
+            const handleChange = (option) => {
+                setSelectedOption(option);
+            };
+            return (
+<>
+<h4>
+Using the following data. Only <code>label</code> is
+mandatory.
+</h4>
+<Dropdown
+         options={
+         [
+              { value: 1, label: 'Pizza' },
+              { value: 2, label: 'Pasta' },
+              { value: 3, label: 'Risotto' },
+              { value: 42, label: 'Pepperoni' },
+              { value: 42, label: 'Pizza' },
+              { value: 42, label: 'Pasta' },
+              { value: 7, label: 'Risotto' },
+              { value: 8, label: 'Pepperoni' },
+          ]
+          }
+         onSelectionChange={handleChange}
+         label="Choose one"
+     />
+     <Typography paragraph>
+         Selected value: {JSON.stringify(selectedOption)}
+     </Typography>
+</>
+            )
+        }}
+    </Story>
+</Preview>
+
+## Properties
+
+<Props of={Dropdown} />

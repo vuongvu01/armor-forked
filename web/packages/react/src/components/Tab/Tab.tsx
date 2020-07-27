@@ -1,5 +1,4 @@
 import React, { FunctionComponent, forwardRef } from 'react';
-import uniqueId from 'lodash.uniqueid';
 import PropTypes from 'prop-types';
 
 import { useThemeOverride } from '../../utils/hooks';
@@ -8,8 +7,8 @@ import { useTabClassName } from './utils';
 import { TabContainer, TabLabel } from './style';
 import { TabPropsType } from './type';
 import { tabDefaultTheme } from './theme';
-
-export const TAB_CLASS_PREFIX = 'Tab';
+import { generateId } from '../../utils';
+import { TAB_CLASS_PREFIX, tabIdPrefix } from './constants';
 
 export const Tab: FunctionComponent<TabPropsType> = forwardRef(function Tab(
     {
@@ -28,7 +27,7 @@ export const Tab: FunctionComponent<TabPropsType> = forwardRef(function Tab(
     ref,
 ) {
     const theme = useTheme();
-    const id = propsId || uniqueId('tab-id-');
+    const id = generateId(propsId, tabIdPrefix);
     const matchingContentViewValue =
         typeof value !== 'undefined' ? value : tabIndex;
     const isActive = currentlyActiveTab === tabIndex;

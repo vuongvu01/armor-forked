@@ -2,7 +2,7 @@ import React, { Children } from 'react';
 import get from 'lodash.get';
 import uniq from 'lodash.uniq';
 
-import { RADIO_CLASS_PREFIX } from '../Radio';
+import { RADIO_CLASS_PREFIX } from '../constants';
 import { RADIO_GROUP_CLASS_PREFIX } from '../RadioGroup';
 
 const extendChildrenWithProps = (

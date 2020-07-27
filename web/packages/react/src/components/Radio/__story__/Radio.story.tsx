@@ -208,7 +208,7 @@ export const DefaultStates = () => {
                 selectedValue={group2SelectedValue}
                 onChange={handleChangeGroup2}
             >
-                <Radio value="val1" label="Pizza" />
+                <Radio marginBottom={10} value="val1" label="Pizza" />
                 <Radio value={value2} label="Pasta" />
                 <Radio value="val3" label="Risotto" />
                 <Radio value="val4" label="Frittata" />

@@ -1,16 +1,15 @@
-import React, { FunctionComponent, forwardRef, ChangeEvent } from 'react';
-import uniqueId from 'lodash.uniqueid';
+import React, { ChangeEvent, forwardRef, FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import { useThemeOverride } from '../../utils/hooks';
 import { extractMarginProps, useTheme } from '../../styling';
 import SelectorLabel from '../SelectorLabel';
 import { useRadioClassName } from './utils';
-import { RadioMark, RadioInput, RadioRoot } from './style';
+import { RadioInput, RadioMark, RadioRoot } from './style';
 import { RadioPropsType } from './type';
 import { radioDefaultTheme } from './theme';
-
-export const RADIO_CLASS_PREFIX = 'Radio';
+import { generateId } from '../../utils';
+import { RADIO_CLASS_PREFIX, radioIdPrefix } from './constants';
 
 const Radio: FunctionComponent<RadioPropsType> = forwardRef(function Radio(
     {
@@ -31,7 +30,7 @@ const Radio: FunctionComponent<RadioPropsType> = forwardRef(function Radio(
     ref,
 ) {
     const theme = useTheme();
-    const id = propsId || uniqueId('radio-id-');
+    const id = generateId(propsId, radioIdPrefix);
     const isChecked = checked || value === selectedValue;
 
     useThemeOverride(RADIO_CLASS_PREFIX, theme, radioDefaultTheme);

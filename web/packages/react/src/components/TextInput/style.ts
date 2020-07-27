@@ -142,9 +142,7 @@ export const TextInputLabel = styled.span.withConfig({
 
 export const TextInputLabelBackground = styled.span.withConfig({
     shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<TextInputLabelBackgroundPropsType>` 
-    ${({ theme }: TextInputLabelBackgroundPropsType) =>
-        theme.componentOverrides.TextInput.LabelBackground.base}
+})<TextInputLabelBackgroundPropsType>`
     ${getLabelBackgroundDynamicStyle}
     ${(props: TextInputLabelBackgroundPropsType) => props.styles(props)}
 `;

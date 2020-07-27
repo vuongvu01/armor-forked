@@ -1,16 +1,15 @@
 import React, { ChangeEvent, forwardRef, FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
-import uniqueId from 'lodash.uniqueid';
 
 import { useThemeOverride } from '../../utils/hooks';
 import { useTheme } from '../../styling';
 import SelectorLabel from '../SelectorLabel';
 import { useSwitchClassName } from './utils';
-import { SwitchCheckboxInput, SwitchToggle, SwitchRoot } from './style';
+import { SwitchCheckboxInput, SwitchRoot, SwitchToggle } from './style';
 import { SwitchPropsType } from './type';
 import { switchDefaultTheme } from './theme';
-
-const SWITCH_CLASS_PREFIX = 'Switch';
+import { generateId } from '../../utils';
+import { SWITCH_CLASS_PREFIX, switchIdPrefix } from './constants';
 
 export const Switch: FunctionComponent<SwitchPropsType> = forwardRef(
     function Switch(
@@ -28,7 +27,7 @@ export const Switch: FunctionComponent<SwitchPropsType> = forwardRef(
         ref,
     ) {
         const theme = useTheme();
-        const id = propsId || uniqueId('switch-id-');
+        const id = generateId(propsId, switchIdPrefix);
         useThemeOverride(SWITCH_CLASS_PREFIX, theme, switchDefaultTheme);
 
         const classOverride = useSwitchClassName(

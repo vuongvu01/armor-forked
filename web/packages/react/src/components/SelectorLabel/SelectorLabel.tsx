@@ -6,7 +6,7 @@ import { useTheme } from '../../styling';
 import { useThemeOverride } from '../../utils/hooks';
 import selectorLabelDefaultTheme from './theme';
 import { useSelectorLabelClassName } from './utils';
-import { RADIO_CLASS_PREFIX } from '../Radio';
+import { RADIO_CLASS_PREFIX } from '../Radio/constants';
 import { Typography } from '../Typography';
 
 const SELECTOR_LABEL_CLASS_PREFIX = 'SelectorLabel';

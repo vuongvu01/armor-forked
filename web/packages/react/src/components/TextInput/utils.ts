@@ -6,17 +6,34 @@ import { ClassNamesType } from '../type';
 
 export const useTextInputStylesOverride = (
     styles?: TextInputStylesPropsType,
-): Required<TextInputStylesPropsType> =>
-    useMemo(
+): Required<TextInputStylesPropsType> => {
+    const selectStyle = (
+        stylesProp: TextInputStylesPropsType,
+        component: string,
+    ) => {
+        if (stylesProp && component in stylesProp) {
+            // @ts-ignore
+            return () => stylesProp[component];
+        }
+
+        return returnEmptyString;
+    };
+
+    return useMemo(
         () => ({
-            Root: returnEmptyString,
-            Input: returnEmptyString,
-            Label: returnEmptyString,
-            LabelBackground: returnEmptyString,
+            // @ts-ignore
+            Root: selectStyle(styles, 'Root'),
+            // @ts-ignore
+            Input: selectStyle(styles, 'Input'),
+            // @ts-ignore
+            Label: selectStyle(styles, 'Label'),
+            // @ts-ignore
+            LabelBackground: selectStyle(styles, 'LabelBackground'),
             ...styles,
         }),
         [styles],
     );
+};
 
 export const useTextInputClassNames = (
     classPrefix: string,
