@@ -151,4 +151,5 @@ export const selectTextInputStyle = {
     Label: () =>
         `transition: top ${transitionDurationInSec}s, font-size ${transitionDurationInSec}s, color ${transitionDurationInSec}s; 
         transition-delay: 150ms;`,
+    Input: () => `&:disabled {color: #a7a7a7}`,
 };
