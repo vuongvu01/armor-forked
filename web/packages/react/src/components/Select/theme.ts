@@ -1,15 +1,4 @@
 export const selectDefaultTheme = {
-    Root: {
-        base: {
-            backgroundColor: '$color.neutral.00',
-            '&:hover': {
-                backgroundColor: '$color.primary.lightest',
-            },
-        },
-        selected: {
-            backgroundColor: '$color.primary.lightest',
-        },
-    },
     ActionItem: {
         base: {
             borderLeftColor: '$color.primary.main',
@@ -21,6 +10,20 @@ export const selectDefaultTheme = {
             '&:hover': {
                 cursor: 'not-allowed',
             },
+        },
+    },
+    OptionItem: {
+        base: {
+            backgroundColor: '$color.neutral.00',
+            '&:hover': {
+                backgroundColor: '$color.primary.lightest',
+            },
+        },
+        selected: {
+            backgroundColor: '$color.primary.lightest',
+            borderLeftColor: '$color.primary.main',
+            borderLeftWidth: '2px',
+            borderLeftStyle: 'solid',
         },
     },
 };

@@ -13,10 +13,10 @@ const itemStyle = ({
 }: SelectRootPropsType) => {
     if (isSelected) {
         return css`
-            ${Select.Root.base} ${Select.Root.selected}
+            ${Select.OptionItem.base} ${Select.OptionItem.selected}
         `;
     }
-    return Select.Root.base;
+    return Select.OptionItem.base;
 };
 
 const actionItemContainerStyle = ({
@@ -92,7 +92,7 @@ export const SelectOptionItem = styled.div<SelectRootPropsType>`
     box-sizing: border-box;
     cursor: pointer;
     display: flex;
-    height: 36px;
+    height: 40px;
     padding: 8px 16px;
     white-space: nowrap;
 
