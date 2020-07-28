@@ -20,6 +20,7 @@ import {
     SelectOptionList,
     SelectOptionListContainer,
     selectTextInputStyle,
+    SelectWrapper,
 } from './style';
 import { generateId } from '../../utils';
 import SelectOptionItem from './SelectOptionItem';
@@ -142,66 +143,73 @@ export const Select: FunctionComponent<SelectPropsType> = forwardRef(
         };
 
         return (
-            <SelectContainer className={classOverride.Container} theme={theme}>
-                <TextInput
-                    after={
-                        <SelectActionItem
-                            className={classOverride.ActionItem}
-                            disabled={disabled}
-                            error={error}
-                            isFocused={
-                                isOptionListShown ||
-                                typeof selectedIndex.values().next().value ===
-                                    'number'
-                            }
-                            isOptionListShown={isOptionListShown}
-                            onClick={
-                                disabled
-                                    ? () => {}
-                                    : handleDisplayOptionListToggle
-                            }
-                            theme={theme}
-                        />
-                    }
-                    className={classOverride.TextInput}
-                    disabled={disabled}
-                    displayMode="block"
-                    error={error}
-                    id={generateId(id, selectIdPrefix)}
-                    label={label || defaultLabel}
-                    onChange={() => {}}
-                    onClick={handleDisplayOptionListToggle}
-                    ref={internalInputRef}
-                    styles={selectTextInputStyle}
-                    theme={theme}
-                    value={selectedLabelValue || ''}
-                    {...restProps}
-                />
-                <SelectOptionListContainer
-                    className={classOverride.OptionListContainer}
+            <SelectWrapper className={classOverride.Wrapper} theme={theme}>
+                <SelectContainer
+                    className={classOverride.Container}
                     theme={theme}
                 >
-                    {options && options.length > 0 ? (
-                        <SelectOptionList
-                            className={classOverride.OptionList}
-                            isOptionListShown={isOptionListShown}
-                            theme={theme}
-                        >
-                            {options.map((item, itemIndex: any) => (
-                                <SelectOptionItem
-                                    className={classOverride.OptionItem}
-                                    isSelected={selectedIndex.has(itemIndex)}
-                                    item={item}
-                                    itemIndex={itemIndex}
-                                    key={uniqueId()}
-                                    onOptionSelect={handleOnItemSelect}
-                                    theme={theme}
-                                />
-                            ))}
-                        </SelectOptionList>
-                    ) : null}
-                </SelectOptionListContainer>
-            </SelectContainer>
+                    <TextInput
+                        after={
+                            <SelectActionItem
+                                className={classOverride.ActionItem}
+                                disabled={disabled}
+                                error={error}
+                                isFocused={
+                                    isOptionListShown ||
+                                    typeof selectedIndex.values().next()
+                                        .value === 'number'
+                                }
+                                isOptionListShown={isOptionListShown}
+                                onClick={
+                                    disabled
+                                        ? () => {}
+                                        : handleDisplayOptionListToggle
+                                }
+                                theme={theme}
+                            />
+                        }
+                        className={classOverride.TextInput}
+                        disabled={disabled}
+                        displayMode="block"
+                        error={error}
+                        id={generateId(id, selectIdPrefix)}
+                        label={label || defaultLabel}
+                        onChange={() => {}}
+                        onClick={handleDisplayOptionListToggle}
+                        ref={internalInputRef}
+                        styles={selectTextInputStyle}
+                        theme={theme}
+                        value={selectedLabelValue || ''}
+                        {...restProps}
+                    />
+                    <SelectOptionListContainer
+                        className={classOverride.OptionListContainer}
+                        theme={theme}
+                    >
+                        {options && options.length > 0 ? (
+                            <SelectOptionList
+                                className={classOverride.OptionList}
+                                isOptionListShown={isOptionListShown}
+                                theme={theme}
+                            >
+                                {options.map((item, itemIndex: any) => (
+                                    <SelectOptionItem
+                                        className={classOverride.OptionItem}
+                                        isSelected={selectedIndex.has(
+                                            itemIndex,
+                                        )}
+                                        item={item}
+                                        itemIndex={itemIndex}
+                                        key={uniqueId()}
+                                        onOptionSelect={handleOnItemSelect}
+                                        theme={theme}
+                                    />
+                                ))}
+                            </SelectOptionList>
+                        ) : null}
+                    </SelectOptionListContainer>
+                </SelectContainer>
+            </SelectWrapper>
         );
     },
 );

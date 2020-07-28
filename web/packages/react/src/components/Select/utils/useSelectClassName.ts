@@ -31,6 +31,13 @@ const useSelectClassName = (
     // TODO (nmelnikov 2020-07-23): this pattern is so prominent and cumbersome that we need to do something about it
     useMemo(
         () => ({
+            Wrapper: classGeneratorBasedOnComponent({
+                component: 'Wrapper',
+                classPrefix,
+                className,
+                classNames,
+                disabled,
+            }),
             Container: classGeneratorBasedOnComponent({
                 component: 'Container',
                 classPrefix,

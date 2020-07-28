@@ -51,11 +51,17 @@ const displayBorder = ({ isFocused }: SelectRootPropsType) => css`
     ${isFocused ? ' border-left-color: #a7a7a7;' : ''}
 `;
 
-export const SelectContainer = styled.div.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property),
-})<SelectRootPropsType>`
+export const SelectWrapper = styled.div<SelectRootPropsType>`
+    display: flex;
+    height: 60px;
+`;
+
+export const SelectContainer = styled.div<SelectRootPropsType>`
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
+    height: 0;
+    min-height: -webkit-calc(110%);
     min-width: 150px;
 
     ${marginAttributes}
@@ -104,8 +110,7 @@ export const SelectActionContainer = styled.div<SelectRootPropsType>`
     display: flex;
     height: 100%;
     justify-content: center;
-    min-width: 40px;
-    width: 50px;
+    width: 56px;
 
     ${actionItemContainerStyle}
 `;
@@ -116,7 +121,7 @@ export const SelectActionContent = styled.div<SelectRootPropsType>`
     border-left-style: solid;
     border-left-color: transparent;
     display: flex;
-    height: 70%;
+    height: calc(100% - 16px);
     justify-content: center;
     transition: border-color ${transitionDurationInSec}s;
     width: 100%;
@@ -134,7 +139,6 @@ export const SelectAction = styled.div<SelectRootPropsType>`
     border-bottom-style: solid;
     border-bottom-color: black;
     height: 8px;
-    margin: 2px 0 0;
     position: relative;
     transition: ${transitionDurationInSec}s;
     transform: rotate(45deg);
