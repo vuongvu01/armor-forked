@@ -96,7 +96,7 @@ export const CustomOptionItemsFormat = () => {
                     <Select
                         options={foodOptions}
                         onSelectionChange={handleChange}
-                        label="Choose one"
+                        label="Dish type"
                     />
                     <Typography paragraph>
                         Selected value: {JSON.stringify(selectedOption)}
@@ -145,7 +145,7 @@ export const PreselectedValue = () => {
                         options={foodOptionsString}
                         onSelectionChange={handleChange}
                         selectedIndex={initialSelectionIndex}
-                        label="Choose one"
+                        label="Dish type"
                     />
                     <Typography paragraph>
                         Selected value: {JSON.stringify(selectedOption)}
@@ -173,7 +173,7 @@ export const ErrorAndDisabledStatePropagation = () => {
                     <div>
                         <Select
                             error={!selectedOption}
-                            label="Choose one"
+                            label="Select one"
                             options={['Pizza', 'Pasta', 'Risotto', 'Pepperoni']}
                             onSelectionChange={handleChange}
                         />

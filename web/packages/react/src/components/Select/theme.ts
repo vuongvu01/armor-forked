@@ -1,3 +1,5 @@
+import { componentSpacing04, layoutSpacing05 } from '../../tokens';
+
 export const selectDefaultTheme = {
     ActionItem: {
         base: {
@@ -11,10 +13,17 @@ export const selectDefaultTheme = {
                 cursor: 'not-allowed',
             },
         },
+        rotate: {
+            transform: 'rotate(225deg)',
+        },
+        separator: {
+            borderLeftColor: '$color.neutral.04',
+        },
     },
     OptionItem: {
         base: {
             backgroundColor: '$color.neutral.00',
+            height: layoutSpacing05,
             '&:hover': {
                 backgroundColor: '$color.primary.lightest',
             },
@@ -24,6 +33,16 @@ export const selectDefaultTheme = {
             borderLeftColor: '$color.primary.main',
             borderLeftWidth: '2px',
             borderLeftStyle: 'solid',
+        },
+    },
+    OptionList: {
+        base: {
+            boxShadow: '$elevation.large',
+        },
+        displayed: {
+            height: 'auto',
+            paddingBottom: componentSpacing04,
+            paddingTop: componentSpacing04,
         },
     },
 };

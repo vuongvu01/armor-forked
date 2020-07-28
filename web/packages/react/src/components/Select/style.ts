@@ -2,10 +2,11 @@ import styled, { css } from 'styled-components';
 
 import { marginAttributes } from '../../system/attributes';
 import { transitionDurationInSec } from '../../constants';
+import { colorGrey00, colorGrey30 } from '../../tokens';
 import { shouldForwardProp } from '../../utils';
 import { SelectRootPropsType } from './type';
 
-const itemStyle = ({
+const optionItemStyle = ({
     isSelected,
     theme: {
         componentOverrides: { Select },
@@ -38,20 +39,33 @@ const actionItemStyle = ({
     css`
         ${Select.ActionItem.base} ${
         disabled ? Select.ActionItem.disabled : ''
-    } ${isOptionListShown ? 'transform: rotate(225deg);' : ''}
+    } ${isOptionListShown ? Select.ActionItem.rotate : ''}
     `;
 
-const optionListStyle = ({ isOptionListShown }: SelectRootPropsType) => css`
-    ${isOptionListShown
-        ? 'height: auto; padding-bottom: 16px; padding-top: 16px;'
-        : ''}
+const optionListStyle = ({
+    isOptionListShown,
+    theme: {
+        componentOverrides: { Select },
+    },
+}: SelectRootPropsType) => {
+    return css`
+        ${Select.OptionList.base}
+        ${isOptionListShown ? Select.OptionList.displayed : ''}
+    `;
+};
+
+const actionSeparator = ({
+    isFocused,
+    theme: {
+        componentOverrides: { Select },
+    },
+}: SelectRootPropsType) => css`
+    ${isFocused ? Select.ActionItem.separator : ''}
 `;
 
-const displayBorder = ({ isFocused }: SelectRootPropsType) => css`
-    ${isFocused ? ' border-left-color: #a7a7a7;' : ''}
-`;
-
-export const SelectWrapper = styled.div<SelectRootPropsType>`
+export const SelectWrapper = styled.div.withConfig({
+    shouldForwardProp: property => shouldForwardProp(property),
+})<SelectRootPropsType>`
     display: flex;
     height: 60px;
 `;
@@ -75,7 +89,6 @@ export const SelectOptionListContainer = styled.div<SelectRootPropsType>`
 
 export const SelectOptionList = styled.div<SelectRootPropsType>`
     background-color: white;
-    box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.12);
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -98,11 +111,10 @@ export const SelectOptionItem = styled.div<SelectRootPropsType>`
     box-sizing: border-box;
     cursor: pointer;
     display: flex;
-    height: 40px;
     padding: 8px 16px;
     white-space: nowrap;
 
-    ${itemStyle}
+    ${optionItemStyle}
 `;
 
 export const SelectActionContainer = styled.div<SelectRootPropsType>`
@@ -126,22 +138,18 @@ export const SelectActionContent = styled.div<SelectRootPropsType>`
     transition: border-color ${transitionDurationInSec}s;
     width: 100%;
 
-    ${displayBorder}
+    ${actionSeparator}
 `;
 
 export const SelectAction = styled.div<SelectRootPropsType>`
-    border-bottom-width: 0;
-    border-right-width: 0;
-    border-right-width: 2px;
-    border-right-style: solid;
-    border-right-color: black;
     border-bottom-width: 2px;
     border-bottom-style: solid;
-    border-bottom-color: black;
+    border-right-width: 2px;
+    border-right-style: solid;
     height: 8px;
     position: relative;
-    transition: ${transitionDurationInSec}s;
     transform: rotate(45deg);
+    transition: ${transitionDurationInSec}s;
     width: 8px;
 
     ${actionItemStyle}
@@ -150,6 +158,7 @@ export const SelectAction = styled.div<SelectRootPropsType>`
 export const selectTextInputStyle = {
     Label: () =>
         `transition: top ${transitionDurationInSec}s, font-size ${transitionDurationInSec}s, color ${transitionDurationInSec}s; 
-        transition-delay: 150ms;`,
-    Input: () => `caret-color: #ffffff; &:disabled {color: #a7a7a7}`,
+        transition-delay: ${transitionDurationInSec}s;`,
+    Input: () =>
+        `caret-color: ${colorGrey00}; &:disabled {color: ${colorGrey30}}`,
 };
