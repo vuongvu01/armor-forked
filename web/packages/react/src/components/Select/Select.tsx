@@ -25,7 +25,7 @@ import {
 import { generateId } from '../../utils';
 import SelectOptionItem from './SelectOptionItem';
 import SelectActionItem from './SelectActionItem';
-import { SelectPropsType } from './type';
+import { OptionType, SelectPropsType } from './type';
 import { selectDefaultTheme } from './theme';
 import { TextInput } from '../TextInput';
 import { defaultLabel, SELECT_CLASS_PREFIX, selectIdPrefix } from './constants';
@@ -101,15 +101,18 @@ export const Select: FunctionComponent<SelectPropsType> = forwardRef(
 
         const handleOnItemSelect = (itemIndex: number) => {
             const newIndex = new Set([itemIndex]) as any;
-            const selectedItem = options ? options[itemIndex] : {};
 
-            setSelectedIndices(newIndex);
-            setSelectedLabelValue(getItemLabel(selectedItem));
+            if (options) {
+                const selectedItem = options[itemIndex];
 
-            blurInput();
+                setSelectedIndices(newIndex);
+                setSelectedLabelValue(getItemLabel(selectedItem));
 
-            if (isOptionListShown && onSelectionChange && options) {
-                onSelectionChange(options[itemIndex], itemIndex);
+                blurInput();
+
+                if (isOptionListShown && onSelectionChange && options) {
+                    onSelectionChange(options[itemIndex], itemIndex);
+                }
             }
         };
 
@@ -192,19 +195,23 @@ export const Select: FunctionComponent<SelectPropsType> = forwardRef(
                                 isOptionListShown={isOptionListShown}
                                 theme={theme}
                             >
-                                {options.map((item, itemIndex: any) => (
-                                    <SelectOptionItem
-                                        className={classOverride.OptionItem}
-                                        isSelected={selectedIndex.has(
-                                            itemIndex,
-                                        )}
-                                        item={item}
-                                        itemIndex={itemIndex}
-                                        key={uniqueId()}
-                                        onOptionSelect={handleOnItemSelect}
-                                        theme={theme}
-                                    />
-                                ))}
+                                // @ts-ignore
+                                {options.map(
+                                    // TODO (nmelnikov 2020-07-28): tighten here
+                                    (item: OptionType, itemIndex: any) => (
+                                        <SelectOptionItem
+                                            className={classOverride.OptionItem}
+                                            isSelected={selectedIndex.has(
+                                                itemIndex,
+                                            )}
+                                            item={item}
+                                            itemIndex={itemIndex}
+                                            key={uniqueId()}
+                                            onOptionSelect={handleOnItemSelect}
+                                            theme={theme}
+                                        />
+                                    ),
+                                )}
                             </SelectOptionList>
                         ) : null}
                     </SelectOptionListContainer>
@@ -216,8 +223,22 @@ export const Select: FunctionComponent<SelectPropsType> = forwardRef(
 
 Select.displayName = SELECT_CLASS_PREFIX;
 
-Select.defaultProps = {};
+Select.defaultProps = {
+    disabled: false,
+    isListExpanded: false,
+    label: 'Select option',
+};
 
 Select.propTypes = {
     disabled: PropTypes.bool,
+    error: PropTypes.bool,
+    id: PropTypes.string,
+    isListExpanded: PropTypes.bool,
+    label: PropTypes.string,
+    onSelectionChange: PropTypes.func,
+    options: PropTypes.array,
+    /**
+     * Pre-select a value to display based on it's index in the options list
+     */
+    selectedIndex: PropTypes.number,
 };

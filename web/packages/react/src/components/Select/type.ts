@@ -13,10 +13,14 @@ export type ClassBasedOnComponentType = {
     isActive?: boolean;
 };
 
+export type OptionObjectType = { label: string; [key: string]: any };
+export type OptionType = string[] | OptionObjectType[];
+
 type SelectEffectivePropsType = Indexed<{
     disabled?: boolean;
     error?: boolean;
     isFocused?: boolean;
+    isListExpanded?: boolean;
     isOptionListShown?: boolean;
     onSelectionChange?: (
         selectedOption: string | object,
@@ -25,7 +29,7 @@ type SelectEffectivePropsType = Indexed<{
     selectedValue?: string | number;
     selectedIndex?: number;
     label?: string;
-    options?: any[];
+    options?: OptionType;
 }> &
     HTMLAttributes<HTMLElement> &
     MarginAttributesType;
