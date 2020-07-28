@@ -38,7 +38,7 @@ const actionItemStyle = ({
     css`
         ${Select.ActionItem.base} ${
         disabled ? Select.ActionItem.disabled : ''
-    } ${isOptionListShown ? 'transform: rotate(-135deg);' : ''}
+    } ${isOptionListShown ? 'transform: rotate(225deg);' : ''}
     `;
 
 const optionListStyle = ({ isOptionListShown }: SelectRootPropsType) => css`
@@ -127,12 +127,12 @@ export const SelectActionContent = styled.div<SelectRootPropsType>`
 export const SelectAction = styled.div<SelectRootPropsType>`
     border-bottom-width: 0;
     border-right-width: 0;
-    border-left-width: 2px;
-    border-left-style: solid;
-    border-left-color: black;
-    border-top-width: 2px;
-    border-top-style: solid;
-    border-top-color: black;
+    border-right-width: 2px;
+    border-right-style: solid;
+    border-right-color: black;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: black;
     height: 8px;
     margin: 2px 0 0;
     position: relative;

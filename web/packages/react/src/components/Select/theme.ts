@@ -1,12 +1,12 @@
 export const selectDefaultTheme = {
     ActionItem: {
         base: {
-            borderLeftColor: '$color.primary.main',
-            borderTopColor: '$color.primary.main',
+            borderRightColor: '$color.primary.main',
+            borderBottomColor: '$color.primary.main',
         },
         disabled: {
-            borderLeftColor: '$color.neutral.04',
-            borderTopColor: '$color.neutral.04',
+            borderRightColor: '$color.neutral.04',
+            borderBottomColor: '$color.neutral.04',
             '&:hover': {
                 cursor: 'not-allowed',
             },
