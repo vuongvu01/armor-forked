@@ -4,9 +4,9 @@ import { withKnobs } from '@storybook/addon-knobs';
 
 import { GroupHelper } from '../../../helpers/GroupHelper';
 import { Select } from '../Select';
+import { Button } from '../../Button';
 import { Box } from '../../Box';
 import { Typography } from '../../Typography';
-import { Button } from '../../Button';
 
 export default {
     title: 'Components/Select',
@@ -30,9 +30,9 @@ export const MinimumConfiguration = () => {
     return (
         <>
             <Select
-                options={['Pizza ', 'Pasta', 'Risotto', 'Pepperoni']}
+                options={['Biryani ', 'Tacos', 'Pho', 'Risotto']}
                 onSelectionChange={handleChange}
-                label="Choose one"
+                label="Dish type"
             />
             <Typography paragraph>
                 Selected value: {JSON.stringify(selectedOption)}
@@ -43,22 +43,26 @@ export const MinimumConfiguration = () => {
 
 export const CustomOptionItemsFormat = () => {
     const foodOptions = [
-        { value: 1, label: 'Pizza' },
-        { value: 2, label: 'Pasta' },
+        { value: 0, label: 'Biryani' },
+        { value: 1, label: 'Tacos' },
+        { value: 2, label: 'Pho' },
         { value: 3, label: 'Risotto' },
-        { value: 4, label: 'Pepperoni' },
-        { value: 5, label: 'Pizza' },
-        { value: 6, label: 'Pasta' },
-        { value: 7, label: 'Risotto' },
-        { value: 8, label: 'Pepperoni' },
-        { value: 9, label: 'Pizza' },
-        { value: 10, label: 'Pasta' },
-        { value: 11, label: 'Risotto' },
-        { value: 12, label: 'Pepperoni' },
-        { value: 13, label: 'Pizza' },
-        { value: 14, label: 'Pasta' },
-        { value: 15, label: 'Risotto' },
-        { value: 16, label: 'Pepperoni' },
+        { value: 4, label: 'Pizza' },
+        { value: 5, label: 'Enchiladas' },
+        { value: 6, label: 'Börek' },
+        { value: 7, label: 'Quiche' },
+        { value: 8, label: 'Köfte' },
+        { value: 9, label: 'Pad Thai' },
+        { value: 10, label: 'Churrasco' },
+        { value: 11, label: 'Baozi' },
+        { value: 12, label: 'Ceviche' },
+        { value: 13, label: 'Mac & Cheese' },
+        { value: 14, label: 'Paella' },
+        { value: 15, label: 'Dim sum' },
+        { value: 16, label: 'Hamburger' },
+        { value: 17, label: 'Ramen' },
+        { value: 18, label: 'Sushi' },
+        { value: 19, label: 'Burrito' },
     ];
     const [selectedOption, setSelectedOption] = useState();
     const handleChange = (option: any) => {
@@ -77,13 +81,13 @@ export const CustomOptionItemsFormat = () => {
                     <code>{`[`}</code>
                 </div>
                 <div>
-                    <code>{`{ value: 1, label: 'Pizza' },`}</code>
+                    <code>{`{ value: 1, label: 'Biryani' },`}</code>
                 </div>
                 <div>
-                    <code>{`{ value: 2, label: 'Pasta' },`}</code>
+                    <code>{`{ value: 2, label: 'Tacos' },`}</code>
                 </div>
                 <div>
-                    <code>{`{ value: 3, label: 'Risotto' },`}</code>
+                    <code>{`{ value: 3, label: 'Pho' },`}</code>
                 </div>
                 <div>
                     <code>{`  [...]`}</code>
@@ -110,24 +114,26 @@ export const CustomOptionItemsFormat = () => {
 
 export const PreselectedValue = () => {
     const foodOptionsString = [
-        'Pizza',
-        'Pasta',
+        'Biryani',
+        'Tacos',
+        'Pho',
         'Risotto',
-        'Pepperoni',
         'Pizza',
-        'Pasta',
-        'Risotto',
-        'Pepperoni',
-        'Pizza',
-        'Pizza',
-        'Pasta',
-        'Risotto',
-        'Pepperoni',
-        'Pizza',
-        'Pasta',
-        'Risotto',
-        'Pepperoni',
-        'Pizza',
+        'Enchiladas',
+        'Börek',
+        'Quiche',
+        'Köfte',
+        'Pad Thai',
+        'Churrasco',
+        'Baozi',
+        'Ceviche',
+        'Mac & Cheese',
+        'Paella',
+        'Dim sum',
+        'Hamburger',
+        'Ramen',
+        'Sushi',
+        'Burrito',
     ];
 
     const initialSelectionIndex = 3;
@@ -158,8 +164,8 @@ export const PreselectedValue = () => {
 };
 
 export const ErrorAndDisabledStatePropagation = () => {
-    const initialSelectionIndex = 3;
-    const options = ['Pizza', 'Pasta', 'Risotto', 'Pepperoni'];
+    const initialSelectionIndex = 2;
+    const options = ['Köfte', 'Pad Thai', 'Churrasco', 'Baozi'];
     const [selectedOption, setSelectedOption] = useState();
     const [selectedOptionLast, setSelectedOptionLast] = useState(
         options[initialSelectionIndex],
@@ -168,7 +174,6 @@ export const ErrorAndDisabledStatePropagation = () => {
     const handleChange = (option: any) => setSelectedOption(option);
     const handleOnSelectionChange = (option: any) =>
         setSelectedOptionLast(option);
-
     return (
         <>
             <p>
@@ -176,7 +181,10 @@ export const ErrorAndDisabledStatePropagation = () => {
                 selection
             </p>
             <GroupHelper gap={2}>
-                <Box padding={3} style={{ ...boxStyle, width: '300px' }}>
+                <Box
+                    padding={3}
+                    style={{ flexDirection: 'column', width: '300px' }}
+                >
                     <div>
                         <Select
                             error={!selectedOption}
