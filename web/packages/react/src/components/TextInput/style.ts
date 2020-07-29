@@ -44,6 +44,30 @@ const getInputDynamicStyle = (props: TextInputInternalPropsWithThemeType) =>
 const getLabelDynamicStyle = (props: TextInputInternalPropsWithThemeType) =>
     getDynamicStyle('Label', props);
 
+const getLabelPosition = ({
+    theme: {
+        componentOverrides: { TextInput },
+    },
+    disabled,
+    inside,
+    large,
+    value,
+}: TextInputInternalPropsWithThemeType) => {
+    if (disabled && value) {
+        return TextInput.Label.base;
+    }
+
+    if (inside) {
+        return css`
+            ${TextInput.Label.base} ${large
+                ? TextInput.Label.inside__large
+                : TextInput.Label.inside}
+        `;
+    }
+
+    return TextInput.Label.base;
+};
+
 const getLabelBackgroundDynamicStyle = (
     props: TextInputInternalPropsWithThemeType,
 ) => getDynamicStyle('LabelBackground', props);
@@ -129,14 +153,7 @@ export const TextInputLabel = styled.span.withConfig({
     pointer-events: none;
     transition: top ease ${transitionDurationInSec}s, font-size ease ${transitionDurationInSec}s, color ease ${transitionDurationInSec}s;
 
-    ${({ theme }: TextInputLabelPropsType) =>
-        theme.componentOverrides.TextInput.Label.base}
-    ${({ inside, theme }) =>
-        inside ? theme.componentOverrides.TextInput.Label.inside : ''}
-    ${({ inside, large, theme }) =>
-        inside && large
-            ? theme.componentOverrides.TextInput.Label.inside__large
-            : ''}
+    ${getLabelPosition}
     ${getLabelDynamicStyle}
     ${(props: TextInputLabelPropsType) => props.styles(props)}
 `;

@@ -6,6 +6,7 @@ import { GroupHelper } from '../../../helpers/GroupHelper';
 import { Select } from '../Select';
 import { Box } from '../../Box';
 import { Typography } from '../../Typography';
+import { Button } from '../../Button';
 
 export default {
     title: 'Components/Select',
@@ -158,10 +159,15 @@ export const PreselectedValue = () => {
 
 export const ErrorAndDisabledStatePropagation = () => {
     const initialSelectionIndex = 3;
+    const options = ['Pizza', 'Pasta', 'Risotto', 'Pepperoni'];
     const [selectedOption, setSelectedOption] = useState();
-    const handleChange = (option: any) => {
-        setSelectedOption(option);
-    };
+    const [selectedOptionLast, setSelectedOptionLast] = useState(
+        options[initialSelectionIndex],
+    );
+    const [isDisabled, setIsDisabled] = useState(true);
+    const handleChange = (option: any) => setSelectedOption(option);
+    const handleOnSelectionChange = (option: any) =>
+        setSelectedOptionLast(option);
 
     return (
         <>
@@ -175,7 +181,7 @@ export const ErrorAndDisabledStatePropagation = () => {
                         <Select
                             error={!selectedOption}
                             label="Select one"
-                            options={['Pizza', 'Pasta', 'Risotto', 'Pepperoni']}
+                            options={options}
                             onSelectionChange={handleChange}
                         />
                         <Typography paragraph>
@@ -187,19 +193,26 @@ export const ErrorAndDisabledStatePropagation = () => {
                     <Select
                         disabled
                         label="Disabled"
-                        options={['Pizza', 'Pasta', 'Risotto', 'Pepperoni']}
+                        options={options}
                         onSelectionChange={handleChange}
                     />
                     <br />
                     <br />
                     <Select
-                        disabled
-                        label="Disabled with pre-selected"
-                        options={['Pizza', 'Pasta', 'Risotto', 'Pepperoni']}
-                        onSelectionChange={handleChange}
+                        disabled={isDisabled}
+                        label={`${
+                            isDisabled ? 'Disabled' : 'Enabled'
+                        } with pre-selected`}
+                        options={options}
+                        onSelectionChange={handleOnSelectionChange}
                         selectedIndex={initialSelectionIndex}
-                        value={'Pasta'}
                     />
+                    <Typography paragraph>
+                        Selected value: {JSON.stringify(selectedOptionLast)}
+                    </Typography>
+                    <Button onClick={() => setIsDisabled(!isDisabled)}>
+                        {isDisabled ? 'Enable' : 'Disable'}
+                    </Button>
                 </Box>
             </GroupHelper>
         </>
