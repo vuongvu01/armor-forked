@@ -48,16 +48,15 @@ export const Select: FunctionComponent<SelectPropsType> = forwardRef(
             onSelectionChange,
             options,
             selectedIndex: initialSelectedItemIndex,
+            tabIndex,
             ...restProps
         },
         ref,
     ) {
         const theme = useTheme();
-
         const internalInputRef = useRef(null);
-
         const initialIndex =
-            typeof initialSelectedItemIndex === 'number'
+            initialSelectedItemIndex && initialSelectedItemIndex >= 0
                 ? // eslint-disable-next-line  @typescript-eslint/no-array-constructor
                   new Set(Array(initialSelectedItemIndex))
                 : // eslint-disable-next-line  @typescript-eslint/no-array-constructor
@@ -69,7 +68,6 @@ export const Select: FunctionComponent<SelectPropsType> = forwardRef(
         const [isOptionListShown, setIsOptionListShown] = useState(
             isListExpanded,
         );
-
         const classOverride = useSelectClassName(
             SELECT_CLASS_PREFIX,
             className,
@@ -79,7 +77,7 @@ export const Select: FunctionComponent<SelectPropsType> = forwardRef(
 
         useThemeOverride(SELECT_CLASS_PREFIX, theme, selectDefaultTheme);
 
-        // internal ref is used for certain logic, and can be exposed to the outside if the prop is present
+        // internalRef is used in Select and can be exposed to the outside if the ref prop is present
         useEffect(() => {
             if (ref && internalInputRef) {
                 Object.assign(ref, internalInputRef);
@@ -152,6 +150,24 @@ export const Select: FunctionComponent<SelectPropsType> = forwardRef(
             blurOnInputWithSelection();
         };
 
+        const isValueSelected =
+            typeof selectedIndex.values().next().value === 'number';
+
+        const renderActionItem = (
+            <SelectActionItem
+                className={classOverride.ActionItem}
+                disabled={disabled}
+                error={error}
+                isActionSeparatorDisplayed={
+                    isOptionListShown || isValueSelected
+                }
+                isOptionListShown={isOptionListShown}
+                onClick={disabled ? () => {} : handleDisplayOptionListToggle}
+                tabIndex={tabIndex}
+                theme={theme}
+            />
+        );
+
         const renderOptionItem = (item: OptionItemType, itemIndex: number) => (
             <SelectOptionItem
                 className={classOverride.OptionItem}
@@ -171,25 +187,7 @@ export const Select: FunctionComponent<SelectPropsType> = forwardRef(
                     theme={theme}
                 >
                     <TextInput
-                        after={
-                            <SelectActionItem
-                                className={classOverride.ActionItem}
-                                disabled={disabled}
-                                error={error}
-                                isFocused={
-                                    isOptionListShown ||
-                                    typeof selectedIndex.values().next()
-                                        .value === 'number'
-                                }
-                                isOptionListShown={isOptionListShown}
-                                onClick={
-                                    disabled
-                                        ? () => {}
-                                        : handleDisplayOptionListToggle
-                                }
-                                theme={theme}
-                            />
-                        }
+                        after={renderActionItem}
                         className={classOverride.TextInput}
                         disabled={disabled}
                         displayMode="block"
@@ -230,6 +228,7 @@ Select.defaultProps = {
     disabled: false,
     isListExpanded: false,
     label: defaultLabel,
+    tabIndex: 0,
 };
 
 Select.propTypes = {

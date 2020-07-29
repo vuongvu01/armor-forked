@@ -11,13 +11,23 @@ const SelectActionItem: FunctionComponent<SelectActionItemPropsType> = ({
     className,
     disabled,
     error,
-    isFocused,
+    isActionSeparatorDisplayed,
     isOptionListShown,
     onClick,
+    tabIndex,
     theme,
 }) => (
-    <SelectActionContainer disabled={disabled} onClick={onClick} theme={theme}>
-        <SelectActionContent error={error} isFocused={isFocused} theme={theme}>
+    <SelectActionContainer
+        disabled={disabled}
+        onClick={onClick}
+        tabIndex={tabIndex}
+        theme={theme}
+    >
+        <SelectActionContent
+            error={error}
+            isActionSeparatorDisplayed={isActionSeparatorDisplayed}
+            theme={theme}
+        >
             <SelectAction
                 className={className}
                 disabled={disabled}

@@ -157,6 +157,7 @@ export const PreselectedValue = () => {
 };
 
 export const ErrorAndDisabledStatePropagation = () => {
+    const initialSelectionIndex = 3;
     const [selectedOption, setSelectedOption] = useState();
     const handleChange = (option: any) => {
         setSelectedOption(option);
@@ -194,9 +195,9 @@ export const ErrorAndDisabledStatePropagation = () => {
                     <Select
                         disabled
                         label="Disabled with pre-selected"
-                        name="disabled_selector"
                         options={['Pizza', 'Pasta', 'Risotto', 'Pepperoni']}
                         onSelectionChange={handleChange}
+                        selectedIndex={initialSelectionIndex}
                         value={'Pasta'}
                     />
                 </Box>

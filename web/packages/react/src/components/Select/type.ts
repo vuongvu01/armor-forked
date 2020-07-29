@@ -20,7 +20,7 @@ export type OptionType = OptionItemType[];
 type SelectEffectivePropsType = Indexed<{
     disabled?: boolean;
     error?: boolean;
-    isFocused?: boolean;
+    isActionSeparatorDisplayed?: boolean;
     isListExpanded?: boolean;
     isSelected?: boolean;
     item?: string | { label: string; [key: string]: any }; // aka OptionItemType - defining explicitly to expose into docs
@@ -45,8 +45,9 @@ export type SelectActionItemPropsType = Pick<
     | 'className'
     | 'disabled'
     | 'error'
-    | 'isFocused'
+    | 'isActionSeparatorDisplayed'
     | 'isOptionListShown'
+    | 'tabIndex'
     | 'theme'
     | 'onClick'
 >;

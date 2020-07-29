@@ -60,12 +60,12 @@ const optionListStyle = ({
 };
 
 const actionSeparator = ({
-    isFocused,
+    isActionSeparatorDisplayed,
     theme: {
         componentOverrides: { Select },
     },
 }: SelectActionItemPropsType) => css`
-    ${isFocused ? Select.ActionItem.separator : ''}
+    ${isActionSeparatorDisplayed ? Select.ActionItem.separator : ''}
 `;
 
 export const SelectWrapper = styled.div.withConfig({
@@ -127,6 +127,7 @@ export const SelectActionContainer = styled.div<SelectActionItemPropsType>`
     display: flex;
     height: 100%;
     justify-content: center;
+    outline: none;
     width: 56px;
 
     ${actionItemContainerStyle}
