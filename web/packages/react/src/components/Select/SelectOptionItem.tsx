@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, MouseEvent } from 'react';
 
 import { SelectOptionItem as SelectOptionItemStyle } from './style';
 import { Typography } from '../Typography';
@@ -12,7 +12,7 @@ const SelectOptionItem: FunctionComponent<SelectOptionItemPropsType> = ({
     onOptionSelect,
     ...restProps
 }) => {
-    if (typeof itemIndex !== 'number' || !onOptionSelect) {
+    if (!onOptionSelect) {
         console.error(
             'Some of the following parameters are missing or incorrect:',
             JSON.stringify({ itemIndex, onOptionSelect }),
@@ -32,9 +32,11 @@ const SelectOptionItem: FunctionComponent<SelectOptionItemPropsType> = ({
             onClick={handleItemClick}
             {...restProps}
         >
-            <Typography margin={0} small paragraph>
-                {getItemLabel(item)}
-            </Typography>
+            {item ? (
+                <Typography margin={0} small paragraph>
+                    {getItemLabel(item)}
+                </Typography>
+            ) : null}
         </SelectOptionItemStyle>
     );
 };

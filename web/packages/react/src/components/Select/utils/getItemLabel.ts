@@ -1,4 +1,6 @@
-const getItemLabel = (item: string | { label: string; [key: string]: any }) => {
+import { OptionItemType } from '../type';
+
+const getItemLabel = (item: OptionItemType) => {
     if (typeof item === 'string') {
         return item;
     }

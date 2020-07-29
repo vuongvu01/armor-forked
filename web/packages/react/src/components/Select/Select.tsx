@@ -25,10 +25,15 @@ import {
 import { generateId } from '../../utils';
 import SelectOptionItem from './SelectOptionItem';
 import SelectActionItem from './SelectActionItem';
-import { OptionType, SelectPropsType } from './type';
+import { OptionItemType, SelectPropsType } from './type';
 import { selectDefaultTheme } from './theme';
 import { TextInput } from '../TextInput';
-import { defaultLabel, SELECT_CLASS_PREFIX, selectIdPrefix } from './constants';
+import {
+    defaultLabel,
+    emptyLabelValue,
+    SELECT_CLASS_PREFIX,
+    selectIdPrefix,
+} from './constants';
 
 export const Select: FunctionComponent<SelectPropsType> = forwardRef(
     function Select(
@@ -58,7 +63,9 @@ export const Select: FunctionComponent<SelectPropsType> = forwardRef(
                 : // eslint-disable-next-line  @typescript-eslint/no-array-constructor
                   new Set(Array());
         const [selectedIndex, setSelectedIndices] = useState(initialIndex);
-        const [selectedLabelValue, setSelectedLabelValue] = useState('');
+        const [selectedLabelValue, setSelectedLabelValue] = useState(
+            emptyLabelValue,
+        );
         const [isOptionListShown, setIsOptionListShown] = useState(
             isListExpanded,
         );
@@ -69,6 +76,8 @@ export const Select: FunctionComponent<SelectPropsType> = forwardRef(
             classNames,
             disabled,
         );
+
+        useThemeOverride(SELECT_CLASS_PREFIX, theme, selectDefaultTheme);
 
         // internal ref is used for certain logic, and can be exposed to the outside if the prop is present
         useEffect(() => {
@@ -127,8 +136,6 @@ export const Select: FunctionComponent<SelectPropsType> = forwardRef(
             return undefined;
         }, []);
 
-        useThemeOverride(SELECT_CLASS_PREFIX, theme, selectDefaultTheme);
-
         const hideOptions = () =>
             setTimeout(() => setIsOptionListShown(false), 0);
 
@@ -144,6 +151,18 @@ export const Select: FunctionComponent<SelectPropsType> = forwardRef(
             focusOnActionItemTrigger();
             blurOnInputWithSelection();
         };
+
+        const renderOptionItem = (item: OptionItemType, itemIndex: number) => (
+            <SelectOptionItem
+                className={classOverride.OptionItem}
+                isSelected={selectedIndex.has(itemIndex)}
+                item={item}
+                itemIndex={itemIndex}
+                key={uniqueId()}
+                onOptionSelect={handleOnItemSelect}
+                theme={theme}
+            />
+        );
 
         return (
             <SelectWrapper className={classOverride.Wrapper} theme={theme}>
@@ -176,13 +195,13 @@ export const Select: FunctionComponent<SelectPropsType> = forwardRef(
                         displayMode="block"
                         error={error}
                         id={generateId(id, selectIdPrefix)}
-                        label={label || defaultLabel}
+                        label={label}
                         onChange={() => {}}
                         onClick={handleDisplayOptionListToggle}
                         ref={internalInputRef}
                         styles={selectTextInputStyle}
                         theme={theme}
-                        value={selectedLabelValue || ''}
+                        value={selectedLabelValue || emptyLabelValue}
                         {...restProps}
                     />
                     <SelectOptionListContainer
@@ -195,23 +214,7 @@ export const Select: FunctionComponent<SelectPropsType> = forwardRef(
                                 isOptionListShown={isOptionListShown}
                                 theme={theme}
                             >
-                                // @ts-ignore
-                                {options.map(
-                                    // TODO (nmelnikov 2020-07-28): tighten here
-                                    (item: OptionType, itemIndex: any) => (
-                                        <SelectOptionItem
-                                            className={classOverride.OptionItem}
-                                            isSelected={selectedIndex.has(
-                                                itemIndex,
-                                            )}
-                                            item={item}
-                                            itemIndex={itemIndex}
-                                            key={uniqueId()}
-                                            onOptionSelect={handleOnItemSelect}
-                                            theme={theme}
-                                        />
-                                    ),
-                                )}
+                                {options.map(renderOptionItem)}
                             </SelectOptionList>
                         ) : null}
                     </SelectOptionListContainer>
@@ -226,7 +229,7 @@ Select.displayName = SELECT_CLASS_PREFIX;
 Select.defaultProps = {
     disabled: false,
     isListExpanded: false,
-    label: 'Select option',
+    label: defaultLabel,
 };
 
 Select.propTypes = {
@@ -237,8 +240,5 @@ Select.propTypes = {
     label: PropTypes.string,
     onSelectionChange: PropTypes.func,
     options: PropTypes.array,
-    /**
-     * Pre-select a value to display based on it's index in the options list
-     */
     selectedIndex: PropTypes.number,
 };

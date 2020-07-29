@@ -17,7 +17,7 @@ export const selectDefaultTheme = {
             transform: 'rotate(225deg)',
         },
         separator: {
-            borderLeftColor: '$color.neutral.04',
+            borderLeftColor: '$color.neutral.03',
         },
     },
     OptionItem: {

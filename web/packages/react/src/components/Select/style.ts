@@ -4,14 +4,19 @@ import { marginAttributes } from '../../system/attributes';
 import { transitionDurationInSec } from '../../constants';
 import { colorGrey00, colorGrey30 } from '../../tokens';
 import { shouldForwardProp } from '../../utils';
-import { SelectRootPropsType } from './type';
+import {
+    SelectActionItemPropsType,
+    SelectOptionItemPropsType,
+    SelectOptionListPropsType,
+    SelectRootPropsType,
+} from './type';
 
 const optionItemStyle = ({
     isSelected,
     theme: {
         componentOverrides: { Select },
     },
-}: SelectRootPropsType) => {
+}: SelectOptionItemPropsType) => {
     if (isSelected) {
         return css`
             ${Select.OptionItem.base} ${Select.OptionItem.selected}
@@ -25,7 +30,7 @@ const actionItemContainerStyle = ({
     theme: {
         componentOverrides: { Select },
     },
-}: SelectRootPropsType) => css`
+}: SelectActionItemPropsType) => css`
     ${disabled ? Select.ActionItem.disabled : ''}
 `;
 
@@ -35,7 +40,7 @@ const actionItemStyle = ({
     theme: {
         componentOverrides: { Select },
     },
-}: SelectRootPropsType) =>
+}: SelectActionItemPropsType) =>
     css`
         ${Select.ActionItem.base} ${
         disabled ? Select.ActionItem.disabled : ''
@@ -47,7 +52,7 @@ const optionListStyle = ({
     theme: {
         componentOverrides: { Select },
     },
-}: SelectRootPropsType) => {
+}: SelectOptionListPropsType) => {
     return css`
         ${Select.OptionList.base}
         ${isOptionListShown ? Select.OptionList.displayed : ''}
@@ -59,7 +64,7 @@ const actionSeparator = ({
     theme: {
         componentOverrides: { Select },
     },
-}: SelectRootPropsType) => css`
+}: SelectActionItemPropsType) => css`
     ${isFocused ? Select.ActionItem.separator : ''}
 `;
 
@@ -87,7 +92,7 @@ export const SelectOptionListContainer = styled.div<SelectRootPropsType>`
     position: relative;
 `;
 
-export const SelectOptionList = styled.div<SelectRootPropsType>`
+export const SelectOptionList = styled.div<SelectOptionListPropsType>`
     background-color: white;
     box-sizing: border-box;
     display: flex;
@@ -106,7 +111,7 @@ export const SelectOptionList = styled.div<SelectRootPropsType>`
     ${optionListStyle}
 `;
 
-export const SelectOptionItem = styled.div<SelectRootPropsType>`
+export const SelectOptionItem = styled.div<SelectOptionItemPropsType>`
     align-items: center;
     box-sizing: border-box;
     cursor: pointer;
@@ -117,7 +122,7 @@ export const SelectOptionItem = styled.div<SelectRootPropsType>`
     ${optionItemStyle}
 `;
 
-export const SelectActionContainer = styled.div<SelectRootPropsType>`
+export const SelectActionContainer = styled.div<SelectActionItemPropsType>`
     align-items: center;
     display: flex;
     height: 100%;
@@ -127,7 +132,7 @@ export const SelectActionContainer = styled.div<SelectRootPropsType>`
     ${actionItemContainerStyle}
 `;
 
-export const SelectActionContent = styled.div<SelectRootPropsType>`
+export const SelectActionContent = styled.div<SelectActionItemPropsType>`
     align-items: center;
     border-left-width: 1px;
     border-left-style: solid;
@@ -141,7 +146,7 @@ export const SelectActionContent = styled.div<SelectRootPropsType>`
     ${actionSeparator}
 `;
 
-export const SelectAction = styled.div<SelectRootPropsType>`
+export const SelectAction = styled.div<SelectActionItemPropsType>`
     border-bottom-width: 2px;
     border-bottom-style: solid;
     border-right-width: 2px;

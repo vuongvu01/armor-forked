@@ -11,6 +11,15 @@ import { Nodes } from '../../../src/helpers/Nodes';
 
 ~~~js
 import { Select } from '@deliveryhero/armor';
+
+const options: (string | { [key: string]: any; label: string; })[]  = ['Pizza ', 'Pasta', 'Risotto', 'Pepperoni']
+const handleChange = (selectedOption: string | { [key: string]: any; label: string; }) => {...}
+
+<Select
+    options={options}
+    onSelectionChange={handleChange}
+    label="Choose one"
+/>
 ~~~
 
 ## Minimum configuration
