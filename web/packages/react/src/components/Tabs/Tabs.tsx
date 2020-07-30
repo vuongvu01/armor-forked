@@ -1,5 +1,4 @@
 import React, { FunctionComponent, forwardRef, useState } from 'react';
-import uniqueId from 'lodash.uniqueid';
 import PropTypes from 'prop-types';
 
 import { useThemeOverride } from '../../utils/hooks';
@@ -8,8 +7,8 @@ import { preProcessTabChildren, useTabsClassName } from './utils';
 import { TabsRoot } from './style';
 import { TabsPropsType } from './type';
 import { tabsDefaultTheme } from './theme';
-
-export const TABS_CLASS_PREFIX = 'Tabs';
+import { generateId } from '../../utils';
+import { TABS_CLASS_PREFIX, tabsIdPrefix } from './constants';
 
 export const Tabs: FunctionComponent<TabsPropsType> = forwardRef(function Tabs(
     {
@@ -28,7 +27,7 @@ export const Tabs: FunctionComponent<TabsPropsType> = forwardRef(function Tabs(
     }
 
     const theme = useTheme();
-    const id = propsId || uniqueId('tab-id-');
+    const id = generateId(propsId, tabsIdPrefix);
     const [currentlyActiveTab, setCurrentlyActiveTab] = useState(0);
 
     useThemeOverride(TABS_CLASS_PREFIX, theme, tabsDefaultTheme);

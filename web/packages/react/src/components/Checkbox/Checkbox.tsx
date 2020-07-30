@@ -1,5 +1,4 @@
 import React, { FunctionComponent, forwardRef } from 'react';
-import uniqueId from 'lodash.uniqueid';
 import PropTypes from 'prop-types';
 
 import { useThemeOverride } from '../../utils/hooks';
@@ -9,8 +8,8 @@ import { useCheckboxClassName } from './utils';
 import { CheckboxInput, CheckboxCheckmark, CheckboxRoot } from './style';
 import { CheckboxPropsType } from './type';
 import { checkboxDefaultTheme } from './theme';
-
-const CHECKBOX_CLASS_PREFIX = 'Checkbox';
+import { generateId } from '../../utils';
+import { CHECKBOX_CLASS_PREFIX, checkboxIdPrefix } from './constants';
 
 export const Checkbox: FunctionComponent<CheckboxPropsType> = forwardRef(
     function Checkbox(
@@ -30,7 +29,7 @@ export const Checkbox: FunctionComponent<CheckboxPropsType> = forwardRef(
         ref,
     ) {
         const theme = useTheme();
-        const id = propsId || uniqueId('checkbox-id-');
+        const id = generateId(propsId, checkboxIdPrefix);
 
         useThemeOverride(CHECKBOX_CLASS_PREFIX, theme, checkboxDefaultTheme);
 

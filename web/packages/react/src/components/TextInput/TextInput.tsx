@@ -73,6 +73,8 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
             large,
             error,
         );
+
+        // NOTE (nmelnikov 2020-07-24): being used by Select. Please no clean up here :)
         const stylesOverride = useTextInputStylesOverride(styles);
 
         const {
@@ -99,14 +101,14 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
         const Tag = multiline ? 'textarea' : 'input';
         const isOutlined = isMouseInside || isFocused;
 
-        // Effects to control external value assignment
+        // Effects to control external value assignment, enabled and disabled state
         useEffect(() => {
             const node = internalInputRef.current as any;
 
-            if (value && node && node.focus) {
+            if (value && node && node.focus && !disabled) {
                 node.focus();
             }
-        }, [value]);
+        }, [value, disabled]);
         useEffect(() => {
             if (ref && internalInputRef) {
                 Object.assign(ref, internalInputRef);
@@ -164,13 +166,14 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
                 {!!label && (
                     <TextInputLabel
                         className={classNameComponents.Label}
-                        styles={stylesOverride.Label}
-                        theme={theme}
-                        inside={isLabelInside}
                         disabled={disabled}
+                        error={error}
+                        inside={isLabelInside}
                         large={large}
                         outlined={isOutlined}
-                        error={error}
+                        styles={stylesOverride.Label}
+                        theme={theme}
+                        value={value}
                     >
                         <TextInputLabelBackground
                             className={classNameComponents.LabelBackground}

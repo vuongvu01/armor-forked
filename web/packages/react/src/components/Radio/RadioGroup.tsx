@@ -27,7 +27,13 @@ export const RadioGroup: FunctionComponent<RadioGroupPropsType> = ({
         return null;
     }
 
-    const additionalProps = { name, onChange, selectedValue, typographyProps };
+    const additionalProps = {
+        name,
+        onChange,
+        selectedValue,
+        typographyProps,
+        marginY: 2,
+    };
 
     const childrenWithExtendedProps = extendChildrenWithProps(
         children,

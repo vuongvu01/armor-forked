@@ -11,6 +11,7 @@ import {
     TextInputLabelPropsType,
     TextInputRootPropsType,
 } from './type';
+import { transitionDurationInSec } from '../../constants';
 
 const getDynamicStyle = (
     nodeName: string,
@@ -43,6 +44,30 @@ const getInputDynamicStyle = (props: TextInputInternalPropsWithThemeType) =>
 const getLabelDynamicStyle = (props: TextInputInternalPropsWithThemeType) =>
     getDynamicStyle('Label', props);
 
+const getLabelPosition = ({
+    theme: {
+        componentOverrides: { TextInput },
+    },
+    disabled,
+    inside,
+    large,
+    value,
+}: TextInputInternalPropsWithThemeType) => {
+    if (disabled && value) {
+        return TextInput.Label.base;
+    }
+
+    if (inside) {
+        return css`
+            ${TextInput.Label.base} ${large
+                ? TextInput.Label.inside__large
+                : TextInput.Label.inside}
+        `;
+    }
+
+    return TextInput.Label.base;
+};
+
 const getLabelBackgroundDynamicStyle = (
     props: TextInputInternalPropsWithThemeType,
 ) => getDynamicStyle('LabelBackground', props);
@@ -68,7 +93,7 @@ export const TextInputRoot = styled.div.withConfig({
     border-style: solid;
     border-width: 1px;
     vertical-align: middle;
-    transition: border 200ms ease;
+    transition: border ${transitionDurationInSec}s ease;
     ${({ displayMode, multiline }: TextInputRootPropsType) => css`
         display: ${displayMode === 'block' ? 'flex' : 'inline-flex'};
         ${multiline ? '' : 'align-items: center;'}
@@ -126,25 +151,16 @@ export const TextInputLabel = styled.span.withConfig({
     user-select: none;
     text-overflow: ellipsis;
     pointer-events: none;
-    transition: top ease 150ms, font-size ease 150ms, color ease 200ms;
+    transition: top ease ${transitionDurationInSec}s, font-size ease ${transitionDurationInSec}s, color ease ${transitionDurationInSec}s;
 
-    ${({ theme }: TextInputLabelPropsType) =>
-        theme.componentOverrides.TextInput.Label.base}
-    ${({ inside, theme }) =>
-        inside ? theme.componentOverrides.TextInput.Label.inside : ''}
-    ${({ inside, large, theme }) =>
-        inside && large
-            ? theme.componentOverrides.TextInput.Label.inside__large
-            : ''}
+    ${getLabelPosition}
     ${getLabelDynamicStyle}
     ${(props: TextInputLabelPropsType) => props.styles(props)}
 `;
 
 export const TextInputLabelBackground = styled.span.withConfig({
     shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<TextInputLabelBackgroundPropsType>` 
-    ${({ theme }: TextInputLabelBackgroundPropsType) =>
-        theme.componentOverrides.TextInput.LabelBackground.base}
+})<TextInputLabelBackgroundPropsType>`
     ${getLabelBackgroundDynamicStyle}
     ${(props: TextInputLabelBackgroundPropsType) => props.styles(props)}
 `;

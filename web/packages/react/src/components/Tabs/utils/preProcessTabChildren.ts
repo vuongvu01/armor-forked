@@ -1,7 +1,7 @@
 import React, { Children, ReactElement, ReactNode } from 'react';
 import get from 'lodash.get';
 
-import { TAB_CLASS_PREFIX } from '../../Tab';
+import { TAB_CLASS_PREFIX } from '../../Tab/constants';
 
 const isValidTabComponent = (element: ReactNode) => {
     const elementName =

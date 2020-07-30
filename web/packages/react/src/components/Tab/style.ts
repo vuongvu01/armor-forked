@@ -2,7 +2,16 @@ import styled, { css } from 'styled-components';
 
 import { marginAttributes } from '../../system/attributes';
 import { mouseCursor } from '../../styling';
-import { TabContainerPropsType } from './type';
+import { TabContainerPropsType, TabLabelPropsType } from './type';
+import { transitionDurationInSec } from '../../constants';
+
+const animationStyle = ({
+    isActive,
+    theme: {
+        componentOverrides: { Tab },
+    },
+}: TabContainerPropsType) =>
+    isActive ? Tab.Container.active__after : 'position: relative;';
 
 const containerStyle = ({
     isActive,
@@ -32,6 +41,10 @@ const labelStyle = ({
         return css`${Tab.Label.base}${Tab.Label.disabled}`;
     }
 
+    if (isActive) {
+        return css`${Tab.Label.base}${Tab.Label.active}`;
+    }
+
     if (!isActive) {
         return css`${Tab.Label.base}${Tab.Label.hover}`;
     }
@@ -39,10 +52,16 @@ const labelStyle = ({
     return Tab.Label.base;
 };
 
-const cursor = ({ disabled }: TabContainerPropsType) => {
+const cursor = ({ disabled, isActive }: TabContainerPropsType) => {
     if (disabled) {
         return css`
             pointer-events: none;
+        `;
+    }
+
+    if (isActive) {
+        return css`
+            cursor: default;
         `;
     }
 
@@ -52,10 +71,21 @@ const cursor = ({ disabled }: TabContainerPropsType) => {
 export const TabContainer = styled.div<TabContainerPropsType>`
     min-width: '100px';
 
+    &::after {
+        content: '';
+        height: 3px;
+        position: absolute;
+        transform: scaleX(0);
+        transition: transform ${transitionDurationInSec}s ease-out;
+        width: 100%;
+
+        ${animationStyle}
+    }
+
     ${containerStyle}
 `;
 
-export const TabLabel = styled.div<TabContainerPropsType>`
+export const TabLabel = styled.div<TabLabelPropsType>`
     align-items: center;
     box-sizing: border-box;
     text-align: center;

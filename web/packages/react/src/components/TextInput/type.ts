@@ -53,8 +53,10 @@ type TextInputInternalPropsType = {
     outlined?: boolean;
 } & Pick<TextInputEffectivePropsType, 'disabled' | 'large' | 'error' | 'wide'>;
 
-export type TextInputInternalPropsWithThemeType = TextInputInternalPropsType &
-    Pick<TextInputRootPropsType, 'theme'>;
+export type TextInputInternalPropsWithThemeType = {
+    inside?: boolean;
+} & TextInputInternalPropsType &
+    Pick<TextInputRootPropsType, 'theme' | 'value'>;
 
 /* TextInput Root node prop type */
 export type TextInputRootPropsType = PropsWithNodeStylePropsType<
@@ -67,13 +69,20 @@ export type TextInputContainerPropsType = PropsWithNodeStylePropsType<
 >;
 
 /* TextInput Label node prop type */
-export type TextInputLabelPropsType = PropsWithNodeStylePropsType<
-    {
-        inside: boolean;
-    } & TextInputInternalPropsType
->;
+export type TextInputLabelPropsType = Pick<
+    TextInputEffectivePropsType,
+    'value'
+> &
+    PropsWithNodeStylePropsType<
+        {
+            inside: boolean;
+        } & TextInputInternalPropsType
+    >;
 
 /* TextInput LabelBackground node prop type */
-export type TextInputLabelBackgroundPropsType = PropsWithNodeStylePropsType<
-    Pick<TextInputEffectivePropsType, 'disabled'>
->;
+export type TextInputLabelBackgroundPropsType = Pick<
+    TextInputEffectivePropsType,
+    'value'
+> &
+    PropsWithNodeStylePropsType<Pick<TextInputEffectivePropsType, 'disabled'>>;
+// string | string[] | number;

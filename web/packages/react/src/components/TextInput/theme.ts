@@ -83,10 +83,6 @@ export const TextInputDefaultTheme = {
         },
     },
     LabelBackground: {
-        base: {
-            paddingLeft: 1,
-            paddingRight: 1,
-        },
         disabled: {
             background: `linear-gradient(0, ${colorGrey05} 50%, transparent 50%)`,
         },

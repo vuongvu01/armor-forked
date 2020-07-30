@@ -24,3 +24,6 @@ export type TabPropsType = TabEffectivePropsType;
 
 export type TabContainerPropsType = TabEffectivePropsType &
     NodeStylePropsType<TabEffectivePropsType>;
+
+export type TabLabelPropsType = TabEffectivePropsType &
+    NodeStylePropsType<TabEffectivePropsType>;

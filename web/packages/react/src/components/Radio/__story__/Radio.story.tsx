@@ -47,46 +47,6 @@ export const States = () => {
                 />
             </GroupHelper>
             <GroupHelper gap={2}>
-                <h4>Checked with custom label properties</h4>
-                <Radio
-                    name="radioName2"
-                    value={value2}
-                    label="Pasta"
-                    selectedValue={value2}
-                    typographyProps={{ sectionTitle: true }}
-                />
-                <p>
-                    Available <code>typographyProps=</code>
-                    <p>
-                        <code>{'{pageTitle: true}'}</code>
-                    </p>
-                    <p>
-                        <code>{'{sectionTitle: true}'}</code>
-                    </p>
-                    <p>
-                        <code>{'{subSectionTitle: true}'}</code>
-                    </p>
-                    <p>
-                        <code>{'{label: true, large: true}'}</code>
-                    </p>
-                    <p>
-                        <code>{'{label: true, medium: true}'}</code>
-                    </p>
-                    <p>
-                        <code>{'{label: true, small: true}'}</code>
-                    </p>
-                    <p>
-                        <code>{'{paragraph: true, large}'}</code>
-                    </p>
-                    <p>
-                        <code>{'{paragraph: true, medium}'}</code>
-                    </p>
-                    <p>
-                        <code>{'{paragraph: true, small}'}</code>
-                    </p>
-                </p>
-            </GroupHelper>
-            <GroupHelper gap={2}>
                 <h4>Disabled</h4>
                 <Radio
                     name="radioName3"
@@ -130,16 +90,100 @@ export const RadioButtonGroup = () => {
                 selectedValue={group1SelectedValue}
                 onChange={handleChangeGroup1}
             >
-                <Radio
-                    marginBottom={10}
-                    value="val1"
-                    label="Pizza"
-                    data-testid="123"
-                />
+                <Radio value="val1" label="Pizza" data-testid="123" />
                 <Radio value="val2" label="Pasta" />
                 <Radio value="val3" label="Risotto" />
             </RadioGroup>
         </GroupHelper>
+    );
+};
+
+export const CustomLabelTypography = () => {
+    return (
+        <>
+            <h4>Use one of the available typography types</h4>
+            <GroupHelper gap={2}>
+                <h4>
+                    Pass custom label properties via{' '}
+                    <code>typographyProps=</code> on Radio or RadioGroup
+                </h4>
+                <code>{`typographyProps={paragraph: true, small: true}`}</code>
+                <RadioGroup
+                    marginY={2}
+                    name="name0"
+                    typographyProps={{ paragraph: true, small: true }}
+                >
+                    <Radio checked={false} label="Pizza" value="0" />
+                    <Radio checked label="Pasta" value="1" />
+                </RadioGroup>
+                <br />
+                <br />
+                <code>{`typographyProps={paragraph: true, medium: true}`}</code>
+                <Radio
+                    marginY={2}
+                    name="name0"
+                    label="Pizza"
+                    typographyProps={{ paragraph: true, medium: true }}
+                />
+                <br />
+                <code>{`typographyProps={paragraph: true, large: true}`}</code>
+                <Radio
+                    marginY={2}
+                    name="name1"
+                    label="Pizza"
+                    typographyProps={{ paragraph: true, large: true }}
+                />
+                <br />
+                <code>{`typographyProps={label: true, small: true}`}</code>
+                <Radio
+                    marginY={2}
+                    name="name2"
+                    label="Pizza"
+                    typographyProps={{ label: true, small: true }}
+                />
+                <br />
+                <code>{`typographyProps={label: true, medium: true}`}</code>
+                <Radio
+                    marginY={2}
+                    name="name3"
+                    label="Pizza"
+                    typographyProps={{ label: true, medium: true }}
+                />
+                <br />
+                <code>{`typographyProps={label: true, large: true}`}</code>
+                <Radio
+                    marginY={2}
+                    name="name4"
+                    label="Pizza"
+                    selectedValue="val0"
+                    typographyProps={{ label: true, large: true }}
+                />
+                <br />
+                <code>{`typographyProps={subSectionTitle: true}`}</code>
+                <Radio
+                    marginY={2}
+                    name="name5"
+                    label="Pizza"
+                    typographyProps={{ subSectionTitle: true }}
+                />
+                <br />
+                <code>{`typographyProps={sectionTitle: true}`}</code>
+                <Radio
+                    marginY={2}
+                    name="name6"
+                    label="Pizza"
+                    typographyProps={{ sectionTitle: true }}
+                />
+                <br />
+                <code>{`typographyProps={pageTitle: true}`}</code>
+                <Radio
+                    marginY={2}
+                    name="name7"
+                    label="Pizza"
+                    typographyProps={{ pageTitle: true }}
+                />
+            </GroupHelper>
+        </>
     );
 };
 
@@ -163,9 +207,8 @@ export const DefaultStates = () => {
                 name={groupName2}
                 selectedValue={group2SelectedValue}
                 onChange={handleChangeGroup2}
-                typographyProps={{ pageTitle: true }}
             >
-                <Radio value="val1" label="Pizza" />
+                <Radio marginBottom={10} value="val1" label="Pizza" />
                 <Radio value={value2} label="Pasta" />
                 <Radio value="val3" label="Risotto" />
                 <Radio value="val4" label="Frittata" />
