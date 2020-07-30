@@ -33,7 +33,7 @@ const SelectOptionItem: FunctionComponent<SelectOptionItemPropsType> = ({
             {...restProps}
         >
             {item ? (
-                <Typography margin={0} small paragraph>
+                <Typography margin={0} paragraph>
                     {getItemLabel(item)}
                 </Typography>
             ) : null}

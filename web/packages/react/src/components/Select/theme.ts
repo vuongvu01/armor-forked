@@ -1,4 +1,8 @@
-import { componentSpacing04, layoutSpacing05 } from '../../tokens';
+import {
+    componentSpacing02,
+    componentSpacing04,
+    layoutSpacing05,
+} from '../../tokens';
 
 export const selectDefaultTheme = {
     ActionItem: {
@@ -15,6 +19,7 @@ export const selectDefaultTheme = {
         },
         rotate: {
             transform: 'rotate(225deg)',
+            marginTop: componentSpacing02,
         },
         separator: {
             borderLeftColor: '$color.neutral.03',

@@ -12,7 +12,7 @@ import { Nodes } from '../../../src/helpers/Nodes';
 ~~~js
 import { Select } from '@deliveryhero/armor';
 
-const options: (string | { [key: string]: any; label: string; })[]  = ['Biryani ', 'Tacos', 'Pho', 'Risotto']
+const options: (string | { [key: string]: any; label: string; })[]  = ['Biryani', 'Tacos', 'Pho', 'Risotto']
 const handleChange = (selectedOption: string | { [key: string]: any; label: string; }) => {...}
 
 <Select
@@ -36,7 +36,7 @@ return (
         <GroupHelper gap={2}>
             <Box padding={3}>
                 <Select
-                    options={['Biryani ', 'Tacos', 'Pho', 'Risotto']}
+                    options={['Biryani', 'Tacos', 'Pho', 'Risotto']}
                     onSelectionChange={handleChange}
                     label="Dish type"
                 />

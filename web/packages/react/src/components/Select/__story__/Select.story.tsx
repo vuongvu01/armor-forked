@@ -30,7 +30,7 @@ export const MinimumConfiguration = () => {
     return (
         <>
             <Select
-                options={['Biryani ', 'Tacos', 'Pho', 'Risotto']}
+                options={['Biryani', 'Tacos', 'Pho', 'Risotto']}
                 onSelectionChange={handleChange}
                 label="Dish type"
             />

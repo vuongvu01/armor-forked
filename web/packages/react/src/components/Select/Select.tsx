@@ -55,12 +55,17 @@ export const Select: FunctionComponent<SelectPropsType> = forwardRef(
     ) {
         const theme = useTheme();
         const internalInputRef = useRef(null);
-        const initialIndex =
-            initialSelectedItemIndex && initialSelectedItemIndex >= 0
-                ? // eslint-disable-next-line  @typescript-eslint/no-array-constructor
-                  new Set(Array(initialSelectedItemIndex))
-                : // eslint-disable-next-line  @typescript-eslint/no-array-constructor
-                  new Set(Array());
+
+        // eslint-disable-next-line  @typescript-eslint/no-array-constructor
+        let initialIndex = new Set(Array());
+        let isDisableLabelEffect = false;
+
+        if (initialSelectedItemIndex && initialSelectedItemIndex >= 0) {
+            // eslint-disable-next-line  @typescript-eslint/no-array-constructor
+            initialIndex = new Set(Array(initialSelectedItemIndex));
+            isDisableLabelEffect = true;
+        }
+
         const [selectedIndex, setSelectedIndices] = useState(initialIndex);
         const [selectedLabelValue, setSelectedLabelValue] = useState(
             emptyLabelValue,
@@ -189,6 +194,7 @@ export const Select: FunctionComponent<SelectPropsType> = forwardRef(
                     <TextInput
                         after={renderActionItem}
                         className={classOverride.TextInput}
+                        disableLabelEffect={isDisableLabelEffect}
                         disabled={disabled}
                         displayMode="block"
                         error={error}
