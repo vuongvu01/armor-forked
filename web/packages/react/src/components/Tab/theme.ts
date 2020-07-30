@@ -1,16 +1,20 @@
+/* eslint-disable @typescript-eslint/camelcase */
 import { componentSpacing01, componentSpacing04 } from '../../tokens';
 
 export const tabDefaultTheme = {
     Container: {
         active: {
-            borderBottom: '$color.primary.main',
-            borderBottomWidth: '2px',
-            borderBottomStyle: 'solid',
-            color: '$color.neutral.06',
-            cursor: 'default',
+            transform: 'scaleX(1)',
+        },
+        active__after: {
+            backgroundColor: '$color.primary.main',
+            transform: 'scaleX(1)',
         },
     },
     Label: {
+        active: {
+            color: '$color.neutral.06',
+        },
         base: {
             borderRadius: '$figure.borderRadius.sharp',
             fontSize: '$typography.labelLarge.fontSize',
@@ -24,9 +28,6 @@ export const tabDefaultTheme = {
             '&:hover': {
                 backgroundColor: '$color.primary.lightest',
                 borderBottom: '$color.primary.lightest',
-                borderBottomWidth: '2px',
-                borderBottomStyle: 'solid',
-                borderRadius: '0',
             },
         },
         disabled: {
