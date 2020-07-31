@@ -11,6 +11,20 @@ import { Box, Button, Tab, Tabs, TabView  } from 'src/components';
 
 ```js
 import { Tabs, Tab, TabView } from '@deliveryhero/armor';
+
+const [selectedTabIndex, setSelectedTabIndex] = useState(0);
+const handleSwitch = (tabIndex) => setSelectedTabIndex(tabIndex);
+
+<Tabs onSwitch={handleSwitch}>
+   <Tab label="Pizza" />
+   <Tab label="Pasta" />
+</Tabs>
+<TabView value={0} selectedValue={selectedTabIndex}>
+   <p>Pizza</p>
+</TabView>
+<TabView value={1} selectedValue={selectedTabIndex}>
+   <p>Pasta</p>
+</TabView>
 ```
 
 ## Full width
