@@ -2,14 +2,14 @@
 import React from 'react';
 import { cleanup, render } from '@testing-library/react';
 
-import { Select } from '../Select';
+import { Dropdown } from '../Dropdown';
 
-describe('<Select />', () => {
+describe('<Dropdown />', () => {
     afterEach(async () => {
         cleanup();
     });
 
     it('should render itself without errors', async () => {
-        render(<Select onSelectionChange={() => {}} />);
+        render(<Dropdown onSelect={() => {}} />);
     });
 });

@@ -16,27 +16,27 @@ import {
     useSelectClassName,
 } from './utils';
 import {
-    SelectContainer,
-    SelectOptionList,
-    SelectOptionListContainer,
-    selectTextInputStyle,
-    SelectWrapper,
+    DropdownContainer,
+    DropdownOptionList,
+    DropdownOptionListContainer,
+    DropdownWrapper,
+    dropdownTextInputStyle,
 } from './style';
 import { generateId } from '../../utils';
-import SelectOptionItem from './SelectOptionItem';
-import SelectActionItem from './SelectActionItem';
-import { OptionItemType, SelectPropsType } from './type';
+import DropdownOptionItem from './DropdownOptionItem';
+import DropdownActionItem from './DropdownActionItem';
+import { OptionItemType, DropdownPropsType } from './type';
 import { selectDefaultTheme } from './theme';
 import { TextInput } from '../TextInput';
 import {
     defaultLabel,
     emptyLabelValue,
-    SELECT_CLASS_PREFIX,
+    DROPDOWN_CLASS_PREFIX,
     selectIdPrefix,
 } from './constants';
 
-export const Select: FunctionComponent<SelectPropsType> = forwardRef(
-    function Select(
+export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
+    function Dropdown(
         {
             className,
             classNames,
@@ -45,7 +45,7 @@ export const Select: FunctionComponent<SelectPropsType> = forwardRef(
             id,
             isListExpanded = false,
             label,
-            onSelectionChange,
+            onSelect,
             options,
             selectedIndex: initialSelectedItemIndex,
             tabIndex,
@@ -74,15 +74,15 @@ export const Select: FunctionComponent<SelectPropsType> = forwardRef(
             isListExpanded,
         );
         const classOverride = useSelectClassName(
-            SELECT_CLASS_PREFIX,
+            DROPDOWN_CLASS_PREFIX,
             className,
             classNames,
             disabled,
         );
 
-        useThemeOverride(SELECT_CLASS_PREFIX, theme, selectDefaultTheme);
+        useThemeOverride(DROPDOWN_CLASS_PREFIX, theme, selectDefaultTheme);
 
-        // internalRef is used in Select and can be exposed to the outside if the ref prop is present
+        // internalRef is used in Dropdown and can be exposed to the outside if the ref prop is present
         useEffect(() => {
             if (ref && internalInputRef) {
                 Object.assign(ref, internalInputRef);
@@ -122,8 +122,8 @@ export const Select: FunctionComponent<SelectPropsType> = forwardRef(
 
                 blurInput();
 
-                if (isOptionListShown && onSelectionChange && options) {
-                    onSelectionChange(options[itemIndex], itemIndex);
+                if (isOptionListShown && onSelect && options) {
+                    onSelect(options[itemIndex], itemIndex);
                 }
             }
         };
@@ -159,7 +159,7 @@ export const Select: FunctionComponent<SelectPropsType> = forwardRef(
             typeof selectedIndex.values().next().value === 'number';
 
         const renderActionItem = (
-            <SelectActionItem
+            <DropdownActionItem
                 className={classOverride.ActionItem}
                 disabled={disabled}
                 error={error}
@@ -174,7 +174,7 @@ export const Select: FunctionComponent<SelectPropsType> = forwardRef(
         );
 
         const renderOptionItem = (item: OptionItemType, itemIndex: number) => (
-            <SelectOptionItem
+            <DropdownOptionItem
                 className={classOverride.OptionItem}
                 isSelected={selectedIndex.has(itemIndex)}
                 item={item}
@@ -186,8 +186,8 @@ export const Select: FunctionComponent<SelectPropsType> = forwardRef(
         );
 
         return (
-            <SelectWrapper className={classOverride.Wrapper} theme={theme}>
-                <SelectContainer
+            <DropdownWrapper className={classOverride.Wrapper} theme={theme}>
+                <DropdownContainer
                     className={classOverride.Container}
                     theme={theme}
                 >
@@ -203,47 +203,47 @@ export const Select: FunctionComponent<SelectPropsType> = forwardRef(
                         onChange={() => {}}
                         onClick={handleDisplayOptionListToggle}
                         ref={internalInputRef}
-                        styles={selectTextInputStyle}
+                        styles={dropdownTextInputStyle}
                         theme={theme}
                         value={selectedLabelValue || emptyLabelValue}
                         {...restProps}
                     />
-                    <SelectOptionListContainer
+                    <DropdownOptionListContainer
                         className={classOverride.OptionListContainer}
                         theme={theme}
                     >
                         {options && options.length > 0 ? (
-                            <SelectOptionList
+                            <DropdownOptionList
                                 className={classOverride.OptionList}
                                 isOptionListShown={isOptionListShown}
                                 theme={theme}
                             >
                                 {options.map(renderOptionItem)}
-                            </SelectOptionList>
+                            </DropdownOptionList>
                         ) : null}
-                    </SelectOptionListContainer>
-                </SelectContainer>
-            </SelectWrapper>
+                    </DropdownOptionListContainer>
+                </DropdownContainer>
+            </DropdownWrapper>
         );
     },
 );
 
-Select.displayName = SELECT_CLASS_PREFIX;
+Dropdown.displayName = DROPDOWN_CLASS_PREFIX;
 
-Select.defaultProps = {
+Dropdown.defaultProps = {
     disabled: false,
     isListExpanded: false,
     label: defaultLabel,
     tabIndex: 0,
 };
 
-Select.propTypes = {
+Dropdown.propTypes = {
     disabled: PropTypes.bool,
     error: PropTypes.bool,
     id: PropTypes.string,
     isListExpanded: PropTypes.bool,
     label: PropTypes.string,
-    onSelectionChange: PropTypes.func,
+    onSelect: PropTypes.func,
     options: PropTypes.array,
     selectedIndex: PropTypes.number,
 };

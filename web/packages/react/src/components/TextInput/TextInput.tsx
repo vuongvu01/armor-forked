@@ -74,7 +74,7 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
             error,
         );
 
-        // NOTE (nmelnikov 2020-07-24): being used by Select. Please no clean up here :)
+        // NOTE (nmelnikov 2020-07-24): being used by Dropdown. Please no clean up here :)
         const stylesOverride = useTextInputStylesOverride(styles);
 
         const {

@@ -14,7 +14,7 @@ export * from './Modal';
 export * from './Paper';
 export * from './Radio/RadioGroup';
 export { default as Radio } from './Radio/Radio';
-export * from './Select';
+export * from './Dropdown';
 export * from './SVGIcon';
 export * from './Switch';
 export * from './Tab';

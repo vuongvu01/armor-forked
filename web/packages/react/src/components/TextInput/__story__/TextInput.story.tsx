@@ -65,15 +65,21 @@ export const ExternalControl = () => {
     const [value, setValue] = useState('');
 
     return (
-        <Box width="50%">
+        <Box
+            style={{
+                width: '250px',
+            }}
+        >
             <TextInput
-                label="First name"
+                label="Set value"
                 name="first_name"
                 onChange={() => console.log({ textInputRef })}
                 ref={textInputRef}
                 value={value}
                 wide
             />
+            <br />
+            <br />
             <Button onClick={() => setValue(Math.random().toString())}>
                 Randomize timer
             </Button>

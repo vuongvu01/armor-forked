@@ -5,77 +5,77 @@ import { transitionDurationInSec } from '../../constants';
 import { colorGrey00, colorGrey30 } from '../../tokens';
 import { shouldForwardProp } from '../../utils';
 import {
-    SelectActionItemPropsType,
-    SelectOptionItemPropsType,
-    SelectOptionListPropsType,
-    SelectRootPropsType,
+    DropdownActionItemPropsType,
+    DropdownOptionItemPropsType,
+    DropdownOptionListPropsType,
+    DropdownRootPropsType,
 } from './type';
 
 const optionItemStyle = ({
     isSelected,
     theme: {
-        componentOverrides: { Select },
+        componentOverrides: { Dropdown },
     },
-}: SelectOptionItemPropsType) => {
+}: DropdownOptionItemPropsType) => {
     if (isSelected) {
         return css`
-            ${Select.OptionItem.base} ${Select.OptionItem.selected}
+            ${Dropdown.OptionItem.base} ${Dropdown.OptionItem.selected}
         `;
     }
-    return Select.OptionItem.base;
+    return Dropdown.OptionItem.base;
 };
 
 const actionItemContainerStyle = ({
     disabled,
     theme: {
-        componentOverrides: { Select },
+        componentOverrides: { Dropdown },
     },
-}: SelectActionItemPropsType) => css`
-    ${disabled ? Select.ActionItem.disabled : ''}
+}: DropdownActionItemPropsType) => css`
+    ${disabled ? Dropdown.ActionItem.disabled : ''}
 `;
 
 const actionItemStyle = ({
     disabled,
     isOptionListShown,
     theme: {
-        componentOverrides: { Select },
+        componentOverrides: { Dropdown },
     },
-}: SelectActionItemPropsType) =>
+}: DropdownActionItemPropsType) =>
     css`
-        ${Select.ActionItem.base} ${
-        disabled ? Select.ActionItem.disabled : ''
-    } ${isOptionListShown ? Select.ActionItem.rotate : ''}
+        ${Dropdown.ActionItem.base} ${
+        disabled ? Dropdown.ActionItem.disabled : ''
+    } ${isOptionListShown ? Dropdown.ActionItem.rotate : ''}
     `;
 
 const optionListStyle = ({
     isOptionListShown,
     theme: {
-        componentOverrides: { Select },
+        componentOverrides: { Dropdown },
     },
-}: SelectOptionListPropsType) => {
+}: DropdownOptionListPropsType) => {
     return css`
-        ${Select.OptionList.base}
-        ${isOptionListShown ? Select.OptionList.displayed : ''}
+        ${Dropdown.OptionList.base}
+        ${isOptionListShown ? Dropdown.OptionList.displayed : ''}
     `;
 };
 
 const actionSeparator = ({
     isActionSeparatorDisplayed,
     theme: {
-        componentOverrides: { Select },
+        componentOverrides: { Dropdown },
     },
-}: SelectActionItemPropsType) => css`
-    ${isActionSeparatorDisplayed ? Select.ActionItem.separator : ''}
+}: DropdownActionItemPropsType) => css`
+    ${isActionSeparatorDisplayed ? Dropdown.ActionItem.separator : ''}
 `;
 
-export const SelectWrapper = styled.div.withConfig({
+export const DropdownWrapper = styled.div.withConfig({
     shouldForwardProp: property => shouldForwardProp(property),
-})<SelectRootPropsType>`
+})<DropdownRootPropsType>`
     display: flex;
     height: 60px;
 `;
 
-export const SelectContainer = styled.div<SelectRootPropsType>`
+export const DropdownContainer = styled.div<DropdownRootPropsType>`
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -86,13 +86,13 @@ export const SelectContainer = styled.div<SelectRootPropsType>`
     ${marginAttributes}
 `;
 
-export const SelectOptionListContainer = styled.div<SelectRootPropsType>`
+export const DropdownOptionListContainer = styled.div<DropdownRootPropsType>`
     box-sizing: border-box;
     margin: 4px 2px;
     position: relative;
 `;
 
-export const SelectOptionList = styled.div<SelectOptionListPropsType>`
+export const DropdownOptionList = styled.div<DropdownOptionListPropsType>`
     background-color: white;
     box-sizing: border-box;
     display: flex;
@@ -111,7 +111,7 @@ export const SelectOptionList = styled.div<SelectOptionListPropsType>`
     ${optionListStyle}
 `;
 
-export const SelectOptionItem = styled.div<SelectOptionItemPropsType>`
+export const DropdownOptionItem = styled.div<DropdownOptionItemPropsType>`
     align-items: center;
     box-sizing: border-box;
     cursor: pointer;
@@ -122,7 +122,7 @@ export const SelectOptionItem = styled.div<SelectOptionItemPropsType>`
     ${optionItemStyle}
 `;
 
-export const SelectActionContainer = styled.div<SelectActionItemPropsType>`
+export const DropdownActionContainer = styled.div<DropdownActionItemPropsType>`
     align-items: center;
     display: flex;
     height: 100%;
@@ -133,7 +133,7 @@ export const SelectActionContainer = styled.div<SelectActionItemPropsType>`
     ${actionItemContainerStyle}
 `;
 
-export const SelectActionContent = styled.div<SelectActionItemPropsType>`
+export const DropdownActionContent = styled.div<DropdownActionItemPropsType>`
     align-items: center;
     border-left-width: 1px;
     border-left-style: solid;
@@ -147,7 +147,7 @@ export const SelectActionContent = styled.div<SelectActionItemPropsType>`
     ${actionSeparator}
 `;
 
-export const SelectAction = styled.div<SelectActionItemPropsType>`
+export const DropdownAction = styled.div<DropdownActionItemPropsType>`
     border-bottom-width: 2px;
     border-bottom-style: solid;
     border-right-width: 2px;
@@ -161,7 +161,7 @@ export const SelectAction = styled.div<SelectActionItemPropsType>`
     ${actionItemStyle}
 `;
 
-export const selectTextInputStyle = {
+export const dropdownTextInputStyle = {
     Label: () =>
         `transition: top ${transitionDurationInSec}s, font-size ${transitionDurationInSec}s, color ${transitionDurationInSec}s; 
         transition-delay: ${transitionDurationInSec}s;`,
