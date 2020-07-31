@@ -14,10 +14,11 @@ export type ClassBasedOnComponentType = {
 };
 
 type TabsEffectivePropsType = Indexed<{
-    fullWidth?: boolean;
+    defaultActiveTab?: number;
     onSwitch: (tabIndex: number) => void;
     selectedValue?: string | number;
     value?: string | number;
+    wide?: boolean;
 }> &
     HTMLAttributes<HTMLElement> &
     MarginAttributesType;

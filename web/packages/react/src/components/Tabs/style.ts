@@ -5,12 +5,12 @@ import { shouldForwardProp } from '../../utils';
 import { TabsRootPropsType } from './type';
 
 const themeStyle = ({
-    fullWidth,
     theme: {
         componentOverrides: { Tabs },
     },
+    wide,
 }: TabsRootPropsType) => {
-    if (fullWidth) {
+    if (wide) {
         return css`
             width: 100%;
             justify-content: space-evenly;

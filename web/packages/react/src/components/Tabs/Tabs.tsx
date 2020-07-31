@@ -1,4 +1,9 @@
-import React, { FunctionComponent, forwardRef, useState } from 'react';
+import React, {
+    FunctionComponent,
+    forwardRef,
+    useState,
+    useEffect,
+} from 'react';
 import PropTypes from 'prop-types';
 
 import { useThemeOverride } from '../../utils/hooks';
@@ -15,10 +20,11 @@ export const Tabs: FunctionComponent<TabsPropsType> = forwardRef(function Tabs(
         children,
         className,
         classNames,
+        defaultActiveTab,
         disabled,
-        fullWidth,
         id: propsId,
         onSwitch,
+        wide,
     },
     ref,
 ) {
@@ -28,7 +34,16 @@ export const Tabs: FunctionComponent<TabsPropsType> = forwardRef(function Tabs(
 
     const theme = useTheme();
     const id = generateId(propsId, tabsIdPrefix);
-    const [currentlyActiveTab, setCurrentlyActiveTab] = useState(0);
+    const [currentlyActiveTab, setCurrentlyActiveTab] = useState(
+        defaultActiveTab,
+    );
+
+    // set tab view content to match the defaultActiveTab
+    useEffect(() => {
+        if (onSwitch && defaultActiveTab) {
+            onSwitch(defaultActiveTab);
+        }
+    }, [defaultActiveTab]);
 
     useThemeOverride(TABS_CLASS_PREFIX, theme, tabsDefaultTheme);
 
@@ -53,7 +68,7 @@ export const Tabs: FunctionComponent<TabsPropsType> = forwardRef(function Tabs(
 
     const extendedChildren = preProcessTabChildren(children, {
         currentlyActiveTab,
-        fullWidth,
+        wide,
         handleClick,
     });
 
@@ -62,7 +77,7 @@ export const Tabs: FunctionComponent<TabsPropsType> = forwardRef(function Tabs(
             className={classOverride.Root}
             disabled={disabled}
             id={id}
-            fullWidth={fullWidth}
+            wide={wide}
             ref={ref}
             theme={theme}
         >
@@ -74,14 +89,16 @@ export const Tabs: FunctionComponent<TabsPropsType> = forwardRef(function Tabs(
 Tabs.displayName = TABS_CLASS_PREFIX;
 
 Tabs.defaultProps = {
+    defaultActiveTab: 0,
     disabled: false,
-    fullWidth: false,
+    wide: false,
 };
 
 Tabs.propTypes = {
+    defaultActiveTab: PropTypes.number,
     disabled: PropTypes.bool,
     id: PropTypes.string,
-    fullWidth: PropTypes.bool,
+    wide: PropTypes.bool,
     onSwitch: PropTypes.func.isRequired,
     ref: PropTypes.func,
 };
