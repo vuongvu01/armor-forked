@@ -44,6 +44,11 @@ const getInputDynamicStyle = (props: TextInputInternalPropsWithThemeType) =>
 const getLabelDynamicStyle = (props: TextInputInternalPropsWithThemeType) =>
     getDynamicStyle('Label', props);
 
+const multilineSupport = ({ multiline }: TextInputContainerPropsType) =>
+    multiline
+        ? 'line-height: 1.2; min-width: 100px;'
+        : 'line-height: inherit; min-width: 0;';
+
 const getLabelPosition = ({
     theme: {
         componentOverrides: { TextInput },
@@ -125,15 +130,13 @@ export const TextInputContainer = styled(Wrapper).withConfig({
     font-family: inherit;
     font-weight: inherit;
     letter-spacing: inherit;
-    line-height: inherit;
     flex-grow: 1;
     padding: 0;
     margin: 0;
-    min-width: ${({ multiline }: TextInputContainerPropsType) =>
-        multiline ? '100px' : '0'};
 
     ${({ theme }: TextInputContainerPropsType) =>
         theme.componentOverrides.TextInput.Input.base}
+    ${multilineSupport}
     ${getInputDynamicStyle}
     ${(props: TextInputContainerPropsType) => props.styles(props)}
     ${({ disabled }: { disabled?: boolean }) => css`

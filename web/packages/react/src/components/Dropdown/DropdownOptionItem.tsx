@@ -1,11 +1,11 @@
 import React, { FunctionComponent, MouseEvent } from 'react';
 
-import { SelectOptionItem as SelectOptionItemStyle } from './style';
+import { DropdownOptionItem as DropdownOptionItemStyle } from './style';
 import { Typography } from '../Typography';
 import { getItemLabel } from './utils';
-import { SelectOptionItemPropsType } from './type';
+import { DropdownOptionItemPropsType } from './type';
 
-const SelectOptionItem: FunctionComponent<SelectOptionItemPropsType> = ({
+const DropdownOptionItem: FunctionComponent<DropdownOptionItemPropsType> = ({
     isSelected,
     itemIndex,
     item,
@@ -27,7 +27,7 @@ const SelectOptionItem: FunctionComponent<SelectOptionItemPropsType> = ({
     };
 
     return (
-        <SelectOptionItemStyle
+        <DropdownOptionItemStyle
             isSelected={isSelected}
             onClick={handleItemClick}
             {...restProps}
@@ -37,8 +37,8 @@ const SelectOptionItem: FunctionComponent<SelectOptionItemPropsType> = ({
                     {getItemLabel(item)}
                 </Typography>
             ) : null}
-        </SelectOptionItemStyle>
+        </DropdownOptionItemStyle>
     );
 };
 
-export default SelectOptionItem;
+export default DropdownOptionItem;

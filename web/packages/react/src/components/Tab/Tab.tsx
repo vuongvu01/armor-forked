@@ -16,7 +16,7 @@ export const Tab: FunctionComponent<TabPropsType> = forwardRef(function Tab(
         classNames,
         currentlyActiveTab,
         disabled,
-        fullWidth,
+        wide,
         id: propsId,
         label,
         handleClick,
@@ -54,7 +54,7 @@ export const Tab: FunctionComponent<TabPropsType> = forwardRef(function Tab(
         <TabContainer
             disabled={disabled}
             isActive={isActive}
-            fullWidth={fullWidth}
+            wide={wide}
             theme={theme}
             {...restProps}
         >
@@ -81,7 +81,7 @@ Tab.defaultProps = {
 
 Tab.propTypes = {
     disabled: PropTypes.bool,
-    fullWidth: PropTypes.bool,
+    wide: PropTypes.bool,
     id: PropTypes.string,
     label: PropTypes.string,
     handleClick: PropTypes.func,

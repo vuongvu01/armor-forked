@@ -15,14 +15,14 @@ const animationStyle = ({
 
 const containerStyle = ({
     isActive,
-    fullWidth,
+    wide,
     theme: {
         componentOverrides: { Tab },
     },
 }: TabContainerPropsType) => {
     const activeStyleBase = isActive ? Tab.Container.active : '';
 
-    return fullWidth
+    return wide
         ? css`
               flex-grow: 1;
               ${activeStyleBase}

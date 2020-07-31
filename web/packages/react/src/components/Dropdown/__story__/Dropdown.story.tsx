@@ -3,14 +3,14 @@ import React, { useState } from 'react';
 import { withKnobs } from '@storybook/addon-knobs';
 
 import { GroupHelper } from '../../../helpers/GroupHelper';
-import { Select } from '../Select';
+import { Dropdown } from '../Dropdown';
 import { Button } from '../../Button';
 import { Box } from '../../Box';
 import { Typography } from '../../Typography';
 
 export default {
-    title: 'Components/Select',
-    component: Select,
+    title: 'Components/Dropdown',
+    component: Dropdown,
     decorators: [withKnobs],
     parameters: {},
 };
@@ -23,15 +23,15 @@ const boxStyle: object = {
 
 export const MinimumConfiguration = () => {
     const [selectedOption, setSelectedOption] = useState();
-    const handleChange = (option: any) => {
+    const handleSelect = (option: any) => {
         setSelectedOption(option);
     };
 
     return (
         <>
-            <Select
+            <Dropdown
                 options={['Biryani', 'Tacos', 'Pho', 'Risotto']}
-                onSelectionChange={handleChange}
+                onSelect={handleSelect}
                 label="Dish type"
             />
             <Typography paragraph>
@@ -65,7 +65,7 @@ export const CustomOptionItemsFormat = () => {
         { value: 19, label: 'Burrito' },
     ];
     const [selectedOption, setSelectedOption] = useState();
-    const handleChange = (option: any) => {
+    const handleSelect = (option: any) => {
         setSelectedOption(option);
     };
 
@@ -98,9 +98,9 @@ export const CustomOptionItemsFormat = () => {
                 <br />
                 <br />
                 <Box padding={3} style={{ ...boxStyle, width: '300px' }}>
-                    <Select
+                    <Dropdown
                         options={foodOptions}
-                        onSelectionChange={handleChange}
+                        onSelect={handleSelect}
                         label="Dish type"
                     />
                     <Typography paragraph>
@@ -140,7 +140,7 @@ export const PreselectedValue = () => {
     const [selectedOption, setSelectedOption] = useState(
         foodOptionsString[initialSelectionIndex],
     );
-    const handleChange = (option: any) => {
+    const handleSelect = (option: any) => {
         setSelectedOption(option);
     };
 
@@ -148,9 +148,9 @@ export const PreselectedValue = () => {
         <>
             <GroupHelper gap={2}>
                 <Box padding={3} style={{ ...boxStyle, width: '300px' }}>
-                    <Select
+                    <Dropdown
                         options={foodOptionsString}
-                        onSelectionChange={handleChange}
+                        onSelect={handleSelect}
                         selectedIndex={initialSelectionIndex}
                         label="Dish type"
                     />
@@ -171,9 +171,8 @@ export const ErrorAndDisabledStatePropagation = () => {
         options[initialSelectionIndex],
     );
     const [isDisabled, setIsDisabled] = useState(true);
-    const handleChange = (option: any) => setSelectedOption(option);
-    const handleOnSelectionChange = (option: any) =>
-        setSelectedOptionLast(option);
+    const handleSelect = (option: any) => setSelectedOption(option);
+    const handleonSelect = (option: any) => setSelectedOptionLast(option);
     return (
         <>
             <p>
@@ -186,11 +185,11 @@ export const ErrorAndDisabledStatePropagation = () => {
                     style={{ flexDirection: 'column', width: '300px' }}
                 >
                     <div>
-                        <Select
+                        <Dropdown
                             error={!selectedOption}
                             label="Select one"
                             options={options}
-                            onSelectionChange={handleChange}
+                            onSelect={handleSelect}
                         />
                         <Typography paragraph>
                             Selected value: {JSON.stringify(selectedOption)}
@@ -198,21 +197,21 @@ export const ErrorAndDisabledStatePropagation = () => {
                     </div>
                     <br />
                     <br />
-                    <Select
+                    <Dropdown
                         disabled
                         label="Disabled"
                         options={options}
-                        onSelectionChange={handleChange}
+                        onSelect={handleSelect}
                     />
                     <br />
                     <br />
-                    <Select
+                    <Dropdown
                         disabled={isDisabled}
                         label={`${
                             isDisabled ? 'Disabled' : 'Enabled'
                         } with pre-selected`}
                         options={options}
-                        onSelectionChange={handleOnSelectionChange}
+                        onSelect={handleonSelect}
                         selectedIndex={initialSelectionIndex}
                     />
                     <Typography paragraph>

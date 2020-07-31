@@ -17,7 +17,7 @@ export type OptionObjectType = { label: string; [key: string]: any };
 export type OptionItemType = string | OptionObjectType;
 export type OptionType = OptionItemType[];
 
-type SelectEffectivePropsType = Indexed<{
+type DropdownEffectivePropsType = Indexed<{
     disabled?: boolean;
     error?: boolean;
     isActionSeparatorDisplayed?: boolean;
@@ -27,7 +27,7 @@ type SelectEffectivePropsType = Indexed<{
     itemIndex?: number;
     isOptionListShown?: boolean;
     onOptionSelect?: (itemIndex: number) => void;
-    onSelectionChange?: (
+    onSelect?: (
         selectedOption: string | { label: string; [key: string]: any }, // similarly here - to expose into storybook, otherwise it says just OptionItemType
         itemIndex?: number,
     ) => void;
@@ -39,9 +39,9 @@ type SelectEffectivePropsType = Indexed<{
     HTMLAttributes<HTMLElement> &
     MarginAttributesType;
 
-export type SelectPropsType = SelectEffectivePropsType;
-export type SelectActionItemPropsType = Pick<
-    SelectEffectivePropsType,
+export type DropdownPropsType = DropdownEffectivePropsType;
+export type DropdownActionItemPropsType = Pick<
+    DropdownEffectivePropsType,
     | 'className'
     | 'disabled'
     | 'error'
@@ -52,11 +52,11 @@ export type SelectActionItemPropsType = Pick<
     | 'onClick'
 >;
 
-export type SelectOptionListPropsType = Indexed<{
+export type DropdownOptionListPropsType = Indexed<{
     onClick?: (event: MouseEvent) => void;
 }> &
     Pick<
-        SelectEffectivePropsType,
+        DropdownEffectivePropsType,
         | 'className'
         | 'isOptionListShown'
         | 'isSelected'
@@ -66,17 +66,17 @@ export type SelectOptionListPropsType = Indexed<{
         | 'theme'
     >;
 
-export type SelectOptionItemPropsType = Indexed<{
+export type DropdownOptionItemPropsType = Indexed<{
     isSelected?: boolean;
     item: OptionItemType;
     itemIndex: number;
     onOptionSelect?: (itemIndex: number) => void;
 }> &
     Pick<
-        SelectEffectivePropsType,
+        DropdownEffectivePropsType,
         'className' | 'isOptionListShown' | 'onClick' | 'theme'
     > &
     HTMLAttributes<HTMLElement>;
 
-export type SelectRootPropsType = SelectEffectivePropsType &
-    NodeStylePropsType<SelectEffectivePropsType>;
+export type DropdownRootPropsType = DropdownEffectivePropsType &
+    NodeStylePropsType<DropdownEffectivePropsType>;

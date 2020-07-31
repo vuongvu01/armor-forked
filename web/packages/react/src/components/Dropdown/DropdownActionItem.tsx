@@ -1,13 +1,13 @@
 import React, { FunctionComponent } from 'react';
 
-import { SelectActionItemPropsType } from './type';
+import { DropdownActionItemPropsType } from './type';
 import {
-    SelectActionContainer,
-    SelectActionContent,
-    SelectAction,
+    DropdownActionContainer,
+    DropdownActionContent,
+    DropdownAction,
 } from './style';
 
-const SelectActionItem: FunctionComponent<SelectActionItemPropsType> = ({
+const DropdownActionItem: FunctionComponent<DropdownActionItemPropsType> = ({
     className,
     disabled,
     error,
@@ -17,26 +17,26 @@ const SelectActionItem: FunctionComponent<SelectActionItemPropsType> = ({
     tabIndex,
     theme,
 }) => (
-    <SelectActionContainer
+    <DropdownActionContainer
         disabled={disabled}
         onClick={onClick}
         tabIndex={tabIndex}
         theme={theme}
     >
-        <SelectActionContent
+        <DropdownActionContent
             error={error}
             isActionSeparatorDisplayed={isActionSeparatorDisplayed}
             theme={theme}
         >
-            <SelectAction
+            <DropdownAction
                 className={className}
                 disabled={disabled}
                 error={error}
                 isOptionListShown={isOptionListShown}
                 theme={theme}
             />
-        </SelectActionContent>
-    </SelectActionContainer>
+        </DropdownActionContent>
+    </DropdownActionContainer>
 );
 
-export default SelectActionItem;
+export default DropdownActionItem;
