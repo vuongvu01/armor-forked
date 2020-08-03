@@ -47,7 +47,7 @@ const getLabelDynamicStyle = (props: TextInputInternalPropsWithThemeType) =>
 const multilineSupport = ({ multiline }: TextInputContainerPropsType) =>
     multiline
         ? 'line-height: 1.2; min-width: 100px;'
-        : 'line-height: inherit; min-width: 0;';
+        : 'line-height: 1.4; min-width: 0;';
 
 const getLabelPosition = ({
     theme: {

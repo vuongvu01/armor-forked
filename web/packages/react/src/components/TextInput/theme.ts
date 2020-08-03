@@ -27,8 +27,8 @@ export const TextInputDefaultTheme = {
         base: {
             fontSize: '$typography.paragraphMedium.fontSize',
             color: '$color.neutral.06',
-            paddingTop: 2,
-            paddingBottom: 2,
+            paddingTop: 3,
+            paddingBottom: 3,
             paddingLeft: 4,
             paddingRight: 4,
             backgroundColor: '$color.neutral.00',
@@ -48,8 +48,8 @@ export const TextInputDefaultTheme = {
             },
         },
         large: {
-            paddingTop: 3,
-            paddingBottom: 3,
+            paddingTop: 4,
+            paddingBottom: 4,
         },
     },
     Label: {
@@ -66,10 +66,12 @@ export const TextInputDefaultTheme = {
         inside: {
             fontSize: '$typography.paragraphMedium.fontSize',
             fontWeight: '$typography.paragraphMedium.fontWeight',
-            top: 3,
+            top: '10px',
         },
         inside__large: {
-            top: 3,
+            fontSize: '$typography.paragraphMedium.fontSize',
+            fontWeight: '$typography.paragraphMedium.fontWeight',
+            top: '13px',
         },
         outlined: {
             color: '$color.neutral.06',
