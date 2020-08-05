@@ -32,9 +32,19 @@ export const SVGIcon: FunctionComponent<SVGIconPropsType> = ({
     );
 };
 
+export const SVGIconGroup: FunctionComponent = ({ children }) => (
+    <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+        {children}
+    </g>
+);
+
+export const SVGIconPath: FunctionComponent<{ d: string }> = ({ d }) => (
+    <path d={d} fill="currentColor"></path>
+);
+
 SVGIcon.defaultProps = {
     display: 'inline-block',
     height: '1em',
     width: '1em',
-    viewBox: '0 0 10 10',
+    viewBox: '0 0 24 24',
 };
