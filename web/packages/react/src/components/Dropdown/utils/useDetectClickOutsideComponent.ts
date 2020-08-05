@@ -1,6 +1,6 @@
 import { MutableRefObject, useEffect } from 'react';
 
-function detectClickOutsideComponent(
+function useDetectClickOutsideComponent(
     ref: MutableRefObject<any>,
     isOptionListShown: boolean,
     hideOptionList: () => void,
@@ -27,4 +27,4 @@ function detectClickOutsideComponent(
     }, [ref, isOptionListShown]);
 }
 
-export default detectClickOutsideComponent;
+export default useDetectClickOutsideComponent;

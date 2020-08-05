@@ -1,11 +1,10 @@
-import React, { Children, ReactElement, ReactNode } from 'react';
-import get from 'lodash.get';
+import React, { Children, ReactElement } from 'react';
 
 import { TAB_CLASS_PREFIX } from '../../Tab/constants';
 
-const isValidTabComponent = (element: ReactNode) => {
-    const elementName =
-        get(element, 'type.displayName') || get(element, 'type');
+const isValidTabComponent = (element: ReactElement) => {
+    // @ts-ignore
+    const elementName = element?.type?.displayName || element?.type;
 
     return typeof elementName === 'string' && elementName === TAB_CLASS_PREFIX;
 };

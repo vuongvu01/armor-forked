@@ -1,10 +1,11 @@
-import { Children, ReactNode } from 'react';
-import get from 'lodash.get';
+import { Children, ReactElement, ReactNode } from 'react';
+import { isElement } from 'react-is';
 
-const isArmorIconComponent = (element: ReactNode) => {
+const isArmorIconComponent = (element: ReactElement) => {
     // TODO (nmelnikov 2020-07-10): this has to be read directly off of our own upcoming Icon component
-    const elementName =
-        get(element, 'type.displayName') || get(element, 'type');
+    // TODO (nmelnikov 2020-08-05): think of a different logic for establishing child's type
+    // @ts-ignore
+    const elementName = element?.type?.displayName || element?.type;
 
     return typeof elementName === 'string' && elementName === 'MaterialIcon';
 };
@@ -49,7 +50,7 @@ const generateChildrenSemantics = (
             };
         }
 
-        if (typeof children === 'object') {
+        if (isElement(children)) {
             const isValid = isArmorIconComponent(children);
             return isValid
                 ? {
@@ -70,6 +71,7 @@ const generateChildrenSemantics = (
 
     if (
         typeof childArray[0] === 'string' &&
+        isElement(childArray[1]) &&
         isArmorIconComponent(childArray[1])
     ) {
         return {
@@ -83,6 +85,7 @@ const generateChildrenSemantics = (
     }
 
     if (
+        isElement(childArray[0]) &&
         isArmorIconComponent(childArray[0]) &&
         typeof childArray[1] === 'string'
     ) {

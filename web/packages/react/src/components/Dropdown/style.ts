@@ -71,8 +71,8 @@ const actionSeparator = ({
 export const DropdownWrapper = styled.div.withConfig({
     shouldForwardProp: property => shouldForwardProp(property),
 })<DropdownRootPropsType>`
-    display: flex;
-    height: 60px;
+    display: inline-flex;
+    height: 50px;
 `;
 
 export const DropdownContainer = styled.div<DropdownRootPropsType>`

@@ -4,6 +4,8 @@ import React, {
     useState,
     useEffect,
     useRef,
+    useCallback,
+    useMemo,
 } from 'react';
 import PropTypes from 'prop-types';
 import uniqueId from 'lodash.uniqueid';
@@ -11,7 +13,7 @@ import uniqueId from 'lodash.uniqueid';
 import { useThemeOverride } from '../../utils/hooks';
 import { useTheme } from '../../styling';
 import {
-    detectClickOutsideComponent,
+    useDetectClickOutsideComponent,
     getItemLabel,
     useSelectClassName,
 } from './utils';
@@ -22,7 +24,6 @@ import {
     DropdownWrapper,
     dropdownTextInputStyle,
 } from './style';
-import { generateId } from '../../utils';
 import DropdownOptionItem from './DropdownOptionItem';
 import DropdownActionItem from './DropdownActionItem';
 import { OptionItemType, DropdownPropsType } from './type';
@@ -32,7 +33,6 @@ import {
     defaultLabel,
     emptyLabelValue,
     DROPDOWN_CLASS_PREFIX,
-    selectIdPrefix,
 } from './constants';
 
 export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
@@ -42,7 +42,6 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
             classNames,
             disabled,
             error,
-            id,
             isListExpanded = false,
             label,
             onSelect,
@@ -89,13 +88,13 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
             }
         }, [internalInputRef]);
 
-        const blurInput = () => {
+        const blurInput = useCallback(() => {
             const node = internalInputRef.current as any;
 
             if (node && node.blur) {
                 setTimeout(() => node.blur(), 0);
             }
-        };
+        }, [internalInputRef]);
 
         const focusOnActionItemTrigger = () => {
             const node = internalInputRef.current as any;
@@ -142,7 +141,7 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
         const hideOptions = () =>
             setTimeout(() => setIsOptionListShown(false), 0);
 
-        detectClickOutsideComponent(
+        useDetectClickOutsideComponent(
             internalInputRef,
             isOptionListShown,
             hideOptions,
@@ -154,6 +153,11 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
             focusOnActionItemTrigger();
             blurOnInputWithSelection();
         };
+
+        const handleActionItemClick = useMemo(
+            () => (disabled ? () => {} : handleDisplayOptionListToggle),
+            [disabled, isOptionListShown],
+        );
 
         const isValueSelected =
             typeof selectedIndex.values().next().value === 'number';
@@ -167,7 +171,7 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
                     isOptionListShown || isValueSelected
                 }
                 isOptionListShown={isOptionListShown}
-                onClick={disabled ? () => {} : handleDisplayOptionListToggle}
+                onClick={handleActionItemClick}
                 tabIndex={tabIndex}
                 theme={theme}
             />
@@ -198,9 +202,7 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
                         disabled={disabled}
                         displayMode="block"
                         error={error}
-                        id={generateId(id, selectIdPrefix)}
                         label={label}
-                        onChange={() => {}}
                         onClick={handleDisplayOptionListToggle}
                         ref={internalInputRef}
                         styles={dropdownTextInputStyle}
@@ -240,7 +242,6 @@ Dropdown.defaultProps = {
 Dropdown.propTypes = {
     disabled: PropTypes.bool,
     error: PropTypes.bool,
-    id: PropTypes.string,
     isListExpanded: PropTypes.bool,
     label: PropTypes.string,
     onSelect: PropTypes.func,

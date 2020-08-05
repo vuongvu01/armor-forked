@@ -1,4 +1,4 @@
-import React, { FunctionComponent, MouseEvent } from 'react';
+import React, { FunctionComponent, MouseEvent, useCallback } from 'react';
 
 import { DropdownOptionItem as DropdownOptionItemStyle } from './style';
 import { Typography } from '../Typography';
@@ -18,13 +18,16 @@ const DropdownOptionItem: FunctionComponent<DropdownOptionItemPropsType> = ({
             JSON.stringify({ itemIndex, onOptionSelect }),
         );
     }
-    const handleItemClick = (event: MouseEvent) => {
-        event.preventDefault();
+    const handleItemClick = useCallback(
+        (event: MouseEvent) => {
+            event.preventDefault();
 
-        if (onOptionSelect) {
-            onOptionSelect(itemIndex);
-        }
-    };
+            if (onOptionSelect) {
+                onOptionSelect(itemIndex);
+            }
+        },
+        [onOptionSelect],
+    );
 
     return (
         <DropdownOptionItemStyle
