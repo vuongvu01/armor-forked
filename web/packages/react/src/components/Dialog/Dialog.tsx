@@ -13,7 +13,7 @@ import {
 } from './style';
 import { DialogPropsType } from './type';
 import { Modal } from '../Modal';
-import { CloseIcon } from '../../icons/CloseIcon';
+import { CloseIcon } from '../../icons';
 import { useDisplay } from '../Modal/utils';
 import { useContainerClickTrap } from '../DialogContent/utils';
 import { dialogDefaultTheme } from './theme';
@@ -96,7 +96,7 @@ export const Dialog: FunctionComponent<DialogPropsType> = ({
                             styles={stylesOverride.CloseButton}
                             onClick={onClose}
                         >
-                            <CloseIcon display="block" />
+                            <CloseIcon />
                         </DialogCloseButton>
                     )}
                     <DialogContent

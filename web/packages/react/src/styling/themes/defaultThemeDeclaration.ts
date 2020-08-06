@@ -85,7 +85,7 @@ export const defaultThemeDeclaration = {
             fontSize: fontSize03,
             fontWeight: fontWeightMedium,
             letterSpacing: letterSpacingLarge,
-            lineHeight: lineHeight02,
+            lineHeight: lineHeight01,
         },
         labelSmall: {
             fontSize: fontSize01,

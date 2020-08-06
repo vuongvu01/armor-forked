@@ -6,6 +6,7 @@ import { SVGIconRootPropsType } from './type';
 export const SVGIconRoot = styled.svg<SVGIconRootPropsType>`
     flex-shrink: 0;
     user-select: none;
+    line-height: inherit;
     ${({ iconWidth, iconHeight, fontSize, theme, display }) => css<
         SVGIconRootPropsType
     >`

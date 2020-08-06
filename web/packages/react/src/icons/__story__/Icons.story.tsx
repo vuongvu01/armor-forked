@@ -9,8 +9,10 @@ import {
     EllipsisHorizontalIcon,
     PlayIcon,
     UploadIcon,
+    CloseIcon,
+    EditIcon,
 } from '..';
-import { loremIpsum, LoremIpsum } from '../../helpers/LoremIpsum';
+import { loremIpsum } from '../../helpers/LoremIpsum';
 
 export default {
     title: 'Icons',
@@ -31,6 +33,8 @@ export const Basic = () => (
         <EllipsisHorizontalIcon />
         <PlayIcon />
         <UploadIcon />
+        <CloseIcon />
+        <EditIcon />
     </Icons>
 );
 
