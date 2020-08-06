@@ -19,7 +19,7 @@ const propertyList = {
     danger: true,
     small: true,
     wide: true,
-    childrenSemantics: true,
+
     // add other custom properties here
 } as ObjectLiteralType;
 

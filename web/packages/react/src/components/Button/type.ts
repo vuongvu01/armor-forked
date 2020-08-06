@@ -9,7 +9,6 @@ import {
     PaddingAttributesType,
     WidthAttributesType,
 } from '../../system';
-import { ChildrenSemanticsType } from './utils/generateChildrenSemantics';
 import { Indexed } from '../../type';
 import { StylePropsType, PropsWithNodeStylePropsType } from '../type';
 
@@ -23,7 +22,6 @@ type ButtonEffectivePropsType = Indexed<{
     danger?: boolean;
     small?: boolean;
     wide?: boolean;
-    childrenSemantics?: ChildrenSemanticsType;
     // add other custom properties here
 }> &
     ButtonHTMLAttributes<HTMLButtonElement> & // includes all HTML Button attributes
