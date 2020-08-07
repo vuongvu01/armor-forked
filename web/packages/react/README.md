@@ -304,6 +304,15 @@ To manually publish a new version of the package, follow these steps:
 3. push version up made by `yarn` in `package.json`
 4. todo: re-build and re-publish Styleguidist
 
+## Useful links
+
+### Testing
+
+ * https://github.com/sapegin/jest-cheat-sheet
+ * https://testing-library.com/docs/react-testing-library/cheatsheet
+ * https://github.com/testing-library/jest-dom
+ * https://jestjs.io/docs/en/mock-functions
+
 ## Contact
 
  - [Sergei Gannochenko](sergei.gannochenko@deliveryhero.com)

@@ -105,14 +105,4 @@ Button.propTypes = {
     rel: PropTypes.string,
     /** HTML Button disabled */
     disabled: PropTypes.bool,
-    /** Controls displayed before the text */
-    before: PropTypes.oneOfType([
-        PropTypes.arrayOf(PropTypes.element),
-        PropTypes.element,
-    ]),
-    /** Controls displayed after the text */
-    after: PropTypes.oneOfType([
-        PropTypes.arrayOf(PropTypes.element),
-        PropTypes.element,
-    ]),
 };

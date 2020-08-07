@@ -31,7 +31,7 @@ const useButtonClassName = (
         if (wide) {
             stateClassNames.push(makeBEM(classPrefix, 'Root', 'wide'));
         }
-        if (primary && !secondary && !tertiary && !danger) {
+        if (primary && !secondary && !tertiary) {
             stateClassNames.push(makeBEM(classPrefix, 'Root', 'primary'));
         }
         if (secondary) {

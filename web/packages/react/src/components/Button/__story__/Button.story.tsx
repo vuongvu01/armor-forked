@@ -22,7 +22,7 @@ import { ObjectLiteralType } from '../../../type';
 import { GroupHelper } from '../../../helpers/GroupHelper';
 import { Button } from '../Button';
 import { ButtonTagType } from '../type';
-import { armorTheme } from './custom-theme';
+import { armorTheme } from '../helpers/custom-theme';
 import { Box } from '../../Box';
 
 export default {

@@ -1,11 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
-/**
- * https://github.com/sapegin/jest-cheat-sheet
- * https://testing-library.com/docs/react-testing-library/cheatsheet
- */
-
-import React from 'react';
+import React, { useRef } from 'react';
 import {
     // fireEvent,
     cleanup,
@@ -14,47 +9,108 @@ import {
     // wait,
     // waitForElement,
 } from '@testing-library/react';
-// import userEvent from '@testing-library/user-event';
+import renderer from 'react-test-renderer';
+import { ThemeProvider } from 'styled-components';
+import userEvent from '@testing-library/user-event';
+import {
+    renderHook,
+    cleanup as cleanupHooks,
+} from '@testing-library/react-hooks';
 
 import { Button } from '../..';
+import { armorTheme } from '../helpers/custom-theme';
 
 describe('<Button />', () => {
     afterEach(async () => {
         cleanup();
+        await cleanupHooks();
     });
 
     it('should render itself without errors', async () => {
         render(<Button />);
+    });
 
-        // // ///////////////////////
-        // // a short cheat sheet
-        //
-        // // how to print out current DOM
-        // console.log(prettyDOM(container));
-        //
-        // // how to search for elements
-        // const node = container.querySelector(
-        //     '.some-selector'
-        // ) as HTMLElement;
-        // const anotherNode = getByTestId('search-input') as HTMLElement;
-        //
-        // // how to fire events
-        // fireEvent.click(button);
-        // fireEvent.change(input, { target: { value: 'some value' } });
-        //
-        // // how to wait for an assertion to be fulfilled
-        // await wait(() => {
-        //     expect(something).toBeTrue();
-        // });
-        //
-        // // how to wait for async events to change the DOM:
-        // const element = await waitForElement(
-        //     () => getByTestId(container, 'element'),
-        //     { container, timeout: 1000 }
-        // );
-        //
-        // expect(element).toBeInstanceOf(HTMLElement);
-        //
-        // userEvent.type(input, 'Max Mustermann');
+    it('should contain correct CSS classes and attributes', () => {
+        let result = render(<Button />);
+        // @ts-ignore
+        expect(result.container).toHaveBEMStructure('Button', {
+            Root: ['primary'],
+        });
+
+        result = render(<Button primary />);
+        // @ts-ignore
+        expect(result.container).toHaveBEMStructure('Button', {
+            Root: ['primary'],
+        });
+
+        result = render(<Button secondary />);
+        // @ts-ignore
+        expect(result.container).toHaveBEMStructure('Button', {
+            Root: ['secondary'],
+        });
+
+        result = render(<Button tertiary />);
+        // @ts-ignore
+        expect(result.container).toHaveBEMStructure('Button', {
+            Root: ['tertiary'],
+        });
+
+        result = render(<Button primary danger wide small />);
+        // @ts-ignore
+        expect(result.container).toHaveBEMStructure('Button', {
+            Root: ['primary', 'danger', 'wide', 'small'],
+        });
+
+        result = render(<Button disabled />);
+        // @ts-ignore
+        expect(result.container).toHaveBEMStructure('Button', {
+            Root: ['primary', 'disabled'],
+        });
+    });
+
+    it('should use custom theme', () => {
+        let tree = renderer.create(<Button>With custom theme</Button>).toJSON();
+
+        // @ts-ignore
+        expect(tree).not.toHaveStyleRule('border-width', '2px');
+
+        tree = renderer
+            .create(
+                <ThemeProvider theme={armorTheme}>
+                    <Button>With custom theme</Button>
+                </ThemeProvider>,
+            )
+            .toJSON();
+
+        // @ts-ignore
+        expect(tree).toHaveStyleRule('border-width', '2px');
+    });
+
+    it('should render itself as different kind of tag', () => {
+        const result = render(<Button tag="a" href="https://google.com" />);
+        const element = result.container.querySelector('.Button-Root');
+        expect(element).toBeInstanceOf(HTMLAnchorElement);
+        expect(element).toHaveAttribute('href', 'https://google.com');
+    });
+
+    it('should support button properties', () => {
+        let result = render(<Button disabled />);
+        let element = result.container.querySelector('.Button-Root');
+        expect(element).toBeInstanceOf(HTMLButtonElement);
+        expect(element).toBeDisabled();
+
+        const onClick = jest.fn();
+        result = render(<Button onClick={onClick} type="submit" />);
+        element = result.container.querySelector('.Button-Root');
+        userEvent.click(element!);
+        expect(onClick).toHaveBeenCalled();
+        expect(element).toHaveAttribute('type', 'submit');
+    });
+
+    it('should support forwardRef', () => {
+        const { result } = renderHook(() => useRef());
+        render(<Button ref={result.current} />);
+
+        expect(result.current.current).toBeInstanceOf(HTMLButtonElement);
     });
 });
