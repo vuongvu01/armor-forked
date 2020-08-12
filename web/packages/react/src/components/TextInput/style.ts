@@ -75,7 +75,18 @@ const getLabelPosition = ({
 
 const getLabelBackgroundDynamicStyle = (
     props: TextInputInternalPropsWithThemeType,
-) => getDynamicStyle('LabelBackground', props);
+) => {
+    const {
+        theme: {
+            componentOverrides: { TextInput },
+        },
+    } = props;
+
+    return css`${TextInput.LabelBackground.base}${getDynamicStyle(
+        'LabelBackground',
+        props,
+    )}`;
+};
 
 const propertyList = {
     displayMode: true,

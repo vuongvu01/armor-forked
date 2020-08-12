@@ -54,14 +54,13 @@ export const TextInputDefaultTheme = {
     },
     Label: {
         base: {
-            background: `linear-gradient(0, ${colorGrey00} 50%, transparent 50%)`,
             color: '$color.neutral.05',
             fontSize: '$typography.labelSmall.fontSize',
             fontWeight: '$typography.body.fontWeight',
             marginLeft: 3,
             marginRight: 3,
             lineHeight: '1.6',
-            top: '-13px',
+            top: '-11px',
         },
         inside: {
             fontSize: '$typography.paragraphMedium.fontSize',
@@ -85,6 +84,11 @@ export const TextInputDefaultTheme = {
         },
     },
     LabelBackground: {
+        base: {
+            background: `linear-gradient(0, ${colorGrey00} 50%, transparent 50%)`,
+            paddingLeft: 1,
+            paddingRight: 1,
+        },
         disabled: {
             background: `linear-gradient(0, ${colorGrey05} 50%, transparent 50%)`,
         },
