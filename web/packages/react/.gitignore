@@ -5,6 +5,7 @@ dev/build
 src/**/*.d.ts
 doc/**/*.d.ts
 dev/**/*.d.ts
+visual/**/*.d.ts
 !src/globals.d.ts
 package-lock.json
 storybook-static
