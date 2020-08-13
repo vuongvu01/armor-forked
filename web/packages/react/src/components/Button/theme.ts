@@ -101,11 +101,12 @@ export const buttonDefaultTheme = {
         secondary: {
             color: '$color.primary.main',
             borderColor: '$color.primary.main',
-            backgroundColor: '$color.neutral.00',
+            backgroundColor: 'transparent',
 
             '&:hover': {
                 color: '$color.primary.light',
                 borderColor: '$color.primary.light',
+                backgroundColor: '$color.primary.lightest',
             },
             '&:focus': {
                 color: '$color.primary.light',
