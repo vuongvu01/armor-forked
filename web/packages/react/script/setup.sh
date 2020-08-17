@@ -6,3 +6,5 @@ cd doc/ || exit;
 yarn;
 cd ../dev || exit;
 yarn;
+cd ../visual || exit;
+yarn;

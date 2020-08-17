@@ -19,6 +19,7 @@ export * from './SVGIcon';
 export * from './Switch';
 export * from './Tab';
 export * from './Tabs';
+export * from './Tag';
 export * from './TabView';
 export * from './Tooltip';
 export * from './Typography';
