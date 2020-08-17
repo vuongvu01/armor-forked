@@ -1,5 +1,6 @@
 import {
     componentSpacing01,
+    componentSpacing02,
     componentSpacing03,
     componentSpacing07,
 } from '../../tokens';
@@ -18,8 +19,8 @@ export const tagDefaultTheme = {
             borderRadius: '$figure.borderRadius.pill',
             height: componentSpacing07,
             justifyContent: 'center',
-            paddingLeft: componentSpacing03,
-            paddingRight: componentSpacing03,
+            paddingLeft: componentSpacing01,
+            paddingRight: componentSpacing01,
         },
         approved: {
             backgroundColor: colors.approved,
@@ -49,12 +50,9 @@ export const tagDefaultTheme = {
                 backgroundColor: '$color.neutral.02',
             },
         },
-        enabled: {
-            marginLeft: 1,
-        },
         element: {
-            height: 2,
-            width: 2,
+            height: componentSpacing02,
+            width: componentSpacing02,
         },
         onHover: {
             backgroundColor: '$color.primary.lightest',
@@ -62,6 +60,17 @@ export const tagDefaultTheme = {
             '&:hover': {
                 backgroundColor: '$color.neutral.02',
             },
+        },
+    },
+    Typography: {
+        base: {
+            marginTop: componentSpacing01,
+            marginRight: componentSpacing02,
+            marginBottom: 0,
+            marginLeft: componentSpacing02,
+        },
+        enabled: {
+            marginRight: componentSpacing01,
         },
     },
 };

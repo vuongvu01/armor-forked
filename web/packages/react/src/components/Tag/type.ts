@@ -3,6 +3,7 @@ import { HTMLAttributes } from 'react';
 import { MarginAttributesType } from '../../system/attributes';
 import { Indexed } from '../../type';
 import { ClassNamesType, NodeStylePropsType } from '../type';
+import { ThemeType } from '../../styling';
 
 export type TagTypeDefault = 'default';
 export type TagTypeApproved = 'approved';
@@ -36,6 +37,7 @@ export type ClassBasedOnComponentType = {
 };
 
 type TagEffectivePropsType = Indexed<{
+    deleteOption?: TagDeleteIconModeType;
     value?: string | number;
 }> &
     HTMLAttributes<HTMLElement> &
@@ -51,3 +53,7 @@ export type TagCloseIconContainerPropsType = Pick<
     'className' | 'deleteOption' | 'onClick' | 'tabIndex' | 'theme' | 'type'
 >;
 export type TagCloseIconPropsType = Pick<TagEffectivePropsType, 'theme'>;
+export type TagTypographyPropsType = Pick<
+    TagEffectivePropsType,
+    'deleteOption' | 'theme'
+>;

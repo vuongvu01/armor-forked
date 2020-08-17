@@ -3,12 +3,16 @@ import PropTypes from 'prop-types';
 
 import { useThemeOverride } from '../../utils/hooks';
 import { useTheme } from '../../styling';
-import { isStatusTag, getStatusTagLabel, useTagClassName } from './utils';
+import { getStatusTagLabel, isStatusTag, useTagClassName } from './utils';
 import { TagPropsType } from './type';
 import { tagDefaultTheme } from './theme';
 import { TAG_CLASS_PREFIX, TAG_DELETE_BEHAVIOUR_OPTIONS } from './constants';
-import { TagCloseIcon, TagCloseIconContainer, TagRoot } from './style';
-import { Typography } from '../Typography';
+import {
+    TagCloseIcon,
+    TagCloseIconContainer,
+    TagRoot,
+    TagTypography,
+} from './style';
 
 export const Tag: FunctionComponent<TagPropsType> = forwardRef(function Tag(
     {
@@ -49,9 +53,14 @@ export const Tag: FunctionComponent<TagPropsType> = forwardRef(function Tag(
             type={type}
             {...restProps}
         >
-            <Typography paragraph small marginTop={1} marginBottom={0}>
+            <TagTypography
+                deleteOption={deleteOption}
+                paragraph
+                small
+                theme={theme}
+            >
                 {label}
-            </Typography>
+            </TagTypography>
             {!isStatusTag(type) &&
             deleteOption !== TAG_DELETE_BEHAVIOUR_OPTIONS.DISABLED ? (
                 <TagCloseIconContainer

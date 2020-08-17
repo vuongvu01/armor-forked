@@ -6,10 +6,12 @@ import {
     TagCloseIconContainerPropsType,
     TagCloseIconPropsType,
     TagRootPropsType,
+    TagTypographyPropsType,
 } from './type';
 import { TAG_DELETE_BEHAVIOUR_OPTIONS, TAG_TYPES } from './constants';
 import { transitionDurationInSec } from '../../constants';
 import { CloseIcon } from '../../icons';
+import { Typography } from '../Typography';
 
 const statusWidth = 'width: 76px;';
 
@@ -43,6 +45,21 @@ const containerStyle = ({
         }
     }
 };
+const typographyStyle = ({
+    deleteOption,
+    theme: {
+        componentOverrides: { Tag },
+    },
+}: TagTypographyPropsType) => {
+    if (deleteOption === TAG_DELETE_BEHAVIOUR_OPTIONS.ENABLED) {
+        return css`
+            ${Tag.Typography.base}
+            ${Tag.Typography.enabled}
+        `;
+    }
+
+    return Tag.Typography.base;
+};
 
 const closeIconContainerStyle = ({
     deleteOption,
@@ -56,7 +73,6 @@ const closeIconContainerStyle = ({
             opacity: 1;
 
             ${Tag.Icon.base}
-            ${Tag.Icon.enabled}
         `;
     }
 
@@ -111,6 +127,10 @@ export const TagRoot = styled.div.withConfig({
 
     ${containerStyle}
     ${marginAttributes}
+`;
+
+export const TagTypography = styled(Typography)<TagTypographyPropsType>`
+    ${typographyStyle}
 `;
 
 export const TagCloseIcon = styled(CloseIcon)<TagCloseIconPropsType>`

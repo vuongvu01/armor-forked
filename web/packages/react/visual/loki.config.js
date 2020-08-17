@@ -8,6 +8,7 @@ module.exports = {
             mobile: false,
         },
     },
+    chromeSelector: 'body',
     fileNameFormatter: ({ configurationName, kind, story }) =>
         `${kind}/${story.replace(/ /g, '_')}_${configurationName}`,
 };
