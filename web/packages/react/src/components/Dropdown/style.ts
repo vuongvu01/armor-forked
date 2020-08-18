@@ -71,8 +71,10 @@ const actionSeparator = ({
 export const DropdownWrapper = styled.div.withConfig({
     shouldForwardProp: property => shouldForwardProp(property),
 })<DropdownRootPropsType>`
-    display: flex;
-    height: 60px;
+    display: inline-flex;
+    height: 50px;
+
+    ${marginAttributes}
 `;
 
 export const DropdownContainer = styled.div<DropdownRootPropsType>`
@@ -82,8 +84,6 @@ export const DropdownContainer = styled.div<DropdownRootPropsType>`
     height: 0;
     min-height: -webkit-calc(110%);
     min-width: 150px;
-
-    ${marginAttributes}
 `;
 
 export const DropdownOptionListContainer = styled.div<DropdownRootPropsType>`
@@ -118,6 +118,7 @@ export const DropdownOptionItem = styled.div<DropdownOptionItemPropsType>`
     display: flex;
     padding: 8px 16px;
     white-space: nowrap;
+    border-left: 2px solid transparent;
 
     ${optionItemStyle}
 `;

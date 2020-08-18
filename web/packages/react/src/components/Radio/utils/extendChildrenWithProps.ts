@@ -1,7 +1,6 @@
 import React, { Children } from 'react';
-import get from 'lodash.get';
-import uniq from 'lodash.uniq';
 
+import { getElementName } from '../../../utils';
 import { RADIO_CLASS_PREFIX } from '../constants';
 import { RADIO_GROUP_CLASS_PREFIX } from '../RadioGroup';
 
@@ -12,11 +11,8 @@ const extendChildrenWithProps = (
     const values: any[] = [];
 
     const childrenWithExtendedProps = Children.map(children, child => {
-        const childName =
-            get(child, 'props.originalType.displayName') ||
-            get(child, 'type.displayName') ||
-            get(child, 'type');
-        const value = get(child, 'props.value');
+        const childName = getElementName(child);
+        const value = child?.props?.value;
 
         if (childName !== RADIO_CLASS_PREFIX) {
             console.error(
@@ -39,7 +35,8 @@ const extendChildrenWithProps = (
         return React.cloneElement(child, additionalProps);
     });
 
-    if (uniq(values).length < Children.count(children)) {
+    const uniqueValues = Array.from(new Set(values));
+    if (uniqueValues.length < Children.count(children)) {
         console.error(
             `Ensure that all @armor/${RADIO_CLASS_PREFIX} components have a unique 'value' property set`,
         );

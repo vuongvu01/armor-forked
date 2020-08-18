@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { useThemeOverride } from '../../utils/hooks';
 import { useTheme } from '../../styling';
 
-import { useButtonClassName, generateChildrenSemantics } from './utils';
-import { ButtonStyle, ButtonContent } from './style';
+import { useButtonClassName } from './utils';
+import { ButtonStyle } from './style';
 import { ButtonPropsType } from './type';
 import { buttonDefaultTheme } from './theme';
 
@@ -24,8 +24,6 @@ export const Button: FunctionComponent<ButtonPropsType> = forwardRef(
             tertiary,
             danger,
             children,
-            before,
-            after,
             ...restProps
         },
         ref,
@@ -46,15 +44,6 @@ export const Button: FunctionComponent<ButtonPropsType> = forwardRef(
             danger,
         );
 
-        const { isValid, childStructure } = generateChildrenSemantics(children);
-
-        if (!isValid) {
-            console.error(
-                'Please ensure that button contains only one of the following combinations: \n * icon \n * label \n * icon + label \n * label + icon',
-            );
-            return null;
-        }
-
         return (
             <ButtonStyle
                 disabled={disabled}
@@ -70,16 +59,7 @@ export const Button: FunctionComponent<ButtonPropsType> = forwardRef(
             >
                 {(forwardedProps: ButtonPropsType) => (
                     <ButtonRoot {...forwardedProps} ref={ref}>
-                        {before}
-                        <ButtonContent
-                            theme={theme}
-                            className={classNameRoot}
-                            small={small}
-                            childrenSemantics={childStructure}
-                        >
-                            {children}
-                        </ButtonContent>
-                        {after}
+                        {children}
                     </ButtonRoot>
                 )}
             </ButtonStyle>
@@ -125,14 +105,4 @@ Button.propTypes = {
     rel: PropTypes.string,
     /** HTML Button disabled */
     disabled: PropTypes.bool,
-    /** Controls displayed before the text */
-    before: PropTypes.oneOfType([
-        PropTypes.arrayOf(PropTypes.element),
-        PropTypes.element,
-    ]),
-    /** Controls displayed after the text */
-    after: PropTypes.oneOfType([
-        PropTypes.arrayOf(PropTypes.element),
-        PropTypes.element,
-    ]),
 };

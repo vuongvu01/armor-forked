@@ -6,7 +6,8 @@
     "scripts": {
         "start": "start-storybook --docs -p 6006 --ci",
         "build": "build-storybook --docs -c .storybook -s static -o .out",
-        "deploy": "storybook-to-ghpages --existing-output-dir .out"
+        "deploy": "storybook-to-ghpages --existing-output-dir .out",
+        "serve": "serve .out"
     },
     "keywords": [],
     "author": "",
@@ -24,6 +25,7 @@
         "@babel/core": "^7.10.1",
         "@storybook/addons": "^5.3.19",
         "@storybook/react": "^5.3.19",
-        "babel-loader": "^8.1.0"
+        "babel-loader": "^8.1.0",
+        "serve": "^11.3.2"
     }
 }

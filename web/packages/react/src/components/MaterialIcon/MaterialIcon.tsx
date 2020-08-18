@@ -3,6 +3,10 @@ import { useTheme } from '../../styling';
 import { MaterialIconRoot } from './style';
 import { MaterialIconPropsType } from './type';
 
+/**
+ * @deprecated
+ * Use SVG icons instead
+ */
 export const MaterialIcon: FunctionComponent<MaterialIconPropsType> = ({
     fontSize = 'inherit',
     icon,

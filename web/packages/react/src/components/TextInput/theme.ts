@@ -27,8 +27,8 @@ export const TextInputDefaultTheme = {
         base: {
             fontSize: '$typography.paragraphMedium.fontSize',
             color: '$color.neutral.06',
-            paddingTop: 2,
-            paddingBottom: 2,
+            paddingTop: 3,
+            paddingBottom: 3,
             paddingLeft: 4,
             paddingRight: 4,
             backgroundColor: '$color.neutral.00',
@@ -48,28 +48,29 @@ export const TextInputDefaultTheme = {
             },
         },
         large: {
-            paddingTop: 3,
-            paddingBottom: 3,
+            paddingTop: 4,
+            paddingBottom: 4,
         },
     },
     Label: {
         base: {
-            background: `linear-gradient(0, ${colorGrey00} 50%, transparent 50%)`,
             color: '$color.neutral.05',
             fontSize: '$typography.labelSmall.fontSize',
             fontWeight: '$typography.body.fontWeight',
             marginLeft: 3,
             marginRight: 3,
             lineHeight: '1.6',
-            top: '-13px',
+            top: '-11px',
         },
         inside: {
             fontSize: '$typography.paragraphMedium.fontSize',
             fontWeight: '$typography.paragraphMedium.fontWeight',
-            top: 3,
+            top: '10px',
         },
         inside__large: {
-            top: 3,
+            fontSize: '$typography.paragraphMedium.fontSize',
+            fontWeight: '$typography.paragraphMedium.fontWeight',
+            top: '13px',
         },
         outlined: {
             color: '$color.neutral.06',
@@ -83,6 +84,11 @@ export const TextInputDefaultTheme = {
         },
     },
     LabelBackground: {
+        base: {
+            background: `linear-gradient(0, ${colorGrey00} 50%, transparent 50%)`,
+            paddingLeft: 1,
+            paddingRight: 1,
+        },
         disabled: {
             background: `linear-gradient(0, ${colorGrey05} 50%, transparent 50%)`,
         },

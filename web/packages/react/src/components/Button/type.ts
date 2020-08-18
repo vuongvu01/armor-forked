@@ -2,11 +2,13 @@ import {
     AnchorHTMLAttributes,
     ButtonHTMLAttributes,
     ComponentType,
-    ReactNode,
 } from 'react';
 
-import { MarginAttributesType, WidthAttributesType } from '../../system';
-import { ChildrenSemanticsType } from './utils/generateChildrenSemantics';
+import {
+    MarginAttributesType,
+    PaddingAttributesType,
+    WidthAttributesType,
+} from '../../system';
 import { Indexed } from '../../type';
 import { StylePropsType, PropsWithNodeStylePropsType } from '../type';
 
@@ -20,14 +22,12 @@ type ButtonEffectivePropsType = Indexed<{
     danger?: boolean;
     small?: boolean;
     wide?: boolean;
-    before?: ReactNode;
-    after?: ReactNode;
-    childrenSemantics?: ChildrenSemanticsType;
     // add other custom properties here
 }> &
     ButtonHTMLAttributes<HTMLButtonElement> & // includes all HTML Button attributes
     Pick<AnchorHTMLAttributes<HTMLAnchorElement>, 'target' | 'href' | 'rel'> & // and 3 attributes from HTML Anchor
     WidthAttributesType &
+    PaddingAttributesType &
     MarginAttributesType;
 
 /* Button component prop type */
@@ -39,10 +39,5 @@ export type ButtonPropsType = ButtonEffectivePropsType &
 
 /* Button Root node prop type */
 export type ButtonRootPropsType = PropsWithNodeStylePropsType<
-    ButtonEffectivePropsType
->;
-
-/* Button Root node prop type */
-export type ButtonContentPropsType = PropsWithNodeStylePropsType<
     ButtonEffectivePropsType
 >;

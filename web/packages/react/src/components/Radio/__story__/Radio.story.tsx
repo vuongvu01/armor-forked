@@ -1,10 +1,9 @@
 import React, { ChangeEvent, useState } from 'react';
 // eslint-disable-next-line import/no-unresolved
 import { withKnobs } from '@storybook/addon-knobs';
-import get from 'lodash.get';
 
 import { GroupHelper } from '../../../helpers/GroupHelper';
-import Radio from '../Radio';
+import { Radio } from '../Radio';
 import { RadioGroup } from '../RadioGroup';
 
 export default {
@@ -75,7 +74,7 @@ export const RadioButtonGroup = () => {
     const [group1SelectedValue, setSelectedValueGroup1] = useState('');
 
     const handleChangeGroup1 = (event: ChangeEvent<HTMLInputElement>) => {
-        const selectedValue = get(event, 'target.value');
+        const selectedValue = event?.target?.value;
 
         if (selectedValue) {
             setSelectedValueGroup1(selectedValue);
@@ -90,7 +89,7 @@ export const RadioButtonGroup = () => {
                 selectedValue={group1SelectedValue}
                 onChange={handleChangeGroup1}
             >
-                <Radio value="val1" label="Pizza" data-testid="123" />
+                <Radio value="val1" label="Pizza" />
                 <Radio value="val2" label="Pasta" />
                 <Radio value="val3" label="Risotto" />
             </RadioGroup>
@@ -193,7 +192,7 @@ export const DefaultStates = () => {
     const [group2SelectedValue, setSelectedValueGroup2] = useState(value2);
 
     const handleChangeGroup2 = (event: ChangeEvent<HTMLInputElement>) => {
-        const selectedValue = get(event, 'target.value');
+        const selectedValue = event?.target?.value;
 
         if (selectedValue) {
             setSelectedValueGroup2(selectedValue);

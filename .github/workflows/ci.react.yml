@@ -37,6 +37,16 @@ jobs:
         run: yarn run test
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Test visual (install)
+        working-directory: ./web/packages/react/visual
+        run: yarn install
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Test visual
+        working-directory: ./web/packages/react
+        run: yarn test:visual:cicd
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Build
         working-directory: ./web/packages/react
         run: yarn run build

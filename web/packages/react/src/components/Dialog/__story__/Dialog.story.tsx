@@ -16,7 +16,6 @@ import { DialogTitle } from '../../DialogTitle';
 import { DialogContent } from '../../DialogContent';
 import { DialogActions } from '../../DialogActions';
 import { Button } from '../../Button';
-import { withStyles } from '../../../styling';
 import { LoremIpsum } from '../../../helpers/LoremIpsum';
 import { boke } from '../../../helpers/boke';
 

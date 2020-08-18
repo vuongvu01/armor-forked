@@ -3,6 +3,7 @@ import React, {
     forwardRef,
     useState,
     useEffect,
+    useCallback,
 } from 'react';
 import PropTypes from 'prop-types';
 
@@ -12,8 +13,7 @@ import { preProcessTabChildren, useTabsClassName } from './utils';
 import { TabsRoot } from './style';
 import { TabsPropsType } from './type';
 import { tabsDefaultTheme } from './theme';
-import { generateId } from '../../utils';
-import { TABS_CLASS_PREFIX, tabsIdPrefix } from './constants';
+import { TABS_CLASS_PREFIX } from './constants';
 
 export const Tabs: FunctionComponent<TabsPropsType> = forwardRef(function Tabs(
     {
@@ -22,7 +22,6 @@ export const Tabs: FunctionComponent<TabsPropsType> = forwardRef(function Tabs(
         classNames,
         defaultActiveTab,
         disabled,
-        id: propsId,
         onSwitch,
         wide,
     },
@@ -33,7 +32,6 @@ export const Tabs: FunctionComponent<TabsPropsType> = forwardRef(function Tabs(
     }
 
     const theme = useTheme();
-    const id = generateId(propsId, tabsIdPrefix);
     const [currentlyActiveTab, setCurrentlyActiveTab] = useState(
         defaultActiveTab,
     );
@@ -54,17 +52,20 @@ export const Tabs: FunctionComponent<TabsPropsType> = forwardRef(function Tabs(
         disabled,
     );
 
-    const handleClick = (
-        event: React.MouseEvent<HTMLInputElement, MouseEvent>,
-        tabIndex: number,
-        contentValue: number,
-    ) => {
-        setCurrentlyActiveTab(tabIndex);
+    const handleClick = useCallback(
+        (
+            event: React.MouseEvent<HTMLInputElement, MouseEvent>,
+            tabIndex: number,
+            contentValue: number,
+        ) => {
+            setCurrentlyActiveTab(tabIndex);
 
-        if (onSwitch) {
-            onSwitch(contentValue);
-        }
-    };
+            if (onSwitch) {
+                onSwitch(contentValue);
+            }
+        },
+        [onSwitch],
+    );
 
     const extendedChildren = preProcessTabChildren(children, {
         currentlyActiveTab,
@@ -76,7 +77,6 @@ export const Tabs: FunctionComponent<TabsPropsType> = forwardRef(function Tabs(
         <TabsRoot
             className={classOverride.Root}
             disabled={disabled}
-            id={id}
             wide={wide}
             ref={ref}
             theme={theme}
@@ -97,7 +97,6 @@ Tabs.defaultProps = {
 Tabs.propTypes = {
     defaultActiveTab: PropTypes.number,
     disabled: PropTypes.bool,
-    id: PropTypes.string,
     wide: PropTypes.bool,
     onSwitch: PropTypes.func.isRequired,
     ref: PropTypes.func,

@@ -1,6 +1,9 @@
 import React, { FunctionComponent } from 'react';
 import { SVGIconPropsType, SVGIcon } from '../components/SVGIcon';
 
+/**
+ * @deprecated
+ */
 export const EditIconShape = ({ color = 'white' }: { color?: string }) => (
     <svg className="svg-icon" viewBox="0 0 20 20">
         <path
@@ -10,6 +13,9 @@ export const EditIconShape = ({ color = 'white' }: { color?: string }) => (
     </svg>
 );
 
+/**
+ * @deprecated
+ */
 export const EditIcon: FunctionComponent<SVGIconPropsType> = ({
     color,
     ...restProps

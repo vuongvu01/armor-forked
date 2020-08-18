@@ -7,5 +7,3 @@ export { default as selectorClassGeneratorBasedOnComponent } from './selectorCla
 export * from './theme-provider';
 export * from './type';
 export * from './use-theme';
-export * from './with-styles';
-export * from './with-theme';

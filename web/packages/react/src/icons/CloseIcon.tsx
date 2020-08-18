@@ -1,6 +1,9 @@
 import React, { FunctionComponent } from 'react';
 import { SVGIconPropsType, SVGIcon } from '../components/SVGIcon';
 
+/**
+ * @deprecated
+ */
 export const CloseIconShape = (
     <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g transform="translate(-353.000000, -37.000000)" fill="currentColor">
@@ -11,6 +14,9 @@ export const CloseIconShape = (
     </g>
 );
 
+/**
+ * @deprecated
+ */
 export const CloseIcon: FunctionComponent<SVGIconPropsType> = props => {
     return <SVGIcon {...props}>{CloseIconShape}</SVGIcon>;
 };

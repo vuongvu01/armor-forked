@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
+import { ReactElement } from 'react';
 import { marginAttributes } from '../../system/attributes';
-import { MaterialIcon } from '../MaterialIcon';
 import { noTextInteraction } from '../../system/mixins';
 import { ObjectLiteralType } from '../../type';
 import { shouldForwardProp } from '../../utils';
@@ -15,6 +15,7 @@ import {
     MessageCentralPropsType,
     MessageEffectivePropsLevelAndThemeType,
 } from './type';
+import { messageLevels } from './constants';
 
 const propertyList = {
     onClose: true,
@@ -30,21 +31,6 @@ const propertyList = {
     // add other custom properties here
 } as ObjectLiteralType;
 
-const getIconAttributes = ({ level, error, success }: MessageIconPropsType) => {
-    let icon = 'info';
-
-    if (level === 'error' || error) {
-        icon = 'cancel';
-    }
-    if (level === 'success' || success) {
-        icon = 'check_circle';
-    }
-
-    return {
-        icon,
-    };
-};
-
 const getLevelStyles = (
     nodeName: string,
     {
@@ -57,13 +43,13 @@ const getLevelStyles = (
 ) => {
     const source = theme.componentOverrides.Message[nodeName];
 
-    if (level === 'error' || error) {
+    if (level === messageLevels.error || error) {
         return source.error;
     }
-    if (level === 'success' || success) {
+    if (level === messageLevels.success || success) {
         return source.success;
     }
-    if (level === 'warning' || warning) {
+    if (level === messageLevels.warning || warning) {
         return source.warning;
     }
 
@@ -82,11 +68,6 @@ export const MessageRoot = styled.div.withConfig({
     ${({ theme }: MessageRootPropsType) =>
         theme.componentOverrides.Message.Root.base}
     ${(props: MessageRootPropsType) => getLevelStyles('Root', props)}
-
-    ${({ theme, disableCloseButton }: MessageRootPropsType) =>
-        disableCloseButton
-            ? ''
-            : theme.componentOverrides.Message.Root.paddedRight}
 
     ${marginAttributes}
     ${(props: MessageRootPropsType) => props.styles(props)}
@@ -126,7 +107,14 @@ export const MessageExtra = styled.div<MessageExtraPropsType>`
         theme.componentOverrides.Message.Extra.base}
 `;
 
-export const MessageIcon = styled(MaterialIcon).attrs(getIconAttributes)<
+const MessageIconWrapper = ({
+    children,
+    ...restProps
+}: MessageIconPropsType & {
+    children: (props: MessageIconPropsType) => ReactElement;
+}) => children({ ...restProps });
+
+export const MessageIconStyle = styled(MessageIconWrapper)<
     MessageIconPropsType
 >`
     flex: 0 0 auto;
@@ -134,18 +122,13 @@ export const MessageIcon = styled(MaterialIcon).attrs(getIconAttributes)<
     ${({ theme }: MessageIconPropsType) =>
         theme.componentOverrides.Message.Icon.base}
     ${(props: MessageRootPropsType) => getLevelStyles('Icon', props)}
-    ${(props: MessageIconPropsType) => props.styles(props)}
 `;
 
 export const MessageCloseButton = styled.a<MessageCloseButtonPropsType>`
-    position: absolute;
-    ${noTextInteraction};
+    flex: 0 0 auto;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    ${noTextInteraction};
 
     ${({ theme }: MessageCloseButtonPropsType) =>
         theme.componentOverrides.Message.CloseButton.base}
-    ${(props: MessageCloseButtonPropsType) => props.styles(props)}
 `;

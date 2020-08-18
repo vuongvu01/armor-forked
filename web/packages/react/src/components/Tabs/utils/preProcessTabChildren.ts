@@ -1,14 +1,10 @@
-import React, { Children, ReactElement, ReactNode } from 'react';
-import get from 'lodash.get';
+import React, { Children, ReactElement } from 'react';
 
 import { TAB_CLASS_PREFIX } from '../../Tab/constants';
+import { getElementName } from '../../../utils';
 
-const isValidTabComponent = (element: ReactNode) => {
-    const elementName =
-        get(element, 'type.displayName') || get(element, 'type');
-
-    return typeof elementName === 'string' && elementName === TAB_CLASS_PREFIX;
-};
+const isValidTabComponent = (element: ReactElement) =>
+    getElementName(element) === TAB_CLASS_PREFIX;
 
 const preProcessTabChildren = (children: any, additionalProps: object) =>
     Children.map(children, (child: ReactElement, tabIndex) => {

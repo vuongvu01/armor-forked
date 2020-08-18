@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { ThemeContext } from 'styled-components';
-import { defaultTheme } from './themes/default';
+import { defaultTheme } from './themes';
 
 import { ThemeType } from './type';
 

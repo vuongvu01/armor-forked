@@ -7,16 +7,17 @@ import { useTheme } from '../../styling';
 import { useMessageClassNames, useMessageStylesOverride } from './utils';
 import {
     MessageRoot,
-    MessageIcon,
+    MessageIconStyle,
     MessageCentral,
     MessageCloseButton,
     MessageContent,
     MessageActions,
     MessageExtra,
 } from './style';
-import { MessagePropsType } from './type';
+import { MessageIconPropsType, MessagePropsType } from './type';
 import { messageDefaultTheme } from './theme';
-import { MaterialIcon } from '../MaterialIcon';
+import { CloseIcon } from '../../icons';
+import { useIconComponent } from './utils/useIconComponent';
 
 const CLASS_PREFIX = 'Message';
 
@@ -47,6 +48,14 @@ export const Message: FunctionComponent<MessagePropsType> = ({
     );
     const stylesOverride = useMessageStylesOverride(styles);
 
+    const Icon = useIconComponent({
+        level,
+        error,
+        warning,
+        info,
+        success,
+    });
+
     return (
         <MessageRoot
             theme={theme}
@@ -61,7 +70,7 @@ export const Message: FunctionComponent<MessagePropsType> = ({
             styles={stylesOverride.Root}
         >
             {!disableIcon && (
-                <MessageIcon
+                <MessageIconStyle
                     theme={theme}
                     level={level}
                     error={error}
@@ -70,7 +79,11 @@ export const Message: FunctionComponent<MessagePropsType> = ({
                     success={success}
                     className={classNameComponents.Icon}
                     styles={stylesOverride.Icon}
-                />
+                >
+                    {(forwardedProps: MessageIconPropsType) => (
+                        <Icon {...forwardedProps}>{children}</Icon>
+                    )}
+                </MessageIconStyle>
             )}
             <MessageCentral
                 theme={theme}
@@ -111,7 +124,7 @@ export const Message: FunctionComponent<MessagePropsType> = ({
                     styles={stylesOverride.CloseButton}
                     tabIndex={-1}
                 >
-                    <MaterialIcon>close</MaterialIcon>
+                    <CloseIcon />
                 </MessageCloseButton>
             )}
         </MessageRoot>

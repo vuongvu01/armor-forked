@@ -2,7 +2,7 @@
 import React from 'react';
 import { cleanup, render } from '@testing-library/react';
 
-import Radio from '../Radio';
+import { Radio } from '../Radio';
 
 describe('<Radio />', () => {
     afterEach(async () => {

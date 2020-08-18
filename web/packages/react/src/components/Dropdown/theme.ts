@@ -36,8 +36,6 @@ export const selectDefaultTheme = {
         selected: {
             backgroundColor: '$color.primary.lightest',
             borderLeftColor: '$color.primary.main',
-            borderLeftWidth: '2px',
-            borderLeftStyle: 'solid',
         },
     },
     OptionList: {
@@ -46,8 +44,6 @@ export const selectDefaultTheme = {
         },
         displayed: {
             height: 'auto',
-            paddingBottom: componentSpacing04,
-            paddingTop: componentSpacing04,
         },
     },
 };

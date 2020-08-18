@@ -7,8 +7,7 @@ import { useTabClassName } from './utils';
 import { TabContainer, TabLabel } from './style';
 import { TabPropsType } from './type';
 import { tabDefaultTheme } from './theme';
-import { generateId } from '../../utils';
-import { TAB_CLASS_PREFIX, tabIdPrefix } from './constants';
+import { TAB_CLASS_PREFIX } from './constants';
 
 export const Tab: FunctionComponent<TabPropsType> = forwardRef(function Tab(
     {
@@ -17,7 +16,6 @@ export const Tab: FunctionComponent<TabPropsType> = forwardRef(function Tab(
         currentlyActiveTab,
         disabled,
         wide,
-        id: propsId,
         label,
         handleClick,
         tabIndex,
@@ -27,7 +25,6 @@ export const Tab: FunctionComponent<TabPropsType> = forwardRef(function Tab(
     ref,
 ) {
     const theme = useTheme();
-    const id = generateId(propsId, tabIdPrefix);
     const matchingContentViewValue =
         typeof value !== 'undefined' ? value : tabIndex;
     const isActive = currentlyActiveTab === tabIndex;
@@ -61,7 +58,6 @@ export const Tab: FunctionComponent<TabPropsType> = forwardRef(function Tab(
             <TabLabel
                 className={classOverride.Label}
                 disabled={disabled}
-                id={id}
                 isActive={isActive}
                 onClick={handleSelect}
                 ref={ref}
@@ -82,7 +78,6 @@ Tab.defaultProps = {
 Tab.propTypes = {
     disabled: PropTypes.bool,
     wide: PropTypes.bool,
-    id: PropTypes.string,
     label: PropTypes.string,
     handleClick: PropTypes.func,
     ref: PropTypes.func,
