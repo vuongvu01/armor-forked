@@ -73,6 +73,8 @@ export const DropdownWrapper = styled.div.withConfig({
 })<DropdownRootPropsType>`
     display: inline-flex;
     height: 50px;
+
+    ${marginAttributes}
 `;
 
 export const DropdownContainer = styled.div<DropdownRootPropsType>`
@@ -82,8 +84,6 @@ export const DropdownContainer = styled.div<DropdownRootPropsType>`
     height: 0;
     min-height: -webkit-calc(110%);
     min-width: 150px;
-
-    ${marginAttributes}
 `;
 
 export const DropdownOptionListContainer = styled.div<DropdownRootPropsType>`

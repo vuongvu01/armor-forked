@@ -109,6 +109,7 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
                 node.focus();
             }
         }, [value, disabled]);
+
         useEffect(() => {
             if (ref && internalInputRef) {
                 Object.assign(ref, internalInputRef);

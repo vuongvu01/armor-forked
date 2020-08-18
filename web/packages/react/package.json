@@ -22,7 +22,7 @@
         "build:cjs": "rm -rf ./build.cjs/*; tsc -p ./tsconfig.build.cjs.json",
         "build:watch": "tsc -w -p ./tsconfig.build.cjs.json",
         "test": "jest -c ./jest/config.js --passWithNoTests",
-        "test:visual": "cd ./visual; yarn loki test",
+        "test:visual": "cd ./visual; yarn loki test ",
         "test:visual:update": "cd ./visual; yarn loki update",
         "test:visual:approve": "cd ./visual; yarn loki approve",
         "test:visual:cicd": "cd ./visual; yarn build-storybook && yarn loki --requireReference --reactUri file:./storybook-static",

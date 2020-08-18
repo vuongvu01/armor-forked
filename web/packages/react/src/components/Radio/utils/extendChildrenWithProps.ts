@@ -1,5 +1,6 @@
 import React, { Children } from 'react';
 
+import { getElementName } from '../../../utils';
 import { RADIO_CLASS_PREFIX } from '../constants';
 import { RADIO_GROUP_CLASS_PREFIX } from '../RadioGroup';
 
@@ -10,11 +11,7 @@ const extendChildrenWithProps = (
     const values: any[] = [];
 
     const childrenWithExtendedProps = Children.map(children, child => {
-        const childName =
-            child?.props?.originalType?.displayName ||
-            // @ts-ignore
-            child?.type?.displayName ||
-            child?.type;
+        const childName = getElementName(child);
         const value = child?.props?.value;
 
         if (childName !== RADIO_CLASS_PREFIX) {

@@ -8,7 +8,6 @@ import {
     DialogAlignmentContainer,
     DialogRoot,
     DialogCloseButton,
-    DialogOverlay,
     DialogContent,
 } from './style';
 import { DialogPropsType } from './type';
@@ -17,6 +16,7 @@ import { CloseIcon } from '../../icons';
 import { useDisplay } from '../Modal/utils';
 import { useContainerClickTrap } from '../DialogContent/utils';
 import { dialogDefaultTheme } from './theme';
+import { Overlay } from '../Overlay';
 
 const CLASS_PREFIX = 'Dialog';
 export const DIALOG_SCROLL_DOCUMENT = 'document';
@@ -59,16 +59,15 @@ export const Dialog: FunctionComponent<DialogPropsType> = ({
             disableBackdrop={disableOverlay}
             zIndex={zIndex}
         >
-            {!disableOverlay && (
-                <DialogOverlay
-                    theme={theme}
-                    className={classNameComponents.Overlay}
-                    styles={stylesOverride.Overlay}
-                    display={display}
-                    effectToggle={effectToggle}
-                    disableEffects={disableEffects}
-                />
-            )}
+            <Overlay
+                className={classNameComponents.Overlay}
+                disableEffects={disableEffects}
+                disableOverlay={disableOverlay}
+                display={display}
+                effectToggle={effectToggle}
+                styles={stylesOverride.Overlay}
+                theme={theme}
+            />
             <DialogAlignmentContainer
                 theme={theme}
                 className={classNameComponents.AlignmentContainer}

@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 
 import { useThemeOverride } from '../../utils/hooks';
 import { useTheme } from '../../styling';
-import { useDetectClickOutsideComponent, useSelectClassName } from './utils';
+import { useDetectClickOutsideComponent, useDropdownClassName } from './utils';
 import {
     DropdownContainer,
     DropdownOptionList,
@@ -54,7 +54,7 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
         const theme = useTheme();
         useThemeOverride(DROPDOWN_CLASS_PREFIX, theme, selectDefaultTheme);
 
-        const classOverride = useSelectClassName(
+        const classOverride = useDropdownClassName(
             DROPDOWN_CLASS_PREFIX,
             className,
             classNames,

@@ -23,12 +23,14 @@ export const Playground = () => (
         title={text('Title', 'Edit icon')}
         color={color('Color', '#000')}
     >
-        {EditIconShape}
+        <EditIconShape />
     </SVGIcon>
 );
 
 export const InheritColor = () => (
     <div style={{ color: 'blue' }}>
-        <SVGIcon>{EditIconShape}</SVGIcon>
+        <SVGIcon>
+            <EditIconShape />
+        </SVGIcon>
     </div>
 );

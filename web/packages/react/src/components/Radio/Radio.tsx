@@ -11,82 +11,84 @@ import { radioDefaultTheme } from './theme';
 import { generateId } from '../../utils';
 import { RADIO_CLASS_PREFIX, radioIdPrefix } from './constants';
 
-const Radio: FunctionComponent<RadioPropsType> = forwardRef(function Radio(
-    {
-        checked,
-        className,
-        classNames,
-        disabled,
-        error,
-        id: propsId,
-        label,
-        name,
-        onChange,
-        selectedValue,
-        typographyProps,
-        value,
-        ...restProps
-    },
-    ref,
-) {
-    const theme = useTheme();
-    const id = generateId(propsId, radioIdPrefix);
-    const isChecked = checked || value === selectedValue;
+export const Radio: FunctionComponent<RadioPropsType> = forwardRef(
+    function Radio(
+        {
+            checked,
+            className,
+            classNames,
+            disabled,
+            error,
+            id: propsId,
+            label,
+            name,
+            onChange,
+            selectedValue,
+            typographyProps,
+            value,
+            ...restProps
+        },
+        ref,
+    ) {
+        const theme = useTheme();
+        const id = generateId(propsId, radioIdPrefix);
+        const isChecked = checked || value === selectedValue;
 
-    useThemeOverride(RADIO_CLASS_PREFIX, theme, radioDefaultTheme);
+        useThemeOverride(RADIO_CLASS_PREFIX, theme, radioDefaultTheme);
 
-    const classOverride = useRadioClassName(
-        RADIO_CLASS_PREFIX,
-        className,
-        classNames,
-        disabled,
-        isChecked,
-        error,
-    );
+        const classOverride = useRadioClassName(
+            RADIO_CLASS_PREFIX,
+            className,
+            classNames,
+            disabled,
+            isChecked,
+            error,
+        );
 
-    const handleOnChange = (event: ChangeEvent<HTMLInputElement>) =>
-        onChange && onChange(event);
+        const handleOnChange = (event: ChangeEvent<HTMLInputElement>) =>
+            onChange && onChange(event);
 
-    const { marginProps, ...otherProps } = extractMarginProps(restProps);
+        const { marginProps, ...otherProps } = extractMarginProps(restProps);
 
-    return (
-        <RadioRoot
-            className={classOverride.Root}
-            for={id}
-            theme={theme}
-            {...marginProps}
-        >
-            <RadioInput
-                checked={isChecked}
-                className={classOverride.Input}
-                disabled={disabled}
-                id={id}
-                name={name}
-                onChange={handleOnChange}
-                ref={ref}
+        return (
+            <RadioRoot
+                className={classOverride.Root}
+                for={id}
                 theme={theme}
-                type="radio"
-                value={value}
-                {...otherProps}
-            />
-            <RadioMark
-                className={classOverride.Label}
-                disabled={disabled}
-                htmlFor={id}
-                theme={theme}
+                {...marginProps}
             >
-                <SelectorLabel
+                <RadioInput
+                    checked={isChecked}
+                    className={classOverride.Input}
                     disabled={disabled}
-                    error={error}
+                    id={id}
+                    name={name}
+                    onChange={handleOnChange}
+                    ref={ref}
                     theme={theme}
-                    typographyProps={typographyProps}
+                    type="radio"
+                    value={value}
+                    {...otherProps}
+                />
+                <RadioMark
+                    className={classOverride.Label}
+                    disabled={disabled}
+                    htmlFor={id}
+                    theme={theme}
                 >
-                    {label}
-                </SelectorLabel>
-            </RadioMark>
-        </RadioRoot>
-    );
-});
+                    <SelectorLabel
+                        disabled={disabled}
+                        error={error}
+                        theme={theme}
+                        typographyProps={typographyProps}
+                    >
+                        {label}
+                    </SelectorLabel>
+                </RadioMark>
+            </RadioRoot>
+        );
+    },
+);
 
 Radio.displayName = RADIO_CLASS_PREFIX;
 
@@ -107,5 +109,3 @@ Radio.propTypes = {
     typographyProps: PropTypes.object,
     value: PropTypes.string,
 };
-
-export default Radio;

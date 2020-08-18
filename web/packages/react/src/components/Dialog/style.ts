@@ -7,7 +7,6 @@ import {
     DialogAlignmentContainerPropsType,
     DialogCloseButtonPropsType,
     DialogContentPropsType,
-    DialogOverlayPropsType,
     DialogRootPropsType,
 } from './type';
 import { DIALOG_SCROLL_DOCUMENT } from './Dialog';
@@ -56,27 +55,6 @@ const dialogRootMaxHeight = ({ scroll, theme }: DialogRootPropsType) => {
         ? 'none'
         : `calc(100% - ${theme.componentOverrides.Dialog.Root.safeMargin})`;
 };
-
-export const DialogOverlay = styled.div.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<DialogOverlayPropsType>`
-    ${fixedCover};
-    z-index: inherit;
-    pointer-events: none;
-    ${({
-        display,
-        effectToggle,
-        disableEffects,
-        theme,
-    }: DialogOverlayPropsType) => css`
-        opacity: ${effectToggle ? 1 : 0};
-        display: ${display ? 'initial' : 'none'};
-        transition: ${disableEffects ? 'none' : 'opacity 100ms ease'};
-        ${theme.componentOverrides.Dialog.Overlay.base};
-    `}
-
-    ${(props: DialogOverlayPropsType) => props.styles(props)}
-`;
 
 export const DialogAlignmentContainer = styled.div.withConfig({
     shouldForwardProp: property => shouldForwardProp(property, propertyList),

@@ -1,6 +1,4 @@
 import deepMerge from 'deepmerge';
-// @ts-ignore
-// import clone from 'deepclone';
 import { ReactText } from 'react';
 import { ClassNamesType } from '../components/type';
 import { ObjectLiteralType } from '../type';
@@ -14,6 +12,7 @@ import {
 } from '../system/attributes';
 
 export { default as generateId } from './generateId';
+export { default as getElementName } from './getElementName';
 
 /**
  * @internal

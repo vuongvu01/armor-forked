@@ -43,15 +43,6 @@ export type DialogStylesPropsType = {
     // add style properties for other nodes here
 };
 
-/* Dialog Overlay node prop type */
-export type DialogOverlayPropsType = Pick<
-    DialogEffectivePropsType,
-    'disableEffects'
-> & {
-    display: boolean;
-    effectToggle: boolean;
-} & NodeStylePropsType;
-
 /* Dialog AlignmentContainer node prop type */
 export type DialogAlignmentContainerPropsType = {
     display: boolean;

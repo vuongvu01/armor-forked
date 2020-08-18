@@ -13,6 +13,8 @@ export type CSSChunkType =
     | string
     | ObjectLiteralType;
 
+export type ChildrenType = JSX.Element | JSX.Element[] | undefined;
+
 export type Indexed<T, P = any> = T & ObjectLiteralType<P>;
 
 export type Nullable<T = any> = T | null;

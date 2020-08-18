@@ -1,13 +1,10 @@
 import React, { Children, ReactElement } from 'react';
 
 import { TAB_CLASS_PREFIX } from '../../Tab/constants';
+import { getElementName } from '../../../utils';
 
-const isValidTabComponent = (element: ReactElement) => {
-    // @ts-ignore
-    const elementName = element?.type?.displayName || element?.type;
-
-    return typeof elementName === 'string' && elementName === TAB_CLASS_PREFIX;
-};
+const isValidTabComponent = (element: ReactElement) =>
+    getElementName(element) === TAB_CLASS_PREFIX;
 
 const preProcessTabChildren = (children: any, additionalProps: object) =>
     Children.map(children, (child: ReactElement, tabIndex) => {
