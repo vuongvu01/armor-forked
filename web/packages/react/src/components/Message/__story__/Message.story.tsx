@@ -91,3 +91,18 @@ export const WithCustomAttributes = () => (
         Hello there!
     </Message>
 );
+
+export const AllTypes = () => (
+    <>
+        <Message info marginBottom={2}>
+            Hello there!
+        </Message>
+        <Message error marginBottom={2}>
+            Hello there!
+        </Message>
+        <Message warning marginBottom={2}>
+            Hello there!
+        </Message>
+        <Message success>Hello there!</Message>
+    </>
+);

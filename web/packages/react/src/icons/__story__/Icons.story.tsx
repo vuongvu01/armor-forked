@@ -6,11 +6,15 @@ import { withKnobs } from '@storybook/addon-knobs';
 import {
     CheckMarkIcon,
     CogIcon,
+    CancelIcon,
+    InfoIcon,
     EllipsisHorizontalIcon,
     PlayIcon,
     UploadIcon,
     CloseIcon,
     EditIcon,
+    WarningIcon,
+    CheckMarkCircleIcon,
 } from '..';
 import { loremIpsum } from '../../helpers/LoremIpsum';
 
@@ -35,6 +39,10 @@ export const Basic = () => (
         <UploadIcon />
         <CloseIcon />
         <EditIcon />
+        <CancelIcon />
+        <InfoIcon />
+        <WarningIcon />
+        <CheckMarkCircleIcon />
     </Icons>
 );
 

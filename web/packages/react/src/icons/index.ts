@@ -4,4 +4,8 @@ export * from './EllipsisHorizontal';
 export * from './Play';
 export * from './Upload';
 export * from './Close';
+export * from './Cancel';
+export * from './Info';
 export * from './Edit';
+export * from './Warning';
+export * from './CheckMarkCircle';
