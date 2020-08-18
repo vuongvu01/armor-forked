@@ -118,6 +118,7 @@ export const DropdownOptionItem = styled.div<DropdownOptionItemPropsType>`
     display: flex;
     padding: 8px 16px;
     white-space: nowrap;
+    border-left: 2px solid transparent;
 
     ${optionItemStyle}
 `;

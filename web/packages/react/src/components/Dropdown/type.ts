@@ -1,7 +1,7 @@
-import { HTMLAttributes, MouseEvent } from 'react';
+import { HTMLAttributes, InputHTMLAttributes, MouseEvent } from 'react';
 
 import { MarginAttributesType } from '../../system/attributes';
-import { Indexed } from '../../type';
+import { Indexed, ScalarType } from '../../type';
 import { ClassNamesType, NodeStylePropsType } from '../type';
 
 export type ClassBasedOnComponentType = {
@@ -13,30 +13,86 @@ export type ClassBasedOnComponentType = {
     isActive?: boolean;
 };
 
-export type OptionObjectType = { label: string; [key: string]: any };
+export type OptionObjectType = {
+    label: string;
+    value: ScalarType;
+    [key: string]: any;
+};
 export type OptionItemType = string | OptionObjectType;
 export type OptionType = OptionItemType[];
 
+export type DropdownValueType =
+    | string
+    | ReadonlyArray<number | string>
+    | number;
+
+export type DropdownInternalValueType = ReadonlyArray<number | string>;
+
+export type DropdownInternalOptionType = OptionObjectType[];
+
+export type DropDownOnSelectType = (
+    selectedOption:
+        | string
+        | { label: string; value: string | number; [key: string]: any }, // similarly here - to expose into storybook, otherwise it says just OptionItemType
+    itemIndex?: number,
+) => void;
+
+export type DropdownOnValueUpdateType = (
+    value: DropdownInternalValueType,
+    multiple: boolean | undefined,
+    selectedOption: OptionObjectType,
+    itemIndex?: number,
+    options?: OptionType,
+) => void;
+
+export type DropdownOnChangeEventType = {
+    target: {
+        value?: DropdownValueType;
+    };
+};
+
+export type DropdownOnChangeType = (event: DropdownOnChangeEventType) => void;
+
+export type DropdownOnRenderSelectedValueType = (
+    value: DropdownInternalValueType,
+    options: DropdownInternalOptionType,
+) => string;
+
 type DropdownEffectivePropsType = Indexed<{
-    disabled?: boolean;
     error?: boolean;
     isActionSeparatorDisplayed?: boolean;
     isListExpanded?: boolean;
     isSelected?: boolean;
-    item?: string | { label: string; [key: string]: any }; // aka OptionItemType - defining explicitly to expose into docs
+    item?:
+        | string
+        | { label: string; value: string | number; [key: string]: any }; // aka OptionItemType - defining explicitly to expose into docs
     itemIndex?: number;
     isOptionListShown?: boolean;
     onOptionSelect?: (itemIndex: number) => void;
-    onSelect?: (
-        selectedOption: string | { label: string; [key: string]: any }, // similarly here - to expose into storybook, otherwise it says just OptionItemType
-        itemIndex?: number,
-    ) => void;
+    onSelect?: DropDownOnSelectType;
     selectedValue?: string | number;
     selectedIndex?: number;
     label?: string;
-    options?: (string | { label: string; [key: string]: any })[]; // aka OptionType - defining explicitly to expose into docs
+    options?:
+        | string[]
+        | { label: string; value: string | number; [key: string]: any }[]; // aka OptionType - defining explicitly to expose into docs
+    multiple?: boolean;
+    value?: string | ReadonlyArray<string> | ReadonlyArray<number> | number; // aka DropdownValueType - defining explicitly to expose into docs
+    defaultValue?:
+        | string
+        | ReadonlyArray<string>
+        | ReadonlyArray<number>
+        | number; // aka OptionType - defining explicitly to expose into docs
+    onChange?: (event: DropdownOnChangeEventType) => void;
+    onRenderSelectedValue?: (
+        value: DropdownInternalValueType,
+        options: DropdownInternalOptionType,
+    ) => string;
 }> &
-    HTMLAttributes<HTMLElement> &
+    Omit<
+        InputHTMLAttributes<HTMLInputElement>,
+        'value' | 'onChange' | 'defaultValue'
+    > &
     MarginAttributesType;
 
 export type DropdownPropsType = DropdownEffectivePropsType;
@@ -68,13 +124,13 @@ export type DropdownOptionListPropsType = Indexed<{
 
 export type DropdownOptionItemPropsType = Indexed<{
     isSelected?: boolean;
-    item: OptionItemType;
+    item: OptionObjectType;
     itemIndex: number;
     onOptionSelect?: (itemIndex: number) => void;
 }> &
     Pick<
         DropdownEffectivePropsType,
-        'className' | 'isOptionListShown' | 'onClick' | 'theme'
+        'className' | 'isOptionListShown' | 'onClick' | 'theme' | 'multiple'
     > &
     HTMLAttributes<HTMLElement>;
 

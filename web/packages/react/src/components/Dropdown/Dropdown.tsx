@@ -8,15 +8,10 @@ import React, {
     useMemo,
 } from 'react';
 import PropTypes from 'prop-types';
-import uniqueId from 'lodash.uniqueid';
 
 import { useThemeOverride } from '../../utils/hooks';
 import { useTheme } from '../../styling';
-import {
-    useDetectClickOutsideComponent,
-    getItemLabel,
-    useSelectClassName,
-} from './utils';
+import { useDetectClickOutsideComponent, useSelectClassName } from './utils';
 import {
     DropdownContainer,
     DropdownOptionList,
@@ -26,14 +21,14 @@ import {
 } from './style';
 import DropdownOptionItem from './DropdownOptionItem';
 import DropdownActionItem from './DropdownActionItem';
-import { OptionItemType, DropdownPropsType } from './type';
+import { DropdownPropsType, OptionObjectType } from './type';
 import { selectDefaultTheme } from './theme';
 import { TextInput } from '../TextInput';
-import {
-    defaultLabel,
-    emptyLabelValue,
-    DROPDOWN_CLASS_PREFIX,
-} from './constants';
+import { defaultLabel, DROPDOWN_CLASS_PREFIX } from './constants';
+import { useOnValueUpdate } from './utils/useOnValueUpdate';
+import { useValue } from './utils/useValue';
+import { useOptions } from './utils/useOptions';
+import { useSelectedValueToDisplay } from './utils/useSelectedValueToDisplay';
 
 export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
     function Dropdown(
@@ -45,33 +40,20 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
             isListExpanded = false,
             label,
             onSelect,
+            onChange,
+            onRenderSelectedValue,
             options,
-            selectedIndex: initialSelectedItemIndex,
+            value,
+            defaultValue,
             tabIndex,
+            multiple,
             ...restProps
         },
         ref,
     ) {
         const theme = useTheme();
-        const internalInputRef = useRef(null);
+        useThemeOverride(DROPDOWN_CLASS_PREFIX, theme, selectDefaultTheme);
 
-        // eslint-disable-next-line  @typescript-eslint/no-array-constructor
-        let initialIndex = new Set(Array());
-        let isDisableLabelEffect = false;
-
-        if (initialSelectedItemIndex && initialSelectedItemIndex >= 0) {
-            // eslint-disable-next-line  @typescript-eslint/no-array-constructor
-            initialIndex = new Set(Array(initialSelectedItemIndex));
-            isDisableLabelEffect = true;
-        }
-
-        const [selectedIndex, setSelectedIndices] = useState(initialIndex);
-        const [selectedLabelValue, setSelectedLabelValue] = useState(
-            emptyLabelValue,
-        );
-        const [isOptionListShown, setIsOptionListShown] = useState(
-            isListExpanded,
-        );
         const classOverride = useSelectClassName(
             DROPDOWN_CLASS_PREFIX,
             className,
@@ -79,14 +61,33 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
             disabled,
         );
 
-        useThemeOverride(DROPDOWN_CLASS_PREFIX, theme, selectDefaultTheme);
-
+        const internalInputRef = useRef(null);
         // internalRef is used in Dropdown and can be exposed to the outside if the ref prop is present
         useEffect(() => {
             if (ref && internalInputRef) {
                 Object.assign(ref, internalInputRef);
             }
         }, [internalInputRef]);
+
+        const containerRef = useRef(null);
+
+        const [internalValue, setInternalValue] = useValue(value, defaultValue);
+        const onValueUpdate = useOnValueUpdate(
+            setInternalValue,
+            onSelect,
+            onChange,
+        );
+        const internalOptions = useOptions(options);
+
+        const selectedValueToDisplay = useSelectedValueToDisplay(
+            onRenderSelectedValue,
+            internalValue,
+            internalOptions,
+        );
+
+        const [isOptionListShown, setIsOptionListShown] = useState(
+            isListExpanded,
+        );
 
         const blurInput = useCallback(() => {
             const node = internalInputRef.current as any;
@@ -104,54 +105,30 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
             }
         };
 
-        const blurOnInputWithSelection = () => {
-            if (!selectedIndex.size && isOptionListShown) {
-                blurInput();
+        const onOptionSelect = (itemIndex: number) => {
+            if (internalOptions) {
+                const selectedItem = internalOptions[itemIndex];
+                onValueUpdate(
+                    internalValue,
+                    multiple,
+                    selectedItem,
+                    itemIndex,
+                    options,
+                );
             }
+
+            if (!multiple) {
+                setIsOptionListShown(false);
+            }
+            blurInput();
         };
 
-        const handleOnItemSelect = (itemIndex: number) => {
-            const newIndex = new Set([itemIndex]) as any;
-
-            if (options) {
-                const selectedItem = options[itemIndex];
-
-                setSelectedIndices(newIndex);
-                setSelectedLabelValue(getItemLabel(selectedItem));
-
-                blurInput();
-
-                if (isOptionListShown && onSelect && options) {
-                    onSelect(options[itemIndex], itemIndex);
-                }
-            }
-        };
-
-        // support pre-selected value
-        useEffect(() => {
-            const latestIndex = selectedIndex.values().next().value;
-
-            if (typeof initialSelectedItemIndex === 'number' && !latestIndex) {
-                return handleOnItemSelect(initialSelectedItemIndex);
-            }
-
-            return undefined;
-        }, []);
-
-        const hideOptions = () =>
-            setTimeout(() => setIsOptionListShown(false), 0);
-
-        useDetectClickOutsideComponent(
-            internalInputRef,
-            isOptionListShown,
-            hideOptions,
-        );
+        useDetectClickOutsideComponent(containerRef, setIsOptionListShown);
 
         const handleDisplayOptionListToggle = () => {
             setIsOptionListShown(!isOptionListShown);
 
             focusOnActionItemTrigger();
-            blurOnInputWithSelection();
         };
 
         const handleActionItemClick = useMemo(
@@ -159,33 +136,36 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
             [disabled, isOptionListShown],
         );
 
-        const isValueSelected =
-            typeof selectedIndex.values().next().value === 'number';
-
         const renderActionItem = (
             <DropdownActionItem
                 className={classOverride.ActionItem}
                 disabled={disabled}
                 error={error}
                 isActionSeparatorDisplayed={
-                    isOptionListShown || isValueSelected
+                    isOptionListShown || !!internalValue.length
                 }
                 isOptionListShown={isOptionListShown}
                 onClick={handleActionItemClick}
                 tabIndex={tabIndex}
                 theme={theme}
+                data-testid="DropdownActionItem"
             />
         );
 
-        const renderOptionItem = (item: OptionItemType, itemIndex: number) => (
+        const renderOptionItem = (
+            item: OptionObjectType,
+            itemIndex: number,
+        ) => (
             <DropdownOptionItem
                 className={classOverride.OptionItem}
-                isSelected={selectedIndex.has(itemIndex)}
+                isSelected={internalValue.includes(item.value)}
                 item={item}
                 itemIndex={itemIndex}
-                key={uniqueId()}
-                onOptionSelect={handleOnItemSelect}
+                key={item.value}
+                onOptionSelect={onOptionSelect}
                 theme={theme}
+                multiple={multiple}
+                data-testid="DropdownOptionItem"
             />
         );
 
@@ -194,11 +174,12 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
                 <DropdownContainer
                     className={classOverride.Container}
                     theme={theme}
+                    data-testid="DropdownContainer"
+                    ref={containerRef}
                 >
                     <TextInput
                         after={renderActionItem}
                         className={classOverride.TextInput}
-                        disableLabelEffect={isDisableLabelEffect}
                         disabled={disabled}
                         displayMode="block"
                         error={error}
@@ -207,20 +188,22 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
                         ref={internalInputRef}
                         styles={dropdownTextInputStyle}
                         theme={theme}
-                        value={selectedLabelValue || emptyLabelValue}
+                        value={selectedValueToDisplay}
                         {...restProps}
                     />
                     <DropdownOptionListContainer
                         className={classOverride.OptionListContainer}
                         theme={theme}
+                        data-testid="DropdownOptionListContainer"
                     >
-                        {options && options.length > 0 ? (
+                        {internalOptions.length > 0 ? (
                             <DropdownOptionList
                                 className={classOverride.OptionList}
                                 isOptionListShown={isOptionListShown}
                                 theme={theme}
+                                data-testid="DropdownOptionList"
                             >
-                                {options.map(renderOptionItem)}
+                                {internalOptions.map(renderOptionItem)}
                             </DropdownOptionList>
                         ) : null}
                     </DropdownOptionListContainer>
@@ -237,14 +220,26 @@ Dropdown.defaultProps = {
     isListExpanded: false,
     label: defaultLabel,
     tabIndex: 0,
+    multiple: false,
 };
 
 Dropdown.propTypes = {
     disabled: PropTypes.bool,
     error: PropTypes.bool,
+    multiple: PropTypes.bool,
     isListExpanded: PropTypes.bool,
     label: PropTypes.string,
     onSelect: PropTypes.func,
-    options: PropTypes.array,
+    onChange: PropTypes.func,
+    options: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.string.isRequired),
+        PropTypes.arrayOf(
+            PropTypes.shape({
+                value: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+                    .isRequired,
+                label: PropTypes.string.isRequired,
+            }).isRequired,
+        ),
+    ]),
     selectedIndex: PropTypes.number,
 };

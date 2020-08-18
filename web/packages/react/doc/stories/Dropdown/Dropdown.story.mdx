@@ -11,15 +11,6 @@ import { Nodes } from '../../../src/helpers/Nodes';
 
 ~~~js
 import { Dropdown } from '@deliveryhero/armor';
-
-const options: (string | { [key: string]: any; label: string; })[]  = ['Biryani', 'Tacos', 'Pho', 'Risotto']
-const handleSelect = (selectedOption: string | { [key: string]: any; label: string; }) => {...}
-
-<Dropdown
-    options={options}
-    onSelect={handleSelect}
-    label="Dish type"
-/>
 ~~~
 
 ## Minimum configuration
@@ -251,6 +242,22 @@ return (
     </Story>
 </Preview>
 
-## Properties
+## Multi-select
 
-<Props of={Dropdown} />
+<Preview>
+    <Story name="Multiselect controlled mode" height="200px">
+         {() => {
+            const options = [
+                 { value: 0, label: 'Biryani' },
+                 { value: 1, label: 'Tacos' },
+                 { value: 2, label: 'Pho' },
+            ];
+            const [selectedOption, setSelectedOption] = useState();
+            const handleSelect = (option) => {
+                setSelectedOption(option);
+            };
+         
+            return (<Dropdown options={options} onSelect={handleSelect} label="Dish type" multiple />);
+         }}
+    </Story>
+</Preview>

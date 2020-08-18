@@ -126,6 +126,7 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
                 error={error}
                 onMouseOver={onInputMouseOver}
                 onMouseOut={onInputMouseOut}
+                data-testid="TextInputRoot"
                 {...restProps}
             >
                 {before}
@@ -159,7 +160,11 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
                 >
                     {(forwardedProps: TextInputContainerPropsType) => (
                         // @ts-ignore
-                        <Tag {...forwardedProps} ref={internalInputRef} />
+                        <Tag
+                            {...forwardedProps}
+                            ref={internalInputRef}
+                            data-testid="TextInputInput"
+                        />
                     )}
                 </TextInputContainer>
                 {after}
@@ -174,12 +179,14 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
                         styles={stylesOverride.Label}
                         theme={theme}
                         value={value}
+                        data-testid="TextInputLabel"
                     >
                         <TextInputLabelBackground
                             className={classNameComponents.LabelBackground}
                             styles={stylesOverride.LabelBackground}
                             theme={theme}
                             disabled={disabled}
+                            data-testid="TextInputLabelBackground"
                         >
                             {label}
                         </TextInputLabelBackground>

@@ -2,14 +2,15 @@ import React, { FunctionComponent, MouseEvent, useCallback } from 'react';
 
 import { DropdownOptionItem as DropdownOptionItemStyle } from './style';
 import { Typography } from '../Typography';
-import { getItemLabel } from './utils';
 import { DropdownOptionItemPropsType } from './type';
+import { Checkbox } from '../Checkbox';
 
 const DropdownOptionItem: FunctionComponent<DropdownOptionItemPropsType> = ({
     isSelected,
     itemIndex,
     item,
     onOptionSelect,
+    multiple,
     ...restProps
 }) => {
     if (!onOptionSelect) {
@@ -35,9 +36,10 @@ const DropdownOptionItem: FunctionComponent<DropdownOptionItemPropsType> = ({
             onClick={handleItemClick}
             {...restProps}
         >
+            {multiple && <Checkbox checked={isSelected} marginRight={4} />}
             {item ? (
                 <Typography margin={0} paragraph>
-                    {getItemLabel(item)}
+                    {item.label}
                 </Typography>
             ) : null}
         </DropdownOptionItemStyle>

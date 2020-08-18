@@ -1,5 +1,6 @@
+/* eslint-disable no-console,import/no-unresolved */
+
 import React, { useState } from 'react';
-// eslint-disable-next-line import/no-unresolved
 import { withKnobs } from '@storybook/addon-knobs';
 
 import { GroupHelper } from '../../../helpers/GroupHelper';
@@ -20,6 +21,39 @@ const boxStyle: object = {
     height: '500px',
     flexDirection: 'column',
 };
+
+const foodOptions = [
+    { value: 0, label: 'Biryani' },
+    { value: 1, label: 'Tacos' },
+    { value: 2, label: 'Pho' },
+    { value: 3, label: 'Risotto' },
+    { value: 4, label: 'Pizza' },
+    { value: 5, label: 'Enchiladas' },
+    { value: 6, label: 'Börek' },
+    { value: 7, label: 'Quiche' },
+    { value: 8, label: 'Köfte' },
+    { value: 9, label: 'Pad Thai' },
+    { value: 10, label: 'Churrasco' },
+    { value: 11, label: 'Baozi' },
+    { value: 12, label: 'Ceviche' },
+    { value: 13, label: 'Mac & Cheese' },
+    { value: 14, label: 'Paella' },
+    { value: 15, label: 'Dim sum' },
+    { value: 16, label: 'Hamburger' },
+    { value: 17, label: 'Ramen' },
+    { value: 18, label: 'Sushi' },
+    { value: 19, label: 'Burrito' },
+];
+
+const foodOptionsShort = [
+    { value: 'BIR', label: 'Biryani' },
+    {
+        value: 'TAC',
+        label:
+            'Tacos. Log tacos. Tacos. Log tacos. Tacos. Log tacos. Tacos. Log tacos. Tacos. Log tacos. Tacos. Log tacos.',
+    },
+    { value: 'PHO', label: 'Pho' },
+];
 
 export const MinimumConfiguration = () => {
     const [selectedOption, setSelectedOption] = useState();
@@ -42,28 +76,6 @@ export const MinimumConfiguration = () => {
 };
 
 export const CustomOptionItemsFormat = () => {
-    const foodOptions = [
-        { value: 0, label: 'Biryani' },
-        { value: 1, label: 'Tacos' },
-        { value: 2, label: 'Pho' },
-        { value: 3, label: 'Risotto' },
-        { value: 4, label: 'Pizza' },
-        { value: 5, label: 'Enchiladas' },
-        { value: 6, label: 'Börek' },
-        { value: 7, label: 'Quiche' },
-        { value: 8, label: 'Köfte' },
-        { value: 9, label: 'Pad Thai' },
-        { value: 10, label: 'Churrasco' },
-        { value: 11, label: 'Baozi' },
-        { value: 12, label: 'Ceviche' },
-        { value: 13, label: 'Mac & Cheese' },
-        { value: 14, label: 'Paella' },
-        { value: 15, label: 'Dim sum' },
-        { value: 16, label: 'Hamburger' },
-        { value: 17, label: 'Ramen' },
-        { value: 18, label: 'Sushi' },
-        { value: 19, label: 'Burrito' },
-    ];
     const [selectedOption, setSelectedOption] = useState();
     const handleSelect = (option: any) => {
         setSelectedOption(option);
@@ -112,7 +124,45 @@ export const CustomOptionItemsFormat = () => {
     );
 };
 
-export const PreselectedValue = () => {
+export const Inline = () => {
+    return (
+        <>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <Dropdown
+                options={foodOptions}
+                label="Dish type A"
+                marginRight={2}
+            />
+            <Dropdown options={foodOptions} label="Dish type B" />
+        </>
+    );
+};
+
+export const Uncontrolled = () => {
     const foodOptionsString = [
         'Biryani',
         'Tacos',
@@ -151,12 +201,54 @@ export const PreselectedValue = () => {
                     <Dropdown
                         options={foodOptionsString}
                         onSelect={handleSelect}
-                        selectedIndex={initialSelectionIndex}
+                        defaultValue={initialSelectionIndex}
                         label="Dish type"
                     />
                     <Typography paragraph>
                         Selected value: {JSON.stringify(selectedOption)}
                     </Typography>
+                </Box>
+            </GroupHelper>
+        </>
+    );
+};
+
+export const UncontrolledMultiple = () => {
+    const foodOptionsString = [
+        'Biryani',
+        'Tacos',
+        'Pho',
+        'Risotto',
+        'Pizza',
+        'Enchiladas',
+        'Börek',
+        'Quiche',
+        'Köfte',
+        'Pad Thai',
+        'Churrasco',
+        'Baozi',
+        'Ceviche',
+        'Mac & Cheese',
+        'Paella',
+        'Dim sum',
+        'Hamburger',
+        'Ramen',
+        'Sushi',
+        'Burrito',
+    ];
+
+    const initialSelectionIndex = 3;
+
+    return (
+        <>
+            <GroupHelper gap={2}>
+                <Box padding={3} style={{ ...boxStyle, width: '300px' }}>
+                    <Dropdown
+                        options={foodOptionsString}
+                        defaultValue={initialSelectionIndex}
+                        label="Dish type"
+                        multiple
+                    />
                 </Box>
             </GroupHelper>
         </>
@@ -222,6 +314,71 @@ export const ErrorAndDisabledStatePropagation = () => {
                     </Button>
                 </Box>
             </GroupHelper>
+        </>
+    );
+};
+
+export const onChange = () => {
+    const onChangeHandler = (value: any) => {
+        console.log(value);
+    };
+
+    return (
+        <>
+            <Dropdown
+                options={foodOptionsShort}
+                onChange={onChangeHandler}
+                label="Dish type"
+            />
+        </>
+    );
+};
+
+export const Controlled = () => {
+    const [value, setValue] = useState<any>();
+
+    return (
+        <>
+            <Dropdown
+                options={foodOptionsShort}
+                onChange={event => setValue(event.target.value)}
+                value={value}
+                label="Dish type"
+            />
+        </>
+    );
+};
+
+export const ControlledMultiple = () => {
+    const [value, setValue] = useState<any>();
+
+    return (
+        <>
+            <Dropdown
+                options={foodOptionsShort}
+                onChange={event => setValue(event.target.value)}
+                value={value}
+                label="Dish type"
+                multiple
+            />
+        </>
+    );
+};
+
+export const CustomDisplay = () => {
+    return (
+        <>
+            <Dropdown
+                options={foodOptionsShort}
+                label="Dish type"
+                multiple
+                onRenderSelectedValue={(
+                    value: ReadonlyArray<unknown>,
+                    options: ReadonlyArray<unknown>,
+                ) => {
+                    return `${value.length} of ${options.length}`;
+                }}
+            />
         </>
     );
 };
