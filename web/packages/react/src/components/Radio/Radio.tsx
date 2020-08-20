@@ -9,7 +9,7 @@ import { RadioInput, RadioMark, RadioRoot } from './style';
 import { RadioPropsType } from './type';
 import { radioDefaultTheme } from './theme';
 import { generateId } from '../../utils';
-import { RADIO_CLASS_PREFIX, radioIdPrefix } from './constants';
+import { RADIO_CLASS_PREFIX, radioIdPrefix, radioRoot } from './constants';
 
 export const Radio: FunctionComponent<RadioPropsType> = forwardRef(
     function Radio(
@@ -54,6 +54,7 @@ export const Radio: FunctionComponent<RadioPropsType> = forwardRef(
             <RadioRoot
                 className={classOverride.Root}
                 for={id}
+                data-testid={radioRoot}
                 theme={theme}
                 {...marginProps}
             >

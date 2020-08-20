@@ -6,7 +6,12 @@ import { useTheme } from '../../styling';
 import { getStatusTagLabel, isStatusTag, useTagClassName } from './utils';
 import { TagPropsType } from './type';
 import { tagDefaultTheme } from './theme';
-import { TAG_CLASS_PREFIX, TAG_DELETE_BEHAVIOUR_OPTIONS } from './constants';
+import {
+    TAG_CLASS_PREFIX,
+    TAG_DELETE_BEHAVIOUR_OPTIONS,
+    tagCloseIconContainer,
+    tagRoot,
+} from './constants';
 import {
     TagCloseIcon,
     TagCloseIconContainer,
@@ -46,7 +51,7 @@ export const Tag: FunctionComponent<TagPropsType> = forwardRef(function Tag(
     return (
         <TagRoot
             className={classOverride.Root}
-            data-testid="TagRoot"
+            data-testid={tagRoot}
             deleteOption={deleteOption}
             ref={ref}
             theme={theme}
@@ -65,7 +70,7 @@ export const Tag: FunctionComponent<TagPropsType> = forwardRef(function Tag(
             deleteOption !== TAG_DELETE_BEHAVIOUR_OPTIONS.DISABLED ? (
                 <TagCloseIconContainer
                     className={classOverride.CloseIconContainer}
-                    data-testid="TagCloseIconContainer"
+                    data-testid={tagCloseIconContainer}
                     deleteOption={deleteOption}
                     onClick={onClose}
                     tabIndex={0}

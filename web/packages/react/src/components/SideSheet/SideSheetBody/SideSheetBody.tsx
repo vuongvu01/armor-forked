@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { SideSheetHeaderPropsType } from '../SideSheetHeader/type';
 import { SideSheetBody as SideSheetBodyRoot } from './style';
+import { sideSheetBody } from '../constants';
 
 export const SIDE_SHEET_BODY_CLASS_PREFIX = 'SideSheetBody';
 
@@ -15,7 +16,7 @@ export const SideSheetBody: FunctionComponent<SideSheetHeaderPropsType> = ({
     return (
         <SideSheetBodyRoot
             isFixed={isFixed}
-            data-testid="SideSheetBody"
+            data-testid={sideSheetBody}
             theme={theme}
             {...restProps}
         >

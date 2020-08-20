@@ -10,6 +10,8 @@ import {
 import userEvent from '@testing-library/user-event';
 
 import { Dropdown } from '../Dropdown';
+import { dropdownOptionItem } from '../constants';
+import { textInputInput, textInputRoot } from '../../TextInput/constants';
 
 describe('<Dropdown />', () => {
     afterEach(async () => {
@@ -27,11 +29,11 @@ describe('<Dropdown />', () => {
         const { container, getByTestId, getAllByTestId } = render(
             <Dropdown options={options} onSelect={onSelect} />,
         );
-        const input = getByTestId('TextInputRoot');
+        const input = getByTestId(textInputRoot);
         userEvent.click(input!);
 
         const elements = await waitForElement(
-            () => getAllByTestId('DropdownOptionItem'),
+            () => getAllByTestId(dropdownOptionItem),
             { container, timeout: 1000 },
         );
 
@@ -47,11 +49,11 @@ describe('<Dropdown />', () => {
         const { container, getByTestId, getAllByTestId } = render(
             <Dropdown options={options} onChange={onChange} />,
         );
-        const input = getByTestId('TextInputRoot');
+        const input = getByTestId(textInputRoot);
         userEvent.click(input!);
 
         const elements = await waitForElement(
-            () => getAllByTestId('DropdownOptionItem'),
+            () => getAllByTestId(dropdownOptionItem),
             { container, timeout: 1000 },
         );
 
@@ -73,11 +75,11 @@ describe('<Dropdown />', () => {
         const { container, getByTestId, getAllByTestId } = render(
             <Dropdown options={options} onChange={onChange} />,
         );
-        const input = getByTestId('TextInputRoot');
+        const input = getByTestId(textInputRoot);
         userEvent.click(input!);
 
         const elements = await waitForElement(
-            () => getAllByTestId('DropdownOptionItem'),
+            () => getAllByTestId(dropdownOptionItem),
             { container, timeout: 1000 },
         );
 
@@ -99,7 +101,7 @@ describe('<Dropdown />', () => {
             <Dropdown options={options} value={['B', 'G']} multiple />,
         );
 
-        const input = getByTestId('TextInputInput') as HTMLInputElement;
+        const input = getByTestId(textInputInput) as HTMLInputElement;
         await wait(() => expect(input.value).toEqual('Blue, Green'));
     });
 
@@ -123,7 +125,7 @@ describe('<Dropdown />', () => {
             />,
         );
 
-        const input = getByTestId('TextInputInput') as HTMLInputElement;
+        const input = getByTestId(textInputInput) as HTMLInputElement;
         await wait(() => expect(input.value).toEqual('2 of 3'));
     });
 
@@ -137,17 +139,17 @@ describe('<Dropdown />', () => {
         const { container, getByTestId, getAllByTestId } = render(
             <Dropdown options={options} value="G" />,
         );
-        const input = getByTestId('TextInputRoot');
+        const input = getByTestId(textInputRoot);
         userEvent.click(input!);
 
         const elements = await waitForElement(
-            () => getAllByTestId('DropdownOptionItem'),
+            () => getAllByTestId(dropdownOptionItem),
             { container, timeout: 1000 },
         );
 
         userEvent.click(elements[1]);
 
-        const inputControl = getByTestId('TextInputInput') as HTMLInputElement;
+        const inputControl = getByTestId(textInputInput) as HTMLInputElement;
         await wait(() => expect(inputControl.value).toEqual('Green'));
     });
 
@@ -165,18 +167,34 @@ describe('<Dropdown />', () => {
         const { container, getByTestId, getAllByTestId } = render(
             <Dropdown options={options} multiple />,
         );
-        const input = getByTestId('TextInputRoot');
+        const input = getByTestId(textInputRoot);
         userEvent.click(input!);
 
         const elements = await waitForElement(
-            () => getAllByTestId('DropdownOptionItem'),
+            () => getAllByTestId(dropdownOptionItem),
             { container, timeout: 1000 },
         );
 
         userEvent.click(elements[1]);
         userEvent.click(elements[2]);
 
-        const inputControl = getByTestId('TextInputInput') as HTMLInputElement;
+        const inputControl = getByTestId(textInputInput) as HTMLInputElement;
         await wait(() => expect(inputControl.value).toEqual('Blue, Green'));
+    });
+
+    it('ensures margin* property transference', () => {
+        const marginAttribute = 'marginY';
+        const marginValue = 4;
+
+        const result = render(
+            <Dropdown {...{ [marginAttribute]: marginValue }} />,
+        );
+
+        // @ts-ignore
+        expect(result).toSupportMarginAttributes(
+            textInputRoot,
+            marginAttribute,
+            marginValue,
+        );
     });
 });

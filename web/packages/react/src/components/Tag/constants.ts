@@ -18,3 +18,6 @@ export const TAG_STATUS_LABELS = {
     DENIED: 'Denied',
     NEW: 'New',
 };
+
+export const tagRoot = 'TagRoot';
+export const tagCloseIconContainer = 'TagCloseIconContainer';
