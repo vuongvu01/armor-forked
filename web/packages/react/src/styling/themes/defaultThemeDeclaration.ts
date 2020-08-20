@@ -52,7 +52,7 @@ import {
     lineHeight05,
 } from '../../tokens';
 
-const SPACING_FACTOR = 4;
+export const SPACING_FACTOR = 4;
 
 export const defaultThemeDeclaration = {
     typography: {

@@ -1,4 +1,4 @@
-const { makeBEM } = require('../src/utils');
+const { makeBEM } = require('../../src/utils');
 
 expect.extend({
     toHaveBEMStructure(component, blockName, structure = {}) {

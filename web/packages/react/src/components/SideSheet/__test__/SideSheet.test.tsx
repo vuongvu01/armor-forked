@@ -7,6 +7,15 @@ import { SideSheet } from '../SideSheet';
 import { SideSheetHeader } from '../SideSheetHeader';
 import { SideSheetBody } from '../SideSheetBody';
 import { SideSheetFooter } from '../SideSheetFooter';
+import {
+    sideSheetBody,
+    sideSheetContent,
+    sideSheetFooter,
+    sideSheetHeader,
+    sideSheetHeaderCloseButtonContainer,
+    sideSheetHeaderContainer,
+    sideSheetRoot,
+} from '../constants';
 
 const headerTitle = 'Header title';
 const headerDescription = 'Header description';
@@ -62,26 +71,26 @@ describe('<SideSheet />', () => {
     it('should ensure that all SideSheet sections have corresponding class names set', async () => {
         render(baseSideSheetComponent);
 
-        const contentElement = screen.getByTestId('SideSheetContent');
+        const contentElement = screen.getByTestId(sideSheetContent);
         expect(contentElement).toHaveClass('SideSheet-Content');
 
         const headerContainerElement = screen.getByTestId(
-            'SideSheetHeaderContainer',
+            sideSheetHeaderContainer,
         );
         expect(headerContainerElement).toHaveClass('SideSheet-HeaderContainer');
 
-        const headerElement = screen.getByTestId('SideSheetHeader');
+        const headerElement = screen.getByTestId(sideSheetHeader);
         expect(headerElement).toHaveClass('SideSheet-Header');
 
         const headerIconElement = screen.getByTestId(
-            'SideSheetHeaderCloseButtonContainer',
+            sideSheetHeaderCloseButtonContainer,
         );
         expect(headerIconElement).toHaveClass('SideSheet-CloseIcon');
 
-        const bodyElement = screen.getByTestId('SideSheetBody');
+        const bodyElement = screen.getByTestId(sideSheetBody);
         expect(bodyElement).toHaveClass('SideSheet-Body');
 
-        const footerElement = screen.getByTestId('SideSheetFooter');
+        const footerElement = screen.getByTestId(sideSheetFooter);
         expect(footerElement).toHaveClass('SideSheet-Footer');
     });
 
@@ -126,20 +135,20 @@ describe('<SideSheet />', () => {
             </SideSheet>,
         );
 
-        const contentElement = screen.getByTestId('SideSheetContent');
+        const contentElement = screen.getByTestId(sideSheetContent);
         expect(contentElement).toHaveClass(
             'SideSheet-Content--disableOverlay SideSheet-Content--wide',
         );
 
-        const headerElement = screen.getByTestId('SideSheetHeader');
+        const headerElement = screen.getByTestId(sideSheetHeader);
         expect(headerElement).toHaveClass(
             'SideSheet-Header--disableOverlay SideSheet-Header--wide',
         );
-        const bodyElement = screen.getByTestId('SideSheetBody');
+        const bodyElement = screen.getByTestId(sideSheetBody);
         expect(bodyElement).toHaveClass(
             'SideSheet-Body--disableOverlay SideSheet-Body--wide',
         );
-        const footerElement = screen.getByTestId('SideSheetFooter');
+        const footerElement = screen.getByTestId(sideSheetFooter);
         expect(footerElement).toHaveClass(
             'SideSheet-Footer--disableOverlay SideSheet-Footer--wide',
         );
@@ -157,7 +166,7 @@ describe('<SideSheet />', () => {
             </SideSheet>,
         );
 
-        const containerHiddenElement = screen.getByTestId('SideSheetRoot');
+        const containerHiddenElement = screen.getByTestId(sideSheetRoot);
         expect(containerHiddenElement).toHaveStyle('width: 0;');
     });
 
@@ -173,7 +182,7 @@ describe('<SideSheet />', () => {
             </SideSheet>,
         );
 
-        const containerExpandedElement = screen.getByTestId('SideSheetRoot');
+        const containerExpandedElement = screen.getByTestId(sideSheetRoot);
         expect(containerExpandedElement).not.toHaveStyle('width: 0;');
     });
 });

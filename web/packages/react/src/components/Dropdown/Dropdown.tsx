@@ -24,7 +24,15 @@ import DropdownActionItem from './DropdownActionItem';
 import { DropdownPropsType, OptionObjectType } from './type';
 import { selectDefaultTheme } from './theme';
 import { TextInput } from '../TextInput';
-import { defaultLabel, DROPDOWN_CLASS_PREFIX } from './constants';
+import {
+    defaultLabel,
+    DROPDOWN_CLASS_PREFIX,
+    dropdownActionItem,
+    dropdownContainer,
+    dropdownOptionItem,
+    dropdownOptionList,
+    dropdownOptionListContainer,
+} from './constants';
 import { useOnValueUpdate } from './utils/useOnValueUpdate';
 import { useValue } from './utils/useValue';
 import { useOptions } from './utils/useOptions';
@@ -148,7 +156,7 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
                 onClick={handleActionItemClick}
                 tabIndex={tabIndex}
                 theme={theme}
-                data-testid="DropdownActionItem"
+                data-testid={dropdownActionItem}
             />
         );
 
@@ -165,7 +173,7 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
                 onOptionSelect={onOptionSelect}
                 theme={theme}
                 multiple={multiple}
-                data-testid="DropdownOptionItem"
+                data-testid={dropdownOptionItem}
             />
         );
 
@@ -174,7 +182,7 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
                 <DropdownContainer
                     className={classOverride.Container}
                     theme={theme}
-                    data-testid="DropdownContainer"
+                    data-testid={dropdownContainer}
                     ref={containerRef}
                 >
                     <TextInput
@@ -194,14 +202,14 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
                     <DropdownOptionListContainer
                         className={classOverride.OptionListContainer}
                         theme={theme}
-                        data-testid="DropdownOptionListContainer"
+                        data-testid={dropdownOptionListContainer}
                     >
                         {internalOptions.length > 0 ? (
                             <DropdownOptionList
                                 className={classOverride.OptionList}
                                 isOptionListShown={isOptionListShown}
                                 theme={theme}
-                                data-testid="DropdownOptionList"
+                                data-testid={dropdownOptionList}
                             >
                                 {internalOptions.map(renderOptionItem)}
                             </DropdownOptionList>

@@ -8,6 +8,7 @@ import {
     titleTypographyStyle,
 } from './style';
 import { Typography } from '../../Typography';
+import { sideSheetHeader } from '../constants';
 
 export const SIDE_SHEET_HEADER_CLASS_PREFIX = 'SideSheetHeader';
 
@@ -23,7 +24,7 @@ export const SideSheetHeader: FunctionComponent<SideSheetHeaderPropsType> = ({
 
     return (
         <SideSheetHeaderRoot
-            data-testid="SideSheetHeader"
+            data-testid={sideSheetHeader}
             theme={theme}
             {...restProps}
         >

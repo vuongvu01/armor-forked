@@ -7,6 +7,7 @@ import {
 } from '@testing-library/react-hooks';
 
 import { Tag } from '../Tag';
+import { tagCloseIconContainer, tagRoot } from '../constants';
 
 describe('<Tag />', () => {
     afterEach(async () => {
@@ -40,14 +41,12 @@ describe('<Tag />', () => {
     it('should ensure that default user Tag type has corresponding class names set', async () => {
         render(<Tag label="Sample" />);
 
-        const containerElement = screen.getByTestId('TagRoot');
+        const containerElement = screen.getByTestId(tagRoot);
         expect(containerElement).toHaveClass(
             'Tag-Root--default Tag-Root--delete Tag-Root--onHover',
         );
 
-        const iconContainerElement = screen.getByTestId(
-            'TagCloseIconContainer',
-        );
+        const iconContainerElement = screen.getByTestId(tagCloseIconContainer);
         expect(iconContainerElement).toHaveClass(
             'Tag-CloseIconContainer--default Tag-CloseIconContainer--delete Tag-CloseIconContainer--onHover',
         );
@@ -56,14 +55,12 @@ describe('<Tag />', () => {
     it('should ensure that user Tag with delete button enabled has corresponding class names set', async () => {
         render(<Tag label="Sample" deleteOption="enabled" />);
 
-        const containerElement = screen.getByTestId('TagRoot');
+        const containerElement = screen.getByTestId(tagRoot);
         expect(containerElement).toHaveClass(
             'Tag-Root--default Tag-Root--delete Tag-Root--enabled',
         );
 
-        const iconContainerElement = screen.getByTestId(
-            'TagCloseIconContainer',
-        );
+        const iconContainerElement = screen.getByTestId(tagCloseIconContainer);
         expect(iconContainerElement).toHaveClass(
             'Tag-CloseIconContainer--delete Tag-CloseIconContainer--enabled',
         );
@@ -72,21 +69,37 @@ describe('<Tag />', () => {
     it('should ensure that status Tag `approved` has corresponding class names set', async () => {
         render(<Tag type="approved" />);
 
-        const containerElement = screen.getByTestId('TagRoot');
+        const containerElement = screen.getByTestId(tagRoot);
         expect(containerElement).toHaveClass('Tag-Root--approved');
     });
 
     it('should ensure that status Tag `denied` has corresponding class names set', async () => {
         render(<Tag type="denied" />);
 
-        const containerElement = screen.getByTestId('TagRoot');
+        const containerElement = screen.getByTestId(tagRoot);
         expect(containerElement).toHaveClass('Tag-Root--denied');
     });
 
     it('should ensure that status Tag `new` has corresponding class names set', async () => {
         render(<Tag type="new" />);
 
-        const containerElement = screen.getByTestId('TagRoot');
+        const containerElement = screen.getByTestId(tagRoot);
         expect(containerElement).toHaveClass('Tag-Root--new');
+    });
+
+    it('ensures margin* property transference', () => {
+        const marginAttribute = 'marginX';
+        const marginValue = 13;
+
+        const result = render(
+            <Tag type="new" {...{ [marginAttribute]: marginValue }} />,
+        );
+
+        // @ts-ignore
+        expect(result).toSupportMarginAttributes(
+            tagRoot,
+            marginAttribute,
+            marginValue,
+        );
     });
 });

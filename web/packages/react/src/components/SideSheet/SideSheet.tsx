@@ -11,7 +11,6 @@ import {
 } from './utils';
 import { SideSheetPropsType } from './type';
 import { selectDefaultTheme } from './theme';
-import { SIDE_SHEET_CLASS_PREFIX } from './constants';
 import { Modal } from '../Modal';
 import { useDisplay } from '../Modal/utils';
 import { Overlay } from '../Overlay';
@@ -25,6 +24,13 @@ import {
     SideSheetHeaderCloseButtonContent,
     SideSheetHeaderContainer,
 } from './style';
+import {
+    sideSheetContent,
+    sideSheetHeaderCloseButtonContainer,
+    sideSheetHeaderContainer,
+    sideSheetRoot,
+    SIDE_SHEET_CLASS_PREFIX,
+} from './constants';
 
 export const SideSheet: FunctionComponent<SideSheetPropsType> = forwardRef(
     function SideSheet(
@@ -88,7 +94,7 @@ export const SideSheet: FunctionComponent<SideSheetPropsType> = forwardRef(
                 />
                 <SideSheetRoot
                     className={classOverride.Root}
-                    data-testid="SideSheetRoot"
+                    data-testid={sideSheetRoot}
                     disableEffects={disableEffects}
                     display={display}
                     effectToggle={effectToggle}
@@ -99,19 +105,21 @@ export const SideSheet: FunctionComponent<SideSheetPropsType> = forwardRef(
                 >
                     <SideSheetContent
                         className={classOverride.Content}
-                        data-testid="SideSheetContent"
+                        data-testid={sideSheetContent}
                         theme={theme}
                     >
                         <SideSheetHeaderContainer
                             className={classOverride.HeaderContainer}
-                            data-testid="SideSheetHeaderContainer"
+                            data-testid={sideSheetHeaderContainer}
                             theme={theme}
                         >
                             {header}
                             {isCloseButtonVisible ? (
                                 <SideSheetHeaderCloseButtonContainer
                                     className={classOverride.CloseIcon}
-                                    data-testid="SideSheetHeaderCloseButtonContainer"
+                                    data-testid={
+                                        sideSheetHeaderCloseButtonContainer
+                                    }
                                     theme={theme}
                                 >
                                     <SideSheetHeaderCloseButtonContent

@@ -17,8 +17,13 @@ import {
 } from './style';
 import { TextInputContainerPropsType, TextInputPropsType } from './type';
 import { TextInputDefaultTheme } from './theme';
-
-const CLASS_PREFIX = 'TextInput';
+import {
+    textInputInput,
+    textInputLabel,
+    textInputLabelBackground,
+    textInputRoot,
+    CLASS_PREFIX,
+} from './constants';
 
 export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
     function TextInput(
@@ -127,7 +132,7 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
                 error={error}
                 onMouseOver={onInputMouseOver}
                 onMouseOut={onInputMouseOut}
-                data-testid="TextInputRoot"
+                data-testid={textInputRoot}
                 {...restProps}
             >
                 {before}
@@ -164,7 +169,7 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
                         <Tag
                             {...forwardedProps}
                             ref={internalInputRef}
-                            data-testid="TextInputInput"
+                            data-testid={textInputInput}
                         />
                     )}
                 </TextInputContainer>
@@ -180,14 +185,14 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
                         styles={stylesOverride.Label}
                         theme={theme}
                         value={value}
-                        data-testid="TextInputLabel"
+                        data-testid={textInputLabel}
                     >
                         <TextInputLabelBackground
                             className={classNameComponents.LabelBackground}
                             styles={stylesOverride.LabelBackground}
                             theme={theme}
                             disabled={disabled}
-                            data-testid="TextInputLabelBackground"
+                            data-testid={textInputLabelBackground}
                         >
                             {label}
                         </TextInputLabelBackground>
