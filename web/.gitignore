@@ -1,6 +1,0 @@
-node_modules/
-*.log
-*.tar.gz
-packages/**/build/*
-packages/**/build.cjs/*
-packages/**/build.esm/*

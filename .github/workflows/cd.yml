@@ -1,53 +1,51 @@
-name: CI.REACT
+name: CD
 
 on:
-    pull_request:
+    push:
         branches:
-            - dev
             - master
         paths:
-            - 'packages/react/**'
+            - 'packages/**'
 
 jobs:
-    test:
+    publish:
         runs-on: ubuntu-latest
 
         steps:
             - uses: actions/checkout@v2
             - name: Install common
               run: yarn install
-            - name: Install
+            - name: Install (react)
               working-directory: ./packages/react
               run: yarn install
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            - name: Install peers
+            - name: Install peers (react)
               working-directory: ./packages/react
               run: yarn run install-peers
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            - name: Lint
+            - name: Build (react)
               working-directory: ./packages/react
-              run: yarn run lint
+              run: yarn run build
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            - name: Test
-              working-directory: ./packages/react
-              run: yarn run test
-              env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            - name: Test visual (install)
-              working-directory: ./packages/react/visual
+            - name: Install (react-icons)
+              working-directory: ./packages/react-icons
               run: yarn install
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            - name: Test visual
-              working-directory: ./packages/react
-              run: yarn test:visual:cicd
+            - name: Install peers (react-icons)
+              working-directory: ./packages/react-icons
+              run: yarn run install-peers
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            - name: Build
-              working-directory: ./packages/react
+            - name: Build (react-icons)
+              working-directory: ./packages/react-icons
               run: yarn run build
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            - name: Publish
+              run: yarn multi-semantic-release
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

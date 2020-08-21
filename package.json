@@ -1,0 +1,31 @@
+{
+    "name": "armor",
+    "license": "UNLICENSED",
+    "scripts": {
+        "build": "lerna run build --npm-client=yarn",
+        "bootstrap": "lerna bootstrap --npm-client=yarn",
+        "install-peers": "lerna run install-peers --npm-client=yarn",
+        "test": "lerna run test --npm-client=yarn",
+        "lint": "lerna run lint --npm-client=yarn",
+        "release": "./script/release.sh"
+    },
+    "keywords": [],
+    "author": "",
+    "devDependencies": {
+        "husky": "^4.2.3",
+        "lerna": "^3.20.2",
+        "multi-semantic-release": "^2.4.5",
+        "prettier": "^1.19.1",
+        "pretty-quick": "^2.0.1"
+    },
+    "private": true,
+    "workspaces": [
+        "packages/react",
+        "packages/react-icons"
+    ],
+    "husky": {
+        "hooks": {
+            "pre-commit": "pretty-quick --staged"
+        }
+    }
+}
