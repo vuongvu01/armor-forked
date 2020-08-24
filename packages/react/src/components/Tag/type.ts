@@ -3,7 +3,6 @@ import { HTMLAttributes } from 'react';
 import { MarginAttributesType } from '../../system/attributes';
 import { Indexed } from '../../type';
 import { ClassNamesType, NodeStylePropsType } from '../type';
-import { ThemeType } from '../../styling';
 
 export type TagTypeDefault = 'default';
 export type TagTypeApproved = 'approved';

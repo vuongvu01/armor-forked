@@ -17,6 +17,7 @@ import { useDisplay } from '../Modal/utils';
 import { useContainerClickTrap } from '../DialogContent/utils';
 import { dialogDefaultTheme } from './theme';
 import { Overlay } from '../Overlay';
+import { dialogCloseButton } from './constants';
 
 const CLASS_PREFIX = 'Dialog';
 export const DIALOG_SCROLL_DOCUMENT = 'document';
@@ -89,11 +90,12 @@ export const Dialog: FunctionComponent<DialogPropsType> = ({
                 >
                     {!disableCloseButton && (
                         <DialogCloseButton
-                            theme={theme}
-                            tabIndex={-1}
                             className={classNameComponents.CloseButton}
-                            styles={stylesOverride.CloseButton}
+                            data-testid={dialogCloseButton}
                             onClick={onClose}
+                            styles={stylesOverride.CloseButton}
+                            tabIndex={-1}
+                            theme={theme}
                         >
                             <CloseIcon />
                         </DialogCloseButton>

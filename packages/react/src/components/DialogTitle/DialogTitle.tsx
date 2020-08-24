@@ -8,12 +8,13 @@ import {
     useDialogTitleStylesOverride,
 } from './utils';
 import {
+    DialogTitleDescription,
     DialogTitleRoot,
     DialogTitleText,
-    DialogTitleDescription,
 } from './style';
 import { DialogTitlePropsType } from './type';
 import { dialogTitleDefaultTheme } from './theme';
+import { dialogTitleText } from './constants';
 
 const CLASS_PREFIX = 'DialogTitle';
 
@@ -35,7 +36,6 @@ export const DialogTitle: FunctionComponent<DialogTitlePropsType> = ({
     );
     const stylesOverride = useDialogTitleStylesOverride(styles);
 
-    // todo: probably reuse Typography component as title
     return (
         <DialogTitleRoot
             theme={theme}
@@ -44,8 +44,9 @@ export const DialogTitle: FunctionComponent<DialogTitlePropsType> = ({
             styles={stylesOverride.Root}
         >
             <DialogTitleText
-                theme={theme}
                 className={classNameComponents.Text}
+                data-testid={dialogTitleText}
+                subSectionTitle
                 styles={stylesOverride.Text}
             >
                 {children}

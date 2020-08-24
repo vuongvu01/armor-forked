@@ -1,8 +1,4 @@
-import {
-    componentSpacing02,
-    componentSpacing04,
-    layoutSpacing05,
-} from '../../tokens';
+import { componentSpacing02, layoutSpacing05 } from '../../tokens';
 
 export const selectDefaultTheme = {
     ActionItem: {

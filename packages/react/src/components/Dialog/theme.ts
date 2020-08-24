@@ -20,7 +20,6 @@ export const dialogDefaultTheme = {
     CloseButton: {
         base: {
             color: '$color.neutral.05',
-            padding: 3,
             top: 6.5,
             right: 6.5,
             fontSize: '$typography.body.fontSize',

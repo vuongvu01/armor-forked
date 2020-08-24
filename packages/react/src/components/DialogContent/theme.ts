@@ -3,8 +3,8 @@ export const dialogContentDefaultTheme = {
         base: {
             paddingTop: 0,
             paddingBottom: 0,
-            paddingLeft: 8,
-            paddingRight: 8,
+            paddingLeft: 6,
+            paddingRight: 6,
             '&:first-child': {
                 paddingTop: 8,
             },

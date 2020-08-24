@@ -7,6 +7,7 @@ import {
     DialogTitleTextPropsType,
     DialogTitleDescriptionPropsType,
 } from './type';
+import { Typography } from '../Typography';
 
 const propertyList = {
     description: true,
@@ -23,11 +24,8 @@ export const DialogTitleRoot = styled.div.withConfig({
     ${(props: DialogTitleRootPropsType) => props.styles(props)}
 `;
 
-// todo: probably reuse Typography component as title
-export const DialogTitleText = styled.div<DialogTitleTextPropsType>`
-    letter-spacing: 0;
-    ${({ theme }: DialogTitleTextPropsType) =>
-        theme.componentOverrides.DialogTitle.Text.base}
+export const DialogTitleText = styled(Typography)<DialogTitleTextPropsType>`
+    margin: 0;
 `;
 
 export const DialogTitleDescription = styled.div<

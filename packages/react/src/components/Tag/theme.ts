@@ -1,7 +1,6 @@
 import {
     componentSpacing01,
     componentSpacing02,
-    componentSpacing03,
     componentSpacing07,
 } from '../../tokens';
 

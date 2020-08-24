@@ -1,7 +1,7 @@
 export const dialogActionsDefaultTheme = {
     Root: {
         base: {
-            padding: 8,
+            padding: 6,
             ':not(:first-child)': {
                 paddingTop: 12,
             },
