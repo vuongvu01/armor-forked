@@ -1,0 +1,269 @@
+import {useState} from 'react'
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import {
+    Accordion,
+    AccordionHeader,
+    AccordionContent,
+    Typography,
+    Dropdown,
+    Box,
+    Radio,
+    RadioGroup,
+    Checkbox
+} from '../../../src/components';
+
+
+<Meta title="Components/Accordion" component={Accordion} />
+
+# Accordion
+
+~~~js
+import { Accordion } from '@deliveryhero/armor';
+~~~
+
+## Minimum configuration
+
+<Preview>
+    <Story name="Minimum configuration" height="400px">
+      {() => {
+const handleOnToggle = () => console.log('Toggle');
+return (
+    <>
+        <Accordion onToggle={handleOnToggle}>
+            <AccordionHeader title="Support" />
+            <AccordionContent>Support content</AccordionContent>
+        </Accordion>
+        <Accordion onToggle={handleOnToggle}>
+            <AccordionHeader
+                title="Settings"
+            />
+            <AccordionContent>Settings content</AccordionContent>
+        </Accordion>
+    </>
+);}
+      }
+    </Story>
+</Preview>
+
+## Expanded by default
+
+<Preview>
+    <Story name="Expanded by default" height="400px">
+      {() => {
+const handleOnToggle = () => console.log('Toggle');
+return (
+    <>
+        <Accordion defaultExpanded onToggle={handleOnToggle}>
+            <AccordionHeader title="Support" />
+            <AccordionContent>Support content</AccordionContent>
+        </Accordion>
+        <Accordion defaultExpanded onToggle={handleOnToggle}>
+            <AccordionHeader
+                title="Settings"
+            />
+            <AccordionContent>Settings content</AccordionContent>
+        </Accordion>
+    </>
+);}
+      }
+    </Story>
+</Preview>
+
+## Disabled state
+
+<Preview>
+    <Story name="Disabled state" height="400px">
+      {() => {
+const handleOnToggle = () => console.log('Toggle');
+return (
+    <>
+        <Accordion onToggle={handleOnToggle}>
+            <AccordionHeader title="Support" />
+            <AccordionContent>Support content</AccordionContent>
+        </Accordion>
+        <Accordion disabled>
+            <AccordionHeader title="Settings" />
+            <AccordionContent>Settings content</AccordionContent>
+        </Accordion>
+    </>
+);}
+      }
+    </Story>
+</Preview>
+
+## Controlled example
+
+<Preview>
+    <Story name="Controlled example" height="400px">
+      {() => {
+const accordion0 = 'accordion0';
+const accordion1 = 'accordion1';
+const accordion2 = 'accordion2';
+const [currentlyExpanded, setCurrentlyExpanded] = useState(accordion0);
+const handleToggle = (panel) => (event, isExpanded) => {
+    if (isExpanded) {
+        setCurrentlyExpanded(panel);
+    }
+};
+return (
+    <div style={{ width: '500px' }}>
+        <Accordion
+            expanded={currentlyExpanded === accordion0}
+            onToggle={handleToggle(accordion0)}
+        >
+            <AccordionHeader title="Accordion 0" />
+            <AccordionContent>Content 0</AccordionContent>
+        </Accordion>
+        <Accordion
+            expanded={currentlyExpanded === accordion1}
+            onToggle={handleToggle(accordion1)}
+        >
+            <AccordionHeader title="Accordion 1" />
+            <AccordionContent>Content 1</AccordionContent>
+        </Accordion>
+        <Accordion
+            expanded={currentlyExpanded === accordion2}
+            onToggle={handleToggle(accordion2)}
+        >
+            <AccordionHeader title="Accordion 2" />
+            <AccordionContent>Content 2</AccordionContent>
+        </Accordion>
+    </div>
+);}
+      }
+    </Story>
+</Preview>
+
+## With more content
+
+<Preview>
+    <Story name="With more content" height="1200px">
+      {() => {
+const groupName1 = 'radioName1';
+const groupName2 = 'radioName2';
+const [group1SelectedValue, setSelectedValueGroup1] = useState('');
+const handleChangeGroup1 = (event) => {
+    const selectedValue = event?.target?.value;
+    if (selectedValue) {
+        setSelectedValueGroup1(selectedValue);
+    }
+};
+const handleOnToggle = () => console.log('Toggle');
+return (
+    <>
+        <Accordion onToggle={handleOnToggle}>
+            <AccordionHeader title="Developers" />
+            <AccordionContent>Get coffee</AccordionContent>
+        </Accordion>
+        <Accordion onToggle={handleOnToggle}>
+            <AccordionHeader title="Support" />
+            <AccordionContent>
+                Please contact us at{' '}
+                <a href="https://app.slack.com/client/T052P4KCD/CUMDG3PPZ">
+                    #armor-news
+                </a>{' '}
+                Slack channel
+            </AccordionContent>
+        </Accordion>
+        <Accordion onToggle={handleOnToggle}>
+            <AccordionHeader title="Meals" />
+            <AccordionContent>
+                <Box marginY={5}>
+                    <Typography subSectionTitle marginTop={0}>
+                        Meal combo
+                    </Typography>
+                    <Dropdown
+                        options={['Biryani', 'Tacos', 'Pho', 'Risotto']}
+                        onSelect={() => {}}
+                        label="Main dish"
+                        marginY={2}
+                        marginRight={6}
+                        selectedIndex={1}
+                    />
+                    <Dropdown
+                        options={['French fries', 'Rice', 'Beans', 'Corn']}
+                        onSelect={() => {}}
+                        label="Side dish"
+                        marginTop={2}
+                        marginBottom={6}
+                        selectedIndex={2}
+                    />
+                </Box>
+                <Box marginBottom={10}>
+                    <Typography subSectionTitle>Pick a sauce</Typography>
+                    <RadioGroup
+                        name={groupName1}
+                        selectedValue={group1SelectedValue}
+                        onChange={handleChangeGroup1}
+                        marginBottom={2}
+                    >
+                        <Radio value="val1" label="Mild" />
+                        <Radio value="val2" label="Medium" />
+                        <Radio value="val3" label="Spicy" />
+                    </RadioGroup>
+                </Box>
+                <Box marginBottom={10}>
+                    <Typography subSectionTitle>
+                        Wähle eine Sauce
+                    </Typography>
+                    <RadioGroup
+                        name={groupName2}
+                        selectedValue={group1SelectedValue}
+                        onChange={handleChangeGroup1}
+                        marginBottom={2}
+                    >
+                        <Radio value="val1" label="Mild" />
+                        <Radio value="val2" label="Medium" />
+                        <Radio value="val3" label="Scharf" />
+                    </RadioGroup>
+                </Box>
+                <Box marginBottom={10}>
+                    <Typography subSectionTitle marginTop={4}>
+                        Extras
+                    </Typography>
+                    <div
+                        style={{ display: 'flex', flexDirection: 'column' }}
+                    >
+                        <Checkbox
+                            onChange={() => {}}
+                            label="Soft drink"
+                            marginBottom={2}
+                        />
+                        <Checkbox
+                            onChange={() => {}}
+                            label="Chips"
+                            marginBottom={2}
+                        />
+                        <Checkbox
+                            onChange={() => {}}
+                            label="Chocolate chip cookie"
+                            marginBottom={2}
+                        />
+                        <Checkbox
+                            onChange={() => {}}
+                            label="Extra cheese"
+                            marginBottom={2}
+                        />
+                        <Checkbox
+                            onChange={() => {}}
+                            label="Lettuce salad with dressing of your choice"
+                            marginBottom={2}
+                        />
+                    </div>
+                </Box>
+            </AccordionContent>
+        </Accordion>
+        <Accordion onToggle={handleOnToggle}>
+            <AccordionHeader title="Settings" />
+            <AccordionContent>Please configure</AccordionContent>
+        </Accordion>
+    </>
+);
+}
+      }
+    </Story>
+</Preview>
+
+## Properties
+
+<Props of={Accordion} />

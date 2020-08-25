@@ -1,0 +1,53 @@
+name: CI.REACT-ICONS
+
+on:
+    pull_request:
+        branches:
+            - dev
+            - master
+        paths:
+            - 'packages/react-icons/**'
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v2
+            - name: Install common
+              run: yarn install
+            - name: Install
+              working-directory: ./packages/react-icons
+              run: yarn install
+              env:
+                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
+            - name: Install peers
+              working-directory: ./packages/react-icons
+              run: yarn run install-peers
+              env:
+                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
+            - name: Lint
+              working-directory: ./packages/react-icons
+              run: yarn run lint
+              env:
+                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
+            - name: Test
+              working-directory: ./packages/react-icons
+              run: yarn run test
+              env:
+                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
+            #      - name: Test visual (install)
+            #        working-directory: ./packages/react-icons/visual
+            #        run: yarn install
+            #        env:
+            #          GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
+            #      - name: Test visual
+            #        working-directory: ./packages/react-icons
+            #        run: yarn test:visual:cicd
+            #        env:
+            #          GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
+            - name: Build
+              working-directory: ./packages/react-icons
+              run: yarn run build
+              env:
+                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
