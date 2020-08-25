@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
+import { CancelIcon } from '@deliveryhero/armor-icons';
 import { useThemeOverride } from '../../utils/hooks';
 import { useTheme } from '../../styling';
 
@@ -12,7 +13,6 @@ import {
 } from './style';
 import { DialogPropsType } from './type';
 import { Modal } from '../Modal';
-import { CloseIcon } from '../../icons';
 import { useDisplay } from '../Modal/utils';
 import { useContainerClickTrap } from '../DialogContent/utils';
 import { dialogDefaultTheme } from './theme';
@@ -97,7 +97,7 @@ export const Dialog: FunctionComponent<DialogPropsType> = ({
                             tabIndex={-1}
                             theme={theme}
                         >
-                            <CloseIcon />
+                            <CancelIcon />
                         </DialogCloseButton>
                     )}
                     <DialogContent

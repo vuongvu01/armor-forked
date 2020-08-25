@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { CancelIcon } from '@deliveryhero/armor-icons';
 
 import { marginAttributes } from '../../system/attributes';
 import { shouldForwardProp } from '../../utils';
@@ -10,7 +11,6 @@ import {
 } from './type';
 import { TAG_DELETE_BEHAVIOUR_OPTIONS, TAG_TYPES } from './constants';
 import { transitionDurationInSec } from '../../constants';
-import { CloseIcon } from '../../icons';
 import { Typography } from '../Typography';
 
 const statusWidth = 'width: 76px;';
@@ -133,7 +133,7 @@ export const TagTypography = styled(Typography)<TagTypographyPropsType>`
     ${typographyStyle}
 `;
 
-export const TagCloseIcon = styled(CloseIcon)<TagCloseIconPropsType>`
+export const TagCloseIcon = styled(CancelIcon)<TagCloseIconPropsType>`
     outline: none;
     padding-left: 6px;
 

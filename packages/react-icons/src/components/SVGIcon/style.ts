@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 
+import { marginAttributes } from '../../system/attributes/margin';
 import { SVGIconRootPropsType } from './type';
 
 export const SVGIconRoot = styled.svg<SVGIconRootPropsType>`
@@ -16,4 +17,5 @@ export const SVGIconRoot = styled.svg<SVGIconRootPropsType>`
             ? theme.typography.pixelToRem(fontSize)
             : 'inherit'};
     `}
+    ${marginAttributes}
 `;

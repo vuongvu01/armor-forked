@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
+import { CancelIcon } from '@deliveryhero/armor-icons';
 
 import { useThemeOverride } from '../../utils/hooks';
 import { useTheme } from '../../styling';
@@ -16,7 +17,6 @@ import {
 } from './style';
 import { MessageIconPropsType, MessagePropsType } from './type';
 import { messageDefaultTheme } from './theme';
-import { CloseIcon } from '../../icons';
 import { useIconComponent } from './utils/useIconComponent';
 
 const CLASS_PREFIX = 'Message';
@@ -124,7 +124,7 @@ export const Message: FunctionComponent<MessagePropsType> = ({
                     styles={stylesOverride.CloseButton}
                     tabIndex={-1}
                 >
-                    <CloseIcon />
+                    <CancelIcon />
                 </MessageCloseButton>
             )}
         </MessageRoot>

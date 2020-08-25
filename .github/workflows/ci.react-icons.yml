@@ -20,34 +20,34 @@ jobs:
               working-directory: ./packages/react-icons
               run: yarn install
               env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
             - name: Install peers
               working-directory: ./packages/react-icons
               run: yarn run install-peers
               env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
             - name: Lint
               working-directory: ./packages/react-icons
               run: yarn run lint
               env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
             - name: Test
               working-directory: ./packages/react-icons
               run: yarn run test
               env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
             #      - name: Test visual (install)
             #        working-directory: ./packages/react-icons/visual
             #        run: yarn install
             #        env:
-            #          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            #          GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
             #      - name: Test visual
             #        working-directory: ./packages/react-icons
             #        run: yarn test:visual:cicd
             #        env:
-            #          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            #          GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
             - name: Build
               working-directory: ./packages/react-icons
               run: yarn run build
               env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}

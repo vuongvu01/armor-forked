@@ -1,10 +1,10 @@
-import { MessageEffectivePropsLevelType } from '../type';
 import {
-    CheckMarkCircleIcon,
+    CancelCircleFilledIcon,
     InfoIcon,
     WarningIcon,
-    CancelIcon,
-} from '../../../icons';
+    TickCircleFilledIcon,
+} from '@deliveryhero/armor-icons';
+import { MessageEffectivePropsLevelType } from '../type';
 import { messageLevels } from '../constants';
 
 export const useIconComponent = ({
@@ -19,11 +19,11 @@ export const useIconComponent = ({
     }
 
     if (error || level === messageLevels.error) {
-        return CancelIcon;
+        return CancelCircleFilledIcon;
     }
 
     if (success || level === messageLevels.success) {
-        return CheckMarkCircleIcon;
+        return TickCircleFilledIcon;
     }
 
     return InfoIcon;

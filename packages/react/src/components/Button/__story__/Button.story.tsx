@@ -7,6 +7,7 @@ import {
     select,
     // eslint-disable-next-line import/no-unresolved
 } from '@storybook/addon-knobs';
+import { EditIcon } from '@deliveryhero/armor-icons';
 // eslint-disable-next-line import/no-unresolved
 import { action } from '@storybook/addon-actions';
 import styled, { ThemeProvider } from 'styled-components';
@@ -16,7 +17,6 @@ import { withStyles as withMaterialStyles } from '@material-ui/core/styles';
 import { BrowserRouter, Link } from 'react-router-dom';
 
 import { MaterialIcon } from '../../MaterialIcon';
-import { EditIcon } from '../../../icons';
 import { defaultTheme, makeTheme } from '../../../styling';
 import { ObjectLiteralType } from '../../../type';
 import { GroupHelper } from '../../../helpers/GroupHelper';

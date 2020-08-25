@@ -1,9 +1,9 @@
 ## Description
-- this feature was added
-- and that one as well
+
+Describe the feature here.
 
 ## Ticket 
-https://jira.deliveryhero.com/browse/LD-XYZ
+https://jira.deliveryhero.com/browse/#TICKET_ID#
 
 ## Dependencies
 none
