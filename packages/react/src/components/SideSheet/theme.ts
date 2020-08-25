@@ -4,7 +4,7 @@ import {
     componentSpacing08,
 } from '../../tokens';
 
-export const selectDefaultTheme = {
+export const sideSheetDefaultTheme = {
     Root: {
         base: {
             backgroundColor: '$color.neutral.00',

@@ -90,7 +90,6 @@ export const Types = () => {
                     <Button primary small>
                         Primary
                     </Button>
-                    <Button primary />
                 </GroupHelper>
                 <GroupHelper styles={groupStyle}>
                     <Button disabled primary>

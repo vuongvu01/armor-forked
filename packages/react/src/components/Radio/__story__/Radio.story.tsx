@@ -69,7 +69,7 @@ export const States = () => {
     );
 };
 
-export const RadioButtonGroup = () => {
+export const RadioButtonGroupWithGroupMargin = () => {
     const groupName1 = 'radioName1';
     const [group1SelectedValue, setSelectedValueGroup1] = useState('');
 
@@ -85,6 +85,7 @@ export const RadioButtonGroup = () => {
         <GroupHelper gap={2}>
             <h4>Radio group</h4>
             <RadioGroup
+                marginY={6}
                 name={groupName1}
                 selectedValue={group1SelectedValue}
                 onChange={handleChangeGroup1}
@@ -203,12 +204,11 @@ export const DefaultStates = () => {
         <GroupHelper gap={2}>
             <h4>Default states (pre-selected, disabled)</h4>
             <RadioGroup
-                marginY={3}
                 name={groupName2}
                 selectedValue={group2SelectedValue}
                 onChange={handleChangeGroup2}
             >
-                <Radio value="val1" label="Pizza" />
+                <Radio marginY={10} value="val1" label="Pizza" />
                 <Radio value={value2} label="Pasta" />
                 <Radio value="val3" label="Risotto" />
                 <Radio value="val4" label="Frittata" />

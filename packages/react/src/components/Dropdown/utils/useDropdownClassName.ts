@@ -52,13 +52,6 @@ const useDropdownClassName = (
                 classNames,
                 disabled,
             }),
-            ActionItem: classGeneratorBasedOnComponent({
-                component: 'ActionItem',
-                classPrefix,
-                className,
-                classNames,
-                disabled,
-            }),
             OptionListContainer: classGeneratorBasedOnComponent({
                 component: 'OptionListContainer',
                 classPrefix,

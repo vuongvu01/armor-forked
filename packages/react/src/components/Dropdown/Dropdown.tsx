@@ -20,9 +20,8 @@ import {
     dropdownTextInputStyle,
 } from './style';
 import DropdownOptionItem from './DropdownOptionItem';
-import DropdownActionItem from './DropdownActionItem';
 import { DropdownPropsType, OptionObjectType } from './type';
-import { selectDefaultTheme } from './theme';
+import { dropdownDefaultTheme } from './theme';
 import { TextInput } from '../TextInput';
 import {
     defaultLabel,
@@ -37,6 +36,7 @@ import { useOnValueUpdate } from './utils/useOnValueUpdate';
 import { useValue } from './utils/useValue';
 import { useOptions } from './utils/useOptions';
 import { useSelectedValueToDisplay } from './utils/useSelectedValueToDisplay';
+import { ExpansionIndicator } from '../ExpansionIndicator';
 
 export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
     function Dropdown(
@@ -60,7 +60,7 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
         ref,
     ) {
         const theme = useTheme();
-        useThemeOverride(DROPDOWN_CLASS_PREFIX, theme, selectDefaultTheme);
+        useThemeOverride(DROPDOWN_CLASS_PREFIX, theme, dropdownDefaultTheme);
 
         const classOverride = useDropdownClassName(
             DROPDOWN_CLASS_PREFIX,
@@ -145,14 +145,11 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
         );
 
         const renderActionItem = (
-            <DropdownActionItem
-                className={classOverride.ActionItem}
+            <ExpansionIndicator
                 disabled={disabled}
                 error={error}
-                isActionSeparatorDisplayed={
-                    isOptionListShown || !!internalValue.length
-                }
-                isOptionListShown={isOptionListShown}
+                displaySeparator={isOptionListShown || !!internalValue.length}
+                isExpanded={isOptionListShown}
                 onClick={handleActionItemClick}
                 tabIndex={tabIndex}
                 theme={theme}

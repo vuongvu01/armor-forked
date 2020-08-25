@@ -1,4 +1,4 @@
-import { DropdownPropsType as PropsTypeSelect } from './type';
+import { DropdownPropsType as PropsTypeExpansionIndicator } from './type';
 
 export * from './Dropdown';
-export type DropdownPropsType = PropsTypeSelect;
+export type DropdownPropsType = PropsTypeExpansionIndicator;

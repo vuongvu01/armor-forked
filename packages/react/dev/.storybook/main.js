@@ -1,4 +1,15 @@
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const { addDecorator, addParameters } = require('@storybook/react');
+const { INITIAL_VIEWPORTS } = require('@storybook/addon-viewport');
+const {
+    withThemesProvider,
+} = require('storybook-addon-styled-component-theme');
+
+addParameters({
+    viewport: {
+        viewports: INITIAL_VIEWPORTS,
+    },
+});
 
 module.exports = {
     stories: ['../../src/**/*.story.tsx'],

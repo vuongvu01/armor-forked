@@ -12,7 +12,7 @@
     "author": "",
     "license": "UNLICENSED",
     "dependencies": {
-        "@storybook/addon-docs": "^5.3.19",
+        "@storybook/addon-docs": "^6.0.5",
         "@storybook/react": "^6.0.1",
         "@storybook/storybook-deployer": "^2.8.6",
         "parse-prop-types": "^0.3.0",
@@ -23,7 +23,7 @@
     },
     "devDependencies": {
         "@babel/core": "^7.10.1",
-        "@storybook/addons": "^5.3.19",
+        "@storybook/addons": "^6.0.5",
         "babel-loader": "^8.1.0",
         "loki": "^0.24.0",
         "serve": "^11.3.2",

@@ -60,7 +60,7 @@ export type DropdownOnRenderSelectedValueType = (
 
 type DropdownEffectivePropsType = Indexed<{
     error?: boolean;
-    isActionSeparatorDisplayed?: boolean;
+    displaySeparator?: boolean;
     isListExpanded?: boolean;
     isSelected?: boolean;
     item?:
@@ -96,17 +96,6 @@ type DropdownEffectivePropsType = Indexed<{
     MarginAttributesType;
 
 export type DropdownPropsType = DropdownEffectivePropsType;
-export type DropdownActionItemPropsType = Pick<
-    DropdownEffectivePropsType,
-    | 'className'
-    | 'disabled'
-    | 'error'
-    | 'isActionSeparatorDisplayed'
-    | 'isOptionListShown'
-    | 'tabIndex'
-    | 'theme'
-    | 'onClick'
->;
 
 export type DropdownOptionListPropsType = Indexed<{
     onClick?: (event: MouseEvent) => void;

@@ -5,7 +5,6 @@ import { transitionDurationInSec } from '../../constants';
 import { colorGrey00, colorGrey30 } from '../../tokens';
 import { shouldForwardProp } from '../../utils';
 import {
-    DropdownActionItemPropsType,
     DropdownOptionItemPropsType,
     DropdownOptionListPropsType,
     DropdownRootPropsType,
@@ -25,28 +24,6 @@ const optionItemStyle = ({
     return Dropdown.OptionItem.base;
 };
 
-const actionItemContainerStyle = ({
-    disabled,
-    theme: {
-        componentOverrides: { Dropdown },
-    },
-}: DropdownActionItemPropsType) => css`
-    ${disabled ? Dropdown.ActionItem.disabled : ''}
-`;
-
-const actionItemStyle = ({
-    disabled,
-    isOptionListShown,
-    theme: {
-        componentOverrides: { Dropdown },
-    },
-}: DropdownActionItemPropsType) =>
-    css`
-        ${Dropdown.ActionItem.base} ${
-        disabled ? Dropdown.ActionItem.disabled : ''
-    } ${isOptionListShown ? Dropdown.ActionItem.rotate : ''}
-    `;
-
 const optionListStyle = ({
     isOptionListShown,
     theme: {
@@ -58,15 +35,6 @@ const optionListStyle = ({
         ${isOptionListShown ? Dropdown.OptionList.displayed : ''}
     `;
 };
-
-const actionSeparator = ({
-    isActionSeparatorDisplayed,
-    theme: {
-        componentOverrides: { Dropdown },
-    },
-}: DropdownActionItemPropsType) => css`
-    ${isActionSeparatorDisplayed ? Dropdown.ActionItem.separator : ''}
-`;
 
 export const DropdownWrapper = styled.div.withConfig({
     shouldForwardProp: property => shouldForwardProp(property),
@@ -121,45 +89,6 @@ export const DropdownOptionItem = styled.div<DropdownOptionItemPropsType>`
     border-left: 2px solid transparent;
 
     ${optionItemStyle}
-`;
-
-export const DropdownActionContainer = styled.div<DropdownActionItemPropsType>`
-    align-items: center;
-    display: flex;
-    height: 100%;
-    justify-content: center;
-    outline: none;
-    width: 56px;
-
-    ${actionItemContainerStyle}
-`;
-
-export const DropdownActionContent = styled.div<DropdownActionItemPropsType>`
-    align-items: center;
-    border-left-width: 1px;
-    border-left-style: solid;
-    border-left-color: transparent;
-    display: flex;
-    height: calc(100% - 16px);
-    justify-content: center;
-    transition: border-color ${transitionDurationInSec}s;
-    width: 100%;
-
-    ${actionSeparator}
-`;
-
-export const DropdownAction = styled.div<DropdownActionItemPropsType>`
-    border-bottom-width: 2px;
-    border-bottom-style: solid;
-    border-right-width: 2px;
-    border-right-style: solid;
-    height: 8px;
-    position: relative;
-    transform: rotate(45deg);
-    transition: ${transitionDurationInSec}s;
-    width: 8px;
-
-    ${actionItemStyle}
 `;
 
 export const dropdownTextInputStyle = {

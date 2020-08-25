@@ -10,7 +10,7 @@ import {
     useSideSheetStylesOverride,
 } from './utils';
 import { SideSheetPropsType } from './type';
-import { selectDefaultTheme } from './theme';
+import { sideSheetDefaultTheme } from './theme';
 import { Modal } from '../Modal';
 import { useDisplay } from '../Modal/utils';
 import { Overlay } from '../Overlay';
@@ -64,7 +64,7 @@ export const SideSheet: FunctionComponent<SideSheetPropsType> = forwardRef(
             wide,
         );
 
-        useThemeOverride(SIDE_SHEET_CLASS_PREFIX, theme, selectDefaultTheme);
+        useThemeOverride(SIDE_SHEET_CLASS_PREFIX, theme, sideSheetDefaultTheme);
 
         const childrenWithExtendedProps = extendChildrenWithProps(children, {
             classOverride,

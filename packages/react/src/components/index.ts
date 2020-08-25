@@ -1,3 +1,4 @@
+export * from './Accordion';
 export * from './Box';
 export * from './Button';
 export * from './Checkbox';
@@ -6,6 +7,7 @@ export * from './DialogActions';
 export * from './DialogContent';
 export * from './DialogTitle';
 export * from './Dropdown';
+export * from './ExpansionIndicator';
 export * from './FormField';
 export * from './FormFieldMessage';
 export * from './FormFieldTooltip';
