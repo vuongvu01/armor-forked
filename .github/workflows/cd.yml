@@ -4,6 +4,7 @@ on:
     push:
         branches:
             - master
+            - beta
         paths:
             - 'packages/**'
 
@@ -15,21 +16,6 @@ jobs:
             - uses: actions/checkout@v2
             - name: Install common
               run: yarn install
-            - name: Install (react)
-              working-directory: ./packages/react
-              run: yarn install
-              env:
-                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
-            - name: Install peers (react)
-              working-directory: ./packages/react
-              run: yarn run install-peers
-              env:
-                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
-            - name: Build (react)
-              working-directory: ./packages/react
-              run: yarn run build
-              env:
-                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
             - name: Install (react-icons)
               working-directory: ./packages/react-icons
               run: yarn install
@@ -42,6 +28,21 @@ jobs:
                   GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
             - name: Build (react-icons)
               working-directory: ./packages/react-icons
+              run: yarn run build
+              env:
+                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
+            - name: Install (react)
+              working-directory: ./packages/react
+              run: yarn install
+              env:
+                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
+            - name: Install peers (react)
+              working-directory: ./packages/react
+              run: yarn run install-peers
+              env:
+                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
+            - name: Build (react)
+              working-directory: ./packages/react
               run: yarn run build
               env:
                   GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
