@@ -1,1 +1,1 @@
-export const cdtrigger = 2;
+export const cdtrigger = 3;
