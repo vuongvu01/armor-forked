@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react';
 
 import { SVGIconPropsType } from './type';
 import { SVGIconRoot } from './style';
+import { useTheme } from '../../styling/useTheme';
 
 export const SVGIcon: FunctionComponent<SVGIconPropsType> = ({
     children,
@@ -13,6 +14,7 @@ export const SVGIcon: FunctionComponent<SVGIconPropsType> = ({
     ...restProps
 }) => {
     const fillColor = color || 'currentColor';
+    const theme = useTheme();
 
     return (
         <SVGIconRoot
@@ -21,6 +23,7 @@ export const SVGIcon: FunctionComponent<SVGIconPropsType> = ({
             color={fillColor}
             iconWidth={width}
             iconHeight={height}
+            theme={theme}
             {...restProps}
         >
             {!!title && <title>{title}</title>}
