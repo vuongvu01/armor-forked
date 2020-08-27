@@ -1,3 +1,10 @@
+## @deliveryhero/armor-icons [1.0.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.0.0...@deliveryhero/armor-icons@1.0.1) (2020-08-27)
+
+
+### Bug Fixes
+
+* Fix broken armor-icons [LD-000] ([#239](https://github.com/deliveryhero/armor/issues/239)) ([e7724dc](https://github.com/deliveryhero/armor/commit/e7724dcd7a4a2d0c7931b55a104ce73049c270d5))
+
 # @deliveryhero/armor-icons 1.0.0 (2020-08-26)
 
 
