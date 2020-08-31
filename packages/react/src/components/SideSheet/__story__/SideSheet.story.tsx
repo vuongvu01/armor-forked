@@ -359,3 +359,23 @@ export const FixedHeaderAndFooter = () => {
         </>
     );
 };
+
+export const DisableCloseByEscape = () => {
+    const [open, setOpen] = useState(false);
+    const onClose = () => setOpen(false);
+
+    return (
+        <>
+            <SideSheet open={open} onClose={onClose} disableCloseByEscape>
+                <SideSheetHeader
+                    title="Header title"
+                    description="Header description"
+                />
+                <SideSheetBody>Body content</SideSheetBody>
+                <SideSheetFooter>Footer actions</SideSheetFooter>
+            </SideSheet>
+
+            <Button onClick={() => setOpen(true)}>No close by Escape</Button>
+        </>
+    );
+};

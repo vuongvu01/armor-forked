@@ -1,6 +1,14 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
-import { cleanup, render, screen } from '@testing-library/react';
+import ReactDOM from 'react-dom';
+import {
+    cleanup,
+    render,
+    screen,
+    fireEvent,
+    wait,
+    waitForElement,
+} from '@testing-library/react';
 
 import {
     Button,
@@ -24,8 +32,15 @@ const baseDialog = (
 );
 
 describe('<Dialog />', () => {
+    beforeAll(() => {
+        // @ts-ignore
+        ReactDOM.createPortal = jest.fn(element => element);
+    });
+
     afterEach(async () => {
         cleanup();
+        // @ts-ignore
+        ReactDOM.createPortal.mockClear();
     });
 
     it('should render itself without errors', async () => {
@@ -47,5 +62,23 @@ describe('<Dialog />', () => {
 
         const header = screen.getByTestId(dialogCloseButton);
         expect(header).toHaveClass('Dialog-CloseButton');
+    });
+
+    it('should close itself by pressing ESC', async () => {
+        const onClose = jest.fn();
+
+        const { getByTestId } = render(
+            <Dialog open onClose={onClose}>
+                <button data-testid="hello-btn">Hello</button>
+            </Dialog>,
+        );
+
+        const button = await waitForElement(() => getByTestId('hello-btn'));
+
+        fireEvent.keyDown(button, { key: 'Escape', code: 'Escape' });
+
+        await wait(() => {
+            expect(onClose).toHaveBeenCalled();
+        });
     });
 });

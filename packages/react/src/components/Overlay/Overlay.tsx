@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import { useDisplay } from '../Modal/utils';
+import { useDisplay } from '../Modal/utils/useDisplay';
 import { Overlay as OverlayRoot } from './style';
 import { OverlayPropsType } from './type';
 import { defaultLabel } from '../Dropdown/constants';

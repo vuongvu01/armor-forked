@@ -15,6 +15,7 @@ import { DialogActions } from '../../DialogActions';
 import { Button } from '../../Button';
 import { LoremIpsum } from '../../../helpers/LoremIpsum';
 import { boke } from '../../../helpers/boke';
+import { TextInput } from '../../TextInput';
 
 export default {
     title: 'Components/Dialog',
@@ -256,13 +257,14 @@ export const OneOverAnother = () => {
                 title="Bar"
                 onClose={() => setOpenModalB(false)}
             >
-                I am a sub-modal!
+                <TextInput />I am a sub-modal!
             </Modal>
             <Modal
                 open={openModalA}
                 title="Foo"
                 onClose={() => setOpenModalA(false)}
             >
+                <TextInput />
                 This is one modal inside another.
                 <Button onClick={() => setOpenModalB(true)}>Open modal!</Button>
             </Modal>
@@ -431,6 +433,26 @@ export const FixedZIndex = () => {
 
             <LoremIpsum style={{ zIndex: 1500 }} />
             <Button onClick={() => setOpen(true)}>Open modal!</Button>
+        </>
+    );
+};
+
+export const DisableCloseByEscape = () => {
+    const [open, setOpen] = useState(false);
+
+    return (
+        <>
+            <Button onClick={() => setOpen(!open)}>No close by Escape</Button>
+            <Dialog
+                open={open}
+                onClose={() => setOpen(false)}
+                disableCloseByEscape
+            >
+                <DialogTitle>Kawabanga!</DialogTitle>
+                <DialogContent>
+                    <TextInput />
+                </DialogContent>
+            </Dialog>
         </>
     );
 };

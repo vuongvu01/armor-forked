@@ -1,6 +1,13 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { useRef } from 'react';
-import { cleanup, render, screen } from '@testing-library/react';
+import {
+    cleanup,
+    fireEvent,
+    render,
+    screen,
+    wait,
+    waitForElement,
+} from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 
 import { SideSheet } from '../SideSheet';
@@ -16,6 +23,7 @@ import {
     sideSheetHeaderContainer,
     sideSheetRoot,
 } from '../constants';
+import { Dialog } from '../../Dialog';
 
 const headerTitle = 'Header title';
 const headerDescription = 'Header description';
@@ -184,5 +192,29 @@ describe('<SideSheet />', () => {
 
         const containerExpandedElement = screen.getByTestId(sideSheetRoot);
         expect(containerExpandedElement).not.toHaveStyle('width: 0;');
+    });
+
+    it('should close itself by pressing ESC', async () => {
+        const onClose = jest.fn();
+
+        const { getByTestId } = render(
+            <SideSheet open onClose={onClose}>
+                <SideSheetHeader
+                    title={headerTitle}
+                    description={headerDescription}
+                />
+                <SideSheetBody>
+                    <button data-testid="hello-btn">Hello</button>
+                </SideSheetBody>
+            </SideSheet>,
+        );
+
+        const button = await waitForElement(() => getByTestId('hello-btn'));
+
+        fireEvent.keyDown(button, { key: 'Escape', code: 'Escape' });
+
+        await wait(() => {
+            expect(onClose).toHaveBeenCalled();
+        });
     });
 });

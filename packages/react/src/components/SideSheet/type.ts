@@ -3,6 +3,7 @@ import { HTMLAttributes } from 'react';
 import { MarginAttributesType } from '../../system/attributes';
 import { Indexed, ChildrenType } from '../../type';
 import { ClassNamesType, StylesFunctionOrStubType } from '../type';
+import { ModalPropsType } from '../Modal/type';
 
 export type ClassBasedOnComponentType = {
     component: string;
@@ -19,11 +20,12 @@ export type SideSheetEffectivePropsType = Indexed<{
     disableOverlay?: boolean;
     isCloseButtonVisible?: boolean;
     isFixed?: boolean;
-    onClose?: () => void;
-    open?: boolean;
     wide?: boolean;
-    zIndex?: number;
 }> &
+    Pick<
+        ModalPropsType,
+        'open' | 'onClose' | 'zIndex' | 'disableCloseByEscape'
+    > & // includes two props from Modal
     HTMLAttributes<HTMLElement> &
     MarginAttributesType;
 
