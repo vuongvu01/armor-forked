@@ -9,6 +9,7 @@ import {
     DropdownOptionListPropsType,
     DropdownRootPropsType,
 } from './type';
+import { Typography } from '../Typography';
 
 const optionItemStyle = ({
     isSelected,
@@ -84,8 +85,6 @@ export const DropdownOptionItem = styled.div<DropdownOptionItemPropsType>`
     box-sizing: border-box;
     cursor: pointer;
     display: flex;
-    padding: 8px 16px;
-    white-space: nowrap;
     border-left: 2px solid transparent;
 
     ${optionItemStyle}
