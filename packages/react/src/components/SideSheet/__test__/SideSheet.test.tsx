@@ -9,6 +9,8 @@ import {
     waitForElement,
 } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
+import renderer from 'react-test-renderer';
+import 'jest-styled-components';
 
 import { SideSheet } from '../SideSheet';
 import { SideSheetHeader } from '../SideSheetHeader';
@@ -24,6 +26,7 @@ import {
     sideSheetRoot,
 } from '../constants';
 import { Dialog } from '../../Dialog';
+import { Accordion, AccordionContent, AccordionHeader } from '../../Accordion';
 
 const headerTitle = 'Header title';
 const headerDescription = 'Header description';
@@ -160,22 +163,6 @@ describe('<SideSheet />', () => {
         expect(footerElement).toHaveClass(
             'SideSheet-Footer--disableOverlay SideSheet-Footer--wide',
         );
-    });
-
-    it('should ensure SideSheet is hidden on open=false', () => {
-        render(
-            <SideSheet open={false}>
-                <SideSheetHeader
-                    title={headerTitle}
-                    description={headerDescription}
-                />
-                <SideSheetBody>Body content</SideSheetBody>
-                <SideSheetFooter>Footer actions</SideSheetFooter>
-            </SideSheet>,
-        );
-
-        const containerHiddenElement = screen.getByTestId(sideSheetRoot);
-        expect(containerHiddenElement).toHaveStyle('width: 0;');
     });
 
     it('should ensure SideSheet is expanded on open=true', () => {

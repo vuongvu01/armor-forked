@@ -1,3 +1,5 @@
+import { componentSpacing02 } from '../../tokens';
+
 const color = {
     main: '$color.primary.main',
     light: '$color.primary.light',
@@ -37,6 +39,11 @@ export const radioDefaultTheme = {
         },
         hover: {
             backgroundColor: color.light,
+        },
+    },
+    Root: {
+        base: {
+            marginBottom: componentSpacing02,
         },
     },
 };

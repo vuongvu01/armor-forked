@@ -2,12 +2,12 @@
 import React from 'react';
 import { cleanup, render, screen } from '@testing-library/react';
 import { cleanup as cleanupHooks } from '@testing-library/react-hooks';
+import renderer from 'react-test-renderer';
 
 import { Radio } from '../Radio';
 import { radioRoot } from '../constants';
 import { RadioGroup } from '../RadioGroup';
 import { RadioPropsType } from '../type';
-import { SPACING_FACTOR } from '../../../styling/themes';
 
 const label = 'Sample';
 
@@ -38,21 +38,6 @@ describe('<Radio />', () => {
 
     it('should render itself without errors', async () => {
         render(baseRadioExample({}));
-    });
-
-    it('ensures all margin and padding attributes are passed thru to Radio elements', () => {
-        const marginY = 2;
-        const marginX = 3;
-
-        render(baseRadioExample({ marginY, marginX }));
-
-        const radioItem = screen.getAllByTestId(radioRoot)[0];
-        const style = window.getComputedStyle(radioItem);
-
-        expect(style.marginTop).toBe(`${SPACING_FACTOR * marginY}px`);
-        expect(style.marginBottom).toBe(`${SPACING_FACTOR * marginY}px`);
-        expect(style.marginLeft).toBe(`${SPACING_FACTOR * marginX}px`);
-        expect(style.marginRight).toBe(`${SPACING_FACTOR * marginX}px`);
     });
 
     it('ensures the correct default label typography', () => {
@@ -96,12 +81,18 @@ describe('<Radio />', () => {
         const marginAttribute = 'marginBottom';
         const marginValue = 42;
 
-        const result = render(
-            baseRadioExample({ [marginAttribute]: marginValue }),
-        );
+        const result = renderer
+            .create(baseRadioExample({ [marginAttribute]: marginValue }))
+            .toJSON();
 
         // @ts-ignore
-        expect(result).toSupportMarginAttributes(
+        expect(result[0]).toSupportMarginAttributes(
+            radioRoot,
+            marginAttribute,
+            marginValue,
+        );
+        // @ts-ignore
+        expect(result[1]).toSupportMarginAttributes(
             radioRoot,
             marginAttribute,
             marginValue,

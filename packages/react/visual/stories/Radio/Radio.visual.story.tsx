@@ -150,7 +150,6 @@ export const DefaultStatesWithPreSelected = () => {
     return (
         <GroupHelper gap={2}>
             <RadioGroup
-                marginY={2}
                 name={groupName2}
                 selectedValue={group2SelectedValue}
                 onChange={handleChangeGroup2}

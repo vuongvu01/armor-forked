@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { cleanup, render, screen } from '@testing-library/react';
+import renderer from 'react-test-renderer';
 
 import { ExpansionIndicator } from '../ExpansionIndicator';
 import {
@@ -62,9 +63,11 @@ describe('<ExpansionIndicator />', () => {
         const marginAttribute = 'marginY';
         const marginValue = 4;
 
-        const result = render(
-            <ExpansionIndicator {...{ [marginAttribute]: marginValue }} />,
-        );
+        const result = renderer
+            .create(
+                <ExpansionIndicator {...{ [marginAttribute]: marginValue }} />,
+            )
+            .toJSON();
 
         // @ts-ignore
         expect(result).toSupportMarginAttributes(

@@ -5,6 +5,7 @@ import {
     cleanup as cleanupHooks,
     renderHook,
 } from '@testing-library/react-hooks';
+import renderer from 'react-test-renderer';
 
 import { Tag } from '../Tag';
 import { tagCloseIconContainer, tagRoot } from '../constants';
@@ -91,9 +92,9 @@ describe('<Tag />', () => {
         const marginAttribute = 'marginX';
         const marginValue = 13;
 
-        const result = render(
-            <Tag type="new" {...{ [marginAttribute]: marginValue }} />,
-        );
+        const result = renderer
+            .create(<Tag type="new" {...{ [marginAttribute]: marginValue }} />)
+            .toJSON();
 
         // @ts-ignore
         expect(result).toSupportMarginAttributes(
