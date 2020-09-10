@@ -1,10 +1,16 @@
 /* eslint-disable @typescript-eslint/camelcase */
+
+const makeLineHeight = (valueReference: string) => ({
+    lineHeight: `$typography.${valueReference}.lineHeight`,
+    '--typography--line-height': `$typography.${valueReference}.lineHeight`,
+});
+
 export const typographyDefaultTheme = {
     // place the default theme object here, it will be automatically processed
     Root: {
         base: {
             fontSize: '$typography.body.fontSize',
-            lineHeight: '$typography.body.lineHeight',
+            ...makeLineHeight('body'),
             fontWeight: '$typography.body.fontWeight',
             fontFamily: '$typography.body.fontFamily',
             letterSpacing: '$typography.body.letterSpacing',
@@ -21,12 +27,12 @@ export const typographyDefaultTheme = {
         },
         pageTitle: {
             fontSize: '$typography.pageTitle.fontSize',
-            lineHeight: '$typography.pageTitle.lineHeight',
+            ...makeLineHeight('pageTitle'),
             letterSpacing: '$typography.pageTitle.letterSpacing',
         },
         sectionTitle: {
             fontSize: '$typography.sectionTitle.fontSize',
-            lineHeight: '$typography.sectionTitle.lineHeight',
+            ...makeLineHeight('sectionTitle'),
         },
         subSectionTitle: {
             fontWeight: '$typography.subSectionTitle.fontWeight',
@@ -35,12 +41,12 @@ export const typographyDefaultTheme = {
             letterSpacing: '$typography.labelLarge.letterSpacing',
         },
         label__medium: {
-            lineHeight: '$typography.labelMedium.lineHeight',
+            ...makeLineHeight('labelMedium'),
             letterSpacing: '$typography.labelMedium.letterSpacing',
         },
         label__small: {
             fontSize: '$typography.labelSmall.fontSize',
-            lineHeight: '$typography.labelSmall.lineHeight',
+            ...makeLineHeight('labelSmall'),
             letterSpacing: '$typography.labelSmall.letterSpacing',
         },
         paragraph__large: {
@@ -53,7 +59,7 @@ export const typographyDefaultTheme = {
         paragraph__small: {
             fontSize: '$typography.paragraphSmall.fontSize',
             fontWeight: '$typography.paragraphSmall.fontWeight',
-            lineHeight: '$typography.paragraphSmall.lineHeight',
+            ...makeLineHeight('paragraphSmall'),
             letterSpacing: '$typography.paragraphSmall.letterSpacing',
         },
     },

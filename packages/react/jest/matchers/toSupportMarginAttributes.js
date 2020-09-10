@@ -19,52 +19,83 @@ const assertFailInvalidMargin = {
 };
 
 expect.extend({
-    toSupportMarginAttributes(component, testId, marginAttribute, marginValue) {
+    toSupportMarginAttributes(
+        componentJSON,
+        testId,
+        marginAttribute,
+        marginValue,
+    ) {
         if (!marginAttributes.includes(marginAttribute)) {
             return assertFailInvalidMargin;
         }
 
-        const elementItem = component.getAllByTestId(testId)[0];
-
-        const style = window.getComputedStyle(elementItem);
-
         switch (marginAttribute) {
             case 'margin':
-                expect(style.margin).toBe(`${SPACING_FACTOR * marginValue}px`);
+                // expect(style.margin).toBe(`${SPACING_FACTOR * marginValue}px`);
+                expect(componentJSON).toHaveStyleRule(
+                    'margin',
+                    `${SPACING_FACTOR * marginValue}px`,
+                );
                 break;
             case 'marginTop':
-                expect(style.marginTop).toBe(
+                // expect(style.marginTop).toBe(
+                //     `${SPACING_FACTOR * marginValue}px`,
+                // );
+                expect(componentJSON).toHaveStyleRule(
+                    'margin-top',
                     `${SPACING_FACTOR * marginValue}px`,
                 );
                 break;
             case 'marginBottom':
-                expect(style.marginBottom).toBe(
+                // expect(style.marginBottom).toBe(
+                //     `${SPACING_FACTOR * marginValue}px`,
+                // );
+                expect(componentJSON).toHaveStyleRule(
+                    'margin-bottom',
                     `${SPACING_FACTOR * marginValue}px`,
                 );
                 break;
             case 'marginLeft':
-                expect(style.marginLeft).toBe(
+                // expect(style.marginLeft).toBe(
+                //     `${SPACING_FACTOR * marginValue}px`,
+                // );
+                expect(componentJSON).toHaveStyleRule(
+                    'margin-left',
                     `${SPACING_FACTOR * marginValue}px`,
                 );
                 break;
             case 'marginRight':
-                expect(style.marginRight).toBe(
+                // expect(style.marginRight).toBe(
+                //     `${SPACING_FACTOR * marginValue}px`,
+                // );
+                expect(componentJSON).toHaveStyleRule(
+                    'margin-right',
                     `${SPACING_FACTOR * marginValue}px`,
                 );
                 break;
             case 'marginX':
-                expect(style.marginRight).toBe(
+                // expect(style.marginRight).toBe(
+                //     `${SPACING_FACTOR * marginValue}px`,
+                // );
+                // expect(style.marginLeft).toBe(
+                //     `${SPACING_FACTOR * marginValue}px`,
+                // );
+                expect(componentJSON).toHaveStyleRule(
+                    'margin-left',
                     `${SPACING_FACTOR * marginValue}px`,
                 );
-                expect(style.marginLeft).toBe(
+                expect(componentJSON).toHaveStyleRule(
+                    'margin-right',
                     `${SPACING_FACTOR * marginValue}px`,
                 );
                 break;
             case 'marginY':
-                expect(style.marginTop).toBe(
+                expect(componentJSON).toHaveStyleRule(
+                    'margin-top',
                     `${SPACING_FACTOR * marginValue}px`,
                 );
-                expect(style.marginBottom).toBe(
+                expect(componentJSON).toHaveStyleRule(
+                    'margin-bottom',
                     `${SPACING_FACTOR * marginValue}px`,
                 );
                 break;

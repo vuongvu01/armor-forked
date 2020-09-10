@@ -13,13 +13,12 @@ import {
 } from './style';
 import { DialogPropsType } from './type';
 import { Modal } from '../Modal';
-import { useDisplay } from '../Modal/utils';
+import { useDisplay } from '../Modal/utils/useDisplay';
 import { useContainerClickTrap } from '../DialogContent/utils';
 import { dialogDefaultTheme } from './theme';
 import { Overlay } from '../Overlay';
-import { dialogCloseButton } from './constants';
+import { DIALOG_CLASS_PREFIX, dialogCloseButton } from './constants';
 
-const CLASS_PREFIX = 'Dialog';
 export const DIALOG_SCROLL_DOCUMENT = 'document';
 export const DIALOG_SCROLL_DIALOG = 'dialog';
 
@@ -31,6 +30,7 @@ export const Dialog: FunctionComponent<DialogPropsType> = ({
     open,
     disableOverlay,
     disableCloseButton,
+    disableCloseByEscape,
     disableEffects,
     onClose,
     scroll,
@@ -38,10 +38,10 @@ export const Dialog: FunctionComponent<DialogPropsType> = ({
     ...restProps
 }) => {
     const theme = useTheme();
-    useThemeOverride(CLASS_PREFIX, theme, dialogDefaultTheme);
+    useThemeOverride(DIALOG_CLASS_PREFIX, theme, dialogDefaultTheme);
 
     const classNameComponents = useDialogClassNames(
-        CLASS_PREFIX,
+        DIALOG_CLASS_PREFIX,
         className,
         classNames,
     );
@@ -58,6 +58,7 @@ export const Dialog: FunctionComponent<DialogPropsType> = ({
             open={open}
             onClose={onClose}
             disableBackdrop={disableOverlay}
+            disableCloseByEscape={disableCloseByEscape}
             zIndex={zIndex}
         >
             <Overlay
@@ -118,6 +119,7 @@ Dialog.defaultProps = {
     disableOverlay: false,
     disableEffects: false,
     disableCloseButton: false,
+    disableCloseByEscape: false,
     scroll: DIALOG_SCROLL_DIALOG,
 };
 
@@ -131,6 +133,8 @@ Dialog.propTypes = {
     disableEffects: PropTypes.bool,
     /** A flag that tells the dialog to not to show the close button */
     disableCloseButton: PropTypes.bool,
+    /** A flag that tells the dialog to disable close by Escape button */
+    disableCloseByEscape: PropTypes.bool,
     /** Allows to switch scroll type between "dialog" and "document" */
     scroll: PropTypes.oneOf([DIALOG_SCROLL_DIALOG, DIALOG_SCROLL_DOCUMENT]),
     /** A callback that is called when a user tries to close the dialog */

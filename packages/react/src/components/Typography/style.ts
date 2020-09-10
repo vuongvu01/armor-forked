@@ -106,6 +106,17 @@ const getRootDynamicStyle = ({
     return {};
 };
 
+const getMaxLinesStyle = ({ maxLines }: TypographyRootPropsType) => {
+    if (typeof maxLines !== 'undefined') {
+        return css`
+            max-height: calc(var(--typography--line-height) * ${maxLines});
+            overflow-y: hidden;
+        `;
+    }
+
+    return '';
+};
+
 const Wrapper = ({
     children,
     ...restProps
@@ -122,5 +133,6 @@ export const TypographyStyle = styled(Wrapper).withConfig({
 
     ${getRootBaseStyle}
     ${getRootDynamicStyle}
+    ${getMaxLinesStyle}
     ${marginAttributes}
 `;

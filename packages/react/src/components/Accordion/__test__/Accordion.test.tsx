@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { cleanup, render, screen } from '@testing-library/react';
+import renderer from 'react-test-renderer';
 
 import { Accordion } from '../Accordion';
 import {
@@ -88,12 +89,14 @@ describe('<Accordion />', () => {
         const marginAttribute = 'marginY';
         const marginValue = 4;
 
-        const result = render(
-            <Accordion {...{ [marginAttribute]: marginValue }}>
-                <AccordionHeader title="Developers" />
-                <AccordionContent>Get coffee</AccordionContent>
-            </Accordion>,
-        );
+        const result = renderer
+            .create(
+                <Accordion {...{ [marginAttribute]: marginValue }}>
+                    <AccordionHeader title="Developers" />
+                    <AccordionContent>Get coffee</AccordionContent>
+                </Accordion>,
+            )
+            .toJSON();
 
         // @ts-ignore
         expect(result).toSupportMarginAttributes(

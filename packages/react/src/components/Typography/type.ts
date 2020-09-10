@@ -19,6 +19,7 @@ type TypographyEffectivePropsType = Indexed<{
     large?: boolean;
     medium?: boolean;
     small?: boolean;
+    maxLines?: number;
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes

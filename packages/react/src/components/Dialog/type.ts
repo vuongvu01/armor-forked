@@ -16,7 +16,10 @@ type DialogEffectivePropsType = Indexed<{
     scroll?: ScrollType;
     // add other custom properties here
 }> &
-    Pick<ModalPropsType, 'open' | 'onClose' | 'zIndex'> & // includes two props from Modal
+    Pick<
+        ModalPropsType,
+        'open' | 'onClose' | 'zIndex' | 'disableCloseByEscape'
+    > & // includes two props from Modal
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
     SizeAttributesType;
 

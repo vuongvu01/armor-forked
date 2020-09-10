@@ -8,6 +8,7 @@ import {
     // prettyDOM,
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import renderer from 'react-test-renderer';
 
 import { Dropdown } from '../Dropdown';
 import { dropdownOptionItem } from '../constants';
@@ -186,9 +187,9 @@ describe('<Dropdown />', () => {
         const marginAttribute = 'marginY';
         const marginValue = 4;
 
-        const result = render(
-            <Dropdown {...{ [marginAttribute]: marginValue }} />,
-        );
+        const result = renderer
+            .create(<Dropdown {...{ [marginAttribute]: marginValue }} />)
+            .toJSON();
 
         // @ts-ignore
         expect(result).toSupportMarginAttributes(

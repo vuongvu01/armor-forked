@@ -53,9 +53,16 @@ const dotStyle = ({
     disabled,
 }: RadioInputPropsType) => (disabled ? Radio.Dot.disabled : Radio.Dot.base);
 
+const radioRootStyle = ({
+    theme: {
+        componentOverrides: { Radio },
+    },
+}: RadioRootPropsType) => Radio.Root.base;
+
 export const RadioRoot = styled.div.withConfig({
     shouldForwardProp: property => shouldForwardProp(property),
 })<RadioRootPropsType>`
+    ${radioRootStyle}
     ${marginAttributes}
 `;
 

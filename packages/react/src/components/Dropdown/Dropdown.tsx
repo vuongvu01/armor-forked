@@ -10,7 +10,7 @@ import React, {
 import PropTypes from 'prop-types';
 
 import { useThemeOverride } from '../../utils/hooks';
-import { useTheme } from '../../styling';
+import { extractMarginProps, useTheme } from '../../styling';
 import { useDetectClickOutsideComponent, useDropdownClassName } from './utils';
 import {
     DropdownContainer,
@@ -174,8 +174,14 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
             />
         );
 
+        const { marginProps, ...otherProps } = extractMarginProps(restProps);
+
         return (
-            <DropdownWrapper className={classOverride.Wrapper} theme={theme}>
+            <DropdownWrapper
+                className={classOverride.Wrapper}
+                theme={theme}
+                {...marginProps}
+            >
                 <DropdownContainer
                     className={classOverride.Container}
                     theme={theme}
@@ -194,7 +200,7 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
                         styles={dropdownTextInputStyle}
                         theme={theme}
                         value={selectedValueToDisplay}
-                        {...restProps}
+                        {...otherProps}
                     />
                     <DropdownOptionListContainer
                         className={classOverride.OptionListContainer}

@@ -12,7 +12,7 @@ import {
 import { SideSheetPropsType } from './type';
 import { sideSheetDefaultTheme } from './theme';
 import { Modal } from '../Modal';
-import { useDisplay } from '../Modal/utils';
+import { useDisplay } from '../Modal/utils/useDisplay';
 import { Overlay } from '../Overlay';
 // @ts-ignore until the deprecated CloseIcon is removed and we rename Close to CloseIcon
 import { CloseIcon } from '../../icons';
@@ -39,6 +39,7 @@ export const SideSheet: FunctionComponent<SideSheetPropsType> = forwardRef(
             className,
             classNames,
             disableEffects,
+            disableCloseByEscape,
             disableOverlay,
             isCloseButtonVisible,
             isFixed,
@@ -79,6 +80,7 @@ export const SideSheet: FunctionComponent<SideSheetPropsType> = forwardRef(
         return (
             <Modal
                 disableBackdrop={disableOverlay}
+                disableCloseByEscape={disableCloseByEscape}
                 onClose={onClose}
                 open={open}
                 zIndex={zIndex}
@@ -148,6 +150,7 @@ SideSheet.displayName = SIDE_SHEET_CLASS_PREFIX;
 SideSheet.defaultProps = {
     disableOverlay: false,
     disableEffects: false,
+    disableCloseByEscape: false,
     isCloseButtonVisible: true,
     isFixed: true,
     open: false,
@@ -157,6 +160,7 @@ SideSheet.defaultProps = {
 SideSheet.propTypes = {
     disableEffects: PropTypes.bool,
     disableOverlay: PropTypes.bool,
+    disableCloseByEscape: PropTypes.bool,
     isCloseButtonVisible: PropTypes.bool,
     isFixed: PropTypes.bool,
     onClose: PropTypes.func,

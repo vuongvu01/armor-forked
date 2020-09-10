@@ -42,8 +42,8 @@ export const ExpansionIndicatorRoot = styled.div<ExpansionIndicatorPropsType>`
     outline: none;
     width: 56px;
 
-    ${marginAttributes}
     ${expansionIndicatorContainerStyle}
+    ${marginAttributes}
 `;
 
 export const ExpansionIndicatorContent = styled.div<

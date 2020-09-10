@@ -1,9 +1,9 @@
 import React, { FunctionComponent, MouseEvent, useCallback } from 'react';
 
 import { DropdownOptionItem as DropdownOptionItemStyle } from './style';
-import { Typography } from '../Typography';
 import { DropdownOptionItemPropsType } from './type';
 import { Checkbox } from '../Checkbox';
+import { Typography } from '../Typography';
 
 const DropdownOptionItem: FunctionComponent<DropdownOptionItemPropsType> = ({
     isSelected,
@@ -38,7 +38,7 @@ const DropdownOptionItem: FunctionComponent<DropdownOptionItemPropsType> = ({
         >
             {multiple && <Checkbox checked={isSelected} marginRight={4} />}
             {item ? (
-                <Typography margin={0} paragraph>
+                <Typography paragraph tag="div" maxLines={2}>
                     {item.label}
                 </Typography>
             ) : null}
