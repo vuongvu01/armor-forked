@@ -29,6 +29,6 @@ export const MessageActionStyle = styled(Wrapper).withConfig({
 
     ${({ theme }: MessageActionRootPropsType) =>
         theme.componentOverrides.MessageAction.Root.base}
-    ${marginAttributes}
     ${(props: MessageActionRootPropsType) => props.styles(props)}
+    ${marginAttributes}
 `;
