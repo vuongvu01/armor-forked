@@ -6,6 +6,7 @@ import { makeBreakpoints } from './make-breakpoints';
 import { makeTypography } from './make-typography';
 import { makeSpan } from './make-span';
 import { defaultThemeDeclaration } from '../themes/defaultThemeDeclaration';
+import { ObjectLiteralType } from '../../type';
 
 export const makeTheme = (
     declaration: ThemeDeclarationType,
@@ -22,12 +23,19 @@ export const makeTheme = (
     theme.breakpoints = makeBreakpoints(theme.breakpoints);
     theme.typography = makeTypography(theme.typography);
 
-    theme.referenceIndex = flatten({
+    const referenceIndex = flatten({
         figure: theme.figure,
         typography: theme.typography,
         color: theme.color,
         elevation: theme.elevation,
-    });
+    }) as ObjectLiteralType;
+
+    theme.referenceIndex = Object.keys(referenceIndex).reduce((result, key) => {
+        return {
+            [`$${key}`]: referenceIndex[key],
+            ...result,
+        };
+    }, {});
 
     return (immutable
         ? {

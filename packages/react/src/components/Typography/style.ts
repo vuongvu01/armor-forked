@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { ReactElement } from 'react';
-import { marginAttributes } from '../../system/attributes';
+import { colorAttributes, marginAttributes } from '../../system/attributes';
 import { shouldForwardProp } from '../../utils';
 import { ObjectLiteralType } from '../../type';
 import { TypographyRootPropsType } from './type';
@@ -135,4 +135,5 @@ export const TypographyStyle = styled(Wrapper).withConfig({
     ${getRootDynamicStyle}
     ${getMaxLinesStyle}
     ${marginAttributes}
+    ${colorAttributes}
 `;

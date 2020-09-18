@@ -14,7 +14,7 @@ const createHtmlDom = require('htmldom');
 
 const sourceFolder = normalize(`${__dirname}/../src/`);
 const destinationFolder = normalize(
-    `${__dirname}/../../web/packages/react-icons/src/icons`,
+    `${__dirname}/../../packages/react-icons/src/icons`,
 );
 const templateFolder = normalize(`${__dirname}/../templates/`);
 
@@ -66,9 +66,10 @@ const getFolderContent = async path => {
     const source = await getFolderContent(sourceFolder);
 
     for (const folder of source.folders) {
-        await mkdir(join(destinationFolder, folder)).catch(e => {
+        const folderName = join(destinationFolder, folder);
+        await mkdir(folderName).catch(e => {
             console.log(
-                `Was not able to make a directory ${file}: ${e.message}`,
+                `Was not able to make a directory ${folderName}: ${e.message}`,
             );
         });
     }

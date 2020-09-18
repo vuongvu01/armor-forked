@@ -97,7 +97,7 @@ describe('<Tag />', () => {
             .toJSON();
 
         // @ts-ignore
-        expect(result).toSupportMarginAttributes(
+        expect(result).toSupportMarginAttribute(
             tagRoot,
             marginAttribute,
             marginValue,

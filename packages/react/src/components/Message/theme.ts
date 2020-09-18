@@ -58,10 +58,10 @@ export const messageDefaultTheme = {
     },
     Content: {
         base: {
-            color: '$color.text.main',
+            color: '$color.neutral.06',
             fontWeight: '$typography.paragraphMedium.fontWeight',
             fontSize: '$typography.paragraphMedium.fontSize',
-            fontFamily: '$typography.paragraphMedium.fontFamily',
+            fontFamily: '$typography.body.fontFamily',
             paddingTop: 4,
             paddingBottom: 4,
         },

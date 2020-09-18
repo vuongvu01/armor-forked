@@ -1,0 +1,747 @@
+import { useMemo, useState } from 'react';
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { Table, TableHead, TableRow, TableCell, TableBody, TableCellLabel, Box } from '../../../src/components/';
+import { LoremIpsum } from '../../../src/helpers/LoremIpsum';
+import { Nodes } from '../../../src/helpers/Nodes';
+import { EditIcon, DeleteIcon, EllipsisVerticalIcon } from '@deliveryhero/armor-icons';
+
+<Meta title="Components/Table" component={Table} />
+
+# Table
+
+~~~js
+import { Table, TableHead, TableBody, TableRow, TableCell, TableCellLabel } from '@deliveryhero/armor';
+~~~
+
+## Basic usage
+
+<Preview>
+    <Story name="Basic usage" height="300px">
+        <Table>
+            <TableHead>
+                <TableRow>
+                    <TableCell>Food Companies</TableCell>
+                    <TableCell>Scheme ID</TableCell>
+                    <TableCell>City</TableCell>
+                    <TableCell>Full Name</TableCell>
+                    <TableCell>ID</TableCell>
+                    <TableCell>Phone number</TableCell>
+                </TableRow>
+            </TableHead>
+            <TableBody>
+                <TableRow>
+                    <TableCell>Kitchen Garden POS</TableCell>
+                    <TableCell>Scheme B</TableCell>
+                    <TableCell>Kano</TableCell>
+                    <TableCell>Slavcho Karbashewski</TableCell>
+                    <TableCell>42</TableCell>
+                    <TableCell>695-615-8635</TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>KFC HK</TableCell>
+                    <TableCell>Scheme F</TableCell>
+                    <TableCell>Gothenburg</TableCell>
+                    <TableCell>Emlen Beaver</TableCell>
+                    <TableCell>46</TableCell>
+                    <TableCell>998-703-1496</TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>Foodstory</TableCell>
+                    <TableCell>Scheme E</TableCell>
+                    <TableCell>Xian</TableCell>
+                    <TableCell>Akumjeli Akuchi</TableCell>
+                    <TableCell>26</TableCell>
+                    <TableCell>150-204-0817</TableCell>
+                </TableRow>
+            </TableBody>
+        </Table>
+    </Story>
+</Preview>
+
+## Multi-line cells
+
+<Preview>
+    <Story name="Multi-line cells" height="550px">
+        <Table>
+            <TableHead>
+                <TableRow>
+                    <TableCell>Food Companies</TableCell>
+                    <TableCell>Scheme ID</TableCell>
+                    <TableCell>City</TableCell>
+                    <TableCell>Full Name</TableCell>
+                    <TableCell>ID</TableCell>
+                    <TableCell>Phone number</TableCell>
+                </TableRow>
+            </TableHead>
+            <TableBody>
+                <TableRow>
+                    <TableCell>
+                        Kitchen Garden POS<br />
+                        Kitchen Garden POS<br />
+                        Kitchen Garden POS<br />
+                        Kitchen Garden POS<br />
+                    </TableCell>
+                    <TableCell>Scheme B</TableCell>
+                    <TableCell>Kano</TableCell>
+                    <TableCell>Slavcho Karbashewski</TableCell>
+                    <TableCell>42</TableCell>
+                    <TableCell>695-615-8635</TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>KFC HK</TableCell>
+                    <TableCell>Scheme F</TableCell>
+                    <TableCell>
+                        Gothenburg<br />
+                        Gothenburg<br />
+                        Gothenburg<br />
+                        Gothenburg<br />
+                        Gothenburg<br />
+                    </TableCell>
+                    <TableCell>Emlen Beaver</TableCell>
+                    <TableCell>46</TableCell>
+                    <TableCell>998-703-1496</TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>Foodstory</TableCell>
+                    <TableCell>Scheme E</TableCell>
+                    <TableCell>Xian</TableCell>
+                    <TableCell>Akumjeli Akuchi</TableCell>
+                    <TableCell>26</TableCell>
+                    <TableCell>
+                        150-204-0817<br />
+                        150-204-0817<br />
+                        150-204-0817<br />
+                        150-204-0817<br />
+                    </TableCell>
+                </TableRow>
+            </TableBody>
+        </Table>
+    </Story>
+</Preview>
+
+## Sticky head
+
+<Preview>
+    <Story name="Sticky header" height="300px">
+        <Table stickyHead>
+            <TableHead>
+                <TableRow>
+                    <TableCell>Food Companies</TableCell>
+                    <TableCell>Scheme ID</TableCell>
+                    <TableCell>City</TableCell>
+                    <TableCell>Full Name</TableCell>
+                    <TableCell>ID</TableCell>
+                    <TableCell>Phone number</TableCell>
+                </TableRow>
+            </TableHead>
+            <TableBody>
+                <TableRow>
+                    <TableCell>Kitchen Garden POS</TableCell>
+                    <TableCell>Scheme B</TableCell>
+                    <TableCell>Kano</TableCell>
+                    <TableCell>Slavcho Karbashewski</TableCell>
+                    <TableCell>42</TableCell>
+                    <TableCell>695-615-8635</TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>KFC HK</TableCell>
+                    <TableCell>Scheme F</TableCell>
+                    <TableCell>Gothenburg</TableCell>
+                    <TableCell>Emlen Beaver</TableCell>
+                    <TableCell>46</TableCell>
+                    <TableCell>998-703-1496</TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>Foodstory</TableCell>
+                    <TableCell>Scheme E</TableCell>
+                    <TableCell>Xian</TableCell>
+                    <TableCell>Akumjeli Akuchi</TableCell>
+                    <TableCell>26</TableCell>
+                    <TableCell>150-204-0817</TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>Kitchen Garden POS</TableCell>
+                    <TableCell>Scheme B</TableCell>
+                    <TableCell>Kano</TableCell>
+                    <TableCell>Slavcho Karbashewski</TableCell>
+                    <TableCell>42</TableCell>
+                    <TableCell>695-615-8635</TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>KFC HK</TableCell>
+                    <TableCell>Scheme F</TableCell>
+                    <TableCell>Gothenburg</TableCell>
+                    <TableCell>Emlen Beaver</TableCell>
+                    <TableCell>46</TableCell>
+                    <TableCell>998-703-1496</TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>Foodstory</TableCell>
+                    <TableCell>Scheme E</TableCell>
+                    <TableCell>Xian</TableCell>
+                    <TableCell>Akumjeli Akuchi</TableCell>
+                    <TableCell>26</TableCell>
+                    <TableCell>150-204-0817</TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>Kitchen Garden POS</TableCell>
+                    <TableCell>Scheme B</TableCell>
+                    <TableCell>Kano</TableCell>
+                    <TableCell>Slavcho Karbashewski</TableCell>
+                    <TableCell>42</TableCell>
+                    <TableCell>695-615-8635</TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>KFC HK</TableCell>
+                    <TableCell>Scheme F</TableCell>
+                    <TableCell>Gothenburg</TableCell>
+                    <TableCell>Emlen Beaver</TableCell>
+                    <TableCell>46</TableCell>
+                    <TableCell>998-703-1496</TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>Foodstory</TableCell>
+                    <TableCell>Scheme E</TableCell>
+                    <TableCell>Xian</TableCell>
+                    <TableCell>Akumjeli Akuchi</TableCell>
+                    <TableCell>26</TableCell>
+                    <TableCell>150-204-0817</TableCell>
+                </TableRow>
+            </TableBody>
+        </Table>
+    </Story>
+</Preview>
+
+## Sticky side columns
+
+<Preview>
+    <Story name="Sticky side columns" height="300px">
+        <Table 
+            stickyLeftColumn
+            stickyRightColumn
+            horizontalScroll
+        >
+            <TableHead>
+                <TableRow>
+                    <TableCell>Food Companies</TableCell>
+                    <TableCell>Scheme ID</TableCell>
+                    <TableCell>City</TableCell>
+                    <TableCell>Full Name</TableCell>
+                    <TableCell>ID</TableCell>
+                    <TableCell>Phone number</TableCell>
+                    <TableCell>Food Companies</TableCell>
+                    <TableCell>Scheme ID</TableCell>
+                    <TableCell>City</TableCell>
+                    <TableCell>Full Name</TableCell>
+                    <TableCell>ID</TableCell>
+                    <TableCell>Phone number</TableCell>
+                </TableRow>
+            </TableHead>
+            <TableBody>
+                <TableRow>
+                    <TableCell>Kitchen Garden POS</TableCell>
+                    <TableCell>Scheme B</TableCell>
+                    <TableCell>Kano</TableCell>
+                    <TableCell>Slavcho Karbashewski</TableCell>
+                    <TableCell>42</TableCell>
+                    <TableCell>695-615-8635</TableCell>
+                    <TableCell>Kitchen Garden POS</TableCell>
+                    <TableCell>Scheme B</TableCell>
+                    <TableCell>Kano</TableCell>
+                    <TableCell>Slavcho Karbashewski</TableCell>
+                    <TableCell>42</TableCell>
+                    <TableCell>695-615-8635</TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>Kitchen Garden POS</TableCell>
+                    <TableCell>Scheme B</TableCell>
+                    <TableCell>Kano</TableCell>
+                    <TableCell>Slavcho Karbashewski</TableCell>
+                    <TableCell>42</TableCell>
+                    <TableCell>695-615-8635</TableCell>
+                    <TableCell>Kitchen Garden POS</TableCell>
+                    <TableCell>Scheme B</TableCell>
+                    <TableCell>Kano</TableCell>
+                    <TableCell>Slavcho Karbashewski</TableCell>
+                    <TableCell>42</TableCell>
+                    <TableCell>695-615-8635</TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>Kitchen Garden POS</TableCell>
+                    <TableCell>Scheme B</TableCell>
+                    <TableCell>Kano</TableCell>
+                    <TableCell>Slavcho Karbashewski</TableCell>
+                    <TableCell>42</TableCell>
+                    <TableCell>695-615-8635</TableCell>
+                    <TableCell>Kitchen Garden POS</TableCell>
+                    <TableCell>Scheme B</TableCell>
+                    <TableCell>Kano</TableCell>
+                    <TableCell>Slavcho Karbashewski</TableCell>
+                    <TableCell>42</TableCell>
+                    <TableCell>695-615-8635</TableCell>
+                </TableRow>
+            </TableBody>
+        </Table>
+    </Story>
+</Preview>
+
+## Disabled rows and cols
+
+<Preview>
+    <Story name="Disabled rows and cols" height="300px">
+        <Table>
+            <TableHead>
+                <TableRow>
+                    <TableCell>Food Companies</TableCell>
+                    <TableCell>Scheme ID</TableCell>
+                    <TableCell disabled>City</TableCell>
+                    <TableCell>Full Name</TableCell>
+                    <TableCell>ID</TableCell>
+                    <TableCell>Phone number</TableCell>
+                </TableRow>
+            </TableHead>
+            <TableBody>
+                <TableRow>
+                    <TableCell>Kitchen Garden POS</TableCell>
+                    <TableCell>Scheme B</TableCell>
+                    <TableCell disabled>Kano</TableCell>
+                    <TableCell>Slavcho Karbashewski</TableCell>
+                    <TableCell>42</TableCell>
+                    <TableCell>695-615-8635</TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell disabled>KFC HK</TableCell>
+                    <TableCell disabled>Scheme F</TableCell>
+                    <TableCell disabled>Gothenburg</TableCell>
+                    <TableCell disabled>Emlen Beaver</TableCell>
+                    <TableCell disabled>46</TableCell>
+                    <TableCell disabled>998-703-1496</TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>Foodstory</TableCell>
+                    <TableCell>Scheme E</TableCell>
+                    <TableCell disabled>Xian</TableCell>
+                    <TableCell>Akumjeli Akuchi</TableCell>
+                    <TableCell>26</TableCell>
+                    <TableCell>150-204-0817</TableCell>
+                </TableRow>
+            </TableBody>
+        </Table>
+    </Story>
+</Preview>
+
+## Selectable rows
+
+<Preview>
+    <Story name="Selectable rows" height="300px">
+        {() => {
+            const rowIds = useMemo(() => ['a', 'b', 'c'], []);
+            const [selectedRowIds, setSelectedRowIds] = useState(['b']);
+        
+            return (
+                <Table rowIds={rowIds} selectedRowIds={selectedRowIds} onRowSelectionChange={setSelectedRowIds}>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Food Companies</TableCell>
+                            <TableCell>Scheme ID</TableCell>
+                            <TableCell>City</TableCell>
+                            <TableCell>Full Name</TableCell>
+                            <TableCell>ID</TableCell>
+                            <TableCell>Phone number</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        <TableRow rowId="a">
+                            <TableCell>Kitchen Garden POS</TableCell>
+                            <TableCell>Scheme B</TableCell>
+                            <TableCell>Kano</TableCell>
+                            <TableCell>Slavcho Karbashewski</TableCell>
+                            <TableCell>42</TableCell>
+                            <TableCell>695-615-8635</TableCell>
+                        </TableRow>
+                        <TableRow rowId="b">
+                            <TableCell>KFC HK</TableCell>
+                            <TableCell>Scheme F</TableCell>
+                            <TableCell>Gothenburg</TableCell>
+                            <TableCell>Emlen Beaver</TableCell>
+                            <TableCell>46</TableCell>
+                            <TableCell>998-703-1496</TableCell>
+                        </TableRow>
+                        <TableRow rowId="c">
+                            <TableCell>Foodstory</TableCell>
+                            <TableCell>Scheme E</TableCell>
+                            <TableCell>Xian</TableCell>
+                            <TableCell>Akumjeli Akuchi</TableCell>
+                            <TableCell>26</TableCell>
+                            <TableCell>150-204-0817</TableCell>
+                        </TableRow>
+                    </TableBody>
+                </Table>
+            );
+        }}
+    </Story>
+</Preview>
+
+## Selectable rows and sticky left column
+
+<Preview>
+    <Story name="Selectable rows and sticky left column" height="300px">
+        {() => {
+            const rowIds = useMemo(() => ['a', 'b', 'c'], []);
+            const [selectedRowIds, setSelectedRowIds] = useState(['b']);
+        
+            return (
+                <Table 
+                    rowIds={rowIds}
+                    selectedRowIds={selectedRowIds}
+                    onRowSelectionChange={setSelectedRowIds}
+                    horizontalScroll
+                    stickyLeftColumn
+                >
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Food Companies</TableCell>
+                            <TableCell>Scheme ID</TableCell>
+                            <TableCell>City</TableCell>
+                            <TableCell>Full Name</TableCell>
+                            <TableCell>ID</TableCell>
+                            <TableCell>Phone number</TableCell>
+                            <TableCell>Food Companies</TableCell>
+                            <TableCell>Scheme ID</TableCell>
+                            <TableCell>City</TableCell>
+                            <TableCell>Full Name</TableCell>
+                            <TableCell>ID</TableCell>
+                            <TableCell>Phone number</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        <TableRow rowId="a">
+                            <TableCell>Kitchen Garden POS</TableCell>
+                            <TableCell>Scheme B</TableCell>
+                            <TableCell>Kano</TableCell>
+                            <TableCell>Slavcho Karbashewski</TableCell>
+                            <TableCell>42</TableCell>
+                            <TableCell>695-615-8635</TableCell>
+                            <TableCell>Kitchen Garden POS</TableCell>
+                            <TableCell>Scheme B</TableCell>
+                            <TableCell>Kano</TableCell>
+                            <TableCell>Slavcho Karbashewski</TableCell>
+                            <TableCell>42</TableCell>
+                            <TableCell>695-615-8635</TableCell>
+                        </TableRow>
+                        <TableRow rowId="b">
+                            <TableCell>KFC HK</TableCell>
+                            <TableCell>Scheme F</TableCell>
+                            <TableCell>Gothenburg</TableCell>
+                            <TableCell>Emlen Beaver</TableCell>
+                            <TableCell>46</TableCell>
+                            <TableCell>998-703-1496</TableCell>
+                            <TableCell>KFC HK</TableCell>
+                            <TableCell>Scheme F</TableCell>
+                            <TableCell>Gothenburg</TableCell>
+                            <TableCell>Emlen Beaver</TableCell>
+                            <TableCell>46</TableCell>
+                            <TableCell>998-703-1496</TableCell>
+                        </TableRow>
+                        <TableRow rowId="c">
+                            <TableCell>Foodstory</TableCell>
+                            <TableCell>Scheme E</TableCell>
+                            <TableCell>Xian</TableCell>
+                            <TableCell>Akumjeli Akuchi</TableCell>
+                            <TableCell>26</TableCell>
+                            <TableCell>150-204-0817</TableCell>
+                            <TableCell>Foodstory</TableCell>
+                            <TableCell>Scheme E</TableCell>
+                            <TableCell>Xian</TableCell>
+                            <TableCell>Akumjeli Akuchi</TableCell>
+                            <TableCell>26</TableCell>
+                            <TableCell>150-204-0817</TableCell>
+                        </TableRow>
+                    </TableBody>
+                </Table>
+            );
+        }}
+    </Story>
+</Preview>
+
+## Icons
+
+~~~js
+import { Box } from '@deliveryhero/armor';
+import { EditIcon, DeleteIcon, EllipsisVerticalIcon } from '@deliveryhero/armor-icons';
+~~~
+
+<Preview>
+    <Story name="Icons" height="300px">
+        <Table>
+            <TableHead>
+                <TableRow>
+                    <TableCell>
+                        <TableCellLabel>
+                            Food Companies
+                            <EditIcon marginLeft={3} />
+                        </TableCellLabel>
+                    </TableCell>
+                    <TableCell>
+                        <TableCellLabel>
+                            Scheme ID
+                            <DeleteIcon marginLeft={3} />
+                        </TableCellLabel>
+                    </TableCell>
+                    <TableCell>City</TableCell>
+                    <TableCell>Full Name</TableCell>
+                    <TableCell>ID</TableCell>
+                    <TableCell>Phone number</TableCell>
+                    <TableCell>Actions</TableCell>
+                </TableRow>
+            </TableHead>
+            <TableBody>
+                <TableRow>
+                    <TableCell>Kitchen Garden POS</TableCell>
+                    <TableCell>Scheme B</TableCell>
+                    <TableCell>Kano</TableCell>
+                    <TableCell>Slavcho Karbashewski</TableCell>
+                    <TableCell>42</TableCell>
+                    <TableCell>695-615-8635</TableCell>
+                    <TableCell color="$color.neutral.05">
+                        <Box
+                            style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                            }}
+                            height={6}
+                        >
+                            <EditIcon marginRight={6} />
+                            <DeleteIcon marginRight={6} />
+                            <EllipsisVerticalIcon />
+                        </Box>
+                    </TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>KFC HK</TableCell>
+                    <TableCell>Scheme F</TableCell>
+                    <TableCell>Gothenburg</TableCell>
+                    <TableCell>Emlen Beaver</TableCell>
+                    <TableCell>46</TableCell>
+                    <TableCell>998-703-1496</TableCell>
+                    <TableCell color="$color.neutral.05">
+                        <Box
+                            style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                            }}
+                            height={6}
+                        >
+                            <EditIcon marginRight={6} />
+                            <DeleteIcon marginRight={6} />
+                            <EllipsisVerticalIcon />
+                        </Box>
+                    </TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>Foodstory</TableCell>
+                    <TableCell>Scheme E</TableCell>
+                    <TableCell>Xian</TableCell>
+                    <TableCell>Akumjeli Akuchi</TableCell>
+                    <TableCell>26</TableCell>
+                    <TableCell>150-204-0817</TableCell>
+                    <TableCell color="$color.neutral.05">
+                        <Box
+                            style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                            }}
+                            height={6}
+                        >
+                            <EditIcon marginRight={6} />
+                            <DeleteIcon marginRight={6} />
+                            <EllipsisVerticalIcon />
+                        </Box>
+                    </TableCell>
+                </TableRow>
+            </TableBody>
+        </Table>
+    </Story>
+</Preview>
+
+## Ellipsis
+
+<Preview>
+    <Story name="Ellipsis" height="300px">
+        <Table wide>
+            <TableHead>
+                <TableRow>
+                    <TableCell>Food Companies</TableCell>
+                    <TableCell>Scheme ID</TableCell>
+                    <TableCell>City</TableCell>
+                    <TableCell>Full Name</TableCell>
+                    <TableCell>ID</TableCell>
+                    <TableCell>Phone number</TableCell>
+                </TableRow>
+            </TableHead>
+            <TableBody>
+                <TableRow>
+                    <TableCell ellipsis>Kitchen Garden POS Kitchen Garden POS Kitchen Garden POS Kitchen Garden POS</TableCell>
+                    <TableCell>Scheme B</TableCell>
+                    <TableCell>Kano</TableCell>
+                    <TableCell ellipsis>Slavcho Karbashewski Slavcho Karbashewski Slavcho Karbashewski Slavcho Karbashewski</TableCell>
+                    <TableCell>42</TableCell>
+                    <TableCell>695-615-8635</TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>KFC HK</TableCell>
+                    <TableCell>Scheme F</TableCell>
+                    <TableCell>Gothenburg</TableCell>
+                    <TableCell>Emlen Beaver</TableCell>
+                    <TableCell>46</TableCell>
+                    <TableCell>998-703-1496</TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>Foodstory</TableCell>
+                    <TableCell>Scheme E</TableCell>
+                    <TableCell>Xian</TableCell>
+                    <TableCell>Akumjeli Akuchi</TableCell>
+                    <TableCell>26</TableCell>
+                    <TableCell>150-204-0817</TableCell>
+                </TableRow>
+            </TableBody>
+        </Table>
+    </Story>
+</Preview>
+
+## Merge cells
+
+<Preview>
+    <Story name="Merge cells" height="300px">
+        <Table>
+            <TableHead>
+                <TableRow>
+                    <TableCell>Food Companies</TableCell>
+                    <TableCell>Scheme ID</TableCell>
+                    <TableCell>City</TableCell>
+                    <TableCell>Full Name</TableCell>
+                    <TableCell>ID</TableCell>
+                    <TableCell>Phone number</TableCell>
+                </TableRow>
+            </TableHead>
+            <TableBody>
+                <TableRow>
+                    <TableCell rowSpan={3}>
+                        Kitchen Garden<br />
+                        Kitchen Garden<br />
+                        Kitchen Garden<br />
+                        Kitchen Garden<br />
+                        Kitchen Garden<br />
+                    </TableCell>
+                    <TableCell>Scheme B</TableCell>
+                    <TableCell>Kano</TableCell>
+                    <TableCell>Slavcho Karbashewski</TableCell>
+                    <TableCell>42</TableCell>
+                    <TableCell>695-615-8635</TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>Scheme F</TableCell>
+                    <TableCell colSpan={2}>Gothenburg, Schloßstraße</TableCell>
+                    <TableCell>46</TableCell>
+                    <TableCell>998-703-1496</TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>Scheme E</TableCell>
+                    <TableCell>Xian</TableCell>
+                    <TableCell>Akumjeli Akuchi</TableCell>
+                    <TableCell colSpan={2}>26,9999999999999</TableCell>
+                </TableRow>
+            </TableBody>
+        </Table>
+    </Story>
+</Preview>
+
+## Custom cell padding
+
+<Preview>
+    <Story name="Custom cell padding" height="300px">
+        <Table>
+            <TableHead>
+                <TableRow>
+                    <TableCell>Food Companies</TableCell>
+                    <TableCell paddingX={1}>Scheme ID</TableCell>
+                    <TableCell>City</TableCell>
+                    <TableCell>Full Name</TableCell>
+                    <TableCell paddingX={1}>ID</TableCell>
+                    <TableCell>Phone number</TableCell>
+                </TableRow>
+            </TableHead>
+            <TableBody>
+                <TableRow>
+                    <TableCell paddingY={9}>Kitchen Garden POS</TableCell>
+                    <TableCell paddingY={9} paddingX={1}>Scheme B</TableCell>
+                    <TableCell paddingY={9}>Kano</TableCell>
+                    <TableCell paddingY={9}>Slavcho Karbashewski</TableCell>
+                    <TableCell paddingY={9} paddingX={1}>42</TableCell>
+                    <TableCell paddingY={9}>695-615-8635</TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell paddingY={1}>KFC HK</TableCell>
+                    <TableCell paddingY={1} paddingX={1}>Scheme F</TableCell>
+                    <TableCell paddingY={1}>Gothenburg</TableCell>
+                    <TableCell paddingY={1}>Emlen Beaver</TableCell>
+                    <TableCell paddingY={1} paddingX={1}>46</TableCell>
+                    <TableCell paddingY={1}>998-703-1496</TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>Foodstory</TableCell>
+                    <TableCell paddingX={1}>Scheme E</TableCell>
+                    <TableCell>Xian</TableCell>
+                    <TableCell>Akumjeli Akuchi</TableCell>
+                    <TableCell paddingX={1}>26</TableCell>
+                    <TableCell>150-204-0817</TableCell>
+                </TableRow>
+            </TableBody>
+        </Table>
+    </Story>
+</Preview>
+
+## Cell size and content alignment
+
+<Preview>
+    <Story name="Cell size and content alignment">
+        <Table>
+            <TableHead>
+                <TableRow>
+                    <TableCell>Food Companies</TableCell>
+                    <TableCell contentAlignY="center">Scheme ID</TableCell>
+                    <TableCell>City</TableCell>
+                    <TableCell>Full Name</TableCell>
+                    <TableCell width="8rem" contentAlignX="right">Identifizierungsnummer</TableCell>
+                    <TableCell>Phone number</TableCell>
+                </TableRow>
+            </TableHead>
+            <TableBody>
+                <TableRow>
+                    <TableCell>Kitchen Garden POS</TableCell>
+                    <TableCell contentAlignY="center">Scheme B</TableCell>
+                    <TableCell>Kano</TableCell>
+                    <TableCell height="8rem">Slavcho Karbashewski</TableCell>
+                    <TableCell contentAlignX="right">42</TableCell>
+                    <TableCell>695-615-8635</TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>KFC HK</TableCell>
+                    <TableCell contentAlignY="center">Scheme F</TableCell>
+                    <TableCell>Gothenburg</TableCell>
+                    <TableCell height="10rem" contentAlignX="center" contentAlignY="center">Emlen Beaver</TableCell>
+                    <TableCell contentAlignX="right">46</TableCell>
+                    <TableCell>998-703-1496</TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>Foodstory</TableCell>
+                    <TableCell contentAlignY="center">Scheme E</TableCell>
+                    <TableCell>Xian</TableCell>
+                    <TableCell height="8rem" contentAlignX="right" contentAlignY="bottom">Akumjeli Akuchi</TableCell>
+                    <TableCell contentAlignX="right">26</TableCell>
+                    <TableCell>150-204-0817</TableCell>
+                </TableRow>
+            </TableBody>
+        </Table>
+    </Story>
+</Preview>

@@ -9,7 +9,6 @@ import {
 } from '../type';
 
 type IndicatorEffectivePropsType = Indexed<{
-    exampleProperty?: boolean;
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes

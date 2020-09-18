@@ -1,6 +1,7 @@
 import traverse from 'traverse';
 import { ThemeType } from '../type';
 import { ObjectLiteralType } from '../../type';
+import { replaceThemeToken } from '../../system/util/replaceThemeToken';
 
 const spanableProperties = {
     padding: true,
@@ -28,37 +29,38 @@ const spanableProperties = {
     safeMargin: true,
 };
 
-export const transformTheme = (theme: ThemeType, chunk: ObjectLiteralType) => {
+export const transformTheme = (
+    theme: ThemeType,
+    chunk: ObjectLiteralType,
+    prefix?: string,
+) => {
     const {
         span,
         typography: { pixelToRem },
     } = theme as ThemeType;
 
     traverse(chunk).forEach(function transformThemeObject(value) {
-        let newValue: any;
-        let update = false;
-
-        if (typeof value === 'string' && value[0] === '$') {
-            newValue = theme.referenceIndex[value.substr(1)];
-            update = true;
-        } else {
-            newValue = value;
-        }
+        let { value: newValue, updated } = replaceThemeToken(
+            value,
+            theme,
+            prefix,
+            this.path,
+        );
 
         if (this.key === 'fontSize' || this.key === 'lineHeight') {
             newValue = pixelToRem(newValue);
-            update = true;
+            updated = true;
         }
         if (this.key === 'fontFamily') {
             newValue = `${newValue}, sans-serif`;
-            update = true;
+            updated = true;
         }
         if ((this.key as string) in spanableProperties) {
             newValue = span(newValue);
-            update = true;
+            updated = true;
         }
 
-        if (update) {
+        if (updated) {
             this.update(newValue);
         }
     });

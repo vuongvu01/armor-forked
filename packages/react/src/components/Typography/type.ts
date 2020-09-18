@@ -1,11 +1,10 @@
 import { ComponentType, HTMLAttributes } from 'react';
-import { MarginAttributesType } from '../../system/attributes';
-import { Indexed } from '../../type';
 import {
-    StylesFunctionOrStubType,
-    StylePropsType,
-    NodeStylePropsType,
-} from '../type';
+    ColorAttributesType,
+    MarginAttributesType,
+} from '../../system/attributes';
+import { Indexed } from '../../type';
+import { StylePropsType, NodeStylePropsType } from '../type';
 
 export type TypographyTagType = string | ComponentType<any>;
 
@@ -23,6 +22,7 @@ type TypographyEffectivePropsType = Indexed<{
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
+    ColorAttributesType &
     MarginAttributesType;
 
 /* Typography component prop type */
