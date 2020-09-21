@@ -1,4 +1,9 @@
-import React, { FunctionComponent, forwardRef } from 'react';
+import React, {
+    FunctionComponent,
+    forwardRef,
+    useCallback,
+    MouseEvent,
+} from 'react';
 import PropTypes from 'prop-types';
 
 import { useTableCheckboxCellClassNames } from './utils/useTableCheckboxCellClassNames';
@@ -20,6 +25,11 @@ export const TableCheckboxCell: FunctionComponent<TableCheckboxCellPropsType> = 
             classNames,
         );
 
+        const onCheckboxClick = useCallback(
+            (e: MouseEvent<HTMLLabelElement>) => e.preventDefault(),
+            [],
+        );
+
         return (
             <TableCheckboxCellRoot
                 contentAlignX="center"
@@ -31,6 +41,7 @@ export const TableCheckboxCell: FunctionComponent<TableCheckboxCellPropsType> = 
                 <TableCheckboxCellCheckbox
                     checked={checked}
                     checkedIcon={checkedIcon}
+                    onClick={onCheckboxClick}
                 />
             </TableCheckboxCellRoot>
         );
