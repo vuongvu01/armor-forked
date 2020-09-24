@@ -76,30 +76,6 @@ const handleSelect = (option) => {
 return (
     <>
         <GroupHelper gap={2}>
-            <h4>
-                Using the following data. Only <code>label</code> is
-                mandatory.{' '}
-            </h4>
-            <div>
-                <code>{`[`}</code>
-            </div>
-            <div>
-                <code>{`{ value: 1, label: 'Pizza' },`}</code>
-            </div>
-            <div>
-                <code>{`{ value: 2, label: 'Pasta' },`}</code>
-            </div>
-            <div>
-                <code>{`{ value: 3, label: 'Risotto' },`}</code>
-            </div>
-            <div>
-                <code>{`  [...]`}</code>
-            </div>
-            <div>
-                <code>{`]`}</code>
-            </div>
-            <br />
-            <br />
             <Box padding={3} style={{
                 flexDirection: 'column',
                 width: '300px'
@@ -125,52 +101,52 @@ return (
 <Preview>
     <Story name="Pre-selected Value" height="500px">
          {() => {
- const foodOptionsString = [
-    'Biryani',
-    'Tacos',
-    'Pho',
-    'Risotto',
-    'Pizza',
-    'Enchiladas',
-    'Börek',
-    'Quiche',
-    'Köfte',
-    'Pad Thai',
-    'Churrasco',
-    'Baozi',
-    'Ceviche',
-    'Mac & Cheese',
-    'Paella',
-    'Dim sum',
-    'Hamburger',
-    'Ramen',
-    'Sushi',
-    'Burrito',
-];
-const initialSelectionIndex = 3;
-const [selectedOption, setSelectedOption] = useState(
-    foodOptionsString[initialSelectionIndex],
-);
-const handleSelect = (option) => {
-    setSelectedOption(option);
-};
-return (
-    <>
-        <GroupHelper gap={2}>
-            <Box padding={3} style={{ flexDirection: 'column', width: '300px' }}>
-                <Dropdown
-                    options={foodOptionsString}
-                    onSelect={handleSelect}
-                    selectedIndex={initialSelectionIndex}
-                    label="Dish type"
-                />
-                <Typography paragraph>
-                    Selected value: {JSON.stringify(selectedOption)}
-                </Typography>
-            </Box>
-        </GroupHelper>
-    </>
-);
+const foodOptionsString = [
+        'Biryani',
+        'Tacos',
+        'Pho',
+        'Risotto',
+        'Pizza',
+        'Enchiladas',
+        'Börek',
+        'Quiche',
+        'Köfte',
+        'Pad Thai',
+        'Churrasco',
+        'Baozi',
+        'Ceviche',
+        'Mac & Cheese',
+        'Paella',
+        'Dim sum',
+        'Hamburger',
+        'Ramen',
+        'Sushi',
+        'Burrito',
+    ];
+    const initialSelectionIndex = 3;
+    const [selectedOption, setSelectedOption] = useState(
+        foodOptionsString[initialSelectionIndex],
+    );
+    const handleSelect = (option) => {
+        setSelectedOption(option);
+    };
+    return (
+        <>
+            <GroupHelper gap={2}>
+                <Box padding={3} style={{ flexDirection: 'column', width: '300px' }}>
+                    <Dropdown
+                        options={foodOptionsString}
+                        onSelect={handleSelect}
+                        defaultValue={initialSelectionIndex}
+                        label="Dish type"
+                    />
+                    <Typography paragraph>
+                        Selected value: {JSON.stringify(selectedOption)}
+                    </Typography>
+                </Box>
+            </GroupHelper>
+        </>
+    );
                  }}
     </Story>
 </Preview>

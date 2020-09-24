@@ -36,7 +36,7 @@ export const buttonDefaultTheme = {
             fontWeight: '$typography.labelMedium.fontWeight',
             letterSpacing: '$typography.labelMedium.letterSpacing',
             fontSize: '$typography.labelMedium.fontSize',
-            fontFamily: '$typography.labelMedium.fontFamily',
+            fontFamily: '$typography.body.fontFamily',
             lineHeight: '$typography.labelMedium.lineHeight',
             borderRadius: '$figure.borderRadius.soft',
             backgroundColor: 'transparent',

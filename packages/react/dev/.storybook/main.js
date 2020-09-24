@@ -1,15 +1,4 @@
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
-const { addDecorator, addParameters } = require('@storybook/react');
-const { INITIAL_VIEWPORTS } = require('@storybook/addon-viewport');
-const {
-    withThemesProvider,
-} = require('storybook-addon-styled-component-theme');
-
-addParameters({
-    viewport: {
-        viewports: INITIAL_VIEWPORTS,
-    },
-});
 
 module.exports = {
     stories: ['../../src/**/*.story.tsx'],
@@ -18,7 +7,7 @@ module.exports = {
         '@storybook/addon-actions',
         '@storybook/addon-links',
         'storybook-addon-styled-component-theme/dist/register',
-        '@storybook/addon-viewport/register',
+        // '@storybook/addon-viewport/register',
     ],
     webpackFinal: async config => {
         config.module.rules.push({

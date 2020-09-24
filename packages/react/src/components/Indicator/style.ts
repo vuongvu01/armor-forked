@@ -6,7 +6,6 @@ import { shouldForwardProp } from '../../utils';
 import { IndicatorRootPropsType } from './type';
 
 const propertyList = {
-    exampleProperty: true,
     // add other custom properties here
 } as ObjectLiteralType;
 

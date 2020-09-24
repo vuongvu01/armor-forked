@@ -6,3 +6,4 @@ packages/**/build.cjs/*
 packages/**/build.esm/*
 .idea
 .DS_Store
+report.*.json

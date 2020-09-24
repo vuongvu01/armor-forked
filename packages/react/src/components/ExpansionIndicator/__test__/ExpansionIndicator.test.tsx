@@ -70,7 +70,7 @@ describe('<ExpansionIndicator />', () => {
             .toJSON();
 
         // @ts-ignore
-        expect(result).toSupportMarginAttributes(
+        expect(result).toSupportMarginAttribute(
             expansionIndicatorContainer,
             marginAttribute,
             marginValue,

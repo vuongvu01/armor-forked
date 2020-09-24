@@ -21,7 +21,6 @@ export const useDialogTitleClassNames = (
     classPrefix: string,
     className?: string,
     classNames?: ClassNamesType,
-    exampleProperty?: boolean,
 ) =>
     useMemo(() => {
         return {
@@ -34,4 +33,4 @@ export const useDialogTitleClassNames = (
                 'Description',
             ),
         };
-    }, [classPrefix, className, classNames, exampleProperty]);
+    }, [classPrefix, className, classNames]);

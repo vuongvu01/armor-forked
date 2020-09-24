@@ -78,7 +78,10 @@ export const Basic = () => {
                 )}
                 {boolean('Show bottom action', true) && (
                     <div>
-                        <MessageAction marginTop={2}>See details</MessageAction>
+                        <MessageAction marginTop={2} marginRight={4}>
+                            See details
+                        </MessageAction>
+                        <MessageAction>Report</MessageAction>
                     </div>
                 )}
             </Message>

@@ -9,7 +9,6 @@ import {
 } from '../type';
 
 type TextInputEffectivePropsType = Indexed<{
-    exampleProperty?: boolean;
     label?: string;
     before?: ReactNode;
     after?: ReactNode;

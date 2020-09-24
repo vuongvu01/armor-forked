@@ -19,7 +19,6 @@ export const useClassNamePaper = (
     classPrefix: string,
     className?: string,
     classNames?: ClassNamesType,
-    exampleProperty?: boolean,
 ) =>
     useMemo(() => {
         const baseClassNames = makeClassName(
@@ -27,10 +26,6 @@ export const useClassNamePaper = (
             className,
             classNames,
         );
-        const stateClassNames: string[] = [];
-        if (exampleProperty) {
-            stateClassNames.push(makeBEM(classPrefix, 'root', 'example'));
-        }
 
-        return `${baseClassNames} ${stateClassNames.join(' ')}`.trim();
-    }, [classPrefix, className, classNames, exampleProperty]);
+        return baseClassNames;
+    }, [classPrefix, className, classNames]);

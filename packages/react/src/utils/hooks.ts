@@ -3,7 +3,7 @@ import { useMemo } from 'react';
 import { ClassNamesType } from '../components/type';
 import { transformTheme } from '../styling/make/transform-theme';
 import { makeClassName, merge } from '.';
-import { ThemeType } from '../styling';
+import { ThemeType, useTheme } from '../styling';
 import { ObjectLiteralType } from '../type';
 
 /**
@@ -39,8 +39,19 @@ export const useThemeOverride = (
             theme.componentOverrides[classPrefix] = transformTheme(
                 theme,
                 chunk,
+                classPrefix,
             );
         }
 
         return true;
     }, [classPrefix, theme, defaultComponentTheme]);
+
+export const useComponentTheme = (
+    classPrefix: string,
+    defaultComponentTheme: ObjectLiteralType,
+) => {
+    const theme = useTheme();
+    useThemeOverride(classPrefix, theme, defaultComponentTheme);
+
+    return theme;
+};

@@ -2,6 +2,7 @@ import styled, { css, Interpolation } from 'styled-components';
 import { ObjectLiteralType } from '../../type';
 import { shouldForwardProp } from '../../utils';
 import { TooltipArrowPropsType, TooltipRootPropsType } from './type';
+import { transitionDurationInSec } from '../../constants';
 
 const propertyList = {
     align: true,
@@ -65,7 +66,7 @@ export const TooltipRoot = styled.div.withConfig({
               `
             : ''};
     box-shadow: 0px 2px 28px 0px rgba(0, 0, 0, 0.12);
-    transition: opacity 200ms ease;
+    transition: opacity ${transitionDurationInSec}s ease;
     pointer-events: none;
 
     &[data-popper-placement^='top'] > .Tooltip-Arrow {

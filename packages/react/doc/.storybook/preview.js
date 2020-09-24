@@ -5,8 +5,4 @@ addParameters({
         inlineStories: false,
         previewSource: 'open',
     },
-    options: {
-        isToolshown: false,
-        showNav: false,
-    },
 });

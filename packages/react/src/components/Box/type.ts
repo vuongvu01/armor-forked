@@ -6,6 +6,7 @@ import {
     MarginAttributesType,
     TextAlignmentAttributesType,
     DisplayAttributesType,
+    ColorAttributesType,
 } from '../../system';
 import { Indexed } from '../../type';
 import {
@@ -22,6 +23,7 @@ type BoxEffectivePropsType = Indexed<{
     SizeAttributesType &
     TextAlignmentAttributesType &
     DisplayAttributesType &
+    ColorAttributesType &
     HTMLAttributes<HTMLDivElement>; // includes all HTML Div attributes
 
 /* Box component prop type */

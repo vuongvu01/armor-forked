@@ -29,7 +29,7 @@ describe('<SVGIcon />', () => {
     //     );
     //
     //     // @ts-ignore
-    //     expect(result).toSupportMarginAttributes(
+    //     expect(result).toSupportMarginAttribute(
     //         accordionRoot,
     //         marginAttribute,
     //         marginValue,

@@ -86,13 +86,13 @@ describe('<Radio />', () => {
             .toJSON();
 
         // @ts-ignore
-        expect(result[0]).toSupportMarginAttributes(
+        expect(result[0]).toSupportMarginAttribute(
             radioRoot,
             marginAttribute,
             marginValue,
         );
         // @ts-ignore
-        expect(result[1]).toSupportMarginAttributes(
+        expect(result[1]).toSupportMarginAttribute(
             radioRoot,
             marginAttribute,
             marginValue,

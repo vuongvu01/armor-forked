@@ -12,7 +12,10 @@ expect.extend({
             const classList = modifiers.map(modifier =>
                 makeBEM(blockName, elementName, modifier),
             );
-            expect(node).toHaveClass(...classList);
+
+            if (classList.length) {
+                expect(node).toHaveClass(...classList);
+            }
         });
 
         return {

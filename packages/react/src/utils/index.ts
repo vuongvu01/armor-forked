@@ -9,6 +9,7 @@ import {
     styleAttributesList,
     textAlignmentAttributesList,
     displayAttributesList,
+    colorAttributesList,
 } from '../system/attributes';
 
 export { default as generateId } from './generateId';
@@ -54,6 +55,7 @@ const systemAttributeList = {
     ...sizeAttributesList,
     ...textAlignmentAttributesList,
     ...displayAttributesList,
+    ...colorAttributesList,
 };
 
 /**

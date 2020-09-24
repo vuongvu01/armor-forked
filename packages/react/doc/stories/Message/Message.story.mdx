@@ -16,7 +16,7 @@ import { Message, MessageAction } from '@deliveryhero/armor';
 
 <Preview>
     <Story name="Basic usage" height="100px">
-        <Message disableIcon>You have 99 new cookies!</Message>
+        <Message>You have 99 new cookies!</Message>
     </Story>
 </Preview>
 
@@ -25,10 +25,10 @@ import { Message, MessageAction } from '@deliveryhero/armor';
 <Preview>
     <Story name="Levels of importance" height="300px">
         <>
-            <Message disableIcon error marginBottom={2}>System failure. You ran out of cake.</Message>
-            <Message disableIcon warning marginBottom={2}>Your payment is due.</Message>
-            <Message disableIcon info marginBottom={2}>Your spacetrain arrives at 14:00.</Message>
-            <Message disableIcon success>You have just received 500&euro;.</Message>
+            <Message error marginBottom={2}>System failure. You ran out of cake.</Message>
+            <Message warning marginBottom={2}>Your payment is due.</Message>
+            <Message info marginBottom={2}>Your spacetrain arrives at 14:00.</Message>
+            <Message success>You have just received 500&euro;.</Message>
         </>
     </Story>
 </Preview>
