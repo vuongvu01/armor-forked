@@ -1,3 +1,26 @@
+# @deliveryhero/armor [1.15.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.14.2...@deliveryhero/armor@1.15.0) (2020-09-24)
+
+
+### Bug Fixes
+
+* **messages:** action items ([#245](https://github.com/deliveryhero/armor/issues/245)) ([0ef41e7](https://github.com/deliveryhero/armor/commit/0ef41e74b83129bb7f4a6e965716521d11946d5c))
+* **table:** followup ui fixes [LD-207] ([#253](https://github.com/deliveryhero/armor/issues/253)) ([1059ca2](https://github.com/deliveryhero/armor/commit/1059ca2117379bfca86969c4ca6522f689746e34))
+* **table:** table row checkbox fix [LD-000] ([98cc31e](https://github.com/deliveryhero/armor/commit/98cc31e58897b815fce342d18f91797f2863ae84))
+* **zeroheight:** examples [LD-226] ([#244](https://github.com/deliveryhero/armor/issues/244)) ([67c3708](https://github.com/deliveryhero/armor/commit/67c37087d41b24e14c7c9a9a8c7f75edfdd35687))
+
+
+### Features
+
+* **table:** Build Table component [LD-207] ([#242](https://github.com/deliveryhero/armor/issues/242)) ([cbc2232](https://github.com/deliveryhero/armor/commit/cbc2232c838fc0dafd930f9c6c9d517fe77e7bd9))
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor-icons:** upgraded to 1.1.0
+
 ## @deliveryhero/armor [1.14.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.14.1...@deliveryhero/armor@1.14.2) (2020-09-10)
 
 
