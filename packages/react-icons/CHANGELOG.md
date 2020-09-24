@@ -1,3 +1,10 @@
+# @deliveryhero/armor-icons [1.1.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.0.1...@deliveryhero/armor-icons@1.1.0) (2020-09-24)
+
+
+### Features
+
+* **table:** Build Table component [LD-207] ([#242](https://github.com/deliveryhero/armor/issues/242)) ([cbc2232](https://github.com/deliveryhero/armor/commit/cbc2232c838fc0dafd930f9c6c9d517fe77e7bd9))
+
 ## @deliveryhero/armor-icons [1.0.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.0.0...@deliveryhero/armor-icons@1.0.1) (2020-08-27)
 
 
