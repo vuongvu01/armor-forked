@@ -13,6 +13,7 @@ import { TableHead } from '../TableHead';
 import { TableCell as Cell } from '../TableCell';
 import { TableBody as Body } from '../TableBody';
 import { TableRow as Row } from '../TableRow';
+import { TableAction as Action } from '../TableAction';
 import { demoData, getLargeDemoData } from './demoData';
 import { EditableTableCell } from '../EditableTableCell';
 import { Box } from '../../Box';
@@ -357,7 +358,7 @@ export const SelectableRowsAndStickyColumns = () => {
                         <Cell>{item.fullName}</Cell>
                         <Cell>{item.id}</Cell>
                         <Cell>{item.phoneNumber}</Cell>
-                        <Cell color="$color.neutral.05">
+                        <Cell>
                             {/* todo: replace with <Pack /> later */}
                             <Box
                                 style={{
@@ -366,9 +367,15 @@ export const SelectableRowsAndStickyColumns = () => {
                                 }}
                                 height="24px"
                             >
-                                <EditIcon marginRight={componentSpacing06} />
-                                <DeleteIcon marginRight={componentSpacing06} />
-                                <EllipsisVerticalIcon />
+                                <Action marginRight={componentSpacing06}>
+                                    <EditIcon />
+                                </Action>
+                                <Action marginRight={componentSpacing06}>
+                                    <DeleteIcon />
+                                </Action>
+                                <Action>
+                                    <EllipsisVerticalIcon />
+                                </Action>
                             </Box>
                         </Cell>
                     </Row>

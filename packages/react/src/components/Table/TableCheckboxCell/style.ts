@@ -11,7 +11,3 @@ export const TableCheckboxCellRoot = styled(TableCell)`
 export const TableCheckboxCellCheckbox = styled(Checkbox)`
     margin-top: 2px;
 `;
-
-// export const TableCheckboxCellCheckbox = styled.input.attrs({type: 'checkbox'})`
-//     margin-top: 2px;
-// `;

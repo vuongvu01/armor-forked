@@ -75,6 +75,7 @@ export const TableRow: FunctionComponent<TableRowPropsType> = forwardRef(
                         }
                         isHeader={isHeader}
                         onClick={onSelectorCellClick}
+                        data-rowid={rowId}
                     />
                 )}
                 <TableRowCells

@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
-import { Table, TableHead, TableRow, TableCell, TableBody, TableCellLabel, Box } from '../../../src/components/';
+import { Table, TableHead, TableRow, TableCell, TableBody, TableCellLabel, TableAction, Box } from '../../../src/components/';
 import { LoremIpsum } from '../../../src/helpers/LoremIpsum';
 import { Nodes } from '../../../src/helpers/Nodes';
 import { EditIcon, DeleteIcon, EllipsisVerticalIcon } from '@deliveryhero/armor-icons';
@@ -10,7 +10,7 @@ import { EditIcon, DeleteIcon, EllipsisVerticalIcon } from '@deliveryhero/armor-
 # Table
 
 ~~~js
-import { Table, TableHead, TableBody, TableRow, TableCell, TableCellLabel } from '@deliveryhero/armor';
+import { Table, TableHead, TableBody, TableRow, TableCell, TableCellLabel, TableAction } from '@deliveryhero/armor';
 ~~~
 
 ## Basic usage
@@ -511,9 +511,15 @@ import { EditIcon, DeleteIcon, EllipsisVerticalIcon } from '@deliveryhero/armor-
                             }}
                             height={6}
                         >
-                            <EditIcon marginRight={6} />
-                            <DeleteIcon marginRight={6} />
-                            <EllipsisVerticalIcon />
+                            <TableAction marginRight={6}>
+                                <EditIcon />
+                            </TableAction>
+                            <TableAction marginRight={6}>
+                                <DeleteIcon />
+                            </TableAction>
+                            <TableAction>
+                                <EllipsisVerticalIcon />
+                            </TableAction>
                         </Box>
                     </TableCell>
                 </TableRow>
@@ -532,9 +538,15 @@ import { EditIcon, DeleteIcon, EllipsisVerticalIcon } from '@deliveryhero/armor-
                             }}
                             height={6}
                         >
-                            <EditIcon marginRight={6} />
-                            <DeleteIcon marginRight={6} />
-                            <EllipsisVerticalIcon />
+                            <TableAction marginRight={6}>
+                                <EditIcon />
+                            </TableAction>
+                            <TableAction marginRight={6}>
+                                <DeleteIcon />
+                            </TableAction>
+                            <TableAction>
+                                <EllipsisVerticalIcon />
+                            </TableAction>
                         </Box>
                     </TableCell>
                 </TableRow>
@@ -553,9 +565,15 @@ import { EditIcon, DeleteIcon, EllipsisVerticalIcon } from '@deliveryhero/armor-
                             }}
                             height={6}
                         >
-                            <EditIcon marginRight={6} />
-                            <DeleteIcon marginRight={6} />
-                            <EllipsisVerticalIcon />
+                            <TableAction marginRight={6}>
+                                <EditIcon />
+                            </TableAction>
+                            <TableAction marginRight={6}>
+                                <DeleteIcon />
+                            </TableAction>
+                            <TableAction>
+                                <EllipsisVerticalIcon />
+                            </TableAction>
                         </Box>
                     </TableCell>
                 </TableRow>
@@ -603,53 +621,6 @@ import { EditIcon, DeleteIcon, EllipsisVerticalIcon } from '@deliveryhero/armor-
                     <TableCell>Akumjeli Akuchi</TableCell>
                     <TableCell>26</TableCell>
                     <TableCell>150-204-0817</TableCell>
-                </TableRow>
-            </TableBody>
-        </Table>
-    </Story>
-</Preview>
-
-## Merge cells
-
-<Preview>
-    <Story name="Merge cells" height="300px">
-        <Table>
-            <TableHead>
-                <TableRow>
-                    <TableCell>Food Companies</TableCell>
-                    <TableCell>Scheme ID</TableCell>
-                    <TableCell>City</TableCell>
-                    <TableCell>Full Name</TableCell>
-                    <TableCell>ID</TableCell>
-                    <TableCell>Phone number</TableCell>
-                </TableRow>
-            </TableHead>
-            <TableBody>
-                <TableRow>
-                    <TableCell rowSpan={3}>
-                        Kitchen Garden<br />
-                        Kitchen Garden<br />
-                        Kitchen Garden<br />
-                        Kitchen Garden<br />
-                        Kitchen Garden<br />
-                    </TableCell>
-                    <TableCell>Scheme B</TableCell>
-                    <TableCell>Kano</TableCell>
-                    <TableCell>Slavcho Karbashewski</TableCell>
-                    <TableCell>42</TableCell>
-                    <TableCell>695-615-8635</TableCell>
-                </TableRow>
-                <TableRow>
-                    <TableCell>Scheme F</TableCell>
-                    <TableCell colSpan={2}>Gothenburg, Schloßstraße</TableCell>
-                    <TableCell>46</TableCell>
-                    <TableCell>998-703-1496</TableCell>
-                </TableRow>
-                <TableRow>
-                    <TableCell>Scheme E</TableCell>
-                    <TableCell>Xian</TableCell>
-                    <TableCell>Akumjeli Akuchi</TableCell>
-                    <TableCell colSpan={2}>26,9999999999999</TableCell>
                 </TableRow>
             </TableBody>
         </Table>

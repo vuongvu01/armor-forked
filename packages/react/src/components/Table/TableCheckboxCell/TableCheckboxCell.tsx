@@ -4,7 +4,6 @@ import React, {
     useCallback,
     MouseEvent,
 } from 'react';
-import PropTypes from 'prop-types';
 
 import { useTableCheckboxCellClassNames } from './utils/useTableCheckboxCellClassNames';
 import { TableCheckboxCellRoot, TableCheckboxCellCheckbox } from './style';

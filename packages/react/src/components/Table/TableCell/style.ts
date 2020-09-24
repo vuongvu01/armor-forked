@@ -53,7 +53,6 @@ const getRootDynamicStyle = ({
 
     if (isHeader) {
         result = css`
-            cursor: pointer;
             vertical-align: middle;
             ${TableCell.Root.header};
         `;
@@ -139,7 +138,7 @@ const getRootDynamicStyle = ({
     if (disabled) {
         result = css`
             ${result};
-            cursor: initial;
+            cursor: not-allowed;
             ${TableCell.Root.disabled}
         `;
     }
