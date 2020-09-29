@@ -1,12 +1,5 @@
 import React from 'react';
-
-export type TableSectionContextValueDataType = {
-    section?: 'thead' | 'tfoot';
-};
-
-export type TableSectionContextValueType = {
-    data: TableSectionContextValueDataType;
-};
+import { TableSectionContextValueType } from './type';
 
 export const TABLE_HEAD = 'thead';
 

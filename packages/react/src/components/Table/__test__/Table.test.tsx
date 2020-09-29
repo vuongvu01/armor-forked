@@ -1,9 +1,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
-import React, { useRef, useState } from 'react';
+import React, { ReactElement, useRef } from 'react';
 import { ThemeProvider } from 'styled-components';
 
-import { cleanup, render, prettyDOM, fireEvent } from '@testing-library/react';
+import { cleanup, render, fireEvent, prettyDOM } from '@testing-library/react';
 import {
     renderHook,
     cleanup as cleanupHooks,
@@ -11,8 +11,15 @@ import {
 import renderer from 'react-test-renderer';
 
 import { customTheme } from './helpers';
-import { Table, TableHead, TableCell, TableRow, TableBody } from '../..';
-import { ScalarType } from '../../../type';
+import {
+    Table,
+    TableHead,
+    TableHeadCell,
+    TableCell,
+    TableRow,
+    TableBody,
+} from '../..';
+import { ObjectLiteralType, ScalarType } from '../../../type';
 
 describe('<Table />', () => {
     afterEach(async () => {
@@ -65,40 +72,48 @@ describe('<Table />', () => {
 
     const getTable = (
         rowIds: ScalarType[],
-        selectedRowIds: ScalarType[],
-        setSelectedRowIds: () => void = () => {},
-    ) => (
-        <Table
-            rowIds={rowIds}
-            selectedRowIds={selectedRowIds}
-            onRowSelectionChange={setSelectedRowIds}
-        >
-            <TableHead>
-                <TableRow>
-                    <TableCell>Food Companies</TableCell>
-                    <TableCell>Scheme ID</TableCell>
-                    <TableCell>City</TableCell>
-                </TableRow>
-            </TableHead>
-            <TableBody>
-                <TableRow rowId="a">
-                    <TableCell>Kitchen Garden POS</TableCell>
-                    <TableCell>Scheme B</TableCell>
-                    <TableCell>Kano</TableCell>
-                </TableRow>
-                <TableRow rowId="b">
-                    <TableCell>KFC HK</TableCell>
-                    <TableCell>Scheme F</TableCell>
-                    <TableCell>Gothenburg</TableCell>
-                </TableRow>
-                <TableRow rowId="c">
-                    <TableCell>Foodstory</TableCell>
-                    <TableCell>Scheme E</TableCell>
-                    <TableCell>Xian</TableCell>
-                </TableRow>
-            </TableBody>
-        </Table>
-    );
+        selectedRowIds?: ScalarType[],
+        setSelectedRowIds?: () => void,
+        otherProps?: ObjectLiteralType,
+        header?: ReactElement,
+    ) => {
+        return (
+            <Table
+                rowIds={rowIds}
+                selectedRowIds={selectedRowIds}
+                onRowSelectionChange={setSelectedRowIds}
+                {...otherProps}
+            >
+                <TableHead>
+                    {!!header && header}
+                    {!header && (
+                        <TableRow>
+                            <TableCell>Food Companies</TableCell>
+                            <TableCell>Scheme ID</TableCell>
+                            <TableCell>City</TableCell>
+                        </TableRow>
+                    )}
+                </TableHead>
+                <TableBody>
+                    <TableRow rowId="a">
+                        <TableCell>Kitchen Garden POS</TableCell>
+                        <TableCell>Scheme B</TableCell>
+                        <TableCell>Kano</TableCell>
+                    </TableRow>
+                    <TableRow rowId="b">
+                        <TableCell>KFC HK</TableCell>
+                        <TableCell>Scheme F</TableCell>
+                        <TableCell>Gothenburg</TableCell>
+                    </TableRow>
+                    <TableRow rowId="c">
+                        <TableCell>Foodstory</TableCell>
+                        <TableCell>Scheme E</TableCell>
+                        <TableCell>Xian</TableCell>
+                    </TableRow>
+                </TableBody>
+            </Table>
+        );
+    };
 
     const expectToBeInState = (
         checked: boolean,
@@ -220,5 +235,170 @@ describe('<Table />', () => {
         const th = container.querySelector('thead th');
         fireEvent.click(th!);
         expect(onSelectionChange).toHaveBeenCalledWith([]);
+    });
+
+    it('should switch current sort order asc => desc', async () => {
+        const onRowSortOrderChange = jest.fn();
+        const { container } = render(
+            getTable(
+                [],
+                undefined,
+                undefined,
+                {
+                    onRowSortOrderChange,
+                    rowSortOrder: [['company', 'asc']],
+                },
+                <TableRow>
+                    <TableHeadCell columnId="company" sortable>
+                        Food Companies
+                    </TableHeadCell>
+                    <TableHeadCell columnId="scheme" sortable>
+                        Scheme ID
+                    </TableHeadCell>
+                    <TableHeadCell columnId="city" sortable>
+                        City
+                    </TableHeadCell>
+                </TableRow>,
+            ),
+        );
+
+        const cell = container.querySelector('thead th');
+
+        fireEvent.click(cell!);
+        expect(onRowSortOrderChange).toHaveBeenCalledWith([
+            ['company', 'desc'],
+        ]);
+    });
+
+    it('should switch current sort order desc => undefined', async () => {
+        const onRowSortOrderChange = jest.fn();
+        const { container } = render(
+            getTable(
+                [],
+                undefined,
+                undefined,
+                {
+                    onRowSortOrderChange,
+                    rowSortOrder: [['company', 'desc']],
+                },
+                <TableRow>
+                    <TableHeadCell columnId="company" sortable>
+                        Food Companies
+                    </TableHeadCell>
+                    <TableHeadCell columnId="scheme" sortable>
+                        Scheme ID
+                    </TableHeadCell>
+                    <TableHeadCell columnId="city" sortable>
+                        City
+                    </TableHeadCell>
+                </TableRow>,
+            ),
+        );
+
+        const cell = container.querySelector('thead th');
+
+        fireEvent.click(cell!);
+        expect(onRowSortOrderChange).toHaveBeenCalledWith([]);
+    });
+
+    it('should switch current sort order undefined => asc', async () => {
+        const onRowSortOrderChange = jest.fn();
+        const { container } = render(
+            getTable(
+                [],
+                undefined,
+                undefined,
+                {
+                    onRowSortOrderChange,
+                    rowSortOrder: [],
+                },
+                <TableRow>
+                    <TableHeadCell columnId="company" sortable>
+                        Food Companies
+                    </TableHeadCell>
+                    <TableHeadCell columnId="scheme" sortable>
+                        Scheme ID
+                    </TableHeadCell>
+                    <TableHeadCell columnId="city" sortable>
+                        City
+                    </TableHeadCell>
+                </TableRow>,
+            ),
+        );
+
+        const cell = container.querySelector('thead th');
+
+        fireEvent.click(cell!);
+        expect(onRowSortOrderChange).toHaveBeenCalledWith([['company', 'asc']]);
+    });
+
+    it('should switch other field sort order asc => asc', async () => {
+        const onRowSortOrderChange = jest.fn();
+        const { container } = render(
+            getTable(
+                [],
+                undefined,
+                undefined,
+                {
+                    onRowSortOrderChange,
+                    rowSortOrder: [['company', 'asc']],
+                },
+                <TableRow>
+                    <TableHeadCell columnId="company" sortable>
+                        Food Companies
+                    </TableHeadCell>
+                    <TableHeadCell columnId="scheme" sortable>
+                        Scheme ID
+                    </TableHeadCell>
+                    <TableHeadCell columnId="city" sortable>
+                        City
+                    </TableHeadCell>
+                </TableRow>,
+            ),
+        );
+
+        const cell = container.querySelector('thead th:nth-child(2)');
+
+        fireEvent.click(cell!);
+        expect(onRowSortOrderChange).toHaveBeenCalledWith([['scheme', 'asc']]);
+    });
+
+    it('should allow to override the default onclick behaviour', async () => {
+        const onRowSortOrderChange = jest.fn();
+        const onHeaderCellClick = jest.fn(event => {
+            event.stopPropagation();
+        });
+        const { container } = render(
+            getTable(
+                [],
+                undefined,
+                undefined,
+                {
+                    onRowSortOrderChange,
+                    rowSortOrder: [['company', 'asc']],
+                },
+                <TableRow>
+                    <TableHeadCell columnId="company" sortable>
+                        Food Companies
+                    </TableHeadCell>
+                    <TableHeadCell
+                        columnId="scheme"
+                        sortable
+                        onClick={onHeaderCellClick}
+                    >
+                        Scheme ID
+                    </TableHeadCell>
+                    <TableHeadCell columnId="city" sortable>
+                        City
+                    </TableHeadCell>
+                </TableRow>,
+            ),
+        );
+
+        const cell = container.querySelector('thead th:nth-child(2)');
+
+        fireEvent.click(cell!);
+        expect(onRowSortOrderChange).not.toHaveBeenCalled();
+        expect(onHeaderCellClick).toHaveBeenCalled();
     });
 });

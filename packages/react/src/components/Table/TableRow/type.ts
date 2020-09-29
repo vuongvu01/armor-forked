@@ -5,7 +5,7 @@ import {
     PropsWithNodeStylePropsType,
 } from '../../type';
 import { Indexed, ScalarType } from '../../../type';
-import { UseTableRowType } from './utils/useTableRow';
+import { UseTableRowType } from './utils/type';
 import { HeightAttributesType } from '../../../system/attributes';
 
 type TableRowEffectivePropsType = Indexed<{

@@ -2,36 +2,16 @@ import { useCallback, useContext } from 'react';
 import {
     TABLE_HEAD,
     TableSectionContext,
-    TableSectionContextValueType,
 } from '../../utils/TableSectionContext';
-import {
-    TableContext,
-    TableContextValueType,
-    TableContextValueDataType,
-} from '../../utils/TableContext';
-import {
-    TableRowSelectionContext,
-    TableRowSelectionContextValueType,
-} from '../../utils/TableRowSelectionContext';
+import { TableContext } from '../../utils/TableContext';
+import { TableRowSelectionContext } from '../../utils/TableRowSelectionContext';
 import { TableRowPropsType } from '../type';
-
-export type UseTableRowType = {
-    isHeader: boolean;
-    stickyTop: boolean;
-    rowSelectionEnabled: boolean;
-    rowSelected: boolean;
-    onSelectorCellClick: () => void;
-    allRowsSelected: boolean;
-    someRowsSelected: boolean;
-    stickyTopVisible: boolean;
-} & Pick<
-    TableContextValueDataType,
-    | 'stickyLeftColumn'
-    | 'stickyRightColumn'
-    | 'stickyLeftColumnVisible'
-    | 'stickyRightColumnVisible'
-> &
-    Pick<TableRowSelectionContextValueType, 'rowIds' | 'selectedRowIds'>;
+import {
+    TableContextValueType,
+    TableRowSelectionContextValueType,
+    TableSectionContextValueType,
+} from '../../utils/type';
+import { UseTableRowType } from './type';
 
 export const useTableRow = ({
     rowId,

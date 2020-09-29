@@ -11,6 +11,10 @@ import {
 } from '../../system/attributes';
 import { Indexed, ScalarType } from '../../type';
 
+type TableSortOrderWay = 'asc' | 'desc';
+
+export type TableRowSortOrderType = [ScalarType, TableSortOrderWay][];
+
 export type TableEffectivePropsType = Indexed<{
     horizontalScroll?: boolean;
     stickyLeftColumn?: boolean;
@@ -19,6 +23,8 @@ export type TableEffectivePropsType = Indexed<{
     selectedRowIds?: ScalarType[];
     rowIds?: ScalarType[];
     onRowSelectionChange?: (selectedRows: ScalarType[]) => void;
+    rowSortOrder?: TableRowSortOrderType;
+    onRowSortOrderChange?: (rowSortOrder: TableRowSortOrderType) => void;
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLTableElement> & // includes all HTML Table attributes

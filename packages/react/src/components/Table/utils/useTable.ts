@@ -1,20 +1,7 @@
 import { Ref, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { throttle } from 'throttle-debounce';
-import { TableEffectivePropsType } from '../type';
-import { TableContextValueType } from './TableContext';
 import { TABLE_THROTTLE_PERIOD } from '../constants';
-
-type TableHookPropsType = Pick<
-    TableEffectivePropsType,
-    | 'stickyLeftColumn'
-    | 'stickyRightColumn'
-    | 'stickyHead'
-    | 'selectedRowIds'
-    | 'rowIds'
-    | 'onRowSelectionChange'
-> & {
-    ref: Ref<unknown>;
-};
+import { TableHookPropsType, TableContextValueType } from './type';
 
 export const useTable = ({
     stickyLeftColumn,
@@ -24,6 +11,8 @@ export const useTable = ({
     selectedRowIds,
     onRowSelectionChange,
     ref,
+    rowSortOrder,
+    onRowSortOrderChange,
 }: TableHookPropsType) => {
     const [tableContextValue, setTableContextValue] = useState<
         TableContextValueType
@@ -107,10 +96,19 @@ export const useTable = ({
         [rowIds, selectedRowIds, onRowSelectionChange],
     );
 
+    const tableRowSortOrderContextValue = useMemo(
+        () => ({
+            rowSortOrder,
+            onRowSortOrderChange,
+        }),
+        [rowSortOrder, onRowSortOrderChange],
+    );
+
     return {
         tableContextValue,
         rootReference,
         onLayoutUpdate,
         tableRowSelectionContextValue,
+        tableRowSortOrderContextValue,
     };
 };
