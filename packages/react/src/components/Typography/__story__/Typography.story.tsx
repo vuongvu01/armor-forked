@@ -61,3 +61,35 @@ export const NoMargin = () => (
         </Typography>
     </>
 );
+
+export const CustomColor = () => (
+    <>
+        <Typography
+            paragraph
+            large
+            marginBottom={0}
+            marginTop={0}
+            color="$color.neutral.05"
+        >
+            {loremIpsum}
+        </Typography>
+        <Typography
+            paragraph
+            medium
+            marginBottom={0}
+            marginTop={0}
+            color="$color.error.main"
+        >
+            {loremIpsum}
+        </Typography>
+        <Typography
+            paragraph
+            small
+            marginBottom={0}
+            marginTop={0}
+            color="$color.warning.main"
+        >
+            {loremIpsum}
+        </Typography>
+    </>
+);
