@@ -1,9 +1,5 @@
 import { HTMLAttributes } from 'react';
-import {
-    StylesFunctionOrStubType,
-    StylePropsType,
-    PropsWithNodeStylePropsType,
-} from '../../type';
+import { StylePropsType, PropsWithNodeStylePropsType } from '../../type';
 import { Indexed, ScalarType } from '../../../type';
 import {
     ColorAttributesType,
@@ -33,18 +29,10 @@ type TableCellEffectivePropsType = Indexed<{
 
 /* TableCell component prop type */
 export type TableCellPropsType = TableCellEffectivePropsType &
-    StylePropsType<
-        {
-            Root?: string;
-            // add custom className for other nodes here
-        },
-        TableCellStylesPropsType
-    >;
-
-export type TableCellStylesPropsType = {
-    Root?: StylesFunctionOrStubType<TableCellEffectivePropsType>;
-    // add style properties for other nodes here
-};
+    StylePropsType<{
+        Root?: string;
+        // add custom className for other nodes here
+    }>;
 
 /* TableCell Root node prop type */
 export type TableCellRootPropsType = PropsWithNodeStylePropsType<

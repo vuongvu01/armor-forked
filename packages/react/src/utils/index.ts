@@ -65,3 +65,5 @@ export const shouldForwardProp = (
     property: ReactText,
     componentPropertyList: ObjectLiteralType = {},
 ) => !(property in componentPropertyList) && !(property in systemAttributeList);
+
+export * from './makePropList';

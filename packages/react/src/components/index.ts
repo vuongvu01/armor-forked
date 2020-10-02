@@ -32,3 +32,4 @@ export * from './TabView';
 export * from './TextInput';
 export * from './Tooltip';
 export * from './Typography';
+export * from './PageNavigation';
