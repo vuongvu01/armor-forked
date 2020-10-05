@@ -1,0 +1,223 @@
+import { useState } from 'react';
+import { BrowserRouter, Link } from 'react-router-dom';
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { InfoIcon, PinMarkerIcon } from '@deliveryhero/armor-icons';
+
+import { Search  } from 'src/components';
+
+<Meta title="Components/Search" component={Search} />
+
+# Search
+
+```js
+import { Search } from '@deliveryhero/armor';
+```
+
+## Default Search
+
+<Preview>
+    <Story name="DefaultSearch" height="300px">
+        {() => {
+        const foodOptions = [
+            { value: 0, label: 'Biryani' },
+            { value: 1, label: 'Tacos' },
+            { value: 2, label: 'Pho' },
+            { value: 3, label: 'Risotto' },
+            { value: 4, label: 'Pizza' },
+            { value: 5, label: 'Enchiladas' },
+        ];
+        const [searchQuery, setSearchQuery] = useState('');
+            const handleOnChange = (event) => {
+                const query = event?.target?.value || '';
+                setSearchQuery(query);
+            };
+            const handleOnSelect = (option) => {
+                setSearchQuery(option.label);
+            };
+            return (
+<>
+    <Search
+        additionalInfo={<InfoIcon width="12px" height="12px" />}
+        onChange={handleOnChange}
+        onItemSelect={handleOnSelect}
+        options={searchQuery && searchQuery.length ? foodOptions : []}
+        icon={<PinMarkerIcon width="12px" height="12px" />}
+    />
+    <p>Search query: {searchQuery}</p>
+</>
+                );
+        }}
+    </Story>
+</Preview>
+
+## Disabled Clear Icon
+
+<Preview>
+    <Story name="DisabledClearIcon" height="300px">
+        {() => {
+        const foodOptions = [
+            { value: 0, label: 'Biryani' },
+            { value: 1, label: 'Tacos' },
+            { value: 2, label: 'Pho' },
+            { value: 3, label: 'Risotto' },
+            { value: 4, label: 'Pizza' },
+            { value: 5, label: 'Enchiladas' },
+        ];
+        const [searchQuery, setSearchQuery] = useState('');
+            const handleOnChange = (event) => {
+                const query = event?.target?.value || '';
+                setSearchQuery(query);
+            };
+            const handleOnSelect = (option) => {
+                setSearchQuery(option.label);
+            };
+            return (
+    <Search
+        disableClearAction
+        additionalInfo={<InfoIcon width="12px" height="12px" />}
+        onChange={handleOnChange}
+        onItemSelect={handleOnSelect}
+        options={searchQuery && searchQuery.length ? foodOptions : []}
+        icon={<PinMarkerIcon width="12px" height="12px" />}
+    />
+                );
+        }}
+    </Story>
+</Preview>
+
+## Wide Search With Pre-selected Value
+
+<Preview>
+    <Story name="WideSearchWithPreSelectedValue" height="300px">
+        {() => {
+        const foodOptions = [
+            { value: 0, label: 'Biryani' },
+            { value: 1, label: 'Tacos' },
+            { value: 2, label: 'Pho' },
+            { value: 3, label: 'Risotto' },
+            { value: 4, label: 'Pizza' },
+            { value: 5, label: 'Enchiladas' },
+        ];
+        const [searchQuery, setSearchQuery] = useState('');
+            const handleOnChange = (event) => {
+                const query = event?.target?.value || '';
+                setSearchQuery(query);
+            };
+            const handleOnSelect = (option) => {
+                setSearchQuery(option.label);
+            };
+            return (
+<Search
+        defaultQuery="Biryani"
+        icon={<InfoIcon width="12px" height="12px" />}
+        options={foodOptions}
+        wide
+    />
+                );
+        }}
+    </Story>
+</Preview>
+
+## No Results Found
+
+<Preview>
+    <Story name="NoResultsFound" height="300px">
+        {() => {
+            return (
+<Search defaultQuery="Exotic food" options={[]} />
+                );
+        }}
+    </Story>
+</Preview>
+
+## Search With Highlight No Icon No Info
+
+<Preview>
+    <Story name="SearchWithHighlightNoIconNoInfo" height="300px">
+        {() => {
+        const foodOptions = [
+            { value: 0, label: 'Biryani' },
+            { value: 1, label: 'Tacos' },
+            { value: 2, label: 'Pho' },
+            { value: 3, label: 'Risotto' },
+            { value: 4, label: 'Pizza' },
+            { value: 5, label: 'Enchiladas' },
+        ];
+       return (
+<Search defaultQuery="bir" options={foodOptions} />
+)}
+        }
+    </Story>
+</Preview>
+
+## Truncated Label With Middle Highlight
+
+<Preview>
+    <Story name="TruncatedLabelWithMiddleHighlight" height="300px">
+        {() => {
+        const foodOptions = [
+            { value: 0, label: 'Biryani' },
+            { value: 1, label: 'This is a very long label that needs to be truncated with an ellipsis' },
+            { value: 2, label: 'Pho' },
+            { value: 3, label: 'Risotto' },
+            { value: 4, label: 'Pizza' },
+            { value: 5, label: 'Enchiladas' },
+        ];
+       return (
+           <Search
+               additionalInfo={<div>que info string</div>}
+               defaultQuery="is a very"
+               icon={<InfoIcon width="12px" height="12px" />}
+               options={foodOptions}
+           />)}
+        }
+    </Story>
+</Preview>
+
+## Wide Search With Suggestions List
+
+<Preview>
+    <Story name="WideSearchWithSuggestionsList" height="300px">
+        {() => {
+        const foodOptions = [
+            { value: 0, label: 'Biryani' },
+            { value: 1, label: 'This is a very long label that needs to be truncated with an ellipsis' },
+            { value: 2, label: 'Pho' },
+            { value: 3, label: 'Risotto' },
+            { value: 4, label: 'Pizza' },
+            { value: 5, label: 'Enchiladas' },
+        ];
+       return (
+           <Search
+               defaultQuery="Biryani"
+               icon={<InfoIcon width="12px" height="12px" />}
+               options={foodOptions}
+               wide
+           />)}
+        }
+    </Story>
+</Preview>
+
+## Search Wit Short Suggestions List And Custom Width
+
+<Preview>
+    <Story name="SearchWithShortSuggestionsListAndCustomWidth" height="300px">
+        {() => {
+       return (
+           <Search
+               defaultQuery="otto"
+               icon={<InfoIcon width="12px" height="12px" />}
+               options={[
+                   { value: 2, label: 'Biryani' },
+                   { value: 3, label: 'Risotto' },
+               ]}
+               width="600px"
+           />)}
+        }
+    </Story>
+</Preview>
+
+
+## Properties
+
+<Props of={Search} />

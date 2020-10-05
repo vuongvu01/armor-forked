@@ -21,6 +21,7 @@ export * from './Overlay';
 export * from './Pack';
 export * from './Paper';
 export * from './Radio';
+export * from './Search';
 export * from './SideSheet';
 export * from './SVGIcon';
 export * from './Switch';
