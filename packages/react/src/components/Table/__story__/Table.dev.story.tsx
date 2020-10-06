@@ -10,6 +10,7 @@ import {
 
 import { Table } from '../Table';
 import { TableHead } from '../TableHead';
+import { TableHeadCell as HeadCell } from '../TableHeadCell';
 import { TableCell as Cell } from '../TableCell';
 import { TableBody as Body } from '../TableBody';
 import { TableRow as Row } from '../TableRow';
@@ -20,6 +21,7 @@ import { Box } from '../../Box';
 import { loremIpsum, LoremIpsum } from '../../../helpers/LoremIpsum';
 import { TableCellLabel } from '../TableCellLabel';
 import { componentSpacing06 } from '../../../tokens';
+import { TableRowSortOrderType } from '../type';
 
 export default {
     title: 'Components/Table',
@@ -36,7 +38,7 @@ export const Basic = () => {
                     <Cell>Food Companies</Cell>
                     <Cell>Scheme ID</Cell>
                     <Cell>City</Cell>
-                    <Cell width="15rem">Full Name</Cell>
+                    <Cell>Full Name</Cell>
                     <Cell>ID</Cell>
                     <Cell>Phone number</Cell>
                 </Row>
@@ -508,6 +510,108 @@ export const WithEllipsis = () => {
                     <Cell>26</Cell>
                     <Cell>FFFooo</Cell>
                 </Row>
+            </Body>
+        </Table>
+    );
+};
+
+const getSortingFunction = (field: string) => {
+    if (field !== 'id') {
+        return (
+            valueA: string | number,
+            valueB: string | number,
+            way: 'asc' | 'desc',
+        ) => {
+            return way === 'asc'
+                ? valueA.toString().localeCompare(valueB.toString())
+                : valueB.toString().localeCompare(valueA.toString());
+        };
+    }
+
+    return (
+        valueA: string | number,
+        valueB: string | number,
+        way: 'asc' | 'desc',
+    ) => {
+        if (valueA > valueB) {
+            return way === 'asc' ? 1 : -1;
+        }
+
+        if (valueA < valueB) {
+            return way === 'asc' ? -1 : 1;
+        }
+
+        return 0;
+    };
+};
+
+export const WithSorting = () => {
+    const [rowSortOrder, setRowSortOrder] = useState<TableRowSortOrderType>([
+        ['foodCompanies', 'asc'],
+    ]);
+
+    const [data, setData] = useState<typeof demoData>(demoData);
+
+    return (
+        <Table
+            rowSortOrder={rowSortOrder}
+            onRowSortOrderChange={newWorldOrder => {
+                if (newWorldOrder.length) {
+                    const field = newWorldOrder[0][0];
+                    const order = newWorldOrder[0][1];
+
+                    const sortingFunction = getSortingFunction(field as string);
+
+                    setData(
+                        [...demoData].sort((a, b) => {
+                            // @ts-ignore
+                            const valueA = a[field];
+                            // @ts-ignore
+                            const valueB = b[field];
+                            return sortingFunction(valueA, valueB, order);
+                        }),
+                    );
+                } else {
+                    // unsorted
+                    setData(demoData);
+                }
+
+                setRowSortOrder(newWorldOrder);
+            }}
+        >
+            <TableHead>
+                <Row>
+                    <HeadCell columnId="company" sortable>
+                        Food Companies
+                    </HeadCell>
+                    <HeadCell
+                        columnId="scheme"
+                        sortable
+                        onClick={e => {
+                            e.stopPropagation();
+                        }}
+                    >
+                        Scheme ID
+                    </HeadCell>
+                    <Cell>City</Cell>
+                    <Cell>Full Name</Cell>
+                    <HeadCell columnId="id" sortable sortType="numerical">
+                        ID
+                    </HeadCell>
+                    <Cell>Phone number</Cell>
+                </Row>
+            </TableHead>
+            <Body>
+                {data.map(item => (
+                    <Row key={item.key} rowId={item.key}>
+                        <Cell>{item.company}</Cell>
+                        <Cell>{item.scheme}</Cell>
+                        <Cell>{item.city}</Cell>
+                        <Cell>{item.fullName}</Cell>
+                        <Cell>{item.id}</Cell>
+                        <Cell>{item.phoneNumber}</Cell>
+                    </Row>
+                ))}
             </Body>
         </Table>
     );

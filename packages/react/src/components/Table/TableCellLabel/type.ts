@@ -1,9 +1,5 @@
 import { HTMLAttributes } from 'react';
-import {
-    StylesFunctionOrStubType,
-    StylePropsType,
-    PropsWithNodeStylePropsType,
-} from '../../type';
+import { StylePropsType, PropsWithNodeStylePropsType } from '../../type';
 import { MarginAttributesType } from '../../../system/attributes';
 import { Indexed } from '../../../type';
 
@@ -15,18 +11,10 @@ type TableCellLabelEffectivePropsType = Indexed<{
 
 /* TableCellLabel component prop type */
 export type TableCellLabelPropsType = TableCellLabelEffectivePropsType &
-    StylePropsType<
-        {
-            Root?: string;
-            // add custom className for other nodes here
-        },
-        TableCellLabelStylesPropsType
-    >;
-
-export type TableCellLabelStylesPropsType = {
-    Root?: StylesFunctionOrStubType<TableCellLabelEffectivePropsType>;
-    // add style properties for other nodes here
-};
+    StylePropsType<{
+        Root?: string;
+        // add custom className for other nodes here
+    }>;
 
 /* TableCellLabel Root node prop type */
 export type TableCellLabelRootPropsType = PropsWithNodeStylePropsType<

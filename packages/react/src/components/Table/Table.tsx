@@ -9,8 +9,8 @@ import { tableDefaultTheme } from './theme';
 import { tableRootTestId, TABLE_CLASS_PREFIX } from './constants';
 import { TableContext } from './utils/TableContext';
 import { TableRowSelectionContext } from './utils/TableRowSelectionContext';
+import { TableRowSortOrderContext } from './utils/TableRowSortOrderContext';
 import { useTable } from './utils/useTable';
-import { ScalarType } from '../../type';
 
 export const Table: FunctionComponent<TablePropsType> = forwardRef(
     function Table(
@@ -23,6 +23,8 @@ export const Table: FunctionComponent<TablePropsType> = forwardRef(
             rowIds,
             selectedRowIds,
             onRowSelectionChange,
+            rowSortOrder,
+            onRowSortOrderChange,
             ...restProps
         },
         ref,
@@ -39,6 +41,7 @@ export const Table: FunctionComponent<TablePropsType> = forwardRef(
             rootReference,
             onLayoutUpdate,
             tableRowSelectionContextValue,
+            tableRowSortOrderContextValue,
         } = useTable({
             stickyLeftColumn,
             stickyRightColumn,
@@ -47,25 +50,31 @@ export const Table: FunctionComponent<TablePropsType> = forwardRef(
             rowIds,
             selectedRowIds,
             onRowSelectionChange,
+            rowSortOrder,
+            onRowSortOrderChange,
         });
 
         return (
-            <TableContext.Provider value={tableContextValue}>
-                <TableRowSelectionContext.Provider
-                    value={tableRowSelectionContextValue}
-                >
-                    <TableRoot
-                        theme={theme}
-                        {...restProps}
-                        className={classNameComponents.Root}
-                        ref={rootReference}
-                        data-testid={tableRootTestId}
-                        cellPadding="0"
-                        cellSpacing="0"
-                        onScroll={onLayoutUpdate}
-                    />
-                </TableRowSelectionContext.Provider>
-            </TableContext.Provider>
+            <TableRowSortOrderContext.Provider
+                value={tableRowSortOrderContextValue}
+            >
+                <TableContext.Provider value={tableContextValue}>
+                    <TableRowSelectionContext.Provider
+                        value={tableRowSelectionContextValue}
+                    >
+                        <TableRoot
+                            theme={theme}
+                            {...restProps}
+                            className={classNameComponents.Root}
+                            ref={rootReference}
+                            data-testid={tableRootTestId}
+                            cellPadding="0"
+                            cellSpacing="0"
+                            onScroll={onLayoutUpdate}
+                        />
+                    </TableRowSelectionContext.Provider>
+                </TableContext.Provider>
+            </TableRowSortOrderContext.Provider>
         );
     },
 );

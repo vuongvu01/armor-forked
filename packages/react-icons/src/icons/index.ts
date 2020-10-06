@@ -12,6 +12,7 @@ export * from './NavigationMenu';
 export * from './Settings';
 export * from './Shipping';
 export * from './Sort';
+export * from './Sync';
 export * from './TextFormatting';
 export * from './Tick';
 export * from './Upload';

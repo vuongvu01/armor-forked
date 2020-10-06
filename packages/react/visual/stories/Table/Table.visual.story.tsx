@@ -5,6 +5,7 @@ import {
     Table,
     TableBody,
     TableCell,
+    TableHeadCell,
     TableHead,
     TableRow,
     TableFoot,
@@ -659,6 +660,74 @@ export const ColSpanned = () => (
                 <TableCell>Cell text</TableCell>
                 <TableCell>Cell text</TableCell>
                 <TableCell>Cell text</TableCell>
+            </TableRow>
+        </TableBody>
+    </Table>
+);
+
+export const SortingAsc = () => (
+    <Table rowSortOrder={[['one', 'asc']]}>
+        <TableHead>
+            <TableRow>
+                <TableHeadCell columnId="one" sortable>
+                    One
+                </TableHeadCell>
+                <TableHeadCell columnId="two" sortable>
+                    Two
+                </TableHeadCell>
+                <TableHeadCell>Three</TableHeadCell>
+                <TableCell>Four</TableCell>
+                <TableCell>Five</TableCell>
+            </TableRow>
+        </TableHead>
+        <TableBody>
+            <TableRow>
+                <TableCell>New York</TableCell>
+                <TableCell>London</TableCell>
+                <TableCell>Amsterdam</TableCell>
+                <TableCell>Helsinki</TableCell>
+                <TableCell>Munich</TableCell>
+            </TableRow>
+            <TableRow>
+                <TableCell>Berlin</TableCell>
+                <TableCell>Moscow</TableCell>
+                <TableCell>Mexico</TableCell>
+                <TableCell>Vienna</TableCell>
+                <TableCell>Venice</TableCell>
+            </TableRow>
+        </TableBody>
+    </Table>
+);
+
+export const SortingDesc = () => (
+    <Table rowSortOrder={[['one', 'desc']]}>
+        <TableHead>
+            <TableRow>
+                <TableHeadCell columnId="one" sortable>
+                    One
+                </TableHeadCell>
+                <TableHeadCell columnId="two" sortable>
+                    Two
+                </TableHeadCell>
+                <TableHeadCell>Three</TableHeadCell>
+                <TableCell>Four</TableCell>
+                <TableCell>Five</TableCell>
+            </TableRow>
+        </TableHead>
+        <TableBody>
+            <TableRow>
+                <TableCell>New York</TableCell>
+                <TableCell>London</TableCell>
+                <TableCell>Amsterdam</TableCell>
+                <TableCell>Helsinki</TableCell>
+                <TableCell>Munich</TableCell>
+            </TableRow>
+            <TableRow>
+                <TableCell>Berlin</TableCell>
+                <TableCell>Moscow</TableCell>
+                <TableCell>Mexico</TableCell>
+                <TableCell>Vienna</TableCell>
+                <TableCell>Venice</TableCell>
             </TableRow>
         </TableBody>
     </Table>

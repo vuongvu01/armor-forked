@@ -1,4 +1,5 @@
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+
 import { Message, MessageAction, Typography, Box } from '../../../src/components/';
 import { LoremIpsum } from '../../../src/helpers/LoremIpsum';
 import { Rick } from '../../../src/helpers/Rick';
@@ -17,6 +18,27 @@ import { Message, MessageAction } from '@deliveryhero/armor';
 <Preview>
     <Story name="Basic usage" height="100px">
         <Message>You have 99 new cookies!</Message>
+    </Story>
+</Preview>
+
+## Complete Example
+
+<Preview>
+    <Story name="Complete Example" height="200px">
+        <Message error>
+            <Typography h6 marginBottom={1}>
+                System failure
+            </Typography>
+            <Typography paragraph>
+                We ran out of cake. <br />
+                Please consider ordering more from one of our partner bakeries
+                or get the ingredients from D-Mart and bake at home.
+            </Typography>
+            <Box marginTop={2}>
+                <MessageAction marginRight={4}>Order cake</MessageAction>
+                <MessageAction>Order ingredients</MessageAction>
+            </Box>
+        </Message>
     </Story>
 </Preview>
 

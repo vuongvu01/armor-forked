@@ -17,7 +17,12 @@ const getClassNameByComponent = ({
     deleteOption,
     type,
 }: ClassBasedOnComponentType) => {
-    const baseClassNames = makeClassName(classPrefix, className, classNames);
+    const baseClassNames = makeClassName(
+        classPrefix,
+        className,
+        classNames,
+        component,
+    );
 
     const stateClassNames: string[] = [];
 

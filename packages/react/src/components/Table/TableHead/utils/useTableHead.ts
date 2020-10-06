@@ -1,22 +1,13 @@
-import {
-    useEffect,
-    useRef,
-    useState,
-    Ref,
-    useCallback,
-    useContext,
-} from 'react';
+import { useEffect, useRef, useState, useCallback, useContext } from 'react';
 import { throttle } from 'throttle-debounce';
-import {
-    TABLE_HEAD,
-    TableSectionContextValueType,
-} from '../../utils/TableSectionContext';
-import { TableContext, TableContextValueType } from '../../utils/TableContext';
+import { TABLE_HEAD } from '../../utils/TableSectionContext';
+import { TableContext } from '../../utils/TableContext';
 import { TABLE_THROTTLE_PERIOD } from '../../constants';
-
-type TableHeadHookPropsType = {
-    ref: Ref<unknown>;
-};
+import {
+    TableContextValueType,
+    TableSectionContextValueType,
+} from '../../utils/type';
+import { TableHeadHookPropsType } from './type';
 
 export const useTableHead = ({ ref }: TableHeadHookPropsType) => {
     const tableContextValue = useContext<TableContextValueType>(TableContext);
