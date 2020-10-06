@@ -1,3 +1,10 @@
+## @deliveryhero/armor-icons [1.1.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.1.0...@deliveryhero/armor-icons@1.1.1) (2020-10-06)
+
+
+### Bug Fixes
+
+* **icons:** TwoDirectionIcon is not available [LD-246] ([#261](https://github.com/deliveryhero/armor/issues/261)) ([6e82239](https://github.com/deliveryhero/armor/commit/6e82239e67608c8bead9c143649ff4ed8ee5be7e))
+
 # @deliveryhero/armor-icons [1.1.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.0.1...@deliveryhero/armor-icons@1.1.0) (2020-09-24)
 
 
