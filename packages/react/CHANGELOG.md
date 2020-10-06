@@ -1,3 +1,21 @@
+# @deliveryhero/armor [1.16.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.15.0...@deliveryhero/armor@1.16.0) (2020-10-06)
+
+
+### Features
+
+* **pack:** component for grouping items based on Flex component [LD-234] ([#251](https://github.com/deliveryhero/armor/issues/251)) ([e35c1f8](https://github.com/deliveryhero/armor/commit/e35c1f8fa614a478eac0ece38b2a35e3186ea2e6))
+* **pagenavigation:** Build PageNavigation component [LD-242] ([#259](https://github.com/deliveryhero/armor/issues/259)) ([98dbae1](https://github.com/deliveryhero/armor/commit/98dbae1dd62df3ace5f6a23f17724432982b8a03))
+* **search:** scaffold [LD-202] ([#231](https://github.com/deliveryhero/armor/issues/231)) ([c37de5e](https://github.com/deliveryhero/armor/commit/c37de5e35d9b805eb8053f34b260ef60c8f5dbbb))
+* **table:** Enable sorting in the table component [LD-241] ([#257](https://github.com/deliveryhero/armor/issues/257)) ([43d9910](https://github.com/deliveryhero/armor/commit/43d99105864b40579a59e76cbe4bf434d9e30ea4))
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor-icons:** upgraded to 1.1.1
+
 # @deliveryhero/armor [1.15.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.14.2...@deliveryhero/armor@1.15.0) (2020-09-24)
 
 
