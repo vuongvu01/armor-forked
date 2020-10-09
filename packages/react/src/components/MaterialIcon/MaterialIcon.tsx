@@ -16,7 +16,11 @@ export const MaterialIcon: FunctionComponent<MaterialIconPropsType> = ({
     const theme = useTheme();
 
     return (
-        <MaterialIconRoot theme={theme} fontSize={fontSize} {...restProps}>
+        <MaterialIconRoot
+            {...restProps}
+            theme={theme.armor}
+            fontSize={fontSize}
+        >
             {icon || children}
         </MaterialIconRoot>
     );

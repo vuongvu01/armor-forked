@@ -30,11 +30,11 @@ export const TableHead: FunctionComponent<TableHeadPropsType> = forwardRef(
         return (
             <TableSectionContext.Provider value={tableSectionContextValue}>
                 <TableHeadRoot
-                    theme={theme}
+                    data-testid={tableHeadRootTestId}
                     {...restProps}
+                    theme={theme}
                     className={classNameComponents.Root}
                     ref={rootReference}
-                    data-testid={tableHeadRootTestId}
                 />
             </TableSectionContext.Provider>
         );

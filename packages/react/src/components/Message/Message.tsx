@@ -2,8 +2,7 @@ import React, { FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 import { CancelIcon } from '@deliveryhero/armor-icons';
 
-import { useThemeOverride } from '../../utils/hooks';
-import { useTheme } from '../../styling';
+import { useComponentTheme } from '../../utils/hooks';
 
 import { useMessageClassNames, useMessageStylesOverride } from './utils';
 import {
@@ -18,8 +17,7 @@ import {
 import { MessageIconPropsType, MessagePropsType } from './type';
 import { messageDefaultTheme } from './theme';
 import { useIconComponent } from './utils/useIconComponent';
-
-const CLASS_PREFIX = 'Message';
+import { MESSAGE_CLASS_PREFIX } from './constants';
 
 export const Message: FunctionComponent<MessagePropsType> = ({
     className,
@@ -38,11 +36,10 @@ export const Message: FunctionComponent<MessagePropsType> = ({
     success,
     ...restProps
 }) => {
-    const theme = useTheme();
-    useThemeOverride(CLASS_PREFIX, theme, messageDefaultTheme);
+    const theme = useComponentTheme(MESSAGE_CLASS_PREFIX, messageDefaultTheme);
 
     const classNameComponents = useMessageClassNames(
-        CLASS_PREFIX,
+        MESSAGE_CLASS_PREFIX,
         className,
         classNames,
     );
@@ -58,6 +55,7 @@ export const Message: FunctionComponent<MessagePropsType> = ({
 
     return (
         <MessageRoot
+            {...restProps}
             theme={theme}
             disableCloseButton={disableCloseButton}
             level={level}
@@ -65,7 +63,6 @@ export const Message: FunctionComponent<MessagePropsType> = ({
             warning={warning}
             info={info}
             success={success}
-            {...restProps}
             className={classNameComponents.Root}
             styles={stylesOverride.Root}
         >

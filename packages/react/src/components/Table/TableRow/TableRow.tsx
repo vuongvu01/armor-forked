@@ -47,11 +47,11 @@ export const TableRow: FunctionComponent<TableRowPropsType> = forwardRef(
 
         return (
             <TableRowRoot
-                theme={theme}
+                data-testid={tableRowRootTestId}
                 {...restProps}
+                theme={theme}
                 className={classNameComponents.Root}
                 ref={ref}
-                data-testid={tableRowRootTestId}
                 isHeader={isHeader}
                 rowSelectionEnabled={rowSelectionEnabled}
             >

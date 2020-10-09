@@ -1,7 +1,6 @@
 import React, { forwardRef, FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import { useTheme } from '../../styling';
 import { useFlexClassName } from './utils';
 import { FlexPropsType } from './type';
 import { FLEX_CLASS_PREFIX, flexRoot } from './constants';
@@ -19,8 +18,6 @@ export const Flex: FunctionComponent<FlexPropsType> = forwardRef(function Flex(
     },
     ref,
 ) {
-    const theme = useTheme();
-
     const classOverride = useFlexClassName(
         FLEX_CLASS_PREFIX,
         className,
@@ -29,15 +26,14 @@ export const Flex: FunctionComponent<FlexPropsType> = forwardRef(function Flex(
 
     return (
         <FlexRoot
-            className={classOverride.Root}
             data-testid={flexRoot}
+            {...restProps}
+            className={classOverride.Root}
             direction={direction}
             flexWrap={flexWrap}
             justifyContent={justifyContent}
             ref={ref}
-            theme={theme}
             alignItems={alignItems}
-            {...restProps}
         />
     );
 });

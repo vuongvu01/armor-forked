@@ -5,15 +5,18 @@ const theme = makeTheme({});
 
 describe('replaceThemeToken', () => {
     it('should replace a L2 token', async () => {
-        const result = replaceThemeToken('$typography.body.fontFamily', theme);
+        const result = replaceThemeToken(
+            '$typography.body.fontFamily',
+            theme.armor,
+        );
         expect(result).toMatchObject({ updated: true, value: 'Roboto' });
     });
 
     it('should not replace anything non-token-ish', async () => {
-        let result = replaceThemeToken('12px', theme);
+        let result = replaceThemeToken('12px', theme.armor);
         expect(result).toMatchObject({ updated: false, value: '12px' });
 
-        result = replaceThemeToken(12, theme);
+        result = replaceThemeToken(12, theme.armor);
         expect(result).toMatchObject({ updated: false, value: 12 });
     });
 
@@ -21,7 +24,10 @@ describe('replaceThemeToken', () => {
         const { warn } = global.console;
         global.console.warn = jest.fn();
 
-        const result = replaceThemeToken('$typography.shoe.fontFamily', theme);
+        const result = replaceThemeToken(
+            '$typography.shoe.fontFamily',
+            theme.armor,
+        );
         expect(result).toMatchObject({
             updated: false,
             value: '$typography.shoe.fontFamily',

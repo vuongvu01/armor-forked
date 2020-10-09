@@ -7,9 +7,6 @@ import {
     SearchSuggestionsItemIcon,
     SearchSuggestionsItemLabel,
 } from '../style';
-import { useTheme } from '../../../styling';
-import { useThemeOverride } from '../../../utils/hooks';
-import { searchTheme } from '../theme';
 import { useEmptySuggestionsListClassName } from './utils';
 import { EmptySuggestionsListPropsType } from './type';
 import { EMPTY_SUGGESTIONS_LIST_CLASS_PREFIX } from './constants';
@@ -17,11 +14,8 @@ import { EMPTY_SUGGESTIONS_LIST_CLASS_PREFIX } from './constants';
 export const EmptySuggestionsList: FunctionComponent<EmptySuggestionsListPropsType> = ({
     className,
     classNames,
+    theme,
 }) => {
-    const theme = useTheme();
-
-    useThemeOverride(EMPTY_SUGGESTIONS_LIST_CLASS_PREFIX, theme, searchTheme);
-
     const classOverride = useEmptySuggestionsListClassName(
         EMPTY_SUGGESTIONS_LIST_CLASS_PREFIX,
         className,

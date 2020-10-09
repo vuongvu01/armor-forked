@@ -1,7 +1,7 @@
 import {
     BreakpointsDeclarationType,
     BreakpointsType,
-    SpanFunctionType,
+    SpacingFunctionType,
 } from '../type';
 import {
     breakpointBetween,
@@ -37,8 +37,8 @@ export const makeBreakpoints = (
     return {
         ...breakpoints,
         ...base,
-        map: (value: ScalarType, span: SpanFunctionType) =>
-            mapBreakpoint(base, value, span),
+        map: (value: ScalarType, spacing: SpacingFunctionType) =>
+            mapBreakpoint(base, value, spacing),
         up: forwardBreakpoints(base, breakpointUp),
         down: forwardBreakpoints(base, breakpointDown),
         only: forwardBreakpoints(base, breakpointOnly),

@@ -1,22 +1,22 @@
 import React, { FunctionComponent, forwardRef } from 'react';
 // import PropTypes from 'prop-types';
-import { useThemeOverride } from '../../utils/hooks';
-import { useTheme } from '../../styling';
+import { useComponentTheme } from '../../utils/hooks';
 
 import { useIndicatorClassNames, useIndicatorStylesOverride } from './utils';
 import { IndicatorRoot } from './style';
 import { IndicatorPropsType } from './type';
 import { indicatorDefaultTheme } from './theme';
-
-const CLASS_PREFIX = 'Indicator';
+import { INDICATOR_CLASS_PREFIX } from './constants';
 
 export const Indicator: FunctionComponent<IndicatorPropsType> = forwardRef(
     function Indicator({ className, classNames, styles, ...restProps }, ref) {
-        const theme = useTheme();
-        useThemeOverride(CLASS_PREFIX, theme, indicatorDefaultTheme);
+        const theme = useComponentTheme(
+            INDICATOR_CLASS_PREFIX,
+            indicatorDefaultTheme,
+        );
 
         const classNameComponents = useIndicatorClassNames(
-            CLASS_PREFIX,
+            INDICATOR_CLASS_PREFIX,
             className,
             classNames,
         );
@@ -24,8 +24,8 @@ export const Indicator: FunctionComponent<IndicatorPropsType> = forwardRef(
 
         return (
             <IndicatorRoot
-                theme={theme}
                 {...restProps}
+                theme={theme}
                 className={classNameComponents.Root}
                 styles={stylesOverride.Root}
                 ref={ref}

@@ -1,13 +1,15 @@
-import { Indexed, ScalarType } from '../type';
+import { Indexed, ScalarType, ObjectLiteral } from '../type';
 
-export type SpanFunctionType = (value: ScalarType) => ScalarType;
-export type SpanFunctionOrConstType = SpanFunctionType | number;
+export type SpacingFunctionType = (value: ScalarType) => ScalarType;
+export type SpacingFunctionOrConstType = SpacingFunctionType | number;
 
 // TODO (nmelnikov 2020-07-14): need to ensure that this one is compliant with the newest token structure
 export type ThemeType = Indexed<{
-    span: SpanFunctionType;
+    spacing: SpacingFunctionType;
 }>;
 
+export type RootThemeType = { armor: ThemeType } & ObjectLiteral;
+
 export type ThemeDeclarationType = Indexed<{
-    span?: SpanFunctionOrConstType;
+    spacing?: SpacingFunctionOrConstType;
 }>;

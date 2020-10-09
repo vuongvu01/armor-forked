@@ -25,8 +25,8 @@ export const SideSheetHeader: FunctionComponent<SideSheetHeaderPropsType> = ({
     return (
         <SideSheetHeaderRoot
             data-testid={sideSheetHeader}
-            theme={theme}
             {...restProps}
+            theme={theme}
         >
             {title ? (
                 <Typography sectionTitle style={titleTypographyStyle}>

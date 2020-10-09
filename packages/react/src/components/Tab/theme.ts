@@ -16,7 +16,7 @@ export const tabDefaultTheme = {
             color: '$color.neutral.06',
         },
         base: {
-            borderRadius: '$figure.borderRadius.sharp',
+            borderRadius: '$shape.borderRadius.sharp',
             fontSize: '$typography.labelLarge.fontSize',
             paddingTop: componentSpacing01,
             paddingRight: componentSpacing04,
@@ -31,7 +31,7 @@ export const tabDefaultTheme = {
             },
         },
         disabled: {
-            borderRadius: '$figure.borderRadius.pill',
+            borderRadius: '$shape.borderRadius.pill',
             color: '$color.neutral.04',
             '&:hover': {
                 backgroundColor: 'inherit',

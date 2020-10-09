@@ -1,3 +1,3 @@
-import { makeTheme } from '../make/make-theme';
+import { makeTheme } from '../make/makeTheme';
 
 export const defaultTheme = makeTheme();

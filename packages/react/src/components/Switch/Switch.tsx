@@ -1,8 +1,7 @@
 import React, { ChangeEvent, forwardRef, FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import { useThemeOverride } from '../../utils/hooks';
-import { useTheme } from '../../styling';
+import { useComponentTheme } from '../../utils/hooks';
 import SelectorLabel from '../SelectorLabel';
 import { useSwitchClassName } from './utils';
 import { SwitchCheckboxInput, SwitchRoot, SwitchToggle } from './style';
@@ -26,9 +25,11 @@ export const Switch: FunctionComponent<SwitchPropsType> = forwardRef(
         },
         ref,
     ) {
-        const theme = useTheme();
+        const theme = useComponentTheme(
+            SWITCH_CLASS_PREFIX,
+            switchDefaultTheme,
+        );
         const id = generateId(propsId, switchIdPrefix);
-        useThemeOverride(SWITCH_CLASS_PREFIX, theme, switchDefaultTheme);
 
         const classOverride = useSwitchClassName(
             SWITCH_CLASS_PREFIX,
@@ -44,6 +45,7 @@ export const Switch: FunctionComponent<SwitchPropsType> = forwardRef(
         return (
             <SwitchRoot disabled={disabled} for={id}>
                 <SwitchCheckboxInput
+                    {...restProps}
                     checked={checked}
                     className={classOverride.CheckboxInput}
                     disabled={disabled}
@@ -52,7 +54,6 @@ export const Switch: FunctionComponent<SwitchPropsType> = forwardRef(
                     ref={ref}
                     theme={theme}
                     type="checkbox"
-                    {...restProps}
                 />
                 <SwitchToggle
                     className={classOverride.Label}

@@ -1,8 +1,7 @@
 import React, { FunctionComponent, forwardRef, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
-import { useThemeOverride } from '../../utils/hooks';
-import { useTheme } from '../../styling';
+import { useComponentTheme } from '../../utils/hooks';
 
 import {
     useEvents,
@@ -16,13 +15,13 @@ import {
     TextInputLabelBackground,
 } from './style';
 import { TextInputContainerPropsType, TextInputPropsType } from './type';
-import { TextInputDefaultTheme } from './theme';
+import { textInputDefaultTheme } from './theme';
 import {
     textInputInput,
     textInputLabel,
     textInputLabelBackground,
     textInputRoot,
-    CLASS_PREFIX,
+    TEXT_INPUT_CLASS_PREFIX,
 } from './constants';
 
 export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
@@ -67,11 +66,13 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
         },
         ref,
     ) {
-        const theme = useTheme();
-        useThemeOverride(CLASS_PREFIX, theme, TextInputDefaultTheme);
+        const theme = useComponentTheme(
+            TEXT_INPUT_CLASS_PREFIX,
+            textInputDefaultTheme,
+        );
 
         const classNameComponents = useTextInputClassNames(
-            CLASS_PREFIX,
+            TEXT_INPUT_CLASS_PREFIX,
             className,
             classNames,
             disabled,
@@ -123,6 +124,8 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
 
         return (
             <TextInputRoot
+                data-testid={textInputRoot}
+                {...restProps}
                 className={classNameComponents.Root}
                 styles={stylesOverride.Root}
                 theme={theme}
@@ -132,8 +135,6 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
                 error={error}
                 onMouseOver={onInputMouseOver}
                 onMouseOut={onInputMouseOut}
-                data-testid={textInputRoot}
-                {...restProps}
             >
                 {before}
                 <TextInputContainer

@@ -1,13 +1,11 @@
 import React, { FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import { useTheme } from '../../styling';
-import { useClassName } from '../../utils/hooks';
+import { useClassName, useComponentTheme } from '../../utils/hooks';
 import { BoxRoot } from './style';
 import { BoxPropsType } from './type';
 import { useStyleOverrideBox } from './utils';
-
-const CLASS_PREFIX = 'Box';
+import { BOX_CLASS_PREFIX } from './constants';
 
 export const Box: FunctionComponent<BoxPropsType> = ({
     className,
@@ -15,8 +13,8 @@ export const Box: FunctionComponent<BoxPropsType> = ({
     styles,
     ...restProps
 }) => {
-    const theme = useTheme();
-    const classNameRoot = useClassName(CLASS_PREFIX, className, classNames);
+    const theme = useComponentTheme(BOX_CLASS_PREFIX);
+    const classNameRoot = useClassName(BOX_CLASS_PREFIX, className, classNames);
     const stylesSafe = useStyleOverrideBox(styles);
 
     return (

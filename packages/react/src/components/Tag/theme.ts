@@ -15,7 +15,7 @@ export const tagDefaultTheme = {
     Root: {
         base: {
             borderColor: '$color.primary.lighter',
-            borderRadius: '$figure.borderRadius.pill',
+            borderRadius: '$shape.borderRadius.pill',
             height: componentSpacing07,
             justifyContent: 'center',
             paddingLeft: componentSpacing01,
@@ -43,7 +43,7 @@ export const tagDefaultTheme = {
     Icon: {
         base: {
             borderColor: '$color.primary.lightest',
-            borderRadius: '$figure.borderRadius.pill',
+            borderRadius: '$shape.borderRadius.pill',
 
             '&:hover': {
                 backgroundColor: '$color.neutral.02',

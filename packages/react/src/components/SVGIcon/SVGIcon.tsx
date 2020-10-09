@@ -21,13 +21,13 @@ export const SVGIcon: FunctionComponent<SVGIconPropsType> = ({
 
     return (
         <SVGIconRoot
+            {...restProps}
             viewBox={viewBox}
             focusable="false"
             color={fillColor}
             iconWidth={width}
             iconHeight={height}
             theme={theme}
-            {...restProps}
         >
             {!!title && <title>{title}</title>}
             {children}

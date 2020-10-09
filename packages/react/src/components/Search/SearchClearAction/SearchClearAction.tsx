@@ -5,8 +5,7 @@ import {
     SEARCH_CLEAR_ACTION_CLASS_PREFIX,
     searchInputClearIcon,
 } from './constants';
-import { useTheme } from '../../../styling';
-import { useThemeOverride } from '../../../utils/hooks';
+import { useComponentTheme } from '../../../utils/hooks';
 import { useSearchClearActionClassName } from './utils';
 import { SearchClearActionPropsType } from './type';
 import { ClearIconContainer, SearchInputClearIcon } from './style';
@@ -20,11 +19,8 @@ export const SearchClearAction: FunctionComponent<SearchClearActionPropsType> = 
     disabled,
     searchQuery,
 }) => {
-    const theme = useTheme();
-
-    useThemeOverride(
+    const theme = useComponentTheme(
         SEARCH_CLEAR_ACTION_CLASS_PREFIX,
-        theme,
         searchClearActionTheme,
     );
 

@@ -44,11 +44,16 @@ export const legacyThemeVendorMonitor = {
         },
     },
     spacing: 4,
-    span: 4,
-    figure: {
-        borderRadius: '4px',
-    },
     shape: {
         borderRadius: 4,
+    },
+    armor: {
+        typography: {
+            fontFamily: 'Roboto, sans-serif',
+        },
+        spacing: 4,
+        shape: {
+            borderRadius: '4px',
+        },
     },
 };

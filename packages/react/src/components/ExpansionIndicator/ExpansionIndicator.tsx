@@ -6,12 +6,11 @@ import {
     ExpansionIndicatorContent,
     ExpansionIndicatorIcon,
 } from './style';
-import { useTheme } from '../../styling';
-import { useThemeOverride } from '../../utils/hooks';
+import { useComponentTheme } from '../../utils/hooks';
 import useExpansionIndicatorClassName from './useExpansionIndicatorClassName';
 import { expansionIndicatorDefaultTheme } from './theme';
 import {
-    CLASS_PREFIX,
+    EXPANSION_INDICATOR_CLASS_PREFIX,
     expansionIndicatorContainer,
     expansionIndicatorContent,
     expansionIndicatorIcon,
@@ -26,14 +25,15 @@ export const ExpansionIndicator: FunctionComponent<ExpansionIndicatorPropsType> 
     isExpanded,
     onClick,
     tabIndex,
-    theme: propsTheme,
     ...restProps
 }) => {
-    const theme = useTheme(propsTheme);
-    useThemeOverride(CLASS_PREFIX, theme, expansionIndicatorDefaultTheme);
+    const theme = useComponentTheme(
+        EXPANSION_INDICATOR_CLASS_PREFIX,
+        expansionIndicatorDefaultTheme,
+    );
 
     const classOverride = useExpansionIndicatorClassName(
-        CLASS_PREFIX,
+        EXPANSION_INDICATOR_CLASS_PREFIX,
         className,
         classNames,
         disabled,
@@ -42,13 +42,13 @@ export const ExpansionIndicator: FunctionComponent<ExpansionIndicatorPropsType> 
 
     return (
         <ExpansionIndicatorRoot
-            className={classOverride.Root}
             data-testid={expansionIndicatorContainer}
+            {...restProps}
+            className={classOverride.Root}
             disabled={disabled}
             onClick={onClick}
             tabIndex={tabIndex}
             theme={theme}
-            {...restProps}
         >
             <ExpansionIndicatorContent
                 className={classOverride.Content}

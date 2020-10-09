@@ -1,25 +1,25 @@
 import React, { FunctionComponent, forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
-import { useThemeOverride } from '../../utils/hooks';
-import { useTheme } from '../../styling';
+import { useComponentTheme } from '../../utils/hooks';
 import { useFormFieldClassNames, useFormFieldStylesOverride } from './utils';
 import { FormFieldRoot } from './style';
 import { FormFieldPropsType } from './type';
 import { formFieldDefaultTheme } from './theme';
-
-const CLASS_PREFIX = 'FormField';
+import { FORM_FIELD_CLASS_PREFIX } from './constants';
 
 export const FormField: FunctionComponent<FormFieldPropsType> = forwardRef(
     function FormField(
         { className, classNames, styles, autoMargin, ...restProps },
         ref,
     ) {
-        const theme = useTheme();
-        useThemeOverride(CLASS_PREFIX, theme, formFieldDefaultTheme);
+        const theme = useComponentTheme(
+            FORM_FIELD_CLASS_PREFIX,
+            formFieldDefaultTheme,
+        );
 
         const classNameComponents = useFormFieldClassNames(
-            CLASS_PREFIX,
+            FORM_FIELD_CLASS_PREFIX,
             className,
             classNames,
         );
@@ -27,9 +27,9 @@ export const FormField: FunctionComponent<FormFieldPropsType> = forwardRef(
 
         return (
             <FormFieldRoot
+                {...restProps}
                 autoMargin={autoMargin}
                 theme={theme}
-                {...restProps}
                 className={classNameComponents.Root}
                 styles={stylesOverride.Root}
                 ref={ref}

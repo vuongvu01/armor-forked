@@ -14,12 +14,12 @@ export const radioDefaultTheme = {
         base: {
             backgroundColor: color.neutral00,
             borderColor: color.neutral03,
-            borderRadius: '$figure.borderRadius.pill',
+            borderRadius: '$shape.borderRadius.pill',
         },
         disabled: {
             backgroundColor: color.neutral02,
             borderColor: color.neutral03,
-            borderRadius: '$figure.borderRadius.pill',
+            borderRadius: '$shape.borderRadius.pill',
         },
         highlighted: {
             borderColor: color.main,
@@ -31,11 +31,11 @@ export const radioDefaultTheme = {
     Dot: {
         base: {
             backgroundColor: color.main,
-            borderRadius: '$figure.borderRadius.pill',
+            borderRadius: '$shape.borderRadius.pill',
         },
         disabled: {
             backgroundColor: color.neutral03,
-            borderRadius: '$figure.borderRadius.pill',
+            borderRadius: '$shape.borderRadius.pill',
         },
         hover: {
             backgroundColor: color.light,

@@ -4,7 +4,7 @@ export const tooltipDefaultTheme = {
             fontSize: '$typography.paragraphMedium.fontSize',
             fontWeight: '$typography.paragraphMedium.fontWeight',
             fontFamily: '$typography.paragraphMedium.fontFamily',
-            borderRadius: '$figure.borderRadius.soft',
+            borderRadius: '$shape.borderRadius.soft',
             lineHeight: '$typography.paragraphMedium.lineHeight',
             padding: 3,
         },

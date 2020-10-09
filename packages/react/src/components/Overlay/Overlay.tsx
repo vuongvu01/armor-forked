@@ -6,8 +6,7 @@ import { Overlay as OverlayRoot } from './style';
 import { OverlayPropsType } from './type';
 import { defaultLabel } from '../Dropdown/constants';
 import { overlayDefaultTheme } from './theme';
-import { useTheme } from '../../styling';
-import { useThemeOverride } from '../../utils/hooks';
+import { useComponentTheme } from '../../utils/hooks';
 import { OVERLAY_CLASS_PREFIX } from './constants';
 
 export const Overlay: FunctionComponent<OverlayPropsType> = ({
@@ -17,16 +16,14 @@ export const Overlay: FunctionComponent<OverlayPropsType> = ({
     onClick,
     open,
     styles,
-    theme: themeProps,
     ...restProps
 }) => {
-    const theme = useTheme(themeProps);
+    const theme = useComponentTheme(OVERLAY_CLASS_PREFIX, overlayDefaultTheme);
     const [display, effectToggle] = useDisplay(open);
-
-    useThemeOverride(OVERLAY_CLASS_PREFIX, theme, overlayDefaultTheme);
 
     return !disableOverlay ? (
         <OverlayRoot
+            {...restProps}
             className={className}
             disableEffects={disableEffects}
             display={display}
@@ -34,7 +31,6 @@ export const Overlay: FunctionComponent<OverlayPropsType> = ({
             onClick={onClick}
             styles={styles}
             theme={theme}
-            {...restProps}
         />
     ) : null;
 };

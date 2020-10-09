@@ -31,11 +31,11 @@ export const TableCheckboxCell: FunctionComponent<TableCheckboxCellPropsType> = 
 
         return (
             <TableCheckboxCellRoot
-                contentAlignX="center"
+                data-testid={tableCheckboxCellRootTestId}
                 {...restProps}
+                contentAlignX="center"
                 className={classNameComponents.Root}
                 ref={ref}
-                data-testid={tableCheckboxCellRootTestId}
             >
                 <TableCheckboxCellCheckbox
                     checked={checked}

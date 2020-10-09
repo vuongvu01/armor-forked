@@ -46,7 +46,12 @@ const makeCSS = (
     value?: ScalarType,
 ) => {
     if (typeof value !== 'undefined') {
-        return `${cssParameter}: ${theme.breakpoints.map(value, theme.span)};`;
+        // this enables setting a breakpoint name as value of a size attribute
+        // for instance, <Button maxWidth="sm">Foo</Button>
+        return `${cssParameter}: ${theme.breakpoints.map(
+            value,
+            theme.spacing,
+        )};`;
     }
 
     return '';

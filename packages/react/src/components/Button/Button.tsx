@@ -1,14 +1,12 @@
 import React, { FunctionComponent, forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useThemeOverride } from '../../utils/hooks';
-import { useTheme } from '../../styling';
+import { useComponentTheme } from '../../utils/hooks';
 
 import { useButtonClassName } from './utils';
 import { ButtonStyle } from './style';
 import { ButtonPropsType } from './type';
 import { buttonDefaultTheme } from './theme';
-
-const CLASS_PREFIX = 'Button';
+import { BUTTON_CLASS_PREFIX } from './constants';
 
 export const Button: FunctionComponent<ButtonPropsType> = forwardRef(
     function Button(
@@ -28,11 +26,13 @@ export const Button: FunctionComponent<ButtonPropsType> = forwardRef(
         },
         ref,
     ) {
-        const theme = useTheme();
-        useThemeOverride(CLASS_PREFIX, theme, buttonDefaultTheme);
+        const theme = useComponentTheme(
+            BUTTON_CLASS_PREFIX,
+            buttonDefaultTheme,
+        );
 
         const classNameRoot = useButtonClassName(
-            CLASS_PREFIX,
+            BUTTON_CLASS_PREFIX,
             className,
             classNames,
             disabled,
@@ -46,6 +46,7 @@ export const Button: FunctionComponent<ButtonPropsType> = forwardRef(
 
         return (
             <ButtonStyle
+                {...restProps}
                 disabled={disabled}
                 small={small}
                 wide={wide}
@@ -54,7 +55,6 @@ export const Button: FunctionComponent<ButtonPropsType> = forwardRef(
                 tertiary={tertiary}
                 danger={danger}
                 theme={theme}
-                {...restProps}
                 className={classNameRoot}
             >
                 {(forwardedProps: ButtonPropsType) => (

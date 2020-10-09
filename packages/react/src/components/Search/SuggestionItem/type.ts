@@ -2,6 +2,7 @@ import React, { HTMLAttributes } from 'react';
 
 import { ClassNamesType } from '../../type';
 import { SearchQueryType, SuggestionObjectType } from '../type';
+import { ThemeType } from '../../../styling';
 
 export type ClassBasedOnComponentType = {
     className?: string;
@@ -12,6 +13,7 @@ export type ClassBasedOnComponentType = {
 
 export type SuggestionItemPropsType = {
     classNames?: ClassNamesType;
+    theme: ThemeType;
     suggestionIndex: number;
     cursor?: number;
     icon?: null | React.ReactElement;

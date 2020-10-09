@@ -40,7 +40,7 @@ describe('<Pack />', () => {
     });
 
     it('should ensure class names set', async () => {
-        const packItemId = 'PackItem';
+        const packItemId = 'SecondPackItemRoot';
 
         render(
             <Pack>
@@ -61,21 +61,5 @@ describe('<Pack />', () => {
 
         const packItemElement = screen.getByTestId(packItemId);
         expect(packItemElement).toHaveClass('PackItem-Root');
-    });
-
-    it('ensures margin* property transference', () => {
-        const marginAttribute = 'marginX';
-        const marginValue = 13;
-
-        const result = renderer
-            .create(<Pack {...{ [marginAttribute]: marginValue }} />)
-            .toJSON();
-
-        // @ts-ignore
-        expect(result).toSupportMarginAttribute(
-            packRoot,
-            marginAttribute,
-            marginValue,
-        );
     });
 });

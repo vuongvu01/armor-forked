@@ -40,7 +40,7 @@ describe('<Flex />', () => {
     });
 
     it('should ensure class names set', async () => {
-        const flexItemId = 'FlexItem';
+        const flexItemId = 'SecondFlexItemRoot';
 
         render(
             <Flex>
@@ -61,21 +61,5 @@ describe('<Flex />', () => {
 
         const flexItemElement = screen.getByTestId(flexItemId);
         expect(flexItemElement).toHaveClass('FlexItem-Root');
-    });
-
-    it('ensures margin* property transference', () => {
-        const marginAttribute = 'marginX';
-        const marginValue = 13;
-
-        const result = renderer
-            .create(<Flex {...{ [marginAttribute]: marginValue }} />)
-            .toJSON();
-
-        // @ts-ignore
-        expect(result).toSupportMarginAttribute(
-            flexRoot,
-            marginAttribute,
-            marginValue,
-        );
     });
 });

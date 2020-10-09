@@ -63,11 +63,11 @@ export const Table: FunctionComponent<TablePropsType> = forwardRef(
                         value={tableRowSelectionContextValue}
                     >
                         <TableRoot
-                            theme={theme}
+                            data-testid={tableRootTestId}
                             {...restProps}
+                            theme={theme}
                             className={classNameComponents.Root}
                             ref={rootReference}
-                            data-testid={tableRootTestId}
                             cellPadding="0"
                             cellSpacing="0"
                             onScroll={onLayoutUpdate}

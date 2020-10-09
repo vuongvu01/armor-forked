@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-import { BreakpointsBaseType, SpanFunctionType } from '../../styling';
+import { BreakpointsBaseType, SpacingFunctionType } from '../../styling';
 import { CSSChunkType, ScalarType } from '../../type';
 import {
     BreakpointCode,
@@ -22,13 +22,13 @@ const makeRule = (way: string, value: number, cssChunk?: CSSChunkType) => {
 export const mapBreakpoint = (
     breakpoints: BreakpointsBaseType,
     value: ScalarType,
-    span: SpanFunctionType,
+    spacing: SpacingFunctionType,
 ) => {
     if (typeof value === 'string' && value in breakpoints.values) {
         return `${breakpoints.values[value]}px`;
     }
 
-    return span(value);
+    return spacing(value);
 };
 
 // todo: move breakpoints to the last position and make optional

@@ -8,29 +8,31 @@ const accordionHeaderStyle = ({
     disabled,
     isExpanded,
     theme: {
-        componentOverrides: { Accordion },
+        componentOverrides: {
+            AccordionHeader: { Root },
+        },
     },
 }: AccordionHeaderRootPropsType) => {
     if (disabled) {
-        return css` pointer-events: none; ${Accordion.AccordionHeader.base}${Accordion.AccordionHeader.disabled}`;
+        return css` pointer-events: none; ${Root.base}${Root.disabled}`;
     }
 
-    return isExpanded
-        ? css`${Accordion.AccordionHeader.base}${Accordion.AccordionHeader.expanded}`
-        : Accordion.AccordionHeader.base;
+    return isExpanded ? css`${Root.base}${Root.expanded}` : Root.base;
 };
 
 const accordionHeaderTypographyStyle = ({
     disabled,
     theme: {
-        componentOverrides: { Accordion },
+        componentOverrides: {
+            AccordionHeader: { Typography: HeaderTypography },
+        },
     },
 }: AccordionHeaderRootPropsType) => {
     if (disabled) {
-        return css`${Accordion.AccordionHeaderTypography.base}${Accordion.AccordionHeaderTypography.disabled}`;
+        return css`${HeaderTypography.base}${HeaderTypography.disabled}`;
     }
 
-    return Accordion.AccordionHeaderTypography.base;
+    return HeaderTypography.base;
 };
 
 export const AccordionHeaderRoot = styled.div<AccordionHeaderRootPropsType>`

@@ -1,16 +1,16 @@
 import { ScalarType } from '../../type';
-import { SpanFunctionType } from '../../styling';
+import { SpacingFunctionType } from '../../styling';
 
 export const gutter = (
     x: ScalarType = 0,
     y: ScalarType = 0,
-    span?: SpanFunctionType,
+    spacing?: SpacingFunctionType,
 ) => `
-    margin-bottom: -${span ? span(y) : y};
-    margin-right: -${span ? span(x) : x};
+    margin-bottom: -${spacing ? spacing(y) : y};
+    margin-right: -${spacing ? spacing(x) : x};
     
     > * {
-        margin-bottom: ${span ? span(y) : y};
-        margin-right: ${span ? span(x) : x};
+        margin-bottom: ${spacing ? spacing(y) : y};
+        margin-right: ${spacing ? spacing(x) : x};
     }
 `;

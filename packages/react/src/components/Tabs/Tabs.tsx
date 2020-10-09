@@ -7,8 +7,7 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 
-import { useThemeOverride } from '../../utils/hooks';
-import { useTheme } from '../../styling';
+import { useComponentTheme } from '../../utils/hooks';
 import { preProcessTabChildren, useTabsClassName } from './utils';
 import { TabsRoot } from './style';
 import { TabsPropsType } from './type';
@@ -27,11 +26,7 @@ export const Tabs: FunctionComponent<TabsPropsType> = forwardRef(function Tabs(
     },
     ref,
 ) {
-    if (!children) {
-        return null;
-    }
-
-    const theme = useTheme();
+    const theme = useComponentTheme(TABS_CLASS_PREFIX, tabsDefaultTheme);
     const [currentlyActiveTab, setCurrentlyActiveTab] = useState(
         defaultActiveTab,
     );
@@ -42,8 +37,6 @@ export const Tabs: FunctionComponent<TabsPropsType> = forwardRef(function Tabs(
             onSwitch(defaultActiveTab);
         }
     }, [defaultActiveTab]);
-
-    useThemeOverride(TABS_CLASS_PREFIX, theme, tabsDefaultTheme);
 
     const classOverride = useTabsClassName(
         TABS_CLASS_PREFIX,
@@ -72,6 +65,10 @@ export const Tabs: FunctionComponent<TabsPropsType> = forwardRef(function Tabs(
         wide,
         handleClick,
     });
+
+    if (!children) {
+        return null;
+    }
 
     return (
         <TabsRoot

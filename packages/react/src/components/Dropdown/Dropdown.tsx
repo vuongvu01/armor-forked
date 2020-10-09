@@ -9,8 +9,8 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 
-import { useThemeOverride } from '../../utils/hooks';
-import { extractMarginProps, useTheme } from '../../styling';
+import { useComponentTheme } from '../../utils/hooks';
+import { extractMarginProps } from '../../styling';
 import { useDetectClickOutsideComponent, useDropdownClassName } from './utils';
 import {
     DropdownContainer,
@@ -59,8 +59,10 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
         },
         ref,
     ) {
-        const theme = useTheme();
-        useThemeOverride(DROPDOWN_CLASS_PREFIX, theme, dropdownDefaultTheme);
+        const theme = useComponentTheme(
+            DROPDOWN_CLASS_PREFIX,
+            dropdownDefaultTheme,
+        );
 
         const classOverride = useDropdownClassName(
             DROPDOWN_CLASS_PREFIX,
@@ -189,6 +191,7 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
                     ref={containerRef}
                 >
                     <TextInput
+                        {...otherProps}
                         after={renderActionItem}
                         className={classOverride.TextInput}
                         disabled={disabled}
@@ -200,7 +203,6 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
                         styles={dropdownTextInputStyle}
                         theme={theme}
                         value={selectedValueToDisplay}
-                        {...otherProps}
                     />
                     <DropdownOptionListContainer
                         className={classOverride.OptionListContainer}

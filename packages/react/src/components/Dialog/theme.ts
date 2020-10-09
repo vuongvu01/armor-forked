@@ -1,9 +1,4 @@
 export const dialogDefaultTheme = {
-    Overlay: {
-        base: {
-            backgroundColor: 'rgba(0, 0, 0, 0.5)', // todo: use color function here
-        },
-    },
     Container: {
         'DialogTitle-Text': {
             marginRight: 9,

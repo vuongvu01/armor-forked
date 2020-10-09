@@ -4,7 +4,7 @@ import { ObjectLiteralType } from '../../type';
 import { replaceThemeToken } from '../../system/util/replaceThemeToken';
 import { consoleWarn } from '../../system/util/consoleWarn';
 
-const spanableProperties = {
+const autoSpacingProperties = {
     padding: true,
     paddingLeft: true,
     paddingRight: true,
@@ -51,7 +51,7 @@ export const transformTheme = (
     prefix?: string,
 ) => {
     const {
-        span,
+        spacing,
         typography: { pixelToRem },
     } = theme as ThemeType;
 
@@ -110,8 +110,8 @@ export const transformTheme = (
             newValue = `${newValue}, sans-serif`;
             updated = true;
         }
-        if ((this.key as string) in spanableProperties) {
-            newValue = span(newValue);
+        if ((this.key as string) in autoSpacingProperties) {
+            newValue = spacing(newValue);
             updated = true;
         }
 

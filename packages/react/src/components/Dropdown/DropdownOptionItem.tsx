@@ -32,9 +32,9 @@ const DropdownOptionItem: FunctionComponent<DropdownOptionItemPropsType> = ({
 
     return (
         <DropdownOptionItemStyle
+            {...restProps}
             isSelected={isSelected}
             onClick={handleItemClick}
-            {...restProps}
         >
             {multiple && <Checkbox checked={isSelected} marginRight={4} />}
             {item ? (

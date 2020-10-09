@@ -50,11 +50,11 @@ import {
     lineHeight03,
     lineHeight04,
     lineHeight05,
-} from '../../tokens';
+} from '../tokens';
 
 export const SPACING_FACTOR = 4;
 
-export const defaultThemeDeclaration = {
+export const defaultThemeStructure = {
     typography: {
         body: {
             fontFamily: fontFamilyRoboto,
@@ -185,7 +185,7 @@ export const defaultThemeDeclaration = {
             '06': colorGrey90,
         },
     },
-    figure: {
+    shape: {
         borderRadius: {
             sharp: borderRadius01,
             soft: borderRadius02,
@@ -193,7 +193,7 @@ export const defaultThemeDeclaration = {
             pill: borderRadiusPill,
         },
     },
-    span: SPACING_FACTOR,
+    spacing: SPACING_FACTOR,
     componentOverrides: {},
     components: {},
     elevation: {

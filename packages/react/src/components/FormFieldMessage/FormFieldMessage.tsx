@@ -1,8 +1,7 @@
 import React, { FunctionComponent, forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
-import { useThemeOverride } from '../../utils/hooks';
-import { useTheme } from '../../styling';
+import { useComponentTheme } from '../../utils/hooks';
 
 import {
     useFormFieldMessageClassNames,
@@ -11,8 +10,7 @@ import {
 import { FormFieldMessageRoot, FormFieldMessageFakeChildren } from './style';
 import { FormFieldMessagePropsType } from './type';
 import { formFieldMessageDefaultTheme } from './theme';
-
-const CLASS_PREFIX = 'FormFieldMessage';
+import { FORM_FIELD_MESSAGE_CLASS_PREFIX } from './constants';
 
 export const FormFieldMessage: FunctionComponent<FormFieldMessagePropsType> = forwardRef(
     function FormFieldMessage(
@@ -27,11 +25,13 @@ export const FormFieldMessage: FunctionComponent<FormFieldMessagePropsType> = fo
         },
         ref,
     ) {
-        const theme = useTheme();
-        useThemeOverride(CLASS_PREFIX, theme, formFieldMessageDefaultTheme);
+        const theme = useComponentTheme(
+            FORM_FIELD_MESSAGE_CLASS_PREFIX,
+            formFieldMessageDefaultTheme,
+        );
 
         const classNameComponents = useFormFieldMessageClassNames(
-            CLASS_PREFIX,
+            FORM_FIELD_MESSAGE_CLASS_PREFIX,
             className,
             classNames,
             error,
@@ -40,8 +40,8 @@ export const FormFieldMessage: FunctionComponent<FormFieldMessagePropsType> = fo
 
         return (
             <FormFieldMessageRoot
-                theme={theme}
                 {...restProps}
+                theme={theme}
                 error={error}
                 oneLine={oneLine}
                 className={classNameComponents.Root}

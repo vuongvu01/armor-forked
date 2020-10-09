@@ -3,7 +3,7 @@ import { colorGrey50, fontSize03 } from '../../tokens';
 export const messageDefaultTheme = {
     Root: {
         base: {
-            borderRadius: '$figure.borderRadius.soft',
+            borderRadius: '$shape.borderRadius.soft',
             borderColor: '$color.primary.main',
             backgroundColor: '$color.neutral.00',
             paddingLeft: 4,

@@ -1,14 +1,12 @@
 import React, { FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
-import { useThemeOverride } from '../../utils/hooks';
-import { useTheme } from '../../styling';
+import { useComponentTheme } from '../../utils/hooks';
 
 import { getTagName, useTypographyClassNames } from './utils';
 import { TypographyStyle } from './style';
 import { TypographyPropsType } from './type';
 import { typographyDefaultTheme } from './theme';
-
-const CLASS_PREFIX = 'Typography';
+import { TYPOGRAPHY_CLASS_PREFIX } from './constants';
 
 export const Typography: FunctionComponent<TypographyPropsType> = ({
     className,
@@ -18,11 +16,13 @@ export const Typography: FunctionComponent<TypographyPropsType> = ({
     error,
     ...restProps
 }) => {
-    const theme = useTheme();
-    useThemeOverride(CLASS_PREFIX, theme, typographyDefaultTheme);
+    const theme = useComponentTheme(
+        TYPOGRAPHY_CLASS_PREFIX,
+        typographyDefaultTheme,
+    );
 
     const classNameComponents = useTypographyClassNames(
-        CLASS_PREFIX,
+        TYPOGRAPHY_CLASS_PREFIX,
         className,
         classNames,
         restProps,
@@ -32,11 +32,11 @@ export const Typography: FunctionComponent<TypographyPropsType> = ({
 
     return (
         <TypographyStyle
+            {...restProps}
             className={classNameComponents.Root}
             disabled={disabled}
             error={error}
             theme={theme}
-            {...restProps}
         >
             {(forwardedProps: TypographyPropsType) => (
                 <TypographyRoot {...forwardedProps}>{children}</TypographyRoot>

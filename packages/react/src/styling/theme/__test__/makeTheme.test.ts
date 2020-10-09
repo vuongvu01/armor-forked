@@ -6,7 +6,7 @@
  */
 
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
-import { makeTheme } from '../make-theme';
+import { makeTheme } from '../makeTheme';
 import { legacyThemeVendorMonitor } from './mock';
 
 describe('makeTheme()', () => {
@@ -16,11 +16,11 @@ describe('makeTheme()', () => {
 
     it('should provide compatible hybrid theme', () => {
         const muiTheme = createMuiTheme(legacyThemeVendorMonitor);
-        const hybridTheme = makeTheme(muiTheme);
+        const hybridTheme = makeTheme(muiTheme).armor;
 
-        expect(hybridTheme.span(3)).toEqual(`${muiTheme.spacing(3)}px`);
-        expect(hybridTheme.figure.borderRadius).toEqual(
-            `${hybridTheme.shape.borderRadius}px`,
+        expect(hybridTheme.spacing(3)).toEqual(`${muiTheme.spacing(3)}px`);
+        expect(hybridTheme.shape.borderRadius).toEqual(
+            `${muiTheme.shape.borderRadius}px`,
         );
         expect(hybridTheme.typography.pixelToRem(14)).toEqual(
             muiTheme.typography.pxToRem(14),

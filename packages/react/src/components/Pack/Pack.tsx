@@ -5,7 +5,6 @@ import { usePackClassName } from './utils';
 import { PackPropsType } from './type';
 import { PACK_CLASS_PREFIX, packRoot } from './constants';
 import { Flex } from '../Flex';
-import { useTheme } from '../../styling';
 
 export const Pack: FunctionComponent<PackPropsType> = forwardRef(function Pack(
     {
@@ -19,8 +18,6 @@ export const Pack: FunctionComponent<PackPropsType> = forwardRef(function Pack(
     },
     ref,
 ) {
-    const theme = useTheme();
-
     const classOverride = usePackClassName(
         PACK_CLASS_PREFIX,
         className,
@@ -29,15 +26,14 @@ export const Pack: FunctionComponent<PackPropsType> = forwardRef(function Pack(
 
     return (
         <Flex
-            className={classOverride.Root}
             data-testid={packRoot}
+            {...restProps}
+            className={classOverride.Root}
             direction={reverse ? 'row-reverse' : 'row'}
             flexWrap={flexWrap}
             justifyContent={justifyContent}
             ref={ref}
             alignItems={alignItems}
-            theme={theme}
-            {...restProps}
         />
     );
 });

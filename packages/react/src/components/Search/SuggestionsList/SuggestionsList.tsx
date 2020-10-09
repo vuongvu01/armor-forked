@@ -15,6 +15,7 @@ export const SuggestionsList: FunctionComponent<SuggestionsListPropsType> = ({
     icon,
     cursor,
     searchQuery,
+    theme,
 }) =>
     options && options.length > 0 ? (
         options.map((option: SuggestionObjectType, index: number) => {
@@ -30,11 +31,12 @@ export const SuggestionsList: FunctionComponent<SuggestionsListPropsType> = ({
                     key={label}
                     cursor={cursor}
                     searchQuery={searchQuery}
+                    theme={theme}
                 />
             );
         })
     ) : (
-        <EmptySuggestionsList />
+        <EmptySuggestionsList theme={theme} />
     );
 
 SuggestionsList.propTypes = {

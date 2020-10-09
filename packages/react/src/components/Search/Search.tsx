@@ -1,8 +1,7 @@
 import React, { forwardRef, FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import { useThemeOverride } from '../../utils/hooks';
-import { useTheme } from '../../styling';
+import { useComponentTheme } from '../../utils/hooks';
 import { useSearchClassName } from './utils';
 import { SearchPropsType } from './type';
 import { searchTheme } from './theme';
@@ -37,9 +36,7 @@ export const Search: FunctionComponent<SearchPropsType> = forwardRef(
         },
         ref,
     ) {
-        const theme = useTheme();
-
-        useThemeOverride(SEARCH_CLASS_PREFIX, theme, searchTheme);
+        const theme = useComponentTheme(SEARCH_CLASS_PREFIX, searchTheme);
 
         const classOverride = useSearchClassName(
             SEARCH_CLASS_PREFIX,
@@ -71,15 +68,15 @@ export const Search: FunctionComponent<SearchPropsType> = forwardRef(
 
         return (
             <SearchRoot
-                className={classOverride.Root}
                 data-testid={searchRoot}
+                {...restProps}
+                className={classOverride.Root}
                 ref={containerRef}
                 theme={theme}
                 width={width}
                 minWidth={minWidth}
                 maxWidth={maxWidth}
                 wide={wide}
-                {...restProps}
             >
                 <TextInput
                     after={
@@ -120,6 +117,7 @@ export const Search: FunctionComponent<SearchPropsType> = forwardRef(
                                 icon={icon}
                                 cursor={cursor}
                                 searchQuery={searchQuery}
+                                theme={theme}
                             />
                         </SearchSuggestionsList>
                     </SearchSuggestionsContainer>

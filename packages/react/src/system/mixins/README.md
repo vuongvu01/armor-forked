@@ -1,7 +1,7 @@
 Declaration in theme:
 
 ~~~jsx
-const theme = makeTheme({
+const theme = make({
     breakpoints: {
         values: {
             xs: 0,

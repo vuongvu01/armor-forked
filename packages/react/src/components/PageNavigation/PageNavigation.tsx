@@ -43,11 +43,11 @@ export const PageNavigation: FunctionComponent<PageNavigationPropsType> = forwar
 
         return (
             <PageNavigationRoot
-                theme={theme}
+                data-testid={pageNavigationRootTestId}
                 {...restProps}
+                theme={theme}
                 className={classNameComponents.Root}
                 ref={ref}
-                data-testid={pageNavigationRootTestId}
             >
                 <PageNavigationPageButton
                     theme={theme}

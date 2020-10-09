@@ -1,5 +1,8 @@
-import { makeTheme } from '../make/make-theme';
+import { makeTheme } from '../theme/makeTheme';
 
-export const darkTheme = makeTheme({
-    color: {},
-});
+export const makeDarkTheme = () =>
+    makeTheme({
+        armor: {
+            color: {},
+        },
+    });

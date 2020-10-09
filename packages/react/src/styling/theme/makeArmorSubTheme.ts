@@ -1,30 +1,27 @@
-import deepFreeze from 'deep-freeze-strict';
 import { flatten } from 'flat';
+import deepFreeze from 'deep-freeze-strict';
+import { ThemeInputType, ThemeOptionsType, ThemeType } from '../type';
 import { merge } from '../../utils';
-import { ThemeDeclarationType, ThemeFabricOptions, ThemeType } from '../type';
-import { makeBreakpoints } from './make-breakpoints';
-import { makeTypography } from './make-typography';
-import { makeSpan } from './make-span';
-import { defaultThemeDeclaration } from '../themes/defaultThemeDeclaration';
+import { defaultThemeStructure } from '../defaultThemeStructure';
+import { makeSpacing } from './makeSpacing';
+import { makeBreakpoints } from './makeBreakpoints';
+import { makeTypography } from './makeTypography';
 import { ObjectLiteralType } from '../../type';
 
-export const makeTheme = (
-    declaration: ThemeDeclarationType,
-    options?: ThemeFabricOptions,
+export const makeArmorSubTheme = (
+    declaration: ThemeInputType = {},
+    options?: ThemeOptionsType,
 ): ThemeType => {
     const immutable = !options || (options && options.immutable !== false);
 
-    const theme = merge(
-        defaultThemeDeclaration,
-        declaration,
-    ) as ThemeDeclarationType;
+    const theme = merge(defaultThemeStructure, declaration) as ThemeInputType;
 
-    theme.span = makeSpan(theme);
+    theme.spacing = makeSpacing(theme);
     theme.breakpoints = makeBreakpoints(theme.breakpoints);
     theme.typography = makeTypography(theme.typography);
 
     const referenceIndex = flatten({
-        figure: theme.figure,
+        shape: theme.shape,
         typography: theme.typography,
         color: theme.color,
         elevation: theme.elevation,
@@ -36,6 +33,8 @@ export const makeTheme = (
             ...result,
         };
     }, {});
+
+    theme.$initialized = true;
 
     return (immutable
         ? {

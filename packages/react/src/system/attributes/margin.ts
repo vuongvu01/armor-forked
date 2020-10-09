@@ -36,26 +36,26 @@ export const marginAttributes = ({
     let result = '';
 
     if (typeof margin !== 'undefined') {
-        result += `margin: ${theme.span(margin)};`;
+        result += `margin: ${theme.spacing(margin)};`;
     }
     if (typeof marginTop !== 'undefined') {
-        result += `margin-top: ${theme.span(marginTop)};`;
+        result += `margin-top: ${theme.spacing(marginTop)};`;
     }
     if (typeof marginBottom !== 'undefined') {
-        result += `margin-bottom: ${theme.span(marginBottom)};`;
+        result += `margin-bottom: ${theme.spacing(marginBottom)};`;
     }
     if (typeof marginLeft !== 'undefined') {
-        result += `margin-left: ${theme.span(marginLeft)};`;
+        result += `margin-left: ${theme.spacing(marginLeft)};`;
     }
     if (typeof marginRight !== 'undefined') {
-        result += `margin-right: ${theme.span(marginRight)};`;
+        result += `margin-right: ${theme.spacing(marginRight)};`;
     }
     if (typeof marginX !== 'undefined') {
-        const value = theme.span(marginX);
+        const value = theme.spacing(marginX);
         result += `margin-right: ${value}; margin-left: ${value};`;
     }
     if (typeof marginY !== 'undefined') {
-        const value = theme.span(marginY);
+        const value = theme.spacing(marginY);
         result += `margin-top: ${value}; margin-bottom: ${value};`;
     }
 
