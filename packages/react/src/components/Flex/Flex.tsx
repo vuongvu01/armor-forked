@@ -1,11 +1,9 @@
 import React, { forwardRef, FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import { useThemeOverride } from '../../utils/hooks';
 import { useTheme } from '../../styling';
 import { useFlexClassName } from './utils';
 import { FlexPropsType } from './type';
-import { flexDefaultTheme } from './theme';
 import { FLEX_CLASS_PREFIX, flexRoot } from './constants';
 import { FlexRoot } from './style';
 
@@ -22,8 +20,6 @@ export const Flex: FunctionComponent<FlexPropsType> = forwardRef(function Flex(
     ref,
 ) {
     const theme = useTheme();
-
-    useThemeOverride(FLEX_CLASS_PREFIX, theme, flexDefaultTheme);
 
     const classOverride = useFlexClassName(
         FLEX_CLASS_PREFIX,

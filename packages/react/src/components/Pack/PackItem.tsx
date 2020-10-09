@@ -1,12 +1,11 @@
 import React, { forwardRef, FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import { useThemeOverride } from '../../utils/hooks';
-import { useTheme } from '../../styling';
 import { usePackItemClassName } from './utils';
 import { PackItemPropsType } from './type';
 import { PACK_ITEM_CLASS_PREFIX, packItemRoot } from './constants';
 import { FlexItem } from '../Flex';
+import { useTheme } from '../../styling';
 
 export const PackItem: FunctionComponent<PackItemPropsType> = forwardRef(
     function PackItem(
@@ -23,8 +22,6 @@ export const PackItem: FunctionComponent<PackItemPropsType> = forwardRef(
         ref,
     ) {
         const theme = useTheme();
-
-        useThemeOverride(PACK_ITEM_CLASS_PREFIX, theme, {});
 
         const classOverride = usePackItemClassName(
             PACK_ITEM_CLASS_PREFIX,

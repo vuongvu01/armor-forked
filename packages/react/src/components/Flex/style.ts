@@ -18,11 +18,8 @@ const flexRootStyle = ({
     justifyContent,
     alignItems,
     flexWrap,
-    theme: {
-        componentOverrides: { Flex },
-    },
 }: FlexItemPropsType) => {
-    let result = Flex.Root.base;
+    let result = css``;
 
     if (direction) {
         result = css`
@@ -61,11 +58,8 @@ const flexItemStyle = ({
     flexBasis,
     order,
     alignSelf,
-    theme: {
-        componentOverrides: { Flex },
-    },
 }: FlexItemPropsType) => {
-    let result = Flex.ItemRoot.base;
+    let result = css``;
 
     if (typeof flexGrow !== 'undefined') {
         result = css`
