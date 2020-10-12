@@ -115,6 +115,8 @@ export const useSearchBar = ({
                     handleArrowUpClick();
                 } else if (key === 'Enter') {
                     handleEnterClick();
+                } else if (key) {
+                    setIsOptionsListShown(true);
                 }
             }
         },
