@@ -2,14 +2,21 @@
 import { componentSpacing01, componentSpacing04 } from '../../tokens';
 
 export const tabDefaultTheme = {
-    Container: {
+    Root: {
         active: {
             transform: 'scaleX(1)',
+        },
+        after: {
+            right: componentSpacing04,
+            left: componentSpacing04,
         },
         active__after: {
             backgroundColor: '$color.primary.main',
             transform: 'scaleX(1)',
         },
+    },
+    LabelContainer: {
+        base: {},
     },
     Label: {
         active: {

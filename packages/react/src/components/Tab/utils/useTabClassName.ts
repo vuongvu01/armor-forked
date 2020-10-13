@@ -36,8 +36,16 @@ const useTabClassName = (
 ) =>
     useMemo(
         () => ({
-            Container: classGeneratorBasedOnComponent({
-                component: 'Container',
+            Root: classGeneratorBasedOnComponent({
+                component: 'Root',
+                classPrefix,
+                className,
+                classNames,
+                disabled,
+                isActive,
+            }),
+            LabelContainer: classGeneratorBasedOnComponent({
+                component: 'LabelContainer',
                 classPrefix,
                 className,
                 classNames,

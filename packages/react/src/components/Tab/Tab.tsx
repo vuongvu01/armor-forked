@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { useComponentTheme } from '../../utils/hooks';
 import { useTabClassName } from './utils';
-import { TabContainer, TabLabel } from './style';
+import { TabRoot, TabLabel, TabLabelContainer } from './style';
 import { TabPropsType } from './type';
 import { tabDefaultTheme } from './theme';
 import { TAB_CLASS_PREFIX } from './constants';
@@ -45,24 +45,31 @@ export const Tab: FunctionComponent<TabPropsType> = forwardRef(function Tab(
     };
 
     return (
-        <TabContainer
+        <TabRoot
             {...restProps}
             disabled={disabled}
             isActive={isActive}
             wide={wide}
+            className={classOverride.Root}
             theme={theme}
         >
-            <TabLabel
-                className={classOverride.Label}
-                disabled={disabled}
-                isActive={isActive}
-                onClick={handleSelect}
-                ref={ref}
+            <TabLabelContainer
+                className={classOverride.LabelContainer}
                 theme={theme}
+                disabled={disabled}
             >
-                {label}
-            </TabLabel>
-        </TabContainer>
+                <TabLabel
+                    className={classOverride.Label}
+                    disabled={disabled}
+                    isActive={isActive}
+                    onClick={handleSelect}
+                    ref={ref}
+                    theme={theme}
+                >
+                    {label}
+                </TabLabel>
+            </TabLabelContainer>
+        </TabRoot>
     );
 });
 

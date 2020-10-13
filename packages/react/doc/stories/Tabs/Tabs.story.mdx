@@ -1,9 +1,7 @@
-import { useState } from 'react';
-import { BrowserRouter, Link } from 'react-router-dom';
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
-import get from 'lodash.get';
+import {useState} from 'react';
+import {Meta, Preview, Props, Story} from '@storybook/addon-docs/blocks';
 
-import { Box, Button, Tab, Tabs, TabView  } from 'src/components';
+import {Box, Tab, Tabs, TabView} from 'src/components';
 
 <Meta title="Components/Tabs" component={Tabs} />
 
@@ -26,50 +24,6 @@ const handleSwitch = (tabIndex) => setSelectedTabIndex(tabIndex);
    <p>Pasta</p>
 </TabView>
 ```
-
-## Full width
-
-<Preview>
-    <Story name="FullWidth" height="240px">
-        {() => {
- const [selectedTabIndex, setSelectedTabIndex] = useState(0);
- const handleChange = (tabIndex) => setSelectedTabIndex(tabIndex);
- return (
-     <>
-         <GroupHelper gap={2}>
-             <Box
-                 padding={3}
-                 style={{
-                     height: '180px',
-                     backgroundColor: '#F4F4F8',
-                 }}
-             >
-                 <Tabs onSwitch={handleChange} wide>
-                  <Tab label="Biryani"/>
-                  <Tab label="Tacos"/>
-                  <Tab label="Risotto"/>
-                  <Tab label="Pad Thai"/>
-                </Tabs>
-                <TabView value={0} selectedValue={selectedTabIndex}>
-                  <p>Biryani</p>
-                </TabView>
-                <TabView value={1} selectedValue={selectedTabIndex}>
-                  <p>Tacos</p>
-                </TabView>
-                <TabView value={2} selectedValue={selectedTabIndex}>
-                  <p>Risotto</p>
-                </TabView>
-                <TabView value={3} selectedValue={selectedTabIndex}>
-                  <p>Pad Thai</p>
-                </TabView>
-             </Box>
-         </GroupHelper>
-     </>
- );
-}}
-    </Story>
-</Preview>
-
 ## Minimum configuration
 
 <Preview>
@@ -78,39 +32,36 @@ const handleSwitch = (tabIndex) => setSelectedTabIndex(tabIndex);
  const [selectedTabIndex, setSelectedTabIndex] = useState(0);
  const handleChange = (tabIndex) => setSelectedTabIndex(tabIndex);
  return (
-     <>
-         <Box
-             padding={3}
-             style={{
-                 backgroundColor: '#F4F4F8',
-                 height: '180px',
-                 width: '600px',
-             }}
-         >
-             <Tabs onSwitch={handleChange}>
-                 <Tab label="Pizza"/>
-                 <Tab label="Pasta"/>
-                 <Tab label="Risotto"/>
-                 <Tab label="Beverages"/>
-                 <Tab label="Alcoholic beverages" disabled/>
-             </Tabs>
-             <TabView value={0} selectedValue={selectedTabIndex}>
-                 <p>Pizza</p>
-             </TabView>
-             <TabView value={1} selectedValue={selectedTabIndex}>
-                 <p>Pasta</p>
-             </TabView>
-             <TabView value={2} selectedValue={selectedTabIndex}>
-                 <p>Risotto</p>
-             </TabView>
-             <TabView value={3} selectedValue={selectedTabIndex}>
-                 <p>Beverages</p>
-             </TabView>
-             <TabView value={4} selectedValue={selectedTabIndex}>
-                 <p>Alcoholic beverages</p>
-             </TabView>
-         </Box>
-     </>
+ <Box
+     padding={3}
+     style={{
+         height: '180px',
+         width: '510px',
+     }}
+ >
+     <Tabs onSwitch={handleChange}>
+         <Tab label="Pizza"/>
+         <Tab label="Pasta"/>
+         <Tab label="Risotto"/>
+         <Tab label="Beverages"/>
+         <Tab label="Alcoholic beverages" disabled/>
+     </Tabs>
+     <TabView value={0} selectedValue={selectedTabIndex}>
+         <p>Pizza</p>
+     </TabView>
+     <TabView value={1} selectedValue={selectedTabIndex}>
+         <p>Pasta</p>
+     </TabView>
+     <TabView value={2} selectedValue={selectedTabIndex}>
+         <p>Risotto</p>
+     </TabView>
+     <TabView value={3} selectedValue={selectedTabIndex}>
+         <p>Beverages</p>
+     </TabView>
+     <TabView value={4} selectedValue={selectedTabIndex}>
+         <p>Alcoholic beverages</p>
+     </TabView>
+ </Box>
  );
 }}
     </Story>
@@ -125,41 +76,36 @@ const handleSwitch = (tabIndex) => setSelectedTabIndex(tabIndex);
 const [selectedTabIndex, setSelectedTabIndex] = useState(0);
 const handleChange = (tabIndex) => setSelectedTabIndex(tabIndex);
 return (
-    <>
-        <GroupHelper gap={2}>
-            <Box
-                padding={3}
-                style={{
-                    backgroundColor: '#F4F4F8',
-                    height: '180px',
-                    width: '600px',
-                }}
-            >
-                <Tabs defaultActiveTab={2} onSwitch={handleChange}>
-                    <Tab label="Pizza" />
-                    <Tab label="Pasta" />
-                    <Tab label="Risotto" />
-                    <Tab label="Beverages" />
-                    <Tab label="Alcoholic beverages" disabled />
-                </Tabs>
-                <TabView value={0} selectedValue={selectedTabIndex}>
-                    <p>Pizza</p>
-                </TabView>
-                <TabView value={1} selectedValue={selectedTabIndex}>
-                    <p>Pasta</p>
-                </TabView>
-                <TabView value={2} selectedValue={selectedTabIndex}>
-                    <p>Risotto</p>
-                </TabView>
-                <TabView value={3} selectedValue={selectedTabIndex}>
-                    <p>Beverages</p>
-                </TabView>
-                <TabView value={4} selectedValue={selectedTabIndex}>
-                    <p>Alcoholic beverages</p>
-                </TabView>
-            </Box>
-        </GroupHelper>
-    </>
+<Box
+    padding={3}
+    style={{
+        height: '180px',
+        width: '510px',
+    }}
+>
+    <Tabs defaultActiveTab={2} onSwitch={handleChange}>
+        <Tab label="Pizza" />
+        <Tab label="Pasta" />
+        <Tab label="Risotto" />
+        <Tab label="Beverages" />
+        <Tab label="Alcoholic beverages" disabled />
+    </Tabs>
+    <TabView value={0} selectedValue={selectedTabIndex}>
+        <p>Pizza</p>
+    </TabView>
+    <TabView value={1} selectedValue={selectedTabIndex}>
+        <p>Pasta</p>
+    </TabView>
+    <TabView value={2} selectedValue={selectedTabIndex}>
+        <p>Risotto</p>
+    </TabView>
+    <TabView value={3} selectedValue={selectedTabIndex}>
+        <p>Beverages</p>
+    </TabView>
+    <TabView value={4} selectedValue={selectedTabIndex}>
+        <p>Alcoholic beverages</p>
+    </TabView>
+</Box>
 );
 }}
     </Story>
@@ -173,43 +119,38 @@ return (
  const [selectedTabIndex, setSelectedTabIndex] = useState(0);
  const handleChange = (tabIndex) => setSelectedTabIndex(tabIndex);
  return (
-     <>
-         <GroupHelper gap={2}>
-             <Box
-                 padding={3}
-                 style={{
-                     backgroundColor: '#F4F4F8',
-                     height: '180px',
-                 }}
-             >
-                 <Tabs onSwitch={handleChange} wide>
-                     <Tab label="Pizza" value={0} />
-                     <Tab label="Pasta" value={0} />
-                     <Tab label="Risotto" />
-                     <Tab label="Beverages" value={0} />
-                     <Tab label="Alcoholic beverages" disabled />
-                 </Tabs>
-                 <TabView value={0} selectedValue={selectedTabIndex}>
-                     <p>
-                         Pizza, Pasta and Beverages all point to the same
-                         content
-                     </p>
-                 </TabView>
-                 <TabView value={1} selectedValue={selectedTabIndex}>
-                     <p>Pasta</p>
-                 </TabView>
-                 <TabView value={2} selectedValue={selectedTabIndex}>
-                     <p>Risotto has a content of its own</p>
-                 </TabView>
-                 <TabView value={3} selectedValue={selectedTabIndex}>
-                     <p>Beverages</p>
-                 </TabView>
-                 <TabView value={4} selectedValue={selectedTabIndex}>
-                     <p>Alcoholic beverages</p>
-                 </TabView>
-             </Box>
-         </GroupHelper>
-     </>
+     <Box
+         padding={3}
+         style={{
+             height: '180px',
+         }}
+     >
+         <Tabs onSwitch={handleChange}>
+             <Tab label="Pizza" value={0} />
+             <Tab label="Pasta" value={0} />
+             <Tab label="Risotto" />
+             <Tab label="Beverages" value={0} />
+             <Tab label="Alcoholic beverages" disabled />
+         </Tabs>
+         <TabView value={0} selectedValue={selectedTabIndex}>
+             <p>
+                 Pizza, Pasta and Beverages all point to the same
+                 content
+             </p>
+         </TabView>
+         <TabView value={1} selectedValue={selectedTabIndex}>
+             <p>Pasta</p>
+         </TabView>
+         <TabView value={2} selectedValue={selectedTabIndex}>
+             <p>Risotto has a content of its own</p>
+         </TabView>
+         <TabView value={3} selectedValue={selectedTabIndex}>
+             <p>Beverages</p>
+         </TabView>
+         <TabView value={4} selectedValue={selectedTabIndex}>
+             <p>Alcoholic beverages</p>
+         </TabView>
+     </Box>
  );
 }}
     </Story>
