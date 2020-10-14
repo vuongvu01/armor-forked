@@ -10,35 +10,35 @@ import {
     breakpointUp,
 } from '../../system/mixins';
 import {
+    breakpointUnit,
+    breakpointValues,
     forwardBreakpoints,
     forwardBreakpointsTwoArgs,
-    mapBreakpoint,
+    mapBreakpointCodeToValue,
+    mapBreakpointWidthToCode,
 } from '../../system/mixins/breakpoints';
 import { ScalarType } from '../../type';
 
 export const makeBreakpoints = (
     breakpoints?: BreakpointsDeclarationType,
+    unit = breakpointUnit,
 ): BreakpointsType => {
-    const {
-        values = {
-            xs: 0,
-            sm: 600,
-            md: 960,
-            lg: 1280,
-            xl: 1920,
-        },
-    } = breakpoints || {};
+    const { values = breakpointValues } = breakpoints || {};
 
     const base = {
         values,
         keys: Object.keys(values),
+        unit,
     };
 
     return {
         ...breakpoints,
         ...base,
-        map: (value: ScalarType, spacing: SpacingFunctionType) =>
-            mapBreakpoint(base, value, spacing),
+        unit,
+        mapCodeToValue: (value: ScalarType, spacing: SpacingFunctionType) =>
+            mapBreakpointCodeToValue(base, value, spacing),
+        mapWidthToCode: (value: ScalarType) =>
+            mapBreakpointWidthToCode(base, value),
         up: forwardBreakpoints(base, breakpointUp),
         down: forwardBreakpoints(base, breakpointDown),
         only: forwardBreakpoints(base, breakpointOnly),

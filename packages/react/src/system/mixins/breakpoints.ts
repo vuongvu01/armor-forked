@@ -1,25 +1,32 @@
-import { css } from 'styled-components';
-
 import { BreakpointsBaseType, SpacingFunctionType } from '../../styling';
-import { CSSChunkType, ScalarType } from '../../type';
 import {
-    BreakpointCode,
-    BreakpointFunctionType,
+    BreakpointCodeType,
     BreakpointFunctionTwoArgsType,
+    BreakpointFunctionType,
 } from './type';
+import { ScalarType } from '../../type';
 
-const makeRule = (way: string, value: number, cssChunk?: CSSChunkType) => {
-    const mediaRule = `@media (${way}-width:${value}px)`;
+export const edgeValue = 0.05;
 
-    if (cssChunk) {
-        // prettier-ignore
-        return css`${mediaRule}{${cssChunk}};`;
-    }
+export const breakpointUnit = 'px';
 
-    return mediaRule;
+export const breakpointKeys = {
+    xs: 'xs',
+    sm: 'sm',
+    md: 'md',
+    lg: 'lg',
+    xl: 'xl',
 };
 
-export const mapBreakpoint = (
+export const breakpointValues = {
+    [breakpointKeys.xs]: 0,
+    [breakpointKeys.sm]: 600,
+    [breakpointKeys.md]: 960,
+    [breakpointKeys.lg]: 1280,
+    [breakpointKeys.xl]: 1920,
+};
+
+export const mapBreakpointCodeToValue = (
     breakpoints: BreakpointsBaseType,
     value: ScalarType,
     spacing: SpacingFunctionType,
@@ -31,76 +38,109 @@ export const mapBreakpoint = (
     return spacing(value);
 };
 
-// todo: move breakpoints to the last position and make optional
-export const breakpointUp: BreakpointFunctionType = (
-    breakpoints,
-    code,
-    cssChunk,
-) => makeRule('min', breakpoints.values[code], cssChunk);
+export const mapBreakpointWidthToCode = (
+    themeBreakpoints: BreakpointsBaseType,
+    width: ScalarType,
+): string => {
+    let widthProp = width;
+    const { keys, values } = themeBreakpoints;
 
-// todo: move breakpoints to the last position and make optional
-export const breakpointDown: BreakpointFunctionType = (
-    breakpoints,
-    code,
-    cssChunk,
-) => makeRule('max', breakpoints.values[code] - 1, cssChunk);
-
-// todo: move breakpoints to the last position and make optional
-export const breakpointOnly: BreakpointFunctionType = (
-    breakpoints,
-    code,
-    cssChunk,
-) => {
-    const { keys } = breakpoints;
-    const left = breakpoints.values[code];
-
-    let mediaRule = `@media (min-width:${left}px`;
-
-    const rightIndex = keys.indexOf(code) + 1;
-    if (rightIndex !== keys.length) {
-        const right = breakpoints.values[keys[rightIndex]] - 1;
-        mediaRule += ` and max-width:${right}px`;
+    if (typeof widthProp !== 'number') {
+        widthProp = parseInt(widthProp, 10);
     }
 
-    mediaRule += ')';
-
-    if (cssChunk) {
-        // prettier-ignore
-        return css`${mediaRule}{${cssChunk}};`;
+    if (widthProp <= 0) {
+        return keys[0];
     }
 
-    return mediaRule;
+    if (widthProp >= values[keys[keys.length - 1]]) {
+        return keys[keys.length - 1];
+    }
+
+    for (let i = 0; i < keys.length; i += 1) {
+        const keyStart = keys[i];
+        const keyEnd = keys[i + 1];
+
+        if (widthProp >= values[keyStart] && widthProp < values[keyEnd]) {
+            return keyStart;
+        }
+    }
+
+    return '';
 };
-export const breakpointBetween: BreakpointFunctionTwoArgsType = (
-    breakpoints,
-    codeStart,
-    codeEnd,
-    cssChunk,
+
+export const breakpointUp = (
+    themeBreakpoints: BreakpointsBaseType,
+    breakpoint: BreakpointCodeType,
+    prefix = '@media ',
 ) => {
-    const left = breakpoints.values[codeStart];
-    const right = breakpoints.values[codeEnd] - 1;
+    const { values, unit } = themeBreakpoints;
 
-    const mediaRule = `@media (min-width:${left}px and max-width:${right}px)`;
-
-    if (cssChunk) {
-        // prettier-ignore
-        return css`${mediaRule}{${cssChunk}};`;
+    if (!(breakpoint in values)) {
+        return '';
     }
 
-    return mediaRule;
+    return `${prefix}(min-width:${values[breakpoint]}${unit})`;
 };
+
+export const breakpointDown = (
+    themeBreakpoints: BreakpointsBaseType,
+    breakpoint: BreakpointCodeType,
+    prefix = '@media ',
+) => {
+    const { values, keys, unit } = themeBreakpoints;
+
+    if (!(breakpoint in values)) {
+        return '';
+    }
+
+    const rightIndex = keys.indexOf(breakpoint);
+    const rightValue = values[keys[rightIndex]];
+
+    if (rightIndex === keys.length) {
+        return breakpointUp(themeBreakpoints, 'xs', prefix);
+    }
+
+    if (!(typeof rightValue !== 'undefined' && rightIndex > 0)) {
+        return '';
+    }
+
+    return `${prefix}(max-width:${rightValue - edgeValue}${unit})`;
+};
+
+export const breakpointBetween = (
+    themeBreakpoints: BreakpointsBaseType,
+    breakpointStart: BreakpointCodeType,
+    breakpointEnd: BreakpointCodeType,
+    prefix = '@media ',
+) => {
+    const { values, keys, unit } = themeBreakpoints;
+
+    const rightIndex = keys.indexOf(breakpointEnd);
+
+    if (rightIndex === keys.length - 1) {
+        return breakpointUp(themeBreakpoints, breakpointStart, prefix);
+    }
+
+    return `${prefix}(min-width:${
+        values[breakpointStart]
+    }${unit}) and (max-width:${values[keys[rightIndex + 1]] -
+        edgeValue}${unit})`;
+};
+
+export const breakpointOnly = (
+    themeBreakpoints: BreakpointsBaseType,
+    breakpoint: BreakpointCodeType,
+    prefix = '@media ',
+) => breakpointBetween(themeBreakpoints, breakpoint, breakpoint, prefix);
 
 export const forwardBreakpoints = (
     breakpoints: BreakpointsBaseType,
     fn: BreakpointFunctionType,
-) => (code: BreakpointCode, cssChunk?: CSSChunkType) =>
-    fn(breakpoints, code, cssChunk);
+) => (code: BreakpointCodeType) => fn(breakpoints, code);
 
 export const forwardBreakpointsTwoArgs = (
     breakpoints: BreakpointsBaseType,
     fn: BreakpointFunctionTwoArgsType,
-) => (
-    codeStart: BreakpointCode,
-    codeEnd: BreakpointCode,
-    cssChunk?: CSSChunkType,
-) => fn(breakpoints, codeStart, codeEnd, cssChunk);
+) => (codeStart: BreakpointCodeType, codeEnd: BreakpointCodeType) =>
+    fn(breakpoints, codeStart, codeEnd);

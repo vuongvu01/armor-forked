@@ -22,14 +22,20 @@ export type BreakpointValuesType = ObjectLiteralType<number>;
 export type BreakpointsBaseType = {
     keys: string[];
     values: BreakpointValuesType;
+    unit: string;
 };
 
 export type BreakpointsType = BreakpointsBaseType & {
-    map: (value: ScalarType, spacing: SpacingFunctionType) => ScalarType;
+    mapCodeToValue: (
+        value: ScalarType,
+        spacing: SpacingFunctionType,
+    ) => ScalarType;
+    mapWidthToCode: (value: ScalarType) => ScalarType;
     up: BreakpointFunctionForwardedType;
     down: BreakpointFunctionForwardedType;
     only: BreakpointFunctionForwardedType;
     between: BreakpointFunctionTwoArgsForwardedType;
+    unit: string;
 };
 export type BreakpointsDeclarationType = Pick<BreakpointsType, 'values'>;
 
