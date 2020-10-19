@@ -10,9 +10,9 @@ import {
     SearchRoot,
     SearchSuggestionsContainer,
     SearchSuggestionsList,
+    SearchTextInput,
 } from './style';
 import { useSearchBar } from './utils/useSearchBar';
-import { TextInput } from '../TextInput';
 import { SuggestionsList } from './SuggestionsList';
 import { SearchIcon } from './SearchIcon';
 import { SearchClearAction } from './SearchClearAction';
@@ -78,7 +78,7 @@ export const Search: FunctionComponent<SearchPropsType> = forwardRef(
                 maxWidth={maxWidth}
                 wide={wide}
             >
-                <TextInput
+                <SearchTextInput
                     after={
                         <SearchClearAction
                             disableClearAction={disableClearAction}

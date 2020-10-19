@@ -237,7 +237,7 @@ export const UncontrolledMultiple = () => {
         'Burrito',
     ];
 
-    const initialSelectionIndex = 3;
+    const initialSelectionIndex = [3, 6];
 
     return (
         <>

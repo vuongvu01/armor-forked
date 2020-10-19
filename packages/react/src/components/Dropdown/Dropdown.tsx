@@ -1,23 +1,24 @@
 import React, {
-    FunctionComponent,
     forwardRef,
-    useState,
-    useEffect,
-    useRef,
+    FunctionComponent,
     useCallback,
     useMemo,
+    useRef,
+    useState,
 } from 'react';
 import PropTypes from 'prop-types';
 
 import { useComponentTheme } from '../../utils/hooks';
 import { extractMarginProps } from '../../styling';
-import { useDetectClickOutsideComponent, useDropdownClassName } from './utils';
+import { useDropdownClassName } from './utils';
 import {
     DropdownContainer,
+    DropdownExpansionIndicator,
     DropdownOptionList,
     DropdownOptionListContainer,
-    DropdownWrapper,
     dropdownTextInputStyle,
+    DropdownWrapper,
+    ExpansionIndicatorContainer,
 } from './style';
 import DropdownOptionItem from './DropdownOptionItem';
 import { DropdownPropsType, OptionObjectType } from './type';
@@ -36,7 +37,11 @@ import { useOnValueUpdate } from './utils/useOnValueUpdate';
 import { useValue } from './utils/useValue';
 import { useOptions } from './utils/useOptions';
 import { useSelectedValueToDisplay } from './utils/useSelectedValueToDisplay';
-import { ExpansionIndicator } from '../ExpansionIndicator';
+import {
+    useDetectClickOutsideComponent,
+    useDetectEscapeKeyPressed,
+    useInternalRef,
+} from '../../utils';
 
 export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
     function Dropdown(
@@ -46,6 +51,7 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
             disabled,
             error,
             isListExpanded = false,
+            isActionSeparatorDisplayed = true,
             label,
             onSelect,
             onChange,
@@ -72,14 +78,9 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
         );
 
         const internalInputRef = useRef(null);
-        // internalRef is used in Dropdown and can be exposed to the outside if the ref prop is present
-        useEffect(() => {
-            if (ref && internalInputRef) {
-                Object.assign(ref, internalInputRef);
-            }
-        }, [internalInputRef]);
-
         const containerRef = useRef(null);
+
+        useInternalRef(ref, internalInputRef);
 
         const [internalValue, setInternalValue] = useValue(value, defaultValue);
         const onValueUpdate = useOnValueUpdate(
@@ -133,7 +134,17 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
             blurInput();
         };
 
-        useDetectClickOutsideComponent(containerRef, setIsOptionListShown);
+        useDetectClickOutsideComponent(
+            containerRef,
+            setIsOptionListShown,
+            isOptionListShown,
+        );
+
+        useDetectEscapeKeyPressed(
+            containerRef,
+            setIsOptionListShown,
+            isOptionListShown,
+        );
 
         const handleDisplayOptionListToggle = () => {
             setIsOptionListShown(!isOptionListShown);
@@ -147,16 +158,25 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
         );
 
         const renderActionItem = (
-            <ExpansionIndicator
-                disabled={disabled}
-                error={error}
-                displaySeparator={isOptionListShown || !!internalValue.length}
-                isExpanded={isOptionListShown}
-                onClick={handleActionItemClick}
-                tabIndex={tabIndex}
+            <ExpansionIndicatorContainer
                 theme={theme}
-                data-testid={dropdownActionItem}
-            />
+                className={classOverride.ExpansionIndicatorContainer}
+            >
+                <DropdownExpansionIndicator
+                    disabled={disabled}
+                    error={error}
+                    displaySeparator={
+                        isActionSeparatorDisplayed &&
+                        (isOptionListShown || !!internalValue.length)
+                    }
+                    isExpanded={isOptionListShown}
+                    onClick={handleActionItemClick}
+                    tabIndex={tabIndex}
+                    theme={theme}
+                    data-testid={dropdownActionItem}
+                    className={classOverride.ExpansionIndicator}
+                />
+            </ExpansionIndicatorContainer>
         );
 
         const renderOptionItem = (
@@ -244,6 +264,7 @@ Dropdown.propTypes = {
     label: PropTypes.string,
     onSelect: PropTypes.func,
     onChange: PropTypes.func,
+    isActionSeparatorDisplayed: PropTypes.bool,
     options: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.string.isRequired),
         PropTypes.arrayOf(

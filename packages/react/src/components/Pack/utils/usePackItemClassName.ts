@@ -20,7 +20,7 @@ const getClassNameByComponent = ({
     return `${baseClassNames}`.trim();
 };
 
-const usePackClassName = (
+const usePackItemClassName = (
     classPrefix: string,
     className?: string,
     classNames?: ClassNamesType,
@@ -36,4 +36,4 @@ const usePackClassName = (
         };
     }, [classPrefix, className, classNames]);
 
-export default usePackClassName;
+export default usePackItemClassName;

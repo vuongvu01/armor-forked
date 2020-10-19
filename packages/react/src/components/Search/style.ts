@@ -15,6 +15,8 @@ import {
 import { zIndexSearchSuggestionsList } from '../../tokens';
 import { transitionDurationInSec } from '../../constants';
 import { Typography } from '../Typography';
+import { TextInput } from '../TextInput';
+import { TextInputPropsType } from '../TextInput/type';
 
 const rootStyle = ({
     theme: {
@@ -70,6 +72,14 @@ const searchSuggestionsItemActionStyle = ({
     },
 }: SearchSuggestionsItemActionPropsType) => {
     return Search.SearchSuggestionsItemAction.base;
+};
+
+const searchTextInputStyle = ({
+    theme: {
+        componentOverrides: { Search },
+    },
+}: SearchRootPropsType) => {
+    return Search.TextInput.base;
 };
 
 const searchSuggestionsItemLabelStyle = ({
@@ -198,4 +208,8 @@ export const SearchSuggestionsItemAction = styled.div<
     white-space: nowrap;
 
     ${searchSuggestionsItemActionStyle}
+`;
+
+export const SearchTextInput = styled(TextInput)<SearchRootPropsType>`
+    ${searchTextInputStyle}
 `;

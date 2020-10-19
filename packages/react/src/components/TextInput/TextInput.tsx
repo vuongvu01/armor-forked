@@ -23,6 +23,7 @@ import {
     textInputRoot,
     TEXT_INPUT_CLASS_PREFIX,
 } from './constants';
+import { useInternalRef } from '../../utils';
 
 export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
     function TextInput(
@@ -116,11 +117,7 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
             }
         }, [value, disabled]);
 
-        useEffect(() => {
-            if (ref && internalInputRef) {
-                Object.assign(ref, internalInputRef);
-            }
-        }, [internalInputRef]);
+        useInternalRef(ref, internalInputRef);
 
         return (
             <TextInputRoot

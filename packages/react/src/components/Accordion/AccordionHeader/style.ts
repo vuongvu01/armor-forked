@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import { AccordionHeaderRootPropsType } from './type';
 import { Typography } from '../../Typography';
 import { mouseCursor } from '../../../styling';
+import { ExpansionIndicator } from '../../ExpansionIndicator';
 
 const accordionHeaderStyle = ({
     disabled,
@@ -50,6 +51,14 @@ export const AccordionHeaderTypography = styled(Typography)<
     AccordionHeaderRootPropsType
 >`
     ${accordionHeaderTypographyStyle}
+`;
+
+export const AccordionHeaderExpansionIndicator = styled(ExpansionIndicator)<
+    AccordionHeaderRootPropsType
+>`
+    .AccordionHeader-ExpansionIndicator.ExpansionIndicator-Content {
+        width: 56px;
+    }
 `;
 
 export const AccordionHeaderIcon = styled.div<AccordionHeaderRootPropsType>`

@@ -2,7 +2,7 @@ import { InputHTMLAttributes } from 'react';
 
 import { MarginAttributesType } from '../../system/attributes';
 import { Indexed } from '../../type';
-import { ClassNamesType } from '../type';
+import { ClassNamesType, StylesFunctionOrStubType } from '../type';
 
 export type ClassBasedOnComponentType = {
     component: string;

@@ -30,10 +30,12 @@ export type DropdownInternalValueType = ReadonlyArray<number | string>;
 
 export type DropdownInternalOptionType = OptionObjectType[];
 
+export type DropdownSelectedOptionType =
+    | string
+    | { label: string; value: string | number; [key: string]: any }; // similarly here - to expose into storybook, otherwise it says just OptionItemType
+
 export type DropDownOnSelectType = (
-    selectedOption:
-        | string
-        | { label: string; value: string | number; [key: string]: any }, // similarly here - to expose into storybook, otherwise it says just OptionItemType
+    selectedOption: DropdownSelectedOptionType,
     itemIndex?: number,
 ) => void;
 
@@ -72,6 +74,7 @@ type DropdownEffectivePropsType = Indexed<{
     onSelect?: DropDownOnSelectType;
     selectedValue?: string | number;
     selectedIndex?: number;
+    isActionSeparatorDisplayed?: boolean;
     label?: string;
     options?:
         | string[]
@@ -91,7 +94,7 @@ type DropdownEffectivePropsType = Indexed<{
 }> &
     Omit<
         InputHTMLAttributes<HTMLInputElement>,
-        'value' | 'onChange' | 'defaultValue'
+        'value' | 'onChange' | 'defaultValue' | 'onSelect'
     > &
     MarginAttributesType;
 
@@ -122,6 +125,8 @@ export type DropdownOptionItemPropsType = Indexed<{
         'className' | 'isOptionListShown' | 'onClick' | 'theme' | 'multiple'
     > &
     HTMLAttributes<HTMLElement>;
+
+export type ExpansionIndicatorContainerPropsType = Indexed<{}>;
 
 export type DropdownRootPropsType = DropdownEffectivePropsType &
     NodeStylePropsType<DropdownEffectivePropsType>;

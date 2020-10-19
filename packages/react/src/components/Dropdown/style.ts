@@ -8,8 +8,9 @@ import {
     DropdownOptionItemPropsType,
     DropdownOptionListPropsType,
     DropdownRootPropsType,
+    ExpansionIndicatorContainerPropsType,
 } from './type';
-import { Typography } from '../Typography';
+import { ExpansionIndicator } from '../ExpansionIndicator';
 
 const optionItemStyle = ({
     isSelected,
@@ -51,7 +52,7 @@ export const DropdownContainer = styled.div<DropdownRootPropsType>`
     flex-direction: column;
     flex-grow: 1;
     height: 0;
-    min-height: -webkit-calc(110%);
+    min-height: 110%;
     min-width: 150px;
 `;
 
@@ -59,6 +60,19 @@ export const DropdownOptionListContainer = styled.div<DropdownRootPropsType>`
     box-sizing: border-box;
     margin: 4px 2px;
     position: relative;
+`;
+
+export const ExpansionIndicatorContainer = styled.div<
+    ExpansionIndicatorContainerPropsType
+>`
+    height: 100%;
+`;
+export const DropdownExpansionIndicator = styled(ExpansionIndicator)<
+    ExpansionIndicatorContainerPropsType
+>`
+    .Dropdown-ExpansionIndicator.ExpansionIndicator-Content {
+        width: 56px;
+    }
 `;
 
 export const DropdownOptionList = styled.div<DropdownOptionListPropsType>`

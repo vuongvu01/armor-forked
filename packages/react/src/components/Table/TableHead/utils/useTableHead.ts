@@ -8,6 +8,7 @@ import {
     TableSectionContextValueType,
 } from '../../utils/type';
 import { TableHeadHookPropsType } from './type';
+import { useInternalRef } from '../../../../utils';
 
 export const useTableHead = ({ ref }: TableHeadHookPropsType) => {
     const tableContextValue = useContext<TableContextValueType>(TableContext);
@@ -23,11 +24,8 @@ export const useTableHead = ({ ref }: TableHeadHookPropsType) => {
     });
 
     const rootReference = useRef<HTMLTableSectionElement>();
-    useEffect(() => {
-        if (ref && rootReference) {
-            Object.assign(ref, rootReference);
-        }
-    }, [rootReference]);
+
+    useInternalRef(ref, rootReference);
 
     const onLayoutUpdate = useCallback(
         throttle(TABLE_THROTTLE_PERIOD, false, () => {

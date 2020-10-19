@@ -36,8 +36,8 @@ const useAccordionHeaderClassName = (
                 disabled,
                 expanded,
             }),
-            Icon: getClassNameByComponent({
-                component: 'Icon',
+            ExpansionIndicator: getClassNameByComponent({
+                component: 'ExpansionIndicator',
                 classPrefix,
                 className,
                 classNames,

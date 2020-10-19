@@ -5,10 +5,10 @@ import React, {
     useRef,
     useState,
 } from 'react';
-import { useDetectClickOutsideComponent } from '../../Dropdown/utils';
 
 import { initialCursor } from '../constants';
 import { SearchPropsType, UseSearchBarType } from '../type';
+import { useDetectClickOutsideComponent, useInternalRef } from '../../../utils';
 
 export const useSearchBar = ({
     defaultQuery,
@@ -27,11 +27,7 @@ export const useSearchBar = ({
     const internalInputRef = useRef<HTMLInputElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
-        if (ref && internalInputRef) {
-            Object.assign(ref, internalInputRef);
-        }
-    }, [internalInputRef]);
+    useInternalRef(ref, internalInputRef);
 
     useEffect(() => {
         setIsSuggestionsListShown(!!options);
@@ -113,7 +109,7 @@ export const useSearchBar = ({
                 } else if (key === 'ArrowUp') {
                     event.preventDefault();
                     handleArrowUpClick();
-                } else if (key === 'Enter') {
+                } else if (key === 'Enter' && isSuggestionsListShown) {
                     handleEnterClick();
                 } else if (key) {
                     setIsOptionsListShown(true);

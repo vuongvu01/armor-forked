@@ -14,7 +14,6 @@ export default {
 
 export const Basic = () => {
     const [pageNumber, setPageNumber] = useState(1);
-
     return (
         <PageNavigation
             itemCount={100}

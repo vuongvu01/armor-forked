@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Meta, Preview, Props, Story } from '@storybook/addon-docs/blocks';
-import { InfoIcon, PinMarkerIcon } from '@deliveryhero/armor-icons';
 
 import { PageNavigation } from 'src/components';
 
@@ -10,27 +9,21 @@ import { PageNavigation } from 'src/components';
 import { PageNavigation } from '@deliveryhero/armor';
 ```
 
-## Initial Layout
+## Common Usage
 
 <Preview>
-    <Story name="Initial Layout" height="200px">
-        <PageNavigation itemCount={100} pageNumber={1} pageSize={10} />
-    </Story>
-</Preview>
-
-## In the Middle
-
-<Preview>
-    <Story name="In the Middle" height="200px">
-        <PageNavigation itemCount={100} pageNumber={5} pageSize={10} />
-    </Story>
-</Preview>
-
-## Last Page
-
-<Preview>
-    <Story name="Last Page" height="200px">
-        <PageNavigation itemCount={100} pageNumber={10} pageSize={10} />
+    <Story name="Common Usage" height="200px">
+        {() => {
+            const [pageNumber, setPageNumber] = useState(1);
+            return (
+                <PageNavigation
+                    itemCount={100}
+                    pageNumber={pageNumber}
+                    pageSize={10}
+                    onPageSelect={setPageNumber}
+                />
+            );
+        }}
     </Story>
 </Preview>
 

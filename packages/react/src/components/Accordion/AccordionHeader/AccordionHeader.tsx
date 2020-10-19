@@ -9,6 +9,7 @@ import React, {
 
 import { useComponentTheme } from '../../../utils/hooks';
 import {
+    AccordionHeaderExpansionIndicator,
     AccordionHeaderIcon,
     AccordionHeaderRoot,
     AccordionHeaderTypography,
@@ -25,6 +26,7 @@ import { dropdownActionItem } from '../../Dropdown/constants';
 import { ExpansionIndicator } from '../../ExpansionIndicator';
 import AccordionContext from '../AccordionContext';
 import useAccordionHeaderClassName from './useAccordionHeaderClassName';
+import { useInternalRef } from '../../../utils';
 
 export const AccordionHeader: FunctionComponent<AccordionHeaderPropsType> = forwardRef(
     function AccordionHeader(
@@ -47,11 +49,7 @@ export const AccordionHeader: FunctionComponent<AccordionHeaderPropsType> = forw
             isExpanded,
         );
 
-        useEffect(() => {
-            if (ref && internalInputRef) {
-                Object.assign(ref, internalInputRef);
-            }
-        }, [internalInputRef]);
+        useInternalRef(ref, internalInputRef);
 
         const enterKeyHandler = useCallback(
             (event: KeyboardEvent) => {
@@ -107,8 +105,8 @@ export const AccordionHeader: FunctionComponent<AccordionHeaderPropsType> = forw
                     isExpanded={isExpanded}
                     theme={theme}
                 >
-                    <ExpansionIndicator
-                        className={classOverride.Icon}
+                    <AccordionHeaderExpansionIndicator
+                        className={classOverride.ExpansionIndicator}
                         disabled={disabled}
                         isExpanded={isExpanded}
                         onClick={() => {}}

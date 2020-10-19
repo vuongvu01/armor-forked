@@ -2,9 +2,9 @@ import React, { FunctionComponent } from 'react';
 
 import { ExpansionIndicatorPropsType } from './type';
 import {
-    ExpansionIndicatorRoot,
     ExpansionIndicatorContent,
     ExpansionIndicatorIcon,
+    ExpansionIndicatorRoot,
 } from './style';
 import { useComponentTheme } from '../../utils/hooks';
 import useExpansionIndicatorClassName from './useExpansionIndicatorClassName';
