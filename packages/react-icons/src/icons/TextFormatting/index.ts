@@ -1,6 +1,7 @@
 export * from './AlignCenter';
 export * from './AlignLeft';
 export * from './AlignRight';
+export * from './ArtboardExpand';
 export * from './Link';
 export * from './ListBullet';
 export * from './ListNumber';

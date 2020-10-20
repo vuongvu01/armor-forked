@@ -7,9 +7,6 @@ import {
     SearchSuggestionsItemIcon,
     SearchSuggestionsItemLabel,
 } from '../style';
-import { useTheme } from '../../../styling';
-import { useThemeOverride } from '../../../utils/hooks';
-import { searchTheme } from '../theme';
 import { useSuggestionItemClassName } from './utils';
 import { SuggestionItemPropsType } from './type';
 import { SUGGESTION_ITEM_CLASS_PREFIX } from './constants';
@@ -25,11 +22,8 @@ export const SuggestionItem: FunctionComponent<SuggestionItemPropsType> = ({
     icon,
     cursor,
     searchQuery,
+    theme,
 }) => {
-    const theme = useTheme();
-
-    useThemeOverride(SUGGESTION_ITEM_CLASS_PREFIX, theme, searchTheme);
-
     const classOverride = useSuggestionItemClassName(
         SUGGESTION_ITEM_CLASS_PREFIX,
         className,

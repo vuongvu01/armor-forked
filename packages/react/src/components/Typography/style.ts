@@ -17,6 +17,7 @@ const propertyList = {
     small: true,
     subSectionTitle: true,
     tag: true,
+    maxLines: true,
     // add other custom properties here
 } as ObjectLiteralType;
 

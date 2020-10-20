@@ -17,7 +17,7 @@ import { withStyles as withMaterialStyles } from '@material-ui/core/styles';
 import { BrowserRouter, Link } from 'react-router-dom';
 
 import { MaterialIcon } from '../../MaterialIcon';
-import { defaultTheme, makeTheme } from '../../../styling';
+import { makeDefaultTheme, makeTheme } from '../../../styling';
 import { ObjectLiteralType } from '../../../type';
 import { GroupHelper } from '../../../helpers/GroupHelper';
 import { Button } from '../Button';
@@ -31,6 +31,8 @@ export default {
     decorators: [withKnobs],
     parameters: {},
 };
+
+const defaultTheme = makeDefaultTheme();
 
 const optionsTag = {
     Button: 'button',

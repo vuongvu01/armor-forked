@@ -11,7 +11,12 @@ const classGeneratorBasedOnComponent = ({
     classNames,
     disabled,
 }: ClassBasedOnComponentType) => {
-    const baseClassNames = makeClassName(classPrefix, className, classNames);
+    const baseClassNames = makeClassName(
+        classPrefix,
+        className,
+        classNames,
+        component,
+    );
 
     const stateClassNames: string[] = [];
 
@@ -68,6 +73,20 @@ const useDropdownClassName = (
             }),
             OptionItem: classGeneratorBasedOnComponent({
                 component: 'OptionItem',
+                classPrefix,
+                className,
+                classNames,
+                disabled,
+            }),
+            ExpansionIndicatorContainer: classGeneratorBasedOnComponent({
+                component: 'ExpansionIndicatorContainer',
+                classPrefix,
+                className,
+                classNames,
+                disabled,
+            }),
+            ExpansionIndicator: classGeneratorBasedOnComponent({
+                component: 'ExpansionIndicator',
                 classPrefix,
                 className,
                 classNames,

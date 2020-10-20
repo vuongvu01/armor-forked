@@ -3,12 +3,10 @@ import PropTypes from 'prop-types';
 
 import { Box } from '../Box';
 import { TabViewPropsType } from './type';
-import { useTheme } from '../../styling';
 import { tabViewDefaultTheme } from './theme';
-import { useThemeOverride } from '../../utils/hooks';
+import { useComponentTheme } from '../../utils/hooks';
 import { TabViewRoot } from './style';
-
-export const TAB_VIEW_CLASS_PREFIX = 'TabView';
+import { TAB_VIEW_CLASS_PREFIX } from './constants';
 
 export const TabView: FunctionComponent<TabViewPropsType> = ({
     children,
@@ -20,11 +18,10 @@ export const TabView: FunctionComponent<TabViewPropsType> = ({
         return null;
     }
 
-    const theme = useTheme();
-    useThemeOverride(TAB_VIEW_CLASS_PREFIX, theme, tabViewDefaultTheme);
+    const theme = useComponentTheme(TAB_VIEW_CLASS_PREFIX, tabViewDefaultTheme);
 
     return value === selectedValue ? (
-        <TabViewRoot theme={theme} {...restProps}>
+        <TabViewRoot {...restProps} theme={theme}>
             {value === selectedValue && <Box padding={2}>{children}</Box>}
         </TabViewRoot>
     ) : null;

@@ -22,11 +22,11 @@ export const TableAction: FunctionComponent<TableActionPropsType> = forwardRef(
 
         return (
             <TableActionRoot
-                theme={theme}
+                data-testid={tableActionRootTestId}
                 {...restProps}
+                theme={theme}
                 className={classNameComponents.Root}
                 ref={ref}
-                data-testid={tableActionRootTestId}
             />
         );
     },

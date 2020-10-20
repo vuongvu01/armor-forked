@@ -1,0 +1,32 @@
+import { useState } from 'react';
+import { Meta, Preview, Props, Story } from '@storybook/addon-docs/blocks';
+
+import { PageNavigation } from 'src/components';
+
+<Meta title="Components/PageNavigation" component={PageNavigation} />
+
+```js
+import { PageNavigation } from '@deliveryhero/armor';
+```
+
+## Common Usage
+
+<Preview>
+    <Story name="Common Usage" height="200px">
+        {() => {
+            const [pageNumber, setPageNumber] = useState(1);
+            return (
+                <PageNavigation
+                    itemCount={100}
+                    pageNumber={pageNumber}
+                    pageSize={10}
+                    onPageSelect={setPageNumber}
+                />
+            );
+        }}
+    </Story>
+</Preview>
+
+## Properties
+
+<Props of={PageNavigation} />

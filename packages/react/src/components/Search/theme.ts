@@ -15,6 +15,11 @@ export const searchTheme = {
             marginLeft: componentSpacing01,
         },
     },
+    TextInput: {
+        base: {
+            fontWeight: '$typography.paragraphMedium.fontWeight',
+        },
+    },
     SearchSuggestionsItem: {
         base: {
             paddingBottom: componentSpacing02,

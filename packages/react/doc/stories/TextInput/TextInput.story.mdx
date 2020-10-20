@@ -1,12 +1,9 @@
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
 import { TextInput, Button, FormField, FormFieldMessage, Box, FormFieldTooltip } from '../../../src/components/';
-import { LoremIpsum } from '../../../src/helpers/LoremIpsum';
 import { StoryHelper } from './StoryHelper';
 import { Nodes } from '../../../src/helpers/Nodes';
 
 <Meta title="Components/TextInput" component={TextInput} />
-
-# TextInput
 
 ~~~js
 import { TextInput } from '@deliveryhero/armor';
@@ -43,7 +40,12 @@ import { TextInput } from '@deliveryhero/armor';
 
 <Preview>
     <Story name="Error state" height="100px">
-        <TextInput label="First name" name="first_name" defaultValue="Joe" error />
+        <FormField autoMargin>
+            <TextInput label="First name" name="first_name" defaultValue="42" error />
+            <FormFieldMessage error oneLine>
+                Please provide a valid name
+            </FormFieldMessage>
+        </FormField>
     </Story>
 </Preview>
 

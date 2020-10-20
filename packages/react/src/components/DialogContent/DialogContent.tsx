@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-import { useTheme } from '../../styling';
-import { useThemeOverride } from '../../utils/hooks';
+import { useComponentTheme } from '../../utils/hooks';
 import {
     useDialogContentClassName,
     useDialogContentStylesOverride,
@@ -9,6 +8,7 @@ import {
 import { DialogContentRoot } from './style';
 import { DialogContentPropsType } from './type';
 import { dialogContentDefaultTheme } from './theme';
+import { DIALOG_CONTENT_CLASS_PREFIX } from './constants';
 
 const CLASS_PREFIX = 'DialogContent';
 
@@ -19,8 +19,10 @@ export const DialogContent: FunctionComponent<DialogContentPropsType> = ({
     children,
     ...restProps
 }) => {
-    const theme = useTheme();
-    useThemeOverride(CLASS_PREFIX, theme, dialogContentDefaultTheme);
+    const theme = useComponentTheme(
+        DIALOG_CONTENT_CLASS_PREFIX,
+        dialogContentDefaultTheme,
+    );
 
     const classNameRoot = useDialogContentClassName(
         CLASS_PREFIX,
@@ -31,8 +33,8 @@ export const DialogContent: FunctionComponent<DialogContentPropsType> = ({
 
     return (
         <DialogContentRoot
-            theme={theme}
             {...restProps}
+            theme={theme}
             className={classNameRoot}
             styles={stylesOverride.Root}
         >

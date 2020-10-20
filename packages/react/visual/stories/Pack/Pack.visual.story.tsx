@@ -67,7 +67,7 @@ export const ReverseDirection = () => (
     </Pack>
 );
 
-export const JustifyContent = () => (
+export const FullWidthSpaceBetween = () => (
     <Pack justifyContent="space-between">
         <PackItem>
             <div style={style1}>Item 1</div>

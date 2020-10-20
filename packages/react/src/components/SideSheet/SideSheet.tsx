@@ -1,8 +1,7 @@
 import React, { forwardRef, FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import { useThemeOverride } from '../../utils/hooks';
-import { useTheme } from '../../styling';
+import { useComponentTheme } from '../../utils/hooks';
 import {
     extendChildrenWithProps,
     extractContentSections,
@@ -52,7 +51,10 @@ export const SideSheet: FunctionComponent<SideSheetPropsType> = forwardRef(
         },
         ref,
     ) {
-        const theme = useTheme();
+        const theme = useComponentTheme(
+            SIDE_SHEET_CLASS_PREFIX,
+            sideSheetDefaultTheme,
+        );
         const [display, effectToggle] = useDisplay(open);
 
         const stylesOverride = useSideSheetStylesOverride(styles);
@@ -64,8 +66,6 @@ export const SideSheet: FunctionComponent<SideSheetPropsType> = forwardRef(
             disableOverlay,
             wide,
         );
-
-        useThemeOverride(SIDE_SHEET_CLASS_PREFIX, theme, sideSheetDefaultTheme);
 
         const childrenWithExtendedProps = extendChildrenWithProps(children, {
             classOverride,
@@ -89,21 +89,21 @@ export const SideSheet: FunctionComponent<SideSheetPropsType> = forwardRef(
                     className={classOverride.Overlay}
                     disableEffects={disableEffects}
                     disableOverlay={disableOverlay}
-                    display={display}
+                    open={display}
                     effectToggle={effectToggle}
                     styles={stylesOverride.Overlay}
                     theme={theme}
                 />
                 <SideSheetRoot
-                    className={classOverride.Root}
                     data-testid={sideSheetRoot}
+                    {...restProps}
+                    className={classOverride.Root}
                     disableEffects={disableEffects}
                     display={display}
                     effectToggle={effectToggle}
                     ref={ref}
                     theme={theme}
                     wide={wide}
-                    {...restProps}
                 >
                     <SideSheetContent
                         className={classOverride.Content}

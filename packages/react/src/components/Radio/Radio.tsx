@@ -1,8 +1,8 @@
 import React, { ChangeEvent, forwardRef, FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import { useThemeOverride } from '../../utils/hooks';
-import { extractMarginProps, useTheme } from '../../styling';
+import { useComponentTheme } from '../../utils/hooks';
+import { extractMarginProps } from '../../styling';
 import SelectorLabel from '../SelectorLabel';
 import { useRadioClassName } from './utils';
 import { RadioInput, RadioMark, RadioRoot } from './style';
@@ -30,11 +30,9 @@ export const Radio: FunctionComponent<RadioPropsType> = forwardRef(
         },
         ref,
     ) {
-        const theme = useTheme();
+        const theme = useComponentTheme(RADIO_CLASS_PREFIX, radioDefaultTheme);
         const id = generateId(propsId, radioIdPrefix);
         const isChecked = checked || value === selectedValue;
-
-        useThemeOverride(RADIO_CLASS_PREFIX, theme, radioDefaultTheme);
 
         const classOverride = useRadioClassName(
             RADIO_CLASS_PREFIX,
@@ -59,6 +57,7 @@ export const Radio: FunctionComponent<RadioPropsType> = forwardRef(
                 {...marginProps}
             >
                 <RadioInput
+                    {...otherProps}
                     checked={isChecked}
                     className={classOverride.Input}
                     disabled={disabled}
@@ -69,7 +68,6 @@ export const Radio: FunctionComponent<RadioPropsType> = forwardRef(
                     theme={theme}
                     type="radio"
                     value={value}
-                    {...otherProps}
                 />
                 <RadioMark
                     className={classOverride.Label}

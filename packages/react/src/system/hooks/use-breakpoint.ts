@@ -4,10 +4,10 @@ import { throttle } from 'throttle-debounce';
 
 import { useTheme } from '../../styling';
 import { MatchBreakpointFunctionType } from './type';
-import { BreakpointCode } from '../mixins/type';
+import { BreakpointCodeType } from '../mixins/type';
 
 const useBreakpoint = (
-    code: BreakpointCode,
+    code: BreakpointCodeType,
     matchFunction: MatchBreakpointFunctionType,
 ) => {
     const theme = useTheme();
@@ -45,7 +45,7 @@ const useBreakpoint = (
     return match;
 };
 
-export const useBreakpointUp = (code: BreakpointCode) =>
+export const useBreakpointUp = (code: BreakpointCodeType) =>
     useBreakpoint(code, (value, width) => width >= value);
-export const useBreakpointDown = (code: BreakpointCode) =>
+export const useBreakpointDown = (code: BreakpointCodeType) =>
     useBreakpoint(code, (value, width) => width < value);

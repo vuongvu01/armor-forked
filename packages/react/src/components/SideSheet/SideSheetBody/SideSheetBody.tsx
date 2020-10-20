@@ -15,10 +15,10 @@ export const SideSheetBody: FunctionComponent<SideSheetHeaderPropsType> = ({
 }) => {
     return (
         <SideSheetBodyRoot
-            isFixed={isFixed}
             data-testid={sideSheetBody}
-            theme={theme}
             {...restProps}
+            isFixed={isFixed}
+            theme={theme}
         >
             {children}
         </SideSheetBodyRoot>

@@ -2,18 +2,18 @@ import { addDecorator, addParameters } from '@storybook/react';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import { withThemesProvider } from 'storybook-addon-styled-component-theme';
 
-import { defaultTheme, darkTheme } from '../../src/styling';
+import { makeDefaultTheme, makeDarkTheme } from '../../src/styling/themes';
 
 const themes = [
     {
         name: 'Default',
         backgroundColor: '#fff',
-        ...defaultTheme,
+        ...makeDefaultTheme(),
     },
     {
         name: 'Dark',
         backgroundColor: '#000',
-        ...darkTheme,
+        ...makeDarkTheme(),
     },
 ];
 

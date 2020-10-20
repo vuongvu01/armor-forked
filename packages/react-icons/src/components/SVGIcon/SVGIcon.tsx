@@ -23,7 +23,7 @@ export const SVGIcon: FunctionComponent<SVGIconPropsType> = ({
             color={fillColor}
             iconWidth={width}
             iconHeight={height}
-            theme={theme}
+            theme={theme.armor}
             {...restProps}
         >
             {!!title && <title>{title}</title>}

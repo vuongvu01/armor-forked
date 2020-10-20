@@ -25,11 +25,11 @@ export const TableCellLabel: FunctionComponent<TableCellLabelPropsType> = forwar
 
         return (
             <TableCellLabelRoot
-                theme={theme}
+                data-testid={tableCellLabelRootTestId}
                 {...restProps}
+                theme={theme}
                 className={classNameComponents.Root}
                 ref={ref}
-                data-testid={tableCellLabelRootTestId}
             />
         );
     },

@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 
 import { ClassNamesType } from '../components/type';
-import { transformTheme } from '../styling/make/transform-theme';
+import { transformTheme } from '../styling/theme/transformTheme';
 import { makeClassName, merge } from '.';
 import { ThemeType, useTheme } from '../styling';
 import { ObjectLiteralType } from '../type';
@@ -22,22 +22,22 @@ export const useClassName = (
 /**
  * @internal
  */
-export const useThemeOverride = (
+export const useComponentTheme = (
     classPrefix: string,
-    theme: ThemeType,
-    defaultComponentTheme: ObjectLiteralType,
-) =>
-    // this is supposed to be useEffect(), but we need this code running before the first render
+    defaultComponentTheme: ObjectLiteralType = {},
+) => {
+    const theme = useTheme();
+
     useMemo(() => {
-        if (!(classPrefix in theme.componentOverrides)) {
+        if (!(classPrefix in theme.armor.componentOverrides)) {
             const chunk = merge(
                 defaultComponentTheme,
-                theme.components[classPrefix],
+                theme.armor.components[classPrefix],
             );
 
             // eslint-disable-next-line no-param-reassign
-            theme.componentOverrides[classPrefix] = transformTheme(
-                theme,
+            theme.armor.componentOverrides[classPrefix] = transformTheme(
+                theme.armor,
                 chunk,
                 classPrefix,
             );
@@ -46,12 +46,5 @@ export const useThemeOverride = (
         return true;
     }, [classPrefix, theme, defaultComponentTheme]);
 
-export const useComponentTheme = (
-    classPrefix: string,
-    defaultComponentTheme: ObjectLiteralType,
-) => {
-    const theme = useTheme();
-    useThemeOverride(classPrefix, theme, defaultComponentTheme);
-
-    return theme;
+    return theme.armor as ThemeType;
 };

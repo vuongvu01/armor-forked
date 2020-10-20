@@ -1,8 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 import { CancelIcon } from '@deliveryhero/armor-icons';
-import { useThemeOverride } from '../../utils/hooks';
-import { useTheme } from '../../styling';
+import { useComponentTheme } from '../../utils/hooks';
 
 import { useDialogClassNames, useDialogStylesOverride } from './utils';
 import {
@@ -37,8 +36,7 @@ export const Dialog: FunctionComponent<DialogPropsType> = ({
     zIndex,
     ...restProps
 }) => {
-    const theme = useTheme();
-    useThemeOverride(DIALOG_CLASS_PREFIX, theme, dialogDefaultTheme);
+    const theme = useComponentTheme(DIALOG_CLASS_PREFIX, dialogDefaultTheme);
 
     const classNameComponents = useDialogClassNames(
         DIALOG_CLASS_PREFIX,
@@ -65,10 +63,9 @@ export const Dialog: FunctionComponent<DialogPropsType> = ({
                 className={classNameComponents.Overlay}
                 disableEffects={disableEffects}
                 disableOverlay={disableOverlay}
-                display={display}
+                open={display}
                 effectToggle={effectToggle}
                 styles={stylesOverride.Overlay}
-                theme={theme}
             />
             <DialogAlignmentContainer
                 theme={theme}
@@ -81,8 +78,8 @@ export const Dialog: FunctionComponent<DialogPropsType> = ({
                 scroll={scroll}
             >
                 <DialogRoot
-                    theme={theme}
                     {...restProps}
+                    theme={theme}
                     className={classNameComponents.Root}
                     dialogStyles={stylesOverride.Root}
                     effectToggle={effectToggle}

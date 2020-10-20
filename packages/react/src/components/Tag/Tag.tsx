@@ -1,8 +1,7 @@
 import React, { forwardRef, FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import { useThemeOverride } from '../../utils/hooks';
-import { useTheme } from '../../styling';
+import { useComponentTheme } from '../../utils/hooks';
 import { getStatusTagLabel, isStatusTag, useTagClassName } from './utils';
 import { TagPropsType } from './type';
 import { tagDefaultTheme } from './theme';
@@ -31,10 +30,8 @@ export const Tag: FunctionComponent<TagPropsType> = forwardRef(function Tag(
     },
     ref,
 ) {
-    const theme = useTheme();
+    const theme = useComponentTheme(TAG_CLASS_PREFIX, tagDefaultTheme);
     let label = userLabel;
-
-    useThemeOverride(TAG_CLASS_PREFIX, theme, tagDefaultTheme);
 
     const classOverride = useTagClassName(
         TAG_CLASS_PREFIX,
@@ -50,13 +47,13 @@ export const Tag: FunctionComponent<TagPropsType> = forwardRef(function Tag(
 
     return (
         <TagRoot
-            className={classOverride.Root}
             data-testid={tagRoot}
+            {...restProps}
+            className={classOverride.Root}
             deleteOption={deleteOption}
             ref={ref}
             theme={theme}
             type={type}
-            {...restProps}
         >
             <TagTypography
                 deleteOption={deleteOption}

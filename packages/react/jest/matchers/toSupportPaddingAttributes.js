@@ -1,6 +1,6 @@
 const React = require('react');
 
-const { SPACING_FACTOR } = require('../../src/styling/themes');
+const { SPACING_FACTOR } = require('../../src/styling/defaultThemeStructure');
 const { renderJSON } = require('../../src/helpers/renderJSON');
 
 const UNNATURAL_VALUE = 999;

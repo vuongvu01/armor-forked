@@ -6,12 +6,12 @@ import { transitionDurationInSec } from '../../../constants';
 const accordionContentStyle = ({
     isExpanded,
     theme: {
-        componentOverrides: { Accordion },
+        componentOverrides: { AccordionContent },
     },
 }: AccordionContentRootPropsType) => {
     const base = css`
         transition: all ${transitionDurationInSec}s ease;
-        ${Accordion.AccordionContent.base}
+        ${AccordionContent.Root.base}
     `;
 
     if (isExpanded) {
@@ -20,7 +20,7 @@ const accordionContentStyle = ({
             opacity: 1;
             visibility: inherit;
             ${base}
-            ${isExpanded ? Accordion.AccordionContent.expanded : ''}
+            ${isExpanded ? AccordionContent.Root.expanded : ''}
         `;
     }
 

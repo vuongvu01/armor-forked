@@ -1,6 +1,7 @@
 import { HTMLAttributes } from 'react';
 
 import { ClassNamesType } from '../../type';
+import { ThemeType } from '../../../styling';
 
 export type ClassBasedOnComponentType = {
     className?: string;
@@ -11,4 +12,5 @@ export type ClassBasedOnComponentType = {
 
 export type EmptySuggestionsListPropsType = {
     classNames?: ClassNamesType;
+    theme: ThemeType;
 } & HTMLAttributes<HTMLElement>;

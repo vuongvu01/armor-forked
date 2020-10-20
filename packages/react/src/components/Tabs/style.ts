@@ -28,6 +28,7 @@ export const TabsRoot = styled.div.withConfig({
     align-items: start;
     display: flex;
     flex-wrap: wrap;
+    width: fit-content;
 
     ${themeStyle}
     ${marginAttributes}

@@ -40,7 +40,6 @@ export const ExpansionIndicatorRoot = styled.div<ExpansionIndicatorPropsType>`
     height: 100%;
     justify-content: center;
     outline: none;
-    width: 56px;
 
     ${expansionIndicatorContainerStyle}
     ${marginAttributes}

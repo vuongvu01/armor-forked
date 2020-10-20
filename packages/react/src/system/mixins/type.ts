@@ -1,24 +1,27 @@
 import { BreakpointsBaseType } from '../../styling';
 import { CSSChunkType } from '../../type';
 
-export type BreakpointCode = string;
+export type BreakpointCodeType = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+
 export type BreakpointFunctionType = (
-    breakpoints: BreakpointsBaseType,
-    code: BreakpointCode,
-    cssChunk?: CSSChunkType,
-) => CSSChunkType;
+    themeBreakpoints: BreakpointsBaseType,
+    breakpoint: BreakpointCodeType,
+    prefix?: string,
+) => string;
+
 export type BreakpointFunctionTwoArgsType = (
     breakpoints: BreakpointsBaseType,
-    codeStart: BreakpointCode,
-    codeEnd: BreakpointCode,
-    cssChunk?: CSSChunkType,
+    codeStart: BreakpointCodeType,
+    codeEnd: BreakpointCodeType,
+    prefix?: string,
 ) => CSSChunkType;
+
 export type BreakpointFunctionForwardedType = (
-    code: BreakpointCode,
-    cssChunk?: CSSChunkType,
-) => CSSChunkType;
+    code: BreakpointCodeType,
+) => string;
+
 export type BreakpointFunctionTwoArgsForwardedType = (
-    codeStart: BreakpointCode,
-    codeEnd: BreakpointCode,
+    codeStart: BreakpointCodeType,
+    codeEnd: BreakpointCodeType,
     cssChunk?: CSSChunkType,
 ) => CSSChunkType;

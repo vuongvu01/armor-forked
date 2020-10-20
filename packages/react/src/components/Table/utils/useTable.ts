@@ -2,6 +2,7 @@ import { Ref, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { throttle } from 'throttle-debounce';
 import { TABLE_THROTTLE_PERIOD } from '../constants';
 import { TableHookPropsType, TableContextValueType } from './type';
+import { useInternalRef } from '../../../utils';
 
 export const useTable = ({
     stickyLeftColumn,
@@ -26,11 +27,8 @@ export const useTable = ({
     });
 
     const rootReference = useRef<HTMLTableElement>();
-    useEffect(() => {
-        if (ref && rootReference) {
-            Object.assign(ref, rootReference);
-        }
-    }, [rootReference]);
+
+    useInternalRef(ref, rootReference);
 
     const onLayoutUpdateImmediate = useCallback(() => {
         if (!stickyLeftColumn && !stickyRightColumn) {

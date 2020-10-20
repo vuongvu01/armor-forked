@@ -1,0 +1,167 @@
+import {useState} from 'react';
+import {Meta, Preview, Props, Story} from '@storybook/addon-docs/blocks';
+
+import {Box, Tab, Tabs, TabView} from 'src/components';
+
+<Meta title="Components/Tabs" component={Tabs} />
+
+```js
+import { Tabs, Tab, TabView } from '@deliveryhero/armor';
+
+const [selectedTabIndex, setSelectedTabIndex] = useState(0);
+const handleSwitch = (tabIndex) => setSelectedTabIndex(tabIndex);
+
+<Tabs onSwitch={handleSwitch}>
+   <Tab label="Pizza" />
+   <Tab label="Pasta" />
+</Tabs>
+<TabView value={0} selectedValue={selectedTabIndex}>
+   <p>Pizza</p>
+</TabView>
+<TabView value={1} selectedValue={selectedTabIndex}>
+   <p>Pasta</p>
+</TabView>
+```
+## Minimum configuration
+
+<Preview>
+    <Story name="MinimumConfiguration" height="240px">
+        {() => {
+ const [selectedTabIndex, setSelectedTabIndex] = useState(0);
+ const handleChange = (tabIndex) => setSelectedTabIndex(tabIndex);
+ return (
+ <Box
+     padding={3}
+     style={{
+         height: '180px',
+         width: '510px',
+     }}
+ >
+     <Tabs onSwitch={handleChange}>
+         <Tab label="Pizza"/>
+         <Tab label="Pasta"/>
+         <Tab label="Risotto"/>
+         <Tab label="Beverages"/>
+         <Tab label="Alcoholic beverages" disabled/>
+     </Tabs>
+     <TabView value={0} selectedValue={selectedTabIndex}>
+         <p>Pizza</p>
+     </TabView>
+     <TabView value={1} selectedValue={selectedTabIndex}>
+         <p>Pasta</p>
+     </TabView>
+     <TabView value={2} selectedValue={selectedTabIndex}>
+         <p>Risotto</p>
+     </TabView>
+     <TabView value={3} selectedValue={selectedTabIndex}>
+         <p>Beverages</p>
+     </TabView>
+     <TabView value={4} selectedValue={selectedTabIndex}>
+         <p>Alcoholic beverages</p>
+     </TabView>
+ </Box>
+ );
+}}
+    </Story>
+</Preview>
+
+
+## Default Active Tab on Load
+
+<Preview>
+    <Story name="DefaultActiveTabOnLoad" height="240px">
+        {() => {
+const [selectedTabIndex, setSelectedTabIndex] = useState(0);
+const handleChange = (tabIndex) => setSelectedTabIndex(tabIndex);
+return (
+<Box
+    padding={3}
+    style={{
+        height: '180px',
+        width: '510px',
+    }}
+>
+    <Tabs defaultActiveTab={2} onSwitch={handleChange}>
+        <Tab label="Pizza" />
+        <Tab label="Pasta" />
+        <Tab label="Risotto" />
+        <Tab label="Beverages" />
+        <Tab label="Alcoholic beverages" disabled />
+    </Tabs>
+    <TabView value={0} selectedValue={selectedTabIndex}>
+        <p>Pizza</p>
+    </TabView>
+    <TabView value={1} selectedValue={selectedTabIndex}>
+        <p>Pasta</p>
+    </TabView>
+    <TabView value={2} selectedValue={selectedTabIndex}>
+        <p>Risotto</p>
+    </TabView>
+    <TabView value={3} selectedValue={selectedTabIndex}>
+        <p>Beverages</p>
+    </TabView>
+    <TabView value={4} selectedValue={selectedTabIndex}>
+        <p>Alcoholic beverages</p>
+    </TabView>
+</Box>
+);
+}}
+    </Story>
+</Preview>
+
+## Multiple tabs point to the same content
+
+<Preview>
+    <Story name="MultipleTabsToSingleContent" height="240px">
+        {() => {
+ const [selectedTabIndex, setSelectedTabIndex] = useState(0);
+ const handleChange = (tabIndex) => setSelectedTabIndex(tabIndex);
+ return (
+     <Box
+         padding={3}
+         style={{
+             height: '180px',
+         }}
+     >
+         <Tabs onSwitch={handleChange}>
+             <Tab label="Pizza" value={0} />
+             <Tab label="Pasta" value={0} />
+             <Tab label="Risotto" />
+             <Tab label="Beverages" value={0} />
+             <Tab label="Alcoholic beverages" disabled />
+         </Tabs>
+         <TabView value={0} selectedValue={selectedTabIndex}>
+             <p>
+                 Pizza, Pasta and Beverages all point to the same
+                 content
+             </p>
+         </TabView>
+         <TabView value={1} selectedValue={selectedTabIndex}>
+             <p>Pasta</p>
+         </TabView>
+         <TabView value={2} selectedValue={selectedTabIndex}>
+             <p>Risotto has a content of its own</p>
+         </TabView>
+         <TabView value={3} selectedValue={selectedTabIndex}>
+             <p>Beverages</p>
+         </TabView>
+         <TabView value={4} selectedValue={selectedTabIndex}>
+             <p>Alcoholic beverages</p>
+         </TabView>
+     </Box>
+ );
+}}
+    </Story>
+</Preview>
+
+## `Tabs` Properties
+
+<Props of={Tabs} />
+
+## `Tab` Properties
+
+<Props of={Tab} />
+
+## `TabView` Properties
+
+<Props of={TabView} />

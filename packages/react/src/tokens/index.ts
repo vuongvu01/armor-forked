@@ -7,5 +7,5 @@ export * from './font-weight';
 export * from './letter-spacing';
 export * from './line-height';
 export * from './shadow';
-export * from './span';
+export * from './spacing';
 export * from './z-indexes';

@@ -15,8 +15,4 @@ export default {
     parameters: {},
 };
 
-export const Basic = () => (
-    <Paper style={{ padding: '28px' }}>
-        {text('Children', 'Hello world!')}
-    </Paper>
-);
+export const Basic = () => <Paper>Hello world!</Paper>;

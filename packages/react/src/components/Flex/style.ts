@@ -18,11 +18,8 @@ const flexRootStyle = ({
     justifyContent,
     alignItems,
     flexWrap,
-    theme: {
-        componentOverrides: { Flex },
-    },
 }: FlexItemPropsType) => {
-    let result = Flex.Root.base;
+    let result = css``;
 
     if (direction) {
         result = css`
@@ -61,44 +58,41 @@ const flexItemStyle = ({
     flexBasis,
     order,
     alignSelf,
-    theme: {
-        componentOverrides: { Flex },
-    },
 }: FlexItemPropsType) => {
-    let result = Flex.ItemRoot.base;
+    let result = css``;
 
     if (typeof flexGrow !== 'undefined') {
         result = css`
-            ${result}
-             flex-grow: ${flexGrow};
+            ${result};
+            flex-grow: ${flexGrow};
         `;
     }
 
     if (typeof flexShrink !== 'undefined') {
         result = css`
-            ${result}
-             flex-shrink: ${flexShrink};
+            ${result};
+            flex-shrink: ${flexShrink};
         `;
     }
 
     if (typeof flexBasis !== 'undefined') {
         result = css`
-            ${result}
-             flex-basis: ${flexBasis};
+            ${result};
+            flex-basis: ${flexBasis};
         `;
     }
 
     if (typeof order !== 'undefined') {
         result = css`
-            ${result}
-             order: ${order};
+            ${result};
+            order: ${order};
         `;
     }
 
     if (alignSelf) {
         result = css`
-            ${result}
-             align-self: ${alignSelf};
+            ${result};
+            align-self: ${alignSelf};
         `;
     }
 
@@ -111,10 +105,8 @@ export const FlexRoot = styled.div.withConfig({
     display: flex;
 
     ${flexRootStyle}
-    ${marginAttributes}
 `;
 
 export const FlexItemRoot = styled.div<FlexItemPropsType>`
     ${flexItemStyle}
-    ${marginAttributes}
 `;

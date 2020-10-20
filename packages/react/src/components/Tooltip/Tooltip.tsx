@@ -1,7 +1,6 @@
 import React, { FunctionComponent, ReactElement, useState } from 'react';
 import PropTypes from 'prop-types';
-import { useThemeOverride } from '../../utils/hooks';
-import { useTheme } from '../../styling';
+import { useComponentTheme } from '../../utils/hooks';
 
 import {
     useEventProxy,
@@ -13,8 +12,8 @@ import {
 import { TooltipRoot, TooltipArrow } from './style';
 import { TooltipPropsType } from './type';
 import { tooltipDefaultTheme } from './theme';
-
-const CLASS_PREFIX = 'Tooltip';
+import { consoleWarn } from '../../system/util/consoleWarn';
+import { TOOLTIP_CLASS_PREFIX } from './constants';
 
 export const Tooltip: FunctionComponent<TooltipPropsType> = ({
     className,
@@ -27,11 +26,10 @@ export const Tooltip: FunctionComponent<TooltipPropsType> = ({
     error,
     ...restProps
 }) => {
-    const theme = useTheme();
-    useThemeOverride(CLASS_PREFIX, theme, tooltipDefaultTheme);
+    const theme = useComponentTheme(TOOLTIP_CLASS_PREFIX, tooltipDefaultTheme);
 
     const classNameComponents = useTooltipClassNames(
-        CLASS_PREFIX,
+        TOOLTIP_CLASS_PREFIX,
         className,
         classNames,
         align,
@@ -50,6 +48,7 @@ export const Tooltip: FunctionComponent<TooltipPropsType> = ({
 
     const validChildren = validateChildren(children);
     if (!validChildren) {
+        consoleWarn('Tooltip component was attached to invalid children');
         return null;
     }
 
@@ -61,8 +60,8 @@ export const Tooltip: FunctionComponent<TooltipPropsType> = ({
                 onMouseOut: onMouseOutProxy,
             })}
             <TooltipRoot
-                theme={theme}
                 {...restProps}
+                theme={theme}
                 className={classNameComponents.Root}
                 styles={stylesOverride.Root}
                 dark={dark}

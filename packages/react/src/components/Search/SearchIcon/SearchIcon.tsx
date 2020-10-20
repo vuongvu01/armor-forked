@@ -7,8 +7,7 @@ import {
     SearchInputSearchIcon,
 } from './style';
 import { SearchIconPropsType } from './type';
-import { useTheme } from '../../../styling';
-import { useThemeOverride } from '../../../utils/hooks';
+import { useComponentTheme } from '../../../utils/hooks';
 import { SEARCH_ICON_CLASS_PREFIX } from './constants';
 import { useSearchIconClassName } from './utils';
 import { searchIconTheme } from './theme';
@@ -19,9 +18,7 @@ export const SearchIcon: FunctionComponent<SearchIconPropsType> = ({
     isLoading,
     disabled,
 }) => {
-    const theme = useTheme();
-
-    useThemeOverride(SEARCH_ICON_CLASS_PREFIX, theme, searchIconTheme);
+    const theme = useComponentTheme(SEARCH_ICON_CLASS_PREFIX, searchIconTheme);
 
     const classOverride = useSearchIconClassName(
         SEARCH_ICON_CLASS_PREFIX,

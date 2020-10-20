@@ -61,11 +61,11 @@ export const TableHeadCell: FunctionComponent<TableHeadCellPropsType> = forwardR
 
         return (
             <TableHeadCellRoot
-                theme={theme}
+                data-testid={tableHeadCellRootTestId}
                 {...restProps}
+                theme={theme}
                 className={classNameComponents.Root}
                 ref={ref}
-                data-testid={tableHeadCellRootTestId}
                 onClick={onRootClick}
                 sortingEnabled={sortingEnabled}
             >

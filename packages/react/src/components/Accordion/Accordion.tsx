@@ -9,8 +9,7 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 
-import { useThemeOverride } from '../../utils/hooks';
-import { useTheme } from '../../styling';
+import { useComponentTheme } from '../../utils/hooks';
 import { useAccordionClassName } from './utils';
 import { AccordionRoot } from './style';
 import { AccordionPropsType } from './type';
@@ -32,8 +31,12 @@ export const Accordion: FunctionComponent<AccordionPropsType> = forwardRef(
         },
         ref,
     ) {
+        const theme = useComponentTheme(
+            ACCORDION_CLASS_PREFIX,
+            accordionDefaultTheme,
+        );
+
         const [isExpanded, setIsExpanded] = useState(defaultExpanded);
-        const theme = useTheme();
 
         const classOverride = useAccordionClassName(
             ACCORDION_CLASS_PREFIX,
@@ -42,8 +45,6 @@ export const Accordion: FunctionComponent<AccordionPropsType> = forwardRef(
             disabled,
             isExpanded,
         );
-
-        useThemeOverride(ACCORDION_CLASS_PREFIX, theme, accordionDefaultTheme);
 
         const handleHeaderToggle = useCallback(
             (event?: MouseEvent<HTMLInputElement>) => {
@@ -78,12 +79,12 @@ export const Accordion: FunctionComponent<AccordionPropsType> = forwardRef(
         return (
             <AccordionContext.Provider value={contextValue}>
                 <AccordionRoot
-                    className={classOverride.Root}
                     data-testid={accordionRoot}
+                    {...restProps}
+                    className={classOverride.Root}
                     isExpanded={isExpanded}
                     ref={ref}
                     theme={theme}
-                    {...restProps}
                 >
                     {children}
                 </AccordionRoot>

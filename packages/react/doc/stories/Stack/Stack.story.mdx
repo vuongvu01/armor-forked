@@ -1,0 +1,255 @@
+import { Meta, Preview, Props, Story } from '@storybook/addon-docs/blocks';
+
+import { Stack, StackItem } from 'src/components';
+
+<Meta title="Components/Stack" component={Stack} />
+
+```js
+import { Stack, StackItem } from '@deliveryhero/armor';
+```
+
+## Default Layout
+
+<Preview>
+    <Story name="DefaultLayout" height="250px">
+        {() => {
+            const style1 = {
+                background: 'yellowgreen',
+                padding: '20px',
+                color: 'white',
+            };
+            const style2 = {
+                background: 'green',
+                padding: '20px',
+                color: 'white',
+            };
+            const style3 = {
+                background: 'darkseagreen',
+                padding: '20px',
+                color: 'white',
+            };
+            return (
+                <Stack>
+                    <StackItem>
+                        <div style={style1}>Item 1</div>
+                    </StackItem>
+                    <StackItem>
+                        <div style={style2}>Item 2</div>
+                    </StackItem>
+                    <StackItem>
+                        <div style={style3}>Item 3</div>
+                    </StackItem>
+                </Stack>
+            );
+        }}
+    </Story>
+</Preview>
+
+## Reverse Direction
+
+<Preview>
+    <Story name="ReverseDirection" height="250px">
+        {() => {
+            const style1 = {
+                background: 'yellowgreen',
+                padding: '20px',
+                color: 'white',
+            };
+            const style2 = {
+                background: 'green',
+                padding: '20px',
+                color: 'white',
+            };
+            const style3 = {
+                background: 'darkseagreen',
+                padding: '20px',
+                color: 'white',
+            };
+            return (
+                <Stack reverse>
+                    <StackItem>
+                        <div style={style1}>Item 1</div>
+                    </StackItem>
+                    <StackItem>
+                        <div style={style2}>Item 2</div>
+                    </StackItem>
+                    <StackItem>
+                        <div style={style3}>Item 3</div>
+                    </StackItem>
+                </Stack>
+            );
+        }}
+    </Story>
+</Preview>
+
+## Nested Stack
+
+<Preview>
+    <Story name="NestedStack" height="400px">
+        {() => {
+            const style1 = {
+                background: 'yellowgreen',
+                padding: '20px',
+                color: 'white',
+            };
+            const style2 = {
+                background: 'green',
+                padding: '20px',
+                color: 'white',
+            };
+            const style3 = {
+                background: 'darkseagreen',
+                padding: '20px',
+                color: 'white',
+            };
+            const nestedStyle1 = {
+                background: 'orange',
+                padding: '15px',
+                color: 'white',
+            };
+            const nestedStyle2 = {
+                background: 'orangered',
+                padding: '15px',
+                color: 'white',
+            };
+            const nestedStyle3 = {
+                background: 'mediumvioletred',
+                padding: '15px',
+                color: 'white',
+            };
+            return (
+                <Stack>
+                    <StackItem flexGrow={1}>
+                        <div style={style1}>Item 1</div>
+                    </StackItem>
+                    <StackItem flexGrow={1}>
+                        <div style={style2}>Item 2</div>
+                    </StackItem>
+                    <StackItem flexGrow={1}>
+                        <div style={{...style3, padding: '5px'}}>
+                            <Stack>
+                                <StackItem flexGrow={1}>
+                                    <div style={nestedStyle1}>
+                                        Nested Item 1
+                                    </div>
+                                </StackItem>
+                                <StackItem flexGrow={1}>
+                                    <div style={nestedStyle2}>
+                                        Nested Item 2
+                                    </div>
+                                </StackItem>
+                                <StackItem flexGrow={1}>
+                                    <div style={nestedStyle3}>
+                                        Nested Item 3
+                                    </div>
+                                </StackItem>
+                            </Stack>
+                        </div>
+                    </StackItem>
+                </Stack>
+            );
+        }}
+    </Story>
+</Preview>
+
+## Align Individual Stack Item
+
+<Preview>
+    <Story name="AlignStackItem" height="400px">
+        {() => {
+            const style1 = {
+                background: 'yellowgreen',
+                padding: '20px',
+                color: 'white',
+            };
+            const style2 = {
+                background: 'green',
+                padding: '20px',
+                color: 'white',
+            };
+            const style3 = {
+                background: 'darkseagreen',
+                padding: '20px',
+                color: 'white',
+            };
+            return (
+                <Stack alignItems="flex-start">
+                    <StackItem>
+                        <div style={style1}>
+                            Item 1 <br />
+                            Item 1 <br />
+                            Item 1 <br />
+                            Item 1 <br />
+                            Item 1 <br />
+                            Item 1 <br />
+                        </div>
+                    </StackItem>
+                    <StackItem>
+                        <div style={style3}>Item 2</div>
+                    </StackItem>
+                    <StackItem flexGrow={10}>
+                        <div style={style2}>Item 3</div>
+                    </StackItem>
+                    <StackItem alignSelf="flex-end">
+                        <div style={style3}>Last one at the bottom</div>
+                    </StackItem>
+                </Stack>
+            );
+        }}
+    </Story>
+</Preview>
+
+## Align All At Center
+
+<Preview>
+    <Story name="AlignAllAtCenter" height="400px">
+        {() => {
+            const style1 = {
+                background: 'yellowgreen',
+                padding: '20px',
+                color: 'white',
+            };
+            const style2 = {
+                background: 'green',
+                padding: '20px',
+                color: 'white',
+            };
+            const style3 = {
+                background: 'darkseagreen',
+                padding: '20px',
+                color: 'white',
+            };
+            return (
+                <Stack alignItems="center">
+                    <StackItem>
+                        <div style={style1}>
+                            Item 1 <br />
+                            Item 1 <br />
+                            Item 1 <br />
+                            Item 1 <br />
+                            Item 1 <br />
+                            Item 1 <br />
+                        </div>
+                    </StackItem>
+                    <StackItem>
+                        <div style={style3}>Item 2</div>
+                    </StackItem>
+                    <StackItem flexGrow={10}>
+                        <div style={style2}>Item 3</div>
+                    </StackItem>
+                    <StackItem>
+                        <div style={style3}>Item 4</div>
+                    </StackItem>
+                </Stack>
+            );
+        }}
+    </Story>
+</Preview>
+
+## Properties Stack
+
+<Props of={Stack} />
+
+## Properties StackItem
+
+<Props of={StackItem} />

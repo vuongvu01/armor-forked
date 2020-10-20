@@ -1,8 +1,7 @@
 import React, { FunctionComponent, forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
-import { useThemeOverride } from '../../utils/hooks';
-import { useTheme } from '../../styling';
+import { useComponentTheme } from '../../utils/hooks';
 import SelectorLabel from '../SelectorLabel';
 import { useCheckboxClassName } from './utils';
 import { CheckboxInput, CheckboxCheckmark, CheckboxRoot } from './style';
@@ -28,10 +27,11 @@ export const Checkbox: FunctionComponent<CheckboxPropsType> = forwardRef(
         },
         ref,
     ) {
-        const theme = useTheme();
+        const theme = useComponentTheme(
+            CHECKBOX_CLASS_PREFIX,
+            checkboxDefaultTheme,
+        );
         const id = generateId(propsId, checkboxIdPrefix);
-
-        useThemeOverride(CHECKBOX_CLASS_PREFIX, theme, checkboxDefaultTheme);
 
         const classOverride = useCheckboxClassName(
             CHECKBOX_CLASS_PREFIX,
@@ -47,11 +47,11 @@ export const Checkbox: FunctionComponent<CheckboxPropsType> = forwardRef(
 
         return (
             <CheckboxRoot
+                {...restProps}
                 className={classOverride.Root}
                 disabled={disabled}
                 theme={theme}
                 for={id}
-                {...restProps}
             >
                 <CheckboxInput
                     className={classOverride.Input}

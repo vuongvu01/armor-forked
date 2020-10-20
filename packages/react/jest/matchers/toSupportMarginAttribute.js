@@ -1,7 +1,7 @@
 const React = require('react');
 
 const { marginAttributesList } = require('../../src/system/attributes');
-const { SPACING_FACTOR } = require('../../src/styling/themes');
+const { SPACING_FACTOR } = require('../../src/styling/defaultThemeStructure');
 
 const marginAttributes = Object.keys(marginAttributesList);
 

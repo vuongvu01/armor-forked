@@ -7,15 +7,15 @@ import React, {
     useRef,
 } from 'react';
 
-import { useThemeOverride } from '../../../utils/hooks';
-import { useTheme } from '../../../styling';
+import { useComponentTheme } from '../../../utils/hooks';
 import {
+    AccordionHeaderExpansionIndicator,
     AccordionHeaderIcon,
     AccordionHeaderRoot,
     AccordionHeaderTypography,
 } from './style';
 import { AccordionHeaderPropsType } from './type';
-import { accordionDefaultTheme } from '../theme';
+import { accordionHeaderDefaultTheme } from './theme';
 import {
     ACCORDION_HEADER_CLASS_PREFIX,
     accordionHeaderIcon,
@@ -26,15 +26,19 @@ import { dropdownActionItem } from '../../Dropdown/constants';
 import { ExpansionIndicator } from '../../ExpansionIndicator';
 import AccordionContext from '../AccordionContext';
 import useAccordionHeaderClassName from './useAccordionHeaderClassName';
+import { useInternalRef } from '../../../utils';
 
 export const AccordionHeader: FunctionComponent<AccordionHeaderPropsType> = forwardRef(
     function AccordionHeader(
         { title, className, classNames, ...restProps },
         ref,
     ) {
+        const theme = useComponentTheme(
+            ACCORDION_HEADER_CLASS_PREFIX,
+            accordionHeaderDefaultTheme,
+        );
         const { disabled, isExpanded, onToggle } = useContext(AccordionContext);
 
-        const theme = useTheme();
         const internalInputRef = useRef(null);
 
         const classOverride = useAccordionHeaderClassName(
@@ -45,11 +49,7 @@ export const AccordionHeader: FunctionComponent<AccordionHeaderPropsType> = forw
             isExpanded,
         );
 
-        useEffect(() => {
-            if (ref && internalInputRef) {
-                Object.assign(ref, internalInputRef);
-            }
-        }, [internalInputRef]);
+        useInternalRef(ref, internalInputRef);
 
         const enterKeyHandler = useCallback(
             (event: KeyboardEvent) => {
@@ -76,23 +76,17 @@ export const AccordionHeader: FunctionComponent<AccordionHeaderPropsType> = forw
             return () => {};
         }, [disabled, isExpanded]);
 
-        useThemeOverride(
-            ACCORDION_HEADER_CLASS_PREFIX,
-            theme,
-            accordionDefaultTheme,
-        );
-
         return title ? (
             <AccordionHeaderRoot
-                className={classOverride.Header}
                 data-testid={accordionHeaderRoot}
+                {...restProps}
+                className={classOverride.Header}
                 disabled={disabled}
                 isExpanded={isExpanded}
                 onClick={onToggle}
                 ref={internalInputRef}
                 tabIndex={0}
                 theme={theme}
-                {...restProps}
             >
                 <AccordionHeaderTypography
                     className={classOverride.HeaderTitle}
@@ -111,8 +105,8 @@ export const AccordionHeader: FunctionComponent<AccordionHeaderPropsType> = forw
                     isExpanded={isExpanded}
                     theme={theme}
                 >
-                    <ExpansionIndicator
-                        className={classOverride.Icon}
+                    <AccordionHeaderExpansionIndicator
+                        className={classOverride.ExpansionIndicator}
                         disabled={disabled}
                         isExpanded={isExpanded}
                         onClick={() => {}}

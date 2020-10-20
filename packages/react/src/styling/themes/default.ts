@@ -1,3 +1,3 @@
-import { makeTheme } from '../make/make-theme';
+import { makeTheme } from '../theme/makeTheme';
 
-export const defaultTheme = makeTheme({});
+export const makeDefaultTheme = () => makeTheme();

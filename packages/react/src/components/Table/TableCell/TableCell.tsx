@@ -28,11 +28,11 @@ export const TableCell: FunctionComponent<TableCellPropsType> = forwardRef(
 
         return (
             <TableCellStyle
-                theme={theme}
+                data-testid={tableCellRootTestId}
                 {...restProps}
+                theme={theme}
                 isHeader={isHeader}
                 className={classNameComponents.Root}
-                data-testid={tableCellRootTestId}
             >
                 {(forwardedProps: TableCellRootPropsType) => (
                     <TableCellRoot {...forwardedProps} ref={ref}>

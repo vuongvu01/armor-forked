@@ -36,7 +36,7 @@ export const sideSheetDefaultTheme = {
         },
         focused: {
             backgroundColor: '$color.neutral.02',
-            borderRadius: '$figure.borderRadius.pill',
+            borderRadius: '$shape.borderRadius.pill',
         },
     },
 };

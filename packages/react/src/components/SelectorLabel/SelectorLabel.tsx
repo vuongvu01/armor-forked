@@ -2,14 +2,12 @@ import React, { FunctionComponent } from 'react';
 
 import { Label } from './style';
 import { SelectorLabelPropsType } from './type';
-import { useTheme } from '../../styling';
-import { useThemeOverride } from '../../utils/hooks';
+import { useComponentTheme } from '../../utils/hooks';
 import selectorLabelDefaultTheme from './theme';
 import { useSelectorLabelClassName } from './utils';
 import { RADIO_CLASS_PREFIX } from '../Radio/constants';
 import { Typography } from '../Typography';
-
-const SELECTOR_LABEL_CLASS_PREFIX = 'SelectorLabel';
+import { SELECTOR_LABEL_CLASS_PREFIX } from './constants';
 
 const SelectorLabel: FunctionComponent<SelectorLabelPropsType> = ({
     checked,
@@ -20,10 +18,8 @@ const SelectorLabel: FunctionComponent<SelectorLabelPropsType> = ({
     disabled,
     typographyProps,
 }) => {
-    const theme = useTheme();
-    useThemeOverride(
+    const theme = useComponentTheme(
         SELECTOR_LABEL_CLASS_PREFIX,
-        theme,
         selectorLabelDefaultTheme,
     );
 

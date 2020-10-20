@@ -14,6 +14,9 @@ import {
 
 export { default as generateId } from './generateId';
 export { default as getElementName } from './getElementName';
+export { default as useDetectClickOutsideComponent } from './useDetectClickOutsideComponent';
+export { default as useDetectEscapeKeyPressed } from './useDetectEscapeKeyPressed';
+export * from './useInternalRef';
 
 /**
  * @internal

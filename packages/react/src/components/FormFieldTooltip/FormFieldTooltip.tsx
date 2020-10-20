@@ -1,7 +1,6 @@
 import React, { FunctionComponent, forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useThemeOverride } from '../../utils/hooks';
-import { useTheme } from '../../styling';
+import { useComponentTheme } from '../../utils/hooks';
 
 import {
     useFormFieldTooltipClassNames,
@@ -10,19 +9,20 @@ import {
 import { FormFieldTooltipRoot, FormFieldTooltipIndicator } from './style';
 import { FormFieldTooltipPropsType } from './type';
 import { formFieldTooltipDefaultTheme } from './theme';
-
-const CLASS_PREFIX = 'FormFieldTooltip';
+import { FORM_FIELD_TOOLTIP_CLASS_PREFIX } from './constants';
 
 export const FormFieldTooltip: FunctionComponent<FormFieldTooltipPropsType> = forwardRef(
     function FormFieldTooltip(
         { className, classNames, styles, children, visible, ...restProps },
         ref,
     ) {
-        const theme = useTheme();
-        useThemeOverride(CLASS_PREFIX, theme, formFieldTooltipDefaultTheme);
+        const theme = useComponentTheme(
+            FORM_FIELD_TOOLTIP_CLASS_PREFIX,
+            formFieldTooltipDefaultTheme,
+        );
 
         const classNameComponents = useFormFieldTooltipClassNames(
-            CLASS_PREFIX,
+            FORM_FIELD_TOOLTIP_CLASS_PREFIX,
             className,
             classNames,
             visible,
@@ -31,8 +31,8 @@ export const FormFieldTooltip: FunctionComponent<FormFieldTooltipPropsType> = fo
 
         return (
             <FormFieldTooltipRoot
-                theme={theme}
                 {...restProps}
+                theme={theme}
                 align="top-end"
                 className={classNameComponents.Root}
                 tooltipStyles={stylesOverride.Root}

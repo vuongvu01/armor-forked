@@ -2,8 +2,8 @@ const React = require('react');
 
 const { renderJSON } = require('../../src/helpers/renderJSON');
 const {
-    defaultThemeDeclaration,
-} = require('../../src/styling/themes/defaultThemeDeclaration');
+    defaultThemeStructure,
+} = require('../../src/styling/defaultThemeStructure');
 
 expect.extend({
     toSupportColorAttributes(Component) {
@@ -25,11 +25,11 @@ expect.extend({
         });
         expect(tree).toHaveStyleRule(
             'color',
-            defaultThemeDeclaration.color.primary.main,
+            defaultThemeStructure.color.primary.main,
         );
         expect(tree).toHaveStyleRule(
             'color',
-            defaultThemeDeclaration.color.neutral['02'],
+            defaultThemeStructure.color.neutral['02'],
             {
                 modifier: ':hover',
             },

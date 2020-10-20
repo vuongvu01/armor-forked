@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
-import { useThemeOverride } from '../../utils/hooks';
-import { useTheme } from '../../styling';
+import { useComponentTheme } from '../../utils/hooks';
 
 import {
     useMessageActionClassNames,
@@ -10,8 +9,7 @@ import {
 import { MessageActionStyle } from './style';
 import { MessageActionPropsType } from './type';
 import { messageActionDefaultTheme } from './theme';
-
-const CLASS_PREFIX = 'MessageAction';
+import { MESSAGE_ACTION_CLASS_PREFIX } from './constants';
 
 export const MessageAction: FunctionComponent<MessageActionPropsType> = ({
     className,
@@ -22,11 +20,13 @@ export const MessageAction: FunctionComponent<MessageActionPropsType> = ({
     children,
     ...restProps
 }) => {
-    const theme = useTheme();
-    useThemeOverride(CLASS_PREFIX, theme, messageActionDefaultTheme);
+    const theme = useComponentTheme(
+        MESSAGE_ACTION_CLASS_PREFIX,
+        messageActionDefaultTheme,
+    );
 
     const classNameComponents = useMessageActionClassNames(
-        CLASS_PREFIX,
+        MESSAGE_ACTION_CLASS_PREFIX,
         className,
         classNames,
         useMessageColor,
@@ -35,8 +35,8 @@ export const MessageAction: FunctionComponent<MessageActionPropsType> = ({
 
     return (
         <MessageActionStyle
-            theme={theme}
             {...restProps}
+            theme={theme}
             className={classNameComponents.Root}
             styles={stylesOverride.Root}
         >

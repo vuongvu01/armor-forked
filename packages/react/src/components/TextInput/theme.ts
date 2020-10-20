@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/camelcase */
 import { colorGrey00, colorGrey05 } from '../../tokens';
 
-export const TextInputDefaultTheme = {
+export const textInputDefaultTheme = {
     Root: {
         base: {
             fontFamily: '$typography.sectionTitle.fontFamily',
@@ -9,7 +9,7 @@ export const TextInputDefaultTheme = {
             letterSpacing: '$typography.sectionTitle.letterSpacing',
             lineHeight: '$typography.sectionTitle.lineHeight',
             borderColor: '$color.neutral.04',
-            borderRadius: '$figure.borderRadius.soft',
+            borderRadius: '$shape.borderRadius.soft',
             backgroundColor: '$color.neutral.00',
         },
         outlined: {
@@ -32,7 +32,7 @@ export const TextInputDefaultTheme = {
             paddingLeft: 4,
             paddingRight: 4,
             backgroundColor: '$color.neutral.00',
-            borderRadius: '$figure.borderRadius.soft',
+            borderRadius: '$shape.borderRadius.soft',
 
             '&::placeholder': {
                 color: '$color.neutral.05',

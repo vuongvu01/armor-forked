@@ -1,10 +1,9 @@
 import React, { FunctionComponent, forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
-import { useThemeOverride } from '../../utils/hooks';
-import { useTheme } from '../../styling';
+import { useComponentTheme } from '../../utils/hooks';
 import { useTabClassName } from './utils';
-import { TabContainer, TabLabel } from './style';
+import { TabRoot, TabLabel, TabLabelContainer } from './style';
 import { TabPropsType } from './type';
 import { tabDefaultTheme } from './theme';
 import { TAB_CLASS_PREFIX } from './constants';
@@ -24,12 +23,10 @@ export const Tab: FunctionComponent<TabPropsType> = forwardRef(function Tab(
     },
     ref,
 ) {
-    const theme = useTheme();
+    const theme = useComponentTheme(TAB_CLASS_PREFIX, tabDefaultTheme);
     const matchingContentViewValue =
         typeof value !== 'undefined' ? value : tabIndex;
     const isActive = currentlyActiveTab === tabIndex;
-
-    useThemeOverride(TAB_CLASS_PREFIX, theme, tabDefaultTheme);
 
     const classOverride = useTabClassName(
         TAB_CLASS_PREFIX,
@@ -48,24 +45,31 @@ export const Tab: FunctionComponent<TabPropsType> = forwardRef(function Tab(
     };
 
     return (
-        <TabContainer
+        <TabRoot
+            {...restProps}
             disabled={disabled}
             isActive={isActive}
             wide={wide}
+            className={classOverride.Root}
             theme={theme}
-            {...restProps}
         >
-            <TabLabel
-                className={classOverride.Label}
-                disabled={disabled}
-                isActive={isActive}
-                onClick={handleSelect}
-                ref={ref}
+            <TabLabelContainer
+                className={classOverride.LabelContainer}
                 theme={theme}
+                disabled={disabled}
             >
-                {label}
-            </TabLabel>
-        </TabContainer>
+                <TabLabel
+                    className={classOverride.Label}
+                    disabled={disabled}
+                    isActive={isActive}
+                    onClick={handleSelect}
+                    ref={ref}
+                    theme={theme}
+                >
+                    {label}
+                </TabLabel>
+            </TabLabelContainer>
+        </TabRoot>
     );
 });
 

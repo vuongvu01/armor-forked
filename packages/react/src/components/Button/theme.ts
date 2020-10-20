@@ -38,7 +38,7 @@ export const buttonDefaultTheme = {
             fontSize: '$typography.labelMedium.fontSize',
             fontFamily: '$typography.body.fontFamily',
             lineHeight: '$typography.labelMedium.lineHeight',
-            borderRadius: '$figure.borderRadius.soft',
+            borderRadius: '$shape.borderRadius.soft',
             backgroundColor: 'transparent',
             paddingLeft: componentSpacing04,
             paddingRight: componentSpacing04,
@@ -194,7 +194,7 @@ export const buttonDefaultTheme = {
     },
     // Content: {
     //     base: {
-    //         borderRadius: '$figure.borderRadius.soft',
+    //         borderRadius: '$shape.borderRadius.soft',
     //         paddingLeft: componentSpacing04,
     //         paddingRight: componentSpacing04,
     //         paddingTop: componentSpacing03,
