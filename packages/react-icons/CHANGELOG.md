@@ -1,3 +1,11 @@
+# @deliveryhero/armor-icons [1.2.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.1.1...@deliveryhero/armor-icons@1.2.0) (2020-10-20)
+
+
+### Features
+
+* **header navigation:** scaffold [LD-193] ([#254](https://github.com/deliveryhero/armor/issues/254)) ([3c6019d](https://github.com/deliveryhero/armor/commit/3c6019dc84ffed6473da839a8bab749135d40030))
+* **theme:** Move theme to a subspace [LD-251] ([#264](https://github.com/deliveryhero/armor/issues/264)) ([5db899b](https://github.com/deliveryhero/armor/commit/5db899b53b40c6c285cd4469985f95c1269bdec3))
+
 ## @deliveryhero/armor-icons [1.1.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.1.0...@deliveryhero/armor-icons@1.1.1) (2020-10-06)
 
 
