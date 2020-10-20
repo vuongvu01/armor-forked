@@ -1,3 +1,27 @@
+# @deliveryhero/armor [1.17.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.16.0...@deliveryhero/armor@1.17.0) (2020-10-20)
+
+
+### Bug Fixes
+
+* **search:** list appears on proceeding with character input ([#267](https://github.com/deliveryhero/armor/issues/267)) ([1f59d12](https://github.com/deliveryhero/armor/commit/1f59d12d3143100eeba40cad84b045411f0202f7))
+* **tabs:** change styles for active tabs ([#268](https://github.com/deliveryhero/armor/issues/268)) ([7adf0d3](https://github.com/deliveryhero/armor/commit/7adf0d333fa7ed0b36cba78a51b71bb9478b5c04))
+* **tabview:** consistent hook sequence ([#266](https://github.com/deliveryhero/armor/issues/266)) ([3e27bf1](https://github.com/deliveryhero/armor/commit/3e27bf1da4894f55cf14f0ebf699a799fbf236fd))
+
+
+### Features
+
+* **breakpoints:** style files support ([#269](https://github.com/deliveryhero/armor/issues/269)) ([b8ec2a6](https://github.com/deliveryhero/armor/commit/b8ec2a67d49ed391f5ca3364dd00ccfa0b224dfa))
+* **header navigation:** scaffold [LD-193] ([#254](https://github.com/deliveryhero/armor/issues/254)) ([3c6019d](https://github.com/deliveryhero/armor/commit/3c6019dc84ffed6473da839a8bab749135d40030))
+* **theme:** Move theme to a subspace [LD-251] ([#264](https://github.com/deliveryhero/armor/issues/264)) ([5db899b](https://github.com/deliveryhero/armor/commit/5db899b53b40c6c285cd4469985f95c1269bdec3))
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor-icons:** upgraded to 1.2.0
+
 # @deliveryhero/armor [1.16.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.15.0...@deliveryhero/armor@1.16.0) (2020-10-06)
 
 
