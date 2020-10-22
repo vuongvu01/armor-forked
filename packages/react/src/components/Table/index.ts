@@ -3,10 +3,12 @@
  */
 
 export * from './Table';
-export * from './TableHead';
-export * from './TableHeadCell';
+export * from './TableAction';
 export * from './TableBody';
-export * from './TableFoot';
-export * from './TableRow';
 export * from './TableCell';
 export * from './TableCellLabel';
+export * from './TableCheckboxCell';
+export * from './TableFoot';
+export * from './TableHead';
+export * from './TableHeadCell';
+export * from './TableRow';
