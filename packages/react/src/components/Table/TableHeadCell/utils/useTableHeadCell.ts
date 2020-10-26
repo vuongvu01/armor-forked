@@ -1,27 +1,27 @@
-import { useCallback, useContext, useMemo, MouseEvent } from 'react';
-import { TableRowSortOrderContext } from '../../utils/TableRowSortOrderContext';
-import { TableHeadCellPropsType } from '../type';
+import { useCallback, useMemo, MouseEvent } from 'react';
+import { TableHeadCellPropsType, TableHeadCellRowSortOrderType } from '../type';
 import { TABLE_HEAD_CELL_SORTING_TYPE_NUMERICAL } from '../constants';
 import {
     TABLE_SORTING_DIRECTION_ASC,
     TABLE_SORTING_DIRECTION_DESC,
 } from '../../constants';
-import { TableRowSortOrderType } from '../../type';
-import { TableRowSortOrderContextValueType } from '../../utils/type';
 
 export const useTableHeadCell = ({
     sortable,
     columnId,
     onClick,
     sortType,
+    rowSortOrder,
+    onRowSortOrderChange,
 }: Pick<
     TableHeadCellPropsType,
-    'sortable' | 'columnId' | 'onClick' | 'sortType'
+    | 'sortable'
+    | 'columnId'
+    | 'onClick'
+    | 'sortType'
+    | 'rowSortOrder'
+    | 'onRowSortOrderChange'
 >) => {
-    const { rowSortOrder, onRowSortOrderChange } = useContext<
-        TableRowSortOrderContextValueType
-    >(TableRowSortOrderContext);
-
     const sortingEnabled = !!(sortable && columnId);
     const [isSelected, isAscending, isDescending] = useMemo(() => {
         if (!sortable || !rowSortOrder || !rowSortOrder.length) {
@@ -70,7 +70,7 @@ export const useTableHeadCell = ({
                 direction = rowSortOrder[0][1];
             }
 
-            let nextOrder: TableRowSortOrderType = [];
+            let nextOrder: TableHeadCellRowSortOrderType = [];
 
             if (columnId) {
                 // todo: support sorting by several columns

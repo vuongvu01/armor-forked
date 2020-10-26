@@ -1,6 +1,13 @@
 import { ThemeInputType } from '../type';
 import { ScalarType } from '../../type';
-import { spacing } from '../../system/mixins/spacing';
+
+const spacing = (value: ScalarType = 1, spacingFactor = 1) => {
+    if (typeof value === 'string') {
+        return value;
+    }
+
+    return `${value * spacingFactor}px`;
+};
 
 export const makeSpacing = (theme: ThemeInputType) => {
     if (typeof theme.spacing === 'function') {

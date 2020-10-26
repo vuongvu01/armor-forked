@@ -1,9 +1,12 @@
-import { ScalarType } from '../../type';
+import { ObjectLiteralType, ScalarType } from '../../type';
+import { ThemeType } from '../../styling';
 
-export const spacing = (value: ScalarType = 1, spacingFactor = 1) => {
-    if (typeof value === 'string') {
-        return value;
+export const spacing = (value: ScalarType = 1) => ({
+    theme,
+}: ObjectLiteralType & { theme: ThemeType }) => {
+    if (theme.armor) {
+        return theme.armor.spacing(value);
     }
 
-    return `${value * spacingFactor}px`;
+    return theme.spacing(value);
 };

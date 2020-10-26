@@ -44,6 +44,7 @@ export const Button: FunctionComponent<ButtonPropsType> = forwardRef(
             danger,
         );
 
+        // todo: forward only className here, it will be more efficient and neat
         return (
             <ButtonStyle
                 {...restProps}

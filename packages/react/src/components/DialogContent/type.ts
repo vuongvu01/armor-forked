@@ -8,6 +8,7 @@ import {
 } from '../type';
 
 type DialogContentEffectivePropsType = Indexed<{
+    enableVerticalScroll?: boolean;
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLDivElement>; // includes all HTML Div attributes

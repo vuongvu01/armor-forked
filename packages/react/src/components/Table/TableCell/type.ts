@@ -1,6 +1,6 @@
 import { HTMLAttributes } from 'react';
 import { StylePropsType, PropsWithNodeStylePropsType } from '../../type';
-import { Indexed, ScalarType } from '../../../type';
+import { Indexed } from '../../../type';
 import {
     ColorAttributesType,
     HeightAttributesType,
@@ -8,12 +8,14 @@ import {
     WidthAttributesType,
 } from '../../../system/attributes';
 
+export type TableCellStickyAlignment = 'left' | 'right';
+export type TableCellStickyOffset = number;
+
 type TableCellEffectivePropsType = Indexed<{
-    stickyLeft?: boolean;
-    stickyLeftOffset?: ScalarType;
-    stickyRight?: boolean;
     isHeader?: boolean;
     stickyTop?: boolean;
+    stickyAlignment?: TableCellStickyAlignment;
+    stickyOffset?: TableCellStickyOffset;
     stickyVisible?: boolean;
     stickyShadowVisible?: boolean;
     disabled?: boolean;

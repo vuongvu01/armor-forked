@@ -8,7 +8,6 @@ import { heightAttributes } from '../../../system/attributes';
 const propertyList = {
     isHeader: true,
     rowId: true,
-    rowSelectionEnabled: true,
 } as ObjectLiteralType;
 
 const getRootBaseStyle = ({ theme }: TableRowRootPropsType) =>

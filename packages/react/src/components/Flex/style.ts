@@ -1,6 +1,10 @@
 import styled, { css } from 'styled-components';
 
-import { marginAttributes } from '../../system/attributes';
+import {
+    marginAttributes,
+    paddingAttributes,
+    sizeAttributes,
+} from '../../system/attributes';
 import { shouldForwardProp } from '../../utils';
 import { FlexItemPropsType, FlexRootPropsType } from './type';
 import { ObjectLiteralType } from '../../type';
@@ -105,8 +109,11 @@ export const FlexRoot = styled.div.withConfig({
     display: flex;
 
     ${flexRootStyle}
+    ${sizeAttributes}
+    ${marginAttributes}
 `;
 
 export const FlexItemRoot = styled.div<FlexItemPropsType>`
     ${flexItemStyle}
+    ${paddingAttributes}
 `;

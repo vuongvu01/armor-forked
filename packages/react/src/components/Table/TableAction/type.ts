@@ -1,12 +1,16 @@
 import { HTMLAttributes } from 'react';
 import { StylePropsType, PropsWithNodeStylePropsType } from '../../type';
-import { MarginAttributesType } from '../../../system/attributes';
+import {
+    MarginAttributesType,
+    PaddingAttributesType,
+} from '../../../system/attributes';
 import { Indexed } from '../../../type';
 
 type TableActionEffectivePropsType = Indexed<{
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
+    PaddingAttributesType &
     MarginAttributesType;
 
 /* TableAction component prop type */

@@ -8,18 +8,10 @@ import { TableRowPropsType } from './type';
 import { tableRowDefaultTheme } from './theme';
 import { tableRowRootTestId, TABLE_ROW_CLASS_PREFIX } from './constants';
 import { useTableRow } from './utils/useTableRow';
-import { TableCheckboxCell } from '../TableCheckboxCell';
-import {
-    CHECKBOX_CHECK_TYPE_DASH,
-    CHECKBOX_CHECK_TYPE_TICK,
-} from '../../Checkbox';
 import { TableRowCells } from './TableRowCells';
 
 export const TableRow: FunctionComponent<TableRowPropsType> = forwardRef(
-    function TableRow(
-        { className, classNames, rowId, children, ...restProps },
-        ref,
-    ) {
+    function TableRow({ className, classNames, children, ...restProps }, ref) {
         const theme = useComponentTheme(
             TABLE_ROW_CLASS_PREFIX,
             tableRowDefaultTheme,
@@ -34,16 +26,10 @@ export const TableRow: FunctionComponent<TableRowPropsType> = forwardRef(
             isHeader,
             stickyTop,
             stickyTopVisible,
-            stickyLeftColumn,
-            stickyRightColumn,
+            stickyColumns,
             stickyLeftColumnVisible,
             stickyRightColumnVisible,
-            rowSelectionEnabled,
-            rowSelected,
-            onSelectorCellClick,
-            someRowsSelected,
-            allRowsSelected,
-        } = useTableRow({ rowId });
+        } = useTableRow();
 
         return (
             <TableRowRoot
@@ -53,40 +39,14 @@ export const TableRow: FunctionComponent<TableRowPropsType> = forwardRef(
                 className={classNameComponents.Root}
                 ref={ref}
                 isHeader={isHeader}
-                rowSelectionEnabled={rowSelectionEnabled}
             >
-                {rowSelectionEnabled && (
-                    <TableCheckboxCell
-                        stickyTop={stickyTop}
-                        stickyVisible={
-                            stickyTopVisible || stickyLeftColumnVisible
-                        }
-                        stickyShadowVisible={stickyTop}
-                        stickyLeft={stickyLeftColumn}
-                        checked={
-                            isHeader
-                                ? someRowsSelected || allRowsSelected
-                                : rowSelected
-                        }
-                        checkedIcon={
-                            !isHeader || allRowsSelected
-                                ? CHECKBOX_CHECK_TYPE_TICK
-                                : CHECKBOX_CHECK_TYPE_DASH
-                        }
-                        isHeader={isHeader}
-                        onClick={onSelectorCellClick}
-                        data-rowid={rowId}
-                    />
-                )}
                 <TableRowCells
-                    stickyLeftColumn={stickyLeftColumn}
-                    stickyRightColumn={stickyRightColumn}
+                    stickyColumns={stickyColumns}
                     stickyTopVisible={stickyTopVisible}
                     stickyLeftColumnVisible={stickyLeftColumnVisible}
                     stickyRightColumnVisible={stickyRightColumnVisible}
                     stickyTop={stickyTop}
                     isHeader={isHeader}
-                    rowSelectionEnabled={rowSelectionEnabled}
                 >
                     {children}
                 </TableRowCells>

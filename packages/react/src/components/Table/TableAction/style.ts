@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 import { TableActionRootPropsType } from './type';
-import { marginAttributes } from '../../../system/attributes';
+import {
+    marginAttributes,
+    paddingAttributes,
+} from '../../../system/attributes';
 import { ObjectLiteralType } from '../../../type';
 import { shouldForwardProp } from '../../../utils';
 import { transitionDurationInSec } from '../../../constants';
@@ -23,4 +26,5 @@ export const TableActionRoot = styled.div.withConfig({
 
     ${getRootBaseStyle}
     ${marginAttributes}
+    ${paddingAttributes}
 `;

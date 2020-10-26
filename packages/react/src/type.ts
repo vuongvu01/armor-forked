@@ -6,6 +6,10 @@ export type ObjectLiteralType<P = any> = {
     [k: string]: P;
 };
 
+export type ArrayLikeType<P = any> = {
+    [k: number]: P;
+};
+
 export type ReturnEmptyStringFunctionType = () => string;
 
 export type CSSChunkType =

@@ -222,8 +222,10 @@ import { Table, TableHead, TableBody, TableRow, TableCell, TableCellLabel, Table
 <Preview>
     <Story name="Sticky side columns" height="300px">
         <Table 
-            stickyLeftColumn
-            stickyRightColumn
+            stickyColumns={[
+                { index: 0, alignment: 'left' },
+                { index: 11, alignment: 'right' },
+            ]}
             horizontalScroll
         >
             <TableHead>
@@ -332,140 +334,6 @@ import { Table, TableHead, TableBody, TableRow, TableCell, TableCellLabel, Table
                 </TableRow>
             </TableBody>
         </Table>
-    </Story>
-</Preview>
-
-## Selectable rows
-
-<Preview>
-    <Story name="Selectable rows" height="300px">
-        {() => {
-            const rowIds = useMemo(() => ['a', 'b', 'c'], []);
-            const [selectedRowIds, setSelectedRowIds] = useState(['b']);
-        
-            return (
-                <Table rowIds={rowIds} selectedRowIds={selectedRowIds} onRowSelectionChange={setSelectedRowIds}>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>Food Companies</TableCell>
-                            <TableCell>Scheme ID</TableCell>
-                            <TableCell>City</TableCell>
-                            <TableCell>Full Name</TableCell>
-                            <TableCell>ID</TableCell>
-                            <TableCell>Phone number</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        <TableRow rowId="a">
-                            <TableCell>Kitchen Garden POS</TableCell>
-                            <TableCell>Scheme B</TableCell>
-                            <TableCell>Kano</TableCell>
-                            <TableCell>Slavcho Karbashewski</TableCell>
-                            <TableCell>42</TableCell>
-                            <TableCell>695-615-8635</TableCell>
-                        </TableRow>
-                        <TableRow rowId="b">
-                            <TableCell>KFC HK</TableCell>
-                            <TableCell>Scheme F</TableCell>
-                            <TableCell>Gothenburg</TableCell>
-                            <TableCell>Emlen Beaver</TableCell>
-                            <TableCell>46</TableCell>
-                            <TableCell>998-703-1496</TableCell>
-                        </TableRow>
-                        <TableRow rowId="c">
-                            <TableCell>Foodstory</TableCell>
-                            <TableCell>Scheme E</TableCell>
-                            <TableCell>Xian</TableCell>
-                            <TableCell>Akumjeli Akuchi</TableCell>
-                            <TableCell>26</TableCell>
-                            <TableCell>150-204-0817</TableCell>
-                        </TableRow>
-                    </TableBody>
-                </Table>
-            );
-        }}
-    </Story>
-</Preview>
-
-## Selectable rows and sticky left column
-
-<Preview>
-    <Story name="Selectable rows and sticky left column" height="300px">
-        {() => {
-            const rowIds = useMemo(() => ['a', 'b', 'c'], []);
-            const [selectedRowIds, setSelectedRowIds] = useState(['b']);
-        
-            return (
-                <Table 
-                    rowIds={rowIds}
-                    selectedRowIds={selectedRowIds}
-                    onRowSelectionChange={setSelectedRowIds}
-                    horizontalScroll
-                    stickyLeftColumn
-                >
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>Food Companies</TableCell>
-                            <TableCell>Scheme ID</TableCell>
-                            <TableCell>City</TableCell>
-                            <TableCell>Full Name</TableCell>
-                            <TableCell>ID</TableCell>
-                            <TableCell>Phone number</TableCell>
-                            <TableCell>Food Companies</TableCell>
-                            <TableCell>Scheme ID</TableCell>
-                            <TableCell>City</TableCell>
-                            <TableCell>Full Name</TableCell>
-                            <TableCell>ID</TableCell>
-                            <TableCell>Phone number</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        <TableRow rowId="a">
-                            <TableCell>Kitchen Garden POS</TableCell>
-                            <TableCell>Scheme B</TableCell>
-                            <TableCell>Kano</TableCell>
-                            <TableCell>Slavcho Karbashewski</TableCell>
-                            <TableCell>42</TableCell>
-                            <TableCell>695-615-8635</TableCell>
-                            <TableCell>Kitchen Garden POS</TableCell>
-                            <TableCell>Scheme B</TableCell>
-                            <TableCell>Kano</TableCell>
-                            <TableCell>Slavcho Karbashewski</TableCell>
-                            <TableCell>42</TableCell>
-                            <TableCell>695-615-8635</TableCell>
-                        </TableRow>
-                        <TableRow rowId="b">
-                            <TableCell>KFC HK</TableCell>
-                            <TableCell>Scheme F</TableCell>
-                            <TableCell>Gothenburg</TableCell>
-                            <TableCell>Emlen Beaver</TableCell>
-                            <TableCell>46</TableCell>
-                            <TableCell>998-703-1496</TableCell>
-                            <TableCell>KFC HK</TableCell>
-                            <TableCell>Scheme F</TableCell>
-                            <TableCell>Gothenburg</TableCell>
-                            <TableCell>Emlen Beaver</TableCell>
-                            <TableCell>46</TableCell>
-                            <TableCell>998-703-1496</TableCell>
-                        </TableRow>
-                        <TableRow rowId="c">
-                            <TableCell>Foodstory</TableCell>
-                            <TableCell>Scheme E</TableCell>
-                            <TableCell>Xian</TableCell>
-                            <TableCell>Akumjeli Akuchi</TableCell>
-                            <TableCell>26</TableCell>
-                            <TableCell>150-204-0817</TableCell>
-                            <TableCell>Foodstory</TableCell>
-                            <TableCell>Scheme E</TableCell>
-                            <TableCell>Xian</TableCell>
-                            <TableCell>Akumjeli Akuchi</TableCell>
-                            <TableCell>26</TableCell>
-                            <TableCell>150-204-0817</TableCell>
-                        </TableRow>
-                    </TableBody>
-                </Table>
-            );
-        }}
     </Story>
 </Preview>
 

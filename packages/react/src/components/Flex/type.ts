@@ -1,6 +1,10 @@
 import { HTMLAttributes } from 'react';
 
-import { MarginAttributesType } from '../../system/attributes';
+import {
+    MarginAttributesType,
+    PaddingAttributesType,
+    SizeAttributesType,
+} from '../../system/attributes';
 import { Indexed } from '../../type';
 import { ClassNamesType, NodeStylePropsType } from '../type';
 
@@ -55,6 +59,7 @@ type FlexEffectivePropsType = Indexed<{
     flexWrap?: WrapType;
 }> &
     HTMLAttributes<HTMLElement> &
+    SizeAttributesType &
     MarginAttributesType;
 
 type FlexItemEffectivePropsType = Indexed<{
@@ -65,7 +70,7 @@ type FlexItemEffectivePropsType = Indexed<{
     alignSelf?: AlignSelfType;
 }> &
     HTMLAttributes<HTMLElement> &
-    MarginAttributesType;
+    PaddingAttributesType;
 
 export type FlexPropsType = FlexItemEffectivePropsType;
 

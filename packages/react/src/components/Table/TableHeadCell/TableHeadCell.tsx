@@ -30,7 +30,9 @@ export const TableHeadCell: FunctionComponent<TableHeadCellPropsType> = forwardR
             columnId,
             sortable,
             onClick,
-            sortType,
+            sortType, // todo: rename to rowSortType
+            rowSortOrder,
+            onRowSortOrderChange,
             ...restProps
         },
         ref,
@@ -57,6 +59,8 @@ export const TableHeadCell: FunctionComponent<TableHeadCellPropsType> = forwardR
             columnId,
             onClick,
             sortType,
+            rowSortOrder,
+            onRowSortOrderChange,
         });
 
         return (

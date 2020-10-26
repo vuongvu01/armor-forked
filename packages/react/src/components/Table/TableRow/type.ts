@@ -1,11 +1,10 @@
 import { HTMLAttributes } from 'react';
 import { StylePropsType, PropsWithNodeStylePropsType } from '../../type';
-import { Indexed, ScalarType } from '../../../type';
+import { Indexed } from '../../../type';
 import { UseTableRowType } from './utils/type';
 import { HeightAttributesType } from '../../../system/attributes';
 
 type TableRowEffectivePropsType = Indexed<{
-    rowId?: ScalarType;
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLTableRowElement> & // includes all HTML Tr attributes
@@ -20,18 +19,15 @@ export type TableRowPropsType = TableRowEffectivePropsType &
 
 /* TableRow Root node prop type */
 export type TableRowRootPropsType = PropsWithNodeStylePropsType<
-    TableRowEffectivePropsType &
-        Pick<UseTableRowType, 'rowSelectionEnabled' | 'isHeader'>
+    TableRowEffectivePropsType & Pick<UseTableRowType, 'isHeader'>
 >;
 
 export type TableRowCellsPropTypes = Pick<
     UseTableRowType,
-    | 'stickyLeftColumn'
-    | 'stickyRightColumn'
+    | 'stickyColumns'
     | 'stickyTopVisible'
     | 'stickyLeftColumnVisible'
     | 'stickyRightColumnVisible'
     | 'stickyTop'
     | 'isHeader'
-    | 'rowSelectionEnabled'
 >;

@@ -8,25 +8,11 @@ import { TablePropsType } from './type';
 import { tableDefaultTheme } from './theme';
 import { tableRootTestId, TABLE_CLASS_PREFIX } from './constants';
 import { TableContext } from './utils/TableContext';
-import { TableRowSelectionContext } from './utils/TableRowSelectionContext';
-import { TableRowSortOrderContext } from './utils/TableRowSortOrderContext';
 import { useTable } from './utils/useTable';
 
 export const Table: FunctionComponent<TablePropsType> = forwardRef(
     function Table(
-        {
-            className,
-            classNames,
-            stickyLeftColumn,
-            stickyRightColumn,
-            stickyHead,
-            rowIds,
-            selectedRowIds,
-            onRowSelectionChange,
-            rowSortOrder,
-            onRowSortOrderChange,
-            ...restProps
-        },
+        { className, classNames, stickyColumns, stickyHead, ...restProps },
         ref,
     ) {
         const theme = useComponentTheme(TABLE_CLASS_PREFIX, tableDefaultTheme);
@@ -36,45 +22,25 @@ export const Table: FunctionComponent<TablePropsType> = forwardRef(
             classNames,
         );
 
-        const {
-            tableContextValue,
-            rootReference,
-            onLayoutUpdate,
-            tableRowSelectionContextValue,
-            tableRowSortOrderContextValue,
-        } = useTable({
-            stickyLeftColumn,
-            stickyRightColumn,
+        const { tableContextValue, rootReference, onLayoutUpdate } = useTable({
+            stickyColumns,
             stickyHead,
             ref,
-            rowIds,
-            selectedRowIds,
-            onRowSelectionChange,
-            rowSortOrder,
-            onRowSortOrderChange,
         });
 
         return (
-            <TableRowSortOrderContext.Provider
-                value={tableRowSortOrderContextValue}
-            >
-                <TableContext.Provider value={tableContextValue}>
-                    <TableRowSelectionContext.Provider
-                        value={tableRowSelectionContextValue}
-                    >
-                        <TableRoot
-                            data-testid={tableRootTestId}
-                            {...restProps}
-                            theme={theme}
-                            className={classNameComponents.Root}
-                            ref={rootReference}
-                            cellPadding="0"
-                            cellSpacing="0"
-                            onScroll={onLayoutUpdate}
-                        />
-                    </TableRowSelectionContext.Provider>
-                </TableContext.Provider>
-            </TableRowSortOrderContext.Provider>
+            <TableContext.Provider value={tableContextValue}>
+                <TableRoot
+                    data-testid={tableRootTestId}
+                    {...restProps}
+                    theme={theme}
+                    className={classNameComponents.Root}
+                    ref={rootReference}
+                    cellPadding="0"
+                    cellSpacing="0"
+                    onScroll={onLayoutUpdate}
+                />
+            </TableContext.Provider>
         );
     },
 );
