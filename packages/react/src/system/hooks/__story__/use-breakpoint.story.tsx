@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '../../../components';
-import { useBreakpointUp, useBreakpointDown } from '../use-breakpoint';
+import { useBreakpointUp, useBreakpointDown } from '../useBreakpoint';
 
 export default {
     title: 'System/Hooks/useBreakpoint',

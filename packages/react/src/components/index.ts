@@ -12,6 +12,7 @@ export * from './Flex';
 export * from './FormField';
 export * from './FormFieldMessage';
 export * from './FormFieldTooltip';
+export * from './Grid';
 export * from './HeaderNavigation';
 export * from './Indicator';
 export * from './MaterialIcon';

@@ -10,6 +10,8 @@ export const edgeValue = 0.05;
 
 export const breakpointUnit = 'px';
 
+export const defaultMediaPrefix = '@media';
+
 export const breakpointKeys = {
     xs: 'xs',
     sm: 'sm',
@@ -72,7 +74,7 @@ export const mapBreakpointWidthToCode = (
 export const breakpointUp = (
     themeBreakpoints: BreakpointsBaseType,
     breakpoint: BreakpointCodeType,
-    prefix = '@media ',
+    prefix = defaultMediaPrefix,
 ) => {
     const { values, unit } = themeBreakpoints;
 
@@ -80,13 +82,13 @@ export const breakpointUp = (
         return '';
     }
 
-    return `${prefix}(min-width:${values[breakpoint]}${unit})`;
+    return `${prefix} (min-width:${values[breakpoint]}${unit})`;
 };
 
 export const breakpointDown = (
     themeBreakpoints: BreakpointsBaseType,
     breakpoint: BreakpointCodeType,
-    prefix = '@media ',
+    prefix = defaultMediaPrefix,
 ) => {
     const { values, keys, unit } = themeBreakpoints;
 
@@ -105,14 +107,14 @@ export const breakpointDown = (
         return '';
     }
 
-    return `${prefix}(max-width:${rightValue - edgeValue}${unit})`;
+    return `${prefix} (max-width:${rightValue - edgeValue}${unit})`;
 };
 
 export const breakpointBetween = (
     themeBreakpoints: BreakpointsBaseType,
     breakpointStart: BreakpointCodeType,
     breakpointEnd: BreakpointCodeType,
-    prefix = '@media ',
+    prefix = defaultMediaPrefix,
 ) => {
     const { values, keys, unit } = themeBreakpoints;
 
@@ -122,7 +124,7 @@ export const breakpointBetween = (
         return breakpointUp(themeBreakpoints, breakpointStart, prefix);
     }
 
-    return `${prefix}(min-width:${
+    return `${prefix} (min-width:${
         values[breakpointStart]
     }${unit}) and (max-width:${values[keys[rightIndex + 1]] -
         edgeValue}${unit})`;
@@ -131,7 +133,7 @@ export const breakpointBetween = (
 export const breakpointOnly = (
     themeBreakpoints: BreakpointsBaseType,
     breakpoint: BreakpointCodeType,
-    prefix = '@media ',
+    prefix = defaultMediaPrefix,
 ) => breakpointBetween(themeBreakpoints, breakpoint, breakpoint, prefix);
 
 export const forwardBreakpoints = (

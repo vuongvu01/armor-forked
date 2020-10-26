@@ -13,6 +13,7 @@ export const Flex: FunctionComponent<FlexPropsType> = forwardRef(function Flex(
         classNames,
         direction,
         justifyContent,
+        alignContent,
         alignItems,
         flexWrap,
         ...restProps
@@ -35,6 +36,7 @@ export const Flex: FunctionComponent<FlexPropsType> = forwardRef(function Flex(
             direction={direction}
             flexWrap={flexWrap}
             justifyContent={justifyContent}
+            alignContent={alignContent}
             ref={ref}
             alignItems={alignItems}
         />
@@ -64,6 +66,20 @@ Flex.propTypes = {
         'end',
         'left',
         'right',
+    ]),
+    alignContent: PropTypes.oneOf([
+        'flex-start',
+        'flex-end',
+        'center',
+        'space-between',
+        'space-around',
+        'space-evenly',
+        'start',
+        'end',
+        'stretch',
+        'baseline',
+        'first baseline',
+        'last baseline',
     ]),
     alignItems: PropTypes.oneOf([
         'stretch',
