@@ -1,3 +1,17 @@
+# @deliveryhero/armor [1.18.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.17.0...@deliveryhero/armor@1.18.0) (2020-10-26)
+
+
+### Bug Fixes
+
+* **docs:** all table elements export ([#279](https://github.com/deliveryhero/armor/issues/279)) ([780d751](https://github.com/deliveryhero/armor/commit/780d75185fc30862b245c7cad2527e18b58bb313))
+
+
+### Features
+
+* **grid:** layout grid [LD-286] ([#277](https://github.com/deliveryhero/armor/issues/277)) ([4d43c4f](https://github.com/deliveryhero/armor/commit/4d43c4fb6fbc38de87aac9f2137d694ccc788609))
+* improvements related to integration with Arara [LD-000] ([#271](https://github.com/deliveryhero/armor/issues/271)) ([573547b](https://github.com/deliveryhero/armor/commit/573547becb9e1baf3589886e5194006a504b12eb))
+* **accordion:** adoption to DAS requirements [LD-233] ([#272](https://github.com/deliveryhero/armor/issues/272)) ([4c5648c](https://github.com/deliveryhero/armor/commit/4c5648c4e5015f1944783da6714da2c234adc779))
+
 # @deliveryhero/armor [1.17.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.16.0...@deliveryhero/armor@1.17.0) (2020-10-20)
 
 
