@@ -1,39 +1,52 @@
-import React, { Children, FunctionComponent } from 'react';
+import React, { Children, FunctionComponent, ReactElement } from 'react';
 import { TableRowCellsPropTypes } from './type';
-import { TABLE_CHECKBOX_CELL_WIDTH } from '../TableCheckboxCell/constants';
+import {
+    TableCellStickyAlignment,
+    TableCellStickyOffset,
+} from '../TableCell/type';
+import { LEFT, RIGHT } from '../../../constants';
 
 export const TableRowCells: FunctionComponent<TableRowCellsPropTypes> = ({
     children,
-    stickyLeftColumn,
-    stickyRightColumn,
+    stickyColumns,
     stickyTopVisible,
     stickyLeftColumnVisible,
     stickyRightColumnVisible,
     stickyTop,
     isHeader,
-    rowSelectionEnabled,
 }) => {
-    const childrenCount = Children.count(children) - 1;
+    let index = 0;
     return (
         <>
-            {Children.map(children, (child, index) => {
-                const stickyLeft = !index && stickyLeftColumn;
-                const stickyRight =
-                    index === childrenCount && stickyRightColumn;
+            {Children.map(children, child => {
+                if (!child) {
+                    return null;
+                }
+
+                let stickyAlignment: TableCellStickyAlignment | undefined;
+                let stickyOffset: TableCellStickyOffset | undefined;
+                let stickyColumnShadowVisible = false;
+                if (stickyColumns && index in stickyColumns) {
+                    stickyAlignment = stickyColumns[index].alignment;
+                    stickyOffset = stickyColumns[index].offset;
+                    stickyColumnShadowVisible = stickyColumns[index].edge;
+                }
+
                 const stickyVisible =
                     stickyTopVisible ||
-                    (stickyLeft && stickyLeftColumnVisible) ||
-                    (stickyRight && stickyRightColumnVisible);
+                    (stickyAlignment === LEFT && stickyLeftColumnVisible) ||
+                    (stickyAlignment === RIGHT && stickyRightColumnVisible);
 
-                // @ts-ignore
-                return React.cloneElement(child, {
+                const stickyShadowVisible =
+                    stickyTopVisible || stickyColumnShadowVisible;
+
+                index += 1;
+                return React.cloneElement(child as ReactElement, {
                     stickyTop,
-                    stickyLeft,
-                    stickyRight,
                     stickyVisible,
-                    stickyLeftOffset: rowSelectionEnabled
-                        ? TABLE_CHECKBOX_CELL_WIDTH
-                        : 0,
+                    stickyAlignment,
+                    stickyOffset,
+                    stickyShadowVisible,
                     isHeader,
                 });
             })}

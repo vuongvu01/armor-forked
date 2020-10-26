@@ -1,27 +1,22 @@
 /* eslint-disable no-console,import/no-unresolved */
 
 import React, { FunctionComponent, useState } from 'react';
-import { withKnobs } from '@storybook/addon-knobs';
-import {
-    EditIcon,
-    DeleteIcon,
-    EllipsisVerticalIcon,
-} from '@deliveryhero/armor-icons';
+import { DeleteIcon } from '@deliveryhero/armor-icons';
 
+import { withKnobs } from '@storybook/addon-knobs';
 import { Table } from '../Table';
 import { TableHead } from '../TableHead';
-import { TableHeadCell as HeadCell } from '../TableHeadCell';
 import { TableCell as Cell } from '../TableCell';
 import { TableBody as Body } from '../TableBody';
 import { TableRow as Row } from '../TableRow';
-import { TableAction as Action } from '../TableAction';
 import { demoData, getLargeDemoData } from './demoData';
 import { EditableTableCell } from '../EditableTableCell';
 import { Box } from '../../Box';
 import { loremIpsum, LoremIpsum } from '../../../helpers/LoremIpsum';
-import { TableCellLabel } from '../TableCellLabel';
-import { componentSpacing06 } from '../../../tokens';
-import { TableRowSortOrderType } from '../type';
+import { TableAction } from '../TableAction';
+import { Pack } from '../../Pack';
+import { componentSpacing01 } from '../../../tokens';
+import { LEFT, RIGHT } from '../../../constants';
 
 export default {
     title: 'Components/Table',
@@ -183,8 +178,10 @@ export const StickyColumns = () => {
             <Table
                 maxWidth="70%"
                 horizontalScroll
-                stickyLeftColumn
-                stickyRightColumn
+                stickyColumns={[
+                    { index: 0, alignment: LEFT },
+                    { index: 11, alignment: RIGHT },
+                ]}
             >
                 <TableHead>
                     <Row>
@@ -216,7 +213,15 @@ export const StickyColumns = () => {
                             <Cell>{item.city}</Cell>
                             <Cell>{item.fullName}</Cell>
                             <Cell>{item.id}</Cell>
-                            <Cell>Actions!</Cell>
+                            <Cell>
+                                <Pack alignItems="center">
+                                    <TableAction>
+                                        <DeleteIcon
+                                            margin={componentSpacing01}
+                                        />
+                                    </TableAction>
+                                </Pack>
+                            </Cell>
                         </Row>
                     ))}
                 </Body>
@@ -261,167 +266,6 @@ export const MergeCells = () => {
                     <Cell>26</Cell>
                     <Cell>150-204-0817</Cell>
                 </Row>
-            </Body>
-        </Table>
-    );
-};
-
-export const SelectableRows = () => {
-    const [selectedRowIds, setSelectedRowIds] = useState<(string | number)[]>([
-        'b',
-    ]);
-
-    return (
-        <Table
-            rowIds={['a', 'b', 'c']}
-            selectedRowIds={selectedRowIds}
-            onRowSelectionChange={setSelectedRowIds}
-        >
-            <TableHead>
-                <Row>
-                    <Cell>Food Companies</Cell>
-                    <Cell>Scheme ID</Cell>
-                    <Cell>City</Cell>
-                    <Cell>Full Name</Cell>
-                    <Cell>ID</Cell>
-                    <Cell>Phone number</Cell>
-                </Row>
-            </TableHead>
-            <Body>
-                {demoData.map(item => (
-                    <Row key={item.key} rowId={item.key}>
-                        <Cell>{item.company}</Cell>
-                        <Cell>{item.scheme}</Cell>
-                        <Cell>{item.city}</Cell>
-                        <Cell>{item.fullName}</Cell>
-                        <Cell>{item.id}</Cell>
-                        <Cell>{item.phoneNumber}</Cell>
-                    </Row>
-                ))}
-            </Body>
-        </Table>
-    );
-};
-
-const largeDemoData1 = getLargeDemoData(10);
-
-export const SelectableRowsAndStickyColumns = () => {
-    const [selectedRowIds, setSelectedRowIds] = useState<(string | number)[]>(
-        [],
-    );
-
-    return (
-        <Table
-            rowIds={largeDemoData1.keys}
-            selectedRowIds={selectedRowIds}
-            onRowSelectionChange={setSelectedRowIds}
-            maxWidth="70%"
-            horizontalScroll
-            stickyLeftColumn
-            stickyRightColumn
-        >
-            <TableHead>
-                <Row>
-                    <Cell>Food Companies</Cell>
-                    <Cell>
-                        <TableCellLabel>
-                            Scheme ID <EditIcon marginLeft={3} />
-                        </TableCellLabel>
-                    </Cell>
-                    <Cell>
-                        <TableCellLabel>
-                            City <EllipsisVerticalIcon marginLeft={3} />
-                        </TableCellLabel>
-                    </Cell>
-                    <Cell>Full Name</Cell>
-                    <Cell>ID</Cell>
-                    <Cell>Phone number</Cell>
-                    <Cell>Food Companies</Cell>
-                    <Cell>Scheme ID</Cell>
-                    <Cell>City</Cell>
-                    <Cell>Full Name</Cell>
-                    <Cell>ID</Cell>
-                    <Cell>Phone number</Cell>
-                    <Cell>Actions</Cell>
-                </Row>
-            </TableHead>
-            <Body>
-                {largeDemoData1.data.map(item => (
-                    <Row key={item.key} rowId={item.key}>
-                        <Cell>{item.company}</Cell>
-                        <Cell>{item.scheme}</Cell>
-                        <Cell>{item.city}</Cell>
-                        <Cell>{item.fullName}</Cell>
-                        <Cell>{item.id}</Cell>
-                        <Cell>{item.phoneNumber}</Cell>
-                        <Cell>{item.company}</Cell>
-                        <Cell>{item.scheme}</Cell>
-                        <Cell>{item.city}</Cell>
-                        <Cell>{item.fullName}</Cell>
-                        <Cell>{item.id}</Cell>
-                        <Cell>{item.phoneNumber}</Cell>
-                        <Cell>
-                            {/* todo: replace with <Pack /> later */}
-                            <Box
-                                style={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                }}
-                                height="24px"
-                            >
-                                <Action marginRight={componentSpacing06}>
-                                    <EditIcon />
-                                </Action>
-                                <Action marginRight={componentSpacing06}>
-                                    <DeleteIcon />
-                                </Action>
-                                <Action>
-                                    <EllipsisVerticalIcon />
-                                </Action>
-                            </Box>
-                        </Cell>
-                    </Row>
-                ))}
-            </Body>
-        </Table>
-    );
-};
-
-export const SelectableRowsAndStickyHeader = () => {
-    const [selectedRowIds, setSelectedRowIds] = useState<(string | number)[]>(
-        [],
-    );
-
-    return (
-        <Table
-            rowIds={largeDemoData1.keys}
-            selectedRowIds={selectedRowIds}
-            onRowSelectionChange={setSelectedRowIds}
-            stickyHead
-        >
-            <TableHead>
-                <Row>
-                    <Cell>Food Companies</Cell>
-                    <Cell>Scheme ID</Cell>
-                    <Cell>City</Cell>
-                    <Cell>Full Name</Cell>
-                    <Cell>ID</Cell>
-                    <Cell>Phone number</Cell>
-                    <Cell>Actions</Cell>
-                </Row>
-            </TableHead>
-            <Body>
-                {largeDemoData1.data.map(item => (
-                    <Row key={item.key} rowId={item.key}>
-                        <Cell>{item.company}</Cell>
-                        <Cell>{item.scheme}</Cell>
-                        <Cell>{item.city}</Cell>
-                        <Cell>{item.fullName}</Cell>
-                        <Cell>{item.id}</Cell>
-                        <Cell>{item.phoneNumber}</Cell>
-                        <Cell>Actions!</Cell>
-                    </Row>
-                ))}
             </Body>
         </Table>
     );
@@ -510,108 +354,6 @@ export const WithEllipsis = () => {
                     <Cell>26</Cell>
                     <Cell>FFFooo</Cell>
                 </Row>
-            </Body>
-        </Table>
-    );
-};
-
-const getSortingFunction = (field: string) => {
-    if (field !== 'id') {
-        return (
-            valueA: string | number,
-            valueB: string | number,
-            way: 'asc' | 'desc',
-        ) => {
-            return way === 'asc'
-                ? valueA.toString().localeCompare(valueB.toString())
-                : valueB.toString().localeCompare(valueA.toString());
-        };
-    }
-
-    return (
-        valueA: string | number,
-        valueB: string | number,
-        way: 'asc' | 'desc',
-    ) => {
-        if (valueA > valueB) {
-            return way === 'asc' ? 1 : -1;
-        }
-
-        if (valueA < valueB) {
-            return way === 'asc' ? -1 : 1;
-        }
-
-        return 0;
-    };
-};
-
-export const WithSorting = () => {
-    const [rowSortOrder, setRowSortOrder] = useState<TableRowSortOrderType>([
-        ['foodCompanies', 'asc'],
-    ]);
-
-    const [data, setData] = useState<typeof demoData>(demoData);
-
-    return (
-        <Table
-            rowSortOrder={rowSortOrder}
-            onRowSortOrderChange={newWorldOrder => {
-                if (newWorldOrder.length) {
-                    const field = newWorldOrder[0][0];
-                    const order = newWorldOrder[0][1];
-
-                    const sortingFunction = getSortingFunction(field as string);
-
-                    setData(
-                        [...demoData].sort((a, b) => {
-                            // @ts-ignore
-                            const valueA = a[field];
-                            // @ts-ignore
-                            const valueB = b[field];
-                            return sortingFunction(valueA, valueB, order);
-                        }),
-                    );
-                } else {
-                    // unsorted
-                    setData(demoData);
-                }
-
-                setRowSortOrder(newWorldOrder);
-            }}
-        >
-            <TableHead>
-                <Row>
-                    <HeadCell columnId="company" sortable>
-                        Food Companies
-                    </HeadCell>
-                    <HeadCell
-                        columnId="scheme"
-                        sortable
-                        onClick={e => {
-                            e.stopPropagation();
-                        }}
-                    >
-                        Scheme ID
-                    </HeadCell>
-                    <Cell>City</Cell>
-                    <Cell>Full Name</Cell>
-                    <HeadCell columnId="id" sortable sortType="numerical">
-                        ID
-                    </HeadCell>
-                    <Cell>Phone number</Cell>
-                </Row>
-            </TableHead>
-            <Body>
-                {data.map(item => (
-                    <Row key={item.key} rowId={item.key}>
-                        <Cell>{item.company}</Cell>
-                        <Cell>{item.scheme}</Cell>
-                        <Cell>{item.city}</Cell>
-                        <Cell>{item.fullName}</Cell>
-                        <Cell>{item.id}</Cell>
-                        <Cell>{item.phoneNumber}</Cell>
-                    </Row>
-                ))}
             </Body>
         </Table>
     );

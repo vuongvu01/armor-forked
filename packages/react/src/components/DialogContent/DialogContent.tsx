@@ -43,5 +43,9 @@ export const DialogContent: FunctionComponent<DialogContentPropsType> = ({
     );
 };
 
+DialogContent.defaultProps = {
+    enableVerticalScroll: true,
+};
+
 /** Support of prop-types is here for project that don't use TypeScript */
 DialogContent.propTypes = {};

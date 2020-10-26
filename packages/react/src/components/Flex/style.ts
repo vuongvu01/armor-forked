@@ -1,21 +1,27 @@
 import styled, { css } from 'styled-components';
 
-import { marginAttributes } from '../../system/attributes';
-import { shouldForwardProp } from '../../utils';
+import {
+    marginAttributes,
+    paddingAttributes,
+    sizeAttributes,
+} from '../../system/attributes';
+import { makePropList, shouldForwardProp } from '../../utils';
 import { FlexItemPropsType, FlexRootPropsType } from './type';
-import { ObjectLiteralType } from '../../type';
 
-const propertyList = {
-    justifyContent: true,
-    direction: 'row',
-    alignItems: true,
-    flexGrow: true,
-    alignSelf: true,
-} as ObjectLiteralType;
+const propertyList = makePropList([
+    'justifyContent',
+    'direction',
+    'alignItems',
+    'alignContent',
+    'flexGrow',
+    'alignSelf',
+    'flexWrap',
+]);
 
 const flexRootStyle = ({
     direction,
     justifyContent,
+    alignContent,
     alignItems,
     flexWrap,
 }: FlexItemPropsType) => {
@@ -32,6 +38,13 @@ const flexRootStyle = ({
         result = css`
             ${result}
              justify-content: ${justifyContent};
+        `;
+    }
+
+    if (alignContent) {
+        result = css`
+            ${result}
+             align-content: ${alignContent};
         `;
     }
 
@@ -105,8 +118,11 @@ export const FlexRoot = styled.div.withConfig({
     display: flex;
 
     ${flexRootStyle}
+    ${sizeAttributes}
+    ${marginAttributes}
 `;
 
 export const FlexItemRoot = styled.div<FlexItemPropsType>`
     ${flexItemStyle}
+    ${paddingAttributes}
 `;

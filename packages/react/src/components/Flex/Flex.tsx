@@ -5,6 +5,7 @@ import { useFlexClassName } from './utils';
 import { FlexPropsType } from './type';
 import { FLEX_CLASS_PREFIX, flexRoot } from './constants';
 import { FlexRoot } from './style';
+import { useComponentTheme } from '../../utils/hooks';
 
 export const Flex: FunctionComponent<FlexPropsType> = forwardRef(function Flex(
     {
@@ -12,12 +13,14 @@ export const Flex: FunctionComponent<FlexPropsType> = forwardRef(function Flex(
         classNames,
         direction,
         justifyContent,
+        alignContent,
         alignItems,
         flexWrap,
         ...restProps
     },
     ref,
 ) {
+    const theme = useComponentTheme(FLEX_CLASS_PREFIX);
     const classOverride = useFlexClassName(
         FLEX_CLASS_PREFIX,
         className,
@@ -28,10 +31,12 @@ export const Flex: FunctionComponent<FlexPropsType> = forwardRef(function Flex(
         <FlexRoot
             data-testid={flexRoot}
             {...restProps}
+            theme={theme}
             className={classOverride.Root}
             direction={direction}
             flexWrap={flexWrap}
             justifyContent={justifyContent}
+            alignContent={alignContent}
             ref={ref}
             alignItems={alignItems}
         />
@@ -61,6 +66,20 @@ Flex.propTypes = {
         'end',
         'left',
         'right',
+    ]),
+    alignContent: PropTypes.oneOf([
+        'flex-start',
+        'flex-end',
+        'center',
+        'space-between',
+        'space-around',
+        'space-evenly',
+        'start',
+        'end',
+        'stretch',
+        'baseline',
+        'first baseline',
+        'last baseline',
     ]),
     alignItems: PropTypes.oneOf([
         'stretch',

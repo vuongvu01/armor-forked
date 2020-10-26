@@ -1,4 +1,5 @@
 import React, { ChangeEvent, useState } from 'react';
+import { InfoIcon } from '@deliveryhero/armor-icons';
 // eslint-disable-next-line import/no-unresolved
 import { withKnobs } from '@storybook/addon-knobs';
 import { Accordion } from '../Accordion';
@@ -9,6 +10,7 @@ import { Dropdown } from '../../Dropdown';
 import { Box } from '../../Box';
 import { Radio, RadioGroup } from '../../Radio';
 import { Checkbox } from '../../Checkbox';
+import { Tooltip } from '../../Tooltip';
 
 export default {
     title: 'Components/Accordion',
@@ -224,6 +226,58 @@ export const ControlledExample = () => {
                 onToggle={handleToggle(accordion0)}
             >
                 <AccordionHeader title="Accordion 0" />
+                <AccordionContent>Content 0</AccordionContent>
+            </Accordion>
+            <Accordion
+                expanded={currentlyExpanded === accordion1}
+                onToggle={handleToggle(accordion1)}
+            >
+                <AccordionHeader title="Accordion 1" />
+                <AccordionContent>Content 1</AccordionContent>
+            </Accordion>
+            <Accordion
+                expanded={currentlyExpanded === accordion2}
+                onToggle={handleToggle(accordion2)}
+            >
+                <AccordionHeader title="Accordion 2" />
+                <AccordionContent>Content 2</AccordionContent>
+            </Accordion>
+        </div>
+    );
+};
+
+export const CustomHeaderContents = () => {
+    const accordion0 = 'accordion0';
+    const accordion1 = 'accordion1';
+    const accordion2 = 'accordion2';
+    const [currentlyExpanded, setCurrentlyExpanded] = useState('');
+
+    const handleToggle = (panel: string) => (
+        event: MouseEvent,
+        isExpanded: boolean,
+    ) => {
+        if (isExpanded) {
+            setCurrentlyExpanded(panel);
+        }
+    };
+
+    return (
+        <div style={{ width: '500px' }}>
+            <Accordion
+                expanded={currentlyExpanded === accordion0}
+                onToggle={handleToggle(accordion0)}
+            >
+                <AccordionHeader>
+                    <Typography label medium>
+                        Optimise delivery areas
+                    </Typography>
+
+                    <Tooltip align="bottom" dark content="Hello world!">
+                        <span style={{ height: '16px' }}>
+                            <InfoIcon marginLeft={3} />
+                        </span>
+                    </Tooltip>
+                </AccordionHeader>
                 <AccordionContent>Content 0</AccordionContent>
             </Accordion>
             <Accordion

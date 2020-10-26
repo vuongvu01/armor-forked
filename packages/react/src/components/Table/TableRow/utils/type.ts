@@ -6,17 +6,8 @@ import {
 export type UseTableRowType = {
     isHeader: boolean;
     stickyTop: boolean;
-    rowSelectionEnabled: boolean;
-    rowSelected: boolean;
-    onSelectorCellClick: () => void;
-    allRowsSelected: boolean;
-    someRowsSelected: boolean;
     stickyTopVisible: boolean;
 } & Pick<
     TableContextValueDataType,
-    | 'stickyLeftColumn'
-    | 'stickyRightColumn'
-    | 'stickyLeftColumnVisible'
-    | 'stickyRightColumnVisible'
-> &
-    Pick<TableRowSelectionContextValueType, 'rowIds' | 'selectedRowIds'>;
+    'stickyColumns' | 'stickyLeftColumnVisible' | 'stickyRightColumnVisible'
+>;

@@ -5,7 +5,6 @@ import {
     Table,
     TableBody,
     TableCell,
-    TableHeadCell,
     TableHead,
     TableRow,
     TableFoot,
@@ -171,60 +170,6 @@ export const CellAlignmentAndSize = () => (
                 >
                     Cell text
                 </TableCell>
-            </TableRow>
-        </TableBody>
-    </Table>
-);
-
-export const TableWithCheckboxNothingChecked = () => (
-    <Table rowIds={['one', 'two']} selectedRowIds={[]}>
-        <TableHead>
-            <TableRow>
-                <TableCell>Hello</TableCell>
-            </TableRow>
-        </TableHead>
-        <TableBody>
-            <TableRow rowId="one">
-                <TableCell width="10rem">Cell text</TableCell>
-            </TableRow>
-            <TableRow rowId="two">
-                <TableCell width="10rem">Cell text</TableCell>
-            </TableRow>
-        </TableBody>
-    </Table>
-);
-
-export const TableWithCheckboxSomeChecked = () => (
-    <Table rowIds={['one', 'two']} selectedRowIds={['one']}>
-        <TableHead>
-            <TableRow>
-                <TableCell>Hello</TableCell>
-            </TableRow>
-        </TableHead>
-        <TableBody>
-            <TableRow rowId="one">
-                <TableCell width="10rem">Cell text</TableCell>
-            </TableRow>
-            <TableRow rowId="two">
-                <TableCell width="10rem">Cell text</TableCell>
-            </TableRow>
-        </TableBody>
-    </Table>
-);
-
-export const TableWithCheckboxAllChecked = () => (
-    <Table rowIds={['one', 'two']} selectedRowIds={['one', 'two']}>
-        <TableHead>
-            <TableRow>
-                <TableCell>Hello</TableCell>
-            </TableRow>
-        </TableHead>
-        <TableBody>
-            <TableRow rowId="one">
-                <TableCell width="10rem">Cell text</TableCell>
-            </TableRow>
-            <TableRow rowId="two">
-                <TableCell width="10rem">Cell text</TableCell>
             </TableRow>
         </TableBody>
     </Table>
@@ -438,64 +383,6 @@ export const StickyLeftColumn = () => {
     );
 };
 
-export const StickyLeftColumnWithCheckboxes = () => {
-    const ref = useRef();
-    useEffect(() => {
-        const table = ref.current;
-        if (table) {
-            // @ts-ignore
-            table.scrollLeft = 200;
-        }
-    }, []);
-
-    return (
-        <Table
-            maxWidth="38rem"
-            horizontalScroll
-            stickyLeftColumn
-            ref={ref}
-            rowIds={['one', 'two', 'three']}
-            selectedRowIds={['one']}
-        >
-            <TableHead>
-                <TableRow>
-                    <TableCell>One</TableCell>
-                    <TableCell>Two</TableCell>
-                    <TableCell>Three</TableCell>
-                    <TableCell>Four</TableCell>
-                    <TableCell>Five</TableCell>
-                </TableRow>
-            </TableHead>
-            <TableBody>
-                <TableRow rowId="one">
-                    <TableCell>
-                        Cell text Cell text Cell text Cell text Cell text Cell
-                        text Cell text
-                    </TableCell>
-                    <TableCell>Cell text</TableCell>
-                    <TableCell>Cell text</TableCell>
-                    <TableCell>Cell text</TableCell>
-                    <TableCell>Cell text</TableCell>
-                </TableRow>
-                <TableRow rowId="two">
-                    <TableCell>Cell text</TableCell>
-                    <TableCell>Cell text</TableCell>
-                    <TableCell>Cell text</TableCell>
-                    <TableCell>Cell text</TableCell>
-                    <TableCell>Cell text</TableCell>
-                </TableRow>
-                <TableRow rowId="three">
-                    <TableCell>Cell text</TableCell>
-                    <TableCell>Cell text</TableCell>
-                    <TableCell>Cell text</TableCell>
-                    <TableCell>Cell text</TableCell>
-                    <TableCell>Cell text</TableCell>
-                </TableRow>
-            </TableBody>
-        </Table>
-    );
-};
-
 export const StickyHeaderOnWindowScroll = () => {
     useEffect(() => {
         window.scrollTo(0, 300);
@@ -660,74 +547,6 @@ export const ColSpanned = () => (
                 <TableCell>Cell text</TableCell>
                 <TableCell>Cell text</TableCell>
                 <TableCell>Cell text</TableCell>
-            </TableRow>
-        </TableBody>
-    </Table>
-);
-
-export const SortingAsc = () => (
-    <Table rowSortOrder={[['one', 'asc']]}>
-        <TableHead>
-            <TableRow>
-                <TableHeadCell columnId="one" sortable>
-                    One
-                </TableHeadCell>
-                <TableHeadCell columnId="two" sortable>
-                    Two
-                </TableHeadCell>
-                <TableHeadCell>Three</TableHeadCell>
-                <TableCell>Four</TableCell>
-                <TableCell>Five</TableCell>
-            </TableRow>
-        </TableHead>
-        <TableBody>
-            <TableRow>
-                <TableCell>New York</TableCell>
-                <TableCell>London</TableCell>
-                <TableCell>Amsterdam</TableCell>
-                <TableCell>Helsinki</TableCell>
-                <TableCell>Munich</TableCell>
-            </TableRow>
-            <TableRow>
-                <TableCell>Berlin</TableCell>
-                <TableCell>Moscow</TableCell>
-                <TableCell>Mexico</TableCell>
-                <TableCell>Vienna</TableCell>
-                <TableCell>Venice</TableCell>
-            </TableRow>
-        </TableBody>
-    </Table>
-);
-
-export const SortingDesc = () => (
-    <Table rowSortOrder={[['one', 'desc']]}>
-        <TableHead>
-            <TableRow>
-                <TableHeadCell columnId="one" sortable>
-                    One
-                </TableHeadCell>
-                <TableHeadCell columnId="two" sortable>
-                    Two
-                </TableHeadCell>
-                <TableHeadCell>Three</TableHeadCell>
-                <TableCell>Four</TableCell>
-                <TableCell>Five</TableCell>
-            </TableRow>
-        </TableHead>
-        <TableBody>
-            <TableRow>
-                <TableCell>New York</TableCell>
-                <TableCell>London</TableCell>
-                <TableCell>Amsterdam</TableCell>
-                <TableCell>Helsinki</TableCell>
-                <TableCell>Munich</TableCell>
-            </TableRow>
-            <TableRow>
-                <TableCell>Berlin</TableCell>
-                <TableCell>Moscow</TableCell>
-                <TableCell>Mexico</TableCell>
-                <TableCell>Vienna</TableCell>
-                <TableCell>Venice</TableCell>
             </TableRow>
         </TableBody>
     </Table>

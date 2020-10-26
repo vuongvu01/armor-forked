@@ -3,12 +3,25 @@ import { StylePropsType, PropsWithNodeStylePropsType } from '../../type';
 import { MarginAttributesType } from '../../../system/attributes';
 import { Indexed, ScalarType } from '../../../type';
 
-type TableHeadCellSortType = 'numerical' | 'alphabetical';
+export type TableHeadCellSortType = 'numerical' | 'alphabetical';
+
+export type TableHeadCellSortOrderWay = 'asc' | 'desc';
+export type TableHeadCellRowSortOrderType = [
+    ScalarType,
+    TableHeadCellSortOrderWay,
+][];
 
 type TableHeadCellEffectivePropsType = Indexed<{
-    sortable?: boolean;
     columnId?: ScalarType;
+
+    // sorting
+    sortable?: boolean;
     sortType?: TableHeadCellSortType;
+    rowSortOrder?: TableHeadCellRowSortOrderType;
+    onRowSortOrderChange?: (
+        rowSortOrder: TableHeadCellRowSortOrderType,
+    ) => void;
+
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLTableHeaderCellElement> & // includes all HTML Div attributes

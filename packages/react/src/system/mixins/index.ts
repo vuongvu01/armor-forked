@@ -1,7 +1,7 @@
 export * from './align';
-export * from './gutter';
 export * from './grid';
-export * from './fixed-cover';
+export * from './fixedCover';
+export * from './spacing';
 export * from './etc';
 export {
     breakpointUp,

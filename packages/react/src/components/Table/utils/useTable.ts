@@ -1,26 +1,71 @@
-import { Ref, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { throttle } from 'throttle-debounce';
 import { TABLE_THROTTLE_PERIOD } from '../constants';
-import { TableHookPropsType, TableContextValueType } from './type';
 import { useInternalRef } from '../../../utils';
+import { TableHookPropsType, TableContextValueType } from './type';
+import { TableStickyColumnMapInternalItem } from '../type';
+import { ArrayLikeType } from '../../../type';
+import { LEFT, RIGHT } from '../../../constants';
 
 export const useTable = ({
-    stickyLeftColumn,
-    stickyRightColumn,
+    stickyColumns,
     stickyHead,
-    rowIds,
-    selectedRowIds,
-    onRowSelectionChange,
     ref,
-    rowSortOrder,
-    onRowSortOrderChange,
 }: TableHookPropsType) => {
+    // sticky columns and header
+    const stickyColumnsInternal = useMemo<
+        ArrayLikeType<TableStickyColumnMapInternalItem>
+    >(() => {
+        let result: ArrayLikeType<TableStickyColumnMapInternalItem> = {};
+
+        if (!stickyColumns) {
+            return result;
+        }
+
+        let maxLeftOffset = 0;
+        let maxRightOffset = 0;
+        let leftEdgeItemIndex: number | undefined;
+        let rightEdgeItemIndex: number | undefined;
+
+        for (let i = 0; i < stickyColumns.length; i += 1) {
+            const { index } = stickyColumns[i];
+            const item = {
+                ...stickyColumns[i],
+                edge: false,
+                offset: stickyColumns[i].offset || 0,
+            };
+
+            if (item.alignment === LEFT && item.offset >= maxLeftOffset) {
+                maxLeftOffset = item.offset;
+                leftEdgeItemIndex = index;
+            }
+
+            if (item.alignment === RIGHT && item.offset >= maxRightOffset) {
+                maxRightOffset = item.offset;
+                rightEdgeItemIndex = index;
+            }
+
+            result = {
+                ...result,
+                [index]: item,
+            };
+        }
+
+        if (leftEdgeItemIndex !== undefined) {
+            result[leftEdgeItemIndex].edge = true;
+        }
+        if (rightEdgeItemIndex !== undefined) {
+            result[rightEdgeItemIndex].edge = true;
+        }
+
+        return result;
+    }, [stickyColumns]);
+
     const [tableContextValue, setTableContextValue] = useState<
         TableContextValueType
     >({
         data: {
-            stickyLeftColumn,
-            stickyRightColumn,
+            stickyColumns: stickyColumnsInternal,
             stickyHead,
         },
         update: data => setTableContextValue(data),
@@ -31,7 +76,7 @@ export const useTable = ({
     useInternalRef(ref, rootReference);
 
     const onLayoutUpdateImmediate = useCallback(() => {
-        if (!stickyLeftColumn && !stickyRightColumn) {
+        if (!stickyColumns || !stickyColumns.length) {
             return;
         }
 
@@ -85,28 +130,9 @@ export const useTable = ({
         };
     }, []);
 
-    const tableRowSelectionContextValue = useMemo(
-        () => ({
-            rowIds,
-            selectedRowIds,
-            onRowSelectionChange,
-        }),
-        [rowIds, selectedRowIds, onRowSelectionChange],
-    );
-
-    const tableRowSortOrderContextValue = useMemo(
-        () => ({
-            rowSortOrder,
-            onRowSortOrderChange,
-        }),
-        [rowSortOrder, onRowSortOrderChange],
-    );
-
     return {
         tableContextValue,
         rootReference,
         onLayoutUpdate,
-        tableRowSelectionContextValue,
-        tableRowSortOrderContextValue,
     };
 };

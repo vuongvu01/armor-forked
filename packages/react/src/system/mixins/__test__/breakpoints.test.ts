@@ -5,6 +5,7 @@ import {
     breakpointOnly,
     breakpointUp,
     breakpointValues,
+    defaultMediaPrefix,
     edgeValue,
     forwardBreakpoints,
     forwardBreakpointsTwoArgs,
@@ -42,7 +43,7 @@ describe('system/mixins/media', () => {
         it('should return media declaration', () => {
             const result = functions.up('lg');
             expect(result).toEqual(
-                `@media (min-width:${breakpointValues.lg}px)`,
+                `${defaultMediaPrefix} (min-width:${breakpointValues.lg}px)`,
             );
         });
     });
@@ -51,7 +52,8 @@ describe('system/mixins/media', () => {
         it('should return media declaration', () => {
             const result = functions.down('lg');
             expect(result).toEqual(
-                `@media (max-width:${breakpointValues.lg - edgeValue}px)`,
+                `${defaultMediaPrefix} (max-width:${breakpointValues.lg -
+                    edgeValue}px)`,
             );
         });
     });
@@ -59,7 +61,7 @@ describe('system/mixins/media', () => {
         it('should return media declaration for "md"', () => {
             const result = functions.only('md');
             expect(result).toEqual(
-                `@media (min-width:${
+                `${defaultMediaPrefix} (min-width:${
                     breakpointValues.md
                 }px) and (max-width:${breakpointValues.lg - edgeValue}px)`,
             );
@@ -69,7 +71,7 @@ describe('system/mixins/media', () => {
         it('should return media declaration for "sm" and "lg', () => {
             const result = functions.between('sm', 'lg');
             expect(result).toEqual(
-                `@media (min-width:${
+                `${defaultMediaPrefix} (min-width:${
                     breakpointValues.sm
                 }px) and (max-width:${breakpointValues.xl - edgeValue}px)`,
             );

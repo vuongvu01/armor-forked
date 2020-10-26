@@ -53,6 +53,13 @@ export const AccordionHeaderTypography = styled(Typography)<
     ${accordionHeaderTypographyStyle}
 `;
 
+export const AccordionHeaderBody = styled(Typography)<
+    AccordionHeaderRootPropsType
+>`
+    align-items: center;
+    display: inline-flex;
+`;
+
 export const AccordionHeaderExpansionIndicator = styled(ExpansionIndicator)<
     AccordionHeaderRootPropsType
 >`

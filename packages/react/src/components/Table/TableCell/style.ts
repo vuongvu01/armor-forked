@@ -13,16 +13,18 @@ import {
     widthAttributes,
 } from '../../../system/attributes';
 import { zIndexTableHeader } from '../../../tokens';
-import { transitionDurationInSec } from '../../../constants';
+import {
+    LEFT,
+    MIDDLE,
+    RIGHT,
+    transitionDurationInSec,
+} from '../../../constants';
 
 // all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
 const propertyList = {
     isHeader: true,
     stickyTop: true,
-    stickyLeft: true,
-    stickyRight: true,
     stickyVisible: true,
-    stickyLeftOffset: true,
     stickyShadowVisible: true,
     contentAlignX: true,
     contentAlignY: true,
@@ -38,9 +40,8 @@ const getRootDynamicStyle = ({
     isHeader,
     stickyTop,
     stickyVisible,
-    stickyLeft,
-    stickyRight,
-    stickyLeftOffset,
+    stickyAlignment,
+    stickyOffset,
     stickyShadowVisible,
     disabled,
     ellipsis,
@@ -83,11 +84,11 @@ const getRootDynamicStyle = ({
         `;
     }
 
-    if (!stickyTop && stickyLeft) {
+    if (!stickyTop && stickyAlignment === LEFT) {
         result = css`
             ${result};
             position: sticky;
-            left: ${stickyLeftOffset || 0};
+            ${stickyAlignment}: ${stickyOffset}px;
             &::after {
                 ${stickyShadowVisible ? "content: ''" : ''};
                 position: absolute;
@@ -109,11 +110,11 @@ const getRootDynamicStyle = ({
         `;
     }
 
-    if (!stickyTop && stickyRight) {
+    if (!stickyTop && stickyAlignment === RIGHT) {
         result = css`
             ${result};
             position: sticky;
-            right: 0;
+            ${stickyAlignment}: ${stickyOffset}px;
             &::after {
                 ${stickyShadowVisible ? "content: ''" : ''};
                 position: absolute;

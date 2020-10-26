@@ -62,4 +62,19 @@ describe('<Pack />', () => {
         const packItemElement = screen.getByTestId(packItemId);
         expect(packItemElement).toHaveClass('PackItem-Root');
     });
+
+    it('should support margin attributes', async () => {
+        // @ts-ignore
+        expect(Pack).toSupportMarginAttributes();
+    });
+
+    it('should support width attributes', async () => {
+        // @ts-ignore
+        expect(Pack).toSupportWidthAttributes();
+    });
+
+    it('should support height attributes', async () => {
+        // @ts-ignore
+        expect(Pack).toSupportHeightAttributes();
+    });
 });

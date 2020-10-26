@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { CancelIcon } from '@deliveryhero/armor-icons';
 
 import { marginAttributes } from '../../system/attributes';
-import { shouldForwardProp } from '../../utils';
+import { makePropList, shouldForwardProp } from '../../utils';
 import {
     TagCloseIconContainerPropsType,
     TagCloseIconPropsType,
@@ -14,6 +14,8 @@ import { transitionDurationInSec } from '../../constants';
 import { Typography } from '../Typography';
 
 const statusWidth = 'width: 76px;';
+
+const propertyList = makePropList(['deleteOption', 'isActive', 'type']);
 
 const containerStyle = ({
     deleteOption,
@@ -108,7 +110,7 @@ export const TagCloseIconContainer = styled.div<TagCloseIconContainerPropsType>`
 `;
 
 export const TagRoot = styled.div.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property),
+    shouldForwardProp: property => shouldForwardProp(property, propertyList),
 })<TagRootPropsType>`
     border-style: solid;
     border-width: 1px;

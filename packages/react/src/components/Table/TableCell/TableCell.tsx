@@ -26,6 +26,7 @@ export const TableCell: FunctionComponent<TableCellPropsType> = forwardRef(
 
         const { tag: TableCellRoot } = useTableCell({ isHeader });
 
+        // todo: forward only className here, it will be more efficient and neat
         return (
             <TableCellStyle
                 data-testid={tableCellRootTestId}
@@ -45,11 +46,9 @@ export const TableCell: FunctionComponent<TableCellPropsType> = forwardRef(
 );
 
 TableCell.defaultProps = {
-    stickyLeft: false,
-    stickyRight: false,
     stickyTop: false,
-    stickyLeftOffset: 0,
     stickyShadowVisible: true,
+    stickyOffset: 0,
     isHeader: false,
     disabled: false,
     ellipsis: false,
@@ -57,9 +56,6 @@ TableCell.defaultProps = {
 
 /** prop-types are required here for run-time checks */
 TableCell.propTypes = {
-    stickyLeft: PropTypes.bool,
-    stickyLeftOffset: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    stickyRight: PropTypes.bool,
     isHeader: PropTypes.bool,
     stickyTop: PropTypes.bool,
     stickyVisible: PropTypes.bool,

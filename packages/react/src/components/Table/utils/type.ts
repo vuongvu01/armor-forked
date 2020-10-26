@@ -1,14 +1,17 @@
 import { Ref } from 'react';
-import { TableEffectivePropsType, TablePropsType } from '../type';
+import {
+    TableEffectivePropsType,
+    TablePropsType,
+    TableStickyColumnMapInternalItem,
+} from '../type';
+import { ArrayLikeType } from '../../../type';
 
 export type TableContextValueDataType = {
     stickyLeftColumnVisible?: boolean;
     stickyRightColumnVisible?: boolean;
     stickyHeadVisible?: boolean;
-} & Pick<
-    TablePropsType,
-    'stickyLeftColumn' | 'stickyRightColumn' | 'stickyHead'
->;
+    stickyColumns: ArrayLikeType<TableStickyColumnMapInternalItem>;
+} & Pick<TablePropsType, 'stickyHead'>;
 
 export type TableContextValueType = {
     data: TableContextValueDataType;
@@ -35,14 +38,7 @@ export type TableSectionContextValueType = {
 
 export type TableHookPropsType = Pick<
     TableEffectivePropsType,
-    | 'stickyLeftColumn'
-    | 'stickyRightColumn'
-    | 'stickyHead'
-    | 'selectedRowIds'
-    | 'rowIds'
-    | 'onRowSelectionChange'
-    | 'rowSortOrder'
-    | 'onRowSortOrderChange'
+    'stickyColumns' | 'stickyHead'
 > & {
     ref: Ref<unknown>;
 };

@@ -1,0 +1,462 @@
+import { useMemo, useState, useCallback } from 'react';
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { DataTable, Table, TableHead, TableRow, TableCell, TableBody, TableCellLabel, TableAction, Box } from '../../../src/components/';
+import { LoremIpsum } from '../../../src/helpers/LoremIpsum';
+import { Nodes } from '../../../src/helpers/Nodes';
+import { EditIcon, DeleteIcon, EllipsisVerticalIcon } from '@deliveryhero/armor-icons';
+
+<Meta title="Components/DataTable" component={DataTable} />
+
+# Table
+
+~~~js
+import { DataTable } from '@deliveryhero/armor';
+~~~
+
+## Basic usage
+
+<Preview>
+    <Story name="Basic usage" height="300px">
+        {() => {
+            const columns = [
+                {
+                    title: 'Name',
+                    id: 'name',
+                },
+                {
+                    title: 'Age',
+                    id: 'age',
+                    formatDataCellContent: (value) => `${value} years`,
+                },
+                {
+                    title: 'Address',
+                    id: 'address',
+                },
+            ];
+            
+            const data = [
+                {
+                    id: '1',
+                    name: 'Mike',
+                    age: 32,
+                    address: '10 Downing Street',
+                },
+                {
+                    id: '3',
+                    name: 'Jill',
+                    age: 19,
+                    address: 'Raccoon City',
+                },
+                {
+                    id: '2',
+                    name: 'John',
+                    age: 42,
+                    address: '10 Downing Street',
+                },
+            ];
+            
+            return (
+                <DataTable columns={columns} data={data} />
+            );
+        }}
+    </Story>
+</Preview>
+
+## Sticky side columns
+
+<Preview>
+    <Story name="Sticky side columns" height="300px">
+        {() => {
+            const columns = [
+                {
+                    title: 'Name',
+                    id: 'name',
+                },
+                {
+                    title: 'Age',
+                    id: 'age',
+                    formatDataCellContent: (value) => `${value} years`,
+                },
+                {
+                    title: 'Address',
+                    id: 'address',
+                },
+            ];
+            
+            const data = [
+                {
+                    id: '1',
+                    name: 'Mike',
+                    age: '9999999999999999999999999999999999999999999999999999999',
+                    address: '10 Downing Street',
+                },
+                {
+                    id: '3',
+                    name: 'Jill',
+                    age: 19,
+                    address: 'Raccoon City',
+                },
+                {
+                    id: '2',
+                    name: 'John',
+                    age: 42,
+                    address: '10 Downing Street',
+                },
+            ];
+            
+            return (
+                <DataTable 
+                    columns={columns}
+                    data={data}
+                    horizontalScroll
+                    stickyLeftColumn
+                    stickyRightColumn
+                    width="500px"
+                />
+            );
+        }}
+    </Story>
+</Preview>
+
+## Forward Table props
+
+<Preview>
+    <Story name="Table props" height="300px">
+        {() => {
+            const columns = [
+                {
+                    title: 'Name',
+                    id: 'name',
+                },
+                {
+                    title: 'Age',
+                    id: 'age',
+                    headCellProps: {
+                        style: { color: 'red' },
+                    },
+                    formatDataCellContent: (value) => `${value} years`,
+                },
+                {
+                    title: 'Address',
+                    id: 'address',
+                    dataCellProps: {
+                        style: { color: 'blue' },
+                    },
+                },
+            ];
+            
+            const data = [
+                {
+                    id: '1',
+                    name: 'Mike',
+                    age: 32,
+                    address: '10 Downing Street',
+                },
+                {
+                    id: '3',
+                    name: 'Jill',
+                    age: 19,
+                    address: 'Raccoon City',
+                },
+                {
+                    id: '2',
+                    name: 'John',
+                    age: 42,
+                    address: '10 Downing Street',
+                },
+            ];
+            
+            return (
+                <DataTable columns={columns} data={data} wide />
+            );
+        }}
+    </Story>
+</Preview>
+
+## Row selection (controlled)
+
+<Preview>
+    <Story name="Row selection controlled" height="300px">
+        {() => {
+            const [selection, setSelection] = useState(['2']);
+            
+            const columns = [
+                {
+                    title: 'Name',
+                    id: 'name',
+                },
+                {
+                    title: 'Age',
+                    id: 'age',
+                    formatDataCellContent: (value) => `${value} years`,
+                },
+                {
+                    title: 'Address',
+                    id: 'address',
+                },
+            ];
+            
+            const data = [
+                {
+                    id: '1',
+                    name: 'Mike',
+                    age: 32,
+                    address: '10 Downing Street',
+                },
+                {
+                    id: '3',
+                    name: 'Jill',
+                    age: 19,
+                    address: 'Raccoon City',
+                },
+                {
+                    id: '2',
+                    name: 'John',
+                    age: 42,
+                    address: '10 Downing Street',
+                },
+            ];
+            
+            return (
+                <DataTable 
+                    columns={columns}
+                    data={data}
+                    enableRowSelection
+                    selectedRowIds={selection}
+                    onRowSelectionChange={setSelection}
+                />
+            );
+        }}
+    </Story>
+</Preview>
+
+## Row selection (uncontrolled)
+
+<Preview>
+    <Story name="Row selection uncontrolled" height="300px">
+        {() => {
+            const columns = [
+                {
+                    title: 'Name',
+                    id: 'name',
+                },
+                {
+                    title: 'Age',
+                    id: 'age',
+                    formatDataCellContent: (value) => `${value} years`,
+                },
+                {
+                    title: 'Address',
+                    id: 'address',
+                },
+            ];
+            
+            const data = [
+                {
+                    id: '1',
+                    name: 'Mike',
+                    age: 32,
+                    address: '10 Downing Street',
+                },
+                {
+                    id: '3',
+                    name: 'Jill',
+                    age: 19,
+                    address: 'Raccoon City',
+                },
+                {
+                    id: '2',
+                    name: 'John',
+                    age: 42,
+                    address: '10 Downing Street',
+                },
+            ];
+            
+            return (
+                <DataTable 
+                    columns={columns}
+                    data={data}
+                    enableRowSelection
+                    defaultSelectedRowIds={['3']}
+                />
+            );
+        }}
+    </Story>
+</Preview>
+
+## Row sorting (controlled)
+
+<Preview>
+    <Story name="Row sorting controlled" height="500px">
+        {() => {
+            const columns = [
+                {
+                    title: 'Name',
+                    id: 'name',
+                },
+                {
+                    title: 'Age',
+                    id: 'age',
+                    sortable: true,
+                    formatDataCellContent: (value) => `${value} years`,
+                },
+                {
+                    title: 'Address',
+                    sortable: true,
+                    id: 'address',
+                },
+            ];
+            
+            const initialData = [
+                {
+                    id: '1',
+                    name: 'Mike',
+                    age: 32,
+                    address: '10 Downing Street',
+                },
+                {
+                    id: '3',
+                    name: 'Jill',
+                    age: 19,
+                    address: 'Raccoon City',
+                },
+                {
+                    id: '2',
+                    name: 'John',
+                    age: 42,
+                    address: '10 Downing Street',
+                },
+            ];
+            
+            const sortingFunction = (
+                valueA,
+                valueB,
+                way,
+            ) => {
+                return way === 'asc'
+                    ? valueA.toString().localeCompare(valueB.toString())
+                    : valueB.toString().localeCompare(valueA.toString());
+            };
+            
+            const [rowSortOrder, setRowSortOrder] = useState([
+                ['age', 'asc'],
+            ]);
+            const [data, setData] = useState(initialData);
+            
+            const onRowSortOrderChange = useCallback((newOrder) => {
+                if (newOrder.length) {
+                    const field = newOrder[0][0];
+                    const order = newOrder[0][1];
+                    
+                    setData(
+                        [...initialData].sort((a, b) => {
+                            const valueA = a[field];
+                            const valueB = b[field];
+                            return sortingFunction(valueA, valueB, order);
+                        }),
+                    );
+                } else {
+                    // unsorted
+                    setData(initialData);
+                }
+                
+                setRowSortOrder(newOrder);
+            }, []);
+            
+            return (
+                <DataTable 
+                    columns={columns}
+                    data={data}
+                    rowSortOrder={rowSortOrder}
+                    onRowSortOrderChange={onRowSortOrderChange}
+                />
+            );
+        }}
+    </Story>
+</Preview>
+
+## Row sorting (uncontrolled)
+
+<Preview>
+    <Story name="Row sorting uncontrolled" height="500px">
+        {() => {
+            const columns = [
+                {
+                    title: 'Name',
+                    id: 'name',
+                },
+                {
+                    title: 'Age',
+                    id: 'age',
+                    sortable: true,
+                    formatDataCellContent: (value) => `${value} years`,
+                },
+                {
+                    title: 'Address',
+                    sortable: true,
+                    id: 'address',
+                },
+            ];
+            
+            const initialData = [
+                {
+                    id: '1',
+                    name: 'Mike',
+                    age: 32,
+                    address: '10 Downing Street',
+                },
+                {
+                    id: '3',
+                    name: 'Jill',
+                    age: 19,
+                    address: 'Raccoon City',
+                },
+                {
+                    id: '2',
+                    name: 'John',
+                    age: 42,
+                    address: '10 Downing Street',
+                },
+            ];
+            
+            const sortingFunction = (
+                valueA,
+                valueB,
+                way,
+            ) => {
+                return way === 'asc'
+                    ? valueA.toString().localeCompare(valueB.toString())
+                    : valueB.toString().localeCompare(valueA.toString());
+            };
+            
+            const [data, setData] = useState(initialData);
+            
+            const onRowSortOrderChange = useCallback((newOrder) => {
+                if (newOrder.length) {
+                    const field = newOrder[0][0];
+                    const order = newOrder[0][1];
+                    
+                    setData(
+                        [...initialData].sort((a, b) => {
+                            const valueA = a[field];
+                            const valueB = b[field];
+                            return sortingFunction(valueA, valueB, order);
+                        }),
+                    );
+                } else {
+                    // unsorted
+                    setData(initialData);
+                }
+            }, []);
+            
+            return (
+                <DataTable 
+                    columns={columns}
+                    data={data}
+                    defaultRowSortOrder={[['age', 'asc']]}
+                    onRowSortOrderChange={onRowSortOrderChange}
+                />
+            );
+        }}
+    </Story>
+</Preview>

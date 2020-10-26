@@ -1,6 +1,10 @@
 import { HTMLAttributes } from 'react';
 
-import { MarginAttributesType } from '../../system/attributes';
+import {
+    MarginAttributesType,
+    PaddingAttributesType,
+    SizeAttributesType,
+} from '../../system/attributes';
 import { Indexed } from '../../type';
 import { ClassNamesType, NodeStylePropsType } from '../type';
 
@@ -11,7 +15,7 @@ export type ClassBasedOnComponentType = {
     component: string;
 };
 
-type DirectionType = 'row' | 'row-reverse' | 'column' | 'column-reverse';
+export type DirectionType = 'row' | 'row-reverse' | 'column' | 'column-reverse';
 
 export type JustifyContentType =
     | 'flex-start'
@@ -24,6 +28,20 @@ export type JustifyContentType =
     | 'end'
     | 'left'
     | 'right';
+
+export type AlignContentType =
+    | 'flex-start'
+    | 'flex-end'
+    | 'center'
+    | 'space-between'
+    | 'space-around'
+    | 'space-evenly'
+    | 'start'
+    | 'end'
+    | 'stretch'
+    | 'baseline'
+    | 'first baseline'
+    | 'last baseline';
 
 export type AlignItemsType =
     | 'stretch'
@@ -51,10 +69,12 @@ export type AlignSelfType =
 type FlexEffectivePropsType = Indexed<{
     direction?: DirectionType;
     justifyContent?: JustifyContentType;
+    alignContent?: AlignContentType;
     alignItems?: AlignItemsType;
     flexWrap?: WrapType;
 }> &
     HTMLAttributes<HTMLElement> &
+    SizeAttributesType &
     MarginAttributesType;
 
 type FlexItemEffectivePropsType = Indexed<{
@@ -65,7 +85,7 @@ type FlexItemEffectivePropsType = Indexed<{
     alignSelf?: AlignSelfType;
 }> &
     HTMLAttributes<HTMLElement> &
-    MarginAttributesType;
+    PaddingAttributesType;
 
 export type FlexPropsType = FlexItemEffectivePropsType;
 
