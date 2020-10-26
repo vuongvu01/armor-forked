@@ -13,6 +13,7 @@ import {
     AccordionHeaderIcon,
     AccordionHeaderRoot,
     AccordionHeaderTypography,
+    AccordionHeaderBody,
 } from './style';
 import { AccordionHeaderPropsType } from './type';
 import { accordionHeaderDefaultTheme } from './theme';
@@ -23,14 +24,13 @@ import {
     accordionHeaderTypography,
 } from '../constants';
 import { dropdownActionItem } from '../../Dropdown/constants';
-import { ExpansionIndicator } from '../../ExpansionIndicator';
 import AccordionContext from '../AccordionContext';
 import useAccordionHeaderClassName from './useAccordionHeaderClassName';
 import { useInternalRef } from '../../../utils';
 
 export const AccordionHeader: FunctionComponent<AccordionHeaderPropsType> = forwardRef(
     function AccordionHeader(
-        { title, className, classNames, ...restProps },
+        { title, children, className, classNames, ...restProps },
         ref,
     ) {
         const theme = useComponentTheme(
@@ -76,7 +76,7 @@ export const AccordionHeader: FunctionComponent<AccordionHeaderPropsType> = forw
             return () => {};
         }, [disabled, isExpanded]);
 
-        return title ? (
+        return (
             <AccordionHeaderRoot
                 data-testid={accordionHeaderRoot}
                 {...restProps}
@@ -88,16 +88,21 @@ export const AccordionHeader: FunctionComponent<AccordionHeaderPropsType> = forw
                 tabIndex={0}
                 theme={theme}
             >
-                <AccordionHeaderTypography
-                    className={classOverride.HeaderTitle}
-                    data-testid={accordionHeaderTypography}
-                    disabled={disabled}
-                    label
-                    large
-                    theme={theme}
-                >
-                    {title}
-                </AccordionHeaderTypography>
+                <AccordionHeaderBody>
+                    {title && (
+                        <AccordionHeaderTypography
+                            className={classOverride.HeaderTitle}
+                            data-testid={accordionHeaderTypography}
+                            disabled={disabled}
+                            label
+                            large
+                            theme={theme}
+                        >
+                            {title}
+                        </AccordionHeaderTypography>
+                    )}
+                    {children}
+                </AccordionHeaderBody>
                 <AccordionHeaderIcon
                     className={classOverride.IconContainer}
                     data-testid={accordionHeaderIcon}
@@ -115,6 +120,6 @@ export const AccordionHeader: FunctionComponent<AccordionHeaderPropsType> = forw
                     />
                 </AccordionHeaderIcon>
             </AccordionHeaderRoot>
-        ) : null;
+        );
     },
 );

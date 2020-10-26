@@ -1,4 +1,8 @@
-import { componentSpacing04, componentSpacing06 } from '../../../tokens';
+import {
+    componentSpacing03,
+    componentSpacing04,
+    componentSpacing06,
+} from '../../../tokens';
 
 export const accordionHeaderDefaultTheme = {
     Root: {
@@ -32,6 +36,7 @@ export const accordionHeaderDefaultTheme = {
     Typography: {
         base: {
             color: '$color.neutral.06',
+            paddingRight: componentSpacing03,
         },
         disabled: { color: '$color.neutral.04' },
     },
