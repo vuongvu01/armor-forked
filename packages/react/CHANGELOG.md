@@ -1,3 +1,10 @@
+## @deliveryhero/armor [1.18.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.18.0...@deliveryhero/armor@1.18.1) (2020-10-27)
+
+
+### Bug Fixes
+
+* Warnings in the console removed project-wide [LD-289] ([#281](https://github.com/deliveryhero/armor/issues/281)) ([64dd1c3](https://github.com/deliveryhero/armor/commit/64dd1c3d411a232dbd0bcfe28069a493d4a9f02d))
+
 # @deliveryhero/armor [1.18.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.17.0...@deliveryhero/armor@1.18.0) (2020-10-26)
 
 
