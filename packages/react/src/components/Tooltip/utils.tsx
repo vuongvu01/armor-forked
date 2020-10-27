@@ -26,6 +26,7 @@ import {
     TooltipStylesPropsType,
 } from './type';
 import { ClassNamesType } from '../type';
+import { consoleWarn } from '../../system/util/consoleWarn';
 
 export const useTooltipStylesOverride = (
     styles?: TooltipStylesPropsType,
@@ -214,19 +215,19 @@ export const useEventProxy = (
 
 export const validateChildren = (children: ReactNode): ReactNode | null => {
     if (!children) {
-        console.error('Tooltip should have children to attach itself to.');
+        consoleWarn('Tooltip should have children to attach itself to.');
         return null;
     }
 
     if (Array.isArray(children)) {
-        console.error(
+        consoleWarn(
             'Tooltip component can only accept single-node child element. Wrap your nodes with a parent node.',
         );
         return null;
     }
 
     if (isFragment(children)) {
-        console.error(
+        consoleWarn(
             'Tooltip component does not support React.Fragment as a child node.',
         );
         return children;

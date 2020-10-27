@@ -131,7 +131,9 @@ export const TagRoot = styled.div.withConfig({
     ${marginAttributes}
 `;
 
-export const TagTypography = styled(Typography)<TagTypographyPropsType>`
+export const TagTypography = styled(Typography).withConfig({
+    shouldForwardProp: property => shouldForwardProp(property, propertyList),
+})<TagTypographyPropsType>`
     ${typographyStyle}
 `;
 

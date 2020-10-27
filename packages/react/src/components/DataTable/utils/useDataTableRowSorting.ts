@@ -6,6 +6,7 @@ export const useDataTableRowSorting = ({
     defaultRowSortOrder,
     rowSortOrder,
     onRowSortOrderChange,
+    ...restProps
 }: DataTablePropsType) => {
     const [rowSortOrderInternal, setRowSortOrderInternal] = useState<
         TableHeadCellRowSortOrderType
@@ -25,7 +26,15 @@ export const useDataTableRowSorting = ({
     );
 
     return {
-        rowSortOrder: rowSortOrderActual,
-        onRowSortOrderChange: onRowSortOrderChangeInternal,
+        result: {
+            rowSortOrder: rowSortOrderActual,
+            onRowSortOrderChange: onRowSortOrderChangeInternal,
+        },
+        restProps,
     };
+
+    // return [{
+    //     rowSortOrder: rowSortOrderActual,
+    //     onRowSortOrderChange: onRowSortOrderChangeInternal,
+    // }, restProps];
 };

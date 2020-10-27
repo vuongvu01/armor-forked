@@ -9,6 +9,7 @@ export const useDataTableRowSelection = (
         defaultSelectedRowIds,
         selectedRowIds,
         onRowSelectionChange,
+        ...restProps
     }: DataTablePropsType,
 ) => {
     const [selectedRowIdsInternal, setSelectedRowIdsInternal] = useState<
@@ -83,11 +84,14 @@ export const useDataTableRowSelection = (
     );
 
     return {
-        enableRowSelection,
-        selectedRowIds: selectedRowIdsActual,
-        onHeadSelectorCellClick,
-        onDataSelectorCellClick,
-        allRowsSelected,
-        someRowsSelected,
+        result: {
+            enableRowSelection,
+            selectedRowIds: selectedRowIdsActual,
+            onHeadSelectorCellClick,
+            onDataSelectorCellClick,
+            allRowsSelected,
+            someRowsSelected,
+        },
+        restProps,
     };
 };

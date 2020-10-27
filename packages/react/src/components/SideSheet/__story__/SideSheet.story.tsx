@@ -94,7 +94,7 @@ export const SampleUseCase = () => {
                         label="Main dish"
                         marginY={2}
                         marginRight={6}
-                        selectedIndex={1}
+                        defaultValue={1}
                     />
                     <Dropdown
                         options={['French fries', 'Rice', 'Beans', 'Corn']}

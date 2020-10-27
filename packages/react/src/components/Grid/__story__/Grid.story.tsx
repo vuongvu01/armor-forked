@@ -14,7 +14,7 @@ const gridItemStyle = {
     borderWidth: '1px',
     borderStyle: 'dashed',
     borderColor: 'grey',
-    'text-align': 'center',
+    textAlign: 'center' as 'center',
 };
 
 const containerStyle = {

@@ -24,7 +24,9 @@ export const Basic = () => (
         level="error"
         disableIcon
     >
-        <Typography h6>Error message</Typography>
+        <Typography label medium marginBottom={2}>
+            Error message
+        </Typography>
         {loremIpsum}
         <Box>
             <MessageAction marginTop={2} marginRight={4}>
@@ -38,7 +40,9 @@ export const Basic = () => (
 export const Complete = () => {
     return (
         <Message error>
-            <Typography h6>System failure</Typography>
+            <Typography label medium marginBottom={2}>
+                System failure
+            </Typography>
             <Typography paragraph>
                 We ran out of cake. <br />
                 Please consider ordering more from one of our partner bakeries

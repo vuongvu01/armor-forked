@@ -15,6 +15,7 @@ const propertyList = {
     alignItems: true,
     flexGrow: true,
     alignSelf: true,
+    onSearchItemSelect: true,
 } as ObjectLiteralType;
 
 const headerNavigationRootStyle = ({

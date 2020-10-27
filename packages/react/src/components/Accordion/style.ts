@@ -1,10 +1,13 @@
 import styled, { css } from 'styled-components';
 
 import { marginAttributes } from '../../system/attributes';
-import { shouldForwardProp } from '../../utils';
+import { makePropList, shouldForwardProp } from '../../utils';
 import { AccordionRootPropsType } from './type';
 import { AccordionHeaderRootPropsType } from './AccordionHeader/type';
 import { transitionDurationInSec } from '../../constants';
+
+// all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
+const propertyList = makePropList(['isExpanded']);
 
 const accordionStyle = ({
     theme: {
@@ -18,7 +21,7 @@ const accordionStyle = ({
 };
 
 export const AccordionRoot = styled.div.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property),
+    shouldForwardProp: property => shouldForwardProp(property, propertyList),
 })<AccordionRootPropsType>`
     border-bottom-style: solid;
     border-bottom-width: 1px;

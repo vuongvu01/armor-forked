@@ -144,14 +144,9 @@ Message.propTypes = {
     /** Disable icon */
     disableIcon: PropTypes.bool,
     /** Actions to be shown on the right side */
-    actions: PropTypes.elementType,
+    actions: PropTypes.element,
     /** Extra data to be shown on the right side */
-    extra: PropTypes.elementType,
-    /** Data to be shown in the central part */
-    children: PropTypes.oneOfType([
-        PropTypes.arrayOf(PropTypes.element),
-        PropTypes.element,
-    ]),
+    extra: PropTypes.element,
     /** Message level */
     level: PropTypes.oneOf(['info', 'warning', 'error', 'success']),
     /** Message level: error */

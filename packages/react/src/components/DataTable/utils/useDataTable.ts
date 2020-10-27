@@ -10,31 +10,31 @@ export const useDataTable = ({
 
     enableRowSelection,
 
-    ...restRootProps
+    ...restProps
 }: DataTablePropsType) => {
     // structure and data
     const columnsSafe = useMemo(() => columns || [], [columns]);
     const dataSafe = useMemo(() => data || [], [data]);
 
-    const rowSorting = useDataTableRowSorting(restRootProps);
+    const rowSorting = useDataTableRowSorting(restProps);
     const rowSelection = useDataTableRowSelection(dataSafe, {
         enableRowSelection,
-        ...restRootProps,
+        ...rowSorting.restProps,
     });
     const stickyColumns = useDataTableStickyColumns(columnsSafe, {
         enableRowSelection,
-        ...restRootProps,
+        ...rowSelection.restProps,
     });
 
     return {
         columns: columnsSafe,
         data: dataSafe,
 
-        ...rowSorting,
-        ...rowSelection,
+        ...rowSorting.result,
+        ...rowSelection.result,
 
-        stickyColumns,
+        stickyColumns: stickyColumns.result,
 
-        restRootProps,
+        restRootProps: stickyColumns.restProps,
     };
 };

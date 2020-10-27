@@ -51,7 +51,7 @@ export const Checkbox: FunctionComponent<CheckboxPropsType> = forwardRef(
                 className={classOverride.Root}
                 disabled={disabled}
                 theme={theme}
-                for={id}
+                htmlFor={id}
             >
                 <CheckboxInput
                     className={classOverride.Input}
@@ -70,7 +70,6 @@ export const Checkbox: FunctionComponent<CheckboxPropsType> = forwardRef(
                     checkedIcon={checkedIcon}
                     className={classOverride.Checkmark}
                     disabled={disabled}
-                    for={id}
                     theme={theme}
                 />
                 <SelectorLabel disabled={disabled} error={error} theme={theme}>

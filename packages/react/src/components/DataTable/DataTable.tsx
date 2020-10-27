@@ -83,7 +83,6 @@ export const DataTable: FunctionComponent<DataTablePropsType> = forwardRef(
                                 <TableCell
                                     {...column.headCellProps}
                                     key={key}
-                                    columnId={column.id}
                                     data-columnid={column.id}
                                 >
                                     {column.title}
