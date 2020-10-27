@@ -73,7 +73,6 @@ type DropdownEffectivePropsType = Indexed<{
     onOptionSelect?: (itemIndex: number) => void;
     onSelect?: DropDownOnSelectType;
     selectedValue?: string | number;
-    selectedIndex?: number;
     isActionSeparatorDisplayed?: boolean;
     label?: string;
     options?:

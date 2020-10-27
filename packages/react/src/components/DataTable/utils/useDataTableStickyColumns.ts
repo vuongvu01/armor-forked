@@ -10,9 +10,10 @@ export const useDataTableStickyColumns = (
         stickyLeftColumn,
         stickyRightColumn,
         enableRowSelection,
+        ...restProps
     }: DataTablePropsType,
 ) => {
-    return useMemo<TableStickyColumnsMap>(() => {
+    const result = useMemo<TableStickyColumnsMap>(() => {
         const columnMap: TableStickyColumnsMap = [];
         if (stickyLeftColumn) {
             columnMap.push({
@@ -39,4 +40,9 @@ export const useDataTableStickyColumns = (
 
         return columnMap;
     }, [stickyLeftColumn, stickyRightColumn, enableRowSelection, columnsSafe]);
+
+    return {
+        result,
+        restProps,
+    };
 };

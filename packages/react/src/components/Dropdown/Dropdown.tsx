@@ -275,5 +275,4 @@ Dropdown.propTypes = {
             }).isRequired,
         ),
     ]),
-    selectedIndex: PropTypes.number,
 };

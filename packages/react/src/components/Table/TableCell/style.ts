@@ -4,8 +4,7 @@ import {
     TableCellContentAlignmentAttributesType,
     TableCellRootPropsType,
 } from './type';
-import { ObjectLiteralType } from '../../../type';
-import { shouldForwardProp } from '../../../utils';
+import { makePropList, shouldForwardProp } from '../../../utils';
 import {
     colorAttributes,
     heightAttributes,
@@ -13,24 +12,21 @@ import {
     widthAttributes,
 } from '../../../system/attributes';
 import { zIndexTableHeader } from '../../../tokens';
-import {
-    LEFT,
-    MIDDLE,
-    RIGHT,
-    transitionDurationInSec,
-} from '../../../constants';
+import { LEFT, RIGHT, transitionDurationInSec } from '../../../constants';
 
 // all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
-const propertyList = {
-    isHeader: true,
-    stickyTop: true,
-    stickyVisible: true,
-    stickyShadowVisible: true,
-    contentAlignX: true,
-    contentAlignY: true,
-    disabled: true,
-    ellipsis: true,
-} as ObjectLiteralType;
+const propertyList = makePropList([
+    'isHeader',
+    'contentAlignX',
+    'contentAlignY',
+    'disabled',
+    'ellipsis',
+    'stickyTop',
+    'stickyAlignment',
+    'stickyOffset',
+    'stickyShadowVisible',
+    'stickyVisible',
+]);
 
 const getRootBaseStyle = ({ theme }: TableCellRootPropsType) =>
     theme.componentOverrides.TableCell.Root.base;

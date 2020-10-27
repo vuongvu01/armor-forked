@@ -5,12 +5,7 @@ import {
     MarginAttributesType,
     WidthAttributesType,
 } from '../../system/attributes';
-import {
-    ArrayLikeType,
-    Indexed,
-    ObjectLiteralType,
-    ScalarType,
-} from '../../type';
+import { Indexed } from '../../type';
 import {
     TableCellStickyAlignment,
     TableCellStickyOffset,

@@ -304,7 +304,7 @@ export const ErrorAndDisabledStatePropagation = () => {
                         } with pre-selected`}
                         options={options}
                         onSelect={handleonSelect}
-                        selectedIndex={initialSelectionIndex}
+                        defaultValue={initialSelectionIndex}
                     />
                     <Typography paragraph>
                         Selected value: {JSON.stringify(selectedOptionLast)}

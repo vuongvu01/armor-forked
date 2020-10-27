@@ -64,7 +64,7 @@ export const MinimumConfiguration = () => {
                             label="Main dish"
                             marginY={2}
                             marginRight={6}
-                            selectedIndex={1}
+                            defaultValue={0}
                         />
                         <Dropdown
                             options={['French fries', 'Rice', 'Beans', 'Corn']}
@@ -72,7 +72,7 @@ export const MinimumConfiguration = () => {
                             label="Side dish"
                             marginTop={2}
                             marginBottom={6}
-                            selectedIndex={2}
+                            defaultValue={2}
                         />
                     </Box>
                     <Box marginBottom={10}>

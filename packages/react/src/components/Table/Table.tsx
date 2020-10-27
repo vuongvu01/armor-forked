@@ -47,16 +47,12 @@ export const Table: FunctionComponent<TablePropsType> = forwardRef(
 
 Table.defaultProps = {
     horizontalScroll: false,
-    stickyLeftColumn: false,
-    stickyRightColumn: false,
     stickyHead: false,
 };
 
 /** prop-types are required here for run-time checks */
 Table.propTypes = {
     horizontalScroll: PropTypes.bool,
-    stickyLeftColumn: PropTypes.bool,
-    stickyRightColumn: PropTypes.bool,
     stickyHead: PropTypes.bool,
     selectedRowIds: PropTypes.arrayOf(
         PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,

@@ -1,14 +1,24 @@
 import styled, { css } from 'styled-components';
 
-import { shouldForwardProp } from '../../../utils';
-import { ObjectLiteralType } from '../../../type';
+import { makePropList, shouldForwardProp } from '../../../utils';
 import { GridItemPropsType, GridSizeType } from './type';
 import { GRID_RESOLUTION } from '../constants';
 import { BreakpointCodeType } from '../../../system/mixins/type';
 import { setHorizontalMargin, setVerticalMargin } from '../style';
 import { ThemeType } from '../../../styling';
 
-const propertyList = {} as ObjectLiteralType;
+// all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
+const propertyList = makePropList([
+    'gutterSpacing',
+    'gutterSpacingVertical',
+    'gutterSpacingHorizontal',
+    // todo: dont hard-code these props, they should be removed from restProps automatically
+    'xs',
+    'sm',
+    'md',
+    'lg',
+    'xl',
+]);
 
 const setMediaStyle = (
     size: GridSizeType,
