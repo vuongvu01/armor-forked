@@ -1,3 +1,10 @@
+# @deliveryhero/armor [1.19.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.18.1...@deliveryhero/armor@1.19.0) (2020-10-29)
+
+
+### Features
+
+* fixes and improvements [LD-290] ([#283](https://github.com/deliveryhero/armor/issues/283)) ([09cf084](https://github.com/deliveryhero/armor/commit/09cf08453a50d43ca4d1a99c65b4c50a5d3fd9ac))
+
 ## @deliveryhero/armor [1.18.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.18.0...@deliveryhero/armor@1.18.1) (2020-10-27)
 
 
