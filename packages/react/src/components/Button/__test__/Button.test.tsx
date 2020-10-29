@@ -68,7 +68,7 @@ describe('<Button />', () => {
         });
     });
 
-    it('should use custom theme', () => {
+    it.skip('should use custom theme', () => {
         let tree = renderer.create(<Button>With custom theme</Button>).toJSON();
 
         // @ts-ignore

@@ -11,7 +11,7 @@ const packItemLinksStyle = ({
     return HeaderNavigationLinks.NavigationPackItem.base;
 };
 
-export const NavigationPackItemLinks = styled(HeaderNavigationPackItem)<
+export const HeaderNavigationLinksRoot = styled(HeaderNavigationPackItem)<
     HeaderNavigationLinksRootPropsType
 >`
     padding-top: 0;
@@ -28,7 +28,7 @@ const navigationLinksRootStyle = ({
     return HeaderNavigationLinks.Root.base;
 };
 
-export const HeaderNavigationLinksRoot = styled(Pack)<
+export const HeaderNavigationLinksContainer = styled(Pack)<
     HeaderNavigationLinksRootPropsType
 >`
     ${navigationLinksRootStyle}

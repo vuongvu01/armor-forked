@@ -1,4 +1,9 @@
-import React, { forwardRef, FunctionComponent, useContext } from 'react';
+import React, {
+    forwardRef,
+    FunctionComponent,
+    useCallback,
+    useContext,
+} from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -33,7 +38,9 @@ export const HeaderNavigationLink: FunctionComponent<HeaderNavigationLinkPropsTy
         },
         ref,
     ) {
-        const { onLinkClick } = useContext(HeaderNavigationLinksContext);
+        const { onLinkClick, locationTracking, pathname } = useContext(
+            HeaderNavigationLinksContext,
+        );
 
         const theme = useComponentTheme(
             HEADER_NAVIGATION_LINK_CLASS_PREFIX,
@@ -46,14 +53,29 @@ export const HeaderNavigationLink: FunctionComponent<HeaderNavigationLinkPropsTy
             classNames,
         );
 
-        const handleLinkClick = (event: React.MouseEvent<HTMLDivElement>) => {
+        // todo: put all of this inside of a hook
+        const handleLinkClick = useCallback(() => {
             if (onLinkClick && name) {
                 onLinkClick(name);
             }
-        };
+        }, [onLinkClick, name]);
 
         const isLink = to && LinkRoot;
         const isHrefLink = href;
+
+        const url = to || href;
+        let isReallyActive = false;
+        if (isActive !== undefined) {
+            isReallyActive = isActive;
+        } else if (locationTracking && url) {
+            let currentPathname = pathname;
+            if (currentPathname === undefined && window) {
+                currentPathname = window.location.pathname;
+            }
+            if (currentPathname) {
+                isReallyActive = currentPathname.startsWith(url);
+            }
+        }
 
         let childElements = null;
 
@@ -73,7 +95,7 @@ export const HeaderNavigationLink: FunctionComponent<HeaderNavigationLinkPropsTy
                 <HrefLinkRoot
                     theme={theme}
                     className={classOverride.Href}
-                    isActive={isActive}
+                    isActive={isReallyActive}
                     href={href}
                     rel={rel}
                     target={target}
@@ -91,7 +113,7 @@ export const HeaderNavigationLink: FunctionComponent<HeaderNavigationLinkPropsTy
                 theme={theme}
                 className={classOverride.Root}
                 ref={ref}
-                isActive={isActive}
+                isActive={isReallyActive}
                 onClick={handleLinkClick}
                 to={to}
             >

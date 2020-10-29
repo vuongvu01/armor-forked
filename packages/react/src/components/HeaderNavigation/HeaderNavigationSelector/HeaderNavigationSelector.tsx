@@ -37,6 +37,7 @@ export const HeaderNavigationSelector: FunctionComponent<HeaderNavigationSelecto
             classNames,
         );
 
+        // todo: use spreads here where possible
         return navigationSelectorParams ? (
             <NavigationPackItemSelector
                 theme={theme}
@@ -58,6 +59,7 @@ export const HeaderNavigationSelector: FunctionComponent<HeaderNavigationSelecto
                             placeholder={navigationSelectorParams.label}
                             multiple={navigationSelectorParams.isMultiselect}
                             defaultValue={navigationSelectorParams.defaultValue}
+                            value={navigationSelectorParams.value}
                             isListExpanded={navigationSelectorParams.isExpanded}
                             isActionSeparatorDisplayed={false}
                             theme={theme}

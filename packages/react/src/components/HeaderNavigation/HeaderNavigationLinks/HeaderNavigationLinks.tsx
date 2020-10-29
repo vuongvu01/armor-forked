@@ -1,7 +1,10 @@
 import React, { forwardRef, FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import { HeaderNavigationLinksRoot, NavigationPackItemLinks } from './style';
+import {
+    HeaderNavigationLinksContainer,
+    HeaderNavigationLinksRoot,
+} from './style';
 import { HeaderNavigationLinksPropsType } from './type';
 import { useComponentTheme } from '../../../utils/hooks';
 import {
@@ -11,10 +14,11 @@ import {
 import useHeaderNavigationLinksClassName from './utils/useHeaderNavigationLinksClassName';
 import { headerNavigationLinks } from './theme';
 import HeaderNavigationLinksContext from './HeaderNavigationLinksContext';
+import { useHeaderNavigationLinks } from './utils/useHeaderNavigationLinks';
 
 export const HeaderNavigationLinks: FunctionComponent<HeaderNavigationLinksPropsType> = forwardRef(
     function HeaderNavigationLinks(
-        { className, classNames, onLinkClick, ...restProps },
+        { className, classNames, children, ...restProps },
         ref,
     ) {
         const theme = useComponentTheme(
@@ -28,27 +32,37 @@ export const HeaderNavigationLinks: FunctionComponent<HeaderNavigationLinksProps
             classNames,
         );
 
+        const { result, restProps: restRootProps } = useHeaderNavigationLinks(
+            restProps,
+        );
+
         return (
-            <HeaderNavigationLinksContext.Provider value={{ onLinkClick }}>
-                <NavigationPackItemLinks
+            <HeaderNavigationLinksContext.Provider
+                value={result.headerNavigationLinksContextValue}
+            >
+                <HeaderNavigationLinksRoot
+                    data-testid={headerNavigationLinksRoot}
+                    {...restRootProps}
                     theme={theme}
-                    className={classOverride.PackItem}
+                    className={classOverride.Root}
                     flexGrow={1}
+                    ref={ref}
                 >
-                    <HeaderNavigationLinksRoot
-                        data-testid={headerNavigationLinksRoot}
-                        {...restProps}
+                    <HeaderNavigationLinksContainer
                         theme={theme}
-                        className={classOverride.NavigationLinksRoot}
-                        ref={ref}
-                    />
-                </NavigationPackItemLinks>
+                        className={classOverride.Container}
+                    >
+                        {children}
+                    </HeaderNavigationLinksContainer>
+                </HeaderNavigationLinksRoot>
             </HeaderNavigationLinksContext.Provider>
         );
     },
 );
 
-HeaderNavigationLinks.defaultProps = {};
+HeaderNavigationLinks.defaultProps = {
+    locationTracking: true,
+};
 
 HeaderNavigationLinks.propTypes = {
     onLinkClick: PropTypes.func,

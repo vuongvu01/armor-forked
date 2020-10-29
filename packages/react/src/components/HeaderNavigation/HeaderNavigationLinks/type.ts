@@ -13,6 +13,8 @@ export type ClassBasedOnComponentType = {
 
 type HeaderNavigationLinksEffectivePropsType = Indexed<{
     onLinkClick?: (linkName: string) => void;
+    locationTracking?: boolean;
+    pathname?: string;
 }> &
     HTMLAttributes<HTMLElement> &
     MarginAttributesType;
@@ -22,6 +24,9 @@ export type HeaderNavigationLinksPropsType = HeaderNavigationLinksEffectiveProps
 export type HeaderNavigationLinksRootPropsType = HeaderNavigationLinksPropsType &
     NodeStylePropsType<HeaderNavigationLinksPropsType>;
 
-export type HeaderNavigationLinksContextType = Indexed<{
-    onLinkClick?: (linkName: string) => void;
-}>;
+export type HeaderNavigationLinksContextType = Indexed<
+    Pick<
+        HeaderNavigationLinksEffectivePropsType,
+        'onLinkClick' | 'locationTracking' | 'pathname'
+    >
+>;

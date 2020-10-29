@@ -23,6 +23,7 @@ export type NavigationSelectorParamsType = {
     isMultiselect?: boolean;
     isExpanded?: boolean;
     defaultValue?: number | number[];
+    value?: number | number[];
     options?:
         | string[]
         | { label: string; value: string | number; [key: string]: any }[]; // aka OptionType - defining explicitly to expose into docs

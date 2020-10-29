@@ -88,7 +88,7 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
             onSelect,
             onChange,
         );
-        const internalOptions = useOptions(options);
+        const { internalOptions, isFlat } = useOptions(options);
 
         const selectedValueToDisplay = useSelectedValueToDisplay(
             onRenderSelectedValue,
@@ -116,15 +116,15 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
             }
         };
 
-        const onOptionSelect = (itemIndex: number) => {
+        const onOptionSelect = (item: OptionObjectType) => {
             if (internalOptions) {
-                const selectedItem = internalOptions[itemIndex];
                 onValueUpdate(
                     internalValue,
                     multiple,
-                    selectedItem,
-                    itemIndex,
+                    item,
+                    item.value,
                     options,
+                    isFlat,
                 );
             }
 
@@ -179,15 +179,12 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
             </ExpansionIndicatorContainer>
         );
 
-        const renderOptionItem = (
-            item: OptionObjectType,
-            itemIndex: number,
-        ) => (
+        const renderOptionItem = (item: OptionObjectType) => (
             <DropdownOptionItem
                 className={classOverride.OptionItem}
                 isSelected={internalValue.includes(item.value)}
                 item={item}
-                itemIndex={itemIndex}
+                itemIndex={item.value}
                 key={item.value}
                 onOptionSelect={onOptionSelect}
                 theme={theme}

@@ -27,14 +27,14 @@ const useHeaderNavigationLinksClassName = (
 ) =>
     useMemo(() => {
         return {
-            PackItem: getClassNameByComponent({
-                component: 'PackItem',
+            Root: getClassNameByComponent({
+                component: 'LinksRoot',
                 classPrefix,
                 className,
                 classNames,
             }),
-            NavigationLinksRoot: getClassNameByComponent({
-                component: 'NavigationLinksRoot',
+            Container: getClassNameByComponent({
+                component: 'Container',
                 classPrefix,
                 className,
                 classNames,

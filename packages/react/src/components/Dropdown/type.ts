@@ -43,8 +43,9 @@ export type DropdownOnValueUpdateType = (
     value: DropdownInternalValueType,
     multiple: boolean | undefined,
     selectedOption: OptionObjectType,
-    itemIndex?: number,
+    itemIndex?: ScalarType,
     options?: OptionType,
+    isFlat?: boolean,
 ) => void;
 
 export type DropdownOnChangeEventType = {
@@ -116,8 +117,8 @@ export type DropdownOptionListPropsType = Indexed<{
 export type DropdownOptionItemPropsType = Indexed<{
     isSelected?: boolean;
     item: OptionObjectType;
-    itemIndex: number;
-    onOptionSelect?: (itemIndex: number) => void;
+    itemIndex: ScalarType;
+    onOptionSelect?: (item: OptionObjectType) => void;
 }> &
     Pick<
         DropdownEffectivePropsType,

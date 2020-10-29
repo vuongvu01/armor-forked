@@ -17,6 +17,7 @@ export const HeaderNavigationMenuContentRoot = styled.div<
     max-width: 360px;
     cursor: default;
     outline: none;
+    user-select: none;
 
     ${headerNavigationMenuContentRootStyle}
 `;

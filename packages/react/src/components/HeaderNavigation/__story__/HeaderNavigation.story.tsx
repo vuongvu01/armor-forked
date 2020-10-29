@@ -11,6 +11,7 @@ import {
     HeaderNavigationMenuContent,
     HeaderNavigationMenuContentBody,
     HeaderNavigationMenuContentHeader,
+    HeaderNavigationMenuContentLogistics,
 } from '../HeaderNavigationMenu/HeaderNavigationMenuContent';
 import {
     HeaderNavigationLink,
@@ -29,6 +30,7 @@ import { HeaderNavigationTitle } from '../HeaderNavigationTitle';
 import { HeaderNavigationSelector } from '../HeaderNavigationSelector';
 import { HeaderNavigationSearch } from '../HeaderNavigationSearch';
 import { DropdownSelectedOptionType } from '../../Dropdown/type';
+import { Pack, PackItem } from '../../Pack';
 
 export default {
     title: 'Components/HeaderNavigation',
@@ -489,3 +491,80 @@ export const MultiplePreSelectedCountry = () => (
         navigationAction={NavigationAction}
     />
 );
+
+export const Arara = () => {
+    const [currentCountry, setCurrentCountry] = useState<number>(2);
+
+    const countries = [
+        { value: -1, label: 'All countries', code: null },
+        { value: 2, label: 'Australia', code: 'au' },
+        { value: 1, label: 'Austria', code: 'at' },
+        { value: 3, label: 'Canada', code: 'ca' },
+        { value: 5, label: 'Finland', code: 'fi' },
+        { value: 6, label: 'France', code: 'fr' },
+        { value: 4, label: 'Germany', code: 'de' },
+        { value: 7, label: 'Italy', code: 'it' },
+        { value: 8, label: 'Netherlands', code: 'nl' },
+        { value: 9, label: 'Norway', code: 'no' },
+        { value: 10, label: 'Sweden', code: 'se' },
+    ];
+
+    const selectorProps = {
+        label: 'Country',
+        options: countries,
+        value: currentCountry,
+    };
+
+    return (
+        <BrowserRouter>
+            <HeaderNavigation
+                navigationMenuTitle={
+                    <HeaderNavigationTitle tag={Link} to="/">
+                        <Pack>
+                            {/* <PackItem paddingLeft={2}> */}
+                            {/*    <Image /> */}
+                            {/* </PackItem> */}
+                            <PackItem>Arara</PackItem>
+                        </Pack>
+                    </HeaderNavigationTitle>
+                }
+                navigationMenuContent={<HeaderNavigationMenuContentLogistics />}
+                links={
+                    <HeaderNavigationLinks>
+                        <HeaderNavigationLink to="/applicants" tag={Link}>
+                            Applicants
+                        </HeaderNavigationLink>
+                        <HeaderNavigationLink to="/schedules" tag={Link}>
+                            Schedules
+                        </HeaderNavigationLink>
+                        <HeaderNavigationLink to="/workflows" tag={Link}>
+                            Workflows
+                        </HeaderNavigationLink>
+                        <HeaderNavigationLink to="/forms" tag={Link}>
+                            Forms
+                        </HeaderNavigationLink>
+                        <HeaderNavigationLink to="/configurations" tag={Link}>
+                            Configurations
+                        </HeaderNavigationLink>
+                    </HeaderNavigationLinks>
+                }
+                selector={
+                    <HeaderNavigationSelector
+                        navigationSelectorParams={selectorProps}
+                        onOptionSelect={country => {
+                            // @ts-ignore
+                            setCurrentCountry(country.value);
+                        }}
+                    />
+                }
+                navigationAction={
+                    <HeaderNavigationAction>
+                        <HeaderNavigationActionItem>
+                            <LogoutIcon />
+                        </HeaderNavigationActionItem>
+                    </HeaderNavigationAction>
+                }
+            />
+        </BrowserRouter>
+    );
+};
