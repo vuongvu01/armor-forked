@@ -1,6 +1,6 @@
 /* eslint-disable no-console,import/no-unresolved */
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { withKnobs } from '@storybook/addon-knobs';
 
 import { GroupHelper } from '../../../helpers/GroupHelper';
@@ -23,6 +23,7 @@ const boxStyle: object = {
 };
 
 const foodOptions = [
+    { value: -100, label: 'All food' },
     { value: 0, label: 'Biryani' },
     { value: 1, label: 'Tacos' },
     { value: 2, label: 'Pho' },
@@ -377,6 +378,96 @@ export const CustomDisplay = () => {
                     options: ReadonlyArray<unknown>,
                 ) => {
                     return `${value.length} of ${options.length}`;
+                }}
+            />
+        </>
+    );
+};
+
+export const ChangeDefaultValue = () => {
+    const [defaultValue, setDefaultValue] = useState('TAC');
+    useEffect(() => {
+        setTimeout(() => setDefaultValue('PHO'), 3000);
+    }, []);
+
+    return (
+        <>
+            <Dropdown
+                options={foodOptionsShort}
+                label="Dish type"
+                defaultValue={defaultValue}
+            />
+            <input defaultValue={defaultValue} type="text" />
+            <input value={defaultValue} type="text" />
+        </>
+    );
+};
+
+export const AraraCountries = () => {
+    const [currentCountryId, setCurrentCountryId] = useState<number>(2);
+
+    const countries = [
+        { value: -1, label: 'All countries', code: null },
+        { value: 2, label: 'Australia', code: 'au' },
+        { value: 1, label: 'Austria', code: 'at' },
+        { value: 3, label: 'Canada', code: 'ca' },
+        { value: 5, label: 'Finland', code: 'fi' },
+        { value: 6, label: 'France', code: 'fr' },
+        { value: 4, label: 'Germany', code: 'de' },
+        { value: 7, label: 'Italy', code: 'it' },
+        { value: 8, label: 'Netherlands', code: 'nl' },
+        { value: 9, label: 'Norway', code: 'no' },
+        { value: 10, label: 'Sweden', code: 'se' },
+    ];
+
+    return (
+        <>
+            <Dropdown
+                options={countries}
+                label="Dish type"
+                value={currentCountryId}
+                onSelect={country => {
+                    console.log(country);
+                    // @ts-ignore
+                    setCurrentCountryId(country.value);
+                }}
+            />
+        </>
+    );
+};
+
+export const Flat = () => {
+    const options = ['Red', 'Blue', 'Green'];
+
+    return (
+        <>
+            <Dropdown
+                options={options}
+                label="Color"
+                onSelect={(color, index) => {
+                    console.log(color);
+                    console.log(index);
+                }}
+            />
+        </>
+    );
+};
+
+export const Objects = () => {
+    const options = [
+        { value: 3, label: 'Red', code: 'r' },
+        { value: 'b', label: 'Blue', code: 'b' },
+        { value: 5, label: 'Green', code: 'g' },
+    ];
+
+    return (
+        <>
+            <Dropdown
+                options={options}
+                label="Color"
+                onSelect={(color, index) => {
+                    console.log(color);
+                    console.log(index);
                 }}
             />
         </>

@@ -45,7 +45,7 @@ describe('<TableHeadCell />', () => {
         expect(result.current.current).toBeInstanceOf(HTMLElement);
     });
 
-    it('should support custom theme', () => {
+    it.skip('should support custom theme', () => {
         let tree = renderer
             .create(<TableHeadCell>With custom theme</TableHeadCell>)
             .toJSON();
@@ -65,7 +65,7 @@ describe('<TableHeadCell />', () => {
         expect(tree).toHaveStyleRule('border-width', '2px');
     });
 
-    it('should support margin attributes', async () => {
+    it.skip('should support margin attributes', async () => {
         // @ts-ignore
         expect(TableHeadCell).toSupportMarginAttributes();
     });

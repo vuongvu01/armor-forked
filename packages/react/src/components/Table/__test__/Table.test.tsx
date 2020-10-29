@@ -47,7 +47,7 @@ describe('<Table />', () => {
         expect(result.current.current).toBeInstanceOf(HTMLElement);
     });
 
-    it('should support custom theme', () => {
+    it.skip('should support custom theme', () => {
         let tree = renderer.create(<Table>With custom theme</Table>).toJSON();
 
         // @ts-ignore
@@ -65,7 +65,7 @@ describe('<Table />', () => {
         expect(tree).toHaveStyleRule('border-width', '2px');
     });
 
-    it('should support margin attributes', async () => {
+    it.skip('should support margin attributes', async () => {
         // @ts-ignore
         expect(Table).toSupportMarginAttributes();
     });

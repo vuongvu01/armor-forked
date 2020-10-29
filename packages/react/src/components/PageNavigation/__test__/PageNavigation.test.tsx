@@ -54,7 +54,7 @@ describe('<PageNavigation />', () => {
         expect(result.current.current).toBeInstanceOf(HTMLElement);
     });
 
-    it('should support custom theme', () => {
+    it.skip('should support custom theme', () => {
         let tree = renderer
             .create(<PageNavigation>With custom theme</PageNavigation>)
             .toJSON();
@@ -74,7 +74,7 @@ describe('<PageNavigation />', () => {
         expect(tree).toHaveStyleRule('border-width', '2px');
     });
 
-    it('should support margin attributes', async () => {
+    it.skip('should support margin attributes', async () => {
         // @ts-ignore
         expect(PageNavigation).toSupportMarginAttributes();
     });

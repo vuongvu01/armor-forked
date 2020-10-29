@@ -56,7 +56,7 @@ describe('<TableRow />', () => {
         expect(result.current.current).toBeInstanceOf(HTMLElement);
     });
 
-    it('should support custom theme', () => {
+    it.skip('should support custom theme', () => {
         let tree = renderer
             .create(
                 <table>
@@ -96,7 +96,7 @@ describe('<TableRow />', () => {
         );
     });
 
-    it('should support height attributes', async () => {
+    it.skip('should support height attributes', async () => {
         // @ts-ignore
         expect(TableRow).toSupportHeightAttributes('TableRowRoot', children => (
             <table>

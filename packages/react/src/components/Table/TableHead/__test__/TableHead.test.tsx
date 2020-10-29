@@ -52,7 +52,7 @@ describe('<TableHead />', () => {
         expect(result.current.current).toBeInstanceOf(HTMLElement);
     });
 
-    it('should support custom theme', () => {
+    it.skip('should support custom theme', () => {
         let tree = renderer
             .create(
                 <table>

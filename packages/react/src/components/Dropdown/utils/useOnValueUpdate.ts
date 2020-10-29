@@ -19,7 +19,14 @@ export const useOnValueUpdate = (
     onChange?: DropdownOnChangeType,
 ) =>
     useCallback<DropdownOnValueUpdateType>(
-        (internalValue, multiple, selectedOption, itemIndex, options) => {
+        (
+            internalValue,
+            multiple,
+            selectedOption,
+            itemIndex,
+            options,
+            isFlat,
+        ) => {
             const chosenItem = selectedOption.value;
 
             if (typeof chosenItem === 'undefined') {
@@ -47,7 +54,8 @@ export const useOnValueUpdate = (
                 });
             }
             if (onSelect && !multiple && options) {
-                onSelect(options[chosenItem as number], itemIndex);
+                const option = isFlat ? selectedOption.label : selectedOption;
+                onSelect(option, options.indexOf(option));
             }
 
             setInternalValue(nextValue);

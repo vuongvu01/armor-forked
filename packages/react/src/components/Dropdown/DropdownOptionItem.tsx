@@ -24,7 +24,7 @@ const DropdownOptionItem: FunctionComponent<DropdownOptionItemPropsType> = ({
             event.preventDefault();
 
             if (onOptionSelect) {
-                onOptionSelect(itemIndex);
+                onOptionSelect(item);
             }
         },
         [onOptionSelect],
