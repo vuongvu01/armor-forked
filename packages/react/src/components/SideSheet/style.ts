@@ -16,7 +16,10 @@ import {
     closeIconOffset,
 } from './constants';
 
-const blacklistProperties = { effectToggle: true };
+const blacklistProperties = {
+    effectToggle: true,
+    disableEffects: true,
+};
 
 const calculateWidth = (effectToggle?: boolean, wide?: boolean) => {
     if (effectToggle) {

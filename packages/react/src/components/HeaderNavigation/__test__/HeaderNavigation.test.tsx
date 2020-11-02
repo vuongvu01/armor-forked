@@ -10,7 +10,7 @@ import renderer from 'react-test-renderer';
 import { HeaderNavigation } from '../HeaderNavigation';
 import { headerNavigationRoot } from '../constants';
 
-describe('<v />', () => {
+describe('<HeaderNavigation />', () => {
     afterEach(async () => {
         cleanup();
         await cleanupHooks();

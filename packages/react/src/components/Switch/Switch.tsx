@@ -43,7 +43,7 @@ export const Switch: FunctionComponent<SwitchPropsType> = forwardRef(
             onChange && onChange(event);
 
         return (
-            <SwitchRoot disabled={disabled} for={id}>
+            <SwitchRoot disabled={disabled} htmlFor={id}>
                 <SwitchCheckboxInput
                     {...restProps}
                     checked={checked}
@@ -59,7 +59,6 @@ export const Switch: FunctionComponent<SwitchPropsType> = forwardRef(
                     className={classOverride.Label}
                     disabled={disabled}
                     theme={theme}
-                    htmlFor={id}
                 />
                 <SelectorLabel disabled={disabled} error={error} theme={theme}>
                     {label}
@@ -83,5 +82,4 @@ Switch.propTypes = {
     id: PropTypes.string,
     label: PropTypes.string,
     onChange: PropTypes.func,
-    ref: PropTypes.func,
 };

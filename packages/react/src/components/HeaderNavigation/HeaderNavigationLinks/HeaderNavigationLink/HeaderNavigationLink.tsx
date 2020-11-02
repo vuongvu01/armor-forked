@@ -127,7 +127,7 @@ HeaderNavigationLink.defaultProps = {};
 
 HeaderNavigationLink.propTypes = {
     isActive: PropTypes.bool,
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string,
     to: PropTypes.string,
     tag: PropTypes.oneOfType([PropTypes.elementType, PropTypes.string]),
     href: PropTypes.string,

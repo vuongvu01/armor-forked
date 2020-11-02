@@ -45,7 +45,6 @@ export const StackItem: FunctionComponent<StackItemPropsType> = forwardRef(
 StackItem.defaultProps = {};
 
 StackItem.propTypes = {
-    ref: PropTypes.func,
     flexGrow: PropTypes.number,
     flexShrink: PropTypes.number,
     flexBasis: PropTypes.string,

@@ -13,7 +13,7 @@ import { useComponentTheme } from '../../../utils/hooks';
 import HeaderNavigationLinksContext from '../HeaderNavigationLinks/HeaderNavigationLinksContext';
 
 export const HeaderNavigationTitle: FunctionComponent<HeaderNavigationTitlePropsType> = forwardRef(
-    function HeaderNavigationLink(
+    function HeaderNavigationTitle(
         {
             className,
             classNames,
@@ -66,7 +66,7 @@ HeaderNavigationTitle.defaultProps = {};
 
 HeaderNavigationTitle.propTypes = {
     isActive: PropTypes.bool,
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string,
     to: PropTypes.string,
     tag: PropTypes.oneOfType([PropTypes.elementType, PropTypes.string]),
     href: PropTypes.string,

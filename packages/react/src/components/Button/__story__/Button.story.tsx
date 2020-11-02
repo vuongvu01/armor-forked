@@ -358,6 +358,23 @@ export const WithCustomTheme = () => (
     </ThemeProvider>
 );
 
+export const WithCustomThemeAsLink = () => (
+    <ThemeProvider theme={customTheme}>
+        <BrowserRouter>
+            <Button
+                {...getTypeAttributes(select('Type', optionsType, 'primary'))}
+                wide={boolean('Wide', false)}
+                small={boolean('Small', false)}
+                tag={Link}
+                to="/homepage"
+            >
+                <MaterialIcon marginRight={2} icon="save" />
+                With custom theme
+            </Button>
+        </BrowserRouter>
+    </ThemeProvider>
+);
+
 export const AsRouterLink = () => (
     <BrowserRouter>
         <Button tag={Link} to="/homepage">

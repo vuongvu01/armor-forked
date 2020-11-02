@@ -41,7 +41,7 @@ describe('<Search />', () => {
     });
 
     it('should render itself without errors', async () => {
-        render(<Search options={foodOptions} />);
+        render(<Search options={foodOptions} onClose={() => {}} />);
     });
 
     it('should support forwardRef', () => {

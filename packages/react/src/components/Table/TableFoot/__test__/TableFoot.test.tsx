@@ -20,11 +20,19 @@ describe('<TableFoot />', () => {
     });
 
     it('should render itself without errors', async () => {
-        render(<TableFoot />);
+        render(
+            <table>
+                <TableFoot />
+            </table>,
+        );
     });
 
     it('should contain correct CSS classes and attributes', () => {
-        const result = render(<TableFoot />);
+        const result = render(
+            <table>
+                <TableFoot />
+            </table>,
+        );
         // @ts-ignore
         expect(result.container).toHaveBEMStructure('TableFoot', {
             Root: [],
@@ -33,28 +41,38 @@ describe('<TableFoot />', () => {
 
     it('should support forwardRef', () => {
         const { result } = renderHook(() => useRef());
-        render(<TableFoot ref={result.current} />);
+        render(
+            <table>
+                <TableFoot ref={result.current} />
+            </table>,
+        );
 
         expect(result.current.current).toBeInstanceOf(HTMLElement);
     });
 
     it.skip('should support custom theme', () => {
         let tree = renderer
-            .create(<TableFoot>With custom theme</TableFoot>)
+            .create(
+                <table>
+                    <TableFoot>With custom theme</TableFoot>
+                </table>,
+            )
             .toJSON();
 
         // @ts-ignore
-        expect(tree).not.toHaveStyleRule('border-width', '2px');
+        expect(tree.children[0]).not.toHaveStyleRule('border-width', '2px');
 
         tree = renderer
             .create(
                 <ThemeProvider theme={customTheme}>
-                    <TableFoot>With custom theme</TableFoot>
+                    <table>
+                        <TableFoot>With custom theme</TableFoot>
+                    </table>
                 </ThemeProvider>,
             )
             .toJSON();
 
         // @ts-ignore
-        expect(tree).toHaveStyleRule('border-width', '2px');
+        expect(tree.children[0]).toHaveStyleRule('border-width', '2px');
     });
 });

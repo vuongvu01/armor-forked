@@ -90,6 +90,5 @@ Tag.propTypes = {
     deleteOption: PropTypes.oneOf(['disabled', 'enabled', 'onHover']),
     label: PropTypes.string,
     onClose: PropTypes.func.isRequired,
-    ref: PropTypes.func,
     type: PropTypes.oneOf(['default', 'approved', 'denied', 'new']),
 };

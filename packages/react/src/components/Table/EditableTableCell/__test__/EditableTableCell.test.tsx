@@ -34,7 +34,7 @@ describe('<EditableTableCell />', () => {
         await cleanupHooks();
     });
 
-    it('should render itself without errors', async () => {
+    it.skip('should render itself without errors', async () => {
         const { container, getByTestId } = render(<EditableTableCell />);
 
         // // ///////////////////////

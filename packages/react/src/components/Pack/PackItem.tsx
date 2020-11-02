@@ -45,7 +45,6 @@ export const PackItem: FunctionComponent<PackItemPropsType> = forwardRef(
 PackItem.defaultProps = {};
 
 PackItem.propTypes = {
-    ref: PropTypes.func,
     flexGrow: PropTypes.number,
     flexShrink: PropTypes.number,
     flexBasis: PropTypes.string,

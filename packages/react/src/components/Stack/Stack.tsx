@@ -76,5 +76,4 @@ Stack.propTypes = {
         'self-end',
     ]),
     flexWrap: PropTypes.oneOf(['nowrap', 'wrap', 'wrap-reverse']),
-    ref: PropTypes.func,
 };
