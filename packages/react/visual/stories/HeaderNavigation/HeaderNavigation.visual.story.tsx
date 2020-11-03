@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { LogoutIcon } from '@deliveryhero/armor-icons/src/icons/Essentials/Logout';
-import { QuestionIcon } from '@deliveryhero/armor-icons/src/icons/Help/Question';
+import { QuestionChatIcon, LogoutIcon } from '@deliveryhero/armor-icons';
 import { BrowserRouter, Link } from 'react-router-dom';
 
 import {
@@ -136,7 +135,9 @@ const NavigationActionMultiple = (
                 console.log('Show help');
             }}
         >
-            <QuestionIcon style={{ paddingTop: '8px', paddingBottom: '0' }} />
+            <QuestionChatIcon
+                style={{ paddingTop: '8px', paddingBottom: '0' }}
+            />
         </HeaderNavigationActionItem>
         <HeaderNavigationActionItem
             onClick={() => {

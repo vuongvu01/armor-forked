@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useState } from 'react';
 import { LogoutIcon } from '@deliveryhero/armor-icons/src/icons/Essentials/Logout';
-import { QuestionIcon } from '@deliveryhero/armor-icons/src/icons/Help/Question';
+import { QuestionCircleFilledIcon } from '@deliveryhero/armor-icons';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { BrowserRouter, Link } from 'react-router-dom';
 
@@ -194,7 +194,9 @@ const NavigationActionMultiple = (
                 console.log('Show help');
             }}
         >
-            <QuestionIcon style={{ paddingTop: '8px', paddingBottom: '0' }} />
+            <QuestionCircleFilledIcon
+                style={{ paddingTop: '8px', paddingBottom: '0' }}
+            />
         </HeaderNavigationActionItem>
         <HeaderNavigationActionItem
             onClick={() => {

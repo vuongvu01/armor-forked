@@ -27,17 +27,17 @@ jobs:
               env:
                   GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
             - name: Install icons
-              working-directory: ./packages/react-icons
+              working-directory: ./packages/icons
               run: yarn install
               env:
                   GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
             - name: Install icons peers
-              working-directory: ./packages/react-icons
+              working-directory: ./packages/icons
               run: yarn install-peers
               env:
                   GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
             - name: Build icons
-              working-directory: ./packages/react-icons
+              working-directory: ./packages/icons
               run: yarn build:cjs
               env:
                   GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}

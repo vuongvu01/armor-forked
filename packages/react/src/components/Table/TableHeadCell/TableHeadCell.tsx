@@ -1,7 +1,7 @@
 import React, { FunctionComponent, forwardRef } from 'react';
 import {
-    SortLetterIcon,
-    SortNumberIcon,
+    ByLetterIcon,
+    ByNumberIcon,
     ArrowUpTailIcon,
     ArrowDownTailIcon,
 } from '@deliveryhero/armor-icons';
@@ -76,13 +76,13 @@ export const TableHeadCell: FunctionComponent<TableHeadCellPropsType> = forwardR
                 <TableCellLabel>
                     {children}
                     {isIconAlphabetical && (
-                        <SortLetterIcon
+                        <ByLetterIcon
                             marginLeft={2}
                             className={classNameComponents.AlphabeticalIcon}
                         />
                     )}
                     {isIconNumerical && (
-                        <SortNumberIcon
+                        <ByNumberIcon
                             marginLeft={2}
                             className={classNameComponents.NumericalIcon}
                         />

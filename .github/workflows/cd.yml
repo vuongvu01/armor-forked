@@ -16,18 +16,18 @@ jobs:
             - uses: actions/checkout@v2
             - name: Install common
               run: yarn install
-            - name: Install (react-icons)
-              working-directory: ./packages/react-icons
+            - name: Install (icons)
+              working-directory: ./packages/icons
               run: yarn install
               env:
                   GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
-            - name: Install peers (react-icons)
-              working-directory: ./packages/react-icons
+            - name: Install peers (icons)
+              working-directory: ./packages/icons
               run: yarn run install-peers
               env:
                   GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
-            - name: Build (react-icons)
-              working-directory: ./packages/react-icons
+            - name: Build (icons)
+              working-directory: ./packages/icons
               run: yarn run build
               env:
                   GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
