@@ -31,6 +31,7 @@ export const Menu: FunctionComponent<MenuPropsType> = forwardRef(function Menu(
 
 Menu.defaultProps = {
     enableBottomSeparator: false,
+    enableEffects: true,
 };
 
 /** prop-types are required here for run-time checks */

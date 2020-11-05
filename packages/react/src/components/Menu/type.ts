@@ -1,9 +1,5 @@
 import { HTMLAttributes } from 'react';
-import {
-    StylePropsType,
-    PropsWithNodeStylePropsType,
-    NodeStylePropsTypeNoStyles,
-} from '../type';
+import { StylePropsType, NodeStylePropsTypeNoStyles } from '../type';
 import {
     MarginAttributesType,
     PaddingAttributesType,
@@ -14,6 +10,8 @@ type MenuEffectivePropsType = Indexed<{
     enableBottomSeparator?: boolean;
     secondary?: boolean;
     tertiary?: boolean;
+    expanded?: boolean;
+    enableEffects?: boolean;
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes

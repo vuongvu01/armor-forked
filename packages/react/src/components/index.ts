@@ -26,6 +26,7 @@ export * from './Paper';
 export * from './Radio';
 export * from './Search';
 export * from './SideSheet';
+export * from './Navigation';
 export * from './Stack';
 export * from './SVGIcon';
 export * from './Switch';

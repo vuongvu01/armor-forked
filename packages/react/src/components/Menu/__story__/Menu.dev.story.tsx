@@ -117,7 +117,7 @@ export const SeveralMenus = () => {
                         <ForkKnifeIcon marginRight={4} medium />
                         Primary item
                     </MenuElement>
-                    <Menu secondary>
+                    <Menu secondary expanded={primary3Expanded}>
                         <MenuElement
                             secondary
                             enableExpansionHandle
@@ -129,7 +129,7 @@ export const SeveralMenus = () => {
                         >
                             Secondary item
                         </MenuElement>
-                        <Menu tertiary>
+                        <Menu tertiary expanded={secondary2Expanded}>
                             <MenuElement tertiary>Tertiary item</MenuElement>
                             <MenuElement tertiary>Tertiary item</MenuElement>
                         </Menu>
@@ -145,35 +145,27 @@ export const SeveralMenus = () => {
                         >
                             Secondary item
                         </MenuElement>
-                        <Menu tertiary>
+                        <Menu tertiary expanded={secondary3Expanded}>
                             <MenuElement tertiary>Tertiary item</MenuElement>
                             <MenuElement tertiary>Tertiary item</MenuElement>
                         </Menu>
                     </Menu>
                 </Menu>
                 <Menu paddingTop={10}>
-                    <MenuElement
-                        enableExpansionHandle
-                        expanded={primary3Expanded}
-                        selected={primary3Expanded}
-                        onClick={() => setPrimary3Expanded(!primary3Expanded)}
-                    >
+                    <MenuElement enableExpansionHandle expanded selected>
                         <ForkKnifeIcon marginRight={4} medium />
                         Primary item
                     </MenuElement>
-                    <Menu secondary>
+                    <Menu expanded secondary>
                         <MenuElement
                             secondary
                             enableExpansionHandle
-                            expanded={secondary2Expanded}
-                            selected={secondary2Expanded}
-                            onClick={() =>
-                                setSecondary2Expanded(!secondary2Expanded)
-                            }
+                            expanded
+                            selected
                         >
                             Secondary item
                         </MenuElement>
-                        <Menu tertiary>
+                        <Menu expanded tertiary>
                             <MenuElement tertiary>Tertiary item</MenuElement>
                             <MenuElement tertiary>Tertiary item</MenuElement>
                         </Menu>
@@ -181,15 +173,12 @@ export const SeveralMenus = () => {
                         <MenuElement
                             secondary
                             enableExpansionHandle
-                            expanded={secondary3Expanded}
-                            selected={secondary3Expanded}
-                            onClick={() =>
-                                setSecondary3Expanded(!secondary3Expanded)
-                            }
+                            expanded
+                            selected
                         >
                             Secondary item
                         </MenuElement>
-                        <Menu tertiary>
+                        <Menu expanded tertiary>
                             <MenuElement tertiary>Tertiary item</MenuElement>
                             <MenuElement tertiary>Tertiary item</MenuElement>
                         </Menu>

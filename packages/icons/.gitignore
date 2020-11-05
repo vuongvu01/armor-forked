@@ -4,3 +4,5 @@ build/*
 build.esm/*
 build.cjs/*
 node_modules
+src/**/*.d.ts
+!src/globals.d.ts

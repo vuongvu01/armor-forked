@@ -22,6 +22,7 @@ const propertyList = makePropList([
     'selected',
     'expanded',
     'tag',
+    'depthLevel',
 ]);
 
 const MenuElementRootWrapper = ({

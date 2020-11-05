@@ -11,6 +11,7 @@ type MenuElementEffectivePropsType = Indexed<{
     secondary?: boolean;
     tertiary?: boolean;
     selected?: boolean;
+    depthLevel?: number; // todo: future-reserved
 
     // expanse handle
     enableExpansionHandle?: boolean;
