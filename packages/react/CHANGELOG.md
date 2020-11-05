@@ -1,3 +1,24 @@
+# @deliveryhero/armor [1.20.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.19.0...@deliveryhero/armor@1.20.0) (2020-11-05)
+
+
+### Bug Fixes
+
+* **icon:** Icon collection updated, icon dimensions (small, medium, large) added [LD-253] ([#287](https://github.com/deliveryhero/armor/issues/287)) ([203fbce](https://github.com/deliveryhero/armor/commit/203fbce11b6921ba3b1140bbb0350dd345e53854))
+* Minor fixes [LD-297] ([#285](https://github.com/deliveryhero/armor/issues/285)) ([c6abb22](https://github.com/deliveryhero/armor/commit/c6abb22116f76be3bdc849c7742c0625a64d26d9))
+
+
+### Features
+
+* **menu:** Menu component created [LD-302] ([#286](https://github.com/deliveryhero/armor/issues/286)) ([53a1860](https://github.com/deliveryhero/armor/commit/53a1860def6ab2930e90c20dede44ea01a1391e3))
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor-icons:** upgraded to 1.2.1
+
 # @deliveryhero/armor [1.19.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.18.1...@deliveryhero/armor@1.19.0) (2020-10-29)
 
 
