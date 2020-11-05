@@ -1,3 +1,10 @@
+## @deliveryhero/armor-icons [1.2.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.2.0...@deliveryhero/armor-icons@1.2.1) (2020-11-05)
+
+
+### Bug Fixes
+
+* **icon:** Icon collection updated, icon dimensions (small, medium, large) added [LD-253] ([#287](https://github.com/deliveryhero/armor/issues/287)) ([203fbce](https://github.com/deliveryhero/armor/commit/203fbce11b6921ba3b1140bbb0350dd345e53854))
+
 # @deliveryhero/armor-icons [1.2.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.1.1...@deliveryhero/armor-icons@1.2.0) (2020-10-20)
 
 
