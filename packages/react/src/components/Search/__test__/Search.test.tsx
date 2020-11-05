@@ -41,7 +41,7 @@ describe('<Search />', () => {
     });
 
     it('should render itself without errors', async () => {
-        render(<Search options={foodOptions} />);
+        render(<Search options={foodOptions} onClose={() => {}} />);
     });
 
     it('should support forwardRef', () => {
@@ -70,7 +70,7 @@ describe('<Search />', () => {
         expect(match).toHaveClass('SearchClearAction-AfterIcon');
     });
 
-    it.skip('ensures margin* property transference', () => {
+    it('ensures margin* property transference', () => {
         const marginAttribute = 'marginX';
         const marginValue = 13;
 

@@ -51,7 +51,6 @@ export const Radio: FunctionComponent<RadioPropsType> = forwardRef(
         return (
             <RadioRoot
                 className={classOverride.Root}
-                for={id}
                 data-testid={radioRoot}
                 theme={theme}
                 {...marginProps}
@@ -103,7 +102,6 @@ Radio.propTypes = {
     id: PropTypes.string,
     label: PropTypes.string,
     onChange: PropTypes.func,
-    ref: PropTypes.func,
     selectedValue: PropTypes.string,
     typographyProps: PropTypes.object,
     value: PropTypes.string,

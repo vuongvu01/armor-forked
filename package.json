@@ -21,7 +21,7 @@
     "private": true,
     "workspaces": [
         "packages/react",
-        "packages/react-icons"
+        "packages/icons"
     ],
     "husky": {
         "hooks": {

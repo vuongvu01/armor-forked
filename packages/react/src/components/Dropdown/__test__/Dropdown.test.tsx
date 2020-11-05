@@ -212,7 +212,7 @@ describe('<Dropdown />', () => {
         await wait(() => expect(inputControl.value).toEqual('Blue, Green'));
     });
 
-    it.skip('ensures margin* property transference', () => {
+    it('ensures margin* property transference', () => {
         const marginAttribute = 'marginY';
         const marginValue = 4;
 

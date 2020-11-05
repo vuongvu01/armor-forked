@@ -126,5 +126,4 @@ HeaderNavigation.propTypes = {
     navigationAction: PropTypes.node,
     links: PropTypes.node,
     selector: PropTypes.node,
-    ref: PropTypes.func,
 };

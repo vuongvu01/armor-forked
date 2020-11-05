@@ -10,7 +10,7 @@ import renderer from 'react-test-renderer';
 import { HeaderNavigation } from '../HeaderNavigation';
 import { headerNavigationRoot } from '../constants';
 
-describe('<v />', () => {
+describe('<HeaderNavigation />', () => {
     afterEach(async () => {
         cleanup();
         await cleanupHooks();
@@ -40,7 +40,7 @@ describe('<v />', () => {
         );
     });
 
-    it.skip('ensures margin* property transference', () => {
+    it('ensures margin* property transference', () => {
         const marginAttribute = 'marginX';
         const marginValue = 13;
 

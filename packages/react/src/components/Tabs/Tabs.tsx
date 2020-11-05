@@ -96,5 +96,4 @@ Tabs.propTypes = {
     disabled: PropTypes.bool,
     wide: PropTypes.bool,
     onSwitch: PropTypes.func.isRequired,
-    ref: PropTypes.func,
 };

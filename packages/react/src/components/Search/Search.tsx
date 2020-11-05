@@ -154,5 +154,4 @@ Search.propTypes = {
     ),
     placeholder: PropTypes.string,
     isLoading: PropTypes.bool,
-    ref: PropTypes.func,
 };

@@ -18,7 +18,7 @@ describe('<Flex />', () => {
         render(<Flex label="Sample" />);
     });
 
-    it.skip('should transfer properties into styles', async () => {
+    it('should transfer properties into styles', async () => {
         const tree = renderer
             .create(
                 <Flex justifyContent="space-between">

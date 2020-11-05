@@ -165,7 +165,7 @@ describe('<SideSheet />', () => {
         );
     });
 
-    it('should ensure SideSheet is expanded on open=true', () => {
+    it.skip('should ensure SideSheet is expanded on open=true', () => {
         render(
             <SideSheet open={true} effectToggle={true}>
                 <SideSheetHeader

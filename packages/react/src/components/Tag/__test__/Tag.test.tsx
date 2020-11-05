@@ -88,7 +88,7 @@ describe('<Tag />', () => {
         expect(containerElement).toHaveClass('Tag-Root--new');
     });
 
-    it.skip('ensures margin* property transference', () => {
+    it('ensures margin* property transference', () => {
         const marginAttribute = 'marginX';
         const marginValue = 13;
 

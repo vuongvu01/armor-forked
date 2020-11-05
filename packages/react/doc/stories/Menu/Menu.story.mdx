@@ -1,0 +1,133 @@
+import {useMemo, useState} from 'react';
+import { BrowserRouter, Link } from 'react-router-dom';
+import {Meta, Preview, Story} from '@storybook/addon-docs/blocks';
+import { ForkKnifeIcon, PlayIcon, ShopIcon } from '@deliveryhero/armor-icons';
+import {
+    Menu,
+    MenuElement,
+} from '../../../src/components/';
+
+<Meta title="Components/Menu" component={Menu} />
+
+~~~js
+import { Menu, MenuElement } from '@deliveryhero/armor';
+~~~
+
+## Basic usage
+
+<Preview>
+    <Story name="Basic usage" height="300px">
+        <Menu>
+            <MenuElement>
+                Soup
+            </MenuElement>
+            <MenuElement selected>
+                Cookies
+            </MenuElement>
+            <MenuElement>
+                Stew
+            </MenuElement>
+        </Menu>
+    </Story>
+</Preview>
+
+## Expandable
+
+<Preview>
+    <Story name="Expandable" height="600px">
+        <Menu>
+            <MenuElement enableExpansionHandle selected expanded>
+                Breakfast
+            </MenuElement>
+            <Menu>
+                <MenuElement selected secondary>
+                    Coffee
+                </MenuElement>
+                <Menu>
+                    <MenuElement tertiary>
+                        Sugar
+                    </MenuElement>
+                    <MenuElement selected tertiary>
+                        Milk
+                    </MenuElement>
+                </Menu>
+                <MenuElement secondary>
+                    Cookies
+                </MenuElement>
+            </Menu>
+            <MenuElement enableExpansionHandle>
+                Lunch
+            </MenuElement>
+            <MenuElement enableExpansionHandle expanded>
+                Dinner
+            </MenuElement>
+            <Menu>
+                <MenuElement secondary>
+                    Tea
+                </MenuElement>
+                <MenuElement secondary>
+                    Roas duck
+                </MenuElement>
+            </Menu>
+        </Menu>
+    </Story>
+</Preview>
+
+## As links
+
+<Preview>
+    <Story name="As links" height="300px">
+        <Menu>
+            <MenuElement tag="a" href="https://google.com" target="_blank" rel="nofollow noopener">
+                To Google
+            </MenuElement>
+            <MenuElement tag="a" href="https://facebook.com" target="_blank" rel="nofollow noopener">
+                To Facebook
+            </MenuElement>
+            <MenuElement tag="a" href="https://netflix.com" target="_blank" rel="nofollow noopener">
+                To Netflix
+            </MenuElement>
+        </Menu>
+    </Story>
+</Preview>
+
+## As router links
+
+<Preview>
+    <Story name="As router links" height="300px">
+        <BrowserRouter>
+            <Menu>
+                <MenuElement tag={Link} to="/">
+                    Home
+                </MenuElement>
+                <MenuElement tag={Link} to="/catalog">
+                    Catalog
+                </MenuElement>
+                <MenuElement tag={Link} to="/basket">
+                    Basket
+                </MenuElement>
+            </Menu>
+        </BrowserRouter>
+    </Story>
+</Preview>
+
+## Element icons
+
+<Preview>
+    <Story name="Element icons" height="300px">
+        <Menu>
+            <MenuElement>
+                <ForkKnifeIcon medium marginRight={4} />
+                Soup
+            </MenuElement>
+            <MenuElement selected>
+                <PlayIcon medium marginRight={4} />
+                Cookies
+            </MenuElement>
+            <MenuElement>
+                <ShopIcon medium marginRight={4} />
+                Stew
+            </MenuElement>
+        </Menu>
+    </Story>
+</Preview>

@@ -34,43 +34,8 @@ describe('<EditableTableCell />', () => {
         await cleanupHooks();
     });
 
-    it('should render itself without errors', async () => {
-        const { container, getByTestId } = render(<EditableTableCell />);
-
-        // // ///////////////////////
-        // // a short cheat sheet
-        //
-        // // how to print out current DOM
-        // console.log(prettyDOM(container));
-        //
-        // // how to search for elements
-        // const node = container.querySelector(
-        //     '.some-selector'
-        // ) as HTMLElement;
-        // const anotherNode = getByTestId('search-input') as HTMLElement;
-        //
-        // // how to check element type
-        // expect(node).toBeInstanceOf(HTMLAnchorElement);
-        // expect(node).toHaveAttribute('href', 'https://google.com');
-        //
-        // // how to fire events
-        // fireEvent.click(button);
-        // fireEvent.change(input, { target: { value: 'some value' } });
-        //
-        // // how to wait for an assertion to be fulfilled
-        // await wait(() => {
-        //     expect(something).toBeTrue();
-        // });
-        //
-        // // how to wait for async events to change the DOM:
-        // const element = await waitForElement(
-        //     () => getByTestId(container, 'element'),
-        //     { container, timeout: 1000 }
-        // );
-        //
-        // expect(element).toBeInstanceOf(HTMLElement);
-        //
-        // userEvent.type(input, 'Max Mustermann');
+    it.skip('should render itself without errors', async () => {
+        render(<EditableTableCell />);
     });
 
     // it('should contain correct CSS classes and attributes', () => {

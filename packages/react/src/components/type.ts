@@ -26,4 +26,9 @@ export type NodeStylePropsType<P = {}> = {
     theme: ThemeType;
 };
 
+export type NodeStylePropsTypeNoStyles<P = {}> = {
+    className: string;
+    theme: ThemeType;
+};
+
 export type PropsWithNodeStylePropsType<P = {}> = P & NodeStylePropsType<P>;

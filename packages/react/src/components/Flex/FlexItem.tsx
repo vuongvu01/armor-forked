@@ -48,7 +48,6 @@ export const FlexItem: FunctionComponent<FlexItemPropsType> = forwardRef(
 FlexItem.defaultProps = {};
 
 FlexItem.propTypes = {
-    ref: PropTypes.func,
     flexGrow: PropTypes.number,
     flexShrink: PropTypes.number,
     flexBasis: PropTypes.string,
