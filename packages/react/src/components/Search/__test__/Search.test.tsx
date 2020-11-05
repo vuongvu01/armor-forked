@@ -70,7 +70,7 @@ describe('<Search />', () => {
         expect(match).toHaveClass('SearchClearAction-AfterIcon');
     });
 
-    it.skip('ensures margin* property transference', () => {
+    it('ensures margin* property transference', () => {
         const marginAttribute = 'marginX';
         const marginValue = 13;
 

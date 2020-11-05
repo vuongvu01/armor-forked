@@ -77,7 +77,7 @@ describe('<Radio />', () => {
         });
     });
 
-    it.skip('ensures margin* property transference', () => {
+    it('ensures margin* property transference', () => {
         const marginAttribute = 'marginBottom';
         const marginValue = 42;
 

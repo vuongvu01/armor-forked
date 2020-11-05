@@ -18,7 +18,7 @@ describe('<Stack />', () => {
         render(<Stack label="Sample" />);
     });
 
-    it.skip('should transfer properties into styles', async () => {
+    it('should transfer properties into styles', async () => {
         const tree = renderer
             .create(
                 <Stack justifyContent="space-between">

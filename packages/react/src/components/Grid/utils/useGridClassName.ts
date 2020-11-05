@@ -3,7 +3,6 @@ import { useMemo } from 'react';
 import { ClassNamesType } from '../../type';
 import { ClassBasedOnComponentType } from '../type';
 import { makeBEM, makeClassName } from '../../../utils';
-import { ScalarType } from '../../../type';
 
 const getClassNameByComponent = ({
     component,

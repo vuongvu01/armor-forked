@@ -6,6 +6,7 @@ import { GRID_RESOLUTION } from '../constants';
 import { BreakpointCodeType } from '../../../system/mixins/type';
 import { setHorizontalMargin, setVerticalMargin } from '../style';
 import { ThemeType } from '../../../styling';
+import { paddingAttributes } from '../../../system/attributes';
 
 // all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
 const propertyList = makePropList([
@@ -108,4 +109,5 @@ export const GridItemRoot = styled.div.withConfig({
     width: 100%;
 
     ${gridItemRootStyle}
+    ${paddingAttributes}
 `;

@@ -16,6 +16,7 @@ export * from './Grid';
 export * from './HeaderNavigation';
 export * from './Indicator';
 export * from './MaterialIcon';
+export * from './Menu';
 export * from './Message';
 export * from './MessageAction';
 export * from './Modal';

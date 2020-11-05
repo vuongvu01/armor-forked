@@ -1,6 +1,6 @@
 import { HTMLAttributes } from 'react';
 
-import { MarginAttributesType } from '../../../system/attributes';
+import { PaddingAttributesType } from '../../../system/attributes';
 import { Indexed } from '../../../type';
 import { ClassNamesType } from '../../type';
 
@@ -29,6 +29,6 @@ type GridItemEffectivePropsType = Indexed<{
     xl?: GridSizeType;
 }> &
     HTMLAttributes<HTMLElement> &
-    MarginAttributesType;
+    PaddingAttributesType;
 
 export type GridItemPropsType = GridItemEffectivePropsType;

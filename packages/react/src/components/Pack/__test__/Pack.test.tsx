@@ -18,7 +18,7 @@ describe('<Pack />', () => {
         render(<Pack label="Sample" />);
     });
 
-    it.skip('should transfer properties into styles', async () => {
+    it('should transfer properties into styles', async () => {
         const tree = renderer
             .create(
                 <Pack justifyContent="space-between">
@@ -63,17 +63,17 @@ describe('<Pack />', () => {
         expect(packItemElement).toHaveClass('PackItem-Root');
     });
 
-    it.skip('should support margin attributes', async () => {
+    it('should support margin attributes', async () => {
         // @ts-ignore
         expect(Pack).toSupportMarginAttributes();
     });
 
-    it.skip('should support width attributes', async () => {
+    it('should support width attributes', async () => {
         // @ts-ignore
         expect(Pack).toSupportWidthAttributes();
     });
 
-    it.skip('should support height attributes', async () => {
+    it('should support height attributes', async () => {
         // @ts-ignore
         expect(Pack).toSupportHeightAttributes();
     });

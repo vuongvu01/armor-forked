@@ -65,7 +65,7 @@ describe('<TableCell />', () => {
         expect(result.current.current).toBeInstanceOf(HTMLElement);
     });
 
-    it.skip('should support custom theme', () => {
+    it('should support custom theme', () => {
         let tree = renderer
             .create(
                 <table>
@@ -105,22 +105,22 @@ describe('<TableCell />', () => {
         );
     });
 
-    it.skip('should support padding attributes', async () => {
+    it('should support padding attributes', async () => {
         // @ts-ignore
         expect(TableCell).toSupportPaddingAttributes();
     });
 
-    it.skip('should support width attributes', async () => {
+    it('should support width attributes', async () => {
         // @ts-ignore
         expect(TableCell).toSupportWidthAttributes();
     });
 
-    it.skip('should support height attributes', async () => {
+    it('should support height attributes', async () => {
         // @ts-ignore
         expect(TableCell).toSupportHeightAttributes();
     });
 
-    it.skip('should support color attributes', async () => {
+    it('should support color attributes', async () => {
         // @ts-ignore
         expect(TableCell).toSupportColorAttributes();
     });
