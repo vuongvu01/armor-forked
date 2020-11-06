@@ -1,0 +1,250 @@
+/* eslint-disable no-console,import/no-unresolved */
+
+import React, { useState } from 'react';
+import { withKnobs } from '@storybook/addon-knobs';
+import styled from 'styled-components';
+import { SearchIcon } from '@deliveryhero/armor-icons';
+
+import { Navigation } from '../Navigation';
+import { spacing } from '../../../system/mixins';
+import { TextInput } from '../../TextInput/TextInput';
+
+export default {
+    title: 'Components/Navigation',
+    component: Navigation,
+    decorators: [withKnobs],
+    parameters: {},
+};
+
+export const Basic = () => {
+    const [structure, setStructure] = useState([
+        {
+            id: 'mammals',
+            label: 'Mammals',
+            expanded: true,
+            selected: true,
+            items: [
+                {
+                    id: 'cats',
+                    label: 'Cats',
+                    expanded: false,
+                    items: [
+                        {
+                            id: 'tiger',
+                            label: 'Tiger',
+                        },
+                        {
+                            id: 'lion',
+                            label: 'Lion',
+                        },
+                    ],
+                },
+                {
+                    id: 'dogs',
+                    label: 'Dogs',
+                    expanded: false,
+                    items: [
+                        {
+                            id: 'firefox',
+                            label: 'Fire Fox',
+                        },
+                        {
+                            id: 'wolf',
+                            label: 'Wolf',
+                        },
+                    ],
+                },
+            ],
+        },
+    ]);
+
+    const [structureB, setStructureB] = useState([
+        {
+            id: 'birds',
+            label: 'Birds',
+            expanded: false,
+            items: [
+                {
+                    id: 'hawks',
+                    label: 'Hawks',
+                    expanded: false,
+                    items: [
+                        {
+                            id: 'smallhawk',
+                            label: 'Small Hawk',
+                        },
+                        {
+                            id: 'hugehawk',
+                            label: 'Huge Hawk',
+                        },
+                    ],
+                },
+                {
+                    id: 'eagles',
+                    label: 'Eagles',
+                    expanded: false,
+                    items: [
+                        {
+                            id: 'baldeagle',
+                            label: 'Bald Eagle',
+                        },
+                        {
+                            id: 'whiteeagle',
+                            label: 'White Eagle',
+                        },
+                    ],
+                },
+            ],
+        },
+    ]);
+
+    return (
+        <>
+            <Navigation
+                items={structure}
+                maxDepthLevel={4}
+                width="400px"
+                enableBottomSeparator
+                onElementClick={(id, item) => {
+                    // eslint-disable-next-line no-param-reassign
+                    item.expanded = !item.expanded;
+
+                    if (id === 'tiger' && !item.items) {
+                        // eslint-disable-next-line no-param-reassign
+                        item.items = [
+                            { id: 'monkeys', label: 'Monkeys' },
+                            { id: 'donkeys', label: 'Donkeys' },
+                        ];
+                    }
+
+                    setStructure([...structure]);
+                }}
+            />
+            <Navigation
+                items={structureB}
+                maxDepthLevel={4}
+                width="400px"
+                onElementClick={(id, item) => {
+                    // eslint-disable-next-line no-param-reassign
+                    item.expanded = !item.expanded;
+
+                    if (id === 'tiger' && !item.items) {
+                        // eslint-disable-next-line no-param-reassign
+                        item.items = [
+                            { id: 'monkeys', label: 'Monkeys' },
+                            { id: 'donkeys', label: 'Donkeys' },
+                        ];
+                    }
+
+                    setStructureB([...structureB]);
+                }}
+            />
+        </>
+    );
+};
+
+export const NoEffects = () => {
+    const [structure, setStructure] = useState([
+        {
+            id: 'blacklist',
+            label: 'Blacklist',
+            selected: false,
+        },
+        {
+            id: 'country-settings',
+            label: 'Country Settings',
+            selected: false,
+        },
+        {
+            id: 'location-settings',
+            label: 'Location settings',
+            selected: false,
+            expanded: false,
+            items: [
+                {
+                    id: '3243242323',
+                    label: 'New York',
+                },
+                {
+                    id: '456654',
+                    label: 'Los Angeles',
+                },
+            ],
+        },
+    ]);
+
+    return (
+        <>
+            <Navigation
+                items={structure}
+                width="400px"
+                enableEffects={false}
+                onElementClick={(id, item) => {
+                    // eslint-disable-next-line no-param-reassign
+                    item.expanded = !item.expanded;
+
+                    setStructure([...structure]);
+                }}
+            />
+        </>
+    );
+};
+
+const AraraSearchContainer = styled.div`
+    padding: ${spacing(2)} ${spacing(5)};
+`;
+
+export const Arara = () => {
+    const [structure, setStructure] = useState([
+        {
+            id: 'blacklist',
+            label: 'Blacklist',
+            selected: false,
+        },
+        {
+            id: 'country-settings',
+            label: 'Country Settings',
+            selected: false,
+        },
+        {
+            id: 'location-settings',
+            label: 'Location settings',
+            selected: false,
+            expanded: false,
+            beforeItems: (
+                <AraraSearchContainer>
+                    <TextInput
+                        wide
+                        placeholder="Search"
+                        after={<SearchIcon marginRight={4} />}
+                    />
+                </AraraSearchContainer>
+            ),
+            items: [
+                {
+                    id: '3243242323',
+                    label: 'New York',
+                },
+                {
+                    id: '456654',
+                    label: 'Los Angeles',
+                },
+            ],
+        },
+    ]);
+
+    return (
+        <>
+            <Navigation
+                items={structure}
+                width="400px"
+                onElementClick={(id, item) => {
+                    // eslint-disable-next-line no-param-reassign
+                    item.expanded = !item.expanded;
+
+                    setStructure([...structure]);
+                }}
+            />
+        </>
+    );
+};

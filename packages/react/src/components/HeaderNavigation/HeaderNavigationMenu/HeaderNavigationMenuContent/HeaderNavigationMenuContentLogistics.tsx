@@ -48,6 +48,9 @@ const Drawing = styled.div`
     width: 42px;
 `;
 
+/**
+ * @deprecated see @deliveryhero/armor-vendors
+ */
 export const HeaderNavigationMenuContentLogistics: FunctionComponent<HeaderNavigationMenuContentPropsType> = ({
     ...restProps
 }) => (

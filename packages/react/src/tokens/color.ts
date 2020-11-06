@@ -3,7 +3,7 @@ export const colorGrey50 = '#717171';
 export const colorGrey30 = '#a7a7a7';
 export const colorGrey10 = '#dcdcdc';
 export const colorGrey05 = '#f7f7f7';
-export const colorGrey01 = '#fbfcfc';
+export const colorGrey01 = '#fcfcfc';
 export const colorGrey00 = '#ffffff';
 
 export const colorBlue70 = '#0042a5';

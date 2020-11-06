@@ -533,7 +533,11 @@ export const Arara = () => {
                 navigationMenuContent={<HeaderNavigationMenuContentLogistics />}
                 links={
                     <HeaderNavigationLinks>
-                        <HeaderNavigationLink to="/applicants" tag={Link}>
+                        <HeaderNavigationLink
+                            to="/applicants"
+                            tag={Link}
+                            isActive
+                        >
                             Applicants
                         </HeaderNavigationLink>
                         <HeaderNavigationLink to="/schedules" tag={Link}>
@@ -545,6 +549,10 @@ export const Arara = () => {
                         <HeaderNavigationLink to="/forms" tag={Link}>
                             Forms
                         </HeaderNavigationLink>
+                        <HeaderNavigationLink href="/forms" tag="a">
+                            Forms Href
+                        </HeaderNavigationLink>
+                        <HeaderNavigationLink>Forms Span</HeaderNavigationLink>
                         <HeaderNavigationLink to="/configurations" tag={Link}>
                             Configurations
                         </HeaderNavigationLink>

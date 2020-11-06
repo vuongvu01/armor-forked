@@ -165,6 +165,7 @@ describe('<SideSheet />', () => {
         );
     });
 
+    // todo: fix this test or replace the assertion, it fails with no reason apparently
     it.skip('should ensure SideSheet is expanded on open=true', () => {
         render(
             <SideSheet open={true} effectToggle={true}>

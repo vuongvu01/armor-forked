@@ -33,7 +33,7 @@
         "release": "./script/release.sh"
     },
     "dependencies": {
-        "@deliveryhero/armor-icons": "^0.0.4",
+        "@deliveryhero/armor-icons": "^1.2.1",
         "@popperjs/core": "^2.4.2",
         "deep-freeze-strict": "1.1.1",
         "deepclone": "^1.0.2",
