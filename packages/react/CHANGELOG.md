@@ -1,3 +1,23 @@
+# @deliveryhero/armor [1.21.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.20.0...@deliveryhero/armor@1.21.0) (2020-11-06)
+
+
+### Bug Fixes
+
+* **headernavigation:** HeaderNavigation improvements [LD-296] ([#296](https://github.com/deliveryhero/armor/issues/296)) ([888d157](https://github.com/deliveryhero/armor/commit/888d1575f3ee539b29949f8d0944e93778f46514))
+
+
+### Features
+
+* **navigation:** Navigation component created [LD-302] ([#294](https://github.com/deliveryhero/armor/issues/294)) ([933d94a](https://github.com/deliveryhero/armor/commit/933d94a9b8aeded8fa5e18e3a5132cad602bdf6a))
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor-icons:** upgraded to 1.3.0
+
 # @deliveryhero/armor [1.20.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.19.0...@deliveryhero/armor@1.20.0) (2020-11-05)
 
 
