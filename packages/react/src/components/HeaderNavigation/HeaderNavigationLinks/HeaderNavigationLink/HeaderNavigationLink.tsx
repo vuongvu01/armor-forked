@@ -1,16 +1,7 @@
-import React, {
-    forwardRef,
-    FunctionComponent,
-    useCallback,
-    useContext,
-} from 'react';
+import React, { forwardRef, FunctionComponent, useContext } from 'react';
 import PropTypes from 'prop-types';
 
-import {
-    HeaderNavigationLinkRoot,
-    HrefLinkRoot,
-    reactRouterLinkStyle,
-} from './style';
+import { HeaderNavigationLinkRoot } from './style';
 import { HeaderNavigationLinkPropsType } from './type';
 import { useComponentTheme } from '../../../../utils/hooks';
 import {
@@ -20,25 +11,15 @@ import {
 import { headerNavigationLink } from './theme';
 import HeaderNavigationLinksContext from '../HeaderNavigationLinksContext';
 import { useHeaderNavigationLinkClassName } from './utils';
+import { ButtonPropsType } from '../../../Button/type';
+import { useHeaderNavigationLink } from './utils/useHeaderNavigationLink';
 
 export const HeaderNavigationLink: FunctionComponent<HeaderNavigationLinkPropsType> = forwardRef(
     function HeaderNavigationLink(
-        {
-            className,
-            classNames,
-            children,
-            isActive,
-            to,
-            tag: LinkRoot = 'span',
-            href,
-            target,
-            rel = 'noreferrer',
-            name,
-            ...restProps
-        },
+        { className, classNames, children, tag: Tag = 'span', ...restProps },
         ref,
     ) {
-        const { onLinkClick, locationTracking, pathname } = useContext(
+        const headerNavigationLinksContext = useContext(
             HeaderNavigationLinksContext,
         );
 
@@ -53,71 +34,25 @@ export const HeaderNavigationLink: FunctionComponent<HeaderNavigationLinkPropsTy
             classNames,
         );
 
-        // todo: put all of this inside of a hook
-        const handleLinkClick = useCallback(() => {
-            if (onLinkClick && name) {
-                onLinkClick(name);
-            }
-        }, [onLinkClick, name]);
-
-        const isLink = to && LinkRoot;
-        const isHrefLink = href;
-
-        const url = to || href;
-        let isReallyActive = false;
-        if (isActive !== undefined) {
-            isReallyActive = isActive;
-        } else if (locationTracking && url) {
-            let currentPathname = pathname;
-            if (currentPathname === undefined && window) {
-                currentPathname = window.location.pathname;
-            }
-            if (currentPathname) {
-                isReallyActive = currentPathname.startsWith(url);
-            }
-        }
-
-        let childElements = null;
-
-        if (isLink) {
-            childElements = (
-                <LinkRoot
-                    theme={theme}
-                    className={classOverride.Link}
-                    style={reactRouterLinkStyle}
-                    to={to}
-                >
-                    {children}
-                </LinkRoot>
-            );
-        } else if (isHrefLink) {
-            childElements = (
-                <HrefLinkRoot
-                    theme={theme}
-                    className={classOverride.Href}
-                    isActive={isReallyActive}
-                    href={href}
-                    rel={rel}
-                    target={target}
-                >
-                    {children}
-                </HrefLinkRoot>
-            );
-        }
+        const { isActive, onClick, restRootProps } = useHeaderNavigationLink({
+            headerNavigationLinksContext,
+            ...restProps,
+        });
 
         return (
             <HeaderNavigationLinkRoot
                 data-testid={headerNavigationLinkRoot}
-                {...restProps}
-                {...(!isLink && isHrefLink ? { href } : {})}
+                {...restRootProps}
                 theme={theme}
                 className={classOverride.Root}
-                ref={ref}
-                isActive={isReallyActive}
-                onClick={handleLinkClick}
-                to={to}
+                isActive={isActive}
+                onClick={onClick}
             >
-                {isLink || isHrefLink ? childElements : children}
+                {(forwardedProps: ButtonPropsType) => (
+                    <Tag {...forwardedProps} ref={ref}>
+                        {children}
+                    </Tag>
+                )}
             </HeaderNavigationLinkRoot>
         );
     },

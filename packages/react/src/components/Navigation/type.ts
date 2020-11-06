@@ -6,6 +6,7 @@ import {
 } from '../../system/attributes';
 import { Indexed, ScalarType } from '../../type';
 import { MenuPropsType } from '../Menu/type';
+import { MenuElementPropsType } from '../Menu/MenuElement/type';
 
 export type NavigationMenuElement = Indexed<{
     label: ReactChild;
@@ -15,6 +16,7 @@ export type NavigationMenuElement = Indexed<{
     selected?: boolean;
     beforeItems?: ReactNode;
     afterItems?: ReactNode;
+    menuElementProps?: MenuElementPropsType;
 }>;
 
 type NavigationEffectivePropsType = Indexed<{

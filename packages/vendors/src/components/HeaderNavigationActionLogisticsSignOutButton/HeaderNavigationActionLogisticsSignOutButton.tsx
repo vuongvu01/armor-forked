@@ -1,14 +1,12 @@
+// eslint-disable-next-line no-use-before-define
 import React, { FunctionComponent } from 'react';
 import { LogoutIcon } from '@deliveryhero/armor-icons';
-import { HeaderNavigationActionItem } from '.';
+import { HeaderNavigationActionItem } from '@deliveryhero/armor';
 
 import { HeaderNavigationActionItemPropsType } from './type';
 
 const setURL = () => window.location.assign('/users/sign_out');
 
-/**
- * @deprecated see @deliveryhero/armor-vendors
- */
 export const HeaderNavigationActionLogisticsSignOutButton: FunctionComponent<HeaderNavigationActionItemPropsType> = ({
     ...restProps
 }) => (

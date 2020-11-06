@@ -1,14 +1,17 @@
+import { ReactElement } from 'react';
 import styled, { css } from 'styled-components';
-import {
-    HeaderNavigationLinkHrefLinkRootPropsType,
-    HeaderNavigationLinkRootPropsType,
-} from './type';
-import { PackItem } from '../../../Pack';
-import { colorGrey90 } from '../../../../tokens';
+import { HeaderNavigationLinkRootPropsType } from './type';
+import { shouldForwardProp } from '../../../../utils';
+
+const HeaderNavigationLinkRootWrapper = ({
+    children,
+    ...restProps
+}: HeaderNavigationLinkRootPropsType & {
+    children: (props: HeaderNavigationLinkRootPropsType) => ReactElement;
+}) => children({ ...restProps });
 
 const navigationLinkRootStyle = ({
     isActive,
-    href,
     theme: {
         componentOverrides: { HeaderNavigationLink },
     },
@@ -18,61 +21,40 @@ const navigationLinkRootStyle = ({
     if (isActive) {
         result = css`
             ${result};
-            padding-bottom: 10px;
-            border-bottom-width: 2px;
-            border-bottom-style: solid;
+            position: relative;
+            &:before {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 2px;
+            }
             ${HeaderNavigationLink.Root.active}
         `;
     }
 
-    if (href) {
-        result = css`
-            ${result};
-            text-decoration: none;
-            ${HeaderNavigationLink.Root.href}
-        `;
-    }
-
     return result;
 };
 
-export const HeaderNavigationLinkRoot = styled(PackItem)<
-    HeaderNavigationLinkRootPropsType
->`
+export const HeaderNavigationLinkRoot = styled(
+    HeaderNavigationLinkRootWrapper,
+).withConfig({
+    shouldForwardProp: property => shouldForwardProp(property),
+})<HeaderNavigationLinkRootPropsType>`
     cursor: pointer;
-    text-decoration: none;
-
-    ${navigationLinkRootStyle}
-`;
-
-const hrefLinkRootStyle = ({
-    isActive,
-    theme: {
-        componentOverrides: { HeaderNavigationLink },
-    },
-}: HeaderNavigationLinkRootPropsType) => {
-    let result = HeaderNavigationLink.Href.base;
-
-    if (isActive) {
-        result = css`
-            ${result};
-            height: 46px;
-        `;
-    }
-
-    return result;
-};
-
-export const HrefLinkRoot = styled.a<HeaderNavigationLinkHrefLinkRootPropsType>`
-    text-decoration: none;
     border: none;
     box-sizing: border-box;
     display: inline-flex;
 
-    ${hrefLinkRootStyle}
-`;
+    text-decoration: none;
+    &:hover,
+    &:visited,
+    &:active,
+    &:focus {
+        text-decoration: none;
+    }
 
-export const reactRouterLinkStyle = {
-    textDecoration: 'none',
-    color: colorGrey90,
-};
+    ${navigationLinkRootStyle};
+    background-color: transparent;
+`;

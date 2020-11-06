@@ -1,40 +1,60 @@
-import React, { FunctionComponent } from 'react';
+// eslint-disable-next-line no-use-before-define
+import React, { FunctionComponent, useMemo } from 'react';
 import styled from 'styled-components';
 import {
     HeaderNavigationMenuContent,
     HeaderNavigationMenuContentBody,
     HeaderNavigationMenuContentHeader,
-} from '.';
+} from '@deliveryhero/armor';
 import { HeaderNavigationMenuContentPropsType } from './type';
 
 const menuContentBodyOptions = [
     {
-        value: 'value_0',
+        value: 'arara',
         label: 'Arara',
+        url: '/dashboard/arara/',
     },
     {
-        value: 'value_1',
+        value: 'rooster',
         label: 'Rooster',
+        url: '/dashboard/rooster/',
     },
     {
-        value: 'value_2',
-        label: 'DPS',
+        // https://github.com/deliveryhero/logistics-dynamic-pricing-dashboard#environment-urls
+        value: 'dps',
+        label: 'Dynamic Pricing Service',
+        url: '', // todo
     },
     {
-        value: 'value_3',
+        value: 'porygon',
         label: 'Delivery Area Service',
+        url: '/dashboard/deliveryareas/',
     },
     {
-        value: 'value_4',
+        // https://github.com/deliveryhero/logistics-tweety-dashboard
+        value: 'tweety',
         label: 'Tweety',
+        url: '/dashboard/tweety/',
     },
     {
-        value: 'value_5',
-        label: 'TES',
+        value: 'tes',
+        label: 'Time Estimation Service',
+        url: '/',
     },
     {
-        value: 'value_6',
+        value: 'hurrier',
         label: 'Hurrier',
+        url: '/',
+    },
+    {
+        value: 'cod',
+        label: 'Cash collection',
+        url: '/dashboard/cash-collection/',
+    },
+    {
+        value: 'ice',
+        label: 'Issue Customization Engine',
+        url: '/dashboard/ice/',
     },
 ];
 
@@ -48,20 +68,41 @@ const Drawing = styled.div`
     width: 42px;
 `;
 
-/**
- * @deprecated see @deliveryhero/armor-vendors
- */
+const onOptionSelect = (item: any) => {
+    if (window && item.url) {
+        window.location.assign(item.url);
+    }
+};
+
 export const HeaderNavigationMenuContentLogistics: FunctionComponent<HeaderNavigationMenuContentPropsType> = ({
+    displayedApplicationCodes,
     ...restProps
-}) => (
-    <HeaderNavigationMenuContent {...restProps}>
-        <HeaderNavigationMenuContentHeader
-            title="Logistics"
-            image={<Drawing />}
-        />
-        <HeaderNavigationMenuContentBody options={menuContentBodyOptions} />
-    </HeaderNavigationMenuContent>
-);
+}) => {
+    const items = useMemo(() => {
+        if (!displayedApplicationCodes) {
+            return menuContentBodyOptions;
+        }
+
+        return menuContentBodyOptions.filter(application => {
+            return displayedApplicationCodes.find(code =>
+                code.includes(application.value),
+            );
+        });
+    }, [menuContentBodyOptions, displayedApplicationCodes]);
+
+    return (
+        <HeaderNavigationMenuContent {...restProps}>
+            <HeaderNavigationMenuContentHeader
+                title="Logistics"
+                image={<Drawing />}
+            />
+            <HeaderNavigationMenuContentBody
+                options={items}
+                onOptionSelect={onOptionSelect}
+            />
+        </HeaderNavigationMenuContent>
+    );
+};
 
 /** prop-types are required here for run-time checks */
 HeaderNavigationMenuContentLogistics.propTypes = {};

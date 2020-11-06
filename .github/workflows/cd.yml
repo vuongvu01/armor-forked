@@ -16,6 +16,8 @@ jobs:
             - uses: actions/checkout@v2
             - name: Install common
               run: yarn install
+              env:
+                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
             - name: Install (icons)
               working-directory: ./packages/icons
               run: yarn install
@@ -43,6 +45,21 @@ jobs:
                   GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
             - name: Build (react)
               working-directory: ./packages/react
+              run: yarn run build
+              env:
+                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
+            - name: Install (vendors)
+              working-directory: ./packages/vendors
+              run: yarn install
+              env:
+                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
+            - name: Install peers (vendors)
+              working-directory: ./packages/vendors
+              run: yarn run install-peers
+              env:
+                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
+            - name: Build (vendors)
+              working-directory: ./packages/vendors
               run: yarn run build
               env:
                   GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}

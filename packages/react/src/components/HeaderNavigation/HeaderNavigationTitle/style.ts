@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { HeaderNavigationTitleRootPropsType } from './type';
 import { HeaderNavigationLink } from '../HeaderNavigationLinks/HeaderNavigationLink';
+import { fontSize03, fontWeightMedium } from '../../../tokens';
 
 const navigationLinkRootStyle = ({
     theme: {
@@ -13,6 +14,8 @@ export const HeaderNavigationTitleRoot = styled(HeaderNavigationLink)<
 >`
     cursor: pointer;
     text-decoration: none;
+    padding: 0;
+    font-weight: ${fontWeightMedium};
 
     ${navigationLinkRootStyle}
 `;

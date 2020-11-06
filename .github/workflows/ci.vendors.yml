@@ -1,4 +1,4 @@
-name: CI.REACT
+name: CI.VENDORS
 
 on:
     pull_request:
@@ -6,7 +6,7 @@ on:
             - dev
             - master
         paths:
-            - 'packages/react/**'
+            - 'packages/vendors/**'
 
 jobs:
     test:
@@ -16,16 +16,6 @@ jobs:
             - uses: actions/checkout@v2
             - name: Install common
               run: yarn install
-              env:
-                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
-            - name: Install
-              working-directory: ./packages/react
-              run: yarn install
-              env:
-                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
-            - name: Install peers
-              working-directory: ./packages/react
-              run: yarn run install-peers
               env:
                   GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
             - name: Install icons
@@ -43,28 +33,53 @@ jobs:
               run: yarn build:cjs
               env:
                   GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
-            - name: Lint
+            - name: Install react
               working-directory: ./packages/react
+              run: yarn install
+              env:
+                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
+            - name: Install react peers
+              working-directory: ./packages/react
+              run: yarn install-peers
+              env:
+                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
+            - name: Build react
+              working-directory: ./packages/react
+              run: yarn build:cjs
+              env:
+                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
+            - name: Install
+              working-directory: ./packages/vendors
+              run: yarn install
+              env:
+                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
+            - name: Install peers
+              working-directory: ./packages/vendors
+              run: yarn run install-peers
+              env:
+                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
+            - name: Lint
+              working-directory: ./packages/vendors
               run: yarn run lint
               env:
                   GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
             - name: Test
-              working-directory: ./packages/react
+              working-directory: ./packages/vendors
               run: yarn run test
               env:
                   GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
-            - name: Test visual (install)
-              working-directory: ./packages/react/visual
-              run: yarn install
-              env:
-                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
-            - name: Test visual
-              working-directory: ./packages/react
-              run: yarn test:visual:cicd
-              env:
-                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
+            #      - name: Test visual (install)
+            #        working-directory: ./packages/vendors/visual
+            #        run: yarn install
+            #        env:
+            #          GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
+            #      - name: Test visual
+            #        working-directory: ./packages/vendors
+            #        run: yarn test:visual:cicd
+            #        env:
+            #          GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
             - name: Build
-              working-directory: ./packages/react
+              working-directory: ./packages/vendors
               run: yarn run build
               env:
                   GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}

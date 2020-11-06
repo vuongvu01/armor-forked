@@ -27,6 +27,3 @@ export type HeaderNavigationLinkPropsType = HeaderNavigationLinkEffectivePropsTy
 
 export type HeaderNavigationLinkRootPropsType = HeaderNavigationLinkPropsType &
     NodeStylePropsType<HeaderNavigationLinkPropsType>;
-
-export type HeaderNavigationLinkHrefLinkRootPropsType = HeaderNavigationLinkPropsType &
-    NodeStylePropsType<HeaderNavigationLinkPropsType>;

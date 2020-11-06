@@ -35,6 +35,7 @@ const renderMenuElement = (
                 data-depthlevel={depthLevel}
                 expanded={item.expanded}
                 selected={item.selected}
+                {...item.menuElementProps}
             >
                 {item.label}
             </MenuElement>
