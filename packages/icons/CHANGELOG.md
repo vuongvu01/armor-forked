@@ -1,3 +1,10 @@
+# @deliveryhero/armor-icons [1.3.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.2.1...@deliveryhero/armor-icons@1.3.0) (2020-11-06)
+
+
+### Features
+
+* **navigation:** Navigation component created [LD-302] ([#294](https://github.com/deliveryhero/armor/issues/294)) ([933d94a](https://github.com/deliveryhero/armor/commit/933d94a9b8aeded8fa5e18e3a5132cad602bdf6a))
+
 ## @deliveryhero/armor-icons [1.2.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.2.0...@deliveryhero/armor-icons@1.2.1) (2020-11-05)
 
 
