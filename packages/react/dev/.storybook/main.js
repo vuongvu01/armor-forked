@@ -5,7 +5,7 @@ module.exports = {
     addons: [
         '@storybook/addon-knobs/register',
         '@storybook/addon-actions',
-        '@storybook/addon-links',
+        // '@storybook/addon-links',
         'storybook-addon-styled-component-theme/dist/register',
         // '@storybook/addon-viewport/register',
     ],
@@ -16,13 +16,12 @@ module.exports = {
                 {
                     loader: require.resolve('ts-loader'),
                 },
-                {
-                    loader: require.resolve('react-docgen-typescript-loader'),
-                },
             ],
         });
         config.resolve.extensions.push('.ts', '.tsx');
         config.resolve.plugins = [new TsconfigPathsPlugin({})];
+        config.parallelism = 1;
+        config.profile = true;
         return config;
     },
 };

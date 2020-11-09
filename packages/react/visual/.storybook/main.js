@@ -14,6 +14,8 @@ module.exports = {
         });
         config.resolve.extensions.push('.ts', '.tsx');
         config.resolve.plugins = [new TsconfigPathsPlugin({})];
+        config.parallelism = 1;
+        config.profile = true;
         return config;
     },
 };
