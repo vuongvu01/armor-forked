@@ -1,6 +1,8 @@
 import React, { ChangeEvent, useState } from 'react';
-import { LogoutIcon } from '@deliveryhero/armor-icons/src/icons/Essentials/Logout';
-import { QuestionCircleFilledIcon } from '@deliveryhero/armor-icons';
+import {
+    QuestionCircleFilledIcon,
+    LogoutIcon,
+} from '@deliveryhero/armor-icons';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { BrowserRouter, Link } from 'react-router-dom';
 
