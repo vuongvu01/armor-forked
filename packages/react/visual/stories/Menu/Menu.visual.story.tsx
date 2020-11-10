@@ -2,13 +2,14 @@ import React from 'react';
 import { ForkKnifeIcon } from '@deliveryhero/armor-icons';
 
 import { Menu, MenuElement } from '../../../src/components';
+import { DarkBackground } from '../../../src/helpers/DarkBackground';
 
 export default {
     title: 'Menu',
     component: Menu,
 };
 
-export const MenuDefault = () => (
+const MenuCase = () => (
     <>
         <Menu enableBottomSeparator>
             <MenuElement enableExpansionHandle expanded selected>
@@ -34,12 +35,12 @@ export const MenuDefault = () => (
             </Menu>
         </Menu>
         <Menu paddingTop={10}>
-            <MenuElement enableExpansionHandle expanded selected>
+            <MenuElement enableExpansionHandle>
                 <ForkKnifeIcon marginRight={4} medium />
                 Primary item
             </MenuElement>
             <Menu secondary>
-                <MenuElement secondary enableExpansionHandle expanded selected>
+                <MenuElement secondary enableExpansionHandle>
                     Secondary item
                 </MenuElement>
                 <Menu tertiary>
@@ -47,7 +48,7 @@ export const MenuDefault = () => (
                     <MenuElement tertiary>Tertiary item</MenuElement>
                 </Menu>
 
-                <MenuElement secondary enableExpansionHandle expanded selected>
+                <MenuElement secondary enableExpansionHandle>
                     Secondary item
                 </MenuElement>
                 <Menu tertiary>
@@ -57,4 +58,12 @@ export const MenuDefault = () => (
             </Menu>
         </Menu>
     </>
+);
+
+export const MenuDefault = () => <MenuCase />;
+
+export const MenuDefaultOnDark = () => (
+    <DarkBackground>
+        <MenuCase />
+    </DarkBackground>
 );

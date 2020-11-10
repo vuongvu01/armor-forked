@@ -63,7 +63,6 @@ export const defaultThemeStructure = {
             letterSpacing: letterSpacingSmall,
             lineHeight: lineHeight03,
             color: colorGrey90,
-            backgroundColor: colorGrey00,
         },
         pageTitle: {
             fontFamily: fontFamilyRoboto,
@@ -72,7 +71,6 @@ export const defaultThemeStructure = {
             letterSpacing: letterSpacingNone,
             lineHeight: lineHeight05,
             color: colorGrey90,
-            backgroundColor: colorGrey00,
         },
         sectionTitle: {
             fontFamily: fontFamilyRoboto,
@@ -81,7 +79,6 @@ export const defaultThemeStructure = {
             letterSpacing: letterSpacingSmall,
             lineHeight: lineHeight04,
             color: colorGrey90,
-            backgroundColor: colorGrey00,
         },
         subSectionTitle: {
             fontFamily: fontFamilyRoboto,
@@ -90,7 +87,6 @@ export const defaultThemeStructure = {
             letterSpacing: letterSpacingSmall,
             lineHeight: lineHeight03,
             color: colorGrey90,
-            backgroundColor: colorGrey00,
         },
         labelLarge: {
             fontFamily: fontFamilyRoboto,
@@ -99,7 +95,6 @@ export const defaultThemeStructure = {
             letterSpacing: letterSpacingMedium,
             lineHeight: lineHeight03,
             color: colorGrey90,
-            backgroundColor: colorGrey00,
         },
         labelMedium: {
             fontFamily: fontFamilyRoboto,
@@ -108,7 +103,6 @@ export const defaultThemeStructure = {
             letterSpacing: letterSpacingLarge,
             lineHeight: lineHeight01,
             color: colorGrey90,
-            backgroundColor: colorGrey00,
         },
         labelSmall: {
             fontFamily: fontFamilyRoboto,
@@ -117,7 +111,6 @@ export const defaultThemeStructure = {
             letterSpacing: letterSpacingMedium,
             lineHeight: lineHeight01,
             color: colorGrey90,
-            backgroundColor: colorGrey00,
         },
         paragraphLarge: {
             fontFamily: fontFamilyRoboto,
@@ -126,7 +119,6 @@ export const defaultThemeStructure = {
             letterSpacing: letterSpacingSmall,
             lineHeight: lineHeight03,
             color: colorGrey90,
-            backgroundColor: colorGrey00,
         },
         paragraphMedium: {
             fontFamily: fontFamilyRoboto,
@@ -135,7 +127,6 @@ export const defaultThemeStructure = {
             letterSpacing: letterSpacingSmall,
             lineHeight: lineHeight03,
             color: colorGrey90,
-            backgroundColor: colorGrey00,
         },
         paragraphSmall: {
             fontFamily: fontFamilyRoboto,
@@ -144,7 +135,6 @@ export const defaultThemeStructure = {
             letterSpacing: letterSpacingLarge,
             lineHeight: lineHeight02,
             color: colorGrey90,
-            backgroundColor: colorGrey00,
         },
     },
     color: {

@@ -47,4 +47,16 @@ export const WithIconOverflow = () => (
 
 export const Secondary = () => <MenuElement secondary>Hello</MenuElement>;
 
+export const SecondaryWithHandle = () => (
+    <MenuElement secondary enableExpansionHandle>
+        Hello
+    </MenuElement>
+);
+
 export const Tertiary = () => <MenuElement tertiary>Hello</MenuElement>;
+
+export const TertiaryWithHandle = () => (
+    <MenuElement tertiary enableExpansionHandle>
+        Hello
+    </MenuElement>
+);

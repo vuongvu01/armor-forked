@@ -1,7 +1,7 @@
 export const paperDefaultTheme = {
     Root: {
         base: {
-            backgroundColor: '$typography.body.backgroundColor',
+            backgroundColor: '$color.neutral.00',
             borderRadius: '$shape.borderRadius.soft',
             boxShadow: '$elevation.small',
         },

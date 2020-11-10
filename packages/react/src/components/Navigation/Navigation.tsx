@@ -33,6 +33,7 @@ const renderMenuElement = (
                 data-menuelementid={item.id}
                 data-menuelementglobalid={globalId}
                 data-depthlevel={depthLevel}
+                depthlevel={depthLevel}
                 expanded={item.expanded}
                 selected={item.selected}
                 {...item.menuElementProps}
