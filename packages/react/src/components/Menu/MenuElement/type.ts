@@ -8,6 +8,7 @@ import { Indexed } from '../../../type';
 
 type MenuElementEffectivePropsType = Indexed<{
     tag?: string | ComponentType<any>;
+    primary?: boolean;
     secondary?: boolean;
     tertiary?: boolean;
     selected?: boolean;
@@ -38,7 +39,11 @@ export type MenuElementRootPropsType = MenuElementEffectivePropsType &
 export type MenuElementContentPropsType = {} & NodeStylePropsTypeNoStyles;
 
 /* MenuElement ExpansionHandle node prop type */
-export type MenuElementExpansionHandlePropsType = {} & NodeStylePropsTypeNoStyles;
+export type MenuElementExpansionHandlePropsType = Pick<
+    MenuElementEffectivePropsType,
+    'expanded' | 'primary' | 'secondary' | 'tertiary' | 'depthLevel'
+> &
+    NodeStylePropsTypeNoStyles;
 
 /* MenuElement ExpansionHandleArrow node prop type */
 export type MenuElementExpansionHandleArrowPropsType = Pick<

@@ -17,6 +17,7 @@ import { transitionDurationInSec } from '../../../constants';
 // all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
 const propertyList = makePropList([
     'enableExpansionHandle',
+    'primary',
     'secondary',
     'tertiary',
     'selected',
@@ -114,8 +115,25 @@ export const MenuElementContent = styled.div.withConfig({
 
 const getExpansionHandleDynamicStyle = ({
     theme,
+    primary,
+    secondary,
+    tertiary,
+    depthLevel,
 }: MenuElementExpansionHandlePropsType) => {
-    return theme.componentOverrides.MenuElement.ExpanseHandle.base;
+    const {
+        componentOverrides: { MenuElement },
+    } = theme;
+
+    let result = MenuElement.ExpanseHandle.base;
+
+    if (primary || (!secondary && !tertiary) || depthLevel === 0) {
+        result = css`
+            ${result};
+            ${MenuElement.ExpanseHandle.primary}
+        `;
+    }
+
+    return result;
 };
 
 export const MenuElementExpansionHandle = styled.div.withConfig({

@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import { makePropList, shouldForwardProp } from '../../utils';
 import { GridPropsType } from './type';
 import { ThemeType } from '../../styling';
+import { sizeAttributes } from '../../system/attributes';
 
 const propertyList = makePropList([
     'gutterSpacing',
@@ -69,4 +70,5 @@ export const GridRoot = styled.div.withConfig({
     display: flex;
     flex-wrap: wrap;
     ${gridRootStyle}
+    ${sizeAttributes}
 `;

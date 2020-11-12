@@ -42,6 +42,8 @@ export const menuElementDefaultTheme = {
         base: {
             padding: 4,
             paddingTop: 5,
+        },
+        primary: {
             color: '$color.primary.main',
         },
     },

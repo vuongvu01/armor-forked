@@ -3,11 +3,18 @@ import React, { useRef, useEffect } from 'react';
 import { DataTable } from '../../../src/components';
 import { dataSource, columns, dataSourceWide, columnsWide } from './demoData';
 import { multiplyDataRows } from '../../../src/components/DataTable/__story__/utils';
+import { DarkBackground } from '../../../src/helpers/DarkBackground';
 
 export default {
     title: 'DataTable',
     component: DataTable,
 };
+
+export const TableWithOnDark = () => (
+    <DarkBackground>
+        <DataTable columns={columns} data={dataSource} enableRowSelection />
+    </DarkBackground>
+);
 
 export const TableWithCheckboxNothingChecked = () => (
     <DataTable columns={columns} data={dataSource} enableRowSelection />

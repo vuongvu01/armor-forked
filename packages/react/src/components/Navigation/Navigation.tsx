@@ -33,12 +33,14 @@ const renderMenuElement = (
                 data-menuelementid={item.id}
                 data-menuelementglobalid={globalId}
                 data-depthlevel={depthLevel}
+                depthlevel={depthLevel}
                 expanded={item.expanded}
                 selected={item.selected}
                 {...item.menuElementProps}
             >
                 {item.label}
             </MenuElement>
+            {item.beforeMenu}
             {hasChildren && (
                 <Menu
                     secondary={depthLevel === 0}
@@ -59,6 +61,7 @@ const renderMenuElement = (
                     {item.afterItems}
                 </Menu>
             )}
+            {item.afterMenu}
         </Fragment>
     );
 };

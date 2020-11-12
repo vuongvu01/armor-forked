@@ -27,4 +27,14 @@ describe('<Grid />', () => {
     //     const gridItemElement = screen.getByTestId(gridItemId);
     //     expect(gridItemElement).toHaveClass('GridItem-Root');
     // });
+
+    it('should support height attributes', async () => {
+        // @ts-ignore
+        expect(Grid).toSupportHeightAttributes();
+    });
+
+    it('should support width attributes', async () => {
+        // @ts-ignore
+        expect(Grid).toSupportWidthAttributes();
+    });
 });

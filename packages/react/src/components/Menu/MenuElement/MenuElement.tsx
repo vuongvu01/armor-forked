@@ -22,6 +22,10 @@ export const MenuElement: FunctionComponent<MenuElementPropsType> = forwardRef(
             enableExpansionHandle,
             expanded,
             children,
+            primary,
+            secondary,
+            tertiary,
+            depthLevel,
             tag: Tag = 'div',
             ...restProps
         },
@@ -40,6 +44,10 @@ export const MenuElement: FunctionComponent<MenuElementPropsType> = forwardRef(
         return (
             <MenuElementRoot
                 {...restProps}
+                primary={primary}
+                secondary={secondary}
+                tertiary={tertiary}
+                depthLevel={depthLevel}
                 enableExpansionHandle={enableExpansionHandle}
                 expanded={expanded}
                 theme={theme}
@@ -58,6 +66,10 @@ export const MenuElement: FunctionComponent<MenuElementPropsType> = forwardRef(
                             <MenuElementExpansionHandle
                                 theme={theme}
                                 className={classNameComponents.ExpansionHandle}
+                                primary={primary}
+                                secondary={secondary}
+                                tertiary={tertiary}
+                                depthLevel={depthLevel}
                             >
                                 <MenuElementExpansionHandleArrow
                                     expanded={expanded}
@@ -76,6 +88,7 @@ export const MenuElement: FunctionComponent<MenuElementPropsType> = forwardRef(
 );
 
 MenuElement.defaultProps = {
+    primary: false,
     secondary: false,
     tertiary: false,
     selected: false,
@@ -86,6 +99,7 @@ MenuElement.defaultProps = {
 /** prop-types are required here for run-time checks */
 MenuElement.propTypes = {
     tag: PropTypes.oneOfType([PropTypes.elementType, PropTypes.string]),
+    primary: PropTypes.bool,
     secondary: PropTypes.bool,
     tertiary: PropTypes.bool,
     selected: PropTypes.bool,

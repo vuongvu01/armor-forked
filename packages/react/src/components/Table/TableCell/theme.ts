@@ -3,7 +3,6 @@
 import {
     componentSpacing04,
     componentSpacing05,
-    componentSpacing09,
     fontWeightMedium,
 } from '../../../tokens';
 
@@ -11,12 +10,8 @@ export const tableCellDefaultTheme = {
     // place the default theme object here, it will be automatically processed
     Root: {
         base: {
-            fontFamily: '$typography.body.fontFamily',
-            fontSize: '$typography.paragraphLarge.fontSize',
-            lineHeight: '$typography.paragraphLarge.lineHeight',
-            fontWeight: '$typography.paragraphLarge.fontWeight',
-            letterSpacing: '$typography.paragraphLarge.letterSpacing',
-
+            $typography: 'paragraphLarge',
+            backgroundColor: '$color.neutral.01',
             paddingLeft: componentSpacing04,
             paddingRight: componentSpacing04,
             paddingTop: componentSpacing05,

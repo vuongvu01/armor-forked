@@ -14,8 +14,10 @@ export type NavigationMenuElement = Indexed<{
     items?: NavigationMenuElement[];
     expanded?: boolean;
     selected?: boolean;
+    beforeMenu?: ReactNode;
     beforeItems?: ReactNode;
     afterItems?: ReactNode;
+    afterMenu?: ReactNode;
     menuElementProps?: MenuElementPropsType;
 }>;
 
