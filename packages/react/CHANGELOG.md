@@ -1,3 +1,11 @@
+## @deliveryhero/armor [1.21.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.21.0...@deliveryhero/armor@1.21.1) (2020-11-12)
+
+
+### Bug Fixes
+
+* Minor improvements and fixes [LD-000] ([#299](https://github.com/deliveryhero/armor/issues/299)) ([2a2a5b2](https://github.com/deliveryhero/armor/commit/2a2a5b2e3d2c4fc6f7d061d371c2a115dd00615e))
+* Minor improvements and fixes [LD-000] ([#303](https://github.com/deliveryhero/armor/issues/303)) ([468c4c3](https://github.com/deliveryhero/armor/commit/468c4c38916b61acac26849c0551bfc9ebaa46e0))
+
 # @deliveryhero/armor [1.21.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.20.0...@deliveryhero/armor@1.21.0) (2020-11-06)
 
 
