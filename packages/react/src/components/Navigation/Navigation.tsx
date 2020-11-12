@@ -40,6 +40,7 @@ const renderMenuElement = (
             >
                 {item.label}
             </MenuElement>
+            {item.beforeMenu}
             {hasChildren && (
                 <Menu
                     secondary={depthLevel === 0}
@@ -60,6 +61,7 @@ const renderMenuElement = (
                     {item.afterItems}
                 </Menu>
             )}
+            {item.afterMenu}
         </Fragment>
     );
 };

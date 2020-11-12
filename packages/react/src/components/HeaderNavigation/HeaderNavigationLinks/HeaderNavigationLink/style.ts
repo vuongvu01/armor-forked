@@ -1,7 +1,10 @@
 import { ReactElement } from 'react';
 import styled, { css } from 'styled-components';
 import { HeaderNavigationLinkRootPropsType } from './type';
-import { shouldForwardProp } from '../../../../utils';
+import { makePropList, shouldForwardProp } from '../../../../utils';
+
+// all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
+const propertyList = makePropList(['isActive']);
 
 const HeaderNavigationLinkRootWrapper = ({
     children,
@@ -40,7 +43,7 @@ const navigationLinkRootStyle = ({
 export const HeaderNavigationLinkRoot = styled(
     HeaderNavigationLinkRootWrapper,
 ).withConfig({
-    shouldForwardProp: property => shouldForwardProp(property),
+    shouldForwardProp: property => shouldForwardProp(property, propertyList),
 })<HeaderNavigationLinkRootPropsType>`
     cursor: pointer;
     border: none;

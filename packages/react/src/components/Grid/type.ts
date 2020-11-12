@@ -1,6 +1,9 @@
 import { HTMLAttributes } from 'react';
 
-import { MarginAttributesType } from '../../system/attributes';
+import {
+    MarginAttributesType,
+    SizeAttributesType,
+} from '../../system/attributes';
 import { Indexed } from '../../type';
 import { ClassNamesType } from '../type';
 
@@ -18,6 +21,7 @@ type GridEffectivePropsType = Indexed<{
     gutterSpacingHorizontal?: number;
 }> &
     HTMLAttributes<HTMLElement> &
+    SizeAttributesType &
     MarginAttributesType;
 
 export type GridPropsType = GridEffectivePropsType;

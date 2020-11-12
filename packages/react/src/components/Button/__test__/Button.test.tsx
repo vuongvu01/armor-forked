@@ -1,14 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
 import React, { useRef } from 'react';
-import {
-    // fireEvent,
-    cleanup,
-    render,
-    // prettyDOM,
-    // wait,
-    // waitForElement,
-} from '@testing-library/react';
+import { cleanup, render } from '@testing-library/react';
 import renderer from 'react-test-renderer';
 import { ThemeProvider } from 'styled-components';
 import userEvent from '@testing-library/user-event';
@@ -112,5 +105,20 @@ describe('<Button />', () => {
         render(<Button ref={result.current} />);
 
         expect(result.current.current).toBeInstanceOf(HTMLButtonElement);
+    });
+
+    it('should support width attributes', async () => {
+        // @ts-ignore
+        expect(Button).toSupportWidthAttributes();
+    });
+
+    it('should support margin attributes', async () => {
+        // @ts-ignore
+        expect(Button).toSupportMarginAttributes();
+    });
+
+    it('should support padding attributes', async () => {
+        // @ts-ignore
+        expect(Button).toSupportPaddingAttributes();
     });
 });
