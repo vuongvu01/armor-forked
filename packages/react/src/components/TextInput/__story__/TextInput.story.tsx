@@ -392,3 +392,203 @@ export const EventHandlers = () => (
         />
     </Box>
 );
+
+export const AllOfThem = () => (
+    <Box marginTop={5}>
+        <Box>
+            <TextInput label="Label" name="your_price" marginRight={1} />
+            <TextInput
+                label="Label"
+                name="your_price"
+                defaultValue="1000"
+                marginRight={1}
+            />
+            <TextInput
+                placeholder="Label"
+                name="your_price"
+                defaultValue="1000"
+                marginRight={1}
+            />
+            <TextInput placeholder="Label" name="your_price" marginRight={1} />
+
+            <Button marginRight={1}>Submit</Button>
+
+            <TextInput label="Label" name="your_price" large marginRight={1} />
+            <TextInput
+                label="Label"
+                name="your_price"
+                defaultValue="1000"
+                large
+                marginRight={1}
+            />
+        </Box>
+        <Box>
+            <TextInput
+                label="Label"
+                name="your_price"
+                marginRight={1}
+                disabled
+            />
+            <TextInput
+                label="Label"
+                name="your_price"
+                defaultValue="1000"
+                marginRight={1}
+                disabled
+            />
+            <TextInput
+                placeholder="Label"
+                name="your_price"
+                defaultValue="1000"
+                marginRight={1}
+                disabled
+            />
+            <TextInput
+                placeholder="Label"
+                name="your_price"
+                marginRight={1}
+                disabled
+            />
+
+            <Button marginRight={1} disabled>
+                Submit
+            </Button>
+
+            <TextInput
+                label="Label"
+                name="your_price"
+                large
+                marginRight={1}
+                disabled
+            />
+            <TextInput
+                label="Label"
+                name="your_price"
+                defaultValue="1000"
+                large
+                marginRight={1}
+                disabled
+            />
+        </Box>
+        <Box>
+            <TextInput label="Label" name="your_price" marginRight={1} error />
+            <TextInput
+                label="Label"
+                name="your_price"
+                defaultValue="1000"
+                marginRight={1}
+                error
+            />
+            <TextInput
+                placeholder="Label"
+                name="your_price"
+                defaultValue="1000"
+                marginRight={1}
+                error
+            />
+            <TextInput
+                placeholder="Label"
+                name="your_price"
+                marginRight={1}
+                error
+            />
+
+            <Button marginRight={1}>Submit</Button>
+
+            <TextInput
+                label="Label"
+                name="your_price"
+                large
+                marginRight={1}
+                error
+            />
+            <TextInput
+                label="Label"
+                name="your_price"
+                defaultValue="1000"
+                large
+                marginRight={1}
+                error
+            />
+        </Box>
+        <Box>
+            <TextInput
+                label="Label"
+                name="your_price"
+                marginRight={1}
+                outline
+            />
+            <TextInput
+                label="Label"
+                name="your_price"
+                defaultValue="1000"
+                marginRight={1}
+                outline
+            />
+            <TextInput
+                placeholder="Label"
+                name="your_price"
+                defaultValue="1000"
+                marginRight={1}
+                outline
+            />
+            <TextInput
+                placeholder="Label"
+                name="your_price"
+                marginRight={1}
+                outline
+            />
+
+            <Button marginRight={1}>Submit</Button>
+
+            <TextInput
+                label="Label"
+                name="your_price"
+                large
+                marginRight={1}
+                outline
+            />
+            <TextInput
+                label="Label"
+                name="your_price"
+                defaultValue="1000"
+                large
+                marginRight={1}
+                outline
+            />
+        </Box>
+        <Box marginTop={10}>
+            <TextInput
+                label="Label"
+                name="your_price"
+                marginRight={1}
+                multiline
+            />
+            <TextInput
+                label="Label"
+                name="your_price"
+                defaultValue="1000"
+                marginRight={1}
+                multiline
+            />
+
+            <Button marginRight={1}>Submit</Button>
+
+            <TextInput
+                label="Label"
+                name="your_price"
+                large
+                marginRight={1}
+                multiline
+            />
+            <TextInput
+                label="Label"
+                name="your_price"
+                defaultValue="1000"
+                large
+                marginRight={1}
+                multiline
+            />
+        </Box>
+    </Box>
+);

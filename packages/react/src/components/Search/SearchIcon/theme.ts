@@ -1,12 +1,7 @@
-import {
-    componentSpacing02,
-    componentSpacing03,
-    componentSpacing04,
-} from '../../../tokens';
+import { componentSpacing04 } from '../../../tokens';
 
 const iconBase = {
-    color: '$color.neutral.04',
-    paddingTop: componentSpacing02,
+    color: '$color.neutral.05',
     width: componentSpacing04,
     height: componentSpacing04,
 };
@@ -20,7 +15,7 @@ export const searchIconTheme = {
     },
     SearchIconContainer: {
         base: {
-            paddingLeft: componentSpacing03,
+            paddingLeft: 3.5,
         },
     },
 };

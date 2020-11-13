@@ -23,8 +23,9 @@ const searchInputClearIconStyle = ({
     },
 }: SearchInputClearIconPropsType) => {
     let result = css`
+        cursor: pointer;
         transition: all ${transitionDurationInSec}s ease;
-        ${SearchClearAction.ClearIcon.base}
+        ${SearchClearAction.ClearIcon.base};
     `;
 
     if (disabled) {
@@ -35,7 +36,8 @@ const searchInputClearIconStyle = ({
     } else if (!searchQuery) {
         result = css`
             ${result};
-            ${SearchClearAction.ClearIcon.transparent}
+            ${SearchClearAction.ClearIcon.transparent};
+            cursor: initial;
         `;
     }
 
@@ -43,7 +45,9 @@ const searchInputClearIconStyle = ({
 };
 
 export const ClearIconContainer = styled.div<ClearIconContainerPropsType>`
-    ${clearIconContainerStyle}
+    display: flex;
+    align-items: center;
+    ${clearIconContainerStyle};
 `;
 
 export const SearchInputClearIcon = styled(CancelIcon)<

@@ -17,6 +17,7 @@ type TextInputEffectivePropsType = Indexed<{
     multiline?: boolean;
     disableLabelEffect?: boolean;
     displayMode?: 'block' | 'inline';
+    outline?: boolean;
     // add other custom properties here
 }> &
     InputHTMLAttributes<HTMLInputElement> &
