@@ -1,3 +1,23 @@
+# @deliveryhero/armor [1.22.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.21.1...@deliveryhero/armor@1.22.0) (2020-11-17)
+
+
+### Bug Fixes
+
+* **textinput:** TextInput typography fixed [LD-310] ([#305](https://github.com/deliveryhero/armor/issues/305)) ([a1a5f68](https://github.com/deliveryhero/armor/commit/a1a5f68d8878a2b739f5476a08094c83fdcf6539))
+
+
+### Features
+
+* **container:** Container component developed [LD-314] ([#306](https://github.com/deliveryhero/armor/issues/306)) ([39b16a6](https://github.com/deliveryhero/armor/commit/39b16a6088ec7c67c9bcac249c7ccb484b795ffa))
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor-icons:** upgraded to 1.3.1
+
 ## @deliveryhero/armor [1.21.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.21.0...@deliveryhero/armor@1.21.1) (2020-11-12)
 
 
