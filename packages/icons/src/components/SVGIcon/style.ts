@@ -67,6 +67,7 @@ export const SVGIconRoot = styled.svg.withConfig({
     flex-shrink: 0;
     user-select: none;
     line-height: inherit;
+    box-sizing: content-box;
     ${({ iconWidth, iconHeight, display }) => css<SVGIconRootPropsType>`
         display: ${display};
         width: ${iconWidth};
