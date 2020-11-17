@@ -19,4 +19,9 @@ describe('<Pack />', () => {
         // @ts-ignore
         expect(PackItem).toSupportPaddingAttributes();
     });
+
+    it('should support width attributes', async () => {
+        // @ts-ignore
+        expect(PackItem).toSupportWidthAttributes();
+    });
 });

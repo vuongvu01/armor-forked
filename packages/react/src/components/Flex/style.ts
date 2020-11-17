@@ -4,6 +4,7 @@ import {
     marginAttributes,
     paddingAttributes,
     sizeAttributes,
+    widthAttributes,
 } from '../../system/attributes';
 import { makePropList, shouldForwardProp } from '../../utils';
 import { FlexItemPropsType, FlexRootPropsType } from './type';
@@ -122,7 +123,10 @@ export const FlexRoot = styled.div.withConfig({
     ${marginAttributes}
 `;
 
-export const FlexItemRoot = styled.div<FlexItemPropsType>`
+export const FlexItemRoot = styled.div.withConfig({
+    shouldForwardProp: property => shouldForwardProp(property, propertyList),
+})<FlexItemPropsType>`
     ${flexItemStyle}
     ${paddingAttributes}
+    ${widthAttributes}
 `;

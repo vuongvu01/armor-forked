@@ -7,14 +7,14 @@
  * https://jestjs.io/docs/en/mock-functions
  */
 
-import React, { useRef } from 'react';
+import React, { useRef, MouseEvent } from 'react';
 import { ThemeProvider } from 'styled-components';
 
 import {
     fireEvent,
     cleanup,
     render,
-    // prettyDOM,
+    prettyDOM,
     // wait,
     // waitForElement,
 } from '@testing-library/react';
@@ -23,7 +23,7 @@ import {
     cleanup as cleanupHooks,
 } from '@testing-library/react-hooks';
 import renderer from 'react-test-renderer';
-// import userEvent from '@testing-library/user-event';
+import cloneDeep from 'clone-deep';
 
 import { customTheme, structure } from './helpers';
 import { Navigation } from '..';
@@ -97,5 +97,188 @@ describe('<Navigation />', () => {
             label: 'Ladybug',
             id: 'ladybug',
         });
+    });
+
+    it('should cancel onElementClick with element onClick event.stopPropagation', async () => {
+        const onNodeClick = jest.fn((event: MouseEvent<HTMLDivElement>) => {
+            event.stopPropagation();
+        });
+
+        const localStructure = cloneDeep(structure);
+        // @ts-ignore
+        localStructure[0].items[0].menuElementProps = {
+            onClick: onNodeClick,
+        };
+
+        const onElementClick = jest.fn();
+        const { getByText } = render(
+            <Navigation
+                items={localStructure}
+                onElementClick={onElementClick}
+            />,
+        );
+
+        const node = getByText('Hawk');
+        expect(node).toBeInstanceOf(HTMLElement);
+        fireEvent.click(node);
+
+        expect(onNodeClick).toHaveBeenCalled();
+        expect(onElementClick).not.toHaveBeenCalled();
+    });
+
+    it('should call onClick when onElementClick not set', async () => {
+        const onNodeClick = jest.fn();
+
+        const localStructure = cloneDeep(structure);
+        // @ts-ignore
+        localStructure[0].items[0].menuElementProps = {
+            onClick: onNodeClick,
+        };
+
+        const { getByText } = render(<Navigation items={localStructure} />);
+
+        const node = getByText('Hawk');
+        expect(node).toBeInstanceOf(HTMLElement);
+        fireEvent.click(node);
+
+        expect(onNodeClick).toHaveBeenCalled();
+    });
+
+    it('should make use of expandedElementIds', async () => {
+        const expandedElementIds = ['birds', 'bugs'];
+        const { container } = render(
+            <Navigation
+                items={structure}
+                expandedElementIds={expandedElementIds}
+            />,
+        );
+
+        let node = container.querySelector('[data-menuelementid="birds"]');
+        expect(node).toBeInstanceOf(HTMLElement);
+        expect(node!.getAttribute('aria-expanded')).toEqual('true');
+
+        node = container.querySelector('[data-menuelementid="bugs"]');
+        expect(node).toBeInstanceOf(HTMLElement);
+        expect(node!.getAttribute('aria-expanded')).toEqual('true');
+
+        node = container.querySelector('[data-menuelementid="hawk"]');
+        expect(node).toBeInstanceOf(HTMLElement);
+        expect(node!.getAttribute('aria-expanded')).toEqual('false');
+    });
+
+    it('should make use of expanded flag', async () => {
+        const localStructure = cloneDeep(structure);
+        // @ts-ignore
+        localStructure[0].expanded = true;
+        // @ts-ignore
+        localStructure[1].expanded = false;
+
+        const { container } = render(<Navigation items={localStructure} />);
+
+        let node = container.querySelector('[data-menuelementid="birds"]');
+        expect(node).toBeInstanceOf(HTMLElement);
+        expect(node!.getAttribute('data-expanded')).toEqual('1');
+
+        node = container.querySelector('[data-menuelementid="bugs"]');
+        expect(node).toBeInstanceOf(HTMLElement);
+        expect(node!.getAttribute('data-expanded')).toEqual('0');
+
+        node = container.querySelector('[data-menuelementid="hawk"]');
+        expect(node).toBeInstanceOf(HTMLElement);
+        expect(node!.getAttribute('data-expanded')).toEqual('0');
+    });
+
+    it('should make use of selectedElementIds', async () => {
+        const selectedElementIds = ['birds', 'bugs'];
+        const { container } = render(
+            <Navigation
+                items={structure}
+                selectedElementIds={selectedElementIds}
+            />,
+        );
+
+        let node = container.querySelector('[data-menuelementid="birds"]');
+        expect(node).toBeInstanceOf(HTMLElement);
+        expect(node!.getAttribute('data-selected')).toEqual('1');
+
+        node = container.querySelector('[data-menuelementid="bugs"]');
+        expect(node).toBeInstanceOf(HTMLElement);
+        expect(node!.getAttribute('data-selected')).toEqual('1');
+
+        node = container.querySelector('[data-menuelementid="hawk"]');
+        expect(node).toBeInstanceOf(HTMLElement);
+        expect(node!.getAttribute('data-selected')).toEqual('0');
+    });
+
+    it('should make use of selected flag', async () => {
+        const localStructure = cloneDeep(structure);
+        // @ts-ignore
+        localStructure[0].selected = true;
+        // @ts-ignore
+        localStructure[1].selected = false;
+
+        const { container } = render(<Navigation items={localStructure} />);
+
+        let node = container.querySelector('[data-menuelementid="birds"]');
+        expect(node).toBeInstanceOf(HTMLElement);
+        expect(node!.getAttribute('data-selected')).toEqual('1');
+
+        node = container.querySelector('[data-menuelementid="bugs"]');
+        expect(node).toBeInstanceOf(HTMLElement);
+        expect(node!.getAttribute('data-selected')).toEqual('0');
+
+        node = container.querySelector('[data-menuelementid="hawk"]');
+        expect(node).toBeInstanceOf(HTMLElement);
+        expect(node!.getAttribute('data-selected')).toEqual('0');
+    });
+
+    it('should prefer expansion flag over list of ids', async () => {
+        const localStructure = cloneDeep(structure);
+        // @ts-ignore
+        localStructure[0].expanded = true;
+        // @ts-ignore
+        localStructure[1].expanded = false;
+
+        const expandedElementIds = ['bugs'];
+
+        const { container } = render(
+            <Navigation
+                items={localStructure}
+                expandedElementIds={expandedElementIds}
+            />,
+        );
+
+        let node = container.querySelector('[data-menuelementid="birds"]');
+        expect(node).toBeInstanceOf(HTMLElement);
+        expect(node!.getAttribute('data-expanded')).toEqual('1');
+
+        node = container.querySelector('[data-menuelementid="bugs"]');
+        expect(node).toBeInstanceOf(HTMLElement);
+        expect(node!.getAttribute('data-expanded')).toEqual('0');
+    });
+
+    it('should prefer selection flag over list of ids', async () => {
+        const localStructure = cloneDeep(structure);
+        // @ts-ignore
+        localStructure[0].selected = true;
+        // @ts-ignore
+        localStructure[1].selected = false;
+
+        const selectedElementIds = ['bugs'];
+
+        const { container } = render(
+            <Navigation
+                items={localStructure}
+                selectedElementIds={selectedElementIds}
+            />,
+        );
+
+        let node = container.querySelector('[data-menuelementid="birds"]');
+        expect(node).toBeInstanceOf(HTMLElement);
+        expect(node!.getAttribute('data-selected')).toEqual('1');
+
+        node = container.querySelector('[data-menuelementid="bugs"]');
+        expect(node).toBeInstanceOf(HTMLElement);
+        expect(node!.getAttribute('data-selected')).toEqual('0');
     });
 });

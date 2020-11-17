@@ -4,6 +4,7 @@ import {
     MarginAttributesType,
     PaddingAttributesType,
     SizeAttributesType,
+    WidthAttributesType,
 } from '../../system/attributes';
 import { Indexed } from '../../type';
 import { ClassNamesType, NodeStylePropsType } from '../type';
@@ -75,6 +76,7 @@ type FlexEffectivePropsType = Indexed<{
 }> &
     HTMLAttributes<HTMLElement> &
     SizeAttributesType &
+    WidthAttributesType &
     MarginAttributesType;
 
 type FlexItemEffectivePropsType = Indexed<{

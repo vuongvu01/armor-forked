@@ -1,4 +1,9 @@
-import React, { FunctionComponent, forwardRef, Fragment } from 'react';
+import React, {
+    FunctionComponent,
+    forwardRef,
+    Fragment,
+    MouseEvent,
+} from 'react';
 import PropTypes from 'prop-types';
 
 import { useComponentTheme } from '../../utils/hooks';
@@ -9,59 +14,94 @@ import { NavigationMenuElement, NavigationPropsType } from './type';
 import { navigationDefaultTheme } from './theme';
 import { NAVIGATION_CLASS_PREFIX, DEFAULT_MAX_DEPTH_LEVEL } from './constants';
 import { Menu, MenuElement } from '../Menu';
+import { ScalarType } from '../../type';
+
+const isElementInState = (
+    element: NavigationMenuElement,
+    stateName: 'expanded' | 'selected',
+    elementIds?: ScalarType[],
+) => {
+    if (element[stateName] !== undefined) {
+        return element[stateName];
+    }
+
+    if (elementIds) {
+        return elementIds.includes(element.id);
+    }
+
+    return false;
+};
 
 const renderMenuElement = (
-    item: NavigationMenuElement,
+    element: NavigationMenuElement,
     depthLevel: number,
     maxDepthLevel = DEFAULT_MAX_DEPTH_LEVEL,
     parentId = '',
     enableEffects = false,
+    onMenuElementClick: (event: MouseEvent<HTMLDivElement>) => void,
+    selectedElementIds: NavigationPropsType['selectedElementIds'],
+    expandedElementIds: NavigationPropsType['expandedElementIds'],
 ) => {
     if (depthLevel >= maxDepthLevel) {
         return null;
     }
 
-    const hasChildren = !!(item.items && item.items.length);
-    const globalId = `${parentId}.${item.id}`;
+    const hasChildren = !!(element.items && element.items.length);
+    const globalId = `${parentId}.${element.id}`;
+
+    const elementExpanded = isElementInState(
+        element,
+        'expanded',
+        expandedElementIds,
+    );
+    const elementSelected = isElementInState(
+        element,
+        'selected',
+        selectedElementIds,
+    );
 
     return (
-        <Fragment key={item.id}>
+        <Fragment key={element.id}>
             <MenuElement
+                {...element.menuElementProps}
                 enableExpansionHandle={hasChildren}
                 secondary={depthLevel === 1}
                 tertiary={depthLevel > 1}
-                data-menuelementid={item.id}
+                data-menuelementid={element.id}
                 data-menuelementglobalid={globalId}
                 data-depthlevel={depthLevel}
                 depthlevel={depthLevel}
-                expanded={item.expanded}
-                selected={item.selected}
-                {...item.menuElementProps}
+                expanded={elementExpanded}
+                selected={elementSelected}
+                onClick={onMenuElementClick}
             >
-                {item.label}
+                {element.label}
             </MenuElement>
-            {item.beforeMenu}
+            {element.beforeMenu}
             {hasChildren && (
                 <Menu
                     secondary={depthLevel === 0}
                     tertiary={depthLevel > 0}
-                    expanded={item.expanded}
+                    expanded={elementExpanded}
                     enableEffects={enableEffects}
                 >
-                    {item.beforeItems}
-                    {item.items!.map(subItem =>
+                    {element.beforeItems}
+                    {element.items!.map(subItem =>
                         renderMenuElement(
                             subItem,
                             depthLevel + 1,
                             maxDepthLevel,
                             globalId,
                             enableEffects,
+                            onMenuElementClick,
+                            selectedElementIds,
+                            expandedElementIds,
                         ),
                     )}
-                    {item.afterItems}
+                    {element.afterItems}
                 </Menu>
             )}
-            {item.afterMenu}
+            {element.afterMenu}
         </Fragment>
     );
 };
@@ -73,6 +113,8 @@ export const Navigation: FunctionComponent<NavigationPropsType> = forwardRef(
             classNames,
             enableBottomSeparator,
             enableEffects,
+            selectedElementIds,
+            expandedElementIds,
             ...restProps
         },
         ref,
@@ -88,7 +130,7 @@ export const Navigation: FunctionComponent<NavigationPropsType> = forwardRef(
         );
 
         const {
-            onRootClick,
+            onMenuElementClick,
             items,
             maxDepthLevel,
             restRootProps,
@@ -97,7 +139,6 @@ export const Navigation: FunctionComponent<NavigationPropsType> = forwardRef(
         return (
             <NavigationRoot
                 {...restRootProps}
-                onClick={onRootClick}
                 theme={theme}
                 className={classNameComponents.Root}
                 ref={ref}
@@ -111,6 +152,9 @@ export const Navigation: FunctionComponent<NavigationPropsType> = forwardRef(
                                 maxDepthLevel,
                                 '',
                                 enableEffects,
+                                onMenuElementClick,
+                                selectedElementIds,
+                                expandedElementIds,
                             ),
                         )}
                 </Menu>

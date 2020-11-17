@@ -27,6 +27,8 @@ type NavigationEffectivePropsType = Indexed<{
     onElementExpansionHandleClick?: (itemId: ScalarType) => void; // todo: should be fired when somebody clicks on the expansion handle, future-reserved
     maxDepthLevel?: number;
     enableEffects?: boolean;
+    selectedElementIds?: ScalarType[];
+    expandedElementIds?: ScalarType[];
     // add other custom properties here
 }> &
     Pick<MenuPropsType, 'enableBottomSeparator'> &

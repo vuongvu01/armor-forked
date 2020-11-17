@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { ArrowUpIcon } from '@deliveryhero/armor-icons';
+import { ArrowDownIcon } from '@deliveryhero/armor-icons';
 import { ReactElement } from 'react';
 import {
     MenuElementContentPropsType,
@@ -166,9 +166,12 @@ const getExpansionHandleArrowDynamicStyle = ({
     return result;
 };
 
-export const MenuElementExpansionHandleArrow = styled(ArrowUpIcon).withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<MenuElementExpansionHandleArrowPropsType>`
+export const MenuElementExpansionHandleArrow = styled(ArrowDownIcon).withConfig(
+    {
+        shouldForwardProp: property =>
+            shouldForwardProp(property, propertyList),
+    },
+)<MenuElementExpansionHandleArrowPropsType>`
     transition: transform ${transitionDurationInSec}s ease;
     transform-origin: center;
 

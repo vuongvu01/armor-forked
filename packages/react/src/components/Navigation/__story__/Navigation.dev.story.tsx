@@ -7,7 +7,9 @@ import { SearchIcon } from '@deliveryhero/armor-icons';
 
 import { Navigation } from '../Navigation';
 import { spacing } from '../../../system/mixins';
-import { TextInput } from '../../TextInput/TextInput';
+import { TextInput } from '../../TextInput';
+import { structure as demoStructure } from '../__test__/helpers';
+import { ScalarType } from '../../../type';
 
 export default {
     title: 'Components/Navigation',
@@ -246,5 +248,33 @@ export const Arara = () => {
                 }}
             />
         </>
+    );
+};
+
+export const SelectedExpandedItems = () => {
+    const [selectedItemIds, setSelectedItemIds] = useState<ScalarType[]>([
+        'bugs',
+    ]);
+    const [expandedItemIds, setExpandedItemIds] = useState<ScalarType[]>([
+        'bugs',
+    ]);
+
+    return (
+        <Navigation
+            items={demoStructure}
+            selectedElementIds={selectedItemIds}
+            expandedElementIds={expandedItemIds}
+            maxWidth="300px"
+            onElementClick={id => {
+                if (expandedItemIds.includes(id)) {
+                    setExpandedItemIds(
+                        expandedItemIds.filter(itemId => itemId !== id),
+                    );
+                } else {
+                    setExpandedItemIds([id, ...expandedItemIds]);
+                }
+                setSelectedItemIds([id]);
+            }}
+        />
     );
 };
