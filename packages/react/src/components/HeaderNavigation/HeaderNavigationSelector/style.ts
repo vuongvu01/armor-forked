@@ -5,6 +5,7 @@ import {
     colorGrey05,
     colorGrey30,
     colorGrey50,
+    colorGrey90,
 } from '../../../tokens';
 import { HeaderNavigationPackItem } from '../HeaderNavigationPackItem';
 import { Dropdown } from '../../Dropdown';
@@ -60,6 +61,9 @@ export const SelectorDropdown = styled(Dropdown)<
         padding-right: 0;
         &:disabled {
             color: ${colorGrey30};
+        }
+        &::placeholder {
+            color: ${colorGrey90};
         }
     }
     .HeaderNavigationSelector-SelectorDropdown.Dropdown-TextInput {

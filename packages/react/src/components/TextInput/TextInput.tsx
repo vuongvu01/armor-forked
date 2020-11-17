@@ -10,7 +10,7 @@ import {
 } from './utils';
 import {
     TextInputRoot,
-    TextInputContainer,
+    TextInputInput,
     TextInputLabel,
     TextInputLabelBackground,
 } from './style';
@@ -40,6 +40,7 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
             large,
             onMouseOut,
             onMouseOver,
+            outline,
 
             // input-specific props need to be passed to Input component instead
             autoComplete,
@@ -106,7 +107,7 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
 
         const internalInputRef = useRef(null);
         const Tag = multiline ? 'textarea' : 'input';
-        const isOutlined = isMouseInside || isFocused;
+        const isOutlined = isMouseInside || isFocused || outline;
 
         // Effects to control external value assignment, enabled and disabled state
         useEffect(() => {
@@ -134,7 +135,7 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
                 onMouseOut={onInputMouseOut}
             >
                 {before}
-                <TextInputContainer
+                <TextInputInput
                     autoComplete={autoComplete}
                     autoFocus={autoFocus}
                     className={classNameComponents.Input}
@@ -170,7 +171,7 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
                             data-testid={textInputInput}
                         />
                     )}
-                </TextInputContainer>
+                </TextInputInput>
                 {after}
                 {!!label && (
                     <TextInputLabel
@@ -206,7 +207,8 @@ TextInput.defaultProps = {
     disableLabelEffect: false,
     multiline: false,
     error: false,
-    large: false,
+    large: false, // default is medium (small in design)
+    outline: false,
 };
 
 /** Support of prop-types is here for project that don't use TypeScript */
@@ -231,4 +233,5 @@ TextInput.propTypes = {
     error: PropTypes.bool,
     /** Increase vertical size */
     large: PropTypes.bool,
+    outline: PropTypes.bool,
 };

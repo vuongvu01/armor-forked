@@ -24,23 +24,25 @@ export const useClassName = (
  */
 export const useComponentTheme = (
     classPrefix: string,
-    defaultComponentTheme: ObjectLiteralType = {},
+    defaultComponentTheme?: ObjectLiteralType,
 ) => {
     const theme = useTheme();
 
     useMemo(() => {
         if (!(classPrefix in theme.armor.componentOverrides)) {
-            const chunk = merge(
-                defaultComponentTheme,
-                theme.armor.components[classPrefix],
-            );
+            let override = {};
+
+            if (defaultComponentTheme) {
+                const chunk = merge(
+                    defaultComponentTheme,
+                    theme.armor.components[classPrefix],
+                );
+
+                override = transformTheme(theme.armor, chunk, classPrefix);
+            }
 
             // eslint-disable-next-line no-param-reassign
-            theme.armor.componentOverrides[classPrefix] = transformTheme(
-                theme.armor,
-                chunk,
-                classPrefix,
-            );
+            theme.armor.componentOverrides[classPrefix] = override;
         }
 
         return true;

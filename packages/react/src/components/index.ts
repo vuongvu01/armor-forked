@@ -40,3 +40,4 @@ export * from './Tooltip';
 export * from './Typography';
 export * from './PageNavigation';
 export * from './DataTable';
+export * from './Container';

@@ -15,7 +15,9 @@ const searchIconContainerStyle = ({
 };
 
 export const SearchIconContainer = styled.div<SearchIconContainerPropsType>`
-    ${searchIconContainerStyle}
+    display: flex;
+    align-items: center;
+    ${searchIconContainerStyle};
 `;
 
 const loadingIconIconStyle = ({

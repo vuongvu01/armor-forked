@@ -79,6 +79,9 @@ export const Search: FunctionComponent<SearchPropsType> = forwardRef(
                 wide={wide}
             >
                 <SearchTextInput
+                    before={
+                        <SearchIcon isLoading={isLoading} disabled={disabled} />
+                    }
                     after={
                         <SearchClearAction
                             disableClearAction={disableClearAction}
@@ -86,9 +89,6 @@ export const Search: FunctionComponent<SearchPropsType> = forwardRef(
                             disabled={disabled}
                             searchQuery={searchQuery}
                         />
-                    }
-                    before={
-                        <SearchIcon isLoading={isLoading} disabled={disabled} />
                     }
                     className={classOverride.TextInput}
                     disabled={disabled}

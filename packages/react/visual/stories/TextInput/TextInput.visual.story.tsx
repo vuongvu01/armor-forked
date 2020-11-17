@@ -1,0 +1,195 @@
+import React from 'react';
+
+import { TextInput } from '../../../src/components/TextInput';
+
+export default {
+    title: 'TextInput',
+    component: TextInput,
+};
+
+export const AllStates = () => (
+    <>
+        <div>
+            <TextInput label="Label" name="your_price" marginRight={1} />
+            <TextInput
+                label="Label"
+                name="your_price"
+                defaultValue="1000"
+                marginRight={1}
+            />
+            <TextInput
+                placeholder="Label"
+                name="your_price"
+                defaultValue="1000"
+                marginRight={1}
+            />
+            <TextInput placeholder="Label" name="your_price" marginRight={1} />
+            <TextInput label="Label" name="your_price" large marginRight={1} />
+            <TextInput
+                label="Label"
+                name="your_price"
+                defaultValue="1000"
+                large
+                marginRight={1}
+            />
+        </div>
+        <br />
+        <div>
+            <TextInput
+                label="Label"
+                name="your_price"
+                marginRight={1}
+                disabled
+            />
+            <TextInput
+                label="Label"
+                name="your_price"
+                defaultValue="1000"
+                marginRight={1}
+                disabled
+            />
+            <TextInput
+                placeholder="Label"
+                name="your_price"
+                defaultValue="1000"
+                marginRight={1}
+                disabled
+            />
+            <TextInput
+                placeholder="Label"
+                name="your_price"
+                marginRight={1}
+                disabled
+            />
+            <TextInput
+                label="Label"
+                name="your_price"
+                large
+                marginRight={1}
+                disabled
+            />
+            <TextInput
+                label="Label"
+                name="your_price"
+                defaultValue="1000"
+                large
+                marginRight={1}
+                disabled
+            />
+        </div>
+        <br />
+        <div>
+            <TextInput label="Label" name="your_price" marginRight={1} error />
+            <TextInput
+                label="Label"
+                name="your_price"
+                defaultValue="1000"
+                marginRight={1}
+                error
+            />
+            <TextInput
+                placeholder="Label"
+                name="your_price"
+                defaultValue="1000"
+                marginRight={1}
+                error
+            />
+            <TextInput
+                placeholder="Label"
+                name="your_price"
+                marginRight={1}
+                error
+            />
+            <TextInput
+                label="Label"
+                name="your_price"
+                large
+                marginRight={1}
+                error
+            />
+            <TextInput
+                label="Label"
+                name="your_price"
+                defaultValue="1000"
+                large
+                marginRight={1}
+                error
+            />
+        </div>
+        <br />
+        <div>
+            <TextInput
+                label="Label"
+                name="your_price"
+                marginRight={1}
+                outline
+            />
+            <TextInput
+                label="Label"
+                name="your_price"
+                defaultValue="1000"
+                marginRight={1}
+                outline
+            />
+            <TextInput
+                placeholder="Label"
+                name="your_price"
+                defaultValue="1000"
+                marginRight={1}
+                outline
+            />
+            <TextInput
+                placeholder="Label"
+                name="your_price"
+                marginRight={1}
+                outline
+            />
+            <TextInput
+                label="Label"
+                name="your_price"
+                large
+                marginRight={1}
+                outline
+            />
+            <TextInput
+                label="Label"
+                name="your_price"
+                defaultValue="1000"
+                large
+                marginRight={1}
+                outline
+            />
+        </div>
+        <br />
+        <div>
+            <TextInput
+                label="Label"
+                name="your_price"
+                marginRight={1}
+                multiline
+            />
+            <TextInput
+                label="Label"
+                name="your_price"
+                defaultValue="1000"
+                marginRight={1}
+                multiline
+            />
+            <TextInput
+                label="Label"
+                name="your_price"
+                large
+                marginRight={1}
+                multiline
+            />
+            <TextInput
+                label="Label"
+                name="your_price"
+                defaultValue="1000"
+                large
+                marginRight={1}
+                multiline
+            />
+        </div>
+    </>
+);
