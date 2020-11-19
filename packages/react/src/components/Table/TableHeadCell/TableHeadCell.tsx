@@ -23,18 +23,7 @@ import { TableCellLabel } from '../TableCellLabel';
 
 export const TableHeadCell: FunctionComponent<TableHeadCellPropsType> = forwardRef(
     function TableHeadCell(
-        {
-            className,
-            classNames,
-            children,
-            columnId,
-            sortable,
-            onClick,
-            sortType, // todo: rename to rowSortType
-            rowSortOrder,
-            onRowSortOrderChange,
-            ...restProps
-        },
+        { className, classNames, children, ...restProps },
         ref,
     ) {
         const theme = useComponentTheme(
@@ -49,29 +38,22 @@ export const TableHeadCell: FunctionComponent<TableHeadCellPropsType> = forwardR
 
         const {
             sortingEnabled,
-            onRootClick,
             isAscending,
             isDescending,
             isIconAlphabetical,
             isIconNumerical,
-        } = useTableHeadCell({
-            sortable,
-            columnId,
-            onClick,
-            sortType,
-            rowSortOrder,
-            onRowSortOrderChange,
-        });
+            restRootProps,
+        } = useTableHeadCell(restProps);
 
         return (
             <TableHeadCellRoot
                 data-testid={tableHeadCellRootTestId}
-                {...restProps}
+                {...restRootProps}
                 theme={theme}
                 className={classNameComponents.Root}
                 ref={ref}
-                onClick={onRootClick}
                 sortingEnabled={sortingEnabled}
+                data-sortable={sortingEnabled ? '1' : '0'}
             >
                 <TableCellLabel>
                     {children}
@@ -113,7 +95,7 @@ TableHeadCell.defaultProps = {
 TableHeadCell.propTypes = {
     sortable: PropTypes.bool,
     columnId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    sortType: PropTypes.oneOf([
+    rowSortType: PropTypes.oneOf([
         TABLE_HEAD_CELL_SORTING_TYPE_NUMERICAL,
         TABLE_HEAD_CELL_SORTING_TYPE_ALPHABETICAL,
     ]),

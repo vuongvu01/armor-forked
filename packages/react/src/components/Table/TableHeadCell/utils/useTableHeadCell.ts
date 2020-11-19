@@ -1,5 +1,5 @@
-import { useCallback, useMemo, MouseEvent } from 'react';
-import { TableHeadCellPropsType, TableHeadCellRowSortOrderType } from '../type';
+import { useMemo } from 'react';
+import { TableHeadCellPropsType } from '../type';
 import { TABLE_HEAD_CELL_SORTING_TYPE_NUMERICAL } from '../constants';
 import {
     TABLE_SORTING_DIRECTION_ASC,
@@ -9,19 +9,10 @@ import {
 export const useTableHeadCell = ({
     sortable,
     columnId,
-    onClick,
-    sortType,
+    rowSortType,
     rowSortOrder,
-    onRowSortOrderChange,
-}: Pick<
-    TableHeadCellPropsType,
-    | 'sortable'
-    | 'columnId'
-    | 'onClick'
-    | 'sortType'
-    | 'rowSortOrder'
-    | 'onRowSortOrderChange'
->) => {
+    ...restProps
+}: TableHeadCellPropsType) => {
     const sortingEnabled = !!(sortable && columnId);
     const [isSelected, isAscending, isDescending] = useMemo(() => {
         if (!sortable || !rowSortOrder || !rowSortOrder.length) {
@@ -42,59 +33,20 @@ export const useTableHeadCell = ({
     }, [sortable, rowSortOrder, columnId]);
 
     const isIconNumerical =
-        !isSelected && sortType === TABLE_HEAD_CELL_SORTING_TYPE_NUMERICAL;
+        !isSelected && rowSortType === TABLE_HEAD_CELL_SORTING_TYPE_NUMERICAL;
     const isIconAlphabetical =
-        !isSelected && sortType !== TABLE_HEAD_CELL_SORTING_TYPE_NUMERICAL;
-
-    const onRootClick = useCallback(
-        (event: MouseEvent<HTMLTableHeaderCellElement>) => {
-            if (onClick) {
-                onClick(event);
-                if (event.isPropagationStopped()) {
-                    return;
-                }
-            }
-
-            if (!sortingEnabled) {
-                return;
-            }
-
-            let direction = '';
-            // todo: support sorting by several columns
-            if (
-                rowSortOrder &&
-                rowSortOrder.length &&
-                rowSortOrder[0][0] === columnId
-            ) {
-                // eslint-disable-next-line prefer-destructuring
-                direction = rowSortOrder[0][1];
-            }
-
-            let nextOrder: TableHeadCellRowSortOrderType = [];
-
-            if (columnId) {
-                // todo: support sorting by several columns
-                if (direction === '') {
-                    nextOrder = [[columnId, TABLE_SORTING_DIRECTION_ASC]];
-                } else if (direction === TABLE_SORTING_DIRECTION_ASC) {
-                    nextOrder = [[columnId, TABLE_SORTING_DIRECTION_DESC]];
-                }
-
-                if (onRowSortOrderChange) {
-                    onRowSortOrderChange(nextOrder);
-                }
-            }
-        },
-        [columnId, sortingEnabled, onClick, onRowSortOrderChange, rowSortOrder],
-    );
+        !isSelected && rowSortType !== TABLE_HEAD_CELL_SORTING_TYPE_NUMERICAL;
 
     return {
         sortingEnabled,
-        onRootClick,
         isSelected,
         isIconNumerical,
         isIconAlphabetical,
         isAscending,
         isDescending,
+        restRootProps: {
+            columnId,
+            ...restProps,
+        },
     };
 };

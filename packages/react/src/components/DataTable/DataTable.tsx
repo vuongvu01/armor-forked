@@ -25,7 +25,7 @@ export const DataTable: FunctionComponent<DataTablePropsType> = forwardRef(
 
             // row order
             rowSortOrder,
-            onRowSortOrderChange,
+            onHeadCellClick,
 
             // row selection
             enableRowSelection,
@@ -68,11 +68,9 @@ export const DataTable: FunctionComponent<DataTablePropsType> = forwardRef(
                                         columnId={column.id}
                                         data-columnid={column.id}
                                         sortable
-                                        sortType={column.sortType}
+                                        rowSortType={column.sortType}
                                         rowSortOrder={rowSortOrder}
-                                        onRowSortOrderChange={
-                                            onRowSortOrderChange
-                                        }
+                                        onClick={onHeadCellClick}
                                     >
                                         {column.title}
                                     </TableHeadCell>
@@ -84,6 +82,7 @@ export const DataTable: FunctionComponent<DataTablePropsType> = forwardRef(
                                     {...column.headCellProps}
                                     key={key}
                                     data-columnid={column.id}
+                                    onClick={onHeadCellClick}
                                 >
                                     {column.title}
                                 </TableCell>
@@ -129,6 +128,7 @@ DataTable.defaultProps = {
     columns: [],
     data: [],
     enableRowSelection: false,
+    enableNeutralRowSorting: true,
 };
 
 /** prop-types are required here for run-time checks */

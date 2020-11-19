@@ -70,7 +70,7 @@ describe('<DataTable />', () => {
         expect(onRowSortOrderChange).toHaveBeenCalledWith([['age', 'desc']]);
     });
 
-    it('should switch current sort order desc => undefined, [uncontrolled]', async () => {
+    it('should switch current sort order desc => unsorted, [uncontrolled]', async () => {
         const onRowSortOrderChange = jest.fn();
         const { container } = render(
             <DataTable
@@ -87,7 +87,7 @@ describe('<DataTable />', () => {
         expect(onRowSortOrderChange).toHaveBeenCalledWith([]);
     });
 
-    it('should switch current sort order desc => undefined, [controlled]', async () => {
+    it('should switch current sort order desc => unsorted, [controlled]', async () => {
         const onRowSortOrderChange = jest.fn();
         const { container } = render(
             <DataTable
@@ -104,7 +104,7 @@ describe('<DataTable />', () => {
         expect(onRowSortOrderChange).toHaveBeenCalledWith([]);
     });
 
-    it('should switch current sort order undefined => asc, [uncontrolled]', async () => {
+    it('should switch current sort order unsorted => asc, [uncontrolled]', async () => {
         const onRowSortOrderChange = jest.fn();
         const { container } = render(
             <DataTable
@@ -121,7 +121,7 @@ describe('<DataTable />', () => {
         expect(onRowSortOrderChange).toHaveBeenCalledWith([['age', 'asc']]);
     });
 
-    it('should switch current sort order undefined => asc, [controlled]', async () => {
+    it('should switch current sort order unsorted => asc, [controlled]', async () => {
         const onRowSortOrderChange = jest.fn();
         const { container } = render(
             <DataTable
@@ -174,6 +174,42 @@ describe('<DataTable />', () => {
 
         fireEvent.click(cell!);
         expect(onRowSortOrderChange).toHaveBeenCalledWith([['address', 'asc']]);
+    });
+
+    it('should switch current sort order desc => asc when enableNeutralRowSorting is set to false, [uncontrolled]', async () => {
+        const onRowSortOrderChange = jest.fn();
+        const { container } = render(
+            <DataTable
+                columns={columns}
+                data={dataSource}
+                onRowSortOrderChange={onRowSortOrderChange}
+                enableNeutralRowSorting={false}
+                defaultRowSortOrder={[['age', 'desc']]}
+            />,
+        );
+
+        const cell = container.querySelector('thead th[data-columnid="age"]');
+
+        fireEvent.click(cell!);
+        expect(onRowSortOrderChange).toHaveBeenCalledWith([['age', 'asc']]);
+    });
+
+    it('should switch current sort order desc => asc when enableNeutralRowSorting is set to false, [controlled]', async () => {
+        const onRowSortOrderChange = jest.fn();
+        const { container } = render(
+            <DataTable
+                columns={columns}
+                data={dataSource}
+                onRowSortOrderChange={onRowSortOrderChange}
+                enableNeutralRowSorting={false}
+                rowSortOrder={[['age', 'desc']]}
+            />,
+        );
+
+        const cell = container.querySelector('thead th[data-columnid="age"]');
+
+        fireEvent.click(cell!);
+        expect(onRowSortOrderChange).toHaveBeenCalledWith([['age', 'asc']]);
     });
 
     const expectToBeInState = (

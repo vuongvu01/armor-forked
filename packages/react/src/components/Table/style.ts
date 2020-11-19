@@ -15,14 +15,19 @@ const propertyList = {
     onRowSelectionChange: true,
 } as ObjectLiteralType;
 
-const getRootBaseStyle = ({ theme }: TableRootPropsType) =>
-    theme.componentOverrides.Table.Root.base;
+const getRootDynamicStyle = ({
+    horizontalScroll,
+    theme,
+}: TableRootPropsType) => {
+    const {
+        componentOverrides: { Table },
+    } = theme;
 
-const getRootDynamicStyle = ({ horizontalScroll }: TableRootPropsType) => {
-    let result = {};
+    let result = Table.Root.base;
 
     if (horizontalScroll) {
         result = css`
+            ${result};
             display: block;
             overflow-x: auto;
             white-space: nowrap;
@@ -40,7 +45,6 @@ export const TableRoot = styled.table.withConfig({
     border-collapse: collapse;
     table-layout: fixed;
 
-    ${getRootBaseStyle}
     ${getRootDynamicStyle}
     ${marginAttributes}
     ${widthAttributes}

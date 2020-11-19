@@ -1,9 +1,5 @@
 import { HTMLAttributes } from 'react';
-import {
-    StylesFunctionOrStubType,
-    StylePropsType,
-    PropsWithNodeStylePropsType,
-} from '../type';
+import { StylePropsType, PropsWithNodeStylePropsType } from '../type';
 import { MarginAttributesType } from '../../system/attributes';
 import { Indexed } from '../../type';
 

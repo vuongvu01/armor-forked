@@ -10,18 +10,18 @@ const propertyList = {
     rowId: true,
 } as ObjectLiteralType;
 
-const getRootBaseStyle = ({ theme }: TableRowRootPropsType) =>
-    theme.componentOverrides.TableRow.Root.base;
-
 const getRootDynamicStyle = ({ theme, isHeader }: TableRowRootPropsType) => {
     const {
         componentOverrides: { TableRow },
     } = theme;
 
-    let result = {};
+    let result = TableRow.Root.base;
 
     if (!isHeader) {
-        result = TableRow.Root.body;
+        result = css`
+            ${result};
+            ${TableRow.Root.body};
+        `;
     }
 
     return result;
@@ -36,7 +36,6 @@ export const TableRowRoot = styled.tr.withConfig({
         border-bottom-style: solid;
     }
 
-    ${getRootBaseStyle}
     ${getRootDynamicStyle}
     ${heightAttributes}
 `;

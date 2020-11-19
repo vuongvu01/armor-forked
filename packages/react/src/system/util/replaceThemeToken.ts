@@ -17,7 +17,7 @@ export const replaceThemeToken = (
             updated = true;
         } else {
             consoleWarn(
-                `Was not able to replace placeholder "${currentValue}"${
+                `Was not able to replace token "${currentValue}"${
                     where
                         ? ` at ${prefix ? `${prefix}.` : ''}${where.join('.')}`
                         : ''

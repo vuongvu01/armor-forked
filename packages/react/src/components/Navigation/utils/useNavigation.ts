@@ -4,31 +4,7 @@ import { ObjectLiteralType, ScalarType } from '../../../type';
 import { consoleWarn } from '../../../system/util/consoleWarn';
 import { DEFAULT_MAX_DEPTH_LEVEL } from '../constants';
 
-// const findMenuElement = (node: HTMLElement) => {
-//     let currentNode: HTMLElement | null = node;
-//     let failSafe = 0;
-//     while (currentNode) {
-//         if (failSafe > 30) {
-//             consoleWarn('Unable to find .MenuElement-Root: too deep nesting');
-//             return null;
-//         }
-//
-//         if (currentNode.classList.contains('MenuElement-Root')) {
-//             return currentNode;
-//         }
-//         if (currentNode.classList.contains('Menu-Root')) {
-//             break;
-//         }
-//
-//         failSafe += 1;
-//         currentNode = node.parentElement;
-//     }
-//
-//     return null;
-// };
-
 export const useNavigation = ({
-    onClick,
     items: menuItems,
     maxDepthLevel,
     onElementClick,

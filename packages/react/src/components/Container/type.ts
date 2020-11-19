@@ -2,8 +2,8 @@ import { HTMLAttributes } from 'react';
 import { StylePropsType, NodeStylePropsTypeNoStyles } from '../type';
 import {
     PaddingAttributesType,
-    WidthAttributesType,
     MarginAttributesType,
+    SizeAttributesType,
 } from '../../system/attributes';
 import { Indexed } from '../../type';
 
@@ -13,7 +13,7 @@ type ContainerEffectivePropsType = Indexed<{
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
     PaddingAttributesType &
     MarginAttributesType &
-    WidthAttributesType;
+    SizeAttributesType;
 
 /* Container component prop type */
 export type ContainerPropsType = ContainerEffectivePropsType &

@@ -12,11 +12,8 @@ const propertyList = makePropList([
     'sortingEnabled',
     'sortable',
     'columnId',
-    'sortType',
+    'rowSortType',
 ]);
-
-const getRootBaseStyle = ({ theme }: TableHeadCellRootPropsType) =>
-    theme.componentOverrides.TableHeadCell.Root.base;
 
 const getRootDynamicStyle = ({
     theme,
@@ -26,7 +23,7 @@ const getRootDynamicStyle = ({
         componentOverrides: { TableHeadCell },
     } = theme;
 
-    let result = {};
+    let result = TableHeadCell.Root.base;
 
     if (sortingEnabled) {
         result = css`
@@ -62,7 +59,6 @@ export const TableHeadCellRoot = styled(TableCell).withConfig({
         }
     }
 
-    ${getRootBaseStyle}
     ${getRootDynamicStyle}
     ${marginAttributes}
 `;

@@ -57,7 +57,7 @@ const getRootDynamicStyle = (props: TextInputRootPropsType) => {
 
     let result = TextInput.Root.base;
 
-    if (multiline) {
+    if (!multiline) {
         result = css`
             ${result};
             align-items: center;

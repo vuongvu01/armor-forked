@@ -3,7 +3,7 @@ import { ContainerRootPropsType } from './type';
 import {
     marginAttributes,
     paddingAttributes,
-    widthAttributes,
+    sizeAttributes,
 } from '../../system/attributes';
 import { shouldForwardProp } from '../../utils';
 import { spacing } from '../../system/mixins';
@@ -17,7 +17,7 @@ export const ContainerRoot = styled.div.withConfig({
     margin-right: auto;
     width: 100%;
     padding: 0 ${spacing(2)};
-    ${widthAttributes}
+    ${sizeAttributes}
     ${paddingAttributes}
     ${marginAttributes}
 `;

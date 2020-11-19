@@ -22,7 +22,7 @@ export const Basic = () => {
     return <DataTable columns={columns} data={data} />;
 };
 
-export const SortingUncontrolled = () => {
+export const RowSortingUncontrolled = () => {
     const [data, setData] = useState<typeof dataSource>(dataSource);
 
     return (
@@ -57,7 +57,7 @@ export const SortingUncontrolled = () => {
     );
 };
 
-export const SortingControlled = () => {
+export const RowSortingControlled = () => {
     const [data, setData] = useState<typeof dataSource>(dataSource);
     const [sorting, setSorting] = useState<any[]>([]);
 
@@ -90,6 +90,42 @@ export const SortingControlled = () => {
                 }
 
                 setSorting(newWorldOrder);
+            }}
+        />
+    );
+};
+
+export const RowSortingNoUnsortedState = () => {
+    const [data, setData] = useState<typeof dataSource>(dataSource);
+
+    return (
+        <DataTable
+            columns={columns}
+            data={data}
+            defaultRowSortOrder={[['age', 'asc']]}
+            enableNeutralRowSorting={false}
+            onRowSortOrderChange={newWorldOrder => {
+                if (newWorldOrder.length) {
+                    const field = newWorldOrder[0][0];
+                    const order = newWorldOrder[0][1];
+
+                    const sortingFunction = getSortingFunction(
+                        field === 'id' ? 'numerical' : 'alphabetical',
+                    );
+
+                    setData(
+                        [...dataSource].sort((a, b) => {
+                            // @ts-ignore
+                            const valueA = a[field];
+                            // @ts-ignore
+                            const valueB = b[field];
+                            return sortingFunction(valueA, valueB, order);
+                        }),
+                    );
+                } else {
+                    // unsorted
+                    setData(dataSource);
+                }
             }}
         />
     );
