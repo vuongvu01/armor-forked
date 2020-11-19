@@ -4,31 +4,7 @@ import { ObjectLiteralType, ScalarType } from '../../../type';
 import { consoleWarn } from '../../../system/util/consoleWarn';
 import { DEFAULT_MAX_DEPTH_LEVEL } from '../constants';
 
-const findMenuElement = (node: HTMLElement) => {
-    let currentNode: HTMLElement | null = node;
-    let failSafe = 0;
-    while (currentNode) {
-        if (failSafe > 30) {
-            consoleWarn('Unable to find .MenuElement-Root: too deep nesting');
-            return null;
-        }
-
-        if (currentNode.classList.contains('MenuElement-Root')) {
-            return currentNode;
-        }
-        if (currentNode.classList.contains('Menu-Root')) {
-            break;
-        }
-
-        failSafe += 1;
-        currentNode = node.parentElement;
-    }
-
-    return null;
-};
-
 export const useNavigation = ({
-    onClick,
     items: menuItems,
     maxDepthLevel,
     onElementClick,
@@ -76,37 +52,43 @@ export const useNavigation = ({
         return result;
     }, [menuItems, maxDepthLevel]);
 
-    const onRootClick = useCallback(
+    const onMenuElementClick = useCallback(
         (event: MouseEvent<HTMLDivElement>) => {
-            if (onClick) {
-                onClick(event);
+            const itemNode = event.currentTarget as HTMLElement;
+            const itemId = itemNode.getAttribute('data-menuelementid');
+            const itemGlobalId = itemNode.getAttribute(
+                'data-menuelementglobalid',
+            );
+
+            if (!itemId || !itemGlobalId) {
+                return;
+            }
+
+            const itemReference = references[itemGlobalId];
+            if (!itemReference) {
+                return;
+            }
+
+            if (
+                itemReference.menuElementProps &&
+                itemReference.menuElementProps.onClick
+            ) {
+                itemReference.menuElementProps.onClick(event);
             }
 
             if (event.isPropagationStopped()) {
                 return;
             }
 
-            if (!onElementClick) {
-                return;
-            }
-
-            const itemNode = findMenuElement(event.target as HTMLElement);
-            if (itemNode) {
-                const itemId = itemNode.getAttribute('data-menuelementid');
-                const itemGlobalId = itemNode.getAttribute(
-                    'data-menuelementglobalid',
-                );
-                if (itemId && itemGlobalId) {
-                    const reference = references[itemGlobalId];
-                    onElementClick(itemId, reference);
-                }
+            if (onElementClick) {
+                onElementClick(itemId, itemReference);
             }
         },
         [onElementClick, references],
     );
 
     return {
-        onRootClick,
+        onMenuElementClick,
         items: menuItems,
         maxDepthLevel,
         restRootProps,

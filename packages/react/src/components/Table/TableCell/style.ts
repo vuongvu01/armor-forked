@@ -28,9 +28,6 @@ const propertyList = makePropList([
     'stickyVisible',
 ]);
 
-const getRootBaseStyle = ({ theme }: TableCellRootPropsType) =>
-    theme.componentOverrides.TableCell.Root.base;
-
 const getRootDynamicStyle = ({
     theme,
     isHeader,
@@ -46,10 +43,11 @@ const getRootDynamicStyle = ({
         componentOverrides: { TableCell },
     } = theme;
 
-    let result = {};
+    let result = TableCell.Root.base;
 
     if (isHeader) {
         result = css`
+            ${result};
             vertical-align: middle;
             ${TableCell.Root.header};
         `;
@@ -185,7 +183,6 @@ export const TableCellStyle = styled(Wrapper).withConfig({
     transition: background-color 200ms ease;
     background-color: inherit;
 
-    ${getRootBaseStyle}
     ${getRootDynamicStyle}
     ${paddingAttributes}
     ${widthAttributes}

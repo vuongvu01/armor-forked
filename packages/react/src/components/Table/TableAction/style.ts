@@ -11,7 +11,7 @@ import { transitionDurationInSec } from '../../../constants';
 // all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
 const propertyList = {} as ObjectLiteralType;
 
-const getRootBaseStyle = ({ theme }: TableActionRootPropsType) =>
+const getRootDynamicStyle = ({ theme }: TableActionRootPropsType) =>
     theme.componentOverrides.TableAction.Root.base;
 
 // if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
@@ -24,7 +24,7 @@ export const TableActionRoot = styled.div.withConfig({
     transition: color ${transitionDurationInSec}s ease;
     cursor: pointer;
 
-    ${getRootBaseStyle}
+    ${getRootDynamicStyle}
     ${marginAttributes}
     ${paddingAttributes}
 `;

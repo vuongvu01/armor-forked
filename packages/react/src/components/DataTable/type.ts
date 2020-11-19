@@ -13,7 +13,7 @@ export type DataTableColumnType = {
     id: string;
     key?: string;
     sortable?: TableHeadCellPropsType['sortable'];
-    sortType?: TableHeadCellPropsType['sortType'];
+    sortType?: TableHeadCellPropsType['rowSortType'];
     headCellProps?: TableCellPropsType;
     dataCellProps?: TableCellPropsType;
     formatDataCellContent?: (
@@ -36,7 +36,7 @@ type DataTableEffectivePropsType = Indexed<{
     // row sorting
     rowSortOrder?: TableHeadCellRowSortOrderType;
     defaultRowSortOrder?: TableHeadCellRowSortOrderType;
-    enableUnsortedState?: boolean;
+    enableNeutralRowSorting?: boolean;
     onRowSortOrderChange?: (
         rowSortOrder: TableHeadCellRowSortOrderType,
     ) => void;

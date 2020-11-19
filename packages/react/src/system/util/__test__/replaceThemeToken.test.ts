@@ -38,7 +38,7 @@ describe('replaceThemeToken', () => {
         const call = global.console.warn.mock.calls;
         expect(
             call[0][0].indexOf(
-                'Was not able to replace placeholder "$typography.shoe.fontFamily"',
+                'Was not able to replace token "$typography.shoe.fontFamily"',
             ) > 0,
         ).toBeTruthy();
 

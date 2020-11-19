@@ -6,9 +6,12 @@ export const color = (name: string) => ({
 }: ObjectLiteralType & { theme?: ThemeType | RootThemeType }) => {
     if (theme) {
         const currentTheme = theme.armor || theme;
-        return currentTheme.referenceIndex
-            ? currentTheme.referenceIndex[`$color.${name}`]
-            : null;
+        const prefixedColorName = `$color.${name}`;
+        if (prefixedColorName in currentTheme.referenceIndex) {
+            return currentTheme.referenceIndex[prefixedColorName];
+        }
+
+        return name;
     }
 
     return name;

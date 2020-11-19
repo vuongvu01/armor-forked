@@ -16,11 +16,8 @@ type TableHeadCellEffectivePropsType = Indexed<{
 
     // sorting
     sortable?: boolean;
-    sortType?: TableHeadCellSortType;
+    rowSortType?: TableHeadCellSortType;
     rowSortOrder?: TableHeadCellRowSortOrderType;
-    onRowSortOrderChange?: (
-        rowSortOrder: TableHeadCellRowSortOrderType,
-    ) => void;
 
     // add other custom properties here
 }> &

@@ -27,6 +27,7 @@ export const MenuElement: FunctionComponent<MenuElementPropsType> = forwardRef(
             tertiary,
             depthLevel,
             tag: Tag = 'div',
+            selected,
             ...restProps
         },
         ref,
@@ -50,9 +51,12 @@ export const MenuElement: FunctionComponent<MenuElementPropsType> = forwardRef(
                 depthLevel={depthLevel}
                 enableExpansionHandle={enableExpansionHandle}
                 expanded={expanded}
+                selected={selected}
                 theme={theme}
                 className={classNameComponents.Root}
                 aria-expanded={expanded ? 'true' : 'false'}
+                data-expanded={expanded ? '1' : '0'}
+                data-selected={selected ? '1' : '0'}
             >
                 {(forwardedProps: ButtonPropsType) => (
                     <Tag {...forwardedProps} ref={ref}>

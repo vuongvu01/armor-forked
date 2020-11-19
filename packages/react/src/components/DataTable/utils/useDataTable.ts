@@ -16,7 +16,7 @@ export const useDataTable = ({
     const columnsSafe = useMemo(() => columns || [], [columns]);
     const dataSafe = useMemo(() => data || [], [data]);
 
-    const rowSorting = useDataTableRowSorting(restProps);
+    const rowSorting = useDataTableRowSorting(columnsSafe, restProps);
     const rowSelection = useDataTableRowSelection(dataSafe, {
         enableRowSelection,
         ...rowSorting.restProps,
@@ -32,7 +32,6 @@ export const useDataTable = ({
 
         ...rowSorting.result,
         ...rowSelection.result,
-
         stickyColumns: stickyColumns.result,
 
         restRootProps: stickyColumns.restProps,

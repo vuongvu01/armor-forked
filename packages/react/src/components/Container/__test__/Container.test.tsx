@@ -55,4 +55,19 @@ describe('<Container />', () => {
         // @ts-ignore
         expect(Container).toSupportWidthAttributes();
     });
+
+    it('should support height attributes', async () => {
+        // @ts-ignore
+        expect(Container).toSupportHeightAttributes();
+    });
+
+    it('should support padding attributes', async () => {
+        // @ts-ignore
+        expect(Container).toSupportPaddingAttributes();
+    });
+
+    it('should support margin attributes', async () => {
+        // @ts-ignore
+        expect(Container).toSupportMarginAttributes();
+    });
 });
