@@ -1,3 +1,11 @@
+## @deliveryhero/armor [1.22.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.22.0...@deliveryhero/armor@1.22.1) (2020-11-19)
+
+
+### Bug Fixes
+
+* Container, PackItem and Navigation fixes [LD-316] ([#309](https://github.com/deliveryhero/armor/issues/309)) ([16c27b4](https://github.com/deliveryhero/armor/commit/16c27b4cb75a4b57125cf92467418fd245e6a2a8))
+* improvements and fixes [LD-319] ([#313](https://github.com/deliveryhero/armor/issues/313)) ([c3f8ab9](https://github.com/deliveryhero/armor/commit/c3f8ab999822595c048a8e593eeeb788550d649f))
+
 # @deliveryhero/armor [1.22.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.21.1...@deliveryhero/armor@1.22.0) (2020-11-17)
 
 
