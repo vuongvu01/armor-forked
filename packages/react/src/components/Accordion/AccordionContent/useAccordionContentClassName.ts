@@ -1,27 +1,27 @@
 import { useMemo } from 'react';
 
 import { getClassNameByComponent } from '../utils';
-import { ClassNamesType } from '../../type';
+import { appendClassName } from '../../../utils';
 
 const useAccordionContentClassName = (
     classPrefix: string,
     className?: string,
-    classNames?: ClassNamesType,
     disabled?: boolean,
     expanded?: boolean,
 ) =>
     useMemo(
         () => ({
-            Content: getClassNameByComponent({
-                component: 'Content',
-                classPrefix,
+            Content: appendClassName(
+                getClassNameByComponent({
+                    component: 'Content',
+                    classPrefix,
+                    disabled,
+                    expanded,
+                }),
                 className,
-                classNames,
-                disabled,
-                expanded,
-            }),
+            ),
         }),
-        [classPrefix, className, classNames, disabled, expanded],
+        [classPrefix, className, disabled, expanded],
     );
 
 export default useAccordionContentClassName;

@@ -20,5 +20,4 @@ export const BoxRoot = styled.div.withConfig({
     ${textAlignmentAttributes}
     ${displayAttributes}
     ${colorAttributes}
-    ${(props: BoxRootPropsType) => props.styles(props)}
 `;

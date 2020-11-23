@@ -4,7 +4,7 @@ import { boolean, select, withKnobs } from '@storybook/addon-knobs';
 
 import { Message } from '../Message';
 import { Typography } from '../../Typography';
-import { MessageAction } from '../../MessageAction';
+import { MessageAction } from '../MessageAction';
 import { Rick } from '../../../helpers/Rick';
 import { Box } from '../../Box';
 import { loremIpsum } from '../../../helpers/LoremIpsum';

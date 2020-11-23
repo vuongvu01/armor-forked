@@ -1,14 +1,12 @@
 import { useMemo } from 'react';
-import { makeClassName } from '../../../utils';
-import { ClassNamesType } from '../../type';
+import { makeRootClassName } from '../../../utils';
 
 export const useContainerClassNames = (
     classPrefix: string,
     className?: string,
-    classNames?: ClassNamesType,
 ) =>
     useMemo(() => {
         return {
-            Root: makeClassName(classPrefix, className, classNames),
+            Root: makeRootClassName(classPrefix, className),
         };
-    }, [classPrefix, className, classNames]);
+    }, [classPrefix, className]);

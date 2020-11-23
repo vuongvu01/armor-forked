@@ -10,6 +10,6 @@ describe('<Overlay />', () => {
     });
 
     it('should render itself without errors', async () => {
-        render(<Overlay open={true} styles={() => {}} />);
+        render(<Overlay open={true} />);
     });
 });

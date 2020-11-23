@@ -110,7 +110,6 @@ export const Navigation: FunctionComponent<NavigationPropsType> = forwardRef(
     function Navigation(
         {
             className,
-            classNames,
             enableBottomSeparator,
             enableEffects,
             selectedElementIds,
@@ -126,7 +125,6 @@ export const Navigation: FunctionComponent<NavigationPropsType> = forwardRef(
         const classNameComponents = useNavigationClassNames(
             NAVIGATION_CLASS_PREFIX,
             className,
-            classNames,
         );
 
         const {

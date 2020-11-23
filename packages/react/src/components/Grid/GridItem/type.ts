@@ -2,7 +2,6 @@ import { HTMLAttributes } from 'react';
 
 import { PaddingAttributesType } from '../../../system/attributes';
 import { Indexed } from '../../../type';
-import { ClassNamesType } from '../../type';
 
 export type GridSizeType =
     // todo: discuss the real purpose of this, because it seems to be defeating the 12-column concept
@@ -13,7 +12,6 @@ export type GridSizeType =
 
 export type ClassBasedOnComponentType = {
     className?: string;
-    classNames?: ClassNamesType;
     classPrefix: string;
     component: string;
     gutterSpacing?: number;

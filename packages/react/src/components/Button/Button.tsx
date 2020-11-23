@@ -12,7 +12,6 @@ export const Button: FunctionComponent<ButtonPropsType> = forwardRef(
     function Button(
         {
             className,
-            classNames,
             tag: ButtonRoot = 'button',
             small,
             wide,
@@ -34,7 +33,6 @@ export const Button: FunctionComponent<ButtonPropsType> = forwardRef(
         const classNameRoot = useButtonClassName(
             BUTTON_CLASS_PREFIX,
             className,
-            classNames,
             disabled,
             small,
             wide,

@@ -15,13 +15,12 @@ import {
 
 export const TableCheckboxCell: FunctionComponent<TableCheckboxCellPropsType> = forwardRef(
     function TableCheckboxCell(
-        { className, classNames, checked, checkedIcon, ...restProps },
+        { className, checked, checkedIcon, isHeader, ...restProps },
         ref,
     ) {
         const classNameComponents = useTableCheckboxCellClassNames(
             TABLE_CHECKBOX_CELL_CLASS_PREFIX,
             className,
-            classNames,
         );
 
         const onCheckboxClick = useCallback(
@@ -36,11 +35,13 @@ export const TableCheckboxCell: FunctionComponent<TableCheckboxCellPropsType> = 
                 contentAlignX="center"
                 className={classNameComponents.Root}
                 ref={ref}
+                isHeader={isHeader}
             >
                 <TableCheckboxCellCheckbox
                     checked={checked}
                     checkedIcon={checkedIcon}
                     onClick={onCheckboxClick}
+                    isHeader={isHeader}
                 />
             </TableCheckboxCellRoot>
         );

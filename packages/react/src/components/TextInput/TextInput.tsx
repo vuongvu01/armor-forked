@@ -3,11 +3,8 @@ import PropTypes from 'prop-types';
 
 import { useComponentTheme } from '../../utils/hooks';
 
-import {
-    useEvents,
-    useTextInputClassNames,
-    useTextInputStylesOverride,
-} from './utils';
+import { useTextInputClassNames } from './utils/useTextInputClassNames';
+import { useEvents } from './utils/useEvents';
 import {
     TextInputRoot,
     TextInputInput,
@@ -29,8 +26,6 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
     function TextInput(
         {
             className,
-            classNames,
-            styles,
             label,
             before,
             after,
@@ -76,14 +71,10 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
         const classNameComponents = useTextInputClassNames(
             TEXT_INPUT_CLASS_PREFIX,
             className,
-            classNames,
             disabled,
             large,
             error,
         );
-
-        // NOTE (nmelnikov 2020-07-24): being used by Dropdown. Please no clean up here :)
-        const stylesOverride = useTextInputStylesOverride(styles);
 
         const {
             isMouseInside,
@@ -125,7 +116,6 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
                 data-testid={textInputRoot}
                 {...restProps}
                 className={classNameComponents.Root}
-                styles={stylesOverride.Root}
                 theme={theme}
                 multiline={multiline}
                 disabled={disabled}
@@ -157,7 +147,6 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
                     placeholder={placeholder}
                     readOnly={readOnly}
                     rows={rows}
-                    styles={stylesOverride.Input}
                     tabIndex={tabIndex}
                     theme={theme}
                     type={multiline ? undefined : type}
@@ -181,14 +170,12 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
                         inside={isLabelInside}
                         large={large}
                         outlined={isOutlined}
-                        styles={stylesOverride.Label}
                         theme={theme}
                         value={value}
                         data-testid={textInputLabel}
                     >
                         <TextInputLabelBackground
                             className={classNameComponents.LabelBackground}
-                            styles={stylesOverride.LabelBackground}
                             theme={theme}
                             disabled={disabled}
                             data-testid={textInputLabelBackground}

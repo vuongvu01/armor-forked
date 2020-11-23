@@ -2,13 +2,13 @@ import React, { ChangeEvent, InputHTMLAttributes } from 'react';
 
 import { MarginAttributesType } from '../../system/attributes';
 import { Indexed } from '../../type';
-import { ClassNamesType, NodeStylePropsType } from '../type';
+import { ComponentElementStylePropsType } from '../type';
 
 export type ClassBasedOnComponentType = {
     component: string;
     classPrefix: string;
     className?: string;
-    classNames?: ClassNamesType;
+
     disabled?: boolean;
     checked?: boolean;
     error?: boolean;
@@ -35,7 +35,7 @@ export type RadioGroupPropsType = {
     MarginAttributesType;
 
 export type RadioRootPropsType = RadioEffectivePropsType &
-    NodeStylePropsType<RadioEffectivePropsType>;
+    ComponentElementStylePropsType;
 
 export type RadioInputPropsType = Pick<
     RadioEffectivePropsType,

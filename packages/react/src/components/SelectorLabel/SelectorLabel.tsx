@@ -13,7 +13,6 @@ const SelectorLabel: FunctionComponent<SelectorLabelPropsType> = ({
     checked,
     children,
     className,
-    classNames,
     error,
     disabled,
     typographyProps,
@@ -26,7 +25,6 @@ const SelectorLabel: FunctionComponent<SelectorLabelPropsType> = ({
     const classOverride = useSelectorLabelClassName(
         RADIO_CLASS_PREFIX,
         className,
-        classNames,
         disabled,
         checked,
         error,

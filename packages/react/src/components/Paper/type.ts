@@ -3,9 +3,8 @@ import { HTMLAttributes } from 'react';
 import { Indexed } from '../../type';
 import { MarginAttributesType } from '../../system';
 import {
-    NodeStylePropsType,
-    StylePropsType,
-    StylesFunctionOrStubType,
+    ComponentElementStylePropsType,
+    ComponentStylePropsType,
 } from '../type';
 
 type PaperEffectivePropsType = Indexed<{
@@ -15,20 +14,8 @@ type PaperEffectivePropsType = Indexed<{
     HTMLAttributes<HTMLDivElement>; // includes all HTML Div attributes
 
 /* Paper component prop type */
-export type PaperPropsType = PaperEffectivePropsType &
-    StylePropsType<
-        {
-            Root?: string;
-            // add custom className for other nodes here
-        },
-        PaperStylesPropsType
-    >;
-
-export type PaperStylesPropsType = {
-    Root?: StylesFunctionOrStubType<PaperEffectivePropsType>;
-    // add style properties for other nodes here
-};
+export type PaperPropsType = PaperEffectivePropsType & ComponentStylePropsType;
 
 /* Paper Root node prop type */
 export type PaperRootPropsType = PaperEffectivePropsType &
-    NodeStylePropsType<PaperEffectivePropsType>;
+    ComponentElementStylePropsType;

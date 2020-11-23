@@ -17,7 +17,7 @@ import {
     DialogContent,
     DialogTitle,
 } from '../..';
-import { dialogTitleText } from '../../DialogTitle/constants';
+import { dialogTitleText } from '../DialogTitle/constants';
 import { dialogCloseButton } from '../constants';
 
 const baseDialog = (

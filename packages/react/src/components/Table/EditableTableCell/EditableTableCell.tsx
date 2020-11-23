@@ -28,14 +28,7 @@ import { Button } from '../../Button';
  */
 export const EditableTableCell: FunctionComponent<EditableTableCellPropsType> = forwardRef(
     function EditableTableCell(
-        {
-            className,
-            classNames,
-            children,
-            defaultValue,
-            onChange,
-            ...restProps
-        },
+        { className, children, defaultValue, onChange, ...restProps },
         ref,
     ) {
         // const theme = useComponentTheme(EDITABLE_TABLE_CELL_CLASS_PREFIX, editableTableCellDefaultTheme);

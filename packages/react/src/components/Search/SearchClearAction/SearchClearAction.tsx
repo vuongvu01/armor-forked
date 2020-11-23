@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useMemo } from 'react';
+import React, { FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -13,7 +13,6 @@ import { searchClearActionTheme } from './theme';
 
 export const SearchClearAction: FunctionComponent<SearchClearActionPropsType> = ({
     className,
-    classNames,
     disableClearAction,
     handleClearQuery,
     disabled,
@@ -27,19 +26,14 @@ export const SearchClearAction: FunctionComponent<SearchClearActionPropsType> = 
     const classOverride = useSearchClearActionClassName(
         SEARCH_CLEAR_ACTION_CLASS_PREFIX,
         className,
-        classNames,
         disabled,
     );
-
-    // TODO (nmelnikov 2020-10-02): remove this once styles is deprecated
-    const tempStyles = useMemo(() => () => '', []);
 
     return disableClearAction ? null : (
         <ClearIconContainer
             className={classOverride.AfterIconContainer}
             onClick={handleClearQuery}
             theme={theme}
-            styles={tempStyles}
         >
             <SearchInputClearIcon
                 className={classOverride.AfterIcon}
@@ -47,7 +41,6 @@ export const SearchClearAction: FunctionComponent<SearchClearActionPropsType> = 
                 disabled={disabled}
                 searchQuery={searchQuery}
                 theme={theme}
-                styles={tempStyles}
             />
         </ClearIconContainer>
     );

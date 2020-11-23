@@ -3,9 +3,8 @@ import { HTMLAttributes } from 'react';
 import { MarginAttributesType } from '../../system';
 import { Indexed } from '../../type';
 import {
-    StylesFunctionOrStubType,
-    StylePropsType,
-    PropsWithNodeStylePropsType,
+    ComponentStylePropsType,
+    ComponentElementStylePropsType,
 } from '../type';
 
 type IndicatorEffectivePropsType = Indexed<{
@@ -16,20 +15,8 @@ type IndicatorEffectivePropsType = Indexed<{
 
 /* Indicator component prop type */
 export type IndicatorPropsType = IndicatorEffectivePropsType &
-    StylePropsType<
-        {
-            Root?: string;
-            // add custom className for other nodes here
-        },
-        IndicatorStylesPropsType
-    >;
-
-export type IndicatorStylesPropsType = {
-    Root?: StylesFunctionOrStubType<IndicatorEffectivePropsType>;
-    // add style properties for other nodes here
-};
+    ComponentStylePropsType;
 
 /* Indicator Root node prop type */
-export type IndicatorRootPropsType = PropsWithNodeStylePropsType<
-    IndicatorEffectivePropsType
->;
+export type IndicatorRootPropsType = IndicatorEffectivePropsType &
+    ComponentElementStylePropsType;

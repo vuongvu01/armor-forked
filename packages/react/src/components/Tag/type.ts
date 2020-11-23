@@ -2,7 +2,7 @@ import { HTMLAttributes } from 'react';
 
 import { MarginAttributesType } from '../../system/attributes';
 import { Indexed } from '../../type';
-import { ClassNamesType, NodeStylePropsType } from '../type';
+import { ComponentElementStylePropsType } from '../type';
 
 export type TagTypeDefault = 'default';
 export type TagTypeApproved = 'approved';
@@ -26,7 +26,7 @@ export type TagDeleteIconModeType =
 
 export type ClassBasedOnComponentType = {
     className?: string;
-    classNames?: ClassNamesType;
+
     classPrefix: string;
     component: string;
     deleteOption?: TagDeleteIconModeType;
@@ -45,7 +45,7 @@ type TagEffectivePropsType = Indexed<{
 export type TagPropsType = TagEffectivePropsType;
 
 export type TagRootPropsType = TagEffectivePropsType &
-    NodeStylePropsType<TagEffectivePropsType>;
+    ComponentElementStylePropsType;
 
 export type TagCloseIconContainerPropsType = Pick<
     TagEffectivePropsType,

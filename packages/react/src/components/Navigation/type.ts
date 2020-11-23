@@ -1,5 +1,8 @@
 import { HTMLAttributes, ReactChild, ReactNode } from 'react';
-import { StylePropsType, NodeStylePropsTypeNoStyles } from '../type';
+import {
+    ComponentStylePropsType,
+    ComponentElementStylePropsType,
+} from '../type';
 import {
     MarginAttributesType,
     WidthAttributesType,
@@ -38,11 +41,8 @@ type NavigationEffectivePropsType = Indexed<{
 
 /* Navigation component prop type */
 export type NavigationPropsType = NavigationEffectivePropsType &
-    StylePropsType<{
-        Root?: string;
-        // add custom className for other nodes here
-    }>;
+    ComponentStylePropsType;
 
 /* Navigation Root node prop type */
 export type NavigationRootPropsType = NavigationEffectivePropsType &
-    NodeStylePropsTypeNoStyles;
+    ComponentElementStylePropsType;

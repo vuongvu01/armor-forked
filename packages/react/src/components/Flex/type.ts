@@ -7,11 +7,10 @@ import {
     WidthAttributesType,
 } from '../../system/attributes';
 import { Indexed } from '../../type';
-import { ClassNamesType, NodeStylePropsType } from '../type';
+import { ComponentElementStylePropsType } from '../type';
 
 export type ClassBasedOnComponentType = {
     className?: string;
-    classNames?: ClassNamesType;
     classPrefix: string;
     component: string;
 };
@@ -92,6 +91,6 @@ type FlexItemEffectivePropsType = Indexed<{
 export type FlexPropsType = FlexItemEffectivePropsType;
 
 export type FlexRootPropsType = FlexEffectivePropsType &
-    NodeStylePropsType<FlexEffectivePropsType>;
+    ComponentElementStylePropsType;
 
 export type FlexItemPropsType = FlexEffectivePropsType;

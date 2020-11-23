@@ -3,17 +3,17 @@ import PropTypes from 'prop-types';
 import { CancelIcon } from '@deliveryhero/armor-icons';
 import { useComponentTheme } from '../../utils/hooks';
 
-import { useDialogClassNames, useDialogStylesOverride } from './utils';
+import { useDialogClassNames } from './utils/useDialogClassNames';
 import {
     DialogAlignmentContainer,
-    DialogRoot,
+    DialogBase,
     DialogCloseButton,
     DialogContent,
 } from './style';
 import { DialogPropsType } from './type';
 import { Modal } from '../Modal';
 import { useDisplay } from '../Modal/utils/useDisplay';
-import { useContainerClickTrap } from '../DialogContent/utils';
+import { useContainerClickTrap } from './utils/useContainerClickTrap';
 import { dialogDefaultTheme } from './theme';
 import { Overlay } from '../Overlay';
 import { DIALOG_CLASS_PREFIX, dialogCloseButton } from './constants';
@@ -23,8 +23,6 @@ export const DIALOG_SCROLL_DIALOG = 'dialog';
 
 export const Dialog: FunctionComponent<DialogPropsType> = ({
     className,
-    classNames,
-    styles,
     children,
     open,
     disableOverlay,
@@ -41,9 +39,7 @@ export const Dialog: FunctionComponent<DialogPropsType> = ({
     const classNameComponents = useDialogClassNames(
         DIALOG_CLASS_PREFIX,
         className,
-        classNames,
     );
-    const stylesOverride = useDialogStylesOverride(styles);
 
     const [display, effectToggle] = useDisplay(open);
     const { onContainerClick, containerRef } = useContainerClickTrap(
@@ -53,11 +49,13 @@ export const Dialog: FunctionComponent<DialogPropsType> = ({
 
     return (
         <Modal
+            {...restProps}
             open={open}
             onClose={onClose}
             disableBackdrop={disableOverlay}
             disableCloseByEscape={disableCloseByEscape}
             zIndex={zIndex}
+            className={classNameComponents.Root}
         >
             <Overlay
                 className={classNameComponents.Overlay}
@@ -65,23 +63,19 @@ export const Dialog: FunctionComponent<DialogPropsType> = ({
                 disableOverlay={disableOverlay}
                 open={display}
                 effectToggle={effectToggle}
-                styles={stylesOverride.Overlay}
             />
             <DialogAlignmentContainer
                 theme={theme}
                 className={classNameComponents.AlignmentContainer}
-                styles={stylesOverride.AlignmentContainer}
                 display={display}
                 disableCloseButton={disableCloseButton}
                 ref={containerRef}
                 onClick={onContainerClick}
                 scroll={scroll}
             >
-                <DialogRoot
-                    {...restProps}
+                <DialogBase
                     theme={theme}
-                    className={classNameComponents.Root}
-                    dialogStyles={stylesOverride.Root}
+                    className={classNameComponents.Base}
                     effectToggle={effectToggle}
                     scroll={scroll}
                     disableEffects={disableEffects}
@@ -91,7 +85,6 @@ export const Dialog: FunctionComponent<DialogPropsType> = ({
                             className={classNameComponents.CloseButton}
                             data-testid={dialogCloseButton}
                             onClick={onClose}
-                            styles={stylesOverride.CloseButton}
                             tabIndex={-1}
                             theme={theme}
                         >
@@ -101,11 +94,10 @@ export const Dialog: FunctionComponent<DialogPropsType> = ({
                     <DialogContent
                         theme={theme}
                         className={classNameComponents.Content}
-                        styles={stylesOverride.Content}
                     >
                         {children}
                     </DialogContent>
-                </DialogRoot>
+                </DialogBase>
             </DialogAlignmentContainer>
         </Modal>
     );

@@ -278,3 +278,39 @@ export const SelectedExpandedItems = () => {
         />
     );
 };
+
+const BorderedNavigation = styled(Navigation)`
+    border-left: 3px solid red;
+
+    .MenuElement-Root {
+        border-right: 3px solid red;
+    }
+`;
+
+export const CustomNavigation = () => {
+    const [selectedItemIds, setSelectedItemIds] = useState<ScalarType[]>([
+        'bugs',
+    ]);
+    const [expandedItemIds, setExpandedItemIds] = useState<ScalarType[]>([
+        'bugs',
+    ]);
+
+    return (
+        <BorderedNavigation
+            items={demoStructure}
+            selectedElementIds={selectedItemIds}
+            expandedElementIds={expandedItemIds}
+            maxWidth="300px"
+            onElementClick={(id: string) => {
+                if (expandedItemIds.includes(id)) {
+                    setExpandedItemIds(
+                        expandedItemIds.filter(itemId => itemId !== id),
+                    );
+                } else {
+                    setExpandedItemIds([id, ...expandedItemIds]);
+                }
+                setSelectedItemIds([id]);
+            }}
+        />
+    );
+};

@@ -11,6 +11,7 @@ import {
     ExpansionIndicatorContainerPropsType,
 } from './type';
 import { ExpansionIndicator } from '../ExpansionIndicator';
+import { TextInput } from '../TextInput';
 
 const optionItemStyle = ({
     isSelected,
@@ -38,7 +39,7 @@ const optionListStyle = ({
     `;
 };
 
-export const DropdownWrapper = styled.div.withConfig({
+export const DropdownRoot = styled.div.withConfig({
     shouldForwardProp: property => shouldForwardProp(property),
 })<DropdownRootPropsType>`
     display: inline-flex;
@@ -70,7 +71,8 @@ export const ExpansionIndicatorContainer = styled.div<
 export const DropdownExpansionIndicator = styled(ExpansionIndicator)<
     ExpansionIndicatorContainerPropsType
 >`
-    .Dropdown-ExpansionIndicator.ExpansionIndicator-Content {
+    cursor: pointer;
+    .ExpansionIndicator-Content {
         width: 56px;
     }
 `;
@@ -104,10 +106,17 @@ export const DropdownOptionItem = styled.div<DropdownOptionItemPropsType>`
     ${optionItemStyle}
 `;
 
-export const dropdownTextInputStyle = {
-    Label: () =>
-        `transition: top ${transitionDurationInSec}s, font-size ${transitionDurationInSec}s, color ${transitionDurationInSec}s; 
-        transition-delay: ${transitionDurationInSec}s;`,
-    Input: () =>
-        `caret-color: ${colorGrey00}; &:disabled {color: ${colorGrey30}}`,
-};
+export const DropdownTextInput = styled(TextInput)`
+    .TextInput-Label {
+        transition: top ${transitionDurationInSec}s,
+            font-size ${transitionDurationInSec}s,
+            color ${transitionDurationInSec}s;
+        transition-delay: ${transitionDurationInSec}s;
+    }
+    .TextInput-Input {
+        caret-color: ${colorGrey00};
+        &:disabled {
+            color: ${colorGrey30};
+        }
+    }
+`;

@@ -9,7 +9,7 @@ import { tableBodyDefaultTheme } from './theme';
 import { tableBodyRootTestId, TABLE_BODY_CLASS_PREFIX } from './constants';
 
 export const TableBody: FunctionComponent<TableBodyPropsType> = forwardRef(
-    function TableBody({ className, classNames, ...restProps }, ref) {
+    function TableBody({ className, ...restProps }, ref) {
         const theme = useComponentTheme(
             TABLE_BODY_CLASS_PREFIX,
             tableBodyDefaultTheme,
@@ -17,7 +17,6 @@ export const TableBody: FunctionComponent<TableBodyPropsType> = forwardRef(
         const classNameComponents = useTableBodyClassNames(
             TABLE_BODY_CLASS_PREFIX,
             className,
-            classNames,
         );
 
         return (

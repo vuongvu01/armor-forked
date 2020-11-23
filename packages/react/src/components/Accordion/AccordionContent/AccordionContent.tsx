@@ -9,10 +9,7 @@ import AccordionContext from '../AccordionContext';
 import useAccordionContentClassName from './useAccordionContentClassName';
 
 export const AccordionContent: FunctionComponent<AccordionContentPropsType> = forwardRef(
-    function AccordionContent(
-        { children, className, classNames, ...restProps },
-        ref,
-    ) {
+    function AccordionContent({ children, className, ...restProps }, ref) {
         const theme = useComponentTheme(
             ACCORDION_CONTENT_CLASS_PREFIX,
             accordionContentDefaultTheme,
@@ -22,7 +19,6 @@ export const AccordionContent: FunctionComponent<AccordionContentPropsType> = fo
         const classOverride = useAccordionContentClassName(
             ACCORDION_CONTENT_CLASS_PREFIX,
             className,
-            classNames,
             disabled,
             isExpanded,
         );

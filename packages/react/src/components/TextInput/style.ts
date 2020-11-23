@@ -84,7 +84,6 @@ export const TextInputRoot = styled.div.withConfig({
     ${getRootDynamicStyle}
     ${marginAttributes}
     ${widthAttributes}
-    ${(props: TextInputRootPropsType) => props.styles(props)}
 `;
 
 const getInputDynamicStyle = (props: TextInputContainerPropsType) => {
@@ -135,7 +134,6 @@ export const TextInputInput = styled(Wrapper).withConfig({
     margin: 0;
 
     ${getInputDynamicStyle};
-    ${(props: TextInputContainerPropsType) => props.styles(props)}
 `;
 
 const getLabelDynamicStyle = (props: TextInputInternalPropsWithThemeType) => {
@@ -180,7 +178,6 @@ export const TextInputLabel = styled.span.withConfig({
         color ease ${transitionDurationInSec}s;
 
     ${getLabelDynamicStyle}
-    ${(props: TextInputLabelPropsType) => props.styles(props)}
 `;
 
 const getLabelBackgroundDynamicStyle = (
@@ -204,5 +201,4 @@ export const TextInputLabelBackground = styled.span.withConfig({
     shouldForwardProp: property => shouldForwardProp(property, propertyList),
 })<TextInputLabelBackgroundPropsType>`
     ${getLabelBackgroundDynamicStyle}
-    ${(props: TextInputLabelBackgroundPropsType) => props.styles(props)}
 `;

@@ -22,7 +22,6 @@ export const Search: FunctionComponent<SearchPropsType> = forwardRef(
         {
             additionalInfo,
             className,
-            classNames,
             defaultQuery,
             disabled,
             disableClearAction,
@@ -41,7 +40,6 @@ export const Search: FunctionComponent<SearchPropsType> = forwardRef(
         const classOverride = useSearchClassName(
             SEARCH_CLASS_PREFIX,
             className,
-            classNames,
             disabled,
         );
 

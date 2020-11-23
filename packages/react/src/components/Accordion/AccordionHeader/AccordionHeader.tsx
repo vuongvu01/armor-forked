@@ -30,7 +30,7 @@ import { useInternalRef } from '../../../utils';
 
 export const AccordionHeader: FunctionComponent<AccordionHeaderPropsType> = forwardRef(
     function AccordionHeader(
-        { title, children, className, classNames, ...restProps },
+        { title, children, className, ...restProps },
         ref,
     ) {
         const theme = useComponentTheme(
@@ -44,7 +44,6 @@ export const AccordionHeader: FunctionComponent<AccordionHeaderPropsType> = forw
         const classOverride = useAccordionHeaderClassName(
             ACCORDION_HEADER_CLASS_PREFIX,
             className,
-            classNames,
             disabled,
             isExpanded,
         );
@@ -80,7 +79,7 @@ export const AccordionHeader: FunctionComponent<AccordionHeaderPropsType> = forw
             <AccordionHeaderRoot
                 data-testid={accordionHeaderRoot}
                 {...restProps}
-                className={classOverride.Header}
+                className={classOverride.Root}
                 disabled={disabled}
                 isExpanded={isExpanded}
                 onClick={onToggle}

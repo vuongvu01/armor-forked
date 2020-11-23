@@ -5,7 +5,7 @@ import {
     WidthAttributesType,
 } from '../../system/attributes';
 import { Indexed, ScalarType } from '../../type';
-import { ClassNamesType, NodeStylePropsType } from '../type';
+import { ComponentElementStylePropsType } from '../type';
 
 export type SuggestionObjectType = Indexed<{
     label: string;
@@ -17,7 +17,7 @@ export type SearchQueryType = string | readonly string[];
 
 export type ClassBasedOnComponentType = {
     className?: string;
-    classNames?: ClassNamesType;
+
     classPrefix: string;
     component: string;
     disabled?: boolean;
@@ -57,25 +57,25 @@ export type UseSearchBarType = {
 export type SearchPropsType = SearchEffectivePropsType;
 
 export type SearchRootPropsType = SearchEffectivePropsType &
-    NodeStylePropsType<SearchEffectivePropsType>;
+    ComponentElementStylePropsType;
 
 export type SearchSuggestionsContainerPropsType = SearchEffectivePropsType &
-    NodeStylePropsType<SearchEffectivePropsType>;
+    ComponentElementStylePropsType;
 
 export type SearchSuggestionsListPropsType = SearchEffectivePropsType &
-    NodeStylePropsType<SearchEffectivePropsType>;
+    ComponentElementStylePropsType;
 
 export type SearchSuggestionsItemPropsType = SearchEffectivePropsType &
-    NodeStylePropsType<SearchEffectivePropsType>;
+    ComponentElementStylePropsType;
 
 export type SearchSuggestionsItemIconPropsType = SearchEffectivePropsType &
-    NodeStylePropsType<SearchEffectivePropsType>;
+    ComponentElementStylePropsType;
 
 export type SearchSuggestionsItemLabelPropsType = SearchEffectivePropsType &
-    NodeStylePropsType<SearchEffectivePropsType>;
+    ComponentElementStylePropsType;
 
 export type SearchSuggestionsItemActionPropsType = SearchEffectivePropsType &
-    NodeStylePropsType<SearchEffectivePropsType>;
+    ComponentElementStylePropsType;
 
 export type SearchLabelTypographyPropsType = SearchEffectivePropsType &
-    NodeStylePropsType<SearchEffectivePropsType>;
+    ComponentElementStylePropsType;

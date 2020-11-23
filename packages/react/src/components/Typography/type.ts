@@ -4,7 +4,10 @@ import {
     MarginAttributesType,
 } from '../../system/attributes';
 import { Indexed } from '../../type';
-import { StylePropsType, NodeStylePropsType } from '../type';
+import {
+    ComponentStylePropsType,
+    ComponentElementStylePropsType,
+} from '../type';
 
 export type TypographyTagType = string | ComponentType<any>;
 
@@ -27,11 +30,8 @@ type TypographyEffectivePropsType = Indexed<{
 
 /* Typography component prop type */
 export type TypographyPropsType = TypographyEffectivePropsType &
-    StylePropsType<{
-        Root?: string;
-        // add custom className for other nodes here
-    }>;
+    ComponentStylePropsType;
 
 /* Typography Root node prop type */
 export type TypographyRootPropsType = TypographyEffectivePropsType &
-    NodeStylePropsType<TypographyEffectivePropsType>;
+    ComponentElementStylePropsType;

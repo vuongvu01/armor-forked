@@ -11,7 +11,6 @@ import { TAB_CLASS_PREFIX } from './constants';
 export const Tab: FunctionComponent<TabPropsType> = forwardRef(function Tab(
     {
         className,
-        classNames,
         currentlyActiveTab,
         disabled,
         wide,
@@ -31,7 +30,6 @@ export const Tab: FunctionComponent<TabPropsType> = forwardRef(function Tab(
     const classOverride = useTabClassName(
         TAB_CLASS_PREFIX,
         className,
-        classNames,
         disabled,
         isActive,
     );

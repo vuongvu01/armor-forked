@@ -1,20 +1,14 @@
 import { useMemo } from 'react';
-import { makeBEM, makeClassName } from '../../../../utils';
-import { ClassNamesType } from '../../../type';
+import { makeRootClassName } from '../../../../utils';
 
 export const useEditableTableCellClassNames = (
     classPrefix: string,
     className?: string,
-    classNames?: ClassNamesType,
 ) =>
     useMemo(() => {
-        const rootClassNames = makeClassName(
-            classPrefix,
-            className,
-            classNames,
-        );
+        const rootClassNames = makeRootClassName(classPrefix, className);
 
         return {
             Root: rootClassNames,
         };
-    }, [classPrefix, className, classNames]);
+    }, [classPrefix, className]);

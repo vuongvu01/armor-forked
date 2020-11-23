@@ -16,7 +16,6 @@ export const Radio: FunctionComponent<RadioPropsType> = forwardRef(
         {
             checked,
             className,
-            classNames,
             disabled,
             error,
             id: propsId,
@@ -37,7 +36,6 @@ export const Radio: FunctionComponent<RadioPropsType> = forwardRef(
         const classOverride = useRadioClassName(
             RADIO_CLASS_PREFIX,
             className,
-            classNames,
             disabled,
             isChecked,
             error,

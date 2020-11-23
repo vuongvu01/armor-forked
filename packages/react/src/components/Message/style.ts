@@ -70,7 +70,6 @@ export const MessageRoot = styled.div.withConfig({
     ${(props: MessageRootPropsType) => getLevelStyles('Root', props)}
 
     ${marginAttributes}
-    ${(props: MessageRootPropsType) => props.styles(props)}
 `;
 
 export const MessageCentral = styled.div<MessageCentralPropsType>`
@@ -80,7 +79,6 @@ export const MessageCentral = styled.div<MessageCentralPropsType>`
 
     ${({ theme }: MessageCentralPropsType) =>
         theme.componentOverrides.Message.Central.base}
-    ${(props: MessageCentralPropsType) => props.styles(props)}
 `;
 
 export const MessageContent = styled.div<MessageContentPropsType>`
@@ -89,7 +87,6 @@ export const MessageContent = styled.div<MessageContentPropsType>`
 
     ${({ theme }: MessageContentPropsType) =>
         theme.componentOverrides.Message.Content.base}
-    ${(props: MessageContentPropsType) => props.styles(props)}
 `;
 
 export const MessageActions = styled.div<MessageActionsPropsType>`

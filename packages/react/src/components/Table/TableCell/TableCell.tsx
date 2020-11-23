@@ -10,10 +10,7 @@ import { tableCellRootTestId, TABLE_CELL_CLASS_PREFIX } from './constants';
 import { useTableCell } from './utils/useTableCell';
 
 export const TableCell: FunctionComponent<TableCellPropsType> = forwardRef(
-    function TableCell(
-        { className, classNames, isHeader, children, ...restProps },
-        ref,
-    ) {
+    function TableCell({ className, isHeader, children, ...restProps }, ref) {
         const theme = useComponentTheme(
             TABLE_CELL_CLASS_PREFIX,
             tableCellDefaultTheme,
@@ -21,7 +18,6 @@ export const TableCell: FunctionComponent<TableCellPropsType> = forwardRef(
         const classNameComponents = useTableCellClassNames(
             TABLE_CELL_CLASS_PREFIX,
             className,
-            classNames,
         );
 
         const { tag: TableCellRoot } = useTableCell({ isHeader });

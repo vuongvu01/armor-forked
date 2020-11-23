@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 // import PropTypes from 'prop-types';
 import { useComponentTheme } from '../../utils/hooks';
 
-import { useClassNamePaper, useStylesOverridePaper } from './utils';
+import { usePaperClassName } from './utils/usePaperClassName';
 import { PaperRoot } from './style';
 import { PaperPropsType } from './type';
 import { paperDefaultTheme } from './theme';
@@ -10,27 +10,13 @@ import { PAPER_CLASS_PREFIX } from './constants';
 
 export const Paper: FunctionComponent<PaperPropsType> = ({
     className,
-    classNames,
-    styles,
     ...restProps
 }) => {
     const theme = useComponentTheme(PAPER_CLASS_PREFIX, paperDefaultTheme);
 
-    const classNameRoot = useClassNamePaper(
-        PAPER_CLASS_PREFIX,
-        className,
-        classNames,
-    );
-    const stylesSafe = useStylesOverridePaper(styles);
+    const classNameRoot = usePaperClassName(PAPER_CLASS_PREFIX, className);
 
-    return (
-        <PaperRoot
-            {...restProps}
-            theme={theme}
-            className={classNameRoot}
-            styles={stylesSafe.Root}
-        />
-    );
+    return <PaperRoot {...restProps} theme={theme} className={classNameRoot} />;
 };
 
 Paper.defaultProps = {};

@@ -1,39 +1,12 @@
 import { useMemo } from 'react';
 
-import { ClassNamesType } from '../../type';
-import { ClassBasedOnComponentType } from '../type';
-import { makeClassName } from '../../../utils';
+import { makeRootClassName } from '../../../utils';
 
-const getClassNameByComponent = ({
-    component,
-    classPrefix,
-    className,
-    classNames,
-}: ClassBasedOnComponentType) => {
-    const baseClassNames = makeClassName(
-        classPrefix,
-        className,
-        classNames,
-        component,
-    );
-
-    return `${baseClassNames}`.trim();
-};
-
-const useFlexClassName = (
-    classPrefix: string,
-    className?: string,
-    classNames?: ClassNamesType,
-) =>
+const useFlexClassName = (classPrefix: string, className?: string) =>
     useMemo(() => {
         return {
-            Root: getClassNameByComponent({
-                component: 'Root',
-                classPrefix,
-                className,
-                classNames,
-            }),
+            Root: makeRootClassName(classPrefix, className),
         };
-    }, [classPrefix, className, classNames]);
+    }, [classPrefix, className]);
 
 export default useFlexClassName;

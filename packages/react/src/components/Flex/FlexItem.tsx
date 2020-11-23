@@ -11,7 +11,6 @@ export const FlexItem: FunctionComponent<FlexItemPropsType> = forwardRef(
     function FlexItem(
         {
             className,
-            classNames,
             flexGrow,
             flexShrink,
             flexBasis,
@@ -25,7 +24,6 @@ export const FlexItem: FunctionComponent<FlexItemPropsType> = forwardRef(
         const classOverride = useFlexItemClassName(
             FLEX_ITEM_CLASS_PREFIX,
             className,
-            classNames,
         );
 
         return (

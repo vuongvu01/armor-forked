@@ -18,7 +18,6 @@ import { headerNavigationMenuContentHeaderTheme } from './theme';
 
 export const HeaderNavigationMenuContentHeader: FunctionComponent<HeaderNavigationMenuContentHeaderPropsType> = ({
     className,
-    classNames,
     title,
     label,
     image,
@@ -32,7 +31,6 @@ export const HeaderNavigationMenuContentHeader: FunctionComponent<HeaderNavigati
     const classOverride = useHeaderNavigationMenuContentHeaderClassName(
         HEADER_NAVIGATION_MENU_CONTENT_HEADER_CLASS_PREFIX,
         className,
-        classNames,
     );
 
     return (

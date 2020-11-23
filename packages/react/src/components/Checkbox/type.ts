@@ -2,7 +2,7 @@ import React, { InputHTMLAttributes } from 'react';
 
 import { MarginAttributesType } from '../../system';
 import { Indexed } from '../../type';
-import { NodeStylePropsType } from '../type';
+import { ComponentElementStylePropsType } from '../type';
 
 export type CheckedIconType = 'tick' | 'dash';
 
@@ -17,7 +17,7 @@ type CheckboxEffectivePropsType = Indexed<{
 export type CheckboxPropsType = CheckboxEffectivePropsType;
 
 export type CheckboxRootPropsType = CheckboxEffectivePropsType &
-    NodeStylePropsType<CheckboxEffectivePropsType>;
+    ComponentElementStylePropsType;
 
 export type CheckboxInputPropsType = Pick<
     CheckboxEffectivePropsType,
@@ -34,4 +34,4 @@ export type CheckboxInputPropsType = Pick<
 >;
 
 export type CheckboxCheckmarkPropsType = CheckboxEffectivePropsType &
-    NodeStylePropsType<CheckboxEffectivePropsType>;
+    ComponentElementStylePropsType;

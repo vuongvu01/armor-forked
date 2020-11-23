@@ -18,7 +18,6 @@ export const MenuElement: FunctionComponent<MenuElementPropsType> = forwardRef(
     function MenuElement(
         {
             className,
-            classNames,
             enableExpansionHandle,
             expanded,
             children,
@@ -39,7 +38,6 @@ export const MenuElement: FunctionComponent<MenuElementPropsType> = forwardRef(
         const classNameComponents = useMenuElementClassNames(
             MENU_ELEMENT_CLASS_PREFIX,
             className,
-            classNames,
         );
 
         return (

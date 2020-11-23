@@ -9,9 +9,9 @@ import {
 } from '@storybook/addon-knobs';
 
 import { Dialog } from '../Dialog';
-import { DialogTitle } from '../../DialogTitle';
-import { DialogContent } from '../../DialogContent';
-import { DialogActions } from '../../DialogActions';
+import { DialogTitle } from '../DialogTitle';
+import { DialogContent } from '../DialogContent';
+import { DialogActions } from '../DialogActions';
 import { Button } from '../../Button';
 import { LoremIpsum } from '../../../helpers/LoremIpsum';
 import { boke } from '../../../helpers/boke';
@@ -82,21 +82,17 @@ export const NoOverlay = () => {
     );
 };
 
+const RedDawnDialog = styled(Dialog)`
+    .Dialog-Overlay {
+        background-color: darkred;
+    }
+    .Dialog-CloseButton {
+        color: darkred;
+    }
+`;
+
 export const RedDawn = () => (
-    <Dialog
-        styles={{
-            Overlay: () =>
-                css`
-                    background-color: darkred;
-                `,
-            CloseButton: () =>
-                css`
-                    color: darkred;
-                `,
-        }}
-        open
-        disableEffects
-    >
+    <RedDawnDialog open disableEffects>
         <DialogTitle description="Assign a new id to this location">
             New location
         </DialogTitle>
@@ -105,20 +101,22 @@ export const RedDawn = () => (
             <Button tertiary>Cancel</Button>
             <Button>Save</Button>
         </DialogActions>
-    </Dialog>
+    </RedDawnDialog>
 );
 
 const UltraExpressiveDialog = styled(Dialog)`
-    & {
-        .Dialog-Root {
-            background: url(${boke});
-        }
-        .Dialog-Overlay {
-            background-color: darkblue;
-        }
-        .Dialog-CloseButton {
-            color: white;
-        }
+    background: url(${boke});
+
+    .DialogTitle-Text,
+    .DialogTitle-Description {
+        color: white;
+    }
+
+    .Dialog-Overlay {
+        background-color: darkblue;
+    }
+    .Dialog-CloseButton {
+        color: white;
     }
 `;
 
@@ -453,6 +451,32 @@ export const DisableCloseByEscape = () => {
                     <TextInput />
                 </DialogContent>
             </Dialog>
+        </>
+    );
+};
+
+const BorderedDialog = styled(Dialog)`
+    .Dialog-Base {
+        border-left: 1px solid red;
+    }
+`;
+
+export const BorderedDialogExample = () => {
+    const [open, setOpen] = useState(false);
+
+    return (
+        <>
+            <Button onClick={() => setOpen(!open)}>No close by Escape</Button>
+            <BorderedDialog
+                open={open}
+                onClose={() => setOpen(false)}
+                disableCloseByEscape
+            >
+                <DialogTitle>Kawabanga!</DialogTitle>
+                <DialogContent>
+                    <TextInput />
+                </DialogContent>
+            </BorderedDialog>
         </>
     );
 };

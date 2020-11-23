@@ -14,7 +14,6 @@ import { highlightMatch } from '../utils';
 
 export const SuggestionItem: FunctionComponent<SuggestionItemPropsType> = ({
     className,
-    classNames,
     option: { label },
     suggestionIndex,
     handleSuggestionClick,
@@ -27,7 +26,6 @@ export const SuggestionItem: FunctionComponent<SuggestionItemPropsType> = ({
     const classOverride = useSuggestionItemClassName(
         SUGGESTION_ITEM_CLASS_PREFIX,
         className,
-        classNames,
     );
 
     const handleOnClick = (index: number) => (

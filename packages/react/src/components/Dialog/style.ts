@@ -7,7 +7,7 @@ import {
     DialogAlignmentContainerPropsType,
     DialogCloseButtonPropsType,
     DialogContentPropsType,
-    DialogRootPropsType,
+    DialogBasePropsType,
 } from './type';
 import { DIALOG_SCROLL_DOCUMENT } from './Dialog';
 import { Paper } from '../Paper';
@@ -46,14 +46,14 @@ const dialogContainerDisplay = ({
     return scroll === DIALOG_SCROLL_DOCUMENT ? 'block' : 'flex';
 };
 
-const dialogRootDisplay = ({ scroll }: DialogRootPropsType) => {
+const dialogBaseDisplay = ({ scroll }: DialogBasePropsType) => {
     return scroll === DIALOG_SCROLL_DOCUMENT ? 'inline-block' : 'flex';
 };
 
-const dialogRootMaxHeight = ({ scroll, theme }: DialogRootPropsType) => {
+const dialogBaseMaxHeight = ({ scroll, theme }: DialogBasePropsType) => {
     return scroll === DIALOG_SCROLL_DOCUMENT
         ? 'none'
-        : `calc(100% - ${theme.componentOverrides.Dialog.Root.safeMargin})`;
+        : `calc(100% - ${theme.componentOverrides.Dialog.Base.safeMargin})`;
 };
 
 export const DialogAlignmentContainer = styled.div.withConfig({
@@ -78,31 +78,28 @@ export const DialogAlignmentContainer = styled.div.withConfig({
                   }
               `
             : ''},
-
-    ${(props: DialogAlignmentContainerPropsType) => props.styles(props)}
 `;
 
-export const DialogRoot = styled(Paper).withConfig({
+export const DialogBase = styled(Paper).withConfig({
     shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<DialogRootPropsType>`
+})<DialogBasePropsType>`
     flex-direction: column;
     text-align: left;
 
-    display: ${dialogRootDisplay};
-    max-height: ${dialogRootMaxHeight};
+    display: ${dialogBaseDisplay};
+    max-height: ${dialogBaseMaxHeight};
 
-    ${({ disableEffects, effectToggle, theme }: DialogRootPropsType) => css`
+    ${({ disableEffects, effectToggle, theme }: DialogBasePropsType) => css`
         transition: ${disableEffects
             ? 'none'
             : 'transform 100ms ease, opacity 100ms ease'};
         transform: translateY(${effectToggle ? 0 : '20px'});
         opacity: ${effectToggle ? 1 : 0};
 
-        ${theme.componentOverrides.Dialog.Root.base}
+        ${theme.componentOverrides.Dialog.Base.base}
     `}
 
     ${sizeAttributes}
-    ${(props: DialogRootPropsType) => props.dialogStyles(props)}
 `;
 
 export const DialogContent = styled.div<DialogContentPropsType>`
@@ -110,8 +107,6 @@ export const DialogContent = styled.div<DialogContentPropsType>`
     flex-direction: column;
     max-height: 100%;
     overflow: auto;
-
-    ${(props: DialogContentPropsType) => props.styles(props)}
 `;
 
 export const DialogCloseButton = styled.div<DialogCloseButtonPropsType>`
@@ -123,6 +118,4 @@ export const DialogCloseButton = styled.div<DialogCloseButtonPropsType>`
     flex: 0 0 auto;
     ${({ theme }: DialogCloseButtonPropsType) =>
         theme.componentOverrides.Dialog.CloseButton.base}
-
-    ${(props: DialogCloseButtonPropsType) => props.styles(props)}
 `;

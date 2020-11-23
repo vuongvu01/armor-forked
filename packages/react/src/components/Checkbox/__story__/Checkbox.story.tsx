@@ -1,6 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line import/no-unresolved
 import { withKnobs } from '@storybook/addon-knobs';
+import styled from 'styled-components';
 
 import { GroupHelper } from '../../../helpers/GroupHelper';
 import { Checkbox } from '../Checkbox';
@@ -100,3 +101,11 @@ export const Checkmarks = () => (
         </GroupHelper>
     </>
 );
+
+const MarginedCheckbox = styled(Checkbox)`
+    margin-top: 30px;
+`;
+
+export const CustomCheckbox = () => {
+    return <MarginedCheckbox />;
+};

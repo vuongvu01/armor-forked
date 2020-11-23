@@ -4,6 +4,7 @@ export type ModalPropsType = {
     disableBackdrop?: boolean;
     disableCloseByEscape?: boolean;
     zIndex?: number;
+    className?: string;
 };
 
 export type StackItemParametersType = {

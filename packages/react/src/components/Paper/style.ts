@@ -24,8 +24,7 @@ export const PaperRoot = styled.div<PaperRootPropsType>`
     position: relative;
     overflow-y: auto;
     overflow-x: hidden;
-    
+
     ${paperRootStyle}
     ${marginAttributes}
-    ${(props: PaperRootPropsType) => props.styles(props)}
 `;

@@ -2,14 +2,13 @@ import { HTMLAttributes } from 'react';
 
 import { MarginAttributesType } from '../../system/attributes';
 import { Indexed, ChildrenType } from '../../type';
-import { ClassNamesType, StylesFunctionOrStubType } from '../type';
 import { ModalPropsType } from '../Modal/type';
 
 export type ClassBasedOnComponentType = {
     component: string;
     classPrefix: string;
     className?: string;
-    classNames?: ClassNamesType;
+
     disableOverlay?: boolean;
     wide?: boolean;
 };
@@ -28,17 +27,6 @@ export type SideSheetEffectivePropsType = Indexed<{
     > & // includes two props from Modal
     HTMLAttributes<HTMLElement> &
     MarginAttributesType;
-
-export type SideSheetStylesPropsType = {
-    Body?: StylesFunctionOrStubType;
-    CloseIcon?: StylesFunctionOrStubType;
-    Root?: StylesFunctionOrStubType<SideSheetEffectivePropsType>;
-    Content?: StylesFunctionOrStubType;
-    Footer?: StylesFunctionOrStubType;
-    Header?: StylesFunctionOrStubType;
-    HeaderContainer?: StylesFunctionOrStubType;
-    Overlay?: StylesFunctionOrStubType;
-};
 
 export type ClassOverrideType = {
     Body: string;

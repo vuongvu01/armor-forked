@@ -47,13 +47,13 @@ export const NavigationPackItemSelector = styled(HeaderNavigationPackItem)<
 export const SelectorDropdown = styled(Dropdown)<
     HeaderNavigationSelectorRootPropsType
 >`
-    .HeaderNavigationSelector-SelectorDropdown.Dropdown-ExpansionIndicatorContainer {
+    .Dropdown-ExpansionIndicatorContainer {
         background-color: ${colorGrey05};
     }
-    .HeaderNavigationSelector-SelectorDropdown.ExpansionIndicator-Icon {
+    .ExpansionIndicator-Icon {
         border-color: ${colorGrey50};
     }
-    .HeaderNavigationSelector-SelectorDropdown > .TextInput-Input {
+    .TextInput-Input {
         cursor: pointer;
         caret-color: ${colorGrey00};
         background-color: ${colorGrey05};
@@ -66,14 +66,14 @@ export const SelectorDropdown = styled(Dropdown)<
             color: ${colorGrey90};
         }
     }
-    .HeaderNavigationSelector-SelectorDropdown.Dropdown-TextInput {
+    .Dropdown-TextInput {
         border-style: none;
         height: 40px;
         padding-top: 2px;
         cursor: pointer;
         background-color: ${colorGrey05};
     }
-    .HeaderNavigationSelector-SelectorDropdown.Dropdown-Container {
+    .Dropdown-Container {
         padding-top: 4px;
     }
 `;

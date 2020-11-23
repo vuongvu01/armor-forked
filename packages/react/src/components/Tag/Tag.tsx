@@ -19,15 +19,7 @@ import {
 } from './style';
 
 export const Tag: FunctionComponent<TagPropsType> = forwardRef(function Tag(
-    {
-        className,
-        classNames,
-        deleteOption,
-        label: userLabel,
-        onClose,
-        type,
-        ...restProps
-    },
+    { className, deleteOption, label: userLabel, onClose, type, ...restProps },
     ref,
 ) {
     const theme = useComponentTheme(TAG_CLASS_PREFIX, tagDefaultTheme);
@@ -36,7 +28,6 @@ export const Tag: FunctionComponent<TagPropsType> = forwardRef(function Tag(
     const classOverride = useTagClassName(
         TAG_CLASS_PREFIX,
         className,
-        classNames,
         deleteOption,
         type,
     );

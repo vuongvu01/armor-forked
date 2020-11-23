@@ -1,5 +1,5 @@
 import { ReactChild } from 'react';
-import { StylePropsType } from '../type';
+import { ComponentStylePropsType } from '../type';
 import { Indexed, ObjectLiteralType, ScalarType } from '../../type';
 import { TablePropsType } from '../Table/type';
 import { TableCellPropsType } from '../Table/TableCell/type';
@@ -57,7 +57,4 @@ type DataTableEffectivePropsType = Indexed<{
 
 /* DataTable component prop type */
 export type DataTablePropsType = DataTableEffectivePropsType &
-    StylePropsType<{
-        Root?: string;
-        // add custom className for other nodes here
-    }>;
+    ComponentStylePropsType;

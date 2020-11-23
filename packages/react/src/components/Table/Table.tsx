@@ -12,14 +12,13 @@ import { useTable } from './utils/useTable';
 
 export const Table: FunctionComponent<TablePropsType> = forwardRef(
     function Table(
-        { className, classNames, stickyColumns, stickyHead, ...restProps },
+        { className, stickyColumns, stickyHead, ...restProps },
         ref,
     ) {
         const theme = useComponentTheme(TABLE_CLASS_PREFIX, tableDefaultTheme);
         const classNameComponents = useTableClassNames(
             TABLE_CLASS_PREFIX,
             className,
-            classNames,
         );
 
         const { tableContextValue, rootReference, onLayoutUpdate } = useTable({

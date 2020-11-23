@@ -8,12 +8,11 @@ import { ContainerPropsType } from './type';
 import { CONTAINER_CLASS_PREFIX } from './constants';
 
 export const Container: FunctionComponent<ContainerPropsType> = forwardRef(
-    function Container({ className, classNames, children, ...restProps }, ref) {
+    function Container({ className, children, ...restProps }, ref) {
         const theme = useComponentTheme(CONTAINER_CLASS_PREFIX);
         const classNameComponents = useContainerClassNames(
             CONTAINER_CLASS_PREFIX,
             className,
-            classNames,
         );
 
         return (

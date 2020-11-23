@@ -1,21 +1,13 @@
 import { useMemo } from 'react';
 
-import { ClassNamesType } from '../../../../type';
-import { makeClassName } from '../../../../../utils';
+import { appendClassName, makeBEM } from '../../../../../utils';
 import { ClassBasedOnComponentType } from '../type';
 
 const getClassNameByComponent = ({
     component,
     classPrefix,
-    className,
-    classNames,
 }: ClassBasedOnComponentType) => {
-    const baseClassNames = makeClassName(
-        classPrefix,
-        className,
-        classNames,
-        component,
-    );
+    const baseClassNames = makeBEM(classPrefix, component);
 
     return `${baseClassNames}`.trim();
 };
@@ -23,29 +15,25 @@ const getClassNameByComponent = ({
 const useHeaderNavigationLinkClassName = (
     classPrefix: string,
     className?: string,
-    classNames?: ClassNamesType,
 ) =>
     useMemo(() => {
         return {
-            Root: getClassNameByComponent({
-                component: 'Root',
-                classPrefix,
+            Root: appendClassName(
+                getClassNameByComponent({
+                    component: 'Root',
+                    classPrefix,
+                }),
                 className,
-                classNames,
-            }),
+            ),
             Link: getClassNameByComponent({
                 component: 'Link',
                 classPrefix,
-                className,
-                classNames,
             }),
             Href: getClassNameByComponent({
                 component: 'Href',
                 classPrefix,
-                className,
-                classNames,
             }),
         };
-    }, [classPrefix, className, classNames]);
+    }, [classPrefix, className]);
 
 export default useHeaderNavigationLinkClassName;

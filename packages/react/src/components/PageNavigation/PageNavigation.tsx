@@ -1,4 +1,4 @@
-import React, { FunctionComponent, forwardRef, useMemo } from 'react';
+import React, { FunctionComponent, forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { ArrowLeftIcon, ArrowRightIcon } from '@deliveryhero/armor-icons';
 
@@ -15,7 +15,7 @@ import {
 } from './constants';
 
 export const PageNavigation: FunctionComponent<PageNavigationPropsType> = forwardRef(
-    function PageNavigation({ className, classNames, ...restProps }, ref) {
+    function PageNavigation({ className, ...restProps }, ref) {
         const theme = useComponentTheme(
             PAGE_NAVIGATION_CLASS_PREFIX,
             pageNavigationDefaultTheme,
@@ -23,7 +23,6 @@ export const PageNavigation: FunctionComponent<PageNavigationPropsType> = forwar
         const classNameComponents = usePageNavigationClassNames(
             PAGE_NAVIGATION_CLASS_PREFIX,
             className,
-            classNames,
         );
 
         const {
@@ -38,9 +37,6 @@ export const PageNavigation: FunctionComponent<PageNavigationPropsType> = forwar
             onPageButtonClick,
         } = usePageNavigation(restProps);
 
-        // todo: remove this
-        const pageNavigationButtonStyleDeprecated = useMemo(() => () => '', []);
-
         return (
             <PageNavigationRoot
                 data-testid={pageNavigationRootTestId}
@@ -52,7 +48,6 @@ export const PageNavigation: FunctionComponent<PageNavigationPropsType> = forwar
                 <PageNavigationPageButton
                     theme={theme}
                     className={classNameComponents.PageButton}
-                    styles={pageNavigationButtonStyleDeprecated}
                     arrow
                     disabled={!previousPageArrowEnabled}
                     data-testid={pageNavigationPageButtonTestId}
@@ -67,7 +62,6 @@ export const PageNavigation: FunctionComponent<PageNavigationPropsType> = forwar
                         key={pageNumber}
                         theme={theme}
                         className={classNameComponents.PageButton}
-                        styles={pageNavigationButtonStyleDeprecated}
                         selected={pageNumber === currentPageNumber}
                         data-testid={pageNavigationPageButtonTestId}
                         data-pagenumber={pageNumber}
@@ -79,7 +73,6 @@ export const PageNavigation: FunctionComponent<PageNavigationPropsType> = forwar
                 <PageNavigationPageButton
                     theme={theme}
                     className={classNameComponents.PageButton}
-                    styles={pageNavigationButtonStyleDeprecated}
                     arrow
                     disabled={!nextPageArrowEnabled}
                     data-testid={pageNavigationPageButtonTestId}

@@ -10,7 +10,7 @@ import { useComponentTheme } from '../../../utils/hooks';
 import { gridItemTheme } from './theme';
 
 export const GridItem: FunctionComponent<GridItemPropsType> = forwardRef(
-    function GridItem({ className, classNames, ...restProps }, ref) {
+    function GridItem({ className, ...restProps }, ref) {
         const theme = useComponentTheme(GRID_ITEM_CLASS_PREFIX, gridItemTheme);
         const {
             gutterSpacing,
@@ -21,7 +21,6 @@ export const GridItem: FunctionComponent<GridItemPropsType> = forwardRef(
         const classOverride = useGridItemClassName(
             GRID_ITEM_CLASS_PREFIX,
             className,
-            classNames,
             gutterSpacing,
         );
 

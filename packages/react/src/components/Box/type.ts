@@ -10,9 +10,8 @@ import {
 } from '../../system';
 import { Indexed } from '../../type';
 import {
-    NodeStylePropsType,
-    StylePropsType,
-    StylesFunctionOrStubType,
+    ComponentElementStylePropsType,
+    ComponentStylePropsType,
 } from '../type';
 
 type BoxEffectivePropsType = Indexed<{
@@ -27,20 +26,8 @@ type BoxEffectivePropsType = Indexed<{
     HTMLAttributes<HTMLDivElement>; // includes all HTML Div attributes
 
 /* Box component prop type */
-export type BoxPropsType = BoxEffectivePropsType &
-    StylePropsType<
-        {
-            Root?: string;
-            // add custom className for other nodes here
-        },
-        BoxStylesPropsType
-    >;
-
-export type BoxStylesPropsType = {
-    Root?: StylesFunctionOrStubType<BoxEffectivePropsType>;
-    // add style properties for other nodes here
-};
+export type BoxPropsType = BoxEffectivePropsType & ComponentStylePropsType;
 
 /* Box Root node prop type */
 export type BoxRootPropsType = BoxEffectivePropsType &
-    NodeStylePropsType<BoxEffectivePropsType>;
+    ComponentElementStylePropsType;

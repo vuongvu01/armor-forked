@@ -2,11 +2,11 @@ import { HTMLAttributes, ReactNode } from 'react';
 
 import { MarginAttributesType } from '../../../../system/attributes';
 import { Indexed, ScalarType } from '../../../../type';
-import { ClassNamesType, NodeStylePropsType } from '../../../type';
+import { ComponentElementStylePropsType } from '../../../type';
 
 export type ClassBasedOnComponentType = {
     className?: string;
-    classNames?: ClassNamesType;
+
     classPrefix: string;
     component: string;
 };
@@ -18,7 +18,7 @@ type HeaderNavigationMenuContentEffectivePropsType = Indexed<{}> &
 export type HeaderNavigationMenuContentPropsType = HeaderNavigationMenuContentEffectivePropsType;
 
 export type HeaderNavigationMenuContentRootPropsType = HeaderNavigationMenuContentEffectivePropsType &
-    NodeStylePropsType<HeaderNavigationMenuContentEffectivePropsType>;
+    ComponentElementStylePropsType;
 
 type HeaderNavigationMenuContentHeaderEffectivePropsType = Indexed<{
     title?: string;

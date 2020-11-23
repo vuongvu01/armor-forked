@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import { shouldForwardProp } from '../../utils';
-import { OverlayPropsType } from './type';
+import { OverlayRootPropsType } from './type';
 import { fixedCover } from '../../system/mixins';
 import { transitionDurationInSec } from '../../constants';
 
@@ -10,7 +10,7 @@ const blacklistProperties = { disableEffects: true, effectToggle: true };
 export const Overlay = styled.div.withConfig({
     shouldForwardProp: property =>
         shouldForwardProp(property, blacklistProperties),
-})<OverlayPropsType>`
+})<OverlayRootPropsType>`
     ${fixedCover};
     z-index: inherit;
     pointer-events: none;
@@ -19,7 +19,7 @@ export const Overlay = styled.div.withConfig({
         effectToggle,
         disableEffects,
         theme,
-    }: OverlayPropsType) => css`
+    }: OverlayRootPropsType) => css`
         opacity: ${effectToggle ? 1 : 0};
         display: ${display ? 'initial' : 'none'};
         transition: ${disableEffects
@@ -27,6 +27,4 @@ export const Overlay = styled.div.withConfig({
             : `opacity ${transitionDurationInSec}s ease`};
         ${theme.componentOverrides.Overlay.Root.base};
     `}
-
-    ${(props: OverlayPropsType) => props.styles(props)}
 `;

@@ -22,7 +22,7 @@ import HeaderNavigationMenuContentContext from './HeaderNavigationMenuContentCon
 
 export const HeaderNavigationMenuContent: FunctionComponent<HeaderNavigationMenuContentPropsType> = forwardRef(
     function HeaderNavigationMenuContent(
-        { className, classNames, children, ...restProps },
+        { className, children, ...restProps },
         ref,
     ) {
         const menuContentRef = useRef<HTMLDivElement>(null);
@@ -38,7 +38,6 @@ export const HeaderNavigationMenuContent: FunctionComponent<HeaderNavigationMenu
         const classOverride = useHeaderNavigationMenuContentClassName(
             HEADER_NAVIGATION_MENU_CONTENT_CLASS_PREFIX,
             className,
-            classNames,
         );
 
         useInternalRef(ref, menuContentRef);

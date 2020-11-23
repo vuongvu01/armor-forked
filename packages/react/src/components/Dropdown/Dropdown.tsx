@@ -16,14 +16,13 @@ import {
     DropdownExpansionIndicator,
     DropdownOptionList,
     DropdownOptionListContainer,
-    dropdownTextInputStyle,
-    DropdownWrapper,
+    DropdownRoot,
     ExpansionIndicatorContainer,
+    DropdownTextInput,
 } from './style';
 import DropdownOptionItem from './DropdownOptionItem';
 import { DropdownPropsType, OptionObjectType } from './type';
 import { dropdownDefaultTheme } from './theme';
-import { TextInput } from '../TextInput';
 import {
     defaultLabel,
     DROPDOWN_CLASS_PREFIX,
@@ -47,7 +46,6 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
     function Dropdown(
         {
             className,
-            classNames,
             disabled,
             error,
             isListExpanded = false,
@@ -73,7 +71,6 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
         const classOverride = useDropdownClassName(
             DROPDOWN_CLASS_PREFIX,
             className,
-            classNames,
             disabled,
         );
 
@@ -196,8 +193,8 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
         const { marginProps, ...otherProps } = extractMarginProps(restProps);
 
         return (
-            <DropdownWrapper
-                className={classOverride.Wrapper}
+            <DropdownRoot
+                className={classOverride.Root}
                 theme={theme}
                 {...marginProps}
             >
@@ -207,7 +204,7 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
                     data-testid={dropdownContainer}
                     ref={containerRef}
                 >
-                    <TextInput
+                    <DropdownTextInput
                         {...otherProps}
                         after={renderActionItem}
                         className={classOverride.TextInput}
@@ -217,7 +214,6 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
                         label={label}
                         onClick={handleDisplayOptionListToggle}
                         ref={internalInputRef}
-                        styles={dropdownTextInputStyle}
                         theme={theme}
                         value={selectedValueToDisplay}
                     />
@@ -238,7 +234,7 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
                         ) : null}
                     </DropdownOptionListContainer>
                 </DropdownContainer>
-            </DropdownWrapper>
+            </DropdownRoot>
         );
     },
 );

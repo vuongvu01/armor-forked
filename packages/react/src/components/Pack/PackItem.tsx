@@ -10,7 +10,6 @@ export const PackItem: FunctionComponent<PackItemPropsType> = forwardRef(
     function PackItem(
         {
             className,
-            classNames,
             flexGrow,
             flexShrink,
             flexBasis,
@@ -23,7 +22,6 @@ export const PackItem: FunctionComponent<PackItemPropsType> = forwardRef(
         const classOverride = usePackItemClassName(
             PACK_ITEM_CLASS_PREFIX,
             className,
-            classNames,
         );
 
         return (

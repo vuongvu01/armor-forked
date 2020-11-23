@@ -4,7 +4,7 @@ import { CancelIcon } from '@deliveryhero/armor-icons';
 
 import { useComponentTheme } from '../../utils/hooks';
 
-import { useMessageClassNames, useMessageStylesOverride } from './utils';
+import { useMessageClassNames } from './utils/useMessageClassNames';
 import {
     MessageRoot,
     MessageIconStyle,
@@ -21,8 +21,6 @@ import { MESSAGE_CLASS_PREFIX } from './constants';
 
 export const Message: FunctionComponent<MessagePropsType> = ({
     className,
-    classNames,
-    styles,
     onClose,
     disableCloseButton,
     disableIcon,
@@ -41,9 +39,7 @@ export const Message: FunctionComponent<MessagePropsType> = ({
     const classNameComponents = useMessageClassNames(
         MESSAGE_CLASS_PREFIX,
         className,
-        classNames,
     );
-    const stylesOverride = useMessageStylesOverride(styles);
 
     const Icon = useIconComponent({
         level,
@@ -64,7 +60,6 @@ export const Message: FunctionComponent<MessagePropsType> = ({
             info={info}
             success={success}
             className={classNameComponents.Root}
-            styles={stylesOverride.Root}
         >
             {!disableIcon && (
                 <MessageIconStyle
@@ -75,7 +70,6 @@ export const Message: FunctionComponent<MessagePropsType> = ({
                     info={info}
                     success={success}
                     className={classNameComponents.Icon}
-                    styles={stylesOverride.Icon}
                 >
                     {(forwardedProps: MessageIconPropsType) => (
                         <Icon {...forwardedProps}>{children}</Icon>
@@ -85,12 +79,10 @@ export const Message: FunctionComponent<MessagePropsType> = ({
             <MessageCentral
                 theme={theme}
                 className={classNameComponents.Central}
-                styles={stylesOverride.Central}
             >
                 <MessageContent
                     theme={theme}
                     className={classNameComponents.Content}
-                    styles={stylesOverride.Content}
                 >
                     {children}
                 </MessageContent>
@@ -98,7 +90,6 @@ export const Message: FunctionComponent<MessagePropsType> = ({
                     <MessageActions
                         theme={theme}
                         className={classNameComponents.Actions}
-                        styles={stylesOverride.Actions}
                     >
                         {actions}
                     </MessageActions>
@@ -107,7 +98,6 @@ export const Message: FunctionComponent<MessagePropsType> = ({
                     <MessageExtra
                         theme={theme}
                         className={classNameComponents.Extra}
-                        styles={stylesOverride.Extra}
                     >
                         {extra}
                     </MessageExtra>
@@ -118,7 +108,6 @@ export const Message: FunctionComponent<MessagePropsType> = ({
                     onClick={onClose}
                     theme={theme}
                     className={classNameComponents.CloseButton}
-                    styles={stylesOverride.CloseButton}
                     tabIndex={-1}
                 >
                     <CancelIcon />

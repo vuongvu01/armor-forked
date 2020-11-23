@@ -1,21 +1,15 @@
 import { useMemo } from 'react';
-import { makeBEM, makeClassName } from '../../../utils';
-import { ClassNamesType } from '../../type';
+import { makeBEM, makeRootClassName } from '../../../utils';
 
 export const usePageNavigationClassNames = (
     classPrefix: string,
     className?: string,
-    classNames?: ClassNamesType,
 ) =>
     useMemo(() => {
-        const rootClassNames = makeClassName(
-            classPrefix,
-            className,
-            classNames,
-        );
+        const rootClassNames = makeRootClassName(classPrefix, className);
 
         return {
             Root: rootClassNames,
             PageButton: makeBEM(classPrefix, 'PageButton'),
         };
-    }, [classPrefix, className, classNames]);
+    }, [classPrefix, className]);

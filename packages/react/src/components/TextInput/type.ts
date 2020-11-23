@@ -3,9 +3,8 @@ import { InputHTMLAttributes, TextareaHTMLAttributes, ReactNode } from 'react';
 import { MarginAttributesType, WidthAttributesType } from '../../system';
 import { Indexed } from '../../type';
 import {
-    StylesFunctionOrStubType,
-    StylePropsType,
-    PropsWithNodeStylePropsType,
+    ComponentStylePropsType,
+    ComponentElementStylePropsType,
 } from '../type';
 
 type TextInputEffectivePropsType = Indexed<{
@@ -30,24 +29,7 @@ type TextInputEffectivePropsType = Indexed<{
 
 /* TextInput component prop type */
 export type TextInputPropsType = TextInputEffectivePropsType &
-    StylePropsType<
-        {
-            Root?: string;
-            Input?: string;
-            Label?: string;
-            LabelBackground?: string;
-            // add custom className for other nodes here
-        },
-        TextInputStylesPropsType
-    >;
-
-export type TextInputStylesPropsType = {
-    Root?: StylesFunctionOrStubType<TextInputEffectivePropsType>;
-    Input?: StylesFunctionOrStubType;
-    Label?: StylesFunctionOrStubType;
-    LabelBackground?: StylesFunctionOrStubType;
-    // add style properties for other nodes here
-};
+    ComponentStylePropsType;
 
 type TextInputInternalPropsType = {
     outlined?: boolean;
@@ -59,30 +41,27 @@ export type TextInputInternalPropsWithThemeType = {
     Pick<TextInputRootPropsType, 'theme' | 'value'>;
 
 /* TextInput Root node prop type */
-export type TextInputRootPropsType = PropsWithNodeStylePropsType<
-    TextInputEffectivePropsType & TextInputInternalPropsType
->;
+export type TextInputRootPropsType = TextInputEffectivePropsType &
+    TextInputInternalPropsType &
+    ComponentElementStylePropsType;
 
 /* TextInput Input node prop type */
-export type TextInputContainerPropsType = PropsWithNodeStylePropsType<
-    TextInputEffectivePropsType
->;
+export type TextInputContainerPropsType = TextInputEffectivePropsType &
+    ComponentElementStylePropsType;
 
 /* TextInput Label node prop type */
 export type TextInputLabelPropsType = Pick<
     TextInputEffectivePropsType,
     'value'
-> &
-    PropsWithNodeStylePropsType<
-        {
-            inside: boolean;
-        } & TextInputInternalPropsType
-    >;
+> & {
+    inside: boolean;
+} & TextInputInternalPropsType &
+    ComponentElementStylePropsType;
 
 /* TextInput LabelBackground node prop type */
 export type TextInputLabelBackgroundPropsType = Pick<
     TextInputEffectivePropsType,
     'value'
 > &
-    PropsWithNodeStylePropsType<Pick<TextInputEffectivePropsType, 'disabled'>>;
-// string | string[] | number;
+    Pick<TextInputEffectivePropsType, 'disabled'> &
+    ComponentElementStylePropsType;

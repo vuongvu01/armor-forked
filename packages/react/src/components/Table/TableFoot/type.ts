@@ -1,5 +1,8 @@
 import { HTMLAttributes } from 'react';
-import { StylePropsType, PropsWithNodeStylePropsType } from '../../type';
+import {
+    ComponentStylePropsType,
+    ComponentElementStylePropsType,
+} from '../../type';
 import { Indexed } from '../../../type';
 
 type TableFootEffectivePropsType = Indexed<{
@@ -9,12 +12,8 @@ type TableFootEffectivePropsType = Indexed<{
 
 /* TableFoot component prop type */
 export type TableFootPropsType = TableFootEffectivePropsType &
-    StylePropsType<{
-        Root?: string;
-        // add custom className for other nodes here
-    }>;
+    ComponentStylePropsType;
 
 /* TableFoot Root node prop type */
-export type TableFootRootPropsType = PropsWithNodeStylePropsType<
-    TableFootEffectivePropsType
->;
+export type TableFootRootPropsType = TableFootEffectivePropsType &
+    ComponentElementStylePropsType;

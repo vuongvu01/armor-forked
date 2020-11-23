@@ -9,15 +9,11 @@ import { menuDefaultTheme } from './theme';
 import { MENU_CLASS_PREFIX } from './constants';
 
 export const Menu: FunctionComponent<MenuPropsType> = forwardRef(function Menu(
-    { className, classNames, ...restProps },
+    { className, ...restProps },
     ref,
 ) {
     const theme = useComponentTheme(MENU_CLASS_PREFIX, menuDefaultTheme);
-    const classNameComponents = useMenuClassNames(
-        MENU_CLASS_PREFIX,
-        className,
-        classNames,
-    );
+    const classNameComponents = useMenuClassNames(MENU_CLASS_PREFIX, className);
 
     return (
         <MenuRoot

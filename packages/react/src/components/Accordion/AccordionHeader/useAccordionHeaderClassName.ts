@@ -1,51 +1,45 @@
 import { useMemo } from 'react';
 
 import { getClassNameByComponent } from '../utils';
-import { ClassNamesType } from '../../type';
+import { appendClassName } from '../../../utils';
 
 const useAccordionHeaderClassName = (
     classPrefix: string,
     className?: string,
-    classNames?: ClassNamesType,
     disabled?: boolean,
     expanded?: boolean,
 ) =>
     useMemo(
         () => ({
-            Header: getClassNameByComponent({
-                component: 'Header',
-                classPrefix,
+            Root: appendClassName(
+                getClassNameByComponent({
+                    component: 'Root',
+                    classPrefix,
+                    disabled,
+                    expanded,
+                }),
                 className,
-                classNames,
-                disabled,
-                expanded,
-            }),
+            ),
             HeaderTitle: getClassNameByComponent({
                 component: 'HeaderTitle',
                 classPrefix,
-                className,
-                classNames,
                 disabled,
                 expanded,
             }),
             IconContainer: getClassNameByComponent({
                 component: 'IconContainer',
                 classPrefix,
-                className,
-                classNames,
                 disabled,
                 expanded,
             }),
             ExpansionIndicator: getClassNameByComponent({
                 component: 'ExpansionIndicator',
                 classPrefix,
-                className,
-                classNames,
                 disabled,
                 expanded,
             }),
         }),
-        [classPrefix, className, classNames, disabled, expanded],
+        [classPrefix, className, disabled, expanded],
     );
 
 export default useAccordionHeaderClassName;

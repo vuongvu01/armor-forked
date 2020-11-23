@@ -16,7 +16,7 @@ import { useHeaderNavigationLink } from './utils/useHeaderNavigationLink';
 
 export const HeaderNavigationLink: FunctionComponent<HeaderNavigationLinkPropsType> = forwardRef(
     function HeaderNavigationLink(
-        { className, classNames, children, tag: Tag = 'span', ...restProps },
+        { className, children, tag: Tag = 'span', ...restProps },
         ref,
     ) {
         const headerNavigationLinksContext = useContext(
@@ -31,7 +31,6 @@ export const HeaderNavigationLink: FunctionComponent<HeaderNavigationLinkPropsTy
         const classOverride = useHeaderNavigationLinkClassName(
             HEADER_NAVIGATION_LINK_CLASS_PREFIX,
             className,
-            classNames,
         );
 
         const { isActive, onClick, restRootProps } = useHeaderNavigationLink({

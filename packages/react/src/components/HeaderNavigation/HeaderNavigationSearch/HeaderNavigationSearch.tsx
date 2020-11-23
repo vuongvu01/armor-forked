@@ -13,15 +13,7 @@ import { headerNavigationSearch } from './theme';
 
 export const HeaderNavigationSearch: FunctionComponent<HeaderNavigationSearchPropsType> = forwardRef(
     function HeaderNavigationSearch(
-        {
-            className,
-            classNames,
-            options,
-            onChange,
-            onItemSelect,
-            separator,
-            ...restProps
-        },
+        { className, options, onChange, onItemSelect, separator, ...restProps },
         ref,
     ) {
         const theme = useComponentTheme(
@@ -32,7 +24,6 @@ export const HeaderNavigationSearch: FunctionComponent<HeaderNavigationSearchPro
         const classOverride = useHeaderNavigationSearchClassName(
             HEADER_NAVIGATION_SEARCH_CLASS_PREFIX,
             className,
-            classNames,
         );
 
         return (

@@ -4,7 +4,7 @@ export const dialogDefaultTheme = {
             marginRight: 9,
         },
     },
-    Root: {
+    Base: {
         base: {
             margin: 12,
             minHeight: 23, // 6.5 + 6 + 4 + 6.5

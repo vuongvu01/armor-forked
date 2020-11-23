@@ -10,7 +10,6 @@ import { useComponentTheme } from '../../utils/hooks';
 export const Flex: FunctionComponent<FlexPropsType> = forwardRef(function Flex(
     {
         className,
-        classNames,
         direction,
         justifyContent,
         alignContent,
@@ -21,11 +20,7 @@ export const Flex: FunctionComponent<FlexPropsType> = forwardRef(function Flex(
     ref,
 ) {
     const theme = useComponentTheme(FLEX_CLASS_PREFIX);
-    const classOverride = useFlexClassName(
-        FLEX_CLASS_PREFIX,
-        className,
-        classNames,
-    );
+    const classOverride = useFlexClassName(FLEX_CLASS_PREFIX, className);
 
     return (
         <FlexRoot

@@ -36,5 +36,4 @@ export const FormFieldRoot = styled.div.withConfig({
     
     ${marginAttributes}
     ${widthAttributes}
-    ${(props: FormFieldRootPropsType) => props.styles(props)}
 `;

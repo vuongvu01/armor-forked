@@ -2,11 +2,10 @@ import { AnchorHTMLAttributes, ComponentType, HTMLAttributes } from 'react';
 
 import { MarginAttributesType } from '../../../system/attributes';
 import { Indexed } from '../../../type';
-import { ClassNamesType } from '../../type';
 
 export type ClassBasedOnComponentType = {
     className?: string;
-    classNames?: ClassNamesType;
+
     classPrefix: string;
     component: string;
 };

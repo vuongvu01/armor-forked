@@ -1,26 +1,25 @@
 import { HTMLAttributes } from 'react';
 
-import { ClassNamesType, NodeStylePropsType } from '../../type';
+import { ComponentElementStylePropsType } from '../../type';
 
 export type ClassBasedOnComponentType = {
     className?: string;
-    classNames?: ClassNamesType;
+
     classPrefix: string;
     component: string;
     disabled?: boolean;
 };
 
 export type SearchIconPropsType = {
-    classNames?: ClassNamesType;
     isLoading?: boolean;
     disabled?: boolean;
 } & HTMLAttributes<HTMLElement>;
 
 export type SearchIconContainerPropsType = SearchIconPropsType &
-    NodeStylePropsType<SearchIconPropsType>;
+    ComponentElementStylePropsType;
 
 export type SearchInputSearchIconPropsType = SearchIconPropsType &
-    NodeStylePropsType<SearchIconPropsType>;
+    ComponentElementStylePropsType;
 
 export type SearchInputLoadingIconPropsType = SearchIconPropsType &
-    NodeStylePropsType<SearchIconPropsType>;
+    ComponentElementStylePropsType;

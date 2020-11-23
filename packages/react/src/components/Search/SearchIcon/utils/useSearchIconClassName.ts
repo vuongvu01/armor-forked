@@ -1,22 +1,14 @@
 import { useMemo } from 'react';
 
 import { ClassBasedOnComponentType } from '../type';
-import { makeBEM, makeClassName } from '../../../../utils';
-import { ClassNamesType } from '../../../type';
+import { appendClassName, makeBEM } from '../../../../utils';
 
 const getClassNameByComponent = ({
     component,
     classPrefix,
-    className,
-    classNames,
     disabled,
 }: ClassBasedOnComponentType) => {
-    const baseClassNames = makeClassName(
-        classPrefix,
-        className,
-        classNames,
-        component,
-    );
+    const baseClassNames = makeBEM(classPrefix, component);
 
     const stateClassNames: string[] = [];
 
@@ -30,24 +22,22 @@ const getClassNameByComponent = ({
 export const useSearchIconClassName = (
     classPrefix: string,
     className?: string,
-    classNames?: ClassNamesType,
     disabled?: boolean,
 ) =>
     useMemo(() => {
         return {
-            BeforeIcon: getClassNameByComponent({
-                component: 'BeforeIcon',
-                classPrefix,
+            BeforeIcon: appendClassName(
+                getClassNameByComponent({
+                    component: 'BeforeIcon',
+                    classPrefix,
+                    disabled,
+                }),
                 className,
-                classNames,
-                disabled,
-            }),
+            ),
             BeforeIconContainer: getClassNameByComponent({
                 component: 'BeforeIconContainer',
                 classPrefix,
-                className,
-                classNames,
                 disabled,
             }),
         };
-    }, [classPrefix, className, classNames, disabled]);
+    }, [classPrefix, className, disabled]);

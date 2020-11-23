@@ -68,7 +68,7 @@ const closeIconStyle = ({
     },
 }: SideSheetContentPropsType) => SideSheet.Icon.focused;
 
-export const SideSheetRoot = styled.div.withConfig({
+export const SideSheetBase = styled.div.withConfig({
     shouldForwardProp: property =>
         shouldForwardProp(property, blacklistProperties),
 })<SideSheetContainerPropsType>`
@@ -115,6 +115,7 @@ export const SideSheetHeaderCloseButtonContent = styled.div<
 >`
     height: 32px;
     width: 32px;
+    cursor: pointer;
 
     &:hover,
     &:focus,

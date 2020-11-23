@@ -10,8 +10,6 @@ export type ArrayLikeType<P = any> = {
     [k: number]: P;
 };
 
-export type ReturnEmptyStringFunctionType = () => string;
-
 export type CSSChunkType =
     | FlattenSimpleInterpolation
     | string
@@ -20,5 +18,3 @@ export type CSSChunkType =
 export type ChildrenType = JSX.Element | JSX.Element[] | undefined | null;
 
 export type Indexed<T, P = any> = T & ObjectLiteralType<P>;
-
-export type Nullable<T = any> = T | null;
