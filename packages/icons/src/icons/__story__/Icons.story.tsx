@@ -66,6 +66,9 @@ export const Basic = () => (
                 <I.InfoIcon />
             </Icon>
             <Icon>
+                <I.LoginIcon />
+            </Icon>
+            <Icon>
                 <I.LogoutIcon />
             </Icon>
             <Icon>
