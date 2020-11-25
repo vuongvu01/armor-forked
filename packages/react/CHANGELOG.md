@@ -1,3 +1,19 @@
+## @deliveryhero/armor [1.22.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.22.1...@deliveryhero/armor@1.22.2) (2020-11-25)
+
+
+### Bug Fixes
+
+* Dropdown, Search and Tag improvements, TextInput received an internal container for better positioning, refactoring [LD-324] ([#318](https://github.com/deliveryhero/armor/issues/318)) ([0b392d0](https://github.com/deliveryhero/armor/commit/0b392d08d3a5571265c2feed25f1a489aaf41063))
+* **styling:** classname only goes to the root component. classnames, styles props were removed as deprecated  [LD-323] ([#316](https://github.com/deliveryhero/armor/issues/316)) ([ba28c93](https://github.com/deliveryhero/armor/commit/ba28c93828ba1ff7a36d74aedc28b6b18d9299e9))
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor-icons:** upgraded to 1.4.0
+
 ## @deliveryhero/armor [1.22.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.22.0...@deliveryhero/armor@1.22.1) (2020-11-19)
 
 
