@@ -73,7 +73,6 @@ export const SideSheet: FunctionComponent<SideSheetPropsType> = forwardRef(
 
         return (
             <Modal
-                {...restProps}
                 className={classOverride.Root}
                 disableBackdrop={disableOverlay}
                 disableCloseByEscape={disableCloseByEscape}
@@ -90,6 +89,7 @@ export const SideSheet: FunctionComponent<SideSheetPropsType> = forwardRef(
                     theme={theme}
                 />
                 <SideSheetBase
+                    {...restProps}
                     // data-testid={sideSheetRoot}
                     className={classOverride.Base}
                     disableEffects={disableEffects}

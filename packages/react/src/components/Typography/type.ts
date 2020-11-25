@@ -2,6 +2,7 @@ import { ComponentType, HTMLAttributes } from 'react';
 import {
     ColorAttributesType,
     MarginAttributesType,
+    TextAlignmentAttributesType,
 } from '../../system/attributes';
 import { Indexed } from '../../type';
 import {
@@ -26,7 +27,8 @@ type TypographyEffectivePropsType = Indexed<{
 }> &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
     ColorAttributesType &
-    MarginAttributesType;
+    MarginAttributesType &
+    TextAlignmentAttributesType;
 
 /* Typography component prop type */
 export type TypographyPropsType = TypographyEffectivePropsType &

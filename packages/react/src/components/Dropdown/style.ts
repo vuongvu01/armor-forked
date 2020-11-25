@@ -12,6 +12,7 @@ import {
 } from './type';
 import { ExpansionIndicator } from '../ExpansionIndicator';
 import { TextInput } from '../TextInput';
+import { spacing } from '../../system/mixins';
 
 const optionItemStyle = ({
     isSelected,
@@ -43,7 +44,6 @@ export const DropdownRoot = styled.div.withConfig({
     shouldForwardProp: property => shouldForwardProp(property),
 })<DropdownRootPropsType>`
     display: inline-flex;
-    height: 50px;
 
     ${marginAttributes}
 `;
@@ -52,21 +52,17 @@ export const DropdownContainer = styled.div<DropdownRootPropsType>`
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    height: 0;
-    min-height: 110%;
-    min-width: 150px;
 `;
 
 export const DropdownOptionListContainer = styled.div<DropdownRootPropsType>`
     box-sizing: border-box;
-    margin: 4px 2px;
     position: relative;
 `;
 
 export const ExpansionIndicatorContainer = styled.div<
     ExpansionIndicatorContainerPropsType
 >`
-    height: 100%;
+    height: ${spacing(10)};
 `;
 export const DropdownExpansionIndicator = styled(ExpansionIndicator)<
     ExpansionIndicatorContainerPropsType
@@ -82,14 +78,15 @@ export const DropdownOptionList = styled.div<DropdownOptionListPropsType>`
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    height: 0;
+    top: ${spacing(1)};
     left: 0;
+    right: 0;
+    height: 0;
     max-height: 400px;
     overflow: auto;
     padding-bottom: 0;
     padding-top: 0;
     position: absolute;
-    right: 0;
     transition: ${transitionDurationInSec}s;
     z-index: 1024;
 

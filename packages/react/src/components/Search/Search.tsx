@@ -96,7 +96,7 @@ export const Search: FunctionComponent<SearchPropsType> = forwardRef(
                     ref={internalInputRef}
                     theme={theme}
                     value={searchQuery}
-                    wide={true}
+                    wide
                 />
                 {isSuggestionsListShown ? (
                     <SearchSuggestionsContainer

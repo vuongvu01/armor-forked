@@ -9,6 +9,7 @@ import {
 } from '../../../tokens';
 import { HeaderNavigationPackItem } from '../HeaderNavigationPackItem';
 import { Dropdown } from '../../Dropdown';
+import { spacing } from '../../../system/mixins';
 
 export const HeaderNavigationSelectorRoot = styled.div<
     HeaderNavigationSelectorRootPropsType
@@ -37,7 +38,7 @@ export const NavigationPackItemSelector = styled(HeaderNavigationPackItem)<
 >`
     padding-top: 0;
     padding-bottom: 0;
-    height: 48px;
+    height: ${spacing(12)};
     border-right-width: 1px;
     border-right-style: solid;
 
@@ -68,12 +69,14 @@ export const SelectorDropdown = styled(Dropdown)<
     }
     .Dropdown-TextInput {
         border-style: none;
-        height: 40px;
-        padding-top: 2px;
+        height: ${spacing(10)};
         cursor: pointer;
         background-color: ${colorGrey05};
     }
     .Dropdown-Container {
-        padding-top: 4px;
+        padding-top: ${spacing(1)};
+    }
+    .Dropdown-OptionList {
+        top: ${spacing(2)};
     }
 `;

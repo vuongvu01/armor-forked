@@ -50,6 +50,7 @@ export type DropdownOnValueUpdateType = (
 export type DropdownOnChangeEventType = {
     target: {
         value?: DropdownValueType;
+        name?: string;
     };
 };
 

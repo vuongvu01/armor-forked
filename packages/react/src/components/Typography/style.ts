@@ -1,6 +1,10 @@
 import styled, { css } from 'styled-components';
 import { ReactElement } from 'react';
-import { colorAttributes, marginAttributes } from '../../system/attributes';
+import {
+    colorAttributes,
+    marginAttributes,
+    textAlignmentAttributes,
+} from '../../system/attributes';
 import { shouldForwardProp } from '../../utils';
 import { ObjectLiteralType } from '../../type';
 import { TypographyRootPropsType } from './type';
@@ -137,4 +141,5 @@ export const TypographyStyle = styled(Wrapper).withConfig({
     ${getMaxLinesStyle}
     ${marginAttributes}
     ${colorAttributes}
+    ${textAlignmentAttributes}
 `;

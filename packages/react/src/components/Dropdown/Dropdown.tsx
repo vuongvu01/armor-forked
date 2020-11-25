@@ -59,6 +59,7 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
             defaultValue,
             tabIndex,
             multiple,
+            name,
             ...restProps
         },
         ref,
@@ -84,6 +85,7 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
             setInternalValue,
             onSelect,
             onChange,
+            name,
         );
         const { internalOptions, isFlat } = useOptions(options);
 
@@ -216,6 +218,8 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
                         ref={internalInputRef}
                         theme={theme}
                         value={selectedValueToDisplay}
+                        name={name}
+                        autoComplete="off"
                     />
                     <DropdownOptionListContainer
                         className={classOverride.OptionListContainer}

@@ -17,6 +17,7 @@ import { transitionDurationInSec } from '../../constants';
 import { Typography } from '../Typography';
 import { TextInput } from '../TextInput';
 import { TextInputPropsType } from '../TextInput/type';
+import { spacing } from '../../system/mixins';
 
 const rootStyle = ({
     theme: {
@@ -135,15 +136,14 @@ export const SearchSuggestionsContainer = styled.div<
 >`
     background-color: white;
     box-sizing: border-box;
-    display: flex;
     flex-direction: column;
     height: 0;
-    left: 4px;
+    left: 0;
+    width: 100%;
     max-height: 400px;
     overflow: auto;
     position: absolute;
     transition: ${transitionDurationInSec}s;
-    width: calc(100% - 8px);
     z-index: ${zIndexSearchSuggestionsList};
 
     ${searchSuggestionsContainerStyle}

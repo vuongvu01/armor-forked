@@ -1,11 +1,16 @@
 import { ReactElement } from 'react';
 import styled, { css } from 'styled-components';
 
-import { marginAttributes, widthAttributes } from '../../system';
+import {
+    heightAttributes,
+    marginAttributes,
+    widthAttributes,
+} from '../../system';
 import { ObjectLiteralType } from '../../type';
 import { shouldForwardProp } from '../../utils';
 import {
-    TextInputContainerPropsType,
+    TextInputInnerContainerPropsType,
+    TextInputInputPropsType,
     TextInputInternalPropsWithThemeType,
     TextInputLabelBackgroundPropsType,
     TextInputLabelPropsType,
@@ -50,22 +55,25 @@ const getDynamicStyle = (
 };
 
 const getRootDynamicStyle = (props: TextInputRootPropsType) => {
-    const { theme, displayMode, multiline } = props;
+    const { theme, displayMode, enableFocusOnRootClick } = props;
     const {
         componentOverrides: { TextInput },
     } = theme;
 
     let result = TextInput.Root.base;
 
-    if (!multiline) {
+    if (enableFocusOnRootClick) {
         result = css`
             ${result};
-            align-items: center;
+            cursor: text;
+            & > * {
+                cursor: initial;
+            }
         `;
     }
 
     return css`
-        display: ${displayMode === 'block' ? 'flex' : 'inline-flex'};
+        display: ${displayMode === 'block' ? 'block' : 'inline-block'};
         ${result};
         ${getDynamicStyle('Root', props)};
     `;
@@ -78,15 +86,43 @@ export const TextInputRoot = styled.div.withConfig({
     position: relative;
     border-style: solid;
     border-width: 1px;
-    vertical-align: middle;
     transition: border ${transitionDurationInSec}s ease;
+    vertical-align: middle;
 
     ${getRootDynamicStyle}
     ${marginAttributes}
     ${widthAttributes}
+    ${heightAttributes}
 `;
 
-const getInputDynamicStyle = (props: TextInputContainerPropsType) => {
+const getInnerContainerDynamicStyle = (
+    props: TextInputInnerContainerPropsType,
+) => {
+    const { theme, multiline } = props;
+    const {
+        componentOverrides: { TextInput },
+    } = theme;
+
+    let result = TextInput.InnerContainer.base;
+
+    if (!multiline) {
+        result = css`
+            ${result};
+            align-items: center;
+        `;
+    }
+
+    return result;
+};
+
+export const TextInputInnerContainer = styled.div<
+    TextInputInnerContainerPropsType
+>`
+    display: flex;
+    ${getInnerContainerDynamicStyle}
+`;
+
+const getInputDynamicStyle = (props: TextInputInputPropsType) => {
     const { theme, multiline, disabled } = props;
     const {
         componentOverrides: { TextInput },
@@ -118,13 +154,13 @@ const getInputDynamicStyle = (props: TextInputContainerPropsType) => {
 const Wrapper = ({
     children,
     ...restProps
-}: TextInputContainerPropsType & {
-    children: (props: TextInputContainerPropsType) => ReactElement;
+}: TextInputInputPropsType & {
+    children: (props: TextInputInputPropsType) => ReactElement;
 }) => children({ ...restProps });
 
 export const TextInputInput = styled(Wrapper).withConfig({
     shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<TextInputContainerPropsType>`
+})<TextInputInputPropsType>`
     box-sizing: border-box;
     border: 0 none;
     outline: none;

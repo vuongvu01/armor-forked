@@ -1,4 +1,4 @@
-import { HTMLAttributes } from 'react';
+import { HTMLAttributes, MouseEvent } from 'react';
 
 import { SizeAttributesType } from '../../system';
 import { Indexed } from '../../type';
@@ -13,6 +13,7 @@ type DialogEffectivePropsType = Indexed<{
     disableEffects?: boolean;
     disableCloseButton?: boolean;
     scroll?: ScrollType;
+    onCloseButtonClick?: (event: MouseEvent<HTMLDivElement>) => void;
     // add other custom properties here
 }> &
     Pick<

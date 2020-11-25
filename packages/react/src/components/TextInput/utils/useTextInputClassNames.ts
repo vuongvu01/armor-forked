@@ -23,6 +23,7 @@ export const useTextInputClassNames = (
 
         return {
             Root: `${rootClassNames} ${rootStateClassNames.join(' ')}`.trim(),
+            InnerContainer: makeBEM(classPrefix, 'InnerContainer'),
             Input: makeBEM(classPrefix, 'Input'),
             Label: makeBEM(classPrefix, 'Label'),
             LabelBackground: makeBEM(classPrefix, 'LabelBackground'),

@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useCallback, MouseEvent } from 'react';
 import PropTypes from 'prop-types';
 import { CancelIcon } from '@deliveryhero/armor-icons';
 import { useComponentTheme } from '../../utils/hooks';
@@ -30,6 +30,7 @@ export const Dialog: FunctionComponent<DialogPropsType> = ({
     disableCloseByEscape,
     disableEffects,
     onClose,
+    onCloseButtonClick,
     scroll,
     zIndex,
     ...restProps
@@ -47,9 +48,24 @@ export const Dialog: FunctionComponent<DialogPropsType> = ({
         disableOverlay,
     );
 
+    const onCloseButtonClickInternal = useCallback(
+        (event: MouseEvent<HTMLDivElement>) => {
+            if (onCloseButtonClick) {
+                onCloseButtonClick(event);
+                if (event.isPropagationStopped()) {
+                    return;
+                }
+            }
+
+            if (onClose) {
+                onClose();
+            }
+        },
+        [onClose, onCloseButtonClick],
+    );
+
     return (
         <Modal
-            {...restProps}
             open={open}
             onClose={onClose}
             disableBackdrop={disableOverlay}
@@ -74,6 +90,7 @@ export const Dialog: FunctionComponent<DialogPropsType> = ({
                 scroll={scroll}
             >
                 <DialogBase
+                    {...restProps}
                     theme={theme}
                     className={classNameComponents.Base}
                     effectToggle={effectToggle}
@@ -84,7 +101,7 @@ export const Dialog: FunctionComponent<DialogPropsType> = ({
                         <DialogCloseButton
                             className={classNameComponents.CloseButton}
                             data-testid={dialogCloseButton}
-                            onClick={onClose}
+                            onClick={onCloseButtonClickInternal}
                             tabIndex={-1}
                             theme={theme}
                         >

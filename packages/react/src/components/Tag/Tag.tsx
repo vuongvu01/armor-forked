@@ -2,7 +2,7 @@ import React, { forwardRef, FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import { useComponentTheme } from '../../utils/hooks';
-import { getStatusTagLabel, isStatusTag, useTagClassName } from './utils';
+import { isStatusTag, useTagClassName } from './utils';
 import { TagPropsType } from './type';
 import { tagDefaultTheme } from './theme';
 import {
@@ -17,13 +17,13 @@ import {
     TagRoot,
     TagTypography,
 } from './style';
+import { useTag } from './utils/useTag';
 
 export const Tag: FunctionComponent<TagPropsType> = forwardRef(function Tag(
-    { className, deleteOption, label: userLabel, onClose, type, ...restProps },
+    { className, deleteOption, type, ...restProps },
     ref,
 ) {
     const theme = useComponentTheme(TAG_CLASS_PREFIX, tagDefaultTheme);
-    let label = userLabel;
 
     const classOverride = useTagClassName(
         TAG_CLASS_PREFIX,
@@ -32,14 +32,12 @@ export const Tag: FunctionComponent<TagPropsType> = forwardRef(function Tag(
         type,
     );
 
-    if (isStatusTag(type)) {
-        label = getStatusTagLabel(type);
-    }
+    const { content, restRootProps, onCloseButtonClick } = useTag(restProps);
 
     return (
         <TagRoot
             data-testid={tagRoot}
-            {...restProps}
+            {...restRootProps}
             className={classOverride.Root}
             deleteOption={deleteOption}
             ref={ref}
@@ -52,7 +50,7 @@ export const Tag: FunctionComponent<TagPropsType> = forwardRef(function Tag(
                 small
                 theme={theme}
             >
-                {label}
+                {content}
             </TagTypography>
             {!isStatusTag(type) &&
             deleteOption !== TAG_DELETE_BEHAVIOUR_OPTIONS.DISABLED ? (
@@ -60,7 +58,7 @@ export const Tag: FunctionComponent<TagPropsType> = forwardRef(function Tag(
                     className={classOverride.CloseIconContainer}
                     data-testid={tagCloseIconContainer}
                     deleteOption={deleteOption}
-                    onClick={onClose}
+                    onClick={onCloseButtonClick}
                     tabIndex={0}
                     theme={theme}
                     type={type}
@@ -80,6 +78,6 @@ Tag.defaultProps = {
 Tag.propTypes = {
     deleteOption: PropTypes.oneOf(['disabled', 'enabled', 'onHover']),
     label: PropTypes.string,
-    onClose: PropTypes.func.isRequired,
+    onClose: PropTypes.func,
     type: PropTypes.oneOf(['default', 'approved', 'denied', 'new']),
 };

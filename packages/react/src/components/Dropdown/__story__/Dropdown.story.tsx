@@ -5,6 +5,8 @@ import { withKnobs } from '@storybook/addon-knobs';
 
 import { GroupHelper } from '../../../helpers/GroupHelper';
 import { Dropdown } from '../Dropdown';
+import { FormField, FormFieldMessage, FormFieldTooltip } from '../../FormField';
+import { TextInput } from '../../TextInput';
 import { Button } from '../../Button';
 import { Box } from '../../Box';
 import { Typography } from '../../Typography';
@@ -470,6 +472,42 @@ export const Objects = () => {
                     console.log(index);
                 }}
             />
+        </>
+    );
+};
+
+export const FormWithErrors = () => {
+    const options = [
+        { value: 3, label: 'Red', code: 'r' },
+        { value: 'b', label: 'Blue', code: 'b' },
+        { value: 5, label: 'Green', code: 'g' },
+    ];
+
+    const errors = [
+        'Need more beer',
+        'Out of pretzels',
+        'Something else!',
+        'Test test!',
+    ];
+
+    return (
+        <>
+            <FormField autoMargin>
+                <Dropdown
+                    label="Type of entity"
+                    autoComplete="off"
+                    options={options}
+                />
+                <FormFieldMessage>asdfasdfdsdsafsd</FormFieldMessage>
+            </FormField>
+            <FormField autoMargin>
+                <TextInput label="Blacklist - Email" wide multiline />
+                {errors.length > 0 && (
+                    <FormFieldMessage error oneLine={false}>
+                        Errors: {errors.join(', ')}
+                    </FormFieldMessage>
+                )}
+            </FormField>
         </>
     );
 };

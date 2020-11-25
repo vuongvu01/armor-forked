@@ -1,7 +1,7 @@
-import { HTMLAttributes } from 'react';
+import { HTMLAttributes, MouseEvent } from 'react';
 
 import { MarginAttributesType } from '../../system/attributes';
-import { Indexed } from '../../type';
+import { Indexed, ScalarType } from '../../type';
 import { ComponentElementStylePropsType } from '../type';
 
 export type TagTypeDefault = 'default';
@@ -26,18 +26,22 @@ export type TagDeleteIconModeType =
 
 export type ClassBasedOnComponentType = {
     className?: string;
-
     classPrefix: string;
     component: string;
     deleteOption?: TagDeleteIconModeType;
     isActive?: boolean;
-    onClose?: () => void;
+    onClose?: (event: MouseEvent<HTMLDivElement>) => void;
     type?: TagType;
 };
 
 type TagEffectivePropsType = Indexed<{
     deleteOption?: TagDeleteIconModeType;
-    value?: string | number;
+    code?: ScalarType;
+    isActive?: boolean;
+    onClose?: (event: MouseEvent<HTMLDivElement>) => void;
+    onDeselect?: (tagCode?: ScalarType) => void;
+    type?: TagType;
+    label?: string;
 }> &
     HTMLAttributes<HTMLElement> &
     MarginAttributesType;

@@ -5,6 +5,8 @@ import { InfoIcon } from '@deliveryhero/armor-icons';
 
 import { Search } from '../Search';
 import { SuggestionObjectType } from '../type';
+import { FormField, FormFieldMessage } from '../../FormField';
+import { TextInput } from '../../TextInput';
 
 export default {
     title: 'Components/Search',
@@ -86,5 +88,42 @@ export const DisabledClearAction = () => {
             onChange={handleOnChange}
             options={foodOptions}
         />
+    );
+};
+
+export const FormWithErrors = () => {
+    const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
+        const query = event?.target?.value || '';
+
+        // eslint-disable-next-line no-console
+        console.log({ query });
+    };
+
+    const errors = [
+        'Need more beer',
+        'Out of pretzels',
+        'Something else!',
+        'Test test!',
+    ];
+
+    return (
+        <>
+            <FormField autoMargin>
+                <Search
+                    disableClearAction
+                    onChange={handleOnChange}
+                    options={foodOptions}
+                />
+                <FormFieldMessage>Don&rsquo;t do that</FormFieldMessage>
+            </FormField>
+            <FormField autoMargin>
+                <TextInput label="Blacklist - Email" wide multiline />
+                {errors.length > 0 && (
+                    <FormFieldMessage error oneLine={false}>
+                        Errors: {errors.join(', ')}
+                    </FormFieldMessage>
+                )}
+            </FormField>
+        </>
     );
 };

@@ -1,6 +1,10 @@
 import { InputHTMLAttributes, TextareaHTMLAttributes, ReactNode } from 'react';
 
-import { MarginAttributesType, WidthAttributesType } from '../../system';
+import {
+    HeightAttributesType,
+    MarginAttributesType,
+    WidthAttributesType,
+} from '../../system';
 import { Indexed } from '../../type';
 import {
     ComponentStylePropsType,
@@ -17,6 +21,7 @@ type TextInputEffectivePropsType = Indexed<{
     disableLabelEffect?: boolean;
     displayMode?: 'block' | 'inline';
     outline?: boolean;
+    enableFocusOnRootClick?: boolean;
     // add other custom properties here
 }> &
     InputHTMLAttributes<HTMLInputElement> &
@@ -25,6 +30,7 @@ type TextInputEffectivePropsType = Indexed<{
         'cols' | 'rows' | 'wrap' | 'dirName'
     > &
     WidthAttributesType &
+    HeightAttributesType &
     MarginAttributesType;
 
 /* TextInput component prop type */
@@ -45,8 +51,14 @@ export type TextInputRootPropsType = TextInputEffectivePropsType &
     TextInputInternalPropsType &
     ComponentElementStylePropsType;
 
+export type TextInputInnerContainerPropsType = Pick<
+    TextInputEffectivePropsType,
+    'multiline'
+> &
+    ComponentElementStylePropsType;
+
 /* TextInput Input node prop type */
-export type TextInputContainerPropsType = TextInputEffectivePropsType &
+export type TextInputInputPropsType = TextInputEffectivePropsType &
     ComponentElementStylePropsType;
 
 /* TextInput Label node prop type */

@@ -8,12 +8,7 @@ import {
 
 export const searchTheme = {
     Root: {
-        base: {
-            marginTop: 0,
-            marginRight: componentSpacing01,
-            marginBottom: 0,
-            marginLeft: componentSpacing01,
-        },
+        base: {},
     },
     TextInput: {
         base: {
