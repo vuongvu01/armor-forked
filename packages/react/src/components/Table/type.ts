@@ -1,5 +1,8 @@
 import { HTMLAttributes } from 'react';
-import { StylePropsType, PropsWithNodeStylePropsType } from '../type';
+import {
+    ComponentStylePropsType,
+    ComponentElementStylePropsType,
+} from '../type';
 import {
     HeightAttributesType,
     MarginAttributesType,
@@ -35,13 +38,8 @@ export type TableEffectivePropsType = Indexed<{
     MarginAttributesType;
 
 /* Table component prop type */
-export type TablePropsType = TableEffectivePropsType &
-    StylePropsType<{
-        Root?: string;
-        // add custom className for other nodes here
-    }>;
+export type TablePropsType = TableEffectivePropsType & ComponentStylePropsType;
 
 /* Table Root node prop type */
-export type TableRootPropsType = PropsWithNodeStylePropsType<
-    TableEffectivePropsType
->;
+export type TableRootPropsType = TableEffectivePropsType &
+    ComponentElementStylePropsType;

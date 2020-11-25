@@ -22,10 +22,7 @@ import {
 import { TableCellLabel } from '../TableCellLabel';
 
 export const TableHeadCell: FunctionComponent<TableHeadCellPropsType> = forwardRef(
-    function TableHeadCell(
-        { className, classNames, children, ...restProps },
-        ref,
-    ) {
+    function TableHeadCell({ className, children, ...restProps }, ref) {
         const theme = useComponentTheme(
             TABLE_HEAD_CELL_CLASS_PREFIX,
             tableHeadCellDefaultTheme,
@@ -33,7 +30,6 @@ export const TableHeadCell: FunctionComponent<TableHeadCellPropsType> = forwardR
         const classNameComponents = useTableHeadCellClassNames(
             TABLE_HEAD_CELL_CLASS_PREFIX,
             className,
-            classNames,
         );
 
         const {

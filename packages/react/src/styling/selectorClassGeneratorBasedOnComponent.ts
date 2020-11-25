@@ -1,21 +1,14 @@
 import { ClassBasedOnComponentType } from '../components/Radio/type';
-import { makeBEM, makeClassName } from '../utils';
+import { makeBEM } from '../utils';
 
 const selectorClassGeneratorBasedOnComponent = ({
     component,
     classPrefix,
-    className,
-    classNames,
     disabled,
     checked,
     error,
 }: ClassBasedOnComponentType) => {
-    const baseClassNames = makeClassName(
-        classPrefix,
-        className,
-        classNames,
-        component,
-    );
+    const baseClassNames = makeBEM(classPrefix, component);
 
     const stateClassNames: string[] = [];
 

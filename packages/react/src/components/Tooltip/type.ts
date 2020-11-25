@@ -2,9 +2,8 @@ import { HTMLAttributes, ReactNode } from 'react';
 
 import { Indexed } from '../../type';
 import {
-    StylesFunctionOrStubType,
-    StylePropsType,
-    PropsWithNodeStylePropsType,
+    ComponentStylePropsType,
+    ComponentElementStylePropsType,
 } from '../type';
 
 // https://popper.js.org/docs/v2/constructors/
@@ -28,29 +27,16 @@ type TooltipEffectivePropsType = Indexed<{
 
 /* Tooltip component prop type */
 export type TooltipPropsType = TooltipEffectivePropsType &
-    StylePropsType<
-        {
-            Root?: string;
-            Arrow?: string;
-            // add custom className for other nodes here
-        },
-        TooltipStylesPropsType
-    >;
-
-export type TooltipStylesPropsType = {
-    Root?: StylesFunctionOrStubType<TooltipEffectivePropsType>;
-    Arrow?: StylesFunctionOrStubType;
-    // add style properties for other nodes here
-};
+    ComponentStylePropsType;
 
 /* Tooltip Root node prop type */
-export type TooltipRootPropsType = PropsWithNodeStylePropsType<
-    TooltipEffectivePropsType
-> & {
+export type TooltipRootPropsType = TooltipEffectivePropsType & {
     hidden: boolean;
-};
+} & ComponentElementStylePropsType;
 
 /* Tooltip Arrow node prop type */
-export type TooltipArrowPropsType = PropsWithNodeStylePropsType<
-    Pick<TooltipEffectivePropsType, 'dark' | 'hide' | 'error'>
->;
+export type TooltipArrowPropsType = Pick<
+    TooltipEffectivePropsType,
+    'dark' | 'hide' | 'error'
+> &
+    ComponentElementStylePropsType;

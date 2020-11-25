@@ -15,15 +15,7 @@ import { tabsDefaultTheme } from './theme';
 import { TABS_CLASS_PREFIX } from './constants';
 
 export const Tabs: FunctionComponent<TabsPropsType> = forwardRef(function Tabs(
-    {
-        children,
-        className,
-        classNames,
-        defaultActiveTab,
-        disabled,
-        onSwitch,
-        wide,
-    },
+    { children, className, defaultActiveTab, disabled, onSwitch, wide },
     ref,
 ) {
     const theme = useComponentTheme(TABS_CLASS_PREFIX, tabsDefaultTheme);
@@ -41,7 +33,6 @@ export const Tabs: FunctionComponent<TabsPropsType> = forwardRef(function Tabs(
     const classOverride = useTabsClassName(
         TABS_CLASS_PREFIX,
         className,
-        classNames,
         disabled,
     );
 

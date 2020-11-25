@@ -5,18 +5,21 @@ import {
     withKnobs,
     // eslint-disable-next-line import/no-unresolved
 } from '@storybook/addon-knobs';
-import styled from 'styled-components';
+import { WarningIcon } from '@deliveryhero/armor-icons';
 
+import styled from 'styled-components';
 import {
     Button,
     Box,
     FormFieldMessage,
     FormField,
     FormFieldTooltip,
+    Tag,
 } from '../..';
 import { loremIpsum } from '../../../helpers/LoremIpsum';
 import { TextInput } from '../TextInput';
 import { GroupHelper } from '../../../helpers/GroupHelper';
+import { spacing } from '../../../system/mixins';
 
 export default {
     title: 'Components/TextInput',
@@ -592,3 +595,37 @@ export const AllOfThem = () => (
         </Box>
     </Box>
 );
+
+const AraraTagTextInput = styled(TextInput)`
+    padding-right: ${spacing(2)};
+
+    .TextInput-InnerContainer {
+        flex-wrap: wrap;
+        align-items: baseline;
+    }
+
+    .TextInput-Input {
+        padding-right: ${spacing(1)};
+        max-width: ${spacing(50)};
+    }
+`;
+
+const AraraTag = styled(Tag)`
+    margin-bottom: ${spacing(2)};
+    margin-left: ${spacing(2)};
+`;
+
+export const AraraTagInput = () => {
+    return (
+        <AraraTagTextInput
+            minHeight={30}
+            enableFocusOnRootClick
+            after={
+                <>
+                    <AraraTag>mail@email.ru</AraraTag>
+                    <AraraTag>support@google.com</AraraTag>
+                </>
+            }
+        />
+    );
+};

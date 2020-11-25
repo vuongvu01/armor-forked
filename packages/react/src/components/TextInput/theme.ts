@@ -27,6 +27,9 @@ export const textInputDefaultTheme = {
             borderColor: '$color.neutral.04',
         },
     },
+    InnerContainer: {
+        base: {},
+    },
     Input: {
         base: {
             $typography: 'paragraphMedium',

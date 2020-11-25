@@ -1,5 +1,8 @@
 import { HTMLAttributes } from 'react';
-import { StylePropsType, PropsWithNodeStylePropsType } from '../../type';
+import {
+    ComponentStylePropsType,
+    ComponentElementStylePropsType,
+} from '../../type';
 import { Indexed } from '../../../type';
 import { UseTableRowType } from './utils/type';
 import { HeightAttributesType } from '../../../system/attributes';
@@ -12,15 +15,12 @@ type TableRowEffectivePropsType = Indexed<{
 
 /* TableRow component prop type */
 export type TableRowPropsType = TableRowEffectivePropsType &
-    StylePropsType<{
-        Root?: string;
-        // add custom className for other nodes here
-    }>;
+    ComponentStylePropsType;
 
 /* TableRow Root node prop type */
-export type TableRowRootPropsType = PropsWithNodeStylePropsType<
-    TableRowEffectivePropsType & Pick<UseTableRowType, 'isHeader'>
->;
+export type TableRowRootPropsType = TableRowEffectivePropsType &
+    Pick<UseTableRowType, 'isHeader'> &
+    ComponentElementStylePropsType;
 
 export type TableRowCellsPropTypes = Pick<
     UseTableRowType,

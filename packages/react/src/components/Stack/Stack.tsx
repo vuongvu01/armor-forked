@@ -11,7 +11,6 @@ export const Stack: FunctionComponent<StackPropsType> = forwardRef(
     function Stack(
         {
             className,
-            classNames,
             reverse,
             justifyContent,
             alignItems,
@@ -22,11 +21,7 @@ export const Stack: FunctionComponent<StackPropsType> = forwardRef(
     ) {
         const theme = useTheme();
 
-        const classOverride = useStackClassName(
-            STACK_CLASS_PREFIX,
-            className,
-            classNames,
-        );
+        const classOverride = useStackClassName(STACK_CLASS_PREFIX, className);
 
         return (
             <Flex

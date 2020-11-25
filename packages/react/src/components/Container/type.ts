@@ -1,5 +1,8 @@
 import { HTMLAttributes } from 'react';
-import { StylePropsType, NodeStylePropsTypeNoStyles } from '../type';
+import {
+    ComponentStylePropsType,
+    ComponentElementStylePropsType,
+} from '../type';
 import {
     PaddingAttributesType,
     MarginAttributesType,
@@ -17,11 +20,8 @@ type ContainerEffectivePropsType = Indexed<{
 
 /* Container component prop type */
 export type ContainerPropsType = ContainerEffectivePropsType &
-    StylePropsType<{
-        Root?: string;
-        // add custom className for other nodes here
-    }>;
+    ComponentStylePropsType;
 
 /* Container Root node prop type */
 export type ContainerRootPropsType = ContainerEffectivePropsType &
-    NodeStylePropsTypeNoStyles;
+    ComponentElementStylePropsType;

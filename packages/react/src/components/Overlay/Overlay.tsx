@@ -15,7 +15,6 @@ export const Overlay: FunctionComponent<OverlayPropsType> = ({
     disableOverlay,
     onClick,
     open,
-    styles,
     ...restProps
 }) => {
     const theme = useComponentTheme(OVERLAY_CLASS_PREFIX, overlayDefaultTheme);
@@ -29,7 +28,6 @@ export const Overlay: FunctionComponent<OverlayPropsType> = ({
             display={display}
             effectToggle={effectToggle}
             onClick={onClick}
-            styles={styles}
             theme={theme}
         />
     ) : null;

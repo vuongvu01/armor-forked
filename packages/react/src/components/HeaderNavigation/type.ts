@@ -2,12 +2,12 @@ import { HTMLAttributes, ReactNode } from 'react';
 
 import { MarginAttributesType } from '../../system/attributes';
 import { Indexed, ScalarType } from '../../type';
-import { ClassNamesType, NodeStylePropsType } from '../type';
+import { ComponentElementStylePropsType } from '../type';
 import { JustifyContentType } from '../Flex/type';
 
 export type ClassBasedOnComponentType = {
     className?: string;
-    classNames?: ClassNamesType;
+
     classPrefix: string;
     component: string;
 };
@@ -46,13 +46,13 @@ type HeaderNavigationEffectivePropsType = Indexed<{
 export type HeaderNavigationPropsType = HeaderNavigationEffectivePropsType;
 
 export type HeaderNavigationRootPropsType = HeaderNavigationEffectivePropsType &
-    NodeStylePropsType<HeaderNavigationEffectivePropsType>;
+    ComponentElementStylePropsType;
 
 export type HeaderNavigationTitleRootPropsType = HeaderNavigationEffectivePropsType &
-    NodeStylePropsType<HeaderNavigationEffectivePropsType>;
+    ComponentElementStylePropsType;
 
 export type HeaderNavigationSelectorRootPropsType = HeaderNavigationEffectivePropsType &
-    NodeStylePropsType<HeaderNavigationEffectivePropsType>;
+    ComponentElementStylePropsType;
 
 export type NavigationPackItemPropsType = HeaderNavigationEffectivePropsType &
-    NodeStylePropsType<HeaderNavigationEffectivePropsType>;
+    ComponentElementStylePropsType;

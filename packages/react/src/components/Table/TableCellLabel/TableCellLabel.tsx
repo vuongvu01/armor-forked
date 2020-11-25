@@ -12,7 +12,7 @@ import {
 } from './constants';
 
 export const TableCellLabel: FunctionComponent<TableCellLabelPropsType> = forwardRef(
-    function TableCellLabel({ className, classNames, ...restProps }, ref) {
+    function TableCellLabel({ className, ...restProps }, ref) {
         const theme = useComponentTheme(
             TABLE_CELL_LABEL_CLASS_PREFIX,
             tableCellLabelDefaultTheme,
@@ -20,7 +20,6 @@ export const TableCellLabel: FunctionComponent<TableCellLabelPropsType> = forwar
         const classNameComponents = useTableCellLabelClassNames(
             TABLE_CELL_LABEL_CLASS_PREFIX,
             className,
-            classNames,
         );
 
         return (

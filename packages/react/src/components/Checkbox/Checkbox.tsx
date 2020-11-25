@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { useComponentTheme } from '../../utils/hooks';
 import SelectorLabel from '../SelectorLabel';
-import { useCheckboxClassName } from './utils';
+import { useCheckboxClassName } from './utils/useCheckboxClassName';
 import { CheckboxInput, CheckboxCheckmark, CheckboxRoot } from './style';
 import { CheckboxPropsType } from './type';
 import { checkboxDefaultTheme } from './theme';
@@ -36,7 +36,6 @@ export const Checkbox: FunctionComponent<CheckboxPropsType> = forwardRef(
         const classOverride = useCheckboxClassName(
             CHECKBOX_CLASS_PREFIX,
             className,
-            classNames,
             disabled,
             checked,
             error,

@@ -1,28 +1,20 @@
 import { useMemo } from 'react';
 
-import { ClassNamesType } from '../../type';
 import {
     ClassBasedOnComponentType,
     TagDeleteIconModeType,
     TagType,
 } from '../type';
-import { makeBEM, makeClassName } from '../../../utils';
+import { appendClassName, makeBEM } from '../../../utils';
 import isStatusTag from './isStatusTag';
 
 const getClassNameByComponent = ({
     component,
     classPrefix,
-    className,
-    classNames,
     deleteOption,
     type,
 }: ClassBasedOnComponentType) => {
-    const baseClassNames = makeClassName(
-        classPrefix,
-        className,
-        classNames,
-        component,
-    );
+    const baseClassNames = makeBEM(classPrefix, component);
 
     const stateClassNames: string[] = [];
 
@@ -41,29 +33,27 @@ const getClassNameByComponent = ({
 const useTagClassName = (
     classPrefix: string,
     className?: string,
-    classNames?: ClassNamesType,
     deleteOption?: TagDeleteIconModeType,
     type?: TagType,
 ) =>
     useMemo(() => {
         return {
-            Root: getClassNameByComponent({
-                component: 'Root',
-                classPrefix,
+            Root: appendClassName(
+                getClassNameByComponent({
+                    component: 'Root',
+                    classPrefix,
+                    deleteOption,
+                    type,
+                }),
                 className,
-                classNames,
-                deleteOption,
-                type,
-            }),
+            ),
             CloseIconContainer: getClassNameByComponent({
                 component: 'CloseIconContainer',
                 classPrefix,
-                className,
-                classNames,
                 deleteOption,
                 type,
             }),
         };
-    }, [classPrefix, className, classNames, type, deleteOption]);
+    }, [classPrefix, className, type, deleteOption]);
 
 export default useTagClassName;

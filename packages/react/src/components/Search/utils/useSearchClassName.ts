@@ -1,22 +1,14 @@
 import { useMemo } from 'react';
 
-import { ClassNamesType } from '../../type';
 import { ClassBasedOnComponentType } from '../type';
-import { makeBEM, makeClassName } from '../../../utils';
+import { appendClassName, makeBEM } from '../../../utils';
 
 const getClassNameByComponent = ({
     component,
     classPrefix,
-    className,
-    classNames,
     disabled,
 }: ClassBasedOnComponentType) => {
-    const baseClassNames = makeClassName(
-        classPrefix,
-        className,
-        classNames,
-        component,
-    );
+    const baseClassNames = makeBEM(classPrefix, component);
 
     const stateClassNames: string[] = [];
 
@@ -30,66 +22,52 @@ const getClassNameByComponent = ({
 export const useSearchClassName = (
     classPrefix: string,
     className?: string,
-    classNames?: ClassNamesType,
     disabled?: boolean,
 ) =>
     useMemo(() => {
         return {
-            Root: getClassNameByComponent({
-                component: 'Root',
-                classPrefix,
+            Root: appendClassName(
+                getClassNameByComponent({
+                    component: 'Root',
+                    classPrefix,
+                    disabled,
+                }),
                 className,
-                classNames,
-                disabled,
-            }),
+            ),
             SuggestionsContainer: getClassNameByComponent({
                 component: 'SuggestionsContainer',
                 classPrefix,
-                className,
-                classNames,
                 disabled,
             }),
             SuggestionsItem: getClassNameByComponent({
                 component: 'SuggestionsItem',
                 classPrefix,
-                className,
-                classNames,
                 disabled,
             }),
             SuggestionsItemIcon: getClassNameByComponent({
                 component: 'SuggestionsItemIcon',
                 classPrefix,
-                className,
-                classNames,
                 disabled,
             }),
             SuggestionsItemLabel: getClassNameByComponent({
                 component: 'SuggestionsItemLabel',
                 classPrefix,
-                className,
-                classNames,
                 disabled,
             }),
             SuggestionsItemAction: getClassNameByComponent({
                 component: 'SuggestionsItemAction',
                 classPrefix,
-                className,
-                classNames,
                 disabled,
             }),
             SuggestionsList: getClassNameByComponent({
                 component: 'SuggestionsList',
                 classPrefix,
-                className,
-                classNames,
                 disabled,
             }),
             TextInput: getClassNameByComponent({
                 component: 'TextInput',
                 classPrefix,
-                className,
-                classNames,
                 disabled,
             }),
         };
-    }, [classPrefix, className, classNames, disabled]);
+    }, [classPrefix, className, disabled]);

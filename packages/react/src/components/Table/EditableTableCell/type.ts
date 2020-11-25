@@ -1,8 +1,7 @@
 import { HTMLAttributes } from 'react';
 import {
-    StylesFunctionOrStubType,
-    StylePropsType,
-    PropsWithNodeStylePropsType,
+    ComponentStylePropsType,
+    ComponentElementStylePropsType,
 } from '../../type';
 import { MarginAttributesType } from '../../../system/attributes';
 import { Indexed } from '../../../type';
@@ -16,20 +15,8 @@ type EditableTableCellEffectivePropsType = Indexed<{
 
 /* EditableTableCell component prop type */
 export type EditableTableCellPropsType = EditableTableCellEffectivePropsType &
-    StylePropsType<
-        {
-            Root?: string;
-            // add custom className for other nodes here
-        },
-        EditableTableCellStylesPropsType
-    >;
-
-export type EditableTableCellStylesPropsType = {
-    Root?: StylesFunctionOrStubType<EditableTableCellEffectivePropsType>;
-    // add style properties for other nodes here
-};
+    ComponentStylePropsType;
 
 /* EditableTableCell Root node prop type */
-export type EditableTableCellRootPropsType = PropsWithNodeStylePropsType<
-    EditableTableCellEffectivePropsType
->;
+export type EditableTableCellRootPropsType = EditableTableCellEffectivePropsType &
+    ComponentElementStylePropsType;

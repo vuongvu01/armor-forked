@@ -11,7 +11,7 @@ import { useTableRow } from './utils/useTableRow';
 import { TableRowCells } from './TableRowCells';
 
 export const TableRow: FunctionComponent<TableRowPropsType> = forwardRef(
-    function TableRow({ className, classNames, children, ...restProps }, ref) {
+    function TableRow({ className, children, ...restProps }, ref) {
         const theme = useComponentTheme(
             TABLE_ROW_CLASS_PREFIX,
             tableRowDefaultTheme,
@@ -19,7 +19,6 @@ export const TableRow: FunctionComponent<TableRowPropsType> = forwardRef(
         const classNameComponents = useTableRowClassNames(
             TABLE_ROW_CLASS_PREFIX,
             className,
-            classNames,
         );
 
         const {

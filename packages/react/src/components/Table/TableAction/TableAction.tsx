@@ -9,7 +9,7 @@ import { tableActionDefaultTheme } from './theme';
 import { tableActionRootTestId, TABLE_ACTION_CLASS_PREFIX } from './constants';
 
 export const TableAction: FunctionComponent<TableActionPropsType> = forwardRef(
-    function TableAction({ className, classNames, ...restProps }, ref) {
+    function TableAction({ className, ...restProps }, ref) {
         const theme = useComponentTheme(
             TABLE_ACTION_CLASS_PREFIX,
             tableActionDefaultTheme,
@@ -17,7 +17,6 @@ export const TableAction: FunctionComponent<TableActionPropsType> = forwardRef(
         const classNameComponents = useTableActionClassNames(
             TABLE_ACTION_CLASS_PREFIX,
             className,
-            classNames,
         );
 
         return (

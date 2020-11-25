@@ -26,7 +26,6 @@ import { headerNavigationMenuContentBodyOptionsTheme } from './theme';
 
 export const HeaderNavigationMenuContentBodyOptions: FunctionComponent<HeaderNavigationMenuContentBodyOptionsPropsType> = ({
     className,
-    classNames,
     options,
     selectedValue,
     onOptionSelect,
@@ -44,7 +43,6 @@ export const HeaderNavigationMenuContentBodyOptions: FunctionComponent<HeaderNav
     const classOverride = useHeaderNavigationMenuContentBodyOptionsClassName(
         HEADER_NAVIGATION_MENU_CONTENT_BODY_OPTIONS_CLASS_PREFIX,
         className,
-        classNames,
     );
 
     const handleClick = ({

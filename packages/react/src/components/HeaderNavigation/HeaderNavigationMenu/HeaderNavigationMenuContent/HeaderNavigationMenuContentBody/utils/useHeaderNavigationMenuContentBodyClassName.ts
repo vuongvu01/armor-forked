@@ -1,17 +1,15 @@
 import { useMemo } from 'react';
 
-import { ClassNamesType } from '../../../../../type';
-import { makeClassName } from '../../../../../../utils';
+import { makeRootClassName } from '../../../../../../utils';
 
 const useHeaderNavigationMenuContentBodyClassName = (
     classPrefix: string,
     className?: string,
-    classNames?: ClassNamesType,
 ) =>
     useMemo(() => {
         return {
-            Root: makeClassName(classPrefix, className, classNames, 'Root'),
+            Root: makeRootClassName(classPrefix, className),
         };
-    }, [classPrefix, className, classNames]);
+    }, [classPrefix, className]);
 
 export default useHeaderNavigationMenuContentBodyClassName;

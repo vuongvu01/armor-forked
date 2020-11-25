@@ -1,18 +1,17 @@
 import React, { HTMLAttributes } from 'react';
 
-import { ClassNamesType, NodeStylePropsType } from '../../type';
+import { ComponentElementStylePropsType } from '../../type';
 import { SearchQueryType } from '../type';
 
 export type ClassBasedOnComponentType = {
     className?: string;
-    classNames?: ClassNamesType;
+
     classPrefix: string;
     component: string;
     disabled?: boolean;
 };
 
 export type SearchClearActionPropsType = {
-    classNames?: ClassNamesType;
     disabled?: boolean;
     disableClearAction?: boolean;
     handleClearQuery?: (event: React.MouseEvent<HTMLDivElement>) => void;
@@ -20,7 +19,7 @@ export type SearchClearActionPropsType = {
 } & HTMLAttributes<HTMLElement>;
 
 export type ClearIconContainerPropsType = SearchClearActionPropsType &
-    NodeStylePropsType<SearchClearActionPropsType>;
+    ComponentElementStylePropsType;
 
 export type SearchInputClearIconPropsType = SearchClearActionPropsType &
-    NodeStylePropsType<SearchClearActionPropsType>;
+    ComponentElementStylePropsType;

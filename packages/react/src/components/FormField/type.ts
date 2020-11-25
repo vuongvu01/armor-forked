@@ -3,9 +3,8 @@ import { HTMLAttributes } from 'react';
 import { MarginAttributesType, WidthAttributesType } from '../../system';
 import { Indexed } from '../../type';
 import {
-    StylesFunctionOrStubType,
-    StylePropsType,
-    PropsWithNodeStylePropsType,
+    ComponentStylePropsType,
+    ComponentElementStylePropsType,
 } from '../type';
 
 type FormFieldEffectivePropsType = Indexed<{
@@ -18,20 +17,8 @@ type FormFieldEffectivePropsType = Indexed<{
 
 /* FormField component prop type */
 export type FormFieldPropsType = FormFieldEffectivePropsType &
-    StylePropsType<
-        {
-            Root?: string;
-            // add custom className for other nodes here
-        },
-        FormFieldStylesPropsType
-    >;
-
-export type FormFieldStylesPropsType = {
-    Root?: StylesFunctionOrStubType<FormFieldEffectivePropsType>;
-    // add style properties for other nodes here
-};
+    ComponentStylePropsType;
 
 /* FormField Root node prop type */
-export type FormFieldRootPropsType = PropsWithNodeStylePropsType<
-    FormFieldEffectivePropsType
->;
+export type FormFieldRootPropsType = FormFieldEffectivePropsType &
+    ComponentElementStylePropsType;

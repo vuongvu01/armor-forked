@@ -17,6 +17,7 @@ export const useOnValueUpdate = (
     setInternalValue: (nextValue: DropdownInternalValueType) => void,
     onSelect?: DropDownOnSelectType,
     onChange?: DropdownOnChangeType,
+    name?: string,
 ) =>
     useCallback<DropdownOnValueUpdateType>(
         (
@@ -50,6 +51,7 @@ export const useOnValueUpdate = (
                 onChange({
                     target: {
                         value: denormalizeValue(nextValue, multiple),
+                        name,
                     },
                 });
             }

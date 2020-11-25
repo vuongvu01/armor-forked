@@ -9,7 +9,7 @@ import { tableFootDefaultTheme } from './theme';
 import { tableFootRootTestId, TABLE_FOOT_CLASS_PREFIX } from './constants';
 
 export const TableFoot: FunctionComponent<TableFootPropsType> = forwardRef(
-    function TableFoot({ className, classNames, ...restProps }, ref) {
+    function TableFoot({ className, ...restProps }, ref) {
         const theme = useComponentTheme(
             TABLE_FOOT_CLASS_PREFIX,
             tableFootDefaultTheme,
@@ -17,7 +17,6 @@ export const TableFoot: FunctionComponent<TableFootPropsType> = forwardRef(
         const classNameComponents = useTableFootClassNames(
             TABLE_FOOT_CLASS_PREFIX,
             className,
-            classNames,
         );
 
         return (

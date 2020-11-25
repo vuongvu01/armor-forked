@@ -1,4 +1,4 @@
-import React, { MutableRefObject, useEffect } from 'react';
+import { MutableRefObject, useEffect } from 'react';
 
 function useDetectClickOutsideComponent(
     ref: MutableRefObject<unknown>,

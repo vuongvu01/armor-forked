@@ -2,26 +2,15 @@ import React, { HTMLAttributes } from 'react';
 
 import { MarginAttributesType } from '../../system/attributes';
 import { Indexed } from '../../type';
-import { ClassNamesType, NodeStylePropsType } from '../type';
+import { ComponentElementStylePropsType } from '../type';
 
 export type ClassBasedOnComponentType = {
     component: string;
     classPrefix: string;
     className?: string;
-    classNames?: ClassNamesType;
     defaultExpanded?: boolean;
     disabled?: boolean;
     expanded?: boolean;
-};
-
-export type ClassOverrideType = {
-    Root?: string;
-    Header?: string;
-    HeaderExpansionIndicator?: string;
-    Content?: string;
-    HeaderTitle?: string;
-    IconContainer?: string;
-    Icon?: string;
 };
 
 export type AccordionContextType = {
@@ -46,4 +35,4 @@ export type AccordionEffectivePropsType = Indexed<{
 export type AccordionPropsType = AccordionEffectivePropsType;
 
 export type AccordionRootPropsType = AccordionEffectivePropsType &
-    NodeStylePropsType<AccordionEffectivePropsType>;
+    ComponentElementStylePropsType;

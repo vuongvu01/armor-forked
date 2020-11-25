@@ -2,7 +2,8 @@ import React, { FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 import { useComponentTheme } from '../../utils/hooks';
 
-import { getTagName, useTypographyClassNames } from './utils';
+import { getTagName } from './utils/getTagName';
+import { useTypographyClassNames } from './utils/useTypographyClassNames';
 import { TypographyStyle } from './style';
 import { TypographyPropsType } from './type';
 import { typographyDefaultTheme } from './theme';
@@ -10,7 +11,6 @@ import { TYPOGRAPHY_CLASS_PREFIX } from './constants';
 
 export const Typography: FunctionComponent<TypographyPropsType> = ({
     className,
-    classNames,
     children,
     disabled,
     error,
@@ -24,7 +24,6 @@ export const Typography: FunctionComponent<TypographyPropsType> = ({
     const classNameComponents = useTypographyClassNames(
         TYPOGRAPHY_CLASS_PREFIX,
         className,
-        classNames,
         restProps,
     );
 

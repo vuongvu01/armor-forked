@@ -79,7 +79,6 @@ export const TooltipRoot = styled.div.withConfig({
     ${({ theme }) => theme.componentOverrides.Tooltip.Root.base}
     ${getRootDynamicStyle}
     ${sizeStyle}
-    ${(props: TooltipRootPropsType) => props.styles(props)}
 `;
 
 export const TooltipArrow = styled.div.withConfig({
@@ -98,12 +97,10 @@ export const TooltipArrow = styled.div.withConfig({
         content: '';
         transition: transform 200s ease-out;
         visibility: ${props => (props.hide ? 'hidden' : 'visible')};
-        transform: translateX(${props =>
-            props.hide ? 10 : 0}px) rotate(45deg);
+        transform: translateX(${props => (props.hide ? 10 : 0)}px) rotate(45deg);
         transform-origin: center;
     }
 
     ${({ theme }) => theme.componentOverrides.Tooltip.Arrow.base}
     ${getArrowDynamicStyle}
-    ${(props: TooltipArrowPropsType) => props.styles(props)}
 `;

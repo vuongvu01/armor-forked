@@ -2,4 +2,7 @@ module.exports = {
     developmentBranch: 'dev',
     releaseBranch: 'master',
     ticketIdPrefix: 'LD-',
+    useDraftPR: true,
+    ticketViewURLTemplate: 'https://jira.deliveryhero.com/browse/#TICKET_ID#/',
+    branchAutoPush: true,
 };

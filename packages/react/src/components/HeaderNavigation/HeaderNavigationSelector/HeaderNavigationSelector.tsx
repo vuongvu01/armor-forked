@@ -18,7 +18,6 @@ export const HeaderNavigationSelector: FunctionComponent<HeaderNavigationSelecto
     function HeaderNavigationSelector(
         {
             className,
-            classNames,
             navigationSelectorParams,
             onOptionSelect,
             separator,
@@ -34,7 +33,6 @@ export const HeaderNavigationSelector: FunctionComponent<HeaderNavigationSelecto
         const classOverride = useHeaderNavigationSelectorClassName(
             HEADER_NAVIGATION_SELECTOR_CLASS_PREFIX,
             className,
-            classNames,
         );
 
         // todo: use spreads here where possible

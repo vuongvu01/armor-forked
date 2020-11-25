@@ -1,14 +1,9 @@
 import { useMemo } from 'react';
-import { makeBEM, makeClassName } from '../../../utils';
-import { ClassNamesType } from '../../type';
+import { makeRootClassName } from '../../../utils';
 
-export const useMenuClassNames = (
-    classPrefix: string,
-    className?: string,
-    classNames?: ClassNamesType,
-) =>
+export const useMenuClassNames = (classPrefix: string, className?: string) =>
     useMemo(() => {
         return {
-            Root: makeClassName(classPrefix, className, classNames),
+            Root: makeRootClassName(classPrefix, className),
         };
-    }, [classPrefix, className, classNames]);
+    }, [classPrefix, className]);

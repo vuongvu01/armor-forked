@@ -6,7 +6,6 @@ import {
     extendChildrenWithProps,
     extractContentSections,
     useSideSheetClassName,
-    useSideSheetStylesOverride,
 } from './utils';
 import { SideSheetPropsType } from './type';
 import { sideSheetDefaultTheme } from './theme';
@@ -17,7 +16,7 @@ import { Overlay } from '../Overlay';
 import { CloseIcon } from '../../icons';
 import {
     iconStyle,
-    SideSheetRoot,
+    SideSheetBase,
     SideSheetContent,
     SideSheetHeaderCloseButtonContainer,
     SideSheetHeaderCloseButtonContent,
@@ -36,7 +35,6 @@ export const SideSheet: FunctionComponent<SideSheetPropsType> = forwardRef(
         {
             children,
             className,
-            classNames,
             disableEffects,
             disableCloseByEscape,
             disableOverlay,
@@ -44,7 +42,6 @@ export const SideSheet: FunctionComponent<SideSheetPropsType> = forwardRef(
             isFixed,
             onClose,
             open,
-            styles,
             wide,
             zIndex,
             ...restProps
@@ -57,12 +54,9 @@ export const SideSheet: FunctionComponent<SideSheetPropsType> = forwardRef(
         );
         const [display, effectToggle] = useDisplay(open);
 
-        const stylesOverride = useSideSheetStylesOverride(styles);
-
         const classOverride = useSideSheetClassName(
             SIDE_SHEET_CLASS_PREFIX,
             className,
-            classNames,
             disableOverlay,
             wide,
         );
@@ -79,6 +73,7 @@ export const SideSheet: FunctionComponent<SideSheetPropsType> = forwardRef(
 
         return (
             <Modal
+                className={classOverride.Root}
                 disableBackdrop={disableOverlay}
                 disableCloseByEscape={disableCloseByEscape}
                 onClose={onClose}
@@ -91,13 +86,12 @@ export const SideSheet: FunctionComponent<SideSheetPropsType> = forwardRef(
                     disableOverlay={disableOverlay}
                     open={display}
                     effectToggle={effectToggle}
-                    styles={stylesOverride.Overlay}
                     theme={theme}
                 />
-                <SideSheetRoot
-                    data-testid={sideSheetRoot}
+                <SideSheetBase
                     {...restProps}
-                    className={classOverride.Root}
+                    // data-testid={sideSheetRoot}
+                    className={classOverride.Base}
                     disableEffects={disableEffects}
                     display={display}
                     effectToggle={effectToggle}
@@ -139,7 +133,7 @@ export const SideSheet: FunctionComponent<SideSheetPropsType> = forwardRef(
                         {body}
                         {footer}
                     </SideSheetContent>
-                </SideSheetRoot>
+                </SideSheetBase>
             </Modal>
         );
     },

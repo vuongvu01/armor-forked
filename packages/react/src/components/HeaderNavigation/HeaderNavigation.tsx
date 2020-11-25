@@ -18,7 +18,6 @@ export const HeaderNavigation: FunctionComponent<HeaderNavigationPropsType> = fo
     function HeaderNavigation(
         {
             className,
-            classNames,
             isMenuExpanded,
             navigationMenuTitle,
             navigationMenuContent,
@@ -41,7 +40,6 @@ export const HeaderNavigation: FunctionComponent<HeaderNavigationPropsType> = fo
         const classOverride = useHeaderNavigationClassName(
             HEADER_NAVIGATION_CLASS_PREFIX,
             className,
-            classNames,
         );
 
         return (

@@ -25,7 +25,6 @@ export const HeaderNavigationMenu: FunctionComponent<HeaderNavigationMenuPropsTy
     function HeaderNavigationMenu(
         {
             className,
-            classNames,
             headerTitle = <DHLogoImage />,
             headerContent,
             isMenuExpanded,
@@ -42,7 +41,6 @@ export const HeaderNavigationMenu: FunctionComponent<HeaderNavigationMenuPropsTy
         const classOverride = useHeaderNavigationMenuClassName(
             HEADER_NAVIGATION_MENU_CLASS_PREFIX,
             className,
-            classNames,
         );
 
         const {

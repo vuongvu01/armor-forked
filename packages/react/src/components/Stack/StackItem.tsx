@@ -10,7 +10,6 @@ export const StackItem: FunctionComponent<StackItemPropsType> = forwardRef(
     function StackItem(
         {
             className,
-            classNames,
             flexGrow,
             flexShrink,
             flexBasis,
@@ -23,7 +22,6 @@ export const StackItem: FunctionComponent<StackItemPropsType> = forwardRef(
         const classOverride = useStackItemClassName(
             STACK_ITEM_CLASS_PREFIX,
             className,
-            classNames,
         );
 
         return (

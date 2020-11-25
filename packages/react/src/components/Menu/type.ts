@@ -1,5 +1,8 @@
 import { HTMLAttributes } from 'react';
-import { StylePropsType, NodeStylePropsTypeNoStyles } from '../type';
+import {
+    ComponentStylePropsType,
+    ComponentElementStylePropsType,
+} from '../type';
 import {
     MarginAttributesType,
     PaddingAttributesType,
@@ -19,12 +22,8 @@ type MenuEffectivePropsType = Indexed<{
     MarginAttributesType;
 
 /* Menu component prop type */
-export type MenuPropsType = MenuEffectivePropsType &
-    StylePropsType<{
-        Root?: string;
-        // add custom className for other nodes here
-    }>;
+export type MenuPropsType = MenuEffectivePropsType & ComponentStylePropsType;
 
 /* Menu Root node prop type */
 export type MenuRootPropsType = MenuEffectivePropsType &
-    NodeStylePropsTypeNoStyles;
+    ComponentElementStylePropsType;

@@ -3,10 +3,8 @@ import { HTMLAttributes, ReactNode } from 'react';
 import { MarginAttributesType } from '../../system';
 import { Indexed } from '../../type';
 import {
-    StylesFunctionOrStubType,
-    StylePropsType,
-    NodeStylePropsType,
-    PropsWithNodeStylePropsType,
+    ComponentStylePropsType,
+    ComponentElementStylePropsType,
 } from '../type';
 
 export type MessageLevelType = 'error' | 'warning' | 'info' | 'success';
@@ -29,60 +27,36 @@ type MessageEffectivePropsType = Indexed<{
 
 /* Message component prop type */
 export type MessagePropsType = MessageEffectivePropsType &
-    StylePropsType<
-        {
-            Root?: string;
-            Content?: string;
-            Icon?: string;
-            CloseButton?: string;
-            Central?: string;
-            Actions?: string;
-            Extra?: string;
-            // add custom className for other nodes here
-        },
-        MessageStylesPropsType
-    >;
-
-export type MessageStylesPropsType = {
-    Root?: StylesFunctionOrStubType<MessageEffectivePropsType>;
-    Content?: StylesFunctionOrStubType;
-    Icon?: StylesFunctionOrStubType;
-    CloseButton?: StylesFunctionOrStubType;
-    Central?: StylesFunctionOrStubType;
-    Actions?: StylesFunctionOrStubType;
-    Extra?: StylesFunctionOrStubType;
-    // add style properties for other nodes here
-};
+    ComponentStylePropsType;
 
 /* Message Root node prop type */
 export type MessageRootPropsType = MessageEffectivePropsType &
-    NodeStylePropsType<MessageEffectivePropsType>;
+    ComponentElementStylePropsType;
 
 /* Message Content node prop type */
-export type MessageContentPropsType = NodeStylePropsType;
+export type MessageContentPropsType = ComponentElementStylePropsType;
 
 /* Message Actions node prop type */
-export type MessageActionsPropsType = NodeStylePropsType;
+export type MessageActionsPropsType = ComponentElementStylePropsType;
 
 /* Message Extra node prop type */
-export type MessageExtraPropsType = NodeStylePropsType;
+export type MessageExtraPropsType = ComponentElementStylePropsType;
 
 /* Message Icon node prop type */
-export type MessageIconPropsType = PropsWithNodeStylePropsType<
-    MessageEffectivePropsLevelType
->;
+export type MessageIconPropsType = MessageEffectivePropsLevelType &
+    ComponentElementStylePropsType;
 
 /* Message CloseButton node prop type */
-export type MessageCloseButtonPropsType = NodeStylePropsType;
+export type MessageCloseButtonPropsType = ComponentElementStylePropsType;
 
 /* Message Central node prop type */
-export type MessageCentralPropsType = PropsWithNodeStylePropsType<
-    MessageEffectivePropsLevelType
->;
+export type MessageCentralPropsType = MessageEffectivePropsLevelType &
+    ComponentElementStylePropsType;
 
 export type MessageEffectivePropsLevelType = Pick<
     MessageEffectivePropsType,
     'level' | 'error' | 'warning' | 'info' | 'success'
 >;
+
 export type MessageEffectivePropsLevelAndThemeType = MessageEffectivePropsLevelType &
     Pick<MessageRootPropsType, 'theme'>;

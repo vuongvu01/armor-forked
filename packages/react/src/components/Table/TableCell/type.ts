@@ -1,5 +1,8 @@
 import { HTMLAttributes } from 'react';
-import { StylePropsType, PropsWithNodeStylePropsType } from '../../type';
+import {
+    ComponentStylePropsType,
+    ComponentElementStylePropsType,
+} from '../../type';
 import { Indexed } from '../../../type';
 import {
     ColorAttributesType,
@@ -31,15 +34,11 @@ type TableCellEffectivePropsType = Indexed<{
 
 /* TableCell component prop type */
 export type TableCellPropsType = TableCellEffectivePropsType &
-    StylePropsType<{
-        Root?: string;
-        // add custom className for other nodes here
-    }>;
+    ComponentStylePropsType;
 
 /* TableCell Root node prop type */
-export type TableCellRootPropsType = PropsWithNodeStylePropsType<
-    TableCellEffectivePropsType
->;
+export type TableCellRootPropsType = TableCellEffectivePropsType &
+    ComponentElementStylePropsType;
 
 export type TableCellContentAlignmentAttributesType = {
     contentAlignX?: 'left' | 'center' | 'right';

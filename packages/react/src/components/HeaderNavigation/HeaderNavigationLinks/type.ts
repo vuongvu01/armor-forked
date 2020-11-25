@@ -2,11 +2,11 @@ import { HTMLAttributes } from 'react';
 
 import { MarginAttributesType } from '../../../system/attributes';
 import { Indexed } from '../../../type';
-import { ClassNamesType, NodeStylePropsType } from '../../type';
+import { ComponentElementStylePropsType } from '../../type';
 
 export type ClassBasedOnComponentType = {
     className?: string;
-    classNames?: ClassNamesType;
+
     classPrefix: string;
     component: string;
 };
@@ -22,7 +22,7 @@ type HeaderNavigationLinksEffectivePropsType = Indexed<{
 export type HeaderNavigationLinksPropsType = HeaderNavigationLinksEffectivePropsType;
 
 export type HeaderNavigationLinksRootPropsType = HeaderNavigationLinksPropsType &
-    NodeStylePropsType<HeaderNavigationLinksPropsType>;
+    ComponentElementStylePropsType;
 
 export type HeaderNavigationLinksContextType = Indexed<
     Pick<

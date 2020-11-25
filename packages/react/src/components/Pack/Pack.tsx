@@ -7,22 +7,10 @@ import { PACK_CLASS_PREFIX, packRoot } from './constants';
 import { Flex } from '../Flex';
 
 export const Pack: FunctionComponent<PackPropsType> = forwardRef(function Pack(
-    {
-        className,
-        classNames,
-        reverse,
-        justifyContent,
-        alignItems,
-        flexWrap,
-        ...restProps
-    },
+    { className, reverse, justifyContent, alignItems, flexWrap, ...restProps },
     ref,
 ) {
-    const classOverride = usePackClassName(
-        PACK_CLASS_PREFIX,
-        className,
-        classNames,
-    );
+    const classOverride = usePackClassName(PACK_CLASS_PREFIX, className);
 
     return (
         <Flex

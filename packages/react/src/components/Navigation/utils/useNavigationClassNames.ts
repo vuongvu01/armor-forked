@@ -1,20 +1,12 @@
 import { useMemo } from 'react';
-import { makeClassName } from '../../../utils';
-import { ClassNamesType } from '../../type';
+import { makeRootClassName } from '../../../utils';
 
 export const useNavigationClassNames = (
     classPrefix: string,
     className?: string,
-    classNames?: ClassNamesType,
 ) =>
     useMemo(() => {
         return {
-            Root: makeClassName(classPrefix, className, classNames),
-            SubNode: makeClassName(
-                classPrefix,
-                className,
-                classNames,
-                'SubNode',
-            ),
+            Root: makeRootClassName(classPrefix, className),
         };
-    }, [classPrefix, className, classNames]);
+    }, [classPrefix, className]);

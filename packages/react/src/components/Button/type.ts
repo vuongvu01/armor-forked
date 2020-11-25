@@ -10,7 +10,10 @@ import {
     WidthAttributesType,
 } from '../../system';
 import { Indexed } from '../../type';
-import { StylePropsType, PropsWithNodeStylePropsType } from '../type';
+import {
+    ComponentStylePropsType,
+    ComponentElementStylePropsType,
+} from '../type';
 
 export type ButtonTagType = string | ComponentType<any>;
 
@@ -32,12 +35,8 @@ type ButtonEffectivePropsType = Indexed<{
 
 /* Button component prop type */
 export type ButtonPropsType = ButtonEffectivePropsType &
-    StylePropsType<{
-        Root?: string;
-        // add custom className for other nodes here
-    }>;
+    ComponentStylePropsType;
 
 /* Button Root node prop type */
-export type ButtonRootPropsType = PropsWithNodeStylePropsType<
-    ButtonEffectivePropsType
->;
+export type ButtonRootPropsType = ButtonEffectivePropsType &
+    ComponentElementStylePropsType;

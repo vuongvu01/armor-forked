@@ -57,11 +57,11 @@ export const MenuExpansionIndicatorPackItem = styled(PackItem)<
 export const MenuExpansionIndicator = styled(ExpansionIndicator)<
     HeaderNavigationMenuRootPropsType
 >`
-    .HeaderNavigationMenu-MenuExpansionIndicator.ExpansionIndicator-Content {
+    .ExpansionIndicator-Content {
         background-color: ${colorGrey05};
         width: 40px;
     }
-    .HeaderNavigationMenu-MenuExpansionIndicator.ExpansionIndicator-Icon {
+    .ExpansionIndicator-Icon {
         border-color: ${colorGrey50};
     }
 `;

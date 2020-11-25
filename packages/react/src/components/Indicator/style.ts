@@ -29,5 +29,4 @@ export const IndicatorRoot = styled.div.withConfig({
 
     ${getRootBaseStyle}
     ${marginAttributes}
-    ${(props: IndicatorRootPropsType) => props.styles(props)}
 `;

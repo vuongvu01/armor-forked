@@ -2,13 +2,10 @@ import React, { FunctionComponent, ReactElement, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useComponentTheme } from '../../utils/hooks';
 
-import {
-    useEventProxy,
-    usePopper,
-    useTooltipClassNames,
-    useTooltipStylesOverride,
-    validateChildren,
-} from './utils';
+import { validateChildren } from './utils/validateChildren';
+import { useTooltipClassNames } from './utils/useTooltipClassNames';
+import { usePopper } from './utils/usePopper';
+import { useEventProxy } from './utils/useEventProxy';
 import { TooltipRoot, TooltipArrow } from './style';
 import { TooltipPropsType } from './type';
 import { tooltipDefaultTheme } from './theme';
@@ -17,8 +14,6 @@ import { TOOLTIP_CLASS_PREFIX } from './constants';
 
 export const Tooltip: FunctionComponent<TooltipPropsType> = ({
     className,
-    classNames,
-    styles,
     children,
     content,
     align,
@@ -31,10 +26,8 @@ export const Tooltip: FunctionComponent<TooltipPropsType> = ({
     const classNameComponents = useTooltipClassNames(
         TOOLTIP_CLASS_PREFIX,
         className,
-        classNames,
         align,
     );
-    const stylesOverride = useTooltipStylesOverride(styles);
 
     const [hidden, setHidden] = useState(true);
     const { triggerReference, tooltipReference, arrowReference } = usePopper(
@@ -63,7 +56,6 @@ export const Tooltip: FunctionComponent<TooltipPropsType> = ({
                 {...restProps}
                 theme={theme}
                 className={classNameComponents.Root}
-                styles={stylesOverride.Root}
                 dark={dark}
                 error={error}
                 ref={tooltipReference}
@@ -73,7 +65,6 @@ export const Tooltip: FunctionComponent<TooltipPropsType> = ({
                 <TooltipArrow
                     theme={theme}
                     className={classNameComponents.Arrow}
-                    styles={stylesOverride.Arrow}
                     dark={dark}
                     error={error}
                     // @ts-ignore: fixme: LD-97

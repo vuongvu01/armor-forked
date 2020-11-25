@@ -2,9 +2,13 @@ import { ComponentType, HTMLAttributes } from 'react';
 import {
     ColorAttributesType,
     MarginAttributesType,
+    TextAlignmentAttributesType,
 } from '../../system/attributes';
 import { Indexed } from '../../type';
-import { StylePropsType, NodeStylePropsType } from '../type';
+import {
+    ComponentStylePropsType,
+    ComponentElementStylePropsType,
+} from '../type';
 
 export type TypographyTagType = string | ComponentType<any>;
 
@@ -23,15 +27,13 @@ type TypographyEffectivePropsType = Indexed<{
 }> &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
     ColorAttributesType &
-    MarginAttributesType;
+    MarginAttributesType &
+    TextAlignmentAttributesType;
 
 /* Typography component prop type */
 export type TypographyPropsType = TypographyEffectivePropsType &
-    StylePropsType<{
-        Root?: string;
-        // add custom className for other nodes here
-    }>;
+    ComponentStylePropsType;
 
 /* Typography Root node prop type */
 export type TypographyRootPropsType = TypographyEffectivePropsType &
-    NodeStylePropsType<TypographyEffectivePropsType>;
+    ComponentElementStylePropsType;

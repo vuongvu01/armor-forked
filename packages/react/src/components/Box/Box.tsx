@@ -1,28 +1,24 @@
 import React, { FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import { useClassName, useComponentTheme } from '../../utils/hooks';
+import { useComponentTheme } from '../../utils/hooks';
 import { BoxRoot } from './style';
 import { BoxPropsType } from './type';
-import { useStyleOverrideBox } from './utils';
 import { BOX_CLASS_PREFIX } from './constants';
+import { useBoxClassName } from './utils/useBoxClassName';
 
 export const Box: FunctionComponent<BoxPropsType> = ({
     className,
-    classNames,
-    styles,
     ...restProps
 }) => {
     const theme = useComponentTheme(BOX_CLASS_PREFIX);
-    const classNameRoot = useClassName(BOX_CLASS_PREFIX, className, classNames);
-    const stylesSafe = useStyleOverrideBox(styles);
+    const classNameComponents = useBoxClassName(BOX_CLASS_PREFIX, className);
 
     return (
         <BoxRoot
             {...restProps}
             theme={theme}
-            className={classNameRoot}
-            styles={stylesSafe.Root}
+            className={classNameComponents.Root}
         />
     );
 };

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { useComponentTheme } from '../../../../../utils/hooks';
 import { HeaderNavigationMenuContentBodyRoot } from './style';
 import { HeaderNavigationMenuContentBodyPropsType } from './type';
-import { HeaderNavigationMenuContentBodyOptions } from '../HeaderNavigationMenuContentBodyOptions/HeaderNavigationMenuContentBodyOptions';
+import { HeaderNavigationMenuContentBodyOptions } from '../HeaderNavigationMenuContentBodyOptions';
 import { useHeaderNavigationMenuContentBodyClassName } from './utils';
 import {
     HEADER_NAVIGATION_MENU_CONTENT_BODY_CLASS_PREFIX,
@@ -14,7 +14,6 @@ import { headerNavigationMenuContentBodyTheme } from './theme';
 
 export const HeaderNavigationMenuContentBody: FunctionComponent<HeaderNavigationMenuContentBodyPropsType> = ({
     className,
-    classNames,
     options,
     selectedValue,
     onOptionSelect,
@@ -28,7 +27,6 @@ export const HeaderNavigationMenuContentBody: FunctionComponent<HeaderNavigation
     const classOverride = useHeaderNavigationMenuContentBodyClassName(
         HEADER_NAVIGATION_MENU_CONTENT_BODY_CLASS_PREFIX,
         className,
-        classNames,
     );
 
     return (

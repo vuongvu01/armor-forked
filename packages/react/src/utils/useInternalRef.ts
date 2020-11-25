@@ -1,7 +1,8 @@
 import { MutableRefObject, useEffect } from 'react';
+import { ReferenceType } from '../type';
 
 export const useInternalRef = (
-    ref: ((instance: unknown) => void) | MutableRefObject<unknown> | null,
+    ref: ReferenceType,
     internalRef: MutableRefObject<unknown>,
 ) =>
     useEffect(() => {

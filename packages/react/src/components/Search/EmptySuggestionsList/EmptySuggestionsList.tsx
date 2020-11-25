@@ -13,13 +13,11 @@ import { EMPTY_SUGGESTIONS_LIST_CLASS_PREFIX } from './constants';
 
 export const EmptySuggestionsList: FunctionComponent<EmptySuggestionsListPropsType> = ({
     className,
-    classNames,
     theme,
 }) => {
     const classOverride = useEmptySuggestionsListClassName(
         EMPTY_SUGGESTIONS_LIST_CLASS_PREFIX,
         className,
-        classNames,
     );
 
     return (

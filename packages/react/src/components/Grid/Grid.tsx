@@ -12,7 +12,6 @@ import { gridTheme } from './theme';
 export const Grid: FunctionComponent<GridPropsType> = forwardRef(function Grid(
     {
         className,
-        classNames,
         gutterSpacing,
         gutterSpacingVertical,
         gutterSpacingHorizontal,
@@ -22,11 +21,7 @@ export const Grid: FunctionComponent<GridPropsType> = forwardRef(function Grid(
 ) {
     const theme = useComponentTheme(GRID_CLASS_PREFIX, gridTheme);
 
-    const classOverride = useGridClassName(
-        GRID_CLASS_PREFIX,
-        className,
-        classNames,
-    );
+    const classOverride = useGridClassName(GRID_CLASS_PREFIX, className);
 
     const contextValue = useMemo(
         () => ({

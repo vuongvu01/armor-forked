@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { useComponentTheme } from '../../utils/hooks';
 import SelectorLabel from '../SelectorLabel';
-import { useSwitchClassName } from './utils';
+import { useSwitchClassName } from './utils/useSwitchClassName';
 import { SwitchCheckboxInput, SwitchRoot, SwitchToggle } from './style';
 import { SwitchPropsType } from './type';
 import { switchDefaultTheme } from './theme';
@@ -15,7 +15,6 @@ export const Switch: FunctionComponent<SwitchPropsType> = forwardRef(
         {
             checked,
             className,
-            classNames,
             disabled,
             error,
             id: propsId,
@@ -34,7 +33,6 @@ export const Switch: FunctionComponent<SwitchPropsType> = forwardRef(
         const classOverride = useSwitchClassName(
             SWITCH_CLASS_PREFIX,
             className,
-            classNames,
             disabled,
             checked,
         );

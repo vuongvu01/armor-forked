@@ -16,6 +16,8 @@ const sourceFolder = normalize(`${__dirname}/../svg/`);
 const destinationFolder = normalize(`${__dirname}/../src/icons`);
 const templateFolder = normalize(`${__dirname}/../templates/`);
 
+const NOTE = "/* This file is auto-generated, don't edit by hand! /*\n\n";
+
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
@@ -116,12 +118,15 @@ const rewriteFile = async (file, content) => {
         }
 
         const folderIndexFilePath = join(destinationFolder, folder, 'index.ts');
-        await rewriteFile(folderIndexFilePath, folderIndexFile);
+        await rewriteFile(folderIndexFilePath, `${NOTE}${folderIndexFile}`);
 
         mainIndexFile = `${mainIndexFile}export * from './${folder}';\n`;
     }
 
-    await rewriteFile(join(destinationFolder, 'index.ts'), mainIndexFile);
+    await rewriteFile(
+        join(destinationFolder, 'index.ts'),
+        `${NOTE}${mainIndexFile}`,
+    );
 
     console.log('DONE');
 })();

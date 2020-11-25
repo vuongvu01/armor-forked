@@ -7,7 +7,7 @@ import {
     ExpansionIndicatorRoot,
 } from './style';
 import { useComponentTheme } from '../../utils/hooks';
-import useExpansionIndicatorClassName from './useExpansionIndicatorClassName';
+import useExpansionIndicatorClassName from './utils/useExpansionIndicatorClassName';
 import { expansionIndicatorDefaultTheme } from './theme';
 import {
     EXPANSION_INDICATOR_CLASS_PREFIX,
@@ -18,7 +18,6 @@ import {
 
 export const ExpansionIndicator: FunctionComponent<ExpansionIndicatorPropsType> = ({
     className,
-    classNames,
     disabled,
     error,
     displaySeparator,
@@ -35,7 +34,6 @@ export const ExpansionIndicator: FunctionComponent<ExpansionIndicatorPropsType> 
     const classOverride = useExpansionIndicatorClassName(
         EXPANSION_INDICATOR_CLASS_PREFIX,
         className,
-        classNames,
         disabled,
         isExpanded,
     );

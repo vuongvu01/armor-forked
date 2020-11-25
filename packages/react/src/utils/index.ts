@@ -1,6 +1,5 @@
 import deepMerge from 'deepmerge';
 import { ReactText } from 'react';
-import { ClassNamesType } from '../components/type';
 import { ObjectLiteralType } from '../type';
 import {
     marginAttributesList,
@@ -21,26 +20,20 @@ export * from './useInternalRef';
 /**
  * @internal
  */
-export const returnEmptyString = () => '';
-
-/**
- * @internal
- */
 export const makeBEM = (block: string, element: string, modifier?: string) =>
     `${block}-${element}${modifier ? `--${modifier}` : ''}`;
 
 /**
  * @internal
  */
-export const makeClassName = (
-    classPrefix: string,
-    className?: string,
-    classNames?: ClassNamesType,
-    elementType = 'Root',
-) =>
-    `${makeBEM(classPrefix, elementType)} ${className || ''} ${
-        classNames && classNames[elementType] ? classNames[elementType] : ''
-    }`.trim();
+export const appendClassName = (classNames: string, className?: string) =>
+    `${classNames} ${className || ''}`.trim();
+
+/**
+ * @internal
+ */
+export const makeRootClassName = (classPrefix: string, className?: string) =>
+    appendClassName(makeBEM(classPrefix, 'Root'), className);
 
 /**
  * @internal

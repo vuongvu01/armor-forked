@@ -1,17 +1,14 @@
 import { useMemo } from 'react';
 
-import { ClassNamesType } from '../../type';
 import { ClassBasedOnComponentType } from '../type';
-import { makeBEM, makeClassName } from '../../../utils';
+import { appendClassName, makeBEM } from '../../../utils';
 
 const classGeneratorBasedOnComponent = ({
     component,
     classPrefix,
-    className,
-    classNames,
     disabled,
 }: ClassBasedOnComponentType) => {
-    const baseClassNames = makeClassName(classPrefix, className, classNames);
+    const baseClassNames = makeBEM(classPrefix, component);
 
     const stateClassNames: string[] = [];
 
@@ -25,20 +22,20 @@ const classGeneratorBasedOnComponent = ({
 const useTabsClassName = (
     classPrefix: string,
     className?: string,
-    classNames?: ClassNamesType,
     disabled?: boolean,
 ) =>
     useMemo(
         () => ({
-            Root: classGeneratorBasedOnComponent({
-                component: 'Root',
-                classPrefix,
+            Root: appendClassName(
+                classGeneratorBasedOnComponent({
+                    component: 'Root',
+                    classPrefix,
+                    disabled,
+                }),
                 className,
-                classNames,
-                disabled,
-            }),
+            ),
         }),
-        [classPrefix, className, classNames, disabled],
+        [classPrefix, className, disabled],
     );
 
 export default useTabsClassName;

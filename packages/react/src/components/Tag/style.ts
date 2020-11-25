@@ -100,7 +100,9 @@ const closeIconStyle = ({
 export const TagCloseIconContainer = styled.div<TagCloseIconContainerPropsType>`
     box-sizing: border-box;
     cursor: pointer;
-    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 20px;
     opacity: 0;
     outline: none;
@@ -118,7 +120,6 @@ export const TagRoot = styled.div.withConfig({
     cursor: default;
     display: inline-flex;
     flex-flow: row nowrap;
-    margin: 0 4px;
     width: fit-content;
 
     &:hover ${TagCloseIconContainer} {
@@ -139,7 +140,6 @@ export const TagTypography = styled(Typography).withConfig({
 
 export const TagCloseIcon = styled(CancelIcon)<TagCloseIconPropsType>`
     outline: none;
-    padding-left: 6px;
 
     ${closeIconStyle}
 `;

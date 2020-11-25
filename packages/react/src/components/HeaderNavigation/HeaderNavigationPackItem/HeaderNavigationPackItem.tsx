@@ -12,7 +12,6 @@ import { useHeaderNavigationPackItemClassName } from './utils';
 
 export const HeaderNavigationPackItem: FunctionComponent<HeaderNavigationPackItemPropsType> = ({
     className,
-    classNames,
     ...restProps
 }) => {
     const theme = useComponentTheme(
@@ -23,7 +22,6 @@ export const HeaderNavigationPackItem: FunctionComponent<HeaderNavigationPackIte
     const classOverride = useHeaderNavigationPackItemClassName(
         HEADER_NAVIGATION_PACK_ITEM_CLASS_PREFIX,
         className,
-        classNames,
     );
 
     return (

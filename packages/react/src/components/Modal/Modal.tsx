@@ -14,6 +14,7 @@ export const Modal: FunctionComponent<ModalPropsType> = ({
     disableBackdrop,
     disableCloseByEscape,
     zIndex,
+    className,
 }) => {
     const { elementZIndex } = useModal({
         open,
@@ -22,7 +23,7 @@ export const Modal: FunctionComponent<ModalPropsType> = ({
     });
 
     return createPortal(
-        <ModalRoot zIndex={elementZIndex}>
+        <ModalRoot zIndex={elementZIndex} className={className}>
             {!!open && !disableBackdrop && (
                 <ModalBackdrop
                     onClick={onClose}

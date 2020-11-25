@@ -1,39 +1,28 @@
 import { useMemo } from 'react';
 
-import { ClassNamesType } from '../../type';
 import { ClassBasedOnComponentType } from '../type';
-import { makeClassName } from '../../../utils';
+import { appendClassName, makeBEM } from '../../../utils';
 
 const getClassNameByComponent = ({
     component,
     classPrefix,
-    className,
-    classNames,
 }: ClassBasedOnComponentType) => {
-    const baseClassNames = makeClassName(
-        classPrefix,
-        className,
-        classNames,
-        component,
-    );
+    const baseClassNames = makeBEM(classPrefix, component);
 
     return `${baseClassNames}`.trim();
 };
 
-const useStackClassName = (
-    classPrefix: string,
-    className?: string,
-    classNames?: ClassNamesType,
-) =>
+const useStackClassName = (classPrefix: string, className?: string) =>
     useMemo(() => {
         return {
-            Root: getClassNameByComponent({
-                component: 'Root',
-                classPrefix,
+            Root: appendClassName(
+                getClassNameByComponent({
+                    component: 'Root',
+                    classPrefix,
+                }),
                 className,
-                classNames,
-            }),
+            ),
         };
-    }, [classPrefix, className, classNames]);
+    }, [classPrefix, className]);
 
 export default useStackClassName;

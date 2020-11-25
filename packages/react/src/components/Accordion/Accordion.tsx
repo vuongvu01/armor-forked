@@ -22,7 +22,6 @@ export const Accordion: FunctionComponent<AccordionPropsType> = forwardRef(
         {
             children,
             className,
-            classNames,
             disabled,
             expanded,
             defaultExpanded = false,
@@ -41,7 +40,6 @@ export const Accordion: FunctionComponent<AccordionPropsType> = forwardRef(
         const classOverride = useAccordionClassName(
             ACCORDION_CLASS_PREFIX,
             className,
-            classNames,
             disabled,
             isExpanded,
         );

@@ -9,6 +9,7 @@ import {
 } from '../../../tokens';
 import { HeaderNavigationPackItem } from '../HeaderNavigationPackItem';
 import { Dropdown } from '../../Dropdown';
+import { spacing } from '../../../system/mixins';
 
 export const HeaderNavigationSelectorRoot = styled.div<
     HeaderNavigationSelectorRootPropsType
@@ -37,7 +38,7 @@ export const NavigationPackItemSelector = styled(HeaderNavigationPackItem)<
 >`
     padding-top: 0;
     padding-bottom: 0;
-    height: 48px;
+    height: ${spacing(12)};
     border-right-width: 1px;
     border-right-style: solid;
 
@@ -47,13 +48,13 @@ export const NavigationPackItemSelector = styled(HeaderNavigationPackItem)<
 export const SelectorDropdown = styled(Dropdown)<
     HeaderNavigationSelectorRootPropsType
 >`
-    .HeaderNavigationSelector-SelectorDropdown.Dropdown-ExpansionIndicatorContainer {
+    .Dropdown-ExpansionIndicatorContainer {
         background-color: ${colorGrey05};
     }
-    .HeaderNavigationSelector-SelectorDropdown.ExpansionIndicator-Icon {
+    .ExpansionIndicator-Icon {
         border-color: ${colorGrey50};
     }
-    .HeaderNavigationSelector-SelectorDropdown > .TextInput-Input {
+    .TextInput-Input {
         cursor: pointer;
         caret-color: ${colorGrey00};
         background-color: ${colorGrey05};
@@ -66,14 +67,16 @@ export const SelectorDropdown = styled(Dropdown)<
             color: ${colorGrey90};
         }
     }
-    .HeaderNavigationSelector-SelectorDropdown.Dropdown-TextInput {
+    .Dropdown-TextInput {
         border-style: none;
-        height: 40px;
-        padding-top: 2px;
+        height: ${spacing(10)};
         cursor: pointer;
         background-color: ${colorGrey05};
     }
-    .HeaderNavigationSelector-SelectorDropdown.Dropdown-Container {
-        padding-top: 4px;
+    .Dropdown-Container {
+        padding-top: ${spacing(1)};
+    }
+    .Dropdown-OptionList {
+        top: ${spacing(2)};
     }
 `;

@@ -1,23 +1,9 @@
 import { useMemo } from 'react';
 
-import { ClassNamesType } from '../components/type';
 import { transformTheme } from '../styling/theme/transformTheme';
-import { makeClassName, merge } from '.';
+import { merge } from '.';
 import { ThemeType, useTheme } from '../styling';
 import { ObjectLiteralType } from '../type';
-
-/**
- * @internal
- */
-export const useClassName = (
-    classPrefix: string,
-    className?: string,
-    classNames?: ClassNamesType,
-    elementType = 'Root',
-) =>
-    useMemo(() => {
-        return makeClassName(classPrefix, className, classNames, elementType);
-    }, [classPrefix, elementType, className, classNames]);
 
 /**
  * @internal

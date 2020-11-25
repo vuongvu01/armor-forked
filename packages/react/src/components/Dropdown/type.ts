@@ -2,13 +2,12 @@ import { HTMLAttributes, InputHTMLAttributes, MouseEvent } from 'react';
 
 import { MarginAttributesType } from '../../system/attributes';
 import { Indexed, ScalarType } from '../../type';
-import { ClassNamesType, NodeStylePropsType } from '../type';
+import { ComponentElementStylePropsType } from '../type';
 
 export type ClassBasedOnComponentType = {
     component: string;
     classPrefix: string;
     className?: string;
-    classNames?: ClassNamesType;
     disabled?: boolean;
     isActive?: boolean;
 };
@@ -51,6 +50,7 @@ export type DropdownOnValueUpdateType = (
 export type DropdownOnChangeEventType = {
     target: {
         value?: DropdownValueType;
+        name?: string;
     };
 };
 
@@ -129,4 +129,4 @@ export type DropdownOptionItemPropsType = Indexed<{
 export type ExpansionIndicatorContainerPropsType = Indexed<{}>;
 
 export type DropdownRootPropsType = DropdownEffectivePropsType &
-    NodeStylePropsType<DropdownEffectivePropsType>;
+    ComponentElementStylePropsType;

@@ -1,20 +1,17 @@
-import React, { FunctionComponent, forwardRef, useEffect, useRef } from 'react';
+import React, { FunctionComponent, forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { useComponentTheme } from '../../utils/hooks';
 
-import {
-    useEvents,
-    useTextInputClassNames,
-    useTextInputStylesOverride,
-} from './utils';
+import { useTextInputClassNames } from './utils/useTextInputClassNames';
 import {
     TextInputRoot,
     TextInputInput,
     TextInputLabel,
     TextInputLabelBackground,
+    TextInputInnerContainer,
 } from './style';
-import { TextInputContainerPropsType, TextInputPropsType } from './type';
+import { TextInputInputPropsType, TextInputPropsType } from './type';
 import { textInputDefaultTheme } from './theme';
 import {
     textInputInput,
@@ -23,175 +20,83 @@ import {
     textInputRoot,
     TEXT_INPUT_CLASS_PREFIX,
 } from './constants';
-import { useInternalRef } from '../../utils';
+import { useTextInput } from './utils/useTextInput';
 
 export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
-    function TextInput(
-        {
-            className,
-            classNames,
-            styles,
-            label,
-            before,
-            after,
-            disableLabelEffect,
-            multiline,
-            error,
-            large,
-            onMouseOut,
-            onMouseOver,
-            outline,
-
-            // input-specific props need to be passed to Input component instead
-            autoComplete,
-            autoFocus,
-            defaultValue,
-            disabled,
-            name,
-            placeholder,
-            readOnly,
-            rows,
-            value,
-            onClick,
-            onKeyDown,
-            onKeyUp,
-            onFocus,
-            onBlur,
-            onChange,
-            type,
-            max,
-            maxLength,
-            min,
-            minLength,
-            tabIndex,
-            ...restProps
-        },
-        ref,
-    ) {
+    function TextInput({ className, ...restProps }, ref) {
         const theme = useComponentTheme(
             TEXT_INPUT_CLASS_PREFIX,
             textInputDefaultTheme,
         );
 
+        const {
+            rootProps,
+            innerContainerProps,
+            inputProps,
+            inputLabelProps,
+            inputLabelBackgroundProps,
+
+            Tag,
+            before,
+            after,
+            label,
+
+            disabled,
+            large,
+            error,
+
+            internalInputRef,
+        } = useTextInput(restProps, ref);
+
         const classNameComponents = useTextInputClassNames(
             TEXT_INPUT_CLASS_PREFIX,
             className,
-            classNames,
             disabled,
             large,
             error,
         );
 
-        // NOTE (nmelnikov 2020-07-24): being used by Dropdown. Please no clean up here :)
-        const stylesOverride = useTextInputStylesOverride(styles);
-
-        const {
-            isMouseInside,
-            isLabelInside,
-            isFocused,
-            onInputMouseOver,
-            onInputMouseOut,
-            onInputFocus,
-            onInputBlur,
-        } = useEvents({
-            value,
-            defaultValue,
-            placeholder,
-            disableLabelEffect,
-            onFocus,
-            onBlur,
-            onMouseOut,
-            onMouseOver,
-            readOnly,
-        });
-
-        const internalInputRef = useRef(null);
-        const Tag = multiline ? 'textarea' : 'input';
-        const isOutlined = isMouseInside || isFocused || outline;
-
-        // Effects to control external value assignment, enabled and disabled state
-        useEffect(() => {
-            const node = internalInputRef.current as any;
-
-            if (value && node && node.focus && !disabled) {
-                node.focus();
-            }
-        }, [value, disabled]);
-
-        useInternalRef(ref, internalInputRef);
-
         return (
             <TextInputRoot
                 data-testid={textInputRoot}
-                {...restProps}
+                {...rootProps}
                 className={classNameComponents.Root}
-                styles={stylesOverride.Root}
                 theme={theme}
-                multiline={multiline}
-                disabled={disabled}
-                outlined={isOutlined}
-                error={error}
-                onMouseOver={onInputMouseOver}
-                onMouseOut={onInputMouseOut}
             >
-                {before}
-                <TextInputInput
-                    autoComplete={autoComplete}
-                    autoFocus={autoFocus}
-                    className={classNameComponents.Input}
-                    defaultValue={defaultValue}
-                    disabled={disabled}
-                    large={large}
-                    max={max}
-                    maxLength={maxLength}
-                    min={min}
-                    minLength={minLength}
-                    multiline={multiline}
-                    name={name}
-                    onBlur={onInputBlur}
-                    onClick={onClick}
-                    onChange={onChange}
-                    onFocus={onInputFocus}
-                    onKeyDown={onKeyDown}
-                    onKeyUp={onKeyUp}
-                    placeholder={placeholder}
-                    readOnly={readOnly}
-                    rows={rows}
-                    styles={stylesOverride.Input}
-                    tabIndex={tabIndex}
+                <TextInputInnerContainer
+                    {...innerContainerProps}
+                    className={classNameComponents.InnerContainer}
                     theme={theme}
-                    type={multiline ? undefined : type}
-                    value={value}
                 >
-                    {(forwardedProps: TextInputContainerPropsType) => (
-                        // @ts-ignore
-                        <Tag
-                            {...forwardedProps}
-                            ref={internalInputRef}
-                            data-testid={textInputInput}
-                        />
-                    )}
-                </TextInputInput>
-                {after}
+                    {before}
+                    <TextInputInput
+                        data-testid={textInputInput}
+                        {...inputProps}
+                        theme={theme}
+                        className={classNameComponents.Input}
+                    >
+                        {(forwardedProps: TextInputInputPropsType) => (
+                            <Tag
+                                {...forwardedProps}
+                                // @ts-ignore
+                                ref={internalInputRef}
+                            />
+                        )}
+                    </TextInputInput>
+                    {after}
+                </TextInputInnerContainer>
                 {!!label && (
                     <TextInputLabel
-                        className={classNameComponents.Label}
-                        disabled={disabled}
-                        error={error}
-                        inside={isLabelInside}
-                        large={large}
-                        outlined={isOutlined}
-                        styles={stylesOverride.Label}
-                        theme={theme}
-                        value={value}
                         data-testid={textInputLabel}
+                        {...inputLabelProps}
+                        className={classNameComponents.Label}
+                        theme={theme}
                     >
                         <TextInputLabelBackground
-                            className={classNameComponents.LabelBackground}
-                            styles={stylesOverride.LabelBackground}
-                            theme={theme}
-                            disabled={disabled}
                             data-testid={textInputLabelBackground}
+                            {...inputLabelBackgroundProps}
+                            className={classNameComponents.LabelBackground}
+                            theme={theme}
                         >
                             {label}
                         </TextInputLabelBackground>
@@ -209,6 +114,7 @@ TextInput.defaultProps = {
     error: false,
     large: false, // default is medium (small in design)
     outline: false,
+    enableFocusOnRootClick: false,
 };
 
 /** Support of prop-types is here for project that don't use TypeScript */

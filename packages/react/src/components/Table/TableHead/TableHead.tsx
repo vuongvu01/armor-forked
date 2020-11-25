@@ -12,7 +12,7 @@ import { tableHeadRootTestId, TABLE_HEAD_CLASS_PREFIX } from './constants';
 import { useTableHead } from './utils/useTableHead';
 
 export const TableHead: FunctionComponent<TableHeadPropsType> = forwardRef(
-    function TableHead({ className, classNames, ...restProps }, ref) {
+    function TableHead({ className, ...restProps }, ref) {
         const theme = useComponentTheme(
             TABLE_HEAD_CLASS_PREFIX,
             tableHeadDefaultTheme,
@@ -20,7 +20,6 @@ export const TableHead: FunctionComponent<TableHeadPropsType> = forwardRef(
         const classNameComponents = useTableHeadClassNames(
             TABLE_HEAD_CLASS_PREFIX,
             className,
-            classNames,
         );
 
         const { tableSectionContextValue, rootReference } = useTableHead({

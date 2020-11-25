@@ -1,5 +1,8 @@
 import { AnchorHTMLAttributes, ComponentType, HTMLAttributes } from 'react';
-import { StylePropsType, NodeStylePropsTypeNoStyles } from '../../type';
+import {
+    ComponentStylePropsType,
+    ComponentElementStylePropsType,
+} from '../../type';
 import {
     MarginAttributesType,
     PaddingAttributesType,
@@ -26,28 +29,25 @@ type MenuElementEffectivePropsType = Indexed<{
 
 /* MenuElement component prop type */
 export type MenuElementPropsType = MenuElementEffectivePropsType &
-    StylePropsType<{
-        Root?: string;
-        // add custom className for other nodes here
-    }>;
+    ComponentStylePropsType;
 
 /* MenuElement Root node prop type */
 export type MenuElementRootPropsType = MenuElementEffectivePropsType &
-    NodeStylePropsTypeNoStyles;
+    ComponentElementStylePropsType;
 
 /* MenuElement Content node prop type */
-export type MenuElementContentPropsType = {} & NodeStylePropsTypeNoStyles;
+export type MenuElementContentPropsType = {} & ComponentElementStylePropsType;
 
 /* MenuElement ExpansionHandle node prop type */
 export type MenuElementExpansionHandlePropsType = Pick<
     MenuElementEffectivePropsType,
     'expanded' | 'primary' | 'secondary' | 'tertiary' | 'depthLevel'
 > &
-    NodeStylePropsTypeNoStyles;
+    ComponentElementStylePropsType;
 
 /* MenuElement ExpansionHandleArrow node prop type */
 export type MenuElementExpansionHandleArrowPropsType = Pick<
     MenuElementEffectivePropsType,
     'expanded'
 > &
-    NodeStylePropsTypeNoStyles;
+    ComponentElementStylePropsType;

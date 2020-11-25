@@ -1,22 +1,14 @@
 import { useMemo } from 'react';
 
-import { ClassNamesType } from '../../type';
 import { ClassBasedOnComponentType } from '../type';
-import { makeBEM, makeClassName } from '../../../utils';
+import { appendClassName, makeBEM } from '../../../utils';
 
 const getClassNameByComponent = ({
     component,
     classPrefix,
-    className,
-    classNames,
     spacing,
 }: ClassBasedOnComponentType) => {
-    const baseClassNames = makeClassName(
-        classPrefix,
-        className,
-        classNames,
-        component,
-    );
+    const baseClassNames = makeBEM(classPrefix, component);
 
     const stateClassNames: string[] = [];
 
@@ -32,19 +24,19 @@ const getClassNameByComponent = ({
 const useGridClassName = (
     classPrefix: string,
     className?: string,
-    classNames?: ClassNamesType,
     spacing?: number,
 ) =>
     useMemo(() => {
         return {
-            Root: getClassNameByComponent({
-                component: 'Root',
-                classPrefix,
+            Root: appendClassName(
+                getClassNameByComponent({
+                    component: 'Root',
+                    classPrefix,
+                    spacing,
+                }),
                 className,
-                classNames,
-                spacing,
-            }),
+            ),
         };
-    }, [classPrefix, className, classNames, spacing]);
+    }, [classPrefix, className, spacing]);
 
 export default useGridClassName;

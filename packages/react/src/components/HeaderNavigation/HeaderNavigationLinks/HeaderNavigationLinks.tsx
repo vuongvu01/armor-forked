@@ -17,10 +17,7 @@ import HeaderNavigationLinksContext from './HeaderNavigationLinksContext';
 import { useHeaderNavigationLinks } from './utils/useHeaderNavigationLinks';
 
 export const HeaderNavigationLinks: FunctionComponent<HeaderNavigationLinksPropsType> = forwardRef(
-    function HeaderNavigationLinks(
-        { className, classNames, children, ...restProps },
-        ref,
-    ) {
+    function HeaderNavigationLinks({ className, children, ...restProps }, ref) {
         const theme = useComponentTheme(
             HEADER_NAVIGATION_LINKS_CLASS_PREFIX,
             headerNavigationLinks,
@@ -29,7 +26,6 @@ export const HeaderNavigationLinks: FunctionComponent<HeaderNavigationLinksProps
         const classOverride = useHeaderNavigationLinksClassName(
             HEADER_NAVIGATION_LINKS_CLASS_PREFIX,
             className,
-            classNames,
         );
 
         const { result, restProps: restRootProps } = useHeaderNavigationLinks(

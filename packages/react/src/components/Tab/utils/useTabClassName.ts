@@ -1,18 +1,15 @@
 import { useMemo } from 'react';
 
-import { ClassNamesType } from '../../type';
 import { ClassBasedOnComponentType } from '../type';
-import { makeBEM, makeClassName } from '../../../utils';
+import { appendClassName, makeBEM } from '../../../utils';
 
 const classGeneratorBasedOnComponent = ({
     component,
     classPrefix,
-    className,
-    classNames,
     disabled,
     isActive,
 }: ClassBasedOnComponentType) => {
-    const baseClassNames = makeClassName(classPrefix, className, classNames);
+    const baseClassNames = makeBEM(classPrefix, component);
 
     const stateClassNames: string[] = [];
 
@@ -30,38 +27,34 @@ const classGeneratorBasedOnComponent = ({
 const useTabClassName = (
     classPrefix: string,
     className?: string,
-    classNames?: ClassNamesType,
     disabled?: boolean,
     isActive?: boolean,
 ) =>
     useMemo(
         () => ({
-            Root: classGeneratorBasedOnComponent({
-                component: 'Root',
-                classPrefix,
+            Root: appendClassName(
+                classGeneratorBasedOnComponent({
+                    component: 'Root',
+                    classPrefix,
+                    disabled,
+                    isActive,
+                }),
                 className,
-                classNames,
-                disabled,
-                isActive,
-            }),
+            ),
             LabelContainer: classGeneratorBasedOnComponent({
                 component: 'LabelContainer',
                 classPrefix,
-                className,
-                classNames,
                 disabled,
                 isActive,
             }),
             Label: classGeneratorBasedOnComponent({
                 component: 'Label',
                 classPrefix,
-                className,
-                classNames,
                 disabled,
                 isActive,
             }),
         }),
-        [classPrefix, className, classNames, disabled, isActive],
+        [classPrefix, className, disabled, isActive],
     );
 
 export default useTabClassName;

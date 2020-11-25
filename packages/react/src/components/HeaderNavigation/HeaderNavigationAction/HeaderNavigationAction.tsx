@@ -16,7 +16,7 @@ import {
 
 export const HeaderNavigationAction: FunctionComponent<HeaderNavigationActionPropsType> = forwardRef(
     function HeaderNavigationAction(
-        { className, classNames, children, ...restProps },
+        { className, children, ...restProps },
         ref,
     ) {
         const theme = useComponentTheme(
@@ -27,7 +27,6 @@ export const HeaderNavigationAction: FunctionComponent<HeaderNavigationActionPro
         const classOverride = useHeaderNavigationActionClassName(
             HEADER_NAVIGATION_ACTION_CLASS_PREFIX,
             className,
-            classNames,
         );
 
         return (

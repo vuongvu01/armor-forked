@@ -1,12 +1,10 @@
 import { useMemo } from 'react';
 
-import { makeBEM, makeClassName } from '../../../utils';
-import { ClassNamesType } from '../../type';
+import { makeBEM, makeRootClassName } from '../../../utils';
 
 const useButtonClassName = (
     classPrefix: string,
     className?: string,
-    classNames?: ClassNamesType,
     disabled?: boolean,
     small?: boolean,
     wide?: boolean,
@@ -16,11 +14,7 @@ const useButtonClassName = (
     danger?: boolean,
 ) =>
     useMemo(() => {
-        const baseClassNames = makeClassName(
-            classPrefix,
-            className,
-            classNames,
-        );
+        const baseClassNames = makeRootClassName(classPrefix, className);
         const stateClassNames: string[] = [];
         if (disabled) {
             stateClassNames.push(makeBEM(classPrefix, 'Root', 'disabled'));
@@ -48,7 +42,6 @@ const useButtonClassName = (
     }, [
         classPrefix,
         className,
-        classNames,
         disabled,
         small,
         wide,

@@ -16,7 +16,6 @@ export const HeaderNavigationTitle: FunctionComponent<HeaderNavigationTitleProps
     function HeaderNavigationTitle(
         {
             className,
-            classNames,
             to,
             tag: LinkRoot,
             href,
@@ -37,7 +36,6 @@ export const HeaderNavigationTitle: FunctionComponent<HeaderNavigationTitleProps
         const classOverride = useHeaderNavigationTitleClassName(
             HEADER_NAVIGATION_TITLE_CLASS_PREFIX,
             className,
-            classNames,
         );
 
         return (

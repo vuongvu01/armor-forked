@@ -327,16 +327,18 @@ export const IconAndText = () => (
 );
 
 const customTheme = makeTheme({
-    components: {
-        Button: {
-            Root: {
-                base: {
-                    fontWeight: 'bold',
-                },
-                primary: {
-                    borderColor: 'red',
-                    '&:hover': {
-                        borderColor: 'yellow',
+    armor: {
+        components: {
+            Button: {
+                Root: {
+                    base: {
+                        fontWeight: 'bold',
+                    },
+                    primary: {
+                        borderColor: 'red',
+                        '&:hover': {
+                            borderColor: 'yellow',
+                        },
                     },
                 },
             },

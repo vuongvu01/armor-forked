@@ -1,20 +1,13 @@
 import { ClassBasedOnComponentType } from '../type';
-import { makeBEM, makeClassName } from '../../../utils';
+import { makeBEM } from '../../../utils';
 
 const getClassNameByComponent = ({
     component,
     classPrefix,
-    className,
-    classNames,
     disabled,
     expanded,
 }: ClassBasedOnComponentType) => {
-    const baseClassNames = makeClassName(
-        classPrefix,
-        className,
-        classNames,
-        component,
-    );
+    const baseClassNames = makeBEM(classPrefix, component);
 
     const stateClassNames: string[] = [];
 
