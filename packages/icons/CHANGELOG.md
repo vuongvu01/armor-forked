@@ -1,3 +1,15 @@
+# @deliveryhero/armor-icons [1.4.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.3.1...@deliveryhero/armor-icons@1.4.0) (2020-11-25)
+
+
+### Bug Fixes
+
+* Dropdown, Search and Tag improvements, TextInput received an internal container for better positioning, refactoring [LD-324] ([#318](https://github.com/deliveryhero/armor/issues/318)) ([0b392d0](https://github.com/deliveryhero/armor/commit/0b392d08d3a5571265c2feed25f1a489aaf41063))
+
+
+### Features
+
+* **icons:** LoginIcon ([#320](https://github.com/deliveryhero/armor/issues/320)) ([ffd87d9](https://github.com/deliveryhero/armor/commit/ffd87d902d6df72e85ddf48811e8bb16f99947e8))
+
 ## @deliveryhero/armor-icons [1.3.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.3.0...@deliveryhero/armor-icons@1.3.1) (2020-11-17)
 
 
