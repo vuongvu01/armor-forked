@@ -1,3 +1,10 @@
+# @deliveryhero/armor [1.23.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.22.2...@deliveryhero/armor@1.23.0) (2020-11-27)
+
+
+### Features
+
+* **tabs:** custom tag support within individual Tab [LD-328] ([#321](https://github.com/deliveryhero/armor/issues/321)) ([4da1562](https://github.com/deliveryhero/armor/commit/4da156279588f3e3191aa6970f6b2b760ec24c5b))
+
 ## @deliveryhero/armor [1.22.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.22.1...@deliveryhero/armor@1.22.2) (2020-11-25)
 
 
