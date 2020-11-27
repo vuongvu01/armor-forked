@@ -3,6 +3,7 @@ import { InputHTMLAttributes } from 'react';
 import { MarginAttributesType } from '../../system/attributes';
 import { Indexed } from '../../type';
 import { ComponentElementStylePropsType } from '../type';
+import { LinkTagType } from '../HeaderNavigation/HeaderNavigationLinks/HeaderNavigationLink/type';
 
 export type ClassBasedOnComponentType = {
     component: string;
@@ -16,6 +17,8 @@ export type ClassBasedOnComponentType = {
 type TabEffectivePropsType = Indexed<{
     value?: number;
     tabIndex?: number;
+    to?: string;
+    tag?: LinkTagType;
 }> &
     InputHTMLAttributes<HTMLInputElement> &
     MarginAttributesType;

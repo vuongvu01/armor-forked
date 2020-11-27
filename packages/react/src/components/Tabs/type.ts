@@ -15,7 +15,7 @@ export type ClassBasedOnComponentType = {
 
 type TabsEffectivePropsType = Indexed<{
     defaultActiveTab?: number;
-    onSwitch: (tabIndex: number) => void;
+    onSwitch?: (tabIndex: number) => void;
     selectedValue?: string | number;
     value?: string | number;
     wide?: boolean;

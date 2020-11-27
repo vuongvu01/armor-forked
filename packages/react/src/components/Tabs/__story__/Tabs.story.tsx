@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { BrowserRouter, Link } from 'react-router-dom';
 // eslint-disable-next-line import/no-unresolved
 import { withKnobs } from '@storybook/addon-knobs';
 import { Tabs } from '../Tabs';
-import { Box } from '../../Box';
 import { Tab } from '../../Tab';
 import { TabView } from '../../TabView';
 
@@ -19,19 +20,13 @@ export const DefaultLayoutMinimumConfiguration = () => {
     const handleChange = (tabIndex: number) => setSelectedTabIndex(tabIndex);
 
     return (
-        <Box
-            padding={3}
-            style={{
-                height: '500px',
-                width: '510px',
-            }}
-        >
+        <>
             <Tabs onSwitch={handleChange}>
-                <Tab label="Pizza" />
-                <Tab label="Pasta" />
-                <Tab label="Risotto" />
-                <Tab label="Beverages" />
-                <Tab label="Alcoholic beverages" disabled />
+                <Tab>Pizza</Tab>
+                <Tab>Pasta</Tab>
+                <Tab>Risotto</Tab>
+                <Tab>Beverages</Tab>
+                <Tab>Alcoholic beverages</Tab>
             </Tabs>
             <TabView value={0} selectedValue={selectedTabIndex}>
                 <p>Pizza</p>
@@ -48,7 +43,50 @@ export const DefaultLayoutMinimumConfiguration = () => {
             <TabView value={4} selectedValue={selectedTabIndex}>
                 <p>Alcoholic beverages</p>
             </TabView>
-        </Box>
+        </>
+    );
+};
+
+export const CustomRouterAndAnchorTags = () => {
+    const [selectedTabIndex, setSelectedTabIndex] = useState(0);
+
+    const handleChange = (tabIndex: number) => setSelectedTabIndex(tabIndex);
+
+    return (
+        <BrowserRouter>
+            <Tabs onSwitch={handleChange}>
+                <Tab tag="a" href="https://www.google.com" target="_blank">
+                    Pizza @href
+                </Tab>
+                <Tab tag={Link} to="/pasta">
+                    Pasta
+                </Tab>
+                <Tab tag={Link} to="/risotto">
+                    Risotto
+                </Tab>
+                <Tab tag={Link} to="/beverages">
+                    Beverages
+                </Tab>
+                <Tab tag={Link} to="/alcoholic-beverages" disabled>
+                    Alcoholic beverages
+                </Tab>
+            </Tabs>
+            <TabView value={0} selectedValue={selectedTabIndex}>
+                <p>Pizza</p>
+            </TabView>
+            <TabView value={1} selectedValue={selectedTabIndex}>
+                <p>Pasta</p>
+            </TabView>
+            <TabView value={2} selectedValue={selectedTabIndex}>
+                <p>Risotto</p>
+            </TabView>
+            <TabView value={3} selectedValue={selectedTabIndex}>
+                <p>Beverages</p>
+            </TabView>
+            <TabView value={4} selectedValue={selectedTabIndex}>
+                <p>Alcoholic beverages</p>
+            </TabView>
+        </BrowserRouter>
     );
 };
 
@@ -58,19 +96,13 @@ export const DefaultActiveTabSetOnLoad = () => {
     const handleChange = (tabIndex: number) => setSelectedTabIndex(tabIndex);
 
     return (
-        <Box
-            padding={3}
-            style={{
-                height: '500px',
-                width: '510px',
-            }}
-        >
+        <>
             <Tabs defaultActiveTab={2} onSwitch={handleChange}>
-                <Tab label="Pizza" />
-                <Tab label="Pasta" />
-                <Tab label="Risotto" />
-                <Tab label="Beverages" />
-                <Tab label="Alcoholic beverages" disabled />
+                <Tab>Pizza</Tab>
+                <Tab>Pasta</Tab>
+                <Tab>Risotto</Tab>
+                <Tab>Beverages</Tab>
+                <Tab disabled>Alcoholic beverages</Tab>
             </Tabs>
             <TabView value={0} selectedValue={selectedTabIndex}>
                 <p>Pizza</p>
@@ -87,7 +119,7 @@ export const DefaultActiveTabSetOnLoad = () => {
             <TabView value={4} selectedValue={selectedTabIndex}>
                 <p>Alcoholic beverages</p>
             </TabView>
-        </Box>
+        </>
     );
 };
 
@@ -97,19 +129,13 @@ export const MultipleTabsToSingleContent = () => {
     const handleChange = (tabIndex: number) => setSelectedTabIndex(tabIndex);
 
     return (
-        <Box
-            padding={3}
-            style={{
-                height: '500px',
-                width: '510px',
-            }}
-        >
+        <>
             <Tabs onSwitch={handleChange}>
-                <Tab label="Pizza" value={0} />
-                <Tab label="Pasta" value={0} />
-                <Tab label="Risotto" />
-                <Tab label="Beverages" value={0} />
-                <Tab label="Alcoholic beverages" disabled />
+                <Tab value={0}>Pizza</Tab>
+                <Tab value={0}>Pasta</Tab>
+                <Tab>Risotto</Tab>
+                <Tab value={0}>Beverages</Tab>
+                <Tab disabled>Alcoholic beverages</Tab>
             </Tabs>
             <TabView value={0} selectedValue={selectedTabIndex}>
                 <p>Pizza, Pasta and Beverages all point to the same content</p>
@@ -126,7 +152,7 @@ export const MultipleTabsToSingleContent = () => {
             <TabView value={4} selectedValue={selectedTabIndex}>
                 <p>Alcoholic beverages</p>
             </TabView>
-        </Box>
+        </>
     );
 };
 
@@ -136,15 +162,10 @@ export const FullWidth = () => {
     const handleChange = (tabIndex: number) => setSelectedTabIndex(tabIndex);
 
     return (
-        <Box
-            padding={3}
-            style={{
-                height: '250px',
-            }}
-        >
+        <>
             <Tabs wide onSwitch={handleChange}>
-                <Tab label="Pizza" value={1} />
-                <Tab label="Pasta" value={2} />
+                <Tab value={1}>Pizza</Tab>
+                <Tab value={2}>Pasta</Tab>
             </Tabs>
             <TabView value={0} selectedValue={selectedTabIndex}>
                 <p>Pizza</p>
@@ -161,6 +182,6 @@ export const FullWidth = () => {
             <TabView value={4} selectedValue={selectedTabIndex}>
                 <p>Alcoholic beverages</p>
             </TabView>
-        </Box>
+        </>
     );
 };

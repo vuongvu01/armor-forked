@@ -1,9 +1,13 @@
+import { ReactElement } from 'react';
 import styled, { css } from 'styled-components';
 
 import { marginAttributes } from '../../system/attributes';
 import { mouseCursor } from '../../styling';
-import { TabRootPropsType, TabLabelPropsType } from './type';
+import { TabLabelPropsType, TabRootPropsType } from './type';
 import { transitionDurationInSec } from '../../constants';
+import { makePropList, shouldForwardProp } from '../../utils';
+
+const propertyList = makePropList(['isActive']);
 
 const animationStyle = ({
     isActive,
@@ -110,11 +114,28 @@ export const TabRoot = styled.div<TabRootPropsType>`
     ${tabRootStyle}
 `;
 
-export const TabLabelContainer = styled.div<TabLabelPropsType>`
+const TabLabelTagWrapper = ({
+    children,
+    ...restProps
+}: TabLabelPropsType & {
+    children: (props: TabLabelPropsType) => ReactElement;
+}) => children(restProps);
+
+export const TabLabelContainer = styled(TabLabelTagWrapper)<TabLabelPropsType>`
+    text-decoration: none;
+    &:hover,
+    &:visited,
+    &:active,
+    &:focus {
+        text-decoration: none;
+    }
+
     ${tabLabelContainerStyle}
 `;
 
-export const TabLabel = styled.div<TabLabelPropsType>`
+export const TabLabel = styled.div.withConfig({
+    shouldForwardProp: property => shouldForwardProp(property, propertyList),
+})<TabLabelPropsType>`
     align-items: center;
     box-sizing: border-box;
     text-align: center;

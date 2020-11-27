@@ -1,4 +1,4 @@
-import { HTMLAttributes, MouseEvent } from 'react';
+import { AnchorHTMLAttributes, HTMLAttributes, MouseEvent } from 'react';
 
 import { MarginAttributesType } from '../../system/attributes';
 import { Indexed, ScalarType } from '../../type';
@@ -44,6 +44,8 @@ type TagEffectivePropsType = Indexed<{
     label?: string;
 }> &
     HTMLAttributes<HTMLElement> &
+    Pick<AnchorHTMLAttributes<HTMLAnchorElement>, 'target' | 'href' | 'rel'> &
+
     MarginAttributesType;
 
 export type TagPropsType = TagEffectivePropsType;
