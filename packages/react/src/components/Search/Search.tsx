@@ -135,7 +135,7 @@ Search.defaultProps = {
 };
 
 Search.propTypes = {
-    onClose: PropTypes.func.isRequired,
+    onClose: PropTypes.func,
     defaultQuery: PropTypes.string,
     disabled: PropTypes.bool,
     disableClearAction: PropTypes.bool,

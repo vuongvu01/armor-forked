@@ -33,13 +33,12 @@ const useHeaderNavigationMenuContentHeaderClassName = (
                 component: 'Label',
                 classPrefix,
             }),
-
-            Pack: getClassNameByComponent({
-                component: 'Pack',
+            HeaderNavigationMenuContentHeader: getClassNameByComponent({
+                component: 'HeaderNavigationMenuContentHeader',
                 classPrefix,
             }),
-            PackItem: getClassNameByComponent({
-                component: 'PackItem',
+            HeaderNavigationMenuContentHeaderItem: getClassNameByComponent({
+                component: 'HeaderNavigationMenuContentHeaderItem',
                 classPrefix,
             }),
         };

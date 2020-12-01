@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import { marginAttributes } from '../../system/attributes';
 import { shouldForwardProp } from '../../utils';
@@ -7,7 +7,7 @@ import {
     HeaderNavigationTitleRootPropsType,
 } from './type';
 import { ObjectLiteralType } from '../../type';
-import { colorGrey05, colorGrey50 } from '../../tokens';
+import { spacing } from '../../system/mixins';
 
 const propertyList = {
     justifyContent: true,
@@ -29,11 +29,8 @@ const headerNavigationRootStyle = ({
 export const HeaderNavigationRoot = styled.div.withConfig({
     shouldForwardProp: property => shouldForwardProp(property, propertyList),
 })<HeaderNavigationRootPropsType>`
-    box-sizing: border-box;
     display: block;
-    height: 48px;
-
-    color: #0042a5;
+    min-height: ${spacing(12)};
 
     ${headerNavigationRootStyle}
     ${marginAttributes}
@@ -42,3 +39,33 @@ export const HeaderNavigationRoot = styled.div.withConfig({
 export const HeaderNavigationTitleRoot = styled.div<
     HeaderNavigationTitleRootPropsType
 >``;
+
+export const HeaderNavigationContent = styled.div<
+    HeaderNavigationRootPropsType
+>`
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+`;
+
+export const HeaderNavigationContentItem = styled.div<
+    HeaderNavigationRootPropsType
+>``;
+
+export const HeaderNavigationContentLeft = styled.div<
+    HeaderNavigationRootPropsType
+>`
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+`;
+
+export const HeaderNavigationContentRight = styled.div<
+    HeaderNavigationRootPropsType
+>`
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+`;

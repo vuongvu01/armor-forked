@@ -4,7 +4,7 @@ import { boolean, withKnobs } from '@storybook/addon-knobs';
 
 import { SideSheet } from '../SideSheet';
 import { Button } from '../../Button';
-import { SideSheetHeader, SideSheetBody, SideSheetFooter } from '../index';
+import { SideSheetBody, SideSheetFooter, SideSheetHeader } from '../index';
 import { Dropdown } from '../../Dropdown';
 import { Radio, RadioGroup } from '../../Radio';
 import { Typography } from '../../Typography';

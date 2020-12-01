@@ -2,7 +2,6 @@ import styled, { css } from 'styled-components';
 
 import { HeaderNavigationMenuRootPropsType } from './type';
 import { ExpansionIndicator } from '../../ExpansionIndicator';
-import { PackItem } from '../../Pack';
 import { colorGrey05, colorGrey50 } from '../../../tokens';
 import { transitionDurationInSec } from '../../../constants';
 
@@ -40,19 +39,29 @@ export const HeaderNavigationMenuContentContainer = styled.div<
     ${contentContainerStyle}
 `;
 
-const expansionIndicatorPackItemStyle = ({
+const expansionIndicatorItemStyle = ({
     theme: {
         componentOverrides: { HeaderNavigationMenu },
     },
 }: HeaderNavigationMenuRootPropsType) => {
-    return HeaderNavigationMenu.ExpansionIndicatorPackItem.base;
+    return HeaderNavigationMenu.ExpansionIndicatorItem.base;
 };
 
-export const MenuExpansionIndicatorPackItem = styled(PackItem)<
+export const MenuExpansionIndicatorItem = styled.div<
     HeaderNavigationMenuRootPropsType
 >`
-    ${expansionIndicatorPackItemStyle}
+    ${expansionIndicatorItemStyle}
 `;
+
+export const HeaderNavigationMenuTitleContainer = styled.div<
+    HeaderNavigationMenuRootPropsType
+>`
+    display: flex;
+    align-items: center;
+`;
+export const HeaderNavigationMenuTitle = styled.div<
+    HeaderNavigationMenuRootPropsType
+>``;
 
 export const MenuExpansionIndicator = styled(ExpansionIndicator)<
     HeaderNavigationMenuRootPropsType

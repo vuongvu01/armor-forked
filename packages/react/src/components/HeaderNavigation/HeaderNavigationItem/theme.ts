@@ -1,6 +1,6 @@
 import { componentSpacing02, componentSpacing03 } from '../../../tokens';
 
-export const headerNavigationPackItemDefaultTheme = {
+export const headerNavigationItemDefaultTheme = {
     Root: {
         base: {
             backgroundColor: '$color.neutral.02',

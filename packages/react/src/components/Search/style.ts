@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import { marginAttributes, widthAttributes } from '../../system/attributes';
-import { shouldForwardProp } from '../../utils';
+import { makePropList, shouldForwardProp } from '../../utils';
 import {
     SearchLabelTypographyPropsType,
     SearchRootPropsType,
@@ -18,6 +18,9 @@ import { Typography } from '../Typography';
 import { TextInput } from '../TextInput';
 import { TextInputPropsType } from '../TextInput/type';
 import { spacing } from '../../system/mixins';
+
+const containerPropertyList = makePropList(['searchQuery']);
+
 
 const rootStyle = ({
     theme: {
@@ -131,9 +134,10 @@ export const SearchRoot = styled.div.withConfig({
     ${widthAttributes}
 `;
 
-export const SearchSuggestionsContainer = styled.div<
-    SearchSuggestionsContainerPropsType
->`
+export const SearchSuggestionsContainer = styled.div.withConfig({
+    shouldForwardProp: property =>
+        shouldForwardProp(property, containerPropertyList),
+})<SearchSuggestionsContainerPropsType>`
     background-color: white;
     box-sizing: border-box;
     flex-direction: column;

@@ -4,7 +4,7 @@ export const headerNavigationSearch = {
     Root: {
         base: {},
     },
-    NavigationPackItem: {
+    NavigationItem: {
         base: {
             borderRightColor: '$color.neutral.03',
         },

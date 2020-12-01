@@ -1,5 +1,5 @@
 export const headerNavigationSelector = {
-    NavigationPackItem: {
+    NavigationItem: {
         base: {
             borderRightColor: '$color.neutral.03',
         },

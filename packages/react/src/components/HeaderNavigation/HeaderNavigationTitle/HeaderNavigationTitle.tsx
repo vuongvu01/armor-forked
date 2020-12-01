@@ -6,18 +6,22 @@ import {
     headerNavigationTitleRoot,
 } from './constants';
 import { headerNavigationTitle } from './theme';
-import { useHeaderNavigationTitleClassName } from './utils';
+import {
+    useHeaderNavigationTitle,
+    useHeaderNavigationTitleClassName,
+} from './utils';
 import { HeaderNavigationTitleRoot } from './style';
 import { HeaderNavigationTitlePropsType } from './type';
 import { useComponentTheme } from '../../../utils/hooks';
 import HeaderNavigationLinksContext from '../HeaderNavigationLinks/HeaderNavigationLinksContext';
+import { ButtonPropsType } from '../../Button/type';
 
 export const HeaderNavigationTitle: FunctionComponent<HeaderNavigationTitlePropsType> = forwardRef(
     function HeaderNavigationTitle(
         {
             className,
             to,
-            tag: LinkRoot,
+            tag: Tag = 'span',
             href,
             target,
             rel,
@@ -38,22 +42,32 @@ export const HeaderNavigationTitle: FunctionComponent<HeaderNavigationTitleProps
             className,
         );
 
+        const { onClick, restRootProps } = useHeaderNavigationTitle({
+            onLinkClick,
+            name,
+            ...restProps,
+        });
+
         return (
             <HeaderNavigationLinksContext.Provider value={{ onLinkClick }}>
                 <HeaderNavigationTitleRoot
                     data-testid={headerNavigationTitleRoot}
-                    {...restProps}
+                    {...restRootProps}
                     theme={theme}
                     className={classOverride.Root}
                     to={to}
-                    tag={LinkRoot}
                     href={href}
                     target={target}
                     rel={rel}
                     name={name}
                     ref={ref}
+                    onClick={onClick}
                 >
-                    {children}
+                    {(forwardedProps: ButtonPropsType) => (
+                        <Tag {...forwardedProps} ref={ref}>
+                            {children}
+                        </Tag>
+                    )}
                 </HeaderNavigationTitleRoot>
             </HeaderNavigationLinksContext.Provider>
         );

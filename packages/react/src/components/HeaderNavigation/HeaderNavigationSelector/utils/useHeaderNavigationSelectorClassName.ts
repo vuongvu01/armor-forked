@@ -18,9 +18,9 @@ const useHeaderNavigationSelectorClassName = (
 ) =>
     useMemo(() => {
         return {
-            PackItem: appendClassName(
+            ItemSelector: appendClassName(
                 getClassNameByComponent({
-                    component: 'PackItem',
+                    component: 'ItemSelector',
                     classPrefix,
                 }),
                 className,

@@ -1,7 +1,7 @@
 import React, { forwardRef, FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import { HeaderNavigationSearchRoot, NavigationPackItemSearch } from './style';
+import { HeaderNavigationSearchRoot, NavigationItemSearch } from './style';
 import { HeaderNavigationSearchPropsType } from './type';
 import { useComponentTheme } from '../../../utils/hooks';
 import {
@@ -27,9 +27,9 @@ export const HeaderNavigationSearch: FunctionComponent<HeaderNavigationSearchPro
         );
 
         return (
-            <NavigationPackItemSearch
+            <NavigationItemSearch
                 theme={theme}
-                className={classOverride.PackItem}
+                className={classOverride.ItemSearch}
                 flexGrow={1}
                 separator={separator}
             >
@@ -43,7 +43,7 @@ export const HeaderNavigationSearch: FunctionComponent<HeaderNavigationSearchPro
                     className={classOverride.NavigationSearchRoot}
                     ref={ref}
                 />
-            </NavigationPackItemSearch>
+            </NavigationItemSearch>
         );
     },
 );

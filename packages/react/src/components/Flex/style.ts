@@ -15,7 +15,10 @@ const propertyList = makePropList([
     'alignItems',
     'alignContent',
     'flexGrow',
+    'flexBasis',
+    'flexShrink',
     'alignSelf',
+    'isActive',
     'flexWrap',
 ]);
 

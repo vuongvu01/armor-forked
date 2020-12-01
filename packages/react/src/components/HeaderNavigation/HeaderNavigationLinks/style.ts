@@ -1,23 +1,22 @@
 import styled from 'styled-components';
 import { HeaderNavigationLinksRootPropsType } from './type';
-import { Pack } from '../../Pack';
-import { HeaderNavigationPackItem } from '../HeaderNavigationPackItem';
+import { HeaderNavigationItem } from '../HeaderNavigationItem';
 
-const packItemLinksStyle = ({
+const itemLinksStyle = ({
     theme: {
         componentOverrides: { HeaderNavigationLinks },
     },
 }: HeaderNavigationLinksRootPropsType) => {
-    return HeaderNavigationLinks.NavigationPackItem.base;
+    return HeaderNavigationLinks.NavigationItem.base;
 };
 
-export const HeaderNavigationLinksRoot = styled(HeaderNavigationPackItem)<
+export const HeaderNavigationLinksRoot = styled(HeaderNavigationItem)<
     HeaderNavigationLinksRootPropsType
 >`
     padding-top: 0;
     padding-bottom: 0;
 
-    ${packItemLinksStyle}
+    ${itemLinksStyle}
 `;
 
 const navigationLinksRootStyle = ({
@@ -28,8 +27,12 @@ const navigationLinksRootStyle = ({
     return HeaderNavigationLinks.Root.base;
 };
 
-export const HeaderNavigationLinksContainer = styled(Pack)<
+export const HeaderNavigationLinksContainer = styled.div<
     HeaderNavigationLinksRootPropsType
 >`
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+
     ${navigationLinksRootStyle}
 `;

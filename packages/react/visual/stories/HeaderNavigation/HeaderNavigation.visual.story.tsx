@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import { QuestionChatIcon, LogoutIcon } from '@deliveryhero/armor-icons';
 import { BrowserRouter, Link } from 'react-router-dom';
 
@@ -122,7 +123,7 @@ const NavigationAction = (
                 console.log('Log out');
             }}
         >
-            <LogoutIcon style={{ paddingTop: '8px', paddingBottom: '0' }} />
+            <LogoutIcon />
         </HeaderNavigationActionItem>
     </HeaderNavigationAction>
 );
@@ -135,9 +136,7 @@ const NavigationActionMultiple = (
                 console.log('Show help');
             }}
         >
-            <QuestionChatIcon
-                style={{ paddingTop: '8px', paddingBottom: '0' }}
-            />
+            <QuestionChatIcon />
         </HeaderNavigationActionItem>
         <HeaderNavigationActionItem
             onClick={() => {
@@ -145,7 +144,7 @@ const NavigationActionMultiple = (
                 console.log('Log out');
             }}
         >
-            <LogoutIcon style={{ paddingTop: '8px', paddingBottom: '0' }} />
+            <LogoutIcon />
         </HeaderNavigationActionItem>
     </HeaderNavigationAction>
 );
@@ -232,6 +231,41 @@ export const MultipleNavigationActionItems = () => (
             />
         }
         navigationAction={NavigationActionMultiple}
+    />
+);
+
+const NavigationMenuContent = (
+    <HeaderNavigationMenuContent>
+        <HeaderNavigationMenuContentHeader
+            title="Restaurant"
+            label="Backoffice"
+            image={<Image />}
+        />
+        <HeaderNavigationMenuContentBody
+            options={restaurantsMenuContentBodyOptions}
+        />
+    </HeaderNavigationMenuContent>
+);
+
+const CustomHeaderNavigation = styled(HeaderNavigation)`
+    border-bottom: 1px solid red;
+`;
+
+export const CustomStylization = () => (
+    <CustomHeaderNavigation
+        title="Vendor Monitor"
+        navigationMenuTitle={NavigationMenuTitle}
+        navigationMenuContent={NavigationMenuContent}
+        selector={
+            <HeaderNavigationSelector
+                navigationSelectorParams={{
+                    ...selectorParams,
+                    isMultiselect: true,
+                    defaultValue: [0, 1],
+                }}
+            />
+        }
+        navigationAction={NavigationAction}
     />
 );
 
@@ -872,211 +906,6 @@ export const WithContentsReordered = () => {
                             Workflows
                         </HeaderNavigationLink>
                     </HeaderNavigationLinks>
-                }
-                navigationAction={NavigationAction}
-            />
-        </BrowserRouter>
-    );
-};
-
-export const AlignedToTheRight = () => {
-    const accountsLinkName = 'CAS_accounts';
-    const vendorsLinkName = 'CAS_vendors';
-    const scheduleLinkName = 'CAS_schedule';
-    const workflowsLinkName = 'CAS_workflows';
-
-    const [selectedValue, setSelectedValue] = useState<ScalarType>('value_3');
-    const [selectedLinkName, setSelectedLinkName] = useState<string>(
-        accountsLinkName,
-    );
-
-    const handleOptionSelect = (selectedItem: OptionType) => {
-        console.log('handleOptionSelect', { selectedItem });
-
-        // @ts-ignore
-        setSelectedValue(selectedItem?.value);
-    };
-
-    const handleLinkClick = (name: string) => {
-        // eslint-disable-next-line no-console
-        console.log('link clicked', { name });
-
-        return setSelectedLinkName(name);
-    };
-
-    const homeLink = '/accounts';
-
-    return (
-        <BrowserRouter>
-            <HeaderNavigation
-                justifyContent="flex-end"
-                title={
-                    <HeaderNavigationTitle
-                        tag={Link}
-                        to={homeLink}
-                        name={accountsLinkName}
-                        onLinkClick={handleLinkClick}
-                    >
-                        Vendor Monitor
-                    </HeaderNavigationTitle>
-                }
-                navigationMenuContent={
-                    <HeaderNavigationMenuContent>
-                        <HeaderNavigationMenuContentHeader
-                            title="Restaurant"
-                            label="Backoffice"
-                            image={<Image />}
-                        />
-                        <HeaderNavigationMenuContentBody
-                            options={restaurantsMenuContentBodyOptions}
-                            selectedValue={selectedValue}
-                            onOptionSelect={handleOptionSelect}
-                        />
-                    </HeaderNavigationMenuContent>
-                }
-                links={
-                    <HeaderNavigationLinks onLinkClick={handleLinkClick}>
-                        <HeaderNavigationLink
-                            name={accountsLinkName}
-                            isActive={accountsLinkName === selectedLinkName}
-                            tag={Link}
-                            to={homeLink}
-                        >
-                            Accounts
-                        </HeaderNavigationLink>
-                        <HeaderNavigationLink
-                            name={vendorsLinkName}
-                            isActive={vendorsLinkName === selectedLinkName}
-                            tag={Link}
-                            to="/vendors"
-                        >
-                            Vendors
-                        </HeaderNavigationLink>
-                        <HeaderNavigationLink
-                            name={scheduleLinkName}
-                            isActive={scheduleLinkName === selectedLinkName}
-                            tag={Link}
-                            to="/schedule"
-                        >
-                            Schedule
-                        </HeaderNavigationLink>
-                        <HeaderNavigationLink
-                            name={workflowsLinkName}
-                            isActive={workflowsLinkName === selectedLinkName}
-                            tag={Link}
-                            to="/workflows"
-                        >
-                            Workflows
-                        </HeaderNavigationLink>
-                    </HeaderNavigationLinks>
-                }
-                selector={
-                    <HeaderNavigationSelector
-                        navigationSelectorParams={selectorParams}
-                    />
-                }
-                navigationAction={NavigationAction}
-            />
-        </BrowserRouter>
-    );
-};
-
-export const AlignedToTheLeft = () => {
-    const accountsLinkName = 'CAS_accounts';
-    const vendorsLinkName = 'CAS_vendors';
-    const scheduleLinkName = 'CAS_schedule';
-    const workflowsLinkName = 'CAS_workflows';
-
-    const [selectedValue, setSelectedValue] = useState<ScalarType>('value_3');
-    const [selectedLinkName, setSelectedLinkName] = useState<string>(
-        accountsLinkName,
-    );
-
-    const handleOptionSelect = (selectedItem: OptionType) => {
-        console.log('handleOptionSelect', { selectedItem });
-
-        // @ts-ignore
-        setSelectedValue(selectedItem?.value);
-    };
-
-    const handleLinkClick = (name: string) => {
-        // eslint-disable-next-line no-console
-        console.log('link clicked', { name });
-
-        return setSelectedLinkName(name);
-    };
-
-    const homeLink = '/accounts';
-
-    return (
-        <BrowserRouter>
-            <HeaderNavigation
-                justifyContent="flex-start"
-                title={
-                    <HeaderNavigationTitle
-                        tag={Link}
-                        to={homeLink}
-                        name={accountsLinkName}
-                        onLinkClick={handleLinkClick}
-                    >
-                        Vendor Monitor
-                    </HeaderNavigationTitle>
-                }
-                navigationMenuContent={
-                    <HeaderNavigationMenuContent>
-                        <HeaderNavigationMenuContentHeader
-                            title="Restaurant"
-                            label="Backoffice"
-                            image={<Image />}
-                        />
-                        <HeaderNavigationMenuContentBody
-                            options={restaurantsMenuContentBodyOptions}
-                            selectedValue={selectedValue}
-                            onOptionSelect={handleOptionSelect}
-                        />
-                    </HeaderNavigationMenuContent>
-                }
-                links={
-                    <HeaderNavigationLinks onLinkClick={handleLinkClick}>
-                        <HeaderNavigationLink
-                            name={accountsLinkName}
-                            isActive={accountsLinkName === selectedLinkName}
-                            tag={Link}
-                            to={homeLink}
-                        >
-                            Accounts
-                        </HeaderNavigationLink>
-                        <HeaderNavigationLink
-                            name={vendorsLinkName}
-                            isActive={vendorsLinkName === selectedLinkName}
-                            tag={Link}
-                            to="/vendors"
-                        >
-                            Vendors
-                        </HeaderNavigationLink>
-                        <HeaderNavigationLink
-                            name={scheduleLinkName}
-                            isActive={scheduleLinkName === selectedLinkName}
-                            tag={Link}
-                            to="/schedule"
-                        >
-                            Schedule
-                        </HeaderNavigationLink>
-                        <HeaderNavigationLink
-                            name={workflowsLinkName}
-                            isActive={workflowsLinkName === selectedLinkName}
-                            tag={Link}
-                            to="/workflows"
-                        >
-                            Workflows
-                        </HeaderNavigationLink>
-                    </HeaderNavigationLinks>
-                }
-                selector={
-                    <HeaderNavigationSelector
-                        navigationSelectorParams={selectorParams}
-                        separator={false}
-                    />
                 }
                 navigationAction={NavigationAction}
             />
