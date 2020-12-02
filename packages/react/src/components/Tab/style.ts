@@ -5,6 +5,7 @@ import { marginAttributes } from '../../system/attributes';
 import { mouseCursor } from '../../styling';
 import { TabLabelPropsType, TabRootPropsType } from './type';
 import { transitionDurationInSec } from '../../constants';
+import { borderRadius, color, spacing, typography } from '../../system/mixins';
 import { makePropList, shouldForwardProp } from '../../utils';
 
 const propertyList = makePropList(['isActive']);
@@ -17,21 +18,28 @@ const animationStyle = ({
 }: TabRootPropsType) =>
     isActive ? Tab.Root.active__after : 'position: relative;';
 
-const tabRootStyle = ({
-    isActive,
-    wide,
-    theme: {
-        componentOverrides: { Tab },
-    },
-}: TabRootPropsType) => {
-    const activeStyleBase = isActive ? Tab.Root.active : '';
+const tabRootStyle = ({ isActive, wide, theme }: TabRootPropsType) => {
+    let result = css``;
 
-    return wide
-        ? css`
-              flex-grow: 1;
-              ${activeStyleBase}
-          `
-        : activeStyleBase;
+    if (isActive) {
+        const { fontWeight } = typography('labelMedium')({ theme });
+
+        result = css`
+            ${result};
+            transform: scaleX(1);
+            font-weight: ${fontWeight};
+            transition: all ${transitionDurationInSec}s ease;
+        `;
+    }
+
+    if (wide) {
+        result = css`
+            ${result};
+            flex-grow: 1;
+        `;
+    }
+
+    return result;
 };
 
 const tabRootAfterStyle = ({
@@ -46,39 +54,51 @@ const tabLabelStyle = ({
     theme: {
         componentOverrides: { Tab },
     },
+    wide,
 }: TabLabelPropsType) => {
+    let result = css`
+        padding: ${spacing(1)} ${spacing(6)};
+        color: ${color('neutral.05')};
+        border-radius: ${borderRadius('sharp')};
+    `;
+
+    if (wide) {
+        result = css`
+            ${result};
+            justify-content: center;
+        `;
+    }
+
     if (disabled) {
-        return css`${Tab.Label.base}${Tab.Label.disabled}`;
+        return css`
+            ${result};
+            ${Tab.Label.disabled}
+        `;
     }
 
     if (isActive) {
-        return css`${Tab.Label.base}${Tab.Label.active}`;
+        return css`
+            ${result};
+            ${Tab.Label.active}
+        `;
     }
 
     if (!isActive) {
-        return css`${Tab.Label.base}${Tab.Label.hover}`;
-    }
-
-    return Tab.Label.base;
-};
-
-const tabLabelContainerStyle = ({
-    disabled,
-    theme: {
-        componentOverrides: { Tab },
-    },
-}: TabLabelPropsType) => {
-    let result = Tab.LabelContainer.base;
-
-    if (disabled) {
-        result = css`
+        return css`
             ${result};
-            cursor: not-allowed;
+            ${Tab.Label.hover}
         `;
     }
 
     return result;
 };
+
+const tabLabelContainerStyle = ({ disabled }: TabLabelPropsType) =>
+    disabled
+        ? css`
+              cursor: not-allowed;
+          `
+        : '';
 
 const cursor = ({ disabled, isActive }: TabRootPropsType) => {
     if (disabled) {
@@ -139,6 +159,7 @@ export const TabLabel = styled.div.withConfig({
     align-items: center;
     box-sizing: border-box;
     text-align: center;
+    display: flex;
     
     ${tabLabelStyle} 
     ${marginAttributes} 

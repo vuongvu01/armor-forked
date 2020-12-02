@@ -30,7 +30,6 @@ describe('<SVGIcon />', () => {
     //
     //     // @ts-ignore
     //     expect(result).toSupportMarginAttribute(
-    //         accordionRoot,
     //         marginAttribute,
     //         marginValue,
     //     );

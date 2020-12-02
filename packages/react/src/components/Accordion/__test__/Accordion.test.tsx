@@ -99,10 +99,6 @@ describe('<Accordion />', () => {
             .toJSON();
 
         // @ts-ignore
-        expect(result).toSupportMarginAttribute(
-            accordionRoot,
-            marginAttribute,
-            marginValue,
-        );
+        expect(result).toSupportMarginAttribute(marginAttribute, marginValue);
     });
 });

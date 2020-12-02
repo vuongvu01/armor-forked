@@ -97,10 +97,6 @@ describe('<Tag />', () => {
             .toJSON();
 
         // @ts-ignore
-        expect(result).toSupportMarginAttribute(
-            tagRoot,
-            marginAttribute,
-            marginValue,
-        );
+        expect(result).toSupportMarginAttribute(marginAttribute, marginValue);
     });
 });
