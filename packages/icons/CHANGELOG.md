@@ -1,3 +1,10 @@
+# @deliveryhero/armor-icons [1.5.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.4.0...@deliveryhero/armor-icons@1.5.0) (2020-12-02)
+
+
+### Features
+
+* **tab:** counter [LD-329] ([#323](https://github.com/deliveryhero/armor/issues/323)) ([1d88be0](https://github.com/deliveryhero/armor/commit/1d88be017a6a9e1e534ba3d26233aeb310718c0d))
+
 # @deliveryhero/armor-icons [1.4.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.3.1...@deliveryhero/armor-icons@1.4.0) (2020-11-25)
 
 
