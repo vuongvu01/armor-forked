@@ -10,16 +10,17 @@ import { useHeaderNavigationMenuClassName } from './utils';
 import {
     HeaderNavigationMenuContentContainer,
     HeaderNavigationMenuRoot,
+    HeaderNavigationMenuTitle,
+    HeaderNavigationMenuTitleContainer,
     MenuExpansionIndicator,
-    MenuExpansionIndicatorPackItem,
+    MenuExpansionIndicatorItem,
 } from './style';
-import { Pack, PackItem } from '../../Pack';
 import { headerNavigationMenuTheme } from './theme';
 import HeaderNavigationMenuContentContext from './HeaderNavigationMenuContent/HeaderNavigationMenuContentContext';
 import { DHLogoImage } from './DHLogoImage';
 import { useHeaderNavigationMenu } from './utils/useHeaderNavigationMenu';
 import { useComponentTheme } from '../../../utils/hooks';
-import { HeaderNavigationPackItem } from '../HeaderNavigationPackItem';
+import { HeaderNavigationItem } from '../HeaderNavigationItem';
 
 export const HeaderNavigationMenu: FunctionComponent<HeaderNavigationMenuPropsType> = forwardRef(
     function HeaderNavigationMenu(
@@ -56,9 +57,9 @@ export const HeaderNavigationMenu: FunctionComponent<HeaderNavigationMenuPropsTy
 
         return (
             <HeaderNavigationMenuContentContext.Provider value={contextValue}>
-                <HeaderNavigationPackItem
+                <HeaderNavigationItem
                     theme={theme}
-                    className={classOverride.PackItem}
+                    className={classOverride.NavigationMenuItem}
                     flexGrow={1}
                 >
                     <HeaderNavigationMenuRoot
@@ -67,17 +68,17 @@ export const HeaderNavigationMenu: FunctionComponent<HeaderNavigationMenuPropsTy
                         theme={theme}
                         className={classOverride.NavigationMenu}
                     >
-                        <Pack alignItems="flex-start" ref={internalRef}>
-                            <PackItem
+                        <HeaderNavigationMenuTitleContainer ref={internalRef}>
+                            <HeaderNavigationMenuTitle
                                 theme={theme}
-                                className={classOverride.PackItem}
+                                className={classOverride.NavigationMenuItem}
                             >
                                 {headerTitle}
-                            </PackItem>
+                            </HeaderNavigationMenuTitle>
                             {headerContent && (
-                                <MenuExpansionIndicatorPackItem
+                                <MenuExpansionIndicatorItem
                                     theme={theme}
-                                    className={classOverride.PackItem}
+                                    className={classOverride.NavigationMenuItem}
                                 >
                                     <MenuExpansionIndicator
                                         displaySeparator={false}
@@ -88,9 +89,9 @@ export const HeaderNavigationMenu: FunctionComponent<HeaderNavigationMenuPropsTy
                                         }
                                         tabIndex={tabIndex}
                                     />
-                                </MenuExpansionIndicatorPackItem>
+                                </MenuExpansionIndicatorItem>
                             )}
-                        </Pack>
+                        </HeaderNavigationMenuTitleContainer>
                         <HeaderNavigationMenuContentContainer
                             theme={theme}
                             isExpanded={isExpanded}
@@ -101,7 +102,7 @@ export const HeaderNavigationMenu: FunctionComponent<HeaderNavigationMenuPropsTy
                             {isExpanded && headerContent}
                         </HeaderNavigationMenuContentContainer>
                     </HeaderNavigationMenuRoot>
-                </HeaderNavigationPackItem>
+                </HeaderNavigationItem>
             </HeaderNavigationMenuContentContext.Provider>
         );
     },

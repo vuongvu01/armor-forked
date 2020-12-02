@@ -1,7 +1,7 @@
 import { componentSpacing05 } from '../../../tokens';
 
 export const headerNavigationMenuTheme = {
-    ExpansionIndicatorPackItem: {
+    ExpansionIndicatorItem: {
         base: {
             height: componentSpacing05,
         },

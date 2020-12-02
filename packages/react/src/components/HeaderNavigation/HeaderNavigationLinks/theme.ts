@@ -4,7 +4,7 @@ export const headerNavigationLinks = {
     Root: {
         base: {},
     },
-    NavigationPackItem: {
+    NavigationItem: {
         base: {
             paddingLeft: componentSpacing06,
             fontFamily: '$typography.paragraphMedium.fontFamily',

@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 import { HeaderNavigationSearchRootPropsType } from './type';
 import { Search } from '../../Search';
-import { HeaderNavigationPackItem } from '../HeaderNavigationPackItem';
+import { HeaderNavigationItem } from '../HeaderNavigationItem';
 
 const packItemSearchStyle = ({
     separator,
@@ -10,7 +10,7 @@ const packItemSearchStyle = ({
         componentOverrides: { HeaderNavigationSearch },
     },
 }: HeaderNavigationSearchRootPropsType) => {
-    let result = HeaderNavigationSearch.NavigationPackItem.base;
+    let result = HeaderNavigationSearch.NavigationItem.base;
 
     if (!separator) {
         result = css`
@@ -24,7 +24,7 @@ const packItemSearchStyle = ({
 
 // TODO (nmelnikov 2020-10-14): update this logic once this PR lands:
 // https://github.com/deliveryhero/armor/pull/270
-export const NavigationPackItemSearch = styled(HeaderNavigationPackItem)<
+export const NavigationItemSearch = styled(HeaderNavigationItem)<
     HeaderNavigationSearchRootPropsType
 >`
     padding-top: 0;

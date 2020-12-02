@@ -11,7 +11,6 @@ export const tableCellDefaultTheme = {
     Root: {
         base: {
             $typography: 'paragraphLarge',
-            backgroundColor: '$color.neutral.01',
             paddingLeft: componentSpacing04,
             paddingRight: componentSpacing04,
             paddingTop: componentSpacing05,

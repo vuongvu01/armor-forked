@@ -25,28 +25,28 @@ const useHeaderNavigationClassName = (
                 }),
                 className,
             ),
-            Pack: getClassNameByComponent({
-                component: 'Pack',
+            HeaderNavigationContent: getClassNameByComponent({
+                component: 'HeaderNavigationContent',
                 classPrefix,
             }),
-            PackItem: getClassNameByComponent({
-                component: 'PackItem',
+            HeaderNavigationContentItem: getClassNameByComponent({
+                component: 'HeaderNavigationContentItem',
                 classPrefix,
             }),
-            NavigationMenu: getClassNameByComponent({
-                component: 'NavigationMenu',
+            HeaderNavigationContentLeft: getClassNameByComponent({
+                component: 'HeaderNavigationContentLeft',
                 classPrefix,
             }),
             NavigationTitle: getClassNameByComponent({
                 component: 'NavigationTitle',
                 classPrefix,
             }),
-            NavigationSelector: getClassNameByComponent({
-                component: 'NavigationSelector',
+            HeaderNavigationItem: getClassNameByComponent({
+                component: 'HeaderNavigationItem',
                 classPrefix,
             }),
-            NavigationAction: getClassNameByComponent({
-                component: 'NavigationAction',
+            HeaderNavigationContentRight: getClassNameByComponent({
+                component: 'HeaderNavigationContentRight',
                 classPrefix,
             }),
         };

@@ -45,7 +45,6 @@ type TagEffectivePropsType = Indexed<{
 }> &
     HTMLAttributes<HTMLElement> &
     Pick<AnchorHTMLAttributes<HTMLAnchorElement>, 'target' | 'href' | 'rel'> &
-
     MarginAttributesType;
 
 export type TagPropsType = TagEffectivePropsType;

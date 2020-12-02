@@ -3,6 +3,8 @@ import { TableRowRootPropsType } from './type';
 import { ObjectLiteralType } from '../../../type';
 import { shouldForwardProp } from '../../../utils';
 import { heightAttributes } from '../../../system/attributes';
+import { color } from '../../../system/mixins';
+import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
 
 // all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
 const propertyList = {
@@ -10,17 +12,15 @@ const propertyList = {
     rowId: true,
 } as ObjectLiteralType;
 
-const getRootDynamicStyle = ({ theme, isHeader }: TableRowRootPropsType) => {
-    const {
-        componentOverrides: { TableRow },
-    } = theme;
-
-    let result = TableRow.Root.base;
+const getRootDynamicStyle = ({ isHeader }: TableRowRootPropsType) => {
+    let result = {};
 
     if (!isHeader) {
         result = css`
             ${result};
-            ${TableRow.Root.body};
+            &:hover td {
+                background-color: ${color('primary.lightest')};
+            }
         `;
     }
 
@@ -36,6 +36,10 @@ export const TableRowRoot = styled.tr.withConfig({
         border-bottom-style: solid;
     }
 
+    border-color: ${color('neutral.03')};
+    background-color: ${color('neutral.01')};
+
     ${getRootDynamicStyle}
+    ${getComponentOverride('TableRow')};
     ${heightAttributes}
 `;

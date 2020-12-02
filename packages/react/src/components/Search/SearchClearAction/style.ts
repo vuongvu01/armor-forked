@@ -6,6 +6,9 @@ import {
     SearchInputClearIconPropsType,
 } from './type';
 import { transitionDurationInSec } from '../../../constants';
+import { makePropList, shouldForwardProp } from '../../../utils';
+
+const clearIconPropertyList = makePropList(['searchQuery']);
 
 const clearIconContainerStyle = ({
     theme: {
@@ -50,8 +53,9 @@ export const ClearIconContainer = styled.div<ClearIconContainerPropsType>`
     ${clearIconContainerStyle};
 `;
 
-export const SearchInputClearIcon = styled(CancelIcon)<
-    SearchInputClearIconPropsType
->`
+export const SearchInputClearIcon = styled(CancelIcon).withConfig({
+    shouldForwardProp: property =>
+        shouldForwardProp(property, clearIconPropertyList),
+})<SearchInputClearIconPropsType>`
     ${searchInputClearIconStyle}
 `;

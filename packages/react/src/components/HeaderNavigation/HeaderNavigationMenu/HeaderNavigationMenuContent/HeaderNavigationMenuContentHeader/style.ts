@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 import { HeaderNavigationMenuContentHeaderRootPropsType } from './type';
 import { Typography } from '../../../../Typography';
-import { Pack, PackItem } from '../../../../Pack';
 
 const contentHeaderRootStyle = ({
     theme: {
@@ -21,13 +20,16 @@ export const HeaderNavigationMenuContentHeaderRoot = styled.div<
     ${contentHeaderRootStyle}
 `;
 
-export const MenuContentHeaderPack = styled(Pack)<
+export const MenuContentHeader = styled.div<
     HeaderNavigationMenuContentHeaderRootPropsType
 >`
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
     height: 100%;
 `;
 
-export const MenuContentHeaderPackItem = styled(PackItem)<
+export const MenuContentHeaderItem = styled.div<
     HeaderNavigationMenuContentHeaderRootPropsType
 >`
     height: 100%;

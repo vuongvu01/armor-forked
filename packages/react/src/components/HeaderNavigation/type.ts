@@ -54,5 +54,5 @@ export type HeaderNavigationTitleRootPropsType = HeaderNavigationEffectivePropsT
 export type HeaderNavigationSelectorRootPropsType = HeaderNavigationEffectivePropsType &
     ComponentElementStylePropsType;
 
-export type NavigationPackItemPropsType = HeaderNavigationEffectivePropsType &
+export type NavigationItemPropsType = HeaderNavigationEffectivePropsType &
     ComponentElementStylePropsType;

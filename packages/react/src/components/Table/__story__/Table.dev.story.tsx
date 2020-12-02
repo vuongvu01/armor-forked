@@ -1,7 +1,8 @@
 /* eslint-disable no-console,import/no-unresolved */
 
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useState, useCallback } from 'react';
 import { DeleteIcon } from '@deliveryhero/armor-icons';
+import { ThemeProvider } from 'styled-components';
 
 import { withKnobs } from '@storybook/addon-knobs';
 import { Table } from '../Table';
@@ -17,6 +18,9 @@ import { TableAction } from '../TableAction';
 import { Pack } from '../../Pack';
 import { componentSpacing01 } from '../../../tokens';
 import { LEFT, RIGHT } from '../../../constants';
+import { TableExpandableSection } from '../TableExpandableSection';
+import { TableControllerCell } from '../TableControllerCell';
+import { makeTheme } from '../../../styling';
 
 export default {
     title: 'Components/Table',
@@ -358,3 +362,163 @@ export const WithEllipsis = () => {
         </Table>
     );
 };
+
+export const StickyColumnsAndCollapsable = () => {
+    const [expanded, setExpanded] = useState(false);
+
+    return (
+        <Box style={{ backgroundColor: '#fbfbfb' }}>
+            <Table
+                maxWidth="70%"
+                horizontalScroll
+                stickyColumns={[
+                    { index: 0, alignment: LEFT },
+                    { index: 11, alignment: RIGHT },
+                ]}
+            >
+                <TableHead>
+                    <Row>
+                        <Cell>Food Companies</Cell>
+                        <Cell>Scheme ID</Cell>
+                        <Cell>City</Cell>
+                        <Cell>Full Name</Cell>
+                        <Cell>ID</Cell>
+                        <Cell>Phone number</Cell>
+                        <Cell>Food Companies</Cell>
+                        <Cell>Scheme ID</Cell>
+                        <Cell>City</Cell>
+                        <Cell>Full Name</Cell>
+                        <Cell>ID</Cell>
+                        <Cell>Actions</Cell>
+                    </Row>
+                </TableHead>
+                <Body>
+                    {largeDemoData.map((item, index) => (
+                        <>
+                            <Row key={`${index}_data`}>
+                                <Cell onClick={() => setExpanded(!expanded)}>
+                                    {item.company}
+                                </Cell>
+                                <Cell>{item.scheme}</Cell>
+                                <Cell>{item.city}</Cell>
+                                <Cell>{item.fullName}</Cell>
+                                <Cell>{item.id}</Cell>
+                                <Cell>{item.phoneNumber}</Cell>
+                                <Cell>{item.company}</Cell>
+                                <Cell>{item.scheme}</Cell>
+                                <Cell>{item.city}</Cell>
+                                <Cell>{item.fullName}</Cell>
+                                <Cell>{item.id}</Cell>
+                                <Cell>
+                                    <Pack alignItems="center">
+                                        <TableAction>
+                                            <DeleteIcon
+                                                margin={componentSpacing01}
+                                            />
+                                        </TableAction>
+                                    </Pack>
+                                </Cell>
+                            </Row>
+                            {index === 0 && (
+                                <TableExpandableSection
+                                    colSpan={12}
+                                    expanded={expanded}
+                                >
+                                    {loremIpsum}
+                                </TableExpandableSection>
+                            )}
+                        </>
+                    ))}
+                </Body>
+            </Table>
+        </Box>
+    );
+};
+
+export const Collapsable = () => {
+    const [expanded, setExpanded] = useState(false);
+
+    const [content, setContent] = useState(loremIpsum);
+    const increaseContent = useCallback(() => {
+        setContent(`${content} 1111111111111`);
+    }, [content]);
+
+    return (
+        <Box style={{ backgroundColor: '#fbfbfb' }}>
+            <Table>
+                <TableHead>
+                    <Row>
+                        <Cell>Food Companies</Cell>
+                        <Cell>Scheme ID</Cell>
+                        <Cell>City</Cell>
+                        <Cell>Full Name</Cell>
+                        <Cell>Actions</Cell>
+                    </Row>
+                </TableHead>
+                <Body>
+                    {largeDemoData.map((item, index) => (
+                        <>
+                            <Row key={`${index}_data`}>
+                                {index === 0 && (
+                                    <TableControllerCell
+                                        onExpansionChange={() =>
+                                            setExpanded(!expanded)
+                                        }
+                                        expanded={expanded}
+                                    >
+                                        {item.company}
+                                    </TableControllerCell>
+                                )}
+                                {index !== 0 && <Cell>{item.company}</Cell>}
+                                <Cell>{item.scheme}</Cell>
+                                <Cell>{item.city}</Cell>
+                                <Cell>{item.fullName}</Cell>
+                                <Cell>
+                                    <Pack alignItems="center">
+                                        <TableAction>
+                                            <DeleteIcon
+                                                margin={componentSpacing01}
+                                            />
+                                        </TableAction>
+                                    </Pack>
+                                </Cell>
+                            </Row>
+                            {index === 0 && (
+                                <TableExpandableSection
+                                    colSpan={12}
+                                    onClick={() => increaseContent()}
+                                    expanded={expanded}
+                                >
+                                    {content}
+                                </TableExpandableSection>
+                            )}
+                        </>
+                    ))}
+                </Body>
+            </Table>
+        </Box>
+    );
+};
+
+const customTheme = makeTheme({
+    armor: {
+        components: {
+            TableControllerCell: {
+                borderWidth: '2px',
+                borderColor: 'red',
+            },
+        },
+    },
+});
+
+export const WithCustomTheme = () => (
+    <ThemeProvider theme={customTheme}>
+        <table>
+            <tbody>
+                <tr>
+                    <TableControllerCell />
+                </tr>
+            </tbody>
+        </table>
+    </ThemeProvider>
+);

@@ -7,7 +7,7 @@ import {
     colorGrey50,
     colorGrey90,
 } from '../../../tokens';
-import { HeaderNavigationPackItem } from '../HeaderNavigationPackItem';
+import { HeaderNavigationItem } from '../HeaderNavigationItem';
 import { Dropdown } from '../../Dropdown';
 import { spacing } from '../../../system/mixins';
 
@@ -15,13 +15,13 @@ export const HeaderNavigationSelectorRoot = styled.div<
     HeaderNavigationSelectorRootPropsType
 >``;
 
-const packItemSelectorStyle = ({
+const itemSelectorStyle = ({
     separator,
     theme: {
         componentOverrides: { HeaderNavigationSelector },
     },
 }: HeaderNavigationSelectorRootPropsType) => {
-    let result = HeaderNavigationSelector.NavigationPackItem.base;
+    let result = HeaderNavigationSelector.NavigationItem.base;
 
     if (!separator) {
         result = css`
@@ -33,7 +33,7 @@ const packItemSelectorStyle = ({
     return result;
 };
 
-export const NavigationPackItemSelector = styled(HeaderNavigationPackItem)<
+export const NavigationItemSelector = styled(HeaderNavigationItem)<
     HeaderNavigationSelectorRootPropsType
 >`
     padding-top: 0;
@@ -42,7 +42,7 @@ export const NavigationPackItemSelector = styled(HeaderNavigationPackItem)<
     border-right-width: 1px;
     border-right-style: solid;
 
-    ${packItemSelectorStyle}
+    ${itemSelectorStyle}
 `;
 
 export const SelectorDropdown = styled(Dropdown)<

@@ -1,15 +1,25 @@
-import { componentSpacing04 } from '../../../tokens';
+import { borderRadius02, componentSpacing02 } from '../../../tokens';
 
 export const headerNavigationActionTheme = {
     Root: {
-        base: {},
+        base: {
+            paddingLeft: componentSpacing02,
+            paddingRight: componentSpacing02,
+        },
     },
     Item: {
         base: {
-            paddingTop: 0,
-            paddingRight: 0,
+            paddingTop: componentSpacing02,
+            paddingRight: componentSpacing02,
+            marginRight: componentSpacing02,
             paddingBottom: 0,
-            paddingLeft: componentSpacing04,
+            paddingLeft: componentSpacing02,
+            marginLeft: componentSpacing02,
+
+            '&:hover': {
+                background: '$color.primary.lightest',
+                borderRadius: borderRadius02,
+            },
         },
     },
 };

@@ -5,6 +5,9 @@ import {
     SearchInputLoadingIconPropsType,
     SearchInputSearchIconPropsType,
 } from './type';
+import { shouldForwardProp } from '../../../utils';
+
+const SearchIconPropertyList = {};
 
 const searchIconContainerStyle = ({
     theme: {
@@ -42,8 +45,9 @@ const searchIconStyle = ({
     return SearchIconTheme.SearchIcon.base;
 };
 
-export const SearchInputSearchIcon = styled(SearchIcon)<
-    SearchInputSearchIconPropsType
->`
+export const SearchInputSearchIcon = styled(SearchIcon).withConfig({
+    shouldForwardProp: property =>
+        shouldForwardProp(property, SearchIconPropertyList),
+})<SearchInputSearchIconPropsType>`
     ${searchIconStyle}
 `;

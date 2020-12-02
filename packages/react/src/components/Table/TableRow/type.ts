@@ -8,6 +8,8 @@ import { UseTableRowType } from './utils/type';
 import { HeightAttributesType } from '../../../system/attributes';
 
 type TableRowEffectivePropsType = Indexed<{
+    enableStickyTop?: boolean;
+    enableStickyColumns?: boolean;
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLTableRowElement> & // includes all HTML Tr attributes

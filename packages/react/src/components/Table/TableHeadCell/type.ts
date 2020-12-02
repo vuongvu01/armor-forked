@@ -3,7 +3,7 @@ import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../../type';
-import { MarginAttributesType } from '../../../system/attributes';
+import { PaddingAttributesType } from '../../../system/attributes';
 import { Indexed, ScalarType } from '../../../type';
 
 export type TableHeadCellSortType = 'numerical' | 'alphabetical';
@@ -25,7 +25,7 @@ type TableHeadCellEffectivePropsType = Indexed<{
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLTableHeaderCellElement> & // includes all HTML Div attributes
-    MarginAttributesType;
+    PaddingAttributesType;
 
 /* TableHeadCell component prop type */
 export type TableHeadCellPropsType = TableHeadCellEffectivePropsType &

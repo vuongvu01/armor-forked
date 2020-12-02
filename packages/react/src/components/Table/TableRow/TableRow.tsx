@@ -5,58 +5,41 @@ import { useComponentTheme } from '../../../utils/hooks';
 import { useTableRowClassNames } from './utils/useTableRowClassNames';
 import { TableRowRoot } from './style';
 import { TableRowPropsType } from './type';
-import { tableRowDefaultTheme } from './theme';
 import { tableRowRootTestId, TABLE_ROW_CLASS_PREFIX } from './constants';
 import { useTableRow } from './utils/useTableRow';
 import { TableRowCells } from './TableRowCells';
+import { getScalarPropType } from '../../../utils/propTypes';
 
 export const TableRow: FunctionComponent<TableRowPropsType> = forwardRef(
     function TableRow({ className, children, ...restProps }, ref) {
-        const theme = useComponentTheme(
-            TABLE_ROW_CLASS_PREFIX,
-            tableRowDefaultTheme,
-        );
+        const theme = useComponentTheme(TABLE_ROW_CLASS_PREFIX);
         const classNameComponents = useTableRowClassNames(
             TABLE_ROW_CLASS_PREFIX,
             className,
         );
 
-        const {
-            isHeader,
-            stickyTop,
-            stickyTopVisible,
-            stickyColumns,
-            stickyLeftColumnVisible,
-            stickyRightColumnVisible,
-        } = useTableRow();
+        const { rootProps, cellsProps } = useTableRow(restProps);
 
         return (
             <TableRowRoot
                 data-testid={tableRowRootTestId}
-                {...restProps}
+                {...rootProps}
                 theme={theme}
                 className={classNameComponents.Root}
                 ref={ref}
-                isHeader={isHeader}
             >
-                <TableRowCells
-                    stickyColumns={stickyColumns}
-                    stickyTopVisible={stickyTopVisible}
-                    stickyLeftColumnVisible={stickyLeftColumnVisible}
-                    stickyRightColumnVisible={stickyRightColumnVisible}
-                    stickyTop={stickyTop}
-                    isHeader={isHeader}
-                >
-                    {children}
-                </TableRowCells>
+                <TableRowCells {...cellsProps}>{children}</TableRowCells>
             </TableRowRoot>
         );
     },
 );
 
-TableRow.defaultProps = {};
+TableRow.defaultProps = {
+    enableStickyTop: true,
+    enableStickyColumns: true,
+};
 
 /** prop-types are required here for run-time checks */
 TableRow.propTypes = {
-    rowId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    rowId: getScalarPropType(),
 };

@@ -35,3 +35,4 @@ export * from './Typography';
 export * from './PageNavigation';
 export * from './DataTable';
 export * from './Container';
+export * from './IconButton';

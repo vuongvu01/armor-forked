@@ -8,8 +8,8 @@ import {
 import {
     HeaderNavigationMenuContentHeaderRoot,
     MenuContentHeaderLabel,
-    MenuContentHeaderPack,
-    MenuContentHeaderPackItem,
+    MenuContentHeader,
+    MenuContentHeaderItem,
     MenuContentHeaderTitle,
 } from './style';
 import { useHeaderNavigationMenuContentHeaderClassName } from './utils';
@@ -40,16 +40,18 @@ export const HeaderNavigationMenuContentHeader: FunctionComponent<HeaderNavigati
             theme={theme}
             className={classOverride.Root}
         >
-            <MenuContentHeaderPack
+            <MenuContentHeader
                 justifyContent="space-between"
                 alignItems="center"
                 theme={theme}
-                className={classOverride.Pack}
+                className={classOverride.HeaderNavigationMenuContentHeader}
             >
-                <MenuContentHeaderPackItem
+                <MenuContentHeaderItem
                     flexGrow={3}
                     theme={theme}
-                    className={classOverride.PackItem}
+                    className={
+                        classOverride.HeaderNavigationMenuContentHeaderItem
+                    }
                 >
                     {title ? (
                         <MenuContentHeaderTitle
@@ -71,14 +73,16 @@ export const HeaderNavigationMenuContentHeader: FunctionComponent<HeaderNavigati
                             {label}
                         </MenuContentHeaderLabel>
                     ) : null}
-                </MenuContentHeaderPackItem>
-                <MenuContentHeaderPackItem
+                </MenuContentHeaderItem>
+                <MenuContentHeaderItem
                     theme={theme}
-                    className={classOverride.PackItem}
+                    className={
+                        classOverride.HeaderNavigationMenuContentHeaderItem
+                    }
                 >
                     {image || null}
-                </MenuContentHeaderPackItem>
-            </MenuContentHeaderPack>
+                </MenuContentHeaderItem>
+            </MenuContentHeader>
         </HeaderNavigationMenuContentHeaderRoot>
     );
 };

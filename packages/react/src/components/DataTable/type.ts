@@ -16,6 +16,7 @@ export type DataTableColumnType = {
     sortType?: TableHeadCellPropsType['rowSortType'];
     headCellProps?: TableCellPropsType;
     dataCellProps?: TableCellPropsType;
+    expandableSectionController?: boolean;
     formatDataCellContent?: (
         value: any,
         item: DataTableDataType,
@@ -26,7 +27,6 @@ export type DataTableColumnType = {
 export type DataTableDataType = {
     id: ScalarType;
     key?: ScalarType;
-    cellProps?: TableCellPropsType;
 } & ObjectLiteralType;
 
 type DataTableEffectivePropsType = Indexed<{
@@ -50,6 +50,13 @@ type DataTableEffectivePropsType = Indexed<{
     // sticky columns
     stickyLeftColumn?: boolean;
     stickyRightColumn?: boolean;
+
+    // expandable sections
+    defaultExpandedSectionIds?: ScalarType[];
+    expandedSectionIds?: ScalarType[];
+    expandableSectionControllerColumnId?: ScalarType;
+    renderExpandableSection?: (data: DataTableDataType) => ReactChild;
+    onSectionExpansionChange?: (expandedSections: ScalarType[]) => void;
 
     // add other custom properties here
 }> &

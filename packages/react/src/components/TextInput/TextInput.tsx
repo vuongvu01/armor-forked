@@ -115,6 +115,7 @@ TextInput.defaultProps = {
     large: false, // default is medium (small in design)
     outline: false,
     enableFocusOnRootClick: false,
+    onChange: () => {},
 };
 
 /** Support of prop-types is here for project that don't use TypeScript */

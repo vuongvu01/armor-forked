@@ -8,11 +8,17 @@ import {
     HEADER_NAVIGATION_CLASS_PREFIX,
     headerNavigationRoot,
 } from './constants';
-import { HeaderNavigationRoot, HeaderNavigationTitleRoot } from './style';
+import {
+    HeaderNavigationContent,
+    HeaderNavigationContentItem,
+    HeaderNavigationContentLeft,
+    HeaderNavigationContentRight,
+    HeaderNavigationRoot,
+    HeaderNavigationTitleRoot,
+} from './style';
 import { useHeaderNavigationClassName } from './utils';
-import { Pack, PackItem } from '../Pack';
 import { HeaderNavigationMenu } from './HeaderNavigationMenu';
-import { HeaderNavigationPackItem } from './HeaderNavigationPackItem';
+import { HeaderNavigationItem } from './HeaderNavigationItem';
 
 export const HeaderNavigation: FunctionComponent<HeaderNavigationPropsType> = forwardRef(
     function HeaderNavigation(
@@ -26,7 +32,6 @@ export const HeaderNavigation: FunctionComponent<HeaderNavigationPropsType> = fo
             selector,
             title,
             search,
-            justifyContent,
             onSearchItemSelect,
             ...restProps
         },
@@ -51,22 +56,31 @@ export const HeaderNavigation: FunctionComponent<HeaderNavigationPropsType> = fo
                 theme={theme}
                 onSearchItemSelect={onSearchItemSelect}
             >
-                <Pack
-                    justifyContent={justifyContent}
+                <HeaderNavigationContent
                     theme={theme}
-                    className={classOverride.Pack}
+                    className={classOverride.HeaderNavigationContent}
                 >
-                    <PackItem>
-                        <Pack theme={theme} className={classOverride.Pack}>
+                    <HeaderNavigationContentItem
+                        theme={theme}
+                        className={classOverride.HeaderNavigationContentItem}
+                    >
+                        <HeaderNavigationContentLeft
+                            theme={theme}
+                            className={
+                                classOverride.HeaderNavigationContentLeft
+                            }
+                        >
                             <HeaderNavigationMenu
                                 headerTitle={navigationMenuTitle}
                                 headerContent={navigationMenuContent}
                                 isMenuExpanded={isMenuExpanded}
                             />
                             {title && (
-                                <HeaderNavigationPackItem
+                                <HeaderNavigationItem
                                     theme={theme}
-                                    className={classOverride.PackItem}
+                                    className={
+                                        classOverride.HeaderNavigationItem
+                                    }
                                     flexGrow={1}
                                 >
                                     <HeaderNavigationTitleRoot
@@ -77,23 +91,28 @@ export const HeaderNavigation: FunctionComponent<HeaderNavigationPropsType> = fo
                                     >
                                         {title}
                                     </HeaderNavigationTitleRoot>
-                                </HeaderNavigationPackItem>
+                                </HeaderNavigationItem>
                             )}
                             {links}
-                        </Pack>
-                    </PackItem>
-                    <PackItem>
-                        <Pack
+                        </HeaderNavigationContentLeft>
+                    </HeaderNavigationContentItem>
+                    <HeaderNavigationContentItem
+                        theme={theme}
+                        className={classOverride.HeaderNavigationContentItem}
+                    >
+                        <HeaderNavigationContentRight
                             alignItems="center"
                             theme={theme}
-                            className={classOverride.Pack}
+                            className={
+                                classOverride.HeaderNavigationContentRight
+                            }
                         >
                             {search}
                             {selector}
                             {navigationAction}
-                        </Pack>
-                    </PackItem>
-                </Pack>
+                        </HeaderNavigationContentRight>
+                    </HeaderNavigationContentItem>
+                </HeaderNavigationContent>
             </HeaderNavigationRoot>
         );
     },

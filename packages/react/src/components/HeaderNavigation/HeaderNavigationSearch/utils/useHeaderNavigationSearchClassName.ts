@@ -18,9 +18,9 @@ const useHeaderNavigationSearchClassName = (
 ) =>
     useMemo(() => {
         return {
-            PackItem: appendClassName(
+            ItemSearch: appendClassName(
                 getClassNameByComponent({
-                    component: 'PackItem',
+                    component: 'ItemSearch',
                     classPrefix,
                 }),
                 className,

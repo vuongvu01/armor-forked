@@ -5,8 +5,7 @@ import {
     HeaderNavigationActionItemRootPropsType,
     HeaderNavigationActionRootPropsType,
 } from './type';
-import { Pack, PackItem } from '../../Pack';
-import { HeaderNavigationPackItem } from '../HeaderNavigationPackItem';
+import { HeaderNavigationItem } from '../HeaderNavigationItem';
 
 const actionRootStyle = ({
     theme: {
@@ -16,12 +15,11 @@ const actionRootStyle = ({
     return HeaderNavigationAction.Root.base;
 };
 
-export const HeaderNavigationActionRoot = styled(HeaderNavigationPackItem)<
+export const HeaderNavigationActionRoot = styled(HeaderNavigationItem)<
     HeaderNavigationActionRootPropsType
 >`
     padding-top: 0;
     padding-bottom: 0;
-    cursor: pointer;
     display: flex;
     align-items: center;
     height: 48px;
@@ -29,9 +27,13 @@ export const HeaderNavigationActionRoot = styled(HeaderNavigationPackItem)<
     ${actionRootStyle}
 `;
 
-export const HeaderNavigationActionContainer = styled(Pack)<
+export const HeaderNavigationActionContainer = styled.div<
     HeaderNavigationActionContainerPropsType
->``;
+>`
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+`;
 
 const actionItemRootStyle = ({
     theme: {
@@ -41,8 +43,10 @@ const actionItemRootStyle = ({
     return HeaderNavigationAction.Item.base;
 };
 
-export const HeaderNavigationActionItemRoot = styled(PackItem)<
+export const HeaderNavigationActionItemRoot = styled.div<
     HeaderNavigationActionItemRootPropsType
 >`
+    cursor: pointer;
+
     ${actionItemRootStyle}
 `;

@@ -1,7 +1,8 @@
 import React, { ChangeEvent, useState } from 'react';
+import styled from 'styled-components';
 import {
-    QuestionCircleFilledIcon,
     LogoutIcon,
+    QuestionCircleFilledIcon,
 } from '@deliveryhero/armor-icons';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { BrowserRouter, Link } from 'react-router-dom';
@@ -183,7 +184,7 @@ const NavigationAction = (
                 console.log('Log out');
             }}
         >
-            <LogoutIcon style={{ paddingTop: '8px', paddingBottom: '0' }} />
+            <LogoutIcon />
         </HeaderNavigationActionItem>
     </HeaderNavigationAction>
 );
@@ -196,9 +197,7 @@ const NavigationActionMultiple = (
                 console.log('Show help');
             }}
         >
-            <QuestionCircleFilledIcon
-                style={{ paddingTop: '8px', paddingBottom: '0' }}
-            />
+            <QuestionCircleFilledIcon />
         </HeaderNavigationActionItem>
         <HeaderNavigationActionItem
             onClick={() => {
@@ -206,7 +205,7 @@ const NavigationActionMultiple = (
                 console.log('Log out');
             }}
         >
-            <LogoutIcon style={{ paddingTop: '8px', paddingBottom: '0' }} />
+            <LogoutIcon />
         </HeaderNavigationActionItem>
     </HeaderNavigationAction>
 );
@@ -220,6 +219,7 @@ const selectorParams = {
         { value: 2, label: 'Sweden' },
         { value: 3, label: 'Vietnam' },
     ],
+    onChange: () => {},
 };
 
 export const ExtensiveExample = () => {
@@ -355,6 +355,7 @@ export const ExtensiveExample = () => {
                     <HeaderNavigationSelector
                         navigationSelectorParams={selectorParams}
                         onOptionSelect={handleSelect}
+                        onChange={() => {}}
                     />
                 }
                 navigationAction={NavigationAction}
@@ -454,7 +455,6 @@ export const MultiselectCountryPlatformSelector = () => {
                     }}
                 />
             }
-            onOptionSelect={handleOptionSelect}
             navigationAction={NavigationAction}
         />
     );
@@ -480,6 +480,28 @@ export const PreSelectedCountryAndExpandedMenuOnLoad = () => (
 
 export const MultiplePreSelectedCountry = () => (
     <HeaderNavigation
+        title="Vendor Monitor"
+        navigationMenuTitle={NavigationMenuTitle}
+        navigationMenuContent={NavigationMenuContent}
+        selector={
+            <HeaderNavigationSelector
+                navigationSelectorParams={{
+                    ...selectorParams,
+                    isMultiselect: true,
+                    defaultValue: [0, 1],
+                }}
+            />
+        }
+        navigationAction={NavigationAction}
+    />
+);
+
+const CustomHeaderNavigation = styled(HeaderNavigation)`
+    border-bottom: 1px solid red;
+`;
+
+export const CustomStylization = () => (
+    <CustomHeaderNavigation
         title="Vendor Monitor"
         navigationMenuTitle={NavigationMenuTitle}
         navigationMenuContent={NavigationMenuContent}
@@ -525,9 +547,6 @@ export const Arara = () => {
                 navigationMenuTitle={
                     <HeaderNavigationTitle tag={Link} to="/">
                         <Pack>
-                            {/* <PackItem paddingLeft={2}> */}
-                            {/*    <Image /> */}
-                            {/* </PackItem> */}
                             <PackItem>Arara</PackItem>
                         </Pack>
                     </HeaderNavigationTitle>
@@ -567,6 +586,7 @@ export const Arara = () => {
                             // @ts-ignore
                             setCurrentCountry(country.value);
                         }}
+                        onChange={() => {}}
                     />
                 }
                 navigationAction={

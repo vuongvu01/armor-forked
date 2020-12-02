@@ -2,7 +2,7 @@ import React, { forwardRef, FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 import {
     HeaderNavigationSelectorRoot,
-    NavigationPackItemSelector,
+    NavigationItemSelector,
     SelectorDropdown,
 } from './style';
 import { HeaderNavigationSelectorPropsType } from './type';
@@ -37,9 +37,9 @@ export const HeaderNavigationSelector: FunctionComponent<HeaderNavigationSelecto
 
         // todo: use spreads here where possible
         return navigationSelectorParams ? (
-            <NavigationPackItemSelector
+            <NavigationItemSelector
                 theme={theme}
-                className={classOverride.PackItem}
+                className={classOverride.ItemSelector}
                 flexGrow={1}
                 separator={separator}
             >
@@ -65,7 +65,7 @@ export const HeaderNavigationSelector: FunctionComponent<HeaderNavigationSelecto
                         />
                     }
                 </HeaderNavigationSelectorRoot>
-            </NavigationPackItemSelector>
+            </NavigationItemSelector>
         ) : null;
     },
 );
