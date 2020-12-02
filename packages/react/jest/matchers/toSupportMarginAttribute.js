@@ -19,12 +19,7 @@ const assertFailInvalidMargin = {
 };
 
 expect.extend({
-    toSupportMarginAttribute(
-        componentJSON,
-        testId,
-        marginAttribute,
-        marginValue,
-    ) {
+    toSupportMarginAttribute(componentJSON, marginAttribute, marginValue) {
         if (!marginAttributes.includes(marginAttribute)) {
             return assertFailInvalidMargin;
         }

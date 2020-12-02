@@ -2,9 +2,11 @@ import {useState} from 'react';
 import {Meta, Preview, Props, Story} from '@storybook/addon-docs/blocks';
 import {BrowserRouter, Link} from "react-router-dom";
 
-import {Box, Tab, Tabs, TabView} from 'src/components';
+import {Badge, Box, Tab, Tabs, TabView} from 'src/components';
 
 <Meta title="Components/Tabs" component={Tabs} />
+
+# Tabs
 
 ```js
 import { Tabs, Tab, TabView } from '@deliveryhero/armor';
@@ -23,6 +25,7 @@ const handleSwitch = (tabIndex) => setSelectedTabIndex(tabIndex);
    <p>Pasta</p>
 </TabView>
 ```
+
 ## Minimum configuration
 
 <Preview>
@@ -35,7 +38,7 @@ const handleSwitch = (tabIndex) => setSelectedTabIndex(tabIndex);
      padding={3}
      style={{
          height: '180px',
-         width: '510px',
+         width: '610px',
      }}
  >
      <Tabs onSwitch={handleChange}>
@@ -66,6 +69,53 @@ const handleSwitch = (tabIndex) => setSelectedTabIndex(tabIndex);
     </Story>
 </Preview>
 
+## With Counter Badge
+
+<Preview>
+    <Story name="WithCounterBadge" height="240px">
+        {() => {
+const badgeLeftMargin = 4;
+const [selectedTabIndex, setSelectedTabIndex] = useState(0);
+const handleChange = (tabIndex) => setSelectedTabIndex(tabIndex);
+return (
+    <>
+        <Tabs onSwitch={handleChange}>
+            <Tab>
+                Pizza <Badge marginLeft={badgeLeftMargin}>42</Badge>
+            </Tab>
+            <Tab>
+                Pasta<Badge marginLeft={badgeLeftMargin}>53</Badge>
+            </Tab>
+            <Tab>
+                Risotto<Badge marginLeft={badgeLeftMargin}>64</Badge>
+            </Tab>
+            <Tab>
+                Beverages<Badge marginLeft={badgeLeftMargin}>+2</Badge>
+            </Tab>
+            <Tab disabled>
+                Alcoholic beverages<Badge marginLeft={badgeLeftMargin}>11</Badge>
+            </Tab>
+        </Tabs>
+        <TabView value={0} selectedValue={selectedTabIndex}>
+            <p>Pizza</p>
+        </TabView>
+        <TabView value={1} selectedValue={selectedTabIndex}>
+            <p>Pasta</p>
+        </TabView>
+        <TabView value={2} selectedValue={selectedTabIndex}>
+            <p>Risotto</p>
+        </TabView>
+        <TabView value={3} selectedValue={selectedTabIndex}>
+            <p>Beverages</p>
+        </TabView>
+        <TabView value={4} selectedValue={selectedTabIndex}>
+            <p>Alcoholic beverages</p>
+        </TabView>
+    </>
+);
+}}
+    </Story>
+</Preview>
 
 ## Default Active Tab on Load
 
@@ -79,7 +129,7 @@ return (
     padding={3}
     style={{
         height: '180px',
-        width: '510px',
+        width: '610px',
     }}
 >
     <Tabs defaultActiveTab={2} onSwitch={handleChange}>
@@ -161,7 +211,7 @@ return (
     <Story name="CustomRouterAndAnchorTags" height="240px">
         {() => {
         const [selectedTabIndex, setSelectedTabIndex] = useState(0);
-        const handleChange = (tabIndex: number) => setSelectedTabIndex(tabIndex);
+        const handleChange = (tabIndex) => setSelectedTabIndex(tabIndex);
         return (
         <BrowserRouter>
         <Tabs onSwitch={handleChange}>

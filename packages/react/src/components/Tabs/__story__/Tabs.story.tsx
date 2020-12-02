@@ -6,6 +6,7 @@ import { withKnobs } from '@storybook/addon-knobs';
 import { Tabs } from '../Tabs';
 import { Tab } from '../../Tab';
 import { TabView } from '../../TabView';
+import { Badge } from '../../Badge';
 
 export default {
     title: 'Components/Tabs',
@@ -27,6 +28,51 @@ export const DefaultLayoutMinimumConfiguration = () => {
                 <Tab>Risotto</Tab>
                 <Tab>Beverages</Tab>
                 <Tab>Alcoholic beverages</Tab>
+            </Tabs>
+            <TabView value={0} selectedValue={selectedTabIndex}>
+                <p>Pizza</p>
+            </TabView>
+            <TabView value={1} selectedValue={selectedTabIndex}>
+                <p>Pasta</p>
+            </TabView>
+            <TabView value={2} selectedValue={selectedTabIndex}>
+                <p>Risotto</p>
+            </TabView>
+            <TabView value={3} selectedValue={selectedTabIndex}>
+                <p>Beverages</p>
+            </TabView>
+            <TabView value={4} selectedValue={selectedTabIndex}>
+                <p>Alcoholic beverages</p>
+            </TabView>
+        </>
+    );
+};
+
+export const WithCounterBadge = () => {
+    const badgeLeftMargin = 4;
+    const [selectedTabIndex, setSelectedTabIndex] = useState(0);
+
+    const handleChange = (tabIndex: number) => setSelectedTabIndex(tabIndex);
+
+    return (
+        <>
+            <Tabs onSwitch={handleChange}>
+                <Tab>
+                    Pizza <Badge marginLeft={badgeLeftMargin}>42</Badge>
+                </Tab>
+                <Tab>
+                    Pasta<Badge marginLeft={badgeLeftMargin}>53</Badge>
+                </Tab>
+                <Tab>
+                    Risotto<Badge marginLeft={badgeLeftMargin}>64</Badge>
+                </Tab>
+                <Tab>
+                    Beverages<Badge marginLeft={badgeLeftMargin}>+2</Badge>
+                </Tab>
+                <Tab disabled>
+                    Alcoholic beverages
+                    <Badge marginLeft={badgeLeftMargin}>11</Badge>
+                </Tab>
             </Tabs>
             <TabView value={0} selectedValue={selectedTabIndex}>
                 <p>Pizza</p>
@@ -157,6 +203,7 @@ export const MultipleTabsToSingleContent = () => {
 };
 
 export const FullWidth = () => {
+    const badgeLeftMargin = 4;
     const [selectedTabIndex, setSelectedTabIndex] = useState(0);
 
     const handleChange = (tabIndex: number) => setSelectedTabIndex(tabIndex);
@@ -164,23 +211,18 @@ export const FullWidth = () => {
     return (
         <>
             <Tabs wide onSwitch={handleChange}>
-                <Tab value={1}>Pizza</Tab>
-                <Tab value={2}>Pasta</Tab>
+                <Tab value={1}>
+                    Pizza <Badge marginLeft={badgeLeftMargin}>42</Badge>
+                </Tab>
+                <Tab marginLeft={badgeLeftMargin} value={2}>
+                    Pasta
+                </Tab>
             </Tabs>
             <TabView value={0} selectedValue={selectedTabIndex}>
                 <p>Pizza</p>
             </TabView>
             <TabView value={1} selectedValue={selectedTabIndex}>
                 <p>Pasta</p>
-            </TabView>
-            <TabView value={2} selectedValue={selectedTabIndex}>
-                <p>Risotto</p>
-            </TabView>
-            <TabView value={3} selectedValue={selectedTabIndex}>
-                <p>Beverages</p>
-            </TabView>
-            <TabView value={4} selectedValue={selectedTabIndex}>
-                <p>Alcoholic beverages</p>
             </TabView>
         </>
     );

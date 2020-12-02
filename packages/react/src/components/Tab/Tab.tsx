@@ -78,6 +78,7 @@ export const Tab: FunctionComponent<TabPropsType> = forwardRef(function Tab(
                             onClick={handleSelect}
                             ref={ref}
                             theme={theme}
+                            wide={wide}
                         >
                             {label || children}
                         </TabLabel>

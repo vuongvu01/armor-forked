@@ -5,7 +5,6 @@ import { cleanup as cleanupHooks } from '@testing-library/react-hooks';
 import renderer from 'react-test-renderer';
 
 import { Radio } from '../Radio';
-import { radioRoot } from '../constants';
 import { RadioGroup } from '../RadioGroup';
 import { RadioPropsType } from '../type';
 
@@ -87,13 +86,11 @@ describe('<Radio />', () => {
 
         // @ts-ignore
         expect(result[0]).toSupportMarginAttribute(
-            radioRoot,
             marginAttribute,
             marginValue,
         );
         // @ts-ignore
         expect(result[1]).toSupportMarginAttribute(
-            radioRoot,
             marginAttribute,
             marginValue,
         );

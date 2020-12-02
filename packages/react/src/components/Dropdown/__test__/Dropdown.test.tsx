@@ -221,10 +221,6 @@ describe('<Dropdown />', () => {
             .toJSON();
 
         // @ts-ignore
-        expect(result).toSupportMarginAttribute(
-            textInputRoot,
-            marginAttribute,
-            marginValue,
-        );
+        expect(result).toSupportMarginAttribute(marginAttribute, marginValue);
     });
 });

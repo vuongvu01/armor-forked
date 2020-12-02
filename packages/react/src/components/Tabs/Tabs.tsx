@@ -28,7 +28,7 @@ export const Tabs: FunctionComponent<TabsPropsType> = forwardRef(function Tabs(
         if (onSwitch && defaultActiveTab) {
             onSwitch(defaultActiveTab);
         }
-    }, [defaultActiveTab]);
+    }, [defaultActiveTab, onSwitch]);
 
     const classOverride = useTabsClassName(
         TABS_CLASS_PREFIX,

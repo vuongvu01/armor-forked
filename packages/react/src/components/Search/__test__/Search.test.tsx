@@ -8,7 +8,6 @@ import {
 import renderer from 'react-test-renderer';
 
 import { Search } from '../Search';
-import { searchRoot } from '../constants';
 import { searchInputClearIcon } from '../SearchClearAction/constants';
 
 const foodOptions = [
@@ -79,10 +78,6 @@ describe('<Search />', () => {
             .toJSON();
 
         // @ts-ignore
-        expect(result).toSupportMarginAttribute(
-            searchRoot,
-            marginAttribute,
-            marginValue,
-        );
+        expect(result).toSupportMarginAttribute(marginAttribute, marginValue);
     });
 });

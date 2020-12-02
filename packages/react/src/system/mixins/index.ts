@@ -1,4 +1,5 @@
 export * from './align';
+export * from './borderRadius';
 export * from './fixedCover';
 export * from './spacing';
 export * from './pixelToRem';

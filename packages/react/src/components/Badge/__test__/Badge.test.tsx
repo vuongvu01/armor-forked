@@ -7,37 +7,34 @@ import {
 } from '@testing-library/react-hooks';
 import renderer from 'react-test-renderer';
 
-import { HeaderNavigation } from '../HeaderNavigation';
-import { headerNavigationRoot } from '../constants';
+import { Badge } from '../Badge';
 
-describe('<HeaderNavigation />', () => {
+const badgeRootClassName = 'Badge-Root';
+const badgeValue = 42;
+
+describe('<Badge />', () => {
     afterEach(async () => {
         cleanup();
         await cleanupHooks();
     });
 
-    it('should render itself without errors', async () => {
-        render(<HeaderNavigation label="Sample" />);
+    it('renders itself without errors', async () => {
+        render(<Badge>{badgeValue}</Badge>);
     });
 
-    it('should support forwardRef', () => {
+    it('supports forwardRef', () => {
         const { result } = renderHook(() => useRef());
 
-        render(<HeaderNavigation ref={result.current} />);
+        render(<Badge ref={result.current}>{badgeValue}</Badge>);
 
         expect(result.current.current).toBeInstanceOf(HTMLDivElement);
     });
 
-    it('should ensure class names set', () => {
-        render(<HeaderNavigation />);
+    it('ensures that default user Badge type has corresponding class names set', async () => {
+        render(<Badge>{badgeValue}</Badge>);
 
-        const headerNavigationRootElement = screen.getByTestId(
-            headerNavigationRoot,
-        );
-        expect(headerNavigationRootElement).toBeInstanceOf(HTMLDivElement);
-        expect(headerNavigationRootElement).toHaveClass(
-            'HeaderNavigation-Root',
-        );
+        const badgeElement = screen.getByText(`${badgeValue}`);
+        expect(badgeElement).toHaveClass(badgeRootClassName);
     });
 
     it('ensures margin* property transference', () => {
@@ -46,7 +43,9 @@ describe('<HeaderNavigation />', () => {
 
         const result = renderer
             .create(
-                <HeaderNavigation {...{ [marginAttribute]: marginValue }} />,
+                <Badge {...{ [marginAttribute]: marginValue }}>
+                    {badgeValue}
+                </Badge>,
             )
             .toJSON();
 
