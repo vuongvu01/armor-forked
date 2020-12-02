@@ -96,6 +96,15 @@ describe('<TableRow />', () => {
         );
     });
 
+    it('should support rest props forwarding', async () => {
+        // @ts-ignore
+        expect(TableRow).toSupportRestPropsForwarding('TableRow', children => (
+            <table>
+                <tbody>{children}</tbody>
+            </table>
+        ));
+    });
+
     it('should support height attributes', async () => {
         // @ts-ignore
         expect(TableRow).toSupportHeightAttributes('TableRowRoot', children => (

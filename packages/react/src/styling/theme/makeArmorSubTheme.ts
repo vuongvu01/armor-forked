@@ -25,6 +25,7 @@ export const makeArmorSubTheme = (
         typography: theme.typography,
         color: theme.color,
         elevation: theme.elevation,
+        transition: theme.transition,
     }) as ObjectLiteralType;
 
     theme.referenceIndex = Object.keys(referenceIndex).reduce((result, key) => {

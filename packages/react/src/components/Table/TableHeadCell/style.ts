@@ -1,9 +1,8 @@
 import styled, { css } from 'styled-components';
 import { TableHeadCellRootPropsType } from './type';
-import { marginAttributes } from '../../../system/attributes';
-import { makeBEM, shouldForwardProp } from '../../../utils';
+import { paddingAttributes } from '../../../system/attributes';
+import { makeBEM, shouldForwardProp, makePropList } from '../../../utils';
 import { TableCell } from '../TableCell';
-import { makePropList } from '../../../utils/makePropList';
 import { transitionDurationInSec } from '../../../constants';
 import { TABLE_HEAD_CELL_CLASS_PREFIX } from './constants';
 
@@ -60,5 +59,5 @@ export const TableHeadCellRoot = styled(TableCell).withConfig({
     }
 
     ${getRootDynamicStyle}
-    ${marginAttributes}
+    ${paddingAttributes}
 `;

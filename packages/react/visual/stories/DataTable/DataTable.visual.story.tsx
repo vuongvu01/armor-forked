@@ -157,3 +157,64 @@ export const SortingDesc = () => (
         defaultRowSortOrder={[['age', 'desc']]}
     />
 );
+
+export const ExpandableSection = () => {
+    return (
+        <DataTable
+            columns={columns}
+            data={dataSource}
+            defaultRowSortOrder={[['age', 'desc']]}
+            defaultExpandedSectionIds={['3']}
+            expandableSectionControllerColumnId="name"
+            renderExpandableSection={item => {
+                return (
+                    <>
+                        {item.name} is {item.age} years old and he/she lives in{' '}
+                        {item.address}
+                    </>
+                );
+            }}
+        />
+    );
+};
+
+export const ExpandableSectionTriggerMiddle = () => {
+    return (
+        <DataTable
+            columns={columns}
+            data={dataSource}
+            defaultRowSortOrder={[['age', 'desc']]}
+            defaultExpandedSectionIds={['3']}
+            expandableSectionControllerColumnId="age"
+            renderExpandableSection={item => {
+                return (
+                    <>
+                        {item.name} is {item.age} years old and he/she lives in{' '}
+                        {item.address}
+                    </>
+                );
+            }}
+        />
+    );
+};
+
+export const ExpandableSectionAndSelectableRows = () => {
+    return (
+        <DataTable
+            columns={columns}
+            data={dataSource}
+            defaultRowSortOrder={[['age', 'desc']]}
+            enableRowSelection
+            defaultExpandedSectionIds={['3']}
+            expandableSectionControllerColumnId="name"
+            renderExpandableSection={item => {
+                return (
+                    <>
+                        {item.name} is {item.age} years old and he/she lives in{' '}
+                        {item.address}
+                    </>
+                );
+            }}
+        />
+    );
+};

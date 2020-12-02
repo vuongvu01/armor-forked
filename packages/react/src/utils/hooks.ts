@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 
+import cloneDeep from 'clone-deep';
 import { transformTheme } from '../styling/theme/transformTheme';
 import { merge } from '.';
 import { ThemeType, useTheme } from '../styling';
@@ -15,20 +16,27 @@ export const useComponentTheme = (
     const theme = useTheme();
 
     useMemo(() => {
-        if (!(classPrefix in theme.armor.componentOverrides)) {
+        const { armor } = theme;
+        if (!(classPrefix in armor.componentOverrides)) {
             let override = {};
+            const { components } = armor;
 
             if (defaultComponentTheme) {
                 const chunk = merge(
                     defaultComponentTheme,
-                    theme.armor.components[classPrefix],
+                    components[classPrefix],
                 );
 
-                override = transformTheme(theme.armor, chunk, classPrefix);
+                override = transformTheme(armor, chunk, classPrefix);
+            } else {
+                override =
+                    classPrefix in components
+                        ? cloneDeep(components[classPrefix])
+                        : {};
             }
 
             // eslint-disable-next-line no-param-reassign
-            theme.armor.componentOverrides[classPrefix] = override;
+            armor.componentOverrides[classPrefix] = override;
         }
 
         return true;

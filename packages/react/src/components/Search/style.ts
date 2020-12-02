@@ -21,7 +21,6 @@ import { spacing } from '../../system/mixins';
 
 const containerPropertyList = makePropList(['searchQuery']);
 
-
 const rootStyle = ({
     theme: {
         componentOverrides: { Search },

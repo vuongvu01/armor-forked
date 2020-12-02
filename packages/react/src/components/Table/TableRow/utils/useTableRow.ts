@@ -8,9 +8,16 @@ import {
     TableContextValueType,
     TableSectionContextValueType,
 } from '../../utils/type';
-import { UseTableRowType } from './type';
+import { TableRowPropsType } from '../type';
+import { TableStickyColumnsMapInternal } from '../../type';
 
-export const useTableRow = (): UseTableRowType => {
+const EMPTY_STICKY_COLUMNS: TableStickyColumnsMapInternal = [];
+
+export const useTableRow = ({
+    enableStickyTop,
+    enableStickyColumns,
+    ...restProps
+}: TableRowPropsType) => {
     // sticky header and rows
     const {
         data: {
@@ -29,11 +36,19 @@ export const useTableRow = (): UseTableRowType => {
     const isHeader = section === TABLE_HEAD;
 
     return {
-        isHeader,
-        stickyTop: !!stickyHead && isHeader,
-        stickyColumns,
-        stickyTopVisible: !!stickyHeadVisible && isHeader,
-        stickyLeftColumnVisible,
-        stickyRightColumnVisible,
+        rootProps: {
+            ...restProps,
+            isHeader,
+        },
+        cellsProps: {
+            isHeader,
+            stickyTop: enableStickyTop ? !!stickyHead && isHeader : false,
+            stickyColumns: enableStickyColumns
+                ? stickyColumns
+                : EMPTY_STICKY_COLUMNS,
+            stickyTopVisible: !!stickyHeadVisible && isHeader,
+            stickyLeftColumnVisible,
+            stickyRightColumnVisible,
+        },
     };
 };

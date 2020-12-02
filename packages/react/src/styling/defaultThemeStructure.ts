@@ -51,6 +51,7 @@ import {
     lineHeight04,
     lineHeight05,
 } from '../tokens';
+import { transitionDurationInSec } from '../constants';
 
 export const SPACING_FACTOR = 4;
 
@@ -190,5 +191,8 @@ export const defaultThemeStructure = {
         small: boxShadowSmall,
         medium: boxShadowMedium,
         large: boxShadowLarge,
+    },
+    transition: {
+        normal: `${transitionDurationInSec}s`,
     },
 };

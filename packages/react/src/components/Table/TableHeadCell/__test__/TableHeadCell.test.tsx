@@ -65,8 +65,8 @@ describe('<TableHeadCell />', () => {
         expect(tree).toHaveStyleRule('border-width', '2px');
     });
 
-    it('should support margin attributes', async () => {
+    it('should support padding attributes', async () => {
         // @ts-ignore
-        expect(TableHeadCell).toSupportMarginAttributes();
+        expect(TableHeadCell).toSupportPaddingAttributes();
     });
 });

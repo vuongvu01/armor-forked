@@ -1,7 +1,8 @@
-/* eslint-disable no-console,import/no-unresolved */
+/* eslint-disable no-console,import/no-unresolved, import/no-extraneous-dependencies */
 
 import React, { useState } from 'react';
 import { withKnobs } from '@storybook/addon-knobs';
+import cloneDeep from 'clone-deep';
 import { dataSource, dataSourceWide, columns, columnsWide } from './demoData';
 
 import { DataTable } from '../DataTable';
@@ -238,6 +239,116 @@ export const RowSelectionAndNoStickyColumns = () => {
             }}
             horizontalScroll
             width="50rem"
+        />
+    );
+};
+
+export const WithExtraRows = () => {
+    const [data] = useState<typeof dataSource>(dataSource);
+
+    return (
+        <DataTable
+            columns={columns}
+            data={data}
+            defaultExpandedSectionIds={['3']}
+            expandableSectionControllerColumnId="name"
+            renderExpandableSection={item => {
+                return (
+                    <>
+                        {item.name} is {item.age} years old and he/she lives in{' '}
+                        {item.address}
+                    </>
+                );
+            }}
+        />
+    );
+};
+
+export const WithExtraRowsAndRowSelection = () => {
+    const [data] = useState<typeof dataSource>(dataSource);
+
+    return (
+        <DataTable
+            columns={columns}
+            data={data}
+            enableRowSelection
+            defaultSelectedRowIds={['2']}
+            onRowSelectionChange={selection => {
+                console.log('new selection');
+                console.log(selection);
+            }}
+            defaultExpandedSectionIds={['3']}
+            expandableSectionControllerColumnId="name"
+            renderExpandableSection={item => {
+                return (
+                    <>
+                        {item.name} is {item.age} years old and he/she lives in{' '}
+                        {item.address}
+                    </>
+                );
+            }}
+        />
+    );
+};
+
+export const WithExtraRowsAndRowSelectionTriggerAge = () => {
+    const [data] = useState<typeof dataSource>(dataSource);
+
+    return (
+        <DataTable
+            columns={columns}
+            data={data}
+            enableRowSelection
+            defaultSelectedRowIds={['2']}
+            onRowSelectionChange={selection => {
+                console.log('new selection');
+                console.log(selection);
+            }}
+            defaultExpandedSectionIds={['3']}
+            expandableSectionControllerColumnId="age"
+            renderExpandableSection={item => {
+                return (
+                    <>
+                        {item.name} is {item.age} years old and he/she lives in{' '}
+                        {item.address}
+                    </>
+                );
+            }}
+        />
+    );
+};
+
+export const WithRowSelectionAndMultipleExpansionControllers = () => {
+    const [data] = useState<typeof dataSource>(dataSource);
+
+    const columnsLocal = cloneDeep(columns);
+    // @ts-ignore
+    columnsLocal[0].expandableSectionController = true;
+    // @ts-ignore
+    columnsLocal[2].expandableSectionController = true;
+
+    return (
+        <DataTable
+            columns={columnsLocal}
+            data={data}
+            enableRowSelection
+            defaultSelectedRowIds={['2']}
+            onRowSelectionChange={selection => {
+                console.log('new selection');
+                console.log(selection);
+            }}
+            defaultExpandedSectionIds={['2']}
+            renderExpandableSection={item => {
+                return (
+                    <>
+                        {item.name} is {item.age} years old and he/she lives in{' '}
+                        {item.address}
+                    </>
+                );
+            }}
+            onSectionExpansionChange={expansion => {
+                console.log(expansion);
+            }}
         />
     );
 };

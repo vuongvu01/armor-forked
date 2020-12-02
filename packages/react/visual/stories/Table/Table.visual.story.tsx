@@ -9,6 +9,8 @@ import {
     TableRow,
     TableFoot,
     TableCellLabel,
+    TableControllerCell,
+    TableExpandableSection,
 } from '../../../src/components';
 import { loremIpsum } from '../../../src/helpers/LoremIpsum';
 
@@ -142,6 +144,72 @@ export const EllipsisCells = () => (
             </TableBody>
         </Table>
     </div>
+);
+
+export const TriggerCell = () => (
+    <Table>
+        <TableFoot>
+            <TableRow>
+                <TableControllerCell width="10rem">
+                    Cell text
+                </TableControllerCell>
+                <TableCell width="10rem">Cell text</TableCell>
+            </TableRow>
+            <TableRow>
+                <TableControllerCell width="10rem" expanded>
+                    Cell text
+                </TableControllerCell>
+                <TableCell width="10rem">Cell text</TableCell>
+            </TableRow>
+        </TableFoot>
+    </Table>
+);
+
+export const ExpandableSection = () => (
+    <Table>
+        <TableFoot>
+            <TableRow>
+                <TableControllerCell width="10rem">
+                    Cell text
+                </TableControllerCell>
+                <TableCell width="10rem">Cell text</TableCell>
+            </TableRow>
+            <TableExpandableSection colSpan={2}>
+                Hidden forever
+            </TableExpandableSection>
+            <TableRow>
+                <TableControllerCell width="10rem" expanded>
+                    Cell text
+                </TableControllerCell>
+                <TableCell width="10rem">Cell text</TableCell>
+            </TableRow>
+            <TableExpandableSection expanded colSpan={2}>
+                Ready and waiting
+            </TableExpandableSection>
+            <TableRow>
+                <TableControllerCell width="10rem" expanded>
+                    Cell text
+                </TableControllerCell>
+                <TableCell width="10rem">Cell text</TableCell>
+            </TableRow>
+            <TableExpandableSection
+                expanded
+                enableDefaultPadding={false}
+                colSpan={2}
+            >
+                No padding have I
+            </TableExpandableSection>
+            <TableRow>
+                <TableControllerCell width="10rem" expanded>
+                    Cell text
+                </TableControllerCell>
+                <TableCell width="10rem">Cell text</TableCell>
+            </TableRow>
+            <TableExpandableSection expanded colSpan={2} offsetLeft={10}>
+                Arbitrary left offset
+            </TableExpandableSection>
+        </TableFoot>
+    </Table>
 );
 
 export const CellAlignmentAndSize = () => (

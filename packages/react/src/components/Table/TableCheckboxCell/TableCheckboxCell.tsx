@@ -41,7 +41,6 @@ export const TableCheckboxCell: FunctionComponent<TableCheckboxCellPropsType> = 
                     checked={checked}
                     checkedIcon={checkedIcon}
                     onClick={onCheckboxClick}
-                    isHeader={isHeader}
                 />
             </TableCheckboxCellRoot>
         );

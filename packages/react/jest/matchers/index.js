@@ -5,3 +5,4 @@ require('./toSupportPaddingAttributes');
 require('./toSupportWidthAttributes');
 require('./toSupportHeightAttributes');
 require('./toSupportColorAttributes');
+require('./toSupportRestPropsForwarding');
