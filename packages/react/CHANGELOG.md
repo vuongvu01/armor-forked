@@ -1,3 +1,15 @@
+# @deliveryhero/armor [1.24.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.23.0...@deliveryhero/armor@1.24.0) (2020-12-02)
+
+
+### Bug Fixes
+
+* **headernavigation:** custom stylisation [LD-296] ([#314](https://github.com/deliveryhero/armor/issues/314)) ([ec0b777](https://github.com/deliveryhero/armor/commit/ec0b77717c439b33f96a41bccbfe6261407eca8a))
+
+
+### Features
+
+* **collapsablerow:** TableExpandableSection, TableControllerCell, IconButton delivered, DataTable updated [LD-327] ([#322](https://github.com/deliveryhero/armor/issues/322)) ([0d95a61](https://github.com/deliveryhero/armor/commit/0d95a610daf2556df429d0ada6f65a09ae45b7b0))
+
 # @deliveryhero/armor [1.23.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.22.2...@deliveryhero/armor@1.23.0) (2020-11-27)
 
 
