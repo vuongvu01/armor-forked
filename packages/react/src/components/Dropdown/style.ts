@@ -2,7 +2,6 @@ import styled, { css } from 'styled-components';
 
 import { marginAttributes } from '../../system/attributes';
 import { transitionDurationInSec } from '../../constants';
-import { colorGrey00, colorGrey30 } from '../../tokens';
 import { shouldForwardProp } from '../../utils';
 import {
     DropdownOptionItemPropsType,
@@ -12,7 +11,7 @@ import {
 } from './type';
 import { ExpansionIndicator } from '../ExpansionIndicator';
 import { TextInput } from '../TextInput';
-import { spacing } from '../../system/mixins';
+import { color, spacing } from '../../system/mixins';
 
 const optionItemStyle = ({
     isSelected,
@@ -103,17 +102,13 @@ export const DropdownOptionItem = styled.div<DropdownOptionItemPropsType>`
     ${optionItemStyle}
 `;
 
+// TODO (nmelnikov 2020-11-24): this can be removed once readOnly support on
+//  TextInput is operational: https://jira.deliveryhero.com/browse/LD-325
 export const DropdownTextInput = styled(TextInput)`
-    .TextInput-Label {
-        transition: top ${transitionDurationInSec}s,
-            font-size ${transitionDurationInSec}s,
-            color ${transitionDurationInSec}s;
-        transition-delay: ${transitionDurationInSec}s;
-    }
     .TextInput-Input {
-        caret-color: ${colorGrey00};
+        caret-color: ${color('neutral.00')};
         &:disabled {
-            color: ${colorGrey30};
+            color: ${color('neutral.04')};
         }
     }
 `;
