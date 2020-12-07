@@ -2,3 +2,4 @@
 *.mdx
 packages/**/*.html
 packages/**/build*/
+scaffolders/*
