@@ -8,7 +8,7 @@ export type CheckedIconType = 'tick' | 'dash';
 
 type CheckboxEffectivePropsType = Indexed<{
     checkedIcon?: CheckedIconType;
-    onChange?: (event: React.MouseEvent<HTMLInputElement>) => void;
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
     // add other custom properties here
 }> &
     InputHTMLAttributes<HTMLInputElement> &

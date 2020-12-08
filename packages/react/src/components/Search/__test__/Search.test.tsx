@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { useRef } from 'react';
-import { cleanup, render, screen } from '@testing-library/react';
+import { cleanup, render, screen, prettyDOM } from '@testing-library/react';
 import {
     cleanup as cleanupHooks,
     renderHook,
@@ -79,5 +79,32 @@ describe('<Search />', () => {
 
         // @ts-ignore
         expect(result).toSupportMarginAttribute(marginAttribute, marginValue);
+    });
+
+    it('should render groups', async () => {
+        const faction = [
+            { id: 'terr', label: 'Terran' },
+            { id: 'prot', label: 'Protoss' },
+        ];
+
+        const characters = [
+            { value: 1, label: 'Jim Raynor', groupId: 'terr' },
+            { value: 2, label: 'Duke', groupId: 'terr' },
+            { value: 3, label: 'Mengsk', groupId: 'terr' },
+
+            { value: 4, label: 'Zeratul', groupId: 'prot' },
+            { value: 5, label: 'Tassadar', groupId: 'prot' },
+            { value: 6, label: 'Fenix', groupId: 'prot' },
+        ];
+
+        render(<Search options={characters} groups={faction} />);
+
+        const terranGroup = screen.getByText('Terran');
+        expect(terranGroup).toBeInTheDocument();
+        expect(terranGroup).toHaveClass('Search-ListItemGroup');
+
+        const protossGroup = screen.getByText('Protoss');
+        expect(protossGroup).toBeInTheDocument();
+        expect(protossGroup).toHaveClass('Search-ListItemGroup');
     });
 });

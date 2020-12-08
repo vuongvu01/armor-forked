@@ -4,6 +4,7 @@ const color = {
     dark: '$color.primary.dark',
     contrast: '$color.neutral.00',
     neutral01: '$color.neutral.01',
+    neutral02: '$color.neutral.02',
     neutral03: '$color.neutral.03',
     neutral05: '$color.neutral.05',
 };
@@ -20,7 +21,7 @@ export const checkboxDefaultTheme = {
                 background: color.light,
             },
             disabled: {
-                background: color.neutral01,
+                background: color.neutral02,
                 borderColor: color.neutral03,
             },
         },

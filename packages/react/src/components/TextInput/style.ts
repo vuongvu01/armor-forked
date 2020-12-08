@@ -29,6 +29,7 @@ const propertyList = {
     error: true,
     inside: true,
     outline: true,
+    enableFocusOnRootClick: true,
     // add other custom properties here
 } as ObjectLiteralType;
 

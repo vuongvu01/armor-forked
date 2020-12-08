@@ -9,8 +9,8 @@ import {
 } from '../style';
 import { useSuggestionItemClassName } from './utils';
 import { SuggestionItemPropsType } from './type';
-import { SUGGESTION_ITEM_CLASS_PREFIX } from './constants';
 import { highlightMatch } from '../utils';
+import { SEARCH_CLASS_PREFIX } from '../constants';
 
 export const SuggestionItem: FunctionComponent<SuggestionItemPropsType> = ({
     className,
@@ -24,7 +24,7 @@ export const SuggestionItem: FunctionComponent<SuggestionItemPropsType> = ({
     theme,
 }) => {
     const classOverride = useSuggestionItemClassName(
-        SUGGESTION_ITEM_CLASS_PREFIX,
+        SEARCH_CLASS_PREFIX,
         className,
     );
 
@@ -44,13 +44,15 @@ export const SuggestionItem: FunctionComponent<SuggestionItemPropsType> = ({
             key={label}
             theme={theme}
         >
-            <SearchSuggestionsItemIcon
-                className={classOverride.SuggestionsItemIcon}
-                icon={icon}
-                theme={theme}
-            >
-                {icon || null}
-            </SearchSuggestionsItemIcon>
+            {!!icon && (
+                <SearchSuggestionsItemIcon
+                    className={classOverride.SuggestionsItemIcon}
+                    icon={icon}
+                    theme={theme}
+                >
+                    {icon}
+                </SearchSuggestionsItemIcon>
+            )}
             <SearchSuggestionsItemLabel
                 className={classOverride.SuggestionsItemLabel}
                 onClick={handleOnClick(suggestionIndex)}

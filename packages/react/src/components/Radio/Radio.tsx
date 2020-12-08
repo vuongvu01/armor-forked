@@ -15,6 +15,7 @@ export const Radio: FunctionComponent<RadioPropsType> = forwardRef(
     function Radio(
         {
             checked,
+            children,
             className,
             disabled,
             error,
@@ -78,7 +79,7 @@ export const Radio: FunctionComponent<RadioPropsType> = forwardRef(
                         theme={theme}
                         typographyProps={typographyProps}
                     >
-                        {label}
+                        {label || children}
                     </SelectorLabel>
                 </RadioMark>
             </RadioRoot>
@@ -98,6 +99,10 @@ Radio.propTypes = {
     disabled: PropTypes.bool,
     error: PropTypes.bool,
     id: PropTypes.string,
+    /**
+     * @deprecated
+     * Use children instead
+     */
     label: PropTypes.string,
     onChange: PropTypes.func,
     selectedValue: PropTypes.string,

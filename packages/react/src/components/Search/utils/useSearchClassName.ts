@@ -69,5 +69,6 @@ export const useSearchClassName = (
                 classPrefix,
                 disabled,
             }),
+            ListItemGroup: makeBEM(classPrefix, 'ListItemGroup'),
         };
     }, [classPrefix, className, disabled]);

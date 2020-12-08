@@ -1,8 +1,10 @@
+/* This file is auto-generated, don't edit by hand! */
+
 export * from './Arrow';
-export * from './Cancel';
 export * from './Chat';
-export * from './Devices';
 export * from './Essentials';
+export * from './Cancel';
+export * from './Devices';
 export * from './Finance';
 export * from './Help';
 export * from './Lock';

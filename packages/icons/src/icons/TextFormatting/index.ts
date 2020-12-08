@@ -1,3 +1,5 @@
+/* This file is auto-generated, don't edit by hand! */
+
 export * from './AlignCenter';
 export * from './AlignLeft';
 export * from './AlignRight';

@@ -4,20 +4,41 @@ import React, {
     useEffect,
     useRef,
     useState,
+    useMemo,
 } from 'react';
 
 import { initialCursor } from '../constants';
-import { SearchPropsType, UseSearchBarType } from '../type';
+import {
+    GroupObjectIndexType,
+    GroupObjectType,
+    SearchPropsType,
+    UseSearchBarType,
+} from '../type';
 import { useDetectClickOutsideComponent, useInternalRef } from '../../../utils';
+import { ObjectLiteralType, ReferenceType } from '../../../type';
 
-export const useSearchBar = ({
-    defaultQuery,
-    disabled,
-    onChange,
-    onItemSelect,
-    options,
-    ref,
-}: SearchPropsType): UseSearchBarType => {
+export const useSearchBar = (
+    {
+        defaultQuery,
+        disabled,
+        disableClearAction,
+        isLoading,
+        placeholder,
+        icon,
+
+        onChange,
+        onItemSelect,
+        options,
+        groups,
+        suggestionListHeight,
+        enableSuggestions,
+
+        additionalInfo,
+
+        ...restProps
+    }: SearchPropsType,
+    ref: ReferenceType,
+) => {
     const [cursor, setCursor] = useState<number>(initialCursor);
     const [searchQuery, setSearchQuery] = useState(defaultQuery);
     const [isSuggestionsListShown, setIsSuggestionsListShown] = useState(
@@ -40,7 +61,8 @@ export const useSearchBar = ({
         }
     };
 
-    useDetectClickOutsideComponent(containerRef, setIsOptionsListShown);
+    // todo: setting isCondition to true is not the right approach, fix
+    useDetectClickOutsideComponent(containerRef, setIsOptionsListShown, true);
 
     const scrollToCurrent = useCallback(() => {
         const focused = document.querySelector('.suggestion-focused');
@@ -192,15 +214,59 @@ export const useSearchBar = ({
         [onItemSelect],
     );
 
+    const groupIndex = useMemo<GroupObjectIndexType>(() => {
+        if (!groups || !groups.length) {
+            return {};
+        }
+
+        return groups.reduce<GroupObjectIndexType>((result, group) => {
+            // eslint-disable-next-line no-param-reassign
+            result[group.id] = group;
+            return result;
+        }, {});
+    }, [groups]);
+
     return {
-        searchQuery,
-        containerRef,
-        handleChange,
-        handleClick,
-        internalInputRef,
-        isSuggestionsListShown,
-        handleSuggestionClick,
-        cursor,
-        handleClearQuery,
+        rootProps: {
+            ...restProps,
+            ref: containerRef,
+        },
+        textInputProps: {
+            disabled,
+            onChange: handleChange,
+            onClick: handleClick,
+            placeholder,
+            ref: internalInputRef,
+            value: searchQuery,
+            wide: true,
+        },
+        searchIconProps: {
+            disabled,
+            isLoading,
+        },
+        searchClearActionProps: {
+            disableClearAction,
+            handleClearQuery,
+            searchQuery,
+            disabled,
+        },
+        suggestionsContainerProps: {
+            searchQuery,
+            suggestionListHeight,
+        },
+        suggestionListContainerProps: {},
+        suggestionListProps: {
+            additionalInfo,
+            options,
+            groups,
+            groupIndex,
+            handleSuggestionClick,
+            icon,
+            cursor,
+            searchQuery,
+        },
+
+        disabled,
+        isSuggestionsListShown: isSuggestionsListShown && enableSuggestions,
     };
 };

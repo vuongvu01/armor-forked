@@ -20,33 +20,29 @@ import { Radio } from '@deliveryhero/armor';
      <>
              <Radio
                  checked={false}
-                 label="Unchecked"
                  marginBottom={2}
                  name="name0"
                  value="0"
-             />
+             >Unchecked</Radio>
              <Radio
                  checked
-                 label="Checked"
                  marginBottom={2}
                  name="name1"
                  value="1"
-             />
+             >Checked</Radio>
              <Radio
-                 label="Disabled"
                  marginBottom={2}
                  name="name2"
                  value="2"
                  disabled
-             />
+             >Disabled</Radio>
              <Radio
-                 label="Disabled checked"
                  marginBottom={2}
                  name="name3"
                  value="3"
                  disabled
                  checked
-             />
+             >Disabled checked</Radio>
              <br />
              <br />
              <Button onClick={() => setIsChecked(!isChecked)}>Toggle</Button>
@@ -54,11 +50,10 @@ import { Radio } from '@deliveryhero/armor';
              <Radio
                  checked={isChecked}
                  disabled={isDisabled}
-                 label="External control"
                  marginTop={2}
                  name="name5"
                  value="5"
-             />
+             >External control</Radio>
      </>
              );
          }}
@@ -86,9 +81,9 @@ import { Radio } from '@deliveryhero/armor';
              selectedValue={groupSelectedValue}
              onChange={handleChange}
         >
-            <Radio value="pizza" label="Pizza" />
-            <Radio value="pasta" label="Pasta" />
-            <Radio value="risotto" label="Risotto" />
+            <Radio value="pizza" >Pizza</Radio>
+            <Radio value="pasta" >Pasta</Radio>
+            <Radio value="risotto" >Risotto</Radio>
         </RadioGroup>
     </>
              );
@@ -105,13 +100,11 @@ import { Radio } from '@deliveryhero/armor';
             <code>{`typographyProps={paragraph: true, small: true}`}</code>
             <RadioGroup marginY={2} name="name42" typographyProps={{paragraph: true, small: true}}>
                  <Radio
-                     label="Pizza"
                      value="0"
-                 />
+                 >Pizza</Radio>
                  <Radio
-                     label="Pasta"
                      value="1"
-                 />
+                 >Pasta</Radio>
             </RadioGroup>
             <br />
             <br />
@@ -119,31 +112,27 @@ import { Radio } from '@deliveryhero/armor';
             <Radio
                 marginY={2}
                 name="name0"
-                label="Pizza"
                 typographyProps={{paragraph: true, medium: true}}
-            />
+            >Pizza</Radio>
             <br />
             <code>{`typographyProps={paragraph: true, large: true}`}</code>
             <Radio
                 marginY={2}
                 name="name1"
-                label="Pizza"
                 typographyProps={{paragraph: true, large: true}}
-            />
+            >Pizza</Radio>
             <br />
             <code>{`typographyProps={label: true, small: true}`}</code>
             <Radio
                 marginY={2}
                 name="name2"
-                label="Pizza"
                 typographyProps={{label: true, small: true}}
-            />
+            >Pizza</Radio>
             <br />
             <code>{`typographyProps={label: true, medium: true}`}</code>
             <Radio
                 marginY={2}
                 name="name3"
-                label="Pizza"
                 typographyProps={{label: true, medium: true}}
             />
             <br />
@@ -151,33 +140,29 @@ import { Radio } from '@deliveryhero/armor';
             <Radio
                 marginY={2}
                 name="name4"
-                label="Pizza"
                 typographyProps={{label: true, large: true}}
-            />
+            >Pizza</Radio>
             <br />
             <code>{`typographyProps={subSectionTitle: true}`}</code>
             <Radio
                 marginY={2}
                 name="name5"
-                label="Pizza"
                 typographyProps={{subSectionTitle: true}}
-            />
+            >Pizza</Radio>
             <br />
             <code>{`typographyProps={sectionTitle: true}`}</code>
             <Radio
                 marginY={2}
                 name="name6"
-                label="Pizza"
                 typographyProps={{sectionTitle: true}}
-            />
+            >Pizza</Radio>
             <br />
             <code>{`typographyProps={pageTitle: true}`}</code>
             <Radio
                 marginY={2}
                 name="name7"
-                label="Pizza"
                 typographyProps={{pageTitle: true}}
-            />
+            >Pizza</Radio>
      </>
     </Story>
 </Preview>

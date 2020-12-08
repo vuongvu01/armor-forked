@@ -352,6 +352,32 @@ export const Controlled = () => {
     );
 };
 
+export const ControlledWithReset = () => {
+    const options = [
+        { value: 'BIR', label: 'Biryani' },
+        { value: 'TAC', label: 'Tacos' },
+        { value: 'PHO', label: 'Pho' },
+    ];
+
+    const [value, setValue] = useState<any>();
+
+    const handleReset = () => setValue(null);
+
+    return (
+        <>
+            <Dropdown
+                options={options}
+                onChange={event => setValue(event.target.value)}
+                value={value}
+                label="Dish type"
+            />
+            <Button marginLeft={5} onClick={handleReset}>
+                Reset
+            </Button>
+        </>
+    );
+};
+
 export const ControlledMultiple = () => {
     const [value, setValue] = useState<any>();
 

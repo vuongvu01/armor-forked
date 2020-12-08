@@ -16,7 +16,7 @@ const sourceFolder = normalize(`${__dirname}/../svg/`);
 const destinationFolder = normalize(`${__dirname}/../src/icons`);
 const templateFolder = normalize(`${__dirname}/../templates/`);
 
-const NOTE = "/* This file is auto-generated, don't edit by hand! /*\n\n";
+const NOTE = "/* This file is auto-generated, don't edit by hand! */\n\n";
 
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
