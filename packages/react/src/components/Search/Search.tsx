@@ -31,6 +31,7 @@ export const Search: FunctionComponent<SearchPropsType> = forwardRef(
             options,
             placeholder,
             isLoading,
+            enableSuggestions,
             ...restProps
         },
         ref,
@@ -98,7 +99,7 @@ export const Search: FunctionComponent<SearchPropsType> = forwardRef(
                     value={searchQuery}
                     wide
                 />
-                {isSuggestionsListShown ? (
+                {enableSuggestions && isSuggestionsListShown ? (
                     <SearchSuggestionsContainer
                         className={classOverride.SuggestionsContainer}
                         searchQuery={searchQuery}
@@ -132,6 +133,7 @@ Search.defaultProps = {
     disableClearAction: false,
     icon: null,
     isLoading: false,
+    enableSuggestions: true,
 };
 
 Search.propTypes = {
@@ -151,5 +153,6 @@ Search.propTypes = {
         }).isRequired,
     ),
     placeholder: PropTypes.string,
+    enableSuggestions: PropTypes.bool,
     isLoading: PropTypes.bool,
 };

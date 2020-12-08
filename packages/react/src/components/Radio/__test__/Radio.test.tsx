@@ -17,15 +17,15 @@ const typographyTypes = {
 
 const baseRadioExample = (props: RadioPropsType) => (
     <RadioGroup name="name0" {...props}>
-        <Radio label={label} value="0" />
-        <Radio label="Pasta" value="1" />
+        <Radio value="0">{label}</Radio>
+        <Radio value="1">Pasta</Radio>
     </RadioGroup>
 );
 
 const radioWithCustomTypographyType = (type: object | undefined) => (
     <RadioGroup name="name0" typographyProps={type}>
-        <Radio label={label} value="0" />
-        <Radio label="Pasta" value="1" />
+        <Radio value="0">{label}</Radio>
+        <Radio value="1">Pasta</Radio>
     </RadioGroup>
 );
 

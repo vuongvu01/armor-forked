@@ -33,6 +33,7 @@ type SearchEffectivePropsType = Indexed<{
     onItemSelect?: (option: SuggestionObjectType) => void;
     options?: SuggestionObjectType[];
     placeholder?: string;
+    enableSuggestions?: boolean;
     isLoading?: boolean;
 }> &
     HTMLAttributes<HTMLElement> &

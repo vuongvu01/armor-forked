@@ -127,3 +127,26 @@ export const FormWithErrors = () => {
         </>
     );
 };
+
+export const DisableSuggestionsList = () => {
+    const [query, setQuery] = useState<string>('');
+
+    const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
+        const inputQuery = event?.target?.value || '';
+
+        setQuery(inputQuery);
+    };
+
+    return (
+        <>
+            <FormField autoMargin>
+                <Search
+                    disableClearAction
+                    onChange={handleOnChange}
+                    enableSuggestions={false}
+                />
+            </FormField>
+            <p>Search query: {query}</p>
+        </>
+    );
+};
