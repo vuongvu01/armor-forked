@@ -1,3 +1,25 @@
+# @deliveryhero/armor [1.26.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.25.0...@deliveryhero/armor@1.26.0) (2020-12-08)
+
+
+### Bug Fixes
+
+* **dropdown:** label animation | visual tests ([#319](https://github.com/deliveryhero/armor/issues/319)) ([f24d4a2](https://github.com/deliveryhero/armor/commit/f24d4a2b7bd95d04f677d50b93ba216b5db3e3ef))
+* **textinput:** Issue with TextInput label not reacting on programmatic updates fixed [LD-325] ([#329](https://github.com/deliveryhero/armor/issues/329)) ([1adcebd](https://github.com/deliveryhero/armor/commit/1adcebda022992b0579b96b3c5ba8246a90680f5))
+
+
+### Features
+
+* **das:** checkbox onChange type | Search flag for disabling suggestions list | Radio children [LOGL-2681] ([#330](https://github.com/deliveryhero/armor/issues/330)) ([037991b](https://github.com/deliveryhero/armor/commit/037991b7b382f9fed25e50c2443b7652a591740b))
+* **search:** Groups of suggestions in the Search component implemented [LD-336] ([#332](https://github.com/deliveryhero/armor/issues/332)) ([164b0b9](https://github.com/deliveryhero/armor/commit/164b0b9fd96104b4764c549f26b61f4fcab8911a))
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor-icons:** upgraded to 1.6.0
+
 # @deliveryhero/armor [1.25.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.24.0...@deliveryhero/armor@1.25.0) (2020-12-02)
 
 
