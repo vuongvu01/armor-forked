@@ -150,3 +150,33 @@ export const DisableSuggestionsList = () => {
         </>
     );
 };
+
+const faction = [
+    {
+        id: 'zerg',
+        label: 'Zerg This isavery long title grocery goods and medications',
+    },
+    { id: 'terr', label: 'Terran' },
+    { id: 'prot', label: 'Protoss' },
+];
+
+const characters = [
+    { value: 1, label: 'Jim Raynor', groupId: 'terr' },
+    { value: 2, label: 'Duke', groupId: 'terr' },
+
+    { value: 4, label: 'Zeratul', groupId: 'prot' },
+    { value: 5, label: 'Tassadar', groupId: 'prot' },
+    { value: 6, label: 'Fenix', groupId: 'prot' },
+
+    { value: 7, label: 'Kerrigan', groupId: 'zerg' },
+    { value: 8, label: 'Overmind', groupId: 'zerg' },
+    { value: 9, label: 'Cerebrate', groupId: 'zerg' },
+];
+
+export const WithGroups = () => {
+    return (
+        <>
+            <Search options={characters} groups={faction} defaultQuery="Jim" />
+        </>
+    );
+};

@@ -4,20 +4,26 @@ import {
     MarginAttributesType,
     WidthAttributesType,
 } from '../../system/attributes';
-import { Indexed, ScalarType } from '../../type';
+import { Indexed, ObjectLiteralType, ScalarType } from '../../type';
 import { ComponentElementStylePropsType } from '../type';
 
-export type SuggestionObjectType = Indexed<{
-    label: string;
+export type SuggestionObjectType = {
     value: ScalarType;
-    [key: string]: any;
-}>;
+    label: string;
+    groupId?: ScalarType;
+} & ObjectLiteralType;
+
+export type GroupObjectType = {
+    id: ScalarType;
+    label: string;
+} & ObjectLiteralType;
+
+export type GroupObjectIndexType = ObjectLiteralType<GroupObjectType>;
 
 export type SearchQueryType = string | readonly string[];
 
 export type ClassBasedOnComponentType = {
     className?: string;
-
     classPrefix: string;
     component: string;
     disabled?: boolean;
@@ -32,9 +38,11 @@ type SearchEffectivePropsType = Indexed<{
     onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
     onItemSelect?: (option: SuggestionObjectType) => void;
     options?: SuggestionObjectType[];
+    groups?: GroupObjectType[];
     placeholder?: string;
     enableSuggestions?: boolean;
     isLoading?: boolean;
+    suggestionListHeight?: ScalarType;
 }> &
     HTMLAttributes<HTMLElement> &
     WidthAttributesType &

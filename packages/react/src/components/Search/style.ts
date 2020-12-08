@@ -19,7 +19,10 @@ import { TextInput } from '../TextInput';
 import { TextInputPropsType } from '../TextInput/type';
 import { spacing } from '../../system/mixins';
 
-const containerPropertyList = makePropList(['searchQuery']);
+const containerPropertyList = makePropList([
+    'searchQuery',
+    'suggestionListHeight',
+]);
 
 const rootStyle = ({
     theme: {
@@ -31,11 +34,15 @@ const rootStyle = ({
 
 const searchSuggestionsContainerStyle = ({
     searchQuery,
+    suggestionListHeight,
     theme: {
         componentOverrides: { Search },
     },
 }: SearchSuggestionsContainerPropsType) => {
-    let result = Search.SearchSuggestionsContainer.base;
+    let result = css`
+        max-height: ${suggestionListHeight};
+        ${Search.SearchSuggestionsContainer.base};
+    `;
 
     if (searchQuery && searchQuery.length) {
         result = css`
@@ -143,7 +150,6 @@ export const SearchSuggestionsContainer = styled.div.withConfig({
     height: 0;
     left: 0;
     width: 100%;
-    max-height: 400px;
     overflow: auto;
     position: absolute;
     transition: ${transitionDurationInSec}s;
@@ -152,10 +158,11 @@ export const SearchSuggestionsContainer = styled.div.withConfig({
     ${searchSuggestionsContainerStyle}
 `;
 
-export const SearchSuggestionsList = styled.div<SearchSuggestionsListPropsType>`
+export const SearchSuggestionsListContainer = styled.div<
+    SearchSuggestionsListPropsType
+>`
     display: flex;
     flex-direction: column;
-    max-height: 200px;
 `;
 
 export const SearchSuggestionsItem = styled.div<SearchSuggestionsItemPropsType>`
@@ -207,7 +214,7 @@ export const SearchSuggestionsItemAction = styled.div<
     align-items: flex-start;
     box-sizing: border-box;
     max-width: min-content;
-    overflow-x: auto;
+    overflow-x: hidden;
     white-space: nowrap;
 
     ${searchSuggestionsItemActionStyle}

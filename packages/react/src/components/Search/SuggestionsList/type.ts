@@ -1,10 +1,15 @@
 import React, { HTMLAttributes } from 'react';
 
 import { Indexed } from '../../../type';
-import { SearchQueryType, SuggestionObjectType } from '../type';
+import {
+    GroupObjectIndexType,
+    SearchQueryType,
+    SuggestionObjectType,
+} from '../type';
 
 export type SuggestionsListPropsType = Indexed<{
     options?: SuggestionObjectType[];
+    groupIndex: GroupObjectIndexType;
     cursor?: number;
     icon?: null | React.ReactElement;
     searchQuery?: SearchQueryType;
@@ -13,5 +18,10 @@ export type SuggestionsListPropsType = Indexed<{
         suggestionIndex: number,
     ) => void;
     additionalInfo?: null | React.ReactElement;
+    groupClassName?: string;
 }> &
     HTMLAttributes<HTMLElement>;
+
+export type SearchSuggestionListGroupPropsType = {
+    enableSeparator: boolean;
+};

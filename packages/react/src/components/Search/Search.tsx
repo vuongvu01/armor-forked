@@ -9,34 +9,31 @@ import { SEARCH_CLASS_PREFIX, searchRoot } from './constants';
 import {
     SearchRoot,
     SearchSuggestionsContainer,
-    SearchSuggestionsList,
+    SearchSuggestionsListContainer,
     SearchTextInput,
 } from './style';
 import { useSearchBar } from './utils/useSearchBar';
 import { SuggestionsList } from './SuggestionsList';
 import { SearchIcon } from './SearchIcon';
 import { SearchClearAction } from './SearchClearAction';
+import { getScalarPropType } from '../../utils/propTypes';
 
 export const Search: FunctionComponent<SearchPropsType> = forwardRef(
-    function Search(
-        {
-            additionalInfo,
-            className,
-            defaultQuery,
-            disabled,
-            disableClearAction,
-            icon,
-            onChange,
-            onItemSelect,
-            options,
-            placeholder,
-            isLoading,
-            enableSuggestions,
-            ...restProps
-        },
-        ref,
-    ) {
+    function Search({ className, ...restProps }, ref) {
         const theme = useComponentTheme(SEARCH_CLASS_PREFIX, searchTheme);
+
+        const {
+            rootProps,
+            textInputProps,
+            searchIconProps,
+            searchClearActionProps,
+            suggestionsContainerProps,
+            suggestionListContainerProps,
+            suggestionListProps,
+
+            disabled,
+            isSuggestionsListShown,
+        } = useSearchBar(restProps, ref);
 
         const classOverride = useSearchClassName(
             SEARCH_CLASS_PREFIX,
@@ -44,81 +41,37 @@ export const Search: FunctionComponent<SearchPropsType> = forwardRef(
             disabled,
         );
 
-        const {
-            searchQuery,
-            containerRef,
-            handleChange,
-            handleClick,
-            internalInputRef,
-            isSuggestionsListShown,
-            handleSuggestionClick,
-            cursor,
-            handleClearQuery,
-        } = useSearchBar({
-            defaultQuery,
-            disabled,
-            onChange,
-            onItemSelect,
-            options,
-            ref,
-        });
-
-        const { width, minWidth, maxWidth, wide } = restProps;
-
         return (
             <SearchRoot
                 data-testid={searchRoot}
-                {...restProps}
+                {...rootProps}
                 className={classOverride.Root}
-                ref={containerRef}
                 theme={theme}
-                width={width}
-                minWidth={minWidth}
-                maxWidth={maxWidth}
-                wide={wide}
             >
                 <SearchTextInput
-                    before={
-                        <SearchIcon isLoading={isLoading} disabled={disabled} />
-                    }
-                    after={
-                        <SearchClearAction
-                            disableClearAction={disableClearAction}
-                            handleClearQuery={handleClearQuery}
-                            disabled={disabled}
-                            searchQuery={searchQuery}
-                        />
-                    }
+                    {...textInputProps}
+                    before={<SearchIcon {...searchIconProps} />}
+                    after={<SearchClearAction {...searchClearActionProps} />}
                     className={classOverride.TextInput}
-                    disabled={disabled}
-                    onChange={handleChange}
-                    onClick={handleClick}
-                    placeholder={placeholder}
-                    ref={internalInputRef}
                     theme={theme}
-                    value={searchQuery}
-                    wide
                 />
-                {enableSuggestions && isSuggestionsListShown ? (
+                {isSuggestionsListShown ? (
                     <SearchSuggestionsContainer
+                        {...suggestionsContainerProps}
                         className={classOverride.SuggestionsContainer}
-                        searchQuery={searchQuery}
                         theme={theme}
                     >
-                        <SearchSuggestionsList
+                        <SearchSuggestionsListContainer
+                            {...suggestionListContainerProps}
                             className={classOverride.SuggestionsList}
                             theme={theme}
                         >
                             <SuggestionsList
-                                options={options}
-                                handleSuggestionClick={handleSuggestionClick}
-                                additionalInfo={additionalInfo}
-                                icon={icon}
-                                cursor={cursor}
-                                searchQuery={searchQuery}
+                                {...suggestionListProps}
                                 theme={theme}
+                                groupClassName={classOverride.ListItemGroup}
                             />
-                        </SearchSuggestionsList>
+                        </SearchSuggestionsListContainer>
                     </SearchSuggestionsContainer>
                 ) : null}
             </SearchRoot>
@@ -134,6 +87,7 @@ Search.defaultProps = {
     icon: null,
     isLoading: false,
     enableSuggestions: true,
+    suggestionListHeight: '400px',
 };
 
 Search.propTypes = {
@@ -147,8 +101,14 @@ Search.propTypes = {
     onItemSelect: PropTypes.func,
     options: PropTypes.arrayOf(
         PropTypes.shape({
-            value: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
-                .isRequired,
+            value: getScalarPropType().isRequired,
+            label: PropTypes.string.isRequired,
+            // groupId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+        }).isRequired,
+    ),
+    groups: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: getScalarPropType().isRequired,
             label: PropTypes.string.isRequired,
         }).isRequired,
     ),
