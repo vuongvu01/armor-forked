@@ -53,6 +53,7 @@ export const useTextInput = (
         onInputMouseOut,
         onInputFocus,
         onInputBlur,
+        onInputChange,
     } = useEvents({
         value,
         defaultValue,
@@ -62,6 +63,7 @@ export const useTextInput = (
         onBlur,
         onMouseOut,
         onMouseOver,
+        onChange,
         readOnly,
     });
 
@@ -136,7 +138,6 @@ export const useTextInput = (
             onClick,
             onKeyDown,
             onKeyUp,
-            onChange,
             max,
             maxLength,
             min,
@@ -149,6 +150,7 @@ export const useTextInput = (
             type: multiline ? undefined : type,
             onBlur: onInputBlur,
             onFocus: onInputFocus,
+            onChange: onInputChange,
         },
         inputLabelProps: {
             disabled,
@@ -162,7 +164,7 @@ export const useTextInput = (
             disabled,
         },
 
-        isOutlined,
+        isLabelInside,
         Tag,
         before,
         after,

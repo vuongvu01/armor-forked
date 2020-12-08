@@ -40,6 +40,7 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
             before,
             after,
             label,
+            isLabelInside,
 
             disabled,
             large,
@@ -54,6 +55,7 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
             disabled,
             large,
             error,
+            isLabelInside,
         );
 
         return (
@@ -116,6 +118,7 @@ TextInput.defaultProps = {
     outline: false,
     enableFocusOnRootClick: false,
     onChange: () => {},
+    type: 'text',
 };
 
 /** Support of prop-types is here for project that don't use TypeScript */

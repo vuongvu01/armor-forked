@@ -7,6 +7,7 @@ export const useTextInputClassNames = (
     disabled?: boolean,
     large?: boolean,
     error?: boolean,
+    isLabelInside?: boolean,
 ) =>
     useMemo(() => {
         const rootClassNames = makeRootClassName(classPrefix, className);
@@ -21,11 +22,20 @@ export const useTextInputClassNames = (
             rootStateClassNames.push(makeBEM(classPrefix, 'Root', 'error'));
         }
 
+        let labelClassName = makeBEM(classPrefix, 'Label');
+        if (isLabelInside) {
+            labelClassName = `${labelClassName} ${makeBEM(
+                classPrefix,
+                'Label',
+                'inside',
+            )}`;
+        }
+
         return {
             Root: `${rootClassNames} ${rootStateClassNames.join(' ')}`.trim(),
             InnerContainer: makeBEM(classPrefix, 'InnerContainer'),
             Input: makeBEM(classPrefix, 'Input'),
-            Label: makeBEM(classPrefix, 'Label'),
+            Label: labelClassName,
             LabelBackground: makeBEM(classPrefix, 'LabelBackground'),
         };
-    }, [classPrefix, className, disabled, large, error]);
+    }, [classPrefix, className, disabled, large, error, isLabelInside]);

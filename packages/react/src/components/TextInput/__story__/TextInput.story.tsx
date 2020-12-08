@@ -15,6 +15,10 @@ import {
     FormField,
     FormFieldTooltip,
     Tag,
+    Grid,
+    GridItem,
+    Pack,
+    PackItem,
 } from '../..';
 import { loremIpsum } from '../../../helpers/LoremIpsum';
 import { TextInput } from '../TextInput';
@@ -628,4 +632,98 @@ export const AraraTagInput = () => {
             }
         />
     );
+};
+
+export const DynamicValue = () => {
+    const [value, setValue] = useState('Hello');
+
+    return (
+        <Pack>
+            <PackItem>
+                <Box>
+                    <TextInput
+                        label="Name your price"
+                        name="your_price"
+                        marginRight={5}
+                        value={value}
+                    />
+                </Box>
+                <Box marginTop={2}>
+                    <TextInput label="Filled" defaultValue="Filled" />
+                </Box>
+                <Box marginTop={2}>
+                    <TextInput label="Empty" />
+                </Box>
+                <Box marginTop={2}>
+                    <TextInput
+                        label="With placeholder"
+                        placeholder="With placeholder"
+                    />
+                </Box>
+            </PackItem>
+            <PackItem>
+                <Box>
+                    <TextInput
+                        label="Name your price"
+                        name="your_price"
+                        marginRight={5}
+                        value={value}
+                        readOnly
+                    />
+                </Box>
+                <Box marginTop={2}>
+                    <TextInput label="Filled" defaultValue="Filled" readOnly />
+                </Box>
+                <Box marginTop={2}>
+                    <TextInput label="Empty" readOnly />
+                </Box>
+                <Box marginTop={2}>
+                    <TextInput
+                        label="With placeholder"
+                        placeholder="With placeholder"
+                        readOnly
+                    />
+                </Box>
+            </PackItem>
+            <PackItem>
+                <Box>
+                    <TextInput
+                        label="Name your price"
+                        name="your_price"
+                        marginRight={5}
+                        value={value}
+                        disabled
+                    />
+                    <Button
+                        onClick={() => {
+                            if (value === '') {
+                                setValue('Hello');
+                            } else {
+                                setValue('');
+                            }
+                        }}
+                    >
+                        Update value
+                    </Button>
+                </Box>
+                <Box marginTop={2}>
+                    <TextInput label="Filled" defaultValue="Filled" disabled />
+                </Box>
+                <Box marginTop={2}>
+                    <TextInput label="Empty" disabled />
+                </Box>
+                <Box marginTop={2}>
+                    <TextInput
+                        label="With placeholder"
+                        placeholder="With placeholder"
+                        disabled
+                    />
+                </Box>
+            </PackItem>
+        </Pack>
+    );
+};
+
+export const Label = () => {
+    return <TextInput label="Label" />;
 };

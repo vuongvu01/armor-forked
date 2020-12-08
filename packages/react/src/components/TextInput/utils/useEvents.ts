@@ -1,5 +1,34 @@
-import { FocusEvent, MouseEvent, useCallback, useState } from 'react';
+import {
+    FocusEvent,
+    MouseEvent,
+    useCallback,
+    useState,
+    useEffect,
+    ChangeEvent,
+} from 'react';
 import { TextInputPropsType } from '../type';
+
+const isControlledMode = (value: TextInputPropsType['value']) => {
+    return value !== undefined;
+};
+
+const isLabelPositionInside = ({
+    value,
+    placeholder,
+    disableLabelEffect,
+    isFocused,
+    isEmptyUncontrolled,
+}: TextInputPropsType) => {
+    if (placeholder || isFocused || disableLabelEffect) {
+        return false;
+    }
+
+    if (isControlledMode(value)) {
+        return !value;
+    }
+
+    return isEmptyUncontrolled;
+};
 
 export const useEvents = ({
     value,
@@ -11,19 +40,69 @@ export const useEvents = ({
     onMouseOver,
     onMouseOut,
     readOnly,
+    onChange,
 }: TextInputPropsType) => {
+    const [isEmptyUncontrolled, setEmptyUncontrolled] = useState<boolean>(
+        !defaultValue,
+    );
+    const [isFocused, setFocused] = useState(false);
     const [isLabelInside, setLabelInside] = useState(
-        !value && !defaultValue && !placeholder && !disableLabelEffect,
+        isLabelPositionInside({
+            value,
+            defaultValue,
+            placeholder,
+            disableLabelEffect,
+            isFocused,
+            isEmptyUncontrolled,
+        }),
     );
     const [isMouseInside, setMouseInside] = useState(false);
-    const [isFocused, setFocused] = useState(false);
+
+    useEffect(() => {
+        if (readOnly) {
+            return;
+        }
+
+        setLabelInside(
+            isLabelPositionInside({
+                value,
+                defaultValue,
+                isFocused,
+                placeholder,
+                disableLabelEffect,
+                isEmptyUncontrolled,
+            }),
+        );
+    }, [
+        value,
+        defaultValue,
+        isFocused,
+        placeholder,
+        disableLabelEffect,
+        isEmptyUncontrolled,
+        readOnly,
+    ]);
+
+    const onInputChange = useCallback(
+        (event: ChangeEvent<HTMLInputElement>) => {
+            if (onChange) {
+                onChange(event);
+            }
+
+            if (event.isPropagationStopped()) {
+                return;
+            }
+
+            if (!isControlledMode(value)) {
+                // we are in the uncontrolled mode
+                setEmptyUncontrolled(!event.target.value.length);
+            }
+        },
+        [onChange, value],
+    );
 
     const onInputFocus = useCallback(
         (event: FocusEvent<HTMLInputElement>) => {
-            if (event.target && isLabelInside && !readOnly) {
-                setLabelInside(false);
-            }
-
             setFocused(true);
 
             if (onFocus) {
@@ -35,15 +114,6 @@ export const useEvents = ({
 
     const onInputBlur = useCallback(
         (event: FocusEvent<HTMLInputElement>) => {
-            if (
-                event.target &&
-                !event.target.value &&
-                !placeholder &&
-                !disableLabelEffect
-            ) {
-                setLabelInside(true);
-            }
-
             setFocused(false);
 
             if (onBlur) {
@@ -83,5 +153,6 @@ export const useEvents = ({
         onInputMouseOut,
         onInputFocus,
         onInputBlur,
+        onInputChange,
     };
 };
