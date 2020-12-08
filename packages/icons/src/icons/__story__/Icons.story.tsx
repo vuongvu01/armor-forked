@@ -54,6 +54,9 @@ export const Basic = () => (
                 <I.DeleteIcon />
             </Icon>
             <Icon>
+                <I.DeleteCircleIcon />
+            </Icon>
+            <Icon>
                 <I.EditIcon />
             </Icon>
             <Icon>
@@ -85,6 +88,9 @@ export const Basic = () => (
             </Icon>
             <Icon>
                 <I.ShopIcon />
+            </Icon>
+            <Icon>
+                <I.TimeCircleIcon />
             </Icon>
             <Icon>
                 <I.UserCircleIcon />

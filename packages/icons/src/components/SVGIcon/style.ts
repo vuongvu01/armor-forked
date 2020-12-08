@@ -3,7 +3,6 @@ import styled, { css } from 'styled-components';
 import { marginAttributes } from '../../system/attributes/margin';
 import { SVGIconRootPropsType } from './type';
 import { shouldForwardProp } from '../../utils';
-import { pixelToRem } from '../../system/mixins/pixelToRem';
 
 const propertyList = {
     fontSize: true,
