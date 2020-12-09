@@ -537,3 +537,24 @@ export const FormWithErrors = () => {
         </>
     );
 };
+
+export const Wide = () => {
+    const [selectedOption, setSelectedOption] = useState();
+    const handleSelect = (option: any) => {
+        setSelectedOption(option);
+    };
+
+    return (
+        <Box width="500px">
+            <Dropdown
+                options={['Biryani', 'Tacos', 'Pho', 'Risotto']}
+                onSelect={handleSelect}
+                label="Dish type"
+                wide
+            />
+            <Typography paragraph>
+                Selected value: {JSON.stringify(selectedOption)}
+            </Typography>
+        </Box>
+    );
+};

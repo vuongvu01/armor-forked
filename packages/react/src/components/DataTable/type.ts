@@ -1,5 +1,8 @@
 import { ReactChild } from 'react';
-import { ComponentStylePropsType } from '../type';
+import {
+    ComponentElementStylePropsType,
+    ComponentStylePropsType,
+} from '../type';
 import { Indexed, ObjectLiteralType, ScalarType } from '../../type';
 import { TablePropsType } from '../Table/type';
 import { TableCellPropsType } from '../Table/TableCell/type';
@@ -7,6 +10,11 @@ import {
     TableHeadCellPropsType,
     TableHeadCellRowSortOrderType,
 } from '../Table/TableHeadCell/type';
+import {
+    MarginAttributesType,
+    PaddingAttributesType,
+    SizeAttributesType,
+} from '../../system/attributes';
 
 export type DataTableColumnType = {
     title: ReactChild;
@@ -16,6 +24,7 @@ export type DataTableColumnType = {
     sortType?: TableHeadCellPropsType['rowSortType'];
     headCellProps?: TableCellPropsType;
     dataCellProps?: TableCellPropsType;
+    cellProps?: TableCellPropsType;
     expandableSectionController?: boolean;
     formatDataCellContent?: (
         value: any,
@@ -32,6 +41,7 @@ export type DataTableDataType = {
 type DataTableEffectivePropsType = Indexed<{
     columns?: DataTableColumnType[];
     data?: DataTableDataType[];
+    tableProps?: TablePropsType;
 
     // row sorting
     rowSortOrder?: TableHeadCellRowSortOrderType;
@@ -60,8 +70,15 @@ type DataTableEffectivePropsType = Indexed<{
 
     // add other custom properties here
 }> &
-    TablePropsType;
+    Pick<TablePropsType, 'stickyHead'> &
+    SizeAttributesType &
+    MarginAttributesType &
+    PaddingAttributesType;
 
 /* DataTable component prop type */
 export type DataTablePropsType = DataTableEffectivePropsType &
     ComponentStylePropsType;
+
+/* DataTable node prop type */
+export type DataTableRootPropsType = DataTableEffectivePropsType &
+    ComponentElementStylePropsType;

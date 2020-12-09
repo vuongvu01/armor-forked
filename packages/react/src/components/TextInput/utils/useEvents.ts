@@ -59,10 +59,6 @@ export const useEvents = ({
     const [isMouseInside, setMouseInside] = useState(false);
 
     useEffect(() => {
-        if (readOnly) {
-            return;
-        }
-
         setLabelInside(
             isLabelPositionInside({
                 value,

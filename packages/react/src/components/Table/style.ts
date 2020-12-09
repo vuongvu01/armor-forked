@@ -13,10 +13,12 @@ const propertyList = {
     horizontalScroll: true,
     selectedRowIds: true,
     onRowSelectionChange: true,
+    enableFixedLayout: true,
 } as ObjectLiteralType;
 
 const getRootDynamicStyle = ({
     horizontalScroll,
+    enableFixedLayout,
     theme,
 }: TableRootPropsType) => {
     const {
@@ -34,6 +36,13 @@ const getRootDynamicStyle = ({
         `;
     }
 
+    if (enableFixedLayout) {
+        result = css`
+            ${result};
+            table-layout: fixed;
+        `;
+    }
+
     return result;
 };
 
@@ -43,7 +52,6 @@ export const TableRoot = styled.table.withConfig({
 })<TableRootPropsType>`
     box-sizing: border-box;
     border-collapse: collapse;
-    table-layout: fixed;
 
     ${getRootDynamicStyle}
     ${marginAttributes}

@@ -47,6 +47,7 @@ export const Table: FunctionComponent<TablePropsType> = forwardRef(
 Table.defaultProps = {
     horizontalScroll: false,
     stickyHead: false,
+    enableFixedLayout: true,
 };
 
 /** prop-types are required here for run-time checks */

@@ -90,6 +90,7 @@ export const CheckboxRoot = styled.label.withConfig({
 })<CheckboxRootPropsType>`
     display: inline-flex;
     height: ${sizes.checkbox.side}px;
+    margin: 0;
 
     ${mouseCursor}
     ${marginAttributes}

@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { DataTablePropsType } from '../type';
 import { useDataTableRowSorting } from './useDataTableRowSorting';
 import { useDataTableRowSelection } from './useDataTableRowSelection';
@@ -8,12 +8,15 @@ import {
     DATA_TABLE_EXPANDABLE_SECTION_OFFSET_LEFT_BASE,
     DATA_TABLE_EXPANDABLE_SECTION_OFFSET_LEFT_ROW_SELECTION,
 } from '../constants';
+import { DataTable } from '../DataTable';
 
 export const useDataTable = ({
     columns,
     data,
+    tableProps,
 
     enableRowSelection,
+    stickyHead,
 
     ...restProps
 }: DataTablePropsType) => {
@@ -43,7 +46,6 @@ export const useDataTable = ({
 
         ...rowSorting.result,
         ...rowSelection.result,
-        stickyColumns: stickyColumns.result,
         ...expandableSections.result,
 
         expandableSectionProps: {
@@ -55,6 +57,13 @@ export const useDataTable = ({
                     : 0),
         },
 
-        restRootProps: expandableSections.restProps,
+        rootProps: expandableSections.restProps,
+        tableProps: {
+            wide: true,
+            stickyHead,
+            ...tableProps,
+            stickyColumns: stickyColumns.result,
+            horizontalScroll: stickyColumns.result.length > 0,
+        },
     };
 };
