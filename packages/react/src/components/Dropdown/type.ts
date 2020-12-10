@@ -1,6 +1,9 @@
 import { HTMLAttributes, InputHTMLAttributes, MouseEvent } from 'react';
 
-import { MarginAttributesType } from '../../system/attributes';
+import {
+    MarginAttributesType,
+    WidthAttributesType,
+} from '../../system/attributes';
 import { Indexed, ScalarType } from '../../type';
 import { ComponentElementStylePropsType } from '../type';
 
@@ -96,7 +99,8 @@ type DropdownEffectivePropsType = Indexed<{
         InputHTMLAttributes<HTMLInputElement>,
         'value' | 'onChange' | 'defaultValue' | 'onSelect'
     > &
-    MarginAttributesType;
+    MarginAttributesType &
+    WidthAttributesType;
 
 export type DropdownPropsType = DropdownEffectivePropsType;
 

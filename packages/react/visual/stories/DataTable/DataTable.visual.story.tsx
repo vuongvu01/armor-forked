@@ -51,8 +51,9 @@ export const StickyRightColumn = () => (
 export const StickyRightColumnInvisible = () => {
     const ref = useRef();
     useEffect(() => {
-        const table = ref.current;
-        if (table) {
+        const root = (ref.current as unknown) as HTMLDivElement;
+        if (root) {
+            const table = root.querySelector('table');
             // @ts-ignore
             table.scrollLeft = 9999999;
         }
@@ -83,8 +84,9 @@ export const StickyLeftColumnInvisible = () => (
 export const StickyLeftColumn = () => {
     const ref = useRef();
     useEffect(() => {
-        const table = ref.current;
-        if (table) {
+        const root = (ref.current as unknown) as HTMLDivElement;
+        if (root) {
+            const table = root.querySelector('table');
             // @ts-ignore
             table.scrollLeft = 200;
         }
@@ -105,8 +107,9 @@ export const StickyLeftColumn = () => {
 export const StickyLeftColumnWithCheckboxes = () => {
     const ref = useRef();
     useEffect(() => {
-        const table = ref.current;
-        if (table) {
+        const root = (ref.current as unknown) as HTMLDivElement;
+        if (root) {
+            const table = root.querySelector('table');
             // @ts-ignore
             table.scrollLeft = 200;
         }

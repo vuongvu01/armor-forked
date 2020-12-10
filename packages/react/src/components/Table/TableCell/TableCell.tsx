@@ -48,6 +48,7 @@ TableCell.defaultProps = {
     isHeader: false,
     disabled: false,
     ellipsis: false,
+    enableContentBreak: true,
 };
 
 /** prop-types are required here for run-time checks */

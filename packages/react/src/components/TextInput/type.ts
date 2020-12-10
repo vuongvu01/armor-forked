@@ -19,7 +19,7 @@ type TextInputEffectivePropsType = Indexed<{
     error?: boolean;
     multiline?: boolean;
     disableLabelEffect?: boolean;
-    displayMode?: 'block' | 'inline';
+    displayMode?: string;
     outline?: boolean;
     enableFocusOnRootClick?: boolean;
     // add other custom properties here

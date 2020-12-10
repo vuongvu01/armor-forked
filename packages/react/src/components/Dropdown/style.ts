@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { marginAttributes } from '../../system/attributes';
+import { marginAttributes, widthAttributes } from '../../system/attributes';
 import { transitionDurationInSec } from '../../constants';
 import { shouldForwardProp } from '../../utils';
 import {
@@ -44,7 +44,8 @@ export const DropdownRoot = styled.div.withConfig({
 })<DropdownRootPropsType>`
     display: inline-flex;
 
-    ${marginAttributes}
+    ${marginAttributes};
+    ${widthAttributes};
 `;
 
 export const DropdownContainer = styled.div<DropdownRootPropsType>`
@@ -100,15 +101,4 @@ export const DropdownOptionItem = styled.div<DropdownOptionItemPropsType>`
     border-left: 2px solid transparent;
 
     ${optionItemStyle}
-`;
-
-// TODO (nmelnikov 2020-11-24): this can be removed once readOnly support on
-//  TextInput is operational: https://jira.deliveryhero.com/browse/LD-325
-export const DropdownTextInput = styled(TextInput)`
-    .TextInput-Input {
-        caret-color: ${color('neutral.00')};
-        &:disabled {
-            color: ${color('neutral.04')};
-        }
-    }
 `;
