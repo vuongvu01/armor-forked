@@ -1,3 +1,10 @@
+## @deliveryhero/armor [1.26.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.26.0...@deliveryhero/armor@1.26.1) (2020-12-10)
+
+
+### Bug Fixes
+
+* DataTable received a wrapper, DataTable and TableCell received new props, Dropdown logic moved to a hook [LD-000] ([#333](https://github.com/deliveryhero/armor/issues/333)) ([7c65519](https://github.com/deliveryhero/armor/commit/7c655197554dc88a059ca9066626b053e00cc7e3))
+
 # @deliveryhero/armor [1.26.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.25.0...@deliveryhero/armor@1.26.0) (2020-12-08)
 
 
