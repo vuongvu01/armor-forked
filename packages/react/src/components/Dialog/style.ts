@@ -10,7 +10,7 @@ import {
     DialogBasePropsType,
 } from './type';
 import { DIALOG_SCROLL_DOCUMENT } from './Dialog';
-import { Paper } from '../Paper';
+import { Card } from '../Card';
 
 const propertyList = {
     disableOverlay: true,
@@ -80,7 +80,7 @@ export const DialogAlignmentContainer = styled.div.withConfig({
             : ''},
 `;
 
-export const DialogBase = styled(Paper).withConfig({
+export const DialogBase = styled(Card).withConfig({
     shouldForwardProp: property => shouldForwardProp(property, propertyList),
 })<DialogBasePropsType>`
     flex-direction: column;

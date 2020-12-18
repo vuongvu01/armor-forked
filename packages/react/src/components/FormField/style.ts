@@ -13,12 +13,15 @@ const propertyList = {
 const getRootBaseStyle = ({ theme }: FormFieldRootPropsType) =>
     theme.componentOverrides.FormField.Root.base;
 
-const getRootDynamicStyle = ({ theme, autoMargin }: FormFieldRootPropsType) => {
+const getRootDynamicStyle = ({
+    theme,
+    enableVerticalOuterSpacing,
+}: FormFieldRootPropsType) => {
     const {
         componentOverrides: { FormField },
     } = theme;
 
-    if (autoMargin) {
+    if (enableVerticalOuterSpacing) {
         return FormField.Root.autoMargin;
     }
 

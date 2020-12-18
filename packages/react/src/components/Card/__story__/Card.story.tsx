@@ -1,18 +1,17 @@
 import React from 'react';
 import {
     withKnobs,
-    text,
     // eslint-disable-next-line import/no-unresolved
 } from '@storybook/addon-knobs';
 // eslint-disable-next-line import/no-unresolved
 
-import { Paper } from '../Paper';
+import { Card } from '../Card';
 
 export default {
-    title: 'Components/Paper',
-    component: Paper,
+    title: 'Components/Card',
+    component: Card,
     decorators: [withKnobs],
     parameters: {},
 };
 
-export const Basic = () => <Paper>Hello world!</Paper>;
+export const Basic = () => <Card>Hello world!</Card>;

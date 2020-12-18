@@ -8,7 +8,7 @@ import {
 } from '../type';
 
 type FormFieldEffectivePropsType = Indexed<{
-    autoMargin?: boolean;
+    enableVerticalOuterSpacing?: boolean;
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes

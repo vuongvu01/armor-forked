@@ -1,19 +1,27 @@
 import { MutableRefObject, useEffect } from 'react';
 
 function useDetectClickOutsideComponent(
-    ref: MutableRefObject<unknown>,
+    ref: MutableRefObject<unknown> | null,
     setIsOptionListShown?: (isOptionListShown: boolean) => void,
     isCondition?: boolean,
+    triggerRef?: MutableRefObject<HTMLElement> | null,
 ) {
     useEffect(() => {
         if (isCondition) {
             const handleClickOutside = (event: MouseEvent) => {
-                const node = ref.current as any;
+                if (!ref) {
+                    return;
+                }
+
+                const node = ref.current as any; // todo: fix any
 
                 if (
                     node &&
                     !node.contains(event.target) &&
-                    setIsOptionListShown
+                    setIsOptionListShown &&
+                    (!triggerRef ||
+                        !triggerRef.current ||
+                        !triggerRef.current.contains(event.target as Node))
                 ) {
                     setIsOptionListShown(false);
                 }
@@ -27,7 +35,8 @@ function useDetectClickOutsideComponent(
         }
 
         return () => {};
-    }, [ref, setIsOptionListShown, isCondition]);
+    }, [ref, setIsOptionListShown, isCondition, triggerRef]);
 }
 
+// todo: get rid of the default export
 export default useDetectClickOutsideComponent;
