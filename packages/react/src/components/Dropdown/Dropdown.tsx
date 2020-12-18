@@ -9,6 +9,7 @@ import {
     DropdownOptionList,
     DropdownOptionListContainer,
     DropdownRoot,
+    DropdownTextInput,
     ExpansionIndicatorContainer,
 } from './style';
 import DropdownOptionItem from './DropdownOptionItem';
@@ -24,7 +25,6 @@ import {
     dropdownOptionListContainer,
 } from './constants';
 import { useDropdown } from './utils/useDropdown';
-import { TextInput } from '../TextInput';
 
 export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
     function Dropdown({ className, ...props }, ref) {
@@ -104,7 +104,7 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
                     theme={theme}
                     data-testid={dropdownContainer}
                 >
-                    <TextInput
+                    <DropdownTextInput
                         {...textInputProps}
                         after={renderActionItem}
                         className={classOverride.TextInput}

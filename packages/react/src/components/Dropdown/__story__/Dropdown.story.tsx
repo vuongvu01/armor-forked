@@ -10,6 +10,8 @@ import { TextInput } from '../../TextInput';
 import { Button } from '../../Button';
 import { Box } from '../../Box';
 import { Typography } from '../../Typography';
+import { ScalarType } from '../../../type';
+import { OptionItemType } from '../type';
 
 export default {
     title: 'Components/Dropdown',
@@ -556,5 +558,26 @@ export const Wide = () => {
                 Selected value: {JSON.stringify(selectedOption)}
             </Typography>
         </Box>
+    );
+};
+
+export const CustomOptionFormatMultiplePreSelectedExpandedList = () => {
+    const formatOption = (option: OptionItemType) => {
+        if (typeof option === 'object' && 'label' in option) {
+            return `${option.label} meal plan`;
+        }
+
+        return `${option} meal plan`;
+    };
+
+    return (
+        <Dropdown
+            multiple
+            options={foodOptions}
+            label="Dish type"
+            defaultValue={[2, 3]}
+            formatOption={formatOption}
+            isListExpanded={true}
+        />
     );
 };

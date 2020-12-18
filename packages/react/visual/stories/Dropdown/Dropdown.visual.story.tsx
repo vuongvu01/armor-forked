@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import { Box, Button, Dropdown, Typography } from '../../../src/components';
-import { GroupHelper } from '../../../src/helpers/GroupHelper';
+import { Dropdown, Typography } from '../../../src/components';
+import { ScalarType } from '../../../src/type';
+import { OptionItemType } from '../../../src/components/Dropdown/type';
 
 export default {
     title: 'Dropdown',
@@ -118,3 +119,43 @@ export const CustomDisplay = () => (
         }}
     />
 );
+
+export const CustomOptionFormat = () => {
+    const formatOption = (option: OptionItemType) => {
+        if (typeof option === 'object' && 'label' in option) {
+            return `${option.label} meal plan`;
+        }
+
+        return `${option} meal plan`;
+    };
+
+    return (
+        <Dropdown
+            options={foodOptions}
+            label="Dish type"
+            defaultValue={3}
+            formatOption={formatOption}
+        />
+    );
+};
+
+export const CustomOptionFormatMultiplePreSelectedExpandedList = () => {
+    const formatOption = (option: OptionItemType) => {
+        if (typeof option === 'object' && 'label' in option) {
+            return `${option.label} meal plan`;
+        }
+
+        return `${option} meal plan`;
+    };
+
+    return (
+        <Dropdown
+            multiple
+            options={foodOptions}
+            label="Dish type"
+            defaultValue={[2, 3]}
+            formatOption={formatOption}
+            isListExpanded={true}
+        />
+    );
+};

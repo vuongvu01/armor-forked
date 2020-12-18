@@ -1,11 +1,15 @@
 import { useMemo } from 'react';
 import {
     DropdownInternalOptionType,
+    OptionFormatType,
     OptionObjectType,
     OptionType,
 } from '../type';
 
-export const useOptions = (options?: OptionType) =>
+export const useOptions = (
+    options?: OptionType,
+    formatOption?: OptionFormatType,
+) =>
     useMemo<{
         isFlat: boolean;
         internalOptions: DropdownInternalOptionType;
@@ -21,12 +25,20 @@ export const useOptions = (options?: OptionType) =>
 
         const internalOptions = options.map((option, index) => {
             if (option && typeof option === 'object' && 'value' in option) {
-                return option as OptionObjectType;
-            }
+                let formattedOption: OptionObjectType = option;
 
+                if (formatOption) {
+                    formattedOption = {
+                        ...formattedOption,
+                        label: formatOption(option),
+                    };
+                }
+
+                return formattedOption;
+            }
             isFlat = true;
             return {
-                label: option as string,
+                label: formatOption ? formatOption(option) : (option as string),
                 value: index,
             };
         });

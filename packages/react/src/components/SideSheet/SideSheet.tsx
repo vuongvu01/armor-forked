@@ -23,11 +23,10 @@ import {
     SideSheetHeaderContainer,
 } from './style';
 import {
+    SIDE_SHEET_CLASS_PREFIX,
     sideSheetContent,
     sideSheetHeaderCloseButtonContainer,
     sideSheetHeaderContainer,
-    sideSheetRoot,
-    SIDE_SHEET_CLASS_PREFIX,
 } from './constants';
 
 export const SideSheet: FunctionComponent<SideSheetPropsType> = forwardRef(

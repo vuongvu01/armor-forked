@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 import { marginAttributes, widthAttributes } from '../../system/attributes';
 import { transitionDurationInSec } from '../../constants';
-import { shouldForwardProp } from '../../utils';
+import { makePropList, shouldForwardProp } from '../../utils';
 import {
     DropdownOptionItemPropsType,
     DropdownOptionListPropsType,
@@ -10,8 +10,11 @@ import {
     ExpansionIndicatorContainerPropsType,
 } from './type';
 import { ExpansionIndicator } from '../ExpansionIndicator';
+import { spacing } from '../../system/mixins';
 import { TextInput } from '../TextInput';
-import { color, spacing } from '../../system/mixins';
+import { TextInputPropsType } from '../TextInput/type';
+
+const propertyList = makePropList(['formatOption']);
 
 const optionItemStyle = ({
     isSelected,
@@ -40,7 +43,7 @@ const optionListStyle = ({
 };
 
 export const DropdownRoot = styled.div.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property),
+    shouldForwardProp: property => shouldForwardProp(property, propertyList),
 })<DropdownRootPropsType>`
     display: inline-flex;
 
@@ -101,4 +104,10 @@ export const DropdownOptionItem = styled.div<DropdownOptionItemPropsType>`
     border-left: 2px solid transparent;
 
     ${optionItemStyle}
+`;
+
+export const DropdownTextInput = styled(TextInput)<TextInputPropsType>`
+    .TextInput-Input {
+        cursor: pointer;
+    }
 `;
