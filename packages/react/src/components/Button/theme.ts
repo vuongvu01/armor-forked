@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/camelcase */
 
+/** @deprecated */
+
 import {
     componentSpacing02,
     componentSpacing03,
     componentSpacing04,
-    lineHeight02,
 } from '../../tokens';
 
 const primaryInitialColors = {
@@ -20,14 +21,10 @@ const primaryDangerInitialColors = {
 
 const tertiaryInitialColors = {
     color: '$color.primary.main',
-    borderColor: '$color.neutral.00',
-    backgroundColor: '$color.neutral.00',
 };
 
 const tertiaryDangerInitialColors = {
     color: '$color.error.main',
-    borderColor: '$color.neutral.00',
-    backgroundColor: '$color.neutral.00',
 };
 
 export const buttonDefaultTheme = {
@@ -143,23 +140,15 @@ export const buttonDefaultTheme = {
             ...tertiaryInitialColors,
             '&:hover': {
                 color: '$color.primary.light',
-                borderColor: '$color.neutral.02',
-                backgroundColor: '$color.neutral.02',
             },
             '&:focus': {
                 color: '$color.primary.light',
-                borderColor: '$color.neutral.02',
-                backgroundColor: '$color.neutral.02',
             },
             '&:active': {
                 color: '$color.primary.dark',
-                borderColor: '$color.neutral.02',
-                backgroundColor: '$color.neutral.02',
             },
             '&:disabled': {
                 color: '$color.neutral.04',
-                borderColor: '$color.neutral.03',
-                backgroundColor: '$color.neutral.03',
             },
             '&:focus:not(:active)': {
                 ...tertiaryInitialColors,
@@ -169,53 +158,19 @@ export const buttonDefaultTheme = {
             ...tertiaryDangerInitialColors,
             '&:hover': {
                 color: '$color.error.main',
-                borderColor: '$color.error.lighter',
-                backgroundColor: '$color.error.lighter',
             },
             '&:focus': {
                 color: '$color.error.main',
-                borderColor: '$color.error.lighter',
-                backgroundColor: '$color.error.lighter',
             },
             '&:active': {
                 color: '$color.error.main',
-                borderColor: '$color.error.lighter',
-                backgroundColor: '$color.error.lighter',
             },
             '&:disabled': {
                 color: '$color.neutral.04',
-                borderColor: '$color.neutral.03',
-                backgroundColor: '$color.neutral.03',
             },
             '&:focus:not(:active)': {
                 ...tertiaryDangerInitialColors,
             },
         },
     },
-    // Content: {
-    //     base: {
-    //         borderRadius: '$shape.borderRadius.soft',
-    //         paddingLeft: componentSpacing04,
-    //         paddingRight: componentSpacing04,
-    //         paddingTop: componentSpacing03,
-    //         paddingBottom: componentSpacing03,
-    //         minHeight: '32px',
-    //         boxSizing: 'border-box',
-    //     },
-    //     small: {
-    //         paddingTop: componentSpacing02,
-    //         paddingBottom: componentSpacing02,
-    //     },
-    // },
-    // SemanticContent: {
-    //     iconOnly: {
-    //         padding: componentSpacing03,
-    //     },
-    //     iconFirst: {
-    //         paddingLeft: componentSpacing03,
-    //     },
-    //     iconLast: {
-    //         paddingRight: componentSpacing03,
-    //     },
-    // },
 };

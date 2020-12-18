@@ -16,21 +16,13 @@ import { zIndexSearchSuggestionsList } from '../../tokens';
 import { transitionDurationInSec } from '../../constants';
 import { Typography } from '../Typography';
 import { TextInput } from '../TextInput';
-import { TextInputPropsType } from '../TextInput/type';
-import { spacing } from '../../system/mixins';
+import { color, reset } from '../../system/mixins';
+import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 
 const containerPropertyList = makePropList([
     'searchQuery',
     'suggestionListHeight',
 ]);
-
-const rootStyle = ({
-    theme: {
-        componentOverrides: { Search },
-    },
-}: SearchRootPropsType) => {
-    return Search.Root.base;
-};
 
 const searchSuggestionsContainerStyle = ({
     searchQuery,
@@ -100,14 +92,6 @@ const searchSuggestionsItemLabelStyle = ({
     return Search.SearchSuggestionsItemLabel.base;
 };
 
-const searchLabelTypographyStyle = ({
-    theme: {
-        componentOverrides: { Search },
-    },
-}: SearchLabelTypographyPropsType) => {
-    return Search.SearchLabelTypography.base;
-};
-
 const searchSuggestionsItemStyle = ({
     isHighlighted,
     theme: {
@@ -129,15 +113,16 @@ const searchSuggestionsItemStyle = ({
 export const SearchRoot = styled.div.withConfig({
     shouldForwardProp: property => shouldForwardProp(property),
 })<SearchRootPropsType>`
-    box-sizing: border-box;
+    ${reset};
     cursor: default;
     display: inline-block;
     flex-flow: row nowrap;
     position: relative;
 
-    ${rootStyle}
     ${marginAttributes}
     ${widthAttributes}
+    
+    ${getComponentOverride('Search')};
 `;
 
 export const SearchSuggestionsContainer = styled.div.withConfig({
@@ -204,11 +189,10 @@ export const SearchLabelTypography = styled(Typography)<
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-
-    ${searchLabelTypographyStyle}
+    color: ${color('neutral.05')};
 `;
 
-export const SearchSuggestionsItemAction = styled.div<
+export const SearchSuggestionsItemAction = styled(Typography)<
     SearchSuggestionsItemActionPropsType
 >`
     align-items: flex-start;

@@ -15,7 +15,6 @@ import {
     MessageExtra,
 } from './style';
 import { MessageIconPropsType, MessagePropsType } from './type';
-import { messageDefaultTheme } from './theme';
 import { useIconComponent } from './utils/useIconComponent';
 import { MESSAGE_CLASS_PREFIX } from './constants';
 
@@ -34,7 +33,7 @@ export const Message: FunctionComponent<MessagePropsType> = ({
     success,
     ...restProps
 }) => {
-    const theme = useComponentTheme(MESSAGE_CLASS_PREFIX, messageDefaultTheme);
+    const theme = useComponentTheme(MESSAGE_CLASS_PREFIX);
 
     const classNameComponents = useMessageClassNames(
         MESSAGE_CLASS_PREFIX,

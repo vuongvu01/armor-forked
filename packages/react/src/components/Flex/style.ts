@@ -8,6 +8,7 @@ import {
 } from '../../system/attributes';
 import { makePropList, shouldForwardProp } from '../../utils';
 import { FlexItemPropsType, FlexRootPropsType } from './type';
+import { gutter } from '../../system/mixins/gutter';
 
 const propertyList = makePropList([
     'justifyContent',
@@ -20,6 +21,7 @@ const propertyList = makePropList([
     'alignSelf',
     'isActive',
     'flexWrap',
+    'gutterSpacing',
 ]);
 
 const flexRootStyle = ({
@@ -28,8 +30,9 @@ const flexRootStyle = ({
     alignContent,
     alignItems,
     flexWrap,
+    gutterSpacing,
 }: FlexItemPropsType) => {
-    let result = css``;
+    let result = {};
 
     if (direction) {
         result = css`
@@ -66,6 +69,15 @@ const flexRootStyle = ({
         `;
     }
 
+    if (gutterSpacing) {
+        result = css`
+            ${result};
+            && {
+                ${gutter({ spacing: gutterSpacing })};
+            }
+        `;
+    }
+
     return result;
 };
 
@@ -76,7 +88,7 @@ const flexItemStyle = ({
     order,
     alignSelf,
 }: FlexItemPropsType) => {
-    let result = css``;
+    let result = {};
 
     if (typeof flexGrow !== 'undefined') {
         result = css`

@@ -5,6 +5,8 @@ import { makePropList, shouldForwardProp } from '../../utils';
 import { AccordionRootPropsType } from './type';
 import { AccordionHeaderRootPropsType } from './AccordionHeader/type';
 import { transitionDurationInSec } from '../../constants';
+import { token } from '../../system/mixins';
+import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 
 // all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
 const propertyList = makePropList(['isExpanded']);
@@ -31,6 +33,10 @@ export const AccordionRoot = styled.div.withConfig({
     flex-direction: column;
     margin-top: -1px;
 
+    color: ${token('body.color')};
+    background-color: ${token('body.backgroundColor')};
+
     ${accordionStyle}
+    ${getComponentOverride('Accordion')};
     ${marginAttributes}
 `;

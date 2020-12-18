@@ -8,7 +8,7 @@ export const useDialogClassNames = (classPrefix: string, className?: string) =>
             Root: makeRootClassName(classPrefix, className),
             Overlay: makeBEM(classPrefix, 'Overlay'),
             AlignmentContainer: makeBEM(classPrefix, 'AlignmentContainer'),
-            Base: makeBEM(classPrefix, 'Base'),
+            Modal: makeBEM(classPrefix, 'Modal'),
             CloseButton: makeBEM(classPrefix, 'CloseButton'),
             Content: makeBEM(classPrefix, 'Content'),
         };

@@ -9,6 +9,9 @@ import {
     CheckboxInputPropsType,
     CheckboxRootPropsType,
 } from './type';
+import { spacing } from '../../system/mixins';
+import { fontWeightRegular } from '../../tokens';
+import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 
 const sizes = {
     checkbox: {
@@ -86,21 +89,29 @@ const checkmarkStyle = ({
 };
 
 export const CheckboxRoot = styled.label.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, {}),
+    shouldForwardProp: property =>
+        shouldForwardProp(property, { reallyChecked: true }),
 })<CheckboxRootPropsType>`
     display: inline-flex;
-    height: ${sizes.checkbox.side}px;
     margin: 0;
+    font-weight: ${fontWeightRegular};
 
     ${mouseCursor}
+    ${getComponentOverride('Checkbox')};
     ${marginAttributes}
 `;
 
-export const CheckboxCheckmark = styled.span<CheckboxCheckmarkPropsType>`
-    display: list-item;
-    list-style: none;
+export const CheckboxCheckmark = styled.div<CheckboxCheckmarkPropsType>`
     position: relative;
-    padding-left: ${sizes.checkbox.side}px;
+    width: ${sizes.checkbox.side}px;
+    height: ${sizes.checkbox.side}px;
+
+    ${({ hasLabel }: CheckboxCheckmarkPropsType) =>
+        hasLabel
+            ? css`
+                  margin-top: ${spacing(1)};
+              `
+            : ''}
 
     &::before {
         content: '';

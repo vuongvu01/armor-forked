@@ -5,9 +5,8 @@ import { useDisplay } from '../Modal/utils/useDisplay';
 import { Overlay as OverlayRoot } from './style';
 import { OverlayPropsType } from './type';
 import { defaultLabel } from '../Dropdown/constants';
-import { overlayDefaultTheme } from './theme';
-import { useComponentTheme } from '../../utils/hooks';
 import { OVERLAY_CLASS_PREFIX } from './constants';
+import { useTheme } from '../../styling';
 
 export const Overlay: FunctionComponent<OverlayPropsType> = ({
     className,
@@ -17,7 +16,7 @@ export const Overlay: FunctionComponent<OverlayPropsType> = ({
     open,
     ...restProps
 }) => {
-    const theme = useComponentTheme(OVERLAY_CLASS_PREFIX, overlayDefaultTheme);
+    const theme = useTheme();
     const [display, effectToggle] = useDisplay(open);
 
     return !disableOverlay ? (

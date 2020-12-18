@@ -1,21 +1,15 @@
 /* eslint-disable no-console,import/no-unresolved */
 
 import React from 'react';
-import {
-    withKnobs,
-    text,
-    boolean,
-    number,
-    select,
-} from '@storybook/addon-knobs';
-import { action } from '@storybook/addon-actions';
+import { withKnobs, text } from '@storybook/addon-knobs';
+import { withWrapper } from '../../../helpers/Wrapper';
 
 import { Container } from '../Container';
 
 export default {
     title: 'Components/Container',
     component: Container,
-    decorators: [withKnobs],
+    decorators: [withKnobs, withWrapper],
     parameters: {},
 };
 

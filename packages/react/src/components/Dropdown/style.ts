@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 import { marginAttributes, widthAttributes } from '../../system/attributes';
 import { transitionDurationInSec } from '../../constants';
-import { shouldForwardProp } from '../../utils';
+import { makePropList, shouldForwardProp } from '../../utils';
 import {
     DropdownOptionItemPropsType,
     DropdownOptionListPropsType,
@@ -10,8 +10,12 @@ import {
     ExpansionIndicatorContainerPropsType,
 } from './type';
 import { ExpansionIndicator } from '../ExpansionIndicator';
-import { TextInput } from '../TextInput';
 import { color, spacing } from '../../system/mixins';
+import { TextInput } from '../TextInput';
+import { TextInputPropsType } from '../TextInput/type';
+import { getComponentOverride } from '../../system/mixins/getComponentOverride';
+
+const propertyList = makePropList(['formatOption']);
 
 const optionItemStyle = ({
     isSelected,
@@ -19,12 +23,15 @@ const optionItemStyle = ({
         componentOverrides: { Dropdown },
     },
 }: DropdownOptionItemPropsType) => {
+    let result = Dropdown.OptionItem.base;
     if (isSelected) {
-        return css`
-            ${Dropdown.OptionItem.base} ${Dropdown.OptionItem.selected}
+        result = css`
+            ${result};
+            background-color: ${color('primary.lightest')};
+            border-left-color: ${color('primary.main')};
         `;
     }
-    return Dropdown.OptionItem.base;
+    return result;
 };
 
 const optionListStyle = ({
@@ -40,7 +47,7 @@ const optionListStyle = ({
 };
 
 export const DropdownRoot = styled.div.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property),
+    shouldForwardProp: property => shouldForwardProp(property, propertyList),
 })<DropdownRootPropsType>`
     display: inline-flex;
 
@@ -101,4 +108,11 @@ export const DropdownOptionItem = styled.div<DropdownOptionItemPropsType>`
     border-left: 2px solid transparent;
 
     ${optionItemStyle}
+    ${getComponentOverride('DropdownOptionItem')};
+`;
+
+export const DropdownTextInput = styled(TextInput)<TextInputPropsType>`
+    .TextInput-Input {
+        cursor: pointer;
+    }
 `;

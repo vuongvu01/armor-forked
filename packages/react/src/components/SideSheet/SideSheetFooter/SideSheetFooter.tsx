@@ -13,6 +13,8 @@ export const SideSheetFooter: FunctionComponent<SideSheetFooterPropsType> = ({
 }) => {
     return (
         <SideSheetFooterRoot
+            paragraph
+            medium
             data-testid={sideSheetFooter}
             {...restProps}
             theme={theme}

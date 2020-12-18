@@ -1,16 +1,12 @@
 import { ReactElement } from 'react';
 import styled from 'styled-components';
 import { HeaderNavigationTitleRootPropsType } from './type';
-import { fontWeightMedium } from '../../../tokens';
+import { fontSize03, fontWeightMedium } from '../../../tokens';
 import { shouldForwardProp } from '../../../utils';
+import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
+import { color } from '../../../system/mixins';
 
 const propertyList = {};
-
-const navigationTitleRootStyle = ({
-    theme: {
-        componentOverrides: { HeaderNavigationTitle },
-    },
-}: HeaderNavigationTitleRootPropsType) => HeaderNavigationTitle.Root.base;
 
 const HeaderNavigationTitleRootWrapper = ({
     children,
@@ -42,5 +38,11 @@ export const HeaderNavigationTitleRoot = styled(
     }
 
     background-color: transparent;
-    ${navigationTitleRootStyle}
+    color: ${color('neutral.06')};
+    font-size: ${fontSize03};
+    &:hover {
+        background: ${color('neutral.02')};
+    }
+
+    ${getComponentOverride('HeaderNavigationTitle')};
 `;

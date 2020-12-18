@@ -7,6 +7,7 @@ import {
 } from './type';
 import { transitionDurationInSec } from '../../../constants';
 import { makePropList, shouldForwardProp } from '../../../utils';
+import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
 
 const clearIconPropertyList = makePropList(['searchQuery']);
 
@@ -58,4 +59,5 @@ export const SearchInputClearIcon = styled(CancelIcon).withConfig({
         shouldForwardProp(property, clearIconPropertyList),
 })<SearchInputClearIconPropsType>`
     ${searchInputClearIconStyle}
+    ${getComponentOverride('SearchClearAction')};
 `;

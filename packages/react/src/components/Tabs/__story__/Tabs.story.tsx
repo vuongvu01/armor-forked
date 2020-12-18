@@ -7,11 +7,12 @@ import { Tabs } from '../Tabs';
 import { Tab } from '../../Tab';
 import { TabView } from '../../TabView';
 import { Badge } from '../../Badge';
+import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
     title: 'Components/Tabs',
     component: Tabs,
-    decorators: [withKnobs],
+    decorators: [withKnobs, withWrapper],
     parameters: {},
 };
 

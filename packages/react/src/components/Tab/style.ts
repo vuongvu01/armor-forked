@@ -7,6 +7,8 @@ import { TabLabelPropsType, TabRootPropsType } from './type';
 import { transitionDurationInSec } from '../../constants';
 import { borderRadius, color, spacing, typography } from '../../system/mixins';
 import { makePropList, shouldForwardProp } from '../../utils';
+import { Typography } from '../Typography';
+import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 
 const propertyList = makePropList(['isActive']);
 
@@ -18,16 +20,13 @@ const animationStyle = ({
 }: TabRootPropsType) =>
     isActive ? Tab.Root.active__after : 'position: relative;';
 
-const tabRootStyle = ({ isActive, wide, theme }: TabRootPropsType) => {
+const tabRootStyle = ({ isActive, wide }: TabRootPropsType) => {
     let result = css``;
 
     if (isActive) {
-        const { fontWeight } = typography('labelMedium')({ theme });
-
         result = css`
             ${result};
             transform: scaleX(1);
-            font-weight: ${fontWeight};
             transition: all ${transitionDurationInSec}s ease;
         `;
     }
@@ -117,7 +116,7 @@ const cursor = ({ disabled, isActive }: TabRootPropsType) => {
 };
 
 export const TabRoot = styled.div<TabRootPropsType>`
-    min-width: '100px';
+    min-width: 100px;
 
     &::after {
         content: '';
@@ -132,6 +131,7 @@ export const TabRoot = styled.div<TabRootPropsType>`
     }
 
     ${tabRootStyle}
+    ${getComponentOverride('Tab')};
 `;
 
 const TabLabelTagWrapper = ({
@@ -153,10 +153,11 @@ export const TabLabelContainer = styled(TabLabelTagWrapper)<TabLabelPropsType>`
     ${tabLabelContainerStyle}
 `;
 
-export const TabLabel = styled.div.withConfig({
+export const TabLabel = styled(Typography).withConfig({
     shouldForwardProp: property => shouldForwardProp(property, propertyList),
 })<TabLabelPropsType>`
     align-items: center;
+    justify-content: center;
     box-sizing: border-box;
     text-align: center;
     display: flex;

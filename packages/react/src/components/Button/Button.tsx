@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useComponentTheme } from '../../utils/hooks';
 
 import { useButtonClassName } from './utils';
-import { ButtonStyle } from './style';
+import { ButtonRoot } from './style';
 import { ButtonPropsType } from './type';
 import { buttonDefaultTheme } from './theme';
 import { BUTTON_CLASS_PREFIX } from './constants';
@@ -12,7 +12,7 @@ export const Button: FunctionComponent<ButtonPropsType> = forwardRef(
     function Button(
         {
             className,
-            tag: ButtonRoot = 'button',
+            tag: Tag = 'button',
             small,
             wide,
             disabled,
@@ -44,7 +44,7 @@ export const Button: FunctionComponent<ButtonPropsType> = forwardRef(
 
         // todo: forward only className here, it will be more efficient and neat
         return (
-            <ButtonStyle
+            <ButtonRoot
                 {...restProps}
                 disabled={disabled}
                 small={small}
@@ -57,11 +57,11 @@ export const Button: FunctionComponent<ButtonPropsType> = forwardRef(
                 className={classNameRoot}
             >
                 {(forwardedProps: ButtonPropsType) => (
-                    <ButtonRoot {...forwardedProps} ref={ref}>
+                    <Tag {...forwardedProps} ref={ref}>
                         {children}
-                    </ButtonRoot>
+                    </Tag>
                 )}
-            </ButtonStyle>
+            </ButtonRoot>
         );
     },
 );

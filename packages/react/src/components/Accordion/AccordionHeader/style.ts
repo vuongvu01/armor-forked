@@ -4,6 +4,7 @@ import { AccordionHeaderRootPropsType } from './type';
 import { Typography } from '../../Typography';
 import { mouseCursor } from '../../../styling';
 import { ExpansionIndicator } from '../../ExpansionIndicator';
+import { typography } from '../../../system/mixins';
 
 const accordionHeaderStyle = ({
     disabled,
@@ -43,6 +44,7 @@ export const AccordionHeaderRoot = styled.div<AccordionHeaderRootPropsType>`
     min-height: 56px;
     justify-content: space-between;
 
+    ${typography('labelMedium')};
     ${mouseCursor}
     ${accordionHeaderStyle}
 `;

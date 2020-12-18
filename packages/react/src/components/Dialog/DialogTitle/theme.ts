@@ -9,8 +9,6 @@ export const dialogTitleDefaultTheme = {
     },
     Description: {
         base: {
-            lineHeight: '$typography.paragraphMedium.lineHeight',
-            fontSize: '$typography.paragraphMedium.fontSize',
             color: '$color.neutral.05',
             marginTop: 2,
         },

@@ -6,13 +6,12 @@ import {
     SelectorDropdown,
 } from './style';
 import { HeaderNavigationSelectorPropsType } from './type';
-import { useComponentTheme } from '../../../utils/hooks';
 import {
     HEADER_NAVIGATION_SELECTOR_CLASS_PREFIX,
     headerNavigationSelectorRoot,
 } from './constants';
 import useHeaderNavigationSelectorClassName from './utils/useHeaderNavigationSelectorClassName';
-import { headerNavigationSelector } from './theme';
+import { useTheme } from '../../../styling';
 
 export const HeaderNavigationSelector: FunctionComponent<HeaderNavigationSelectorPropsType> = forwardRef(
     function HeaderNavigationSelector(
@@ -25,10 +24,7 @@ export const HeaderNavigationSelector: FunctionComponent<HeaderNavigationSelecto
         },
         ref,
     ) {
-        const theme = useComponentTheme(
-            HEADER_NAVIGATION_SELECTOR_CLASS_PREFIX,
-            headerNavigationSelector,
-        );
+        const theme = useTheme();
 
         const classOverride = useHeaderNavigationSelectorClassName(
             HEADER_NAVIGATION_SELECTOR_CLASS_PREFIX,

@@ -17,7 +17,6 @@ export type TooltipAlignmentType =
 
 type TooltipEffectivePropsType = Indexed<{
     align?: TooltipAlignmentType;
-    dark?: boolean;
     error?: boolean;
     small?: boolean;
     content?: ReactNode;
@@ -37,6 +36,6 @@ export type TooltipRootPropsType = TooltipEffectivePropsType & {
 /* Tooltip Arrow node prop type */
 export type TooltipArrowPropsType = Pick<
     TooltipEffectivePropsType,
-    'dark' | 'hide' | 'error'
+    'hide' | 'error'
 > &
     ComponentElementStylePropsType;

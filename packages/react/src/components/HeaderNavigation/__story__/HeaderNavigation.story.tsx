@@ -26,6 +26,7 @@ import { ScalarType } from '../../../type';
 import {
     HeaderNavigationAction,
     HeaderNavigationActionItem,
+    HeaderNavigationActionLogisticsSignOutButton,
 } from '../HeaderNavigationAction';
 import { SuggestionObjectType } from '../../Search/type';
 import { OptionType } from '../HeaderNavigationMenu/HeaderNavigationMenuContent/HeaderNavigationMenuContentBodyOptions/type';
@@ -34,11 +35,13 @@ import { HeaderNavigationSelector } from '../HeaderNavigationSelector';
 import { HeaderNavigationSearch } from '../HeaderNavigationSearch';
 import { DropdownSelectedOptionType } from '../../Dropdown/type';
 import { Pack, PackItem } from '../../Pack';
+import { withWrapper } from '../../../helpers/Wrapper';
+import { Navigation } from '../../Navigation';
 
 export default {
     title: 'Components/HeaderNavigation',
     component: HeaderNavigation,
-    decorators: [withKnobs],
+    decorators: [withKnobs, withWrapper],
     parameters: {},
 };
 
@@ -178,12 +181,7 @@ const NavigationMenuContent2 = (
 
 const NavigationAction = (
     <HeaderNavigationAction>
-        <HeaderNavigationActionItem
-            onClick={() => {
-                // eslint-disable-next-line no-console
-                console.log('Log out');
-            }}
-        >
+        <HeaderNavigationActionItem onClick={() => {}}>
             <LogoutIcon />
         </HeaderNavigationActionItem>
     </HeaderNavigationAction>
@@ -227,6 +225,35 @@ export const ExtensiveExample = () => {
     const vendorsLinkName = 'Vendors';
     const scheduleLinkName = 'Schedule';
     const workflowsLinkName = 'Workflows';
+
+    const [structure, setStructure] = useState([
+        {
+            id: 'blacklist',
+            label: 'Blacklist',
+            selected: false,
+        },
+        {
+            id: 'country-settings',
+            label: 'Country Settings',
+            selected: false,
+        },
+        {
+            id: 'location-settings',
+            label: 'Location settings',
+            selected: false,
+            expanded: false,
+            items: [
+                {
+                    id: '3243242323',
+                    label: 'New York',
+                },
+                {
+                    id: '456654',
+                    label: 'Los Angeles',
+                },
+            ],
+        },
+    ]);
 
     const [productSelected, setProductSelected] = useState(
         restaurantsMenuContentBodyOptions[0].options[3].label,
@@ -359,6 +386,17 @@ export const ExtensiveExample = () => {
                     />
                 }
                 navigationAction={NavigationAction}
+            />
+            <Navigation
+                items={structure}
+                width="400px"
+                enableEffects={false}
+                onElementClick={(id, item) => {
+                    // eslint-disable-next-line no-param-reassign
+                    item.expanded = !item.expanded;
+
+                    setStructure([...structure]);
+                }}
             />
             <br />
             <br />

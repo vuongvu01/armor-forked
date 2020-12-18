@@ -1,29 +1,67 @@
 export const colorGrey90 = '#050505';
+export const colorGrey80 = '#262626';
+export const colorGrey70 = '#333333';
+export const colorGrey60 = '#525252';
 export const colorGrey50 = '#717171';
+export const colorGrey40 = '#8d8d8d';
 export const colorGrey30 = '#a7a7a7';
+export const colorGrey20 = '#c6c6c6';
 export const colorGrey10 = '#dcdcdc';
 export const colorGrey05 = '#f7f7f7';
 export const colorGrey01 = '#fcfcfc';
 export const colorGrey00 = '#ffffff';
 
+export const colorBlue90 = '#0a39b7';
+export const colorBlue80 = '#124ac2';
 export const colorBlue70 = '#0042a5';
 export const colorBlue60 = '#0b53bf';
 export const colorBlue50 = '#1f67d3';
+export const colorBlue40 = '#417fda';
+export const colorBlue30 = '#6295e0';
 export const colorBlue20 = '#92baf6';
+export const colorBlue10 = '#bbd1f2';
 export const colorBlue05 = '#e3eefd';
 
 export const colorTurquoise90 = '#008f77';
 export const colorTurquoise80 = '#00ad96';
 export const colorTurquoise70 = '#00bca9';
 export const colorTurquoise60 = '#6cd0c2';
+export const colorTurquoise50 = '#00ad96';
+export const colorTurquoise40 = '#26b9a6';
+export const colorTurquoise30 = '#4cc6b6';
+export const colorTurquoise20 = '#80d6cb';
+export const colorTurquoise10 = '#b4e6e0';
+export const colorTurquoise05 = '#e1f5f2';
 
+export const colorYellow90 = '#ec9800';
+export const colorYellow80 = '#efa600';
+export const colorYellow70 = '#f1ae00';
+export const colorYellow60 = '#f4bd00';
+export const colorYellow50 = '#f3bd02';
+export const colorYellow40 = '#f5c825';
+export const colorYellow30 = '#f7d14d';
+export const colorYellow20 = '#fade80';
+export const colorYellow10 = '#ffecb3';
+export const colorYellow05 = '#fef7e0';
+
+export const colorGreen90 = '#64b72c';
+export const colorGreen80 = '#76c23d';
+export const colorGreen70 = '#7fc847';
+export const colorGreen60 = '#93d357';
+export const colorGreen50 = '#93d357';
+export const colorGreen40 = '#a3da70';
+export const colorGreen30 = '#b3e088';
+export const colorGreen20 = '#c9e9ab';
+export const colorGreen10 = '#d8f9ba';
+export const colorGreen05 = '#f2faeb';
+
+export const colorRed90 = '#c82a32';
+export const colorRed80 = '#d1323a';
 export const colorRed70 = '#c82a32';
 export const colorRed60 = '#d73d45';
-export const colorRed50 = '#e44a52';
+export const colorRed50 = '#e44b52';
+export const colorRed40 = '#e8656c';
+export const colorRed30 = '#ec8086';
+export const colorRed20 = '#f2a5a9';
 export const colorRed10 = '#fdd5d7';
-
-export const colorYellow60 = '#f4bd00';
-export const colorYellow10 = '#ffecb3';
-
-export const colorGreen60 = '#93d357';
-export const colorGreen10 = '#d8f9ba';
+export const colorRed05 = '#fce9ea';

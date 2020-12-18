@@ -59,8 +59,8 @@ export const useSearchClassName = (
                 classPrefix,
                 disabled,
             }),
-            SuggestionsList: getClassNameByComponent({
-                component: 'SuggestionsList',
+            SearchSuggestionsList: getClassNameByComponent({
+                component: 'SearchSuggestionsList',
                 classPrefix,
                 disabled,
             }),

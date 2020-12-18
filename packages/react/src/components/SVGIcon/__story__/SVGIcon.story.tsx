@@ -7,13 +7,13 @@ import {
     // eslint-disable-next-line import/no-unresolved
 } from '@storybook/addon-knobs';
 import { EditIconShape } from '../../../icons/EditIcon';
-
 import { SVGIcon } from '../SVGIcon';
+import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
     title: 'Components/SVGIcon',
     component: SVGIcon,
-    decorators: [withKnobs],
+    decorators: [withKnobs, withWrapper],
     parameters: {},
 };
 

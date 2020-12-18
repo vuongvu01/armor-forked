@@ -3,28 +3,24 @@ import PropTypes from 'prop-types';
 import { useComponentTheme } from '../../../utils/hooks';
 
 import { useTableCellClassNames } from './utils/useTableCellClassNames';
-import { TableCellStyle } from './style';
+import { TableCellRoot } from './style';
 import { TableCellPropsType, TableCellRootPropsType } from './type';
-import { tableCellDefaultTheme } from './theme';
 import { tableCellRootTestId, TABLE_CELL_CLASS_PREFIX } from './constants';
 import { useTableCell } from './utils/useTableCell';
 
 export const TableCell: FunctionComponent<TableCellPropsType> = forwardRef(
     function TableCell({ className, isHeader, children, ...restProps }, ref) {
-        const theme = useComponentTheme(
-            TABLE_CELL_CLASS_PREFIX,
-            tableCellDefaultTheme,
-        );
+        const theme = useComponentTheme(TABLE_CELL_CLASS_PREFIX);
         const classNameComponents = useTableCellClassNames(
             TABLE_CELL_CLASS_PREFIX,
             className,
         );
 
-        const { tag: TableCellRoot } = useTableCell({ isHeader });
+        const { tag: Tag } = useTableCell({ isHeader });
 
         // todo: forward only className here, it will be more efficient and neat
         return (
-            <TableCellStyle
+            <TableCellRoot
                 data-testid={tableCellRootTestId}
                 {...restProps}
                 theme={theme}
@@ -32,11 +28,11 @@ export const TableCell: FunctionComponent<TableCellPropsType> = forwardRef(
                 className={classNameComponents.Root}
             >
                 {(forwardedProps: TableCellRootPropsType) => (
-                    <TableCellRoot {...forwardedProps} ref={ref}>
+                    <Tag {...forwardedProps} ref={ref}>
                         {children}
-                    </TableCellRoot>
+                    </Tag>
                 )}
-            </TableCellStyle>
+            </TableCellRoot>
         );
     },
 );

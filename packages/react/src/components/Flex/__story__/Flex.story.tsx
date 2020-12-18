@@ -3,11 +3,12 @@ import React from 'react';
 import { withKnobs } from '@storybook/addon-knobs';
 import { Flex } from '../Flex';
 import { FlexItem } from '../FlexItem';
+import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
     title: 'Components/Flex',
     component: Flex,
-    decorators: [withKnobs],
+    decorators: [withKnobs, withWrapper],
     parameters: {},
 };
 

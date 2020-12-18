@@ -33,6 +33,7 @@ type SearchEffectivePropsType = Indexed<{
     additionalInfo?: null | React.ReactElement;
     defaultQuery?: SearchQueryType;
     disabled?: boolean;
+    error?: boolean;
     icon?: null | React.ReactElement;
     disableClearAction?: boolean;
     onChange?: (event: ChangeEvent<HTMLInputElement>) => void;

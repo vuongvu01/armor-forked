@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import { marginAttributes } from '../../system/attributes/margin';
 import { SVGIconRootPropsType } from './type';
 import { shouldForwardProp } from '../../utils';
+import { colorAttributes } from '../../system/attributes/color';
 
 const propertyList = {
     fontSize: true,
@@ -73,5 +74,6 @@ export const SVGIconRoot = styled.svg.withConfig({
         height: ${iconHeight};
     `}
     ${getSizingStyles}
+    ${colorAttributes}
     ${marginAttributes};
 `;

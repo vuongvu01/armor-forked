@@ -1,8 +1,15 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { ReactElement } from 'react';
 import { marginAttributes } from '../../system/attributes';
-import { noTextInteraction } from '../../system/mixins';
+import {
+    borderRadius,
+    color,
+    noTextInteraction,
+    pixelToRem,
+    spacing,
+    typography,
+} from '../../system/mixins';
 import { ObjectLiteralType } from '../../type';
 import { shouldForwardProp } from '../../utils';
 import {
@@ -16,6 +23,8 @@ import {
     MessageEffectivePropsLevelAndThemeType,
 } from './type';
 import { messageLevels } from './constants';
+import { fontSize03 } from '../../tokens';
+import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 
 const propertyList = {
     onClose: true,
@@ -31,44 +40,50 @@ const propertyList = {
     // add other custom properties here
 } as ObjectLiteralType;
 
-const getLevelStyles = (
-    nodeName: string,
-    {
-        theme,
-        level,
-        error,
-        success,
-        warning,
-    }: MessageEffectivePropsLevelAndThemeType,
-) => {
-    const source = theme.componentOverrides.Message[nodeName];
-
+const getColorNameByMessageLevel = ({
+    level,
+    error,
+    success,
+    warning,
+}: MessageEffectivePropsLevelAndThemeType) => {
     if (level === messageLevels.error || error) {
-        return source.error;
+        return 'error';
     }
     if (level === messageLevels.success || success) {
-        return source.success;
+        return 'accent';
     }
     if (level === messageLevels.warning || warning) {
-        return source.warning;
+        return 'warning';
     }
 
-    return source.info;
+    return 'primary';
+};
+
+const getRootDynamicStyle = (props: MessageRootPropsType) => {
+    const level = getColorNameByMessageLevel(props);
+
+    return css`
+        border-color: ${color(`${level}.main`)};
+    `;
 };
 
 export const MessageRoot = styled.div.withConfig({
     shouldForwardProp: property => shouldForwardProp(property, propertyList),
 })<MessageRootPropsType>`
     box-sizing: border-box;
-    border: 1px solid transparent;
+    border: 1px solid ${color('primary.main')};
     display: flex;
     justify-content: space-between;
     position: relative;
 
-    ${({ theme }: MessageRootPropsType) =>
-        theme.componentOverrides.Message.Root.base}
-    ${(props: MessageRootPropsType) => getLevelStyles('Root', props)}
+    border-radius: ${borderRadius('soft')};
+    background-color: ${color('neutral.00')};
 
+    padding-left: ${spacing(4)};
+    padding-right: ${spacing(4)};
+
+    ${getRootDynamicStyle}
+    ${getComponentOverride('Message')};
     ${marginAttributes}
 `;
 
@@ -76,32 +91,34 @@ export const MessageCentral = styled.div<MessageCentralPropsType>`
     flex-grow: 1;
     align-self: center;
     display: flex;
-
-    ${({ theme }: MessageCentralPropsType) =>
-        theme.componentOverrides.Message.Central.base}
 `;
 
 export const MessageContent = styled.div<MessageContentPropsType>`
     flex-grow: 1;
-    line-height: 1.3;
 
-    ${({ theme }: MessageContentPropsType) =>
-        theme.componentOverrides.Message.Content.base}
+    ${typography('paragraphMedium')};
+    line-height: 1.3;
+    color: ${color('neutral.06')};
+
+    padding-top: ${spacing(4)};
+    padding-bottom: ${spacing(4)};
 `;
 
 export const MessageActions = styled.div<MessageActionsPropsType>`
     flex-shrink: 0;
     align-self: center;
 
-    ${({ theme }: MessageActionsPropsType) =>
-        theme.componentOverrides.Message.Actions.base}
+    margin-left: ${spacing(4)};
+    padding-top: ${spacing(1)};
+    padding-bottom: ${spacing(1)};
 `;
 
 export const MessageExtra = styled.div<MessageExtraPropsType>`
     flex-shrink: 0;
 
-    ${({ theme }: MessageExtraPropsType) =>
-        theme.componentOverrides.Message.Extra.base}
+    margin-left: ${spacing(4)};
+    padding-top: ${spacing(2)};
+    padding-bottom: ${spacing(2)};
 `;
 
 const MessageIconWrapper = ({
@@ -111,14 +128,26 @@ const MessageIconWrapper = ({
     children: (props: MessageIconPropsType) => ReactElement;
 }) => children({ ...restProps });
 
+const getIconDynamicStyle = (props: MessageRootPropsType) => {
+    const level = getColorNameByMessageLevel(props);
+
+    return css`
+        color: ${color(`${level}.main`)};
+    `;
+};
+
 export const MessageIconStyle = styled(MessageIconWrapper)<
     MessageIconPropsType
 >`
     flex: 0 0 auto;
 
-    ${({ theme }: MessageIconPropsType) =>
-        theme.componentOverrides.Message.Icon.base}
-    ${(props: MessageRootPropsType) => getLevelStyles('Icon', props)}
+    font-size: ${pixelToRem(24)};
+
+    margin-right: ${spacing(2)};
+    padding-top: ${spacing(4)};
+    padding-bottom: ${spacing(4)};
+
+    ${getIconDynamicStyle};
 `;
 
 export const MessageCloseButton = styled.a<MessageCloseButtonPropsType>`
@@ -126,6 +155,11 @@ export const MessageCloseButton = styled.a<MessageCloseButtonPropsType>`
     cursor: pointer;
     ${noTextInteraction};
 
-    ${({ theme }: MessageCloseButtonPropsType) =>
-        theme.componentOverrides.Message.CloseButton.base}
+    color: ${color('neutral.05')};
+    font-size: ${pixelToRem(fontSize03)};
+
+    padding-top: ${spacing(5)};
+    padding-left: ${spacing(2)};
+    padding-bottom: ${spacing(4)};
+    line-height: normal;
 `;

@@ -1,12 +1,7 @@
 import React, { ReactNode, useState } from 'react';
-import styled, { css } from 'styled-components';
-import {
-    withKnobs,
-    text,
-    boolean,
-    select,
-    // eslint-disable-next-line import/no-unresolved
-} from '@storybook/addon-knobs';
+import styled from 'styled-components';
+// eslint-disable-next-line import/no-unresolved
+import { boolean, select, text, withKnobs } from '@storybook/addon-knobs';
 
 import { Dialog } from '../Dialog';
 import { DialogTitle } from '../DialogTitle';
@@ -16,11 +11,12 @@ import { Button } from '../../Button';
 import { LoremIpsum } from '../../../helpers/LoremIpsum';
 import { boke } from '../../../helpers/boke';
 import { TextInput } from '../../TextInput';
+import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
     title: 'Components/Dialog',
     component: Dialog,
-    decorators: [withKnobs],
+    decorators: [withKnobs, withWrapper],
     parameters: {},
 };
 
@@ -40,7 +36,12 @@ export const Basic = () => {
                     New location
                 </DialogTitle>
                 <DialogContent>
-                    {text('Children', 'Hello world!')}
+                    Delivery Hero SE is a European multinational online
+                    food-delivery service based in Berlin, Germany. The company
+                    operates in 40+ countries internationally in Europe, Asia,
+                    Latin America and the Middle East and partners with 500,000+
+                    restaurants. Delivery Hero processed more than 666 million
+                    orders in 2019
                 </DialogContent>
                 <DialogActions>
                     <Button tertiary onClick={onClose}>

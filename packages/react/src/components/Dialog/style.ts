@@ -10,7 +10,8 @@ import {
     DialogBasePropsType,
 } from './type';
 import { DIALOG_SCROLL_DOCUMENT } from './Dialog';
-import { Paper } from '../Paper';
+import { Card } from '../Card';
+import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 
 const propertyList = {
     disableOverlay: true,
@@ -80,7 +81,7 @@ export const DialogAlignmentContainer = styled.div.withConfig({
             : ''},
 `;
 
-export const DialogBase = styled(Paper).withConfig({
+export const DialogRoot = styled(Card).withConfig({
     shouldForwardProp: property => shouldForwardProp(property, propertyList),
 })<DialogBasePropsType>`
     flex-direction: column;
@@ -100,6 +101,7 @@ export const DialogBase = styled(Paper).withConfig({
     `}
 
     ${sizeAttributes}
+    ${getComponentOverride('Dialog')};
 `;
 
 export const DialogContent = styled.div<DialogContentPropsType>`

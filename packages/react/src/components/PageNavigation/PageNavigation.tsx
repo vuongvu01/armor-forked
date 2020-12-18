@@ -47,7 +47,7 @@ export const PageNavigation: FunctionComponent<PageNavigationPropsType> = forwar
             >
                 <PageNavigationPageButton
                     theme={theme}
-                    className={classNameComponents.PageButton}
+                    className={classNameComponents.ArrowButton}
                     arrow
                     disabled={!previousPageArrowEnabled}
                     data-testid={pageNavigationPageButtonTestId}
@@ -64,6 +64,7 @@ export const PageNavigation: FunctionComponent<PageNavigationPropsType> = forwar
                         className={classNameComponents.PageButton}
                         selected={pageNumber === currentPageNumber}
                         data-testid={pageNavigationPageButtonTestId}
+                        data-disabled=""
                         data-pagenumber={pageNumber}
                         onClick={onPageButtonClick}
                     >
@@ -72,7 +73,7 @@ export const PageNavigation: FunctionComponent<PageNavigationPropsType> = forwar
                 ))}
                 <PageNavigationPageButton
                     theme={theme}
-                    className={classNameComponents.PageButton}
+                    className={classNameComponents.ArrowButton}
                     arrow
                     disabled={!nextPageArrowEnabled}
                     data-testid={pageNavigationPageButtonTestId}

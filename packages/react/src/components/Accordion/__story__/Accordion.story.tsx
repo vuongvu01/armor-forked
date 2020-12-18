@@ -11,11 +11,12 @@ import { Box } from '../../Box';
 import { Radio, RadioGroup } from '../../Radio';
 import { Checkbox } from '../../Checkbox';
 import { Tooltip } from '../../Tooltip';
+import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
     title: 'Components/Accordion',
     component: Accordion,
-    decorators: [withKnobs],
+    decorators: [withKnobs, withWrapper],
     parameters: {},
 };
 

@@ -1,16 +1,75 @@
-import React from 'react';
+import React, { useState } from 'react';
 // eslint-disable-next-line import/no-unresolved
 import { withKnobs } from '@storybook/addon-knobs';
 import styled from 'styled-components';
 
 import { GroupHelper } from '../../../helpers/GroupHelper';
 import { Checkbox } from '../Checkbox';
+import { withWrapper } from '../../../helpers/Wrapper';
+import { Stack } from '../../Stack';
 
 export default {
     title: 'Components/Checkbox',
     component: Checkbox,
-    decorators: [withKnobs],
+    decorators: [withKnobs, withWrapper],
     parameters: {},
+};
+
+export const AllStates = () => {
+    const [checked, setChecked] = useState<boolean>(false);
+
+    return (
+        <Stack>
+            <Checkbox onChange={() => {}} label="Unchecked" marginBottom={2} />
+            <Checkbox
+                defaultChecked
+                onChange={() => {}}
+                label="Checked [uncontrolled]"
+                marginBottom={2}
+            />
+            <Checkbox
+                defaultChecked
+                checkedIcon="dash"
+                onChange={() => {}}
+                label="Partially selected [uncontrolled]"
+                marginBottom={2}
+            />
+            <Checkbox
+                checked={checked}
+                onChange={() => setChecked(!checked)}
+                label="Checked"
+                marginBottom={2}
+            />
+            <Checkbox
+                checked={checked}
+                // checkedIcon="dash"
+                onChange={() => setChecked(!checked)}
+                label="Partially selected"
+                marginBottom={2}
+            />
+            <Checkbox
+                onChange={() => {}}
+                label="Unchecked disabled"
+                marginBottom={2}
+                disabled
+            />
+            <Checkbox
+                defaultChecked
+                onChange={() => {}}
+                label="Checked disabled"
+                marginBottom={2}
+                disabled
+            />
+            <Checkbox
+                defaultChecked
+                checkedIcon="dash"
+                onChange={() => {}}
+                label="Partially selected disabled"
+                marginBottom={2}
+                disabled
+            />
+        </Stack>
+    );
 };
 
 export const States = () => {

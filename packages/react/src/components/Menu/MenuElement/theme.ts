@@ -8,7 +8,7 @@ export const menuElementDefaultTheme = {
             color: '$color.neutral.06',
             backgroundColor: '$color.neutral.00',
             paddingLeft: 6,
-            paddingRight: 4,
+            paddingRight: 6,
 
             '&:before': {
                 backgroundColor: '$color.primary.main',

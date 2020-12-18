@@ -7,11 +7,12 @@ import { Search } from '../Search';
 import { SuggestionObjectType } from '../type';
 import { FormField, FormFieldMessage } from '../../FormField';
 import { TextInput } from '../../TextInput';
+import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
     title: 'Components/Search',
     component: Search,
-    decorators: [withKnobs],
+    decorators: [withKnobs, withWrapper],
     parameters: {},
 };
 
@@ -140,15 +141,45 @@ export const DisableSuggestionsList = () => {
     return (
         <>
             <FormField autoMargin>
+                <Search onChange={handleOnChange} enableSuggestions={false} />
+            </FormField>
+            <p>Search query: {query}</p>
+        </>
+    );
+};
+
+export const DisabledState = () => {
+    const [query] = useState<string>('pizza');
+
+    return (
+        <>
+            <FormField autoMargin>
                 <Search
-                    disableClearAction
-                    onChange={handleOnChange}
+                    disabled
                     enableSuggestions={false}
+                    defaultQuery={query}
                 />
             </FormField>
             <p>Search query: {query}</p>
         </>
     );
+};
+
+export const ErrorState = () => {
+    const [query] = useState<string>('pizza');
+
+    return (
+        <>
+            <FormField autoMargin>
+                <Search error enableSuggestions={false} defaultQuery={query} />
+            </FormField>
+            <p>Search query: {query}</p>
+        </>
+    );
+};
+
+export const NoResultsFound = () => {
+    return <Search defaultQuery="Exotic food" options={[]} />;
 };
 
 const faction = [

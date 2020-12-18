@@ -12,10 +12,6 @@ export const tooltipDefaultTheme = {
             color: '$color.neutral.05',
             backgroundColor: '$color.neutral.00',
         },
-        dark: {
-            color: '$color.neutral.00',
-            backgroundColor: '$color.neutral.06',
-        },
         error: {
             color: '$color.neutral.00',
             backgroundColor: '$color.error.main',
@@ -29,11 +25,6 @@ export const tooltipDefaultTheme = {
         normal: {
             '&:before': {
                 backgroundColor: '$color.neutral.00',
-            },
-        },
-        dark: {
-            '&:before': {
-                backgroundColor: '$color.neutral.06',
             },
         },
         error: {

@@ -4,7 +4,7 @@ import { useComponentTheme } from '../../utils/hooks';
 
 import { getTagName } from './utils/getTagName';
 import { useTypographyClassNames } from './utils/useTypographyClassNames';
-import { TypographyStyle } from './style';
+import { TypographyRoot } from './style';
 import { TypographyPropsType } from './type';
 import { typographyDefaultTheme } from './theme';
 import { TYPOGRAPHY_CLASS_PREFIX } from './constants';
@@ -27,10 +27,10 @@ export const Typography: FunctionComponent<TypographyPropsType> = ({
         restProps,
     );
 
-    const TypographyRoot = getTagName(restProps);
+    const Tag = getTagName(restProps);
 
     return (
-        <TypographyStyle
+        <TypographyRoot
             {...restProps}
             className={classNameComponents.Root}
             disabled={disabled}
@@ -38,9 +38,9 @@ export const Typography: FunctionComponent<TypographyPropsType> = ({
             theme={theme}
         >
             {(forwardedProps: TypographyPropsType) => (
-                <TypographyRoot {...forwardedProps}>{children}</TypographyRoot>
+                <Tag {...forwardedProps}>{children}</Tag>
             )}
-        </TypographyStyle>
+        </TypographyRoot>
     );
 };
 

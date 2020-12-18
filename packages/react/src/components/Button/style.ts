@@ -10,6 +10,7 @@ import {
 import { durationRegular } from '../../tokens';
 import { shouldForwardProp } from '../../utils';
 import { ObjectLiteralType } from '../../type';
+import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 
 const propertyList = {
     tag: true,
@@ -86,7 +87,7 @@ const Wrapper = ({
     children: (props: ButtonRootPropsType) => ReactElement;
 }) => children({ ...restProps });
 
-export const ButtonStyle = styled(Wrapper).withConfig({
+export const ButtonRoot = styled(Wrapper).withConfig({
     shouldForwardProp: property => shouldForwardProp(property, propertyList),
 })<ButtonRootPropsType>`
     align-items: center;
@@ -118,6 +119,7 @@ export const ButtonStyle = styled(Wrapper).withConfig({
     ${getRootDynamicVisualStyle}
     ${getRootDynamicSizeStyle}
     ${getRootDynamicVisualDangerStyle}
+    ${getComponentOverride('Button')};
     ${marginAttributes}
     ${paddingAttributes}
     ${widthAttributes}

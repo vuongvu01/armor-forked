@@ -3,7 +3,7 @@ import { ReferenceType } from '../type';
 
 export const useInternalRef = (
     ref: ReferenceType,
-    internalRef: MutableRefObject<unknown>,
+    internalRef: MutableRefObject<unknown>, // todo: replace with MutableRefObject<HTMLElement>
 ) =>
     useEffect(() => {
         if (ref && internalRef) {

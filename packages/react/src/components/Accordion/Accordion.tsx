@@ -83,6 +83,7 @@ export const Accordion: FunctionComponent<AccordionPropsType> = forwardRef(
                     isExpanded={isExpanded}
                     ref={ref}
                     theme={theme}
+                    disabled={disabled}
                 >
                     {children}
                 </AccordionRoot>

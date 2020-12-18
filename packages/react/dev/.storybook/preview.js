@@ -1,8 +1,7 @@
-import { addDecorator, addParameters } from '@storybook/react';
-import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
+import { addDecorator } from '@storybook/react';
 import { withThemesProvider } from 'storybook-addon-styled-component-theme';
 
-import { makeDefaultTheme, makeDarkTheme } from '../../src/styling/themes';
+import { makeDarkTheme, makeDefaultTheme } from '../../src/styling/themes';
 
 const themes = [
     {
@@ -12,15 +11,21 @@ const themes = [
     },
     {
         name: 'Dark',
-        backgroundColor: '#000',
+        backgroundColor: '#262626',
         ...makeDarkTheme(),
+    },
+    {
+        name: 'Checker',
+        backgroundColor: '#fff',
+        backgroundChecker: true,
+        ...makeDefaultTheme(),
     },
 ];
 
 addDecorator(withThemesProvider(themes));
 
-addParameters({
-    viewport: {
-        viewports: INITIAL_VIEWPORTS,
-    },
-});
+// addParameters({
+//     viewport: {
+//         viewports: INITIAL_VIEWPORTS,
+//     },
+// });

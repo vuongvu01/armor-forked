@@ -3,7 +3,6 @@ import { componentSpacing06 } from '../../tokens';
 export const accordionDefaultTheme = {
     Accordion: {
         base: {
-            background: 'transparent',
             borderBottomColor: '$color.neutral.03',
             borderTopColor: '$color.neutral.03',
         },

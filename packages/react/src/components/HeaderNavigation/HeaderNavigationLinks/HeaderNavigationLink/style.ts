@@ -2,6 +2,7 @@ import { ReactElement } from 'react';
 import styled, { css } from 'styled-components';
 import { HeaderNavigationLinkRootPropsType } from './type';
 import { makePropList, shouldForwardProp } from '../../../../utils';
+import { getComponentOverride } from '../../../../system/mixins/getComponentOverride';
 
 // all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
 const propertyList = makePropList(['isActive']);
@@ -59,5 +60,6 @@ export const HeaderNavigationLinkRoot = styled(
     }
 
     ${navigationLinkRootStyle};
+    ${getComponentOverride('HeaderNavigationLink')};
     background-color: transparent;
 `;

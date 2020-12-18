@@ -4,6 +4,7 @@ import { shouldForwardProp } from '../../utils';
 import { mouseCursor, pointerEvents } from '../../styling';
 import { transitionDurationInSec } from '../../constants';
 import { SwitchCheckboxInputPropsType, SwitchLabelPropsType } from './type';
+import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 
 const sizes = {
     dimensions: {
@@ -67,6 +68,7 @@ export const SwitchRoot = styled.label.withConfig({
     display: inline-flex;
     align-items: center;
 
+    ${getComponentOverride('Switch')};
     ${mouseCursor}
 `;
 

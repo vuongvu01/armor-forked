@@ -21,11 +21,12 @@ import { LEFT, RIGHT } from '../../../constants';
 import { TableExpandableSection } from '../TableExpandableSection';
 import { TableControllerCell } from '../TableControllerCell';
 import { makeTheme } from '../../../styling';
+import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
     title: 'Components/Table',
     component: Table,
-    decorators: [withKnobs],
+    decorators: [withKnobs, withWrapper],
     parameters: {},
 };
 
@@ -144,7 +145,7 @@ const { data: largeDemoData, keys: dataKeys } = getLargeDemoData(7);
 
 export const StickyHeader = () => {
     return (
-        <Box padding={5} style={{ backgroundColor: '#fbfbfb' }}>
+        <Box padding={5}>
             <LoremIpsum />
             <Table stickyHead>
                 <TableHead>
@@ -178,7 +179,7 @@ export const StickyHeader = () => {
 
 export const StickyColumns = () => {
     return (
-        <Box style={{ backgroundColor: '#fbfbfb' }}>
+        <Box>
             <Table
                 maxWidth="70%"
                 horizontalScroll
@@ -367,7 +368,7 @@ export const StickyColumnsAndCollapsable = () => {
     const [expanded, setExpanded] = useState(false);
 
     return (
-        <Box style={{ backgroundColor: '#fbfbfb' }}>
+        <Box>
             <Table
                 maxWidth="70%"
                 horizontalScroll
@@ -444,7 +445,7 @@ export const Collapsable = () => {
     }, [content]);
 
     return (
-        <Box style={{ backgroundColor: '#fbfbfb' }}>
+        <Box>
             <Table>
                 <TableHead>
                     <Row>

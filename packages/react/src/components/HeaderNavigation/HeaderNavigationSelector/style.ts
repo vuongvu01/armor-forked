@@ -1,15 +1,9 @@
 import styled, { css } from 'styled-components';
 import { HeaderNavigationSelectorRootPropsType } from './type';
-import {
-    colorGrey00,
-    colorGrey05,
-    colorGrey30,
-    colorGrey50,
-    colorGrey90,
-} from '../../../tokens';
 import { HeaderNavigationItem } from '../HeaderNavigationItem';
 import { Dropdown } from '../../Dropdown';
-import { spacing } from '../../../system/mixins';
+import { color, spacing } from '../../../system/mixins';
+import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
 
 export const HeaderNavigationSelectorRoot = styled.div<
     HeaderNavigationSelectorRootPropsType
@@ -17,11 +11,10 @@ export const HeaderNavigationSelectorRoot = styled.div<
 
 const itemSelectorStyle = ({
     separator,
-    theme: {
-        componentOverrides: { HeaderNavigationSelector },
-    },
 }: HeaderNavigationSelectorRootPropsType) => {
-    let result = HeaderNavigationSelector.NavigationItem.base;
+    let result = css`
+        border-right-color: ${color('neutral.03')};
+    `;
 
     if (!separator) {
         result = css`
@@ -43,35 +36,36 @@ export const NavigationItemSelector = styled(HeaderNavigationItem)<
     border-right-style: solid;
 
     ${itemSelectorStyle}
+    ${getComponentOverride('HeaderNavigationSelector')};
 `;
 
 export const SelectorDropdown = styled(Dropdown)<
     HeaderNavigationSelectorRootPropsType
 >`
     .Dropdown-ExpansionIndicatorContainer {
-        background-color: ${colorGrey05};
+        background-color: ${color('neutral.02')};
     }
     .ExpansionIndicator-Icon {
-        border-color: ${colorGrey50};
+        border-color: ${color('neutral.05')};
     }
     .TextInput-Input {
         cursor: pointer;
-        caret-color: ${colorGrey00};
-        background-color: ${colorGrey05};
+        caret-color: ${color('neutral.00')};
+        background-color: ${color('neutral.02')};
         text-align: right;
         padding-right: 0;
         &:disabled {
-            color: ${colorGrey30};
+            color: ${color('neutral.04')};
         }
         &::placeholder {
-            color: ${colorGrey90};
+            color: ${color('neutral.06')};
         }
     }
     .Dropdown-TextInput {
         border-style: none;
         height: ${spacing(10)};
         cursor: pointer;
-        background-color: ${colorGrey05};
+        background-color: ${color('neutral.02')};
     }
     .Dropdown-Container {
         padding-top: ${spacing(1)};
@@ -79,4 +73,6 @@ export const SelectorDropdown = styled(Dropdown)<
     .Dropdown-OptionList {
         top: ${spacing(2)};
     }
+
+    ${getComponentOverride('HeaderNavigationSelectorDropdown')};
 `;

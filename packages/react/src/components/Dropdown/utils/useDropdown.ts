@@ -23,6 +23,7 @@ export const useDropdown = (
         options,
         onChange,
         multiple,
+        formatOption,
 
         // other native text input props
         autoFocus,
@@ -48,7 +49,7 @@ export const useDropdown = (
         onChange,
         name,
     );
-    const { internalOptions, isFlat } = useOptions(options);
+    const { internalOptions, isFlat } = useOptions(options, formatOption);
 
     const selectedValueToDisplay = useSelectedValueToDisplay(
         onRenderSelectedValue,
@@ -154,5 +155,6 @@ export const useDropdown = (
         internalOptions,
         error,
         multiple,
+        formatOption,
     };
 };

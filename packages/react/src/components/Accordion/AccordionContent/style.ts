@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 
 import { AccordionContentRootPropsType } from './type';
 import { transitionDurationInSec } from '../../../constants';
+import { typography } from '../../../system/mixins';
 
 const accordionContentStyle = ({
     isExpanded,
@@ -31,6 +32,8 @@ export const AccordionContentRoot = styled.div<AccordionContentRootPropsType>`
     height: 0;
     opacity: 0;
     visibility: hidden;
+
+    ${typography('paragraphLarge')};
 
     ${accordionContentStyle}
 `;

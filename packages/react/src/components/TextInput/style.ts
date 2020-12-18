@@ -2,6 +2,7 @@ import { ReactElement } from 'react';
 import styled, { css } from 'styled-components';
 
 import {
+    color,
     heightAttributes,
     marginAttributes,
     widthAttributes,
@@ -17,6 +18,7 @@ import {
     TextInputRootPropsType,
 } from './type';
 import { transitionDurationInSec } from '../../constants';
+import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 
 const propertyList = {
     displayMode: true,
@@ -89,8 +91,11 @@ export const TextInputRoot = styled.div.withConfig({
     border-width: 1px;
     transition: border ${transitionDurationInSec}s ease;
     vertical-align: middle;
+    
+    background-color: ${color('neutral.00')};
 
     ${getRootDynamicStyle}
+    ${getComponentOverride('TextInput')};
     ${marginAttributes}
     ${widthAttributes}
     ${heightAttributes}
@@ -169,6 +174,7 @@ export const TextInputInput = styled(Wrapper).withConfig({
     flex-grow: 1;
     padding: 0;
     margin: 0;
+    background-color: transparent;
 
     ${getInputDynamicStyle};
 `;
@@ -224,12 +230,18 @@ const getLabelBackgroundDynamicStyle = (
         theme: {
             componentOverrides: { TextInput },
         },
+        disabled,
     } = props;
 
     const result = TextInput.LabelBackground.base;
 
     return css`
         ${result};
+        background: linear-gradient(
+            0,
+            ${color(disabled ? 'neutral.02' : 'neutral.00')} 70%,
+            transparent 30%
+        );
         ${getDynamicStyle('LabelBackground', props)};
     `;
 };

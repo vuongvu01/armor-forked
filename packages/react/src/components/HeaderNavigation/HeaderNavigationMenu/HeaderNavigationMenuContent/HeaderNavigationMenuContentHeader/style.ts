@@ -2,14 +2,8 @@ import styled from 'styled-components';
 
 import { HeaderNavigationMenuContentHeaderRootPropsType } from './type';
 import { Typography } from '../../../../Typography';
-
-const contentHeaderRootStyle = ({
-    theme: {
-        componentOverrides: { HeaderNavigationMenuContentHeader },
-    },
-}: HeaderNavigationMenuContentHeaderRootPropsType) => {
-    return HeaderNavigationMenuContentHeader.Root.base;
-};
+import { getComponentOverride } from '../../../../../system/mixins/getComponentOverride';
+import { color, spacing } from '../../../../../system/mixins';
 
 export const HeaderNavigationMenuContentHeaderRoot = styled.div<
     HeaderNavigationMenuContentHeaderRootPropsType
@@ -17,7 +11,10 @@ export const HeaderNavigationMenuContentHeaderRoot = styled.div<
     box-sizing: border-box;
     height: 64px;
 
-    ${contentHeaderRootStyle}
+    background-color: ${color('neutral.02')};
+    padding: ${spacing(2)} ${spacing(4)};
+
+    ${getComponentOverride('HeaderNavigationMenuContentHeader')};
 `;
 
 export const MenuContentHeader = styled.div<

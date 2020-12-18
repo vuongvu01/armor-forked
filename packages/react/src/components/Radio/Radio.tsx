@@ -52,6 +52,7 @@ export const Radio: FunctionComponent<RadioPropsType> = forwardRef(
                 className={classOverride.Root}
                 data-testid={radioRoot}
                 theme={theme}
+                disabled={disabled}
                 {...marginProps}
             >
                 <RadioInput
@@ -92,6 +93,7 @@ Radio.displayName = RADIO_CLASS_PREFIX;
 Radio.defaultProps = {
     checked: false,
     disabled: false,
+    typographyProps: { paragraph: true, large: true },
 };
 
 Radio.propTypes = {

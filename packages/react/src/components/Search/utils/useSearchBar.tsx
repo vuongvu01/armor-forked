@@ -25,6 +25,7 @@ export const useSearchBar = (
         isLoading,
         placeholder,
         icon,
+        error,
 
         onChange,
         onItemSelect,
@@ -126,10 +127,10 @@ export const useSearchBar = (
                 if (key === 'Escape') {
                     setIsOptionsListShown();
                 } else if (key === 'ArrowDown') {
-                    event.preventDefault();
+                    event.stopPropagation();
                     handleArrowDownClick();
                 } else if (key === 'ArrowUp') {
-                    event.preventDefault();
+                    event.stopPropagation();
                     handleArrowUpClick();
                 } else if (key === 'Enter' && isSuggestionsListShown) {
                     handleEnterClick();
@@ -233,6 +234,7 @@ export const useSearchBar = (
         },
         textInputProps: {
             disabled,
+            error,
             onChange: handleChange,
             onClick: handleClick,
             placeholder,
@@ -245,7 +247,7 @@ export const useSearchBar = (
             isLoading,
         },
         searchClearActionProps: {
-            disableClearAction,
+            disableClearAction: disabled || disableClearAction,
             handleClearQuery,
             searchQuery,
             disabled,

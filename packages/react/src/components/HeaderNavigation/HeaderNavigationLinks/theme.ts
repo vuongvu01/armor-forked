@@ -1,9 +1,6 @@
 import { componentSpacing06 } from '../../../tokens';
 
 export const headerNavigationLinks = {
-    Root: {
-        base: {},
-    },
     NavigationItem: {
         base: {
             paddingLeft: componentSpacing06,

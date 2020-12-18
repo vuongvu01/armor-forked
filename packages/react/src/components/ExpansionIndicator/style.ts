@@ -2,7 +2,6 @@ import styled, { css } from 'styled-components';
 import { ExpansionIndicatorPropsType } from './type';
 import { marginAttributes } from '../../system/attributes';
 import { transitionDurationInSec } from '../../constants';
-import { spacing } from '../../system/mixins';
 
 const expansionIndicatorContainerStyle = ({
     disabled,

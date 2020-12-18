@@ -29,11 +29,6 @@ export const headerNavigationMenuContentBodyOptionsTheme = {
                 backgroundColor: '$color.primary.lightest',
             },
         },
-        selected: {
-            borderLeftColor: '$color.primary.main',
-            backgroundColor: '$color.primary.lightest',
-            color: '$color.neutral.06',
-        },
     },
     Category: {
         base: {

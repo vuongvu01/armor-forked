@@ -6,11 +6,13 @@ import { GroupHelper } from '../../../helpers/GroupHelper';
 import { Radio } from '../Radio';
 import { RadioGroup } from '../RadioGroup';
 import { Dropdown } from '../../Dropdown';
+import { withWrapper } from '../../../helpers/Wrapper';
+import { Stack } from '../../Stack';
 
 export default {
     title: 'Components/Radio',
     component: Radio,
-    decorators: [withKnobs],
+    decorators: [withKnobs, withWrapper],
     parameters: {},
 };
 

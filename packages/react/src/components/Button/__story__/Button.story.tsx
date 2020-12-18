@@ -22,13 +22,13 @@ import { ObjectLiteralType } from '../../../type';
 import { GroupHelper } from '../../../helpers/GroupHelper';
 import { Button } from '../Button';
 import { ButtonTagType } from '../type';
-import { armorTheme } from '../helpers/custom-theme';
 import { Box } from '../../Box';
+import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
     title: 'Components/Button',
     component: Button,
-    decorators: [withKnobs],
+    decorators: [withKnobs, withWrapper],
     parameters: {},
 };
 
@@ -60,138 +60,132 @@ const groupStyle = {
     alignItems: 'flex-end',
 };
 
-export const Types = () => {
+export const AllStates = () => {
     const [theme, setTheme] = useState(defaultTheme);
 
     return (
         <>
-            <h3>Pick theme</h3>
-            <Button marginRight={2} onClick={() => setTheme(defaultTheme)}>
-                Default theme
-            </Button>
-            <Button onClick={() => setTheme(armorTheme)}>DPS theme</Button>
-            <hr />
-            <ThemeProvider theme={theme}>
-                <h3>Types</h3>
-                <GroupHelper styles={groupStyle}>
-                    <Button primary>Primary</Button>
-                    <Button primary>
-                        <EditIcon marginRight={2} />
-                        Primary with icon
-                    </Button>
-                    <Button primary>
-                        Primary with icon
-                        <EditIcon marginLeft={2} />
-                    </Button>
-                    <Button primary paddingX={3}>
-                        <EditIcon />
-                    </Button>
-                    <Button primary danger>
-                        Primary
-                    </Button>
-                    <Button primary small>
-                        Primary
-                    </Button>
-                </GroupHelper>
-                <GroupHelper styles={groupStyle}>
-                    <Button disabled primary>
-                        Primary
-                    </Button>
-                    <Button disabled primary>
-                        <EditIcon marginRight={2} />
-                        Primary with icon
-                    </Button>
-                    <Button disabled primary>
-                        Primary with icon
-                        <EditIcon marginLeft={2} />
-                    </Button>
-                    <Button disabled primary paddingX={3}>
-                        <EditIcon />
-                    </Button>
-                    <Button disabled primary danger>
-                        Primary
-                    </Button>
-                    <Button disabled primary small>
-                        Primary
-                    </Button>
-                </GroupHelper>
-                <br />
-                <br />
-                <GroupHelper styles={groupStyle}>
-                    <Button secondary>Secondary</Button>
-                    <Button secondary>
-                        <EditIcon marginRight={2} />
-                        Secondary with icon
-                    </Button>
-                    <Button secondary>
-                        Secondary with icon
-                        <EditIcon marginLeft={2} />
-                    </Button>
-                    <Button secondary paddingX={3}>
-                        <EditIcon />
-                    </Button>
-                    <Button secondary small>
-                        Secondary
-                    </Button>
-                </GroupHelper>
-                <GroupHelper styles={groupStyle}>
-                    <Button disabled secondary>
-                        Secondary
-                    </Button>
-                    <Button disabled secondary>
-                        <EditIcon marginRight={2} />
-                        Secondary with icon
-                    </Button>
-                    <Button disabled secondary>
-                        Secondary with icon
-                        <EditIcon marginLeft={2} />
-                    </Button>
-                    <Button disabled secondary paddingX={3}>
-                        <EditIcon />
-                    </Button>
-                    <Button disabled secondary small>
-                        Secondary
-                    </Button>
-                </GroupHelper>
-                <br />
-                <br />
-                <GroupHelper styles={groupStyle}>
-                    <Button tertiary>Tertiary</Button>
-                    <Button tertiary>
-                        <EditIcon marginRight={2} />
-                        Tertiary with icon
-                    </Button>
-                    <Button tertiary>
-                        Tertiary with icon
-                        <EditIcon marginLeft={2} />
-                    </Button>
-                    <Button tertiary paddingX={3}>
-                        <EditIcon />
-                    </Button>
-                    <Button tertiary danger>
-                        Tertiary
-                    </Button>
-                </GroupHelper>
-                <GroupHelper styles={groupStyle}>
-                    <Button disabled tertiary>
-                        Tertiary
-                    </Button>
-                    <Button disabled tertiary>
-                        <MaterialIcon marginRight={2} />
-                        Tertiary with icon
-                    </Button>
-                    <Button disabled tertiary>
-                        Tertiary with icon
-                        <EditIcon marginLeft={2} />
-                    </Button>
-                    <Button disabled tertiary paddingX={3}>
-                        <EditIcon />
-                    </Button>
-                    <Button disabled tertiary danger>
-                        Tertiary
-                    </Button>
-                </GroupHelper>
-            </ThemeProvider>
+            <GroupHelper styles={groupStyle}>
+                <Button primary>Primary</Button>
+                <Button primary>
+                    <EditIcon marginRight={2} />
+                    Primary with icon
+                </Button>
+                <Button primary>
+                    Primary with icon
+                    <EditIcon marginLeft={2} />
+                </Button>
+                <Button primary paddingX={3}>
+                    <EditIcon />
+                </Button>
+                <Button primary danger>
+                    Primary
+                </Button>
+                <Button primary small>
+                    Primary
+                </Button>
+            </GroupHelper>
+            <GroupHelper styles={groupStyle}>
+                <Button disabled primary>
+                    Primary
+                </Button>
+                <Button disabled primary>
+                    <EditIcon marginRight={2} />
+                    Primary with icon
+                </Button>
+                <Button disabled primary>
+                    Primary with icon
+                    <EditIcon marginLeft={2} />
+                </Button>
+                <Button disabled primary paddingX={3}>
+                    <EditIcon />
+                </Button>
+                <Button disabled primary danger>
+                    Primary
+                </Button>
+                <Button disabled primary small>
+                    Primary
+                </Button>
+            </GroupHelper>
+            <br />
+            <br />
+            <GroupHelper styles={groupStyle}>
+                <Button secondary>Secondary</Button>
+                <Button secondary>
+                    <EditIcon marginRight={2} />
+                    Secondary with icon
+                </Button>
+                <Button secondary>
+                    Secondary with icon
+                    <EditIcon marginLeft={2} />
+                </Button>
+                <Button secondary paddingX={3}>
+                    <EditIcon />
+                </Button>
+                <Button secondary danger>
+                    Secondary
+                </Button>
+                <Button secondary small>
+                    Secondary
+                </Button>
+            </GroupHelper>
+            <GroupHelper styles={groupStyle}>
+                <Button disabled secondary>
+                    Secondary
+                </Button>
+                <Button disabled secondary>
+                    <EditIcon marginRight={2} />
+                    Secondary with icon
+                </Button>
+                <Button disabled secondary>
+                    Secondary with icon
+                    <EditIcon marginLeft={2} />
+                </Button>
+                <Button disabled secondary paddingX={3}>
+                    <EditIcon />
+                </Button>
+                <Button disabled secondary small>
+                    Secondary
+                </Button>
+            </GroupHelper>
+            <br />
+            <br />
+            <GroupHelper styles={groupStyle}>
+                <Button tertiary>Tertiary</Button>
+                <Button tertiary>
+                    <EditIcon marginRight={2} />
+                    Tertiary with icon
+                </Button>
+                <Button tertiary>
+                    Tertiary with icon
+                    <EditIcon marginLeft={2} />
+                </Button>
+                <Button tertiary paddingX={3}>
+                    <EditIcon />
+                </Button>
+                <Button tertiary danger>
+                    Tertiary
+                </Button>
+            </GroupHelper>
+            <GroupHelper styles={groupStyle}>
+                <Button disabled tertiary>
+                    Tertiary
+                </Button>
+                <Button disabled tertiary>
+                    <MaterialIcon marginRight={2} />
+                    Tertiary with icon
+                </Button>
+                <Button disabled tertiary>
+                    Tertiary with icon
+                    <EditIcon marginLeft={2} />
+                </Button>
+                <Button disabled tertiary paddingX={3}>
+                    <EditIcon />
+                </Button>
+                <Button disabled tertiary danger>
+                    Tertiary
+                </Button>
+            </GroupHelper>
         </>
     );
 };

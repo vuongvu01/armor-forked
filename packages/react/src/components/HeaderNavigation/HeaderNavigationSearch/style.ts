@@ -3,14 +3,15 @@ import styled, { css } from 'styled-components';
 import { HeaderNavigationSearchRootPropsType } from './type';
 import { Search } from '../../Search';
 import { HeaderNavigationItem } from '../HeaderNavigationItem';
+import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
+import { color } from '../../../system/mixins';
 
 const packItemSearchStyle = ({
     separator,
-    theme: {
-        componentOverrides: { HeaderNavigationSearch },
-    },
 }: HeaderNavigationSearchRootPropsType) => {
-    let result = HeaderNavigationSearch.NavigationItem.base;
+    let result = css`
+        border-right-color: ${color('neutral.03')};
+    `;
 
     if (!separator) {
         result = css`
@@ -34,15 +35,8 @@ export const NavigationItemSearch = styled(HeaderNavigationItem)<
     border-right-style: solid;
 
     ${packItemSearchStyle}
+    ${getComponentOverride('HeaderNavigationSearch')};
 `;
-
-const navigationSearchRootStyle = ({
-    theme: {
-        componentOverrides: { HeaderNavigationSearch },
-    },
-}: HeaderNavigationSearchRootPropsType) => {
-    return HeaderNavigationSearch.Root.base;
-};
 
 // TODO (nmelnikov 2020-10-14): update this logic once this PR lands:
 // https://github.com/deliveryhero/armor/pull/270
@@ -57,6 +51,4 @@ export const HeaderNavigationSearchRoot = styled(Search)<
     .TextInput-Input {
         height: 38px;
     }
-
-    ${navigationSearchRootStyle}
 `;

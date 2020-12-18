@@ -3,11 +3,11 @@ import { ObjectLiteralType } from '../../type';
 import { shouldForwardProp } from '../../utils';
 import { TooltipArrowPropsType, TooltipRootPropsType } from './type';
 import { transitionDurationInSec } from '../../constants';
+import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 
 const propertyList = {
     align: true,
     hidden: true,
-    dark: true,
     error: true,
     small: true,
     // add other custom properties here
@@ -15,15 +15,11 @@ const propertyList = {
 
 const getDynamicStyle = (
     element: string,
-    { dark, error, theme }: TooltipRootPropsType | TooltipArrowPropsType,
+    { error, theme }: TooltipRootPropsType | TooltipArrowPropsType,
 ): Interpolation<any> => {
     const {
         componentOverrides: { Tooltip },
     } = theme;
-
-    if (dark) {
-        return Tooltip[element].dark;
-    }
 
     if (error) {
         return Tooltip[element].error;
@@ -79,6 +75,7 @@ export const TooltipRoot = styled.div.withConfig({
     ${({ theme }) => theme.componentOverrides.Tooltip.Root.base}
     ${getRootDynamicStyle}
     ${sizeStyle}
+    ${getComponentOverride('Tooltip')};
 `;
 
 export const TooltipArrow = styled.div.withConfig({

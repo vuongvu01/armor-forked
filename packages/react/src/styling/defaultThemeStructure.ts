@@ -56,6 +56,10 @@ import { transitionDurationInSec } from '../constants';
 export const SPACING_FACTOR = 4;
 
 export const defaultThemeStructure = {
+    body: {
+        color: colorGrey90,
+        backgroundColor: colorGrey01,
+    },
     typography: {
         body: {
             fontFamily: fontFamilyRoboto,
@@ -63,6 +67,7 @@ export const defaultThemeStructure = {
             fontWeight: fontWeightMedium,
             letterSpacing: letterSpacingSmall,
             lineHeight: lineHeight03,
+            // todo: remove the color from here, typography should be color-agnostic
             color: colorGrey90,
         },
         pageTitle: {
@@ -71,6 +76,7 @@ export const defaultThemeStructure = {
             fontWeight: fontWeightMedium,
             letterSpacing: letterSpacingNone,
             lineHeight: lineHeight05,
+            // todo: remove the color from here, typography should be color-agnostic
             color: colorGrey90,
         },
         sectionTitle: {
@@ -79,6 +85,7 @@ export const defaultThemeStructure = {
             fontWeight: fontWeightMedium,
             letterSpacing: letterSpacingSmall,
             lineHeight: lineHeight04,
+            // todo: remove the color from here, typography should be color-agnostic
             color: colorGrey90,
         },
         subSectionTitle: {
@@ -87,6 +94,7 @@ export const defaultThemeStructure = {
             fontWeight: fontWeightBold,
             letterSpacing: letterSpacingSmall,
             lineHeight: lineHeight03,
+            // todo: remove the color from here, typography should be color-agnostic
             color: colorGrey90,
         },
         labelLarge: {
@@ -95,6 +103,7 @@ export const defaultThemeStructure = {
             fontWeight: fontWeightMedium,
             letterSpacing: letterSpacingMedium,
             lineHeight: lineHeight03,
+            // todo: remove the color from here, typography should be color-agnostic
             color: colorGrey90,
         },
         labelMedium: {
@@ -103,6 +112,7 @@ export const defaultThemeStructure = {
             fontWeight: fontWeightMedium,
             letterSpacing: letterSpacingLarge,
             lineHeight: lineHeight01,
+            // todo: remove the color from here, typography should be color-agnostic
             color: colorGrey90,
         },
         labelSmall: {
@@ -111,6 +121,7 @@ export const defaultThemeStructure = {
             fontWeight: fontWeightMedium,
             letterSpacing: letterSpacingMedium,
             lineHeight: lineHeight01,
+            // todo: remove the color from here, typography should be color-agnostic
             color: colorGrey90,
         },
         paragraphLarge: {
@@ -119,6 +130,7 @@ export const defaultThemeStructure = {
             fontWeight: fontWeightRegular,
             letterSpacing: letterSpacingSmall,
             lineHeight: lineHeight03,
+            // todo: remove the color from here, typography should be color-agnostic
             color: colorGrey90,
         },
         paragraphMedium: {
@@ -127,6 +139,7 @@ export const defaultThemeStructure = {
             fontWeight: fontWeightRegular,
             letterSpacing: letterSpacingSmall,
             lineHeight: lineHeight03,
+            // todo: remove the color from here, typography should be color-agnostic
             color: colorGrey90,
         },
         paragraphSmall: {
@@ -135,6 +148,7 @@ export const defaultThemeStructure = {
             fontWeight: fontWeightRegular,
             letterSpacing: letterSpacingLarge,
             lineHeight: lineHeight02,
+            // todo: remove the color from here, typography should be color-agnostic
             color: colorGrey90,
         },
     },

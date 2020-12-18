@@ -16,18 +16,17 @@ import { Overlay } from '../Overlay';
 import { CloseIcon } from '../../icons';
 import {
     iconStyle,
-    SideSheetBase,
+    SideSheetRoot,
     SideSheetContent,
     SideSheetHeaderCloseButtonContainer,
     SideSheetHeaderCloseButtonContent,
     SideSheetHeaderContainer,
 } from './style';
 import {
+    SIDE_SHEET_CLASS_PREFIX,
     sideSheetContent,
     sideSheetHeaderCloseButtonContainer,
     sideSheetHeaderContainer,
-    sideSheetRoot,
-    SIDE_SHEET_CLASS_PREFIX,
 } from './constants';
 
 export const SideSheet: FunctionComponent<SideSheetPropsType> = forwardRef(
@@ -73,7 +72,7 @@ export const SideSheet: FunctionComponent<SideSheetPropsType> = forwardRef(
 
         return (
             <Modal
-                className={classOverride.Root}
+                className={classOverride.Modal}
                 disableBackdrop={disableOverlay}
                 disableCloseByEscape={disableCloseByEscape}
                 onClose={onClose}
@@ -88,10 +87,9 @@ export const SideSheet: FunctionComponent<SideSheetPropsType> = forwardRef(
                     effectToggle={effectToggle}
                     theme={theme}
                 />
-                <SideSheetBase
+                <SideSheetRoot
                     {...restProps}
-                    // data-testid={sideSheetRoot}
-                    className={classOverride.Base}
+                    className={classOverride.Root}
                     disableEffects={disableEffects}
                     display={display}
                     effectToggle={effectToggle}
@@ -133,7 +131,7 @@ export const SideSheet: FunctionComponent<SideSheetPropsType> = forwardRef(
                         {body}
                         {footer}
                     </SideSheetContent>
-                </SideSheetBase>
+                </SideSheetRoot>
             </Modal>
         );
     },

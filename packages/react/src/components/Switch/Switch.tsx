@@ -1,4 +1,11 @@
-import React, { ChangeEvent, forwardRef, FunctionComponent } from 'react';
+import React, {
+    ChangeEvent,
+    forwardRef,
+    FunctionComponent,
+    useCallback,
+    useMemo,
+    useState,
+} from 'react';
 import PropTypes from 'prop-types';
 
 import { useComponentTheme } from '../../utils/hooks';
@@ -14,6 +21,7 @@ export const Switch: FunctionComponent<SwitchPropsType> = forwardRef(
     function Switch(
         {
             checked,
+            defaultChecked,
             className,
             disabled,
             error,
@@ -37,14 +45,41 @@ export const Switch: FunctionComponent<SwitchPropsType> = forwardRef(
             checked,
         );
 
-        const handleOnChange = (event: ChangeEvent<HTMLInputElement>) =>
-            onChange && onChange(event);
+        // todo: clear up this mess with nativelyChecked and reallyChecked
+        const [nativelyChecked, setNativelyChecked] = useState<boolean>(
+            checked !== undefined ? !!checked : !!defaultChecked,
+        );
+        // if checked is set, we consider the controlled mode, otherwise look at the native check/uncheck
+        const reallyChecked = checked !== undefined ? checked : nativelyChecked;
+
+        const handleOnChange = useCallback(
+            (event: React.ChangeEvent<HTMLInputElement>) => {
+                if (onChange) {
+                    onChange(event);
+                }
+
+                setNativelyChecked(event.target.checked);
+            },
+            [onChange, setNativelyChecked, nativelyChecked],
+        );
+
+        // this is only here to force SelectorLabel to use Typography
+        // todo: consider deprecating SelectorLabel in favour of a wrapping component around Checkbox/Radio
+        const typographyProps = useMemo(
+            () => ({ paragraph: true, large: true }),
+            [],
+        );
 
         return (
-            <SwitchRoot disabled={disabled} htmlFor={id}>
+            <SwitchRoot
+                disabled={disabled}
+                htmlFor={id}
+                reallyChecked={reallyChecked}
+            >
                 <SwitchCheckboxInput
                     {...restProps}
                     checked={checked}
+                    defaultChecked={defaultChecked}
                     className={classOverride.CheckboxInput}
                     disabled={disabled}
                     id={id}
@@ -58,9 +93,16 @@ export const Switch: FunctionComponent<SwitchPropsType> = forwardRef(
                     disabled={disabled}
                     theme={theme}
                 />
-                <SelectorLabel disabled={disabled} error={error} theme={theme}>
-                    {label}
-                </SelectorLabel>
+                {!!label && (
+                    <SelectorLabel
+                        disabled={disabled}
+                        error={error}
+                        theme={theme}
+                        typographyProps={typographyProps}
+                    >
+                        {label}
+                    </SelectorLabel>
+                )}
             </SwitchRoot>
         );
     },

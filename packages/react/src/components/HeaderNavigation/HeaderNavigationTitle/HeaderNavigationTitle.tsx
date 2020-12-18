@@ -5,16 +5,15 @@ import {
     HEADER_NAVIGATION_TITLE_CLASS_PREFIX,
     headerNavigationTitleRoot,
 } from './constants';
-import { headerNavigationTitle } from './theme';
 import {
     useHeaderNavigationTitle,
     useHeaderNavigationTitleClassName,
 } from './utils';
 import { HeaderNavigationTitleRoot } from './style';
 import { HeaderNavigationTitlePropsType } from './type';
-import { useComponentTheme } from '../../../utils/hooks';
 import HeaderNavigationLinksContext from '../HeaderNavigationLinks/HeaderNavigationLinksContext';
 import { ButtonPropsType } from '../../Button/type';
+import { useTheme } from '../../../styling';
 
 export const HeaderNavigationTitle: FunctionComponent<HeaderNavigationTitlePropsType> = forwardRef(
     function HeaderNavigationTitle(
@@ -32,10 +31,7 @@ export const HeaderNavigationTitle: FunctionComponent<HeaderNavigationTitleProps
         },
         ref,
     ) {
-        const theme = useComponentTheme(
-            HEADER_NAVIGATION_TITLE_CLASS_PREFIX,
-            headerNavigationTitle,
-        );
+        const theme = useTheme();
 
         const classOverride = useHeaderNavigationTitleClassName(
             HEADER_NAVIGATION_TITLE_CLASS_PREFIX,

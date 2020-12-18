@@ -3,11 +3,12 @@ import React from 'react';
 import { withKnobs } from '@storybook/addon-knobs';
 import { Stack } from '../Stack';
 import { StackItem } from '../StackItem';
+import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
     title: 'Components/Stack',
     component: Stack,
-    decorators: [withKnobs],
+    decorators: [withKnobs, withWrapper],
     parameters: {},
 };
 

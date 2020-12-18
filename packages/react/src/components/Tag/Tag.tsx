@@ -46,6 +46,7 @@ export const Tag: FunctionComponent<TagPropsType> = forwardRef(function Tag(
         >
             <TagTypography
                 deleteOption={deleteOption}
+                className={classOverride.Label}
                 paragraph
                 small
                 theme={theme}

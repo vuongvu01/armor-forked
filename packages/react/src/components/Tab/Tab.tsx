@@ -72,6 +72,8 @@ export const Tab: FunctionComponent<TabPropsType> = forwardRef(function Tab(
                         ref={ref}
                     >
                         <TabLabel
+                            label
+                            large
                             className={classOverride.Label}
                             disabled={disabled}
                             isActive={isActive}

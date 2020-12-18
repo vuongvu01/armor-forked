@@ -1,4 +1,10 @@
-import { HTMLAttributes, InputHTMLAttributes, MouseEvent } from 'react';
+import {
+    HTMLAttributes,
+    InputHTMLAttributes,
+    MouseEvent,
+    ReactChild,
+    ReactElement,
+} from 'react';
 
 import {
     MarginAttributesType,
@@ -58,6 +64,7 @@ export type DropdownOnChangeEventType = {
 };
 
 export type DropdownOnChangeType = (event: DropdownOnChangeEventType) => void;
+export type OptionFormatType = (option: OptionItemType) => string;
 
 export type DropdownOnRenderSelectedValueType = (
     value: DropdownInternalValueType,
@@ -94,6 +101,7 @@ type DropdownEffectivePropsType = Indexed<{
         value: DropdownInternalValueType,
         options: DropdownInternalOptionType,
     ) => string;
+    formatOption?: OptionFormatType;
 }> &
     Omit<
         InputHTMLAttributes<HTMLInputElement>,

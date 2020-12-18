@@ -21,6 +21,7 @@ export const makeArmorSubTheme = (
     theme.typography = makeTypography(theme.typography);
 
     const referenceIndex = flatten({
+        body: theme.body,
         shape: theme.shape,
         typography: theme.typography,
         color: theme.color,
@@ -30,7 +31,7 @@ export const makeArmorSubTheme = (
 
     theme.referenceIndex = Object.keys(referenceIndex).reduce((result, key) => {
         return {
-            [`$${key}`]: referenceIndex[key],
+            [`$${key}`]: referenceIndex[key], // todo: when get rid of theme.ts, remove also "$"
             ...result,
         };
     }, {});

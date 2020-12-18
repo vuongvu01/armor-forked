@@ -7,9 +7,13 @@ import { FormFieldRoot } from './style';
 import { FormFieldPropsType } from './type';
 import { formFieldDefaultTheme } from './theme';
 import { FORM_FIELD_CLASS_PREFIX } from './constants';
+import { getCompatiblePropValue } from '../../utils/getCompatiblePropValue';
 
 export const FormField: FunctionComponent<FormFieldPropsType> = forwardRef(
-    function FormField({ className, autoMargin, ...restProps }, ref) {
+    function FormField(
+        { className, autoMargin, enableVerticalOuterSpacing, ...restProps },
+        ref,
+    ) {
         const theme = useComponentTheme(
             FORM_FIELD_CLASS_PREFIX,
             formFieldDefaultTheme,
@@ -23,7 +27,10 @@ export const FormField: FunctionComponent<FormFieldPropsType> = forwardRef(
         return (
             <FormFieldRoot
                 {...restProps}
-                autoMargin={autoMargin}
+                enableVerticalOuterSpacing={getCompatiblePropValue(
+                    enableVerticalOuterSpacing,
+                    autoMargin,
+                )}
                 theme={theme}
                 className={classNameComponents.Root}
                 ref={ref}
@@ -33,11 +40,10 @@ export const FormField: FunctionComponent<FormFieldPropsType> = forwardRef(
 );
 
 FormField.defaultProps = {
-    autoMargin: false,
+    enableVerticalOuterSpacing: false,
 };
 
 /** Support of prop-types is here for project that don't use TypeScript */
 FormField.propTypes = {
-    /** Example description */
-    autoMargin: PropTypes.bool,
+    enableVerticalSpacing: PropTypes.bool,
 };

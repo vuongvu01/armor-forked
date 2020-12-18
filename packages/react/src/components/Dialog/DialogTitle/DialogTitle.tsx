@@ -45,6 +45,8 @@ export const DialogTitle: FunctionComponent<DialogTitlePropsType> = ({
             </DialogTitleText>
             {!!description && (
                 <DialogTitleDescription
+                    paragraph
+                    large
                     theme={theme}
                     className={classNameComponents.Description}
                 >

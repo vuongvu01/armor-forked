@@ -6,19 +6,16 @@ import {
 } from '@storybook/addon-knobs';
 import { loremIpsum } from '../../../helpers/LoremIpsum';
 import { Typography } from '../Typography';
+import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
     title: 'Components/Typography',
     component: Typography,
-    decorators: [withKnobs],
+    decorators: [withKnobs, withWrapper],
     parameters: {},
 };
 
-export const Basic = () => (
-    <Typography>{text('Children', 'Hello world!')}</Typography>
-);
-
-export const AllOfThem = () => (
+export const AllStates = () => (
     <>
         <Typography pageTitle>Page title: Top secret document</Typography>
         <Typography sectionTitle>Section Title: Space race mission</Typography>
@@ -46,6 +43,10 @@ export const AllOfThem = () => (
             Label small
         </Typography>
     </>
+);
+
+export const Basic = () => (
+    <Typography>{text('Children', 'Hello world!')}</Typography>
 );
 
 export const NoMargin = () => (

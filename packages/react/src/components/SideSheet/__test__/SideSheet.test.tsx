@@ -9,7 +9,6 @@ import {
     waitForElement,
 } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
-import renderer from 'react-test-renderer';
 import 'jest-styled-components';
 
 import { SideSheet } from '../SideSheet';
@@ -23,10 +22,7 @@ import {
     sideSheetHeader,
     sideSheetHeaderCloseButtonContainer,
     sideSheetHeaderContainer,
-    sideSheetRoot,
 } from '../constants';
-import { Dialog } from '../../Dialog';
-import { Accordion, AccordionContent, AccordionHeader } from '../../Accordion';
 
 const headerTitle = 'Header title';
 const headerDescription = 'Header description';
@@ -178,7 +174,7 @@ describe('<SideSheet />', () => {
             </SideSheet>,
         );
 
-        const containerExpandedElement = screen.getByTestId(sideSheetRoot);
+        const containerExpandedElement = screen.getByTestId('SideSheetRoot');
         expect(containerExpandedElement).not.toHaveStyle('width: 0;');
     });
 

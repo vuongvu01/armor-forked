@@ -11,3 +11,11 @@ export const noTextInteraction = () => css`
     outline: none;
     user-select: none;
 `;
+
+// todo: maybe also reset colors to body.color and body.backgroundColor here
+export const reset = () => css`
+    box-sizing: border-box;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+`;

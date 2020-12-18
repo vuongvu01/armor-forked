@@ -5,6 +5,7 @@ export * from './spacing';
 export * from './pixelToRem';
 export * from './typography';
 export * from './color';
+export * from './token';
 export * from './etc';
 export {
     breakpointUp,

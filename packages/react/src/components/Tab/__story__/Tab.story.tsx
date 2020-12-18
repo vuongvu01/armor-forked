@@ -4,11 +4,12 @@ import { withKnobs } from '@storybook/addon-knobs';
 
 import { GroupHelper } from '../../../helpers/GroupHelper';
 import { Tab } from '../Tab';
+import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
     title: 'Components/Tab',
     component: Tab,
-    decorators: [withKnobs],
+    decorators: [withKnobs, withWrapper],
     parameters: {},
 };
 

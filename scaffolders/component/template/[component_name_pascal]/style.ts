@@ -3,6 +3,7 @@ import { <%- component_name_pascal %>RootPropsType, <%- component_name_pascal %>
 import { marginAttributes } from '../../system/attributes';
 import { shouldForwardProp, makePropList } from '../../utils';
 import { getComponentOverride } from '../../system/mixins/getComponentOverride';
+import {reset} from '../../system/mixins';
 
 // all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
 const propertyList = makePropList([
@@ -51,7 +52,8 @@ const getSubNodeDynamicStyle = (props: <%- component_name_pascal %>SubNodePropsT
 export const <%- component_name_pascal %>SubNode = styled.div.withConfig({
     shouldForwardProp: property => shouldForwardProp(property, propertyList),
 })<<%- component_name_pascal %>SubNodePropsType>`
-    box-sizing: border-box;
+    ${reset};
 
     ${getSubNodeDynamicStyle};
+    ${getComponentOverride('<%- component_name_pascal %>SubNode')};
 `;

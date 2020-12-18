@@ -20,7 +20,7 @@ const Wrapper = ({
     children: (className: string) => ReactElement;
 }) => children(className);
 
-export const MessageActionStyle = styled(Wrapper).withConfig({
+export const MessageActionRoot = styled(Wrapper).withConfig({
     shouldForwardProp: property => shouldForwardProp(property, propertyList),
 })<MessageActionRootPropsType>`
     box-sizing: border-box;
