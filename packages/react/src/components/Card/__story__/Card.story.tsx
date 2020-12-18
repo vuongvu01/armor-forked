@@ -3,14 +3,14 @@ import {
     withKnobs,
     // eslint-disable-next-line import/no-unresolved
 } from '@storybook/addon-knobs';
-// eslint-disable-next-line import/no-unresolved
 
 import { Card } from '../Card';
+import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
     title: 'Components/Card',
     component: Card,
-    decorators: [withKnobs],
+    decorators: [withKnobs, withWrapper],
     parameters: {},
 };
 

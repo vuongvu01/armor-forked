@@ -6,7 +6,7 @@ import { useComponentTheme } from '../../utils/hooks';
 import { useDialogClassNames } from './utils/useDialogClassNames';
 import {
     DialogAlignmentContainer,
-    DialogBase,
+    DialogRoot,
     DialogCloseButton,
     DialogContent,
 } from './style';
@@ -71,7 +71,7 @@ export const Dialog: FunctionComponent<DialogPropsType> = ({
             disableBackdrop={disableOverlay}
             disableCloseByEscape={disableCloseByEscape}
             zIndex={zIndex}
-            className={classNameComponents.Root}
+            className={classNameComponents.Modal}
         >
             <Overlay
                 className={classNameComponents.Overlay}
@@ -89,10 +89,10 @@ export const Dialog: FunctionComponent<DialogPropsType> = ({
                 onClick={onContainerClick}
                 scroll={scroll}
             >
-                <DialogBase
+                <DialogRoot
                     {...restProps}
                     theme={theme}
-                    className={classNameComponents.Base}
+                    className={classNameComponents.Root}
                     effectToggle={effectToggle}
                     scroll={scroll}
                     disableEffects={disableEffects}
@@ -114,7 +114,7 @@ export const Dialog: FunctionComponent<DialogPropsType> = ({
                     >
                         {children}
                     </DialogContent>
-                </DialogBase>
+                </DialogRoot>
             </DialogAlignmentContainer>
         </Modal>
     );

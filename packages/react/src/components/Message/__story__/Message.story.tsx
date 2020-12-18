@@ -1,6 +1,6 @@
 import React from 'react';
 // eslint-disable-next-line import/no-unresolved
-import { boolean, select, withKnobs } from '@storybook/addon-knobs';
+import { withKnobs } from '@storybook/addon-knobs';
 
 import { Message } from '../Message';
 import { Typography } from '../../Typography';
@@ -8,13 +8,24 @@ import { MessageAction } from '../MessageAction';
 import { Rick } from '../../../helpers/Rick';
 import { Box } from '../../Box';
 import { loremIpsum } from '../../../helpers/LoremIpsum';
+import { withWrapper } from '../../../helpers/Wrapper';
+import { Stack } from '../../Stack';
 
 export default {
     title: 'Components/Message',
     component: Message,
-    decorators: [withKnobs],
+    decorators: [withKnobs, withWrapper],
     parameters: {},
 };
+
+export const AllStates = () => (
+    <Stack gutterSpacing={3}>
+        <Message success>Hello there!</Message>
+        <Message info>Hello there!</Message>
+        <Message error>Hello there!</Message>
+        <Message warning>Hello there!</Message>
+    </Stack>
+);
 
 export const Basic = () => (
     <Message
@@ -61,19 +72,4 @@ export const WithCustomAttributes = () => (
     <Message marginTop={30} disableCloseButton={false} disableIcon>
         Hello there!
     </Message>
-);
-
-export const AllTypes = () => (
-    <>
-        <Message info marginBottom={2}>
-            Hello there!
-        </Message>
-        <Message error marginBottom={2}>
-            Hello there!
-        </Message>
-        <Message warning marginBottom={2}>
-            Hello there!
-        </Message>
-        <Message success>Hello there!</Message>
-    </>
 );

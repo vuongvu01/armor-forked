@@ -19,20 +19,10 @@ export const HeaderNavigationLinksRoot = styled(HeaderNavigationItem)<
     ${itemLinksStyle}
 `;
 
-const navigationLinksRootStyle = ({
-    theme: {
-        componentOverrides: { HeaderNavigationLinks },
-    },
-}: HeaderNavigationLinksRootPropsType) => {
-    return HeaderNavigationLinks.Root.base;
-};
-
 export const HeaderNavigationLinksContainer = styled.div<
     HeaderNavigationLinksRootPropsType
 >`
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
-
-    ${navigationLinksRootStyle}
 `;

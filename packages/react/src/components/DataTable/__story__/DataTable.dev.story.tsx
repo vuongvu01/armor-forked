@@ -9,11 +9,12 @@ import { DataTable } from '../DataTable';
 import { getSortingFunction } from '../utils/getSortingFunction';
 import { ScalarType } from '../../../type';
 import { multiplyDataRows } from './utils';
+import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
     title: 'Components/DataTable',
     component: DataTable,
-    decorators: [withKnobs],
+    decorators: [withKnobs, withWrapper],
     parameters: {},
 };
 

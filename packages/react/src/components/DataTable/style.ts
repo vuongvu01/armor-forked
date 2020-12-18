@@ -8,7 +8,8 @@ import { shouldForwardProp } from '../../utils';
 import { DataTableRootPropsType } from './type';
 
 export const DataTableRoot = styled.div.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property),
+    shouldForwardProp: property =>
+        shouldForwardProp(property, { horizontalScroll: true }),
 })<DataTableRootPropsType>`
     box-sizing: border-box;
 

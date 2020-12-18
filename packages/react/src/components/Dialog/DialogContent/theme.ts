@@ -1,6 +1,8 @@
 export const dialogContentDefaultTheme = {
     Root: {
         base: {
+            marginTop: 0,
+            marginBottom: 0,
             paddingTop: 0,
             paddingBottom: 0,
             paddingLeft: 6,

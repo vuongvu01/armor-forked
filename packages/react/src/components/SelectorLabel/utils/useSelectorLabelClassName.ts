@@ -12,9 +12,9 @@ const useSelectorLabelClassName = (
 ) =>
     useMemo(
         () => ({
-            Label: appendClassName(
+            Root: appendClassName(
                 selectorClassGeneratorBasedOnComponent({
-                    component: 'Label',
+                    component: 'Root',
                     classPrefix,
                     disabled,
                     checked,

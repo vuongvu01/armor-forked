@@ -3,6 +3,7 @@ import { MenuRootPropsType } from './type';
 import { marginAttributes, paddingAttributes } from '../../system/attributes';
 import { shouldForwardProp, makePropList } from '../../utils';
 import { transitionDurationInSec } from '../../constants';
+import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 
 // all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
 const propertyList = makePropList([
@@ -76,6 +77,7 @@ export const MenuRoot = styled.div.withConfig({
     box-sizing: border-box;
 
     ${getRootDynamicStyle}
+    ${getComponentOverride('Menu')};
     ${marginAttributes}
     ${paddingAttributes}
 `;

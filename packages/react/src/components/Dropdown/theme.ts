@@ -17,10 +17,6 @@ export const dropdownDefaultTheme = {
                 backgroundColor: '$color.primary.lightest',
             },
         },
-        selected: {
-            backgroundColor: '$color.primary.lightest',
-            borderLeftColor: '$color.primary.main',
-        },
     },
     OptionList: {
         base: {

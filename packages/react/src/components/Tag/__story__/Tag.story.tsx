@@ -4,11 +4,12 @@ import { withKnobs } from '@storybook/addon-knobs';
 
 import { GroupHelper } from '../../../helpers/GroupHelper';
 import { Tag } from '../Tag';
+import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
     title: 'Components/Tag',
     component: Tag,
-    decorators: [withKnobs],
+    decorators: [withKnobs, withWrapper],
     parameters: {},
 };
 
@@ -35,9 +36,9 @@ export const StatusTag = () => {
     return (
         <>
             <GroupHelper gap={2}>
-                <Tag type="approved" />
-                <Tag type="denied" />
-                <Tag type="new" />
+                <Tag type="approved">Approved</Tag>
+                <Tag type="denied">Denied</Tag>
+                <Tag type="new">New</Tag>
             </GroupHelper>
         </>
     );

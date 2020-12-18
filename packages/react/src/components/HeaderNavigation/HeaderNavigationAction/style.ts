@@ -6,6 +6,7 @@ import {
     HeaderNavigationActionRootPropsType,
 } from './type';
 import { HeaderNavigationItem } from '../HeaderNavigationItem';
+import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
 
 const actionRootStyle = ({
     theme: {
@@ -49,4 +50,5 @@ export const HeaderNavigationActionItemRoot = styled.div<
     cursor: pointer;
 
     ${actionItemRootStyle}
+    ${getComponentOverride('HeaderNavigationActionItem')};
 `;

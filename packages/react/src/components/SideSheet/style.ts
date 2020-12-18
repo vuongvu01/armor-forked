@@ -15,6 +15,7 @@ import {
     widthDefault,
     closeIconOffset,
 } from './constants';
+import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 
 const blacklistProperties = {
     effectToggle: true,
@@ -68,7 +69,7 @@ const closeIconStyle = ({
     },
 }: SideSheetContentPropsType) => SideSheet.Icon.focused;
 
-export const SideSheetBase = styled.div.withConfig({
+export const SideSheetRoot = styled.div.withConfig({
     shouldForwardProp: property =>
         shouldForwardProp(property, blacklistProperties),
 })<SideSheetContainerPropsType>`
@@ -82,6 +83,7 @@ export const SideSheetBase = styled.div.withConfig({
     z-index: inherit;
 
     ${containerStyle}
+    ${getComponentOverride('SideSheet')};
 `;
 
 export const SideSheetContent = styled.div<SideSheetContentPropsType>`

@@ -1,22 +1,16 @@
 /* eslint-disable no-console,import/no-unresolved */
 
 import React from 'react';
-import {
-    withKnobs,
-    text,
-    boolean,
-    number,
-    select,
-} from '@storybook/addon-knobs';
-import { action } from '@storybook/addon-actions';
+import { withKnobs } from '@storybook/addon-knobs';
+import { ArrowUpIcon } from '@deliveryhero/armor-icons';
 
-import { ArrowUpIcon } from '@deliveryhero/armor-icons/src';
 import { IconButton } from '../IconButton';
+import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
     title: 'Components/IconButton',
     component: IconButton,
-    decorators: [withKnobs],
+    decorators: [withKnobs, withWrapper],
     parameters: {},
 };
 

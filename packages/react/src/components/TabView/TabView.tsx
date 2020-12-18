@@ -21,7 +21,7 @@ export const TabView: FunctionComponent<TabViewPropsType> = ({
     const theme = useComponentTheme(TAB_VIEW_CLASS_PREFIX, tabViewDefaultTheme);
 
     return value === selectedValue ? (
-        <TabViewRoot {...restProps} theme={theme}>
+        <TabViewRoot paragraph medium {...restProps} theme={theme}>
             {value === selectedValue && <Box padding={2}>{children}</Box>}
         </TabViewRoot>
     ) : null;

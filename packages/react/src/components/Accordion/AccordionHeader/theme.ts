@@ -7,12 +7,6 @@ import {
 export const accordionHeaderDefaultTheme = {
     Root: {
         base: {
-            background: 'transparent',
-            fontWeight: '$typography.labelMedium.fontWeight',
-            letterSpacing: '$typography.labelMedium.letterSpacing',
-            fontSize: '$typography.labelMedium.fontSize',
-            fontFamily: '$typography.labelMedium.fontFamily',
-            lineHeight: '$typography.labelMedium.lineHeight',
             paddingTop: componentSpacing04,
             paddingRight: componentSpacing06,
             paddingBottom: componentSpacing04,

@@ -13,6 +13,7 @@ import {
 } from '../../../system/attributes';
 import { makePropList, shouldForwardProp } from '../../../utils';
 import { transitionDurationInSec } from '../../../constants';
+import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
 
 // all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
 const propertyList = makePropList([
@@ -96,6 +97,7 @@ export const MenuElementRoot = styled(MenuElementRootWrapper).withConfig({
     }
 
     ${getRootDynamicStyle}
+    ${getComponentOverride('MenuElement')};
     ${marginAttributes}
     ${paddingAttributes}
 `;

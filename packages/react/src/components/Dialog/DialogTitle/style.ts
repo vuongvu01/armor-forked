@@ -8,6 +8,7 @@ import {
     DialogTitleDescriptionPropsType,
 } from './type';
 import { Typography } from '../../Typography';
+import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
 
 const propertyList = {
     description: true,
@@ -27,10 +28,12 @@ export const DialogTitleText = styled(Typography)<DialogTitleTextPropsType>`
     margin: 0;
 `;
 
-export const DialogTitleDescription = styled.div<
+export const DialogTitleDescription = styled(Typography)<
     DialogTitleDescriptionPropsType
 >`
     letter-spacing: 0;
     ${({ theme }: DialogTitleDescriptionPropsType) =>
-        theme.componentOverrides.DialogTitle.Description.base}
+        theme.componentOverrides.DialogTitle.Description.base};
+
+    ${getComponentOverride('DialogTitle')};
 `;

@@ -6,6 +6,8 @@ import {
     HeaderNavigationMenuContentBodyOptionsItemPropsType,
 } from '../type';
 import { Stack, StackItem } from '../../../../Stack';
+import { getComponentOverride } from '../../../../../system/mixins/getComponentOverride';
+import { color } from '../../../../../system/mixins';
 
 const contentBodyOptionsRootStyle = ({
     theme: {
@@ -29,7 +31,9 @@ const contentBodyOptionsItemStyle = ({
             border-left-width: 2px;
             border-left-style: solid;
             padding-left: 14px;
-            ${HeaderNavigationMenuContentBodyOptions.Item.selected}
+            border-left-color: ${color('primary.main')};
+            background-color: ${color('primary.lightest')};
+            color: ${color('neutral.06')};
         `;
     }
 
@@ -57,6 +61,7 @@ export const HeaderNavigationMenuContentBodyOptionsRoot = styled(Stack)<
     HeaderNavigationMenuContentBodyOptionsRootPropsType
 >`
     ${contentBodyOptionsRootStyle}
+    ${getComponentOverride('HeaderNavigationMenuContentBodyOptions')};
 `;
 
 export const HeaderNavigationMenuContentBodyOptionsCategory = styled(StackItem)<

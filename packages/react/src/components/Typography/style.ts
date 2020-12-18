@@ -8,6 +8,7 @@ import {
 import { shouldForwardProp } from '../../utils';
 import { ObjectLiteralType } from '../../type';
 import { TypographyRootPropsType } from './type';
+import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 
 const propertyList = {
     disabled: true,
@@ -129,7 +130,7 @@ const Wrapper = ({
     children: (props: TypographyRootPropsType) => ReactElement;
 }) => children({ ...restProps });
 
-export const TypographyStyle = styled(Wrapper).withConfig({
+export const TypographyRoot = styled(Wrapper).withConfig({
     shouldForwardProp: property => shouldForwardProp(property, propertyList),
 })<TypographyRootPropsType>`
     box-sizing: border-box;
@@ -139,6 +140,7 @@ export const TypographyStyle = styled(Wrapper).withConfig({
     ${getRootBaseStyle}
     ${getRootDynamicStyle}
     ${getMaxLinesStyle}
+    ${getComponentOverride('Typography')};
     ${marginAttributes}
     ${colorAttributes}
     ${textAlignmentAttributes}

@@ -13,7 +13,7 @@ import { Tooltip } from '@deliveryhero/armor';
 <Preview>
     <Story name="Basic usage" height="220px">
         <Box margin={20}>
-            <Tooltip dark content="Sample tooltip content">
+            <Tooltip content="Sample tooltip content">
                 <Button>Investigate</Button>
             </Tooltip>
         </Box>
@@ -26,7 +26,6 @@ import { Tooltip } from '@deliveryhero/armor';
     <Story name="Rich content" height="220px">
         <Box margin={20}>
             <Tooltip
-                dark
                 content={<span>Place order for <span style={{color: '#93d357'}}>17.98€</span></span>}
             >
                 <Button>Order</Button>
@@ -40,23 +39,23 @@ import { Tooltip } from '@deliveryhero/armor';
 <Preview>
     <Story name="Position" height="260px">
         <Box margin={20}>
-            <Tooltip dark content="Top-left aligned tooltip" align="top-start">
+            <Tooltip content="Top-left aligned tooltip" align="top-start">
                 <Button marginRight={2}>Cook</Button>
             </Tooltip>
-            <Tooltip dark content="Top-central aligned tooltip" align="top">
+            <Tooltip content="Top-central aligned tooltip" align="top">
                 <Button>Eat</Button>
             </Tooltip>
-            <Tooltip dark content="Top-right aligned tooltip" align="top-end">
+            <Tooltip content="Top-right aligned tooltip" align="top-end">
                 <Button marginLeft={2}>Repeat</Button>
             </Tooltip>
             <br />
-            <Tooltip dark content="Bottom-left aligned tooltip" align="bottom-start">
+            <Tooltip content="Bottom-left aligned tooltip" align="bottom-start">
                 <Button marginRight={2} marginTop={2}>Cook</Button>
             </Tooltip>
-            <Tooltip dark content="Bottom-central aligned tooltip" align="bottom">
+            <Tooltip content="Bottom-central aligned tooltip" align="bottom">
                 <Button marginTop={2}>Eat</Button>
             </Tooltip>
-            <Tooltip dark content="Bottom-right aligned tooltip" align="bottom-end">
+            <Tooltip content="Bottom-right aligned tooltip" align="bottom-end">
                 <Button marginLeft={2} marginTop={2}>Repeat</Button>
             </Tooltip>
         </Box>
@@ -85,7 +84,6 @@ import { Tooltip } from '@deliveryhero/armor';
         <Box margin={20}>
             <Tooltip
                 small
-                dark
                 content={<span>Place order for <span style={{color: '#93d357'}}>17.98€</span></span>}
             >
                 <Button>Order</Button>
@@ -100,7 +98,7 @@ import { Tooltip } from '@deliveryhero/armor';
 
 ## Nodes
 
-<Nodes 
+<Nodes
     blockName="Tooltip"
     nodes={[
         { element: 'Arrow', description: 'Arrow element' },

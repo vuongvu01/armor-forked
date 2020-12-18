@@ -1,11 +1,10 @@
 import React, { FunctionComponent } from 'react';
 
-import { Label } from './style';
+import { SelectorLabelRoot } from './style';
 import { SelectorLabelPropsType } from './type';
 import { useComponentTheme } from '../../utils/hooks';
 import selectorLabelDefaultTheme from './theme';
 import { useSelectorLabelClassName } from './utils';
-import { RADIO_CLASS_PREFIX } from '../Radio/constants';
 import { Typography } from '../Typography';
 import { SELECTOR_LABEL_CLASS_PREFIX } from './constants';
 
@@ -23,7 +22,7 @@ const SelectorLabel: FunctionComponent<SelectorLabelPropsType> = ({
     );
 
     const classOverride = useSelectorLabelClassName(
-        RADIO_CLASS_PREFIX,
+        SELECTOR_LABEL_CLASS_PREFIX,
         className,
         disabled,
         checked,
@@ -31,10 +30,10 @@ const SelectorLabel: FunctionComponent<SelectorLabelPropsType> = ({
     );
 
     return children ? (
-        <Label
+        <SelectorLabelRoot
             disabled={disabled}
             error={error}
-            className={classOverride.Label}
+            className={classOverride.Root}
             theme={theme}
         >
             {typographyProps ? (
@@ -43,6 +42,7 @@ const SelectorLabel: FunctionComponent<SelectorLabelPropsType> = ({
                     error={error}
                     margin={0}
                     theme={theme}
+                    tag="div"
                     {...typographyProps}
                 >
                     {children}
@@ -50,7 +50,7 @@ const SelectorLabel: FunctionComponent<SelectorLabelPropsType> = ({
             ) : (
                 children
             )}
-        </Label>
+        </SelectorLabelRoot>
     ) : null;
 };
 

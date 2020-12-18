@@ -5,11 +5,12 @@ import { withKnobs } from '@storybook/addon-knobs';
 import { GroupHelper } from '../../../helpers/GroupHelper';
 import { Switch } from '../Switch';
 import { Button } from '../../Button';
+import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
     title: 'Components/Switch',
     component: Switch,
-    decorators: [withKnobs],
+    decorators: [withKnobs, withWrapper],
     parameters: {},
 };
 

@@ -335,8 +335,13 @@ export const StickyRightColumnInvisible = () => {
     useEffect(() => {
         const table = ref.current;
         if (table) {
-            // @ts-ignore
-            table.scrollLeft = 9999999;
+            // TODO (nmelnikov 2020-12-18): for some reason the snapshot is being taken before the end of the
+            // scroll destination is reached. The wrap with a setTimeout doesn't make much sense, but seems
+            // to compensate the issue. Even though in storybook dashboard - the final state is reached...
+            setTimeout(() => {
+                // @ts-ignore
+                table.scrollLeft = 9999999;
+            }, 100);
         }
     }, []);
 

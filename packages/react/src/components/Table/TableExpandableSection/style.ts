@@ -12,7 +12,6 @@ import { color, spacing } from '../../../system/mixins';
 import { RESIZE_OBSERVER_SUPPORTED } from './constants';
 import { transitionDurationInSec } from '../../../constants';
 import { componentSpacing04, componentSpacing05 } from '../../../tokens';
-import { paddingAttributes } from '../../../system/attributes';
 
 // all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
 const propertyList = makePropList([

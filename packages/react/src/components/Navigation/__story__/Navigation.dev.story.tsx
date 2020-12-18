@@ -10,11 +10,12 @@ import { spacing } from '../../../system/mixins';
 import { TextInput } from '../../TextInput';
 import { structure as demoStructure } from '../__test__/helpers';
 import { ScalarType } from '../../../type';
+import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
     title: 'Components/Navigation',
     component: Navigation,
-    decorators: [withKnobs],
+    decorators: [withKnobs, withWrapper],
     parameters: {},
 };
 

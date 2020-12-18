@@ -33,5 +33,6 @@ export type CheckboxInputPropsType = Pick<
     | 'theme'
 >;
 
-export type CheckboxCheckmarkPropsType = CheckboxEffectivePropsType &
-    ComponentElementStylePropsType;
+export type CheckboxCheckmarkPropsType = CheckboxEffectivePropsType & {
+    hasLabel: boolean;
+} & ComponentElementStylePropsType;

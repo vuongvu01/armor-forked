@@ -72,6 +72,7 @@ type FlexEffectivePropsType = Indexed<{
     alignContent?: AlignContentType;
     alignItems?: AlignItemsType;
     flexWrap?: WrapType;
+    gutterSpacing?: number;
 }> &
     HTMLAttributes<HTMLElement> &
     SizeAttributesType &

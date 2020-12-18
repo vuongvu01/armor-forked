@@ -11,8 +11,15 @@ import {
     paddingAttributes,
     widthAttributes,
 } from '../../../system/attributes';
-import { zIndexTableHeader } from '../../../tokens';
+import {
+    componentSpacing04,
+    componentSpacing05,
+    fontWeightMedium,
+    zIndexTableHeader,
+} from '../../../tokens';
 import { LEFT, RIGHT, transitionDurationInSec } from '../../../constants';
+import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
+import { color, spacing, typography } from '../../../system/mixins';
 
 // all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
 const propertyList = makePropList([
@@ -45,13 +52,18 @@ const getRootDynamicStyle = ({
         componentOverrides: { TableCell },
     } = theme;
 
-    let result = TableCell.Root.base;
+    let result = {};
 
     if (isHeader) {
         result = css`
             ${result};
             vertical-align: middle;
-            ${TableCell.Root.header};
+            ${typography('paragraphMedium')};
+            font-weight: ${fontWeightMedium};
+
+            &:hover {
+                background-color: ${color('primary.lightest')};
+            }
         `;
     }
 
@@ -75,9 +87,18 @@ const getRootDynamicStyle = ({
                 border-color: transparent;
                 transition: box-shadow ${transitionDurationInSec}s ease;
             }
-
-            ${stickyVisible ? TableCell.Root.stickyTop__visible : null};
         `;
+
+        if (stickyVisible) {
+            result = css`
+                ${result};
+                background-color: ${color('neutral.00')};
+                &::after {
+                    border-color: ${color('neutral.03')};
+                    box-shadow: inset 0 10px 5px -5px rgba(0, 0, 0, 0.08);
+                }
+            `;
+        }
     }
 
     if (!stickyTop && stickyAlignment === LEFT) {
@@ -100,10 +121,18 @@ const getRootDynamicStyle = ({
                 transition: box-shadow ${transitionDurationInSec}s ease,
                     border-color ${transitionDurationInSec}s ease;
             }
-
-            ${TableCell.Root.sticky};
-            ${stickyVisible ? TableCell.Root.stickyLeft__visible : null};
         `;
+
+        if (stickyVisible) {
+            result = css`
+                ${result};
+                background-color: ${color('neutral.00')};
+                &::after {
+                    border-color: ${color('neutral.03')};
+                    box-shadow: inset 10px 0 8px -8px rgba(0, 0, 0, 0.15);
+                }
+            `;
+        }
     }
 
     if (!stickyTop && stickyAlignment === RIGHT) {
@@ -126,17 +155,30 @@ const getRootDynamicStyle = ({
                 transition: box-shadow ${transitionDurationInSec}s ease,
                     border-color ${transitionDurationInSec}s ease;
             }
-
-            ${TableCell.Root.sticky};
-            ${stickyVisible ? TableCell.Root.stickyRight__visible : null};
         `;
+
+        if (stickyVisible) {
+            result = css`
+                ${result};
+                background-color: ${color('neutral.00')};
+                &::after {
+                    border-color: ${color('neutral.03')};
+                    box-shadow: inset -10px 0 8px -8px rgba(0, 0, 0, 0.15);
+                }
+            `;
+        }
     }
 
     if (disabled) {
         result = css`
             ${result};
             cursor: not-allowed;
-            ${TableCell.Root.disabled}
+            background-color: ${color('neutral.02')};
+            color: ${color('neutral.03')};
+
+            &:hover {
+                background-color: ${color('neutral.02')};
+            }
         `;
     }
 
@@ -182,7 +224,7 @@ const Wrapper = ({
 }) => children({ ...restProps });
 
 // if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
-export const TableCellStyle = styled(Wrapper).withConfig({
+export const TableCellRoot = styled(Wrapper).withConfig({
     shouldForwardProp: property => shouldForwardProp(property, propertyList),
 })<TableCellRootPropsType>`
     box-sizing: border-box;
@@ -192,7 +234,11 @@ export const TableCellStyle = styled(Wrapper).withConfig({
     transition: background-color 200ms ease;
     background-color: inherit;
 
+    ${typography('paragraphLarge')};
+    padding: ${spacing(componentSpacing05)} ${spacing(componentSpacing04)};
+
     ${getRootDynamicStyle}
+    ${getComponentOverride('TableCell')};
     ${paddingAttributes}
     ${widthAttributes}
     ${heightAttributes}

@@ -6,6 +6,7 @@ import {
 import { marginAttributes } from '../../system/attributes';
 import { shouldForwardProp, makePropList } from '../../utils';
 import { transitionDurationInSec } from '../../constants';
+import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 
 // all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
 const propertyList = makePropList([
@@ -33,6 +34,7 @@ export const PageNavigationRoot = styled.div.withConfig({
     justify-content: space-between;
 
     ${getRootBaseStyle}
+    ${getComponentOverride('PageNavigation')};
     ${marginAttributes}
 `;
 

@@ -14,7 +14,6 @@ export const textInputDefaultTheme = {
             $typography: 'paragraphMedium',
             borderColor: '$color.neutral.04',
             borderRadius: '$shape.borderRadius.soft',
-            backgroundColor: '$color.neutral.00',
         },
         outlined: {
             borderColor: '$color.primary.main',
@@ -38,7 +37,7 @@ export const textInputDefaultTheme = {
             paddingBottom: componentSpacing02,
             paddingLeft: componentSpacing04,
             paddingRight: componentSpacing04,
-            backgroundColor: '$color.neutral.00',
+            // backgroundColor: '$color.neutral.00',
             borderRadius: '$shape.borderRadius.soft',
 
             '&::placeholder': {
@@ -46,8 +45,7 @@ export const textInputDefaultTheme = {
             },
             '&:disabled': {
                 color: '$color.neutral.05',
-                borderColor: '$color.neutral.03',
-                backgroundColor: '$color.neutral.02',
+                // backgroundColor: '$color.neutral.02',
             },
         },
         large: {
@@ -81,12 +79,8 @@ export const textInputDefaultTheme = {
     },
     LabelBackground: {
         base: {
-            background: `linear-gradient(0, ${colorGrey00} 70%, transparent 30%)`,
             paddingLeft: componentSpacing01,
             paddingRight: componentSpacing01,
-        },
-        disabled: {
-            background: `linear-gradient(0, ${colorGrey05} 70%, transparent 30%)`,
         },
     },
 };

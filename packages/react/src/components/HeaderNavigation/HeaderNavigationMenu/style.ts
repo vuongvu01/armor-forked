@@ -2,8 +2,9 @@ import styled, { css } from 'styled-components';
 
 import { HeaderNavigationMenuRootPropsType } from './type';
 import { ExpansionIndicator } from '../../ExpansionIndicator';
-import { colorGrey05, colorGrey50 } from '../../../tokens';
 import { transitionDurationInSec } from '../../../constants';
+import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
+import { color } from '../../../system/mixins';
 
 export const HeaderNavigationMenuRoot = styled.div<
     HeaderNavigationMenuRootPropsType
@@ -35,6 +36,7 @@ export const HeaderNavigationMenuContentContainer = styled.div<
 >`
     position: absolute;
     opacity: 0;
+    z-index: 2048;
 
     ${contentContainerStyle}
 `;
@@ -67,10 +69,12 @@ export const MenuExpansionIndicator = styled(ExpansionIndicator)<
     HeaderNavigationMenuRootPropsType
 >`
     .ExpansionIndicator-Content {
-        background-color: ${colorGrey05};
+        background-color: ${color('neutral.02')};
         width: 40px;
     }
     .ExpansionIndicator-Icon {
-        border-color: ${colorGrey50};
+        border-color: ${color('neutral.05')};
     }
+
+    ${getComponentOverride('HeaderNavigationMenu')};
 `;

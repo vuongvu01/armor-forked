@@ -15,7 +15,6 @@ type MessageActionTagType = string | ComponentType<any>;
 
 type MessageActionEffectivePropsType = Indexed<{
     tag?: MessageActionTagType;
-    useMessageColor?: boolean;
     // add other custom properties here
 }> &
     ButtonHTMLAttributes<HTMLButtonElement> & // includes all HTML Button attributes

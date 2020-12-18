@@ -80,7 +80,9 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
 
         const renderOptionItem = (item: OptionObjectType) => (
             <DropdownOptionItem
-                className={classOverride.OptionItem}
+                className={`${classOverride.OptionItem} ${
+                    internalValue.includes(item.value) ? 'active' : ''
+                }`}
                 isSelected={internalValue.includes(item.value)}
                 item={item}
                 itemIndex={item.value}

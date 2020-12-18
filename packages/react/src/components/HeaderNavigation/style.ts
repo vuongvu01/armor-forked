@@ -8,6 +8,7 @@ import {
 } from './type';
 import { ObjectLiteralType } from '../../type';
 import { spacing } from '../../system/mixins';
+import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 
 const propertyList = {
     justifyContent: true,
@@ -33,6 +34,7 @@ export const HeaderNavigationRoot = styled.div.withConfig({
     min-height: ${spacing(12)};
 
     ${headerNavigationRootStyle}
+    ${getComponentOverride('HeaderNavigation')};
     ${marginAttributes}
 `;
 

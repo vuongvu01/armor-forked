@@ -7,9 +7,6 @@ import {
 } from '../../tokens';
 
 export const searchTheme = {
-    Root: {
-        base: {},
-    },
     TextInput: {
         base: {
             fontWeight: '$typography.paragraphMedium.fontWeight',
@@ -54,11 +51,6 @@ export const searchTheme = {
     SearchSuggestionsItemLabel: {
         base: {
             paddingRight: componentSpacing02,
-        },
-    },
-    SearchLabelTypography: {
-        base: {
-            color: '$color.neutral.05',
         },
     },
 };

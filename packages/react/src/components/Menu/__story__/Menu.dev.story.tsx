@@ -1,15 +1,9 @@
 /* eslint-disable no-console,import/no-unresolved */
 
 import React, { useState } from 'react';
-import {
-    withKnobs,
-    text,
-    boolean,
-    number,
-    select,
-} from '@storybook/addon-knobs';
-import { action } from '@storybook/addon-actions';
-import { ForkKnifeIcon, WarningIcon } from '@deliveryhero/armor-icons';
+import { withKnobs } from '@storybook/addon-knobs';
+import { ForkKnifeIcon } from '@deliveryhero/armor-icons';
+import { withWrapper } from '../../../helpers/Wrapper';
 
 import { Menu } from '../Menu';
 import { MenuElement } from '../MenuElement';
@@ -19,7 +13,7 @@ import { loremIpsum } from '../../../helpers/LoremIpsum';
 export default {
     title: 'Components/Menu',
     component: Menu,
-    decorators: [withKnobs],
+    decorators: [withKnobs, withWrapper],
     parameters: {},
 };
 

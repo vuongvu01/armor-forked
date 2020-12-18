@@ -12,6 +12,7 @@ import {
 import { TAG_DELETE_BEHAVIOUR_OPTIONS, TAG_TYPES } from './constants';
 import { transitionDurationInSec } from '../../constants';
 import { Typography } from '../Typography';
+import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 
 const statusWidth = 'width: 76px;';
 
@@ -130,6 +131,8 @@ export const TagRoot = styled.div.withConfig({
 
     ${containerStyle}
     ${marginAttributes}
+    
+    ${getComponentOverride('Tag')};
 `;
 
 export const TagTypography = styled(Typography).withConfig({

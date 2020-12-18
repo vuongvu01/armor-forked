@@ -9,6 +9,7 @@ import {
     RadioInputPropsType,
     RadioRootPropsType,
 } from './type';
+import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 
 const sizes = {
     container: {
@@ -63,6 +64,7 @@ export const RadioRoot = styled.div.withConfig({
     shouldForwardProp: property => shouldForwardProp(property),
 })<RadioRootPropsType>`
     ${radioRootStyle}
+    ${getComponentOverride('Radio')};
     ${marginAttributes}
 `;
 

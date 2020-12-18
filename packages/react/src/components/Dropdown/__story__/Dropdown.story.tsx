@@ -12,11 +12,13 @@ import { Box } from '../../Box';
 import { Typography } from '../../Typography';
 import { ScalarType } from '../../../type';
 import { OptionItemType } from '../type';
+import { withWrapper } from '../../../helpers/Wrapper';
+
 
 export default {
     title: 'Components/Dropdown',
     component: Dropdown,
-    decorators: [withKnobs],
+    decorators: [withKnobs, withWrapper],
     parameters: {},
 };
 

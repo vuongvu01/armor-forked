@@ -2,21 +2,17 @@ import React, { useEffect, useRef } from 'react';
 import {
     withKnobs,
     text,
-    boolean,
-    number,
-    select,
     // eslint-disable-next-line import/no-unresolved
 } from '@storybook/addon-knobs';
-// eslint-disable-next-line import/no-unresolved
-import { action } from '@storybook/addon-actions';
 
 import { Tooltip } from '../Tooltip';
 import { Button } from '../../Button';
+import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
     title: 'Components/Tooltip',
     component: Tooltip,
-    decorators: [withKnobs],
+    decorators: [withKnobs, withWrapper],
     parameters: {},
 };
 
@@ -42,9 +38,6 @@ export const Basic = () => (
             >
                 Default
             </button>
-        </Tooltip>
-        <Tooltip content={text('Children', 'Dark!')} dark align="bottom-start">
-            <button>Dark</button>
         </Tooltip>
         <Tooltip content={text('Children', 'Hello world!')}>
             <Button marginLeft={2}>Should be as well</Button>

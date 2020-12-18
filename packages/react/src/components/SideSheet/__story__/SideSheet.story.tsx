@@ -10,11 +10,12 @@ import { Radio, RadioGroup } from '../../Radio';
 import { Typography } from '../../Typography';
 import { Box } from '../../Box';
 import { Checkbox } from '../../Checkbox';
+import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
     title: 'Components/SideSheet',
     component: SideSheet,
-    decorators: [withKnobs],
+    decorators: [withKnobs, withWrapper],
     parameters: {},
 };
 

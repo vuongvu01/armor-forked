@@ -479,6 +479,38 @@
   dependencies:
     prop-types "^15.7.2"
 
+"@deliveryhero/armor-icons@1.6.0":
+  version "1.6.0"
+  resolved "https://npm.pkg.github.com/download/@deliveryhero/armor-icons/1.6.0/874d43b32f8bbdf830eb2481e38c0629acd01c9cd1ff911194bc9f5af02c93af#c68c263dafb04c7d2ad8d9abbc5b48644e5c844b"
+  integrity sha512-fFGj76NYtnJUOICmB0RVxMq/f7QeaxRMa66uyRXEb0vI0/zdtCyTF+HP1gWBykXNXu7Fwpyme/0CqOvphgNN0w==
+  dependencies:
+    prop-types "^15.7.2"
+
+"@deliveryhero/armor-vendors@^1.0.9":
+  version "1.0.9"
+  resolved "https://npm.pkg.github.com/download/@deliveryhero/armor-vendors/1.0.9/0ab9c2843cb18953a267da9e71ed4356938f426be43836018e9bc05c69607a2c#af40c33ab0aa521630af97d8f70f6d2e83b66b5d"
+  integrity sha512-6hLQDjLpzFZ8x07wJjwY8hfzZXEr03C/zVEPmEcHytvK/YOgoxhbgCeKe6f+dSeOmzqYlTEmM3wJBEQ/wgnzRw==
+  dependencies:
+    "@deliveryhero/armor" "1.26.1"
+    "@deliveryhero/armor-icons" "1.6.0"
+
+"@deliveryhero/armor@1.26.1":
+  version "1.26.1"
+  resolved "https://npm.pkg.github.com/download/@deliveryhero/armor/1.26.1/7054ffaa8656ec91a6f1dd912de19ca8b2d28ab38ffc57b54a48275b78d2a691#b4ebae4e6d7e38f6117b28782e3d3710f657f3cd"
+  integrity sha512-11aF3M6v/n5wZtaiEwa9OHi3SmyKQgBOT4aI0xZZnbf6vezYv9BiZriEiApwNTqFy/15zetv1HxdE/uzm9zEbg==
+  dependencies:
+    "@deliveryhero/armor-icons" "1.6.0"
+    "@popperjs/core" "^2.4.2"
+    clone-deep "^4.0.1"
+    deep-freeze-strict "1.1.1"
+    deepclone "^1.0.2"
+    deepmerge "4.2.2"
+    flat "^5.0.0"
+    lodash.uniqueid "^4.0.1"
+    prop-types "^15.7.2"
+    throttle-debounce "2.1.0"
+    traverse "^0.6.6"
+
 "@deliveryhero/armor@^1.20.0":
   version "1.22.1"
   resolved "https://npm.pkg.github.com/download/@deliveryhero/armor/1.22.1/bb37d9dbe3c1f3f973aab6f3afab65918d08a216e14493ea8d17c78fd965b550#05096f18af50de4a67dc948f35a846b82aa23518"
@@ -2336,6 +2368,11 @@
   version "14.6.0"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.6.0.tgz#7d4411bf5157339337d7cff864d9ff45f177b499"
   integrity sha512-mikldZQitV94akrc4sCcSjtJfsTKt4p+e/s0AGscVA6XArQ9kFclP+ZiYUMnq987rc6QlYxXv/EivqlfSLxpKA==
+
+"@types/node@^14.14.12":
+  version "14.14.12"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.12.tgz#0b1d86f8c40141091285dea02e4940df73bba43f"
+  integrity sha512-ASH8OPHMNlkdjrEdmoILmzFfsJICvhBsFfAum4aKZ/9U4B6M6tTmTPh+f3ttWdD74CEGV5XvXWkbyfSdXaTd7g==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"

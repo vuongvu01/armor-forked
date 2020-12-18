@@ -24,6 +24,8 @@ import HeaderNavigationMenuContentContext from '../HeaderNavigationMenuContentCo
 import { useHeaderNavigationMenuContentBodyOptionsClassName } from './utils';
 import { headerNavigationMenuContentBodyOptionsTheme } from './theme';
 
+const setActiveClass = (isActive: boolean) => (isActive ? 'active' : '');
+
 export const HeaderNavigationMenuContentBodyOptions: FunctionComponent<HeaderNavigationMenuContentBodyOptionsPropsType> = ({
     className,
     options,
@@ -77,7 +79,9 @@ export const HeaderNavigationMenuContentBodyOptions: FunctionComponent<HeaderNav
                         return (
                             <HeaderNavigationMenuContentBodyOptionsItem
                                 theme={theme}
-                                className={classOverride.Item}
+                                className={`${
+                                    classOverride.Item
+                                } ${setActiveClass(selectedValue === value)}`}
                                 key={value}
                                 data-testid={
                                     headerNavigationMenuContentBodyOptionsItem
@@ -115,7 +119,11 @@ export const HeaderNavigationMenuContentBodyOptions: FunctionComponent<HeaderNav
                             return (
                                 <HeaderNavigationMenuContentBodyOptionsItem
                                     theme={theme}
-                                    className={`${classOverride.Item} active`}
+                                    className={`${
+                                        classOverride.Item
+                                    } ${setActiveClass(
+                                        selectedValue === optionValue,
+                                    )}`}
                                     key={optionValue}
                                     data-testid={
                                         headerNavigationMenuContentBodyOptionsItem

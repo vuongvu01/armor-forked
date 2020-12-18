@@ -1,6 +1,6 @@
 import React, { FunctionComponent, MouseEvent, useCallback } from 'react';
 
-import { DropdownOptionItem as DropdownOptionItemStyle } from './style';
+import { DropdownOptionItem as DropdownOptionItemRoot } from './style';
 import { DropdownOptionItemPropsType } from './type';
 import { Checkbox } from '../Checkbox';
 import { Typography } from '../Typography';
@@ -31,7 +31,7 @@ const DropdownOptionItem: FunctionComponent<DropdownOptionItemPropsType> = ({
     );
 
     return (
-        <DropdownOptionItemStyle
+        <DropdownOptionItemRoot
             {...restProps}
             isSelected={isSelected}
             onClick={handleItemClick}
@@ -42,7 +42,7 @@ const DropdownOptionItem: FunctionComponent<DropdownOptionItemPropsType> = ({
                     {item.label}
                 </Typography>
             ) : null}
-        </DropdownOptionItemStyle>
+        </DropdownOptionItemRoot>
     );
 };
 

@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { css } from 'styled-components';
 import { Box } from '../Box';
+import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
     title: 'Components/Box',
     component: Box,
-    decorators: [],
+    decorators: [withWrapper],
     parameters: {},
 };
 

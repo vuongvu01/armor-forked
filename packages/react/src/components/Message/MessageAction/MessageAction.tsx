@@ -3,15 +3,14 @@ import PropTypes from 'prop-types';
 import { useComponentTheme } from '../../../utils/hooks';
 
 import { useMessageActionClassNames } from './utils/useMessageActionClassNames';
-import { MessageActionStyle } from './style';
+import { MessageActionRoot } from './style';
 import { MessageActionPropsType } from './type';
 import { messageActionDefaultTheme } from './theme';
 import { MESSAGE_ACTION_CLASS_PREFIX } from './constants';
 
 export const MessageAction: FunctionComponent<MessageActionPropsType> = ({
     className,
-    tag: MessageActionRoot = 'div',
-    useMessageColor,
+    tag: Tag = 'div',
     children,
     ...restProps
 }) => {
@@ -23,32 +22,29 @@ export const MessageAction: FunctionComponent<MessageActionPropsType> = ({
     const classNameComponents = useMessageActionClassNames(
         MESSAGE_ACTION_CLASS_PREFIX,
         className,
-        useMessageColor,
     );
 
     return (
-        <MessageActionStyle
+        <MessageActionRoot
             {...restProps}
             theme={theme}
             className={classNameComponents.Root}
         >
             {(classNameFinal: string) => (
-                <MessageActionRoot {...restProps} className={classNameFinal}>
+                <Tag {...restProps} className={classNameFinal}>
                     {children}
-                </MessageActionRoot>
+                </Tag>
             )}
-        </MessageActionStyle>
+        </MessageActionRoot>
     );
 };
 
 MessageAction.defaultProps = {
     tag: 'div',
-    useMessageColor: false,
 };
 
 /** Support of prop-types is here for project that don't use TypeScript */
 MessageAction.propTypes = {
     /** Tag name or component */
     tag: PropTypes.oneOfType([PropTypes.elementType, PropTypes.string]),
-    useMessageColor: PropTypes.bool,
 };

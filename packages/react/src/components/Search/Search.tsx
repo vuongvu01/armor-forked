@@ -13,7 +13,7 @@ import {
     SearchTextInput,
 } from './style';
 import { useSearchBar } from './utils/useSearchBar';
-import { SuggestionsList } from './SuggestionsList';
+import { SearchSuggestionsList } from './SearchSuggestionsList';
 import { SearchIcon } from './SearchIcon';
 import { SearchClearAction } from './SearchClearAction';
 import { getScalarPropType } from '../../utils/propTypes';
@@ -47,6 +47,7 @@ export const Search: FunctionComponent<SearchPropsType> = forwardRef(
                 {...rootProps}
                 className={classOverride.Root}
                 theme={theme}
+                disabled={disabled}
             >
                 <SearchTextInput
                     {...textInputProps}
@@ -63,10 +64,10 @@ export const Search: FunctionComponent<SearchPropsType> = forwardRef(
                     >
                         <SearchSuggestionsListContainer
                             {...suggestionListContainerProps}
-                            className={classOverride.SuggestionsList}
+                            className={classOverride.SearchSuggestionsList}
                             theme={theme}
                         >
-                            <SuggestionsList
+                            <SearchSuggestionsList
                                 {...suggestionListProps}
                                 theme={theme}
                                 groupClassName={classOverride.ListItemGroup}

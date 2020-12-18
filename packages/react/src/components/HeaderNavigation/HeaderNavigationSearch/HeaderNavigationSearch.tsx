@@ -3,23 +3,19 @@ import PropTypes from 'prop-types';
 
 import { HeaderNavigationSearchRoot, NavigationItemSearch } from './style';
 import { HeaderNavigationSearchPropsType } from './type';
-import { useComponentTheme } from '../../../utils/hooks';
 import {
     HEADER_NAVIGATION_SEARCH_CLASS_PREFIX,
     headerNavigationSearchRoot,
 } from './constants';
 import useHeaderNavigationSearchClassName from './utils/useHeaderNavigationSearchClassName';
-import { headerNavigationSearch } from './theme';
+import { useTheme } from '../../../styling';
 
 export const HeaderNavigationSearch: FunctionComponent<HeaderNavigationSearchPropsType> = forwardRef(
     function HeaderNavigationSearch(
         { className, options, onChange, onItemSelect, separator, ...restProps },
         ref,
     ) {
-        const theme = useComponentTheme(
-            HEADER_NAVIGATION_SEARCH_CLASS_PREFIX,
-            headerNavigationSearch,
-        );
+        const theme = useTheme();
 
         const classOverride = useHeaderNavigationSearchClassName(
             HEADER_NAVIGATION_SEARCH_CLASS_PREFIX,

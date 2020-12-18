@@ -3,10 +3,12 @@ import React, { ChangeEvent, useState } from 'react';
 import { Grid } from '../Grid';
 import { GridItem } from '../GridItem';
 import { Radio, RadioGroup } from '../../Radio';
+import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
     title: 'Components/Grid',
     component: Grid,
+    decorators: [withWrapper],
 };
 const gridItemStyle = {
     padding: '10px',

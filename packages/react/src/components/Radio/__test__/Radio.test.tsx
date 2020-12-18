@@ -40,18 +40,17 @@ describe('<Radio />', () => {
     });
 
     it('ensures the correct default label typography', () => {
-        render(baseRadioExample({}));
+        const { container } = render(baseRadioExample({}));
 
-        const radioItemLabel = screen.getByText(label);
-        expect(radioItemLabel).toBeInstanceOf(HTMLDivElement);
-        expect(radioItemLabel).toHaveClass('Radio-Label');
+        const radioItemLabel = container.querySelector('.Radio-Label');
+        expect(radioItemLabel).toBeInstanceOf(HTMLLabelElement);
     });
 
     it('ensures paragraph typography can be applied to label', () => {
         render(radioWithCustomTypographyType(typographyTypes.paragraphMedium));
 
         const radioItemLabel = screen.getByText(label);
-        expect(radioItemLabel).toBeInstanceOf(HTMLParagraphElement);
+        expect(radioItemLabel).toBeInstanceOf(HTMLDivElement);
         expect(radioItemLabel).toHaveClass(
             'Typography-Root Typography-Root--paragraph Typography-Root--medium',
         );
@@ -61,7 +60,7 @@ describe('<Radio />', () => {
         render(radioWithCustomTypographyType(typographyTypes.sectionTitle));
 
         const radioItemLabel = screen.getByText(label);
-        expect(radioItemLabel).toBeInstanceOf(HTMLHeadingElement);
+        expect(radioItemLabel).toBeInstanceOf(HTMLDivElement);
         expect(radioItemLabel).toHaveClass(
             'Typography-Root Typography-Root--sectionTitle',
         );
