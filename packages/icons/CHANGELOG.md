@@ -1,3 +1,10 @@
+# @deliveryhero/armor-icons [1.7.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.6.0...@deliveryhero/armor-icons@1.7.0) (2020-12-18)
+
+
+### Features
+
+* Paper component renamed to Card, minor fixes, color property support for icons [LD-000] ([#344](https://github.com/deliveryhero/armor/issues/344)) ([10feb9a](https://github.com/deliveryhero/armor/commit/10feb9a879259564abb1ac4a09ddadda9bc13406))
+
 # @deliveryhero/armor-icons [1.6.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.5.0...@deliveryhero/armor-icons@1.6.0) (2020-12-08)
 
 
