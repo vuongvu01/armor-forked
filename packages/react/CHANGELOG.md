@@ -1,3 +1,21 @@
+# @deliveryhero/armor [1.27.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.26.1...@deliveryhero/armor@1.27.0) (2020-12-18)
+
+
+### Features
+
+* **darktheme:** Dark theme built [LD-342] ([#337](https://github.com/deliveryhero/armor/issues/337)) ([6de0ba9](https://github.com/deliveryhero/armor/commit/6de0ba90a4fda74d830eeee9aaf4b1f8a51f4b30))
+* **dropdown:** formatOption and mouse cursor as pointer in input portion of the Dropdown ([#338](https://github.com/deliveryhero/armor/issues/338)) ([b97fe70](https://github.com/deliveryhero/armor/commit/b97fe707686c75ddf83773e8610bf0d728637ee6))
+* Paper component renamed to Card, minor fixes, color property support for icons [LD-000] ([#344](https://github.com/deliveryhero/armor/issues/344)) ([10feb9a](https://github.com/deliveryhero/armor/commit/10feb9a879259564abb1ac4a09ddadda9bc13406))
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor-icons:** upgraded to 1.7.0
+* **@deliveryhero/armor-vendors:** upgraded to 1.0.10
+
 ## @deliveryhero/armor [1.26.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.26.0...@deliveryhero/armor@1.26.1) (2020-12-10)
 
 
