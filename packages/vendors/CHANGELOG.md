@@ -1,3 +1,18 @@
+## @deliveryhero/armor-vendors [1.0.11](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.0.10...@deliveryhero/armor-vendors@1.0.11) (2020-12-21)
+
+
+### Bug Fixes
+
+* Card component overflow fix, theme types fix [LD-000] ([#346](https://github.com/deliveryhero/armor/issues/346)) ([03f6bfc](https://github.com/deliveryhero/armor/commit/03f6bfc53a5cb86a64bbfee1ea3ba9ec3c13d6ce))
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor:** upgraded to 1.27.1
+
 ## @deliveryhero/armor-vendors [1.0.10](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.0.9...@deliveryhero/armor-vendors@1.0.10) (2020-12-18)
 
 
