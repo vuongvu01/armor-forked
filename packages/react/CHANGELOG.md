@@ -1,3 +1,19 @@
+## @deliveryhero/armor [1.27.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.27.0...@deliveryhero/armor@1.27.1) (2020-12-21)
+
+
+### Bug Fixes
+
+* **textinput:** auto focus on page load behaviour [LD-352] ([#347](https://github.com/deliveryhero/armor/issues/347)) ([470575c](https://github.com/deliveryhero/armor/commit/470575c4c9cf16d80dd0c40578242dbcacd7fd4e))
+* Card component overflow fix, theme types fix [LD-000] ([#346](https://github.com/deliveryhero/armor/issues/346)) ([03f6bfc](https://github.com/deliveryhero/armor/commit/03f6bfc53a5cb86a64bbfee1ea3ba9ec3c13d6ce))
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor-vendors:** upgraded to 1.0.11
+
 # @deliveryhero/armor [1.27.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.26.1...@deliveryhero/armor@1.27.0) (2020-12-18)
 
 
