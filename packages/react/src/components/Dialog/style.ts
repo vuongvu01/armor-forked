@@ -84,6 +84,10 @@ export const DialogAlignmentContainer = styled.div.withConfig({
 export const DialogRoot = styled(Card).withConfig({
     shouldForwardProp: property => shouldForwardProp(property, propertyList),
 })<DialogBasePropsType>`
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+
     flex-direction: column;
     text-align: left;
 
