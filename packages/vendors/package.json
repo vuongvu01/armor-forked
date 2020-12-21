@@ -26,15 +26,14 @@
         "lint:fix": "eslint ./src --fix --ext .js,.ts,.jsx,.tsx",
         "release": "./script/release.sh"
     },
-    "dependencies": {
-        "@deliveryhero/armor": "^1.20.0",
-        "@deliveryhero/armor-icons": "^1.2.1"
-    },
+    "dependencies": {},
     "peerDependencies": {
         "react": ">=16.8.0",
         "react-dom": ">=16.8.0",
         "react-is": ">=16.8.0",
-        "styled-components": ">=5.1.0"
+        "styled-components": ">=5.1.0",
+        "@deliveryhero/armor": "^1.20.0",
+        "@deliveryhero/armor-icons": "^1.2.1"
     },
     "publishConfig": {
         "access": "public"

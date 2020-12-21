@@ -1,13 +1,13 @@
 import React, { ReactNode } from 'react';
 import { ThemeProvider as StyledComponentsThemeProvider } from 'styled-components';
-import { ThemeType } from './type';
+import { RootThemeType } from './type';
 
 export const ThemeProvider = ({
     children,
     theme,
 }: {
     children: ReactNode;
-    theme: ThemeType;
+    theme: RootThemeType;
 }) => (
     <StyledComponentsThemeProvider theme={theme}>
         <>{children}</>

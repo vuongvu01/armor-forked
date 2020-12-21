@@ -1,4 +1,4 @@
-import { MouseEvent, useCallback, useEffect, useRef } from 'react';
+import { MouseEvent, useCallback, useRef } from 'react';
 import { TextInputPropsType } from '../type';
 import { useEvents } from './useEvents';
 import { useInternalRef } from '../../../utils';
@@ -70,15 +70,6 @@ export const useTextInput = (
     const internalInputRef = useRef(null);
     const Tag = multiline ? 'textarea' : 'input';
     const isOutlined = isMouseInside || isFocused || outline;
-
-    // Effects to control external value assignment, enabled and disabled state
-    useEffect(() => {
-        const node = internalInputRef.current as any;
-
-        if (value && node && node.focus && !disabled) {
-            node.focus();
-        }
-    }, [value, disabled]);
 
     useInternalRef(ref, internalInputRef);
 
