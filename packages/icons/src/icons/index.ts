@@ -2,12 +2,12 @@
 
 export * from './Arrow';
 export * from './Chat';
-export * from './Essentials';
 export * from './Cancel';
 export * from './Devices';
-export * from './Finance';
 export * from './Help';
+export * from './Finance';
 export * from './Lock';
+export * from './Essentials';
 export * from './Map';
 export * from './NavigationMenu';
 export * from './Settings';
