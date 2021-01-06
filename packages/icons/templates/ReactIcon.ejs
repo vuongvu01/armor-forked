@@ -8,7 +8,7 @@ import {
 
 const <%- name %>IconShape = (
     <SVGIconGroup>
-        <SVGIconPath 
+        <SVGIconPath
             d="<%- shape %>"<% if(transform) { %>
             transform="<%- transform %>"<% } %>
         />
@@ -16,5 +16,6 @@ const <%- name %>IconShape = (
 );
 
 export const <%- name %>Icon: FunctionComponent<SVGIconPropsType> = props => {
-    return <SVGIcon {...props}>{<%- name %>IconShape}</SVGIcon>;
+    const {className, ...restProps} = props;
+    return <SVGIcon {...restProps} className={`<%- name %>Icon ${className || ''}`}>{<%- name %>IconShape}</SVGIcon>;
 };

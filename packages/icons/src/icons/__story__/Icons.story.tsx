@@ -360,3 +360,11 @@ export const Sizes = () => {
         </>
     );
 };
+
+export const CustomClass = () => {
+    return (
+        <div>
+            <I.AddIcon className="PlusSign" />
+        </div>
+    );
+};

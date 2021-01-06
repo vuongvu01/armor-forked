@@ -2,13 +2,13 @@
 
 export * from './AlignLeft';
 export * from './AlignRight';
+export * from './DoubleFile';
 export * from './AlignCenter';
 export * from './ArtboardExpand';
 export * from './Link';
-export * from './DoubleFile';
+export * from './TextBold';
 export * from './ListBullet';
 export * from './ListNumber';
 export * from './TextItalic';
-export * from './TextBold';
 export * from './TextUnderline';
 export * from './Unlink';
