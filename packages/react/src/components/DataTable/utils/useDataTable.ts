@@ -9,6 +9,7 @@ import {
     DATA_TABLE_EXPANDABLE_SECTION_OFFSET_LEFT_ROW_SELECTION,
 } from '../constants';
 import { DataTable } from '../DataTable';
+import { useDataTablePageNavigation } from './useDataTablePageNavigation';
 
 export const useDataTable = ({
     columns,
@@ -38,7 +39,12 @@ export const useDataTable = ({
         stickyColumns.restProps,
     );
 
+    const pageNavigation = useDataTablePageNavigation(
+        expandableSections.restProps,
+    );
+
     const columnCount = columnsSafe.length + (enableRowSelection ? 1 : 0);
+    const enableFooter = pageNavigation.result.enablePageNavigation;
 
     return {
         columns: columnsSafe,
@@ -47,6 +53,7 @@ export const useDataTable = ({
         ...rowSorting.result,
         ...rowSelection.result,
         ...expandableSections.result,
+        ...pageNavigation.result,
 
         expandableSectionProps: {
             colSpan: columnCount,
@@ -57,13 +64,15 @@ export const useDataTable = ({
                     : 0),
         },
 
-        rootProps: expandableSections.restProps,
+        rootProps: pageNavigation.restProps,
         tableProps: {
             wide: true,
             stickyHead,
             ...tableProps,
-            stickyColumns: stickyColumns.result,
-            horizontalScroll: stickyColumns.result.length > 0,
+            stickyColumns: stickyColumns.result.stickyColumns,
+            horizontalScroll: stickyColumns.result.stickyColumns.length > 0,
         },
+
+        enableFooter,
     };
 };

@@ -24,13 +24,14 @@ import {
     getArrayOfScalarPropType,
     getScalarPropType,
 } from '../../utils/propTypes';
-import { DataTableRoot } from './style';
+import { DataTableRoot, DataTableFooter } from './style';
 import {
     DATA_TABLE_EXPANDABLE_SECTION_OFFSET_LEFT_BASE,
     DATA_TABLE_CLASS_PREFIX,
 } from './constants';
 import { useComponentTheme } from '../../utils/hooks';
-import { useDataTableClassNames } from './utils/useDataTableNames';
+import { useDataTableClassNames } from './utils/useDataTableClassNames';
+import { PageNavigation } from '../PageNavigation';
 
 export const DataTable: FunctionComponent<DataTablePropsType> = forwardRef(
     function DataTable({ className, ...props }, ref) {
@@ -59,8 +60,14 @@ export const DataTable: FunctionComponent<DataTablePropsType> = forwardRef(
             expandedSectionIds,
             onExpansionSectionControllerButtonClick,
 
+            // page navigation
+            enablePageNavigation,
+            pageNavigationProps,
+
             rootProps,
             tableProps,
+
+            enableFooter,
         } = useDataTable(props);
 
         const theme = useComponentTheme(DATA_TABLE_CLASS_PREFIX);
@@ -213,6 +220,16 @@ export const DataTable: FunctionComponent<DataTablePropsType> = forwardRef(
                         })}
                     </TableBody>
                 </Table>
+                {enableFooter && (
+                    <DataTableFooter
+                        theme={theme}
+                        className={classNameComponents.Footer}
+                    >
+                        {enablePageNavigation && (
+                            <PageNavigation {...pageNavigationProps} />
+                        )}
+                    </DataTableFooter>
+                )}
             </DataTableRoot>
         );
     },
@@ -221,9 +238,17 @@ export const DataTable: FunctionComponent<DataTablePropsType> = forwardRef(
 DataTable.defaultProps = {
     columns: [],
     data: [],
+
+    // row sorting
+    // row selection
     enableRowSelection: false,
     enableNeutralRowSorting: true,
+
+    // expandable sections
     renderExpandableSection: renderExpandableSectionEmpty,
+
+    // page navigation
+    enablePageNavigation: false,
 };
 
 /** prop-types are required here for run-time checks */
@@ -261,4 +286,7 @@ DataTable.propTypes = {
     expandableSectionControllerColumnId: getScalarPropType(),
     renderExpandableSection: PropTypes.func,
     onSectionExpansionChange: PropTypes.func,
+
+    // page navigation
+    enablePageNavigation: PropTypes.bool,
 };

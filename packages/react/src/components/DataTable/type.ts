@@ -10,6 +10,7 @@ import {
     TableHeadCellPropsType,
     TableHeadCellRowSortOrderType,
 } from '../Table/TableHeadCell/type';
+import { PageNavigationPropsType } from '../PageNavigation/type';
 import {
     MarginAttributesType,
     PaddingAttributesType,
@@ -68,6 +69,13 @@ type DataTableEffectivePropsType = Indexed<{
     renderExpandableSection?: (data: DataTableDataType) => ReactChild;
     onSectionExpansionChange?: (expandedSections: ScalarType[]) => void;
 
+    // page navigation
+    enablePageNavigation?: boolean;
+    pageNavigationItemCount?: PageNavigationPropsType['itemCount'];
+    pageNavigationPageNumber?: PageNavigationPropsType['pageNumber'];
+    pageNavigationPageSize?: PageNavigationPropsType['pageSize'];
+    onPageNavigationPageSelect?: PageNavigationPropsType['onPageSelect'];
+
     // add other custom properties here
 }> &
     Pick<TablePropsType, 'stickyHead'> &
@@ -82,3 +90,6 @@ export type DataTablePropsType = DataTableEffectivePropsType &
 /* DataTable node prop type */
 export type DataTableRootPropsType = DataTableEffectivePropsType &
     ComponentElementStylePropsType;
+
+/* DataTable node prop type */
+export type DataTableFooterPropsType = ComponentElementStylePropsType;

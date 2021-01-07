@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { makeRootClassName } from '../../../utils';
+import { makeBEM, makeRootClassName } from '../../../utils';
 
 export const useDataTableClassNames = (
     classPrefix: string,
@@ -8,5 +8,6 @@ export const useDataTableClassNames = (
     useMemo(() => {
         return {
             Root: makeRootClassName(classPrefix, className),
+            Footer: makeBEM(classPrefix, 'Footer'),
         };
     }, [classPrefix, className]);

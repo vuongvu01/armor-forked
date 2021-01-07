@@ -1,6 +1,6 @@
 /* eslint-disable no-console,import/no-unresolved, import/no-extraneous-dependencies */
 
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { withKnobs } from '@storybook/addon-knobs';
 import cloneDeep from 'clone-deep';
 import { dataSource, dataSourceWide, columns, columnsWide } from './demoData';
@@ -350,6 +350,30 @@ export const WithRowSelectionAndMultipleExpansionControllers = () => {
             onSectionExpansionChange={expansion => {
                 console.log(expansion);
             }}
+        />
+    );
+};
+
+export const WithPageNavigation = () => {
+    const [data] = useState<typeof dataSource>(dataSource);
+
+    const [page, setPage] = useState(1);
+    const onPageChange = useCallback(
+        (pageNumber: number) => {
+            console.log(pageNumber);
+            setPage(pageNumber);
+        },
+        [setPage],
+    );
+
+    return (
+        <DataTable
+            columns={columns}
+            data={data}
+            enablePageNavigation
+            pageNavigationItemCount={300}
+            pageNavigationPageNumber={page}
+            onPageNavigationPageSelect={onPageChange}
         />
     );
 };

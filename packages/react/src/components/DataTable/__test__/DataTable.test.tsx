@@ -9,13 +9,7 @@
 
 import React, { useRef } from 'react';
 
-import {
-    cleanup,
-    fireEvent,
-    render,
-    prettyDOM,
-    wait,
-} from '@testing-library/react';
+import { cleanup, fireEvent, render } from '@testing-library/react';
 import {
     renderHook,
     cleanup as cleanupHooks,
@@ -33,6 +27,23 @@ describe('<DataTable />', () => {
 
     it('should render itself without errors', async () => {
         render(<DataTable />);
+    });
+
+    it('should contain correct CSS classes and attributes', () => {
+        let result = render(<DataTable />);
+
+        // @ts-ignore
+        expect(result.container).toHaveBEMStructure('DataTable', {
+            Root: [],
+        });
+
+        result = render(<DataTable enablePageNavigation />);
+
+        // @ts-ignore
+        expect(result.container).toHaveBEMStructure('DataTable', {
+            Root: [],
+            Footer: [],
+        });
     });
 
     it('should support forwardRef', () => {

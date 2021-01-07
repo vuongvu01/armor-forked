@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import {
     TABLE_HEAD,
+    TABLE_FOOT,
     TableSectionContext,
 } from '../../utils/TableSectionContext';
 import { TableContext } from '../../utils/TableContext';
@@ -34,14 +35,17 @@ export const useTableRow = ({
     } = useContext<TableSectionContextValueType>(TableSectionContext);
 
     const isHeader = section === TABLE_HEAD;
+    const isFooter = section === TABLE_FOOT;
 
     return {
         rootProps: {
             ...restProps,
             isHeader,
+            isFooter,
         },
         cellsProps: {
             isHeader,
+            isFooter,
             stickyTop: enableStickyTop ? !!stickyHead && isHeader : false,
             stickyColumns: enableStickyColumns
                 ? stickyColumns

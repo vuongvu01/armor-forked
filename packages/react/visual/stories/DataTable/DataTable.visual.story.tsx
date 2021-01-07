@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState, useCallback } from 'react';
 
 import { DataTable } from '../../../src/components';
 import { dataSource, columns, dataSourceWide, columnsWide } from './demoData';
@@ -223,6 +223,20 @@ export const ExpandableSectionAndSelectableRows = () => {
                     </>
                 );
             }}
+        />
+    );
+};
+
+export const PageNavigation = () => {
+    const [data] = useState<typeof dataSource>(dataSource);
+
+    return (
+        <DataTable
+            columns={columns}
+            data={data}
+            enablePageNavigation
+            pageNavigationItemCount={300}
+            pageNavigationPageNumber={3}
         />
     );
 };

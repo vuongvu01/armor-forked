@@ -1,5 +1,7 @@
 import React, { FunctionComponent, forwardRef } from 'react';
 import PropTypes from 'prop-types';
+import { TableSectionContext } from '../utils/TableSectionContext';
+import { useTableFoot } from './utils/useTableFoot';
 import { useComponentTheme } from '../../../utils/hooks';
 
 import { useTableFootClassNames } from './utils/useTableFootClassNames';
@@ -19,14 +21,18 @@ export const TableFoot: FunctionComponent<TableFootPropsType> = forwardRef(
             className,
         );
 
+        const { tableSectionContextValue } = useTableFoot();
+
         return (
-            <TableFootRoot
-                data-testid={tableFootRootTestId}
-                {...restProps}
-                theme={theme}
-                className={classNameComponents.Root}
-                ref={ref}
-            />
+            <TableSectionContext.Provider value={tableSectionContextValue}>
+                <TableFootRoot
+                    data-testid={tableFootRootTestId}
+                    {...restProps}
+                    theme={theme}
+                    className={classNameComponents.Root}
+                    ref={ref}
+                />
+            </TableSectionContext.Provider>
         );
     },
 );
