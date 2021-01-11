@@ -25,6 +25,28 @@ export const Basic = () => {
     );
 };
 
+export const PageSizeSelector = () => {
+    const [pageSize, setPageSize] = useState(100);
+
+    return (
+        <PageNavigation
+            pageNumber={1}
+            itemCount={2}
+            pageSize={pageSize}
+            enablePageSizeSelector
+            onPageSizeChange={setPageSize}
+            pageSizeList={[
+                { label: '100', value: 100 },
+                { label: '200', value: 200 },
+            ]}
+        />
+    );
+};
+
 export const NoParams = () => {
     return <PageNavigation />;
+};
+
+export const OnePageTwoItems = () => {
+    return <PageNavigation pageNumber={1} itemCount={2} />;
 };

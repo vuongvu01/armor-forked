@@ -14,7 +14,6 @@ import { ScalarType } from '../../../type';
 import { OptionItemType } from '../type';
 import { withWrapper } from '../../../helpers/Wrapper';
 
-
 export default {
     title: 'Components/Dropdown',
     component: Dropdown,

@@ -377,3 +377,36 @@ export const WithPageNavigation = () => {
         />
     );
 };
+
+export const WithPageNavigationAndPageSelector = () => {
+    const [data] = useState<typeof dataSource>(dataSource);
+
+    const [page, setPage] = useState(1);
+    const onPageChange = useCallback(
+        (pageNumber: number) => {
+            console.log(pageNumber);
+            setPage(pageNumber);
+        },
+        [setPage],
+    );
+
+    const [pageSize, setPageSize] = useState(100);
+
+    return (
+        <DataTable
+            columns={columns}
+            data={data}
+            enablePageNavigation
+            pageNavigationItemCount={300}
+            pageNavigationPageNumber={page}
+            onPageNavigationPageSelect={onPageChange}
+            enablePageNavigationPageSizeSelector
+            pageNavigationPageSize={pageSize}
+            pageNavigationPageSizeList={[
+                { label: '100', value: 100 },
+                { label: '200', value: 200 },
+            ]}
+            onPageNavigationPageSizeChange={setPageSize}
+        />
+    );
+};

@@ -1,6 +1,7 @@
 import { MouseEvent, useCallback } from 'react';
 import { PageNavigationPropsType } from '../type';
 import { getPageNavigation } from './getPageNavigation';
+import { PseudoEventType } from '../../../type';
 
 export const usePageNavigation = ({
     pageNumber,
@@ -8,6 +9,11 @@ export const usePageNavigation = ({
     itemCount,
     displayRange,
     onPageSelect,
+
+    // page size
+    enablePageSizeSelector,
+    onPageSizeChange,
+    pageSizeList,
 }: PageNavigationPropsType) => {
     const onPageButtonClick = useCallback(
         (event: MouseEvent<HTMLButtonElement>) => {
@@ -32,7 +38,22 @@ export const usePageNavigation = ({
         [onPageSelect],
     );
 
+    const onPageSelectorChange = useCallback(
+        (event: PseudoEventType<number>) => {
+            if (onPageSizeChange) {
+                onPageSizeChange(event.target.value);
+            }
+        },
+        [onPageSizeChange],
+    );
+
     return {
+        pageSizeSelectorProps: {
+            options: pageSizeList,
+            onChange: onPageSelectorChange,
+            value: pageSize,
+        },
+
         structure: getPageNavigation(
             itemCount,
             pageNumber,
@@ -40,5 +61,7 @@ export const usePageNavigation = ({
             displayRange,
         ),
         onPageButtonClick,
+
+        enablePageSizeSelector,
     };
 };

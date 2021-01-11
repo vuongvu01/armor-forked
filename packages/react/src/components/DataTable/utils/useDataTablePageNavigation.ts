@@ -3,9 +3,15 @@ import { DataTablePropsType } from '../type';
 export const useDataTablePageNavigation = ({
     pageNavigationItemCount,
     pageNavigationPageNumber,
-    pageNavigationPageSize,
     onPageNavigationPageSelect,
     enablePageNavigation,
+
+    // page size
+    pageNavigationPageSize,
+    enablePageNavigationPageSizeSelector,
+    onPageNavigationPageSizeChange,
+    pageNavigationPageSizeList,
+
     ...restProps
 }: DataTablePropsType) => {
     return {
@@ -13,8 +19,12 @@ export const useDataTablePageNavigation = ({
             pageNavigationProps: {
                 itemCount: pageNavigationItemCount,
                 pageNumber: pageNavigationPageNumber,
-                pageSize: pageNavigationPageSize,
                 onPageSelect: onPageNavigationPageSelect,
+
+                pageSize: pageNavigationPageSize,
+                enablePageSizeSelector: enablePageNavigationPageSizeSelector,
+                onPageSizeChange: onPageNavigationPageSizeChange,
+                pageSizeList: pageNavigationPageSizeList,
             },
             enablePageNavigation,
         },

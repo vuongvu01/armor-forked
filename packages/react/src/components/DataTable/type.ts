@@ -3,7 +3,7 @@ import {
     ComponentElementStylePropsType,
     ComponentStylePropsType,
 } from '../type';
-import { Indexed, ObjectLiteralType, ScalarType } from '../../type';
+import { ObjectLiteralType, ScalarType } from '../../type';
 import { TablePropsType } from '../Table/type';
 import { TableCellPropsType } from '../Table/TableCell/type';
 import {
@@ -18,8 +18,8 @@ import {
 } from '../../system/attributes';
 
 export type DataTableColumnType = {
-    title: ReactChild;
     id: string;
+    title?: ReactChild;
     key?: string;
     sortable?: TableHeadCellPropsType['sortable'];
     sortType?: TableHeadCellPropsType['rowSortType'];
@@ -39,49 +39,53 @@ export type DataTableDataType = {
     key?: ScalarType;
 } & ObjectLiteralType;
 
-type DataTableEffectivePropsType = Indexed<{
-    columns?: DataTableColumnType[];
-    data?: DataTableDataType[];
-    tableProps?: TablePropsType;
+type DataTableEffectivePropsType = Partial<{
+    columns: DataTableColumnType[];
+    data: DataTableDataType[];
+    tableProps: TablePropsType;
 
     // row sorting
-    rowSortOrder?: TableHeadCellRowSortOrderType;
-    defaultRowSortOrder?: TableHeadCellRowSortOrderType;
-    enableNeutralRowSorting?: boolean;
-    onRowSortOrderChange?: (
-        rowSortOrder: TableHeadCellRowSortOrderType,
-    ) => void;
+    rowSortOrder: TableHeadCellRowSortOrderType;
+    defaultRowSortOrder: TableHeadCellRowSortOrderType;
+    enableNeutralRowSorting: boolean;
+    onRowSortOrderChange: (rowSortOrder: TableHeadCellRowSortOrderType) => void;
 
     // row selection
-    enableRowSelection?: boolean;
-    selectedRowIds?: ScalarType[];
-    defaultSelectedRowIds?: ScalarType[];
-    onRowSelectionChange?: (selectedRows: ScalarType[]) => void;
+    enableRowSelection: boolean;
+    selectedRowIds: ScalarType[];
+    defaultSelectedRowIds: ScalarType[];
+    onRowSelectionChange: (selectedRows: ScalarType[]) => void;
 
     // sticky columns
-    stickyLeftColumn?: boolean;
-    stickyRightColumn?: boolean;
+    stickyLeftColumn: boolean;
+    stickyRightColumn: boolean;
 
     // expandable sections
-    defaultExpandedSectionIds?: ScalarType[];
-    expandedSectionIds?: ScalarType[];
-    expandableSectionControllerColumnId?: ScalarType;
-    renderExpandableSection?: (data: DataTableDataType) => ReactChild;
-    onSectionExpansionChange?: (expandedSections: ScalarType[]) => void;
+    defaultExpandedSectionIds: ScalarType[];
+    expandedSectionIds: ScalarType[];
+    expandableSectionControllerColumnId: ScalarType;
+    renderExpandableSection: (data: DataTableDataType) => ReactChild;
+    onSectionExpansionChange: (expandedSections: ScalarType[]) => void;
 
     // page navigation
-    enablePageNavigation?: boolean;
-    pageNavigationItemCount?: PageNavigationPropsType['itemCount'];
-    pageNavigationPageNumber?: PageNavigationPropsType['pageNumber'];
-    pageNavigationPageSize?: PageNavigationPropsType['pageSize'];
-    onPageNavigationPageSelect?: PageNavigationPropsType['onPageSelect'];
+    enablePageNavigation: boolean;
+    pageNavigationItemCount: PageNavigationPropsType['itemCount'];
+    pageNavigationPageNumber: PageNavigationPropsType['pageNumber'];
+    onPageNavigationPageSelect: PageNavigationPropsType['onPageSelect'];
+
+    // page navigation: page size selector
+    pageNavigationPageSize: PageNavigationPropsType['pageSize'];
+    enablePageNavigationPageSizeSelector: PageNavigationPropsType['enablePageSizeSelector'];
+    onPageNavigationPageSizeChange: PageNavigationPropsType['onPageSizeChange'];
+    pageNavigationPageSizeList: PageNavigationPropsType['pageSizeList'];
 
     // add other custom properties here
 }> &
     Pick<TablePropsType, 'stickyHead'> &
     SizeAttributesType &
     MarginAttributesType &
-    PaddingAttributesType;
+    PaddingAttributesType &
+    ObjectLiteralType;
 
 /* DataTable component prop type */
 export type DataTablePropsType = DataTableEffectivePropsType &

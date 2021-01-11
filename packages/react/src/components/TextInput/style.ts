@@ -175,6 +175,7 @@ export const TextInputInput = styled(Wrapper).withConfig({
     padding: 0;
     margin: 0;
     background-color: transparent;
+    width: 100%;
 
     ${getInputDynamicStyle};
 `;

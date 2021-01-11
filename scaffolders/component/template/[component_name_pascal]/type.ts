@@ -8,14 +8,15 @@ import {
 import {
     MarginAttributesType,
 } from '../../system/attributes';
-import { Indexed } from '../../type';
+import { ObjectLiteralType } from '../../type';
 
-type <%- component_name_pascal %>EffectivePropsType = Indexed<{
-    // exampleProperty?: boolean;
+type <%- component_name_pascal %>EffectivePropsType = Partial<{
+    // exampleProperty: boolean;
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
-    MarginAttributesType;
+    MarginAttributesType &
+    ObjectLiteralType;
 
 /* <%- component_name_pascal %> component prop type */
 export type <%- component_name_pascal %>PropsType = <%- component_name_pascal %>EffectivePropsType &
