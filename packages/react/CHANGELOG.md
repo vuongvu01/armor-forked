@@ -1,3 +1,25 @@
+# @deliveryhero/armor [1.28.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.27.1...@deliveryhero/armor@1.28.0) (2021-01-11)
+
+
+### Bug Fixes
+
+* **sidesheet:** replace padding with margin for the use-case in the wild ([#352](https://github.com/deliveryhero/armor/issues/352)) ([76e5b3b](https://github.com/deliveryhero/armor/commit/76e5b3bef3fb927fd3cf4806719ea26433eb083c))
+
+
+### Features
+
+* **datatable:** PageNavigation enabled in DataTable [LD-370] ([#354](https://github.com/deliveryhero/armor/issues/354)) ([3bf9bcf](https://github.com/deliveryhero/armor/commit/3bf9bcfec5cfadbcac47f0d6540fedd6e106b9a9))
+* **pagenavigation:** Page size selector in PaginationNavigation implemented [LD-243] ([#358](https://github.com/deliveryhero/armor/issues/358)) ([4647e5e](https://github.com/deliveryhero/armor/commit/4647e5e0d16b32243905e9a7f6e2075d5644c440))
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor-icons:** upgraded to 1.8.0
+* **@deliveryhero/armor-vendors:** upgraded to 1.0.12
+
 ## @deliveryhero/armor [1.27.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.27.0...@deliveryhero/armor@1.27.1) (2020-12-21)
 
 
