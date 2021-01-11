@@ -1,3 +1,10 @@
+## @deliveryhero/armor [1.28.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.28.0...@deliveryhero/armor@1.28.1) (2021-01-11)
+
+
+### Bug Fixes
+
+* **dependency:** Armor-vendors package is not a dependency of Armor [LD-000] ([#359](https://github.com/deliveryhero/armor/issues/359)) ([e6d503e](https://github.com/deliveryhero/armor/commit/e6d503eecb750534f3750631df1b229e87c828fd))
+
 # @deliveryhero/armor [1.28.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.27.1...@deliveryhero/armor@1.28.0) (2021-01-11)
 
 
