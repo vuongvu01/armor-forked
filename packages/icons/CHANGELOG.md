@@ -1,3 +1,11 @@
+# @deliveryhero/armor-icons [1.8.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.7.0...@deliveryhero/armor-icons@1.8.0) (2021-01-11)
+
+
+### Features
+
+* **icons:** Calendar | ArrowUpTail | Copy | Flash | Shuffle ([#349](https://github.com/deliveryhero/armor/issues/349)) ([5271d85](https://github.com/deliveryhero/armor/commit/5271d8564b297caab5476cc6c6e1b96fde020894))
+* **icons:** explicit class name [LD-339] ([#350](https://github.com/deliveryhero/armor/issues/350)) ([56ea058](https://github.com/deliveryhero/armor/commit/56ea0580998a3d85681ca4b716f3a66ccbac8364))
+
 # @deliveryhero/armor-icons [1.7.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.6.0...@deliveryhero/armor-icons@1.7.0) (2020-12-18)
 
 
