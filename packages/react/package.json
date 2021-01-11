@@ -35,7 +35,6 @@
     },
     "dependencies": {
         "@deliveryhero/armor-icons": "^1.2.1",
-        "@deliveryhero/armor-vendors": "^1.0.9",
         "@popperjs/core": "^2.4.2",
         "clone-deep": "^4.0.1",
         "deep-freeze-strict": "1.1.1",
