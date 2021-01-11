@@ -24,6 +24,7 @@ import { color, spacing, typography } from '../../../system/mixins';
 // all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
 const propertyList = makePropList([
     'isHeader',
+    'isFooter',
     'contentAlignX',
     'contentAlignY',
     'disabled',

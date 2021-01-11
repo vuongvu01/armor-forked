@@ -9,6 +9,7 @@ import { getComponentOverride } from '../../../system/mixins/getComponentOverrid
 // all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
 const propertyList = {
     isHeader: true,
+    isFooter: true,
     rowId: true,
 } as ObjectLiteralType;
 
