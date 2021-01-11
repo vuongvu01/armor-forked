@@ -1,11 +1,11 @@
 /* This file is auto-generated, don't edit by hand! */
 
-export * from './ArrowDown';
-export * from './ArrowLeft';
-export * from './ArrowLeftTail';
 export * from './ArrowDownTail';
-export * from './ArrowUp';
-export * from './ArrowRightTail';
-export * from './ArrowRight';
+export * from './ArrowLeft';
+export * from './ArrowDown';
+export * from './ArrowLeftTail';
 export * from './ArrowReturnRight';
+export * from './ArrowUp';
+export * from './ArrowRight';
 export * from './ArrowUpTail';
+export * from './ArrowRightTail';

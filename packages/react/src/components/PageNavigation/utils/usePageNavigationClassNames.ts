@@ -6,15 +6,17 @@ export const usePageNavigationClassNames = (
     className?: string,
 ) =>
     useMemo(() => {
-        const rootClassNames = makeRootClassName(classPrefix, className);
         const pageButtonClassName = makeBEM(classPrefix, 'PageButton');
 
         return {
-            Root: rootClassNames,
+            Root: makeRootClassName(classPrefix, className),
             PageButton: pageButtonClassName,
+            Buttons: makeBEM(classPrefix, 'Buttons'),
             ArrowButton: `${makeBEM(
                 classPrefix,
                 'ArrowButton',
             )} ${pageButtonClassName}`,
+            PageSize: makeBEM(classPrefix, 'PageSize'),
+            PageSizeSelector: makeBEM(classPrefix, 'PageSizeSelector'),
         };
     }, [classPrefix, className]);

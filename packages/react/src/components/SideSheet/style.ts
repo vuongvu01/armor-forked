@@ -126,4 +126,4 @@ export const SideSheetHeaderCloseButtonContent = styled.div<
     }
 `;
 
-export const iconStyle = { outline: 'none', padding: `${closeIconOffset}px` };
+export const iconStyle = { outline: 'none', margin: `${closeIconOffset}px` };

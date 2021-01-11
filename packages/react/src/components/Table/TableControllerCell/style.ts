@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ArrowUpIcon } from '@deliveryhero/armor-icons';
+import { ArrowDownIcon } from '@deliveryhero/armor-icons';
 import {
     TableControllerCellRootPropsType,
     TableControllerCellContainerPropsType,
@@ -37,7 +37,7 @@ export const TableControllerCellContainer = styled.div.withConfig({
     align-items: center;
 `;
 
-export const TableControllerCellIcon = styled(ArrowUpIcon).withConfig({
+export const TableControllerCellIcon = styled(ArrowDownIcon).withConfig({
     shouldForwardProp: property => shouldForwardProp(property, propertyList),
 })<TableControllerCellIconPropsType>`
     color: ${color('primary.main')};

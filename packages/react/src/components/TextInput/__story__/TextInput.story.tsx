@@ -725,3 +725,11 @@ export const DynamicValue = () => {
 export const Label = () => {
     return <TextInput label="Label" />;
 };
+
+const ShortTextInput = styled(TextInput)`
+    width: 40px;
+`;
+
+export const Short = () => {
+    return <ShortTextInput />;
+};

@@ -5,7 +5,13 @@ import { ArrowLeftIcon, ArrowRightIcon } from '@deliveryhero/armor-icons';
 import { useComponentTheme } from '../../utils/hooks';
 import { usePageNavigationClassNames } from './utils/usePageNavigationClassNames';
 import { usePageNavigation } from './utils/usePageNavigation';
-import { PageNavigationRoot, PageNavigationPageButton } from './style';
+import {
+    PageNavigationRoot,
+    PageNavigationButtons,
+    PageNavigationPageButton,
+    PageNavigationPageSize,
+    PageNavigationPageSizeSelector,
+} from './style';
 import { PageNavigationPropsType } from './type';
 import { pageNavigationDefaultTheme } from './theme';
 import {
@@ -26,6 +32,8 @@ export const PageNavigation: FunctionComponent<PageNavigationPropsType> = forwar
         );
 
         const {
+            pageSizeSelectorProps,
+
             structure: {
                 displayedRange,
                 nextPageNumber,
@@ -35,6 +43,8 @@ export const PageNavigation: FunctionComponent<PageNavigationPropsType> = forwar
                 previousPageArrowEnabled,
             },
             onPageButtonClick,
+
+            enablePageSizeSelector,
         } = usePageNavigation(restProps);
 
         return (
@@ -45,44 +55,62 @@ export const PageNavigation: FunctionComponent<PageNavigationPropsType> = forwar
                 className={classNameComponents.Root}
                 ref={ref}
             >
-                <PageNavigationPageButton
-                    theme={theme}
-                    className={classNameComponents.ArrowButton}
-                    arrow
-                    disabled={!previousPageArrowEnabled}
-                    data-testid={pageNavigationPageButtonTestId}
-                    data-disabled={previousPageArrowEnabled ? '' : '1'}
-                    data-pagenumber={previousPageNumber}
-                    onClick={onPageButtonClick}
-                >
-                    <ArrowLeftIcon />
-                </PageNavigationPageButton>
-                {displayedRange.map(pageNumber => (
-                    <PageNavigationPageButton
-                        key={pageNumber}
+                {enablePageSizeSelector && (
+                    <PageNavigationPageSize
                         theme={theme}
-                        className={classNameComponents.PageButton}
-                        selected={pageNumber === currentPageNumber}
+                        className={classNameComponents.PageSize}
+                    >
+                        Rows per page:{' '}
+                        <PageNavigationPageSizeSelector
+                            theme={theme}
+                            className={classNameComponents.PageSizeSelector}
+                            {...pageSizeSelectorProps}
+                        />
+                    </PageNavigationPageSize>
+                )}
+                <PageNavigationButtons
+                    theme={theme}
+                    className={classNameComponents.Buttons}
+                >
+                    <PageNavigationPageButton
+                        theme={theme}
+                        className={classNameComponents.ArrowButton}
+                        arrow
+                        disabled={!previousPageArrowEnabled}
                         data-testid={pageNavigationPageButtonTestId}
-                        data-disabled=""
-                        data-pagenumber={pageNumber}
+                        data-disabled={previousPageArrowEnabled ? '' : '1'}
+                        data-pagenumber={previousPageNumber}
                         onClick={onPageButtonClick}
                     >
-                        {pageNumber}
+                        <ArrowLeftIcon />
                     </PageNavigationPageButton>
-                ))}
-                <PageNavigationPageButton
-                    theme={theme}
-                    className={classNameComponents.ArrowButton}
-                    arrow
-                    disabled={!nextPageArrowEnabled}
-                    data-testid={pageNavigationPageButtonTestId}
-                    data-disabled={nextPageArrowEnabled ? '' : '1'}
-                    data-pagenumber={nextPageNumber}
-                    onClick={onPageButtonClick}
-                >
-                    <ArrowRightIcon />
-                </PageNavigationPageButton>
+                    {displayedRange.map(pageNumber => (
+                        <PageNavigationPageButton
+                            key={pageNumber}
+                            theme={theme}
+                            className={classNameComponents.PageButton}
+                            selected={pageNumber === currentPageNumber}
+                            data-testid={pageNavigationPageButtonTestId}
+                            data-disabled=""
+                            data-pagenumber={pageNumber}
+                            onClick={onPageButtonClick}
+                        >
+                            {pageNumber}
+                        </PageNavigationPageButton>
+                    ))}
+                    <PageNavigationPageButton
+                        theme={theme}
+                        className={classNameComponents.ArrowButton}
+                        arrow
+                        disabled={!nextPageArrowEnabled}
+                        data-testid={pageNavigationPageButtonTestId}
+                        data-disabled={nextPageArrowEnabled ? '' : '1'}
+                        data-pagenumber={nextPageNumber}
+                        onClick={onPageButtonClick}
+                    >
+                        <ArrowRightIcon />
+                    </PageNavigationPageButton>
+                </PageNavigationButtons>
             </PageNavigationRoot>
         );
     },
@@ -91,8 +119,13 @@ export const PageNavigation: FunctionComponent<PageNavigationPropsType> = forwar
 PageNavigation.defaultProps = {
     pageNumber: 1,
     itemCount: 0,
-    pageSize: 10,
+    pageSize: 25,
     displayRange: 2,
+    pageSizeList: [
+        { label: '25', value: 25 },
+        { label: '100', value: 100 },
+        { label: '500', value: 500 },
+    ],
 };
 
 /** prop-types are required here for run-time checks */

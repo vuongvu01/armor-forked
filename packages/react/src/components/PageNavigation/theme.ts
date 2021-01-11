@@ -7,12 +7,6 @@ import {
 } from '../../tokens';
 
 export const pageNavigationDefaultTheme = {
-    // place the default theme object here, it will be automatically processed
-    Root: {
-        base: {
-            $typography: 'paragraphMedium',
-        },
-    },
     PageButton: {
         base: {
             $typography: '$inherit',

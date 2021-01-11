@@ -6,6 +6,9 @@ import { Box } from '../../../src/components/Box';
 import { Tab } from '../../../src/components/Tab';
 import { TabView } from '../../../src/components/TabView';
 import { Badge } from '../../../src/components/Badge';
+import { Stack, StackItem } from '../../../src/components/Stack';
+import { Typography } from '../../../src/components/Typography';
+import { Pack, PackItem } from '../../../src/components/Pack';
 
 export default {
     title: 'Tabs',
@@ -196,6 +199,85 @@ export const FullWidth = () => {
             <TabView value={1} selectedValue={selectedTabIndex}>
                 <p>Pasta</p>
             </TabView>
+        </>
+    );
+};
+
+export const Alignment = () => {
+    const [selectedTabIndex1, setSelectedTabIndex1] = useState(0);
+    const [selectedTabIndex2, setSelectedTabIndex2] = useState(0);
+    const [selectedTabIndex3, setSelectedTabIndex3] = useState(0);
+
+    const handleChange1 = (tabIndex1: number) =>
+        setSelectedTabIndex1(tabIndex1);
+    const handleChange2 = (tabIndex2: number) =>
+        setSelectedTabIndex2(tabIndex2);
+    const handleChange3 = (tabIndex3: number) =>
+        setSelectedTabIndex3(tabIndex3);
+
+    return (
+        <>
+            <Stack>
+                <StackItem marginBottom={5}>
+                    <Typography>Left-aligned</Typography>
+                    <Tabs onSwitch={handleChange1}>
+                        <Tab>Pizza</Tab>
+                        <Tab>Pasta</Tab>
+                        <Tab>Risotto</Tab>
+                    </Tabs>
+                    <TabView value={0} selectedValue={selectedTabIndex1}>
+                        <p>Pizza</p>
+                    </TabView>
+                    <TabView value={1} selectedValue={selectedTabIndex1}>
+                        <p>Pasta</p>
+                    </TabView>
+                    <TabView value={2} selectedValue={selectedTabIndex1}>
+                        <p>Risotto</p>
+                    </TabView>
+                </StackItem>
+                <StackItem marginBottom={5}>
+                    <Typography>Center-aligned</Typography>
+                    <Pack justifyContent="center">
+                        <PackItem>
+                            <Tabs onSwitch={handleChange2}>
+                                <Tab>Pizza</Tab>
+                                <Tab>Pasta</Tab>
+                                <Tab>Risotto</Tab>
+                            </Tabs>
+                        </PackItem>
+                    </Pack>
+                    <TabView value={0} selectedValue={selectedTabIndex2}>
+                        <p>Pizza</p>
+                    </TabView>
+                    <TabView value={1} selectedValue={selectedTabIndex2}>
+                        <p>Pasta</p>
+                    </TabView>
+                    <TabView value={2} selectedValue={selectedTabIndex2}>
+                        <p>Risotto</p>
+                    </TabView>
+                </StackItem>
+                <StackItem marginBottom={5}>
+                    <Typography>Right-aligned</Typography>
+                    <Pack justifyContent="flex-end">
+                        <PackItem>
+                            <Tabs onSwitch={handleChange3}>
+                                <Tab>Pizza</Tab>
+                                <Tab>Pasta</Tab>
+                                <Tab>Risotto</Tab>
+                            </Tabs>
+                        </PackItem>
+                    </Pack>
+                    <TabView value={0} selectedValue={selectedTabIndex3}>
+                        <p>Pizza</p>
+                    </TabView>
+                    <TabView value={1} selectedValue={selectedTabIndex3}>
+                        <p>Pasta</p>
+                    </TabView>
+                    <TabView value={2} selectedValue={selectedTabIndex3}>
+                        <p>Risotto</p>
+                    </TabView>
+                </StackItem>
+            </Stack>
         </>
     );
 };

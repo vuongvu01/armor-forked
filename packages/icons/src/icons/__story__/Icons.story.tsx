@@ -48,7 +48,16 @@ export const Basic = () => (
                 <I.AddIcon />
             </Icon>
             <Icon>
+                <I.ArrowUpTailCircleFilledIcon />
+            </Icon>
+            <Icon>
                 <I.AttachmentIcon />
+            </Icon>
+            <Icon>
+                <I.CalendarIcon />
+            </Icon>
+            <Icon>
+                <I.CopyIcon />
             </Icon>
             <Icon>
                 <I.DeleteIcon />
@@ -61,6 +70,9 @@ export const Basic = () => (
             </Icon>
             <Icon>
                 <I.FilterIcon />
+            </Icon>
+            <Icon>
+                <I.FlashIcon />
             </Icon>
             <Icon>
                 <I.ForkKnifeIcon />
@@ -88,6 +100,9 @@ export const Basic = () => (
             </Icon>
             <Icon>
                 <I.ShopIcon />
+            </Icon>
+            <Icon>
+                <I.ShuffleIcon />
             </Icon>
             <Icon>
                 <I.TimeCircleIcon />
@@ -343,5 +358,13 @@ export const Sizes = () => {
                 Quick brown fox...
             </div>
         </>
+    );
+};
+
+export const CustomClass = () => {
+    return (
+        <div>
+            <I.AddIcon className="PlusSign" />
+        </div>
     );
 };

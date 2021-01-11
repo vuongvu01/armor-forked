@@ -18,6 +18,7 @@ export const getPageNavigation = (
     };
 
     if (!itemCount || itemCount < pageSize) {
+        result.displayedRange = [1];
         return result;
     }
 

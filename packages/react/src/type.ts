@@ -24,3 +24,9 @@ export type ReferenceType<C = unknown> =
     | ((instance: C) => void)
     | MutableRefObject<C>
     | null;
+
+export type PseudoEventType<V = ScalarType> = {
+    target: {
+        value: V;
+    };
+};

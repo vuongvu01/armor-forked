@@ -163,4 +163,48 @@ describe('<PageNavigation />', () => {
 
         expect(setPageNumber).not.toHaveBeenCalled();
     });
+
+    it('should show one page even if there is no elements', async () => {
+        const { container } = render(<PageNavigation itemCount={0} />);
+
+        const pages = container.querySelectorAll(
+            '.PageNavigation-PageButton:not(.PageNavigation-ArrowButton)',
+        );
+        expect(pages.length).toEqual(1);
+
+        expect((pages[0] as HTMLElement).innerHTML).toEqual('1');
+    });
+
+    it('should contain correct CSS classes and attributes with page size selector is enabled', () => {
+        const result = render(<PageNavigation enablePageSizeSelector />);
+        // @ts-ignore
+        expect(result.container).toHaveBEMStructure('PageNavigation', {
+            Root: [],
+            PageButton: [],
+            PageSize: [],
+            PageSizeSelector: [],
+        });
+    });
+
+    it('should select page size', () => {
+        const onPageSizeChange = jest.fn();
+        const { container } = render(
+            <PageNavigation
+                pageSize={100}
+                enablePageSizeSelector
+                onPageSizeChange={onPageSizeChange}
+                pageSizeList={[
+                    { label: '100', value: 100 },
+                    { label: '200', value: 200 },
+                ]}
+            />,
+        );
+
+        const options = container.querySelectorAll('.Dropdown-OptionItem');
+        expect(options.length).toEqual(2);
+
+        fireEvent.click(options[1]);
+
+        expect(onPageSizeChange).toHaveBeenCalledWith(200);
+    });
 });

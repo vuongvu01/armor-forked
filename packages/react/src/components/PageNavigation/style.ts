@@ -1,39 +1,44 @@
 import styled, { css } from 'styled-components';
 import {
+    PageNavigationButtonsPropsType,
     PageNavigationPageButtonPropsType,
     PageNavigationRootPropsType,
+    PageNavigationSizePropsType,
 } from './type';
 import { marginAttributes } from '../../system/attributes';
 import { shouldForwardProp, makePropList } from '../../utils';
 import { transitionDurationInSec } from '../../constants';
 import { getComponentOverride } from '../../system/mixins/getComponentOverride';
+import { color, reset, spacing, typography } from '../../system/mixins';
+import { Dropdown } from '../Dropdown';
 
 // all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
 const propertyList = makePropList([
     'arrow',
     'selected',
-    'disabled',
     'pageNumber',
     'itemCount',
     'pageSize',
     'displayRange',
     'onPageSelect',
-]);
 
-const getRootBaseStyle = ({ theme }: PageNavigationRootPropsType) =>
-    theme.componentOverrides.PageNavigation.Root.base;
+    'enablePageSizeSelector',
+    'pageSizeList',
+    'onPageSizeChange',
+]);
 
 // if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
 export const PageNavigationRoot = styled.div.withConfig({
     shouldForwardProp: property => shouldForwardProp(property, propertyList),
 })<PageNavigationRootPropsType>`
-    box-sizing: border-box;
+    ${reset()};
+    ${typography('paragraphMedium')};
     display: inline-flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
+    align-items: center;
 
-    ${getRootBaseStyle}
     ${getComponentOverride('PageNavigation')};
     ${marginAttributes}
 `;
@@ -96,20 +101,38 @@ const getButtonDynamicStyle = ({
     return result;
 };
 
+export const PageNavigationButtons = styled.div<PageNavigationButtonsPropsType>`
+    ${reset()};
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+`;
+
 export const PageNavigationPageButton = styled.button.withConfig({
     shouldForwardProp: property => shouldForwardProp(property, propertyList),
 })<PageNavigationPageButtonPropsType>`
-    box-sizing: border-box;
+    ${reset()};
     user-select: none;
     appearance: none;
     border: 0 none;
     background-color: transparent;
     cursor: pointer;
-    outline: none;
     transition: background-color ${transitionDurationInSec}s ease-out;
     display: flex;
     align-items: center;
 
     ${getButtonBaseStyle}
     ${getButtonDynamicStyle}
+`;
+
+export const PageNavigationPageSize = styled.div<PageNavigationSizePropsType>`
+    ${reset()};
+    color: ${color('neutral.04')};
+    margin-right: ${spacing(10)};
+    white-space: nowrap;
+`;
+
+export const PageNavigationPageSizeSelector = styled(Dropdown)`
+    margin-left: ${spacing(3)};
+    width: ${spacing(32)};
 `;
