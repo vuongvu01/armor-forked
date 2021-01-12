@@ -1,3 +1,10 @@
+## @deliveryhero/armor [1.28.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.28.1...@deliveryhero/armor@1.28.2) (2021-01-12)
+
+
+### Bug Fixes
+
+* TableCell and DialogContent fixes [LD-000] ([#362](https://github.com/deliveryhero/armor/issues/362)) ([eec98e4](https://github.com/deliveryhero/armor/commit/eec98e4d3754a1167a4f42a06ad6e5c934841d58))
+
 ## @deliveryhero/armor [1.28.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.28.0...@deliveryhero/armor@1.28.1) (2021-01-11)
 
 
