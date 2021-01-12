@@ -23,8 +23,6 @@ export const DialogContent: FunctionComponent<DialogContentPropsType> = ({
 
     return (
         <DialogContentRoot
-            paragraph
-            large
             {...restProps}
             theme={theme}
             className={classNameRoot}
