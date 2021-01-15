@@ -113,6 +113,9 @@ export const Basic = () => (
             <Icon>
                 <I.WarningIcon />
             </Icon>
+            <Icon>
+                <I.TimeSeparatorIcon />
+            </Icon>
         </Icons>
         <h2>Arrow</h2>
         <Icons>
