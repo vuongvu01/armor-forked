@@ -18,19 +18,49 @@ const useHeaderNavigationSelectorClassName = (
 ) =>
     useMemo(() => {
         return {
-            ItemSelector: appendClassName(
+            Root: appendClassName(
                 getClassNameByComponent({
-                    component: 'ItemSelector',
+                    component: 'Root',
                     classPrefix,
                 }),
                 className,
             ),
-            NavigationSelectorRoot: getClassNameByComponent({
-                component: 'NavigationSelectorRoot',
+            Wrapper: getClassNameByComponent({
+                component: 'Wrapper',
                 classPrefix,
             }),
-            SelectorDropdown: getClassNameByComponent({
-                component: 'SelectorDropdown',
+            SelectedOptions: getClassNameByComponent({
+                component: 'SelectedOptions',
+                classPrefix,
+            }),
+            SelectedOptionsContainer: getClassNameByComponent({
+                component: 'SelectedOptionsContainer',
+                classPrefix,
+            }),
+            SelectedOptionsValues: getClassNameByComponent({
+                component: 'SelectedOptionsValues',
+                classPrefix,
+            }),
+            SelectedOptionsExpansionIndicatorContainer: getClassNameByComponent(
+                {
+                    component: 'SelectedOptionsExpansionIndicatorContainer',
+                    classPrefix,
+                },
+            ),
+            SelectedOptionsExpansionIndicator: getClassNameByComponent({
+                component: 'SelectedOptionsExpansionIndicator',
+                classPrefix,
+            }),
+            OptionListContainer: getClassNameByComponent({
+                component: 'OptionListContainer',
+                classPrefix,
+            }),
+            OptionListWrapper: getClassNameByComponent({
+                component: 'OptionListWrapper',
+                classPrefix,
+            }),
+            OptionList: getClassNameByComponent({
+                component: 'OptionList',
                 classPrefix,
             }),
         };

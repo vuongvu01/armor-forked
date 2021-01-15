@@ -22,18 +22,22 @@
         "build:watch": "tsc -w -p ./tsconfig.build.cjs.json",
         "test": "jest -c ./jest/config.js --passWithNoTests",
         "test:watch": "jest -c ./jest/config.js --watch",
+        "visual": "cd ./visual && yarn storybook",
         "lint": "eslint ./src --ext .js,.ts,.jsx,.tsx",
         "lint:fix": "eslint ./src --fix --ext .js,.ts,.jsx,.tsx",
         "release": "./script/release.sh"
     },
-    "dependencies": {},
+    "dependencies": {
+        "@deliveryhero/armor": "^1.27.1",
+        "@deliveryhero/armor-icons": "^1.7.0"
+    },
     "peerDependencies": {
+        "@deliveryhero/armor": "^1.27.1",
+        "@deliveryhero/armor-icons": "^1.7.0",
         "react": ">=16.8.0",
         "react-dom": ">=16.8.0",
         "react-is": ">=16.8.0",
-        "styled-components": ">=5.1.0",
-        "@deliveryhero/armor": "^1.20.0",
-        "@deliveryhero/armor-icons": "^1.2.1"
+        "styled-components": ">=5.1.0"
     },
     "publishConfig": {
         "access": "public"

@@ -1,10 +1,4 @@
-import {
-    HTMLAttributes,
-    InputHTMLAttributes,
-    MouseEvent,
-    ReactChild,
-    ReactElement,
-} from 'react';
+import { InputHTMLAttributes } from 'react';
 
 import {
     MarginAttributesType,
@@ -12,6 +6,7 @@ import {
 } from '../../system/attributes';
 import { Indexed, ScalarType } from '../../type';
 import { ComponentElementStylePropsType } from '../type';
+import { OptionObjectType } from '../DropdownOptionList/type';
 
 export type ClassBasedOnComponentType = {
     component: string;
@@ -21,11 +16,6 @@ export type ClassBasedOnComponentType = {
     isActive?: boolean;
 };
 
-export type OptionObjectType = {
-    label: string;
-    value: ScalarType;
-    [key: string]: any;
-};
 export type OptionItemType = string | OptionObjectType;
 export type OptionType = OptionItemType[];
 
@@ -71,7 +61,7 @@ export type DropdownOnRenderSelectedValueType = (
     options: DropdownInternalOptionType,
 ) => string;
 
-type DropdownEffectivePropsType = Indexed<{
+export type DropdownEffectivePropsType = Indexed<{
     error?: boolean;
     displaySeparator?: boolean;
     isListExpanded?: boolean;
@@ -111,32 +101,6 @@ type DropdownEffectivePropsType = Indexed<{
     WidthAttributesType;
 
 export type DropdownPropsType = DropdownEffectivePropsType;
-
-export type DropdownOptionListPropsType = Indexed<{
-    onClick?: (event: MouseEvent) => void;
-}> &
-    Pick<
-        DropdownEffectivePropsType,
-        | 'className'
-        | 'isOptionListShown'
-        | 'isSelected'
-        | 'itemIndex'
-        | 'item'
-        | 'onOptionSelect'
-        | 'theme'
-    >;
-
-export type DropdownOptionItemPropsType = Indexed<{
-    isSelected?: boolean;
-    item: OptionObjectType;
-    itemIndex: ScalarType;
-    onOptionSelect?: (item: OptionObjectType) => void;
-}> &
-    Pick<
-        DropdownEffectivePropsType,
-        'className' | 'isOptionListShown' | 'onClick' | 'theme' | 'multiple'
-    > &
-    HTMLAttributes<HTMLElement>;
 
 export type ExpansionIndicatorContainerPropsType = Indexed<{}>;
 

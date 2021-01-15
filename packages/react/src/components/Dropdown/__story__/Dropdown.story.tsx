@@ -64,6 +64,7 @@ const foodOptionsShort = [
 export const MinimumConfiguration = () => {
     const [selectedOption, setSelectedOption] = useState();
     const handleSelect = (option: any) => {
+        console.log('story handleSelect', { option });
         setSelectedOption(option);
     };
 
@@ -136,32 +137,11 @@ export const Inline = () => {
             <br />
             <br />
             <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
             <Dropdown
                 options={foodOptions}
                 label="Dish type A"
                 marginRight={2}
+                width="sm"
             />
             <Dropdown options={foodOptions} label="Dish type B" />
         </>
@@ -270,7 +250,7 @@ export const ErrorAndDisabledStatePropagation = () => {
     );
     const [isDisabled, setIsDisabled] = useState(true);
     const handleSelect = (option: any) => setSelectedOption(option);
-    const handleonSelect = (option: any) => setSelectedOptionLast(option);
+    const handleOnSelect = (option: any) => setSelectedOptionLast(option);
     return (
         <>
             <p>
@@ -309,7 +289,7 @@ export const ErrorAndDisabledStatePropagation = () => {
                             isDisabled ? 'Disabled' : 'Enabled'
                         } with pre-selected`}
                         options={options}
-                        onSelect={handleonSelect}
+                        onSelect={handleOnSelect}
                         defaultValue={initialSelectionIndex}
                     />
                     <Typography paragraph>
@@ -527,7 +507,7 @@ export const FormWithErrors = () => {
                     autoComplete="off"
                     options={options}
                 />
-                <FormFieldMessage>asdfasdfdsdsafsd</FormFieldMessage>
+                <FormFieldMessage>Place custom message here</FormFieldMessage>
             </FormField>
             <FormField autoMargin>
                 <TextInput label="Blacklist - Email" wide multiline />

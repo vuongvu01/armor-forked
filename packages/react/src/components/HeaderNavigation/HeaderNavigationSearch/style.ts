@@ -4,7 +4,7 @@ import { HeaderNavigationSearchRootPropsType } from './type';
 import { Search } from '../../Search';
 import { HeaderNavigationItem } from '../HeaderNavigationItem';
 import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
-import { color } from '../../../system/mixins';
+import { color, spacing } from '../../../system/mixins';
 
 const packItemSearchStyle = ({
     separator,
@@ -33,6 +33,8 @@ export const NavigationItemSearch = styled(HeaderNavigationItem)<
     height: 48px;
     border-right-width: 1px;
     border-right-style: solid;
+    padding-right: ${spacing(4)};
+    padding-left: ${spacing(4)};
 
     ${packItemSearchStyle}
     ${getComponentOverride('HeaderNavigationSearch')};

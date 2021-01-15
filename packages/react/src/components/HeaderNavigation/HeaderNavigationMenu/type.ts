@@ -14,13 +14,19 @@ export type ClassBasedOnComponentType = {
 type HeaderNavigationMenuEffectivePropsType = Indexed<{
     headerTitle?: ReactNode;
     headerContent?: ReactNode;
+    /**
+     * @deprecated
+     * Use defaultExpanded instead
+     */
     isMenuExpanded?: boolean;
+    defaultExpanded?: boolean;
 }> &
     HTMLAttributes<HTMLElement> &
     MarginAttributesType;
 
 export type UseHeaderNavigationMenuPropsType = Indexed<{
     internalRef?: Ref<unknown>;
+
     isExpanded?: boolean;
     setIsExpanded?: (isExpanded: boolean) => void;
 }>;

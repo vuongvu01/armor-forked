@@ -93,7 +93,7 @@ export const HeaderNavigationMenuContentLogistics: FunctionComponent<HeaderNavig
     return (
         <HeaderNavigationMenuContent {...restProps}>
             <HeaderNavigationMenuContentHeader
-                title="Logistics"
+                label="Logistics"
                 image={<Drawing />}
             />
             <HeaderNavigationMenuContentBody

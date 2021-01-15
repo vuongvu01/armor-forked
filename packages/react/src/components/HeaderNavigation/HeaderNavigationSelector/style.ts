@@ -1,11 +1,14 @@
 import styled, { css } from 'styled-components';
 import { HeaderNavigationSelectorRootPropsType } from './type';
 import { HeaderNavigationItem } from '../HeaderNavigationItem';
-import { Dropdown } from '../../Dropdown';
-import { color, spacing } from '../../../system/mixins';
+import { color, spacing, typography } from '../../../system/mixins';
 import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
+import { Stack, StackItem } from '../../Stack';
+import { PackItem } from '../../Pack';
+import { DropdownOptionList } from '../../DropdownOptionList';
+import { ExpansionIndicator } from '../../ExpansionIndicator';
 
-export const HeaderNavigationSelectorRoot = styled.div<
+export const HeaderNavigationSelectorWrapper = styled(Stack)<
     HeaderNavigationSelectorRootPropsType
 >``;
 
@@ -26,53 +29,72 @@ const itemSelectorStyle = ({
     return result;
 };
 
-export const NavigationItemSelector = styled(HeaderNavigationItem)<
+export const SelectorDropdownOptionListContainer = styled.div<
+    HeaderNavigationSelectorRootPropsType
+>`
+    position: relative;
+`;
+export const SelectorDropdownOptionListWrapper = styled.div<
+    HeaderNavigationSelectorRootPropsType
+>`
+    position: absolute;
+    right: 0px;
+    top: ${spacing(2)};
+`;
+
+export const SelectorDropdownOptionList = styled(DropdownOptionList)<
+    HeaderNavigationSelectorRootPropsType
+>`
+    width: fit-content;
+    position: relative;
+
+    .HeaderNavigationSelector-OptionList {
+        width: 100%;
+    }
+`;
+
+// NOTE: `:focus:not(:focus-visible)` allows for outline to appear when navigated via Tab, and omits it on mouse click
+export const HeaderNavigationSelectorRoot = styled(HeaderNavigationItem)<
     HeaderNavigationSelectorRootPropsType
 >`
     padding-top: 0;
+    padding-right: ${spacing(4)};
     padding-bottom: 0;
+    padding-left: ${spacing(4)};
     height: ${spacing(12)};
     border-right-width: 1px;
     border-right-style: solid;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    :focus:not(:focus-visible) {
+        outline: 0;
+    }
 
     ${itemSelectorStyle}
     ${getComponentOverride('HeaderNavigationSelector')};
 `;
 
-export const SelectorDropdown = styled(Dropdown)<
+export const SelectedOptions = styled(StackItem)<
+    HeaderNavigationSelectorRootPropsType
+>``;
+
+export const SelectorLabel = styled(PackItem)<
     HeaderNavigationSelectorRootPropsType
 >`
-    .Dropdown-ExpansionIndicatorContainer {
-        background-color: ${color('neutral.02')};
-    }
-    .ExpansionIndicator-Icon {
-        border-color: ${color('neutral.05')};
-    }
-    .TextInput-Input {
-        cursor: pointer;
-        caret-color: ${color('neutral.00')};
-        background-color: ${color('neutral.02')};
-        text-align: right;
-        padding-right: 0;
-        &:disabled {
-            color: ${color('neutral.04')};
-        }
-        &::placeholder {
-            color: ${color('neutral.06')};
-        }
-    }
-    .Dropdown-TextInput {
-        border-style: none;
-        height: ${spacing(10)};
-        cursor: pointer;
-        background-color: ${color('neutral.02')};
-    }
-    .Dropdown-Container {
-        padding-top: ${spacing(1)};
-    }
-    .Dropdown-OptionList {
-        top: ${spacing(2)};
-    }
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    ${typography('paragraphMedium')};
+`;
 
-    ${getComponentOverride('HeaderNavigationSelectorDropdown')};
+export const SelectorExpansionIndicator = styled(ExpansionIndicator)<
+    HeaderNavigationSelectorRootPropsType
+>`
+    .ExpansionIndicator-Icon {
+        border-right-color: ${color('neutral.06')};
+        border-bottom-color: ${color('neutral.06')};
+    }
 `;

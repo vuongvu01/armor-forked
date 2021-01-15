@@ -2,9 +2,9 @@ import { useMemo } from 'react';
 import {
     DropdownInternalOptionType,
     OptionFormatType,
-    OptionObjectType,
     OptionType,
-} from '../type';
+} from '../../components/Dropdown/type';
+import { OptionObjectType } from '../../components/DropdownOptionList/type';
 
 export const useOptions = (
     options?: OptionType,

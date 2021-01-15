@@ -200,7 +200,7 @@ describe('<PageNavigation />', () => {
             />,
         );
 
-        const options = container.querySelectorAll('.Dropdown-OptionItem');
+        const options = container.querySelectorAll('.DropdownOptionList-Item');
         expect(options.length).toEqual(2);
 
         fireEvent.click(options[1]);

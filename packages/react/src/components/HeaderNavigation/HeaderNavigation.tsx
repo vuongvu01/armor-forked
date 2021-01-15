@@ -24,7 +24,12 @@ export const HeaderNavigation: FunctionComponent<HeaderNavigationPropsType> = fo
     function HeaderNavigation(
         {
             className,
+            /**
+             * @deprecated
+             * Use defaultExpanded instead
+             */
             isMenuExpanded,
+            defaultExpanded,
             navigationMenuTitle,
             navigationMenuContent,
             navigationAction,
@@ -74,6 +79,7 @@ export const HeaderNavigation: FunctionComponent<HeaderNavigationPropsType> = fo
                                 headerTitle={navigationMenuTitle}
                                 headerContent={navigationMenuContent}
                                 isMenuExpanded={isMenuExpanded}
+                                defaultExpanded={defaultExpanded}
                             />
                             {title && (
                                 <HeaderNavigationItem
@@ -125,7 +131,12 @@ HeaderNavigation.defaultProps = {
 HeaderNavigation.propTypes = {
     title: PropTypes.node,
     search: PropTypes.node,
+    /**
+     * @deprecated
+     * Use defaultExpanded instead
+     */
     isMenuExpanded: PropTypes.bool,
+    defaultExpanded: PropTypes.bool,
     justifyContent: PropTypes.oneOf([
         'flex-start',
         'flex-end',

@@ -1,9 +1,13 @@
 import React, { forwardRef, FunctionComponent } from 'react';
-import PropTypes from 'prop-types';
 import {
     HeaderNavigationSelectorRoot,
-    NavigationItemSelector,
-    SelectorDropdown,
+    HeaderNavigationSelectorWrapper,
+    SelectedOptions,
+    SelectorDropdownOptionList,
+    SelectorDropdownOptionListContainer,
+    SelectorDropdownOptionListWrapper,
+    SelectorExpansionIndicator,
+    SelectorLabel,
 } from './style';
 import { HeaderNavigationSelectorPropsType } from './type';
 import {
@@ -12,82 +16,84 @@ import {
 } from './constants';
 import useHeaderNavigationSelectorClassName from './utils/useHeaderNavigationSelectorClassName';
 import { useTheme } from '../../../styling';
+import { Pack, PackItem } from '../../Pack';
+import { useHeaderNavigationSelector } from './utils/useHeaderNavigationSelector';
 
 export const HeaderNavigationSelector: FunctionComponent<HeaderNavigationSelectorPropsType> = forwardRef(
-    function HeaderNavigationSelector(
-        {
-            className,
-            navigationSelectorParams,
-            onOptionSelect,
-            separator,
-            ...restProps
-        },
-        ref,
-    ) {
-        const theme = useTheme();
+    function HeaderNavigationSelector({ className, ...restProps }, ref) {
+        const theme = useTheme().armor;
 
         const classOverride = useHeaderNavigationSelectorClassName(
             HEADER_NAVIGATION_SELECTOR_CLASS_PREFIX,
             className,
         );
 
-        // todo: use spreads here where possible
-        return navigationSelectorParams ? (
-            <NavigationItemSelector
+        const {
+            rootProps,
+            selectorProps,
+            optionListProps,
+            expansionIndicatorProps,
+            containerRef,
+            label,
+            selectedValueToDisplay,
+        } = useHeaderNavigationSelector(restProps, ref);
+
+        return (
+            <HeaderNavigationSelectorRoot
+                {...selectorProps}
                 theme={theme}
-                className={classOverride.ItemSelector}
+                className={classOverride.Root}
                 flexGrow={1}
-                separator={separator}
             >
-                <HeaderNavigationSelectorRoot
+                <HeaderNavigationSelectorWrapper
                     data-testid={headerNavigationSelectorRoot}
-                    {...restProps}
+                    {...rootProps}
                     theme={theme}
-                    className={classOverride.NavigationSelectorRoot}
-                    ref={ref}
+                    className={classOverride.Wrapper}
+                    ref={containerRef}
                 >
-                    {
-                        <SelectorDropdown
-                            options={navigationSelectorParams.options}
-                            onSelect={onOptionSelect}
-                            placeholder={navigationSelectorParams.label}
-                            multiple={navigationSelectorParams.isMultiselect}
-                            defaultValue={navigationSelectorParams.defaultValue}
-                            value={navigationSelectorParams.value}
-                            isListExpanded={navigationSelectorParams.isExpanded}
-                            isActionSeparatorDisplayed={false}
+                    <SelectedOptions
+                        className={classOverride.SelectedOptionsContainer}
+                    >
+                        <Pack className={classOverride.SelectedOptions}>
+                            <SelectorLabel
+                                className={classOverride.SelectedOptionsValues}
+                            >
+                                {selectedValueToDisplay || label}
+                            </SelectorLabel>
+                            <PackItem
+                                className={
+                                    classOverride.SelectedOptionsExpansionIndicatorContainer
+                                }
+                            >
+                                <SelectorExpansionIndicator
+                                    {...expansionIndicatorProps}
+                                    marginLeft={4}
+                                    theme={theme}
+                                    className={
+                                        classOverride.SelectedOptionsExpansionIndicator
+                                    }
+                                />
+                            </PackItem>
+                        </Pack>
+                    </SelectedOptions>
+                    <SelectorDropdownOptionListContainer
+                        className={classOverride.OptionListContainer}
+                        theme={theme}
+                    >
+                        <SelectorDropdownOptionListWrapper
+                            className={classOverride.OptionListWrapper}
                             theme={theme}
-                            className={classOverride.SelectorDropdown}
-                        />
-                    }
-                </HeaderNavigationSelectorRoot>
-            </NavigationItemSelector>
-        ) : null;
+                        >
+                            <SelectorDropdownOptionList
+                                {...optionListProps}
+                                className={classOverride.OptionList}
+                                theme={theme}
+                            />
+                        </SelectorDropdownOptionListWrapper>
+                    </SelectorDropdownOptionListContainer>
+                </HeaderNavigationSelectorWrapper>
+            </HeaderNavigationSelectorRoot>
+        );
     },
 );
-
-HeaderNavigationSelector.defaultProps = {
-    navigationSelectorParams: {
-        label: 'Country',
-        isMultiselect: false,
-    },
-    separator: true,
-};
-
-HeaderNavigationSelector.propTypes = {
-    onOptionSelect: PropTypes.func,
-    separator: PropTypes.bool,
-    // TODO (nmelnikov 2020-09-24): tighten
-    // navigationSelectorParams: PropTypes.shape({
-    //     label: PropTypes.string,
-    //     isMultiselect: PropTypes.bool,
-    //     isExpanded: PropTypes.bool,
-    //     defaultValue: PropTypes.oneOfType([
-    //             PropTypes.arrayOf(PropTypes.number),
-    //             PropTypes.number,
-    //         ]),
-    //     onSelect: PropTypes.func,
-    //     onChange: PropTypes.func,
-    //     options: PropTypes.array,
-    // }),
-};

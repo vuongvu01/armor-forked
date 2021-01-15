@@ -1,9 +1,14 @@
 import { HTMLAttributes, ReactNode } from 'react';
 
 import { MarginAttributesType } from '../../system/attributes';
-import { Indexed, ScalarType } from '../../type';
+import { Indexed, ObjectLiteralType, ScalarType } from '../../type';
 import { ComponentElementStylePropsType } from '../type';
 import { JustifyContentType } from '../Flex/type';
+import {
+    DropdownSelectedOptionType,
+    DropdownValueType,
+    OptionFormatType,
+} from '../Dropdown/type';
 
 export type ClassBasedOnComponentType = {
     className?: string;
@@ -15,14 +20,27 @@ export type ClassBasedOnComponentType = {
 export type SuggestionObjectType = {
     label: string;
     value: ScalarType;
-    [key: string]: any;
+} & ObjectLiteralType;
+
+export type HeaderNavigationSelectOnSelectType = (
+    selectedOption: DropdownSelectedOptionType,
+    itemIndex?: number,
+) => void;
+
+export type HeaderNavigationSelectOnChangeEventType = {
+    target: {
+        value?: DropdownValueType;
+        name?: string;
+    };
 };
 
 export type NavigationSelectorParamsType = {
     label?: string;
     isMultiselect?: boolean;
     isExpanded?: boolean;
+    disabled?: boolean;
     defaultValue?: number | number[];
+    formatOption?: OptionFormatType;
     value?: number | number[];
     options?:
         | string[]
@@ -31,7 +49,12 @@ export type NavigationSelectorParamsType = {
 
 type HeaderNavigationEffectivePropsType = Indexed<{
     title?: ReactNode;
+    /**
+     * @deprecated
+     * Use defaultExpanded instead
+     */
     isMenuExpanded?: boolean;
+    defaultExpanded?: boolean;
     navigationMenuTitle?: ReactNode;
     navigationMenuContent?: ReactNode;
     navigationAction?: ReactNode;

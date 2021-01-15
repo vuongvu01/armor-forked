@@ -11,8 +11,8 @@ import userEvent from '@testing-library/user-event';
 import renderer from 'react-test-renderer';
 
 import { Dropdown } from '../Dropdown';
-import { dropdownOptionItem } from '../constants';
 import { textInputInput, textInputRoot } from '../../TextInput/constants';
+import { dropdownOptionItem } from '../../DropdownOptionList/constants';
 
 describe('<Dropdown />', () => {
     afterEach(async () => {
@@ -217,7 +217,13 @@ describe('<Dropdown />', () => {
         const marginValue = 4;
 
         const result = renderer
-            .create(<Dropdown {...{ [marginAttribute]: marginValue }} />)
+            .create(
+                <Dropdown
+                    {...{
+                        [marginAttribute]: marginValue,
+                    }}
+                />,
+            )
             .toJSON();
 
         // @ts-ignore

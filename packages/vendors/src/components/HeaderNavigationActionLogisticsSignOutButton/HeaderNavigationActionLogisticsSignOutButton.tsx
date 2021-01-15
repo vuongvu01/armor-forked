@@ -11,7 +11,7 @@ export const HeaderNavigationActionLogisticsSignOutButton: FunctionComponent<Hea
     ...restProps
 }) => (
     <HeaderNavigationActionItem {...restProps} onClick={setURL}>
-        <LogoutIcon />
+        <LogoutIcon height="24px" viewBox="0 4 24 24" />
     </HeaderNavigationActionItem>
 );
 

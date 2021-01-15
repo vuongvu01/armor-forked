@@ -28,7 +28,6 @@ export const HeaderNavigationMenu: FunctionComponent<HeaderNavigationMenuPropsTy
             className,
             headerTitle = <DHLogoImage />,
             headerContent,
-            isMenuExpanded,
             tabIndex,
             ...restProps
         },
@@ -48,10 +47,7 @@ export const HeaderNavigationMenu: FunctionComponent<HeaderNavigationMenuPropsTy
             internalRef,
             isExpanded,
             setIsExpanded,
-        } = useHeaderNavigationMenu({
-            ref,
-            isMenuExpanded,
-        });
+        } = useHeaderNavigationMenu(restProps, ref);
 
         const contextValue = { isExpanded, setIsExpanded };
 
@@ -110,12 +106,17 @@ export const HeaderNavigationMenu: FunctionComponent<HeaderNavigationMenuPropsTy
 
 HeaderNavigationMenu.defaultProps = {
     tabIndex: 0,
-    isMenuExpanded: false,
+    defaultExpanded: false,
 };
 
 HeaderNavigationMenu.propTypes = {
     headerTitle: PropTypes.node,
     headerContent: PropTypes.node,
+    /**
+     * @deprecated
+     * Use defaultExpanded instead
+     */
     isMenuExpanded: PropTypes.bool,
+    defaultExpanded: PropTypes.bool,
     tabIndex: PropTypes.number,
 };

@@ -4,13 +4,23 @@ import {
     UseHeaderNavigationMenuPropsType,
 } from '../type';
 import { useDetectEscapeKeyPressed, useInternalRef } from '../../../../utils';
+import { ReferenceType } from '../../../../type';
 
-export const useHeaderNavigationMenu = ({
-    ref,
-    isMenuExpanded,
-}: HeaderNavigationMenuPropsType): UseHeaderNavigationMenuPropsType => {
+export const useHeaderNavigationMenu = (
+    {
+        /**
+         * @deprecated
+         * Use defaultExpanded instead
+         */
+        isMenuExpanded,
+        defaultExpanded,
+    }: HeaderNavigationMenuPropsType,
+    ref: ReferenceType,
+): UseHeaderNavigationMenuPropsType => {
     const internalRef = useRef<HTMLDivElement>(null);
-    const [isExpanded, setIsExpanded] = useState(isMenuExpanded);
+    const [isExpanded, setIsExpanded] = useState(
+        defaultExpanded || isMenuExpanded,
+    );
 
     useInternalRef(ref, internalRef);
 
@@ -32,7 +42,7 @@ export const useHeaderNavigationMenu = ({
             // eslint-disable-next-line no-unused-expressions
             internalRef?.current?.removeEventListener('click', handleMenuClick);
         };
-    }, [internalRef, isExpanded]);
+    }, [internalRef, isExpanded, handleMenuClick]);
 
     useDetectEscapeKeyPressed(internalRef, setIsExpanded, isExpanded);
 
