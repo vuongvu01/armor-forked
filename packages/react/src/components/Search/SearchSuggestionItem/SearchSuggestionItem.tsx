@@ -1,24 +1,36 @@
 import React, { FunctionComponent } from 'react';
 
-import {
-    SearchLabelTypography,
-    SearchSuggestionsItemAction,
-    SearchSuggestionsItemIcon,
-    SearchSuggestionsItemLabel,
-} from '../style';
 import { useSearchSuggestionItemClassName } from './utils';
 import { SearchSuggestionItemPropsType } from './type';
 import { highlightMatch } from '../utils';
-import { SearchSuggestionItemRoot } from './style';
+import {
+    SearchSuggestionItemLabelTypography,
+    SearchSuggestionItemContainer,
+    SearchSuggestionItemRoot,
+    SearchSuggestionsItemAction,
+    SearchSuggestionsItemIcon,
+    SearchSuggestionsItemLabel,
+} from './style';
 import { SEARCH_CLASS_PREFIX } from '../constants';
 
 export const SearchSuggestionItem: FunctionComponent<SearchSuggestionItemPropsType> = ({
     className,
-    option: { label },
+    option,
+    optionIndex,
     suggestionIndex,
     handleSuggestionClick,
+    /**
+     * @deprecated
+     * Use renderItemAdditionalInfo
+     */
     additionalInfo,
+    renderItemAdditionalInfo,
     icon,
+    /**
+     * @deprecated
+     * Use renderItemIcon
+     */
+    renderItemIcon,
     cursor,
     searchQuery,
     theme,
@@ -40,41 +52,52 @@ export const SearchSuggestionItem: FunctionComponent<SearchSuggestionItemPropsTy
     return (
         <SearchSuggestionItemRoot
             className={getSuggestionItemClass(suggestionIndex)}
-            isHighlighted={cursor === suggestionIndex}
-            key={label}
             theme={theme}
         >
-            {!!icon && (
-                <SearchSuggestionsItemIcon
-                    className={classOverride.SuggestionsItemIcon}
-                    icon={icon}
-                    theme={theme}
-                >
-                    {icon}
-                </SearchSuggestionsItemIcon>
-            )}
-            <SearchSuggestionsItemLabel
-                className={classOverride.SuggestionsItemLabel}
-                onClick={handleOnClick(suggestionIndex)}
+            <SearchSuggestionItemContainer
+                className={classOverride.SuggestionItemContainer}
+                isHighlighted={cursor === suggestionIndex}
                 theme={theme}
             >
-                <SearchLabelTypography
-                    className={classOverride.LabelTypography}
-                    paragraph
-                    medium
+                {!!(icon || renderItemIcon) && (
+                    <SearchSuggestionsItemIcon
+                        className={classOverride.SuggestionsItemIcon}
+                        icon={icon}
+                        renderItemIcon={renderItemIcon}
+                        theme={theme}
+                    >
+                        {(renderItemIcon &&
+                            renderItemIcon(option, optionIndex)) ||
+                            icon}
+                    </SearchSuggestionsItemIcon>
+                )}
+                <SearchSuggestionsItemLabel
+                    renderItemAdditionalInfo={renderItemAdditionalInfo}
+                    className={classOverride.SuggestionsItemLabel}
+                    onClick={handleOnClick(suggestionIndex)}
                     theme={theme}
                 >
-                    {highlightMatch(label, searchQuery)}
-                </SearchLabelTypography>
-            </SearchSuggestionsItemLabel>
-            <SearchSuggestionsItemAction
-                paragraph
-                medium
-                className={classOverride.SuggestionsItemAction}
-                theme={theme}
-            >
-                {additionalInfo}
-            </SearchSuggestionsItemAction>
+                    <SearchSuggestionItemLabelTypography
+                        className={classOverride.LabelTypography}
+                        paragraph
+                        medium
+                        theme={theme}
+                    >
+                        {highlightMatch(option.label, searchQuery)}
+                    </SearchSuggestionItemLabelTypography>
+                </SearchSuggestionsItemLabel>
+                {(renderItemAdditionalInfo || additionalInfo) && (
+                    <SearchSuggestionsItemAction
+                        renderItemAdditionalInfo={renderItemAdditionalInfo}
+                        className={classOverride.SuggestionsItemAction}
+                        theme={theme}
+                    >
+                        {(renderItemAdditionalInfo &&
+                            renderItemAdditionalInfo(option)) ||
+                            additionalInfo}
+                    </SearchSuggestionsItemAction>
+                )}
+            </SearchSuggestionItemContainer>
         </SearchSuggestionItemRoot>
     );
 };

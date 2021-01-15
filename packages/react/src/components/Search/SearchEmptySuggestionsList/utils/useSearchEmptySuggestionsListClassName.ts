@@ -35,8 +35,8 @@ export const useSearchEmptySuggestionsListClassName = (
                 component: 'ItemAction',
                 classPrefix,
             }),
-            LabelTypography: getClassNameByComponent({
-                component: 'LabelTypography',
+            ItemLabelTypography: getClassNameByComponent({
+                component: 'ItemLabelTypography',
                 classPrefix,
             }),
         };

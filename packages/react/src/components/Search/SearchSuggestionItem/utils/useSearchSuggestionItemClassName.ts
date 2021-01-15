@@ -23,6 +23,10 @@ export const useSearchSuggestionItemClassName = (
                 }),
                 className,
             ),
+            SuggestionItemContainer: getClassNameByComponent({
+                component: 'SuggestionItemContainer',
+                classPrefix,
+            }),
             SuggestionsItemIcon: getClassNameByComponent({
                 component: 'SuggestionsItemIcon',
                 classPrefix,

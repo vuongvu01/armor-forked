@@ -1,11 +1,11 @@
 import React, { FunctionComponent } from 'react';
 
 import {
-    SearchLabelTypography,
+    SearchSuggestionItemLabelTypography,
     SearchSuggestionsItemAction,
     SearchSuggestionsItemIcon,
     SearchSuggestionsItemLabel,
-} from '../style';
+} from '../SearchSuggestionItem/style';
 import { useSearchEmptySuggestionsListClassName } from './utils';
 import { SearchEmptySuggestionsListPropsType } from './type';
 import { SEARCH_EMPTY_SUGGESTIONS_LIST_CLASS_PREFIX } from './constants';
@@ -35,14 +35,14 @@ export const SearchEmptySuggestionsList: FunctionComponent<SearchEmptySuggestion
                 className={classOverride.ItemLabel}
                 theme={theme}
             >
-                <SearchLabelTypography
-                    className={classOverride.LabelTypography}
+                <SearchSuggestionItemLabelTypography
+                    className={classOverride.ItemLabelTypography}
                     paragraph
                     medium
                     theme={theme}
                 >
                     No results found
-                </SearchLabelTypography>
+                </SearchSuggestionItemLabelTypography>
             </SearchSuggestionsItemLabel>
             <SearchSuggestionsItemAction
                 className={classOverride.ItemAction}

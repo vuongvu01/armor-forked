@@ -8,6 +8,7 @@ import { SuggestionObjectType } from '../type';
 import { FormField, FormFieldMessage } from '../../FormField';
 import { TextInput } from '../../TextInput';
 import { withWrapper } from '../../../helpers/Wrapper';
+import { CogIcon } from '../../../icons';
 
 export default {
     title: 'Components/Search',
@@ -17,33 +18,81 @@ export default {
 };
 
 const foodOptions = [
-    { value: 0, label: 'Biryani' },
-    { value: 1, label: 'Tacos' },
+    {
+        value: 0,
+        label: 'Biryani',
+        spiciness: 'Super hot and spicy option with extra curry',
+    },
+    { value: 1, label: 'Tacos', spiciness: 'Super hot and spicy option' },
     {
         value: 2,
         label:
             'This is a very long label that needs to be truncated with an ellipsis',
+        spiciness: 'Super hot and spicy option with extra action label',
     },
-    { value: 3, label: 'Risotto' },
-    { value: 4, label: 'Pizza' },
-    { value: 5, label: 'Enchiladas' },
-    { value: 6, label: 'Börek' },
-    { value: 7, label: 'Quiche' },
-    { value: 8, label: 'Köfte' },
-    { value: 9, label: 'Pad Thai' },
-    { value: 10, label: 'Churrasco' },
-    { value: 11, label: 'Baozi' },
-    { value: 12, label: 'Ceviche' },
-    { value: 13, label: 'Mac & Cheese' },
-    { value: 14, label: 'Paella' },
-    { value: 15, label: 'Dim sum' },
-    { value: 16, label: 'Hamburger' },
-    { value: 17, label: 'Ramen' },
-    { value: 18, label: 'Sushi' },
-    { value: 19, label: 'Burrito' },
+    { value: 3, label: 'Risotto', spiciness: 'Super hot and spicy option' },
+    { value: 4, label: 'Pizza', spiciness: 'Spicy' },
+    { value: 5, label: 'Enchiladas', spiciness: 'Mild' },
+    { value: 6, label: 'Börek', spiciness: 'Spicy' },
+    { value: 7, label: 'Quiche', spiciness: 'Mild' },
+    { value: 8, label: 'Köfte', spiciness: 'Spicy' },
+    { value: 9, label: 'Pad Thai', spiciness: 'Spicy' },
+    { value: 10, label: 'Churrasco', spiciness: 'Mild' },
+    { value: 11, label: 'Baozi', spiciness: 'Mild' },
+    { value: 12, label: 'Ceviche', spiciness: 'Mild' },
+    { value: 13, label: 'Mac & Cheese', spiciness: 'Mild' },
+    { value: 14, label: 'Paella', spiciness: 'Mild' },
+    { value: 15, label: 'Dim sum', spiciness: 'Mild' },
+    { value: 16, label: 'Hamburger', spiciness: 'Mild' },
+    { value: 17, label: 'Ramen', spiciness: 'Hot' },
+    { value: 18, label: 'Sushi', spiciness: 'Mild' },
+    { value: 19, label: 'Burrito', spiciness: 'Mild' },
 ];
 
 export const DefaultSearch = () => {
+    const [searchQuery, setSearchQuery] = useState('');
+    const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
+        const query = event?.target?.value || '';
+        setSearchQuery(query);
+
+        // eslint-disable-next-line no-console
+        console.log({ query });
+    };
+
+    const handleOnSelect = (option: SuggestionObjectType) => {
+        setSearchQuery(option.label);
+
+        // eslint-disable-next-line no-console
+        console.log({ option });
+    };
+
+    return (
+        <>
+            <Search
+                renderItemAdditionalInfo={(item: SuggestionObjectType) =>
+                    item.spiciness
+                }
+                // @ts-ignore
+                onChange={handleOnChange}
+                onItemSelect={handleOnSelect}
+                options={searchQuery && searchQuery.length ? foodOptions : []}
+                renderItemIcon={(
+                    item: SuggestionObjectType,
+                    optionIndex?: number,
+                ) =>
+                    optionIndex && optionIndex % 2 === 1 ? (
+                        <InfoIcon width="12px" height="12px" />
+                    ) : (
+                        <CogIcon width="12px" height="12px" />
+                    )
+                }
+            />
+            <p>Search query: {searchQuery}</p>
+        </>
+    );
+};
+
+export const DeprecatedAdditionalInfoAndIcon = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
         const query = event?.target?.value || '';

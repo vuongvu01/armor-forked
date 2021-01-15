@@ -1,4 +1,9 @@
-import React, { ChangeEvent, HTMLAttributes, MutableRefObject } from 'react';
+import React, {
+    ChangeEvent,
+    HTMLAttributes,
+    MutableRefObject,
+    ReactElement,
+} from 'react';
 
 import {
     MarginAttributesType,
@@ -29,12 +34,28 @@ export type ClassBasedOnComponentType = {
     disabled?: boolean;
 };
 
-type SearchEffectivePropsType = Indexed<{
+export type SearchEffectivePropsType = Indexed<{
+    /**
+     * @deprecated
+     * Use renderItemAdditionalInfo
+     */
     additionalInfo?: null | React.ReactElement;
+    renderItemAdditionalInfo?: (
+        option: SuggestionObjectType,
+        optionIndex?: number,
+    ) => ReactElement;
     defaultQuery?: SearchQueryType;
     disabled?: boolean;
     error?: boolean;
+    /**
+     * @deprecated
+     * Use renderItemIcon
+     */
     icon?: null | React.ReactElement;
+    renderItemIcon?: (
+        option: SuggestionObjectType,
+        optionIndex?: number,
+    ) => ReactElement;
     disableClearAction?: boolean;
     onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
     onItemSelect?: (option: SuggestionObjectType) => void;
@@ -75,9 +96,6 @@ export type SearchSuggestionsContainerPropsType = SearchEffectivePropsType &
 export type SearchSuggestionsListPropsType = SearchEffectivePropsType &
     ComponentElementStylePropsType;
 
-export type SearchSuggestionsItemPropsType = SearchEffectivePropsType &
-    ComponentElementStylePropsType;
-
 export type SearchSuggestionsItemIconPropsType = SearchEffectivePropsType &
     ComponentElementStylePropsType;
 
@@ -85,7 +103,4 @@ export type SearchSuggestionsItemLabelPropsType = SearchEffectivePropsType &
     ComponentElementStylePropsType;
 
 export type SearchSuggestionsItemActionPropsType = SearchEffectivePropsType &
-    ComponentElementStylePropsType;
-
-export type SearchLabelTypographyPropsType = SearchEffectivePropsType &
     ComponentElementStylePropsType;

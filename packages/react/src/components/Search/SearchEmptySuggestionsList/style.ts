@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import { SearchEmptySuggestionsListPropsType } from './type';
-import { SearchSuggestionsItem } from '../style';
 import { colorGrey00 } from '../../../tokens';
 import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
+import { SearchSuggestionItemContainer } from '../SearchSuggestionItem/style';
 
-export const SearchEmptySuggestionsListRoot = styled(SearchSuggestionsItem)<
-    SearchEmptySuggestionsListPropsType
->`
+export const SearchEmptySuggestionsListRoot = styled(
+    SearchSuggestionItemContainer,
+)<SearchEmptySuggestionsListPropsType>`
     cursor: default;
 
     &:hover {

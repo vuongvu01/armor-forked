@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { ChangeEvent, useState } from 'react';
 
 import { Search } from '../../../src/components/Search';
 import { InfoIcon } from '@deliveryhero/armor-icons';
+import { SuggestionObjectType } from '../../../src/components/Search/type';
+import { CogIcon } from '../../../src/icons';
 
 export default {
     title: 'Search',
@@ -123,4 +125,157 @@ const characters = [
 
 export const Groups = () => {
     return <Search options={characters} groups={faction} defaultQuery="Jim" />;
+};
+
+export const customSuggestionListHeight = () => {
+    const foodOptionsExtended = [
+        {
+            value: 0,
+            label: 'Biryani',
+            spiciness: 'Super hot and spicy option with extra curry',
+        },
+        { value: 1, label: 'Tacos', spiciness: 'Super hot and spicy option' },
+        {
+            value: 2,
+            label:
+                'This is a very long label that needs to be truncated with an ellipsis',
+            spiciness: 'Super hot and spicy option with extra action label',
+        },
+        { value: 3, label: 'Risotto', spiciness: 'Super hot and spicy option' },
+        { value: 4, label: 'Pizza', spiciness: 'Spicy' },
+        { value: 5, label: 'Enchiladas', spiciness: 'Mild' },
+        { value: 6, label: 'Börek', spiciness: 'Spicy' },
+        { value: 7, label: 'Quiche', spiciness: 'Mild' },
+        { value: 8, label: 'Köfte', spiciness: 'Spicy' },
+        { value: 9, label: 'Pad Thai', spiciness: 'Spicy' },
+        { value: 10, label: 'Churrasco', spiciness: 'Mild' },
+        { value: 11, label: 'Baozi', spiciness: 'Mild' },
+        { value: 12, label: 'Ceviche', spiciness: 'Mild' },
+        { value: 13, label: 'Mac & Cheese', spiciness: 'Mild' },
+        { value: 14, label: 'Paella', spiciness: 'Mild' },
+        { value: 15, label: 'Dim sum', spiciness: 'Mild' },
+        { value: 16, label: 'Hamburger', spiciness: 'Mild' },
+        { value: 17, label: 'Ramen', spiciness: 'Hot' },
+        { value: 18, label: 'Sushi', spiciness: 'Mild' },
+        { value: 19, label: 'Burrito', spiciness: 'Mild' },
+    ];
+
+    const [searchQuery, setSearchQuery] = useState('');
+    const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
+        const query = event?.target?.value || '';
+        setSearchQuery(query);
+
+        // eslint-disable-next-line no-console
+        console.log({ query });
+    };
+
+    const handleOnSelect = (option: SuggestionObjectType) => {
+        setSearchQuery(option.label);
+
+        // eslint-disable-next-line no-console
+        console.log({ option });
+    };
+
+    return (
+        <>
+            <Search
+                width="500px"
+                renderItemAdditionalInfo={(item: SuggestionObjectType) =>
+                    item.spiciness
+                }
+                onChange={handleOnChange}
+                onItemSelect={handleOnSelect}
+                defaultQuery="Food"
+                options={foodOptionsExtended}
+                suggestionListHeight="30"
+                renderItemIcon={(
+                    item: SuggestionObjectType,
+                    optionIndex?: number,
+                ) =>
+                    optionIndex && optionIndex % 2 === 0 ? (
+                        <InfoIcon width="12px" height="12px" />
+                    ) : (
+                        <CogIcon width="12px" height="12px" />
+                    )
+                }
+            />
+            <p>Search query: {searchQuery}</p>
+        </>
+    );
+};
+
+export const DynamicItemIconAndInfo = () => {
+    const foodOptionsExtended = [
+        {
+            value: 0,
+            label: 'Biryani',
+            spiciness: 'Super hot and spicy option with extra curry',
+        },
+        { value: 1, label: 'Tacos', spiciness: 'Super hot and spicy option' },
+        {
+            value: 2,
+            label:
+                'This is a very long label that needs to be truncated with an ellipsis',
+            spiciness: 'Super hot and spicy option with extra action label',
+        },
+        { value: 3, label: 'Risotto', spiciness: 'Super hot and spicy option' },
+        { value: 4, label: 'Pizza', spiciness: 'Spicy' },
+        { value: 5, label: 'Enchiladas', spiciness: 'Mild' },
+        { value: 6, label: 'Börek', spiciness: 'Spicy' },
+        { value: 7, label: 'Quiche', spiciness: 'Mild' },
+        { value: 8, label: 'Köfte', spiciness: 'Spicy' },
+        { value: 9, label: 'Pad Thai', spiciness: 'Spicy' },
+        { value: 10, label: 'Churrasco', spiciness: 'Mild' },
+        { value: 11, label: 'Baozi', spiciness: 'Mild' },
+        { value: 12, label: 'Ceviche', spiciness: 'Mild' },
+        { value: 13, label: 'Mac & Cheese', spiciness: 'Mild' },
+        { value: 14, label: 'Paella', spiciness: 'Mild' },
+        { value: 15, label: 'Dim sum', spiciness: 'Mild' },
+        { value: 16, label: 'Hamburger', spiciness: 'Mild' },
+        { value: 17, label: 'Ramen', spiciness: 'Hot' },
+        { value: 18, label: 'Sushi', spiciness: 'Mild' },
+        { value: 19, label: 'Burrito', spiciness: 'Mild' },
+    ];
+
+    const [searchQuery, setSearchQuery] = useState('');
+    const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
+        const query = event?.target?.value || '';
+        setSearchQuery(query);
+
+        // eslint-disable-next-line no-console
+        console.log({ query });
+    };
+
+    const handleOnSelect = (option: SuggestionObjectType) => {
+        setSearchQuery(option.label);
+
+        // eslint-disable-next-line no-console
+        console.log({ option });
+    };
+
+    return (
+        <>
+            <Search
+                width="500px"
+                renderItemAdditionalInfo={(item: SuggestionObjectType) =>
+                    item.spiciness
+                }
+                onChange={handleOnChange}
+                onItemSelect={handleOnSelect}
+                defaultQuery="Birya"
+                options={foodOptionsExtended}
+                renderItemIcon={(
+                    item: SuggestionObjectType,
+                    optionIndex?: number,
+                ) =>
+                    optionIndex && optionIndex % 2 === 0 ? (
+                        <InfoIcon width="12px" height="12px" />
+                    ) : (
+                        <CogIcon width="12px" height="12px" />
+                    )
+                }
+            />
+            <p>Search query: {searchQuery}</p>
+        </>
+    );
 };

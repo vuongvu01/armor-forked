@@ -2,39 +2,36 @@ import React, {
     ChangeEvent,
     useCallback,
     useEffect,
+    useMemo,
     useRef,
     useState,
-    useMemo,
 } from 'react';
 
 import { initialCursor } from '../constants';
-import {
-    GroupObjectIndexType,
-    GroupObjectType,
-    SearchPropsType,
-    UseSearchBarType,
-} from '../type';
+import { GroupObjectIndexType, SearchPropsType } from '../type';
 import { useDetectClickOutsideComponent, useInternalRef } from '../../../utils';
-import { ObjectLiteralType, ReferenceType } from '../../../type';
+import { ReferenceType } from '../../../type';
 
 export const useSearchBar = (
     {
-        defaultQuery,
-        disabled,
-        disableClearAction,
-        isLoading,
-        placeholder,
-        icon,
+        defaultQuery = '',
+        disabled = false,
+        disableClearAction = false,
+        isLoading = false,
+        placeholder = 'Search',
+        icon = null,
+        renderItemIcon,
         error,
 
         onChange,
         onItemSelect,
         options,
         groups,
-        suggestionListHeight,
-        enableSuggestions,
+        suggestionListHeight = 100,
+        enableSuggestions = true,
 
         additionalInfo,
+        renderItemAdditionalInfo,
 
         ...restProps
     }: SearchPropsType,
@@ -259,11 +256,13 @@ export const useSearchBar = (
         suggestionListContainerProps: {},
         suggestionListProps: {
             additionalInfo,
+            renderItemAdditionalInfo,
             options,
             groups,
             groupIndex,
             handleSuggestionClick,
             icon,
+            renderItemIcon,
             cursor,
             searchQuery,
         },

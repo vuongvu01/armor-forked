@@ -1,7 +1,13 @@
-import React, { HTMLAttributes } from 'react';
+import { HTMLAttributes } from 'react';
 
-import { SearchQueryType, SuggestionObjectType } from '../type';
+import {
+    SearchEffectivePropsType,
+    SearchPropsType,
+    SuggestionObjectType,
+} from '../type';
 import { ThemeType } from '../../../styling';
+import { SearchSuggestionsListPropsType } from '../SearchSuggestionsList';
+import { ComponentElementStylePropsType } from '../../type';
 
 export type ClassBasedOnComponentType = {
     className?: string;
@@ -13,17 +19,24 @@ export type ClassBasedOnComponentType = {
 export type SearchSuggestionItemPropsType = {
     theme: ThemeType;
     suggestionIndex: number;
-    cursor?: number;
-    icon?: null | React.ReactElement;
     option: SuggestionObjectType;
-    searchQuery?: SearchQueryType;
-    handleSuggestionClick: (
-        event: React.MouseEvent<HTMLDivElement>,
-        suggestionIndex: number,
-    ) => void;
-    additionalInfo?: null | React.ReactElement;
-} & HTMLAttributes<HTMLElement>;
+    optionIndex?: number;
+} & Pick<
+    SearchPropsType,
+    'renderItemAdditionalInfo' | 'renderItemIcon' | 'additionalInfo'
+> &
+    Pick<
+        SearchSuggestionsListPropsType,
+        'searchQuery' | 'icon' | 'cursor' | 'handleSuggestionClick'
+    > &
+    HTMLAttributes<HTMLElement>;
 
 export type SearchSuggestionItemRootPropsType = {
     isHighlighted?: boolean;
 } & HTMLAttributes<HTMLElement>;
+
+export type SearchSuggestionsItemPropsType = SearchEffectivePropsType &
+    ComponentElementStylePropsType;
+
+export type SearchSuggestionItemLabelTypographyPropsType = SearchEffectivePropsType &
+    ComponentElementStylePropsType;

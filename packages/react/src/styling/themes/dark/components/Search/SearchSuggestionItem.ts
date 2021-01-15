@@ -1,9 +1,9 @@
 import { css } from 'styled-components';
 import {
-    colorBlue20,
     colorGrey01,
+    colorGrey05,
+    colorGrey10,
     colorGrey30,
-    colorGrey50,
     colorGrey60,
     colorGrey70,
 } from '../../../../../tokens';
@@ -16,28 +16,32 @@ export const getSearchSuggestionItemOverride = ({
     let result = css`
         background-color: ${colorGrey70};
 
+        .Search-SuggestionsItemIcon {
+            color: ${colorGrey10};
+        }
+
+        .Search-LabelTypography {
+            color: ${colorGrey10};
+        }
+
+        .Search-SuggestionsItemAction {
+            color: ${colorGrey30};
+        }
+
         &:hover {
             background-color: ${colorGrey60};
 
             .Search-SuggestionsItemIcon {
-                color: ${colorBlue20};
+                color: ${colorGrey01};
+            }
+
+            .Search-LabelTypography {
+                color: ${colorGrey01};
             }
 
             .Search-SuggestionsItemAction {
                 color: ${colorGrey30};
             }
-        }
-
-        .Search-LabelTypography {
-            color: ${colorGrey01};
-        }
-
-        .Search-SuggestionsItemIcon {
-            color: ${colorGrey50};
-        }
-
-        .Search-SuggestionsItemAction {
-            color: ${colorGrey50};
         }
     `;
 
@@ -45,10 +49,6 @@ export const getSearchSuggestionItemOverride = ({
         result = css`
             ${result};
             background-color: ${colorGrey60};
-
-            .Search-SuggestionsItemIcon {
-                color: ${colorBlue20};
-            }
 
             .Search-SuggestionsItemAction {
                 color: ${colorGrey30};
