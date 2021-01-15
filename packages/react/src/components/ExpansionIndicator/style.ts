@@ -2,6 +2,11 @@ import styled, { css } from 'styled-components';
 import { ExpansionIndicatorPropsType } from './type';
 import { marginAttributes } from '../../system/attributes';
 import { transitionDurationInSec } from '../../constants';
+import { getPropsBlocker } from '../../utils';
+
+const propertyList = {
+    disabled: true,
+};
 
 const expansionIndicatorContainerStyle = ({
     disabled,
@@ -34,7 +39,9 @@ const actionSeparator = ({
     ${displaySeparator ? ExpansionIndicator.Root.separator : ''}
 `;
 
-export const ExpansionIndicatorRoot = styled.div<ExpansionIndicatorPropsType>`
+export const ExpansionIndicatorRoot = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<ExpansionIndicatorPropsType>`
     align-items: center;
     display: flex;
     height: 100%;
@@ -45,9 +52,9 @@ export const ExpansionIndicatorRoot = styled.div<ExpansionIndicatorPropsType>`
     ${marginAttributes}
 `;
 
-export const ExpansionIndicatorContent = styled.div<
-    ExpansionIndicatorPropsType
->`
+export const ExpansionIndicatorContent = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<ExpansionIndicatorPropsType>`
     align-items: center;
     border-left-width: 1px;
     border-left-style: solid;
@@ -61,7 +68,9 @@ export const ExpansionIndicatorContent = styled.div<
     ${actionSeparator}
 `;
 
-export const ExpansionIndicatorIcon = styled.div<ExpansionIndicatorPropsType>`
+export const ExpansionIndicatorIcon = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<ExpansionIndicatorPropsType>`
     border-bottom-width: 2px;
     border-bottom-style: solid;
     border-right-width: 2px;

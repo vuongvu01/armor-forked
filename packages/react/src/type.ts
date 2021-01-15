@@ -1,5 +1,5 @@
+import { MutableRefObject, ReactText } from 'react';
 import { FlattenSimpleInterpolation } from 'styled-components';
-import { MutableRefObject } from 'react';
 
 export type ScalarType = string | number;
 
@@ -30,3 +30,5 @@ export type PseudoEventType<V = ScalarType> = {
         value: V;
     };
 };
+
+export type PropNameType = ReactText | boolean | {};

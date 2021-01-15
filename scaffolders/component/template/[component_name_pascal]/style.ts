@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { <%- component_name_pascal %>RootPropsType, <%- component_name_pascal %>SubNodePropsType } from './type';
 import { marginAttributes } from '../../system/attributes';
-import { shouldForwardProp, makePropList } from '../../utils';
+import { getPropsBlocker, makePropList } from '../../utils';
 import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 import {reset} from '../../system/mixins';
 
@@ -25,9 +25,9 @@ const getRootDynamicStyle = (props: <%- component_name_pascal %>RootPropsType) =
 };
 
 // if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
-export const <%- component_name_pascal %>Root = styled.div.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<<%- component_name_pascal %>RootPropsType>`
+export const <%- component_name_pascal %>Root = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<<%- component_name_pascal %>RootPropsType>`
     box-sizing: border-box;
 
     ${getRootDynamicStyle};

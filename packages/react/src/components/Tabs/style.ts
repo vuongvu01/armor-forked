@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import { marginAttributes } from '../../system/attributes';
-import { shouldForwardProp } from '../../utils';
+import { getPropsBlocker } from '../../utils';
 import { TabsRootPropsType } from './type';
 
 const themeStyle = ({
@@ -22,9 +22,9 @@ const themeStyle = ({
     return Tabs.Root.base;
 };
 
-export const TabsRoot = styled.div.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property),
-})<TabsRootPropsType>`
+export const TabsRoot = styled.div.withConfig(getPropsBlocker())<
+    TabsRootPropsType
+>`
     align-items: start;
     display: flex;
     flex-wrap: wrap;

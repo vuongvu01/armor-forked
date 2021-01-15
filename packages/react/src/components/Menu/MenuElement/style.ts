@@ -11,7 +11,7 @@ import {
     marginAttributes,
     paddingAttributes,
 } from '../../../system/attributes';
-import { makePropList, shouldForwardProp } from '../../../utils';
+import { getPropsBlocker, makePropList } from '../../../utils';
 import { transitionDurationInSec } from '../../../constants';
 import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
 
@@ -76,10 +76,9 @@ const getRootDynamicStyle = ({
     return result;
 };
 
-// if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
-export const MenuElementRoot = styled(MenuElementRootWrapper).withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<MenuElementRootPropsType>`
+export const MenuElementRoot = styled(MenuElementRootWrapper).withConfig(
+    getPropsBlocker(propertyList, false),
+)<MenuElementRootPropsType>`
     box-sizing: border-box;
     display: flex;
     position: relative;
@@ -106,9 +105,9 @@ const getContentDynamicStyle = ({ theme }: MenuElementContentPropsType) => {
     return theme.componentOverrides.MenuElement.Content.base;
 };
 
-export const MenuElementContent = styled.div.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<MenuElementContentPropsType>`
+export const MenuElementContent = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<MenuElementContentPropsType>`
     flex-grow: 1;
     display: flex;
 
@@ -138,9 +137,9 @@ const getExpansionHandleDynamicStyle = ({
     return result;
 };
 
-export const MenuElementExpansionHandle = styled.div.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<MenuElementExpansionHandlePropsType>`
+export const MenuElementExpansionHandle = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<MenuElementExpansionHandlePropsType>`
     display: flex;
     align-self: stretch;
     cursor: pointer;
@@ -169,10 +168,7 @@ const getExpansionHandleArrowDynamicStyle = ({
 };
 
 export const MenuElementExpansionHandleArrow = styled(ArrowDownIcon).withConfig(
-    {
-        shouldForwardProp: property =>
-            shouldForwardProp(property, propertyList),
-    },
+    getPropsBlocker(propertyList, false),
 )<MenuElementExpansionHandleArrowPropsType>`
     transition: transform ${transitionDurationInSec}s ease;
     transform-origin: center;

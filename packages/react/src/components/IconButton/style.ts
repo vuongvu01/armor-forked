@@ -1,10 +1,9 @@
 import styled, { css } from 'styled-components';
 import { IconButtonRootPropsType } from './type';
 import { marginAttributes } from '../../system/attributes';
-import { shouldForwardProp, makePropList } from '../../utils';
+import { makePropList, getPropsBlocker } from '../../utils';
 import { getComponentOverride } from '../../system/mixins/getComponentOverride';
-import { color, spacing } from '../../system/mixins';
-import { borderRadius } from '../../system/mixins/borderRadius';
+import { color, spacing, borderRadius } from '../../system/mixins';
 import { transitionDurationInSec } from '../../constants';
 
 // all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
@@ -23,9 +22,9 @@ const getRootDynamicStyle = ({ light }: IconButtonRootPropsType) => {
 };
 
 // if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
-export const IconButtonRoot = styled.button.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<IconButtonRootPropsType>`
+export const IconButtonRoot = styled.button.withConfig(
+    getPropsBlocker(propertyList),
+)<IconButtonRootPropsType>`
     box-sizing: border-box;
     padding: ${spacing(1)};
     border-radius: ${borderRadius('soft')};

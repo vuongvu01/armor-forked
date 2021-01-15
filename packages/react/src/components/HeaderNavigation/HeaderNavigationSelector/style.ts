@@ -7,6 +7,8 @@ import { Stack, StackItem } from '../../Stack';
 import { PackItem } from '../../Pack';
 import { DropdownOptionList } from '../../DropdownOptionList';
 import { ExpansionIndicator } from '../../ExpansionIndicator';
+import { getPropsBlocker } from '../../../utils';
+
 
 export const HeaderNavigationSelectorWrapper = styled(Stack)<
     HeaderNavigationSelectorRootPropsType
@@ -54,9 +56,9 @@ export const SelectorDropdownOptionList = styled(DropdownOptionList)<
 `;
 
 // NOTE: `:focus:not(:focus-visible)` allows for outline to appear when navigated via Tab, and omits it on mouse click
-export const HeaderNavigationSelectorRoot = styled(HeaderNavigationItem)<
-    HeaderNavigationSelectorRootPropsType
->`
+export const HeaderNavigationSelectorRoot = styled(HeaderNavigationItem).withConfig(
+    getPropsBlocker({}, false),
+)<HeaderNavigationSelectorRootPropsType>`
     padding-top: 0;
     padding-right: ${spacing(4)};
     padding-bottom: 0;
@@ -80,9 +82,9 @@ export const SelectedOptions = styled(StackItem)<
     HeaderNavigationSelectorRootPropsType
 >``;
 
-export const SelectorLabel = styled(PackItem)<
-    HeaderNavigationSelectorRootPropsType
->`
+export const SelectorLabel = styled(PackItem).withConfig(
+    getPropsBlocker({}, false),
+)<HeaderNavigationSelectorRootPropsType>`
     max-width: 200px;
     white-space: nowrap;
     overflow: hidden;

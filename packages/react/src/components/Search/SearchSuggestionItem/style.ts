@@ -12,6 +12,14 @@ import {
     SearchSuggestionsItemIconPropsType,
     SearchSuggestionsItemLabelPropsType,
 } from '../type';
+import { getPropsBlocker, makePropList } from '../../../utils';
+
+const propertyList = makePropList([
+    'searchQuery',
+    'suggestionListHeight',
+    'icon',
+    'isHighlighted',
+]);
 
 const maxLabelWidthInPercent = '70%';
 const minLabelWidthInPx = '140px';
@@ -20,9 +28,9 @@ const defaultLabelColor = color('neutral.05');
 const defaultLabelColorHover = color('neutral.06');
 const defaultActionColor = color('neutral.04');
 
-export const SearchSuggestionItemRoot = styled.div<
-    SearchSuggestionItemRootPropsType
->`
+export const SearchSuggestionItemRoot = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<SearchSuggestionItemRootPropsType>`
     .Search-SuggestionsItemIcon {
         color: ${defaultLabelColor};
     }
@@ -65,9 +73,9 @@ const searchSuggestionsItemStyle = ({
     return result;
 };
 
-export const SearchSuggestionItemContainer = styled.div<
-    SearchSuggestionsItemPropsType
->`
+export const SearchSuggestionItemContainer = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<SearchSuggestionsItemPropsType>`
     align-items: center;
     box-sizing: border-box;
     display: flex;
@@ -84,13 +92,16 @@ export const SearchSuggestionItemContainer = styled.div<
     ${getComponentOverride('SearchSuggestionItem')};
 `;
 
-export const SearchSuggestionItemLabelTypography = styled(Typography)<
+export const SearchSuggestionItemLabelTypography = styled(
+    Typography,
+).withConfig(getPropsBlocker(propertyList, false))<
     SearchSuggestionItemLabelTypographyPropsType
 >`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 `;
+
 const searchSuggestionsItemIconStyle = ({
     icon,
     renderItemIcon,
@@ -110,9 +121,9 @@ const searchSuggestionsItemIconStyle = ({
     return result;
 };
 
-export const SearchSuggestionsItemIcon = styled.div<
-    SearchSuggestionsItemIconPropsType
->`
+export const SearchSuggestionsItemIcon = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<SearchSuggestionsItemIconPropsType>`
     align-items: center;
     box-sizing: border-box;
     display: flex;
@@ -133,9 +144,9 @@ const searchSuggestionsItemLabelStyle = ({
           `;
 };
 
-export const SearchSuggestionsItemLabel = styled.div<
-    SearchSuggestionsItemLabelPropsType
->`
+export const SearchSuggestionsItemLabel = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<SearchSuggestionsItemLabelPropsType>`
     padding-right: ${spacing(2)};
     box-sizing: border-box;
     flex-grow: 1;
@@ -156,9 +167,9 @@ const searchSuggestionsItemActionStyle = ({
         : css``;
 };
 
-export const SearchSuggestionsItemAction = styled.div<
-    SearchSuggestionsItemActionPropsType
->`
+export const SearchSuggestionsItemAction = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<SearchSuggestionsItemActionPropsType>`
     align-items: flex-start;
     box-sizing: border-box;
     overflow-x: hidden;

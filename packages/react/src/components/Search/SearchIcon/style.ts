@@ -5,9 +5,7 @@ import {
     SearchInputLoadingIconPropsType,
     SearchInputSearchIconPropsType,
 } from './type';
-import { shouldForwardProp } from '../../../utils';
-
-const SearchIconPropertyList = {};
+import { getPropsBlocker } from '../../../utils';
 
 const searchIconContainerStyle = ({
     theme: {
@@ -17,7 +15,9 @@ const searchIconContainerStyle = ({
     return SearchIconTheme.SearchIconContainer.base;
 };
 
-export const SearchIconContainer = styled.div<SearchIconContainerPropsType>`
+export const SearchIconContainer = styled.div.withConfig(getPropsBlocker())<
+    SearchIconContainerPropsType
+>`
     display: flex;
     align-items: center;
     ${searchIconContainerStyle};
@@ -31,9 +31,9 @@ const loadingIconIconStyle = ({
     return SearchIconTheme.LoadingIcon.base;
 };
 
-export const SearchInputLoadingIcon = styled(UploadIcon)<
-    SearchInputLoadingIconPropsType
->`
+export const SearchInputLoadingIcon = styled(UploadIcon).withConfig(
+    getPropsBlocker({}, false),
+)<SearchInputLoadingIconPropsType>`
     ${loadingIconIconStyle}
 `;
 
@@ -45,9 +45,8 @@ const searchIconStyle = ({
     return SearchIconTheme.SearchIcon.base;
 };
 
-export const SearchInputSearchIcon = styled(SearchIcon).withConfig({
-    shouldForwardProp: property =>
-        shouldForwardProp(property, SearchIconPropertyList),
-})<SearchInputSearchIconPropsType>`
+export const SearchInputSearchIcon = styled(SearchIcon).withConfig(
+    getPropsBlocker({}, false),
+)<SearchInputSearchIconPropsType>`
     ${searchIconStyle}
 `;

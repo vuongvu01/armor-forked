@@ -2,8 +2,11 @@ import styled from 'styled-components';
 
 import { marginAttributes } from '../../system';
 import { MaterialIconPropsType } from './type';
+import { getPropsBlocker } from '../../utils';
 
-export const MaterialIconRoot = styled.span<MaterialIconPropsType>`
+export const MaterialIconRoot = styled.span.withConfig(getPropsBlocker())<
+    MaterialIconPropsType
+>`
     font-family: 'Material Icons', serif;
     display: inline-block;
     width: 16px;

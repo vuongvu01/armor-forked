@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import { marginAttributes } from '../../system/attributes';
-import { shouldForwardProp } from '../../utils';
+import { getPropsBlocker } from '../../utils';
 import { mouseCursor, pointerEvents } from '../../styling';
 import { transitionDurationInSec } from '../../constants';
 import {
@@ -12,6 +12,10 @@ import {
 import { spacing } from '../../system/mixins';
 import { fontWeightRegular } from '../../tokens';
 import { getComponentOverride } from '../../system/mixins/getComponentOverride';
+
+const propertyList = {
+    reallyChecked: true,
+};
 
 const sizes = {
     checkbox: {
@@ -88,10 +92,9 @@ const checkmarkStyle = ({
     return css`${checkmarkColor}${tickStyle}`;
 };
 
-export const CheckboxRoot = styled.label.withConfig({
-    shouldForwardProp: property =>
-        shouldForwardProp(property, { reallyChecked: true }),
-})<CheckboxRootPropsType>`
+export const CheckboxRoot = styled.label.withConfig(
+    getPropsBlocker(propertyList),
+)<CheckboxRootPropsType>`
     display: inline-flex;
     margin: 0;
     font-weight: ${fontWeightRegular};
@@ -101,7 +104,9 @@ export const CheckboxRoot = styled.label.withConfig({
     ${marginAttributes}
 `;
 
-export const CheckboxCheckmark = styled.div<CheckboxCheckmarkPropsType>`
+export const CheckboxCheckmark = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<CheckboxCheckmarkPropsType>`
     position: relative;
     width: ${sizes.checkbox.side}px;
     height: ${sizes.checkbox.side}px;
@@ -137,7 +142,9 @@ export const CheckboxCheckmark = styled.div<CheckboxCheckmarkPropsType>`
     ${pointerEvents}
 `;
 
-export const CheckboxInput = styled.input<CheckboxInputPropsType>`
+export const CheckboxInput = styled.input.withConfig(
+    getPropsBlocker(propertyList),
+)<CheckboxInputPropsType>`
     opacity: 0;
     position: absolute;
     margin: 0;

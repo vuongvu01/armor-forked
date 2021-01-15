@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 import { marginAttributes } from '../../../system';
 import { ObjectLiteralType } from '../../../type';
-import { shouldForwardProp } from '../../../utils';
+import { getPropsBlocker } from '../../../utils';
 import { FormFieldMessageRootPropsType } from './type';
 
 const propertyList = {
@@ -35,9 +35,9 @@ const getRootDynamicStyle = ({
     `;
 };
 
-export const FormFieldMessageRoot = styled.div.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<FormFieldMessageRootPropsType>`
+export const FormFieldMessageRoot = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<FormFieldMessageRootPropsType>`
     box-sizing: border-box;
     position: relative;
 
@@ -46,7 +46,9 @@ export const FormFieldMessageRoot = styled.div.withConfig({
     ${marginAttributes}
 `;
 
-export const FormFieldMessageFakeChildren = styled.div`
+export const FormFieldMessageFakeChildren = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)`
     opacity: 0;
     &:before {
         content: '1';

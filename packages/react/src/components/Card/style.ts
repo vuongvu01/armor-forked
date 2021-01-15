@@ -8,9 +8,12 @@ import {
     sizeAttributes,
 } from '../../system';
 import { CardRootPropsType } from './type';
-import { token } from '../../system/mixins/token';
+import { token } from '../../system/mixins';
+import { getPropsBlocker } from '../../utils';
 
-export const CardRoot = styled.div<CardRootPropsType>`
+export const CardRoot = styled.div.withConfig(getPropsBlocker())<
+    CardRootPropsType
+>`
     background-color: ${color('neutral.00')};
     border-radius: ${borderRadius('soft')};
     box-shadow: ${token('elevation.small')};

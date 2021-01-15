@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { makePropList, shouldForwardProp } from '../../../utils';
+import { getPropsBlocker, makePropList } from '../../../utils';
 import { GridItemPropsType, GridSizeType } from './type';
 import { GRID_RESOLUTION } from '../constants';
 import { BreakpointCodeType } from '../../../system/mixins/type';
@@ -102,9 +102,9 @@ const gridItemRootStyle = ({
     return result;
 };
 
-export const GridItemRoot = styled.div.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<GridItemPropsType>`
+export const GridItemRoot = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<GridItemPropsType>`
     box-sizing: border-box;
     width: 100%;
 

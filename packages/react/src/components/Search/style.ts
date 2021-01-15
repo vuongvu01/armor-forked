@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import { marginAttributes, widthAttributes } from '../../system/attributes';
-import { makePropList, shouldForwardProp } from '../../utils';
+import { getPropsBlocker, makePropList } from '../../utils';
 import {
     SearchRootPropsType,
     SearchSuggestionsContainerPropsType,
@@ -13,9 +13,11 @@ import { TextInput } from '../TextInput';
 import { reset, spacing } from '../../system/mixins';
 import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 
-const containerPropertyList = makePropList([
+const propertyList = makePropList([
     'searchQuery',
     'suggestionListHeight',
+    'icon',
+    'isHighlighted',
 ]);
 
 const searchSuggestionsContainerStyle = ({
@@ -53,9 +55,9 @@ const searchTextInputStyle = ({
     return Search.TextInput.base;
 };
 
-export const SearchRoot = styled.div.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property),
-})<SearchRootPropsType>`
+export const SearchRoot = styled.div.withConfig(getPropsBlocker(propertyList))<
+    SearchRootPropsType
+>`
     ${reset};
     cursor: default;
     display: inline-block;
@@ -68,10 +70,9 @@ export const SearchRoot = styled.div.withConfig({
     ${getComponentOverride('Search')};
 `;
 
-export const SearchSuggestionsContainer = styled.div.withConfig({
-    shouldForwardProp: property =>
-        shouldForwardProp(property, containerPropertyList),
-})<SearchSuggestionsContainerPropsType>`
+export const SearchSuggestionsContainer = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<SearchSuggestionsContainerPropsType>`
     background-color: white;
     box-sizing: border-box;
     flex-direction: column;
@@ -86,13 +87,15 @@ export const SearchSuggestionsContainer = styled.div.withConfig({
     ${searchSuggestionsContainerStyle}
 `;
 
-export const SearchSuggestionsListContainer = styled.div<
-    SearchSuggestionsListPropsType
->`
+export const SearchSuggestionsListContainer = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<SearchSuggestionsListPropsType>`
     display: flex;
     flex-direction: column;
 `;
 
-export const SearchTextInput = styled(TextInput)<SearchRootPropsType>`
+export const SearchTextInput = styled(TextInput).withConfig(
+    getPropsBlocker(propertyList, false),
+)<SearchRootPropsType>`
     ${searchTextInputStyle}
 `;

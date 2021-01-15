@@ -4,7 +4,7 @@ import {
     TableExpandableSectionContentPropsType,
     TableExpandableSectionRootPropsType,
 } from './type';
-import { shouldForwardProp, makePropList } from '../../../utils';
+import { makePropList, getPropsBlocker } from '../../../utils';
 import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
 import { TableRow } from '../TableRow';
 import { TableCell } from '../TableCell';
@@ -36,9 +36,9 @@ const getRootDynamicStyle = ({
 };
 
 // if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
-export const TableExpandableSectionRoot = styled(TableRow).withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<TableExpandableSectionRootPropsType>`
+export const TableExpandableSectionRoot = styled(TableRow).withConfig(
+    getPropsBlocker(propertyList, false),
+)<TableExpandableSectionRootPropsType>`
     white-space: normal;
     background-color: ${color('neutral.00')};
     &:hover td {
@@ -64,9 +64,9 @@ const getCellDynamicStyle = ({
     return result;
 };
 
-export const TableExpandableSectionCell = styled(TableCell).withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<TableExpandableSectionCellPropsType>`
+export const TableExpandableSectionCell = styled(TableCell).withConfig(
+    getPropsBlocker(propertyList, false),
+)<TableExpandableSectionCellPropsType>`
     position: relative;
     padding: 0;
     ${getCellDynamicStyle};
@@ -113,9 +113,9 @@ const getContentDynamicStyle = ({
     return result;
 };
 
-export const TableExpandableSectionContent = styled.div<
-    TableExpandableSectionContentPropsType
->`
+export const TableExpandableSectionContent = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<TableExpandableSectionContentPropsType>`
     opacity: 0;
     transition: opacity ${transitionDurationInSec}s ease-in;
 

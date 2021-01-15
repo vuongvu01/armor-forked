@@ -3,6 +3,11 @@ import styled, { css } from 'styled-components';
 import { AccordionContentRootPropsType } from './type';
 import { transitionDurationInSec } from '../../../constants';
 import { typography } from '../../../system/mixins';
+import { getPropsBlocker } from '../../../utils';
+
+const propertyList = {
+    isExpanded: true,
+};
 
 const accordionContentStyle = ({
     isExpanded,
@@ -28,7 +33,9 @@ const accordionContentStyle = ({
     return base;
 };
 
-export const AccordionContentRoot = styled.div<AccordionContentRootPropsType>`
+export const AccordionContentRoot = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<AccordionContentRootPropsType>`
     height: 0;
     opacity: 0;
     visibility: hidden;

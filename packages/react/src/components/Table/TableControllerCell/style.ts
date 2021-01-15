@@ -6,7 +6,7 @@ import {
     TableControllerCellIconPropsType,
 } from './type';
 import { paddingAttributes } from '../../../system/attributes';
-import { shouldForwardProp, makePropList } from '../../../utils';
+import { makePropList, getPropsBlocker } from '../../../utils';
 import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
 import { TableCell } from '../TableCell';
 import { color, spacing } from '../../../system/mixins';
@@ -17,9 +17,9 @@ import { expansion } from '../../../system/mixins/expansion';
 const propertyList = makePropList(['expanded']);
 
 // if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
-export const TableControllerCellRoot = styled(TableCell).withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<TableControllerCellRootPropsType>`
+export const TableControllerCellRoot = styled(TableCell).withConfig(
+    getPropsBlocker(propertyList, false),
+)<TableControllerCellRootPropsType>`
     box-sizing: border-box;
     padding-top: ${spacing(4)};
     padding-bottom: ${spacing(4)};
@@ -29,17 +29,17 @@ export const TableControllerCellRoot = styled(TableCell).withConfig({
     ${paddingAttributes};
 `;
 
-export const TableControllerCellContainer = styled.div.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<TableControllerCellContainerPropsType>`
+export const TableControllerCellContainer = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<TableControllerCellContainerPropsType>`
     box-sizing: border-box;
     display: flex;
     align-items: center;
 `;
 
-export const TableControllerCellIcon = styled(ArrowDownIcon).withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<TableControllerCellIconPropsType>`
+export const TableControllerCellIcon = styled(ArrowDownIcon).withConfig(
+    getPropsBlocker({}, false),
+)<TableControllerCellIconPropsType>`
     color: ${color('primary.main')};
     ${transition({ transform: true })};
     ${expansion(180)};

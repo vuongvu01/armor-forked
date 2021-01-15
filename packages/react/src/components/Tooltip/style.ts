@@ -1,6 +1,6 @@
 import styled, { css, Interpolation } from 'styled-components';
 import { ObjectLiteralType } from '../../type';
-import { shouldForwardProp } from '../../utils';
+import { getPropsBlocker } from '../../utils';
 import { TooltipArrowPropsType, TooltipRootPropsType } from './type';
 import { transitionDurationInSec } from '../../constants';
 import { getComponentOverride } from '../../system/mixins/getComponentOverride';
@@ -46,9 +46,9 @@ const sizeStyle = ({ small, theme }: TooltipRootPropsType) => {
     return '';
 };
 
-export const TooltipRoot = styled.div.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<TooltipRootPropsType>`
+export const TooltipRoot = styled.div.withConfig(getPropsBlocker(propertyList))<
+    TooltipRootPropsType
+>`
     position: absolute;
     top: 0;
     left: 0;
@@ -78,9 +78,9 @@ export const TooltipRoot = styled.div.withConfig({
     ${getComponentOverride('Tooltip')};
 `;
 
-export const TooltipArrow = styled.div.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<TooltipArrowPropsType>`
+export const TooltipArrow = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<TooltipArrowPropsType>`
     height: 16px;
     width: 16px;
     position: absolute;

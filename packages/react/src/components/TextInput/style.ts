@@ -8,7 +8,7 @@ import {
     widthAttributes,
 } from '../../system';
 import { ObjectLiteralType } from '../../type';
-import { shouldForwardProp } from '../../utils';
+import { getPropsBlocker } from '../../utils';
 import {
     TextInputInnerContainerPropsType,
     TextInputInputPropsType,
@@ -82,9 +82,9 @@ const getRootDynamicStyle = (props: TextInputRootPropsType) => {
     `;
 };
 
-export const TextInputRoot = styled.div.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<TextInputRootPropsType>`
+export const TextInputRoot = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<TextInputRootPropsType>`
     box-sizing: border-box;
     position: relative;
     border-style: solid;
@@ -121,9 +121,9 @@ const getInnerContainerDynamicStyle = (
     return result;
 };
 
-export const TextInputInnerContainer = styled.div<
-    TextInputInnerContainerPropsType
->`
+export const TextInputInnerContainer = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<TextInputInnerContainerPropsType>`
     display: flex;
     ${getInnerContainerDynamicStyle}
 `;
@@ -164,9 +164,9 @@ const Wrapper = ({
     children: (props: TextInputInputPropsType) => ReactElement;
 }) => children({ ...restProps });
 
-export const TextInputInput = styled(Wrapper).withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<TextInputInputPropsType>`
+export const TextInputInput = styled(Wrapper).withConfig(
+    getPropsBlocker(propertyList),
+)<TextInputInputPropsType>`
     box-sizing: border-box;
     border: 0 none;
     outline: none;
@@ -207,9 +207,9 @@ const getLabelDynamicStyle = (props: TextInputInternalPropsWithThemeType) => {
     return result;
 };
 
-export const TextInputLabel = styled.span.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<TextInputLabelPropsType>`
+export const TextInputLabel = styled.span.withConfig(
+    getPropsBlocker(propertyList),
+)<TextInputLabelPropsType>`
     position: absolute;
     text-align: left;
     overflow-x: hidden;
@@ -247,8 +247,8 @@ const getLabelBackgroundDynamicStyle = (
     `;
 };
 
-export const TextInputLabelBackground = styled.span.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<TextInputLabelBackgroundPropsType>`
+export const TextInputLabelBackground = styled.span.withConfig(
+    getPropsBlocker(propertyList),
+)<TextInputLabelBackgroundPropsType>`
     ${getLabelBackgroundDynamicStyle}
 `;

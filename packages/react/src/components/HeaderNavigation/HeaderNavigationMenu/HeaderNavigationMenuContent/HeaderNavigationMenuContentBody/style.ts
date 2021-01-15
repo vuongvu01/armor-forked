@@ -4,6 +4,7 @@ import {
     HeaderNavigationMenuContentBodyRootPropsType,
 } from './type';
 import { Stack } from '../../../../Stack';
+import { getPropsBlocker } from '../../../../../utils';
 
 const contentBodyRootStyle = ({
     theme: {
@@ -31,7 +32,9 @@ const contentBodyOptionsRootStyle = ({
     return HeaderNavigationMenuContent.BodyOptionsRoot.base;
 };
 
-export const HeaderNavigationMenuContentBodyOptionsRoot = styled(Stack)<
+export const HeaderNavigationMenuContentBodyOptionsRoot = styled(
+    Stack,
+).withConfig(getPropsBlocker({}, false))<
     HeaderNavigationMenuContentBodyOptionsRootPropsType
 >`
     ${contentBodyOptionsRootStyle}

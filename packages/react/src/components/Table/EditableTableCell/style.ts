@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { EditableTableCellRootPropsType } from './type';
 import { marginAttributes } from '../../../system/attributes';
 import { ObjectLiteralType } from '../../../type';
-import { shouldForwardProp } from '../../../utils';
+import { getPropsBlocker } from '../../../utils';
 
 // all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
 const propertyList = {} as ObjectLiteralType;
@@ -19,9 +19,9 @@ const getRootDynamicStyle = ({ theme }: EditableTableCellRootPropsType) => {
 };
 
 // if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
-export const EditableTableCellRoot = styled.div.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<EditableTableCellRootPropsType>`
+export const EditableTableCellRoot = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<EditableTableCellRootPropsType>`
     box-sizing: border-box;
     position: relative;
 

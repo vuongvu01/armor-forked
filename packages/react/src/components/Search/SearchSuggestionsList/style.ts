@@ -1,6 +1,11 @@
 import styled, { css } from 'styled-components';
 import { color, pixelToRem, spacing, typography } from '../../../system/mixins';
 import { SearchSuggestionListGroupPropsType } from './type';
+import { getPropsBlocker } from '../../../utils';
+
+const propertyList = {
+    enableSeparator: true,
+};
 
 const getSearchSuggestionListGroupDynamicStyle = ({
     enableSeparator,
@@ -17,9 +22,9 @@ const getSearchSuggestionListGroupDynamicStyle = ({
     return result;
 };
 
-export const SearchSuggestionListGroup = styled.div<
-    SearchSuggestionListGroupPropsType
->`
+export const SearchSuggestionListGroup = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<SearchSuggestionListGroupPropsType>`
     padding: ${spacing(6)} ${spacing(4)} ${spacing(2)} ${spacing(4)};
     ${typography('labelMedium')};
     font-size: ${pixelToRem(14)};

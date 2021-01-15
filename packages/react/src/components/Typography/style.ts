@@ -5,7 +5,7 @@ import {
     marginAttributes,
     textAlignmentAttributes,
 } from '../../system/attributes';
-import { shouldForwardProp } from '../../utils';
+import { getPropsBlocker } from '../../utils';
 import { ObjectLiteralType } from '../../type';
 import { TypographyRootPropsType } from './type';
 import { getComponentOverride } from '../../system/mixins/getComponentOverride';
@@ -130,9 +130,9 @@ const Wrapper = ({
     children: (props: TypographyRootPropsType) => ReactElement;
 }) => children({ ...restProps });
 
-export const TypographyRoot = styled(Wrapper).withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<TypographyRootPropsType>`
+export const TypographyRoot = styled(Wrapper).withConfig(
+    getPropsBlocker(propertyList),
+)<TypographyRootPropsType>`
     box-sizing: border-box;
     margin-inline-start: 0;
     margin-inline-end: 0;

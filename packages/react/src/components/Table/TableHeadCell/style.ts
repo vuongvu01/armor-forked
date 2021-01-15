@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { TableHeadCellRootPropsType } from './type';
 import { paddingAttributes } from '../../../system/attributes';
-import { makeBEM, shouldForwardProp, makePropList } from '../../../utils';
+import { makeBEM, makePropList, getPropsBlocker } from '../../../utils';
 import { TableCell } from '../TableCell';
 import { transitionDurationInSec } from '../../../constants';
 import { TABLE_HEAD_CELL_CLASS_PREFIX } from './constants';
@@ -45,9 +45,9 @@ const numericalIconClassName = makeBEM(
 );
 
 // if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
-export const TableHeadCellRoot = styled(TableCell).withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<TableHeadCellRootPropsType>`
+export const TableHeadCellRoot = styled(TableCell).withConfig(
+    getPropsBlocker(propertyList, false),
+)<TableHeadCellRootPropsType>`
     .${alphabeticalIconClassName}, .${numericalIconClassName} {
         opacity: 0;
         transition: opacity ${transitionDurationInSec}s ease;

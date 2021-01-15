@@ -8,7 +8,7 @@ import {
     widthAttributes,
 } from '../../system/attributes';
 import { durationRegular } from '../../tokens';
-import { shouldForwardProp } from '../../utils';
+import { getPropsBlocker } from '../../utils';
 import { ObjectLiteralType } from '../../type';
 import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 
@@ -87,9 +87,9 @@ const Wrapper = ({
     children: (props: ButtonRootPropsType) => ReactElement;
 }) => children({ ...restProps });
 
-export const ButtonRoot = styled(Wrapper).withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<ButtonRootPropsType>`
+export const ButtonRoot = styled(Wrapper).withConfig(
+    getPropsBlocker(propertyList),
+)<ButtonRootPropsType>`
     align-items: center;
     appearance: none;
     border: 1px solid transparent;

@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import { fixedCover, sizeAttributes } from '../../system';
-import { shouldForwardProp } from '../../utils';
+import { getPropsBlocker } from '../../utils';
 import { ObjectLiteralType } from '../../type';
 import {
     DialogAlignmentContainerPropsType,
@@ -57,9 +57,9 @@ const dialogBaseMaxHeight = ({ scroll, theme }: DialogBasePropsType) => {
         : `calc(100% - ${theme.componentOverrides.Dialog.Base.safeMargin})`;
 };
 
-export const DialogAlignmentContainer = styled.div.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<DialogAlignmentContainerPropsType>`
+export const DialogAlignmentContainer = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<DialogAlignmentContainerPropsType>`
     ${fixedCover};
     z-index: inherit;
     align-items: center;
@@ -81,9 +81,9 @@ export const DialogAlignmentContainer = styled.div.withConfig({
             : ''},
 `;
 
-export const DialogRoot = styled(Card).withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<DialogBasePropsType>`
+export const DialogRoot = styled(Card).withConfig(getPropsBlocker({}, false))<
+    DialogBasePropsType
+>`
     position: relative;
     overflow-y: auto;
     overflow-x: hidden;
@@ -108,14 +108,18 @@ export const DialogRoot = styled(Card).withConfig({
     ${getComponentOverride('Dialog')};
 `;
 
-export const DialogContent = styled.div<DialogContentPropsType>`
+export const DialogContent = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<DialogContentPropsType>`
     display: flex;
     flex-direction: column;
     max-height: 100%;
     overflow: auto;
 `;
 
-export const DialogCloseButton = styled.div<DialogCloseButtonPropsType>`
+export const DialogCloseButton = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<DialogCloseButtonPropsType>`
     position: absolute;
     border: 0 none;
     background-color: transparent;

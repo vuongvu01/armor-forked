@@ -5,6 +5,12 @@ import { Typography } from '../../Typography';
 import { mouseCursor } from '../../../styling';
 import { ExpansionIndicator } from '../../ExpansionIndicator';
 import { typography } from '../../../system/mixins';
+import { getPropsBlocker } from '../../../utils';
+
+const propertyList = {
+    isExpanded: true,
+    disabled: true,
+};
 
 const accordionHeaderStyle = ({
     disabled,
@@ -37,7 +43,9 @@ const accordionHeaderTypographyStyle = ({
     return HeaderTypography.base;
 };
 
-export const AccordionHeaderRoot = styled.div<AccordionHeaderRootPropsType>`
+export const AccordionHeaderRoot = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<AccordionHeaderRootPropsType>`
     align-items: center;
     box-sizing: border-box;
     display: inline-flex;
@@ -49,27 +57,29 @@ export const AccordionHeaderRoot = styled.div<AccordionHeaderRootPropsType>`
     ${accordionHeaderStyle}
 `;
 
-export const AccordionHeaderTypography = styled(Typography)<
-    AccordionHeaderRootPropsType
->`
+export const AccordionHeaderTypography = styled(Typography).withConfig(
+    getPropsBlocker(propertyList, false),
+)<AccordionHeaderRootPropsType>`
     ${accordionHeaderTypographyStyle}
 `;
 
-export const AccordionHeaderBody = styled(Typography)<
-    AccordionHeaderRootPropsType
->`
+export const AccordionHeaderBody = styled(Typography).withConfig(
+    getPropsBlocker(propertyList, false),
+)<AccordionHeaderRootPropsType>`
     align-items: center;
     display: inline-flex;
 `;
 
-export const AccordionHeaderExpansionIndicator = styled(ExpansionIndicator)<
-    AccordionHeaderRootPropsType
->`
+export const AccordionHeaderExpansionIndicator = styled(
+    ExpansionIndicator,
+).withConfig(getPropsBlocker({}, false))<AccordionHeaderRootPropsType>`
     .AccordionHeader-ExpansionIndicator.ExpansionIndicator-Content {
         width: 56px;
     }
 `;
 
-export const AccordionHeaderIcon = styled.div<AccordionHeaderRootPropsType>`
+export const AccordionHeaderIcon = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<AccordionHeaderRootPropsType>`
     ${accordionHeaderTypographyStyle}
 `;
