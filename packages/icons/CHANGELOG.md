@@ -1,3 +1,10 @@
+# @deliveryhero/armor-icons [1.9.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.8.0...@deliveryhero/armor-icons@1.9.0) (2021-01-19)
+
+
+### Features
+
+* **icons:** TimeSeparatorIcon component implemented [LD-000] ([#367](https://github.com/deliveryhero/armor/issues/367)) ([6f1d4cc](https://github.com/deliveryhero/armor/commit/6f1d4ccc9df67804cf090c639caa49d223af6eda))
+
 # @deliveryhero/armor-icons [1.8.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.7.0...@deliveryhero/armor-icons@1.8.0) (2021-01-11)
 
 
