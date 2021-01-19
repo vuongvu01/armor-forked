@@ -1,3 +1,25 @@
+# @deliveryhero/armor [1.29.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.28.2...@deliveryhero/armor@1.29.0) (2021-01-19)
+
+
+### Bug Fixes
+
+* **tooltip:** Tooltip positioning fixes, controlled mode for the tooltip supported [LD-98] [LD-381] ([#371](https://github.com/deliveryhero/armor/issues/371)) ([7ab137f](https://github.com/deliveryhero/armor/commit/7ab137f0e73574eea62cfdddb7287912d3c693ee))
+* **various:** small issues ([#370](https://github.com/deliveryhero/armor/issues/370)) ([4042e0b](https://github.com/deliveryhero/armor/commit/4042e0b430b7e09028d372de71f5fa776ed0727c))
+* Console warnings eliminated, property blocker added [LD-379] ([#368](https://github.com/deliveryhero/armor/issues/368)) ([8bd1db4](https://github.com/deliveryhero/armor/commit/8bd1db47ae11ecc19fcb75b9290621463d74c3db))
+
+
+### Features
+
+* **search:** custom info and icon renderer [LD-378] ([#364](https://github.com/deliveryhero/armor/issues/364)) ([46decc4](https://github.com/deliveryhero/armor/commit/46decc4919816cca9ce53f64d59e556d3d621ac4))
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor-icons:** upgraded to 1.9.0
+
 ## @deliveryhero/armor [1.28.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.28.1...@deliveryhero/armor@1.28.2) (2021-01-12)
 
 
