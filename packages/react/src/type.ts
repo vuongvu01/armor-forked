@@ -25,6 +25,8 @@ export type ReferenceType<C = unknown> =
     | MutableRefObject<C>
     | null;
 
+export type MutableReferenceType = MutableRefObject<HTMLElement | null>;
+
 export type PseudoEventType<V = ScalarType> = {
     target: {
         value: V;

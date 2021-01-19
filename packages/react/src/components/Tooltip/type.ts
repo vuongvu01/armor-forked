@@ -1,41 +1,35 @@
-import { HTMLAttributes, ReactNode } from 'react';
+import { HTMLAttributes, ReactElement, ReactNode } from 'react';
 
-import { Indexed } from '../../type';
+import { Indexed, ObjectLiteralType } from '../../type';
 import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../type';
+import { PopperPlacementType } from '../../system/hooks/type';
 
-// https://popper.js.org/docs/v2/constructors/
-export type TooltipAlignmentType =
-    | 'top'
-    | 'top-start'
-    | 'top-end'
-    | 'bottom'
-    | 'bottom-start'
-    | 'bottom-end'; // todo: support all of them
-
-type TooltipEffectivePropsType = Indexed<{
-    align?: TooltipAlignmentType;
-    error?: boolean;
-    small?: boolean;
-    content?: ReactNode;
+type TooltipEffectivePropsType = Partial<{
+    align: PopperPlacementType;
+    error: boolean;
+    small: boolean;
+    content: ReactNode;
+    trigger: ReactElement;
+    open: boolean;
+    defaultOpen: boolean;
+    onToggle: (open: boolean) => void;
     // add other custom properties here
 }> &
-    HTMLAttributes<HTMLDivElement>; // includes all HTML Div attributes
+    HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
+    ObjectLiteralType;
 
 /* Tooltip component prop type */
 export type TooltipPropsType = TooltipEffectivePropsType &
     ComponentStylePropsType;
 
 /* Tooltip Root node prop type */
-export type TooltipRootPropsType = TooltipEffectivePropsType & {
-    hidden: boolean;
-} & ComponentElementStylePropsType;
+export type TooltipRootPropsType = TooltipEffectivePropsType & {} & ComponentElementStylePropsType;
 
 /* Tooltip Arrow node prop type */
-export type TooltipArrowPropsType = Pick<
-    TooltipEffectivePropsType,
-    'hide' | 'error'
-> &
+export type TooltipArrowPropsType = Partial<{
+    error: boolean;
+}> &
     ComponentElementStylePropsType;

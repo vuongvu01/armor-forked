@@ -9,6 +9,7 @@ export const useControlledState = <P = unknown>(
         value === undefined ? defaultValue : value,
     );
     const realValue = value === undefined ? internalValue : value;
+    const isControlled = value !== undefined;
 
     const setRealValue = useCallback(
         (newValue: P) => {
@@ -23,5 +24,9 @@ export const useControlledState = <P = unknown>(
         [setInternalValue, onValueChange, value],
     );
 
-    return [realValue, setRealValue] as [P, (newValue: P) => void];
+    return [realValue, setRealValue, isControlled] as [
+        P,
+        (newValue: P) => void,
+        boolean,
+    ];
 };

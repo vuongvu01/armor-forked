@@ -1,5 +1,4 @@
 import deepMerge from 'deepmerge';
-import { ReactText } from 'react';
 import { ObjectLiteralType, PropNameType } from '../type';
 import {
     marginAttributesList,
@@ -10,7 +9,6 @@ import {
     displayAttributesList,
     colorAttributesList,
 } from '../system/attributes';
-import { TextInputRootPropsType } from '../components/TextInput/type';
 
 export { default as generateId } from './generateId';
 export { default as getElementName } from './getElementName';

@@ -5,4 +5,4 @@ export type MatchBreakpointFunctionType = (
     width: number,
 ) => boolean;
 
-export type PopperPlacement = Placement;
+export type PopperPlacementType = Placement;

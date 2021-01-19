@@ -2,7 +2,7 @@ import { MouseEventHandler, ReactElement, ReactNode, useCallback } from 'react';
 
 export const useEventProxy = (
     children: ReactNode,
-    setHidden: (hidden: boolean) => void,
+    setOpen: (hidden: boolean) => void,
 ) => {
     const childrenElement = children as ReactElement;
 
@@ -16,12 +16,12 @@ export const useEventProxy = (
     }
     const onMouseOverProxy = useCallback(
         event => {
-            setHidden(false);
+            setOpen(true);
             if (onMouseOver) {
                 onMouseOver(event);
             }
         },
-        [onMouseOver, setHidden],
+        [onMouseOver, setOpen],
     );
 
     let onMouseOut: MouseEventHandler | null = null;
@@ -34,12 +34,12 @@ export const useEventProxy = (
     }
     const onMouseOutProxy = useCallback(
         event => {
-            setHidden(true);
+            setOpen(false);
             if (onMouseOut) {
                 onMouseOut(event);
             }
         },
-        [onMouseOut, setHidden],
+        [onMouseOut, setOpen],
     );
 
     return {

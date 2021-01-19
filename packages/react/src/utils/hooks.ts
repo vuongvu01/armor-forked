@@ -8,6 +8,7 @@ import { ObjectLiteralType } from '../type';
 
 /**
  * @internal
+ * @deprecated
  */
 export const useComponentTheme = (
     classPrefix: string,

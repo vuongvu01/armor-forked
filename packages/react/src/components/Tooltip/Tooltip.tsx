@@ -1,76 +1,62 @@
-import React, { FunctionComponent, ReactElement, useState } from 'react';
+import React, { forwardRef, FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 import { useComponentTheme } from '../../utils/hooks';
 
-import { validateChildren } from './utils/validateChildren';
 import { useTooltipClassNames } from './utils/useTooltipClassNames';
-import { usePopper } from './utils/usePopper';
-import { useEventProxy } from './utils/useEventProxy';
 import { TooltipRoot, TooltipArrow } from './style';
 import { TooltipPropsType } from './type';
 import { tooltipDefaultTheme } from './theme';
-import { consoleWarn } from '../../system/util/consoleWarn';
 import { TOOLTIP_CLASS_PREFIX } from './constants';
+import { useTooltip } from './utils/useTooltip';
 
-export const Tooltip: FunctionComponent<TooltipPropsType> = ({
-    className,
-    children,
-    content,
-    align,
-    error,
-    ...restProps
-}) => {
-    const theme = useComponentTheme(TOOLTIP_CLASS_PREFIX, tooltipDefaultTheme);
+export const Tooltip: FunctionComponent<TooltipPropsType> = forwardRef(
+    function Tooltip({ className, ...props }, ref) {
+        const theme = useComponentTheme(
+            TOOLTIP_CLASS_PREFIX,
+            tooltipDefaultTheme,
+        );
 
-    const classNameComponents = useTooltipClassNames(
-        TOOLTIP_CLASS_PREFIX,
-        className,
-        align,
-    );
+        const {
+            align,
+            open,
+            trigger,
+            validTrigger,
+            content,
+            rootProps,
+            arrowProps,
+        } = useTooltip(props, ref);
 
-    const [hidden, setHidden] = useState(true);
-    const { triggerReference, tooltipReference, arrowReference } = usePopper(
-        children,
-        align,
-    );
-    const { onMouseOverProxy, onMouseOutProxy } = useEventProxy(
-        children,
-        setHidden,
-    );
+        const classNameComponents = useTooltipClassNames(
+            TOOLTIP_CLASS_PREFIX,
+            className,
+            align,
+        );
 
-    const validChildren = validateChildren(children);
-    if (!validChildren) {
-        consoleWarn('Tooltip component was attached to invalid children');
-        return null;
-    }
+        if (!validTrigger) {
+            return null;
+        }
 
-    return (
-        <>
-            {React.cloneElement(validChildren as ReactElement, {
-                ref: triggerReference,
-                onMouseOver: onMouseOverProxy,
-                onMouseOut: onMouseOutProxy,
-            })}
-            <TooltipRoot
-                {...restProps}
-                theme={theme}
-                className={classNameComponents.Root}
-                error={error}
-                ref={tooltipReference}
-                hidden={hidden}
-            >
-                {content}
-                <TooltipArrow
-                    theme={theme}
-                    className={classNameComponents.Arrow}
-                    error={error}
-                    // @ts-ignore: fixme: LD-97
-                    ref={arrowReference}
-                />
-            </TooltipRoot>
-        </>
-    );
-};
+        return (
+            <>
+                {trigger}
+                {open && (
+                    <TooltipRoot
+                        {...rootProps}
+                        theme={theme}
+                        className={classNameComponents.Root}
+                    >
+                        {content}
+                        <TooltipArrow
+                            {...arrowProps}
+                            theme={theme}
+                            className={classNameComponents.Arrow}
+                        />
+                    </TooltipRoot>
+                )}
+            </>
+        );
+    },
+);
 
 Tooltip.defaultProps = {
     align: 'top',
