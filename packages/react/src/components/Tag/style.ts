@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { CancelIcon } from '@deliveryhero/armor-icons';
 
 import { marginAttributes } from '../../system/attributes';
-import { makePropList, shouldForwardProp } from '../../utils';
+import { getPropsBlocker, makePropList } from '../../utils';
 import {
     TagCloseIconContainerPropsType,
     TagCloseIconPropsType,
@@ -42,7 +42,7 @@ const containerStyle = ({
             }
 
             return css`
-                ${Tag.Root.base}
+                ${Tag.Root.base};
                 justify-content: flex-end;
             `;
         }
@@ -75,7 +75,7 @@ const closeIconContainerStyle = ({
             margin-top: 3px;
             opacity: 1;
 
-            ${Tag.Icon.base}
+            ${Tag.Icon.base};
         `;
     }
 
@@ -85,8 +85,8 @@ const closeIconContainerStyle = ({
             margin-left: 8px;
             position: absolute;
             transform: translateX(12px);
-            ${Tag.Icon.base}
-            ${Tag.Icon.onHover}
+            ${Tag.Icon.base};
+            ${Tag.Icon.onHover};
         `;
     }
     return Tag.Icon.base;
@@ -98,7 +98,9 @@ const closeIconStyle = ({
     },
 }: TagCloseIconPropsType) => Tag.Icon.element;
 
-export const TagCloseIconContainer = styled.div<TagCloseIconContainerPropsType>`
+export const TagCloseIconContainer = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<TagCloseIconContainerPropsType>`
     box-sizing: border-box;
     cursor: pointer;
     display: flex;
@@ -112,9 +114,9 @@ export const TagCloseIconContainer = styled.div<TagCloseIconContainerPropsType>`
     ${closeIconContainerStyle}
 `;
 
-export const TagRoot = styled.div.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<TagRootPropsType>`
+export const TagRoot = styled.div.withConfig(getPropsBlocker(propertyList))<
+    TagRootPropsType
+>`
     border-style: solid;
     border-width: 1px;
     box-sizing: border-box;
@@ -135,13 +137,15 @@ export const TagRoot = styled.div.withConfig({
     ${getComponentOverride('Tag')};
 `;
 
-export const TagTypography = styled(Typography).withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<TagTypographyPropsType>`
+export const TagTypography = styled(Typography).withConfig(
+    getPropsBlocker(propertyList, false),
+)<TagTypographyPropsType>`
     ${typographyStyle}
 `;
 
-export const TagCloseIcon = styled(CancelIcon)<TagCloseIconPropsType>`
+export const TagCloseIcon = styled(CancelIcon).withConfig(
+    getPropsBlocker(propertyList, false),
+)<TagCloseIconPropsType>`
     outline: none;
 
     ${closeIconStyle}

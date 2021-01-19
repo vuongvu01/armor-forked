@@ -1,7 +1,7 @@
 import React, { HTMLAttributes, MouseEvent } from 'react';
 
 import { MarginAttributesType } from '../../../../../system/attributes';
-import { Indexed, ScalarType } from '../../../../../type';
+import { Indexed, ObjectLiteralType, ScalarType } from '../../../../../type';
 
 export type ClassBasedOnComponentType = {
     className?: string;
@@ -12,8 +12,7 @@ export type OptionObjectType = {
     value: ScalarType;
     label: string;
     onClick?: (event: MouseEvent) => void;
-    [key: string]: any;
-};
+} & ObjectLiteralType;
 
 export type OptionCategoryObjectType = {
     category: string;

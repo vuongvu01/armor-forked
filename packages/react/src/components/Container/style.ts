@@ -5,13 +5,13 @@ import {
     paddingAttributes,
     sizeAttributes,
 } from '../../system/attributes';
-import { shouldForwardProp } from '../../utils';
+import { getPropsBlocker } from '../../utils';
 import { spacing } from '../../system/mixins';
 
 // if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
-export const ContainerRoot = styled.div.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property),
-})<ContainerRootPropsType>`
+export const ContainerRoot = styled.div.withConfig(getPropsBlocker())<
+    ContainerRootPropsType
+>`
     box-sizing: border-box;
     margin-left: auto;
     margin-right: auto;

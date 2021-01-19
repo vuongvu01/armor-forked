@@ -1,4 +1,5 @@
-import React, { ChangeEvent, useState } from 'react';
+/* eslint-disable no-console */
+import React, { ChangeEvent, MouseEvent, useState } from 'react';
 import styled from 'styled-components';
 import {
     LogoutIcon,
@@ -26,7 +27,6 @@ import { ScalarType } from '../../../type';
 import {
     HeaderNavigationAction,
     HeaderNavigationActionItem,
-    HeaderNavigationActionLogisticsSignOutButton,
 } from '../HeaderNavigationAction';
 import { SuggestionObjectType } from '../../Search/type';
 import { OptionType } from '../HeaderNavigationMenu/HeaderNavigationMenuContent/HeaderNavigationMenuContentBodyOptions/type';
@@ -37,6 +37,7 @@ import { DropdownSelectedOptionType } from '../../Dropdown/type';
 import { Pack, PackItem } from '../../Pack';
 import { withWrapper } from '../../../helpers/Wrapper';
 import { Navigation } from '../../Navigation';
+import { HeaderNavigationSelectOnSelectType } from '../type';
 
 export default {
     title: 'Components/HeaderNavigation',
@@ -96,6 +97,10 @@ const restaurantsMenuContentBodyOptions = [
 
 const logisticsMenuContentBodyOptions = [
     {
+        value: 'value_6',
+        label: 'Hurrier',
+    },
+    {
         value: 'value_0',
         label: 'Arara',
     },
@@ -118,10 +123,6 @@ const logisticsMenuContentBodyOptions = [
     {
         value: 'value_5',
         label: 'TES',
-    },
-    {
-        value: 'value_6',
-        label: 'Hurrier',
     },
 ];
 
@@ -191,7 +192,6 @@ const NavigationActionMultiple = (
     <HeaderNavigationAction>
         <HeaderNavigationActionItem
             onClick={() => {
-                // eslint-disable-next-line no-console
                 console.log('Show help');
             }}
         >
@@ -199,7 +199,6 @@ const NavigationActionMultiple = (
         </HeaderNavigationActionItem>
         <HeaderNavigationActionItem
             onClick={() => {
-                // eslint-disable-next-line no-console
                 console.log('Log out');
             }}
         >
@@ -209,15 +208,15 @@ const NavigationActionMultiple = (
 );
 
 const selectorParams = {
-    label: 'Platform and Country',
+    label: 'Country',
     isMultiselect: false,
     options: [
         { value: 0, label: 'Japan' },
         { value: 1, label: 'Laos' },
         { value: 2, label: 'Sweden' },
         { value: 3, label: 'Vietnam' },
+        { value: 4, label: 'United States of America' },
     ],
-    onChange: () => {},
 };
 
 export const ExtensiveExample = () => {
@@ -266,31 +265,34 @@ export const ExtensiveExample = () => {
     const [countrySelected, setCountrySelected] = useState('');
 
     const handleOptionSelect = (selectedItem: OptionType) => {
-        // eslint-disable-next-line no-console
-        console.log('handleOptionSelect', { selectedItem });
-
         setSelectedValue(selectedItem?.value);
         setProductSelected(selectedItem?.label);
+
+        console.log('handleOptionSelect', { selectedItem });
     };
 
     const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
         const query = event?.target?.value || '';
         setSearchQuery(query);
 
-        // eslint-disable-next-line no-console
-        console.log({ query });
+        console.log('handleSearchChange', { query });
     };
 
     const handleSearchItemSelect = (option: SuggestionObjectType) => {
         setSearchQuery(option.label);
 
-        // eslint-disable-next-line no-console
-        console.log({ option });
+        console.log('handleSearchItemSelect', { option });
     };
 
-    const handleSelect = (selectedOption: DropdownSelectedOptionType) => {
-        // eslint-disable-next-line no-console
-        console.log('selected', { selectedOption });
+    const handleClick = (event: MouseEvent<HTMLDivElement>) => {
+        console.log('handleClick', { event });
+    };
+
+    const handleSelect = (
+        selectedOption: DropdownSelectedOptionType,
+        itemIndex?: number,
+    ) => {
+        console.log('selected', { selectedOption, itemIndex });
 
         setCountrySelected(
             typeof selectedOption === 'string'
@@ -300,7 +302,6 @@ export const ExtensiveExample = () => {
     };
 
     const handleLinkClick = (name: string) => {
-        // eslint-disable-next-line no-console
         console.log('link clicked', { name });
 
         return setSelectedLinkName(name);
@@ -382,11 +383,13 @@ export const ExtensiveExample = () => {
                     <HeaderNavigationSelector
                         navigationSelectorParams={selectorParams}
                         onOptionSelect={handleSelect}
-                        onChange={() => {}}
+                        onClick={handleClick}
                     />
                 }
                 navigationAction={NavigationAction}
             />
+            <br />
+            <br />
             <Navigation
                 items={structure}
                 width="400px"
@@ -421,18 +424,13 @@ export const ExpandedSelector = () => {
     const [selectedValue, setSelectedValue] = useState<ScalarType>('value_5');
 
     const handleOptionSelect = (selectedItem: OptionType) => {
-        // eslint-disable-next-line no-console
         console.log('handleOptionSelect', { selectedItem });
 
         setSelectedValue(selectedItem?.value);
     };
 
-    // eslint-disable-next-line no-console
-    console.log('story', { selectedValue });
-
     return (
         <HeaderNavigation
-            title="Vendor Monitor"
             navigationMenuTitle={NavigationMenuTitle}
             navigationMenuContent={
                 <HeaderNavigationMenuContent>
@@ -461,23 +459,18 @@ export const ExpandedSelector = () => {
 };
 
 export const MultiselectCountryPlatformSelector = () => {
-    const [value, setValue] = useState<any>();
+    const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
+        const query = event?.target?.value || '';
 
-    // eslint-disable-next-line no-console
-    console.log({ value });
+        console.log({ query });
+    };
 
-    const handleOptionSelect = (
-        selectedOption: {
-            label: string;
-            value: string | number;
-            [key: string]: any;
-        },
-        itemIndex?: number,
-    ) => {
-        // eslint-disable-next-line no-console
-        console.log('selected', { selectedOption, itemIndex });
+    const handleSearchItemSelect = (option: SuggestionObjectType) => {
+        console.log({ option });
+    };
 
-        return setValue(selectedOption?.labe);
+    const handleOptionSelect = (selectedOption: DropdownSelectedOptionType) => {
+        console.log({ selectedOption });
     };
 
     return (
@@ -485,11 +478,66 @@ export const MultiselectCountryPlatformSelector = () => {
             title="Vendor Monitor"
             navigationMenuTitle={NavigationMenuTitle}
             navigationMenuContent={NavigationMenuContent}
+            search={
+                <HeaderNavigationSearch
+                    options={foodOptions}
+                    onChange={handleSearchChange}
+                    onItemSelect={handleSearchItemSelect}
+                />
+            }
             selector={
                 <HeaderNavigationSelector
                     navigationSelectorParams={{
                         ...selectorParams,
                         isMultiselect: true,
+                    }}
+                    onOptionSelect={handleOptionSelect}
+                />
+            }
+            navigationAction={NavigationAction}
+        />
+    );
+};
+
+export const WithCustomSelectionRenderer = () => {
+    const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
+        const query = event?.target?.value || '';
+
+        console.log({ query });
+    };
+
+    const handleSearchItemSelect = (option: SuggestionObjectType) => {
+        console.log({ option });
+    };
+
+    const handleOptionSelect = (selectedOption: DropdownSelectedOptionType) => {
+        console.log({ selectedOption });
+    };
+
+    return (
+        <HeaderNavigation
+            title="Vendor Monitor"
+            navigationMenuTitle={NavigationMenuTitle}
+            navigationMenuContent={NavigationMenuContent}
+            search={
+                <HeaderNavigationSearch
+                    options={foodOptions}
+                    onChange={handleSearchChange}
+                    onItemSelect={handleSearchItemSelect}
+                />
+            }
+            selector={
+                <HeaderNavigationSelector
+                    navigationSelectorParams={{
+                        ...selectorParams,
+                        isMultiselect: true,
+                    }}
+                    onOptionSelect={handleOptionSelect}
+                    onRenderSelectedValue={(
+                        value: ReadonlyArray<unknown>,
+                        options: ReadonlyArray<unknown>,
+                    ) => {
+                        return `${value.length} of ${options.length}`;
                     }}
                 />
             }
@@ -501,7 +549,7 @@ export const MultiselectCountryPlatformSelector = () => {
 export const PreSelectedCountryAndExpandedMenuOnLoad = () => (
     <HeaderNavigation
         title="Vendor Monitor"
-        isMenuExpanded={true}
+        defaultExpanded={true}
         navigationMenuTitle={NavigationMenuTitle}
         navigationMenuContent={NavigationMenuContent2}
         selector={
@@ -624,7 +672,6 @@ export const Arara = () => {
                             // @ts-ignore
                             setCurrentCountry(country.value);
                         }}
-                        onChange={() => {}}
                     />
                 }
                 navigationAction={

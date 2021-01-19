@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { marginAttributes } from '../../system/attributes';
-import { shouldForwardProp } from '../../utils';
+import { getPropsBlocker } from '../../utils';
 import { mouseCursor } from '../../styling';
 import { transitionDurationInSec } from '../../constants';
 import {
@@ -60,15 +60,17 @@ const radioRootStyle = ({
     },
 }: RadioRootPropsType) => Radio.Root.base;
 
-export const RadioRoot = styled.div.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property),
-})<RadioRootPropsType>`
+export const RadioRoot = styled.div.withConfig(getPropsBlocker())<
+    RadioRootPropsType
+>`
     ${radioRootStyle}
     ${getComponentOverride('Radio')};
     ${marginAttributes}
 `;
 
-export const RadioMark = styled.label<RadioMarkPropsType>`
+export const RadioMark = styled.label.withConfig(getPropsBlocker())<
+    RadioMarkPropsType
+>`
     cursor: pointer;
     display: inline-flex;
     padding-left: ${sizes.container.side}px;
@@ -77,7 +79,9 @@ export const RadioMark = styled.label<RadioMarkPropsType>`
     ${mouseCursor}
 `;
 
-export const RadioInput = styled.input<RadioInputPropsType>`
+export const RadioInput = styled.input.withConfig(getPropsBlocker())<
+    RadioInputPropsType
+>`
     height: 0;
     margin: 0;
     opacity: 0;

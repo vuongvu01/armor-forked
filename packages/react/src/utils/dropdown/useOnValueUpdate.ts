@@ -4,9 +4,9 @@ import {
     DropdownOnChangeType,
     DropDownOnSelectType,
     DropdownOnValueUpdateType,
-} from '../type';
+} from '../../components/Dropdown/type';
 
-const denormalizeValue = (
+export const denormalizeValue = (
     value: DropdownInternalValueType,
     multiple?: boolean,
 ) => {
@@ -35,6 +35,7 @@ export const useOnValueUpdate = (
             }
 
             let nextValue: DropdownInternalValueType;
+
             if (multiple) {
                 if (internalValue.includes(chosenItem)) {
                     nextValue = internalValue.filter(
@@ -55,6 +56,7 @@ export const useOnValueUpdate = (
                     },
                 });
             }
+
             if (onSelect && !multiple && options) {
                 const option = isFlat ? selectedOption.label : selectedOption;
                 onSelect(option, options.indexOf(option));

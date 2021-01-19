@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { marginAttributes } from '../../system';
 import { ObjectLiteralType } from '../../type';
-import { shouldForwardProp } from '../../utils';
+import { getPropsBlocker } from '../../utils';
 import { IndicatorRootPropsType } from './type';
 
 const propertyList = {
@@ -12,9 +12,9 @@ const propertyList = {
 const getRootBaseStyle = ({ theme }: IndicatorRootPropsType) =>
     theme.componentOverrides.Indicator.Root.base;
 
-export const IndicatorRoot = styled.div.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<IndicatorRootPropsType>`
+export const IndicatorRoot = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<IndicatorRootPropsType>`
     box-sizing: border-box;
     position: relative;
     border-radius: 9999px;

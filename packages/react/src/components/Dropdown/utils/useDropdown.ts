@@ -1,14 +1,14 @@
 import { useCallback, useMemo, useRef, useState } from 'react';
-import { DropdownPropsType, OptionObjectType } from '../type';
+import { DropdownPropsType } from '../type';
 import {
     useDetectClickOutsideComponent,
     useDetectEscapeKeyPressed,
     useInternalRef,
+    useOnValueUpdate,
+    useValue,
+    useSelectedValueToDisplay,
+    useOptions,
 } from '../../../utils';
-import { useValue } from './useValue';
-import { useOnValueUpdate } from './useOnValueUpdate';
-import { useOptions } from './useOptions';
-import { useSelectedValueToDisplay } from './useSelectedValueToDisplay';
 import { ReferenceType } from '../../../type';
 
 export const useDropdown = (
@@ -43,18 +43,20 @@ export const useDropdown = (
     useInternalRef(ref, internalInputRef);
 
     const [internalValue, setInternalValue] = useValue(value, defaultValue);
+
+    const { internalOptions, isFlat } = useOptions(options, formatOption);
+
     const onValueUpdate = useOnValueUpdate(
         setInternalValue,
         onSelect,
         onChange,
         name,
     );
-    const { internalOptions, isFlat } = useOptions(options, formatOption);
 
     const selectedValueToDisplay = useSelectedValueToDisplay(
-        onRenderSelectedValue,
         internalValue,
         internalOptions,
+        onRenderSelectedValue,
     );
 
     const [isOptionListShown, setIsOptionListShown] = useState(isListExpanded);
@@ -70,27 +72,13 @@ export const useDropdown = (
     const focusOnActionItemTrigger = () => {
         const node = internalInputRef.current as any;
 
-        if (node && node.focus && !isOptionListShown) {
-            node.focus();
+        if (!isOptionListShown) {
+            if (node && node.focus) {
+                node.focus();
+            }
+        } else {
+            blurInput();
         }
-    };
-
-    const onOptionSelect = (item: OptionObjectType) => {
-        if (internalOptions) {
-            onValueUpdate(
-                internalValue,
-                multiple,
-                item,
-                item.value,
-                options,
-                isFlat,
-            );
-        }
-
-        if (!multiple) {
-            setIsOptionListShown(false);
-        }
-        blurInput();
     };
 
     useDetectClickOutsideComponent(
@@ -140,7 +128,17 @@ export const useDropdown = (
         },
         optionListContainerProps: {},
         optionListProps: {
+            disabled,
+            options,
+            multiple,
+            formatOption,
+            internalValue,
+            blurInput,
             isOptionListShown,
+            setIsOptionListShown,
+            onValueUpdate,
+            isFlat,
+            internalOptions,
         },
 
         // todo: move render functions out and use rest props for props
@@ -150,11 +148,9 @@ export const useDropdown = (
             (isOptionListShown || !!internalValue.length),
         isOptionListShown,
         handleActionItemClick,
-        internalValue,
-        onOptionSelect,
-        internalOptions,
         error,
-        multiple,
-        formatOption,
+
+        blurInput,
+        internalInputRef,
     };
 };

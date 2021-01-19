@@ -3,12 +3,11 @@ import React, { HTMLAttributes } from 'react';
 import { Indexed } from '../../../type';
 import {
     GroupObjectIndexType,
+    SearchPropsType,
     SearchQueryType,
-    SuggestionObjectType,
 } from '../type';
 
 export type SearchSuggestionsListPropsType = Indexed<{
-    options?: SuggestionObjectType[];
     groupIndex: GroupObjectIndexType;
     cursor?: number;
     icon?: null | React.ReactElement;
@@ -17,9 +16,12 @@ export type SearchSuggestionsListPropsType = Indexed<{
         event: React.MouseEvent<HTMLDivElement>,
         suggestionIndex: number,
     ) => void;
-    additionalInfo?: null | React.ReactElement;
     groupClassName?: string;
 }> &
+    Pick<
+        SearchPropsType,
+        'renderItemAdditionalInfo' | 'renderItemIcon' | 'options'
+    > &
     HTMLAttributes<HTMLElement>;
 
 export type SearchSuggestionListGroupPropsType = {

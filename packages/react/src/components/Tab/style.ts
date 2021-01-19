@@ -5,8 +5,8 @@ import { marginAttributes } from '../../system/attributes';
 import { mouseCursor } from '../../styling';
 import { TabLabelPropsType, TabRootPropsType } from './type';
 import { transitionDurationInSec } from '../../constants';
-import { borderRadius, color, spacing, typography } from '../../system/mixins';
-import { makePropList, shouldForwardProp } from '../../utils';
+import { borderRadius, color, spacing } from '../../system/mixins';
+import { getPropsBlocker, makePropList } from '../../utils';
 import { Typography } from '../Typography';
 import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 
@@ -115,7 +115,9 @@ const cursor = ({ disabled, isActive }: TabRootPropsType) => {
     return mouseCursor;
 };
 
-export const TabRoot = styled.div<TabRootPropsType>`
+export const TabRoot = styled.div.withConfig(getPropsBlocker(propertyList))<
+    TabRootPropsType
+>`
     min-width: 100px;
 
     &::after {
@@ -141,7 +143,9 @@ const TabLabelTagWrapper = ({
     children: (props: TabLabelPropsType) => ReactElement;
 }) => children(restProps);
 
-export const TabLabelContainer = styled(TabLabelTagWrapper)<TabLabelPropsType>`
+export const TabLabelContainer = styled(TabLabelTagWrapper).withConfig(
+    getPropsBlocker(propertyList, false),
+)<TabLabelPropsType>`
     text-decoration: none;
     &:hover,
     &:visited,
@@ -153,9 +157,9 @@ export const TabLabelContainer = styled(TabLabelTagWrapper)<TabLabelPropsType>`
     ${tabLabelContainerStyle}
 `;
 
-export const TabLabel = styled(Typography).withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<TabLabelPropsType>`
+export const TabLabel = styled(Typography).withConfig(
+    getPropsBlocker(propertyList, false),
+)<TabLabelPropsType>`
     align-items: center;
     justify-content: center;
     box-sizing: border-box;

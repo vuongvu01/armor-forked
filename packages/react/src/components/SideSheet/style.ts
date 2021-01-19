@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { shouldForwardProp } from '../../utils';
+import { getPropsBlocker } from '../../utils';
 import {
     SideSheetContainerPropsType,
     SideSheetContentPropsType,
@@ -17,7 +17,7 @@ import {
 } from './constants';
 import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 
-const blacklistProperties = {
+const propertyList = {
     effectToggle: true,
     disableEffects: true,
 };
@@ -69,10 +69,9 @@ const closeIconStyle = ({
     },
 }: SideSheetContentPropsType) => SideSheet.Icon.focused;
 
-export const SideSheetRoot = styled.div.withConfig({
-    shouldForwardProp: property =>
-        shouldForwardProp(property, blacklistProperties),
-})<SideSheetContainerPropsType>`
+export const SideSheetRoot = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<SideSheetContainerPropsType>`
     background: white;
     display: flex;
     height: 100vh;
@@ -86,7 +85,9 @@ export const SideSheetRoot = styled.div.withConfig({
     ${getComponentOverride('SideSheet')};
 `;
 
-export const SideSheetContent = styled.div<SideSheetContentPropsType>`
+export const SideSheetContent = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<SideSheetContentPropsType>`
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -94,16 +95,16 @@ export const SideSheetContent = styled.div<SideSheetContentPropsType>`
     ${contentStyle}
 `;
 
-export const SideSheetHeaderContainer = styled.div<
-    SideSheetHeaderContainerPropsType
->`
+export const SideSheetHeaderContainer = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<SideSheetHeaderContainerPropsType>`
     display: flex;
     justify-content: flex-end;
 `;
 
-export const SideSheetHeaderCloseButtonContainer = styled.div<
-    SideSheetHeaderCloseButtonContainerPropsType
->`
+export const SideSheetHeaderCloseButtonContainer = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<SideSheetHeaderCloseButtonContainerPropsType>`
     display: flex;
     justify-content: flex-end;
     margin-top: -${closeIconOffset}px;
@@ -112,9 +113,9 @@ export const SideSheetHeaderCloseButtonContainer = styled.div<
     ${closeIconContainerStyle}
 `;
 
-export const SideSheetHeaderCloseButtonContent = styled.div<
-    SideSheetHeaderCloseButtonContentPropsType
->`
+export const SideSheetHeaderCloseButtonContent = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<SideSheetHeaderCloseButtonContentPropsType>`
     height: 32px;
     width: 32px;
     cursor: pointer;

@@ -4,14 +4,13 @@ import {
     paddingAttributes,
     sizeAttributes,
 } from '../../system/attributes';
-import { shouldForwardProp } from '../../utils';
+import { getPropsBlocker } from '../../utils';
 import { DataTableFooterPropsType, DataTableRootPropsType } from './type';
 import { spacing } from '../../system/mixins';
 
-export const DataTableRoot = styled.div.withConfig({
-    shouldForwardProp: property =>
-        shouldForwardProp(property, { horizontalScroll: true }),
-})<DataTableRootPropsType>`
+export const DataTableRoot = styled.div.withConfig(getPropsBlocker())<
+    DataTableRootPropsType
+>`
     box-sizing: border-box;
 
     ${sizeAttributes}

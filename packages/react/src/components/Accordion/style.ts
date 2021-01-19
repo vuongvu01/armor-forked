@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import { marginAttributes } from '../../system/attributes';
-import { makePropList, shouldForwardProp } from '../../utils';
+import { getPropsBlocker, makePropList } from '../../utils';
 import { AccordionRootPropsType } from './type';
 import { AccordionHeaderRootPropsType } from './AccordionHeader/type';
 import { transitionDurationInSec } from '../../constants';
@@ -22,9 +22,9 @@ const accordionStyle = ({
     `;
 };
 
-export const AccordionRoot = styled.div.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<AccordionRootPropsType>`
+export const AccordionRoot = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<AccordionRootPropsType>`
     border-bottom-style: solid;
     border-bottom-width: 1px;
     border-top-style: solid;

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { QuestionChatIcon, LogoutIcon } from '@deliveryhero/armor-icons';
@@ -119,7 +120,6 @@ const NavigationAction = (
     <HeaderNavigationAction>
         <HeaderNavigationActionItem
             onClick={() => {
-                // eslint-disable-next-line no-console
                 console.log('Log out');
             }}
         >
@@ -132,7 +132,6 @@ const NavigationActionMultiple = (
     <HeaderNavigationAction>
         <HeaderNavigationActionItem
             onClick={() => {
-                // eslint-disable-next-line no-console
                 console.log('Show help');
             }}
         >
@@ -140,7 +139,6 @@ const NavigationActionMultiple = (
         </HeaderNavigationActionItem>
         <HeaderNavigationActionItem
             onClick={() => {
-                // eslint-disable-next-line no-console
                 console.log('Log out');
             }}
         >
@@ -158,7 +156,6 @@ const selectorParams = {
             | { label: string; value: string | number; [key: string]: any }, // similarly here - to expose into storybook, otherwise it says just OptionItemType
         itemIndex?: number,
     ) => {
-        // eslint-disable-next-line no-console
         console.log('selected', { selectedOption, itemIndex });
     },
     options: [
@@ -166,6 +163,7 @@ const selectorParams = {
         { value: 1, label: 'Laos' },
         { value: 2, label: 'Sweden' },
         { value: 3, label: 'Vietnam' },
+        { value: 4, label: 'United States of America' },
     ],
 };
 
@@ -322,10 +320,47 @@ export const MultiplePreSelectedCountry = () => (
     />
 );
 
+export const MultiplePreSelectedCountryAndExpandedSelector = () => (
+    <HeaderNavigation
+        title="Vendor Monitor"
+        navigationMenuTitle={NavigationMenuTitle}
+        navigationMenuContent={NavigationMenuContentLogistics}
+        selector={
+            <HeaderNavigationSelector
+                navigationSelectorParams={{
+                    ...selectorParams,
+                    isMultiselect: true,
+                    isExpanded: true,
+                    defaultValue: [0, 1],
+                }}
+            />
+        }
+        navigationAction={NavigationAction}
+    />
+);
+
+export const MultiplePreSelectedCountryEllipsisVisible = () => (
+    <HeaderNavigation
+        title="Vendor Monitor"
+        navigationMenuTitle={NavigationMenuTitle}
+        navigationMenuContent={NavigationMenuContentLogistics}
+        selector={
+            <HeaderNavigationSelector
+                navigationSelectorParams={{
+                    ...selectorParams,
+                    isMultiselect: true,
+                    defaultValue: [0, 1, 2, 3, 4],
+                }}
+            />
+        }
+        navigationAction={NavigationAction}
+    />
+);
+
 export const ExpandedCategorizedMenuOnLoad = () => (
     <HeaderNavigation
         title="Vendor Monitor"
-        isMenuExpanded={true}
+        defaultExpanded={true}
         navigationMenuTitle={NavigationMenuTitle}
         navigationMenuContent={NavigationMenuContentRestaurant}
         selector={
@@ -343,14 +378,13 @@ export const ExpandedCategorizedPreselectedMenuItemOnLoad = () => {
     const handleOptionSelect = (selectedItem: OptionType) => {
         console.log('handleOptionSelect', { selectedItem });
 
-        // @ts-ignore
         setSelectedValue(selectedItem?.value);
     };
 
     return (
         <HeaderNavigation
             title="Vendor Monitor"
-            isMenuExpanded={true}
+            defaultExpanded={true}
             navigationMenuTitle={NavigationMenuTitle}
             navigationMenuContent={
                 <HeaderNavigationMenuContent>
@@ -390,12 +424,10 @@ export const NavigationLinksWithReachRouterLink = () => {
     const handleOptionSelect = (selectedItem: OptionType) => {
         console.log('handleOptionSelect', { selectedItem });
 
-        // @ts-ignore
         setSelectedValue(selectedItem?.value);
     };
 
     const handleLinkClick = (name: string) => {
-        // eslint-disable-next-line no-console
         console.log('link clicked', { name });
 
         return setSelectedLinkName(name);
@@ -480,12 +512,11 @@ export const NavigationLinksWithHref = () => {
     const handleOptionSelect = (selectedItem: OptionType) => {
         console.log('handleOptionSelect', { selectedItem });
 
-        // @ts-ignore
         setSelectedValue(selectedItem?.value);
     };
 
     const handleLinkClick = (name: string) => {
-        // eslint-disable-next-line no-console
+        //
         console.log('link clicked', { name });
 
         return setSelectedLinkName(name);
@@ -555,7 +586,7 @@ export const NavigationLinksWithHref = () => {
 export const ExpandedUncategorizedMenuOnLoad = () => (
     <HeaderNavigation
         title="Vendor Monitor"
-        isMenuExpanded={true}
+        defaultExpanded={true}
         navigationMenuTitle={NavigationMenuTitle}
         navigationMenuContent={NavigationMenuContentLogistics}
         selector={
@@ -577,14 +608,13 @@ export const ExpandedUncategorizedPreselectedMenuItemOnLoad = () => {
     const handleOptionSelect = (selectedItem: OptionType) => {
         console.log('handleOptionSelect', { selectedItem });
 
-        // @ts-ignore
         setSelectedValue(selectedItem?.value);
     };
 
     return (
         <HeaderNavigation
             title="Vendor Monitor"
-            isMenuExpanded={true}
+            defaultExpanded={true}
             navigationMenuTitle={NavigationMenuTitle}
             navigationMenuContent={
                 <HeaderNavigationMenuContent>
@@ -619,7 +649,6 @@ export const WithSearchBar = () => {
     const handleOptionSelect = (selectedItem: OptionType) => {
         console.log('handleOptionSelect', { selectedItem });
 
-        // @ts-ignore
         setSelectedValue(selectedItem?.value);
     };
 
@@ -666,7 +695,6 @@ export const NoSeparators = () => {
     const handleOptionSelect = (selectedItem: OptionType) => {
         console.log('handleOptionSelect', { selectedItem });
 
-        // @ts-ignore
         setSelectedValue(selectedItem?.value);
     };
 
@@ -724,12 +752,10 @@ export const WithNavigationTitleAsLink = () => {
     const handleOptionSelect = (selectedItem: OptionType) => {
         console.log('handleOptionSelect', { selectedItem });
 
-        // @ts-ignore
         setSelectedValue(selectedItem?.value);
     };
 
     const handleLinkClick = (name: string) => {
-        // eslint-disable-next-line no-console
         console.log('link clicked', { name });
 
         return setSelectedLinkName(name);
@@ -825,12 +851,10 @@ export const WithContentsReordered = () => {
     const handleOptionSelect = (selectedItem: OptionType) => {
         console.log('handleOptionSelect', { selectedItem });
 
-        // @ts-ignore
         setSelectedValue(selectedItem?.value);
     };
 
     const handleLinkClick = (name: string) => {
-        // eslint-disable-next-line no-console
         console.log('link clicked', { name });
 
         return setSelectedLinkName(name);

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
     withKnobs,
     text,
@@ -65,10 +65,10 @@ export const TopBottom = () => (
         <br />
         <br />
         <br />
-        <Tooltip align="top" content={'Top'}>
+        <Tooltip align="top" content={'Hello, top'}>
             <Button>Top</Button>
         </Tooltip>
-        <Tooltip align="bottom" content={'Bottom'}>
+        <Tooltip align="bottom" content={'Hello, bottom'}>
             <Button>Bottom</Button>
         </Tooltip>
     </>
@@ -82,19 +82,19 @@ export const StartEnd = () => (
         <br />
         <br />
         <br />
-        <Tooltip align="top-start" content="Top start">
+        <Tooltip align="top-start" content="Hello, top start">
             <Button marginRight={2}>Top start</Button>
         </Tooltip>
         <Tooltip align="top-end" content="Top end">
             <Button>Top end</Button>
         </Tooltip>
         <br />
-        <Tooltip align="bottom-start" content="Bottom start">
+        <Tooltip align="bottom-start" content="Hello, bottom start">
             <Button marginRight={2} marginTop={2}>
                 Bottom start
             </Button>
         </Tooltip>
-        <Tooltip align="bottom-end" content="Bottom end">
+        <Tooltip align="bottom-end" content="Hello, bottom end">
             <Button marginTop={2}>Bottom end</Button>
         </Tooltip>
         <br />
@@ -151,6 +151,42 @@ export const OriginalRef = () => {
             <br />
             <Tooltip align="top" content={'Top'}>
                 <Button ref={btnRef}>Top</Button>
+            </Tooltip>
+        </>
+    );
+};
+
+export const Controlled = () => {
+    const [open, setOpen] = useState(false);
+
+    return (
+        <>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <Tooltip align="top" content={'Top'} open={open}>
+                <Button>Top</Button>
+            </Tooltip>
+
+            <Button onClick={() => setOpen(!open)}>Open tooltip</Button>
+        </>
+    );
+};
+
+export const DefaultOpen = () => {
+    return (
+        <>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <Tooltip align="top" content={'Top'} defaultOpen>
+                <Button>Top</Button>
             </Tooltip>
         </>
     );

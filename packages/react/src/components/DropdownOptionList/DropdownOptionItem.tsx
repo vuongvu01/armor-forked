@@ -5,7 +5,7 @@ import { DropdownOptionItemPropsType } from './type';
 import { Checkbox } from '../Checkbox';
 import { Typography } from '../Typography';
 
-const DropdownOptionItem: FunctionComponent<DropdownOptionItemPropsType> = ({
+export const DropdownOptionItem: FunctionComponent<DropdownOptionItemPropsType> = ({
     isSelected,
     itemIndex,
     item,
@@ -22,6 +22,7 @@ const DropdownOptionItem: FunctionComponent<DropdownOptionItemPropsType> = ({
     const handleItemClick = useCallback(
         (event: MouseEvent) => {
             event.preventDefault();
+            event.stopPropagation();
 
             if (onOptionSelect) {
                 onOptionSelect(item);
@@ -45,5 +46,3 @@ const DropdownOptionItem: FunctionComponent<DropdownOptionItemPropsType> = ({
         </DropdownOptionItemRoot>
     );
 };
-
-export default DropdownOptionItem;

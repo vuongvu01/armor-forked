@@ -6,7 +6,7 @@ import {
     PageNavigationSizePropsType,
 } from './type';
 import { marginAttributes } from '../../system/attributes';
-import { shouldForwardProp, makePropList } from '../../utils';
+import { makePropList, getPropsBlocker } from '../../utils';
 import { transitionDurationInSec } from '../../constants';
 import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 import { color, reset, spacing, typography } from '../../system/mixins';
@@ -28,9 +28,9 @@ const propertyList = makePropList([
 ]);
 
 // if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
-export const PageNavigationRoot = styled.div.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<PageNavigationRootPropsType>`
+export const PageNavigationRoot = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<PageNavigationRootPropsType>`
     ${reset()};
     ${typography('paragraphMedium')};
     display: inline-flex;
@@ -101,16 +101,18 @@ const getButtonDynamicStyle = ({
     return result;
 };
 
-export const PageNavigationButtons = styled.div<PageNavigationButtonsPropsType>`
+export const PageNavigationButtons = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<PageNavigationButtonsPropsType>`
     ${reset()};
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
 `;
 
-export const PageNavigationPageButton = styled.button.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<PageNavigationPageButtonPropsType>`
+export const PageNavigationPageButton = styled.button.withConfig(
+    getPropsBlocker(propertyList),
+)<PageNavigationPageButtonPropsType>`
     ${reset()};
     user-select: none;
     appearance: none;
@@ -125,14 +127,18 @@ export const PageNavigationPageButton = styled.button.withConfig({
     ${getButtonDynamicStyle}
 `;
 
-export const PageNavigationPageSize = styled.div<PageNavigationSizePropsType>`
+export const PageNavigationPageSize = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<PageNavigationSizePropsType>`
     ${reset()};
     color: ${color('neutral.04')};
     margin-right: ${spacing(10)};
     white-space: nowrap;
 `;
 
-export const PageNavigationPageSizeSelector = styled(Dropdown)`
+export const PageNavigationPageSizeSelector = styled(Dropdown).withConfig(
+    getPropsBlocker(propertyList, false),
+)`
     margin-left: ${spacing(3)};
     width: ${spacing(32)};
 `;

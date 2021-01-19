@@ -31,7 +31,7 @@ export const SideSheetLayout = () => (
 );
 
 export const WideLookExpandedOnLoadNoOverlay = () => (
-    <SideSheet disableEffects disableOverlay open={true} wide={true}>
+    <SideSheet disableOverlay open={true} wide={true}>
         <SideSheetHeader
             title="Header title"
             description="Header description"

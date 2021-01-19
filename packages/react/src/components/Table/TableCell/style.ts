@@ -4,7 +4,7 @@ import {
     TableCellContentAlignmentAttributesType,
     TableCellRootPropsType,
 } from './type';
-import { makePropList, shouldForwardProp } from '../../../utils';
+import { getPropsBlocker, makePropList } from '../../../utils';
 import {
     colorAttributes,
     heightAttributes,
@@ -38,7 +38,6 @@ const propertyList = makePropList([
 ]);
 
 const getRootDynamicStyle = ({
-    theme,
     isHeader,
     stickyTop,
     stickyVisible,
@@ -49,10 +48,6 @@ const getRootDynamicStyle = ({
     ellipsis,
     enableContentBreak,
 }: TableCellRootPropsType) => {
-    const {
-        componentOverrides: { TableCell },
-    } = theme;
-
     let result = {};
 
     if (isHeader) {
@@ -225,9 +220,9 @@ const Wrapper = ({
 }) => children({ ...restProps });
 
 // if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
-export const TableCellRoot = styled(Wrapper).withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<TableCellRootPropsType>`
+export const TableCellRoot = styled(Wrapper).withConfig(
+    getPropsBlocker(propertyList),
+)<TableCellRootPropsType>`
     box-sizing: border-box;
 
     text-align: left;

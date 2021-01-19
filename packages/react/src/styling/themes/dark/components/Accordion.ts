@@ -19,6 +19,10 @@ export const getAccordionOverride = ({ disabled }: AccordionPropsType) => {
             .AccordionHeader-HeaderTitle {
                 color: ${colorGrey50};
             }
+
+            .ExpansionIndicator-Icon {
+                color: ${colorGrey50};
+            }
         `;
     } else {
         result = css`

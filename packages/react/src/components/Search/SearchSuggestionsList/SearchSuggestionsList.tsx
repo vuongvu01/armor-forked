@@ -14,8 +14,18 @@ export const SearchSuggestionsList: FunctionComponent<SearchSuggestionsListProps
     options,
     groupIndex,
     handleSuggestionClick,
+    /**
+     * @deprecated
+     * Use renderItemAdditionalInfo
+     */
     additionalInfo,
+    renderItemAdditionalInfo,
+    /**
+     * @deprecated
+     * Use renderItemIcon
+     */
     icon,
+    renderItemIcon,
     cursor,
     searchQuery,
     theme,
@@ -46,10 +56,13 @@ export const SearchSuggestionsList: FunctionComponent<SearchSuggestionsListProps
                     <SearchSuggestionItem
                         key={label}
                         option={option}
+                        optionIndex={index}
                         suggestionIndex={index}
                         handleSuggestionClick={handleSuggestionClick}
                         additionalInfo={additionalInfo}
+                        renderItemAdditionalInfo={renderItemAdditionalInfo}
                         icon={icon}
+                        renderItemIcon={renderItemIcon}
                         cursor={cursor}
                         searchQuery={searchQuery}
                         theme={theme}
@@ -64,7 +77,12 @@ export const SearchSuggestionsList: FunctionComponent<SearchSuggestionsListProps
 
 SearchSuggestionsList.propTypes = {
     handleSuggestionClick: PropTypes.func.isRequired,
+    /**
+     * @deprecated
+     * Use renderItemAdditionalInfo
+     */
     additionalInfo: PropTypes.element,
+    renderItemAdditionalInfo: PropTypes.func,
     icon: PropTypes.element,
     cursor: PropTypes.number,
     searchQuery: PropTypes.string,

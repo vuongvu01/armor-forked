@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 import { DialogContentRootPropsType } from './type';
-import { makePropList, shouldForwardProp } from '../../../utils';
+import { getPropsBlocker, makePropList } from '../../../utils';
 import { typography } from '../../../system/mixins';
 
 const propertyList = makePropList(['enableVerticalScroll']);
 
-export const DialogContentRoot = styled.div.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<DialogContentRootPropsType>`
+export const DialogContentRoot = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<DialogContentRootPropsType>`
     ${typography('paragraphLarge')};
     ${({ enableVerticalScroll }) =>
         enableVerticalScroll ? 'overflow-y: auto;' : ''}

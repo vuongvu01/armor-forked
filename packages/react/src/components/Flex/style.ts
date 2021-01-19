@@ -6,7 +6,7 @@ import {
     sizeAttributes,
     widthAttributes,
 } from '../../system/attributes';
-import { makePropList, shouldForwardProp } from '../../utils';
+import { getPropsBlocker, makePropList } from '../../utils';
 import { FlexItemPropsType, FlexRootPropsType } from './type';
 import { gutter } from '../../system/mixins/gutter';
 
@@ -36,36 +36,36 @@ const flexRootStyle = ({
 
     if (direction) {
         result = css`
-            ${result}
-             flex-direction:  ${direction};
+            ${result};
+            flex-direction: ${direction};
         `;
     }
 
     if (justifyContent) {
         result = css`
-            ${result}
-             justify-content: ${justifyContent};
+            ${result};
+            justify-content: ${justifyContent};
         `;
     }
 
     if (alignContent) {
         result = css`
-            ${result}
-             align-content: ${alignContent};
+            ${result};
+            align-content: ${alignContent};
         `;
     }
 
     if (flexWrap) {
         result = css`
-            ${result}
-             flex-wrap: ${flexWrap};
+            ${result};
+            flex-wrap: ${flexWrap};
         `;
     }
 
     if (alignItems) {
         result = css`
-            ${result}
-             align-items:  ${alignItems};
+            ${result};
+            align-items: ${alignItems};
         `;
     }
 
@@ -128,9 +128,9 @@ const flexItemStyle = ({
     return result;
 };
 
-export const FlexRoot = styled.div.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<FlexRootPropsType>`
+export const FlexRoot = styled.div.withConfig(getPropsBlocker(propertyList))<
+    FlexRootPropsType
+>`
     display: flex;
 
     ${flexRootStyle}
@@ -138,9 +138,9 @@ export const FlexRoot = styled.div.withConfig({
     ${marginAttributes}
 `;
 
-export const FlexItemRoot = styled.div.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<FlexItemPropsType>`
+export const FlexItemRoot = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<FlexItemPropsType>`
     ${flexItemStyle}
     ${paddingAttributes}
     ${widthAttributes}

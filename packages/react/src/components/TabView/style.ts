@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { marginAttributes } from '../../system/attributes';
-import { shouldForwardProp } from '../../utils';
+import { getPropsBlocker } from '../../utils';
 import { TabViewRootPropsType } from './type';
 import { Typography } from '../Typography';
 
@@ -11,9 +11,9 @@ const themeStyle = ({
     },
 }: TabViewRootPropsType) => TabView.Root.base;
 
-export const TabViewRoot = styled(Typography).withConfig({
-    shouldForwardProp: property => shouldForwardProp(property),
-})<TabViewRootPropsType>`
+export const TabViewRoot = styled(Typography).withConfig(
+    getPropsBlocker({}, false),
+)<TabViewRootPropsType>`
     ${themeStyle}
     ${marginAttributes}
 `;

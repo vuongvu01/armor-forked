@@ -1,7 +1,6 @@
-/* eslint-disable no-console,import/no-unresolved */
-
 // eslint-disable-next-line no-use-before-define
 import React from 'react';
+// eslint-disable-next-line import/no-unresolved
 import { withKnobs } from '@storybook/addon-knobs';
 
 import { HeaderNavigationMenuContentLogistics } from '../HeaderNavigationMenuContentLogistics';

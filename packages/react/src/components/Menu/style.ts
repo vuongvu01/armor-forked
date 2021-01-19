@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { MenuRootPropsType } from './type';
 import { marginAttributes, paddingAttributes } from '../../system/attributes';
-import { shouldForwardProp, makePropList } from '../../utils';
+import { makePropList, getPropsBlocker } from '../../utils';
 import { transitionDurationInSec } from '../../constants';
 import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 
@@ -70,10 +70,9 @@ const getRootDynamicStyle = ({
     return result;
 };
 
-// if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
-export const MenuRoot = styled.div.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<MenuRootPropsType>`
+export const MenuRoot = styled.div.withConfig(getPropsBlocker(propertyList))<
+    MenuRootPropsType
+>`
     box-sizing: border-box;
 
     ${getRootDynamicStyle}

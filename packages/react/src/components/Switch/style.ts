@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { shouldForwardProp } from '../../utils';
+import { getPropsBlocker } from '../../utils';
 import { mouseCursor, pointerEvents } from '../../styling';
 import { transitionDurationInSec } from '../../constants';
 import { SwitchCheckboxInputPropsType, SwitchLabelPropsType } from './type';
@@ -62,9 +62,9 @@ const disabledCheckedBackground = ({
     },
 }: SwitchCheckboxInputPropsType) => Switch.Label.disabled__checked;
 
-export const SwitchRoot = styled.label.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, {}),
-})<SwitchLabelPropsType>`
+export const SwitchRoot = styled.label.withConfig(getPropsBlocker())<
+    SwitchLabelPropsType
+>`
     display: inline-flex;
     align-items: center;
 
@@ -72,7 +72,9 @@ export const SwitchRoot = styled.label.withConfig({
     ${mouseCursor}
 `;
 
-export const SwitchToggle = styled.span<SwitchLabelPropsType>`
+export const SwitchToggle = styled.span.withConfig(getPropsBlocker())<
+    SwitchLabelPropsType
+>`
     position: relative;
     display: inline-flex;
     border-radius: 9999px;
@@ -98,7 +100,9 @@ export const SwitchToggle = styled.span<SwitchLabelPropsType>`
     ${mouseCursor}
 `;
 
-export const SwitchCheckboxInput = styled.input<SwitchCheckboxInputPropsType>`
+export const SwitchCheckboxInput = styled.input.withConfig(getPropsBlocker())<
+    SwitchCheckboxInputPropsType
+>`
     opacity: 0;
     margin: 0;
     width: 0;

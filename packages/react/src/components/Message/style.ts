@@ -11,7 +11,7 @@ import {
     typography,
 } from '../../system/mixins';
 import { ObjectLiteralType } from '../../type';
-import { shouldForwardProp } from '../../utils';
+import { getPropsBlocker } from '../../utils';
 import {
     MessageRootPropsType,
     MessageContentPropsType,
@@ -67,9 +67,9 @@ const getRootDynamicStyle = (props: MessageRootPropsType) => {
     `;
 };
 
-export const MessageRoot = styled.div.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<MessageRootPropsType>`
+export const MessageRoot = styled.div.withConfig(getPropsBlocker(propertyList))<
+    MessageRootPropsType
+>`
     box-sizing: border-box;
     border: 1px solid ${color('primary.main')};
     display: flex;
@@ -87,13 +87,17 @@ export const MessageRoot = styled.div.withConfig({
     ${marginAttributes}
 `;
 
-export const MessageCentral = styled.div<MessageCentralPropsType>`
+export const MessageCentral = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<MessageCentralPropsType>`
     flex-grow: 1;
     align-self: center;
     display: flex;
 `;
 
-export const MessageContent = styled.div<MessageContentPropsType>`
+export const MessageContent = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<MessageContentPropsType>`
     flex-grow: 1;
 
     ${typography('paragraphMedium')};
@@ -104,7 +108,9 @@ export const MessageContent = styled.div<MessageContentPropsType>`
     padding-bottom: ${spacing(4)};
 `;
 
-export const MessageActions = styled.div<MessageActionsPropsType>`
+export const MessageActions = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<MessageActionsPropsType>`
     flex-shrink: 0;
     align-self: center;
 
@@ -113,7 +119,9 @@ export const MessageActions = styled.div<MessageActionsPropsType>`
     padding-bottom: ${spacing(1)};
 `;
 
-export const MessageExtra = styled.div<MessageExtraPropsType>`
+export const MessageExtra = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<MessageExtraPropsType>`
     flex-shrink: 0;
 
     margin-left: ${spacing(4)};
@@ -136,9 +144,9 @@ const getIconDynamicStyle = (props: MessageRootPropsType) => {
     `;
 };
 
-export const MessageIconStyle = styled(MessageIconWrapper)<
-    MessageIconPropsType
->`
+export const MessageIconStyle = styled(MessageIconWrapper).withConfig(
+    getPropsBlocker(propertyList, false),
+)<MessageIconPropsType>`
     flex: 0 0 auto;
 
     font-size: ${pixelToRem(24)};
@@ -150,7 +158,9 @@ export const MessageIconStyle = styled(MessageIconWrapper)<
     ${getIconDynamicStyle};
 `;
 
-export const MessageCloseButton = styled.a<MessageCloseButtonPropsType>`
+export const MessageCloseButton = styled.a.withConfig(
+    getPropsBlocker(propertyList),
+)<MessageCloseButtonPropsType>`
     flex: 0 0 auto;
     cursor: pointer;
     ${noTextInteraction};

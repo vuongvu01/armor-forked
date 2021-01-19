@@ -2,7 +2,7 @@ import { ReactElement } from 'react';
 import styled from 'styled-components';
 import { HeaderNavigationTitleRootPropsType } from './type';
 import { fontSize03, fontWeightMedium } from '../../../tokens';
-import { shouldForwardProp } from '../../../utils';
+import { getPropsBlocker } from '../../../utils';
 import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
 import { color } from '../../../system/mixins';
 
@@ -17,9 +17,9 @@ const HeaderNavigationTitleRootWrapper = ({
 
 export const HeaderNavigationTitleRoot = styled(
     HeaderNavigationTitleRootWrapper,
-).withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<HeaderNavigationTitleRootPropsType>`
+).withConfig(getPropsBlocker(propertyList, false))<
+    HeaderNavigationTitleRootPropsType
+>`
     cursor: pointer;
     text-decoration: none;
     padding: 0;

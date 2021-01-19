@@ -63,13 +63,14 @@ export const MinimumConfiguration = () => (
     />
 );
 
-export const Inline = () => {
+export const InlineWithMarginAndWidthSet = () => {
     return (
         <>
             <Dropdown
                 options={foodOptions}
                 label="Dish type A"
                 marginRight={2}
+                width="sm"
             />
             <Dropdown options={foodOptions} label="Dish type B" />
         </>

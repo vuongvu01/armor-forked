@@ -1,6 +1,5 @@
 import deepMerge from 'deepmerge';
-import { ReactText } from 'react';
-import { ObjectLiteralType } from '../type';
+import { ObjectLiteralType, PropNameType } from '../type';
 import {
     marginAttributesList,
     paddingAttributesList,
@@ -14,8 +13,9 @@ import {
 export { default as generateId } from './generateId';
 export { default as getElementName } from './getElementName';
 export { default as useDetectClickOutsideComponent } from './useDetectClickOutsideComponent';
-export { default as useDetectEscapeKeyPressed } from './useDetectEscapeKeyPressed';
+export * from './useDetectEscapeKeyPressed';
 export * from './useInternalRef';
+export * from './dropdown';
 
 /**
  * @internal
@@ -44,7 +44,7 @@ export const merge = (dst: ObjectLiteralType, src: ObjectLiteralType) =>
             sourceArray,
     });
 
-const systemAttributeList = {
+const atomicPropsList = {
     ...marginAttributesList,
     ...paddingAttributesList,
     ...styleAttributesList,
@@ -58,8 +58,24 @@ const systemAttributeList = {
  * @internal
  */
 export const shouldForwardProp = (
-    property: ReactText,
+    property: PropNameType,
     componentPropertyList: ObjectLiteralType = {},
-) => !(property in componentPropertyList) && !(property in systemAttributeList);
+    blockAtomicProps = true,
+) =>
+    !(property in componentPropertyList) &&
+    !(blockAtomicProps && property in atomicPropsList);
+
+/**
+ * @internal
+ */
+export const getPropsBlocker = (
+    propertyList?: ObjectLiteralType<boolean>,
+    blockAtomicProps = true,
+) => {
+    return {
+        shouldForwardProp: (propertyName: PropNameType) =>
+            shouldForwardProp(propertyName, propertyList, blockAtomicProps),
+    };
+};
 
 export * from './makePropList';

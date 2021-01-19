@@ -1,37 +1,30 @@
 import React, { forwardRef, FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import { useComponentTheme } from '../../utils/hooks';
 import { useDropdownClassName } from './utils';
 import {
     DropdownContainer,
     DropdownExpansionIndicator,
-    DropdownOptionList,
     DropdownOptionListContainer,
     DropdownRoot,
     DropdownTextInput,
     ExpansionIndicatorContainer,
 } from './style';
-import DropdownOptionItem from './DropdownOptionItem';
-import { DropdownPropsType, OptionObjectType } from './type';
-import { dropdownDefaultTheme } from './theme';
+import { DropdownPropsType } from './type';
 import {
     defaultLabel,
     DROPDOWN_CLASS_PREFIX,
     dropdownActionItem,
     dropdownContainer,
-    dropdownOptionItem,
-    dropdownOptionList,
     dropdownOptionListContainer,
 } from './constants';
 import { useDropdown } from './utils/useDropdown';
+import { DropdownOptionList } from '../DropdownOptionList';
+import { useTheme } from '../../styling';
 
 export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
     function Dropdown({ className, ...props }, ref) {
-        const theme = useComponentTheme(
-            DROPDOWN_CLASS_PREFIX,
-            dropdownDefaultTheme,
-        );
+        const theme = useTheme().armor;
 
         const {
             rootProps,
@@ -45,11 +38,9 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
             displaySeparator,
             isOptionListShown,
             handleActionItemClick,
-            internalValue,
-            onOptionSelect,
-            internalOptions,
             error,
-            multiple,
+            blurInput,
+            internalInputRef,
         } = useDropdown(props, ref);
 
         const classOverride = useDropdownClassName(
@@ -70,28 +61,11 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
                     displaySeparator={displaySeparator}
                     isExpanded={isOptionListShown}
                     onClick={handleActionItemClick}
-                    // tabIndex={tabIndex}
                     theme={theme}
                     data-testid={dropdownActionItem}
                     className={classOverride.ExpansionIndicator}
                 />
             </ExpansionIndicatorContainer>
-        );
-
-        const renderOptionItem = (item: OptionObjectType) => (
-            <DropdownOptionItem
-                className={`${classOverride.OptionItem} ${
-                    internalValue.includes(item.value) ? 'active' : ''
-                }`}
-                isSelected={internalValue.includes(item.value)}
-                item={item}
-                itemIndex={item.value}
-                key={item.value}
-                onOptionSelect={onOptionSelect}
-                theme={theme}
-                multiple={multiple}
-                data-testid={dropdownOptionItem}
-            />
         );
 
         return (
@@ -118,16 +92,13 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
                         theme={theme}
                         data-testid={dropdownOptionListContainer}
                     >
-                        {internalOptions.length > 0 ? (
-                            <DropdownOptionList
-                                {...optionListProps}
-                                className={classOverride.OptionList}
-                                theme={theme}
-                                data-testid={dropdownOptionList}
-                            >
-                                {internalOptions.map(renderOptionItem)}
-                            </DropdownOptionList>
-                        ) : null}
+                        <DropdownOptionList
+                            {...optionListProps}
+                            className={classOverride.OptionList}
+                            theme={theme}
+                            blurInput={blurInput}
+                            ref={internalInputRef}
+                        />
                     </DropdownOptionListContainer>
                 </DropdownContainer>
             </DropdownRoot>
@@ -139,6 +110,7 @@ Dropdown.displayName = DROPDOWN_CLASS_PREFIX;
 
 Dropdown.defaultProps = {
     disabled: false,
+    // TODO (nmelnikov 2021-01-12): change it to defaultIsListExpanded according to the adopted conventions
     isListExpanded: false,
     label: defaultLabel,
     tabIndex: 0,

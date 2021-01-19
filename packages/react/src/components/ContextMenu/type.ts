@@ -1,14 +1,11 @@
-import { HTMLAttributes, HTMLProps, ReactChild, ReactElement } from 'react';
+import { HTMLAttributes, ReactChild, ReactElement } from 'react';
 import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../type';
-import {
-    MarginAttributesType,
-    SizeAttributesType,
-} from '../../system/attributes';
+import { SizeAttributesType } from '../../system/attributes';
 import { Indexed, ScalarType } from '../../type';
-import { PopperPlacement } from '../../system/hooks/type';
+import { PopperPlacementType } from '../../system/hooks/type';
 
 export type ContextMenuElements = Array<{
     label: ReactChild;
@@ -18,7 +15,7 @@ export type ContextMenuElements = Array<{
 
 type ContextMenuEffectivePropsType = Indexed<{
     trigger?: ReactElement;
-    align?: PopperPlacement;
+    align?: PopperPlacementType;
     open?: boolean;
     onToggle?: (open: boolean) => void;
     menuElements?: ContextMenuElements;

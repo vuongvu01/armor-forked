@@ -8,12 +8,12 @@ import {
     displayAttributes,
     colorAttributes,
 } from '../../system/attributes';
-import { shouldForwardProp } from '../../utils';
+import { getPropsBlocker } from '../../utils';
 import { BoxRootPropsType } from './type';
 
-export const BoxRoot = styled.div.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property),
-})<BoxRootPropsType>`
+export const BoxRoot = styled.div.withConfig(getPropsBlocker())<
+    BoxRootPropsType
+>`
     ${marginAttributes}
     ${paddingAttributes}
     ${sizeAttributes}

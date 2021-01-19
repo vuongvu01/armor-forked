@@ -28,7 +28,7 @@ export const useContextMenu = (
     ref: ReferenceType,
 ) => {
     const [reallyOpen, setReallyOpen] = useControlledState<boolean>(
-        false,
+        false, // todo: implement defaultOpen prop for the ContextMenu
         onToggle,
         open,
     );

@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { TableRowRootPropsType } from './type';
 import { ObjectLiteralType } from '../../../type';
-import { shouldForwardProp } from '../../../utils';
+import { getPropsBlocker } from '../../../utils';
 import { heightAttributes } from '../../../system/attributes';
 import { color } from '../../../system/mixins';
 import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
@@ -29,9 +29,9 @@ const getRootDynamicStyle = ({ isHeader }: TableRowRootPropsType) => {
 };
 
 // if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
-export const TableRowRoot = styled.tr.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<TableRowRootPropsType>`
+export const TableRowRoot = styled.tr.withConfig(getPropsBlocker(propertyList))<
+    TableRowRootPropsType
+>`
     &:not(:last-child) {
         border-bottom-width: 1px;
         border-bottom-style: solid;

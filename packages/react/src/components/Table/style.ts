@@ -6,7 +6,7 @@ import {
     widthAttributes,
 } from '../../system/attributes';
 import { ObjectLiteralType } from '../../type';
-import { shouldForwardProp } from '../../utils';
+import { getPropsBlocker } from '../../utils';
 
 // all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
 const propertyList = {
@@ -47,9 +47,9 @@ const getRootDynamicStyle = ({
 };
 
 // if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
-export const TableRoot = styled.table.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<TableRootPropsType>`
+export const TableRoot = styled.table.withConfig(getPropsBlocker(propertyList))<
+    TableRootPropsType
+>`
     box-sizing: border-box;
     border-collapse: collapse;
 

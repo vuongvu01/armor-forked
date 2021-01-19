@@ -1,9 +1,10 @@
 import styled, { css, Interpolation } from 'styled-components';
 import { ObjectLiteralType } from '../../type';
-import { shouldForwardProp } from '../../utils';
+import { getPropsBlocker } from '../../utils';
 import { TooltipArrowPropsType, TooltipRootPropsType } from './type';
 import { transitionDurationInSec } from '../../constants';
 import { getComponentOverride } from '../../system/mixins/getComponentOverride';
+import { popperArrow, popperArrowPlacement } from '../../utils/popper';
 
 const propertyList = {
     align: true,
@@ -46,58 +47,29 @@ const sizeStyle = ({ small, theme }: TooltipRootPropsType) => {
     return '';
 };
 
-export const TooltipRoot = styled.div.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<TooltipRootPropsType>`
+export const TooltipRoot = styled.div.withConfig(getPropsBlocker(propertyList))<
+    TooltipRootPropsType
+>`
     position: absolute;
     top: 0;
     left: 0;
     text-align: left;
-    visibility: hidden;
-    opacity: 1;
-    ${({ hidden }) =>
-        hidden
-            ? css`
-                  opacity: 0;
-              `
-            : ''};
-    box-shadow: 0px 2px 28px 0px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.12);
     transition: opacity ${transitionDurationInSec}s ease;
     pointer-events: none;
 
-    &[data-popper-placement^='top'] > .Tooltip-Arrow {
-        bottom: -8px;
-    }
-    &[data-popper-placement^='bottom'] > .Tooltip-Arrow {
-        top: -8px;
-    }
+    ${popperArrowPlacement('Tooltip-Arrow')};
 
-    ${({ theme }) => theme.componentOverrides.Tooltip.Root.base}
-    ${getRootDynamicStyle}
-    ${sizeStyle}
+    ${({ theme }) => theme.componentOverrides.Tooltip.Root.base};
+    ${getRootDynamicStyle};
+    ${sizeStyle};
     ${getComponentOverride('Tooltip')};
 `;
 
-export const TooltipArrow = styled.div.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<TooltipArrowPropsType>`
-    height: 16px;
-    width: 16px;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    &::before {
-        width: 10px;
-        height: 10px;
-        content: '';
-        transition: transform 200s ease-out;
-        visibility: ${props => (props.hide ? 'hidden' : 'visible')};
-        transform: translateX(${props => (props.hide ? 10 : 0)}px) rotate(45deg);
-        transform-origin: center;
-    }
-
-    ${({ theme }) => theme.componentOverrides.Tooltip.Arrow.base}
-    ${getArrowDynamicStyle}
+export const TooltipArrow = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<TooltipArrowPropsType>`
+    ${popperArrow()};
+    ${({ theme }) => theme.componentOverrides.Tooltip.Arrow.base};
+    ${getArrowDynamicStyle};
 `;

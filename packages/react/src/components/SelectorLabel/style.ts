@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 
 import { transitionDurationInSec } from '../../constants';
 import { SelectorLabelPropsType } from './type';
+import { getPropsBlocker } from '../../utils';
 
 const labelStyle = ({
     theme: {
@@ -23,8 +24,10 @@ const labelStyle = ({
     return css`${SelectorLabel.Label.base}${enhancements}`;
 };
 
-export const SelectorLabelRoot = styled.div<SelectorLabelPropsType>`
+export const SelectorLabelRoot = styled.div.withConfig(getPropsBlocker())<
+    SelectorLabelPropsType
+>`
     transition: all ${transitionDurationInSec}s ease;
 
-    ${labelStyle}
+    ${labelStyle};
 `;

@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 import { DialogActionsRootPropsType } from './type';
+import { getPropsBlocker } from '../../../utils';
 
-export const DialogActionsRoot = styled.div<DialogActionsRootPropsType>`
+export const DialogActionsRoot = styled.div.withConfig(getPropsBlocker())<
+    DialogActionsRootPropsType
+>`
     flex: 0 0;
     display: flex;
     justify-content: flex-end;

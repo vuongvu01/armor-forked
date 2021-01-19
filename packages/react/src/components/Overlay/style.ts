@@ -1,17 +1,16 @@
 import styled, { css } from 'styled-components';
 
-import { shouldForwardProp } from '../../utils';
+import { getPropsBlocker } from '../../utils';
 import { OverlayRootPropsType } from './type';
 import { fixedCover } from '../../system/mixins';
 import { transitionDurationInSec } from '../../constants';
 import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 
-const blacklistProperties = { disableEffects: true, effectToggle: true };
+const propertyList = { disableEffects: true, effectToggle: true };
 
-export const Overlay = styled.div.withConfig({
-    shouldForwardProp: property =>
-        shouldForwardProp(property, blacklistProperties),
-})<OverlayRootPropsType>`
+export const Overlay = styled.div.withConfig(getPropsBlocker(propertyList))<
+    OverlayRootPropsType
+>`
     ${fixedCover};
     z-index: inherit;
     pointer-events: none;

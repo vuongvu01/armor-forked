@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { ContextMenuRootPropsType, ContextMenuSubNodePropsType } from './type';
-import { shouldForwardProp, makePropList } from '../../utils';
+import { makePropList, getPropsBlocker } from '../../utils';
 import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 import { borderRadius, color, spacing, typography } from '../../system/mixins';
 import { sizeAttributes } from '../../system/attributes';
@@ -25,9 +25,9 @@ const getRootDynamicStyle = ({
 };
 
 // if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
-export const ContextMenuRoot = styled.div.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<ContextMenuRootPropsType>`
+export const ContextMenuRoot = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<ContextMenuRootPropsType>`
     box-sizing: border-box;
     margin: 0;
     text-align: left;
@@ -51,9 +51,9 @@ export const ContextMenuRoot = styled.div.withConfig({
     ${sizeAttributes};
 `;
 
-export const ContextMenuArrow = styled.div.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<ContextMenuSubNodePropsType>`
+export const ContextMenuArrow = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<ContextMenuSubNodePropsType>`
     height: 16px;
     width: 16px;
     position: absolute;

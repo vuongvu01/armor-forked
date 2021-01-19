@@ -80,24 +80,23 @@ export const Search: FunctionComponent<SearchPropsType> = forwardRef(
     },
 );
 
-Search.defaultProps = {
-    defaultQuery: '',
-    placeholder: 'Search',
-    disabled: false,
-    disableClearAction: false,
-    icon: null,
-    isLoading: false,
-    enableSuggestions: true,
-    suggestionListHeight: '400px',
-};
-
 Search.propTypes = {
     onClose: PropTypes.func,
     defaultQuery: PropTypes.string,
     disabled: PropTypes.bool,
     disableClearAction: PropTypes.bool,
+    /**
+     * @deprecated
+     * Use renderItemAdditionalInfo
+     */
     additionalInfo: PropTypes.element,
+    renderItemAdditionalInfo: PropTypes.func,
+    /**
+     * @deprecated
+     * Use renderItemIcon
+     */
     icon: PropTypes.element,
+    renderItemIcon: PropTypes.func,
     onChange: PropTypes.func,
     onItemSelect: PropTypes.func,
     options: PropTypes.arrayOf(
@@ -116,4 +115,11 @@ Search.propTypes = {
     placeholder: PropTypes.string,
     enableSuggestions: PropTypes.bool,
     isLoading: PropTypes.bool,
+    /**
+     * height of the list in in 4px unit increments
+     */
+    suggestionListHeight: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+    ]),
 };

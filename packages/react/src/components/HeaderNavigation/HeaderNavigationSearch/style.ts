@@ -4,7 +4,8 @@ import { HeaderNavigationSearchRootPropsType } from './type';
 import { Search } from '../../Search';
 import { HeaderNavigationItem } from '../HeaderNavigationItem';
 import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
-import { color } from '../../../system/mixins';
+import { color, spacing } from '../../../system/mixins';
+import { getPropsBlocker } from '../../../utils';
 
 const packItemSearchStyle = ({
     separator,
@@ -25,14 +26,16 @@ const packItemSearchStyle = ({
 
 // TODO (nmelnikov 2020-10-14): update this logic once this PR lands:
 // https://github.com/deliveryhero/armor/pull/270
-export const NavigationItemSearch = styled(HeaderNavigationItem)<
-    HeaderNavigationSearchRootPropsType
->`
+export const NavigationItemSearch = styled(HeaderNavigationItem).withConfig(
+    getPropsBlocker({}, false),
+)<HeaderNavigationSearchRootPropsType>`
     padding-top: 0;
     padding-bottom: 0;
     height: 48px;
     border-right-width: 1px;
     border-right-style: solid;
+    padding-right: ${spacing(4)};
+    padding-left: ${spacing(4)};
 
     ${packItemSearchStyle}
     ${getComponentOverride('HeaderNavigationSearch')};
@@ -40,9 +43,9 @@ export const NavigationItemSearch = styled(HeaderNavigationItem)<
 
 // TODO (nmelnikov 2020-10-14): update this logic once this PR lands:
 // https://github.com/deliveryhero/armor/pull/270
-export const HeaderNavigationSearchRoot = styled(Search)<
-    HeaderNavigationSearchRootPropsType
->`
+export const HeaderNavigationSearchRoot = styled(Search).withConfig(
+    getPropsBlocker({}, false),
+)<HeaderNavigationSearchRootPropsType>`
     .TextInput-Root {
         margin-top: 4px;
         height: 40px;

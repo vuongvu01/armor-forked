@@ -1,10 +1,17 @@
-import { HTMLAttributes } from 'react';
+import { HTMLAttributes, MouseEvent } from 'react';
 
 import { MarginAttributesType } from '../../../system/attributes';
 import { Indexed } from '../../../type';
-import { NavigationSelectorParamsType } from '../type';
+import {
+    HeaderNavigationSelectOnChangeEventType,
+    HeaderNavigationSelectOnSelectType,
+    NavigationSelectorParamsType,
+} from '../type';
 import { ComponentElementStylePropsType } from '../../type';
-import { DropdownSelectedOptionType } from '../../Dropdown/type';
+import {
+    DropdownInternalOptionType,
+    DropdownInternalValueType,
+} from '../../Dropdown/type';
 
 export type ClassBasedOnComponentType = {
     className?: string;
@@ -14,11 +21,14 @@ export type ClassBasedOnComponentType = {
 };
 
 type HeaderNavigationSelectorEffectivePropsType = Indexed<{
-    navigationSelectorParams?: NavigationSelectorParamsType;
-    onOptionSelect?: (
-        selectedOption: DropdownSelectedOptionType,
-        itemIndex?: number,
-    ) => void;
+    navigationSelectorParams: NavigationSelectorParamsType;
+    onOptionSelect?: HeaderNavigationSelectOnSelectType;
+    onChange?: (event: HeaderNavigationSelectOnChangeEventType) => void;
+    onClick?: (event: MouseEvent<HTMLDivElement>) => void;
+    onRenderSelectedValue?: (
+        value: DropdownInternalValueType,
+        options: DropdownInternalOptionType,
+    ) => string;
     separator?: boolean;
 }> &
     HTMLAttributes<HTMLElement> &

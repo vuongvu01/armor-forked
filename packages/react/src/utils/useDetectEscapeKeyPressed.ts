@@ -1,10 +1,11 @@
 import { MutableRefObject, useEffect } from 'react';
 
-function useDetectEscapeKeyPressed(
+export const useDetectEscapeKeyPressed = (
     ref: MutableRefObject<unknown>,
     setIsOptionListShown?: (isOptionListShown: boolean) => void,
     isCondition?: boolean,
-) {
+    callbackFn?: () => void,
+) => {
     useEffect(() => {
         if (isCondition) {
             const handleEscapePress = (event: KeyboardEvent) => {
@@ -12,6 +13,10 @@ function useDetectEscapeKeyPressed(
 
                 if (key === 'Escape' && setIsOptionListShown) {
                     setIsOptionListShown(false);
+
+                    if (callbackFn) {
+                        callbackFn();
+                    }
                 }
             };
 
@@ -23,7 +28,7 @@ function useDetectEscapeKeyPressed(
         }
 
         return () => {};
-    }, [ref, setIsOptionListShown, isCondition]);
-}
+    }, [ref, setIsOptionListShown, isCondition, callbackFn]);
+};
 
 export default useDetectEscapeKeyPressed;

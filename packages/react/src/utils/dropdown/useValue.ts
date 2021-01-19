@@ -1,5 +1,8 @@
 import { useState } from 'react';
-import { DropdownInternalValueType, DropdownValueType } from '../type';
+import {
+    DropdownInternalValueType,
+    DropdownValueType,
+} from '../../components/Dropdown/type';
 
 const normalizeValue = (value?: DropdownValueType) => {
     if (typeof value === 'undefined') {

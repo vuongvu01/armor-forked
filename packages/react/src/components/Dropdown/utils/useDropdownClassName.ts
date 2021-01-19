@@ -19,7 +19,7 @@ const classGeneratorBasedOnComponent = ({
     return `${baseClassNames} ${stateClassNames.join(' ')}`.trim();
 };
 
-const useDropdownClassName = (
+export const useDropdownClassName = (
     classPrefix: string,
     className?: string,
     disabled?: boolean,
@@ -73,5 +73,3 @@ const useDropdownClassName = (
         }),
         [classPrefix, className, disabled],
     );
-
-export default useDropdownClassName;

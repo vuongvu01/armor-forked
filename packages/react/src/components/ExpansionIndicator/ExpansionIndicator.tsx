@@ -6,15 +6,14 @@ import {
     ExpansionIndicatorIcon,
     ExpansionIndicatorRoot,
 } from './style';
-import { useComponentTheme } from '../../utils/hooks';
 import useExpansionIndicatorClassName from './utils/useExpansionIndicatorClassName';
-import { expansionIndicatorDefaultTheme } from './theme';
 import {
     EXPANSION_INDICATOR_CLASS_PREFIX,
     expansionIndicatorContainer,
     expansionIndicatorContent,
     expansionIndicatorIcon,
 } from './constants';
+import { useTheme } from '../../styling';
 
 export const ExpansionIndicator: FunctionComponent<ExpansionIndicatorPropsType> = ({
     className,
@@ -26,10 +25,7 @@ export const ExpansionIndicator: FunctionComponent<ExpansionIndicatorPropsType> 
     tabIndex,
     ...restProps
 }) => {
-    const theme = useComponentTheme(
-        EXPANSION_INDICATOR_CLASS_PREFIX,
-        expansionIndicatorDefaultTheme,
-    );
+    const theme = useTheme().armor;
 
     const classOverride = useExpansionIndicatorClassName(
         EXPANSION_INDICATOR_CLASS_PREFIX,
@@ -60,7 +56,7 @@ export const ExpansionIndicator: FunctionComponent<ExpansionIndicatorPropsType> 
                     data-testid={expansionIndicatorIcon}
                     disabled={disabled}
                     error={error}
-                    isExpanded={isExpanded}
+                    expanded={isExpanded}
                     theme={theme}
                 />
             </ExpansionIndicatorContent>

@@ -4,10 +4,11 @@ import { HeaderNavigationMenuContentHeaderRootPropsType } from './type';
 import { Typography } from '../../../../Typography';
 import { getComponentOverride } from '../../../../../system/mixins/getComponentOverride';
 import { color, spacing } from '../../../../../system/mixins';
+import { getPropsBlocker } from '../../../../../utils';
 
-export const HeaderNavigationMenuContentHeaderRoot = styled.div<
-    HeaderNavigationMenuContentHeaderRootPropsType
->`
+export const HeaderNavigationMenuContentHeaderRoot = styled.div.withConfig(
+    getPropsBlocker(),
+)<HeaderNavigationMenuContentHeaderRootPropsType>`
     box-sizing: border-box;
     height: 64px;
 
@@ -17,7 +18,7 @@ export const HeaderNavigationMenuContentHeaderRoot = styled.div<
     ${getComponentOverride('HeaderNavigationMenuContentHeader')};
 `;
 
-export const MenuContentHeader = styled.div<
+export const MenuContentHeader = styled.div.withConfig(getPropsBlocker())<
     HeaderNavigationMenuContentHeaderRootPropsType
 >`
     display: flex;
@@ -26,7 +27,7 @@ export const MenuContentHeader = styled.div<
     height: 100%;
 `;
 
-export const MenuContentHeaderItem = styled.div<
+export const MenuContentHeaderItem = styled.div.withConfig(getPropsBlocker())<
     HeaderNavigationMenuContentHeaderRootPropsType
 >`
     height: 100%;
@@ -43,9 +44,9 @@ const contentHeaderTitleStyle = ({
     return HeaderNavigationMenuContentHeader.Title.base;
 };
 
-export const MenuContentHeaderTitle = styled(Typography)<
-    HeaderNavigationMenuContentHeaderRootPropsType
->`
+export const MenuContentHeaderTitle = styled(Typography).withConfig(
+    getPropsBlocker({}, false),
+)<HeaderNavigationMenuContentHeaderRootPropsType>`
     ${contentHeaderTitleStyle}
 `;
 
@@ -57,8 +58,8 @@ const contentHeaderLabelStyle = ({
     return HeaderNavigationMenuContentHeader.Label.base;
 };
 
-export const MenuContentHeaderLabel = styled(Typography)<
-    HeaderNavigationMenuContentHeaderRootPropsType
->`
+export const MenuContentHeaderLabel = styled(Typography).withConfig(
+    getPropsBlocker({}, false),
+)<HeaderNavigationMenuContentHeaderRootPropsType>`
     ${contentHeaderLabelStyle}
 `;

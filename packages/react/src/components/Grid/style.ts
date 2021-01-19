@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { makePropList, shouldForwardProp } from '../../utils';
+import { getPropsBlocker, makePropList } from '../../utils';
 import { GridPropsType } from './type';
 import { ThemeType } from '../../styling';
 import { sizeAttributes } from '../../system/attributes';
@@ -64,9 +64,9 @@ const gridRootStyle = ({
     return result;
 };
 
-export const GridRoot = styled.div.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<GridPropsType>`
+export const GridRoot = styled.div.withConfig(getPropsBlocker(propertyList))<
+    GridPropsType
+>`
     display: flex;
     flex-wrap: wrap;
     ${gridRootStyle}

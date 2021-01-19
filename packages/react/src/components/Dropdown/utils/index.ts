@@ -1,1 +1,1 @@
-export { default as useDropdownClassName } from './useDropdownClassName';
+export * from './useDropdownClassName';

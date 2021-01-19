@@ -6,10 +6,10 @@ import {
     SearchInputClearIconPropsType,
 } from './type';
 import { transitionDurationInSec } from '../../../constants';
-import { makePropList, shouldForwardProp } from '../../../utils';
+import { getPropsBlocker, makePropList } from '../../../utils';
 import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
 
-const clearIconPropertyList = makePropList(['searchQuery']);
+const propertyList = makePropList(['searchQuery']);
 
 const clearIconContainerStyle = ({
     theme: {
@@ -48,16 +48,17 @@ const searchInputClearIconStyle = ({
     return result;
 };
 
-export const ClearIconContainer = styled.div<ClearIconContainerPropsType>`
+export const ClearIconContainer = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<ClearIconContainerPropsType>`
     display: flex;
     align-items: center;
     ${clearIconContainerStyle};
 `;
 
-export const SearchInputClearIcon = styled(CancelIcon).withConfig({
-    shouldForwardProp: property =>
-        shouldForwardProp(property, clearIconPropertyList),
-})<SearchInputClearIconPropsType>`
-    ${searchInputClearIconStyle}
+export const SearchInputClearIcon = styled(CancelIcon).withConfig(
+    getPropsBlocker(propertyList, false),
+)<SearchInputClearIconPropsType>`
+    ${searchInputClearIconStyle};
     ${getComponentOverride('SearchClearAction')};
 `;

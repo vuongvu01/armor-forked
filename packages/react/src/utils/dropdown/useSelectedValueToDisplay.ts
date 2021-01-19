@@ -3,13 +3,13 @@ import {
     DropdownInternalOptionType,
     DropdownInternalValueType,
     DropdownOnRenderSelectedValueType,
-} from '../type';
-import { emptyLabelValue } from '../constants';
+} from '../../components/Dropdown/type';
+import { emptyLabelValue } from '../../components/Dropdown/constants';
 
 export const useSelectedValueToDisplay = (
-    onRenderSelectedValue: DropdownOnRenderSelectedValueType | undefined,
     internalValue: DropdownInternalValueType,
     internalOptions: DropdownInternalOptionType,
+    onRenderSelectedValue?: DropdownOnRenderSelectedValueType,
 ) =>
     useMemo(() => {
         if (onRenderSelectedValue) {
