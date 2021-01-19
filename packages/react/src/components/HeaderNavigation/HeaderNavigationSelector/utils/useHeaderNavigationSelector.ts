@@ -103,7 +103,7 @@ export const useHeaderNavigationSelector = (
             disabled,
         },
         expansionIndicatorProps: {
-            isOptionListShown,
+            isExpanded: isOptionListShown,
         },
         selectorProps: {
             separator,

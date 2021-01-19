@@ -9,7 +9,6 @@ import { DropdownOptionList } from '../../DropdownOptionList';
 import { ExpansionIndicator } from '../../ExpansionIndicator';
 import { getPropsBlocker } from '../../../utils';
 
-
 export const HeaderNavigationSelectorWrapper = styled(Stack)<
     HeaderNavigationSelectorRootPropsType
 >``;
@@ -56,9 +55,9 @@ export const SelectorDropdownOptionList = styled(DropdownOptionList)<
 `;
 
 // NOTE: `:focus:not(:focus-visible)` allows for outline to appear when navigated via Tab, and omits it on mouse click
-export const HeaderNavigationSelectorRoot = styled(HeaderNavigationItem).withConfig(
-    getPropsBlocker({}, false),
-)<HeaderNavigationSelectorRootPropsType>`
+export const HeaderNavigationSelectorRoot = styled(
+    HeaderNavigationItem,
+).withConfig(getPropsBlocker({}, false))<HeaderNavigationSelectorRootPropsType>`
     padding-top: 0;
     padding-right: ${spacing(4)};
     padding-bottom: 0;
@@ -96,7 +95,6 @@ export const SelectorExpansionIndicator = styled(ExpansionIndicator)<
     HeaderNavigationSelectorRootPropsType
 >`
     .ExpansionIndicator-Icon {
-        border-right-color: ${color('neutral.06')};
-        border-bottom-color: ${color('neutral.06')};
+        color: ${color('neutral.06')};
     }
 `;

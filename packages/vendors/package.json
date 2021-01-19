@@ -27,10 +27,6 @@
         "lint:fix": "eslint ./src --fix --ext .js,.ts,.jsx,.tsx",
         "release": "./script/release.sh"
     },
-    "dependencies": {
-        "@deliveryhero/armor": "^1.27.1",
-        "@deliveryhero/armor-icons": "^1.7.0"
-    },
     "peerDependencies": {
         "@deliveryhero/armor": "^1.27.1",
         "@deliveryhero/armor-icons": "^1.7.0",

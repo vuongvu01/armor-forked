@@ -4,7 +4,7 @@ import { AccordionHeaderRootPropsType } from './type';
 import { Typography } from '../../Typography';
 import { mouseCursor } from '../../../styling';
 import { ExpansionIndicator } from '../../ExpansionIndicator';
-import { typography } from '../../../system/mixins';
+import { color, typography } from '../../../system/mixins';
 import { getPropsBlocker } from '../../../utils';
 
 const propertyList = {
@@ -70,12 +70,26 @@ export const AccordionHeaderBody = styled(Typography).withConfig(
     display: inline-flex;
 `;
 
+const accordionExpansionIndicatorStyle = ({
+    disabled,
+}: AccordionHeaderRootPropsType) => {
+    return disabled
+        ? css`
+              .ExpansionIndicator-Icon {
+                  color: ${color('neutral.04')};
+              }
+          `
+        : {};
+};
+
 export const AccordionHeaderExpansionIndicator = styled(
     ExpansionIndicator,
 ).withConfig(getPropsBlocker({}, false))<AccordionHeaderRootPropsType>`
     .AccordionHeader-ExpansionIndicator.ExpansionIndicator-Content {
         width: 56px;
     }
+
+    ${accordionExpansionIndicatorStyle}
 `;
 
 export const AccordionHeaderIcon = styled.div.withConfig(

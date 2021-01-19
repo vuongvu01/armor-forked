@@ -1,8 +1,13 @@
 import styled, { css } from 'styled-components';
+import { ArrowDownIcon } from '@deliveryhero/armor-icons';
+
 import { ExpansionIndicatorPropsType } from './type';
 import { marginAttributes } from '../../system/attributes';
 import { transitionDurationInSec } from '../../constants';
 import { getPropsBlocker } from '../../utils';
+import { color } from '../../system/mixins';
+import { transition } from '../../system/mixins/transition';
+import { expansion } from '../../system/mixins/expansion';
 
 const propertyList = {
     disabled: true,
@@ -10,33 +15,32 @@ const propertyList = {
 
 const expansionIndicatorContainerStyle = ({
     disabled,
-    theme: {
-        componentOverrides: { ExpansionIndicator },
-    },
 }: ExpansionIndicatorPropsType) => css`
-    ${disabled ? ExpansionIndicator.Root.disabled : ''}
+    ${disabled
+        ? css`
+              cursor: not-allowed;
+          `
+        : ''}
 `;
 
-const expansionIndicatorStyle = ({
-    disabled,
-    isExpanded,
-    theme: {
-        componentOverrides: { ExpansionIndicator },
-    },
-}: ExpansionIndicatorPropsType) =>
+const expansionIndicatorStyle = ({ disabled }: ExpansionIndicatorPropsType) =>
     css`
-        ${ExpansionIndicator.Root.base} ${
-        disabled ? ExpansionIndicator.Root.disabled : ''
-    } ${isExpanded ? ExpansionIndicator.Root.rotate : ''}
+        ${disabled
+            ? css`
+                  cursor: not-allowed;
+                  color: ${color('neutral.04')};
+              `
+            : ''}
     `;
 
 const actionSeparator = ({
     displaySeparator,
-    theme: {
-        componentOverrides: { ExpansionIndicator },
-    },
 }: ExpansionIndicatorPropsType) => css`
-    ${displaySeparator ? ExpansionIndicator.Root.separator : ''}
+    ${displaySeparator
+        ? css`
+              border-left-color: ${color('neutral.03')};
+          `
+        : ''}
 `;
 
 export const ExpansionIndicatorRoot = styled.div.withConfig(
@@ -68,18 +72,12 @@ export const ExpansionIndicatorContent = styled.div.withConfig(
     ${actionSeparator}
 `;
 
-export const ExpansionIndicatorIcon = styled.div.withConfig(
-    getPropsBlocker(propertyList),
+export const ExpansionIndicatorIcon = styled(ArrowDownIcon).withConfig(
+    getPropsBlocker({}, false),
 )<ExpansionIndicatorPropsType>`
-    border-bottom-width: 2px;
-    border-bottom-style: solid;
-    border-right-width: 2px;
-    border-right-style: solid;
-    height: 8px;
-    position: relative;
-    transform: rotate(45deg);
-    transition: ${transitionDurationInSec}s;
-    width: 8px;
+    color: ${color('primary.main')};
+    ${transition({ transform: true })};
+    ${expansion(180)};
 
     ${expansionIndicatorStyle}
 `;
