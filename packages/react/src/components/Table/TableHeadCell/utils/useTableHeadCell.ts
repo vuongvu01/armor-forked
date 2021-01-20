@@ -1,18 +1,25 @@
 import { useMemo } from 'react';
 import { TableHeadCellPropsType } from '../type';
-import { TABLE_HEAD_CELL_SORTING_TYPE_NUMERICAL } from '../constants';
+import {
+    TABLE_HEAD_CELL_SORTING_TYPE_NUMERICAL,
+    tableHeadCellRootTestId,
+} from '../constants';
 import {
     TABLE_SORTING_DIRECTION_ASC,
     TABLE_SORTING_DIRECTION_DESC,
 } from '../../constants';
+import { ReferenceType } from '../../../../type';
 
-export const useTableHeadCell = ({
-    sortable,
-    columnId,
-    rowSortType,
-    rowSortOrder,
-    ...restProps
-}: TableHeadCellPropsType) => {
+export const useTableHeadCell = (
+    {
+        sortable,
+        columnId,
+        rowSortType,
+        rowSortOrder,
+        ...restProps
+    }: TableHeadCellPropsType,
+    ref: ReferenceType,
+) => {
     const sortingEnabled = !!(sortable && columnId);
     const [isSelected, isAscending, isDescending] = useMemo(() => {
         if (!sortable || !rowSortOrder || !rowSortOrder.length) {
@@ -38,15 +45,20 @@ export const useTableHeadCell = ({
         !isSelected && rowSortType !== TABLE_HEAD_CELL_SORTING_TYPE_NUMERICAL;
 
     return {
-        sortingEnabled,
+        rootProps: {
+            'data-testid': tableHeadCellRootTestId,
+            enableContentWrap: false,
+            ...restProps,
+            columnId,
+            ref,
+            sortingEnabled,
+            'data-sortable': sortingEnabled ? '1' : '0',
+        },
+
         isSelected,
         isIconNumerical,
         isIconAlphabetical,
         isAscending,
         isDescending,
-        restRootProps: {
-            columnId,
-            ...restProps,
-        },
     };
 };

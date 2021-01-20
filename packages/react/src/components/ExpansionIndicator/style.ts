@@ -11,6 +11,8 @@ import { expansion } from '../../system/mixins/expansion';
 
 const propertyList = {
     disabled: true,
+    displaySeparator: true,
+    expanded: true,
 };
 
 const expansionIndicatorContainerStyle = ({
@@ -73,7 +75,7 @@ export const ExpansionIndicatorContent = styled.div.withConfig(
 `;
 
 export const ExpansionIndicatorIcon = styled(ArrowDownIcon).withConfig(
-    getPropsBlocker({}, false),
+    getPropsBlocker(propertyList, false),
 )<ExpansionIndicatorPropsType>`
     color: ${color('primary.main')};
     ${transition({ transform: true })};

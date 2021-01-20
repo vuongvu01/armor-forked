@@ -14,7 +14,6 @@ import { TableHeadCellPropsType } from './type';
 import { tableHeadCellDefaultTheme } from './theme';
 import { useTableHeadCell } from './utils/useTableHeadCell';
 import {
-    tableHeadCellRootTestId,
     TABLE_HEAD_CELL_CLASS_PREFIX,
     TABLE_HEAD_CELL_SORTING_TYPE_NUMERICAL,
     TABLE_HEAD_CELL_SORTING_TYPE_ALPHABETICAL,
@@ -22,7 +21,7 @@ import {
 import { TableCellLabel } from '../TableCellLabel';
 
 export const TableHeadCell: FunctionComponent<TableHeadCellPropsType> = forwardRef(
-    function TableHeadCell({ className, children, ...restProps }, ref) {
+    function TableHeadCell({ className, children, ...props }, ref) {
         const theme = useComponentTheme(
             TABLE_HEAD_CELL_CLASS_PREFIX,
             tableHeadCellDefaultTheme,
@@ -33,23 +32,19 @@ export const TableHeadCell: FunctionComponent<TableHeadCellPropsType> = forwardR
         );
 
         const {
-            sortingEnabled,
+            rootProps,
+
             isAscending,
             isDescending,
             isIconAlphabetical,
             isIconNumerical,
-            restRootProps,
-        } = useTableHeadCell(restProps);
+        } = useTableHeadCell(props, ref);
 
         return (
             <TableHeadCellRoot
-                data-testid={tableHeadCellRootTestId}
-                {...restRootProps}
+                {...rootProps}
                 theme={theme}
                 className={classNameComponents.Root}
-                ref={ref}
-                sortingEnabled={sortingEnabled}
-                data-sortable={sortingEnabled ? '1' : '0'}
             >
                 <TableCellLabel>
                     {children}
