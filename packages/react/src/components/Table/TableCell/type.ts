@@ -23,7 +23,8 @@ type TableCellEffectivePropsType = Indexed<{
     stickyShadowVisible?: boolean;
     disabled?: boolean;
     ellipsis?: boolean;
-    enableContentBreak?: boolean;
+    enableContentWordBreak?: boolean;
+    enableContentWrap?: boolean;
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLTableDataCellElement | HTMLTableHeaderCellElement> & // includes all HTML Td | Th attributes

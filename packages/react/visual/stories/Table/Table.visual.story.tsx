@@ -11,6 +11,7 @@ import {
     TableCellLabel,
     TableControllerCell,
     TableExpandableSection,
+    TableHeadCell,
 } from '../../../src/components';
 import { loremIpsum } from '../../../src/helpers/LoremIpsum';
 
@@ -140,6 +141,37 @@ export const EllipsisCells = () => (
                 <TableRow>
                     <TableCell>Cell text</TableCell>
                     <TableCell>Cell text</TableCell>
+                </TableRow>
+            </TableBody>
+        </Table>
+    </div>
+);
+
+export const NoWrapCell = () => (
+    <div style={{ width: '400px' }}>
+        <Table width="100%">
+            <TableHead>
+                <TableRow>
+                    <TableCell width="40%">One</TableCell>
+                    <TableHeadCell>
+                        Contact information is here and there and over there
+                    </TableHeadCell>
+                </TableRow>
+            </TableHead>
+            <TableHead>
+                <TableRow>
+                    <TableCell width="40%">One</TableCell>
+                    <TableHeadCell enableContentWrap>
+                        Contact information is here and there and over there
+                    </TableHeadCell>
+                </TableRow>
+            </TableHead>
+            <TableBody>
+                <TableRow>
+                    <TableCell>Cell text</TableCell>
+                    <TableCell>
+                        Contact information is here and there and over there
+                    </TableCell>
                 </TableRow>
             </TableBody>
         </Table>

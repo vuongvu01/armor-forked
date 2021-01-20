@@ -1,16 +1,19 @@
 import { ComponentType } from 'react';
 import { TableCellPropsType } from '../type';
-
-type TableCellHookPropsType = Pick<TableCellPropsType, 'isHeader'>;
-
-type UseTableCellType = {
-    tag: string | ComponentType<any>;
-};
+import { tableCellRootTestId } from '../constants';
 
 export const useTableCell = ({
     isHeader,
-}: TableCellHookPropsType): UseTableCellType => {
+    ...restProps
+}: TableCellPropsType) => {
+    const tagName = isHeader ? 'th' : 'td';
+
     return {
-        tag: isHeader ? 'th' : 'td',
+        rootProps: {
+            'data-testid': tableCellRootTestId,
+            ...restProps,
+            isHeader,
+        },
+        tag: tagName as string | ComponentType<any>,
     };
 };

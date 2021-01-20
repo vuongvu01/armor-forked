@@ -58,6 +58,6 @@ export const TableHeadCellRoot = styled(TableCell).withConfig(
         }
     }
 
-    ${getRootDynamicStyle}
-    ${paddingAttributes}
+    ${getRootDynamicStyle};
+    ${paddingAttributes};
 `;

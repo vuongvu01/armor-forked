@@ -34,7 +34,8 @@ const propertyList = makePropList([
     'stickyOffset',
     'stickyShadowVisible',
     'stickyVisible',
-    'enableContentBreak',
+    'enableContentWordBreak',
+    'enableContentWrap',
 ]);
 
 const getRootDynamicStyle = ({
@@ -46,7 +47,8 @@ const getRootDynamicStyle = ({
     stickyShadowVisible,
     disabled,
     ellipsis,
-    enableContentBreak,
+    enableContentWordBreak,
+    enableContentWrap,
 }: TableCellRootPropsType) => {
     let result = {};
 
@@ -187,11 +189,18 @@ const getRootDynamicStyle = ({
         `;
     }
 
-    if (enableContentBreak) {
+    if (enableContentWordBreak) {
         result = css`
             ${result};
             word-break: break-word;
             overflow-wrap: break-word;
+        `;
+    }
+
+    if (!enableContentWrap) {
+        result = css`
+            ${result};
+            white-space: nowrap;
         `;
     }
 

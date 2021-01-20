@@ -5,26 +5,24 @@ import { useComponentTheme } from '../../../utils/hooks';
 import { useTableCellClassNames } from './utils/useTableCellClassNames';
 import { TableCellRoot } from './style';
 import { TableCellPropsType, TableCellRootPropsType } from './type';
-import { tableCellRootTestId, TABLE_CELL_CLASS_PREFIX } from './constants';
+import { TABLE_CELL_CLASS_PREFIX } from './constants';
 import { useTableCell } from './utils/useTableCell';
 
 export const TableCell: FunctionComponent<TableCellPropsType> = forwardRef(
-    function TableCell({ className, isHeader, children, ...restProps }, ref) {
+    function TableCell({ className, children, ...props }, ref) {
         const theme = useComponentTheme(TABLE_CELL_CLASS_PREFIX);
         const classNameComponents = useTableCellClassNames(
             TABLE_CELL_CLASS_PREFIX,
             className,
         );
 
-        const { tag: Tag } = useTableCell({ isHeader });
+        const { rootProps, tag: Tag } = useTableCell(props);
 
         // todo: forward only className here, it will be more efficient and neat
         return (
             <TableCellRoot
-                data-testid={tableCellRootTestId}
-                {...restProps}
+                {...rootProps}
                 theme={theme}
-                isHeader={isHeader}
                 className={classNameComponents.Root}
             >
                 {(forwardedProps: TableCellRootPropsType) => (
@@ -44,7 +42,8 @@ TableCell.defaultProps = {
     isHeader: false,
     disabled: false,
     ellipsis: false,
-    enableContentBreak: true,
+    enableContentWordBreak: true,
+    enableContentWrap: true,
 };
 
 /** prop-types are required here for run-time checks */
