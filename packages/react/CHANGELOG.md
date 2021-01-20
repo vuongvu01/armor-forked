@@ -1,3 +1,10 @@
+## @deliveryhero/armor [1.29.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.29.0...@deliveryhero/armor@1.29.1) (2021-01-20)
+
+
+### Bug Fixes
+
+* **table:** TableHeadCell uses white space nowrap by default [LD-386] ([#372](https://github.com/deliveryhero/armor/issues/372)) ([d09cef4](https://github.com/deliveryhero/armor/commit/d09cef48e84420518c621172aba6660adc9aec80))
+
 # @deliveryhero/armor [1.29.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.28.2...@deliveryhero/armor@1.29.0) (2021-01-19)
 
 
