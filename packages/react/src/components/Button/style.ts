@@ -11,6 +11,7 @@ import { durationRegular } from '../../tokens';
 import { getPropsBlocker } from '../../utils';
 import { ObjectLiteralType } from '../../type';
 import { getComponentOverride } from '../../system/mixins/getComponentOverride';
+import { reset } from '../../system/mixins';
 
 const propertyList = {
     tag: true,
@@ -90,10 +91,10 @@ const Wrapper = ({
 export const ButtonRoot = styled(Wrapper).withConfig(
     getPropsBlocker(propertyList),
 )<ButtonRootPropsType>`
+    ${reset()};
     align-items: center;
     appearance: none;
     border: 1px solid transparent;
-    box-sizing: border-box;
     cursor: pointer;
     display: inline-flex;
     justify-content: center;
