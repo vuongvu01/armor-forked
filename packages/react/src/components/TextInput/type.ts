@@ -5,23 +5,24 @@ import {
     MarginAttributesType,
     WidthAttributesType,
 } from '../../system';
-import { Indexed } from '../../type';
+import { Indexed, ObjectLiteralType } from '../../type';
 import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../type';
 
-type TextInputEffectivePropsType = Indexed<{
-    label?: string;
-    before?: ReactNode;
-    after?: ReactNode;
-    large?: boolean;
-    error?: boolean;
-    multiline?: boolean;
-    disableLabelEffect?: boolean;
-    displayMode?: string;
-    outline?: boolean;
-    enableFocusOnRootClick?: boolean;
+type TextInputEffectivePropsType = Partial<{
+    label: string;
+    before: ReactNode;
+    after: ReactNode;
+    large: boolean;
+    error: boolean;
+    multiline: boolean;
+    disableLabelEffect: boolean;
+    displayMode: string;
+    outline: boolean;
+    enableFocusOnRootClick: boolean;
+    enableRootRef: boolean;
     // add other custom properties here
 }> &
     InputHTMLAttributes<HTMLInputElement> &
@@ -29,6 +30,7 @@ type TextInputEffectivePropsType = Indexed<{
         TextareaHTMLAttributes<HTMLTextAreaElement>,
         'cols' | 'rows' | 'wrap' | 'dirName'
     > &
+    ObjectLiteralType &
     WidthAttributesType &
     HeightAttributesType &
     MarginAttributesType;

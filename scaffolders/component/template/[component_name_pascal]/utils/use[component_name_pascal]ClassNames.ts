@@ -11,10 +11,10 @@ export const use<%- component_name_pascal %>ClassNames = (
                 classPrefix,
                 className,
             ),
-            SubNode: makeBEM(
-                classPrefix,
-                'SubNode',
-            ),
+            // SubNode: makeBEM(
+            //     classPrefix,
+            //     'SubNode',
+            // ),
         };
     }, [
         classPrefix,

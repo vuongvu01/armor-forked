@@ -18,12 +18,9 @@ type <%- component_name_pascal %>EffectivePropsType = Partial<{
     MarginAttributesType &
     ObjectLiteralType;
 
-/* <%- component_name_pascal %> component prop type */
 export type <%- component_name_pascal %>PropsType = <%- component_name_pascal %>EffectivePropsType &
     ComponentStylePropsType;
 
-/* <%- component_name_pascal %> Root node prop type */
 export type <%- component_name_pascal %>RootPropsType = <%- component_name_pascal %>EffectivePropsType & ComponentElementStylePropsType;
 
-/* <%- component_name_pascal %> SubNode node prop type */
-export type <%- component_name_pascal %>SubNodePropsType = {} & ComponentElementStylePropsType;
+// export type <%- component_name_pascal %>SubNodePropsType = {} & ComponentElementStylePropsType;

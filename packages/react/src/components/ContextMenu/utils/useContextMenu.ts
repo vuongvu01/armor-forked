@@ -29,8 +29,8 @@ export const useContextMenu = (
 ) => {
     const [reallyOpen, setReallyOpen] = useControlledState<boolean>(
         false, // todo: implement defaultOpen prop for the ContextMenu
-        onToggle,
         open,
+        onToggle,
     );
 
     const rootRef = useRef<HTMLElement>(null);

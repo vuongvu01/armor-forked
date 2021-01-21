@@ -16,7 +16,7 @@ const propertyList = makePropList(['formatOption']);
 export const DropdownRoot = styled.div.withConfig(
     getPropsBlocker(propertyList),
 )<DropdownRootPropsType>`
-    display: inline-flex;
+    display: inline-block;
 
     ${marginAttributes};
     ${widthAttributes};

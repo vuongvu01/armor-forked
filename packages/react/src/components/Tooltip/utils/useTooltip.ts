@@ -28,8 +28,8 @@ export const useTooltip = (
 
     const [reallyOpen, setReallyOpen] = useControlledState(
         defaultOpen,
-        onToggle,
         open,
+        onToggle,
     );
     const { onMouseOverProxy, onMouseOutProxy } = useEventProxy(
         children,
