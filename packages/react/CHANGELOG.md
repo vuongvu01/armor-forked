@@ -1,3 +1,10 @@
+## @deliveryhero/armor [1.29.3](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.29.2...@deliveryhero/armor@1.29.3) (2021-01-22)
+
+
+### Bug Fixes
+
+* Disabled DatePicker for time being, since it is not yet production ready [LD-000] ([#377](https://github.com/deliveryhero/armor/issues/377)) ([46a7327](https://github.com/deliveryhero/armor/commit/46a7327587e325190f48daa1b16919144c32c9b7))
+
 ## @deliveryhero/armor [1.29.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.29.1...@deliveryhero/armor@1.29.2) (2021-01-22)
 
 
