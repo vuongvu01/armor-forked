@@ -2,8 +2,8 @@ import { useCallback, useState } from 'react';
 
 export const useControlledState = <P = unknown>(
     defaultValue?: P,
-    onValueChange?: (newValue: P) => void,
     value?: P,
+    onValueChange?: (newValue: P) => void,
 ) => {
     const [internalValue, setInternalValue] = useState<P | undefined>(
         value === undefined ? defaultValue : value,

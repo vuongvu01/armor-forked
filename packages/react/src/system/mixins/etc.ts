@@ -18,4 +18,8 @@ export const reset = () => css`
     text-align: left;
     margin: 0;
     padding: 0;
+
+    word-break: normal;
+    overflow-wrap: normal;
+    white-space: normal;
 `;
