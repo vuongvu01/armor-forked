@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { ArrowRightIcon, CalendarIcon } from '@deliveryhero/armor-icons/src';
+import { ArrowRightIcon, CalendarIcon } from '@deliveryhero/armor-icons';
 import {
     DatePickerMonthNavigationButtonForwardPropsType,
     DatePickerMonthYearSelectorTogglePropsType,

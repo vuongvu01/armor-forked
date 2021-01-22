@@ -6,7 +6,6 @@ export * from './Checkbox';
 export * from './Container';
 export * from './ContextMenu';
 export * from './Card';
-export * from './DatePicker';
 export * from './Dialog';
 export * from './Dropdown';
 export * from './ExpansionIndicator';
