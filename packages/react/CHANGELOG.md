@@ -1,3 +1,10 @@
+## @deliveryhero/armor [1.29.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.29.1...@deliveryhero/armor@1.29.2) (2021-01-22)
+
+
+### Bug Fixes
+
+* Word break and white space normal added to the reset css helper [LD-391] ([#375](https://github.com/deliveryhero/armor/issues/375)) ([6f6df2b](https://github.com/deliveryhero/armor/commit/6f6df2ba865b443b8c3a307e238b705e9942f206))
+
 ## @deliveryhero/armor [1.29.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.29.0...@deliveryhero/armor@1.29.1) (2021-01-20)
 
 
