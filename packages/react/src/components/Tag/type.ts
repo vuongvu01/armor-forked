@@ -41,7 +41,9 @@ type TagEffectivePropsType = Indexed<{
     onClose?: (event: MouseEvent<HTMLDivElement>) => void;
     onDeselect?: (tagCode?: ScalarType) => void;
     type?: TagType;
+    disabled?: boolean;
     label?: string;
+    small?: boolean;
 }> &
     HTMLAttributes<HTMLElement> &
     Pick<AnchorHTMLAttributes<HTMLAnchorElement>, 'target' | 'href' | 'rel'> &
@@ -54,10 +56,17 @@ export type TagRootPropsType = TagEffectivePropsType &
 
 export type TagCloseIconContainerPropsType = Pick<
     TagEffectivePropsType,
-    'className' | 'deleteOption' | 'onClick' | 'tabIndex' | 'theme' | 'type'
+    | 'className'
+    | 'deleteOption'
+    | 'onClick'
+    | 'tabIndex'
+    | 'theme'
+    | 'type'
+    | 'disabled'
+    | 'small'
 >;
 export type TagCloseIconPropsType = Pick<TagEffectivePropsType, 'theme'>;
-export type TagTypographyPropsType = Pick<
-    TagEffectivePropsType,
-    'deleteOption' | 'theme'
->;
+export type TagTypographyPropsType = Indexed<{
+    smallVerticalPadding?: boolean;
+}> &
+    Pick<TagEffectivePropsType, 'deleteOption' | 'theme' | 'small'>;

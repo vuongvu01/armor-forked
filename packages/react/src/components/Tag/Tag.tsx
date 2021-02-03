@@ -3,14 +3,9 @@ import PropTypes from 'prop-types';
 
 import { useComponentTheme } from '../../utils/hooks';
 import { isStatusTag, useTagClassName } from './utils';
-import { TagPropsType } from './type';
+import { TagDeleteIconModeType, TagPropsType } from './type';
 import { tagDefaultTheme } from './theme';
-import {
-    TAG_CLASS_PREFIX,
-    TAG_DELETE_BEHAVIOUR_OPTIONS,
-    tagCloseIconContainer,
-    tagRoot,
-} from './constants';
+import { TAG_CLASS_PREFIX, TAG_DELETE_BEHAVIOUR_OPTIONS } from './constants';
 import {
     TagCloseIcon,
     TagCloseIconContainer,
@@ -20,10 +15,20 @@ import {
 import { useTag } from './utils/useTag';
 
 export const Tag: FunctionComponent<TagPropsType> = forwardRef(function Tag(
-    { className, deleteOption, type, ...restProps },
+    { className, ...restProps },
     ref,
 ) {
     const theme = useComponentTheme(TAG_CLASS_PREFIX, tagDefaultTheme);
+
+    const {
+        rootProps,
+        tagTypographyProps,
+        tagCloseIconContainerProps,
+        content,
+        deleteOption,
+        type,
+        disabled,
+    } = useTag(restProps, ref);
 
     const classOverride = useTagClassName(
         TAG_CLASS_PREFIX,
@@ -32,39 +37,30 @@ export const Tag: FunctionComponent<TagPropsType> = forwardRef(function Tag(
         type,
     );
 
-    const { content, restRootProps, onCloseButtonClick } = useTag(restProps);
-
     return (
-        <TagRoot
-            data-testid={tagRoot}
-            {...restRootProps}
-            className={classOverride.Root}
-            deleteOption={deleteOption}
-            ref={ref}
-            theme={theme}
-            type={type}
-        >
+        <TagRoot {...rootProps} className={classOverride.Root} theme={theme}>
             <TagTypography
-                deleteOption={deleteOption}
+                {...tagTypographyProps}
                 className={classOverride.Label}
+                theme={theme}
                 paragraph
                 small
-                theme={theme}
             >
                 {content}
             </TagTypography>
             {!isStatusTag(type) &&
-            deleteOption !== TAG_DELETE_BEHAVIOUR_OPTIONS.DISABLED ? (
+            (deleteOption === TAG_DELETE_BEHAVIOUR_OPTIONS.ENABLED ||
+                (deleteOption === TAG_DELETE_BEHAVIOUR_OPTIONS.ON_HOVER &&
+                    !disabled)) ? (
                 <TagCloseIconContainer
+                    {...tagCloseIconContainerProps}
                     className={classOverride.CloseIconContainer}
-                    data-testid={tagCloseIconContainer}
-                    deleteOption={deleteOption}
-                    onClick={onCloseButtonClick}
-                    tabIndex={0}
                     theme={theme}
-                    type={type}
                 >
-                    <TagCloseIcon theme={theme} />
+                    <TagCloseIcon
+                        className={classOverride.CloseIcon}
+                        theme={theme}
+                    />
                 </TagCloseIconContainer>
             ) : null}
         </TagRoot>
@@ -72,7 +68,7 @@ export const Tag: FunctionComponent<TagPropsType> = forwardRef(function Tag(
 });
 
 Tag.defaultProps = {
-    deleteOption: 'onHover',
+    deleteOption: TAG_DELETE_BEHAVIOUR_OPTIONS.ON_HOVER as TagDeleteIconModeType,
     type: 'default',
 };
 

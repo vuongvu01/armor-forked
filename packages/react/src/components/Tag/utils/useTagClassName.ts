@@ -62,6 +62,12 @@ const useTagClassName = (
                 deleteOption,
                 type,
             }),
+            CloseIcon: getClassNameByComponent({
+                component: 'CloseIcon',
+                classPrefix,
+                deleteOption,
+                type,
+            }),
         };
     }, [classPrefix, className, type, deleteOption]);
 

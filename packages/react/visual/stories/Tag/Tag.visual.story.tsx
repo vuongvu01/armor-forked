@@ -22,3 +22,13 @@ export const StatusTypeApproved = () => <Tag type="approved" />;
 export const StatusTypeDenied = () => <Tag type="denied" />;
 
 export const StatusTypeNew = () => <Tag type="new" />;
+
+export const CustomStatusTypeApproved = () => (
+    <Tag type="approved">Custom approved</Tag>
+);
+
+export const CustomStatusTypeDenied = () => (
+    <Tag type="denied">Custom denied</Tag>
+);
+
+export const CustomStatusTypeNew = () => <Tag type="new">Custom new</Tag>;
