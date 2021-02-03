@@ -1,3 +1,10 @@
+## @deliveryhero/armor [1.29.4](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.29.3...@deliveryhero/armor@1.29.4) (2021-02-03)
+
+
+### Bug Fixes
+
+* **tag:** Tag component word wrap fixes, component theme refactoring [LD-396] ([#385](https://github.com/deliveryhero/armor/issues/385)) ([3504129](https://github.com/deliveryhero/armor/commit/35041292fd7f6312c043e688869ad2039705c8e4))
+
 ## @deliveryhero/armor [1.29.3](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.29.2...@deliveryhero/armor@1.29.3) (2021-01-22)
 
 
