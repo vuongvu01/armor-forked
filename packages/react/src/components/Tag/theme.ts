@@ -1,8 +1,4 @@
-import {
-    componentSpacing01,
-    componentSpacing02,
-    componentSpacing07,
-} from '../../tokens';
+import { componentSpacing01 } from '../../tokens';
 
 const colors = {
     approved: '$color.success.light',
@@ -13,14 +9,8 @@ const colors = {
 
 export const tagDefaultTheme = {
     Root: {
-        base: {
-            borderColor: '$color.primary.lighter',
-            borderRadius: '$shape.borderRadius.pill',
-            height: componentSpacing07,
-            justifyContent: 'center',
-            paddingLeft: componentSpacing01,
-            paddingRight: componentSpacing01,
-        },
+        // @deprecated, maintained for backwards compatibility
+        base: {},
         approved: {
             backgroundColor: colors.approved,
             borderColor: colors.approved,
@@ -38,36 +28,10 @@ export const tagDefaultTheme = {
             borderColor: colors.enabled,
             paddingRight: componentSpacing01,
         },
-        onHover: {},
-    },
-    Icon: {
-        base: {
-            borderColor: '$color.primary.lightest',
-            borderRadius: '$shape.borderRadius.pill',
-
-            '&:hover': {
-                backgroundColor: '$color.neutral.02',
-            },
-        },
-        element: {
-            height: componentSpacing02,
-            width: componentSpacing02,
-        },
-        onHover: {
-            backgroundColor: '$color.primary.lightest',
-
-            '&:hover': {
-                backgroundColor: '$color.neutral.02',
-            },
-        },
     },
     Typography: {
-        base: {
-            marginTop: componentSpacing01,
-            marginRight: componentSpacing02,
-            marginBottom: 0,
-            marginLeft: componentSpacing02,
-        },
+        // @deprecated, maintained for backwards compatibility
+        base: {},
         enabled: {
             marginRight: componentSpacing01,
         },
