@@ -6,7 +6,7 @@ import { getElementName } from '../../../utils';
 const isValidTabComponent = (element: ReactElement) =>
     getElementName(element) === TAB_CLASS_PREFIX;
 
-const preProcessTabChildren = (children: any, additionalProps: object) =>
+const preProcessTabChildren = (children: any, additionalProps?: object) =>
     Children.map(children, (child: ReactElement, tabIndex) => {
         if (!isValidTabComponent(child)) {
             return null;
