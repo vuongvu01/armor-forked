@@ -1,3 +1,10 @@
+## @deliveryhero/armor [1.29.5](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.29.4...@deliveryhero/armor@1.29.5) (2021-02-05)
+
+
+### Bug Fixes
+
+* **tabs:** onClick event  handling at Root [LD-398] ([#387](https://github.com/deliveryhero/armor/issues/387)) ([c282eb6](https://github.com/deliveryhero/armor/commit/c282eb6ac9584e09c74d28cc4a136fea25f275d0))
+
 ## @deliveryhero/armor [1.29.4](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.29.3...@deliveryhero/armor@1.29.4) (2021-02-03)
 
 
