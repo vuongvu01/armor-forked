@@ -1,86 +1,39 @@
-import React, {
-    FunctionComponent,
-    forwardRef,
-    useState,
-    useEffect,
-    useCallback,
-} from 'react';
+import React, { forwardRef, FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import { useComponentTheme } from '../../utils/hooks';
-import { preProcessTabChildren, useTabsClassName } from './utils';
+import { useTabsClassName } from './utils';
 import { TabsRoot } from './style';
 import { TabsPropsType } from './type';
 import { tabsDefaultTheme } from './theme';
 import { TABS_CLASS_PREFIX } from './constants';
+import TabsContext from './TabsContext';
+import { useTabs } from './hooks/useTabs';
 
 export const Tabs: FunctionComponent<TabsPropsType> = forwardRef(function Tabs(
-    { children, className, defaultActiveTab, disabled, onSwitch, wide },
+    { className, ...restProps },
     ref,
 ) {
     const theme = useComponentTheme(TABS_CLASS_PREFIX, tabsDefaultTheme);
-    const [currentlyActiveTab, setCurrentlyActiveTab] = useState(
-        defaultActiveTab,
-    );
-
-    // set tab view content to match the defaultActiveTab
-    useEffect(() => {
-        if (onSwitch && defaultActiveTab) {
-            onSwitch(defaultActiveTab);
-        }
-    }, [defaultActiveTab, onSwitch]);
-
+    const { rootProps, contextValue, disabled } = useTabs(restProps, ref);
     const classOverride = useTabsClassName(
         TABS_CLASS_PREFIX,
         className,
         disabled,
     );
 
-    const handleClick = useCallback(
-        (
-            event: React.MouseEvent<HTMLInputElement, MouseEvent>,
-            tabIndex: number,
-            contentValue: number,
-        ) => {
-            setCurrentlyActiveTab(tabIndex);
-
-            if (onSwitch) {
-                onSwitch(contentValue);
-            }
-        },
-        [onSwitch],
-    );
-
-    const extendedChildren = preProcessTabChildren(children, {
-        currentlyActiveTab,
-        wide,
-        handleClick,
-    });
-
-    if (!children) {
-        return null;
-    }
-
     return (
-        <TabsRoot
-            className={classOverride.Root}
-            disabled={disabled}
-            wide={wide}
-            ref={ref}
-            theme={theme}
-        >
-            {extendedChildren}
-        </TabsRoot>
+        <TabsContext.Provider value={contextValue}>
+            <TabsRoot
+                {...rootProps}
+                className={classOverride.Root}
+                theme={theme}
+            />
+        </TabsContext.Provider>
     );
 });
 
 Tabs.displayName = TABS_CLASS_PREFIX;
-
-Tabs.defaultProps = {
-    defaultActiveTab: 0,
-    disabled: false,
-    wide: false,
-};
 
 Tabs.propTypes = {
     defaultActiveTab: PropTypes.number,

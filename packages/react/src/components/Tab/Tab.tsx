@@ -7,31 +7,25 @@ import { TabLabel, TabLabelContainer, TabRoot } from './style';
 import { TabLabelPropsType, TabPropsType } from './type';
 import { tabDefaultTheme } from './theme';
 import { TAB_CLASS_PREFIX } from './constants';
+import { useTab } from './hooks/useTab';
 
 export const Tab: FunctionComponent<TabPropsType> = forwardRef(function Tab(
-    {
-        className,
-        children,
-        currentlyActiveTab,
-        disabled,
-        wide,
-        label,
-        handleClick,
-        tabIndex,
-        value,
-        tag: Tag = 'span',
-        to,
-        href,
-        target,
-        rel,
-        ...restProps
-    },
+    { className, ...restProps },
     ref,
 ) {
     const theme = useComponentTheme(TAB_CLASS_PREFIX, tabDefaultTheme);
-    const matchingContentViewValue =
-        typeof value !== 'undefined' ? value : tabIndex;
-    const isActive = currentlyActiveTab === tabIndex;
+
+    const {
+        rootProps,
+        tabLabelContainerProps,
+        tagProps,
+        tabLabelProps,
+        disabled,
+        isActive,
+        Tag,
+        label,
+        children,
+    } = useTab(restProps, ref);
 
     const classOverride = useTabClassName(
         TAB_CLASS_PREFIX,
@@ -40,47 +34,21 @@ export const Tab: FunctionComponent<TabPropsType> = forwardRef(function Tab(
         isActive,
     );
 
-    const handleSelect = (
-        event: React.MouseEvent<HTMLInputElement, MouseEvent>,
-    ) => {
-        if (handleClick) {
-            handleClick(event, tabIndex, matchingContentViewValue);
-        }
-    };
-
     return (
-        <TabRoot
-            {...restProps}
-            disabled={disabled}
-            isActive={isActive}
-            wide={wide}
-            className={classOverride.Root}
-            theme={theme}
-        >
+        <TabRoot {...rootProps} className={classOverride.Root} theme={theme}>
             <TabLabelContainer
+                {...tabLabelContainerProps}
                 className={classOverride.LabelContainer}
                 theme={theme}
-                disabled={disabled}
             >
                 {(forwardedProps: TabLabelPropsType) => (
-                    <Tag
-                        {...forwardedProps}
-                        to={to}
-                        href={href}
-                        target={target}
-                        rel={rel}
-                        ref={ref}
-                    >
+                    <Tag {...forwardedProps} {...tagProps}>
                         <TabLabel
-                            label
-                            large
-                            className={classOverride.Label}
-                            disabled={disabled}
-                            isActive={isActive}
-                            onClick={handleSelect}
-                            ref={ref}
+                            {...tabLabelProps}
                             theme={theme}
-                            wide={wide}
+                            className={classOverride.Label}
+                            large
+                            label
                         >
                             {label || children}
                         </TabLabel>

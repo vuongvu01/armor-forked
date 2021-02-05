@@ -27,7 +27,8 @@ export const DefaultLayoutMinimumConfiguration = () => {
     return (
         <>
             <Tabs onSwitch={handleChange}>
-                <Tab>Pizza</Tab>
+                {/* eslint-disable-next-line no-console */}
+                <Tab onClick={() => console.log('click')}>Pizza</Tab>
                 <Tab>Pasta</Tab>
                 <Tab>Risotto</Tab>
                 <Tab>Beverages</Tab>
@@ -215,10 +216,10 @@ export const FullWidth = () => {
     return (
         <>
             <Tabs wide onSwitch={handleChange}>
-                <Tab value={1}>
+                <Tab value={0}>
                     Pizza <Badge marginLeft={badgeLeftMargin}>42</Badge>
                 </Tab>
-                <Tab marginLeft={badgeLeftMargin} value={2}>
+                <Tab marginLeft={badgeLeftMargin} value={1}>
                     Pasta
                 </Tab>
             </Tabs>
