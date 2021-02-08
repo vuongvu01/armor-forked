@@ -1,3 +1,10 @@
+## @deliveryhero/armor [1.29.6](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.29.5...@deliveryhero/armor@1.29.6) (2021-02-08)
+
+
+### Bug Fixes
+
+* **dropdown:** Controlled and uncontrolled modes for dropdown open/close state supported [LD-399] ([#389](https://github.com/deliveryhero/armor/issues/389)) ([777864d](https://github.com/deliveryhero/armor/commit/777864d40150835806cfce27ce08423c7a5b0421))
+
 ## @deliveryhero/armor [1.29.5](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.29.4...@deliveryhero/armor@1.29.5) (2021-02-05)
 
 
