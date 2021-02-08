@@ -1,6 +1,6 @@
 /* eslint-disable no-console,import/no-unresolved */
 
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { withKnobs } from '@storybook/addon-knobs';
 
 import { GroupHelper } from '../../../helpers/GroupHelper';
@@ -560,5 +560,25 @@ export const CustomOptionFormatMultiplePreSelectedExpandedList = () => {
             formatOption={formatOption}
             isListExpanded={true}
         />
+    );
+};
+
+export const ControlledOpenState = () => {
+    const [open, setOpen] = useState(false);
+
+    return (
+        <>
+            <Dropdown
+                multiple
+                options={foodOptions}
+                label="Dish type"
+                defaultValue={[2, 3]}
+                open={open}
+                onOpenChange={(way: boolean) => {
+                    console.log(`onOpenChange: ${way}`);
+                    setOpen(way);
+                }}
+            />
+        </>
     );
 };

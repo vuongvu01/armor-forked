@@ -1,12 +1,10 @@
 import { InputHTMLAttributes } from 'react';
 
-import {
-    MarginAttributesType,
-    WidthAttributesType,
-} from '../../system/attributes';
+import { MarginAttributesType, WidthAttributesType } from '../../system';
 import { Indexed, ScalarType } from '../../type';
 import { ComponentElementStylePropsType } from '../type';
 import { OptionObjectType } from '../DropdownOptionList/type';
+import { ComponentBehaviourOpenStateType } from '../../system/types/ComponentBehaviourOpenStateType';
 
 export type ClassBasedOnComponentType = {
     component: string;
@@ -70,7 +68,6 @@ export type DropdownEffectivePropsType = Indexed<{
         | string
         | { label: string; value: string | number; [key: string]: any }; // aka OptionItemType - defining explicitly to expose into docs
     itemIndex?: number;
-    isOptionListShown?: boolean;
     onOptionSelect?: (itemIndex: number) => void;
     onSelect?: DropDownOnSelectType;
     selectedValue?: string | number;
@@ -93,6 +90,7 @@ export type DropdownEffectivePropsType = Indexed<{
     ) => string;
     formatOption?: OptionFormatType;
 }> &
+    ComponentBehaviourOpenStateType &
     Omit<
         InputHTMLAttributes<HTMLInputElement>,
         'value' | 'onChange' | 'defaultValue' | 'onSelect'

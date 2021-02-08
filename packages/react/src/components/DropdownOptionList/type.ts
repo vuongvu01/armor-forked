@@ -39,8 +39,5 @@ export type DropdownOptionItemPropsType = Indexed<{
     itemIndex: ScalarType;
     onOptionSelect?: (item: OptionObjectType) => void;
 }> &
-    Pick<
-        DropdownEffectivePropsType,
-        'className' | 'isOptionListShown' | 'multiple'
-    > &
+    Pick<DropdownEffectivePropsType, 'className' | 'multiple'> &
     HTMLAttributes<HTMLElement>;
