@@ -10,12 +10,12 @@ import {
     useOptions,
 } from '../../../utils';
 import { ReferenceType } from '../../../type';
+import { useControlledState } from '../../../system/hooks/useControlledState';
 
 export const useDropdown = (
     {
         disabled,
         isActionSeparatorDisplayed,
-        isListExpanded,
         error,
         label,
         onSelect,
@@ -24,6 +24,12 @@ export const useDropdown = (
         onChange,
         multiple,
         formatOption,
+
+        // open/close state
+        open,
+        defaultOpen,
+        onOpenChange,
+        isListExpanded,
 
         // other native text input props
         autoFocus,
@@ -59,7 +65,11 @@ export const useDropdown = (
         onRenderSelectedValue,
     );
 
-    const [isOptionListShown, setIsOptionListShown] = useState(isListExpanded);
+    const [isOptionListShown, setIsOptionListShown] = useControlledState(
+        isListExpanded !== undefined ? isListExpanded : defaultOpen,
+        open,
+        onOpenChange,
+    );
 
     const blurInput = useCallback(() => {
         const node = internalInputRef.current as any;

@@ -110,8 +110,6 @@ Dropdown.displayName = DROPDOWN_CLASS_PREFIX;
 
 Dropdown.defaultProps = {
     disabled: false,
-    // TODO (nmelnikov 2021-01-12): change it to defaultIsListExpanded according to the adopted conventions
-    isListExpanded: false,
     label: defaultLabel,
     tabIndex: 0,
     multiple: false,
