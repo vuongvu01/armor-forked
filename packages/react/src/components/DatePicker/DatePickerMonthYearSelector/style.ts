@@ -6,6 +6,7 @@ import {
     DatePickerMonthYearSelectorYearTitlePropsType,
     DatePickerMonthYearSelectorMonthListPropsType,
     DatePickerMonthYearSelectorMonthPropsType,
+    DatePickerMonthYearSelectorScrollPropsType,
 } from './type';
 import { marginAttributes } from '../../../system/attributes';
 import {
@@ -16,6 +17,7 @@ import {
 import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
 import {
     borderRadius,
+    buttonReset,
     color,
     pixelToRem,
     reset,
@@ -55,6 +57,14 @@ export const DatePickerMonthYearSelectorRoot = styled.div.withConfig(
     ${marginAttributes};
 `;
 
+export const DatePickerMonthYearSelectorScroll = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<DatePickerMonthYearSelectorScrollPropsType>`
+    ${reset()};
+    overflow-y: auto;
+    max-height: ${spacing(75)};
+`;
+
 export const DatePickerMonthYearSelectorList = styled.div.withConfig(
     getPropsBlocker(propertyList),
 )<DatePickerMonthYearSelectorListPropsType>`
@@ -70,15 +80,25 @@ export const DatePickerMonthYearSelectorYear = styled.div.withConfig(
     }
 `;
 
-export const DatePickerMonthYearSelectorYearTitle = styled.a.withConfig(
+export const DatePickerMonthYearSelectorYearTitle = styled.button.withConfig(
     getPropsBlocker(propertyList),
 )<DatePickerMonthYearSelectorYearTitlePropsType>`
     ${reset()};
+    ${buttonReset()};
+    outline: none; // todo: fix this
+    width: 100%;
     padding: ${spacing(4)};
-    background-color: ${color('neutral.02')};
     line-height: ${pixelToRem(16)};
     cursor: pointer;
     display: block;
+
+    background-color: ${color('neutral.02')};
+    &:hover {
+        background-color: ${color('neutral.01')};
+    }
+    ${transition({
+        'background-color': 0.1,
+    })};
 `;
 
 export const DatePickerMonthYearSelectorMonthList = styled.div.withConfig(
@@ -94,10 +114,28 @@ export const DatePickerMonthYearSelectorMonthList = styled.div.withConfig(
     padding: ${spacing(1)} 0;
 `;
 
-export const DatePickerMonthYearSelectorMonth = styled.a.withConfig(
+const getMonthStyle = ({
+    selected,
+}: DatePickerMonthYearSelectorMonthPropsType) => {
+    let result = {};
+
+    if (selected) {
+        result = css`
+            ${result};
+            color: ${color('neutral.00')};
+            background-color: ${color('primary.main')};
+        `;
+    }
+
+    return result;
+};
+
+export const DatePickerMonthYearSelectorMonth = styled.button.withConfig(
     getPropsBlocker(propertyList),
 )<DatePickerMonthYearSelectorMonthPropsType>`
     ${reset()};
+    ${buttonReset()};
+    outline: none; // todo: fix this
     padding: ${spacing(3)} ${spacing(5.6)};
 
     color: ${color('neutral.06')};
@@ -116,4 +154,6 @@ export const DatePickerMonthYearSelectorMonth = styled.a.withConfig(
     display: block;
     cursor: pointer;
     text-align: center;
+
+    ${getMonthStyle};
 `;

@@ -18,6 +18,7 @@ export const useTextInput = (
         large,
         enableFocusOnRootClick,
         enableRootRef,
+        onRootClick,
 
         // input-specific props need to be passed to Input component instead
         autoComplete,
@@ -74,10 +75,14 @@ export const useTextInput = (
 
     useInternalRef(ref, enableRootRef ? rootRef : internalInputRef);
 
-    const onRootClick = useCallback(
+    const onRootNodeClick = useCallback(
         (event: MouseEvent<HTMLDivElement>) => {
             if (!enableFocusOnRootClick) {
                 return;
+            }
+
+            if (onRootClick) {
+                onRootClick(event);
             }
 
             if (
@@ -93,17 +98,16 @@ export const useTextInput = (
                 internalInputRef.current!.focus();
             }
         },
-        [internalInputRef, enableFocusOnRootClick],
+        [internalInputRef, enableFocusOnRootClick, onRootClick],
     );
 
     const Tag = multiline ? 'textarea' : 'input';
     const isOutlined = isMouseInside || isFocused || outline;
 
     return {
-        rootRef,
         rootProps: {
             ...restRootProps,
-            onClick: onRootClick,
+            onClick: onRootNodeClick,
             ref: rootRef,
             error,
             multiline,

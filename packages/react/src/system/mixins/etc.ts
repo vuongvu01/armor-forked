@@ -23,3 +23,12 @@ export const reset = () => css`
     overflow-wrap: normal;
     white-space: normal;
 `;
+
+export const buttonReset = () => css`
+    appearance: none;
+    border: 0 none;
+    background-color: transparent;
+    border-radius: 0;
+    display: block;
+    padding: 0;
+`;

@@ -8,9 +8,11 @@ export const useDatePickerDaySelectorClassNames = (
     useMemo(() => {
         return {
             Root: makeRootClassName(classPrefix, className),
-            // SubNode: makeBEM(
-            //     classPrefix,
-            //     'SubNode',
-            // ),
+            Week: makeBEM(classPrefix, 'Week'),
+            WeekDay: makeBEM(classPrefix, 'WeekDay'),
+            Days: makeBEM(classPrefix, 'Days'),
+            Day: makeBEM(classPrefix, 'Day'),
+            DayPadding: makeBEM(classPrefix, 'DayPadding'),
+            DayButton: makeBEM(classPrefix, 'DayButton'),
         };
     }, [classPrefix, className]);

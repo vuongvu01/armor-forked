@@ -1,9 +1,8 @@
 import React, { FunctionComponent, forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
-import { useTheme } from '../../styling';
-import { useDatePickerClassNames } from './utils/useDatePickerClassNames';
-import { useDatePicker } from './utils/useDatePicker';
+import { useDatePickerClassNames } from './hooks/useDatePickerClassNames';
+import { useDatePicker } from './hooks/useDatePicker';
 import {
     DatePickerRoot,
     DatePickerInput,
@@ -17,6 +16,7 @@ import { DatePickerTimeSelector } from './DatePickerTimeSelector';
 import { DatePickerActionBar } from './DatePickerActionBar';
 import { DatePickerMonthYearSelector } from './DatePickerMonthYearSelector';
 import { DatePickerDaySelector } from './DatePickerDaySelector';
+import { DatePickerTopBar } from './DatePickerTopBar';
 import { useComponentTheme } from '../../utils/hooks';
 
 export const DatePicker: FunctionComponent<DatePickerPropsType> = forwardRef(
@@ -33,9 +33,17 @@ export const DatePicker: FunctionComponent<DatePickerPropsType> = forwardRef(
             inputProps,
             dropdownProps,
             arrowProps,
+            topBarProps,
             daySelectorProps,
+            monthYearSelectorProps,
+            actionBarProps,
+            timeSelectorProps,
 
             displayMonthYearSelector,
+            open,
+
+            enableActionButtons,
+            enableTimePicker,
         } = useDatePicker(props, ref);
 
         return (
@@ -46,26 +54,36 @@ export const DatePicker: FunctionComponent<DatePickerPropsType> = forwardRef(
             >
                 <DatePickerInput
                     {...inputProps}
-                    theme={theme}
-                    className="DatePicker-Input"
+                    className={classNameComponents.Input}
                     after={<DatePickerInputIcon theme={theme} />}
                 />
-                <DatePickerDropdown
-                    {...dropdownProps}
-                    theme={theme}
-                    className="DatePicker-Dropdown"
-                >
-                    {displayMonthYearSelector && (
-                        <DatePickerMonthYearSelector />
-                    )}
-                    {!displayMonthYearSelector && (
-                        <DatePickerDaySelector {...daySelectorProps} />
-                    )}
-                    <DatePickerTimeSelector />
-                    <DatePickerActionBar />
+                {open && (
+                    <DatePickerDropdown
+                        {...dropdownProps}
+                        className={classNameComponents.Dropdown}
+                    >
+                        <DatePickerTopBar {...topBarProps} />
+                        {displayMonthYearSelector && (
+                            <DatePickerMonthYearSelector
+                                {...monthYearSelectorProps}
+                            />
+                        )}
+                        {!displayMonthYearSelector && (
+                            <DatePickerDaySelector {...daySelectorProps} />
+                        )}
+                        {enableTimePicker && (
+                            <DatePickerTimeSelector {...timeSelectorProps} />
+                        )}
+                        {enableActionButtons && (
+                            <DatePickerActionBar {...actionBarProps} />
+                        )}
 
-                    <DatePickerDropdownArrow {...arrowProps} theme={theme} />
-                </DatePickerDropdown>
+                        <DatePickerDropdownArrow
+                            {...arrowProps}
+                            theme={theme}
+                        />
+                    </DatePickerDropdown>
+                )}
             </DatePickerRoot>
         );
     },

@@ -10,6 +10,7 @@ import {
 } from '../../system/attributes';
 import { ObjectLiteralType } from '../../type';
 
+/** 👉 PROPS TYPE */
 type <%- component_name_pascal %>EffectivePropsType = Partial<{
     // exampleProperty: boolean;
     // add other custom properties here

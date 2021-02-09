@@ -1,9 +1,8 @@
 import React, { FunctionComponent, forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
-import { useTheme } from '../../../styling';
-import { useDatePickerActionBarClassNames } from './utils/useDatePickerActionBarClassNames';
-import { useDatePickerActionBar } from './utils/useDatePickerActionBar';
+import { useDatePickerActionBarClassNames } from './hooks/useDatePickerActionBarClassNames';
+import { useDatePickerActionBar } from './hooks/useDatePickerActionBar';
 import { DatePickerActionBarRoot, DatePickerActionBarButton } from './style';
 import { DatePickerActionBarPropsType } from './type';
 import { DATE_PICKER_ACTION_BAR_CLASS_PREFIX } from './constants';
@@ -17,7 +16,11 @@ export const DatePickerActionBar: FunctionComponent<DatePickerActionBarPropsType
             className,
         );
 
-        const { rootProps } = useDatePickerActionBar(props, ref);
+        const {
+            rootProps,
+            cancelButtonProps,
+            applyButtonProps,
+        } = useDatePickerActionBar(props, ref);
 
         return (
             <DatePickerActionBarRoot
@@ -25,10 +28,19 @@ export const DatePickerActionBar: FunctionComponent<DatePickerActionBarPropsType
                 theme={theme}
                 className={classNameComponents.Root}
             >
-                <DatePickerActionBarButton marginRight={2} theme={theme}>
+                <DatePickerActionBarButton
+                    {...cancelButtonProps}
+                    marginRight={2}
+                    theme={theme}
+                    className={classNameComponents.ActionBarButton}
+                >
                     Cancel
                 </DatePickerActionBarButton>
-                <DatePickerActionBarButton theme={theme}>
+                <DatePickerActionBarButton
+                    {...applyButtonProps}
+                    theme={theme}
+                    className={classNameComponents.ActionBarButton}
+                >
                     Ok
                 </DatePickerActionBarButton>
             </DatePickerActionBarRoot>
@@ -36,12 +48,7 @@ export const DatePickerActionBar: FunctionComponent<DatePickerActionBarPropsType
     },
 );
 
-DatePickerActionBar.defaultProps = {
-    // exampleProperty: true,
-};
+DatePickerActionBar.defaultProps = {};
 
 /** prop-types are required here for run-time checks */
-DatePickerActionBar.propTypes = {
-    /** Example description */
-    // exampleProperty: PropTypes.bool,
-};
+DatePickerActionBar.propTypes = {};

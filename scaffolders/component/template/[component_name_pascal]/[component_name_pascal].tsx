@@ -1,16 +1,17 @@
-import React, { FunctionComponent, forwardRef } from 'react';
+import React, { FC, forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { useTheme } from '../../styling';
-import { use<%- component_name_pascal %>ClassNames } from './utils/use<%- component_name_pascal %>ClassNames';
-import { use<%- component_name_pascal %> } from './utils/use<%- component_name_pascal %>';
+import { use<%- component_name_pascal %>ClassNames } from './hooks/use<%- component_name_pascal %>ClassNames';
+import { use<%- component_name_pascal %> } from './hooks/use<%- component_name_pascal %>';
 import { <%- component_name_pascal %>Root } from './style';
 import { <%- component_name_pascal %>PropsType } from './type';
 import {
     <%- component_name_snake_uc %>_CLASS_PREFIX,
 } from './constants';
+import { useComponentTheme } from '../../../utils/hooks';
 
-export const <%- component_name_pascal %>: FunctionComponent<<%- component_name_pascal %>PropsType> = forwardRef(
+export const <%- component_name_pascal %>: FC<<%- component_name_pascal %>PropsType> = forwardRef(
     function <%- component_name_pascal %>(
         {
             className,
@@ -19,7 +20,7 @@ export const <%- component_name_pascal %>: FunctionComponent<<%- component_name_
         },
         ref,
     ){
-        const theme = useTheme().armor;
+        const theme = useComponentTheme(<%- component_name_snake_uc %>_CLASS_PREFIX);
         const classNameComponents = use<%- component_name_pascal %>ClassNames(
             <%- component_name_snake_uc %>_CLASS_PREFIX,
             className,

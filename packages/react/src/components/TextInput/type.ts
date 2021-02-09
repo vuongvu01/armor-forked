@@ -1,11 +1,16 @@
-import { InputHTMLAttributes, TextareaHTMLAttributes, ReactNode } from 'react';
+import {
+    InputHTMLAttributes,
+    TextareaHTMLAttributes,
+    ReactNode,
+    HTMLAttributes,
+} from 'react';
 
 import {
     HeightAttributesType,
     MarginAttributesType,
     WidthAttributesType,
 } from '../../system';
-import { Indexed, ObjectLiteralType } from '../../type';
+import { ObjectLiteralType } from '../../type';
 import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
@@ -23,6 +28,7 @@ type TextInputEffectivePropsType = Partial<{
     outline: boolean;
     enableFocusOnRootClick: boolean;
     enableRootRef: boolean;
+    onRootClick: HTMLAttributes<HTMLElement>['onClick'];
     // add other custom properties here
 }> &
     InputHTMLAttributes<HTMLInputElement> &

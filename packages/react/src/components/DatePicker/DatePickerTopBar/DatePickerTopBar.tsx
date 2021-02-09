@@ -2,14 +2,14 @@ import React, { FunctionComponent, forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { ArrowRightIcon } from '@deliveryhero/armor-icons';
 
-import { useDatePickerTopBarClassNames } from './utils/useDatePickerTopBarClassNames';
-import { useDatePickerTopBar } from './utils/useDatePickerTopBar';
+import { useDatePickerTopBarClassNames } from './hooks/useDatePickerTopBarClassNames';
+import { useDatePickerTopBar } from './hooks/useDatePickerTopBar';
 import {
     DatePickerTopBarRoot,
-    DatePickerMonthNavigation,
-    DatePickerMonthNavigationButtonBackward,
-    DatePickerMonthNavigationButtonForward,
-    DatePickerMonthYearSelectorToggle,
+    DatePickerTopBarMonthNavigation,
+    DatePickerTopBarMonthNavigationButtonBackward,
+    DatePickerTopBarMonthNavigationButtonForward,
+    DatePickerTopBarMonthYearSelectorToggle,
 } from './style';
 import { DatePickerTopBarPropsType } from './type';
 import { DATE_PICKER_TOP_BAR_CLASS_PREFIX } from './constants';
@@ -28,6 +28,9 @@ export const DatePickerTopBar: FunctionComponent<DatePickerTopBarPropsType> = fo
             monthYearSelectorToggleProps,
             monthNavigationButtonBackwardProps,
             monthNavigationButtonForwardProps,
+
+            year,
+            monthName,
         } = useDatePickerTopBar(props, ref);
 
         return (
@@ -36,40 +39,48 @@ export const DatePickerTopBar: FunctionComponent<DatePickerTopBarPropsType> = fo
                 theme={theme}
                 className={classNameComponents.Root}
             >
-                <DatePickerMonthYearSelectorToggle
+                <DatePickerTopBarMonthYearSelectorToggle
                     {...monthYearSelectorToggleProps}
                     theme={theme}
-                    className="DatePicker-MonthYearSelectorToggle"
+                    className={classNameComponents.MonthYearSelectorToggle}
                 >
-                    April 2020
-                </DatePickerMonthYearSelectorToggle>
-                <DatePickerMonthNavigation>
-                    <DatePickerMonthNavigationButtonBackward
+                    {monthName} {year}
+                </DatePickerTopBarMonthYearSelectorToggle>
+                <DatePickerTopBarMonthNavigation
+                    theme={theme}
+                    className={classNameComponents.MonthNavigation}
+                >
+                    <DatePickerTopBarMonthNavigationButtonBackward
                         {...monthNavigationButtonBackwardProps}
                         theme={theme}
-                        className="DatePicker-MonthNavigationButtonBackward"
+                        className={
+                            classNameComponents.MonthNavigationButtonBackward
+                        }
                     >
-                        <ArrowRightIcon medium />
-                    </DatePickerMonthNavigationButtonBackward>
-                    <DatePickerMonthNavigationButtonForward
+                        <ArrowRightIcon
+                            medium
+                            className={classNameComponents.ArrowRightIcon}
+                        />
+                    </DatePickerTopBarMonthNavigationButtonBackward>
+                    <DatePickerTopBarMonthNavigationButtonForward
                         {...monthNavigationButtonForwardProps}
                         theme={theme}
-                        className="DatePicker-MonthNavigationButtonForward"
+                        className={
+                            classNameComponents.MonthNavigationButtonForward
+                        }
                     >
-                        <ArrowRightIcon medium theme={theme} />
-                    </DatePickerMonthNavigationButtonForward>
-                </DatePickerMonthNavigation>
+                        <ArrowRightIcon
+                            medium
+                            className={classNameComponents.ArrowRightIcon}
+                        />
+                    </DatePickerTopBarMonthNavigationButtonForward>
+                </DatePickerTopBarMonthNavigation>
             </DatePickerTopBarRoot>
         );
     },
 );
 
-DatePickerTopBar.defaultProps = {
-    // exampleProperty: true,
-};
+DatePickerTopBar.defaultProps = {};
 
 /** prop-types are required here for run-time checks */
-DatePickerTopBar.propTypes = {
-    /** Example description */
-    // exampleProperty: PropTypes.bool,
-};
+DatePickerTopBar.propTypes = {};

@@ -8,6 +8,8 @@ export const useDatePickerTimeSelectorClassNames = (
     useMemo(() => {
         return {
             Root: makeRootClassName(classPrefix, className),
-            SubNode: makeBEM(classPrefix, 'SubNode'),
+            Input: makeBEM(classPrefix, 'Input'),
+            Button: makeBEM(classPrefix, 'Button'),
+            TimeSeparatorIcon: makeBEM(classPrefix, 'TimeSeparatorIcon'),
         };
     }, [classPrefix, className]);

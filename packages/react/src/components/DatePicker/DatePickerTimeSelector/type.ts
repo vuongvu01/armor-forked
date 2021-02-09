@@ -4,12 +4,12 @@ import {
     ComponentElementStylePropsType,
 } from '../../type';
 import { ObjectLiteralType } from '../../../type';
+import { TimeVector24 } from '../utils/TimeVector24';
 
-type DatePickerTimeSelectorEffectivePropsType = Partial<{
-    // exampleProperty: boolean;
-    // add other custom properties here
-}> &
-    HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
+type DatePickerTimeSelectorEffectivePropsType = {
+    value: TimeVector24;
+    onChange: (value: TimeVector24) => void;
+} & Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> & // includes all HTML Div attributes
     ObjectLiteralType;
 
 /* DatePickerTimeSelector component prop type */

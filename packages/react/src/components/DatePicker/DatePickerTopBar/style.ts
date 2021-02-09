@@ -4,14 +4,16 @@ import { getPropsBlocker } from '../../../utils';
 import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
 import { color, reset, spacing } from '../../../system/mixins';
 import {
-    DatePickerMonthNavigationButtonForwardPropsType,
-    DatePickerMonthYearSelectorTogglePropsType,
+    DatePickerTopBarMonthNavigationButtonForwardPropsType,
+    DatePickerTopBarMonthYearSelectorTogglePropsType,
 } from '../type';
 import { transition } from '../../../system/mixins/transition';
 
 // all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
 const propertyList = {
-    disabled: true,
+    open: true,
+    onDirtyInternalValueUTCUpdate: true,
+    dirtyInternalValueUTC: true,
 };
 
 // if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
@@ -21,13 +23,13 @@ export const DatePickerTopBarRoot = styled.div.withConfig(
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: ${spacing(4)} ${spacing(6)} 0 ${spacing(6)};
+    padding: ${spacing(4)} ${spacing(5)} 0 ${spacing(6)};
     ${getComponentOverride('DatePickerTopBar')};
 `;
 
 const getMonthYearSelectorToggleStyle = ({
     open,
-}: DatePickerMonthYearSelectorTogglePropsType) => {
+}: DatePickerTopBarMonthYearSelectorTogglePropsType) => {
     let result = {};
 
     if (open) {
@@ -40,9 +42,9 @@ const getMonthYearSelectorToggleStyle = ({
     return result;
 };
 
-export const DatePickerMonthYearSelectorToggle = styled.a.withConfig(
+export const DatePickerTopBarMonthYearSelectorToggle = styled.a.withConfig(
     getPropsBlocker(propertyList),
-)<DatePickerMonthYearSelectorTogglePropsType>`
+)<DatePickerTopBarMonthYearSelectorTogglePropsType>`
     ${reset()};
     cursor: pointer;
     user-select: none;
@@ -53,7 +55,7 @@ export const DatePickerMonthYearSelectorToggle = styled.a.withConfig(
     ${getMonthYearSelectorToggleStyle}
 `;
 
-export const DatePickerMonthNavigation = styled.div.withConfig(
+export const DatePickerTopBarMonthNavigation = styled.div.withConfig(
     getPropsBlocker(propertyList),
 )`
     ${reset()};
@@ -65,7 +67,7 @@ export const DatePickerMonthNavigation = styled.div.withConfig(
 
 const getMonthNavigationButtonForwardStyle = ({
     disabled,
-}: DatePickerMonthNavigationButtonForwardPropsType) => {
+}: DatePickerTopBarMonthNavigationButtonForwardPropsType) => {
     let result = {};
 
     if (disabled) {
@@ -79,20 +81,23 @@ const getMonthNavigationButtonForwardStyle = ({
     return result;
 };
 
-export const DatePickerMonthNavigationButtonForward = styled.a.withConfig(
+export const DatePickerTopBarMonthNavigationButtonForward = styled.button.withConfig(
     getPropsBlocker(propertyList),
-)<DatePickerMonthNavigationButtonForwardPropsType>`
+)<DatePickerTopBarMonthNavigationButtonForwardPropsType>`
     display: flex;
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
+    border: 0 none;
+    appearance: none;
+    background-color: transparent;
 
     ${getMonthNavigationButtonForwardStyle}
 `;
 
-export const DatePickerMonthNavigationButtonBackward = styled(
-    DatePickerMonthNavigationButtonForward,
-)<DatePickerMonthNavigationButtonForwardPropsType>`
+export const DatePickerTopBarMonthNavigationButtonBackward = styled(
+    DatePickerTopBarMonthNavigationButtonForward,
+)<DatePickerTopBarMonthNavigationButtonForwardPropsType>`
     svg {
         transform: rotate(0.5turn);
     }

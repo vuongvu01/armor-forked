@@ -8,6 +8,5 @@ export const useIconButtonClassNames = (
     useMemo(() => {
         return {
             Root: makeRootClassName(classPrefix, className),
-            SubNode: makeBEM(classPrefix, 'SubNode'),
         };
     }, [classPrefix, className]);

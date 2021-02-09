@@ -7,9 +7,7 @@ import { Button } from '../../Button';
 import { fontSize02, fontSize03 } from '../../../tokens';
 
 // all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
-const propertyList = makePropList([
-    // 'exampleProperty',
-]);
+const propertyList = makePropList(['onApplyValueClick', 'onCancelClick']);
 
 // if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
 export const DatePickerActionBarRoot = styled.div.withConfig(

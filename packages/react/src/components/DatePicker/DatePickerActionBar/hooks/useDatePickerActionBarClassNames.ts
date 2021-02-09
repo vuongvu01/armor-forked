@@ -1,16 +1,13 @@
 import { useMemo } from 'react';
 import { makeRootClassName, makeBEM } from '../../../../utils';
 
-export const useDatePickerMonthYearSelectorClassNames = (
+export const useDatePickerActionBarClassNames = (
     classPrefix: string,
     className?: string,
 ) =>
     useMemo(() => {
         return {
             Root: makeRootClassName(classPrefix, className),
-            // SubNode: makeBEM(
-            //     classPrefix,
-            //     'SubNode',
-            // ),
+            ActionBarButton: makeBEM(classPrefix, 'ActionBarButton'),
         };
     }, [classPrefix, className]);

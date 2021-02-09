@@ -4,13 +4,16 @@ import {
     ComponentElementStylePropsType,
 } from '../../type';
 import { ObjectLiteralType } from '../../../type';
+import { DateVector } from '../utils/DateVector';
 
-type DatePickerTopBarEffectivePropsType = Partial<{
+type DatePickerTopBarEffectivePropsType = {
     monthYearSelectorOpen: boolean;
     onMonthYearToggleClick: () => void;
+
+    displayedDateVector: DateVector;
+    onDisplayedDateVectorChange: (newDisplayedDateVector: DateVector) => void;
     // add other custom properties here
-}> &
-    HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
+} & HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
     ObjectLiteralType;
 
 export type DatePickerTopBarPropsType = DatePickerTopBarEffectivePropsType &
