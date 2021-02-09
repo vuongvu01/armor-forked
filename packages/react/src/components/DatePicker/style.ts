@@ -1,35 +1,32 @@
 import styled, { css } from 'styled-components';
-import { ArrowRightIcon, CalendarIcon } from '@deliveryhero/armor-icons';
+import { CalendarIcon } from '@deliveryhero/armor-icons';
+import { DatePickerRootPropsType } from './type';
 import {
-    DatePickerMonthNavigationButtonForwardPropsType,
-    DatePickerMonthYearSelectorTogglePropsType,
-    DatePickerRootPropsType,
-} from './type';
-import { marginAttributes, widthAttributes } from '../../system/attributes';
-import { shouldForwardProp, makePropList, getPropsBlocker } from '../../utils';
-import { getComponentOverride } from '../../system/mixins/getComponentOverride';
-import {
+    marginAttributes,
+    widthAttributes,
     borderRadius,
     color,
     reset,
     spacing,
     typography,
-} from '../../system/mixins';
+} from '../../system';
+import { makePropList, getPropsBlocker } from '../../utils';
+import { getComponentOverride } from '../../system/mixins/getComponentOverride';
+
 import { TextInput } from '../TextInput';
-import { transition } from '../../system/mixins/transition';
 
 // all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
-const propertyList = makePropList(['selected', 'leftEnd', 'rightEnd']);
+const propertyList = makePropList([
+    'selected',
+    'leftEnd',
+    'rightEnd',
+    'enableTimePicker',
+]);
 
-const getRootStyle = (props: DatePickerRootPropsType) => {
-    const result = {};
-
-    // if (exampleProperty) {
-    //     result = css`
-    //         ${result};
-    //         ${DatePicker.Root.exampleModifier}
-    //     `;
-    // }
+const getRootStyle = ({ enableTimePicker }: DatePickerRootPropsType) => {
+    const result = css`
+        min-width: ${spacing(enableTimePicker ? 78 : 58)};
+    `;
 
     return result;
 };
@@ -51,7 +48,9 @@ export const DatePickerRoot = styled.div.withConfig(
 
 export const DatePickerInput = styled(TextInput).withConfig(
     getPropsBlocker(propertyList, false),
-)``;
+)`
+    width: 100%;
+`;
 
 export const DatePickerInputIcon = styled(CalendarIcon)
     .attrs({ medium: true })

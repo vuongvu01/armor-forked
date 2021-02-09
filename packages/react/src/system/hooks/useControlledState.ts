@@ -1,9 +1,15 @@
 import { useCallback, useState } from 'react';
 
+/**
+ * Use this hook to implement controlled/uncontrolled pattern for any type of {defaultValue, value, onChange} props.
+ * @param defaultValue
+ * @param value
+ * @param onChange
+ */
 export const useControlledState = <P = unknown>(
     defaultValue?: P,
     value?: P,
-    onValueChange?: (newValue: P) => void,
+    onChange?: (newValue: P) => void,
 ) => {
     const [internalValue, setInternalValue] = useState<P | undefined>(
         value === undefined ? defaultValue : value,
@@ -13,15 +19,15 @@ export const useControlledState = <P = unknown>(
 
     const setRealValue = useCallback(
         (newValue: P) => {
-            if (onValueChange) {
-                onValueChange(newValue);
+            if (onChange) {
+                onChange(newValue);
             }
 
             if (value === undefined) {
                 setInternalValue(newValue);
             }
         },
-        [setInternalValue, onValueChange, value],
+        [setInternalValue, onChange, value],
     );
 
     return [realValue, setRealValue, isControlled] as [

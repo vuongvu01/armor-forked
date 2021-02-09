@@ -5,7 +5,7 @@ import { useFlexItemClassName } from './utils';
 import { FlexItemPropsType } from './type';
 import { FLEX_ITEM_CLASS_PREFIX, flexItemRoot } from './constants';
 import { FlexItemRoot } from './style';
-import { useComponentTheme } from '../../utils/hooks';
+import { useTheme } from '../../styling';
 
 export const FlexItem: FunctionComponent<FlexItemPropsType> = forwardRef(
     function FlexItem(
@@ -20,7 +20,7 @@ export const FlexItem: FunctionComponent<FlexItemPropsType> = forwardRef(
         },
         ref,
     ) {
-        const theme = useComponentTheme(FLEX_ITEM_CLASS_PREFIX);
+        const theme = useTheme().armor;
         const classOverride = useFlexItemClassName(
             FLEX_ITEM_CLASS_PREFIX,
             className,

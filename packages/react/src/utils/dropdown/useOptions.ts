@@ -4,7 +4,7 @@ import {
     OptionFormatType,
     OptionType,
 } from '../../components/Dropdown/type';
-import { OptionObjectType } from '../../components/DropdownOptionList/type';
+import { OptionObjectType } from '../../components/OptionList/type';
 
 export const useOptions = (
     options?: OptionType,

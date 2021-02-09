@@ -17,33 +17,27 @@ const propertyList = {
 
 const expansionIndicatorContainerStyle = ({
     disabled,
-}: ExpansionIndicatorPropsType) => css`
-    ${disabled
+}: ExpansionIndicatorPropsType) =>
+    disabled
         ? css`
               cursor: not-allowed;
           `
-        : ''}
-`;
+        : {};
 
 const expansionIndicatorStyle = ({ disabled }: ExpansionIndicatorPropsType) =>
-    css`
-        ${disabled
-            ? css`
-                  cursor: not-allowed;
-                  color: ${color('neutral.04')};
-              `
-            : ''}
-    `;
+    disabled
+        ? css`
+              cursor: not-allowed;
+              color: ${color('neutral.04')};
+          `
+        : {};
 
-const actionSeparator = ({
-    displaySeparator,
-}: ExpansionIndicatorPropsType) => css`
-    ${displaySeparator
+const actionSeparator = ({ displaySeparator }: ExpansionIndicatorPropsType) =>
+    displaySeparator
         ? css`
               border-left-color: ${color('neutral.03')};
           `
-        : ''}
-`;
+        : {};
 
 export const ExpansionIndicatorRoot = styled.div.withConfig(
     getPropsBlocker(propertyList),

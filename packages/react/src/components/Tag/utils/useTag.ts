@@ -1,6 +1,7 @@
 import { MouseEvent, useCallback } from 'react';
 import { TagPropsType } from '../type';
 import { getStatusTagLabel, isStatusTag } from './index';
+import { noop } from '../../../utils';
 import { tagCloseIconContainer, tagRoot } from '../constants';
 import { ReferenceType } from '../../../type';
 
@@ -27,20 +28,21 @@ export const useTag = (
     const content = children || realLabel;
 
     const onCloseButtonClick = useCallback(
-        disabled
-            ? () => {}
-            : (event: MouseEvent<HTMLDivElement>) => {
-                  event.stopPropagation();
+        (event: MouseEvent<HTMLDivElement>) => {
+            if (disabled) {
+                return;
+            }
+            event.stopPropagation();
 
-                  if (onClose) {
-                      onClose(event);
-                  }
+            if (onClose) {
+                onClose(event);
+            }
 
-                  // need to maintain backward compatibility with onClose
-                  if (onDeselect) {
-                      onDeselect(code);
-                  }
-              },
+            // need to maintain backward compatibility with onClose
+            if (onDeselect) {
+                onDeselect(code);
+            }
+        },
         [onClose, onDeselect],
     );
 
@@ -52,6 +54,7 @@ export const useTag = (
             ref,
             small,
             type,
+            disabled,
         },
         tagCloseIconContainerProps: {
             deleteOption,

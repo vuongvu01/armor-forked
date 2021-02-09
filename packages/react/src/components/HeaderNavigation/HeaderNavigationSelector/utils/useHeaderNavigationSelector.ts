@@ -10,6 +10,11 @@ import {
     useSelectedValueToDisplay,
     useValue,
 } from '../../../../utils';
+import {
+    DropdownInternalOptionType,
+    DropdownInternalValueType,
+} from '../../../Dropdown/type';
+import { OptionObjectType } from '../../../OptionList/type';
 
 export const useHeaderNavigationSelector = (
     {
@@ -28,6 +33,8 @@ export const useHeaderNavigationSelector = (
         onChange,
         onRenderSelectedValue,
         onClick,
+        enableSelectAllOption,
+        enableSearchOption,
         ...restProps
     }: HeaderNavigationSelectorPropsType,
     ref: ReferenceType,
@@ -101,6 +108,8 @@ export const useHeaderNavigationSelector = (
             isOptionListShown,
             setIsOptionListShown,
             disabled,
+            enableSelectAllOption,
+            enableSearchOption,
         },
         expansionIndicatorProps: {
             isExpanded: isOptionListShown,

@@ -39,13 +39,19 @@ export const DatePickerTimeSelectorRoot = styled.div.withConfig(
 
 export const DatePickerTimeSelectorClock = styled.div.withConfig(
     getPropsBlocker(propertyList),
-)``;
+)`
+    display: flex;
+    align-items: center;
+`;
 
 export const DatePickerTimeSelectorInput = styled(TextInput).withConfig(
     getPropsBlocker(propertyList, false),
 )`
     ${typography('paragraphMedium')};
     width: ${spacing(13)};
+    .TextInput-Input {
+        text-align: right;
+    }
 `;
 
 export const DatePickerTimeSelectorDayPeriodSelector = styled.div.withConfig(

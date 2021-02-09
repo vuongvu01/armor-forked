@@ -5,11 +5,10 @@ import {
 } from '../../type';
 import { ObjectLiteralType } from '../../../type';
 
-type DatePickerActionBarEffectivePropsType = Partial<{
-    // exampleProperty: boolean;
-    // add other custom properties here
-}> &
-    HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
+type DatePickerActionBarEffectivePropsType = {
+    applyValue: () => void;
+    setClose: () => void;
+} & HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
     ObjectLiteralType;
 
 export type DatePickerActionBarPropsType = DatePickerActionBarEffectivePropsType &

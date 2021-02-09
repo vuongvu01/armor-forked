@@ -2,9 +2,8 @@ import React, { FunctionComponent, forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { useComponentTheme } from '../../../utils/hooks';
 
-import { useTheme } from '../../../styling';
-import { useDatePickerDaySelectorClassNames } from './utils/useDatePickerDaySelectorClassNames';
-import { useDatePickerDaySelector } from './utils/useDatePickerDaySelector';
+import { useDatePickerDaySelectorClassNames } from './hooks/useDatePickerDaySelectorClassNames';
+import { useDatePickerDaySelector } from './hooks/useDatePickerDaySelector';
 import {
     DatePickerDaySelectorRoot,
     DatePickerDaySelectorWeek,
@@ -25,10 +24,12 @@ export const DatePickerDaySelector: FunctionComponent<DatePickerDaySelectorProps
             className,
         );
 
-        const { rootProps, weekDays, dayMatrix } = useDatePickerDaySelector(
-            props,
-            ref,
-        );
+        const {
+            rootProps,
+            weekDays,
+            dayMatrix,
+            dayButtonProps,
+        } = useDatePickerDaySelector(props, ref);
 
         return (
             <DatePickerDaySelectorRoot
@@ -36,37 +37,50 @@ export const DatePickerDaySelector: FunctionComponent<DatePickerDaySelectorProps
                 theme={theme}
                 className={classNameComponents.Root}
             >
-                <DatePickerDaySelectorWeek theme={theme}>
+                <DatePickerDaySelectorWeek
+                    theme={theme}
+                    className={classNameComponents.Week}
+                >
                     {weekDays.map(weekDay => (
                         <DatePickerDaySelectorWeekDay
                             key={weekDay.value}
                             theme={theme}
+                            className={classNameComponents.WeekDay}
                         >
                             {weekDay.label}
                         </DatePickerDaySelectorWeekDay>
                     ))}
                 </DatePickerDaySelectorWeek>
-                <DatePickerDaySelectorDays theme={theme}>
+                <DatePickerDaySelectorDays
+                    theme={theme}
+                    className={classNameComponents.Days}
+                >
                     {dayMatrix.map(day => (
-                        <DatePickerDaySelectorDay key={day.id} theme={theme}>
+                        <DatePickerDaySelectorDay
+                            key={day.id}
+                            {...day.itemProps}
+                            {...dayButtonProps}
+                            theme={theme}
+                            className={classNameComponents.Day}
+                        >
                             <DatePickerDaySelectorDayPadding
-                                {...day}
+                                {...day.paddingProps}
                                 left
                                 theme={theme}
-                                className="foo"
+                                className={classNameComponents.DayPadding}
                             />
                             <DatePickerDaySelectorDayButton
-                                {...day}
+                                {...day.buttonProps}
                                 theme={theme}
-                                className="foo"
+                                className={classNameComponents.DayButton}
                             >
-                                {day.number}
+                                {day.day}
                             </DatePickerDaySelectorDayButton>
                             <DatePickerDaySelectorDayPadding
-                                {...day}
+                                {...day.paddingProps}
                                 right
                                 theme={theme}
-                                className="foo"
+                                className={classNameComponents.DayPadding}
                             />
                         </DatePickerDaySelectorDay>
                     ))}
@@ -76,12 +90,7 @@ export const DatePickerDaySelector: FunctionComponent<DatePickerDaySelectorProps
     },
 );
 
-DatePickerDaySelector.defaultProps = {
-    // exampleProperty: true,
-};
+DatePickerDaySelector.defaultProps = {};
 
 /** prop-types are required here for run-time checks */
-DatePickerDaySelector.propTypes = {
-    /** Example description */
-    // exampleProperty: PropTypes.bool,
-};
+DatePickerDaySelector.propTypes = {};

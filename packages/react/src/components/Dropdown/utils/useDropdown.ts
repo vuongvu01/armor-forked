@@ -1,13 +1,14 @@
 import { useCallback, useMemo, useRef, useState } from 'react';
-import { DropdownPropsType } from '../type';
+import { DropdownInternalOptionType, DropdownPropsType } from '../type';
 import {
+    noop,
     useDetectClickOutsideComponent,
     useDetectEscapeKeyPressed,
     useInternalRef,
     useOnValueUpdate,
-    useValue,
-    useSelectedValueToDisplay,
     useOptions,
+    useSelectedValueToDisplay,
+    useValue,
 } from '../../../utils';
 import { ReferenceType } from '../../../type';
 import { useControlledState } from '../../../system/hooks/useControlledState';
@@ -15,21 +16,30 @@ import { useControlledState } from '../../../system/hooks/useControlledState';
 export const useDropdown = (
     {
         disabled,
-        isActionSeparatorDisplayed,
+        isActionSeparatorDisplayed = true,
         error,
         label,
         onSelect,
         onRenderSelectedValue,
         options,
         onChange,
-        multiple,
+        multiple = false,
         formatOption,
+        enableSelectAllOption,
+        selectAllLabel,
+        enableSearchOption,
+        searchPlaceholder,
+        defaultSearchQuery,
+        tagLabelMaxLength,
+        openTagsCount = 0,
+        renderAggregatedTagsLabel,
+        singleLine,
 
         // open/close state
         open,
         defaultOpen,
         onOpenChange,
-        isListExpanded,
+        isListExpanded = false,
 
         // other native text input props
         autoFocus,
@@ -51,6 +61,10 @@ export const useDropdown = (
     const [internalValue, setInternalValue] = useValue(value, defaultValue);
 
     const { internalOptions, isFlat } = useOptions(options, formatOption);
+
+    const [dynamicInternalOptions, setDynamicInternalOptions] = useState<
+        DropdownInternalOptionType
+    >(internalOptions);
 
     const onValueUpdate = useOnValueUpdate(
         setInternalValue,
@@ -103,14 +117,14 @@ export const useDropdown = (
         isOptionListShown,
     );
 
-    const handleDisplayOptionListToggle = () => {
+    const handleDisplayOptionListToggle = useCallback(() => {
         setIsOptionListShown(!isOptionListShown);
 
         focusOnActionItemTrigger();
-    };
+    }, [setIsOptionListShown, isOptionListShown]);
 
-    const handleActionItemClick = useMemo(
-        () => (disabled ? () => {} : handleDisplayOptionListToggle),
+    const handleExpansionClick = useMemo(
+        () => (disabled ? noop : handleDisplayOptionListToggle),
         [disabled, isOptionListShown],
     );
 
@@ -120,14 +134,16 @@ export const useDropdown = (
             ref: containerRef,
         },
         textInputProps: {
-            onClick: handleDisplayOptionListToggle,
+            onClick: handleExpansionClick,
             ref: internalInputRef,
             value: selectedValueToDisplay,
+            internalValue,
             disabled,
             error,
             label,
             name,
             displayMode: 'block',
+            isCustomRenderer: !!onRenderSelectedValue,
 
             // other native props
             autoComplete: 'off',
@@ -135,32 +151,62 @@ export const useDropdown = (
             autoFocus,
             placeholder,
             tabIndex,
+            multiple,
         },
-        optionListContainerProps: {},
         optionListProps: {
             disabled,
             options,
             multiple,
-            formatOption,
             internalValue,
             blurInput,
             isOptionListShown,
+            setInternalValue,
             setIsOptionListShown,
             onValueUpdate,
+            onChange,
             isFlat,
             internalOptions,
+            dynamicInternalOptions,
+            setInternalOptions: setDynamicInternalOptions,
+            ref: internalInputRef,
+            enableSelectAllOption,
+            selectAllLabel,
+            enableSearchOption,
+            searchPlaceholder,
+            defaultSearchQuery,
+        },
+        dropdownExpansionIndicatorProps: {
+            disabled,
+            error,
+            multiple,
+            displaySeparator:
+                !multiple &&
+                isActionSeparatorDisplayed &&
+                (isOptionListShown || !!internalValue.length),
+            isExpanded: isOptionListShown,
+            onClick: handleExpansionClick,
+        },
+        dropdownBeforeSectionProps: {
+            disabled,
+            onClick: handleExpansionClick,
+            internalValue,
+            internalOptions,
+            multiple,
+            onRenderSelectedValue,
+            setInternalValue,
+            onSelect,
+            onChange,
+            options,
+            isFlat,
+            tagLabelMaxLength,
+            openTagsCount,
+            renderAggregatedTagsLabel,
+            singleLine,
         },
 
-        // todo: move render functions out and use rest props for props
         disabled,
-        displaySeparator:
-            isActionSeparatorDisplayed &&
-            (isOptionListShown || !!internalValue.length),
-        isOptionListShown,
-        handleActionItemClick,
-        error,
-
-        blurInput,
-        internalInputRef,
+        multiple,
+        onRenderSelectedValue,
+        internalValue,
     };
 };

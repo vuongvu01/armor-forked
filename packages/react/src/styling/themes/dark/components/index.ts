@@ -1,6 +1,5 @@
 import { getAccordionOverride } from './Accordion';
 import { getButtonOverride } from './Button';
-import { getDropdownOptionItemOverride } from './DropdownOptionItem';
 import {
     getHeaderNavigationActionItemOverride,
     getHeaderNavigationItemOverride,
@@ -38,13 +37,18 @@ import { getTooltipOverride } from './Tooltip';
 import { getOverlayOverride } from './Overlay';
 import { getDialogOverride, getDialogTitleOverride } from './Dialog';
 import { getSideSheetOverride } from './SideSheet';
+import { getDropdownBeforeSectionClearButtonOverride } from './DropdownBeforeSectionClearButton';
+import { getOptionListItemOverride } from './OptionListItem';
+import { getOptionListOverride } from './OptionList';
 
 export const darkThemeComponentOverrides = {
     Accordion: getAccordionOverride,
     Button: getButtonOverride,
     Dialog: getDialogOverride,
     DialogTitle: getDialogTitleOverride,
-    DropdownOptionItem: getDropdownOptionItemOverride,
+    DropdownBeforeSectionClearButton: getDropdownBeforeSectionClearButtonOverride,
+    OptionListItem: getOptionListItemOverride,
+    OptionList: getOptionListOverride,
     HeaderNavigation: getHeaderNavigationOverride,
     HeaderNavigationActionItem: getHeaderNavigationActionItemOverride,
     HeaderNavigationItem: getHeaderNavigationItemOverride,

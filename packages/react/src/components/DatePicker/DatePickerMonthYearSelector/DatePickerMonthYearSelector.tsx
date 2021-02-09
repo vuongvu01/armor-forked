@@ -1,11 +1,11 @@
 import React, { FunctionComponent, forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
-import { useTheme } from '../../../styling';
-import { useDatePickerMonthYearSelectorClassNames } from './utils/useDatePickerMonthYearSelectorClassNames';
-import { useDatePickerMonthYearSelector } from './utils/useDatePickerMonthYearSelector';
+import { useDatePickerMonthYearSelectorClassNames } from './hooks/useDatePickerMonthYearSelectorClassNames';
+import { useDatePickerMonthYearSelector } from './hooks/useDatePickerMonthYearSelector';
 import {
     DatePickerMonthYearSelectorRoot,
+    DatePickerMonthYearSelectorScroll,
     DatePickerMonthYearSelectorList,
     DatePickerMonthYearSelectorYear,
     DatePickerMonthYearSelectorYearTitle,
@@ -26,10 +26,18 @@ export const DatePickerMonthYearSelector: FunctionComponent<DatePickerMonthYearS
             className,
         );
 
-        const { rootProps, months } = useDatePickerMonthYearSelector(
-            props,
-            ref,
-        );
+        const {
+            rootProps,
+            scrollProps,
+            listProps,
+            yearTitleProps,
+            monthProps,
+            months,
+            yearRange,
+            displayedYear,
+            displayedMonth,
+            openYear,
+        } = useDatePickerMonthYearSelector(props, ref);
 
         return (
             <DatePickerMonthYearSelectorRoot
@@ -37,56 +45,70 @@ export const DatePickerMonthYearSelector: FunctionComponent<DatePickerMonthYearS
                 theme={theme}
                 className={classNameComponents.Root}
             >
-                <DatePickerMonthYearSelectorList theme={theme} className="ff">
-                    <DatePickerMonthYearSelectorYear
+                <DatePickerMonthYearSelectorScroll
+                    {...scrollProps}
+                    theme={theme}
+                    className={classNameComponents.Scroll}
+                >
+                    <DatePickerMonthYearSelectorList
+                        {...listProps}
                         theme={theme}
-                        className="ff"
+                        className={classNameComponents.List}
                     >
-                        <DatePickerMonthYearSelectorYearTitle
-                            theme={theme}
-                            className="ff"
-                        >
-                            2021
-                        </DatePickerMonthYearSelectorYearTitle>
-                        <DatePickerMonthYearSelectorMonthList
-                            theme={theme}
-                            className="ff"
-                        >
-                            {months.map(month => (
-                                <DatePickerMonthYearSelectorMonth
+                        {yearRange.map(year => (
+                            <DatePickerMonthYearSelectorYear
+                                theme={theme}
+                                className={classNameComponents.Year}
+                                key={year}
+                            >
+                                <DatePickerMonthYearSelectorYearTitle
+                                    {...yearTitleProps}
                                     theme={theme}
-                                    className="ff"
-                                    key={month}
+                                    className={classNameComponents.YearTitle}
+                                    data-year={year}
                                 >
-                                    {month}
-                                </DatePickerMonthYearSelectorMonth>
-                            ))}
-                        </DatePickerMonthYearSelectorMonthList>
-                    </DatePickerMonthYearSelectorYear>
-
-                    <DatePickerMonthYearSelectorYear
-                        theme={theme}
-                        className="ff"
-                    >
-                        <DatePickerMonthYearSelectorYearTitle
-                            theme={theme}
-                            className="ff"
-                        >
-                            2021
-                        </DatePickerMonthYearSelectorYearTitle>
-                    </DatePickerMonthYearSelectorYear>
-                </DatePickerMonthYearSelectorList>
+                                    {year}
+                                </DatePickerMonthYearSelectorYearTitle>
+                                {openYear === year && (
+                                    <DatePickerMonthYearSelectorMonthList
+                                        theme={theme}
+                                        className={
+                                            classNameComponents.MonthList
+                                        }
+                                    >
+                                        {months.map(
+                                            (monthName, monthNumber) => (
+                                                <DatePickerMonthYearSelectorMonth
+                                                    {...monthProps}
+                                                    theme={theme}
+                                                    className={
+                                                        classNameComponents.Month
+                                                    }
+                                                    key={monthName}
+                                                    data-month={monthNumber}
+                                                    data-year={year}
+                                                    selected={
+                                                        monthNumber ===
+                                                            displayedMonth &&
+                                                        year === displayedYear
+                                                    }
+                                                >
+                                                    {monthName}
+                                                </DatePickerMonthYearSelectorMonth>
+                                            ),
+                                        )}
+                                    </DatePickerMonthYearSelectorMonthList>
+                                )}
+                            </DatePickerMonthYearSelectorYear>
+                        ))}
+                    </DatePickerMonthYearSelectorList>
+                </DatePickerMonthYearSelectorScroll>
             </DatePickerMonthYearSelectorRoot>
         );
     },
 );
 
-DatePickerMonthYearSelector.defaultProps = {
-    // exampleProperty: true,
-};
+DatePickerMonthYearSelector.defaultProps = {};
 
 /** prop-types are required here for run-time checks */
-DatePickerMonthYearSelector.propTypes = {
-    /** Example description */
-    // exampleProperty: PropTypes.bool,
-};
+DatePickerMonthYearSelector.propTypes = {};

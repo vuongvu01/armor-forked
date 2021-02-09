@@ -12,7 +12,7 @@ import {
     reset,
     spacing,
     typography,
-} from '../../../system/mixins';
+} from '../../../system';
 import { transition } from '../../../system/mixins/transition';
 import { fontWeightMedium } from '../../../tokens';
 
@@ -24,6 +24,14 @@ const propertyList = {
     rightEnd: true,
     left: true,
     right: true,
+    weekDay: true,
+    displayedMonth: true,
+    month: true,
+    year: true,
+    day: true,
+    applyValue: true,
+    onDisplayedDateUTCUpdate: true,
+    onDirtyInternalValueUTCUpdate: true,
 };
 
 // if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
@@ -33,6 +41,7 @@ export const DatePickerDaySelectorRoot = styled.div.withConfig(
     ${reset};
     ${typography('paragraphMedium')};
     padding: ${spacing(4)};
+    //min-height: ${spacing(84)};
 
     ${getComponentOverride('DatePickerDaySelector')};
 `;
@@ -84,10 +93,11 @@ const getDayButtonStyle = ({
     selected,
     leftEnd,
     rightEnd,
+    displayedMonth,
 }: DatePickerDaySelectorDayButtonPropsType) => {
     let result = {};
 
-    if (selected) {
+    if (displayedMonth && selected) {
         // make corners sharp if the element is just a tail (or a head)
         if (leftEnd && !rightEnd) {
             result = css`
@@ -127,6 +137,13 @@ const getDayButtonStyle = ({
         }
     }
 
+    if (!displayedMonth) {
+        result = css`
+            ${result};
+            visibility: hidden;
+        `;
+    }
+
     return result;
 };
 
@@ -150,9 +167,9 @@ export const DatePickerDaySelectorDayButton = styled.a.withConfig(
         color: ${color('neutral.00')};
         background-color: ${color('primary.main')};
     }
-    border-radius: ${borderRadius('round')};
+    border-radius: ${borderRadius('soft')};
     user-select: none;
-    ${getDayButtonStyle}
+    ${getDayButtonStyle};
 `;
 
 const getDayPaddingStyle = ({
@@ -161,10 +178,11 @@ const getDayPaddingStyle = ({
     rightEnd,
     left,
     right,
+    displayedMonth,
 }: DatePickerDaySelectorDayPaddingPropsType) => {
     let result = {};
 
-    if (selected) {
+    if (displayedMonth && selected) {
         result = css`
             ${result};
             background-color: ${color('primary.lightest')};
@@ -187,5 +205,9 @@ export const DatePickerDaySelectorDayPadding = styled.div.withConfig(
     width: ${spacing(0.5)};
     height: ${spacing(10)};
     flex-shrink: 0;
+    ${transition({
+        'background-color': 0.1,
+        color: 0.1,
+    })};
     ${getDayPaddingStyle}
 `;

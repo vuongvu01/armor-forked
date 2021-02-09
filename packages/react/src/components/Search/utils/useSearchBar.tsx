@@ -52,6 +52,10 @@ export const useSearchBar = (
         setIsSuggestionsListShown(!!options);
     }, [options]);
 
+    useEffect(() => {
+        setSearchQuery(defaultQuery);
+    }, [defaultQuery]);
+
     const setIsOptionsListShown = (isHidden = false) => {
         setIsSuggestionsListShown(isHidden);
         if (cursor !== initialCursor) {
@@ -161,6 +165,8 @@ export const useSearchBar = (
                 );
             };
         }
+
+        setSearchQuery(defaultQuery);
 
         return () => {};
     }, [disabled, internalInputRef, cursor, options, isSuggestionsListShown]);

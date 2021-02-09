@@ -30,6 +30,8 @@ type HeaderNavigationSelectorEffectivePropsType = Indexed<{
         options: DropdownInternalOptionType,
     ) => string;
     separator?: boolean;
+    enableSelectAllOption?: boolean;
+    enableSearchOption?: boolean;
 }> &
     HTMLAttributes<HTMLElement> &
     MarginAttributesType;

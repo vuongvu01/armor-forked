@@ -15,6 +15,8 @@ import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 
 const propertyList = {
     reallyChecked: true,
+    checkedIcon: true,
+    hasLabel: true,
 };
 
 const sizes = {

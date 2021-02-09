@@ -241,8 +241,9 @@ const getLabelBackgroundDynamicStyle = (
         ${result};
         background: linear-gradient(
             0,
-            ${color(disabled ? 'neutral.02' : 'neutral.00')} 70%,
-            transparent 30%
+            transparent 0 30%,
+            ${color(disabled ? 'neutral.02' : 'neutral.00')} 30% 70%,
+            transparent 70% 100%
         );
         ${getDynamicStyle('LabelBackground', props)};
     `;

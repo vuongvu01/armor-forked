@@ -17,11 +17,25 @@ export const UserTypeDeleteDisabled = () => (
     <Tag label="Default" deleteOption="disabled" />
 );
 
+export const UserTypeDeleteEnabledSmall = () => (
+    <Tag label="Default" deleteOption="enabled" small />
+);
+
+export const UserTypeDeleteDisabledSmall = () => (
+    <Tag label="Default" deleteOption="disabled" small />
+);
+
 export const StatusTypeApproved = () => <Tag type="approved" />;
 
 export const StatusTypeDenied = () => <Tag type="denied" />;
 
 export const StatusTypeNew = () => <Tag type="new" />;
+
+export const StatusTypeApprovedSmall = () => <Tag type="approved" small />;
+
+export const StatusTypeDeniedSmall = () => <Tag type="denied" small />;
+
+export const StatusTypeNewSmall = () => <Tag type="new" small />;
 
 export const CustomStatusTypeApproved = () => (
     <Tag type="approved">Custom approved</Tag>

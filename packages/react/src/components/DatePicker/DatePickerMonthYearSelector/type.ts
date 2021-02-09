@@ -5,12 +5,15 @@ import {
 } from '../../type';
 import { MarginAttributesType } from '../../../system/attributes';
 import { ObjectLiteralType } from '../../../type';
+import { DateVector } from '../utils/DateVector';
 
-type DatePickerMonthYearSelectorEffectivePropsType = Partial<{
-    // exampleProperty: boolean;
+type DatePickerMonthYearSelectorEffectivePropsType = {
+    toggleMonthYearSelector: () => void;
+
+    displayedDateVector: DateVector;
+    onDisplayedDateVectorChange: (newVector: DateVector) => void;
     // add other custom properties here
-}> &
-    HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
+} & HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
     MarginAttributesType &
     ObjectLiteralType;
 
@@ -20,6 +23,8 @@ export type DatePickerMonthYearSelectorPropsType = DatePickerMonthYearSelectorEf
 export type DatePickerMonthYearSelectorRootPropsType = DatePickerMonthYearSelectorEffectivePropsType &
     ComponentElementStylePropsType;
 
+export type DatePickerMonthYearSelectorScrollPropsType = {} & ComponentElementStylePropsType;
+
 export type DatePickerMonthYearSelectorListPropsType = {} & ComponentElementStylePropsType;
 
 export type DatePickerMonthYearSelectorYearPropsType = {} & ComponentElementStylePropsType;
@@ -28,4 +33,6 @@ export type DatePickerMonthYearSelectorYearTitlePropsType = {} & ComponentElemen
 
 export type DatePickerMonthYearSelectorMonthListPropsType = {} & ComponentElementStylePropsType;
 
-export type DatePickerMonthYearSelectorMonthPropsType = {} & ComponentElementStylePropsType;
+export type DatePickerMonthYearSelectorMonthPropsType = {
+    selected: boolean;
+} & ComponentElementStylePropsType;

@@ -39,6 +39,7 @@ export const Search: FunctionComponent<SearchPropsType> = forwardRef(
             SEARCH_CLASS_PREFIX,
             className,
             disabled,
+            isSuggestionsListShown,
         );
 
         return (
