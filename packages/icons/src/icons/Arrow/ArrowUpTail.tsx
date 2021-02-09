@@ -16,6 +16,13 @@ const ArrowUpTailIconShape = (
 );
 
 export const ArrowUpTailIcon: FunctionComponent<SVGIconPropsType> = props => {
-    const {className, ...restProps} = props;
-    return <SVGIcon {...restProps} className={`ArrowUpTailIcon ${className || ''}`}>{ArrowUpTailIconShape}</SVGIcon>;
+    const { className, ...restProps } = props;
+    return (
+        <SVGIcon
+            {...restProps}
+            className={`ArrowUpTailIcon ${className || ''}`}
+        >
+            {ArrowUpTailIconShape}
+        </SVGIcon>
+    );
 };

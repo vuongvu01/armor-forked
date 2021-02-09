@@ -1,7 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-// eslint-disable-next-line import/no-unresolved
-import { withKnobs } from '@storybook/addon-knobs';
 
 import * as I from '..';
 
@@ -10,7 +8,6 @@ import { loremIpsum } from '../../../../react/src/helpers/LoremIpsum';
 export default {
     title: 'Icons',
     component: I.ArrowUpIcon,
-    decorators: [withKnobs],
     parameters: {},
 };
 
@@ -145,6 +142,9 @@ export const Basic = () => (
             </Icon>
             <Icon>
                 <I.ArrowReturnRightIcon />
+            </Icon>
+            <Icon>
+                <I.ArrowDownFilledIcon />
             </Icon>
         </Icons>
         <h2>Cancel</h2>

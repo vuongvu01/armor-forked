@@ -38,16 +38,16 @@ jobs:
               run: yarn run test
               env:
                   GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
-            #      - name: Test visual (install)
-            #        working-directory: ./packages/icons/visual
-            #        run: yarn install
-            #        env:
-            #          GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
-            #      - name: Test visual
-            #        working-directory: ./packages/icons
-            #        run: yarn test:visual:cicd
-            #        env:
-            #          GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
+            - name: Test visual (install)
+              working-directory: ./packages/icons/visual
+              run: yarn install
+              env:
+                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
+            - name: Test visual
+              working-directory: ./packages/icons
+              run: yarn test:visual:cicd
+              env:
+                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
             - name: Build
               working-directory: ./packages/icons
               run: yarn run build
