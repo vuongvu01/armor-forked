@@ -1,3 +1,11 @@
+# @deliveryhero/armor [1.30.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.29.6...@deliveryhero/armor@1.30.0) (2021-02-09)
+
+
+### Features
+
+* **datepicker:** DatePicker component developed [LD-270] ([#381](https://github.com/deliveryhero/armor/issues/381)) ([dc471aa](https://github.com/deliveryhero/armor/commit/dc471aa32bd5d3f81ed2fc066adab20c54823b55))
+* **dropdown:** select all | search | tags [LD-165] ([#366](https://github.com/deliveryhero/armor/issues/366)) ([9a234ae](https://github.com/deliveryhero/armor/commit/9a234ae9dce488a4de3520c926f3655d9d832b7c))
+
 ## @deliveryhero/armor [1.29.6](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.29.5...@deliveryhero/armor@1.29.6) (2021-02-08)
 
 
