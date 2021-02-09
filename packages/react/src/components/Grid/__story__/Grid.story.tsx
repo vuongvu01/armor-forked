@@ -4,6 +4,8 @@ import { Grid } from '../Grid';
 import { GridItem } from '../GridItem';
 import { Radio, RadioGroup } from '../../Radio';
 import { withWrapper } from '../../../helpers/Wrapper';
+import { Pack, PackItem } from '../../Pack';
+import { Stack, StackItem } from '../../Stack';
 
 export default {
     title: 'Components/Grid',
@@ -76,6 +78,33 @@ export const LayoutWithSpacingBreakpointSM = () => (
         </Grid>
     </div>
 );
+
+export const GridWithStack = () => {
+    const style1 = {
+        background: 'yellowgreen',
+        padding: '20px',
+        color: 'white',
+    };
+
+    const style2 = { background: 'green', padding: '20px', color: 'white' };
+
+    return (
+        <div style={containerStyle}>
+            <Grid gutterSpacing={5}>
+                <GridItem style={gridItemStyle} xs={12} sm={6} md={6}>
+                    xs=12 sm=6 md=6
+                </GridItem>
+                <GridItem style={gridItemStyle} xs={12} sm={6} md={6}>
+                    <Stack>
+                        xs=12 sm=6 md=6
+                        <StackItem style={style1}>StackItem 1</StackItem>
+                        <StackItem style={style2}>StackItem 2</StackItem>
+                    </Stack>
+                </GridItem>
+            </Grid>
+        </div>
+    );
+};
 
 LayoutWithSpacingBreakpointSM.parameters = {
     viewport: {

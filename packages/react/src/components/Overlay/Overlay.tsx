@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { useDisplay } from '../Modal/utils/useDisplay';
 import { Overlay as OverlayRoot } from './style';
 import { OverlayPropsType } from './type';
-import { defaultLabel } from '../Dropdown/constants';
+import { DEFAULT_LABEL } from '../Dropdown/constants';
 import { OVERLAY_CLASS_PREFIX } from './constants';
 import { useTheme } from '../../styling';
 
@@ -36,7 +36,7 @@ Overlay.displayName = OVERLAY_CLASS_PREFIX;
 
 Overlay.defaultProps = {
     disabled: false,
-    label: defaultLabel,
+    label: DEFAULT_LABEL,
     tabIndex: 0,
 };
 

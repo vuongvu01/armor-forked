@@ -107,6 +107,12 @@ export const InteractiveExample = () => {
                         marginRight={3}
                     />
                 )}
+                {isOpen3 && (
+                    <Tag
+                        label="Close me too!"
+                        onClose={() => setIsOpen3(false)}
+                    />
+                )}
             </GroupHelper>
         </>
     );

@@ -1,4 +1,5 @@
 import React, { forwardRef, FunctionComponent } from 'react';
+import PropTypes from 'prop-types';
 import {
     HeaderNavigationSelectorRoot,
     HeaderNavigationSelectorWrapper,
@@ -97,3 +98,29 @@ export const HeaderNavigationSelector: FunctionComponent<HeaderNavigationSelecto
         );
     },
 );
+
+HeaderNavigationSelector.defaultProps = {
+    navigationSelectorParams: {
+        label: 'Country',
+        isMultiselect: false,
+    },
+    separator: true,
+};
+
+HeaderNavigationSelector.propTypes = {
+    onOptionSelect: PropTypes.func,
+    separator: PropTypes.bool,
+    // TODO (nmelnikov 2020-09-24): tighten
+    // navigationSelectorParams: PropTypes.shape({
+    //     label: PropTypes.string,
+    //     isMultiselect: PropTypes.bool,
+    //     isExpanded: PropTypes.bool,
+    //     defaultValue: PropTypes.oneOfType([
+    //             PropTypes.arrayOf(PropTypes.number),
+    //             PropTypes.number,
+    //         ]),
+    //     onSelect: PropTypes.func,
+    //     onChange: PropTypes.func,
+    //     options: PropTypes.array,
+    // }),
+};

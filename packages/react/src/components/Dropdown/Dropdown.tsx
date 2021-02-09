@@ -1,7 +1,7 @@
 import React, { forwardRef, FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import { useDropdownClassName } from './utils';
+import { useDropdown, useDropdownClassName } from './utils';
 import {
     DropdownContainer,
     DropdownExpansionIndicator,
@@ -12,15 +12,12 @@ import {
 } from './style';
 import { DropdownPropsType } from './type';
 import {
-    defaultLabel,
     DROPDOWN_CLASS_PREFIX,
-    dropdownActionItem,
-    dropdownContainer,
-    dropdownOptionListContainer,
+    DROPDOWN_OPTION_LIST_CONTAINER,
 } from './constants';
-import { useDropdown } from './utils/useDropdown';
-import { DropdownOptionList } from '../DropdownOptionList';
+import { OptionList } from '../OptionList';
 import { useTheme } from '../../styling';
+import { DropdownBeforeSection } from './DropdownBeforeSection';
 
 export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
     function Dropdown({ className, ...props }, ref) {
@@ -30,17 +27,11 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
             rootProps,
             containerProps,
             textInputProps,
-            optionListContainerProps,
             optionListProps,
-
-            // todo: pass this via rest props
+            dropdownExpansionIndicatorProps,
+            dropdownBeforeSectionProps,
             disabled,
-            displaySeparator,
-            isOptionListShown,
-            handleActionItemClick,
-            error,
-            blurInput,
-            internalInputRef,
+            internalValue,
         } = useDropdown(props, ref);
 
         const classOverride = useDropdownClassName(
@@ -49,20 +40,14 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
             disabled,
         );
 
-        // todo: move render functions out and use rest props for props
         const renderActionItem = (
             <ExpansionIndicatorContainer
                 theme={theme}
                 className={classOverride.ExpansionIndicatorContainer}
             >
                 <DropdownExpansionIndicator
-                    disabled={disabled}
-                    error={error}
-                    displaySeparator={displaySeparator}
-                    isExpanded={isOptionListShown}
-                    onClick={handleActionItemClick}
+                    {...dropdownExpansionIndicatorProps}
                     theme={theme}
-                    data-testid={dropdownActionItem}
                     className={classOverride.ExpansionIndicator}
                 />
             </ExpansionIndicatorContainer>
@@ -78,26 +63,29 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
                     {...containerProps}
                     className={classOverride.Container}
                     theme={theme}
-                    data-testid={dropdownContainer}
                 >
                     <DropdownTextInput
                         {...textInputProps}
+                        before={
+                            internalValue.length ? (
+                                <DropdownBeforeSection
+                                    {...dropdownBeforeSectionProps}
+                                />
+                            ) : null
+                        }
                         after={renderActionItem}
                         className={classOverride.TextInput}
                         theme={theme}
                     />
                     <DropdownOptionListContainer
-                        {...optionListContainerProps}
+                        data-testid={DROPDOWN_OPTION_LIST_CONTAINER}
                         className={classOverride.OptionListContainer}
                         theme={theme}
-                        data-testid={dropdownOptionListContainer}
                     >
-                        <DropdownOptionList
+                        <OptionList
                             {...optionListProps}
                             className={classOverride.OptionList}
                             theme={theme}
-                            blurInput={blurInput}
-                            ref={internalInputRef}
                         />
                     </DropdownOptionListContainer>
                 </DropdownContainer>
@@ -105,16 +93,6 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
         );
     },
 );
-
-Dropdown.displayName = DROPDOWN_CLASS_PREFIX;
-
-Dropdown.defaultProps = {
-    disabled: false,
-    label: defaultLabel,
-    tabIndex: 0,
-    multiple: false,
-    isActionSeparatorDisplayed: true,
-};
 
 Dropdown.propTypes = {
     disabled: PropTypes.bool,

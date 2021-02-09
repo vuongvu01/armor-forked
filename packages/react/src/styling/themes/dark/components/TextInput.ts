@@ -16,7 +16,13 @@ export const getTextInputOverride = ({
         }
         .TextInput-LabelBackground {
             color: ${color('neutral.04')};
-            background: ${token('body.backgroundColor')};
+
+            background: linear-gradient(
+                0,
+                transparent 0 30%,
+                ${token('body.backgroundColor')} 30% 70%,
+                transparent 70% 100%
+            );
         }
     `;
 

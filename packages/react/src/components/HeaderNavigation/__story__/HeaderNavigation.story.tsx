@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import React, { ChangeEvent, MouseEvent, useState } from 'react';
+import React, { ChangeEvent, MouseEvent, ReactText, useState } from 'react';
 import styled from 'styled-components';
 import {
     LogoutIcon,
@@ -296,8 +296,8 @@ export const ExtensiveExample = () => {
 
         setCountrySelected(
             typeof selectedOption === 'string'
-                ? selectedOption
-                : selectedOption?.label,
+                ? selectedOption.toString()
+                : selectedOption?.label.toString(),
         );
     };
 

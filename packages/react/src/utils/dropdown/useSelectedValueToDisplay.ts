@@ -4,7 +4,7 @@ import {
     DropdownInternalValueType,
     DropdownOnRenderSelectedValueType,
 } from '../../components/Dropdown/type';
-import { emptyLabelValue } from '../../components/Dropdown/constants';
+import { EMPTY_LABEL_VALUE } from '../../components/Dropdown/constants';
 
 export const useSelectedValueToDisplay = (
     internalValue: DropdownInternalValueType,
@@ -17,7 +17,7 @@ export const useSelectedValueToDisplay = (
         }
 
         if (!internalValue.length) {
-            return emptyLabelValue;
+            return EMPTY_LABEL_VALUE;
         }
 
         return internalOptions

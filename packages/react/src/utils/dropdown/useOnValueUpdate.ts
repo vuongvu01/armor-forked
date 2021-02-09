@@ -4,6 +4,7 @@ import {
     DropdownOnChangeType,
     DropDownOnSelectType,
     DropdownOnValueUpdateType,
+    DropdownSelectedOptionType,
 } from '../../components/Dropdown/type';
 
 export const denormalizeValue = (
@@ -42,7 +43,7 @@ export const useOnValueUpdate = (
                         item => item !== chosenItem,
                     );
                 } else {
-                    nextValue = [chosenItem, ...internalValue];
+                    nextValue = [...internalValue, chosenItem];
                 }
             } else {
                 nextValue = [chosenItem];
@@ -58,11 +59,19 @@ export const useOnValueUpdate = (
             }
 
             if (onSelect && !multiple && options) {
-                const option = isFlat ? selectedOption.label : selectedOption;
-                onSelect(option, options.indexOf(option));
+                let option = isFlat ? selectedOption.label : selectedOption;
+
+                if (typeof option === 'number') {
+                    option = option.toString();
+                }
+
+                onSelect(
+                    option as DropdownSelectedOptionType,
+                    options.indexOf(option as DropdownSelectedOptionType),
+                );
             }
 
             setInternalValue(nextValue);
         },
-        [onSelect, onChange],
+        [onSelect, onChange, setInternalValue, name],
     );

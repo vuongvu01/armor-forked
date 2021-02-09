@@ -23,7 +23,7 @@ import {
     accordionHeaderRoot,
     accordionHeaderTypography,
 } from '../constants';
-import { dropdownActionItem } from '../../Dropdown/constants';
+import { DROPDOWN_ACTION_ITEM } from '../../Dropdown/constants';
 import AccordionContext from '../AccordionContext';
 import useAccordionHeaderClassName from './useAccordionHeaderClassName';
 import { useInternalRef } from '../../../utils';
@@ -115,7 +115,7 @@ export const AccordionHeader: FunctionComponent<AccordionHeaderPropsType> = forw
                         isExpanded={isExpanded}
                         onClick={() => {}}
                         theme={theme}
-                        data-testid={dropdownActionItem}
+                        data-testid={DROPDOWN_ACTION_ITEM}
                     />
                 </AccordionHeaderIcon>
             </AccordionHeaderRoot>

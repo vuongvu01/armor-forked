@@ -5,14 +5,15 @@ import { withKnobs } from '@storybook/addon-knobs';
 
 import { GroupHelper } from '../../../helpers/GroupHelper';
 import { Dropdown } from '../Dropdown';
-import { FormField, FormFieldMessage, FormFieldTooltip } from '../../FormField';
+import { FormField, FormFieldMessage } from '../../FormField';
 import { TextInput } from '../../TextInput';
 import { Button } from '../../Button';
 import { Box } from '../../Box';
 import { Typography } from '../../Typography';
-import { ScalarType } from '../../../type';
-import { OptionItemType } from '../type';
+import { DropdownSelectedOptionType, OptionItemType } from '../type';
 import { withWrapper } from '../../../helpers/Wrapper';
+import { Card } from '../../Card';
+import { Pack, PackItem } from '../../Pack';
 
 export default {
     title: 'Components/Dropdown',
@@ -32,7 +33,7 @@ const foodOptions = [
     { value: 0, label: 'Biryani' },
     { value: 1, label: 'Tacos' },
     { value: 2, label: 'Pho' },
-    { value: 3, label: 'Risotto' },
+    { value: 3, label: 'Pâté of roasted indigenous legumes' },
     { value: 4, label: 'Pizza' },
     { value: 5, label: 'Enchiladas' },
     { value: 6, label: 'Börek' },
@@ -61,6 +62,29 @@ const foodOptionsShort = [
     { value: 'PHO', label: 'Pho' },
 ];
 
+const foodOptionsString = [
+    'Biryani',
+    'Tacos',
+    'Pho',
+    'Pâté of roasted indigenous legumes',
+    'Pizza',
+    'Enchiladas',
+    'Börek',
+    'Quiche',
+    'Köfte',
+    'Pad Thai',
+    'Churrasco',
+    'Baozi',
+    'Ceviche',
+    'Mac & Cheese',
+    'Paella',
+    'Dim sum',
+    'Hamburger',
+    'Ramen',
+    'Sushi',
+    'Burrito',
+];
+
 export const MinimumConfiguration = () => {
     const [selectedOption, setSelectedOption] = useState();
     const handleSelect = (option: any) => {
@@ -71,7 +95,12 @@ export const MinimumConfiguration = () => {
     return (
         <>
             <Dropdown
-                options={['Biryani', 'Tacos', 'Pho', 'Risotto']}
+                options={[
+                    'Biryani',
+                    'Tacos',
+                    'Pho',
+                    'Pâté of roasted indigenous legumes',
+                ]}
                 onSelect={handleSelect}
                 label="Dish type"
             />
@@ -117,11 +146,17 @@ export const CustomOptionItemsFormat = () => {
                 <br />
                 <br />
                 <Box padding={3} style={{ ...boxStyle, width: '300px' }}>
-                    <Dropdown
-                        options={foodOptions}
-                        onSelect={handleSelect}
-                        label="Dish type"
-                    />
+                    <FormField autoMargin>
+                        <Dropdown
+                            options={foodOptions}
+                            onSelect={handleSelect}
+                            label="Dish type"
+                        />
+                        <FormFieldMessage>
+                            This is a read-only field
+                        </FormFieldMessage>
+                    </FormField>
+
                     <Typography paragraph>
                         Selected value: {JSON.stringify(selectedOption)}
                     </Typography>
@@ -134,44 +169,35 @@ export const CustomOptionItemsFormat = () => {
 export const Inline = () => {
     return (
         <>
-            <br />
-            <br />
-            <br />
+            <Dropdown
+                margin={1}
+                options={foodOptions}
+                label="Single option"
+                inline
+            />
+
+            <Dropdown
+                margin={1}
+                options={foodOptions}
+                label="Multiple options"
+                inline
+                multiple
+                maxWidth="400px"
+                enableSelectAllOption
+                enableSearchOption
+            />
+
             <Dropdown
                 options={foodOptions}
                 label="Dish type A"
-                marginRight={2}
+                margin={1}
                 width="sm"
             />
-            <Dropdown options={foodOptions} label="Dish type B" />
         </>
     );
 };
 
-export const Uncontrolled = () => {
-    const foodOptionsString = [
-        'Biryani',
-        'Tacos',
-        'Pho',
-        'Risotto',
-        'Pizza',
-        'Enchiladas',
-        'Börek',
-        'Quiche',
-        'Köfte',
-        'Pad Thai',
-        'Churrasco',
-        'Baozi',
-        'Ceviche',
-        'Mac & Cheese',
-        'Paella',
-        'Dim sum',
-        'Hamburger',
-        'Ramen',
-        'Sushi',
-        'Burrito',
-    ];
-
+export const UncontrolledWithSearch = () => {
     const initialSelectionIndex = 3;
     const [selectedOption, setSelectedOption] = useState(
         foodOptionsString[initialSelectionIndex],
@@ -189,6 +215,8 @@ export const Uncontrolled = () => {
                         onSelect={handleSelect}
                         defaultValue={initialSelectionIndex}
                         label="Dish type"
+                        enableSearchOption
+                        enableSelectAllOption
                     />
                     <Typography paragraph>
                         Selected value: {JSON.stringify(selectedOption)}
@@ -200,44 +228,181 @@ export const Uncontrolled = () => {
 };
 
 export const UncontrolledMultiple = () => {
-    const foodOptionsString = [
-        'Biryani',
-        'Tacos',
-        'Pho',
-        'Risotto',
-        'Pizza',
-        'Enchiladas',
-        'Börek',
-        'Quiche',
-        'Köfte',
-        'Pad Thai',
-        'Churrasco',
-        'Baozi',
-        'Ceviche',
-        'Mac & Cheese',
-        'Paella',
-        'Dim sum',
-        'Hamburger',
-        'Ramen',
-        'Sushi',
-        'Burrito',
-    ];
+    const initialSelectionIndex = [2, 6, 7, 8];
 
-    const initialSelectionIndex = [3, 6];
+    const [selectedItemIndex, setSelectedItemIndex] = useState<number[]>(
+        initialSelectionIndex,
+    );
+    const selectedFoodOptions = selectedItemIndex.map(
+        index => foodOptionsString[index],
+    );
+    const [selectedOptions, setSelectedOptions] = useState<
+        DropdownSelectedOptionType[]
+    >(selectedFoodOptions);
+
+    const handleOnChange = (event: any) => {
+        const selectedIndices = event.target.value;
+
+        const nextFoodOptions = selectedIndices.map(
+            (index: number) => foodOptionsString[index],
+        );
+
+        setSelectedItemIndex(selectedIndices);
+        setSelectedOptions(nextFoodOptions);
+    };
 
     return (
-        <>
-            <GroupHelper gap={2}>
-                <Box padding={3} style={{ ...boxStyle, width: '300px' }}>
+        <Pack>
+            <PackItem>
+                <Box padding={3} style={{ width: '400px' }}>
                     <Dropdown
                         options={foodOptionsString}
                         defaultValue={initialSelectionIndex}
+                        onChange={handleOnChange}
                         label="Dish type"
                         multiple
+                        enableSelectAllOption
+                        enableSearchOption
                     />
                 </Box>
-            </GroupHelper>
-        </>
+            </PackItem>
+            <PackItem>
+                <Box marginLeft={4}>
+                    <Typography label small>
+                        Selected options:
+                    </Typography>
+                    <Typography>{selectedOptions.join(', ')}</Typography>
+                    <Typography label small>
+                        Selected option indices:
+                    </Typography>
+                    <Typography>[{selectedItemIndex.join(', ')}]</Typography>
+                </Box>
+            </PackItem>
+        </Pack>
+    );
+};
+
+export const MultipleWithSpecifiedNumberOfOpenTagsAndCustomAggregatedTagsCountLabel = () => {
+    const initialSelectionIndex: number[] = [];
+
+    const [selectedItemIndex, setSelectedItemIndex] = useState<number[]>(
+        initialSelectionIndex,
+    );
+    const selectedFoodOptions = selectedItemIndex.map(
+        index => foodOptionsString[index],
+    );
+    const [selectedOptions, setSelectedOptions] = useState<
+        DropdownSelectedOptionType[]
+    >(selectedFoodOptions);
+
+    const handleOnChange = (event: any) => {
+        const selectedIndices = event.target.value;
+
+        const nextFoodOptions = selectedIndices.map(
+            (index: number) => foodOptionsString[index],
+        );
+
+        setSelectedItemIndex(selectedIndices);
+        setSelectedOptions(nextFoodOptions);
+    };
+
+    const handleRenderAggregatedTagsLabel = (aggregatedTagsCount: number) =>
+        `+ ${aggregatedTagsCount} more`;
+
+    return (
+        <Pack>
+            <PackItem>
+                <Box padding={3} style={{ width: '400px' }}>
+                    <Dropdown
+                        options={foodOptionsString}
+                        defaultValue={initialSelectionIndex}
+                        onChange={handleOnChange}
+                        label="Dish type"
+                        renderAggregatedTagsLabel={
+                            handleRenderAggregatedTagsLabel
+                        }
+                        multiple
+                        enableSelectAllOption
+                        enableSearchOption
+                        openTagsCount={5}
+                    />
+                </Box>
+            </PackItem>
+            <PackItem>
+                <Box marginLeft={4}>
+                    <Typography label small>
+                        Selected options:
+                    </Typography>
+                    <Typography>{selectedOptions.join(', ')}</Typography>
+                    <Typography label small>
+                        Selected option indices:
+                    </Typography>
+                    <Typography>[{selectedItemIndex.join(', ')}]</Typography>
+                </Box>
+            </PackItem>
+        </Pack>
+    );
+};
+
+export const MultipleWithSpecifiedNumberOfOpenTagsAndAutomatedAggregatedTagsCountLabel = () => {
+    const initialSelectionIndex: number[] = [];
+
+    const [selectedItemIndex, setSelectedItemIndex] = useState<number[]>(
+        initialSelectionIndex,
+    );
+    const selectedFoodOptions = selectedItemIndex.map(
+        index => foodOptionsString[index],
+    );
+    const [selectedOptions, setSelectedOptions] = useState<
+        DropdownSelectedOptionType[]
+    >(selectedFoodOptions);
+
+    const handleOnChange = (event: any) => {
+        const selectedIndices = event.target.value;
+
+        const nextFoodOptions = selectedIndices.map(
+            (index: number) => foodOptionsString[index],
+        );
+
+        setSelectedItemIndex(selectedIndices);
+        setSelectedOptions(nextFoodOptions);
+    };
+
+    const handleRenderAggregatedTagsLabel = (aggregatedTagsCount: number) =>
+        `+ ${aggregatedTagsCount} more`;
+
+    return (
+        <Pack>
+            <PackItem>
+                <Box padding={3} style={{ width: '400px' }}>
+                    <Dropdown
+                        options={foodOptionsString}
+                        defaultValue={initialSelectionIndex}
+                        onChange={handleOnChange}
+                        label="Dish type"
+                        renderAggregatedTagsLabel={
+                            handleRenderAggregatedTagsLabel
+                        }
+                        multiple
+                        enableSelectAllOption
+                        enableSearchOption
+                        singleLine
+                    />
+                </Box>
+            </PackItem>
+            <PackItem>
+                <Box marginLeft={4}>
+                    <Typography label small>
+                        Selected options:
+                    </Typography>
+                    <Typography>{selectedOptions.join(', ')}</Typography>
+                    <Typography label small>
+                        Selected option indices:
+                    </Typography>
+                    <Typography>[{selectedItemIndex.join(', ')}]</Typography>
+                </Box>
+            </PackItem>
+        </Pack>
     );
 };
 
@@ -304,6 +469,37 @@ export const ErrorAndDisabledStatePropagation = () => {
     );
 };
 
+export const DisabledMultiple = () => {
+    const initialSelectionIndex = [2, 3];
+    const options = ['Köfte', 'Pad Thai', 'Churrasco', 'Baozi'];
+    const [isDisabled] = useState(true);
+
+    return (
+        <>
+            <p>
+                Provide user feedback in case of an invalid or incomplete
+                selection
+            </p>
+            <GroupHelper gap={2}>
+                <Box
+                    padding={3}
+                    style={{ flexDirection: 'column', width: '300px' }}
+                >
+                    <Dropdown
+                        disabled={true}
+                        label={`${
+                            isDisabled ? 'Disabled' : 'Enabled'
+                        } with pre-selected`}
+                        options={options}
+                        defaultValue={initialSelectionIndex}
+                        multiple
+                    />
+                </Box>
+            </GroupHelper>
+        </>
+    );
+};
+
 export const onChange = () => {
     const onChangeHandler = (value: any) => {
         console.log(value);
@@ -354,25 +550,9 @@ export const ControlledWithReset = () => {
                 value={value}
                 label="Dish type"
             />
-            <Button marginLeft={5} onClick={handleReset}>
+            <Button marginTop={5} onClick={handleReset}>
                 Reset
             </Button>
-        </>
-    );
-};
-
-export const ControlledMultiple = () => {
-    const [value, setValue] = useState<any>();
-
-    return (
-        <>
-            <Dropdown
-                options={foodOptionsShort}
-                onChange={event => setValue(event.target.value)}
-                value={value}
-                label="Dish type"
-                multiple
-            />
         </>
     );
 };
@@ -521,27 +701,6 @@ export const FormWithErrors = () => {
     );
 };
 
-export const Wide = () => {
-    const [selectedOption, setSelectedOption] = useState();
-    const handleSelect = (option: any) => {
-        setSelectedOption(option);
-    };
-
-    return (
-        <Box width="500px">
-            <Dropdown
-                options={['Biryani', 'Tacos', 'Pho', 'Risotto']}
-                onSelect={handleSelect}
-                label="Dish type"
-                wide
-            />
-            <Typography paragraph>
-                Selected value: {JSON.stringify(selectedOption)}
-            </Typography>
-        </Box>
-    );
-};
-
 export const CustomOptionFormatMultiplePreSelectedExpandedList = () => {
     const formatOption = (option: OptionItemType) => {
         if (typeof option === 'object' && 'label' in option) {
@@ -559,6 +718,122 @@ export const CustomOptionFormatMultiplePreSelectedExpandedList = () => {
             defaultValue={[2, 3]}
             formatOption={formatOption}
             isListExpanded={true}
+        />
+    );
+};
+
+export const CustomOptionFormatMultipleExpandedListWithSelectAllAndSearch = () => {
+    const formatOption = (option: OptionItemType) => {
+        if (typeof option === 'object' && 'label' in option) {
+            return `${option.label} meal plan`;
+        }
+
+        return `${option} meal plan`;
+    };
+
+    return (
+        <Dropdown
+            multiple
+            options={foodOptions}
+            label="Dish type"
+            defaultValue={[2, 3]}
+            formatOption={formatOption}
+            isListExpanded={true}
+            enableSelectAllOption
+            enableSearchOption
+        />
+    );
+};
+
+export const CustomSelectAllLabelElement = () => {
+    const formatOption = (option: OptionItemType) => {
+        if (typeof option === 'object' && 'label' in option) {
+            return `${option.label} meal plan`;
+        }
+
+        return `${option} meal plan`;
+    };
+
+    return (
+        <Dropdown
+            multiple
+            options={foodOptions}
+            label="Dish type"
+            defaultValue={[2, 3]}
+            formatOption={formatOption}
+            isListExpanded={true}
+            enableSelectAllOption
+            selectAllLabel="Select/Deselect All"
+            enableSearchOption
+        />
+    );
+};
+
+export const CustomOptionFormatMultipleExpandedListWithSelectAllAndAllItemsSelected = () => {
+    const formatOption = (option: OptionItemType) => {
+        if (typeof option === 'object' && 'label' in option) {
+            return `${option.label} meal plan`;
+        }
+
+        return `${option} meal plan`;
+    };
+
+    return (
+        <Dropdown
+            multiple
+            options={['Biryani', 'Tacos', 'Pho', 'Risotto']}
+            label="Dish type"
+            defaultValue={[0, 1, 2, 3]}
+            formatOption={formatOption}
+            isListExpanded={true}
+            enableSelectAllOption
+            enableSearchOption
+        />
+    );
+};
+
+export const CustomSearchPlaceholder = () => {
+    const formatOption = (option: OptionItemType) => {
+        if (typeof option === 'object' && 'label' in option) {
+            return `${option.label} meal plan`;
+        }
+
+        return `${option} meal plan`;
+    };
+
+    return (
+        <Dropdown
+            multiple
+            options={['Biryani', 'Tacos', 'Pho', 'Risotto']}
+            label="Dish type"
+            defaultValue={[2, 3]}
+            formatOption={formatOption}
+            isListExpanded={true}
+            enableSearchOption
+            searchPlaceholder="What's searching?"
+        />
+    );
+};
+
+export const CustomSearchWithPreFilledQuery = () => {
+    const formatOption = (option: OptionItemType) => {
+        if (typeof option === 'object' && 'label' in option) {
+            return `${option.label} meal plan`;
+        }
+
+        return `${option} meal plan`;
+    };
+
+    return (
+        <Dropdown
+            multiple
+            options={['Biryani', 'Tacos', 'Pho', 'Risotto']}
+            label="Dish type"
+            defaultValue={[2, 3]}
+            formatOption={formatOption}
+            isListExpanded={true}
+            enableSearchOption
+            defaultSearchQuery="Tacos"
         />
     );
 };

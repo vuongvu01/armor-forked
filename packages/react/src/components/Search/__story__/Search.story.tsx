@@ -1,20 +1,17 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useCallback, useState } from 'react';
 // eslint-disable-next-line import/no-unresolved
-import { withKnobs } from '@storybook/addon-knobs';
 import { InfoIcon } from '@deliveryhero/armor-icons';
 
 import { Search } from '../Search';
 import { SuggestionObjectType } from '../type';
 import { FormField, FormFieldMessage } from '../../FormField';
 import { TextInput } from '../../TextInput';
-import { withWrapper } from '../../../helpers/Wrapper';
 import { CogIcon } from '../../../icons';
+import { campaigns } from './constants';
 
 export default {
     title: 'Components/Search',
     component: Search,
-    decorators: [withKnobs, withWrapper],
-    parameters: {},
 };
 
 const foodOptions = [
@@ -257,6 +254,50 @@ export const WithGroups = () => {
     return (
         <>
             <Search options={characters} groups={faction} defaultQuery="Jim" />
+        </>
+    );
+};
+
+// @ts-ignore
+export const formatCampaigns = (campaignsList, query) =>
+    [...campaignsList]
+        .sort(
+            (a, b) =>
+                Number(b.attributes.is_active) - Number(a.attributes.is_active),
+        )
+        .filter(campaign => {
+            return campaign.attributes.name
+                .toLowerCase()
+                .includes(query.toLocaleLowerCase());
+        });
+
+export const WithDeatchedResults = () => {
+    const [search, setSearch] = useState('');
+
+    const handleSearchChange = useCallback(
+        (e: React.ChangeEvent<HTMLInputElement>) => {
+            const query = e.target.value || '';
+            setSearch(query);
+            // eslint-disable-next-line no-console
+            console.log({ query });
+        },
+        [],
+    );
+
+    const campaignsToRender = formatCampaigns(campaigns, search);
+    return (
+        <>
+            <Search
+                onChange={handleSearchChange}
+                placeholder="Search Campaigns"
+                defaultQuery={search}
+                enableSuggestions={false}
+            />
+            {campaignsToRender.map(campaign => (
+                <div key={campaign.attributes.name}>
+                    {campaign.attributes.name}
+                </div>
+            ))}
         </>
     );
 };

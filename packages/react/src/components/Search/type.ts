@@ -32,6 +32,7 @@ export type ClassBasedOnComponentType = {
     classPrefix: string;
     component: string;
     disabled?: boolean;
+    isSuggestionsListShown?: boolean;
 };
 
 export type SearchEffectivePropsType = Indexed<{

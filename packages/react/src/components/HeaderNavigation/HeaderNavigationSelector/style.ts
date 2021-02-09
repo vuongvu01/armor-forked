@@ -5,7 +5,7 @@ import { color, spacing, typography } from '../../../system/mixins';
 import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
 import { Stack, StackItem } from '../../Stack';
 import { PackItem } from '../../Pack';
-import { DropdownOptionList } from '../../DropdownOptionList';
+import { OptionList } from '../../OptionList';
 import { ExpansionIndicator } from '../../ExpansionIndicator';
 import { getPropsBlocker } from '../../../utils';
 
@@ -43,7 +43,7 @@ export const SelectorDropdownOptionListWrapper = styled.div<
     top: ${spacing(2)};
 `;
 
-export const SelectorDropdownOptionList = styled(DropdownOptionList)<
+export const SelectorDropdownOptionList = styled(OptionList)<
     HeaderNavigationSelectorRootPropsType
 >`
     width: fit-content;

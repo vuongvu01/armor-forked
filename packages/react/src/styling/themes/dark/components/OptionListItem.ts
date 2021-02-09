@@ -1,10 +1,10 @@
 import { css } from 'styled-components';
 import { colorGrey60, colorGrey70 } from '../../../../tokens';
-import { DropdownOptionItemPropsType } from '../../../../components/DropdownOptionList/type';
+import { OptionListItemPropsType } from '../../../../components/OptionList/type';
 
-export const getDropdownOptionItemOverride = ({
+export const getOptionListItemOverride = ({
     isSelected,
-}: DropdownOptionItemPropsType) => {
+}: OptionListItemPropsType) => {
     let result = css`
         background-color: ${colorGrey70};
 

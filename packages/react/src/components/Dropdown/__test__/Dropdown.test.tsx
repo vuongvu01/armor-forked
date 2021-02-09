@@ -1,18 +1,14 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
-import {
-    cleanup,
-    render,
-    waitForElement,
-    wait,
-    // prettyDOM,
-} from '@testing-library/react';
+import { cleanup, render, wait, waitForElement } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderer from 'react-test-renderer';
 
 import { Dropdown } from '../Dropdown';
 import { textInputInput, textInputRoot } from '../../TextInput/constants';
-import { dropdownOptionItem } from '../../DropdownOptionList/constants';
+import { OPTION_LIST_ITEM } from '../../OptionList/constants';
+import { tagRoot } from '../../Tag/constants';
+import { searchRoot } from '../../Search/constants';
 
 describe('<Dropdown />', () => {
     afterEach(async () => {
@@ -34,7 +30,7 @@ describe('<Dropdown />', () => {
         userEvent.click(input!);
 
         const elements = await waitForElement(
-            () => getAllByTestId(dropdownOptionItem),
+            () => getAllByTestId(OPTION_LIST_ITEM),
             { container, timeout: 1000 },
         );
 
@@ -58,7 +54,7 @@ describe('<Dropdown />', () => {
         userEvent.click(input!);
 
         const elements = await waitForElement(
-            () => getAllByTestId(dropdownOptionItem),
+            () => getAllByTestId(OPTION_LIST_ITEM),
             { container, timeout: 1000 },
         );
 
@@ -83,7 +79,7 @@ describe('<Dropdown />', () => {
         userEvent.click(input!);
 
         const elements = await waitForElement(
-            () => getAllByTestId(dropdownOptionItem),
+            () => getAllByTestId(OPTION_LIST_ITEM),
             { container, timeout: 1000 },
         );
 
@@ -109,7 +105,7 @@ describe('<Dropdown />', () => {
         userEvent.click(input!);
 
         const elements = await waitForElement(
-            () => getAllByTestId(dropdownOptionItem),
+            () => getAllByTestId(OPTION_LIST_ITEM),
             { container, timeout: 1000 },
         );
 
@@ -133,6 +129,91 @@ describe('<Dropdown />', () => {
 
         const input = getByTestId(textInputInput) as HTMLInputElement;
         await wait(() => expect(input.value).toEqual('Blue, Green'));
+    });
+
+    it('should render options as Tags for multi-select', () => {
+        const options = [
+            { label: 'Red', value: 'R' },
+            { label: 'Blue', value: 'B' },
+            { label: 'Green', value: 'G' },
+        ];
+
+        const { getAllByTestId } = render(
+            <Dropdown options={options} value={['B', 'G']} multiple />,
+        );
+
+        const tag = getAllByTestId(tagRoot)[0];
+        expect(tag.className).toContain('Tag-Root');
+        expect(tag.firstChild).toHaveTextContent('Blue');
+        expect(tag.firstChild).toHaveClass(
+            'Tag-Label--default Tag-Label--delete Tag-Label--enabled',
+        );
+    });
+
+    it('should render the search option with built-in suggestions hidden', () => {
+        const options = [
+            { label: 'Red', value: 'R' },
+            { label: 'Blue', value: 'B' },
+            { label: 'Green', value: 'G' },
+        ];
+
+        const { getByTestId } = render(
+            <Dropdown
+                options={options}
+                multiple
+                enableSearchOption
+                isListExpanded
+            />,
+        );
+
+        const search = getByTestId(searchRoot);
+        expect(search).toHaveClass('Search-Root--hidden_suggestions');
+    });
+
+    it('should render only the options that match the search query', () => {
+        const options = [
+            { label: 'Red', value: 'R' },
+            { label: 'Blue', value: 'B' },
+            { label: 'Green', value: 'G' },
+        ];
+
+        const { getAllByTestId } = render(
+            <Dropdown
+                options={options}
+                value={['B', 'G']}
+                multiple
+                enableSearchOption
+                isListExpanded
+                defaultSearchQuery="gr"
+            />,
+        );
+
+        const matchingOptions = getAllByTestId(OPTION_LIST_ITEM);
+        expect(matchingOptions.length).toEqual(1);
+    });
+
+    it('should render the select all option with support for custom label', () => {
+        const options = [
+            { label: 'Red', value: 'R' },
+            { label: 'Blue', value: 'B' },
+            { label: 'Green', value: 'G' },
+        ];
+
+        const selectAllLabel = 'Select/Deselect All';
+
+        const { getByText } = render(
+            <Dropdown
+                options={options}
+                value={['B', 'G']}
+                multiple
+                enableSelectAllOption
+                isListExpanded
+                selectAllLabel={selectAllLabel}
+            />,
+        );
+
+        const selectAllOption = getByText(selectAllLabel);
+        expect(selectAllOption).toHaveClass('OptionListItem-Typography');
     });
 
     it('should render custom value display', async () => {
@@ -173,7 +254,7 @@ describe('<Dropdown />', () => {
         userEvent.click(input!);
 
         const elements = await waitForElement(
-            () => getAllByTestId(dropdownOptionItem),
+            () => getAllByTestId(OPTION_LIST_ITEM),
             { container, timeout: 1000 },
         );
 
@@ -201,7 +282,7 @@ describe('<Dropdown />', () => {
         userEvent.click(input!);
 
         const elements = await waitForElement(
-            () => getAllByTestId(dropdownOptionItem),
+            () => getAllByTestId(OPTION_LIST_ITEM),
             { container, timeout: 1000 },
         );
 

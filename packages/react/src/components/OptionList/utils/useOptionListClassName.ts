@@ -19,7 +19,7 @@ const classGeneratorBasedOnComponent = ({
     return `${baseClassNames} ${stateClassNames.join(' ')}`.trim();
 };
 
-export const useDropdownOptionListClassName = (
+export const useOptionListClassName = (
     classPrefix: string,
     className?: string,
     disabled?: boolean,
@@ -36,6 +36,26 @@ export const useDropdownOptionListClassName = (
             ),
             Item: classGeneratorBasedOnComponent({
                 component: 'Item',
+                classPrefix,
+                disabled,
+            }),
+            SelectAllItem: classGeneratorBasedOnComponent({
+                component: 'SelectAllItem',
+                classPrefix,
+                disabled,
+            }),
+            BeforeSectionContainer: classGeneratorBasedOnComponent({
+                component: 'BeforeSectionContainer',
+                classPrefix,
+                disabled,
+            }),
+            SearchContainer: classGeneratorBasedOnComponent({
+                component: 'SearchContainer',
+                classPrefix,
+                disabled,
+            }),
+            Search: classGeneratorBasedOnComponent({
+                component: 'Search',
                 classPrefix,
                 disabled,
             }),

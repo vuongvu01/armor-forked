@@ -1,9 +1,11 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useCallback, useState } from 'react';
 
 import { Search } from '../../../src/components/Search';
 import { InfoIcon } from '@deliveryhero/armor-icons';
 import { SuggestionObjectType } from '../../../src/components/Search/type';
 import { CogIcon } from '../../../src/icons';
+import { campaigns } from '../../../src/components/Search/__story__/constants';
+import { formatCampaigns } from '../../../src/components/Search/__story__/Search.story';
 
 export default {
     title: 'Search',
@@ -40,6 +42,7 @@ export const WideSearchWithSuggestionsList = () => (
         defaultQuery="Biryani"
         icon={<InfoIcon width="12px" height="12px" />}
         options={foodOptions}
+        suggestionListHeight="100px"
         wide
     />
 );
@@ -240,18 +243,12 @@ export const DynamicItemIconAndInfo = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
         const query = event?.target?.value || '';
+
         setSearchQuery(query);
-
-        // eslint-disable-next-line no-console
-        console.log({ query });
     };
 
-    const handleOnSelect = (option: SuggestionObjectType) => {
+    const handleOnSelect = (option: SuggestionObjectType) =>
         setSearchQuery(option.label);
-
-        // eslint-disable-next-line no-console
-        console.log({ option });
-    };
 
     return (
         <>
@@ -276,6 +273,63 @@ export const DynamicItemIconAndInfo = () => {
                 }
             />
             <p>Search query: {searchQuery}</p>
+        </>
+    );
+};
+
+export const WithDeatchedResults = () => {
+    const [search, setSearch] = useState('');
+
+    const handleSearchChange = useCallback(
+        (e: React.ChangeEvent<HTMLInputElement>) => {
+            const query = e.target.value || '';
+            setSearch(query);
+            // eslint-disable-next-line no-console
+            console.log({ query });
+        },
+        [],
+    );
+
+    const campaignsToRender = formatCampaigns(campaigns, search);
+    return (
+        <>
+            <Search
+                onChange={handleSearchChange}
+                placeholder="Search Campaigns"
+                defaultQuery={search}
+                enableSuggestions={false}
+            />
+            {campaignsToRender.map(campaign => (
+                <div>{campaign.attributes.name}</div>
+            ))}
+        </>
+    );
+};
+export const WithDeatchedResultsFiltered = () => {
+    const [search, setSearch] = useState('test');
+
+    const handleSearchChange = useCallback(
+        (e: React.ChangeEvent<HTMLInputElement>) => {
+            const query = e.target.value || '';
+            setSearch(query);
+            // eslint-disable-next-line no-console
+            console.log({ query });
+        },
+        [],
+    );
+
+    const campaignsToRender = formatCampaigns(campaigns, search);
+    return (
+        <>
+            <Search
+                onChange={handleSearchChange}
+                placeholder="Search Campaigns"
+                defaultQuery={search}
+                enableSuggestions={false}
+            />
+            {campaignsToRender.map(campaign => (
+                <div>{campaign.attributes.name}</div>
+            ))}
         </>
     );
 };

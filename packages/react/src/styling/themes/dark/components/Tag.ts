@@ -8,14 +8,19 @@ import {
 } from '../../../../tokens';
 import { TagRootPropsType } from '../../../../components/Tag/type';
 import { isStatusTag } from '../../../../components/Tag/utils';
+import { TAG_DELETE_BEHAVIOUR_OPTIONS } from '../../../../components/Tag/constants';
 
-export const getTagOverride = ({ type }: TagRootPropsType) => {
+export const getTagOverride = ({
+    type,
+    deleteOption,
+    disabled,
+}: TagRootPropsType) => {
     let result = css`
         .Tag-CloseIconContainer {
             color: ${colorGrey40};
             &:hover {
-                background-color: ${colorBlue10};
-                color: ${colorGrey90};
+                background-color: ${disabled ? 'transparent' : colorBlue10};
+                color: ${disabled ? colorGrey40 : colorGrey90};
             }
         }
 
@@ -27,7 +32,10 @@ export const getTagOverride = ({ type }: TagRootPropsType) => {
     if (!isStatusTag(type)) {
         result = css`
             ${result};
-            background-color: rgba(146, 186, 246, 0.2);
+            background-color: ${deleteOption ===
+            TAG_DELETE_BEHAVIOUR_OPTIONS.ON_HOVER
+                ? 'transparent'
+                : 'rgba(146, 186, 246, 0.2)'};
             border-color: ${colorBlue20};
         `;
     } else {

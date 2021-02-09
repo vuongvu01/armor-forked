@@ -1,21 +1,22 @@
 import styled, { css } from 'styled-components';
 import { transitionDurationInSec } from '../../constants';
 import {
-    DropdownOptionItemPropsType,
-    DropdownOptionListPropsType,
+    OptionListItemPropsType,
+    OptionListPropsType,
+    OptionListBeforeSectionContainerPropsType,
+    OptionListSearchPropsType,
 } from './type';
 import { color, spacing } from '../../system/mixins';
 import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 import { elevation } from '../../system/mixins/elevation';
+import { Search } from '../Search';
 
-const optionListStyle = ({
-    isOptionListShown,
-}: DropdownOptionListPropsType) => css`
+const optionListStyle = ({ isOptionListShown }: OptionListPropsType) => css`
     box-shadow: ${elevation('large')};
     ${isOptionListShown ? 'height: auto' : ''};
 `;
 
-export const DropdownOptionListRoot = styled.div<DropdownOptionListPropsType>`
+export const OptionListRoot = styled.div<OptionListPropsType>`
     background-color: white;
     box-sizing: border-box;
     display: flex;
@@ -33,9 +34,26 @@ export const DropdownOptionListRoot = styled.div<DropdownOptionListPropsType>`
     z-index: 1024;
 
     ${optionListStyle}
+    ${getComponentOverride('OptionList')}
 `;
 
-const optionItemStyle = ({ isSelected }: DropdownOptionItemPropsType) => {
+export const OptionListBeforeSectionContainer = styled.div<
+    OptionListBeforeSectionContainerPropsType
+>`
+    border-bottom: solid 1px ${color('neutral.02')};
+`;
+
+export const OptionListSearchContainer = styled.div<OptionListSearchPropsType>`
+    padding: ${spacing(4)};
+`;
+
+export const OptionListSearch = styled(Search).attrs({
+    enableSuggestions: false,
+})<OptionListSearchPropsType>`
+    width: 100%;
+`;
+
+const optionItemStyle = ({ isSelected }: OptionListItemPropsType) => {
     let result = css`
         background-color: ${color('neutral.00')};
         min-height: ${spacing(10)};
@@ -55,7 +73,7 @@ const optionItemStyle = ({ isSelected }: DropdownOptionItemPropsType) => {
     return result;
 };
 
-export const DropdownOptionItem = styled.div<DropdownOptionItemPropsType>`
+export const OptionListItem = styled.div<OptionListItemPropsType>`
     align-items: center;
     box-sizing: border-box;
     cursor: pointer;
@@ -63,5 +81,5 @@ export const DropdownOptionItem = styled.div<DropdownOptionItemPropsType>`
     border-left: 2px solid transparent;
 
     ${optionItemStyle}
-    ${getComponentOverride('DropdownOptionItem')};
+    ${getComponentOverride('OptionListItem')};
 `;
