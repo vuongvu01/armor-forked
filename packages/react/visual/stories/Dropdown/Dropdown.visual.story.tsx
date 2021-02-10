@@ -81,18 +81,6 @@ export const MinimumConfigurationConstrainedByParent = () => (
     </Box>
 );
 
-export const SingleSelectWithSearchPrefilled = () => (
-    <Box padding={3} style={{ flexDirection: 'column', width: '300px' }}>
-        <Dropdown
-            options={['Biryani', 'Tacos', 'Pho', 'Risotto']}
-            label="Dish type"
-            enableSearchOption
-            defaultSearchQuery="a"
-            isListExpanded
-        />
-    </Box>
-);
-
 export const InlineWithMarginAndWidthSet = () => {
     return (
         <>
