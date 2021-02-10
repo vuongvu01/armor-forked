@@ -1,3 +1,18 @@
+## @deliveryhero/armor [1.30.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.30.0...@deliveryhero/armor@1.30.1) (2021-02-10)
+
+
+### Bug Fixes
+
+* **dropdown:** dynamic options list update support [LD-000] ([#395](https://github.com/deliveryhero/armor/issues/395)) ([6b261a9](https://github.com/deliveryhero/armor/commit/6b261a97d946e60fabb57f0fc63534fefe8f3e5b))
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor-icons:** upgraded to 1.10.0
+
 # @deliveryhero/armor [1.30.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.29.6...@deliveryhero/armor@1.30.0) (2021-02-09)
 
 
