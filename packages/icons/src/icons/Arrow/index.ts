@@ -2,10 +2,11 @@
 
 export * from './ArrowDown';
 export * from './ArrowDownTail';
-export * from './ArrowLeftTail';
+export * from './ArrowDownFilled';
 export * from './ArrowLeft';
 export * from './ArrowReturnRight';
-export * from './ArrowRight';
+export * from './ArrowLeftTail';
 export * from './ArrowRightTail';
-export * from './ArrowUp';
+export * from './ArrowRight';
 export * from './ArrowUpTail';
+export * from './ArrowUp';

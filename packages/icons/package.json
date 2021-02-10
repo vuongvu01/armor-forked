@@ -13,6 +13,7 @@
         "dev": "./script/dev.sh",
         "doc": "./script/doc.sh",
         "doc:deploy": "./script/doc.deploy.sh",
+        "visual": "cd ./visual && yarn start",
         "test:visual": "cd ./visual && yarn loki test",
         "test:visual:update": "cd ./visual && yarn loki update",
         "test:visual:approve": "cd ./visual && yarn loki approve",

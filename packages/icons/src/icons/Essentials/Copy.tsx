@@ -16,6 +16,10 @@ const CopyIconShape = (
 );
 
 export const CopyIcon: FunctionComponent<SVGIconPropsType> = props => {
-    const {className, ...restProps} = props;
-    return <SVGIcon {...restProps} className={`CopyIcon ${className || ''}`}>{CopyIconShape}</SVGIcon>;
+    const { className, ...restProps } = props;
+    return (
+        <SVGIcon {...restProps} className={`CopyIcon ${className || ''}`}>
+            {CopyIconShape}
+        </SVGIcon>
+    );
 };

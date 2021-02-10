@@ -857,3 +857,38 @@ export const ControlledOpenState = () => {
         </>
     );
 };
+
+export const ReFeedingOfOptionsList = () => {
+    const [selectedOption, setSelectedOption] = useState();
+    const handleSelect = (option: any) => {
+        console.log('story handleSelect', { option });
+        setSelectedOption(option);
+    };
+
+    const [options, setOptions] = useState<string[]>([]);
+
+    const handleOnClick = async () => {
+        const results = await fetch(
+            'https://jsonplaceholder.typicode.com/posts',
+        ).then(response => response.json());
+
+        console.log({ results: results.map((item: any) => item.title) });
+        setOptions(results.map((item: any) => item.title));
+    };
+
+    return (
+        <>
+            <Dropdown
+                options={options}
+                onSelect={handleSelect}
+                label="Dish type"
+            />
+            <Button marginY={4} onClick={handleOnClick}>
+                Update options
+            </Button>
+            <Typography paragraph>
+                Selected value: {JSON.stringify(selectedOption)}
+            </Typography>
+        </>
+    );
+};

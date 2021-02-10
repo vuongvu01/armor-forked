@@ -16,6 +16,10 @@ const ArrowLeftIconShape = (
 );
 
 export const ArrowLeftIcon: FunctionComponent<SVGIconPropsType> = props => {
-    const {className, ...restProps} = props;
-    return <SVGIcon {...restProps} className={`ArrowLeftIcon ${className || ''}`}>{ArrowLeftIconShape}</SVGIcon>;
+    const { className, ...restProps } = props;
+    return (
+        <SVGIcon {...restProps} className={`ArrowLeftIcon ${className || ''}`}>
+            {ArrowLeftIconShape}
+        </SVGIcon>
+    );
 };
