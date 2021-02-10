@@ -4,6 +4,7 @@ import { DateVectorRange } from '../utils/DateVectorRange';
 import { DateVector } from '../utils/DateVector';
 import { TimeVector24 } from '../utils/TimeVector24';
 import { useFlagState } from '../../../system/hooks/useFlagState';
+import { useGuidedState } from '../../../system/hooks/useGuidedState';
 
 type DatePickerStateType = {
     reallyOpen: boolean;
@@ -38,12 +39,16 @@ export const useDatePickerState = <V>(
             : currentDateVector.clone(),
     );
 
-    const [timeSelectorValue, setTimeSelectorValue] = useState<TimeVector24>(
-        dirtyInternalValueVector.dateStart
-            ? TimeVector24.createFromDateVector(
-                  dirtyInternalValueVector.dateStart,
-              )
-            : currentTimeVector,
+    const [timeSelectorValue, setTimeSelectorValue] = useGuidedState<
+        TimeVector24
+    >(
+        () =>
+            dirtyInternalValueVector.dateStart
+                ? TimeVector24.createFromDateVector(
+                      dirtyInternalValueVector.dateStart,
+                  )
+                : currentTimeVector,
+        [dirtyInternalValueVector, currentTimeVector],
     );
 
     const [monthYearSelectorOpen, onMonthYearSelectorToggle] = useFlagState();

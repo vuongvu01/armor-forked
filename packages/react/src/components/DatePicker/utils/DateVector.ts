@@ -118,6 +118,11 @@ export class DateVector {
         date.setUTCDate(date.getUTCDate() + amount);
     }
 
+    public addMinute(amount = 0) {
+        const { date } = this;
+        date.setUTCMinutes(date.getUTCMinutes() + amount);
+    }
+
     public resetTime() {
         this.date.setUTCHours(0, 0, 0, 0);
     }

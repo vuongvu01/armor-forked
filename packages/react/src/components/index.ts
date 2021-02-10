@@ -8,6 +8,7 @@ export * from './ContextMenu';
 export * from './Card';
 export * from './Dialog';
 export * from './Dropdown';
+export * from './DatePicker';
 export * from './ExpansionIndicator';
 export * from './Flex';
 export * from './FormField';

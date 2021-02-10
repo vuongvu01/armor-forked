@@ -6,6 +6,8 @@ import { withWrapper } from '../../../helpers/Wrapper';
 
 import { DateRangePicker } from '..';
 import { Box } from '../../Box';
+import { Button } from '../../Button';
+import { DateVector } from '../utils/DateVector';
 
 export default {
     title: 'Components/DateRangePicker',
@@ -135,6 +137,50 @@ export const WithConfirmationAndTime = () => {
                 onDateValueChange={onDateValueChange}
                 defaultOpen
                 enableActionButtons
+                enableTimePicker
+            />
+        </Box>
+    );
+};
+
+const moveForward = (range: [Date, Date]) => {
+    const nextDateStart = DateVector.createFromLocalDate(range[0]);
+    const nextDateEnd = DateVector.createFromLocalDate(range[1]);
+
+    nextDateStart.addDay(1);
+    nextDateStart.addMinute(1);
+    nextDateEnd.addDay(1);
+    nextDateEnd.addMinute(1);
+
+    return [
+        nextDateStart.convertToLocalDate(),
+        nextDateEnd.convertToLocalDate(),
+    ] as [Date, Date];
+};
+
+export const ControlledSetExternally = () => {
+    const [dateRange, setDateRange] = useState<[Date, Date]>([
+        new Date(),
+        new Date(),
+    ]);
+
+    const onDateValueChange = (range?: [Date, Date]) => {
+        if (range) {
+            setDateRange(range);
+            console.log(`${range[0].toString()} ${range[1].toString()}`);
+        }
+    };
+
+    const updateDates = () => {
+        setDateRange(moveForward(dateRange));
+    };
+
+    return (
+        <Box paddingTop={20} paddingLeft={100}>
+            <Button onClick={updateDates}>Update dates</Button>
+            <DateRangePicker
+                dateValue={dateRange}
+                onDateValueChange={onDateValueChange}
                 enableTimePicker
             />
         </Box>
