@@ -1,3 +1,10 @@
+# @deliveryhero/armor-icons [1.10.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.9.0...@deliveryhero/armor-icons@1.10.0) (2021-02-10)
+
+
+### Features
+
+* **icons:** ArrowDownFilled icon added, visual snapshotting enabled for the icons package [LD-400] ([#393](https://github.com/deliveryhero/armor/issues/393)) ([2042baa](https://github.com/deliveryhero/armor/commit/2042baa54ac8cf5d73a16505e0ce6eac45594152))
+
 # @deliveryhero/armor-icons [1.9.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.8.0...@deliveryhero/armor-icons@1.9.0) (2021-01-19)
 
 
