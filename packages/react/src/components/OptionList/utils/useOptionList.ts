@@ -5,7 +5,6 @@ import { CheckedIconType } from '../../Checkbox/type';
 import { OPTION_LIST_ITEM } from '../constants';
 import { useOnToggleAll } from '../../Dropdown/utils';
 import { useOnSearchQueryChange } from './useOnSearchQueryChange';
-import { noop } from '../../../utils';
 
 export const useOptionList = ({
     disabled,
@@ -30,15 +29,14 @@ export const useOptionList = ({
 }: OptionListPropsType) => {
     const [searchQuery, setSearchQuery] = useState(defaultSearchQuery);
 
-    const onSearchChange = enableSearchOption
-        ? useOnSearchQueryChange(
-              internalValue,
-              internalOptions,
-              setInternalValue,
-              setInternalOptions,
-              searchQuery,
-          )
-        : noop;
+    const onSearchChange = useOnSearchQueryChange(
+        internalValue,
+        internalOptions,
+        setInternalValue,
+        setInternalOptions,
+        searchQuery,
+        enableSearchOption,
+    );
 
     const resetListState = () => {
         setSearchQuery('');

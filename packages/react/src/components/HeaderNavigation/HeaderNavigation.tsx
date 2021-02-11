@@ -75,12 +75,14 @@ export const HeaderNavigation: FunctionComponent<HeaderNavigationPropsType> = fo
                                 classOverride.HeaderNavigationContentLeft
                             }
                         >
-                            <HeaderNavigationMenu
-                                headerTitle={navigationMenuTitle}
-                                headerContent={navigationMenuContent}
-                                isMenuExpanded={isMenuExpanded}
-                                defaultExpanded={defaultExpanded}
-                            />
+                            {(navigationMenuTitle || navigationMenuContent) && (
+                                <HeaderNavigationMenu
+                                    headerTitle={navigationMenuTitle}
+                                    headerContent={navigationMenuContent}
+                                    isMenuExpanded={isMenuExpanded}
+                                    defaultExpanded={defaultExpanded}
+                                />
+                            )}
                             {title && (
                                 <HeaderNavigationItem
                                     theme={theme}

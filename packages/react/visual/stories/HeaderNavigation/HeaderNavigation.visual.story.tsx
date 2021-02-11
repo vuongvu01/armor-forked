@@ -16,6 +16,8 @@ import {
     HeaderNavigationTitle,
     HeaderNavigationSelector,
     HeaderNavigationSearch,
+    Pack,
+    PackItem,
 } from '../../../src/components';
 import { Image2 } from '../../../src/components/HeaderNavigation/__story__/Image2';
 import { Image } from '../../../src/components/HeaderNavigation/__story__/Image';
@@ -932,6 +934,75 @@ export const WithContentsReordered = () => {
                     </HeaderNavigationLinks>
                 }
                 navigationAction={NavigationAction}
+            />
+        </BrowserRouter>
+    );
+};
+
+export const NoMenuUseCase = () => {
+    const [currentCountry, setCurrentCountry] = useState<number>(2);
+
+    const countries = [
+        { value: -1, label: 'All countries', code: null },
+        { value: 2, label: 'Australia', code: 'au' },
+        { value: 1, label: 'Austria', code: 'at' },
+        { value: 3, label: 'Canada', code: 'ca' },
+        { value: 5, label: 'Finland', code: 'fi' },
+        { value: 6, label: 'France', code: 'fr' },
+        { value: 4, label: 'Germany', code: 'de' },
+        { value: 7, label: 'Italy', code: 'it' },
+        { value: 8, label: 'Netherlands', code: 'nl' },
+        { value: 9, label: 'Norway', code: 'no' },
+        { value: 10, label: 'Sweden', code: 'se' },
+    ];
+
+    const selectorProps = {
+        label: 'Country',
+        options: countries,
+        value: currentCountry,
+    };
+
+    return (
+        <BrowserRouter>
+            <HeaderNavigation
+                title={
+                    <Pack>
+                        <PackItem marginLeft={4}>Dashboard</PackItem>
+                    </Pack>
+                }
+                links={
+                    <HeaderNavigationLinks>
+                        <HeaderNavigationLink
+                            to="/applicants"
+                            tag={Link}
+                            isActive
+                        >
+                            Applicants
+                        </HeaderNavigationLink>
+                        <HeaderNavigationLink to="/schedules" tag={Link}>
+                            Schedules
+                        </HeaderNavigationLink>
+                        <HeaderNavigationLink to="/workflows" tag={Link}>
+                            Workflows
+                        </HeaderNavigationLink>
+                    </HeaderNavigationLinks>
+                }
+                selector={
+                    <HeaderNavigationSelector
+                        navigationSelectorParams={selectorProps}
+                        onOptionSelect={country => {
+                            // @ts-ignore
+                            setCurrentCountry(country.value);
+                        }}
+                    />
+                }
+                navigationAction={
+                    <HeaderNavigationAction>
+                        <HeaderNavigationActionItem>
+                            <LogoutIcon />
+                        </HeaderNavigationActionItem>
+                    </HeaderNavigationAction>
+                }
             />
         </BrowserRouter>
     );

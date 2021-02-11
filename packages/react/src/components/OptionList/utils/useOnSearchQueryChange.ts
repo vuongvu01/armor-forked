@@ -13,9 +13,13 @@ export const useOnSearchQueryChange = (
     setInternalValue: (nextValue: DropdownInternalValueType) => void,
     setInternalOptions: (nextOptions: DropdownInternalOptionType) => void,
     defaultSearchQuery?: string,
+    enableSearchOption?: boolean,
 ) =>
     useCallback<DropdownOnSearchQueryChangeType>(
         (searchQuery = defaultSearchQuery) => {
+            if (!enableSearchOption) {
+                return () => {};
+            }
             if (!searchQuery) {
                 return setInternalOptions(internalOptions);
             }
