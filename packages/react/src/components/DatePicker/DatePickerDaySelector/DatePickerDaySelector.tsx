@@ -28,7 +28,7 @@ export const DatePickerDaySelector: FunctionComponent<DatePickerDaySelectorProps
             rootProps,
             weekDays,
             dayMatrix,
-            dayButtonProps,
+            getDayProps,
         } = useDatePickerDaySelector(props, ref);
 
         return (
@@ -59,15 +59,14 @@ export const DatePickerDaySelector: FunctionComponent<DatePickerDaySelectorProps
                         <DatePickerDaySelectorDay
                             key={day.id}
                             {...day.itemProps}
-                            {...dayButtonProps}
+                            {...getDayProps(day, classNameComponents.Day)}
                             theme={theme}
-                            className={classNameComponents.Day}
                         >
                             <DatePickerDaySelectorDayPadding
                                 {...day.paddingProps}
                                 left
                                 theme={theme}
-                                className={classNameComponents.DayPadding}
+                                className={classNameComponents.DayPaddingLeft}
                             />
                             <DatePickerDaySelectorDayButton
                                 {...day.buttonProps}
@@ -80,7 +79,7 @@ export const DatePickerDaySelector: FunctionComponent<DatePickerDaySelectorProps
                                 {...day.paddingProps}
                                 right
                                 theme={theme}
-                                className={classNameComponents.DayPadding}
+                                className={classNameComponents.DayPaddingRight}
                             />
                         </DatePickerDaySelectorDay>
                     ))}

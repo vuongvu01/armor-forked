@@ -8,12 +8,7 @@ import {
     DatePickerMonthYearSelectorMonthPropsType,
     DatePickerMonthYearSelectorScrollPropsType,
 } from './type';
-import { marginAttributes } from '../../../system/attributes';
-import {
-    shouldForwardProp,
-    makePropList,
-    getPropsBlocker,
-} from '../../../utils';
+import { getPropsBlocker } from '../../../utils';
 import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
 import {
     borderRadius,
@@ -23,26 +18,12 @@ import {
     reset,
     spacing,
     typography,
-} from '../../../system/mixins';
+    marginAttributes,
+} from '../../../system';
 import { transition } from '../../../system/mixins/transition';
 
 // all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
-const propertyList = makePropList([
-    // 'exampleProperty',
-]);
-
-const getRootStyle = (props: DatePickerMonthYearSelectorRootPropsType) => {
-    const result = {};
-
-    // if (exampleProperty) {
-    //     result = css`
-    //         ${result};
-    //         color: red;
-    //     `;
-    // }
-
-    return result;
-};
+const propertyList = {};
 
 // if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
 export const DatePickerMonthYearSelectorRoot = styled.div.withConfig(
@@ -52,7 +33,6 @@ export const DatePickerMonthYearSelectorRoot = styled.div.withConfig(
     ${typography('paragraphMedium')};
     padding: ${spacing(4)};
 
-    ${getRootStyle};
     ${getComponentOverride('DatePickerMonthYearSelector')};
     ${marginAttributes};
 `;

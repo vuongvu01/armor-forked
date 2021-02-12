@@ -12,7 +12,8 @@ export const useDatePickerDaySelectorClassNames = (
             WeekDay: makeBEM(classPrefix, 'WeekDay'),
             Days: makeBEM(classPrefix, 'Days'),
             Day: makeBEM(classPrefix, 'Day'),
-            DayPadding: makeBEM(classPrefix, 'DayPadding'),
+            DayPaddingLeft: makeBEM(classPrefix, 'DayPaddingLeft'),
+            DayPaddingRight: makeBEM(classPrefix, 'DayPaddingRight'),
             DayButton: makeBEM(classPrefix, 'DayButton'),
         };
     }, [classPrefix, className]);

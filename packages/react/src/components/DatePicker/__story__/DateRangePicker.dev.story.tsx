@@ -186,3 +186,14 @@ export const ControlledSetExternally = () => {
         </Box>
     );
 };
+
+export const Many = () => {
+    return (
+        <Box paddingTop={20} paddingLeft={100}>
+            <DateRangePicker />
+            <DateRangePicker />
+            <br />
+            <DateRangePicker />
+        </Box>
+    );
+};

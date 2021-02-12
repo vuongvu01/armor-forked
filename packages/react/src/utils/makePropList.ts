@@ -1,5 +1,6 @@
 import { ObjectLiteralType } from '../type';
 
+/* @deprecated */
 export const makePropList = (list: string[]) => {
     const result: ObjectLiteralType = {};
 

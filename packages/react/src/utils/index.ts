@@ -28,6 +28,21 @@ export const makeBEM = (block: string, element: string, modifier?: string) =>
 /**
  * @internal
  */
+export const appendBEMModifier = (blockElement: string, modifier: string) =>
+    `${blockElement}--${modifier}`;
+
+/**
+ * @internal
+ */
+export const appendBEMModifierOnCondition = (
+    blockElement: string,
+    modifier: string,
+    condition: boolean,
+) => (condition ? `${blockElement}--${modifier}` : '');
+
+/**
+ * @internal
+ */
 export const appendClassName = (classNames: string, className?: string) =>
     `${classNames} ${className || ''}`.trim();
 

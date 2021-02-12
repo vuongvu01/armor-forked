@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { DatePickerTopBarRootPropsType } from './type';
 import { getPropsBlocker } from '../../../utils';
 import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
-import { color, reset, spacing } from '../../../system/mixins';
+import { color, reset, spacing } from '../../../system';
 import {
     DatePickerTopBarMonthNavigationButtonForwardPropsType,
     DatePickerTopBarMonthYearSelectorTogglePropsType,
@@ -91,6 +91,7 @@ export const DatePickerTopBarMonthNavigationButtonForward = styled.button.withCo
     border: 0 none;
     appearance: none;
     background-color: transparent;
+    color: ${color('neutral.06')};
 
     ${getMonthNavigationButtonForwardStyle}
 `;

@@ -311,3 +311,71 @@ export const Alignment = () => {
         </>
     );
 };
+
+export const ActiveTabIndexControlled = () => {
+    const [selectedTabIndex, setSelectedTabIndex] = useState(2);
+
+    return (
+        <>
+            <Tabs
+                activeTabIndex={selectedTabIndex}
+                onActiveTabIndexChange={setSelectedTabIndex}
+            >
+                <Tab>Pizza</Tab>
+                <Tab>Pasta</Tab>
+                <Tab>Risotto</Tab>
+                <Tab>Beverages</Tab>
+                <Tab disabled>Alcoholic beverages</Tab>
+            </Tabs>
+            <TabView value={0} selectedValue={selectedTabIndex}>
+                <p>Pizza</p>
+            </TabView>
+            <TabView value={1} selectedValue={selectedTabIndex}>
+                <p>Pasta</p>
+            </TabView>
+            <TabView value={2} selectedValue={selectedTabIndex}>
+                <p>Risotto</p>
+            </TabView>
+            <TabView value={3} selectedValue={selectedTabIndex}>
+                <p>Beverages</p>
+            </TabView>
+            <TabView value={4} selectedValue={selectedTabIndex}>
+                <p>Alcoholic beverages</p>
+            </TabView>
+        </>
+    );
+};
+
+export const ActiveTabIndexUncontrolled = () => {
+    const [selectedTabIndex, setSelectedTabIndex] = useState(2);
+
+    return (
+        <>
+            <Tabs
+                defaultActiveTabIndex={selectedTabIndex}
+                onActiveTabIndexChange={setSelectedTabIndex}
+            >
+                <Tab>Pizza</Tab>
+                <Tab>Pasta</Tab>
+                <Tab>Risotto</Tab>
+                <Tab>Beverages</Tab>
+                <Tab disabled>Alcoholic beverages</Tab>
+            </Tabs>
+            <TabView value={0} selectedValue={selectedTabIndex}>
+                <p>Pizza</p>
+            </TabView>
+            <TabView value={1} selectedValue={selectedTabIndex}>
+                <p>Pasta</p>
+            </TabView>
+            <TabView value={2} selectedValue={selectedTabIndex}>
+                <p>Risotto</p>
+            </TabView>
+            <TabView value={3} selectedValue={selectedTabIndex}>
+                <p>Beverages</p>
+            </TabView>
+            <TabView value={4} selectedValue={selectedTabIndex}>
+                <p>Alcoholic beverages</p>
+            </TabView>
+        </>
+    );
+};

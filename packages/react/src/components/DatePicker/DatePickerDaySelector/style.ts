@@ -3,6 +3,7 @@ import {
     DatePickerDaySelectorRootPropsType,
     DatePickerDaySelectorDayButtonPropsType,
     DatePickerDaySelectorDayPaddingPropsType,
+    DatePickerDaySelectorDayPropsType,
 } from './type';
 import { getPropsBlocker } from '../../../utils';
 import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
@@ -85,7 +86,7 @@ export const DatePickerDaySelectorDays = styled.div.withConfig(
 
 export const DatePickerDaySelectorDay = styled.div.withConfig(
     getPropsBlocker(propertyList),
-)`
+)<DatePickerDaySelectorDayPropsType>`
     display: flex;
 `;
 
