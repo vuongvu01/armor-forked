@@ -45,6 +45,8 @@ export type DatePickerDaySelectorPropsType = DatePickerDaySelectorEffectiveProps
 export type DatePickerDaySelectorRootPropsType = DatePickerDaySelectorEffectivePropsType &
     ComponentElementStylePropsType;
 
+export type DatePickerDaySelectorDayPropsType = {} & ComponentElementStylePropsType;
+
 export type DatePickerDaySelectorDayButtonPropsType = {} & DaySelectionStatus &
     ComponentElementStylePropsType;
 

@@ -1,15 +1,13 @@
-import { useCallback, WheelEvent } from 'react';
-import { debounce } from 'throttle-debounce';
 import { DatePickerDaySelectorPropsType } from '../type';
 import { useDatePickerDaySelectorCalendar } from './useDatePickerDaySelectorCalendar';
-import { ReferenceType } from '../../../../type';
+import { ReferenceType, UnpackedType } from '../../../../type';
 import { DATE_PICKER_DAY_SELECTOR_WEEK_DAYS } from '../constants';
 import { useDatePickerDaySelectorSelection } from './useDatePickerDaySelectorSelection';
+import { appendBEMModifierOnCondition } from '../../../../utils';
 
 export const useDatePickerDaySelector = (
     {
         displayedDateVector,
-        onDisplayedDateVectorChange,
         currentDateVector,
         dirtyInternalValueVector,
         dayButtonProps,
@@ -30,26 +28,43 @@ export const useDatePickerDaySelector = (
         selectionEndCandidate,
     );
 
-    const navigateMonth = useCallback(
-        debounce(100, (direction: boolean) => {
-            const newVector = displayedDateVector.clone();
-            newVector.addMonth(direction ? 1 : -1);
-            onDisplayedDateVectorChange(newVector);
-        }),
-        [onDisplayedDateVectorChange, displayedDateVector],
-    );
-    const onWheel = useCallback(
-        (event: WheelEvent<HTMLDivElement>) => navigateMonth(event.deltaX > 0),
-        [onDisplayedDateVectorChange, displayedDateVector],
-    );
-
     return {
         rootProps: {
             ...restProps,
-            onWheel,
             ref,
         },
-        dayButtonProps,
+        getDayProps: (
+            day: UnpackedType<typeof calendarWithSelection>,
+            baseClassName: string,
+        ) => {
+            const {
+                selected,
+                rightEnd,
+                leftEnd,
+                displayedMonth,
+            } = day.buttonProps;
+
+            return {
+                ...dayButtonProps,
+                className: `${baseClassName} ${appendBEMModifierOnCondition(
+                    baseClassName,
+                    'displayedMonth',
+                    displayedMonth,
+                )} ${appendBEMModifierOnCondition(
+                    baseClassName,
+                    'selectedLeftEnd',
+                    leftEnd,
+                )} ${appendBEMModifierOnCondition(
+                    baseClassName,
+                    'selectedRightEnd',
+                    rightEnd,
+                )} ${appendBEMModifierOnCondition(
+                    baseClassName,
+                    'selectedMiddle',
+                    !rightEnd && !leftEnd && selected,
+                )}`,
+            };
+        },
 
         weekDays: DATE_PICKER_DAY_SELECTOR_WEEK_DAYS,
         dayMatrix: calendarWithSelection,

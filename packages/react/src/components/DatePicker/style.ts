@@ -25,7 +25,7 @@ const propertyList = makePropList([
 
 const getRootStyle = ({ enableTimePicker }: DatePickerRootPropsType) => {
     const result = css`
-        min-width: ${spacing(enableTimePicker ? 78 : 58)};
+        min-width: ${spacing(enableTimePicker ? 87 : 58)};
     `;
 
     return result;
@@ -71,6 +71,7 @@ export const DatePickerDropdown = styled.div.withConfig(
     color: ${color('neutral.05')};
     background-color: ${color('neutral.00')};
     min-width: ${spacing(84)};
+    z-index: 1000; // todo: fix me when there is a system
 
     box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.12);
 `;

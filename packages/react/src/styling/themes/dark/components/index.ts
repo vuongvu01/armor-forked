@@ -40,6 +40,7 @@ import { getSideSheetOverride } from './SideSheet';
 import { getDropdownBeforeSectionClearButtonOverride } from './DropdownBeforeSectionClearButton';
 import { getOptionListItemOverride } from './OptionListItem';
 import { getOptionListOverride } from './OptionList';
+import { getDatePickerOverride } from './DatePicker';
 
 export const darkThemeComponentOverrides = {
     Accordion: getAccordionOverride,
@@ -81,4 +82,5 @@ export const darkThemeComponentOverrides = {
     TableCell: getTableCellOverride,
     TableExpandableSection: getTableExpandableSectionOverride,
     Message: getMessageOverride,
+    DatePicker: getDatePickerOverride,
 };

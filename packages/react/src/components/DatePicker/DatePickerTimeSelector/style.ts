@@ -48,6 +48,7 @@ export const DatePickerTimeSelectorInput = styled(TextInput).withConfig(
     getPropsBlocker(propertyList, false),
 )`
     ${typography('paragraphMedium')};
+    background-color: inherit;
     width: ${spacing(13)};
     .TextInput-Input {
         text-align: right;
@@ -97,7 +98,7 @@ export const DatePickerTimeSelectorButton = styled.button.withConfig(
     border-radius: ${borderRadius(borderRadius02)};
     border: 1px solid transparent;
     color: ${color('primary.main')};
-    background-color: ${color('neutral.00')};
+    background-color: inherit;
     cursor: pointer;
     ${transition({
         color: true,
