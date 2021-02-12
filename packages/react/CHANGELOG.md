@@ -1,3 +1,11 @@
+## @deliveryhero/armor [1.31.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.31.0...@deliveryhero/armor@1.31.1) (2021-02-12)
+
+
+### Bug Fixes
+
+* **datepicker:** Dark theme support for DatePicker component [LD-000] ([#400](https://github.com/deliveryhero/armor/issues/400)) ([7a082de](https://github.com/deliveryhero/armor/commit/7a082de333bbe42eda28ebde858d04c0bd3c4752))
+* **tabs:** Support controlled/uncontroleld activeTabIndex in Tabs component [LD-401] ([#402](https://github.com/deliveryhero/armor/issues/402)) ([f39cbee](https://github.com/deliveryhero/armor/commit/f39cbee26a5fbbe16bdd0b4d44edef36d01dd438))
+
 # @deliveryhero/armor [1.31.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.30.1...@deliveryhero/armor@1.31.0) (2021-02-11)
 
 ## @deliveryhero/armor [1.30.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.30.0...@deliveryhero/armor@1.30.1) (2021-02-10)
