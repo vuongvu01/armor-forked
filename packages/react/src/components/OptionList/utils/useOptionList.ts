@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { OptionListPropsType, OptionObjectType } from '../type';
 import { CheckedIconType } from '../../Checkbox/type';
@@ -24,6 +24,7 @@ export const useOptionList = ({
     enableSearchOption,
     searchPlaceholder = 'Search',
     defaultSearchQuery = '',
+    enableSearchAutoFocus,
     isFlat,
     ...restProps
 }: OptionListPropsType) => {
@@ -124,6 +125,7 @@ export const useOptionList = ({
             placeholder: searchPlaceholder,
             onChange: handleSearchChange,
             defaultQuery: searchQuery,
+            autoFocus: enableSearchAutoFocus,
         },
         internalOptions,
         dynamicInternalOptions,

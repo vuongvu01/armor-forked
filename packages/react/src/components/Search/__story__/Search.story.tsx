@@ -259,7 +259,7 @@ export const WithGroups = () => {
 };
 
 // @ts-ignore
-export const formatCampaigns = (campaignsList, query) =>
+const formatCampaigns = (campaignsList, query) =>
     [...campaignsList]
         .sort(
             (a, b) =>

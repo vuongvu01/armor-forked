@@ -22,6 +22,7 @@ export const useSearchBar = (
         icon = null,
         renderItemIcon,
         error,
+        autoFocus,
 
         onChange,
         onItemSelect,
@@ -244,6 +245,7 @@ export const useSearchBar = (
             ref: internalInputRef,
             value: searchQuery,
             wide: true,
+            autoFocus,
         },
         searchIconProps: {
             disabled,

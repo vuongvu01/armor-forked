@@ -5,7 +5,19 @@ import { InfoIcon } from '@deliveryhero/armor-icons';
 import { SuggestionObjectType } from '../../../src/components/Search/type';
 import { CogIcon } from '../../../src/icons';
 import { campaigns } from '../../../src/components/Search/__story__/constants';
-import { formatCampaigns } from '../../../src/components/Search/__story__/Search.story';
+
+// @ts-ignore
+const formatCampaigns = (campaignsList, query) =>
+    [...campaignsList]
+        .sort(
+            (a, b) =>
+                Number(b.attributes.is_active) - Number(a.attributes.is_active),
+        )
+        .filter(campaign => {
+            return campaign.attributes.name
+                .toLowerCase()
+                .includes(query.toLocaleLowerCase());
+        });
 
 export default {
     title: 'Search',
