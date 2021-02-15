@@ -119,3 +119,21 @@ export const AlwaysOpen = () => {
         </Box>
     );
 };
+
+export const DefaultOpen = () => {
+    return (
+        <Box paddingTop={50} paddingLeft={50}>
+            <ContextMenu
+                defaultOpen
+                trigger={
+                    <IconButton>
+                        <EllipsisVerticalIcon large />
+                    </IconButton>
+                }
+                align="bottom"
+            >
+                I am open by default
+            </ContextMenu>
+        </Box>
+    );
+};

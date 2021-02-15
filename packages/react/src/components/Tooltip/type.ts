@@ -1,11 +1,14 @@
 import { HTMLAttributes, ReactElement, ReactNode } from 'react';
 
-import { Indexed, ObjectLiteralType } from '../../type';
+import { ObjectLiteralType } from '../../type';
 import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../type';
 import { PopperPlacementType } from '../../system/hooks/type';
+import { ComponentBehaviourOpenStateType } from '../../system/types/ComponentBehaviourOpenStateType';
+import { ComponentBehaviourOverlayType } from '../../system/types/ComponentBehaviourOverlayType';
+import { ComponentBehaviourPortalType } from '../../system/types/ComponentBehaviourPortalType';
 
 type TooltipEffectivePropsType = Partial<{
     align: PopperPlacementType;
@@ -13,11 +16,15 @@ type TooltipEffectivePropsType = Partial<{
     small: boolean;
     content: ReactNode;
     trigger: ReactElement;
-    open: boolean;
-    defaultOpen: boolean;
+
+    /** @deprecated */
     onToggle: (open: boolean) => void;
+
     // add other custom properties here
 }> &
+    ComponentBehaviourOpenStateType &
+    ComponentBehaviourOverlayType &
+    ComponentBehaviourPortalType &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
     ObjectLiteralType;
 

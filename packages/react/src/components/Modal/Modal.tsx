@@ -7,6 +7,9 @@ import { ModalBackdrop, ModalRoot } from './style';
 import { ModalPropsType } from './type';
 import { useModal } from './utils/useModal';
 
+/**
+ * @deprecated
+ */
 export const Modal: FunctionComponent<ModalPropsType> = ({
     children,
     open,

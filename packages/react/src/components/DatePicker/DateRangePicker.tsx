@@ -1,6 +1,8 @@
 import React, { FunctionComponent, forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
+import { PortalToBody } from '../../system/util/PortalToBody';
+
 import { useTheme } from '../../styling';
 import { useDatePickerClassNames } from './hooks/useDatePickerClassNames';
 import { useDateRangePicker } from './hooks/useDateRangePicker';
@@ -30,6 +32,7 @@ export const DateRangePicker: FunctionComponent<DateRangePickerPropsType> = forw
         const {
             rootProps,
             inputProps,
+            portalProps,
             dropdownProps,
             arrowProps,
             topBarProps,
@@ -57,31 +60,35 @@ export const DateRangePicker: FunctionComponent<DateRangePickerPropsType> = forw
                     after={<DatePickerInputIcon theme={theme} />}
                 />
                 {open && (
-                    <DatePickerDropdown
-                        {...dropdownProps}
-                        className={classNameComponents.Dropdown}
-                    >
-                        <DatePickerTopBar {...topBarProps} />
-                        {displayMonthYearSelector && (
-                            <DatePickerMonthYearSelector
-                                {...monthYearSelectorProps}
-                            />
-                        )}
-                        {!displayMonthYearSelector && (
-                            <DatePickerDaySelector {...daySelectorProps} />
-                        )}
-                        {enableTimePicker && (
-                            <DatePickerTimeSelector {...timeSelectorProps} />
-                        )}
-                        {enableActionButtons && (
-                            <DatePickerActionBar {...actionBarProps} />
-                        )}
+                    <PortalToBody {...portalProps}>
+                        <DatePickerDropdown
+                            {...dropdownProps}
+                            className={classNameComponents.Dropdown}
+                        >
+                            <DatePickerTopBar {...topBarProps} />
+                            {displayMonthYearSelector && (
+                                <DatePickerMonthYearSelector
+                                    {...monthYearSelectorProps}
+                                />
+                            )}
+                            {!displayMonthYearSelector && (
+                                <DatePickerDaySelector {...daySelectorProps} />
+                            )}
+                            {enableTimePicker && (
+                                <DatePickerTimeSelector
+                                    {...timeSelectorProps}
+                                />
+                            )}
+                            {enableActionButtons && (
+                                <DatePickerActionBar {...actionBarProps} />
+                            )}
 
-                        <DatePickerDropdownArrow
-                            {...arrowProps}
-                            theme={theme}
-                        />
-                    </DatePickerDropdown>
+                            <DatePickerDropdownArrow
+                                {...arrowProps}
+                                theme={theme}
+                            />
+                        </DatePickerDropdown>
+                    </PortalToBody>
                 )}
             </DatePickerRoot>
         );
@@ -91,7 +98,4 @@ export const DateRangePicker: FunctionComponent<DateRangePickerPropsType> = forw
 DateRangePicker.defaultProps = {};
 
 /** prop-types are required here for run-time checks */
-DateRangePicker.propTypes = {
-    /** Example description */
-    // exampleProperty: PropTypes.bool,
-};
+DateRangePicker.propTypes = {};

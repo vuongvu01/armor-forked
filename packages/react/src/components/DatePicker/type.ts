@@ -6,6 +6,8 @@ import {
 import { MarginAttributesType, WidthAttributesType } from '../../system';
 import { ObjectLiteralType } from '../../type';
 import { ComponentBehaviourOpenStateType } from '../../system/types/ComponentBehaviourOpenStateType';
+import { ComponentBehaviourOverlayType } from '../../system/types/ComponentBehaviourOverlayType';
+import { ComponentBehaviourPortalType } from '../../system/types/ComponentBehaviourPortalType';
 
 export type DateValueType = Date;
 export type DateValueRangeType = [Date, Date];
@@ -25,6 +27,8 @@ export type DatePickerEffectiveGenericPropsType<V> = Partial<{
     // add other custom properties here
 }> &
     ComponentBehaviourOpenStateType &
+    ComponentBehaviourOverlayType &
+    ComponentBehaviourPortalType &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
     MarginAttributesType &
     WidthAttributesType &
@@ -48,6 +52,12 @@ export type DateRangePickerPropsType = DateRangePickerEffectivePropsType &
 
 export type DatePickerRootPropsType = DatePickerEffectivePropsType &
     ComponentElementStylePropsType;
+
+export type DatePickerDropdownPropsType = {
+    zIndex: number;
+} & ComponentElementStylePropsType;
+
+export type DatePickerArrowPropsType = {};
 
 export type DatePickerTopBarMonthNavigationButtonForwardPropsType = {
     disabled: boolean;

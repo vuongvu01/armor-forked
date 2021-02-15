@@ -10,20 +10,12 @@
 import React, { useRef } from 'react';
 import { ThemeProvider } from 'styled-components';
 
-import {
-    // fireEvent,
-    cleanup,
-    render,
-    // prettyDOM,
-    // wait,
-    // waitForElement,
-} from '@testing-library/react';
+import { cleanup, render } from '@testing-library/react';
 import {
     renderHook,
     cleanup as cleanupHooks,
 } from '@testing-library/react-hooks';
 import renderer from 'react-test-renderer';
-// import userEvent from '@testing-library/user-event';
 
 import { customTheme } from './helpers';
 import { ContextMenu } from '..';
@@ -39,7 +31,8 @@ describe('<ContextMenu />', () => {
     });
 
     it('should contain correct CSS classes and attributes', () => {
-        const result = render(<ContextMenu open />);
+        const result = render(<ContextMenu open enablePortal={false} />);
+
         // @ts-ignore
         expect(result.container).toHaveBEMStructure('ContextMenu', {
             Root: [],

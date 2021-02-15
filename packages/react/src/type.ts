@@ -18,6 +18,7 @@ export type CSSChunkType =
 
 export type ChildrenType = JSX.Element | JSX.Element[] | undefined | null;
 
+/** @deprecated */
 export type Indexed<T, P = any> = T & ObjectLiteralType<P>;
 
 export type ReferenceType<C = unknown> =

@@ -2,12 +2,13 @@ import React, { FunctionComponent, forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { useComponentTheme } from '../../utils/hooks';
 
-import { useContextMenuClassNames } from './utils/useContextMenuClassNames';
-import { useContextMenu } from './utils/useContextMenu';
+import { useContextMenuClassNames } from './hooks/useContextMenuClassNames';
+import { useContextMenu } from './hooks/useContextMenu';
 import { ContextMenuRoot, ContextMenuArrow } from './style';
 import { ContextMenuPropsType } from './type';
 import { CONTEXTMENU_CLASS_PREFIX } from './constants';
-import { MenuElement } from '../Menu/MenuElement';
+import { MenuElement } from '../Menu';
+import { PortalToBody } from '../../system/util/PortalToBody';
 
 export const ContextMenu: FunctionComponent<ContextMenuPropsType> = forwardRef(
     function ContextMenu({ className, ...props }, ref) {
@@ -18,6 +19,7 @@ export const ContextMenu: FunctionComponent<ContextMenuPropsType> = forwardRef(
         );
 
         const {
+            portalProps,
             rootProps,
             arrowProps,
             trigger,
@@ -32,30 +34,32 @@ export const ContextMenu: FunctionComponent<ContextMenuPropsType> = forwardRef(
             <>
                 {trigger}
                 {open && (
-                    <ContextMenuRoot
-                        {...rootProps}
-                        theme={theme}
-                        className={classNameComponents.Root}
-                    >
-                        {displayChildren && children}
-                        {displayMenuElements &&
-                            menuElements.map(
-                                ({ id, label, props: elementProps }) => (
-                                    <MenuElement
-                                        {...elementProps}
-                                        key={id}
-                                        small
-                                    >
-                                        {label}
-                                    </MenuElement>
-                                ),
-                            )}
-                        <ContextMenuArrow
+                    <PortalToBody {...portalProps}>
+                        <ContextMenuRoot
+                            {...rootProps}
                             theme={theme}
-                            className={classNameComponents.Arrow}
-                            {...arrowProps}
-                        />
-                    </ContextMenuRoot>
+                            className={classNameComponents.Root}
+                        >
+                            <ContextMenuArrow
+                                theme={theme}
+                                className={classNameComponents.Arrow}
+                                {...arrowProps}
+                            />
+                            {displayChildren && children}
+                            {displayMenuElements &&
+                                menuElements.map(
+                                    ({ id, label, props: elementProps }) => (
+                                        <MenuElement
+                                            {...elementProps}
+                                            key={id}
+                                            small
+                                        >
+                                            {label}
+                                        </MenuElement>
+                                    ),
+                                )}
+                        </ContextMenuRoot>
+                    </PortalToBody>
                 )}
             </>
         );

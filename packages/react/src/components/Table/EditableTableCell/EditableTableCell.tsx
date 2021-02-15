@@ -6,10 +6,10 @@ import React, {
 } from 'react';
 // import PropTypes from 'prop-types';
 import { TickCircleFilledIcon } from '@deliveryhero/armor-icons';
-// import { useComponentTheme } from '../../../utils/hooks';
+// import { useComponentTheme } from '../../../hooks/hooks';
 
 // import { useTheme } from '../../../styling';
-// import { useEditableTableCellClassNames } from './utils/useEditableTableCellClassNames';
+// import { useEditableTableCellClassNames } from './hooks/useEditableTableCellClassNames';
 // import { EditableTableCellRoot } from './style';
 import { EditableTableCellPropsType } from './type';
 // import { editableTableCellDefaultTheme } from './theme';

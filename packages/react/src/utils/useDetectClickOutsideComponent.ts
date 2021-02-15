@@ -1,5 +1,9 @@
 import { MutableRefObject, useEffect } from 'react';
 
+/**
+ * @deprecated
+ * @see useOuterClick
+ * */
 function useDetectClickOutsideComponent(
     ref: MutableRefObject<unknown> | null,
     setIsOptionListShown?: (isOptionListShown: boolean) => void,

@@ -6,6 +6,9 @@ type ModalDescriptor = {
     zIndex: number;
 };
 
+/**
+ * @deprecated
+ */
 export class ModalManager {
     static stack: ModalDescriptor[] = [];
 
