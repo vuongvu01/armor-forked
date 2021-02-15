@@ -219,7 +219,6 @@ export const DropdownTag = styled(Tag).withConfig(
     margin-top: ${spacing(1)};
     margin-right: ${spacing(2)};
     margin-bottom: ${spacing(1)};
-    border-radius: ${borderRadius('soft')};
 
     .Typography-Root {
         margin-left: ${spacing(1)};
