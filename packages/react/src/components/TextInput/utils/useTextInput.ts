@@ -75,11 +75,6 @@ export const useTextInput = (
 
     useInternalRef(ref, enableRootRef ? rootRef : internalInputRef);
 
-    if (autoFocus && internalInputRef.current) {
-        internalInputRef.current.focus({
-            preventScroll: true,
-        });
-    }
     const onRootNodeClick = useCallback(
         (event: MouseEvent<HTMLDivElement>) => {
             if (!enableFocusOnRootClick) {
@@ -129,6 +124,7 @@ export const useTextInput = (
         inputProps: {
             // native
             autoComplete,
+            autoFocus,
             defaultValue,
             disabled,
             name,

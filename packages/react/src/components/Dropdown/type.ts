@@ -100,7 +100,6 @@ export type DropdownEffectivePropsType = Indexed<{
     searchPlaceholder?: string;
     defaultSearchQuery?: string;
     enableSearchOption?: boolean;
-    enableSearchAutoFocus?: boolean;
     singleLine?: boolean;
     tagLabelMaxLength?: number;
     openTagsCount?: number;

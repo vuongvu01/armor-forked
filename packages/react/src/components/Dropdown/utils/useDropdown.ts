@@ -29,7 +29,6 @@ export const useDropdown = (
         enableSelectAllOption,
         selectAllLabel,
         enableSearchOption,
-        enableSearchAutoFocus = true,
         searchPlaceholder,
         defaultSearchQuery,
         tagLabelMaxLength,
@@ -176,7 +175,6 @@ export const useDropdown = (
             enableSearchOption,
             searchPlaceholder,
             defaultSearchQuery,
-            enableSearchAutoFocus,
         },
         dropdownExpansionIndicatorProps: {
             disabled,

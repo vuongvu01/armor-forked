@@ -24,7 +24,6 @@ export const useOptionList = ({
     enableSearchOption,
     searchPlaceholder = 'Search',
     defaultSearchQuery = '',
-    enableSearchAutoFocus,
     isFlat,
     ...restProps
 }: OptionListPropsType) => {
@@ -125,7 +124,6 @@ export const useOptionList = ({
             placeholder: searchPlaceholder,
             onChange: handleSearchChange,
             defaultQuery: searchQuery,
-            autoFocus: enableSearchAutoFocus,
         },
         internalOptions,
         dynamicInternalOptions,
