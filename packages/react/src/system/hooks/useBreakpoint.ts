@@ -5,6 +5,7 @@ import { throttle } from 'throttle-debounce';
 import { useTheme } from '../../styling';
 import { MatchBreakpointFunctionType } from './type';
 import { BreakpointCodeType } from '../mixins/type';
+import { getWindow } from '../util/getWindow';
 
 const useBreakpoint = (
     code: BreakpointCodeType,
@@ -13,14 +14,13 @@ const useBreakpoint = (
     const theme = useTheme();
     const value = theme.breakpoints.values[code];
 
+    const win = getWindow();
     const [match, setMatch] = useState(
-        typeof window === 'undefined'
-            ? false
-            : matchFunction(value, window.innerWidth),
+        !win ? false : matchFunction(value, win.innerWidth),
     );
 
     useEffect(() => {
-        if (typeof window === 'undefined') {
+        if (!win) {
             // eslint-disable-next-line @typescript-eslint/no-empty-function
             return () => {};
         }
@@ -31,14 +31,14 @@ const useBreakpoint = (
                 setMatch(matchFunction(value, width));
             }
         });
-        window.addEventListener('resize', handler);
+        win.addEventListener('resize', handler);
 
         return () => {
-            window.removeEventListener('resize', handler);
+            win.removeEventListener('resize', handler);
         };
-    }, [code, theme]);
+    }, [code, theme, win]);
 
-    if (typeof window === 'undefined') {
+    if (!win) {
         return false;
     }
 

@@ -9,6 +9,7 @@ import {
 } from '../../utils/type';
 import { TableHeadHookPropsType } from './type';
 import { useInternalRef } from '../../../../utils';
+import { getWindow } from '../../../../system/util/getWindow';
 
 export const useTableHead = ({ ref }: TableHeadHookPropsType) => {
     // sticky header
@@ -63,12 +64,18 @@ export const useTableHead = ({ ref }: TableHeadHookPropsType) => {
     );
 
     useEffect(() => {
-        window.addEventListener('resize', onLayoutUpdate);
-        window.addEventListener('scroll', onLayoutUpdate);
+        const win = getWindow();
+
+        if (win) {
+            win.addEventListener('resize', onLayoutUpdate);
+            win.addEventListener('scroll', onLayoutUpdate);
+        }
 
         return () => {
-            window.removeEventListener('resize', onLayoutUpdate);
-            window.removeEventListener('scroll', onLayoutUpdate);
+            if (win) {
+                win.removeEventListener('resize', onLayoutUpdate);
+                win.removeEventListener('scroll', onLayoutUpdate);
+            }
         };
     }, [onLayoutUpdate]);
 

@@ -6,6 +6,7 @@ import { makeBEM } from '../../utils';
 import { ModalBackdrop, ModalRoot } from './style';
 import { ModalPropsType } from './type';
 import { useModal } from './utils/useModal';
+import { getWindow } from '../../system/util/getWindow';
 
 /**
  * @deprecated
@@ -25,7 +26,8 @@ export const Modal: FunctionComponent<ModalPropsType> = ({
         parameters: { zIndex, disableCloseByEscape },
     });
 
-    if (typeof window === 'undefined') {
+    const win = getWindow();
+    if (!win) {
         return null;
     }
 
@@ -39,7 +41,7 @@ export const Modal: FunctionComponent<ModalPropsType> = ({
             )}
             {children}
         </ModalRoot>,
-        window.document.getElementsByTagName('body')[0],
+        win.document.getElementsByTagName('body')[0],
     );
 };
 

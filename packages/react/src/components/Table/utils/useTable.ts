@@ -6,6 +6,7 @@ import { TableHookPropsType, TableContextValueType } from './type';
 import { TableStickyColumnMapInternalItem } from '../type';
 import { ArrayLikeType } from '../../../type';
 import { LEFT, RIGHT } from '../../../constants';
+import { getWindow } from '../../../system/util/getWindow';
 
 export const useTable = ({
     stickyColumns,
@@ -123,10 +124,15 @@ export const useTable = ({
 
     useEffect(() => {
         onLayoutUpdateImmediate();
+        const win = getWindow();
 
-        window.addEventListener('resize', onLayoutUpdate);
+        if (win) {
+            win.addEventListener('resize', onLayoutUpdate);
+        }
         return () => {
-            window.removeEventListener('resize', onLayoutUpdate);
+            if (win) {
+                win.removeEventListener('resize', onLayoutUpdate);
+            }
         };
     }, []);
 

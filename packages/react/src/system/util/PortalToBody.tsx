@@ -1,5 +1,6 @@
-import React, { FC, useMemo } from 'react';
+import React, { FC } from 'react';
 import { createPortal } from 'react-dom';
+import { getWindow } from './getWindow';
 
 type PortalToBodyPropsType = { enablePortal?: boolean };
 
@@ -7,7 +8,8 @@ export const PortalToBody: FC<PortalToBodyPropsType> = ({
     children,
     enablePortal,
 }) => {
-    if (typeof window === 'undefined') {
+    const win = getWindow();
+    if (!win) {
         return null;
     }
 
@@ -15,16 +17,7 @@ export const PortalToBody: FC<PortalToBodyPropsType> = ({
         return <>{children}</>;
     }
 
-    const portal = useMemo(
-        () =>
-            createPortal(
-                children,
-                window.document.getElementsByTagName('body')[0],
-            ),
-        [children],
-    );
-
-    return portal;
+    return createPortal(children, win.document.getElementsByTagName('body')[0]);
 };
 
 PortalToBody.defaultProps = {
