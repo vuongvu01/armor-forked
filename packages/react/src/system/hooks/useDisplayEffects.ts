@@ -1,9 +1,8 @@
-// todo: come up with something more clever than this
 import { useEffect, useState } from 'react';
 
-export const useDisplay = (open?: boolean) => {
-    const [display, setDisplay] = useState<boolean>(false);
-    const [effectToggle, setEffectToggle] = useState<boolean>(false);
+export const useDisplayEffects = (open: boolean) => {
+    const [display, setDisplay] = useState(false);
+    const [effectToggle, setEffectToggle] = useState(false);
     useEffect(() => {
         if (!display && open) {
             setDisplay(true);
@@ -14,7 +13,10 @@ export const useDisplay = (open?: boolean) => {
             setEffectToggle(false);
             setTimeout(() => setDisplay(false), 100);
         }
-    }, [!!open]);
+    }, [open]);
 
-    return [display, effectToggle];
+    return {
+        display,
+        effectToggle,
+    };
 };

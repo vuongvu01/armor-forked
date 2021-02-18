@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { DialogContentRootPropsType } from './type';
 import { getPropsBlocker, makePropList } from '../../../utils';
 import { typography } from '../../../system/mixins';
+import { paddingAttributes } from '../../../system';
 
 const propertyList = makePropList(['enableVerticalScroll']);
 
@@ -12,4 +13,5 @@ export const DialogContentRoot = styled.div.withConfig(
     ${({ enableVerticalScroll }) =>
         enableVerticalScroll ? 'overflow-y: auto;' : ''}
     ${({ theme }) => theme.componentOverrides.DialogContent.Root.base}
+    ${paddingAttributes};
 `;

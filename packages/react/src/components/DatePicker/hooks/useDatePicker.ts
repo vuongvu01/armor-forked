@@ -44,6 +44,7 @@ export const useDatePicker = (
 
         arrowProps,
         dropdownProps,
+        portalProps,
         restProps: panelRestProps,
     } = useDatePickerPanel<DateValueType>(restProps, ref);
 
@@ -114,6 +115,7 @@ export const useDatePicker = (
             enableFocusOnRootClick: true,
             onRootClick: toggleOpen,
         },
+        portalProps,
         dropdownProps,
         arrowProps,
         topBarProps: {

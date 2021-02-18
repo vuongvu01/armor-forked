@@ -21,7 +21,7 @@ export const <%- component_name_pascal %>: FC<<%- component_name_pascal %>PropsT
         ref,
     ){
         const theme = useComponentTheme(<%- component_name_snake_uc %>_CLASS_PREFIX);
-        const classNameComponents = use<%- component_name_pascal %>ClassNames(
+        const classNames = use<%- component_name_pascal %>ClassNames(
             <%- component_name_snake_uc %>_CLASS_PREFIX,
             className,
         );
@@ -32,7 +32,7 @@ export const <%- component_name_pascal %>: FC<<%- component_name_pascal %>PropsT
             <<%- component_name_pascal %>Root
                 {...rootProps}
                 theme={theme}
-                className={classNameComponents.Root}
+                className={classNames.Root}
             >
                 {children}
             </<%- component_name_pascal %>Root>

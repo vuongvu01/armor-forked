@@ -1,6 +1,10 @@
 import styled, { css } from 'styled-components';
 import { CalendarIcon } from '@deliveryhero/armor-icons';
-import { DatePickerRootPropsType } from './type';
+import {
+    DatePickerArrowPropsType,
+    DatePickerDropdownPropsType,
+    DatePickerRootPropsType,
+} from './type';
 import {
     marginAttributes,
     widthAttributes,
@@ -9,6 +13,7 @@ import {
     reset,
     spacing,
     typography,
+    zIndex,
 } from '../../system';
 import { makePropList, getPropsBlocker } from '../../utils';
 import { getComponentOverride } from '../../system/mixins/getComponentOverride';
@@ -65,13 +70,13 @@ export const DatePickerInputIcon = styled(CalendarIcon)
 
 export const DatePickerDropdown = styled.div.withConfig(
     getPropsBlocker(propertyList),
-)`
+)<DatePickerDropdownPropsType>`
     ${typography('paragraphMedium')};
     border-radius: ${borderRadius('soft')};
     color: ${color('neutral.05')};
     background-color: ${color('neutral.00')};
     min-width: ${spacing(84)};
-    z-index: 1000; // todo: fix me when there is a system
+    ${zIndex};
 
     box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.12);
 `;
@@ -80,7 +85,7 @@ export const DatePickerDropdown = styled.div.withConfig(
 // if we don't have it, the popper library screws everything up
 export const DatePickerDropdownArrow = styled.div.withConfig(
     getPropsBlocker(propertyList),
-)`
+)<DatePickerArrowPropsType>`
     height: 0;
     width: 0;
     visibility: hidden;

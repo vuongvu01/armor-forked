@@ -69,7 +69,7 @@ export const useTextInput = (
         readOnly,
     });
 
-    const internalInputRef = useRef(null);
+    const internalInputRef = useRef<HTMLInputElement>(null);
     const rootRef = useRef<HTMLDivElement>(null);
     const innerContainerRef = useRef<HTMLDivElement>(null);
 

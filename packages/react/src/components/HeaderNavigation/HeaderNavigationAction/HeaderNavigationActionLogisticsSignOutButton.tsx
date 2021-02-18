@@ -3,8 +3,14 @@ import { LogoutIcon } from '@deliveryhero/armor-icons';
 import { HeaderNavigationActionItem } from '.';
 
 import { HeaderNavigationActionItemPropsType } from './type';
+import { getWindow } from '../../../system/util/getWindow';
 
-const setURL = () => window.location.assign('/users/sign_out');
+const setURL = () => {
+    const win = getWindow();
+    if (win) {
+        win.location.assign('/users/sign_out');
+    }
+};
 
 /**
  * @deprecated see @deliveryhero/armor-vendors

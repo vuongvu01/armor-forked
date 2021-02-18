@@ -1,15 +1,23 @@
 import styled, { css } from 'styled-components';
 
-import { fixedCover, sizeAttributes } from '../../system';
+import {
+    color,
+    fixedCover,
+    reset,
+    sizeAttributes,
+    spacing,
+    zIndex,
+} from '../../system';
 import { getPropsBlocker } from '../../utils';
 import { ObjectLiteralType } from '../../type';
 import {
     DialogAlignmentContainerPropsType,
     DialogCloseButtonPropsType,
     DialogContentPropsType,
-    DialogBasePropsType,
+    DialogRootPropsType,
+    DialogWindowPropsType,
 } from './type';
-import { DIALOG_SCROLL_DOCUMENT } from './Dialog';
+import { DIALOG_SCROLL_DOCUMENT } from './constants';
 import { Card } from '../Card';
 import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 
@@ -19,42 +27,51 @@ const propertyList = {
     disableCloseButton: true,
     scroll: true,
     open: true,
+    defaultOpen: true,
+    onOpenChange: true,
     onClose: true,
-    // add other custom properties here
-
     effectToggle: true,
     display: true,
+    zIndex: true,
+
+    // add other custom properties here
 } as ObjectLiteralType;
 
-const dialogContainerOverflow = ({
+export const DialogRoot = styled.div.withConfig(getPropsBlocker(propertyList))<
+    DialogRootPropsType
+>`
+    ${reset};
+    ${zIndex};
+    ${getComponentOverride('Dialog')};
+`;
+
+const getAlignmentContainerStyle = ({
     scroll,
-}: DialogAlignmentContainerPropsType) => {
-    if (scroll === DIALOG_SCROLL_DOCUMENT) {
-        return 'auto';
-    }
-
-    return 'unset';
-};
-
-const dialogContainerDisplay = ({
     display,
-    scroll,
+    enableCloseButton,
 }: DialogAlignmentContainerPropsType) => {
+    let containerDisplay = scroll === DIALOG_SCROLL_DOCUMENT ? 'block' : 'flex';
     if (!display) {
-        return 'none';
+        containerDisplay = 'none';
     }
 
-    return scroll === DIALOG_SCROLL_DOCUMENT ? 'block' : 'flex';
-};
+    let result = css`
+        overflow-y: ${scroll === DIALOG_SCROLL_DOCUMENT ? 'auto' : 'unset'};
+        display: ${containerDisplay};
+    ` as {};
 
-const dialogBaseDisplay = ({ scroll }: DialogBasePropsType) => {
-    return scroll === DIALOG_SCROLL_DOCUMENT ? 'inline-block' : 'flex';
-};
+    if (enableCloseButton) {
+        // todo: use context here
+        result = css`
+            ${result};
 
-const dialogBaseMaxHeight = ({ scroll, theme }: DialogBasePropsType) => {
-    return scroll === DIALOG_SCROLL_DOCUMENT
-        ? 'none'
-        : `calc(100% - ${theme.componentOverrides.Dialog.Base.safeMargin})`;
+            .DialogTitle-Text {
+                margin-right: ${spacing(9)};
+            }
+        `;
+    }
+
+    return result;
 };
 
 export const DialogAlignmentContainer = styled.div.withConfig(
@@ -66,23 +83,30 @@ export const DialogAlignmentContainer = styled.div.withConfig(
     justify-content: center;
     text-align: center;
 
-    overflow-y: ${dialogContainerOverflow};
-    display: ${dialogContainerDisplay};
-
-    ${({ disableCloseButton, theme }: DialogAlignmentContainerPropsType) =>
-        !disableCloseButton
-            ? css`
-                  .DialogTitle-Text {
-                      ${theme.componentOverrides.Dialog.Container[
-                          'DialogTitle-Text'
-                      ]}
-                  }
-              `
-            : ''},
+    ${getAlignmentContainerStyle};
 `;
 
-export const DialogRoot = styled(Card).withConfig(getPropsBlocker({}, false))<
-    DialogBasePropsType
+const getWindowStyle = ({
+    enableEffects,
+    effectToggle,
+    scroll,
+}: DialogWindowPropsType) => {
+    return css`
+        max-height: ${scroll === DIALOG_SCROLL_DOCUMENT
+            ? 'none'
+            : css`calc(100% - ${spacing(16)})`};
+        display: ${scroll === DIALOG_SCROLL_DOCUMENT ? 'inline-block' : 'flex'};
+
+        transition: ${enableEffects
+            ? 'transform 100ms ease, opacity 100ms ease'
+            : 'none'};
+        transform: translateY(${effectToggle ? 0 : '20px'});
+        opacity: ${effectToggle ? 1 : 0};
+    `;
+};
+
+export const DialogWindow = styled(Card).withConfig(getPropsBlocker({}, false))<
+    DialogWindowPropsType
 >`
     position: relative;
     overflow-y: auto;
@@ -91,21 +115,12 @@ export const DialogRoot = styled(Card).withConfig(getPropsBlocker({}, false))<
     flex-direction: column;
     text-align: left;
 
-    display: ${dialogBaseDisplay};
-    max-height: ${dialogBaseMaxHeight};
+    margin: ${spacing(12)};
+    min-height: ${spacing(23)};
+    min-width: ${spacing(100)};
 
-    ${({ disableEffects, effectToggle, theme }: DialogBasePropsType) => css`
-        transition: ${disableEffects
-            ? 'none'
-            : 'transform 100ms ease, opacity 100ms ease'};
-        transform: translateY(${effectToggle ? 0 : '20px'});
-        opacity: ${effectToggle ? 1 : 0};
-
-        ${theme.componentOverrides.Dialog.Base.base}
-    `}
-
-    ${sizeAttributes}
-    ${getComponentOverride('Dialog')};
+    ${sizeAttributes};
+    ${getWindowStyle};
 `;
 
 export const DialogContent = styled.div.withConfig(
@@ -126,6 +141,7 @@ export const DialogCloseButton = styled.div.withConfig(
     outline: none;
     cursor: pointer;
     flex: 0 0 auto;
-    ${({ theme }: DialogCloseButtonPropsType) =>
-        theme.componentOverrides.Dialog.CloseButton.base}
+    color: ${color('neutral.05')};
+    top: ${spacing(6.5)};
+    right: ${spacing(6.5)};
 `;

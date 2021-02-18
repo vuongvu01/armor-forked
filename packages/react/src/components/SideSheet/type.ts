@@ -1,8 +1,11 @@
 import { HTMLAttributes } from 'react';
 
-import { MarginAttributesType } from '../../system/attributes';
-import { Indexed, ChildrenType } from '../../type';
-import { ModalPropsType } from '../Modal/type';
+import { MarginAttributesType } from '../../system';
+import { ComponentElementStylePropsType } from '../type';
+import { ComponentBehaviourOpenStateType } from '../../system/types/ComponentBehaviourOpenStateType';
+import { ComponentBehaviourOverlayType } from '../../system/types/ComponentBehaviourOverlayType';
+import { ComponentBehaviourPortalType } from '../../system/types/ComponentBehaviourPortalType';
+import { ChildrenType, ObjectLiteralType } from '../../type';
 
 export type ClassBasedOnComponentType = {
     component: string;
@@ -13,20 +16,21 @@ export type ClassBasedOnComponentType = {
     wide?: boolean;
 };
 
-export type SideSheetEffectivePropsType = Indexed<{
-    children?: ChildrenType;
-    disableEffects?: boolean;
-    disableOverlay?: boolean;
-    isCloseButtonVisible?: boolean;
-    isFixed?: boolean;
-    wide?: boolean;
+export type SideSheetEffectivePropsType = Partial<{
+    disableEffects: boolean;
+    disableOverlay: boolean;
+    isCloseButtonVisible: boolean;
+    isFixed: boolean;
+    wide: boolean;
+    disableCloseByEscape: boolean;
+    children: ChildrenType;
 }> &
-    Pick<
-        ModalPropsType,
-        'open' | 'onClose' | 'zIndex' | 'disableCloseByEscape'
-    > & // includes two props from Modal
+    ComponentBehaviourOpenStateType &
+    ComponentBehaviourOverlayType &
+    ComponentBehaviourPortalType &
     HTMLAttributes<HTMLElement> &
-    MarginAttributesType;
+    MarginAttributesType &
+    ObjectLiteralType;
 
 export type ClassOverrideType = {
     Body: string;
@@ -41,9 +45,13 @@ export type ClassOverrideType = {
 
 export type SideSheetPropsType = SideSheetEffectivePropsType;
 
+export type SideSheetRootPropsType = {
+    zIndex: number;
+} & ComponentElementStylePropsType;
+
 export type SideSheetContainerPropsType = Pick<
     SideSheetEffectivePropsType,
-    'disableEffects' | 'display' | 'effectToggle' | 'ref' | 'theme' | 'wide'
+    'disableEffects' | 'display' | 'effectToggle' | 'theme' | 'wide'
 >;
 
 export type SideSheetContentPropsType = Pick<

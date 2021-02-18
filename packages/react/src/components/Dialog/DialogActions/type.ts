@@ -5,10 +5,12 @@ import {
     ComponentElementStylePropsType,
     ComponentStylePropsType,
 } from '../../type';
+import { PaddingAttributesType } from '../../../system';
 
 type DialogActionsEffectivePropsType = Indexed<{
     // add other custom properties here
 }> &
+    PaddingAttributesType &
     HTMLAttributes<HTMLDivElement>; // includes all HTML Div attributes
 
 /* DialogActions component prop type */

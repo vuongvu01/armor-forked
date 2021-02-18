@@ -2,12 +2,13 @@ import React, { forwardRef, FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 import { useComponentTheme } from '../../utils/hooks';
 
-import { useTooltipClassNames } from './utils/useTooltipClassNames';
+import { useTooltipClassNames } from './hooks/useTooltipClassNames';
 import { TooltipRoot, TooltipArrow } from './style';
 import { TooltipPropsType } from './type';
 import { tooltipDefaultTheme } from './theme';
 import { TOOLTIP_CLASS_PREFIX } from './constants';
-import { useTooltip } from './utils/useTooltip';
+import { useTooltip } from './hooks/useTooltip';
+import { PortalToBody } from '../../system/util/PortalToBody';
 
 export const Tooltip: FunctionComponent<TooltipPropsType> = forwardRef(
     function Tooltip({ className, ...props }, ref) {
@@ -22,6 +23,7 @@ export const Tooltip: FunctionComponent<TooltipPropsType> = forwardRef(
             trigger,
             validTrigger,
             content,
+            portalProps,
             rootProps,
             arrowProps,
         } = useTooltip(props, ref);
@@ -40,18 +42,20 @@ export const Tooltip: FunctionComponent<TooltipPropsType> = forwardRef(
             <>
                 {trigger}
                 {open && (
-                    <TooltipRoot
-                        {...rootProps}
-                        theme={theme}
-                        className={classNameComponents.Root}
-                    >
-                        {content}
-                        <TooltipArrow
-                            {...arrowProps}
+                    <PortalToBody {...portalProps}>
+                        <TooltipRoot
+                            {...rootProps}
                             theme={theme}
-                            className={classNameComponents.Arrow}
-                        />
-                    </TooltipRoot>
+                            className={classNameComponents.Root}
+                        >
+                            {content}
+                            <TooltipArrow
+                                {...arrowProps}
+                                theme={theme}
+                                className={classNameComponents.Arrow}
+                            />
+                        </TooltipRoot>
+                    </PortalToBody>
                 )}
             </>
         );

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { DialogActionsRootPropsType } from './type';
 import { getPropsBlocker } from '../../../utils';
+import { paddingAttributes } from '../../../system';
 
 export const DialogActionsRoot = styled.div.withConfig(getPropsBlocker())<
     DialogActionsRootPropsType
@@ -12,4 +13,5 @@ export const DialogActionsRoot = styled.div.withConfig(getPropsBlocker())<
     flex-shrink: 0;
     ${({ theme }: DialogActionsRootPropsType) =>
         theme.componentOverrides.DialogActions.Root.base}
+    ${paddingAttributes};
 `;

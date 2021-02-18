@@ -1,10 +1,11 @@
 import React, { ReactElement, useMemo, useRef } from 'react';
 import { useEventProxy } from './useEventProxy';
-import { validateTrigger } from './validateTrigger';
+import { validateTrigger } from '../utils/validateTrigger';
 import { ReferenceType } from '../../../type';
 import { TooltipPropsType } from '../type';
-import { useControlledState } from '../../../system/hooks/useControlledState';
 import { usePopper } from '../../../system/hooks/usePopper';
+import { useControlledFlagState } from '../../../system/hooks/useControlledFlagState';
+import { useOverlay } from '../../../system/hooks/useOverlay';
 
 export const useTooltip = (
     {
@@ -14,10 +15,16 @@ export const useTooltip = (
 
         open,
         defaultOpen,
+        onOpenChange,
+
+        /** @deprecated */
         onToggle,
 
         align,
         error,
+        zIndex,
+
+        enablePortal,
 
         ...restProps
     }: TooltipPropsType,
@@ -26,10 +33,10 @@ export const useTooltip = (
     const realTrigger = trigger || (children as ReactElement);
     const realContent = trigger ? (children as ReactElement) : content;
 
-    const [reallyOpen, setReallyOpen] = useControlledState(
+    const [reallyOpen, setReallyOpen] = useControlledFlagState(
         defaultOpen,
         open,
-        onToggle,
+        onToggle !== undefined ? onToggle : onOpenChange,
     );
     const { onMouseOverProxy, onMouseOutProxy } = useEventProxy(
         children,
@@ -40,6 +47,7 @@ export const useTooltip = (
     const triggerRef = useRef<HTMLElement>(null);
 
     const { arrowProps, panelProps } = usePopper(panelRef, triggerRef, align);
+    const { zIndex: realZIndex } = useOverlay(reallyOpen, { zIndex });
 
     const validTrigger = validateTrigger(realTrigger);
 
@@ -57,11 +65,16 @@ export const useTooltip = (
 
     return {
         trigger: triggerClone,
+
+        portalProps: {
+            enablePortal,
+        },
         rootProps: {
             ...restProps,
             ...panelProps,
             ref: panelRef,
             error,
+            zIndex: realZIndex,
         },
         arrowProps: {
             ...arrowProps,

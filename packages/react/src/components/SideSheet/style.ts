@@ -7,6 +7,7 @@ import {
     SideSheetHeaderCloseButtonContainerPropsType,
     SideSheetHeaderCloseButtonContentPropsType,
     SideSheetHeaderContainerPropsType,
+    SideSheetRootPropsType,
 } from './type';
 import { transitionDurationInSec } from '../../constants';
 import {
@@ -16,10 +17,12 @@ import {
     closeIconOffset,
 } from './constants';
 import { getComponentOverride } from '../../system/mixins/getComponentOverride';
+import { reset, zIndex } from '../../system';
 
 const propertyList = {
     effectToggle: true,
     disableEffects: true,
+    zIndex: true,
 };
 
 const calculateWidth = (effectToggle?: boolean, wide?: boolean) => {
@@ -32,7 +35,7 @@ const calculateWidth = (effectToggle?: boolean, wide?: boolean) => {
     return '0';
 };
 
-const containerStyle = ({
+const getWindowStyle = ({
     disableEffects,
     effectToggle,
     theme: {
@@ -71,6 +74,14 @@ const closeIconStyle = ({
 
 export const SideSheetRoot = styled.div.withConfig(
     getPropsBlocker(propertyList),
+)<SideSheetRootPropsType>`
+    ${reset};
+    ${zIndex};
+    ${getComponentOverride('SideSheet')};
+`;
+
+export const SideSheetWindow = styled.div.withConfig(
+    getPropsBlocker(propertyList),
 )<SideSheetContainerPropsType>`
     background: white;
     display: flex;
@@ -81,8 +92,7 @@ export const SideSheetRoot = styled.div.withConfig(
     top: 0;
     z-index: inherit;
 
-    ${containerStyle}
-    ${getComponentOverride('SideSheet')};
+    ${getWindowStyle};
 `;
 
 export const SideSheetContent = styled.div.withConfig(
@@ -92,7 +102,7 @@ export const SideSheetContent = styled.div.withConfig(
     flex-direction: column;
     flex-grow: 1;
 
-    ${contentStyle}
+    ${contentStyle};
 `;
 
 export const SideSheetHeaderContainer = styled.div.withConfig(

@@ -1,5 +1,6 @@
 import { useCallback, MouseEvent } from 'react';
 import { HeaderNavigationLinkPropsType } from '../type';
+import { getWindow } from '../../../../../system/util/getWindow';
 
 export const useHeaderNavigationLink = ({
     headerNavigationLinksContext,
@@ -37,9 +38,10 @@ export const useHeaderNavigationLink = ({
     if (isActive !== undefined) {
         isReallyActive = isActive;
     } else if (locationTracking && url) {
+        const win = getWindow();
         let currentPathname = pathname;
-        if (currentPathname === undefined && window) {
-            currentPathname = window.location.pathname;
+        if (currentPathname === undefined && win) {
+            currentPathname = win.location.pathname;
         }
         if (currentPathname) {
             isReallyActive = currentPathname.startsWith(url);

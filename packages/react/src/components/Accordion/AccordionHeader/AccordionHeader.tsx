@@ -27,6 +27,7 @@ import { DROPDOWN_ACTION_ITEM } from '../../Dropdown/constants';
 import AccordionContext from '../AccordionContext';
 import useAccordionHeaderClassName from './useAccordionHeaderClassName';
 import { useInternalRef } from '../../../utils';
+import { getWindow } from '../../../system/util/getWindow';
 
 export const AccordionHeader: FunctionComponent<AccordionHeaderPropsType> = forwardRef(
     function AccordionHeader(
@@ -65,10 +66,11 @@ export const AccordionHeader: FunctionComponent<AccordionHeaderPropsType> = forw
         );
 
         useEffect(() => {
-            if (!disabled) {
-                window.addEventListener('keyup', enterKeyHandler);
+            const win = getWindow();
+            if (win && !disabled) {
+                win.addEventListener('keyup', enterKeyHandler);
                 return () => {
-                    window.removeEventListener('keyup', enterKeyHandler);
+                    win.removeEventListener('keyup', enterKeyHandler);
                 };
             }
 

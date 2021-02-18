@@ -1,127 +1,91 @@
-import React, { FunctionComponent, useCallback, MouseEvent } from 'react';
+import React, { FC, forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { CancelIcon } from '@deliveryhero/armor-icons';
 import { useComponentTheme } from '../../utils/hooks';
 
-import { useDialogClassNames } from './utils/useDialogClassNames';
+import { useDialogClassNames } from './hooks/useDialogClassNames';
 import {
     DialogAlignmentContainer,
     DialogRoot,
+    DialogWindow,
     DialogCloseButton,
     DialogContent,
 } from './style';
 import { DialogPropsType } from './type';
-import { Modal } from '../Modal';
-import { useDisplay } from '../Modal/utils/useDisplay';
-import { useContainerClickTrap } from './utils/useContainerClickTrap';
-import { dialogDefaultTheme } from './theme';
 import { Overlay } from '../Overlay';
-import { DIALOG_CLASS_PREFIX, dialogCloseButton } from './constants';
+import {
+    DIALOG_CLASS_PREFIX,
+    DIALOG_SCROLL_DIALOG,
+    DIALOG_SCROLL_DOCUMENT,
+} from './constants';
+import { useDialog } from './hooks/useDialog';
+import { PortalToBody } from '../../system/util/PortalToBody';
 
-export const DIALOG_SCROLL_DOCUMENT = 'document';
-export const DIALOG_SCROLL_DIALOG = 'dialog';
+export const Dialog: FC<DialogPropsType> = forwardRef(function Dialog(
+    { className, children, ...props },
+    ref,
+) {
+    const theme = useComponentTheme(DIALOG_CLASS_PREFIX);
 
-export const Dialog: FunctionComponent<DialogPropsType> = ({
-    className,
-    children,
-    open,
-    disableOverlay,
-    disableCloseButton,
-    disableCloseByEscape,
-    disableEffects,
-    onClose,
-    onCloseButtonClick,
-    scroll,
-    zIndex,
-    ...restProps
-}) => {
-    const theme = useComponentTheme(DIALOG_CLASS_PREFIX, dialogDefaultTheme);
+    const classNames = useDialogClassNames(DIALOG_CLASS_PREFIX, className);
 
-    const classNameComponents = useDialogClassNames(
-        DIALOG_CLASS_PREFIX,
-        className,
-    );
+    const {
+        portalProps,
+        rootProps,
+        overlayProps,
+        alignmentContainerProps,
+        windowProps,
+        getCloseButtonProps,
+        contentProps,
 
-    const [display, effectToggle] = useDisplay(open);
-    const { onContainerClick, containerRef } = useContainerClickTrap(
-        onClose,
-        disableOverlay,
-    );
-
-    const onCloseButtonClickInternal = useCallback(
-        (event: MouseEvent<HTMLDivElement>) => {
-            if (onCloseButtonClick) {
-                onCloseButtonClick(event);
-                if (event.isPropagationStopped()) {
-                    return;
-                }
-            }
-
-            if (onClose) {
-                onClose();
-            }
-        },
-        [onClose, onCloseButtonClick],
-    );
+        enableCloseButton,
+        enableOverlay,
+    } = useDialog(props, ref);
 
     return (
-        <Modal
-            open={open}
-            onClose={onClose}
-            disableBackdrop={disableOverlay}
-            disableCloseByEscape={disableCloseByEscape}
-            zIndex={zIndex}
-            className={classNameComponents.Modal}
-        >
-            <Overlay
-                className={classNameComponents.Overlay}
-                disableEffects={disableEffects}
-                disableOverlay={disableOverlay}
-                open={display}
-                effectToggle={effectToggle}
-            />
-            <DialogAlignmentContainer
+        <PortalToBody {...portalProps}>
+            <DialogRoot
+                {...rootProps}
                 theme={theme}
-                className={classNameComponents.AlignmentContainer}
-                display={display}
-                disableCloseButton={disableCloseButton}
-                ref={containerRef}
-                onClick={onContainerClick}
-                scroll={scroll}
+                className={classNames.Root}
             >
-                <DialogRoot
-                    {...restProps}
+                {enableOverlay && (
+                    <Overlay {...overlayProps} className={classNames.Overlay} />
+                )}
+                <DialogAlignmentContainer
+                    {...alignmentContainerProps}
                     theme={theme}
-                    className={classNameComponents.Root}
-                    effectToggle={effectToggle}
-                    scroll={scroll}
-                    disableEffects={disableEffects}
+                    className={classNames.AlignmentContainer}
                 >
-                    {!disableCloseButton && (
-                        <DialogCloseButton
-                            className={classNameComponents.CloseButton}
-                            data-testid={dialogCloseButton}
-                            onClick={onCloseButtonClickInternal}
-                            tabIndex={-1}
-                            theme={theme}
-                        >
-                            <CancelIcon />
-                        </DialogCloseButton>
-                    )}
-                    <DialogContent
+                    <DialogWindow
+                        {...windowProps}
                         theme={theme}
-                        className={classNameComponents.Content}
+                        className={classNames.Window}
                     >
-                        {children}
-                    </DialogContent>
-                </DialogRoot>
-            </DialogAlignmentContainer>
-        </Modal>
+                        {enableCloseButton && (
+                            <DialogCloseButton
+                                {...getCloseButtonProps()}
+                                theme={theme}
+                                className={classNames.CloseButton}
+                            >
+                                <CancelIcon />
+                            </DialogCloseButton>
+                        )}
+                        <DialogContent
+                            {...contentProps}
+                            theme={theme}
+                            className={classNames.Content}
+                        >
+                            {children}
+                        </DialogContent>
+                    </DialogWindow>
+                </DialogAlignmentContainer>
+            </DialogRoot>
+        </PortalToBody>
     );
-};
+});
 
 Dialog.defaultProps = {
-    open: false,
     disableOverlay: false,
     disableEffects: false,
     disableCloseButton: false,

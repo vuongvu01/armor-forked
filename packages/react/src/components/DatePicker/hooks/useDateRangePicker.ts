@@ -44,6 +44,7 @@ export const useDateRangePicker = (
 
         arrowProps,
         dropdownProps,
+        portalProps,
         restProps: panelRestProps,
     } = useDatePickerPanel<DateValueRangeType>(restProps, ref);
 
@@ -124,6 +125,7 @@ export const useDateRangePicker = (
             enableFocusOnRootClick: true,
             onRootClick: toggleOpen,
         },
+        portalProps,
         dropdownProps,
         arrowProps,
         topBarProps: {

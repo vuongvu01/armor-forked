@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+import { color } from '../system';
 
 export const popperArrowPlacement = (arrowClassName: string) => css`
     &[data-popper-placement^='top'] > .${arrowClassName} {
@@ -18,6 +19,7 @@ export const popperArrow = () => css`
     align-items: center;
 
     &::before {
+        background-color: ${color('neutral.00')};
         width: 10px;
         height: 10px;
         content: '';

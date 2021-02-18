@@ -5,11 +5,13 @@ import {
     ComponentElementStylePropsType,
     ComponentStylePropsType,
 } from '../../type';
+import { PaddingAttributesType } from '../../../system';
 
 type DialogTitleEffectivePropsType = Indexed<{
     description?: ReactNode;
     // add other custom properties here
 }> &
+    PaddingAttributesType &
     HTMLAttributes<HTMLDivElement>; // includes all HTML Div attributes
 
 /* DialogTitle component prop type */

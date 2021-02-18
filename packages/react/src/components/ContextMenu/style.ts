@@ -1,16 +1,24 @@
 import styled, { css } from 'styled-components';
 import { ContextMenuRootPropsType, ContextMenuSubNodePropsType } from './type';
-import { makePropList, getPropsBlocker } from '../../utils';
+import { getPropsBlocker } from '../../utils';
 import { getComponentOverride } from '../../system/mixins/getComponentOverride';
-import { borderRadius, color, spacing, typography } from '../../system/mixins';
-import { sizeAttributes } from '../../system/attributes';
+import {
+    borderRadius,
+    color,
+    spacing,
+    typography,
+    sizeAttributes,
+    zIndex,
+} from '../../system';
+import { popperArrow, popperArrowPlacement } from '../../utils/popper';
 
 // all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
-const propertyList = makePropList(['displayMenuElements']);
+const propertyList = {
+    displayMenuElements: true,
+    zIndex: true,
+};
 
-const getRootDynamicStyle = ({
-    displayMenuElements,
-}: ContextMenuRootPropsType) => {
+const getRootStyle = ({ displayMenuElements }: ContextMenuRootPropsType) => {
     let result = {};
 
     if (displayMenuElements) {
@@ -33,20 +41,15 @@ export const ContextMenuRoot = styled.div.withConfig(
     text-align: left;
 
     ${typography('paragraphLarge')};
-    ${borderRadius('soft')};
+    border-radius: ${borderRadius('soft')};
     color: ${color('neutral.05')};
     background-color: ${color('neutral.00')};
 
     box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.12);
 
-    &[data-popper-placement^='top'] > .ContextMenu-Arrow {
-        bottom: -8px;
-    }
-    &[data-popper-placement^='bottom'] > .ContextMenu-Arrow {
-        top: -8px;
-    }
-
-    ${getRootDynamicStyle}
+    ${popperArrowPlacement('ContextMenu-Arrow')};
+    ${zIndex};
+    ${getRootStyle};
     ${getComponentOverride('ContextMenu')};
     ${sizeAttributes};
 `;
@@ -54,19 +57,5 @@ export const ContextMenuRoot = styled.div.withConfig(
 export const ContextMenuArrow = styled.div.withConfig(
     getPropsBlocker(propertyList),
 )<ContextMenuSubNodePropsType>`
-    height: 16px;
-    width: 16px;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    &::before {
-        background-color: ${color('neutral.00')};
-        width: 10px;
-        height: 10px;
-        content: '';
-        transform: rotate(45deg);
-        transform-origin: center;
-    }
+    ${popperArrow}
 `;

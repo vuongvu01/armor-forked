@@ -18,7 +18,6 @@ export * from './Indicator';
 export * from './MaterialIcon';
 export * from './Menu';
 export * from './Message';
-export * from './Modal';
 export * from './Overlay';
 export * from './Pack';
 export * from './Radio';
