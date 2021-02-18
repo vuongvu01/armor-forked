@@ -1,3 +1,11 @@
+# @deliveryhero/armor [1.32.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.31.1...@deliveryhero/armor@1.32.0) (2021-02-18)
+
+
+### Bug Fixes
+
+* **ssr:** Improve support for Server-side rendering [LD-402] ([#410](https://github.com/deliveryhero/armor/issues/410)) ([000c12b](https://github.com/deliveryhero/armor/commit/000c12b0bc9093f5016654cb55b7a04a1294a45e))
+* Z-index controller enabled for Tooltip, DatePicker, ContextMenu [LD-394] ([#404](https://github.com/deliveryhero/armor/issues/404)) ([4478c80](https://github.com/deliveryhero/armor/commit/4478c80bf8f123c4622bc0c55e46b147b8556b59))
+
 ## @deliveryhero/armor [1.31.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.31.0...@deliveryhero/armor@1.31.1) (2021-02-12)
 
 
