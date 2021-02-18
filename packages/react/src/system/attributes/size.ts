@@ -17,9 +17,9 @@ export type HeightAttributesType = {
 
 export type SizeAttributesType = WidthAttributesType & HeightAttributesType;
 
-type WidthPropertiesType = { theme: ThemeType } & WidthAttributesType;
-type HeightPropertiesType = { theme: ThemeType } & HeightAttributesType;
-type PropertiesType = { theme: ThemeType } & SizeAttributesType;
+type WidthPropsType = { theme: ThemeType } & WidthAttributesType;
+type HeightPropsType = { theme: ThemeType } & HeightAttributesType;
+type SizePropsType = { theme: ThemeType } & SizeAttributesType;
 
 export const widthAttributesList = {
     width: true,
@@ -63,7 +63,7 @@ export const widthAttributes = ({
     minWidth,
     maxWidth,
     wide,
-}: WidthPropertiesType) => `
+}: WidthPropsType) => `
     ${makeCSS(theme, 'width', width)}
     ${makeCSS(theme, 'min-width', minWidth)}
     ${makeCSS(theme, 'max-width', maxWidth)}
@@ -76,14 +76,38 @@ export const heightAttributes = ({
     minHeight,
     maxHeight,
     tall,
-}: HeightPropertiesType) => `
+}: HeightPropsType) => `
     ${makeCSS(theme, 'height', height)}
     ${makeCSS(theme, 'min-height', minHeight)}
     ${makeCSS(theme, 'max-height', maxHeight)}
     ${tall ? 'height: 100%;' : ''}
 `;
 
-export const sizeAttributes = (props: PropertiesType) => `
+export const sizeAttributes = (props: SizePropsType) => `
     ${widthAttributes(props)}
     ${heightAttributes(props)}
 `;
+
+export const extractSizeProps = ({
+    width,
+    minWidth,
+    maxWidth,
+    wide,
+    height,
+    minHeight,
+    maxHeight,
+    tall,
+    ...restSizeProps
+}: SizeAttributesType) => ({
+    restSizeProps,
+    sizeProps: {
+        width,
+        minWidth,
+        maxWidth,
+        wide,
+        height,
+        minHeight,
+        maxHeight,
+        tall,
+    },
+});

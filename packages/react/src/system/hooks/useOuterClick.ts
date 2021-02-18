@@ -31,5 +31,5 @@ export const useOuterClick = (
         return () => {
             document.removeEventListener('mousedown', onOuterClick);
         };
-    }, [enabled]);
+    }, [...scopeNodes, onClick, enabled]);
 };

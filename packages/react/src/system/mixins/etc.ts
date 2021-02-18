@@ -32,3 +32,10 @@ export const buttonReset = () => css`
     display: block;
     padding: 0;
 `;
+
+export const zIndex = ({ zIndex: zIndexValue }: { zIndex?: number }) =>
+    zIndex !== undefined
+        ? css`
+              z-index: ${zIndexValue};
+          `
+        : 0;

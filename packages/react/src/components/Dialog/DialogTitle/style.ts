@@ -9,6 +9,7 @@ import {
 } from './type';
 import { Typography } from '../../Typography';
 import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
+import { paddingAttributes } from '../../../system';
 
 const propertyList = {
     description: true,
@@ -20,8 +21,10 @@ export const DialogTitleRoot = styled.div.withConfig(
 )<DialogTitleRootPropsType>`
     box-sizing: border-box;
     flex: 0 0;
+    color: red;
     ${({ theme }: DialogTitleRootPropsType) =>
         theme.componentOverrides.DialogTitle.Root.base}
+    ${paddingAttributes};
 `;
 
 export const DialogTitleText = styled(Typography).withConfig(

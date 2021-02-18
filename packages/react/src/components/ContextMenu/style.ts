@@ -8,6 +8,7 @@ import {
     spacing,
     typography,
     sizeAttributes,
+    zIndex,
 } from '../../system';
 import { popperArrow, popperArrowPlacement } from '../../utils/popper';
 
@@ -17,13 +18,8 @@ const propertyList = {
     zIndex: true,
 };
 
-const getRootStyle = ({
-    displayMenuElements,
-    zIndex,
-}: ContextMenuRootPropsType) => {
-    let result = css`
-        z-index: ${zIndex};
-    ` as {};
+const getRootStyle = ({ displayMenuElements }: ContextMenuRootPropsType) => {
+    let result = {};
 
     if (displayMenuElements) {
         result = css`
@@ -52,6 +48,7 @@ export const ContextMenuRoot = styled.div.withConfig(
     box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.12);
 
     ${popperArrowPlacement('ContextMenu-Arrow')};
+    ${zIndex};
     ${getRootStyle};
     ${getComponentOverride('ContextMenu')};
     ${sizeAttributes};

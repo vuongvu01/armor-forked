@@ -13,6 +13,7 @@ import {
     reset,
     spacing,
     typography,
+    zIndex,
 } from '../../system';
 import { makePropList, getPropsBlocker } from '../../utils';
 import { getComponentOverride } from '../../system/mixins/getComponentOverride';
@@ -67,12 +68,6 @@ export const DatePickerInputIcon = styled(CalendarIcon)
     }
 `;
 
-const getZIndexStyle = ({
-    zIndex,
-}: Pick<DatePickerDropdownPropsType, 'zIndex'>) => css`
-    z-index: ${zIndex};
-`;
-
 export const DatePickerDropdown = styled.div.withConfig(
     getPropsBlocker(propertyList),
 )<DatePickerDropdownPropsType>`
@@ -81,7 +76,7 @@ export const DatePickerDropdown = styled.div.withConfig(
     color: ${color('neutral.05')};
     background-color: ${color('neutral.00')};
     min-width: ${spacing(84)};
-    ${getZIndexStyle};
+    ${zIndex};
 
     box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.12);
 `;

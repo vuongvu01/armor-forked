@@ -5,6 +5,7 @@ import { TooltipArrowPropsType, TooltipRootPropsType } from './type';
 import { transitionDurationInSec } from '../../constants';
 import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 import { popperArrow, popperArrowPlacement } from '../../utils/popper';
+import { zIndex } from '../../system';
 
 const propertyList = {
     align: true,
@@ -31,10 +32,7 @@ const getDynamicStyle = (
 };
 
 const getRootStyle = (props: TooltipRootPropsType) =>
-    css`
-        z-index: ${props.zIndex};
-        ${getDynamicStyle('Root', props)};
-    `;
+    getDynamicStyle('Root', props);
 
 const getArrowStyle = (props: TooltipArrowPropsType) =>
     getDynamicStyle('Arrow', props);
@@ -65,6 +63,7 @@ export const TooltipRoot = styled.div.withConfig(getPropsBlocker(propertyList))<
     ${popperArrowPlacement('Tooltip-Arrow')};
 
     ${({ theme }) => theme.componentOverrides.Tooltip.Root.base};
+    ${zIndex};
     ${getRootStyle};
     ${sizeStyle};
     ${getComponentOverride('Tooltip')};

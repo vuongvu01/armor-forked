@@ -1,129 +1,102 @@
-import React, { forwardRef, FunctionComponent } from 'react';
+import React, { forwardRef, FC } from 'react';
 import PropTypes from 'prop-types';
 
 import { useComponentTheme } from '../../utils/hooks';
-import {
-    extendChildrenWithProps,
-    extractContentSections,
-    useSideSheetClassName,
-} from './utils';
+import { useSideSheetClassName } from './utils';
 import { SideSheetPropsType } from './type';
 import { sideSheetDefaultTheme } from './theme';
-import { Modal } from '../Modal';
-import { useDisplay } from '../Modal/utils/useDisplay';
 import { Overlay } from '../Overlay';
 // @ts-ignore until the deprecated CloseIcon is removed and we rename Close to CloseIcon
 import { CloseIcon } from '../../icons';
 import {
-    iconStyle,
     SideSheetRoot,
+    SideSheetWindow,
     SideSheetContent,
     SideSheetHeaderCloseButtonContainer,
     SideSheetHeaderCloseButtonContent,
     SideSheetHeaderContainer,
 } from './style';
-import {
-    SIDE_SHEET_CLASS_PREFIX,
-    sideSheetContent,
-    sideSheetHeaderCloseButtonContainer,
-    sideSheetHeaderContainer,
-} from './constants';
+import { SIDE_SHEET_CLASS_PREFIX } from './constants';
+import { PortalToBody } from '../../system/util/PortalToBody';
+import { useSideSheet } from './utils/useSideSheet';
 
-export const SideSheet: FunctionComponent<SideSheetPropsType> = forwardRef(
-    function SideSheet(
-        {
-            children,
-            className,
-            disableEffects,
-            disableCloseByEscape,
-            disableOverlay,
-            isCloseButtonVisible,
-            isFixed,
-            onClose,
-            open,
-            wide,
-            zIndex,
-            ...restProps
-        },
+export const SideSheet: FC<SideSheetPropsType> = forwardRef(function SideSheet(
+    { className, disableOverlay, wide, ...props },
+    ref,
+) {
+    const theme = useComponentTheme(
+        SIDE_SHEET_CLASS_PREFIX,
+        sideSheetDefaultTheme,
+    );
+
+    const classOverride = useSideSheetClassName(
+        SIDE_SHEET_CLASS_PREFIX,
+        className,
+        disableOverlay,
+        wide,
+    );
+
+    const {
+        portalProps,
+        rootProps,
+        overlayProps,
+        windowProps,
+        contentProps,
+        headerContainerProps,
+        closeButtonContainerProps,
+        closeButtonContentProps,
+        closeButtonIconProps,
+        isCloseButtonVisible,
+        header,
+        body,
+        footer,
+    } = useSideSheet(
+        { classOverride, disableOverlay, wide, ...props },
         ref,
-    ) {
-        const theme = useComponentTheme(
-            SIDE_SHEET_CLASS_PREFIX,
-            sideSheetDefaultTheme,
-        );
-        const [display, effectToggle] = useDisplay(open);
+        theme,
+    );
 
-        const classOverride = useSideSheetClassName(
-            SIDE_SHEET_CLASS_PREFIX,
-            className,
-            disableOverlay,
-            wide,
-        );
-
-        const childrenWithExtendedProps = extendChildrenWithProps(children, {
-            classOverride,
-            isFixed,
-            theme,
-        });
-
-        const { header, body, footer } = extractContentSections(
-            childrenWithExtendedProps,
-        );
-
-        return (
-            <Modal
-                className={classOverride.Modal}
-                disableBackdrop={disableOverlay}
-                disableCloseByEscape={disableCloseByEscape}
-                onClose={onClose}
-                open={open}
-                zIndex={zIndex}
+    return (
+        <PortalToBody {...portalProps}>
+            <SideSheetRoot
+                {...rootProps}
+                className={classOverride.Root}
+                theme={theme}
             >
-                <Overlay
-                    className={classOverride.Overlay}
-                    disableEffects={disableEffects}
-                    disableOverlay={disableOverlay}
-                    open={display}
-                    effectToggle={effectToggle}
+                {!disableOverlay && (
+                    <Overlay
+                        {...overlayProps}
+                        className={classOverride.Overlay}
+                        theme={theme}
+                    />
+                )}
+                <SideSheetWindow
+                    {...windowProps}
+                    className={classOverride.Window}
                     theme={theme}
-                />
-                <SideSheetRoot
-                    {...restProps}
-                    className={classOverride.Root}
-                    disableEffects={disableEffects}
-                    display={display}
-                    effectToggle={effectToggle}
-                    ref={ref}
-                    theme={theme}
-                    wide={wide}
                 >
                     <SideSheetContent
+                        {...contentProps}
                         className={classOverride.Content}
-                        data-testid={sideSheetContent}
                         theme={theme}
                     >
                         <SideSheetHeaderContainer
+                            {...headerContainerProps}
                             className={classOverride.HeaderContainer}
-                            data-testid={sideSheetHeaderContainer}
                             theme={theme}
                         >
                             {header}
                             {isCloseButtonVisible ? (
                                 <SideSheetHeaderCloseButtonContainer
+                                    {...closeButtonContainerProps}
                                     className={classOverride.CloseIcon}
-                                    data-testid={
-                                        sideSheetHeaderCloseButtonContainer
-                                    }
                                     theme={theme}
                                 >
                                     <SideSheetHeaderCloseButtonContent
+                                        {...closeButtonContentProps}
                                         theme={theme}
                                     >
-                                        <CloseIcon
-                                            onClick={onClose}
-                                            style={iconStyle}
-                                            tabIndex={0}
-                                        />
+                                        <CloseIcon {...closeButtonIconProps} />
                                     </SideSheetHeaderCloseButtonContent>
                                 </SideSheetHeaderCloseButtonContainer>
                             ) : null}
@@ -131,11 +104,11 @@ export const SideSheet: FunctionComponent<SideSheetPropsType> = forwardRef(
                         {body}
                         {footer}
                     </SideSheetContent>
-                </SideSheetRoot>
-            </Modal>
-        );
-    },
-);
+                </SideSheetWindow>
+            </SideSheetRoot>
+        </PortalToBody>
+    );
+});
 
 SideSheet.displayName = SIDE_SHEET_CLASS_PREFIX;
 

@@ -12,6 +12,8 @@ import { LoremIpsum } from '../../../helpers/LoremIpsum';
 import { boke } from '../../../helpers/boke';
 import { TextInput } from '../../TextInput';
 import { withWrapper } from '../../../helpers/Wrapper';
+import { Tooltip } from '../../Tooltip';
+import { ContextMenu } from '../../ContextMenu';
 
 export default {
     title: 'Components/Dialog',
@@ -106,7 +108,9 @@ export const RedDawn = () => (
 );
 
 const UltraExpressiveDialog = styled(Dialog)`
-    background: url(${boke});
+    .Dialog-Window {
+        background: url(${boke});
+    }
 
     .DialogTitle-Text,
     .DialogTitle-Description {
@@ -231,13 +235,15 @@ const Modal = ({
     title = 'Foo',
     children = '',
     onClose,
+    className = '',
 }: {
     open: boolean;
     title?: string;
     children?: ReactNode;
     onClose: () => void;
+    className?: string;
 }) => (
-    <Dialog open={open} onClose={onClose}>
+    <Dialog open={open} onClose={onClose} className={className}>
         <DialogTitle description="Assign a new id to this location">
             {title}
         </DialogTitle>
@@ -253,15 +259,17 @@ export const OneOverAnother = () => {
         <>
             <Modal
                 open={openModalB}
-                title="Bar"
+                title="LEVEL2"
                 onClose={() => setOpenModalB(false)}
+                className="LEVEL2"
             >
                 <TextInput />I am a sub-modal!
             </Modal>
             <Modal
                 open={openModalA}
-                title="Foo"
+                title="LEVEL1"
                 onClose={() => setOpenModalA(false)}
+                className="LEVEL1"
             >
                 <TextInput />
                 This is one modal inside another.
@@ -322,6 +330,13 @@ export const ScrollData = () => {
                     <DialogContent>
                         <LoremIpsum />
                         <LoremIpsum />
+                        <ContextMenu
+                            trigger={<Button>Show context menu</Button>}
+                            menuElements={[
+                                { id: 'a', label: 'Menu element A' },
+                                { id: 'b', label: 'Menu element B' },
+                            ]}
+                        />
                     </DialogContent>
                     <DialogActions>
                         <Button tertiary>Cancel</Button>
@@ -457,7 +472,7 @@ export const DisableCloseByEscape = () => {
 };
 
 const BorderedDialog = styled(Dialog)`
-    .Dialog-Base {
+    .Dialog-Window {
         border-left: 1px solid red;
     }
 `;
@@ -478,6 +493,39 @@ export const BorderedDialogExample = () => {
                     <TextInput />
                 </DialogContent>
             </BorderedDialog>
+        </>
+    );
+};
+
+export const WithTooltip = () => {
+    const [open, setOpen] = useState(false);
+    const onClose = () => setOpen(false);
+
+    return (
+        <>
+            <Dialog
+                open={open}
+                onClose={onClose}
+                maxWidth={text('Max width', 'sm')}
+                wide={boolean('Wide', false)}
+            >
+                <DialogContent>
+                    <Tooltip trigger={<Button>Show tooltip</Button>}>
+                        Tooltip!
+                    </Tooltip>
+                    <ContextMenu
+                        trigger={<Button>Show context menu</Button>}
+                        menuElements={[
+                            { id: 'a', label: 'Menu element A' },
+                            { id: 'b', label: 'Menu element B' },
+                        ]}
+                    />
+                </DialogContent>
+            </Dialog>
+
+            <LoremIpsum>
+                <Button onClick={() => setOpen(true)}>Open modal!</Button>
+            </LoremIpsum>
         </>
     );
 };

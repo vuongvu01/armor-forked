@@ -33,7 +33,8 @@ export type TooltipPropsType = TooltipEffectivePropsType &
     ComponentStylePropsType;
 
 /* Tooltip Root node prop type */
-export type TooltipRootPropsType = TooltipEffectivePropsType & {} & ComponentElementStylePropsType;
+export type TooltipRootPropsType = TooltipEffectivePropsType &
+    ComponentElementStylePropsType;
 
 /* Tooltip Arrow node prop type */
 export type TooltipArrowPropsType = Partial<{

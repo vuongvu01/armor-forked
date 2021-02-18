@@ -41,8 +41,8 @@ const useSideSheetClassName = (
                 }),
                 className,
             ),
-            Modal: sideSheetClassGeneratorBasedOnComponent({
-                component: 'Modal',
+            Window: sideSheetClassGeneratorBasedOnComponent({
+                component: 'Window',
                 classPrefix,
                 disableOverlay,
                 wide,
