@@ -21,6 +21,12 @@ const propertyList = makePropList([
     'type',
     'hasLabel',
     'smallVerticalPadding',
+    'small',
+]);
+
+const propertyListTagTypography = makePropList([
+    'deleteOption',
+    'smallVerticalPadding',
 ]);
 
 const containerStyle = ({
@@ -188,7 +194,7 @@ export const TagRoot = styled.div.withConfig(getPropsBlocker(propertyList))<
 `;
 
 export const TagTypography = styled(Typography).withConfig(
-    getPropsBlocker(propertyList, false),
+    getPropsBlocker(propertyListTagTypography, false),
 )<TagTypographyPropsType>`
     ${typographyStyle}
 `;

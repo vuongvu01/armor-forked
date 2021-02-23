@@ -10,7 +10,11 @@ import { TextInput } from '../../TextInput';
 import { Button } from '../../Button';
 import { Box } from '../../Box';
 import { Typography } from '../../Typography';
-import { DropdownSelectedOptionType, OptionItemType } from '../type';
+import {
+    DropdownOnChangeEventType,
+    DropdownSelectedOptionType,
+    OptionItemType,
+} from '../type';
 import { withWrapper } from '../../../helpers/Wrapper';
 import { Card } from '../../Card';
 import { Pack, PackItem } from '../../Pack';
@@ -858,14 +862,14 @@ export const ControlledOpenState = () => {
     );
 };
 
-export const ReFeedingOfOptionsList = () => {
+export const DynamicOptionsList = () => {
     const [selectedOption, setSelectedOption] = useState();
     const handleSelect = (option: any) => {
         console.log('story handleSelect', { option });
         setSelectedOption(option);
     };
 
-    const [options, setOptions] = useState<string[]>([]);
+    const [options, setOptions] = useState<string[]>(foodOptionsString);
 
     const handleOnClick = async () => {
         const results = await fetch(
@@ -889,6 +893,45 @@ export const ReFeedingOfOptionsList = () => {
             <Typography paragraph>
                 Selected value: {JSON.stringify(selectedOption)}
             </Typography>
+        </>
+    );
+};
+
+export const DynamicOptionsListMultiple = () => {
+    const [options, setOptions] = useState<any[]>(foodOptionsString);
+
+    const handleChange = (changeEvent: DropdownOnChangeEventType) => {
+        console.log('handleChange', changeEvent.target.value);
+    };
+
+    const handleOnClick = async () => {
+        const results = await fetch(
+            `${
+                Math.ceil(Math.random() * 100) % 2 === 1
+                    ? 'https://jsonplaceholder.typicode.com/posts'
+                    : 'https://jsonplaceholder.typicode.com/albums'
+            }`,
+        ).then(response => response.json());
+
+        console.log({ results });
+
+        setOptions(results.map((item: any) => item.title));
+    };
+
+    return (
+        <>
+            <Dropdown
+                multiple
+                enableSearchOption
+                enableSelectAllOption
+                openTagsCount={3}
+                onChange={handleChange}
+                label="Test label" // //translation('categoryFilter.dropDownLabel')
+                options={options}
+            />
+            <Button marginY={4} onClick={handleOnClick}>
+                Update options
+            </Button>
         </>
     );
 };

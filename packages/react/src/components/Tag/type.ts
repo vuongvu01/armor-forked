@@ -32,6 +32,7 @@ export type ClassBasedOnComponentType = {
     isActive?: boolean;
     onClose?: (event: MouseEvent<HTMLDivElement>) => void;
     type?: TagType;
+    small?: boolean;
 };
 
 type TagEffectivePropsType = Indexed<{

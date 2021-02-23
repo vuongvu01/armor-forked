@@ -34,8 +34,17 @@ describe('<Tag />', () => {
 
         const header = screen.getByText(label);
         expect(header).toBeInstanceOf(HTMLParagraphElement);
+        expect(header).toHaveClass('Typography-Root--paragraph');
+    });
+
+    it('should ensure that small tag type class is set', () => {
+        const label = 'Sample';
+        render(<Tag label={label} small />);
+
+        const header = screen.getByText(label);
+        expect(header).toBeInstanceOf(HTMLParagraphElement);
         expect(header).toHaveClass(
-            'Typography-Root--paragraph Typography-Root--small',
+            'Typography-Root--paragraph Tag-Label--small',
         );
     });
 

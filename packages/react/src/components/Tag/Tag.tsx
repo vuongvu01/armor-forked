@@ -28,6 +28,7 @@ export const Tag: FunctionComponent<TagPropsType> = forwardRef(function Tag(
         deleteOption,
         type,
         disabled,
+        small,
     } = useTag(restProps, ref);
 
     const classOverride = useTagClassName(
@@ -35,6 +36,7 @@ export const Tag: FunctionComponent<TagPropsType> = forwardRef(function Tag(
         className,
         deleteOption,
         type,
+        small,
     );
 
     return (

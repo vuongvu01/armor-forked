@@ -13,7 +13,6 @@ export const Overlay = styled.div.withConfig(getPropsBlocker(propertyList))<
 >`
     ${fixedCover};
     z-index: inherit;
-    pointer-events: none;
     ${({ display, effectToggle, disableEffects }: OverlayRootPropsType) => css`
         opacity: ${effectToggle ? 1 : 0};
         display: ${display ? 'initial' : 'none'};

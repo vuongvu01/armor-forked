@@ -5,8 +5,6 @@ import {
 } from '../../Dropdown/type';
 import { DropdownOnSearchQueryChangeType } from '../type';
 
-// const findMatches = (query?: string) =>
-
 export const useOnSearchQueryChange = (
     internalValue: DropdownInternalValueType,
     internalOptions: DropdownInternalOptionType,
@@ -36,5 +34,5 @@ export const useOnSearchQueryChange = (
 
             return setInternalOptions(matchingOptions);
         },
-        [setInternalValue, internalOptions, internalValue],
+        [setInternalValue, internalOptions, internalValue, defaultSearchQuery],
     );

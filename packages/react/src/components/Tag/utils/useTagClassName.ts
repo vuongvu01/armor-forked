@@ -13,6 +13,7 @@ const getClassNameByComponent = ({
     classPrefix,
     deleteOption,
     type,
+    small,
 }: ClassBasedOnComponentType) => {
     const baseClassNames = makeBEM(classPrefix, component);
 
@@ -20,6 +21,10 @@ const getClassNameByComponent = ({
 
     if (type) {
         stateClassNames.push(makeBEM(classPrefix, component, type));
+    }
+
+    if (small) {
+        stateClassNames.push(makeBEM(classPrefix, component, 'small'));
     }
 
     if (deleteOption && !isStatusTag(type)) {
@@ -35,6 +40,7 @@ const useTagClassName = (
     className?: string,
     deleteOption?: TagDeleteIconModeType,
     type?: TagType,
+    small?: boolean,
 ) =>
     useMemo(() => {
         return {
@@ -44,6 +50,7 @@ const useTagClassName = (
                     classPrefix,
                     deleteOption,
                     type,
+                    small,
                 }),
                 className,
             ),
@@ -53,6 +60,7 @@ const useTagClassName = (
                     classPrefix,
                     deleteOption,
                     type,
+                    small,
                 }),
                 className,
             ),
@@ -61,12 +69,14 @@ const useTagClassName = (
                 classPrefix,
                 deleteOption,
                 type,
+                small,
             }),
             CloseIcon: getClassNameByComponent({
                 component: 'CloseIcon',
                 classPrefix,
                 deleteOption,
                 type,
+                small,
             }),
         };
     }, [classPrefix, className, type, deleteOption]);

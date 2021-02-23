@@ -84,7 +84,7 @@ export const useOptionList = ({
         onChange,
     );
 
-    useEffect(() => onSearchChange(), []);
+    useEffect(() => onSearchChange(), [searchQuery]);
 
     const handleToggleAll = () => onToggleAll();
 
@@ -93,7 +93,6 @@ export const useOptionList = ({
             const newSearchQuery = event.target.value || '';
 
             setSearchQuery(newSearchQuery);
-            onSearchChange(newSearchQuery);
         },
         [setSearchQuery, setSearchQuery],
     );

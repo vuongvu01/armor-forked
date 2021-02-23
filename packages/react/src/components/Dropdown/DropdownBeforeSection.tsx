@@ -70,7 +70,6 @@ export const DropdownBeforeSection: FunctionComponent<DropdownBeforeSectionProps
                         )}
                         className={classOverride.DropdownTagRemainingItems}
                         theme={theme}
-                        small
                     />
                 );
 

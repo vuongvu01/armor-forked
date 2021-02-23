@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useRef } from 'react';
+import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { DropdownInternalOptionType, DropdownPropsType } from '../type';
 import {
     noop,
@@ -13,6 +13,7 @@ import {
 import { ReferenceType } from '../../../type';
 import { useControlledState } from '../../../system/hooks/useControlledState';
 import { useGuidedState } from '../../../system/hooks/useGuidedState';
+import { useOnOptionListUpdate } from './useOnOptionListUpdate';
 
 export const useDropdown = (
     {
@@ -66,6 +67,12 @@ export const useDropdown = (
     const [dynamicInternalOptions, setDynamicInternalOptions] = useGuidedState<
         DropdownInternalOptionType
     >(() => internalOptions, [internalOptions]);
+
+    useOnOptionListUpdate(
+        internalOptions,
+        dynamicInternalOptions,
+        setInternalValue,
+    );
 
     const onValueUpdate = useOnValueUpdate(
         setInternalValue,
@@ -169,7 +176,6 @@ export const useDropdown = (
             internalOptions,
             dynamicInternalOptions,
             setInternalOptions: setDynamicInternalOptions,
-            ref: internalInputRef,
             enableSelectAllOption,
             selectAllLabel,
             enableSearchOption,

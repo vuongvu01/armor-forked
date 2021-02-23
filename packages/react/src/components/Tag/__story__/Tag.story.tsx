@@ -5,6 +5,7 @@ import { withKnobs } from '@storybook/addon-knobs';
 import { GroupHelper } from '../../../helpers/GroupHelper';
 import { Tag } from '../Tag';
 import { withWrapper } from '../../../helpers/Wrapper';
+import { styled, Tooltip } from '../../../index';
 
 export default {
     title: 'Components/Tag',
@@ -129,5 +130,62 @@ export const Squeeze = () => {
                 <Tag type="approved">Approved Approved Approved Approved</Tag>
             </div>
         </>
+    );
+};
+
+const background = {
+    Approved: '#44c293',
+    Rejected: '#f44336',
+};
+
+const StyledTag = styled(Tag)`
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: #fafafa;
+    & p {
+        margin: auto 8px;
+    }
+`;
+const StyledSection = styled.section`
+    height: 48px;
+    margin: -8px 0;
+    display: flex;
+    padding: 0 8px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    align-items: center;
+    &::-webkit-scrollbar {
+        -webkit-appearance: none;
+        width: 0;
+        height: 0;
+        background: transparent;
+    }
+`;
+
+export const StatusIndicatorComponent = () => {
+    return (
+        <StyledSection>
+            <Tag type="approved" label="Approved" />
+            <Tag type="denied" label="Denied" />
+            {Object.keys(background).map((status: any) => (
+                <Tooltip
+                    small
+                    key={status}
+                    data-test="status-tooltip"
+                    content={`Tier 0 - paid: ${status}`}
+                >
+                    <StyledTag
+                        label={`T0 - De-centralized Onboarding`}
+                        // @ts-ignore
+                        style={{ borderColor: background[status] }}
+                        deleteOption="disabled"
+                        data-test="status-tag"
+                    />
+                </Tooltip>
+            ))}
+        </StyledSection>
     );
 };

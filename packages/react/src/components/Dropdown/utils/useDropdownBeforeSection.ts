@@ -143,6 +143,7 @@ export const useDropdownBeforeSection = (
                 tagLabelMaxLength,
             ),
             onClose: handleRemoveTag(option),
+            key: option.value,
         }),
         getDropdownRemainingTagsProps: (
             remainingItemsCount: number,
@@ -161,6 +162,7 @@ export const useDropdownBeforeSection = (
         },
         dropdownTagsProps: {
             disabled,
+            key: 'expanded_tags',
         },
         disabled,
         isBeforeSectionRendered: multiple && !onRenderSelectedValue,
