@@ -1,7 +1,6 @@
 import { MouseEvent, useCallback } from 'react';
 import { TagPropsType } from '../type';
 import { getStatusTagLabel, isStatusTag } from './index';
-import { noop } from '../../../utils';
 import { tagCloseIconContainer, tagRoot } from '../constants';
 import { ReferenceType } from '../../../type';
 
@@ -74,5 +73,6 @@ export const useTag = (
         type,
         content,
         onCloseButtonClick,
+        small,
     };
 };

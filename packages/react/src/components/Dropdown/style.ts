@@ -8,7 +8,7 @@ import {
     ExpansionIndicatorContainerPropsType,
 } from './type';
 import { ExpansionIndicator } from '../ExpansionIndicator';
-import { borderRadius, color, spacing } from '../../system/mixins';
+import { color, spacing } from '../../system/mixins';
 import { TextInput } from '../TextInput';
 import { TextInputPropsType } from '../TextInput/type';
 import { getComponentOverride } from '../../system/mixins/getComponentOverride';
@@ -213,9 +213,9 @@ const dropdownTagStyle = ({ disabled }: DropdownTagsSectionPropsType) => {
     `;
 };
 
-export const DropdownTag = styled(Tag).withConfig(
-    getPropsBlocker(propertyList),
-)<DropdownTagsSectionPropsType>`
+export const DropdownTag = styled(Tag)
+    .attrs({ small: true })
+    .withConfig(getPropsBlocker(propertyList))<DropdownTagsSectionPropsType>`
     margin-top: ${spacing(1)};
     margin-right: ${spacing(2)};
     margin-bottom: ${spacing(1)};
