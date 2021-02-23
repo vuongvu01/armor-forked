@@ -1,3 +1,10 @@
+## @deliveryhero/armor [1.32.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.32.0...@deliveryhero/armor@1.32.1) (2021-02-23)
+
+
+### Bug Fixes
+
+* **overlay:** Overlay CSS fixes [LD-394] ([#416](https://github.com/deliveryhero/armor/issues/416)) ([6abd750](https://github.com/deliveryhero/armor/commit/6abd750cc135cbd1f6a225419f18740187590018))
+
 # @deliveryhero/armor [1.32.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.31.1...@deliveryhero/armor@1.32.0) (2021-02-18)
 
 
