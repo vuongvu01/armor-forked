@@ -1,9 +1,11 @@
 import React, { FunctionComponent } from 'react';
 
-import { OptionListItem as OptionListItemRoot } from './style';
+import {
+    OptionListItem as OptionListItemRoot,
+    OptionListItemTypography,
+} from './style';
 import { OptionListItemPropsType } from './type';
 import { Checkbox } from '../Checkbox';
-import { Typography } from '../Typography';
 import { useOptionListItem } from './utils/useOptionListItem';
 import { OPTION_LIST_ITEM_CLASS_PREFIX } from './constants';
 import { useOptionListItemClassName } from './utils/useOptionListItemClassName';
@@ -41,13 +43,13 @@ export const OptionListItem: FunctionComponent<OptionListItemPropsType> = ({
                     className={classOverride.Checkbox}
                 />
             )}
-            <Typography
+            <OptionListItemTypography
                 {...typographyProps}
                 theme={theme}
                 className={classOverride.Typography}
             >
                 {label}
-            </Typography>
+            </OptionListItemTypography>
         </OptionListItemRoot>
     );
 };

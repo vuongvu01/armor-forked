@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 
 import {
     Box,
@@ -73,7 +74,7 @@ export const MinimumConfiguration = () => (
 );
 
 export const MinimumConfigurationConstrainedByParent = () => (
-    <Box padding={3} style={{ flexDirection: 'column', width: '300px' }}>
+    <Box padding={3} style={{ flexDirection: 'column', width: '200px' }}>
         <Dropdown
             options={['Biryani', 'Tacos', 'Pho', 'Risotto']}
             label="Dish type"
@@ -126,7 +127,7 @@ export const PreSelectedMultipleValues = () => (
 );
 
 export const PreSelectedMultipleValuesConstrainedByParent = () => (
-    <Box padding={3} style={{ flexDirection: 'column', width: '300px' }}>
+    <Box padding={3} style={{ flexDirection: 'column', width: '200px' }}>
         <Dropdown
             options={foodOptionsString}
             defaultValue={[3, 6]}
@@ -159,23 +160,13 @@ export const DisabledStateWithMultiplePreSelected = () => {
     const [isDisabled] = useState(true);
 
     return (
-        <>
-            <p>
-                Provide user feedback in case of an invalid or incomplete
-                selection
-            </p>
-            <GroupHelper gap={2}>
-                <Dropdown
-                    disabled={true}
-                    label={`${
-                        isDisabled ? 'Disabled' : 'Enabled'
-                    } with pre-selected`}
-                    options={options}
-                    defaultValue={initialSelectionIndex}
-                    multiple
-                />
-            </GroupHelper>
-        </>
+        <Dropdown
+            disabled={true}
+            label={`${isDisabled ? 'Disabled' : 'Enabled'} with pre-selected`}
+            options={options}
+            defaultValue={initialSelectionIndex}
+            multiple
+        />
     );
 };
 
@@ -185,28 +176,17 @@ export const DisabledStateWithMultiplePreSelectedConstrainedByParent = () => {
     const [isDisabled] = useState(true);
 
     return (
-        <>
-            <p>
-                Provide user feedback in case of an invalid or incomplete
-                selection
-            </p>
-            <GroupHelper gap={2}>
-                <Box
-                    padding={3}
-                    style={{ flexDirection: 'column', width: '300px' }}
-                >
-                    <Dropdown
-                        disabled={true}
-                        label={`${
-                            isDisabled ? 'Disabled' : 'Enabled'
-                        } with pre-selected`}
-                        options={options}
-                        defaultValue={initialSelectionIndex}
-                        multiple
-                    />
-                </Box>
-            </GroupHelper>
-        </>
+        <Box padding={3} style={{ flexDirection: 'column', width: '200px' }}>
+            <Dropdown
+                disabled={true}
+                label={`${
+                    isDisabled ? 'Disabled' : 'Enabled'
+                } with pre-selected`}
+                options={options}
+                defaultValue={initialSelectionIndex}
+                multiple
+            />
+        </Box>
     );
 };
 
@@ -274,18 +254,16 @@ export const CustomOptionFormatMultipleExpandedListWithSelectAllAndSearch = () =
     };
 
     return (
-        <Box padding={3} style={{ flexDirection: 'column', width: '400px' }}>
-            <Dropdown
-                multiple
-                options={foodOptions}
-                label="Dish type"
-                defaultValue={[2, 3]}
-                formatOption={formatOption}
-                isListExpanded={true}
-                enableSelectAllOption
-                enableSearchOption
-            />
-        </Box>
+        <Dropdown
+            multiple
+            options={foodOptions}
+            label="Dish type"
+            defaultValue={[2, 3]}
+            formatOption={formatOption}
+            isListExpanded={true}
+            enableSelectAllOption
+            enableSearchOption
+        />
     );
 };
 
@@ -460,7 +438,7 @@ export const MultipleWithSpecifiedNumberOfOpenTagsAndCustomAggregatedTagsCountLa
     return (
         <Pack>
             <PackItem>
-                <Box padding={3} style={{ width: '400px' }}>
+                <Box padding={3}>
                     <Dropdown
                         options={foodOptionsString}
                         defaultValue={initialSelectionIndex}
@@ -519,7 +497,7 @@ export const MultipleWithSpecifiedNumberOfOpenTagsPluralCase = () => {
     return (
         <Pack>
             <PackItem>
-                <Box padding={3} style={{ width: '400px' }}>
+                <Box padding={3}>
                     <Dropdown
                         options={foodOptionsString}
                         defaultValue={initialSelectionIndex}
@@ -547,3 +525,39 @@ export const MultipleWithSpecifiedNumberOfOpenTagsPluralCase = () => {
         </Pack>
     );
 };
+
+export const FullWidthSingle = () => (
+    <Dropdown
+        options={foodOptionsString}
+        onSelect={() => {}}
+        defaultValue={1}
+        label="Dish type"
+        wide
+    />
+);
+
+export const FullWidthMultiple = () => (
+    <Dropdown
+        options={foodOptionsString}
+        onSelect={() => {}}
+        defaultValue={[1, 2, 3]}
+        label="Dish type"
+        enableSearchOption
+        enableSelectAllOption
+        multiple
+        wide
+    />
+);
+
+export const CustomWidthMultiple = () => (
+    <Dropdown
+        options={foodOptionsString}
+        onSelect={() => {}}
+        defaultValue={[1, 2, 3]}
+        label="Dish type"
+        enableSearchOption
+        enableSelectAllOption
+        multiple
+        width={200}
+    />
+);
