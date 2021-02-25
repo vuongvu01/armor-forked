@@ -66,3 +66,7 @@ export type DatePickerTopBarMonthNavigationButtonForwardPropsType = {
 export type DatePickerTopBarMonthYearSelectorTogglePropsType = {
     open: boolean;
 } & ComponentElementStylePropsType;
+
+export type DatePickerTopBarMonthYearSelectorToggleArrowPropsType = {
+    open: boolean;
+} & ComponentElementStylePropsType;

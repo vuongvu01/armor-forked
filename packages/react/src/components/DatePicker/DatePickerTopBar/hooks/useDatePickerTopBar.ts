@@ -35,6 +35,11 @@ export const useDatePickerTopBar = (
             onClick: onMonthYearToggleClick,
         },
 
+        monthYearSelectorToggleArrowProps: {
+            small: true,
+            open: monthYearSelectorOpen,
+        },
+
         monthNavigationButtonBackwardProps: {
             disabled: monthYearSelectorOpen,
             onClick: onPreviousMonthClick,
