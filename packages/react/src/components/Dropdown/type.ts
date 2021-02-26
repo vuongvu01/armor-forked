@@ -91,6 +91,10 @@ export type DropdownTagsPropsType = Indexed<{
 
 export type DropdownEffectivePropsType = Indexed<{
     error?: boolean;
+    /**
+     * @deprecated
+     * inline by default
+     */
     inline?: boolean;
     displaySeparator?: boolean;
     isListExpanded?: boolean;

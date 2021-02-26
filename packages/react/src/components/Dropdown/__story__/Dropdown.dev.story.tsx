@@ -1,6 +1,7 @@
 /* eslint-disable no-console,import/no-unresolved */
 
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 import { withKnobs } from '@storybook/addon-knobs';
 
 import { GroupHelper } from '../../../helpers/GroupHelper';
@@ -16,7 +17,6 @@ import {
     OptionItemType,
 } from '../type';
 import { withWrapper } from '../../../helpers/Wrapper';
-import { Card } from '../../Card';
 import { Pack, PackItem } from '../../Pack';
 
 export default {
@@ -173,18 +173,12 @@ export const CustomOptionItemsFormat = () => {
 export const Inline = () => {
     return (
         <>
-            <Dropdown
-                margin={1}
-                options={foodOptions}
-                label="Single option"
-                inline
-            />
+            <Dropdown margin={1} options={foodOptions} label="Single option" />
 
             <Dropdown
                 margin={1}
                 options={foodOptions}
                 label="Multiple options"
-                inline
                 multiple
                 maxWidth="400px"
                 enableSelectAllOption
@@ -227,6 +221,65 @@ export const UncontrolledWithSearch = () => {
                     </Typography>
                 </Box>
             </GroupHelper>
+        </>
+    );
+};
+
+const FullWidthDropdown = styled(Dropdown)`
+    width: 100%;
+`;
+
+export const FullWidth = () => {
+    const initialSelectionIndex = 1;
+    const initialSelectionMultiple = [1, 2, 3];
+    const [selectedOption, setSelectedOption] = useState(
+        foodOptionsString[initialSelectionIndex],
+    );
+    const handleSelect = (option: any) => {
+        setSelectedOption(option);
+    };
+    const [selectedItemIndex, setSelectedItemIndex] = useState<number[]>(
+        initialSelectionMultiple,
+    );
+    const selectedFoodOptions = selectedItemIndex.map(
+        index => foodOptionsString[index],
+    );
+    const [selectedOptions, setSelectedOptions] = useState<
+        DropdownSelectedOptionType[]
+    >(selectedFoodOptions);
+
+    return (
+        <>
+            <FullWidthDropdown
+                options={foodOptionsString}
+                onSelect={handleSelect}
+                defaultValue={initialSelectionIndex}
+                label="Dish type"
+            />
+            <Typography paragraph>
+                Selected value: {JSON.stringify(selectedOption)}
+            </Typography>
+            <br />
+            <br />
+            <FullWidthDropdown
+                options={foodOptionsString}
+                onSelect={handleSelect}
+                defaultValue={initialSelectionMultiple}
+                label="Dish type"
+                enableSearchOption
+                enableSelectAllOption
+                multiple
+            />
+            <Box marginTop={4}>
+                <Typography label small>
+                    Selected options:
+                </Typography>
+                <Typography>{selectedOptions.join(', ')}</Typography>
+                <Typography label small>
+                    Selected option indices:
+                </Typography>
+                <Typography>[{selectedItemIndex.join(', ')}]</Typography>
+            </Box>
         </>
     );
 };
@@ -348,67 +401,67 @@ export const MultipleWithSpecifiedNumberOfOpenTagsAndCustomAggregatedTagsCountLa
     );
 };
 
-export const MultipleWithSpecifiedNumberOfOpenTagsAndAutomatedAggregatedTagsCountLabel = () => {
-    const initialSelectionIndex: number[] = [];
-
-    const [selectedItemIndex, setSelectedItemIndex] = useState<number[]>(
-        initialSelectionIndex,
-    );
-    const selectedFoodOptions = selectedItemIndex.map(
-        index => foodOptionsString[index],
-    );
-    const [selectedOptions, setSelectedOptions] = useState<
-        DropdownSelectedOptionType[]
-    >(selectedFoodOptions);
-
-    const handleOnChange = (event: any) => {
-        const selectedIndices = event.target.value;
-
-        const nextFoodOptions = selectedIndices.map(
-            (index: number) => foodOptionsString[index],
-        );
-
-        setSelectedItemIndex(selectedIndices);
-        setSelectedOptions(nextFoodOptions);
-    };
-
-    const handleRenderAggregatedTagsLabel = (aggregatedTagsCount: number) =>
-        `+ ${aggregatedTagsCount} more`;
-
-    return (
-        <Pack>
-            <PackItem>
-                <Box padding={3} style={{ width: '400px' }}>
-                    <Dropdown
-                        options={foodOptionsString}
-                        defaultValue={initialSelectionIndex}
-                        onChange={handleOnChange}
-                        label="Dish type"
-                        renderAggregatedTagsLabel={
-                            handleRenderAggregatedTagsLabel
-                        }
-                        multiple
-                        enableSelectAllOption
-                        enableSearchOption
-                        singleLine
-                    />
-                </Box>
-            </PackItem>
-            <PackItem>
-                <Box marginLeft={4}>
-                    <Typography label small>
-                        Selected options:
-                    </Typography>
-                    <Typography>{selectedOptions.join(', ')}</Typography>
-                    <Typography label small>
-                        Selected option indices:
-                    </Typography>
-                    <Typography>[{selectedItemIndex.join(', ')}]</Typography>
-                </Box>
-            </PackItem>
-        </Pack>
-    );
-};
+// export const MultipleWithSpecifiedNumberOfOpenTagsAndAutomatedAggregatedTagsCountLabel = () => {
+//     const initialSelectionIndex: number[] = [];
+//
+//     const [selectedItemIndex, setSelectedItemIndex] = useState<number[]>(
+//         initialSelectionIndex,
+//     );
+//     const selectedFoodOptions = selectedItemIndex.map(
+//         index => foodOptionsString[index],
+//     );
+//     const [selectedOptions, setSelectedOptions] = useState<
+//         DropdownSelectedOptionType[]
+//     >(selectedFoodOptions);
+//
+//     const handleOnChange = (event: any) => {
+//         const selectedIndices = event.target.value;
+//
+//         const nextFoodOptions = selectedIndices.map(
+//             (index: number) => foodOptionsString[index],
+//         );
+//
+//         setSelectedItemIndex(selectedIndices);
+//         setSelectedOptions(nextFoodOptions);
+//     };
+//
+//     const handleRenderAggregatedTagsLabel = (aggregatedTagsCount: number) =>
+//         `+ ${aggregatedTagsCount} more`;
+//
+//     return (
+//         <Pack>
+//             <PackItem>
+//                 <Box padding={3} style={{ width: '400px' }}>
+//                     <Dropdown
+//                         options={foodOptionsString}
+//                         defaultValue={initialSelectionIndex}
+//                         onChange={handleOnChange}
+//                         label="Dish type"
+//                         renderAggregatedTagsLabel={
+//                             handleRenderAggregatedTagsLabel
+//                         }
+//                         multiple
+//                         enableSelectAllOption
+//                         enableSearchOption
+//                         singleLine
+//                     />
+//                 </Box>
+//             </PackItem>
+//             <PackItem>
+//                 <Box marginLeft={4}>
+//                     <Typography label small>
+//                         Selected options:
+//                     </Typography>
+//                     <Typography>{selectedOptions.join(', ')}</Typography>
+//                     <Typography label small>
+//                         Selected option indices:
+//                     </Typography>
+//                     <Typography>[{selectedItemIndex.join(', ')}]</Typography>
+//                 </Box>
+//             </PackItem>
+//         </Pack>
+//     );
+// };
 
 export const ErrorAndDisabledStatePropagation = () => {
     const initialSelectionIndex = 2;
@@ -887,9 +940,11 @@ export const DynamicOptionsList = () => {
                 onSelect={handleSelect}
                 label="Dish type"
             />
+            <br />
             <Button marginY={4} onClick={handleOnClick}>
                 Update options
             </Button>
+            <br />
             <Typography paragraph>
                 Selected value: {JSON.stringify(selectedOption)}
             </Typography>
@@ -929,6 +984,7 @@ export const DynamicOptionsListMultiple = () => {
                 label="Test label" // //translation('categoryFilter.dropDownLabel')
                 options={options}
             />
+            <br />
             <Button marginY={4} onClick={handleOnClick}>
                 Update options
             </Button>

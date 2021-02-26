@@ -32,6 +32,14 @@ export const Basic = () => {
     );
 };
 
+export const OtherLabel = () => {
+    return (
+        <Box paddingTop={20} paddingLeft={50}>
+            <DatePicker label="Moooooo" />
+        </Box>
+    );
+};
+
 export const AllOfThem = () => {
     return (
         <>
@@ -45,5 +53,21 @@ export const AllOfThem = () => {
                 <DatePicker /> <Dropdown /> <TextInput /> <Search />
             </Box>
         </>
+    );
+};
+
+export const Disabled = () => {
+    return (
+        <Box paddingTop={20} paddingLeft={50}>
+            <DatePicker label="Disabled" disabled />
+        </Box>
+    );
+};
+
+export const ReadOnly = () => {
+    return (
+        <Box paddingTop={20} paddingLeft={50}>
+            <DatePicker label="Readonly" readOnly />
+        </Box>
     );
 };

@@ -8,7 +8,6 @@
  */
 
 import React, { useRef } from 'react';
-import { ThemeProvider } from 'styled-components';
 
 import {
     // fireEvent,
@@ -22,10 +21,9 @@ import {
     renderHook,
     cleanup as cleanupHooks,
 } from '@testing-library/react-hooks';
-import renderer from 'react-test-renderer';
+// import renderer from 'react-test-renderer';
 // import userEvent from '@testing-library/user-event';
 
-import { customTheme } from './helpers';
 import { MenuElement } from '..';
 
 describe('<MenuElement />', () => {
@@ -57,23 +55,10 @@ describe('<MenuElement />', () => {
     });
 
     it('should support custom theme', () => {
-        let tree = renderer
-            .create(<MenuElement>With custom theme</MenuElement>)
-            .toJSON();
-
-        // @ts-ignore
-        expect(tree).not.toHaveStyleRule('border-width', '2px');
-
-        tree = renderer
-            .create(
-                <ThemeProvider theme={customTheme}>
-                    <MenuElement>With custom theme</MenuElement>
-                </ThemeProvider>,
-            )
-            .toJSON();
-
-        // @ts-ignore
-        expect(tree).toHaveStyleRule('border-width', '2px');
+        expect(
+            <MenuElement>With custom theme</MenuElement>,
+            // @ts-ignore
+        ).toSupportCustomTheme('MenuElement');
     });
 
     it('should support margin attributes', async () => {

@@ -6,3 +6,5 @@ require('./toSupportWidthAttributes');
 require('./toSupportHeightAttributes');
 require('./toSupportColorAttributes');
 require('./toSupportRestPropsForwarding');
+require('./toSupportCustomTheme');
+require('./toHaveChildrenWithClassNames');

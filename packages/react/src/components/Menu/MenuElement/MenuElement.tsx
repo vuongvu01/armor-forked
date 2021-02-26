@@ -10,55 +10,37 @@ import {
     MenuElementExpansionHandleArrow,
 } from './style';
 import { MenuElementPropsType } from './type';
-import { menuElementDefaultTheme } from './theme';
 import { MENU_ELEMENT_CLASS_PREFIX } from './constants';
 import { ButtonPropsType } from '../../Button/type';
+import { useMenuElement } from './hooks/useMenuElement';
 
 export const MenuElement: FunctionComponent<MenuElementPropsType> = forwardRef(
-    function MenuElement(
-        {
-            className,
-            enableExpansionHandle,
-            expanded,
-            children,
-            primary,
-            secondary,
-            tertiary,
-            depthLevel,
-            tag: Tag = 'div',
-            selected,
-            ...restProps
-        },
-        ref,
-    ) {
-        const theme = useComponentTheme(
-            MENU_ELEMENT_CLASS_PREFIX,
-            menuElementDefaultTheme,
-        );
+    function MenuElement({ className, children, ...props }, ref) {
+        const theme = useComponentTheme(MENU_ELEMENT_CLASS_PREFIX);
         const classNameComponents = useMenuElementClassNames(
             MENU_ELEMENT_CLASS_PREFIX,
             className,
         );
 
+        const {
+            rootProps,
+            contentProps,
+            getExpansionHandleProps,
+            getExpansionHandleArrowProps,
+            Tag,
+            enableExpansionHandle,
+        } = useMenuElement(props);
+
         return (
             <MenuElementRoot
-                {...restProps}
-                primary={primary}
-                secondary={secondary}
-                tertiary={tertiary}
-                depthLevel={depthLevel}
-                enableExpansionHandle={enableExpansionHandle}
-                expanded={expanded}
-                selected={selected}
+                {...rootProps}
                 theme={theme}
                 className={classNameComponents.Root}
-                aria-expanded={expanded ? 'true' : 'false'}
-                data-expanded={expanded ? '1' : '0'}
-                data-selected={selected ? '1' : '0'}
             >
                 {(forwardedProps: ButtonPropsType) => (
                     <Tag {...forwardedProps} ref={ref}>
                         <MenuElementContent
+                            {...contentProps}
                             theme={theme}
                             className={classNameComponents.Content}
                         >
@@ -66,15 +48,12 @@ export const MenuElement: FunctionComponent<MenuElementPropsType> = forwardRef(
                         </MenuElementContent>
                         {enableExpansionHandle && (
                             <MenuElementExpansionHandle
+                                {...getExpansionHandleProps()}
                                 theme={theme}
                                 className={classNameComponents.ExpansionHandle}
-                                primary={primary}
-                                secondary={secondary}
-                                tertiary={tertiary}
-                                depthLevel={depthLevel}
                             >
                                 <MenuElementExpansionHandleArrow
-                                    expanded={expanded}
+                                    {...getExpansionHandleArrowProps()}
                                     theme={theme}
                                     className={
                                         classNameComponents.ExpansionHandleArrow

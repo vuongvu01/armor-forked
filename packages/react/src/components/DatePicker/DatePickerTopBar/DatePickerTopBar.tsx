@@ -10,6 +10,7 @@ import {
     DatePickerTopBarMonthNavigationButtonBackward,
     DatePickerTopBarMonthNavigationButtonForward,
     DatePickerTopBarMonthYearSelectorToggle,
+    DatePickerTopBarMonthYearSelectorToggleArrow,
 } from './style';
 import { DatePickerTopBarPropsType } from './type';
 import { DATE_PICKER_TOP_BAR_CLASS_PREFIX } from './constants';
@@ -26,6 +27,7 @@ export const DatePickerTopBar: FunctionComponent<DatePickerTopBarPropsType> = fo
         const {
             rootProps,
             monthYearSelectorToggleProps,
+            monthYearSelectorToggleArrowProps,
             monthNavigationButtonBackwardProps,
             monthNavigationButtonForwardProps,
 
@@ -45,6 +47,12 @@ export const DatePickerTopBar: FunctionComponent<DatePickerTopBarPropsType> = fo
                     className={classNameComponents.MonthYearSelectorToggle}
                 >
                     {monthName} {year}
+                    <DatePickerTopBarMonthYearSelectorToggleArrow
+                        {...monthYearSelectorToggleArrowProps}
+                        className={
+                            classNameComponents.MonthYearSelectorToggleArrow
+                        }
+                    />
                 </DatePickerTopBarMonthYearSelectorToggle>
                 <DatePickerTopBarMonthNavigation
                     theme={theme}
@@ -59,7 +67,9 @@ export const DatePickerTopBar: FunctionComponent<DatePickerTopBarPropsType> = fo
                     >
                         <ArrowRightIcon
                             medium
-                            className={classNameComponents.ArrowRightIcon}
+                            className={
+                                classNameComponents.MonthNavigationButtonArrow
+                            }
                         />
                     </DatePickerTopBarMonthNavigationButtonBackward>
                     <DatePickerTopBarMonthNavigationButtonForward
@@ -71,7 +81,9 @@ export const DatePickerTopBar: FunctionComponent<DatePickerTopBarPropsType> = fo
                     >
                         <ArrowRightIcon
                             medium
-                            className={classNameComponents.ArrowRightIcon}
+                            className={
+                                classNameComponents.MonthNavigationButtonArrow
+                            }
                         />
                     </DatePickerTopBarMonthNavigationButtonForward>
                 </DatePickerTopBarMonthNavigation>

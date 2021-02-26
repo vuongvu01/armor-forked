@@ -3,17 +3,24 @@ import { zIndexModal } from '../../tokens';
 type OverlayType = {
     id: string;
     zIndex: number;
+    blockWindowScroll: boolean;
 };
 
 export type OverlayParametersType = {
     zIndex?: number;
+    blockWindowScroll?: boolean;
 };
 
 export class OverlayManager {
     static stack: OverlayType[] = [];
+    static windowScrollBlocks = 0;
 
     static pushOverlay(id: string, parameters?: OverlayParametersType) {
-        const { zIndex } = parameters || {};
+        const { zIndex, blockWindowScroll } = parameters || {};
+
+        if (blockWindowScroll) {
+            this.windowScrollBlocks += 1;
+        }
 
         this.stack.push({
             id,
@@ -21,11 +28,18 @@ export class OverlayManager {
                 typeof zIndex !== 'undefined'
                     ? zIndex
                     : this.getTopOverlayZIndex() + 10,
+            blockWindowScroll: !!blockWindowScroll,
         });
     }
 
     static removeOverlay(id: string) {
-        this.stack = this.stack.filter(item => item.id !== id);
+        const overlay = this.getOverlay(id);
+        if (overlay) {
+            this.stack = this.stack.filter(item => item.id !== id);
+            if (overlay.blockWindowScroll) {
+                this.windowScrollBlocks -= 1;
+            }
+        }
     }
 
     static getOverlay(id: string) {
@@ -53,6 +67,10 @@ export class OverlayManager {
         }
 
         return zIndexModal;
+    }
+
+    static hasWindowScrollBlock() {
+        return this.windowScrollBlocks > 0;
     }
 
     private static getTopOverlayZIndex() {

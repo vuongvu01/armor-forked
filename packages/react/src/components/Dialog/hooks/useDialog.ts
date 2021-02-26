@@ -23,6 +23,7 @@ export const useDialog = (
         enableCloseButton,
         enableCloseByEscape,
         enableEffects,
+        enableWindowScrollBlock,
 
         /** @deprecated */
         onClose,
@@ -64,6 +65,7 @@ export const useDialog = (
 
     const { zIndex: realZIndex, isTopOverlay } = useOverlay(reallyOpen, {
         zIndex,
+        blockWindowScroll: enableWindowScrollBlock !== false,
     });
 
     const onCloseInternal = useCallback(() => {

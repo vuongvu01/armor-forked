@@ -1,7 +1,7 @@
 /* eslint-disable no-console,import/no-unresolved */
 
 import React, { useState, MouseEvent } from 'react';
-import { withKnobs, text } from '@storybook/addon-knobs';
+import { withKnobs } from '@storybook/addon-knobs';
 
 import { EllipsisVerticalIcon } from '@deliveryhero/armor-icons';
 
@@ -9,11 +9,12 @@ import { ContextMenu } from '../ContextMenu';
 import { IconButton } from '../../IconButton';
 import { Box } from '../../Box';
 import { MenuElement } from '../../Menu/MenuElement';
+import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
     title: 'Components/ContextMenu',
     component: ContextMenu,
-    decorators: [withKnobs],
+    decorators: [withKnobs, withWrapper],
     parameters: {},
 };
 

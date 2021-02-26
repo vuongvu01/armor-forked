@@ -19,6 +19,7 @@ export type ClassBasedOnComponentType = {
 export type SideSheetEffectivePropsType = Partial<{
     disableEffects: boolean;
     disableOverlay: boolean;
+    enableWindowScrollBlock: boolean;
     isCloseButtonVisible: boolean;
     isFixed: boolean;
     wide: boolean;

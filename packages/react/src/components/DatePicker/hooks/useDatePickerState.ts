@@ -13,7 +13,10 @@ type DatePickerStateType = {
 
 export const useDatePickerState = <V>(
     { reallyOpen, internalValue }: DatePickerStateType,
-    restProps: DatePickerEffectiveGenericPropsType<V>,
+    {
+        defaultMonthYearSelectorOpen,
+        ...restProps
+    }: DatePickerEffectiveGenericPropsType<V>,
 ) => {
     // the date range touched (pre-selected) by a user. It keeps the value until a user mashes "Ok"
     const [dirtyInternalValueVector, setDirtyInternalValueVector] = useState<
@@ -51,7 +54,9 @@ export const useDatePickerState = <V>(
         [dirtyInternalValueVector, currentTimeVector],
     );
 
-    const [monthYearSelectorOpen, onMonthYearSelectorToggle] = useFlagState();
+    const [monthYearSelectorOpen, onMonthYearSelectorToggle] = useFlagState(
+        defaultMonthYearSelectorOpen,
+    );
 
     return {
         dirtyInternalValueVector,

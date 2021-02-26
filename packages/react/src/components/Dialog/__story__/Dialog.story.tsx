@@ -38,12 +38,38 @@ export const Basic = () => {
                     New location
                 </DialogTitle>
                 <DialogContent>
-                    Delivery Hero SE is a European multinational online
-                    food-delivery service based in Berlin, Germany. The company
-                    operates in 40+ countries internationally in Europe, Asia,
-                    Latin America and the Middle East and partners with 500,000+
-                    restaurants. Delivery Hero processed more than 666 million
-                    orders in 2019
+                    <p>
+                        Delivery Hero SE is a European multinational online
+                        food-delivery service based in Berlin, Germany. The
+                        company operates in 40+ countries internationally in
+                        Europe, Asia, Latin America and the Middle East and
+                        partners with 500,000+ restaurants. Delivery Hero
+                        processed more than 666 million orders in 2019
+                    </p>
+                    <p>
+                        Delivery Hero SE is a European multinational online
+                        food-delivery service based in Berlin, Germany. The
+                        company operates in 40+ countries internationally in
+                        Europe, Asia, Latin America and the Middle East and
+                        partners with 500,000+ restaurants. Delivery Hero
+                        processed more than 666 million orders in 2019
+                    </p>
+                    <p>
+                        Delivery Hero SE is a European multinational online
+                        food-delivery service based in Berlin, Germany. The
+                        company operates in 40+ countries internationally in
+                        Europe, Asia, Latin America and the Middle East and
+                        partners with 500,000+ restaurants. Delivery Hero
+                        processed more than 666 million orders in 2019
+                    </p>
+                    <p>
+                        Delivery Hero SE is a European multinational online
+                        food-delivery service based in Berlin, Germany. The
+                        company operates in 40+ countries internationally in
+                        Europe, Asia, Latin America and the Middle East and
+                        partners with 500,000+ restaurants. Delivery Hero
+                        processed more than 666 million orders in 2019
+                    </p>
                 </DialogContent>
                 <DialogActions>
                     <Button tertiary onClick={onClose}>
@@ -56,6 +82,8 @@ export const Basic = () => {
             <LoremIpsum>
                 <Button onClick={() => setOpen(true)}>Open modal!</Button>
             </LoremIpsum>
+            <LoremIpsum />
+            <LoremIpsum />
         </>
     );
 };
@@ -159,34 +187,46 @@ export const UltraExpressive = () => {
 };
 
 export const LongText = () => (
-    <LoremIpsum>
-        <Dialog open disableEffects>
-            <DialogContent>
-                <LoremIpsum />
-                <LoremIpsum />
-            </DialogContent>
-        </Dialog>
-    </LoremIpsum>
+    <>
+        <LoremIpsum>
+            <Dialog open disableEffects>
+                <DialogContent>
+                    1111
+                    <LoremIpsum />
+                    <LoremIpsum />
+                </DialogContent>
+            </Dialog>
+        </LoremIpsum>
+        <LoremIpsum />
+        <LoremIpsum />
+        <LoremIpsum />
+    </>
 );
 
 export const LongTitle = () => (
-    <LoremIpsum>
-        <Dialog
-            open
-            disableEffects
-            disableCloseButton={boolean('Close button', false)}
-        >
-            <DialogTitle description="Assign a new id to this location">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industrys standard dummy text
-                ever since the 1500s, when an unknown printer took a galley of
-                type and scrambled it to make a type specimen book.
-            </DialogTitle>
-            <DialogContent>
-                <LoremIpsum />
-            </DialogContent>
-        </Dialog>
-    </LoremIpsum>
+    <div>
+        <LoremIpsum>
+            <Dialog
+                open
+                disableEffects
+                disableCloseButton={boolean('Close button', false)}
+            >
+                <DialogTitle description="Assign a new id to this location">
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry. Lorem Ipsum has been the industrys
+                    standard dummy text ever since the 1500s, when an unknown
+                    printer took a galley of type and scrambled it to make a
+                    type specimen book.
+                </DialogTitle>
+                <DialogContent>
+                    <LoremIpsum />
+                </DialogContent>
+            </Dialog>
+        </LoremIpsum>
+        <LoremIpsum />
+        <LoremIpsum />
+        <LoremIpsum />
+    </div>
 );
 
 export const ContentBlocks = () => (
@@ -278,6 +318,9 @@ export const OneOverAnother = () => {
             <LoremIpsum>
                 <Button onClick={() => setOpenModalA(true)}>Open modal!</Button>
             </LoremIpsum>
+            <LoremIpsum />
+            <LoremIpsum />
+            <LoremIpsum />
         </>
     );
 };
@@ -311,7 +354,7 @@ const scrollOptions = {
     Dialog: 'dialog',
 };
 
-export const ScrollData = () => {
+export const ScrollDialog = () => {
     const [open, setOpen] = useState(true);
 
     return (
@@ -319,9 +362,8 @@ export const ScrollData = () => {
             <LoremIpsum>
                 <Dialog
                     open={open}
-                    disableEffects
                     onClose={() => setOpen(false)}
-                    scroll={select('Scroll', scrollOptions)}
+                    scroll="dialog"
                     maxWidth="sm"
                 >
                     <DialogTitle description="Assign a new id to this location">
@@ -344,6 +386,47 @@ export const ScrollData = () => {
                     </DialogActions>
                 </Dialog>
             </LoremIpsum>
+            <LoremIpsum />
+            <LoremIpsum />
+            <LoremIpsum />
+        </>
+    );
+};
+
+export const ScrollDocument = () => {
+    const [open, setOpen] = useState(true);
+
+    return (
+        <>
+            <LoremIpsum>
+                <Dialog
+                    open={open}
+                    onClose={() => setOpen(false)}
+                    scroll="document"
+                    maxWidth="sm"
+                >
+                    <DialogTitle description="Assign a new id to this location">
+                        New location
+                    </DialogTitle>
+                    <DialogContent>
+                        <LoremIpsum />
+                        <LoremIpsum />
+                        <ContextMenu
+                            trigger={<Button>Show context menu</Button>}
+                            menuElements={[
+                                { id: 'a', label: 'Menu element A' },
+                                { id: 'b', label: 'Menu element B' },
+                            ]}
+                        />
+                    </DialogContent>
+                    <DialogActions>
+                        <Button tertiary>Cancel</Button>
+                        <Button>Save</Button>
+                    </DialogActions>
+                </Dialog>
+            </LoremIpsum>
+            <LoremIpsum />
+            <LoremIpsum />
             <LoremIpsum />
         </>
     );

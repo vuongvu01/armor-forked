@@ -28,19 +28,11 @@ const propertyListTextInput = makePropList([
     'internalValue',
 ]);
 
-const dropdownRootStyle = ({ inline }: DropdownRootPropsType) =>
-    inline
-        ? ''
-        : css`
-              width: 100%;
-          `;
-
 export const DropdownRoot = styled.div.withConfig(
     getPropsBlocker(propertyList),
 )<DropdownRootPropsType>`
     display: inline-block;
 
-    ${dropdownRootStyle};
     ${marginAttributes};
     ${widthAttributes};
 `;

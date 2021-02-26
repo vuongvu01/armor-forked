@@ -15,6 +15,14 @@ export const MenuElementSelected = () => (
     <MenuElement selected>Hello</MenuElement>
 );
 
+export const MenuElementSelectedSmall = () => (
+    <MenuElement selected small>
+        Hello
+    </MenuElement>
+);
+
+export const MenuElementSmall = () => <MenuElement small>Hello</MenuElement>;
+
 export const ExpansionHandle = () => (
     <MenuElement enableExpansionHandle>Hello</MenuElement>
 );

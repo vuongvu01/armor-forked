@@ -1,13 +1,20 @@
 import styled, { css } from 'styled-components';
 import { IconButtonRootPropsType } from './type';
-import { marginAttributes } from '../../system/attributes';
-import { makePropList, getPropsBlocker } from '../../utils';
+import {
+    marginAttributes,
+    color,
+    spacing,
+    borderRadius,
+    token,
+} from '../../system';
+import { getPropsBlocker } from '../../utils';
 import { getComponentOverride } from '../../system/mixins/getComponentOverride';
-import { color, spacing, borderRadius } from '../../system/mixins';
 import { transitionDurationInSec } from '../../constants';
 
 // all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
-const propertyList = makePropList(['light']);
+const propertyList = {
+    light: true,
+};
 
 const getRootDynamicStyle = ({ light }: IconButtonRootPropsType) => {
     const result = css`
@@ -37,6 +44,7 @@ export const IconButtonRoot = styled.button.withConfig(
 
     transition: background-color ${transitionDurationInSec}s ease-in;
     background-color: transparent;
+    color: ${token('body.color')};
 
     ${getRootDynamicStyle};
     ${getComponentOverride('IconButton')};

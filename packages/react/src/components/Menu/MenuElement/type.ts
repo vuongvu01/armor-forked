@@ -3,29 +3,28 @@ import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../../type';
-import {
-    MarginAttributesType,
-    PaddingAttributesType,
-} from '../../../system/attributes';
-import { Indexed } from '../../../type';
+import { MarginAttributesType, PaddingAttributesType } from '../../../system';
+import { ObjectLiteralType } from '../../../type';
 
-type MenuElementEffectivePropsType = Indexed<{
-    tag?: string | ComponentType<any>;
-    primary?: boolean;
-    secondary?: boolean;
-    tertiary?: boolean;
-    selected?: boolean;
-    depthLevel?: number; // todo: future-reserved
+type MenuElementEffectivePropsType = Partial<{
+    tag: string | ComponentType<any>;
+    primary: boolean;
+    secondary: boolean;
+    tertiary: boolean;
+    selected: boolean;
+    small: boolean;
+    depthLevel: number; // todo: future-reserved
 
     // expanse handle
-    enableExpansionHandle?: boolean;
-    expanded?: boolean;
+    enableExpansionHandle: boolean;
+    expanded: boolean;
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
     Pick<AnchorHTMLAttributes<HTMLAnchorElement>, 'target' | 'href' | 'rel'> & // and 3 attributes from HTML Anchor
     PaddingAttributesType &
-    MarginAttributesType;
+    MarginAttributesType &
+    ObjectLiteralType;
 
 /* MenuElement component prop type */
 export type MenuElementPropsType = MenuElementEffectivePropsType &
@@ -36,7 +35,9 @@ export type MenuElementRootPropsType = MenuElementEffectivePropsType &
     ComponentElementStylePropsType;
 
 /* MenuElement Content node prop type */
-export type MenuElementContentPropsType = {} & ComponentElementStylePropsType;
+export type MenuElementContentPropsType = {
+    small: boolean;
+} & ComponentElementStylePropsType;
 
 /* MenuElement ExpansionHandle node prop type */
 export type MenuElementExpansionHandlePropsType = Pick<

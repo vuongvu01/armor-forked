@@ -37,9 +37,13 @@ export const DatePickerTimeSelector: FunctionComponent<DatePickerTimeSelectorPro
                 theme={theme}
                 className={classNameComponents.Root}
             >
-                <DatePickerTimeSelectorClock theme={theme}>
+                <DatePickerTimeSelectorClock
+                    theme={theme}
+                    className={classNameComponents.Clock}
+                >
                     <DatePickerTimeSelectorInput
                         {...hourInputProps}
+                        theme={theme}
                         className={classNameComponents.Input}
                     />{' '}
                     <TimeSeparatorIcon
@@ -47,10 +51,14 @@ export const DatePickerTimeSelector: FunctionComponent<DatePickerTimeSelectorPro
                     />{' '}
                     <DatePickerTimeSelectorInput
                         {...minuteInputProps}
+                        theme={theme}
                         className={classNameComponents.Input}
                     />
                 </DatePickerTimeSelectorClock>
-                <DatePickerTimeSelectorDayPeriodSelector>
+                <DatePickerTimeSelectorDayPeriodSelector
+                    theme={theme}
+                    className={classNameComponents.DayPeriodSelector}
+                >
                     <DatePickerTimeSelectorButton
                         {...buttonAMProps}
                         theme={theme}

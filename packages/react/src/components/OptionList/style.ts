@@ -10,6 +10,8 @@ import { color, spacing } from '../../system/mixins';
 import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 import { elevation } from '../../system/mixins/elevation';
 import { Search } from '../Search';
+import { Typography } from '../Typography';
+import { TypographyPropsType } from '../Typography/type';
 
 const optionListStyle = ({ isOptionListShown }: OptionListPropsType) => css`
     box-shadow: ${elevation('large')};
@@ -82,4 +84,10 @@ export const OptionListItem = styled.div<OptionListItemPropsType>`
 
     ${optionItemStyle}
     ${getComponentOverride('OptionListItem')};
+`;
+
+export const OptionListItemTypography = styled(Typography)<TypographyPropsType>`
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 `;

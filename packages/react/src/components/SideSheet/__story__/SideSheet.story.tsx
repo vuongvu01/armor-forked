@@ -11,6 +11,7 @@ import { Typography } from '../../Typography';
 import { Box } from '../../Box';
 import { Checkbox } from '../../Checkbox';
 import { withWrapper } from '../../../helpers/Wrapper';
+import { LoremIpsum } from '../../../helpers/LoremIpsum';
 
 export default {
     title: 'Components/SideSheet',
@@ -377,6 +378,33 @@ export const DisableCloseByEscape = () => {
             </SideSheet>
 
             <Button onClick={() => setOpen(true)}>No close by Escape</Button>
+        </>
+    );
+};
+
+export const WindowScroll = () => {
+    const [open, setOpen] = useState(false);
+    const onClose = () => setOpen(false);
+
+    return (
+        <>
+            <SideSheet open={open} onClose={onClose} disableCloseByEscape>
+                <SideSheetHeader
+                    title="Header title"
+                    description="Header description"
+                />
+                <SideSheetBody>
+                    <LoremIpsum />
+                    <LoremIpsum />
+                    <LoremIpsum />
+                </SideSheetBody>
+                <SideSheetFooter>Footer actions</SideSheetFooter>
+            </SideSheet>
+
+            <Button onClick={() => setOpen(true)}>No close by Escape</Button>
+            <LoremIpsum />
+            <LoremIpsum />
+            <LoremIpsum />
         </>
     );
 };

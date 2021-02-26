@@ -4,10 +4,11 @@ import React, { useState } from 'react';
 import { withKnobs } from '@storybook/addon-knobs';
 import { withWrapper } from '../../../helpers/Wrapper';
 
-import { DateRangePicker } from '..';
+import { DatePicker, DateRangePicker } from '..';
 import { Box } from '../../Box';
 import { Button } from '../../Button';
 import { DateVector } from '../utils/DateVector';
+import { makeTheme, ThemeProvider } from '../../../styling';
 
 export default {
     title: 'Components/DateRangePicker',
@@ -196,4 +197,30 @@ export const Many = () => {
             <DateRangePicker />
         </Box>
     );
+};
+
+const customTheme = makeTheme({
+    armor: {
+        components: {
+            DateRangePicker: {
+                borderWidth: '10px',
+            },
+            DatePicker: {
+                borderWidth: '10px',
+            },
+        },
+    },
+});
+
+export const CustomTheme = () => {
+    return (
+        <ThemeProvider theme={customTheme}>
+            <DateRangePicker />
+            <DatePicker />
+        </ThemeProvider>
+    );
+};
+
+export const WithTimePickerAndNotSelected = () => {
+    return <DateRangePicker open enableTimePicker />;
 };

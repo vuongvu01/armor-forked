@@ -85,8 +85,8 @@ export const Collection = () => {
                 formatOption={formatOption}
                 enableSelectAllOption
                 selectAllLabel="Select/Deselect All"
+                openTagsCount={3}
                 enableSearchOption
-                maxWidth="sm"
             />
         </>
     );

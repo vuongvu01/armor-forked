@@ -33,7 +33,6 @@ type DatePickerDaySelectorEffectivePropsType = {
     dirtyInternalValueVector: DateVectorRange;
 
     displayedDateVector: DateVector;
-    onDisplayedDateVectorChange: (newDisplayedDateVector: DateVector) => void;
 
     // add other custom properties here
 } & HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes

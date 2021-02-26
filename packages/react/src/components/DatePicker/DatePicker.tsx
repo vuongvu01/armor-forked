@@ -64,6 +64,7 @@ export const DatePicker: FunctionComponent<DatePickerPropsType> = forwardRef(
                     <PortalToBody {...portalProps}>
                         <DatePickerDropdown
                             {...dropdownProps}
+                            theme={theme}
                             className={classNameComponents.Dropdown}
                         >
                             <DatePickerTopBar {...topBarProps} />

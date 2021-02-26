@@ -12,6 +12,10 @@ export const useDatePickerTopBarClassNames = (
                 classPrefix,
                 'MonthYearSelectorToggle',
             ),
+            MonthYearSelectorToggleArrow: makeBEM(
+                classPrefix,
+                'MonthYearSelectorToggleArrow',
+            ),
             MonthNavigation: makeBEM(classPrefix, 'MonthNavigation'),
             MonthNavigationButtonBackward: makeBEM(
                 classPrefix,
@@ -21,6 +25,9 @@ export const useDatePickerTopBarClassNames = (
                 classPrefix,
                 'MonthNavigationButtonForward',
             ),
-            ArrowRightIcon: makeBEM(classPrefix, 'ArrowRightIcon'),
+            MonthNavigationButtonArrow: makeBEM(
+                classPrefix,
+                'MonthNavigationButtonArrow',
+            ),
         };
     }, [classPrefix, className]);

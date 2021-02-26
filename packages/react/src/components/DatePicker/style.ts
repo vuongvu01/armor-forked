@@ -36,19 +36,28 @@ const getRootStyle = ({ enableTimePicker }: DatePickerRootPropsType) => {
     return result;
 };
 
-// if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
-export const DatePickerRoot = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<DatePickerRootPropsType>`
+const getCommonStyle = (name: string) => css`
     ${reset()};
     ${typography('paragraphMedium')};
     display: inline-block;
     position: relative;
 
     ${getRootStyle};
-    ${getComponentOverride('DatePicker')};
+    ${getComponentOverride(name)};
     ${marginAttributes};
     ${widthAttributes};
+`;
+
+export const DatePickerRoot = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<DatePickerRootPropsType>`
+    ${getCommonStyle('DatePicker')};
+`;
+
+export const DateRangePickerRoot = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<DatePickerRootPropsType>`
+    ${getCommonStyle('DateRangePicker')};
 `;
 
 export const DatePickerInput = styled(TextInput).withConfig(

@@ -24,6 +24,12 @@ export type DatePickerEffectiveGenericPropsType<V> = Partial<{
     enableActionButtons: boolean;
     enableTimePicker: boolean;
 
+    label: string;
+    disabled: boolean;
+    readOnly: boolean;
+
+    defaultMonthYearSelectorOpen: boolean;
+
     // add other custom properties here
 }> &
     ComponentBehaviourOpenStateType &
@@ -64,5 +70,9 @@ export type DatePickerTopBarMonthNavigationButtonForwardPropsType = {
 } & ComponentElementStylePropsType;
 
 export type DatePickerTopBarMonthYearSelectorTogglePropsType = {
+    open: boolean;
+} & ComponentElementStylePropsType;
+
+export type DatePickerTopBarMonthYearSelectorToggleArrowPropsType = {
     open: boolean;
 } & ComponentElementStylePropsType;

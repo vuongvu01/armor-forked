@@ -1,6 +1,11 @@
 import styled, { css } from 'styled-components';
 import { MenuRootPropsType } from './type';
-import { marginAttributes, paddingAttributes } from '../../system/attributes';
+import {
+    marginAttributes,
+    paddingAttributes,
+    color,
+    reset,
+} from '../../system';
 import { makePropList, getPropsBlocker } from '../../utils';
 import { transitionDurationInSec } from '../../constants';
 import { getComponentOverride } from '../../system/mixins/getComponentOverride';
@@ -14,38 +19,26 @@ const propertyList = makePropList([
     'enableEffects',
 ]);
 
-const getRootDynamicStyle = ({
-    theme,
+const getRootStyle = ({
     enableBottomSeparator,
     secondary,
     tertiary,
     expanded,
     enableEffects,
 }: MenuRootPropsType) => {
-    const {
-        componentOverrides: { Menu },
-    } = theme;
-
-    let result = Menu.Root.base;
+    let result = {};
 
     if (enableBottomSeparator) {
         result = css`
             ${result};
-            border-bottom-width: 1px;
-            border-bottom-style: solid;
-            ${Menu.Root.bottomSeparator}
+            border-bottom: 1px solid ${color('neutral.03')};
         `;
     }
 
-    if (secondary) {
+    if (secondary || tertiary) {
         result = css`
             ${result};
-            ${Menu.Root.secondary}
-        `;
-    } else if (tertiary) {
-        result = css`
-            ${result};
-            ${Menu.Root.tertiary}
+            background-color: ${color('neutral.01')};
         `;
     }
 
@@ -73,9 +66,10 @@ const getRootDynamicStyle = ({
 export const MenuRoot = styled.div.withConfig(getPropsBlocker(propertyList))<
     MenuRootPropsType
 >`
-    box-sizing: border-box;
+    ${reset};
+    background-color: ${color('neutral.00')};
 
-    ${getRootDynamicStyle}
+    ${getRootStyle}
     ${getComponentOverride('Menu')};
     ${marginAttributes}
     ${paddingAttributes}

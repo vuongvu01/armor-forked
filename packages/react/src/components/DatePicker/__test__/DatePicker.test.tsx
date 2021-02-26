@@ -1,17 +1,15 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
 import React, { useRef } from 'react';
-import { ThemeProvider } from 'styled-components';
 
 import { cleanup, render } from '@testing-library/react';
 import {
     renderHook,
     cleanup as cleanupHooks,
 } from '@testing-library/react-hooks';
-import renderer from 'react-test-renderer';
 
-import { customTheme } from './helpers';
 import { DatePicker } from '..';
+import { COMMON_CLASSES } from './common';
 
 describe('<DatePicker />', () => {
     afterEach(async () => {
@@ -24,11 +22,26 @@ describe('<DatePicker />', () => {
     });
 
     it('should contain correct CSS classes and attributes', () => {
-        const result = render(<DatePicker />);
+        const result = render(
+            <DatePicker
+                open
+                enableActionButtons
+                enableTimePicker
+                enablePortal={false}
+            />,
+        );
         // @ts-ignore
         expect(result.container).toHaveBEMStructure('DatePicker', {
             Root: [],
         });
+        // @ts-ignore
+        expect(result.container).toHaveChildrenWithClassNames([
+            'DatePicker-Root',
+            'DatePicker-Input',
+            'DatePicker-Dropdown',
+
+            ...COMMON_CLASSES,
+        ]);
     });
 
     it('should support forwardRef', () => {
@@ -44,27 +57,63 @@ describe('<DatePicker />', () => {
     });
 
     it('should support custom theme', () => {
-        let tree = renderer
-            .create(<DatePicker>With custom theme</DatePicker>)
-            .toJSON();
-
         // @ts-ignore
-        expect(tree).not.toHaveStyleRule('border-width', '2px');
-
-        tree = renderer
-            .create(
-                <ThemeProvider theme={customTheme}>
-                    <DatePicker>With custom theme</DatePicker>
-                </ThemeProvider>,
-            )
-            .toJSON();
-
-        // @ts-ignore
-        expect(tree).toHaveStyleRule('border-width', '2px');
+        expect(<DatePicker>With custom theme</DatePicker>).toSupportCustomTheme(
+            'DatePicker',
+        );
     });
 
     it('should support margin attributes', async () => {
         // @ts-ignore
         expect(DatePicker).toSupportMarginAttributes();
     });
+
+    it('should support width attributes', async () => {
+        // @ts-ignore
+        expect(DatePicker).toSupportWidthAttributes();
+    });
+
+    // it('should support controlled/uncontrolled value', async () => {
+    //     // todo
+    // });
+    //
+    // it('should support controlled/uncontrolled open', async () => {
+    //     // todo
+    // });
+    //
+    // it('should have cancel/ok buttons', async () => {
+    //     // todo
+    // });
+    //
+    // it('should support date picking', async () => {
+    //     // todo
+    // });
+    //
+    // it('should support time picking', async () => {
+    //     // todo
+    // });
+    //
+    // it('should support portal', async () => {
+    //     // todo
+    // });
+    //
+    // it('should support custom z-index', async () => {
+    //     // todo
+    // });
+    //
+    // it('should support close on outer click', async () => {
+    //     // todo
+    // });
+    //
+    // it('should support custom label', async () => {
+    //     // todo
+    // });
+    //
+    // it('should not open dropdown when disabled', async () => {
+    //     // todo
+    // });
+    //
+    // it('should not open dropdown when readonly', async () => {
+    //     // todo
+    // });
 });

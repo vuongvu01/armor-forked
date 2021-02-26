@@ -8,7 +8,6 @@
  */
 
 import React, { useRef } from 'react';
-import { ThemeProvider } from 'styled-components';
 
 import {
     // fireEvent,
@@ -22,10 +21,8 @@ import {
     renderHook,
     cleanup as cleanupHooks,
 } from '@testing-library/react-hooks';
-import renderer from 'react-test-renderer';
 // import userEvent from '@testing-library/user-event';
 
-import { customTheme } from './helpers';
 import { <%- component_name_pascal %> } from '..';
 
 describe('<<%- component_name_pascal %> />', () => {
@@ -94,21 +91,10 @@ describe('<<%- component_name_pascal %> />', () => {
     });
 
     it('should support custom theme', () => {
-        let tree = renderer.create(<<%- component_name_pascal %>>With custom theme</<%- component_name_pascal %>>).toJSON();
-
         // @ts-ignore
-        expect(tree).not.toHaveStyleRule('border-width', '2px');
-
-        tree = renderer
-            .create(
-                <ThemeProvider theme={customTheme}>
-                    <<%- component_name_pascal %>>With custom theme</<%- component_name_pascal %>>
-                </ThemeProvider>,
-            )
-            .toJSON();
-
-        // @ts-ignore
-        expect(tree).toHaveStyleRule('border-width', '2px');
+        expect(<<%- component_name_pascal %>>Hello</<%- component_name_pascal %>>).toSupportCustomTheme(
+            '<%- component_name_pascal %>',
+        );
     });
 
     it('should support margin attributes', async () => {
