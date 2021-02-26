@@ -18,6 +18,7 @@ type DialogEffectivePropsType = Partial<{
     enableCloseButton: boolean;
     enableCloseByEscape: boolean;
     enableEffects: boolean;
+    enableWindowScrollBlock: boolean;
 
     /** @deprecated @see onOpenChange */
     onClose: () => void;
