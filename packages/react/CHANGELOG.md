@@ -1,3 +1,12 @@
+# @deliveryhero/armor [1.33.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.32.1...@deliveryhero/armor@1.33.0) (2021-02-26)
+
+
+### Bug Fixes
+
+* ContextMenu styles fixes [LD-355] ([#420](https://github.com/deliveryhero/armor/issues/420)) ([bb7378a](https://github.com/deliveryhero/armor/commit/bb7378a3e21b2a07a26de0bf8099e9cecde8973f))
+* **datepicker:** Missing expansion arrow icon added to the DatePicker component [] ([#419](https://github.com/deliveryhero/armor/issues/419)) ([bc828a5](https://github.com/deliveryhero/armor/commit/bc828a516dec716a2aa8b0e127a7b1d70601341a))
+* **dialog:** Enable window scroll block when the Dialog or SideSheet i open [LD-409] ([#418](https://github.com/deliveryhero/armor/issues/418)) ([3a61912](https://github.com/deliveryhero/armor/commit/3a61912bc229b1eee829f659a5e05dc5f90029c8))
+
 ## @deliveryhero/armor [1.32.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.32.0...@deliveryhero/armor@1.32.1) (2021-02-23)
 
 
