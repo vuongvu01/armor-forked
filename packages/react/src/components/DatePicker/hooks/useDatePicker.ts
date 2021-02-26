@@ -19,6 +19,9 @@ export const useDatePicker = (
         defaultDateValue,
         dateValue,
         onDateValueChange,
+        label,
+        disabled,
+        readOnly,
         ...restProps
     }: DatePickerPropsType,
     ref: ReferenceType,
@@ -108,12 +111,13 @@ export const useDatePicker = (
         },
         inputProps: {
             readOnly: true,
-            label: 'Select date',
+            disabled,
+            label,
             ref: inputRef,
             value: formattedValue,
             enableRootRef: true,
             enableFocusOnRootClick: true,
-            onRootClick: toggleOpen,
+            onRootClick: disabled || readOnly ? undefined : toggleOpen,
         },
         portalProps,
         dropdownProps,
@@ -130,7 +134,6 @@ export const useDatePicker = (
         },
         daySelectorProps: {
             displayedDateVector, // to indicate the currently displayed year and month
-            onDisplayedDateVectorChange: setDisplayedDateVector, // to shit months back and forward
             dirtyInternalValueVector, // to indicate the selected day
             currentDateVector, // to indicate the current day in the matrix
             ...selectionEventProps,

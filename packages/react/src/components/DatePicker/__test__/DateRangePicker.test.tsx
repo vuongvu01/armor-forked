@@ -8,22 +8,22 @@ import {
     cleanup as cleanupHooks,
 } from '@testing-library/react-hooks';
 
-import { DatePicker } from '..';
+import { DateRangePicker } from '..';
 import { COMMON_CLASSES } from './common';
 
-describe('<DatePicker />', () => {
+describe('<DateRangePicker />', () => {
     afterEach(async () => {
         cleanup();
         await cleanupHooks();
     });
 
     it('should render itself without errors', async () => {
-        render(<DatePicker />);
+        render(<DateRangePicker />);
     });
 
     it('should contain correct CSS classes and attributes', () => {
         const result = render(
-            <DatePicker
+            <DateRangePicker
                 open
                 enableActionButtons
                 enableTimePicker
@@ -31,14 +31,14 @@ describe('<DatePicker />', () => {
             />,
         );
         // @ts-ignore
-        expect(result.container).toHaveBEMStructure('DatePicker', {
+        expect(result.container).toHaveBEMStructure('DateRangePicker', {
             Root: [],
         });
         // @ts-ignore
         expect(result.container).toHaveChildrenWithClassNames([
-            'DatePicker-Root',
-            'DatePicker-Input',
-            'DatePicker-Dropdown',
+            'DateRangePicker-Root',
+            'DateRangePicker-Input',
+            'DateRangePicker-Dropdown',
 
             ...COMMON_CLASSES,
         ]);
@@ -46,31 +46,31 @@ describe('<DatePicker />', () => {
 
     it('should support forwardRef', () => {
         const { result } = renderHook(() => useRef());
-        render(<DatePicker ref={result.current} />);
+        render(<DateRangePicker ref={result.current} />);
 
         expect(result.current.current).toBeInstanceOf(HTMLElement);
     });
 
     it('should support rest props forwarding', async () => {
         // @ts-ignore
-        expect(DatePicker).toSupportRestPropsForwarding('DatePicker');
+        expect(DateRangePicker).toSupportRestPropsForwarding('DateRangePicker');
     });
 
     it('should support custom theme', () => {
-        // @ts-ignore
-        expect(<DatePicker>With custom theme</DatePicker>).toSupportCustomTheme(
-            'DatePicker',
-        );
+        expect(
+            <DateRangePicker>With custom theme</DateRangePicker>,
+            // @ts-ignore
+        ).toSupportCustomTheme('DateRangePicker');
     });
 
     it('should support margin attributes', async () => {
         // @ts-ignore
-        expect(DatePicker).toSupportMarginAttributes();
+        expect(DateRangePicker).toSupportMarginAttributes();
     });
 
     it('should support width attributes', async () => {
         // @ts-ignore
-        expect(DatePicker).toSupportWidthAttributes();
+        expect(DateRangePicker).toSupportWidthAttributes();
     });
 
     // it('should support controlled/uncontrolled value', async () => {

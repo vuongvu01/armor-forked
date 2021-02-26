@@ -17,6 +17,7 @@ const propertyList = {
     open: true,
     onDirtyInternalValueUTCUpdate: true,
     dirtyInternalValueUTC: true,
+    onDisplayedDateVectorChange: true,
 };
 
 // if a new node is to be created, don't forget to use shouldForwardProp similarly to this:

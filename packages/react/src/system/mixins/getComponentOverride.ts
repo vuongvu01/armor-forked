@@ -7,17 +7,25 @@ export const getComponentOverride = (componentName: string) => ({
     if (theme) {
         const currentTheme = theme.armor || theme;
 
-        // this structure is temporary, rename it to "components" when theme.ts is removed everywhere
-        if (currentTheme?.__componentOverrides) {
+        const {
+            __componentOverrides, // @deprecated
+            componentOverrides, // @deprecated
+            components,
+        } = currentTheme;
+
+        // @deprecated
+        if (__componentOverrides && componentName in __componentOverrides) {
             return currentTheme?.__componentOverrides[componentName];
         }
 
-        // this structure is temporary, rename it to "components" when theme.ts is removed everywhere
-        if (currentTheme?.componentOverrides) {
+        // @deprecated
+        if (componentOverrides && componentName in componentOverrides) {
             return currentTheme?.componentOverrides[componentName];
         }
 
-        // todo: use just currentTheme.components here
+        if (components && componentName in components) {
+            return currentTheme?.components[componentName];
+        }
     }
 
     return null;

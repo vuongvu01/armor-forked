@@ -265,6 +265,25 @@ export const Basic = () => {
     );
 };
 
+// export const NoLabel = () => {
+//     const textInputRef = useRef(null);
+//
+//     return (
+//         <GroupHelper gap={2}>
+//             <Box
+//                 padding={3}
+//                 style={{
+//                     backgroundColor: '#F4F4F8',
+//                     height: '500px',
+//                     width: '600px',
+//                 }}
+//             >
+//                 <TextInput />
+//             </Box>
+//         </GroupHelper>
+//     );
+// };
+
 export const ExternalControl = () => {
     const textInputRef = useRef(null);
     const [value, setValue] = useState('');
@@ -393,6 +412,7 @@ export const LabelOverflow = () => (
 export const NoLabel = () => (
     <Box>
         <TextInput placeholder="Type it here" name="your_price" />
+        <TextInput />
     </Box>
 );
 export const Inline = () => (
