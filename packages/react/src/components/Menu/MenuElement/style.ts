@@ -8,12 +8,18 @@ import {
     MenuElementRootPropsType,
 } from './type';
 import {
+    color,
     marginAttributes,
     paddingAttributes,
-} from '../../../system/attributes';
+    pixelToRem,
+    reset,
+    spacing,
+    typography,
+} from '../../../system';
 import { getPropsBlocker, makePropList } from '../../../utils';
 import { transitionDurationInSec } from '../../../constants';
 import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
+import { fontSize02 } from '../../../tokens';
 
 // all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
 const propertyList = makePropList([
@@ -34,28 +40,37 @@ const MenuElementRootWrapper = ({
     children: (props: MenuElementRootPropsType) => ReactElement;
 }) => children({ ...restProps });
 
-const getRootDynamicStyle = ({
-    theme,
+const getRootStyle = ({
     enableExpansionHandle,
     secondary,
     tertiary,
     selected,
+    small,
 }: MenuElementRootPropsType) => {
-    const {
-        componentOverrides: { MenuElement },
-    } = theme;
+    const borderWidth = small ? 0.5 : 1;
 
-    let result = MenuElement.Root.base;
+    let result = css`
+        &:hover {
+            background-color: ${color('primary.lightest')};
+            &:before {
+                width: ${spacing(borderWidth)};
+            }
+        }
+    `;
 
     if (secondary) {
         result = css`
             ${result};
-            ${MenuElement.Root.secondary}
+            ${typography('paragraphLarge')};
+            padding-left: ${spacing(16)};
+            background-color: ${color('neutral.01')};
         `;
     } else if (tertiary) {
         result = css`
             ${result};
-            ${MenuElement.Root.tertiary}
+            ${typography('paragraphLarge')};
+            padding-left: ${spacing(20)};
+            background-color: ${color('neutral.01')};
         `;
     }
 
@@ -66,10 +81,23 @@ const getRootDynamicStyle = ({
         `;
     }
 
+    // only "top-level" menu element can be small
+    if (small && !secondary && !tertiary) {
+        result = css`
+            ${result};
+            font-size: ${pixelToRem(fontSize02)};
+            padding-left: ${spacing(4)};
+            padding-right: ${spacing(4)};
+        `;
+    }
+
     if (selected) {
         result = css`
             ${result};
-            ${MenuElement.Root.selected}
+            &:before {
+                width: ${spacing(borderWidth)};
+            }
+            background-color: ${color('primary.lightest')};
         `;
     }
 
@@ -79,14 +107,21 @@ const getRootDynamicStyle = ({
 export const MenuElementRoot = styled(MenuElementRootWrapper).withConfig(
     getPropsBlocker(propertyList, false),
 )<MenuElementRootPropsType>`
-    box-sizing: border-box;
+    ${reset};
+    ${typography('labelLarge')};
+    padding-left: ${spacing(6)};
+    padding-right: ${spacing(6)};
     display: flex;
     position: relative;
     cursor: pointer;
     text-decoration: none;
 
+    color: ${color('neutral.06')};
+    background-color: ${color('neutral.00')};
+
     transition: background-color ${transitionDurationInSec}s ease;
     &:before {
+        background-color: ${color('primary.main')};
         content: '';
         position: absolute;
         top: 0;
@@ -95,14 +130,18 @@ export const MenuElementRoot = styled(MenuElementRootWrapper).withConfig(
         width: 0;
     }
 
-    ${getRootDynamicStyle}
+    ${getRootStyle};
     ${getComponentOverride('MenuElement')};
-    ${marginAttributes}
-    ${paddingAttributes}
+    ${marginAttributes};
+    ${paddingAttributes};
 `;
 
-const getContentDynamicStyle = ({ theme }: MenuElementContentPropsType) => {
-    return theme.componentOverrides.MenuElement.Content.base;
+const getContentStyle = ({ small }: MenuElementContentPropsType) => {
+    const spacingY = small ? 2 : 4;
+    return css`
+        padding-top: ${spacing(spacingY)};
+        padding-bottom: ${spacing(spacingY)};
+    `;
 };
 
 export const MenuElementContent = styled.div.withConfig(
@@ -111,26 +150,21 @@ export const MenuElementContent = styled.div.withConfig(
     flex-grow: 1;
     display: flex;
 
-    ${getContentDynamicStyle}
+    ${getContentStyle};
 `;
 
-const getExpansionHandleDynamicStyle = ({
-    theme,
+const getExpansionHandleStyle = ({
     primary,
     secondary,
     tertiary,
     depthLevel,
 }: MenuElementExpansionHandlePropsType) => {
-    const {
-        componentOverrides: { MenuElement },
-    } = theme;
-
-    let result = MenuElement.ExpanseHandle.base;
+    let result = {};
 
     if (primary || (!secondary && !tertiary) || depthLevel === 0) {
         result = css`
             ${result};
-            ${MenuElement.ExpanseHandle.primary}
+            color: ${color('primary.main')};
         `;
     }
 
@@ -143,19 +177,16 @@ export const MenuElementExpansionHandle = styled.div.withConfig(
     display: flex;
     align-self: stretch;
     cursor: pointer;
+    padding: ${spacing(4)};
+    padding-top: ${spacing(5)};
 
-    ${getExpansionHandleDynamicStyle}
+    ${getExpansionHandleStyle};
 `;
 
 const getExpansionHandleArrowDynamicStyle = ({
     expanded,
-    theme,
 }: MenuElementExpansionHandleArrowPropsType) => {
-    const {
-        componentOverrides: { MenuElement },
-    } = theme;
-
-    let result = MenuElement.ExpanseHandleArrow.base;
+    let result = {};
 
     if (expanded) {
         result = css`

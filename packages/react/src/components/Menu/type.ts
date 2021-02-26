@@ -3,23 +3,21 @@ import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../type';
-import {
-    MarginAttributesType,
-    PaddingAttributesType,
-} from '../../system/attributes';
-import { Indexed } from '../../type';
+import { MarginAttributesType, PaddingAttributesType } from '../../system';
+import { ObjectLiteralType } from '../../type';
 
-type MenuEffectivePropsType = Indexed<{
-    enableBottomSeparator?: boolean;
-    secondary?: boolean;
-    tertiary?: boolean;
-    expanded?: boolean;
-    enableEffects?: boolean;
+type MenuEffectivePropsType = Partial<{
+    secondary: boolean;
+    tertiary: boolean;
+    expanded: boolean;
+    enableBottomSeparator: boolean;
+    enableEffects: boolean;
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
     PaddingAttributesType &
-    MarginAttributesType;
+    MarginAttributesType &
+    ObjectLiteralType;
 
 /* Menu component prop type */
 export type MenuPropsType = MenuEffectivePropsType & ComponentStylePropsType;

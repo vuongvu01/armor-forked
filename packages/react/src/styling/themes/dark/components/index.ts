@@ -41,6 +41,8 @@ import { getDropdownBeforeSectionClearButtonOverride } from './DropdownBeforeSec
 import { getOptionListItemOverride } from './OptionListItem';
 import { getOptionListOverride } from './OptionList';
 import { getDatePickerOverride } from './DatePicker';
+import { getContextMenuOverride } from './ContextMenu';
+import { getIconButtonOverride } from './IconButton';
 
 export const darkThemeComponentOverrides = {
     Accordion: getAccordionOverride,
@@ -83,4 +85,6 @@ export const darkThemeComponentOverrides = {
     TableExpandableSection: getTableExpandableSectionOverride,
     Message: getMessageOverride,
     DatePicker: getDatePickerOverride,
+    ContextMenu: getContextMenuOverride,
+    IconButton: getIconButtonOverride,
 };

@@ -5,14 +5,13 @@ import { useComponentTheme } from '../../utils/hooks';
 import { useMenuClassNames } from './utils/useMenuClassNames';
 import { MenuRoot } from './style';
 import { MenuPropsType } from './type';
-import { menuDefaultTheme } from './theme';
 import { MENU_CLASS_PREFIX } from './constants';
 
 export const Menu: FunctionComponent<MenuPropsType> = forwardRef(function Menu(
     { className, ...restProps },
     ref,
 ) {
-    const theme = useComponentTheme(MENU_CLASS_PREFIX, menuDefaultTheme);
+    const theme = useComponentTheme(MENU_CLASS_PREFIX);
     const classNameComponents = useMenuClassNames(MENU_CLASS_PREFIX, className);
 
     return (
