@@ -770,4 +770,22 @@ describe('<DataTable />', () => {
         fireEvent.click(controller!);
         expect(onSectionExpansionChange).toHaveBeenCalledWith(['2']);
     });
+
+    it('should support disabling header', async () => {
+        let result = render(
+            <DataTable columns={expandableSectionColumns} data={dataSource} />,
+        );
+        let head = result.container.querySelector('.TableHead-Root');
+        expect(head).toBeInTheDocument();
+
+        result = render(
+            <DataTable
+                columns={expandableSectionColumns}
+                data={dataSource}
+                enableHeader={false}
+            />,
+        );
+        head = result.container.querySelector('.TableHead-Root');
+        expect(head).not.toBeInTheDocument();
+    });
 });

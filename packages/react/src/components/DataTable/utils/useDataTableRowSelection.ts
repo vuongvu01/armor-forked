@@ -1,6 +1,10 @@
 import { MouseEvent, useCallback, useMemo, useState } from 'react';
 import { DataTableDataType, DataTablePropsType } from '../type';
 import { ScalarType } from '../../../type';
+import {
+    CHECKBOX_CHECK_TYPE_DASH,
+    CHECKBOX_CHECK_TYPE_TICK,
+} from '../../Checkbox';
 
 export const useDataTableRowSelection = (
     dataSafe: DataTableDataType[],
@@ -86,11 +90,25 @@ export const useDataTableRowSelection = (
     return {
         result: {
             enableRowSelection,
-            selectedRowIds: selectedRowIdsActual,
-            onHeadSelectorCellClick,
+            getSelectAllCheckboxCellProps: () => ({
+                checked: someRowsSelected || allRowsSelected,
+                checkedIcon: (allRowsSelected
+                    ? CHECKBOX_CHECK_TYPE_TICK
+                    : CHECKBOX_CHECK_TYPE_DASH) as 'tick' | 'dash',
+                isHeader: true,
+                onClick: onHeadSelectorCellClick,
+            }),
+            getSelectRowCheckboxCellProps: (rowId: ScalarType) => {
+                const isRowSelected =
+                    enableRowSelection && selectedRowIdsActual.includes(rowId);
+
+                return {
+                    checked: isRowSelected,
+                    onClick: onDataSelectorCellClick,
+                    'data-rowid': rowId,
+                };
+            },
             onDataSelectorCellClick,
-            allRowsSelected,
-            someRowsSelected,
         },
         restProps,
     };

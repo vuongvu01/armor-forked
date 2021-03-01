@@ -260,3 +260,7 @@ export const PageNavigationPageSelector = () => {
         />
     );
 };
+
+export const NoHeader = () => (
+    <DataTable columns={columns} data={dataSource} enableHeader={false} />
+);

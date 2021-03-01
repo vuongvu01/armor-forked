@@ -410,3 +410,16 @@ export const WithPageNavigationAndPageSelector = () => {
         />
     );
 };
+
+export const NoHeader = () => {
+    const [data] = useState<typeof dataSource>(dataSource);
+
+    return (
+        <DataTable
+            columns={columns}
+            data={data}
+            enableHeader={false}
+            enableRowSelection
+        />
+    );
+};

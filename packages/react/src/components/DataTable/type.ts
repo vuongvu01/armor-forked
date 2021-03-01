@@ -15,7 +15,7 @@ import {
     MarginAttributesType,
     PaddingAttributesType,
     SizeAttributesType,
-} from '../../system/attributes';
+} from '../../system';
 
 export type DataTableColumnType = {
     id: string;
@@ -79,6 +79,7 @@ type DataTableEffectivePropsType = Partial<{
     onPageNavigationPageSizeChange: PageNavigationPropsType['onPageSizeChange'];
     pageNavigationPageSizeList: PageNavigationPropsType['pageSizeList'];
 
+    enableHeader: boolean;
     // add other custom properties here
 }> &
     Pick<TablePropsType, 'stickyHead'> &

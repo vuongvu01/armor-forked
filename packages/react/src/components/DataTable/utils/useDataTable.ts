@@ -1,5 +1,9 @@
-import React, { useMemo } from 'react';
-import { DataTablePropsType } from '../type';
+import { useMemo } from 'react';
+import {
+    DataTableColumnType,
+    DataTableDataType,
+    DataTablePropsType,
+} from '../type';
 import { useDataTableRowSorting } from './useDataTableRowSorting';
 import { useDataTableRowSelection } from './useDataTableRowSelection';
 import { useDataTableStickyColumns } from './useDataTableStickyColumns';
@@ -8,19 +12,24 @@ import {
     DATA_TABLE_EXPANDABLE_SECTION_OFFSET_LEFT_BASE,
     DATA_TABLE_EXPANDABLE_SECTION_OFFSET_LEFT_ROW_SELECTION,
 } from '../constants';
-import { DataTable } from '../DataTable';
 import { useDataTablePageNavigation } from './useDataTablePageNavigation';
+import { ReferenceType } from '../../../type';
+import { TableCell, TableControllerCell, TableHeadCell } from '../../Table';
 
-export const useDataTable = ({
-    columns,
-    data,
-    tableProps,
+export const useDataTable = (
+    {
+        columns,
+        data,
+        tableProps,
 
-    enableRowSelection,
-    stickyHead,
+        enableHeader,
+        enableRowSelection,
+        stickyHead,
 
-    ...restProps
-}: DataTablePropsType) => {
+        ...restProps
+    }: DataTablePropsType,
+    ref: ReferenceType,
+) => {
     // structure and data
     const columnsSafe = useMemo(() => columns || [], [columns]);
     const dataSafe = useMemo(() => data || [], [data]);
@@ -46,6 +55,15 @@ export const useDataTable = ({
     const columnCount = columnsSafe.length + (enableRowSelection ? 1 : 0);
     const enableFooter = pageNavigation.result.enablePageNavigation;
 
+    const {
+        enableExpandableSections,
+        expandableSectionControllers,
+        onExpansionSectionControllerButtonClick,
+        expandedSectionIds,
+    } = expandableSections.result;
+
+    const { rowSortOrder, onHeadCellClick } = rowSorting.result;
+
     return {
         columns: columnsSafe,
         data: dataSafe,
@@ -55,16 +73,7 @@ export const useDataTable = ({
         ...expandableSections.result,
         ...pageNavigation.result,
 
-        expandableSectionProps: {
-            colSpan: columnCount,
-            offsetLeft:
-                DATA_TABLE_EXPANDABLE_SECTION_OFFSET_LEFT_BASE +
-                (enableRowSelection
-                    ? DATA_TABLE_EXPANDABLE_SECTION_OFFSET_LEFT_ROW_SELECTION
-                    : 0),
-        },
-
-        rootProps: pageNavigation.restProps,
+        rootProps: { ref, ...pageNavigation.restProps },
         tableProps: {
             wide: true,
             stickyHead,
@@ -72,7 +81,82 @@ export const useDataTable = ({
             stickyColumns: stickyColumns.result.stickyColumns,
             horizontalScroll: stickyColumns.result.stickyColumns.length > 0,
         },
+        getRowProps: (item: DataTableDataType) => {
+            return {
+                'data-rowid': item.id,
+            };
+        },
+        getHeadCellProps: (column: DataTableColumnType) => {
+            const isController =
+                enableExpandableSections &&
+                expandableSectionControllers[column.id];
+            const paddingLeft = isController
+                ? DATA_TABLE_EXPANDABLE_SECTION_OFFSET_LEFT_BASE
+                : undefined;
 
+            const { id, sortType, cellProps, headCellProps } = column;
+
+            return {
+                ...cellProps,
+                ...headCellProps,
+                paddingLeft,
+                columnId: id,
+                'data-columnid': id,
+                sortable: true,
+                rowSortType: sortType,
+                rowSortOrder,
+                onClick: onHeadCellClick,
+            };
+        },
+        getCellProps: (
+            column: DataTableColumnType,
+            item: DataTableDataType,
+        ) => {
+            const isSectionExpanded =
+                enableExpandableSections &&
+                expandedSectionIds.includes(item.id);
+
+            return {
+                ...column.cellProps,
+                ...column.dataCellProps,
+                'data-rowid': item.id,
+                'data-columnid': column.id,
+                rowId: item.id,
+
+                // if a cell contains an expansion controller
+                onExpansionButtonClick: onExpansionSectionControllerButtonClick,
+                expanded: isSectionExpanded,
+            };
+        },
+        getExpandableSectionProps: (item: DataTableDataType) => {
+            const isSectionExpanded =
+                enableExpandableSections &&
+                expandedSectionIds.includes(item.id);
+
+            return {
+                colSpan: columnCount,
+                offsetLeft:
+                    DATA_TABLE_EXPANDABLE_SECTION_OFFSET_LEFT_BASE +
+                    (enableRowSelection
+                        ? DATA_TABLE_EXPANDABLE_SECTION_OFFSET_LEFT_ROW_SELECTION
+                        : 0),
+                expanded: isSectionExpanded,
+                'data-expandablesectionid': item.id,
+            };
+        },
+
+        getCellTag: (column: DataTableColumnType) => {
+            const isController =
+                enableExpandableSections &&
+                expandableSectionControllers[column.id];
+
+            return isController ? TableControllerCell : TableCell;
+        },
+        getHeadCellTag: (column: DataTableColumnType) => {
+            return column.sortable ? TableHeadCell : TableCell;
+        },
+
+        enableHeader: enableHeader !== false,
         enableFooter,
     };
 };

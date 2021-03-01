@@ -7,28 +7,17 @@ import {
     Table,
     TableHead,
     TableRow,
-    TableCell,
     TableBody,
-    TableHeadCell,
     TableCheckboxCell,
     TableExpandableSection,
-    TableControllerCell,
 } from '../Table';
-import {
-    CHECKBOX_CHECK_TYPE_DASH,
-    CHECKBOX_CHECK_TYPE_TICK,
-} from '../Checkbox';
 import { renderExpandableSectionEmpty } from './utils/useDataTableExpandableSections';
-import { ObjectLiteralType } from '../../type';
 import {
     getArrayOfScalarPropType,
     getScalarPropType,
 } from '../../utils/propTypes';
 import { DataTableRoot, DataTableFooter } from './style';
-import {
-    DATA_TABLE_EXPANDABLE_SECTION_OFFSET_LEFT_BASE,
-    DATA_TABLE_CLASS_PREFIX,
-} from './constants';
+import { DATA_TABLE_CLASS_PREFIX } from './constants';
 import { useComponentTheme } from '../../utils/hooks';
 import { useDataTableClassNames } from './utils/useDataTableClassNames';
 import { PageNavigation } from '../PageNavigation';
@@ -39,26 +28,14 @@ export const DataTable: FunctionComponent<DataTablePropsType> = forwardRef(
             columns,
             data,
 
-            expandableSectionProps,
-
-            // row order
-            rowSortOrder,
-            onHeadCellClick,
-
             // row selection
             enableRowSelection,
-            selectedRowIds,
-            onHeadSelectorCellClick,
-            onDataSelectorCellClick,
-            someRowsSelected,
-            allRowsSelected,
+            getSelectAllCheckboxCellProps,
+            getSelectRowCheckboxCellProps,
 
             // expandable sections
             enableExpandableSections,
-            expandableSectionControllers,
             renderExpandableSection,
-            expandedSectionIds,
-            onExpansionSectionControllerButtonClick,
 
             // page navigation
             enablePageNavigation,
@@ -66,9 +43,17 @@ export const DataTable: FunctionComponent<DataTablePropsType> = forwardRef(
 
             rootProps,
             tableProps,
+            getRowProps,
+            getHeadCellProps,
+            getCellProps,
+            getExpandableSectionProps,
 
+            getCellTag,
+            getHeadCellTag,
+
+            enableHeader,
             enableFooter,
-        } = useDataTable(props);
+        } = useDataTable(props, ref);
 
         const theme = useComponentTheme(DATA_TABLE_CLASS_PREFIX);
         const classNameComponents = useDataTableClassNames(
@@ -79,124 +64,63 @@ export const DataTable: FunctionComponent<DataTablePropsType> = forwardRef(
         return (
             <DataTableRoot
                 {...rootProps}
-                ref={ref}
                 theme={theme}
                 className={classNameComponents.Root}
             >
                 <Table {...tableProps}>
-                    <TableHead>
-                        <TableRow>
-                            {enableRowSelection && (
-                                <TableCheckboxCell
-                                    checked={
-                                        someRowsSelected || allRowsSelected
-                                    }
-                                    checkedIcon={
-                                        allRowsSelected
-                                            ? CHECKBOX_CHECK_TYPE_TICK
-                                            : CHECKBOX_CHECK_TYPE_DASH
-                                    }
-                                    isHeader
-                                    onClick={onHeadSelectorCellClick}
-                                    theme={theme}
-                                />
-                            )}
-                            {columns.map(column => {
-                                const key = column.key || column.id;
-                                const isController =
-                                    enableExpandableSections &&
-                                    expandableSectionControllers[column.id];
-                                const paddingLeft = isController
-                                    ? DATA_TABLE_EXPANDABLE_SECTION_OFFSET_LEFT_BASE
-                                    : undefined;
+                    {enableHeader && (
+                        <TableHead>
+                            <TableRow>
+                                {enableRowSelection && (
+                                    <TableCheckboxCell
+                                        {...getSelectAllCheckboxCellProps()}
+                                        theme={theme}
+                                    />
+                                )}
+                                {columns.map(column => {
+                                    const TableHeadCellTag = getHeadCellTag(
+                                        column,
+                                    );
 
-                                if (column.sortable) {
                                     return (
-                                        <TableHeadCell
-                                            {...column.headCellProps}
-                                            key={key}
-                                            columnId={column.id}
-                                            data-columnid={column.id}
-                                            sortable
-                                            rowSortType={column.sortType}
-                                            rowSortOrder={rowSortOrder}
-                                            onClick={onHeadCellClick}
-                                            paddingLeft={paddingLeft}
-                                            theme={theme}
+                                        <TableHeadCellTag
+                                            key={column.key || column.id}
+                                            {...getHeadCellProps(column)}
                                         >
                                             {column.title}
-                                        </TableHeadCell>
+                                        </TableHeadCellTag>
                                     );
-                                }
-
-                                return (
-                                    <TableCell
-                                        {...column.cellProps}
-                                        {...column.headCellProps}
-                                        key={key}
-                                        data-columnid={column.id}
-                                        onClick={onHeadCellClick}
-                                        paddingLeft={paddingLeft}
-                                    >
-                                        {column.title}
-                                    </TableCell>
-                                );
-                            })}
-                        </TableRow>
-                    </TableHead>
+                                })}
+                            </TableRow>
+                        </TableHead>
+                    )}
                     <TableBody>
                         {data.map(item => {
-                            const isSectionExpanded =
-                                enableExpandableSections &&
-                                expandedSectionIds.includes(item.id);
-                            const isRowSelected =
-                                enableRowSelection &&
-                                selectedRowIds.includes(item.id);
                             const key = item.key || item.id;
 
                             return (
                                 <Fragment key={key}>
-                                    <TableRow data-rowid={item.id}>
+                                    <TableRow {...getRowProps(item)}>
                                         {enableRowSelection && (
                                             <TableCheckboxCell
-                                                checked={isRowSelected}
-                                                onClick={
-                                                    onDataSelectorCellClick
-                                                }
-                                                data-rowid={item.id}
+                                                {...getSelectRowCheckboxCellProps(
+                                                    item.id,
+                                                )}
                                                 theme={theme}
                                             />
                                         )}
                                         {columns.map(column => {
-                                            const isController =
-                                                enableExpandableSections &&
-                                                expandableSectionControllers[
-                                                    column.id
-                                                ];
-
-                                            const CellTag = isController
-                                                ? TableControllerCell
-                                                : TableCell;
-
-                                            let cellProps: ObjectLiteralType = {
-                                                ...column.cellProps,
-                                                ...column.dataCellProps,
-                                                'data-rowid': item.id,
-                                                'data-columnid': column.id,
-                                            };
-                                            if (isController) {
-                                                cellProps = {
-                                                    ...cellProps,
-                                                    rowId: item.id,
-                                                    expanded: isSectionExpanded,
-                                                    onExpansionButtonClick: onExpansionSectionControllerButtonClick,
-                                                };
-                                            }
+                                            const TableCellTag = getCellTag(
+                                                column,
+                                            );
 
                                             return (
-                                                <CellTag
+                                                <TableCellTag
                                                     key={column.id}
-                                                    {...cellProps}
+                                                    {...getCellProps(
+                                                        column,
+                                                        item,
+                                                    )}
                                                 >
                                                     {column.formatDataCellContent
                                                         ? column.formatDataCellContent(
@@ -205,15 +129,13 @@ export const DataTable: FunctionComponent<DataTablePropsType> = forwardRef(
                                                               column,
                                                           )
                                                         : item[column.id]}
-                                                </CellTag>
+                                                </TableCellTag>
                                             );
                                         })}
                                     </TableRow>
                                     {enableExpandableSections && (
                                         <TableExpandableSection
-                                            {...expandableSectionProps}
-                                            expanded={isSectionExpanded}
-                                            data-expandablesectionid={item.id}
+                                            {...getExpandableSectionProps(item)}
                                         >
                                             {renderExpandableSection(item)}
                                         </TableExpandableSection>
