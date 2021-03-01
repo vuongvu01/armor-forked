@@ -38,7 +38,7 @@ const propertyList = makePropList([
     'enableContentWrap',
 ]);
 
-const getRootDynamicStyle = ({
+const getRootStyle = ({
     isHeader,
     stickyTop,
     stickyVisible,
@@ -58,10 +58,6 @@ const getRootDynamicStyle = ({
             vertical-align: middle;
             ${typography('paragraphMedium')};
             font-weight: ${fontWeightMedium};
-
-            &:hover {
-                background-color: ${color('primary.lightest')};
-            }
         `;
     }
 
@@ -242,11 +238,11 @@ export const TableCellRoot = styled(Wrapper).withConfig(
     ${typography('paragraphLarge')};
     padding: ${spacing(componentSpacing05)} ${spacing(componentSpacing04)};
 
-    ${getRootDynamicStyle}
+    ${getRootStyle};
     ${getComponentOverride('TableCell')};
-    ${paddingAttributes}
-    ${widthAttributes}
-    ${heightAttributes}
-    ${colorAttributes}
-    ${tableCellContentAlignment}
+    ${paddingAttributes};
+    ${widthAttributes};
+    ${heightAttributes};
+    ${colorAttributes};
+    ${tableCellContentAlignment};
 `;

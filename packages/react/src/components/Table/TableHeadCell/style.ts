@@ -5,6 +5,8 @@ import { makeBEM, makePropList, getPropsBlocker } from '../../../utils';
 import { TableCell } from '../TableCell';
 import { transitionDurationInSec } from '../../../constants';
 import { TABLE_HEAD_CELL_CLASS_PREFIX } from './constants';
+import { color } from '../../../system';
+import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
 
 // all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
 const propertyList = makePropList([
@@ -56,8 +58,10 @@ export const TableHeadCellRoot = styled(TableCell).withConfig(
         .${alphabeticalIconClassName}, .${numericalIconClassName} {
             opacity: 1;
         }
+        background-color: ${color('primary.lightest')};
     }
 
     ${getRootDynamicStyle};
+    ${getComponentOverride('TableHeadCell')};
     ${paddingAttributes};
 `;

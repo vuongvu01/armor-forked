@@ -98,6 +98,7 @@ export const DataTable: FunctionComponent<DataTablePropsType> = forwardRef(
                                     }
                                     isHeader
                                     onClick={onHeadSelectorCellClick}
+                                    theme={theme}
                                 />
                             )}
                             {columns.map(column => {
@@ -121,6 +122,7 @@ export const DataTable: FunctionComponent<DataTablePropsType> = forwardRef(
                                             rowSortOrder={rowSortOrder}
                                             onClick={onHeadCellClick}
                                             paddingLeft={paddingLeft}
+                                            theme={theme}
                                         >
                                             {column.title}
                                         </TableHeadCell>
@@ -162,6 +164,7 @@ export const DataTable: FunctionComponent<DataTablePropsType> = forwardRef(
                                                     onDataSelectorCellClick
                                                 }
                                                 data-rowid={item.id}
+                                                theme={theme}
                                             />
                                         )}
                                         {columns.map(column => {
