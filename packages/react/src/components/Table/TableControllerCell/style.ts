@@ -5,11 +5,10 @@ import {
     TableControllerCellContainerPropsType,
     TableControllerCellIconPropsType,
 } from './type';
-import { paddingAttributes } from '../../../system/attributes';
 import { makePropList, getPropsBlocker } from '../../../utils';
 import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
 import { TableCell } from '../TableCell';
-import { color, spacing } from '../../../system/mixins';
+import { color, spacing, paddingAttributes } from '../../../system';
 import { transition } from '../../../system/mixins/transition';
 import { expansion } from '../../../system/mixins/expansion';
 

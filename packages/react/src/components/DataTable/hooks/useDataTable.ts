@@ -58,7 +58,7 @@ export const useDataTable = (
     const {
         enableExpandableSections,
         expandableSectionControllers,
-        onExpansionSectionControllerButtonClick,
+        onExpansionSectionControllerTriggerClick,
         expandedSectionIds,
     } = expandableSections.result;
 
@@ -119,12 +119,15 @@ export const useDataTable = (
             return {
                 ...column.cellProps,
                 ...column.dataCellProps,
+                ...(column.getDataCellProps
+                    ? column.getDataCellProps(item[column.id], item, column)
+                    : {}),
                 'data-rowid': item.id,
                 'data-columnid': column.id,
                 rowId: item.id,
 
                 // if a cell contains an expansion controller
-                onExpansionButtonClick: onExpansionSectionControllerButtonClick,
+                onTriggerClick: onExpansionSectionControllerTriggerClick,
                 expanded: isSectionExpanded,
             };
         },

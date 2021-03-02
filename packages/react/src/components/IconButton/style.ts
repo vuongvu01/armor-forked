@@ -16,14 +16,26 @@ const propertyList = {
     light: true,
 };
 
-const getRootDynamicStyle = ({ light }: IconButtonRootPropsType) => {
-    const result = css`
-        &:hover {
-            background-color: ${color(
-                light ? 'neutral.02' : 'primary.lightest',
-            )};
-        }
-    `;
+const getRootStyle = ({ light, visible }: IconButtonRootPropsType) => {
+    let result = {};
+
+    if (light) {
+        result = css`
+            ${result};
+            &:hover {
+                background-color: ${color(
+                    light ? 'neutral.02' : 'primary.lightest',
+                )};
+            }
+        `;
+    }
+
+    if (visible === false) {
+        result = css`
+            ${result};
+            visibility: hidden;
+        `;
+    }
 
     return result;
 };
@@ -46,7 +58,7 @@ export const IconButtonRoot = styled.button.withConfig(
     background-color: transparent;
     color: ${token('body.color')};
 
-    ${getRootDynamicStyle};
+    ${getRootStyle};
     ${getComponentOverride('IconButton')};
     ${marginAttributes};
 `;

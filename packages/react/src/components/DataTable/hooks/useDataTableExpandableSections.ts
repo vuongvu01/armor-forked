@@ -7,11 +7,15 @@ import {
 import { ObjectLiteralType, ScalarType } from '../../../type';
 
 export const renderExpandableSectionEmpty = (data: DataTableDataType) => '';
+export const renderExpandableTriggerEmpty = (data: DataTableDataType) =>
+    undefined;
 
 export const useDataTableExpandableSections = (
     columnsSafe: DataTableColumnType[],
     {
+        enableExpandableSections,
         renderExpandableSection,
+        renderExpandableSectionTrigger,
         expandableSectionControllerColumnId,
         expandedSectionIds,
         defaultExpandedSectionIds,
@@ -20,23 +24,43 @@ export const useDataTableExpandableSections = (
     }: DataTablePropsType,
 ) => {
     const expandableSectionControllers = useMemo(() => {
-        const result: ObjectLiteralType<boolean> = {};
+        const controllers: ObjectLiteralType<boolean> = {};
         if (expandableSectionControllerColumnId) {
-            result[expandableSectionControllerColumnId] = true;
+            controllers[expandableSectionControllerColumnId] = true;
         }
 
         columnsSafe.forEach(column => {
             if (column.expandableSectionController) {
-                result[column.id] = true;
+                controllers[column.id] = true;
             }
         });
 
-        return result;
-    }, [columnsSafe, expandableSectionControllerColumnId]);
+        // backward-compatibility-enforcing spaghetti
+        if (
+            enableExpandableSections !== undefined &&
+            !controllers.length &&
+            columnsSafe.length
+        ) {
+            // nothing was selected as a controller, then use the first column
+            controllers[columnsSafe[0].id] = true;
+        }
 
-    const enableExpandableSections =
-        !!renderExpandableSection &&
-        !!Object.keys(expandableSectionControllers).length;
+        return controllers;
+    }, [
+        columnsSafe,
+        expandableSectionControllerColumnId,
+        enableExpandableSections,
+    ]);
+
+    // backward-compatibility-enforcing spaghetti
+    let reallyEnableExpandableSections = false;
+    if (enableExpandableSections === undefined) {
+        reallyEnableExpandableSections =
+            !!renderExpandableSection &&
+            !!Object.keys(expandableSectionControllers).length;
+    } else {
+        reallyEnableExpandableSections = enableExpandableSections;
+    }
 
     const [
         expandedSectionIdsInternal,
@@ -58,11 +82,9 @@ export const useDataTableExpandableSections = (
         [onSectionExpansionChange, expandedSectionIds],
     );
 
-    // const rowIds = useMemo(() => dataSafe.map(item => item.id), [dataSafe]);
-
-    const onExpansionSectionControllerButtonClick = useCallback(
+    const onExpansionSectionControllerTriggerClick = useCallback(
         (event: MouseEvent<HTMLButtonElement>) => {
-            if (!enableExpandableSections) {
+            if (!reallyEnableExpandableSections) {
                 return;
             }
 
@@ -83,18 +105,19 @@ export const useDataTableExpandableSections = (
         [
             expandedSectionIdsActual,
             onExpansionChangeInternal,
-            enableExpandableSections,
+            reallyEnableExpandableSections,
         ],
     );
 
     return {
         result: {
-            enableExpandableSections,
+            enableExpandableSections: reallyEnableExpandableSections,
             renderExpandableSection:
                 renderExpandableSection || renderExpandableSectionEmpty,
+            renderExpandableSectionTrigger,
             expandableSectionControllers,
             expandedSectionIds: expandedSectionIdsActual,
-            onExpansionSectionControllerButtonClick,
+            onExpansionSectionControllerTriggerClick,
         },
         restProps,
     };

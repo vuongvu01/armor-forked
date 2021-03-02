@@ -1,3 +1,5 @@
+import { ObjectLiteralType } from '../../../src/type';
+
 export const columns = [
     {
         title: 'Name',
@@ -8,6 +10,32 @@ export const columns = [
         id: 'age',
         sortable: true,
         formatDataCellContent: (value: string) => `${value} years`,
+    },
+    {
+        title: 'Address',
+        sortable: true,
+        id: 'address',
+    },
+];
+
+export const columnsWithConditionalExpansionTrigger = [
+    {
+        title: 'Name',
+        id: 'name',
+        getDataCellProps: (value: string) => {
+            if (value.startsWith('M')) {
+                return {
+                    enableTriggerVisibility: false,
+                };
+            }
+
+            return {};
+        },
+    },
+    {
+        title: 'Age',
+        id: 'age',
+        sortable: true,
     },
     {
         title: 'Address',

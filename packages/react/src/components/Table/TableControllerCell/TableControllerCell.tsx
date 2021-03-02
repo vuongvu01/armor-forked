@@ -2,8 +2,8 @@ import React, { FunctionComponent, forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { useComponentTheme } from '../../../utils/hooks';
-import { useTableControllerCellClassNames } from './utils/useTableControllerCellClassNames';
-import { useTableControllerCell } from './utils/useTableControllerCell';
+import { useTableControllerCellClassNames } from './hooks/useTableControllerCellClassNames';
+import { useTableControllerCell } from './hooks/useTableControllerCell';
 import {
     TableControllerCellRoot,
     TableControllerCellContainer,
@@ -24,8 +24,8 @@ export const TableControllerCell: FunctionComponent<TableControllerCellPropsType
 
         const {
             rootProps,
-            iconButtonProps,
-            iconButtonIconProps,
+            triggerProps,
+            triggerIconProps,
         } = useTableControllerCell(restProps);
 
         return (
@@ -40,12 +40,12 @@ export const TableControllerCell: FunctionComponent<TableControllerCellPropsType
                     className={classNameComponents.Container}
                 >
                     <IconButton
-                        {...iconButtonProps}
+                        {...triggerProps}
                         theme={theme}
-                        className={classNameComponents.Controller}
+                        className={classNameComponents.Trigger}
                     >
                         <TableControllerCellIcon
-                            {...iconButtonIconProps}
+                            {...triggerIconProps}
                             theme={theme}
                             className={classNameComponents.Icon}
                         />

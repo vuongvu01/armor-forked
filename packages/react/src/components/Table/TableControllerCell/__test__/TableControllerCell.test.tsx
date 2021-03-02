@@ -36,7 +36,7 @@ describe('<TableControllerCell />', () => {
         expect(result.container).toHaveBEMStructure('TableControllerCell', {
             Root: [],
             Container: [],
-            Controller: [],
+            Trigger: [],
             Icon: [],
         });
     });

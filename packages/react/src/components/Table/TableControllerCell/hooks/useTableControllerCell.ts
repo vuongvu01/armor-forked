@@ -1,20 +1,22 @@
 import { TableControllerCellPropsType } from '../type';
 
 export const useTableControllerCell = ({
-    onExpansionButtonClick,
+    onTriggerClick,
     expanded,
     rowId,
+    enableTriggerVisibility,
     ...restProps
 }: TableControllerCellPropsType) => {
     return {
         rootProps: restProps,
-        iconButtonProps: {
+        triggerProps: {
             light: true,
             marginRight: 2.5,
-            onClick: onExpansionButtonClick,
+            onClick: onTriggerClick,
+            visible: enableTriggerVisibility !== false,
             'data-rowid': rowId,
         },
-        iconButtonIconProps: {
+        triggerIconProps: {
             small: true,
             expanded,
         },

@@ -9,7 +9,7 @@ export const useTableControllerCellClassNames = (
         return {
             Root: makeRootClassName(classPrefix, className),
             Container: makeBEM(classPrefix, 'Container'),
-            Controller: makeBEM(classPrefix, 'Controller'),
+            Trigger: makeBEM(classPrefix, 'Trigger'),
             Icon: makeBEM(classPrefix, 'Icon'),
         };
     }, [classPrefix, className]);

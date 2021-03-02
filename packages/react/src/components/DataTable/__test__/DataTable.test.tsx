@@ -704,7 +704,7 @@ describe('<DataTable />', () => {
         );
 
         const controller = container.querySelector(
-            '[data-rowid="3"] .TableControllerCell-Controller',
+            '[data-rowid="3"] .TableControllerCell-Trigger',
         );
 
         fireEvent.click(controller!);
@@ -724,7 +724,7 @@ describe('<DataTable />', () => {
         );
 
         const controller = container.querySelector(
-            '[data-rowid="3"] .TableControllerCell-Controller',
+            '[data-rowid="3"] .TableControllerCell-Trigger',
         );
 
         fireEvent.click(controller!);
@@ -744,7 +744,7 @@ describe('<DataTable />', () => {
         );
 
         const controller = container.querySelector(
-            '[data-rowid="3"] .TableControllerCell-Controller',
+            '[data-rowid="3"] .TableControllerCell-Trigger',
         );
 
         fireEvent.click(controller!);
@@ -764,7 +764,7 @@ describe('<DataTable />', () => {
         );
 
         const controller = container.querySelector(
-            '[data-rowid="3"] .TableControllerCell-Controller',
+            '[data-rowid="3"] .TableControllerCell-Trigger',
         );
 
         fireEvent.click(controller!);

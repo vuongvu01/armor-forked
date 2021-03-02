@@ -1,7 +1,7 @@
 import React, { FunctionComponent, forwardRef, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
-import { useDataTable } from './utils/useDataTable';
+import { useDataTable } from './hooks/useDataTable';
 import { DataTablePropsType } from './type';
 import {
     Table,
@@ -11,7 +11,7 @@ import {
     TableCheckboxCell,
     TableExpandableSection,
 } from '../Table';
-import { renderExpandableSectionEmpty } from './utils/useDataTableExpandableSections';
+import { renderExpandableSectionEmpty } from './hooks/useDataTableExpandableSections';
 import {
     getArrayOfScalarPropType,
     getScalarPropType,
@@ -19,7 +19,7 @@ import {
 import { DataTableRoot, DataTableFooter } from './style';
 import { DATA_TABLE_CLASS_PREFIX } from './constants';
 import { useComponentTheme } from '../../utils/hooks';
-import { useDataTableClassNames } from './utils/useDataTableClassNames';
+import { useDataTableClassNames } from './hooks/useDataTableClassNames';
 import { PageNavigation } from '../PageNavigation';
 
 export const DataTable: FunctionComponent<DataTablePropsType> = forwardRef(
@@ -78,17 +78,17 @@ export const DataTable: FunctionComponent<DataTablePropsType> = forwardRef(
                                     />
                                 )}
                                 {columns.map(column => {
-                                    const TableHeadCellTag = getHeadCellTag(
+                                    const TableHeadCellComponent = getHeadCellTag(
                                         column,
                                     );
 
                                     return (
-                                        <TableHeadCellTag
+                                        <TableHeadCellComponent
                                             key={column.key || column.id}
                                             {...getHeadCellProps(column)}
                                         >
                                             {column.title}
-                                        </TableHeadCellTag>
+                                        </TableHeadCellComponent>
                                     );
                                 })}
                             </TableRow>
@@ -110,12 +110,12 @@ export const DataTable: FunctionComponent<DataTablePropsType> = forwardRef(
                                             />
                                         )}
                                         {columns.map(column => {
-                                            const TableCellTag = getCellTag(
+                                            const TableCellComponent = getCellTag(
                                                 column,
                                             );
 
                                             return (
-                                                <TableCellTag
+                                                <TableCellComponent
                                                     key={column.id}
                                                     {...getCellProps(
                                                         column,
@@ -129,7 +129,7 @@ export const DataTable: FunctionComponent<DataTablePropsType> = forwardRef(
                                                               column,
                                                           )
                                                         : item[column.id]}
-                                                </TableCellTag>
+                                                </TableCellComponent>
                                             );
                                         })}
                                     </TableRow>

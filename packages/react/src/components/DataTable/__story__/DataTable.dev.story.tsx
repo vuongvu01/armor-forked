@@ -3,11 +3,12 @@
 import React, { useCallback, useState } from 'react';
 import { withKnobs } from '@storybook/addon-knobs';
 import cloneDeep from 'clone-deep';
+import styled from 'styled-components';
 import { dataSource, dataSourceWide, columns, columnsWide } from './demoData';
 
 import { DataTable } from '../DataTable';
 import { getSortingFunction } from '../utils/getSortingFunction';
-import { ScalarType } from '../../../type';
+import { ObjectLiteralType, ScalarType } from '../../../type';
 import { multiplyDataRows } from './utils';
 import { withWrapper } from '../../../helpers/Wrapper';
 
@@ -420,6 +421,68 @@ export const NoHeader = () => {
             data={data}
             enableHeader={false}
             enableRowSelection
+        />
+    );
+};
+
+const CustomDataTable = styled(DataTable)`
+    .TableControllerCell-Root:first-child {
+        .TableControllerCell-Container {
+            align-items: flex-start;
+        }
+    }
+`;
+
+export const OverrideFirstColumn = () => {
+    const [data] = useState<typeof dataSource>(dataSource);
+
+    return (
+        <CustomDataTable
+            columns={columns}
+            data={data}
+            enableExpandableSections
+        />
+    );
+};
+
+export const columnsWithCustomProps = [
+    {
+        title: 'Name',
+        id: 'name',
+        getDataCellProps: (
+            value: string,
+            item: { id: string | number } & ObjectLiteralType,
+        ) => {
+            if (value.startsWith('M')) {
+                return {
+                    enableTriggerVisibility: false,
+                };
+            }
+
+            return {};
+        },
+    },
+    {
+        title: 'Age',
+        id: 'age',
+        sortable: true,
+        formatDataCellContent: (value: string) => `${value} years`,
+    },
+    {
+        title: 'Address',
+        sortable: true,
+        id: 'address',
+    },
+];
+
+export const ConditionalExpansion = () => {
+    const [data] = useState<typeof dataSource>(dataSource);
+
+    return (
+        <DataTable
+            columns={columnsWithCustomProps}
+            data={data}
+            enableExpandableSections
         />
     );
 };
