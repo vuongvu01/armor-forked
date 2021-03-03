@@ -1,7 +1,13 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
 
 import { DataTable } from '../../../src/components';
-import { dataSource, columns, dataSourceWide, columnsWide } from './demoData';
+import {
+    dataSource,
+    columns,
+    dataSourceWide,
+    columnsWide,
+    columnsWithConditionalExpansionTrigger,
+} from './demoData';
 import { multiplyDataRows } from '../../../src/components/DataTable/__story__/utils';
 import { DarkBackground } from '../../../src/helpers/DarkBackground';
 
@@ -260,3 +266,23 @@ export const PageNavigationPageSelector = () => {
         />
     );
 };
+
+export const NoHeader = () => (
+    <DataTable columns={columns} data={dataSource} enableHeader={false} />
+);
+
+export const ConditionalExpansionTrigger = () => (
+    <DataTable
+        columns={columnsWithConditionalExpansionTrigger}
+        data={dataSource}
+        enableExpandableSections
+        renderExpandableSection={item => {
+            return (
+                <>
+                    {item.name} is {item.age} years old and he/she lives in{' '}
+                    {item.address}
+                </>
+            );
+        }}
+    />
+);

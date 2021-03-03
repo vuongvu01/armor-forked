@@ -1,18 +1,11 @@
 import styled, { css } from 'styled-components';
 import { TableHeadCellRootPropsType } from './type';
-import { paddingAttributes } from '../../../system/attributes';
-import { makeBEM, makePropList, getPropsBlocker } from '../../../utils';
+import { color, paddingAttributes } from '../../../system';
+import { makeBEM } from '../../../utils';
 import { TableCell } from '../TableCell';
 import { transitionDurationInSec } from '../../../constants';
 import { TABLE_HEAD_CELL_CLASS_PREFIX } from './constants';
-
-// all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
-const propertyList = makePropList([
-    'sortingEnabled',
-    'sortable',
-    'columnId',
-    'rowSortType',
-]);
+import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
 
 const getRootDynamicStyle = ({
     theme,
@@ -45,9 +38,7 @@ const numericalIconClassName = makeBEM(
 );
 
 // if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
-export const TableHeadCellRoot = styled(TableCell).withConfig(
-    getPropsBlocker(propertyList, false),
-)<TableHeadCellRootPropsType>`
+export const TableHeadCellRoot = styled(TableCell)<TableHeadCellRootPropsType>`
     .${alphabeticalIconClassName}, .${numericalIconClassName} {
         opacity: 0;
         transition: opacity ${transitionDurationInSec}s ease;
@@ -56,8 +47,10 @@ export const TableHeadCellRoot = styled(TableCell).withConfig(
         .${alphabeticalIconClassName}, .${numericalIconClassName} {
             opacity: 1;
         }
+        background-color: ${color('primary.lightest')};
     }
 
     ${getRootDynamicStyle};
+    ${getComponentOverride('TableHeadCell')};
     ${paddingAttributes};
 `;

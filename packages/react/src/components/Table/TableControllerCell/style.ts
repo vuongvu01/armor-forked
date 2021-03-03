@@ -5,21 +5,22 @@ import {
     TableControllerCellContainerPropsType,
     TableControllerCellIconPropsType,
 } from './type';
-import { paddingAttributes } from '../../../system/attributes';
-import { makePropList, getPropsBlocker } from '../../../utils';
 import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
 import { TableCell } from '../TableCell';
-import { color, spacing } from '../../../system/mixins';
+import {
+    color,
+    spacing,
+    paddingAttributes,
+    propsBlocker,
+} from '../../../system';
 import { transition } from '../../../system/mixins/transition';
 import { expansion } from '../../../system/mixins/expansion';
-
-// all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
-const propertyList = makePropList(['expanded']);
+import { getPropsBlocker } from '../../../utils';
 
 // if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
-export const TableControllerCellRoot = styled(TableCell).withConfig(
-    getPropsBlocker(propertyList, false),
-)<TableControllerCellRootPropsType>`
+export const TableControllerCellRoot = styled(TableCell)<
+    TableControllerCellRootPropsType
+>`
     box-sizing: border-box;
     padding-top: ${spacing(4)};
     padding-bottom: ${spacing(4)};
@@ -29,16 +30,16 @@ export const TableControllerCellRoot = styled(TableCell).withConfig(
     ${paddingAttributes};
 `;
 
-export const TableControllerCellContainer = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<TableControllerCellContainerPropsType>`
+export const TableControllerCellContainer = styled.div.withConfig(propsBlocker)<
+    TableControllerCellContainerPropsType
+>`
     box-sizing: border-box;
     display: flex;
     align-items: center;
 `;
 
 export const TableControllerCellIcon = styled(ArrowDownIcon).withConfig(
-    getPropsBlocker({}, false),
+    getPropsBlocker({ expanded: true }, false),
 )<TableControllerCellIconPropsType>`
     color: ${color('primary.main')};
     ${transition({ transform: true })};

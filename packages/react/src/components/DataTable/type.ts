@@ -15,7 +15,7 @@ import {
     MarginAttributesType,
     PaddingAttributesType,
     SizeAttributesType,
-} from '../../system/attributes';
+} from '../../system';
 
 export type DataTableColumnType = {
     id: string;
@@ -27,6 +27,11 @@ export type DataTableColumnType = {
     dataCellProps?: TableCellPropsType;
     cellProps?: TableCellPropsType;
     expandableSectionController?: boolean;
+    getDataCellProps?: (
+        value: any,
+        item: DataTableDataType,
+        column: DataTableColumnType,
+    ) => TableCellPropsType;
     formatDataCellContent?: (
         value: any,
         item: DataTableDataType,
@@ -61,11 +66,13 @@ type DataTableEffectivePropsType = Partial<{
     stickyRightColumn: boolean;
 
     // expandable sections
+    enableExpandableSections: boolean;
+    renderExpandableSection: (data: DataTableDataType) => ReactChild;
+
     defaultExpandedSectionIds: ScalarType[];
     expandedSectionIds: ScalarType[];
-    expandableSectionControllerColumnId: ScalarType;
-    renderExpandableSection: (data: DataTableDataType) => ReactChild;
     onSectionExpansionChange: (expandedSections: ScalarType[]) => void;
+    expandableSectionControllerColumnId: ScalarType;
 
     // page navigation
     enablePageNavigation: boolean;
@@ -79,6 +86,7 @@ type DataTableEffectivePropsType = Partial<{
     onPageNavigationPageSizeChange: PageNavigationPropsType['onPageSizeChange'];
     pageNavigationPageSizeList: PageNavigationPropsType['pageSizeList'];
 
+    enableHeader: boolean;
     // add other custom properties here
 }> &
     Pick<TablePropsType, 'stickyHead'> &

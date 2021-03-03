@@ -4,21 +4,13 @@ import {
     TableExpandableSectionContentPropsType,
     TableExpandableSectionRootPropsType,
 } from './type';
-import { makePropList, getPropsBlocker } from '../../../utils';
 import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
 import { TableRow } from '../TableRow';
 import { TableCell } from '../TableCell';
-import { color, spacing } from '../../../system/mixins';
+import { color, spacing, propsBlocker } from '../../../system';
 import { RESIZE_OBSERVER_SUPPORTED } from './constants';
 import { transitionDurationInSec } from '../../../constants';
 import { componentSpacing04, componentSpacing05 } from '../../../tokens';
-
-// all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
-const propertyList = makePropList([
-    'expanded',
-    'height',
-    'enableDefaultPadding',
-]);
 
 const getRootDynamicStyle = ({
     expanded,
@@ -36,9 +28,9 @@ const getRootDynamicStyle = ({
 };
 
 // if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
-export const TableExpandableSectionRoot = styled(TableRow).withConfig(
-    getPropsBlocker(propertyList, false),
-)<TableExpandableSectionRootPropsType>`
+export const TableExpandableSectionRoot = styled(TableRow)<
+    TableExpandableSectionRootPropsType
+>`
     white-space: normal;
     background-color: ${color('neutral.00')};
     &:hover td {
@@ -64,9 +56,9 @@ const getCellDynamicStyle = ({
     return result;
 };
 
-export const TableExpandableSectionCell = styled(TableCell).withConfig(
-    getPropsBlocker(propertyList, false),
-)<TableExpandableSectionCellPropsType>`
+export const TableExpandableSectionCell = styled(TableCell)<
+    TableExpandableSectionCellPropsType
+>`
     position: relative;
     padding: 0;
     ${getCellDynamicStyle};
@@ -114,7 +106,7 @@ const getContentDynamicStyle = ({
 };
 
 export const TableExpandableSectionContent = styled.div.withConfig(
-    getPropsBlocker(propertyList),
+    propsBlocker,
 )<TableExpandableSectionContentPropsType>`
     opacity: 0;
     transition: opacity ${transitionDurationInSec}s ease-in;

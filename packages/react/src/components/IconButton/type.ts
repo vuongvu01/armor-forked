@@ -3,15 +3,17 @@ import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../type';
-import { MarginAttributesType } from '../../system/attributes';
-import { Indexed } from '../../type';
+import { MarginAttributesType } from '../../system';
+import { ObjectLiteralType } from '../../type';
 
-type IconButtonEffectivePropsType = Indexed<{
-    light?: boolean;
+type IconButtonEffectivePropsType = Partial<{
+    light: boolean;
+    visible: boolean;
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLButtonElement> & // includes all HTML Div attributes
-    MarginAttributesType;
+    MarginAttributesType &
+    ObjectLiteralType;
 
 /* IconButton component prop type */
 export type IconButtonPropsType = IconButtonEffectivePropsType &

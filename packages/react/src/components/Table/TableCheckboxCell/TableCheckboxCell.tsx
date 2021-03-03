@@ -5,43 +5,31 @@ import React, {
     MouseEvent,
 } from 'react';
 
-import { useTableCheckboxCellClassNames } from './utils/useTableCheckboxCellClassNames';
+import { useTableCheckboxCellClassNames } from './hooks/useTableCheckboxCellClassNames';
 import { TableCheckboxCellRoot, TableCheckboxCellCheckbox } from './style';
 import { TableCheckboxCellPropsType } from './type';
-import {
-    tableCheckboxCellRootTestId,
-    TABLE_CHECKBOX_CELL_CLASS_PREFIX,
-} from './constants';
+import { TABLE_CHECKBOX_CELL_CLASS_PREFIX } from './constants';
+import { useComponentTheme } from '../../../utils/hooks';
+import { useTableCheckboxCell } from './hooks/useTableCheckboxCell';
 
 export const TableCheckboxCell: FunctionComponent<TableCheckboxCellPropsType> = forwardRef(
-    function TableCheckboxCell(
-        { className, checked, checkedIcon, isHeader, ...restProps },
-        ref,
-    ) {
+    function TableCheckboxCell({ className, ...props }, ref) {
+        const theme = useComponentTheme(TABLE_CHECKBOX_CELL_CLASS_PREFIX);
+
         const classNameComponents = useTableCheckboxCellClassNames(
             TABLE_CHECKBOX_CELL_CLASS_PREFIX,
             className,
         );
 
-        const onCheckboxClick = useCallback(
-            (e: MouseEvent<HTMLLabelElement>) => e.preventDefault(),
-            [],
-        );
+        const { rootProps, checkboxProps } = useTableCheckboxCell(props, ref);
 
         return (
             <TableCheckboxCellRoot
-                data-testid={tableCheckboxCellRootTestId}
-                {...restProps}
-                contentAlignX="center"
+                {...rootProps}
+                theme={theme}
                 className={classNameComponents.Root}
-                ref={ref}
-                isHeader={isHeader}
             >
-                <TableCheckboxCellCheckbox
-                    checked={checked}
-                    checkedIcon={checkedIcon}
-                    onClick={onCheckboxClick}
-                />
+                <TableCheckboxCellCheckbox {...checkboxProps} theme={theme} />
             </TableCheckboxCellRoot>
         );
     },

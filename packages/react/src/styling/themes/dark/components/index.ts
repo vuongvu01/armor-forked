@@ -43,6 +43,8 @@ import { getOptionListOverride } from './OptionList';
 import { getDatePickerOverride } from './DatePicker';
 import { getContextMenuOverride } from './ContextMenu';
 import { getIconButtonOverride } from './IconButton';
+import { getTableCheckboxCellOverride } from './Table/TableCheckboxCell';
+import { getTableHeadCellOverride } from './Table/TableHeadCell';
 
 export const darkThemeComponentOverrides = {
     Accordion: getAccordionOverride,
@@ -82,6 +84,8 @@ export const darkThemeComponentOverrides = {
     Tooltip: getTooltipOverride,
     TableRow: getTableRowOverride,
     TableCell: getTableCellOverride,
+    TableCheckboxCell: getTableCheckboxCellOverride,
+    TableHeadCell: getTableHeadCellOverride,
     TableExpandableSection: getTableExpandableSectionOverride,
     Message: getMessageOverride,
     DatePicker: getDatePickerOverride,

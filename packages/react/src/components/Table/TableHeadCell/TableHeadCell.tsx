@@ -8,11 +8,11 @@ import {
 import PropTypes from 'prop-types';
 
 import { useComponentTheme } from '../../../utils/hooks';
-import { useTableHeadCellClassNames } from './utils/useTableHeadCellClassNames';
+import { useTableHeadCellClassNames } from './hooks/useTableHeadCellClassNames';
 import { TableHeadCellRoot } from './style';
 import { TableHeadCellPropsType } from './type';
 import { tableHeadCellDefaultTheme } from './theme';
-import { useTableHeadCell } from './utils/useTableHeadCell';
+import { useTableHeadCell } from './hooks/useTableHeadCell';
 import {
     TABLE_HEAD_CELL_CLASS_PREFIX,
     TABLE_HEAD_CELL_SORTING_TYPE_NUMERICAL,

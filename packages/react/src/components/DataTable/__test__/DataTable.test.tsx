@@ -704,7 +704,7 @@ describe('<DataTable />', () => {
         );
 
         const controller = container.querySelector(
-            '[data-rowid="3"] .TableControllerCell-Controller',
+            '[data-rowid="3"] .TableControllerCell-Trigger',
         );
 
         fireEvent.click(controller!);
@@ -724,7 +724,7 @@ describe('<DataTable />', () => {
         );
 
         const controller = container.querySelector(
-            '[data-rowid="3"] .TableControllerCell-Controller',
+            '[data-rowid="3"] .TableControllerCell-Trigger',
         );
 
         fireEvent.click(controller!);
@@ -744,7 +744,7 @@ describe('<DataTable />', () => {
         );
 
         const controller = container.querySelector(
-            '[data-rowid="3"] .TableControllerCell-Controller',
+            '[data-rowid="3"] .TableControllerCell-Trigger',
         );
 
         fireEvent.click(controller!);
@@ -764,10 +764,28 @@ describe('<DataTable />', () => {
         );
 
         const controller = container.querySelector(
-            '[data-rowid="3"] .TableControllerCell-Controller',
+            '[data-rowid="3"] .TableControllerCell-Trigger',
         );
 
         fireEvent.click(controller!);
         expect(onSectionExpansionChange).toHaveBeenCalledWith(['2']);
+    });
+
+    it('should support disabling header', async () => {
+        let result = render(
+            <DataTable columns={expandableSectionColumns} data={dataSource} />,
+        );
+        let head = result.container.querySelector('.TableHead-Root');
+        expect(head).toBeInTheDocument();
+
+        result = render(
+            <DataTable
+                columns={expandableSectionColumns}
+                data={dataSource}
+                enableHeader={false}
+            />,
+        );
+        head = result.container.querySelector('.TableHead-Root');
+        expect(head).not.toBeInTheDocument();
     });
 });

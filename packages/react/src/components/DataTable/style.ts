@@ -3,10 +3,10 @@ import {
     marginAttributes,
     paddingAttributes,
     sizeAttributes,
-} from '../../system/attributes';
+    spacing,
+} from '../../system';
 import { getPropsBlocker } from '../../utils';
 import { DataTableFooterPropsType, DataTableRootPropsType } from './type';
-import { spacing } from '../../system/mixins';
 
 export const DataTableRoot = styled.div.withConfig(getPropsBlocker())<
     DataTableRootPropsType

@@ -4,13 +4,16 @@ import {
     TableCellContentAlignmentAttributesType,
     TableCellRootPropsType,
 } from './type';
-import { getPropsBlocker, makePropList } from '../../../utils';
 import {
     colorAttributes,
     heightAttributes,
     paddingAttributes,
     widthAttributes,
-} from '../../../system/attributes';
+    color,
+    spacing,
+    typography,
+    propsBlocker,
+} from '../../../system';
 import {
     componentSpacing04,
     componentSpacing05,
@@ -19,26 +22,25 @@ import {
 } from '../../../tokens';
 import { LEFT, RIGHT, transitionDurationInSec } from '../../../constants';
 import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
-import { color, spacing, typography } from '../../../system/mixins';
 
-// all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
-const propertyList = makePropList([
-    'isHeader',
-    'isFooter',
-    'contentAlignX',
-    'contentAlignY',
-    'disabled',
-    'ellipsis',
-    'stickyTop',
-    'stickyAlignment',
-    'stickyOffset',
-    'stickyShadowVisible',
-    'stickyVisible',
-    'enableContentWordBreak',
-    'enableContentWrap',
-]);
+// // all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
+// const propertyList = makePropList([
+//     'isHeader',
+//     'isFooter',
+//     'contentAlignX',
+//     'contentAlignY',
+//     'disabled',
+//     'ellipsis',
+//     'stickyTop',
+//     'stickyAlignment',
+//     'stickyOffset',
+//     'stickyShadowVisible',
+//     'stickyVisible',
+//     'enableContentWordBreak',
+//     'enableContentWrap',
+// ]);
 
-const getRootDynamicStyle = ({
+const getRootStyle = ({
     isHeader,
     stickyTop,
     stickyVisible,
@@ -58,10 +60,6 @@ const getRootDynamicStyle = ({
             vertical-align: middle;
             ${typography('paragraphMedium')};
             font-weight: ${fontWeightMedium};
-
-            &:hover {
-                background-color: ${color('primary.lightest')};
-            }
         `;
     }
 
@@ -229,9 +227,9 @@ const Wrapper = ({
 }) => children({ ...restProps });
 
 // if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
-export const TableCellRoot = styled(Wrapper).withConfig(
-    getPropsBlocker(propertyList),
-)<TableCellRootPropsType>`
+export const TableCellRoot = styled(Wrapper).withConfig(propsBlocker)<
+    TableCellRootPropsType
+>`
     box-sizing: border-box;
 
     text-align: left;
@@ -242,11 +240,11 @@ export const TableCellRoot = styled(Wrapper).withConfig(
     ${typography('paragraphLarge')};
     padding: ${spacing(componentSpacing05)} ${spacing(componentSpacing04)};
 
-    ${getRootDynamicStyle}
+    ${getRootStyle};
     ${getComponentOverride('TableCell')};
-    ${paddingAttributes}
-    ${widthAttributes}
-    ${heightAttributes}
-    ${colorAttributes}
-    ${tableCellContentAlignment}
+    ${paddingAttributes};
+    ${widthAttributes};
+    ${heightAttributes};
+    ${colorAttributes};
+    ${tableCellContentAlignment};
 `;

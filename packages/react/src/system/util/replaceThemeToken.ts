@@ -2,6 +2,7 @@ import { ThemeType } from '../../styling';
 import { ScalarType } from '../../type';
 import { consoleWarn } from './consoleWarn';
 
+/** @deprecated */
 export const replaceThemeToken = (
     currentValue: ScalarType,
     theme: ThemeType,

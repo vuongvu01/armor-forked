@@ -1,17 +1,7 @@
 import styled, { css } from 'styled-components';
 import { TableRowRootPropsType } from './type';
-import { ObjectLiteralType } from '../../../type';
-import { getPropsBlocker } from '../../../utils';
-import { heightAttributes } from '../../../system/attributes';
-import { color } from '../../../system/mixins';
+import { color, heightAttributes, propsBlocker } from '../../../system';
 import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
-
-// all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
-const propertyList = {
-    isHeader: true,
-    isFooter: true,
-    rowId: true,
-} as ObjectLiteralType;
 
 const getRootDynamicStyle = ({ isHeader }: TableRowRootPropsType) => {
     let result = {};
@@ -29,7 +19,7 @@ const getRootDynamicStyle = ({ isHeader }: TableRowRootPropsType) => {
 };
 
 // if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
-export const TableRowRoot = styled.tr.withConfig(getPropsBlocker(propertyList))<
+export const TableRowRoot = styled.tr.withConfig(propsBlocker)<
     TableRowRootPropsType
 >`
     &:not(:last-child) {
