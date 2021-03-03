@@ -6,15 +6,10 @@ import {
     spacing,
     borderRadius,
     token,
+    propsBlocker,
 } from '../../system';
-import { getPropsBlocker } from '../../utils';
 import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 import { transitionDurationInSec } from '../../constants';
-
-// all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
-const propertyList = {
-    light: true,
-};
 
 const getRootStyle = ({ light, visible }: IconButtonRootPropsType) => {
     let result = {};
@@ -41,9 +36,9 @@ const getRootStyle = ({ light, visible }: IconButtonRootPropsType) => {
 };
 
 // if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
-export const IconButtonRoot = styled.button.withConfig(
-    getPropsBlocker(propertyList),
-)<IconButtonRootPropsType>`
+export const IconButtonRoot = styled.button.withConfig(propsBlocker)<
+    IconButtonRootPropsType
+>`
     box-sizing: border-box;
     padding: ${spacing(1)};
     border-radius: ${borderRadius('soft')};
