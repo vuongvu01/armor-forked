@@ -161,6 +161,5 @@ export const useDialog = (
         contentProps: {},
 
         enableCloseButton: reallyEnableCloseButton,
-        enableOverlay: reallyEnableBackdrop,
     };
 };

@@ -30,13 +30,4 @@ export const sideSheetDefaultTheme = {
             paddingRight: componentSpacing04,
         },
     },
-    Icon: {
-        base: {
-            color: '$color.neutral.06',
-        },
-        focused: {
-            backgroundColor: '$color.neutral.02',
-            borderRadius: '$shape.borderRadius.pill',
-        },
-    },
 };

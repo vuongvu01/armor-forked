@@ -4,20 +4,15 @@ import { getPropsBlocker } from '../../utils';
 import {
     SideSheetContainerPropsType,
     SideSheetContentPropsType,
-    SideSheetHeaderCloseButtonContainerPropsType,
-    SideSheetHeaderCloseButtonContentPropsType,
     SideSheetHeaderContainerPropsType,
     SideSheetRootPropsType,
 } from './type';
+import { spacing } from '../../system';
 import { transitionDurationInSec } from '../../constants';
-import {
-    minWidth,
-    widthWide,
-    widthDefault,
-    closeIconOffset,
-} from './constants';
+import { minWidth, widthWide, widthDefault } from './constants';
 import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 import { reset, zIndex } from '../../system';
+import { CloseButton } from '../CloseButton/CloseButton';
 
 const propertyList = {
     effectToggle: true,
@@ -60,18 +55,6 @@ const contentStyle = ({
     return SideSheet.Content.base;
 };
 
-const closeIconContainerStyle = ({
-    theme: {
-        componentOverrides: { SideSheet },
-    },
-}: SideSheetContentPropsType) => SideSheet.Icon.base;
-
-const closeIconStyle = ({
-    theme: {
-        componentOverrides: { SideSheet },
-    },
-}: SideSheetContentPropsType) => SideSheet.Icon.focused;
-
 export const SideSheetRoot = styled.div.withConfig(
     getPropsBlocker(propertyList),
 )<SideSheetRootPropsType>`
@@ -112,29 +95,10 @@ export const SideSheetHeaderContainer = styled.div.withConfig(
     justify-content: flex-end;
 `;
 
-export const SideSheetHeaderCloseButtonContainer = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<SideSheetHeaderCloseButtonContainerPropsType>`
-    display: flex;
-    justify-content: flex-end;
-    margin-top: -${closeIconOffset}px;
-    margin-right: -${closeIconOffset}px;
-
-    ${closeIconContainerStyle}
+export const SideSheetCloseButton = styled(CloseButton)`
+    margin-top: -${spacing(2.5)};
+    margin-right: -${spacing(2.5)};
+    position: absolute;
+    top: ${spacing(6.5)};
+    right: ${spacing(6.5)};
 `;
-
-export const SideSheetHeaderCloseButtonContent = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<SideSheetHeaderCloseButtonContentPropsType>`
-    height: 32px;
-    width: 32px;
-    cursor: pointer;
-
-    &:hover,
-    &:focus,
-    &:active {
-        ${closeIconStyle}
-    }
-`;
-
-export const iconStyle = { outline: 'none', margin: `${closeIconOffset}px` };
