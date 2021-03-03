@@ -1,3 +1,17 @@
+# @deliveryhero/armor [1.34.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.33.0...@deliveryhero/armor@1.34.0) (2021-03-03)
+
+
+### Bug Fixes
+
+* **table:** Table header style fixes [LD-364] ([#422](https://github.com/deliveryhero/armor/issues/422)) ([9275e3e](https://github.com/deliveryhero/armor/commit/9275e3e070fee37a270d2fef9e744787654c5725))
+
+
+### Features
+
+* An experimental way of unknown props blocking introduced for Table components  ([#426](https://github.com/deliveryhero/armor/issues/426)) ([8fdba43](https://github.com/deliveryhero/armor/commit/8fdba43782e2c360ac809cc5f5f56760fca2ffc1))
+* **datatable:** Conditional expansion trigger visibility in DataTable supported [LD-411] ([#425](https://github.com/deliveryhero/armor/issues/425)) ([09d1cf1](https://github.com/deliveryhero/armor/commit/09d1cf13ab5a5a7cb3aa546b6e3d37dfc5776af5))
+* **datatable:** Property enableHeader implemented in DataTable [LD-413] ([#423](https://github.com/deliveryhero/armor/issues/423)) ([bc48a83](https://github.com/deliveryhero/armor/commit/bc48a8363c10d0347ca61c34e1ff841e22966103))
+
 # @deliveryhero/armor [1.33.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.32.1...@deliveryhero/armor@1.33.0) (2021-02-26)
 
 
