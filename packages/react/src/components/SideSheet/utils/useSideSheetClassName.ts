@@ -53,12 +53,6 @@ const useSideSheetClassName = (
                 disableOverlay,
                 wide,
             }),
-            CloseIcon: sideSheetClassGeneratorBasedOnComponent({
-                component: 'CloseIcon',
-                classPrefix,
-                disableOverlay,
-                wide,
-            }),
             Content: sideSheetClassGeneratorBasedOnComponent({
                 component: 'Content',
                 classPrefix,

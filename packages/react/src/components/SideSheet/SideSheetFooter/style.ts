@@ -4,13 +4,15 @@ import { SideSheetFooterPropsType } from './type';
 import { Typography } from '../../Typography';
 import { getPropsBlocker } from '../../../utils';
 
+const propertyList = { isFixed: true };
+
 const footerStyle = ({ theme }: SideSheetFooterPropsType) => {
     const SideSheet = theme?.componentOverrides?.SideSheet;
     return SideSheet.Footer.base;
 };
 
 export const SideSheetFooter = styled(Typography).withConfig(
-    getPropsBlocker({}, false),
+    getPropsBlocker(propertyList, false),
 )<SideSheetFooterPropsType>`
     align-items: center;
     box-sizing: border-box;

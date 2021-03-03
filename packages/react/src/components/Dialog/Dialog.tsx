@@ -1,6 +1,5 @@
 import React, { FC, forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { CancelIcon } from '@deliveryhero/armor-icons';
 import { useComponentTheme } from '../../utils/hooks';
 
 import { useDialogClassNames } from './hooks/useDialogClassNames';
@@ -8,8 +7,8 @@ import {
     DialogAlignmentContainer,
     DialogRoot,
     DialogWindow,
-    DialogCloseButton,
     DialogContent,
+    DialogCloseButton,
 } from './style';
 import { DialogPropsType } from './type';
 import { Overlay } from '../Overlay';
@@ -20,6 +19,7 @@ import {
 } from './constants';
 import { useDialog } from './hooks/useDialog';
 import { PortalToBody } from '../../system/util/PortalToBody';
+import { CloseButton } from '../CloseButton/CloseButton';
 
 export const Dialog: FC<DialogPropsType> = forwardRef(function Dialog(
     { className, children, ...props },
@@ -39,7 +39,6 @@ export const Dialog: FC<DialogPropsType> = forwardRef(function Dialog(
         contentProps,
 
         enableCloseButton,
-        enableOverlay,
     } = useDialog(props, ref);
 
     return (
@@ -49,9 +48,7 @@ export const Dialog: FC<DialogPropsType> = forwardRef(function Dialog(
                 theme={theme}
                 className={classNames.Root}
             >
-                {enableOverlay && (
-                    <Overlay {...overlayProps} className={classNames.Overlay} />
-                )}
+                <Overlay {...overlayProps} className={classNames.Overlay} />
                 <DialogAlignmentContainer
                     {...alignmentContainerProps}
                     theme={theme}
@@ -67,9 +64,7 @@ export const Dialog: FC<DialogPropsType> = forwardRef(function Dialog(
                                 {...getCloseButtonProps()}
                                 theme={theme}
                                 className={classNames.CloseButton}
-                            >
-                                <CancelIcon />
-                            </DialogCloseButton>
+                            />
                         )}
                         <DialogContent
                             {...contentProps}

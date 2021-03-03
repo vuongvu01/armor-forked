@@ -20,7 +20,6 @@ import {
     sideSheetContent,
     sideSheetFooter,
     sideSheetHeader,
-    sideSheetHeaderCloseButtonContainer,
     sideSheetHeaderContainer,
 } from '../constants';
 
@@ -88,11 +87,6 @@ describe('<SideSheet />', () => {
 
         const headerElement = screen.getByTestId(sideSheetHeader);
         expect(headerElement).toHaveClass('SideSheet-Header');
-
-        const headerIconElement = screen.getByTestId(
-            sideSheetHeaderCloseButtonContainer,
-        );
-        expect(headerIconElement).toHaveClass('SideSheet-CloseIcon');
 
         const bodyElement = screen.getByTestId(sideSheetBody);
         expect(bodyElement).toHaveClass('SideSheet-Body');

@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 
 import {
-    color,
     fixedCover,
     reset,
     sizeAttributes,
@@ -12,7 +11,6 @@ import { getPropsBlocker } from '../../utils';
 import { ObjectLiteralType } from '../../type';
 import {
     DialogAlignmentContainerPropsType,
-    DialogCloseButtonPropsType,
     DialogContentPropsType,
     DialogRootPropsType,
     DialogWindowPropsType,
@@ -20,6 +18,7 @@ import {
 import { DIALOG_SCROLL_DOCUMENT } from './constants';
 import { Card } from '../Card';
 import { getComponentOverride } from '../../system/mixins/getComponentOverride';
+import { CloseButton } from '../CloseButton/CloseButton';
 
 const propertyList = {
     disableOverlay: true,
@@ -132,16 +131,10 @@ export const DialogContent = styled.div.withConfig(
     overflow: auto;
 `;
 
-export const DialogCloseButton = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<DialogCloseButtonPropsType>`
+export const DialogCloseButton = styled(CloseButton)`
+    margin-top: -${spacing(2)};
+    margin-right: -${spacing(2)};
     position: absolute;
-    border: 0 none;
-    background-color: transparent;
-    outline: none;
-    cursor: pointer;
-    flex: 0 0 auto;
-    color: ${color('neutral.05')};
     top: ${spacing(6.5)};
     right: ${spacing(6.5)};
 `;

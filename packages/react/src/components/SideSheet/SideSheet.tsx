@@ -1,4 +1,4 @@
-import React, { forwardRef, FC } from 'react';
+import React, { forwardRef, FC, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { useComponentTheme } from '../../utils/hooks';
@@ -7,14 +7,12 @@ import { SideSheetPropsType } from './type';
 import { sideSheetDefaultTheme } from './theme';
 import { Overlay } from '../Overlay';
 // @ts-ignore until the deprecated CloseIcon is removed and we rename Close to CloseIcon
-import { CloseIcon } from '../../icons';
 import {
     SideSheetRoot,
     SideSheetWindow,
     SideSheetContent,
-    SideSheetHeaderCloseButtonContainer,
-    SideSheetHeaderCloseButtonContent,
     SideSheetHeaderContainer,
+    SideSheetCloseButton,
 } from './style';
 import { SIDE_SHEET_CLASS_PREFIX } from './constants';
 import { PortalToBody } from '../../system/util/PortalToBody';
@@ -43,13 +41,11 @@ export const SideSheet: FC<SideSheetPropsType> = forwardRef(function SideSheet(
         windowProps,
         contentProps,
         headerContainerProps,
-        closeButtonContainerProps,
-        closeButtonContentProps,
-        closeButtonIconProps,
         isCloseButtonVisible,
         header,
         body,
         footer,
+        closeButtonProps,
     } = useSideSheet(
         { classOverride, disableOverlay, wide, ...props },
         ref,
@@ -87,18 +83,10 @@ export const SideSheet: FC<SideSheetPropsType> = forwardRef(function SideSheet(
                         >
                             {header}
                             {isCloseButtonVisible ? (
-                                <SideSheetHeaderCloseButtonContainer
-                                    {...closeButtonContainerProps}
-                                    className={classOverride.CloseIcon}
+                                <SideSheetCloseButton
                                     theme={theme}
-                                >
-                                    <SideSheetHeaderCloseButtonContent
-                                        {...closeButtonContentProps}
-                                        theme={theme}
-                                    >
-                                        <CloseIcon {...closeButtonIconProps} />
-                                    </SideSheetHeaderCloseButtonContent>
-                                </SideSheetHeaderCloseButtonContainer>
+                                    {...closeButtonProps}
+                                />
                             ) : null}
                         </SideSheetHeaderContainer>
                         {body}

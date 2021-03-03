@@ -202,9 +202,9 @@
     js-tokens "^4.0.0"
 
 "@babel/highlight@^7.12.13":
-  version "7.12.13"
-  resolved "https://registry.yarnpkg.com/@babel/highlight/-/highlight-7.12.13.tgz#8ab538393e00370b26271b01fa08f7f27f2e795c"
-  integrity sha512-kocDQvIbgMKlWxXe9fof3TQ+gkIPOUSEYhJjqUjvKMez3krV7vbzYCDq39Oj11UAVK7JqPVGQPlgE85dPNlQww==
+  version "7.13.8"
+  resolved "https://registry.yarnpkg.com/@babel/highlight/-/highlight-7.13.8.tgz#10b2dac78526424dfc1f47650d0e415dfd9dc481"
+  integrity sha512-4vrIhfJyfNf+lCtXC2ck1rKSzDwciqF7IWFhXXrSOUC2O5DrVp+w4c6ed4AllTxhTkUP5x2tYj41VaxdVMMRDw==
   dependencies:
     "@babel/helper-validator-identifier" "^7.12.11"
     chalk "^2.0.0"
@@ -519,6 +519,13 @@
   version "9.1.2"
   resolved "https://registry.yarnpkg.com/@commitlint/types/-/types-9.1.2.tgz#d05f66db03e3a3638a654e8badf2deb489eb220d"
   integrity sha512-r3fwVbVH+M8W0qYlBBZFsUwKe6NT5qvz+EmU7sr8VeN1cQ63z+3cfXyTo7WGGEMEgKiT0jboNAK3b1FZp8k9LQ==
+
+"@deliveryhero/armor-icons@^1.9.0":
+  version "1.10.0"
+  resolved "https://npm.pkg.github.com/download/@deliveryhero/armor-icons/1.10.0/4858dc5f9b656440fd8e7267f221707db1b454b7eb9cea33ff2705ab6dd154f8#2530a5f302b8023c86f3a080ffce56a946053ac7"
+  integrity sha1-JTCl8wK4AjyG86CA/85WqUYFOsc=
+  dependencies:
+    prop-types "^15.7.2"
 
 "@emotion/hash@^0.8.0":
   version "0.8.0"

@@ -1,15 +1,10 @@
-import { RefObject, useCallback, useEffect, useRef, useState } from 'react';
+import { RefObject, useCallback, useRef } from 'react';
 import { extendChildrenWithProps, extractContentSections } from './index';
-import {
-    sideSheetContent,
-    sideSheetHeaderCloseButtonContainer,
-    sideSheetHeaderContainer,
-} from '../constants';
+import { sideSheetContent, sideSheetHeaderContainer } from '../constants';
 import { SideSheetPropsType } from '../type';
 import { ReferenceType } from '../../../type';
 import { useControlledFlagState } from '../../../system/hooks/useControlledFlagState';
 import { useOverlay } from '../../../system/hooks/useOverlay';
-import { iconStyle } from '../style';
 import { useInternalRef } from '../../../utils';
 import { ThemeType } from '../../../styling';
 import { useOuterClick } from '../../../system/hooks/useOuterClick';
@@ -108,7 +103,6 @@ export const useSideSheet = (
         },
         overlayProps: {
             disableEffects,
-            disableOverlay,
             display,
             effectToggle,
         },
@@ -125,23 +119,15 @@ export const useSideSheet = (
         headerContainerProps: {
             'data-testid': sideSheetHeaderContainer,
         },
-        closeButtonContainerProps: {
-            'data-testid': sideSheetHeaderCloseButtonContainer,
+        closeButtonProps: {
             onClick: onCloseInternal,
         },
-        closeButtonContentProps: {},
-        closeButtonIconProps: {
-            style: iconStyle,
-            tabIndex: 0,
-        },
-
         header,
         body,
         footer,
         isCloseButtonVisible,
 
         wide,
-        disableOverlay,
         theme,
     };
 };

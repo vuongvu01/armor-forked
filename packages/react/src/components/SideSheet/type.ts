@@ -35,7 +35,6 @@ export type SideSheetEffectivePropsType = Partial<{
 
 export type ClassOverrideType = {
     Body: string;
-    CloseIcon: string;
     Root: string;
     Content: string;
     Footer: string;
@@ -61,16 +60,6 @@ export type SideSheetContentPropsType = Pick<
 >;
 
 export type SideSheetHeaderContainerPropsType = Pick<
-    SideSheetEffectivePropsType,
-    'theme'
->;
-
-export type SideSheetHeaderCloseButtonContainerPropsType = Pick<
-    SideSheetEffectivePropsType,
-    'theme'
->;
-
-export type SideSheetHeaderCloseButtonContentPropsType = Pick<
     SideSheetEffectivePropsType,
     'theme'
 >;

@@ -6,7 +6,11 @@ import { fixedCover } from '../../system/mixins';
 import { transitionDurationInSec } from '../../constants';
 import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 
-const propertyList = { disableEffects: true, effectToggle: true };
+const propertyList = {
+    disableEffects: true,
+    disableOverlay: true,
+    effectToggle: true,
+};
 
 export const Overlay = styled.div.withConfig(getPropsBlocker(propertyList))<
     OverlayRootPropsType
