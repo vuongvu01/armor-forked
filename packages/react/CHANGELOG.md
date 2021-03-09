@@ -1,3 +1,10 @@
+## @deliveryhero/armor [1.34.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.34.0...@deliveryhero/armor@1.34.1) (2021-03-09)
+
+
+### Bug Fixes
+
+* **datepicker:** DatePicker and DateRangePicker theme fixes [LD-422] ([#428](https://github.com/deliveryhero/armor/issues/428)) ([4f7fe89](https://github.com/deliveryhero/armor/commit/4f7fe89fd625748feca1eabb262249eac2390f89))
+
 # @deliveryhero/armor [1.34.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.33.0...@deliveryhero/armor@1.34.0) (2021-03-03)
 
 
