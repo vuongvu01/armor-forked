@@ -40,7 +40,7 @@ import { getSideSheetOverride } from './SideSheet';
 import { getDropdownBeforeSectionClearButtonOverride } from './DropdownBeforeSectionClearButton';
 import { getOptionListItemOverride } from './OptionListItem';
 import { getOptionListOverride } from './OptionList';
-import { getDatePickerOverride } from './DatePicker';
+import { makeDatePickerOverride } from './DatePicker';
 import { getContextMenuOverride } from './ContextMenu';
 import { getIconButtonOverride } from './IconButton';
 import { getTableCheckboxCellOverride } from './Table/TableCheckboxCell';
@@ -88,7 +88,7 @@ export const darkThemeComponentOverrides = {
     TableHeadCell: getTableHeadCellOverride,
     TableExpandableSection: getTableExpandableSectionOverride,
     Message: getMessageOverride,
-    DatePicker: getDatePickerOverride,
+    ...makeDatePickerOverride(),
     ContextMenu: getContextMenuOverride,
     IconButton: getIconButtonOverride,
 };

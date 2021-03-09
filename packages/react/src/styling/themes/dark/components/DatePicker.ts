@@ -1,12 +1,9 @@
 import { css } from 'styled-components';
 import { color } from '../../../../system';
 
-export const getDatePickerOverride = () => {
-    const result = css`
-        .DatePicker-Dropdown,
-        .DateRangePicker-Dropdown {
-            background-color: ${color('neutral.02')};
-        }
+export const makeDatePickerOverride = () => {
+    const getDropdownOverride = () => css`
+        background-color: ${color('neutral.02')};
 
         .DatePickerDaySelector-Day--displayedMonth {
             &.DatePickerDaySelector-Day--selectedLeftEnd {
@@ -26,6 +23,7 @@ export const getDatePickerOverride = () => {
                 .DatePickerDaySelector-DayButton {
                     color: ${color('neutral.00')};
                     background-color: ${color('primary.light')};
+
                     &:hover {
                         background-color: ${color('primary.main')};
                     }
@@ -64,11 +62,14 @@ export const getDatePickerOverride = () => {
         .DatePickerMonthYearSelector-YearTitle {
             color: ${color('neutral.06')};
             background-color: ${color('neutral.03')};
+
             &:hover {
                 background-color: ${color('neutral.04')};
             }
         }
     `;
 
-    return result;
+    return {
+        DatePickerDropdown: getDropdownOverride,
+    };
 };

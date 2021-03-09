@@ -36,28 +36,32 @@ const getRootStyle = ({ enableTimePicker }: DatePickerRootPropsType) => {
     return result;
 };
 
-const getCommonStyle = (name: string) => css`
+export const DatePickerRoot = styled.div.withConfig(
+    getPropsBlocker(propertyList),
+)<DatePickerRootPropsType>`
     ${reset()};
     ${typography('paragraphMedium')};
     display: inline-block;
     position: relative;
 
     ${getRootStyle};
-    ${getComponentOverride(name)};
+    ${getComponentOverride('DatePicker')};
     ${marginAttributes};
     ${widthAttributes};
-`;
-
-export const DatePickerRoot = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<DatePickerRootPropsType>`
-    ${getCommonStyle('DatePicker')};
 `;
 
 export const DateRangePickerRoot = styled.div.withConfig(
     getPropsBlocker(propertyList),
 )<DatePickerRootPropsType>`
-    ${getCommonStyle('DateRangePicker')};
+    ${reset()};
+    ${typography('paragraphMedium')};
+    display: inline-block;
+    position: relative;
+
+    ${getRootStyle};
+    ${getComponentOverride('DateRangePicker')};
+    ${marginAttributes};
+    ${widthAttributes};
 `;
 
 export const DatePickerInput = styled(TextInput).withConfig(
@@ -86,6 +90,7 @@ export const DatePickerDropdown = styled.div.withConfig(
     background-color: ${color('neutral.00')};
     min-width: ${spacing(84)};
     ${zIndex};
+    ${getComponentOverride('DatePickerDropdown')};
 
     box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.12);
 `;
