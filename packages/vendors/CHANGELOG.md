@@ -1,3 +1,13 @@
+## @deliveryhero/armor-vendors [1.1.15](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.1.14...@deliveryhero/armor-vendors@1.1.15) (2021-03-09)
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor:** upgraded to 1.34.1
+
 ## @deliveryhero/armor-vendors [1.1.14](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.1.13...@deliveryhero/armor-vendors@1.1.14) (2021-03-03)
 
 
