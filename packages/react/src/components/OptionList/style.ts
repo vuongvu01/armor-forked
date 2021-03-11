@@ -6,36 +6,48 @@ import {
     OptionListBeforeSectionContainerPropsType,
     OptionListSearchPropsType,
 } from './type';
-import { color, spacing } from '../../system/mixins';
+import { color, spacing } from '../../system';
 import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 import { elevation } from '../../system/mixins/elevation';
 import { Search } from '../Search';
 import { Typography } from '../Typography';
 import { TypographyPropsType } from '../Typography/type';
 
-const optionListStyle = ({ isOptionListShown }: OptionListPropsType) => css`
-    box-shadow: ${elevation('large')};
-    ${isOptionListShown ? 'height: auto' : ''};
-`;
+const getOptionListStyle = ({
+    isOptionListShown,
+    enableAbsolutePositioning,
+}: OptionListPropsType) => {
+    let result = css`
+        height: ${isOptionListShown ? 'auto' : '0'};
+    ` as {};
+
+    if (enableAbsolutePositioning !== false) {
+        result = css`
+            ${result};
+            position: absolute;
+            top: ${spacing(1)};
+            left: 0;
+            right: 0;
+            z-index: 1024;
+        `;
+    }
+
+    return result;
+};
 
 export const OptionListRoot = styled.div<OptionListPropsType>`
     background-color: white;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    top: ${spacing(1)};
-    left: 0;
-    right: 0;
-    height: 0;
     max-height: 400px;
     overflow: auto;
     padding-bottom: 0;
     padding-top: 0;
-    position: absolute;
     transition: ${transitionDurationInSec}s;
-    z-index: 1024;
+    box-shadow: ${elevation('large')};
 
-    ${optionListStyle}
+    ${getOptionListStyle}
     ${getComponentOverride('OptionList')}
 `;
 

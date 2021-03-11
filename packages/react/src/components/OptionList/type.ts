@@ -34,6 +34,7 @@ export type OptionListPropsType = Indexed<{
     internalOptions: DropdownInternalOptionType;
     dynamicInternalOptions: DropdownInternalOptionType;
     setInternalOptions: (nextOptions: DropdownInternalOptionType) => void;
+    enableAbsolutePositioning: boolean;
 }> &
     Pick<
         DropdownEffectivePropsType,

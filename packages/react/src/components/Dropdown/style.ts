@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import { marginAttributes, widthAttributes } from '../../system/attributes';
 import { getPropsBlocker, makePropList } from '../../utils';
 import {
+    DropdownOptionListContainerPropsType,
     DropdownRootPropsType,
     DropdownTagsSectionPropsType,
     ExpansionIndicatorContainerPropsType,
@@ -21,6 +22,8 @@ const propertyList = makePropList([
     'singleLine',
     'containerHeight',
     'maxTagWidth',
+    'zIndex',
+    'enablePortal',
 ]);
 
 const propertyListTextInput = makePropList([
@@ -45,11 +48,18 @@ export const DropdownContainer = styled.div.withConfig(
     flex-grow: 1;
 `;
 
+const getOptionListContainerStyle = ({
+    zIndex,
+}: DropdownOptionListContainerPropsType) => {
+    return css`
+        z-index: ${zIndex};
+    `;
+};
+
 export const DropdownOptionListContainer = styled.div.withConfig(
     getPropsBlocker(propertyList),
-)<DropdownRootPropsType>`
-    box-sizing: border-box;
-    position: relative;
+)<DropdownOptionListContainerPropsType>`
+    ${getOptionListContainerStyle};
 `;
 
 const dropdownExpansionIndicatorContentStyle = ({

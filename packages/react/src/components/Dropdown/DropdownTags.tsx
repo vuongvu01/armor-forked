@@ -4,7 +4,7 @@ import { DropdownTagsPropsType } from './type';
 import { OptionObjectType } from '../OptionList/type';
 import { useTheme } from '../../styling';
 import { DROPDOWN_TAGS_CLASS_PREFIX } from './constants';
-import { useDropdownTagsClassName } from './utils/useDropdownTagsClassName';
+import { useDropdownTagsClassName } from './hooks/useDropdownTagsClassName';
 import { DropdownTag } from './style';
 
 export const DropdownTags: FunctionComponent<DropdownTagsPropsType> = ({

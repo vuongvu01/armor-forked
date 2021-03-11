@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { RESIZE_OBSERVER_SUPPORTED } from '../../Table/TableExpandableSection/constants';
+import { RESIZE_OBSERVER_SUPPORTED } from '../../../system/util/compatibility';
 import {
     BUFFER_TAGS_WIDTH,
     SINGLE_LINE_MAX_ALLOWED_HEIGHT,

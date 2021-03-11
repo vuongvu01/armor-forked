@@ -5,7 +5,7 @@ import userEvent from '@testing-library/user-event';
 import renderer from 'react-test-renderer';
 
 import { Dropdown } from '../Dropdown';
-import { textInputInput, textInputRoot } from '../../TextInput/constants';
+import { textInputInput } from '../../TextInput/constants';
 import { OPTION_LIST_ITEM } from '../../OptionList/constants';
 import { tagRoot } from '../../Tag/constants';
 import { searchRoot } from '../../Search/constants';
@@ -23,10 +23,10 @@ describe('<Dropdown />', () => {
         const options = ['Red', 'Blue', 'Green'];
         const onSelect = jest.fn();
 
-        const { container, getByTestId, getAllByTestId } = render(
+        const { container, getAllByTestId } = render(
             <Dropdown options={options} onSelect={onSelect} />,
         );
-        const input = getByTestId(textInputRoot);
+        const input = container.querySelector('input');
         userEvent.click(input!);
 
         const elements = await waitForElement(
@@ -47,10 +47,10 @@ describe('<Dropdown />', () => {
         ];
         const onSelect = jest.fn();
 
-        const { container, getByTestId, getAllByTestId } = render(
+        const { container, getAllByTestId } = render(
             <Dropdown options={options} onSelect={onSelect} />,
         );
-        const input = getByTestId(textInputRoot);
+        const input = container.querySelector('input');
         userEvent.click(input!);
 
         const elements = await waitForElement(
@@ -72,10 +72,10 @@ describe('<Dropdown />', () => {
         const options = ['Red', 'Blue', 'Green'];
         const onChange = jest.fn();
 
-        const { container, getByTestId, getAllByTestId } = render(
+        const { container, getAllByTestId } = render(
             <Dropdown options={options} onChange={onChange} />,
         );
-        const input = getByTestId(textInputRoot);
+        const input = container.querySelector('input');
         userEvent.click(input!);
 
         const elements = await waitForElement(
@@ -98,10 +98,10 @@ describe('<Dropdown />', () => {
         ];
         const onChange = jest.fn();
 
-        const { container, getByTestId, getAllByTestId } = render(
+        const { container, getAllByTestId } = render(
             <Dropdown options={options} onChange={onChange} />,
         );
-        const input = getByTestId(textInputRoot);
+        const input = container.querySelector('input');
         userEvent.click(input!);
 
         const elements = await waitForElement(
@@ -123,12 +123,12 @@ describe('<Dropdown />', () => {
             { label: 'Green', value: 'G' },
         ];
 
-        const { getByTestId } = render(
+        const { container } = render(
             <Dropdown options={options} value={['B', 'G']} multiple />,
         );
 
-        const input = getByTestId(textInputInput) as HTMLInputElement;
-        await wait(() => expect(input.value).toEqual('Blue, Green'));
+        const input = container.querySelector('input');
+        await wait(() => expect(input!.value).toEqual('Blue, Green'));
     });
 
     it('should render options as Tags for multi-select', () => {
@@ -183,7 +183,7 @@ describe('<Dropdown />', () => {
                 value={['B', 'G']}
                 multiple
                 enableSearchOption
-                isListExpanded
+                open
                 defaultSearchQuery="gr"
             />,
         );
@@ -223,7 +223,7 @@ describe('<Dropdown />', () => {
             { label: 'Green', value: 'G' },
         ];
 
-        const { getByTestId } = render(
+        const { container } = render(
             <Dropdown
                 options={options}
                 value={['B', 'G']}
@@ -236,8 +236,8 @@ describe('<Dropdown />', () => {
             />,
         );
 
-        const input = getByTestId(textInputInput) as HTMLInputElement;
-        await wait(() => expect(input.value).toEqual('2 of 3'));
+        const input = container.querySelector('input');
+        await wait(() => expect(input!.value).toEqual('2 of 3'));
     });
 
     it('should NOT change its value without onChange in controlled mode', async () => {
@@ -247,10 +247,10 @@ describe('<Dropdown />', () => {
             { label: 'Green', value: 'G' },
         ];
 
-        const { container, getByTestId, getAllByTestId } = render(
+        const { container, getAllByTestId, getByTestId } = render(
             <Dropdown options={options} value="G" />,
         );
-        const input = getByTestId(textInputRoot);
+        const input = container.querySelector('input');
         userEvent.click(input!);
 
         const elements = await waitForElement(
@@ -278,7 +278,7 @@ describe('<Dropdown />', () => {
         const { container, getByTestId, getAllByTestId } = render(
             <Dropdown options={options} multiple />,
         );
-        const input = getByTestId(textInputRoot);
+        const input = container.querySelector('input');
         userEvent.click(input!);
 
         const elements = await waitForElement(

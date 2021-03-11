@@ -9,7 +9,9 @@ export const useDatePickerPopper = () => {
         dropdownRef,
         triggerRef,
         'bottom-start',
-        [0, 5],
+        {
+            offset: [0, 5],
+        },
     );
 
     return {

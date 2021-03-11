@@ -37,3 +37,9 @@ export type PseudoEventType<V = ScalarType> = {
 export type PropNameType = ReactText | boolean | {};
 
 export type UnpackedType<T> = T extends (infer U)[] ? U : any;
+
+declare global {
+    interface Global {
+        shit: boolean;
+    }
+}

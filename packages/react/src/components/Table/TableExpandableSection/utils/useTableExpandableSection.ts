@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { TableExpandableSectionPropsType } from '../type';
-import { RESIZE_OBSERVER_SUPPORTED } from '../constants';
+import { RESIZE_OBSERVER_SUPPORTED } from '../../../../system/util/compatibility';
 
 export const useTableExpandableSection = ({
     expanded,

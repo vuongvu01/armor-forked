@@ -6,7 +6,7 @@ import {
     DropdownOnToggleAllType,
 } from '../type';
 import { OptionObjectType } from '../../OptionList/type';
-import { handleOnChange } from './handleOnChange';
+import { handleOnChange } from '../utils/handleOnChange';
 
 export const denormalizeValue = (
     value: DropdownInternalValueType,

@@ -5,6 +5,8 @@ import { Indexed, ScalarType } from '../../type';
 import { ComponentElementStylePropsType } from '../type';
 import { OptionObjectType } from '../OptionList/type';
 import { ComponentBehaviourOpenStateType } from '../../system/types/ComponentBehaviourOpenStateType';
+import { ComponentBehaviourPortalType } from '../../system/types/ComponentBehaviourPortalType';
+import { ComponentBehaviourOverlayType } from '../../system/types/ComponentBehaviourOverlayType';
 
 export type ClassBasedOnComponentType = {
     component: string;
@@ -131,6 +133,8 @@ export type DropdownEffectivePropsType = Indexed<{
     renderAggregatedTagsLabel?: (aggregatedTagsCount: number) => string;
 }> &
     ComponentBehaviourOpenStateType &
+    ComponentBehaviourPortalType &
+    ComponentBehaviourOverlayType &
     Omit<
         InputHTMLAttributes<HTMLInputElement>,
         'value' | 'onChange' | 'defaultValue' | 'onSelect'
@@ -144,3 +148,5 @@ export type ExpansionIndicatorContainerPropsType = Indexed<{}>;
 
 export type DropdownRootPropsType = DropdownEffectivePropsType &
     ComponentElementStylePropsType;
+
+export type DropdownOptionListContainerPropsType = { zIndex: number };

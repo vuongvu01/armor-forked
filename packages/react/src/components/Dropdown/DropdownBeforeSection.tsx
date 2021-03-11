@@ -9,9 +9,9 @@ import {
     DropdownTag,
 } from './style';
 import { DROPDOWN_BEFORE_SECTION_CLASS_PREFIX } from './constants';
-import { useDropdownBeforeSection } from './utils/useDropdownBeforeSection';
+import { useDropdownBeforeSection } from './hooks/useDropdownBeforeSection';
 import { DropdownBeforeSectionPropsType } from './type';
-import { useDropdownBeforeSectionClassName } from './utils';
+import { useDropdownBeforeSectionClassName } from './hooks';
 import { OptionObjectType } from '../OptionList/type';
 import { DropdownTags } from './DropdownTags';
 import { useComponentTheme } from '../../utils/hooks';
