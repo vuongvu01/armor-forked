@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 
 import { useSearchSuggestionItemClassName } from './utils';
 import { SearchSuggestionItemPropsType } from './type';
-import { highlightMatch } from '../utils';
+import { highlightMatch } from '../utils/highlightMatch';
 import {
     SearchSuggestionItemLabelTypography,
     SearchSuggestionItemContainer,

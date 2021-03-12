@@ -39,6 +39,7 @@ export const useOptionListClassName = (
                 classPrefix,
                 disabled,
             }),
+            ItemGroup: makeBEM(classPrefix, 'ItemGroup'),
             SelectAllItem: classGeneratorBasedOnComponent({
                 component: 'SelectAllItem',
                 classPrefix,

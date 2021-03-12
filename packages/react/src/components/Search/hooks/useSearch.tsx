@@ -8,11 +8,11 @@ import React, {
 } from 'react';
 
 import { initialCursor } from '../constants';
-import { GroupObjectIndexType, SearchPropsType } from '../type';
+import { SearchGroupObjectIndexType, SearchPropsType } from '../type';
 import { useDetectClickOutsideComponent, useInternalRef } from '../../../utils';
 import { ReferenceType } from '../../../type';
 
-export const useSearchBar = (
+export const useSearch = (
     {
         defaultQuery = '',
         disabled = false,
@@ -219,12 +219,12 @@ export const useSearchBar = (
         [onItemSelect],
     );
 
-    const groupIndex = useMemo<GroupObjectIndexType>(() => {
+    const groupIndex = useMemo<SearchGroupObjectIndexType>(() => {
         if (!groups || !groups.length) {
             return {};
         }
 
-        return groups.reduce<GroupObjectIndexType>((result, group) => {
+        return groups.reduce<SearchGroupObjectIndexType>((result, group) => {
             // eslint-disable-next-line no-param-reassign
             result[group.id] = group;
             return result;

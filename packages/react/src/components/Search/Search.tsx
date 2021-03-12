@@ -2,7 +2,7 @@ import React, { forwardRef, FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import { useComponentTheme } from '../../utils/hooks';
-import { useSearchClassName } from './utils';
+import { useSearchClassName } from './hooks/useSearchClassName';
 import { SearchPropsType } from './type';
 import { searchTheme } from './theme';
 import { SEARCH_CLASS_PREFIX, searchRoot } from './constants';
@@ -12,7 +12,7 @@ import {
     SearchSuggestionsListContainer,
     SearchTextInput,
 } from './style';
-import { useSearchBar } from './utils/useSearchBar';
+import { useSearch } from './hooks/useSearch';
 import { SearchSuggestionsList } from './SearchSuggestionsList';
 import { SearchIcon } from './SearchIcon';
 import { SearchClearAction } from './SearchClearAction';
@@ -33,7 +33,7 @@ export const Search: FunctionComponent<SearchPropsType> = forwardRef(
 
             disabled,
             isSuggestionsListShown,
-        } = useSearchBar(restProps, ref);
+        } = useSearch(restProps, ref);
 
         const classOverride = useSearchClassName(
             SEARCH_CLASS_PREFIX,

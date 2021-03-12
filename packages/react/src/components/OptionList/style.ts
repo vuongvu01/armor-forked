@@ -5,8 +5,15 @@ import {
     OptionListPropsType,
     OptionListBeforeSectionContainerPropsType,
     OptionListSearchPropsType,
+    OptionListItemGroupPropType,
 } from './type';
-import { color, spacing } from '../../system';
+import {
+    color,
+    pixelToRem,
+    propsBlocker,
+    spacing,
+    typography,
+} from '../../system';
 import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 import { elevation } from '../../system/mixins/elevation';
 import { Search } from '../Search';
@@ -102,4 +109,29 @@ export const OptionListItemTypography = styled(Typography)<TypographyPropsType>`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+`;
+
+const getSearchSuggestionListGroupDynamicStyle = ({
+    enableSeparator,
+}: OptionListItemGroupPropType) => {
+    let result = {};
+
+    if (enableSeparator) {
+        result = css`
+            border-top: 1px solid ${color('neutral.02')};
+            padding-top: ${spacing(10)};
+        `;
+    }
+
+    return result;
+};
+
+export const OptionListItemGroup = styled.div.withConfig(propsBlocker)<
+    OptionListItemGroupPropType
+>`
+    padding: ${spacing(6)} ${spacing(4)} ${spacing(2)} ${spacing(4)};
+    ${typography('labelMedium')};
+    font-size: ${pixelToRem(14)};
+    color: ${color('neutral.05')};
+    ${getSearchSuggestionListGroupDynamicStyle};
 `;

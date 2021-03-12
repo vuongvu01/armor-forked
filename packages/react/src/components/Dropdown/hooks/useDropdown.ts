@@ -41,6 +41,7 @@ export const useDropdown = (
         singleLine,
         zIndex,
         enablePortal,
+        groups,
 
         // open/close state
         open,
@@ -208,6 +209,7 @@ export const useDropdown = (
             searchPlaceholder,
             defaultSearchQuery,
             enableAbsolutePositioning: false,
+            groups,
         },
         arrowProps,
         dropdownExpansionIndicatorProps: {

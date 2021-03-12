@@ -6,9 +6,9 @@ import {
 } from './style';
 import { OptionListItemPropsType } from './type';
 import { Checkbox } from '../Checkbox';
-import { useOptionListItem } from './utils/useOptionListItem';
+import { useOptionListItem } from './hooks/useOptionListItem';
 import { OPTION_LIST_ITEM_CLASS_PREFIX } from './constants';
-import { useOptionListItemClassName } from './utils/useOptionListItemClassName';
+import { useOptionListItemClassName } from './hooks/useOptionListItemClassName';
 import { useComponentTheme } from '../../utils/hooks';
 
 export const OptionListItem: FunctionComponent<OptionListItemPropsType> = ({
