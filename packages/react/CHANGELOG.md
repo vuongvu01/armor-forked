@@ -1,3 +1,10 @@
+## @deliveryhero/armor [1.34.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.34.1...@deliveryhero/armor@1.34.2) (2021-03-12)
+
+
+### Bug Fixes
+
+* **dropdown:** Support of centralised system of z-indexes and position for Dropdown implemented [LD-404] ([#432](https://github.com/deliveryhero/armor/issues/432)) ([f2c6bcd](https://github.com/deliveryhero/armor/commit/f2c6bcdac6d427cdcff13826a9e60cc5f6093a35))
+
 ## @deliveryhero/armor [1.34.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.34.0...@deliveryhero/armor@1.34.1) (2021-03-09)
 
 
