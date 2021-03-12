@@ -1,6 +1,10 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
-import { OptionListPropsType, OptionObjectType } from '../type';
+import {
+    OptionListGroupObjectIndexType,
+    OptionListPropsType,
+    OptionObjectType,
+} from '../type';
 import { CheckedIconType } from '../../Checkbox/type';
 import { OPTION_LIST_ITEM } from '../constants';
 import { useOnToggleAll } from '../../Dropdown/hooks';
@@ -25,6 +29,7 @@ export const useOptionList = ({
     searchPlaceholder = 'Search',
     defaultSearchQuery = '',
     isFlat,
+    groups,
     ...restProps
 }: OptionListPropsType) => {
     const [searchQuery, setSearchQuery] = useState(defaultSearchQuery);
@@ -100,30 +105,48 @@ export const useOptionList = ({
     const selectAllCheckedIcon: CheckedIconType =
         internalOptions.length === internalValue.length ? 'tick' : 'dash';
 
+    const groupIndex = useMemo<OptionListGroupObjectIndexType>(() => {
+        if (!groups || !groups.length) {
+            return {};
+        }
+
+        return groups.reduce<OptionListGroupObjectIndexType>(
+            (result, group) => {
+                // eslint-disable-next-line no-param-reassign
+                result[group.id] = group;
+                return result;
+            },
+            {},
+        );
+    }, [groups]);
+
+    const selectAllItem = useMemo(
+        () => ({ value: -1, label: selectAllLabel }),
+        [selectAllLabel],
+    );
+
     return {
         rootProps: restProps,
-        dropdownOptionItemProps: (item: OptionObjectType) => ({
+        getOptionItemProps: (option: OptionObjectType) => ({
             'data-testid': OPTION_LIST_ITEM,
-            isSelected: internalValue.includes(item.value),
-            item,
-            key: item.value,
+            isSelected: internalValue.includes(option.value),
+            item: option,
+            key: option.value,
             onOptionSelect,
             multiple,
         }),
-        selectAllItemProps: {
-            item: useMemo(() => ({ value: -1, label: selectAllLabel }), [
-                selectAllLabel,
-            ]),
+        getSelectAllItemProps: () => ({
+            item: selectAllItem,
             checkedIcon: selectAllCheckedIcon,
             isSelected: internalValue.length > 0,
             onOptionSelect: handleToggleAll,
             multiple,
-        },
-        dropdownOptionListSearchProps: {
+        }),
+        getOptionListSearchProps: () => ({
             placeholder: searchPlaceholder,
             onChange: handleSearchChange,
             defaultQuery: searchQuery,
-        },
+        }),
         internalOptions,
         dynamicInternalOptions,
         disabled,
@@ -135,5 +158,6 @@ export const useOptionList = ({
         isOptionListHeaderRendered: enableSelectAllOption || enableSearchOption,
         isSelectAllOptionRendered:
             enableSelectAllOption && multiple && !searchQuery,
+        groupIndex,
     };
 };

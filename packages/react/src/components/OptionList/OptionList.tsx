@@ -1,15 +1,21 @@
-import React, { FunctionComponent } from 'react';
-import { OptionListPropsType, OptionObjectType } from './type';
+import React, { FunctionComponent, Fragment } from 'react';
+import {
+    OptionListPropsType,
+    OptionObjectType,
+    OptionListGroupObjectType,
+} from './type';
 import {
     OptionListBeforeSectionContainer,
     OptionListRoot,
     OptionListSearch,
     OptionListSearchContainer,
+    OptionListItemGroup,
 } from './style';
 import { OPTION_LIST_CLASS_PREFIX } from './constants';
 import { OptionListItem } from './OptionListItem';
-import { useOptionList, useOptionListClassName } from './utils';
+import { useOptionList, useOptionListClassName } from './hooks';
 import { useComponentTheme } from '../../utils/hooks';
+import { ObjectLiteralType } from '../../type';
 
 export const OptionList: FunctionComponent<OptionListPropsType> = ({
     className,
@@ -19,9 +25,9 @@ export const OptionList: FunctionComponent<OptionListPropsType> = ({
 
     const {
         rootProps,
-        dropdownOptionItemProps,
-        selectAllItemProps,
-        dropdownOptionListSearchProps,
+        getOptionItemProps,
+        getSelectAllItemProps,
+        getOptionListSearchProps,
 
         internalOptions,
         dynamicInternalOptions,
@@ -30,6 +36,7 @@ export const OptionList: FunctionComponent<OptionListPropsType> = ({
         enableSearchOption,
         isOptionListHeaderRendered,
         isSelectAllOptionRendered,
+        groupIndex,
     } = useOptionList(props);
 
     const classOverride = useOptionListClassName(
@@ -38,15 +45,7 @@ export const OptionList: FunctionComponent<OptionListPropsType> = ({
         disabled,
     );
 
-    const renderOptionItem = (item: OptionObjectType) => (
-        <OptionListItem
-            {...dropdownOptionItemProps(item)}
-            theme={theme}
-            className={`${classOverride.Item} ${
-                internalValue.includes(item.value) ? 'active' : ''
-            }`}
-        />
-    );
+    const displayedGroups: ObjectLiteralType = {};
 
     return internalOptions.length ? (
         <OptionListRoot
@@ -65,7 +64,7 @@ export const OptionList: FunctionComponent<OptionListPropsType> = ({
                             className={classOverride.SearchContainer}
                         >
                             <OptionListSearch
-                                {...dropdownOptionListSearchProps}
+                                {...getOptionListSearchProps()}
                                 theme={theme}
                                 className={classOverride.Search}
                             />
@@ -73,14 +72,46 @@ export const OptionList: FunctionComponent<OptionListPropsType> = ({
                     )}
                     {isSelectAllOptionRendered && (
                         <OptionListItem
-                            {...selectAllItemProps}
+                            {...getSelectAllItemProps()}
                             theme={theme}
                             className={classOverride.SelectAllItem}
                         />
                     )}
                 </OptionListBeforeSectionContainer>
             )}
-            {dynamicInternalOptions.map(renderOptionItem)}
+            {dynamicInternalOptions.map((option: OptionObjectType, index) => {
+                const { value, groupId } = option;
+                let group: OptionListGroupObjectType | null = null;
+                if (
+                    groupId &&
+                    groupId in groupIndex &&
+                    !displayedGroups[groupId]
+                ) {
+                    group = groupIndex[groupId];
+                    displayedGroups[groupId] = true;
+                }
+
+                return (
+                    <Fragment key={value}>
+                        {!!group && (
+                            <OptionListItemGroup
+                                enableSeparator={index > 0}
+                                theme={theme}
+                                className={classOverride.ItemGroup}
+                            >
+                                {group.label}
+                            </OptionListItemGroup>
+                        )}
+                        <OptionListItem
+                            {...getOptionItemProps(option)}
+                            theme={theme}
+                            className={`${classOverride.Item} ${
+                                internalValue.includes(value) ? 'active' : ''
+                            }`}
+                        />
+                    </Fragment>
+                );
+            })}
         </OptionListRoot>
     ) : null;
 };

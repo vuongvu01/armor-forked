@@ -2,13 +2,13 @@ import React, { HTMLAttributes } from 'react';
 
 import { Indexed } from '../../../type';
 import {
-    GroupObjectIndexType,
+    SearchGroupObjectIndexType,
     SearchPropsType,
     SearchQueryType,
 } from '../type';
 
 export type SearchSuggestionsListPropsType = Indexed<{
-    groupIndex: GroupObjectIndexType;
+    groupIndex: SearchGroupObjectIndexType;
     cursor?: number;
     icon?: null | React.ReactElement;
     searchQuery?: SearchQueryType;

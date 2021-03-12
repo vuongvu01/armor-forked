@@ -1,11 +1,9 @@
+import { HTMLAttributes, MouseEvent, ReactChild } from 'react';
 import {
-    HTMLAttributes,
-    MouseEvent,
-    ReactChild,
-    ReactElement,
-    ReactText,
-} from 'react';
-import { Indexed, ObjectLiteralType, ScalarType } from '../../type';
+    DictionaryItemIDBased,
+    ObjectLiteralType,
+    ScalarType,
+} from '../../type';
 import {
     DropdownEffectivePropsType,
     DropdownInternalOptionType,
@@ -26,7 +24,14 @@ export type OptionObjectType = {
     value: ScalarType;
 } & ObjectLiteralType;
 
-export type OptionListPropsType = Indexed<{
+export type OptionListGroupObjectType = DictionaryItemIDBased &
+    ObjectLiteralType;
+
+export type OptionListGroupObjectIndexType = ObjectLiteralType<
+    OptionListGroupObjectType
+>;
+
+export type OptionListPropsType = {
     onClick?: (event: MouseEvent) => void;
     disabled?: boolean;
     internalValue: DropdownInternalValueType;
@@ -35,33 +40,38 @@ export type OptionListPropsType = Indexed<{
     dynamicInternalOptions: DropdownInternalOptionType;
     setInternalOptions: (nextOptions: DropdownInternalOptionType) => void;
     enableAbsolutePositioning: boolean;
-}> &
-    Pick<
-        DropdownEffectivePropsType,
-        | 'className'
-        | 'options'
-        | 'isOptionListShown'
-        | 'multiple'
-        | 'enableSelectAllOption'
-        | 'enableSearchOption'
-        | 'selectAllLabel'
-        | 'searchPlaceholder'
-        | 'defaultSearchQuery'
-    >;
+    groups?: OptionListGroupObjectType[];
+} & Pick<
+    DropdownEffectivePropsType,
+    | 'className'
+    | 'options'
+    | 'isOptionListShown'
+    | 'multiple'
+    | 'enableSelectAllOption'
+    | 'enableSearchOption'
+    | 'selectAllLabel'
+    | 'searchPlaceholder'
+    | 'defaultSearchQuery'
+> &
+    ObjectLiteralType;
 
-export type OptionListBeforeSectionContainerPropsType = Indexed<{}>;
+export type OptionListBeforeSectionContainerPropsType = ObjectLiteralType;
 
-export type OptionListItemPropsType = Indexed<{
+export type OptionListItemPropsType = {
     isSelected?: boolean;
     item: OptionObjectType;
     onOptionSelect?: (item: OptionObjectType) => void;
     checkedIcon?: CheckedIconType;
-}> &
-    Pick<DropdownEffectivePropsType, 'className' | 'multiple'> &
-    HTMLAttributes<HTMLElement>;
+} & Pick<DropdownEffectivePropsType, 'className' | 'multiple'> &
+    HTMLAttributes<HTMLElement> &
+    ObjectLiteralType;
 
-export type OptionListSearchPropsType = Indexed<{
+export type OptionListSearchPropsType = {
     searchPlaceholder?: string;
-}>;
+} & ObjectLiteralType;
 
 export type DropdownOnSearchQueryChangeType = (searchQuery?: string) => void;
+
+export type OptionListItemGroupPropType = {
+    enableSeparator: boolean;
+};

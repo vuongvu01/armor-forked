@@ -228,3 +228,5 @@ export const DropdownTag = styled(Tag)
     }
     ${dropdownTagStyle};
 `;
+
+export const DropdownArrow = styled.div``;

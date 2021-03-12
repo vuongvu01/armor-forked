@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import { SearchEmptySuggestionsList } from '../SearchEmptySuggestionsList';
-import { GroupObjectType, SuggestionObjectType } from '../type';
+import { SearchGroupObjectType, SuggestionObjectType } from '../type';
 import { SearchSuggestionItem } from '../SearchSuggestionItem';
 import { SearchSuggestionsListPropsType } from './type';
 import { ObjectLiteralType } from '../../../type';
@@ -36,7 +36,7 @@ export const SearchSuggestionsList: FunctionComponent<SearchSuggestionsListProps
 
         return options.map((option: SuggestionObjectType, index: number) => {
             const { label, groupId } = option;
-            let group: GroupObjectType | null = null;
+            let group: SearchGroupObjectType | null = null;
             if (groupId && groupId in groupIndex && !displayedGroups[groupId]) {
                 group = groupIndex[groupId];
                 displayedGroups[groupId] = true;

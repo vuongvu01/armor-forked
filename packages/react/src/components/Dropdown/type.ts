@@ -1,7 +1,11 @@
 import { InputHTMLAttributes } from 'react';
 
 import { MarginAttributesType, WidthAttributesType } from '../../system';
-import { Indexed, ScalarType } from '../../type';
+import {
+    DictionaryItemIDBased,
+    ObjectLiteralType,
+    ScalarType,
+} from '../../type';
 import { ComponentElementStylePropsType } from '../type';
 import { OptionObjectType } from '../OptionList/type';
 import { ComponentBehaviourOpenStateType } from '../../system/types/ComponentBehaviourOpenStateType';
@@ -64,73 +68,76 @@ export type DropdownOnRenderSelectedValueType = (
     options: DropdownInternalOptionType,
 ) => string;
 
-export type DropdownBeforeSectionPropsType = Indexed<{
+export type DropdownBeforeSectionPropsType = {
     internalValue: DropdownInternalValueType;
     internalOptions: DropdownInternalOptionType;
     setInternalValue: (nextValue: DropdownInternalValueType) => void;
     isFlat: boolean;
-}> &
-    Pick<
-        DropdownEffectivePropsType,
-        | 'onRenderSelectedValue'
-        | 'disabled'
-        | 'multiple'
-        | 'onChange'
-        | 'options'
-        | 'onSelect'
-        | 'tagLabelMaxLength'
-        | 'openTagsCount'
-        | 'renderAggregatedTagsLabel'
-        | 'singleLine'
-    >;
+} & Pick<
+    DropdownEffectivePropsType,
+    | 'onRenderSelectedValue'
+    | 'disabled'
+    | 'multiple'
+    | 'onChange'
+    | 'options'
+    | 'onSelect'
+    | 'tagLabelMaxLength'
+    | 'openTagsCount'
+    | 'renderAggregatedTagsLabel'
+    | 'singleLine'
+> &
+    ObjectLiteralType;
 
-export type DropdownTagsSectionPropsType = Indexed<{}>;
+export type DropdownTagsSectionPropsType = ObjectLiteralType;
 
-export type DropdownTagsPropsType = Indexed<{
+export type DropdownTagsPropsType = {
     tagsToDisplay: DropdownInternalOptionType;
     propsFn: (option: OptionObjectType) => object;
-}>;
+} & ObjectLiteralType;
 
-export type DropdownEffectivePropsType = Indexed<{
-    error?: boolean;
+export type DropdownGroupObjectType = DictionaryItemIDBased & ObjectLiteralType;
+
+export type DropdownEffectivePropsType = Partial<{
+    error: boolean;
     /**
      * @deprecated
      * inline by default
      */
-    inline?: boolean;
-    displaySeparator?: boolean;
-    isListExpanded?: boolean;
-    isSelected?: boolean;
-    enableSelectAllOption?: boolean;
-    selectAllLabel?: string;
-    searchPlaceholder?: string;
-    defaultSearchQuery?: string;
-    enableSearchOption?: boolean;
-    singleLine?: boolean;
-    tagLabelMaxLength?: number;
-    openTagsCount?: number;
-    item?: string | OptionItemType;
-    itemIndex?: number;
-    onOptionSelect?: (itemIndex: number) => void;
-    onSelect?: DropDownOnSelectType;
-    selectedValue?: string | number;
-    isActionSeparatorDisplayed?: boolean;
-    label?: string;
-    options?: string[] | OptionItemType[];
-    multiple?: boolean;
-    value?: string | ReadonlyArray<string> | ReadonlyArray<number> | number; // aka DropdownValueType - defining explicitly to expose into docs
-    defaultValue?:
+    inline: boolean;
+    displaySeparator: boolean;
+    isListExpanded: boolean;
+    isSelected: boolean;
+    enableSelectAllOption: boolean;
+    selectAllLabel: string;
+    searchPlaceholder: string;
+    defaultSearchQuery: string;
+    enableSearchOption: boolean;
+    singleLine: boolean;
+    tagLabelMaxLength: number;
+    openTagsCount: number;
+    item: string | OptionItemType;
+    itemIndex: number;
+    onOptionSelect: (itemIndex: number) => void;
+    onSelect: DropDownOnSelectType;
+    selectedValue: string | number;
+    isActionSeparatorDisplayed: boolean;
+    label: string;
+    options: string[] | OptionItemType[];
+    multiple: boolean;
+    value: DropdownValueType;
+    defaultValue:
         | string
         | ReadonlyArray<string>
         | ReadonlyArray<number>
         | number; // aka OptionType - defining explicitly to expose into docs
-    onChange?: (event: DropdownOnChangeEventType) => void;
-    onRenderSelectedValue?: (
+    onChange: (event: DropdownOnChangeEventType) => void;
+    onRenderSelectedValue: (
         value: DropdownInternalValueType,
         options: DropdownInternalOptionType,
     ) => string;
-    formatOption?: OptionFormatType;
-    renderAggregatedTagsLabel?: (aggregatedTagsCount: number) => string;
+    formatOption: OptionFormatType;
+    renderAggregatedTagsLabel: (aggregatedTagsCount: number) => string;
+    groups: DropdownGroupObjectType[];
 }> &
     ComponentBehaviourOpenStateType &
     ComponentBehaviourPortalType &
@@ -140,11 +147,12 @@ export type DropdownEffectivePropsType = Indexed<{
         'value' | 'onChange' | 'defaultValue' | 'onSelect'
     > &
     MarginAttributesType &
-    WidthAttributesType;
+    WidthAttributesType &
+    ObjectLiteralType;
 
 export type DropdownPropsType = DropdownEffectivePropsType;
 
-export type ExpansionIndicatorContainerPropsType = Indexed<{}>;
+export type ExpansionIndicatorContainerPropsType = ObjectLiteralType;
 
 export type DropdownRootPropsType = DropdownEffectivePropsType &
     ComponentElementStylePropsType;

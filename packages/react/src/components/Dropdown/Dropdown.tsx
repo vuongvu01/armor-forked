@@ -8,6 +8,7 @@ import {
     DropdownOptionListContainer,
     DropdownRoot,
     DropdownTextInput,
+    DropdownArrow,
     ExpansionIndicatorContainer,
 } from './style';
 import { DropdownPropsType } from './type';
@@ -95,7 +96,7 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
                                     className={classOverride.OptionList}
                                     theme={theme}
                                 />
-                                <div {...arrowProps} />
+                                <DropdownArrow {...arrowProps} />
                             </DropdownOptionListContainer>
                         )}
                     </PortalToBody>
