@@ -1,3 +1,10 @@
+# @deliveryhero/armor [1.35.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.34.2...@deliveryhero/armor@1.35.0) (2021-03-12)
+
+
+### Features
+
+* **dropdown:** Item grouping implented in Dropdown [LD-425] ([#437](https://github.com/deliveryhero/armor/issues/437)) ([0e72e10](https://github.com/deliveryhero/armor/commit/0e72e105617fce8a503fdba2d8333f66a48c4b5b))
+
 ## @deliveryhero/armor [1.34.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.34.1...@deliveryhero/armor@1.34.2) (2021-03-12)
 
 
