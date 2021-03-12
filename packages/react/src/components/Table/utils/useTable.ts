@@ -6,7 +6,7 @@ import { TableHookPropsType, TableContextValueType } from './type';
 import { TableStickyColumnMapInternalItem } from '../type';
 import { ArrayLikeType } from '../../../type';
 import { LEFT, RIGHT } from '../../../constants';
-import { getWindow } from '../../../system/util/getWindow';
+import { getWindow } from '../../../system/util/globals';
 
 export const useTable = ({
     stickyColumns,

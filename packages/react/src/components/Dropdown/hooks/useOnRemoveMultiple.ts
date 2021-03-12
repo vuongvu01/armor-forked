@@ -4,7 +4,7 @@ import {
     DropdownOnChangeEventType,
     DropdownOnRemoveMultipleType,
 } from '../type';
-import { handleOnChange } from './handleOnChange';
+import { handleOnChange } from '../utils/handleOnChange';
 
 export const useOnRemoveMultiple = (
     setInternalValue: (nextValue: DropdownInternalValueType) => void,

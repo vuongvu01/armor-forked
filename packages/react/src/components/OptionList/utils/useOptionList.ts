@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { OptionListPropsType, OptionObjectType } from '../type';
 import { CheckedIconType } from '../../Checkbox/type';
 import { OPTION_LIST_ITEM } from '../constants';
-import { useOnToggleAll } from '../../Dropdown/utils';
+import { useOnToggleAll } from '../../Dropdown/hooks';
 import { useOnSearchQueryChange } from './useOnSearchQueryChange';
 
 export const useOptionList = ({

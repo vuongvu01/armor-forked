@@ -3,7 +3,7 @@ import { LogoutIcon } from '@deliveryhero/armor-icons';
 import { HeaderNavigationActionItem } from '.';
 
 import { HeaderNavigationActionItemPropsType } from './type';
-import { getWindow } from '../../../system/util/getWindow';
+import { getWindow } from '../../../system/util/globals';
 
 const setURL = () => {
     const win = getWindow();

@@ -18,6 +18,7 @@ import {
 } from '../type';
 import { withWrapper } from '../../../helpers/Wrapper';
 import { Pack, PackItem } from '../../Pack';
+import { Dialog, DialogContent } from '../../Dialog';
 
 export default {
     title: 'Components/Dropdown',
@@ -968,8 +969,6 @@ export const DynamicOptionsListMultiple = () => {
             }`,
         ).then(response => response.json());
 
-        console.log({ results });
-
         setOptions(results.map((item: any) => item.title));
     };
 
@@ -988,6 +987,114 @@ export const DynamicOptionsListMultiple = () => {
             <Button marginY={4} onClick={handleOnClick}>
                 Update options
             </Button>
+        </>
+    );
+};
+
+export const FromDialog = () => {
+    const [selectedOption, setSelectedOption] = useState();
+    const handleSelect = (option: any) => {
+        console.log('story handleSelect', { option });
+        setSelectedOption(option);
+    };
+
+    return (
+        <Dialog open>
+            <DialogContent>
+                <Dropdown
+                    options={[
+                        'Biryani',
+                        'Tacos',
+                        'Pho',
+                        'Pâté of roasted indigenous legumes',
+                    ]}
+                    value={selectedOption}
+                    onChange={handleSelect}
+                    label="Dish type"
+                />
+            </DialogContent>
+        </Dialog>
+    );
+};
+
+export const AtTheBottom = () => {
+    const [selectedOption, setSelectedOption] = useState();
+    const handleSelect = (option: any) => {
+        console.log('story handleSelect', { option });
+        setSelectedOption(option);
+    };
+
+    return (
+        <>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <Dropdown
+                options={[
+                    'Biryani',
+                    'Tacos',
+                    'Pho',
+                    'Pâté of roasted indigenous legumes',
+                ]}
+                onSelect={handleSelect}
+                label="Dish type"
+            />
+        </>
+    );
+};
+
+export const NoPortal = () => {
+    return (
+        <>
+            <Dropdown
+                options={[
+                    'Biryani',
+                    'Tacos',
+                    'Pho',
+                    'Pâté of roasted indigenous legumes',
+                ]}
+                label="Dish type"
+                enablePortal={false}
+            />
+        </>
+    );
+};
+
+export const DefaultOpen = () => {
+    return (
+        <>
+            <Dropdown
+                options={[
+                    'Biryani',
+                    'Tacos',
+                    'Pho',
+                    'Pâté of roasted indigenous legumes',
+                ]}
+                label="Dish type"
+                enablePortal={false}
+                defaultOpen
+            />
         </>
     );
 };

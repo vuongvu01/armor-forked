@@ -1,6 +1,6 @@
 import { useCallback, MouseEvent } from 'react';
 import { HeaderNavigationLinkPropsType } from '../type';
-import { getWindow } from '../../../../../system/util/getWindow';
+import { getWindow } from '../../../../../system/util/globals';
 
 export const useHeaderNavigationLink = ({
     headerNavigationLinksContext,

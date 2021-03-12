@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo } from 'react';
 import uniqueId from 'lodash.uniqueid';
 import { OverlayManager, OverlayParametersType } from '../util/OverlayManager';
-import { getBody } from '../util/getBody';
+import { getBody } from '../util/globals';
 
 export const useOverlay = (
     open?: boolean,

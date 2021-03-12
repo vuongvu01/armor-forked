@@ -27,7 +27,7 @@ import { DROPDOWN_ACTION_ITEM } from '../../Dropdown/constants';
 import AccordionContext from '../AccordionContext';
 import useAccordionHeaderClassName from './useAccordionHeaderClassName';
 import { useInternalRef } from '../../../utils';
-import { getWindow } from '../../../system/util/getWindow';
+import { getWindow } from '../../../system/util/globals';
 
 export const AccordionHeader: FunctionComponent<AccordionHeaderPropsType> = forwardRef(
     function AccordionHeader(

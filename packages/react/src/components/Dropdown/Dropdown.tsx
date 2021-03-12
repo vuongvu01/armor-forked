@@ -1,7 +1,7 @@
 import React, { forwardRef, FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import { useDropdown, useDropdownClassName } from './utils';
+import { useDropdown, useDropdownClassName } from './hooks';
 import {
     DropdownContainer,
     DropdownExpansionIndicator,
@@ -18,6 +18,7 @@ import {
 import { OptionList } from '../OptionList';
 import { useTheme } from '../../styling';
 import { DropdownBeforeSection } from './DropdownBeforeSection';
+import { PortalToBody } from '../../system/util/PortalToBody';
 
 export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
     function Dropdown({ className, ...props }, ref) {
@@ -27,11 +28,15 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
             rootProps,
             containerProps,
             textInputProps,
+            portalProps,
+            listContainerProps,
+            arrowProps,
             optionListProps,
             dropdownExpansionIndicatorProps,
             dropdownBeforeSectionProps,
             disabled,
             internalValue,
+            open,
         } = useDropdown(props, ref);
 
         const classOverride = useDropdownClassName(
@@ -77,17 +82,23 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
                         className={classOverride.TextInput}
                         theme={theme}
                     />
-                    <DropdownOptionListContainer
-                        data-testid={DROPDOWN_OPTION_LIST_CONTAINER}
-                        className={classOverride.OptionListContainer}
-                        theme={theme}
-                    >
-                        <OptionList
-                            {...optionListProps}
-                            className={classOverride.OptionList}
-                            theme={theme}
-                        />
-                    </DropdownOptionListContainer>
+                    <PortalToBody {...portalProps}>
+                        {open && (
+                            <DropdownOptionListContainer
+                                data-testid={DROPDOWN_OPTION_LIST_CONTAINER}
+                                {...listContainerProps}
+                                className={classOverride.OptionListContainer}
+                                theme={theme}
+                            >
+                                <OptionList
+                                    {...optionListProps}
+                                    className={classOverride.OptionList}
+                                    theme={theme}
+                                />
+                                <div {...arrowProps} />
+                            </DropdownOptionListContainer>
+                        )}
+                    </PortalToBody>
                 </DropdownContainer>
             </DropdownRoot>
         );

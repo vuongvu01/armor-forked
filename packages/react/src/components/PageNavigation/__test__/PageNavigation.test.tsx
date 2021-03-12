@@ -16,14 +16,14 @@ import {
     render,
     // prettyDOM,
     // wait,
-    // waitForElement,
+    waitForElement,
 } from '@testing-library/react';
 import {
     renderHook,
     cleanup as cleanupHooks,
 } from '@testing-library/react-hooks';
 import renderer from 'react-test-renderer';
-// import userEvent from '@testing-library/user-event';
+import userEvent from '@testing-library/user-event';
 
 import { customTheme } from './helpers';
 import { PageNavigation } from '../..';
@@ -186,7 +186,7 @@ describe('<PageNavigation />', () => {
         });
     });
 
-    it('should select page size', () => {
+    it('should select page size', async () => {
         const onPageSizeChange = jest.fn();
         const { container } = render(
             <PageNavigation
@@ -200,7 +200,14 @@ describe('<PageNavigation />', () => {
             />,
         );
 
-        const options = container.querySelectorAll('.OptionList-Item');
+        const input = container.querySelector('input');
+        userEvent.click(input!);
+
+        const options = await waitForElement(
+            () => container.querySelectorAll('.OptionList-Item'),
+            { container, timeout: 1000 },
+        );
+
         expect(options.length).toEqual(2);
 
         fireEvent.click(options[1]);

@@ -9,7 +9,7 @@ import {
 } from '../../utils/type';
 import { TableHeadHookPropsType } from './type';
 import { useInternalRef } from '../../../../utils';
-import { getWindow } from '../../../../system/util/getWindow';
+import { getWindow } from '../../../../system/util/globals';
 
 export const useTableHead = ({ ref }: TableHeadHookPropsType) => {
     // sticky header

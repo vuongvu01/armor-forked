@@ -7,11 +7,11 @@ import {
     SideSheetHeaderContainerPropsType,
     SideSheetRootPropsType,
 } from './type';
-import { spacing } from '../../system';
+import { spacing, reset, zIndex } from '../../system';
 import { transitionDurationInSec } from '../../constants';
 import { minWidth, widthWide, widthDefault } from './constants';
 import { getComponentOverride } from '../../system/mixins/getComponentOverride';
-import { reset, zIndex } from '../../system';
+
 import { CloseButton } from '../CloseButton/CloseButton';
 
 const propertyList = {

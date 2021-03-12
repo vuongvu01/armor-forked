@@ -1,8 +1,7 @@
-import { useCallback, useEffect, useMemo, useRef } from 'react';
+import { useCallback, useMemo, useRef } from 'react';
 import { DropdownInternalOptionType, DropdownPropsType } from '../type';
 import {
     noop,
-    useDetectClickOutsideComponent,
     useDetectEscapeKeyPressed,
     useInternalRef,
     useOnValueUpdate,
@@ -14,6 +13,10 @@ import { ReferenceType } from '../../../type';
 import { useControlledState } from '../../../system/hooks/useControlledState';
 import { useGuidedState } from '../../../system/hooks/useGuidedState';
 import { useOnOptionListUpdate } from './useOnOptionListUpdate';
+import { usePopper } from '../../../system/hooks/usePopper';
+import { useOverlay } from '../../../system/hooks/useOverlay';
+import { useOuterClick } from '../../../system/hooks/useOuterClick';
+import { usePanelWidth } from './usePanelWidth';
 
 export const useDropdown = (
     {
@@ -36,12 +39,14 @@ export const useDropdown = (
         openTagsCount = 0,
         renderAggregatedTagsLabel,
         singleLine,
+        zIndex,
+        enablePortal,
 
         // open/close state
         open,
         defaultOpen,
         onOpenChange,
-        isListExpanded = false,
+        isListExpanded,
 
         // other native text input props
         autoFocus,
@@ -57,6 +62,7 @@ export const useDropdown = (
 ) => {
     const internalInputRef = useRef(null);
     const containerRef = useRef(null);
+    const dropdownRef = useRef<HTMLDivElement>(null);
 
     useInternalRef(ref, internalInputRef);
 
@@ -113,11 +119,10 @@ export const useDropdown = (
         }
     };
 
-    useDetectClickOutsideComponent(
-        containerRef,
-        setIsOptionListShown,
-        isOptionListShown,
-    );
+    const onOuterClick = useCallback(() => {
+        setIsOptionListShown(false);
+    }, [setIsOptionListShown]);
+    useOuterClick([containerRef, dropdownRef], onOuterClick, isOptionListShown);
 
     useDetectEscapeKeyPressed(
         containerRef,
@@ -125,16 +130,29 @@ export const useDropdown = (
         isOptionListShown,
     );
 
-    const handleDisplayOptionListToggle = useCallback(() => {
+    const onOptionListVisibilityTriggerClick = useCallback(() => {
+        if (disabled) {
+            return;
+        }
+
         setIsOptionListShown(!isOptionListShown);
 
         focusOnActionItemTrigger();
-    }, [setIsOptionListShown, isOptionListShown]);
+    }, [setIsOptionListShown, isOptionListShown, disabled]);
 
-    const handleExpansionClick = useMemo(
-        () => (disabled ? noop : handleDisplayOptionListToggle),
-        [disabled, isOptionListShown],
+    const { panelProps, arrowProps } = usePopper(
+        dropdownRef,
+        containerRef,
+        'bottom-start',
+        {
+            offset: [0, 5],
+            allowedAutoPlacements: ['top', 'bottom'],
+        },
     );
+
+    const { zIndex: realZIndex } = useOverlay(isOptionListShown, { zIndex });
+
+    usePanelWidth(containerRef, dropdownRef);
 
     return {
         rootProps: restProps,
@@ -142,7 +160,7 @@ export const useDropdown = (
             ref: containerRef,
         },
         textInputProps: {
-            onClick: handleExpansionClick,
+            onClick: onOptionListVisibilityTriggerClick,
             ref: internalInputRef,
             value: selectedValueToDisplay,
             internalValue,
@@ -160,6 +178,14 @@ export const useDropdown = (
             placeholder,
             tabIndex,
             multiple,
+        },
+        portalProps: {
+            enablePortal,
+        },
+        listContainerProps: {
+            ref: dropdownRef,
+            zIndex: realZIndex,
+            ...panelProps,
         },
         optionListProps: {
             disabled,
@@ -181,7 +207,9 @@ export const useDropdown = (
             enableSearchOption,
             searchPlaceholder,
             defaultSearchQuery,
+            enableAbsolutePositioning: false,
         },
+        arrowProps,
         dropdownExpansionIndicatorProps: {
             disabled,
             error,
@@ -191,11 +219,11 @@ export const useDropdown = (
                 isActionSeparatorDisplayed &&
                 (isOptionListShown || !!internalValue.length),
             isExpanded: isOptionListShown,
-            onClick: handleExpansionClick,
+            onClick: onOptionListVisibilityTriggerClick,
         },
         dropdownBeforeSectionProps: {
             disabled,
-            onClick: handleExpansionClick,
+            onClick: onOptionListVisibilityTriggerClick,
             internalValue,
             internalOptions,
             multiple,
@@ -215,5 +243,6 @@ export const useDropdown = (
         multiple,
         onRenderSelectedValue,
         internalValue,
+        open: isOptionListShown,
     };
 };
