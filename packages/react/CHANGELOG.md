@@ -1,3 +1,10 @@
+## @deliveryhero/armor [1.35.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.35.0...@deliveryhero/armor@1.35.1) (2021-03-16)
+
+
+### Bug Fixes
+
+* **typography:** Typography attribute forwarding fixes and refactoring ([#439](https://github.com/deliveryhero/armor/issues/439)) ([52f45e4](https://github.com/deliveryhero/armor/commit/52f45e49709a2ecbdd6e17ca2b078e5594b14ad7))
+
 # @deliveryhero/armor [1.35.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.34.2...@deliveryhero/armor@1.35.0) (2021-03-12)
 
 
