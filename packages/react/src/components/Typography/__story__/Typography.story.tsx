@@ -94,3 +94,13 @@ export const CustomColor = () => (
         </Typography>
     </>
 );
+
+export const KindsOfProps = () => (
+    <Typography
+        forbiddenProp={true}
+        data-forbidden-prop="true"
+        aria-label="header"
+    >
+        Hello world!
+    </Typography>
+);
