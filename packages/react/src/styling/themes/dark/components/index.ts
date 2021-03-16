@@ -45,6 +45,7 @@ import { getContextMenuOverride } from './ContextMenu';
 import { getIconButtonOverride } from './IconButton';
 import { getTableCheckboxCellOverride } from './Table/TableCheckboxCell';
 import { getTableHeadCellOverride } from './Table/TableHeadCell';
+import { getLinkOverride } from './Link';
 
 export const darkThemeComponentOverrides = {
     Accordion: getAccordionOverride,
@@ -91,4 +92,5 @@ export const darkThemeComponentOverrides = {
     ...makeDatePickerOverride(),
     ContextMenu: getContextMenuOverride,
     IconButton: getIconButtonOverride,
+    Link: getLinkOverride,
 };
