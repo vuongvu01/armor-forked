@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { Link } from '../../../src/components/Link';
-import { DarkBackground } from '../../../src/helpers/DarkBackground';
 
 export default {
     title: 'Link',

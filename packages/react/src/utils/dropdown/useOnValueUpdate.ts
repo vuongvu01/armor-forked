@@ -58,7 +58,7 @@ export const useOnValueUpdate = (
                 });
             }
 
-            if (onSelect && !multiple && options) {
+            if (onSelect && options) {
                 let option = isFlat ? selectedOption.label : selectedOption;
 
                 if (typeof option === 'number') {

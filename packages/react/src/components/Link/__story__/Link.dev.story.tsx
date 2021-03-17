@@ -59,3 +59,17 @@ export const InContext = () => {
         </>
     );
 };
+
+export const LongLink = () => {
+    return (
+        <>
+            <Typography>
+                Please follow Armor{' '}
+                <Link href="https://google.com" target="_blank">
+                    developer implementation guidelines
+                </Link>{' '}
+                to find out more
+            </Typography>
+        </>
+    );
+};

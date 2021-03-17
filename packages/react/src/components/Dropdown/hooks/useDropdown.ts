@@ -1,7 +1,6 @@
-import { useCallback, useMemo, useRef } from 'react';
+import { useCallback, useRef } from 'react';
 import { DropdownInternalOptionType, DropdownPropsType } from '../type';
 import {
-    noop,
     useDetectEscapeKeyPressed,
     useInternalRef,
     useOnValueUpdate,

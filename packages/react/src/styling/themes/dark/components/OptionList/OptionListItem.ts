@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
-import { colorGrey60, colorGrey70 } from '../../../../tokens';
-import { OptionListItemPropsType } from '../../../../components/OptionList/type';
+import { colorGrey60, colorGrey70 } from '../../../../../tokens';
+import { OptionListItemPropsType } from '../../../../../components/OptionList/type';
 
 export const getOptionListItemOverride = ({
     isSelected,
@@ -12,6 +12,7 @@ export const getOptionListItemOverride = ({
             background-color: ${colorGrey60};
         }
     `;
+
     if (isSelected) {
         result = css`
             ${result};

@@ -42,8 +42,6 @@ export const radioDefaultTheme = {
         },
     },
     Root: {
-        base: {
-            marginBottom: componentSpacing02,
-        },
+        base: {},
     },
 };

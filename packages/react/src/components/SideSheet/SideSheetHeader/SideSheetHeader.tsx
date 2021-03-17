@@ -5,7 +5,7 @@ import { SideSheetHeaderPropsType } from './type';
 import {
     descriptionTypographyStyle,
     SideSheetHeader as SideSheetHeaderRoot,
-    titleTypographyStyle,
+    SideSheetHeaderTypography,
 } from './style';
 import { Typography } from '../../Typography';
 import { sideSheetHeader } from '../constants';
@@ -18,10 +18,6 @@ export const SideSheetHeader: FunctionComponent<SideSheetHeaderPropsType> = ({
     title,
     ...restProps
 }) => {
-    if (!description && !title) {
-        return null;
-    }
-
     return (
         <SideSheetHeaderRoot
             data-testid={sideSheetHeader}
@@ -29,9 +25,9 @@ export const SideSheetHeader: FunctionComponent<SideSheetHeaderPropsType> = ({
             theme={theme}
         >
             {title ? (
-                <Typography sectionTitle style={titleTypographyStyle}>
+                <SideSheetHeaderTypography sectionTitle theme={theme}>
                     {title}
-                </Typography>
+                </SideSheetHeaderTypography>
             ) : null}
             {description ? (
                 <Typography paragraph large style={descriptionTypographyStyle}>

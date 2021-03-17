@@ -1122,9 +1122,14 @@ const characters = [
 ];
 
 export const WithGroups = () => {
+    const handleSelect = (option: any) => {
+        console.log('story handleSelect', { option });
+    };
+
     return (
         <Dropdown
             margin={1}
+            onSelect={handleSelect}
             options={characters}
             label="Multiple options"
             multiple

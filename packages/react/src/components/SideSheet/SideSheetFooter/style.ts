@@ -15,6 +15,7 @@ export const SideSheetFooter = styled(Typography).withConfig(
     getPropsBlocker(propertyList, false),
 )<SideSheetFooterPropsType>`
     align-items: center;
+    justify-content: flex-end;
     box-sizing: border-box;
     display: flex;
     height: 64px;
