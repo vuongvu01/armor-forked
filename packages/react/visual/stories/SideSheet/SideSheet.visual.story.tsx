@@ -30,6 +30,14 @@ export const SideSheetLayout = () => (
     </SideSheet>
 );
 
+export const SideSheetLayoutNoDescription = () => (
+    <SideSheet zIndex={0} open={true}>
+        <SideSheetHeader title="Header title" />
+        <SideSheetBody>Body content</SideSheetBody>
+        <SideSheetFooter>Footer actions</SideSheetFooter>
+    </SideSheet>
+);
+
 export const WideLookExpandedOnLoadNoOverlay = () => (
     <SideSheet disableOverlay open={true} wide={true}>
         <SideSheetHeader

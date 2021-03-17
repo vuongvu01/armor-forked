@@ -27,10 +27,7 @@ export const DefaultLayout = () => {
     return (
         <>
             <SideSheet open={open} onClose={onClose}>
-                <SideSheetHeader
-                    title="Header title"
-                    description="Header description"
-                />
+                <SideSheetHeader title="Header title" />
                 <SideSheetBody>Body content</SideSheetBody>
                 <SideSheetFooter>Footer actions</SideSheetFooter>
             </SideSheet>

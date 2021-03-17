@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { SideSheetHeaderPropsType } from './type';
 import { colorGrey50 } from '../../../tokens';
 import { getPropsBlocker, makePropList } from '../../../utils';
+import { spacing } from '../../../system/mixins';
+import { Typography } from '../../Typography';
 
 const propertyList = makePropList(['isFixed']);
 
@@ -19,7 +21,14 @@ export const SideSheetHeader = styled.div.withConfig(
     ${headerStyle}
 `;
 
-export const titleTypographyStyle = { marginTop: 0, marginBottom: '8px' };
+export const SideSheetHeaderTypography = styled(Typography).withConfig(
+    getPropsBlocker(propertyList),
+)<SideSheetHeaderPropsType>`
+    margin-top: 0;
+    margin-bottom: ${spacing(2)};
+    font-size: 1.5em;
+`;
+
 export const descriptionTypographyStyle = {
     color: colorGrey50,
     marginBottom: 0,

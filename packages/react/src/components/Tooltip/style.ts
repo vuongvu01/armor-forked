@@ -5,7 +5,7 @@ import { TooltipArrowPropsType, TooltipRootPropsType } from './type';
 import { transitionDurationInSec } from '../../constants';
 import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 import { popperArrow, popperArrowPlacement } from '../../utils/popper';
-import { zIndex } from '../../system';
+import { widthAttributes, zIndex } from '../../system';
 
 const propertyList = {
     align: true,
@@ -67,6 +67,7 @@ export const TooltipRoot = styled.div.withConfig(getPropsBlocker(propertyList))<
     ${getRootStyle};
     ${sizeStyle};
     ${getComponentOverride('Tooltip')};
+    ${widthAttributes}
 `;
 
 export const TooltipArrow = styled.div.withConfig(

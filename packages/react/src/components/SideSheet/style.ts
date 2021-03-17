@@ -96,7 +96,7 @@ export const SideSheetHeaderContainer = styled.div.withConfig(
 `;
 
 export const SideSheetCloseButton = styled(CloseButton)`
-    margin-top: -${spacing(2.5)};
+    margin-top: -${spacing(1)};
     margin-right: -${spacing(2.5)};
     position: absolute;
     top: ${spacing(6.5)};

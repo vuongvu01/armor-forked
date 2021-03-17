@@ -4,10 +4,6 @@ import { SearchRootPropsType } from '../../../../../components/Search/type';
 
 export const getSearchOverride = ({ disabled }: SearchRootPropsType) => {
     let result = css`
-        .Search-ListItemGroup {
-            color: ${colorGrey30};
-            background-color: ${colorGrey70};
-        }
         .Search-SuggestionsContainer {
             background-color: ${colorGrey70};
         }
