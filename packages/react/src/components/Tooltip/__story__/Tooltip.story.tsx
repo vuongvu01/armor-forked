@@ -191,3 +191,24 @@ export const DefaultOpen = () => {
         </>
     );
 };
+
+export const ControlledBodyWidth = () => {
+    return (
+        <>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <Tooltip
+                align="bottom"
+                content="From what i am seeing in the code, the small parameter is only responsible for decreasing the padding in the tooltip body. From what i am seeing in the code, the small parameter is only responsible for decreasing the padding in the tooltip body. From what i am seeing in the code, the small parameter is only responsible for decreasing the padding in the tooltip body"
+                defaultOpen
+                maxWidth="300px"
+            >
+                <Button marginLeft={30}>Controlled width</Button>
+            </Tooltip>
+        </>
+    );
+};
