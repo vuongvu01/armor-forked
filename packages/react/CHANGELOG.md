@@ -1,3 +1,10 @@
+# @deliveryhero/armor [1.37.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.36.0...@deliveryhero/armor@1.37.0) (2021-03-18)
+
+
+### Features
+
+* **typography fixes:** ([#450](https://github.com/deliveryhero/armor/issues/450)) ([8fd6cc4](https://github.com/deliveryhero/armor/commit/8fd6cc487ed79dbbd10382c28225136ddff1f4cc))
+
 # @deliveryhero/armor [1.36.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.35.3...@deliveryhero/armor@1.36.0) (2021-03-18)
 
 
