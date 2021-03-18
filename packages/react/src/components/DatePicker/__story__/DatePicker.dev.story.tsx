@@ -35,7 +35,7 @@ export const Basic = () => {
 export const OtherLabel = () => {
     return (
         <Box paddingTop={20} paddingLeft={50}>
-            <DatePicker label="Moooooo" />
+            <DatePicker label="Date *" placeholder="DD/MM/YYYY" />
         </Box>
     );
 };

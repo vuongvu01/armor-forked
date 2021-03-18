@@ -20,6 +20,7 @@ export const useDatePicker = (
         dateValue,
         onDateValueChange,
         label,
+        placeholder,
         disabled,
         readOnly,
         ...restProps
@@ -113,6 +114,7 @@ export const useDatePicker = (
             readOnly: true,
             disabled,
             label,
+            placeholder,
             ref: inputRef,
             value: formattedValue,
             enableRootRef: true,
