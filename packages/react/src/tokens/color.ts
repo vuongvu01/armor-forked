@@ -65,6 +65,3 @@ export const colorRed30 = '#ec8086';
 export const colorRed20 = '#f2a5a9';
 export const colorRed10 = '#fdd5d7';
 export const colorRed05 = '#fce9ea';
-
-export const colorPurple50 = '#673ab7';
-export const colorPurple20 = '#b39ddb';
