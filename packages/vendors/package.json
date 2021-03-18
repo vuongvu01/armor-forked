@@ -28,8 +28,8 @@
         "release": "./script/release.sh"
     },
     "peerDependencies": {
-        "@deliveryhero/armor": "^1.27.1",
-        "@deliveryhero/armor-icons": "^1.7.0",
+        "@deliveryhero/armor": "1.35.0",
+        "@deliveryhero/armor-icons": "1.10.0",
         "react": ">=16.8.0",
         "react-dom": ">=16.8.0",
         "react-is": ">=16.8.0",

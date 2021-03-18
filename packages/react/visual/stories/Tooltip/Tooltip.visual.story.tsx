@@ -2,7 +2,6 @@ import React from 'react';
 
 import { Tooltip } from '../../../src/components/Tooltip';
 import { Button } from '../../../src/components/Button';
-import { bottom, left, right, top } from '@popperjs/core/lib/enums';
 
 export default {
     title: 'Tooltip',
