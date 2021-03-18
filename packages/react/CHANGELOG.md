@@ -1,3 +1,10 @@
+# @deliveryhero/armor [1.36.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.35.3...@deliveryhero/armor@1.36.0) (2021-03-18)
+
+
+### Features
+
+* **datepicker:** placehilder support ([#448](https://github.com/deliveryhero/armor/issues/448)) ([a0594d8](https://github.com/deliveryhero/armor/commit/a0594d8df810f261ccd1235d20c203cd54e7d577))
+
 ## @deliveryhero/armor [1.35.3](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.35.2...@deliveryhero/armor@1.35.3) (2021-03-18)
 
 
