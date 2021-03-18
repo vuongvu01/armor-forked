@@ -15,6 +15,7 @@ export * from './FormField';
 export * from './Grid';
 export * from './HeaderNavigation';
 export * from './Indicator';
+export * from './Link';
 export * from './MaterialIcon';
 export * from './Menu';
 export * from './Message';
