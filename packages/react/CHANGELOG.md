@@ -1,3 +1,10 @@
+## @deliveryhero/armor [1.35.3](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.35.2...@deliveryhero/armor@1.35.3) (2021-03-18)
+
+
+### Bug Fixes
+
+* **import:** resolving issue via revert ([#446](https://github.com/deliveryhero/armor/issues/446)) ([245aa08](https://github.com/deliveryhero/armor/commit/245aa08ded6df8abf97566e5ff1bcdfa9d94a563))
+
 ## @deliveryhero/armor [1.35.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.35.1...@deliveryhero/armor@1.35.2) (2021-03-18)
 
 
