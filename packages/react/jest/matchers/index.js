@@ -8,4 +8,3 @@ require('./toSupportColorAttributes');
 require('./toSupportRestPropsForwarding');
 require('./toSupportCustomTheme');
 require('./toHaveChildrenWithClassNames');
-require('./toSupportAttributeForwarding');

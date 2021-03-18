@@ -33,11 +33,11 @@ export default {
 export const AllStates = () => (
     <Box marginTop={5}>
         <Box>
-            <TextInput label="Label" name="your_price" marginRight={1} />
+            <TextInput label="Phone *" name="your_price" marginRight={1} />
             <TextInput
-                label="Label"
+                label="Address *"
+                placeholder="Please specify"
                 name="your_price"
-                defaultValue="1000"
                 marginRight={1}
             />
             <TextInput
@@ -110,9 +110,8 @@ export const AllStates = () => (
         <Box>
             <TextInput label="Label" name="your_price" marginRight={1} error />
             <TextInput
-                label="Label"
-                name="your_price"
-                defaultValue="1000"
+                label="Phone *"
+                placeholder="Mobile"
                 marginRight={1}
                 error
             />

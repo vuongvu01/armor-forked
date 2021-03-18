@@ -4,10 +4,27 @@ import {
     colorAttributes,
     marginAttributes,
     textAlignmentAttributes,
-    propsBlocker,
-} from '../../system';
+} from '../../system/attributes';
+import { getPropsBlocker } from '../../utils';
+import { ObjectLiteralType } from '../../type';
 import { TypographyRootPropsType } from './type';
 import { getComponentOverride } from '../../system/mixins/getComponentOverride';
+
+const propertyList = {
+    disabled: true,
+    error: true,
+    label: true,
+    large: true,
+    medium: true,
+    pageTitle: true,
+    paragraph: true,
+    sectionTitle: true,
+    small: true,
+    subSectionTitle: true,
+    tag: true,
+    maxLines: true,
+    // add other custom properties here
+} as ObjectLiteralType;
 
 const getRootBaseStyle = ({
     disabled,
@@ -113,18 +130,18 @@ const Wrapper = ({
     children: (props: TypographyRootPropsType) => ReactElement;
 }) => children({ ...restProps });
 
-export const TypographyRoot = styled(Wrapper).withConfig(propsBlocker)<
-    TypographyRootPropsType
->`
+export const TypographyRoot = styled(Wrapper).withConfig(
+    getPropsBlocker(propertyList),
+)<TypographyRootPropsType>`
     box-sizing: border-box;
     margin-inline-start: 0;
     margin-inline-end: 0;
 
-    ${getRootBaseStyle};
-    ${getRootDynamicStyle};
-    ${getMaxLinesStyle};
+    ${getRootBaseStyle}
+    ${getRootDynamicStyle}
+    ${getMaxLinesStyle}
     ${getComponentOverride('Typography')};
-    ${marginAttributes};
-    ${colorAttributes};
-    ${textAlignmentAttributes};
+    ${marginAttributes}
+    ${colorAttributes}
+    ${textAlignmentAttributes}
 `;

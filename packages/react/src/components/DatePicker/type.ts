@@ -25,6 +25,7 @@ export type DatePickerEffectiveGenericPropsType<V> = Partial<{
     enableTimePicker: boolean;
 
     label: string;
+    placeholder: string;
     disabled: boolean;
     readOnly: boolean;
 

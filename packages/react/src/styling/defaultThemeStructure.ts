@@ -32,8 +32,6 @@ import {
     colorTurquoise70,
     colorTurquoise80,
     colorTurquoise90,
-    colorPurple50,
-    colorPurple20,
     fontFamilyRoboto,
     fontSize01,
     fontSize02,
@@ -190,10 +188,6 @@ export const defaultThemeStructure = {
             '04': colorGrey30,
             '05': colorGrey50,
             '06': colorGrey90,
-        },
-        purple: {
-            '02': colorPurple20,
-            '05': colorPurple50,
         },
     },
     shape: {
