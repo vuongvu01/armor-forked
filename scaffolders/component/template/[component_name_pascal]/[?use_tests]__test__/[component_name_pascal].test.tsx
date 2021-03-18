@@ -23,7 +23,8 @@ import {
 } from '@testing-library/react-hooks';
 // import userEvent from '@testing-library/user-event';
 
-import { <%- component_name_pascal %> } from '..';
+import {
+import {Typography} from "@deliveryhero/armor"; <%- component_name_pascal %> } from '..';
 
 describe('<<%- component_name_pascal %> />', () => {
     afterEach(async () => {
@@ -100,5 +101,10 @@ describe('<<%- component_name_pascal %> />', () => {
     it('should support margin attributes', async () => {
         // @ts-ignore
         expect(<%- component_name_pascal %>).toSupportMarginAttributes();
+    });
+
+    it('should forward correct attributes', async () => {
+        // @ts-ignore
+        expect(<%- component_name_pascal %>).toSupportAttributeForwarding();
     });
 });

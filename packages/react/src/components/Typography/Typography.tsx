@@ -1,48 +1,42 @@
-import React, { FunctionComponent } from 'react';
+import React, { forwardRef, FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 import { useComponentTheme } from '../../utils/hooks';
 
-import { getTagName } from './utils/getTagName';
-import { useTypographyClassNames } from './utils/useTypographyClassNames';
+import { useTypographyClassNames } from './hooks/useTypographyClassNames';
 import { TypographyRoot } from './style';
 import { TypographyPropsType } from './type';
 import { typographyDefaultTheme } from './theme';
 import { TYPOGRAPHY_CLASS_PREFIX } from './constants';
+import { useTypography } from './hooks/useTypography';
 
-export const Typography: FunctionComponent<TypographyPropsType> = ({
-    className,
-    children,
-    disabled,
-    error,
-    ...restProps
-}) => {
-    const theme = useComponentTheme(
-        TYPOGRAPHY_CLASS_PREFIX,
-        typographyDefaultTheme,
-    );
+export const Typography: FunctionComponent<TypographyPropsType> = forwardRef(
+    function Typography({ className, children, ...props }, ref) {
+        const theme = useComponentTheme(
+            TYPOGRAPHY_CLASS_PREFIX,
+            typographyDefaultTheme,
+        );
 
-    const classNameComponents = useTypographyClassNames(
-        TYPOGRAPHY_CLASS_PREFIX,
-        className,
-        restProps,
-    );
+        const { rootProps, Tag } = useTypography(props, ref);
 
-    const Tag = getTagName(restProps);
+        const classNameComponents = useTypographyClassNames(
+            TYPOGRAPHY_CLASS_PREFIX,
+            className,
+            props,
+        );
 
-    return (
-        <TypographyRoot
-            {...restProps}
-            className={classNameComponents.Root}
-            disabled={disabled}
-            error={error}
-            theme={theme}
-        >
-            {(forwardedProps: TypographyPropsType) => (
-                <Tag {...forwardedProps}>{children}</Tag>
-            )}
-        </TypographyRoot>
-    );
-};
+        return (
+            <TypographyRoot
+                {...rootProps}
+                className={classNameComponents.Root}
+                theme={theme}
+            >
+                {(forwardedProps: TypographyPropsType) => (
+                    <Tag {...forwardedProps}>{children}</Tag>
+                )}
+            </TypographyRoot>
+        );
+    },
+);
 
 Typography.defaultProps = {
     label: false,
