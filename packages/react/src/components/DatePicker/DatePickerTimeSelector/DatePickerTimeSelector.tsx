@@ -1,15 +1,14 @@
-import React, { FunctionComponent, forwardRef } from 'react';
+import React, { forwardRef, FunctionComponent } from 'react';
 import { TimeSeparatorIcon } from '@deliveryhero/armor-icons';
-import PropTypes from 'prop-types';
 
 import { useDatePickerTimeSelectorClassNames } from './hooks/useDatePickerTimeSelectorClassNames';
 import { useDatePickerTimeSelector } from './hooks/useDatePickerTimeSelector';
 import {
-    DatePickerTimeSelectorRoot,
-    DatePickerTimeSelectorClock,
-    DatePickerTimeSelectorInput,
-    DatePickerTimeSelectorDayPeriodSelector,
     DatePickerTimeSelectorButton,
+    DatePickerTimeSelectorClock,
+    DatePickerTimeSelectorDayPeriodSelector,
+    DatePickerTimeSelectorInput,
+    DatePickerTimeSelectorRoot,
 } from './style';
 import { DatePickerTimeSelectorPropsType } from './type';
 import { DATE_PICKER_TIME_SELECTOR_CLASS_PREFIX } from './constants';

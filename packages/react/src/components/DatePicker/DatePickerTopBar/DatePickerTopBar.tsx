@@ -1,16 +1,15 @@
-import React, { FunctionComponent, forwardRef } from 'react';
-import PropTypes from 'prop-types';
+import React, { forwardRef, FunctionComponent } from 'react';
 import { ArrowRightIcon } from '@deliveryhero/armor-icons';
 
 import { useDatePickerTopBarClassNames } from './hooks/useDatePickerTopBarClassNames';
 import { useDatePickerTopBar } from './hooks/useDatePickerTopBar';
 import {
-    DatePickerTopBarRoot,
     DatePickerTopBarMonthNavigation,
     DatePickerTopBarMonthNavigationButtonBackward,
     DatePickerTopBarMonthNavigationButtonForward,
     DatePickerTopBarMonthYearSelectorToggle,
     DatePickerTopBarMonthYearSelectorToggleArrow,
+    DatePickerTopBarRoot,
 } from './style';
 import { DatePickerTopBarPropsType } from './type';
 import { DATE_PICKER_TOP_BAR_CLASS_PREFIX } from './constants';
