@@ -1,3 +1,10 @@
+# @deliveryhero/armor [1.38.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.37.0...@deliveryhero/armor@1.38.0) (2021-03-18)
+
+
+### Features
+
+* **link:** updated version ([#452](https://github.com/deliveryhero/armor/issues/452)) ([b8bf393](https://github.com/deliveryhero/armor/commit/b8bf393d906582aca80e62bca2359252c68a1aae))
+
 # @deliveryhero/armor [1.37.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.36.0...@deliveryhero/armor@1.37.0) (2021-03-18)
 
 
