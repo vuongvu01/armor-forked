@@ -1,3 +1,18 @@
+## @deliveryhero/armor-vendors [1.1.19](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.1.18...@deliveryhero/armor-vendors@1.1.19) (2021-03-18)
+
+
+### Bug Fixes
+
+* **build:** attempt ([ac5f65c](https://github.com/deliveryhero/armor/commit/ac5f65c63a9710597c0a464c19e138a677b08f13))
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor:** upgraded to 1.35.2
+
 ## @deliveryhero/armor-vendors [1.1.18](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.1.17...@deliveryhero/armor-vendors@1.1.18) (2021-03-16)
 
 
