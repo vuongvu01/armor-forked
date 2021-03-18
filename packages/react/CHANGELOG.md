@@ -1,3 +1,12 @@
+## @deliveryhero/armor [1.35.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.35.1...@deliveryhero/armor@1.35.2) (2021-03-18)
+
+
+### Bug Fixes
+
+* **build:** attempt ([ac5f65c](https://github.com/deliveryhero/armor/commit/ac5f65c63a9710597c0a464c19e138a677b08f13))
+* **sidesheet:** and small tweaks in Dropdown ([#442](https://github.com/deliveryhero/armor/issues/442)) ([e40c513](https://github.com/deliveryhero/armor/commit/e40c5139fe92008b60fea0eb27ae6a731fb8072b))
+* **tooltip:** width control + visual snapshots ([#444](https://github.com/deliveryhero/armor/issues/444)) ([70bc75e](https://github.com/deliveryhero/armor/commit/70bc75e85e524f2965e67a5e252187f4a509eb52))
+
 ## @deliveryhero/armor [1.35.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.35.0...@deliveryhero/armor@1.35.1) (2021-03-16)
 
 
