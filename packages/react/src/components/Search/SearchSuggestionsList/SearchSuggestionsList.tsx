@@ -28,6 +28,7 @@ export const SearchSuggestionsList: FunctionComponent<SearchSuggestionsListProps
     renderItemIcon,
     cursor,
     searchQuery,
+    noResultsLabel,
     theme,
     groupClassName,
 }) => {
@@ -72,7 +73,12 @@ export const SearchSuggestionsList: FunctionComponent<SearchSuggestionsListProps
         });
     }
 
-    return <SearchEmptySuggestionsList theme={theme} />;
+    return (
+        <SearchEmptySuggestionsList
+            theme={theme}
+            noResultsLabel={noResultsLabel}
+        />
+    );
 };
 
 SearchSuggestionsList.propTypes = {

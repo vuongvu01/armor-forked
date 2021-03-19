@@ -9,6 +9,7 @@ export const SearchEmptySuggestionsListRoot = styled(
     SearchSuggestionItemContainer,
 ).withConfig(getPropsBlocker({}, false))<SearchEmptySuggestionsListPropsType>`
     cursor: default;
+    height: auto;
 
     &:hover {
         background-color: ${colorGrey00};

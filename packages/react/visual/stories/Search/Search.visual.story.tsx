@@ -112,6 +112,14 @@ export const NoResultsFound = () => (
     <Search defaultQuery="Exotic food" options={[]} />
 );
 
+export const NoResultsFoundCustomPlaceholder = () => (
+    <Search
+        defaultQuery="Exotic food"
+        options={[]}
+        noResultsLabel="Continue typing to search. Enter at least 3 characters to search"
+    />
+);
+
 export const LoadingState = () => (
     <Search defaultQuery="Temp placeholder icon" isLoading />
 );

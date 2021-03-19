@@ -58,6 +58,7 @@ export type SearchEffectivePropsType = Partial<{
     options: SuggestionObjectType[];
     groups: SearchGroupObjectType[];
     placeholder: string;
+    noResultsLabel?: string;
     enableSuggestions: boolean;
     isLoading: boolean;
     suggestionListHeight: ScalarType;
