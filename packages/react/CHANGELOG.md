@@ -1,3 +1,10 @@
+# @deliveryhero/armor [1.39.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.38.0...@deliveryhero/armor@1.39.0) (2021-03-19)
+
+
+### Features
+
+* **search:** customiseable no results message ([#454](https://github.com/deliveryhero/armor/issues/454)) ([d174805](https://github.com/deliveryhero/armor/commit/d17480584d041eada273bbdf7ff58affb98f1c81))
+
 # @deliveryhero/armor [1.38.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.37.0...@deliveryhero/armor@1.38.0) (2021-03-18)
 
 
