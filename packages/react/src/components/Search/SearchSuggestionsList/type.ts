@@ -12,6 +12,7 @@ export type SearchSuggestionsListPropsType = Indexed<{
     cursor?: number;
     icon?: null | React.ReactElement;
     searchQuery?: SearchQueryType;
+    noResultsLabel?: string;
     handleSuggestionClick: (
         event: React.MouseEvent<HTMLDivElement>,
         suggestionIndex: number,

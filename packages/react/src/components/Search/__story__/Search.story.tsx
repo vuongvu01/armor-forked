@@ -228,6 +228,14 @@ export const NoResultsFound = () => {
     return <Search defaultQuery="Exotic food" options={[]} />;
 };
 
+export const NoResultsFoundCustomPlaceholder = () => (
+    <Search
+        defaultQuery="Exotic food"
+        options={[]}
+        noResultsLabel="Continue typing to search. Enter at least 3 characters to search"
+    />
+);
+
 const faction = [
     {
         id: 'zerg',

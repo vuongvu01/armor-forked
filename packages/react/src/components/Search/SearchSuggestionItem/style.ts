@@ -102,6 +102,14 @@ export const SearchSuggestionItemLabelTypography = styled(
     text-overflow: ellipsis;
 `;
 
+export const SearchSuggestionEmptyItemLabelTypography = styled(
+    Typography,
+).withConfig(getPropsBlocker(propertyList, false))<
+    SearchSuggestionItemLabelTypographyPropsType
+>`
+    text-align: center;
+`;
+
 const searchSuggestionsItemIconStyle = ({
     icon,
     renderItemIcon,

@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react';
 
 import {
+    SearchSuggestionEmptyItemLabelTypography,
     SearchSuggestionItemLabelTypography,
     SearchSuggestionsItemAction,
     SearchSuggestionsItemIcon,
@@ -12,6 +13,7 @@ import { SEARCH_EMPTY_SUGGESTIONS_LIST_CLASS_PREFIX } from './constants';
 import { SearchEmptySuggestionsListRoot } from './style';
 
 export const SearchEmptySuggestionsList: FunctionComponent<SearchEmptySuggestionsListPropsType> = ({
+    noResultsLabel = 'No results found',
     className,
     theme,
 }) => {
@@ -35,14 +37,14 @@ export const SearchEmptySuggestionsList: FunctionComponent<SearchEmptySuggestion
                 className={classOverride.ItemLabel}
                 theme={theme}
             >
-                <SearchSuggestionItemLabelTypography
+                <SearchSuggestionEmptyItemLabelTypography
                     className={classOverride.ItemLabelTypography}
                     paragraph
                     medium
                     theme={theme}
                 >
-                    No results found
-                </SearchSuggestionItemLabelTypography>
+                    {noResultsLabel}
+                </SearchSuggestionEmptyItemLabelTypography>
             </SearchSuggestionsItemLabel>
             <SearchSuggestionsItemAction
                 className={classOverride.ItemAction}

@@ -30,6 +30,7 @@ export const useSearch = (
         groups,
         suggestionListHeight = 100,
         enableSuggestions = true,
+        noResultsLabel,
 
         additionalInfo,
         renderItemAdditionalInfo,
@@ -273,6 +274,7 @@ export const useSearch = (
             renderItemIcon,
             cursor,
             searchQuery,
+            noResultsLabel,
         },
 
         disabled,
