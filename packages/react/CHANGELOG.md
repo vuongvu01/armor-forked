@@ -1,3 +1,11 @@
+# @deliveryhero/armor [1.40.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.39.0...@deliveryhero/armor@1.40.0) (2021-03-23)
+
+
+### Features
+
+* **dropdown:** sticky search header [LD-448] ([#456](https://github.com/deliveryhero/armor/issues/456)) ([21a1ccf](https://github.com/deliveryhero/armor/commit/21a1ccf8a2f71cf22764eeea9e004bc9ac5afc5e))
+* **search:** empty state padding [LD-451] ([#458](https://github.com/deliveryhero/armor/issues/458)) ([73a43c0](https://github.com/deliveryhero/armor/commit/73a43c03d5b4b76568a17b25e4578c5395614624))
+
 # @deliveryhero/armor [1.39.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.38.0...@deliveryhero/armor@1.39.0) (2021-03-19)
 
 
