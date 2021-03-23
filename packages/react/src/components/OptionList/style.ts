@@ -35,7 +35,6 @@ const getOptionListStyle = ({
             top: ${spacing(1)};
             left: 0;
             right: 0;
-            z-index: 1024;
         `;
     }
 
@@ -48,7 +47,6 @@ export const OptionListRoot = styled.div<OptionListPropsType>`
     display: flex;
     flex-direction: column;
     max-height: 400px;
-    overflow: auto;
     padding-bottom: 0;
     padding-top: 0;
     transition: ${transitionDurationInSec}s;
@@ -58,9 +56,16 @@ export const OptionListRoot = styled.div<OptionListPropsType>`
     ${getComponentOverride('OptionList')}
 `;
 
+export const OptionListContainer = styled.div<OptionListPropsType>`
+    overflow: auto;
+`;
+
 export const OptionListBeforeSectionContainer = styled.div<
     OptionListBeforeSectionContainerPropsType
 >`
+    position: sticky;
+    top: 0;
+    background: ${color('neutral.00')};
     border-bottom: solid 1px ${color('neutral.02')};
 `;
 

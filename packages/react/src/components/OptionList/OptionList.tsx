@@ -10,6 +10,7 @@ import {
     OptionListSearch,
     OptionListSearchContainer,
     OptionListItemGroup,
+    OptionListContainer,
 } from './style';
 import { OPTION_LIST_CLASS_PREFIX } from './constants';
 import { OptionListItem } from './OptionListItem';
@@ -70,48 +71,57 @@ export const OptionList: FunctionComponent<OptionListPropsType> = ({
                             />
                         </OptionListSearchContainer>
                     )}
-                    {isSelectAllOptionRendered && (
-                        <OptionListItem
-                            {...getSelectAllItemProps()}
-                            theme={theme}
-                            className={classOverride.SelectAllItem}
-                        />
-                    )}
                 </OptionListBeforeSectionContainer>
             )}
-            {dynamicInternalOptions.map((option: OptionObjectType, index) => {
-                const { value, groupId } = option;
-                let group: OptionListGroupObjectType | null = null;
-                if (
-                    groupId &&
-                    groupId in groupIndex &&
-                    !displayedGroups[groupId]
-                ) {
-                    group = groupIndex[groupId];
-                    displayedGroups[groupId] = true;
-                }
+            <OptionListContainer
+                theme={theme}
+                className={classOverride.OptionListContainer}
+            >
+                {isSelectAllOptionRendered && (
+                    <OptionListItem
+                        {...getSelectAllItemProps()}
+                        theme={theme}
+                        className={classOverride.SelectAllItem}
+                    />
+                )}
+                {dynamicInternalOptions.map(
+                    (option: OptionObjectType, index) => {
+                        const { value, groupId } = option;
+                        let group: OptionListGroupObjectType | null = null;
+                        if (
+                            groupId &&
+                            groupId in groupIndex &&
+                            !displayedGroups[groupId]
+                        ) {
+                            group = groupIndex[groupId];
+                            displayedGroups[groupId] = true;
+                        }
 
-                return (
-                    <Fragment key={value}>
-                        {!!group && (
-                            <OptionListItemGroup
-                                enableSeparator={index > 0}
-                                theme={theme}
-                                className={classOverride.ItemGroup}
-                            >
-                                {group.label}
-                            </OptionListItemGroup>
-                        )}
-                        <OptionListItem
-                            {...getOptionItemProps(option)}
-                            theme={theme}
-                            className={`${classOverride.Item} ${
-                                internalValue.includes(value) ? 'active' : ''
-                            }`}
-                        />
-                    </Fragment>
-                );
-            })}
+                        return (
+                            <Fragment key={value}>
+                                {!!group && (
+                                    <OptionListItemGroup
+                                        enableSeparator={index > 0}
+                                        theme={theme}
+                                        className={classOverride.ItemGroup}
+                                    >
+                                        {group.label}
+                                    </OptionListItemGroup>
+                                )}
+                                <OptionListItem
+                                    {...getOptionItemProps(option)}
+                                    theme={theme}
+                                    className={`${classOverride.Item} ${
+                                        internalValue.includes(value)
+                                            ? 'active'
+                                            : ''
+                                    }`}
+                                />
+                            </Fragment>
+                        );
+                    },
+                )}
+            </OptionListContainer>
         </OptionListRoot>
     ) : null;
 };

@@ -1,6 +1,5 @@
-import {Meta, Preview, Props, Story} from '@storybook/addon-docs/blocks';
+import {Meta, Preview, Story} from '@storybook/addon-docs/blocks';
 import {Box, Button, Tooltip} from '../../../src/components/';
-import {Nodes} from '../../../src/helpers/Nodes';
 
 <Meta title="Components/Tooltip" component={Tooltip} />
 
@@ -91,16 +90,3 @@ import { Tooltip } from '@deliveryhero/armor';
         </Box>
     </Story>
 </Preview>
-
-## Properties
-
-<Props of={Tooltip} />
-
-## Nodes
-
-<Nodes
-    blockName="Tooltip"
-    nodes={[
-        { element: 'Arrow', description: 'Arrow element' },
-    ]}
-/>
