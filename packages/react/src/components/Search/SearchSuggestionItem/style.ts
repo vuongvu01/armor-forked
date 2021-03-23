@@ -102,7 +102,7 @@ export const SearchSuggestionItemLabelTypography = styled(
     text-overflow: ellipsis;
 `;
 
-export const SearchSuggestionEmptyItemLabelTypography = styled(
+export const SearchEmptySuggestionsEmptyItemLabelTypography = styled(
     Typography,
 ).withConfig(getPropsBlocker(propertyList, false))<
     SearchSuggestionItemLabelTypographyPropsType
