@@ -55,7 +55,7 @@ export type OptionListPropsType = {
 > &
     ObjectLiteralType;
 
-export type OptionListBeforeSectionContainerPropsType = ObjectLiteralType;
+export type OptionListBeforeSectionContainerPropsType = {} & ObjectLiteralType;
 
 export type OptionListItemPropsType = {
     isSelected?: boolean;

@@ -1,11 +1,8 @@
 import React, { FunctionComponent } from 'react';
 
 import {
-    SearchSuggestionEmptyItemLabelTypography,
-    SearchSuggestionItemLabelTypography,
-    SearchSuggestionsItemAction,
-    SearchSuggestionsItemIcon,
-    SearchSuggestionsItemLabel,
+    SearchEmptySuggestionsEmptyItemLabelTypography,
+    SearchSuggestionsItemLabel as SearchEmptySuggestionsItemLabel,
 } from '../SearchSuggestionItem/style';
 import { useSearchEmptySuggestionsListClassName } from './utils';
 import { SearchEmptySuggestionsListPropsType } from './type';
@@ -27,31 +24,19 @@ export const SearchEmptySuggestionsList: FunctionComponent<SearchEmptySuggestion
             className={classOverride.Root}
             theme={theme}
         >
-            <SearchSuggestionsItemIcon
-                className={classOverride.ItemIcon}
-                theme={theme}
-            >
-                {null}
-            </SearchSuggestionsItemIcon>
-            <SearchSuggestionsItemLabel
+            <SearchEmptySuggestionsItemLabel
                 className={classOverride.ItemLabel}
                 theme={theme}
             >
-                <SearchSuggestionEmptyItemLabelTypography
+                <SearchEmptySuggestionsEmptyItemLabelTypography
                     className={classOverride.ItemLabelTypography}
                     paragraph
                     medium
                     theme={theme}
                 >
                     {noResultsLabel}
-                </SearchSuggestionEmptyItemLabelTypography>
-            </SearchSuggestionsItemLabel>
-            <SearchSuggestionsItemAction
-                className={classOverride.ItemAction}
-                theme={theme}
-            >
-                {null}
-            </SearchSuggestionsItemAction>
+                </SearchEmptySuggestionsEmptyItemLabelTypography>
+            </SearchEmptySuggestionsItemLabel>
         </SearchEmptySuggestionsListRoot>
     );
 };

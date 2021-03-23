@@ -45,6 +45,11 @@ export const useOptionListClassName = (
                 classPrefix,
                 disabled,
             }),
+            OptionListContainer: classGeneratorBasedOnComponent({
+                component: 'OptionListContainer',
+                classPrefix,
+                disabled,
+            }),
             BeforeSectionContainer: classGeneratorBasedOnComponent({
                 component: 'BeforeSectionContainer',
                 classPrefix,

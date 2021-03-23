@@ -1140,3 +1140,26 @@ export const WithGroups = () => {
         />
     );
 };
+
+export const StickySearchField = () => {
+    const formatOption = (option: OptionItemType) => {
+        if (typeof option === 'object' && 'label' in option) {
+            return `${option.label} meal plan`;
+        }
+
+        return `${option} meal plan`;
+    };
+
+    return (
+        <Dropdown
+            multiple
+            options={foodOptions}
+            label="Dish type"
+            defaultValue={[2, 3]}
+            formatOption={formatOption}
+            isListExpanded={true}
+            enableSelectAllOption
+            enableSearchOption
+        />
+    );
+};
