@@ -4,6 +4,7 @@ import { colorGrey00 } from '../../../tokens';
 import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
 import { getPropsBlocker } from '../../../utils';
 import { spacing } from '../../../system/mixins';
+import { SearchSuggestionsItemLabelPropsType } from '../type';
 
 export const SearchEmptySuggestionsListRoot = styled.div.withConfig(
     getPropsBlocker({}, false),
@@ -25,4 +26,12 @@ export const SearchEmptySuggestionsListRoot = styled.div.withConfig(
     }
 
     ${getComponentOverride('SearchEmptySuggestionsList')};
+`;
+
+export const SearchEmptySuggestionsItemLabel = styled.div.withConfig(
+    getPropsBlocker({}),
+)<SearchEmptySuggestionsListPropsType>`
+    box-sizing: border-box;
+    flex-grow: 1;
+    min-width: ${spacing(33)};
 `;
