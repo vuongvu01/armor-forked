@@ -1151,15 +1151,87 @@ export const StickySearchField = () => {
     };
 
     return (
-        <Dropdown
-            multiple
-            options={foodOptions}
-            label="Dish type"
-            defaultValue={[2, 3]}
-            formatOption={formatOption}
-            isListExpanded={true}
-            enableSelectAllOption
-            enableSearchOption
-        />
+        <>
+            <Dropdown
+                multiple
+                options={foodOptions}
+                label="Dish type"
+                defaultValue={[2, 3]}
+                formatOption={formatOption}
+                isListExpanded={true}
+                enableSelectAllOption
+                enableSearchOption
+            />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            Test Test Test Test Test
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            Test Test Test Test Test
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            Test Test Test Test Test
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            Test Test Test Test Test
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            Test Test Test Test Test
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+        </>
     );
 };

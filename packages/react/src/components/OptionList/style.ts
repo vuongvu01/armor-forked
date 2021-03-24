@@ -63,7 +63,6 @@ export const OptionListContainer = styled.div<OptionListPropsType>`
 export const OptionListBeforeSectionContainer = styled.div<
     OptionListBeforeSectionContainerPropsType
 >`
-    position: sticky;
     top: 0;
     background: ${color('neutral.00')};
     border-bottom: solid 1px ${color('neutral.02')};
