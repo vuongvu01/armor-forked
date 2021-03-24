@@ -1,13 +1,13 @@
 import React, { FunctionComponent } from 'react';
 
-import {
-    SearchEmptySuggestionsEmptyItemLabelTypography,
-    SearchSuggestionsItemLabel as SearchEmptySuggestionsItemLabel,
-} from '../SearchSuggestionItem/style';
+import { SearchEmptySuggestionsEmptyItemLabelTypography } from '../SearchSuggestionItem/style';
 import { useSearchEmptySuggestionsListClassName } from './utils';
 import { SearchEmptySuggestionsListPropsType } from './type';
 import { SEARCH_EMPTY_SUGGESTIONS_LIST_CLASS_PREFIX } from './constants';
-import { SearchEmptySuggestionsListRoot } from './style';
+import {
+    SearchEmptySuggestionsItemLabel,
+    SearchEmptySuggestionsListRoot,
+} from './style';
 
 export const SearchEmptySuggestionsList: FunctionComponent<SearchEmptySuggestionsListPropsType> = ({
     noResultsLabel = 'No results found',
