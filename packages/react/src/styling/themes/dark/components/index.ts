@@ -46,6 +46,7 @@ import { getIconButtonOverride } from './IconButton';
 import { getTableCheckboxCellOverride } from './Table/TableCheckboxCell';
 import { getTableHeadCellOverride } from './Table/TableHeadCell';
 import { getLinkOverride } from './Link';
+import { getCloseButtonOverride } from './CloseButton/CloseButton';
 
 export const darkThemeComponentOverrides = {
     Accordion: getAccordionOverride,
@@ -93,4 +94,5 @@ export const darkThemeComponentOverrides = {
     ContextMenu: getContextMenuOverride,
     IconButton: getIconButtonOverride,
     Link: getLinkOverride,
+    CloseButton: getCloseButtonOverride,
 };
