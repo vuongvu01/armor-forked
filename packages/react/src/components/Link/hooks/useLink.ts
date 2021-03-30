@@ -3,13 +3,12 @@ import { ReferenceType } from '../../../type';
 
 export const useLink = (
     {
-        small,
-        medium,
-        large,
-        focused,
-        pressed,
-        disabled,
-        inline,
+        tag: Tag = 'a',
+        to,
+        href,
+        target,
+        rel,
+        children,
         ...restProps
     }: LinkPropsType,
     ref: ReferenceType,
@@ -17,16 +16,9 @@ export const useLink = (
     // put all your component logic here
 
     return {
-        rootProps: {
-            ...restProps,
-            small,
-            medium,
-            large,
-            focused,
-            pressed,
-            disabled,
-            inline,
-            ref,
-        },
+        rootProps: { ...restProps, ref },
+        Tag,
+        tagProps: { to, href, target, rel, ref },
+        children,
     };
 };

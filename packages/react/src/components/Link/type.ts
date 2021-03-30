@@ -19,7 +19,17 @@ type LinkEffectivePropsType = Partial<{
     MarginAttributesType &
     ObjectLiteralType;
 
+export type LinkTagPropsType = Partial<{
+    to?: string;
+    href?: string;
+    target?: string;
+    rel?: string;
+}>;
+
 export type LinkPropsType = LinkEffectivePropsType & ComponentStylePropsType;
 
 export type LinkRootPropsType = LinkEffectivePropsType &
+    ComponentElementStylePropsType;
+
+export type LinkLabelPropsType = LinkTagPropsType &
     ComponentElementStylePropsType;

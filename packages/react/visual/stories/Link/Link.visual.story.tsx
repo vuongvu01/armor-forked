@@ -16,7 +16,7 @@ export const WithCustomMargins = () => (
 );
 
 export const InlinedSmallLink = () => (
-    <Link inline small>
+    <Link underline small>
         Link here
     </Link>
 );

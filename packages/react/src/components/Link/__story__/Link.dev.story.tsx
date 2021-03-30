@@ -3,6 +3,8 @@
 import React from 'react';
 import { text } from '@storybook/addon-knobs';
 import { MapIcon } from '@deliveryhero/armor-icons';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { BrowserRouter, Link as RouterLink } from 'react-router-dom';
 import { withWrapper } from '../../../helpers/Wrapper';
 import { Typography } from '../../Typography';
 
@@ -15,12 +17,8 @@ export default {
     parameters: {},
 };
 
-export const Basic = () => {
-    return (
-        <Link href="https://www.google.com" small>
-            Link here
-        </Link>
-    );
+export const Small = () => {
+    return <Link small>{text('Children', 'Link here')}</Link>;
 };
 
 export const Medium = () => {
@@ -46,16 +44,30 @@ export const LinkWithIcon = () => {
     );
 };
 
-export const Inline = () => {
-    return <Link inline>Link here</Link>;
+export const Underlined = () => {
+    return <Link underline>Link here</Link>;
 };
 
-export const InContext = () => {
-    return (
-        <>
-            <Typography>
-                Please follow the <Link>link</Link> to find out more
-            </Typography>
-        </>
-    );
-};
+export const InContext = () => (
+    <>
+        <Typography>
+            Please follow the <Link>link</Link> to find out more Go to{' '}
+            <Link href="https://www.deliveryhero.com" target="_blank">
+                DeliveryHero
+            </Link>{' '}
+            to find out more
+        </Typography>
+    </>
+);
+
+export const LinkWithRouter = () => (
+    <BrowserRouter>
+        <Typography>
+            This link user react router Link to{' '}
+            <Link tag={RouterLink} to="/homepage">
+                link
+            </Link>{' '}
+            to /homepage
+        </Typography>
+    </BrowserRouter>
+);
