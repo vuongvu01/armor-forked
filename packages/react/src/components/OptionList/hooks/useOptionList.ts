@@ -23,6 +23,7 @@ export const useOptionList = ({
     internalOptions,
     dynamicInternalOptions = internalOptions,
     setInternalOptions,
+    setSearch,
     enableSelectAllOption,
     selectAllLabel = 'Select all',
     enableSearchOption,
@@ -34,11 +35,18 @@ export const useOptionList = ({
 }: OptionListPropsType) => {
     const [searchQuery, setSearchQuery] = useState(defaultSearchQuery);
 
+    useEffect(() => {
+        if (setSearch) {
+            setSearch(searchQuery);
+        }
+    }, [searchQuery, setSearch]);
+
     const onSearchChange = useOnSearchQueryChange(
         internalValue,
         internalOptions,
         setInternalValue,
         setInternalOptions,
+        setSearch,
         searchQuery,
         enableSearchOption,
     );

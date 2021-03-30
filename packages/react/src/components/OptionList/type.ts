@@ -39,6 +39,7 @@ export type OptionListPropsType = {
     internalOptions: DropdownInternalOptionType;
     dynamicInternalOptions: DropdownInternalOptionType;
     setInternalOptions: (nextOptions: DropdownInternalOptionType) => void;
+    setSearch?: (searchQuery: string) => void;
     enableAbsolutePositioning: boolean;
     groups?: OptionListGroupObjectType[];
 } & Pick<

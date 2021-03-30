@@ -982,8 +982,8 @@ export const DynamicOptionsListMultiple = () => {
                 onChange={handleChange}
                 label="Test label" // //translation('categoryFilter.dropDownLabel')
                 options={options}
+                marginRight={4}
             />
-            <br />
             <Button marginY={4} onClick={handleOnClick}>
                 Update options
             </Button>

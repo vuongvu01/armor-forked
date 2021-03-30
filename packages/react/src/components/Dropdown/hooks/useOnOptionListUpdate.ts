@@ -17,11 +17,15 @@ export const useOnOptionListUpdate = (
     internalOptions: DropdownInternalOptionType,
     dynamicInternalOptions: DropdownInternalOptionType,
     setInternalValue: (value: DropdownInternalValueType) => void,
+    searchQuery?: string,
+    isOptionListShown?: boolean,
 ) =>
     useEffect(() => {
         if (
-            internalOptions.length !== dynamicInternalOptions.length ||
-            optionsArraysDiff(internalOptions, dynamicInternalOptions).length
+            (!searchQuery || !isOptionListShown) &&
+            (internalOptions.length !== dynamicInternalOptions.length ||
+                optionsArraysDiff(internalOptions, dynamicInternalOptions)
+                    .length)
         ) {
             setInternalValue([]);
         }
