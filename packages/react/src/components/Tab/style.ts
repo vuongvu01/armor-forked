@@ -118,8 +118,6 @@ const cursor = ({ disabled, isActive }: TabRootPropsType) => {
 export const TabRoot = styled.div.withConfig(getPropsBlocker(propertyList))<
     TabRootPropsType
 >`
-    min-width: 100px;
-
     &::after {
         content: '';
         height: 3px;
