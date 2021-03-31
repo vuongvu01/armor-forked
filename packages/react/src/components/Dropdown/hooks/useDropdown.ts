@@ -1,4 +1,4 @@
-import { useCallback, useRef } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { DropdownInternalOptionType, DropdownPropsType } from '../type';
 import {
     useDetectEscapeKeyPressed,
@@ -67,6 +67,7 @@ export const useDropdown = (
     useInternalRef(ref, internalInputRef);
 
     const [internalValue, setInternalValue] = useValue(value, defaultValue);
+    const [searchQuery, setSearchQuery] = useState(defaultSearchQuery);
 
     const { internalOptions, isFlat } = useOptions(options, formatOption);
 
@@ -74,10 +75,18 @@ export const useDropdown = (
         DropdownInternalOptionType
     >(() => internalOptions, [internalOptions]);
 
+    const [isOptionListShown, setIsOptionListShown] = useControlledState(
+        isListExpanded !== undefined ? isListExpanded : defaultOpen,
+        open,
+        onOpenChange,
+    );
+
     useOnOptionListUpdate(
         internalOptions,
         dynamicInternalOptions,
         setInternalValue,
+        searchQuery,
+        isOptionListShown,
     );
 
     const onValueUpdate = useOnValueUpdate(
@@ -91,12 +100,6 @@ export const useDropdown = (
         internalValue,
         internalOptions,
         onRenderSelectedValue,
-    );
-
-    const [isOptionListShown, setIsOptionListShown] = useControlledState(
-        isListExpanded !== undefined ? isListExpanded : defaultOpen,
-        open,
-        onOpenChange,
     );
 
     const blurInput = useCallback(() => {
@@ -202,6 +205,7 @@ export const useDropdown = (
             internalOptions,
             dynamicInternalOptions,
             setInternalOptions: setDynamicInternalOptions,
+            setSearch: setSearchQuery,
             enableSelectAllOption,
             selectAllLabel,
             enableSearchOption,

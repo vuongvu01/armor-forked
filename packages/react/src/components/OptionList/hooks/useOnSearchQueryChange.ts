@@ -10,6 +10,7 @@ export const useOnSearchQueryChange = (
     internalOptions: DropdownInternalOptionType,
     setInternalValue: (nextValue: DropdownInternalValueType) => void,
     setInternalOptions: (nextOptions: DropdownInternalOptionType) => void,
+    setSearchQuery?: (searchQuery: string) => void,
     defaultSearchQuery?: string,
     enableSearchOption?: boolean,
 ) =>
@@ -24,6 +25,10 @@ export const useOnSearchQueryChange = (
 
             const query = searchQuery.toLowerCase();
 
+            if (setSearchQuery) {
+                setSearchQuery(query);
+            }
+
             const matchingOptions = internalOptions.filter(option => {
                 const label =
                     typeof option.label === 'string'
@@ -34,5 +39,11 @@ export const useOnSearchQueryChange = (
 
             return setInternalOptions(matchingOptions);
         },
-        [setInternalValue, internalOptions, internalValue, defaultSearchQuery],
+        [
+            setInternalValue,
+            setSearchQuery,
+            internalOptions,
+            internalValue,
+            defaultSearchQuery,
+        ],
     );

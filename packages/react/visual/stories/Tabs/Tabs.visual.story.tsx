@@ -281,3 +281,73 @@ export const Alignment = () => {
         </>
     );
 };
+
+export const NoLeftPadding = () => (
+    <Stack>
+        <StackItem marginBottom={5}>
+            <Typography>removePaddingLeft</Typography>
+            <Tabs removePaddingLeft>
+                <Tab>Pizza</Tab>
+                <Tab>Pasta</Tab>
+                <Tab>Risotto</Tab>
+            </Tabs>
+            <TabView>
+                <p>Pizza</p>
+            </TabView>
+            <TabView>
+                <p>Pasta</p>
+            </TabView>
+            <TabView>
+                <p>Risotto</p>
+            </TabView>
+        </StackItem>
+    </Stack>
+);
+
+export const NoRightPadding = () => (
+    <Stack>
+        <StackItem marginBottom={5}>
+            <Typography>removePaddingRight</Typography>
+            <Pack>
+                <PackItem>
+                    <Tabs defaultActiveTabIndex={2} removePaddingRight>
+                        <Tab>Pizza</Tab>
+                        <Tab>Pasta</Tab>
+                        <Tab>Risotto</Tab>
+                    </Tabs>
+                </PackItem>
+            </Pack>
+            <TabView>
+                <p>Pizza</p>
+            </TabView>
+            <TabView>
+                <p>Pasta</p>
+            </TabView>
+            <TabView>
+                <p>Risotto</p>
+            </TabView>
+        </StackItem>
+    </Stack>
+);
+
+export const NoRightOrLeftPadding = () => (
+    <Stack>
+        <StackItem marginBottom={5}>
+            <Typography>removePaddingLeft and removePaddingRight</Typography>
+            <Tabs removePaddingLeft removePaddingRight>
+                <Tab>Pizza</Tab>
+                <Tab>Pasta</Tab>
+                <Tab>Risotto</Tab>
+            </Tabs>
+            <TabView>
+                <p>Pizza</p>
+            </TabView>
+            <TabView>
+                <p>Pasta</p>
+            </TabView>
+            <TabView>
+                <p>Risotto</p>
+            </TabView>
+        </StackItem>
+    </Stack>
+);

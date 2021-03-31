@@ -1,5 +1,10 @@
 import styled, { css } from 'styled-components';
-import { LinkRootPropsType } from './type';
+import { ReactElement } from 'react';
+import {
+    LinkRootPropsType,
+    LinkTagPropsType,
+    LinkLabelPropsType,
+} from './type';
 import { marginAttributes } from '../../system/attributes';
 import { getPropsBlocker, makePropList } from '../../utils';
 import { getComponentOverride } from '../../system/mixins/getComponentOverride';
@@ -24,7 +29,7 @@ const propertyList = makePropList([
     'medium',
     'large',
     'pressed',
-    'inline',
+    'underline',
 ]);
 
 const getRootStyle = ({
@@ -33,7 +38,7 @@ const getRootStyle = ({
     large,
     pressed,
     disabled,
-    inline,
+    underline,
 }: LinkRootPropsType) => {
     let result = {};
 
@@ -61,7 +66,7 @@ const getRootStyle = ({
         `;
     }
 
-    if (inline) {
+    if (underline) {
         result = css`
             ${result};
             text-decoration: underline;
@@ -73,14 +78,24 @@ const getRootStyle = ({
             ${result};
             color: ${color('neutral.04')};
             cursor: not-allowed;
+            &:hover {
+                color: ${color('neutral.04')};
+            }
         `;
     }
     return result;
 };
 
-export const LinkRoot = styled.a.withConfig(getPropsBlocker(propertyList))<
-    LinkRootPropsType
->`
+const LinkTagWrapper = ({
+    children,
+    ...restProps
+}: LinkLabelPropsType & {
+    children: (props: LinkTagPropsType) => ReactElement;
+}) => children(restProps);
+
+export const LinkRoot = styled(LinkTagWrapper).withConfig(
+    getPropsBlocker(propertyList),
+)<LinkRootPropsType>`
     ${reset};
     font-family: ${fontFamilyRoboto};
     color: ${color('primary.main')};
@@ -98,7 +113,7 @@ export const LinkRoot = styled.a.withConfig(getPropsBlocker(propertyList))<
     &:visited {
         color: ${color('purple.05')};
     }
-    &:hover:active {
+    &:hover {
         color: ${color('primary.light')};
     }
     ${getRootStyle}

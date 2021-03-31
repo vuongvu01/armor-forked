@@ -7,7 +7,7 @@ export const useLinkClassNames = (
     className?: string,
     props?: LinkPropsType,
 ) => {
-    const { disabled, small, medium, large, inline, pressed } = props || {};
+    const { disabled, small, medium, large, underline, pressed } = props || {};
 
     return useMemo(() => {
         const rootClassNames = makeRootClassName(classPrefix, className);
@@ -22,8 +22,8 @@ export const useLinkClassNames = (
         if (large) {
             rootStateClassNames.push(makeBEM(classPrefix, 'Root', 'large'));
         }
-        if (inline) {
-            rootStateClassNames.push(makeBEM(classPrefix, 'Root', 'inline'));
+        if (underline) {
+            rootStateClassNames.push(makeBEM(classPrefix, 'Root', 'underline'));
         }
         if (disabled) {
             rootStateClassNames.push(makeBEM(classPrefix, 'Root', 'disabled'));

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { useLinkClassNames } from './hooks/useLinkClassNames';
 import { useLink } from './hooks/useLink';
 import { LinkRoot } from './style';
-import { LinkPropsType } from './type';
+import { LinkPropsType, LinkRootPropsType } from './type';
 import { LINK_CLASS_PREFIX } from './constants';
 import { useComponentTheme } from '../../utils/hooks';
 
@@ -19,7 +19,7 @@ export const Link: FC<LinkPropsType> = forwardRef(function Link(
         props,
     );
 
-    const { rootProps } = useLink(props, ref);
+    const { rootProps, children, Tag, tagProps } = useLink(props, ref);
 
     return (
         <LinkRoot
@@ -27,7 +27,13 @@ export const Link: FC<LinkPropsType> = forwardRef(function Link(
             theme={theme}
             className={classNameComponents.Root}
             ref={ref}
-        />
+        >
+            {(forwardedProps: LinkRootPropsType) => (
+                <Tag {...forwardedProps} {...tagProps}>
+                    {children}
+                </Tag>
+            )}
+        </LinkRoot>
     );
 });
 
@@ -37,7 +43,7 @@ Link.defaultProps = {
     large: false,
     pressed: false,
     disabled: false,
-    inline: false,
+    underline: false,
 };
 
 /** prop-types are required here for run-time checks */
@@ -47,5 +53,9 @@ Link.propTypes = {
     large: PropTypes.bool,
     pressed: PropTypes.bool,
     disabled: PropTypes.bool,
-    inline: PropTypes.bool,
+    underline: PropTypes.bool,
+    href: PropTypes.string,
+    target: PropTypes.string,
+    to: PropTypes.string,
+    tag: PropTypes.oneOfType([PropTypes.elementType, PropTypes.string]),
 };

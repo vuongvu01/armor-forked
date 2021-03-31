@@ -13,7 +13,7 @@ import {
 
 export const HeaderNavigationActionItem: FunctionComponent<HeaderNavigationActionItemPropsType> = forwardRef(
     function HeaderNavigationActionItem(
-        { className, children, ...restProps },
+        { className, children, tabIndex = 0, ...restProps },
         ref,
     ) {
         const theme = useComponentTheme(
@@ -33,6 +33,7 @@ export const HeaderNavigationActionItem: FunctionComponent<HeaderNavigationActio
                 theme={theme}
                 className={classOverride.NavigationActionItem}
                 ref={ref}
+                tabIndex={tabIndex}
             >
                 {children}
             </HeaderNavigationActionItemRoot>

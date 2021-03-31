@@ -16,6 +16,9 @@ export const useTabs = (
         activeTabIndex,
         onActiveTabIndexChange,
 
+        removePaddingLeft,
+        removePaddingRight,
+
         defaultActiveTab = 0,
 
         ...restProps
@@ -60,6 +63,8 @@ export const useTabs = (
             wide,
             disabled,
             children: preProcessTabChildren(children),
+            removePaddingLeft,
+            removePaddingRight,
         },
         contextValue: {
             currentlyActiveTab,

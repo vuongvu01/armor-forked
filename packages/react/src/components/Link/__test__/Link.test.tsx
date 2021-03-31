@@ -38,10 +38,10 @@ describe('<Link />', () => {
             Root: ['large'],
         });
 
-        result = render(<Link inline />);
+        result = render(<Link underline />);
         // @ts-ignore
         expect(result.container).toHaveBEMStructure('Link', {
-            Root: ['inline'],
+            Root: ['underline'],
         });
 
         result = render(<Link pressed />);
