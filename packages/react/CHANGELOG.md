@@ -1,3 +1,10 @@
+# @deliveryhero/armor [1.42.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.41.0...@deliveryhero/armor@1.42.0) (2021-03-31)
+
+
+### Bug Fixes
+
+* **dropdown:** do not reset selected options on search in the list [LD-452] ([#465](https://github.com/deliveryhero/armor/issues/465)) ([9f30548](https://github.com/deliveryhero/armor/commit/9f3054825715e3ed0a986c735a1f9c175a128808))
+
 # @deliveryhero/armor [1.41.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.40.0...@deliveryhero/armor@1.41.0) (2021-03-24)
 
 
