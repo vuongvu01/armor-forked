@@ -5,7 +5,7 @@ import { getPropsBlocker, makePropList } from '../../utils';
 import { AccordionRootPropsType } from './type';
 import { AccordionHeaderRootPropsType } from './AccordionHeader/type';
 import { transitionDurationInSec } from '../../constants';
-import { token } from '../../system/mixins';
+import { color, token } from '../../system/mixins';
 import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 
 // all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
@@ -34,7 +34,7 @@ export const AccordionRoot = styled.div.withConfig(
     margin-top: -1px;
 
     color: ${token('body.color')};
-    background-color: ${token('body.backgroundColor')};
+    background-color: ${color('neutral.00')};
 
     ${accordionStyle}
     ${getComponentOverride('Accordion')};
