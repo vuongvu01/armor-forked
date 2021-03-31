@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 import { CancelIcon } from '@deliveryhero/armor-icons';
-import { borderRadius, color, reset, spacing } from '../../system/mixins';
+import { borderRadius, color, pixelToRem, reset, spacing } from '../../system/mixins';
 import { getComponentOverride } from '../../system/mixins/getComponentOverride';
-
 import { getPropsBlocker } from '../../utils';
 import { CloseButtonRootPropsType } from './type';
 
@@ -21,6 +20,7 @@ export const CloseButtonRoot = styled.div.withConfig(
     flex: 0 0 auto;
     border: 0 none;
     outline: none;
+    font-size: ${pixelToRem(16)};
     &:hover {
         background-color: ${color('neutral.02')};
         border-radius: ${borderRadius('pill')};
