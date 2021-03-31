@@ -1,4 +1,4 @@
-import React, { forwardRef, FunctionComponent } from 'react';
+import React, { forwardRef, FunctionComponent, useCallback } from 'react';
 import PropTypes from 'prop-types';
 
 import { HeaderNavigationMenuPropsType } from './type';
@@ -28,7 +28,7 @@ export const HeaderNavigationMenu: FunctionComponent<HeaderNavigationMenuPropsTy
             className,
             headerTitle = <DHLogoImage />,
             headerContent,
-            tabIndex,
+            tabIndex = 0,
             ...restProps
         },
         ref,
@@ -47,6 +47,7 @@ export const HeaderNavigationMenu: FunctionComponent<HeaderNavigationMenuPropsTy
             internalRef,
             isExpanded,
             setIsExpanded,
+            handleMenuKeyPress,
         } = useHeaderNavigationMenu(restProps, ref);
 
         const contextValue = { isExpanded, setIsExpanded };
@@ -75,6 +76,8 @@ export const HeaderNavigationMenu: FunctionComponent<HeaderNavigationMenuPropsTy
                                 <MenuExpansionIndicatorItem
                                     theme={theme}
                                     className={classOverride.NavigationMenuItem}
+                                    tabIndex={tabIndex}
+                                    onKeyPress={handleMenuKeyPress}
                                 >
                                     <MenuExpansionIndicator
                                         displaySeparator={false}
@@ -83,7 +86,6 @@ export const HeaderNavigationMenu: FunctionComponent<HeaderNavigationMenuPropsTy
                                         className={
                                             classOverride.MenuExpansionIndicator
                                         }
-                                        tabIndex={tabIndex}
                                     />
                                 </MenuExpansionIndicatorItem>
                             )}

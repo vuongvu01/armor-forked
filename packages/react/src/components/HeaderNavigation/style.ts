@@ -7,7 +7,7 @@ import {
     HeaderNavigationTitleRootPropsType,
 } from './type';
 import { ObjectLiteralType } from '../../type';
-import { spacing } from '../../system/mixins';
+import { color, spacing } from '../../system/mixins';
 import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 
 const propertyList = {
@@ -32,6 +32,7 @@ export const HeaderNavigationRoot = styled.div.withConfig(
 )<HeaderNavigationRootPropsType>`
     display: block;
     min-height: ${spacing(12)};
+    border-bottom: 1px solid ${color('neutral.03')};
 
     ${headerNavigationRootStyle}
     ${getComponentOverride('HeaderNavigation')};

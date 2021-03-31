@@ -10,7 +10,7 @@ import {
 import { zIndexSearchSuggestionsList } from '../../tokens';
 import { transitionDurationInSec } from '../../constants';
 import { TextInput } from '../TextInput';
-import { reset, spacing } from '../../system/mixins';
+import { color, reset, spacing } from '../../system/mixins';
 import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 
 const propertyList = makePropList([
@@ -97,5 +97,5 @@ export const SearchSuggestionsListContainer = styled.div.withConfig(
 export const SearchTextInput = styled(TextInput).withConfig(
     getPropsBlocker(propertyList, false),
 )<SearchRootPropsType>`
-    ${searchTextInputStyle}
+    ${searchTextInputStyle};
 `;

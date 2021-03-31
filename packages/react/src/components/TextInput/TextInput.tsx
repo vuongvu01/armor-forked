@@ -43,6 +43,7 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
             isLabelInside,
 
             disabled,
+            outlined,
             large,
             error,
 
@@ -56,6 +57,7 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
             large,
             error,
             isLabelInside,
+            outlined,
         );
 
         return (

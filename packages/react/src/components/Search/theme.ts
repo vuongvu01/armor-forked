@@ -1,10 +1,4 @@
-import {
-    componentSpacing01,
-    componentSpacing02,
-    componentSpacing03,
-    componentSpacing04,
-    componentSpacing06,
-} from '../../tokens';
+import { componentSpacing01 } from '../../tokens';
 
 export const searchTheme = {
     TextInput: {

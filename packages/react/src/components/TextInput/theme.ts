@@ -1,7 +1,5 @@
 /* eslint-disable @typescript-eslint/camelcase */
 import {
-    colorGrey00,
-    colorGrey05,
     componentSpacing01,
     componentSpacing02,
     componentSpacing03,

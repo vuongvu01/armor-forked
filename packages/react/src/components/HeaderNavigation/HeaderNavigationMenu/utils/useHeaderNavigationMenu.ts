@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import {
     HeaderNavigationMenuPropsType,
     UseHeaderNavigationMenuPropsType,
@@ -34,6 +34,18 @@ export const useHeaderNavigationMenu = (
         [isExpanded],
     );
 
+    const handleMenuKeyPress = useCallback(
+        (event: React.KeyboardEvent) => {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                event.stopPropagation();
+
+                setIsExpanded(!isExpanded);
+            }
+        },
+        [setIsExpanded, isExpanded],
+    );
+
     useEffect(() => {
         // eslint-disable-next-line no-unused-expressions
         internalRef?.current?.addEventListener('click', handleMenuClick);
@@ -46,5 +58,5 @@ export const useHeaderNavigationMenu = (
 
     useDetectEscapeKeyPressed(internalRef, setIsExpanded, isExpanded);
 
-    return { internalRef, isExpanded, setIsExpanded };
+    return { internalRef, isExpanded, setIsExpanded, handleMenuKeyPress };
 };

@@ -166,6 +166,7 @@ export const useTextInput = (
         before,
         after,
         disabled,
+        outlined: isOutlined,
         large,
         label,
         error,

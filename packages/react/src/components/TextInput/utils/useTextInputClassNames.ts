@@ -8,12 +8,17 @@ export const useTextInputClassNames = (
     large?: boolean,
     error?: boolean,
     isLabelInside?: boolean,
+    outlined?: boolean,
 ) =>
     useMemo(() => {
         const rootClassNames = makeRootClassName(classPrefix, className);
         const rootStateClassNames: string[] = [];
+
         if (disabled) {
             rootStateClassNames.push(makeBEM(classPrefix, 'Root', 'disabled'));
+        }
+        if (outlined) {
+            rootStateClassNames.push(makeBEM(classPrefix, 'Root', 'focus'));
         }
         if (large) {
             rootStateClassNames.push(makeBEM(classPrefix, 'Root', 'large'));
