@@ -23,23 +23,6 @@ import {
 import { LEFT, RIGHT, transitionDurationInSec } from '../../../constants';
 import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
 
-// // all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
-// const propertyList = makePropList([
-//     'isHeader',
-//     'isFooter',
-//     'contentAlignX',
-//     'contentAlignY',
-//     'disabled',
-//     'ellipsis',
-//     'stickyTop',
-//     'stickyAlignment',
-//     'stickyOffset',
-//     'stickyShadowVisible',
-//     'stickyVisible',
-//     'enableContentWordBreak',
-//     'enableContentWrap',
-// ]);
-
 const getRootStyle = ({
     isHeader,
     stickyTop,

@@ -20,10 +20,14 @@ export const useTooltip = (
         /** @deprecated */
         onToggle,
 
-        align,
         error,
-        zIndex,
 
+        // popper and portaling
+        align,
+        offset,
+        allowedAutoPlacements,
+        arrowPadding,
+        zIndex,
         enablePortal,
 
         ...restProps
@@ -46,7 +50,12 @@ export const useTooltip = (
     const panelRef = useRef<HTMLElement>(null);
     const triggerRef = useRef<HTMLElement>(null);
 
-    const { arrowProps, panelProps } = usePopper(panelRef, triggerRef, align);
+    const { arrowProps, panelProps } = usePopper(panelRef, triggerRef, {
+        align,
+        offset,
+        allowedAutoPlacements,
+        arrowPadding,
+    });
     const { zIndex: realZIndex } = useOverlay(reallyOpen, { zIndex });
 
     const validTrigger = validateTrigger(realTrigger);

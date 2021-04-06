@@ -5,10 +5,10 @@ import {
 } from '../type';
 import { SizeAttributesType } from '../../system';
 import { ObjectLiteralType, ScalarType } from '../../type';
-import { PopperPlacementType } from '../../system/hooks/type';
 import { ComponentBehaviourOpenStateType } from '../../system/types/ComponentBehaviourOpenStateType';
 import { ComponentBehaviourOverlayType } from '../../system/types/ComponentBehaviourOverlayType';
 import { ComponentBehaviourPortalType } from '../../system/types/ComponentBehaviourPortalType';
+import { PopperPropsType } from '../../system/hooks/usePopper';
 
 export type ContextMenuElements = Array<{
     label: ReactChild;
@@ -18,7 +18,6 @@ export type ContextMenuElements = Array<{
 
 type ContextMenuEffectivePropsType = Partial<{
     trigger: ReactElement;
-    align: PopperPlacementType;
     menuElements: ContextMenuElements;
 
     /**
@@ -29,6 +28,7 @@ type ContextMenuEffectivePropsType = Partial<{
 
     // add other custom properties here
 }> &
+    PopperPropsType &
     ComponentBehaviourOpenStateType &
     ComponentBehaviourOverlayType &
     ComponentBehaviourPortalType &
