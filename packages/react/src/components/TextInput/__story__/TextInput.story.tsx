@@ -752,3 +752,19 @@ const ShortTextInput = styled(TextInput)`
 export const Short = () => {
     return <ShortTextInput />;
 };
+
+export const NumericControlled = () => {
+    const [value, setValue] = useState<number | undefined>(1);
+    return (
+        <>
+            <TextInput
+                type="number"
+                value={value}
+                onChange={e => {
+                    setValue(parseInt(e.target.value, 10));
+                    e.stopPropagation();
+                }}
+            />
+        </>
+    );
+};

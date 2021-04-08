@@ -9,6 +9,7 @@ import { ComponentBehaviourOpenStateType } from '../../system/types/ComponentBeh
 import { ComponentBehaviourOverlayType } from '../../system/types/ComponentBehaviourOverlayType';
 import { ComponentBehaviourPortalType } from '../../system/types/ComponentBehaviourPortalType';
 import { PopperPropsType } from '../../system/hooks/usePopper';
+import { WidthAttributesType } from '../../system';
 
 type TooltipEffectivePropsType = Partial<{
     error: boolean;
@@ -25,6 +26,7 @@ type TooltipEffectivePropsType = Partial<{
     ComponentBehaviourOverlayType &
     ComponentBehaviourPortalType &
     PopperPropsType &
+    WidthAttributesType &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
     ObjectLiteralType;
 

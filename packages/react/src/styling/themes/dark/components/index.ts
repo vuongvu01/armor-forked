@@ -47,6 +47,7 @@ import { getTableCheckboxCellOverride } from './Table/TableCheckboxCell';
 import { getTableHeadCellOverride } from './Table/TableHeadCell';
 import { getLinkOverride } from './Link';
 import { getCloseButtonOverride } from './CloseButton/CloseButton';
+import { getTableControllerCellOverride } from './Table/TableControllerCell';
 
 export const darkThemeComponentOverrides = {
     Accordion: getAccordionOverride,
@@ -87,6 +88,7 @@ export const darkThemeComponentOverrides = {
     TableRow: getTableRowOverride,
     TableCell: getTableCellOverride,
     TableCheckboxCell: getTableCheckboxCellOverride,
+    TableControllerCell: getTableControllerCellOverride,
     TableHeadCell: getTableHeadCellOverride,
     TableExpandableSection: getTableExpandableSectionOverride,
     Message: getMessageOverride,

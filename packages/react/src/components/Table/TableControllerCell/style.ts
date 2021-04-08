@@ -16,6 +16,7 @@ import {
 import { transition } from '../../../system/mixins/transition';
 import { expansion } from '../../../system/mixins/expansion';
 import { getPropsBlocker } from '../../../utils';
+import { IconButton } from '../../IconButton';
 
 // if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
 export const TableControllerCellRoot = styled(TableCell)<
@@ -38,10 +39,17 @@ export const TableControllerCellContainer = styled.div.withConfig(propsBlocker)<
     align-items: center;
 `;
 
+export const TableControllerCellTrigger = styled(IconButton)`
+    color: ${color('primary.main')};
+    &:hover {
+        background-color: ${color('primary.lighter')};
+        color: ${color('neutral.00')};
+    }
+`;
+
 export const TableControllerCellIcon = styled(ArrowDownIcon).withConfig(
     getPropsBlocker({ expanded: true }, false),
 )<TableControllerCellIconPropsType>`
-    color: ${color('primary.main')};
-    ${transition({ transform: true })};
+    ${transition({ transform: true, color: true })};
     ${expansion(180)};
 `;
