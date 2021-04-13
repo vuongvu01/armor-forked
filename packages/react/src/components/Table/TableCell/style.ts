@@ -13,6 +13,7 @@ import {
     spacing,
     typography,
     propsBlocker,
+    getComponentOverride,
 } from '../../../system';
 import {
     componentSpacing04,
@@ -21,7 +22,6 @@ import {
     zIndexTableHeader,
 } from '../../../tokens';
 import { LEFT, RIGHT, transitionDurationInSec } from '../../../constants';
-import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
 
 const getRootStyle = ({
     isHeader,

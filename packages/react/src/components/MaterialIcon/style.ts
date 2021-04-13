@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 
-import { marginAttributes } from '../../system';
+import { marginAttributes, propsBlocker } from '../../system';
 import { MaterialIconPropsType } from './type';
-import { getPropsBlocker } from '../../utils';
 
-export const MaterialIconRoot = styled.span.withConfig(getPropsBlocker())<
+export const MaterialIconRoot = styled.span.withConfig(propsBlocker)<
     MaterialIconPropsType
 >`
     font-family: 'Material Icons', serif;

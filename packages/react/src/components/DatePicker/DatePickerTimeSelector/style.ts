@@ -3,8 +3,6 @@ import {
     DatePickerTimeSelectorButtonPropsType,
     DatePickerTimeSelectorRootPropsType,
 } from './type';
-import { getPropsBlocker } from '../../../utils';
-import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
 import {
     borderRadius,
     color,
@@ -12,20 +10,17 @@ import {
     reset,
     spacing,
     typography,
-} from '../../../system/mixins';
+    transition,
+    getComponentOverride,
+    propsBlocker,
+} from '../../../system';
 import { TextInput } from '../../TextInput';
 import { borderRadius02, fontSize03, fontWeightMedium } from '../../../tokens';
-import { transition } from '../../../system/mixins/transition';
-
-// all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
-const propertyList = {
-    selected: true,
-};
 
 // if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
-export const DatePickerTimeSelectorRoot = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<DatePickerTimeSelectorRootPropsType>`
+export const DatePickerTimeSelectorRoot = styled.div.withConfig(propsBlocker)<
+    DatePickerTimeSelectorRootPropsType
+>`
     ${reset};
     ${typography('paragraphMedium')};
     padding: ${spacing(4)};
@@ -37,16 +32,12 @@ export const DatePickerTimeSelectorRoot = styled.div.withConfig(
     ${getComponentOverride('DatePickerTimeSelector')};
 `;
 
-export const DatePickerTimeSelectorClock = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)`
+export const DatePickerTimeSelectorClock = styled.div.withConfig(propsBlocker)`
     display: flex;
     align-items: center;
 `;
 
-export const DatePickerTimeSelectorInput = styled(TextInput).withConfig(
-    getPropsBlocker(propertyList, false),
-)`
+export const DatePickerTimeSelectorInput = styled(TextInput)`
     ${typography('paragraphMedium')};
     background-color: inherit;
     width: ${spacing(13)};
@@ -56,7 +47,7 @@ export const DatePickerTimeSelectorInput = styled(TextInput).withConfig(
 `;
 
 export const DatePickerTimeSelectorDayPeriodSelector = styled.div.withConfig(
-    getPropsBlocker(propertyList),
+    propsBlocker,
 )``;
 
 const getTimeSelectorButtonStyle = ({
@@ -87,7 +78,7 @@ const getTimeSelectorButtonStyle = ({
 };
 
 export const DatePickerTimeSelectorButton = styled.button.withConfig(
-    getPropsBlocker(propertyList),
+    propsBlocker,
 )<DatePickerTimeSelectorButtonPropsType>`
     // todo: use regular typography here
     ${typography('paragraphMedium')};

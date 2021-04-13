@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-import { getPropsBlocker } from '../../../utils';
 import { ObjectLiteralType } from '../../../type';
 import {
     DialogTitleRootPropsType,
@@ -8,17 +7,15 @@ import {
     DialogTitleDescriptionPropsType,
 } from './type';
 import { Typography } from '../../Typography';
-import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
-import { paddingAttributes } from '../../../system';
+import {
+    paddingAttributes,
+    propsBlocker,
+    getComponentOverride,
+} from '../../../system';
 
-const propertyList = {
-    description: true,
-    // add other custom properties here
-} as ObjectLiteralType;
-
-export const DialogTitleRoot = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<DialogTitleRootPropsType>`
+export const DialogTitleRoot = styled.div.withConfig(propsBlocker)<
+    DialogTitleRootPropsType
+>`
     box-sizing: border-box;
     flex: 0 0;
     color: red;
@@ -27,15 +24,13 @@ export const DialogTitleRoot = styled.div.withConfig(
     ${paddingAttributes};
 `;
 
-export const DialogTitleText = styled(Typography).withConfig(
-    getPropsBlocker(propertyList, false),
-)<DialogTitleTextPropsType>`
+export const DialogTitleText = styled(Typography)<DialogTitleTextPropsType>`
     margin: 0;
 `;
 
-export const DialogTitleDescription = styled(Typography).withConfig(
-    getPropsBlocker(propertyList, false),
-)<DialogTitleDescriptionPropsType>`
+export const DialogTitleDescription = styled(Typography)<
+    DialogTitleDescriptionPropsType
+>`
     letter-spacing: 0;
     ${({ theme }: DialogTitleDescriptionPropsType) =>
         theme.componentOverrides.DialogTitle.Description.base};

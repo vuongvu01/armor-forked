@@ -1,15 +1,7 @@
 import styled, { css } from 'styled-components';
 
-import { marginAttributes } from '../../../system';
-import { ObjectLiteralType } from '../../../type';
-import { getPropsBlocker } from '../../../utils';
+import { marginAttributes, propsBlocker } from '../../../system';
 import { FormFieldMessageRootPropsType } from './type';
-
-const propertyList = {
-    error: true,
-    oneLine: true,
-    // add other custom properties here
-} as ObjectLiteralType;
 
 const getRootBaseStyle = ({ theme }: FormFieldMessageRootPropsType) =>
     theme.componentOverrides.FormFieldMessage.Root.base;
@@ -35,9 +27,9 @@ const getRootDynamicStyle = ({
     `;
 };
 
-export const FormFieldMessageRoot = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<FormFieldMessageRootPropsType>`
+export const FormFieldMessageRoot = styled.div.withConfig(propsBlocker)<
+    FormFieldMessageRootPropsType
+>`
     box-sizing: border-box;
     position: relative;
 
@@ -46,9 +38,7 @@ export const FormFieldMessageRoot = styled.div.withConfig(
     ${marginAttributes}
 `;
 
-export const FormFieldMessageFakeChildren = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)`
+export const FormFieldMessageFakeChildren = styled.div.withConfig(propsBlocker)`
     opacity: 0;
     &:before {
         content: '1';

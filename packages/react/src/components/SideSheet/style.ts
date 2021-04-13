@@ -1,24 +1,22 @@
 import styled, { css } from 'styled-components';
 
-import { getPropsBlocker } from '../../utils';
 import {
     SideSheetContainerPropsType,
     SideSheetContentPropsType,
     SideSheetHeaderContainerPropsType,
     SideSheetRootPropsType,
 } from './type';
-import { spacing, reset, zIndex } from '../../system';
+import {
+    spacing,
+    reset,
+    zIndex,
+    getComponentOverride,
+    propsBlocker,
+} from '../../system';
 import { transitionDurationInSec } from '../../constants';
 import { minWidth, widthWide, widthDefault } from './constants';
-import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 
 import { CloseButton } from '../CloseButton/CloseButton';
-
-const propertyList = {
-    effectToggle: true,
-    disableEffects: true,
-    zIndex: true,
-};
 
 const calculateWidth = (effectToggle?: boolean, wide?: boolean) => {
     if (effectToggle) {
@@ -55,17 +53,17 @@ const contentStyle = ({
     return SideSheet.Content.base;
 };
 
-export const SideSheetRoot = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<SideSheetRootPropsType>`
+export const SideSheetRoot = styled.div.withConfig(propsBlocker)<
+    SideSheetRootPropsType
+>`
     ${reset};
     ${zIndex};
     ${getComponentOverride('SideSheet')};
 `;
 
-export const SideSheetWindow = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<SideSheetContainerPropsType>`
+export const SideSheetWindow = styled.div.withConfig(propsBlocker)<
+    SideSheetContainerPropsType
+>`
     background: white;
     display: flex;
     height: 100vh;
@@ -78,9 +76,9 @@ export const SideSheetWindow = styled.div.withConfig(
     ${getWindowStyle};
 `;
 
-export const SideSheetContent = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<SideSheetContentPropsType>`
+export const SideSheetContent = styled.div.withConfig(propsBlocker)<
+    SideSheetContentPropsType
+>`
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -88,9 +86,9 @@ export const SideSheetContent = styled.div.withConfig(
     ${contentStyle};
 `;
 
-export const SideSheetHeaderContainer = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<SideSheetHeaderContainerPropsType>`
+export const SideSheetHeaderContainer = styled.div.withConfig(propsBlocker)<
+    SideSheetHeaderContainerPropsType
+>`
     display: flex;
     justify-content: flex-end;
 `;

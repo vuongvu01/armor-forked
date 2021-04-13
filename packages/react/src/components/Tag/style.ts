@@ -1,8 +1,6 @@
 import styled, { css } from 'styled-components';
 import { CancelIcon } from '@deliveryhero/armor-icons';
 
-import { marginAttributes } from '../../system/attributes';
-import { getPropsBlocker, makePropList } from '../../utils';
 import {
     TagCloseIconContainerPropsType,
     TagCloseIconPropsType,
@@ -12,22 +10,15 @@ import {
 import { TAG_DELETE_BEHAVIOUR_OPTIONS, TAG_TYPES } from './constants';
 import { transitionDurationInSec } from '../../constants';
 import { Typography } from '../Typography';
-import { getComponentOverride } from '../../system/mixins/getComponentOverride';
-import { borderRadius, color, reset, spacing } from '../../system/mixins';
-
-const propertyList = makePropList([
-    'deleteOption',
-    'isActive',
-    'type',
-    'hasLabel',
-    'smallVerticalPadding',
-    'small',
-]);
-
-const propertyListTagTypography = makePropList([
-    'deleteOption',
-    'smallVerticalPadding',
-]);
+import {
+    borderRadius,
+    color,
+    reset,
+    spacing,
+    marginAttributes,
+    getComponentOverride,
+    propsBlocker,
+} from '../../system';
 
 const containerStyle = ({
     deleteOption,
@@ -154,9 +145,9 @@ const closeIconContainerStyle = ({
     return result;
 };
 
-export const TagCloseIconContainer = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<TagCloseIconContainerPropsType>`
+export const TagCloseIconContainer = styled.div.withConfig(propsBlocker)<
+    TagCloseIconContainerPropsType
+>`
     box-sizing: border-box;
     display: flex;
     align-items: center;
@@ -167,9 +158,7 @@ export const TagCloseIconContainer = styled.div.withConfig(
     ${closeIconContainerStyle}
 `;
 
-export const TagRoot = styled.div.withConfig(getPropsBlocker(propertyList))<
-    TagRootPropsType
->`
+export const TagRoot = styled.div.withConfig(propsBlocker)<TagRootPropsType>`
     ${reset()}; 
     overflow-y: hidden;
     border-style: solid;
@@ -193,15 +182,11 @@ export const TagRoot = styled.div.withConfig(getPropsBlocker(propertyList))<
     ${getComponentOverride('Tag')};
 `;
 
-export const TagTypography = styled(Typography).withConfig(
-    getPropsBlocker(propertyListTagTypography, false),
-)<TagTypographyPropsType>`
+export const TagTypography = styled(Typography)<TagTypographyPropsType>`
     ${typographyStyle}
 `;
 
-export const TagCloseIcon = styled(CancelIcon).withConfig(
-    getPropsBlocker(propertyList, false),
-)<TagCloseIconPropsType>`
+export const TagCloseIcon = styled(CancelIcon)<TagCloseIconPropsType>`
     outline: none;
 
     height: ${spacing(2)};

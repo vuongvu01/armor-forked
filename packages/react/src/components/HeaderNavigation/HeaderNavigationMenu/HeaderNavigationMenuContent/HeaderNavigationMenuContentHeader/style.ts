@@ -2,12 +2,15 @@ import styled from 'styled-components';
 
 import { HeaderNavigationMenuContentHeaderRootPropsType } from './type';
 import { Typography } from '../../../../Typography';
-import { getComponentOverride } from '../../../../../system/mixins/getComponentOverride';
-import { color, spacing } from '../../../../../system/mixins';
-import { getPropsBlocker } from '../../../../../utils';
+import {
+    color,
+    spacing,
+    propsBlocker,
+    getComponentOverride,
+} from '../../../../../system';
 
 export const HeaderNavigationMenuContentHeaderRoot = styled.div.withConfig(
-    getPropsBlocker(),
+    propsBlocker,
 )<HeaderNavigationMenuContentHeaderRootPropsType>`
     box-sizing: border-box;
     height: 64px;
@@ -18,7 +21,7 @@ export const HeaderNavigationMenuContentHeaderRoot = styled.div.withConfig(
     ${getComponentOverride('HeaderNavigationMenuContentHeader')};
 `;
 
-export const MenuContentHeader = styled.div.withConfig(getPropsBlocker())<
+export const MenuContentHeader = styled.div.withConfig(propsBlocker)<
     HeaderNavigationMenuContentHeaderRootPropsType
 >`
     display: flex;
@@ -27,7 +30,7 @@ export const MenuContentHeader = styled.div.withConfig(getPropsBlocker())<
     height: 100%;
 `;
 
-export const MenuContentHeaderItem = styled.div.withConfig(getPropsBlocker())<
+export const MenuContentHeaderItem = styled.div.withConfig(propsBlocker)<
     HeaderNavigationMenuContentHeaderRootPropsType
 >`
     height: 100%;
@@ -44,9 +47,9 @@ const contentHeaderTitleStyle = ({
     return HeaderNavigationMenuContentHeader.Title.base;
 };
 
-export const MenuContentHeaderTitle = styled(Typography).withConfig(
-    getPropsBlocker({}, false),
-)<HeaderNavigationMenuContentHeaderRootPropsType>`
+export const MenuContentHeaderTitle = styled(Typography)<
+    HeaderNavigationMenuContentHeaderRootPropsType
+>`
     ${contentHeaderTitleStyle}
 `;
 
@@ -58,8 +61,8 @@ const contentHeaderLabelStyle = ({
     return HeaderNavigationMenuContentHeader.Label.base;
 };
 
-export const MenuContentHeaderLabel = styled(Typography).withConfig(
-    getPropsBlocker({}, false),
-)<HeaderNavigationMenuContentHeaderRootPropsType>`
-    ${contentHeaderLabelStyle}
+export const MenuContentHeaderLabel = styled(Typography)<
+    HeaderNavigationMenuContentHeaderRootPropsType
+>`
+    ${contentHeaderLabelStyle};
 `;

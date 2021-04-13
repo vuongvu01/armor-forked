@@ -7,17 +7,15 @@ import {
     textAlignmentAttributes,
     displayAttributes,
     colorAttributes,
-} from '../../system/attributes';
-import { getPropsBlocker } from '../../utils';
+    propsBlocker,
+} from '../../system';
 import { BoxRootPropsType } from './type';
 
-export const BoxRoot = styled.div.withConfig(getPropsBlocker())<
-    BoxRootPropsType
->`
-    ${marginAttributes}
-    ${paddingAttributes}
-    ${sizeAttributes}
-    ${textAlignmentAttributes}
-    ${displayAttributes}
-    ${colorAttributes}
+export const BoxRoot = styled.div.withConfig(propsBlocker)<BoxRootPropsType>`
+    ${marginAttributes};
+    ${paddingAttributes};
+    ${sizeAttributes};
+    ${textAlignmentAttributes};
+    ${displayAttributes};
+    ${colorAttributes};
 `;

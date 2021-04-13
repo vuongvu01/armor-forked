@@ -6,16 +6,14 @@ import {
     pixelToRem,
     reset,
     spacing,
-} from '../../system/mixins';
-import { getComponentOverride } from '../../system/mixins/getComponentOverride';
-import { getPropsBlocker } from '../../utils';
+    propsBlocker,
+    getComponentOverride,
+} from '../../system';
 import { CloseButtonRootPropsType } from './type';
 
-const propertyList = {};
-
-export const CloseButtonRoot = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<CloseButtonRootPropsType>`
+export const CloseButtonRoot = styled.div.withConfig(propsBlocker)<
+    CloseButtonRootPropsType
+>`
     ${reset()};
     display: flex;
     justify-content: flex-end;

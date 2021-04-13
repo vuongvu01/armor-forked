@@ -2,28 +2,25 @@ import styled from 'styled-components';
 
 import { SideSheetHeaderPropsType } from './type';
 import { colorGrey50 } from '../../../tokens';
-import { getPropsBlocker, makePropList } from '../../../utils';
-import { spacing } from '../../../system/mixins';
+import { propsBlocker, spacing } from '../../../system';
 import { Typography } from '../../Typography';
-
-const propertyList = makePropList(['isFixed']);
 
 const headerStyle = ({ theme }: SideSheetHeaderPropsType) => {
     const SideSheet = theme?.componentOverrides?.SideSheet;
     return SideSheet ? SideSheet.Header.base : {};
 };
 
-export const SideSheetHeader = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<SideSheetHeaderPropsType>`
+export const SideSheetHeader = styled.div.withConfig(propsBlocker)<
+    SideSheetHeaderPropsType
+>`
     flex-grow: 1;
 
     ${headerStyle}
 `;
 
-export const SideSheetHeaderTypography = styled(Typography).withConfig(
-    getPropsBlocker(propertyList),
-)<SideSheetHeaderPropsType>`
+export const SideSheetHeaderTypography = styled(Typography)<
+    SideSheetHeaderPropsType
+>`
     margin-top: 0;
     margin-bottom: ${spacing(2)};
     font-size: 1.5em;

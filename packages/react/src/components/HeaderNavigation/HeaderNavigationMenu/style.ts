@@ -3,9 +3,7 @@ import styled, { css } from 'styled-components';
 import { HeaderNavigationMenuRootPropsType } from './type';
 import { ExpansionIndicator } from '../../ExpansionIndicator';
 import { transitionDurationInSec } from '../../../constants';
-import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
-import { color } from '../../../system/mixins';
-import { getPropsBlocker } from '../../../utils';
+import { color, getComponentOverride, propsBlocker } from '../../../system';
 
 export const HeaderNavigationMenuRoot = styled.div<
     HeaderNavigationMenuRootPropsType
@@ -33,7 +31,7 @@ const contentContainerStyle = ({
 };
 
 export const HeaderNavigationMenuContentContainer = styled.div.withConfig(
-    getPropsBlocker(),
+    propsBlocker,
 )<HeaderNavigationMenuRootPropsType>`
     position: absolute;
     opacity: 0;
@@ -50,25 +48,25 @@ const expansionIndicatorItemStyle = ({
     return HeaderNavigationMenu.ExpansionIndicatorItem.base;
 };
 
-export const MenuExpansionIndicatorItem = styled.div.withConfig(
-    getPropsBlocker(),
-)<HeaderNavigationMenuRootPropsType>`
+export const MenuExpansionIndicatorItem = styled.div.withConfig(propsBlocker)<
+    HeaderNavigationMenuRootPropsType
+>`
     ${expansionIndicatorItemStyle}
 `;
 
 export const HeaderNavigationMenuTitleContainer = styled.div.withConfig(
-    getPropsBlocker(),
+    propsBlocker,
 )<HeaderNavigationMenuRootPropsType>`
     display: flex;
     align-items: center;
 `;
-export const HeaderNavigationMenuTitle = styled.div.withConfig(
-    getPropsBlocker(),
-)<HeaderNavigationMenuRootPropsType>``;
+export const HeaderNavigationMenuTitle = styled.div.withConfig(propsBlocker)<
+    HeaderNavigationMenuRootPropsType
+>``;
 
-export const MenuExpansionIndicator = styled(ExpansionIndicator).withConfig(
-    getPropsBlocker({}, false),
-)<HeaderNavigationMenuRootPropsType>`
+export const MenuExpansionIndicator = styled(ExpansionIndicator)<
+    HeaderNavigationMenuRootPropsType
+>`
     .ExpansionIndicator-Content {
         background-color: ${color('neutral.02')};
         width: 40px;

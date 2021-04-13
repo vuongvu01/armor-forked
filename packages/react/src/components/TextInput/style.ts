@@ -6,9 +6,9 @@ import {
     heightAttributes,
     marginAttributes,
     widthAttributes,
+    getComponentOverride,
+    propsBlocker,
 } from '../../system';
-import { ObjectLiteralType } from '../../type';
-import { getPropsBlocker } from '../../utils';
 import {
     TextInputInnerContainerPropsType,
     TextInputInputPropsType,
@@ -18,23 +18,6 @@ import {
     TextInputRootPropsType,
 } from './type';
 import { transitionDurationInSec } from '../../constants';
-import { getComponentOverride } from '../../system/mixins/getComponentOverride';
-
-const propertyList = {
-    displayMode: true,
-    label: true,
-    before: true,
-    after: true,
-    large: true,
-    multiline: true,
-    outlined: true,
-    error: true,
-    inside: true,
-    outline: true,
-    enableFocusOnRootClick: true,
-    enableRootRef: true,
-    // add other custom properties here
-} as ObjectLiteralType;
 
 const getDynamicStyle = (
     nodeName: string,
@@ -83,9 +66,9 @@ const getRootDynamicStyle = (props: TextInputRootPropsType) => {
     `;
 };
 
-export const TextInputRoot = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<TextInputRootPropsType>`
+export const TextInputRoot = styled.div.withConfig(propsBlocker)<
+    TextInputRootPropsType
+>`
     box-sizing: border-box;
     position: relative;
     border-style: solid;
@@ -122,9 +105,9 @@ const getInnerContainerDynamicStyle = (
     return result;
 };
 
-export const TextInputInnerContainer = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<TextInputInnerContainerPropsType>`
+export const TextInputInnerContainer = styled.div.withConfig(propsBlocker)<
+    TextInputInnerContainerPropsType
+>`
     display: flex;
     ${getInnerContainerDynamicStyle}
 `;
@@ -165,9 +148,9 @@ const Wrapper = ({
     children: (props: TextInputInputPropsType) => ReactElement;
 }) => children({ ...restProps });
 
-export const TextInputInput = styled(Wrapper).withConfig(
-    getPropsBlocker(propertyList),
-)<TextInputInputPropsType>`
+export const TextInputInput = styled(Wrapper).withConfig(propsBlocker)<
+    TextInputInputPropsType
+>`
     box-sizing: border-box;
     border: 0 none;
     outline: none;
@@ -208,9 +191,9 @@ const getLabelDynamicStyle = (props: TextInputInternalPropsWithThemeType) => {
     return result;
 };
 
-export const TextInputLabel = styled.span.withConfig(
-    getPropsBlocker(propertyList),
-)<TextInputLabelPropsType>`
+export const TextInputLabel = styled.span.withConfig(propsBlocker)<
+    TextInputLabelPropsType
+>`
     position: absolute;
     text-align: left;
     overflow-x: hidden;
@@ -249,8 +232,8 @@ const getLabelBackgroundDynamicStyle = (
     `;
 };
 
-export const TextInputLabelBackground = styled.span.withConfig(
-    getPropsBlocker(propertyList),
-)<TextInputLabelBackgroundPropsType>`
+export const TextInputLabelBackground = styled.span.withConfig(propsBlocker)<
+    TextInputLabelBackgroundPropsType
+>`
     ${getLabelBackgroundDynamicStyle}
 `;

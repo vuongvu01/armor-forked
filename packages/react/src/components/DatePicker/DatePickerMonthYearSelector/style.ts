@@ -8,8 +8,6 @@ import {
     DatePickerMonthYearSelectorMonthPropsType,
     DatePickerMonthYearSelectorScrollPropsType,
 } from './type';
-import { getPropsBlocker } from '../../../utils';
-import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
 import {
     borderRadius,
     buttonReset,
@@ -19,15 +17,14 @@ import {
     spacing,
     typography,
     marginAttributes,
+    propsBlocker,
+    transition,
+    getComponentOverride,
 } from '../../../system';
-import { transition } from '../../../system/mixins/transition';
-
-// all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
-const propertyList = {};
 
 // if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
 export const DatePickerMonthYearSelectorRoot = styled.div.withConfig(
-    getPropsBlocker(propertyList),
+    propsBlocker,
 )<DatePickerMonthYearSelectorRootPropsType>`
     ${reset};
     ${typography('paragraphMedium')};
@@ -38,7 +35,7 @@ export const DatePickerMonthYearSelectorRoot = styled.div.withConfig(
 `;
 
 export const DatePickerMonthYearSelectorScroll = styled.div.withConfig(
-    getPropsBlocker(propertyList),
+    propsBlocker,
 )<DatePickerMonthYearSelectorScrollPropsType>`
     ${reset()};
     overflow-y: auto;
@@ -46,13 +43,13 @@ export const DatePickerMonthYearSelectorScroll = styled.div.withConfig(
 `;
 
 export const DatePickerMonthYearSelectorList = styled.div.withConfig(
-    getPropsBlocker(propertyList),
+    propsBlocker,
 )<DatePickerMonthYearSelectorListPropsType>`
     ${reset()};
 `;
 
 export const DatePickerMonthYearSelectorYear = styled.div.withConfig(
-    getPropsBlocker(propertyList),
+    propsBlocker,
 )<DatePickerMonthYearSelectorYearPropsType>`
     ${reset()};
     &:not(:first-child) {
@@ -61,7 +58,7 @@ export const DatePickerMonthYearSelectorYear = styled.div.withConfig(
 `;
 
 export const DatePickerMonthYearSelectorYearTitle = styled.button.withConfig(
-    getPropsBlocker(propertyList),
+    propsBlocker,
 )<DatePickerMonthYearSelectorYearTitlePropsType>`
     ${reset()};
     ${buttonReset()};
@@ -82,7 +79,7 @@ export const DatePickerMonthYearSelectorYearTitle = styled.button.withConfig(
 `;
 
 export const DatePickerMonthYearSelectorMonthList = styled.div.withConfig(
-    getPropsBlocker(propertyList),
+    propsBlocker,
 )<DatePickerMonthYearSelectorMonthListPropsType>`
     ${reset()};
     display: grid;
@@ -111,7 +108,7 @@ const getMonthStyle = ({
 };
 
 export const DatePickerMonthYearSelectorMonth = styled.button.withConfig(
-    getPropsBlocker(propertyList),
+    propsBlocker,
 )<DatePickerMonthYearSelectorMonthPropsType>`
     ${reset()};
     ${buttonReset()};

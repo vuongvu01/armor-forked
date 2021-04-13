@@ -4,12 +4,12 @@ import {
     marginAttributes,
     paddingAttributes,
     sizeAttributes,
-} from '../../system/attributes';
-import { getPropsBlocker } from '../../utils';
-import { spacing } from '../../system/mixins';
+    propsBlocker,
+    spacing,
+} from '../../system';
 
 // if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
-export const ContainerRoot = styled.div.withConfig(getPropsBlocker())<
+export const ContainerRoot = styled.div.withConfig(propsBlocker)<
     ContainerRootPropsType
 >`
     box-sizing: border-box;

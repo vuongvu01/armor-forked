@@ -8,7 +8,7 @@ import {
     sizeAttributesList,
     styleAttributesList,
     textAlignmentAttributesList,
-} from '../system/attributes';
+} from '../system';
 
 export { default as generateId } from './generateId';
 export { default as getElementName } from './getElementName';
@@ -81,18 +81,3 @@ export const shouldForwardProp = (
 ) =>
     !(property in componentPropertyList) &&
     !(blockAtomicProps && property in atomicPropsList);
-
-/**
- * @internal
- */
-export const getPropsBlocker = (
-    propertyList?: ObjectLiteralType<boolean>,
-    blockAtomicProps = true,
-) => {
-    return {
-        shouldForwardProp: (propertyName: PropNameType) =>
-            shouldForwardProp(propertyName, propertyList, blockAtomicProps),
-    };
-};
-
-export * from './makePropList';

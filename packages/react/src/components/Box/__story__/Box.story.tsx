@@ -17,3 +17,18 @@ export const SpacingPassed = () => (
     </Box>
 );
 export const SizingPassed = () => <Box height={5}>Hello world!</Box>;
+
+export const CustomAttributes = () => (
+    <Box
+        padding="2rem"
+        margin={20}
+        marginTop={0}
+        height={5}
+        passThis="1"
+        data-passthis="1"
+        aria-label="1"
+        id="can-see-this"
+    >
+        Hello world!
+    </Box>
+);

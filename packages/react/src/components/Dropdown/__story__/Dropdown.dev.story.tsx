@@ -608,9 +608,7 @@ export const ControlledWithReset = () => {
                 value={value}
                 label="Dish type"
             />
-            <Button marginTop={5} onClick={handleReset}>
-                Reset
-            </Button>
+            <Button onClick={handleReset}>Reset</Button>
         </>
     );
 };

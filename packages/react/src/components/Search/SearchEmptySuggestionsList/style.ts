@@ -1,13 +1,10 @@
 import styled from 'styled-components';
 import { SearchEmptySuggestionsListPropsType } from './type';
 import { colorGrey00 } from '../../../tokens';
-import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
-import { getPropsBlocker } from '../../../utils';
-import { spacing } from '../../../system/mixins';
-import { SearchSuggestionsItemLabelPropsType } from '../type';
+import { getComponentOverride, spacing, propsBlocker } from '../../../system';
 
 export const SearchEmptySuggestionsListRoot = styled.div.withConfig(
-    getPropsBlocker({}, false),
+    propsBlocker,
 )<SearchEmptySuggestionsListPropsType>`
     align-items: center;
     box-sizing: border-box;
@@ -29,7 +26,7 @@ export const SearchEmptySuggestionsListRoot = styled.div.withConfig(
 `;
 
 export const SearchEmptySuggestionsItemLabel = styled.div.withConfig(
-    getPropsBlocker({}),
+    propsBlocker,
 )<SearchEmptySuggestionsListPropsType>`
     box-sizing: border-box;
     flex-grow: 1;

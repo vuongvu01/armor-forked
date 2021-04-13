@@ -1,31 +1,17 @@
 import styled from 'styled-components';
 import { EditableTableCellRootPropsType } from './type';
-import { marginAttributes } from '../../../system/attributes';
-import { ObjectLiteralType } from '../../../type';
-import { getPropsBlocker } from '../../../utils';
-
-// all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
-const propertyList = {} as ObjectLiteralType;
+import { marginAttributes, propsBlocker } from '../../../system';
 
 const getRootBaseStyle = ({ theme }: EditableTableCellRootPropsType) =>
     theme.componentOverrides.EditableTableCell.Root.base;
 
-const getRootDynamicStyle = ({ theme }: EditableTableCellRootPropsType) => {
-    const {
-        componentOverrides: { EditableTableCell },
-    } = theme;
-
-    return '';
-};
-
 // if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
-export const EditableTableCellRoot = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<EditableTableCellRootPropsType>`
+export const EditableTableCellRoot = styled.div.withConfig(propsBlocker)<
+    EditableTableCellRootPropsType
+>`
     box-sizing: border-box;
     position: relative;
 
-    ${getRootBaseStyle}
-    ${getRootDynamicStyle}
-    ${marginAttributes}
+    ${getRootBaseStyle};
+    ${marginAttributes};
 `;

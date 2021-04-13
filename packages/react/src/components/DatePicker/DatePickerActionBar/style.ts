@@ -1,18 +1,20 @@
 import styled from 'styled-components';
 import { DatePickerActionBarRootPropsType } from './type';
-import { makePropList, getPropsBlocker } from '../../../utils';
-import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
-import { pixelToRem, reset, spacing, typography } from '../../../system/mixins';
+import {
+    pixelToRem,
+    reset,
+    spacing,
+    typography,
+    propsBlocker,
+    getComponentOverride,
+} from '../../../system';
 import { Button } from '../../Button';
 import { fontSize02, fontSize03 } from '../../../tokens';
 
-// all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
-const propertyList = makePropList(['onApplyValueClick', 'onCancelClick']);
-
 // if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
-export const DatePickerActionBarRoot = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<DatePickerActionBarRootPropsType>`
+export const DatePickerActionBarRoot = styled.div.withConfig(propsBlocker)<
+    DatePickerActionBarRootPropsType
+>`
     ${reset};
     ${typography('paragraphMedium')};
     padding: 0 ${spacing(4)} ${spacing(4)} ${spacing(4)};

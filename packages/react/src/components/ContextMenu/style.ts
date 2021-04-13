@@ -1,7 +1,5 @@
 import styled, { css } from 'styled-components';
 import { ContextMenuRootPropsType, ContextMenuSubNodePropsType } from './type';
-import { getPropsBlocker } from '../../utils';
-import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 import {
     borderRadius,
     color,
@@ -9,14 +7,10 @@ import {
     typography,
     sizeAttributes,
     zIndex,
+    propsBlocker,
+    getComponentOverride,
 } from '../../system';
 import { popperArrow, popperArrowPlacement } from '../../utils/popper';
-
-// all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
-const propertyList = {
-    displayMenuElements: true,
-    zIndex: true,
-};
 
 const getRootStyle = ({ displayMenuElements }: ContextMenuRootPropsType) => {
     let result = {};
@@ -33,9 +27,9 @@ const getRootStyle = ({ displayMenuElements }: ContextMenuRootPropsType) => {
 };
 
 // if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
-export const ContextMenuRoot = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<ContextMenuRootPropsType>`
+export const ContextMenuRoot = styled.div.withConfig(propsBlocker)<
+    ContextMenuRootPropsType
+>`
     box-sizing: border-box;
     margin: 0;
     text-align: left;
@@ -54,8 +48,8 @@ export const ContextMenuRoot = styled.div.withConfig(
     ${sizeAttributes};
 `;
 
-export const ContextMenuArrow = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<ContextMenuSubNodePropsType>`
+export const ContextMenuArrow = styled.div.withConfig(propsBlocker)<
+    ContextMenuSubNodePropsType
+>`
     ${popperArrow}
 `;

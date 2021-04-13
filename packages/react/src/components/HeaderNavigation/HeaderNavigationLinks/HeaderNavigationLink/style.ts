@@ -1,11 +1,7 @@
 import { ReactElement } from 'react';
 import styled, { css } from 'styled-components';
 import { HeaderNavigationLinkRootPropsType } from './type';
-import { getPropsBlocker, makePropList } from '../../../../utils';
-import { getComponentOverride } from '../../../../system/mixins/getComponentOverride';
-
-// all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
-const propertyList = makePropList(['isActive']);
+import { getComponentOverride, propsBlocker } from '../../../../system';
 
 const HeaderNavigationLinkRootWrapper = ({
     children,
@@ -43,9 +39,7 @@ const navigationLinkRootStyle = ({
 
 export const HeaderNavigationLinkRoot = styled(
     HeaderNavigationLinkRootWrapper,
-).withConfig(getPropsBlocker(propertyList, false))<
-    HeaderNavigationLinkRootPropsType
->`
+).withConfig(propsBlocker)`
     cursor: pointer;
     border: none;
     box-sizing: border-box;

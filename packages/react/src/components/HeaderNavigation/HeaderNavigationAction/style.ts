@@ -6,8 +6,7 @@ import {
     HeaderNavigationActionRootPropsType,
 } from './type';
 import { HeaderNavigationItem } from '../HeaderNavigationItem';
-import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
-import { getPropsBlocker } from '../../../utils';
+import { getComponentOverride, propsBlocker } from '../../../system';
 
 const actionRootStyle = ({
     theme: {
@@ -17,9 +16,9 @@ const actionRootStyle = ({
     return HeaderNavigationAction.Root.base;
 };
 
-export const HeaderNavigationActionRoot = styled(
-    HeaderNavigationItem,
-).withConfig(getPropsBlocker({}, false))<HeaderNavigationActionRootPropsType>`
+export const HeaderNavigationActionRoot = styled(HeaderNavigationItem)<
+    HeaderNavigationActionRootPropsType
+>`
     padding-top: 0;
     padding-bottom: 0;
     display: flex;
@@ -30,7 +29,7 @@ export const HeaderNavigationActionRoot = styled(
 `;
 
 export const HeaderNavigationActionContainer = styled.div.withConfig(
-    getPropsBlocker(),
+    propsBlocker,
 )<HeaderNavigationActionContainerPropsType>`
     display: flex;
     flex-wrap: nowrap;
@@ -46,7 +45,7 @@ const actionItemRootStyle = ({
 };
 
 export const HeaderNavigationActionItemRoot = styled.div.withConfig(
-    getPropsBlocker(),
+    propsBlocker,
 )<HeaderNavigationActionItemRootPropsType>`
     cursor: pointer;
 

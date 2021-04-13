@@ -1,16 +1,16 @@
 import styled from 'styled-components';
 import { DialogContentRootPropsType } from './type';
-import { getPropsBlocker } from '../../../utils';
-import { typography, paddingAttributes, spacing } from '../../../system';
-import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
+import {
+    typography,
+    paddingAttributes,
+    spacing,
+    propsBlocker,
+    getComponentOverride,
+} from '../../../system';
 
-const propertyList = {
-    enableVerticalScroll: true,
-};
-
-export const DialogContentRoot = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<DialogContentRootPropsType>`
+export const DialogContentRoot = styled.div.withConfig(propsBlocker)<
+    DialogContentRootPropsType
+>`
     ${typography('paragraphLarge')};
     ${({ enableVerticalScroll }) =>
         enableVerticalScroll ? 'overflow-y: auto;' : ''}

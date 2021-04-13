@@ -1,7 +1,5 @@
 import styled, { css } from 'styled-components';
 
-import { marginAttributes, widthAttributes } from '../../system/attributes';
-import { getPropsBlocker, makePropList } from '../../utils';
 import {
     DropdownOptionListContainerPropsType,
     DropdownRootPropsType,
@@ -9,40 +7,32 @@ import {
     ExpansionIndicatorContainerPropsType,
 } from './type';
 import { ExpansionIndicator } from '../ExpansionIndicator';
-import { color, spacing } from '../../system/mixins';
 import { TextInput } from '../TextInput';
 import { TextInputPropsType } from '../TextInput/type';
-import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 import { Pack, PackItem } from '../Pack';
 import { Tag } from '../Tag';
 import { SINGLE_LINE_MAX_ALLOWED_HEIGHT } from './constants';
+import {
+    marginAttributes,
+    widthAttributes,
+    color,
+    spacing,
+    propsBlocker,
+    getComponentOverride,
+} from '../../system';
 
-const propertyList = makePropList([
-    'formatOption',
-    'singleLine',
-    'containerHeight',
-    'maxTagWidth',
-    'zIndex',
-    'enablePortal',
-]);
-
-const propertyListTextInput = makePropList([
-    'isCustomRenderer',
-    'internalValue',
-]);
-
-export const DropdownRoot = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<DropdownRootPropsType>`
+export const DropdownRoot = styled.div.withConfig(propsBlocker)<
+    DropdownRootPropsType
+>`
     display: inline-block;
 
     ${marginAttributes};
     ${widthAttributes};
 `;
 
-export const DropdownContainer = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<DropdownRootPropsType>`
+export const DropdownContainer = styled.div.withConfig(propsBlocker)<
+    DropdownRootPropsType
+>`
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -56,9 +46,9 @@ const getOptionListContainerStyle = ({
     `;
 };
 
-export const DropdownOptionListContainer = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<DropdownOptionListContainerPropsType>`
+export const DropdownOptionListContainer = styled.div.withConfig(propsBlocker)<
+    DropdownOptionListContainerPropsType
+>`
     ${getOptionListContainerStyle};
 `;
 
@@ -74,15 +64,15 @@ const dropdownExpansionIndicatorContentStyle = ({
               height: ${spacing(8)};
           `;
 
-export const ExpansionIndicatorContainer = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<ExpansionIndicatorContainerPropsType>`
+export const ExpansionIndicatorContainer = styled.div.withConfig(propsBlocker)<
+    ExpansionIndicatorContainerPropsType
+>`
     align-self: stretch;
 `;
 
-export const DropdownExpansionIndicator = styled(ExpansionIndicator).withConfig(
-    getPropsBlocker(propertyList, false),
-)<ExpansionIndicatorContainerPropsType>`
+export const DropdownExpansionIndicator = styled(ExpansionIndicator)<
+    ExpansionIndicatorContainerPropsType
+>`
     cursor: pointer;
 
     .ExpansionIndicator-Content {
@@ -126,9 +116,7 @@ const dropdownTextInputStyle = ({
     return result;
 };
 
-export const DropdownTextInput = styled(TextInput).withConfig(
-    getPropsBlocker(propertyListTextInput),
-)<TextInputPropsType>`
+export const DropdownTextInput = styled(TextInput)<TextInputPropsType>`
     ${dropdownTextRootStyle}
 
     .TextInput-Input {
@@ -154,9 +142,9 @@ const dropdownBeforeSectionContainerStyle = ({
     return result;
 };
 
-export const DropdownBeforeSectionRoot = styled(Pack).withConfig(
-    getPropsBlocker(propertyList),
-)<DropdownTagsSectionPropsType>`
+export const DropdownBeforeSectionRoot = styled(Pack)<
+    DropdownTagsSectionPropsType
+>`
     padding-left: ${spacing(4)};
     padding-right: ${spacing(4)};
     min-width: ${spacing(40)};
@@ -174,9 +162,9 @@ export const DropdownBeforeSectionTagsContainer = styled(PackItem)<
     padding-bottom: ${spacing(1)};
 `;
 
-export const DropdownBeforeSectionTagsWrapper = styled.div<
-    DropdownTagsSectionPropsType
->`
+export const DropdownBeforeSectionTagsWrapper = styled.div.withConfig(
+    propsBlocker,
+)<DropdownTagsSectionPropsType>`
     width: fit-content;
 `;
 
@@ -215,9 +203,9 @@ const dropdownTagStyle = ({ disabled }: DropdownTagsSectionPropsType) => {
     `;
 };
 
-export const DropdownTag = styled(Tag)
-    .attrs({ small: true })
-    .withConfig(getPropsBlocker(propertyList))<DropdownTagsSectionPropsType>`
+export const DropdownTag = styled(Tag).attrs({ small: true })<
+    DropdownTagsSectionPropsType
+>`
     margin-top: ${spacing(1)};
     margin-right: ${spacing(2)};
     margin-bottom: ${spacing(1)};

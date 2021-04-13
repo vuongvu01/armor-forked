@@ -1,18 +1,10 @@
 import styled, { css } from 'styled-components';
 
-import { getPropsBlocker } from '../../utils';
 import { OverlayRootPropsType } from './type';
-import { fixedCover } from '../../system/mixins';
+import { fixedCover, getComponentOverride, propsBlocker } from '../../system';
 import { transitionDurationInSec } from '../../constants';
-import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 
-const propertyList = {
-    disableEffects: true,
-    disableOverlay: true,
-    effectToggle: true,
-};
-
-export const Overlay = styled.div.withConfig(getPropsBlocker(propertyList))<
+export const Overlay = styled.div.withConfig(propsBlocker)<
     OverlayRootPropsType
 >`
     ${fixedCover};

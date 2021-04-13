@@ -428,7 +428,7 @@ export const NoHeader = () => {
 const CustomDataTable = styled(DataTable)`
     .TableControllerCell-Root:first-child {
         .TableControllerCell-Container {
-            align-items: flex-start;
+            color: red;
         }
     }
 `;
@@ -445,7 +445,7 @@ export const OverrideFirstColumn = () => {
     );
 };
 
-export const columnsWithCustomProps = [
+const columnsWithCustomProps = [
     {
         title: 'Name',
         id: 'name',

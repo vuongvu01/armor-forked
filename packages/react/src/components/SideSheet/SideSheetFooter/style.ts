@@ -2,18 +2,13 @@ import styled from 'styled-components';
 
 import { SideSheetFooterPropsType } from './type';
 import { Typography } from '../../Typography';
-import { getPropsBlocker } from '../../../utils';
-
-const propertyList = { isFixed: true };
 
 const footerStyle = ({ theme }: SideSheetFooterPropsType) => {
     const SideSheet = theme?.componentOverrides?.SideSheet;
     return SideSheet.Footer.base;
 };
 
-export const SideSheetFooter = styled(Typography).withConfig(
-    getPropsBlocker(propertyList, false),
-)<SideSheetFooterPropsType>`
+export const SideSheetFooter = styled(Typography)<SideSheetFooterPropsType>`
     align-items: center;
     justify-content: flex-end;
     box-sizing: border-box;
@@ -21,5 +16,5 @@ export const SideSheetFooter = styled(Typography).withConfig(
     height: 64px;
     margin: 0;
 
-    ${footerStyle}
+    ${footerStyle};
 `;

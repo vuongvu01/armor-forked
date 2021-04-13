@@ -2,11 +2,7 @@ import { ReactElement } from 'react';
 import styled from 'styled-components';
 import { HeaderNavigationTitleRootPropsType } from './type';
 import { fontSize03, fontWeightMedium } from '../../../tokens';
-import { getPropsBlocker } from '../../../utils';
-import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
-import { color } from '../../../system/mixins';
-
-const propertyList = {};
+import { color, getComponentOverride } from '../../../system';
 
 const HeaderNavigationTitleRootWrapper = ({
     children,
@@ -17,9 +13,7 @@ const HeaderNavigationTitleRootWrapper = ({
 
 export const HeaderNavigationTitleRoot = styled(
     HeaderNavigationTitleRootWrapper,
-).withConfig(getPropsBlocker(propertyList, false))<
-    HeaderNavigationTitleRootPropsType
->`
+)<HeaderNavigationTitleRootPropsType>`
     cursor: pointer;
     text-decoration: none;
     padding: 0;

@@ -2,20 +2,8 @@ import styled, { css } from 'styled-components';
 
 import { marginAttributes } from '../../system/attributes/margin';
 import { SVGIconRootPropsType } from './type';
-import { shouldForwardProp } from '../../utils';
 import { colorAttributes } from '../../system/attributes/color';
-
-const propertyList = {
-    fontSize: true,
-    display: true,
-    small: true,
-    medium: true,
-    large: true,
-    width: true,
-    height: true,
-    iconWidth: true,
-    iconHeight: true,
-};
+import { propsBlocker } from '../../system/util/propForwarding';
 
 const getSizingStyles = ({
     theme,
@@ -61,9 +49,9 @@ const getSizingStyles = ({
     `;
 };
 
-export const SVGIconRoot = styled.svg.withConfig({
-    shouldForwardProp: property => shouldForwardProp(property, propertyList),
-})<SVGIconRootPropsType>`
+export const SVGIconRoot = styled.svg.withConfig(propsBlocker)<
+    SVGIconRootPropsType
+>`
     flex-shrink: 0;
     user-select: none;
     line-height: inherit;
@@ -72,8 +60,8 @@ export const SVGIconRoot = styled.svg.withConfig({
         display: ${display};
         width: ${iconWidth};
         height: ${iconHeight};
-    `}
-    ${getSizingStyles}
-    ${colorAttributes}
+    `};
+    ${getSizingStyles};
+    ${colorAttributes};
     ${marginAttributes};
 `;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { HeaderNavigationLinksRootPropsType } from './type';
 import { HeaderNavigationItem } from '../HeaderNavigationItem';
-import { getPropsBlocker } from '../../../utils';
+import { propsBlocker } from '../../../system';
 
 const itemLinksStyle = ({
     theme: {
@@ -11,9 +11,9 @@ const itemLinksStyle = ({
     return HeaderNavigationLinks.NavigationItem.base;
 };
 
-export const HeaderNavigationLinksRoot = styled(
-    HeaderNavigationItem,
-).withConfig(getPropsBlocker({}, false))<HeaderNavigationLinksRootPropsType>`
+export const HeaderNavigationLinksRoot = styled(HeaderNavigationItem)<
+    HeaderNavigationLinksRootPropsType
+>`
     padding-top: 0;
     padding-bottom: 0;
 
@@ -21,7 +21,7 @@ export const HeaderNavigationLinksRoot = styled(
 `;
 
 export const HeaderNavigationLinksContainer = styled.div.withConfig(
-    getPropsBlocker(),
+    propsBlocker,
 )<HeaderNavigationLinksRootPropsType>`
     display: flex;
     flex-wrap: nowrap;

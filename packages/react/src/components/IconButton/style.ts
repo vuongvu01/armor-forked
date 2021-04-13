@@ -7,8 +7,8 @@ import {
     borderRadius,
     token,
     propsBlocker,
+    getComponentOverride,
 } from '../../system';
-import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 import { transitionDurationInSec } from '../../constants';
 
 const getRootStyle = ({ light, visible }: IconButtonRootPropsType) => {

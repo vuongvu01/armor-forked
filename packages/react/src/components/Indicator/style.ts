@@ -1,20 +1,14 @@
 import styled from 'styled-components';
 
-import { marginAttributes } from '../../system';
-import { ObjectLiteralType } from '../../type';
-import { getPropsBlocker } from '../../utils';
+import { marginAttributes, propsBlocker } from '../../system';
 import { IndicatorRootPropsType } from './type';
-
-const propertyList = {
-    // add other custom properties here
-} as ObjectLiteralType;
 
 const getRootBaseStyle = ({ theme }: IndicatorRootPropsType) =>
     theme.componentOverrides.Indicator.Root.base;
 
-export const IndicatorRoot = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<IndicatorRootPropsType>`
+export const IndicatorRoot = styled.div.withConfig(propsBlocker)<
+    IndicatorRootPropsType
+>`
     box-sizing: border-box;
     position: relative;
     border-radius: 9999px;
