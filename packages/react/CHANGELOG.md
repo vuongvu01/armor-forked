@@ -1,3 +1,23 @@
+## @deliveryhero/armor [1.42.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.42.0...@deliveryhero/armor@1.42.1) (2021-04-14)
+
+
+### Bug Fixes
+
+* **datatable:** DataTable expandable row ids of type number fixed [LD-469] ([#484](https://github.com/deliveryhero/armor/issues/484)) ([7a69175](https://github.com/deliveryhero/armor/commit/7a691755c6a09e896900ae3de946d4d67c2063c9))
+* **switch:** typo ([#487](https://github.com/deliveryhero/armor/issues/487)) ([94f9e36](https://github.com/deliveryhero/armor/commit/94f9e3659d92e37b4dff66fd00951d623789f70e))
+* Buzzing console warnings removed from all components [LD-463] ([#481](https://github.com/deliveryhero/armor/issues/481)) ([1ec5682](https://github.com/deliveryhero/armor/commit/1ec5682ae35394d95e2c1718bb89ae515317bd03))
+* **popper:** Popper properties forwarding in ContextMenu and Tooltip ([#474](https://github.com/deliveryhero/armor/issues/474)) ([b85bbf6](https://github.com/deliveryhero/armor/commit/b85bbf69eba0ac6c4de32e8582c3f19fecd9ef81))
+* **table:** Collapsable row arrow icon CSS improved  [LD-406] ([#477](https://github.com/deliveryhero/armor/issues/477)) ([e3b2f6c](https://github.com/deliveryhero/armor/commit/e3b2f6c4abff5b53c09c3871945fe9118fb86afe))
+* **tokens:** Value of the primary.lightest token adjusted for the Light Mode [LD-412] ([#475](https://github.com/deliveryhero/armor/issues/475)) ([ff481c8](https://github.com/deliveryhero/armor/commit/ff481c8eafec29718a33fa6b38d19cefe120106e))
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor-icons:** upgraded to 1.10.1
+
 # @deliveryhero/armor [1.42.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.41.0...@deliveryhero/armor@1.42.0) (2021-03-31)
 
 
