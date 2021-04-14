@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 
-import { getPropsBlocker } from '../../utils';
 import { mouseCursor, pointerEvents } from '../../styling';
 import { transitionDurationInSec } from '../../constants';
 import { SwitchCheckboxInputPropsType, SwitchLabelPropsType } from './type';
-import { getComponentOverride } from '../../system/mixins/getComponentOverride';
+import { getComponentOverride, propsBlocker } from '../../system';
 
 const sizes = {
     dimensions: {
@@ -62,7 +61,7 @@ const disabledCheckedBackground = ({
     },
 }: SwitchCheckboxInputPropsType) => Switch.Label.disabled__checked;
 
-export const SwitchRoot = styled.label.withConfig(getPropsBlocker())<
+export const SwitchRoot = styled.label.withConfig(propsBlocker)<
     SwitchLabelPropsType
 >`
     display: inline-flex;
@@ -72,7 +71,7 @@ export const SwitchRoot = styled.label.withConfig(getPropsBlocker())<
     ${mouseCursor}
 `;
 
-export const SwitchToggle = styled.span.withConfig(getPropsBlocker())<
+export const SwitchToggle = styled.span.withConfig(propsBlocker)<
     SwitchLabelPropsType
 >`
     position: relative;
@@ -100,7 +99,7 @@ export const SwitchToggle = styled.span.withConfig(getPropsBlocker())<
     ${mouseCursor}
 `;
 
-export const SwitchCheckboxInput = styled.input.withConfig(getPropsBlocker())<
+export const SwitchCheckboxInput = styled.input.withConfig(propsBlocker)<
     SwitchCheckboxInputPropsType
 >`
     opacity: 0;

@@ -7,9 +7,9 @@ import { useTableControllerCell } from './hooks/useTableControllerCell';
 import {
     TableControllerCellRoot,
     TableControllerCellContainer,
+    TableControllerCellTrigger,
     TableControllerCellIcon,
 } from './style';
-import { IconButton } from '../../IconButton';
 import { TableControllerCellPropsType } from './type';
 import { TABLE_CONTROLLER_CELL_CLASS_PREFIX } from './constants';
 import { getScalarPropType } from '../../../utils/propTypes';
@@ -39,7 +39,7 @@ export const TableControllerCell: FunctionComponent<TableControllerCellPropsType
                     theme={theme}
                     className={classNameComponents.Container}
                 >
-                    <IconButton
+                    <TableControllerCellTrigger
                         {...triggerProps}
                         theme={theme}
                         className={classNameComponents.Trigger}
@@ -49,7 +49,7 @@ export const TableControllerCell: FunctionComponent<TableControllerCellPropsType
                             theme={theme}
                             className={classNameComponents.Icon}
                         />
-                    </IconButton>
+                    </TableControllerCellTrigger>
                     {children}
                 </TableControllerCellContainer>
             </TableControllerCellRoot>

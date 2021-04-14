@@ -5,24 +5,10 @@ import {
     paddingAttributes,
     sizeAttributes,
     widthAttributes,
-} from '../../system/attributes';
-import { getPropsBlocker, makePropList } from '../../utils';
+    propsBlocker,
+} from '../../system';
 import { FlexItemPropsType, FlexRootPropsType } from './type';
 import { gutter } from '../../system/mixins/gutter';
-
-const propertyList = makePropList([
-    'justifyContent',
-    'direction',
-    'alignItems',
-    'alignContent',
-    'flexGrow',
-    'flexBasis',
-    'flexShrink',
-    'alignSelf',
-    'isActive',
-    'flexWrap',
-    'gutterSpacing',
-]);
 
 const flexRootStyle = ({
     direction,
@@ -128,9 +114,7 @@ const flexItemStyle = ({
     return result;
 };
 
-export const FlexRoot = styled.div.withConfig(getPropsBlocker(propertyList))<
-    FlexRootPropsType
->`
+export const FlexRoot = styled.div.withConfig(propsBlocker)<FlexRootPropsType>`
     display: flex;
 
     ${flexRootStyle}
@@ -138,9 +122,9 @@ export const FlexRoot = styled.div.withConfig(getPropsBlocker(propertyList))<
     ${marginAttributes}
 `;
 
-export const FlexItemRoot = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<FlexItemPropsType>`
+export const FlexItemRoot = styled.div.withConfig(propsBlocker)<
+    FlexItemPropsType
+>`
     ${flexItemStyle}
     ${paddingAttributes}
     ${widthAttributes}

@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
 import { BadgeRootPropsType } from './type';
-import { marginAttributes } from '../../system/attributes';
+import { propsBlocker, marginAttributes } from '../../system';
 
-export const BadgeRoot = styled.div<BadgeRootPropsType>`
+export const BadgeRoot = styled.div.withConfig(propsBlocker)<
+    BadgeRootPropsType
+>`
     ${marginAttributes};
 `;

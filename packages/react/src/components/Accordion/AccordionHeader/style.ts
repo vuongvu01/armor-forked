@@ -4,13 +4,7 @@ import { AccordionHeaderRootPropsType } from './type';
 import { Typography } from '../../Typography';
 import { mouseCursor } from '../../../styling';
 import { ExpansionIndicator } from '../../ExpansionIndicator';
-import { color, typography } from '../../../system/mixins';
-import { getPropsBlocker } from '../../../utils';
-
-const propertyList = {
-    isExpanded: true,
-    disabled: true,
-};
+import { color, typography, propsBlocker } from '../../../system';
 
 const accordionHeaderStyle = ({
     disabled,
@@ -43,9 +37,9 @@ const accordionHeaderTypographyStyle = ({
     return HeaderTypography.base;
 };
 
-export const AccordionHeaderRoot = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<AccordionHeaderRootPropsType>`
+export const AccordionHeaderRoot = styled.div.withConfig(propsBlocker)<
+    AccordionHeaderRootPropsType
+>`
     align-items: center;
     box-sizing: border-box;
     display: inline-flex;
@@ -57,15 +51,15 @@ export const AccordionHeaderRoot = styled.div.withConfig(
     ${accordionHeaderStyle}
 `;
 
-export const AccordionHeaderTypography = styled(Typography).withConfig(
-    getPropsBlocker(propertyList, false),
-)<AccordionHeaderRootPropsType>`
+export const AccordionHeaderTypography = styled(Typography)<
+    AccordionHeaderRootPropsType
+>`
     ${accordionHeaderTypographyStyle}
 `;
 
-export const AccordionHeaderBody = styled(Typography).withConfig(
-    getPropsBlocker(propertyList, false),
-)<AccordionHeaderRootPropsType>`
+export const AccordionHeaderBody = styled(Typography)<
+    AccordionHeaderRootPropsType
+>`
     align-items: center;
     display: inline-flex;
 `;
@@ -82,9 +76,9 @@ const accordionExpansionIndicatorStyle = ({
         : {};
 };
 
-export const AccordionHeaderExpansionIndicator = styled(
-    ExpansionIndicator,
-).withConfig(getPropsBlocker({}, false))<AccordionHeaderRootPropsType>`
+export const AccordionHeaderExpansionIndicator = styled(ExpansionIndicator)<
+    AccordionHeaderRootPropsType
+>`
     .AccordionHeader-ExpansionIndicator.ExpansionIndicator-Content {
         width: 56px;
     }
@@ -92,8 +86,8 @@ export const AccordionHeaderExpansionIndicator = styled(
     ${accordionExpansionIndicatorStyle}
 `;
 
-export const AccordionHeaderIcon = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<AccordionHeaderRootPropsType>`
+export const AccordionHeaderIcon = styled.div.withConfig(propsBlocker)<
+    AccordionHeaderRootPropsType
+>`
     ${accordionHeaderTypographyStyle}
 `;

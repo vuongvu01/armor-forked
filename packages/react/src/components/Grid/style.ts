@@ -1,15 +1,8 @@
 import styled, { css } from 'styled-components';
 
-import { getPropsBlocker, makePropList } from '../../utils';
 import { GridPropsType } from './type';
 import { ThemeType } from '../../styling';
-import { sizeAttributes } from '../../system/attributes';
-
-const propertyList = makePropList([
-    'gutterSpacing',
-    'gutterSpacingVertical',
-    'gutterSpacingHorizontal',
-]);
+import { propsBlocker, sizeAttributes } from '../../system';
 
 export const setHorizontalMargin = (
     value: number,
@@ -64,11 +57,9 @@ const gridRootStyle = ({
     return result;
 };
 
-export const GridRoot = styled.div.withConfig(getPropsBlocker(propertyList))<
-    GridPropsType
->`
+export const GridRoot = styled.div.withConfig(propsBlocker)<GridPropsType>`
     display: flex;
     flex-wrap: wrap;
-    ${gridRootStyle}
-    ${sizeAttributes}
+    ${gridRootStyle};
+    ${sizeAttributes};
 `;

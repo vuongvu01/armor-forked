@@ -5,13 +5,13 @@ import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../type';
-import { PopperPlacementType } from '../../system/hooks/type';
 import { ComponentBehaviourOpenStateType } from '../../system/types/ComponentBehaviourOpenStateType';
 import { ComponentBehaviourOverlayType } from '../../system/types/ComponentBehaviourOverlayType';
 import { ComponentBehaviourPortalType } from '../../system/types/ComponentBehaviourPortalType';
+import { PopperPropsType } from '../../system/hooks/usePopper';
+import { WidthAttributesType } from '../../system';
 
 type TooltipEffectivePropsType = Partial<{
-    align: PopperPlacementType;
     error: boolean;
     small: boolean;
     content: ReactNode;
@@ -25,6 +25,8 @@ type TooltipEffectivePropsType = Partial<{
     ComponentBehaviourOpenStateType &
     ComponentBehaviourOverlayType &
     ComponentBehaviourPortalType &
+    PopperPropsType &
+    WidthAttributesType &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
     ObjectLiteralType;
 

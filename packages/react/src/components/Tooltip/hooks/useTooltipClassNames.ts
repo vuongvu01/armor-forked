@@ -1,11 +1,11 @@
 import { useMemo } from 'react';
 import { makeBEM, makeRootClassName } from '../../../utils';
-import { PopperPlacementType } from '../../../system/hooks/type';
+import { PopperPropsType } from '../../../system/hooks/usePopper';
 
 export const useTooltipClassNames = (
     classPrefix: string,
     className?: string,
-    align?: PopperPlacementType,
+    align?: PopperPropsType['align'],
 ) =>
     useMemo(() => {
         const rootClassNames = makeRootClassName(classPrefix, className);

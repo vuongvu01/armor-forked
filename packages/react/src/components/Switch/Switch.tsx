@@ -111,7 +111,7 @@ export const Switch: FunctionComponent<SwitchPropsType> = forwardRef(
 Switch.displayName = SWITCH_CLASS_PREFIX;
 
 Switch.defaultProps = {
-    cehcked: false,
+    checked: false,
     disabled: false,
 };
 

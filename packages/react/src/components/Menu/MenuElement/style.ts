@@ -12,26 +12,14 @@ import {
     marginAttributes,
     paddingAttributes,
     pixelToRem,
+    propsBlocker,
     reset,
     spacing,
     typography,
+    getComponentOverride,
 } from '../../../system';
-import { getPropsBlocker, makePropList } from '../../../utils';
 import { transitionDurationInSec } from '../../../constants';
-import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
 import { fontSize02 } from '../../../tokens';
-
-// all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
-const propertyList = makePropList([
-    'enableExpansionHandle',
-    'primary',
-    'secondary',
-    'tertiary',
-    'selected',
-    'expanded',
-    'tag',
-    'depthLevel',
-]);
 
 const MenuElementRootWrapper = ({
     children,
@@ -105,7 +93,7 @@ const getRootStyle = ({
 };
 
 export const MenuElementRoot = styled(MenuElementRootWrapper).withConfig(
-    getPropsBlocker(propertyList, false),
+    propsBlocker,
 )<MenuElementRootPropsType>`
     ${reset};
     ${typography('labelLarge')};
@@ -144,9 +132,9 @@ const getContentStyle = ({ small }: MenuElementContentPropsType) => {
     `;
 };
 
-export const MenuElementContent = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<MenuElementContentPropsType>`
+export const MenuElementContent = styled.div.withConfig(propsBlocker)<
+    MenuElementContentPropsType
+>`
     flex-grow: 1;
     display: flex;
 
@@ -171,9 +159,9 @@ const getExpansionHandleStyle = ({
     return result;
 };
 
-export const MenuElementExpansionHandle = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<MenuElementExpansionHandlePropsType>`
+export const MenuElementExpansionHandle = styled.div.withConfig(propsBlocker)<
+    MenuElementExpansionHandlePropsType
+>`
     display: flex;
     align-self: stretch;
     cursor: pointer;
@@ -198,9 +186,9 @@ const getExpansionHandleArrowDynamicStyle = ({
     return result;
 };
 
-export const MenuElementExpansionHandleArrow = styled(ArrowDownIcon).withConfig(
-    getPropsBlocker(propertyList, false),
-)<MenuElementExpansionHandleArrowPropsType>`
+export const MenuElementExpansionHandleArrow = styled(ArrowDownIcon)<
+    MenuElementExpansionHandleArrowPropsType
+>`
     transition: transform ${transitionDurationInSec}s ease;
     transform-origin: center;
 

@@ -4,10 +4,14 @@ import {
     TableExpandableSectionContentPropsType,
     TableExpandableSectionRootPropsType,
 } from './type';
-import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
 import { TableRow } from '../TableRow';
 import { TableCell } from '../TableCell';
-import { color, spacing, propsBlocker } from '../../../system';
+import {
+    color,
+    spacing,
+    propsBlocker,
+    getComponentOverride,
+} from '../../../system';
 import { RESIZE_OBSERVER_SUPPORTED } from '../../../system/util/compatibility';
 import { transitionDurationInSec } from '../../../constants';
 import { componentSpacing04, componentSpacing05 } from '../../../tokens';

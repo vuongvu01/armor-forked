@@ -1,10 +1,9 @@
 import styled, { css } from 'styled-components';
 
-import { marginAttributes } from '../../system';
+import { marginAttributes, propsBlocker } from '../../system';
 import { SVGIconRootPropsType } from './type';
-import { getPropsBlocker } from '../../utils';
 
-export const SVGIconRoot = styled.svg.withConfig(getPropsBlocker())<
+export const SVGIconRoot = styled.svg.withConfig(propsBlocker)<
     SVGIconRootPropsType
 >`
     flex-shrink: 0;

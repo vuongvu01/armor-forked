@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 
-import { marginAttributes } from '../../system/attributes';
-import { getPropsBlocker } from '../../utils';
+import {
+    marginAttributes,
+    getComponentOverride,
+    propsBlocker,
+} from '../../system';
 import { mouseCursor } from '../../styling';
 import { transitionDurationInSec } from '../../constants';
 import {
@@ -9,7 +12,6 @@ import {
     RadioInputPropsType,
     RadioRootPropsType,
 } from './type';
-import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 
 const sizes = {
     container: {
@@ -60,7 +62,7 @@ const radioRootStyle = ({
     },
 }: RadioRootPropsType) => Radio.Root.base;
 
-export const RadioRoot = styled.div.withConfig(getPropsBlocker())<
+export const RadioRoot = styled.div.withConfig(propsBlocker)<
     RadioRootPropsType
 >`
     ${radioRootStyle}
@@ -68,7 +70,7 @@ export const RadioRoot = styled.div.withConfig(getPropsBlocker())<
     ${marginAttributes}
 `;
 
-export const RadioMark = styled.label.withConfig(getPropsBlocker())<
+export const RadioMark = styled.label.withConfig(propsBlocker)<
     RadioMarkPropsType
 >`
     cursor: pointer;
@@ -79,7 +81,7 @@ export const RadioMark = styled.label.withConfig(getPropsBlocker())<
     ${mouseCursor}
 `;
 
-export const RadioInput = styled.input.withConfig(getPropsBlocker())<
+export const RadioInput = styled.input.withConfig(propsBlocker)<
     RadioInputPropsType
 >`
     height: 0;

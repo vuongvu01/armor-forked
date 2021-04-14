@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 import { DialogActionsRootPropsType } from './type';
-import { getPropsBlocker } from '../../../utils';
-import { paddingAttributes } from '../../../system';
+import { paddingAttributes, propsBlocker } from '../../../system';
 
-export const DialogActionsRoot = styled.div.withConfig(getPropsBlocker())<
+export const DialogActionsRoot = styled.div.withConfig(propsBlocker)<
     DialogActionsRootPropsType
 >`
     flex: 0 0;

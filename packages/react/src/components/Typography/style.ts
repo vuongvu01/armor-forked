@@ -5,9 +5,9 @@ import {
     marginAttributes,
     textAlignmentAttributes,
     propsBlocker,
+    getComponentOverride,
 } from '../../system';
 import { TypographyRootPropsType } from './type';
-import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 
 const getRootBaseStyle = ({
     disabled,

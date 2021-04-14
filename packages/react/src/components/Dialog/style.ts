@@ -2,13 +2,13 @@ import styled, { css } from 'styled-components';
 
 import {
     fixedCover,
+    propsBlocker,
     reset,
     sizeAttributes,
     spacing,
     zIndex,
+    getComponentOverride,
 } from '../../system';
-import { getPropsBlocker } from '../../utils';
-import { ObjectLiteralType } from '../../type';
 import {
     DialogAlignmentContainerPropsType,
     DialogContentPropsType,
@@ -17,26 +17,9 @@ import {
 } from './type';
 import { DIALOG_SCROLL_DOCUMENT } from './constants';
 import { Card } from '../Card';
-import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 import { CloseButton } from '../CloseButton/CloseButton';
 
-const propertyList = {
-    disableOverlay: true,
-    disableEffects: true,
-    disableCloseButton: true,
-    scroll: true,
-    open: true,
-    defaultOpen: true,
-    onOpenChange: true,
-    onClose: true,
-    effectToggle: true,
-    display: true,
-    zIndex: true,
-
-    // add other custom properties here
-} as ObjectLiteralType;
-
-export const DialogRoot = styled.div.withConfig(getPropsBlocker(propertyList))<
+export const DialogRoot = styled.div.withConfig(propsBlocker)<
     DialogRootPropsType
 >`
     ${reset};
@@ -73,9 +56,9 @@ const getAlignmentContainerStyle = ({
     return result;
 };
 
-export const DialogAlignmentContainer = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<DialogAlignmentContainerPropsType>`
+export const DialogAlignmentContainer = styled.div.withConfig(propsBlocker)<
+    DialogAlignmentContainerPropsType
+>`
     ${fixedCover};
     z-index: inherit;
     align-items: center;
@@ -104,9 +87,7 @@ const getWindowStyle = ({
     `;
 };
 
-export const DialogWindow = styled(Card).withConfig(getPropsBlocker({}, false))<
-    DialogWindowPropsType
->`
+export const DialogWindow = styled(Card)<DialogWindowPropsType>`
     position: relative;
     overflow-y: auto;
     overflow-x: hidden;
@@ -122,9 +103,9 @@ export const DialogWindow = styled(Card).withConfig(getPropsBlocker({}, false))<
     ${getWindowStyle};
 `;
 
-export const DialogContent = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<DialogContentPropsType>`
+export const DialogContent = styled.div.withConfig(propsBlocker)<
+    DialogContentPropsType
+>`
     display: flex;
     flex-direction: column;
     max-height: 100%;

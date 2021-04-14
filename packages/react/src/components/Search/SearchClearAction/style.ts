@@ -6,10 +6,7 @@ import {
     SearchInputClearIconPropsType,
 } from './type';
 import { transitionDurationInSec } from '../../../constants';
-import { getPropsBlocker, makePropList } from '../../../utils';
-import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
-
-const propertyList = makePropList(['searchQuery']);
+import { getComponentOverride, propsBlocker } from '../../../system';
 
 const clearIconContainerStyle = ({
     theme: {
@@ -48,17 +45,17 @@ const searchInputClearIconStyle = ({
     return result;
 };
 
-export const ClearIconContainer = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<ClearIconContainerPropsType>`
+export const ClearIconContainer = styled.div.withConfig(propsBlocker)<
+    ClearIconContainerPropsType
+>`
     display: flex;
     align-items: center;
     ${clearIconContainerStyle};
 `;
 
-export const SearchInputClearIcon = styled(CancelIcon).withConfig(
-    getPropsBlocker(propertyList, false),
-)<SearchInputClearIconPropsType>`
+export const SearchInputClearIcon = styled(CancelIcon)<
+    SearchInputClearIconPropsType
+>`
     ${searchInputClearIconStyle};
     ${getComponentOverride('SearchClearAction')};
 `;

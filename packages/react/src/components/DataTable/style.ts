@@ -2,13 +2,13 @@ import styled from 'styled-components';
 import {
     marginAttributes,
     paddingAttributes,
+    propsBlocker,
     sizeAttributes,
     spacing,
 } from '../../system';
-import { getPropsBlocker } from '../../utils';
 import { DataTableFooterPropsType, DataTableRootPropsType } from './type';
 
-export const DataTableRoot = styled.div.withConfig(getPropsBlocker())<
+export const DataTableRoot = styled.div.withConfig(propsBlocker)<
     DataTableRootPropsType
 >`
     box-sizing: border-box;

@@ -1,7 +1,6 @@
 import { RootThemeType, ThemeType } from '../../styling';
 
 export const expansion = (degree = 180) => ({
-    theme,
     expanded,
 }: {
     expanded?: boolean;

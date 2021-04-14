@@ -14,19 +14,11 @@ import {
     spacing,
     typography,
     zIndex,
+    propsBlocker,
+    getComponentOverride,
 } from '../../system';
-import { makePropList, getPropsBlocker } from '../../utils';
-import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 
 import { TextInput } from '../TextInput';
-
-// all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
-const propertyList = makePropList([
-    'selected',
-    'leftEnd',
-    'rightEnd',
-    'enableTimePicker',
-]);
 
 const getRootStyle = ({ enableTimePicker }: DatePickerRootPropsType) => {
     const result = css`
@@ -36,9 +28,9 @@ const getRootStyle = ({ enableTimePicker }: DatePickerRootPropsType) => {
     return result;
 };
 
-export const DatePickerRoot = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<DatePickerRootPropsType>`
+export const DatePickerRoot = styled.div.withConfig(propsBlocker)<
+    DatePickerRootPropsType
+>`
     ${reset()};
     ${typography('paragraphMedium')};
     display: inline-block;
@@ -50,9 +42,9 @@ export const DatePickerRoot = styled.div.withConfig(
     ${widthAttributes};
 `;
 
-export const DateRangePickerRoot = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<DatePickerRootPropsType>`
+export const DateRangePickerRoot = styled.div.withConfig(propsBlocker)<
+    DatePickerRootPropsType
+>`
     ${reset()};
     ${typography('paragraphMedium')};
     display: inline-block;
@@ -64,15 +56,11 @@ export const DateRangePickerRoot = styled.div.withConfig(
     ${widthAttributes};
 `;
 
-export const DatePickerInput = styled(TextInput).withConfig(
-    getPropsBlocker(propertyList, false),
-)`
+export const DatePickerInput = styled(TextInput)`
     width: 100%;
 `;
 
-export const DatePickerInputIcon = styled(CalendarIcon)
-    .attrs({ medium: true })
-    .withConfig(getPropsBlocker(propertyList, false))`
+export const DatePickerInputIcon = styled(CalendarIcon).attrs({ medium: true })`
     margin-right: ${spacing(2)};
 
     // todo: fix this
@@ -81,9 +69,9 @@ export const DatePickerInputIcon = styled(CalendarIcon)
     }
 `;
 
-export const DatePickerDropdown = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<DatePickerDropdownPropsType>`
+export const DatePickerDropdown = styled.div.withConfig(propsBlocker)<
+    DatePickerDropdownPropsType
+>`
     ${typography('paragraphMedium')};
     border-radius: ${borderRadius('soft')};
     color: ${color('neutral.05')};
@@ -97,9 +85,9 @@ export const DatePickerDropdown = styled.div.withConfig(
 
 // we have to keep the arrow, even though it is not in the design
 // if we don't have it, the popper library screws everything up
-export const DatePickerDropdownArrow = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<DatePickerArrowPropsType>`
+export const DatePickerDropdownArrow = styled.div.withConfig(propsBlocker)<
+    DatePickerArrowPropsType
+>`
     height: 0;
     width: 0;
     visibility: hidden;

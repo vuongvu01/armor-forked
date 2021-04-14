@@ -1,7 +1,11 @@
 import styled, { css } from 'styled-components';
 import { TableRowRootPropsType } from './type';
-import { color, heightAttributes, propsBlocker } from '../../../system';
-import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
+import {
+    color,
+    heightAttributes,
+    propsBlocker,
+    getComponentOverride,
+} from '../../../system';
 
 const getRootDynamicStyle = ({ isHeader }: TableRowRootPropsType) => {
     let result = {};
@@ -32,5 +36,5 @@ export const TableRowRoot = styled.tr.withConfig(propsBlocker)<
 
     ${getRootDynamicStyle}
     ${getComponentOverride('TableRow')};
-    ${heightAttributes}
+    ${heightAttributes};
 `;

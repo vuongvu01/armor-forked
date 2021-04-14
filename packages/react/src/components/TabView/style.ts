@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
-import { marginAttributes } from '../../system/attributes';
-import { getPropsBlocker } from '../../utils';
+import { marginAttributes } from '../../system';
 import { TabViewRootPropsType } from './type';
 import { Typography } from '../Typography';
 
@@ -11,9 +10,7 @@ const themeStyle = ({
     },
 }: TabViewRootPropsType) => TabView.Root.base;
 
-export const TabViewRoot = styled(Typography).withConfig(
-    getPropsBlocker({}, false),
-)<TabViewRootPropsType>`
-    ${themeStyle}
-    ${marginAttributes}
+export const TabViewRoot = styled(Typography)<TabViewRootPropsType>`
+    ${themeStyle};
+    ${marginAttributes};
 `;

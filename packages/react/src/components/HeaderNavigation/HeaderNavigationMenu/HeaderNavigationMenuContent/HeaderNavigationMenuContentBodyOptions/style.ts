@@ -6,9 +6,7 @@ import {
     HeaderNavigationMenuContentBodyOptionsItemPropsType,
 } from '../type';
 import { Stack, StackItem } from '../../../../Stack';
-import { getComponentOverride } from '../../../../../system/mixins/getComponentOverride';
-import { color } from '../../../../../system/mixins';
-import { getPropsBlocker } from '../../../../../utils';
+import { color, getComponentOverride } from '../../../../../system';
 
 const contentBodyOptionsRootStyle = ({
     theme: {
@@ -16,10 +14,6 @@ const contentBodyOptionsRootStyle = ({
     },
 }: HeaderNavigationMenuContentBodyOptionsRootPropsType) => {
     return HeaderNavigationMenuContentBodyOptions.Root.base;
-};
-
-const propertyList = {
-    isActive: true,
 };
 
 const contentBodyOptionsItemStyle = ({
@@ -53,9 +47,7 @@ const contentBodyOptionsCategoryStyle = ({
     return HeaderNavigationMenuContentBodyOptions.Category.base;
 };
 
-export const HeaderNavigationMenuContentBodyOptionsItem = styled(
-    StackItem,
-).withConfig(getPropsBlocker(propertyList, false))<
+export const HeaderNavigationMenuContentBodyOptionsItem = styled(StackItem)<
     HeaderNavigationMenuContentBodyOptionsItemPropsType
 >`
     cursor: pointer;
@@ -64,18 +56,14 @@ export const HeaderNavigationMenuContentBodyOptionsItem = styled(
     ${contentBodyOptionsItemStyle};
 `;
 
-export const HeaderNavigationMenuContentBodyOptionsRoot = styled(
-    Stack,
-).withConfig(getPropsBlocker(propertyList, false))<
+export const HeaderNavigationMenuContentBodyOptionsRoot = styled(Stack)<
     HeaderNavigationMenuContentBodyOptionsRootPropsType
 >`
     ${contentBodyOptionsRootStyle}
     ${getComponentOverride('HeaderNavigationMenuContentBodyOptions')};
 `;
 
-export const HeaderNavigationMenuContentBodyOptionsCategory = styled(
-    StackItem,
-).withConfig(getPropsBlocker(propertyList, false))<
+export const HeaderNavigationMenuContentBodyOptionsCategory = styled(StackItem)<
     HeaderNavigationMenuContentBodyOptionsCategoryPropsType
 >`
     cursor: default;

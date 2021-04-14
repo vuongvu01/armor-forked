@@ -5,17 +5,17 @@ import {
     TableControllerCellContainerPropsType,
     TableControllerCellIconPropsType,
 } from './type';
-import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
 import { TableCell } from '../TableCell';
 import {
     color,
     spacing,
     paddingAttributes,
     propsBlocker,
+    transition,
+    expansion,
+    getComponentOverride,
 } from '../../../system';
-import { transition } from '../../../system/mixins/transition';
-import { expansion } from '../../../system/mixins/expansion';
-import { getPropsBlocker } from '../../../utils';
+import { IconButton } from '../../IconButton';
 
 // if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
 export const TableControllerCellRoot = styled(TableCell)<
@@ -38,10 +38,17 @@ export const TableControllerCellContainer = styled.div.withConfig(propsBlocker)<
     align-items: center;
 `;
 
-export const TableControllerCellIcon = styled(ArrowDownIcon).withConfig(
-    getPropsBlocker({ expanded: true }, false),
-)<TableControllerCellIconPropsType>`
+export const TableControllerCellTrigger = styled(IconButton)`
     color: ${color('primary.main')};
-    ${transition({ transform: true })};
+    &:hover {
+        background-color: ${color('primary.lighter')};
+        color: ${color('neutral.00')};
+    }
+`;
+
+export const TableControllerCellIcon = styled(ArrowDownIcon)<
+    TableControllerCellIconPropsType
+>`
+    ${transition({ transform: true, color: true })};
     ${expansion(180)};
 `;

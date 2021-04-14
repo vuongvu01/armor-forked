@@ -15,16 +15,19 @@ export const useContextMenu = (
         children,
         menuElements,
         trigger,
-        align,
 
         open,
         defaultOpen,
         onOpenChange,
-        zIndex,
-
-        enablePortal,
-
         onToggle,
+
+        // popper and portaling
+        align,
+        offset,
+        allowedAutoPlacements,
+        arrowPadding,
+        zIndex,
+        enablePortal,
 
         ...restProps
     }: ContextMenuPropsType,
@@ -41,7 +44,12 @@ export const useContextMenu = (
 
     const triggerRef = useRef<HTMLElement>();
 
-    const { panelProps, arrowProps } = usePopper(rootRef, triggerRef, align);
+    const { panelProps, arrowProps } = usePopper(rootRef, triggerRef, {
+        align,
+        arrowPadding,
+        offset,
+        allowedAutoPlacements,
+    });
     useOuterClick([rootRef, triggerRef], setClose, reallyOpen);
     const { zIndex: realZIndex } = useOverlay(reallyOpen, { zIndex });
 

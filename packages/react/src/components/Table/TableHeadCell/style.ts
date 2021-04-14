@@ -1,11 +1,14 @@
 import styled, { css } from 'styled-components';
 import { TableHeadCellRootPropsType } from './type';
-import { color, paddingAttributes } from '../../../system';
+import {
+    color,
+    paddingAttributes,
+    getComponentOverride,
+} from '../../../system';
 import { makeBEM } from '../../../utils';
 import { TableCell } from '../TableCell';
 import { transitionDurationInSec } from '../../../constants';
 import { TABLE_HEAD_CELL_CLASS_PREFIX } from './constants';
-import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
 
 const getRootDynamicStyle = ({
     theme,

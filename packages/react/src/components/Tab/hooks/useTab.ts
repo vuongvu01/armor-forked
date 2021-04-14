@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useCallback, useContext, useState } from 'react';
 
 import { ReferenceType } from '../../../type';
 import { TabPropsType } from '../type';
@@ -17,7 +17,6 @@ export const useTab = (
         target,
         rel,
         onClick,
-
         ...restProps
     }: TabPropsType,
     ref: ReferenceType,
@@ -30,7 +29,7 @@ export const useTab = (
 
     const handleSelect = useCallback(
         (event: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
-            if (handleClick) {
+            if (!disabled && handleClick) {
                 handleClick(event, tabIndex, matchingContentViewValue);
             }
 
@@ -54,10 +53,10 @@ export const useTab = (
             disabled,
         },
         tagProps: {
-            to,
-            href,
-            target,
-            rel,
+            to: disabled ? undefined : to,
+            href: disabled ? undefined : href,
+            target: disabled ? undefined : target,
+            rel: disabled ? undefined : rel,
         },
         tabLabelProps: {
             disabled,

@@ -1,28 +1,27 @@
 import { ReactElement } from 'react';
 import styled from 'styled-components';
 
-import { marginAttributes } from '../../../system';
-import { ObjectLiteralType } from '../../../type';
-import { getPropsBlocker } from '../../../utils';
+import { marginAttributes, propsBlocker } from '../../../system';
 import { MessageActionRootPropsType } from './type';
 
-const propertyList = {
-    tag: true,
-    useMessageColor: true,
-    // add other custom properties here
-} as ObjectLiteralType;
+// const Wrapper = ({
+//     className,
+//     children,
+// }: {
+//     className: string;
+//     children: (className: string) => ReactElement;
+// }) => children(className);
 
 const Wrapper = ({
-    className,
     children,
-}: {
-    className: string;
-    children: (className: string) => ReactElement;
-}) => children(className);
+    ...restProps
+}: MessageActionRootPropsType & {
+    children: (props: MessageActionRootPropsType) => ReactElement;
+}) => children({ ...restProps });
 
-export const MessageActionRoot = styled(Wrapper).withConfig(
-    getPropsBlocker(propertyList),
-)<MessageActionRootPropsType>`
+export const MessageActionRoot = styled(Wrapper).withConfig(propsBlocker)<
+    MessageActionRootPropsType
+>`
     box-sizing: border-box;
     display: inline-block;
     cursor: pointer;

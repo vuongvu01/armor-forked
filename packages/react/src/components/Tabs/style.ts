@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { marginAttributes } from '../../system/attributes';
-import { getPropsBlocker } from '../../utils';
+import { marginAttributes, propsBlocker } from '../../system';
 import { TabsRootPropsType } from './type';
 import { TabLabel, TabRoot } from '../Tab/style';
 
@@ -56,9 +55,7 @@ const themeStyle = ({
     return result;
 };
 
-export const TabsRoot = styled.div.withConfig(getPropsBlocker())<
-    TabsRootPropsType
->`
+export const TabsRoot = styled.div.withConfig(propsBlocker)<TabsRootPropsType>`
     align-items: start;
     display: flex;
     flex-wrap: wrap;

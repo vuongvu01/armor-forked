@@ -1,7 +1,11 @@
 import styled, { css } from 'styled-components';
 
-import { marginAttributes } from '../../system/attributes';
-import { getPropsBlocker } from '../../utils';
+import {
+    marginAttributes,
+    propsBlocker,
+    spacing,
+    getComponentOverride,
+} from '../../system';
 import { mouseCursor, pointerEvents } from '../../styling';
 import { transitionDurationInSec } from '../../constants';
 import {
@@ -9,15 +13,7 @@ import {
     CheckboxInputPropsType,
     CheckboxRootPropsType,
 } from './type';
-import { spacing } from '../../system/mixins';
 import { fontWeightRegular } from '../../tokens';
-import { getComponentOverride } from '../../system/mixins/getComponentOverride';
-
-const propertyList = {
-    reallyChecked: true,
-    checkedIcon: true,
-    hasLabel: true,
-};
 
 const sizes = {
     checkbox: {
@@ -94,9 +90,9 @@ const checkmarkStyle = ({
     return css`${checkmarkColor}${tickStyle}`;
 };
 
-export const CheckboxRoot = styled.label.withConfig(
-    getPropsBlocker(propertyList),
-)<CheckboxRootPropsType>`
+export const CheckboxRoot = styled.label.withConfig(propsBlocker)<
+    CheckboxRootPropsType
+>`
     display: inline-flex;
     margin: 0;
     font-weight: ${fontWeightRegular};
@@ -106,9 +102,9 @@ export const CheckboxRoot = styled.label.withConfig(
     ${marginAttributes}
 `;
 
-export const CheckboxCheckmark = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<CheckboxCheckmarkPropsType>`
+export const CheckboxCheckmark = styled.div.withConfig(propsBlocker)<
+    CheckboxCheckmarkPropsType
+>`
     position: relative;
     width: ${sizes.checkbox.side}px;
     height: ${sizes.checkbox.side}px;
@@ -129,7 +125,7 @@ export const CheckboxCheckmark = styled.div.withConfig(
         height: ${sizes.checkbox.side}px;
         border-radius: 4px;
         box-sizing: border-box;
-        ${checkmarkBox}
+        ${checkmarkBox};
         transition: all ${transitionDurationInSec}s ease;
     }
 
@@ -144,9 +140,9 @@ export const CheckboxCheckmark = styled.div.withConfig(
     ${pointerEvents}
 `;
 
-export const CheckboxInput = styled.input.withConfig(
-    getPropsBlocker(propertyList),
-)<CheckboxInputPropsType>`
+export const CheckboxInput = styled.input.withConfig(propsBlocker)<
+    CheckboxInputPropsType
+>`
     opacity: 0;
     position: absolute;
     margin: 0;

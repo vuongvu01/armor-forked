@@ -1,10 +1,6 @@
 import styled from 'styled-components';
 import { NavigationRootPropsType } from './type';
-import { marginAttributes, widthAttributes } from '../../system/attributes';
-import { makePropList, getPropsBlocker } from '../../utils';
-
-// all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
-const propertyList = makePropList(['enableBottomSeparator']);
+import { marginAttributes, widthAttributes, propsBlocker } from '../../system';
 
 const getRootDynamicStyle = ({ theme }: NavigationRootPropsType) => {
     const {
@@ -17,12 +13,12 @@ const getRootDynamicStyle = ({ theme }: NavigationRootPropsType) => {
 };
 
 // if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
-export const NavigationRoot = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<NavigationRootPropsType>`
+export const NavigationRoot = styled.div.withConfig(propsBlocker)<
+    NavigationRootPropsType
+>`
     box-sizing: border-box;
 
-    ${getRootDynamicStyle}
-    ${marginAttributes}
-    ${widthAttributes}
+    ${getRootDynamicStyle};
+    ${marginAttributes};
+    ${widthAttributes};
 `;

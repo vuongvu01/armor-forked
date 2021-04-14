@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { HeaderNavigationMenuContentRootPropsType } from './type';
-import { getPropsBlocker } from '../../../../utils';
+import { propsBlocker } from '../../../../system';
 
 const headerNavigationMenuContentRootStyle = ({
     theme: {
@@ -12,7 +12,7 @@ const headerNavigationMenuContentRootStyle = ({
 };
 
 export const HeaderNavigationMenuContentRoot = styled.div.withConfig(
-    getPropsBlocker(),
+    propsBlocker,
 )<HeaderNavigationMenuContentRootPropsType>`
     min-width: 280px;
     max-width: 360px;

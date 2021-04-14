@@ -5,32 +5,22 @@ import {
     LinkTagPropsType,
     LinkLabelPropsType,
 } from './type';
-import { marginAttributes } from '../../system/attributes';
-import { getPropsBlocker, makePropList } from '../../utils';
-import { getComponentOverride } from '../../system/mixins/getComponentOverride';
 import {
     borderRadius,
     color,
     reset,
     spacing,
     pixelToRem,
-} from '../../system/mixins';
+    propsBlocker,
+    marginAttributes,
+    getComponentOverride,
+} from '../../system';
 import {
     fontSize02,
     fontSize03,
     fontSize04,
     fontFamilyRoboto,
 } from '../../tokens';
-
-// all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
-const propertyList = makePropList([
-    'disabled',
-    'small',
-    'medium',
-    'large',
-    'pressed',
-    'underline',
-]);
 
 const getRootStyle = ({
     small,
@@ -93,9 +83,9 @@ const LinkTagWrapper = ({
     children: (props: LinkTagPropsType) => ReactElement;
 }) => children(restProps);
 
-export const LinkRoot = styled(LinkTagWrapper).withConfig(
-    getPropsBlocker(propertyList),
-)<LinkRootPropsType>`
+export const LinkRoot = styled(LinkTagWrapper).withConfig(propsBlocker)<
+    LinkRootPropsType
+>`
     ${reset};
     font-family: ${fontFamilyRoboto};
     color: ${color('primary.main')};

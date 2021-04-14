@@ -5,14 +5,10 @@ export const useDatePickerPopper = () => {
     const dropdownRef = useRef<HTMLDivElement>(null);
     const triggerRef = useRef<HTMLElement>();
 
-    const { panelProps, arrowProps } = usePopper(
-        dropdownRef,
-        triggerRef,
-        'bottom-start',
-        {
-            offset: [0, 5],
-        },
-    );
+    const { panelProps, arrowProps } = usePopper(dropdownRef, triggerRef, {
+        align: 'bottom-start',
+        offset: [0, 5],
+    });
 
     return {
         dropdownProps: {

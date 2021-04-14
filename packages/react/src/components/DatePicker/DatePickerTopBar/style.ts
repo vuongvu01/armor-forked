@@ -1,29 +1,25 @@
 import styled, { css } from 'styled-components';
 import { ArrowDownFilledIcon } from '@deliveryhero/armor-icons';
 import { DatePickerTopBarRootPropsType } from './type';
-import { getPropsBlocker } from '../../../utils';
-import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
-import { color, reset, spacing } from '../../../system';
 import {
     DatePickerTopBarMonthNavigationButtonForwardPropsType,
     DatePickerTopBarMonthYearSelectorToggleArrowPropsType,
     DatePickerTopBarMonthYearSelectorTogglePropsType,
 } from '../type';
-import { transition } from '../../../system/mixins/transition';
+import {
+    transition,
+    getComponentOverride,
+    color,
+    reset,
+    spacing,
+    propsBlocker,
+} from '../../../system';
 import { transitionDurationInSec } from '../../../constants';
 
-// all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
-const propertyList = {
-    open: true,
-    onDirtyInternalValueUTCUpdate: true,
-    dirtyInternalValueUTC: true,
-    onDisplayedDateVectorChange: true,
-};
-
 // if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
-export const DatePickerTopBarRoot = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<DatePickerTopBarRootPropsType>`
+export const DatePickerTopBarRoot = styled.div.withConfig(propsBlocker)<
+    DatePickerTopBarRootPropsType
+>`
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -47,7 +43,7 @@ const getMonthYearSelectorToggleStyle = ({
 };
 
 export const DatePickerTopBarMonthYearSelectorToggle = styled.a.withConfig(
-    getPropsBlocker(propertyList),
+    propsBlocker,
 )<DatePickerTopBarMonthYearSelectorTogglePropsType>`
     ${reset()};
     display: flex;
@@ -78,15 +74,13 @@ const getMonthYearSelectorToggleArrowStyle = ({
 
 export const DatePickerTopBarMonthYearSelectorToggleArrow = styled(
     ArrowDownFilledIcon,
-).withConfig(getPropsBlocker(propertyList))<
-    DatePickerTopBarMonthYearSelectorToggleArrowPropsType
->`
+)<DatePickerTopBarMonthYearSelectorToggleArrowPropsType>`
     transition: transform ${transitionDurationInSec}s ease;
     ${getMonthYearSelectorToggleArrowStyle};
 `;
 
 export const DatePickerTopBarMonthNavigation = styled.div.withConfig(
-    getPropsBlocker(propertyList),
+    propsBlocker,
 )`
     ${reset()};
     display: flex;
@@ -112,7 +106,7 @@ const getMonthNavigationButtonForwardStyle = ({
 };
 
 export const DatePickerTopBarMonthNavigationButtonForward = styled.button.withConfig(
-    getPropsBlocker(propertyList),
+    propsBlocker,
 )<DatePickerTopBarMonthNavigationButtonForwardPropsType>`
     display: flex;
     justify-content: space-between;

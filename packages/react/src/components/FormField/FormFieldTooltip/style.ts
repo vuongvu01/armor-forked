@@ -1,7 +1,5 @@
 import styled, { css } from 'styled-components';
 
-import { ObjectLiteralType } from '../../../type';
-import { getPropsBlocker } from '../../../utils';
 import {
     FormFieldTooltipIndicatorPropsType,
     FormFieldTooltipRootPropsType,
@@ -9,17 +7,12 @@ import {
 import { Tooltip } from '../../Tooltip';
 import { Indicator } from '../../Indicator';
 
-const propertyList = {
-    visible: true,
-    // add other custom properties here
-} as ObjectLiteralType;
-
 const getRootBaseStyle = ({ theme }: FormFieldTooltipRootPropsType) =>
     theme.componentOverrides.FormFieldTooltip.Root.base;
 
-export const FormFieldTooltipRoot = styled(Tooltip).withConfig(
-    getPropsBlocker(propertyList, false),
-)<FormFieldTooltipRootPropsType>`
+export const FormFieldTooltipRoot = styled(Tooltip)<
+    FormFieldTooltipRootPropsType
+>`
     ${getRootBaseStyle}
 `;
 
@@ -36,9 +29,9 @@ const getIndicatorDynamicStyle = ({
               pointer-events: none;
           `;
 
-export const FormFieldTooltipIndicator = styled(Indicator).withConfig(
-    getPropsBlocker(propertyList, false),
-)<FormFieldTooltipIndicatorPropsType>`
+export const FormFieldTooltipIndicator = styled(Indicator)<
+    FormFieldTooltipIndicatorPropsType
+>`
     position: absolute;
 
     ${getIndicatorBaseStyle}

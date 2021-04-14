@@ -5,40 +5,22 @@ import {
     DatePickerDaySelectorDayPaddingPropsType,
     DatePickerDaySelectorDayPropsType,
 } from './type';
-import { getPropsBlocker } from '../../../utils';
-import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
 import {
     borderRadius,
     color,
+    propsBlocker,
     reset,
     spacing,
     typography,
+    getComponentOverride,
+    transition,
 } from '../../../system';
-import { transition } from '../../../system/mixins/transition';
 import { fontWeightMedium } from '../../../tokens';
 
-// all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
-const propertyList = {
-    current: true,
-    selected: true,
-    leftEnd: true,
-    rightEnd: true,
-    left: true,
-    right: true,
-    weekDay: true,
-    displayedMonth: true,
-    month: true,
-    year: true,
-    day: true,
-    applyValue: true,
-    onDisplayedDateUTCUpdate: true,
-    onDirtyInternalValueUTCUpdate: true,
-};
-
 // if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
-export const DatePickerDaySelectorRoot = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<DatePickerDaySelectorRootPropsType>`
+export const DatePickerDaySelectorRoot = styled.div.withConfig(propsBlocker)<
+    DatePickerDaySelectorRootPropsType
+>`
     ${reset};
     ${typography('paragraphMedium')};
     padding: ${spacing(4)};
@@ -47,9 +29,7 @@ export const DatePickerDaySelectorRoot = styled.div.withConfig(
     ${getComponentOverride('DatePickerDaySelector')};
 `;
 
-export const DatePickerDaySelectorWeek = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)`
+export const DatePickerDaySelectorWeek = styled.div.withConfig(propsBlocker)`
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: auto;
@@ -58,9 +38,7 @@ export const DatePickerDaySelectorWeek = styled.div.withConfig(
     margin: 0 ${spacing(-0.5)};
 `;
 
-export const DatePickerDaySelectorWeekDay = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)`
+export const DatePickerDaySelectorWeekDay = styled.div.withConfig(propsBlocker)`
     width: ${spacing(10)};
     height: ${spacing(10)};
     color: ${color('neutral.06')};
@@ -73,9 +51,7 @@ export const DatePickerDaySelectorWeekDay = styled.div.withConfig(
     user-select: none;
 `;
 
-export const DatePickerDaySelectorDays = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)`
+export const DatePickerDaySelectorDays = styled.div.withConfig(propsBlocker)`
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: auto;
@@ -84,9 +60,9 @@ export const DatePickerDaySelectorDays = styled.div.withConfig(
     margin: 0 ${spacing(-0.5)};
 `;
 
-export const DatePickerDaySelectorDay = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<DatePickerDaySelectorDayPropsType>`
+export const DatePickerDaySelectorDay = styled.div.withConfig(propsBlocker)<
+    DatePickerDaySelectorDayPropsType
+>`
     display: flex;
 `;
 
@@ -148,9 +124,9 @@ const getDayButtonStyle = ({
     return result;
 };
 
-export const DatePickerDaySelectorDayButton = styled.a.withConfig(
-    getPropsBlocker(propertyList),
-)<DatePickerDaySelectorDayButtonPropsType>`
+export const DatePickerDaySelectorDayButton = styled.a.withConfig(propsBlocker)<
+    DatePickerDaySelectorDayButtonPropsType
+>`
     width: ${spacing(10)};
     height: ${spacing(10)};
     color: ${color('neutral.06')};
@@ -201,7 +177,7 @@ const getDayPaddingStyle = ({
 };
 
 export const DatePickerDaySelectorDayPadding = styled.div.withConfig(
-    getPropsBlocker(propertyList),
+    propsBlocker,
 )<DatePickerDaySelectorDayPaddingPropsType>`
     width: ${spacing(0.5)};
     height: ${spacing(10)};

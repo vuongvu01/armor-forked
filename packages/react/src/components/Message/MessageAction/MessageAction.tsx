@@ -7,6 +7,7 @@ import { MessageActionRoot } from './style';
 import { MessageActionPropsType } from './type';
 import { messageActionDefaultTheme } from './theme';
 import { MESSAGE_ACTION_CLASS_PREFIX } from './constants';
+import { ButtonPropsType } from '../../Button/type';
 
 export const MessageAction: FunctionComponent<MessageActionPropsType> = ({
     className,
@@ -30,10 +31,8 @@ export const MessageAction: FunctionComponent<MessageActionPropsType> = ({
             theme={theme}
             className={classNameComponents.Root}
         >
-            {(classNameFinal: string) => (
-                <Tag {...restProps} className={classNameFinal}>
-                    {children}
-                </Tag>
+            {(forwardedProps: ButtonPropsType) => (
+                <Tag {...forwardedProps}>{children}</Tag>
             )}
         </MessageActionRoot>
     );

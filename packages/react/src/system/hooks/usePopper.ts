@@ -4,9 +4,11 @@ import { Placement } from '@popperjs/core';
 
 type OffsetType = [number, number];
 
-type PopperParametersType = {
+export type PopperPropsType = {
+    align?: Placement;
     offset?: [number, number];
     allowedAutoPlacements?: Placement[];
+    arrowPadding?: number;
 };
 
 const DEFAULT_OFFSET: OffsetType = [0, 10];
@@ -17,13 +19,17 @@ const DEFAULT_OFFSET: OffsetType = [0, 10];
 export const usePopper = (
     panelRef: RefObject<HTMLElement | undefined>,
     triggerRef: RefObject<HTMLElement | undefined>,
-    align: Placement = 'bottom',
-    parameters?: PopperParametersType,
+    props?: PopperPropsType,
 ) => {
     // the ref for the arrow must be a callback ref
     const [arrowRef, setArrowRef] = useState(null);
 
-    const { offset = DEFAULT_OFFSET, allowedAutoPlacements } = parameters || {};
+    const {
+        offset = DEFAULT_OFFSET,
+        allowedAutoPlacements,
+        arrowPadding = 0,
+        align = 'bottom',
+    } = props || {};
 
     const options = useMemo(() => {
         const result: Record<string, any> = {
@@ -32,6 +38,7 @@ export const usePopper = (
                     name: 'arrow',
                     options: {
                         element: arrowRef,
+                        padding: arrowPadding,
                     },
                 },
                 {

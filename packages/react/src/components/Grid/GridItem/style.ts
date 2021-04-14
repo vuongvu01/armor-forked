@@ -1,25 +1,11 @@
 import styled, { css } from 'styled-components';
 
-import { getPropsBlocker, makePropList } from '../../../utils';
 import { GridItemPropsType, GridSizeType } from './type';
 import { GRID_RESOLUTION } from '../constants';
-import { BreakpointCodeType } from '../../../system/mixins/type';
 import { setHorizontalMargin, setVerticalMargin } from '../style';
 import { ThemeType } from '../../../styling';
-import { paddingAttributes } from '../../../system/attributes';
-
-// all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
-const propertyList = makePropList([
-    'gutterSpacing',
-    'gutterSpacingVertical',
-    'gutterSpacingHorizontal',
-    // todo: dont hard-code these props, they should be removed from restProps automatically
-    'xs',
-    'sm',
-    'md',
-    'lg',
-    'xl',
-]);
+import { BreakpointCodeType } from '../../../system/mixins/type';
+import { paddingAttributes, propsBlocker } from '../../../system';
 
 const setMediaStyle = (
     size: GridSizeType,
@@ -102,9 +88,9 @@ const gridItemRootStyle = ({
     return result;
 };
 
-export const GridItemRoot = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<GridItemPropsType>`
+export const GridItemRoot = styled.div.withConfig(propsBlocker)<
+    GridItemPropsType
+>`
     box-sizing: border-box;
     width: 100%;
 

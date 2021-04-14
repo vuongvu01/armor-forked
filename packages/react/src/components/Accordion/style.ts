@@ -1,15 +1,10 @@
 import styled, { css } from 'styled-components';
 
-import { marginAttributes } from '../../system/attributes';
-import { getPropsBlocker, makePropList } from '../../utils';
 import { AccordionRootPropsType } from './type';
 import { AccordionHeaderRootPropsType } from './AccordionHeader/type';
 import { transitionDurationInSec } from '../../constants';
-import { color, token } from '../../system/mixins';
+import { color, propsBlocker, token, marginAttributes } from '../../system';
 import { getComponentOverride } from '../../system/mixins/getComponentOverride';
-
-// all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
-const propertyList = makePropList(['isExpanded']);
 
 const accordionStyle = ({
     theme: {
@@ -22,9 +17,9 @@ const accordionStyle = ({
     `;
 };
 
-export const AccordionRoot = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<AccordionRootPropsType>`
+export const AccordionRoot = styled.div.withConfig(propsBlocker)<
+    AccordionRootPropsType
+>`
     border-bottom-style: solid;
     border-bottom-width: 1px;
     border-top-style: solid;

@@ -5,19 +5,10 @@ import {
     paddingAttributes,
     color,
     reset,
+    getComponentOverride,
+    propsBlocker,
 } from '../../system';
-import { makePropList, getPropsBlocker } from '../../utils';
 import { transitionDurationInSec } from '../../constants';
-import { getComponentOverride } from '../../system/mixins/getComponentOverride';
-
-// all custom properties should be listed here to prevent being forwarded to the DOM nodes as attributes
-const propertyList = makePropList([
-    'enableBottomSeparator',
-    'secondary',
-    'tertiary',
-    'expanded',
-    'enableEffects',
-]);
 
 const getRootStyle = ({
     enableBottomSeparator,
@@ -63,14 +54,12 @@ const getRootStyle = ({
     return result;
 };
 
-export const MenuRoot = styled.div.withConfig(getPropsBlocker(propertyList))<
-    MenuRootPropsType
->`
+export const MenuRoot = styled.div.withConfig(propsBlocker)<MenuRootPropsType>`
     ${reset};
     background-color: ${color('neutral.00')};
 
-    ${getRootStyle}
+    ${getRootStyle};
     ${getComponentOverride('Menu')};
-    ${marginAttributes}
-    ${paddingAttributes}
+    ${marginAttributes};
+    ${paddingAttributes};
 `;

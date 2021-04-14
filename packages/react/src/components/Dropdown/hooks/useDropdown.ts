@@ -143,15 +143,11 @@ export const useDropdown = (
         focusOnActionItemTrigger();
     }, [setIsOptionListShown, isOptionListShown, disabled]);
 
-    const { panelProps, arrowProps } = usePopper(
-        dropdownRef,
-        containerRef,
-        'bottom-start',
-        {
-            offset: [0, 5],
-            allowedAutoPlacements: ['top', 'bottom'],
-        },
-    );
+    const { panelProps, arrowProps } = usePopper(dropdownRef, containerRef, {
+        align: 'bottom-start',
+        offset: [0, 5],
+        allowedAutoPlacements: ['top', 'bottom'],
+    });
 
     const { zIndex: realZIndex } = useOverlay(isOptionListShown, { zIndex });
 

@@ -13,9 +13,9 @@ import {
     propsBlocker,
     spacing,
     typography,
+    getComponentOverride,
+    elevation,
 } from '../../system';
-import { getComponentOverride } from '../../system/mixins/getComponentOverride';
-import { elevation } from '../../system/mixins/elevation';
 import { Search } from '../Search';
 import { Typography } from '../Typography';
 import { TypographyPropsType } from '../Typography/type';
@@ -41,7 +41,9 @@ const getOptionListStyle = ({
     return result;
 };
 
-export const OptionListRoot = styled.div<OptionListPropsType>`
+export const OptionListRoot = styled.div.withConfig(propsBlocker)<
+    OptionListPropsType
+>`
     background-color: white;
     box-sizing: border-box;
     display: flex;
@@ -56,19 +58,23 @@ export const OptionListRoot = styled.div<OptionListPropsType>`
     ${getComponentOverride('OptionList')}
 `;
 
-export const OptionListContainer = styled.div<OptionListPropsType>`
+export const OptionListContainer = styled.div.withConfig(propsBlocker)<
+    OptionListPropsType
+>`
     overflow: auto;
 `;
 
-export const OptionListBeforeSectionContainer = styled.div<
-    OptionListBeforeSectionContainerPropsType
->`
+export const OptionListBeforeSectionContainer = styled.div.withConfig(
+    propsBlocker,
+)<OptionListBeforeSectionContainerPropsType>`
     top: 0;
     background: ${color('neutral.00')};
     border-bottom: solid 1px ${color('neutral.02')};
 `;
 
-export const OptionListSearchContainer = styled.div<OptionListSearchPropsType>`
+export const OptionListSearchContainer = styled.div.withConfig(propsBlocker)<
+    OptionListSearchPropsType
+>`
     padding: ${spacing(4)};
 `;
 
@@ -98,7 +104,9 @@ const optionItemStyle = ({ isSelected }: OptionListItemPropsType) => {
     return result;
 };
 
-export const OptionListItem = styled.div<OptionListItemPropsType>`
+export const OptionListItem = styled.div.withConfig(propsBlocker)<
+    OptionListItemPropsType
+>`
     align-items: center;
     box-sizing: border-box;
     cursor: pointer;

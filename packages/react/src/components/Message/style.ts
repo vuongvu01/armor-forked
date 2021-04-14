@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 
 import { ReactElement } from 'react';
-import { marginAttributes } from '../../system/attributes';
 import {
     borderRadius,
     color,
@@ -9,9 +8,10 @@ import {
     pixelToRem,
     spacing,
     typography,
-} from '../../system/mixins';
-import { ObjectLiteralType } from '../../type';
-import { getPropsBlocker } from '../../utils';
+    getComponentOverride,
+    marginAttributes,
+    propsBlocker,
+} from '../../system';
 import {
     MessageRootPropsType,
     MessageContentPropsType,
@@ -24,21 +24,6 @@ import {
 } from './type';
 import { messageLevels } from './constants';
 import { fontSize03 } from '../../tokens';
-import { getComponentOverride } from '../../system/mixins/getComponentOverride';
-
-const propertyList = {
-    onClose: true,
-    disableCloseButton: true,
-    disableIcon: true,
-    actions: true,
-    extra: true,
-    level: true,
-    error: true,
-    warning: true,
-    info: true,
-    success: true,
-    // add other custom properties here
-} as ObjectLiteralType;
 
 const getColorNameByMessageLevel = ({
     level,
@@ -67,7 +52,7 @@ const getRootDynamicStyle = (props: MessageRootPropsType) => {
     `;
 };
 
-export const MessageRoot = styled.div.withConfig(getPropsBlocker(propertyList))<
+export const MessageRoot = styled.div.withConfig(propsBlocker)<
     MessageRootPropsType
 >`
     box-sizing: border-box;
@@ -87,17 +72,17 @@ export const MessageRoot = styled.div.withConfig(getPropsBlocker(propertyList))<
     ${marginAttributes}
 `;
 
-export const MessageCentral = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<MessageCentralPropsType>`
+export const MessageCentral = styled.div.withConfig(propsBlocker)<
+    MessageCentralPropsType
+>`
     flex-grow: 1;
     align-self: center;
     display: flex;
 `;
 
-export const MessageContent = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<MessageContentPropsType>`
+export const MessageContent = styled.div.withConfig(propsBlocker)<
+    MessageContentPropsType
+>`
     flex-grow: 1;
 
     ${typography('paragraphMedium')};
@@ -108,9 +93,9 @@ export const MessageContent = styled.div.withConfig(
     padding-bottom: ${spacing(4)};
 `;
 
-export const MessageActions = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<MessageActionsPropsType>`
+export const MessageActions = styled.div.withConfig(propsBlocker)<
+    MessageActionsPropsType
+>`
     flex-shrink: 0;
     align-self: center;
 
@@ -119,9 +104,9 @@ export const MessageActions = styled.div.withConfig(
     padding-bottom: ${spacing(1)};
 `;
 
-export const MessageExtra = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<MessageExtraPropsType>`
+export const MessageExtra = styled.div.withConfig(propsBlocker)<
+    MessageExtraPropsType
+>`
     flex-shrink: 0;
 
     margin-left: ${spacing(4)};
@@ -144,9 +129,9 @@ const getIconDynamicStyle = (props: MessageRootPropsType) => {
     `;
 };
 
-export const MessageIconStyle = styled(MessageIconWrapper).withConfig(
-    getPropsBlocker(propertyList, false),
-)<MessageIconPropsType>`
+export const MessageIconStyle = styled(MessageIconWrapper)<
+    MessageIconPropsType
+>`
     flex: 0 0 auto;
 
     font-size: ${pixelToRem(24)};
@@ -158,9 +143,9 @@ export const MessageIconStyle = styled(MessageIconWrapper).withConfig(
     ${getIconDynamicStyle};
 `;
 
-export const MessageCloseButton = styled.a.withConfig(
-    getPropsBlocker(propertyList),
-)<MessageCloseButtonPropsType>`
+export const MessageCloseButton = styled.a.withConfig(propsBlocker)<
+    MessageCloseButtonPropsType
+>`
     flex: 0 0 auto;
     cursor: pointer;
     ${noTextInteraction};

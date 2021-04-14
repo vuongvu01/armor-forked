@@ -2,18 +2,14 @@ import styled, { css } from 'styled-components';
 import { ArrowDownIcon } from '@deliveryhero/armor-icons';
 
 import { ExpansionIndicatorPropsType } from './type';
-import { marginAttributes } from '../../system/attributes';
 import { transitionDurationInSec } from '../../constants';
-import { getPropsBlocker } from '../../utils';
-import { color } from '../../system/mixins';
-import { transition } from '../../system/mixins/transition';
-import { expansion } from '../../system/mixins/expansion';
-
-const propertyList = {
-    disabled: true,
-    displaySeparator: true,
-    expanded: true,
-};
+import {
+    marginAttributes,
+    color,
+    transition,
+    propsBlocker,
+    expansion,
+} from '../../system';
 
 const expansionIndicatorContainerStyle = ({
     disabled,
@@ -39,9 +35,9 @@ const actionSeparator = ({ displaySeparator }: ExpansionIndicatorPropsType) =>
           `
         : {};
 
-export const ExpansionIndicatorRoot = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<ExpansionIndicatorPropsType>`
+export const ExpansionIndicatorRoot = styled.div.withConfig(propsBlocker)<
+    ExpansionIndicatorPropsType
+>`
     align-items: center;
     display: flex;
     height: 100%;
@@ -52,9 +48,9 @@ export const ExpansionIndicatorRoot = styled.div.withConfig(
     ${marginAttributes}
 `;
 
-export const ExpansionIndicatorContent = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<ExpansionIndicatorPropsType>`
+export const ExpansionIndicatorContent = styled.div.withConfig(propsBlocker)<
+    ExpansionIndicatorPropsType
+>`
     align-items: center;
     border-left-width: 1px;
     border-left-style: solid;
@@ -68,9 +64,9 @@ export const ExpansionIndicatorContent = styled.div.withConfig(
     ${actionSeparator}
 `;
 
-export const ExpansionIndicatorIcon = styled(ArrowDownIcon).withConfig(
-    getPropsBlocker(propertyList, false),
-)<ExpansionIndicatorPropsType>`
+export const ExpansionIndicatorIcon = styled(ArrowDownIcon)<
+    ExpansionIndicatorPropsType
+>`
     color: ${color('primary.main')};
     ${transition({ transform: true })};
     ${expansion(180)};

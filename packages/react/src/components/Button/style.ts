@@ -2,27 +2,15 @@ import styled, { css } from 'styled-components';
 import { ReactElement } from 'react';
 
 import { ButtonRootPropsType } from './type';
+import { durationRegular } from '../../tokens';
 import {
+    reset,
+    propsBlocker,
+    getComponentOverride,
     marginAttributes,
     paddingAttributes,
     widthAttributes,
-} from '../../system/attributes';
-import { durationRegular } from '../../tokens';
-import { getPropsBlocker } from '../../utils';
-import { ObjectLiteralType } from '../../type';
-import { getComponentOverride } from '../../system/mixins/getComponentOverride';
-import { reset } from '../../system/mixins';
-
-const propertyList = {
-    tag: true,
-    primary: true,
-    secondary: true,
-    tertiary: true,
-    danger: true,
-    small: true,
-    wide: true,
-    // add other custom properties here
-} as ObjectLiteralType;
+} from '../../system';
 
 const getRootBasicStyle = ({ theme }: ButtonRootPropsType) => css<
     ButtonRootPropsType
@@ -88,9 +76,9 @@ const Wrapper = ({
     children: (props: ButtonRootPropsType) => ReactElement;
 }) => children({ ...restProps });
 
-export const ButtonRoot = styled(Wrapper).withConfig(
-    getPropsBlocker(propertyList),
-)<ButtonRootPropsType>`
+export const ButtonRoot = styled(Wrapper).withConfig(propsBlocker)<
+    ButtonRootPropsType
+>`
     ${reset()};
     align-items: center;
     appearance: none;
@@ -121,7 +109,7 @@ export const ButtonRoot = styled(Wrapper).withConfig(
     ${getRootDynamicSizeStyle}
     ${getRootDynamicVisualDangerStyle}
     ${getComponentOverride('Button')};
-    ${marginAttributes}
-    ${paddingAttributes}
-    ${widthAttributes}
+    ${marginAttributes};
+    ${paddingAttributes};
+    ${widthAttributes};
 `;

@@ -1,16 +1,18 @@
 import { ReactElement } from 'react';
 import styled, { css } from 'styled-components';
 
-import { marginAttributes } from '../../system/attributes';
+import {
+    borderRadius,
+    color,
+    spacing,
+    marginAttributes,
+    getComponentOverride,
+    propsBlocker,
+} from '../../system';
 import { mouseCursor } from '../../styling';
 import { TabLabelPropsType, TabRootPropsType } from './type';
 import { transitionDurationInSec } from '../../constants';
-import { borderRadius, color, spacing } from '../../system/mixins';
-import { getPropsBlocker, makePropList } from '../../utils';
 import { Typography } from '../Typography';
-import { getComponentOverride } from '../../system/mixins/getComponentOverride';
-
-const propertyList = makePropList(['isActive']);
 
 const animationStyle = ({
     isActive,
@@ -115,9 +117,7 @@ const cursor = ({ disabled, isActive }: TabRootPropsType) => {
     return mouseCursor;
 };
 
-export const TabRoot = styled.div.withConfig(getPropsBlocker(propertyList))<
-    TabRootPropsType
->`
+export const TabRoot = styled.div.withConfig(propsBlocker)<TabRootPropsType>`
     &::after {
         content: '';
         height: 3px;
@@ -141,9 +141,7 @@ const TabLabelTagWrapper = ({
     children: (props: TabLabelPropsType) => ReactElement;
 }) => children(restProps);
 
-export const TabLabelContainer = styled(TabLabelTagWrapper).withConfig(
-    getPropsBlocker(propertyList, false),
-)<TabLabelPropsType>`
+export const TabLabelContainer = styled(TabLabelTagWrapper)<TabLabelPropsType>`
     text-decoration: none;
     &:hover,
     &:visited,
@@ -152,19 +150,17 @@ export const TabLabelContainer = styled(TabLabelTagWrapper).withConfig(
         text-decoration: none;
     }
 
-    ${tabLabelContainerStyle}
+    ${tabLabelContainerStyle};
 `;
 
-export const TabLabel = styled(Typography).withConfig(
-    getPropsBlocker(propertyList, false),
-)<TabLabelPropsType>`
+export const TabLabel = styled(Typography)<TabLabelPropsType>`
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
     text-align: center;
     display: flex;
-    
-    ${tabLabelStyle} 
-    ${marginAttributes} 
+
+    ${tabLabelStyle};
+    ${marginAttributes};
     ${cursor};
 `;

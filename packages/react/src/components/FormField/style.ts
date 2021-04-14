@@ -1,13 +1,7 @@
 import styled from 'styled-components';
 
-import { marginAttributes, widthAttributes } from '../../system';
-import { getPropsBlocker } from '../../utils';
+import { marginAttributes, propsBlocker, widthAttributes } from '../../system';
 import { FormFieldRootPropsType } from './type';
-
-const propertyList = {
-    autoMargin: true,
-    enableVerticalOuterSpacing: true,
-};
 
 const getRootBaseStyle = ({ theme }: FormFieldRootPropsType) =>
     theme.componentOverrides.FormField.Root.base;
@@ -27,9 +21,9 @@ const getRootDynamicStyle = ({
     return '';
 };
 
-export const FormFieldRoot = styled.div.withConfig(
-    getPropsBlocker(propertyList),
-)<FormFieldRootPropsType>`
+export const FormFieldRoot = styled.div.withConfig(propsBlocker)<
+    FormFieldRootPropsType
+>`
     box-sizing: border-box;
     position: relative;
 

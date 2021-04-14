@@ -2,8 +2,7 @@ import styled from 'styled-components';
 import { Checkbox } from '../../Checkbox';
 import { TableCell } from '../TableCell';
 import { TABLE_CHECKBOX_CELL_WIDTH } from './constants';
-import { color } from '../../../system';
-import { getComponentOverride } from '../../../system/mixins/getComponentOverride';
+import { color, getComponentOverride } from '../../../system';
 
 export const TableCheckboxCellRoot = styled(TableCell)`
     cursor: pointer;

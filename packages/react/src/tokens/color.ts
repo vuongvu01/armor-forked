@@ -20,7 +20,7 @@ export const colorBlue40 = '#417fda';
 export const colorBlue30 = '#6295e0';
 export const colorBlue20 = '#92baf6';
 export const colorBlue10 = '#bbd1f2';
-export const colorBlue05 = '#e3eefd';
+export const colorBlue05 = '#eef4fc';
 
 export const colorTurquoise90 = '#008f77';
 export const colorTurquoise80 = '#00ad96';
