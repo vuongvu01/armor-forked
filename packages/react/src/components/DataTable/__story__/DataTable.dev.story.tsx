@@ -486,3 +486,65 @@ export const ConditionalExpansion = () => {
         />
     );
 };
+
+export const ExpandableSectionWithNumbers = () => {
+    const columns1 = [
+        {
+            title: 'Name',
+            id: 'name',
+            expandableSectionController: true,
+        },
+        {
+            title: 'Age',
+            id: 'age',
+        },
+        {
+            title: 'Address',
+            id: 'address',
+        },
+    ];
+
+    const dataSource1 = [
+        {
+            id: '1',
+            name: 'Mike',
+            age: 32,
+            address: '10 Downing Street',
+        },
+        {
+            id: 3,
+            name: 'Jill',
+            age: 19,
+            address: 'Raccoon City',
+        },
+        {
+            id: 2,
+            name: 'John',
+            age: 42,
+            address: '10 Downing Street',
+        },
+    ];
+
+    const [data] = useState(dataSource1);
+    const [expandedSections, setExpandedSections] = useState<
+        Array<string | number>
+    >(['3']);
+
+    return (
+        <DataTable
+            columns={columns1}
+            data={data}
+            width="30rem"
+            expandedSectionIds={expandedSections}
+            onSectionExpansionChange={setExpandedSections}
+            renderExpandableSection={(item: any) => {
+                return (
+                    <>
+                        {item.name} is {item.age} years old and he/she lives in{' '}
+                        {item.address}
+                    </>
+                );
+            }}
+        />
+    );
+};

@@ -114,7 +114,7 @@ export const useDataTable = (
         ) => {
             const isSectionExpanded =
                 enableExpandableSections &&
-                expandedSectionIds.includes(item.id);
+                expandedSectionIds.includes(item.id.toString());
 
             return {
                 ...column.cellProps,
@@ -134,7 +134,7 @@ export const useDataTable = (
         getExpandableSectionProps: (item: DataTableDataType) => {
             const isSectionExpanded =
                 enableExpandableSections &&
-                expandedSectionIds.includes(item.id);
+                expandedSectionIds.includes(item.id.toString());
 
             return {
                 colSpan: columnCount,
