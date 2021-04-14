@@ -1,3 +1,10 @@
+## @deliveryhero/armor-icons [1.10.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.10.0...@deliveryhero/armor-icons@1.10.1) (2021-04-14)
+
+
+### Bug Fixes
+
+* Buzzing console warnings removed from all components [LD-463] ([#481](https://github.com/deliveryhero/armor/issues/481)) ([1ec5682](https://github.com/deliveryhero/armor/commit/1ec5682ae35394d95e2c1718bb89ae515317bd03))
+
 # @deliveryhero/armor-icons [1.10.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.9.0...@deliveryhero/armor-icons@1.10.0) (2021-02-10)
 
 
