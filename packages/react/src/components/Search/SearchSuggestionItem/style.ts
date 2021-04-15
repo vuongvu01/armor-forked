@@ -79,6 +79,9 @@ export const SearchSuggestionItemContainer = styled.div.withConfig(
     height: 40px;
     justify-content: space-between;
     cursor: pointer;
+    &:hover {
+        background-color: ${color('primary.lightest')};
+    }
 
     padding-bottom: ${spacing(2)};
     padding-left: ${spacing(4)};
