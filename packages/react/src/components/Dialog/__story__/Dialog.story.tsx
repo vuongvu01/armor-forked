@@ -88,7 +88,7 @@ export const Basic = () => {
     );
 };
 
-export const NoOverlay = () => {
+export const NoBackdrop = () => {
     const [open, setOpen] = useState(false);
 
     return (
@@ -100,6 +100,33 @@ export const NoOverlay = () => {
                 <DialogContent>
                     {text('Children', 'Hello world!')}
                 </DialogContent>
+                <DialogActions>
+                    <Button tertiary>Cancel</Button>
+                    <Button>Save</Button>
+                </DialogActions>
+            </Dialog>
+
+            <LoremIpsum>
+                <Button onClick={() => setOpen(true)}>Open modal!</Button>
+            </LoremIpsum>
+        </>
+    );
+};
+
+export const WithBackdropNoClose = () => {
+    const [open, setOpen] = useState(false);
+
+    return (
+        <>
+            <Dialog
+                open={open}
+                onClose={() => setOpen(false)}
+                enableCloseOnBackdropClick={false}
+            >
+                <DialogTitle description="Assign a new id to this location">
+                    New location
+                </DialogTitle>
+                <DialogContent>Hello world!</DialogContent>
                 <DialogActions>
                     <Button tertiary>Cancel</Button>
                     <Button>Save</Button>

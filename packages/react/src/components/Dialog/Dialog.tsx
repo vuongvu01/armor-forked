@@ -19,26 +19,25 @@ import {
 } from './constants';
 import { useDialog } from './hooks/useDialog';
 import { PortalToBody } from '../../system/util/PortalToBody';
-import { CloseButton } from '../CloseButton/CloseButton';
 
 export const Dialog: FC<DialogPropsType> = forwardRef(function Dialog(
     { className, children, ...props },
     ref,
 ) {
     const theme = useComponentTheme(DIALOG_CLASS_PREFIX);
-
     const classNames = useDialogClassNames(DIALOG_CLASS_PREFIX, className);
 
     const {
         portalProps,
         rootProps,
-        overlayProps,
+        getBackdropProps,
         alignmentContainerProps,
         windowProps,
         getCloseButtonProps,
         contentProps,
 
         enableCloseButton,
+        enableBackdrop,
     } = useDialog(props, ref);
 
     return (
@@ -48,7 +47,12 @@ export const Dialog: FC<DialogPropsType> = forwardRef(function Dialog(
                 theme={theme}
                 className={classNames.Root}
             >
-                <Overlay {...overlayProps} className={classNames.Overlay} />
+                {enableBackdrop && (
+                    <Overlay
+                        {...getBackdropProps()}
+                        className={classNames.Overlay}
+                    />
+                )}
                 <DialogAlignmentContainer
                     {...alignmentContainerProps}
                     theme={theme}

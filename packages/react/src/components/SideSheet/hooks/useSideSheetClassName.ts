@@ -24,7 +24,7 @@ const sideSheetClassGeneratorBasedOnComponent = ({
     return `${baseClassNames} ${stateClassNames.join(' ')}`.trim();
 };
 
-const useSideSheetClassName = (
+export const useSideSheetClassName = (
     classPrefix: string,
     className?: string,
     disableOverlay?: boolean,
@@ -86,5 +86,3 @@ const useSideSheetClassName = (
         }),
         [classPrefix, className, disableOverlay, wide],
     );
-
-export default useSideSheetClassName;

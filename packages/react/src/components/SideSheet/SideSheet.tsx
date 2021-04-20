@@ -1,8 +1,8 @@
-import React, { forwardRef, FC, useState } from 'react';
+import React, { forwardRef, FC } from 'react';
 import PropTypes from 'prop-types';
 
 import { useComponentTheme } from '../../utils/hooks';
-import { useSideSheetClassName } from './utils';
+import { useSideSheetClassName } from './hooks/useSideSheetClassName';
 import { SideSheetPropsType } from './type';
 import { sideSheetDefaultTheme } from './theme';
 import { Overlay } from '../Overlay';
@@ -16,10 +16,11 @@ import {
 } from './style';
 import { SIDE_SHEET_CLASS_PREFIX } from './constants';
 import { PortalToBody } from '../../system/util/PortalToBody';
-import { useSideSheet } from './utils/useSideSheet';
+import { useSideSheet } from './hooks/useSideSheet';
+import { extendChildrenWithProps, extractContentSections } from './utils';
 
 export const SideSheet: FC<SideSheetPropsType> = forwardRef(function SideSheet(
-    { className, disableOverlay, wide, ...props },
+    { className, children, ...props },
     ref,
 ) {
     const theme = useComponentTheme(
@@ -27,29 +28,36 @@ export const SideSheet: FC<SideSheetPropsType> = forwardRef(function SideSheet(
         sideSheetDefaultTheme,
     );
 
-    const classOverride = useSideSheetClassName(
-        SIDE_SHEET_CLASS_PREFIX,
-        className,
-        disableOverlay,
-        wide,
-    );
-
     const {
         portalProps,
         rootProps,
-        overlayProps,
+        getBackdropProps,
         windowProps,
         contentProps,
         headerContainerProps,
-        isCloseButtonVisible,
-        header,
-        body,
-        footer,
-        closeButtonProps,
-    } = useSideSheet(
-        { classOverride, disableOverlay, wide, ...props },
-        ref,
+        getCloseButtonProps,
+
+        enableBackdrop,
+        enableCloseButton,
+        wide,
+        isFixed,
+    } = useSideSheet(props, ref);
+
+    const classOverride = useSideSheetClassName(
+        SIDE_SHEET_CLASS_PREFIX,
+        className,
+        !enableBackdrop,
+        wide,
+    );
+
+    // todo: since we don't clone children and use react context instead, better to remove this soon
+    const childrenWithExtendedProps = extendChildrenWithProps(children, {
+        classOverride,
+        isFixed,
         theme,
+    });
+    const { header, body, footer } = extractContentSections(
+        childrenWithExtendedProps,
     );
 
     return (
@@ -59,9 +67,9 @@ export const SideSheet: FC<SideSheetPropsType> = forwardRef(function SideSheet(
                 className={classOverride.Root}
                 theme={theme}
             >
-                {!disableOverlay && (
+                {enableBackdrop && (
                     <Overlay
-                        {...overlayProps}
+                        {...getBackdropProps()}
                         className={classOverride.Overlay}
                         theme={theme}
                     />
@@ -82,10 +90,10 @@ export const SideSheet: FC<SideSheetPropsType> = forwardRef(function SideSheet(
                             theme={theme}
                         >
                             {header}
-                            {isCloseButtonVisible ? (
+                            {enableCloseButton ? (
                                 <SideSheetCloseButton
                                     theme={theme}
-                                    {...closeButtonProps}
+                                    {...getCloseButtonProps()}
                                 />
                             ) : null}
                         </SideSheetHeaderContainer>

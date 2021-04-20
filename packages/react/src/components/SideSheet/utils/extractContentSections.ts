@@ -6,7 +6,7 @@ import { SIDE_SHEET_BODY_CLASS_PREFIX } from '../SideSheetBody';
 import { SIDE_SHEET_FOOTER_CLASS_PREFIX } from '../SideSheetFooter';
 import { ChildrenType } from '../../../type';
 
-const extractContentSections = (children: ChildrenType) => {
+export const extractContentSections = (children: ChildrenType) => {
     const sections: {
         header: ReactElement | null;
         body: ReactElement | null;
@@ -35,5 +35,3 @@ const extractContentSections = (children: ChildrenType) => {
 
     return sections;
 };
-
-export default extractContentSections;

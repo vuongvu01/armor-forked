@@ -1,41 +1,67 @@
 import { RefObject, useCallback, useRef } from 'react';
-import { extendChildrenWithProps, extractContentSections } from './index';
 import { sideSheetContent, sideSheetHeaderContainer } from '../constants';
 import { SideSheetPropsType } from '../type';
 import { ReferenceType } from '../../../type';
 import { useControlledFlagState } from '../../../system/hooks/useControlledFlagState';
 import { useOverlay } from '../../../system/hooks/useOverlay';
 import { useInternalRef } from '../../../utils';
-import { ThemeType } from '../../../styling';
 import { useOuterClick } from '../../../system/hooks/useOuterClick';
 import { useDisplayEffects } from '../../../system/hooks/useDisplayEffects';
 import { useDocumentKeydown } from '../../../system/hooks/useDocumentKeyDown';
 
 export const useSideSheet = (
     {
-        classOverride,
-        disableEffects,
-        disableCloseByEscape,
-        disableOverlay,
-        isCloseButtonVisible,
-        enableWindowScrollBlock,
-        isFixed,
-        wide,
-        zIndex,
-
+        // ComponentBehaviourOpenStateType
         open,
         defaultOpen,
         onOpenChange,
+        /** @deprecated @see onOpenChange */
         onClose,
 
+        // ComponentBehaviourPortalType & ComponentBehaviourOverlayType
+        zIndex,
         enablePortal,
-        children,
+
+        // ComponentBehaviourModalDialogType
+        enableBackdrop,
+        /** @deprecated @see enableBackdrop */
+        disableOverlay,
+        enableCloseButton,
+        /** @deprecated @see enableCloseButton */
+        isCloseButtonVisible,
+        enableCloseByEscape,
+        /** @deprecated @see enableCloseByEscape */
+        disableCloseByEscape,
+        enableCloseOnBackdropClick,
+        enableWindowScrollBlock,
+        enableEffects,
+        /** @deprecated @see disableEffects */
+        disableEffects,
+
+        // other
+        isFixed,
+        wide,
 
         ...restProps
     }: SideSheetPropsType,
     ref: ReferenceType,
-    theme: ThemeType,
 ) => {
+    const reallyEnableCloseButton =
+        enableCloseButton !== undefined
+            ? enableCloseButton
+            : isCloseButtonVisible;
+
+    const reallyEnableCloseByEscape =
+        enableCloseByEscape !== undefined
+            ? enableCloseByEscape
+            : !disableCloseByEscape;
+
+    const reallyEnableBackdrop =
+        enableBackdrop !== undefined ? enableBackdrop : !disableOverlay;
+
+    const reallyEnableEffects =
+        enableEffects !== undefined ? enableEffects : !disableEffects;
+
     const [reallyOpen, , , setClose] = useControlledFlagState(
         defaultOpen,
         open,
@@ -61,20 +87,20 @@ export const useSideSheet = (
 
     const windowRef = useRef<HTMLDivElement>();
 
-    useOuterClick([windowRef], onCloseInternal, reallyOpen && !disableOverlay);
+    useOuterClick(
+        [windowRef],
+        onCloseInternal,
+        reallyOpen &&
+            reallyEnableBackdrop &&
+            enableCloseOnBackdropClick !== false,
+    );
 
     const { display, effectToggle } = useDisplayEffects(reallyOpen);
-
-    const childrenWithExtendedProps = extendChildrenWithProps(children, {
-        classOverride,
-        isFixed,
-        theme,
-    });
 
     const onKeyDown = useCallback(
         (event: KeyboardEvent) => {
             if (
-                disableCloseByEscape ||
+                !reallyEnableCloseByEscape ||
                 event.key !== 'Escape' ||
                 !isTopOverlay()
             ) {
@@ -83,14 +109,10 @@ export const useSideSheet = (
 
             onCloseInternal();
         },
-        [isTopOverlay, onCloseInternal, disableCloseByEscape],
+        [isTopOverlay, onCloseInternal, reallyEnableCloseByEscape],
     );
 
     useDocumentKeydown(onKeyDown);
-
-    const { header, body, footer } = extractContentSections(
-        childrenWithExtendedProps,
-    );
 
     return {
         portalProps: {
@@ -101,13 +123,13 @@ export const useSideSheet = (
             ref: rootRef as RefObject<HTMLDivElement>,
             zIndex: realZIndex,
         },
-        overlayProps: {
-            disableEffects,
+        getBackdropProps: () => ({
+            disableEffects: !reallyEnableEffects,
             display,
             effectToggle,
-        },
+        }),
         windowProps: {
-            disableEffects,
+            disableEffects: !reallyEnableEffects,
             display,
             effectToggle,
             wide,
@@ -119,15 +141,15 @@ export const useSideSheet = (
         headerContainerProps: {
             'data-testid': sideSheetHeaderContainer,
         },
-        closeButtonProps: {
+        getCloseButtonProps: () => ({
             onClick: onCloseInternal,
-        },
-        header,
-        body,
-        footer,
+        }),
         isCloseButtonVisible,
 
         wide,
-        theme,
+        isFixed,
+
+        enableCloseButton: reallyEnableCloseButton,
+        enableBackdrop: reallyEnableBackdrop,
     };
 };
