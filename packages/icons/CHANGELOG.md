@@ -1,3 +1,10 @@
+## @deliveryhero/armor-icons [1.10.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.10.1...@deliveryhero/armor-icons@1.10.2) (2021-04-21)
+
+
+### Bug Fixes
+
+* **Dialog:** Hook useOuterClick replaced with Backdrop onClick in Dialog and SideSheet [LD-475] ([#503](https://github.com/deliveryhero/armor/issues/503)) ([35a224e](https://github.com/deliveryhero/armor/commit/35a224e8d9e710c5257899679aac1f4a24499f4a))
+
 ## @deliveryhero/armor-icons [1.10.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.10.0...@deliveryhero/armor-icons@1.10.1) (2021-04-14)
 
 
