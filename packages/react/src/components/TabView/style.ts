@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 import { marginAttributes } from '../../system';
 import { TabViewRootPropsType } from './type';
-import { Typography } from '../Typography';
 
 const themeStyle = ({
     theme: {
@@ -10,7 +9,7 @@ const themeStyle = ({
     },
 }: TabViewRootPropsType) => TabView.Root.base;
 
-export const TabViewRoot = styled(Typography)<TabViewRootPropsType>`
+export const TabViewRoot = styled.div<TabViewRootPropsType>`
     ${themeStyle};
     ${marginAttributes};
 `;
