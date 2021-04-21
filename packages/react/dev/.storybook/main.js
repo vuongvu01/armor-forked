@@ -1,4 +1,5 @@
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+// const { StatsWriterPlugin } = require('webpack-stats-plugin');
 
 module.exports = {
     stories: ['../../src/**/*.story.tsx'],
@@ -21,7 +22,19 @@ module.exports = {
         config.resolve.extensions.push('.ts', '.tsx');
         config.resolve.plugins = [new TsconfigPathsPlugin({})];
         config.parallelism = 1;
-        config.profile = true;
+
+        config.plugins.pop(); // get rid of the docgen
+        // config.plugins.push(
+        //     new StatsWriterPlugin({
+        //         stats: 'all',
+        //         filename: 'stats.json', // Default
+        //     }),
+        // );
+
+        if (config.mode === 'production') {
+            delete config.devtool;
+        }
+
         return config;
     },
 };

@@ -1,7 +1,5 @@
 import React, { FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
-
-import { Box } from '../Box';
 import { TabViewPropsType } from './type';
 import { tabViewDefaultTheme } from './theme';
 import { useComponentTheme } from '../../utils/hooks';
@@ -21,8 +19,8 @@ export const TabView: FunctionComponent<TabViewPropsType> = ({
     const theme = useComponentTheme(TAB_VIEW_CLASS_PREFIX, tabViewDefaultTheme);
 
     return value === selectedValue ? (
-        <TabViewRoot paragraph medium {...restProps} theme={theme}>
-            {value === selectedValue && <Box padding={2}>{children}</Box>}
+        <TabViewRoot {...restProps} theme={theme}>
+            {children}
         </TabViewRoot>
     ) : null;
 };

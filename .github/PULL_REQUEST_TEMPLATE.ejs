@@ -1,0 +1,20 @@
+### Type
+
+- [<%- type === 'feat' ? 'x' : ' ' %>] New feature
+- [<%- type === 'fix' ? 'x' : ' ' %>] Bug fix
+- [<%- type === 'docs' ? 'x' : ' ' %>] Documentation update
+- [<%- type === 'style' ? 'x' : ' ' %>] Style update
+- [<%- type === 'refactor' ? 'x' : ' ' %>] Refactoring
+- [<%- type === 'test' ? 'x' : ' ' %>] Tests update
+- [<%- type === 'chore' ? 'x' : ' ' %>] Other
+
+<% if (ticketId) { %>
+### Ticket
+https://jira.deliveryhero.com/browse/<%- ticketId %>/
+<% } %>
+
+### Preview
+https://armor-preview.usehurrier.com/#PR_NUMBER#/
+
+### Additional information
+

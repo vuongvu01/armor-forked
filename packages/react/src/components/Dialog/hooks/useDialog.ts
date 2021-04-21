@@ -12,33 +12,37 @@ import { useDocumentKeydown } from '../../../system/hooks/useDocumentKeyDown';
 
 export const useDialog = (
     {
+        // ComponentBehaviourOpenStateType
         open,
         defaultOpen,
         onOpenChange,
-
-        scroll,
-        zIndex,
-
-        enableBackdrop,
-        enableCloseButton,
-        enableCloseByEscape,
-        enableEffects,
-        enableWindowScrollBlock,
-
-        /** @deprecated */
+        /** @deprecated @see onOpenChange */
         onClose,
-        /** @deprecated */
-        onCloseButtonClick,
-        /** @deprecated */
+
+        // ComponentBehaviourPortalType & ComponentBehaviourOverlayType
+        zIndex,
+        enablePortal,
+
+        // ComponentBehaviourModalDialogType
+        enableBackdrop,
+        /** @deprecated @see enableBackdrop */
         disableOverlay,
+        enableCloseButton,
         /** @deprecated */
         disableCloseButton,
-        /** @deprecated */
+        enableCloseByEscape,
+        /** @deprecated @see enableCloseByEscape */
         disableCloseByEscape,
-        /** @deprecated */
+        enableCloseOnBackdropClick,
+        enableWindowScrollBlock,
+        enableEffects,
+        /** @deprecated @see enableEffects */
         disableEffects,
+        /** @deprecated @see disableEffects */
+        onCloseButtonClick,
 
-        enablePortal,
+        // other
+        scroll,
 
         ...restProps
     }: DialogPropsType,
@@ -80,13 +84,11 @@ export const useDialog = (
     const rootRef = useRef<HTMLElement>();
     useInternalRef(ref, rootRef);
 
-    const windowRef = useRef<HTMLElement>();
-
-    useOuterClick(
-        [windowRef],
-        onCloseInternal,
-        reallyOpen && reallyEnableBackdrop,
-    );
+    const onBackdropClick = useCallback(() => {
+        if (reallyEnableBackdrop && enableCloseOnBackdropClick !== false) {
+            onCloseInternal();
+        }
+    }, [onCloseInternal, enableCloseOnBackdropClick, reallyEnableBackdrop]);
 
     const { display, effectToggle } = useDisplayEffects(reallyOpen);
 
@@ -132,12 +134,13 @@ export const useDialog = (
             zIndex: realZIndex,
             ref,
         },
-        overlayProps: {
+        getBackdropProps: () => ({
             disableEffects:
                 enableEffects !== undefined ? !enableEffects : disableEffects,
             effectToggle,
             display,
-        },
+            onClick: onBackdropClick,
+        }),
         alignmentContainerProps: {
             display,
             enableCloseButton: reallyEnableCloseButton,
@@ -146,7 +149,6 @@ export const useDialog = (
         windowProps: {
             ...sizeProps,
             effectToggle,
-            ref: windowRef,
             enableEffects:
                 enableEffects !== undefined ? enableEffects : !disableEffects,
             scroll,
@@ -161,5 +163,6 @@ export const useDialog = (
         contentProps: {},
 
         enableCloseButton: reallyEnableCloseButton,
+        enableBackdrop: reallyEnableBackdrop,
     };
 };

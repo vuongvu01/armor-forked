@@ -5,6 +5,7 @@ import { ComponentElementStylePropsType } from '../type';
 import { ComponentBehaviourOpenStateType } from '../../system/types/ComponentBehaviourOpenStateType';
 import { ComponentBehaviourOverlayType } from '../../system/types/ComponentBehaviourOverlayType';
 import { ComponentBehaviourPortalType } from '../../system/types/ComponentBehaviourPortalType';
+import { ComponentBehaviourModalDialogType } from '../../system/types/ComponentBehaviourModalDialogType';
 import { ChildrenType, ObjectLiteralType } from '../../type';
 
 export type ClassBasedOnComponentType = {
@@ -17,15 +18,21 @@ export type ClassBasedOnComponentType = {
 };
 
 export type SideSheetEffectivePropsType = Partial<{
-    disableEffects: boolean;
-    disableOverlay: boolean;
-    enableWindowScrollBlock: boolean;
     isCloseButtonVisible: boolean;
     isFixed: boolean;
     wide: boolean;
-    disableCloseByEscape: boolean;
     children: ChildrenType;
+
+    /** @deprecated @see enableEffects */
+    disableEffects: boolean;
+    /** @deprecated @see enableOverlay */
+    disableOverlay: boolean;
+    /** @deprecated @see enableCloseByEscape */
+    disableCloseByEscape: boolean;
+
+    // add other custom properties here
 }> &
+    ComponentBehaviourModalDialogType &
     ComponentBehaviourOpenStateType &
     ComponentBehaviourOverlayType &
     ComponentBehaviourPortalType &
@@ -40,7 +47,7 @@ export type ClassOverrideType = {
     Footer: string;
     Header: string;
     HeaderContainer: string;
-    Overlay: string;
+    Backdrop: string;
 };
 
 export type SideSheetPropsType = SideSheetEffectivePropsType;

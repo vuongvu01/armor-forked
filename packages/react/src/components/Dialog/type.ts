@@ -9,19 +9,11 @@ import {
 import { ComponentBehaviourOpenStateType } from '../../system/types/ComponentBehaviourOpenStateType';
 import { ComponentBehaviourOverlayType } from '../../system/types/ComponentBehaviourOverlayType';
 import { ComponentBehaviourPortalType } from '../../system/types/ComponentBehaviourPortalType';
+import { ComponentBehaviourModalDialogType } from '../../system/types/ComponentBehaviourModalDialogType';
 
 type DialogEffectivePropsType = Partial<{
     scroll: ScrollType;
-    onCloseButtonClick?: (event: MouseEvent<HTMLDivElement>) => void;
 
-    enableBackdrop: boolean;
-    enableCloseButton: boolean;
-    enableCloseByEscape: boolean;
-    enableEffects: boolean;
-    enableWindowScrollBlock: boolean;
-
-    /** @deprecated @see onOpenChange */
-    onClose: () => void;
     /** @deprecated @see enableOverlay */
     disableOverlay: boolean;
     /** @deprecated @see enableEffects */
@@ -30,9 +22,14 @@ type DialogEffectivePropsType = Partial<{
     disableCloseButton: boolean;
     /** @deprecated @see enableCloseByEscape */
     disableCloseByEscape: boolean;
+    /** @deprecated @see onOpenChange */
+    onClose: () => void;
+    /** @deprecated */
+    onCloseButtonClick?: (event: MouseEvent<HTMLDivElement>) => void;
 
     // add other custom properties here
 }> &
+    ComponentBehaviourModalDialogType &
     ComponentBehaviourOpenStateType &
     ComponentBehaviourOverlayType &
     ComponentBehaviourPortalType &

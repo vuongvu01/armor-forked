@@ -14,6 +14,8 @@ import { TextInput } from '../../TextInput';
 import { withWrapper } from '../../../helpers/Wrapper';
 import { Tooltip } from '../../Tooltip';
 import { ContextMenu } from '../../ContextMenu';
+import { getBody } from '../../../system/util/globals';
+import { PortalToBody } from '../../../system/util/PortalToBody';
 
 export default {
     title: 'Components/Dialog',
@@ -88,7 +90,7 @@ export const Basic = () => {
     );
 };
 
-export const NoOverlay = () => {
+export const NoBackdrop = () => {
     const [open, setOpen] = useState(false);
 
     return (
@@ -100,6 +102,33 @@ export const NoOverlay = () => {
                 <DialogContent>
                     {text('Children', 'Hello world!')}
                 </DialogContent>
+                <DialogActions>
+                    <Button tertiary>Cancel</Button>
+                    <Button>Save</Button>
+                </DialogActions>
+            </Dialog>
+
+            <LoremIpsum>
+                <Button onClick={() => setOpen(true)}>Open modal!</Button>
+            </LoremIpsum>
+        </>
+    );
+};
+
+export const WithBackdropNoClose = () => {
+    const [open, setOpen] = useState(false);
+
+    return (
+        <>
+            <Dialog
+                open={open}
+                onClose={() => setOpen(false)}
+                enableCloseOnBackdropClick={false}
+            >
+                <DialogTitle description="Assign a new id to this location">
+                    New location
+                </DialogTitle>
+                <DialogContent>Hello world!</DialogContent>
                 <DialogActions>
                     <Button tertiary>Cancel</Button>
                     <Button>Save</Button>
@@ -603,6 +632,45 @@ export const WithTooltip = () => {
                             { id: 'b', label: 'Menu element B' },
                         ]}
                     />
+                </DialogContent>
+            </Dialog>
+
+            <LoremIpsum>
+                <Button onClick={() => setOpen(true)}>Open modal!</Button>
+            </LoremIpsum>
+        </>
+    );
+};
+
+export const WithAPortalInside = () => {
+    const [open, setOpen] = useState(false);
+    const onClose = () => setOpen(false);
+
+    return (
+        <>
+            <Dialog
+                open={open}
+                onClose={onClose}
+                maxWidth={text('Max width', 'sm')}
+                wide={boolean('Wide', false)}
+            >
+                <DialogContent>
+                    {open && (
+                        <PortalToBody>
+                            <div
+                                style={{
+                                    backgroundColor: 'white',
+                                    color: 'black',
+                                    zIndex: 9999,
+                                    position: 'fixed',
+                                    top: '50%',
+                                    left: '50%',
+                                }}
+                            >
+                                I was portaled! Eeeeeehaaaaa!
+                            </div>
+                        </PortalToBody>
+                    )}
                 </DialogContent>
             </Dialog>
 

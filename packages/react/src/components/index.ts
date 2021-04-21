@@ -19,7 +19,7 @@ export * from './Link';
 export * from './MaterialIcon';
 export * from './Menu';
 export * from './Message';
-export * from './Overlay';
+export * from './Backdrop';
 export * from './Pack';
 export * from './Radio';
 export * from './Search';

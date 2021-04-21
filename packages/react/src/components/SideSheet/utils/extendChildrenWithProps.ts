@@ -9,7 +9,7 @@ import { ThemeType } from '../../../styling';
 import { ClassOverrideType } from '../type';
 import { ChildrenType } from '../../../type';
 
-const extendChildrenWithProps = (
+export const extendChildrenWithProps = (
     children: ChildrenType,
     additionalProps: {
         classOverride?: ClassOverrideType;
@@ -60,5 +60,3 @@ const extendChildrenWithProps = (
         return React.cloneElement(child, { isFixed, theme, className });
     });
 };
-
-export default extendChildrenWithProps;

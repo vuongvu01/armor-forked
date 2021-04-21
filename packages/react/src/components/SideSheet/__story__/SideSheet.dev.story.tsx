@@ -37,6 +37,44 @@ export const DefaultLayout = () => {
     );
 };
 
+export const NoBackdrop = () => {
+    const [open, setOpen] = useState(false);
+    const onClose = () => setOpen(false);
+
+    return (
+        <>
+            <SideSheet open={open} onClose={onClose} enableBackdrop={false}>
+                <SideSheetHeader title="Header title" />
+                <SideSheetBody>Body content</SideSheetBody>
+                <SideSheetFooter>Footer actions</SideSheetFooter>
+            </SideSheet>
+
+            <Button onClick={() => setOpen(true)}>Show Layout</Button>
+        </>
+    );
+};
+
+export const WithBackdropNoClose = () => {
+    const [open, setOpen] = useState(false);
+    const onClose = () => setOpen(false);
+
+    return (
+        <>
+            <SideSheet
+                open={open}
+                onClose={onClose}
+                enableCloseOnBackdropClick={false}
+            >
+                <SideSheetHeader title="Header title" />
+                <SideSheetBody>Body content</SideSheetBody>
+                <SideSheetFooter>Footer actions</SideSheetFooter>
+            </SideSheet>
+
+            <Button onClick={() => setOpen(true)}>Show Layout</Button>
+        </>
+    );
+};
+
 export const WideLookExpandedOnLoadWithNoOverlayBackground = () => {
     const [open, setOpen] = useState(true);
     const onClose = () => setOpen(false);
@@ -48,7 +86,7 @@ export const WideLookExpandedOnLoadWithNoOverlayBackground = () => {
                 disableOverlay
                 open={open}
                 onClose={onClose}
-                wide={boolean('Wide', true)}
+                wide
             >
                 <SideSheetHeader
                     title="Header title"
@@ -177,7 +215,7 @@ export const WideLookWithNoCloseOption = () => {
                 isCloseButtonVisible={false}
                 open={open}
                 onClose={onClose}
-                wide={boolean('Wide', true)}
+                wide
             >
                 <SideSheetHeader
                     title="Header title"
@@ -211,11 +249,7 @@ export const FixedHeaderAndFooter = () => {
 
     return (
         <>
-            <SideSheet
-                open={open}
-                onClose={onClose}
-                wide={boolean('Wide', false)}
-            >
+            <SideSheet open={open} onClose={onClose} wide={false}>
                 <SideSheetHeader
                     title="Mix as you wish"
                     description="Please pick your dish & drink combination"
