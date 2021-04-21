@@ -1,3 +1,19 @@
+# @deliveryhero/armor [1.43.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.42.1...@deliveryhero/armor@1.43.0) (2021-04-21)
+
+
+### Bug Fixes
+
+* **dialog:** A property enableCloseOnBackdropClick developed for Dialog and SideSheet [LD-481] ([#502](https://github.com/deliveryhero/armor/issues/502)) ([fcae1f0](https://github.com/deliveryhero/armor/commit/fcae1f01dfecbf8754a75425aeb4fc08f17ffa90))
+* **Dialog:** Hook useOuterClick replaced with Backdrop onClick in Dialog and SideSheet [LD-475] ([#503](https://github.com/deliveryhero/armor/issues/503)) ([35a224e](https://github.com/deliveryhero/armor/commit/35a224e8d9e710c5257899679aac1f4a24499f4a))
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor-icons:** upgraded to 1.10.2
+
 ## @deliveryhero/armor [1.42.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.42.0...@deliveryhero/armor@1.42.1) (2021-04-14)
 
 
