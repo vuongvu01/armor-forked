@@ -14,6 +14,8 @@ import { TextInput } from '../../TextInput';
 import { withWrapper } from '../../../helpers/Wrapper';
 import { Tooltip } from '../../Tooltip';
 import { ContextMenu } from '../../ContextMenu';
+import { getBody } from '../../../system/util/globals';
+import { PortalToBody } from '../../../system/util/PortalToBody';
 
 export default {
     title: 'Components/Dialog',
@@ -630,6 +632,45 @@ export const WithTooltip = () => {
                             { id: 'b', label: 'Menu element B' },
                         ]}
                     />
+                </DialogContent>
+            </Dialog>
+
+            <LoremIpsum>
+                <Button onClick={() => setOpen(true)}>Open modal!</Button>
+            </LoremIpsum>
+        </>
+    );
+};
+
+export const WithAPortalInside = () => {
+    const [open, setOpen] = useState(false);
+    const onClose = () => setOpen(false);
+
+    return (
+        <>
+            <Dialog
+                open={open}
+                onClose={onClose}
+                maxWidth={text('Max width', 'sm')}
+                wide={boolean('Wide', false)}
+            >
+                <DialogContent>
+                    {open && (
+                        <PortalToBody>
+                            <div
+                                style={{
+                                    backgroundColor: 'white',
+                                    color: 'black',
+                                    zIndex: 9999,
+                                    position: 'fixed',
+                                    top: '50%',
+                                    left: '50%',
+                                }}
+                            >
+                                I was portaled! Eeeeeehaaaaa!
+                            </div>
+                        </PortalToBody>
+                    )}
                 </DialogContent>
             </Dialog>
 

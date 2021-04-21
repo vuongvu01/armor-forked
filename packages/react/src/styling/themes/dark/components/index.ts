@@ -34,7 +34,7 @@ import {
 import { getTabOverride } from './Tab';
 import { getTagOverride } from './Tag';
 import { getTooltipOverride } from './Tooltip';
-import { getOverlayOverride } from './Overlay';
+import { getBackdropOverride } from './Backdrop';
 import { getDialogOverride, getDialogTitleOverride } from './Dialog';
 import { getSideSheetOverride } from './SideSheet';
 import { getDropdownBeforeSectionClearButtonOverride } from './DropdownBeforeSectionClearButton';
@@ -81,7 +81,7 @@ export const darkThemeComponentOverrides = {
     Switch: getSwitchOverride,
     MenuElement: getMenuElementOverride,
     Menu: getMenuOverride,
-    Overlay: getOverlayOverride,
+    Backdrop: getBackdropOverride,
     Tab: getTabOverride,
     Tag: getTagOverride,
     Tooltip: getTooltipOverride,

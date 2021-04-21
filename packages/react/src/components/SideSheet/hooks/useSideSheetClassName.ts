@@ -77,12 +77,7 @@ export const useSideSheetClassName = (
                 disableOverlay,
                 wide,
             }),
-            Overlay: sideSheetClassGeneratorBasedOnComponent({
-                component: 'Overlay',
-                classPrefix,
-                disableOverlay,
-                wide,
-            }),
+            Backdrop: makeBEM(classPrefix, 'Backdrop'),
         }),
         [classPrefix, className, disableOverlay, wide],
     );

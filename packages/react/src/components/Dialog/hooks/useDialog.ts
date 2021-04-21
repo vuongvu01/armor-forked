@@ -84,15 +84,11 @@ export const useDialog = (
     const rootRef = useRef<HTMLElement>();
     useInternalRef(ref, rootRef);
 
-    const windowRef = useRef<HTMLElement>();
-
-    useOuterClick(
-        [windowRef],
-        onCloseInternal,
-        reallyOpen &&
-            reallyEnableBackdrop &&
-            enableCloseOnBackdropClick !== false,
-    );
+    const onBackdropClick = useCallback(() => {
+        if (reallyEnableBackdrop && enableCloseOnBackdropClick !== false) {
+            onCloseInternal();
+        }
+    }, [onCloseInternal, enableCloseOnBackdropClick, reallyEnableBackdrop]);
 
     const { display, effectToggle } = useDisplayEffects(reallyOpen);
 
@@ -143,6 +139,7 @@ export const useDialog = (
                 enableEffects !== undefined ? !enableEffects : disableEffects,
             effectToggle,
             display,
+            onClick: onBackdropClick,
         }),
         alignmentContainerProps: {
             display,
@@ -152,7 +149,6 @@ export const useDialog = (
         windowProps: {
             ...sizeProps,
             effectToggle,
-            ref: windowRef,
             enableEffects:
                 enableEffects !== undefined ? enableEffects : !disableEffects,
             scroll,

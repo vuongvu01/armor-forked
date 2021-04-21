@@ -5,7 +5,7 @@ import { useComponentTheme } from '../../utils/hooks';
 import { useSideSheetClassName } from './hooks/useSideSheetClassName';
 import { SideSheetPropsType } from './type';
 import { sideSheetDefaultTheme } from './theme';
-import { Overlay } from '../Overlay';
+import { Backdrop } from '../Backdrop';
 // @ts-ignore until the deprecated CloseIcon is removed and we rename Close to CloseIcon
 import {
     SideSheetRoot,
@@ -68,9 +68,9 @@ export const SideSheet: FC<SideSheetPropsType> = forwardRef(function SideSheet(
                 theme={theme}
             >
                 {enableBackdrop && (
-                    <Overlay
+                    <Backdrop
                         {...getBackdropProps()}
-                        className={classOverride.Overlay}
+                        className={classOverride.Backdrop}
                         theme={theme}
                     />
                 )}

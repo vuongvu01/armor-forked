@@ -85,15 +85,11 @@ export const useSideSheet = (
     const rootRef = useRef<HTMLDivElement>();
     useInternalRef(ref, rootRef);
 
-    const windowRef = useRef<HTMLDivElement>();
-
-    useOuterClick(
-        [windowRef],
-        onCloseInternal,
-        reallyOpen &&
-            reallyEnableBackdrop &&
-            enableCloseOnBackdropClick !== false,
-    );
+    const onBackdropClick = useCallback(() => {
+        if (reallyEnableBackdrop && enableCloseOnBackdropClick !== false) {
+            onCloseInternal();
+        }
+    }, [onCloseInternal, enableCloseOnBackdropClick, reallyEnableBackdrop]);
 
     const { display, effectToggle } = useDisplayEffects(reallyOpen);
 
@@ -127,13 +123,13 @@ export const useSideSheet = (
             disableEffects: !reallyEnableEffects,
             display,
             effectToggle,
+            onClick: onBackdropClick,
         }),
         windowProps: {
             disableEffects: !reallyEnableEffects,
             display,
             effectToggle,
             wide,
-            ref: windowRef as RefObject<HTMLDivElement>,
         },
         contentProps: {
             'data-testid': sideSheetContent,

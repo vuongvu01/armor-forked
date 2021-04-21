@@ -47,7 +47,7 @@ export type ClassOverrideType = {
     Footer: string;
     Header: string;
     HeaderContainer: string;
-    Overlay: string;
+    Backdrop: string;
 };
 
 export type SideSheetPropsType = SideSheetEffectivePropsType;

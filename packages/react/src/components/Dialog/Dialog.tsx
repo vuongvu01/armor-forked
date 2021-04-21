@@ -11,7 +11,7 @@ import {
     DialogCloseButton,
 } from './style';
 import { DialogPropsType } from './type';
-import { Overlay } from '../Overlay';
+import { Backdrop } from '../Backdrop';
 import {
     DIALOG_CLASS_PREFIX,
     DIALOG_SCROLL_DIALOG,
@@ -48,9 +48,9 @@ export const Dialog: FC<DialogPropsType> = forwardRef(function Dialog(
                 className={classNames.Root}
             >
                 {enableBackdrop && (
-                    <Overlay
+                    <Backdrop
                         {...getBackdropProps()}
-                        className={classNames.Overlay}
+                        className={classNames.Backdrop}
                     />
                 )}
                 <DialogAlignmentContainer

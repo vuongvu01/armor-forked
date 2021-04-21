@@ -64,6 +64,7 @@ export const DialogAlignmentContainer = styled.div.withConfig(propsBlocker)<
     align-items: center;
     justify-content: center;
     text-align: center;
+    pointer-events: none;
 
     ${getAlignmentContainerStyle};
 `;
@@ -91,6 +92,7 @@ export const DialogWindow = styled(Card)<DialogWindowPropsType>`
     position: relative;
     overflow-y: auto;
     overflow-x: hidden;
+    pointer-events: auto;
 
     flex-direction: column;
     text-align: left;

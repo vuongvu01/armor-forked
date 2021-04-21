@@ -6,7 +6,7 @@ export const useDialogClassNames = (classPrefix: string, className?: string) =>
     useMemo(() => {
         return {
             Root: makeRootClassName(classPrefix, className),
-            Overlay: makeBEM(classPrefix, 'Overlay'),
+            Backdrop: makeBEM(classPrefix, 'Backdrop'),
             AlignmentContainer: makeBEM(classPrefix, 'AlignmentContainer'),
             Window: makeBEM(classPrefix, 'Window'),
             CloseButton: makeBEM(classPrefix, 'CloseButton'),
