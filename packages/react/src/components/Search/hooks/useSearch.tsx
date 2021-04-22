@@ -11,10 +11,12 @@ import { initialCursor } from '../constants';
 import { SearchGroupObjectIndexType, SearchPropsType } from '../type';
 import { useDetectClickOutsideComponent, useInternalRef } from '../../../utils';
 import { ReferenceType } from '../../../type';
+import { useControlledState } from '../../../system/hooks/useControlledState';
 
 export const useSearch = (
     {
         defaultQuery = '',
+        query,
         disabled = false,
         disableClearAction = false,
         isLoading = false,
@@ -25,6 +27,7 @@ export const useSearch = (
         autoFocus,
 
         onChange,
+        onQueryChange,
         onItemSelect,
         options,
         groups,
@@ -40,7 +43,11 @@ export const useSearch = (
     ref: ReferenceType,
 ) => {
     const [cursor, setCursor] = useState<number>(initialCursor);
-    const [searchQuery, setSearchQuery] = useState(defaultQuery);
+    const [searchQuery, setSearchQuery] = useControlledState(
+        defaultQuery,
+        query,
+        onQueryChange,
+    );
     const [isSuggestionsListShown, setIsSuggestionsListShown] = useState(
         !!options,
     );
@@ -176,9 +183,9 @@ export const useSearch = (
     const handleChange = useCallback(
         (event: ChangeEvent<HTMLInputElement>) => {
             // @ts-ignore
-            const query = event?.target?.value || '';
+            const currentQuery = event?.target?.value || '';
 
-            setSearchQuery(query);
+            setSearchQuery(currentQuery);
 
             if (onChange) {
                 onChange(event);
@@ -207,8 +214,8 @@ export const useSearch = (
     const handleSuggestionClick = useCallback(
         (event: React.MouseEvent<HTMLDivElement>, suggestionIndex: number) => {
             if (options && options.length > 0) {
-                const query = options[suggestionIndex].label || '';
-                setSearchQuery(query);
+                const currentQuery = options[suggestionIndex].label || '';
+                setSearchQuery(currentQuery);
 
                 if (onItemSelect) {
                     onItemSelect(options[suggestionIndex]);
