@@ -1,5 +1,5 @@
 import { useCallback, MouseEvent, useMemo } from 'react';
-import { NavigationMenuElement, NavigationPropsType } from '../type';
+import { NavigationMenuElementType, NavigationPropsType } from '../type';
 import { ObjectLiteralType, ScalarType } from '../../../type';
 import { consoleWarn } from '../../../system/util/consoleWarn';
 import { DEFAULT_MAX_DEPTH_LEVEL } from '../constants';
@@ -11,7 +11,7 @@ export const useNavigation = ({
     ...restRootProps
 }: NavigationPropsType) => {
     const references = useMemo(() => {
-        const result: ObjectLiteralType<NavigationMenuElement> = {};
+        const result: ObjectLiteralType<NavigationMenuElementType> = {};
 
         if (!menuItems) {
             return result;
@@ -20,7 +20,7 @@ export const useNavigation = ({
         let nestingErrorDisplayed = false;
 
         const traverse = (
-            items?: NavigationMenuElement[],
+            items?: NavigationMenuElementType[],
             path = '',
             parentId: ScalarType = '',
             depthLevel = 0,

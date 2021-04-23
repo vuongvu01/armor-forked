@@ -11,10 +11,10 @@ import { Indexed, ScalarType } from '../../type';
 import { MenuPropsType } from '../Menu/type';
 import { MenuElementPropsType } from '../Menu/MenuElement/type';
 
-export type NavigationMenuElement = Indexed<{
+export type NavigationMenuElementType = Indexed<{
     label: ReactChild;
     id: ScalarType;
-    items?: NavigationMenuElement[];
+    items?: NavigationMenuElementType[];
     expanded?: boolean;
     selected?: boolean;
     beforeMenu?: ReactNode;
@@ -25,8 +25,11 @@ export type NavigationMenuElement = Indexed<{
 }>;
 
 type NavigationEffectivePropsType = Indexed<{
-    items?: NavigationMenuElement[];
-    onElementClick?: (itemId: ScalarType, item: NavigationMenuElement) => void;
+    items?: NavigationMenuElementType[];
+    onElementClick?: (
+        itemId: ScalarType,
+        item: NavigationMenuElementType,
+    ) => void;
     onElementExpansionHandleClick?: (itemId: ScalarType) => void; // todo: should be fired when somebody clicks on the expansion handle, future-reserved
     maxDepthLevel?: number;
     enableEffects?: boolean;

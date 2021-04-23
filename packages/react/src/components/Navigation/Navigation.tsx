@@ -10,14 +10,14 @@ import { useComponentTheme } from '../../utils/hooks';
 import { useNavigationClassNames } from './utils/useNavigationClassNames';
 import { useNavigation } from './utils/useNavigation';
 import { NavigationRoot } from './style';
-import { NavigationMenuElement, NavigationPropsType } from './type';
+import { NavigationMenuElementType, NavigationPropsType } from './type';
 import { navigationDefaultTheme } from './theme';
 import { NAVIGATION_CLASS_PREFIX, DEFAULT_MAX_DEPTH_LEVEL } from './constants';
 import { Menu, MenuElement } from '../Menu';
 import { ScalarType } from '../../type';
 
 const isElementInState = (
-    element: NavigationMenuElement,
+    element: NavigationMenuElementType,
     stateName: 'expanded' | 'selected',
     elementIds?: ScalarType[],
 ) => {
@@ -33,7 +33,7 @@ const isElementInState = (
 };
 
 const renderMenuElement = (
-    element: NavigationMenuElement,
+    element: NavigationMenuElementType,
     depthLevel: number,
     maxDepthLevel = DEFAULT_MAX_DEPTH_LEVEL,
     parentId = '',
