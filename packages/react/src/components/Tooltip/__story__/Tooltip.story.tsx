@@ -239,3 +239,20 @@ export const OnCheckboxWithCustomOffset = () => {
         </>
     );
 };
+
+export const NoTooltipDisplayOnEmptyContent = () => {
+    return (
+        <>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <Tooltip align="top">
+                <Button>Top</Button>
+            </Tooltip>
+        </>
+    );
+};

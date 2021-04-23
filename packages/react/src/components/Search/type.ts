@@ -41,6 +41,7 @@ export type SearchEffectivePropsType = Partial<{
         optionIndex?: number,
     ) => ReactElement;
     defaultQuery: SearchQueryType;
+    query: SearchQueryType;
     disabled: boolean;
     error: boolean;
     /**
@@ -54,6 +55,7 @@ export type SearchEffectivePropsType = Partial<{
     ) => ReactElement;
     disableClearAction: boolean;
     onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+    onQueryChange: (newValue: SearchQueryType) => void;
     onItemSelect: (option: SuggestionObjectType) => void;
     options: SuggestionObjectType[];
     groups: SearchGroupObjectType[];

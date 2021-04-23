@@ -3,11 +3,13 @@ import React, { ChangeEvent, useCallback, useState } from 'react';
 import { InfoIcon } from '@deliveryhero/armor-icons';
 
 import { Search } from '../Search';
-import { SuggestionObjectType } from '../type';
+import { SearchQueryType, SuggestionObjectType } from '../type';
 import { FormField, FormFieldMessage } from '../../FormField';
 import { TextInput } from '../../TextInput';
 import { CogIcon } from '../../../icons';
 import { campaigns } from './constants';
+import { Typography } from '../../Typography';
+import { Button } from '../../Button';
 
 export default {
     title: 'Components/Search',
@@ -306,6 +308,59 @@ export const WithDeatchedResults = () => {
                     {campaign.attributes.name}
                 </div>
             ))}
+        </>
+    );
+};
+
+export const ResetSearchOnSelect = () => {
+    const [query, setQuery] = useState('');
+    const [selected, setSelected] = useState({});
+    const [acceptedOption, setAcceptedOption] = useState({});
+    const handleSearchChange = useCallback(
+        (e: React.ChangeEvent<HTMLInputElement>) => {
+            const currentQuery = e.target.value || '';
+            setQuery(currentQuery);
+        },
+        [],
+    );
+
+    const handleQueryChange = useCallback((currentQuery: SearchQueryType) => {
+        // eslint-disable-next-line no-console
+        console.log({ currentQuery });
+    }, []);
+
+    const handleOnSelect = (option: SuggestionObjectType) => {
+        setQuery(option.label);
+        setSelected(option);
+    };
+    const handleOptionAccept = () => {
+        if (selected) {
+            setAcceptedOption(selected);
+            setQuery('');
+        }
+    };
+    return (
+        <>
+            <Search
+                placeholder="Search"
+                noResultsLabel="No results found"
+                suggestionListHeight={60}
+                query={query}
+                width="100%"
+                onChange={handleSearchChange}
+                onQueryChange={handleQueryChange}
+                onItemSelect={handleOnSelect}
+                options={query && query.length ? foodOptions : []}
+                renderItemAdditionalInfo={(item: SuggestionObjectType) => (
+                    <Typography>{item.value}</Typography>
+                )}
+            />
+            <Button onClick={handleOptionAccept} marginTop={2}>
+                Accept
+            </Button>
+            <Typography paragraph small>
+                Accepted option: {JSON.stringify(acceptedOption)}
+            </Typography>
         </>
     );
 };
