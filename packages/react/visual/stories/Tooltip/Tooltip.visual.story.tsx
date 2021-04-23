@@ -35,6 +35,16 @@ export const PlacementBottom = () => {
     );
 };
 
+export const DisplayOnlyChildrenWhenNoContentSpecified = () => {
+    return (
+        <>
+            <Tooltip align="bottom" defaultOpen>
+                <Button>Bottom</Button>
+            </Tooltip>
+        </>
+    );
+};
+
 export const DefaultOpenSmall = () => {
     return (
         <>

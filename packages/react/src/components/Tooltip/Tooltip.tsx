@@ -35,13 +35,13 @@ export const Tooltip: FunctionComponent<TooltipPropsType> = forwardRef(
         );
 
         if (!validTrigger) {
-            return null;
+            return trigger || null;
         }
 
         return (
             <>
                 {trigger}
-                {open && (
+                {open && !!content && (
                     <PortalToBody {...portalProps}>
                         <TooltipRoot
                             {...rootProps}
