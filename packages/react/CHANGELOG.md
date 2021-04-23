@@ -1,3 +1,16 @@
+# @deliveryhero/armor [1.44.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.43.0...@deliveryhero/armor@1.44.0) (2021-04-23)
+
+
+### Bug Fixes
+
+* **tooltip:** no tooltip on empty content [LD-484] ([#507](https://github.com/deliveryhero/armor/issues/507)) ([d1f4288](https://github.com/deliveryhero/armor/commit/d1f42880d1ab91d558dc91570685cc95a59418b3))
+* **types:** Type NavigationMenuElement renamed to NavigationMenuElementType ([#510](https://github.com/deliveryhero/armor/issues/510)) ([48101d0](https://github.com/deliveryhero/armor/commit/48101d013b724fe07a3a2d80b0cd08493085aa01))
+
+
+### Features
+
+* **search:** controlled input [LD-474] ([#508](https://github.com/deliveryhero/armor/issues/508)) ([b964ed5](https://github.com/deliveryhero/armor/commit/b964ed5874445e0be2ee311cd8230b4462d72954))
+
 # @deliveryhero/armor [1.43.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.42.1...@deliveryhero/armor@1.43.0) (2021-04-21)
 
 
