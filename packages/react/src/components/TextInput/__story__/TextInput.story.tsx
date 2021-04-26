@@ -773,3 +773,11 @@ export const NumericControlled = () => {
         </>
     );
 };
+
+export const TypeTime = () => {
+    return (
+        <>
+            <TextInput type="time" required />
+        </>
+    );
+};

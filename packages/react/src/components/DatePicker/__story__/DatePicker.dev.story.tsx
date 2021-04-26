@@ -1,14 +1,7 @@
 /* eslint-disable no-console,import/no-unresolved */
 
 import React from 'react';
-import {
-    withKnobs,
-    text,
-    boolean,
-    number,
-    select,
-} from '@storybook/addon-knobs';
-import { action } from '@storybook/addon-actions';
+import { withKnobs } from '@storybook/addon-knobs';
 import { withWrapper } from '../../../helpers/Wrapper';
 
 import { DatePicker } from '../DatePicker';
@@ -16,6 +9,9 @@ import { TextInput } from '../../TextInput';
 import { Search } from '../../Search';
 import { Dropdown } from '../../Dropdown';
 import { Box } from '../../Box';
+import { FormField, FormFieldMessage, FormFieldTooltip } from '../../FormField';
+
+const currentDate = new Date();
 
 export default {
     title: 'Components/DatePicker',
@@ -68,6 +64,22 @@ export const ReadOnly = () => {
     return (
         <Box paddingTop={20} paddingLeft={50}>
             <DatePicker label="Readonly" readOnly />
+        </Box>
+    );
+};
+
+export const WithError = () => {
+    return (
+        <Box paddingTop={20} paddingLeft={50}>
+            <FormField error>
+                <DatePicker label="Readonly" error dateValue={currentDate} />
+                <FormFieldMessage error oneLine>
+                    The name of your droid
+                </FormFieldMessage>
+                <FormFieldTooltip visible>
+                    Not the droids you are looking for
+                </FormFieldTooltip>
+            </FormField>
         </Box>
     );
 };

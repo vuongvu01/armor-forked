@@ -23,6 +23,7 @@ export const useDatePicker = (
         placeholder,
         disabled,
         readOnly,
+        error,
         'data-testid-input': dataTestIdInput,
         ...restProps
     }: DatePickerPropsType,
@@ -113,6 +114,7 @@ export const useDatePicker = (
         },
         inputProps: {
             readOnly: true,
+            error,
             disabled,
             label,
             placeholder,

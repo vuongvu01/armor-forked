@@ -43,6 +43,7 @@ export const useTextInput = (
         min,
         minLength,
         tabIndex,
+        required,
         'data-testid-input': dataTestIdInput,
 
         ...restRootProps
@@ -142,6 +143,7 @@ export const useTextInput = (
             min,
             minLength,
             tabIndex,
+            required,
             'data-testid': dataTestIdInput || textInputInput,
 
             // custom
