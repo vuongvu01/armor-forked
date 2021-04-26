@@ -74,7 +74,6 @@ export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
                 >
                     {before}
                     <TextInputInput
-                        data-testid={textInputInput}
                         {...inputProps}
                         theme={theme}
                         className={classNameComponents.Input}

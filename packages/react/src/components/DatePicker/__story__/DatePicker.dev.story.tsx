@@ -27,7 +27,7 @@ export default {
 export const Basic = () => {
     return (
         <Box paddingTop={20} paddingLeft={100}>
-            <DatePicker />
+            <DatePicker data-testid-input="input42" />
         </Box>
     );
 };

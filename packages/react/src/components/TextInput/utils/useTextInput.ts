@@ -3,6 +3,7 @@ import { TextInputPropsType } from '../type';
 import { useEvents } from './useEvents';
 import { useInternalRef } from '../../../utils';
 import { ReferenceType } from '../../../type';
+import { textInputInput } from '../constants';
 
 export const useTextInput = (
     {
@@ -42,6 +43,7 @@ export const useTextInput = (
         min,
         minLength,
         tabIndex,
+        'data-testid-input': dataTestIdInput,
 
         ...restRootProps
     }: TextInputPropsType,
@@ -140,6 +142,7 @@ export const useTextInput = (
             min,
             minLength,
             tabIndex,
+            'data-testid': dataTestIdInput || textInputInput,
 
             // custom
             multiline,
