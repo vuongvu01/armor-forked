@@ -1,3 +1,15 @@
+# @deliveryhero/armor [1.45.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.44.0...@deliveryhero/armor@1.45.0) (2021-04-26)
+
+
+### Bug Fixes
+
+* **props:** Implemented DatePicker error prop forwarding and TextInput required prop forwarding [LD-486] ([#514](https://github.com/deliveryhero/armor/issues/514)) ([ff72282](https://github.com/deliveryhero/armor/commit/ff72282b6f37cc1c827711a0f33e48a1e9e39173))
+
+
+### Features
+
+* **textinput:** pass data-testid to the input portion by default [LD-487] ([#512](https://github.com/deliveryhero/armor/issues/512)) ([f2c333d](https://github.com/deliveryhero/armor/commit/f2c333dbe836f27e61c06d46ad2fc31797ddbe2c))
+
 # @deliveryhero/armor [1.44.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.43.0...@deliveryhero/armor@1.44.0) (2021-04-23)
 
 
