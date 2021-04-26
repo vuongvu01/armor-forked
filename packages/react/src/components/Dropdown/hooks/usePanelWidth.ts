@@ -17,9 +17,10 @@ export const usePanelWidth = (
                     width: containerNodeWidth,
                 } = containerEntry.target.getBoundingClientRect();
 
-                // @ts-ignore
-                // eslint-disable-next-line no-param-reassign
-                dropdownRef.current.style.width = `${containerNodeWidth}px`;
+                if (dropdownRef.current) {
+                    // eslint-disable-next-line no-param-reassign
+                    dropdownRef.current.style.width = `${containerNodeWidth}px`;
+                }
             });
 
             observer.observe(containerRef.current);
