@@ -28,6 +28,7 @@ export type DatePickerEffectiveGenericPropsType<V> = Partial<{
     placeholder: string;
     disabled: boolean;
     readOnly: boolean;
+    error: boolean;
 
     defaultMonthYearSelectorOpen: boolean;
 

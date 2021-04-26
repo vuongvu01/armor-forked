@@ -41,6 +41,7 @@ export const useDropdown = (
         zIndex,
         enablePortal,
         groups,
+        'data-testid-input': dataTestIdInput,
 
         // open/close state
         open,
@@ -169,6 +170,7 @@ export const useDropdown = (
             name,
             displayMode: 'block',
             isCustomRenderer: !!onRenderSelectedValue,
+            'data-testid-input': dataTestIdInput,
 
             // other native props
             autoComplete: 'off',

@@ -22,6 +22,7 @@ export const useDateRangePicker = (
         label,
         disabled,
         readOnly,
+        'data-testid-input': dataTestIdInput,
         ...restProps
     }: DateRangePickerPropsType,
     ref: ReferenceType,
@@ -127,6 +128,7 @@ export const useDateRangePicker = (
             enableRootRef: true,
             enableFocusOnRootClick: true,
             onRootClick: disabled || readOnly ? undefined : toggleOpen,
+            'data-testid-input': dataTestIdInput,
         },
         portalProps,
         dropdownProps,

@@ -36,3 +36,7 @@ export const WithActionButtonsAndTimePicker = () => (
 export const MonthYearSelector = () => (
     <DatePicker open defaultMonthYearSelectorOpen dateValue={date} />
 );
+
+export const Error = () => (
+    <DatePicker open defaultMonthYearSelectorOpen dateValue={date} error />
+);

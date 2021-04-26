@@ -23,6 +23,8 @@ export const useDatePicker = (
         placeholder,
         disabled,
         readOnly,
+        error,
+        'data-testid-input': dataTestIdInput,
         ...restProps
     }: DatePickerPropsType,
     ref: ReferenceType,
@@ -112,6 +114,7 @@ export const useDatePicker = (
         },
         inputProps: {
             readOnly: true,
+            error,
             disabled,
             label,
             placeholder,
@@ -120,6 +123,7 @@ export const useDatePicker = (
             enableRootRef: true,
             enableFocusOnRootClick: true,
             onRootClick: disabled || readOnly ? undefined : toggleOpen,
+            'data-testid-input': dataTestIdInput,
         },
         portalProps,
         dropdownProps,

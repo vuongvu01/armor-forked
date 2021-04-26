@@ -108,6 +108,7 @@ export const MinimumConfiguration = () => {
                 ]}
                 onSelect={handleSelect}
                 label="Dish type"
+                data-testid-input="input42"
             />
             <Typography paragraph>
                 Selected value: {JSON.stringify(selectedOption)}
