@@ -1,3 +1,10 @@
+## @deliveryhero/armor [1.45.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.45.0...@deliveryhero/armor@1.45.1) (2021-04-27)
+
+
+### Bug Fixes
+
+* **resizeobserver:** Unhandled exception in usePanelWidth hook was fixed [LD-488] ([#515](https://github.com/deliveryhero/armor/issues/515)) ([041eb7e](https://github.com/deliveryhero/armor/commit/041eb7e548c1e7b29a7e10ad7e60d96672ec4af9))
+
 # @deliveryhero/armor [1.45.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.44.0...@deliveryhero/armor@1.45.0) (2021-04-26)
 
 
