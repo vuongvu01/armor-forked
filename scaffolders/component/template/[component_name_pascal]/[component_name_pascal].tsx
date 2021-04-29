@@ -1,4 +1,4 @@
-import React, { FC, forwardRef } from 'react';
+import React, { FC, forwardRef, RefObject } from 'react';
 import PropTypes from 'prop-types';
 
 import { useTheme } from '../../styling';
@@ -26,7 +26,7 @@ export const <%- component_name_pascal %>: FC<<%- component_name_pascal %>PropsT
             className,
         );
 
-        const { rootProps } = use<%- component_name_pascal %>(props, ref);
+        const { rootProps } = use<%- component_name_pascal %>(props, ref as RefObject<HTMLDivElement>);
 
         return (
             <<%- component_name_pascal %>Root

@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { RefObject, useMemo, useRef } from 'react';
 import {
     DataTableColumnType,
     DataTableDataType,
@@ -11,10 +11,12 @@ import { useDataTableExpandableSections } from './useDataTableExpandableSections
 import {
     DATA_TABLE_EXPANDABLE_SECTION_OFFSET_LEFT_BASE,
     DATA_TABLE_EXPANDABLE_SECTION_OFFSET_LEFT_ROW_SELECTION,
+    DATA_TABLE_EMPTY_DATA,
+    DATA_TABLE_EMPTY_COLUMNS,
 } from '../constants';
 import { useDataTablePageNavigation } from './useDataTablePageNavigation';
-import { ReferenceType } from '../../../type';
 import { TableCell, TableControllerCell, TableHeadCell } from '../../Table';
+import { useRootRef, useVirtualization } from '../../../system';
 
 export const useDataTable = (
     {
@@ -26,13 +28,18 @@ export const useDataTable = (
         enableRowSelection,
         stickyHead,
 
+        enableVirtualization,
+        averageItemHeight,
+
         ...restProps
     }: DataTablePropsType,
-    ref: ReferenceType,
+    ref: RefObject<HTMLDivElement>,
 ) => {
-    // structure and data
-    const columnsSafe = useMemo(() => columns || [], [columns]);
-    const dataSafe = useMemo(() => data || [], [data]);
+    const innerRef = useRootRef<HTMLDivElement>(ref);
+    const tableBodyRef = useRef<HTMLTableSectionElement>();
+
+    const columnsSafe = columns || DATA_TABLE_EMPTY_COLUMNS;
+    const dataSafe = data || DATA_TABLE_EMPTY_DATA;
 
     const rowSorting = useDataTableRowSorting(columnsSafe, restProps);
     const rowSelection = useDataTableRowSelection(dataSafe, {
@@ -52,6 +59,21 @@ export const useDataTable = (
         expandableSections.restProps,
     );
 
+    const {
+        data: virtualData,
+        bottomOffset: virtualBottomOffset,
+        topOffset: virtualTopOffset,
+        rangeStart: virtualRangeStart,
+    } = useVirtualization<DataTableDataType, HTMLTableSectionElement>(
+        !!enableVirtualization,
+        tableBodyRef,
+        dataSafe,
+        {
+            averageItemHeight,
+            itemSelector: '.DataTable-Row',
+        },
+    );
+
     const columnCount = columnsSafe.length + (enableRowSelection ? 1 : 0);
     const enableFooter = pageNavigation.result.enablePageNavigation;
 
@@ -66,20 +88,24 @@ export const useDataTable = (
 
     return {
         columns: columnsSafe,
-        data: dataSafe,
+        data: virtualData,
 
+        // todo: since we strip off any custom props, this may be refactored and made easier
         ...rowSorting.result,
         ...rowSelection.result,
         ...expandableSections.result,
         ...pageNavigation.result,
 
-        rootProps: { ref, ...pageNavigation.restProps },
+        rootProps: { ...pageNavigation.restProps, ref: innerRef },
         tableProps: {
             wide: true,
             stickyHead,
             ...tableProps,
             stickyColumns: stickyColumns.result.stickyColumns,
             horizontalScroll: stickyColumns.result.stickyColumns.length > 0,
+        },
+        tableBodyProps: {
+            ref: tableBodyRef,
         },
         getRowProps: (item: DataTableDataType) => {
             return {
@@ -161,5 +187,13 @@ export const useDataTable = (
 
         enableHeader: enableHeader !== false,
         enableFooter,
+
+        enableVirtualization,
+        getVirtualTopSpaceProps: () => ({ height: virtualTopOffset }),
+        getVirtualBottomSpaceProps: () => ({
+            height: virtualBottomOffset,
+        }),
+        getRowNumber: (index: number) => index + virtualRangeStart,
+        initialDataLength: dataSafe.length,
     };
 };

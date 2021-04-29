@@ -68,7 +68,6 @@ type DataTableEffectivePropsType = Partial<{
     // expandable sections
     enableExpandableSections: boolean;
     renderExpandableSection: (data: DataTableDataType) => ReactChild;
-
     defaultExpandedSectionIds: ScalarType[];
     expandedSectionIds: ScalarType[];
     onSectionExpansionChange: (expandedSections: ScalarType[]) => void;
@@ -86,6 +85,10 @@ type DataTableEffectivePropsType = Partial<{
     onPageNavigationPageSizeChange: PageNavigationPropsType['onPageSizeChange'];
     pageNavigationPageSizeList: PageNavigationPropsType['pageSizeList'];
 
+    // virtualization
+    enableVirtualization: boolean;
+    averageItemHeight: number;
+
     enableHeader: boolean;
     // add other custom properties here
 }> &
@@ -102,6 +105,10 @@ export type DataTablePropsType = DataTableEffectivePropsType &
 /* DataTable node prop type */
 export type DataTableRootPropsType = DataTableEffectivePropsType &
     ComponentElementStylePropsType;
+
+export type DataTableVirtualOffsetType = {
+    height: number;
+} & ComponentElementStylePropsType;
 
 /* DataTable node prop type */
 export type DataTableFooterPropsType = ComponentElementStylePropsType;

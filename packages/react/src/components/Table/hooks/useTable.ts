@@ -2,7 +2,8 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { throttle } from 'throttle-debounce';
 import { TABLE_THROTTLE_PERIOD } from '../constants';
 import { useInternalRef } from '../../../utils';
-import { TableHookPropsType, TableContextValueType } from './type';
+import { TableHookPropsType } from './type';
+import { TableContextValueType } from '../utils/type';
 import { TableStickyColumnMapInternalItem } from '../type';
 import { ArrayLikeType } from '../../../type';
 import { LEFT, RIGHT } from '../../../constants';
@@ -119,7 +120,7 @@ export const useTable = ({
 
     const onLayoutUpdate = useCallback(
         throttle(TABLE_THROTTLE_PERIOD, false, onLayoutUpdateImmediate),
-        [],
+        [onLayoutUpdateImmediate],
     );
 
     useEffect(() => {

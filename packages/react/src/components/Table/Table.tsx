@@ -2,13 +2,13 @@ import React, { FunctionComponent, forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { useComponentTheme } from '../../utils/hooks';
 
-import { useTableClassNames } from './utils/useTableClassNames';
+import { useTableClassNames } from './hooks/useTableClassNames';
 import { TableRoot } from './style';
 import { TablePropsType } from './type';
 import { tableDefaultTheme } from './theme';
 import { tableRootTestId, TABLE_CLASS_PREFIX } from './constants';
 import { TableContext } from './utils/TableContext';
-import { useTable } from './utils/useTable';
+import { useTable } from './hooks/useTable';
 
 export const Table: FunctionComponent<TablePropsType> = forwardRef(
     function Table(

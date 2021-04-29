@@ -102,6 +102,7 @@ export const useDataTableRowSorting = (
             rowSortOrder: rowSortOrderActual,
             onHeadCellClick,
         },
+        rowSortOrder: rowSortOrderActual,
         restProps,
     };
 

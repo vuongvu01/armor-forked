@@ -1,5 +1,6 @@
 import { TableHeadCellSortType } from '../../Table/TableHeadCell/type';
 
+// todo: add memoization here
 export const getSortingFunction = (sortType: TableHeadCellSortType) => {
     if (sortType === 'alphabetical') {
         return (
