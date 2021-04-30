@@ -1,6 +1,5 @@
 import React, {
     forwardRef,
-    FunctionComponent,
     MouseEvent,
     useCallback,
     useEffect,
@@ -17,7 +16,7 @@ import { accordionDefaultTheme } from './theme';
 import { ACCORDION_CLASS_PREFIX, accordionRoot } from './constants';
 import AccordionContext from './AccordionContext';
 
-export const Accordion: FunctionComponent<AccordionPropsType> = forwardRef(
+export const Accordion = forwardRef<HTMLDivElement, AccordionPropsType>(
     function Accordion(
         {
             children,
@@ -45,7 +44,7 @@ export const Accordion: FunctionComponent<AccordionPropsType> = forwardRef(
         );
 
         const handleHeaderToggle = useCallback(
-            (event?: MouseEvent<HTMLInputElement>) => {
+            (event: MouseEvent<HTMLDivElement>) => {
                 setIsExpanded(!isExpanded);
 
                 if (onToggle) {
@@ -57,11 +56,8 @@ export const Accordion: FunctionComponent<AccordionPropsType> = forwardRef(
 
         useEffect(() => {
             if (typeof expanded === 'boolean' && expanded !== isExpanded) {
+                // todo: derived state anti-pattern, fix
                 setIsExpanded(expanded);
-
-                if (onToggle) {
-                    onToggle(null, expanded);
-                }
             }
         }, [expanded]);
 

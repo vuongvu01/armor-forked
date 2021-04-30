@@ -1,19 +1,23 @@
 import styled, { css } from 'styled-components';
 
 import { AccordionRootPropsType } from './type';
-import { AccordionHeaderRootPropsType } from './AccordionHeader/type';
 import { transitionDurationInSec } from '../../constants';
-import { color, propsBlocker, token, marginAttributes } from '../../system';
-import { getComponentOverride } from '../../system/mixins/getComponentOverride';
+import {
+    color,
+    propsBlocker,
+    token,
+    marginAttributes,
+    getComponentOverride,
+} from '../../system';
 
 const accordionStyle = ({
     theme: {
         componentOverrides: { Accordion },
     },
-}: AccordionHeaderRootPropsType) => {
+}: AccordionRootPropsType) => {
     return css`
         transition: all ${transitionDurationInSec}s ease;
-        ${Accordion.Accordion.base}
+        ${Accordion.Accordion.base};
     `;
 };
 
@@ -31,7 +35,7 @@ export const AccordionRoot = styled.div.withConfig(propsBlocker)<
     color: ${token('body.color')};
     background-color: ${color('neutral.00')};
 
-    ${accordionStyle}
+    ${accordionStyle};
     ${getComponentOverride('Accordion')};
-    ${marginAttributes}
+    ${marginAttributes};
 `;

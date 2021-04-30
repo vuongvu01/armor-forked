@@ -1,4 +1,4 @@
-import React, { forwardRef, FunctionComponent, useContext } from 'react';
+import React, { forwardRef, useContext } from 'react';
 
 import { useComponentTheme } from '../../../utils/hooks';
 import { AccordionContentRoot } from './style';
@@ -8,33 +8,34 @@ import { ACCORDION_CONTENT_CLASS_PREFIX, accordionContent } from '../constants';
 import AccordionContext from '../AccordionContext';
 import useAccordionContentClassName from './useAccordionContentClassName';
 
-export const AccordionContent: FunctionComponent<AccordionContentPropsType> = forwardRef(
-    function AccordionContent({ children, className, ...restProps }, ref) {
-        const theme = useComponentTheme(
-            ACCORDION_CONTENT_CLASS_PREFIX,
-            accordionContentDefaultTheme,
-        );
-        const { disabled, isExpanded } = useContext(AccordionContext);
+export const AccordionContent = forwardRef<
+    HTMLDivElement,
+    AccordionContentPropsType
+>(function AccordionContent({ children, className, ...restProps }, ref) {
+    const theme = useComponentTheme(
+        ACCORDION_CONTENT_CLASS_PREFIX,
+        accordionContentDefaultTheme,
+    );
+    const { disabled, isExpanded } = useContext(AccordionContext);
 
-        const classOverride = useAccordionContentClassName(
-            ACCORDION_CONTENT_CLASS_PREFIX,
-            className,
-            disabled,
-            isExpanded,
-        );
+    const classOverride = useAccordionContentClassName(
+        ACCORDION_CONTENT_CLASS_PREFIX,
+        className,
+        disabled,
+        isExpanded,
+    );
 
-        return (
-            <AccordionContentRoot
-                data-testid={accordionContent}
-                {...restProps}
-                className={classOverride.Content}
-                disabled={disabled}
-                isExpanded={isExpanded}
-                ref={ref}
-                theme={theme}
-            >
-                {children}
-            </AccordionContentRoot>
-        );
-    },
-);
+    return (
+        <AccordionContentRoot
+            data-testid={accordionContent}
+            {...restProps}
+            className={classOverride.Content}
+            disabled={disabled}
+            isExpanded={isExpanded}
+            ref={ref}
+            theme={theme}
+        >
+            {children}
+        </AccordionContentRoot>
+    );
+});

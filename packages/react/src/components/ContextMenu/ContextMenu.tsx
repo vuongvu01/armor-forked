@@ -1,4 +1,4 @@
-import React, { FunctionComponent, forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { useComponentTheme } from '../../utils/hooks';
 
@@ -10,7 +10,7 @@ import { CONTEXTMENU_CLASS_PREFIX } from './constants';
 import { MenuElement } from '../Menu';
 import { PortalToBody } from '../../system/util/PortalToBody';
 
-export const ContextMenu: FunctionComponent<ContextMenuPropsType> = forwardRef(
+export const ContextMenu = forwardRef<HTMLDivElement, ContextMenuPropsType>(
     function ContextMenu({ className, ...props }, ref) {
         const theme = useComponentTheme(CONTEXTMENU_CLASS_PREFIX);
         const classNameComponents = useContextMenuClassNames(

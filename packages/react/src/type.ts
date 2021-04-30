@@ -21,9 +21,15 @@ export type ChildrenType = JSX.Element | JSX.Element[] | undefined | null;
 /** @deprecated */
 export type Indexed<T, P = any> = T & ObjectLiteralType<P>;
 
+/** @deprecated */
 export type ReferenceType<C = unknown> =
     | ((instance: C) => void)
     | MutableRefObject<C>
+    | null;
+
+export type RefType<T> =
+    | ((instance: T | null) => void)
+    | MutableRefObject<T | null>
     | null;
 
 export type MutableReferenceType = MutableRefObject<HTMLElement | null>;

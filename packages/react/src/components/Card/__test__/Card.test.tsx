@@ -37,9 +37,8 @@ describe('<Card />', () => {
         expect(Card).toSupportWidthAttributes();
     });
 
-    // todo: fix the component
-    it.skip('should support forwardRef', () => {
-        const { result } = renderHook(() => useRef());
+    it('should support forwardRef', () => {
+        const { result } = renderHook(() => useRef(null));
         render(<Card ref={result.current} />);
 
         expect(result.current.current).toBeInstanceOf(HTMLElement);

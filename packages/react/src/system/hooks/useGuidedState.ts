@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 
+// todo: this is basically a derived state. Can we get rid of it?
 export const useGuidedState = <P = unknown>(
     setter: () => P,
     dependencies: unknown[],

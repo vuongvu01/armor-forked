@@ -1,23 +1,25 @@
 import React, { InputHTMLAttributes } from 'react';
 
 import { MarginAttributesType } from '../../system';
-import { Indexed } from '../../type';
 import { ComponentElementStylePropsType } from '../type';
 
 export type CheckedIconType = 'tick' | 'dash';
 
-type CheckboxEffectivePropsType = Indexed<{
-    checkedIcon?: CheckedIconType;
-    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+type CheckboxEffectivePropsType = Partial<{
+    checkedIcon: CheckedIconType;
+    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    error: boolean;
+    label: string;
     // add other custom properties here
 }> &
-    InputHTMLAttributes<HTMLInputElement> &
+    InputHTMLAttributes<HTMLLabelElement> &
     MarginAttributesType;
 
 export type CheckboxPropsType = CheckboxEffectivePropsType;
 
-export type CheckboxRootPropsType = CheckboxEffectivePropsType &
-    ComponentElementStylePropsType;
+export type CheckboxRootPropsType = CheckboxEffectivePropsType & {
+    reallyChecked: boolean;
+} & ComponentElementStylePropsType;
 
 export type CheckboxInputPropsType = Pick<
     CheckboxEffectivePropsType,
@@ -29,10 +31,12 @@ export type CheckboxInputPropsType = Pick<
     | 'disabled'
     | 'form'
     | 'name'
-    | 'ref'
-    | 'theme'
->;
+> &
+    ComponentElementStylePropsType;
 
-export type CheckboxCheckmarkPropsType = CheckboxEffectivePropsType & {
+export type CheckboxCheckmarkPropsType = Pick<
+    CheckboxEffectivePropsType,
+    'checked' | 'checkedIcon' | 'disabled'
+> & {
     hasLabel: boolean;
 } & ComponentElementStylePropsType;

@@ -1,11 +1,4 @@
-import React, {
-    forwardRef,
-    FunctionComponent,
-    useCallback,
-    useContext,
-    useEffect,
-    useRef,
-} from 'react';
+import React, { forwardRef, useCallback, useContext, useEffect } from 'react';
 
 import { useComponentTheme } from '../../../utils/hooks';
 import {
@@ -26,101 +19,97 @@ import {
 import { DROPDOWN_ACTION_ITEM } from '../../Dropdown/constants';
 import AccordionContext from '../AccordionContext';
 import useAccordionHeaderClassName from './useAccordionHeaderClassName';
-import { useInternalRef } from '../../../utils';
 import { getWindow } from '../../../system/util/globals';
+import { useRootRef } from '../../../system';
 
-export const AccordionHeader: FunctionComponent<AccordionHeaderPropsType> = forwardRef(
-    function AccordionHeader(
-        { title, children, className, ...restProps },
-        ref,
-    ) {
-        const theme = useComponentTheme(
-            ACCORDION_HEADER_CLASS_PREFIX,
-            accordionHeaderDefaultTheme,
-        );
-        const { disabled, isExpanded, onToggle } = useContext(AccordionContext);
+export const AccordionHeader = forwardRef<
+    HTMLDivElement,
+    AccordionHeaderPropsType
+>(function AccordionHeader({ title, children, className, ...restProps }, ref) {
+    const theme = useComponentTheme(
+        ACCORDION_HEADER_CLASS_PREFIX,
+        accordionHeaderDefaultTheme,
+    );
+    const { disabled, isExpanded, onToggle } = useContext(AccordionContext);
 
-        const internalInputRef = useRef(null);
+    const classOverride = useAccordionHeaderClassName(
+        ACCORDION_HEADER_CLASS_PREFIX,
+        className,
+        disabled,
+        isExpanded,
+    );
 
-        const classOverride = useAccordionHeaderClassName(
-            ACCORDION_HEADER_CLASS_PREFIX,
-            className,
-            disabled,
-            isExpanded,
-        );
+    const internalInputRef = useRootRef<HTMLDivElement>(ref);
 
-        useInternalRef(ref, internalInputRef);
+    const enterKeyHandler = useCallback(
+        (event: KeyboardEvent) => {
+            const { key, target } = event;
 
-        const enterKeyHandler = useCallback(
-            (event: KeyboardEvent) => {
-                const { key, target } = event;
-
-                if (target === internalInputRef.current && key === 'Enter') {
-                    if (onToggle) {
-                        // @ts-ignore
-                        onToggle(event);
-                    }
+            if (target === internalInputRef.current && key === 'Enter') {
+                if (onToggle) {
+                    // @ts-ignore
+                    onToggle(event);
                 }
-            },
-            [internalInputRef, onToggle],
-        );
-
-        useEffect(() => {
-            const win = getWindow();
-            if (win && !disabled) {
-                win.addEventListener('keyup', enterKeyHandler);
-                return () => {
-                    win.removeEventListener('keyup', enterKeyHandler);
-                };
             }
+        },
+        [internalInputRef, onToggle],
+    );
 
-            return () => {};
-        }, [disabled, isExpanded]);
+    useEffect(() => {
+        const win = getWindow();
+        if (win && !disabled) {
+            win.addEventListener('keyup', enterKeyHandler);
+            return () => {
+                win.removeEventListener('keyup', enterKeyHandler);
+            };
+        }
 
-        return (
-            <AccordionHeaderRoot
-                data-testid={accordionHeaderRoot}
-                {...restProps}
-                className={classOverride.Root}
+        return () => {};
+    }, [disabled, isExpanded]);
+
+    return (
+        <AccordionHeaderRoot
+            data-testid={accordionHeaderRoot}
+            {...restProps}
+            className={classOverride.Root}
+            disabled={disabled}
+            isExpanded={isExpanded}
+            onClick={onToggle}
+            ref={internalInputRef}
+            tabIndex={0}
+            theme={theme}
+        >
+            <AccordionHeaderBody>
+                {title && (
+                    <AccordionHeaderTypography
+                        className={classOverride.HeaderTitle}
+                        data-testid={accordionHeaderTypography}
+                        disabled={disabled}
+                        label
+                        large
+                        theme={theme}
+                    >
+                        {title}
+                    </AccordionHeaderTypography>
+                )}
+                {children}
+            </AccordionHeaderBody>
+            <AccordionHeaderIcon
+                className={classOverride.IconContainer}
+                data-testid={accordionHeaderIcon}
                 disabled={disabled}
                 isExpanded={isExpanded}
-                onClick={onToggle}
-                ref={internalInputRef}
-                tabIndex={0}
                 theme={theme}
             >
-                <AccordionHeaderBody>
-                    {title && (
-                        <AccordionHeaderTypography
-                            className={classOverride.HeaderTitle}
-                            data-testid={accordionHeaderTypography}
-                            disabled={disabled}
-                            label
-                            large
-                            theme={theme}
-                        >
-                            {title}
-                        </AccordionHeaderTypography>
-                    )}
-                    {children}
-                </AccordionHeaderBody>
-                <AccordionHeaderIcon
-                    className={classOverride.IconContainer}
-                    data-testid={accordionHeaderIcon}
+                <AccordionHeaderExpansionIndicator
+                    className={classOverride.ExpansionIndicator}
                     disabled={disabled}
                     isExpanded={isExpanded}
+                    onClick={() => {}}
                     theme={theme}
-                >
-                    <AccordionHeaderExpansionIndicator
-                        className={classOverride.ExpansionIndicator}
-                        disabled={disabled}
-                        isExpanded={isExpanded}
-                        onClick={() => {}}
-                        theme={theme}
-                        data-testid={DROPDOWN_ACTION_ITEM}
-                    />
-                </AccordionHeaderIcon>
-            </AccordionHeaderRoot>
-        );
-    },
-);
+                    data-testid={DROPDOWN_ACTION_ITEM}
+                />
+            </AccordionHeaderIcon>
+        </AccordionHeaderRoot>
+    );
+});

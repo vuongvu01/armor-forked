@@ -3,8 +3,7 @@ import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../../type';
-import { MarginAttributesType } from '../../../system/attributes';
-import { ObjectLiteralType } from '../../../type';
+import { MarginAttributesType } from '../../../system';
 import { DateVector } from '../utils/DateVector';
 
 type DatePickerMonthYearSelectorEffectivePropsType = {
@@ -14,24 +13,25 @@ type DatePickerMonthYearSelectorEffectivePropsType = {
     onDisplayedDateVectorChange: (newVector: DateVector) => void;
     // add other custom properties here
 } & HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
-    MarginAttributesType &
-    ObjectLiteralType;
+    MarginAttributesType;
 
 export type DatePickerMonthYearSelectorPropsType = DatePickerMonthYearSelectorEffectivePropsType &
     ComponentStylePropsType;
 
-export type DatePickerMonthYearSelectorRootPropsType = DatePickerMonthYearSelectorEffectivePropsType &
+export type DatePickerMonthYearSelectorRootPropsType = HTMLAttributes<
+    HTMLDivElement
+> &
     ComponentElementStylePropsType;
 
-export type DatePickerMonthYearSelectorScrollPropsType = {} & ComponentElementStylePropsType;
+export type DatePickerMonthYearSelectorScrollPropsType = ComponentElementStylePropsType;
 
-export type DatePickerMonthYearSelectorListPropsType = {} & ComponentElementStylePropsType;
+export type DatePickerMonthYearSelectorListPropsType = ComponentElementStylePropsType;
 
-export type DatePickerMonthYearSelectorYearPropsType = {} & ComponentElementStylePropsType;
+export type DatePickerMonthYearSelectorYearPropsType = ComponentElementStylePropsType;
 
-export type DatePickerMonthYearSelectorYearTitlePropsType = {} & ComponentElementStylePropsType;
+export type DatePickerMonthYearSelectorYearTitlePropsType = ComponentElementStylePropsType;
 
-export type DatePickerMonthYearSelectorMonthListPropsType = {} & ComponentElementStylePropsType;
+export type DatePickerMonthYearSelectorMonthListPropsType = ComponentElementStylePropsType;
 
 export type DatePickerMonthYearSelectorMonthPropsType = {
     selected: boolean;

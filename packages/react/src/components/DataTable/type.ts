@@ -1,4 +1,4 @@
-import { ReactChild } from 'react';
+import { HTMLAttributes, ReactChild } from 'react';
 import {
     ComponentElementStylePropsType,
     ComponentStylePropsType,
@@ -93,10 +93,10 @@ type DataTableEffectivePropsType = Partial<{
     // add other custom properties here
 }> &
     Pick<TablePropsType, 'stickyHead'> &
+    HTMLAttributes<HTMLDivElement> &
     SizeAttributesType &
     MarginAttributesType &
-    PaddingAttributesType &
-    ObjectLiteralType;
+    PaddingAttributesType;
 
 /* DataTable component prop type */
 export type DataTablePropsType = DataTableEffectivePropsType &

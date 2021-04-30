@@ -1,7 +1,6 @@
-import React, { HTMLAttributes } from 'react';
+import { HTMLAttributes, MouseEvent } from 'react';
 
-import { MarginAttributesType } from '../../system/attributes';
-import { Indexed } from '../../type';
+import { MarginAttributesType } from '../../system';
 import { ComponentElementStylePropsType } from '../type';
 
 export type ClassBasedOnComponentType = {
@@ -16,23 +15,22 @@ export type ClassBasedOnComponentType = {
 export type AccordionContextType = {
     disabled?: boolean;
     isExpanded?: boolean;
-    onToggle?: (
-        event?:
-            | React.MouseEvent<HTMLInputElement, globalThis.MouseEvent>
-            | undefined,
-    ) => void;
+    onToggle?: (event: MouseEvent<HTMLDivElement>) => void;
 };
 
-export type AccordionEffectivePropsType = Indexed<{
-    children?: any;
-    defaultExpanded?: boolean;
-    disabled?: boolean;
-    expanded?: boolean;
+export type AccordionEffectivePropsType = Partial<{
+    children: any;
+    defaultExpanded: boolean;
+    disabled: boolean;
+    expanded: boolean;
+    onToggle: (event: MouseEvent<HTMLDivElement>, expanded: boolean) => void;
 }> &
     HTMLAttributes<HTMLElement> &
     MarginAttributesType;
 
 export type AccordionPropsType = AccordionEffectivePropsType;
 
-export type AccordionRootPropsType = AccordionEffectivePropsType &
+export type AccordionRootPropsType = {
+    isExpanded?: boolean;
+} & AccordionEffectivePropsType &
     ComponentElementStylePropsType;

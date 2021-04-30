@@ -1,13 +1,13 @@
-import React, { FunctionComponent, forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 // import PropTypes from 'prop-types';
 import { useComponentTheme } from '../../utils/hooks';
 
-import { useContainerClassNames } from './utils/useContainerClassNames';
+import { useContainerClassNames } from './hooks/useContainerClassNames';
 import { ContainerRoot } from './style';
 import { ContainerPropsType } from './type';
 import { CONTAINER_CLASS_PREFIX } from './constants';
 
-export const Container: FunctionComponent<ContainerPropsType> = forwardRef(
+export const Container = forwardRef<HTMLDivElement, ContainerPropsType>(
     function Container({ className, children, ...restProps }, ref) {
         const theme = useComponentTheme(CONTAINER_CLASS_PREFIX);
         const classNameComponents = useContainerClassNames(

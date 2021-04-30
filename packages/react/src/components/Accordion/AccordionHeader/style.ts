@@ -47,14 +47,14 @@ export const AccordionHeaderRoot = styled.div.withConfig(propsBlocker)<
     justify-content: space-between;
 
     ${typography('labelMedium')};
-    ${mouseCursor}
-    ${accordionHeaderStyle}
+    ${mouseCursor};
+    ${accordionHeaderStyle};
 `;
 
 export const AccordionHeaderTypography = styled(Typography)<
     AccordionHeaderRootPropsType
 >`
-    ${accordionHeaderTypographyStyle}
+    ${accordionHeaderTypographyStyle};
 `;
 
 export const AccordionHeaderBody = styled(Typography)<
@@ -83,11 +83,11 @@ export const AccordionHeaderExpansionIndicator = styled(ExpansionIndicator)<
         width: 56px;
     }
 
-    ${accordionExpansionIndicatorStyle}
+    ${accordionExpansionIndicatorStyle};
 `;
 
 export const AccordionHeaderIcon = styled.div.withConfig(propsBlocker)<
     AccordionHeaderRootPropsType
 >`
-    ${accordionHeaderTypographyStyle}
+    ${accordionHeaderTypographyStyle};
 `;

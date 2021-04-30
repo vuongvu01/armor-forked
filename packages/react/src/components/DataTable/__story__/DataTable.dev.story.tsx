@@ -220,7 +220,6 @@ export const RowSelectionAndStickyColumns = () => {
             }}
             stickyLeftColumn
             stickyRightColumn
-            horizontalScroll
             width="50rem"
         />
     );
@@ -239,7 +238,6 @@ export const RowSelectionAndNoStickyColumns = () => {
                 console.log('new selection');
                 console.log(selection);
             }}
-            horizontalScroll
             width="50rem"
         />
     );

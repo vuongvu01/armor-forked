@@ -1,16 +1,18 @@
 import React, { useMemo, useRef } from 'react';
 import { ContextMenuElements, ContextMenuPropsType } from '../type';
 import { useEventProxy } from './useEventProxy';
-import { ReferenceType } from '../../../type';
-import { useInternalRef } from '../../../utils';
-import { usePopper } from '../../../system/hooks/usePopper';
-import { useOuterClick } from '../../../system/hooks/useOuterClick';
-import { useControlledFlagState } from '../../../system/hooks/useControlledFlagState';
-import { useOverlay } from '../../../system/hooks/useOverlay';
+import { RefType } from '../../../type';
+import {
+    usePopper,
+    useOuterClick,
+    useControlledFlagState,
+    useOverlay,
+    useRootRef,
+} from '../../../system';
 
 const emptyMenuElements: ContextMenuElements = [];
 
-export const useContextMenu = (
+export const useContextMenu = <E extends HTMLDivElement>(
     {
         children,
         menuElements,
@@ -31,7 +33,7 @@ export const useContextMenu = (
 
         ...restProps
     }: ContextMenuPropsType,
-    ref: ReferenceType,
+    ref: RefType<E>,
 ) => {
     const [reallyOpen, setReallyOpen, , setClose] = useControlledFlagState(
         defaultOpen,
@@ -39,9 +41,7 @@ export const useContextMenu = (
         onToggle !== undefined ? onToggle : onOpenChange,
     );
 
-    const rootRef = useRef<HTMLElement>();
-    useInternalRef(ref, rootRef);
-
+    const rootRef = useRootRef<E>(ref);
     const triggerRef = useRef<HTMLElement>();
 
     const { panelProps, arrowProps } = usePopper(rootRef, triggerRef, {

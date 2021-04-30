@@ -1,18 +1,17 @@
-import React, { forwardRef, FunctionComponent } from 'react';
+import React, { forwardRef } from 'react';
 // import PropTypes from 'prop-types';
 import { useComponentTheme } from '../../utils/hooks';
 
-import { useCardClassName } from './utils/useCardClassName';
+import { useCardClassName } from './hooks/useCardClassName';
 import { CardRoot } from './style';
 import { CardPropsType } from './type';
 import { CARD_CLASS_PREFIX } from './constants';
 
-export const Card: FunctionComponent<CardPropsType> = forwardRef(function Card(
+export const Card = forwardRef<HTMLDivElement, CardPropsType>(function Card(
     { className, ...restProps },
     ref,
 ) {
     const theme = useComponentTheme(CARD_CLASS_PREFIX);
-
     const classNameRoot = useCardClassName(CARD_CLASS_PREFIX, className);
 
     return (

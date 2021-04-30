@@ -1,13 +1,14 @@
-import { useRef } from 'react';
 import { useDatePickerPopper } from './useDatePickerPopper';
-import { useControlledFlagState } from '../../../system/hooks/useControlledFlagState';
-import { useInternalRef } from '../../../utils';
-import { ReferenceType } from '../../../type';
+import { RefType } from '../../../type';
 import { DatePickerEffectiveGenericPropsType } from '../type';
-import { useOverlay } from '../../../system/hooks/useOverlay';
-import { useOuterClick } from '../../../system/hooks/useOuterClick';
+import {
+    useOuterClick,
+    useOverlay,
+    useControlledFlagState,
+    useRootRef,
+} from '../../../system';
 
-export const useDatePickerPanel = <V>(
+export const useDatePickerPanel = <V, E extends HTMLDivElement>(
     {
         open,
         defaultOpen,
@@ -16,7 +17,7 @@ export const useDatePickerPanel = <V>(
         enablePortal,
         ...restProps
     }: DatePickerEffectiveGenericPropsType<V>,
-    ref: ReferenceType,
+    ref: RefType<E>,
 ) => {
     const {
         dropdownRef,
@@ -34,9 +35,7 @@ export const useDatePickerPanel = <V>(
 
     const { zIndex: realZIndex } = useOverlay(reallyOpen, { zIndex });
 
-    // root component reference
-    const rootRef = useRef<HTMLElement>(null);
-    useInternalRef(ref, rootRef);
+    const rootRef = useRootRef<E>(ref);
 
     // main panel close on outer click
     useOuterClick([rootRef, dropdownRef], setClose, reallyOpen);

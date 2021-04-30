@@ -1,4 +1,4 @@
-import React, { FunctionComponent, forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { PortalToBody } from '../../system/util/PortalToBody';
@@ -21,7 +21,7 @@ import { DatePickerDaySelector } from './DatePickerDaySelector';
 import { DatePickerTopBar } from './DatePickerTopBar';
 import { useComponentTheme } from '../../utils/hooks';
 
-export const DatePicker: FunctionComponent<DatePickerPropsType> = forwardRef(
+export const DatePicker = forwardRef<HTMLDivElement, DatePickerPropsType>(
     function DatePicker({ className, ...props }, ref) {
         const theme = useComponentTheme(DATE_PICKER_CLASS_PREFIX);
 

@@ -15,81 +15,78 @@ import { DatePickerTopBarPropsType } from './type';
 import { DATE_PICKER_TOP_BAR_CLASS_PREFIX } from './constants';
 import { useComponentTheme } from '../../../utils/hooks';
 
-export const DatePickerTopBar: FunctionComponent<DatePickerTopBarPropsType> = forwardRef(
-    function DatePickerTopBar({ className, ...props }, ref) {
-        const theme = useComponentTheme(DATE_PICKER_TOP_BAR_CLASS_PREFIX);
-        const classNameComponents = useDatePickerTopBarClassNames(
-            DATE_PICKER_TOP_BAR_CLASS_PREFIX,
-            className,
-        );
+export const DatePickerTopBar = forwardRef<
+    HTMLDivElement,
+    DatePickerTopBarPropsType
+>(function DatePickerTopBar({ className, ...props }, ref) {
+    const theme = useComponentTheme(DATE_PICKER_TOP_BAR_CLASS_PREFIX);
+    const classNameComponents = useDatePickerTopBarClassNames(
+        DATE_PICKER_TOP_BAR_CLASS_PREFIX,
+        className,
+    );
 
-        const {
-            rootProps,
-            monthYearSelectorToggleProps,
-            monthYearSelectorToggleArrowProps,
-            monthNavigationButtonBackwardProps,
-            monthNavigationButtonForwardProps,
+    const {
+        rootProps,
+        monthYearSelectorToggleProps,
+        monthYearSelectorToggleArrowProps,
+        monthNavigationButtonBackwardProps,
+        monthNavigationButtonForwardProps,
 
-            year,
-            monthName,
-        } = useDatePickerTopBar(props, ref);
+        year,
+        monthName,
+    } = useDatePickerTopBar(props, ref);
 
-        return (
-            <DatePickerTopBarRoot
-                {...rootProps}
+    return (
+        <DatePickerTopBarRoot
+            {...rootProps}
+            theme={theme}
+            className={classNameComponents.Root}
+        >
+            <DatePickerTopBarMonthYearSelectorToggle
+                {...monthYearSelectorToggleProps}
                 theme={theme}
-                className={classNameComponents.Root}
+                className={classNameComponents.MonthYearSelectorToggle}
             >
-                <DatePickerTopBarMonthYearSelectorToggle
-                    {...monthYearSelectorToggleProps}
+                {monthName} {year}
+                <DatePickerTopBarMonthYearSelectorToggleArrow
+                    {...monthYearSelectorToggleArrowProps}
+                    className={classNameComponents.MonthYearSelectorToggleArrow}
+                />
+            </DatePickerTopBarMonthYearSelectorToggle>
+            <DatePickerTopBarMonthNavigation
+                theme={theme}
+                className={classNameComponents.MonthNavigation}
+            >
+                <DatePickerTopBarMonthNavigationButtonBackward
+                    {...monthNavigationButtonBackwardProps}
                     theme={theme}
-                    className={classNameComponents.MonthYearSelectorToggle}
+                    className={
+                        classNameComponents.MonthNavigationButtonBackward
+                    }
                 >
-                    {monthName} {year}
-                    <DatePickerTopBarMonthYearSelectorToggleArrow
-                        {...monthYearSelectorToggleArrowProps}
+                    <ArrowRightIcon
+                        medium
                         className={
-                            classNameComponents.MonthYearSelectorToggleArrow
+                            classNameComponents.MonthNavigationButtonArrow
                         }
                     />
-                </DatePickerTopBarMonthYearSelectorToggle>
-                <DatePickerTopBarMonthNavigation
+                </DatePickerTopBarMonthNavigationButtonBackward>
+                <DatePickerTopBarMonthNavigationButtonForward
+                    {...monthNavigationButtonForwardProps}
                     theme={theme}
-                    className={classNameComponents.MonthNavigation}
+                    className={classNameComponents.MonthNavigationButtonForward}
                 >
-                    <DatePickerTopBarMonthNavigationButtonBackward
-                        {...monthNavigationButtonBackwardProps}
-                        theme={theme}
+                    <ArrowRightIcon
+                        medium
                         className={
-                            classNameComponents.MonthNavigationButtonBackward
+                            classNameComponents.MonthNavigationButtonArrow
                         }
-                    >
-                        <ArrowRightIcon
-                            medium
-                            className={
-                                classNameComponents.MonthNavigationButtonArrow
-                            }
-                        />
-                    </DatePickerTopBarMonthNavigationButtonBackward>
-                    <DatePickerTopBarMonthNavigationButtonForward
-                        {...monthNavigationButtonForwardProps}
-                        theme={theme}
-                        className={
-                            classNameComponents.MonthNavigationButtonForward
-                        }
-                    >
-                        <ArrowRightIcon
-                            medium
-                            className={
-                                classNameComponents.MonthNavigationButtonArrow
-                            }
-                        />
-                    </DatePickerTopBarMonthNavigationButtonForward>
-                </DatePickerTopBarMonthNavigation>
-            </DatePickerTopBarRoot>
-        );
-    },
-);
+                    />
+                </DatePickerTopBarMonthNavigationButtonForward>
+            </DatePickerTopBarMonthNavigation>
+        </DatePickerTopBarRoot>
+    );
+});
 
 DatePickerTopBar.defaultProps = {};
 

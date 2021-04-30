@@ -3,8 +3,7 @@ import { DatePickerEffectiveGenericPropsType } from '../type';
 import { DateVectorRange } from '../utils/DateVectorRange';
 import { DateVector } from '../utils/DateVector';
 import { TimeVector24 } from '../utils/TimeVector24';
-import { useFlagState } from '../../../system/hooks/useFlagState';
-import { useGuidedState } from '../../../system/hooks/useGuidedState';
+import { useFlagState, useGuidedState } from '../../../system';
 
 type DatePickerStateType = {
     reallyOpen: boolean;

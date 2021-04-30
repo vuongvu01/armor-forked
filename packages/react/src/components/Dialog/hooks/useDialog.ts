@@ -1,16 +1,17 @@
-import { MouseEvent, useCallback, useRef } from 'react';
+import { MouseEvent, useCallback } from 'react';
 import { DialogPropsType } from '../type';
-import { ReferenceType } from '../../../type';
-import { useControlledFlagState } from '../../../system/hooks/useControlledFlagState';
-import { useInternalRef } from '../../../utils';
-import { useOuterClick } from '../../../system/hooks/useOuterClick';
-import { useOverlay } from '../../../system/hooks/useOverlay';
-import { extractSizeProps } from '../../../system';
+import {
+    useControlledFlagState,
+    useOverlay,
+    extractSizeProps,
+    useRootRef,
+    useDisplayEffects,
+    useDocumentKeydown,
+} from '../../../system';
 import { dialogCloseButton } from '../constants';
-import { useDisplayEffects } from '../../../system/hooks/useDisplayEffects';
-import { useDocumentKeydown } from '../../../system/hooks/useDocumentKeyDown';
+import { RefType } from '../../../type';
 
-export const useDialog = (
+export const useDialog = <E extends HTMLElement>(
     {
         // ComponentBehaviourOpenStateType
         open,
@@ -46,7 +47,7 @@ export const useDialog = (
 
         ...restProps
     }: DialogPropsType,
-    ref: ReferenceType,
+    ref: RefType<E>,
 ) => {
     const reallyEnableCloseButton =
         enableCloseButton !== undefined
@@ -81,8 +82,7 @@ export const useDialog = (
         }
     }, [onClose, setClose, isTopOverlay]);
 
-    const rootRef = useRef<HTMLElement>();
-    useInternalRef(ref, rootRef);
+    const rootRef = useRootRef<E>(ref);
 
     const onBackdropClick = useCallback(() => {
         if (reallyEnableBackdrop && enableCloseOnBackdropClick !== false) {
@@ -132,7 +132,7 @@ export const useDialog = (
         rootProps: {
             ...restSizeProps,
             zIndex: realZIndex,
-            ref,
+            ref: rootRef,
         },
         getBackdropProps: () => ({
             disableEffects:

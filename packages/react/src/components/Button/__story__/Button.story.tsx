@@ -201,7 +201,6 @@ export const Playground = () => (
         href="https://google.com"
         target="_blank"
         className="custom-class-name"
-        classNames={{ Root: 'custom-btn-root' }}
     >
         {text('Label', 'Primary button')}
     </Button>

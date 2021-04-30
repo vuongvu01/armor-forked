@@ -24,7 +24,6 @@ export const CustomAttributes = () => (
         margin={20}
         marginTop={0}
         height={5}
-        passThis="1"
         data-passthis="1"
         aria-label="1"
         id="can-see-this"

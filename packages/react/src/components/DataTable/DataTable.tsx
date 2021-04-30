@@ -1,9 +1,4 @@
-import React, {
-    FunctionComponent,
-    forwardRef,
-    Fragment,
-    RefObject,
-} from 'react';
+import React, { forwardRef, Fragment, RefObject } from 'react';
 import PropTypes from 'prop-types';
 
 import { useDataTable } from './hooks/useDataTable';
@@ -32,7 +27,7 @@ import { useDataTableClassNames } from './hooks/useDataTableClassNames';
 import { PageNavigation } from '../PageNavigation';
 import { makeRowClassName } from './utils/makeRowClassName';
 
-export const DataTable: FunctionComponent<DataTablePropsType> = forwardRef(
+export const DataTable = forwardRef<HTMLDivElement, DataTablePropsType>(
     function DataTable({ className, ...props }, ref) {
         const {
             columns,
@@ -71,7 +66,7 @@ export const DataTable: FunctionComponent<DataTablePropsType> = forwardRef(
 
             enableHeader,
             enableFooter,
-        } = useDataTable(props, ref as RefObject<HTMLDivElement>);
+        } = useDataTable(props, ref);
 
         const theme = useComponentTheme(DATA_TABLE_CLASS_PREFIX);
         const classNameComponents = useDataTableClassNames(

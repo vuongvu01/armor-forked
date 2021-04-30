@@ -1,19 +1,19 @@
 import { useMemo } from 'react';
 import { DateRangePickerPropsType, DateValueRangeType } from '../type';
-import { ReferenceType } from '../../../type';
+import { RefType } from '../../../type';
 import { useDateRangePickerSelectionEvents } from './useDateRangePickerSelectionEvents';
 import { formatDateTimeVector } from '../utils/formatDateTimeVector';
 import { useDatePickerPanel } from './useDatePickerPanel';
 import { useDatePickerState } from './useDatePickerState';
 import { useDatePickerCallbacks } from './useDatePickerCallbacks';
-import { useControlledState } from '../../../system/hooks/useControlledState';
+import { useControlledState } from '../../../system';
 import { DateVectorRange } from '../utils/DateVectorRange';
 import { TimeVector24 } from '../utils/TimeVector24';
 
 const externalizeValue = (value: DateVectorRange, timeVector: TimeVector24) =>
     value.convertToLocalDateRange(timeVector);
 
-export const useDateRangePicker = (
+export const useDateRangePicker = <E extends HTMLDivElement>(
     {
         enableTimePicker,
         defaultDateValue,
@@ -25,7 +25,7 @@ export const useDateRangePicker = (
         'data-testid-input': dataTestIdInput,
         ...restProps
     }: DateRangePickerPropsType,
-    ref: ReferenceType,
+    ref: RefType<E>,
 ) => {
     // controlled and uncontrolled state: dateValue, defaultDateValue and onDateValueChange mapped to internalValue
     const [externalValue, setExternalValue] = useControlledState<
@@ -50,7 +50,7 @@ export const useDateRangePicker = (
         dropdownProps,
         portalProps,
         restProps: panelRestProps,
-    } = useDatePickerPanel<DateValueRangeType>(restProps, ref);
+    } = useDatePickerPanel<DateValueRangeType, E>(restProps, ref);
 
     const {
         dirtyInternalValueVector,

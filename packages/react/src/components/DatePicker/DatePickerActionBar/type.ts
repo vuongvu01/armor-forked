@@ -3,13 +3,12 @@ import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../../type';
-import { ObjectLiteralType } from '../../../type';
 
-type DatePickerActionBarEffectivePropsType = {
+type DatePickerActionBarEffectivePropsType = Partial<{
     applyValue: () => void;
     setClose: () => void;
-} & HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
-    ObjectLiteralType;
+}> &
+    HTMLAttributes<HTMLDivElement>; // includes all HTML Div attributes
 
 export type DatePickerActionBarPropsType = DatePickerActionBarEffectivePropsType &
     ComponentStylePropsType;

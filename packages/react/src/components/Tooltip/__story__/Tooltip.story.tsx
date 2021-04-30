@@ -134,7 +134,7 @@ export const WeirdComponents = () => (
 );
 
 export const OriginalRef = () => {
-    const btnRef = useRef();
+    const btnRef = useRef<HTMLButtonElement>(null);
     useEffect(() => {
         setTimeout(() => {
             // eslint-disable-next-line no-console

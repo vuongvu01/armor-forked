@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-import { makeRootClassName } from '../../../utils';
+import { makeBEM, makeRootClassName } from '../../../utils';
 
 export const useCloseButtonClassName = (
     classPrefix: string,
@@ -9,5 +9,6 @@ export const useCloseButtonClassName = (
     useMemo(() => {
         return {
             Root: makeRootClassName(classPrefix, className),
+            Icon: makeBEM(classPrefix, 'Icon'),
         };
     }, [classPrefix, className]);

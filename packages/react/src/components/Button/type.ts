@@ -9,7 +9,6 @@ import {
     PaddingAttributesType,
     WidthAttributesType,
 } from '../../system';
-import { Indexed } from '../../type';
 import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
@@ -17,14 +16,15 @@ import {
 
 export type ButtonTagType = string | ComponentType<any>;
 
-type ButtonEffectivePropsType = Indexed<{
-    tag?: ButtonTagType;
-    primary?: boolean;
-    secondary?: boolean;
-    tertiary?: boolean;
-    danger?: boolean;
-    small?: boolean;
-    wide?: boolean;
+type ButtonEffectivePropsType = Partial<{
+    tag: ButtonTagType;
+    primary: boolean;
+    secondary: boolean;
+    tertiary: boolean;
+    danger: boolean;
+    small: boolean;
+    wide: boolean;
+    to: string;
     // add other custom properties here
 }> &
     ButtonHTMLAttributes<HTMLButtonElement> & // includes all HTML Button attributes

@@ -61,7 +61,7 @@ const checkmarkStyle = ({
     },
     checkedIcon,
     disabled,
-}: CheckboxRootPropsType) => {
+}: CheckboxCheckmarkPropsType) => {
     const checkmarkColor = disabled
         ? Checkbox.Root.checkmark.disabled
         : Checkbox.Root.checkmark.base;
@@ -134,10 +134,10 @@ export const CheckboxCheckmark = styled.div.withConfig(propsBlocker)<
         position: absolute;
         transition: all ${transitionDurationInSec}s ease;
 
-        ${checkmarkStyle}
+        ${checkmarkStyle};
     }
 
-    ${pointerEvents}
+    ${pointerEvents};
 `;
 
 export const CheckboxInput = styled.input.withConfig(propsBlocker)<

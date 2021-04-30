@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useRef, useState, MouseEvent } from 'react';
 import { DatePickerMonthYearSelectorPropsType } from '../type';
-import { ReferenceType } from '../../../../type';
+import { RefType } from '../../../../type';
 import {
     MONTH_NAMES_SHORT,
     YEAR_SELECTOR_RANGE_DELTA,
     YEAR_SELECTOR_SCROLL_TOP,
 } from '../constants';
-import { useVerticalScrollBoundariesObserver } from '../../../../system/hooks/useVerticalScrollBoundariesObserver';
+import { useVerticalScrollBoundariesObserver } from '../../../../system';
 import { extractNumericDataAttribute } from '../../utils/extractNumericDataAttribute';
 
 const getInitialYearRange = (year: number) => {
@@ -18,14 +18,14 @@ const getInitialYearRange = (year: number) => {
     return yearRange;
 };
 
-export const useDatePickerMonthYearSelector = (
+export const useDatePickerMonthYearSelector = <E extends HTMLDivElement>(
     {
         displayedDateVector,
         onDisplayedDateVectorChange,
         toggleMonthYearSelector,
         ...restProps
     }: DatePickerMonthYearSelectorPropsType,
-    ref: ReferenceType,
+    ref: RefType<E>,
 ) => {
     const displayedYear = displayedDateVector.year;
     const displayedMonth = displayedDateVector.month;

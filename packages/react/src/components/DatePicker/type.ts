@@ -4,7 +4,6 @@ import {
     ComponentElementStylePropsType,
 } from '../type';
 import { MarginAttributesType, WidthAttributesType } from '../../system';
-import { ObjectLiteralType } from '../../type';
 import { ComponentBehaviourOpenStateType } from '../../system/types/ComponentBehaviourOpenStateType';
 import { ComponentBehaviourOverlayType } from '../../system/types/ComponentBehaviourOverlayType';
 import { ComponentBehaviourPortalType } from '../../system/types/ComponentBehaviourPortalType';
@@ -32,6 +31,9 @@ export type DatePickerEffectiveGenericPropsType<V> = Partial<{
 
     defaultMonthYearSelectorOpen: boolean;
 
+    // special data attributes
+    'data-testid-input': string;
+
     // add other custom properties here
 }> &
     ComponentBehaviourOpenStateType &
@@ -39,8 +41,7 @@ export type DatePickerEffectiveGenericPropsType<V> = Partial<{
     ComponentBehaviourPortalType &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
     MarginAttributesType &
-    WidthAttributesType &
-    ObjectLiteralType;
+    WidthAttributesType;
 
 /** 👉 PROPS TYPE */
 export type DatePickerEffectivePropsType = DatePickerEffectiveGenericPropsType<

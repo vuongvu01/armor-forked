@@ -14,69 +14,70 @@ import { DatePickerTimeSelectorPropsType } from './type';
 import { DATE_PICKER_TIME_SELECTOR_CLASS_PREFIX } from './constants';
 import { useComponentTheme } from '../../../utils/hooks';
 
-export const DatePickerTimeSelector: FunctionComponent<DatePickerTimeSelectorPropsType> = forwardRef(
-    function DatePickerTimeSelector({ className, ...props }, ref) {
-        const theme = useComponentTheme(DATE_PICKER_TIME_SELECTOR_CLASS_PREFIX);
-        const classNameComponents = useDatePickerTimeSelectorClassNames(
-            DATE_PICKER_TIME_SELECTOR_CLASS_PREFIX,
-            className,
-        );
+export const DatePickerTimeSelector = forwardRef<
+    HTMLDivElement,
+    DatePickerTimeSelectorPropsType
+>(function DatePickerTimeSelector({ className, ...props }, ref) {
+    const theme = useComponentTheme(DATE_PICKER_TIME_SELECTOR_CLASS_PREFIX);
+    const classNameComponents = useDatePickerTimeSelectorClassNames(
+        DATE_PICKER_TIME_SELECTOR_CLASS_PREFIX,
+        className,
+    );
 
-        const {
-            rootProps,
-            hourInputProps,
-            minuteInputProps,
-            buttonAMProps,
-            buttonPMProps,
-        } = useDatePickerTimeSelector(props, ref);
+    const {
+        rootProps,
+        hourInputProps,
+        minuteInputProps,
+        buttonAMProps,
+        buttonPMProps,
+    } = useDatePickerTimeSelector(props, ref);
 
-        return (
-            <DatePickerTimeSelectorRoot
-                {...rootProps}
+    return (
+        <DatePickerTimeSelectorRoot
+            {...rootProps}
+            theme={theme}
+            className={classNameComponents.Root}
+        >
+            <DatePickerTimeSelectorClock
                 theme={theme}
-                className={classNameComponents.Root}
+                className={classNameComponents.Clock}
             >
-                <DatePickerTimeSelectorClock
+                <DatePickerTimeSelectorInput
+                    {...hourInputProps}
                     theme={theme}
-                    className={classNameComponents.Clock}
-                >
-                    <DatePickerTimeSelectorInput
-                        {...hourInputProps}
-                        theme={theme}
-                        className={classNameComponents.Input}
-                    />{' '}
-                    <TimeSeparatorIcon
-                        className={classNameComponents.TimeSeparatorIcon}
-                    />{' '}
-                    <DatePickerTimeSelectorInput
-                        {...minuteInputProps}
-                        theme={theme}
-                        className={classNameComponents.Input}
-                    />
-                </DatePickerTimeSelectorClock>
-                <DatePickerTimeSelectorDayPeriodSelector
+                    className={classNameComponents.InputHours}
+                />{' '}
+                <TimeSeparatorIcon
+                    className={classNameComponents.TimeSeparatorIcon}
+                />{' '}
+                <DatePickerTimeSelectorInput
+                    {...minuteInputProps}
                     theme={theme}
-                    className={classNameComponents.DayPeriodSelector}
+                    className={classNameComponents.InputMinutes}
+                />
+            </DatePickerTimeSelectorClock>
+            <DatePickerTimeSelectorDayPeriodSelector
+                theme={theme}
+                className={classNameComponents.DayPeriodSelector}
+            >
+                <DatePickerTimeSelectorButton
+                    {...buttonAMProps}
+                    theme={theme}
+                    className={classNameComponents.ButtonAM}
                 >
-                    <DatePickerTimeSelectorButton
-                        {...buttonAMProps}
-                        theme={theme}
-                        className={classNameComponents.Button}
-                    >
-                        AM
-                    </DatePickerTimeSelectorButton>
-                    <DatePickerTimeSelectorButton
-                        {...buttonPMProps}
-                        theme={theme}
-                        className={classNameComponents.Button}
-                    >
-                        PM
-                    </DatePickerTimeSelectorButton>
-                </DatePickerTimeSelectorDayPeriodSelector>
-            </DatePickerTimeSelectorRoot>
-        );
-    },
-);
+                    AM
+                </DatePickerTimeSelectorButton>
+                <DatePickerTimeSelectorButton
+                    {...buttonPMProps}
+                    theme={theme}
+                    className={classNameComponents.ButtonPM}
+                >
+                    PM
+                </DatePickerTimeSelectorButton>
+            </DatePickerTimeSelectorDayPeriodSelector>
+        </DatePickerTimeSelectorRoot>
+    );
+});
 
 DatePickerTimeSelector.defaultProps = {};
 

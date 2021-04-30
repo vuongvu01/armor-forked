@@ -1,4 +1,4 @@
-import { RefObject, useMemo, useRef } from 'react';
+import { useRef } from 'react';
 import {
     DataTableColumnType,
     DataTableDataType,
@@ -17,6 +17,7 @@ import {
 import { useDataTablePageNavigation } from './useDataTablePageNavigation';
 import { TableCell, TableControllerCell, TableHeadCell } from '../../Table';
 import { useRootRef, useVirtualization } from '../../../system';
+import { RefType } from '../../../type';
 
 export const useDataTable = (
     {
@@ -33,7 +34,7 @@ export const useDataTable = (
 
         ...restProps
     }: DataTablePropsType,
-    ref: RefObject<HTMLDivElement>,
+    ref: RefType<HTMLDivElement>,
 ) => {
     const innerRef = useRootRef<HTMLDivElement>(ref);
     const tableBodyRef = useRef<HTMLTableSectionElement>();

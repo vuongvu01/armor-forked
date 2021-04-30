@@ -39,7 +39,6 @@ export const OptionListItem: FunctionComponent<OptionListItemPropsType> = ({
             {multiple && (
                 <Checkbox
                     {...checkboxProps}
-                    theme={theme}
                     className={classOverride.Checkbox}
                 />
             )}

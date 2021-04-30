@@ -3,12 +3,11 @@ import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../type';
-import { SizeAttributesType } from '../../system';
-import { ObjectLiteralType, ScalarType } from '../../type';
+import { SizeAttributesType, PopperPropsType } from '../../system';
+import { ScalarType } from '../../type';
 import { ComponentBehaviourOpenStateType } from '../../system/types/ComponentBehaviourOpenStateType';
 import { ComponentBehaviourOverlayType } from '../../system/types/ComponentBehaviourOverlayType';
 import { ComponentBehaviourPortalType } from '../../system/types/ComponentBehaviourPortalType';
-import { PopperPropsType } from '../../system/hooks/usePopper';
 
 export type ContextMenuElements = Array<{
     label: ReactChild;
@@ -33,8 +32,7 @@ type ContextMenuEffectivePropsType = Partial<{
     ComponentBehaviourOverlayType &
     ComponentBehaviourPortalType &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
-    SizeAttributesType &
-    ObjectLiteralType;
+    SizeAttributesType;
 
 /* ContextMenu component prop type */
 export type ContextMenuPropsType = ContextMenuEffectivePropsType &

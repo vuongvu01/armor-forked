@@ -1,11 +1,11 @@
 import { DatePickerDaySelectorPropsType } from '../type';
 import { useDatePickerDaySelectorCalendar } from './useDatePickerDaySelectorCalendar';
-import { ReferenceType, UnpackedType } from '../../../../type';
+import { RefType, UnpackedType } from '../../../../type';
 import { DATE_PICKER_DAY_SELECTOR_WEEK_DAYS } from '../constants';
 import { useDatePickerDaySelectorSelection } from './useDatePickerDaySelectorSelection';
 import { appendBEMModifierOnCondition } from '../../../../utils';
 
-export const useDatePickerDaySelector = (
+export const useDatePickerDaySelector = <E extends HTMLDivElement>(
     {
         displayedDateVector,
         currentDateVector,
@@ -15,7 +15,7 @@ export const useDatePickerDaySelector = (
         selectionEndCandidate,
         ...restProps
     }: DatePickerDaySelectorPropsType,
-    ref: ReferenceType,
+    ref: RefType<E>,
 ) => {
     const calendar = useDatePickerDaySelectorCalendar(
         displayedDateVector,
