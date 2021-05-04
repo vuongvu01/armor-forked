@@ -1,4 +1,4 @@
-import React, { forwardRef, FunctionComponent } from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { useComponentTheme } from '../../utils/hooks';
@@ -16,115 +16,104 @@ import {
     HeaderNavigationRoot,
     HeaderNavigationTitleRoot,
 } from './style';
-import { useHeaderNavigationClassName } from './utils';
+import { useHeaderNavigationClassName } from './hooks';
 import { HeaderNavigationMenu } from './HeaderNavigationMenu';
 import { HeaderNavigationItem } from './HeaderNavigationItem';
 
-export const HeaderNavigation: FunctionComponent<HeaderNavigationPropsType> = forwardRef(
-    function HeaderNavigation(
-        {
-            className,
-            /**
-             * @deprecated
-             * Use defaultExpanded instead
-             */
-            isMenuExpanded,
-            defaultExpanded,
-            navigationMenuTitle,
-            navigationMenuContent,
-            navigationAction,
-            links,
-            selector,
-            title,
-            search,
-            onSearchItemSelect,
-            ...restProps
-        },
-        ref,
-    ) {
-        const theme = useComponentTheme(
-            HEADER_NAVIGATION_CLASS_PREFIX,
-            headerNavigationDefaultTheme,
-        );
-
-        const classOverride = useHeaderNavigationClassName(
-            HEADER_NAVIGATION_CLASS_PREFIX,
-            className,
-        );
-
-        return (
-            <HeaderNavigationRoot
-                data-testid={headerNavigationRoot}
-                {...restProps}
-                className={classOverride.Root}
-                ref={ref}
-                theme={theme}
-                onSearchItemSelect={onSearchItemSelect}
-            >
-                <HeaderNavigationContent
-                    theme={theme}
-                    className={classOverride.HeaderNavigationContent}
-                >
-                    <HeaderNavigationContentItem
-                        theme={theme}
-                        className={classOverride.HeaderNavigationContentItem}
-                    >
-                        <HeaderNavigationContentLeft
-                            theme={theme}
-                            className={
-                                classOverride.HeaderNavigationContentLeft
-                            }
-                        >
-                            {(navigationMenuTitle || navigationMenuContent) && (
-                                <HeaderNavigationMenu
-                                    headerTitle={navigationMenuTitle}
-                                    headerContent={navigationMenuContent}
-                                    isMenuExpanded={isMenuExpanded}
-                                    defaultExpanded={defaultExpanded}
-                                />
-                            )}
-                            {title && (
-                                <HeaderNavigationItem
-                                    theme={theme}
-                                    className={
-                                        classOverride.HeaderNavigationItem
-                                    }
-                                    flexGrow={1}
-                                >
-                                    <HeaderNavigationTitleRoot
-                                        theme={theme}
-                                        className={
-                                            classOverride.NavigationTitle
-                                        }
-                                    >
-                                        {title}
-                                    </HeaderNavigationTitleRoot>
-                                </HeaderNavigationItem>
-                            )}
-                            {links}
-                        </HeaderNavigationContentLeft>
-                    </HeaderNavigationContentItem>
-                    <HeaderNavigationContentItem
-                        theme={theme}
-                        className={classOverride.HeaderNavigationContentItem}
-                    >
-                        <HeaderNavigationContentRight
-                            alignItems="center"
-                            theme={theme}
-                            className={
-                                classOverride.HeaderNavigationContentRight
-                            }
-                        >
-                            {search}
-                            {selector}
-                            {navigationAction}
-                        </HeaderNavigationContentRight>
-                    </HeaderNavigationContentItem>
-                </HeaderNavigationContent>
-            </HeaderNavigationRoot>
-        );
+export const HeaderNavigation = forwardRef<
+    HTMLDivElement,
+    HeaderNavigationPropsType
+>(function HeaderNavigation(
+    {
+        className,
+        /**
+         * @deprecated
+         * Use defaultExpanded instead
+         */
+        isMenuExpanded,
+        defaultExpanded,
+        navigationMenuTitle,
+        navigationMenuContent,
+        navigationAction,
+        links,
+        selector,
+        title,
+        search,
+        ...restProps
     },
-);
+    ref,
+) {
+    const theme = useComponentTheme(
+        HEADER_NAVIGATION_CLASS_PREFIX,
+        headerNavigationDefaultTheme,
+    );
+
+    const classOverride = useHeaderNavigationClassName(
+        HEADER_NAVIGATION_CLASS_PREFIX,
+        className,
+    );
+
+    return (
+        <HeaderNavigationRoot
+            data-testid={headerNavigationRoot}
+            {...restProps}
+            className={classOverride.Root}
+            ref={ref}
+            theme={theme}
+        >
+            <HeaderNavigationContent
+                theme={theme}
+                className={classOverride.HeaderNavigationContent}
+            >
+                <HeaderNavigationContentItem
+                    theme={theme}
+                    className={classOverride.HeaderNavigationContentItem}
+                >
+                    <HeaderNavigationContentLeft
+                        theme={theme}
+                        className={classOverride.HeaderNavigationContentLeft}
+                    >
+                        {(navigationMenuTitle || navigationMenuContent) && (
+                            <HeaderNavigationMenu
+                                headerTitle={navigationMenuTitle}
+                                headerContent={navigationMenuContent}
+                                isMenuExpanded={isMenuExpanded}
+                                defaultExpanded={defaultExpanded}
+                            />
+                        )}
+                        {title && (
+                            <HeaderNavigationItem
+                                theme={theme}
+                                className={classOverride.HeaderNavigationItem}
+                            >
+                                <HeaderNavigationTitleRoot
+                                    theme={theme}
+                                    className={classOverride.NavigationTitle}
+                                >
+                                    {title}
+                                </HeaderNavigationTitleRoot>
+                            </HeaderNavigationItem>
+                        )}
+                        {links}
+                    </HeaderNavigationContentLeft>
+                </HeaderNavigationContentItem>
+                <HeaderNavigationContentItem
+                    theme={theme}
+                    className={classOverride.HeaderNavigationContentItem}
+                >
+                    <HeaderNavigationContentRight
+                        theme={theme}
+                        className={classOverride.HeaderNavigationContentRight}
+                    >
+                        {search}
+                        {selector}
+                        {navigationAction}
+                    </HeaderNavigationContentRight>
+                </HeaderNavigationContentItem>
+            </HeaderNavigationContent>
+        </HeaderNavigationRoot>
+    );
+});
 
 HeaderNavigation.defaultProps = {
     justifyContent: 'space-between',

@@ -1,7 +1,6 @@
 import { HTMLAttributes } from 'react';
 
-import { MarginAttributesType } from '../../../system/attributes';
-import { Indexed } from '../../../type';
+import { MarginAttributesType } from '../../../system';
 import { ComponentElementStylePropsType } from '../../type';
 
 export type ClassBasedOnComponentType = {
@@ -10,8 +9,7 @@ export type ClassBasedOnComponentType = {
     component: string;
 };
 
-type HeaderNavigationActionEffectivePropsType = Indexed<{}> &
-    HTMLAttributes<HTMLElement> &
+type HeaderNavigationActionEffectivePropsType = HTMLAttributes<HTMLElement> &
     MarginAttributesType;
 
 export type HeaderNavigationActionPropsType = HeaderNavigationActionEffectivePropsType;

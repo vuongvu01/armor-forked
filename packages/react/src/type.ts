@@ -27,6 +27,7 @@ export type ReferenceType<C = unknown> =
     | MutableRefObject<C>
     | null;
 
+// todo: replace with ForwardedRef type from react when we update react
 export type RefType<T> =
     | ((instance: T | null) => void)
     | MutableRefObject<T | null>
@@ -37,6 +38,7 @@ export type MutableReferenceType = MutableRefObject<HTMLElement | null>;
 export type PseudoEventType<V = ScalarType> = {
     target: {
         value: V;
+        name?: string;
     };
 };
 

@@ -1,15 +1,15 @@
-import React, { FunctionComponent, forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { useComponentTheme } from '../../utils/hooks';
-import { useFormFieldClassNames } from './utils/useFormFieldClassNames';
+import { useFormFieldClassNames } from './hooks/useFormFieldClassNames';
 import { FormFieldRoot } from './style';
 import { FormFieldPropsType } from './type';
 import { formFieldDefaultTheme } from './theme';
 import { FORM_FIELD_CLASS_PREFIX } from './constants';
 import { getCompatiblePropValue } from '../../utils/getCompatiblePropValue';
 
-export const FormField: FunctionComponent<FormFieldPropsType> = forwardRef(
+export const FormField = forwardRef<HTMLDivElement, FormFieldPropsType>(
     function FormField(
         { className, autoMargin, enableVerticalOuterSpacing, ...restProps },
         ref,
@@ -45,5 +45,5 @@ FormField.defaultProps = {
 
 /** Support of prop-types is here for project that don't use TypeScript */
 FormField.propTypes = {
-    enableVerticalSpacing: PropTypes.bool,
+    autoMargin: PropTypes.bool,
 };

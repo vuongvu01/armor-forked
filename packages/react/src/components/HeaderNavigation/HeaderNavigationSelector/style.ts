@@ -13,9 +13,7 @@ import { PackItem } from '../../Pack';
 import { OptionList } from '../../OptionList';
 import { ExpansionIndicator } from '../../ExpansionIndicator';
 
-export const HeaderNavigationSelectorWrapper = styled(Stack)<
-    HeaderNavigationSelectorRootPropsType
->``;
+export const HeaderNavigationSelectorWrapper = styled(Stack)``;
 
 const itemSelectorStyle = ({
     separator,
@@ -47,9 +45,7 @@ export const SelectorDropdownOptionListWrapper = styled.div.withConfig(
     top: ${spacing(2)};
 `;
 
-export const SelectorDropdownOptionList = styled(OptionList)<
-    HeaderNavigationSelectorRootPropsType
->`
+export const SelectorDropdownOptionList = styled(OptionList)`
     width: fit-content;
     position: relative;
 

@@ -1,7 +1,7 @@
 import React, { HTMLAttributes, MouseEvent } from 'react';
 
-import { MarginAttributesType } from '../../../../../system/attributes';
-import { Indexed, ObjectLiteralType, ScalarType } from '../../../../../type';
+import { MarginAttributesType } from '../../../../../system';
+import { ObjectLiteralType, ScalarType } from '../../../../../type';
 
 export type ClassBasedOnComponentType = {
     className?: string;
@@ -29,8 +29,11 @@ export type HandleOptionItemClickParamsType = {
     selectedOption: OptionType;
 };
 
-type HeaderNavigationMenuContentHeaderEffectivePropsType = Indexed<{}> &
-    HTMLAttributes<HTMLElement> &
+type HeaderNavigationMenuContentHeaderEffectivePropsType = {
+    options: OptionArrayType;
+    selectedValue?: ScalarType;
+    onOptionSelect?: (selectedItem: OptionType) => void;
+} & HTMLAttributes<HTMLElement> &
     MarginAttributesType;
 
 export type HeaderNavigationMenuContentBodyOptionsPropsType = HeaderNavigationMenuContentHeaderEffectivePropsType;

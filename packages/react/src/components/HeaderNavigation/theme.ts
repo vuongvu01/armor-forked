@@ -1,8 +1,4 @@
-import {
-    componentSpacing02,
-    componentSpacing03,
-    componentSpacing04,
-} from '../../tokens';
+import { componentSpacing04 } from '../../tokens';
 
 export const headerNavigationDefaultTheme = {
     Root: {

@@ -1,4 +1,4 @@
-import React, { forwardRef, FunctionComponent } from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { useDropdown, useDropdownClassName } from './hooks';
@@ -21,7 +21,7 @@ import { useTheme } from '../../styling';
 import { DropdownBeforeSection } from './DropdownBeforeSection';
 import { PortalToBody } from '../../system/util/PortalToBody';
 
-export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
+export const Dropdown = forwardRef<HTMLDivElement, DropdownPropsType>(
     function Dropdown({ className, ...props }, ref) {
         const theme = useTheme().armor;
 
@@ -94,7 +94,6 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = forwardRef(
                                 <OptionList
                                     {...optionListProps}
                                     className={classOverride.OptionList}
-                                    theme={theme}
                                 />
                                 <DropdownArrow {...arrowProps} />
                             </DropdownOptionListContainer>

@@ -1,10 +1,10 @@
 import { HTMLAttributes } from 'react';
+import { ComponentElementStylePropsType } from '../../type';
 
-import { Indexed } from '../../../type';
+type HeaderNavigationItemEffectivePropsType = HTMLAttributes<HTMLElement>;
 
-type HeaderNavigationItemEffectivePropsType = Indexed<{}> &
-    HTMLAttributes<HTMLElement>;
+export type HeaderNavigationItemPropsType = HeaderNavigationItemEffectivePropsType &
+    ComponentElementStylePropsType;
 
-export type HeaderNavigationItemPropsType = HeaderNavigationItemEffectivePropsType;
-
-export type HeaderNavigationItemRootPropsType = HeaderNavigationItemEffectivePropsType;
+export type HeaderNavigationItemRootPropsType = HeaderNavigationItemEffectivePropsType &
+    ComponentElementStylePropsType;

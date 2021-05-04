@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, MouseEvent } from 'react';
 
 import { OptionListItemPropsType } from '../type';
 
@@ -11,7 +11,7 @@ export const useOptionListItem = ({
     ...restProps
 }: OptionListItemPropsType) => {
     const handleItemClick = useCallback(
-        (event: MouseEvent) => {
+        (event: MouseEvent<HTMLDivElement>) => {
             event.preventDefault();
             event.stopPropagation();
 

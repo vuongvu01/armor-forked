@@ -8,15 +8,10 @@ import {
 import { OptionObjectType } from '../../OptionList/type';
 import { handleOnChange } from '../utils/handleOnChange';
 
-export const denormalizeValue = (
-    value: DropdownInternalValueType,
-    multiple?: boolean,
-) => {
-    return multiple ? value : value[0];
-};
-
 export const useOnToggleAll = (
-    setInternalValue: (nextValue: DropdownInternalValueType) => void,
+    setInternalValue:
+        | ((nextValue: DropdownInternalValueType) => void)
+        | undefined,
     internalOptions: DropdownInternalOptionType,
     internalValue: DropdownInternalValueType,
     onChange?: (event: DropdownOnChangeEventType) => void,
@@ -25,12 +20,19 @@ export const useOnToggleAll = (
         (selectAll = true) => {
             if (!selectAll) {
                 handleOnChange([], onChange);
-                return setInternalValue([]);
+                if (setInternalValue) {
+                    setInternalValue([]);
+                }
+
+                return;
             }
 
             if (internalValue.length === internalOptions.length) {
                 handleOnChange([], onChange);
-                return setInternalValue([]);
+                if (setInternalValue) {
+                    setInternalValue([]);
+                }
+                return;
             }
 
             const internalOptionValues = internalOptions.map(
@@ -38,7 +40,10 @@ export const useOnToggleAll = (
             );
 
             handleOnChange(internalOptionValues, onChange);
-            return setInternalValue(internalOptionValues);
+
+            if (setInternalValue) {
+                setInternalValue(internalOptionValues);
+            }
         },
         [setInternalValue, internalOptions, internalValue],
     );

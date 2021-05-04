@@ -1,7 +1,6 @@
 import { HTMLAttributes } from 'react';
 
-import { MarginAttributesType } from '../../../system/attributes';
-import { Indexed } from '../../../type';
+import { MarginAttributesType } from '../../../system';
 import { ComponentElementStylePropsType } from '../../type';
 
 export type ClassBasedOnComponentType = {
@@ -11,12 +10,12 @@ export type ClassBasedOnComponentType = {
     component: string;
 };
 
-type HeaderNavigationLinksEffectivePropsType = Indexed<{
-    onLinkClick?: (linkName: string) => void;
-    locationTracking?: boolean;
-    pathname?: string;
+type HeaderNavigationLinksEffectivePropsType = Partial<{
+    onLinkClick: (linkName: string) => void;
+    locationTracking: boolean;
+    pathname: string;
 }> &
-    HTMLAttributes<HTMLElement> &
+    HTMLAttributes<HTMLDivElement> &
     MarginAttributesType;
 
 export type HeaderNavigationLinksPropsType = HeaderNavigationLinksEffectivePropsType;
@@ -24,9 +23,7 @@ export type HeaderNavigationLinksPropsType = HeaderNavigationLinksEffectiveProps
 export type HeaderNavigationLinksRootPropsType = HeaderNavigationLinksPropsType &
     ComponentElementStylePropsType;
 
-export type HeaderNavigationLinksContextType = Indexed<
-    Pick<
-        HeaderNavigationLinksEffectivePropsType,
-        'onLinkClick' | 'locationTracking' | 'pathname'
-    >
+export type HeaderNavigationLinksContextType = Pick<
+    HeaderNavigationLinksEffectivePropsType,
+    'onLinkClick' | 'locationTracking' | 'pathname'
 >;

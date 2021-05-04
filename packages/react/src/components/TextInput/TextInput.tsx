@@ -14,7 +14,6 @@ import {
 import { TextInputInputPropsType, TextInputPropsType } from './type';
 import { textInputDefaultTheme } from './theme';
 import {
-    textInputInput,
     textInputLabel,
     textInputLabelBackground,
     textInputRoot,

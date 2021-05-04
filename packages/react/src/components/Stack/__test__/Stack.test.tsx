@@ -15,7 +15,7 @@ describe('<Stack />', () => {
     });
 
     it('should render itself without errors', async () => {
-        render(<Stack label="Sample" />);
+        render(<Stack />);
     });
 
     it('should transfer properties into styles', async () => {

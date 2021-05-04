@@ -1,4 +1,4 @@
-import { HTMLAttributes, MouseEvent, ReactChild } from 'react';
+import { HTMLAttributes, ReactChild } from 'react';
 import {
     DictionaryItemIDBased,
     ObjectLiteralType,
@@ -8,8 +8,10 @@ import {
     DropdownEffectivePropsType,
     DropdownInternalOptionType,
     DropdownInternalValueType,
+    DropdownOnChangeEventType,
 } from '../Dropdown/type';
 import { CheckedIconType } from '../Checkbox/type';
+import { ComponentElementStylePropsType } from '../type';
 
 export type ClassBasedOnComponentType = {
     component: string;
@@ -24,27 +26,36 @@ export type OptionObjectType = {
     value: ScalarType;
 } & ObjectLiteralType;
 
-export type OptionListGroupObjectType = DictionaryItemIDBased &
-    ObjectLiteralType;
+export type OptionListGroupObjectType = DictionaryItemIDBased;
 
 export type OptionListGroupObjectIndexType = ObjectLiteralType<
     OptionListGroupObjectType
 >;
 
 export type OptionListPropsType = {
-    onClick?: (event: MouseEvent) => void;
     disabled?: boolean;
     internalValue: DropdownInternalValueType;
-    setInternalValue: (nextValue: DropdownInternalValueType) => void;
+    setInternalValue?: (nextValue: DropdownInternalValueType) => void;
     internalOptions: DropdownInternalOptionType;
-    dynamicInternalOptions: DropdownInternalOptionType;
-    setInternalOptions: (nextOptions: DropdownInternalOptionType) => void;
+    dynamicInternalOptions?: DropdownInternalOptionType;
+    setInternalOptions?: (nextOptions: DropdownInternalOptionType) => void;
     setSearch?: (searchQuery: string) => void;
-    enableAbsolutePositioning: boolean;
+    enableAbsolutePositioning?: boolean;
     groups?: OptionListGroupObjectType[];
+    isFlat?: boolean;
+    blurInput?: () => void;
+    setIsOptionListShown: (value: boolean) => void;
+    onValueUpdate: (
+        internalValue: DropdownInternalValueType,
+        multiple: DropdownEffectivePropsType['multiple'],
+        item: OptionObjectType,
+        itemValue: ScalarType,
+        options: DropdownEffectivePropsType['options'],
+        isFlat?: boolean,
+    ) => void;
+    onChange?: (event: DropdownOnChangeEventType) => void;
 } & Pick<
     DropdownEffectivePropsType,
-    | 'className'
     | 'options'
     | 'isOptionListShown'
     | 'multiple'
@@ -54,7 +65,15 @@ export type OptionListPropsType = {
     | 'searchPlaceholder'
     | 'defaultSearchQuery'
 > &
-    ObjectLiteralType;
+    Omit<HTMLAttributes<HTMLDivElement>, 'onChange'>;
+
+export type OptionListRootPropsType = Pick<
+    OptionListPropsType,
+    'isOptionListShown' | 'enableAbsolutePositioning'
+> &
+    ComponentElementStylePropsType;
+
+export type OptionListContainerPropsType = ComponentElementStylePropsType;
 
 export type OptionListBeforeSectionContainerPropsType = {} & ObjectLiteralType;
 
@@ -64,12 +83,11 @@ export type OptionListItemPropsType = {
     onOptionSelect?: (item: OptionObjectType) => void;
     checkedIcon?: CheckedIconType;
 } & Pick<DropdownEffectivePropsType, 'className' | 'multiple'> &
-    HTMLAttributes<HTMLElement> &
-    ObjectLiteralType;
+    HTMLAttributes<HTMLDivElement>;
 
 export type OptionListSearchPropsType = {
     searchPlaceholder?: string;
-} & ObjectLiteralType;
+};
 
 export type DropdownOnSearchQueryChangeType = (searchQuery?: string) => void;
 

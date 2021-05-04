@@ -1,12 +1,12 @@
-import React, { forwardRef, FunctionComponent } from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
-import { useStackItemClassName } from './utils';
+import { useStackItemClassName } from './hooks';
 import { StackItemPropsType } from './type';
 import { STACK_ITEM_CLASS_PREFIX, stackItemRoot } from './constants';
 import { FlexItem } from '../Flex';
 
-export const StackItem: FunctionComponent<StackItemPropsType> = forwardRef(
+export const StackItem = forwardRef<HTMLDivElement, StackItemPropsType>(
     function StackItem(
         {
             className,

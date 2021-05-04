@@ -1,7 +1,6 @@
 import { HTMLAttributes, ReactNode, Ref } from 'react';
 
-import { MarginAttributesType } from '../../../system/attributes';
-import { Indexed } from '../../../type';
+import { MarginAttributesType } from '../../../system';
 import { ComponentElementStylePropsType } from '../../type';
 
 export type ClassBasedOnComponentType = {
@@ -11,7 +10,7 @@ export type ClassBasedOnComponentType = {
     component: string;
 };
 
-type HeaderNavigationMenuEffectivePropsType = Indexed<{
+type HeaderNavigationMenuEffectivePropsType = Partial<{
     headerTitle?: ReactNode;
     headerContent?: ReactNode;
     /**
@@ -24,7 +23,7 @@ type HeaderNavigationMenuEffectivePropsType = Indexed<{
     HTMLAttributes<HTMLElement> &
     MarginAttributesType;
 
-export type UseHeaderNavigationMenuPropsType = Indexed<{
+export type UseHeaderNavigationMenuPropsType = Partial<{
     internalRef?: Ref<unknown>;
 
     isExpanded?: boolean;
@@ -35,3 +34,7 @@ export type HeaderNavigationMenuPropsType = HeaderNavigationMenuEffectivePropsTy
 
 export type HeaderNavigationMenuRootPropsType = HeaderNavigationMenuEffectivePropsType &
     ComponentElementStylePropsType;
+
+export type HeaderNavigationMenuContentContainerPropsType = {
+    isExpanded?: boolean;
+} & ComponentElementStylePropsType;

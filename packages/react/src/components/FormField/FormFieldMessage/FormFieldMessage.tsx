@@ -1,44 +1,45 @@
-import React, { FunctionComponent, forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { useComponentTheme } from '../../../utils/hooks';
 
-import { useFormFieldMessageClassNames } from './utils/useFormFieldMessageClassNames';
+import { useFormFieldMessageClassNames } from './hooks/useFormFieldMessageClassNames';
 import { FormFieldMessageRoot, FormFieldMessageFakeChildren } from './style';
 import { FormFieldMessagePropsType } from './type';
 import { formFieldMessageDefaultTheme } from './theme';
 import { FORM_FIELD_MESSAGE_CLASS_PREFIX } from './constants';
 
-export const FormFieldMessage: FunctionComponent<FormFieldMessagePropsType> = forwardRef(
-    function FormFieldMessage(
-        { className, error, oneLine, children, ...restProps },
-        ref,
-    ) {
-        const theme = useComponentTheme(
-            FORM_FIELD_MESSAGE_CLASS_PREFIX,
-            formFieldMessageDefaultTheme,
-        );
+export const FormFieldMessage = forwardRef<
+    HTMLDivElement,
+    FormFieldMessagePropsType
+>(function FormFieldMessage(
+    { className, error, oneLine, children, ...restProps },
+    ref,
+) {
+    const theme = useComponentTheme(
+        FORM_FIELD_MESSAGE_CLASS_PREFIX,
+        formFieldMessageDefaultTheme,
+    );
 
-        const classNameComponents = useFormFieldMessageClassNames(
-            FORM_FIELD_MESSAGE_CLASS_PREFIX,
-            className,
-            error,
-        );
+    const classNameComponents = useFormFieldMessageClassNames(
+        FORM_FIELD_MESSAGE_CLASS_PREFIX,
+        className,
+        error,
+    );
 
-        return (
-            <FormFieldMessageRoot
-                {...restProps}
-                theme={theme}
-                error={error}
-                oneLine={oneLine}
-                className={classNameComponents.Root}
-                ref={ref}
-            >
-                {children || (!!oneLine && <FormFieldMessageFakeChildren />)}
-            </FormFieldMessageRoot>
-        );
-    },
-);
+    return (
+        <FormFieldMessageRoot
+            {...restProps}
+            theme={theme}
+            error={error}
+            oneLine={oneLine}
+            className={classNameComponents.Root}
+            ref={ref}
+        >
+            {children || (!!oneLine && <FormFieldMessageFakeChildren />)}
+        </FormFieldMessageRoot>
+    );
+});
 
 FormFieldMessage.defaultProps = {
     error: false,

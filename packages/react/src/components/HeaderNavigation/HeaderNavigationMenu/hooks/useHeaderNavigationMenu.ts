@@ -1,12 +1,10 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
-import {
-    HeaderNavigationMenuPropsType,
-    UseHeaderNavigationMenuPropsType,
-} from '../type';
-import { useDetectEscapeKeyPressed, useInternalRef } from '../../../../utils';
-import { ReferenceType } from '../../../../type';
+import React, { useCallback, useEffect, useState } from 'react';
+import { HeaderNavigationMenuPropsType } from '../type';
+import { useDetectEscapeKeyPressed } from '../../../../utils';
+import { RefType } from '../../../../type';
+import { useRootRef } from '../../../../system';
 
-export const useHeaderNavigationMenu = (
+export const useHeaderNavigationMenu = <E extends HTMLDivElement>(
     {
         /**
          * @deprecated
@@ -15,14 +13,13 @@ export const useHeaderNavigationMenu = (
         isMenuExpanded,
         defaultExpanded,
     }: HeaderNavigationMenuPropsType,
-    ref: ReferenceType,
-): UseHeaderNavigationMenuPropsType => {
-    const internalRef = useRef<HTMLDivElement>(null);
+    ref: RefType<E>,
+) => {
     const [isExpanded, setIsExpanded] = useState(
         defaultExpanded || isMenuExpanded,
     );
 
-    useInternalRef(ref, internalRef);
+    const internalRef = useRootRef<E>(ref);
 
     const handleMenuClick = useCallback(
         (event: MouseEvent) => {

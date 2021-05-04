@@ -5,22 +5,12 @@ import {
 } from './type';
 import { Stack } from '../../../../Stack';
 
-const contentBodyRootStyle = ({
-    theme: {
-        componentOverrides: { HeaderNavigationMenuContentBody },
-    },
-}: HeaderNavigationMenuContentBodyRootPropsType) => {
-    return HeaderNavigationMenuContentBody.Root.base;
-};
-
 export const HeaderNavigationMenuContentBodyRoot = styled.div<
     HeaderNavigationMenuContentBodyRootPropsType
 >`
     box-sizing: border-box;
     max-height: 400px;
     overflow-y: auto;
-
-    ${contentBodyRootStyle}
 `;
 
 const contentBodyOptionsRootStyle = ({

@@ -12,7 +12,7 @@ const getClassNameByComponent = ({
     return `${baseClassNames}`.trim();
 };
 
-const useHeaderNavigationSelectorClassName = (
+export const useHeaderNavigationSelectorClassName = (
     classPrefix: string,
     className?: string,
 ) =>
@@ -65,5 +65,3 @@ const useHeaderNavigationSelectorClassName = (
             }),
         };
     }, [classPrefix, className]);
-
-export default useHeaderNavigationSelectorClassName;

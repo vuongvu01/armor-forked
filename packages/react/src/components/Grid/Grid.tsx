@@ -1,4 +1,4 @@
-import React, { forwardRef, FunctionComponent, useMemo } from 'react';
+import React, { forwardRef, useMemo } from 'react';
 import PropTypes from 'prop-types';
 
 import { useGridClassName } from './utils';
@@ -7,9 +7,8 @@ import { GRID_CLASS_PREFIX, gridRoot } from './constants';
 import { GridContext } from './utils/GridContext';
 import { GridRoot } from './style';
 import { useComponentTheme } from '../../utils/hooks';
-import { gridTheme } from './theme';
 
-export const Grid: FunctionComponent<GridPropsType> = forwardRef(function Grid(
+export const Grid = forwardRef<HTMLDivElement, GridPropsType>(function Grid(
     {
         className,
         gutterSpacing,
@@ -19,7 +18,7 @@ export const Grid: FunctionComponent<GridPropsType> = forwardRef(function Grid(
     },
     ref,
 ) {
-    const theme = useComponentTheme(GRID_CLASS_PREFIX, gridTheme);
+    const theme = useComponentTheme(GRID_CLASS_PREFIX);
 
     const classOverride = useGridClassName(GRID_CLASS_PREFIX, className);
 

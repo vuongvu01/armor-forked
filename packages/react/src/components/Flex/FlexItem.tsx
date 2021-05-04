@@ -1,4 +1,4 @@
-import React, { forwardRef, FunctionComponent } from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { useFlexItemClassName } from './utils';
@@ -7,7 +7,7 @@ import { FLEX_ITEM_CLASS_PREFIX, flexItemRoot } from './constants';
 import { FlexItemRoot } from './style';
 import { useTheme } from '../../styling';
 
-export const FlexItem: FunctionComponent<FlexItemPropsType> = forwardRef(
+export const FlexItem = forwardRef<HTMLDivElement, FlexItemPropsType>(
     function FlexItem(
         {
             className,

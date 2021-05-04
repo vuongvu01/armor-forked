@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 
 import { makeRootClassName } from '../../../../../../utils';
 
-const useHeaderNavigationMenuContentBodyClassName = (
+export const useHeaderNavigationMenuContentBodyClassName = (
     classPrefix: string,
     className?: string,
 ) =>
@@ -11,5 +11,3 @@ const useHeaderNavigationMenuContentBodyClassName = (
             Root: makeRootClassName(classPrefix, className),
         };
     }, [classPrefix, className]);
-
-export default useHeaderNavigationMenuContentBodyClassName;

@@ -3,14 +3,6 @@ import styled from 'styled-components';
 import { HeaderNavigationMenuContentRootPropsType } from './type';
 import { propsBlocker } from '../../../../system';
 
-const headerNavigationMenuContentRootStyle = ({
-    theme: {
-        componentOverrides: { HeaderNavigationMenuContent },
-    },
-}: HeaderNavigationMenuContentRootPropsType) => {
-    return HeaderNavigationMenuContent.Root.base;
-};
-
 export const HeaderNavigationMenuContentRoot = styled.div.withConfig(
     propsBlocker,
 )<HeaderNavigationMenuContentRootPropsType>`
@@ -19,6 +11,4 @@ export const HeaderNavigationMenuContentRoot = styled.div.withConfig(
     cursor: default;
     outline: none;
     user-select: none;
-
-    ${headerNavigationMenuContentRootStyle}
 `;

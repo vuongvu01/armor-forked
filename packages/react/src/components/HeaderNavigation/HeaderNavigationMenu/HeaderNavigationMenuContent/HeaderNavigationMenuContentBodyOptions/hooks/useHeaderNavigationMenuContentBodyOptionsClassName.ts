@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 
+import { appendClassName, makeBEM } from '../../../../../../utils';
 import { ClassBasedOnComponentType } from '../type';
-import { appendClassName, makeBEM } from '../../../../utils';
 
 const getClassNameByComponent = ({
     component,
@@ -12,24 +12,26 @@ const getClassNameByComponent = ({
     return `${baseClassNames}`.trim();
 };
 
-const useHeaderNavigationSearchClassName = (
+export const useHeaderNavigationMenuContentBodyOptionsClassName = (
     classPrefix: string,
     className?: string,
 ) =>
     useMemo(() => {
         return {
-            ItemSearch: appendClassName(
+            Root: appendClassName(
                 getClassNameByComponent({
-                    component: 'ItemSearch',
+                    component: 'Root',
                     classPrefix,
                 }),
                 className,
             ),
-            NavigationSearchRoot: getClassNameByComponent({
-                component: 'NavigationSearchRoot',
+            Item: getClassNameByComponent({
+                component: 'Item',
+                classPrefix,
+            }),
+            Category: getClassNameByComponent({
+                component: 'Category',
                 classPrefix,
             }),
         };
     }, [classPrefix, className]);
-
-export default useHeaderNavigationSearchClassName;

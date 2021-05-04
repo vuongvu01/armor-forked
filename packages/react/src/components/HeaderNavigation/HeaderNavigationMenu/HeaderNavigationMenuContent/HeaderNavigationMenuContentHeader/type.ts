@@ -1,7 +1,7 @@
 import { HTMLAttributes, ReactNode } from 'react';
 
-import { MarginAttributesType } from '../../../../../system/attributes';
-import { Indexed, ScalarType } from '../../../../../type';
+import { MarginAttributesType } from '../../../../../system';
+import { ScalarType } from '../../../../../type';
 import { ComponentElementStylePropsType } from '../../../../type';
 
 export type ClassBasedOnComponentType = {
@@ -10,11 +10,11 @@ export type ClassBasedOnComponentType = {
     classPrefix: string;
     component: string;
 };
-type HeaderNavigationMenuContentHeaderEffectivePropsType = Indexed<{
-    title?: string;
-    label?: string;
-    image?: ReactNode;
-    selectedValue?: ScalarType;
+type HeaderNavigationMenuContentHeaderEffectivePropsType = Partial<{
+    title: string;
+    label: string;
+    image: ReactNode;
+    selectedValue: ScalarType;
 }> &
     HTMLAttributes<HTMLElement> &
     MarginAttributesType;

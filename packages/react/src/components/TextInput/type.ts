@@ -15,10 +15,6 @@ import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../type';
-import {
-    DropdownInternalOptionType,
-    DropdownInternalValueType,
-} from '../Dropdown/type';
 
 type TextInputEffectivePropsType = Partial<{
     label: string;

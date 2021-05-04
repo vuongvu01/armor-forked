@@ -1,6 +1,9 @@
 import styled, { css } from 'styled-components';
 
-import { HeaderNavigationMenuRootPropsType } from './type';
+import {
+    HeaderNavigationMenuContentContainerPropsType,
+    HeaderNavigationMenuRootPropsType,
+} from './type';
 import { ExpansionIndicator } from '../../ExpansionIndicator';
 import { transitionDurationInSec } from '../../../constants';
 import { color, getComponentOverride, propsBlocker } from '../../../system';
@@ -16,7 +19,7 @@ const contentContainerStyle = ({
     theme: {
         componentOverrides: { HeaderNavigationMenu },
     },
-}: HeaderNavigationMenuRootPropsType) => {
+}: HeaderNavigationMenuContentContainerPropsType) => {
     let result = HeaderNavigationMenu.ContentContainer.base;
 
     if (isExpanded) {
@@ -32,12 +35,12 @@ const contentContainerStyle = ({
 
 export const HeaderNavigationMenuContentContainer = styled.div.withConfig(
     propsBlocker,
-)<HeaderNavigationMenuRootPropsType>`
+)<HeaderNavigationMenuContentContainerPropsType>`
     position: absolute;
     opacity: 0;
     z-index: 2048;
 
-    ${contentContainerStyle}
+    ${contentContainerStyle};
 `;
 
 const expansionIndicatorItemStyle = ({

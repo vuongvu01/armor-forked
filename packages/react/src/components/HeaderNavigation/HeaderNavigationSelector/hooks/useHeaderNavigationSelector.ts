@@ -1,22 +1,17 @@
-import { MouseEvent, useCallback, useRef, useState } from 'react';
+import { MouseEvent, useCallback, KeyboardEvent, useState } from 'react';
 import { HeaderNavigationSelectorPropsType } from '../type';
-import { ReferenceType } from '../../../../type';
+import { RefType } from '../../../../type';
 import {
     useDetectClickOutsideComponent,
     useDetectEscapeKeyPressed,
-    useInternalRef,
     useOnValueUpdate,
     useOptions,
     useSelectedValueToDisplay,
     useValue,
 } from '../../../../utils';
-import {
-    DropdownInternalOptionType,
-    DropdownInternalValueType,
-} from '../../../Dropdown/type';
-import { OptionObjectType } from '../../../OptionList/type';
+import { useRootRef } from '../../../../system';
 
-export const useHeaderNavigationSelector = (
+export const useHeaderNavigationSelector = <E extends HTMLDivElement>(
     {
         navigationSelectorParams: {
             label = 'Country',
@@ -37,11 +32,9 @@ export const useHeaderNavigationSelector = (
         enableSearchOption,
         ...restProps
     }: HeaderNavigationSelectorPropsType,
-    ref: ReferenceType,
+    ref: RefType<E>,
 ) => {
-    const containerRef = useRef(null);
-
-    useInternalRef(ref, containerRef);
+    const containerRef = useRootRef(ref);
 
     const [internalValue, setInternalValue] = useValue(value, defaultValue);
 
@@ -85,7 +78,7 @@ export const useHeaderNavigationSelector = (
     );
 
     const handleEnterKeyDown = useCallback(
-        (event: KeyboardEvent) => {
+        (event: KeyboardEvent<HTMLDivElement>) => {
             const { key } = event;
 
             if (key === 'Enter' && setIsOptionListShown) {

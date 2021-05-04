@@ -1,5 +1,5 @@
 import { useCallback, MouseEvent } from 'react';
-import { HeaderNavigationLinkPropsType } from '../type';
+import { HeaderNavigationLinkHookPropsType } from '../type';
 import { getWindow } from '../../../../../system/util/globals';
 
 export const useHeaderNavigationLink = ({
@@ -10,7 +10,7 @@ export const useHeaderNavigationLink = ({
     href,
     isActive,
     ...restProps
-}: HeaderNavigationLinkPropsType) => {
+}: HeaderNavigationLinkHookPropsType) => {
     const {
         onLinkClick,
         locationTracking,

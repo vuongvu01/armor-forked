@@ -12,7 +12,7 @@ import {
     MenuContentHeaderItem,
     MenuContentHeaderTitle,
 } from './style';
-import { useHeaderNavigationMenuContentHeaderClassName } from './utils';
+import { useHeaderNavigationMenuContentHeaderClassName } from './hooks';
 import { HeaderNavigationMenuContentHeaderPropsType } from './type';
 import { headerNavigationMenuContentHeaderTheme } from './theme';
 
@@ -41,13 +41,10 @@ export const HeaderNavigationMenuContentHeader: FunctionComponent<HeaderNavigati
             className={classOverride.Root}
         >
             <MenuContentHeader
-                justifyContent="space-between"
-                alignItems="center"
                 theme={theme}
                 className={classOverride.HeaderNavigationMenuContentHeader}
             >
                 <MenuContentHeaderItem
-                    flexGrow={3}
                     theme={theme}
                     className={
                         classOverride.HeaderNavigationMenuContentHeaderItem

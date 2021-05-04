@@ -2,10 +2,11 @@ import styled, { css } from 'styled-components';
 import { transitionDurationInSec } from '../../constants';
 import {
     OptionListItemPropsType,
-    OptionListPropsType,
     OptionListBeforeSectionContainerPropsType,
     OptionListSearchPropsType,
     OptionListItemGroupPropType,
+    OptionListRootPropsType,
+    OptionListContainerPropsType,
 } from './type';
 import {
     color,
@@ -23,7 +24,7 @@ import { TypographyPropsType } from '../Typography/type';
 const getOptionListStyle = ({
     isOptionListShown,
     enableAbsolutePositioning,
-}: OptionListPropsType) => {
+}: OptionListRootPropsType) => {
     let result = css`
         height: ${isOptionListShown ? 'auto' : '0'};
     ` as {};
@@ -42,7 +43,7 @@ const getOptionListStyle = ({
 };
 
 export const OptionListRoot = styled.div.withConfig(propsBlocker)<
-    OptionListPropsType
+    OptionListRootPropsType
 >`
     background-color: white;
     box-sizing: border-box;
@@ -59,7 +60,7 @@ export const OptionListRoot = styled.div.withConfig(propsBlocker)<
 `;
 
 export const OptionListContainer = styled.div.withConfig(propsBlocker)<
-    OptionListPropsType
+    OptionListContainerPropsType
 >`
     overflow: auto;
 `;

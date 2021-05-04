@@ -15,7 +15,7 @@ describe('<Pack />', () => {
     });
 
     it('should render itself without errors', async () => {
-        render(<Pack label="Sample" />);
+        render(<Pack />);
     });
 
     it('should transfer properties into styles', async () => {

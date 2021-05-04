@@ -8,7 +8,7 @@ import {
     headerNavigationItemRoot,
 } from './constants';
 import { headerNavigationItemDefaultTheme } from './theme';
-import { useHeaderNavigationItemClassName } from './utils';
+import { useHeaderNavigationItemClassName } from './hooks';
 
 export const HeaderNavigationItem: FunctionComponent<HeaderNavigationItemPropsType> = ({
     className,

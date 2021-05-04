@@ -1,14 +1,15 @@
 import { HTMLAttributes } from 'react';
 
 import { MarginAttributesType, WidthAttributesType } from '../../system';
-import { Indexed } from '../../type';
 import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../type';
 
-type FormFieldEffectivePropsType = Indexed<{
-    enableVerticalOuterSpacing?: boolean;
+type FormFieldEffectivePropsType = Partial<{
+    enableVerticalOuterSpacing: boolean;
+    /** @deprecated @see enableVerticalOuterSpacing */
+    autoMargin: boolean;
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes

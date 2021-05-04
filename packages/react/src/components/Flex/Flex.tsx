@@ -1,4 +1,4 @@
-import React, { forwardRef, FunctionComponent } from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { useFlexClassName } from './utils';
@@ -7,7 +7,7 @@ import { FLEX_CLASS_PREFIX, flexRoot } from './constants';
 import { FlexRoot } from './style';
 import { useComponentTheme } from '../../utils/hooks';
 
-export const Flex: FunctionComponent<FlexPropsType> = forwardRef(function Flex(
+export const Flex = forwardRef<HTMLDivElement, FlexPropsType>(function Flex(
     {
         className,
         direction,

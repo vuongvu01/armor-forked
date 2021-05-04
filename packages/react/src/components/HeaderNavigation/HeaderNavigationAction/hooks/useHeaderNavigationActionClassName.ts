@@ -12,32 +12,28 @@ const getClassNameByComponent = ({
     return `${baseClassNames}`.trim();
 };
 
-const useHeaderNavigationMenuClassName = (
+const useHeaderNavigationActionClassName = (
     classPrefix: string,
     className?: string,
 ) =>
     useMemo(() => {
         return {
-            NavigationMenuItem: appendClassName(
+            Action: appendClassName(
                 getClassNameByComponent({
-                    component: 'NavigationMenuItem',
+                    component: 'NavigationAction',
                     classPrefix,
                 }),
                 className,
             ),
-            NavigationMenu: getClassNameByComponent({
-                component: 'NavigationMenu',
+            NavigationActionItem: getClassNameByComponent({
+                component: 'NavigationActionItem',
                 classPrefix,
             }),
-            NavigationMenuContentContainer: getClassNameByComponent({
-                component: 'NavigationMenuContentContainer',
-                classPrefix,
-            }),
-            MenuExpansionIndicator: getClassNameByComponent({
-                component: 'MenuExpansionIndicator',
+            ActionContainer: getClassNameByComponent({
+                component: 'NavigationActionContainer',
                 classPrefix,
             }),
         };
     }, [classPrefix, className]);
 
-export default useHeaderNavigationMenuClassName;
+export default useHeaderNavigationActionClassName;

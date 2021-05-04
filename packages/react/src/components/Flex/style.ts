@@ -17,7 +17,7 @@ const flexRootStyle = ({
     alignItems,
     flexWrap,
     gutterSpacing,
-}: FlexItemPropsType) => {
+}: FlexRootPropsType) => {
     let result = {};
 
     if (direction) {

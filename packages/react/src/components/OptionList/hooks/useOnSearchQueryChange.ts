@@ -8,8 +8,7 @@ import { DropdownOnSearchQueryChangeType } from '../type';
 export const useOnSearchQueryChange = (
     internalValue: DropdownInternalValueType,
     internalOptions: DropdownInternalOptionType,
-    setInternalValue: (nextValue: DropdownInternalValueType) => void,
-    setInternalOptions: (nextOptions: DropdownInternalOptionType) => void,
+    setInternalOptions?: (nextOptions: DropdownInternalOptionType) => void,
     setSearchQuery?: (searchQuery: string) => void,
     defaultSearchQuery?: string,
     enableSearchOption?: boolean,
@@ -20,7 +19,10 @@ export const useOnSearchQueryChange = (
                 return () => {};
             }
             if (!searchQuery) {
-                return setInternalOptions(internalOptions);
+                if (setInternalOptions) {
+                    setInternalOptions(internalOptions);
+                }
+                return () => {};
             }
 
             const query = searchQuery.toLowerCase();
@@ -37,13 +39,10 @@ export const useOnSearchQueryChange = (
                 return label.toString().indexOf(query) !== -1;
             });
 
-            return setInternalOptions(matchingOptions);
+            if (setInternalOptions) {
+                setInternalOptions(matchingOptions);
+            }
+            return () => {};
         },
-        [
-            setInternalValue,
-            setSearchQuery,
-            internalOptions,
-            internalValue,
-            defaultSearchQuery,
-        ],
+        [setSearchQuery, internalOptions, internalValue, defaultSearchQuery],
     );

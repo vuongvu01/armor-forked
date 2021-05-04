@@ -80,7 +80,6 @@ export const OptionList: FunctionComponent<OptionListPropsType> = ({
                 {isSelectAllOptionRendered && (
                     <OptionListItem
                         {...getSelectAllItemProps()}
-                        theme={theme}
                         className={classOverride.SelectAllItem}
                     />
                 )}
@@ -110,7 +109,6 @@ export const OptionList: FunctionComponent<OptionListPropsType> = ({
                                 )}
                                 <OptionListItem
                                     {...getOptionItemProps(option)}
-                                    theme={theme}
                                     className={`${classOverride.Item} ${
                                         internalValue.includes(value)
                                             ? 'active'
