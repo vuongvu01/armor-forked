@@ -1,3 +1,10 @@
+# @deliveryhero/armor [1.46.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.45.1...@deliveryhero/armor@1.46.0) (2021-05-05)
+
+
+### Features
+
+* **datatable:** Hook useVirtualization developed and used in DataTable [LD-472] ([#497](https://github.com/deliveryhero/armor/issues/497)) ([50bc6fb](https://github.com/deliveryhero/armor/commit/50bc6fb1b7c6a5d863b4b639a229f0b407a411c5))
+
 ## @deliveryhero/armor [1.45.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.45.0...@deliveryhero/armor@1.45.1) (2021-04-27)
 
 
