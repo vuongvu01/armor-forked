@@ -1,3 +1,10 @@
+## @deliveryhero/armor [1.46.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.46.0...@deliveryhero/armor@1.46.1) (2021-05-05)
+
+
+### Bug Fixes
+
+* **textinput:** type number with value of 0 [LD-494] ([#528](https://github.com/deliveryhero/armor/issues/528)) ([698f2ee](https://github.com/deliveryhero/armor/commit/698f2ee1c0babfcb162d1f2c87e53218195a08c3))
+
 # @deliveryhero/armor [1.46.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.45.1...@deliveryhero/armor@1.46.0) (2021-05-05)
 
 
