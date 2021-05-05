@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { TextInput } from '../../../src/components/TextInput';
 
@@ -193,3 +193,34 @@ export const AllStates = () => (
         </div>
     </>
 );
+
+export const NumericControlled = () => {
+    const [value, setValue] = useState<number | undefined>(1);
+    return (
+        <>
+            <TextInput
+                type="number"
+                label="Label"
+                value={value}
+                onChange={e => {
+                    setValue(parseInt(e.target.value, 10));
+                    e.stopPropagation();
+                }}
+            />
+            <TextInput
+                label="Label"
+                marginRight={1}
+                type="number"
+                defaultValue={0}
+                min={0}
+            />
+            <TextInput label="Label" marginRight={1} type="number" min={0} />
+            <TextInput
+                placeholder="Placeholder"
+                marginRight={1}
+                type="number"
+                min={0}
+            />
+        </>
+    );
+};

@@ -52,7 +52,7 @@ type TextInputInternalPropsType = {
 export type TextInputInternalPropsWithThemeType = {
     inside?: boolean;
 } & TextInputInternalPropsType &
-    Pick<TextInputRootPropsType, 'theme' | 'value'>;
+    Pick<TextInputRootPropsType, 'theme' | 'value' | 'defaultValue' | 'type'>;
 
 /* TextInput Root node prop type */
 export type TextInputRootPropsType = TextInputEffectivePropsType &

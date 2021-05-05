@@ -173,6 +173,8 @@ const getLabelDynamicStyle = (props: TextInputInternalPropsWithThemeType) => {
         large,
         disabled,
         value,
+        defaultValue,
+        type,
     } = props;
 
     let result = css`
@@ -180,7 +182,13 @@ const getLabelDynamicStyle = (props: TextInputInternalPropsWithThemeType) => {
         ${getDynamicStyle('Label', props)};
     `;
 
-    if (!(disabled && value) && inside) {
+    if (
+        !(disabled && value) &&
+        (type !== 'number' ||
+            (typeof value === 'undefined' &&
+                typeof defaultValue === 'undefined')) &&
+        inside
+    ) {
         result = css`
             ${result};
             ${TextInput.Label.inside};
