@@ -5,8 +5,7 @@ import {
     PaddingAttributesType,
     SizeAttributesType,
     WidthAttributesType,
-} from '../../system/attributes';
-import { Indexed } from '../../type';
+} from '../../system';
 import { ComponentElementStylePropsType } from '../type';
 
 export type ClassBasedOnComponentType = {
@@ -66,32 +65,32 @@ export type AlignSelfType =
     | 'baseline'
     | 'stretch';
 
-type FlexEffectivePropsType = Indexed<{
-    direction?: DirectionType;
-    justifyContent?: JustifyContentType;
-    alignContent?: AlignContentType;
-    alignItems?: AlignItemsType;
-    flexWrap?: WrapType;
-    gutterSpacing?: number;
+export type FlexEffectivePropsType = Partial<{
+    direction: DirectionType;
+    justifyContent: JustifyContentType;
+    alignContent: AlignContentType;
+    alignItems: AlignItemsType;
+    flexWrap: WrapType;
+    gutterSpacing: number;
 }> &
     HTMLAttributes<HTMLElement> &
     SizeAttributesType &
     WidthAttributesType &
     MarginAttributesType;
 
-type FlexItemEffectivePropsType = Indexed<{
-    flexGrow?: number;
-    flexShrink?: number;
-    flexBasis?: string;
-    order?: number;
-    alignSelf?: AlignSelfType;
+type FlexItemEffectivePropsType = Partial<{
+    flexGrow: number;
+    flexShrink: number;
+    flexBasis: string;
+    order: number;
+    alignSelf: AlignSelfType;
 }> &
     HTMLAttributes<HTMLElement> &
     PaddingAttributesType;
 
-export type FlexPropsType = FlexItemEffectivePropsType;
+export type FlexPropsType = FlexEffectivePropsType;
 
 export type FlexRootPropsType = FlexEffectivePropsType &
     ComponentElementStylePropsType;
 
-export type FlexItemPropsType = FlexEffectivePropsType;
+export type FlexItemPropsType = FlexItemEffectivePropsType;

@@ -3,7 +3,6 @@ import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../../type';
-import { ObjectLiteralType } from '../../../type';
 import { DateVector } from '../utils/DateVector';
 
 type DatePickerTopBarEffectivePropsType = {
@@ -13,11 +12,10 @@ type DatePickerTopBarEffectivePropsType = {
     displayedDateVector: DateVector;
     onDisplayedDateVectorChange: (newDisplayedDateVector: DateVector) => void;
     // add other custom properties here
-} & HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
-    ObjectLiteralType;
+} & HTMLAttributes<HTMLDivElement>; // includes all HTML Div attributes
 
 export type DatePickerTopBarPropsType = DatePickerTopBarEffectivePropsType &
     ComponentStylePropsType;
 
-export type DatePickerTopBarRootPropsType = DatePickerTopBarEffectivePropsType &
+export type DatePickerTopBarRootPropsType = HTMLAttributes<HTMLDivElement> &
     ComponentElementStylePropsType;

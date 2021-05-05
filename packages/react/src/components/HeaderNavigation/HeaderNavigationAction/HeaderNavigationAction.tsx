@@ -1,9 +1,9 @@
-import React, { forwardRef, FunctionComponent } from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { HeaderNavigationActionPropsType } from './type';
 import { useComponentTheme } from '../../../utils/hooks';
-import { useHeaderNavigationActionClassName } from './utils';
+import { useHeaderNavigationActionClassName } from './hooks';
 import {
     HeaderNavigationActionContainer,
     HeaderNavigationActionRoot,
@@ -14,36 +14,35 @@ import {
     headerNavigationActionRoot,
 } from './constants';
 
-export const HeaderNavigationAction: FunctionComponent<HeaderNavigationActionPropsType> = forwardRef(
-    function HeaderNavigationAction(
-        { className, children, ...restProps },
-        ref,
-    ) {
-        const theme = useComponentTheme(
-            HEADER_NAVIGATION_ACTION_CLASS_PREFIX,
-            headerNavigationActionTheme,
-        );
+export const HeaderNavigationAction = forwardRef<
+    HTMLDivElement,
+    HeaderNavigationActionPropsType
+>(function HeaderNavigationAction({ className, children, ...restProps }, ref) {
+    const theme = useComponentTheme(
+        HEADER_NAVIGATION_ACTION_CLASS_PREFIX,
+        headerNavigationActionTheme,
+    );
 
-        const classOverride = useHeaderNavigationActionClassName(
-            HEADER_NAVIGATION_ACTION_CLASS_PREFIX,
-            className,
-        );
+    const classOverride = useHeaderNavigationActionClassName(
+        HEADER_NAVIGATION_ACTION_CLASS_PREFIX,
+        className,
+    );
 
-        return (
-            <HeaderNavigationActionRoot
-                data-testid={headerNavigationActionRoot}
-                {...restProps}
-                theme={theme}
-                className={classOverride.NavigationAction}
-                ref={ref}
+    return (
+        <HeaderNavigationActionRoot
+            data-testid={headerNavigationActionRoot}
+            {...restProps}
+            theme={theme}
+            className={classOverride.Action}
+        >
+            <HeaderNavigationActionContainer
+                className={classOverride.ActionContainer}
             >
-                <HeaderNavigationActionContainer alignItems="flex-end">
-                    {children}
-                </HeaderNavigationActionContainer>
-            </HeaderNavigationActionRoot>
-        );
-    },
-);
+                {children}
+            </HeaderNavigationActionContainer>
+        </HeaderNavigationActionRoot>
+    );
+});
 
 HeaderNavigationAction.defaultProps = {};
 

@@ -35,10 +35,3 @@ export type TableSectionContextValueDataType = {
 export type TableSectionContextValueType = {
     data: TableSectionContextValueDataType;
 };
-
-export type TableHookPropsType = Pick<
-    TableEffectivePropsType,
-    'stickyColumns' | 'stickyHead'
-> & {
-    ref: Ref<unknown>;
-};

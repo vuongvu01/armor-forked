@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState, useCallback } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 
 import { DataTable } from '../../../src/components';
 import {
@@ -48,14 +48,13 @@ export const StickyRightColumn = () => (
     <DataTable
         columns={columnsWide}
         data={dataSourceWide}
-        horizontalScroll
         stickyRightColumn
         width="50rem"
     />
 );
 
 export const StickyRightColumnInvisible = () => {
-    const ref = useRef();
+    const ref = useRef(null);
     useEffect(() => {
         const root = (ref.current as unknown) as HTMLDivElement;
         if (root) {
@@ -74,7 +73,6 @@ export const StickyRightColumnInvisible = () => {
         <DataTable
             columns={columnsWide}
             data={dataSourceWide}
-            horizontalScroll
             stickyRightColumn
             width="50rem"
             ref={ref}
@@ -86,14 +84,13 @@ export const StickyLeftColumnInvisible = () => (
     <DataTable
         columns={columnsWide}
         data={dataSourceWide}
-        horizontalScroll
         stickyLeftColumn
         width="50rem"
     />
 );
 
 export const StickyLeftColumn = () => {
-    const ref = useRef();
+    const ref = useRef(null);
     useEffect(() => {
         const root = (ref.current as unknown) as HTMLDivElement;
         if (root) {
@@ -107,7 +104,6 @@ export const StickyLeftColumn = () => {
         <DataTable
             columns={columnsWide}
             data={dataSourceWide}
-            horizontalScroll
             stickyLeftColumn
             width="50rem"
             ref={ref}
@@ -116,7 +112,7 @@ export const StickyLeftColumn = () => {
 };
 
 export const StickyLeftColumnWithCheckboxes = () => {
-    const ref = useRef();
+    const ref = useRef(null);
     useEffect(() => {
         const root = (ref.current as unknown) as HTMLDivElement;
         if (root) {
@@ -130,7 +126,6 @@ export const StickyLeftColumnWithCheckboxes = () => {
         <DataTable
             columns={columnsWide}
             data={dataSourceWide}
-            horizontalScroll
             stickyLeftColumn
             enableRowSelection
             width="50rem"

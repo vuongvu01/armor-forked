@@ -1,17 +1,16 @@
-import React, { forwardRef, FunctionComponent, useContext } from 'react';
+import React, { forwardRef, useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import { GRID_ITEM_CLASS_PREFIX, gridItemRoot } from './constants';
 import { GridItemPropsType } from './type';
-import { useGridItemClassName } from './utils/useGridItemClassName';
+import { useGridItemClassName } from './hooks/useGridItemClassName';
 import { GridContext } from '../utils/GridContext';
 import { GridItemRoot } from './style';
 import { useComponentTheme } from '../../../utils/hooks';
-import { gridItemTheme } from './theme';
 
-export const GridItem: FunctionComponent<GridItemPropsType> = forwardRef(
+export const GridItem = forwardRef<HTMLDivElement, GridItemPropsType>(
     function GridItem({ className, ...restProps }, ref) {
-        const theme = useComponentTheme(GRID_ITEM_CLASS_PREFIX, gridItemTheme);
+        const theme = useComponentTheme(GRID_ITEM_CLASS_PREFIX);
         const {
             gutterSpacing,
             gutterSpacingVertical,

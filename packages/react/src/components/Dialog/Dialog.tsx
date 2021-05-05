@@ -1,4 +1,4 @@
-import React, { FC, forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { useComponentTheme } from '../../utils/hooks';
 
@@ -20,69 +20,68 @@ import {
 import { useDialog } from './hooks/useDialog';
 import { PortalToBody } from '../../system/util/PortalToBody';
 
-export const Dialog: FC<DialogPropsType> = forwardRef(function Dialog(
-    { className, children, ...props },
-    ref,
-) {
-    const theme = useComponentTheme(DIALOG_CLASS_PREFIX);
-    const classNames = useDialogClassNames(DIALOG_CLASS_PREFIX, className);
+export const Dialog = forwardRef<HTMLDivElement, DialogPropsType>(
+    function Dialog({ className, children, ...props }, ref) {
+        const theme = useComponentTheme(DIALOG_CLASS_PREFIX);
+        const classNames = useDialogClassNames(DIALOG_CLASS_PREFIX, className);
 
-    const {
-        portalProps,
-        rootProps,
-        getBackdropProps,
-        alignmentContainerProps,
-        windowProps,
-        getCloseButtonProps,
-        contentProps,
+        const {
+            portalProps,
+            rootProps,
+            getBackdropProps,
+            alignmentContainerProps,
+            windowProps,
+            getCloseButtonProps,
+            contentProps,
 
-        enableCloseButton,
-        enableBackdrop,
-    } = useDialog(props, ref);
+            enableCloseButton,
+            enableBackdrop,
+        } = useDialog<HTMLDivElement>(props, ref);
 
-    return (
-        <PortalToBody {...portalProps}>
-            <DialogRoot
-                {...rootProps}
-                theme={theme}
-                className={classNames.Root}
-            >
-                {enableBackdrop && (
-                    <Backdrop
-                        {...getBackdropProps()}
-                        className={classNames.Backdrop}
-                    />
-                )}
-                <DialogAlignmentContainer
-                    {...alignmentContainerProps}
+        return (
+            <PortalToBody {...portalProps}>
+                <DialogRoot
+                    {...rootProps}
                     theme={theme}
-                    className={classNames.AlignmentContainer}
+                    className={classNames.Root}
                 >
-                    <DialogWindow
-                        {...windowProps}
+                    {enableBackdrop && (
+                        <Backdrop
+                            {...getBackdropProps()}
+                            className={classNames.Backdrop}
+                        />
+                    )}
+                    <DialogAlignmentContainer
+                        {...alignmentContainerProps}
                         theme={theme}
-                        className={classNames.Window}
+                        className={classNames.AlignmentContainer}
                     >
-                        {enableCloseButton && (
-                            <DialogCloseButton
-                                {...getCloseButtonProps()}
-                                theme={theme}
-                                className={classNames.CloseButton}
-                            />
-                        )}
-                        <DialogContent
-                            {...contentProps}
+                        <DialogWindow
+                            {...windowProps}
                             theme={theme}
-                            className={classNames.Content}
+                            className={classNames.Window}
                         >
-                            {children}
-                        </DialogContent>
-                    </DialogWindow>
-                </DialogAlignmentContainer>
-            </DialogRoot>
-        </PortalToBody>
-    );
-});
+                            {enableCloseButton && (
+                                <DialogCloseButton
+                                    {...getCloseButtonProps()}
+                                    theme={theme}
+                                    className={classNames.CloseButton}
+                                />
+                            )}
+                            <DialogContent
+                                {...contentProps}
+                                theme={theme}
+                                className={classNames.Content}
+                            >
+                                {children}
+                            </DialogContent>
+                        </DialogWindow>
+                    </DialogAlignmentContainer>
+                </DialogRoot>
+            </PortalToBody>
+        );
+    },
+);
 
 Dialog.defaultProps = {
     disableOverlay: false,

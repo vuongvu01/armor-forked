@@ -1,13 +1,14 @@
 import { MouseEvent } from 'react';
 
 import { AccordionEffectivePropsType } from '../type';
-import { Indexed } from '../../../type';
+import { ComponentElementStylePropsType } from '../../type';
 
-export type AccordionHeaderPropsType = Indexed<{
-    title?: string;
-    isExpanded?: boolean;
-    onToggle?: (event: MouseEvent<HTMLInputElement>) => void;
+export type AccordionHeaderPropsType = Partial<{
+    title: string;
+    isExpanded: boolean;
+    onToggle: (event: MouseEvent<HTMLDivElement>) => void;
 }> &
     AccordionEffectivePropsType;
 
-export type AccordionHeaderRootPropsType = AccordionHeaderPropsType;
+export type AccordionHeaderRootPropsType = AccordionHeaderPropsType &
+    ComponentElementStylePropsType;

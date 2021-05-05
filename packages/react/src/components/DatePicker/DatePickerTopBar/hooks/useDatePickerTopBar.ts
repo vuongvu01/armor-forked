@@ -1,8 +1,8 @@
 import { useCallback } from 'react';
 import { DatePickerTopBarPropsType } from '../type';
-import { ReferenceType } from '../../../../type';
+import { RefType } from '../../../../type';
 
-export const useDatePickerTopBar = (
+export const useDatePickerTopBar = <E extends HTMLDivElement>(
     {
         displayedDateVector,
         onDisplayedDateVectorChange,
@@ -10,7 +10,7 @@ export const useDatePickerTopBar = (
         monthYearSelectorOpen,
         ...restProps
     }: DatePickerTopBarPropsType,
-    ref: ReferenceType,
+    ref: RefType<E>,
 ) => {
     const onPreviousMonthClick = useCallback(() => {
         const newVector = displayedDateVector.clone();

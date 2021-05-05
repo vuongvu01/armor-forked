@@ -1,7 +1,7 @@
 import { HTMLAttributes, ReactNode } from 'react';
 
-import { MarginAttributesType } from '../../system/attributes';
-import { Indexed, ObjectLiteralType, ScalarType } from '../../type';
+import { MarginAttributesType } from '../../system';
+import { ObjectLiteralType, ScalarType } from '../../type';
 import { ComponentElementStylePropsType } from '../type';
 import { JustifyContentType } from '../Flex/type';
 import {
@@ -47,21 +47,21 @@ export type NavigationSelectorParamsType = {
         | { label: string; value: string | number; [key: string]: any }[]; // aka OptionType - defining explicitly to expose into docs
 };
 
-type HeaderNavigationEffectivePropsType = Indexed<{
-    title?: ReactNode;
+type HeaderNavigationEffectivePropsType = Partial<{
+    title: ReactNode;
     /**
      * @deprecated
      * Use defaultExpanded instead
      */
-    isMenuExpanded?: boolean;
-    defaultExpanded?: boolean;
-    navigationMenuTitle?: ReactNode;
-    navigationMenuContent?: ReactNode;
-    navigationAction?: ReactNode;
-    selector?: ReactNode;
-    justifyContent?: JustifyContentType;
-    links?: ReactNode;
-    search?: ReactNode;
+    isMenuExpanded: boolean;
+    defaultExpanded: boolean;
+    navigationMenuTitle: ReactNode;
+    navigationMenuContent: ReactNode;
+    navigationAction: ReactNode;
+    selector: ReactNode;
+    justifyContent: JustifyContentType;
+    links: ReactNode;
+    search: ReactNode;
 }> &
     Omit<HTMLAttributes<HTMLElement>, 'title'> &
     MarginAttributesType;

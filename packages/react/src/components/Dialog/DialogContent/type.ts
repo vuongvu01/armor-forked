@@ -1,14 +1,13 @@
 import { HTMLAttributes } from 'react';
 
-import { Indexed } from '../../../type';
 import {
     ComponentElementStylePropsType,
     ComponentStylePropsType,
 } from '../../type';
 import { PaddingAttributesType } from '../../../system';
 
-type DialogContentEffectivePropsType = Indexed<{
-    enableVerticalScroll?: boolean;
+type DialogContentEffectivePropsType = Partial<{
+    enableVerticalScroll: boolean;
     // add other custom properties here
 }> &
     PaddingAttributesType &

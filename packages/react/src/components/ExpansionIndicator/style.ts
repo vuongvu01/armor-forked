@@ -1,7 +1,11 @@
 import styled, { css } from 'styled-components';
 import { ArrowDownIcon } from '@deliveryhero/armor-icons';
 
-import { ExpansionIndicatorPropsType } from './type';
+import {
+    ExpansionIndicatorContentPropsType,
+    ExpansionIndicatorIconPropsType,
+    ExpansionIndicatorRootPropsType,
+} from './type';
 import { transitionDurationInSec } from '../../constants';
 import {
     marginAttributes,
@@ -13,14 +17,16 @@ import {
 
 const expansionIndicatorContainerStyle = ({
     disabled,
-}: ExpansionIndicatorPropsType) =>
+}: ExpansionIndicatorRootPropsType) =>
     disabled
         ? css`
               cursor: not-allowed;
           `
         : {};
 
-const expansionIndicatorStyle = ({ disabled }: ExpansionIndicatorPropsType) =>
+const expansionIndicatorIconStyle = ({
+    disabled,
+}: ExpansionIndicatorIconPropsType) =>
     disabled
         ? css`
               cursor: not-allowed;
@@ -28,7 +34,9 @@ const expansionIndicatorStyle = ({ disabled }: ExpansionIndicatorPropsType) =>
           `
         : {};
 
-const actionSeparator = ({ displaySeparator }: ExpansionIndicatorPropsType) =>
+const actionSeparator = ({
+    displaySeparator,
+}: ExpansionIndicatorContentPropsType) =>
     displaySeparator
         ? css`
               border-left-color: ${color('neutral.03')};
@@ -36,7 +44,7 @@ const actionSeparator = ({ displaySeparator }: ExpansionIndicatorPropsType) =>
         : {};
 
 export const ExpansionIndicatorRoot = styled.div.withConfig(propsBlocker)<
-    ExpansionIndicatorPropsType
+    ExpansionIndicatorRootPropsType
 >`
     align-items: center;
     display: flex;
@@ -44,12 +52,12 @@ export const ExpansionIndicatorRoot = styled.div.withConfig(propsBlocker)<
     justify-content: center;
     outline: none;
 
-    ${expansionIndicatorContainerStyle}
-    ${marginAttributes}
+    ${expansionIndicatorContainerStyle};
+    ${marginAttributes};
 `;
 
 export const ExpansionIndicatorContent = styled.div.withConfig(propsBlocker)<
-    ExpansionIndicatorPropsType
+    ExpansionIndicatorContentPropsType
 >`
     align-items: center;
     border-left-width: 1px;
@@ -61,15 +69,15 @@ export const ExpansionIndicatorContent = styled.div.withConfig(propsBlocker)<
     transition: border-color ${transitionDurationInSec}s;
     width: 100%;
 
-    ${actionSeparator}
+    ${actionSeparator};
 `;
 
 export const ExpansionIndicatorIcon = styled(ArrowDownIcon)<
-    ExpansionIndicatorPropsType
+    ExpansionIndicatorIconPropsType
 >`
     color: ${color('primary.main')};
     ${transition({ transform: true })};
     ${expansion(180)};
 
-    ${expansionIndicatorStyle}
+    ${expansionIndicatorIconStyle};
 `;

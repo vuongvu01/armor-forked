@@ -1,10 +1,6 @@
 import { HTMLAttributes } from 'react';
 
-import {
-    MarginAttributesType,
-    SizeAttributesType,
-} from '../../system/attributes';
-import { Indexed } from '../../type';
+import { MarginAttributesType, SizeAttributesType } from '../../system';
 
 export type ClassBasedOnComponentType = {
     className?: string;
@@ -13,10 +9,10 @@ export type ClassBasedOnComponentType = {
     spacing?: number;
 };
 
-type GridEffectivePropsType = Indexed<{
-    gutterSpacing?: number;
-    gutterSpacingVertical?: number;
-    gutterSpacingHorizontal?: number;
+type GridEffectivePropsType = Partial<{
+    gutterSpacing: number;
+    gutterSpacingVertical: number;
+    gutterSpacingHorizontal: number;
 }> &
     HTMLAttributes<HTMLElement> &
     SizeAttributesType &
@@ -24,6 +20,7 @@ type GridEffectivePropsType = Indexed<{
 
 export type GridPropsType = GridEffectivePropsType;
 
-export type GridContextType = Indexed<{
-    spacing?: number;
-}>;
+export type GridContextType = Pick<
+    GridEffectivePropsType,
+    'gutterSpacing' | 'gutterSpacingVertical' | 'gutterSpacingHorizontal'
+>;

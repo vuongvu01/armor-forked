@@ -21,9 +21,16 @@ export type ChildrenType = JSX.Element | JSX.Element[] | undefined | null;
 /** @deprecated */
 export type Indexed<T, P = any> = T & ObjectLiteralType<P>;
 
+/** @deprecated */
 export type ReferenceType<C = unknown> =
     | ((instance: C) => void)
     | MutableRefObject<C>
+    | null;
+
+// todo: replace with ForwardedRef type from react when we update react
+export type RefType<T> =
+    | ((instance: T | null) => void)
+    | MutableRefObject<T | null>
     | null;
 
 export type MutableReferenceType = MutableRefObject<HTMLElement | null>;
@@ -31,6 +38,7 @@ export type MutableReferenceType = MutableRefObject<HTMLElement | null>;
 export type PseudoEventType<V = ScalarType> = {
     target: {
         value: V;
+        name?: string;
     };
 };
 

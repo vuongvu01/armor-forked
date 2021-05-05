@@ -1,7 +1,7 @@
 import { HTMLAttributes } from 'react';
 
-import { PaddingAttributesType } from '../../../system/attributes';
-import { Indexed } from '../../../type';
+import { PaddingAttributesType } from '../../../system';
+import { GridPropsType } from '../type';
 
 export type GridSizeType =
     // todo: discuss the real purpose of this, because it seems to be defeating the 12-column concept
@@ -19,13 +19,17 @@ export type ClassBasedOnComponentType = {
     gutterSpacingHorizontal?: number;
 };
 
-type GridItemEffectivePropsType = Indexed<{
+type GridItemEffectivePropsType = Partial<{
     xs?: GridSizeType;
     sm?: GridSizeType;
     md?: GridSizeType;
     lg?: GridSizeType;
     xl?: GridSizeType;
 }> &
+    Pick<
+        GridPropsType,
+        'gutterSpacing' | 'gutterSpacingVertical' | 'gutterSpacingHorizontal'
+    > &
     HTMLAttributes<HTMLElement> &
     PaddingAttributesType;
 

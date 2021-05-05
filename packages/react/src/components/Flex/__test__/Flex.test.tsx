@@ -15,7 +15,7 @@ describe('<Flex />', () => {
     });
 
     it('should render itself without errors', async () => {
-        render(<Flex label="Sample" />);
+        render(<Flex />);
     });
 
     it('should transfer properties into styles', async () => {

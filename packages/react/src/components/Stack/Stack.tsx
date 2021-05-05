@@ -1,43 +1,30 @@
-import React, { forwardRef, FunctionComponent } from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
-import { useStackClassName } from './utils';
+import { useStackClassName } from './hooks';
 import { StackPropsType } from './type';
 import { STACK_CLASS_PREFIX, stackRoot } from './constants';
 import { Flex } from '../Flex';
-import { useTheme } from '../../styling';
 
-export const Stack: FunctionComponent<StackPropsType> = forwardRef(
-    function Stack(
-        {
-            className,
-            reverse,
-            justifyContent,
-            alignItems,
-            flexWrap,
-            ...restProps
-        },
-        ref,
-    ) {
-        const theme = useTheme();
+export const Stack = forwardRef<HTMLDivElement, StackPropsType>(function Stack(
+    { className, reverse, justifyContent, alignItems, flexWrap, ...restProps },
+    ref,
+) {
+    const classOverride = useStackClassName(STACK_CLASS_PREFIX, className);
 
-        const classOverride = useStackClassName(STACK_CLASS_PREFIX, className);
-
-        return (
-            <Flex
-                data-testid={stackRoot}
-                {...restProps}
-                className={classOverride.Root}
-                direction={reverse ? 'column-reverse' : 'column'}
-                flexWrap={flexWrap}
-                justifyContent={justifyContent}
-                ref={ref}
-                alignItems={alignItems}
-                theme={theme}
-            />
-        );
-    },
-);
+    return (
+        <Flex
+            data-testid={stackRoot}
+            {...restProps}
+            className={classOverride.Root}
+            direction={reverse ? 'column-reverse' : 'column'}
+            flexWrap={flexWrap}
+            justifyContent={justifyContent}
+            ref={ref}
+            alignItems={alignItems}
+        />
+    );
+});
 
 Stack.defaultProps = {
     flexWrap: 'nowrap',

@@ -2,22 +2,24 @@ import { useCallback, useRef, useState } from 'react';
 import { DropdownInternalOptionType, DropdownPropsType } from '../type';
 import {
     useDetectEscapeKeyPressed,
-    useInternalRef,
     useOnValueUpdate,
     useOptions,
     useSelectedValueToDisplay,
     useValue,
 } from '../../../utils';
-import { ReferenceType } from '../../../type';
-import { useControlledState } from '../../../system/hooks/useControlledState';
-import { useGuidedState } from '../../../system/hooks/useGuidedState';
+import { RefType } from '../../../type';
+import {
+    useControlledState,
+    useGuidedState,
+    usePopper,
+    useOverlay,
+    useOuterClick,
+    useRootRef,
+} from '../../../system';
 import { useOnOptionListUpdate } from './useOnOptionListUpdate';
-import { usePopper } from '../../../system/hooks/usePopper';
-import { useOverlay } from '../../../system/hooks/useOverlay';
-import { useOuterClick } from '../../../system/hooks/useOuterClick';
 import { usePanelWidth } from './usePanelWidth';
 
-export const useDropdown = (
+export const useDropdown = <E extends HTMLDivElement>(
     {
         disabled,
         isActionSeparatorDisplayed = true,
@@ -59,13 +61,11 @@ export const useDropdown = (
 
         ...restProps
     }: DropdownPropsType,
-    ref: ReferenceType,
+    ref: RefType<E>,
 ) => {
-    const internalInputRef = useRef(null);
+    const internalInputRef = useRootRef(ref);
     const containerRef = useRef(null);
     const dropdownRef = useRef<HTMLDivElement>(null);
-
-    useInternalRef(ref, internalInputRef);
 
     const [internalValue, setInternalValue] = useValue(value, defaultValue);
     const [searchQuery, setSearchQuery] = useState(defaultSearchQuery);

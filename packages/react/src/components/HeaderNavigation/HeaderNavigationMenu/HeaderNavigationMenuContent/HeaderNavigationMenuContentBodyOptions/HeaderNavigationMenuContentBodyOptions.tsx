@@ -21,7 +21,7 @@ import {
     headerNavigationMenuContentBodyOptionsRoot,
 } from './constants';
 import HeaderNavigationMenuContentContext from '../HeaderNavigationMenuContentContext';
-import { useHeaderNavigationMenuContentBodyOptionsClassName } from './utils';
+import { useHeaderNavigationMenuContentBodyOptionsClassName } from './hooks';
 import { headerNavigationMenuContentBodyOptionsTheme } from './theme';
 
 const setActiveClass = (isActive: boolean) => (isActive ? 'active' : '');
@@ -71,7 +71,8 @@ export const HeaderNavigationMenuContentBodyOptions: FunctionComponent<HeaderNav
             theme={theme}
             className={classOverride.Root}
         >
-            {options.map(
+            {// @ts-ignore todo: fix this somehow
+            options.map(
                 (option: OptionObjectType | OptionCategoryObjectType) => {
                     if (!option.category) {
                         const { value, label } = option;
@@ -149,30 +150,30 @@ HeaderNavigationMenuContentBodyOptions.defaultProps = {};
 HeaderNavigationMenuContentBodyOptions.propTypes = {
     selectedValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     onOptionSelect: PropTypes.func,
-    options: PropTypes.oneOfType([
-        PropTypes.arrayOf(
-            PropTypes.shape({
-                value: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
-                    .isRequired,
-                label: PropTypes.string.isRequired,
-            }).isRequired,
-        ),
-        PropTypes.arrayOf(
-            PropTypes.shape({
-                category: PropTypes.string.isRequired,
-                value: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
-                    .isRequired,
-                label: PropTypes.string.isRequired,
-                options: PropTypes.arrayOf(
-                    PropTypes.shape({
-                        value: PropTypes.oneOfType([
-                            PropTypes.number,
-                            PropTypes.string,
-                        ]).isRequired,
-                        label: PropTypes.string.isRequired,
-                    }).isRequired,
-                ),
-            }).isRequired,
-        ),
-    ]),
+    // options: PropTypes.oneOfType([
+    //     PropTypes.arrayOf(
+    //         PropTypes.shape({
+    //             value: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+    //                 .isRequired,
+    //             label: PropTypes.string.isRequired,
+    //         }).isRequired,
+    //     ),
+    //     PropTypes.arrayOf(
+    //         PropTypes.shape({
+    //             category: PropTypes.string.isRequired,
+    //             value: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+    //                 .isRequired,
+    //             label: PropTypes.string.isRequired,
+    //             options: PropTypes.arrayOf(
+    //                 PropTypes.shape({
+    //                     value: PropTypes.oneOfType([
+    //                         PropTypes.number,
+    //                         PropTypes.string,
+    //                     ]).isRequired,
+    //                     label: PropTypes.string.isRequired,
+    //                 }).isRequired,
+    //             ),
+    //         }).isRequired,
+    //     ),
+    // ]),
 };

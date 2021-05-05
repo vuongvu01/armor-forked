@@ -1,7 +1,6 @@
 import { AnchorHTMLAttributes, ComponentType, HTMLAttributes } from 'react';
 
-import { MarginAttributesType } from '../../../system/attributes';
-import { Indexed } from '../../../type';
+import { MarginAttributesType } from '../../../system';
 
 export type ClassBasedOnComponentType = {
     className?: string;
@@ -12,11 +11,12 @@ export type ClassBasedOnComponentType = {
 
 export type TitleTagType = string | ComponentType<any>;
 
-type HeaderNavigationTitleEffectivePropsType = Indexed<{
-    isActive?: boolean;
-    name?: string;
-    to?: string;
-    tag?: TitleTagType;
+type HeaderNavigationTitleEffectivePropsType = Partial<{
+    isActive: boolean;
+    name: string;
+    to: string;
+    tag: TitleTagType;
+    onLinkClick: (name: string) => void;
 }> &
     Pick<AnchorHTMLAttributes<HTMLAnchorElement>, 'target' | 'href' | 'rel'> &
     HTMLAttributes<HTMLElement> &

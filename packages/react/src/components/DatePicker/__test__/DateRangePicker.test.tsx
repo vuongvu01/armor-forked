@@ -45,7 +45,7 @@ describe('<DateRangePicker />', () => {
     });
 
     it('should support forwardRef', () => {
-        const { result } = renderHook(() => useRef());
+        const { result } = renderHook(() => useRef(null));
         render(<DateRangePicker ref={result.current} />);
 
         expect(result.current.current).toBeInstanceOf(HTMLElement);

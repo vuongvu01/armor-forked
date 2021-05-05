@@ -139,7 +139,6 @@ export const SampleUseCase = () => {
                         label="Side dish"
                         marginTop={2}
                         marginBottom={6}
-                        selectedIndex={2}
                     />
                     <Box marginBottom={10}>
                         <Typography subSectionTitle>Pick a sauce</Typography>
@@ -264,7 +263,6 @@ export const FixedHeaderAndFooter = () => {
                         label="Main dish"
                         marginY={2}
                         marginRight={6}
-                        selectedIndex={1}
                     />
                     <Dropdown
                         options={['French fries', 'Rice', 'Beans', 'Corn']}
@@ -272,7 +270,6 @@ export const FixedHeaderAndFooter = () => {
                         label="Side dish"
                         marginTop={2}
                         marginBottom={6}
-                        selectedIndex={2}
                     />
                     <Box marginBottom={10}>
                         <Typography subSectionTitle>Pick a sauce</Typography>

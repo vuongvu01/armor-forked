@@ -1,15 +1,14 @@
 import { HTMLAttributes } from 'react';
 
 import { MarginAttributesType } from '../../../system';
-import { Indexed } from '../../../type';
 import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../../type';
 
-type FormFieldMessageEffectivePropsType = Indexed<{
-    error?: boolean;
-    oneLine?: boolean;
+type FormFieldMessageEffectivePropsType = Partial<{
+    error: boolean;
+    oneLine: boolean;
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes

@@ -1,12 +1,12 @@
-import React, { forwardRef, FunctionComponent } from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
-import { usePackItemClassName } from './utils';
+import { usePackItemClassName } from './hooks';
 import { PackItemPropsType } from './type';
 import { PACK_ITEM_CLASS_PREFIX, packItemRoot } from './constants';
 import { FlexItem } from '../Flex';
 
-export const PackItem: FunctionComponent<PackItemPropsType> = forwardRef(
+export const PackItem = forwardRef<HTMLDivElement, PackItemPropsType>(
     function PackItem(
         {
             className,

@@ -7,10 +7,9 @@ import {
     PaddingAttributesType,
     MarginAttributesType,
     SizeAttributesType,
-} from '../../system/attributes';
-import { Indexed } from '../../type';
+} from '../../system';
 
-type ContainerEffectivePropsType = Indexed<{
+type ContainerEffectivePropsType = Partial<{
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes

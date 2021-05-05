@@ -8,13 +8,12 @@ import {
     DisplayAttributesType,
     ColorAttributesType,
 } from '../../system';
-import { Indexed } from '../../type';
 import {
     ComponentElementStylePropsType,
     ComponentStylePropsType,
 } from '../type';
 
-type BoxEffectivePropsType = Indexed<{
+type BoxEffectivePropsType = Partial<{
     // add other custom properties here
 }> &
     MarginAttributesType &

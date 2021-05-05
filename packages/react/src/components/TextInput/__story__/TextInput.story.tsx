@@ -7,6 +7,7 @@ import {
 } from '@storybook/addon-knobs';
 
 import styled from 'styled-components';
+import { LockClosedIcon, LockOpenIcon } from '@deliveryhero/armor-icons';
 import {
     Button,
     Box,
@@ -16,11 +17,12 @@ import {
     Tag,
     Pack,
     PackItem,
+    IconButton,
 } from '../..';
 import { loremIpsum } from '../../../helpers/LoremIpsum';
 import { TextInput } from '../TextInput';
 import { GroupHelper } from '../../../helpers/GroupHelper';
-import { spacing } from '../../../system/mixins';
+import { spacing } from '../../../system';
 import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
@@ -475,6 +477,31 @@ export const BeforeAndAfter = () => (
         />
     </Box>
 );
+
+export const PasswordWithOptionalVisibility = () => {
+    const [isVisible, setIsVisible] = useState(false);
+
+    const handleInputVisibility = () => setIsVisible(!isVisible);
+
+    return (
+        <TextInput
+            label="Password"
+            type={isVisible ? 'text' : 'password'}
+            after={
+                <IconButton marginRight={2} onClick={handleInputVisibility}>
+                    {isVisible ? (
+                        <LockOpenIcon medium onClick={handleInputVisibility} />
+                    ) : (
+                        <LockClosedIcon
+                            medium
+                            onClick={handleInputVisibility}
+                        />
+                    )}
+                </IconButton>
+            }
+        />
+    );
+};
 
 export const Multiline = () => (
     <Box>

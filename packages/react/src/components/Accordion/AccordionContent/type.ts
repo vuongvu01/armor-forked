@@ -1,10 +1,11 @@
 import { AccordionEffectivePropsType } from '../type';
-import { Indexed } from '../../../type';
+import { ComponentElementStylePropsType } from '../../type';
 
-export type AccordionContentPropsType = Indexed<{
-    isExpanded?: boolean;
-    setIsExpanded?: (isExpanded: boolean) => void;
+export type AccordionContentPropsType = Partial<{
+    isExpanded: boolean;
+    setIsExpanded: (isExpanded: boolean) => void;
 }> &
     AccordionEffectivePropsType;
 
-export type AccordionContentRootPropsType = AccordionContentPropsType;
+export type AccordionContentRootPropsType = AccordionContentPropsType &
+    ComponentElementStylePropsType;

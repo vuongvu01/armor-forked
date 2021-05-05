@@ -44,7 +44,6 @@ export const useOptionList = ({
     const onSearchChange = useOnSearchQueryChange(
         internalValue,
         internalOptions,
-        setInternalValue,
         setInternalOptions,
         setSearch,
         searchQuery,

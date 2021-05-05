@@ -23,7 +23,7 @@ describe('<Badge />', () => {
     });
 
     it('supports forwardRef', () => {
-        const { result } = renderHook(() => useRef());
+        const { result } = renderHook(() => useRef<HTMLDivElement>(null));
 
         render(<Badge ref={result.current}>{badgeValue}</Badge>);
 

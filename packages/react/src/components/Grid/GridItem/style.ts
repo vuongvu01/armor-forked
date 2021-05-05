@@ -48,14 +48,10 @@ const gridItemRootStyle = ({
     gutterSpacing,
     gutterSpacingVertical,
     gutterSpacingHorizontal,
-    theme: {
-        breakpoints,
-        componentOverrides: { GridItem },
-        spacing,
-    },
+    theme: { breakpoints, spacing },
     ...restProps
 }: GridItemPropsType & { theme: ThemeType }) => {
-    let result = GridItem.Root.base;
+    let result = {};
 
     const gutterSpacingX = gutterSpacingHorizontal || gutterSpacing;
     const gutterSpacingY = gutterSpacingVertical || gutterSpacing;
@@ -74,12 +70,16 @@ const gridItemRootStyle = ({
         `;
     }
 
-    breakpoints.keys.forEach((key: BreakpointCodeType) => {
-        if (restProps[key]) {
+    breakpoints.keys.forEach((key: string) => {
+        if (restProps[key as BreakpointCodeType]) {
             result = css`
                 ${result};
-                ${breakpoints.up(key)} {
-                    ${setMediaStyle(restProps[key]!, spacing, gutterSpacingX)}
+                ${breakpoints.up(key as BreakpointCodeType)} {
+                    ${setMediaStyle(
+                        restProps[key as BreakpointCodeType]!,
+                        spacing,
+                        gutterSpacingX,
+                    )}
                 }
             `;
         }

@@ -5,12 +5,11 @@ import { useComponentTheme } from '../../../../../utils/hooks';
 import { HeaderNavigationMenuContentBodyRoot } from './style';
 import { HeaderNavigationMenuContentBodyPropsType } from './type';
 import { HeaderNavigationMenuContentBodyOptions } from '../HeaderNavigationMenuContentBodyOptions';
-import { useHeaderNavigationMenuContentBodyClassName } from './utils';
+import { useHeaderNavigationMenuContentBodyClassName } from './hooks';
 import {
     HEADER_NAVIGATION_MENU_CONTENT_BODY_CLASS_PREFIX,
     headerNavigationMenuContentBodyRoot,
 } from './constants';
-import { headerNavigationMenuContentBodyTheme } from './theme';
 
 export const HeaderNavigationMenuContentBody: FunctionComponent<HeaderNavigationMenuContentBodyPropsType> = ({
     className,
@@ -21,7 +20,6 @@ export const HeaderNavigationMenuContentBody: FunctionComponent<HeaderNavigation
 }) => {
     const theme = useComponentTheme(
         HEADER_NAVIGATION_MENU_CONTENT_BODY_CLASS_PREFIX,
-        headerNavigationMenuContentBodyTheme,
     );
 
     const classOverride = useHeaderNavigationMenuContentBodyClassName(

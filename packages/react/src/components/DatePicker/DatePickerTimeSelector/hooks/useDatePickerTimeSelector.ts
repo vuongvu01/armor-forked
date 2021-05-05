@@ -6,18 +6,18 @@ import {
     useMemo,
 } from 'react';
 import { DatePickerTimeSelectorPropsType } from '../type';
-import { ReferenceType } from '../../../../type';
+import { RefType } from '../../../../type';
 import {
     DATE_PICKER_TIME_SELECTOR_MODE_AM,
     DATE_PICKER_TIME_SELECTOR_MODE_PM,
 } from '../constants';
-import { useGuidedState } from '../../../../system/hooks/useGuidedState';
+import { useGuidedState } from '../../../../system';
 import { TimeVector12ModeType } from '../../utils/TimeVector12';
 import { getValidTimeFragment } from '../utils/getValidTimeFragment';
 
-export const useDatePickerTimeSelector = (
+export const useDatePickerTimeSelector = <E extends HTMLDivElement>(
     { value, onChange, ...restProps }: DatePickerTimeSelectorPropsType,
-    ref: ReferenceType,
+    ref: RefType<E>,
 ) => {
     const value12 = useMemo(() => value.convertTo12(), [value]);
 

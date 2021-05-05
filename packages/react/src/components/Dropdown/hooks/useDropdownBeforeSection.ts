@@ -2,10 +2,9 @@ import { MouseEvent, useCallback, useMemo, useRef, useState } from 'react';
 import {
     noop,
     stringEllipsisAtMaxCharacters,
-    useInternalRef,
     useOnValueUpdate,
 } from '../../../utils';
-import { ReferenceType } from '../../../type';
+import { RefType } from '../../../type';
 import {
     DropdownBeforeSectionPropsType,
     DropdownInternalValueType,
@@ -15,8 +14,9 @@ import { OptionObjectType } from '../../OptionList/type';
 import { useOnToggleAll } from './useOnToggleAll';
 import { useOnRemoveMultiple } from './useOnRemoveMultiple';
 import { useOnPopulateTagsAutomatically } from './useOnPopulateTagsAutomatically';
+import { useRootRef } from '../../../system';
 
-export const useDropdownBeforeSection = (
+export const useDropdownBeforeSection = <E extends HTMLDivElement>(
     {
         disabled,
         onClick,
@@ -35,9 +35,9 @@ export const useDropdownBeforeSection = (
         singleLine,
         ...restProps
     }: DropdownBeforeSectionPropsType,
-    ref: ReferenceType,
+    ref: RefType<E>,
 ) => {
-    const containerRef = useRef(null);
+    const containerRef = useRootRef<E>(ref);
     const beforeSectionContainerRef = useRef(null);
     const beforeSectionWrapperRef = useRef(null);
 
@@ -46,8 +46,6 @@ export const useDropdownBeforeSection = (
     const [internalOpenTagsCount, setInternalOpenTagsCount] = useState(
         singleLine ? 1 : openTagsCount,
     );
-
-    useInternalRef(ref, containerRef);
 
     const selectedTagsToDisplay = useSelectedTagsToDisplay(
         internalValue,

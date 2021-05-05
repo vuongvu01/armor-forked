@@ -1,14 +1,13 @@
 import { HTMLAttributes } from 'react';
 
 import { MarginAttributesType } from '../../../system';
-import { Indexed } from '../../../type';
 import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../../type';
 
-type FormFieldTooltipEffectivePropsType = Indexed<{
-    visible?: boolean;
+type FormFieldTooltipEffectivePropsType = Partial<{
+    visible: boolean;
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes

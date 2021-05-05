@@ -71,7 +71,7 @@ export const ReadOnly = () => {
 export const WithError = () => {
     return (
         <Box paddingTop={20} paddingLeft={50}>
-            <FormField error>
+            <FormField>
                 <DatePicker label="Readonly" error dateValue={currentDate} />
                 <FormFieldMessage error oneLine>
                     The name of your droid

@@ -1,13 +1,7 @@
 import { HTMLAttributes } from 'react';
 
-import { MarginAttributesType } from '../../system/attributes';
-import { Indexed } from '../../type';
-import {
-    AlignItemsType,
-    AlignSelfType,
-    JustifyContentType,
-    WrapType,
-} from '../Flex/type';
+import { MarginAttributesType } from '../../system';
+import { AlignSelfType, FlexEffectivePropsType } from '../Flex/type';
 
 export type ClassBasedOnComponentType = {
     className?: string;
@@ -16,21 +10,22 @@ export type ClassBasedOnComponentType = {
     component: string;
 };
 
-type PackEffectivePropsType = Indexed<{
-    reverse?: boolean;
-    justifyContent?: JustifyContentType;
-    alignItems?: AlignItemsType;
-    flexWrap?: WrapType;
+type PackEffectivePropsType = Partial<{
+    reverse: boolean;
 }> &
+    Pick<
+        FlexEffectivePropsType,
+        'gutterSpacing' | 'flexWrap' | 'alignItems' | 'justifyContent'
+    > &
     HTMLAttributes<HTMLElement> &
     MarginAttributesType;
 
-type PackItemEffectivePropsType = Indexed<{
-    flexGrow?: number;
-    flexShrink?: number;
-    flexBasis?: string;
-    order?: number;
-    alignSelf?: AlignSelfType;
+type PackItemEffectivePropsType = Partial<{
+    flexGrow: number;
+    flexShrink: number;
+    flexBasis: string;
+    order: number;
+    alignSelf: AlignSelfType;
 }> &
     HTMLAttributes<HTMLElement> &
     MarginAttributesType;

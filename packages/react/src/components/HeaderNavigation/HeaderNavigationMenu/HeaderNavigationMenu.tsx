@@ -1,4 +1,4 @@
-import React, { forwardRef, FunctionComponent, useCallback } from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { HeaderNavigationMenuPropsType } from './type';
@@ -6,7 +6,7 @@ import {
     HEADER_NAVIGATION_MENU_CLASS_PREFIX,
     headerNavigationMenuRoot,
 } from './constants';
-import { useHeaderNavigationMenuClassName } from './utils';
+import { useHeaderNavigationMenuClassName } from './hooks';
 import {
     HeaderNavigationMenuContentContainer,
     HeaderNavigationMenuRoot,
@@ -18,93 +18,95 @@ import {
 import { headerNavigationMenuTheme } from './theme';
 import HeaderNavigationMenuContentContext from './HeaderNavigationMenuContent/HeaderNavigationMenuContentContext';
 import { DHLogoImage } from './DHLogoImage';
-import { useHeaderNavigationMenu } from './utils/useHeaderNavigationMenu';
+import { useHeaderNavigationMenu } from './hooks/useHeaderNavigationMenu';
 import { useComponentTheme } from '../../../utils/hooks';
 import { HeaderNavigationItem } from '../HeaderNavigationItem';
 
-export const HeaderNavigationMenu: FunctionComponent<HeaderNavigationMenuPropsType> = forwardRef(
-    function HeaderNavigationMenu(
-        {
-            className,
-            headerTitle = <DHLogoImage />,
-            headerContent,
-            tabIndex = 0,
-            ...restProps
-        },
-        ref,
-    ) {
-        const theme = useComponentTheme(
-            HEADER_NAVIGATION_MENU_CLASS_PREFIX,
-            headerNavigationMenuTheme,
-        );
+export const HeaderNavigationMenu = forwardRef<
+    HTMLDivElement,
+    HeaderNavigationMenuPropsType
+>(function HeaderNavigationMenu(
+    {
+        className,
+        headerTitle = <DHLogoImage />,
+        headerContent,
+        tabIndex = 0,
+        ...restProps
+    },
+    ref,
+) {
+    const theme = useComponentTheme(
+        HEADER_NAVIGATION_MENU_CLASS_PREFIX,
+        headerNavigationMenuTheme,
+    );
 
-        const classOverride = useHeaderNavigationMenuClassName(
-            HEADER_NAVIGATION_MENU_CLASS_PREFIX,
-            className,
-        );
+    const classOverride = useHeaderNavigationMenuClassName(
+        HEADER_NAVIGATION_MENU_CLASS_PREFIX,
+        className,
+    );
 
-        const {
-            internalRef,
-            isExpanded,
-            setIsExpanded,
-            handleMenuKeyPress,
-        } = useHeaderNavigationMenu(restProps, ref);
+    const {
+        internalRef,
+        isExpanded,
+        setIsExpanded,
+        handleMenuKeyPress,
+    } = useHeaderNavigationMenu(restProps, ref);
 
-        const contextValue = { isExpanded, setIsExpanded };
+    const contextValue = { isExpanded, setIsExpanded };
 
-        return (
-            <HeaderNavigationMenuContentContext.Provider value={contextValue}>
-                <HeaderNavigationItem
+    return (
+        <HeaderNavigationMenuContentContext.Provider value={contextValue}>
+            <HeaderNavigationItem
+                theme={theme}
+                className={classOverride.NavigationMenuItem}
+            >
+                <HeaderNavigationMenuRoot
+                    data-testid={headerNavigationMenuRoot}
+                    {...restProps}
                     theme={theme}
-                    className={classOverride.NavigationMenuItem}
-                    flexGrow={1}
+                    className={classOverride.NavigationMenu}
                 >
-                    <HeaderNavigationMenuRoot
-                        data-testid={headerNavigationMenuRoot}
-                        {...restProps}
+                    <HeaderNavigationMenuTitleContainer
+                        ref={internalRef}
                         theme={theme}
-                        className={classOverride.NavigationMenu}
+                        className={classOverride.TitleContainer}
                     >
-                        <HeaderNavigationMenuTitleContainer ref={internalRef}>
-                            <HeaderNavigationMenuTitle
+                        <HeaderNavigationMenuTitle
+                            theme={theme}
+                            className={classOverride.NavigationMenuItem}
+                        >
+                            {headerTitle}
+                        </HeaderNavigationMenuTitle>
+                        {headerContent && (
+                            <MenuExpansionIndicatorItem
                                 theme={theme}
                                 className={classOverride.NavigationMenuItem}
+                                tabIndex={tabIndex}
+                                onKeyPress={handleMenuKeyPress}
                             >
-                                {headerTitle}
-                            </HeaderNavigationMenuTitle>
-                            {headerContent && (
-                                <MenuExpansionIndicatorItem
+                                <MenuExpansionIndicator
+                                    displaySeparator={false}
+                                    isExpanded={isExpanded}
                                     theme={theme}
-                                    className={classOverride.NavigationMenuItem}
-                                    tabIndex={tabIndex}
-                                    onKeyPress={handleMenuKeyPress}
-                                >
-                                    <MenuExpansionIndicator
-                                        displaySeparator={false}
-                                        isExpanded={isExpanded}
-                                        theme={theme}
-                                        className={
-                                            classOverride.MenuExpansionIndicator
-                                        }
-                                    />
-                                </MenuExpansionIndicatorItem>
-                            )}
-                        </HeaderNavigationMenuTitleContainer>
-                        <HeaderNavigationMenuContentContainer
-                            theme={theme}
-                            isExpanded={isExpanded}
-                            className={
-                                classOverride.NavigationMenuContentContainer
-                            }
-                        >
-                            {isExpanded && headerContent}
-                        </HeaderNavigationMenuContentContainer>
-                    </HeaderNavigationMenuRoot>
-                </HeaderNavigationItem>
-            </HeaderNavigationMenuContentContext.Provider>
-        );
-    },
-);
+                                    className={
+                                        classOverride.MenuExpansionIndicator
+                                    }
+                                />
+                            </MenuExpansionIndicatorItem>
+                        )}
+                    </HeaderNavigationMenuTitleContainer>
+                    <HeaderNavigationMenuContentContainer
+                        theme={theme}
+                        isExpanded={isExpanded}
+                        className={classOverride.NavigationMenuContentContainer}
+                    >
+                        {isExpanded && headerContent}
+                    </HeaderNavigationMenuContentContainer>
+                </HeaderNavigationMenuRoot>
+            </HeaderNavigationItem>
+        </HeaderNavigationMenuContentContext.Provider>
+    );
+});
 
 HeaderNavigationMenu.defaultProps = {
     tabIndex: 0,

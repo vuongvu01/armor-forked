@@ -220,7 +220,6 @@ export const RowSelectionAndStickyColumns = () => {
             }}
             stickyLeftColumn
             stickyRightColumn
-            horizontalScroll
             width="50rem"
         />
     );
@@ -239,7 +238,6 @@ export const RowSelectionAndNoStickyColumns = () => {
                 console.log('new selection');
                 console.log(selection);
             }}
-            horizontalScroll
             width="50rem"
         />
     );
@@ -541,6 +539,59 @@ export const ExpandableSectionWithNumbers = () => {
                 return (
                     <>
                         {item.name} is {item.age} years old and he/she lives in{' '}
+                        {item.address}
+                    </>
+                );
+            }}
+        />
+    );
+};
+
+const massiveData: typeof dataSource = [];
+for (let i = 0; i < 3000; i += 1) {
+    massiveData.push({
+        id: `id_${i}`,
+        name: `King Edward the ${i}`,
+        age: Math.floor(Math.random() * 100),
+        address: '10 Downing Street',
+    });
+}
+
+export const MassiveTable = () => {
+    return (
+        <DataTable
+            columns={columns}
+            data={massiveData}
+            stickyHead
+            enableVirtualization
+        />
+    );
+};
+
+export const MassiveTableWithItemHeight = () => {
+    return (
+        <DataTable
+            columns={columns}
+            data={massiveData}
+            stickyHead
+            enableVirtualization
+            averageItemHeight={65}
+        />
+    );
+};
+
+export const MassiveTableAndExpandableRow = () => {
+    return (
+        <DataTable
+            columns={columns}
+            data={massiveData}
+            stickyHead
+            enableVirtualization
+            enableExpandableSections
+            renderExpandableSection={(item: any) => {
+                return (
+                    <>
+                        {item.name} is {item.age} years old and he lives in{' '}
                         {item.address}
                     </>
                 );

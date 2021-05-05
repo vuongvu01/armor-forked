@@ -6,12 +6,12 @@ import {
     colorGrey60,
     colorGrey80,
 } from '../../../../tokens';
-import { CheckboxPropsType } from '../../../../components/Checkbox/type';
+import { CheckboxRootPropsType } from '../../../../components/Checkbox/type';
 
 export const getCheckboxOverride = ({
     disabled,
     reallyChecked: checked,
-}: CheckboxPropsType) => {
+}: CheckboxRootPropsType) => {
     let result = {};
 
     if (!checked && !disabled) {

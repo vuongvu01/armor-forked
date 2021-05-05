@@ -1,7 +1,7 @@
 import { BreakpointsBaseType } from '../../styling';
 import { CSSChunkType } from '../../type';
 
-export type BreakpointCodeType = string; // 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+export type BreakpointCodeType = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 export type BreakpointFunctionType = (
     themeBreakpoints: BreakpointsBaseType,

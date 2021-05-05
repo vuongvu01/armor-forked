@@ -30,12 +30,9 @@ const gridRootStyle = ({
     gutterSpacing,
     gutterSpacingVertical,
     gutterSpacingHorizontal,
-    theme: {
-        componentOverrides: { Grid },
-        spacing,
-    },
+    theme: { spacing },
 }: GridPropsType & { theme: ThemeType }) => {
-    let result = Grid.Root.base;
+    let result = {};
 
     const gutterSpacingX = gutterSpacingHorizontal || gutterSpacing;
     const gutterSpacingY = gutterSpacingVertical || gutterSpacing;

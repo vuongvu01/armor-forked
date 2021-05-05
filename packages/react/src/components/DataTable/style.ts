@@ -6,7 +6,11 @@ import {
     sizeAttributes,
     spacing,
 } from '../../system';
-import { DataTableFooterPropsType, DataTableRootPropsType } from './type';
+import {
+    DataTableFooterPropsType,
+    DataTableRootPropsType,
+    DataTableVirtualOffsetType,
+} from './type';
 
 export const DataTableRoot = styled.div.withConfig(propsBlocker)<
     DataTableRootPropsType
@@ -18,8 +22,20 @@ export const DataTableRoot = styled.div.withConfig(propsBlocker)<
     ${marginAttributes}
 `;
 
-export const DataTableFooter = styled.div<DataTableFooterPropsType>`
+export const DataTableFooter = styled.div.withConfig(propsBlocker)<
+    DataTableFooterPropsType
+>`
     margin-top: ${spacing(3)};
     display: flex;
     justify-content: flex-end;
+`;
+
+export const DataTableVirtualPadding = styled.tr.withConfig(propsBlocker)<
+    DataTableVirtualOffsetType
+>`
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    line-height: 0;
+    height: ${({ height }) => height}px;
 `;

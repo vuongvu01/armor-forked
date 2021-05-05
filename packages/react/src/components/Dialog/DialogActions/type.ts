@@ -1,13 +1,12 @@
 import { HTMLAttributes } from 'react';
 
-import { Indexed } from '../../../type';
 import {
     ComponentElementStylePropsType,
     ComponentStylePropsType,
 } from '../../type';
 import { PaddingAttributesType } from '../../../system';
 
-type DialogActionsEffectivePropsType = Indexed<{
+type DialogActionsEffectivePropsType = Partial<{
     // add other custom properties here
 }> &
     PaddingAttributesType &

@@ -1,4 +1,4 @@
-import React, { FunctionComponent, forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { useComponentTheme } from '../../utils/hooks';
 
@@ -8,7 +8,7 @@ import { ButtonPropsType } from './type';
 import { buttonDefaultTheme } from './theme';
 import { BUTTON_CLASS_PREFIX } from './constants';
 
-export const Button: FunctionComponent<ButtonPropsType> = forwardRef(
+export const Button = forwardRef<HTMLButtonElement, ButtonPropsType>(
     function Button(
         {
             className,

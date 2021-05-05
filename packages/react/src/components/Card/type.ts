@@ -1,6 +1,5 @@
 import { HTMLAttributes } from 'react';
 
-import { Indexed } from '../../type';
 import {
     MarginAttributesType,
     PaddingAttributesType,
@@ -11,7 +10,7 @@ import {
     ComponentStylePropsType,
 } from '../type';
 
-type CardEffectivePropsType = Indexed<{
+type CardEffectivePropsType = Partial<{
     // add other custom properties here
 }> &
     MarginAttributesType &

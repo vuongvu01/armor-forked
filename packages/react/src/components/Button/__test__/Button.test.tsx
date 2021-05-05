@@ -101,7 +101,7 @@ describe('<Button />', () => {
     });
 
     it('should support forwardRef', () => {
-        const { result } = renderHook(() => useRef());
+        const { result } = renderHook(() => useRef<HTMLButtonElement>(null));
         render(<Button ref={result.current} />);
 
         expect(result.current.current).toBeInstanceOf(HTMLButtonElement);

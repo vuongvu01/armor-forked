@@ -15,7 +15,6 @@ export const useDataTableExpandableSections = (
     {
         enableExpandableSections,
         renderExpandableSection,
-        renderExpandableSectionTrigger,
         expandableSectionControllerColumnId,
         expandedSectionIds,
         defaultExpandedSectionIds,
@@ -114,7 +113,6 @@ export const useDataTableExpandableSections = (
             enableExpandableSections: reallyEnableExpandableSections,
             renderExpandableSection:
                 renderExpandableSection || renderExpandableSectionEmpty,
-            renderExpandableSectionTrigger,
             expandableSectionControllers,
             expandedSectionIds: expandedSectionIdsActual,
             onExpansionSectionControllerTriggerClick,

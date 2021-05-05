@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useState, MouseEvent } from 'react';
 import { InfoIcon } from '@deliveryhero/armor-icons';
 // eslint-disable-next-line import/no-unresolved
 import { withKnobs } from '@storybook/addon-knobs';
@@ -32,7 +32,10 @@ export const MinimumConfiguration = () => {
             setSelectedValueGroup1(selectedValue);
         }
     };
-    const handleOnToggle = (event: MouseEvent, isExpanded: boolean) =>
+    const handleOnToggle = (
+        event: MouseEvent<HTMLDivElement>,
+        isExpanded: boolean,
+    ) =>
         // eslint-disable-next-line no-console
         console.log('Toggle: ', isExpanded);
 
@@ -149,7 +152,10 @@ export const MinimumConfiguration = () => {
 };
 
 export const DisabledAccordionItem = () => {
-    const handleOnToggle = (event: MouseEvent, isExpanded: boolean) =>
+    const handleOnToggle = (
+        event: MouseEvent<HTMLDivElement>,
+        isExpanded: boolean,
+    ) =>
         // eslint-disable-next-line no-console
         console.log('Toggle: ', isExpanded);
 

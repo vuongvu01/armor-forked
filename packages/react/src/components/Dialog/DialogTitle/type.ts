@@ -1,14 +1,13 @@
 import { HTMLAttributes, ReactNode } from 'react';
 
-import { Indexed } from '../../../type';
 import {
     ComponentElementStylePropsType,
     ComponentStylePropsType,
 } from '../../type';
 import { PaddingAttributesType } from '../../../system';
 
-type DialogTitleEffectivePropsType = Indexed<{
-    description?: ReactNode;
+type DialogTitleEffectivePropsType = Partial<{
+    description: ReactNode;
     // add other custom properties here
 }> &
     PaddingAttributesType &

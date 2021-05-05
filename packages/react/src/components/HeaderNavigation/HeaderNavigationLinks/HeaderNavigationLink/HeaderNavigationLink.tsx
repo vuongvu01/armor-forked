@@ -1,4 +1,4 @@
-import React, { forwardRef, FunctionComponent, useContext } from 'react';
+import React, { forwardRef, useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import { HeaderNavigationLinkRoot } from './style';
@@ -10,52 +10,53 @@ import {
 } from './constants';
 import { headerNavigationLink } from './theme';
 import HeaderNavigationLinksContext from '../HeaderNavigationLinksContext';
-import { useHeaderNavigationLinkClassName } from './utils';
+import { useHeaderNavigationLinkClassName } from './hooks';
 import { ButtonPropsType } from '../../../Button/type';
-import { useHeaderNavigationLink } from './utils/useHeaderNavigationLink';
+import { useHeaderNavigationLink } from './hooks/useHeaderNavigationLink';
 
-export const HeaderNavigationLink: FunctionComponent<HeaderNavigationLinkPropsType> = forwardRef(
-    function HeaderNavigationLink(
-        { className, children, tag: Tag = 'span', ...restProps },
-        ref,
-    ) {
-        const headerNavigationLinksContext = useContext(
-            HeaderNavigationLinksContext,
-        );
+export const HeaderNavigationLink = forwardRef<
+    HTMLDivElement,
+    HeaderNavigationLinkPropsType
+>(function HeaderNavigationLink(
+    { className, children, tag: Tag = 'span', ...restProps },
+    ref,
+) {
+    const headerNavigationLinksContext = useContext(
+        HeaderNavigationLinksContext,
+    );
 
-        const theme = useComponentTheme(
-            HEADER_NAVIGATION_LINK_CLASS_PREFIX,
-            headerNavigationLink,
-        );
+    const theme = useComponentTheme(
+        HEADER_NAVIGATION_LINK_CLASS_PREFIX,
+        headerNavigationLink,
+    );
 
-        const classOverride = useHeaderNavigationLinkClassName(
-            HEADER_NAVIGATION_LINK_CLASS_PREFIX,
-            className,
-        );
+    const classOverride = useHeaderNavigationLinkClassName(
+        HEADER_NAVIGATION_LINK_CLASS_PREFIX,
+        className,
+    );
 
-        const { isActive, onClick, restRootProps } = useHeaderNavigationLink({
-            headerNavigationLinksContext,
-            ...restProps,
-        });
+    const { isActive, onClick, restRootProps } = useHeaderNavigationLink({
+        headerNavigationLinksContext,
+        ...restProps,
+    });
 
-        return (
-            <HeaderNavigationLinkRoot
-                data-testid={headerNavigationLinkRoot}
-                {...restRootProps}
-                theme={theme}
-                className={classOverride.Root}
-                isActive={isActive}
-                onClick={onClick}
-            >
-                {(forwardedProps: ButtonPropsType) => (
-                    <Tag {...forwardedProps} ref={ref}>
-                        {children}
-                    </Tag>
-                )}
-            </HeaderNavigationLinkRoot>
-        );
-    },
-);
+    return (
+        <HeaderNavigationLinkRoot
+            data-testid={headerNavigationLinkRoot}
+            {...restRootProps}
+            theme={theme}
+            className={classOverride.Root}
+            isActive={isActive}
+            onClick={onClick}
+        >
+            {(forwardedProps: ButtonPropsType) => (
+                <Tag {...forwardedProps} ref={ref}>
+                    {children}
+                </Tag>
+            )}
+        </HeaderNavigationLinkRoot>
+    );
+});
 
 HeaderNavigationLink.defaultProps = {};
 

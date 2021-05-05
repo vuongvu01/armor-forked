@@ -4,6 +4,7 @@ import { MarginAttributesType, WidthAttributesType } from '../../system';
 import {
     DictionaryItemIDBased,
     ObjectLiteralType,
+    PseudoEventType,
     ScalarType,
 } from '../../type';
 import { ComponentElementStylePropsType } from '../type';
@@ -53,12 +54,7 @@ export type DropdownOnRemoveMultipleType = (
     tagValuesToRemove: DropdownInternalValueType,
 ) => void;
 
-export type DropdownOnChangeEventType = {
-    target: {
-        value?: DropdownValueType;
-        name?: string;
-    };
-};
+export type DropdownOnChangeEventType = PseudoEventType<DropdownValueType>;
 
 export type DropdownOnChangeType = (event: DropdownOnChangeEventType) => void;
 export type OptionFormatType = (option: OptionItemType) => string;
@@ -138,6 +134,9 @@ export type DropdownEffectivePropsType = Partial<{
     formatOption: OptionFormatType;
     renderAggregatedTagsLabel: (aggregatedTagsCount: number) => string;
     groups: DropdownGroupObjectType[];
+    isOptionListShown: boolean;
+
+    'data-testid-input': string;
 }> &
     ComponentBehaviourOpenStateType &
     ComponentBehaviourPortalType &
@@ -147,8 +146,7 @@ export type DropdownEffectivePropsType = Partial<{
         'value' | 'onChange' | 'defaultValue' | 'onSelect'
     > &
     MarginAttributesType &
-    WidthAttributesType &
-    ObjectLiteralType;
+    WidthAttributesType;
 
 export type DropdownPropsType = DropdownEffectivePropsType;
 

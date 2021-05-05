@@ -1,18 +1,19 @@
 import { useCallback } from 'react';
 import { DatePickerActionBarPropsType } from '../type';
-import { ReferenceType } from '../../../../type';
+import { RefType } from '../../../../type';
 
-export const useDatePickerActionBar = (
+export const useDatePickerActionBar = <E extends HTMLDivElement>(
     { applyValue, setClose, ...restProps }: DatePickerActionBarPropsType,
-    ref: ReferenceType,
+    ref: RefType<E>,
 ) => {
     const onApplyButtonClick = useCallback(() => {
-        applyValue();
-        setClose();
+        if (applyValue) {
+            applyValue();
+        }
+        if (setClose) {
+            setClose();
+        }
     }, [applyValue, setClose]);
-    const onCancelButtonClick = useCallback(() => {
-        setClose();
-    }, [setClose]);
 
     return {
         rootProps: {
@@ -23,7 +24,7 @@ export const useDatePickerActionBar = (
             onClick: onApplyButtonClick,
         },
         cancelButtonProps: {
-            onClick: onCancelButtonClick,
+            onClick: setClose,
         },
     };
 };

@@ -17,11 +17,11 @@ describe('<HeaderNavigation />', () => {
     });
 
     it('should render itself without errors', async () => {
-        render(<HeaderNavigation label="Sample" />);
+        render(<HeaderNavigation />);
     });
 
     it('should support forwardRef', () => {
-        const { result } = renderHook(() => useRef());
+        const { result } = renderHook(() => useRef(null));
 
         render(<HeaderNavigation ref={result.current} />);
 

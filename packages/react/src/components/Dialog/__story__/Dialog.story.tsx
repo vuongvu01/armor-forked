@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode, useRef, useState } from 'react';
 import styled from 'styled-components';
 // eslint-disable-next-line import/no-unresolved
 import { boolean, select, text, withKnobs } from '@storybook/addon-knobs';
@@ -677,6 +677,26 @@ export const WithAPortalInside = () => {
             <LoremIpsum>
                 <Button onClick={() => setOpen(true)}>Open modal!</Button>
             </LoremIpsum>
+        </>
+    );
+};
+
+export const CustomProps = () => {
+    const ref = useRef<HTMLDivElement>(null);
+    return (
+        <>
+            <Dialog open aria-label="blah" data-custom-prop="1" ref={ref}>
+                <DialogTitle description="Assign a new id to this location">
+                    New location
+                </DialogTitle>
+                <DialogContent>
+                    {text('Children', 'Hello world!')}
+                </DialogContent>
+                <DialogActions>
+                    <Button tertiary>Cancel</Button>
+                    <Button>Save</Button>
+                </DialogActions>
+            </Dialog>
         </>
     );
 };

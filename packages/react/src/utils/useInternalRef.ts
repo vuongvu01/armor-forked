@@ -1,6 +1,7 @@
 import { MutableRefObject, useEffect } from 'react';
 import { ReferenceType } from '../type';
 
+/** @deprecated */
 export const useInternalRef = (
     ref: ReferenceType,
     internalRef: MutableRefObject<unknown>, // todo: replace with MutableRefObject<HTMLElement>

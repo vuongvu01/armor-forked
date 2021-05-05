@@ -1,4 +1,4 @@
-import React, { FunctionComponent, forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { useDatePickerActionBarClassNames } from './hooks/useDatePickerActionBarClassNames';
@@ -8,45 +8,46 @@ import { DatePickerActionBarPropsType } from './type';
 import { DATE_PICKER_ACTION_BAR_CLASS_PREFIX } from './constants';
 import { useComponentTheme } from '../../../utils/hooks';
 
-export const DatePickerActionBar: FunctionComponent<DatePickerActionBarPropsType> = forwardRef(
-    function DatePickerActionBar({ className, ...props }, ref) {
-        const theme = useComponentTheme(DATE_PICKER_ACTION_BAR_CLASS_PREFIX);
-        const classNameComponents = useDatePickerActionBarClassNames(
-            DATE_PICKER_ACTION_BAR_CLASS_PREFIX,
-            className,
-        );
+export const DatePickerActionBar = forwardRef<
+    HTMLDivElement,
+    DatePickerActionBarPropsType
+>(function DatePickerActionBar({ className, ...props }, ref) {
+    const theme = useComponentTheme(DATE_PICKER_ACTION_BAR_CLASS_PREFIX);
+    const classNameComponents = useDatePickerActionBarClassNames(
+        DATE_PICKER_ACTION_BAR_CLASS_PREFIX,
+        className,
+    );
 
-        const {
-            rootProps,
-            cancelButtonProps,
-            applyButtonProps,
-        } = useDatePickerActionBar(props, ref);
+    const {
+        rootProps,
+        cancelButtonProps,
+        applyButtonProps,
+    } = useDatePickerActionBar(props, ref);
 
-        return (
-            <DatePickerActionBarRoot
-                {...rootProps}
+    return (
+        <DatePickerActionBarRoot
+            {...rootProps}
+            theme={theme}
+            className={classNameComponents.Root}
+        >
+            <DatePickerActionBarButton
+                {...cancelButtonProps}
+                marginRight={2}
                 theme={theme}
-                className={classNameComponents.Root}
+                className={classNameComponents.ActionBarButton}
             >
-                <DatePickerActionBarButton
-                    {...cancelButtonProps}
-                    marginRight={2}
-                    theme={theme}
-                    className={classNameComponents.ActionBarButton}
-                >
-                    Cancel
-                </DatePickerActionBarButton>
-                <DatePickerActionBarButton
-                    {...applyButtonProps}
-                    theme={theme}
-                    className={classNameComponents.ActionBarButton}
-                >
-                    Ok
-                </DatePickerActionBarButton>
-            </DatePickerActionBarRoot>
-        );
-    },
-);
+                Cancel
+            </DatePickerActionBarButton>
+            <DatePickerActionBarButton
+                {...applyButtonProps}
+                theme={theme}
+                className={classNameComponents.ActionBarButton}
+            >
+                Ok
+            </DatePickerActionBarButton>
+        </DatePickerActionBarRoot>
+    );
+});
 
 DatePickerActionBar.defaultProps = {};
 

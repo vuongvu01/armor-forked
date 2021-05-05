@@ -1,4 +1,4 @@
-import React, { FC, forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { useTheme } from '../../styling';
@@ -11,34 +11,35 @@ import {
 } from './constants';
 import { useComponentTheme } from '../../../utils/hooks';
 
-export const <%- component_name_pascal %>: FC<<%- component_name_pascal %>PropsType> = forwardRef(
-    function <%- component_name_pascal %>(
-        {
-            className,
-            children,
-            ...props
-        },
-        ref,
-    ){
-        const theme = useComponentTheme(<%- component_name_snake_uc %>_CLASS_PREFIX);
-        const classNames = use<%- component_name_pascal %>ClassNames(
-            <%- component_name_snake_uc %>_CLASS_PREFIX,
-            className,
-        );
-
-        const { rootProps } = use<%- component_name_pascal %>(props, ref);
-
-        return (
-            <<%- component_name_pascal %>Root
-                {...rootProps}
-                theme={theme}
-                className={classNames.Root}
-            >
-                {children}
-            </<%- component_name_pascal %>Root>
-        );
+export const <%- component_name_pascal %> = forwardRef<
+    HTMLDivElement,
+    <%- component_name_pascal %>PropsType
+>(function <%- component_name_pascal %>(
+    {
+        className,
+        children,
+        ...props
     },
-);
+    ref,
+){
+    const theme = useComponentTheme(<%- component_name_snake_uc %>_CLASS_PREFIX);
+    const classNames = use<%- component_name_pascal %>ClassNames(
+        <%- component_name_snake_uc %>_CLASS_PREFIX,
+        className,
+    );
+
+    const { rootProps } = use<%- component_name_pascal %><HTMLDivElement>(props, ref);
+
+    return (
+        <<%- component_name_pascal %>Root
+            {...rootProps}
+            theme={theme}
+            className={classNames.Root}
+        >
+            {children}
+        </<%- component_name_pascal %>Root>
+    );
+});
 
 <%- component_name_pascal %>.defaultProps = {
     // exampleProperty: true,

@@ -12,7 +12,7 @@ const accordionContentStyle = ({
 }: AccordionContentRootPropsType) => {
     const base = css`
         transition: all ${transitionDurationInSec}s ease;
-        ${AccordionContent.Root.base}
+        ${AccordionContent.Root.base};
     `;
 
     if (isExpanded) {
@@ -21,7 +21,7 @@ const accordionContentStyle = ({
             opacity: 1;
             visibility: inherit;
             ${base}
-            ${isExpanded ? AccordionContent.Root.expanded : ''}
+            ${isExpanded ? AccordionContent.Root.expanded : ''};
         `;
     }
 
@@ -36,6 +36,5 @@ export const AccordionContentRoot = styled.div.withConfig(propsBlocker)<
     visibility: hidden;
 
     ${typography('paragraphLarge')};
-
-    ${accordionContentStyle}
+    ${accordionContentStyle};
 `;

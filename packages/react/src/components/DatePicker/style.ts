@@ -4,6 +4,7 @@ import {
     DatePickerArrowPropsType,
     DatePickerDropdownPropsType,
     DatePickerRootPropsType,
+    DateRangePickerPropsType,
 } from './type';
 import {
     marginAttributes,
@@ -20,7 +21,9 @@ import {
 
 import { TextInput } from '../TextInput';
 
-const getRootStyle = ({ enableTimePicker }: DatePickerRootPropsType) => {
+const getRootStyle = ({
+    enableTimePicker,
+}: Pick<DatePickerRootPropsType, 'enableTimePicker'>) => {
     const result = css`
         min-width: ${spacing(enableTimePicker ? 87 : 58)};
     `;
@@ -43,7 +46,7 @@ export const DatePickerRoot = styled.div.withConfig(propsBlocker)<
 `;
 
 export const DateRangePickerRoot = styled.div.withConfig(propsBlocker)<
-    DatePickerRootPropsType
+    DateRangePickerPropsType
 >`
     ${reset()};
     ${typography('paragraphMedium')};

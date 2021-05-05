@@ -1,8 +1,8 @@
 import { AnchorHTMLAttributes, ComponentType, HTMLAttributes } from 'react';
 
-import { MarginAttributesType } from '../../../../system/attributes';
-import { Indexed } from '../../../../type';
+import { MarginAttributesType } from '../../../../system';
 import { ComponentElementStylePropsType } from '../../../type';
+import { HeaderNavigationLinksContextType } from '../type';
 
 export type ClassBasedOnComponentType = {
     className?: string;
@@ -13,15 +13,19 @@ export type ClassBasedOnComponentType = {
 
 export type LinkTagType = string | ComponentType<any>;
 
-type HeaderNavigationLinkEffectivePropsType = Indexed<{
-    isActive?: boolean;
-    name?: string;
-    to?: string;
-    tag?: LinkTagType;
+type HeaderNavigationLinkEffectivePropsType = Partial<{
+    isActive: boolean;
+    name: string;
+    to: string;
+    tag: LinkTagType;
 }> &
     Pick<AnchorHTMLAttributes<HTMLAnchorElement>, 'target' | 'href' | 'rel'> &
     HTMLAttributes<HTMLElement> &
     MarginAttributesType;
+
+export type HeaderNavigationLinkHookPropsType = HeaderNavigationLinkEffectivePropsType & {
+    headerNavigationLinksContext: HeaderNavigationLinksContextType;
+};
 
 export type HeaderNavigationLinkPropsType = HeaderNavigationLinkEffectivePropsType;
 

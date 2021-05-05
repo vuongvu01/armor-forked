@@ -1,7 +1,6 @@
 import { HTMLAttributes, MouseEvent } from 'react';
 
-import { MarginAttributesType } from '../../../system/attributes';
-import { Indexed } from '../../../type';
+import { MarginAttributesType } from '../../../system';
 import {
     HeaderNavigationSelectOnChangeEventType,
     HeaderNavigationSelectOnSelectType,
@@ -20,7 +19,7 @@ export type ClassBasedOnComponentType = {
     component: string;
 };
 
-type HeaderNavigationSelectorEffectivePropsType = Indexed<{
+type HeaderNavigationSelectorEffectivePropsType = {
     navigationSelectorParams: NavigationSelectorParamsType;
     onOptionSelect?: HeaderNavigationSelectOnSelectType;
     onChange?: (event: HeaderNavigationSelectOnChangeEventType) => void;
@@ -32,11 +31,12 @@ type HeaderNavigationSelectorEffectivePropsType = Indexed<{
     separator?: boolean;
     enableSelectAllOption?: boolean;
     enableSearchOption?: boolean;
-}> &
-    HTMLAttributes<HTMLElement> &
+} & HTMLAttributes<HTMLElement> &
     MarginAttributesType;
 
 export type HeaderNavigationSelectorPropsType = HeaderNavigationSelectorEffectivePropsType;
 
-export type HeaderNavigationSelectorRootPropsType = HeaderNavigationSelectorPropsType &
-    ComponentElementStylePropsType;
+export type HeaderNavigationSelectorRootPropsType = {
+    isOptionListShown?: boolean;
+    separator?: boolean;
+} & ComponentElementStylePropsType;

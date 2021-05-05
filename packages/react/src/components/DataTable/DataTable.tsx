@@ -1,4 +1,4 @@
-import React, { FunctionComponent, forwardRef, Fragment } from 'react';
+import React, { forwardRef, Fragment, RefObject } from 'react';
 import PropTypes from 'prop-types';
 
 import { useDataTable } from './hooks/useDataTable';
@@ -16,17 +16,33 @@ import {
     getArrayOfScalarPropType,
     getScalarPropType,
 } from '../../utils/propTypes';
-import { DataTableRoot, DataTableFooter } from './style';
+import {
+    DataTableRoot,
+    DataTableVirtualPadding,
+    DataTableFooter,
+} from './style';
 import { DATA_TABLE_CLASS_PREFIX } from './constants';
 import { useComponentTheme } from '../../utils/hooks';
 import { useDataTableClassNames } from './hooks/useDataTableClassNames';
 import { PageNavigation } from '../PageNavigation';
+import { makeRowClassName } from './utils/makeRowClassName';
 
-export const DataTable: FunctionComponent<DataTablePropsType> = forwardRef(
+export const DataTable = forwardRef<HTMLDivElement, DataTablePropsType>(
     function DataTable({ className, ...props }, ref) {
         const {
             columns,
             data,
+
+            rootProps,
+            tableProps,
+            tableBodyProps,
+            getRowProps,
+            getHeadCellProps,
+            getCellProps,
+            getExpandableSectionProps,
+
+            getCellTag,
+            getHeadCellTag,
 
             // row selection
             enableRowSelection,
@@ -41,15 +57,12 @@ export const DataTable: FunctionComponent<DataTablePropsType> = forwardRef(
             enablePageNavigation,
             pageNavigationProps,
 
-            rootProps,
-            tableProps,
-            getRowProps,
-            getHeadCellProps,
-            getCellProps,
-            getExpandableSectionProps,
-
-            getCellTag,
-            getHeadCellTag,
+            // virtualization
+            enableVirtualization,
+            getVirtualTopSpaceProps,
+            getVirtualBottomSpaceProps,
+            getRowNumber,
+            initialDataLength,
 
             enableHeader,
             enableFooter,
@@ -94,13 +107,29 @@ export const DataTable: FunctionComponent<DataTablePropsType> = forwardRef(
                             </TableRow>
                         </TableHead>
                     )}
-                    <TableBody>
-                        {data.map(item => {
+                    <TableBody {...tableBodyProps}>
+                        {enableVirtualization && (
+                            <DataTableVirtualPadding
+                                {...getVirtualTopSpaceProps()}
+                                className={
+                                    classNameComponents.VirtualPaddingTop
+                                }
+                                theme={theme}
+                            />
+                        )}
+                        {data.map((item, index) => {
                             const key = item.key || item.id;
 
                             return (
                                 <Fragment key={key}>
-                                    <TableRow {...getRowProps(item)}>
+                                    <TableRow
+                                        {...getRowProps(item)}
+                                        className={makeRowClassName(
+                                            getRowNumber(index),
+                                            initialDataLength,
+                                            classNameComponents,
+                                        )}
+                                    >
                                         {enableRowSelection && (
                                             <TableCheckboxCell
                                                 {...getSelectRowCheckboxCellProps(
@@ -143,6 +172,15 @@ export const DataTable: FunctionComponent<DataTablePropsType> = forwardRef(
                                 </Fragment>
                             );
                         })}
+                        {enableVirtualization && (
+                            <DataTableVirtualPadding
+                                {...getVirtualBottomSpaceProps()}
+                                className={
+                                    classNameComponents.VirtualPaddingBottom
+                                }
+                                theme={theme}
+                            />
+                        )}
                     </TableBody>
                 </Table>
                 {enableFooter && (

@@ -2,6 +2,7 @@ import { MouseEvent, useCallback } from 'react';
 import { PageNavigationPropsType } from '../type';
 import { getPageNavigation } from './getPageNavigation';
 import { PseudoEventType } from '../../../type';
+import { DropdownValueType } from '../../Dropdown/type';
 
 export const usePageNavigation = ({
     pageNumber,
@@ -39,9 +40,9 @@ export const usePageNavigation = ({
     );
 
     const onPageSelectorChange = useCallback(
-        (event: PseudoEventType<number>) => {
+        (event: PseudoEventType<DropdownValueType>) => {
             if (onPageSizeChange) {
-                onPageSizeChange(event.target.value);
+                onPageSizeChange(event.target.value as number);
             }
         },
         [onPageSizeChange],

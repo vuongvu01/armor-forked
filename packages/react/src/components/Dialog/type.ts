@@ -1,7 +1,6 @@
 import { HTMLAttributes, MouseEvent } from 'react';
 
 import { SizeAttributesType } from '../../system';
-import { ObjectLiteralType } from '../../type';
 import {
     ComponentElementStylePropsType,
     ComponentStylePropsType,
@@ -34,8 +33,7 @@ type DialogEffectivePropsType = Partial<{
     ComponentBehaviourOverlayType &
     ComponentBehaviourPortalType &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
-    SizeAttributesType &
-    ObjectLiteralType;
+    SizeAttributesType;
 
 /* Dialog component prop type */
 export type DialogPropsType = DialogEffectivePropsType &

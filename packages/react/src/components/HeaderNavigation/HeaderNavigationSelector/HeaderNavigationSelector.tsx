@@ -1,4 +1,4 @@
-import React, { forwardRef, FunctionComponent } from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import {
     HeaderNavigationSelectorRoot,
@@ -15,89 +15,88 @@ import {
     HEADER_NAVIGATION_SELECTOR_CLASS_PREFIX,
     headerNavigationSelectorRoot,
 } from './constants';
-import useHeaderNavigationSelectorClassName from './utils/useHeaderNavigationSelectorClassName';
+import { useHeaderNavigationSelectorClassName } from './hooks';
 import { useTheme } from '../../../styling';
 import { Pack, PackItem } from '../../Pack';
-import { useHeaderNavigationSelector } from './utils/useHeaderNavigationSelector';
+import { useHeaderNavigationSelector } from './hooks/useHeaderNavigationSelector';
 
-export const HeaderNavigationSelector: FunctionComponent<HeaderNavigationSelectorPropsType> = forwardRef(
-    function HeaderNavigationSelector({ className, ...restProps }, ref) {
-        const theme = useTheme().armor;
+export const HeaderNavigationSelector = forwardRef<
+    HTMLDivElement,
+    HeaderNavigationSelectorPropsType
+>(function HeaderNavigationSelector({ className, ...restProps }, ref) {
+    const theme = useTheme().armor;
 
-        const classOverride = useHeaderNavigationSelectorClassName(
-            HEADER_NAVIGATION_SELECTOR_CLASS_PREFIX,
-            className,
-        );
+    const classOverride = useHeaderNavigationSelectorClassName(
+        HEADER_NAVIGATION_SELECTOR_CLASS_PREFIX,
+        className,
+    );
 
-        const {
-            rootProps,
-            selectorProps,
-            optionListProps,
-            expansionIndicatorProps,
-            containerRef,
-            label,
-            selectedValueToDisplay,
-        } = useHeaderNavigationSelector(restProps, ref);
+    const {
+        rootProps,
+        selectorProps,
+        optionListProps,
+        expansionIndicatorProps,
+        containerRef,
+        label,
+        selectedValueToDisplay,
+    } = useHeaderNavigationSelector(restProps, ref);
 
-        return (
-            <HeaderNavigationSelectorRoot
-                {...selectorProps}
+    return (
+        <HeaderNavigationSelectorRoot
+            {...selectorProps}
+            theme={theme}
+            className={classOverride.Root}
+        >
+            <HeaderNavigationSelectorWrapper
+                data-testid={headerNavigationSelectorRoot}
+                {...rootProps}
                 theme={theme}
-                className={classOverride.Root}
-                flexGrow={1}
+                className={classOverride.Wrapper}
+                ref={containerRef}
             >
-                <HeaderNavigationSelectorWrapper
-                    data-testid={headerNavigationSelectorRoot}
-                    {...rootProps}
-                    theme={theme}
-                    className={classOverride.Wrapper}
-                    ref={containerRef}
+                <SelectedOptions
+                    className={classOverride.SelectedOptionsContainer}
                 >
-                    <SelectedOptions
-                        className={classOverride.SelectedOptionsContainer}
-                    >
-                        <Pack className={classOverride.SelectedOptions}>
-                            <SelectorLabel
-                                className={classOverride.SelectedOptionsValues}
-                            >
-                                {selectedValueToDisplay || label}
-                            </SelectorLabel>
-                            <PackItem
+                    <Pack className={classOverride.SelectedOptions}>
+                        <SelectorLabel
+                            className={classOverride.SelectedOptionsValues}
+                        >
+                            {selectedValueToDisplay || label}
+                        </SelectorLabel>
+                        <PackItem
+                            className={
+                                classOverride.SelectedOptionsExpansionIndicatorContainer
+                            }
+                        >
+                            <SelectorExpansionIndicator
+                                {...expansionIndicatorProps}
+                                marginLeft={4}
+                                theme={theme}
                                 className={
-                                    classOverride.SelectedOptionsExpansionIndicatorContainer
+                                    classOverride.SelectedOptionsExpansionIndicator
                                 }
-                            >
-                                <SelectorExpansionIndicator
-                                    {...expansionIndicatorProps}
-                                    marginLeft={4}
-                                    theme={theme}
-                                    className={
-                                        classOverride.SelectedOptionsExpansionIndicator
-                                    }
-                                />
-                            </PackItem>
-                        </Pack>
-                    </SelectedOptions>
-                    <SelectorDropdownOptionListContainer
-                        className={classOverride.OptionListContainer}
+                            />
+                        </PackItem>
+                    </Pack>
+                </SelectedOptions>
+                <SelectorDropdownOptionListContainer
+                    className={classOverride.OptionListContainer}
+                    theme={theme}
+                >
+                    <SelectorDropdownOptionListWrapper
+                        className={classOverride.OptionListWrapper}
                         theme={theme}
                     >
-                        <SelectorDropdownOptionListWrapper
-                            className={classOverride.OptionListWrapper}
-                            theme={theme}
-                        >
-                            <SelectorDropdownOptionList
-                                {...optionListProps}
-                                className={classOverride.OptionList}
-                                theme={theme}
-                            />
-                        </SelectorDropdownOptionListWrapper>
-                    </SelectorDropdownOptionListContainer>
-                </HeaderNavigationSelectorWrapper>
-            </HeaderNavigationSelectorRoot>
-        );
-    },
-);
+                        <SelectorDropdownOptionList
+                            {...optionListProps}
+                            className={classOverride.OptionList}
+                        />
+                    </SelectorDropdownOptionListWrapper>
+                </SelectorDropdownOptionListContainer>
+            </HeaderNavigationSelectorWrapper>
+        </HeaderNavigationSelectorRoot>
+    );
+});
 
 HeaderNavigationSelector.defaultProps = {
     navigationSelectorParams: {
