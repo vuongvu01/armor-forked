@@ -791,11 +791,26 @@ export const NumericControlled = () => {
         <>
             <TextInput
                 type="number"
+                label="Label"
                 value={value}
                 onChange={e => {
                     setValue(parseInt(e.target.value, 10));
                     e.stopPropagation();
                 }}
+            />
+            <TextInput
+                label="Label"
+                marginRight={1}
+                type="number"
+                defaultValue={0}
+                min={0}
+            />
+            <TextInput label="Label" marginRight={1} type="number" min={0} />
+            <TextInput
+                placeholder="Placeholder"
+                marginRight={1}
+                type="number"
+                min={0}
             />
         </>
     );

@@ -161,6 +161,8 @@ export const useTextInput = (
             large,
             outlined: isOutlined,
             value,
+            defaultValue,
+            type,
         },
         inputLabelBackgroundProps: {
             disabled,

@@ -1,23 +1,23 @@
-import React, { FunctionComponent, forwardRef } from 'react';
+import React, { forwardRef, FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import { useComponentTheme } from '../../utils/hooks';
 
 import { useTextInputClassNames } from './utils/useTextInputClassNames';
 import {
-    TextInputRoot,
+    TextInputInnerContainer,
     TextInputInput,
     TextInputLabel,
     TextInputLabelBackground,
-    TextInputInnerContainer,
+    TextInputRoot,
 } from './style';
 import { TextInputInputPropsType, TextInputPropsType } from './type';
 import { textInputDefaultTheme } from './theme';
 import {
+    TEXT_INPUT_CLASS_PREFIX,
     textInputLabel,
     textInputLabelBackground,
     textInputRoot,
-    TEXT_INPUT_CLASS_PREFIX,
 } from './constants';
 import { useTextInput } from './utils/useTextInput';
 
