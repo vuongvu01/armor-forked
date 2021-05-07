@@ -1,19 +1,17 @@
-import { HTMLAttributes } from 'react';
 import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../../type';
-import { MarginAttributesType } from '../../../system/attributes';
-import { Indexed } from '../../../type';
+import { TableRowPropsType } from '../TableRow';
 
-type TableExpandableSectionEffectivePropsType = Indexed<{
-    expanded?: boolean;
-    enableDefaultPadding?: boolean;
-    offsetLeft?: number;
+type TableExpandableSectionEffectivePropsType = Partial<{
+    expanded: boolean;
+    enableDefaultPadding: boolean;
+    offsetLeft: number;
+    height: number;
     // add other custom properties here
 }> &
-    HTMLAttributes<HTMLElement> & // includes all HTML attributes
-    MarginAttributesType;
+    TableRowPropsType;
 
 /* TableExpandableSection component prop type */
 export type TableExpandableSectionPropsType = TableExpandableSectionEffectivePropsType &
@@ -24,13 +22,13 @@ export type TableExpandableSectionPropsType = TableExpandableSectionEffectivePro
 export type TableExpandableSectionRootPropsType = TableExpandableSectionEffectivePropsType &
     ComponentElementStylePropsType;
 
-export type TableExpandableSectionCellPropsType = {} & Pick<
+export type TableExpandableSectionCellPropsType = Pick<
     TableExpandableSectionEffectivePropsType,
     'height'
 > &
     ComponentElementStylePropsType;
 
-export type TableExpandableSectionContentPropsType = {} & Pick<
+export type TableExpandableSectionContentPropsType = Pick<
     TableExpandableSectionEffectivePropsType,
     'expanded' | 'enableDefaultPadding' | 'offsetLeft'
 > &

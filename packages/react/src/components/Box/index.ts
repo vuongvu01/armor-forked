@@ -5,4 +5,4 @@
 import { BoxPropsType as PropsType } from './type';
 
 export * from './Box';
-export type PropsBoxType = PropsType;
+export type BoxPropsType = PropsType;

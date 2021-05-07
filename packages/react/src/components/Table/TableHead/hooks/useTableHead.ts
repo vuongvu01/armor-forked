@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useCallback, useContext } from 'react';
+import { useEffect, useState, useCallback, useContext } from 'react';
 import { throttle } from 'throttle-debounce';
 import { TABLE_HEAD } from '../../utils/TableSectionContext';
 import { TableContext } from '../../utils/TableContext';
@@ -7,11 +7,16 @@ import {
     TableContextValueType,
     TableSectionContextValueType,
 } from '../../utils/type';
-import { TableHeadHookPropsType } from './type';
-import { useInternalRef } from '../../../../utils';
 import { getWindow } from '../../../../system/util/globals';
+import { RefType } from '../../../../type';
+import { useRootRef } from '../../../../system';
 
-export const useTableHead = ({ ref }: TableHeadHookPropsType) => {
+type TableHeadHookPropsType = {};
+
+export const useTableHead = <E extends HTMLTableSectionElement>(
+    props: TableHeadHookPropsType,
+    ref: RefType<E>,
+) => {
     // sticky header
     const tableContextValue = useContext<TableContextValueType>(TableContext);
     const {
@@ -26,9 +31,7 @@ export const useTableHead = ({ ref }: TableHeadHookPropsType) => {
         },
     });
 
-    const rootReference = useRef<HTMLTableSectionElement>();
-
-    useInternalRef(ref, rootReference);
+    const rootReference = useRootRef<E>(ref);
 
     const onLayoutUpdate = useCallback(
         throttle(TABLE_THROTTLE_PERIOD, false, () => {

@@ -54,6 +54,7 @@ const getRootStyle = ({
     return result;
 };
 
+/** 👉 ROOT ELEMENT */
 export const MenuRoot = styled.div.withConfig(propsBlocker)<MenuRootPropsType>`
     ${reset};
     background-color: ${color('neutral.00')};

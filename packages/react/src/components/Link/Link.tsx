@@ -1,4 +1,4 @@
-import React, { FC, forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { useLinkClassNames } from './hooks/useLinkClassNames';
@@ -8,7 +8,7 @@ import { LinkPropsType, LinkRootPropsType } from './type';
 import { LINK_CLASS_PREFIX } from './constants';
 import { useComponentTheme } from '../../utils/hooks';
 
-export const Link: FC<LinkPropsType> = forwardRef(function Link(
+export const Link = forwardRef<HTMLAnchorElement, LinkPropsType>(function Link(
     { className, ...props },
     ref,
 ) {
@@ -26,7 +26,6 @@ export const Link: FC<LinkPropsType> = forwardRef(function Link(
             {...rootProps}
             theme={theme}
             className={classNameComponents.Root}
-            ref={ref}
         >
             {(forwardedProps: LinkRootPropsType) => (
                 <Tag {...forwardedProps} {...tagProps}>

@@ -1,35 +1,32 @@
-import React, { FunctionComponent, forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { useComponentTheme } from '../../../utils/hooks';
 
-import { useTableBodyClassNames } from './utils/useTableBodyClassNames';
+import { useTableBodyClassNames } from './hooks/useTableBodyClassNames';
 import { TableBodyRoot } from './style';
 import { TableBodyPropsType } from './type';
-import { tableBodyDefaultTheme } from './theme';
 import { tableBodyRootTestId, TABLE_BODY_CLASS_PREFIX } from './constants';
 
-export const TableBody: FunctionComponent<TableBodyPropsType> = forwardRef(
-    function TableBody({ className, ...restProps }, ref) {
-        const theme = useComponentTheme(
-            TABLE_BODY_CLASS_PREFIX,
-            tableBodyDefaultTheme,
-        );
-        const classNameComponents = useTableBodyClassNames(
-            TABLE_BODY_CLASS_PREFIX,
-            className,
-        );
+export const TableBody = forwardRef<
+    HTMLTableSectionElement,
+    TableBodyPropsType
+>(function TableBody({ className, ...restProps }, ref) {
+    const theme = useComponentTheme(TABLE_BODY_CLASS_PREFIX);
+    const classNameComponents = useTableBodyClassNames(
+        TABLE_BODY_CLASS_PREFIX,
+        className,
+    );
 
-        return (
-            <TableBodyRoot
-                data-testid={tableBodyRootTestId}
-                {...restProps}
-                theme={theme}
-                className={classNameComponents.Root}
-                ref={ref}
-            />
-        );
-    },
-);
+    return (
+        <TableBodyRoot
+            data-testid={tableBodyRootTestId}
+            {...restProps}
+            theme={theme}
+            className={classNameComponents.Root}
+            ref={ref}
+        />
+    );
+});
 
 TableBody.defaultProps = {};
 

@@ -37,6 +37,7 @@ const navigationLinkRootStyle = ({
     return result;
 };
 
+/** 👉 ROOT ELEMENT */
 export const HeaderNavigationLinkRoot = styled(
     HeaderNavigationLinkRootWrapper,
 ).withConfig(propsBlocker)`

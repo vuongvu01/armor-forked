@@ -4,11 +4,11 @@ import {
     DropdownOptionListContainerPropsType,
     DropdownRootPropsType,
     DropdownTagsSectionPropsType,
+    DropdownTextInputPropsType,
     ExpansionIndicatorContainerPropsType,
 } from './type';
 import { ExpansionIndicator } from '../ExpansionIndicator';
 import { TextInput } from '../TextInput';
-import { TextInputPropsType } from '../TextInput/type';
 import { Pack, PackItem } from '../Pack';
 import { Tag } from '../Tag';
 import { SINGLE_LINE_MAX_ALLOWED_HEIGHT } from './constants';
@@ -21,6 +21,7 @@ import {
     getComponentOverride,
 } from '../../system';
 
+/** 👉 ROOT ELEMENT */
 export const DropdownRoot = styled.div.withConfig(propsBlocker)<
     DropdownRootPropsType
 >`
@@ -82,7 +83,7 @@ export const DropdownExpansionIndicator = styled(ExpansionIndicator)<
     }
 `;
 
-const dropdownTextRootStyle = ({ multiple }: TextInputPropsType) => {
+const dropdownTextRootStyle = ({ multiple }: DropdownTextInputPropsType) => {
     let result = {};
 
     if (multiple) {
@@ -100,7 +101,7 @@ const dropdownTextInputStyle = ({
     multiple,
     isCustomRenderer,
     internalValue,
-}: TextInputPropsType) => {
+}: DropdownTextInputPropsType) => {
     let result = css`
         cursor: ${disabled ? 'default' : 'pointer'};
     `;
@@ -116,7 +117,7 @@ const dropdownTextInputStyle = ({
     return result;
 };
 
-export const DropdownTextInput = styled(TextInput)<TextInputPropsType>`
+export const DropdownTextInput = styled(TextInput)<DropdownTextInputPropsType>`
     ${dropdownTextRootStyle}
 
     .TextInput-Input {

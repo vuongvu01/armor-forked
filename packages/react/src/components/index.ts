@@ -6,6 +6,7 @@ export * from './Checkbox';
 export * from './Container';
 export * from './ContextMenu';
 export * from './Card';
+export * from './CloseButton';
 export * from './Dialog';
 export * from './Dropdown';
 export * from './DatePicker';

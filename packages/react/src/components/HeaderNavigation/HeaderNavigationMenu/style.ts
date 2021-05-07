@@ -8,6 +8,7 @@ import { ExpansionIndicator } from '../../ExpansionIndicator';
 import { transitionDurationInSec } from '../../../constants';
 import { color, getComponentOverride, propsBlocker } from '../../../system';
 
+/** 👉 ROOT ELEMENT */
 export const HeaderNavigationMenuRoot = styled.div<
     HeaderNavigationMenuRootPropsType
 >`

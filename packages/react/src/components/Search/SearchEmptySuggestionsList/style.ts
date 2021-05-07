@@ -3,6 +3,7 @@ import { SearchEmptySuggestionsListPropsType } from './type';
 import { colorGrey00 } from '../../../tokens';
 import { getComponentOverride, spacing, propsBlocker } from '../../../system';
 
+/** 👉 ROOT ELEMENT */
 export const SearchEmptySuggestionsListRoot = styled.div.withConfig(
     propsBlocker,
 )<SearchEmptySuggestionsListPropsType>`

@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-import { useSearchSuggestionItemClassName } from './utils';
+import { useSearchSuggestionItemClassName } from './hooks';
 import { SearchSuggestionItemPropsType } from './type';
 import { highlightMatch } from '../utils/highlightMatch';
 import {
@@ -42,7 +42,11 @@ export const SearchSuggestionItem: FunctionComponent<SearchSuggestionItemPropsTy
 
     const handleOnClick = (index: number) => (
         event: React.MouseEvent<HTMLDivElement>,
-    ) => handleSuggestionClick(event, index);
+    ) => {
+        if (handleSuggestionClick) {
+            handleSuggestionClick(event, index);
+        }
+    };
 
     const getSuggestionItemClass = (index: number) =>
         `${classOverride.SuggestionsItem} ${
@@ -55,15 +59,15 @@ export const SearchSuggestionItem: FunctionComponent<SearchSuggestionItemPropsTy
             theme={theme}
         >
             <SearchSuggestionItemContainer
-                className={classOverride.SuggestionItemContainer}
                 isHighlighted={cursor === suggestionIndex}
+                className={classOverride.SuggestionItemContainer}
                 theme={theme}
             >
                 {!!(icon || renderItemIcon) && (
                     <SearchSuggestionsItemIcon
-                        className={classOverride.SuggestionsItemIcon}
                         icon={icon}
                         renderItemIcon={renderItemIcon}
+                        className={classOverride.SuggestionsItemIcon}
                         theme={theme}
                     >
                         {(renderItemIcon &&
@@ -73,8 +77,8 @@ export const SearchSuggestionItem: FunctionComponent<SearchSuggestionItemPropsTy
                 )}
                 <SearchSuggestionsItemLabel
                     renderItemAdditionalInfo={renderItemAdditionalInfo}
-                    className={classOverride.SuggestionsItemLabel}
                     onClick={handleOnClick(suggestionIndex)}
+                    className={classOverride.SuggestionsItemLabel}
                     theme={theme}
                 >
                     <SearchSuggestionItemLabelTypography

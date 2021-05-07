@@ -28,6 +28,7 @@ const accordionContentStyle = ({
     return base;
 };
 
+/** 👉 ROOT ELEMENT */
 export const AccordionContentRoot = styled.div.withConfig(propsBlocker)<
     AccordionContentRootPropsType
 >`

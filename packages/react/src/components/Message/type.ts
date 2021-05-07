@@ -1,7 +1,6 @@
 import { HTMLAttributes, ReactNode } from 'react';
 
 import { MarginAttributesType } from '../../system';
-import { Indexed } from '../../type';
 import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
@@ -9,17 +8,17 @@ import {
 
 export type MessageLevelType = 'error' | 'warning' | 'info' | 'success';
 
-type MessageEffectivePropsType = Indexed<{
-    onClose?: () => void;
-    disableCloseButton?: boolean;
-    disableIcon?: boolean;
-    actions?: ReactNode;
-    extra?: ReactNode;
-    level?: MessageLevelType;
-    error?: boolean;
-    warning?: boolean;
-    info?: boolean;
-    success?: boolean;
+type MessageEffectivePropsType = Partial<{
+    onClose: () => void;
+    disableCloseButton: boolean;
+    disableIcon: boolean;
+    actions: ReactNode;
+    extra: ReactNode;
+    level: MessageLevelType;
+    error: boolean;
+    warning: boolean;
+    info: boolean;
+    success: boolean;
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes

@@ -5,7 +5,7 @@ import { marginAttributes, propsBlocker } from '../../../system';
 const getRootDynamicStyle = ({ theme }: TableCellLabelRootPropsType) =>
     theme.componentOverrides.TableCellLabel.Root.base;
 
-// if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
+/** 👉 ROOT ELEMENT */
 export const TableCellLabelRoot = styled.div.withConfig(propsBlocker)<
     TableCellLabelRootPropsType
 >`
@@ -14,6 +14,6 @@ export const TableCellLabelRoot = styled.div.withConfig(propsBlocker)<
     justify-content: flex-start;
     align-items: center;
 
-    ${getRootDynamicStyle}
-    ${marginAttributes}
+    ${getRootDynamicStyle};
+    ${marginAttributes};
 `;

@@ -5,12 +5,12 @@ import {
     colorGrey50,
     colorGrey60,
 } from '../../../../tokens';
-import { SwitchPropsType } from '../../../../components/Switch/type';
+import { SwitchRootPropsType } from '../../../../components/Switch/type';
 
 export const getSwitchOverride = ({
     reallyChecked: checked,
     disabled,
-}: SwitchPropsType) => {
+}: SwitchRootPropsType) => {
     let result = css`
         .Switch-Label {
             &:after {

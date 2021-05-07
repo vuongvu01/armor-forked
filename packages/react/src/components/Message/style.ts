@@ -52,6 +52,7 @@ const getRootDynamicStyle = (props: MessageRootPropsType) => {
     `;
 };
 
+/** 👉 ROOT ELEMENT */
 export const MessageRoot = styled.div.withConfig(propsBlocker)<
     MessageRootPropsType
 >`
@@ -67,9 +68,9 @@ export const MessageRoot = styled.div.withConfig(propsBlocker)<
     padding-left: ${spacing(4)};
     padding-right: ${spacing(4)};
 
-    ${getRootDynamicStyle}
+    ${getRootDynamicStyle};
     ${getComponentOverride('Message')};
-    ${marginAttributes}
+    ${marginAttributes};
 `;
 
 export const MessageCentral = styled.div.withConfig(propsBlocker)<

@@ -1,14 +1,14 @@
-import React, { FunctionComponent, forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { useComponentTheme } from '../../../utils/hooks';
 
-import { useTableCellClassNames } from './utils/useTableCellClassNames';
+import { useTableCellClassNames } from './hooks/useTableCellClassNames';
 import { TableCellRoot } from './style';
 import { TableCellPropsType, TableCellRootPropsType } from './type';
 import { TABLE_CELL_CLASS_PREFIX } from './constants';
-import { useTableCell } from './utils/useTableCell';
+import { useTableCell } from './hooks/useTableCell';
 
-export const TableCell: FunctionComponent<TableCellPropsType> = forwardRef(
+export const TableCell = forwardRef<HTMLTableCellElement, TableCellPropsType>(
     function TableCell({ className, children, ...props }, ref) {
         const theme = useComponentTheme(TABLE_CELL_CLASS_PREFIX);
         const classNameComponents = useTableCellClassNames(

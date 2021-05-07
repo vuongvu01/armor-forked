@@ -17,7 +17,7 @@ import {
 } from '../../../system';
 import { fontWeightMedium } from '../../../tokens';
 
-// if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
+/** 👉 ROOT ELEMENT */
 export const DatePickerDaySelectorRoot = styled.div.withConfig(propsBlocker)<
     DatePickerDaySelectorRootPropsType
 >`

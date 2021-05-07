@@ -3,13 +3,9 @@ import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../../type';
-import {
-    MarginAttributesType,
-    PaddingAttributesType,
-} from '../../../system/attributes';
-import { Indexed } from '../../../type';
+import { MarginAttributesType, PaddingAttributesType } from '../../../system';
 
-type TableActionEffectivePropsType = Indexed<{
+type TableActionEffectivePropsType = Partial<{
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes

@@ -158,8 +158,9 @@ export const TagCloseIconContainer = styled.div.withConfig(propsBlocker)<
     ${closeIconContainerStyle}
 `;
 
+/** 👉 ROOT ELEMENT */
 export const TagRoot = styled.div.withConfig(propsBlocker)<TagRootPropsType>`
-    ${reset()}; 
+    ${reset()};
     overflow-y: hidden;
     border-style: solid;
     border-width: 1px;
@@ -176,9 +177,9 @@ export const TagRoot = styled.div.withConfig(propsBlocker)<TagRootPropsType>`
         transition: all ${transitionDurationInSec}s ease;
     }
 
-    ${containerStyle}
-    ${marginAttributes}
-    
+    ${containerStyle};
+    ${marginAttributes};
+
     ${getComponentOverride('Tag')};
 `;
 

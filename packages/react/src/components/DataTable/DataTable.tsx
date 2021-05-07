@@ -1,4 +1,4 @@
-import React, { forwardRef, Fragment, RefObject } from 'react';
+import React, { forwardRef, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import { useDataTable } from './hooks/useDataTable';

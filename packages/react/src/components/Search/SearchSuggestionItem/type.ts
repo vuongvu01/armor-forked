@@ -35,8 +35,9 @@ export type SearchSuggestionItemRootPropsType = {
     isHighlighted?: boolean;
 } & HTMLAttributes<HTMLElement>;
 
-export type SearchSuggestionsItemPropsType = SearchEffectivePropsType &
-    ComponentElementStylePropsType;
+export type SearchSuggestionsItemPropsType = {
+    isHighlighted?: boolean;
+} & ComponentElementStylePropsType;
 
 export type SearchSuggestionItemLabelTypographyPropsType = SearchEffectivePropsType &
     ComponentElementStylePropsType;

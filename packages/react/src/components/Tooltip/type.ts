@@ -1,6 +1,5 @@
 import { HTMLAttributes, ReactElement, ReactNode } from 'react';
 
-import { ObjectLiteralType } from '../../type';
 import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
@@ -8,8 +7,7 @@ import {
 import { ComponentBehaviourOpenStateType } from '../../system/types/ComponentBehaviourOpenStateType';
 import { ComponentBehaviourOverlayType } from '../../system/types/ComponentBehaviourOverlayType';
 import { ComponentBehaviourPortalType } from '../../system/types/ComponentBehaviourPortalType';
-import { PopperPropsType } from '../../system/hooks/usePopper';
-import { WidthAttributesType } from '../../system';
+import { PopperPropsType, WidthAttributesType } from '../../system';
 
 type TooltipEffectivePropsType = Partial<{
     error: boolean;
@@ -27,8 +25,7 @@ type TooltipEffectivePropsType = Partial<{
     ComponentBehaviourPortalType &
     PopperPropsType &
     WidthAttributesType &
-    HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
-    ObjectLiteralType;
+    HTMLAttributes<HTMLDivElement>; // includes all HTML Div attributes
 
 /* Tooltip component prop type */
 export type TooltipPropsType = TooltipEffectivePropsType &

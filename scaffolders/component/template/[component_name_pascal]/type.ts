@@ -16,8 +16,7 @@ type <%- component_name_pascal %>EffectivePropsType = Partial<{
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
-    MarginAttributesType &
-    ObjectLiteralType;
+    MarginAttributesType;
 
 export type <%- component_name_pascal %>PropsType = <%- component_name_pascal %>EffectivePropsType &
     ComponentStylePropsType;

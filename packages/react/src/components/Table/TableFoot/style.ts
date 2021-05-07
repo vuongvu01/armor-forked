@@ -1,13 +1,10 @@
 import styled from 'styled-components';
 import { TableFootRootPropsType } from './type';
-import { propsBlocker } from '../../../system';
+import { getComponentOverride, propsBlocker } from '../../../system';
 
-const getRootDynamicStyle = ({ theme }: TableFootRootPropsType) =>
-    theme.componentOverrides.TableFoot.Root.base;
-
-// if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
+/** 👉 ROOT ELEMENT */
 export const TableFootRoot = styled.tfoot.withConfig(propsBlocker)<
     TableFootRootPropsType
 >`
-    ${getRootDynamicStyle}
+    ${getComponentOverride('TableFoot')};
 `;

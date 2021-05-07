@@ -1,13 +1,13 @@
 import { css } from 'styled-components';
-import { TextInputPropsType } from '../../../../components/TextInput/type';
-import { color, token } from '../../../../system/mixins';
+import { TextInputRootPropsType } from '../../../../components/TextInput/type';
+import { color, token } from '../../../../system';
 import { colorGrey70, colorRed30 } from '../../../../tokens';
 
 export const getTextInputOverride = ({
     disabled,
     outlined,
     error,
-}: TextInputPropsType) => {
+}: TextInputRootPropsType) => {
     let result = css`
         background-color: ${token('body.backgroundColor')};
 

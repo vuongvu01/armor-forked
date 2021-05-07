@@ -31,7 +31,7 @@ const getRootDynamicStyle = ({
     return result;
 };
 
-// if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
+/** 👉 ROOT ELEMENT */
 export const TableExpandableSectionRoot = styled(TableRow)<
     TableExpandableSectionRootPropsType
 >`
@@ -45,12 +45,10 @@ export const TableExpandableSectionRoot = styled(TableRow)<
     ${getComponentOverride('TableExpandableSection')};
 `;
 
-const getCellDynamicStyle = ({
-    height,
-}: TableExpandableSectionCellPropsType) => {
+const getCellStyle = ({ height }: TableExpandableSectionCellPropsType) => {
     let result = {};
 
-    if (height >= 0 && RESIZE_OBSERVER_SUPPORTED) {
+    if (height && height >= 0 && RESIZE_OBSERVER_SUPPORTED) {
         result = css`
             ${result};
             height: ${height}px;
@@ -65,7 +63,7 @@ export const TableExpandableSectionCell = styled(TableCell)<
 >`
     position: relative;
     padding: 0;
-    ${getCellDynamicStyle};
+    ${getCellStyle};
 `;
 
 const getContentDynamicStyle = ({

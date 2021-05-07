@@ -1,7 +1,7 @@
 import { HTMLAttributes } from 'react';
 
 import { MarginAttributesType } from '../../system';
-import { ObjectLiteralType, ScalarType } from '../../type';
+import { ScalarType } from '../../type';
 import { ComponentElementStylePropsType } from '../type';
 
 export type ClassBasedOnComponentType = {
@@ -17,21 +17,21 @@ type TabsEffectivePropsType = Partial<{
     selectedValue: ScalarType;
     value: ScalarType;
     wide: boolean;
+    disabled: boolean;
 
     activeTabIndex: number;
     defaultActiveTabIndex: number;
-    onActiveTabIndexChange: (tabIndex: number) => void;
+    onActiveTabIndexChange: (tabIndex?: number) => void;
 
     removePaddingLeft: boolean;
     removePaddingRight: boolean;
 
     // deprecated
-    onSwitch: (tabIndex: number) => void;
+    onSwitch: (tabIndex?: number) => void;
     defaultActiveTab: number;
 }> &
     HTMLAttributes<HTMLElement> &
-    MarginAttributesType &
-    ObjectLiteralType;
+    MarginAttributesType;
 
 export type TabsPropsType = TabsEffectivePropsType;
 

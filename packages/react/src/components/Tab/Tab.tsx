@@ -1,15 +1,15 @@
-import React, { forwardRef, FunctionComponent } from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { useComponentTheme } from '../../utils/hooks';
 import { useTabClassName } from './utils';
-import { TabLabel, TabLabelContainer, TabRoot } from './style';
-import { TabLabelPropsType, TabPropsType } from './type';
+import { TabLabel, TabTagWrapper, TabRoot } from './style';
+import { TabTagPropsType, TabPropsType } from './type';
 import { tabDefaultTheme } from './theme';
 import { TAB_CLASS_PREFIX } from './constants';
 import { useTab } from './hooks/useTab';
 
-export const Tab: FunctionComponent<TabPropsType> = forwardRef(function Tab(
+export const Tab = forwardRef<HTMLDivElement, TabPropsType>(function Tab(
     { className, ...restProps },
     ref,
 ) {
@@ -17,7 +17,6 @@ export const Tab: FunctionComponent<TabPropsType> = forwardRef(function Tab(
 
     const {
         rootProps,
-        tabLabelContainerProps,
         tagProps,
         tabLabelProps,
         disabled,
@@ -36,13 +35,13 @@ export const Tab: FunctionComponent<TabPropsType> = forwardRef(function Tab(
 
     return (
         <TabRoot {...rootProps} className={classOverride.Root} theme={theme}>
-            <TabLabelContainer
-                {...tabLabelContainerProps}
-                className={classOverride.LabelContainer}
+            <TabTagWrapper
+                {...tagProps}
+                className={classOverride.Tag}
                 theme={theme}
             >
-                {(forwardedProps: TabLabelPropsType) => (
-                    <Tag {...forwardedProps} {...tagProps}>
+                {(forwardedProps: TabTagPropsType) => (
+                    <Tag {...forwardedProps}>
                         <TabLabel
                             {...tabLabelProps}
                             theme={theme}
@@ -54,7 +53,7 @@ export const Tab: FunctionComponent<TabPropsType> = forwardRef(function Tab(
                         </TabLabel>
                     </Tag>
                 )}
-            </TabLabelContainer>
+            </TabTagWrapper>
         </TabRoot>
     );
 });
@@ -68,7 +67,7 @@ Tab.defaultProps = {
 Tab.propTypes = {
     disabled: PropTypes.bool,
     wide: PropTypes.bool,
-    handleClick: PropTypes.func,
+    // handleClick: PropTypes.func,
     to: PropTypes.string,
     tag: PropTypes.oneOfType([PropTypes.elementType, PropTypes.string]),
     href: PropTypes.string,

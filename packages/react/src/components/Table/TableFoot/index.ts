@@ -3,3 +3,4 @@
  */
 
 export * from './TableFoot';
+export type { TableFootPropsType } from './type';

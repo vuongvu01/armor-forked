@@ -9,6 +9,7 @@ const themeStyle = ({
     },
 }: TabViewRootPropsType) => TabView.Root.base;
 
+/** 👉 ROOT ELEMENT */
 export const TabViewRoot = styled.div<TabViewRootPropsType>`
     ${themeStyle};
     ${marginAttributes};

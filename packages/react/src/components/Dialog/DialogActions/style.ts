@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { DialogActionsRootPropsType } from './type';
 import { paddingAttributes, propsBlocker } from '../../../system';
 
+/** 👉 ROOT ELEMENT */
 export const DialogActionsRoot = styled.div.withConfig(propsBlocker)<
     DialogActionsRootPropsType
 >`

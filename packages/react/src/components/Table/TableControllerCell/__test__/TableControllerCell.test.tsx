@@ -42,7 +42,7 @@ describe('<TableControllerCell />', () => {
     });
 
     it('should support forwardRef', () => {
-        const { result } = renderHook(() => useRef());
+        const { result } = renderHook(() => useRef(null));
         render(<TableControllerCell ref={result.current} />);
 
         expect(result.current.current).toBeInstanceOf(HTMLElement);

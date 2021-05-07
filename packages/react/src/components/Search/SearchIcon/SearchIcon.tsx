@@ -2,14 +2,14 @@ import React, { FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import {
-    SearchIconContainer,
+    SearchIconRoot,
     SearchInputLoadingIcon,
     SearchInputSearchIcon,
 } from './style';
 import { SearchIconPropsType } from './type';
 import { useComponentTheme } from '../../../utils/hooks';
 import { SEARCH_ICON_CLASS_PREFIX } from './constants';
-import { useSearchIconClassName } from './utils';
+import { useSearchIconClassName } from './hooks';
 import { searchIconTheme } from './theme';
 
 export const SearchIcon: FunctionComponent<SearchIconPropsType> = ({
@@ -27,7 +27,7 @@ export const SearchIcon: FunctionComponent<SearchIconPropsType> = ({
 
     return isLoading ? (
         // TODO (nmelnikov 2020-08-31): replace with loading indicator once available
-        <SearchIconContainer
+        <SearchIconRoot
             className={classOverride.BeforeIconContainer}
             theme={theme}
         >
@@ -35,9 +35,9 @@ export const SearchIcon: FunctionComponent<SearchIconPropsType> = ({
                 className={classOverride.BeforeIcon}
                 theme={theme}
             />
-        </SearchIconContainer>
+        </SearchIconRoot>
     ) : (
-        <SearchIconContainer
+        <SearchIconRoot
             className={classOverride.BeforeIconContainer}
             theme={theme}
         >
@@ -45,7 +45,7 @@ export const SearchIcon: FunctionComponent<SearchIconPropsType> = ({
                 className={classOverride.BeforeIcon}
                 theme={theme}
             />
-        </SearchIconContainer>
+        </SearchIconRoot>
     );
 };
 

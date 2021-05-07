@@ -8,7 +8,7 @@ import {
 import { transitionDurationInSec } from '../../../constants';
 import { getComponentOverride, propsBlocker } from '../../../system';
 
-const clearIconContainerStyle = ({
+const clearIconRootStyle = ({
     theme: {
         componentOverrides: { SearchClearAction },
     },
@@ -45,12 +45,13 @@ const searchInputClearIconStyle = ({
     return result;
 };
 
-export const ClearIconContainer = styled.div.withConfig(propsBlocker)<
+/** 👉 ROOT ELEMENT */
+export const ClearIconRoot = styled.div.withConfig(propsBlocker)<
     ClearIconContainerPropsType
 >`
     display: flex;
     align-items: center;
-    ${clearIconContainerStyle};
+    ${clearIconRootStyle};
 `;
 
 export const SearchInputClearIcon = styled(CancelIcon)<

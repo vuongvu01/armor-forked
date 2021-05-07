@@ -1,24 +1,13 @@
 import styled, { css } from 'styled-components';
 import { TableHeadCellRootPropsType } from './type';
-import {
-    color,
-    paddingAttributes,
-    getComponentOverride,
-} from '../../../system';
+import { color, getComponentOverride } from '../../../system';
 import { makeBEM } from '../../../utils';
 import { TableCell } from '../TableCell';
 import { transitionDurationInSec } from '../../../constants';
 import { TABLE_HEAD_CELL_CLASS_PREFIX } from './constants';
 
-const getRootDynamicStyle = ({
-    theme,
-    sortingEnabled,
-}: TableHeadCellRootPropsType) => {
-    const {
-        componentOverrides: { TableHeadCell },
-    } = theme;
-
-    let result = TableHeadCell.Root.base;
+const getRootStyle = ({ sortingEnabled }: TableHeadCellRootPropsType) => {
+    let result = {};
 
     if (sortingEnabled) {
         result = css`
@@ -40,7 +29,7 @@ const numericalIconClassName = makeBEM(
     'NumericalIcon',
 );
 
-// if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
+/** 👉 ROOT ELEMENT */
 export const TableHeadCellRoot = styled(TableCell)<TableHeadCellRootPropsType>`
     .${alphabeticalIconClassName}, .${numericalIconClassName} {
         opacity: 0;
@@ -53,7 +42,6 @@ export const TableHeadCellRoot = styled(TableCell)<TableHeadCellRootPropsType>`
         background-color: ${color('primary.lightest')};
     }
 
-    ${getRootDynamicStyle};
+    ${getRootStyle};
     ${getComponentOverride('TableHeadCell')};
-    ${paddingAttributes};
 `;

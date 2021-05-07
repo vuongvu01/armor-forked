@@ -14,14 +14,12 @@ import {
     marginAttributes,
     propsBlocker,
     getComponentOverride,
-} from '../../system';
-import {
     reset,
     typography,
     spacing,
     color,
     pixelToRem,
-} from '../../system/mixins';
+} from '../../system';
 
 const sizes = { default: 160, small: 80 };
 
@@ -54,6 +52,7 @@ const getRootStyle = ({ preset }: EmptyStateRootPropsType) => {
     }
     return result;
 };
+
 const getEmptyStateContainerStyle = ({ layout }: EmptyStateRootPropsType) => {
     let result = {};
     if (layout === 'horizontal') {
@@ -67,6 +66,7 @@ const getEmptyStateContainerStyle = ({ layout }: EmptyStateRootPropsType) => {
     }
     return result;
 };
+
 const getTitleStyle = ({
     titlePosition,
     layout,
@@ -105,6 +105,7 @@ const getTitleStyle = ({
     }
     return result;
 };
+
 const getDescriptionStyle = ({
     descriptionPosition,
     small,
@@ -135,6 +136,7 @@ const getDescriptionStyle = ({
     }
     return result;
 };
+
 // to do resize to the image
 const getImageStyle = ({ imagePosition }: EmptyStateImagePropsType) => {
     let result = {};
@@ -156,6 +158,7 @@ const getImageStyle = ({ imagePosition }: EmptyStateImagePropsType) => {
     }
     return result;
 };
+
 const getActionsContainerStyle = ({
     actionsPosition,
     small,
@@ -196,7 +199,7 @@ const getSVGStyle = ({ small }: { small?: boolean }) => {
     `;
 };
 
-// if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
+/** 👉 ROOT ELEMENT */
 export const EmptyStateRoot = styled.div.withConfig(propsBlocker)<
     EmptyStateRootPropsType
 >`

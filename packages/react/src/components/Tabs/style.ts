@@ -55,12 +55,13 @@ const themeStyle = ({
     return result;
 };
 
+/** 👉 ROOT ELEMENT */
 export const TabsRoot = styled.div.withConfig(propsBlocker)<TabsRootPropsType>`
     align-items: start;
     display: flex;
     flex-wrap: wrap;
     width: fit-content;
 
-    ${themeStyle}
-    ${marginAttributes}
+    ${themeStyle};
+    ${marginAttributes};
 `;

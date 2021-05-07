@@ -3,3 +3,4 @@
  */
 
 export * from './TableHead';
+export type { TableHeadPropsType } from './type';

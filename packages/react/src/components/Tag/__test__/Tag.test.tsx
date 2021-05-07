@@ -21,7 +21,7 @@ describe('<Tag />', () => {
     });
 
     it('should support forwardRef', () => {
-        const { result } = renderHook(() => useRef());
+        const { result } = renderHook(() => useRef(null));
 
         render(<Tag label="Sample" ref={result.current} />);
 

@@ -1,7 +1,8 @@
 import { useMemo } from 'react';
 
-import { getClassNameByComponent } from '../utils';
-import { appendClassName } from '../../../utils';
+import { getClassNameByComponent } from '../../utils';
+import { appendClassName, makeBEM } from '../../../../utils';
+import { ACCORDION_HEADER_CLASS_PREFIX } from '../../constants';
 
 const useAccordionHeaderClassName = (
     classPrefix: string,
@@ -20,7 +21,8 @@ const useAccordionHeaderClassName = (
                 }),
                 className,
             ),
-            HeaderTitle: getClassNameByComponent({
+            Body: makeBEM(ACCORDION_HEADER_CLASS_PREFIX, 'Body'),
+            Title: getClassNameByComponent({
                 component: 'HeaderTitle',
                 classPrefix,
                 disabled,

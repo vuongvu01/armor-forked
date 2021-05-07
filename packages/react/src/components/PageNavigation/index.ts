@@ -3,3 +3,4 @@
  */
 
 export * from './PageNavigation';
+export type { PageNavigationPropsType } from './type';

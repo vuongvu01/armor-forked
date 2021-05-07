@@ -1,4 +1,4 @@
-import React, { forwardRef, FunctionComponent } from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { useComponentTheme } from '../../utils/hooks';
@@ -10,7 +10,7 @@ import { TABS_CLASS_PREFIX } from './constants';
 import TabsContext from './TabsContext';
 import { useTabs } from './hooks/useTabs';
 
-export const Tabs: FunctionComponent<TabsPropsType> = forwardRef(function Tabs(
+export const Tabs = forwardRef<HTMLDivElement, TabsPropsType>(function Tabs(
     { className, ...restProps },
     ref,
 ) {
@@ -37,7 +37,7 @@ Tabs.displayName = TABS_CLASS_PREFIX;
 
 Tabs.propTypes = {
     defaultActiveTab: PropTypes.number,
-    disabled: PropTypes.bool,
+    // disabled: PropTypes.bool,
     wide: PropTypes.bool,
     onSwitch: PropTypes.func,
 };

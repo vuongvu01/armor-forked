@@ -40,11 +40,11 @@ describe('<Search />', () => {
     });
 
     it('should render itself without errors', async () => {
-        render(<Search options={foodOptions} onClose={() => {}} />);
+        render(<Search options={foodOptions} />);
     });
 
     it('should support forwardRef', () => {
-        const { result } = renderHook(() => useRef());
+        const { result } = renderHook(() => useRef(null));
 
         render(<Search ref={result.current} />);
 

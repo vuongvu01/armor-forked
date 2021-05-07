@@ -12,11 +12,14 @@ import {
     zIndex,
     getComponentOverride,
     propsBlocker,
+    token,
+    color,
 } from '../../system';
 import { transitionDurationInSec } from '../../constants';
 import { minWidth, widthWide, widthDefault } from './constants';
 
-import { CloseButton } from '../CloseButton/CloseButton';
+import { CloseButton } from '../CloseButton';
+import { componentSpacing06 } from '../../tokens';
 
 const calculateWidth = (effectToggle?: boolean, wide?: boolean) => {
     if (effectToggle) {
@@ -31,13 +34,9 @@ const calculateWidth = (effectToggle?: boolean, wide?: boolean) => {
 const getWindowStyle = ({
     disableEffects,
     effectToggle,
-    theme: {
-        componentOverrides: { SideSheet },
-    },
     wide,
 }: SideSheetContainerPropsType) => {
     return css`
-        ${SideSheet.Root.base};
         width: ${calculateWidth(effectToggle, wide)};
         transition: ${disableEffects
             ? 'none'
@@ -45,14 +44,7 @@ const getWindowStyle = ({
     `;
 };
 
-const contentStyle = ({
-    theme: {
-        componentOverrides: { SideSheet },
-    },
-}: SideSheetContentPropsType) => {
-    return SideSheet.Content.base;
-};
-
+/** 👉 ROOT ELEMENT */
 export const SideSheetRoot = styled.div.withConfig(propsBlocker)<
     SideSheetRootPropsType
 >`
@@ -64,7 +56,6 @@ export const SideSheetRoot = styled.div.withConfig(propsBlocker)<
 export const SideSheetWindow = styled.div.withConfig(propsBlocker)<
     SideSheetContainerPropsType
 >`
-    background: white;
     display: flex;
     height: 100vh;
     overflow: hidden;
@@ -72,7 +63,8 @@ export const SideSheetWindow = styled.div.withConfig(propsBlocker)<
     right: 0;
     top: 0;
     z-index: inherit;
-
+    background-color: ${color('neutral.00')};
+    box-shadow: ${token('elevation.medium')};
     ${getWindowStyle};
 `;
 
@@ -82,8 +74,7 @@ export const SideSheetContent = styled.div.withConfig(propsBlocker)<
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-
-    ${contentStyle};
+    padding: ${spacing(componentSpacing06)};
 `;
 
 export const SideSheetHeaderContainer = styled.div.withConfig(propsBlocker)<

@@ -1,4 +1,4 @@
-import React, { forwardRef, FunctionComponent } from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { useComponentTheme } from '../../utils/hooks';
 
@@ -9,7 +9,7 @@ import { typographyDefaultTheme } from './theme';
 import { TYPOGRAPHY_CLASS_PREFIX } from './constants';
 import { useTypography } from './hooks/useTypography';
 
-export const Typography: FunctionComponent<TypographyPropsType> = forwardRef(
+export const Typography = forwardRef<HTMLDivElement, TypographyPropsType>(
     function Typography({ className, children, ...props }, ref) {
         const theme = useComponentTheme(
             TYPOGRAPHY_CLASS_PREFIX,

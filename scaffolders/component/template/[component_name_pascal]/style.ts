@@ -22,7 +22,7 @@ const getRootStyle = (props: <%- component_name_pascal %>RootPropsType) => {
     return result;
 };
 
-// if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
+/** 👉 ROOT ELEMENT */
 export const <%- component_name_pascal %>Root = styled.div.withConfig(
     propsBlocker,
 )<<%- component_name_pascal %>RootPropsType>`

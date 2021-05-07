@@ -3,3 +3,4 @@
  */
 
 export * from './EmptyState';
+export type { EmptyStatePropsType } from './type';

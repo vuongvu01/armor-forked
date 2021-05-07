@@ -1,26 +1,25 @@
 import styled from 'styled-components';
 
-import { SideSheetHeaderPropsType } from './type';
-import { colorGrey50 } from '../../../tokens';
-import { propsBlocker, spacing } from '../../../system';
+import { SideSheetHeaderRootPropsType } from './type';
+import {
+    colorGrey50,
+    componentSpacing04,
+    componentSpacing08,
+} from '../../../tokens';
+import { getComponentOverride, propsBlocker, spacing } from '../../../system';
 import { Typography } from '../../Typography';
 
-const headerStyle = ({ theme }: SideSheetHeaderPropsType) => {
-    const SideSheet = theme?.componentOverrides?.SideSheet;
-    return SideSheet ? SideSheet.Header.base : {};
-};
-
-export const SideSheetHeader = styled.div.withConfig(propsBlocker)<
-    SideSheetHeaderPropsType
+/** 👉 ROOT ELEMENT */
+export const SideSheetHeaderRoot = styled.div.withConfig(propsBlocker)<
+    SideSheetHeaderRootPropsType
 >`
     flex-grow: 1;
-
-    ${headerStyle}
+    padding-bottom: ${spacing(componentSpacing08)};
+    padding-right: ${spacing(componentSpacing04)};
+    ${getComponentOverride('SideSheetHeader')};
 `;
 
-export const SideSheetHeaderTypography = styled(Typography)<
-    SideSheetHeaderPropsType
->`
+export const SideSheetHeaderTypography = styled(Typography)`
     margin-top: 0;
     margin-bottom: ${spacing(2)};
     font-size: 1.5em;

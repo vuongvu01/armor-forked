@@ -4,18 +4,19 @@ import {
     ComponentStylePropsType,
 } from '../type';
 import { ObjectLiteralType, ScalarType } from '../../type';
-import { TablePropsType } from '../Table/type';
-import { TableCellPropsType } from '../Table/TableCell/type';
+import { TablePropsType, TableCellPropsType } from '../Table';
 import {
     TableHeadCellPropsType,
     TableHeadCellRowSortOrderType,
 } from '../Table/TableHeadCell/type';
-import { PageNavigationPropsType } from '../PageNavigation/type';
+import { PageNavigationPropsType } from '../PageNavigation';
 import {
     MarginAttributesType,
     PaddingAttributesType,
     SizeAttributesType,
 } from '../../system';
+
+type CellPropsType = TableCellPropsType & ObjectLiteralType;
 
 export type DataTableColumnType = {
     id: string;
@@ -23,15 +24,15 @@ export type DataTableColumnType = {
     key?: string;
     sortable?: TableHeadCellPropsType['sortable'];
     sortType?: TableHeadCellPropsType['rowSortType'];
-    headCellProps?: TableCellPropsType;
-    dataCellProps?: TableCellPropsType;
-    cellProps?: TableCellPropsType;
+    headCellProps?: CellPropsType;
+    dataCellProps?: CellPropsType;
+    cellProps?: TableCellPropsType & ObjectLiteralType;
     expandableSectionController?: boolean;
     getDataCellProps?: (
         value: any,
         item: DataTableDataType,
         column: DataTableColumnType,
-    ) => TableCellPropsType;
+    ) => CellPropsType;
     formatDataCellContent?: (
         value: any,
         item: DataTableDataType,

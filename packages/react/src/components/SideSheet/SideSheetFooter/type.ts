@@ -1,6 +1,7 @@
-import { Indexed } from '../../../type';
-import { ThemeType } from '../../../styling';
+import { ComponentElementStylePropsType } from '../../type';
+import { TypographyPropsType } from '../../Typography';
 
-export type SideSheetFooterPropsType = Indexed<{
-    theme?: ThemeType;
-}>;
+export type SideSheetFooterPropsType = TypographyPropsType;
+
+export type SideSheetFooterRootPropsType = SideSheetFooterPropsType &
+    ComponentElementStylePropsType;

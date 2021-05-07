@@ -1,20 +1,19 @@
-import { HTMLAttributes } from 'react';
+import { TdHTMLAttributes } from 'react';
 import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../../type';
-import { Indexed } from '../../../type';
 import {
     ColorAttributesType,
     HeightAttributesType,
     PaddingAttributesType,
     WidthAttributesType,
-} from '../../../system/attributes';
+} from '../../../system';
 
 export type TableCellStickyAlignment = 'left' | 'right';
 export type TableCellStickyOffset = number;
 
-type TableCellEffectivePropsType = Indexed<{
+export type TableCellEffectivePropsType = Partial<{
     isHeader?: boolean;
     stickyTop?: boolean;
     stickyAlignment?: TableCellStickyAlignment;
@@ -27,7 +26,7 @@ type TableCellEffectivePropsType = Indexed<{
     enableContentWrap?: boolean;
     // add other custom properties here
 }> &
-    HTMLAttributes<HTMLTableDataCellElement | HTMLTableHeaderCellElement> & // includes all HTML Td | Th attributes
+    TdHTMLAttributes<HTMLTableDataCellElement | HTMLTableHeaderCellElement> & // includes all HTML Td | Th attributes
     PaddingAttributesType &
     WidthAttributesType &
     HeightAttributesType &

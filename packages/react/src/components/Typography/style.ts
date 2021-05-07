@@ -113,6 +113,7 @@ const Wrapper = ({
     children: (props: TypographyRootPropsType) => ReactElement;
 }) => children({ ...restProps });
 
+/** 👉 ROOT ELEMENT */
 export const TypographyRoot = styled(Wrapper).withConfig(propsBlocker)<
     TypographyRootPropsType
 >`

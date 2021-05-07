@@ -1,7 +1,7 @@
-import { Ref } from 'react';
 import { EmptyStatePropsType } from '../type';
+import { RefType } from '../../../type';
 
-export const useEmptyState = (
+export const useEmptyState = <E extends HTMLDivElement>(
     {
         layout,
         small,
@@ -23,7 +23,7 @@ export const useEmptyState = (
 
         ...restProps
     }: EmptyStatePropsType,
-    ref: Ref<unknown>,
+    ref: RefType<E>,
 ) => {
     // put all your component logic here
 

@@ -10,7 +10,7 @@ import {
     propsBlocker,
 } from '../../system';
 import { mouseCursor } from '../../styling';
-import { TabLabelPropsType, TabRootPropsType } from './type';
+import { TabTagPropsType, TabRootPropsType, TabLabelPropsType } from './type';
 import { transitionDurationInSec } from '../../constants';
 import { Typography } from '../Typography';
 
@@ -94,14 +94,14 @@ const tabLabelStyle = ({
     return result;
 };
 
-const tabLabelContainerStyle = ({ disabled }: TabLabelPropsType) =>
+const tabLabelContainerStyle = ({ disabled }: TabTagPropsType) =>
     disabled
         ? css`
               cursor: not-allowed;
           `
         : '';
 
-const cursor = ({ disabled, isActive }: TabRootPropsType) => {
+const cursor = ({ disabled, isActive }: TabLabelPropsType) => {
     if (disabled) {
         return css`
             pointer-events: none;
@@ -117,6 +117,7 @@ const cursor = ({ disabled, isActive }: TabRootPropsType) => {
     return mouseCursor;
 };
 
+/** 👉 ROOT ELEMENT */
 export const TabRoot = styled.div.withConfig(propsBlocker)<TabRootPropsType>`
     &::after {
         content: '';
@@ -130,18 +131,18 @@ export const TabRoot = styled.div.withConfig(propsBlocker)<TabRootPropsType>`
         ${animationStyle}
     }
 
-    ${tabRootStyle}
+    ${tabRootStyle};
     ${getComponentOverride('Tab')};
 `;
 
-const TabLabelTagWrapper = ({
+const Wrapper = ({
     children,
     ...restProps
-}: TabLabelPropsType & {
-    children: (props: TabLabelPropsType) => ReactElement;
+}: TabTagPropsType & {
+    children: (props: TabTagPropsType) => ReactElement;
 }) => children(restProps);
 
-export const TabLabelContainer = styled(TabLabelTagWrapper)<TabLabelPropsType>`
+export const TabTagWrapper = styled(Wrapper)<TabTagPropsType>`
     text-decoration: none;
     &:hover,
     &:visited,

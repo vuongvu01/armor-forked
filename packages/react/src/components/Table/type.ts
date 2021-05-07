@@ -7,8 +7,7 @@ import {
     HeightAttributesType,
     MarginAttributesType,
     WidthAttributesType,
-} from '../../system/attributes';
-import { Indexed } from '../../type';
+} from '../../system';
 import {
     TableCellStickyAlignment,
     TableCellStickyOffset,
@@ -26,7 +25,7 @@ export type TableStickyColumnMapInternalItem = TableStickyColumnMapItem & {
 };
 export type TableStickyColumnsMapInternal = TableStickyColumnMapInternalItem[];
 
-export type TableEffectivePropsType = Indexed<{
+export type TableEffectivePropsType = Partial<{
     horizontalScroll?: boolean;
     stickyColumns?: TableStickyColumnsMap;
     stickyHead?: boolean;

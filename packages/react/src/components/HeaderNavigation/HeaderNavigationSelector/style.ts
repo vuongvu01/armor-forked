@@ -54,6 +54,7 @@ export const SelectorDropdownOptionList = styled(OptionList)`
     }
 `;
 
+/** 👉 ROOT ELEMENT */
 // NOTE: `:focus:not(:focus-visible)` allows for outline to appear when navigated via Tab, and omits it on mouse click
 export const HeaderNavigationSelectorRoot = styled(HeaderNavigationItem)<
     HeaderNavigationSelectorRootPropsType

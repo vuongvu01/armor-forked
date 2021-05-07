@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import { EditableTableCellRootPropsType } from './type';
-import { marginAttributes, propsBlocker } from '../../../system';
+import { propsBlocker } from '../../../system';
 
 const getRootBaseStyle = ({ theme }: EditableTableCellRootPropsType) =>
     theme.componentOverrides.EditableTableCell.Root.base;
 
-// if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
+/** 👉 ROOT ELEMENT */
 export const EditableTableCellRoot = styled.div.withConfig(propsBlocker)<
     EditableTableCellRootPropsType
 >`
@@ -13,5 +13,4 @@ export const EditableTableCellRoot = styled.div.withConfig(propsBlocker)<
     position: relative;
 
     ${getRootBaseStyle};
-    ${marginAttributes};
 `;

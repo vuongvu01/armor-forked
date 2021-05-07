@@ -1,4 +1,4 @@
-import React, { forwardRef, FunctionComponent } from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { useComponentTheme } from '../../utils/hooks';
@@ -18,7 +18,7 @@ import { SearchIcon } from './SearchIcon';
 import { SearchClearAction } from './SearchClearAction';
 import { getScalarPropType } from '../../utils/propTypes';
 
-export const Search: FunctionComponent<SearchPropsType> = forwardRef(
+export const Search = forwardRef<HTMLInputElement, SearchPropsType>(
     function Search({ className, ...restProps }, ref) {
         const theme = useComponentTheme(SEARCH_CLASS_PREFIX, searchTheme);
 
@@ -82,7 +82,7 @@ export const Search: FunctionComponent<SearchPropsType> = forwardRef(
 );
 
 Search.propTypes = {
-    onClose: PropTypes.func,
+    // onClose: PropTypes.func,
     defaultQuery: PropTypes.string,
     disabled: PropTypes.bool,
     disableClearAction: PropTypes.bool,

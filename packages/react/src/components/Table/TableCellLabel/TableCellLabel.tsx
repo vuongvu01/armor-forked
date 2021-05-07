@@ -1,8 +1,8 @@
-import React, { FunctionComponent, forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { useComponentTheme } from '../../../utils/hooks';
 
-import { useTableCellLabelClassNames } from './utils/useTableCellLabelClassNames';
+import { useTableCellLabelClassNames } from './hooks/useTableCellLabelClassNames';
 import { TableCellLabelRoot } from './style';
 import { TableCellLabelPropsType } from './type';
 import { tableCellLabelDefaultTheme } from './theme';
@@ -11,28 +11,29 @@ import {
     TABLE_CELL_LABEL_CLASS_PREFIX,
 } from './constants';
 
-export const TableCellLabel: FunctionComponent<TableCellLabelPropsType> = forwardRef(
-    function TableCellLabel({ className, ...restProps }, ref) {
-        const theme = useComponentTheme(
-            TABLE_CELL_LABEL_CLASS_PREFIX,
-            tableCellLabelDefaultTheme,
-        );
-        const classNameComponents = useTableCellLabelClassNames(
-            TABLE_CELL_LABEL_CLASS_PREFIX,
-            className,
-        );
+export const TableCellLabel = forwardRef<
+    HTMLDivElement,
+    TableCellLabelPropsType
+>(function TableCellLabel({ className, ...restProps }, ref) {
+    const theme = useComponentTheme(
+        TABLE_CELL_LABEL_CLASS_PREFIX,
+        tableCellLabelDefaultTheme,
+    );
+    const classNameComponents = useTableCellLabelClassNames(
+        TABLE_CELL_LABEL_CLASS_PREFIX,
+        className,
+    );
 
-        return (
-            <TableCellLabelRoot
-                data-testid={tableCellLabelRootTestId}
-                {...restProps}
-                theme={theme}
-                className={classNameComponents.Root}
-                ref={ref}
-            />
-        );
-    },
-);
+    return (
+        <TableCellLabelRoot
+            data-testid={tableCellLabelRootTestId}
+            {...restProps}
+            theme={theme}
+            className={classNameComponents.Root}
+            ref={ref}
+        />
+    );
+});
 
 TableCellLabel.defaultProps = {};
 

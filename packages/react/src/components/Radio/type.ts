@@ -1,8 +1,8 @@
-import React, { ChangeEvent, InputHTMLAttributes } from 'react';
+import React, { ChangeEvent, InputHTMLAttributes, ReactNode } from 'react';
 
-import { MarginAttributesType } from '../../system/attributes';
-import { Indexed } from '../../type';
+import { MarginAttributesType } from '../../system';
 import { ComponentElementStylePropsType } from '../type';
+import { TypographyPropsType } from '../Typography/type';
 
 export type ClassBasedOnComponentType = {
     component: string;
@@ -14,11 +14,12 @@ export type ClassBasedOnComponentType = {
     error?: boolean;
 };
 
-type RadioEffectivePropsType = Indexed<{
+type RadioEffectivePropsType = Partial<{
     // add other custom properties here
-    selectedValue?: string;
-    error?: boolean;
-    typographyProps?: object;
+    selectedValue: string;
+    error: boolean;
+    typographyProps: TypographyPropsType;
+    label: ReactNode;
 }> &
     InputHTMLAttributes<HTMLInputElement> &
     MarginAttributesType;
@@ -39,17 +40,12 @@ export type RadioRootPropsType = RadioEffectivePropsType &
 
 export type RadioInputPropsType = Pick<
     RadioEffectivePropsType,
-    | 'autoFocus'
-    | 'checked'
-    | 'defaultValue'
-    | 'disabled'
-    | 'form'
-    | 'name'
-    | 'ref'
-    | 'theme'
->;
+    'autoFocus' | 'checked' | 'defaultValue' | 'disabled' | 'form' | 'name'
+> &
+    ComponentElementStylePropsType;
 
 export type RadioMarkPropsType = Pick<
     RadioEffectivePropsType,
-    'disabled' | 'checked' | 'theme' | 'className' | 'name'
->;
+    'disabled' | 'checked' | 'name'
+> &
+    ComponentElementStylePropsType;

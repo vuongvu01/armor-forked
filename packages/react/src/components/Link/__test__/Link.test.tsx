@@ -66,7 +66,7 @@ describe('<Link />', () => {
     });
 
     it('should support forwardRef', () => {
-        const { result } = renderHook(() => useRef());
+        const { result } = renderHook(() => useRef(null));
         render(<Link ref={result.current} />);
 
         expect(result.current.current).toBeInstanceOf(HTMLElement);

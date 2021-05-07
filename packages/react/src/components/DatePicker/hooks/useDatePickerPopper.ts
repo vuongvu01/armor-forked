@@ -3,7 +3,7 @@ import { usePopper } from '../../../system';
 
 export const useDatePickerPopper = () => {
     const dropdownRef = useRef<HTMLDivElement>(null);
-    const triggerRef = useRef<HTMLElement>();
+    const triggerRef = useRef<HTMLInputElement>(null);
 
     const { panelProps, arrowProps } = usePopper(dropdownRef, triggerRef, {
         align: 'bottom-start',

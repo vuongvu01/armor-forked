@@ -16,6 +16,7 @@ const actionRootStyle = ({
     return HeaderNavigationAction.Root.base;
 };
 
+/** 👉 ROOT ELEMENT */
 export const HeaderNavigationActionRoot = styled(HeaderNavigationItem)<
     HeaderNavigationActionRootPropsType
 >`
@@ -25,7 +26,7 @@ export const HeaderNavigationActionRoot = styled(HeaderNavigationItem)<
     align-items: center;
     height: 48px;
 
-    ${actionRootStyle}
+    ${actionRootStyle};
 `;
 
 export const HeaderNavigationActionContainer = styled.div.withConfig(

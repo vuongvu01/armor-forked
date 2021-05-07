@@ -3,3 +3,4 @@
  */
 
 export * from './TableCellLabel';
+export type { TableCellLabelPropsType } from './type';

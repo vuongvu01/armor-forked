@@ -4,7 +4,6 @@ import {
     ComponentElementStylePropsType,
 } from '../../type';
 import { MarginAttributesType, PaddingAttributesType } from '../../../system';
-import { ObjectLiteralType } from '../../../type';
 
 type MenuElementEffectivePropsType = Partial<{
     tag: string | ComponentType<any>;
@@ -23,8 +22,7 @@ type MenuElementEffectivePropsType = Partial<{
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
     Pick<AnchorHTMLAttributes<HTMLAnchorElement>, 'target' | 'href' | 'rel'> & // and 3 attributes from HTML Anchor
     PaddingAttributesType &
-    MarginAttributesType &
-    ObjectLiteralType;
+    MarginAttributesType;
 
 /* MenuElement component prop type */
 export type MenuElementPropsType = MenuElementEffectivePropsType &

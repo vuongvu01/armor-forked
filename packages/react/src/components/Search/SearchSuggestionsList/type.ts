@@ -1,13 +1,14 @@
 import React, { HTMLAttributes } from 'react';
 
-import { Indexed } from '../../../type';
 import {
+    SearchEffectivePropsType,
     SearchGroupObjectIndexType,
     SearchPropsType,
     SearchQueryType,
 } from '../type';
+import { ComponentElementStylePropsType } from '../../type';
 
-export type SearchSuggestionsListPropsType = Indexed<{
+export type SearchSuggestionsListPropsType = Partial<{
     groupIndex: SearchGroupObjectIndexType;
     cursor?: number;
     icon?: null | React.ReactElement;
@@ -23,7 +24,9 @@ export type SearchSuggestionsListPropsType = Indexed<{
         SearchPropsType,
         'renderItemAdditionalInfo' | 'renderItemIcon' | 'options'
     > &
-    HTMLAttributes<HTMLElement>;
+    Pick<SearchEffectivePropsType, 'additionalInfo'> &
+    HTMLAttributes<HTMLElement> &
+    Pick<ComponentElementStylePropsType, 'theme'>;
 
 export type SearchSuggestionListGroupPropsType = {
     enableSeparator: boolean;

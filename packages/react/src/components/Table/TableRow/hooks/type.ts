@@ -1,7 +1,4 @@
-import {
-    TableContextValueDataType,
-    TableRowSelectionContextValueType,
-} from '../../utils/type';
+import { TableContextValueDataType } from '../../utils/type';
 
 export type UseTableRowType = {
     isHeader: boolean;

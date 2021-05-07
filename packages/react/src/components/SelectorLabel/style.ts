@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import { transitionDurationInSec } from '../../constants';
-import { SelectorLabelPropsType } from './type';
+import { SelectorLabelRootPropsType } from './type';
 import { propsBlocker } from '../../system';
 
 const labelStyle = ({
@@ -10,7 +10,7 @@ const labelStyle = ({
     },
     disabled,
     error,
-}: SelectorLabelPropsType) => {
+}: SelectorLabelRootPropsType) => {
     let enhancements = '';
 
     if (disabled && error) {
@@ -24,8 +24,9 @@ const labelStyle = ({
     return css`${SelectorLabel.Label.base}${enhancements}`;
 };
 
+/** 👉 ROOT ELEMENT */
 export const SelectorLabelRoot = styled.div.withConfig(propsBlocker)<
-    SelectorLabelPropsType
+    SelectorLabelRootPropsType
 >`
     transition: all ${transitionDurationInSec}s ease;
 

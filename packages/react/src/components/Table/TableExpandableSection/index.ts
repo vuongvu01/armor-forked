@@ -3,3 +3,4 @@
  */
 
 export * from './TableExpandableSection';
+export type { TableExpandableSectionPropsType } from './type';

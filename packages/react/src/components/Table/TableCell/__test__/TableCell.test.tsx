@@ -15,6 +15,7 @@ import { tableCellRootTestId } from '../constants';
 import { TableHead } from '../../TableHead';
 import { Table } from '../../Table';
 import { TableRow } from '../../TableRow';
+import { TableBody } from '../../TableBody';
 
 describe('<TableCell />', () => {
     afterEach(async () => {
@@ -51,7 +52,7 @@ describe('<TableCell />', () => {
     });
 
     it('should support forwardRef', () => {
-        const { result } = renderHook(() => useRef());
+        const { result } = renderHook(() => useRef(null));
         render(
             <table>
                 <tbody>
@@ -66,42 +67,19 @@ describe('<TableCell />', () => {
     });
 
     it('should support custom theme', () => {
-        let tree = renderer
-            .create(
-                <table>
-                    <tbody>
-                        <tr>
-                            <TableCell>With custom theme</TableCell>
-                        </tr>
-                    </tbody>
-                </table>,
-            )
-            .toJSON();
-
-        // @ts-ignore
-        expect(tree.children[0].children[0].children[0]).not.toHaveStyleRule(
-            'border-width',
-            '2px',
-        );
-
-        tree = renderer
-            .create(
-                <ThemeProvider theme={customTheme}>
-                    <table>
-                        <tbody>
-                            <tr>
-                                <TableCell>With custom theme</TableCell>
-                            </tr>
-                        </tbody>
-                    </table>
-                </ThemeProvider>,
-            )
-            .toJSON();
-
-        // @ts-ignore
-        expect(tree.children[0].children[0].children[0]).toHaveStyleRule(
-            'border-width',
-            '2px',
+        expect(
+            <table>
+                <tbody>
+                    <tr>
+                        <TableCell>With custom theme</TableCell>
+                    </tr>
+                </tbody>
+            </table>,
+            // @ts-ignore
+        ).toSupportCustomTheme(
+            'TableCell',
+            // @ts-ignore
+            tree => tree.children[0].children[0].children[0],
         );
     });
 

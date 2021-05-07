@@ -1,6 +1,6 @@
 import { SVGAttributes } from 'react';
 import { ThemeType } from '../../styling';
-import { MarginAttributesType } from '../../system/attributes';
+import { MarginAttributesType } from '../../system';
 import { ScalarType } from '../../type';
 
 export type SVGIconPropsType = {

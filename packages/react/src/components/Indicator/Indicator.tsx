@@ -1,14 +1,14 @@
-import React, { FunctionComponent, forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 // import PropTypes from 'prop-types';
 import { useComponentTheme } from '../../utils/hooks';
 
-import { useIndicatorClassNames } from './utils/useIndicatorClassNames';
+import { useIndicatorClassNames } from './hooks/useIndicatorClassNames';
 import { IndicatorRoot } from './style';
 import { IndicatorPropsType } from './type';
 import { indicatorDefaultTheme } from './theme';
 import { INDICATOR_CLASS_PREFIX } from './constants';
 
-export const Indicator: FunctionComponent<IndicatorPropsType> = forwardRef(
+export const Indicator = forwardRef<HTMLDivElement, IndicatorPropsType>(
     function Indicator({ className, ...restProps }, ref) {
         const theme = useComponentTheme(
             INDICATOR_CLASS_PREFIX,

@@ -302,7 +302,7 @@ export const CustomNavigation = () => {
             selectedElementIds={selectedItemIds}
             expandedElementIds={expandedItemIds}
             maxWidth="300px"
-            onElementClick={(id: string) => {
+            onElementClick={(id: string | number) => {
                 if (expandedItemIds.includes(id)) {
                     setExpandedItemIds(
                         expandedItemIds.filter(itemId => itemId !== id),

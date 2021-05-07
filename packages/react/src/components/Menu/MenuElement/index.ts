@@ -3,3 +3,4 @@
  */
 
 export * from './MenuElement';
+export type { MenuElementPropsType } from './type';

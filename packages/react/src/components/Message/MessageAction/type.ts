@@ -5,7 +5,6 @@ import {
 } from 'react';
 
 import { MarginAttributesType } from '../../../system';
-import { Indexed } from '../../../type';
 import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
@@ -13,7 +12,7 @@ import {
 
 type MessageActionTagType = string | ComponentType<any>;
 
-type MessageActionEffectivePropsType = Indexed<{
+type MessageActionEffectivePropsType = Partial<{
     tag?: MessageActionTagType;
     // add other custom properties here
 }> &

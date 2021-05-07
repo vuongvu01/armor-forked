@@ -42,6 +42,7 @@ const getOptionListStyle = ({
     return result;
 };
 
+/** 👉 ROOT ELEMENT */
 export const OptionListRoot = styled.div.withConfig(propsBlocker)<
     OptionListRootPropsType
 >`
@@ -55,8 +56,8 @@ export const OptionListRoot = styled.div.withConfig(propsBlocker)<
     transition: ${transitionDurationInSec}s;
     box-shadow: ${elevation('large')};
 
-    ${getOptionListStyle}
-    ${getComponentOverride('OptionList')}
+    ${getOptionListStyle};
+    ${getComponentOverride('OptionList')};
 `;
 
 export const OptionListContainer = styled.div.withConfig(propsBlocker)<

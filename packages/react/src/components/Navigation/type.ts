@@ -3,15 +3,11 @@ import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../type';
-import {
-    MarginAttributesType,
-    WidthAttributesType,
-} from '../../system/attributes';
-import { Indexed, ScalarType } from '../../type';
-import { MenuPropsType } from '../Menu/type';
-import { MenuElementPropsType } from '../Menu/MenuElement/type';
+import { MarginAttributesType, WidthAttributesType } from '../../system';
+import { ObjectLiteralType, ScalarType } from '../../type';
+import { MenuPropsType, MenuElementPropsType } from '../Menu';
 
-export type NavigationMenuElementType = Indexed<{
+export type NavigationMenuElementType = {
     label: ReactChild;
     id: ScalarType;
     items?: NavigationMenuElementType[];
@@ -22,19 +18,19 @@ export type NavigationMenuElementType = Indexed<{
     afterItems?: ReactNode;
     afterMenu?: ReactNode;
     menuElementProps?: MenuElementPropsType;
-}>;
+} & ObjectLiteralType;
 
-type NavigationEffectivePropsType = Indexed<{
-    items?: NavigationMenuElementType[];
-    onElementClick?: (
+type NavigationEffectivePropsType = Partial<{
+    items: NavigationMenuElementType[];
+    onElementClick: (
         itemId: ScalarType,
         item: NavigationMenuElementType,
     ) => void;
-    onElementExpansionHandleClick?: (itemId: ScalarType) => void; // todo: should be fired when somebody clicks on the expansion handle, future-reserved
-    maxDepthLevel?: number;
-    enableEffects?: boolean;
-    selectedElementIds?: ScalarType[];
-    expandedElementIds?: ScalarType[];
+    onElementExpansionHandleClick: (itemId: ScalarType) => void; // todo: should be fired when somebody clicks on the expansion handle, future-reserved
+    maxDepthLevel: number;
+    enableEffects: boolean;
+    selectedElementIds: ScalarType[];
+    expandedElementIds: ScalarType[];
     // add other custom properties here
 }> &
     Pick<MenuPropsType, 'enableBottomSeparator'> &

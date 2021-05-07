@@ -10,10 +10,11 @@ import { Indicator } from '../../Indicator';
 const getRootBaseStyle = ({ theme }: FormFieldTooltipRootPropsType) =>
     theme.componentOverrides.FormFieldTooltip.Root.base;
 
+/** 👉 ROOT ELEMENT */
 export const FormFieldTooltipRoot = styled(Tooltip)<
     FormFieldTooltipRootPropsType
 >`
-    ${getRootBaseStyle}
+    ${getRootBaseStyle};
 `;
 
 const getIndicatorBaseStyle = ({ theme }: FormFieldTooltipIndicatorPropsType) =>
@@ -34,6 +35,6 @@ export const FormFieldTooltipIndicator = styled(Indicator)<
 >`
     position: absolute;
 
-    ${getIndicatorBaseStyle}
-    ${getIndicatorDynamicStyle}
+    ${getIndicatorBaseStyle};
+    ${getIndicatorDynamicStyle};
 `;

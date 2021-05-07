@@ -56,6 +56,7 @@ export const HeaderNavigationMenuContentBodyOptionsItem = styled(StackItem)<
     ${contentBodyOptionsItemStyle};
 `;
 
+/** 👉 ROOT ELEMENT */
 export const HeaderNavigationMenuContentBodyOptionsRoot = styled(Stack)<
     HeaderNavigationMenuContentBodyOptionsRootPropsType
 >`

@@ -1,7 +1,6 @@
 import { HTMLAttributes } from 'react';
 
-import { MarginAttributesType } from '../../system/attributes';
-import { Indexed } from '../../type';
+import { MarginAttributesType } from '../../system';
 import { ComponentElementStylePropsType } from '../type';
 
 export type ClassBasedOnComponentType = {
@@ -11,11 +10,11 @@ export type ClassBasedOnComponentType = {
     disabled?: boolean;
 };
 
-type TabViewEffectivePropsType = Indexed<{
-    selectedValue?: string | number;
-    value?: string | number;
+type TabViewEffectivePropsType = Partial<{
+    selectedValue: string | number;
+    value: string | number;
 }> &
-    HTMLAttributes<HTMLElement> &
+    HTMLAttributes<HTMLDivElement> &
     MarginAttributesType;
 
 export type TabViewPropsType = TabViewEffectivePropsType;

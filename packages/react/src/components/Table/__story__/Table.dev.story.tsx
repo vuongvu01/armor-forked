@@ -462,7 +462,7 @@ export const Collapsable = () => {
                             <Row key={`${index}_data`}>
                                 {index === 0 && (
                                     <TableControllerCell
-                                        onExpansionChange={() =>
+                                        onTriggerClick={() =>
                                             setExpanded(!expanded)
                                         }
                                         expanded={expanded}

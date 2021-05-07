@@ -1,13 +1,12 @@
 import { HTMLAttributes } from 'react';
 
 import { MarginAttributesType } from '../../system';
-import { Indexed } from '../../type';
 import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../type';
 
-type IndicatorEffectivePropsType = Indexed<{
+type IndicatorEffectivePropsType = Partial<{
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes

@@ -1,6 +1,8 @@
-import { Indexed } from '../../../type';
-import { ThemeType } from '../../../styling';
+import { HTMLAttributes } from 'react';
+import { ComponentElementStylePropsType } from '../../type';
 
-export type SideSheetBodyPropsType = Indexed<{
-    theme?: ThemeType;
-}>;
+export type SideSheetBodyPropsType = Partial<{ isFixed: boolean }> &
+    HTMLAttributes<HTMLDivElement>;
+
+export type SideSheetBodyRootPropsType = SideSheetBodyPropsType &
+    ComponentElementStylePropsType;

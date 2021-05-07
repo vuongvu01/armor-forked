@@ -7,7 +7,7 @@ import {
 } from './type';
 import { propsBlocker } from '../../../system';
 
-const searchIconContainerStyle = ({
+const searchIconRootStyle = ({
     theme: {
         componentOverrides: { SearchIcon: SearchIconTheme },
     },
@@ -15,12 +15,13 @@ const searchIconContainerStyle = ({
     return SearchIconTheme.SearchIconContainer.base;
 };
 
-export const SearchIconContainer = styled.div.withConfig(propsBlocker)<
+/** 👉 ROOT ELEMENT */
+export const SearchIconRoot = styled.div.withConfig(propsBlocker)<
     SearchIconContainerPropsType
 >`
     display: flex;
     align-items: center;
-    ${searchIconContainerStyle};
+    ${searchIconRootStyle};
 `;
 
 const loadingIconIconStyle = ({

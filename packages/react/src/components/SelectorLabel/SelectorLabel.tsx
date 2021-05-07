@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FC } from 'react';
 
 import { SelectorLabelRoot } from './style';
 import { SelectorLabelPropsType } from './type';
@@ -8,7 +8,7 @@ import { useSelectorLabelClassName } from './utils';
 import { Typography } from '../Typography';
 import { SELECTOR_LABEL_CLASS_PREFIX } from './constants';
 
-const SelectorLabel: FunctionComponent<SelectorLabelPropsType> = ({
+export const SelectorLabel: FC<SelectorLabelPropsType> = ({
     checked,
     children,
     className,
@@ -55,5 +55,3 @@ const SelectorLabel: FunctionComponent<SelectorLabelPropsType> = ({
 };
 
 SelectorLabel.displayName = SELECTOR_LABEL_CLASS_PREFIX;
-
-export default SelectorLabel;

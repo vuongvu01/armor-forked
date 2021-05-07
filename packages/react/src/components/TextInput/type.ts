@@ -10,7 +10,6 @@ import {
     MarginAttributesType,
     WidthAttributesType,
 } from '../../system';
-import { ObjectLiteralType } from '../../type';
 import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
@@ -25,10 +24,12 @@ type TextInputEffectivePropsType = Partial<{
     multiline: boolean;
     disableLabelEffect: boolean;
     displayMode: string;
-    outline: boolean;
+    outlined: boolean;
     enableFocusOnRootClick: boolean;
     enableRootRef: boolean;
     onRootClick: HTMLAttributes<HTMLElement>['onClick'];
+
+    'data-testid-input': string;
     // add other custom properties here
 }> &
     InputHTMLAttributes<HTMLInputElement> &
@@ -36,7 +37,6 @@ type TextInputEffectivePropsType = Partial<{
         TextareaHTMLAttributes<HTMLTextAreaElement>,
         'cols' | 'rows' | 'wrap' | 'dirName'
     > &
-    ObjectLiteralType &
     WidthAttributesType &
     HeightAttributesType &
     MarginAttributesType;

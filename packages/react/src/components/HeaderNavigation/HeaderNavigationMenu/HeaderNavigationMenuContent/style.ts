@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { HeaderNavigationMenuContentRootPropsType } from './type';
 import { propsBlocker } from '../../../../system';
 
+/** 👉 ROOT ELEMENT */
 export const HeaderNavigationMenuContentRoot = styled.div.withConfig(
     propsBlocker,
 )<HeaderNavigationMenuContentRootPropsType>`

@@ -22,7 +22,7 @@ const getRootDynamicStyle = ({ isHeader }: TableRowRootPropsType) => {
     return result;
 };
 
-// if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
+/** 👉 ROOT ELEMENT */
 export const TableRowRoot = styled.tr.withConfig(propsBlocker)<
     TableRowRootPropsType
 >`
@@ -34,7 +34,7 @@ export const TableRowRoot = styled.tr.withConfig(propsBlocker)<
     border-color: ${color('neutral.03')};
     background-color: ${color('neutral.01')};
 
-    ${getRootDynamicStyle}
+    ${getRootDynamicStyle};
     ${getComponentOverride('TableRow')};
     ${heightAttributes};
 `;

@@ -8,6 +8,25 @@ import {
 } from 'react';
 import { TextInputPropsType } from '../type';
 
+type UseEventsHookParamsType = Pick<
+    TextInputPropsType,
+    | 'value'
+    | 'defaultValue'
+    | 'placeholder'
+    | 'disableLabelEffect'
+    | 'onFocus'
+    | 'onBlur'
+    | 'onMouseOver'
+    | 'onMouseOut'
+    | 'readOnly'
+    | 'onChange'
+>;
+
+type LabelPositionCheckerType = {
+    isFocused: boolean;
+    isEmptyUncontrolled: boolean;
+} & UseEventsHookParamsType;
+
 const isControlledMode = (value: TextInputPropsType['value']) => {
     return value !== undefined;
 };
@@ -18,7 +37,7 @@ const isLabelPositionInside = ({
     disableLabelEffect,
     isFocused,
     isEmptyUncontrolled,
-}: TextInputPropsType) => {
+}: LabelPositionCheckerType) => {
     if (placeholder || isFocused || disableLabelEffect) {
         return false;
     }
@@ -41,7 +60,7 @@ export const useEvents = ({
     onMouseOut,
     readOnly,
     onChange,
-}: TextInputPropsType) => {
+}: UseEventsHookParamsType) => {
     const [isEmptyUncontrolled, setEmptyUncontrolled] = useState<boolean>(
         !defaultValue,
     );

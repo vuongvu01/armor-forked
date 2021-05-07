@@ -21,7 +21,7 @@ import { useTheme } from '../../styling';
 import { DropdownBeforeSection } from './DropdownBeforeSection';
 import { PortalToBody } from '../../system/util/PortalToBody';
 
-export const Dropdown = forwardRef<HTMLDivElement, DropdownPropsType>(
+export const Dropdown = forwardRef<HTMLInputElement, DropdownPropsType>(
     function Dropdown({ className, ...props }, ref) {
         const theme = useTheme().armor;
 

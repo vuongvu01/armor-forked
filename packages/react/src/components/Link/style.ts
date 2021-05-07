@@ -1,10 +1,6 @@
 import styled, { css } from 'styled-components';
 import { ReactElement } from 'react';
-import {
-    LinkRootPropsType,
-    LinkTagPropsType,
-    LinkLabelPropsType,
-} from './type';
+import { LinkRootPropsType } from './type';
 import {
     borderRadius,
     color,
@@ -79,10 +75,11 @@ const getRootStyle = ({
 const LinkTagWrapper = ({
     children,
     ...restProps
-}: LinkLabelPropsType & {
-    children: (props: LinkTagPropsType) => ReactElement;
+}: LinkRootPropsType & {
+    children: (props: LinkRootPropsType) => ReactElement;
 }) => children(restProps);
 
+/** 👉 ROOT ELEMENT */
 export const LinkRoot = styled(LinkTagWrapper).withConfig(propsBlocker)<
     LinkRootPropsType
 >`
@@ -106,7 +103,7 @@ export const LinkRoot = styled(LinkTagWrapper).withConfig(propsBlocker)<
     &:hover {
         color: ${color('primary.light')};
     }
-    ${getRootStyle}
-    ${marginAttributes}
+    ${getRootStyle};
+    ${marginAttributes};
     ${getComponentOverride('Link')};
 `;

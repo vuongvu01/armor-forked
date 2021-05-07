@@ -3,3 +3,4 @@
  */
 
 export * from './Navigation';
+export type { NavigationPropsType } from './type';

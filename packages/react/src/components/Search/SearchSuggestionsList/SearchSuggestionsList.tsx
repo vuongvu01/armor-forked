@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FC } from 'react';
 import PropTypes from 'prop-types';
 
 import { SearchEmptySuggestionsList } from '../SearchEmptySuggestionsList';
@@ -10,7 +10,7 @@ import { SearchSuggestionListGroup } from './style';
 
 // TODO (nmelnikov 2020-10-01): tighten types via the existing SuggestionsListPropsType
 // @ts-ignore
-export const SearchSuggestionsList: FunctionComponent<SearchSuggestionsListPropsType> = ({
+export const SearchSuggestionsList: FC<SearchSuggestionsListPropsType> = ({
     options,
     groupIndex,
     handleSuggestionClick,
@@ -38,7 +38,12 @@ export const SearchSuggestionsList: FunctionComponent<SearchSuggestionsListProps
         return options.map((option: SuggestionObjectType, index: number) => {
             const { label, groupId } = option;
             let group: SearchGroupObjectType | null = null;
-            if (groupId && groupId in groupIndex && !displayedGroups[groupId]) {
+            if (
+                groupIndex &&
+                groupId &&
+                groupId in groupIndex &&
+                !displayedGroups[groupId]
+            ) {
                 group = groupIndex[groupId];
                 displayedGroups[groupId] = true;
             }

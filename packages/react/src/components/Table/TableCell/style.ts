@@ -209,7 +209,7 @@ const Wrapper = ({
     children: (props: TableCellRootPropsType) => ReactElement;
 }) => children({ ...restProps });
 
-// if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
+/** 👉 ROOT ELEMENT */
 export const TableCellRoot = styled(Wrapper).withConfig(propsBlocker)<
     TableCellRootPropsType
 >`

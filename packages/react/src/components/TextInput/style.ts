@@ -66,6 +66,7 @@ const getRootDynamicStyle = (props: TextInputRootPropsType) => {
     `;
 };
 
+/** 👉 ROOT ELEMENT */
 export const TextInputRoot = styled.div.withConfig(propsBlocker)<
     TextInputRootPropsType
 >`
@@ -75,14 +76,14 @@ export const TextInputRoot = styled.div.withConfig(propsBlocker)<
     border-width: 1px;
     transition: border ${transitionDurationInSec}s ease;
     vertical-align: middle;
-    
+
     background-color: ${color('neutral.00')};
 
-    ${getRootDynamicStyle}
+    ${getRootDynamicStyle};
     ${getComponentOverride('TextInput')};
-    ${marginAttributes}
-    ${widthAttributes}
-    ${heightAttributes}
+    ${marginAttributes};
+    ${widthAttributes};
+    ${heightAttributes};
 `;
 
 const getInnerContainerDynamicStyle = (

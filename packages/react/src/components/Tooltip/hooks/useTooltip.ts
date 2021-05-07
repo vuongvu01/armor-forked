@@ -1,13 +1,16 @@
 import React, { ReactElement, useMemo, useRef } from 'react';
 import { useEventProxy } from './useEventProxy';
 import { validateTrigger } from '../utils/validateTrigger';
-import { ReferenceType } from '../../../type';
+import { RefType } from '../../../type';
 import { TooltipPropsType } from '../type';
-import { usePopper } from '../../../system/hooks/usePopper';
-import { useControlledFlagState } from '../../../system/hooks/useControlledFlagState';
-import { useOverlay } from '../../../system/hooks/useOverlay';
+import {
+    usePopper,
+    useControlledFlagState,
+    useOverlay,
+    useRootRef,
+} from '../../../system';
 
-export const useTooltip = (
+export const useTooltip = <E extends HTMLDivElement>(
     {
         children,
         trigger,
@@ -32,7 +35,7 @@ export const useTooltip = (
 
         ...restProps
     }: TooltipPropsType,
-    ref: ReferenceType,
+    ref: RefType<E>,
 ) => {
     const realTrigger = trigger || (children as ReactElement);
     const realContent = trigger ? (children as ReactElement) : content;
@@ -47,8 +50,8 @@ export const useTooltip = (
         setReallyOpen,
     );
 
-    const panelRef = useRef<HTMLElement>(null);
-    const triggerRef = useRef<HTMLElement>(null);
+    const panelRef = useRootRef<E>(ref);
+    const triggerRef = useRef<HTMLDivElement>(null);
 
     const { arrowProps, panelProps } = usePopper(panelRef, triggerRef, {
         align,

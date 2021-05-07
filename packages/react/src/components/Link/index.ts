@@ -3,4 +3,4 @@
  */
 
 export * from './Link';
-export * from './type';
+export type { LinkPropsType } from './type';

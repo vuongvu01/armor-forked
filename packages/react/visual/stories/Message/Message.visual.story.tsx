@@ -19,9 +19,7 @@ export const Error = () => <Message error>Hello</Message>;
 export const Complete = () => {
     return (
         <Message error>
-            <Typography h6 marginBottom={1}>
-                System failure
-            </Typography>
+            <Typography marginBottom={1}>System failure</Typography>
             <Typography paragraph>
                 We ran out of cake. <br />
                 Please consider ordering more from one of our partner bakeries

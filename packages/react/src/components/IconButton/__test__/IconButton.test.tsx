@@ -39,7 +39,7 @@ describe('<IconButton />', () => {
     });
 
     it('should support forwardRef', () => {
-        const { result } = renderHook(() => useRef());
+        const { result } = renderHook(() => useRef(null));
         render(<IconButton ref={result.current} />);
 
         expect(result.current.current).toBeInstanceOf(HTMLElement);

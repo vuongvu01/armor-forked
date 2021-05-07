@@ -279,7 +279,7 @@ export const CustomHeaderContents = () => {
                         Optimise delivery areas
                     </Typography>
 
-                    <Tooltip align="bottom" dark content="Hello world!">
+                    <Tooltip align="bottom" content="Hello world!">
                         <span style={{ height: '16px' }}>
                             <InfoIcon marginLeft={3} />
                         </span>

@@ -1,4 +1,4 @@
-import React, { FC, forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { useEmptyStateClassNames } from './hooks/useEmptyStateClassNames';
@@ -20,7 +20,7 @@ import { Indicator } from '../Indicator';
 import { EMPTY_STATE_CLASS_PREFIX } from './constants';
 import { useComponentTheme } from '../../utils/hooks';
 
-export const EmptyState: FC<EmptyStatePropsType> = forwardRef(
+export const EmptyState = forwardRef<HTMLDivElement, EmptyStatePropsType>(
     function EmptyState({ className, ...props }, ref) {
         const theme = useComponentTheme(EMPTY_STATE_CLASS_PREFIX);
         const classNames = useEmptyStateClassNames(

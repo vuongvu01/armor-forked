@@ -1,9 +1,9 @@
-import React, { FunctionComponent, forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { useComponentTheme } from '../../../utils/hooks';
 
-import { useTableExpandableSectionClassNames } from './utils/useTableExpandableSectionClassNames';
-import { useTableExpandableSection } from './utils/useTableExpandableSection';
+import { useTableExpandableSectionClassNames } from './hooks/useTableExpandableSectionClassNames';
+import { useTableExpandableSection } from './hooks/useTableExpandableSection';
 import {
     TableExpandableSectionRoot,
     TableExpandableSectionCell,
@@ -12,47 +12,43 @@ import {
 import { TableExpandableSectionPropsType } from './type';
 import { TABLE_EXPANDABLE_SECTION_CLASS_PREFIX } from './constants';
 
-export const TableExpandableSection: FunctionComponent<TableExpandableSectionPropsType> = forwardRef(
-    function TableExpandableSection(
-        { className, children, ...restProps },
-        ref,
-    ) {
-        const theme = useComponentTheme(TABLE_EXPANDABLE_SECTION_CLASS_PREFIX);
-        const classNameComponents = useTableExpandableSectionClassNames(
-            TABLE_EXPANDABLE_SECTION_CLASS_PREFIX,
-            className,
-        );
+export const TableExpandableSection = forwardRef<
+    HTMLTableRowElement,
+    TableExpandableSectionPropsType
+>(function TableExpandableSection({ className, children, ...restProps }, ref) {
+    const theme = useComponentTheme(TABLE_EXPANDABLE_SECTION_CLASS_PREFIX);
+    const classNameComponents = useTableExpandableSectionClassNames(
+        TABLE_EXPANDABLE_SECTION_CLASS_PREFIX,
+        className,
+    );
 
-        const {
-            rootProps,
-            cellProps,
-            contentProps,
-        } = useTableExpandableSection(restProps);
+    const { rootProps, cellProps, contentProps } = useTableExpandableSection(
+        restProps,
+    );
 
-        return (
-            <TableExpandableSectionRoot
-                {...rootProps}
+    return (
+        <TableExpandableSectionRoot
+            {...rootProps}
+            theme={theme}
+            className={classNameComponents.Root}
+            ref={ref}
+        >
+            <TableExpandableSectionCell
+                {...cellProps}
                 theme={theme}
-                className={classNameComponents.Root}
-                ref={ref}
+                className={classNameComponents.Cell}
             >
-                <TableExpandableSectionCell
-                    {...cellProps}
+                <TableExpandableSectionContent
+                    {...contentProps}
                     theme={theme}
-                    className={classNameComponents.Cell}
+                    className={classNameComponents.Content}
                 >
-                    <TableExpandableSectionContent
-                        {...contentProps}
-                        theme={theme}
-                        className={classNameComponents.Content}
-                    >
-                        {children}
-                    </TableExpandableSectionContent>
-                </TableExpandableSectionCell>
-            </TableExpandableSectionRoot>
-        );
-    },
-);
+                    {children}
+                </TableExpandableSectionContent>
+            </TableExpandableSectionCell>
+        </TableExpandableSectionRoot>
+    );
+});
 
 TableExpandableSection.defaultProps = {
     expanded: false,

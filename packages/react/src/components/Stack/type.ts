@@ -1,6 +1,6 @@
 import { HTMLAttributes } from 'react';
 
-import { MarginAttributesType } from '../../system';
+import { MarginAttributesType, PaddingAttributesType } from '../../system';
 import { AlignSelfType, FlexEffectivePropsType } from '../Flex/type';
 
 export type ClassBasedOnComponentType = {
@@ -18,6 +18,7 @@ type StackEffectivePropsType = Partial<{
         'gutterSpacing' | 'flexWrap' | 'alignItems' | 'justifyContent'
     > &
     HTMLAttributes<HTMLElement> &
+    PaddingAttributesType &
     MarginAttributesType;
 
 type StackItemEffectivePropsType = Partial<{
@@ -28,6 +29,7 @@ type StackItemEffectivePropsType = Partial<{
     alignSelf: AlignSelfType;
 }> &
     HTMLAttributes<HTMLElement> &
+    PaddingAttributesType &
     MarginAttributesType;
 
 export type StackPropsType = StackEffectivePropsType;

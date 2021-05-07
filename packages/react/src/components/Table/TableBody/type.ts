@@ -3,9 +3,8 @@ import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../../type';
-import { Indexed } from '../../../type';
 
-type TableBodyEffectivePropsType = Indexed<{
+type TableBodyEffectivePropsType = Partial<{
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLTableSectionElement>; // includes all HTML TBody attributes

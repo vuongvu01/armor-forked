@@ -3,15 +3,13 @@ import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../../type';
-import { MarginAttributesType } from '../../../system/attributes';
-import { Indexed } from '../../../type';
+import { ObjectLiteralType } from '../../../type';
 
-type EditableTableCellEffectivePropsType = Indexed<{
+type EditableTableCellEffectivePropsType = {
     onChange?: (value: any) => void;
     // add other custom properties here
-}> &
-    Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> & // includes all HTML Div attributes
-    MarginAttributesType;
+} & Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> & // includes all HTML Div attributes
+    ObjectLiteralType;
 
 /* EditableTableCell component prop type */
 export type EditableTableCellPropsType = EditableTableCellEffectivePropsType &

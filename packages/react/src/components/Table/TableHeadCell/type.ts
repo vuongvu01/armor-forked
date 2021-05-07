@@ -1,10 +1,9 @@
-import { HTMLAttributes } from 'react';
 import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../../type';
-import { PaddingAttributesType } from '../../../system/attributes';
-import { Indexed, ScalarType } from '../../../type';
+import { ScalarType } from '../../../type';
+import { TableCellPropsType } from '../TableCell';
 
 export type TableHeadCellSortType = 'numerical' | 'alphabetical';
 
@@ -14,23 +13,24 @@ export type TableHeadCellRowSortOrderType = [
     TableHeadCellSortOrderWay,
 ][];
 
-type TableHeadCellEffectivePropsType = Indexed<{
-    columnId?: ScalarType;
+type TableHeadCellEffectivePropsType = Partial<{
+    columnId: ScalarType;
 
     // sorting
-    sortable?: boolean;
-    rowSortType?: TableHeadCellSortType;
-    rowSortOrder?: TableHeadCellRowSortOrderType;
+    sortable: boolean;
+    rowSortType: TableHeadCellSortType;
+    rowSortOrder: TableHeadCellRowSortOrderType;
 
     // add other custom properties here
 }> &
-    HTMLAttributes<HTMLTableHeaderCellElement> & // includes all HTML Div attributes
-    PaddingAttributesType;
+    TableCellPropsType;
 
 /* TableHeadCell component prop type */
 export type TableHeadCellPropsType = TableHeadCellEffectivePropsType &
     ComponentStylePropsType;
 
 /* TableHeadCell Root node prop type */
-export type TableHeadCellRootPropsType = TableHeadCellEffectivePropsType &
+export type TableHeadCellRootPropsType = {
+    sortingEnabled: boolean;
+} & TableHeadCellEffectivePropsType &
     ComponentElementStylePropsType;

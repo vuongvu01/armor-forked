@@ -1,14 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
-import React, { useState } from 'react';
-import {
-    cleanup,
-    render,
-    screen,
-    prettyDOM,
-    wait,
-    fireEvent,
-} from '@testing-library/react';
+import React from 'react';
+import { cleanup, render, wait, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { cleanup as cleanupHooks } from '@testing-library/react-hooks';
 

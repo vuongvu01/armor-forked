@@ -16,9 +16,11 @@ export default {
 };
 
 export const DefaultLayoutMinimumConfiguration = () => {
-    const [selectedTabIndex, setSelectedTabIndex] = useState(0);
+    const [selectedTabIndex, setSelectedTabIndex] = useState<
+        number | undefined
+    >(0);
 
-    const handleChange = (tabIndex: number) => setSelectedTabIndex(tabIndex);
+    const handleChange = (tabIndex?: number) => setSelectedTabIndex(tabIndex);
 
     return (
         <Box
@@ -56,9 +58,11 @@ export const DefaultLayoutMinimumConfiguration = () => {
 
 export const WithCounterBadge = () => {
     const badgeLeftMargin = 4;
-    const [selectedTabIndex, setSelectedTabIndex] = useState(0);
+    const [selectedTabIndex, setSelectedTabIndex] = useState<
+        number | undefined
+    >(0);
 
-    const handleChange = (tabIndex: number) => setSelectedTabIndex(tabIndex);
+    const handleChange = (tabIndex?: number) => setSelectedTabIndex(tabIndex);
 
     return (
         <>
@@ -100,7 +104,7 @@ export const WithCounterBadge = () => {
 };
 
 export const CustomRouterAndAnchorTags = () => {
-    const [selectedTabIndex] = useState(0);
+    const [selectedTabIndex] = useState<number | undefined>(0);
 
     return (
         <BrowserRouter>
@@ -141,9 +145,11 @@ export const CustomRouterAndAnchorTags = () => {
 };
 
 export const DefaultActiveTabSetOnLoad = () => {
-    const [selectedTabIndex, setSelectedTabIndex] = useState(0);
+    const [selectedTabIndex, setSelectedTabIndex] = useState<
+        number | undefined
+    >(0);
 
-    const handleChange = (tabIndex: number) => setSelectedTabIndex(tabIndex);
+    const handleChange = (tabIndex?: number) => setSelectedTabIndex(tabIndex);
 
     return (
         <Box
@@ -181,9 +187,11 @@ export const DefaultActiveTabSetOnLoad = () => {
 
 export const FullWidth = () => {
     const badgeLeftMargin = 4;
-    const [selectedTabIndex, setSelectedTabIndex] = useState(0);
+    const [selectedTabIndex, setSelectedTabIndex] = useState<
+        number | undefined
+    >(0);
 
-    const handleChange = (tabIndex: number) => setSelectedTabIndex(tabIndex);
+    const handleChange = (tabIndex?: number) => setSelectedTabIndex(tabIndex);
 
     return (
         <>
@@ -204,15 +212,21 @@ export const FullWidth = () => {
 };
 
 export const Alignment = () => {
-    const [selectedTabIndex1, setSelectedTabIndex1] = useState(0);
-    const [selectedTabIndex2, setSelectedTabIndex2] = useState(0);
-    const [selectedTabIndex3, setSelectedTabIndex3] = useState(0);
+    const [selectedTabIndex1, setSelectedTabIndex1] = useState<
+        number | undefined
+    >(0);
+    const [selectedTabIndex2, setSelectedTabIndex2] = useState<
+        number | undefined
+    >(0);
+    const [selectedTabIndex3, setSelectedTabIndex3] = useState<
+        number | undefined
+    >(0);
 
-    const handleChange1 = (tabIndex1: number) =>
+    const handleChange1 = (tabIndex1?: number) =>
         setSelectedTabIndex1(tabIndex1);
-    const handleChange2 = (tabIndex2: number) =>
+    const handleChange2 = (tabIndex2?: number) =>
         setSelectedTabIndex2(tabIndex2);
-    const handleChange3 = (tabIndex3: number) =>
+    const handleChange3 = (tabIndex3?: number) =>
         setSelectedTabIndex3(tabIndex3);
 
     return (

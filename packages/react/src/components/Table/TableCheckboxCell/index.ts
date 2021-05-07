@@ -3,3 +3,4 @@
  */
 
 export * from './TableCheckboxCell';
+export type { TableCheckboxCellPropsType } from './type';

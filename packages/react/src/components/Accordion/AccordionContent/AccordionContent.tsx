@@ -6,7 +6,7 @@ import { AccordionContentPropsType } from './type';
 import { accordionContentDefaultTheme } from './theme';
 import { ACCORDION_CONTENT_CLASS_PREFIX, accordionContent } from '../constants';
 import AccordionContext from '../AccordionContext';
-import useAccordionContentClassName from './useAccordionContentClassName';
+import useAccordionContentClassName from './hooks/useAccordionContentClassName';
 
 export const AccordionContent = forwardRef<
     HTMLDivElement,

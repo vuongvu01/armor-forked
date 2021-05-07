@@ -1,15 +1,16 @@
-import { RefObject, useCallback, useRef } from 'react';
+import { RefObject, useCallback } from 'react';
 import { sideSheetContent, sideSheetHeaderContainer } from '../constants';
 import { SideSheetPropsType } from '../type';
-import { ReferenceType } from '../../../type';
-import { useControlledFlagState } from '../../../system/hooks/useControlledFlagState';
-import { useOverlay } from '../../../system/hooks/useOverlay';
-import { useInternalRef } from '../../../utils';
-import { useOuterClick } from '../../../system/hooks/useOuterClick';
-import { useDisplayEffects } from '../../../system/hooks/useDisplayEffects';
-import { useDocumentKeydown } from '../../../system/hooks/useDocumentKeyDown';
+import { RefType } from '../../../type';
+import {
+    useControlledFlagState,
+    useOverlay,
+    useDisplayEffects,
+    useDocumentKeydown,
+    useRootRef,
+} from '../../../system';
 
-export const useSideSheet = (
+export const useSideSheet = <E extends HTMLDivElement>(
     {
         // ComponentBehaviourOpenStateType
         open,
@@ -44,7 +45,7 @@ export const useSideSheet = (
 
         ...restProps
     }: SideSheetPropsType,
-    ref: ReferenceType,
+    ref: RefType<E>,
 ) => {
     const reallyEnableCloseButton =
         enableCloseButton !== undefined
@@ -82,8 +83,7 @@ export const useSideSheet = (
         }
     }, [onClose, setClose, isTopOverlay]);
 
-    const rootRef = useRef<HTMLDivElement>();
-    useInternalRef(ref, rootRef);
+    const rootRef = useRootRef<E>(ref);
 
     const onBackdropClick = useCallback(() => {
         if (reallyEnableBackdrop && enableCloseOnBackdropClick !== false) {

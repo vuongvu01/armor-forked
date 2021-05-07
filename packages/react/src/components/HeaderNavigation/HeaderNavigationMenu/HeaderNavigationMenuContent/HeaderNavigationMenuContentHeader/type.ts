@@ -23,3 +23,7 @@ export type HeaderNavigationMenuContentHeaderPropsType = HeaderNavigationMenuCon
 
 export type HeaderNavigationMenuContentHeaderRootPropsType = HeaderNavigationMenuContentHeaderEffectivePropsType &
     ComponentElementStylePropsType;
+
+export type HeaderNavigationMenuContentHeaderTitlePropsType = {
+    label: boolean;
+} & ComponentElementStylePropsType;

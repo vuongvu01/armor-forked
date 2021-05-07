@@ -1,11 +1,11 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect } from 'react';
 
-import { ReferenceType } from '../../../type';
+import { RefType } from '../../../type';
 import { TabsPropsType } from '../type';
 import { preProcessTabChildren } from '../utils';
-import { useControlledState } from '../../../system/hooks/useControlledState';
+import { useControlledState } from '../../../system';
 
-export const useTabs = (
+export const useTabs = <E extends HTMLDivElement>(
     {
         children,
         disabled,
@@ -23,9 +23,11 @@ export const useTabs = (
 
         ...restProps
     }: TabsPropsType,
-    ref: ReferenceType,
+    ref: RefType<E>,
 ) => {
-    const [currentlyActiveTab, setCurrentlyActiveTab] = useControlledState(
+    const [currentlyActiveTab, setCurrentlyActiveTab] = useControlledState<
+        number | undefined
+    >(
         defaultActiveTabIndex !== undefined
             ? defaultActiveTabIndex
             : defaultActiveTab,
@@ -44,8 +46,8 @@ export const useTabs = (
     const handleClick = useCallback(
         (
             event: React.MouseEvent<HTMLInputElement, MouseEvent>,
-            tabIndex: number,
-            contentValue: number,
+            tabIndex?: number,
+            contentValue?: number,
         ) => {
             setCurrentlyActiveTab(tabIndex);
 

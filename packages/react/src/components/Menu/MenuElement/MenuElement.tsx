@@ -1,4 +1,4 @@
-import React, { FunctionComponent, forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { useComponentTheme } from '../../../utils/hooks';
@@ -11,10 +11,9 @@ import {
 } from './style';
 import { MenuElementPropsType } from './type';
 import { MENU_ELEMENT_CLASS_PREFIX } from './constants';
-import { ButtonPropsType } from '../../Button/type';
 import { useMenuElement } from './hooks/useMenuElement';
 
-export const MenuElement: FunctionComponent<MenuElementPropsType> = forwardRef(
+export const MenuElement = forwardRef<HTMLDivElement, MenuElementPropsType>(
     function MenuElement({ className, children, ...props }, ref) {
         const theme = useComponentTheme(MENU_ELEMENT_CLASS_PREFIX);
         const classNameComponents = useMenuElementClassNames(
@@ -37,7 +36,7 @@ export const MenuElement: FunctionComponent<MenuElementPropsType> = forwardRef(
                 theme={theme}
                 className={classNameComponents.Root}
             >
-                {(forwardedProps: ButtonPropsType) => (
+                {(forwardedProps: MenuElementPropsType) => (
                     <Tag {...forwardedProps} ref={ref}>
                         <MenuElementContent
                             {...contentProps}

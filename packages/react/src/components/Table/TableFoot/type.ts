@@ -3,9 +3,8 @@ import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../../type';
-import { Indexed } from '../../../type';
 
-type TableFootEffectivePropsType = Indexed<{
+type TableFootEffectivePropsType = Partial<{
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLTableSectionElement>; // includes all HTML TFoot attributes

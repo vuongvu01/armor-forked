@@ -1,6 +1,6 @@
 import { HTMLAttributes } from 'react';
 
-import { MarginAttributesType } from '../../system';
+import { MarginAttributesType, PaddingAttributesType } from '../../system';
 import { AlignSelfType, FlexEffectivePropsType } from '../Flex/type';
 
 export type ClassBasedOnComponentType = {
@@ -18,7 +18,8 @@ type PackEffectivePropsType = Partial<{
         'gutterSpacing' | 'flexWrap' | 'alignItems' | 'justifyContent'
     > &
     HTMLAttributes<HTMLElement> &
-    MarginAttributesType;
+    MarginAttributesType &
+    PaddingAttributesType;
 
 type PackItemEffectivePropsType = Partial<{
     flexGrow: number;
@@ -28,7 +29,8 @@ type PackItemEffectivePropsType = Partial<{
     alignSelf: AlignSelfType;
 }> &
     HTMLAttributes<HTMLElement> &
-    MarginAttributesType;
+    MarginAttributesType &
+    PaddingAttributesType;
 
 export type PackPropsType = PackEffectivePropsType;
 

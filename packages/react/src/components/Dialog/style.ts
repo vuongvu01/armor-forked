@@ -17,8 +17,9 @@ import {
 } from './type';
 import { DIALOG_SCROLL_DOCUMENT } from './constants';
 import { Card } from '../Card';
-import { CloseButton } from '../CloseButton/CloseButton';
+import { CloseButton } from '../CloseButton';
 
+/** 👉 ROOT ELEMENT */
 export const DialogRoot = styled.div.withConfig(propsBlocker)<
     DialogRootPropsType
 >`

@@ -1,23 +1,16 @@
-import React, {
-    ChangeEvent,
-    forwardRef,
-    FunctionComponent,
-    useCallback,
-    useMemo,
-    useState,
-} from 'react';
+import React, { forwardRef, useCallback, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { useComponentTheme } from '../../utils/hooks';
-import SelectorLabel from '../SelectorLabel';
-import { useSwitchClassName } from './utils/useSwitchClassName';
+import { SelectorLabel } from '../SelectorLabel';
+import { useSwitchClassName } from './hooks/useSwitchClassName';
 import { SwitchCheckboxInput, SwitchRoot, SwitchToggle } from './style';
 import { SwitchPropsType } from './type';
 import { switchDefaultTheme } from './theme';
 import { generateId } from '../../utils';
 import { SWITCH_CLASS_PREFIX, switchIdPrefix } from './constants';
 
-export const Switch: FunctionComponent<SwitchPropsType> = forwardRef(
+export const Switch = forwardRef<HTMLInputElement, SwitchPropsType>(
     function Switch(
         {
             checked,
@@ -45,11 +38,11 @@ export const Switch: FunctionComponent<SwitchPropsType> = forwardRef(
             checked,
         );
 
-        // todo: clear up this mess with nativelyChecked and reallyChecked
+        // todo: clear up this mess with nativelyChecked and reallyChecked, use useControlledState() hook instead
         const [nativelyChecked, setNativelyChecked] = useState<boolean>(
             checked !== undefined ? !!checked : !!defaultChecked,
         );
-        // if checked is set, we consider the controlled mode, otherwise look at the native check/uncheck
+        // // if checked is set, we consider the controlled mode, otherwise look at the native check/uncheck
         const reallyChecked = checked !== undefined ? checked : nativelyChecked;
 
         const handleOnChange = useCallback(
@@ -74,19 +67,21 @@ export const Switch: FunctionComponent<SwitchPropsType> = forwardRef(
             <SwitchRoot
                 disabled={disabled}
                 htmlFor={id}
+                theme={theme}
+                className={classOverride.Root}
                 reallyChecked={reallyChecked}
             >
                 <SwitchCheckboxInput
                     {...restProps}
                     checked={checked}
                     defaultChecked={defaultChecked}
-                    className={classOverride.CheckboxInput}
                     disabled={disabled}
                     id={id}
                     onChange={handleOnChange}
                     ref={ref}
-                    theme={theme}
                     type="checkbox"
+                    theme={theme}
+                    className={classOverride.CheckboxInput}
                 />
                 <SwitchToggle
                     className={classOverride.Label}
@@ -97,7 +92,6 @@ export const Switch: FunctionComponent<SwitchPropsType> = forwardRef(
                     <SelectorLabel
                         disabled={disabled}
                         error={error}
-                        theme={theme}
                         typographyProps={typographyProps}
                     >
                         {label}

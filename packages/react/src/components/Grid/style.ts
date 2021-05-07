@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 import { GridPropsType } from './type';
 import { ThemeType } from '../../styling';
-import { propsBlocker, sizeAttributes } from '../../system';
+import { marginAttributes, propsBlocker, sizeAttributes } from '../../system';
 
 export const setHorizontalMargin = (
     value: number,
@@ -54,9 +54,11 @@ const gridRootStyle = ({
     return result;
 };
 
+/** 👉 ROOT ELEMENT */
 export const GridRoot = styled.div.withConfig(propsBlocker)<GridPropsType>`
     display: flex;
     flex-wrap: wrap;
     ${gridRootStyle};
     ${sizeAttributes};
+    ${marginAttributes};
 `;

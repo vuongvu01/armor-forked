@@ -10,7 +10,7 @@ import { transitionDurationInSec } from '../../../constants';
 const getRootDynamicStyle = ({ theme }: TableActionRootPropsType) =>
     theme.componentOverrides.TableAction.Root.base;
 
-// if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
+/** 👉 ROOT ELEMENT */
 export const TableActionRoot = styled.div.withConfig(propsBlocker)<
     TableActionRootPropsType
 >`
@@ -20,7 +20,7 @@ export const TableActionRoot = styled.div.withConfig(propsBlocker)<
     transition: color ${transitionDurationInSec}s ease;
     cursor: pointer;
 
-    ${getRootDynamicStyle}
-    ${marginAttributes}
-    ${paddingAttributes}
+    ${getRootDynamicStyle};
+    ${marginAttributes};
+    ${paddingAttributes};
 `;
