@@ -1,8 +1,10 @@
-import { Indexed } from '../../../type';
-import { ThemeType } from '../../../styling';
+import { HTMLAttributes } from 'react';
+import { ComponentElementStylePropsType } from '../../type';
 
-export type SideSheetHeaderPropsType = Indexed<{
-    description?: string;
-    theme?: ThemeType;
-    title?: string;
-}>;
+export type SideSheetHeaderPropsType = Partial<{
+    description: string;
+    title: string;
+}> &
+    HTMLAttributes<HTMLDivElement>;
+
+export type SideSheetHeaderRootPropsType = ComponentElementStylePropsType;

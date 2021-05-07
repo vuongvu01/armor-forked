@@ -1,24 +1,19 @@
 import styled from 'styled-components';
 import { NavigationRootPropsType } from './type';
-import { marginAttributes, widthAttributes, propsBlocker } from '../../system';
+import {
+    marginAttributes,
+    widthAttributes,
+    propsBlocker,
+    getComponentOverride,
+} from '../../system';
 
-const getRootDynamicStyle = ({ theme }: NavigationRootPropsType) => {
-    const {
-        componentOverrides: { Navigation },
-    } = theme;
-
-    const result = Navigation.Root.base;
-
-    return result;
-};
-
-// if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
+/** 👉 ROOT ELEMENT */
 export const NavigationRoot = styled.div.withConfig(propsBlocker)<
     NavigationRootPropsType
 >`
     box-sizing: border-box;
 
-    ${getRootDynamicStyle};
+    ${getComponentOverride('Navigation')};
     ${marginAttributes};
     ${widthAttributes};
 `;

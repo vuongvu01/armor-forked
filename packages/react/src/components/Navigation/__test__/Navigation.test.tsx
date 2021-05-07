@@ -8,24 +8,15 @@
  */
 
 import React, { useRef, MouseEvent } from 'react';
-import { ThemeProvider } from 'styled-components';
 
-import {
-    fireEvent,
-    cleanup,
-    render,
-    prettyDOM,
-    // wait,
-    // waitForElement,
-} from '@testing-library/react';
+import { fireEvent, cleanup, render } from '@testing-library/react';
 import {
     renderHook,
     cleanup as cleanupHooks,
 } from '@testing-library/react-hooks';
-import renderer from 'react-test-renderer';
 import cloneDeep from 'clone-deep';
 
-import { customTheme, structure } from './helpers';
+import { structure } from './helpers';
 import { Navigation } from '..';
 
 describe('<Navigation />', () => {
@@ -47,30 +38,17 @@ describe('<Navigation />', () => {
     });
 
     it('should support forwardRef', () => {
-        const { result } = renderHook(() => useRef());
+        const { result } = renderHook(() => useRef(null));
         render(<Navigation ref={result.current} />);
 
         expect(result.current.current).toBeInstanceOf(HTMLElement);
     });
 
     it('should support custom theme', () => {
-        let tree = renderer
-            .create(<Navigation>With custom theme</Navigation>)
-            .toJSON();
-
         // @ts-ignore
-        expect(tree).not.toHaveStyleRule('border-width', '2px');
-
-        tree = renderer
-            .create(
-                <ThemeProvider theme={customTheme}>
-                    <Navigation>With custom theme</Navigation>
-                </ThemeProvider>,
-            )
-            .toJSON();
-
-        // @ts-ignore
-        expect(tree).toHaveStyleRule('border-width', '2px');
+        expect(<Navigation>With custom theme</Navigation>).toSupportCustomTheme(
+            'Navigation',
+        );
     });
 
     it('should support margin attributes', async () => {
@@ -155,15 +133,15 @@ describe('<Navigation />', () => {
 
         let node = container.querySelector('[data-menuelementid="birds"]');
         expect(node).toBeInstanceOf(HTMLElement);
-        expect(node!.getAttribute('aria-expanded')).toEqual('true');
+        expect(node!.getAttribute('data-expanded')).toEqual('1');
 
         node = container.querySelector('[data-menuelementid="bugs"]');
         expect(node).toBeInstanceOf(HTMLElement);
-        expect(node!.getAttribute('aria-expanded')).toEqual('true');
+        expect(node!.getAttribute('data-expanded')).toEqual('1');
 
         node = container.querySelector('[data-menuelementid="hawk"]');
         expect(node).toBeInstanceOf(HTMLElement);
-        expect(node!.getAttribute('aria-expanded')).toEqual('false');
+        expect(node!.getAttribute('data-expanded')).toEqual('0');
     });
 
     it('should make use of expanded flag', async () => {

@@ -2,7 +2,7 @@ import React, { forwardRef, useMemo, useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 
 import { useComponentTheme } from '../../utils/hooks';
-import SelectorLabel from '../SelectorLabel';
+import { SelectorLabel } from '../SelectorLabel';
 import { useCheckboxClassName } from './hooks/useCheckboxClassName';
 import { CheckboxInput, CheckboxCheckmark, CheckboxRoot } from './style';
 import { CheckboxPropsType } from './type';
@@ -101,7 +101,6 @@ export const Checkbox = forwardRef<
                 <SelectorLabel
                     disabled={disabled}
                     error={error}
-                    theme={theme}
                     className={classOverride.Label}
                     typographyProps={typographyProps}
                 >

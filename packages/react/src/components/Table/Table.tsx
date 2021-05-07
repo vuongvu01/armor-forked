@@ -1,4 +1,4 @@
-import React, { FunctionComponent, forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { useComponentTheme } from '../../utils/hooks';
 
@@ -10,7 +10,7 @@ import { tableRootTestId, TABLE_CLASS_PREFIX } from './constants';
 import { TableContext } from './utils/TableContext';
 import { useTable } from './hooks/useTable';
 
-export const Table: FunctionComponent<TablePropsType> = forwardRef(
+export const Table = forwardRef<HTMLTableElement, TablePropsType>(
     function Table(
         { className, stickyColumns, stickyHead, ...restProps },
         ref,
@@ -21,11 +21,13 @@ export const Table: FunctionComponent<TablePropsType> = forwardRef(
             className,
         );
 
-        const { tableContextValue, rootReference, onLayoutUpdate } = useTable({
-            stickyColumns,
-            stickyHead,
+        const { tableContextValue, rootReference, onLayoutUpdate } = useTable(
+            {
+                stickyColumns,
+                stickyHead,
+            },
             ref,
-        });
+        );
 
         return (
             <TableContext.Provider value={tableContextValue}>
@@ -54,11 +56,4 @@ Table.defaultProps = {
 Table.propTypes = {
     horizontalScroll: PropTypes.bool,
     stickyHead: PropTypes.bool,
-    selectedRowIds: PropTypes.arrayOf(
-        PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-    ),
-    rowIds: PropTypes.arrayOf(
-        PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-    ),
-    onRowSelectionChange: PropTypes.func,
 };

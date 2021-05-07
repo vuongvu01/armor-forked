@@ -11,12 +11,13 @@ export type ClassBasedOnComponentType = {
     disabled?: boolean;
 };
 
-export type SearchClearActionPropsType = {
-    disabled?: boolean;
-    disableClearAction?: boolean;
-    handleClearQuery?: (event: React.MouseEvent<HTMLDivElement>) => void;
-    searchQuery?: SearchQueryType;
-} & HTMLAttributes<HTMLElement>;
+export type SearchClearActionPropsType = Partial<{
+    disabled: boolean;
+    disableClearAction: boolean;
+    handleClearQuery: (event: React.MouseEvent<HTMLDivElement>) => void;
+    searchQuery: SearchQueryType;
+}> &
+    HTMLAttributes<HTMLElement>;
 
 export type ClearIconContainerPropsType = SearchClearActionPropsType &
     ComponentElementStylePropsType;

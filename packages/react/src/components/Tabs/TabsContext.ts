@@ -1,7 +1,16 @@
 import * as React from 'react';
-import { TabPropsType } from '../Tab/type';
 
-const TabsContext = React.createContext<TabPropsType>({
+type TabsContextType = {
+    currentlyActiveTab?: number;
+    wide?: boolean;
+    handleClick?: (
+        event: React.MouseEvent<HTMLInputElement, MouseEvent>,
+        tabIndex?: number,
+        contentValue?: number,
+    ) => void;
+};
+
+const TabsContext = React.createContext<TabsContextType>({
     currentlyActiveTab: undefined,
     wide: undefined,
     handleClick: undefined,

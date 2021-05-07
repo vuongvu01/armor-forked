@@ -1,10 +1,9 @@
-import { HTMLAttributes } from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../type';
 import { MarginAttributesType } from '../../system';
-import { ObjectLiteralType } from '../../type';
 
 /** 👉 PROPS TYPE */
 type EmptyStateEffectivePropsType = Partial<{
@@ -20,10 +19,13 @@ type EmptyStateEffectivePropsType = Partial<{
     enableActions: boolean;
     enableIndicator: boolean;
     actionsPosition: 'left' | 'middle' | 'right';
+    enableTitle: boolean;
+    enableDescription: boolean;
+    image: ReactNode;
+    actions: ReactNode;
 }> &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
-    MarginAttributesType &
-    ObjectLiteralType;
+    MarginAttributesType;
 
 export type EmptyStatePropsType = EmptyStateEffectivePropsType &
     ComponentStylePropsType;

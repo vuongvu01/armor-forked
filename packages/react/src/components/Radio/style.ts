@@ -62,12 +62,13 @@ const radioRootStyle = ({
     },
 }: RadioRootPropsType) => Radio.Root.base;
 
+/** 👉 ROOT ELEMENT */
 export const RadioRoot = styled.div.withConfig(propsBlocker)<
     RadioRootPropsType
 >`
-    ${radioRootStyle}
+    ${radioRootStyle};
     ${getComponentOverride('Radio')};
-    ${marginAttributes}
+    ${marginAttributes};
 `;
 
 export const RadioMark = styled.label.withConfig(propsBlocker)<

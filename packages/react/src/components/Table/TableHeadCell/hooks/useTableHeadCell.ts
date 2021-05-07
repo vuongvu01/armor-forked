@@ -8,9 +8,9 @@ import {
     TABLE_SORTING_DIRECTION_ASC,
     TABLE_SORTING_DIRECTION_DESC,
 } from '../../constants';
-import { ReferenceType } from '../../../../type';
+import { RefType } from '../../../../type';
 
-export const useTableHeadCell = (
+export const useTableHeadCell = <E extends HTMLTableCellElement>(
     {
         sortable,
         columnId,
@@ -18,7 +18,7 @@ export const useTableHeadCell = (
         rowSortOrder,
         ...restProps
     }: TableHeadCellPropsType,
-    ref: ReferenceType,
+    ref: RefType<E>,
 ) => {
     const sortingEnabled = !!(sortable && columnId);
     const [isSelected, isAscending, isDescending] = useMemo(() => {

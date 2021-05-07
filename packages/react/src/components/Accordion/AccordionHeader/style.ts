@@ -37,6 +37,7 @@ const accordionHeaderTypographyStyle = ({
     return HeaderTypography.base;
 };
 
+/** 👉 ROOT ELEMENT */
 export const AccordionHeaderRoot = styled.div.withConfig(propsBlocker)<
     AccordionHeaderRootPropsType
 >`

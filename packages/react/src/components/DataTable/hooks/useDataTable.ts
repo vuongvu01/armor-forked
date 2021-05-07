@@ -37,7 +37,7 @@ export const useDataTable = (
     ref: RefType<HTMLDivElement>,
 ) => {
     const innerRef = useRootRef<HTMLDivElement>(ref);
-    const tableBodyRef = useRef<HTMLTableSectionElement>();
+    const tableBodyRef = useRef<HTMLTableSectionElement>(null);
 
     const columnsSafe = columns || DATA_TABLE_EMPTY_COLUMNS;
     const dataSafe = data || DATA_TABLE_EMPTY_DATA;

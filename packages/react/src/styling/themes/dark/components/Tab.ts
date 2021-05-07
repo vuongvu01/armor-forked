@@ -1,5 +1,5 @@
 import { css } from 'styled-components';
-import { TabPropsType } from '../../../../components/Tab';
+import { TabRootPropsType } from '../../../../components/Tab/type';
 import {
     colorGrey05,
     colorGrey30,
@@ -8,7 +8,7 @@ import {
     colorGrey80,
 } from '../../../../tokens';
 
-export const getTabOverride = ({ disabled, isActive }: TabPropsType) => {
+export const getTabOverride = ({ disabled, isActive }: TabRootPropsType) => {
     let result = css`
         background-color: ${colorGrey80};
         .Tab-Label {

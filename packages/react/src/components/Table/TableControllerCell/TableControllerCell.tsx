@@ -1,4 +1,4 @@
-import React, { FunctionComponent, forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { useComponentTheme } from '../../../utils/hooks';
@@ -14,48 +14,49 @@ import { TableControllerCellPropsType } from './type';
 import { TABLE_CONTROLLER_CELL_CLASS_PREFIX } from './constants';
 import { getScalarPropType } from '../../../utils/propTypes';
 
-export const TableControllerCell: FunctionComponent<TableControllerCellPropsType> = forwardRef(
-    function TableControllerCell({ className, children, ...restProps }, ref) {
-        const theme = useComponentTheme(TABLE_CONTROLLER_CELL_CLASS_PREFIX);
-        const classNameComponents = useTableControllerCellClassNames(
-            TABLE_CONTROLLER_CELL_CLASS_PREFIX,
-            className,
-        );
+export const TableControllerCell = forwardRef<
+    HTMLTableCellElement,
+    TableControllerCellPropsType
+>(function TableControllerCell({ className, children, ...restProps }, ref) {
+    const theme = useComponentTheme(TABLE_CONTROLLER_CELL_CLASS_PREFIX);
+    const classNameComponents = useTableControllerCellClassNames(
+        TABLE_CONTROLLER_CELL_CLASS_PREFIX,
+        className,
+    );
 
-        const {
-            rootProps,
-            triggerProps,
-            triggerIconProps,
-        } = useTableControllerCell(restProps);
+    const {
+        rootProps,
+        triggerProps,
+        triggerIconProps,
+    } = useTableControllerCell(restProps);
 
-        return (
-            <TableControllerCellRoot
-                {...rootProps}
+    return (
+        <TableControllerCellRoot
+            {...rootProps}
+            theme={theme}
+            className={classNameComponents.Root}
+            ref={ref}
+        >
+            <TableControllerCellContainer
                 theme={theme}
-                className={classNameComponents.Root}
-                ref={ref}
+                className={classNameComponents.Container}
             >
-                <TableControllerCellContainer
+                <TableControllerCellTrigger
+                    {...triggerProps}
                     theme={theme}
-                    className={classNameComponents.Container}
+                    className={classNameComponents.Trigger}
                 >
-                    <TableControllerCellTrigger
-                        {...triggerProps}
+                    <TableControllerCellIcon
+                        {...triggerIconProps}
                         theme={theme}
-                        className={classNameComponents.Trigger}
-                    >
-                        <TableControllerCellIcon
-                            {...triggerIconProps}
-                            theme={theme}
-                            className={classNameComponents.Icon}
-                        />
-                    </TableControllerCellTrigger>
-                    {children}
-                </TableControllerCellContainer>
-            </TableControllerCellRoot>
-        );
-    },
-);
+                        className={classNameComponents.Icon}
+                    />
+                </TableControllerCellTrigger>
+                {children}
+            </TableControllerCellContainer>
+        </TableControllerCellRoot>
+    );
+});
 
 TableControllerCell.defaultProps = {
     expanded: false,
@@ -65,5 +66,5 @@ TableControllerCell.defaultProps = {
 TableControllerCell.propTypes = {
     expanded: PropTypes.bool,
     rowId: getScalarPropType(),
-    onExpansionButtonClick: PropTypes.func,
+    // onExpansionButtonClick: PropTypes.func,
 };

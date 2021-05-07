@@ -1,17 +1,18 @@
 import styled, { css } from 'styled-components';
 
-import { SideSheetBodyPropsType } from './type';
+import { SideSheetBodyRootPropsType } from './type';
 import { Typography } from '../../Typography';
 
-const bodyStyle = ({ isFixed }: SideSheetBodyPropsType) => css`
+const rootStyle = ({ isFixed }: SideSheetBodyRootPropsType) => css`
     ${isFixed ? 'overflow-y: auto;' : ''}
 `;
 
-export const SideSheetBody = styled(Typography)<SideSheetBodyPropsType>`
+/** 👉 ROOT ELEMENT */
+export const SideSheetBodyRoot = styled(Typography)<SideSheetBodyRootPropsType>`
     display: inline-block;
     flex-grow: 1;
     flex-wrap: wrap;
     margin: 0;
 
-    ${bodyStyle};
+    ${rootStyle};
 `;

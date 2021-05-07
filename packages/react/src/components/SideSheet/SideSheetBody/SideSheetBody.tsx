@@ -1,18 +1,22 @@
 import React, { FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import { SideSheetHeaderPropsType } from '../SideSheetHeader/type';
-import { SideSheetBody as SideSheetBodyRoot } from './style';
+import { SideSheetBodyRoot } from './style';
 import { sideSheetBody } from '../constants';
+import { useComponentTheme } from '../../../utils/hooks';
+import { SideSheetBodyPropsType } from './type';
+import { makeRootClassName } from '../../../utils';
 
 export const SIDE_SHEET_BODY_CLASS_PREFIX = 'SideSheetBody';
 
-export const SideSheetBody: FunctionComponent<SideSheetHeaderPropsType> = ({
+export const SideSheetBody: FunctionComponent<SideSheetBodyPropsType> = ({
     children,
     isFixed,
-    theme,
+    className,
     ...restProps
 }) => {
+    const theme = useComponentTheme(SIDE_SHEET_BODY_CLASS_PREFIX);
+
     return (
         <SideSheetBodyRoot
             paragraph
@@ -21,6 +25,10 @@ export const SideSheetBody: FunctionComponent<SideSheetHeaderPropsType> = ({
             {...restProps}
             isFixed={isFixed}
             theme={theme}
+            className={makeRootClassName(
+                SIDE_SHEET_BODY_CLASS_PREFIX,
+                className,
+            )}
         >
             {children}
         </SideSheetBodyRoot>

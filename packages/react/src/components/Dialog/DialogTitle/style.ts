@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-import { ObjectLiteralType } from '../../../type';
 import {
     DialogTitleRootPropsType,
     DialogTitleTextPropsType,
@@ -13,6 +12,7 @@ import {
     getComponentOverride,
 } from '../../../system';
 
+/** 👉 ROOT ELEMENT */
 export const DialogTitleRoot = styled.div.withConfig(propsBlocker)<
     DialogTitleRootPropsType
 >`

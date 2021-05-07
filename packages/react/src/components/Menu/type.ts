@@ -4,7 +4,6 @@ import {
     ComponentElementStylePropsType,
 } from '../type';
 import { MarginAttributesType, PaddingAttributesType } from '../../system';
-import { ObjectLiteralType } from '../../type';
 
 type MenuEffectivePropsType = Partial<{
     secondary: boolean;
@@ -16,8 +15,7 @@ type MenuEffectivePropsType = Partial<{
 }> &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
     PaddingAttributesType &
-    MarginAttributesType &
-    ObjectLiteralType;
+    MarginAttributesType;
 
 /* Menu component prop type */
 export type MenuPropsType = MenuEffectivePropsType & ComponentStylePropsType;

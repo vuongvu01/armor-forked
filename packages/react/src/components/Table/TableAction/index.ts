@@ -3,3 +3,4 @@
  */
 
 export * from './TableAction';
+export type { TableActionPropsType } from './type';

@@ -3,6 +3,8 @@
  */
 
 export * from './Table';
+export type { TablePropsType } from './type';
+
 export * from './TableAction';
 export * from './TableBody';
 export * from './TableCell';

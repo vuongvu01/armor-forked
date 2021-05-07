@@ -22,7 +22,7 @@ import {
     getComponentOverride,
 } from '../../../system';
 
-// if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
+/** 👉 ROOT ELEMENT */
 export const DatePickerMonthYearSelectorRoot = styled.div.withConfig(
     propsBlocker,
 )<DatePickerMonthYearSelectorRootPropsType>`

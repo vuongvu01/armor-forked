@@ -44,7 +44,7 @@ describe('<TableRow />', () => {
     });
 
     it('should support forwardRef', () => {
-        const { result } = renderHook(() => useRef());
+        const { result } = renderHook(() => useRef(null));
         render(
             <table>
                 <tbody>

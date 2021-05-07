@@ -90,6 +90,7 @@ const checkmarkStyle = ({
     return css`${checkmarkColor}${tickStyle}`;
 };
 
+/** 👉 ROOT ELEMENT */
 export const CheckboxRoot = styled.label.withConfig(propsBlocker)<
     CheckboxRootPropsType
 >`

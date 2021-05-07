@@ -8,6 +8,7 @@ import {
     getComponentOverride,
 } from '../../../system';
 
+/** 👉 ROOT ELEMENT */
 export const DialogContentRoot = styled.div.withConfig(propsBlocker)<
     DialogContentRootPropsType
 >`

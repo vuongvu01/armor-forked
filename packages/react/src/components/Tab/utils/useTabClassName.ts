@@ -41,7 +41,7 @@ const useTabClassName = (
                 }),
                 className,
             ),
-            LabelContainer: classGeneratorBasedOnComponent({
+            Tag: classGeneratorBasedOnComponent({
                 component: 'LabelContainer',
                 classPrefix,
                 disabled,

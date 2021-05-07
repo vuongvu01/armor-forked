@@ -11,7 +11,7 @@ import { useHeaderNavigationSearchClassName } from './hooks';
 import { useTheme } from '../../../styling';
 
 export const HeaderNavigationSearch = forwardRef<
-    HTMLDivElement,
+    HTMLInputElement,
     HeaderNavigationSearchPropsType
 >(function HeaderNavigationSearch(
     { className, options, onChange, onItemSelect, separator, ...restProps },

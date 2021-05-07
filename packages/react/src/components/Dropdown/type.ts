@@ -12,6 +12,7 @@ import { OptionObjectType } from '../OptionList/type';
 import { ComponentBehaviourOpenStateType } from '../../system/types/ComponentBehaviourOpenStateType';
 import { ComponentBehaviourPortalType } from '../../system/types/ComponentBehaviourPortalType';
 import { ComponentBehaviourOverlayType } from '../../system/types/ComponentBehaviourOverlayType';
+import { TextInputPropsType } from '../TextInput/type';
 
 export type ClassBasedOnComponentType = {
     component: string;
@@ -156,3 +157,8 @@ export type DropdownRootPropsType = DropdownEffectivePropsType &
     ComponentElementStylePropsType;
 
 export type DropdownOptionListContainerPropsType = { zIndex: number };
+
+export type DropdownTextInputPropsType = {
+    isCustomRenderer: boolean;
+    internalValue: DropdownInternalValueType;
+} & Pick<TextInputPropsType, 'disabled' | 'multiple'>;

@@ -3,7 +3,7 @@ import { useMemo } from 'react';
 import { selectorClassGeneratorBasedOnComponent } from '../../../styling';
 import { appendClassName } from '../../../utils';
 
-const useRadioClassName = (
+export const useRadioClassName = (
     classPrefix: string,
     className?: string,
     disabled?: boolean,
@@ -39,5 +39,3 @@ const useRadioClassName = (
         }),
         [classPrefix, className, disabled, checked, error],
     );
-
-export default useRadioClassName;

@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-type PointerEventsType = { disabled?: boolean };
+export type PointerEventsType = { disabled?: boolean };
 
 const pointerEvents = ({ disabled }: PointerEventsType) => css`
     pointer-events: ${disabled ? 'none' : 'auto'};

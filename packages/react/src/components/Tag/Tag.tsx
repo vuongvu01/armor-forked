@@ -1,4 +1,4 @@
-import React, { forwardRef, FunctionComponent } from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { useComponentTheme } from '../../utils/hooks';
@@ -14,7 +14,7 @@ import {
 } from './style';
 import { useTag } from './utils/useTag';
 
-export const Tag: FunctionComponent<TagPropsType> = forwardRef(function Tag(
+export const Tag = forwardRef<HTMLDivElement, TagPropsType>(function Tag(
     { className, ...restProps },
     ref,
 ) {

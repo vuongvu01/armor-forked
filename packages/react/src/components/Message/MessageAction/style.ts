@@ -4,14 +4,6 @@ import styled from 'styled-components';
 import { marginAttributes, propsBlocker } from '../../../system';
 import { MessageActionRootPropsType } from './type';
 
-// const Wrapper = ({
-//     className,
-//     children,
-// }: {
-//     className: string;
-//     children: (className: string) => ReactElement;
-// }) => children(className);
-
 const Wrapper = ({
     children,
     ...restProps
@@ -19,6 +11,7 @@ const Wrapper = ({
     children: (props: MessageActionRootPropsType) => ReactElement;
 }) => children({ ...restProps });
 
+/** 👉 ROOT ELEMENT */
 export const MessageActionRoot = styled(Wrapper).withConfig(propsBlocker)<
     MessageActionRootPropsType
 >`
@@ -28,5 +21,5 @@ export const MessageActionRoot = styled(Wrapper).withConfig(propsBlocker)<
 
     ${({ theme }: MessageActionRootPropsType) =>
         theme.componentOverrides.MessageAction.Root.base}
-    ${marginAttributes}
+    ${marginAttributes};
 `;

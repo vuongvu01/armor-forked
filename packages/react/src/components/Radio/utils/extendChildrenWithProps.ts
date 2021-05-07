@@ -4,7 +4,7 @@ import { getElementName } from '../../../utils';
 import { RADIO_CLASS_PREFIX } from '../constants';
 import { RADIO_GROUP_CLASS_PREFIX } from '../RadioGroup';
 
-const extendChildrenWithProps = (
+export const extendChildrenWithProps = (
     children: React.ReactElement[],
     additionalProps: object,
 ) => {
@@ -44,5 +44,3 @@ const extendChildrenWithProps = (
 
     return childrenWithExtendedProps;
 };
-
-export default extendChildrenWithProps;

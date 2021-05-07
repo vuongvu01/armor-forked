@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { makeRootClassName, makeBEM } from '../../../utils';
+import { makeRootClassName } from '../../../utils';
 
 export const useIconButtonClassNames = (
     classPrefix: string,

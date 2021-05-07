@@ -9,6 +9,7 @@ const headerNavigationItemRootStyle = ({
     },
 }: HeaderNavigationItemRootPropsType) => HeaderNavigationItem.Root.base;
 
+/** 👉 ROOT ELEMENT */
 export const HeaderNavigationItemRoot = styled.div.withConfig(propsBlocker)<
     HeaderNavigationItemRootPropsType
 >`

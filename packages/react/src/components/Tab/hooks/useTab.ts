@@ -1,10 +1,10 @@
-import React, { useCallback, useContext, useState } from 'react';
+import React, { useCallback, useContext } from 'react';
 
-import { ReferenceType } from '../../../type';
+import { RefType } from '../../../type';
 import { TabPropsType } from '../type';
 import TabsContext from '../../Tabs/TabsContext';
 
-export const useTab = (
+export const useTab = <E extends HTMLDivElement>(
     {
         children,
         disabled,
@@ -19,7 +19,7 @@ export const useTab = (
         onClick,
         ...restProps
     }: TabPropsType,
-    ref: ReferenceType,
+    ref: RefType<E>,
 ) => {
     const { currentlyActiveTab, wide, handleClick } = useContext(TabsContext);
 
@@ -49,14 +49,12 @@ export const useTab = (
             isActive,
             onClick: handleSelect,
         },
-        tabLabelContainerProps: {
-            disabled,
-        },
         tagProps: {
             to: disabled ? undefined : to,
             href: disabled ? undefined : href,
             target: disabled ? undefined : target,
             rel: disabled ? undefined : rel,
+            disabled,
         },
         tabLabelProps: {
             disabled,

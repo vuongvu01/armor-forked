@@ -26,7 +26,7 @@ const getRootStyle = ({ displayMenuElements }: ContextMenuRootPropsType) => {
     return result;
 };
 
-// if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
+/** 👉 ROOT ELEMENT */
 export const ContextMenuRoot = styled.div.withConfig(propsBlocker)<
     ContextMenuRootPropsType
 >`

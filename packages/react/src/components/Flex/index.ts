@@ -1,9 +1,9 @@
 import {
     FlexPropsType as PropsTypeFlex,
-    FlexItemPropsType as PropsTypeFlexIten,
+    FlexItemPropsType as PropsTypeFlexItem,
 } from './type';
 
 export * from './Flex';
 export * from './FlexItem';
 export type FlexPropsType = PropsTypeFlex;
-export type FlexItemPropsType = PropsTypeFlexIten;
+export type FlexItemPropsType = PropsTypeFlexItem;

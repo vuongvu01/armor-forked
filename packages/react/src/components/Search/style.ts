@@ -52,6 +52,7 @@ const searchTextInputStyle = ({
     return Search.TextInput.base;
 };
 
+/** 👉 ROOT ELEMENT */
 export const SearchRoot = styled.div.withConfig(propsBlocker)<
     SearchRootPropsType
 >`
@@ -61,8 +62,8 @@ export const SearchRoot = styled.div.withConfig(propsBlocker)<
     flex-flow: row nowrap;
     position: relative;
 
-    ${marginAttributes}
-    ${widthAttributes}
+    ${marginAttributes};
+    ${widthAttributes};
 
     ${getComponentOverride('Search')};
 `;
@@ -81,7 +82,7 @@ export const SearchSuggestionsContainer = styled.div.withConfig(propsBlocker)<
     transition: ${transitionDurationInSec}s;
     z-index: ${zIndexSearchSuggestionsList};
 
-    ${searchSuggestionsContainerStyle}
+    ${searchSuggestionsContainerStyle};
 `;
 
 export const SearchSuggestionsListContainer = styled.div.withConfig(

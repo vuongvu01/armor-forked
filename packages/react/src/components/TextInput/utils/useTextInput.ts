@@ -1,11 +1,11 @@
 import { MouseEvent, useCallback, useRef } from 'react';
 import { TextInputPropsType } from '../type';
 import { useEvents } from './useEvents';
-import { useInternalRef } from '../../../utils';
-import { ReferenceType } from '../../../type';
+import { RefType } from '../../../type';
 import { textInputInput } from '../constants';
+import { useRootRef } from '../../../system';
 
-export const useTextInput = (
+export const useTextInput = <E extends HTMLInputElement>(
     {
         label,
         before,
@@ -14,7 +14,7 @@ export const useTextInput = (
         multiline,
         onMouseOut,
         onMouseOver,
-        outline,
+        outlined,
         error,
         large,
         enableFocusOnRootClick,
@@ -48,7 +48,7 @@ export const useTextInput = (
 
         ...restRootProps
     }: TextInputPropsType,
-    ref: ReferenceType,
+    ref: RefType<E>,
 ) => {
     const {
         isMouseInside,
@@ -72,11 +72,9 @@ export const useTextInput = (
         readOnly,
     });
 
-    const internalInputRef = useRef<HTMLInputElement>(null);
-    const rootRef = useRef<HTMLDivElement>(null);
+    const internalInputRef = useRootRef<E>(enableRootRef ? null : ref);
+    const rootRef = useRootRef<E>(enableRootRef ? ref : null);
     const innerContainerRef = useRef<HTMLDivElement>(null);
-
-    useInternalRef(ref, enableRootRef ? rootRef : internalInputRef);
 
     const onRootNodeClick = useCallback(
         (event: MouseEvent<HTMLDivElement>) => {
@@ -105,7 +103,7 @@ export const useTextInput = (
     );
 
     const Tag = multiline ? 'textarea' : 'input';
-    const isOutlined = isMouseInside || isFocused || outline;
+    const isOutlined = isMouseInside || isFocused || outlined;
 
     return {
         rootProps: {

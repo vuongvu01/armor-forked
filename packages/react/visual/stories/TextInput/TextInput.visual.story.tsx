@@ -122,34 +122,34 @@ export const AllStates = () => (
                 label="Label"
                 name="your_price"
                 marginRight={1}
-                outline
+                outlined
             />
             <TextInput
                 label="Label"
                 name="your_price"
                 defaultValue="1000"
                 marginRight={1}
-                outline
+                outlined
             />
             <TextInput
                 placeholder="Label"
                 name="your_price"
                 defaultValue="1000"
                 marginRight={1}
-                outline
+                outlined
             />
             <TextInput
                 placeholder="Label"
                 name="your_price"
                 marginRight={1}
-                outline
+                outlined
             />
             <TextInput
                 label="Label"
                 name="your_price"
                 large
                 marginRight={1}
-                outline
+                outlined
             />
             <TextInput
                 label="Label"
@@ -157,7 +157,7 @@ export const AllStates = () => (
                 defaultValue="1000"
                 large
                 marginRight={1}
-                outline
+                outlined
             />
         </div>
         <br />

@@ -1,11 +1,11 @@
-import { HTMLAttributes, ReactChild } from 'react';
+import { ReactChild } from 'react';
 import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../../type';
-import { PaddingAttributesType } from '../../../system';
-import { ObjectLiteralType, ScalarType } from '../../../type';
+import { ScalarType } from '../../../type';
 import { IconButtonPropsType } from '../../IconButton/type';
+import { TableCellPropsType } from '../TableCell/type';
 
 type TableControllerCellEffectivePropsType = Partial<{
     expanded: boolean;
@@ -15,9 +15,7 @@ type TableControllerCellEffectivePropsType = Partial<{
     enableTriggerVisibility: boolean;
     // add other custom properties here
 }> &
-    HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
-    PaddingAttributesType &
-    ObjectLiteralType;
+    TableCellPropsType;
 
 /* TableControllerCell component prop type */
 export type TableControllerCellPropsType = TableControllerCellEffectivePropsType &

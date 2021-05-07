@@ -1,4 +1,4 @@
-import React, { forwardRef, FunctionComponent } from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { useComponentTheme } from '../../utils/hooks';
@@ -21,7 +21,7 @@ import {
 } from './constants';
 import { useTextInput } from './utils/useTextInput';
 
-export const TextInput: FunctionComponent<TextInputPropsType> = forwardRef(
+export const TextInput = forwardRef<HTMLInputElement, TextInputPropsType>(
     function TextInput({ className, ...restProps }, ref) {
         const theme = useComponentTheme(
             TEXT_INPUT_CLASS_PREFIX,
@@ -115,7 +115,7 @@ TextInput.defaultProps = {
     multiline: false,
     error: false,
     large: false, // default is medium (small in design)
-    outline: false,
+    outlined: false,
     enableFocusOnRootClick: false,
     onChange: () => {},
     type: 'text',
@@ -143,5 +143,5 @@ TextInput.propTypes = {
     error: PropTypes.bool,
     /** Increase vertical size */
     large: PropTypes.bool,
-    outline: PropTypes.bool,
+    outlined: PropTypes.bool,
 };

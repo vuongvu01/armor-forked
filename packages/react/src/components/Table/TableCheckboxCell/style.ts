@@ -4,6 +4,7 @@ import { TableCell } from '../TableCell';
 import { TABLE_CHECKBOX_CELL_WIDTH } from './constants';
 import { color, getComponentOverride } from '../../../system';
 
+/** 👉 ROOT ELEMENT */
 export const TableCheckboxCellRoot = styled(TableCell)`
     cursor: pointer;
     width: ${TABLE_CHECKBOX_CELL_WIDTH}px;

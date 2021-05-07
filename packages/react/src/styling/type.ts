@@ -1,4 +1,4 @@
-import { Indexed, ObjectLiteralType, ScalarType } from '../type';
+import { ObjectLiteralType, ScalarType } from '../type';
 import {
     BreakpointFunctionForwardedType,
     BreakpointFunctionTwoArgsForwardedType,
@@ -39,12 +39,12 @@ export type BreakpointsType = BreakpointsBaseType & {
 };
 export type BreakpointsDeclarationType = Pick<BreakpointsType, 'values'>;
 
-export type TypographyType = Indexed<{
+export type TypographyType = {
     htmlFontSize: number;
     fontFamily: string;
     fontSize: number;
     pixelToRem: (size: ScalarType) => string;
-}>;
+} & ObjectLiteralType;
 
 export type TypographyInputType = Partial<
     Pick<TypographyType, 'htmlFontSize' | 'fontFamily' | 'fontSize'>
@@ -53,7 +53,7 @@ export type TypographyInputType = Partial<
 export type RootThemeType = { armor: ThemeType } & ObjectLiteralType;
 
 // TODO (nmelnikov 2020-07-14): need to ensure that this one is compliant with the newest token structure
-export type ThemeType = Indexed<{
+export type ThemeType = {
     breakpoints: BreakpointsType;
     color: ObjectLiteralType;
     components: ObjectLiteralType;
@@ -63,7 +63,7 @@ export type ThemeType = Indexed<{
     typography: TypographyType;
     spacing: SpacingFunctionType;
     shape: ShapeType;
-}>;
+} & ObjectLiteralType;
 
 export type RootThemeInputType = {
     armor?: ThemeInputType;
@@ -71,13 +71,12 @@ export type RootThemeInputType = {
 
 export type ThemeInputType = Partial<
     Pick<ThemeType, 'mixins' | 'palette' | 'shape' | 'zIndex'>
-> &
-    Indexed<{
-        typography?: Partial<TypographyType>;
-        breakpoints?: BreakpointsDeclarationType;
-        spacing?: SpacingFunctionOrConstType;
-        components?: ObjectLiteralType;
-    }>;
+> & {
+    typography?: Partial<TypographyType>;
+    breakpoints?: BreakpointsDeclarationType;
+    spacing?: SpacingFunctionOrConstType;
+    components?: ObjectLiteralType;
+} & ObjectLiteralType;
 
 export type ThemeOptionsType = {
     immutable?: boolean;

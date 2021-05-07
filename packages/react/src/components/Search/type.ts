@@ -1,4 +1,9 @@
-import React, { ChangeEvent, HTMLAttributes, ReactElement } from 'react';
+import React, {
+    ChangeEvent,
+    HTMLAttributes,
+    InputHTMLAttributes,
+    ReactElement,
+} from 'react';
 
 import { MarginAttributesType, WidthAttributesType } from '../../system';
 import {
@@ -65,27 +70,37 @@ export type SearchEffectivePropsType = Partial<{
     isLoading: boolean;
     suggestionListHeight: ScalarType;
 }> &
+    Pick<InputHTMLAttributes<HTMLInputElement>, 'autoFocus'> &
     HTMLAttributes<HTMLElement> &
     WidthAttributesType &
-    MarginAttributesType &
-    ObjectLiteralType;
+    MarginAttributesType;
 
 export type SearchPropsType = SearchEffectivePropsType;
 
 export type SearchRootPropsType = SearchEffectivePropsType &
     ComponentElementStylePropsType;
 
-export type SearchSuggestionsContainerPropsType = SearchEffectivePropsType &
+export type SearchSuggestionsContainerPropsType = {
+    searchQuery?: SearchQueryType;
+    suggestionListHeight: SearchEffectivePropsType['suggestionListHeight'];
+} & ComponentElementStylePropsType;
+
+export type SearchSuggestionsListPropsType = ComponentElementStylePropsType;
+
+export type SearchSuggestionsItemIconPropsType = Pick<
+    SearchEffectivePropsType,
+    'icon' | 'renderItemIcon'
+> &
     ComponentElementStylePropsType;
 
-export type SearchSuggestionsListPropsType = SearchEffectivePropsType &
+export type SearchSuggestionsItemLabelPropsType = Pick<
+    SearchEffectivePropsType,
+    'renderItemAdditionalInfo'
+> &
     ComponentElementStylePropsType;
 
-export type SearchSuggestionsItemIconPropsType = SearchEffectivePropsType &
-    ComponentElementStylePropsType;
-
-export type SearchSuggestionsItemLabelPropsType = SearchEffectivePropsType &
-    ComponentElementStylePropsType;
-
-export type SearchSuggestionsItemActionPropsType = SearchEffectivePropsType &
+export type SearchSuggestionsItemActionPropsType = Pick<
+    SearchEffectivePropsType,
+    'renderItemAdditionalInfo'
+> &
     ComponentElementStylePropsType;

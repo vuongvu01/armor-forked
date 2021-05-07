@@ -31,6 +31,7 @@ const getRootStyle = ({
     return result;
 };
 
+/** 👉 ROOT ELEMENT */
 export const DatePickerRoot = styled.div.withConfig(propsBlocker)<
     DatePickerRootPropsType
 >`
@@ -45,6 +46,7 @@ export const DatePickerRoot = styled.div.withConfig(propsBlocker)<
     ${widthAttributes};
 `;
 
+/** 👉 ROOT ELEMENT */
 export const DateRangePickerRoot = styled.div.withConfig(propsBlocker)<
     DateRangePickerPropsType
 >`

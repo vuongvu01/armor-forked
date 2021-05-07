@@ -1,4 +1,4 @@
-import { HTMLAttributes } from 'react';
+import { Component, HTMLAttributes } from 'react';
 
 import { MarginAttributesType } from '../../system';
 import { ComponentElementStylePropsType } from '../type';
@@ -6,7 +6,7 @@ import { ComponentBehaviourOpenStateType } from '../../system/types/ComponentBeh
 import { ComponentBehaviourOverlayType } from '../../system/types/ComponentBehaviourOverlayType';
 import { ComponentBehaviourPortalType } from '../../system/types/ComponentBehaviourPortalType';
 import { ComponentBehaviourModalDialogType } from '../../system/types/ComponentBehaviourModalDialogType';
-import { ChildrenType, ObjectLiteralType } from '../../type';
+import { ChildrenType } from '../../type';
 
 export type ClassBasedOnComponentType = {
     component: string;
@@ -22,6 +22,7 @@ export type SideSheetEffectivePropsType = Partial<{
     isFixed: boolean;
     wide: boolean;
     children: ChildrenType;
+    effectToggle: boolean;
 
     /** @deprecated @see enableEffects */
     disableEffects: boolean;
@@ -30,6 +31,9 @@ export type SideSheetEffectivePropsType = Partial<{
     /** @deprecated @see enableCloseByEscape */
     disableCloseByEscape: boolean;
 
+    /** @deprecated */
+    onClose: () => void;
+
     // add other custom properties here
 }> &
     ComponentBehaviourModalDialogType &
@@ -37,8 +41,7 @@ export type SideSheetEffectivePropsType = Partial<{
     ComponentBehaviourOverlayType &
     ComponentBehaviourPortalType &
     HTMLAttributes<HTMLElement> &
-    MarginAttributesType &
-    ObjectLiteralType;
+    MarginAttributesType;
 
 export type ClassOverrideType = {
     Body: string;
@@ -56,17 +59,12 @@ export type SideSheetRootPropsType = {
     zIndex: number;
 } & ComponentElementStylePropsType;
 
-export type SideSheetContainerPropsType = Pick<
-    SideSheetEffectivePropsType,
-    'disableEffects' | 'display' | 'effectToggle' | 'theme' | 'wide'
->;
+export type SideSheetContainerPropsType = {
+    disableEffects: boolean;
+    effectToggle: boolean;
+    wide?: boolean;
+} & ComponentElementStylePropsType;
 
-export type SideSheetContentPropsType = Pick<
-    SideSheetEffectivePropsType,
-    'theme'
->;
+export type SideSheetContentPropsType = ComponentElementStylePropsType;
 
-export type SideSheetHeaderContainerPropsType = Pick<
-    SideSheetEffectivePropsType,
-    'theme'
->;
+export type SideSheetHeaderContainerPropsType = ComponentElementStylePropsType;

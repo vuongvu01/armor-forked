@@ -3,8 +3,7 @@ import {
     ColorAttributesType,
     MarginAttributesType,
     TextAlignmentAttributesType,
-} from '../../system/attributes';
-import { Indexed } from '../../type';
+} from '../../system';
 import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
@@ -12,17 +11,19 @@ import {
 
 export type TypographyTagType = string | ComponentType<any>;
 
-type TypographyEffectivePropsType = Indexed<{
-    tag?: TypographyTagType;
-    pageTitle?: boolean;
-    sectionTitle?: boolean;
-    subSectionTitle?: boolean;
-    label?: boolean;
-    paragraph?: boolean;
-    large?: boolean;
-    medium?: boolean;
-    small?: boolean;
-    maxLines?: number;
+type TypographyEffectivePropsType = Partial<{
+    tag: TypographyTagType;
+    pageTitle: boolean;
+    sectionTitle: boolean;
+    subSectionTitle: boolean;
+    label: boolean;
+    paragraph: boolean;
+    large: boolean;
+    medium: boolean;
+    small: boolean;
+    maxLines: number;
+    disabled: boolean;
+    error: boolean;
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes

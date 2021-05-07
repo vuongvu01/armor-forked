@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 import { useComponentTheme } from '../../../utils/hooks';
 
-import { useMessageActionClassNames } from './utils/useMessageActionClassNames';
+import { useMessageActionClassNames } from './hooks/useMessageActionClassNames';
 import { MessageActionRoot } from './style';
 import { MessageActionPropsType } from './type';
 import { messageActionDefaultTheme } from './theme';

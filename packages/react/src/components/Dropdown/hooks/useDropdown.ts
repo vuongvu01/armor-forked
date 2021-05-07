@@ -19,7 +19,7 @@ import {
 import { useOnOptionListUpdate } from './useOnOptionListUpdate';
 import { usePanelWidth } from './usePanelWidth';
 
-export const useDropdown = <E extends HTMLDivElement>(
+export const useDropdown = <E extends HTMLInputElement>(
     {
         disabled,
         isActionSeparatorDisplayed = true,
@@ -63,7 +63,7 @@ export const useDropdown = <E extends HTMLDivElement>(
     }: DropdownPropsType,
     ref: RefType<E>,
 ) => {
-    const internalInputRef = useRootRef(ref);
+    const internalInputRef = useRootRef<E>(ref);
     const containerRef = useRef(null);
     const dropdownRef = useRef<HTMLDivElement>(null);
 

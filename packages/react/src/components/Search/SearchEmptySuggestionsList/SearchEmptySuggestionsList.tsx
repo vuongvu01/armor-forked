@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 
 import { SearchEmptySuggestionsEmptyItemLabelTypography } from '../SearchSuggestionItem/style';
-import { useSearchEmptySuggestionsListClassName } from './utils';
+import { useSearchEmptySuggestionsListClassName } from './hooks';
 import { SearchEmptySuggestionsListPropsType } from './type';
 import { SEARCH_EMPTY_SUGGESTIONS_LIST_CLASS_PREFIX } from './constants';
 import {

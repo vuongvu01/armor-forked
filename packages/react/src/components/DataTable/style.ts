@@ -12,6 +12,7 @@ import {
     DataTableVirtualOffsetType,
 } from './type';
 
+/** 👉 ROOT ELEMENT */
 export const DataTableRoot = styled.div.withConfig(propsBlocker)<
     DataTableRootPropsType
 >`

@@ -1,4 +1,4 @@
-import React, { FunctionComponent, forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import {
     ByLetterIcon,
     ByNumberIcon,
@@ -11,7 +11,6 @@ import { useComponentTheme } from '../../../utils/hooks';
 import { useTableHeadCellClassNames } from './hooks/useTableHeadCellClassNames';
 import { TableHeadCellRoot } from './style';
 import { TableHeadCellPropsType } from './type';
-import { tableHeadCellDefaultTheme } from './theme';
 import { useTableHeadCell } from './hooks/useTableHeadCell';
 import {
     TABLE_HEAD_CELL_CLASS_PREFIX,
@@ -20,63 +19,61 @@ import {
 } from './constants';
 import { TableCellLabel } from '../TableCellLabel';
 
-export const TableHeadCell: FunctionComponent<TableHeadCellPropsType> = forwardRef(
-    function TableHeadCell({ className, children, ...props }, ref) {
-        const theme = useComponentTheme(
-            TABLE_HEAD_CELL_CLASS_PREFIX,
-            tableHeadCellDefaultTheme,
-        );
-        const classNameComponents = useTableHeadCellClassNames(
-            TABLE_HEAD_CELL_CLASS_PREFIX,
-            className,
-        );
+export const TableHeadCell = forwardRef<
+    HTMLTableCellElement,
+    TableHeadCellPropsType
+>(function TableHeadCell({ className, children, ...props }, ref) {
+    const theme = useComponentTheme(TABLE_HEAD_CELL_CLASS_PREFIX);
+    const classNameComponents = useTableHeadCellClassNames(
+        TABLE_HEAD_CELL_CLASS_PREFIX,
+        className,
+    );
 
-        const {
-            rootProps,
+    const {
+        rootProps,
 
-            isAscending,
-            isDescending,
-            isIconAlphabetical,
-            isIconNumerical,
-        } = useTableHeadCell(props, ref);
+        isAscending,
+        isDescending,
+        isIconAlphabetical,
+        isIconNumerical,
+    } = useTableHeadCell(props, ref);
 
-        return (
-            <TableHeadCellRoot
-                {...rootProps}
-                theme={theme}
-                className={classNameComponents.Root}
-            >
-                <TableCellLabel>
-                    {children}
-                    {isIconAlphabetical && (
-                        <ByLetterIcon
-                            marginLeft={2}
-                            className={classNameComponents.AlphabeticalIcon}
-                        />
-                    )}
-                    {isIconNumerical && (
-                        <ByNumberIcon
-                            marginLeft={2}
-                            className={classNameComponents.NumericalIcon}
-                        />
-                    )}
-                    {isAscending && (
-                        <ArrowUpTailIcon
-                            marginLeft={2}
-                            className={classNameComponents.ArrowUpIcon}
-                        />
-                    )}
-                    {isDescending && (
-                        <ArrowDownTailIcon
-                            marginLeft={2}
-                            className={classNameComponents.ArrowDownIcon}
-                        />
-                    )}
-                </TableCellLabel>
-            </TableHeadCellRoot>
-        );
-    },
-);
+    return (
+        <TableHeadCellRoot
+            {...rootProps}
+            theme={theme}
+            className={classNameComponents.Root}
+        >
+            <TableCellLabel>
+                {children}
+                {isIconAlphabetical && (
+                    <ByLetterIcon
+                        marginLeft={2}
+                        className={classNameComponents.AlphabeticalIcon}
+                    />
+                )}
+                {isIconNumerical && (
+                    <ByNumberIcon
+                        marginLeft={2}
+                        className={classNameComponents.NumericalIcon}
+                    />
+                )}
+                {isAscending && (
+                    <ArrowUpTailIcon
+                        marginLeft={2}
+                        className={classNameComponents.ArrowUpIcon}
+                    />
+                )}
+                {isDescending && (
+                    <ArrowDownTailIcon
+                        marginLeft={2}
+                        className={classNameComponents.ArrowDownIcon}
+                    />
+                )}
+            </TableCellLabel>
+        </TableHeadCellRoot>
+    );
+});
 
 TableHeadCell.defaultProps = {
     sortable: false,

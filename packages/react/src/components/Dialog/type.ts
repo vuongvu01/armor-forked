@@ -32,8 +32,8 @@ type DialogEffectivePropsType = Partial<{
     ComponentBehaviourOpenStateType &
     ComponentBehaviourOverlayType &
     ComponentBehaviourPortalType &
-    HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
-    SizeAttributesType;
+    HTMLAttributes<HTMLDivElement> &
+    SizeAttributesType; // don't delete! it is forwarded to the window element
 
 /* Dialog component prop type */
 export type DialogPropsType = DialogEffectivePropsType &

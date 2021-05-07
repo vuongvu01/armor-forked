@@ -20,6 +20,7 @@ import renderer from 'react-test-renderer';
 
 import { customTheme } from './helpers';
 import { TableBody } from '..';
+import { Navigation } from '../../../Navigation';
 
 describe('<TableBody />', () => {
     afterEach(async () => {
@@ -48,7 +49,7 @@ describe('<TableBody />', () => {
     });
 
     it('should support forwardRef', () => {
-        const { result } = renderHook(() => useRef());
+        const { result } = renderHook(() => useRef(null));
         render(
             <table>
                 <TableBody ref={result.current} />
@@ -59,28 +60,11 @@ describe('<TableBody />', () => {
     });
 
     it('should support custom theme', () => {
-        let tree = renderer
-            .create(
-                <table>
-                    <TableBody>With custom theme</TableBody>
-                </table>,
-            )
-            .toJSON();
-
-        // @ts-ignore
-        expect(tree.children[0]).not.toHaveStyleRule('border-width', '2px');
-
-        tree = renderer
-            .create(
-                <ThemeProvider theme={customTheme}>
-                    <table>
-                        <TableBody>With custom theme</TableBody>
-                    </table>
-                </ThemeProvider>,
-            )
-            .toJSON();
-
-        // @ts-ignore
-        expect(tree.children[0]).toHaveStyleRule('border-width', '2px');
+        expect(
+            <table>
+                <TableBody>With custom theme</TableBody>
+            </table>,
+            // @ts-ignore
+        ).toSupportCustomTheme('TableBody', tree => tree.children[0]);
     });
 });

@@ -37,15 +37,15 @@ const getRootDynamicStyle = ({
     return result;
 };
 
-// if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
+/** 👉 ROOT ELEMENT */
 export const TableRoot = styled.table.withConfig(propsBlocker)<
     TableRootPropsType
 >`
     box-sizing: border-box;
     border-collapse: collapse;
 
-    ${getRootDynamicStyle}
-    ${marginAttributes}
-    ${widthAttributes}
-    ${heightAttributes}
+    ${getRootDynamicStyle};
+    ${marginAttributes};
+    ${widthAttributes};
+    ${heightAttributes};
 `;

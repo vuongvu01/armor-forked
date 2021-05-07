@@ -3,8 +3,8 @@ import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../type';
-import { MarginAttributesType } from '../../system/attributes';
-import { ObjectLiteralType, ScalarType } from '../../type';
+import { MarginAttributesType } from '../../system';
+import { ScalarType } from '../../type';
 
 type PageNavigationPageSizeListItemType = {
     label: ScalarType;
@@ -26,8 +26,7 @@ type PageNavigationEffectivePropsType = Partial<{
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
-    MarginAttributesType &
-    ObjectLiteralType;
+    MarginAttributesType;
 
 /* PageNavigation component prop type */
 export type PageNavigationPropsType = PageNavigationEffectivePropsType &

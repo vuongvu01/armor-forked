@@ -25,6 +25,7 @@ const defaultLabelColor = color('neutral.05');
 const defaultLabelColorHover = color('neutral.06');
 const defaultActionColor = color('neutral.04');
 
+/** 👉 ROOT ELEMENT */
 export const SearchSuggestionItemRoot = styled.div.withConfig(propsBlocker)<
     SearchSuggestionItemRootPropsType
 >`

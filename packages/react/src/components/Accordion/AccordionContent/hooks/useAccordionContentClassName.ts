@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 
-import { getClassNameByComponent } from '../utils';
-import { appendClassName } from '../../../utils';
+import { getClassNameByComponent } from '../../utils';
+import { appendClassName } from '../../../../utils';
 
 const useAccordionContentClassName = (
     classPrefix: string,

@@ -2,9 +2,9 @@ import { MouseEvent, useCallback } from 'react';
 import { TagPropsType } from '../type';
 import { getStatusTagLabel, isStatusTag } from './index';
 import { tagCloseIconContainer, tagRoot } from '../constants';
-import { ReferenceType } from '../../../type';
+import { RefType } from '../../../type';
 
-export const useTag = (
+export const useTag = <E extends HTMLDivElement>(
     {
         type,
         label,
@@ -17,7 +17,7 @@ export const useTag = (
         small,
         ...restRootProps
     }: TagPropsType,
-    ref: ReferenceType,
+    ref: RefType<E>,
 ) => {
     let realLabel = label;
 

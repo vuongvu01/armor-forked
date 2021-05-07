@@ -18,7 +18,7 @@ import {
 } from '../constants';
 import { DROPDOWN_ACTION_ITEM } from '../../Dropdown/constants';
 import AccordionContext from '../AccordionContext';
-import useAccordionHeaderClassName from './useAccordionHeaderClassName';
+import useAccordionHeaderClassName from './hooks/useAccordionHeaderClassName';
 import { getWindow } from '../../../system/util/globals';
 import { useRootRef } from '../../../system';
 
@@ -79,10 +79,10 @@ export const AccordionHeader = forwardRef<
             tabIndex={0}
             theme={theme}
         >
-            <AccordionHeaderBody>
+            <AccordionHeaderBody theme={theme} className={classOverride.Body}>
                 {title && (
                     <AccordionHeaderTypography
-                        className={classOverride.HeaderTitle}
+                        className={classOverride.Title}
                         data-testid={accordionHeaderTypography}
                         disabled={disabled}
                         label

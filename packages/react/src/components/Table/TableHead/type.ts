@@ -3,9 +3,8 @@ import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../../type';
-import { Indexed } from '../../../type';
 
-export type TableHeadEffectivePropsType = Indexed<{
+export type TableHeadEffectivePropsType = Partial<{
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLTableSectionElement>; // includes all HTML THead attributes

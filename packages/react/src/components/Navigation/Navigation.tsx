@@ -1,17 +1,11 @@
-import React, {
-    FunctionComponent,
-    forwardRef,
-    Fragment,
-    MouseEvent,
-} from 'react';
+import React, { forwardRef, Fragment, MouseEvent } from 'react';
 import PropTypes from 'prop-types';
 
 import { useComponentTheme } from '../../utils/hooks';
-import { useNavigationClassNames } from './utils/useNavigationClassNames';
-import { useNavigation } from './utils/useNavigation';
+import { useNavigationClassNames } from './hooks/useNavigationClassNames';
+import { useNavigation } from './hooks/useNavigation';
 import { NavigationRoot } from './style';
 import { NavigationMenuElementType, NavigationPropsType } from './type';
-import { navigationDefaultTheme } from './theme';
 import { NAVIGATION_CLASS_PREFIX, DEFAULT_MAX_DEPTH_LEVEL } from './constants';
 import { Menu, MenuElement } from '../Menu';
 import { ScalarType } from '../../type';
@@ -70,8 +64,9 @@ const renderMenuElement = (
                 data-menuelementid={element.id}
                 data-menuelementglobalid={globalId}
                 data-depthlevel={depthLevel}
-                depthlevel={depthLevel}
+                depthLevel={depthLevel}
                 expanded={elementExpanded}
+                data-expanded={elementExpanded}
                 selected={elementSelected}
                 onClick={onMenuElementClick}
             >
@@ -106,7 +101,7 @@ const renderMenuElement = (
     );
 };
 
-export const Navigation: FunctionComponent<NavigationPropsType> = forwardRef(
+export const Navigation = forwardRef<HTMLDivElement, NavigationPropsType>(
     function Navigation(
         {
             className,
@@ -118,10 +113,7 @@ export const Navigation: FunctionComponent<NavigationPropsType> = forwardRef(
         },
         ref,
     ) {
-        const theme = useComponentTheme(
-            NAVIGATION_CLASS_PREFIX,
-            navigationDefaultTheme,
-        );
+        const theme = useComponentTheme(NAVIGATION_CLASS_PREFIX);
         const classNameComponents = useNavigationClassNames(
             NAVIGATION_CLASS_PREFIX,
             className,

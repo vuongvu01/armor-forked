@@ -19,6 +19,7 @@ import renderer from 'react-test-renderer';
 
 import { customTheme } from './helpers';
 import { TableHeadCell } from '..';
+import { TableCell } from '../../TableCell';
 
 describe('<TableHeadCell />', () => {
     afterEach(async () => {
@@ -39,30 +40,27 @@ describe('<TableHeadCell />', () => {
     });
 
     it('should support forwardRef', () => {
-        const { result } = renderHook(() => useRef());
+        const { result } = renderHook(() => useRef(null));
         render(<TableHeadCell ref={result.current} />);
 
         expect(result.current.current).toBeInstanceOf(HTMLElement);
     });
 
     it('should support custom theme', () => {
-        let tree = renderer
-            .create(<TableHeadCell>With custom theme</TableHeadCell>)
-            .toJSON();
-
-        // @ts-ignore
-        expect(tree).not.toHaveStyleRule('border-width', '2px');
-
-        tree = renderer
-            .create(
-                <ThemeProvider theme={customTheme}>
-                    <TableHeadCell>With custom theme</TableHeadCell>
-                </ThemeProvider>,
-            )
-            .toJSON();
-
-        // @ts-ignore
-        expect(tree).toHaveStyleRule('border-width', '2px');
+        expect(
+            <table>
+                <thead>
+                    <tr>
+                        <TableHeadCell>With custom theme</TableHeadCell>
+                    </tr>
+                </thead>
+            </table>,
+            // @ts-ignore
+        ).toSupportCustomTheme(
+            'TableHeadCell',
+            // @ts-ignore
+            tree => tree.children[0].children[0].children[0],
+        );
     });
 
     it('should support padding attributes', async () => {

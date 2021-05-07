@@ -1,20 +1,21 @@
 import styled from 'styled-components';
 
-import { SideSheetFooterPropsType } from './type';
+import { SideSheetFooterRootPropsType } from './type';
 import { Typography } from '../../Typography';
+import { color, getComponentOverride, spacing } from '../../../system';
+import { componentSpacing06 } from '../../../tokens';
 
-const footerStyle = ({ theme }: SideSheetFooterPropsType) => {
-    const SideSheet = theme?.componentOverrides?.SideSheet;
-    return SideSheet.Footer.base;
-};
-
-export const SideSheetFooter = styled(Typography)<SideSheetFooterPropsType>`
+/** 👉 ROOT ELEMENT */
+export const SideSheetFooterRoot = styled(Typography)<
+    SideSheetFooterRootPropsType
+>`
     align-items: center;
     justify-content: flex-end;
     box-sizing: border-box;
     display: flex;
     height: 64px;
     margin: 0;
-
-    ${footerStyle};
+    border-top: 1px solid ${color('neutral.03')};
+    padding-top: ${spacing(componentSpacing06)};
+    ${getComponentOverride('SideSheetFooter')};
 `;

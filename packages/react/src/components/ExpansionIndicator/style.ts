@@ -43,6 +43,7 @@ const actionSeparator = ({
           `
         : {};
 
+/** 👉 ROOT ELEMENT */
 export const ExpansionIndicatorRoot = styled.div.withConfig(propsBlocker)<
     ExpansionIndicatorRootPropsType
 >`

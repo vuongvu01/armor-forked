@@ -1,16 +1,15 @@
-import React, { FunctionComponent, forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { useComponentTheme } from '../../../utils/hooks';
 
-import { useTableRowClassNames } from './utils/useTableRowClassNames';
+import { useTableRowClassNames } from './hooks/useTableRowClassNames';
 import { TableRowRoot } from './style';
 import { TableRowPropsType } from './type';
 import { tableRowRootTestId, TABLE_ROW_CLASS_PREFIX } from './constants';
-import { useTableRow } from './utils/useTableRow';
+import { useTableRow } from './hooks/useTableRow';
 import { TableRowCells } from './TableRowCells';
-import { getScalarPropType } from '../../../utils/propTypes';
 
-export const TableRow: FunctionComponent<TableRowPropsType> = forwardRef(
+export const TableRow = forwardRef<HTMLTableRowElement, TableRowPropsType>(
     function TableRow({ className, children, ...restProps }, ref) {
         const theme = useComponentTheme(TABLE_ROW_CLASS_PREFIX);
         const classNameComponents = useTableRowClassNames(
@@ -40,6 +39,4 @@ TableRow.defaultProps = {
 };
 
 /** prop-types are required here for run-time checks */
-TableRow.propTypes = {
-    rowId: getScalarPropType(),
-};
+TableRow.propTypes = {};

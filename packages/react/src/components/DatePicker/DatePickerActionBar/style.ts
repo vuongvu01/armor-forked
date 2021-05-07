@@ -11,7 +11,7 @@ import {
 import { Button } from '../../Button';
 import { fontSize02, fontSize03 } from '../../../tokens';
 
-// if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
+/** 👉 ROOT ELEMENT */
 export const DatePickerActionBarRoot = styled.div.withConfig(propsBlocker)<
     DatePickerActionBarRootPropsType
 >`

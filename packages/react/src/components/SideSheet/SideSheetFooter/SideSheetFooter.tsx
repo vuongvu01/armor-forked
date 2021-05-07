@@ -1,16 +1,20 @@
-import React, { FunctionComponent } from 'react';
+import React, { FC } from 'react';
 
 import { SideSheetFooterPropsType } from './type';
-import { SideSheetFooter as SideSheetFooterRoot } from './style';
+import { SideSheetFooterRoot } from './style';
 import { sideSheetFooter } from '../constants';
+import { useComponentTheme } from '../../../utils/hooks';
+import { makeRootClassName } from '../../../utils';
 
 export const SIDE_SHEET_FOOTER_CLASS_PREFIX = 'SideSheetFooter';
 
-export const SideSheetFooter: FunctionComponent<SideSheetFooterPropsType> = ({
+export const SideSheetFooter: FC<SideSheetFooterPropsType> = ({
     children,
-    theme,
+    className,
     ...restProps
 }) => {
+    const theme = useComponentTheme(SIDE_SHEET_FOOTER_CLASS_PREFIX);
+
     return (
         <SideSheetFooterRoot
             paragraph
@@ -18,6 +22,10 @@ export const SideSheetFooter: FunctionComponent<SideSheetFooterPropsType> = ({
             data-testid={sideSheetFooter}
             {...restProps}
             theme={theme}
+            className={makeRootClassName(
+                SIDE_SHEET_FOOTER_CLASS_PREFIX,
+                className,
+            )}
         >
             {children}
         </SideSheetFooterRoot>

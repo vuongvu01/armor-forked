@@ -17,7 +17,7 @@ import {
 import { TextInput } from '../../TextInput';
 import { borderRadius02, fontSize03, fontWeightMedium } from '../../../tokens';
 
-// if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
+/** 👉 ROOT ELEMENT */
 export const DatePickerTimeSelectorRoot = styled.div.withConfig(propsBlocker)<
     DatePickerTimeSelectorRootPropsType
 >`

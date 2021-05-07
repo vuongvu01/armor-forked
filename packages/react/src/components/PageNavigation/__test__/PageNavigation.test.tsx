@@ -48,7 +48,7 @@ describe('<PageNavigation />', () => {
     });
 
     it('should support forwardRef', () => {
-        const { result } = renderHook(() => useRef());
+        const { result } = renderHook(() => useRef(null));
         render(<PageNavigation ref={result.current} />);
 
         expect(result.current.current).toBeInstanceOf(HTMLElement);

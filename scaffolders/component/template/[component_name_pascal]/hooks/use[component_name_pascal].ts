@@ -1,4 +1,3 @@
-import {RefObject} from "react";
 import { <%- component_name_pascal %>PropsType } from '../type';
 import { RefType } from '../../../type';
 import { useRootRef } from '../../../system';

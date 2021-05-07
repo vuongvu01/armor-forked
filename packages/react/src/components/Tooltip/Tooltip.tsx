@@ -1,4 +1,4 @@
-import React, { forwardRef, FunctionComponent } from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { useComponentTheme } from '../../utils/hooks';
 
@@ -10,7 +10,7 @@ import { TOOLTIP_CLASS_PREFIX } from './constants';
 import { useTooltip } from './hooks/useTooltip';
 import { PortalToBody } from '../../system/util/PortalToBody';
 
-export const Tooltip: FunctionComponent<TooltipPropsType> = forwardRef(
+export const Tooltip = forwardRef<HTMLDivElement, TooltipPropsType>(
     function Tooltip({ className, ...props }, ref) {
         const theme = useComponentTheme(
             TOOLTIP_CLASS_PREFIX,

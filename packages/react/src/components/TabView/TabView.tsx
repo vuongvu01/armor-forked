@@ -1,15 +1,17 @@
-import React, { FunctionComponent } from 'react';
+import React, { FC } from 'react';
 import PropTypes from 'prop-types';
 import { TabViewPropsType } from './type';
 import { tabViewDefaultTheme } from './theme';
 import { useComponentTheme } from '../../utils/hooks';
 import { TabViewRoot } from './style';
 import { TAB_VIEW_CLASS_PREFIX } from './constants';
+import { makeRootClassName } from '../../utils';
 
-export const TabView: FunctionComponent<TabViewPropsType> = ({
+export const TabView: FC<TabViewPropsType> = ({
     children,
     value,
     selectedValue,
+    className,
     ...restProps
 }) => {
     if (typeof value === 'undefined' || typeof selectedValue === 'undefined') {
@@ -19,7 +21,11 @@ export const TabView: FunctionComponent<TabViewPropsType> = ({
     const theme = useComponentTheme(TAB_VIEW_CLASS_PREFIX, tabViewDefaultTheme);
 
     return value === selectedValue ? (
-        <TabViewRoot {...restProps} theme={theme}>
+        <TabViewRoot
+            {...restProps}
+            theme={theme}
+            className={makeRootClassName(TAB_VIEW_CLASS_PREFIX, className)}
+        >
             {children}
         </TabViewRoot>
     ) : null;

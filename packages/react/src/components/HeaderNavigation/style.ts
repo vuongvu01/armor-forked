@@ -20,6 +20,7 @@ const headerNavigationRootStyle = ({
     return HeaderNavigation.Root.base;
 };
 
+/** 👉 ROOT ELEMENT */
 export const HeaderNavigationRoot = styled.div.withConfig(propsBlocker)<
     HeaderNavigationRootPropsType
 >`
@@ -27,9 +28,9 @@ export const HeaderNavigationRoot = styled.div.withConfig(propsBlocker)<
     min-height: ${spacing(12)};
     border-bottom: 1px solid ${color('neutral.03')};
 
-    ${headerNavigationRootStyle}
+    ${headerNavigationRootStyle};
     ${getComponentOverride('HeaderNavigation')};
-    ${marginAttributes}
+    ${marginAttributes};
 `;
 
 export const HeaderNavigationTitleRoot = styled.div.withConfig(propsBlocker)<

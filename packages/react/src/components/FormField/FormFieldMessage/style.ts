@@ -22,20 +22,21 @@ const getRootDynamicStyle = ({
                   overflow-x: hidden;
                   text-overflow: ellipsis;
               `
-            : ''}
-        ${error ? FormFieldMessage.Root.error : ''}
+            : ''};
+        ${error ? FormFieldMessage.Root.error : ''};
     `;
 };
 
+/** 👉 ROOT ELEMENT */
 export const FormFieldMessageRoot = styled.div.withConfig(propsBlocker)<
     FormFieldMessageRootPropsType
 >`
     box-sizing: border-box;
     position: relative;
 
-    ${getRootBaseStyle}
-    ${getRootDynamicStyle}
-    ${marginAttributes}
+    ${getRootBaseStyle};
+    ${getRootDynamicStyle};
+    ${marginAttributes};
 `;
 
 export const FormFieldMessageFakeChildren = styled.div.withConfig(propsBlocker)`

@@ -1,17 +1,14 @@
-import { HTMLAttributes } from 'react';
-
-import { MarginAttributesType } from '../../../system';
 import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../../type';
+import { TooltipPropsType } from '../../Tooltip/type';
 
 type FormFieldTooltipEffectivePropsType = Partial<{
     visible: boolean;
     // add other custom properties here
 }> &
-    HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
-    MarginAttributesType;
+    TooltipPropsType;
 
 /* FormFieldTooltip component prop type */
 export type FormFieldTooltipPropsType = FormFieldTooltipEffectivePropsType &

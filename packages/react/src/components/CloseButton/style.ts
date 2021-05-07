@@ -8,9 +8,11 @@ import {
     spacing,
     propsBlocker,
     getComponentOverride,
+    marginAttributes,
 } from '../../system';
 import { CloseButtonRootPropsType } from './type';
 
+/** 👉 ROOT ELEMENT */
 export const CloseButtonRoot = styled.div.withConfig(propsBlocker)<
     CloseButtonRootPropsType
 >`
@@ -30,6 +32,7 @@ export const CloseButtonRoot = styled.div.withConfig(propsBlocker)<
         border-radius: ${borderRadius('pill')};
     }
     ${getComponentOverride('CloseButton')};
+    ${marginAttributes};
 `;
 
 export const CloseButtonIcon = styled(CancelIcon)`

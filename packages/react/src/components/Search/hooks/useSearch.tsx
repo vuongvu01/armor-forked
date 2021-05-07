@@ -10,10 +10,11 @@ import React, {
 import { initialCursor } from '../constants';
 import { SearchGroupObjectIndexType, SearchPropsType } from '../type';
 import { useDetectClickOutsideComponent, useInternalRef } from '../../../utils';
-import { ReferenceType } from '../../../type';
+import { ReferenceType, RefType } from '../../../type';
 import { useControlledState } from '../../../system/hooks/useControlledState';
+import { useRootRef } from '../../../system';
 
-export const useSearch = (
+export const useSearch = <E extends HTMLInputElement>(
     {
         defaultQuery = '',
         query,
@@ -40,7 +41,7 @@ export const useSearch = (
 
         ...restProps
     }: SearchPropsType,
-    ref: ReferenceType,
+    ref: RefType<E>,
 ) => {
     const [cursor, setCursor] = useState<number>(initialCursor);
     const [searchQuery, setSearchQuery] = useControlledState(
@@ -52,10 +53,8 @@ export const useSearch = (
         !!options,
     );
 
-    const internalInputRef = useRef<HTMLInputElement>(null);
+    const internalInputRef = useRootRef<E>(ref);
     const containerRef = useRef<HTMLDivElement>(null);
-
-    useInternalRef(ref, internalInputRef);
 
     useEffect(() => {
         setIsSuggestionsListShown(!!options);

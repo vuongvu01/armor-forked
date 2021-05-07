@@ -49,7 +49,7 @@ describe('<TableExpandableSection />', () => {
     });
 
     it('should support forwardRef', () => {
-        const { result } = renderHook(() => useRef());
+        const { result } = renderHook(() => useRef(null));
         render(<TableExpandableSection ref={result.current} />);
 
         expect(result.current.current).toBeInstanceOf(HTMLElement);

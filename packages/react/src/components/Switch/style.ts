@@ -2,7 +2,11 @@ import styled from 'styled-components';
 
 import { mouseCursor, pointerEvents } from '../../styling';
 import { transitionDurationInSec } from '../../constants';
-import { SwitchCheckboxInputPropsType, SwitchLabelPropsType } from './type';
+import {
+    SwitchCheckboxInputPropsType,
+    SwitchRootPropsType,
+    SwitchTogglePropsType,
+} from './type';
 import { getComponentOverride, propsBlocker } from '../../system';
 
 const sizes = {
@@ -20,13 +24,13 @@ const switchColor = ({
     theme: {
         componentOverrides: { Switch },
     },
-}: SwitchLabelPropsType) => Switch.Label.base;
+}: SwitchRootPropsType) => Switch.Label.base;
 
 const toggleDefault = ({
     theme: {
         componentOverrides: { Switch },
     },
-}: SwitchLabelPropsType) => Switch.Toggle.base;
+}: SwitchRootPropsType) => Switch.Toggle.base;
 
 const disabledToggle = ({
     theme: {
@@ -61,18 +65,19 @@ const disabledCheckedBackground = ({
     },
 }: SwitchCheckboxInputPropsType) => Switch.Label.disabled__checked;
 
+/** 👉 ROOT ELEMENT */
 export const SwitchRoot = styled.label.withConfig(propsBlocker)<
-    SwitchLabelPropsType
+    SwitchRootPropsType
 >`
     display: inline-flex;
     align-items: center;
 
     ${getComponentOverride('Switch')};
-    ${mouseCursor}
+    ${mouseCursor};
 `;
 
 export const SwitchToggle = styled.span.withConfig(propsBlocker)<
-    SwitchLabelPropsType
+    SwitchTogglePropsType
 >`
     position: relative;
     display: inline-flex;
@@ -91,12 +96,12 @@ export const SwitchToggle = styled.span.withConfig(propsBlocker)<
         border-radius: 9999px;
         transition: all ${transitionDurationInSec}s ease;
 
-        ${toggleDefault}
+        ${toggleDefault};
     }
 
-    ${pointerEvents}
-    ${switchColor}
-    ${mouseCursor}
+    ${pointerEvents};
+    ${switchColor};
+    ${mouseCursor};
 `;
 
 export const SwitchCheckboxInput = styled.input.withConfig(propsBlocker)<
@@ -110,11 +115,11 @@ export const SwitchCheckboxInput = styled.input.withConfig(propsBlocker)<
     position: absolute;
 
     &:checked + ${SwitchToggle} {
-        ${checkedBackground}
+        ${checkedBackground};
     }
 
     &:checked + ${SwitchToggle}:hover {
-        ${checkedHover}
+        ${checkedHover};
     }
 
     &:checked + ${SwitchToggle}:after {
@@ -123,14 +128,14 @@ export const SwitchCheckboxInput = styled.input.withConfig(propsBlocker)<
     }
 
     &:disabled + ${SwitchToggle} {
-        ${disabledBackground}
+        ${disabledBackground};
     }
 
     &:disabled:checked + ${SwitchToggle} {
-        ${disabledCheckedBackground}
+        ${disabledCheckedBackground};
     }
 
     &:disabled + ${SwitchToggle}:after {
-        ${disabledToggle}
+        ${disabledToggle};
     }
 `;

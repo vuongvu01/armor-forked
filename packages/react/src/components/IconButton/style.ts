@@ -35,7 +35,7 @@ const getRootStyle = ({ light, visible }: IconButtonRootPropsType) => {
     return result;
 };
 
-// if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
+/** 👉 ROOT ELEMENT */
 export const IconButtonRoot = styled.button.withConfig(propsBlocker)<
     IconButtonRootPropsType
 >`

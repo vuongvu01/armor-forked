@@ -1,7 +1,7 @@
 import { AnchorHTMLAttributes, HTMLAttributes, MouseEvent } from 'react';
 
-import { MarginAttributesType } from '../../system/attributes';
-import { Indexed, ScalarType } from '../../type';
+import { MarginAttributesType } from '../../system';
+import { ScalarType } from '../../type';
 import { ComponentElementStylePropsType } from '../type';
 
 export type TagTypeDefault = 'default';
@@ -35,16 +35,16 @@ export type ClassBasedOnComponentType = {
     small?: boolean;
 };
 
-type TagEffectivePropsType = Indexed<{
-    deleteOption?: TagDeleteIconModeType;
-    code?: ScalarType;
-    isActive?: boolean;
-    onClose?: (event: MouseEvent<HTMLDivElement>) => void;
-    onDeselect?: (tagCode?: ScalarType) => void;
-    type?: TagType;
-    disabled?: boolean;
-    label?: string;
-    small?: boolean;
+type TagEffectivePropsType = Partial<{
+    deleteOption: TagDeleteIconModeType;
+    code: ScalarType;
+    isActive: boolean;
+    onClose: (event: MouseEvent<HTMLDivElement>) => void;
+    onDeselect: (tagCode?: ScalarType) => void;
+    type: TagType;
+    disabled: boolean;
+    label: string;
+    small: boolean;
 }> &
     HTMLAttributes<HTMLElement> &
     Pick<AnchorHTMLAttributes<HTMLAnchorElement>, 'target' | 'href' | 'rel'> &
@@ -57,17 +57,17 @@ export type TagRootPropsType = TagEffectivePropsType &
 
 export type TagCloseIconContainerPropsType = Pick<
     TagEffectivePropsType,
-    | 'className'
-    | 'deleteOption'
-    | 'onClick'
-    | 'tabIndex'
-    | 'theme'
-    | 'type'
-    | 'disabled'
-    | 'small'
+    'deleteOption' | 'onClick' | 'tabIndex' | 'type' | 'disabled' | 'small'
+> &
+    ComponentElementStylePropsType;
+
+export type TagCloseIconPropsType = Pick<
+    ComponentElementStylePropsType,
+    'theme'
 >;
-export type TagCloseIconPropsType = Pick<TagEffectivePropsType, 'theme'>;
-export type TagTypographyPropsType = Indexed<{
-    smallVerticalPadding?: boolean;
+
+export type TagTypographyPropsType = Partial<{
+    smallVerticalPadding: boolean;
 }> &
-    Pick<TagEffectivePropsType, 'deleteOption' | 'theme' | 'small'>;
+    Pick<TagEffectivePropsType, 'deleteOption'> &
+    Pick<ComponentElementStylePropsType, 'theme'>;

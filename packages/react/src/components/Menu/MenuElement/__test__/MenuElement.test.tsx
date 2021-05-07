@@ -48,7 +48,7 @@ describe('<MenuElement />', () => {
     });
 
     it('should support forwardRef', () => {
-        const { result } = renderHook(() => useRef());
+        const { result } = renderHook(() => useRef(null));
         render(<MenuElement ref={result.current} />);
 
         expect(result.current.current).toBeInstanceOf(HTMLElement);

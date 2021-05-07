@@ -3,3 +3,4 @@
  */
 
 export * from './TableControllerCell';
+export type { TableControllerCellPropsType } from './type';

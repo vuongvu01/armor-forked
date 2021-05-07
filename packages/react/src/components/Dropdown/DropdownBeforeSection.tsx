@@ -1,4 +1,4 @@
-import React, { forwardRef, FunctionComponent } from 'react';
+import React, { forwardRef } from 'react';
 import { CancelIcon } from '@deliveryhero/armor-icons';
 import {
     DropdownBeforeSectionActionContainer,

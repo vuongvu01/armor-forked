@@ -11,13 +11,14 @@ const itemLinksStyle = ({
     return HeaderNavigationLinks.NavigationItem.base;
 };
 
+/** 👉 ROOT ELEMENT */
 export const HeaderNavigationLinksRoot = styled(HeaderNavigationItem)<
     HeaderNavigationLinksRootPropsType
 >`
     padding-top: 0;
     padding-bottom: 0;
 
-    ${itemLinksStyle}
+    ${itemLinksStyle};
 `;
 
 export const HeaderNavigationLinksContainer = styled.div.withConfig(

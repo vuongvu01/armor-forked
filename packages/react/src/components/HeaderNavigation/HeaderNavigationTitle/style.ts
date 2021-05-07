@@ -11,6 +11,7 @@ const HeaderNavigationTitleRootWrapper = ({
     children: (props: HeaderNavigationTitleRootPropsType) => ReactElement;
 }) => children({ ...restProps });
 
+/** 👉 ROOT ELEMENT */
 export const HeaderNavigationTitleRoot = styled(
     HeaderNavigationTitleRootWrapper,
 )<HeaderNavigationTitleRootPropsType>`
@@ -18,12 +19,10 @@ export const HeaderNavigationTitleRoot = styled(
     text-decoration: none;
     padding: 0;
     font-weight: ${fontWeightMedium};
-    cursor: pointer;
     border: none;
     box-sizing: border-box;
     display: inline-flex;
 
-    text-decoration: none;
     &:hover,
     &:visited,
     &:active,

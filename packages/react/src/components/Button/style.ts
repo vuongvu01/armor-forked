@@ -76,6 +76,7 @@ const Wrapper = ({
     children: (props: ButtonRootPropsType) => ReactElement;
 }) => children({ ...restProps });
 
+/** 👉 ROOT ELEMENT */
 export const ButtonRoot = styled(Wrapper).withConfig(propsBlocker)<
     ButtonRootPropsType
 >`

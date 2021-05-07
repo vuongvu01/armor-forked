@@ -42,6 +42,7 @@ const sizeStyle = ({ small, theme }: TooltipRootPropsType) => {
     return '';
 };
 
+/** 👉 ROOT ELEMENT */
 export const TooltipRoot = styled.div.withConfig(propsBlocker)<
     TooltipRootPropsType
 >`
@@ -60,7 +61,7 @@ export const TooltipRoot = styled.div.withConfig(propsBlocker)<
     ${getRootStyle};
     ${sizeStyle};
     ${getComponentOverride('Tooltip')};
-    ${widthAttributes}
+    ${widthAttributes};
 `;
 
 export const TooltipArrow = styled.div.withConfig(propsBlocker)<

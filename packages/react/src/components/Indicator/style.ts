@@ -21,6 +21,6 @@ export const IndicatorRoot = styled.div.withConfig(propsBlocker)<
         content: '!';
     }
 
-    ${getRootBaseStyle}
-    ${marginAttributes}
+    ${getRootBaseStyle};
+    ${marginAttributes};
 `;

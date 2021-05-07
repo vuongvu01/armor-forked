@@ -75,7 +75,6 @@ export type FlexEffectivePropsType = Partial<{
 }> &
     HTMLAttributes<HTMLElement> &
     SizeAttributesType &
-    WidthAttributesType &
     MarginAttributesType;
 
 type FlexItemEffectivePropsType = Partial<{
@@ -86,6 +85,7 @@ type FlexItemEffectivePropsType = Partial<{
     alignSelf: AlignSelfType;
 }> &
     HTMLAttributes<HTMLElement> &
+    WidthAttributesType &
     PaddingAttributesType;
 
 export type FlexPropsType = FlexEffectivePropsType;

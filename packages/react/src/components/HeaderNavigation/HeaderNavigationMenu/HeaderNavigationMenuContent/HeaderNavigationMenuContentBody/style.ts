@@ -21,8 +21,9 @@ const contentBodyOptionsRootStyle = ({
     return HeaderNavigationMenuContent.BodyOptionsRoot.base;
 };
 
+/** 👉 ROOT ELEMENT */
 export const HeaderNavigationMenuContentBodyOptionsRoot = styled(Stack)<
     HeaderNavigationMenuContentBodyOptionsRootPropsType
 >`
-    ${contentBodyOptionsRootStyle}
+    ${contentBodyOptionsRootStyle};
 `;

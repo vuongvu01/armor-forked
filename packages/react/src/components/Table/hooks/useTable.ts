@@ -5,15 +5,15 @@ import { useInternalRef } from '../../../utils';
 import { TableHookPropsType } from './type';
 import { TableContextValueType } from '../utils/type';
 import { TableStickyColumnMapInternalItem } from '../type';
-import { ArrayLikeType } from '../../../type';
+import { ArrayLikeType, RefType } from '../../../type';
 import { LEFT, RIGHT } from '../../../constants';
 import { getWindow } from '../../../system/util/globals';
+import { useRootRef } from '../../../system';
 
-export const useTable = ({
-    stickyColumns,
-    stickyHead,
-    ref,
-}: TableHookPropsType) => {
+export const useTable = <E extends HTMLTableElement>(
+    { stickyColumns, stickyHead }: TableHookPropsType,
+    ref: RefType<E>,
+) => {
     // sticky columns and header
     const stickyColumnsInternal = useMemo<
         ArrayLikeType<TableStickyColumnMapInternalItem>
@@ -73,9 +73,7 @@ export const useTable = ({
         update: data => setTableContextValue(data),
     });
 
-    const rootReference = useRef<HTMLTableElement>();
-
-    useInternalRef(ref, rootReference);
+    const rootReference = useRootRef<E>(ref);
 
     const onLayoutUpdateImmediate = useCallback(() => {
         if (!stickyColumns || !stickyColumns.length) {

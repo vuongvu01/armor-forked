@@ -1,6 +1,4 @@
-import React from 'react';
 import { MenuElementPropsType } from '../type';
-import { MenuElementExpansionHandle } from '../style';
 
 export const useMenuElement = ({
     enableExpansionHandle,
@@ -14,7 +12,7 @@ export const useMenuElement = ({
     selected,
     ...restProps
 }: MenuElementPropsType) => {
-    const ariaExpanded = expanded ? 'true' : 'false';
+    // const ariaExpanded = expanded ? 'true' : 'false';
     const dataExpanded = expanded ? '1' : '0';
     const dataSelected = selected ? '1' : '0';
 
@@ -29,7 +27,7 @@ export const useMenuElement = ({
             expanded,
             selected,
             small,
-            'aria-expanded': ariaExpanded,
+            // 'aria-expanded': ariaExpanded,
             'data-expanded': dataExpanded,
             'data-selected': dataSelected,
         },

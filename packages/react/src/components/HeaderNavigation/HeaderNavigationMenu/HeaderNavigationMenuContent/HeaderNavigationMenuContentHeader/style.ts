@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
-import { HeaderNavigationMenuContentHeaderRootPropsType } from './type';
+import {
+    HeaderNavigationMenuContentHeaderRootPropsType,
+    HeaderNavigationMenuContentHeaderTitlePropsType,
+} from './type';
 import { Typography } from '../../../../Typography';
 import {
     color,
@@ -9,6 +12,7 @@ import {
     getComponentOverride,
 } from '../../../../../system';
 
+/** 👉 ROOT ELEMENT */
 export const HeaderNavigationMenuContentHeaderRoot = styled.div.withConfig(
     propsBlocker,
 )<HeaderNavigationMenuContentHeaderRootPropsType>`
@@ -43,14 +47,14 @@ const contentHeaderTitleStyle = ({
     theme: {
         componentOverrides: { HeaderNavigationMenuContentHeader },
     },
-}: HeaderNavigationMenuContentHeaderRootPropsType) => {
+}: HeaderNavigationMenuContentHeaderTitlePropsType) => {
     return HeaderNavigationMenuContentHeader.Title.base;
 };
 
 export const MenuContentHeaderTitle = styled(Typography)<
-    HeaderNavigationMenuContentHeaderRootPropsType
+    HeaderNavigationMenuContentHeaderTitlePropsType
 >`
-    ${contentHeaderTitleStyle}
+    ${contentHeaderTitleStyle};
 `;
 
 const contentHeaderLabelStyle = ({

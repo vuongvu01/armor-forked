@@ -1,3 +1,2 @@
-import SelectorLabel from './SelectorLabel';
-
-export default SelectorLabel;
+export * from './SelectorLabel';
+export type { SelectorLabelPropsType } from './type';

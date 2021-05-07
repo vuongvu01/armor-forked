@@ -114,6 +114,7 @@ const flexItemStyle = ({
     return result;
 };
 
+/** 👉 ROOT ELEMENT */
 export const FlexRoot = styled.div.withConfig(propsBlocker)<FlexRootPropsType>`
     display: flex;
 
@@ -122,6 +123,7 @@ export const FlexRoot = styled.div.withConfig(propsBlocker)<FlexRootPropsType>`
     ${marginAttributes}
 `;
 
+/** 👉 ROOT ELEMENT */
 export const FlexItemRoot = styled.div.withConfig(propsBlocker)<
     FlexItemPropsType
 >`

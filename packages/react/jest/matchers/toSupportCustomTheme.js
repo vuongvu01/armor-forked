@@ -5,8 +5,11 @@ const renderer = require('react-test-renderer');
 const { makeTheme } = require('../../src/styling/theme/makeTheme');
 
 expect.extend({
-    toSupportCustomTheme(Element, componentName) {
+    toSupportCustomTheme(Element, componentName, extractNode = null) {
         let tree = renderer.create(Element).toJSON();
+        if (extractNode) {
+            tree = extractNode(tree);
+        }
 
         // @ts-ignore
         expect(tree).not.toHaveStyleRule('border-width', '2px');
@@ -32,6 +35,9 @@ expect.extend({
                 ),
             )
             .toJSON();
+        if (extractNode) {
+            tree = extractNode(tree);
+        }
 
         // @ts-ignore
         expect(tree).toHaveStyleRule('border-width', '2px');

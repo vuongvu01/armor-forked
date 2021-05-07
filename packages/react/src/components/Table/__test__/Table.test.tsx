@@ -1,9 +1,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
-import React, { ReactElement, useRef } from 'react';
+import React, { useRef } from 'react';
 import { ThemeProvider } from 'styled-components';
 
-import { cleanup, render, fireEvent, prettyDOM } from '@testing-library/react';
+import { cleanup, render } from '@testing-library/react';
 import {
     renderHook,
     cleanup as cleanupHooks,
@@ -11,15 +11,7 @@ import {
 import renderer from 'react-test-renderer';
 
 import { customTheme } from './helpers';
-import {
-    Table,
-    TableHead,
-    TableHeadCell,
-    TableCell,
-    TableRow,
-    TableBody,
-} from '../..';
-import { ObjectLiteralType, ScalarType } from '../../../type';
+import { Table } from '../..';
 
 describe('<Table />', () => {
     afterEach(async () => {
@@ -41,7 +33,7 @@ describe('<Table />', () => {
     });
 
     it('should support forwardRef', () => {
-        const { result } = renderHook(() => useRef());
+        const { result } = renderHook(() => useRef(null));
         render(<Table ref={result.current} />);
 
         expect(result.current.current).toBeInstanceOf(HTMLElement);
@@ -69,49 +61,4 @@ describe('<Table />', () => {
         // @ts-ignore
         expect(Table).toSupportMarginAttributes();
     });
-
-    const getTable = (
-        rowIds: ScalarType[],
-        selectedRowIds?: ScalarType[],
-        setSelectedRowIds?: () => void,
-        otherProps?: ObjectLiteralType,
-        header?: ReactElement,
-    ) => {
-        return (
-            <Table
-                rowIds={rowIds}
-                selectedRowIds={selectedRowIds}
-                onRowSelectionChange={setSelectedRowIds}
-                {...otherProps}
-            >
-                <TableHead>
-                    {!!header && header}
-                    {!header && (
-                        <TableRow>
-                            <TableCell>Food Companies</TableCell>
-                            <TableCell>Scheme ID</TableCell>
-                            <TableCell>City</TableCell>
-                        </TableRow>
-                    )}
-                </TableHead>
-                <TableBody>
-                    <TableRow rowId="a">
-                        <TableCell>Kitchen Garden POS</TableCell>
-                        <TableCell>Scheme B</TableCell>
-                        <TableCell>Kano</TableCell>
-                    </TableRow>
-                    <TableRow rowId="b">
-                        <TableCell>KFC HK</TableCell>
-                        <TableCell>Scheme F</TableCell>
-                        <TableCell>Gothenburg</TableCell>
-                    </TableRow>
-                    <TableRow rowId="c">
-                        <TableCell>Foodstory</TableCell>
-                        <TableCell>Scheme E</TableCell>
-                        <TableCell>Xian</TableCell>
-                    </TableRow>
-                </TableBody>
-            </Table>
-        );
-    };
 });

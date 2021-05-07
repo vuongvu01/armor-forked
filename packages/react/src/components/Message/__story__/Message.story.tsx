@@ -30,7 +30,7 @@ export const AllStates = () => (
 export const Basic = () => (
     <Message
         disableCloseButton={false}
-        actions={<MessageAction useMessageColor>See details</MessageAction>}
+        actions={<MessageAction>See details</MessageAction>}
         extra={<Rick />}
         level="error"
         disableIcon

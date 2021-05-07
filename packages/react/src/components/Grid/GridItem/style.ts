@@ -88,6 +88,7 @@ const gridItemRootStyle = ({
     return result;
 };
 
+/** 👉 ROOT ELEMENT */
 export const GridItemRoot = styled.div.withConfig(propsBlocker)<
     GridItemPropsType
 >`

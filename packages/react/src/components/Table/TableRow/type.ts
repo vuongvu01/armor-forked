@@ -3,13 +3,12 @@ import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../../type';
-import { Indexed } from '../../../type';
-import { UseTableRowType } from './utils/type';
-import { HeightAttributesType } from '../../../system/attributes';
+import { UseTableRowType } from './hooks/type';
+import { HeightAttributesType } from '../../../system';
 
-type TableRowEffectivePropsType = Indexed<{
-    enableStickyTop?: boolean;
-    enableStickyColumns?: boolean;
+type TableRowEffectivePropsType = Partial<{
+    enableStickyTop: boolean;
+    enableStickyColumns: boolean;
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLTableRowElement> & // includes all HTML Tr attributes

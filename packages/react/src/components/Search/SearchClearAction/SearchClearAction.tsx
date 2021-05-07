@@ -6,9 +6,9 @@ import {
     searchInputClearIcon,
 } from './constants';
 import { useComponentTheme } from '../../../utils/hooks';
-import { useSearchClearActionClassName } from './utils';
+import { useSearchClearActionClassName } from './hooks';
 import { SearchClearActionPropsType } from './type';
-import { ClearIconContainer, SearchInputClearIcon } from './style';
+import { ClearIconRoot, SearchInputClearIcon } from './style';
 import { searchClearActionTheme } from './theme';
 
 export const SearchClearAction: FunctionComponent<SearchClearActionPropsType> = ({
@@ -30,7 +30,7 @@ export const SearchClearAction: FunctionComponent<SearchClearActionPropsType> = 
     );
 
     return disableClearAction ? null : (
-        <ClearIconContainer
+        <ClearIconRoot
             className={classOverride.AfterIconContainer}
             onClick={handleClearQuery}
             theme={theme}
@@ -42,7 +42,7 @@ export const SearchClearAction: FunctionComponent<SearchClearActionPropsType> = 
                 searchQuery={searchQuery}
                 theme={theme}
             />
-        </ClearIconContainer>
+        </ClearIconRoot>
     );
 };
 

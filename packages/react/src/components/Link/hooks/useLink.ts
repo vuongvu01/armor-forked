@@ -1,24 +1,16 @@
 import { LinkPropsType } from '../type';
-import { ReferenceType } from '../../../type';
+import { RefType } from '../../../type';
 
-export const useLink = (
-    {
-        tag: Tag = 'a',
-        to,
-        href,
-        target,
-        rel,
-        children,
-        ...restProps
-    }: LinkPropsType,
-    ref: ReferenceType,
+export const useLink = <E extends HTMLAnchorElement>(
+    { tag: Tag = 'a', children, ...restProps }: LinkPropsType,
+    ref: RefType<E>,
 ) => {
     // put all your component logic here
 
     return {
-        rootProps: { ...restProps, ref },
+        rootProps: restProps,
         Tag,
-        tagProps: { to, href, target, rel, ref },
+        tagProps: { ref },
         children,
     };
 };
