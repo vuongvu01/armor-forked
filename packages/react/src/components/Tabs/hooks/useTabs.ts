@@ -26,7 +26,7 @@ export const useTabs = <E extends HTMLDivElement>(
     ref: RefType<E>,
 ) => {
     const [currentlyActiveTab, setCurrentlyActiveTab] = useControlledState<
-        number | undefined
+        number
     >(
         defaultActiveTabIndex !== undefined
             ? defaultActiveTabIndex
@@ -46,12 +46,12 @@ export const useTabs = <E extends HTMLDivElement>(
     const handleClick = useCallback(
         (
             event: React.MouseEvent<HTMLInputElement, MouseEvent>,
-            tabIndex?: number,
+            tabIndex: number,
             contentValue?: number,
         ) => {
             setCurrentlyActiveTab(tabIndex);
 
-            if (onSwitch) {
+            if (onSwitch && contentValue !== undefined) {
                 onSwitch(contentValue);
             }
         },

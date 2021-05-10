@@ -21,13 +21,13 @@ type TabsEffectivePropsType = Partial<{
 
     activeTabIndex: number;
     defaultActiveTabIndex: number;
-    onActiveTabIndexChange: (tabIndex?: number) => void;
+    onActiveTabIndexChange: (tabIndex: number) => void;
 
     removePaddingLeft: boolean;
     removePaddingRight: boolean;
 
     // deprecated
-    onSwitch: (tabIndex?: number) => void;
+    onSwitch: (tabIndex: number) => void;
     defaultActiveTab: number;
 }> &
     HTMLAttributes<HTMLElement> &
