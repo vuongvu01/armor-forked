@@ -138,3 +138,35 @@ export const DefaultOpen = () => {
         </Box>
     );
 };
+
+export const ElementSelect = () => {
+    const menuElements = [
+        {
+            id: 'edit',
+            label: 'Edit',
+        },
+        {
+            id: 'delete',
+            label: 'Delete',
+        },
+    ];
+
+    return (
+        <Box paddingTop={50} paddingLeft={50}>
+            <ContextMenu
+                trigger={
+                    <IconButton>
+                        <EllipsisVerticalIcon large />
+                    </IconButton>
+                }
+                align="bottom-end"
+                menuElements={menuElements}
+                width={30}
+                onMenuElementSelect={(id, element, extras) => {
+                    console.log(element);
+                    extras.closeMenu();
+                }}
+            />
+        </Box>
+    );
+};

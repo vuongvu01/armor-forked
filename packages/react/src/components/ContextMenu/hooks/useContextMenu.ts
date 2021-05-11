@@ -1,4 +1,4 @@
-import React, { useMemo, useRef } from 'react';
+import React, { useMemo, useRef, MouseEvent } from 'react';
 import { ContextMenuElements, ContextMenuPropsType } from '../type';
 import { useEventProxy } from './useEventProxy';
 import { RefType } from '../../../type';
@@ -17,6 +17,7 @@ export const useContextMenu = <E extends HTMLDivElement>(
         children,
         menuElements,
         trigger,
+        onMenuElementSelect,
 
         open,
         defaultOpen,
@@ -69,6 +70,34 @@ export const useContextMenu = <E extends HTMLDivElement>(
     const displayChildren = !!children;
     const displayMenuElements = !displayChildren && !!menuElements;
 
+    const smartMenuElements = useMemo(() => {
+        if (!menuElements || !onMenuElementSelect) {
+            return menuElements;
+        }
+
+        return menuElements.map(element => {
+            return {
+                ...element,
+                props: {
+                    ...element.props,
+                    onClick: (event: MouseEvent<HTMLDivElement>) => {
+                        if (element.props && element.props.onClick) {
+                            element.props.onClick(event);
+                        }
+
+                        if (event.isPropagationStopped()) {
+                            return;
+                        }
+
+                        onMenuElementSelect(element.id, element, {
+                            closeMenu: setClose,
+                        });
+                    },
+                },
+            };
+        });
+    }, [menuElements, onMenuElementSelect, setClose]);
+
     return {
         portalProps: {
             enablePortal,
@@ -85,7 +114,7 @@ export const useContextMenu = <E extends HTMLDivElement>(
         open: reallyOpen,
         displayChildren,
         displayMenuElements,
-        menuElements: menuElements || emptyMenuElements,
+        menuElements: smartMenuElements || emptyMenuElements,
         children,
     };
 };
