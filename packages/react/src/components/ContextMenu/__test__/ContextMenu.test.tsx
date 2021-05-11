@@ -10,15 +10,17 @@
 import React, { useRef } from 'react';
 import { ThemeProvider } from 'styled-components';
 
-import { cleanup, render } from '@testing-library/react';
+import { cleanup, fireEvent, render } from '@testing-library/react';
 import {
     renderHook,
     cleanup as cleanupHooks,
 } from '@testing-library/react-hooks';
 import renderer from 'react-test-renderer';
 
+import { EllipsisVerticalIcon } from '@deliveryhero/armor-icons';
 import { customTheme } from './helpers';
 import { ContextMenu } from '..';
+import { IconButton } from '../../IconButton';
 
 describe('<ContextMenu />', () => {
     afterEach(async () => {
@@ -83,5 +85,50 @@ describe('<ContextMenu />', () => {
     it.skip('should support height attributes', async () => {
         // @ts-ignore
         expect(ContextMenu).toSupportHeightAttributes();
+    });
+
+    it('should support onMenuElementSelect', async () => {
+        const onMenuElementSelect = jest.fn();
+
+        const menuElements = [
+            {
+                id: 'edit',
+                label: 'Edit',
+            },
+            {
+                id: 'delete',
+                label: 'Delete',
+            },
+        ];
+
+        const { container } = render(
+            <ContextMenu
+                trigger={
+                    <IconButton>
+                        <EllipsisVerticalIcon large />
+                    </IconButton>
+                }
+                defaultOpen
+                menuElements={menuElements}
+                onMenuElementSelect={onMenuElementSelect}
+                enablePortal={false}
+            />,
+        );
+
+        const element = container.querySelector('.MenuElement-Root');
+        expect(element).toBeInTheDOM();
+
+        fireEvent.click(element!);
+
+        expect(onMenuElementSelect).toBeCalled();
+        const args = onMenuElementSelect.mock.calls[0];
+        expect(args[0]).toEqual('edit');
+        expect(args[1]).toMatchObject({ id: 'edit', label: 'Edit' });
+        expect(args[2].closeMenu).toBeInstanceOf(Function);
+
+        args[2].closeMenu();
+
+        const newElement = container.querySelector('.MenuElement-Root');
+        expect(newElement).not.toBeInTheDOM();
     });
 });

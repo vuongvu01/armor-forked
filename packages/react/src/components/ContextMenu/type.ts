@@ -9,15 +9,26 @@ import { ComponentBehaviourOpenStateType } from '../../system/types/ComponentBeh
 import { ComponentBehaviourOverlayType } from '../../system/types/ComponentBehaviourOverlayType';
 import { ComponentBehaviourPortalType } from '../../system/types/ComponentBehaviourPortalType';
 
-export type ContextMenuElements = Array<{
+type ContextMenuElement = {
     label: ReactChild;
     id: ScalarType;
     props?: HTMLAttributes<HTMLElement>;
-}>;
+};
+
+type ContextMenuExtras = {
+    closeMenu: () => void;
+};
+
+export type ContextMenuElements = Array<ContextMenuElement>;
 
 type ContextMenuEffectivePropsType = Partial<{
     trigger: ReactElement;
     menuElements: ContextMenuElements;
+    onMenuElementSelect: (
+        elementId: ScalarType,
+        element: ContextMenuElement,
+        extras: ContextMenuExtras,
+    ) => void;
 
     /**
      * @deprecated
