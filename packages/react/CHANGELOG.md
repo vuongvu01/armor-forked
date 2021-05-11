@@ -1,3 +1,10 @@
+# @deliveryhero/armor [1.48.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.47.1...@deliveryhero/armor@1.48.0) (2021-05-11)
+
+
+### Features
+
+* **contextmenu:** Property onMenuElementSelect implemented in ContextMenu ([#547](https://github.com/deliveryhero/armor/issues/547)) ([eea2def](https://github.com/deliveryhero/armor/commit/eea2def2b50396b6d4fef213e54f1eb51550d716))
+
 ## @deliveryhero/armor [1.47.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.47.0...@deliveryhero/armor@1.47.1) (2021-05-11)
 
 
