@@ -1,5 +1,5 @@
 export type TextAlignmentAttributesType = {
-    textAlign?: 'left' | 'middle' | 'right';
+    textAlign?: 'left' | 'center' | 'right' | 'justify' | 'inherit';
 };
 
 export const textAlignmentAttributesList = {

@@ -29,7 +29,7 @@ export const useTab = <E extends HTMLDivElement>(
 
     const handleSelect = useCallback(
         (event: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
-            if (!disabled && handleClick) {
+            if (!disabled && handleClick && tabIndex !== undefined) {
                 handleClick(event, tabIndex, matchingContentViewValue);
             }
 

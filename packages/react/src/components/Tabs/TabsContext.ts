@@ -5,7 +5,7 @@ type TabsContextType = {
     wide?: boolean;
     handleClick?: (
         event: React.MouseEvent<HTMLInputElement, MouseEvent>,
-        tabIndex?: number,
+        tabIndex: number,
         contentValue?: number,
     ) => void;
 };

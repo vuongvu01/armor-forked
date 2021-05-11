@@ -43,7 +43,7 @@ type TagEffectivePropsType = Partial<{
     onDeselect: (tagCode?: ScalarType) => void;
     type: TagType;
     disabled: boolean;
-    label: string;
+    label: ScalarType;
     small: boolean;
 }> &
     HTMLAttributes<HTMLElement> &
