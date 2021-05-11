@@ -1,3 +1,10 @@
+## @deliveryhero/armor [1.47.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.47.0...@deliveryhero/armor@1.47.1) (2021-05-11)
+
+
+### Bug Fixes
+
+* **types:** TS typing fixes for components Tab, Typography ([#544](https://github.com/deliveryhero/armor/issues/544)) ([2b8265a](https://github.com/deliveryhero/armor/commit/2b8265afebc88752bcb5e218648508d3878eb6e2))
+
 # @deliveryhero/armor [1.47.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.46.1...@deliveryhero/armor@1.47.0) (2021-05-07)
 
 ## @deliveryhero/armor [1.46.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.46.0...@deliveryhero/armor@1.46.1) (2021-05-05)
