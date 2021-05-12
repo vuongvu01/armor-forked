@@ -43,6 +43,10 @@ export const DropdownBeforeSection = forwardRef<
         disabled,
     );
 
+    if (!isBeforeSectionRendered) {
+        return null;
+    }
+
     const renderTags = () => {
         if (internalOpenTagsCount > 0) {
             const remainingItemsCount =
@@ -91,7 +95,7 @@ export const DropdownBeforeSection = forwardRef<
         );
     };
 
-    return isBeforeSectionRendered ? (
+    return (
         <DropdownBeforeSectionRoot
             {...rootProps}
             theme={theme}
@@ -126,5 +130,5 @@ export const DropdownBeforeSection = forwardRef<
                 ) : null}
             </DropdownBeforeSectionActionContainer>
         </DropdownBeforeSectionRoot>
-    ) : null;
+    );
 });

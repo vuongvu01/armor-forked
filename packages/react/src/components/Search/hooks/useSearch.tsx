@@ -9,9 +9,9 @@ import React, {
 
 import { initialCursor } from '../constants';
 import { SearchGroupObjectIndexType, SearchPropsType } from '../type';
-import { useDetectClickOutsideComponent, useInternalRef } from '../../../utils';
-import { ReferenceType, RefType } from '../../../type';
-import { useControlledState } from '../../../system/hooks/useControlledState';
+import { useDetectClickOutsideComponent } from '../../../utils';
+import { RefType } from '../../../type';
+import { useControlledState } from '../../../system';
 import { useRootRef } from '../../../system';
 
 export const useSearch = <E extends HTMLInputElement>(

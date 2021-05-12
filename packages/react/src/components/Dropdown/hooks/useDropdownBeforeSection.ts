@@ -133,16 +133,23 @@ export const useDropdownBeforeSection = <E extends HTMLDivElement>(
             disabled,
             onClick: handleRemoveAllTags,
         },
-        getDropdownTagProps: (option: OptionObjectType) => ({
-            deleteOption: 'enabled',
-            disabled,
-            label: stringEllipsisAtMaxCharacters(
-                option.label.toString(),
-                tagLabelMaxLength,
-            ),
-            onClose: handleRemoveTag(option),
-            key: option.value,
-        }),
+        getDropdownTagProps: (option: OptionObjectType) => {
+            let { label } = option;
+            if (typeof label === 'string' || typeof label === 'number') {
+                label = stringEllipsisAtMaxCharacters(
+                    option.label.toString(),
+                    tagLabelMaxLength,
+                );
+            }
+
+            return {
+                deleteOption: 'enabled',
+                disabled,
+                label,
+                onClose: handleRemoveTag(option),
+                key: option.value,
+            };
+        },
         getDropdownRemainingTagsProps: (
             remainingItemsCount: number,
             tagsValues: DropdownInternalValueType,

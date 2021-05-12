@@ -14,7 +14,6 @@ export { default as generateId } from './generateId';
 export { default as getElementName } from './getElementName';
 export { default as useDetectClickOutsideComponent } from './useDetectClickOutsideComponent';
 export * from './useDetectEscapeKeyPressed';
-export * from './useInternalRef';
 export * from './dropdown';
 export * from './noop';
 export * from './stringEllipsisAtMaxCharacters';

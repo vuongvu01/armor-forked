@@ -1,4 +1,4 @@
-import { InputHTMLAttributes } from 'react';
+import { InputHTMLAttributes, ReactChild } from 'react';
 
 import { MarginAttributesType, WidthAttributesType } from '../../system';
 import {
@@ -60,11 +60,6 @@ export type DropdownOnChangeEventType = PseudoEventType<DropdownValueType>;
 export type DropdownOnChangeType = (event: DropdownOnChangeEventType) => void;
 export type OptionFormatType = (option: OptionItemType) => string;
 
-export type DropdownOnRenderSelectedValueType = (
-    value: DropdownInternalValueType,
-    options: DropdownInternalOptionType,
-) => string;
-
 export type DropdownBeforeSectionPropsType = {
     internalValue: DropdownInternalValueType;
     internalOptions: DropdownInternalOptionType;
@@ -94,13 +89,9 @@ export type DropdownTagsPropsType = {
 
 export type DropdownGroupObjectType = DictionaryItemIDBased & ObjectLiteralType;
 
+/** 👉 PROPS TYPE */
 export type DropdownEffectivePropsType = Partial<{
     error: boolean;
-    /**
-     * @deprecated
-     * inline by default
-     */
-    inline: boolean;
     displaySeparator: boolean;
     isListExpanded: boolean;
     isSelected: boolean;
@@ -126,7 +117,7 @@ export type DropdownEffectivePropsType = Partial<{
         | string
         | ReadonlyArray<string>
         | ReadonlyArray<number>
-        | number; // aka OptionType - defining explicitly to expose into docs
+        | number;
     onChange: (event: DropdownOnChangeEventType) => void;
     onRenderSelectedValue: (
         value: DropdownInternalValueType,
@@ -138,6 +129,12 @@ export type DropdownEffectivePropsType = Partial<{
     isOptionListShown: boolean;
 
     'data-testid-input': string;
+
+    /**
+     * @deprecated
+     * inline by default
+     */
+    inline: boolean;
 }> &
     ComponentBehaviourOpenStateType &
     ComponentBehaviourPortalType &
