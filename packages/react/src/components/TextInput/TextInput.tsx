@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { useComponentTheme } from '../../utils/hooks';
 
-import { useTextInputClassNames } from './utils/useTextInputClassNames';
+import { useTextInputClassNames } from './hooks/useTextInputClassNames';
 import {
     TextInputInnerContainer,
     TextInputInput,
@@ -19,7 +19,7 @@ import {
     textInputLabelBackground,
     textInputRoot,
 } from './constants';
-import { useTextInput } from './utils/useTextInput';
+import { useTextInput } from './hooks/useTextInput';
 
 export const TextInput = forwardRef<HTMLInputElement, TextInputPropsType>(
     function TextInput({ className, ...restProps }, ref) {

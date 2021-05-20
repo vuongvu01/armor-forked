@@ -168,3 +168,7 @@ const MarginedCheckbox = styled(Checkbox)`
 export const CustomCheckbox = () => {
     return <MarginedCheckbox />;
 };
+
+export const NameForwarding = () => {
+    return <Checkbox name="testname" />;
+};
