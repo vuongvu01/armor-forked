@@ -11,8 +11,7 @@ import { initialCursor } from '../constants';
 import { SearchGroupObjectIndexType, SearchPropsType } from '../type';
 import { useDetectClickOutsideComponent } from '../../../utils';
 import { RefType } from '../../../type';
-import { useControlledState } from '../../../system';
-import { useRootRef } from '../../../system';
+import { useControlledState, useRootRef } from '../../../system';
 
 export const useSearch = <E extends HTMLInputElement>(
     {

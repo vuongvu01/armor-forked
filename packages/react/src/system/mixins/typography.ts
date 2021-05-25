@@ -11,6 +11,7 @@ export const typography = (style: string) => ({
             if (variant) {
                 return {
                     ...variant,
+                    fontFamily: `${variant.fontFamily},sans-serif`,
                     fontSize: currentTheme.typography.pixelToRem(
                         variant.fontSize,
                     ),

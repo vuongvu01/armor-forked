@@ -1,4 +1,4 @@
-import { HTMLAttributes, ReactNode } from 'react';
+import { ComponentType, HTMLAttributes, ReactChild, ReactNode } from 'react';
 
 import { MarginAttributesType } from '../../system';
 import {
@@ -8,6 +8,7 @@ import {
 
 export type MessageLevelType = 'error' | 'warning' | 'info' | 'success';
 
+/** 👉 PROPS TYPE */
 type MessageEffectivePropsType = Partial<{
     onClose: () => void;
     disableCloseButton: boolean;
@@ -19,6 +20,8 @@ type MessageEffectivePropsType = Partial<{
     warning: boolean;
     info: boolean;
     success: boolean;
+    iconTag: ComponentType<unknown>;
+    icon: ReactChild; // todo: future-reserved, to be able to pass the icon instance, not just a tag
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
@@ -49,8 +52,7 @@ export type MessageIconPropsType = MessageEffectivePropsLevelType &
 export type MessageCloseButtonPropsType = ComponentElementStylePropsType;
 
 /* Message Central node prop type */
-export type MessageCentralPropsType = MessageEffectivePropsLevelType &
-    ComponentElementStylePropsType;
+export type MessageCentralPropsType = ComponentElementStylePropsType;
 
 export type MessageEffectivePropsLevelType = Pick<
     MessageEffectivePropsType,

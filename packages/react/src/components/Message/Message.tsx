@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { CancelIcon } from '@deliveryhero/armor-icons';
 
@@ -7,7 +7,7 @@ import { useComponentTheme } from '../../utils/hooks';
 import { useMessageClassNames } from './utils/useMessageClassNames';
 import {
     MessageRoot,
-    MessageIconStyle,
+    MessageIcon,
     MessageCentral,
     MessageCloseButton,
     MessageContent,
@@ -15,106 +15,88 @@ import {
     MessageExtra,
 } from './style';
 import { MessageIconPropsType, MessagePropsType } from './type';
-import { useIconComponent } from './utils/useIconComponent';
 import { MESSAGE_CLASS_PREFIX } from './constants';
+import { useMessage } from './hooks/useMessage';
 
-export const Message: FunctionComponent<MessagePropsType> = ({
-    className,
-    onClose,
-    disableCloseButton,
-    disableIcon,
-    children,
-    actions,
-    extra,
-    level,
-    error,
-    warning,
-    info,
-    success,
-    ...restProps
-}) => {
-    const theme = useComponentTheme(MESSAGE_CLASS_PREFIX);
+export const Message = forwardRef<HTMLDivElement, MessagePropsType>(
+    function Message({ className, children, ...props }, ref) {
+        const theme = useComponentTheme(MESSAGE_CLASS_PREFIX);
 
-    const classNameComponents = useMessageClassNames(
-        MESSAGE_CLASS_PREFIX,
-        className,
-    );
+        const classNameComponents = useMessageClassNames(
+            MESSAGE_CLASS_PREFIX,
+            className,
+        );
 
-    const Icon = useIconComponent({
-        level,
-        error,
-        warning,
-        info,
-        success,
-    });
+        const {
+            rootProps,
+            getIconProps,
+            IconTag,
+            showIcon,
+            showActions,
+            actions,
+            showExtra,
+            extra,
+            showCloseButton,
+            getCloseButtonProps,
+        } = useMessage(props, ref);
 
-    return (
-        <MessageRoot
-            {...restProps}
-            theme={theme}
-            disableCloseButton={disableCloseButton}
-            level={level}
-            error={error}
-            warning={warning}
-            info={info}
-            success={success}
-            className={classNameComponents.Root}
-        >
-            {!disableIcon && (
-                <MessageIconStyle
-                    theme={theme}
-                    level={level}
-                    error={error}
-                    warning={warning}
-                    info={info}
-                    success={success}
-                    className={classNameComponents.Icon}
-                >
-                    {(forwardedProps: MessageIconPropsType) => (
-                        <Icon {...forwardedProps}>{children}</Icon>
-                    )}
-                </MessageIconStyle>
-            )}
-            <MessageCentral
+        return (
+            <MessageRoot
+                {...rootProps}
                 theme={theme}
-                className={classNameComponents.Central}
+                className={classNameComponents.Root}
             >
-                <MessageContent
-                    theme={theme}
-                    className={classNameComponents.Content}
-                >
-                    {children}
-                </MessageContent>
-                {!!actions && (
-                    <MessageActions
+                {showIcon && (
+                    <MessageIcon
                         theme={theme}
-                        className={classNameComponents.Actions}
+                        className={classNameComponents.Icon}
+                        {...getIconProps()}
                     >
-                        {actions}
-                    </MessageActions>
+                        {(forwardedProps: MessageIconPropsType) => (
+                            <IconTag {...forwardedProps}>{children}</IconTag>
+                        )}
+                    </MessageIcon>
                 )}
-                {!!extra && (
-                    <MessageExtra
-                        theme={theme}
-                        className={classNameComponents.Extra}
-                    >
-                        {extra}
-                    </MessageExtra>
-                )}
-            </MessageCentral>
-            {!disableCloseButton && (
-                <MessageCloseButton
-                    onClick={onClose}
+                <MessageCentral
                     theme={theme}
-                    className={classNameComponents.CloseButton}
-                    tabIndex={-1}
+                    className={classNameComponents.Central}
                 >
-                    <CancelIcon />
-                </MessageCloseButton>
-            )}
-        </MessageRoot>
-    );
-};
+                    <MessageContent
+                        theme={theme}
+                        className={classNameComponents.Content}
+                    >
+                        {children}
+                    </MessageContent>
+                    {showActions && (
+                        <MessageActions
+                            theme={theme}
+                            className={classNameComponents.Actions}
+                        >
+                            {actions}
+                        </MessageActions>
+                    )}
+                    {showExtra && (
+                        <MessageExtra
+                            theme={theme}
+                            className={classNameComponents.Extra}
+                        >
+                            {extra}
+                        </MessageExtra>
+                    )}
+                </MessageCentral>
+                {showCloseButton && (
+                    <MessageCloseButton
+                        {...getCloseButtonProps()}
+                        theme={theme}
+                        className={classNameComponents.CloseButton}
+                    >
+                        <CancelIcon />
+                    </MessageCloseButton>
+                )}
+            </MessageRoot>
+        );
+    },
+);
 
 Message.defaultProps = {
     disableCloseButton: false,

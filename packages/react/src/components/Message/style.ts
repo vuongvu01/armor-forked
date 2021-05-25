@@ -56,6 +56,7 @@ const getRootDynamicStyle = (props: MessageRootPropsType) => {
 export const MessageRoot = styled.div.withConfig(propsBlocker)<
     MessageRootPropsType
 >`
+    ${typography('paragraphMedium')};
     box-sizing: border-box;
     border: 1px solid ${color('primary.main')};
     display: flex;
@@ -85,8 +86,6 @@ export const MessageContent = styled.div.withConfig(propsBlocker)<
     MessageContentPropsType
 >`
     flex-grow: 1;
-
-    ${typography('paragraphMedium')};
     line-height: 1.3;
     color: ${color('neutral.06')};
 
@@ -130,9 +129,7 @@ const getIconDynamicStyle = (props: MessageRootPropsType) => {
     `;
 };
 
-export const MessageIconStyle = styled(MessageIconWrapper)<
-    MessageIconPropsType
->`
+export const MessageIcon = styled(MessageIconWrapper)<MessageIconPropsType>`
     flex: 0 0 auto;
 
     font-size: ${pixelToRem(24)};
