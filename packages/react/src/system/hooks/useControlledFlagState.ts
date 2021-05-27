@@ -11,7 +11,13 @@ export const useControlledFlagState = (
     defaultValue?: boolean,
     value?: boolean,
     onValueUpdate?: (newValue: boolean) => void,
-) => {
+): [
+    boolean,
+    (newValue: boolean) => void,
+    () => void,
+    () => void,
+    () => void,
+] => {
     const [realValue, setRealValue] = useControlledState<boolean>(
         defaultValue,
         value,
@@ -27,11 +33,5 @@ export const useControlledFlagState = (
         setRealValue(!realValue);
     }, [setRealValue, realValue]);
 
-    return [realValue, setRealValue, turnOn, turnOff, toggle] as [
-        boolean,
-        (newValue: boolean) => void,
-        () => void,
-        () => void,
-        () => void,
-    ];
+    return [realValue, setRealValue, turnOn, turnOff, toggle];
 };

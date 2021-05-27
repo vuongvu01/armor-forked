@@ -23,13 +23,15 @@ export const useDateRangePicker = <E extends HTMLDivElement>(
         disabled,
         readOnly,
         'data-testid-input': dataTestIdInput,
+        formatDateTime,
+        formatDateTimeRange,
         ...restProps
     }: DateRangePickerPropsType,
     ref: RefType<E>,
 ) => {
     // controlled and uncontrolled state: dateValue, defaultDateValue and onDateValueChange mapped to internalValue
     const [externalValue, setExternalValue] = useControlledState<
-        DateValueRangeType | undefined
+        DateRangePickerPropsType['dateValue']
     >(defaultDateValue, dateValue, onDateValueChange);
 
     // internalValue as an object (former internalValueUTC)
@@ -96,23 +98,28 @@ export const useDateRangePicker = <E extends HTMLDivElement>(
         onChange: onDateSelectorChange,
     });
 
+    // todo: move this function away
     const formattedValue = useMemo(() => {
         if (internalValue.isEmpty()) {
             return '';
         }
 
+        const dateStartFormatted = formatDateTime
+            ? formatDateTime(internalValue.dateStart!.convertToLocalDate())
+            : formatDateTimeVector(internalValue.dateStart, enableTimePicker);
+
         if (internalValue.isNarrow()) {
-            return formatDateTimeVector(
-                internalValue.dateStart,
-                enableTimePicker,
-            );
+            return dateStartFormatted;
         }
 
-        return `${formatDateTimeVector(
-            internalValue.dateStart,
-            enableTimePicker,
-        )} - ${formatDateTimeVector(internalValue.dateEnd, enableTimePicker)}`;
-    }, [internalValue, enableTimePicker]);
+        const dateEndFormatted = formatDateTime
+            ? formatDateTime(internalValue.dateEnd!.convertToLocalDate())
+            : formatDateTimeVector(internalValue.dateEnd, enableTimePicker);
+
+        return formatDateTimeRange
+            ? formatDateTimeRange(dateStartFormatted, dateEndFormatted)
+            : `${dateStartFormatted} - ${dateEndFormatted}`;
+    }, [internalValue, enableTimePicker, formatDateTime, formatDateTimeRange]);
 
     return {
         rootProps: {

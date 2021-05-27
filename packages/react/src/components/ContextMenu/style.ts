@@ -9,6 +9,7 @@ import {
     zIndex,
     propsBlocker,
     getComponentOverride,
+    paddingAttributes,
 } from '../../system';
 import { popperArrow, popperArrowPlacement } from '../../utils/popper';
 
@@ -46,6 +47,7 @@ export const ContextMenuRoot = styled.div.withConfig(propsBlocker)<
     ${getRootStyle};
     ${getComponentOverride('ContextMenu')};
     ${sizeAttributes};
+    ${paddingAttributes};
 `;
 
 export const ContextMenuArrow = styled.div.withConfig(propsBlocker)<

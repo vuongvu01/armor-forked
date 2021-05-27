@@ -1,4 +1,4 @@
-import { HTMLAttributes, ReactChild } from 'react';
+import { ComponentType, HTMLAttributes, ReactChild } from 'react';
 import {
     ComponentElementStylePropsType,
     ComponentStylePropsType,
@@ -22,6 +22,7 @@ export type DataTableColumnType = {
     id: string;
     title?: ReactChild;
     key?: string;
+
     sortable?: TableHeadCellPropsType['sortable'];
     sortType?: TableHeadCellPropsType['rowSortType'];
     headCellProps?: CellPropsType;
@@ -38,6 +39,11 @@ export type DataTableColumnType = {
         item: DataTableDataType,
         column: DataTableColumnType,
     ) => ReactChild | ReactChild[];
+
+    renderer?: ComponentType<unknown>; // todo: future-reserved, for custom conditionRenderers. Replace unknown with something meaningful
+    render?: (column: DataTableColumnType) => ReactChild; // todo: future-reserved, for custom rendering functions
+
+    customProperties?: Record<ScalarType, unknown>; // todo: future-reserved
 };
 
 export type DataTableDataType = {
@@ -48,7 +54,6 @@ export type DataTableDataType = {
 type DataTableEffectivePropsType = Partial<{
     columns: DataTableColumnType[];
     data: DataTableDataType[];
-    tableProps: TablePropsType;
 
     // row sorting
     rowSortOrder: TableHeadCellRowSortOrderType;
@@ -91,6 +96,10 @@ type DataTableEffectivePropsType = Partial<{
     averageItemHeight: number;
 
     enableHeader: boolean;
+
+    /** @deprecated */
+    tableProps: TablePropsType;
+
     // add other custom properties here
 }> &
     Pick<TablePropsType, 'stickyHead'> &

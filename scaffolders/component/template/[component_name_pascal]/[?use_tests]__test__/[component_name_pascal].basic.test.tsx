@@ -23,8 +23,7 @@ import {
 } from '@testing-library/react-hooks';
 // import userEvent from '@testing-library/user-event';
 
-import {
-import {Typography} from "@deliveryhero/armor"; <%- component_name_pascal %> } from '..';
+import { <%- component_name_pascal %> } from '..';
 
 describe('<<%- component_name_pascal %> />', () => {
     afterEach(async () => {

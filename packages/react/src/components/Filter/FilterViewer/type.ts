@@ -1,0 +1,43 @@
+import { HTMLAttributes, ReactChild } from 'react';
+import {
+    ComponentStylePropsType,
+    ComponentElementStylePropsType,
+} from '../../type';
+import { MarginAttributesType } from '../../../system';
+import { FilterConditionSchemaType, FilterConditionValueType } from '../type';
+
+export type FilterViewerRenderFunctionType = (
+    condition: FilterConditionSchemaType,
+    conditionValue: FilterConditionValueType | undefined,
+) => ReactChild | ReactChild[];
+
+/** 👉 PROPS TYPE */
+type FilterViewerEffectivePropsType = Partial<{
+    schema: FilterConditionSchemaType;
+
+    value: FilterConditionValueType;
+    onValueChange: (newValue: FilterConditionValueType) => void;
+    defaultValue: FilterConditionValueType;
+
+    // initialValue gets applied when they press the "Clear all" button (right now it just dumps everything)
+    // Note that initialValue is not the same as defaultValue, because we can have the filter in the controlled mode,
+    // but we might still be interested in the "initialValue" as well.
+    initialValue: FilterConditionValueType;
+    onFilterOpenButtonClick: () => void;
+
+    // add other custom properties here
+}> &
+    HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
+    MarginAttributesType;
+
+export type FilterViewerPropsType = FilterViewerEffectivePropsType &
+    ComponentStylePropsType;
+
+export type FilterViewerRootPropsType = FilterViewerEffectivePropsType &
+    ComponentElementStylePropsType;
+
+export type FilterViewerTopBarPropsType = ComponentElementStylePropsType;
+
+export type FilterViewerActionsPropsType = ComponentElementStylePropsType;
+
+export type FilterViewConditionsPropsType = ComponentElementStylePropsType;

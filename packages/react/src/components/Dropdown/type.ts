@@ -1,4 +1,4 @@
-import { InputHTMLAttributes, ReactChild } from 'react';
+import { InputHTMLAttributes } from 'react';
 
 import { MarginAttributesType, WidthAttributesType } from '../../system';
 import {
