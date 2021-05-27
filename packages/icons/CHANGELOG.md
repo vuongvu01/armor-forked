@@ -1,3 +1,10 @@
+# @deliveryhero/armor-icons [1.11.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.10.2...@deliveryhero/armor-icons@1.11.0) (2021-05-27)
+
+
+### Features
+
+* **icons:** Icons added: CsvFileIcon, FolderStarAlternateIcon [LD-498] ([#550](https://github.com/deliveryhero/armor/issues/550)) ([f7b6af6](https://github.com/deliveryhero/armor/commit/f7b6af66e9f270b8b08a49cdc6067e534ec7321c))
+
 ## @deliveryhero/armor-icons [1.10.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.10.1...@deliveryhero/armor-icons@1.10.2) (2021-04-21)
 
 
