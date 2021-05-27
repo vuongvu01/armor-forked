@@ -1,6 +1,6 @@
 import { MouseEvent } from 'react';
 import { DateVector } from './DateVector';
-import { extractNumericDataAttribute } from './extractNumericDataAttribute';
+import { extractNumericDataAttribute } from '../../../system/util/extractNumericDataAttribute';
 
 export const extractDataFromDOMEvent = (
     event: MouseEvent<HTMLButtonElement>,

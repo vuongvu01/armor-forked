@@ -26,12 +26,11 @@ export const Basic = () => {
 };
 
 export const Controlled = () => {
-    const [dateRange, setDateRange] = useState<[Date, Date] | undefined>([
-        new Date(),
-        new Date(),
-    ]);
+    const [dateRange, setDateRange] = useState<[Date, Date] | undefined | null>(
+        [new Date(), new Date()],
+    );
 
-    const onDateValueChange = (range?: [Date, Date]) => {
+    const onDateValueChange = (range?: [Date, Date] | null) => {
         setDateRange(range);
         if (range) {
             console.log(`${range[0].toString()} ${range[1].toString()}`);
@@ -54,7 +53,7 @@ export const Uncontrolled = () => {
         new Date(),
     ]);
 
-    const onDateValueChange = (range?: [Date, Date]) => {
+    const onDateValueChange = (range?: [Date, Date] | null) => {
         if (range) {
             console.log(`${range[0].toString()} ${range[1].toString()}`);
         }
@@ -77,7 +76,7 @@ export const UncontrolledWithTime = () => {
         new Date(),
     ]);
 
-    const onDateValueChange = (range?: [Date, Date]) => {
+    const onDateValueChange = (range?: [Date, Date] | null) => {
         if (range) {
             console.log(`${range[0].toString()} ${range[1].toString()}`);
         }
@@ -101,7 +100,7 @@ export const WithConfirmation = () => {
         new Date(2021, 4, 28, 15, 40),
     ]);
 
-    const onDateValueChange = (range?: [Date, Date]) => {
+    const onDateValueChange = (range?: [Date, Date] | null) => {
         if (range) {
             console.log(`${range[0].toString()} ${range[1].toString()}`);
         }
@@ -125,7 +124,7 @@ export const WithConfirmationAndTime = () => {
         new Date(2021, 4, 28, 15, 40),
     ]);
 
-    const onDateValueChange = (range?: [Date, Date]) => {
+    const onDateValueChange = (range?: [Date, Date] | null) => {
         if (range) {
             console.log(`${range[0].toString()} ${range[1].toString()}`);
         }
@@ -165,7 +164,7 @@ export const ControlledSetExternally = () => {
         new Date(),
     ]);
 
-    const onDateValueChange = (range?: [Date, Date]) => {
+    const onDateValueChange = (range?: [Date, Date] | null) => {
         if (range) {
             setDateRange(range);
             console.log(`${range[0].toString()} ${range[1].toString()}`);

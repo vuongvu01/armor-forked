@@ -2,14 +2,14 @@ import { useMemo } from 'react';
 import {
     DropdownInternalOptionType,
     DropdownInternalValueType,
-    DropdownOnRenderSelectedValueType,
+    DropdownPropsType,
 } from '../../components/Dropdown/type';
 import { EMPTY_LABEL_VALUE } from '../../components/Dropdown/constants';
 
 export const useSelectedValueToDisplay = (
     internalValue: DropdownInternalValueType,
     internalOptions: DropdownInternalOptionType,
-    onRenderSelectedValue?: DropdownOnRenderSelectedValueType,
+    onRenderSelectedValue?: DropdownPropsType['onRenderSelectedValue'],
 ) =>
     useMemo(() => {
         if (onRenderSelectedValue) {

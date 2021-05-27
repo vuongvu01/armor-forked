@@ -53,9 +53,13 @@ export const useDatePickerState = <V>(
         [dirtyInternalValueVector, currentTimeVector],
     );
 
-    const [monthYearSelectorOpen, onMonthYearSelectorToggle] = useFlagState(
-        defaultMonthYearSelectorOpen,
-    );
+    const [
+        monthYearSelectorOpen,
+        ,
+        ,
+        ,
+        onMonthYearSelectorToggle,
+    ] = useFlagState(defaultMonthYearSelectorOpen);
 
     return {
         dirtyInternalValueVector,

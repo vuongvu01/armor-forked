@@ -4,7 +4,7 @@ import {
     WarningIcon,
     TickCircleFilledIcon,
 } from '@deliveryhero/armor-icons';
-import { MessageEffectivePropsLevelType } from '../type';
+import { MessagePropsType } from '../type';
 import { messageLevels } from '../constants';
 
 export const useIconComponent = ({
@@ -12,7 +12,12 @@ export const useIconComponent = ({
     warning,
     success,
     error,
-}: MessageEffectivePropsLevelType) => {
+    iconTag,
+}: MessagePropsType) => {
+    if (iconTag) {
+        return iconTag;
+    }
+
     // 'error' | 'warning' | 'info' | 'success';
     if (warning || level === messageLevels.warning) {
         return WarningIcon;

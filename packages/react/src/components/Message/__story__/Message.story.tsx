@@ -2,6 +2,7 @@ import React from 'react';
 // eslint-disable-next-line import/no-unresolved
 import { withKnobs } from '@storybook/addon-knobs';
 
+import { AddIcon } from '@deliveryhero/armor-icons';
 import { Message } from '../Message';
 import { Typography } from '../../Typography';
 import { MessageAction } from '../MessageAction';
@@ -70,6 +71,12 @@ export const Complete = () => {
 
 export const WithCustomAttributes = () => (
     <Message marginTop={30} disableCloseButton={false} disableIcon>
+        Hello there!
+    </Message>
+);
+
+export const WithCustomIconTag = () => (
+    <Message marginTop={30} disableCloseButton={false} iconTag={AddIcon}>
         Hello there!
     </Message>
 );

@@ -12,7 +12,7 @@ export const useControlledState = <P = unknown>(
     onChange?: (newValue: P) => void,
 ) => {
     const [internalValue, setInternalValue] = useState<P | undefined>(
-        value === undefined ? defaultValue : value,
+        defaultValue,
     );
     const realValue = value === undefined ? internalValue : value;
     const isControlled = value !== undefined;

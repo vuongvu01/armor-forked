@@ -25,13 +25,14 @@ export const useDatePicker = <E extends HTMLDivElement>(
         readOnly,
         error,
         'data-testid-input': dataTestIdInput,
+        formatDateTime,
         ...restProps
     }: DatePickerPropsType,
     ref: RefType<E>,
 ) => {
     // controlled and uncontrolled state: dateValue, defaultDateValue and onDateValueChange mapped to internalValue
     const [externalValue, setExternalValue] = useControlledState<
-        DateValueType | undefined
+        DatePickerPropsType['dateValue']
     >(defaultDateValue, dateValue, onDateValueChange);
 
     // internalValue as an object
@@ -98,13 +99,20 @@ export const useDatePicker = <E extends HTMLDivElement>(
         onChange: onDateSelectorChange,
     });
 
+    // todo: move this function away
     const formattedValue = useMemo(() => {
         if (internalValue.isEmpty()) {
             return '';
         }
 
+        if (formatDateTime) {
+            return formatDateTime(
+                internalValue.dateStart!.convertToLocalDate(),
+            );
+        }
+
         return formatDateTimeVector(internalValue.dateStart, enableTimePicker);
-    }, [internalValue, enableTimePicker]);
+    }, [internalValue, enableTimePicker, formatDateTime]);
 
     return {
         rootProps: {

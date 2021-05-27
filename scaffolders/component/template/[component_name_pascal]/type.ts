@@ -7,8 +7,7 @@ import {
 } from '../type';
 import {
     MarginAttributesType,
-} from '../../system/attributes';
-import { ObjectLiteralType } from '../../type';
+} from '../../system';
 
 /** 👉 PROPS TYPE */
 type <%- component_name_pascal %>EffectivePropsType = Partial<{

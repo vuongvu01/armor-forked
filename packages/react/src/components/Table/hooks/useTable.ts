@@ -1,7 +1,6 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { throttle } from 'throttle-debounce';
 import { TABLE_THROTTLE_PERIOD } from '../constants';
-import { useInternalRef } from '../../../utils';
 import { TableHookPropsType } from './type';
 import { TableContextValueType } from '../utils/type';
 import { TableStickyColumnMapInternalItem } from '../type';

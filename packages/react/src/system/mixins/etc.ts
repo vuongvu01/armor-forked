@@ -39,3 +39,7 @@ export const zIndex = ({ zIndex: zIndexValue }: { zIndex?: number }) =>
               z-index: ${zIndexValue};
           `
         : 0;
+
+export const notLastChild = () => ':not(:last-child)';
+
+export const round = () => 'border-radius: 9999px;';

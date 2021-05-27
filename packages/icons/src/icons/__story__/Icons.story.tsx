@@ -330,6 +330,15 @@ export const Basic = () => (
                 <I.PinMarkerIcon />
             </Icon>
         </Icons>
+        <h2>Etc</h2>
+        <Icons>
+            <Icon>
+                <I.CsvFileIcon />
+            </Icon>
+            <Icon>
+                <I.FolderStarAlternateIcon />
+            </Icon>
+        </Icons>
     </>
 );
 

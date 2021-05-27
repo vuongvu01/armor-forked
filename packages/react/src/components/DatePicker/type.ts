@@ -16,9 +16,9 @@ export type DatePickerEffectiveGenericPropsType<V> = Partial<{
     // todo: because the best way of making the API for a date picker
     // todo: is still a subject of practical experimenting.
     // todo: the following 3 properties may be deprecated in the future in favor of better onChange, value, defaultValue
-    onDateValueChange: (dateValue: V | undefined) => void;
-    dateValue: V;
-    defaultDateValue: V;
+    onDateValueChange: (dateValue: V | undefined | null) => void;
+    dateValue: V | null;
+    defaultDateValue: V | null;
 
     enableActionButtons: boolean;
     enableTimePicker: boolean;
@@ -30,6 +30,7 @@ export type DatePickerEffectiveGenericPropsType<V> = Partial<{
     error: boolean;
 
     defaultMonthYearSelectorOpen: boolean;
+    formatDateTime: (value: Date) => string;
 
     // special data attributes
     'data-testid-input': string;
@@ -51,7 +52,13 @@ export type DatePickerEffectivePropsType = DatePickerEffectiveGenericPropsType<
 /** 👉 PROPS TYPE */
 type DateRangePickerEffectivePropsType = DatePickerEffectiveGenericPropsType<
     DateValueRangeType
->;
+> &
+    Partial<{
+        formatDateTimeRange: (
+            startDateTime: string,
+            endDateTime: string,
+        ) => string;
+    }>;
 
 export type DatePickerPropsType = DatePickerEffectivePropsType &
     ComponentStylePropsType;

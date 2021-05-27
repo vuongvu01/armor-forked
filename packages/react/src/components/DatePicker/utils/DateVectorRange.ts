@@ -9,7 +9,9 @@ type DateVectorRangeStructureType = {
 };
 
 export class DateVectorRange {
-    public static createFromLocalDateRange(dateRange?: DateValueRangeType) {
+    public static createFromLocalDateRange(
+        dateRange?: DateValueRangeType | null,
+    ) {
         if (!dateRange) {
             return new this();
         }
@@ -20,7 +22,7 @@ export class DateVectorRange {
         );
     }
 
-    public static createFromLocalDate(date?: DateValueType) {
+    public static createFromLocalDate(date?: DateValueType | null) {
         if (!date) {
             return new this();
         }

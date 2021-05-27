@@ -16,3 +16,4 @@ export * from './Settings';
 export * from './TextFormatting';
 export * from './Tick';
 export * from './Upload';
+export * from './Etc';

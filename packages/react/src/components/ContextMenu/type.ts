@@ -3,7 +3,11 @@ import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../type';
-import { SizeAttributesType, PopperPropsType } from '../../system';
+import {
+    SizeAttributesType,
+    PopperPropsType,
+    PaddingAttributesType,
+} from '../../system';
 import { ScalarType } from '../../type';
 import { ComponentBehaviourOpenStateType } from '../../system/types/ComponentBehaviourOpenStateType';
 import { ComponentBehaviourOverlayType } from '../../system/types/ComponentBehaviourOverlayType';
@@ -43,7 +47,8 @@ type ContextMenuEffectivePropsType = Partial<{
     ComponentBehaviourOverlayType &
     ComponentBehaviourPortalType &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
-    SizeAttributesType;
+    SizeAttributesType &
+    PaddingAttributesType;
 
 /* ContextMenu component prop type */
 export type ContextMenuPropsType = ContextMenuEffectivePropsType &

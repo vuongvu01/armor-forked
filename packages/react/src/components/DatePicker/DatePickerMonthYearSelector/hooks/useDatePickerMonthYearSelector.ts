@@ -7,7 +7,7 @@ import {
     YEAR_SELECTOR_SCROLL_TOP,
 } from '../constants';
 import { useVerticalScrollBoundariesObserver } from '../../../../system';
-import { extractNumericDataAttribute } from '../../utils/extractNumericDataAttribute';
+import { extractNumericDataAttribute } from '../../../../system/util/extractNumericDataAttribute';
 
 const getInitialYearRange = (year: number) => {
     const yearRange: number[] = [];

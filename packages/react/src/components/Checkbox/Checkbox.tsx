@@ -22,7 +22,10 @@ export const Checkbox = forwardRef<
         defaultChecked,
         disabled,
         error,
+        // todo: forward all input-specific props directly to the input node, as it is done in <TextInput>
+        // todo: packages/react/src/components/TextInput/hooks/useTextInput.ts:24
         id: propsId,
+        name,
         label,
         onChange,
         ...restProps
@@ -84,6 +87,7 @@ export const Checkbox = forwardRef<
                 checkedIcon={checkedIcon}
                 disabled={disabled}
                 id={id}
+                name={name}
                 onChange={handleOnChange}
                 ref={ref as RefType<HTMLInputElement>}
                 theme={theme}

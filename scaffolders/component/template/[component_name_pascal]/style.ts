@@ -2,11 +2,13 @@ import styled, { css } from 'styled-components';
 import { <%- component_name_pascal %>RootPropsType } from './type';
 import {
     marginAttributes,
-    textAlignmentAttributes,
     propsBlocker,
     getComponentOverride,
+    reset,
+    typography,
+    spacing,
+    color,
 } from '../../system';
-import { reset, typography } from '../../system/mixins';
 
 const getRootStyle = (props: <%- component_name_pascal %>RootPropsType) => {
 
