@@ -1,3 +1,24 @@
+# @deliveryhero/armor [1.49.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.48.0...@deliveryhero/armor@1.49.0) (2021-05-27)
+
+
+### Bug Fixes
+
+* **checkbox:** Checkbox name property forwarding [LD-505] ([#555](https://github.com/deliveryhero/armor/issues/555)) ([016a97b](https://github.com/deliveryhero/armor/commit/016a97b99b412b705fbcf4db5fcea662784d2dbf))
+
+
+### Features
+
+* **filters:** FilterLayout, FilterEditor, FilterViewer components, useFilterURLStorage hook delivered [LD-500] ([#553](https://github.com/deliveryhero/armor/issues/553)) ([3422568](https://github.com/deliveryhero/armor/commit/342256804362e47dc0a28b8c24b46d3a4ccedcd4))
+* **message:** Message component custom icon via iconTag property [LD-510] ([#557](https://github.com/deliveryhero/armor/issues/557)) ([4a58ea5](https://github.com/deliveryhero/armor/commit/4a58ea59ddc4310a292f3384a77ccaad2e26b61f))
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor-icons:** upgraded to 1.11.0
+
 # @deliveryhero/armor [1.48.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.47.1...@deliveryhero/armor@1.48.0) (2021-05-11)
 
 
