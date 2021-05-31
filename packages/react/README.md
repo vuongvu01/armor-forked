@@ -265,7 +265,7 @@ As soon as there are several features merged into `dev`, it is time to publish a
     ⚠️ Use of `feat:` and `fix:` prefixes together is not allowed.
 
     ⚠️ Please don't use "Squash and merge" or "Rebase" when merging changes from `dev` to `master` as it will make GitHub really confused.
-    
+
     ℹ️ This routine may be automated in future.
 3. As soon as the PR gets merged, [a new version will be published](https://github.com/deliveryhero/armor/packages/210156).
 4. An updated version of the [documentation](https://deliveryhero.github.io/armor/) will be published as well.
@@ -300,7 +300,7 @@ To manually publish a new version of the package, follow these steps:
     ./script/release.sh;
     ~~~
    and specify a desired version in the end.
-   
+
 3. push version up made by `yarn` in `package.json`
 4. todo: re-build and re-publish Styleguidist
 

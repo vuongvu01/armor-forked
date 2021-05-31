@@ -40,4 +40,5 @@ export * from './Typography';
 export * from './PageNavigation';
 export * from './DataTable';
 export * from './IconButton';
+export * from './FileUploadButton';
 export * from './Filter';
