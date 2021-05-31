@@ -1,3 +1,11 @@
+# @deliveryhero/armor [1.50.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.49.0...@deliveryhero/armor@1.50.0) (2021-05-31)
+
+
+### Features
+
+* **FileUpload:** New file upload component [LD-496] ([#556](https://github.com/deliveryhero/armor/issues/556)) ([04659c1](https://github.com/deliveryhero/armor/commit/04659c10f8240282a1b426abc9e7d9e78740273a))
+* Divider component ([#552](https://github.com/deliveryhero/armor/issues/552)) ([4007fdc](https://github.com/deliveryhero/armor/commit/4007fdcda9130bf27da84773fa996f29a5f54677))
+
 # @deliveryhero/armor [1.49.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.48.0...@deliveryhero/armor@1.49.0) (2021-05-27)
 
 
