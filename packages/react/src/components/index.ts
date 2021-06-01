@@ -42,3 +42,4 @@ export * from './DataTable';
 export * from './IconButton';
 export * from './FileUploadButton';
 export * from './Filter';
+export * from './Divider';
