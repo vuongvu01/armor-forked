@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { FilterLayout, FilterEditor, FilterViewer } from '../../../src';
-import { filterSchema, filterValue } from './schema';
+import { filterSchema, filterValue, conditionTypes } from './schema';
 
 export default {
     title: 'Filter',
@@ -14,6 +14,7 @@ export const Basic = () => (
         filterEditor={
             <FilterEditor
                 schema={filterSchema}
+                types={conditionTypes}
                 paddingTop={6}
                 paddingLeft={2}
                 paddingRight={6}
@@ -21,7 +22,11 @@ export const Basic = () => (
             />
         }
     >
-        <FilterViewer schema={filterSchema} marginTop={6} />
+        <FilterViewer
+            schema={filterSchema}
+            types={conditionTypes}
+            marginTop={6}
+        />
         Table (or whatever) goes here
     </FilterLayout>
 );
@@ -33,6 +38,7 @@ export const Open = () => (
         filterEditor={
             <FilterEditor
                 schema={filterSchema}
+                types={conditionTypes}
                 paddingTop={6}
                 paddingLeft={2}
                 paddingRight={6}
@@ -40,7 +46,11 @@ export const Open = () => (
             />
         }
     >
-        <FilterViewer schema={filterSchema} marginTop={6} />
+        <FilterViewer
+            schema={filterSchema}
+            types={conditionTypes}
+            marginTop={6}
+        />
         Table (or whatever) goes here
     </FilterLayout>
 );
@@ -53,6 +63,7 @@ export const Filled = () => (
             <FilterEditor
                 schema={filterSchema}
                 value={filterValue}
+                types={conditionTypes}
                 paddingTop={6}
                 paddingLeft={2}
                 paddingRight={6}
@@ -60,7 +71,11 @@ export const Filled = () => (
             />
         }
     >
-        <FilterViewer schema={filterSchema} marginTop={6} />
+        <FilterViewer
+            schema={filterSchema}
+            types={conditionTypes}
+            marginTop={6}
+        />
         Table (or whatever) goes here
     </FilterLayout>
 );
@@ -73,6 +88,7 @@ export const Applied = () => (
             <FilterEditor
                 schema={filterSchema}
                 value={filterValue}
+                types={conditionTypes}
                 paddingTop={6}
                 paddingLeft={2}
                 paddingRight={6}
@@ -80,7 +96,12 @@ export const Applied = () => (
             />
         }
     >
-        <FilterViewer schema={filterSchema} marginTop={6} value={filterValue} />
+        <FilterViewer
+            schema={filterSchema}
+            marginTop={6}
+            value={filterValue}
+            types={conditionTypes}
+        />
         Table (or whatever) goes here
     </FilterLayout>
 );

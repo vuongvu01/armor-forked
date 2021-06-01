@@ -3,7 +3,7 @@ import { DatePickerEffectiveGenericPropsType } from '../type';
 import { DateVectorRange } from '../utils/DateVectorRange';
 import { DateVector } from '../utils/DateVector';
 import { TimeVector24 } from '../utils/TimeVector24';
-import { useFlagState, useGuidedState } from '../../../system';
+import { useFlagState, useDerivedState } from '../../../system';
 
 type DatePickerStateType = {
     reallyOpen: boolean;
@@ -41,7 +41,7 @@ export const useDatePickerState = <V>(
             : currentDateVector.clone(),
     );
 
-    const [timeSelectorValue, setTimeSelectorValue] = useGuidedState<
+    const [timeSelectorValue, setTimeSelectorValue] = useDerivedState<
         TimeVector24
     >(
         () =>

@@ -1,27 +1,26 @@
-import { FilterConditionSchemaType } from '../../type';
 import { renderFilterViewerDateConditionValue } from '../conditionRenderers/date';
 import { renderFilterViewerEnumConditionValue } from '../conditionRenderers/enum';
 import { renderFilterViewerNumberConditionValue } from '../conditionRenderers/number';
 import { renderFilterViewerStringConditionValue } from '../conditionRenderers/string';
+import { FilterBaseConditionType } from '../../conditionTypes/base';
+import {
+    FilterDateConditionType,
+    FilterEnumConditionType,
+    FilterNumberConditionType,
+} from '../../conditionTypes';
 
 export const getValueRenderFunction = (
-    condition: FilterConditionSchemaType,
+    conditionType: FilterBaseConditionType,
 ) => {
-    const { type } = condition;
-
-    if (type === 'string') {
-        return renderFilterViewerStringConditionValue;
-    }
-
-    if (type === 'number') {
+    if (conditionType instanceof FilterNumberConditionType) {
         return renderFilterViewerNumberConditionValue;
     }
 
-    if (type === 'date') {
+    if (conditionType instanceof FilterDateConditionType) {
         return renderFilterViewerDateConditionValue;
     }
 
-    if (type === 'enum') {
+    if (conditionType instanceof FilterEnumConditionType) {
         return renderFilterViewerEnumConditionValue;
     }
 

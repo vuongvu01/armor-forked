@@ -1,20 +1,19 @@
 import React, { FC, useCallback, useMemo } from 'react';
 import { DatePicker, DatePickerPropsType } from '../../../DatePicker';
 import { FilterEditorConditionPropsType } from '../type';
-
-type FilterEditorDateConditionAttributesType = {
-    enableTimePicker?: boolean;
-    formatDateTime?: (value: Date) => string;
-};
+import { FilterDateConditionType } from '../../conditionTypes';
 
 export const FilterEditorDateCondition: FC<FilterEditorConditionPropsType> = ({
     condition,
+    conditionType,
     conditionValue,
     onConditionValueChange,
 }) => {
-    const { label, attributes } = condition;
-    const { enableTimePicker, formatDateTime } =
-        (attributes as FilterEditorDateConditionAttributesType) || {};
+    const { label } = condition;
+    const {
+        enableTimePicker,
+        formatDateTime,
+    } = (conditionType as FilterDateConditionType).getAttributes();
     const { value } = conditionValue || {};
 
     // DatePicker can only accept Date object (at least for now), so we have to convert

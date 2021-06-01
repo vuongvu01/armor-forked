@@ -1,21 +1,16 @@
 import { ReactChild } from 'react';
 import { FilterViewerRenderFunctionType } from '../type';
-import { ScalarType } from '../../../../type';
-
-type FilterViewerEnumConditionAttributesType = {
-    options: Array<{
-        label: ReactChild;
-        value: ScalarType;
-    }>;
-};
+import { FilterEnumConditionType } from '../../conditionTypes';
 
 export const renderFilterViewerEnumConditionValue: FilterViewerRenderFunctionType = (
     condition,
+    conditionType,
     conditionValue,
 ) => {
-    const { multiple, attributes } = condition;
-    const { options } =
-        (attributes as FilterViewerEnumConditionAttributesType) || {};
+    const { multiple } = condition;
+    const {
+        options,
+    } = (conditionType as FilterEnumConditionType).getAttributes();
     const { value } = conditionValue || {};
 
     if (value === undefined || value === null) {

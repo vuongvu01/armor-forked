@@ -2,10 +2,11 @@ import {
     FilterConditionSchemaType,
     FilterConditionValueType,
 } from '../../type';
-import { getConditionType } from '../../utils/getConditionType';
+import { FilterBaseConditionType } from '../../conditionTypes/base';
 
 export const isConditionValueEmpty = (
     condition: FilterConditionSchemaType,
+    conditionType: FilterBaseConditionType,
     path?: string,
     value?: FilterConditionValueType,
 ) => {
@@ -19,17 +20,8 @@ export const isConditionValueEmpty = (
     // todo: use _.get(realValue, path) later when we have a nested structure
     // todo: also, use memoization, be more clever than this!
     const conditionValue = value?.conditions?.find(
-        conditionValueItem => conditionValueItem.fieldName === path,
+        conditionValueItem => conditionValueItem.name === path,
     );
-
-    const conditionType = getConditionType(condition);
-    if (!conditionType) {
-        return true; // unknown conditions type encountered
-    }
-
-    if (!conditionType.isValueEmpty) {
-        return true; // todo: missing isValueEmpty is currently not supported
-    }
 
     return conditionType.isValueEmpty(condition, conditionValue);
 };

@@ -25,7 +25,7 @@ const getRootStyle = ({
     enableTimePicker,
 }: Pick<DatePickerRootPropsType, 'enableTimePicker'>) => {
     const result = css`
-        min-width: ${spacing(enableTimePicker ? 87 : 58)};
+        min-width: ${spacing(enableTimePicker ? 88 : 58)};
     `;
 
     return result;

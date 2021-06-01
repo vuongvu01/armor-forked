@@ -1,17 +1,20 @@
-import { FilterConditionSchemaConditionType } from '../type';
+import { ReactChild } from 'react';
+import { FilterBaseConditionType } from './base';
+import { ScalarType } from '../../../type';
 
-export const filterEnumConditionType: FilterConditionSchemaConditionType = {
-    id: 'enum',
-    isValueEmpty: (condition, conditionValue) => {
-        const { multiple } = condition;
-        const { value } = conditionValue || {};
-
-        if (value === undefined || value === null) {
-            return true;
-        }
-
-        return multiple
-            ? !Array.isArray(value) || !value.length
-            : (value as string).toString() === '';
-    },
+type FilterEnumConditionAttributesType = {
+    options?: Array<{
+        label: ReactChild;
+        value: ScalarType;
+    }>;
 };
+
+export class FilterEnumConditionType extends FilterBaseConditionType {
+    static create(id: string, attributes: FilterEnumConditionAttributesType) {
+        return new this(id, attributes);
+    }
+
+    public getAttributes(): FilterEnumConditionAttributesType {
+        return super.getAttributes();
+    }
+}

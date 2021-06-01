@@ -9,9 +9,9 @@ const win = getWindow();
 
 export const useFilterURLStorage = <F extends FilterConditionValueType>(
     filterId: string,
-) => {
+): [F | undefined, (newValue?: F) => void] => {
     const setValue = useCallback(
-        (newValue: F) => {
+        (newValue?: F) => {
             if (!win) {
                 return;
             }

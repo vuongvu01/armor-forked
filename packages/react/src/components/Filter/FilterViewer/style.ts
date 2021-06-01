@@ -13,6 +13,7 @@ import {
     typography,
     spacing,
     notLastChild,
+    paddingAttributes,
 } from '../../../system';
 
 /** 👉 ROOT ELEMENT */
@@ -24,6 +25,7 @@ export const FilterViewerRoot = styled.div.withConfig(propsBlocker)<
 
     ${getComponentOverride('FilterViewer')};
     ${marginAttributes};
+    ${paddingAttributes};
 `;
 
 export const FilterViewerTopBar = styled.div.withConfig(propsBlocker)<
@@ -44,7 +46,6 @@ export const FilterViewerActions = styled.div.withConfig(propsBlocker)<
         margin-right: ${spacing(8)};
     }
     margin-left: ${spacing(5)};
-    min-width: ${spacing(100)};
 `;
 
 export const FilterViewConditions = styled.div.withConfig(propsBlocker)<

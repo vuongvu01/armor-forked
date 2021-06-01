@@ -1,8 +1,21 @@
-import { FilterConditionSchemaConditionType } from '../type';
+import { FilterConditionSchemaType, FilterConditionValueType } from '../type';
 
-export const filterDateConditionType: FilterConditionSchemaConditionType = {
-    id: 'date',
-    isValueEmpty: (condition, conditionValue) => {
+import { FilterBaseConditionType } from './base';
+
+type FilterDateConditionAttributeType = {
+    enableTimePicker?: boolean;
+    formatDateTime?: (value: Date) => string;
+};
+
+export class FilterDateConditionType extends FilterBaseConditionType {
+    static create(id: string, attributes: FilterDateConditionAttributeType) {
+        return new this(id, attributes);
+    }
+
+    public isValueEmpty(
+        condition: FilterConditionSchemaType,
+        conditionValue?: FilterConditionValueType,
+    ) {
         const { multiple } = condition;
         const { value } = conditionValue || {};
 
@@ -11,5 +24,9 @@ export const filterDateConditionType: FilterConditionSchemaConditionType = {
         }
 
         return multiple ? !Array.isArray(value) || !value.length : false;
-    },
-};
+    }
+
+    public getAttributes(): FilterDateConditionAttributeType {
+        return super.getAttributes();
+    }
+}

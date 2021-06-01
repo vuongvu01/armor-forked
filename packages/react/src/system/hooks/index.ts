@@ -4,7 +4,7 @@ export * from './useControlledState';
 export * from './useDisplayEffects';
 export * from './useDocumentKeyDown';
 export * from './useFlagState';
-export * from './useGuidedState';
+export * from './useDerivedState';
 export * from './useOuterClick';
 export * from './useOverlay';
 export * from './usePopper';

@@ -15,7 +15,7 @@ import { useComponentTheme } from '../../../utils/hooks';
 import { Typography } from '../../Typography';
 import { Link } from '../../Link';
 import { Button, FormField } from '../..';
-import { getConditionRenderer } from './utils/getConditionRenderer';
+import { getDefaultConditionRenderer } from './utils/getDefaultConditionRenderer';
 
 export const FilterEditor = forwardRef<HTMLDivElement, FilterEditorPropsType>(
     function FilterEditor({ className, ...props }, ref: Ref<HTMLDivElement>) {
@@ -32,6 +32,7 @@ export const FilterEditor = forwardRef<HTMLDivElement, FilterEditorPropsType>(
             clearFilterButtonProps,
             applyFilterButtonProps,
             closeButtonProps,
+            getConditionType,
         } = useFilterEditor<HTMLDivElement>(props, ref);
 
         return (
@@ -58,27 +59,27 @@ export const FilterEditor = forwardRef<HTMLDivElement, FilterEditorPropsType>(
                 </FilterEditorHeader>
                 <FilterEditorFields theme={theme} className={classNames.Fields}>
                     {schema.conditions!.map(condition => {
-                        if (!condition.fieldName) {
+                        if (!condition.id) {
                             // todo: sub-filters are not currently supported
                             return null;
                         }
 
-                        const ConditionRenderer = getConditionRenderer(
+                        const ConditionRenderer = getDefaultConditionRenderer(
+                            getConditionType(condition),
+                        );
+
+                        const conditionProps = getConditionProps(
                             condition,
+                            condition.name || condition.id, // todo: path here later
                         );
 
                         return (
                             <FormField
-                                key={condition.fieldName}
+                                key={condition.name}
                                 className={classNames.Field}
-                                data-path={condition.fieldName}
+                                data-path={condition.name}
                             >
-                                <ConditionRenderer
-                                    {...getConditionProps(
-                                        condition,
-                                        condition.fieldName, // todo: path here later
-                                    )}
-                                />
+                                <ConditionRenderer {...conditionProps} />
                             </FormField>
                         );
                     })}
