@@ -1,3 +1,10 @@
+## @deliveryhero/armor [1.50.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.50.0...@deliveryhero/armor@1.50.1) (2021-06-01)
+
+
+### Bug Fixes
+
+* **Divider:** add missing reexport ([#564](https://github.com/deliveryhero/armor/issues/564)) ([2425563](https://github.com/deliveryhero/armor/commit/24255631ad6327671d17256e43e964145fb84b03))
+
 # @deliveryhero/armor [1.50.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.49.0...@deliveryhero/armor@1.50.0) (2021-05-31)
 
 
