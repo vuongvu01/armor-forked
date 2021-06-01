@@ -11,7 +11,7 @@ import {
     DATE_PICKER_TIME_SELECTOR_MODE_AM,
     DATE_PICKER_TIME_SELECTOR_MODE_PM,
 } from '../constants';
-import { useGuidedState } from '../../../../system';
+import { useDerivedState } from '../../../../system';
 import { TimeVector12ModeType } from '../../utils/TimeVector12';
 import { getValidTimeFragment } from '../utils/getValidTimeFragment';
 
@@ -21,15 +21,17 @@ export const useDatePickerTimeSelector = <E extends HTMLDivElement>(
 ) => {
     const value12 = useMemo(() => value.convertTo12(), [value]);
 
-    const [hourValue, setHourValue] = useGuidedState<string>(
+    // todo: refactor this, leave only one state!
+
+    const [hourValue, setHourValue] = useDerivedState<string>(
         () => value12.formattedHour,
         [value12],
     );
-    const [minuteValue, setMinuteValue] = useGuidedState<string>(
+    const [minuteValue, setMinuteValue] = useDerivedState<string>(
         () => value12.formattedMinute,
         [value12],
     );
-    const [mode, setMode] = useGuidedState<TimeVector12ModeType>(
+    const [mode, setMode] = useDerivedState<TimeVector12ModeType>(
         () => value12.mode,
         [value12],
     );

@@ -2,6 +2,7 @@ import { FilterViewerRenderFunctionType } from '../type';
 
 export const renderFilterViewerNumberConditionValue: FilterViewerRenderFunctionType = (
     condition,
+    conditionType,
     conditionValue,
 ) => {
     const { multiple } = condition;

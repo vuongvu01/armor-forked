@@ -1,24 +1,20 @@
-import React, { FC, ReactChild, useCallback } from 'react';
-import { PseudoEventType, ScalarType } from '../../../../type';
+import React, { FC, useCallback } from 'react';
+import { PseudoEventType } from '../../../../type';
 import { Dropdown, DropdownPropsType } from '../../../Dropdown';
 import { FilterEditorConditionPropsType } from '../type';
 import { DropdownValueType } from '../../../Dropdown/type';
-
-type FilterEditorEnumConditionAttributesType = {
-    options: Array<{
-        label: ReactChild;
-        value: ScalarType;
-    }>;
-};
+import { FilterEnumConditionType } from '../../conditionTypes';
 
 export const FilterEditorEnumCondition: FC<FilterEditorConditionPropsType> = ({
     condition,
+    conditionType,
     conditionValue,
     onConditionValueChange,
 }) => {
-    const { label, multiple, attributes } = condition;
-    const { options } =
-        (attributes as FilterEditorEnumConditionAttributesType) || {};
+    const { label, multiple } = condition;
+    const {
+        options,
+    } = (conditionType as FilterEnumConditionType).getAttributes();
     const { value } = conditionValue || {};
 
     const onChange = useCallback(

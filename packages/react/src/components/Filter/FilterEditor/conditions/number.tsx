@@ -27,7 +27,7 @@ export const FilterEditorNumberCondition: FC<FilterEditorConditionPropsType> = (
             label={label}
             value={(value as number) || ''}
             onChange={onChange}
-            autoComplete="off"
+            autoComplete="nope"
         />
     );
 };

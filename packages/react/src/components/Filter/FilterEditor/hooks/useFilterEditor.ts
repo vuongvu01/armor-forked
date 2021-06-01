@@ -4,7 +4,7 @@ import { FilterEditorPropsType } from '../type';
 import { RefType } from '../../../../type';
 import {
     useControlledState,
-    useGuidedState,
+    useDerivedState,
     useRootRef,
 } from '../../../../system';
 import {
@@ -13,6 +13,8 @@ import {
     FilterConditionValueType,
 } from '../../type';
 import { FILTER_EMPTY, SCHEMA_EMPTY } from '../../constants';
+import { useTypeIndex } from '../../hooks/useTypeIndex';
+import { getConditionType } from '../../utils/getConditionType';
 
 export const useFilterEditor = <E extends HTMLElement>(
     {
@@ -24,8 +26,10 @@ export const useFilterEditor = <E extends HTMLElement>(
         onValueChange,
         defaultValue,
 
+        types,
+
         initialValue,
-        onCloseButtonClick,
+        onClose,
 
         ...restProps
     }: FilterEditorPropsType,
@@ -38,15 +42,17 @@ export const useFilterEditor = <E extends HTMLElement>(
         schema,
         onSchemaChange,
     );
-    // const [internalSchema] = useGuidedState<FilterConditionSchemaType>(
+    // const [internalSchema] = useDerivedState<FilterConditionSchemaType>(
     //     () => cloneDeep(externalSchema),
     //     [externalSchema],
     // );
 
+    const typeIndex = useTypeIndex(types);
+
     const [externalValue, setExternalValue] = useControlledState<
         FilterConditionValueType
     >(defaultValue, value, onValueChange);
-    const [internalValue, setInternalValue] = useGuidedState<
+    const [internalValue, setInternalValue] = useDerivedState<
         FilterConditionValueType
     >(() => cloneDeep(externalValue), [externalValue]);
 
@@ -68,27 +74,32 @@ export const useFilterEditor = <E extends HTMLElement>(
 
     const onApplyFilterButtonClick = useCallback(() => {
         setExternalValue(internalValue);
-        if (onCloseButtonClick) {
-            onCloseButtonClick();
+        if (onClose) {
+            onClose();
         }
-    }, [setExternalValue, internalValue, onCloseButtonClick]);
+    }, [setExternalValue, internalValue, onClose]);
 
     return {
         rootProps: {
             ...restProps,
             ref: innerRef,
         },
+        getConditionType: (condition: FilterConditionSchemaType) =>
+            getConditionType(condition, typeIndex),
         getConditionProps: (
             condition: FilterConditionSchemaType,
             path: string,
         ) => {
+            const conditionType = getConditionType(condition, typeIndex);
+            const conditionId = condition.id!;
+
             // todo: This whole approach only works with a flat schema (which we only support for now),
             // todo: and will not work otherwise.
 
             // todo: use _.get(realValue, path) later when we have a nested structure
             // todo: also, use memoization, be more clever than this!
             const conditionValue = internalValueSafe.conditions!.find(
-                item => item.fieldName === path,
+                item => item.name === path,
             );
 
             const onConditionValueChange = (
@@ -100,7 +111,7 @@ export const useFilterEditor = <E extends HTMLElement>(
 
                 // todo: use _.get(nextValue, path) later when we have a nested structure
                 const nextConditionValue = nextValue.conditions?.find(
-                    conditionValueItem => conditionValueItem.fieldName === path,
+                    conditionValueItem => conditionValueItem.name === path,
                 );
                 if (nextConditionValue) {
                     if ('value' in newFieldValue) {
@@ -111,7 +122,8 @@ export const useFilterEditor = <E extends HTMLElement>(
                     }
                 } else {
                     nextValue.conditions.push({
-                        fieldName: condition.fieldName as string,
+                        id: conditionId,
+                        name: condition.name || conditionId,
                         value: newFieldValue.value,
                         op: newFieldValue.op,
                     });
@@ -122,6 +134,7 @@ export const useFilterEditor = <E extends HTMLElement>(
 
             return {
                 condition,
+                conditionType,
                 conditionValue,
                 onConditionValueChange,
             };
@@ -134,7 +147,7 @@ export const useFilterEditor = <E extends HTMLElement>(
             onClick: onApplyFilterButtonClick,
         },
         closeButtonProps: {
-            onClick: onCloseButtonClick,
+            onClick: onClose,
         },
     };
 };

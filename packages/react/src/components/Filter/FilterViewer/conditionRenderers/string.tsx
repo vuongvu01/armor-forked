@@ -1,11 +1,12 @@
 import { FilterViewerRenderFunctionType } from '../type';
 
 export const renderFilterViewerStringConditionValue: FilterViewerRenderFunctionType = (
-    field,
-    fieldValue,
+    condition,
+    conditionType,
+    conditionValue,
 ) => {
-    const { multiple } = field;
-    const { value } = fieldValue || {};
+    const { multiple } = condition;
+    const { value } = conditionValue || {};
 
     if (multiple) {
         // todo: do not support multiple strings at the moment

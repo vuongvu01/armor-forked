@@ -1,17 +1,16 @@
 import { FilterViewerRenderFunctionType } from '../type';
-
-type FilterEditorDateConditionAttributesType = {
-    formatDateTime?: (value?: unknown) => string;
-};
+import { FilterDateConditionType } from '../../conditionTypes';
 
 export const renderFilterViewerDateConditionValue: FilterViewerRenderFunctionType = (
     condition,
+    conditionType,
     conditionValue,
 ) => {
-    const { multiple, attributes } = condition;
+    const { multiple } = condition;
     const { value } = conditionValue || {};
-    const { formatDateTime } =
-        (attributes as FilterEditorDateConditionAttributesType) || {};
+    const {
+        formatDateTime,
+    } = (conditionType as FilterDateConditionType).getAttributes();
 
     if (multiple) {
         // todo: do not support multiple dates at the moment
@@ -23,7 +22,7 @@ export const renderFilterViewerDateConditionValue: FilterViewerRenderFunctionTyp
     }
 
     let result = '';
-    if (formatDateTime) {
+    if (formatDateTime && value instanceof Date) {
         result = formatDateTime(value);
     } else {
         result = (value as string).toString();

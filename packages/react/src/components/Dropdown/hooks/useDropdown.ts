@@ -10,7 +10,7 @@ import {
 import { RefType } from '../../../type';
 import {
     useControlledState,
-    useGuidedState,
+    useDerivedState,
     usePopper,
     useOverlay,
     useOuterClick,
@@ -72,7 +72,7 @@ export const useDropdown = <E extends HTMLInputElement>(
 
     const { internalOptions, isFlat } = useOptions(options, formatOption);
 
-    const [dynamicInternalOptions, setDynamicInternalOptions] = useGuidedState<
+    const [dynamicInternalOptions, setDynamicInternalOptions] = useDerivedState<
         DropdownInternalOptionType
     >(() => internalOptions, [internalOptions]);
 

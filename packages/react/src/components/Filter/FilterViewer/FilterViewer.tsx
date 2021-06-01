@@ -153,13 +153,13 @@ export const FilterViewer = forwardRef<HTMLDivElement, FilterViewerPropsType>(
                             className={classNames.Conditions}
                         >
                             {schema.conditions!.map(condition => {
-                                if (!condition.fieldName) {
+                                if (!condition.id) {
                                     // todo: sub-filters are not currently supported
                                     return null;
                                 }
 
                                 // dont render empty conditions
-                                const path = condition.fieldName;
+                                const path = condition.name || condition.id;
                                 if (isConditionValueEmpty(condition, path)) {
                                     return null;
                                 }
@@ -167,9 +167,7 @@ export const FilterViewer = forwardRef<HTMLDivElement, FilterViewerPropsType>(
                                 return (
                                     <FilterViewerTag
                                         {...getTagProps(condition, path)}
-                                        key={
-                                            condition.fieldName || condition.id
-                                        }
+                                        key={condition.name || condition.id}
                                         marginBottom={2}
                                         marginRight={2}
                                     />

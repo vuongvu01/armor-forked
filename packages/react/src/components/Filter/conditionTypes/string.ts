@@ -1,15 +1,9 @@
-import { FilterConditionSchemaConditionType } from '../type';
+import { FilterBaseConditionType } from './base';
 
-export const filterStringConditionType: FilterConditionSchemaConditionType = {
-    id: 'string',
-    isValueEmpty: (condition, conditionValue) => {
-        const { multiple } = condition;
-        const { value } = conditionValue || {};
+type FilterStringConditionAttributeType = {};
 
-        if (value === undefined || value === null) {
-            return true;
-        }
-
-        return multiple ? !Array.isArray(value) || !value.length : value === '';
-    },
-};
+export class FilterStringConditionType extends FilterBaseConditionType {
+    static create(id: string, attributes: FilterStringConditionAttributeType) {
+        return new this(id, attributes);
+    }
+}

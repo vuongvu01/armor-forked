@@ -9,18 +9,20 @@ import {
     FilterConditionSchemaType,
     FilterConditionValueType,
 } from '../type';
+import { FilterBaseConditionType } from '../conditionTypes/base';
 
 export type FilterEditorConditionPropsType = {
     // things considering a particular field
     condition: FilterConditionSchemaType;
+    conditionType: FilterBaseConditionType;
     conditionValue: FilterConditionValueType | undefined;
     onConditionValueChange: (
         newValue: FilterConditionValueNewValueType,
     ) => void;
 
     // global-wide things
-    schema?: FilterConditionSchemaType;
-    value?: FilterConditionValueType;
+    schema?: FilterConditionSchemaType; // todo: future-reserved
+    value?: FilterConditionValueType; // todo: future-reserved
     onValueChange?: unknown; // todo: future-reserved: one field change can potentially affect other field in the filter
 };
 
@@ -34,11 +36,13 @@ type FilterEditorEffectivePropsType = Partial<{
     onValueChange: (newValue: FilterConditionValueType) => void;
     defaultValue: FilterConditionValueType;
 
+    types: Array<FilterBaseConditionType>;
+
     // initialValue gets applied when they press the "Clear all" button (right now it just dumps everything)
     // Note that initialValue is not the same as defaultValue, because we can have the filter in the controlled mode,
     // but we might still be interested in the "initialValue" as well.
     initialValue: FilterConditionValueType;
-    onCloseButtonClick: () => void;
+    onClose: () => void;
 
     // add other custom properties here
 }> &

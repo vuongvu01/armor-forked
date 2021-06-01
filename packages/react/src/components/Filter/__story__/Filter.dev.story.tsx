@@ -7,7 +7,12 @@ import { format } from 'date-fns';
 import { FilterLayout } from '../FilterLayout';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '../../Table';
 import { FilterConditionSchemaType, FilterConditionValueType } from '../type';
-import { FilterViewer, FilterEditor } from '../..';
+import {
+    FilterViewer,
+    FilterEditor,
+    FilterDateConditionType,
+    FilterEnumConditionType,
+} from '../..';
 import { useFilterURLStorage } from '../hooks';
 
 export default {
@@ -20,59 +25,60 @@ export default {
 const araraFilterSchema: FilterConditionSchemaType = {
     conditions: [
         {
-            fieldName: 'name',
+            id: 'name',
             label: 'Name',
         },
         {
-            fieldName: 'email',
+            id: 'email',
             label: 'Email',
         },
         {
-            fieldName: 'phoneNumber',
+            id: 'phoneNumber',
             label: 'Phone number',
         },
         {
-            fieldName: 'status',
+            id: 'status',
             label: 'Status',
-            type: 'enum',
-            attributes: {
-                options: [
-                    { label: 'Document Collection', value: 'doc_collection' },
-                    { label: 'Document Processing', value: 'doc_processing' },
-                    { label: 'Document Rejection', value: 'doc_rejection' },
-                ],
-            },
+            typeId: 'statusEnum',
         },
         {
-            fieldName: 'landedAt',
+            id: 'landedAt',
             label: 'Landed at',
-            type: 'date',
-            attributes: {
-                formatDateTime: (value: unknown) =>
-                    format(
-                        value instanceof Date
-                            ? value
-                            : new Date(value as string),
-                        'hh:mm dd.MM.yyyy',
-                    ),
-                enableTimePicker: true,
-            },
+            typeId: 'landedAtDate',
         },
         {
-            fieldName: 'labels',
+            id: 'labels',
             label: 'Labels',
-            type: 'enum',
+            typeId: 'labelEnum',
             multiple: true,
-            attributes: {
-                options: [
-                    { label: 'Label 1', value: 'label1' },
-                    { label: 'Label 2', value: 'label2' },
-                    { label: 'Label 3', value: 'label3' },
-                ],
-            },
         },
     ],
 };
+
+const conditionTypes = [
+    FilterEnumConditionType.create('labelEnum', {
+        options: [
+            { label: 'Label 1', value: 'label1' },
+            { label: 'Label 2', value: 'label2' },
+            { label: 'Label 3', value: 'label3' },
+        ],
+    }),
+    FilterEnumConditionType.create('statusEnum', {
+        options: [
+            { label: 'Document Collection', value: 'doc_collection' },
+            { label: 'Document Processing', value: 'doc_processing' },
+            { label: 'Document Rejection', value: 'doc_rejection' },
+        ],
+    }),
+    FilterDateConditionType.create('landedAtDate', {
+        formatDateTime: (value: unknown) =>
+            format(
+                value instanceof Date ? value : new Date(value as string),
+                'hh:mm dd.MM.yyyy',
+            ),
+        enableTimePicker: true,
+    }),
+];
 
 const FilterTable = () => {
     return (
@@ -140,8 +146,9 @@ export const Basic = () => {
                 <FilterEditor
                     schema={araraFilterSchema}
                     value={filterValue}
+                    types={conditionTypes}
                     onValueChange={setFilterValueCommon}
-                    onCloseButtonClick={() => setOpen(false)}
+                    onClose={() => setOpen(false)}
                     paddingTop={6}
                     paddingLeft={2}
                     paddingRight={6}
@@ -152,6 +159,7 @@ export const Basic = () => {
             <FilterViewer
                 schema={araraFilterSchema}
                 value={filterValue}
+                types={conditionTypes}
                 onValueChange={setFilterValueCommon}
                 marginTop={6}
                 onFilterOpenButtonClick={() => setOpen(true)}
