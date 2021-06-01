@@ -1,3 +1,10 @@
+## @deliveryhero/armor [1.50.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.50.1...@deliveryhero/armor@1.50.2) (2021-06-01)
+
+
+### Bug Fixes
+
+* **filter:** Filter API improvements ([#562](https://github.com/deliveryhero/armor/issues/562)) ([05f4d8d](https://github.com/deliveryhero/armor/commit/05f4d8d16cc10fd059557293c0eb43a68ccce976))
+
 ## @deliveryhero/armor [1.50.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.50.0...@deliveryhero/armor@1.50.1) (2021-06-01)
 
 
