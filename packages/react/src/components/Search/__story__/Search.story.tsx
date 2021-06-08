@@ -10,6 +10,7 @@ import { CogIcon } from '../../../icons';
 import { campaigns } from './constants';
 import { Typography } from '../../Typography';
 import { Button } from '../../Button';
+import { Tooltip } from '../../Tooltip';
 
 export default {
     title: 'Components/Search',
@@ -51,7 +52,7 @@ const foodOptions = [
 export const DefaultSearch = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const query = event?.target?.value || '';
+        const query = event?.target?.value;
         setSearchQuery(query);
 
         // eslint-disable-next-line no-console
@@ -94,7 +95,7 @@ export const DefaultSearch = () => {
 export const DeprecatedAdditionalInfoAndIcon = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const query = event?.target?.value || '';
+        const query = event?.target?.value;
         setSearchQuery(query);
 
         // eslint-disable-next-line no-console
@@ -125,7 +126,7 @@ export const DeprecatedAdditionalInfoAndIcon = () => {
 
 export const DisabledClearAction = () => {
     const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const query = event?.target?.value || '';
+        const query = event?.target?.value;
 
         // eslint-disable-next-line no-console
         console.log({ query });
@@ -142,7 +143,7 @@ export const DisabledClearAction = () => {
 
 export const FormWithErrors = () => {
     const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const query = event?.target?.value || '';
+        const query = event?.target?.value;
 
         // eslint-disable-next-line no-console
         console.log({ query });
@@ -181,7 +182,7 @@ export const DisableSuggestionsList = () => {
     const [query, setQuery] = useState<string>('');
 
     const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const inputQuery = event?.target?.value || '';
+        const inputQuery = event?.target?.value;
 
         setQuery(inputQuery);
     };
@@ -286,7 +287,7 @@ export const WithDeatchedResults = () => {
 
     const handleSearchChange = useCallback(
         (e: React.ChangeEvent<HTMLInputElement>) => {
-            const query = e.target.value || '';
+            const query = e.target.value;
             setSearch(query);
             // eslint-disable-next-line no-console
             console.log({ query });
@@ -318,7 +319,7 @@ export const ResetSearchOnSelect = () => {
     const [acceptedOption, setAcceptedOption] = useState({});
     const handleSearchChange = useCallback(
         (e: React.ChangeEvent<HTMLInputElement>) => {
-            const currentQuery = e.target.value || '';
+            const currentQuery = e.target.value;
             setQuery(currentQuery);
         },
         [],

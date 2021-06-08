@@ -200,7 +200,7 @@ const getLabelDynamicStyle = (props: TextInputInternalPropsWithThemeType) => {
     return result;
 };
 
-export const TextInputLabel = styled.span.withConfig(propsBlocker)<
+export const TextInputLabel = styled.label.withConfig(propsBlocker)<
     TextInputLabelPropsType
 >`
     position: absolute;

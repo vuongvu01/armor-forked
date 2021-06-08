@@ -203,7 +203,11 @@ export const useSearch = <E extends HTMLInputElement>(
             setSearchQuery('');
 
             if (onChange) {
-                onChange(event);
+                onChange({
+                    target: {
+                        value: '',
+                    },
+                } as ChangeEvent<HTMLInputElement>);
             }
         },
         [setSearchQuery, onChange],
