@@ -1,3 +1,15 @@
+# @deliveryhero/armor [1.52.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.51.0...@deliveryhero/armor@1.52.0) (2021-06-08)
+
+
+### Bug Fixes
+
+* **textinput:** TextInput label node rendered as label tag [LD-524] ([#573](https://github.com/deliveryhero/armor/issues/573)) ([e709008](https://github.com/deliveryhero/armor/commit/e709008b1a79953f2fd0b2fcc7214f5a385bb180))
+
+
+### Features
+
+* **conditiontag:** export ([#578](https://github.com/deliveryhero/armor/issues/578)) ([9385c6b](https://github.com/deliveryhero/armor/commit/9385c6b224e88f4eced6b7d6f67a06effa7cf2eb))
+
 # @deliveryhero/armor [1.51.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.50.2...@deliveryhero/armor@1.51.0) (2021-06-08)
 
 ## @deliveryhero/armor [1.50.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.50.1...@deliveryhero/armor@1.50.2) (2021-06-01)
