@@ -1,11 +1,11 @@
 import styled, { css } from 'styled-components';
 import {
-    FilterViewerTagRootPropsType,
-    FilterViewerTagLabelPropsType,
-    FilterViewerTagValuePropsType,
-    FilterViewerTagValueSegmentPropsType,
-    FilterViewerTagValueTailElementPropsType,
-    FilterViewerTagCloseIconContainerPropsType,
+    ConditionTagRootPropsType,
+    ConditionTagLabelPropsType,
+    ConditionTagValuePropsType,
+    ConditionTagValueSegmentPropsType,
+    ConditionTagValueTailElementPropsType,
+    ConditionTagCloseIconContainerPropsType,
 } from './type';
 import {
     marginAttributes,
@@ -18,12 +18,12 @@ import {
     notLastChild,
     round,
     transition,
-} from '../../../../system';
-import { Link } from '../../../Link';
+} from '../../system';
+import { Link } from '../Link';
 
 /** 👉 ROOT ELEMENT */
-export const FilterViewerTagRoot = styled.div.withConfig(propsBlocker)<
-    FilterViewerTagRootPropsType
+export const ConditionTagRoot = styled.div.withConfig(propsBlocker)<
+    ConditionTagRootPropsType
 >`
     ${reset};
     ${typography('paragraphMedium')};
@@ -37,18 +37,18 @@ export const FilterViewerTagRoot = styled.div.withConfig(propsBlocker)<
     ${round};
 
     &:hover {
-        .FilterViewerTag-CloseIconContainer {
+        .ConditionTag-CloseIconContainer {
             opacity: 1;
             transform: translateX(0);
         }
     }
 
-    ${getComponentOverride('FilterViewerTag')};
+    ${getComponentOverride('ConditionTag')};
     ${marginAttributes};
 `;
 
-export const FilterViewerTagLabel = styled.div.withConfig(propsBlocker)<
-    FilterViewerTagLabelPropsType
+export const ConditionTagLabel = styled.div.withConfig(propsBlocker)<
+    ConditionTagLabelPropsType
 >`
     ${typography('labelSmall')};
     background-color: ${color('neutral.02')};
@@ -59,14 +59,14 @@ export const FilterViewerTagLabel = styled.div.withConfig(propsBlocker)<
     user-select: none;
 `;
 
-export const FilterViewerTagValue = styled.div.withConfig(propsBlocker)<
-    FilterViewerTagValuePropsType
+export const ConditionTagValue = styled.div.withConfig(propsBlocker)<
+    ConditionTagValuePropsType
 >`
     display: flex;
 `;
 
-export const FilterViewerTagValueSegment = styled.div.withConfig(propsBlocker)<
-    FilterViewerTagValueSegmentPropsType
+export const ConditionTagValueSegment = styled.div.withConfig(propsBlocker)<
+    ConditionTagValueSegmentPropsType
 >`
     ${typography('paragraphSmall')};
     background-color: ${color('neutral.00')};
@@ -85,20 +85,20 @@ export const FilterViewerTagValueSegment = styled.div.withConfig(propsBlocker)<
             : ''};
 `;
 
-export const FilterViewerTagValueMoreLink = styled(Link)`
+export const ConditionTagValueMoreLink = styled(Link)`
     ${typography('labelSmall')};
     color: ${color(
         'primary.main',
     )}; // todo: just putting the color back, because typography drops it to back :(( remove after the refactoring
 `;
 
-export const FilterViewerTagValueTailElement = styled.div.withConfig(
-    propsBlocker,
-)<FilterViewerTagValueTailElementPropsType>``;
+export const ConditionTagValueTailElement = styled.div.withConfig(propsBlocker)<
+    ConditionTagValueTailElementPropsType
+>``;
 
-export const FilterViewerTagCloseIconContainer = styled.div.withConfig(
+export const ConditionTagCloseIconContainer = styled.div.withConfig(
     propsBlocker,
-)<FilterViewerTagCloseIconContainerPropsType>`
+)<ConditionTagCloseIconContainerPropsType>`
     box-sizing: border-box;
     display: flex;
     align-items: center;

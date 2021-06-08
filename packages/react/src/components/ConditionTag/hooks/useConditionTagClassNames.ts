@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
-import { makeRootClassName, makeBEM } from '../../../../../utils';
+import { makeRootClassName, makeBEM } from '../../../utils';
 
-export const useFilterViewerTagClassNames = (
+export const useConditionTagClassNames = (
     classPrefix: string,
     className?: string,
 ) =>

@@ -1,13 +1,12 @@
 import React, { forwardRef } from 'react';
 // import PropTypes from 'prop-types';
-
 import { useFilterViewerClassNames } from './hooks/useFilterViewerClassNames';
 import { useFilterViewer } from './hooks/useFilterViewer';
 import {
+    FilterViewConditions,
+    FilterViewerActions,
     FilterViewerRoot,
     FilterViewerTopBar,
-    FilterViewerActions,
-    FilterViewConditions,
 } from './style';
 import { FilterViewerPropsType } from './type';
 import { FILTER_VIEWER_CLASS_PREFIX } from './constants';
@@ -15,9 +14,9 @@ import { useComponentTheme } from '../../../utils/hooks';
 import { Typography } from '../../Typography';
 import { ContextMenu } from '../../ContextMenu';
 import { Link } from '../../Link';
-import { FilterViewerTag } from './FilterViewerTag';
 import { Button } from '../../Button';
 import { pluralize } from '../../../system/util/pluralize';
+import { ConditionTag } from '../../ConditionTag/ConditionTag';
 
 export const FilterViewer = forwardRef<HTMLDivElement, FilterViewerPropsType>(
     function FilterViewer({ className, ...props }, ref) {
@@ -165,7 +164,7 @@ export const FilterViewer = forwardRef<HTMLDivElement, FilterViewerPropsType>(
                                 }
 
                                 return (
-                                    <FilterViewerTag
+                                    <ConditionTag
                                         {...getTagProps(condition, path)}
                                         key={condition.name || condition.id}
                                         marginBottom={2}
