@@ -1,16 +1,17 @@
 import { useMemo } from 'react';
-import { FilterViewerTagPropsType } from '../type';
-import { RefType } from '../../../../../type';
-import { useRootRef } from '../../../../../system';
+import { ConditionTagPropsType } from '../type';
+import { RefType } from '../../../type';
+import { useRootRef } from '../../../system';
 
-export const useFilterViewerTag = <E extends HTMLElement>(
+export const useConditionTag = <E extends HTMLElement>(
     {
         label,
         value,
         onCloseButtonClick,
+        enableCloseIcon,
         path,
         ...restProps
-    }: FilterViewerTagPropsType,
+    }: ConditionTagPropsType,
     ref: RefType<E>,
 ) => {
     const innerRef = useRootRef<E>(ref);
@@ -39,5 +40,6 @@ export const useFilterViewerTag = <E extends HTMLElement>(
         valueTail,
         hasTail: !!valueTail.length,
         tailLength: valueTail.length,
+        enableCloseIcon,
     };
 };
