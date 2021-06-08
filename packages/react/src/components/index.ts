@@ -3,6 +3,7 @@ export * from './Box';
 export * from './Badge';
 export * from './Button';
 export * from './Checkbox';
+export * from './ConditionTag';
 export * from './Container';
 export * from './ContextMenu';
 export * from './Card';

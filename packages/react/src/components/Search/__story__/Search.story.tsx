@@ -10,6 +10,7 @@ import { CogIcon } from '../../../icons';
 import { campaigns } from './constants';
 import { Typography } from '../../Typography';
 import { Button } from '../../Button';
+import { Tooltip } from '../../Tooltip';
 
 export default {
     title: 'Components/Search',
