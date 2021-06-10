@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 import React, { useEffect, useRef, useState } from 'react';
 import {
     withKnobs,
@@ -7,6 +9,7 @@ import {
 
 import { Tooltip } from '../Tooltip';
 import { Button } from '../../Button';
+import { FileUploadButton } from '../../FileUploadButton';
 import { withWrapper } from '../../../helpers/Wrapper';
 import { Checkbox } from '../../Checkbox';
 
@@ -254,5 +257,31 @@ export const NoTooltipDisplayOnEmptyContent = () => {
                 <Button>Top</Button>
             </Tooltip>
         </>
+    );
+};
+
+export const OnFileUploader = () => {
+    return (
+        <div>
+            <FileUploadButton
+                onFileSelect={() => console.log('select')}
+                onClick={() => console.log('click')}
+            >
+                {text('Button children', 'Upload file...')}
+            </FileUploadButton>
+            <Tooltip content="Dummy Text">
+                <FileUploadButton
+                    onFileSelect={() => console.log('select')}
+                    onClick={() => console.log('click on file upload')}
+                >
+                    {text('Button children', 'Upload file...')}
+                </FileUploadButton>
+            </Tooltip>
+            <Tooltip content="Dummy Text">
+                <Button onClick={() => console.log('click on regular button')}>
+                    {text('Button children', 'Upload file...')}
+                </Button>
+            </Tooltip>
+        </div>
     );
 };

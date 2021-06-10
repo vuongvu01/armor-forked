@@ -1,4 +1,4 @@
-import { ChangeEvent, useCallback } from 'react';
+import { ChangeEvent, useCallback, useRef } from 'react';
 
 import { FileUploadButtonPropsType } from '../type';
 import { RefType } from '../../../type';
@@ -21,11 +21,16 @@ export const useFileUploadButton = <E extends HTMLInputElement>(
     }: FileUploadButtonPropsType,
     ref: RefType<E>,
 ) => {
-    const internalInputRef = useRootRef<E>(ref);
+    const rootRef = useRootRef<E>(ref);
+    const internalInputRef = useRef<HTMLInputElement>(null);
 
     const handleClick = useCallback(
         event => {
-            const node = internalInputRef.current as any;
+            if (!internalInputRef.current) {
+                return;
+            }
+
+            const node = internalInputRef.current;
 
             if (onClick) {
                 onClick(event);
@@ -54,7 +59,7 @@ export const useFileUploadButton = <E extends HTMLInputElement>(
     return {
         rootProps: {
             ...restProps,
-            ref,
+            ref: rootRef,
         },
         buttonProps: {
             disabled,
