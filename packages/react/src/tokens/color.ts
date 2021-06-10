@@ -2,6 +2,7 @@ export const colorGrey90 = '#050505';
 export const colorGrey80 = '#262626';
 export const colorGrey70 = '#333333';
 export const colorGrey60 = '#525252';
+export const colorGrey60WithOpacity = '#3D3D3D';
 export const colorGrey50 = '#717171';
 export const colorGrey40 = '#8d8d8d';
 export const colorGrey30 = '#a7a7a7';

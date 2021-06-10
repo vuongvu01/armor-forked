@@ -86,7 +86,10 @@ export const OptionListSearch = styled(Search).attrs({
     width: 100%;
 `;
 
-const optionItemStyle = ({ isSelected }: OptionListItemPropsType) => {
+const optionItemStyle = ({
+    isSelected,
+    item: { disabled },
+}: OptionListItemPropsType) => {
     let result = css`
         background-color: ${color('neutral.00')};
         min-height: ${spacing(10)};
@@ -100,9 +103,24 @@ const optionItemStyle = ({ isSelected }: OptionListItemPropsType) => {
         result = css`
             ${result};
             background-color: ${color('primary.lightest')};
-            border-left-color: ${color('primary.main')};
+            border-left-color: ${disabled
+                ? color('neutral.04')
+                : color('primary.main')};
         `;
     }
+
+    if (disabled) {
+        result = css`
+            ${result};
+            background-color: ${color('neutral.02')};
+
+            cursor: not-allowed;
+            &:hover {
+                background-color: ${color('neutral.02')};
+            }
+        `;
+    }
+
     return result;
 };
 

@@ -1,4 +1,4 @@
-import { useCallback, MouseEvent } from 'react';
+import { MouseEvent, useCallback } from 'react';
 
 import { OptionListItemPropsType } from '../type';
 
@@ -15,7 +15,7 @@ export const useOptionListItem = ({
             event.preventDefault();
             event.stopPropagation();
 
-            if (onOptionSelect) {
+            if (onOptionSelect && !item?.disabled) {
                 onOptionSelect(item);
             }
         },
@@ -33,11 +33,13 @@ export const useOptionListItem = ({
             checked: isSelected,
             marginRight: 4,
             checkedIcon,
+            disabled: item?.disabled,
         },
         typographyProps: {
             paragraph: true,
             tag: 'div',
             maxLines: 2,
+            disabled: item?.disabled,
         },
         multiple,
         label: item.label,

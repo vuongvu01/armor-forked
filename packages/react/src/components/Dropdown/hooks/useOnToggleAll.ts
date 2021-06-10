@@ -18,31 +18,63 @@ export const useOnToggleAll = (
 ) =>
     useCallback<DropdownOnToggleAllType>(
         (selectAll = true) => {
+            const preselectedDisabledOptionItems: Array<number | string> = [];
+            const unselectedDisabledOptionItems: Array<number | string> = [];
+
+            internalOptions.forEach((option: OptionObjectType) => {
+                if (option.disabled) {
+                    if (!internalValue.includes(option.value)) {
+                        unselectedDisabledOptionItems.push(option.value);
+                    } else {
+                        preselectedDisabledOptionItems.push(option.value);
+                    }
+                }
+            });
+
             if (!selectAll) {
                 handleOnChange([], onChange);
                 if (setInternalValue) {
-                    setInternalValue([]);
+                    setInternalValue([...preselectedDisabledOptionItems]);
                 }
 
                 return;
             }
 
-            if (internalValue.length === internalOptions.length) {
-                handleOnChange([], onChange);
+            if (
+                internalValue.length + unselectedDisabledOptionItems.length ===
+                internalOptions.length
+            ) {
+                let updatedOptionValues = [
+                    ...preselectedDisabledOptionItems,
+                    ...unselectedDisabledOptionItems,
+                ];
+
+                if (internalValue.length < internalOptions.length) {
+                    updatedOptionValues = [...preselectedDisabledOptionItems];
+                }
+
+                handleOnChange(updatedOptionValues, onChange);
                 if (setInternalValue) {
-                    setInternalValue([]);
+                    setInternalValue(updatedOptionValues);
                 }
                 return;
             }
 
-            const internalOptionValues = internalOptions.map(
-                (option: OptionObjectType) => option.value,
-            );
+            const enabledOptionValuesOnSelect: Array<number | string> = [];
 
-            handleOnChange(internalOptionValues, onChange);
+            internalOptions.forEach((option: OptionObjectType) => {
+                if (
+                    !option.disabled ||
+                    (option.disabled && internalValue.includes(option.value))
+                ) {
+                    enabledOptionValuesOnSelect.push(option.value);
+                }
+            });
+
+            handleOnChange(enabledOptionValuesOnSelect, onChange);
 
             if (setInternalValue) {
-                setInternalValue(internalOptionValues);
+                setInternalValue(enabledOptionValuesOnSelect);
             }
         },
         [setInternalValue, internalOptions, internalValue],

@@ -24,6 +24,7 @@ export type ClassBasedOnComponentType = {
 export type OptionObjectType = {
     label: ReactChild;
     value: ScalarType;
+    disabled?: boolean;
 } & ObjectLiteralType;
 
 export type OptionListGroupObjectType = DictionaryItemIDBased;
