@@ -13,9 +13,7 @@ export const UserTypeDeleteEnabled = () => (
     <Tag label="Default" deleteOption="enabled" />
 );
 
-export const UserTypeDeleteDisabled = () => (
-    <Tag label="Default" deleteOption="disabled" />
-);
+export const UserTypeDeleteDisabled = () => <Tag label="Default" />;
 
 export const UserTypeDeleteEnabledSmall = () => (
     <Tag label="Default" deleteOption="enabled" small />

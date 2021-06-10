@@ -37,10 +37,10 @@ const foodOptions = [
     { value: -100, label: 'All food' },
     { value: 0, label: 'Biryani' },
     { value: 1, label: 'Tacos' },
-    { value: 2, label: 'Pho' },
+    { value: 2, label: 'Pho', disabled: true },
     { value: 3, label: 'Pâté of roasted indigenous legumes' },
-    { value: 4, label: 'Pizza' },
-    { value: 5, label: 'Enchiladas' },
+    { value: 4, label: 'Pizza', disabled: true },
+    { value: 5, label: 'Enchiladas', disabled: true },
     { value: 6, label: 'Börek' },
     { value: 7, label: 'Quiche' },
     { value: 8, label: 'Köfte' },
@@ -155,6 +155,7 @@ export const CustomOptionItemsFormat = () => {
                     <FormField autoMargin>
                         <Dropdown
                             options={foodOptions}
+                            defaultValue={2}
                             onSelect={handleSelect}
                             label="Dish type"
                         />
@@ -779,7 +780,7 @@ export const CustomOptionFormatMultiplePreSelectedExpandedList = () => {
     );
 };
 
-export const CustomOptionFormatMultipleExpandedListWithSelectAllAndSearch = () => {
+export const CustomOptionFormatMultipleExpandedListWithSelectAllAndSearchWithDisabledOptions = () => {
     const formatOption = (option: OptionItemType) => {
         if (typeof option === 'object' && 'label' in option) {
             return `${option.label} meal plan`;
@@ -792,6 +793,51 @@ export const CustomOptionFormatMultipleExpandedListWithSelectAllAndSearch = () =
         <Dropdown
             multiple
             options={foodOptions}
+            label="Dish type"
+            defaultValue={[2, 3]}
+            formatOption={formatOption}
+            isListExpanded={true}
+            enableSelectAllOption
+            enableSearchOption
+        />
+    );
+};
+
+export const CustomOptionFormatMultipleExpandedListWithSelectAllAndSearch = () => {
+    const formatOption = (option: OptionItemType) => {
+        if (typeof option === 'object' && 'label' in option) {
+            return `${option.label} meal plan`;
+        }
+
+        return `${option} meal plan`;
+    };
+
+    return (
+        <Dropdown
+            multiple
+            options={[
+                { value: -100, label: 'All food' },
+                { value: 0, label: 'Biryani' },
+                { value: 1, label: 'Tacos' },
+                { value: 2, label: 'Pho' },
+                { value: 3, label: 'Pâté of roasted indigenous legumes' },
+                { value: 4, label: 'Pizza' },
+                { value: 5, label: 'Enchiladas' },
+                { value: 6, label: 'Börek' },
+                { value: 7, label: 'Quiche' },
+                { value: 8, label: 'Köfte' },
+                { value: 9, label: 'Pad Thai' },
+                { value: 10, label: 'Churrasco' },
+                { value: 11, label: 'Baozi' },
+                { value: 12, label: 'Ceviche' },
+                { value: 13, label: 'Mac & Cheese' },
+                { value: 14, label: 'Paella' },
+                { value: 15, label: 'Dim sum' },
+                { value: 16, label: 'Hamburger' },
+                { value: 17, label: 'Ramen' },
+                { value: 18, label: 'Sushi' },
+                { value: 19, label: 'Burrito' },
+            ]}
             label="Dish type"
             defaultValue={[2, 3]}
             formatOption={formatOption}
@@ -1111,7 +1157,7 @@ const characters = [
     { value: 1, label: 'Jim Raynor', groupId: 'terr' },
     { value: 2, label: 'Duke', groupId: 'terr' },
 
-    { value: 4, label: 'Zeratul', groupId: 'prot' },
+    { value: 4, label: 'Zeratul', groupId: 'prot', disabled: true },
     { value: 5, label: 'Tassadar', groupId: 'prot' },
     { value: 6, label: 'Fenix', groupId: 'prot' },
 
@@ -1120,6 +1166,28 @@ const characters = [
     { value: 9, label: 'Cerebrate', groupId: 'zerg' },
 ];
 
+export const WithGroupsPreselected = () => {
+    const handleSelect = (option: any) => {
+        console.log('story handleSelect', { option });
+    };
+
+    return (
+        <Dropdown
+            isListExpanded
+            margin={1}
+            onSelect={handleSelect}
+            defaultValue={[4, 5]}
+            options={characters}
+            label="Multiple options"
+            multiple
+            maxWidth="400px"
+            enableSelectAllOption
+            enableSearchOption
+            groups={factions}
+        />
+    );
+};
+
 export const WithGroups = () => {
     const handleSelect = (option: any) => {
         console.log('story handleSelect', { option });
@@ -1127,6 +1195,7 @@ export const WithGroups = () => {
 
     return (
         <Dropdown
+            isListExpanded
             margin={1}
             onSelect={handleSelect}
             options={characters}

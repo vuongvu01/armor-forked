@@ -21,12 +21,12 @@ const foodOptions = [
     { value: -100, label: 'All food' },
     { value: 0, label: 'Biryani' },
     { value: 1, label: 'Tacos' },
-    { value: 2, label: 'Pho' },
+    { value: 2, label: 'Pho', disabled: true },
     { value: 3, label: 'Pâté of roasted indigenous legumes' },
     { value: 42, label: 'Pizza' },
     { value: 5, label: 'Enchiladas' },
-    { value: 6, label: 'Börek' },
-    { value: 7, label: 'Quiche' },
+    { value: 6, label: 'Börek', disabled: true },
+    { value: 7, label: 'Quiche', disabled: true },
     { value: 8, label: 'Köfte' },
     { value: 9, label: 'Pad Thai' },
     { value: 10, label: 'Churrasco' },
@@ -574,7 +574,7 @@ const characters = [
     { value: 2, label: 'Duke', groupId: 'terr' },
 
     { value: 4, label: 'Zeratul', groupId: 'prot' },
-    { value: 5, label: 'Tassadar', groupId: 'prot' },
+    { value: 5, label: 'Tassadar', groupId: 'prot', disabled: true },
     { value: 6, label: 'Fenix', groupId: 'prot' },
 
     { value: 7, label: 'Kerrigan', groupId: 'zerg' },
@@ -583,5 +583,46 @@ const characters = [
 ];
 
 export const Groups = () => {
-    return <Dropdown options={characters} groups={faction} open />;
+    return (
+        <Dropdown options={characters} groups={faction} open defaultValue={5} />
+    );
+};
+
+export const WithGroupsPreselected = () => {
+    const handleSelect = () => {};
+
+    return (
+        <Dropdown
+            isListExpanded
+            margin={1}
+            onSelect={handleSelect}
+            defaultValue={[4, 5]}
+            options={characters}
+            label="Multiple options"
+            multiple
+            maxWidth="400px"
+            enableSelectAllOption
+            enableSearchOption
+            groups={faction}
+        />
+    );
+};
+
+export const WithGroups = () => {
+    const handleSelect = () => {};
+
+    return (
+        <Dropdown
+            isListExpanded
+            margin={1}
+            onSelect={handleSelect}
+            options={characters}
+            label="Multiple options"
+            multiple
+            maxWidth="400px"
+            enableSelectAllOption
+            enableSearchOption
+            groups={faction}
+        />
+    );
 };

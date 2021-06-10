@@ -29,6 +29,7 @@ export const DropdownTags: FunctionComponent<DropdownTagsPropsType> = ({
                     className={classOverride.Root}
                     theme={theme}
                     key={option.value}
+                    deleteOption={option?.disabled ? 'disabled' : 'enabled'}
                     small
                 />
             ))}
