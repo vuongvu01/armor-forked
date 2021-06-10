@@ -1,3 +1,10 @@
+# @deliveryhero/armor [1.53.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.52.0...@deliveryhero/armor@1.53.0) (2021-06-10)
+
+
+### Features
+
+* **dropdown:** support for disabled option item in the list [LD-492] ([#558](https://github.com/deliveryhero/armor/issues/558)) ([1a30011](https://github.com/deliveryhero/armor/commit/1a300116be48a189410c9c0ce49b8a42850311e0))
+
 # @deliveryhero/armor [1.52.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.51.0...@deliveryhero/armor@1.52.0) (2021-06-08)
 
 
