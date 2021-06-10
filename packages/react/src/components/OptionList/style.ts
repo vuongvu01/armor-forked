@@ -7,6 +7,7 @@ import {
     OptionListItemGroupPropType,
     OptionListRootPropsType,
     OptionListContainerPropsType,
+    OptionListItemTypographyPropsType,
 } from './type';
 import {
     color,
@@ -19,7 +20,6 @@ import {
 } from '../../system';
 import { Search } from '../Search';
 import { Typography } from '../Typography';
-import { TypographyPropsType } from '../Typography/type';
 
 const getOptionListStyle = ({
     isOptionListShown,
@@ -137,10 +137,17 @@ export const OptionListItem = styled.div.withConfig(propsBlocker)<
     ${getComponentOverride('OptionListItem')};
 `;
 
-export const OptionListItemTypography = styled(Typography)<TypographyPropsType>`
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+export const OptionListItemTypography = styled(Typography)<
+    OptionListItemTypographyPropsType
+>`
+    ${({ enableContentEllipsis }) =>
+        enableContentEllipsis !== false
+            ? css`
+                  white-space: nowrap;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+              `
+            : ''};
 `;
 
 const getSearchSuggestionListGroupDynamicStyle = ({

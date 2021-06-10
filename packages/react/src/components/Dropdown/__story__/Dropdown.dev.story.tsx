@@ -1303,3 +1303,35 @@ export const StickySearchField = () => {
         </>
     );
 };
+
+const longOptions = [
+    {
+        value: 1,
+        label: 'Bacolod - Bacolod City, Silay city, Tailisay City',
+    },
+    {
+        value: 2,
+        label:
+            'Another very long group with optional and mandatory amusingly long words',
+    },
+];
+
+export const MultilineOptions = () => {
+    const handleSelect = (option: any) => {
+        console.log('story handleSelect', { option });
+    };
+
+    return (
+        <Dropdown
+            margin={1}
+            onSelect={handleSelect}
+            options={longOptions}
+            label="Multiple options"
+            multiple
+            maxWidth="400px"
+            enableSelectAllOption
+            enableSearchOption
+            enableOptionContentEllipsis={false}
+        />
+    );
+};
