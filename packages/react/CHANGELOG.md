@@ -1,3 +1,17 @@
+# @deliveryhero/armor [1.54.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.53.0...@deliveryhero/armor@1.54.0) (2021-06-11)
+
+
+### Bug Fixes
+
+* **button:** Like disabled button appearance [LD-525] ([#581](https://github.com/deliveryhero/armor/issues/581)) ([e5f40b1](https://github.com/deliveryhero/armor/commit/e5f40b10b04a00593793172bf8d4b231c7006aef))
+* **dropdown:** Option content wrapping in Dropdown and Search [LD-517] ([#583](https://github.com/deliveryhero/armor/issues/583)) ([502406f](https://github.com/deliveryhero/armor/commit/502406f1a44a3dde65e89cde7ed59f4e4fb272df))
+* **fileuploadbutton:** Tooltip works correctly with FileUploadButton ([#584](https://github.com/deliveryhero/armor/issues/584)) ([9a8a4d3](https://github.com/deliveryhero/armor/commit/9a8a4d351e3a0f42abcdd49995c89c06b24f994f))
+
+
+### Features
+
+* **css:** FontLoader component to load Roboto font ([#585](https://github.com/deliveryhero/armor/issues/585)) ([61b97f9](https://github.com/deliveryhero/armor/commit/61b97f9c70a909360710bc6d05a70e183797f44d))
+
 # @deliveryhero/armor [1.53.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.52.0...@deliveryhero/armor@1.53.0) (2021-06-10)
 
 
