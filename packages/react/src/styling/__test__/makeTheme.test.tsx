@@ -13,7 +13,7 @@ import {
 import renderer from 'react-test-renderer';
 import { ThemeProvider } from 'styled-components';
 import { armorTheme } from '../../components/Button/helpers/custom-theme';
-import { Button } from '../../components/Button';
+import { Button } from '../../components';
 import { defaultThemeStructure } from '../defaultThemeStructure';
 import { makeTheme } from '..';
 
@@ -60,13 +60,13 @@ const preCreatedHybridTheme = makeTheme({
 const expectToHaveStyleRules = (
     tree: any,
     borderRadius: string,
-    padding = '16px',
+    padding = '12px 16px',
     fontFamily = 'Roboto,sans-serif',
 ) => {
     // @ts-ignore
     expect(tree).toHaveStyleRule('border-radius', borderRadius);
     // @ts-ignore
-    expect(tree).toHaveStyleRule('padding-left', padding);
+    expect(tree).toHaveStyleRule('padding', padding);
     // @ts-ignore
     expect(tree).toHaveStyleRule('font-family', fontFamily);
 };
@@ -147,7 +147,7 @@ describe('makeTheme()', () => {
         expectToHaveStyleRules(
             tree,
             defaultThemeStructure.shape.borderRadius.sharp,
-            '16px',
+            '12px 16px',
             'Comic Sans MS,sans-serif',
         );
     });
@@ -163,7 +163,12 @@ describe('makeTheme()', () => {
             )
             .toJSON();
 
-        expectToHaveStyleRules(tree, '100px', '12px', 'Segoe UI,sans-serif');
+        expectToHaveStyleRules(
+            tree,
+            '100px',
+            '9px 12px',
+            'Segoe UI,sans-serif',
+        );
     });
 
     it('should apply custom theme when a pre-created theme is provided in SC context', async () => {
@@ -175,7 +180,7 @@ describe('makeTheme()', () => {
             )
             .toJSON();
 
-        expectToHaveStyleRules(tree, '100px', '12px');
+        expectToHaveStyleRules(tree, '100px', '9px 12px');
     });
 
     it('should apply custom theme when a pre-created hybrid theme is provided in SC context', async () => {
@@ -187,6 +192,6 @@ describe('makeTheme()', () => {
             )
             .toJSON();
 
-        expectToHaveStyleRules(tree, '100px', '12px');
+        expectToHaveStyleRules(tree, '100px', '9px 12px');
     });
 });

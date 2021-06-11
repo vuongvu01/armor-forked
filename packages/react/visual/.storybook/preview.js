@@ -1,3 +1,6 @@
+import React from 'react';
+import { addDecorator } from '@storybook/react';
+import { FontLoader } from '../../src';
 import 'loki/configure-react';
 import { MINIMAL_VIEWPORTS } from '@storybook/addon-viewport';
 
@@ -23,3 +26,12 @@ export const parameters = {
         },
     },
 };
+
+const fontDecorator = Story => (
+    <>
+        <FontLoader />
+        <Story />
+    </>
+);
+
+addDecorator(fontDecorator);

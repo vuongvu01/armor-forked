@@ -34,6 +34,7 @@ export const useDropdown = <E extends HTMLInputElement>(
         enableSelectAllOption,
         selectAllLabel,
         enableSearchOption,
+        enableOptionContentEllipsis,
         searchPlaceholder,
         defaultSearchQuery,
         tagLabelMaxLength,
@@ -211,6 +212,7 @@ export const useDropdown = <E extends HTMLInputElement>(
             defaultSearchQuery,
             enableAbsolutePositioning: false,
             groups,
+            enableOptionContentEllipsis,
         },
         arrowProps,
         dropdownExpansionIndicatorProps: {

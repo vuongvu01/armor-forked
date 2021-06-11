@@ -100,6 +100,7 @@ export type DropdownEffectivePropsType = Partial<{
     searchPlaceholder: string;
     defaultSearchQuery: string;
     enableSearchOption: boolean;
+    enableOptionContentEllipsis: boolean;
     singleLine: boolean;
     tagLabelMaxLength: number;
     openTagsCount: number;

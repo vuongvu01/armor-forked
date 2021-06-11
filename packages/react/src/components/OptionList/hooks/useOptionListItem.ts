@@ -8,6 +8,7 @@ export const useOptionListItem = ({
     item,
     multiple,
     checkedIcon,
+    enableContentEllipsis,
     ...restProps
 }: OptionListItemPropsType) => {
     const handleItemClick = useCallback(
@@ -40,6 +41,7 @@ export const useOptionListItem = ({
             tag: 'div',
             maxLines: 2,
             disabled: item?.disabled,
+            enableContentEllipsis,
         },
         multiple,
         label: item.label,

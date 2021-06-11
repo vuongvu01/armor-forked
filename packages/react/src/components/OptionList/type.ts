@@ -12,6 +12,7 @@ import {
 } from '../Dropdown/type';
 import { CheckedIconType } from '../Checkbox/type';
 import { ComponentElementStylePropsType } from '../type';
+import { TypographyPropsType } from '../Typography/type';
 
 export type ClassBasedOnComponentType = {
     component: string;
@@ -33,6 +34,7 @@ export type OptionListGroupObjectIndexType = ObjectLiteralType<
     OptionListGroupObjectType
 >;
 
+/** 👉 PROPS TYPE */
 export type OptionListPropsType = {
     disabled?: boolean;
     internalValue: DropdownInternalValueType;
@@ -55,6 +57,7 @@ export type OptionListPropsType = {
         isFlat?: boolean,
     ) => void;
     onChange?: (event: DropdownOnChangeEventType) => void;
+    enableOptionContentEllipsis?: boolean;
 } & Pick<
     DropdownEffectivePropsType,
     | 'options'
@@ -78,13 +81,21 @@ export type OptionListContainerPropsType = ComponentElementStylePropsType;
 
 export type OptionListBeforeSectionContainerPropsType = {} & ObjectLiteralType;
 
+/** 👉 PROPS TYPE */
 export type OptionListItemPropsType = {
     isSelected?: boolean;
     item: OptionObjectType;
     onOptionSelect?: (item: OptionObjectType) => void;
     checkedIcon?: CheckedIconType;
+    enableContentEllipsis?: boolean;
 } & Pick<DropdownEffectivePropsType, 'className' | 'multiple'> &
     HTMLAttributes<HTMLDivElement>;
+
+export type OptionListItemTypographyPropsType = Pick<
+    OptionListItemPropsType,
+    'enableContentEllipsis'
+> &
+    TypographyPropsType;
 
 export type OptionListSearchPropsType = {
     searchPlaceholder?: string;
