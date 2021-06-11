@@ -2,7 +2,11 @@ import styled, { css } from 'styled-components';
 import { ReactElement } from 'react';
 
 import { ButtonRootPropsType } from './type';
-import { durationRegular } from '../../tokens';
+import {
+    componentSpacing02,
+    componentSpacing03,
+    componentSpacing04,
+} from '../../tokens';
 import {
     reset,
     propsBlocker,
@@ -10,64 +14,206 @@ import {
     marginAttributes,
     paddingAttributes,
     widthAttributes,
+    transition,
+    typography,
+    token,
+    spacing,
+    color,
 } from '../../system';
 
-const getRootBasicStyle = ({ theme }: ButtonRootPropsType) => css<
-    ButtonRootPropsType
->`
-    transition: background-color ${durationRegular}ms ease,
-        border-color ${durationRegular}ms ease, color ${durationRegular}ms ease;
-    ${theme.componentOverrides.Button.Root.base}
+const getPrimaryInitialColors = () => css`
+    color: ${color('neutral.00')};
+    border-color: ${color('primary.main')};
+    background-color: ${color('primary.main')};
 `;
 
-const getRootDynamicVisualStyle = ({
-    theme: {
-        componentOverrides: { Button },
-    },
-    secondary,
-    tertiary,
-}: ButtonRootPropsType) => {
-    if (secondary) {
-        return Button.Root.secondary;
-    }
+const getTertiaryInitialColors = () => css`
+    color: ${color('primary.main')};
+`;
 
-    if (tertiary) {
-        return Button.Root.tertiary;
-    }
+const getPrimaryDangerInitialColors = () => css`
+    border-color: ${color('error.main')};
+    background-color: ${color('error.main')};
+`;
 
-    return Button.Root.primary;
-};
+const getTertiaryDangerInitialColors = () => css`
+    color: ${color('error.main')};
+`;
 
-const getRootDynamicVisualDangerStyle = ({
+const getPrimarySecondaryDisabledColors = () => css`
+    color: ${color('neutral.04')};
+    border-color: ${color('neutral.03')};
+    background-color: ${color('neutral.03')};
+`;
+
+const getDynamicStyle = ({
     theme: {
         componentOverrides: { Button },
     },
     secondary,
     tertiary,
     danger,
+    small,
+    disabled,
+    likeDisabled,
 }: ButtonRootPropsType) => {
-    if (!danger) {
-        return '';
-    }
+    let result = {};
 
     if (secondary) {
-        return Button.Root.secondary__danger;
+        result = css`
+            color: ${color('primary.main')};
+            border-color: ${color('primary.main')};
+            background-color: transparent;
+
+            &:hover {
+                color: ${color('primary.light')};
+                border-color: ${color('primary.light')};
+                background-color: ${color('primary.lightest')};
+            }
+            &:focus {
+                color: ${color('primary.light')};
+                border-color: ${color('primary.light')};
+            }
+            &:active {
+                color: ${color('primary.dark')};
+                border-color: ${color('primary.dark')};
+            }
+            ${Button.Root.secondary};
+        `;
+    } else if (tertiary) {
+        result = css`
+            ${getTertiaryInitialColors};
+            &:hover,
+            &:focus {
+                color: ${color('primary.light')};
+            }
+            &:active {
+                color: ${color('primary.dark')};
+            }
+            &:focus:not(:active) {
+                ${getTertiaryInitialColors};
+            }
+            ${Button.Root.tertiary};
+        `;
+    } else {
+        result = css`
+            ${getPrimaryInitialColors};
+            &:hover,
+            &:focus {
+                color: ${color('neutral.00')};
+                border-color: ${color('primary.light')};
+                background-color: ${color('primary.light')};
+            }
+            &:active {
+                color: ${color('neutral.00')};
+                border-color: ${color('primary.dark')};
+                background-color: ${color('primary.dark')};
+            }
+            &:focus:not(:active) {
+                ${getPrimaryInitialColors};
+            }
+            ${Button.Root.primary};
+        `;
     }
 
-    if (tertiary) {
-        return Button.Root.tertiary__danger;
+    if (danger) {
+        if (secondary) {
+            result = css`
+                ${result};
+                color: ${color('error.main')};
+                border-color: ${color('error.main')};
+
+                &:hover,
+                &:focus {
+                    color: ${color('error.light')};
+                    border-color: ${color('error.light')};
+                }
+                &:active {
+                    color: ${color('error.dark')};
+                    border-color: ${color('error.dark')};
+                }
+                ${Button.Root.secondary__danger};
+            `;
+        } else if (tertiary) {
+            result = css`
+                ${result};
+                ${getTertiaryDangerInitialColors};
+                &:hover,
+                &:focus,
+                &:active {
+                    color: ${color('error.main')};
+                }
+                &:disabled {
+                    color: ${color('neutral.04')};
+                }
+                &:focus:not(:active) {
+                    ${getTertiaryDangerInitialColors};
+                }
+                ${Button.Root.tertiary__danger};
+            `;
+        } else {
+            result = css`
+                ${result};
+                ${getPrimaryDangerInitialColors};
+                &:hover,
+                &:focus {
+                    border-color: ${color('error.light')};
+                    background-color: ${color('error.light')};
+                }
+                &:active {
+                    border-color: ${color('error.dark')};
+                    background-color: ${color('error.dark')};
+                }
+                &:focus:not(:active) {
+                    ${getPrimaryDangerInitialColors};
+                }
+                ${Button.Root.primary__danger};
+            `;
+        }
     }
 
-    // primary by default
-    return Button.Root.primary__danger;
+    if (small) {
+        result = css`
+            ${result};
+            padding-top: ${componentSpacing02};
+            padding-bottom: ${componentSpacing02};
+            ${Button.Root.small};
+        `;
+    }
+
+    if (disabled || likeDisabled) {
+        result = css`
+            ${result};
+            cursor: not-allowed;
+        `;
+
+        if (tertiary) {
+            result = css`
+                ${result};
+                color: ${color('neutral.04')};
+                &:hover,
+                &:focus,
+                &:active,
+                &:focus:not(:active) {
+                    color: ${color('neutral.04')};
+                }
+            `;
+        } else {
+            result = css`
+                ${result};
+                ${getPrimarySecondaryDisabledColors};
+                &:hover,
+                &:focus,
+                &:active,
+                &:focus:not(:active) {
+                    ${getPrimarySecondaryDisabledColors};
+                }
+            `;
+        }
+    }
+
+    return result;
 };
-
-const getRootDynamicSizeStyle = ({
-    theme: {
-        componentOverrides: { Button },
-    },
-    small,
-}: ButtonRootPropsType) => (small ? Button.Root.small : '');
 
 const Wrapper = ({
     children,
@@ -88,7 +234,7 @@ export const ButtonRoot = styled(Wrapper).withConfig(propsBlocker)<
     display: inline-flex;
     justify-content: center;
     outline: none;
-    padding: 0;
+    padding: ${spacing(componentSpacing03)} ${spacing(componentSpacing04)};
     position: relative;
     text-align: center;
     text-decoration: none;
@@ -96,19 +242,30 @@ export const ButtonRoot = styled(Wrapper).withConfig(propsBlocker)<
     user-select: none;
     vertical-align: middle;
 
-    &:hover, &:focus, &:disabled, &:active, &:visited {
+    &:hover,
+    &:focus,
+    &:disabled,
+    &:active,
+    &:visited {
         text-decoration: none;
         outline: none;
     }
-    
-    &:disabled {
-        cursor: not-allowed;
-    }
 
-    ${getRootBasicStyle}
-    ${getRootDynamicVisualStyle}
-    ${getRootDynamicSizeStyle}
-    ${getRootDynamicVisualDangerStyle}
+    ${typography('labelMedium')};
+    ${transition({
+        'background-color': true,
+        'border-color': true,
+        color: true,
+    })};
+
+    border-radius: ${token('shape.borderRadius.soft')};
+    background-color: transparent;
+
+    font-family: ${token('typography.body.fontFamily')}, sans-serif; // deprecated
+    ${({ theme }: ButtonRootPropsType) =>
+        theme.componentOverrides.Button.Root.base}; // deprecated
+
+    ${getDynamicStyle};
     ${getComponentOverride('Button')};
     ${marginAttributes};
     ${paddingAttributes};

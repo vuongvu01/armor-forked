@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 
 import { makeBEM, makeRootClassName } from '../../../utils';
 
-const useButtonClassName = (
+export const useButtonClassName = (
     classPrefix: string,
     className?: string,
     disabled?: boolean,
@@ -50,5 +50,3 @@ const useButtonClassName = (
         tertiary,
         danger,
     ]);
-
-export default useButtonClassName;

@@ -25,6 +25,7 @@ type ButtonEffectivePropsType = Partial<{
     small: boolean;
     wide: boolean;
     to: string;
+    likeDisabled: boolean;
     // add other custom properties here
 }> &
     ButtonHTMLAttributes<HTMLButtonElement> & // includes all HTML Button attributes

@@ -2,62 +2,35 @@ import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { useComponentTheme } from '../../utils/hooks';
 
-import { useButtonClassName } from './utils';
+import { useButtonClassName } from './hooks/useButtonClassName';
 import { ButtonRoot } from './style';
 import { ButtonPropsType } from './type';
 import { buttonDefaultTheme } from './theme';
 import { BUTTON_CLASS_PREFIX } from './constants';
+import { useButton } from './hooks/useButton';
 
 export const Button = forwardRef<HTMLButtonElement, ButtonPropsType>(
-    function Button(
-        {
-            className,
-            tag: Tag = 'button',
-            small,
-            wide,
-            disabled,
-            primary,
-            secondary,
-            tertiary,
-            danger,
-            children,
-            ...restProps
-        },
-        ref,
-    ) {
+    function Button({ className, children, ...props }, ref) {
         const theme = useComponentTheme(
             BUTTON_CLASS_PREFIX,
             buttonDefaultTheme,
         );
 
+        const { rootProps, tagProps, classNameProps, Tag } = useButton(
+            props,
+            ref,
+        );
+
         const classNameRoot = useButtonClassName(
             BUTTON_CLASS_PREFIX,
             className,
-            disabled,
-            small,
-            wide,
-            primary,
-            secondary,
-            tertiary,
-            danger,
+            ...classNameProps,
         );
 
-        // todo: forward only className here, it will be more efficient and neat
         return (
-            <ButtonRoot
-                {...restProps}
-                disabled={disabled}
-                small={small}
-                wide={wide}
-                primary={primary}
-                secondary={secondary}
-                tertiary={tertiary}
-                danger={danger}
-                theme={theme}
-                className={classNameRoot}
-            >
+            <ButtonRoot {...rootProps} theme={theme} className={classNameRoot}>
                 {(forwardedProps: ButtonPropsType) => (
-                    <Tag {...forwardedProps} ref={ref}>
+                    <Tag {...forwardedProps} {...tagProps}>
                         {children}
                     </Tag>
                 )}

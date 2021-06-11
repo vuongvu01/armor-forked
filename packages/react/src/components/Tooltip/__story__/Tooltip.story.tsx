@@ -285,3 +285,11 @@ export const OnFileUploader = () => {
         </div>
     );
 };
+
+export const OnDisabledButton = () => {
+    return (
+        <Tooltip content="Dummy Text">
+            <Button likeDisabled>Disabled button</Button>
+        </Tooltip>
+    );
+};

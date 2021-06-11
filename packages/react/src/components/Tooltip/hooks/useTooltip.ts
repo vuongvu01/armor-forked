@@ -70,8 +70,8 @@ export const useTooltip = <E extends HTMLDivElement>(
 
         return React.cloneElement(validTrigger, {
             ref: triggerRef,
-            onMouseOver: onMouseOverProxy,
-            onMouseOut: onMouseOutProxy,
+            onMouseEnter: onMouseOverProxy,
+            onMouseLeave: onMouseOutProxy,
         });
     }, [validTrigger, triggerRef, onMouseOverProxy, onMouseOutProxy]);
 

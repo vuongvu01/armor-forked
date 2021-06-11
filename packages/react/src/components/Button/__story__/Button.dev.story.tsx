@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
 import {
-    withKnobs,
-    text,
     boolean,
-    number,
     select,
     // eslint-disable-next-line import/no-unresolved
 } from '@storybook/addon-knobs';
 import { EditIcon } from '@deliveryhero/armor-icons';
 // eslint-disable-next-line import/no-unresolved
-import { action } from '@storybook/addon-actions';
 import styled, { ThemeProvider } from 'styled-components';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { withStyles as withMaterialStyles } from '@material-ui/core/styles';
@@ -28,7 +24,7 @@ import { withWrapper } from '../../../helpers/Wrapper';
 export default {
     title: 'Components/Button',
     component: Button,
-    decorators: [withKnobs, withWrapper],
+    decorators: [withWrapper],
     parameters: {},
 };
 
@@ -190,36 +186,9 @@ export const AllStates = () => {
     );
 };
 
-export const Playground = () => (
-    <Button
-        {...getTypeAttributes(select('Type', optionsType, 'primary'))}
-        tag={select('Tag', optionsTag, 'button') as ButtonTagType}
-        wide={boolean('Wide', false)}
-        small={boolean('Small', false)}
-        disabled={boolean('Disabled', false)}
-        onClick={action('button-click')}
-        href="https://google.com"
-        target="_blank"
-        className="custom-class-name"
-    >
-        {text('Label', 'Primary button')}
-    </Button>
-);
-
 export const AsLink = () => (
     <Button tag="a" href="https://www.google.com/" target="_blank">
         Open Google
-    </Button>
-);
-
-export const WithMargins = () => (
-    <Button
-        marginTop={number('Margin top', 0)}
-        marginBottom={number('Margin bottom', 0)}
-        marginLeft={number('Margin left', 0)}
-        marginRight={number('Margin right', 0)}
-    >
-        Primary button
     </Button>
 );
 
