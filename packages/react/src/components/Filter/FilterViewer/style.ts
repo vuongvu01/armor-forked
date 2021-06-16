@@ -4,6 +4,7 @@ import {
     FilterViewerTopBarPropsType,
     FilterViewerActionsPropsType,
     FilterViewConditionsPropsType,
+    FilterViewerAddFilterHintPropsType,
 } from './type';
 import {
     marginAttributes,
@@ -14,6 +15,7 @@ import {
     spacing,
     notLastChild,
     paddingAttributes,
+    color,
 } from '../../../system';
 
 /** 👉 ROOT ELEMENT */
@@ -22,6 +24,8 @@ export const FilterViewerRoot = styled.div.withConfig(propsBlocker)<
 >`
     ${reset};
     ${typography('paragraphMedium')};
+    border-bottom: 1px solid ${color('neutral.03')};
+    padding-bottom: ${spacing(6)};
 
     ${getComponentOverride('FilterViewer')};
     ${marginAttributes};
@@ -55,4 +59,10 @@ export const FilterViewConditions = styled.div.withConfig(propsBlocker)<
     flex-wrap: wrap;
     margin-bottom: ${spacing(-2)};
     margin-right: ${spacing(-2)};
+`;
+
+export const FilterViewerAddFilterHint = styled.div.withConfig(propsBlocker)<
+    FilterViewerAddFilterHintPropsType
+>`
+    color: ${color('neutral.05')};
 `;

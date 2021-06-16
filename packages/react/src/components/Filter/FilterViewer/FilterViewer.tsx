@@ -7,6 +7,7 @@ import {
     FilterViewerActions,
     FilterViewerRoot,
     FilterViewerTopBar,
+    FilterViewerAddFilterHint,
 } from './style';
 import { FilterViewerPropsType } from './type';
 import { FILTER_VIEWER_CLASS_PREFIX } from './constants';
@@ -16,7 +17,7 @@ import { ContextMenu } from '../../ContextMenu';
 import { Link } from '../../Link';
 import { Button } from '../../Button';
 import { pluralize } from '../../../system/util/pluralize';
-import { ConditionTag } from '../../ConditionTag/ConditionTag';
+import { ConditionTag } from '../../ConditionTag';
 
 export const FilterViewer = forwardRef<HTMLDivElement, FilterViewerPropsType>(
     function FilterViewer({ className, ...props }, ref) {
@@ -28,7 +29,8 @@ export const FilterViewer = forwardRef<HTMLDivElement, FilterViewerPropsType>(
 
         const {
             rootProps,
-            openFilterButtonProps,
+            getOpenFilterButtonProps,
+            getEditFilterButtonProps,
             clearFilterButtonProps,
             confirmationDialogProps,
             clearFilterCancelButtonProps,
@@ -38,6 +40,8 @@ export const FilterViewer = forwardRef<HTMLDivElement, FilterViewerPropsType>(
             empty,
             schema,
             isConditionValueEmpty,
+            showAddFilterButton,
+            showAddFilterHint,
         } = useFilterViewer<HTMLDivElement>(props, ref);
 
         return (
@@ -46,14 +50,22 @@ export const FilterViewer = forwardRef<HTMLDivElement, FilterViewerPropsType>(
                 theme={theme}
                 className={classNames.Root}
             >
-                {empty && (
+                {showAddFilterButton && (
                     <Button
                         secondary
-                        {...openFilterButtonProps}
+                        {...getOpenFilterButtonProps()}
                         className={classNames.AddFiltersButton}
                     >
                         Add filters
                     </Button>
+                )}
+                {showAddFilterHint && (
+                    <FilterViewerAddFilterHint
+                        theme={theme}
+                        className={classNames.AddFilterHint}
+                    >
+                        Add your filter to refine the results
+                    </FilterViewerAddFilterHint>
                 )}
                 {!empty && (
                     <>
@@ -78,7 +90,7 @@ export const FilterViewer = forwardRef<HTMLDivElement, FilterViewerPropsType>(
                                 className={classNames.Actions}
                             >
                                 <Link
-                                    {...openFilterButtonProps}
+                                    {...getEditFilterButtonProps()}
                                     className={classNames.EditFiltersButton}
                                 >
                                     Edit filters
