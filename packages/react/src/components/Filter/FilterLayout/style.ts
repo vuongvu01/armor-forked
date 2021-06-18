@@ -50,5 +50,5 @@ export const FilterLayoutLeftBarContainer = styled.div.withConfig(propsBlocker)<
 export const FilterLayoutMain = styled.div.withConfig(propsBlocker)<
     FilterLayoutMainPropsType
 >`
-    flex: 0 1 auto;
+    flex: 1 1 auto;
 `;

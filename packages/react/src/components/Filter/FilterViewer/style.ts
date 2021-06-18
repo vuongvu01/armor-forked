@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import {
     FilterViewerRootPropsType,
     FilterViewerTopBarPropsType,
+    FilterViewerTopBarSummaryPropsType,
     FilterViewerActionsPropsType,
     FilterViewConditionsPropsType,
     FilterViewerAddFilterHintPropsType,
@@ -40,6 +41,10 @@ export const FilterViewerTopBar = styled.div.withConfig(propsBlocker)<
     align-items: center;
     margin-bottom: ${spacing(6)};
 `;
+
+export const FilterViewerTopBarSummary = styled.div.withConfig(propsBlocker)<
+    FilterViewerTopBarSummaryPropsType
+>``;
 
 export const FilterViewerActions = styled.div.withConfig(propsBlocker)<
     FilterViewerActionsPropsType

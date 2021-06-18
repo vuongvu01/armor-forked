@@ -30,6 +30,9 @@ type FilterViewerEffectivePropsType = Partial<{
     onFilterOpenButtonClick: () => void;
     filterOpen: boolean;
 
+    resultCount: number;
+    resultTotalCount: number;
+
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
@@ -43,6 +46,8 @@ export type FilterViewerRootPropsType = FilterViewerEffectivePropsType &
     ComponentElementStylePropsType;
 
 export type FilterViewerTopBarPropsType = ComponentElementStylePropsType;
+
+export type FilterViewerTopBarSummaryPropsType = ComponentElementStylePropsType;
 
 export type FilterViewerActionsPropsType = ComponentElementStylePropsType;
 
