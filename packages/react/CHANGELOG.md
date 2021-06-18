@@ -1,3 +1,16 @@
+# @deliveryhero/armor [1.55.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.54.0...@deliveryhero/armor@1.55.0) (2021-06-18)
+
+
+### Bug Fixes
+
+* **filter:** Filter minor fixes [LD-530] ([#595](https://github.com/deliveryhero/armor/issues/595)) ([54d4dc4](https://github.com/deliveryhero/armor/commit/54d4dc462fb71cd69bd088acba771895ea12a634))
+* **switch:** uncontrolled state ([#591](https://github.com/deliveryhero/armor/issues/591)) ([46893a0](https://github.com/deliveryhero/armor/commit/46893a086060bd78fb94d8da1242cd530837990c))
+
+
+### Features
+
+* **FontDisplay:** enable `font-display: swap` ([#597](https://github.com/deliveryhero/armor/issues/597)) ([74ebfd8](https://github.com/deliveryhero/armor/commit/74ebfd818d2b5ca7aaad308e1a1d143ffd227174))
+
 # @deliveryhero/armor [1.54.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.53.0...@deliveryhero/armor@1.54.0) (2021-06-11)
 
 
