@@ -35,5 +35,6 @@ export const useFilterViewerClassNames = (
                 'ClearFiltersConfirmationConfirmButton',
             ),
             Conditions: makeBEM(classPrefix, 'Conditions'),
+            AddFilterHint: makeBEM(classPrefix, 'AddFilterHint'),
         };
     }, [classPrefix, className]);

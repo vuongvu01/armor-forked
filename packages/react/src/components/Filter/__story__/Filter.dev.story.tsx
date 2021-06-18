@@ -163,6 +163,7 @@ export const Basic = () => {
                 onValueChange={setFilterValueCommon}
                 marginTop={6}
                 onFilterOpenButtonClick={() => setOpen(true)}
+                filterOpen={open}
             />
             <FilterTable />
         </FilterLayout>

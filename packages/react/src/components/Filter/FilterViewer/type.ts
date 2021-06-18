@@ -28,6 +28,7 @@ type FilterViewerEffectivePropsType = Partial<{
     // but we might still be interested in the "initialValue" as well.
     initialValue: FilterConditionValueType;
     onFilterOpenButtonClick: () => void;
+    filterOpen: boolean;
 
     // add other custom properties here
 }> &
@@ -46,3 +47,5 @@ export type FilterViewerTopBarPropsType = ComponentElementStylePropsType;
 export type FilterViewerActionsPropsType = ComponentElementStylePropsType;
 
 export type FilterViewConditionsPropsType = ComponentElementStylePropsType;
+
+export type FilterViewerAddFilterHintPropsType = ComponentElementStylePropsType;

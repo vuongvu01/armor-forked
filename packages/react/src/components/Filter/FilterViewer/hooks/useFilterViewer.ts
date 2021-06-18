@@ -27,6 +27,7 @@ export const useFilterViewer = <E extends HTMLElement>(
         defaultValue,
         onValueChange,
         initialValue,
+        filterOpen,
         ...restProps
     }: FilterViewerPropsType,
     ref: RefType<E>,
@@ -97,14 +98,19 @@ export const useFilterViewer = <E extends HTMLElement>(
     const realValueSafe =
         realValue && realValue.conditions ? realValue : FILTER_EMPTY;
 
+    const empty = !rootConditionsCount;
+
     return {
         rootProps: {
             ...restProps,
             ref: innerRef,
         },
-        openFilterButtonProps: {
+        getOpenFilterButtonProps: () => ({
             onClick: onFilterOpenButtonClick,
-        },
+        }),
+        getEditFilterButtonProps: () => ({
+            onClick: onFilterOpenButtonClick,
+        }),
         clearFilterButtonProps: {
             onClick: setDialogOpenTrue,
         },
@@ -119,7 +125,9 @@ export const useFilterViewer = <E extends HTMLElement>(
             onClick: onClearFilterConfirmButtonClick,
         },
         rootConditionsCount,
-        empty: !rootConditionsCount,
+        empty,
+        showAddFilterButton: filterOpen ? false : empty,
+        showAddFilterHint: !filterOpen ? false : empty,
         schema: schemaSafe,
         isConditionValueEmpty: (
             condition: FilterConditionSchemaType,

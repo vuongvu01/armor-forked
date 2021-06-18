@@ -105,7 +105,6 @@ export const Switch = forwardRef<HTMLInputElement, SwitchPropsType>(
 Switch.displayName = SWITCH_CLASS_PREFIX;
 
 Switch.defaultProps = {
-    checked: false,
     disabled: false,
 };
 

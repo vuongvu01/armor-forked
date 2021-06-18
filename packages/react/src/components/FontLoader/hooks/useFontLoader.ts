@@ -15,7 +15,7 @@ export const useFontLoader = () => {
                 head[0].appendChild(
                     createElement(
                         win,
-                        `<link id="${linkElementId}" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet" />`,
+                        `<link id="${linkElementId}" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet" />`,
                     ),
                 );
             }
