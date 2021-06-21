@@ -1,3 +1,16 @@
+# @deliveryhero/armor [1.56.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.55.0...@deliveryhero/armor@1.56.0) (2021-06-21)
+
+
+### Bug Fixes
+
+* **tag:** Tag fix when children equal to 0  [LD-538] ([#608](https://github.com/deliveryhero/armor/issues/608)) ([eaa757f](https://github.com/deliveryhero/armor/commit/eaa757f2cd7527096724e3b0f93fce431a0b7fe3))
+* **virtualization:** DataTable virtualization reacts on scrolling of a wrapper [LD-534] ([#607](https://github.com/deliveryhero/armor/issues/607)) ([bfd433a](https://github.com/deliveryhero/armor/commit/bfd433af08fda4b2daf42f62348c68ee04a0d8fc))
+
+
+### Features
+
+* **filter:** FilterViewer summary showing N of M results added [LD-536] ([#596](https://github.com/deliveryhero/armor/issues/596)) ([787a834](https://github.com/deliveryhero/armor/commit/787a83497f9e6e9eb53b44b8ed56472fdf4ebe40))
+
 # @deliveryhero/armor [1.55.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.54.0...@deliveryhero/armor@1.55.0) (2021-06-18)
 
 
