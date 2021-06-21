@@ -24,7 +24,7 @@ export const useTag = <E extends HTMLDivElement>(
     if (isStatusTag(type)) {
         realLabel = getStatusTagLabel(type);
     }
-    const content = children || realLabel;
+    const content = children !== undefined ? children : realLabel;
 
     const onCloseButtonClick = useCallback(
         (event: MouseEvent<HTMLDivElement>) => {

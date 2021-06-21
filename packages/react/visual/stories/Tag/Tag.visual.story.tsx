@@ -44,3 +44,7 @@ export const CustomStatusTypeDenied = () => (
 );
 
 export const CustomStatusTypeNew = () => <Tag type="new">Custom new</Tag>;
+
+export const TagWithZero = () => {
+    return <Tag>{0}</Tag>;
+};

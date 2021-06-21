@@ -189,3 +189,7 @@ export const StatusIndicatorComponent = () => {
         </StyledSection>
     );
 };
+
+export const TagWithZero = () => {
+    return <Tag>{0}</Tag>;
+};
