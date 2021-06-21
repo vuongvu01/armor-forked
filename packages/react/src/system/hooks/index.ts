@@ -10,6 +10,6 @@ export * from './useOverlay';
 export * from './usePopper';
 export * from './useRootRef';
 export * from './useVerticalScrollBoundariesObserver';
-export * from './useWindowResizeObserver';
-export * from './useWindowScrollObserver';
+export * from './useResizeObserver';
+export * from './useScrollObserver';
 export * from './useVirtualization';

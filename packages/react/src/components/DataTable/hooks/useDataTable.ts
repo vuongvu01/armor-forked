@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { RefObject, useRef } from 'react';
 import {
     DataTableColumnType,
     DataTableDataType,
@@ -31,6 +31,7 @@ export const useDataTable = (
 
         enableVirtualization,
         averageItemHeight,
+        parentContainerRef,
 
         ...restProps
     }: DataTablePropsType,
@@ -72,6 +73,7 @@ export const useDataTable = (
         {
             averageItemHeight,
             itemSelector: '.DataTable-Row',
+            parentContainerRef: parentContainerRef as RefObject<HTMLElement>,
         },
     );
 

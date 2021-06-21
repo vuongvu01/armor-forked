@@ -164,6 +164,8 @@ export const Basic = () => {
                 marginTop={6}
                 onFilterOpenButtonClick={() => setOpen(true)}
                 filterOpen={open}
+                resultCount={8}
+                resultTotalCount={2500}
             />
             <FilterTable />
         </FilterLayout>

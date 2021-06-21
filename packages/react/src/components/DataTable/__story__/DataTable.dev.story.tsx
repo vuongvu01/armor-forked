@@ -1,6 +1,6 @@
 /* eslint-disable no-console,import/no-unresolved, import/no-extraneous-dependencies */
 
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useRef } from 'react';
 import { withKnobs } from '@storybook/addon-knobs';
 import cloneDeep from 'clone-deep';
 import styled from 'styled-components';
@@ -597,5 +597,32 @@ export const MassiveTableAndExpandableRow = () => {
                 );
             }}
         />
+    );
+};
+
+export const MassiveTableInAWrapper = () => {
+    const wrapperRef = useRef(null);
+    return (
+        <>
+            <br />
+            <br />
+            <br />
+            <br />
+            <div
+                style={{
+                    overflowY: 'scroll',
+                    height: '20rem',
+                    marginTop: '1rem',
+                }}
+                ref={wrapperRef}
+            >
+                <DataTable
+                    columns={columns}
+                    data={massiveData}
+                    enableVirtualization
+                    parentContainerRef={wrapperRef}
+                />
+            </div>
+        </>
     );
 };

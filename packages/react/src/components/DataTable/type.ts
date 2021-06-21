@@ -1,9 +1,9 @@
-import { ComponentType, HTMLAttributes, ReactChild } from 'react';
+import { ComponentType, HTMLAttributes, ReactChild, Ref } from 'react';
 import {
     ComponentElementStylePropsType,
     ComponentStylePropsType,
 } from '../type';
-import { ObjectLiteralType, ScalarType } from '../../type';
+import { ObjectLiteralType, RefType, ScalarType } from '../../type';
 import { TablePropsType, TableCellPropsType } from '../Table';
 import {
     TableHeadCellPropsType,
@@ -94,6 +94,7 @@ type DataTableEffectivePropsType = Partial<{
     // virtualization
     enableVirtualization: boolean;
     averageItemHeight: number;
+    parentContainerRef: RefType<HTMLElement>;
 
     enableHeader: boolean;
 

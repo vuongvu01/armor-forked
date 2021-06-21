@@ -1,12 +1,13 @@
 import { RefObject, useEffect, useMemo, useState } from 'react';
 import { ObjectLiteralType } from '../../type';
 import { getWindow } from '../util/globals';
-import { useWindowResizeObserver } from './useWindowResizeObserver';
-import { useWindowScrollObserver } from './useWindowScrollObserver';
+import { useResizeObserver } from './useResizeObserver';
+import { useScrollObserver } from './useScrollObserver';
 
 type UseVirtualizationProps = Partial<{
     averageItemHeight: number;
     itemSelector: string;
+    parentContainerRef: RefObject<HTMLElement>;
 }>;
 
 type StateType = {
@@ -140,14 +141,26 @@ export const useVirtualization = <
     enabled: boolean,
     containerRef: RefObject<E | undefined>,
     data: D[],
-    { averageItemHeight, itemSelector }: UseVirtualizationProps,
+    {
+        averageItemHeight,
+        itemSelector,
+        parentContainerRef,
+    }: UseVirtualizationProps,
 ) => {
     const [windowHeight, setWindowHeight] = useState(win ? win.innerHeight : 0);
     const [windowOffset, setWindowOffset] = useState(0);
     const [state, setState] = useState<StateType | null>();
 
-    useWindowResizeObserver(enabled, setWindowHeight, undefined, true);
-    useWindowScrollObserver(enabled, setWindowOffset, true);
+    useResizeObserver(enabled, setWindowHeight, undefined, {
+        enableInitialCall: true,
+        containerRef: parentContainerRef,
+        throttleDelay: 100,
+    });
+    useScrollObserver(enabled, setWindowOffset, {
+        enableInitialCall: true,
+        containerRef: parentContainerRef,
+        throttleDelay: 100,
+    });
 
     const itemHeight = useItemHeight<D, E>(
         enabled,

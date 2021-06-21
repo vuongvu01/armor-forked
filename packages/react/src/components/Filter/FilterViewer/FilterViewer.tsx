@@ -8,6 +8,7 @@ import {
     FilterViewerRoot,
     FilterViewerTopBar,
     FilterViewerAddFilterHint,
+    FilterViewerTopBarSummary,
 } from './style';
 import { FilterViewerPropsType } from './type';
 import { FILTER_VIEWER_CLASS_PREFIX } from './constants';
@@ -37,11 +38,15 @@ export const FilterViewer = forwardRef<HTMLDivElement, FilterViewerPropsType>(
             clearFilterConfirmButtonProps,
             getTagProps,
             rootConditionsCount,
-            empty,
+            showSelectedFilter,
+            showResultCount,
+            showResultTotalCount,
             schema,
             isConditionValueEmpty,
             showAddFilterButton,
             showAddFilterHint,
+            resultCountFormatted,
+            resultTotalCountFormatted,
         } = useFilterViewer<HTMLDivElement>(props, ref);
 
         return (
@@ -67,24 +72,44 @@ export const FilterViewer = forwardRef<HTMLDivElement, FilterViewerPropsType>(
                         Add your filter to refine the results
                     </FilterViewerAddFilterHint>
                 )}
-                {!empty && (
+                {showSelectedFilter && (
                     <>
                         <FilterViewerTopBar
                             theme={theme}
                             className={classNames.TopBar}
                         >
-                            <Typography
-                                sectionTitle
-                                tag="div"
-                                className={classNames.TopBarTitle}
+                            <FilterViewerTopBarSummary
+                                theme={theme}
+                                className={classNames.TopBarSummary}
                             >
-                                Applied {rootConditionsCount}{' '}
-                                {pluralize(
-                                    rootConditionsCount,
-                                    'filter',
-                                    'filters',
+                                <Typography
+                                    sectionTitle
+                                    tag="span"
+                                    className={classNames.TopBarTitle}
+                                >
+                                    Applied {rootConditionsCount}{' '}
+                                    {pluralize(
+                                        rootConditionsCount,
+                                        'filter',
+                                        'filters',
+                                    )}
+                                </Typography>
+                                {showResultCount && (
+                                    <Typography
+                                        paragraph
+                                        medium
+                                        tag="span"
+                                        className={classNames.TopBarResultCount}
+                                        marginLeft={6}
+                                    >
+                                        showing {resultCountFormatted}{' '}
+                                        {showResultTotalCount
+                                            ? `out of ${resultTotalCountFormatted}`
+                                            : ''}{' '}
+                                        results
+                                    </Typography>
                                 )}
-                            </Typography>
+                            </FilterViewerTopBarSummary>
                             <FilterViewerActions
                                 theme={theme}
                                 className={classNames.Actions}

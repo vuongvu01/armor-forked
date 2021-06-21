@@ -28,6 +28,8 @@ export const useFilterViewer = <E extends HTMLElement>(
         onValueChange,
         initialValue,
         filterOpen,
+        resultCount,
+        resultTotalCount,
         ...restProps
     }: FilterViewerPropsType,
     ref: RefType<E>,
@@ -125,9 +127,19 @@ export const useFilterViewer = <E extends HTMLElement>(
             onClick: onClearFilterConfirmButtonClick,
         },
         rootConditionsCount,
-        empty,
         showAddFilterButton: filterOpen ? false : empty,
         showAddFilterHint: !filterOpen ? false : empty,
+        showSelectedFilter: !empty,
+        showResultCount: resultCount !== undefined,
+        showResultTotalCount: resultTotalCount !== undefined,
+        resultCountFormatted:
+            resultCount !== undefined
+                ? new Intl.NumberFormat().format(resultCount)
+                : 0,
+        resultTotalCountFormatted:
+            resultTotalCount !== undefined
+                ? new Intl.NumberFormat().format(resultTotalCount)
+                : 0,
         schema: schemaSafe,
         isConditionValueEmpty: (
             condition: FilterConditionSchemaType,
