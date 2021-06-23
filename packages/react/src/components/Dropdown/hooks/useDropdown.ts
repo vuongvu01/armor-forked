@@ -18,6 +18,7 @@ import {
 } from '../../../system';
 import { useOnOptionListUpdate } from './useOnOptionListUpdate';
 import { usePanelWidth } from './usePanelWidth';
+import { MAX_OPTIONS_SELECT_ALL_THRESHOLD } from '../../OptionList/constants';
 
 export const useDropdown = <E extends HTMLInputElement>(
     {
@@ -38,7 +39,8 @@ export const useDropdown = <E extends HTMLInputElement>(
         searchPlaceholder,
         defaultSearchQuery,
         tagLabelMaxLength,
-        openTagsCount = 0,
+        enableVirtualization,
+        openTagsCount = enableVirtualization ? 20 : 10,
         renderAggregatedTagsLabel,
         singleLine,
         zIndex,
@@ -203,9 +205,13 @@ export const useDropdown = <E extends HTMLInputElement>(
             isFlat,
             internalOptions,
             dynamicInternalOptions,
+            enableVirtualization,
             setInternalOptions: setDynamicInternalOptions,
             setSearch: setSearchQuery,
-            enableSelectAllOption,
+            enableSelectAllOption:
+                options && options.length > MAX_OPTIONS_SELECT_ALL_THRESHOLD
+                    ? false
+                    : enableSelectAllOption,
             selectAllLabel,
             enableSearchOption,
             searchPlaceholder,

@@ -1,4 +1,11 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, {
+    RefObject,
+    useCallback,
+    useEffect,
+    useMemo,
+    useRef,
+    useState,
+} from 'react';
 
 import {
     OptionListGroupObjectIndexType,
@@ -9,6 +16,7 @@ import { CheckedIconType } from '../../Checkbox/type';
 import { OPTION_LIST_ITEM } from '../constants';
 import { useOnToggleAll } from '../../Dropdown/hooks';
 import { useOnSearchQueryChange } from './useOnSearchQueryChange';
+import { useVirtualization } from '../../../system';
 
 export const useOptionList = ({
     disabled,
@@ -29,12 +37,29 @@ export const useOptionList = ({
     enableSearchOption,
     searchPlaceholder = 'Search',
     defaultSearchQuery = '',
+    enableVirtualization = false,
     isFlat,
     groups,
     enableOptionContentEllipsis,
     ...restProps
 }: OptionListPropsType) => {
     const [searchQuery, setSearchQuery] = useState(defaultSearchQuery);
+    const listContainerRef = useRef<HTMLDivElement>(null);
+    const listRef = useRef<HTMLDivElement>(null);
+
+    const {
+        data: virtualData,
+        bottomOffset: virtualBottomOffset,
+        topOffset: virtualTopOffset,
+    } = useVirtualization<OptionObjectType, HTMLDivElement>(
+        enableVirtualization,
+        listRef,
+        dynamicInternalOptions,
+        {
+            itemSelector: '.OptionListItem-Root',
+            parentContainerRef: listContainerRef as RefObject<HTMLElement>,
+        },
+    );
 
     useEffect(() => {
         if (setSearch) {
@@ -156,14 +181,29 @@ export const useOptionList = ({
             onChange: handleSearchChange,
             defaultQuery: searchQuery,
         }),
+        listContainerProps: {
+            ref: listContainerRef,
+        },
+        listProps: {
+            ref: listRef,
+        },
+
+        enableVirtualization,
+        getVirtualTopSpaceProps: () => ({ height: virtualTopOffset }),
+        getVirtualBottomSpaceProps: () => ({
+            height: virtualBottomOffset,
+        }),
+
         internalOptions,
-        dynamicInternalOptions,
+        dynamicInternalOptions:
+            enableVirtualization && virtualData && virtualData.length
+                ? virtualData
+                : dynamicInternalOptions,
         disabled,
         internalValue,
         multiple,
         enableSelectAllOption,
         enableSearchOption,
-        searchQuery,
         isOptionListHeaderRendered: enableSelectAllOption || enableSearchOption,
         isSelectAllOptionRendered:
             enableSelectAllOption && multiple && !searchQuery,

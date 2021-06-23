@@ -67,6 +67,7 @@ export type OptionListPropsType = {
     | 'enableSearchOption'
     | 'selectAllLabel'
     | 'searchPlaceholder'
+    | 'enableVirtualization'
     | 'defaultSearchQuery'
 > &
     Omit<HTMLAttributes<HTMLDivElement>, 'onChange'>;
@@ -106,3 +107,7 @@ export type DropdownOnSearchQueryChangeType = (searchQuery?: string) => void;
 export type OptionListItemGroupPropType = {
     enableSeparator: boolean;
 };
+
+export type OptionListVirtualOffsetType = {
+    height: number;
+} & ComponentElementStylePropsType;

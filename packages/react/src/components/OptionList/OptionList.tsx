@@ -1,16 +1,17 @@
-import React, { FunctionComponent, Fragment } from 'react';
+import React, { Fragment, FunctionComponent } from 'react';
 import {
+    OptionListGroupObjectType,
     OptionListPropsType,
     OptionObjectType,
-    OptionListGroupObjectType,
 } from './type';
 import {
     OptionListBeforeSectionContainer,
+    OptionListContainer,
+    OptionListItemGroup,
     OptionListRoot,
     OptionListSearch,
     OptionListSearchContainer,
-    OptionListItemGroup,
-    OptionListContainer,
+    OptionListVirtualPadding,
 } from './style';
 import { OPTION_LIST_CLASS_PREFIX } from './constants';
 import { OptionListItem } from './OptionListItem';
@@ -29,6 +30,12 @@ export const OptionList: FunctionComponent<OptionListPropsType> = ({
         getOptionItemProps,
         getSelectAllItemProps,
         getOptionListSearchProps,
+        listContainerProps,
+        listProps,
+
+        enableVirtualization,
+        getVirtualTopSpaceProps,
+        getVirtualBottomSpaceProps,
 
         internalOptions,
         dynamicInternalOptions,
@@ -76,6 +83,7 @@ export const OptionList: FunctionComponent<OptionListPropsType> = ({
             <OptionListContainer
                 theme={theme}
                 className={classOverride.OptionListContainer}
+                {...listContainerProps}
             >
                 {isSelectAllOptionRendered && (
                     <OptionListItem
@@ -83,42 +91,62 @@ export const OptionList: FunctionComponent<OptionListPropsType> = ({
                         className={classOverride.SelectAllItem}
                     />
                 )}
-                {dynamicInternalOptions.map(
-                    (option: OptionObjectType, index) => {
-                        const { value, groupId } = option;
-                        let group: OptionListGroupObjectType | null = null;
-                        if (
-                            groupId &&
-                            groupId in groupIndex &&
-                            !displayedGroups[groupId]
-                        ) {
-                            group = groupIndex[groupId];
-                            displayedGroups[groupId] = true;
-                        }
+                <div {...listProps}>
+                    {enableVirtualization && (
+                        <OptionListVirtualPadding
+                            {...getVirtualTopSpaceProps()}
+                            className={classOverride.VirtualPaddingTop}
+                            theme={theme}
+                        />
+                    )}
 
-                        return (
-                            <Fragment key={value}>
-                                {!!group && (
-                                    <OptionListItemGroup
-                                        enableSeparator={index > 0}
-                                        theme={theme}
-                                        className={classOverride.ItemGroup}
-                                    >
-                                        {group.label}
-                                    </OptionListItemGroup>
-                                )}
-                                <OptionListItem
-                                    {...getOptionItemProps(option)}
-                                    className={`${classOverride.Item} ${
-                                        internalValue.includes(value)
-                                            ? 'active'
-                                            : ''
-                                    }`}
-                                />
-                            </Fragment>
-                        );
-                    },
-                )}
+                    {// @ts-ignore
+                    dynamicInternalOptions.map(
+                        // @ts-ignore
+                        (option: OptionObjectType, index) => {
+                            const { value, groupId } = option;
+                            let group: OptionListGroupObjectType | null = null;
+                            if (
+                                groupId &&
+                                groupId in groupIndex &&
+                                !displayedGroups[groupId]
+                            ) {
+                                group = groupIndex[groupId];
+                                displayedGroups[groupId] = true;
+                            }
+
+                            return (
+                                <Fragment key={value}>
+                                    {!!group && (
+                                        <OptionListItemGroup
+                                            enableSeparator={index > 0}
+                                            theme={theme}
+                                            className={classOverride.ItemGroup}
+                                        >
+                                            {group.label}
+                                        </OptionListItemGroup>
+                                    )}
+                                    <OptionListItem
+                                        {...getOptionItemProps(option)}
+                                        className={`${classOverride.Item} ${
+                                            internalValue.includes(value)
+                                                ? 'active'
+                                                : ''
+                                        }`}
+                                    />
+                                </Fragment>
+                            );
+                        },
+                    )}
+
+                    {enableVirtualization && (
+                        <OptionListVirtualPadding
+                            {...getVirtualBottomSpaceProps()}
+                            className={classOverride.VirtualPaddingBottom}
+                            theme={theme}
+                        />
+                    )}
+                </div>
             </OptionListContainer>
         </OptionListRoot>
     ) : null;
