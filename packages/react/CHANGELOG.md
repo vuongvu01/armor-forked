@@ -1,3 +1,11 @@
+# @deliveryhero/armor [1.57.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.56.0...@deliveryhero/armor@1.57.0) (2021-06-24)
+
+
+### Features
+
+* **actionsheet:** component [LD-269] ([#567](https://github.com/deliveryhero/armor/issues/567)) ([4ec6590](https://github.com/deliveryhero/armor/commit/4ec6590d8758f89bc40332a91b9fd3f20b09ea0c))
+* **dropdown:** support for thousands of options via virtualization ([#609](https://github.com/deliveryhero/armor/issues/609)) ([191325c](https://github.com/deliveryhero/armor/commit/191325c6938cc6ec50c26b9f5203ed9f4aa3b3e2))
+
 # @deliveryhero/armor [1.56.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.55.0...@deliveryhero/armor@1.56.0) (2021-06-21)
 
 
