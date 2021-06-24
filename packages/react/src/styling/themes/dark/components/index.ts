@@ -48,9 +48,11 @@ import { getTableHeadCellOverride } from './Table/TableHeadCell';
 import { getLinkOverride } from './Link';
 import { getCloseButtonOverride } from './CloseButton/CloseButton';
 import { getTableControllerCellOverride } from './Table/TableControllerCell';
+import { getActionSheetOverride } from './ActionSheet/ActionSheet';
 
 export const darkThemeComponentOverrides = {
     Accordion: getAccordionOverride,
+    ActionSheet: getActionSheetOverride,
     Button: getButtonOverride,
     Dialog: getDialogOverride,
     DialogTitle: getDialogTitleOverride,

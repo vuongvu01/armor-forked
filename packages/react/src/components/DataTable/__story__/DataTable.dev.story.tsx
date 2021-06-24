@@ -1,16 +1,20 @@
 /* eslint-disable no-console,import/no-unresolved, import/no-extraneous-dependencies */
 
-import React, { useCallback, useState, useRef } from 'react';
+import React, { useCallback, useContext, useRef, useState } from 'react';
 import { withKnobs } from '@storybook/addon-knobs';
 import cloneDeep from 'clone-deep';
 import styled from 'styled-components';
-import { dataSource, dataSourceWide, columns, columnsWide } from './demoData';
+import { columns, columnsWide, dataSource, dataSourceWide } from './demoData';
 
 import { DataTable } from '../DataTable';
 import { getSortingFunction } from '../utils/getSortingFunction';
 import { ObjectLiteralType, ScalarType } from '../../../type';
 import { multiplyDataRows } from './utils';
 import { withWrapper } from '../../../helpers/Wrapper';
+import { Button } from '../../Button';
+import { DataTableContext } from '../DataTableContext';
+
+const initialRowSelection = ['2'];
 
 export default {
     title: 'Components/DataTable',
@@ -147,6 +151,110 @@ export const RowSelectionUncontrolled = () => {
                 console.log('new selection');
                 console.log(selection);
             }}
+        />
+    );
+};
+
+// @ts-ignore
+const DeleteSelectedItemsButton = ({ children, setData }) => {
+    const { selectedRowIds, data, unselectRows } = useContext(DataTableContext);
+
+    const handleDelete = () => {
+        const newData: any = [];
+        // @ts-ignore
+        data.forEach(dataItem => {
+            if (!selectedRowIds.includes(dataItem.id)) {
+                newData.push(dataItem);
+            }
+        });
+
+        setData(newData);
+        unselectRows();
+    };
+
+    return <Button onClick={handleDelete}>{children}</Button>;
+};
+
+// @ts-ignore
+const HideSelectedItemsButton = ({ children, ...restProps }) => {
+    const { unselectRows } = useContext(DataTableContext);
+
+    const hideActionSheet = () => {
+        unselectRows();
+    };
+
+    return (
+        <Button onClick={hideActionSheet} {...restProps}>
+            {children}
+        </Button>
+    );
+};
+
+export const RowSelectionWithActionSheetUncontrolled = () => {
+    const [data, setData] = useState<typeof dataSource>(dataSource);
+
+    return (
+        <DataTable
+            columns={columns}
+            data={data}
+            enableRowSelection
+            enableActionSheet={true}
+            actions={
+                <div>
+                    <HideSelectedItemsButton marginRight={4} tertiary>
+                        Cancel
+                    </HideSelectedItemsButton>
+                    <DeleteSelectedItemsButton setData={setData}>
+                        Delete
+                    </DeleteSelectedItemsButton>
+                </div>
+            }
+            defaultSelectedRowIds={initialRowSelection}
+        />
+    );
+};
+
+export const RowSelectionWithActionSheetControlled = () => {
+    const [data, setData] = useState<typeof dataSource>(dataSource);
+    const [selectedRows, setSelectedRows] = useState<ScalarType[]>(
+        initialRowSelection,
+    );
+
+    const handleDelete = () => {
+        const newData: any = [];
+        data.forEach(dataItem => {
+            if (!selectedRows.includes(dataItem.id)) {
+                newData.push(dataItem);
+            }
+        });
+
+        setData(newData);
+        setSelectedRows([]);
+    };
+
+    const clearSelection = () => {
+        setSelectedRows([]);
+    };
+
+    // @ts-ignore
+    const handleRowSelectionChange = selection => setSelectedRows(selection);
+
+    return (
+        <DataTable
+            columns={columns}
+            data={data}
+            enableRowSelection
+            enableActionSheet={!!selectedRows.length}
+            actions={
+                <div>
+                    <Button marginRight={4} tertiary onClick={clearSelection}>
+                        Cancel
+                    </Button>
+                    <Button onClick={handleDelete}>Delete</Button>
+                </div>
+            }
+            selectedRowIds={selectedRows}
+            onRowSelectionChange={handleRowSelectionChange}
         />
     );
 };
