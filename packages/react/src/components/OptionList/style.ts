@@ -8,6 +8,7 @@ import {
     OptionListRootPropsType,
     OptionListContainerPropsType,
     OptionListItemTypographyPropsType,
+    OptionListVirtualOffsetType,
 } from './type';
 import {
     color,
@@ -20,6 +21,8 @@ import {
 } from '../../system';
 import { Search } from '../Search';
 import { Typography } from '../Typography';
+import { DataTableVirtualOffsetType } from '../DataTable/type';
+import { ComponentElementStylePropsType } from '../type';
 
 const getOptionListStyle = ({
     isOptionListShown,
@@ -173,4 +176,14 @@ export const OptionListItemGroup = styled.div.withConfig(propsBlocker)<
     font-size: ${pixelToRem(14)};
     color: ${color('neutral.05')};
     ${getSearchSuggestionListGroupDynamicStyle};
+`;
+
+export const OptionListVirtualPadding = styled.div.withConfig(propsBlocker)<
+    OptionListVirtualOffsetType
+>`
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    line-height: 0;
+    height: ${({ height }) => height}px;
 `;

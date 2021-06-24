@@ -1,4 +1,4 @@
-import { RefObject, useRef } from 'react';
+import { RefObject, useMemo, useRef } from 'react';
 import {
     DataTableColumnType,
     DataTableDataType,
@@ -9,15 +9,16 @@ import { useDataTableRowSelection } from './useDataTableRowSelection';
 import { useDataTableStickyColumns } from './useDataTableStickyColumns';
 import { useDataTableExpandableSections } from './useDataTableExpandableSections';
 import {
+    DATA_TABLE_EMPTY_COLUMNS,
+    DATA_TABLE_EMPTY_DATA,
     DATA_TABLE_EXPANDABLE_SECTION_OFFSET_LEFT_BASE,
     DATA_TABLE_EXPANDABLE_SECTION_OFFSET_LEFT_ROW_SELECTION,
-    DATA_TABLE_EMPTY_DATA,
-    DATA_TABLE_EMPTY_COLUMNS,
 } from '../constants';
 import { useDataTablePageNavigation } from './useDataTablePageNavigation';
 import { TableCell, TableControllerCell, TableHeadCell } from '../../Table';
 import { useRootRef, useVirtualization } from '../../../system';
 import { RefType } from '../../../type';
+import { formatActionSheetLabel } from '../utils/formatActionSheetLabel';
 
 export const useDataTable = (
     {
@@ -28,6 +29,9 @@ export const useDataTable = (
         enableHeader,
         enableRowSelection,
         stickyHead,
+
+        actions,
+        enableActionSheet,
 
         enableVirtualization,
         averageItemHeight,
@@ -48,10 +52,14 @@ export const useDataTable = (
         enableRowSelection,
         ...rowSorting.restProps,
     });
+
+    let actionSheetLabel = '' as string | undefined;
+
     const stickyColumns = useDataTableStickyColumns(columnsSafe, {
         enableRowSelection,
         ...rowSelection.restProps,
     });
+
     const expandableSections = useDataTableExpandableSections(
         columnsSafe,
         stickyColumns.restProps,
@@ -77,6 +85,14 @@ export const useDataTable = (
         },
     );
 
+    useMemo(() => {
+        actionSheetLabel = formatActionSheetLabel(
+            rowSelection.selectedRowIdsActual,
+        );
+
+        return actionSheetLabel;
+    }, [rowSelection.selectedRowIdsActual]);
+
     const columnCount = columnsSafe.length + (enableRowSelection ? 1 : 0);
     const enableFooter = pageNavigation.result.enablePageNavigation;
 
@@ -93,11 +109,18 @@ export const useDataTable = (
         columns: columnsSafe,
         data: virtualData,
 
+        actions,
+        actionSheetProps: { label: actionSheetLabel },
+        isActionSheetVisible: enableActionSheet && actionSheetLabel,
+
         // todo: since we strip off any custom props, this may be refactored and made easier
         ...rowSorting.result,
         ...rowSelection.result,
         ...expandableSections.result,
         ...pageNavigation.result,
+
+        selectedRowIds: rowSelection.selectedRowIds,
+        unselectRows: rowSelection.unselectRows,
 
         rootProps: { ...pageNavigation.restProps, ref: innerRef },
         tableProps: {

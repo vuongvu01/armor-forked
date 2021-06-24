@@ -4,4 +4,5 @@
 import { DataTablePropsType as PropsType } from './type';
 
 export * from './DataTable';
+export * from './DataTableContext';
 export type DataTablePropsType = PropsType;

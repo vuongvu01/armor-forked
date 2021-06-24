@@ -39,7 +39,11 @@ export type NavigationSelectorParamsType = {
     isMultiselect?: boolean;
     isExpanded?: boolean;
     disabled?: boolean;
-    defaultValue?: number | number[];
+    defaultValue?:
+        | string
+        | ReadonlyArray<string>
+        | ReadonlyArray<number>
+        | number;
     formatOption?: OptionFormatType;
     value?: number | number[];
     options?:

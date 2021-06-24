@@ -35,6 +35,20 @@ export const TableWithCheckboxSomeChecked = () => (
     />
 );
 
+export const RowSelectionWithActionSheet = () => {
+    const [data] = useState<typeof dataSource>(dataSource);
+
+    return (
+        <DataTable
+            columns={columns}
+            data={data}
+            enableRowSelection
+            enableActionSheet
+            defaultSelectedRowIds={['2']}
+        />
+    );
+};
+
 export const TableWithCheckboxAllChecked = () => (
     <DataTable
         columns={columns}

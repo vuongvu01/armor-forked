@@ -1,4 +1,4 @@
-import { ComponentType, HTMLAttributes, ReactChild, Ref } from 'react';
+import React, { ComponentType, HTMLAttributes, ReactChild, Ref } from 'react';
 import {
     ComponentElementStylePropsType,
     ComponentStylePropsType,
@@ -67,6 +67,10 @@ type DataTableEffectivePropsType = Partial<{
     defaultSelectedRowIds: ScalarType[];
     onRowSelectionChange: (selectedRows: ScalarType[]) => void;
 
+    // action sheet
+    enableActionSheet: boolean;
+    actions: ReactChild;
+
     // sticky columns
     stickyLeftColumn: boolean;
     stickyRightColumn: boolean;
@@ -108,6 +112,12 @@ type DataTableEffectivePropsType = Partial<{
     SizeAttributesType &
     MarginAttributesType &
     PaddingAttributesType;
+
+export type DataTableContextType = {
+    selectedRowIds: ScalarType[];
+    unselectRows: () => void;
+    data: DataTableDataType[];
+};
 
 /* DataTable component prop type */
 export type DataTablePropsType = DataTableEffectivePropsType &

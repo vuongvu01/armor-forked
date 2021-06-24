@@ -50,6 +50,16 @@ export const useOptionListClassName = (
                 classPrefix,
                 disabled,
             }),
+            VirtualPaddingTop: classGeneratorBasedOnComponent({
+                component: 'VirtualPaddingTop',
+                classPrefix,
+                disabled,
+            }),
+            VirtualPaddingBottom: classGeneratorBasedOnComponent({
+                component: 'VirtualPaddingBottom',
+                classPrefix,
+                disabled,
+            }),
             BeforeSectionContainer: classGeneratorBasedOnComponent({
                 component: 'BeforeSectionContainer',
                 classPrefix,

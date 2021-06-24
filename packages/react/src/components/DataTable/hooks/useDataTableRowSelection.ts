@@ -20,6 +20,7 @@ export const useDataTableRowSelection = (
         ScalarType[]
     >(defaultSelectedRowIds || []); // controllable & uncontrollable
     const selectedRowIdsActual = selectedRowIds || selectedRowIdsInternal;
+
     const onRowSelectionChangeInternal = useCallback(
         (selection: ScalarType[]) => {
             // controllable & uncontrollable
@@ -33,10 +34,13 @@ export const useDataTableRowSelection = (
         [onRowSelectionChange, selectedRowIds],
     );
 
+    const unselectRows = () => onRowSelectionChangeInternal([]);
+
     const rowIds = useMemo(() => dataSafe.map(item => item.id), [dataSafe]);
 
     const allRowsSelected =
         !!selectedRowIdsActual &&
+        !!selectedRowIdsActual.length &&
         !!rowIds &&
         selectedRowIdsActual.length === rowIds.length;
     const someRowsSelected =
@@ -110,6 +114,9 @@ export const useDataTableRowSelection = (
             },
             onDataSelectorCellClick,
         },
+        selectedRowIds: selectedRowIdsInternal,
+        selectedRowIdsActual,
+        unselectRows,
         restProps,
     };
 };

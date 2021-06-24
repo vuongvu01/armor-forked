@@ -19,6 +19,12 @@ import {
 import { withWrapper } from '../../../helpers/Wrapper';
 import { Pack, PackItem } from '../../Pack';
 import { Dialog, DialogContent } from '../../Dialog';
+import { Switch } from '../../Switch';
+
+const thousandsOfOptionsList = Array.apply(0, Array(15000)).map((_, index) => ({
+    value: index,
+    label: index % 2 === 0 ? `John ${index}` : `Jane ${index}`,
+}));
 
 export default {
     title: 'Components/Dropdown',
@@ -775,7 +781,7 @@ export const CustomOptionFormatMultiplePreSelectedExpandedList = () => {
             label="Dish type"
             defaultValue={[2, 3]}
             formatOption={formatOption}
-            isListExpanded={true}
+            isListExpanded
         />
     );
 };
@@ -796,7 +802,7 @@ export const CustomOptionFormatMultipleExpandedListWithSelectAllAndSearchWithDis
             label="Dish type"
             defaultValue={[2, 3]}
             formatOption={formatOption}
-            isListExpanded={true}
+            isListExpanded
             enableSelectAllOption
             enableSearchOption
         />
@@ -841,7 +847,7 @@ export const CustomOptionFormatMultipleExpandedListWithSelectAllAndSearch = () =
             label="Dish type"
             defaultValue={[2, 3]}
             formatOption={formatOption}
-            isListExpanded={true}
+            isListExpanded
             enableSelectAllOption
             enableSearchOption
         />
@@ -864,7 +870,7 @@ export const CustomSelectAllLabelElement = () => {
             label="Dish type"
             defaultValue={[2, 3]}
             formatOption={formatOption}
-            isListExpanded={true}
+            isListExpanded
             enableSelectAllOption
             selectAllLabel="Select/Deselect All"
             enableSearchOption
@@ -888,7 +894,7 @@ export const CustomOptionFormatMultipleExpandedListWithSelectAllAndAllItemsSelec
             label="Dish type"
             defaultValue={[0, 1, 2, 3]}
             formatOption={formatOption}
-            isListExpanded={true}
+            isListExpanded
             enableSelectAllOption
             enableSearchOption
         />
@@ -911,7 +917,7 @@ export const CustomSearchPlaceholder = () => {
             label="Dish type"
             defaultValue={[2, 3]}
             formatOption={formatOption}
-            isListExpanded={true}
+            isListExpanded
             enableSearchOption
             searchPlaceholder="What's searching?"
         />
@@ -934,7 +940,7 @@ export const CustomSearchWithPreFilledQuery = () => {
             label="Dish type"
             defaultValue={[2, 3]}
             formatOption={formatOption}
-            isListExpanded={true}
+            isListExpanded
             enableSearchOption
             defaultSearchQuery="Tacos"
         />
@@ -1147,7 +1153,7 @@ export const DefaultOpen = () => {
 const factions = [
     {
         id: 'zerg',
-        label: 'Zerg This isavery long title grocery goods and medications',
+        label: 'Zerg This is a very long title grocery goods and medications',
     },
     { id: 'terr', label: 'Terran' },
     { id: 'prot', label: 'Protoss' },
@@ -1226,7 +1232,7 @@ export const StickySearchField = () => {
                 label="Dish type"
                 defaultValue={[2, 3]}
                 formatOption={formatOption}
-                isListExpanded={true}
+                isListExpanded
                 enableSelectAllOption
                 enableSearchOption
             />
@@ -1332,6 +1338,88 @@ export const MultilineOptions = () => {
             enableSelectAllOption
             enableSearchOption
             enableOptionContentEllipsis={false}
+        />
+    );
+};
+
+export const VirtualizedWithThousandsOfOptions = () => {
+    const [isVirtualized, setIsVirtualized] = useState(true);
+    const handleSelect = (option: any) => {
+        console.log('story handleSelect', { option });
+    };
+
+    return (
+        <>
+            <Switch
+                checked={isVirtualized}
+                onChange={() => setIsVirtualized(!isVirtualized)}
+                label="Virtualized (very sluggish behaviour if OFF)"
+            />
+            <br />
+            <Dropdown
+                margin={1}
+                onSelect={handleSelect}
+                options={thousandsOfOptionsList}
+                label="Thousands of options"
+                multiple
+                maxWidth="400px"
+                enableSelectAllOption
+                enableSearchOption
+                enableVirtualization={isVirtualized}
+                enableOptionContentEllipsis={false}
+            />
+        </>
+    );
+};
+
+export const VirtualizedWithGroups = () => {
+    const handleSelect = (option: any) => {
+        console.log('story handleSelect', { option });
+    };
+
+    return (
+        <Dropdown
+            margin={1}
+            onSelect={handleSelect}
+            options={[
+                { value: 1, label: 'Jim Raynor', groupId: 'terr' },
+                { value: 2, label: 'Duke', groupId: 'terr' },
+                { value: 21, label: 'Duke1', groupId: 'terr' },
+                { value: 22, label: 'Duke2', groupId: 'terr' },
+                { value: 23, label: 'Duke3', groupId: 'terr' },
+                { value: 24, label: 'Duke4', groupId: 'terr' },
+                {
+                    value: 25,
+                    label: 'Duke5 Duke5 Duke5 Duke5 Duke5 ',
+                    groupId: 'terr',
+                },
+
+                { value: 4, label: 'Zeratul', groupId: 'prot', disabled: true },
+                { value: 5, label: 'Tassadar', groupId: 'prot' },
+                { value: 6, label: 'Fenix', groupId: 'prot' },
+                { value: 61, label: 'Fenix', groupId: 'prot' },
+                { value: 62, label: 'Fenix1', groupId: 'prot' },
+                { value: 63, label: 'Fenix2', groupId: 'prot' },
+                { value: 64, label: 'Fenix3', groupId: 'prot' },
+                { value: 65, label: 'Fenix4', groupId: 'prot' },
+
+                { value: 7, label: 'Kerrigan', groupId: 'zerg' },
+                { value: 8, label: 'Overmind', groupId: 'zerg' },
+                { value: 9, label: 'Cerebrate', groupId: 'zerg' },
+                { value: 91, label: 'Cerebrate1', groupId: 'zerg' },
+                { value: 92, label: 'Cerebrate2', groupId: 'zerg' },
+                { value: 93, label: 'Cerebrate3', groupId: 'zerg' },
+                { value: 94, label: 'Cerebrate4', groupId: 'zerg' },
+                { value: 95, label: 'Cerebrate5', groupId: 'zerg' },
+                { value: 96, label: 'Cerebrate6', groupId: 'zerg' },
+            ]}
+            label="Multiple options"
+            multiple
+            maxWidth="400px"
+            enableSelectAllOption
+            enableSearchOption
+            enableVirtualization
+            groups={factions}
         />
     );
 };

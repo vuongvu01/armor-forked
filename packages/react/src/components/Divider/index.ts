@@ -1,5 +1,4 @@
-/**
- * Use this file to define the list of <Divider /> component symbols that is open to the end consumers.
- */
+import { DividerPropsType as PropsTypeDivider } from './type';
 
 export * from './Divider';
+export type DividerPropsType = PropsTypeDivider;
