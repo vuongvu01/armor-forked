@@ -1,3 +1,10 @@
+# @deliveryhero/armor [1.58.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.57.0...@deliveryhero/armor@1.58.0) (2021-06-25)
+
+
+### Features
+
+* **actionsheet:** export [LD-269] ([#616](https://github.com/deliveryhero/armor/issues/616)) ([5f5840e](https://github.com/deliveryhero/armor/commit/5f5840e0e21395ef8d29eade78bfc14793713a70))
+
 # @deliveryhero/armor [1.57.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.56.0...@deliveryhero/armor@1.57.0) (2021-06-24)
 
 
