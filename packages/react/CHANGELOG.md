@@ -1,3 +1,10 @@
+## @deliveryhero/armor [1.59.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.59.0...@deliveryhero/armor@1.59.1) (2021-06-25)
+
+
+### Bug Fixes
+
+* **actionsheet:** support for theme switching [LD-269] ([#620](https://github.com/deliveryhero/armor/issues/620)) ([386cae4](https://github.com/deliveryhero/armor/commit/386cae48b7e8052d6e6fc7f9474d2440ad991218))
+
 # @deliveryhero/armor [1.59.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.58.0...@deliveryhero/armor@1.59.0) (2021-06-25)
 
 
