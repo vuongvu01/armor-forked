@@ -91,7 +91,7 @@ export const useDataTable = (
         );
 
         return actionSheetLabel;
-    }, [rowSelection.selectedRowIdsActual]);
+    }, [rowSelection]);
 
     const columnCount = columnsSafe.length + (enableRowSelection ? 1 : 0);
     const enableFooter = pageNavigation.result.enablePageNavigation;
