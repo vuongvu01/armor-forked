@@ -11,6 +11,7 @@ import {
     reset,
     spacing,
     typography,
+    widthAttributes,
 } from '../../system';
 
 const getLabelContainerStyle = ({ label }: ActionSheetRootPropsType) => {
@@ -39,6 +40,7 @@ export const ActionSheetRoot = styled.div.withConfig(propsBlocker)<
 
     ${getComponentOverride('ActionSheet')};
     ${marginAttributes};
+    ${widthAttributes};
 `;
 
 export const ActionSheetLabelContainer = styled.div.withConfig(propsBlocker)<
