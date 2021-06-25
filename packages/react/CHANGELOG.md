@@ -1,3 +1,10 @@
+# @deliveryhero/armor [1.59.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.58.0...@deliveryhero/armor@1.59.0) (2021-06-25)
+
+
+### Features
+
+* **actionsheet:** width attributes [LD-269] ([#618](https://github.com/deliveryhero/armor/issues/618)) ([2a5e7d4](https://github.com/deliveryhero/armor/commit/2a5e7d4936fec8cce428008bf520c0e41c4b7859))
+
 # @deliveryhero/armor [1.58.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.57.0...@deliveryhero/armor@1.58.0) (2021-06-25)
 
 
