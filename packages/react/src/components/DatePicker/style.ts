@@ -1,17 +1,9 @@
 import styled, { css } from 'styled-components';
 import { CalendarIcon } from '@deliveryhero/armor-icons';
+import { DatePickerArrowPropsType, DatePickerDropdownPropsType } from './type';
 import {
-    DatePickerArrowPropsType,
-    DatePickerDropdownPropsType,
-    DatePickerRootPropsType,
-    DateRangePickerPropsType,
-} from './type';
-import {
-    marginAttributes,
-    widthAttributes,
     borderRadius,
     color,
-    reset,
     spacing,
     typography,
     zIndex,
@@ -21,45 +13,23 @@ import {
 
 import { TextInput } from '../TextInput';
 
-const getRootStyle = ({
+export const getRootStyle = ({
     enableTimePicker,
-}: Pick<DatePickerRootPropsType, 'enableTimePicker'>) => {
-    const result = css`
-        min-width: ${spacing(enableTimePicker ? 88 : 58)};
-    `;
+    enableMinWidthAutoCorrection,
+}: {
+    enableTimePicker?: boolean;
+    enableMinWidthAutoCorrection?: boolean;
+}) => {
+    let result = {};
+
+    if (enableMinWidthAutoCorrection !== false) {
+        result = css`
+            min-width: ${spacing(enableTimePicker ? 88 : 58)};
+        `;
+    }
 
     return result;
 };
-
-/** 👉 ROOT ELEMENT */
-export const DatePickerRoot = styled.div.withConfig(propsBlocker)<
-    DatePickerRootPropsType
->`
-    ${reset()};
-    ${typography('paragraphMedium')};
-    display: inline-block;
-    position: relative;
-
-    ${getRootStyle};
-    ${getComponentOverride('DatePicker')};
-    ${marginAttributes};
-    ${widthAttributes};
-`;
-
-/** 👉 ROOT ELEMENT */
-export const DateRangePickerRoot = styled.div.withConfig(propsBlocker)<
-    DateRangePickerPropsType
->`
-    ${reset()};
-    ${typography('paragraphMedium')};
-    display: inline-block;
-    position: relative;
-
-    ${getRootStyle};
-    ${getComponentOverride('DateRangePicker')};
-    ${marginAttributes};
-    ${widthAttributes};
-`;
 
 export const DatePickerInput = styled(TextInput)`
     width: 100%;

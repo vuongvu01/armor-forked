@@ -1,25 +1,25 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
-import { PortalToBody } from '../../system/util/PortalToBody';
+import { PortalToBody } from '../../../system/util/PortalToBody';
 
-import { useDatePickerClassNames } from './hooks/useDatePickerClassNames';
+import { useDatePickerClassNames } from '../hooks/useDatePickerClassNames';
 import { useDateRangePicker } from './hooks/useDateRangePicker';
+import { DateRangePickerRoot } from './style';
 import {
-    DateRangePickerRoot,
     DatePickerInput,
     DatePickerInputIcon,
     DatePickerDropdown,
     DatePickerDropdownArrow,
-} from './style';
+} from '../style';
 import { DateRangePickerPropsType } from './type';
-import { DATE_RANGE_PICKER_CLASS_PREFIX } from './constants';
-import { DatePickerActionBar } from './DatePickerActionBar';
-import { DatePickerMonthYearSelector } from './DatePickerMonthYearSelector';
-import { DatePickerDaySelector } from './DatePickerDaySelector';
-import { DatePickerTopBar } from './DatePickerTopBar';
-import { DatePickerTimeSelector } from './DatePickerTimeSelector';
-import { useComponentTheme } from '../../utils/hooks';
+import { DATE_RANGE_PICKER_CLASS_PREFIX } from '../constants';
+import { DatePickerActionBar } from '../DatePickerActionBar';
+import { DatePickerMonthYearSelector } from '../DatePickerMonthYearSelector';
+import { DatePickerDaySelector } from '../DatePickerDaySelector';
+import { DatePickerTopBar } from '../DatePickerTopBar';
+import { DatePickerTimeSelector } from '../DatePickerTimeSelector';
+import { useComponentTheme } from '../../../utils/hooks';
 
 export const DateRangePicker = forwardRef<
     HTMLDivElement,

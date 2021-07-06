@@ -4,7 +4,7 @@ import React from 'react';
 import { withKnobs } from '@storybook/addon-knobs';
 import { withWrapper } from '../../../helpers/Wrapper';
 
-import { DatePicker } from '../DatePicker';
+import { DatePicker } from '../DatePicker/DatePicker';
 import { TextInput } from '../../TextInput';
 import { Search } from '../../Search';
 import { Dropdown } from '../../Dropdown';
