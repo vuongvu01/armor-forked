@@ -44,13 +44,13 @@ export const FilterEditorDateCondition: FC<FilterEditorConditionPropsType> = ({
 
     return (
         <DatePicker
+            enableMinWidthAutoCorrection={false}
             wide
             label={label}
             dateValue={dateValue}
             onDateValueChange={onDateValueChange}
             enableTimePicker={enableTimePicker}
             formatDateTime={formatDateTime}
-            minWidth={0}
         />
     );
 };

@@ -1,5 +1,5 @@
 import cloneDeep from 'clone-deep';
-import { useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { FilterEditorPropsType } from '../type';
 import { RefType } from '../../../../type';
 import {
@@ -15,6 +15,8 @@ import {
 import { FILTER_EMPTY, SCHEMA_EMPTY } from '../../constants';
 import { useTypeIndex } from '../../hooks/useTypeIndex';
 import { getConditionType } from '../../utils/getConditionType';
+import { FILTER_EDITOR_LAYOUT_HORIZONTAL } from '../constants';
+import { Typography } from '../../../Typography';
 
 export const useFilterEditor = <E extends HTMLElement>(
     {
@@ -30,6 +32,12 @@ export const useFilterEditor = <E extends HTMLElement>(
 
         initialValue,
         onClose,
+
+        enableCloseButton,
+        layout,
+
+        resultCount,
+        resultTotalCount,
 
         ...restProps
     }: FilterEditorPropsType,
@@ -79,10 +87,19 @@ export const useFilterEditor = <E extends HTMLElement>(
         }
     }, [setExternalValue, internalValue, onClose]);
 
+    const layoutHorizontal = layout === FILTER_EDITOR_LAYOUT_HORIZONTAL;
+    const layoutVertical = layout !== FILTER_EDITOR_LAYOUT_HORIZONTAL;
+
     return {
         rootProps: {
             ...restProps,
             ref: innerRef,
+        },
+        headerProps: {
+            leftAligned: layoutHorizontal,
+        },
+        conditionsProps: {
+            vertical: layoutVertical,
         },
         getConditionType: (condition: FilterConditionSchemaType) =>
             getConditionType(condition, typeIndex),
@@ -143,11 +160,33 @@ export const useFilterEditor = <E extends HTMLElement>(
         clearFilterButtonProps: {
             onClick: onClearFilterButtonClick,
         },
-        applyFilterButtonProps: {
+        getApplyFilterButtonProps: () => ({
             onClick: onApplyFilterButtonClick,
-        },
-        closeButtonProps: {
+        }),
+
+        showCloseButton: enableCloseButton !== false,
+        getCloseButtonProps: () => ({
             onClick: onClose,
-        },
+        }),
+        showSeparatedActions: layoutVertical,
+        showInlineActions: layoutHorizontal,
+
+        showResultCount: resultCount !== undefined,
+        showResultTotalCount: resultTotalCount !== undefined,
+        resultCountFormatted:
+            resultCount !== undefined
+                ? new Intl.NumberFormat().format(resultCount)
+                : 0,
+        resultTotalCountFormatted:
+            resultTotalCount !== undefined
+                ? new Intl.NumberFormat().format(resultTotalCount)
+                : 0,
+        getResultCountProps: () => ({
+            paragraph: true,
+            medium: true,
+            tag: 'div',
+            color: 'neutral.04',
+            marginTop: 6,
+        }),
     };
 };

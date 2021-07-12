@@ -14,11 +14,12 @@ import {
     FilterEnumConditionType,
 } from '../..';
 import { useFilterURLStorage } from '../hooks';
+import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
     title: 'Components/Filter',
     component: FilterLayout,
-    decorators: [],
+    decorators: [withWrapper],
     parameters: {},
 };
 
@@ -165,6 +166,38 @@ export const Basic = () => {
                 onFilterOpenButtonClick={() => setOpen(true)}
                 filterOpen={open}
                 resultCount={8}
+                resultTotalCount={2500}
+            />
+            <FilterTable />
+        </FilterLayout>
+    );
+};
+
+export const NoEditor = () => {
+    const [storedValue, setStoredValue] = useFilterURLStorage('filterA');
+    const [filterValue, setFilterValue] = useState<
+        FilterConditionValueType | undefined
+    >(storedValue);
+
+    const setFilterValueCommon = useCallback(
+        (value: FilterConditionValueType) => {
+            setStoredValue(value);
+            setFilterValue(value);
+        },
+        [],
+    );
+
+    return (
+        <FilterLayout tall>
+            <FilterEditor
+                schema={araraFilterSchema}
+                value={filterValue}
+                types={conditionTypes}
+                onValueChange={setFilterValueCommon}
+                enableCloseButton={false}
+                paddingTop={6}
+                layout="horizontal"
+                resultCount={10}
                 resultTotalCount={2500}
             />
             <FilterTable />

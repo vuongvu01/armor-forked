@@ -29,5 +29,6 @@ export const useFilterLayout = <E extends HTMLElement>(
         leftBarProps: {
             open: reallyOpen,
         },
+        showLeftBar: !!filterEditor,
     };
 };
