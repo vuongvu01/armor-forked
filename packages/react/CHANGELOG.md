@@ -1,3 +1,10 @@
+## @deliveryhero/armor [1.60.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.60.0...@deliveryhero/armor@1.60.1) (2021-07-13)
+
+
+### Bug Fixes
+
+* **headernavigation:** selector overlay [LD-567] ([#636](https://github.com/deliveryhero/armor/issues/636)) ([4d6f61f](https://github.com/deliveryhero/armor/commit/4d6f61f7eeadd77f0218fa379cafb7e15cd9df65))
+
 # @deliveryhero/armor [1.60.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.59.1...@deliveryhero/armor@1.60.0) (2021-07-13)
 
 
