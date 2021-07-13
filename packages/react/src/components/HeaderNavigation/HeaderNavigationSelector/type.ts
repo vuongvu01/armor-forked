@@ -31,6 +31,8 @@ type HeaderNavigationSelectorEffectivePropsType = {
     separator?: boolean;
     enableSelectAllOption?: boolean;
     enableSearchOption?: boolean;
+    enablePortal?: boolean;
+    zIndex?: number;
 } & HTMLAttributes<HTMLElement> &
     MarginAttributesType;
 
@@ -39,4 +41,5 @@ export type HeaderNavigationSelectorPropsType = HeaderNavigationSelectorEffectiv
 export type HeaderNavigationSelectorRootPropsType = {
     isOptionListShown?: boolean;
     separator?: boolean;
+    zIndex?: number;
 } & ComponentElementStylePropsType;

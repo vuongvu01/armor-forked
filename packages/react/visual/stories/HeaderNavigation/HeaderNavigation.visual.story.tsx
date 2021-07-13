@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import { QuestionChatIcon, LogoutIcon } from '@deliveryhero/armor-icons';
 import { BrowserRouter, Link } from 'react-router-dom';
@@ -19,11 +19,16 @@ import {
     Pack,
     PackItem,
     Tag,
+    DataTable,
 } from '../../../src/components';
 import { Image2 } from '../../../src/components/HeaderNavigation/__story__/Image2';
 import { Image } from '../../../src/components/HeaderNavigation/__story__/Image';
 import { ScalarType } from '../../../src/type';
 import { OptionType } from '../../../src/components/HeaderNavigation/HeaderNavigationMenu/HeaderNavigationMenuContent/HeaderNavigationMenuContentBodyOptions/type';
+import {
+    columns,
+    dataSource,
+} from '../../../src/components/DataTable/__story__/demoData';
 
 export default {
     title: 'HeaderNavigation',
@@ -1008,6 +1013,74 @@ export const NoMenuUseCase = () => {
                     </HeaderNavigationAction>
                 }
             />
+        </BrowserRouter>
+    );
+};
+
+const massiveData: typeof dataSource = [];
+for (let i = 0; i < 3000; i += 1) {
+    massiveData.push({
+        id: `id_${i}`,
+        name: `King Edward the ${i}`,
+        age: Math.floor(Math.random() * 100),
+        address: '10 Downing Street',
+    });
+}
+
+export const WithHeaderNavigation = () => {
+    const wrapperRef = useRef(null);
+
+    return (
+        <BrowserRouter>
+            <HeaderNavigation
+                title={
+                    <HeaderNavigationTitle
+                        tag={Link}
+                        to="/home"
+                        name="Homr"
+                        onLinkClick={() => {}}
+                    >
+                        Our product
+                    </HeaderNavigationTitle>
+                }
+                selector={
+                    <HeaderNavigationSelector
+                        navigationSelectorParams={{
+                            label: 'Country',
+                            options: [
+                                { value: 0, label: 'Japan' },
+                                { value: 1, label: 'Laos' },
+                                { value: 2, label: 'Sweden' },
+                                { value: 3, label: 'Vietnam' },
+                                { value: 4, label: 'United States of America' },
+                            ],
+                        }}
+                    />
+                }
+                navigationAction={
+                    <HeaderNavigationAction>
+                        <HeaderNavigationActionItem onClick={() => {}}>
+                            <LogoutIcon />
+                        </HeaderNavigationActionItem>
+                    </HeaderNavigationAction>
+                }
+            />
+            <div
+                style={{
+                    overflowY: 'scroll',
+                    height: '20rem',
+                    marginTop: '1rem',
+                }}
+                ref={wrapperRef}
+            >
+                <DataTable
+                    columns={columns}
+                    stickyHead
+                    data={massiveData}
+                    enableVirtualization
+                    parentContainerRef={wrapperRef}
+                />
+            </div>
         </BrowserRouter>
     );
 };

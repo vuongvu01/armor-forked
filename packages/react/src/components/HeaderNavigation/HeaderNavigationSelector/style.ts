@@ -36,6 +36,9 @@ export const SelectorDropdownOptionListContainer = styled.div.withConfig(
     propsBlocker,
 )<HeaderNavigationSelectorRootPropsType>`
     position: relative;
+    ${({ zIndex }: HeaderNavigationSelectorRootPropsType) => css`
+        z-index: ${zIndex};
+    `}
 `;
 export const SelectorDropdownOptionListWrapper = styled.div.withConfig(
     propsBlocker,

@@ -21,8 +21,6 @@ import {
 } from '../../system';
 import { Search } from '../Search';
 import { Typography } from '../Typography';
-import { DataTableVirtualOffsetType } from '../DataTable/type';
-import { ComponentElementStylePropsType } from '../type';
 
 const getOptionListStyle = ({
     isOptionListShown,

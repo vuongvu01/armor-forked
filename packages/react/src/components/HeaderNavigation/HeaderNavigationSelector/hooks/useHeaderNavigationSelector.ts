@@ -1,4 +1,10 @@
-import { MouseEvent, useCallback, KeyboardEvent, useState } from 'react';
+import {
+    MouseEvent,
+    useCallback,
+    KeyboardEvent,
+    useState,
+    useRef,
+} from 'react';
 import { HeaderNavigationSelectorPropsType } from '../type';
 import { RefType } from '../../../../type';
 import {
@@ -9,7 +15,7 @@ import {
     useSelectedValueToDisplay,
     useValue,
 } from '../../../../utils';
-import { useRootRef } from '../../../../system';
+import { useOverlay, usePopper, useRootRef } from '../../../../system';
 
 export const useHeaderNavigationSelector = <E extends HTMLDivElement>(
     {
@@ -30,10 +36,13 @@ export const useHeaderNavigationSelector = <E extends HTMLDivElement>(
         onClick,
         enableSelectAllOption,
         enableSearchOption,
+        enablePortal,
+        zIndex,
         ...restProps
     }: HeaderNavigationSelectorPropsType,
     ref: RefType<E>,
 ) => {
+    const dropdownRef = useRef<HTMLDivElement>(null);
     const containerRef = useRootRef(ref);
 
     const [internalValue, setInternalValue] = useValue(value, defaultValue);
@@ -53,6 +62,14 @@ export const useHeaderNavigationSelector = <E extends HTMLDivElement>(
     );
 
     const [isOptionListShown, setIsOptionListShown] = useState(isExpanded);
+
+    const { panelProps } = usePopper(dropdownRef, containerRef, {
+        align: 'bottom-end',
+        offset: [0, 0],
+        allowedAutoPlacements: ['bottom'],
+    });
+
+    const { zIndex: realZIndex } = useOverlay(isOptionListShown, { zIndex });
 
     useDetectClickOutsideComponent(
         containerRef,
@@ -117,5 +134,13 @@ export const useHeaderNavigationSelector = <E extends HTMLDivElement>(
         containerRef,
         label,
         selectedValueToDisplay,
+        portalProps: {
+            enablePortal,
+        },
+        listContainerProps: {
+            ref: dropdownRef,
+            zIndex: realZIndex,
+            ...panelProps,
+        },
     };
 };
