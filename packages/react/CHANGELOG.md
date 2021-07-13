@@ -1,3 +1,18 @@
+# @deliveryhero/armor [1.60.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.59.1...@deliveryhero/armor@1.60.0) (2021-07-13)
+
+
+### Bug Fixes
+
+* **actionsheet:** dark mode background ([#625](https://github.com/deliveryhero/armor/issues/625)) ([09babeb](https://github.com/deliveryhero/armor/commit/09babebc39f893a73b643302ed23be7c0efc57ab))
+* **datepicker:** DatePicker and DatePickerRange enableMinWidthAutoCorrection property added [LD-544] ([#631](https://github.com/deliveryhero/armor/issues/631)) ([10064c5](https://github.com/deliveryhero/armor/commit/10064c5b4feaf6bf5db87f58b3057c17a8b4c97f))
+* **headernavigation:** HeaderNavigation selector and title outline none [LD-556] ([#634](https://github.com/deliveryhero/armor/issues/634)) ([cbd95f0](https://github.com/deliveryhero/armor/commit/cbd95f0b76cc28ed63a183aaf31b1dcdce9faf7c))
+* **tokens:** Color tokens updated [LD-440] ([#627](https://github.com/deliveryhero/armor/issues/627)) ([0d4f28f](https://github.com/deliveryhero/armor/commit/0d4f28f7de367ebd2d5414dc340a52b86f020f20))
+
+
+### Features
+
+* **filter:** Feature layout horizontal added to FilterEditor [LD-509] ([#632](https://github.com/deliveryhero/armor/issues/632)) ([fb48ca1](https://github.com/deliveryhero/armor/commit/fb48ca14991abda9a954d0b4078ae54c9efbc298))
+
 ## @deliveryhero/armor [1.59.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.59.0...@deliveryhero/armor@1.59.1) (2021-06-25)
 
 
