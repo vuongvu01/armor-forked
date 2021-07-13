@@ -1,14 +1,15 @@
 import { useMemo } from 'react';
-import { DatePickerPropsType, DateValueType } from '../type';
-import { RefType } from '../../../type';
-import { useDatePickerPanel } from './useDatePickerPanel';
-import { useDatePickerState } from './useDatePickerState';
-import { useDatePickerCallbacks } from './useDatePickerCallbacks';
-import { formatDateTimeVector } from '../utils/formatDateTimeVector';
-import { useControlledState } from '../../../system';
-import { DateVectorRange } from '../utils/DateVectorRange';
-import { TimeVector24 } from '../utils/TimeVector24';
-import { useDatePickerSelectionEvents } from './useDatePickerSelectionEvents';
+import { DatePickerPropsType } from '../type';
+import { DateValueType } from '../../type';
+import { RefType } from '../../../../type';
+import { useDatePickerPanel } from '../../hooks/useDatePickerPanel';
+import { useDatePickerState } from '../../hooks/useDatePickerState';
+import { useDatePickerCallbacks } from '../../hooks/useDatePickerCallbacks';
+import { formatDateTimeVector } from '../../utils/formatDateTimeVector';
+import { useControlledState } from '../../../../system';
+import { DateVectorRange } from '../../utils/DateVectorRange';
+import { TimeVector24 } from '../../utils/TimeVector24';
+import { useDatePickerSelectionEvents } from '../../hooks/useDatePickerSelectionEvents';
 
 const externalizeValue = (value: DateVectorRange, timeVector: TimeVector24) =>
     value.convertToLocalDate(timeVector);
@@ -16,6 +17,7 @@ const externalizeValue = (value: DateVectorRange, timeVector: TimeVector24) =>
 export const useDatePicker = <E extends HTMLDivElement>(
     {
         enableTimePicker,
+        enableMinWidthAutoCorrection,
         defaultDateValue,
         dateValue,
         onDateValueChange,
@@ -118,6 +120,7 @@ export const useDatePicker = <E extends HTMLDivElement>(
         rootProps: {
             ...callbacksRestProps,
             enableTimePicker,
+            enableMinWidthAutoCorrection,
             ref: rootRef,
         },
         inputProps: {

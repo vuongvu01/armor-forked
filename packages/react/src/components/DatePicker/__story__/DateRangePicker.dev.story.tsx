@@ -9,6 +9,7 @@ import { Box } from '../../Box';
 import { Button } from '../../Button';
 import { DateVector } from '../utils/DateVector';
 import { makeTheme, ThemeProvider } from '../../../styling';
+import { FormField } from '../../FormField';
 
 export default {
     title: 'Components/DateRangePicker',
@@ -222,4 +223,25 @@ export const CustomTheme = () => {
 
 export const WithTimePickerAndNotSelected = () => {
     return <DateRangePicker open enableTimePicker />;
+};
+
+const dateRangeStatic = [
+    new Date(2021, 4, 18, 10, 30),
+    new Date(2021, 4, 28, 15, 40),
+] as [Date, Date];
+
+export const NoMinWidthAutoCorrection = () => {
+    return (
+        <Box paddingTop={20} paddingLeft={50}>
+            <FormField>
+                <DateRangePicker
+                    enableTimePicker
+                    enableMinWidthAutoCorrection={false}
+                    error
+                    dateValue={dateRangeStatic}
+                    width={70}
+                />
+            </FormField>
+        </Box>
+    );
 };

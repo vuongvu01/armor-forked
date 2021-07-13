@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 
 import {
     FilterLayout,
@@ -9,6 +9,8 @@ import {
     TableRow,
     TableCell,
     TableBody,
+    useFilterURLStorage,
+    FilterConditionValueType,
 } from '../../../src';
 import { filterSchema, filterValue, conditionTypes } from './schema';
 
@@ -204,3 +206,21 @@ export const FilterViewerWithResultAndTotalResult = () => (
         resultTotalCount={2500}
     />
 );
+
+export const FilterEditHorizontal = () => {
+    return (
+        <FilterLayout tall>
+            <FilterEditor
+                schema={filterSchema}
+                value={filterValue}
+                types={conditionTypes}
+                enableCloseButton={false}
+                paddingTop={6}
+                layout="horizontal"
+                resultCount={10}
+                resultTotalCount={2500}
+            />
+            <FilterTable />
+        </FilterLayout>
+    );
+};

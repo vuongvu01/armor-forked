@@ -55,7 +55,8 @@ const expansionIndicatorItemStyle = ({
 export const MenuExpansionIndicatorItem = styled.div.withConfig(propsBlocker)<
     HeaderNavigationMenuRootPropsType
 >`
-    ${expansionIndicatorItemStyle}
+    outline: none;
+    ${expansionIndicatorItemStyle};
 `;
 
 export const HeaderNavigationMenuTitleContainer = styled.div.withConfig(

@@ -11,10 +11,11 @@ export const useFilterEditorClassNames = (
             Header: makeBEM(classPrefix, 'Header'),
             HeaderTitle: makeBEM(classPrefix, 'HeaderTitle'),
             HeaderClearAllButton: makeBEM(classPrefix, 'HeaderClearAllButton'),
-            Fields: makeBEM(classPrefix, 'Fields'),
-            Field: makeBEM(classPrefix, 'Field'),
+            Conditions: makeBEM(classPrefix, 'Conditions'),
+            Condition: makeBEM(classPrefix, 'Condition'),
             Actions: makeBEM(classPrefix, 'Actions'),
             CloseButton: makeBEM(classPrefix, 'CloseButton'),
             ApplyButton: makeBEM(classPrefix, 'ApplyButton'),
+            ResultCount: makeBEM(classPrefix, 'ResultCount'),
         };
     }, [classPrefix, className]);

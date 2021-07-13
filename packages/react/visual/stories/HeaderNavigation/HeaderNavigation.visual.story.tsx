@@ -18,6 +18,7 @@ import {
     HeaderNavigationSearch,
     Pack,
     PackItem,
+    Tag,
 } from '../../../src/components';
 import { Image2 } from '../../../src/components/HeaderNavigation/__story__/Image2';
 import { Image } from '../../../src/components/HeaderNavigation/__story__/Image';
@@ -462,6 +463,9 @@ export const NavigationLinksWithReachRouterLink = () => {
                             to="/vendors"
                         >
                             Accounts
+                            <Tag small marginLeft={2} deleteOption="disabled">
+                                99
+                            </Tag>
                         </HeaderNavigationLink>
                         <HeaderNavigationLink
                             name={vendorsLinkName}

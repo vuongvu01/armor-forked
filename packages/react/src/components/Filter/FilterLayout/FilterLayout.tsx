@@ -21,9 +21,12 @@ export const FilterLayout = forwardRef<HTMLDivElement, FilterLayoutPropsType>(
             className,
         );
 
-        const { rootProps, filterEditor, leftBarProps } = useFilterLayout<
-            HTMLDivElement
-        >(props, ref);
+        const {
+            rootProps,
+            filterEditor,
+            leftBarProps,
+            showLeftBar,
+        } = useFilterLayout<HTMLDivElement>(props, ref);
 
         return (
             <FilterLayoutRoot
@@ -31,18 +34,20 @@ export const FilterLayout = forwardRef<HTMLDivElement, FilterLayoutPropsType>(
                 theme={theme}
                 className={classNames.Root}
             >
-                <FilterLayoutLeftBar
-                    {...leftBarProps}
-                    theme={theme}
-                    className={classNames.LeftBar}
-                >
-                    <FilterLayoutLeftBarContainer
+                {showLeftBar && (
+                    <FilterLayoutLeftBar
+                        {...leftBarProps}
                         theme={theme}
-                        className={classNames.LeftBarContainer}
+                        className={classNames.LeftBar}
                     >
-                        {filterEditor}
-                    </FilterLayoutLeftBarContainer>
-                </FilterLayoutLeftBar>
+                        <FilterLayoutLeftBarContainer
+                            theme={theme}
+                            className={classNames.LeftBarContainer}
+                        >
+                            {filterEditor}
+                        </FilterLayoutLeftBarContainer>
+                    </FilterLayoutLeftBar>
+                )}
                 <FilterLayoutMain theme={theme} className={classNames.Main}>
                     {children}
                 </FilterLayoutMain>

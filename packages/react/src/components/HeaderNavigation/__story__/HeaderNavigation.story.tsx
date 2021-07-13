@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import React, { ChangeEvent, MouseEvent, ReactText, useState } from 'react';
+import React, { ChangeEvent, MouseEvent, useState } from 'react';
 import styled from 'styled-components';
 import {
     LogoutIcon,
@@ -16,7 +16,7 @@ import {
     HeaderNavigationMenuContentBody,
     HeaderNavigationMenuContentHeader,
     HeaderNavigationMenuContentLogistics,
-} from '../HeaderNavigationMenu/HeaderNavigationMenuContent';
+} from '../HeaderNavigationMenu';
 import {
     HeaderNavigationLink,
     HeaderNavigationLinks,
@@ -37,7 +37,7 @@ import { DropdownSelectedOptionType } from '../../Dropdown/type';
 import { Pack, PackItem } from '../../Pack';
 import { withWrapper } from '../../../helpers/Wrapper';
 import { Navigation } from '../../Navigation';
-import { HeaderNavigationSelectOnSelectType } from '../type';
+import { Tag } from '../../Tag';
 
 export default {
     title: 'Components/HeaderNavigation',
@@ -345,6 +345,9 @@ export const ExtensiveExample = () => {
                             to={homeLink}
                         >
                             Accounts
+                            <Tag small marginLeft={2} deleteOption="disabled">
+                                99
+                            </Tag>
                         </HeaderNavigationLink>
                         <HeaderNavigationLink
                             name={vendorsLinkName}

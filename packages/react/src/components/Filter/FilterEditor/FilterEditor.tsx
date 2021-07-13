@@ -6,7 +6,7 @@ import { useFilterEditor } from './hooks/useFilterEditor';
 import {
     FilterEditorRoot,
     FilterEditorHeader,
-    FilterEditorFields,
+    FilterEditorConditions,
     FilterEditorActions,
 } from './style';
 import { FilterEditorPropsType } from './type';
@@ -29,10 +29,21 @@ export const FilterEditor = forwardRef<HTMLDivElement, FilterEditorPropsType>(
             rootProps,
             getConditionProps,
             schema,
+            headerProps,
+            conditionsProps,
             clearFilterButtonProps,
-            applyFilterButtonProps,
-            closeButtonProps,
+            getApplyFilterButtonProps,
+            getCloseButtonProps,
             getConditionType,
+            showCloseButton,
+            showSeparatedActions,
+            showInlineActions,
+
+            showResultCount,
+            showResultTotalCount,
+            resultCountFormatted,
+            resultTotalCountFormatted,
+            getResultCountProps,
         } = useFilterEditor<HTMLDivElement>(props, ref);
 
         return (
@@ -41,7 +52,11 @@ export const FilterEditor = forwardRef<HTMLDivElement, FilterEditorPropsType>(
                 theme={theme}
                 className={classNames.Root}
             >
-                <FilterEditorHeader theme={theme} className={classNames.Header}>
+                <FilterEditorHeader
+                    {...headerProps}
+                    theme={theme}
+                    className={classNames.Header}
+                >
                     <Typography
                         sectionTitle
                         tag="div"
@@ -53,11 +68,16 @@ export const FilterEditor = forwardRef<HTMLDivElement, FilterEditorPropsType>(
                         small
                         {...clearFilterButtonProps}
                         className={classNames.HeaderClearAllButton}
+                        marginLeft={6}
                     >
                         Clear all
                     </Link>
                 </FilterEditorHeader>
-                <FilterEditorFields theme={theme} className={classNames.Fields}>
+                <FilterEditorConditions
+                    {...conditionsProps}
+                    theme={theme}
+                    className={classNames.Conditions}
+                >
                     {schema.conditions!.map(condition => {
                         if (!condition.id) {
                             // todo: sub-filters are not currently supported
@@ -76,34 +96,62 @@ export const FilterEditor = forwardRef<HTMLDivElement, FilterEditorPropsType>(
                         return (
                             <FormField
                                 key={condition.name}
-                                className={classNames.Field}
+                                className={classNames.Condition}
                                 data-path={condition.name}
                             >
                                 <ConditionRenderer {...conditionProps} />
                             </FormField>
                         );
                     })}
-                </FilterEditorFields>
-                <FilterEditorActions
-                    theme={theme}
-                    className={classNames.Actions}
-                >
-                    <Button
-                        secondary
-                        marginRight={4}
-                        {...closeButtonProps}
-                        className={classNames.CloseButton}
+
+                    {showInlineActions && (
+                        <Button
+                            {...getApplyFilterButtonProps()}
+                            className={classNames.ApplyButton}
+                            secondary
+                        >
+                            Apply
+                        </Button>
+                    )}
+                </FilterEditorConditions>
+
+                {showResultCount && (
+                    <Typography
+                        {...getResultCountProps()}
+                        className={classNames.ResultCount}
                     >
-                        Close
-                    </Button>
-                    <Button
-                        wide
-                        {...applyFilterButtonProps}
-                        className={classNames.ApplyButton}
+                        showing {resultCountFormatted}{' '}
+                        {showResultTotalCount
+                            ? `out of ${resultTotalCountFormatted}`
+                            : ''}{' '}
+                        results
+                    </Typography>
+                )}
+
+                {showSeparatedActions && (
+                    <FilterEditorActions
+                        theme={theme}
+                        className={classNames.Actions}
                     >
-                        Apply
-                    </Button>
-                </FilterEditorActions>
+                        {showCloseButton && (
+                            <Button
+                                secondary
+                                marginRight={4}
+                                {...getCloseButtonProps()}
+                                className={classNames.CloseButton}
+                            >
+                                Close
+                            </Button>
+                        )}
+                        <Button
+                            wide
+                            {...getApplyFilterButtonProps()}
+                            className={classNames.ApplyButton}
+                        >
+                            Apply
+                        </Button>
+                    </FilterEditorActions>
+                )}
             </FilterEditorRoot>
         );
     },

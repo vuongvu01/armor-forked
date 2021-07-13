@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
-import { colorGrey40 } from '../../../../../tokens';
+import { colorGrey70 } from '../../../../../tokens';
 
 export const getActionSheetOverride = () => css`
-    background-color: ${colorGrey40};
+    background-color: ${colorGrey70};
 `;

@@ -44,6 +44,12 @@ type FilterEditorEffectivePropsType = Partial<{
     initialValue: FilterConditionValueType;
     onClose: () => void;
 
+    enableCloseButton: boolean;
+    layout: 'horizontal' | 'vertical';
+
+    resultCount: number;
+    resultTotalCount: number;
+
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
@@ -55,8 +61,12 @@ export type FilterEditorPropsType = FilterEditorEffectivePropsType &
 
 export type FilterEditorRootPropsType = ComponentElementStylePropsType;
 
-export type FilterEditorHeaderPropsType = ComponentElementStylePropsType;
+export type FilterEditorHeaderPropsType = {
+    leftAligned: boolean;
+} & ComponentElementStylePropsType;
 
-export type FilterEditorFieldsPropsType = ComponentElementStylePropsType;
+export type FilterEditorConditionsPropsType = {
+    vertical: boolean;
+} & ComponentElementStylePropsType;
 
 export type FilterEditorActionsPropsType = ComponentElementStylePropsType;

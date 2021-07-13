@@ -1,8 +1,5 @@
 import { HTMLAttributes } from 'react';
-import {
-    ComponentStylePropsType,
-    ComponentElementStylePropsType,
-} from '../type';
+import { ComponentElementStylePropsType } from '../type';
 import { MarginAttributesType, WidthAttributesType } from '../../system';
 import { ComponentBehaviourOpenStateType } from '../../system/types/ComponentBehaviourOpenStateType';
 import { ComponentBehaviourOverlayType } from '../../system/types/ComponentBehaviourOverlayType';
@@ -22,6 +19,7 @@ export type DatePickerEffectiveGenericPropsType<V> = Partial<{
 
     enableActionButtons: boolean;
     enableTimePicker: boolean;
+    enableMinWidthAutoCorrection: boolean;
 
     label: string;
     placeholder: string;
@@ -43,31 +41,6 @@ export type DatePickerEffectiveGenericPropsType<V> = Partial<{
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
     MarginAttributesType &
     WidthAttributesType;
-
-/** 👉 PROPS TYPE */
-export type DatePickerEffectivePropsType = DatePickerEffectiveGenericPropsType<
-    DateValueType
->;
-
-/** 👉 PROPS TYPE */
-type DateRangePickerEffectivePropsType = DatePickerEffectiveGenericPropsType<
-    DateValueRangeType
-> &
-    Partial<{
-        formatDateTimeRange: (
-            startDateTime: string,
-            endDateTime: string,
-        ) => string;
-    }>;
-
-export type DatePickerPropsType = DatePickerEffectivePropsType &
-    ComponentStylePropsType;
-
-export type DateRangePickerPropsType = DateRangePickerEffectivePropsType &
-    ComponentStylePropsType;
-
-export type DatePickerRootPropsType = DatePickerEffectivePropsType &
-    ComponentElementStylePropsType;
 
 export type DatePickerDropdownPropsType = {
     zIndex: number;

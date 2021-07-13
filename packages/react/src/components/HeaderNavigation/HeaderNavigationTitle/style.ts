@@ -15,6 +15,7 @@ const HeaderNavigationTitleRootWrapper = ({
 export const HeaderNavigationTitleRoot = styled(
     HeaderNavigationTitleRootWrapper,
 )<HeaderNavigationTitleRootPropsType>`
+    outline: none;
     cursor: pointer;
     text-decoration: none;
     padding: 0;
