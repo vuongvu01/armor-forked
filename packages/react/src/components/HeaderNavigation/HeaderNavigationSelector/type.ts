@@ -11,6 +11,8 @@ import {
     DropdownInternalOptionType,
     DropdownInternalValueType,
 } from '../../Dropdown/type';
+import { ComponentBehaviourPortalType } from '../../../system/types/ComponentBehaviourPortalType';
+import { ComponentBehaviourOverlayType } from '../../../system/types/ComponentBehaviourOverlayType';
 
 export type ClassBasedOnComponentType = {
     className?: string;
@@ -31,12 +33,16 @@ type HeaderNavigationSelectorEffectivePropsType = {
     separator?: boolean;
     enableSelectAllOption?: boolean;
     enableSearchOption?: boolean;
+    zIndex?: number;
 } & HTMLAttributes<HTMLElement> &
-    MarginAttributesType;
+    MarginAttributesType &
+    ComponentBehaviourPortalType &
+    ComponentBehaviourOverlayType;
 
 export type HeaderNavigationSelectorPropsType = HeaderNavigationSelectorEffectivePropsType;
 
 export type HeaderNavigationSelectorRootPropsType = {
     isOptionListShown?: boolean;
     separator?: boolean;
+    zIndex?: number;
 } & ComponentElementStylePropsType;
