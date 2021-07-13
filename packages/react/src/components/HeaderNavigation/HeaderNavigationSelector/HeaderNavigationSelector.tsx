@@ -19,6 +19,7 @@ import { useHeaderNavigationSelectorClassName } from './hooks';
 import { useTheme } from '../../../styling';
 import { Pack, PackItem } from '../../Pack';
 import { useHeaderNavigationSelector } from './hooks/useHeaderNavigationSelector';
+import { PortalToBody } from '../../../system/util/PortalToBody';
 
 export const HeaderNavigationSelector = forwardRef<
     HTMLDivElement,
@@ -36,6 +37,8 @@ export const HeaderNavigationSelector = forwardRef<
         selectorProps,
         optionListProps,
         expansionIndicatorProps,
+        listContainerProps,
+        portalProps,
         containerRef,
         label,
         selectedValueToDisplay,
@@ -79,20 +82,23 @@ export const HeaderNavigationSelector = forwardRef<
                         </PackItem>
                     </Pack>
                 </SelectedOptions>
-                <SelectorDropdownOptionListContainer
-                    className={classOverride.OptionListContainer}
-                    theme={theme}
-                >
-                    <SelectorDropdownOptionListWrapper
-                        className={classOverride.OptionListWrapper}
+                <PortalToBody {...portalProps}>
+                    <SelectorDropdownOptionListContainer
+                        className={classOverride.OptionListContainer}
                         theme={theme}
+                        {...listContainerProps}
                     >
-                        <SelectorDropdownOptionList
-                            {...optionListProps}
-                            className={classOverride.OptionList}
-                        />
-                    </SelectorDropdownOptionListWrapper>
-                </SelectorDropdownOptionListContainer>
+                        <SelectorDropdownOptionListWrapper
+                            className={classOverride.OptionListWrapper}
+                            theme={theme}
+                        >
+                            <SelectorDropdownOptionList
+                                {...optionListProps}
+                                className={classOverride.OptionList}
+                            />
+                        </SelectorDropdownOptionListWrapper>
+                    </SelectorDropdownOptionListContainer>
+                </PortalToBody>
             </HeaderNavigationSelectorWrapper>
         </HeaderNavigationSelectorRoot>
     );
