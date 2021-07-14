@@ -1017,16 +1017,6 @@ export const NoMenuUseCase = () => {
     );
 };
 
-const massiveData: typeof dataSource = [];
-for (let i = 0; i < 3000; i += 1) {
-    massiveData.push({
-        id: `id_${i}`,
-        name: `King Edward the ${i}`,
-        age: Math.floor(Math.random() * 100),
-        address: '10 Downing Street',
-    });
-}
-
 export const WithHeaderNavigation = () => {
     const wrapperRef = useRef(null);
 
@@ -1046,7 +1036,7 @@ export const WithHeaderNavigation = () => {
                 selector={
                     <HeaderNavigationSelector
                         navigationSelectorParams={{
-                            label: 'Country',
+                            label: 'Select Country',
                             options: [
                                 { value: 0, label: 'Japan' },
                                 { value: 1, label: 'Laos' },
@@ -1076,7 +1066,26 @@ export const WithHeaderNavigation = () => {
                 <DataTable
                     columns={columns}
                     stickyHead
-                    data={massiveData}
+                    data={[
+                        {
+                            id: '1',
+                            name: 'Mike',
+                            age: 32,
+                            address: '10 Downing Street',
+                        },
+                        {
+                            id: '3',
+                            name: 'Jill',
+                            age: 19,
+                            address: 'Raccoon City',
+                        },
+                        {
+                            id: '2',
+                            name: 'John',
+                            age: 42,
+                            address: '10 Downing Street',
+                        },
+                    ]}
                     enableVirtualization
                     parentContainerRef={wrapperRef}
                 />

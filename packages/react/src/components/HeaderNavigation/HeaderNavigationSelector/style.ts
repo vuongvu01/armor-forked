@@ -7,6 +7,7 @@ import {
     typography,
     getComponentOverride,
     propsBlocker,
+    zIndex,
 } from '../../../system';
 import { Stack, StackItem } from '../../Stack';
 import { PackItem } from '../../Pack';
@@ -36,9 +37,7 @@ export const SelectorDropdownOptionListContainer = styled.div.withConfig(
     propsBlocker,
 )<HeaderNavigationSelectorRootPropsType>`
     position: relative;
-    ${({ zIndex }: HeaderNavigationSelectorRootPropsType) => css`
-        z-index: ${zIndex};
-    `}
+    ${zIndex};
 `;
 export const SelectorDropdownOptionListWrapper = styled.div.withConfig(
     propsBlocker,
