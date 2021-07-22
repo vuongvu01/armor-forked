@@ -75,6 +75,11 @@ export const useOptionListClassName = (
                 classPrefix,
                 disabled,
             }),
+            Footer: classGeneratorBasedOnComponent({
+                component: 'Footer',
+                classPrefix,
+                disabled,
+            }),
         }),
         [classPrefix, className, disabled],
     );

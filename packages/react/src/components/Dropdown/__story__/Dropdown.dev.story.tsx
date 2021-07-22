@@ -809,6 +809,28 @@ export const CustomOptionFormatMultipleExpandedListWithSelectAllAndSearchWithDis
     );
 };
 
+export const FooterCustomOptionFormatMultiplePreSelectedExpandedList = () => {
+    const formatOption = (option: OptionItemType) => {
+        if (typeof option === 'object' && 'label' in option) {
+            return `${option.label} meal plan`;
+        }
+
+        return `${option} meal plan`;
+    };
+
+    return (
+        <Dropdown
+            width="500px"
+            multiple
+            options={foodOptions}
+            enableFooter
+            label="Dish type"
+            formatOption={formatOption}
+            isListExpanded
+        />
+    );
+};
+
 export const CustomOptionFormatMultipleExpandedListWithSelectAllAndSearch = () => {
     const formatOption = (option: OptionItemType) => {
         if (typeof option === 'object' && 'label' in option) {
@@ -1342,6 +1364,26 @@ export const MultilineOptions = () => {
     );
 };
 
+export const WithConfirmationFooter = () => {
+    const handleConfirmClick = () => {
+        console.log('options selected');
+    };
+
+    return (
+        <Dropdown
+            margin={1}
+            options={foodOptions}
+            label="Multiple options"
+            multiple
+            maxWidth="400px"
+            enableSelectAllOption
+            enableSearchOption
+            enableFooter
+            onConfirmClick={handleConfirmClick}
+        />
+    );
+};
+
 export const VirtualizedWithThousandsOfOptions = () => {
     const [isVirtualized, setIsVirtualized] = useState(true);
     const handleSelect = (option: any) => {
@@ -1420,6 +1462,84 @@ export const VirtualizedWithGroups = () => {
             enableSearchOption
             enableVirtualization
             groups={factions}
+        />
+    );
+};
+
+export const CustomFooterContentWithSelectionPreservedOnDataUpdate = () => {
+    const limitedDataSet = [
+        { value: -100, label: 'All food' },
+        { value: 0, label: 'Biryani' },
+        { value: 1, label: 'Tacos' },
+        { value: 2, label: 'Pho', disabled: true },
+        { value: 3, label: 'Pâté of roasted indigenous legumes' },
+        { value: 42, label: 'Pizza' },
+    ];
+
+    const additionalData = [
+        ...limitedDataSet,
+        { value: 5, label: 'Enchiladas' },
+        { value: 6, label: 'Börek', disabled: true },
+        { value: 7, label: 'Quiche', disabled: true },
+        { value: 8, label: 'Köfte' },
+        { value: 9, label: 'Pad Thai' },
+        { value: 10, label: 'Churrasco' },
+        { value: 11, label: 'Baozi' },
+        { value: 12, label: 'Ceviche' },
+        { value: 13, label: 'Mac & Cheese' },
+        { value: 14, label: 'Paella' },
+        { value: 15, label: 'Dim sum' },
+        { value: 16, label: 'Hamburger' },
+        { value: 17, label: 'Ramen' },
+        { value: 18, label: 'Sushi' },
+        { value: 19, label: 'Burrito' },
+    ];
+
+    const [data, setData] = useState(limitedDataSet);
+    const [isFullDataLoaded, setIsFullDataLoaded] = useState(false);
+
+    const handleLoadMore = () => {
+        setIsFullDataLoaded(true);
+        setData(additionalData);
+    };
+
+    return (
+        <Dropdown
+            margin={1}
+            options={data}
+            label="Multiple options"
+            multiple
+            maxWidth="500px"
+            enableSelectAllOption
+            enableSearchOption
+            isListExpanded
+            preserveSelection
+            onRenderSelectedValue={(
+                value: ReadonlyArray<unknown>,
+                options: ReadonlyArray<unknown>,
+            ) => {
+                return `${value.length} of ${options.length}`;
+            }}
+            footerContent={
+                <div
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'flex-end',
+                        alignItems: 'flex-end',
+                    }}
+                >
+                    <Button
+                        disabled={isFullDataLoaded}
+                        tertiary
+                        small
+                        onClick={handleLoadMore}
+                    >
+                        {isFullDataLoaded
+                            ? 'All data is loaded'
+                            : 'Load more data'}
+                    </Button>
+                </div>
+            }
         />
     );
 };

@@ -36,11 +36,16 @@ export const useOptionList = ({
     selectAllLabel = 'Select all',
     enableSearchOption,
     searchPlaceholder = 'Search',
+    enableFooter,
+    onCancelClick,
+    onConfirmClick,
+    footerContent,
     defaultSearchQuery = '',
     enableVirtualization = false,
     isFlat,
     groups,
     enableOptionContentEllipsis,
+
     ...restProps
 }: OptionListPropsType) => {
     const [searchQuery, setSearchQuery] = useState(defaultSearchQuery);
@@ -153,6 +158,22 @@ export const useOptionList = ({
         );
     }, [groups]);
 
+    const handleCancelButtonClick = () => {
+        setIsOptionListShown(false);
+
+        if (onCancelClick) {
+            onCancelClick();
+        }
+    };
+
+    const handleConfirmButtonClick = () => {
+        setIsOptionListShown(false);
+
+        if (onConfirmClick) {
+            onConfirmClick();
+        }
+    };
+
     const selectAllItem = useMemo(
         () => ({ value: -1, label: selectAllLabel }),
         [selectAllLabel],
@@ -205,6 +226,12 @@ export const useOptionList = ({
         enableSelectAllOption,
         enableSearchOption,
         isOptionListHeaderRendered: enableSelectAllOption || enableSearchOption,
+        isFooterRendered: enableFooter || footerContent,
+        optionListFooterProps: {
+            footerContent,
+            onCancelClick: handleCancelButtonClick,
+            onConfirmClick: handleConfirmButtonClick,
+        },
         isSelectAllOptionRendered:
             enableSelectAllOption && multiple && !searchQuery,
         groupIndex,

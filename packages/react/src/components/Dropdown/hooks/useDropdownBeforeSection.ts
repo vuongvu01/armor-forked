@@ -22,6 +22,7 @@ export const useDropdownBeforeSection = <E extends HTMLDivElement>(
         onClick,
         internalValue,
         setInternalValue,
+        setInitialSelection,
         onSelect,
         onChange,
         internalOptions,
@@ -63,6 +64,7 @@ export const useDropdownBeforeSection = <E extends HTMLDivElement>(
         internalOptions,
         internalValue,
         onChange,
+        setInitialSelection,
     );
 
     const onRemoveMultiple = useOnRemoveMultiple(

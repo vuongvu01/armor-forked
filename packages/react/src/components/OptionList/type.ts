@@ -47,6 +47,8 @@ export type OptionListPropsType = {
     groups?: OptionListGroupObjectType[];
     isFlat?: boolean;
     blurInput?: () => void;
+    onCancelClick?: () => void;
+    onConfirmClick?: () => void;
     setIsOptionListShown: (value: boolean) => void;
     onValueUpdate: (
         internalValue: DropdownInternalValueType,
@@ -65,6 +67,8 @@ export type OptionListPropsType = {
     | 'multiple'
     | 'enableSelectAllOption'
     | 'enableSearchOption'
+    | 'enableFooter'
+    | 'footerContent'
     | 'selectAllLabel'
     | 'searchPlaceholder'
     | 'enableVirtualization'
@@ -90,6 +94,12 @@ export type OptionListItemPropsType = {
     checkedIcon?: CheckedIconType;
     enableContentEllipsis?: boolean;
 } & Pick<DropdownEffectivePropsType, 'className' | 'multiple'> &
+    HTMLAttributes<HTMLDivElement>;
+
+export type OptionListFooterPropsType = {
+    onCancelClick?: () => void;
+    onConfirmClick?: () => void;
+} & Pick<DropdownEffectivePropsType, 'footerContent'> &
     HTMLAttributes<HTMLDivElement>;
 
 export type OptionListItemTypographyPropsType = Pick<
