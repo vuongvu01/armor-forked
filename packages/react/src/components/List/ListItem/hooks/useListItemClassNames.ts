@@ -8,15 +8,15 @@ export const useListItemClassNames = (
     useMemo(() => {
         return {
             Root: makeRootClassName(classPrefix, className),
-            PrimaryListItem: makeBEM(classPrefix, 'Primary-Item'),
-            SecondaryListItem: makeBEM(classPrefix, 'Secondary-List'),
-            PrimaryIconsContainer: makeBEM(classPrefix, 'Primary-Icons'),
+            PrimaryListItem: makeBEM(classPrefix, 'PrimaryItem'),
+            SecondaryListItem: makeBEM(classPrefix, 'SecondaryList'),
+            primaryIconContainer: makeBEM(classPrefix, 'primaryIcon'),
             PrimaryListItemContainer: makeBEM(
                 classPrefix,
-                'Primary-Item-Container',
+                'PrimaryItemContainer',
             ),
-            PrimaryLead: makeBEM(classPrefix, 'Lead'),
-            PrimarySubtitle: makeBEM(classPrefix, 'Subtitle'),
-            ActionsContainer: makeBEM(classPrefix, 'Actions-Container'),
+            PrimaryLeadSubtitle: makeBEM(classPrefix, 'LeadSubtitle'),
+            ActionsContainer: makeBEM(classPrefix, 'ActionsContainer'),
+            PrimaryIconWrapper: makeBEM(classPrefix, 'PrimaryIconWrapper'),
         };
     }, [classPrefix, className]);

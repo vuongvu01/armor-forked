@@ -18,6 +18,7 @@ import { OptionListItem } from './OptionListItem';
 import { useOptionList, useOptionListClassName } from './hooks';
 import { useComponentTheme } from '../../utils/hooks';
 import { ObjectLiteralType } from '../../type';
+import { OptionListFooter } from './OptionListFooter';
 
 export const OptionList: FunctionComponent<OptionListPropsType> = ({
     className,
@@ -43,6 +44,8 @@ export const OptionList: FunctionComponent<OptionListPropsType> = ({
         internalValue,
         enableSearchOption,
         isOptionListHeaderRendered,
+        isFooterRendered,
+        optionListFooterProps,
         isSelectAllOptionRendered,
         groupIndex,
     } = useOptionList(props);
@@ -148,6 +151,12 @@ export const OptionList: FunctionComponent<OptionListPropsType> = ({
                     )}
                 </div>
             </OptionListContainer>
+            {isFooterRendered && (
+                <OptionListFooter
+                    {...optionListFooterProps}
+                    className={classOverride.Footer}
+                />
+            )}
         </OptionListRoot>
     ) : null;
 };

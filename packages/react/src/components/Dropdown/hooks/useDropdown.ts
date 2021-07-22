@@ -1,5 +1,9 @@
-import { useCallback, useRef, useState } from 'react';
-import { DropdownInternalOptionType, DropdownPropsType } from '../type';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import {
+    DropdownInternalOptionType,
+    DropdownInternalValueType,
+    DropdownPropsType,
+} from '../type';
 import {
     useDetectEscapeKeyPressed,
     useOnValueUpdate,
@@ -11,9 +15,9 @@ import { RefType } from '../../../type';
 import {
     useControlledState,
     useDerivedState,
-    usePopper,
-    useOverlay,
     useOuterClick,
+    useOverlay,
+    usePopper,
     useRootRef,
 } from '../../../system';
 import { useOnOptionListUpdate } from './useOnOptionListUpdate';
@@ -36,6 +40,11 @@ export const useDropdown = <E extends HTMLInputElement>(
         selectAllLabel,
         enableSearchOption,
         enableOptionContentEllipsis,
+        enableFooter,
+        preserveSelection,
+        onCancelClick,
+        onConfirmClick,
+        footerContent,
         searchPlaceholder,
         defaultSearchQuery,
         tagLabelMaxLength,
@@ -69,6 +78,9 @@ export const useDropdown = <E extends HTMLInputElement>(
     const internalInputRef = useRootRef<E>(ref);
     const containerRef = useRef(null);
     const dropdownRef = useRef<HTMLDivElement>(null);
+    const [initialSelection, setInitialSelection] = useState<
+        DropdownInternalValueType
+    >([]);
 
     const [internalValue, setInternalValue] = useValue(value, defaultValue);
     const [searchQuery, setSearchQuery] = useState(defaultSearchQuery);
@@ -85,12 +97,19 @@ export const useDropdown = <E extends HTMLInputElement>(
         onOpenChange,
     );
 
+    useEffect(() => {
+        if (enableFooter) {
+            setInitialSelection(internalValue);
+        }
+    }, [enableFooter]);
+
     useOnOptionListUpdate(
         internalOptions,
         dynamicInternalOptions,
         setInternalValue,
         searchQuery,
         isOptionListShown,
+        preserveSelection,
     );
 
     const onValueUpdate = useOnValueUpdate(
@@ -98,6 +117,7 @@ export const useDropdown = <E extends HTMLInputElement>(
         onSelect,
         onChange,
         name,
+        initialSelection,
     );
 
     const selectedValueToDisplay = useSelectedValueToDisplay(
@@ -105,6 +125,21 @@ export const useDropdown = <E extends HTMLInputElement>(
         internalOptions,
         onRenderSelectedValue,
     );
+
+    const handleCancelClick = useCallback(() => {
+        setInternalValue(initialSelection);
+
+        if (enableFooter && onCancelClick) {
+            onCancelClick(initialSelection);
+        }
+    }, [enableFooter, onCancelClick, initialSelection]);
+
+    const handleConfirmClick = useCallback(() => {
+        setInitialSelection(internalValue);
+        if (enableFooter && onConfirmClick) {
+            onConfirmClick(internalValue);
+        }
+    }, [enableFooter, onConfirmClick, internalValue]);
 
     const blurInput = useCallback(() => {
         const node = internalInputRef.current as any;
@@ -129,12 +164,19 @@ export const useDropdown = <E extends HTMLInputElement>(
     const onOuterClick = useCallback(() => {
         setIsOptionListShown(false);
     }, [setIsOptionListShown]);
-    useOuterClick([containerRef, dropdownRef], onOuterClick, isOptionListShown);
+
+    if (!enableFooter) {
+        useOuterClick(
+            [containerRef, dropdownRef],
+            onOuterClick,
+            isOptionListShown,
+        );
+    }
 
     useDetectEscapeKeyPressed(
         containerRef,
         setIsOptionListShown,
-        isOptionListShown,
+        isOptionListShown && !enableFooter,
     );
 
     const onOptionListVisibilityTriggerClick = useCallback(() => {
@@ -214,6 +256,10 @@ export const useDropdown = <E extends HTMLInputElement>(
                     : enableSelectAllOption,
             selectAllLabel,
             enableSearchOption,
+            enableFooter,
+            onCancelClick: handleCancelClick,
+            onConfirmClick: handleConfirmClick,
+            footerContent,
             searchPlaceholder,
             defaultSearchQuery,
             enableAbsolutePositioning: false,
@@ -240,6 +286,7 @@ export const useDropdown = <E extends HTMLInputElement>(
             multiple,
             onRenderSelectedValue,
             setInternalValue,
+            setInitialSelection,
             onSelect,
             onChange,
             options,

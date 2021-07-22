@@ -1,4 +1,4 @@
-import { InputHTMLAttributes } from 'react';
+import { InputHTMLAttributes, ReactNode } from 'react';
 
 import { MarginAttributesType, WidthAttributesType } from '../../system';
 import {
@@ -56,6 +56,7 @@ export type DropdownOnRemoveMultipleType = (
 ) => void;
 
 export type DropdownOnChangeEventType = PseudoEventType<DropdownValueType>;
+export type DropdownOnConfirmEventType = PseudoEventType<DropdownValueType>;
 
 export type DropdownOnChangeType = (event: DropdownOnChangeEventType) => void;
 export type OptionFormatType = (option: OptionItemType) => string;
@@ -64,6 +65,7 @@ export type DropdownBeforeSectionPropsType = {
     internalValue: DropdownInternalValueType;
     internalOptions: DropdownInternalOptionType;
     setInternalValue: (nextValue: DropdownInternalValueType) => void;
+    setInitialSelection: (nextValue: DropdownInternalValueType) => void;
     isFlat: boolean;
 } & Pick<
     DropdownEffectivePropsType,
@@ -102,6 +104,11 @@ export type DropdownEffectivePropsType = Partial<{
     enableSearchOption: boolean;
     enableVirtualization?: boolean;
     enableOptionContentEllipsis: boolean;
+    enableFooter: boolean;
+    preserveSelection: boolean; // this should be used only when the new data set is a superset of the original set
+    onCancelClick: (initialSelection: DropdownInternalValueType) => void;
+    onConfirmClick: (initialSelection: DropdownInternalValueType) => void;
+    footerContent: ReactNode;
     singleLine: boolean;
     tagLabelMaxLength: number;
     openTagsCount: number;

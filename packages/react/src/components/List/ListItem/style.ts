@@ -3,7 +3,7 @@ import { ReactElement } from 'react';
 
 import {
     ListItemRootPropsType,
-    PrimaryIconsContainerPropsType,
+    PrimaryIconContainerPropsType,
     LeadSubtitlePropsType,
     PrimaryListItemContainerPropsType,
     ActionsContainerPropsType,
@@ -13,8 +13,11 @@ import {
     propsBlocker,
     getComponentOverride,
     color,
+    reset,
+    typography,
+    spacing,
+    pixelToRem,
 } from '../../../system';
-import { reset, typography, spacing, pixelToRem } from '../../../system/mixins';
 import { ListRootPropsType } from '../type';
 
 const getRootStyle = ({
@@ -37,12 +40,16 @@ const getRootStyle = ({
         `;
     } else {
         result = css`
-        ${result};
-        &:hover {
+            ${result};
+            &:hover {
                 background-color: ${color('primary.lightest')};
+                .PrimaryIconWrapper-Root {
+                    border: 1px solid ${color('primary.lighter')};
+                    box-sizing: border-box;
+                    border-radius: ${spacing(2)};
+                }
             }
-        }
-    `;
+        `;
     }
 
     if (divider) {
@@ -123,19 +130,6 @@ const getLeadSubtitleStyle = ({ disabled }: ListItemRootPropsType) => {
     return result;
 };
 
-const getBackgroundColorStyle = ({
-    backgroundColor,
-}: ListItemRootPropsType) => {
-    let result = {};
-    if (backgroundColor) {
-        result = css`
-            ${result};
-            background-color: ${backgroundColor};
-        `;
-    }
-    return result;
-};
-
 const getPrimaryListStyle = ({ lead, disabled }: ListItemRootPropsType) => {
     let result = {};
     if (lead) {
@@ -183,6 +177,7 @@ export const ListItemRoot = styled(Wrapper).withConfig(propsBlocker)<
     font-size: inherit;
     border-radius: 0;
     background: ${color('neutral.00')};
+
     ${getRootStyle};
     ${getComponentOverride('ListItem')};
     ${marginAttributes};
@@ -209,14 +204,14 @@ export const SecondaryListItem = styled.div.withConfig(propsBlocker)<
     ${getSecondaryListStyle};
 `;
 
-export const PrimaryIconsContainer = styled.div.withConfig(propsBlocker)<
-    PrimaryIconsContainerPropsType
+export const PrimaryIconContainer = styled.div.withConfig(propsBlocker)<
+    PrimaryIconContainerPropsType
 >`
-    margin-right: ${spacing(2)};
+    margin-right: ${spacing(4)};
     margin-top: ${spacing(0.25)};
     min-height: fit-content;
-    ${getBackgroundColorStyle};
 `;
+
 export const ActionsContainer = styled.div.withConfig(propsBlocker)<
     ActionsContainerPropsType
 >`

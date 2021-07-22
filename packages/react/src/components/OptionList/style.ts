@@ -1,23 +1,23 @@
 import styled, { css } from 'styled-components';
 import { transitionDurationInSec } from '../../constants';
 import {
-    OptionListItemPropsType,
     OptionListBeforeSectionContainerPropsType,
-    OptionListSearchPropsType,
-    OptionListItemGroupPropType,
-    OptionListRootPropsType,
     OptionListContainerPropsType,
+    OptionListItemGroupPropType,
+    OptionListItemPropsType,
     OptionListItemTypographyPropsType,
     OptionListVirtualOffsetType,
+    OptionListRootPropsType,
+    OptionListSearchPropsType,
 } from './type';
 import {
     color,
+    elevation,
+    getComponentOverride,
     pixelToRem,
     propsBlocker,
     spacing,
     typography,
-    getComponentOverride,
-    elevation,
 } from '../../system';
 import { Search } from '../Search';
 import { Typography } from '../Typography';
@@ -85,6 +85,16 @@ export const OptionListSearch = styled(Search).attrs({
     enableSuggestions: false,
 })<OptionListSearchPropsType>`
     width: 100%;
+`;
+
+export const OptionListFooterContainer = styled.div.attrs({
+    enableSuggestions: false,
+})<OptionListSearchPropsType>`
+    padding: ${spacing(3)};
+    display: flex;
+    justify-content: space-between;
+    background-color: ${color('neutral.01')};
+    border-top: 1px solid ${color('neutral.03')};
 `;
 
 const optionItemStyle = ({

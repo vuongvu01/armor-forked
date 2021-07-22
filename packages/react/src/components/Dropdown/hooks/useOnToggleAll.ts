@@ -15,6 +15,7 @@ export const useOnToggleAll = (
     internalOptions: DropdownInternalOptionType,
     internalValue: DropdownInternalValueType,
     onChange?: (event: DropdownOnChangeEventType) => void,
+    setInitialSelection?: (nextValue: DropdownInternalValueType) => void,
 ) =>
     useCallback<DropdownOnToggleAllType>(
         (selectAll = true) => {
@@ -33,6 +34,10 @@ export const useOnToggleAll = (
 
             if (!selectAll) {
                 handleOnChange([], onChange);
+                if (setInitialSelection) {
+                    setInitialSelection([...preselectedDisabledOptionItems]);
+                }
+
                 if (setInternalValue) {
                     setInternalValue([...preselectedDisabledOptionItems]);
                 }

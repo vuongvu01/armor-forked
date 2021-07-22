@@ -3,16 +3,15 @@ import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../type';
-import { MarginAttributesType } from '../../system/attributes';
-import { ObjectLiteralType } from '../../type';
+import { MarginAttributesType, WidthAttributesType } from '../../system';
 
 /** 👉 PROPS TYPE */
 type ListEffectivePropsType = Partial<{
     small: boolean;
 }> &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
-    MarginAttributesType &
-    ObjectLiteralType;
+    WidthAttributesType &
+    MarginAttributesType;
 
 export type ListPropsType = ListEffectivePropsType & ComponentStylePropsType;
 

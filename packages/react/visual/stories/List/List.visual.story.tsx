@@ -21,7 +21,7 @@ export const DefaultLayout = () => {
                 <ListItem
                     divider={true}
                     secondaryItemText="Secondary"
-                    primaryIcons={<MapIcon />}
+                    primaryIcon={<MapIcon />}
                 >
                     Primary with icon
                 </ListItem>
@@ -46,7 +46,7 @@ export const DefaultLayout = () => {
                     secondaryItemText="Secondary"
                     divider={true}
                     disabled={true}
-                    primaryIcons={<MapIcon />}
+                    primaryIcon={<MapIcon />}
                     actions={<MapIcon />}
                 >
                     Disabled
@@ -61,8 +61,7 @@ export const ListWithSwitch = () => {
         <>
             <List>
                 <ListItem
-                    primaryIcons={<MapIcon />}
-                    enableActions={true}
+                    primaryIcon={<MapIcon />}
                     actions={<Switch onChange={() => {}} />}
                 >
                     With Switch
@@ -87,8 +86,7 @@ export const ListWithSpecificWidth = () => {
         <>
             <List width="440px">
                 <ListItem
-                    primaryIcons={<MapIcon />}
-                    enableActions={true}
+                    primaryIcon={<MapIcon />}
                     actions={<Switch onChange={() => {}} />}
                 >
                     With Switch
@@ -134,7 +132,7 @@ export const ListItemWithLead = () => {
                     With lead
                 </ListItem>
 
-                <ListItem divider={true} lead="lead" primaryIcons={<MapIcon />}>
+                <ListItem divider={true} lead="lead" primaryIcon={<MapIcon />}>
                     With lead & Icon
                 </ListItem>
             </List>
@@ -153,7 +151,7 @@ export const ListItemWithSubtitle = () => {
                 <ListItem
                     divider={true}
                     subtitle="subtitle"
-                    primaryIcons={<MapIcon />}
+                    primaryIcon={<MapIcon />}
                 >
                     With subtitle & icon
                 </ListItem>
@@ -170,7 +168,7 @@ export const SmallMediumLarge = () => {
                     secondaryItemText="secondary"
                     actions={<Switch onChange={() => {}} />}
                     size="small"
-                    primaryIcons={<MapIcon />}
+                    primaryIcon={<MapIcon />}
                 >
                     Small
                 </ListItem>
@@ -191,7 +189,7 @@ export const SmallMediumLarge = () => {
             <br />
 
             <List>
-                <ListItem size="medium" primaryIcons={<MapIcon />}>
+                <ListItem size="medium" primaryIcon={<MapIcon />}>
                     Medium
                 </ListItem>
 
@@ -205,7 +203,7 @@ export const SmallMediumLarge = () => {
             <br />
 
             <List>
-                <ListItem size="large" primaryIcons={<MapIcon />}>
+                <ListItem size="large" primaryIcon={<MapIcon />}>
                     Large
                 </ListItem>
 
@@ -224,7 +222,6 @@ export const ListWithChevron = () => {
                     enableLink={true}
                     href="https://www.deliveryhero.com"
                     target="_blank"
-                    enableActions={true}
                     actions={<ArrowRightIcon small />}
                 >
                     With Chevron
@@ -233,7 +230,6 @@ export const ListWithChevron = () => {
                 <ListItem
                     lead="lead"
                     enableLink={true}
-                    enableActions={true}
                     href="https://www.deliveryhero.com"
                     target="_blank"
                     actions={<ArrowRightIcon small />}
@@ -245,7 +241,6 @@ export const ListWithChevron = () => {
                     lead="lead"
                     disabled={true}
                     enableLink={true}
-                    enableActions={true}
                     href="https://www.deliveryhero.com"
                     target="_blank"
                     actions={<ArrowRightIcon small />}
@@ -279,17 +274,12 @@ export const WithDividers = () => {
     return (
         <>
             <List>
-                <ListItem
-                    divider={true}
-                    enablePrimaryIcons={true}
-                    primaryIcons={<MapIcon />}
-                >
+                <ListItem divider={true} primaryIcon={<MapIcon />}>
                     With Dividers
                 </ListItem>
 
                 <ListItem
                     divider={true}
-                    enableActions={true}
                     actions={
                         <>
                             <MapIcon />
@@ -319,6 +309,106 @@ export const OnlyPrimary = () => {
 
                 <ListItem divider={true} enableSecondaryItem={false}>
                     Only Primary
+                </ListItem>
+            </List>
+        </>
+    );
+};
+
+export const primaryIconAllCases = () => {
+    return (
+        <>
+            <List>
+                <ListItem divider={true} primaryIcon={<MapIcon />}>
+                    Primary Icon with single line
+                </ListItem>
+            </List>
+
+            <br />
+            <br />
+            <br />
+
+            <List>
+                <ListItem lead="lead" divider={true} primaryIcon={<MapIcon />}>
+                    Primary Icon with lead but no wrapper
+                </ListItem>
+            </List>
+
+            <br />
+            <br />
+            <br />
+
+            <List>
+                <ListItem
+                    lead="lead"
+                    divider={true}
+                    primaryIcon={<MapIcon />}
+                    primaryIconBackgroundColor="#EEF4FC"
+                >
+                    Primary Icon with lead and wrapper
+                </ListItem>
+            </List>
+
+            <br />
+            <br />
+            <br />
+
+            <List>
+                <ListItem
+                    subtitle="subtitle"
+                    divider={true}
+                    primaryIcon={<MapIcon />}
+                >
+                    Primary Icon with subtitle but no wrapper
+                </ListItem>
+            </List>
+
+            <br />
+            <br />
+            <br />
+
+            <List>
+                <ListItem
+                    subtitle="subtitle"
+                    divider={true}
+                    primaryIcon={<MapIcon />}
+                    primaryIconBackgroundColor="#EEF4FC"
+                >
+                    Primary Icon with subtitle and wrapper
+                </ListItem>
+            </List>
+
+            <br />
+            <br />
+            <br />
+
+            <List>
+                <ListItem
+                    subtitle="subtitle"
+                    divider={true}
+                    disabled={true}
+                    primaryIcon={<MapIcon />}
+                    primaryIconBackgroundColor="#EEF4FC"
+                >
+                    Disabled primary icon wrapper
+                </ListItem>
+            </List>
+
+            <br />
+            <br />
+            <br />
+
+            <List>
+                <ListItem
+                    subtitle="subtitle"
+                    divider={true}
+                    enableLink={true}
+                    href="https://www.deliveryhero.com"
+                    target="_blank"
+                    primaryIcon={<MapIcon />}
+                    primaryIconBackgroundColor="#EEF4FC"
+                >
+                    With primary icon wrapper as link
                 </ListItem>
             </List>
         </>

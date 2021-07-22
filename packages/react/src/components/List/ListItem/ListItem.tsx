@@ -8,13 +8,14 @@ import {
     PrimaryListItem,
     SecondaryListItem,
     ActionsContainer,
-    PrimaryIconsContainer,
+    PrimaryIconContainer,
     PrimaryLeadSubtitle,
     PrimaryListItemContainer,
 } from './style';
 import { ListItemPropsType } from './type';
 import { LIST_ITEM_CLASS_PREFIX } from './contants';
 import { useComponentTheme } from '../../../utils/hooks';
+import { PrimaryIconWrapper } from '../PrimaryIconWrapper/PrimaryIconWrapper';
 
 export const ListItem = forwardRef<HTMLDivElement, ListItemPropsType>(
     function ListItem({ className, ...props }, ref) {
@@ -27,7 +28,6 @@ export const ListItem = forwardRef<HTMLDivElement, ListItemPropsType>(
         const {
             rootProps,
             primaryListProps,
-            primaryIconsContainerProps,
             primaryLeadSubtitle,
             secondaryListProps,
             renderSubtitle,
@@ -38,10 +38,11 @@ export const ListItem = forwardRef<HTMLDivElement, ListItemPropsType>(
             actions,
             lead,
             subtitle,
-            enablePrimaryIcons,
-            primaryIcons,
+            primaryIcon,
             Tag,
             tagProps,
+            primaryIconWrapper,
+            primaryIconWrapperProps,
         } = useListItem(props, ref);
 
         return (
@@ -49,38 +50,58 @@ export const ListItem = forwardRef<HTMLDivElement, ListItemPropsType>(
                 {...rootProps}
                 theme={theme}
                 className={classNames.Root}
-                ref={ref}
             >
                 {(forwardedProps: ListItemPropsType) => (
                     <Tag {...forwardedProps} {...tagProps}>
-                        <PrimaryListItem {...primaryListProps} theme={theme}>
-                            {!!enablePrimaryIcons && (
-                                <PrimaryIconsContainer
-                                    {...primaryIconsContainerProps}
+                        <PrimaryListItem
+                            {...primaryListProps}
+                            theme={theme}
+                            className={classNames.PrimaryListItem}
+                        >
+                            {primaryIcon && (
+                                <PrimaryIconContainer
                                     theme={theme}
-                                    className={classNames.PrimaryIconsContainer}
+                                    className={classNames.primaryIconContainer}
                                 >
-                                    {primaryIcons}
-                                </PrimaryIconsContainer>
+                                    {!primaryIconWrapper ? (
+                                        primaryIcon
+                                    ) : (
+                                        <PrimaryIconWrapper
+                                            {...primaryIconWrapperProps}
+                                            theme={theme}
+                                            className={
+                                                classNames.PrimaryIconWrapper
+                                            }
+                                        >
+                                            {primaryIcon}
+                                        </PrimaryIconWrapper>
+                                    )}
+                                </PrimaryIconContainer>
                             )}
 
                             <PrimaryListItemContainer
                                 theme={theme}
                                 className={classNames.PrimaryListItemContainer}
                             >
-                                {!!renderLead && (
+                                {renderLead && (
                                     <PrimaryLeadSubtitle
                                         {...primaryLeadSubtitle}
                                         theme={theme}
+                                        className={
+                                            classNames.PrimaryLeadSubtitle
+                                        }
                                     >
                                         {lead}
                                     </PrimaryLeadSubtitle>
                                 )}
                                 {children}
-                                {!!renderSubtitle && (
+                                {renderSubtitle && (
                                     <PrimaryLeadSubtitle
                                         {...primaryLeadSubtitle}
                                         theme={theme}
+                                        className={
+                                            classNames.PrimaryLeadSubtitle
+                                        }
                                     >
                                         {subtitle}
                                     </PrimaryLeadSubtitle>
@@ -112,20 +133,17 @@ export const ListItem = forwardRef<HTMLDivElement, ListItemPropsType>(
 );
 ListItem.defaultProps = {
     disabled: false,
-    enablePrimaryIcons: false,
-    enableActions: false,
     size: 'medium',
     divider: false,
     enableSecondaryItem: true,
     enableLink: false,
+    primaryIconWrapper: false,
 };
 
 /** prop-types are required here for run-time checks */
 ListItem.propTypes = {
     disabled: PropTypes.bool,
-    primaryIcons: PropTypes.elementType,
-    enablePrimaryIcons: PropTypes.bool,
-    enableActions: PropTypes.bool,
+    primaryIcon: PropTypes.elementType,
     secondaryItemText: PropTypes.string,
     divider: PropTypes.bool,
     lead: PropTypes.string,
@@ -133,7 +151,6 @@ ListItem.propTypes = {
     enableSecondaryItem: PropTypes.bool,
     enableLink: PropTypes.bool,
     actions: PropTypes.elementType,
-    tag: PropTypes.oneOfType([PropTypes.elementType, PropTypes.string]),
-    target: PropTypes.string,
-    href: PropTypes.string,
+    primaryIconBackgroundColor: PropTypes.string,
+    primaryIconWrapper: PropTypes.bool,
 };
