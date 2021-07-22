@@ -1,3 +1,10 @@
+# @deliveryhero/armor [1.61.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.60.1...@deliveryhero/armor@1.61.0) (2021-07-22)
+
+
+### Features
+
+* **dropdown:** confirm selection [LD-519] ([#570](https://github.com/deliveryhero/armor/issues/570)) ([5b3a801](https://github.com/deliveryhero/armor/commit/5b3a801495bb1090ac2f9865bb5cd61b028f1b18))
+
 ## @deliveryhero/armor [1.60.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.60.0...@deliveryhero/armor@1.60.1) (2021-07-13)
 
 
