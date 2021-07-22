@@ -1,3 +1,10 @@
+## @deliveryhero/armor [1.61.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.61.0...@deliveryhero/armor@1.61.1) (2021-07-22)
+
+
+### Bug Fixes
+
+* **list:** exports ([#642](https://github.com/deliveryhero/armor/issues/642)) ([#643](https://github.com/deliveryhero/armor/issues/643)) ([2e50eb2](https://github.com/deliveryhero/armor/commit/2e50eb2ebf68e9ccfa3f36f9f76f3a0f4d01b8d6))
+
 # @deliveryhero/armor [1.61.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.60.1...@deliveryhero/armor@1.61.0) (2021-07-22)
 
 
