@@ -2,7 +2,7 @@
     "name": "storybook",
     "version": "0.0.0",
     "scripts": {
-        "storybook": "start-storybook -p 6006",
+        "storybook": "start-storybook -p 6009",
         "build-storybook": "build-storybook"
     },
     "dependencies": {

@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 cd ./dev/;
-yarn run storybook --ci;
+yarn run storybook --ci ;
