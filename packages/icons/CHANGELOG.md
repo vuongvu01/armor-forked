@@ -1,3 +1,10 @@
+# @deliveryhero/armor-icons [1.12.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.11.0...@deliveryhero/armor-icons@1.12.0) (2021-07-23)
+
+
+### Features
+
+* **icons:** email and phone notification icons [LD-569] ([#644](https://github.com/deliveryhero/armor/issues/644)) ([c47adc3](https://github.com/deliveryhero/armor/commit/c47adc3ed072592a005720eb64027ba927ea4aeb))
+
 # @deliveryhero/armor-icons [1.11.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.10.2...@deliveryhero/armor-icons@1.11.0) (2021-05-27)
 
 
