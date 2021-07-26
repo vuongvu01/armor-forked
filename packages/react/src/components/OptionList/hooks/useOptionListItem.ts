@@ -9,6 +9,7 @@ export const useOptionListItem = ({
     multiple,
     checkedIcon,
     enableContentEllipsis,
+    renderItemAdditionalInfo,
     ...restProps
 }: OptionListItemPropsType) => {
     const handleItemClick = useCallback(
@@ -45,5 +46,8 @@ export const useOptionListItem = ({
         },
         multiple,
         label: item.label,
+        showAdditionalInfo: !!renderItemAdditionalInfo,
+        getAdditionalInfo: () =>
+            renderItemAdditionalInfo ? renderItemAdditionalInfo(item) : null,
     };
 };

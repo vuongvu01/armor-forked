@@ -9,7 +9,7 @@ import {
     FilterConditionSchemaType,
     FilterConditionValueType,
 } from '../type';
-import { FilterBaseConditionType } from '../conditionTypes/base';
+import { FilterBaseConditionType } from '../conditionTypes/FilterBaseConditionType';
 
 export type FilterEditorConditionPropsType = {
     // things considering a particular field

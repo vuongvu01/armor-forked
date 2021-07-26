@@ -15,6 +15,7 @@ import {
 } from '../..';
 import { useFilterURLStorage } from '../hooks';
 import { withWrapper } from '../../../helpers/Wrapper';
+import { OptionObjectType } from '../../OptionList/type';
 
 export default {
     title: 'Components/Filter',
@@ -173,7 +174,35 @@ export const Basic = () => {
     );
 };
 
-export const NoEditor = () => {
+const enumFilterSchema: FilterConditionSchemaType = {
+    conditions: [
+        {
+            id: 'labels',
+            label: 'Labels',
+            typeId: 'labelEnum',
+            multiple: true,
+        },
+    ],
+};
+
+const enumConditionTypes = [
+    FilterEnumConditionType.create('labelEnum', {
+        options: [
+            { label: 'Label 1', value: 'label1', price: 9999 },
+            { label: 'Label 2', value: 'label2', price: 123 },
+            { label: 'Label 3', value: 'label3', price: 78965 },
+        ],
+        dropdownAttributes: {
+            enableSearchOption: true,
+            renderItemAdditionalInfo: item =>
+                new Intl.NumberFormat().format(
+                    (item as OptionObjectType).price,
+                ),
+        },
+    }),
+];
+
+export const EnumProps = () => {
     const [storedValue, setStoredValue] = useFilterURLStorage('filterA');
     const [filterValue, setFilterValue] = useState<
         FilterConditionValueType | undefined
@@ -190,9 +219,9 @@ export const NoEditor = () => {
     return (
         <FilterLayout tall>
             <FilterEditor
-                schema={araraFilterSchema}
+                schema={enumFilterSchema}
                 value={filterValue}
-                types={conditionTypes}
+                types={enumConditionTypes}
                 onValueChange={setFilterValueCommon}
                 enableCloseButton={false}
                 paddingTop={6}

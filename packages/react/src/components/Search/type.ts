@@ -2,6 +2,7 @@ import React, {
     ChangeEvent,
     HTMLAttributes,
     InputHTMLAttributes,
+    ReactChild,
     ReactElement,
 } from 'react';
 
@@ -44,7 +45,7 @@ export type SearchEffectivePropsType = Partial<{
     renderItemAdditionalInfo: (
         option: SuggestionObjectType,
         optionIndex?: number,
-    ) => ReactElement;
+    ) => ReactChild;
     defaultQuery: SearchQueryType;
     query: SearchQueryType;
     disabled: boolean;

@@ -1,8 +1,8 @@
-import { FilterEditorDateCondition } from '../conditions/date';
-import { FilterEditorEnumCondition } from '../conditions/enum';
-import { FilterEditorNumberCondition } from '../conditions/number';
-import { FilterEditorStringCondition } from '../conditions/string';
-import { FilterBaseConditionType } from '../../conditionTypes/base';
+import { FilterEditorDateCondition } from '../conditions/FilterEditorDateCondition';
+import { FilterEditorEnumCondition } from '../conditions/FilterEditorEnumCondition';
+import { FilterEditorNumberCondition } from '../conditions/FilterEditorNumberCondition';
+import { FilterEditorStringCondition } from '../conditions/FilterEditorStringCondition';
+import { FilterBaseConditionType } from '../../conditionTypes/FilterBaseConditionType';
 import {
     FilterDateConditionType,
     FilterEnumConditionType,
