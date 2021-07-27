@@ -1,3 +1,11 @@
+# @deliveryhero/armor [1.62.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.61.2...@deliveryhero/armor@1.62.0) (2021-07-27)
+
+
+### Features
+
+* **filter:** Dropdown properties in FilterEditor enum field [LD-533] ([#638](https://github.com/deliveryhero/armor/issues/638)) ([5a5cb86](https://github.com/deliveryhero/armor/commit/5a5cb86dca1e14ac08ca1cdb3e032d86c04f7f47))
+* **headernavigation:** support for callback in Link isActive param [LD-571] ([#646](https://github.com/deliveryhero/armor/issues/646)) ([d6b67a1](https://github.com/deliveryhero/armor/commit/d6b67a1547ae32f2b36adc7defde98cd8d1da1db))
+
 ## @deliveryhero/armor [1.61.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.61.1...@deliveryhero/armor@1.61.2) (2021-07-23)
 
 
