@@ -12,6 +12,7 @@ export const useOptionListItemClassName = (
             Root: appendClassName(makeBEM(classPrefix, 'Root'), className),
             Checkbox: makeBEM(classPrefix, 'Checkbox'),
             Typography: makeBEM(classPrefix, 'Typography'),
+            AdditionalInfo: makeBEM(classPrefix, 'AdditionalInfo'),
         }),
         [classPrefix, className, disabled],
     );

@@ -14,8 +14,18 @@ export const FilterEditorEnumCondition: FC<FilterEditorConditionPropsType> = ({
     const { label, multiple } = condition;
     const {
         options,
+        dropdownAttributes,
     } = (conditionType as FilterEnumConditionType).getAttributes();
     const { value } = conditionValue || {};
+
+    const {
+        enableSearchOption,
+        enableVirtualization,
+        enableOptionContentEllipsis,
+        formatOption,
+        groups,
+        renderItemAdditionalInfo,
+    } = dropdownAttributes || {};
 
     const onChange = useCallback(
         (event: PseudoEventType<DropdownValueType>) => {
@@ -28,6 +38,12 @@ export const FilterEditorEnumCondition: FC<FilterEditorConditionPropsType> = ({
 
     return (
         <Dropdown
+            enableSearchOption={enableSearchOption}
+            enableVirtualization={enableVirtualization}
+            enableOptionContentEllipsis={enableOptionContentEllipsis}
+            formatOption={formatOption}
+            groups={groups}
+            renderItemAdditionalInfo={renderItemAdditionalInfo}
             wide
             label={label}
             multiple={multiple}

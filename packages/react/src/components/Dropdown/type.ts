@@ -13,6 +13,7 @@ import { ComponentBehaviourOpenStateType } from '../../system/types/ComponentBeh
 import { ComponentBehaviourPortalType } from '../../system/types/ComponentBehaviourPortalType';
 import { ComponentBehaviourOverlayType } from '../../system/types/ComponentBehaviourOverlayType';
 import { TextInputPropsType } from '../TextInput/type';
+import { OptionListPropsType } from '../OptionList/index';
 
 export type ClassBasedOnComponentType = {
     component: string;
@@ -136,6 +137,7 @@ export type DropdownEffectivePropsType = Partial<{
     renderAggregatedTagsLabel: (aggregatedTagsCount: number) => string;
     groups: DropdownGroupObjectType[];
     isOptionListShown: boolean;
+    renderItemAdditionalInfo?: OptionListPropsType['renderItemAdditionalInfo'];
 
     'data-testid-input': string;
 

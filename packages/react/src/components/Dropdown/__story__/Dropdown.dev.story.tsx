@@ -1543,3 +1543,31 @@ export const CustomFooterContentWithSelectionPreservedOnDataUpdate = () => {
         />
     );
 };
+
+export const WithAdditionalInfo = () => {
+    const [selectedOption, setSelectedOption] = useState();
+    const handleSelect = (option: any) => {
+        setSelectedOption(option);
+    };
+
+    return (
+        <>
+            <Dropdown
+                options={[
+                    'Biryani',
+                    'Tacos',
+                    'Pho',
+                    'Pâté of roasted indigenous legumes',
+                ]}
+                onSelect={handleSelect}
+                label="Dish type"
+                renderItemAdditionalInfo={item => {
+                    return '999 bottles of dirt!';
+                }}
+            />
+            <Typography paragraph>
+                Selected value: {JSON.stringify(selectedOption)}
+            </Typography>
+        </>
+    );
+};

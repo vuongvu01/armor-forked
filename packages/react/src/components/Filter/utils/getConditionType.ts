@@ -1,5 +1,5 @@
 import { FilterConditionSchemaType } from '../type';
-import { FilterBaseConditionType } from '../conditionTypes/base';
+import { FilterBaseConditionType } from '../conditionTypes/FilterBaseConditionType';
 
 export const getConditionType = (
     condition: FilterConditionSchemaType,

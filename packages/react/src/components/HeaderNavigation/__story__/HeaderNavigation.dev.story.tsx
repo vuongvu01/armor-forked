@@ -817,3 +817,72 @@ export const WithHeaderNavigation = () => {
         </BrowserRouter>
     );
 };
+
+export const IsActiveCallback = () => {
+    const [selectedValue, setSelectedValue] = useState<ScalarType>('value_5');
+    const handleOptionSelect = (selectedItem: OptionType) => {
+        setSelectedValue(selectedItem?.value);
+    };
+    const [selectedLinkName, setSelectedLinkName] = useState<string>('TASKS');
+    const handleLinkClick = (name: string) => {
+        console.log('link clicked', { name });
+        return setSelectedLinkName(name);
+    };
+
+    return (
+        <BrowserRouter>
+            <HeaderNavigation
+                navigationMenuTitle={
+                    <Pack justifyContent="space-between">
+                        <PackItem paddingLeft={4}>Rooster Dashboard</PackItem>
+                    </Pack>
+                }
+                navigationMenuContent={
+                    <HeaderNavigationMenuContent>
+                        <HeaderNavigationMenuContentHeader
+                            title="Restaurant"
+                            label="Backoffice"
+                            image={<Image />}
+                        />
+                        <HeaderNavigationMenuContentBody
+                            options={restaurantsMenuContentBodyOptions}
+                            selectedValue={selectedValue}
+                            onOptionSelect={handleOptionSelect}
+                        />
+                    </HeaderNavigationMenuContent>
+                }
+                navigationAction={
+                    <HeaderNavigationAction>
+                        <HeaderNavigationActionItem>
+                            <LogoutIcon onClick={() => {}} />
+                        </HeaderNavigationActionItem>
+                    </HeaderNavigationAction>
+                }
+                links={
+                    <HeaderNavigationLinks onLinkClick={handleLinkClick}>
+                        <HeaderNavigationLink
+                            name="TASKS"
+                            to="/tasks"
+                            tag={Link}
+                            isActive={() => {
+                                return (
+                                    selectedLinkName === 'TASKS' && !!(42 / 8)
+                                );
+                            }}
+                        >
+                            Tasks
+                        </HeaderNavigationLink>
+                        <HeaderNavigationLink
+                            name="COMPLIANCE"
+                            to="/compliance/violations"
+                            tag={Link}
+                            isActive={selectedLinkName === 'COMPLIANCE'}
+                        >
+                            Compliance
+                        </HeaderNavigationLink>
+                    </HeaderNavigationLinks>
+                }
+            />
+        </BrowserRouter>
+    );
+};

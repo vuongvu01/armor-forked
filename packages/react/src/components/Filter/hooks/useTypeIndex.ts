@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { FilterBaseConditionType } from '../conditionTypes/base';
+import { FilterBaseConditionType } from '../conditionTypes/FilterBaseConditionType';
 import {
     FilterNumberConditionType,
     FilterStringConditionType,

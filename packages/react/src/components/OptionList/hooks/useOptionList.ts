@@ -45,7 +45,7 @@ export const useOptionList = ({
     isFlat,
     groups,
     enableOptionContentEllipsis,
-
+    renderItemAdditionalInfo,
     ...restProps
 }: OptionListPropsType) => {
     const [searchQuery, setSearchQuery] = useState(defaultSearchQuery);
@@ -189,6 +189,7 @@ export const useOptionList = ({
             onOptionSelect,
             multiple,
             enableContentEllipsis: enableOptionContentEllipsis,
+            renderItemAdditionalInfo,
         }),
         getSelectAllItemProps: () => ({
             item: selectAllItem,

@@ -5,7 +5,7 @@ import {
 } from '../../type';
 import { MarginAttributesType, PaddingAttributesType } from '../../../system';
 import { FilterConditionSchemaType, FilterConditionValueType } from '../type';
-import { FilterBaseConditionType } from '../conditionTypes/base';
+import { FilterBaseConditionType } from '../conditionTypes/FilterBaseConditionType';
 
 export type FilterViewerRenderFunctionType = (
     condition: FilterConditionSchemaType,

@@ -13,8 +13,11 @@ export type ClassBasedOnComponentType = {
 
 export type LinkTagType = string | ComponentType<any>;
 
+type Action = (m?: any) => boolean;
+export type ActionOrBoolean = Action | boolean;
+
 type HeaderNavigationLinkEffectivePropsType = Partial<{
-    isActive: boolean;
+    isActive: ActionOrBoolean;
     name: string;
     to: string;
     tag: LinkTagType;

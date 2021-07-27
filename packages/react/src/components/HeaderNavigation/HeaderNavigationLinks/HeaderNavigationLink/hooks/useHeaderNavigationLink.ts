@@ -1,5 +1,5 @@
 import { useCallback, MouseEvent } from 'react';
-import { HeaderNavigationLinkHookPropsType } from '../type';
+import { ActionOrBoolean, HeaderNavigationLinkHookPropsType } from '../type';
 import { getWindow } from '../../../../../system/util/globals';
 
 export const useHeaderNavigationLink = ({
@@ -36,7 +36,11 @@ export const useHeaderNavigationLink = ({
     const url = to || href;
     let isReallyActive = false;
     if (isActive !== undefined) {
-        isReallyActive = isActive;
+        if (typeof isActive === 'function') {
+            isReallyActive = isActive();
+        } else {
+            isReallyActive = isActive;
+        }
     } else if (locationTracking && url) {
         const win = getWindow();
         let currentPathname = pathname;

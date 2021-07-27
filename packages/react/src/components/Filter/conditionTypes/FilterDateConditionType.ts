@@ -1,6 +1,6 @@
 import { FilterConditionSchemaType, FilterConditionValueType } from '../type';
 
-import { FilterBaseConditionType } from './base';
+import { FilterBaseConditionType } from './FilterBaseConditionType';
 
 type FilterDateConditionAttributeType = {
     enableTimePicker?: boolean;

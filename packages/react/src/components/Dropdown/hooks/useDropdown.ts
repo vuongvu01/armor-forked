@@ -55,6 +55,7 @@ export const useDropdown = <E extends HTMLInputElement>(
         zIndex,
         enablePortal,
         groups,
+        renderItemAdditionalInfo,
         'data-testid-input': dataTestIdInput,
 
         // open/close state
@@ -265,6 +266,7 @@ export const useDropdown = <E extends HTMLInputElement>(
             enableAbsolutePositioning: false,
             groups,
             enableOptionContentEllipsis,
+            renderItemAdditionalInfo,
         },
         arrowProps,
         dropdownExpansionIndicatorProps: {

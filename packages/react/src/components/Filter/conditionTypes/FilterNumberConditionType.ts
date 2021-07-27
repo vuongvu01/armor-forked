@@ -1,4 +1,4 @@
-import { FilterBaseConditionType } from './base';
+import { FilterBaseConditionType } from './FilterBaseConditionType';
 
 type FilterNumberConditionAttributeType = {};
 

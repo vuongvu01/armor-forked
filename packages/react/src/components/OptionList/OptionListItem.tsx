@@ -3,6 +3,7 @@ import React, { FunctionComponent } from 'react';
 import {
     OptionListItem as OptionListItemRoot,
     OptionListItemTypography,
+    OptionListItemAdditionalInfo,
 } from './style';
 import { OptionListItemPropsType } from './type';
 import { Checkbox } from '../Checkbox';
@@ -28,6 +29,8 @@ export const OptionListItem: FunctionComponent<OptionListItemPropsType> = ({
         typographyProps,
         multiple,
         label,
+        showAdditionalInfo,
+        getAdditionalInfo,
     } = useOptionListItem(props);
 
     return (
@@ -49,6 +52,14 @@ export const OptionListItem: FunctionComponent<OptionListItemPropsType> = ({
             >
                 {label}
             </OptionListItemTypography>
+            {showAdditionalInfo && (
+                <OptionListItemAdditionalInfo
+                    theme={theme}
+                    className={classOverride.AdditionalInfo}
+                >
+                    {getAdditionalInfo()}
+                </OptionListItemAdditionalInfo>
+            )}
         </OptionListItemRoot>
     );
 };

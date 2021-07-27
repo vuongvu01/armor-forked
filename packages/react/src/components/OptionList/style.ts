@@ -9,6 +9,7 @@ import {
     OptionListVirtualOffsetType,
     OptionListRootPropsType,
     OptionListSearchPropsType,
+    OptionListItemAdditionalInfoPropsType,
 } from './type';
 import {
     color,
@@ -18,6 +19,7 @@ import {
     propsBlocker,
     spacing,
     typography,
+    reset,
 } from '../../system';
 import { Search } from '../Search';
 import { Typography } from '../Typography';
@@ -47,6 +49,8 @@ const getOptionListStyle = ({
 export const OptionListRoot = styled.div.withConfig(propsBlocker)<
     OptionListRootPropsType
 >`
+    ${reset};
+    ${typography('paragraphMedium')};
     background-color: white;
     box-sizing: border-box;
     display: flex;
@@ -144,13 +148,14 @@ export const OptionListItem = styled.div.withConfig(propsBlocker)<
     display: flex;
     border-left: 2px solid transparent;
 
-    ${optionItemStyle}
+    ${optionItemStyle};
     ${getComponentOverride('OptionListItem')};
 `;
 
 export const OptionListItemTypography = styled(Typography)<
     OptionListItemTypographyPropsType
 >`
+    flex-grow: 1;
     ${({ enableContentEllipsis }) =>
         enableContentEllipsis !== false
             ? css`
@@ -195,3 +200,7 @@ export const OptionListVirtualPadding = styled.div.withConfig(propsBlocker)<
     line-height: 0;
     height: ${({ height }) => height}px;
 `;
+
+export const OptionListItemAdditionalInfo = styled.div.withConfig(propsBlocker)<
+    OptionListItemAdditionalInfoPropsType
+>``;

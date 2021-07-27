@@ -37,11 +37,11 @@ export type OptionListGroupObjectIndexType = ObjectLiteralType<
 /** 👉 PROPS TYPE */
 export type OptionListPropsType = {
     disabled?: boolean;
-    internalValue: DropdownInternalValueType;
-    setInternalValue?: (nextValue: DropdownInternalValueType) => void;
-    internalOptions: DropdownInternalOptionType;
-    dynamicInternalOptions?: DropdownInternalOptionType;
-    setInternalOptions?: (nextOptions: DropdownInternalOptionType) => void;
+    internalValue: DropdownInternalValueType; // todo: decouple this from the Dropdown
+    setInternalValue?: (nextValue: DropdownInternalValueType) => void; // todo: decouple this from the Dropdown
+    internalOptions: DropdownInternalOptionType; // todo: decouple this from the Dropdown
+    dynamicInternalOptions?: DropdownInternalOptionType; // todo: decouple this from the Dropdown
+    setInternalOptions?: (nextOptions: DropdownInternalOptionType) => void; // todo: decouple this from the Dropdown
     setSearch?: (searchQuery: string) => void;
     enableAbsolutePositioning?: boolean;
     groups?: OptionListGroupObjectType[];
@@ -51,15 +51,18 @@ export type OptionListPropsType = {
     onConfirmClick?: () => void;
     setIsOptionListShown: (value: boolean) => void;
     onValueUpdate: (
-        internalValue: DropdownInternalValueType,
-        multiple: DropdownEffectivePropsType['multiple'],
+        internalValue: DropdownInternalValueType, // todo: decouple this from the Dropdown
+        multiple: boolean | undefined,
         item: OptionObjectType,
         itemValue: ScalarType,
-        options: DropdownEffectivePropsType['options'],
+        options?: Array<string | OptionObjectType>,
         isFlat?: boolean,
     ) => void;
-    onChange?: (event: DropdownOnChangeEventType) => void;
+    onChange?: (event: DropdownOnChangeEventType) => void; // todo: decouple this from the Dropdown
     enableOptionContentEllipsis?: boolean;
+    renderItemAdditionalInfo?: (
+        option: string | OptionObjectType,
+    ) => ReactChild;
 } & Pick<
     DropdownEffectivePropsType,
     | 'options'
@@ -93,8 +96,9 @@ export type OptionListItemPropsType = {
     onOptionSelect?: (item: OptionObjectType) => void;
     checkedIcon?: CheckedIconType;
     enableContentEllipsis?: boolean;
-} & Pick<DropdownEffectivePropsType, 'className' | 'multiple'> &
-    HTMLAttributes<HTMLDivElement>;
+    multiple?: boolean;
+    renderItemAdditionalInfo?: OptionListPropsType['renderItemAdditionalInfo'];
+} & HTMLAttributes<HTMLDivElement>;
 
 export type OptionListFooterPropsType = {
     onCancelClick?: () => void;
@@ -121,3 +125,5 @@ export type OptionListItemGroupPropType = {
 export type OptionListVirtualOffsetType = {
     height: number;
 } & ComponentElementStylePropsType;
+
+export type OptionListItemAdditionalInfoPropsType = ComponentElementStylePropsType;
