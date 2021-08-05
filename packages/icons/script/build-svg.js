@@ -70,7 +70,8 @@ const rewriteFile = async (file, content) => {
 
     const source = await getFolderContent(sourceFolder);
 
-    let mainIndexFile = '';
+    // /Etc  is a special case
+    let mainIndexFile = "export * from './Etc';\n";
 
     for (const folder of source.folders) {
         const folderName = join(destinationFolder, folder);
@@ -116,6 +117,8 @@ const rewriteFile = async (file, content) => {
                 console.log(e);
             }
         }
+
+        console.log('special case', folderIndexFile);
 
         const folderIndexFilePath = join(destinationFolder, folder, 'index.ts');
         await rewriteFile(folderIndexFilePath, `${NOTE}${folderIndexFile}`);
