@@ -1,3 +1,10 @@
+# @deliveryhero/armor-icons [1.13.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.12.0...@deliveryhero/armor-icons@1.13.0) (2021-08-05)
+
+
+### Features
+
+* **icons:** Lens filled and empty versions ([#655](https://github.com/deliveryhero/armor/issues/655)) ([2a6e5e0](https://github.com/deliveryhero/armor/commit/2a6e5e0ccc18938dc7781e8338dcee05363a1b60))
+
 # @deliveryhero/armor-icons [1.12.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.11.0...@deliveryhero/armor-icons@1.12.0) (2021-07-23)
 
 
