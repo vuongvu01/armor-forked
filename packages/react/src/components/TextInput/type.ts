@@ -15,6 +15,7 @@ import {
     ComponentElementStylePropsType,
 } from '../type';
 
+/** 👉 PROPS TYPE */
 type TextInputEffectivePropsType = Partial<{
     label: string;
     before: ReactNode;

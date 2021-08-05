@@ -1,14 +1,17 @@
 import styled from 'styled-components';
 
 import { SideSheetFooterRootPropsType } from './type';
-import { Typography } from '../../Typography';
-import { color, getComponentOverride, spacing } from '../../../system';
+import {
+    color,
+    getComponentOverride,
+    spacing,
+    typography,
+} from '../../../system';
 import { componentSpacing06 } from '../../../tokens';
 
 /** 👉 ROOT ELEMENT */
-export const SideSheetFooterRoot = styled(Typography)<
-    SideSheetFooterRootPropsType
->`
+export const SideSheetFooterRoot = styled.div<SideSheetFooterRootPropsType>`
+    ${typography('paragraphMedium')};
     align-items: center;
     justify-content: flex-end;
     box-sizing: border-box;

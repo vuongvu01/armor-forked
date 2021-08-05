@@ -64,14 +64,12 @@ describe('<SideSheet />', () => {
         render(baseSideSheetComponent);
 
         const header = screen.getByText(headerTitle);
-        expect(header).toBeInstanceOf(HTMLHeadingElement);
-        expect(header).toHaveClass('Typography-Root--sectionTitle');
+        expect(header).toBeInstanceOf(HTMLDivElement);
+        expect(header).toHaveClass('SideSheetHeader-Title');
 
         const description = screen.getByText(headerDescription); // result.container.querySelector('.SideSheet-Root');
-        expect(description).toBeInstanceOf(HTMLParagraphElement);
-        expect(description).toHaveClass(
-            'Typography-Root--paragraph Typography-Root--large',
-        );
+        expect(description).toBeInstanceOf(HTMLDivElement);
+        expect(description).toHaveClass('SideSheetHeader-Description');
     });
 
     it('should ensure that all SideSheet sections have corresponding class names set', async () => {

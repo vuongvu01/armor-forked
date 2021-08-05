@@ -8,3 +8,5 @@ export type SideSheetHeaderPropsType = Partial<{
     HTMLAttributes<HTMLDivElement>;
 
 export type SideSheetHeaderRootPropsType = ComponentElementStylePropsType;
+
+export type SideSheetHeaderDescriptionPropsType = ComponentElementStylePropsType;

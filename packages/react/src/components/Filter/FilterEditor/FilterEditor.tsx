@@ -1,21 +1,16 @@
 import React, { forwardRef, Ref } from 'react';
-// import PropTypes from 'prop-types';
 
 import { useFilterEditorClassNames } from './hooks/useFilterEditorClassNames';
 import { useFilterEditor } from './hooks/useFilterEditor';
-import {
-    FilterEditorRoot,
-    FilterEditorHeader,
-    FilterEditorConditions,
-    FilterEditorActions,
-} from './style';
+import { FilterEditorRoot, FilterEditorConditions } from './style';
 import { FilterEditorPropsType } from './type';
 import { FILTER_EDITOR_CLASS_PREFIX } from './constants';
 import { useComponentTheme } from '../../../utils/hooks';
 import { Typography } from '../../Typography';
-import { Link } from '../../Link';
 import { Button, FormField } from '../..';
 import { getDefaultConditionRenderer } from './utils/getDefaultConditionRenderer';
+import { FilterEditorActions } from '../FilterEditorActions';
+import { FilterEditorHeader } from '../FilterEditorHeader';
 
 export const FilterEditor = forwardRef<HTMLDivElement, FilterEditorPropsType>(
     function FilterEditor({ className, ...props }, ref: Ref<HTMLDivElement>) {
@@ -29,21 +24,19 @@ export const FilterEditor = forwardRef<HTMLDivElement, FilterEditorPropsType>(
             rootProps,
             getConditionProps,
             schema,
-            headerProps,
+            getHeaderProps,
             conditionsProps,
-            clearFilterButtonProps,
             getApplyFilterButtonProps,
-            getCloseButtonProps,
             getConditionType,
-            showCloseButton,
             showSeparatedActions,
             showInlineActions,
-
+            showHeader,
             showResultCount,
             showResultTotalCount,
             resultCountFormatted,
             resultTotalCountFormatted,
             getResultCountProps,
+            getActionProps,
         } = useFilterEditor<HTMLDivElement>(props, ref);
 
         return (
@@ -52,27 +45,7 @@ export const FilterEditor = forwardRef<HTMLDivElement, FilterEditorPropsType>(
                 theme={theme}
                 className={classNames.Root}
             >
-                <FilterEditorHeader
-                    {...headerProps}
-                    theme={theme}
-                    className={classNames.Header}
-                >
-                    <Typography
-                        sectionTitle
-                        tag="div"
-                        className={classNames.HeaderTitle}
-                    >
-                        Filter by
-                    </Typography>
-                    <Link
-                        small
-                        {...clearFilterButtonProps}
-                        className={classNames.HeaderClearAllButton}
-                        marginLeft={6}
-                    >
-                        Clear all
-                    </Link>
-                </FilterEditorHeader>
+                {showHeader && <FilterEditorHeader {...getHeaderProps()} />}
                 <FilterEditorConditions
                     {...conditionsProps}
                     theme={theme}
@@ -93,9 +66,11 @@ export const FilterEditor = forwardRef<HTMLDivElement, FilterEditorPropsType>(
                             condition.name || condition.id, // todo: path here later
                         );
 
+                        const key = condition.name || condition.id;
+
                         return (
                             <FormField
-                                key={condition.name}
+                                key={key}
                                 className={classNames.Condition}
                                 data-path={condition.name}
                             >
@@ -129,28 +104,7 @@ export const FilterEditor = forwardRef<HTMLDivElement, FilterEditorPropsType>(
                 )}
 
                 {showSeparatedActions && (
-                    <FilterEditorActions
-                        theme={theme}
-                        className={classNames.Actions}
-                    >
-                        {showCloseButton && (
-                            <Button
-                                secondary
-                                marginRight={4}
-                                {...getCloseButtonProps()}
-                                className={classNames.CloseButton}
-                            >
-                                Close
-                            </Button>
-                        )}
-                        <Button
-                            wide
-                            {...getApplyFilterButtonProps()}
-                            className={classNames.ApplyButton}
-                        >
-                            Apply
-                        </Button>
-                    </FilterEditorActions>
+                    <FilterEditorActions {...getActionProps()} />
                 )}
             </FilterEditorRoot>
         );
@@ -158,6 +112,3 @@ export const FilterEditor = forwardRef<HTMLDivElement, FilterEditorPropsType>(
 );
 
 FilterEditor.defaultProps = {};
-
-/** prop-types are required here for run-time checks */
-FilterEditor.propTypes = {};

@@ -1,5 +1,5 @@
 import cloneDeep from 'clone-deep';
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import { FilterEditorPropsType } from '../type';
 import { RefType } from '../../../../type';
 import {
@@ -16,7 +16,8 @@ import { FILTER_EMPTY, SCHEMA_EMPTY } from '../../constants';
 import { useTypeIndex } from '../../hooks/useTypeIndex';
 import { getConditionType } from '../../utils/getConditionType';
 import { FILTER_EDITOR_LAYOUT_HORIZONTAL } from '../constants';
-import { Typography } from '../../../Typography';
+import { useFilterEditorSettings } from './useFilterEditorSettings';
+import { useFilterEditorEvents } from './useFilterEditorEvents';
 
 export const useFilterEditor = <E extends HTMLElement>(
     {
@@ -34,6 +35,9 @@ export const useFilterEditor = <E extends HTMLElement>(
         onClose,
 
         enableCloseButton,
+        enableClearAllButton,
+        enableActions,
+        enableHeader,
         layout,
 
         resultCount,
@@ -64,6 +68,16 @@ export const useFilterEditor = <E extends HTMLElement>(
         FilterConditionValueType
     >(() => cloneDeep(externalValue), [externalValue]);
 
+    const {
+        showClearFilterButton,
+        showActions,
+        showHeader,
+    } = useFilterEditorSettings({
+        enableClearAllButton,
+        enableActions,
+        enableHeader,
+    });
+
     // todo: refactor this mess
     const externalSchemaSafe =
         externalSchema && externalSchema.conditions
@@ -76,16 +90,18 @@ export const useFilterEditor = <E extends HTMLElement>(
             ? internalValue
             : FILTER_EMPTY;
 
-    const onClearFilterButtonClick = useCallback(() => {
-        setInternalValue(initialValue ? cloneDeep(initialValue) : FILTER_EMPTY);
-    }, [initialValue]);
-
     const onApplyFilterButtonClick = useCallback(() => {
         setExternalValue(internalValue);
         if (onClose) {
             onClose();
         }
     }, [setExternalValue, internalValue, onClose]);
+
+    const onClearFilterButtonClick = useCallback(() => {
+        setInternalValue(initialValue ? cloneDeep(initialValue) : FILTER_EMPTY);
+    }, [initialValue]);
+
+    useFilterEditorEvents(onApplyFilterButtonClick, onClearFilterButtonClick);
 
     const layoutHorizontal = layout === FILTER_EDITOR_LAYOUT_HORIZONTAL;
     const layoutVertical = layout !== FILTER_EDITOR_LAYOUT_HORIZONTAL;
@@ -95,9 +111,12 @@ export const useFilterEditor = <E extends HTMLElement>(
             ...restProps,
             ref: innerRef,
         },
-        headerProps: {
+        getHeaderProps: () => ({
             leftAligned: layoutHorizontal,
-        },
+            marginBottom: 8,
+            onClearFilterButtonClick,
+            showClearFilterButton,
+        }),
         conditionsProps: {
             vertical: layoutVertical,
         },
@@ -157,19 +176,12 @@ export const useFilterEditor = <E extends HTMLElement>(
             };
         },
         schema: externalSchemaSafe,
-        clearFilterButtonProps: {
-            onClick: onClearFilterButtonClick,
-        },
         getApplyFilterButtonProps: () => ({
             onClick: onApplyFilterButtonClick,
         }),
 
-        showCloseButton: enableCloseButton !== false,
-        getCloseButtonProps: () => ({
-            onClick: onClose,
-        }),
-        showSeparatedActions: layoutVertical,
-        showInlineActions: layoutHorizontal,
+        showSeparatedActions: showActions && layoutVertical,
+        showInlineActions: showActions && layoutHorizontal,
 
         showResultCount: resultCount !== undefined,
         showResultTotalCount: resultTotalCount !== undefined,
@@ -188,5 +200,12 @@ export const useFilterEditor = <E extends HTMLElement>(
             color: 'neutral.04',
             marginTop: 6,
         }),
+        getActionProps: () => ({
+            showCloseButton: enableCloseButton !== false,
+            onCloseButtonClick: onClose,
+            onApplyFilterButtonClick,
+            marginTop: 8,
+        }),
+        showHeader,
     };
 };

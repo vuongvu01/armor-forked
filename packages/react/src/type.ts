@@ -41,3 +41,5 @@ export type DictionaryItemIDBased = {
     id: ScalarType;
     label: string;
 };
+
+export type ScaleType = 'small' | 'medium' | 'large';

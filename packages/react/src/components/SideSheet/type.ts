@@ -1,4 +1,4 @@
-import { Component, HTMLAttributes } from 'react';
+import { HTMLAttributes } from 'react';
 
 import { MarginAttributesType } from '../../system';
 import { ComponentElementStylePropsType } from '../type';
@@ -6,7 +6,7 @@ import { ComponentBehaviourOpenStateType } from '../../system/types/ComponentBeh
 import { ComponentBehaviourOverlayType } from '../../system/types/ComponentBehaviourOverlayType';
 import { ComponentBehaviourPortalType } from '../../system/types/ComponentBehaviourPortalType';
 import { ComponentBehaviourModalDialogType } from '../../system/types/ComponentBehaviourModalDialogType';
-import { ChildrenType } from '../../type';
+import { ChildrenType, ScaleType } from '../../type';
 
 export type ClassBasedOnComponentType = {
     component: string;
@@ -17,12 +17,18 @@ export type ClassBasedOnComponentType = {
     wide?: boolean;
 };
 
+/** 👉 PROPS TYPE */
 export type SideSheetEffectivePropsType = Partial<{
     isCloseButtonVisible: boolean;
     isFixed: boolean;
     wide: boolean;
     children: ChildrenType;
     effectToggle: boolean;
+
+    /**
+     * Sets the scale of the SizeSheet.
+     */
+    scale: ScaleType;
 
     /** @deprecated @see enableEffects */
     disableEffects: boolean;
@@ -62,8 +68,8 @@ export type SideSheetRootPropsType = {
 export type SideSheetContainerPropsType = {
     disableEffects: boolean;
     effectToggle: boolean;
-    wide?: boolean;
-} & ComponentElementStylePropsType;
+} & Pick<SideSheetEffectivePropsType, 'scale' | 'wide'> &
+    ComponentElementStylePropsType;
 
 export type SideSheetContentPropsType = ComponentElementStylePropsType;
 

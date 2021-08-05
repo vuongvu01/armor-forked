@@ -5,6 +5,7 @@ import {
 } from '../type';
 import { MarginAttributesType } from '../../system';
 
+/** 👉 PROPS TYPE */
 type IconButtonEffectivePropsType = Partial<{
     light: boolean;
     visible: boolean;

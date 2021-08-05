@@ -25,6 +25,7 @@ type ContextMenuExtras = {
 
 export type ContextMenuElements = Array<ContextMenuElement>;
 
+/** 👉 PROPS TYPE */
 type ContextMenuEffectivePropsType = Partial<{
     trigger: ReactElement;
     menuElements: ContextMenuElements;

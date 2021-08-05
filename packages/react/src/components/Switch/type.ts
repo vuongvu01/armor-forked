@@ -4,6 +4,7 @@ import { MarginAttributesType } from '../../system';
 import { ComponentElementStylePropsType } from '../type';
 import { PointerEventsType } from '../../styling/pointerEvents';
 
+/** 👉 PROPS TYPE */
 type SwitchEffectivePropsType = Partial<{
     error: boolean;
     label: ReactNode;

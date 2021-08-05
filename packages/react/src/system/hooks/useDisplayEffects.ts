@@ -17,6 +17,6 @@ export const useDisplayEffects = (open: boolean) => {
 
     return {
         display,
-        effectToggle,
+        effectToggle, // todo: not an easy-to-understand variable name, rename!
     };
 };

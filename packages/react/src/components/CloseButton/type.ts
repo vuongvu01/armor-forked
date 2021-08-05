@@ -2,6 +2,7 @@ import { HTMLAttributes } from 'react';
 import { MarginAttributesType } from '../../system';
 import { ComponentElementStylePropsType } from '../type';
 
+/** 👉 PROPS TYPE */
 export type CloseButtonEffectivePropsType = Partial<{
     // add other custom properties here
 }> &

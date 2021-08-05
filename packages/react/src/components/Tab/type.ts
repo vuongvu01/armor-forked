@@ -13,6 +13,7 @@ export type ClassBasedOnComponentType = {
     isActive?: boolean;
 };
 
+/** 👉 PROPS TYPE */
 type TabEffectivePropsType = Partial<{
     value: number;
     tabIndex: number;

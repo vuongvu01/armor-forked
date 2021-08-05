@@ -10,8 +10,8 @@ type FilterLayoutEffectivePropsType = Partial<{
     filterOpen: boolean;
     onFilterOpenChange: (newState: boolean) => void;
     defaultFilterOpen: boolean;
-
     filterEditor: ReactChild;
+    filterEditorPlacement: 'sideSheet' | 'default';
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes

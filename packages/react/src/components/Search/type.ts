@@ -36,6 +36,7 @@ export type ClassBasedOnComponentType = {
     isSuggestionsListShown?: boolean;
 };
 
+/** 👉 PROPS TYPE */
 export type SearchEffectivePropsType = Partial<{
     /**
      * @deprecated

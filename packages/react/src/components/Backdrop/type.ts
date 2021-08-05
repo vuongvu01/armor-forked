@@ -6,6 +6,7 @@ import {
     ComponentStylePropsType,
 } from '../type';
 
+/** 👉 PROPS TYPE */
 type BackdropEffectivePropsType = Partial<{
     disableEffects: boolean;
     display: boolean;

@@ -11,6 +11,7 @@ import {
 
 export type TypographyTagType = string | ComponentType<any>;
 
+/** 👉 PROPS TYPE */
 type TypographyEffectivePropsType = Partial<{
     tag: TypographyTagType;
     pageTitle: boolean;

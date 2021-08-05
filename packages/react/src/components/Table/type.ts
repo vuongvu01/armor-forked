@@ -25,6 +25,7 @@ export type TableStickyColumnMapInternalItem = TableStickyColumnMapItem & {
 };
 export type TableStickyColumnsMapInternal = TableStickyColumnMapInternalItem[];
 
+/** 👉 PROPS TYPE */
 export type TableEffectivePropsType = Partial<{
     horizontalScroll?: boolean;
     stickyColumns?: TableStickyColumnsMap;

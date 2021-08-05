@@ -1,2 +1,2 @@
 export * from './SelectorLabel';
-export type { SelectorLabelPropsType } from './type';
+export type { SelectorLabelEffectivePropsType } from './type';

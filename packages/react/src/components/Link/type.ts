@@ -7,6 +7,7 @@ import { MarginAttributesType } from '../../system';
 
 type LinkTagType = string | ComponentType<any>;
 
+/** 👉 PROPS TYPE */
 type LinkEffectivePropsType = Partial<{
     small: boolean;
     medium: boolean;

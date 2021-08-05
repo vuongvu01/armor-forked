@@ -13,6 +13,7 @@ import {
     ComponentStylePropsType,
 } from '../type';
 
+/** 👉 PROPS TYPE */
 type BoxEffectivePropsType = Partial<{
     // add other custom properties here
 }> &

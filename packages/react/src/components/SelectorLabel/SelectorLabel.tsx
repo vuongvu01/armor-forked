@@ -1,14 +1,14 @@
 import React, { FC } from 'react';
 
 import { SelectorLabelRoot } from './style';
-import { SelectorLabelPropsType } from './type';
+import { SelectorLabelEffectivePropsType } from './type';
 import { useComponentTheme } from '../../utils/hooks';
 import selectorLabelDefaultTheme from './theme';
 import { useSelectorLabelClassName } from './utils';
 import { Typography } from '../Typography';
 import { SELECTOR_LABEL_CLASS_PREFIX } from './constants';
 
-export const SelectorLabel: FC<SelectorLabelPropsType> = ({
+export const SelectorLabel: FC<SelectorLabelEffectivePropsType> = ({
     checked,
     children,
     className,
