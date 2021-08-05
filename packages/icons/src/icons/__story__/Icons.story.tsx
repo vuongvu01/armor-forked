@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import * as I from '..';
 
 import { loremIpsum } from '../../../../react/src/helpers/LoremIpsum';
-import { CsvFileIcon } from '../Etc';
 
 export default {
     title: 'Icons',
@@ -119,6 +118,12 @@ export const Basic = () => (
             </Icon>
             <Icon>
                 <I.PhoneNotificationIcon />
+            </Icon>
+            <Icon>
+                <I.LensIcon />
+            </Icon>
+            <Icon>
+                <I.LensEmptyIcon />
             </Icon>
         </Icons>
         <h2>Arrow</h2>
