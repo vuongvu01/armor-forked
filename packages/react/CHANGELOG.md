@@ -1,3 +1,10 @@
+# @deliveryhero/armor [1.63.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.62.1...@deliveryhero/armor@1.63.0) (2021-08-09)
+
+
+### Features
+
+* **filter:** FilterEditor in SideSheet layout [LD-513] ([#650](https://github.com/deliveryhero/armor/issues/650)) ([99b0141](https://github.com/deliveryhero/armor/commit/99b01413ca1855864c3830389d7ddd4da363ee27))
+
 ## @deliveryhero/armor [1.62.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.62.0...@deliveryhero/armor@1.62.1) (2021-08-05)
 
 
