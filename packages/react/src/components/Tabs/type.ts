@@ -13,6 +13,7 @@ export type ClassBasedOnComponentType = {
     isActive?: boolean;
 };
 
+/** 👉 PROPS TYPE */
 type TabsEffectivePropsType = Partial<{
     selectedValue: ScalarType;
     value: ScalarType;

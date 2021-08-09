@@ -233,3 +233,41 @@ export const EnumProps = () => {
         </FilterLayout>
     );
 };
+
+export const SideSheet = () => {
+    const [filterValue, setFilterValue] = useState<
+        FilterConditionValueType | undefined
+    >();
+    const [open, setOpen] = useState(false);
+
+    return (
+        <FilterLayout
+            tall
+            filterOpen={open}
+            onFilterOpenChange={setOpen}
+            filterEditor={
+                <FilterEditor
+                    schema={araraFilterSchema}
+                    value={filterValue}
+                    types={conditionTypes}
+                    onValueChange={setFilterValue}
+                    onClose={() => setOpen(false)}
+                />
+            }
+            filterEditorPlacement="sideSheet"
+        >
+            <FilterViewer
+                schema={araraFilterSchema}
+                value={filterValue}
+                types={conditionTypes}
+                onValueChange={setFilterValue}
+                marginTop={6}
+                onFilterOpenButtonClick={() => setOpen(true)}
+                filterOpen={open}
+                resultCount={8}
+                resultTotalCount={2500}
+            />
+            <FilterTable />
+        </FilterLayout>
+    );
+};

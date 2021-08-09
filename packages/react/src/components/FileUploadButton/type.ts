@@ -6,6 +6,7 @@ import {
 import { MarginAttributesType } from '../../system';
 import { ButtonPropsType } from '../Button';
 
+/** 👉 PROPS TYPE */
 type FileUploadButtonEffectivePropsType = Partial<{
     accept: string;
     children: ReactNode | string;

@@ -224,3 +224,24 @@ export const FilterEditHorizontal = () => {
         </FilterLayout>
     );
 };
+
+export const FilterEditSideSheet = () => {
+    return (
+        <FilterLayout
+            tall
+            filterOpen
+            filterEditor={
+                <FilterEditor
+                    schema={filterSchema}
+                    value={filterValue}
+                    types={conditionTypes}
+                    resultCount={10}
+                    resultTotalCount={2500}
+                />
+            }
+            filterEditorPlacement="sideSheet"
+        >
+            <FilterTable />
+        </FilterLayout>
+    );
+};

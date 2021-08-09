@@ -19,8 +19,6 @@ export const SideSheetBody: FunctionComponent<SideSheetBodyPropsType> = ({
 
     return (
         <SideSheetBodyRoot
-            paragraph
-            medium
             data-testid={sideSheetBody}
             {...restProps}
             isFixed={isFixed}

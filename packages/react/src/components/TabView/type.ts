@@ -10,6 +10,7 @@ export type ClassBasedOnComponentType = {
     disabled?: boolean;
 };
 
+/** 👉 PROPS TYPE */
 type TabViewEffectivePropsType = Partial<{
     selectedValue: string | number;
     value: string | number;

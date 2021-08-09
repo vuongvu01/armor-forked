@@ -6,6 +6,7 @@ import {
     ComponentElementStylePropsType,
 } from '../type';
 
+/** 👉 PROPS TYPE */
 type IndicatorEffectivePropsType = Partial<{
     // add other custom properties here
 }> &

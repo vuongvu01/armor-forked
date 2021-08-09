@@ -9,6 +9,7 @@ export type ClassBasedOnComponentType = {
     spacing?: number;
 };
 
+/** 👉 PROPS TYPE */
 type GridEffectivePropsType = Partial<{
     gutterSpacing: number;
     gutterSpacingVertical: number;

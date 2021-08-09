@@ -11,6 +11,7 @@ type PageNavigationPageSizeListItemType = {
     value: number;
 };
 
+/** 👉 PROPS TYPE */
 type PageNavigationEffectivePropsType = Partial<{
     itemCount: number;
     pageNumber: number;

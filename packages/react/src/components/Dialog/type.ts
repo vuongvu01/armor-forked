@@ -10,6 +10,7 @@ import { ComponentBehaviourOverlayType } from '../../system/types/ComponentBehav
 import { ComponentBehaviourPortalType } from '../../system/types/ComponentBehaviourPortalType';
 import { ComponentBehaviourModalDialogType } from '../../system/types/ComponentBehaviourModalDialogType';
 
+/** 👉 PROPS TYPE */
 type DialogEffectivePropsType = Partial<{
     scroll: ScrollType;
 

@@ -5,6 +5,7 @@ import { ComponentElementStylePropsType } from '../type';
 
 export type CheckedIconType = 'tick' | 'dash';
 
+/** 👉 PROPS TYPE */
 type CheckboxEffectivePropsType = Partial<{
     checkedIcon: CheckedIconType;
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;

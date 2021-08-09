@@ -2,7 +2,8 @@ import { HTMLAttributes } from 'react';
 import { TypographyPropsType } from '../Typography/type';
 import { ComponentElementStylePropsType } from '../type';
 
-export type SelectorLabelPropsType = Partial<{
+/** 👉 PROPS TYPE */
+export type SelectorLabelEffectivePropsType = Partial<{
     error: boolean;
     checked: boolean;
     disabled: boolean;
@@ -10,5 +11,5 @@ export type SelectorLabelPropsType = Partial<{
 }> &
     HTMLAttributes<HTMLDivElement>;
 
-export type SelectorLabelRootPropsType = SelectorLabelPropsType &
+export type SelectorLabelRootPropsType = SelectorLabelEffectivePropsType &
     ComponentElementStylePropsType;

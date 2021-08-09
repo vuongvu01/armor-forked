@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import {
     SideSheetContainerPropsType,
     SideSheetContentPropsType,
+    SideSheetEffectivePropsType,
     SideSheetHeaderContainerPropsType,
     SideSheetRootPropsType,
 } from './type';
@@ -15,14 +16,24 @@ import {
     token,
     color,
 } from '../../system';
-import { transitionDurationInSec } from '../../constants';
+import { SCALE_SMALL, transitionDurationInSec } from '../../constants';
 import { minWidth, widthWide, widthDefault } from './constants';
 
 import { CloseButton } from '../CloseButton';
 import { componentSpacing06 } from '../../tokens';
 
-const calculateWidth = (effectToggle?: boolean, wide?: boolean) => {
+const calculateWidth = (
+    effectToggle?: boolean,
+    wide?: boolean,
+    scale?: SideSheetEffectivePropsType['scale'],
+) => {
+    // this basically means that the SideSheet is open
     if (effectToggle) {
+        // todo: we only support 'small' for now
+        if (scale === SCALE_SMALL) {
+            return spacing(100);
+        }
+
         return wide
             ? `max(${widthWide}, ${minWidth});`
             : `max(${widthDefault}, ${minWidth});`;
@@ -35,9 +46,10 @@ const getWindowStyle = ({
     disableEffects,
     effectToggle,
     wide,
+    scale,
 }: SideSheetContainerPropsType) => {
     return css`
-        width: ${calculateWidth(effectToggle, wide)};
+        width: ${calculateWidth(effectToggle, wide, scale)};
         transition: ${disableEffects
             ? 'none'
             : `width ${transitionDurationInSec}s ease`};

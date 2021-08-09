@@ -20,6 +20,7 @@ export type NavigationMenuElementType = {
     menuElementProps?: MenuElementPropsType;
 } & ObjectLiteralType;
 
+/** 👉 PROPS TYPE */
 type NavigationEffectivePropsType = Partial<{
     items: NavigationMenuElementType[];
     onElementClick: (

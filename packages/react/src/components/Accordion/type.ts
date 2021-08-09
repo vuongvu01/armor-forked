@@ -18,6 +18,7 @@ export type AccordionContextType = {
     onToggle?: (event: MouseEvent<HTMLDivElement>) => void;
 };
 
+/** 👉 PROPS TYPE */
 export type AccordionEffectivePropsType = Partial<{
     children: any;
     defaultExpanded: boolean;

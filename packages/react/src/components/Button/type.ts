@@ -16,6 +16,7 @@ import {
 
 export type ButtonTagType = string | ComponentType<any>;
 
+/** 👉 PROPS TYPE */
 type ButtonEffectivePropsType = Partial<{
     tag: ButtonTagType;
     primary: boolean;

@@ -6,6 +6,7 @@ import {
     ComponentElementStylePropsType,
 } from '../type';
 
+/** 👉 PROPS TYPE */
 type FormFieldEffectivePropsType = Partial<{
     enableVerticalOuterSpacing: boolean;
     /** @deprecated @see enableVerticalOuterSpacing */

@@ -9,6 +9,7 @@ import {
     SizeAttributesType,
 } from '../../system';
 
+/** 👉 PROPS TYPE */
 type ContainerEffectivePropsType = Partial<{
     // add other custom properties here
 }> &

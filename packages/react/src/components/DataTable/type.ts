@@ -1,4 +1,4 @@
-import React, { ComponentType, HTMLAttributes, ReactChild, Ref } from 'react';
+import { ComponentType, HTMLAttributes, ReactChild } from 'react';
 import {
     ComponentElementStylePropsType,
     ComponentStylePropsType,
@@ -51,6 +51,7 @@ export type DataTableDataType = {
     key?: ScalarType;
 } & ObjectLiteralType;
 
+/** 👉 PROPS TYPE */
 type DataTableEffectivePropsType = Partial<{
     columns: DataTableColumnType[];
     data: DataTableDataType[];

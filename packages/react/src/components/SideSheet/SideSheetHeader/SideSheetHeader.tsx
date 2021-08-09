@@ -1,47 +1,61 @@
-import React, { FunctionComponent } from 'react';
+import React, { FC } from 'react';
 import PropTypes from 'prop-types';
 
 import { SideSheetHeaderPropsType } from './type';
 import {
-    descriptionTypographyStyle,
     SideSheetHeaderRoot,
-    SideSheetHeaderTypography,
+    SideSheetHeaderTitle,
+    SideSheetHeaderDescription,
 } from './style';
-import { Typography } from '../../Typography';
-import { sideSheetHeader } from '../constants';
 import { useComponentTheme } from '../../../utils/hooks';
 import { makeRootClassName } from '../../../utils';
+import { useSideSheetHeader } from './hooks/useSideSheetHeader';
+import { useSideSheetHeaderClassNames } from './hooks/useSideSheetHeaderClassNames';
 
 export const SIDE_SHEET_HEADER_CLASS_PREFIX = 'SideSheetHeader';
 
-export const SideSheetHeader: FunctionComponent<SideSheetHeaderPropsType> = ({
-    description,
-    title,
+export const SideSheetHeader: FC<SideSheetHeaderPropsType> = ({
     className,
-    ...restProps
+    ...props
 }) => {
     const theme = useComponentTheme(SIDE_SHEET_HEADER_CLASS_PREFIX);
+    const classNames = useSideSheetHeaderClassNames(
+        SIDE_SHEET_HEADER_CLASS_PREFIX,
+        className,
+    );
+
+    const {
+        rootProps,
+        title,
+        description,
+        children,
+        showTitle,
+        showDescription,
+    } = useSideSheetHeader(props);
 
     return (
         <SideSheetHeaderRoot
-            data-testid={sideSheetHeader}
-            {...restProps}
-            className={makeRootClassName(
-                SIDE_SHEET_HEADER_CLASS_PREFIX,
-                className,
-            )}
+            {...rootProps}
+            className={classNames.Root}
             theme={theme}
         >
-            {title ? (
-                <SideSheetHeaderTypography sectionTitle theme={theme}>
+            {children}
+            {showTitle && (
+                <SideSheetHeaderTitle
+                    theme={theme}
+                    className={classNames.Title}
+                >
                     {title}
-                </SideSheetHeaderTypography>
-            ) : null}
-            {description ? (
-                <Typography paragraph large style={descriptionTypographyStyle}>
+                </SideSheetHeaderTitle>
+            )}
+            {showDescription && (
+                <SideSheetHeaderDescription
+                    theme={theme}
+                    className={classNames.Description}
+                >
                     {description}
-                </Typography>
-            ) : null}
+                </SideSheetHeaderDescription>
+            )}
         </SideSheetHeaderRoot>
     );
 };

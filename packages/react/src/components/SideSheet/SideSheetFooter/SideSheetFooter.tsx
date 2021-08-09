@@ -17,8 +17,6 @@ export const SideSheetFooter: FC<SideSheetFooterPropsType> = ({
 
     return (
         <SideSheetFooterRoot
-            paragraph
-            medium
             data-testid={sideSheetFooter}
             {...restProps}
             theme={theme}

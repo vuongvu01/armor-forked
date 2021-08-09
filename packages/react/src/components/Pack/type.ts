@@ -10,6 +10,7 @@ export type ClassBasedOnComponentType = {
     component: string;
 };
 
+/** 👉 PROPS TYPE */
 type PackEffectivePropsType = Partial<{
     reverse: boolean;
 }> &

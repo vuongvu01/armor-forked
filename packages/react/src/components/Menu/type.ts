@@ -5,6 +5,7 @@ import {
 } from '../type';
 import { MarginAttributesType, PaddingAttributesType } from '../../system';
 
+/** 👉 PROPS TYPE */
 type MenuEffectivePropsType = Partial<{
     secondary: boolean;
     tertiary: boolean;

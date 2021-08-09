@@ -10,6 +10,7 @@ import {
     ComponentStylePropsType,
 } from '../type';
 
+/** 👉 PROPS TYPE */
 type CardEffectivePropsType = Partial<{
     // add other custom properties here
 }> &

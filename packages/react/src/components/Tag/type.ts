@@ -35,6 +35,7 @@ export type ClassBasedOnComponentType = {
     small?: boolean;
 };
 
+/** 👉 PROPS TYPE */
 type TagEffectivePropsType = Partial<{
     deleteOption: TagDeleteIconModeType;
     code: ScalarType;

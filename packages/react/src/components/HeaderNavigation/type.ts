@@ -51,6 +51,7 @@ export type NavigationSelectorParamsType = {
         | { label: string; value: string | number; [key: string]: any }[]; // aka OptionType - defining explicitly to expose into docs
 };
 
+/** 👉 PROPS TYPE */
 type HeaderNavigationEffectivePropsType = Partial<{
     title: ReactNode;
     /**

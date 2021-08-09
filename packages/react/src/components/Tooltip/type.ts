@@ -9,6 +9,7 @@ import { ComponentBehaviourOverlayType } from '../../system/types/ComponentBehav
 import { ComponentBehaviourPortalType } from '../../system/types/ComponentBehaviourPortalType';
 import { PopperPropsType, WidthAttributesType } from '../../system';
 
+/** 👉 PROPS TYPE */
 type TooltipEffectivePropsType = Partial<{
     error: boolean;
     small: boolean;

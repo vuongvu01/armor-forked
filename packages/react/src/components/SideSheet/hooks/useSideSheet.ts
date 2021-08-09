@@ -42,6 +42,7 @@ export const useSideSheet = <E extends HTMLDivElement>(
         // other
         isFixed,
         wide,
+        scale,
 
         ...restProps
     }: SideSheetPropsType,
@@ -130,6 +131,7 @@ export const useSideSheet = <E extends HTMLDivElement>(
             display,
             effectToggle,
             wide,
+            scale,
         },
         contentProps: {
             'data-testid': sideSheetContent,

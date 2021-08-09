@@ -14,6 +14,7 @@ export type ClassBasedOnComponentType = {
     error?: boolean;
 };
 
+/** 👉 PROPS TYPE */
 type RadioEffectivePropsType = Partial<{
     // add other custom properties here
     selectedValue: string;

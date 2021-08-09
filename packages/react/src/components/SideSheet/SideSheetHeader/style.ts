@@ -1,32 +1,42 @@
 import styled from 'styled-components';
 
-import { SideSheetHeaderRootPropsType } from './type';
 import {
-    colorGrey50,
-    componentSpacing04,
-    componentSpacing08,
-} from '../../../tokens';
-import { getComponentOverride, propsBlocker, spacing } from '../../../system';
-import { Typography } from '../../Typography';
+    SideSheetHeaderDescriptionPropsType,
+    SideSheetHeaderRootPropsType,
+} from './type';
+import { componentSpacing04, componentSpacing08 } from '../../../tokens';
+import {
+    color,
+    getComponentOverride,
+    propsBlocker,
+    reset,
+    spacing,
+    typography,
+} from '../../../system';
 
 /** 👉 ROOT ELEMENT */
 export const SideSheetHeaderRoot = styled.div.withConfig(propsBlocker)<
     SideSheetHeaderRootPropsType
 >`
+    ${reset};
+    ${typography('paragraphMedium')};
     flex-grow: 1;
     padding-bottom: ${spacing(componentSpacing08)};
     padding-right: ${spacing(componentSpacing04)};
     ${getComponentOverride('SideSheetHeader')};
 `;
 
-export const SideSheetHeaderTypography = styled(Typography)`
+export const SideSheetHeaderTitle = styled.div`
+    ${typography('sectionTitle')};
     margin-top: 0;
     margin-bottom: ${spacing(2)};
-    font-size: 1.5em;
 `;
 
-export const descriptionTypographyStyle = {
-    color: colorGrey50,
-    marginBottom: 0,
-    marginTop: 0,
-};
+export const SideSheetHeaderDescription = styled.div.withConfig(propsBlocker)<
+    SideSheetHeaderDescriptionPropsType
+>`
+    ${typography('paragraphLarge')};
+    color: ${color('neutral.05')};
+    margin-bottom: 0;
+    margin-top: 0;
+`;

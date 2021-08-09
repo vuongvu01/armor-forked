@@ -3,7 +3,7 @@ import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../type';
-import { MarginAttributesType } from '../../system/attributes';
+import { MarginAttributesType } from '../../system';
 
 /** 👉 PROPS TYPE */
 type DividerEffectivePropsType = Partial<{

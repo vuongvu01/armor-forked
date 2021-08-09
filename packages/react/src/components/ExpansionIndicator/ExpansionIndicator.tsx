@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-import { ExpansionIndicatorPropsType } from './type';
+import { ExpansionIndicatorEffectivePropsType } from './type';
 import {
     ExpansionIndicatorContent,
     ExpansionIndicatorIcon,
@@ -15,7 +15,7 @@ import {
 } from './constants';
 import { useTheme } from '../../styling';
 
-export const ExpansionIndicator: FunctionComponent<ExpansionIndicatorPropsType> = ({
+export const ExpansionIndicator: FunctionComponent<ExpansionIndicatorEffectivePropsType> = ({
     className,
     disabled,
     error,

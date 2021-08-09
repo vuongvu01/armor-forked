@@ -1,9 +1,7 @@
 import styled, { css } from 'styled-components';
 import {
     FilterEditorRootPropsType,
-    FilterEditorHeaderPropsType,
     FilterEditorConditionsPropsType,
-    FilterEditorActionsPropsType,
 } from './type';
 import {
     marginAttributes,
@@ -22,20 +20,9 @@ export const FilterEditorRoot = styled.div.withConfig(propsBlocker)<
 >`
     ${reset};
     ${typography('paragraphMedium')};
-
     ${getComponentOverride('FilterEditor')};
     ${marginAttributes};
     ${paddingAttributes};
-`;
-
-export const FilterEditorHeader = styled.div.withConfig(propsBlocker)<
-    FilterEditorHeaderPropsType
->`
-    display: flex;
-    justify-content: ${({ leftAligned }) =>
-        leftAligned ? 'flex-start' : 'space-between'};
-    align-items: baseline;
-    margin-bottom: ${spacing(8)};
 `;
 
 const getConditionsStyle = ({ vertical }: FilterEditorConditionsPropsType) => {
@@ -72,11 +59,4 @@ export const FilterEditorConditions = styled.div.withConfig(propsBlocker)<
 >`
     display: flex;
     ${getConditionsStyle};
-`;
-
-export const FilterEditorActions = styled.div.withConfig(propsBlocker)<
-    FilterEditorActionsPropsType
->`
-    margin-top: ${spacing(8)};
-    display: flex;
 `;

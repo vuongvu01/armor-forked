@@ -65,6 +65,7 @@ export type AlignSelfType =
     | 'baseline'
     | 'stretch';
 
+/** 👉 PROPS TYPE */
 export type FlexEffectivePropsType = Partial<{
     direction: DirectionType;
     justifyContent: JustifyContentType;

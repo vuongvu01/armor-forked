@@ -12,6 +12,15 @@ import {
 import { FilterLayoutPropsType } from './type';
 import { FILTER_LAYOUT_CLASS_PREFIX } from './constants';
 import { useComponentTheme } from '../../../utils/hooks';
+import {
+    SideSheet,
+    SideSheetBody,
+    SideSheetFooter,
+    SideSheetHeader,
+} from '../../SideSheet';
+import { FilterEditorSettingsContextProvider } from '../FilterEditor/utils/FilterEditorSettingsContext';
+import { FilterEditorActions } from '../FilterEditorActions';
+import { FilterEditorHeader } from '../FilterEditorHeader';
 
 export const FilterLayout = forwardRef<HTMLDivElement, FilterLayoutPropsType>(
     function FilterLayout({ className, children, ...props }, ref) {
@@ -24,8 +33,13 @@ export const FilterLayout = forwardRef<HTMLDivElement, FilterLayoutPropsType>(
         const {
             rootProps,
             filterEditor,
-            leftBarProps,
+            getLeftBarProps,
             showLeftBar,
+            showSideSheet,
+            getSideSheetProps,
+            getEditorHeaderProps,
+            getEditorActionProps,
+            editorSettingsContextProviderProps,
         } = useFilterLayout<HTMLDivElement>(props, ref);
 
         return (
@@ -34,20 +48,41 @@ export const FilterLayout = forwardRef<HTMLDivElement, FilterLayoutPropsType>(
                 theme={theme}
                 className={classNames.Root}
             >
-                {showLeftBar && (
-                    <FilterLayoutLeftBar
-                        {...leftBarProps}
-                        theme={theme}
-                        className={classNames.LeftBar}
-                    >
-                        <FilterLayoutLeftBarContainer
+                <FilterEditorSettingsContextProvider
+                    {...editorSettingsContextProviderProps}
+                >
+                    {showLeftBar && (
+                        <FilterLayoutLeftBar
+                            {...getLeftBarProps()}
                             theme={theme}
-                            className={classNames.LeftBarContainer}
+                            className={classNames.LeftBar}
                         >
-                            {filterEditor}
-                        </FilterLayoutLeftBarContainer>
-                    </FilterLayoutLeftBar>
-                )}
+                            <FilterLayoutLeftBarContainer
+                                theme={theme}
+                                className={classNames.LeftBarContainer}
+                            >
+                                {filterEditor}
+                            </FilterLayoutLeftBarContainer>
+                        </FilterLayoutLeftBar>
+                    )}
+                    {showSideSheet && (
+                        <SideSheet {...getSideSheetProps()}>
+                            <SideSheetHeader>
+                                <FilterEditorHeader
+                                    {...getEditorHeaderProps()}
+                                />
+                            </SideSheetHeader>
+                            <SideSheetBody paddingY={2}>
+                                {filterEditor}
+                            </SideSheetBody>
+                            <SideSheetFooter>
+                                <FilterEditorActions
+                                    {...getEditorActionProps()}
+                                />
+                            </SideSheetFooter>
+                        </SideSheet>
+                    )}
+                </FilterEditorSettingsContextProvider>
                 <FilterLayoutMain theme={theme} className={classNames.Main}>
                     {children}
                 </FilterLayoutMain>

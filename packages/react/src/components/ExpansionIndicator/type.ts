@@ -12,7 +12,8 @@ export type ClassBasedOnComponentType = {
     isExpanded?: boolean;
 };
 
-export type ExpansionIndicatorPropsType = Partial<{
+/** 👉 PROPS TYPE */
+export type ExpansionIndicatorEffectivePropsType = Partial<{
     error: boolean;
     isExpanded: boolean;
     displaySeparator: boolean;
@@ -23,17 +24,17 @@ export type ExpansionIndicatorPropsType = Partial<{
     > &
     MarginAttributesType;
 
-export type ExpansionIndicatorRootPropsType = ExpansionIndicatorPropsType &
+export type ExpansionIndicatorRootPropsType = ExpansionIndicatorEffectivePropsType &
     ComponentElementStylePropsType;
 
 export type ExpansionIndicatorContentPropsType = Pick<
-    ExpansionIndicatorPropsType,
+    ExpansionIndicatorEffectivePropsType,
     'displaySeparator' | 'error'
 > &
     ComponentElementStylePropsType;
 
 export type ExpansionIndicatorIconPropsType = Pick<
-    ExpansionIndicatorPropsType,
+    ExpansionIndicatorEffectivePropsType,
     'disabled' | 'error'
 > &
     ComponentBehaviourExpansionType &
