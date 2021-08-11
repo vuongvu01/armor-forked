@@ -1,11 +1,10 @@
 import { css } from 'styled-components';
-import { color } from '../../../../../system/mixins';
+import { color } from '../../../../../system';
 
 export const getListItemOverride = () => {
-    const result = css`
+    return css`
         &:hover {
             background: ${color('neutral.02')};
         }
     `;
-    return result;
 };

@@ -123,7 +123,13 @@ export const Basic = () => (
                 <I.LensIcon />
             </Icon>
             <Icon>
+                <I.LensIcon fill="green" />
+            </Icon>
+            <Icon>
                 <I.LensEmptyIcon />
+            </Icon>
+            <Icon>
+                <I.LensEmptyIcon stroke="red" />
             </Icon>
         </Icons>
         <h2>Arrow</h2>

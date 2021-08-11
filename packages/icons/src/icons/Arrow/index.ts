@@ -7,6 +7,6 @@ export * from './ArrowLeft';
 export * from './ArrowLeftTail';
 export * from './ArrowReturnRight';
 export * from './ArrowRight';
-export * from './ArrowUp';
 export * from './ArrowRightTail';
+export * from './ArrowUp';
 export * from './ArrowUpTail';

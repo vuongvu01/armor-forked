@@ -1,2 +1,4 @@
+import { SideSheetHeaderPropsType as PropsType } from './type';
+
 export * from './SideSheetHeader';
-export type { SideSheetHeaderPropsType } from './type';
+export type SideSheetHeaderPropsType = PropsType;

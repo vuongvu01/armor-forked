@@ -1,2 +1,4 @@
+import { SelectorLabelEffectivePropsType as PropsType } from './type';
+
 export * from './SelectorLabel';
-export type { SelectorLabelEffectivePropsType } from './type';
+export type SelectorLabelEffectivePropsType = PropsType;
