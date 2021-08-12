@@ -14,7 +14,7 @@ import { ComponentBehaviourModalDialogType } from '../../system/types/ComponentB
 type DialogEffectivePropsType = Partial<{
     scroll: ScrollType;
 
-    /** @deprecated @see enableOverlay */
+    /** @deprecated @see enableBackdrop */
     disableOverlay: boolean;
     /** @deprecated @see enableEffects */
     disableEffects: boolean;
