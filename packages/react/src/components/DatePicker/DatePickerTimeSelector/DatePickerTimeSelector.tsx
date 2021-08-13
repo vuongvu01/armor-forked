@@ -1,4 +1,4 @@
-import React, { forwardRef, FunctionComponent } from 'react';
+import React, { forwardRef } from 'react';
 import { TimeSeparatorIcon } from '@deliveryhero/armor-icons';
 
 import { useDatePickerTimeSelectorClassNames } from './hooks/useDatePickerTimeSelectorClassNames';
@@ -14,6 +14,9 @@ import { DatePickerTimeSelectorPropsType } from './type';
 import { DATE_PICKER_TIME_SELECTOR_CLASS_PREFIX } from './constants';
 import { useComponentTheme } from '../../../utils/hooks';
 
+/**
+ * @internal
+ */
 export const DatePickerTimeSelector = forwardRef<
     HTMLDivElement,
     DatePickerTimeSelectorPropsType

@@ -12,7 +12,7 @@ export const makeCalendarItem = (
     const { year, month, day, weekDay } = dateVector;
 
     return {
-        id: `${month}_${day}`,
+        id: dateWithoutTime.toString(),
         year,
         month,
         day,
@@ -21,5 +21,6 @@ export const makeCalendarItem = (
         weekDay: DATE_PICKER_DAY_SELECTOR_WEEK_DAYS[weekDay].value,
         current: dateWithoutTime.timeStamp === currentTimeStamp,
         displayedMonth: month === displayedMonth,
+        date: dateWithoutTime,
     };
 };

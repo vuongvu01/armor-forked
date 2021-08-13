@@ -1,15 +1,16 @@
 /* eslint-disable no-console,import/no-unresolved */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { withKnobs } from '@storybook/addon-knobs';
 import { withWrapper } from '../../../helpers/Wrapper';
 
-import { DatePicker } from '../DatePicker/DatePicker';
+import { DatePicker, DatePickerPropsType } from '../DatePicker';
 import { TextInput } from '../../TextInput';
 import { Search } from '../../Search';
 import { Dropdown } from '../../Dropdown';
 import { Box } from '../../Box';
 import { FormField, FormFieldMessage, FormFieldTooltip } from '../../FormField';
+import { DATE_PICKER_INFINITY } from '../constants';
 
 const currentDate = new Date();
 
@@ -81,5 +82,29 @@ export const WithError = () => {
                 </FormFieldTooltip>
             </FormField>
         </Box>
+    );
+};
+
+export const WithDisabledDates = () => {
+    const allowedDateRanges = [
+        ['current+1', DATE_PICKER_INFINITY],
+        // ['current', null],
+        // ['current-3', 'current+3'],
+        // ['current-1', null],
+        // ['current*2', null],
+        // ['bullshit', null],
+    ] as DatePickerPropsType['allowedDateRanges'];
+
+    const [value, setValue] = useState<Date | null | undefined>(currentDate);
+
+    return (
+        <DatePicker
+            dateValue={value}
+            onDateValueChange={setValue}
+            allowedDateRanges={allowedDateRanges}
+            onDayMouseEnter={date => {
+                console.log(date);
+            }}
+        />
     );
 };

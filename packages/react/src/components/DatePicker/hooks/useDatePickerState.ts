@@ -1,5 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
-import { DatePickerEffectiveGenericPropsType } from '../type';
+import {
+    DatePickerEffectiveCommonPropsType,
+    DatePickerEffectiveGenericPropsType,
+} from '../type';
 import { DateVectorRange } from '../utils/DateVectorRange';
 import { DateVector } from '../utils/DateVector';
 import { TimeVector24 } from '../utils/TimeVector24';
@@ -14,8 +17,10 @@ export const useDatePickerState = <V>(
     { reallyOpen, internalValue }: DatePickerStateType,
     {
         defaultMonthYearSelectorOpen,
+        currentDate,
         ...restProps
-    }: DatePickerEffectiveGenericPropsType<V>,
+    }: DatePickerEffectiveGenericPropsType<V> &
+        DatePickerEffectiveCommonPropsType,
 ) => {
     // the date range touched (pre-selected) by a user. It keeps the value until a user mashes "Ok"
     const [dirtyInternalValueVector, setDirtyInternalValueVector] = useState<
@@ -26,9 +31,11 @@ export const useDatePickerState = <V>(
     }, [internalValue]);
 
     // the date we have at the moment
-    const currentDateVector = useMemo(() => DateVector.createFromLocalDate(), [
-        reallyOpen,
-    ]);
+    const currentDateVector = useMemo(
+        () => DateVector.createFromLocalDate(currentDate),
+        [reallyOpen, currentDate],
+    );
+
     const currentTimeVector = useMemo(
         () => TimeVector24.createFromDateVector(currentDateVector),
         [currentDateVector],

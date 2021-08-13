@@ -5,14 +5,12 @@ import { RefType } from '../../../../type';
 import { useDatePickerPanel } from '../../hooks/useDatePickerPanel';
 import { useDatePickerState } from '../../hooks/useDatePickerState';
 import { useDatePickerCallbacks } from '../../hooks/useDatePickerCallbacks';
-import { formatDateTimeVector } from '../../utils/formatDateTimeVector';
 import { useControlledState } from '../../../../system';
 import { DateVectorRange } from '../../utils/DateVectorRange';
-import { TimeVector24 } from '../../utils/TimeVector24';
-import { useDatePickerSelectionEvents } from '../../hooks/useDatePickerSelectionEvents';
-
-const externalizeValue = (value: DateVectorRange, timeVector: TimeVector24) =>
-    value.convertToLocalDate(timeVector);
+import { useDatePickerSelectionEvents } from './useDatePickerSelectionEvents';
+import { useDatePickerAllowedDates } from '../../hooks/useDatePickerAllowedDates';
+import { externalizeValue } from '../utils/externalizeValue';
+import { useFormattedValue } from './useFormattedValue';
 
 export const useDatePicker = <E extends HTMLDivElement>(
     {
@@ -28,6 +26,8 @@ export const useDatePicker = <E extends HTMLDivElement>(
         error,
         'data-testid-input': dataTestIdInput,
         formatDateTime,
+        onDayMouseEnter,
+        onDayMouseLeave,
         ...restProps
     }: DatePickerPropsType,
     ref: RefType<E>,
@@ -78,6 +78,11 @@ export const useDatePicker = <E extends HTMLDivElement>(
         panelRestProps,
     );
 
+    const { isDateAllowed } = useDatePickerAllowedDates<DateValueType>(
+        { reallyOpen, currentDateVector },
+        restProps,
+    );
+
     const {
         onDateSelectorChange,
         onTimeSelectorValueChange,
@@ -99,22 +104,15 @@ export const useDatePicker = <E extends HTMLDivElement>(
     const selectionEventProps = useDatePickerSelectionEvents({
         value: dirtyInternalValueVector,
         onChange: onDateSelectorChange,
+        onDayMouseEnter,
+        onDayMouseLeave,
     });
 
-    // todo: move this function away
-    const formattedValue = useMemo(() => {
-        if (internalValue.isEmpty()) {
-            return '';
-        }
-
-        if (formatDateTime) {
-            return formatDateTime(
-                internalValue.dateStart!.convertToLocalDate(),
-            );
-        }
-
-        return formatDateTimeVector(internalValue.dateStart, enableTimePicker);
-    }, [internalValue, enableTimePicker, formatDateTime]);
+    const formattedValue = useFormattedValue({
+        internalValue,
+        enableTimePicker,
+        formatDateTime,
+    });
 
     return {
         rootProps: {
@@ -153,6 +151,7 @@ export const useDatePicker = <E extends HTMLDivElement>(
             displayedDateVector, // to indicate the currently displayed year and month
             dirtyInternalValueVector, // to indicate the selected day
             currentDateVector, // to indicate the current day in the matrix
+            isDateAllowed,
             ...selectionEventProps,
         },
         monthYearSelectorProps: {

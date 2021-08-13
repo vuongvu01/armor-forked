@@ -27,7 +27,7 @@ import { <%- component_name_pascal %> } from '..';
 
 describe('<<%- component_name_pascal %> />', () => {
     afterEach(async () => {
-        cleanup();
+        await cleanup();
         await cleanupHooks();
     });
 

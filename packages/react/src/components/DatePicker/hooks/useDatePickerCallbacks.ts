@@ -1,7 +1,10 @@
 import { useCallback } from 'react';
 import { DateVectorRange } from '../utils/DateVectorRange';
 import { TimeVector24 } from '../utils/TimeVector24';
-import { DatePickerEffectiveGenericPropsType } from '../type';
+import {
+    DatePickerEffectiveCommonPropsType,
+    DatePickerEffectiveGenericPropsType,
+} from '../type';
 
 type DatePickerCallbacksType<V> = {
     setDirtyInternalValueVector: (value: DateVectorRange) => void;
@@ -27,7 +30,8 @@ export const useDatePickerCallbacks = <V>(
     {
         enableActionButtons,
         ...restProps
-    }: DatePickerEffectiveGenericPropsType<V>,
+    }: DatePickerEffectiveGenericPropsType<V> &
+        DatePickerEffectiveCommonPropsType,
 ) => {
     const autoUpdateInternalValue = !enableActionButtons;
 

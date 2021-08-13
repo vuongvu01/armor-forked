@@ -1,5 +1,8 @@
 import { useMemo } from 'react';
-import { DatePickerDaySelectorRangeItemType } from '../type';
+import {
+    DatePickerDaySelectorPropsType,
+    DatePickerDaySelectorRangeItemType,
+} from '../type';
 import { DateVectorRange } from '../../utils/DateVectorRange';
 import { DateVector } from '../../utils/DateVector';
 
@@ -8,6 +11,7 @@ export const useDatePickerDaySelectorSelection = (
     dirtyInternalValueVector: DateVectorRange,
     selectionStartCandidate: DateVector | null,
     selectionEndCandidate: DateVector | null,
+    isDateAllowed: DatePickerDaySelectorPropsType['isDateAllowed'],
 ) =>
     useMemo(() => {
         const { dateStart, dateEnd } = dirtyInternalValueVector;
@@ -18,43 +22,43 @@ export const useDatePickerDaySelectorSelection = (
             selectionStartDate = selectionStartCandidate;
             selectionEndDate = selectionEndCandidate;
 
-            if (selectionEndDate.isSmallerThan(selectionStartDate)) {
+            if (selectionEndDate.isSmallerThanOrEqual(selectionStartDate)) {
                 const cup = selectionStartDate;
                 selectionStartDate = selectionEndDate;
                 selectionEndDate = cup;
             }
         }
 
-        return calendar.map(date => {
-            const vector = DateVector.createFromStructure(date);
+        return calendar.map(item => {
+            const vector = DateVector.createFromStructure(item);
             const leftEnd = vector.isEqualTo(selectionStartDate);
             const rightEnd = vector.isEqualTo(selectionEndDate);
 
             const selected =
-                vector.isGreaterThan(selectionStartDate) &&
-                vector.isSmallerThan(selectionEndDate);
+                vector.isGreaterThanOrEqual(selectionStartDate) &&
+                vector.isSmallerThanOrEqual(selectionEndDate);
+
+            const { date, displayedMonth, current } = item;
+
+            const allowed = isDateAllowed(date);
 
             return {
-                ...date,
-                itemProps: {
-                    'data-day': date.day,
-                    'data-month': date.month,
-                    'data-year': date.year,
-                    'data-displayed-month': date.displayedMonth ? '1' : '0',
-                },
+                ...item,
                 buttonProps: {
                     selected,
+                    allowed,
                     leftEnd,
                     rightEnd,
-                    current: date.current,
-                    displayedMonth: date.displayedMonth,
+                    current,
+                    displayedMonth,
                 },
                 paddingProps: {
                     selected,
+                    allowed,
                     leftEnd,
                     rightEnd,
-                    current: date.current,
-                    displayedMonth: date.displayedMonth,
+                    current,
+                    displayedMonth,
                 },
             };
         });
@@ -63,4 +67,5 @@ export const useDatePickerDaySelectorSelection = (
         dirtyInternalValueVector,
         selectionStartCandidate,
         selectionEndCandidate,
+        isDateAllowed,
     ]);
