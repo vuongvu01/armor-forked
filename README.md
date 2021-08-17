@@ -236,7 +236,7 @@ As soon as there are several features merged into `dev`, it is time to publish a
     ⚠️ Please don't use "Squash and merge" or "Rebase" when merging changes from `dev` to `master` as it will make GitHub really confused.
 
 3. As soon as the PR gets merged, [a new version will be published](https://github.com/deliveryhero/armor/packages/210156).
-4. An updated version of the [documentation](https://deliveryhero.github.io/armor/) will be published as well.
+4. An updated version of the [documentation](https://armor.deliveryhero.com/251886272/p/00ecf6-component-status) will be published as well.
 5. There is no need to pull back the `master` branch locally after the CD process is done. In fact, you should not have the `master` branch locally at all.
 6. The package version in `package.json` will not be updated and this is absolutely normal, because the remote version only matters.
 
@@ -244,8 +244,8 @@ As soon as there are several features merged into `dev`, it is time to publish a
 
 ## Contacts
 
- - [Sergei Gannochenko](sergei.gannochenko@deliveryhero.com)
- - [Nikolay Melnikov](nikolay.melnikov@deliveryhero.com)
+ - [Sergei Gannochenko](mailto:sergei.gannochenko@deliveryhero.com)
+ - [Nikolay Melnikov](mailto:nikolay.melnikov@deliveryhero.com)
 
 ### Built With
 
