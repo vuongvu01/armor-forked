@@ -1,6 +1,9 @@
 import { useDatePickerPopper } from './useDatePickerPopper';
 import { RefType } from '../../../type';
-import { DatePickerEffectiveGenericPropsType } from '../type';
+import {
+    DatePickerEffectiveCommonPropsType,
+    DatePickerEffectiveGenericPropsType,
+} from '../type';
 import {
     useOuterClick,
     useOverlay,
@@ -16,7 +19,8 @@ export const useDatePickerPanel = <V, E extends HTMLDivElement>(
         zIndex,
         enablePortal,
         ...restProps
-    }: DatePickerEffectiveGenericPropsType<V>,
+    }: DatePickerEffectiveGenericPropsType<V> &
+        DatePickerEffectiveCommonPropsType,
     ref: RefType<E>,
 ) => {
     const {

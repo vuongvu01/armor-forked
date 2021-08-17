@@ -2,17 +2,16 @@ import { useMemo } from 'react';
 import { DateRangePickerPropsType } from '../type';
 import { DateValueRangeType } from '../../type';
 import { RefType } from '../../../../type';
-import { useDateRangePickerSelectionEvents } from '../../hooks/useDateRangePickerSelectionEvents';
-import { formatDateTimeVector } from '../../utils/formatDateTimeVector';
+import { useDateRangePickerSelectionEvents } from './useDateRangePickerSelectionEvents';
 import { useDatePickerPanel } from '../../hooks/useDatePickerPanel';
 import { useDatePickerState } from '../../hooks/useDatePickerState';
 import { useDatePickerCallbacks } from '../../hooks/useDatePickerCallbacks';
 import { useControlledState } from '../../../../system';
 import { DateVectorRange } from '../../utils/DateVectorRange';
-import { TimeVector24 } from '../../utils/TimeVector24';
+import { externalizeValue } from '../utils/externalizeValue';
+import { useFormattedValue } from './useFormattedValue';
 
-const externalizeValue = (value: DateVectorRange, timeVector: TimeVector24) =>
-    value.convertToLocalDateRange(timeVector);
+const isDateAllowed = () => true;
 
 export const useDateRangePicker = <E extends HTMLDivElement>(
     {
@@ -99,28 +98,12 @@ export const useDateRangePicker = <E extends HTMLDivElement>(
         onChange: onDateSelectorChange,
     });
 
-    // todo: move this function away
-    const formattedValue = useMemo(() => {
-        if (internalValue.isEmpty()) {
-            return '';
-        }
-
-        const dateStartFormatted = formatDateTime
-            ? formatDateTime(internalValue.dateStart!.convertToLocalDate())
-            : formatDateTimeVector(internalValue.dateStart, enableTimePicker);
-
-        if (internalValue.isNarrow()) {
-            return dateStartFormatted;
-        }
-
-        const dateEndFormatted = formatDateTime
-            ? formatDateTime(internalValue.dateEnd!.convertToLocalDate())
-            : formatDateTimeVector(internalValue.dateEnd, enableTimePicker);
-
-        return formatDateTimeRange
-            ? formatDateTimeRange(dateStartFormatted, dateEndFormatted)
-            : `${dateStartFormatted} - ${dateEndFormatted}`;
-    }, [internalValue, enableTimePicker, formatDateTime, formatDateTimeRange]);
+    const formattedValue = useFormattedValue({
+        internalValue,
+        enableTimePicker,
+        formatDateTime,
+        formatDateTimeRange,
+    });
 
     return {
         rootProps: {
@@ -155,6 +138,7 @@ export const useDateRangePicker = <E extends HTMLDivElement>(
             displayedDateVector, // to indicate the currently displayed year and month
             dirtyInternalValueVector, // to indicate the selected day
             currentDateVector, // to indicate the current day in the matrix
+            isDateAllowed,
             ...selectionEventProps,
         },
         monthYearSelectorProps: {

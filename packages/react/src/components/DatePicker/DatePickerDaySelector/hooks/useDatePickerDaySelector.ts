@@ -13,6 +13,7 @@ export const useDatePickerDaySelector = <E extends HTMLDivElement>(
         dayButtonProps,
         selectionStartCandidate,
         selectionEndCandidate,
+        isDateAllowed,
         ...restProps
     }: DatePickerDaySelectorPropsType,
     ref: RefType<E>,
@@ -26,6 +27,7 @@ export const useDatePickerDaySelector = <E extends HTMLDivElement>(
         dirtyInternalValueVector,
         selectionStartCandidate,
         selectionEndCandidate,
+        isDateAllowed,
     );
 
     return {
@@ -34,15 +36,16 @@ export const useDatePickerDaySelector = <E extends HTMLDivElement>(
             ref,
         },
         getDayProps: (
-            day: UnpackedType<typeof calendarWithSelection>,
+            item: UnpackedType<typeof calendarWithSelection>,
             baseClassName: string,
         ) => {
             const {
-                selected,
-                rightEnd,
-                leftEnd,
+                day,
+                month,
+                year,
                 displayedMonth,
-            } = day.buttonProps;
+                buttonProps: { selected, allowed, rightEnd, leftEnd },
+            } = item;
 
             return {
                 ...dayButtonProps,
@@ -62,7 +65,16 @@ export const useDatePickerDaySelector = <E extends HTMLDivElement>(
                     baseClassName,
                     'selectedMiddle',
                     !rightEnd && !leftEnd && selected,
+                )} ${appendBEMModifierOnCondition(
+                    baseClassName,
+                    'allowed',
+                    allowed,
                 )}`,
+                'data-day': day,
+                'data-month': month,
+                'data-year': year,
+                'data-displayed-month': displayedMonth ? '1' : '0',
+                'data-allowed': allowed ? '1' : '0',
             };
         },
 

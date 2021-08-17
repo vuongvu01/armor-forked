@@ -68,48 +68,71 @@ export const DatePickerDaySelectorDay = styled.div.withConfig(propsBlocker)<
 
 const getDayButtonStyle = ({
     selected,
+    allowed,
     leftEnd,
     rightEnd,
     displayedMonth,
 }: DatePickerDaySelectorDayButtonPropsType) => {
     let result = {};
 
-    if (displayedMonth && selected) {
-        // make corners sharp if the element is just a tail (or a head)
-        if (leftEnd && !rightEnd) {
+    if (displayedMonth) {
+        result = css`
+            ${result};
+            cursor: ${allowed ? 'pointer' : 'not-allowed'};
+        `;
+
+        if (allowed || selected) {
             result = css`
                 ${result};
-                border-bottom-right-radius: 0;
-                border-top-right-radius: 0;
-            `;
-        }
-
-        if (rightEnd && !leftEnd) {
-            result = css`
-                ${result};
-                border-bottom-left-radius: 0;
-                border-top-left-radius: 0;
-            `;
-        }
-
-        // set background
-        if (!rightEnd && !leftEnd) {
-            result = css`
-                ${result};
-                background-color: ${color('primary.lightest')};
-                border-radius: 0;
-            `;
-        }
-
-        if (rightEnd || leftEnd) {
-            result = css`
-                ${result};
-                color: ${color('neutral.00')};
-                background-color: ${color('primary.main')};
-
                 &:hover {
-                    background-color: ${color('primary.light')};
+                    color: ${color('neutral.00')};
+                    background-color: ${color('primary.main')};
                 }
+            `;
+        }
+
+        if (selected) {
+            // make corners sharp if the element is just a tail (or a head)
+            if (leftEnd && !rightEnd) {
+                result = css`
+                    ${result};
+                    border-bottom-right-radius: 0;
+                    border-top-right-radius: 0;
+                `;
+            }
+
+            if (rightEnd && !leftEnd) {
+                result = css`
+                    ${result};
+                    border-bottom-left-radius: 0;
+                    border-top-left-radius: 0;
+                `;
+            }
+
+            // set background
+            if (!rightEnd && !leftEnd) {
+                result = css`
+                    ${result};
+                    background-color: ${color('primary.lightest')};
+                    border-radius: 0;
+                `;
+            }
+
+            if (rightEnd || leftEnd) {
+                result = css`
+                    ${result};
+                    color: ${color('neutral.00')};
+                    background-color: ${color('primary.main')};
+
+                    &:hover {
+                        background-color: ${color('primary.light')};
+                    }
+                `;
+            }
+        } else if (!allowed) {
+            result = css`
+                ${result};
+                color: ${color('neutral.05')};
             `;
         }
     }
@@ -118,6 +141,7 @@ const getDayButtonStyle = ({
         result = css`
             ${result};
             visibility: hidden;
+            pointer-events: none;
         `;
     }
 
@@ -134,16 +158,11 @@ export const DatePickerDaySelectorDayButton = styled.a.withConfig(propsBlocker)<
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
     flex-shrink: 0;
     ${transition({
         'background-color': 0.1,
         color: 0.1,
     })};
-    &:hover {
-        color: ${color('neutral.00')};
-        background-color: ${color('primary.main')};
-    }
     border-radius: ${borderRadius('soft')};
     user-select: none;
     ${getDayButtonStyle};

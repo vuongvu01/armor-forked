@@ -1,7 +1,7 @@
 import { MouseEvent, useCallback, useEffect, useState } from 'react';
-import { DateVectorRange } from '../utils/DateVectorRange';
-import { extractDataFromDOMEvent } from '../utils/extractDataFromDOMEvent';
-import { DateVector } from '../utils/DateVector';
+import { DateVectorRange } from '../../utils/DateVectorRange';
+import { extractDataFromDOMEvent } from '../../utils/extractDataFromDOMEvent';
+import { DateVector } from '../../utils/DateVector';
 
 type SelectionPropType = {
     value: DateVectorRange;
@@ -34,7 +34,7 @@ export const useDateRangePickerSelectionEvents = ({
 
             if (withShift) {
                 // *** [ *** ] **X** <-- click (X) was to the right or in the middle
-                if (vector.isGreaterThan(dateStart)) {
+                if (vector.isGreaterThanOrEqual(dateStart)) {
                     onChange(value.clone({ dateStart, dateEnd: vector }));
                 } else {
                     onChange(value.clone({ dateStart: vector, dateEnd }));
@@ -60,7 +60,7 @@ export const useDateRangePickerSelectionEvents = ({
 
             if (withShift) {
                 // *** [ *** ] **X** <-- click (X) was to the right or in the middle
-                if (vector.isGreaterThan(dateStart)) {
+                if (vector.isGreaterThanOrEqual(dateStart)) {
                     setSelectionStartCandidate(dateStart);
                 } else {
                     setSelectionStartCandidate(dateEnd);
@@ -97,7 +97,9 @@ export const useDateRangePickerSelectionEvents = ({
                     selectionEndCandidate,
                 ];
                 if (
-                    selectionEndCandidate.isSmallerThan(selectionStartCandidate)
+                    selectionEndCandidate.isSmallerThanOrEqual(
+                        selectionStartCandidate,
+                    )
                 ) {
                     newSelection = [
                         selectionEndCandidate,

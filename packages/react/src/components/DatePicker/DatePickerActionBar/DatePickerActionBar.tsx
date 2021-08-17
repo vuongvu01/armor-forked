@@ -8,6 +8,9 @@ import { DatePickerActionBarPropsType } from './type';
 import { DATE_PICKER_ACTION_BAR_CLASS_PREFIX } from './constants';
 import { useComponentTheme } from '../../../utils/hooks';
 
+/**
+ * @internal
+ */
 export const DatePickerActionBar = forwardRef<
     HTMLDivElement,
     DatePickerActionBarPropsType

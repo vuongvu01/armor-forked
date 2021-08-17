@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { DatePicker } from '../../../src/components';
+import { DATE_PICKER_INFINITY, DatePicker } from '../../../src/components';
 
 export default {
     title: 'DatePicker',
@@ -39,4 +39,15 @@ export const MonthYearSelector = () => (
 
 export const Error = () => (
     <DatePicker open defaultMonthYearSelectorOpen dateValue={date} error />
+);
+
+const date2 = new Date(2021, 7, 10, 10, 4, 0, 100);
+
+export const DisabledDates = () => (
+    <DatePicker
+        open
+        dateValue={date2}
+        currentDate={date2}
+        allowedDateRanges={[['current+1', DATE_PICKER_INFINITY]]}
+    />
 );

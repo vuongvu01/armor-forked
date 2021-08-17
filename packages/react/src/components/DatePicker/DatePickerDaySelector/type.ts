@@ -13,10 +13,12 @@ export type DatePickerDaySelectorRangeItemType = {
     weekDay: string;
     current: boolean;
     displayedMonth: boolean;
+    date: DateVector;
 } & DateVectorStructureType;
 
 type DaySelectionStatus = {
     selected: boolean;
+    allowed: boolean;
     leftEnd: boolean;
     rightEnd: boolean;
     current: boolean;
@@ -33,6 +35,7 @@ type DatePickerDaySelectorEffectivePropsType = {
     dirtyInternalValueVector: DateVectorRange;
 
     displayedDateVector: DateVector;
+    isDateAllowed: (date: DateVector) => boolean;
 
     // add other custom properties here
 } & HTMLAttributes<HTMLDivElement>; // includes all HTML Div attributes

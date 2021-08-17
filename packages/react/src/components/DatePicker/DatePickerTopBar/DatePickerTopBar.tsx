@@ -1,4 +1,4 @@
-import React, { forwardRef, FunctionComponent } from 'react';
+import React, { forwardRef } from 'react';
 import { ArrowRightIcon } from '@deliveryhero/armor-icons';
 
 import { useDatePickerTopBarClassNames } from './hooks/useDatePickerTopBarClassNames';
@@ -15,6 +15,9 @@ import { DatePickerTopBarPropsType } from './type';
 import { DATE_PICKER_TOP_BAR_CLASS_PREFIX } from './constants';
 import { useComponentTheme } from '../../../utils/hooks';
 
+/**
+ * @internal
+ */
 export const DatePickerTopBar = forwardRef<
     HTMLDivElement,
     DatePickerTopBarPropsType

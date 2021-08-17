@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useState } from 'react';
 // eslint-disable-next-line import/no-unresolved
-import { boolean, withKnobs } from '@storybook/addon-knobs';
+import { withKnobs } from '@storybook/addon-knobs';
 
 import { SideSheet } from '../SideSheet';
 import { Button } from '../../Button';

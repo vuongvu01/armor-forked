@@ -1,13 +1,22 @@
-import { DateValueRangeType, DateValueType } from '../type';
+import {
+    DateRangeEdgeType,
+    DateValueAdvancedRangeType,
+    DateValueRangeType,
+    DateValueType,
+} from '../type';
 import { DateVector } from './DateVector';
 import { TimeVector24 } from './TimeVector24';
 import { DateVectorStructureType } from './type';
+import { DATE_PICKER_INFINITY } from '../constants';
 
 type DateVectorRangeStructureType = {
     dateStart: DateVector | null;
     dateEnd: DateVector | null;
 };
 
+/**
+ * @internal
+ */
 export class DateVectorRange {
     public static createFromLocalDateRange(
         dateRange?: DateValueRangeType | null,
@@ -17,8 +26,12 @@ export class DateVectorRange {
         }
 
         return new this(
-            dateRange[0] ? DateVector.createFromLocalDate(dateRange[0]) : null,
-            dateRange[1] ? DateVector.createFromLocalDate(dateRange[1]) : null,
+            dateRange[0]
+                ? DateVector.createFromLocalDate(dateRange[0])
+                : DATE_PICKER_INFINITY,
+            dateRange[1]
+                ? DateVector.createFromLocalDate(dateRange[1])
+                : DATE_PICKER_INFINITY,
         );
     }
 
@@ -28,8 +41,24 @@ export class DateVectorRange {
         }
 
         return new this(
-            date ? DateVector.createFromLocalDate(date) : null,
-            date ? DateVector.createFromLocalDate(date) : null,
+            date ? DateVector.createFromLocalDate(date) : DATE_PICKER_INFINITY,
+            date ? DateVector.createFromLocalDate(date) : DATE_PICKER_INFINITY,
+        );
+    }
+
+    /**
+     * @internal
+     * @param dateRange
+     * @param currentDateVector
+     */
+    public static createFromLocalDateAdvancedRange(
+        dateRange: DateValueAdvancedRangeType,
+        currentDateVector: DateVector,
+    ) {
+        const [left, right] = dateRange;
+        return new this(
+            this.createLocalDateAdvancedRangeEdge(left, currentDateVector),
+            this.createLocalDateAdvancedRangeEdge(right, currentDateVector),
         );
     }
 
@@ -43,12 +72,15 @@ export class DateVectorRange {
         dateEnd,
     }: Partial<DateVectorRangeStructureType> = {}) {
         const { dateStart: ownDateStart, dateEnd: ownDateEnd } = this;
-        const effectiveDateStart = dateStart || ownDateStart || null;
-        const effectiveDateEnd = dateEnd || ownDateEnd || null;
+        const effectiveDateStart =
+            dateStart || ownDateStart || DATE_PICKER_INFINITY;
+        const effectiveDateEnd = dateEnd || ownDateEnd || DATE_PICKER_INFINITY;
 
         return new DateVectorRange(
-            effectiveDateStart ? effectiveDateStart.clone() : null,
-            effectiveDateEnd ? effectiveDateEnd.clone() : null,
+            effectiveDateStart
+                ? effectiveDateStart.clone()
+                : DATE_PICKER_INFINITY,
+            effectiveDateEnd ? effectiveDateEnd.clone() : DATE_PICKER_INFINITY,
         );
     }
 
@@ -95,11 +127,65 @@ export class DateVectorRange {
         return start;
     }
 
-    public isEmpty() {
-        return !this.dateStart || !this.dateEnd;
+    public isInfinite() {
+        return this.isInfiniteStart() || this.isInfiniteEnd();
     }
 
-    public isNarrow() {
-        return this.dateEnd?.isEqualTo(this.dateStart);
+    public isInfiniteStart() {
+        return !this.dateStart;
+    }
+
+    public isInfiniteEnd() {
+        return !this.dateEnd;
+    }
+
+    public isFlat() {
+        return !!this.dateEnd?.isEqualTo(this.dateStart);
+    }
+
+    public isIllegal() {
+        if (!this.dateStart || !this.dateEnd) {
+            return false;
+        }
+
+        return this.dateEnd.isSmallerThanOrEqual(this.dateStart);
+    }
+
+    public contains(date: DateVector) {
+        if (this.isInfiniteStart()) {
+            return date.isSmallerThanOrEqual(this.dateEnd);
+        }
+
+        if (this.isInfiniteEnd()) {
+            return date.isGreaterThanOrEqual(this.dateStart);
+        }
+
+        return (
+            date.isGreaterThanOrEqual(this.dateStart) &&
+            date.isSmallerThanOrEqual(this.dateEnd)
+        );
+    }
+
+    private static createLocalDateAdvancedRangeEdge(
+        dateEdge: DateRangeEdgeType,
+        currentDateVector: DateVector,
+    ) {
+        if (dateEdge === null) {
+            return DATE_PICKER_INFINITY;
+        }
+
+        if (dateEdge instanceof Date) {
+            return DateVector.createFromLocalDate(dateEdge);
+        }
+
+        // string otherwise
+        const result = DateVector.createFromMetaString(dateEdge, {
+            currentDateVector,
+        });
+        if (result) {
+            return result;
+        }
+
+        return DATE_PICKER_INFINITY;
     }
 }

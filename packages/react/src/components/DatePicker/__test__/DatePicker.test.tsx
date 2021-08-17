@@ -2,18 +2,20 @@
 
 import React, { useRef } from 'react';
 
-import { cleanup, render } from '@testing-library/react';
+import { cleanup, fireEvent, prettyDOM, render } from '@testing-library/react';
 import {
     renderHook,
     cleanup as cleanupHooks,
 } from '@testing-library/react-hooks';
+import { act } from 'react-dom/test-utils';
 
-import { DatePicker } from '..';
+import { DATE_PICKER_INFINITY, DatePicker } from '..';
 import { COMMON_CLASSES } from './common';
+import { DateVector } from '../utils/DateVector';
 
 describe('<DatePicker />', () => {
     afterEach(async () => {
-        cleanup();
+        await cleanup();
         await cleanupHooks();
     });
 
@@ -71,6 +73,88 @@ describe('<DatePicker />', () => {
     it('should support width attributes', async () => {
         // @ts-ignore
         expect(DatePicker).toSupportWidthAttributes();
+    });
+
+    it('should support allowedDateRanges', async () => {
+        const localDate = new Date(2021, 7, 10, 10, 4, 0, 100);
+        const { container } = render(
+            <DatePicker
+                open
+                dateValue={localDate}
+                allowedDateRanges={[[localDate, DATE_PICKER_INFINITY]]}
+            />,
+        );
+
+        const isDayAllowed = (day: number) => {
+            const dayNode = container.querySelector(`[data-day="${day}"]`);
+            expect(dayNode).toBeInTheDocument();
+            const allowed = dayNode!.getAttribute('data-allowed');
+
+            return allowed === '1';
+        };
+
+        expect(isDayAllowed(7)).toBeFalsy();
+        expect(isDayAllowed(8)).toBeFalsy();
+        expect(isDayAllowed(9)).toBeFalsy();
+        expect(isDayAllowed(10)).toBeTruthy();
+        expect(isDayAllowed(11)).toBeTruthy();
+        expect(isDayAllowed(12)).toBeTruthy();
+    });
+
+    const makeDateString = (date: Date) => {
+        const vect = DateVector.createFromLocalDate(date);
+
+        return [vect.month, vect.day, vect.year].join('-');
+    };
+
+    it('should support onDayMouseEnter()', async () => {
+        const onDayMouseEnter = jest.fn();
+
+        const localDate = new Date(2021, 7, 10, 10, 4, 0, 100);
+        const { container } = render(
+            <DatePicker
+                open
+                dateValue={localDate}
+                onDayMouseEnter={onDayMouseEnter}
+            />,
+        );
+
+        const day = container.querySelector('[data-day="12"]');
+        expect(day).toBeInTheDocument();
+
+        act(() => {
+            fireEvent.mouseEnter(day!);
+        });
+
+        expect(onDayMouseEnter).toBeCalled();
+        const call = onDayMouseEnter.mock.calls[0];
+
+        expect(makeDateString(call[0])).toEqual('7-12-2021');
+    });
+
+    it('should support onDayMouseLeave()', async () => {
+        const onDayMouseLeave = jest.fn();
+
+        const localDate = new Date(2021, 7, 10, 10, 4, 0, 100);
+        const { container } = render(
+            <DatePicker
+                open
+                dateValue={localDate}
+                onDayMouseLeave={onDayMouseLeave}
+            />,
+        );
+
+        const day = container.querySelector('[data-day="12"]');
+        expect(day).toBeInTheDocument();
+
+        act(() => {
+            fireEvent.mouseLeave(day!);
+        });
+
+        expect(onDayMouseLeave).toBeCalled();
+        const call = onDayMouseLeave.mock.calls[0];
+
+        expect(makeDateString(call[0])).toEqual('7-12-2021');
     });
 
     // it('should support controlled/uncontrolled value', async () => {

@@ -18,3 +18,5 @@ export const DATE_PICKER_MONTH_NAMES = [
     'November',
     'December',
 ];
+
+export const DATE_PICKER_INFINITY = null;

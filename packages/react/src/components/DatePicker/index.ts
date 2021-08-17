@@ -3,3 +3,4 @@
  */
 export * from './DatePicker';
 export * from './DateRangePicker';
+export { DATE_PICKER_INFINITY } from './constants';

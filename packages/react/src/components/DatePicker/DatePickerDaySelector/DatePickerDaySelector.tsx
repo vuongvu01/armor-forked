@@ -16,6 +16,9 @@ import {
 import { DatePickerDaySelectorPropsType } from './type';
 import { DATE_PICKER_DAY_SELECTOR_CLASS_PREFIX } from './constants';
 
+/**
+ * @internal
+ */
 export const DatePickerDaySelector = forwardRef<
     HTMLDivElement,
     DatePickerDaySelectorPropsType
@@ -60,7 +63,6 @@ export const DatePickerDaySelector = forwardRef<
                 {dayMatrix.map(day => (
                     <DatePickerDaySelectorDay
                         key={day.id}
-                        {...day.itemProps}
                         {...getDayProps(day, classNameComponents.Day)}
                         theme={theme}
                     >

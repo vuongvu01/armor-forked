@@ -16,6 +16,9 @@ import { DatePickerMonthYearSelectorPropsType } from './type';
 import { DATE_PICKER_MONTH_YEAR_SELECTOR_CLASS_PREFIX } from './constants';
 import { useComponentTheme } from '../../../utils/hooks';
 
+/**
+ * @internal
+ */
 export const DatePickerMonthYearSelector = forwardRef<
     HTMLDivElement,
     DatePickerMonthYearSelectorPropsType

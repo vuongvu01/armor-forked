@@ -12,6 +12,7 @@ export const extractDataFromDOMEvent = (
         event,
         'displayed-month',
     );
+    const allowed = extractNumericDataAttribute(event, 'allowed');
 
     if (year === null || month === null || day === null) {
         return null;
@@ -25,5 +26,6 @@ export const extractDataFromDOMEvent = (
         }),
         displayedMonth,
         withShift: event.shiftKey,
+        allowed,
     };
 };

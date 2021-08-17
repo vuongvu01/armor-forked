@@ -1,4 +1,8 @@
-import { DatePickerEffectiveGenericPropsType, DateValueType } from '../type';
+import {
+    DatePickerEffectiveCommonPropsType,
+    DatePickerEffectiveGenericPropsType,
+    DateValueType,
+} from '../type';
 import {
     ComponentElementStylePropsType,
     ComponentStylePropsType,
@@ -7,7 +11,8 @@ import {
 /** 👉 PROPS TYPE */
 export type DatePickerEffectivePropsType = DatePickerEffectiveGenericPropsType<
     DateValueType
->;
+> &
+    DatePickerEffectiveCommonPropsType;
 
 export type DatePickerPropsType = DatePickerEffectivePropsType &
     ComponentStylePropsType;

@@ -1,5 +1,5 @@
 import { DATE_PICKER_MONTH_NAMES } from '../constants';
-import { DateVectorStructureType } from './type';
+import { DateVectorStructureType, DateVectorMetaParams } from './type';
 
 export class DateVector {
     public static createFromLocalDate(date?: Date) {
@@ -38,6 +38,27 @@ export class DateVector {
                 ),
             ),
         );
+    }
+
+    public static createFromMetaString(
+        meta: string,
+        { currentDateVector }: DateVectorMetaParams,
+    ) {
+        const match = meta.trim().match(/current(([+-])(\d+))?/);
+        if (match && currentDateVector) {
+            const [, , op, amount] = match;
+            const result = currentDateVector.clone();
+            if (amount && op === '+') {
+                result.addDay(parseInt(amount, 10));
+            }
+            if (amount && op === '-') {
+                result.addDay(parseInt(amount, 10) * -1);
+            }
+
+            return result;
+        }
+
+        return null;
     }
 
     constructor(protected date: Date) {}
@@ -79,7 +100,7 @@ export class DateVector {
         );
     }
 
-    public isGreaterThan(vector?: DateVector | null) {
+    public isGreaterThanOrEqual(vector?: DateVector | null) {
         if (!vector) {
             return false;
         }
@@ -87,7 +108,7 @@ export class DateVector {
         return this.getWeight() >= vector.getWeight();
     }
 
-    public isSmallerThan(vector?: DateVector | null) {
+    public isSmallerThanOrEqual(vector?: DateVector | null) {
         if (!vector) {
             return false;
         }
@@ -95,6 +116,8 @@ export class DateVector {
         return this.getWeight() <= vector.getWeight();
     }
 
+    // todo: this method only check equality down to days, so technically the naming is incorrect
+    // todo: rename
     public isEqualTo = (vector?: DateVector | null) => {
         if (!vector) {
             return false;
@@ -107,22 +130,29 @@ export class DateVector {
         );
     };
 
+    // todo: this method not only adds amount of months, but also resets the day to 1
+    // todo: therefore, the naming is not entirely correct
+    // todo: rename
+    // todo: also, the method mutates the object, which is not good
     public addMonth(amount = 0) {
         const { date } = this;
         date.setUTCDate(1);
         date.setUTCMonth(date.getUTCMonth() + amount);
     }
 
+    // todo: this method mutates the object, which is not good
     public addDay(amount = 0) {
         const { date } = this;
         date.setUTCDate(date.getUTCDate() + amount);
     }
 
+    // todo: this method mutates the object, which is not good
     public addMinute(amount = 0) {
         const { date } = this;
         date.setUTCMinutes(date.getUTCMinutes() + amount);
     }
 
+    // todo: this method mutates the object, which is not good
     public resetTime() {
         this.date.setUTCHours(0, 0, 0, 0);
     }
@@ -177,6 +207,10 @@ export class DateVector {
 
     public get monthName() {
         return DATE_PICKER_MONTH_NAMES[this.month];
+    }
+
+    public toString() {
+        return `${this.formattedDay}.${this.formattedMonth}.${this.formattedYear} ${this.formattedHour}:${this.formattedMinute}:00`;
     }
 
     private getWeight() {

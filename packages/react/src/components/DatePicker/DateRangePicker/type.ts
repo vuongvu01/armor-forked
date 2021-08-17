@@ -1,5 +1,6 @@
 import { ComponentStylePropsType } from '../../type';
 import {
+    DatePickerEffectiveCommonPropsType,
     DatePickerEffectiveGenericPropsType,
     DateValueRangeType,
 } from '../type';
@@ -8,6 +9,7 @@ import {
 type DateRangePickerEffectivePropsType = DatePickerEffectiveGenericPropsType<
     DateValueRangeType
 > &
+    DatePickerEffectiveCommonPropsType &
     Partial<{
         formatDateTimeRange: (
             startDateTime: string,
