@@ -3,47 +3,33 @@
 
 <p align="center">
   <h3 align="center">⚙️ + 🖍️ + 🍪 + 🗄️ + 🌐 + 🔎 = 😎</h3>
-  <h3 align="center">DeliveryHero Armor Design System: React</h3>
+  <h3 align="center">DeliveryHero's &laquo;Armor&raquo; Design System</h3>
 
   <p align="center">
-    This is a UX System that is used in the React projects of the company.
-    <br />
-    <br />
-    <a href="https://deliveryhero.github.io/armor/">Docs</a>
+    <a href="https://armor.deliveryhero.com/251886272/p/00ecf6-component-status">Docs</a>
     ·
-    <a href="https://github.com/deliveryhero/armor/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/deliveryhero/armor/issues">Request Feature</a>
+    <a href="https://armor.deliveryhero.com/251886272/p/98480e-introduction">Report Bug</a>
   </p>
 </p>
 
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
 
-* [About the Project](#about-the-project)
 * [Prerequisites](#prerequisites)
 * [Usage](#usage)
-* [Development](#development)
-  * [Installation](#installation)
+* [Contribution](#contribution)
+  * [Local installation](#local-installation)
   * [Local usage](#local-usage)
     * [Option 1: yarn link](#option-1-yarn-link-or-npm-link)
     * [Option 2: yalc](#option-2-yalc)
     * [Troubleshooting](#troubleshooting)
   * [Branching model](#branching-model)
   * [Contribution rules](#contribution-rules)
-    * [For contributors](#for-contributors)
-      * [Component requirements](#component-requirements)
-      * [Adding a new component](#adding-a-new-component)
-      * [Contribution steps and requirements](#contribution-steps-and-requirements)
-    * [For maintainers](#for-maintainers)
-  * [Editing the documentation](#editing-the-documentation)
-  * [Manual publishing](#manual-publishing)
-* [Contact](#contact)
+    * [Adding a new component](#adding-a-new-component)
+    * [Contribution steps and requirements](#contribution-steps-and-requirements)
+* [Publishing](#publishing)
+* [Contacts](#contacts)
 * [Built With](#built-with)
-
-## About The Project
-
-Todo: when there is something inside, write a short intro to the project
 
 ## Prerequisites
 
@@ -52,8 +38,7 @@ Todo: when there is something inside, write a short intro to the project
 
 ## Usage
 
-To use the UI offered by this project you need to install an NPM package and consume it in the code of your application.
-In order to do that, follow these steps:
+This project is a library, which is shipped as a set of NPM modules. To install the modules into your application, do the following:
 
 1. [Generate your own GitHUB token](https://github.com/settings/tokens) with the following conditions:
     * permissions: **read:packages**, **repo**
@@ -74,43 +59,43 @@ In order to do that, follow these steps:
     yarn add @deliveryhero/armor
     ~~~
 5. Start coding!
-    ~~~javascript
+    ~~~js
     import { Button } from '@deliveryhero/armor';
+   
+    <Button>Hello</Button>
     ~~~
 
-## Development
+## Contribution
 
-If you wish to make a contribution to the library, you need to setup the development environment on your local machine.
-
-### Installation
+### Local installation
 
 1. Clone the repo
     ~~~bash
-    git clone git@github.com:deliveryhero/armor.git
+    git clone git@github.com:deliveryhero/armor.git armor
     ~~~
-2. Install NPM packages everywhere
+2. Install NPM dependencies
     ~~~bash
-    cd ui/web/;
-    yarn;
-    cd packages/react/;
-    yarn setup;
+    cd ./armor
+    yarn setup
     ~~~
-3. We utilise `Storybook` as a primary tool for development. To launch `Storybook`, type
+3. We use `Storybook` as a development environment. To run it for the `react` package just do the following: 
     ~~~bash
-    yarn dev;
+    cd ./packages/react
+    yarn dev
     ~~~
 4. Open [http://localhost:6006/](http://localhost:6006/) and start developing :)
 
 ### Local usage
 
 You may want to try out the latest changes you made in some locally installed React application without bumping out anything to NPM.
+
 You have two options here.
 
 #### Option 1: yarn link or npm link
 
 0. Make sure that no peer dependencies installed by typing
     ~~~bash
-    cd web/packages/react;
+    cd packages/react;
     yarn;
     ~~~
 1. Link the package to `yarn`:
@@ -166,9 +151,9 @@ Further reading: [yalc docs](https://github.com/whitecolor/yalc).
 ## Branching model
 
 In this project we use a simplified Git Flow branching model:
-* `master` branch to make releases
-* `dev` branch to combine several features and test them together before making a release
 * `feature branches` to develop separate features
+* `dev` branch to contain several new features and test them together before making a release (this is the default branch)
+* `master` branch to make releases
 
 ## Contribution rules
 
@@ -176,35 +161,26 @@ Contributing on regular basis is what really helps this project to advance. Any 
 The project tries to maintain healthy balance between comfortable development and restrictions that prevent everything from falling into chaos.
 Therefore, there are certain rules a contributor must follow in order to make the process straightforward and error-proof.
 
-### For contributors
+Please check out our RFCs regarding:
 
-#### Component requirements
+* [Overall requirements and agreements](https://armor.deliveryhero.com/251886272/p/14086e-structure-and-qa)
+* [API design requirements and agreements](https://armor.deliveryhero.com/251886272/p/9778eb-api-design)
+* [Development lifecycle](https://armor.deliveryhero.com/251886272/p/1776e9-lifecycle/b/18200b)
 
-Every new component should have:
+We also try to support backward compatibility while making updates.
 
-* unit tests,
-* at least one story of Storybook.
+### Adding a new component
 
-When modifying existing components:
+When it comes to a new component to be created, we have a code scaffolder. It creates a boilerplate with the desired structure, which can be really useful in the beginning.
 
-* try to support backward compatibility while making updates.
+We encourage contributors to try it out:
 
-#### Adding a new component
+1. Go to `packages/react`.
+2. Run `yarn scaffold` and answer a couple of questions.
+3. Add `export * from './<component_name>';` to `src/components/index.js`
+4. If the `Storybook` was running, then the story for the newly-created component should shortly appear
 
-Checklist on how to add a component:
-
-1. Go to `src/components` folder and generate a component boilerplate
-2. Add `export * from './<component_name>';` to `src/components/index.js` (todo: automate this)
-3. Create a snippet story in `doc/stories` (todo: automate this)
-4. Check out what MaterialUI and other library have as best practices
-5. Think through the component logic and structure, create a layout
-6. Make sure that every layout node has:
-    1. theme entry
-    2. classname entry
-    3. style override entry
-    4. theme is forwarded as a property
-
-#### Contribution steps and requirements
+### Contribution steps and requirements
 
 The algorithm of making a contribution:
 
@@ -243,16 +219,9 @@ The algorithm of making a contribution:
     * `fix: that annoying bug is finally caught`
     * `chore: deployment pipeline fixed`
     * `doc: fixed that old typo in readme`
+6. After the PR is accepted, do "Squash-and-merge" of the feature branch into the `dev` branch.
 
-### For maintainers
-
-#### Accepting a Pull Request to dev branch
-
-1. Use `Squash-and-Merge` when merging to `dev`,
-2. Copy the `PR` name to the name of a `squash commit` (it should be <a href="https://www.conventionalcommits.org/en/v1.0.0-beta.4/" target="_blank">conventional</a>).<br />
-    Example: `feat: a new amazing component added` => `feat: a new amazing component added`
-
-#### Deploying changes
+## Publishing
 
 As soon as there are several features merged into `dev`, it is time to publish a new version. To do so:
 
@@ -266,7 +235,6 @@ As soon as there are several features merged into `dev`, it is time to publish a
 
     ⚠️ Please don't use "Squash and merge" or "Rebase" when merging changes from `dev` to `master` as it will make GitHub really confused.
 
-    ℹ️ This routine may be automated in future.
 3. As soon as the PR gets merged, [a new version will be published](https://github.com/deliveryhero/armor/packages/210156).
 4. An updated version of the [documentation](https://deliveryhero.github.io/armor/) will be published as well.
 5. There is no need to pull back the `master` branch locally after the CD process is done. In fact, you should not have the `master` branch locally at all.
@@ -274,50 +242,10 @@ As soon as there are several features merged into `dev`, it is time to publish a
 
 ⚠️ Please note that pushing directly to `master` or `dev` without making a PR is strictly prohibited.
 
-### Editing the documentation
-
-We use `Styleguidist` to provide user-oriented documentation. To update the documentation type:
-
-1. Run `Styleguidist`
-    ~~~bash
-    cd web/packages/ui/react/;
-    yarn doc;
-    ~~~
-2. Open [http://localhost:6060/](http://localhost:6060/) and start documenting :)
-
-### Manual publishing
-
-⚠️ Attention: manual publishing is not recommended and should be performed only if the fully-functional CI/CD is not available.
-
-*Setting up yarn (optional)*:
-Please, follow the instruction on <a href="https://confluence.deliveryhero.com/pages/viewpage.action?spaceKey=RPS&title=GitHub+as+package+registry" target="_blank">how to authenticate at the github package registry</a>.
-
-To manually publish a new version of the package, follow these steps:
-1. commit all your changes,
-2. run
-    ~~~bash
-    cd web/packages/react;
-    ./script/release.sh;
-    ~~~
-   and specify a desired version in the end.
-
-3. push version up made by `yarn` in `package.json`
-4. todo: re-build and re-publish Styleguidist
-
-## Useful links
-
-### Testing
-
- * https://github.com/sapegin/jest-cheat-sheet
- * https://testing-library.com/docs/react-testing-library/cheatsheet
- * https://github.com/testing-library/jest-dom
- * https://jestjs.io/docs/en/mock-functions
-
-## Contact
+## Contacts
 
  - [Sergei Gannochenko](sergei.gannochenko@deliveryhero.com)
-
-Project Link: [https://github.com/deliveryhero/armor](https://github.com/deliveryhero/armor)
+ - [Nikolay Melnikov](nikolay.melnikov@deliveryhero.com)
 
 ### Built With
 
