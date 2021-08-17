@@ -1,3 +1,10 @@
+# @deliveryhero/armor [1.65.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.64.0...@deliveryhero/armor@1.65.0) (2021-08-17)
+
+
+### Features
+
+* **datepicker:** Disabled dates in DatePicker [LD-565] ([#657](https://github.com/deliveryhero/armor/issues/657)) ([0de17cb](https://github.com/deliveryhero/armor/commit/0de17cbf460ec9e47e6fcd552763e076d2d8e8e3))
+
 # @deliveryhero/armor [1.64.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.63.0...@deliveryhero/armor@1.64.0) (2021-08-11)
 
 
