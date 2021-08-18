@@ -1,3 +1,18 @@
+# @deliveryhero/armor [1.66.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.65.0...@deliveryhero/armor@1.66.0) (2021-08-18)
+
+
+### Features
+
+* **listitem:** 1px margin removed [LD-000] ([#679](https://github.com/deliveryhero/armor/issues/679)) ([ce0b2b2](https://github.com/deliveryhero/armor/commit/ce0b2b2b88d6435faa0cc545435ee445ce401d6b))
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor-icons:** upgraded to 1.14.1
+
 # @deliveryhero/armor [1.65.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.64.0...@deliveryhero/armor@1.65.0) (2021-08-17)
 
 
