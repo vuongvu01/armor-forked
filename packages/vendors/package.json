@@ -25,7 +25,8 @@
         "visual": "cd ./visual && yarn storybook",
         "lint": "eslint ./src --ext .js,.ts,.jsx,.tsx",
         "lint:fix": "eslint ./src --fix --ext .js,.ts,.jsx,.tsx",
-        "release": "./script/release.sh"
+        "release": "./script/release.sh",
+        "setup": "./script/setup.sh"
     },
     "peerDependencies": {
         "@deliveryhero/armor": "1.35.0",
