@@ -208,7 +208,6 @@ export const PrimaryIconContainer = styled.div.withConfig(propsBlocker)<
     PrimaryIconContainerPropsType
 >`
     margin-right: ${spacing(4)};
-    margin-top: ${spacing(0.25)};
     min-height: fit-content;
 `;
 
@@ -216,7 +215,6 @@ export const ActionsContainer = styled.div.withConfig(propsBlocker)<
     ActionsContainerPropsType
 >`
     margin-left: ${spacing(2)};
-    margin-top: ${spacing(0.25)};
 `;
 
 export const PrimaryLeadSubtitle = styled.div.withConfig(propsBlocker)<
