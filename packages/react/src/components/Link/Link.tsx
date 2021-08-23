@@ -8,6 +8,9 @@ import { LinkPropsType, LinkRootPropsType } from './type';
 import { LINK_CLASS_PREFIX } from './constants';
 import { useComponentTheme } from '../../utils/hooks';
 
+/**
+ * @armor-docs-component
+ */
 export const Link = forwardRef<HTMLAnchorElement, LinkPropsType>(function Link(
     { className, ...props },
     ref,

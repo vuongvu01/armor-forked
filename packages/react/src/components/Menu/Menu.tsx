@@ -7,6 +7,9 @@ import { MenuRoot } from './style';
 import { MenuPropsType } from './type';
 import { MENU_CLASS_PREFIX } from './constants';
 
+/**
+ * @armor-docs-component
+ */
 export const Menu = forwardRef<HTMLDivElement, MenuPropsType>(function Menu(
     { className, ...restProps },
     ref,

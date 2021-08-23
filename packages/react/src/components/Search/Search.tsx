@@ -18,6 +18,9 @@ import { SearchIcon } from './SearchIcon';
 import { SearchClearAction } from './SearchClearAction';
 import { getScalarPropType } from '../../utils/propTypes';
 
+/**
+ * @armor-docs-component
+ */
 export const Search = forwardRef<HTMLInputElement, SearchPropsType>(
     function Search({ className, ...restProps }, ref) {
         const theme = useComponentTheme(SEARCH_CLASS_PREFIX, searchTheme);

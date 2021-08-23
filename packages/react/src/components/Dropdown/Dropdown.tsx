@@ -21,6 +21,9 @@ import { useTheme } from '../../styling';
 import { DropdownBeforeSection } from './DropdownBeforeSection';
 import { PortalToBody } from '../../system/util/PortalToBody';
 
+/**
+ * @armor-docs-component
+ */
 export const Dropdown = forwardRef<HTMLInputElement, DropdownPropsType>(
     function Dropdown({ className, ...props }, ref) {
         const theme = useTheme().armor;

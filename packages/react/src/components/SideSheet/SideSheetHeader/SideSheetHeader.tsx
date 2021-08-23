@@ -8,12 +8,14 @@ import {
     SideSheetHeaderDescription,
 } from './style';
 import { useComponentTheme } from '../../../utils/hooks';
-import { makeRootClassName } from '../../../utils';
 import { useSideSheetHeader } from './hooks/useSideSheetHeader';
 import { useSideSheetHeaderClassNames } from './hooks/useSideSheetHeaderClassNames';
 
 export const SIDE_SHEET_HEADER_CLASS_PREFIX = 'SideSheetHeader';
 
+/**
+ * @armor-docs-component
+ */
 export const SideSheetHeader: FC<SideSheetHeaderPropsType> = ({
     className,
     ...props

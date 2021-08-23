@@ -7,6 +7,9 @@ import { ListRoot } from './style';
 import { ListPropsType } from './type';
 import { LIST_CLASS_PREFIX } from './constants';
 
+/**
+ * @armor-docs-component
+ */
 export const List = forwardRef<HTMLDivElement, ListPropsType>(function List(
     { className, ...restProps },
     ref,

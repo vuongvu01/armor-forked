@@ -7,21 +7,31 @@ import { MarginAttributesType } from '../../system';
 import { ScalarType } from '../../type';
 
 type PageNavigationPageSizeListItemType = {
+    /** Displayed label of the page size */
     label: ScalarType;
+    /** Actual value of the page size */
     value: number;
 };
 
 /** 👉 PROPS TYPE */
 type PageNavigationEffectivePropsType = Partial<{
+    /** Total item count. This value is needed to calculate the amount of pages, and usually comes from an API endpoint */
     itemCount: number;
+    /** Currently selected page number. Starts from 1 */
     pageNumber: number;
+    /** The amount of page numbers to be displayed to the left and to the right of the currently selected page number */
     displayRange: number;
+    /** Is called when a user navigates to a page number */
     onPageSelect: (pageNumber: number) => void;
 
     // page size
+    /** Defines the size of a page */
     pageSize: number;
+    /** If set to true, enables the page size selector */
     enablePageSizeSelector: boolean;
+    /** A list of page sizes to show in the page size selector */
     pageSizeList: PageNavigationPageSizeListItemType[];
+    /** Is called when a user selects a page size from the list */
     onPageSizeChange: (pageSize: number) => void;
 
     // add other custom properties here

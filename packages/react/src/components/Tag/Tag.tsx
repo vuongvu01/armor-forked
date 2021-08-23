@@ -14,6 +14,9 @@ import {
 } from './style';
 import { useTag } from './utils/useTag';
 
+/**
+ * @armor-docs-component
+ */
 export const Tag = forwardRef<HTMLDivElement, TagPropsType>(function Tag(
     { className, ...restProps },
     ref,

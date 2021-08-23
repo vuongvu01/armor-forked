@@ -2,16 +2,48 @@ import { ThemeType } from '../../styling';
 import { ScalarType } from '../../type';
 
 export type WidthAttributesType = {
+    /**
+     * Sets CSS `width` property of the **.#COMPONENT_NAME#Root** element. If a number is passed, it will be converted to an actual *CSS value* using `spacing()` function
+     * @armor-docs-group width
+     */
     width?: ScalarType;
+    /**
+     * Sets CSS `min-width` property of the **.#COMPONENT_NAME#Root** element. If a number is passed, it will be converted to an actual *CSS value* using `spacing()` function
+     * @armor-docs-group width
+     */
     minWidth?: ScalarType;
+    /**
+     * Sets CSS `max-width` property of the **.#COMPONENT_NAME#Root** element. If a number is passed, it will be converted to an actual *CSS value* using `spacing()` function
+     * @armor-docs-group width
+     */
     maxWidth?: ScalarType;
+    /**
+     * Being set to true, sets CSS `width` of the **.#COMPONENT_NAME#Root** element to *100%*
+     * @armor-docs-group width
+     */
     wide?: boolean;
 };
 
 export type HeightAttributesType = {
+    /**
+     * Sets CSS `height` property of the **.#COMPONENT_NAME#Root** element. If a number is passed, it will be converted to an actual *CSS value* using `spacing()` function
+     * @armor-docs-group height
+     */
     height?: ScalarType;
+    /**
+     * Sets CSS `min-height` property of the **.#COMPONENT_NAME#Root** element. If a number is passed, it will be converted to an actual *CSS value* using `spacing()` function
+     * @armor-docs-group height
+     */
     minHeight?: ScalarType;
+    /**
+     * Sets CSS `max-height` property of the **.#COMPONENT_NAME#Root** element. If a number is passed, it will be converted to an actual *CSS value* using `spacing()` function
+     * @armor-docs-group height
+     */
     maxHeight?: ScalarType;
+    /**
+     * Being set to true, sets CSS `height` of the **.#COMPONENT_NAME#Root** element to *100%*
+     * @armor-docs-group height
+     */
     tall?: boolean;
 };
 

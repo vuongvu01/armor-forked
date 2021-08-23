@@ -5,6 +5,10 @@ import { Placement } from '@popperjs/core';
 type OffsetType = [number, number];
 
 export type PopperPropsType = {
+    /**
+     * Initial placement of the floating dropdown panel
+     * @armor-docs-expand Placement
+     * */
     align?: Placement;
     offset?: [number, number];
     allowedAutoPlacements?: Placement[];

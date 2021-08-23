@@ -11,6 +11,7 @@ type DateRangePickerEffectivePropsType = DatePickerEffectiveGenericPropsType<
 > &
     DatePickerEffectiveCommonPropsType &
     Partial<{
+        /** Allows custom formatting of the range of selected dates, as a drop-in replacement for the standard %d - %d format */
         formatDateTimeRange: (
             startDateTime: string,
             endDateTime: string,

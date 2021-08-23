@@ -23,14 +23,15 @@ type FilterViewerEffectivePropsType = Partial<{
 
     types: Array<FilterBaseConditionType>;
 
-    // initialValue gets applied when they press the "Clear all" button (right now it just dumps everything)
-    // Note that initialValue is not the same as defaultValue, because we can have the filter in the controlled mode,
-    // but we might still be interested in the "initialValue" as well.
+    /** InitialValue gets applied when they press the "Clear all" button (right now it just dumps everything). Note that initialValue is not the same as defaultValue, because we can have the filter in the controlled mode, but we might still be interested in the "initialValue" as well. */
     initialValue: FilterConditionValueType;
+    /** Is called when a user clicks on the "Edit filter" button */
     onFilterOpenButtonClick: () => void;
+    /** If set to true or false, indicates the filter editor to be opened or closed */
     filterOpen: boolean;
-
+    /** If defined, will cause the message about the amount of results to appear */
     resultCount: number;
+    /** If defined, will cause the message about the total amount of results to appear */
     resultTotalCount: number;
 
     // add other custom properties here

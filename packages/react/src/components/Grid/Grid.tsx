@@ -8,6 +8,9 @@ import { GridContext } from './utils/GridContext';
 import { GridRoot } from './style';
 import { useComponentTheme } from '../../utils/hooks';
 
+/**
+ * @armor-docs-component
+ */
 export const Grid = forwardRef<HTMLDivElement, GridPropsType>(function Grid(
     {
         className,

@@ -6,6 +6,9 @@ import { useBadgeClassName } from './utils';
 import { BADGE_CLASS_PREFIX } from './constants';
 import { useComponentTheme } from '../../utils/hooks';
 
+/**
+ * @armor-docs-component
+ */
 export const Badge = forwardRef<HTMLDivElement, BadgePropsType>(function Badge(
     { className, children, ...restProps },
     ref,

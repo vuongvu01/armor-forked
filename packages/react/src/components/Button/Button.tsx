@@ -9,6 +9,9 @@ import { buttonDefaultTheme } from './theme';
 import { BUTTON_CLASS_PREFIX } from './constants';
 import { useButton } from './hooks/useButton';
 
+/**
+ * @armor-docs-component
+ */
 export const Button = forwardRef<HTMLButtonElement, ButtonPropsType>(
     function Button({ className, children, ...props }, ref) {
         const theme = useComponentTheme(

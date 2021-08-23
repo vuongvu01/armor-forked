@@ -7,6 +7,9 @@ import { TableBodyRoot } from './style';
 import { TableBodyPropsType } from './type';
 import { tableBodyRootTestId, TABLE_BODY_CLASS_PREFIX } from './constants';
 
+/**
+ * @armor-docs-component
+ */
 export const TableBody = forwardRef<
     HTMLTableSectionElement,
     TableBodyPropsType

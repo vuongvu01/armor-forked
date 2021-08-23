@@ -7,15 +7,22 @@ import { MarginAttributesType, PaddingAttributesType } from '../../../system';
 
 type MenuElementEffectivePropsType = Partial<{
     tag: string | ComponentType<any>;
+    /** If set to *true*, the MenuElement will be rendered as *primary*. This is the default even if the property is not set */
     primary: boolean;
+    /** If set to *true*, the MenuElement will be rendered as *secondary* */
     secondary: boolean;
+    /** If set to *true*, the MenuElement will be rendered as *tertiary*. */
     tertiary: boolean;
+    /** If set to *true*, the MenuElement will be rendered as *selected* */
     selected: boolean;
+    /** If set to *true*, the MenuElement will be rendered as *small* (with reduced paddings and typography). This property works only if the MenuElement is neither *secondary* nor *tertiary* */
     small: boolean;
     depthLevel: number; // todo: future-reserved
 
     // expanse handle
+    /** If set to *true*, the MenuElement will have an expansion handle (a button with an arrow) on the right */
     enableExpansionHandle: boolean;
+    /** If set to *true*, the MenuElement expansion handle will be rendered as *expanded*. This property takes effect only if **enableExpansionHandle** property is set to *true* */
     expanded: boolean;
     // add other custom properties here
 }> &

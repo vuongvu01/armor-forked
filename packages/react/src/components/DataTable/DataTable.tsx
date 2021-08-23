@@ -29,6 +29,9 @@ import { makeRowClassName } from './utils/makeRowClassName';
 import { ActionSheet } from '../ActionSheet';
 import { DataTableContext } from './DataTableContext';
 
+/**
+ * @armor-docs-component
+ */
 export const DataTable = forwardRef<HTMLDivElement, DataTablePropsType>(
     function DataTable({ className, ...props }, ref) {
         const {
@@ -111,7 +114,6 @@ export const DataTable = forwardRef<HTMLDivElement, DataTablePropsType>(
                                     {enableRowSelection && (
                                         <TableCheckboxCell
                                             {...getSelectAllCheckboxCellProps()}
-                                            theme={theme}
                                         />
                                     )}
                                     {columns.map(column => {
@@ -159,7 +161,6 @@ export const DataTable = forwardRef<HTMLDivElement, DataTablePropsType>(
                                                     {...getSelectRowCheckboxCellProps(
                                                         item.id,
                                                     )}
-                                                    theme={theme}
                                                 />
                                             )}
                                             {columns.map(column => {

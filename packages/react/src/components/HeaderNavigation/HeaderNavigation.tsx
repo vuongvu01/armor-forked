@@ -20,6 +20,9 @@ import { useHeaderNavigationClassName } from './hooks';
 import { HeaderNavigationMenu } from './HeaderNavigationMenu';
 import { HeaderNavigationItem } from './HeaderNavigationItem';
 
+/**
+ * @armor-docs-component
+ */
 export const HeaderNavigation = forwardRef<
     HTMLDivElement,
     HeaderNavigationPropsType

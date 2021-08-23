@@ -7,6 +7,7 @@ import { MarginAttributesType, WidthAttributesType } from '../../system';
 
 /** 👉 PROPS TYPE */
 type ListEffectivePropsType = Partial<{
+    /** If set to *true*, the list font size will be set to 14 otherwise 16 */
     small: boolean;
 }> &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes

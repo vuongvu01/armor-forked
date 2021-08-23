@@ -9,6 +9,9 @@ import { messageActionDefaultTheme } from './theme';
 import { MESSAGE_ACTION_CLASS_PREFIX } from './constants';
 import { ButtonPropsType } from '../../Button/type';
 
+/**
+ * @armor-docs-component
+ */
 export const MessageAction: FunctionComponent<MessageActionPropsType> = ({
     className,
     tag: Tag = 'div',

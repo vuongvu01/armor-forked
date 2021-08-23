@@ -9,6 +9,9 @@ import { DIALOG_CONTENT_CLASS_PREFIX } from './constants';
 
 const CLASS_PREFIX = 'DialogContent';
 
+/**
+ * @armor-docs-component
+ */
 export const DialogContent: FunctionComponent<DialogContentPropsType> = ({
     className,
     children,

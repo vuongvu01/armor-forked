@@ -8,8 +8,12 @@ import {
 
 /** 👉 PROPS TYPE */
 type FormFieldEffectivePropsType = Partial<{
+    /** Being set to true, adds a bottom gutter to separate Form rows from each other */
     enableVerticalOuterSpacing: boolean;
-    /** @deprecated @see enableVerticalOuterSpacing */
+    /**
+     * @deprecated
+     * @see enableVerticalOuterSpacing
+     */
     autoMargin: boolean;
     // add other custom properties here
 }> &

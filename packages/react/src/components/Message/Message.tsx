@@ -18,6 +18,9 @@ import { MessageIconPropsType, MessagePropsType } from './type';
 import { MESSAGE_CLASS_PREFIX } from './constants';
 import { useMessage } from './hooks/useMessage';
 
+/**
+ * @armor-docs-component
+ */
 export const Message = forwardRef<HTMLDivElement, MessagePropsType>(
     function Message({ className, children, ...props }, ref) {
         const theme = useComponentTheme(MESSAGE_CLASS_PREFIX);

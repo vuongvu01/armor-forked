@@ -6,6 +6,9 @@ import { StackPropsType } from './type';
 import { STACK_CLASS_PREFIX, stackRoot } from './constants';
 import { Flex } from '../Flex';
 
+/**
+ * @armor-docs-component
+ */
 export const Stack = forwardRef<HTMLDivElement, StackPropsType>(function Stack(
     { className, reverse, justifyContent, alignItems, flexWrap, ...restProps },
     ref,

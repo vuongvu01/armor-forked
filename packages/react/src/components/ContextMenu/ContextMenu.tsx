@@ -10,6 +10,9 @@ import { CONTEXTMENU_CLASS_PREFIX } from './constants';
 import { MenuElement } from '../Menu';
 import { PortalToBody } from '../../system/util/PortalToBody';
 
+/**
+ * @armor-docs-component
+ */
 export const ContextMenu = forwardRef<HTMLDivElement, ContextMenuPropsType>(
     function ContextMenu({ className, ...props }, ref) {
         const theme = useComponentTheme(CONTEXTMENU_CLASS_PREFIX);

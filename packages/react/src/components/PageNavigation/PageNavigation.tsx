@@ -20,6 +20,9 @@ import {
     pageNavigationPageButtonTestId,
 } from './constants';
 
+/**
+ * @armor-docs-component
+ */
 export const PageNavigation = forwardRef<
     HTMLDivElement,
     PageNavigationPropsType

@@ -8,6 +8,9 @@ import { ACCORDION_CONTENT_CLASS_PREFIX, accordionContent } from '../constants';
 import AccordionContext from '../AccordionContext';
 import useAccordionContentClassName from './hooks/useAccordionContentClassName';
 
+/**
+ * @armor-docs-component
+ */
 export const AccordionContent = forwardRef<
     HTMLDivElement,
     AccordionContentPropsType

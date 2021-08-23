@@ -7,6 +7,9 @@ import { ContainerRoot } from './style';
 import { ContainerPropsType } from './type';
 import { CONTAINER_CLASS_PREFIX } from './constants';
 
+/**
+ * @armor-docs-component
+ */
 export const Container = forwardRef<HTMLDivElement, ContainerPropsType>(
     function Container({ className, children, ...restProps }, ref) {
         const theme = useComponentTheme(CONTAINER_CLASS_PREFIX);

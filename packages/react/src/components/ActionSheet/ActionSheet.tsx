@@ -9,6 +9,9 @@ import { ACTIONSHEET_CLASS_PREFIX } from './constants';
 
 import { useComponentTheme } from '../../utils/hooks';
 
+/**
+ * @armor-docs-component
+ */
 export const ActionSheet = forwardRef<HTMLDivElement, ActionSheetPropsType>(
     function ActionSheet({ className, children, ...props }, ref) {
         const theme = useComponentTheme(ACTIONSHEET_CLASS_PREFIX);

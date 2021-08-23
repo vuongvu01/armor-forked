@@ -14,9 +14,13 @@ type TooltipEffectivePropsType = Partial<{
     error: boolean;
     small: boolean;
     content: ReactNode;
+    /** Accepts an element as a trigger for the context menu. The element will be cloned and rendered in-place */
     trigger: ReactElement;
 
-    /** @deprecated */
+    /**
+     * Gets called when the open/close state is changed
+     * @deprecated
+     * */
     onToggle: (open: boolean) => void;
 
     // add other custom properties here

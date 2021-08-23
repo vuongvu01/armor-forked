@@ -12,6 +12,9 @@ import {
 import { TableExpandableSectionPropsType } from './type';
 import { TABLE_EXPANDABLE_SECTION_CLASS_PREFIX } from './constants';
 
+/**
+ * @armor-docs-component
+ */
 export const TableExpandableSection = forwardRef<
     HTMLTableRowElement,
     TableExpandableSectionPropsType

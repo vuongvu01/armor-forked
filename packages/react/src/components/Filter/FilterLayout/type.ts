@@ -10,7 +10,9 @@ type FilterLayoutEffectivePropsType = Partial<{
     filterOpen: boolean;
     onFilterOpenChange: (newState: boolean) => void;
     defaultFilterOpen: boolean;
+    /** An instance of the <FilterEditor /> component */
     filterEditor: ReactChild;
+    /** If set to "sideSheet", the FilterEditor will be displayed in a SideSheet on the right */
     filterEditorPlacement: 'sideSheet' | 'default';
     // add other custom properties here
 }> &

@@ -9,6 +9,9 @@ import { FILEUPLOADBUTTON_CLASS_PREFIX } from './constants';
 import { useComponentTheme } from '../../utils/hooks';
 import { Button } from '../Button';
 
+/**
+ * @armor-docs-component
+ */
 export const FileUploadButton = forwardRef<
     HTMLInputElement,
     FileUploadButtonPropsType

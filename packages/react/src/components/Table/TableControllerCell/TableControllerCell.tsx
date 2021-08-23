@@ -14,6 +14,9 @@ import { TableControllerCellPropsType } from './type';
 import { TABLE_CONTROLLER_CELL_CLASS_PREFIX } from './constants';
 import { getScalarPropType } from '../../../utils/propTypes';
 
+/**
+ * @armor-docs-component
+ */
 export const TableControllerCell = forwardRef<
     HTMLTableCellElement,
     TableControllerCellPropsType

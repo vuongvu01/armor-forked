@@ -11,6 +11,9 @@ import { radioDefaultTheme } from './theme';
 import { generateId } from '../../utils';
 import { RADIO_CLASS_PREFIX, radioIdPrefix, radioRoot } from './constants';
 
+/**
+ * @armor-docs-component
+ */
 export const Radio = forwardRef<HTMLDivElement, RadioPropsType>(function Radio(
     {
         checked,

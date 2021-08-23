@@ -9,6 +9,9 @@ import { FormFieldMessagePropsType } from './type';
 import { formFieldMessageDefaultTheme } from './theme';
 import { FORM_FIELD_MESSAGE_CLASS_PREFIX } from './constants';
 
+/**
+ * @armor-docs-component
+ */
 export const FormFieldMessage = forwardRef<
     HTMLDivElement,
     FormFieldMessagePropsType

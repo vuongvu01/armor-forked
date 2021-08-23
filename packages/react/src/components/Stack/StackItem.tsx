@@ -6,6 +6,9 @@ import { StackItemPropsType } from './type';
 import { STACK_ITEM_CLASS_PREFIX, stackItemRoot } from './constants';
 import { FlexItem } from '../Flex';
 
+/**
+ * @armor-docs-component
+ */
 export const StackItem = forwardRef<HTMLDivElement, StackItemPropsType>(
     function StackItem(
         {

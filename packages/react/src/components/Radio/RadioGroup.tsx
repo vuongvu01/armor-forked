@@ -6,6 +6,9 @@ import { extendChildrenWithProps } from './utils';
 
 export const RADIO_GROUP_CLASS_PREFIX = 'RadioGroup';
 
+/**
+ * @armor-docs-component
+ */
 export const RadioGroup: FunctionComponent<RadioGroupPropsType> = ({
     children,
     name,

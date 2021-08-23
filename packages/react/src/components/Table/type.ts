@@ -27,10 +27,10 @@ export type TableStickyColumnsMapInternal = TableStickyColumnMapInternalItem[];
 
 /** 👉 PROPS TYPE */
 export type TableEffectivePropsType = Partial<{
-    horizontalScroll?: boolean;
-    stickyColumns?: TableStickyColumnsMap;
-    stickyHead?: boolean;
-    enableFixedLayout?: boolean;
+    horizontalScroll: boolean;
+    stickyColumns: TableStickyColumnsMap;
+    stickyHead: boolean;
+    enableFixedLayout: boolean;
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLTableElement> & // includes all HTML Table attributes

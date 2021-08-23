@@ -14,6 +14,9 @@ import { DIALOG_TITLE_CLASS_PREFIX, dialogTitleText } from './constants';
 
 const CLASS_PREFIX = 'DialogTitle';
 
+/**
+ * @armor-docs-component
+ */
 export const DialogTitle: FunctionComponent<DialogTitlePropsType> = ({
     className,
     children,

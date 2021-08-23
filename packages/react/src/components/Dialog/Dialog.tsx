@@ -20,6 +20,9 @@ import {
 import { useDialog } from './hooks/useDialog';
 import { PortalToBody } from '../../system/util/PortalToBody';
 
+/**
+ * @armor-docs-component
+ */
 export const Dialog = forwardRef<HTMLDivElement, DialogPropsType>(
     function Dialog({ className, children, ...props }, ref) {
         const theme = useComponentTheme(DIALOG_CLASS_PREFIX);

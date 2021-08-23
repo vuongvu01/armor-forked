@@ -13,6 +13,9 @@ import { MenuElementPropsType } from './type';
 import { MENU_ELEMENT_CLASS_PREFIX } from './constants';
 import { useMenuElement } from './hooks/useMenuElement';
 
+/**
+ * @armor-docs-component
+ */
 export const MenuElement = forwardRef<HTMLDivElement, MenuElementPropsType>(
     function MenuElement({ className, children, ...props }, ref) {
         const theme = useComponentTheme(MENU_ELEMENT_CLASS_PREFIX);

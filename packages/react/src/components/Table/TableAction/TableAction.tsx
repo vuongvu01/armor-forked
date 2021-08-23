@@ -8,6 +8,9 @@ import { TableActionPropsType } from './type';
 import { tableActionDefaultTheme } from './theme';
 import { tableActionRootTestId, TABLE_ACTION_CLASS_PREFIX } from './constants';
 
+/**
+ * @armor-docs-component
+ */
 export const TableAction = forwardRef<HTMLDivElement, TableActionPropsType>(
     function TableAction({ className, ...restProps }, ref) {
         const theme = useComponentTheme(

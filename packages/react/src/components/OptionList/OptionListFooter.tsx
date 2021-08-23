@@ -38,14 +38,12 @@ export const OptionListFooter: FunctionComponent<OptionListFooterPropsType> = ({
                         tertiary
                         paddingX={1}
                         {...footerCancelButtonProps}
-                        theme={theme}
                         className={classOverride.CancelButton}
                     >
                         Cancel
                     </Button>
                     <Button
                         {...footerConfirmButtonProps}
-                        theme={theme}
                         className={classOverride.ConfirmButton}
                     >
                         Confirm

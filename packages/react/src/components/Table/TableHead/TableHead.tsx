@@ -11,6 +11,9 @@ import { tableHeadDefaultTheme } from './theme';
 import { tableHeadRootTestId, TABLE_HEAD_CLASS_PREFIX } from './constants';
 import { useTableHead } from './hooks/useTableHead';
 
+/**
+ * @armor-docs-component
+ */
 export const TableHead = forwardRef<
     HTMLTableSectionElement,
     TableHeadPropsType

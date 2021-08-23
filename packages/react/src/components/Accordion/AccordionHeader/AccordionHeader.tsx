@@ -22,6 +22,9 @@ import useAccordionHeaderClassName from './hooks/useAccordionHeaderClassName';
 import { getWindow } from '../../../system/util/globals';
 import { useRootRef } from '../../../system';
 
+/**
+ * @armor-docs-component
+ */
 export const AccordionHeader = forwardRef<
     HTMLDivElement,
     AccordionHeaderPropsType

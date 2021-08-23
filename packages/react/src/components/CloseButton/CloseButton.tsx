@@ -6,6 +6,9 @@ import { useCloseButtonClassName } from './hooks/useCloseButtonClassName';
 import { CLOSE_BUTTON_CLASS_PREFIX } from './constants';
 import { CloseButtonIcon, CloseButtonRoot } from './style';
 
+/**
+ * @armor-docs-component
+ */
 export const CloseButton = forwardRef<
     HTMLDivElement,
     CloseButtonEffectivePropsType

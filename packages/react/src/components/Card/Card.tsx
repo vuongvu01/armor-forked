@@ -7,6 +7,9 @@ import { CardRoot } from './style';
 import { CardPropsType } from './type';
 import { CARD_CLASS_PREFIX } from './constants';
 
+/**
+ * @armor-docs-component
+ */
 export const Card = forwardRef<HTMLDivElement, CardPropsType>(function Card(
     { className, ...restProps },
     ref,

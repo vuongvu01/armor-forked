@@ -1,8 +1,6 @@
 import { ThemeType } from '../styling';
 
-export type ComponentStylePropsType = {
-    theme?: ThemeType;
-};
+export type ComponentStylePropsType = {};
 
 export type ComponentElementStylePropsType = {
     className: string;
