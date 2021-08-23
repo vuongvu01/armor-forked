@@ -7,7 +7,9 @@ import { MarginAttributesType } from '../../system';
 
 /** 👉 PROPS TYPE */
 type IconButtonEffectivePropsType = Partial<{
+    /** Being set to true, renders the component with a slightly different colors. Only applicable in the default theme */
     light: boolean;
+    /** Being set to false, renders the component as invisible */
     visible: boolean;
     // add other custom properties here
 }> &

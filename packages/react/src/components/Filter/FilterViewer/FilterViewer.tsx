@@ -20,6 +20,9 @@ import { Button } from '../../Button';
 import { pluralize } from '../../../system/util/pluralize';
 import { ConditionTag } from '../../ConditionTag';
 
+/**
+ * @armor-docs-component
+ */
 export const FilterViewer = forwardRef<HTMLDivElement, FilterViewerPropsType>(
     function FilterViewer({ className, ...props }, ref) {
         const theme = useComponentTheme(FILTER_VIEWER_CLASS_PREFIX);

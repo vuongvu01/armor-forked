@@ -11,6 +11,9 @@ import {
     TABLE_CELL_LABEL_CLASS_PREFIX,
 } from './constants';
 
+/**
+ * @armor-docs-component
+ */
 export const TableCellLabel = forwardRef<
     HTMLDivElement,
     TableCellLabelPropsType

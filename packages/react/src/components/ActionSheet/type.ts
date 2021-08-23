@@ -7,7 +7,8 @@ import { MarginAttributesType, WidthAttributesType } from '../../system';
 
 /** 👉 PROPS TYPE */
 type ActionSheetEffectivePropsType = Partial<{
-    label?: ReactChild;
+    /** Sets the title in left portion of the ActionSheet */
+    label: ReactChild;
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes

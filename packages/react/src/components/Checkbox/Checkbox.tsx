@@ -11,6 +11,9 @@ import { generateId } from '../../utils';
 import { CHECKBOX_CLASS_PREFIX, checkboxIdPrefix } from './constants';
 import { RefType } from '../../type';
 
+/**
+ * @armor-docs-component
+ */
 export const Checkbox = forwardRef<
     HTMLLabelElement | HTMLInputElement,
     CheckboxPropsType

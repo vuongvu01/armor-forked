@@ -18,6 +18,9 @@ import { PortalToBody } from '../../system/util/PortalToBody';
 import { useSideSheet } from './hooks/useSideSheet';
 import { extendChildrenWithProps, extractContentSections } from './utils';
 
+/**
+ * @armor-docs-component
+ */
 export const SideSheet = forwardRef<HTMLDivElement, SideSheetPropsType>(
     function SideSheet({ className, children, ...props }, ref) {
         const theme = useComponentTheme(SIDE_SHEET_CLASS_PREFIX);
@@ -65,7 +68,6 @@ export const SideSheet = forwardRef<HTMLDivElement, SideSheetPropsType>(
                         <Backdrop
                             {...getBackdropProps()}
                             className={classOverride.Backdrop}
-                            theme={theme}
                         />
                     )}
                     <SideSheetWindow

@@ -19,6 +19,9 @@ import {
 } from './constants';
 import { TableCellLabel } from '../TableCellLabel';
 
+/**
+ * @armor-docs-component
+ */
 export const TableHeadCell = forwardRef<
     HTMLTableCellElement,
     TableHeadCellPropsType

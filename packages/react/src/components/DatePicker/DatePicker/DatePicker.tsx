@@ -21,6 +21,9 @@ import { DatePickerDaySelector } from '../DatePickerDaySelector';
 import { DatePickerTopBar } from '../DatePickerTopBar';
 import { useComponentTheme } from '../../../utils/hooks';
 
+/**
+ * @armor-docs-component
+ */
 export const DatePicker = forwardRef<HTMLDivElement, DatePickerPropsType>(
     function DatePicker({ className, ...props }, ref) {
         const theme = useComponentTheme(DATE_PICKER_CLASS_PREFIX);

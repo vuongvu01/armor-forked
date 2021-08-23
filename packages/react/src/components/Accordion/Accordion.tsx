@@ -16,6 +16,9 @@ import { accordionDefaultTheme } from './theme';
 import { ACCORDION_CLASS_PREFIX, accordionRoot } from './constants';
 import AccordionContext from './AccordionContext';
 
+/**
+ * @armor-docs-component
+ */
 export const Accordion = forwardRef<HTMLDivElement, AccordionPropsType>(
     function Accordion(
         {
@@ -23,7 +26,7 @@ export const Accordion = forwardRef<HTMLDivElement, AccordionPropsType>(
             className,
             disabled,
             expanded,
-            defaultExpanded = false,
+            defaultExpanded,
             onToggle,
             ...restProps
         },

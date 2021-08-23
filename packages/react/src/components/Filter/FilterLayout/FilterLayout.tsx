@@ -22,6 +22,9 @@ import { FilterEditorSettingsContextProvider } from '../FilterEditor/utils/Filte
 import { FilterEditorActions } from '../FilterEditorActions';
 import { FilterEditorHeader } from '../FilterEditorHeader';
 
+/**
+ * @armor-docs-component
+ */
 export const FilterLayout = forwardRef<HTMLDivElement, FilterLayoutPropsType>(
     function FilterLayout({ className, children, ...props }, ref) {
         const theme = useComponentTheme(FILTER_LAYOUT_CLASS_PREFIX);

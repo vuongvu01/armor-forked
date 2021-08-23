@@ -7,6 +7,9 @@ import { TabViewRoot } from './style';
 import { TAB_VIEW_CLASS_PREFIX } from './constants';
 import { makeRootClassName } from '../../utils';
 
+/**
+ * @armor-docs-component
+ */
 export const TabView: FC<TabViewPropsType> = ({
     children,
     value,

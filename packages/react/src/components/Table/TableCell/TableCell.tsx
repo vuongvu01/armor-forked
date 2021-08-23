@@ -8,6 +8,9 @@ import { TableCellPropsType, TableCellRootPropsType } from './type';
 import { TABLE_CELL_CLASS_PREFIX } from './constants';
 import { useTableCell } from './hooks/useTableCell';
 
+/**
+ * @armor-docs-component
+ */
 export const TableCell = forwardRef<HTMLTableCellElement, TableCellPropsType>(
     function TableCell({ className, children, ...props }, ref) {
         const theme = useComponentTheme(TABLE_CELL_CLASS_PREFIX);

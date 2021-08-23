@@ -5,6 +5,7 @@ import {
 import { TooltipPropsType } from '../../Tooltip/type';
 
 type FormFieldTooltipEffectivePropsType = Partial<{
+    /** If set to true, shows the tooltip */
     visible: boolean;
     // add other custom properties here
 }> &

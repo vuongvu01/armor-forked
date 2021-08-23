@@ -63,6 +63,16 @@ jobs:
               run: yarn run build
               env:
                   GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
+            - name: Install (props-parser)
+              working-directory: ./packages/props-parser
+              run: yarn install
+              env:
+                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
+            - name: Build (props-parser)
+              working-directory: ./packages/props-parser
+              run: yarn run build
+              env:
+                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
             - name: Publish
               run: yarn multi-semantic-release
               env:

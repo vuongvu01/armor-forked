@@ -6,6 +6,9 @@ import { PackPropsType } from './type';
 import { PACK_CLASS_PREFIX, packRoot } from './constants';
 import { Flex } from '../Flex';
 
+/**
+ * @armor-docs-component
+ */
 export const Pack = forwardRef<HTMLDivElement, PackPropsType>(function Pack(
     { className, reverse, justifyContent, alignItems, flexWrap, ...restProps },
     ref,

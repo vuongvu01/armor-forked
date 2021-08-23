@@ -101,6 +101,9 @@ const renderMenuElement = (
     );
 };
 
+/**
+ * @armor-docs-component
+ */
 export const Navigation = forwardRef<HTMLDivElement, NavigationPropsType>(
     function Navigation(
         {

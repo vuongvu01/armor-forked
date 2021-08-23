@@ -9,6 +9,9 @@ import { DIALOG_ACTIONS_CLASS_PREFIX } from './constants';
 
 const CLASS_PREFIX = 'DialogActions';
 
+/**
+ * @armor-docs-component
+ */
 export const DialogActions: FunctionComponent<DialogActionsPropsType> = ({
     className,
     ...restProps

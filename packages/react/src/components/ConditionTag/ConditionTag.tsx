@@ -19,6 +19,9 @@ import { CONDITION_TAG_CLASS_PREFIX } from './constants';
 import { useComponentTheme } from '../../utils/hooks';
 import { Tooltip } from '../Tooltip';
 
+/**
+ * @armor-docs-component
+ */
 export const ConditionTag = forwardRef<HTMLDivElement, ConditionTagPropsType>(
     function ConditionTag({ className, ...props }, ref) {
         const theme = useComponentTheme(CONDITION_TAG_CLASS_PREFIX);

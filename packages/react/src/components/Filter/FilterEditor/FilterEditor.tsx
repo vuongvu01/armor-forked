@@ -12,6 +12,9 @@ import { getDefaultConditionRenderer } from './utils/getDefaultConditionRenderer
 import { FilterEditorActions } from '../FilterEditorActions';
 import { FilterEditorHeader } from '../FilterEditorHeader';
 
+/**
+ * @armor-docs-component
+ */
 export const FilterEditor = forwardRef<HTMLDivElement, FilterEditorPropsType>(
     function FilterEditor({ className, ...props }, ref: Ref<HTMLDivElement>) {
         const theme = useComponentTheme(FILTER_EDITOR_CLASS_PREFIX);

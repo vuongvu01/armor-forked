@@ -7,6 +7,9 @@ import { FLEX_ITEM_CLASS_PREFIX, flexItemRoot } from './constants';
 import { FlexItemRoot } from './style';
 import { useTheme } from '../../styling';
 
+/**
+ * @armor-docs-component
+ */
 export const FlexItem = forwardRef<HTMLDivElement, FlexItemPropsType>(
     function FlexItem(
         {

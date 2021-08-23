@@ -8,6 +8,9 @@ import { GridContext } from '../utils/GridContext';
 import { GridItemRoot } from './style';
 import { useComponentTheme } from '../../../utils/hooks';
 
+/**
+ * @armor-docs-component
+ */
 export const GridItem = forwardRef<HTMLDivElement, GridItemPropsType>(
     function GridItem({ className, ...restProps }, ref) {
         const theme = useComponentTheme(GRID_ITEM_CLASS_PREFIX);

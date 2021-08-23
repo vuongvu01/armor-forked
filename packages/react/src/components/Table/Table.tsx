@@ -10,6 +10,9 @@ import { tableRootTestId, TABLE_CLASS_PREFIX } from './constants';
 import { TableContext } from './utils/TableContext';
 import { useTable } from './hooks/useTable';
 
+/**
+ * @armor-docs-component
+ */
 export const Table = forwardRef<HTMLTableElement, TablePropsType>(
     function Table(
         { className, stickyColumns, stickyHead, ...restProps },

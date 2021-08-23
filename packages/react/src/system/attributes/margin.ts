@@ -2,12 +2,33 @@ import { ThemeType } from '../../styling';
 import { ScalarType } from '../../type';
 
 export type MarginAttributesType = {
+    /**
+     * @armor-docs-group margin
+     */
     margin?: ScalarType;
+    /**
+     * @armor-docs-group margin
+     */
     marginTop?: ScalarType;
+    /**
+     * @armor-docs-group margin
+     */
     marginBottom?: ScalarType;
+    /**
+     * @armor-docs-group margin
+     */
     marginLeft?: ScalarType;
+    /**
+     * @armor-docs-group margin
+     */
     marginRight?: ScalarType;
-    marginX?: ScalarType; // TODO (nmelnikov 2020-07-17): may be we should consider renaming these as marginHorizontal and marginVertical
+    /**
+     * @armor-docs-group margin
+     */
+    marginX?: ScalarType;
+    /**
+     * @armor-docs-group margin
+     */
     marginY?: ScalarType;
 };
 

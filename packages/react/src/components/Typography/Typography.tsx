@@ -9,6 +9,9 @@ import { typographyDefaultTheme } from './theme';
 import { TYPOGRAPHY_CLASS_PREFIX } from './constants';
 import { useTypography } from './hooks/useTypography';
 
+/**
+ * @armor-docs-component
+ */
 export const Typography = forwardRef<HTMLDivElement, TypographyPropsType>(
     function Typography({ className, children, ...props }, ref) {
         const theme = useComponentTheme(

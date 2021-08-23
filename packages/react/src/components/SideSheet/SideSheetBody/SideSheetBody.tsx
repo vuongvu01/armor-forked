@@ -9,6 +9,9 @@ import { makeRootClassName } from '../../../utils';
 
 export const SIDE_SHEET_BODY_CLASS_PREFIX = 'SideSheetBody';
 
+/**
+ * @armor-docs-component
+ */
 export const SideSheetBody: FunctionComponent<SideSheetBodyPropsType> = ({
     children,
     isFixed,

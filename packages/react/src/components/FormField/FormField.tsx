@@ -9,6 +9,9 @@ import { formFieldDefaultTheme } from './theme';
 import { FORM_FIELD_CLASS_PREFIX } from './constants';
 import { getCompatiblePropValue } from '../../utils/getCompatiblePropValue';
 
+/**
+ * @armor-docs-component
+ */
 export const FormField = forwardRef<HTMLDivElement, FormFieldPropsType>(
     function FormField(
         { className, autoMargin, enableVerticalOuterSpacing, ...restProps },

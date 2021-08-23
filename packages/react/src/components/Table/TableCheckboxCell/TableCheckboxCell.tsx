@@ -7,6 +7,9 @@ import { TABLE_CHECKBOX_CELL_CLASS_PREFIX } from './constants';
 import { useComponentTheme } from '../../../utils/hooks';
 import { useTableCheckboxCell } from './hooks/useTableCheckboxCell';
 
+/**
+ * @armor-docs-component
+ */
 export const TableCheckboxCell = forwardRef<
     HTMLTableCellElement,
     TableCheckboxCellPropsType

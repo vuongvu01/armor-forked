@@ -10,6 +10,9 @@ import { switchDefaultTheme } from './theme';
 import { generateId } from '../../utils';
 import { SWITCH_CLASS_PREFIX, switchIdPrefix } from './constants';
 
+/**
+ * @armor-docs-component
+ */
 export const Switch = forwardRef<HTMLInputElement, SwitchPropsType>(
     function Switch(
         {

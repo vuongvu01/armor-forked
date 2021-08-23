@@ -9,6 +9,9 @@ import { tabDefaultTheme } from './theme';
 import { TAB_CLASS_PREFIX } from './constants';
 import { useTab } from './hooks/useTab';
 
+/**
+ * @armor-docs-component
+ */
 export const Tab = forwardRef<HTMLDivElement, TabPropsType>(function Tab(
     { className, ...restProps },
     ref,

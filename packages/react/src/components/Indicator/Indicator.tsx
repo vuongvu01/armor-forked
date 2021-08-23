@@ -8,6 +8,9 @@ import { IndicatorPropsType } from './type';
 import { indicatorDefaultTheme } from './theme';
 import { INDICATOR_CLASS_PREFIX } from './constants';
 
+/**
+ * @armor-docs-component
+ */
 export const Indicator = forwardRef<HTMLDivElement, IndicatorPropsType>(
     function Indicator({ className, ...restProps }, ref) {
         const theme = useComponentTheme(

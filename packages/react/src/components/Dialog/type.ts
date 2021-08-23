@@ -12,19 +12,41 @@ import { ComponentBehaviourModalDialogType } from '../../system/types/ComponentB
 
 /** 👉 PROPS TYPE */
 type DialogEffectivePropsType = Partial<{
+    /** Regulates whether the body of a Dialog or a document window receives scroll when there is content overflow in the Dialog */
     scroll: ScrollType;
 
-    /** @deprecated @see enableBackdrop */
+    /**
+     * An opposite alias for **enableBackdrop**
+     * @deprecated
+     * @see enableBackdrop
+     * */
     disableOverlay: boolean;
-    /** @deprecated @see enableEffects */
+    /**
+     * An opposite alias for **enableEffects**
+     * @deprecated @see enableEffects
+     * */
     disableEffects: boolean;
-    /** @deprecated @see enableCloseButton */
+    /**
+     * An opposite alias for **enableCloseButton**
+     * @deprecated
+     * @see enableCloseButton
+     * */
     disableCloseButton: boolean;
-    /** @deprecated @see enableCloseByEscape */
+    /**
+     * An opposite alias for **enableCloseByEscape**
+     * @deprecated
+     * @see enableCloseByEscape */
     disableCloseByEscape: boolean;
-    /** @deprecated @see onOpenChange */
+    /**
+     * Is called when the dialog gets closed
+     * @deprecated
+     * @see onOpenChange
+     * */
     onClose: () => void;
-    /** @deprecated */
+    /**
+     * Is called when the dialog close button gets clicked
+     * @deprecated
+     * */
     onCloseButtonClick?: (event: MouseEvent<HTMLDivElement>) => void;
 
     // add other custom properties here

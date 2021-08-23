@@ -7,6 +7,9 @@ export type CheckedIconType = 'tick' | 'dash';
 
 /** 👉 PROPS TYPE */
 type CheckboxEffectivePropsType = Partial<{
+    /**
+     * @armor-docs-expand CheckedIconType
+     */
     checkedIcon: CheckedIconType;
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     error: boolean;

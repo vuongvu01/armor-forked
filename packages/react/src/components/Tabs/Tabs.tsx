@@ -10,6 +10,9 @@ import { TABS_CLASS_PREFIX } from './constants';
 import TabsContext from './TabsContext';
 import { useTabs } from './hooks/useTabs';
 
+/**
+ * @armor-docs-component
+ */
 export const Tabs = forwardRef<HTMLDivElement, TabsPropsType>(function Tabs(
     { className, ...restProps },
     ref,

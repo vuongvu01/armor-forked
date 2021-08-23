@@ -7,6 +7,9 @@ import { BoxPropsType } from './type';
 import { BOX_CLASS_PREFIX } from './constants';
 import { useBoxClassName } from './utils/useBoxClassName';
 
+/**
+ * @armor-docs-component
+ */
 export const Box: FunctionComponent<BoxPropsType> = ({
     className,
     ...restProps

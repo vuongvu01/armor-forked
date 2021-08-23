@@ -10,6 +10,9 @@ import { TOOLTIP_CLASS_PREFIX } from './constants';
 import { useTooltip } from './hooks/useTooltip';
 import { PortalToBody } from '../../system/util/PortalToBody';
 
+/**
+ * @armor-docs-component
+ */
 export const Tooltip = forwardRef<HTMLDivElement, TooltipPropsType>(
     function Tooltip({ className, ...props }, ref) {
         const theme = useComponentTheme(

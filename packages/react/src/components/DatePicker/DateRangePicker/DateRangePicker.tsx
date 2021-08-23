@@ -21,6 +21,9 @@ import { DatePickerTopBar } from '../DatePickerTopBar';
 import { DatePickerTimeSelector } from '../DatePickerTimeSelector';
 import { useComponentTheme } from '../../../utils/hooks';
 
+/**
+ * @armor-docs-component
+ */
 export const DateRangePicker = forwardRef<
     HTMLDivElement,
     DateRangePickerPropsType

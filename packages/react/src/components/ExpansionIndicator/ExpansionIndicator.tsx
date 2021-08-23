@@ -15,6 +15,9 @@ import {
 } from './constants';
 import { useTheme } from '../../styling';
 
+/**
+ * @armor-docs-component
+ */
 export const ExpansionIndicator: FunctionComponent<ExpansionIndicatorEffectivePropsType> = ({
     className,
     disabled,

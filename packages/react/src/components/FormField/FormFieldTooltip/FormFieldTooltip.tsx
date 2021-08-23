@@ -8,6 +8,9 @@ import { FormFieldTooltipPropsType } from './type';
 import { formFieldTooltipDefaultTheme } from './theme';
 import { FORM_FIELD_TOOLTIP_CLASS_PREFIX } from './constants';
 
+/**
+ * @armor-docs-component
+ */
 export const FormFieldTooltip = forwardRef<
     HTMLDivElement,
     FormFieldTooltipPropsType

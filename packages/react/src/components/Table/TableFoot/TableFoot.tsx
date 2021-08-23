@@ -9,6 +9,9 @@ import { TableFootRoot } from './style';
 import { TableFootPropsType } from './type';
 import { tableFootRootTestId, TABLE_FOOT_CLASS_PREFIX } from './constants';
 
+/**
+ * @armor-docs-component
+ */
 export const TableFoot = forwardRef<
     HTMLTableSectionElement,
     TableFootPropsType

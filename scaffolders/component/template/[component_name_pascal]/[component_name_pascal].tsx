@@ -10,6 +10,9 @@ import {
 } from './constants';
 import { useComponentTheme } from '../../utils/hooks';
 
+/**
+ * @armor-docs-component
+ */
 export const <%- component_name_pascal %> = forwardRef<
     HTMLDivElement,
     <%- component_name_pascal %>PropsType

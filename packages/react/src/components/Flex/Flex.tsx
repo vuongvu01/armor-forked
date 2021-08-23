@@ -7,6 +7,9 @@ import { FLEX_CLASS_PREFIX, flexRoot } from './constants';
 import { FlexRoot } from './style';
 import { useComponentTheme } from '../../utils/hooks';
 
+/**
+ * @armor-docs-component
+ */
 export const Flex = forwardRef<HTMLDivElement, FlexPropsType>(function Flex(
     {
         className,

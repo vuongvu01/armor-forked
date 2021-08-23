@@ -8,6 +8,9 @@ import { DividerPropsType } from './type';
 import { DIVIDER_CLASS_PREFIX } from './constants';
 import { useComponentTheme } from '../../utils/hooks';
 
+/**
+ * @armor-docs-component
+ */
 export const Divider = forwardRef<HTMLDivElement, DividerPropsType>(
     function Divider({ className, children, ...props }, ref) {
         const theme = useComponentTheme(DIVIDER_CLASS_PREFIX);

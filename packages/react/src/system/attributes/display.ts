@@ -1,4 +1,7 @@
 export type DisplayAttributesType = {
+    /**
+     * @armor-docs-group display
+     */
     display?:
         | 'initial'
         | 'inherit'

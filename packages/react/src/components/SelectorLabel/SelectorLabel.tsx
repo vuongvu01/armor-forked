@@ -41,7 +41,6 @@ export const SelectorLabel: FC<SelectorLabelEffectivePropsType> = ({
                     disabled={disabled}
                     error={error}
                     margin={0}
-                    theme={theme}
                     tag="div"
                     {...typographyProps}
                 >

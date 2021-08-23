@@ -7,6 +7,9 @@ import { IconButtonRoot } from './style';
 import { IconButtonPropsType } from './type';
 import { ICON_BUTTON_CLASS_PREFIX } from './constants';
 
+/**
+ * @armor-docs-component
+ */
 export const IconButton = forwardRef<HTMLButtonElement, IconButtonPropsType>(
     function IconButton({ className, ...restProps }, ref) {
         const theme = useComponentTheme(ICON_BUTTON_CLASS_PREFIX);

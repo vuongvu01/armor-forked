@@ -17,6 +17,9 @@ import { LIST_ITEM_CLASS_PREFIX } from './contants';
 import { useComponentTheme } from '../../../utils/hooks';
 import { PrimaryIconWrapper } from '../PrimaryIconWrapper/PrimaryIconWrapper';
 
+/**
+ * @armor-docs-component
+ */
 export const ListItem = forwardRef<HTMLDivElement, ListItemPropsType>(
     function ListItem({ className, ...props }, ref) {
         const theme = useComponentTheme(LIST_ITEM_CLASS_PREFIX);
@@ -68,7 +71,6 @@ export const ListItem = forwardRef<HTMLDivElement, ListItemPropsType>(
                                     ) : (
                                         <PrimaryIconWrapper
                                             {...primaryIconWrapperProps}
-                                            theme={theme}
                                             className={
                                                 classNames.PrimaryIconWrapper
                                             }
