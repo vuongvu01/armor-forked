@@ -22,7 +22,8 @@
     "workspaces": [
         "packages/react",
         "packages/icons",
-        "packages/vendors"
+        "packages/vendors",
+        "packages/props-parser"
     ],
     "husky": {
         "hooks": {
