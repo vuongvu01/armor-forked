@@ -204,10 +204,14 @@ const allowedEventProps = {
 
 export const propsBlocker = {
     shouldForwardProp: (
-        propName: ReactText | boolean,
+        propName: string | number | boolean,
         // todo: tighten this any
         validate: (propName: any) => boolean,
     ) => {
+        if (typeof propName !== 'string') {
+            return false;
+        }
+
         if (propName in forbiddenProps) {
             return false;
         }
