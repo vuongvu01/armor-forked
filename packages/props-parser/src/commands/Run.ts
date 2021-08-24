@@ -127,6 +127,6 @@ export class Run implements CommandInstance {
             console.log(data);
         }
 
-        d('Executed successfully');
+        d('Executed successfully.');
     }
 }
