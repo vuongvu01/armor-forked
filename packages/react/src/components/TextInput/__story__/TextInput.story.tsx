@@ -823,3 +823,7 @@ export const TypeTime = () => {
         </>
     );
 };
+
+export const Uncontrolled = () => {
+    return <TextInput label="foo" defaultValue="Hz" />;
+};
