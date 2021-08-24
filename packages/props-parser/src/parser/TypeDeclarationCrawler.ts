@@ -298,7 +298,7 @@ export class TypeDeclarationCrawler {
         }
 
         if (file.isLocalTypeName(typeAliasName)) {
-            d(`The ${typeAliasName} was found in the same file`);
+            d(`The ${typeAliasName} was found locally in ${file.absolutePath}`);
             // defined in the same file
             result.node = file.typeAliases[typeAliasName];
             return result;
