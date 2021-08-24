@@ -37,10 +37,6 @@
         "inquirer": "^8.1.2",
         "typescript": "^4.3.5"
     },
-    "repository": {
-        "type": "git",
-        "url": "git@github.com:deliveryhero/props-parser.git"
-    },
     "publishConfig": {
         "access": "public"
     },
