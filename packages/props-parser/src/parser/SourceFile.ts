@@ -82,12 +82,21 @@ export class SourceFile {
                             // @ts-ignore
                             const specifierName = specifier.name.escapedText;
 
+                            // @ts-ignore
+                            const moduleInfo = this.sourceFile.resolvedModules.get(
+                                module,
+                            );
+
+                            if (!moduleInfo) {
+                                // console.warn(
+                                //     `Was not able to resolve type: ${specifierName}`,
+                                // );
+                                return;
+                            }
+
                             result[specifierName] = {
                                 module,
-                                // @ts-ignore
-                                absolutePath: this.sourceFile.resolvedModules.get(
-                                    module,
-                                ).resolvedFileName,
+                                absolutePath: moduleInfo.resolvedFileName,
                             };
                         });
                     }
