@@ -88,9 +88,9 @@ export class SourceFile {
                             );
 
                             if (!moduleInfo) {
-                                // console.warn(
-                                //     `Was not able to resolve type: ${specifierName}`,
-                                // );
+                                console.warn(
+                                    `Was not able to resolve type: ${specifierName}`,
+                                );
                                 return;
                             }
 
