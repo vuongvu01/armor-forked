@@ -82,12 +82,12 @@ export class SourceFile {
                             // @ts-ignore
                             const specifierName = specifier.name.escapedText;
 
-                            // @ts-ignore
-                            const moduleInfo = this.sourceFile.resolvedModules.get(
-                                module,
-                            );
+                            const moduleInfo =
+                                // @ts-ignore
+                                this.sourceFile.resolvedModules.get(module);
 
                             if (!moduleInfo) {
+                                // eslint-disable-next-line no-console
                                 console.warn(
                                     `Was not able to resolve type: ${specifierName}`,
                                 );
