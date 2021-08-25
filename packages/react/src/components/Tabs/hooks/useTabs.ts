@@ -2,7 +2,7 @@ import React, { useCallback, useEffect } from 'react';
 
 import { RefType } from '../../../type';
 import { TabsPropsType } from '../type';
-import { preProcessTabChildren } from '../utils';
+import { injectTabIndex } from '../utils';
 import { useControlledState } from '../../../system';
 
 export const useTabs = <E extends HTMLDivElement>(
@@ -64,7 +64,7 @@ export const useTabs = <E extends HTMLDivElement>(
             ref,
             wide,
             disabled,
-            children: preProcessTabChildren(children),
+            children: injectTabIndex(children), // todo: better use context api in Tab, instead of cloning the nodes here
             removePaddingLeft,
             removePaddingRight,
         },

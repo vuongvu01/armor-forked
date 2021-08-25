@@ -19,7 +19,7 @@ const classGeneratorBasedOnComponent = ({
     return `${baseClassNames} ${stateClassNames.join(' ')}`.trim();
 };
 
-const useTabsClassName = (
+export const useTabsClassName = (
     classPrefix: string,
     className?: string,
     disabled?: boolean,
@@ -37,5 +37,3 @@ const useTabsClassName = (
         }),
         [classPrefix, className, disabled],
     );
-
-export default useTabsClassName;

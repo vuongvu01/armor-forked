@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { BrowserRouter, Link } from 'react-router-dom';
 // eslint-disable-next-line import/no-unresolved
 import { withKnobs } from '@storybook/addon-knobs';
+import styled from 'styled-components';
 import { Tabs } from '../Tabs';
 import { Tab } from '../../Tab';
 import { TabView } from '../../TabView';
@@ -469,5 +470,19 @@ export const ActiveTabIndexUncontrolled = () => {
                 <p>Alcoholic beverages</p>
             </TabView>
         </>
+    );
+};
+
+const StyledTab = styled(Tab)`
+    border-radius: 5px;
+    border: 1px solid red;
+`;
+
+export const CustomTab = () => {
+    return (
+        <Tabs onSwitch={() => {}}>
+            <StyledTab>Styled</StyledTab>
+            <Tab>Unstyled</Tab>
+        </Tabs>
     );
 };

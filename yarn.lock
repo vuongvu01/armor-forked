@@ -678,30 +678,12 @@
   dependencies:
     "@cspotcode/source-map-consumer" "0.8.0"
 
-"@deliveryhero/armor-icons@1.10.0", "@deliveryhero/armor-icons@^1.9.0":
+"@deliveryhero/armor-icons@^1.9.0":
   version "1.10.0"
   resolved "https://npm.pkg.github.com/download/@deliveryhero/armor-icons/1.10.0/4858dc5f9b656440fd8e7267f221707db1b454b7eb9cea33ff2705ab6dd154f8#2530a5f302b8023c86f3a080ffce56a946053ac7"
   integrity sha1-JTCl8wK4AjyG86CA/85WqUYFOsc=
   dependencies:
     prop-types "^15.7.2"
-
-"@deliveryhero/armor@1.35.0":
-  version "1.35.0"
-  resolved "https://npm.pkg.github.com/download/@deliveryhero/armor/1.35.0/9fe9f8d6d9b28d4d8faa18760396e727718d404016e77ae94f923b5ac4885725#e548f49bf18f94e292419d2c6cd5f705339bf594"
-  integrity sha512-DxwkvG68gvDMEY/9wiFcFbZnJOZTeM7FTsNH2TpxCrCHgnz2Hti54buvlkGRp7uUmofkRoDPAhCvVwaDDoyzEA==
-  dependencies:
-    "@deliveryhero/armor-icons" "1.10.0"
-    "@popperjs/core" "^2.4.2"
-    clone-deep "^4.0.1"
-    deep-freeze-strict "1.1.1"
-    deepclone "^1.0.2"
-    deepmerge "4.2.2"
-    flat "^5.0.0"
-    lodash.uniqueid "^4.0.1"
-    prop-types "^15.7.2"
-    react-popper "^2.2.4"
-    throttle-debounce "2.1.0"
-    traverse "^0.6.6"
 
 "@emotion/hash@^0.8.0":
   version "0.8.0"
