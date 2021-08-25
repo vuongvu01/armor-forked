@@ -1,3 +1,10 @@
+## @deliveryhero/armor [1.66.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.66.1...@deliveryhero/armor@1.66.2) (2021-08-25)
+
+
+### Bug Fixes
+
+* **tabs:** Children type validator removed from Tabs component [LD-588] ([#689](https://github.com/deliveryhero/armor/issues/689)) ([718e44c](https://github.com/deliveryhero/armor/commit/718e44c299a4ddfd6ed30d454a24dab2545b892a))
+
 ## @deliveryhero/armor [1.66.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.66.0...@deliveryhero/armor@1.66.1) (2021-08-23)
 
 # @deliveryhero/armor [1.66.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.65.0...@deliveryhero/armor@1.66.0) (2021-08-18)
