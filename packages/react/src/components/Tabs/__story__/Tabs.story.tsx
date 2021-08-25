@@ -11,6 +11,7 @@ import { withWrapper } from '../../../helpers/Wrapper';
 import { Typography } from '../../Typography';
 import { Stack, StackItem } from '../../Stack';
 import { Pack, PackItem } from '../../Pack';
+import styled from 'styled-components';
 
 export default {
     title: 'Components/Tabs',
@@ -469,5 +470,19 @@ export const ActiveTabIndexUncontrolled = () => {
                 <p>Alcoholic beverages</p>
             </TabView>
         </>
+    );
+};
+
+const StyledTab = styled(Tab)`
+    border-radius: 5px;
+    border: 1px solid red;
+`;
+
+export const CustomTab = () => {
+    return (
+        <Tabs onSwitch={() => {}}>
+            <StyledTab>Styled</StyledTab>
+            <Tab>Unstyled</Tab>
+        </Tabs>
     );
 };
