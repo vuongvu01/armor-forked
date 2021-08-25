@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { BrowserRouter, Link } from 'react-router-dom';
 // eslint-disable-next-line import/no-unresolved
 import { withKnobs } from '@storybook/addon-knobs';
+import styled from 'styled-components';
 import { Tabs } from '../Tabs';
 import { Tab } from '../../Tab';
 import { TabView } from '../../TabView';
@@ -11,7 +12,6 @@ import { withWrapper } from '../../../helpers/Wrapper';
 import { Typography } from '../../Typography';
 import { Stack, StackItem } from '../../Stack';
 import { Pack, PackItem } from '../../Pack';
-import styled from 'styled-components';
 
 export default {
     title: 'Components/Tabs',
