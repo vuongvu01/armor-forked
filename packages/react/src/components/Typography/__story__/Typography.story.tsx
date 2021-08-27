@@ -70,7 +70,7 @@ export const CustomColor = () => (
             large
             marginBottom={0}
             marginTop={0}
-            color="$color.neutral.05"
+            color="$color.neutral.07"
         >
             {loremIpsum}
         </Typography>

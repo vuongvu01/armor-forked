@@ -77,3 +77,9 @@ jobs:
               run: yarn multi-semantic-release
               env:
                   GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
+            - name: Documentation re-deployment
+              run: |
+                  curl --request POST \
+                  --header 'Authorization: token ${{ secrets.CICD_TOKEN }}' \
+                  --url https://api.github.com/repos/deliveryhero/armor-docs/actions/workflows/cd.yml/dispatches \
+                  --data '{"ref":"master"}'

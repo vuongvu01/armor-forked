@@ -179,7 +179,7 @@ const dropdownBeforeSectionClearButtonStyle = ({
     disabled,
 }: DropdownTagsSectionPropsType) =>
     css`
-        color: ${disabled ? color('neutral.04') : color('neutral.06')};
+        color: ${disabled ? color('neutral.05') : color('neutral.11')};
         cursor: ${disabled ? 'default' : 'pointer'};
     `;
 

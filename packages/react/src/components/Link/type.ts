@@ -1,11 +1,11 @@
-import { AnchorHTMLAttributes, ComponentType } from 'react';
+import { AnchorHTMLAttributes } from 'react';
 import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../type';
 import { MarginAttributesType } from '../../system';
-
-type LinkTagType = string | ComponentType<any>;
+import { ComponentBehaviourCustomTagType } from '../../system/types/ComponentBehaviourCustomTagType';
+import { ComponentBehaviourLinkType } from '../../system/types/ComponentBehaviourLinkType';
 
 /** 👉 PROPS TYPE */
 type LinkEffectivePropsType = Partial<{
@@ -22,10 +22,10 @@ type LinkEffectivePropsType = Partial<{
     inline: boolean;
     /** If set to *true*, the Link will be rendered as underlined */
     underline: boolean;
-    to: string;
-    tag: LinkTagType;
 }> &
-    AnchorHTMLAttributes<HTMLAnchorElement> &
+    ComponentBehaviourLinkType &
+    Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'href' | 'target' | 'rel'> &
+    ComponentBehaviourCustomTagType &
     MarginAttributesType;
 
 export type LinkPropsType = LinkEffectivePropsType & ComponentStylePropsType;

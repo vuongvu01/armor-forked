@@ -4,6 +4,7 @@ import {
 } from '../../type';
 import { TableRowPropsType } from '../TableRow';
 
+/** 👉 PROPS TYPE */
 type TableExpandableSectionEffectivePropsType = Partial<{
     expanded: boolean;
     enableDefaultPadding: boolean;

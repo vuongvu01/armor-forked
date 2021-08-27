@@ -5,7 +5,6 @@ import { useComponentTheme } from '../../utils/hooks';
 import { useFormFieldClassNames } from './hooks/useFormFieldClassNames';
 import { FormFieldRoot } from './style';
 import { FormFieldPropsType } from './type';
-import { formFieldDefaultTheme } from './theme';
 import { FORM_FIELD_CLASS_PREFIX } from './constants';
 import { getCompatiblePropValue } from '../../utils/getCompatiblePropValue';
 
@@ -17,10 +16,7 @@ export const FormField = forwardRef<HTMLDivElement, FormFieldPropsType>(
         { className, autoMargin, enableVerticalOuterSpacing, ...restProps },
         ref,
     ) {
-        const theme = useComponentTheme(
-            FORM_FIELD_CLASS_PREFIX,
-            formFieldDefaultTheme,
-        );
+        const theme = useComponentTheme(FORM_FIELD_CLASS_PREFIX);
 
         const classNameComponents = useFormFieldClassNames(
             FORM_FIELD_CLASS_PREFIX,

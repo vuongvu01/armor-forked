@@ -1,8 +1,9 @@
-import { AnchorHTMLAttributes, HTMLAttributes, MouseEvent } from 'react';
+import { HTMLAttributes, MouseEvent } from 'react';
 
 import { MarginAttributesType } from '../../system';
 import { ScalarType } from '../../type';
 import { ComponentElementStylePropsType } from '../type';
+import { ComponentBehaviourLinkType } from '../../system/types/ComponentBehaviourLinkType';
 
 export type TagTypeDefault = 'default';
 export type TagTypeApproved = 'approved';
@@ -37,18 +38,24 @@ export type ClassBasedOnComponentType = {
 
 /** 👉 PROPS TYPE */
 type TagEffectivePropsType = Partial<{
+    /**
+     * @armor-docs-expand TagDeleteIconModeType, TagIconDisabled, TagIconEnabled, TagIconOnHover
+     */
     deleteOption: TagDeleteIconModeType;
     code: ScalarType;
     isActive: boolean;
     onClose: (event: MouseEvent<HTMLDivElement>) => void;
     onDeselect: (tagCode?: ScalarType) => void;
+    /**
+     * @armor-docs-expand TagType, TagTypeDefault, TagTypeApproved, TagTypeDenied, TagTypeNew
+     */
     type: TagType;
     disabled: boolean;
     label: ScalarType;
     small: boolean;
 }> &
     HTMLAttributes<HTMLElement> &
-    Pick<AnchorHTMLAttributes<HTMLAnchorElement>, 'target' | 'href' | 'rel'> &
+    ComponentBehaviourLinkType &
     MarginAttributesType;
 
 export type TagPropsType = TagEffectivePropsType;

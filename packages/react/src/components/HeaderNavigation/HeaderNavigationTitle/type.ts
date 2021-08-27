@@ -1,6 +1,8 @@
-import { AnchorHTMLAttributes, ComponentType, HTMLAttributes } from 'react';
+import { HTMLAttributes } from 'react';
 
 import { MarginAttributesType } from '../../../system';
+import { ComponentBehaviourCustomTagType } from '../../../system/types/ComponentBehaviourCustomTagType';
+import { ComponentBehaviourLinkType } from '../../../system/types/ComponentBehaviourLinkType';
 
 export type ClassBasedOnComponentType = {
     className?: string;
@@ -9,16 +11,13 @@ export type ClassBasedOnComponentType = {
     component: string;
 };
 
-export type TitleTagType = string | ComponentType<any>;
-
 type HeaderNavigationTitleEffectivePropsType = Partial<{
     isActive: boolean;
     name: string;
-    to: string;
-    tag: TitleTagType;
     onLinkClick: (name: string) => void;
 }> &
-    Pick<AnchorHTMLAttributes<HTMLAnchorElement>, 'target' | 'href' | 'rel'> &
+    ComponentBehaviourLinkType &
+    ComponentBehaviourCustomTagType &
     HTMLAttributes<HTMLElement> &
     MarginAttributesType;
 

@@ -10,18 +10,18 @@ export const headerNavigationLink = {
             paddingBottom: componentSpacing03,
             paddingLeft: componentSpacing04,
 
-            color: '$color.neutral.06',
+            color: '$color.neutral.11',
             '&:visited': {
-                color: '$color.neutral.06',
+                color: '$color.neutral.11',
             },
             '&:active': {
-                color: '$color.neutral.06',
+                color: '$color.neutral.11',
             },
             '&:focus': {
-                color: '$color.neutral.06',
+                color: '$color.neutral.11',
             },
             '&:hover': {
-                color: '$color.neutral.06',
+                color: '$color.neutral.11',
                 backgroundColor: '$color.primary.lightest',
             },
         },

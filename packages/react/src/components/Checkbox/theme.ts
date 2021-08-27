@@ -6,7 +6,7 @@ const color = {
     neutral01: '$color.neutral.01',
     neutral02: '$color.neutral.02',
     neutral03: '$color.neutral.03',
-    neutral05: '$color.neutral.05',
+    neutral05: '$color.neutral.07',
 };
 
 export const checkboxDefaultTheme = {

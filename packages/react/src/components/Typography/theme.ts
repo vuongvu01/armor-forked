@@ -23,7 +23,7 @@ export const typographyDefaultTheme = {
             color: '$color.error.main',
         },
         disabled: {
-            color: '$color.neutral.04',
+            color: '$color.neutral.05',
         },
         pageTitle: {
             fontSize: '$typography.pageTitle.fontSize',

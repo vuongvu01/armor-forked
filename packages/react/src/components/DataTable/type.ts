@@ -78,10 +78,19 @@ type DataTableEffectivePropsType = Partial<{
     data: DataTableDataType[];
 
     // row sorting
+    /**
+     * @armor-docs-expand TableHeadCellRowSortOrderType, TableHeadCellSortOrderWay
+     */
     rowSortOrder: TableHeadCellRowSortOrderType;
+    /**
+     * @armor-docs-expand TableHeadCellRowSortOrderType, TableHeadCellSortOrderWay
+     */
     defaultRowSortOrder: TableHeadCellRowSortOrderType;
     /** If set to true, enables a neutral (unsorted) sorting state for a columnLayout */
     enableNeutralRowSorting: boolean;
+    /**
+     * @armor-docs-expand TableHeadCellRowSortOrderType, TableHeadCellSortOrderWay
+     */
     onRowSortOrderChange: (rowSortOrder: TableHeadCellRowSortOrderType) => void;
 
     // row selection
@@ -108,7 +117,10 @@ type DataTableEffectivePropsType = Partial<{
     // expandable sections
     /** If set to true, each row receives an expandable section and a trigger, which toggles a corresponding section */
     enableExpandableSections: boolean;
-    /** A render property to display the content of the expandable section */
+    /**
+     * A render property to display the content of the expandable section
+     * @armor-docs-expand DataTableDataType
+     */
     renderExpandableSection: (data: DataTableDataType) => ReactChild;
     defaultExpandedSectionIds: ScalarType[];
     expandedSectionIds: ScalarType[];

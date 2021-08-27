@@ -1,7 +1,7 @@
 import { componentSpacing04 } from '../../../tokens';
 
 const iconBase = {
-    color: '$color.neutral.05',
+    color: '$color.neutral.07',
     width: componentSpacing04,
     height: componentSpacing04,
 };

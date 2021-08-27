@@ -7,10 +7,7 @@ import {
 } from '../type';
 
 /** 👉 PROPS TYPE */
-type IndicatorEffectivePropsType = Partial<{
-    // add other custom properties here
-}> &
-    HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
+type IndicatorEffectivePropsType = HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
     MarginAttributesType;
 
 /* Indicator component prop type */

@@ -213,7 +213,7 @@ export const EmptyStateTitle = styled.div.withConfig(propsBlocker)<
     EmptyStateTitlePropsType
 >`
     ${typography('paragraphMedium')};
-    color: ${color('neutral.06')};
+    color: ${color('neutral.11')};
     font-size: ${pixelToRem(32)};
     max-height: ${pixelToRem(48)};
     ${getTitleStyle};
@@ -223,7 +223,7 @@ export const EmptyStateDescription = styled.div.withConfig(propsBlocker)<
     EmptyStateDescriptionPropsType
 >`
     ${typography('paragraphMedium')};
-    color: ${color('neutral.06')};
+    color: ${color('neutral.11')};
     font-size: ${pixelToRem(16)};
     max-height: ${spacing(60)};
     margin-top: ${spacing(4)};

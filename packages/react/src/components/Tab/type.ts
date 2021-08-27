@@ -2,7 +2,7 @@ import { HTMLAttributes } from 'react';
 
 import { MarginAttributesType } from '../../system';
 import { ComponentElementStylePropsType } from '../type';
-import { LinkTagType } from '../HeaderNavigation/HeaderNavigationLinks/HeaderNavigationLink/type';
+import { ComponentBehaviourCustomTagType } from '../../system/types/ComponentBehaviourCustomTagType';
 
 export type ClassBasedOnComponentType = {
     component: string;
@@ -18,13 +18,13 @@ type TabEffectivePropsType = Partial<{
     value: number;
     tabIndex: number;
     to: string;
-    tag: LinkTagType;
     label: string;
     disabled: boolean;
     wide: boolean;
 }> &
     HTMLAttributes<HTMLDivElement> &
     Partial<Pick<HTMLAnchorElement, 'href' | 'target' | 'rel'>> &
+    ComponentBehaviourCustomTagType &
     MarginAttributesType;
 
 export type TabPropsType = TabEffectivePropsType;

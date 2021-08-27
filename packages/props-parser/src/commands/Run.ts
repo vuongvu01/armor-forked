@@ -29,6 +29,13 @@ const standardTypes: string[] = [
     'TextAlignmentAttributesType',
     'DisplayAttributesType',
     'ComponentStylePropsType',
+    'ComponentBehaviourOpenStateType',
+    'ComponentBehaviourOverlayType',
+    'ComponentBehaviourPortalType',
+    'ComponentBehaviourModalDialogType',
+    'ComponentBehaviourCustomTag',
+    'ComponentBehaviourLinkBehaviour',
+    'PopperPropsType',
 ];
 
 @Implements<Command>()

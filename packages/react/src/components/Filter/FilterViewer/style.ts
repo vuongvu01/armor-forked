@@ -69,5 +69,5 @@ export const FilterViewConditions = styled.div.withConfig(propsBlocker)<
 export const FilterViewerAddFilterHint = styled.div.withConfig(propsBlocker)<
     FilterViewerAddFilterHintPropsType
 >`
-    color: ${color('neutral.05')};
+    color: ${color('neutral.07')};
 `;

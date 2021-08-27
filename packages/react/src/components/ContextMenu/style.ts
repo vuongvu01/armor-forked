@@ -37,7 +37,7 @@ export const ContextMenuRoot = styled.div.withConfig(propsBlocker)<
 
     ${typography('paragraphLarge')};
     border-radius: ${borderRadius('soft')};
-    color: ${color('neutral.05')};
+    color: ${color('neutral.07')};
     background-color: ${color('neutral.00')};
 
     box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.12);

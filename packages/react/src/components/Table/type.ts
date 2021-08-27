@@ -28,6 +28,9 @@ export type TableStickyColumnsMapInternal = TableStickyColumnMapInternalItem[];
 /** 👉 PROPS TYPE */
 export type TableEffectivePropsType = Partial<{
     horizontalScroll: boolean;
+    /**
+     * @armor-docs-expand TableStickyColumnsMap, TableStickyColumnMapItem, TableCellStickyOffset, TableCellStickyAlignment
+     */
     stickyColumns: TableStickyColumnsMap;
     stickyHead: boolean;
     enableFixedLayout: boolean;

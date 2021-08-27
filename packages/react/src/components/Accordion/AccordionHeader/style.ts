@@ -71,7 +71,7 @@ const accordionExpansionIndicatorStyle = ({
     return disabled
         ? css`
               .ExpansionIndicator-Icon {
-                  color: ${color('neutral.04')};
+                  color: ${color('neutral.05')};
               }
           `
         : {};

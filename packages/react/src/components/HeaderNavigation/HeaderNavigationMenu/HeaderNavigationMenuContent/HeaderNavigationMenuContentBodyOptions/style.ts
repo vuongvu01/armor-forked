@@ -32,7 +32,7 @@ const contentBodyOptionsItemStyle = ({
             padding-left: 14px;
             border-left-color: ${color('primary.main')};
             background-color: ${color('primary.lightest')};
-            color: ${color('neutral.06')};
+            color: ${color('neutral.11')};
         `;
     }
 

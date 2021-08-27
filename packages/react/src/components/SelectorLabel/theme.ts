@@ -9,7 +9,7 @@ const selectorLabelDefaultTheme = {
             // fontSize: '$typography.labelSmall.fontSize',
         },
         disabled: {
-            color: '$color.neutral.04',
+            color: '$color.neutral.05',
         },
         error: {
             color: '$color.error.main',

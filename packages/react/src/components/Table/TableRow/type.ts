@@ -6,6 +6,7 @@ import {
 import { UseTableRowType } from './hooks/type';
 import { HeightAttributesType } from '../../../system';
 
+/** 👉 PROPS TYPE */
 type TableRowEffectivePropsType = Partial<{
     enableStickyTop: boolean;
     enableStickyColumns: boolean;

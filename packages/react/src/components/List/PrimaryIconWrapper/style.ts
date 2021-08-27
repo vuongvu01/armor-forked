@@ -25,7 +25,7 @@ const getRootStyle = ({
     if (disabled) {
         result = css`
             background-color: ${color('neutral.02')};
-            color: ${color('neutral.04')};
+            color: ${color('neutral.05')};
         `;
     }
 

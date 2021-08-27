@@ -29,7 +29,10 @@ type PageNavigationEffectivePropsType = Partial<{
     pageSize: number;
     /** If set to true, enables the page size selector */
     enablePageSizeSelector: boolean;
-    /** A list of page sizes to show in the page size selector */
+    /**
+     * A list of page sizes to show in the page size selector
+     * @armor-docs-expand PageNavigationPageSizeListItemType
+     */
     pageSizeList: PageNavigationPageSizeListItemType[];
     /** Is called when a user selects a page size from the list */
     onPageSizeChange: (pageSize: number) => void;

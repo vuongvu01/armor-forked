@@ -3,7 +3,7 @@ import { componentSpacing03 } from '../../../tokens';
 export const searchClearActionTheme = {
     ClearIcon: {
         base: {
-            color: '$color.neutral.05',
+            color: '$color.neutral.07',
             width: componentSpacing03,
             height: componentSpacing03,
         },

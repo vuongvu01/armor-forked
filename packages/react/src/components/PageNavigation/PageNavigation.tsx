@@ -13,7 +13,6 @@ import {
     PageNavigationPageSizeSelector,
 } from './style';
 import { PageNavigationPropsType } from './type';
-import { pageNavigationDefaultTheme } from './theme';
 import {
     pageNavigationRootTestId,
     PAGE_NAVIGATION_CLASS_PREFIX,
@@ -27,10 +26,7 @@ export const PageNavigation = forwardRef<
     HTMLDivElement,
     PageNavigationPropsType
 >(function PageNavigation({ className, ...restProps }, ref) {
-    const theme = useComponentTheme(
-        PAGE_NAVIGATION_CLASS_PREFIX,
-        pageNavigationDefaultTheme,
-    );
+    const theme = useComponentTheme(PAGE_NAVIGATION_CLASS_PREFIX);
     const classNameComponents = usePageNavigationClassNames(
         PAGE_NAVIGATION_CLASS_PREFIX,
         className,

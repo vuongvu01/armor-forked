@@ -27,6 +27,9 @@ type StackItemEffectivePropsType = Partial<{
     flexShrink: number;
     flexBasis: string;
     order: number;
+    /**
+     * @armor-docs-expand AlignSelfType
+     */
     alignSelf: AlignSelfType;
 }> &
     HTMLAttributes<HTMLElement> &

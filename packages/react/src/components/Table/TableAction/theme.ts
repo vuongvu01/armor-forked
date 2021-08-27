@@ -5,7 +5,7 @@ export const tableActionDefaultTheme = {
     Root: {
         base: {
             fontFamily: '$typography.body.fontFamily',
-            color: '$color.neutral.05',
+            color: '$color.neutral.07',
             '&:hover': {
                 color: '$color.primary.main',
             },

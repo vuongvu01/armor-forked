@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ComponentType, useState } from 'react';
 import {
     boolean,
     select,
@@ -17,7 +17,6 @@ import { makeDefaultTheme, makeTheme } from '../../../styling';
 import { ObjectLiteralType } from '../../../type';
 import { GroupHelper } from '../../../helpers/GroupHelper';
 import { Button } from '../Button';
-import { ButtonTagType } from '../type';
 import { Box } from '../../Box';
 import { withWrapper } from '../../../helpers/Wrapper';
 
@@ -191,6 +190,8 @@ export const AsLink = () => (
         Open Google
     </Button>
 );
+
+type ButtonTagType = string | ComponentType<any>;
 
 export const Comparison = () => (
     // <div style={{ display: 'flex' }}>

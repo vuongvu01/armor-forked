@@ -104,7 +104,7 @@ export const MenuElementRoot = styled(MenuElementRootWrapper).withConfig(
     cursor: pointer;
     text-decoration: none;
 
-    color: ${color('neutral.06')};
+    color: ${color('neutral.11')};
     background-color: ${color('neutral.00')};
 
     transition: background-color ${transitionDurationInSec}s ease;

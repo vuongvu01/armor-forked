@@ -10,10 +10,7 @@ import {
 } from '../../system';
 
 /** 👉 PROPS TYPE */
-type ContainerEffectivePropsType = Partial<{
-    // add other custom properties here
-}> &
-    HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
+type ContainerEffectivePropsType = HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
     PaddingAttributesType &
     MarginAttributesType &
     SizeAttributesType;

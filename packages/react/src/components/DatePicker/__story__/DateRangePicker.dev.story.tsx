@@ -1,10 +1,12 @@
 /* eslint-disable no-console,import/no-unresolved */
 
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { withKnobs } from '@storybook/addon-knobs';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { add } from 'date-fns';
 import { withWrapper } from '../../../helpers/Wrapper';
 
-import { DatePicker, DateRangePicker } from '..';
+import { DatePicker, DateRangePicker, DateRangePickerPropsType } from '..';
 import { Box } from '../../Box';
 import { Button } from '../../Button';
 import { DateVector } from '../utils/DateVector';
@@ -243,5 +245,27 @@ export const NoMinWidthAutoCorrection = () => {
                 />
             </FormField>
         </Box>
+    );
+};
+
+export const AlwaysFiveDays = () => {
+    const [dateStart, setDateStart] = useState(new Date());
+    const value = useMemo(() => {
+        return [
+            dateStart,
+            add(dateStart, { days: 5 }),
+        ] as DateRangePickerPropsType['dateValue'];
+    }, [dateStart]);
+
+    return (
+        <DateRangePicker
+            enableMinWidthAutoCorrection={false}
+            dateValue={value}
+            onDateValueChange={newValue => {
+                if (newValue) {
+                    setDateStart(newValue[0]);
+                }
+            }}
+        />
     );
 };

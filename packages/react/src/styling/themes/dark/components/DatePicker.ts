@@ -51,7 +51,7 @@ export const makeDatePickerOverride = () => {
 
         .DatePickerTimeSelector-Input {
             .TextInput-Input {
-                color: ${color('neutral.04')};
+                color: ${color('neutral.05')};
             }
         }
 
@@ -60,11 +60,11 @@ export const makeDatePickerOverride = () => {
         }
 
         .DatePickerMonthYearSelector-YearTitle {
-            color: ${color('neutral.06')};
+            color: ${color('neutral.11')};
             background-color: ${color('neutral.03')};
 
             &:hover {
-                background-color: ${color('neutral.04')};
+                background-color: ${color('neutral.05')};
             }
         }
     `;

@@ -30,7 +30,7 @@ const expansionIndicatorIconStyle = ({
     disabled
         ? css`
               cursor: not-allowed;
-              color: ${color('neutral.04')};
+              color: ${color('neutral.05')};
           `
         : {};
 

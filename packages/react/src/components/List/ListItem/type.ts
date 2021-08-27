@@ -1,9 +1,10 @@
-import { AnchorHTMLAttributes, HTMLAttributes, ReactNode } from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../../type';
 import { MarginAttributesType } from '../../../system';
+import { ComponentBehaviourLinkType } from '../../../system/types/ComponentBehaviourLinkType';
 
 /** 👉 PROPS TYPE */
 type ListItemEffectivePropsType = Partial<{
@@ -33,7 +34,7 @@ type ListItemEffectivePropsType = Partial<{
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
-    Pick<AnchorHTMLAttributes<HTMLAnchorElement>, 'target' | 'href' | 'rel'> & // and 3 attributes from HTML Anchor
+    ComponentBehaviourLinkType &
     MarginAttributesType;
 
 export type ListItemPropsType = ListItemEffectivePropsType &

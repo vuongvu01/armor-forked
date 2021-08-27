@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
-import { color } from '../../../../system/mixins';
-import { LinkPropsType } from '../../../../components/Link/type';
+import { color } from '../../../../system';
+import { LinkPropsType } from '../../../../components';
 import { colorBlue10, colorBlue30 } from '../../../../tokens';
 
 export const getLinkOverride = ({ pressed, disabled }: LinkPropsType) => {
@@ -13,7 +13,7 @@ export const getLinkOverride = ({ pressed, disabled }: LinkPropsType) => {
             color: ${colorBlue10};
         }
         &:visited {
-            color: ${color('purple.02')};
+            color: ${color('visited.02')};
         }
     `;
 
@@ -27,7 +27,7 @@ export const getLinkOverride = ({ pressed, disabled }: LinkPropsType) => {
     if (disabled) {
         result = css`
             ${result};
-            color: ${color('neutral.05')};
+            color: ${color('neutral.07')};
         `;
     }
 

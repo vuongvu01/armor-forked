@@ -197,7 +197,7 @@ export const useFilterEditor = <E extends HTMLElement>(
             paragraph: true,
             medium: true,
             tag: 'div',
-            color: 'neutral.04',
+            color: 'neutral.05',
             marginTop: 6,
         }),
         getActionProps: () => ({

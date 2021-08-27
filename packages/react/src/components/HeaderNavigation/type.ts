@@ -64,6 +64,9 @@ type HeaderNavigationEffectivePropsType = Partial<{
     navigationMenuContent: ReactNode;
     navigationAction: ReactNode;
     selector: ReactNode;
+    /**
+     * @armor-docs-expand JustifyContentType
+     */
     justifyContent: JustifyContentType;
     links: ReactNode;
     search: ReactNode;

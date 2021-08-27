@@ -35,7 +35,7 @@ const getMonthYearSelectorToggleStyle = ({
     if (open) {
         result = css`
             ${result};
-            color: ${color('neutral.04')};
+            color: ${color('neutral.05')};
         `;
     }
 
@@ -50,7 +50,7 @@ export const DatePickerTopBarMonthYearSelectorToggle = styled.a.withConfig(
     align-items: center;
     cursor: pointer;
     user-select: none;
-    color: ${color('neutral.06')};
+    color: ${color('neutral.11')};
     ${transition({
         color: 0.1,
     })};
@@ -86,7 +86,7 @@ export const DatePickerTopBarMonthNavigation = styled.div.withConfig(
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: ${color('neutral.06')};
+    color: ${color('neutral.11')};
 `;
 
 const getMonthNavigationButtonForwardStyle = ({
@@ -97,7 +97,7 @@ const getMonthNavigationButtonForwardStyle = ({
     if (disabled) {
         result = css`
             ${result};
-            color: ${color('neutral.04')};
+            color: ${color('neutral.05')};
             cursor: initial;
         `;
     }
@@ -115,7 +115,7 @@ export const DatePickerTopBarMonthNavigationButtonForward = styled.button.withCo
     border: 0 none;
     appearance: none;
     background-color: transparent;
-    color: ${color('neutral.06')};
+    color: ${color('neutral.11')};
 
     ${getMonthNavigationButtonForwardStyle}
 `;

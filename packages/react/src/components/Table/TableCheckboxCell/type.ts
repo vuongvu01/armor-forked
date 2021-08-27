@@ -1,6 +1,6 @@
-import { TableCellPropsType } from '../TableCell/type';
+import { TableCellPropsType } from '../TableCell';
 import { CheckboxPropsType } from '../../Checkbox';
 
-/* TableCheckboxCell component prop type */
+/** 👉 PROPS TYPE */
 export type TableCheckboxCellPropsType = TableCellPropsType &
     Pick<CheckboxPropsType, 'checked' | 'checkedIcon'>;

@@ -21,9 +21,9 @@ import {
 const maxLabelWidthInPercent = '70%';
 const minLabelWidthInPx = '140px';
 const maxSpacingAllocatedToIcon = 6;
-const defaultLabelColor = color('neutral.05');
-const defaultLabelColorHover = color('neutral.06');
-const defaultActionColor = color('neutral.04');
+const defaultLabelColor = color('neutral.07');
+const defaultLabelColorHover = color('neutral.11');
+const defaultActionColor = color('neutral.05');
 
 /** 👉 ROOT ELEMENT */
 export const SearchSuggestionItemRoot = styled.div.withConfig(propsBlocker)<

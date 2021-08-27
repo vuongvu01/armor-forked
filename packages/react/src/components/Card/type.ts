@@ -11,10 +11,7 @@ import {
 } from '../type';
 
 /** 👉 PROPS TYPE */
-type CardEffectivePropsType = Partial<{
-    // add other custom properties here
-}> &
-    MarginAttributesType &
+type CardEffectivePropsType = MarginAttributesType &
     PaddingAttributesType &
     SizeAttributesType &
     HTMLAttributes<HTMLDivElement>; // includes all HTML Div attributes

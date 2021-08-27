@@ -5,14 +5,16 @@ import {
 } from '../type';
 import { MarginAttributesType, WidthAttributesType } from '../../system';
 import { ObjectLiteralType, ScalarType } from '../../type';
-import { MenuPropsType, MenuElementPropsType } from '../Menu';
+import { MenuElementPropsType } from '../Menu';
 
 export type NavigationMenuElementType = {
     /** Item label, which is displayed */
     label: ReactChild;
     /** Item id to make the internal logic work */
     id: ScalarType;
-    /** Sub-items of the item */
+    /**
+     * Sub-items of the item
+     */
     items?: NavigationMenuElementType[];
     /** Indicates whether an item is rendered as expanded */
     expanded?: boolean;
@@ -32,7 +34,9 @@ export type NavigationMenuElementType = {
 
 /** 👉 PROPS TYPE */
 type NavigationEffectivePropsType = Partial<{
-    /** Describes a structure of menu items to be rendered */
+    /**
+     * Describes a structure of menu items to be rendered
+     */
     items: NavigationMenuElementType[];
     /** A callback which is triggered when a user clicks on the menu element */
     onElementClick: (
