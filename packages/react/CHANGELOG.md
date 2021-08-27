@@ -1,3 +1,10 @@
+# @deliveryhero/armor [1.67.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.66.2...@deliveryhero/armor@1.67.0) (2021-08-27)
+
+
+### Bug Fixes
+
+* **theme:** New L2 color token schema [LD-583] ([#692](https://github.com/deliveryhero/armor/issues/692)) ([bd3f77b](https://github.com/deliveryhero/armor/commit/bd3f77b3ff5dde7c1bcb90ef6ce1e905cccfea9c))
+
 ## @deliveryhero/armor [1.66.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.66.1...@deliveryhero/armor@1.66.2) (2021-08-25)
 
 
