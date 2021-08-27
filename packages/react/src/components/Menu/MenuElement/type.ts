@@ -1,12 +1,13 @@
-import { AnchorHTMLAttributes, ComponentType, HTMLAttributes } from 'react';
+import { HTMLAttributes } from 'react';
 import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../../type';
 import { MarginAttributesType, PaddingAttributesType } from '../../../system';
+import { ComponentBehaviourCustomTagType } from '../../../system/types/ComponentBehaviourCustomTagType';
+import { ComponentBehaviourLinkType } from '../../../system/types/ComponentBehaviourLinkType';
 
 type MenuElementEffectivePropsType = Partial<{
-    tag: string | ComponentType<any>;
     /** If set to *true*, the MenuElement will be rendered as *primary*. This is the default even if the property is not set */
     primary: boolean;
     /** If set to *true*, the MenuElement will be rendered as *secondary* */
@@ -17,6 +18,9 @@ type MenuElementEffectivePropsType = Partial<{
     selected: boolean;
     /** If set to *true*, the MenuElement will be rendered as *small* (with reduced paddings and typography). This property works only if the MenuElement is neither *secondary* nor *tertiary* */
     small: boolean;
+    /**
+     * @ignore
+     */
     depthLevel: number; // todo: future-reserved
 
     // expanse handle
@@ -27,7 +31,8 @@ type MenuElementEffectivePropsType = Partial<{
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
-    Pick<AnchorHTMLAttributes<HTMLAnchorElement>, 'target' | 'href' | 'rel'> & // and 3 attributes from HTML Anchor
+    ComponentBehaviourLinkType &
+    ComponentBehaviourCustomTagType &
     PaddingAttributesType &
     MarginAttributesType;
 

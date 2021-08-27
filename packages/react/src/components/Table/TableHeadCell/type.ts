@@ -13,12 +13,19 @@ export type TableHeadCellRowSortOrderType = [
     TableHeadCellSortOrderWay,
 ][];
 
+/** 👉 PROPS TYPE */
 type TableHeadCellEffectivePropsType = Partial<{
     columnId: ScalarType;
 
     // sorting
     sortable: boolean;
+    /**
+     * @armor-docs-expand TableHeadCellSortType
+     */
     rowSortType: TableHeadCellSortType;
+    /**
+     * @armor-docs-expand TableHeadCellRowSortOrderType, TableHeadCellSortOrderWay
+     */
     rowSortOrder: TableHeadCellRowSortOrderType;
 
     // add other custom properties here

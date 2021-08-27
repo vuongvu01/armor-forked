@@ -42,7 +42,10 @@ export type DatePickerEffectiveCommonPropsType = Partial<{
     /** A callback that is triggered when a mouse leaves the button of a day. An instance of the Date object comes as an argument. */
     onDayMouseLeave: (date: Date) => void;
 
-    /** Specifies date ranges that are available for selection. Accepts dates in local timezone. A special value *current* means that this value will be replaced by the current datetime at run-time. *Null* means "infinity". */
+    /**
+     * Specifies date ranges that are available for selection. Accepts dates in local timezone. A special value *current* means that this value will be replaced by the current datetime at run-time. *Null* means "infinity".
+     * @armor-docs-expand DateRangeEdgeType
+     */
     allowedDateRanges: [DateRangeEdgeType, DateRangeEdgeType][];
     /** Sets the date that the DatePicker will consider to be current */
     currentDate: Date;

@@ -1,6 +1,6 @@
-import { ComponentType } from 'react';
 import { TableCellPropsType } from '../type';
 import { tableCellRootTestId } from '../constants';
+import { ComponentBehaviourCustomTagPropertyType } from '../../../../system/types/ComponentBehaviourCustomTagType';
 
 export const useTableCell = ({
     isHeader,
@@ -14,6 +14,6 @@ export const useTableCell = ({
             ...restProps,
             isHeader,
         },
-        tag: tagName as string | ComponentType<any>,
+        Tag: tagName as ComponentBehaviourCustomTagPropertyType,
     };
 };

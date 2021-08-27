@@ -2,6 +2,7 @@ import { HTMLAttributes } from 'react';
 
 import { MarginAttributesType } from '../../system';
 import { ComponentElementStylePropsType } from '../type';
+import { ScalarType } from '../../type';
 
 export type ClassBasedOnComponentType = {
     component: string;
@@ -12,8 +13,8 @@ export type ClassBasedOnComponentType = {
 
 /** 👉 PROPS TYPE */
 type TabViewEffectivePropsType = Partial<{
-    selectedValue: string | number;
-    value: string | number;
+    selectedValue: ScalarType;
+    value: ScalarType;
 }> &
     HTMLAttributes<HTMLDivElement> &
     MarginAttributesType;

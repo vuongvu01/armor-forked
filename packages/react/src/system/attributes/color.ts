@@ -4,11 +4,12 @@ import { ThemeType } from '../../styling';
 
 export type ColorAttributesType = {
     /**
-     * Sets *CSS* `color` property of **.${nodeName}**. Can accept either a color `hex code`, or a Level-2 color token from a theme. Example: `color="primary.main"` will produce `color: #0b53bf`
+     * Sets *CSS* `color` property of **.#COMPONENT_NAME#-Root** element. Can accept either a color `hex code`, or a Level-2 color token from a theme. Example: `color="primary.main"` will produce `color: #0b53bf`
      * @armor-docs-group color
      */
     color?: string;
     /**
+     * Sets *CSS* `color` property of **.#COMPONENT_NAME#-Root** element on *hover* state. Can accept either a color `hex code`, or a Level-2 color token from a theme. Example: `color="primary.main"` will produce `color: #0b53bf`
      * @armor-docs-group color
      */
     hoverColor?: string;

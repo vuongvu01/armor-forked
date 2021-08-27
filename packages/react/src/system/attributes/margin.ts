@@ -3,30 +3,37 @@ import { ScalarType } from '../../type';
 
 export type MarginAttributesType = {
     /**
+     * Sets CSS `margin` property of the **.#COMPONENT_NAME#-Root** element. If a number is passed, it will be converted to an actual *CSS value* using `spacing()` function.
      * @armor-docs-group margin
      */
     margin?: ScalarType;
     /**
+     * Sets CSS `margin-top` property of the **.#COMPONENT_NAME#-Root** element. If a number is passed, it will be converted to an actual *CSS value* using `spacing()` function.
      * @armor-docs-group margin
      */
     marginTop?: ScalarType;
     /**
+     * Sets CSS `margin-bottom` property of the **.#COMPONENT_NAME#-Root** element. If a number is passed, it will be converted to an actual *CSS value* using `spacing()` function.
      * @armor-docs-group margin
      */
     marginBottom?: ScalarType;
     /**
+     * Sets CSS `margin-left` property of the **.#COMPONENT_NAME#-Root** element. If a number is passed, it will be converted to an actual *CSS value* using `spacing()` function.
      * @armor-docs-group margin
      */
     marginLeft?: ScalarType;
     /**
+     * Sets CSS `margin-right` property of the **.#COMPONENT_NAME#-Root** element. If a number is passed, it will be converted to an actual *CSS value* using `spacing()` function.
      * @armor-docs-group margin
      */
     marginRight?: ScalarType;
     /**
+     * Sets CSS `margin-left` and `margin-right` properties of the **.#COMPONENT_NAME#-Root** element. If a number is passed, it will be converted to an actual *CSS value* using `spacing()` function.
      * @armor-docs-group margin
      */
     marginX?: ScalarType;
     /**
+     * Sets CSS `margin-top` and `margin-bottom` properties of the **.#COMPONENT_NAME#-Root** element. If a number is passed, it will be converted to an actual *CSS value* using `spacing()` function.
      * @armor-docs-group margin
      */
     marginY?: ScalarType;

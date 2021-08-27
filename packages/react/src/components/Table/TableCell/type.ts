@@ -13,10 +13,17 @@ import {
 export type TableCellStickyAlignment = 'left' | 'right';
 export type TableCellStickyOffset = number;
 
+/** 👉 PROPS TYPE */
 export type TableCellEffectivePropsType = Partial<{
     isHeader?: boolean;
     stickyTop?: boolean;
+    /**
+     * @armor-docs-expand TableCellStickyAlignment
+     */
     stickyAlignment?: TableCellStickyAlignment;
+    /**
+     * @armor-docs-expand TableCellStickyOffset
+     */
     stickyOffset?: TableCellStickyOffset;
     stickyVisible?: boolean;
     stickyShadowVisible?: boolean;

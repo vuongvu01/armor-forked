@@ -19,11 +19,27 @@ export type ClassBasedOnComponentType = {
     gutterSpacingHorizontal?: number;
 };
 
+/** 👉 PROPS TYPE */
 type GridItemEffectivePropsType = Partial<{
+    /**
+     * @armor-docs-expand GridSizeType
+     */
     xs?: GridSizeType;
+    /**
+     * @armor-docs-expand GridSizeType
+     */
     sm?: GridSizeType;
+    /**
+     * @armor-docs-expand GridSizeType
+     */
     md?: GridSizeType;
+    /**
+     * @armor-docs-expand GridSizeType
+     */
     lg?: GridSizeType;
+    /**
+     * @armor-docs-expand GridSizeType
+     */
     xl?: GridSizeType;
 }> &
     Pick<

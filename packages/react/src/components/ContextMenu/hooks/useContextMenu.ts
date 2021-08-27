@@ -1,5 +1,5 @@
 import React, { useMemo, useRef, MouseEvent } from 'react';
-import { ContextMenuElements, ContextMenuPropsType } from '../type';
+import { ContextMenuElement, ContextMenuPropsType } from '../type';
 import { useEventProxy } from './useEventProxy';
 import { RefType } from '../../../type';
 import {
@@ -10,7 +10,7 @@ import {
     useRootRef,
 } from '../../../system';
 
-const emptyMenuElements: ContextMenuElements = [];
+const emptyMenuElements: ContextMenuElement[] = [];
 
 export const useContextMenu = <E extends HTMLDivElement>(
     {

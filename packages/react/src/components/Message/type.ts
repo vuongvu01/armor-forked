@@ -15,12 +15,18 @@ type MessageEffectivePropsType = Partial<{
     disableIcon: boolean;
     actions: ReactNode;
     extra: ReactNode;
+    /**
+     * @armor-docs-expand MessageLevelType
+     */
     level: MessageLevelType;
     error: boolean;
     warning: boolean;
     info: boolean;
     success: boolean;
     iconTag: ComponentType<unknown>;
+    /**
+     * @ignore
+     */
     icon: ReactChild; // todo: future-reserved, to be able to pass the icon instance, not just a tag
     // add other custom properties here
 }> &

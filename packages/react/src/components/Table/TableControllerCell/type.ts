@@ -5,8 +5,9 @@ import {
 } from '../../type';
 import { ScalarType } from '../../../type';
 import { IconButtonPropsType } from '../../IconButton/type';
-import { TableCellPropsType } from '../TableCell/type';
+import { TableCellPropsType } from '../TableCell';
 
+/** 👉 PROPS TYPE */
 type TableControllerCellEffectivePropsType = Partial<{
     expanded: boolean;
     onTriggerClick: IconButtonPropsType['onClick'];

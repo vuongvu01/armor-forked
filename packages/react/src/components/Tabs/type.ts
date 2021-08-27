@@ -19,15 +19,14 @@ type TabsEffectivePropsType = Partial<{
     value: ScalarType;
     wide: boolean;
     disabled: boolean;
-
     activeTabIndex: number;
     defaultActiveTabIndex: number;
     onActiveTabIndexChange: (tabIndex: number) => void;
-
     removePaddingLeft: boolean;
     removePaddingRight: boolean;
-
-    // deprecated
+    /**
+     * @deprecated
+     */
     onSwitch: (tabIndex: number) => void;
     defaultActiveTab: number;
 }> &

@@ -1,4 +1,4 @@
-import { ComponentType, HTMLAttributes } from 'react';
+import { HTMLAttributes } from 'react';
 import {
     ColorAttributesType,
     MarginAttributesType,
@@ -8,12 +8,10 @@ import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../type';
-
-export type TypographyTagType = string | ComponentType<any>;
+import { ComponentBehaviourCustomTagType } from '../../system/types/ComponentBehaviourCustomTagType';
 
 /** 👉 PROPS TYPE */
 type TypographyEffectivePropsType = Partial<{
-    tag: TypographyTagType;
     pageTitle: boolean;
     sectionTitle: boolean;
     subSectionTitle: boolean;
@@ -28,6 +26,7 @@ type TypographyEffectivePropsType = Partial<{
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
+    ComponentBehaviourCustomTagType &
     ColorAttributesType &
     MarginAttributesType &
     TextAlignmentAttributesType;

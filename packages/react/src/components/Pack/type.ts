@@ -22,11 +22,15 @@ type PackEffectivePropsType = Partial<{
     MarginAttributesType &
     PaddingAttributesType;
 
+/** 👉 PROPS TYPE */
 type PackItemEffectivePropsType = Partial<{
     flexGrow: number;
     flexShrink: number;
     flexBasis: string;
     order: number;
+    /**
+     * @armor-docs-expand AlignSelfType
+     */
     alignSelf: AlignSelfType;
 }> &
     HTMLAttributes<HTMLElement> &

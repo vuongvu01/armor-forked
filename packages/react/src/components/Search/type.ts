@@ -42,12 +42,21 @@ export type SearchEffectivePropsType = Partial<{
      * @deprecated
      * Use renderItemAdditionalInfo
      */
-    additionalInfo: null | React.ReactElement;
+    additionalInfo: null | ReactElement;
+    /**
+     * @armor-docs-expand SuggestionObjectType
+     */
     renderItemAdditionalInfo: (
         option: SuggestionObjectType,
         optionIndex?: number,
     ) => ReactChild;
+    /**
+     * @armor-docs-expand SearchQueryType
+     */
     defaultQuery: SearchQueryType;
+    /**
+     * @armor-docs-expand SearchQueryType
+     */
     query: SearchQueryType;
     disabled: boolean;
     error: boolean;
@@ -55,16 +64,31 @@ export type SearchEffectivePropsType = Partial<{
      * @deprecated
      * Use renderItemIcon
      */
-    icon: null | React.ReactElement;
+    icon: null | ReactElement;
+    /**
+     * @armor-docs-expand SuggestionObjectType
+     */
     renderItemIcon: (
         option: SuggestionObjectType,
         optionIndex?: number,
     ) => ReactElement;
     disableClearAction: boolean;
     onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+    /**
+     * @armor-docs-expand SearchQueryType
+     */
     onQueryChange: (newValue: SearchQueryType) => void;
+    /**
+     * @armor-docs-expand SuggestionObjectType
+     */
     onItemSelect: (option: SuggestionObjectType) => void;
+    /**
+     * @armor-docs-expand SuggestionObjectType
+     */
     options: SuggestionObjectType[];
+    /**
+     * @armor-docs-expand SuggestionObjectType
+     */
     groups: SearchGroupObjectType[];
     placeholder: string;
     noResultsLabel?: string;

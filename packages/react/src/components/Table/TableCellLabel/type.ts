@@ -5,10 +5,8 @@ import {
 } from '../../type';
 import { MarginAttributesType } from '../../../system';
 
-type TableCellLabelEffectivePropsType = Partial<{
-    // add other custom properties here
-}> &
-    HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
+/** 👉 PROPS TYPE */
+type TableCellLabelEffectivePropsType = HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
     MarginAttributesType;
 
 /* TableCellLabel component prop type */

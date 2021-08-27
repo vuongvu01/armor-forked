@@ -1,8 +1,10 @@
-import { AnchorHTMLAttributes, ComponentType, HTMLAttributes } from 'react';
+import { HTMLAttributes } from 'react';
 
 import { MarginAttributesType } from '../../../../system';
 import { ComponentElementStylePropsType } from '../../../type';
 import { HeaderNavigationLinksContextType } from '../type';
+import { ComponentBehaviourCustomTagType } from '../../../../system/types/ComponentBehaviourCustomTagType';
+import { ComponentBehaviourLinkType } from '../../../../system/types/ComponentBehaviourLinkType';
 
 export type ClassBasedOnComponentType = {
     className?: string;
@@ -11,18 +13,15 @@ export type ClassBasedOnComponentType = {
     component: string;
 };
 
-export type LinkTagType = string | ComponentType<any>;
-
 type Action = (m?: any) => boolean;
 export type ActionOrBoolean = Action | boolean;
 
 type HeaderNavigationLinkEffectivePropsType = Partial<{
     isActive: ActionOrBoolean;
     name: string;
-    to: string;
-    tag: LinkTagType;
 }> &
-    Pick<AnchorHTMLAttributes<HTMLAnchorElement>, 'target' | 'href' | 'rel'> &
+    ComponentBehaviourLinkType &
+    ComponentBehaviourCustomTagType &
     HTMLAttributes<HTMLElement> &
     MarginAttributesType;
 

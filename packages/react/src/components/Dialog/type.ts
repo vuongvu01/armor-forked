@@ -12,7 +12,10 @@ import { ComponentBehaviourModalDialogType } from '../../system/types/ComponentB
 
 /** 👉 PROPS TYPE */
 type DialogEffectivePropsType = Partial<{
-    /** Regulates whether the body of a Dialog or a document window receives scroll when there is content overflow in the Dialog */
+    /**
+     * Regulates whether the body of a Dialog or a document window receives scroll when there is content overflow in the Dialog
+     * @armor-docs-expand ScrollType
+     */
     scroll: ScrollType;
 
     /**
@@ -23,8 +26,9 @@ type DialogEffectivePropsType = Partial<{
     disableOverlay: boolean;
     /**
      * An opposite alias for **enableEffects**
-     * @deprecated @see enableEffects
-     * */
+     * @deprecated
+     * @see enableEffects
+     */
     disableEffects: boolean;
     /**
      * An opposite alias for **enableCloseButton**
@@ -47,7 +51,7 @@ type DialogEffectivePropsType = Partial<{
      * Is called when the dialog close button gets clicked
      * @deprecated
      * */
-    onCloseButtonClick?: (event: MouseEvent<HTMLDivElement>) => void;
+    onCloseButtonClick: (event: MouseEvent<HTMLDivElement>) => void;
 
     // add other custom properties here
 }> &

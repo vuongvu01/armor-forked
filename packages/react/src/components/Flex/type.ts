@@ -67,10 +67,25 @@ export type AlignSelfType =
 
 /** 👉 PROPS TYPE */
 export type FlexEffectivePropsType = Partial<{
+    /**
+     * @armor-docs-expand DirectionType
+     */
     direction: DirectionType;
+    /**
+     * @armor-docs-expand JustifyContentType
+     */
     justifyContent: JustifyContentType;
+    /**
+     * @armor-docs-expand AlignContentType
+     */
     alignContent: AlignContentType;
+    /**
+     * @armor-docs-expand AlignItemsType
+     */
     alignItems: AlignItemsType;
+    /**
+     * @armor-docs-expand WrapType
+     */
     flexWrap: WrapType;
     gutterSpacing: number;
 }> &

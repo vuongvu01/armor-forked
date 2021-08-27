@@ -21,7 +21,7 @@ type FilterViewerEffectivePropsType = Partial<{
     onValueChange: (newValue: FilterConditionValueType) => void;
     defaultValue: FilterConditionValueType;
 
-    types: Array<FilterBaseConditionType>;
+    types: FilterBaseConditionType[];
 
     /** InitialValue gets applied when they press the "Clear all" button (right now it just dumps everything). Note that initialValue is not the same as defaultValue, because we can have the filter in the controlled mode, but we might still be interested in the "initialValue" as well. */
     initialValue: FilterConditionValueType;

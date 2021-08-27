@@ -19,7 +19,7 @@ export const TableCell = forwardRef<HTMLTableCellElement, TableCellPropsType>(
             className,
         );
 
-        const { rootProps, tag: Tag } = useTableCell(props);
+        const { rootProps, Tag } = useTableCell(props);
 
         // todo: forward only className here, it will be more efficient and neat
         return (

@@ -1,6 +1,7 @@
 export type DisplayAttributesType = {
     /**
      * @armor-docs-group display
+     * @ignore
      */
     display?:
         | 'initial'

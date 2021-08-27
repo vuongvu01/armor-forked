@@ -5,10 +5,8 @@ import {
 } from '../../type';
 import { MarginAttributesType, PaddingAttributesType } from '../../../system';
 
-type TableActionEffectivePropsType = Partial<{
-    // add other custom properties here
-}> &
-    HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
+/** 👉 PROPS TYPE */
+type TableActionEffectivePropsType = HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
     PaddingAttributesType &
     MarginAttributesType;
 

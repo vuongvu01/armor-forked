@@ -59,7 +59,7 @@ type FilterEditorEffectivePropsType = Partial<{
     /**
      * Declares a list of custom types to be used in the filter.
      */
-    types: Array<FilterBaseConditionType>;
+    types: FilterBaseConditionType[];
 
     /**
      * Is applied when a user hits the "Clear all" button.

@@ -103,38 +103,68 @@ export type DropdownEffectivePropsType = Partial<{
     searchPlaceholder: string;
     defaultSearchQuery: string;
     enableSearchOption: boolean;
-    enableVirtualization?: boolean;
+    enableVirtualization: boolean;
     enableOptionContentEllipsis: boolean;
     enableFooter: boolean;
     preserveSelection: boolean; // this should be used only when the new data set is a superset of the original set
+    /**
+     * @armor-docs-expand DropdownInternalValueType
+     */
     onCancelClick: (initialSelection: DropdownInternalValueType) => void;
+    /**
+     * @armor-docs-expand DropdownInternalValueType
+     */
     onConfirmClick: (initialSelection: DropdownInternalValueType) => void;
     footerContent: ReactNode;
     singleLine: boolean;
     tagLabelMaxLength: number;
     openTagsCount: number;
+    /**
+     * @armor-docs-expand OptionItemType
+     */
     item: string | OptionItemType;
     itemIndex: number;
     onOptionSelect: (itemIndex: number) => void;
+    /**
+     * @armor-docs-expand DropDownOnSelectType
+     */
     onSelect: DropDownOnSelectType;
     selectedValue: string | number;
     isActionSeparatorDisplayed: boolean;
     label: string;
+    /**
+     * @armor-docs-expand OptionItemType
+     */
     options: string[] | OptionItemType[];
     multiple: boolean;
+    /**
+     * @armor-docs-expand DropdownValueType
+     */
     value: DropdownValueType;
     defaultValue:
         | string
         | ReadonlyArray<string>
         | ReadonlyArray<number>
         | number;
+    /**
+     * @armor-docs-expand DropdownOnChangeEventType
+     */
     onChange: (event: DropdownOnChangeEventType) => void;
+    /**
+     * @armor-docs-expand DropdownInternalValueType, DropdownInternalOptionType
+     */
     onRenderSelectedValue: (
         value: DropdownInternalValueType,
         options: DropdownInternalOptionType,
     ) => string;
+    /**
+     * @armor-docs-expand OptionFormatType
+     */
     formatOption: OptionFormatType;
     renderAggregatedTagsLabel: (aggregatedTagsCount: number) => string;
+    /**
+     * @armor-docs-expand DropdownGroupObjectType, DictionaryItemIDBased
+     */
     groups: DropdownGroupObjectType[];
     isOptionListShown: boolean;
     renderItemAdditionalInfo?: OptionListPropsType['renderItemAdditionalInfo'];

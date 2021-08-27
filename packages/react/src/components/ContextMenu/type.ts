@@ -13,7 +13,7 @@ import { ComponentBehaviourOpenStateType } from '../../system/types/ComponentBeh
 import { ComponentBehaviourOverlayType } from '../../system/types/ComponentBehaviourOverlayType';
 import { ComponentBehaviourPortalType } from '../../system/types/ComponentBehaviourPortalType';
 
-type ContextMenuElement = {
+export type ContextMenuElement = {
     label: ReactChild;
     id: ScalarType;
     props?: HTMLAttributes<HTMLElement>;
@@ -23,18 +23,19 @@ type ContextMenuExtras = {
     closeMenu: () => void;
 };
 
-export type ContextMenuElements = Array<ContextMenuElement>;
-
 /** 👉 PROPS TYPE */
 type ContextMenuEffectivePropsType = Partial<{
     /** Accepts an element as a trigger for the context menu. The element will be cloned and rendered in-place. */
     trigger: ReactElement;
     /**
      * If defined, an actual menu will be rendered inside of the dropdown panel. Otherwise, to fill out the contents of the panel the **children** property will be used.
-     * @armor-docs-expand ContextMenuElements, ContextMenuElement
+     * @armor-docs-expand ContextMenuElement
      */
-    menuElements: ContextMenuElements;
-    /** Is called when a click happens on one of the menu elements. It works only if the property *menuElements* was also specified. The third argument contains a *closeMenu* callback that allows closing the menu as soon as the client code finishes processing the event. */
+    menuElements: ContextMenuElement[];
+    /**
+     * Is called when a click happens on one of the menu elements. It works only if the property *menuElements* was also specified. The third argument contains a *closeMenu* callback that allows closing the menu as soon as the client code finishes processing the event.
+     * @armor-docs-expand ContextMenuElement, ContextMenuExtras
+     * */
     onMenuElementSelect: (
         elementId: ScalarType,
         element: ContextMenuElement,

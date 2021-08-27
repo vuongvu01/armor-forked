@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes } from 'react';
+import { ChangeEvent, InputHTMLAttributes } from 'react';
 
 import { MarginAttributesType } from '../../system';
 import { ComponentElementStylePropsType } from '../type';
@@ -11,7 +11,7 @@ type CheckboxEffectivePropsType = Partial<{
      * @armor-docs-expand CheckedIconType
      */
     checkedIcon: CheckedIconType;
-    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    onChange: (event: ChangeEvent<HTMLInputElement>) => void;
     error: boolean;
     label: string;
     // add other custom properties here

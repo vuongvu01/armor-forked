@@ -4,10 +4,8 @@ import {
     ComponentElementStylePropsType,
 } from '../../type';
 
-type TableBodyEffectivePropsType = Partial<{
-    // add other custom properties here
-}> &
-    HTMLAttributes<HTMLTableSectionElement>; // includes all HTML TBody attributes
+/** 👉 PROPS TYPE */
+type TableBodyEffectivePropsType = HTMLAttributes<HTMLTableSectionElement>; // includes all HTML TBody attributes
 
 /* TableBody component prop type */
 export type TableBodyPropsType = TableBodyEffectivePropsType &
