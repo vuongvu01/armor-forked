@@ -4,7 +4,7 @@ export const headerNavigationMenuContentHeaderTheme = {
     Title: {
         base: {
             marginBottom: componentSpacing01,
-            color: '$color.neutral.05',
+            color: '$color.neutral.07',
         },
     },
     Label: {

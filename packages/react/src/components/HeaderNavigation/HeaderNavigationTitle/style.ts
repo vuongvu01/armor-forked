@@ -32,7 +32,7 @@ export const HeaderNavigationTitleRoot = styled(
     }
 
     background-color: transparent;
-    color: ${color('neutral.06')};
+    color: ${color('neutral.11')};
     font-size: ${fontSize03};
     &:hover {
         background: ${color('neutral.02')};

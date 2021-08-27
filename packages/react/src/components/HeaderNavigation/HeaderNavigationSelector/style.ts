@@ -98,6 +98,6 @@ export const SelectorExpansionIndicator = styled(ExpansionIndicator)<
     HeaderNavigationSelectorRootPropsType
 >`
     .ExpansionIndicator-Icon {
-        color: ${color('neutral.06')};
+        color: ${color('neutral.11')};
     }
 `;

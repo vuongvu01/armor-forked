@@ -35,7 +35,7 @@ export const CSVUpload = () => {
                         <BreakWordTypography
                             paragraph
                             medium
-                            color="$color.neutral.05"
+                            color="$color.neutral.07"
                             margin={0}
                         >
                             vendorlistitsareallyreallylongvendorslistrighthereyeahvendrosyeah.csv

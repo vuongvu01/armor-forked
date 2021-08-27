@@ -41,7 +41,7 @@ export const DatePickerDaySelectorWeek = styled.div.withConfig(propsBlocker)`
 export const DatePickerDaySelectorWeekDay = styled.div.withConfig(propsBlocker)`
     width: ${spacing(10)};
     height: ${spacing(10)};
-    color: ${color('neutral.06')};
+    color: ${color('neutral.11')};
     ${typography('paragraphSmall')};
     font-weight: ${fontWeightMedium};
     display: flex;
@@ -132,7 +132,7 @@ const getDayButtonStyle = ({
         } else if (!allowed) {
             result = css`
                 ${result};
-                color: ${color('neutral.05')};
+                color: ${color('neutral.07')};
             `;
         }
     }
@@ -153,7 +153,7 @@ export const DatePickerDaySelectorDayButton = styled.a.withConfig(propsBlocker)<
 >`
     width: ${spacing(10)};
     height: ${spacing(10)};
-    color: ${color('neutral.06')};
+    color: ${color('neutral.11')};
     ${typography('paragraphSmall')};
     display: flex;
     align-items: center;

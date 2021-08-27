@@ -9,7 +9,7 @@ export const tooltipDefaultTheme = {
             padding: 3,
         },
         normal: {
-            color: '$color.neutral.05',
+            color: '$color.neutral.07',
             backgroundColor: '$color.neutral.00',
         },
         error: {

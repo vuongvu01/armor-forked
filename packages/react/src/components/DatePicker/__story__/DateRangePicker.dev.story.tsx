@@ -2,6 +2,7 @@
 
 import React, { useMemo, useState } from 'react';
 import { withKnobs } from '@storybook/addon-knobs';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { add } from 'date-fns';
 import { withWrapper } from '../../../helpers/Wrapper';
 

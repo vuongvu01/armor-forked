@@ -87,7 +87,7 @@ export const MessageContent = styled.div.withConfig(propsBlocker)<
 >`
     flex-grow: 1;
     line-height: 1.3;
-    color: ${color('neutral.06')};
+    color: ${color('neutral.11')};
 
     padding-top: ${spacing(4)};
     padding-bottom: ${spacing(4)};
@@ -148,7 +148,7 @@ export const MessageCloseButton = styled.a.withConfig(propsBlocker)<
     cursor: pointer;
     ${noTextInteraction};
 
-    color: ${color('neutral.05')};
+    color: ${color('neutral.07')};
     font-size: ${pixelToRem(fontSize03)};
 
     padding-top: ${spacing(5)};

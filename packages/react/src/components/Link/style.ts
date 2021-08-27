@@ -62,10 +62,10 @@ const getRootStyle = ({
     if (disabled) {
         result = css`
             ${result};
-            color: ${color('neutral.04')};
+            color: ${color('neutral.05')};
             cursor: not-allowed;
             &:hover {
-                color: ${color('neutral.04')};
+                color: ${color('neutral.05')};
             }
         `;
     }
@@ -98,7 +98,7 @@ export const LinkRoot = styled(LinkTagWrapper).withConfig(propsBlocker)<
     display: inline;
     cursor: pointer;
     &:visited {
-        color: ${color('purple.05')};
+        color: ${color('visited.05')};
     }
     &:hover {
         color: ${color('primary.light')};

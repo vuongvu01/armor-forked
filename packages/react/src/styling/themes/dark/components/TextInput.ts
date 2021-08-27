@@ -12,10 +12,10 @@ export const getTextInputOverride = ({
         background-color: ${token('body.backgroundColor')};
 
         .TextInput-Label {
-            color: ${color('neutral.04')};
+            color: ${color('neutral.05')};
         }
         .TextInput-LabelBackground {
-            color: ${color('neutral.04')};
+            color: ${color('neutral.05')};
 
             background: linear-gradient(
                 0,

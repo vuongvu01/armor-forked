@@ -9,7 +9,7 @@ export const dialogTitleDefaultTheme = {
     },
     Description: {
         base: {
-            color: '$color.neutral.05',
+            color: '$color.neutral.07',
             marginTop: 2,
         },
     },

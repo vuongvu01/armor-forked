@@ -19,7 +19,7 @@ export const CloseButtonRoot = styled.div.withConfig(propsBlocker)<
     ${reset()};
     display: flex;
     justify-content: flex-end;
-    color: ${color('neutral.06')};
+    color: ${color('neutral.11')};
     height: min-content;
     width: min-content;
     cursor: pointer;

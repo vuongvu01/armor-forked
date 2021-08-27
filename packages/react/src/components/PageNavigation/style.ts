@@ -16,6 +16,7 @@ import {
     propsBlocker,
 } from '../../system';
 import { Dropdown } from '../Dropdown';
+import { borderRadius02 } from '../../tokens';
 
 /** 👉 ROOT ELEMENT */
 export const PageNavigationRoot = styled.div.withConfig(propsBlocker)<
@@ -33,21 +34,11 @@ export const PageNavigationRoot = styled.div.withConfig(propsBlocker)<
     ${marginAttributes};
 `;
 
-const getButtonBaseStyle = ({ theme }: PageNavigationPageButtonPropsType) =>
-    theme.componentOverrides.PageNavigation.PageButton.base;
-
-const getButtonDynamicStyle = ({
-    theme,
+const getButtonStyle = ({
     arrow,
     disabled,
     selected,
 }: PageNavigationPageButtonPropsType) => {
-    const {
-        componentOverrides: {
-            PageNavigation: { PageButton },
-        },
-    } = theme;
-
     let result = css`
         position: relative;
         &:before {
@@ -60,11 +51,14 @@ const getButtonDynamicStyle = ({
             border-radius: 1px;
             display: none;
         }
-    `;
+    ` as {};
 
     if (arrow) {
         result = css`
-            ${PageButton.arrow};
+            ${result};
+            padding-left: ${spacing(1)};
+            padding-right: ${spacing(1)};
+            color: ${color('neutral.07')};
         `;
     }
 
@@ -84,7 +78,7 @@ const getButtonDynamicStyle = ({
                 background-color: transparent;
             }
             cursor: initial;
-            ${PageButton.disabled};
+            color: ${color('neutral.05')};
         `;
     }
 
@@ -104,6 +98,12 @@ export const PageNavigationPageButton = styled.button.withConfig(propsBlocker)<
     PageNavigationPageButtonPropsType
 >`
     ${reset()};
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    letter-spacing: inherit;
+    line-height: inherit;
+    color: ${color('neutral.11')};
     user-select: none;
     appearance: none;
     border: 0 none;
@@ -112,16 +112,27 @@ export const PageNavigationPageButton = styled.button.withConfig(propsBlocker)<
     transition: background-color ${transitionDurationInSec}s ease-out;
     display: flex;
     align-items: center;
+    padding: ${spacing(1)} ${spacing(3)};
+    border-radius: ${borderRadius02};
+    min-height: ${spacing(2)};
 
-    ${getButtonBaseStyle}
-    ${getButtonDynamicStyle}
+    &:hover {
+        background-color: ${color('primary.lightest')};
+    }
+    &:not(:last-child) {
+        margin-right: ${spacing(1)};
+    }
+    &:before {
+        background-color: ${color('primary.main')};
+    }
+    ${getButtonStyle};
 `;
 
 export const PageNavigationPageSize = styled.div.withConfig(propsBlocker)<
     PageNavigationSizePropsType
 >`
     ${reset()};
-    color: ${color('neutral.04')};
+    color: ${color('neutral.05')};
     margin-right: ${spacing(10)};
     white-space: nowrap;
 `;

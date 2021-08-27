@@ -29,9 +29,9 @@ export const accordionHeaderDefaultTheme = {
     },
     Typography: {
         base: {
-            color: '$color.neutral.06',
+            color: '$color.neutral.11',
             paddingRight: componentSpacing03,
         },
-        disabled: { color: '$color.neutral.04' },
+        disabled: { color: '$color.neutral.05' },
     },
 };

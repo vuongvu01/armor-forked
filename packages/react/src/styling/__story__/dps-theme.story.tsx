@@ -88,10 +88,10 @@ const declaration = {
                         backgroundColor: '$color.neutral.03',
                     },
                     '&:active': {
-                        backgroundColor: '$color.neutral.04',
+                        backgroundColor: '$color.neutral.05',
                     },
                     '&:disabled': {
-                        color: '$color.neutral.04',
+                        color: '$color.neutral.05',
                         borderColor: '$color.neutral.03',
                         backgroundColor: '$color.neutral.00',
                     },
@@ -104,7 +104,7 @@ const declaration = {
                         backgroundColor: '$color.neutral.03',
                     },
                     '&:active': {
-                        backgroundColor: '$color.neutral.04',
+                        backgroundColor: '$color.neutral.05',
                     },
                 },
                 danger: {

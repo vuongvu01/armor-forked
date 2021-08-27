@@ -41,7 +41,7 @@ const getTertiaryDangerInitialColors = () => css`
 `;
 
 const getPrimarySecondaryDisabledColors = () => css`
-    color: ${color('neutral.04')};
+    color: ${color('neutral.05')};
     border-color: ${color('neutral.03')};
     background-color: ${color('neutral.03')};
 `;
@@ -144,7 +144,7 @@ const getDynamicStyle = ({
                     color: ${color('error.main')};
                 }
                 &:disabled {
-                    color: ${color('neutral.04')};
+                    color: ${color('neutral.05')};
                 }
                 &:focus:not(:active) {
                     ${getTertiaryDangerInitialColors};
@@ -190,12 +190,12 @@ const getDynamicStyle = ({
         if (tertiary) {
             result = css`
                 ${result};
-                color: ${color('neutral.04')};
+                color: ${color('neutral.05')};
                 &:hover,
                 &:focus,
                 &:active,
                 &:focus:not(:active) {
-                    color: ${color('neutral.04')};
+                    color: ${color('neutral.05')};
                 }
             `;
         } else {

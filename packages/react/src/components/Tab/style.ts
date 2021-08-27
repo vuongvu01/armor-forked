@@ -59,7 +59,7 @@ const tabLabelStyle = ({
 }: TabLabelPropsType) => {
     let result = css`
         padding: ${spacing(1)} ${spacing(6)};
-        color: ${color('neutral.05')};
+        color: ${color('neutral.07')};
         border-radius: ${borderRadius('sharp')};
     `;
 

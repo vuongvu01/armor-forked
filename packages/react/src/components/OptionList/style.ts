@@ -119,7 +119,7 @@ const optionItemStyle = ({
             ${result};
             background-color: ${color('primary.lightest')};
             border-left-color: ${disabled
-                ? color('neutral.04')
+                ? color('neutral.05')
                 : color('primary.main')};
         `;
     }
@@ -187,7 +187,7 @@ export const OptionListItemGroup = styled.div.withConfig(propsBlocker)<
     padding: ${spacing(6)} ${spacing(4)} ${spacing(2)} ${spacing(4)};
     ${typography('labelMedium')};
     font-size: ${pixelToRem(14)};
-    color: ${color('neutral.05')};
+    color: ${color('neutral.07')};
     ${getSearchSuggestionListGroupDynamicStyle};
 `;
 

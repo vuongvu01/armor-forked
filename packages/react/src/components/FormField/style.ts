@@ -1,21 +1,23 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-import { marginAttributes, propsBlocker, widthAttributes } from '../../system';
+import {
+    marginAttributes,
+    propsBlocker,
+    spacing,
+    typography,
+    widthAttributes,
+} from '../../system';
 import { FormFieldRootPropsType } from './type';
 
-const getRootBaseStyle = ({ theme }: FormFieldRootPropsType) =>
-    theme.componentOverrides.FormField.Root.base;
-
-const getRootDynamicStyle = ({
-    theme,
+const getRootStyle = ({
     enableVerticalOuterSpacing,
 }: FormFieldRootPropsType) => {
-    const {
-        componentOverrides: { FormField },
-    } = theme;
-
     if (enableVerticalOuterSpacing) {
-        return FormField.Root.autoMargin;
+        return css`
+            &:not(:last-child) {
+                margin-bottom: ${spacing(1.25)};
+            }
+        `;
     }
 
     return '';
@@ -25,11 +27,10 @@ const getRootDynamicStyle = ({
 export const FormFieldRoot = styled.div.withConfig(propsBlocker)<
     FormFieldRootPropsType
 >`
+    ${typography('paragraphMedium')};
     box-sizing: border-box;
     position: relative;
-
-    ${getRootBaseStyle}
-    ${getRootDynamicStyle}
+    ${getRootStyle}
     
     ${marginAttributes}
     ${widthAttributes}

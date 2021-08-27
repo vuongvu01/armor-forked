@@ -32,7 +32,7 @@ const getRootStyle = ({
     if (disabled) {
         result = css`
             ${result};
-            color: ${color('neutral.04')};
+            color: ${color('neutral.05')};
             cursor: not-allowed;
             &:hover {
                 background: ${color('neutral.00')};
@@ -103,12 +103,12 @@ const getSecondaryListStyle = ({ lead, disabled }: ListItemRootPropsType) => {
     if (disabled) {
         result = css`
             ${result};
-            color: ${color('neutral.04')};
+            color: ${color('neutral.05')};
         `;
     } else {
         result = css`
             ${result};
-            color: ${color('neutral.05')};
+            color: ${color('neutral.07')};
         `;
     }
     return result;
@@ -119,12 +119,12 @@ const getLeadSubtitleStyle = ({ disabled }: ListItemRootPropsType) => {
     if (disabled) {
         result = css`
             ${result};
-            color: ${color('neutral.04')};
+            color: ${color('neutral.05')};
         `;
     } else {
         result = css`
             ${result};
-            color: ${color('neutral.05')};
+            color: ${color('neutral.07')};
         `;
     }
     return result;
@@ -141,12 +141,12 @@ const getPrimaryListStyle = ({ lead, disabled }: ListItemRootPropsType) => {
     if (disabled) {
         result = css`
             ${result};
-            color: ${color('neutral.04')};
+            color: ${color('neutral.05')};
         `;
     } else {
         result = css`
             ${result};
-            color: ${color('neutral.06')};
+            color: ${color('neutral.11')};
         `;
     }
 
@@ -200,7 +200,7 @@ export const SecondaryListItem = styled.div.withConfig(propsBlocker)<
     flex-direction: row;
     align-self: flex-start;
     justify-content: center;
-    color: ${color('neutral.05')};
+    color: ${color('neutral.07')};
     ${getSecondaryListStyle};
 `;
 

@@ -14,7 +14,7 @@ export const tabDefaultTheme = {
     },
     Label: {
         active: {
-            color: '$color.neutral.06',
+            color: '$color.neutral.11',
         },
         hover: {
             '&:hover': {
@@ -23,7 +23,7 @@ export const tabDefaultTheme = {
             },
         },
         disabled: {
-            color: '$color.neutral.04',
+            color: '$color.neutral.05',
             '&:hover': {
                 backgroundColor: 'inherit',
             },

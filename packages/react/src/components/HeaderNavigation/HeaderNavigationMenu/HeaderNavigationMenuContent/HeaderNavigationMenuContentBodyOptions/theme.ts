@@ -18,7 +18,7 @@ export const headerNavigationMenuContentBodyOptionsTheme = {
             fontWeight: '$typography.paragraphMedium.fontWeight',
             letterSpacing: '$typography.paragraphMedium.letterSpacing',
             lineHeight: '$typography.paragraphMedium.lineHeight',
-            color: '$color.neutral.05',
+            color: '$color.neutral.07',
             paddingTop: componentSpacing02,
             paddingRight: componentSpacing04,
             paddingBottom: componentSpacing02,

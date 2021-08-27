@@ -36,7 +36,7 @@ export const SideSheetHeaderDescription = styled.div.withConfig(propsBlocker)<
     SideSheetHeaderDescriptionPropsType
 >`
     ${typography('paragraphLarge')};
-    color: ${color('neutral.05')};
+    color: ${color('neutral.07')};
     margin-bottom: 0;
     margin-top: 0;
 `;
