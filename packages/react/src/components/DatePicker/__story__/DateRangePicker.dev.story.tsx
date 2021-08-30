@@ -269,3 +269,11 @@ export const AlwaysFiveDays = () => {
         />
     );
 };
+
+export const Errored = () => {
+    return (
+        <Box paddingTop={20} paddingLeft={100}>
+            <DateRangePicker data-testid-input="input42" error />
+        </Box>
+    );
+};

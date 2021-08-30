@@ -11,6 +11,7 @@ import { useDatePickerSelectionEvents } from './useDatePickerSelectionEvents';
 import { useDatePickerAllowedDates } from '../../hooks/useDatePickerAllowedDates';
 import { externalizeValue } from '../utils/externalizeValue';
 import { useFormattedValue } from './useFormattedValue';
+import { useInputProps } from '../../hooks/useInputProps';
 
 export const useDatePicker = <E extends HTMLDivElement>(
     {
@@ -19,12 +20,6 @@ export const useDatePicker = <E extends HTMLDivElement>(
         defaultDateValue,
         dateValue,
         onDateValueChange,
-        label,
-        placeholder,
-        disabled,
-        readOnly,
-        error,
-        'data-testid-input': dataTestIdInput,
         formatDateTime,
         onDayMouseEnter,
         onDayMouseLeave,
@@ -114,6 +109,8 @@ export const useDatePicker = <E extends HTMLDivElement>(
         formatDateTime,
     });
 
+    const { inputProperties, inactive } = useInputProps(restProps);
+
     return {
         rootProps: {
             ...callbacksRestProps,
@@ -122,17 +119,10 @@ export const useDatePicker = <E extends HTMLDivElement>(
             ref: rootRef,
         },
         inputProps: {
-            readOnly: true,
-            error,
-            disabled,
-            label,
-            placeholder,
+            ...inputProperties,
             ref: inputRef,
             value: formattedValue,
-            enableRootRef: true,
-            enableFocusOnRootClick: true,
-            onRootClick: disabled || readOnly ? undefined : toggleOpen,
-            'data-testid-input': dataTestIdInput,
+            onRootClick: inactive ? undefined : toggleOpen,
         },
         portalProps,
         dropdownProps,
