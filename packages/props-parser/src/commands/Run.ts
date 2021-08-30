@@ -51,6 +51,7 @@ export class Run implements CommandInstance {
     static options: Command['options'] = [
         ['-p, --project-folder <path>', 'Project folder'],
         ['-o, --output <path>', 'Output file'],
+        ['-s, --stats', 'Output stats'],
     ];
 
     constructor(
@@ -60,8 +61,14 @@ export class Run implements CommandInstance {
     ) {}
 
     async execute() {
-        const projectFolder = this.options.projectFolder ?? getProjectFolder();
-        const output = this.options.output ?? getOutputFolder();
+        const {
+            stats,
+            projectFolder: projectFolderOption,
+            output: outputOption,
+        } = this.options;
+
+        const projectFolder = projectFolderOption ?? getProjectFolder();
+        const output = outputOption ?? getOutputFolder();
 
         if (!projectFolder) {
             console.error(
@@ -135,6 +142,21 @@ export class Run implements CommandInstance {
                     }
                 },
             );
+        }
+
+        const printSeparator = () => {
+            console.error(
+                '\n<<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>\n',
+            );
+        };
+
+        if (stats) {
+            printSeparator();
+            console.error(` ✅ Found ${result.length} components:\n`);
+            result.forEach(({ name, properties }) =>
+                console.error(`    ➡️  ${name} (props: ${properties.length})`),
+            );
+            printSeparator();
         }
 
         const data = JSON.stringify({
