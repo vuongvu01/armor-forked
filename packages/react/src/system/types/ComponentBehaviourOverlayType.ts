@@ -1,7 +1,4 @@
 export type ComponentBehaviourOverlayType = {
-    /**
-     * Sets dropdown *CSS z-index* attribute. If not defined, then CSS *z-index* will be assigned automatically, basing on the current overlay stack
-     * @armor-docs-group overlay
-     */
+    /** Defines manual value of _z-index_ of a #COMPONENT_NAME#. If not defined, then the automatically calculated value is used otherwise. */
     zIndex?: number;
 };

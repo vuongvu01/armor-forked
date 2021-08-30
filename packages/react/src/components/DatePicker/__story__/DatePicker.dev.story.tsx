@@ -108,3 +108,11 @@ export const WithDisabledDates = () => {
         />
     );
 };
+
+export const Errored = () => {
+    return (
+        <Box paddingTop={20} paddingLeft={100}>
+            <DatePicker data-testid-input="input42" error />
+        </Box>
+    );
+};

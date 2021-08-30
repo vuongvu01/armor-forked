@@ -7,6 +7,7 @@ import {
     TypeNode,
 } from 'typescript';
 import { isAsteriskExportDeclaration } from './utils/is';
+import { printNode } from './utils/print';
 
 type SourceFileReferenceType = {
     module: string;
@@ -118,10 +119,11 @@ export class SourceFile {
                     const specifiers =
                         // @ts-ignore
                         node.exportClause?.elements;
-                    // @ts-ignore
-                    const module = node.moduleSpecifier.text;
 
-                    if (specifiers) {
+                    // @ts-ignore
+                    const module = node.moduleSpecifier?.text ?? '';
+
+                    if (specifiers && module) {
                         specifiers.forEach((specifier: TypeNode) => {
                             // @ts-ignore
                             const specifierName = specifier.name.escapedText;

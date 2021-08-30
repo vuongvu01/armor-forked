@@ -10,6 +10,7 @@ import { useControlledState } from '../../../../system';
 import { DateVectorRange } from '../../utils/DateVectorRange';
 import { externalizeValue } from '../utils/externalizeValue';
 import { useFormattedValue } from './useFormattedValue';
+import { useInputProps } from '../../hooks/useInputProps';
 
 const isDateAllowed = () => true;
 
@@ -19,10 +20,6 @@ export const useDateRangePicker = <E extends HTMLDivElement>(
         defaultDateValue,
         dateValue,
         onDateValueChange,
-        label,
-        disabled,
-        readOnly,
-        'data-testid-input': dataTestIdInput,
         formatDateTime,
         formatDateTimeRange,
         ...restProps
@@ -105,6 +102,8 @@ export const useDateRangePicker = <E extends HTMLDivElement>(
         formatDateTimeRange,
     });
 
+    const { inputProperties, inactive } = useInputProps(restProps);
+
     return {
         rootProps: {
             ...callbacksRestProps,
@@ -112,14 +111,10 @@ export const useDateRangePicker = <E extends HTMLDivElement>(
             ref: rootRef,
         },
         inputProps: {
-            readOnly: true,
-            label,
+            ...inputProperties,
             ref: inputRef,
             value: formattedValue,
-            enableRootRef: true,
-            enableFocusOnRootClick: true,
-            onRootClick: disabled || readOnly ? undefined : toggleOpen,
-            'data-testid-input': dataTestIdInput,
+            onRootClick: inactive ? undefined : toggleOpen,
         },
         portalProps,
         dropdownProps,

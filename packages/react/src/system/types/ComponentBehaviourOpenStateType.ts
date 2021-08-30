@@ -1,14 +1,15 @@
 export type ComponentBehaviourOpenStateType = {
     /**
-     * @armor-docs-group open_close_state
+     * If defined, sets the value of the __open/close state__ of #COMPONENT_NAME# and enables the _controlled mode_
      */
     open?: boolean;
     /**
-     * @armor-docs-group open_close_state
+     * If defined, sets the default value of the __open/close state__ of #COMPONENT_NAME#. It does not have any effect if _open_ property is also defined.
      */
     defaultOpen?: boolean;
     /**
-     * @armor-docs-group open_close_state
+     * A callback that gets fired when there is a change in the value of the __open/close state__ of #COMPONENT_NAME#.
+     * @param state
      */
     onOpenChange?: (state: boolean) => void;
 };

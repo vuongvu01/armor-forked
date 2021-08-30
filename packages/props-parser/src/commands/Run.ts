@@ -1,5 +1,5 @@
 import debug from 'debug';
-import { writeFile } from 'fs/promises';
+import { writeFile, stat } from 'fs/promises';
 import { Application } from '../lib/application';
 import {
     CommandInstance,
@@ -33,9 +33,14 @@ const standardTypes: string[] = [
     'ComponentBehaviourOverlayType',
     'ComponentBehaviourPortalType',
     'ComponentBehaviourModalDialogType',
-    'ComponentBehaviourCustomTag',
-    'ComponentBehaviourLinkBehaviour',
+    'ComponentBehaviourCustomTagType',
+    'ComponentBehaviourLinkType',
+    'ComponentBehaviourCustomTagPropertyType',
     'PopperPropsType',
+
+    // dirty hacks
+    'DatePickerEffectiveCommonPropsType',
+    'DatePickerEffectiveGenericPropsType',
 ];
 
 @Implements<Command>()
@@ -63,6 +68,15 @@ export class Run implements CommandInstance {
                 'No project folder specified. Please define either a --project-folder option or a ARMORPP_PROJECT_FOLDER env variable.',
             );
             return;
+        }
+
+        try {
+            await stat(projectFolder);
+        } catch (error) {
+            if (error.code === 'ENOENT') {
+                console.error(`No such file or directory: ${projectFolder}`);
+                return;
+            }
         }
 
         d('Project folder:', projectFolder);
