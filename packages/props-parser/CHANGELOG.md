@@ -1,3 +1,10 @@
+## @deliveryhero/armor-props-parser [1.1.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-props-parser@1.1.0...@deliveryhero/armor-props-parser@1.1.1) (2021-08-30)
+
+
+### Bug Fixes
+
+* **property-parser:** Property parser minor fixes and improvements ([#696](https://github.com/deliveryhero/armor/issues/696)) ([f0b448f](https://github.com/deliveryhero/armor/commit/f0b448f4b971361dae75aa1a31b6e0c1d64371ec))
+
 # @deliveryhero/armor-props-parser [1.1.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-props-parser@1.0.1...@deliveryhero/armor-props-parser@1.1.0) (2021-08-27)
 
 ## @deliveryhero/armor-props-parser [1.0.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-props-parser@1.0.0...@deliveryhero/armor-props-parser@1.0.1) (2021-08-24)
