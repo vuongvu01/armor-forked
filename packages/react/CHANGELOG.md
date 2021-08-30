@@ -1,3 +1,11 @@
+## @deliveryhero/armor [1.67.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.67.0...@deliveryhero/armor@1.67.1) (2021-08-30)
+
+
+### Bug Fixes
+
+* **datepicker:** DateRangePicker propagates error property to TextInput ([#695](https://github.com/deliveryhero/armor/issues/695)) ([c9effba](https://github.com/deliveryhero/armor/commit/c9effba61053a757cdbcce9af1cb51ce1383afe3))
+* **property-parser:** Property parser minor fixes and improvements ([#696](https://github.com/deliveryhero/armor/issues/696)) ([f0b448f](https://github.com/deliveryhero/armor/commit/f0b448f4b971361dae75aa1a31b6e0c1d64371ec))
+
 # @deliveryhero/armor [1.67.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.66.2...@deliveryhero/armor@1.67.0) (2021-08-27)
 
 
