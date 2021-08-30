@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, ComponentType } from 'react';
+import { ButtonHTMLAttributes } from 'react';
 
 import {
     MarginAttributesType,
