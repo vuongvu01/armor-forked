@@ -1,3 +1,10 @@
+## @deliveryhero/armor-props-parser [1.1.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-props-parser@1.1.1...@deliveryhero/armor-props-parser@1.1.2) (2021-08-30)
+
+
+### Bug Fixes
+
+* **props-parser:** Props Parser stats introduced ([#698](https://github.com/deliveryhero/armor/issues/698)) ([cf89d0f](https://github.com/deliveryhero/armor/commit/cf89d0f62d14a823e5349461268748e0c07d3825))
+
 ## @deliveryhero/armor-props-parser [1.1.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-props-parser@1.1.0...@deliveryhero/armor-props-parser@1.1.1) (2021-08-30)
 
 
