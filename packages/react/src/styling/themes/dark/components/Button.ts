@@ -21,8 +21,10 @@ export const getButtonOverride = ({
     secondary,
     danger,
     disabled,
+    likeDisabled,
 }: ButtonPropsType) => {
     const primary = isPrimary || (!secondary && !tertiary);
+    const reallyDisabled = disabled ?? likeDisabled;
 
     // set a different color for all disabled
     let result = css`
@@ -32,7 +34,7 @@ export const getButtonOverride = ({
     `;
 
     // remove background for all non-disabled S & T on hover
-    if (!disabled && (secondary || tertiary)) {
+    if (!reallyDisabled && (secondary || tertiary)) {
         result = css`
             ${result};
             &:hover {
@@ -42,7 +44,7 @@ export const getButtonOverride = ({
     }
 
     // do complete color remap for the danger state
-    if (danger && !disabled) {
+    if (danger && !reallyDisabled) {
         if (primary) {
             result = css`
                 ${result};
@@ -111,12 +113,10 @@ export const getButtonOverride = ({
     }
 
     // make disabled colors slightly lighter for P & S
-    if (disabled && (primary || secondary)) {
+    if (reallyDisabled && (primary || secondary)) {
         result = css`
             ${result};
-            &:disabled {
-                color: ${colorGrey50};
-            }
+            color: ${colorGrey50};
         `;
     }
 
