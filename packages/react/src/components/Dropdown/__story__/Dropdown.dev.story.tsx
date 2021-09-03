@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { withKnobs } from '@storybook/addon-knobs';
 
 import { GroupHelper } from '../../../helpers/GroupHelper';
 import { Dropdown } from '../Dropdown';
@@ -29,7 +28,7 @@ const thousandsOfOptionsList = Array.apply(0, Array(15000)).map((_, index) => ({
 export default {
     title: 'Components/Dropdown',
     component: Dropdown,
-    decorators: [withKnobs, withWrapper],
+    decorators: [withWrapper],
     parameters: {},
 };
 

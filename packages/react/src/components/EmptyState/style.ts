@@ -23,12 +23,10 @@ import {
 
 const sizes = { default: 160, small: 80 };
 
-const getRootStyle = ({ preset }: EmptyStateRootPropsType) => {
-    let result = css`
-        display: flex;
-        flex-direction: column;
-        width: fit-content;
-    ` as {};
+const getAlignmentStyle = ({
+    preset,
+}: Pick<EmptyStateRootPropsType, 'preset'>) => {
+    let result = css`` as {};
     if (preset === 'left') {
         result = css`
             ${result};
@@ -92,7 +90,7 @@ const getTitleStyle = ({
             align-self: center;
         `;
     } else if (titlePosition === 'right') {
-        result = css`imagePosition
+        result = css`
             ${result};
             align-self: flex-end;
         `;
@@ -205,7 +203,10 @@ export const EmptyStateRoot = styled.div.withConfig(propsBlocker)<
 >`
     ${reset};
     ${typography('paragraphMedium')};
-    ${getRootStyle};
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    ${getAlignmentStyle};
     ${getComponentOverride('EmptyState')};
     ${marginAttributes};
 `;
@@ -249,7 +250,8 @@ export const EmptyStateContainer = styled.div.withConfig(propsBlocker)<
     EmptyStateContainerPropsType
 >`
     margin-left: ${spacing(10)};
-    ${getEmptyStateContainerStyle};
+    ${// @ts-ignore
+    getEmptyStateContainerStyle};
 `;
 export const EmptyStateVerticalLayout = styled.div.withConfig(propsBlocker)<
     EmptyStateVerticalPropsType
@@ -258,7 +260,8 @@ export const EmptyStateVerticalLayout = styled.div.withConfig(propsBlocker)<
     flex-direction: column;
     justify-content: flex-start;
     max-width: ${spacing(80)};
-    ${getRootStyle}
+    width: fit-content;
+    ${getAlignmentStyle};
 `;
 export const EmptyStateImageContainer = styled.div.withConfig(propsBlocker)<
     EmptyStateImageContainerPropsType

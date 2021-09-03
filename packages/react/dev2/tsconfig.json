@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "strict": true,
+        "allowJs": true,
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": "./src",
+        "jsx": "preserve",
+        "lib": ["esnext.asynciterable", "esnext", "es2017", "es2015", "dom"],
+        "moduleResolution": "node",
+        "noUnusedLocals": false,
+        "noUnusedParameters": false,
+        "plugins": [
+            {
+                "name": "typescript-styled-plugin"
+            }
+        ],
+        "target": "ES2019",
+        "module": "ESNext",
+        "outDir": "./build"
+    },
+    "include": ["**/*.ts", "**/*.tsx"],
+    "exclude": ["node_modules/*", "public/*"]
+}

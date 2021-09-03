@@ -12,6 +12,7 @@
     "scripts": {
         "commit": "npx git-cz",
         "dev": "./script/dev.sh",
+        "dev2": "cd ./dev2; yarn dev",
         "visual": "cd ./visual && yarn start",
         "setup": "./script/setup.sh",
         "install-peers": "install-self-peers -- --ignore-scripts",
