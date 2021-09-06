@@ -1,3 +1,11 @@
+# @deliveryhero/armor-props-parser [1.2.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-props-parser@1.1.2...@deliveryhero/armor-props-parser@1.2.0) (2021-09-06)
+
+
+### Features
+
+* **docs:** Property parser tuple node traverse, DatePicker examples ([#709](https://github.com/deliveryhero/armor/issues/709)) ([d9f3efb](https://github.com/deliveryhero/armor/commit/d9f3efbdbb43225161c80f3c03fc7a59410ae16e))
+* **dropdown:** Support for grouped selection in Dropdown [LD-528] ([#640](https://github.com/deliveryhero/armor/issues/640)) ([627a6c9](https://github.com/deliveryhero/armor/commit/627a6c915061398509a5bd863edd632b273aa858))
+
 ## @deliveryhero/armor-props-parser [1.1.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-props-parser@1.1.1...@deliveryhero/armor-props-parser@1.1.2) (2021-08-30)
 
 
