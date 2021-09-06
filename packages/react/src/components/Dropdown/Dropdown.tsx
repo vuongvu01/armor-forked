@@ -63,6 +63,7 @@ export const Dropdown = forwardRef<HTMLInputElement, DropdownPropsType>(
         );
 
         return (
+            // @ts-ignore todo: the fix is only available with loose of backward compatibility
             <DropdownRoot
                 {...rootProps}
                 className={classOverride.Root}

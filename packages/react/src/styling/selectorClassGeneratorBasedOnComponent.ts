@@ -1,7 +1,7 @@
 import { ClassBasedOnComponentType } from '../components/Radio/type';
 import { makeBEM } from '../utils';
 
-const selectorClassGeneratorBasedOnComponent = ({
+export const selectorClassGeneratorBasedOnComponent = ({
     component,
     classPrefix,
     disabled,
@@ -25,5 +25,3 @@ const selectorClassGeneratorBasedOnComponent = ({
 
     return `${baseClassNames} ${stateClassNames.join(' ')}`.trim();
 };
-
-export default selectorClassGeneratorBasedOnComponent;

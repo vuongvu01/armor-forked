@@ -3,6 +3,7 @@ import {
     InfoIcon,
     WarningIcon,
     TickCircleFilledIcon,
+    // eslint-disable-next-line import/no-extraneous-dependencies
 } from '@deliveryhero/armor-icons';
 import { MessagePropsType } from '../type';
 import { messageLevels } from '../constants';

@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { CancelIcon } from '@deliveryhero/armor-icons';
 
 import {

@@ -1,5 +1,3 @@
-import { ReactText } from 'react';
-
 // this exception is here, because we, unfortunately, have some custom
 // props which naming intersects with native attributes.
 // SHAME
@@ -204,16 +202,19 @@ const allowedEventProps = {
 
 export const propsBlocker = {
     shouldForwardProp: (
-        propName: ReactText | boolean,
+        propName: string | number | boolean,
         // todo: tighten this any
         validate: (propName: any) => boolean,
     ) => {
+        if (typeof propName !== 'string') {
+            return false;
+        }
+
         if (propName in forbiddenProps) {
             return false;
         }
 
         if (
-            typeof propName === 'string' &&
             propName.startsWith('on') &&
             propName.length > 2 &&
             !(propName in allowedEventProps)

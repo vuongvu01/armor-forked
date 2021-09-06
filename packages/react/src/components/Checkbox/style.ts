@@ -98,9 +98,9 @@ export const CheckboxRoot = styled.label.withConfig(propsBlocker)<
     margin: 0;
     font-weight: ${fontWeightRegular};
 
-    ${mouseCursor}
+    ${mouseCursor};
     ${getComponentOverride('Checkbox')};
-    ${marginAttributes}
+    ${marginAttributes};
 `;
 
 export const CheckboxCheckmark = styled.div.withConfig(propsBlocker)<

@@ -1,6 +1,7 @@
 /* eslint-disable no-console,import/no-unresolved */
 
 import React, { FunctionComponent, useState, useCallback } from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { DeleteIcon } from '@deliveryhero/armor-icons';
 import { ThemeProvider } from 'styled-components';
 

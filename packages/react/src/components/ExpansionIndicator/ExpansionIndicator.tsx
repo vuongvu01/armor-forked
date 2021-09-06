@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FC } from 'react';
 
 import { ExpansionIndicatorEffectivePropsType } from './type';
 import {
@@ -18,7 +18,7 @@ import { useTheme } from '../../styling';
 /**
  * @armor-docs-component
  */
-export const ExpansionIndicator: FunctionComponent<ExpansionIndicatorEffectivePropsType> = ({
+export const ExpansionIndicator: FC<ExpansionIndicatorEffectivePropsType> = ({
     className,
     disabled,
     error,

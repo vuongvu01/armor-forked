@@ -2,6 +2,7 @@ import React from 'react';
 // eslint-disable-next-line import/no-unresolved
 import { withKnobs } from '@storybook/addon-knobs';
 
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { AddIcon } from '@deliveryhero/armor-icons';
 import { Message } from '../Message';
 import { Typography } from '../../Typography';

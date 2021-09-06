@@ -59,24 +59,3 @@ export const merge = (dst: ObjectLiteralType, src: ObjectLiteralType) =>
         arrayMerge: (destinationArray: any[], sourceArray: any[]) =>
             sourceArray,
     });
-
-const atomicPropsList = {
-    ...marginAttributesList,
-    ...paddingAttributesList,
-    ...styleAttributesList,
-    ...sizeAttributesList,
-    ...textAlignmentAttributesList,
-    ...displayAttributesList,
-    ...colorAttributesList,
-};
-
-/**
- * @internal
- */
-export const shouldForwardProp = (
-    property: PropNameType,
-    componentPropertyList: ObjectLiteralType = {},
-    blockAtomicProps = true,
-) =>
-    !(property in componentPropertyList) &&
-    !(blockAtomicProps && property in atomicPropsList);

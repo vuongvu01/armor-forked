@@ -2,7 +2,7 @@ import { RadioRootPropsType } from '../components/Radio/type';
 
 type PickMarginPropsType = RadioRootPropsType & any;
 
-const extractMarginProps = ({
+export const extractMarginProps = ({
     margin,
     marginTop,
     marginBottom,
@@ -24,5 +24,3 @@ const extractMarginProps = ({
 
     return { marginProps, ...restProps };
 };
-
-export default extractMarginProps;

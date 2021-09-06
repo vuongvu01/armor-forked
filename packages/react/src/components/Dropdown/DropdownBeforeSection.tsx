@@ -1,4 +1,5 @@
 import React, { forwardRef } from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { CancelIcon } from '@deliveryhero/armor-icons';
 import {
     DropdownBeforeSectionActionContainer,

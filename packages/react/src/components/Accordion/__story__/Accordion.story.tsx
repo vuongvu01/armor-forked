@@ -1,4 +1,5 @@
 import React, { ChangeEvent, useState, MouseEvent } from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { InfoIcon } from '@deliveryhero/armor-icons';
 // eslint-disable-next-line import/no-unresolved
 import { withKnobs } from '@storybook/addon-knobs';

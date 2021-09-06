@@ -45,18 +45,22 @@ export type EmptyStateActionContainerPropsType = {
     small?: boolean;
 } & ComponentElementStylePropsType;
 
-export type EmptyStateHorizontalPropsType = {} & ComponentElementStylePropsType;
+export type EmptyStateHorizontalPropsType = ComponentElementStylePropsType;
 
-export type EmptyStateVerticalPropsType = {} & ComponentElementStylePropsType;
+export type EmptyStateVerticalPropsType = Pick<
+    EmptyStateEffectivePropsType,
+    'preset'
+> &
+    ComponentElementStylePropsType;
 
-export type EmptyStateContainerPropsType = {} & ComponentElementStylePropsType;
+export type EmptyStateContainerPropsType = ComponentElementStylePropsType;
 
 export type EmptyStateDescriptionPropsType = {
     descriptionPosition?: 'left' | 'middle' | 'right';
     small?: boolean;
 } & ComponentElementStylePropsType;
 
-export type EmptyStateImageContainerPropsType = {} & ComponentElementStylePropsType;
+export type EmptyStateImageContainerPropsType = ComponentElementStylePropsType;
 
 export type EmptyStateImagePropsType = {
     imagePosition?: 'left' | 'middle' | 'right';

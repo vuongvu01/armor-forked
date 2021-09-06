@@ -34,7 +34,7 @@ export const useHeaderNavigationLink = ({
     );
 
     const url = to || href;
-    let isReallyActive = false;
+    let isReallyActive: ActionOrBoolean = false;
     if (isActive !== undefined) {
         if (typeof isActive === 'function') {
             isReallyActive = isActive();

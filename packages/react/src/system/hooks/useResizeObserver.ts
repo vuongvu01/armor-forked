@@ -54,7 +54,7 @@ export const useResizeObserver = (
                 onChangeInternal();
             }
 
-            if (observer && validContainer) {
+            if (observer && containerRef?.current) {
                 observer.observe(containerRef!.current);
             } else if (win) {
                 win.addEventListener('resize', onChangeInternalDecorated);

@@ -52,6 +52,7 @@ export type DropdownOnValueUpdateType = (
 ) => void;
 
 export type DropdownOnToggleAllType = (selectAll?: boolean) => void;
+export type DropdownOnToggleGroupType = (groupId: ScalarType) => void;
 export type DropdownOnRemoveMultipleType = (
     tagValuesToRemove: DropdownInternalValueType,
 ) => void;
@@ -166,6 +167,7 @@ export type DropdownEffectivePropsType = Partial<{
      * @armor-docs-expand DropdownGroupObjectType, DictionaryItemIDBased
      */
     groups: DropdownGroupObjectType[];
+    enableGroupSelection: boolean; // can only be used in tandem with `multiple` prop
     isOptionListShown: boolean;
     renderItemAdditionalInfo?: OptionListPropsType['renderItemAdditionalInfo'];
 

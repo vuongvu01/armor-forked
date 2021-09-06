@@ -1,4 +1,5 @@
 import React, { forwardRef } from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { ArrowRightIcon } from '@deliveryhero/armor-icons';
 
 import { useDatePickerTopBarClassNames } from './hooks/useDatePickerTopBarClassNames';

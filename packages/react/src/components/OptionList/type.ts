@@ -1,4 +1,4 @@
-import { HTMLAttributes, ReactChild } from 'react';
+import React, { HTMLAttributes, ReactChild } from 'react';
 import {
     DictionaryItemIDBased,
     ObjectLiteralType,
@@ -26,9 +26,21 @@ export type OptionObjectType = {
     label: ReactChild;
     value: ScalarType;
     disabled?: boolean;
+    groupId?: string;
 } & ObjectLiteralType;
 
 export type OptionListGroupObjectType = DictionaryItemIDBased;
+
+export type InternalItemGroupObjectTypeInternal = DictionaryItemIDBased & {
+    totalItemsCount: number;
+    selectedItemsCount: number;
+    selectedItemIds: ScalarType[];
+};
+
+export type InternalItemGroupObjectType = Record<
+    string,
+    InternalItemGroupObjectTypeInternal
+>;
 
 export type OptionListGroupObjectIndexType = ObjectLiteralType<
     OptionListGroupObjectType
@@ -37,28 +49,30 @@ export type OptionListGroupObjectIndexType = ObjectLiteralType<
 /** 👉 PROPS TYPE */
 export type OptionListPropsType = {
     disabled?: boolean;
-    internalValue: DropdownInternalValueType; // todo: decouple this from the Dropdown
-    setInternalValue?: (nextValue: DropdownInternalValueType) => void; // todo: decouple this from the Dropdown
-    internalOptions: DropdownInternalOptionType; // todo: decouple this from the Dropdown
-    dynamicInternalOptions?: DropdownInternalOptionType; // todo: decouple this from the Dropdown
-    setInternalOptions?: (nextOptions: DropdownInternalOptionType) => void; // todo: decouple this from the Dropdown
+    internalValue: DropdownInternalValueType; // todo: decouple this from the Dropdown_
+    setInternalValue?: (nextValue: DropdownInternalValueType) => void; // todo: decouple this from the Dropdown_
+    internalOptions: DropdownInternalOptionType; // todo: decouple this from the Dropdown_
+    dynamicInternalOptions?: DropdownInternalOptionType; // todo: decouple this from the Dropdown_
+    setInternalOptions?: (nextOptions: DropdownInternalOptionType) => void; // todo: decouple this from the Dropdown_
     setSearch?: (searchQuery: string) => void;
     enableAbsolutePositioning?: boolean;
     groups?: OptionListGroupObjectType[];
+    internalGroups?: ItemGroupsPropsType;
+    setInternalGroups?: (groups: InternalItemGroupObjectType) => void;
     isFlat?: boolean;
     blurInput?: () => void;
     onCancelClick?: () => void;
     onConfirmClick?: () => void;
     setIsOptionListShown: (value: boolean) => void;
     onValueUpdate: (
-        internalValue: DropdownInternalValueType, // todo: decouple this from the Dropdown
+        internalValue: DropdownInternalValueType, // todo: decouple this from the Dropdown_
         multiple: boolean | undefined,
         item: OptionObjectType,
         itemValue: ScalarType,
         options?: Array<string | OptionObjectType>,
         isFlat?: boolean,
     ) => void;
-    onChange?: (event: DropdownOnChangeEventType) => void; // todo: decouple this from the Dropdown
+    onChange?: (event: DropdownOnChangeEventType) => void; // todo: decouple this from the Dropdown_
     enableOptionContentEllipsis?: boolean;
     renderItemAdditionalInfo?: (
         option: string | OptionObjectType,
@@ -76,6 +90,7 @@ export type OptionListPropsType = {
     | 'searchPlaceholder'
     | 'enableVirtualization'
     | 'defaultSearchQuery'
+    | 'enableGroupSelection'
 > &
     Omit<HTMLAttributes<HTMLDivElement>, 'onChange'>;
 
@@ -112,6 +127,12 @@ export type OptionListItemTypographyPropsType = Pick<
 > &
     TypographyPropsType;
 
+export type OptionListItemGroupTypographyPropsType = Pick<
+    OptionListItemPropsType,
+    'enableContentEllipsis'
+> &
+    TypographyPropsType;
+
 export type OptionListSearchPropsType = {
     searchPlaceholder?: string;
 };
@@ -120,7 +141,17 @@ export type DropdownOnSearchQueryChangeType = (searchQuery?: string) => void;
 
 export type OptionListItemGroupPropType = {
     enableSeparator: boolean;
-};
+    onClick?: (
+        event: React.MouseEvent<HTMLDivElement>,
+        groupId: ScalarType,
+    ) => void;
+    internalGroup?: InternalItemGroupObjectTypeInternal;
+    checked?: boolean;
+} & Pick<OptionListItemPropsType, 'enableContentEllipsis'> &
+    Pick<DropdownEffectivePropsType, 'multiple' | 'enableGroupSelection'> &
+    HTMLAttributes<HTMLDivElement>;
+
+export type ItemGroupsPropsType = InternalItemGroupObjectType | undefined;
 
 export type OptionListVirtualOffsetType = {
     height: number;

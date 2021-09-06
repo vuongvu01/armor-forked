@@ -1,4 +1,4 @@
-import { InputHTMLAttributes } from 'react';
+import { HTMLAttributes } from 'react';
 
 import { MarginAttributesType } from '../../system';
 import { ComponentElementStylePropsType } from '../type';
@@ -17,11 +17,9 @@ export type ExpansionIndicatorEffectivePropsType = Partial<{
     error: boolean;
     isExpanded: boolean;
     displaySeparator: boolean;
+    disabled: boolean;
 }> &
-    Omit<
-        InputHTMLAttributes<HTMLInputElement>,
-        'value' | 'onChange' | 'defaultValue'
-    > &
+    HTMLAttributes<HTMLElement> &
     MarginAttributesType;
 
 export type ExpansionIndicatorRootPropsType = ExpansionIndicatorEffectivePropsType &

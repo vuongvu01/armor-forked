@@ -30,6 +30,7 @@ export const FileUploadButton = forwardRef<
     } = useFileUploadButton<HTMLInputElement>(props, ref);
 
     return (
+        // @ts-ignore
         <FileUploadButtonRoot
             {...rootProps}
             theme={theme}

@@ -8,7 +8,9 @@ import React, {
 } from 'react';
 
 import {
+    InternalItemGroupObjectTypeInternal,
     OptionListGroupObjectIndexType,
+    OptionListGroupObjectType,
     OptionListPropsType,
     OptionObjectType,
 } from '../type';
@@ -17,6 +19,8 @@ import { OPTION_LIST_ITEM } from '../constants';
 import { useOnToggleAll } from '../../Dropdown/hooks';
 import { useOnSearchQueryChange } from './useOnSearchQueryChange';
 import { useVirtualization } from '../../../system';
+import { ScalarType } from '../../../type';
+import { useOnToggleGroup } from '../../Dropdown/hooks/useOnToggleGroup';
 
 export const useOptionList = ({
     disabled,
@@ -29,6 +33,7 @@ export const useOptionList = ({
     onChange,
     setInternalValue,
     internalOptions,
+    internalGroups,
     dynamicInternalOptions = internalOptions,
     setInternalOptions,
     setSearch,
@@ -44,6 +49,7 @@ export const useOptionList = ({
     enableVirtualization = false,
     isFlat,
     groups,
+    enableGroupSelection,
     enableOptionContentEllipsis,
     renderItemAdditionalInfo,
     ...restProps
@@ -127,6 +133,14 @@ export const useOptionList = ({
         onChange,
     );
 
+    const onToggleGroup = useOnToggleGroup(
+        setInternalValue,
+        internalOptions,
+        internalValue,
+        internalGroups,
+        onChange,
+    );
+
     useEffect(() => onSearchChange(), [searchQuery]);
 
     const handleToggleAll = () => onToggleAll();
@@ -140,8 +154,25 @@ export const useOptionList = ({
         [setSearchQuery, setSearchQuery],
     );
 
+    const handleToggleGroup = useCallback(
+        (event: React.MouseEvent<HTMLDivElement>, groupId: ScalarType) => {
+            if (!enableGroupSelection) {
+                return;
+            }
+
+            onToggleGroup(groupId);
+        },
+        [enableGroupSelection, onToggleGroup],
+    );
+
     const selectAllCheckedIcon: CheckedIconType =
-        internalOptions.length === internalValue.length ? 'tick' : 'dash';
+        internalOptions.filter(
+            option =>
+                !option?.disabled ||
+                (!!option?.disabled && internalValue.includes(option.value)),
+        ).length === internalValue.length
+            ? 'tick'
+            : 'dash';
 
     const groupIndex = useMemo<OptionListGroupObjectIndexType>(() => {
         if (!groups || !groups.length) {
@@ -206,6 +237,16 @@ export const useOptionList = ({
         listContainerProps: {
             ref: listContainerRef,
         },
+        optionListItemGroupProps: (group: OptionListGroupObjectType) => ({
+            multiple,
+            enableGroupSelection,
+            enableContentEllipsis: enableOptionContentEllipsis,
+            onClick: (event: React.MouseEvent<HTMLDivElement>) =>
+                handleToggleGroup(event, group.id),
+            internalGroup: internalGroups
+                ? internalGroups[group.id]
+                : ({} as InternalItemGroupObjectTypeInternal),
+        }),
         listProps: {
             ref: listRef,
         },

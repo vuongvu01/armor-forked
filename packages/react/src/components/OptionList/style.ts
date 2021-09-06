@@ -3,13 +3,14 @@ import { transitionDurationInSec } from '../../constants';
 import {
     OptionListBeforeSectionContainerPropsType,
     OptionListContainerPropsType,
+    OptionListItemAdditionalInfoPropsType,
     OptionListItemGroupPropType,
+    OptionListItemGroupTypographyPropsType,
     OptionListItemPropsType,
     OptionListItemTypographyPropsType,
-    OptionListVirtualOffsetType,
     OptionListRootPropsType,
     OptionListSearchPropsType,
-    OptionListItemAdditionalInfoPropsType,
+    OptionListVirtualOffsetType,
 } from './type';
 import {
     color,
@@ -17,12 +18,13 @@ import {
     getComponentOverride,
     pixelToRem,
     propsBlocker,
+    reset,
     spacing,
     typography,
-    reset,
 } from '../../system';
 import { Search } from '../Search';
 import { Typography } from '../Typography';
+import { Checkbox } from '../Checkbox';
 
 const getOptionListStyle = ({
     isOptionListShown,
@@ -76,7 +78,6 @@ export const OptionListBeforeSectionContainer = styled.div.withConfig(
 )<OptionListBeforeSectionContainerPropsType>`
     top: 0;
     background: ${color('neutral.00')};
-    border-bottom: solid 1px ${color('neutral.02')};
 `;
 
 export const OptionListSearchContainer = styled.div.withConfig(propsBlocker)<
@@ -166,28 +167,84 @@ export const OptionListItemTypography = styled(Typography)<
             : ''};
 `;
 
+export const OptionListItemGroupTypography = styled(Typography)<
+    OptionListItemGroupTypographyPropsType
+>`
+    color: ${color('neutral.07')};
+    ${({ enableContentEllipsis }) => {
+        let result = css``;
+
+        if (enableContentEllipsis !== false) {
+            result = css`
+                ${result};
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            `;
+        }
+
+        return result;
+    }}
+`;
+
 const getSearchSuggestionListGroupDynamicStyle = ({
     enableSeparator,
+    enableGroupSelection,
 }: OptionListItemGroupPropType) => {
     let result = {};
 
-    if (enableSeparator) {
+    if (enableSeparator || enableGroupSelection) {
         result = css`
             border-top: 1px solid ${color('neutral.02')};
-            padding-top: ${spacing(10)};
         `;
     }
 
     return result;
 };
 
-export const OptionListItemGroup = styled.div.withConfig(propsBlocker)<
+const getOptionListItemGroupRootStyle = ({
+    multiple,
+    enableGroupSelection,
+    checked,
+}: OptionListItemGroupPropType) => {
+    let result = css`
+        padding: ${spacing(6)} ${spacing(4)} ${spacing(2)} ${spacing(4)};
+    `;
+
+    if (multiple && enableGroupSelection) {
+        result = css`
+            ${result};
+            padding: ${spacing(3)} ${spacing(4)};
+            text-transform: uppercase;
+            align-items: center;
+            box-sizing: border-box;
+            cursor: pointer;
+            display: flex;
+            border-left: 2px solid transparent;
+            &:hover {
+                background-color: ${color('primary.lightest')};
+            }
+        `;
+    }
+
+    if (checked) {
+        result = css`
+            ${result};
+            background-color: ${color('primary.lightest')};
+            border-left-color: ${color('primary.main')};
+        `;
+    }
+
+    return result;
+};
+
+export const OptionListItemGroupRoot = styled.div.withConfig(propsBlocker)<
     OptionListItemGroupPropType
 >`
-    padding: ${spacing(6)} ${spacing(4)} ${spacing(2)} ${spacing(4)};
     ${typography('labelMedium')};
     font-size: ${pixelToRem(14)};
     color: ${color('neutral.07')};
+    ${getOptionListItemGroupRootStyle};
     ${getSearchSuggestionListGroupDynamicStyle};
 `;
 

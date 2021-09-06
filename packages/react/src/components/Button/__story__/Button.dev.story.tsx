@@ -4,6 +4,7 @@ import {
     select,
     // eslint-disable-next-line import/no-unresolved
 } from '@storybook/addon-knobs';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { EditIcon } from '@deliveryhero/armor-icons';
 // eslint-disable-next-line import/no-unresolved
 import styled, { ThemeProvider } from 'styled-components';
@@ -13,7 +14,8 @@ import { withStyles as withMaterialStyles } from '@material-ui/core/styles';
 import { BrowserRouter, Link } from 'react-router-dom';
 
 import { MaterialIcon } from '../../MaterialIcon';
-import { makeDefaultTheme, makeTheme } from '../../../styling';
+import { makeDefaultTheme } from '../../../styling/themes/default';
+import { makeTheme } from '../../../styling';
 import { ObjectLiteralType } from '../../../type';
 import { GroupHelper } from '../../../helpers/GroupHelper';
 import { Button } from '../Button';
@@ -389,4 +391,36 @@ export const WithCustomSide = () => (
         </BlockWithBorder>
         <Box paddingY={3}>custom side</Box>
     </Button>
+);
+
+export const LikeDisabled = () => (
+    <>
+        <div>
+            <Button primary>Normal</Button>
+            <Button disabled primary>
+                Disabled
+            </Button>
+            <Button likeDisabled primary>
+                Like disabled
+            </Button>
+        </div>
+        <div>
+            <Button secondary>Normal</Button>
+            <Button disabled secondary>
+                Disabled
+            </Button>
+            <Button likeDisabled secondary>
+                Like disabled
+            </Button>
+        </div>
+        <div>
+            <Button tertiary>Normal</Button>
+            <Button disabled tertiary>
+                Disabled
+            </Button>
+            <Button likeDisabled tertiary>
+                Like disabled
+            </Button>
+        </div>
+    </>
 );

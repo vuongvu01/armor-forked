@@ -28,7 +28,9 @@
                 "dev/node_modules/@storybook/addon-actions"
             ],
             "@storybook/components": ["doc/node_modules/@storybook/components"]
-        }
+        },
+        "noUnusedLocals": false,
+        "noUnusedParameters": false
     },
     "exclude": ["node_modules", "build", "build.cjs", "build.esm"],
     "include": ["src/**/*", "src/globals.d.ts"]

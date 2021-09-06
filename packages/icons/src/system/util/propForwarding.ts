@@ -1,5 +1,3 @@
-import { ReactText } from 'react';
-
 // this exception is here, because we, unfortunately, have some custom
 // props which naming intersects with native attributes.
 // SHAME

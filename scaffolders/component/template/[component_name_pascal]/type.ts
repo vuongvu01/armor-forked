@@ -22,4 +22,4 @@ export type <%- component_name_pascal %>PropsType = <%- component_name_pascal %>
 
 export type <%- component_name_pascal %>RootPropsType = <%- component_name_pascal %>EffectivePropsType & ComponentElementStylePropsType;
 
-// export type <%- component_name_pascal %>SubNodePropsType = {} & ComponentElementStylePropsType;
+// export type <%- component_name_pascal %>SubNodePropsType = { /* ... add props here or remove this block ...*/ } & ComponentElementStylePropsType;

@@ -1,5 +1,6 @@
 import React, { ChangeEvent, useCallback, useState } from 'react';
 // eslint-disable-next-line import/no-unresolved
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { InfoIcon } from '@deliveryhero/armor-icons';
 
 import { Search } from '../Search';
@@ -10,7 +11,6 @@ import { CogIcon } from '../../../icons';
 import { campaigns } from './constants';
 import { Typography } from '../../Typography';
 import { Button } from '../../Button';
-import { Tooltip } from '../../Tooltip';
 
 export default {
     title: 'Components/Search',

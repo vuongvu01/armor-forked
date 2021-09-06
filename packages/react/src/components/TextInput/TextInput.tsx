@@ -63,6 +63,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputPropsType>(
         );
 
         return (
+            // @ts-ignore todo: the fix is only available with loose of backward compatibility
             <TextInputRoot
                 data-testid={textInputRoot}
                 {...rootProps}

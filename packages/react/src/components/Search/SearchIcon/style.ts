@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { SearchIcon, UploadIcon } from '@deliveryhero/armor-icons';
 import {
     SearchIconContainerPropsType,

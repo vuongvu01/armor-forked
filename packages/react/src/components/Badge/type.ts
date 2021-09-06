@@ -1,4 +1,4 @@
-import { InputHTMLAttributes } from 'react';
+import { HTMLAttributes } from 'react';
 
 import { MarginAttributesType } from '../../system';
 import { ComponentElementStylePropsType } from '../type';
@@ -13,7 +13,7 @@ export type ClassBasedOnComponentType = {
 };
 
 /** 👉 PROPS TYPE */
-type BadgeEffectivePropsType = InputHTMLAttributes<HTMLInputElement> &
+type BadgeEffectivePropsType = HTMLAttributes<HTMLDivElement> &
     MarginAttributesType;
 
 export type BadgePropsType = BadgeEffectivePropsType;

@@ -23,6 +23,8 @@ import {
 import { useOnOptionListUpdate } from './useOnOptionListUpdate';
 import { usePanelWidth } from './usePanelWidth';
 import { MAX_OPTIONS_SELECT_ALL_THRESHOLD } from '../../OptionList/constants';
+import { InternalItemGroupObjectType } from '../../OptionList/type';
+import { useOnInternalItemGroupsUpdate } from './useOnInternalItemGroupsUpdate';
 
 export const useDropdown = <E extends HTMLInputElement>(
     {
@@ -56,6 +58,7 @@ export const useDropdown = <E extends HTMLInputElement>(
         enablePortal,
         groups,
         renderItemAdditionalInfo,
+        enableGroupSelection,
         'data-testid-input': dataTestIdInput,
 
         // open/close state
@@ -85,6 +88,9 @@ export const useDropdown = <E extends HTMLInputElement>(
 
     const [internalValue, setInternalValue] = useValue(value, defaultValue);
     const [searchQuery, setSearchQuery] = useState(defaultSearchQuery);
+    const [internalGroups, setInternalGroups] = useState<
+        InternalItemGroupObjectType
+    >({});
 
     const { internalOptions, isFlat } = useOptions(options, formatOption);
 
@@ -119,6 +125,14 @@ export const useDropdown = <E extends HTMLInputElement>(
         onChange,
         name,
         initialSelection,
+    );
+
+    useOnInternalItemGroupsUpdate(
+        internalValue,
+        internalOptions,
+        setInternalGroups,
+        groups,
+        enableGroupSelection,
     );
 
     const selectedValueToDisplay = useSelectedValueToDisplay(
@@ -261,10 +275,13 @@ export const useDropdown = <E extends HTMLInputElement>(
             onCancelClick: handleCancelClick,
             onConfirmClick: handleConfirmClick,
             footerContent,
+            internalGroups,
+            setInternalGroups,
             searchPlaceholder,
             defaultSearchQuery,
             enableAbsolutePositioning: false,
             groups,
+            enableGroupSelection,
             enableOptionContentEllipsis,
             renderItemAdditionalInfo,
         },

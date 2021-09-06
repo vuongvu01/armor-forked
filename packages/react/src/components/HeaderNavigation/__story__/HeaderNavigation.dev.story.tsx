@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import {
     LogoutIcon,
     QuestionCircleFilledIcon,
+    // eslint-disable-next-line import/no-extraneous-dependencies
 } from '@deliveryhero/armor-icons';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { BrowserRouter, Link } from 'react-router-dom';
