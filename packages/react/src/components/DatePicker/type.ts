@@ -35,7 +35,20 @@ export type DatePickerEffectiveCommonPropsType = Partial<{
     error: boolean;
 
     defaultMonthYearSelectorOpen: boolean;
-    /** Allows arbitrary formatting the selected date. Libraries like date-fns or momentjs can be used to perform the formatting through this callback. */
+    /**
+     * Allows arbitrary formatting the selected date. Libraries like date-fns or momentjs can be used to perform the formatting through this callback.
+     *
+     * ~~~typescript example
+     * import { format } from 'date-fns';
+     *
+     * <#COMPONENT_NAME#
+     *      formatDateTime: (value: unknown) => format(
+     *          value instanceof Date ? value : new Date(value as string),
+     *          'hh:mm dd.MM.yyyy'
+     *      ),
+     * />
+     * ~~~
+     */
     formatDateTime: (value: Date) => string;
     /** A callback that is triggered when a mouse enters the button of a day. An instance of the Date object comes as an argument. */
     onDayMouseEnter: (date: Date) => void;
@@ -44,6 +57,15 @@ export type DatePickerEffectiveCommonPropsType = Partial<{
 
     /**
      * Specifies date ranges that are available for selection. Accepts dates in local timezone. A special value *current* means that this value will be replaced by the current datetime at run-time. *Null* means "infinity".
+     *
+     * ~~~typescript example title:"Allows future dates, starting from today"
+     * <#COMPONENT_NAME# allowedDateRanges=[['current', null]] />
+     * ~~~
+     *
+     * ~~~typescript example title:"Allows one day before and one day after the current one"
+     * <#COMPONENT_NAME# allowedDateRanges=[['current-1', 'current+1']] />
+     * ~~~
+     *
      * @armor-docs-expand DateRangeEdgeType
      */
     allowedDateRanges: [DateRangeEdgeType, DateRangeEdgeType][];

@@ -17,6 +17,8 @@ import {
     TypeElement,
     IntersectionTypeNode,
     UnionTypeNode,
+    isTupleTypeNode,
+    TupleTypeNode,
 } from 'typescript';
 import debug from 'debug';
 import { Project } from './Project';
@@ -125,6 +127,10 @@ export class TypeDeclarationCrawler {
 
         if (isUnionTypeNode(node)) {
             return this.traverseUnionType(node, ctx);
+        }
+
+        if (isTupleTypeNode(node)) {
+            return this.traverseTuple(node, ctx);
         }
 
         return node;
@@ -271,6 +277,20 @@ export class TypeDeclarationCrawler {
         }
 
         return factory.updateUnionTypeNode(
+            node,
+            factory.createNodeArray(result),
+        );
+    }
+
+    private traverseTuple(node: TupleTypeNode, ctx: ContextType) {
+        const { elements } = node;
+
+        const result: TypeNode[] = [];
+        for (let i = 0; i < elements.length; i += 1) {
+            result.push(this.traverse(elements[i], this.dive(ctx)));
+        }
+
+        return factory.updateTupleTypeNode(
             node,
             factory.createNodeArray(result),
         );
