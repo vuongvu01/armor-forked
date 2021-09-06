@@ -1,3 +1,5 @@
+## @deliveryhero/armor-icons [1.14.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.14.1...@deliveryhero/armor-icons@1.14.2) (2021-09-06)
+
 ## @deliveryhero/armor-icons [1.14.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.14.0...@deliveryhero/armor-icons@1.14.1) (2021-08-18)
 
 # @deliveryhero/armor-icons [1.14.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.13.0...@deliveryhero/armor-icons@1.14.0) (2021-08-11)
