@@ -7,6 +7,7 @@ import {
 } from '../type';
 import { OptionObjectType } from '../../OptionList/type';
 import { handleOnChange } from '../utils/handleOnChange';
+import { ScalarType } from '../../../type';
 
 export const useOnToggleAll = (
     setInternalValue:
@@ -19,8 +20,8 @@ export const useOnToggleAll = (
 ) =>
     useCallback<DropdownOnToggleAllType>(
         (selectAll = true) => {
-            const preselectedDisabledOptionItems: Array<number | string> = [];
-            const unselectedDisabledOptionItems: Array<number | string> = [];
+            const preselectedDisabledOptionItems: Array<ScalarType> = [];
+            const unselectedDisabledOptionItems: Array<ScalarType> = [];
 
             internalOptions.forEach((option: OptionObjectType) => {
                 if (option.disabled) {
@@ -65,7 +66,7 @@ export const useOnToggleAll = (
                 return;
             }
 
-            const enabledOptionValuesOnSelect: Array<number | string> = [];
+            const enabledOptionValuesOnSelect: Array<ScalarType> = [];
 
             internalOptions.forEach((option: OptionObjectType) => {
                 if (

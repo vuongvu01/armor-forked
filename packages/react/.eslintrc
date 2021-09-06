@@ -36,8 +36,13 @@
         "import/extensions": "off",
         "react/prop-types": "off"
     },
+    "env": {
+        "es2021": true,
+        "browser": true,
+        "node": true,
+        "jest": true
+    },
     "parserOptions": {
-        "ecmaVersion": 6,
         "sourceType": "module"
     },
     "globals": {},
@@ -50,11 +55,5 @@
                 "extensions": [".js", ".ts", ".tsx"]
             }
         }
-    },
-    "env": {
-        "es6": true,
-        "browser": true,
-        "node": true,
-        "jest": true
     }
 }

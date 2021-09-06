@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { LogoutIcon } from '@deliveryhero/armor-icons';
 import { HeaderNavigationActionItem } from '.';
 

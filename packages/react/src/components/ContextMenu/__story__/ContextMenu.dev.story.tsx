@@ -3,6 +3,7 @@
 import React, { useState, MouseEvent } from 'react';
 import { withKnobs } from '@storybook/addon-knobs';
 
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { EllipsisVerticalIcon } from '@deliveryhero/armor-icons';
 
 import { ContextMenu } from '../ContextMenu';

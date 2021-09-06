@@ -4,6 +4,7 @@ import React from 'react';
 import { withKnobs, text } from '@storybook/addon-knobs';
 import styled from 'styled-components';
 
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { DeleteIcon, TickCircleFilledIcon } from '@deliveryhero/armor-icons';
 
 import { withWrapper } from '../../../helpers/Wrapper';

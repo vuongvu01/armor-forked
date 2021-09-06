@@ -98,7 +98,7 @@
 
 * **radio:** default spacing between radio switches [LD-225] ([#243](https://github.com/deliveryhero/armor/issues/243)) ([06f1e00](https://github.com/deliveryhero/armor/commit/06f1e00c3d3c7d170eb28680a6914b6faaa048f6))
 * Enable closing a Dialog by pressing Esc [LD-49] ([#232](https://github.com/deliveryhero/armor/issues/232)) ([2b3b9d1](https://github.com/deliveryhero/armor/commit/2b3b9d162d40a7c2dc401249d00ffe1297580bc5))
-* **dropdown:** Dropdown does not wrap long options [LD-195] ([#241](https://github.com/deliveryhero/armor/issues/241)) ([7aaa848](https://github.com/deliveryhero/armor/commit/7aaa848a642e6acd804a324685178090e66c3c01))
+* **dropdown:** Dropdown_ does not wrap long options [LD-195] ([#241](https://github.com/deliveryhero/armor/issues/241)) ([7aaa848](https://github.com/deliveryhero/armor/commit/7aaa848a642e6acd804a324685178090e66c3c01))
 
 ## @deliveryhero/armor [1.14.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.14.0...@deliveryhero/armor@1.14.1) (2020-08-27)
 

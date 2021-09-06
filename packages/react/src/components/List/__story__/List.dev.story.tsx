@@ -3,7 +3,7 @@
 import React from 'react';
 
 import { withKnobs } from '@storybook/addon-knobs';
-
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { MapIcon, ArrowRightIcon } from '@deliveryhero/armor-icons';
 
 import { withWrapper } from '../../../helpers/Wrapper';

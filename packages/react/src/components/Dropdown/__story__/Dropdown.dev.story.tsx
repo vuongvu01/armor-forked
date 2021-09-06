@@ -440,7 +440,7 @@ export const MultipleWithSpecifiedNumberOfOpenTagsAndCustomAggregatedTagsCountLa
 //         <Pack>
 //             <PackItem>
 //                 <Box padding={3} style={{ width: '400px' }}>
-//                     <Dropdown
+//                     <Dropdown_
 //                         options={foodOptionsString}
 //                         defaultValue={initialSelectionIndex}
 //                         onChange={handleOnChange}
@@ -1207,6 +1207,26 @@ export const WithGroupsPreselected = () => {
             options={characters}
             label="Multiple options"
             multiple
+            maxWidth="400px"
+            enableSelectAllOption
+            enableSearchOption
+            groups={factions}
+        />
+    );
+};
+
+export const WithSelectableGroups = () => {
+    const handleSelect = () => {};
+
+    return (
+        <Dropdown
+            isListExpanded
+            margin={1}
+            onSelect={handleSelect}
+            options={characters}
+            label="Multiple options"
+            multiple
+            enableGroupSelection
             maxWidth="400px"
             enableSelectAllOption
             enableSearchOption

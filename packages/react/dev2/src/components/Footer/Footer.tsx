@@ -7,8 +7,7 @@ export const Footer: FC = () => {
             <FooterInfo>
                 <FooterNoWrap>
                     &copy; then &mdash; now ({new Date().getFullYear()})
-                </FooterNoWrap>{' '}
-                &bull;{' '}
+                </FooterNoWrap>
             </FooterInfo>
         </FooterRoot>
     );

@@ -16,4 +16,4 @@ export * from './PageOffset';
 export * from './Providers';
 export * from './SEO';
 export * from './Typography';
-export * from './Story';
+export * from './StoryPageLayout';

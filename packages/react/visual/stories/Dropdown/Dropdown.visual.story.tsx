@@ -609,6 +609,26 @@ export const WithGroupsPreselected = () => {
     );
 };
 
+export const WithSelectableGroups = () => {
+    const handleSelect = () => {};
+
+    return (
+        <Dropdown
+            isListExpanded
+            margin={1}
+            onSelect={handleSelect}
+            options={characters}
+            label="Multiple options"
+            multiple
+            enableGroupSelection
+            maxWidth="400px"
+            enableSelectAllOption
+            enableSearchOption
+            groups={faction}
+        />
+    );
+};
+
 export const WithGroups = () => {
     const handleSelect = () => {};
 

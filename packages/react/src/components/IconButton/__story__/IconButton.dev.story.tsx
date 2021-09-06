@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { withKnobs } from '@storybook/addon-knobs';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { ArrowUpIcon } from '@deliveryhero/armor-icons';
 
 import { IconButton } from '../IconButton';

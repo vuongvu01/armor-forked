@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { text } from '@storybook/addon-knobs';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { MapIcon } from '@deliveryhero/armor-icons';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { BrowserRouter, Link as RouterLink } from 'react-router-dom';

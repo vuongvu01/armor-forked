@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { ArrowDownIcon } from '@deliveryhero/armor-icons';
 import {
     TableControllerCellRootPropsType,

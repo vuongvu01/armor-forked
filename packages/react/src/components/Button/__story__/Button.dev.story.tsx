@@ -4,6 +4,7 @@ import {
     select,
     // eslint-disable-next-line import/no-unresolved
 } from '@storybook/addon-knobs';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { EditIcon } from '@deliveryhero/armor-icons';
 // eslint-disable-next-line import/no-unresolved
 import styled, { ThemeProvider } from 'styled-components';

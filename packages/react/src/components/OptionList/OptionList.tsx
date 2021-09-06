@@ -7,7 +7,6 @@ import {
 import {
     OptionListBeforeSectionContainer,
     OptionListContainer,
-    OptionListItemGroup,
     OptionListRoot,
     OptionListSearch,
     OptionListSearchContainer,
@@ -19,6 +18,7 @@ import { useOptionList, useOptionListClassName } from './hooks';
 import { useComponentTheme } from '../../utils/hooks';
 import { ObjectLiteralType } from '../../type';
 import { OptionListFooter } from './OptionListFooter';
+import { OptionListItemGroup } from './OptionListItemGroup';
 
 export const OptionList: FunctionComponent<OptionListPropsType> = ({
     className,
@@ -33,6 +33,7 @@ export const OptionList: FunctionComponent<OptionListPropsType> = ({
         getOptionListSearchProps,
         listContainerProps,
         listProps,
+        optionListItemGroupProps,
 
         enableVirtualization,
         getVirtualTopSpaceProps,
@@ -103,9 +104,7 @@ export const OptionList: FunctionComponent<OptionListPropsType> = ({
                         />
                     )}
 
-                    {// @ts-ignore
-                    dynamicInternalOptions.map(
-                        // @ts-ignore
+                    {dynamicInternalOptions.map(
                         (option: OptionObjectType, index) => {
                             const { value, groupId } = option;
                             let group: OptionListGroupObjectType | null = null;
@@ -122,8 +121,8 @@ export const OptionList: FunctionComponent<OptionListPropsType> = ({
                                 <Fragment key={value}>
                                     {!!group && (
                                         <OptionListItemGroup
+                                            {...optionListItemGroupProps(group)}
                                             enableSeparator={index > 0}
-                                            theme={theme}
                                             className={classOverride.ItemGroup}
                                         >
                                             {group.label}

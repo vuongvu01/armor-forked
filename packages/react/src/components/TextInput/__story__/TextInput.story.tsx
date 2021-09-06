@@ -7,6 +7,7 @@ import {
 } from '@storybook/addon-knobs';
 
 import styled from 'styled-components';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { LockClosedIcon, LockOpenIcon } from '@deliveryhero/armor-icons';
 import {
     Button,

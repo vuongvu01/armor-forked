@@ -1,6 +1,7 @@
 /* eslint-disable no-console,import/no-unresolved */
 
 import React from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { CogIcon, EditIcon, PlayIcon } from '@deliveryhero/armor-icons';
 
 import { ActionSheet } from '../ActionSheet';

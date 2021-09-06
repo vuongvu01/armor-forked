@@ -1,5 +1,6 @@
 import React, { forwardRef, useState, useEffect } from 'react';
 // import PropTypes from 'prop-types';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { TickCircleFilledIcon } from '@deliveryhero/armor-icons';
 // import { useComponentTheme } from '../../../hooks/hooks';
 

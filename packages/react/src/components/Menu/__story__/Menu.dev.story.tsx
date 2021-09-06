@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { withKnobs } from '@storybook/addon-knobs';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { ForkKnifeIcon } from '@deliveryhero/armor-icons';
 import { withWrapper } from '../../../helpers/Wrapper';
 

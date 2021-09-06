@@ -57,6 +57,10 @@ const makeTheme = (): MUIThemeType => {
             body1: {
                 fontSize: '1.3rem',
             },
+            small: {
+                fontSize: '0.8rem',
+                lineHeight: 1.5,
+            },
             micro: {
                 fontSize: '0.6rem',
             },

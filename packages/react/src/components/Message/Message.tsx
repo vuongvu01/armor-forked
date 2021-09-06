@@ -1,5 +1,6 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { CancelIcon } from '@deliveryhero/armor-icons';
 
 import { useComponentTheme } from '../../utils/hooks';
