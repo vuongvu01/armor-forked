@@ -1,17 +1,27 @@
 import styled from 'styled-components';
 
-import { marginAttributes, propsBlocker } from '../../system';
+import {
+    color,
+    spacing,
+    marginAttributes,
+    propsBlocker,
+    typography,
+    round,
+    getComponentOverride,
+} from '../../system';
 import { IndicatorRootPropsType } from './type';
-
-const getRootBaseStyle = ({ theme }: IndicatorRootPropsType) =>
-    theme.componentOverrides.Indicator.Root.base;
 
 export const IndicatorRoot = styled.div.withConfig(propsBlocker)<
     IndicatorRootPropsType
 >`
+    ${typography('labelSmall')};
+    color: ${color('neutral.00')};
+    background-color: ${color('error.main')};
+    width: ${spacing(4)};
+    height: ${spacing(4)};
     box-sizing: border-box;
     position: relative;
-    border-radius: 9999px;
+    ${round};
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -20,7 +30,6 @@ export const IndicatorRoot = styled.div.withConfig(propsBlocker)<
     &:before {
         content: '!';
     }
-
-    ${getRootBaseStyle};
+    ${getComponentOverride('Indicator')};
     ${marginAttributes};
 `;

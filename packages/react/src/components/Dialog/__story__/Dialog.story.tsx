@@ -1,7 +1,7 @@
 import React, { ReactNode, useRef, useState } from 'react';
 import styled from 'styled-components';
 // eslint-disable-next-line import/no-unresolved
-import { boolean, select, text, withKnobs } from '@storybook/addon-knobs';
+import { text } from '@storybook/addon-knobs';
 
 import { Dialog } from '../Dialog';
 import { DialogTitle } from '../DialogTitle';
@@ -14,13 +14,12 @@ import { TextInput } from '../../TextInput';
 import { withWrapper } from '../../../helpers/Wrapper';
 import { Tooltip } from '../../Tooltip';
 import { ContextMenu } from '../../ContextMenu';
-import { getBody } from '../../../system/util/globals';
 import { PortalToBody } from '../../../system/util/PortalToBody';
 
 export default {
     title: 'Components/Dialog',
     component: Dialog,
-    decorators: [withKnobs, withWrapper],
+    decorators: [withWrapper],
     parameters: {},
 };
 
@@ -30,12 +29,7 @@ export const Basic = () => {
 
     return (
         <>
-            <Dialog
-                open={open}
-                onClose={onClose}
-                maxWidth={text('Max width', 'sm')}
-                wide={boolean('Wide', false)}
-            >
+            <Dialog open={open} onClose={onClose} maxWidth={'sm'} wide={false}>
                 <DialogTitle description="Assign a new id to this location">
                     New location
                 </DialogTitle>
@@ -99,9 +93,7 @@ export const NoBackdrop = () => {
                 <DialogTitle description="Assign a new id to this location">
                     New location
                 </DialogTitle>
-                <DialogContent>
-                    {text('Children', 'Hello world!')}
-                </DialogContent>
+                <DialogContent>{'Hello world!'}</DialogContent>
                 <DialogActions>
                     <Button tertiary>Cancel</Button>
                     <Button>Save</Button>
@@ -235,11 +227,7 @@ export const LongText = () => (
 export const LongTitle = () => (
     <div>
         <LoremIpsum>
-            <Dialog
-                open
-                disableEffects
-                disableCloseButton={boolean('Close button', false)}
-            >
+            <Dialog open disableEffects disableCloseButton={false}>
                 <DialogTitle description="Assign a new id to this location">
                     Lorem Ipsum is simply dummy text of the printing and
                     typesetting industry. Lorem Ipsum has been the industrys
@@ -260,35 +248,23 @@ export const LongTitle = () => (
 
 export const ContentBlocks = () => (
     <LoremIpsum>
-        <Dialog
-            open
-            disableEffects
-            disableCloseButton={!boolean('Show close button', true)}
-            maxWidth="md"
-        >
-            {boolean('Show title', true) && (
-                <DialogTitle
-                    description="Assign a new id to this location"
-                    style={{ border: '1px solid red' }}
-                >
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industrys
-                    standard dummy text ever since the 1500s, when an unknown
-                    printer took a galley of type and scrambled it to make a
-                    type specimen book.
-                </DialogTitle>
-            )}
-            {boolean('Show content', true) && (
-                <DialogContent style={{ border: '1px solid red' }}>
-                    <LoremIpsum />
-                </DialogContent>
-            )}
-            {boolean('Show actions', true) && (
-                <DialogActions style={{ border: '1px solid red' }}>
-                    <Button tertiary>Cancel</Button>
-                    <Button>Save</Button>
-                </DialogActions>
-            )}
+        <Dialog open disableEffects disableCloseButton={false} maxWidth="md">
+            <DialogTitle
+                description="Assign a new id to this location"
+                style={{ border: '1px solid red' }}
+            >
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industrys standard dummy text
+                ever since the 1500s, when an unknown printer took a galley of
+                type and scrambled it to make a type specimen book.
+            </DialogTitle>
+            <DialogContent style={{ border: '1px solid red' }}>
+                <LoremIpsum />
+            </DialogContent>
+            <DialogActions style={{ border: '1px solid red' }}>
+                <Button tertiary>Cancel</Button>
+                <Button>Save</Button>
+            </DialogActions>
         </Dialog>
     </LoremIpsum>
 );
@@ -500,7 +476,7 @@ export const ContentOnly = () => {
                 <Dialog
                     open={open}
                     onClose={() => setOpen(false)}
-                    disableCloseButton={boolean('Disable close button', false)}
+                    disableCloseButton={false}
                 >
                     <DialogContent>
                         <input />
@@ -528,8 +504,8 @@ export const FixedZIndex = () => {
             <Dialog
                 open={open}
                 onClose={onClose}
-                maxWidth={text('Max width', 'sm')}
-                wide={boolean('Wide', false)}
+                maxWidth={'sm'}
+                wide={false}
                 zIndex={2000}
             >
                 <DialogContent>
@@ -615,12 +591,7 @@ export const WithTooltip = () => {
 
     return (
         <>
-            <Dialog
-                open={open}
-                onClose={onClose}
-                maxWidth={text('Max width', 'sm')}
-                wide={boolean('Wide', false)}
-            >
+            <Dialog open={open} onClose={onClose} maxWidth={'sm'} wide={false}>
                 <DialogContent>
                     <Tooltip trigger={<Button>Show tooltip</Button>}>
                         Tooltip!
@@ -648,12 +619,7 @@ export const WithAPortalInside = () => {
 
     return (
         <>
-            <Dialog
-                open={open}
-                onClose={onClose}
-                maxWidth={text('Max width', 'sm')}
-                wide={boolean('Wide', false)}
-            >
+            <Dialog open={open} onClose={onClose} maxWidth={'sm'} wide={false}>
                 <DialogContent>
                     {open && (
                         <PortalToBody>
@@ -689,9 +655,7 @@ export const CustomProps = () => {
                 <DialogTitle description="Assign a new id to this location">
                     New location
                 </DialogTitle>
-                <DialogContent>
-                    {text('Children', 'Hello world!')}
-                </DialogContent>
+                <DialogContent>{'Hello world!'}</DialogContent>
                 <DialogActions>
                     <Button tertiary>Cancel</Button>
                     <Button>Save</Button>

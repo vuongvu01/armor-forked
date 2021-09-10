@@ -1,16 +1,10 @@
 import styled from 'styled-components';
 
-import { marginAttributes } from '../../system';
+import { marginAttributes, typography } from '../../system';
 import { TabViewRootPropsType } from './type';
-
-const themeStyle = ({
-    theme: {
-        componentOverrides: { TabView },
-    },
-}: TabViewRootPropsType) => TabView.Root.base;
 
 /** 👉 ROOT ELEMENT */
 export const TabViewRoot = styled.div<TabViewRootPropsType>`
-    ${themeStyle};
+    ${typography('paragraphLarge')};
     ${marginAttributes};
 `;

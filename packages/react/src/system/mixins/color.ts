@@ -9,7 +9,7 @@ export const color = (name: string) => ({
         const currentTheme = theme.armor || theme;
         const prefixedColorName = `$color.${name}`; // todo: when get rid of theme.ts, remove also "$"
         if (prefixedColorName in currentTheme.referenceIndex) {
-            return currentTheme.referenceIndex[prefixedColorName];
+            return currentTheme.referenceIndex[prefixedColorName] as string;
         }
 
         return name;

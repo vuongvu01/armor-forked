@@ -9,6 +9,7 @@ import { Badge } from '../../../src/components/Badge';
 import { Stack, StackItem } from '../../../src/components/Stack';
 import { Typography } from '../../../src/components/Typography';
 import { Pack, PackItem } from '../../../src/components/Pack';
+import { Indicator } from '../../../src/components/Indicator';
 
 export default {
     title: 'Tabs',
@@ -197,7 +198,7 @@ export const FullWidth = () => {
         <>
             <Tabs wide onSwitch={handleChange}>
                 <Tab value={1}>
-                    Pizza <Badge margin={badgeLeftMargin}>42</Badge>
+                    Pizza <Badge marginLeft={badgeLeftMargin}>42</Badge>
                 </Tab>
                 <Tab value={2}>Pasta</Tab>
             </Tabs>
@@ -296,72 +297,23 @@ export const Alignment = () => {
     );
 };
 
-export const NoLeftPadding = () => (
-    <Stack>
-        <StackItem marginBottom={5}>
-            <Typography>removePaddingLeft</Typography>
-            <Tabs removePaddingLeft>
-                <Tab>Pizza</Tab>
-                <Tab>Pasta</Tab>
-                <Tab>Risotto</Tab>
-            </Tabs>
-            <TabView>
-                <p>Pizza</p>
-            </TabView>
-            <TabView>
-                <p>Pasta</p>
-            </TabView>
-            <TabView>
-                <p>Risotto</p>
-            </TabView>
-        </StackItem>
-    </Stack>
-);
+export const ActiveDisabled = () => {
+    return (
+        <Tabs onSwitch={() => {}} defaultActiveTabIndex={0}>
+            <Tab disabled>Disabled</Tab>
+            <Tab>Normal</Tab>
+        </Tabs>
+    );
+};
 
-export const NoRightPadding = () => (
-    <Stack>
-        <StackItem marginBottom={5}>
-            <Typography>removePaddingRight</Typography>
-            <Pack>
-                <PackItem>
-                    <Tabs defaultActiveTabIndex={2} removePaddingRight>
-                        <Tab>Pizza</Tab>
-                        <Tab>Pasta</Tab>
-                        <Tab>Risotto</Tab>
-                    </Tabs>
-                </PackItem>
-            </Pack>
-            <TabView>
-                <p>Pizza</p>
-            </TabView>
-            <TabView>
-                <p>Pasta</p>
-            </TabView>
-            <TabView>
-                <p>Risotto</p>
-            </TabView>
-        </StackItem>
-    </Stack>
-);
-
-export const NoRightOrLeftPadding = () => (
-    <Stack>
-        <StackItem marginBottom={5}>
-            <Typography>removePaddingLeft and removePaddingRight</Typography>
-            <Tabs removePaddingLeft removePaddingRight>
-                <Tab>Pizza</Tab>
-                <Tab>Pasta</Tab>
-                <Tab>Risotto</Tab>
-            </Tabs>
-            <TabView>
-                <p>Pizza</p>
-            </TabView>
-            <TabView>
-                <p>Pasta</p>
-            </TabView>
-            <TabView>
-                <p>Risotto</p>
-            </TabView>
-        </StackItem>
-    </Stack>
-);
+export const WithIndicator = () => {
+    return (
+        <Tabs onSwitch={() => {}} defaultActiveTabIndex={0}>
+            <Tab>
+                With indicator
+                <Indicator marginLeft={4} />
+            </Tab>
+            <Tab>Normal</Tab>
+        </Tabs>
+    );
+};

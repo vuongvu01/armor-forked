@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { BrowserRouter, Link } from 'react-router-dom';
-// eslint-disable-next-line import/no-unresolved
-import { withKnobs } from '@storybook/addon-knobs';
 import styled from 'styled-components';
 import { Tabs } from '../Tabs';
 import { Tab } from '../../Tab';
@@ -12,11 +10,12 @@ import { withWrapper } from '../../../helpers/Wrapper';
 import { Typography } from '../../Typography';
 import { Stack, StackItem } from '../../Stack';
 import { Pack, PackItem } from '../../Pack';
+import { Indicator } from '../../Indicator';
 
 export default {
     title: 'Components/Tabs',
     component: Tabs,
-    decorators: [withKnobs, withWrapper],
+    decorators: [withWrapper],
     parameters: {},
 };
 
@@ -82,6 +81,10 @@ export const WithCounterBadge = () => {
                 <Tab disabled>
                     Alcoholic beverages
                     <Badge marginLeft={badgeLeftMargin}>11</Badge>
+                </Tab>
+                <Tab>
+                    Indicator
+                    <Indicator marginLeft={badgeLeftMargin} />
                 </Tab>
             </Tabs>
             <TabView value={0} selectedValue={selectedTabIndex}>
@@ -331,75 +334,26 @@ export const Alignment = () => {
     );
 };
 
-export const NoLeftPadding = () => (
-    <Stack>
-        <StackItem marginBottom={5}>
-            <Typography>removePaddingLeft</Typography>
-            <Tabs removePaddingLeft>
+export const ActiveDisabled = () => {
+    const [selectedTabIndex, setSelectedTabIndex] = useState<
+        number | undefined
+    >(2);
+
+    return (
+        <>
+            <Tabs
+                activeTabIndex={selectedTabIndex}
+                onActiveTabIndexChange={setSelectedTabIndex}
+            >
                 <Tab>Pizza</Tab>
                 <Tab>Pasta</Tab>
-                <Tab>Risotto</Tab>
+                <Tab disabled>Risotto</Tab>
+                <Tab>Beverages</Tab>
+                <Tab>Alcoholic beverages</Tab>
             </Tabs>
-            <TabView>
-                <p>Pizza</p>
-            </TabView>
-            <TabView>
-                <p>Pasta</p>
-            </TabView>
-            <TabView>
-                <p>Risotto</p>
-            </TabView>
-        </StackItem>
-    </Stack>
-);
-
-export const NoRightPadding = () => (
-    <Stack>
-        <StackItem marginBottom={5}>
-            <Typography>removePaddingRight</Typography>
-            <Pack>
-                <PackItem>
-                    <Tabs defaultActiveTabIndex={2} removePaddingRight>
-                        <Tab>Pizza</Tab>
-                        <Tab>Pasta</Tab>
-                        <Tab>Risotto</Tab>
-                    </Tabs>
-                </PackItem>
-            </Pack>
-            <TabView>
-                <p>Pizza</p>
-            </TabView>
-            <TabView>
-                <p>Pasta</p>
-            </TabView>
-            <TabView>
-                <p>Risotto</p>
-            </TabView>
-        </StackItem>
-    </Stack>
-);
-
-export const NoRightOrLeftPadding = () => (
-    <Stack>
-        <StackItem marginBottom={5}>
-            <Typography>removePaddingLeft and removePaddingRight</Typography>
-            <Tabs removePaddingLeft removePaddingRight>
-                <Tab>Pizza</Tab>
-                <Tab>Pasta</Tab>
-                <Tab>Risotto</Tab>
-            </Tabs>
-            <TabView>
-                <p>Pizza</p>
-            </TabView>
-            <TabView>
-                <p>Pasta</p>
-            </TabView>
-            <TabView>
-                <p>Risotto</p>
-            </TabView>
-        </StackItem>
-    </Stack>
-);
+        </>
+    );
+};
 
 export const ActiveTabIndexControlled = () => {
     const [selectedTabIndex, setSelectedTabIndex] = useState<

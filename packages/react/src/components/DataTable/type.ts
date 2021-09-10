@@ -177,6 +177,13 @@ type DataTableEffectivePropsType = Partial<{
      * */
     tableProps: TablePropsType;
 
+    /**
+     * Future reserved
+     *
+     * @ignore
+     */
+    loading: boolean;
+
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLDivElement> &

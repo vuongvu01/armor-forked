@@ -5,7 +5,6 @@ import { useComponentTheme } from '../../utils/hooks';
 import { useTabClassName } from './utils';
 import { TabLabel, TabTagWrapper, TabRoot } from './style';
 import { TabTagPropsType, TabPropsType } from './type';
-import { tabDefaultTheme } from './theme';
 import { TAB_CLASS_PREFIX } from './constants';
 import { useTab } from './hooks/useTab';
 
@@ -16,7 +15,7 @@ export const Tab = forwardRef<HTMLDivElement, TabPropsType>(function Tab(
     { className, ...restProps },
     ref,
 ) {
-    const theme = useComponentTheme(TAB_CLASS_PREFIX, tabDefaultTheme);
+    const theme = useComponentTheme(TAB_CLASS_PREFIX);
 
     const {
         rootProps,
@@ -49,8 +48,6 @@ export const Tab = forwardRef<HTMLDivElement, TabPropsType>(function Tab(
                             {...tabLabelProps}
                             theme={theme}
                             className={classOverride.Label}
-                            large
-                            label
                         >
                             {label || children}
                         </TabLabel>

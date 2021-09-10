@@ -1,54 +1,21 @@
 import styled, { css } from 'styled-components';
 
-import { marginAttributes, propsBlocker } from '../../system';
+import {
+    childrenNotLastChild,
+    marginAttributes,
+    propsBlocker,
+    spacing,
+} from '../../system';
 import { TabsRootPropsType } from './type';
-import { TabLabel, TabRoot } from '../Tab/style';
 
-const themeStyle = ({
-    theme: {
-        componentOverrides: { Tabs },
-    },
-    wide,
-    removePaddingLeft,
-    removePaddingRight,
-}: TabsRootPropsType) => {
+const getRootStyle = ({ wide }: TabsRootPropsType) => {
+    const result = css``;
+
     if (wide) {
         return css`
+            ${result};
             width: 100%;
             justify-content: space-evenly;
-
-            ${Tabs.Root.base}
-        `;
-    }
-
-    let result = Tabs.Root.base;
-
-    if (removePaddingLeft) {
-        result = css`
-            ${result};
-
-            ${TabRoot}:nth-child(1) {
-                ${TabLabel} {
-                    padding-left: 0;
-                }
-                &::after {
-                    left: 0;
-                }
-            }
-        `;
-    }
-    if (removePaddingRight) {
-        result = css`
-            ${result};
-
-            ${TabRoot}:nth-last-child(1) {
-                ${TabLabel} {
-                    padding-right: 0;
-                }
-                &::after {
-                    right: 0;
-                }
-            }
         `;
     }
 
@@ -61,7 +28,9 @@ export const TabsRoot = styled.div.withConfig(propsBlocker)<TabsRootPropsType>`
     display: flex;
     flex-wrap: wrap;
     width: fit-content;
-
-    ${themeStyle};
+    & ${childrenNotLastChild} {
+        margin-right: ${spacing(9)};
+    }
+    ${getRootStyle};
     ${marginAttributes};
 `;

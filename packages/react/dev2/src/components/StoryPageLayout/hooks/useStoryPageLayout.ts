@@ -1,7 +1,15 @@
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { useNavigate } from '@reach/router';
 import { StoryPageLayoutPropsType } from '../type';
 import { useQueryParams } from '../../../hooks/useQueryParams';
+import { makeTheme } from '../../../armor/styling/theme/makeTheme';
+import { makeDarkTheme } from '../../../armor/styling/themes/dark';
+import { RootThemeType } from '../../../armor/styling/type';
+
+const themes = {
+    light: makeTheme(),
+    dark: makeDarkTheme(),
+} as Record<string, RootThemeType>;
 
 export const useStoryPageLayout = ({ stories }: StoryPageLayoutPropsType) => {
     const params = useQueryParams();
@@ -19,6 +27,7 @@ export const useStoryPageLayout = ({ stories }: StoryPageLayoutPropsType) => {
     }, [story, navigate, list]);
 
     let title = (stories?.default.title ?? '').replace('Components/', '');
+    const componentName = title;
 
     const storyList = list.reduce<Record<string, string>>(
         (result, storyName) => {
@@ -41,14 +50,30 @@ export const useStoryPageLayout = ({ stories }: StoryPageLayoutPropsType) => {
         title = `${title} ➡️ ${storyList[story]}`;
     }
 
+    const [themeName, setThemeName] = useState<string | null>(null);
+    const theme = themeName ? themes[themeName] ?? null : null;
+    const hasTheme = !!theme?.armor;
+    const hasNoTheme = !hasTheme;
+
     return {
-        title,
+        componentName,
         pageLayoutProps: {
             displayPageTitle: false,
             title,
         },
         storyList,
         storyLinks,
-        Story: storyComponent,
+        storyPageContentProps: {
+            title,
+            Story: storyComponent,
+        },
+        themeSelectorProps: {
+            themeName,
+            onThemeChange: setThemeName,
+            themeNames: Object.keys(themes),
+        },
+        theme,
+        hasTheme,
+        hasNoTheme,
     };
 };

@@ -1,6 +1,5 @@
 import React, { ChangeEvent, useState } from 'react';
 // eslint-disable-next-line import/no-unresolved
-import { withKnobs } from '@storybook/addon-knobs';
 
 import { SideSheet } from '../SideSheet';
 import { Button } from '../../Button';
@@ -16,7 +15,7 @@ import { LoremIpsum } from '../../../helpers/LoremIpsum';
 export default {
     title: 'Components/SideSheet',
     component: SideSheet,
-    decorators: [withKnobs, withWrapper],
+    decorators: [withWrapper],
     parameters: {},
 };
 

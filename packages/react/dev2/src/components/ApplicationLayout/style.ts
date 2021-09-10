@@ -8,4 +8,6 @@ export const ApplicationLayoutRoot = styled.div`
 
 export const ApplicationLayoutBody = styled.main`
     flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 `;
