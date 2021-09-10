@@ -1,3 +1,5 @@
+# @deliveryhero/armor [1.69.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.68.0...@deliveryhero/armor@1.69.0) (2021-09-10)
+
 # @deliveryhero/armor [1.68.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.67.1...@deliveryhero/armor@1.68.0) (2021-09-06)
 
 
