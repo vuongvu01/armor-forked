@@ -1,13 +1,13 @@
-import { ComponentType, HTMLAttributes, ReactChild } from 'react';
+import { HTMLAttributes, ReactChild } from 'react';
 import {
     ComponentElementStylePropsType,
     ComponentStylePropsType,
 } from '../type';
-import { ObjectLiteralType, RefType, ScalarType } from '../../type';
+import { RefType, ScalarType } from '../../type';
 import { TablePropsType, TableCellPropsType } from '../Table';
 import {
-    TableHeadCellPropsType,
     TableHeadCellRowSortOrderType,
+    TableHeadCellSortType,
 } from '../Table/TableHeadCell/type';
 import { PageNavigationPropsType } from '../PageNavigation';
 import {
@@ -15,8 +15,9 @@ import {
     PaddingAttributesType,
     SizeAttributesType,
 } from '../../system';
+import { PageNavigationPageSizeListItemType } from '../PageNavigation/type';
 
-type CellPropsType = TableCellPropsType & ObjectLiteralType;
+type CellPropsType = TableCellPropsType & Record<string, any>;
 
 export type DataTableColumnType = {
     /** Column identifier */
@@ -26,15 +27,15 @@ export type DataTableColumnType = {
     key?: string;
 
     /** Indicates whether this columnLayout is sortable or not */
-    sortable?: TableHeadCellPropsType['sortable'];
+    sortable?: boolean;
     /** Type of sorting for this column */
-    sortType?: TableHeadCellPropsType['rowSortType'];
+    sortType?: TableHeadCellSortType;
     /** Properties to be forwarded to every header cell */
     headCellProps?: CellPropsType;
     /** Properties to be forwarded to every data cell */
     dataCellProps?: CellPropsType;
     /** Properties to be forwarded to every cell */
-    cellProps?: TableCellPropsType & ObjectLiteralType;
+    cellProps?: TableCellPropsType & Record<string, any>;
     /** If set to true, the columnLayout acts as a controller for the expandable section */
     expandableSectionController?: boolean;
     /** Same as dataCellProps, but can be set individually for each table row */
@@ -50,31 +51,40 @@ export type DataTableColumnType = {
         column: DataTableColumnType,
     ) => ReactChild | ReactChild[];
 
-    /** @ignore */
-    renderer?: ComponentType<unknown>; // todo: future-reserved, for custom conditionRenderers. Replace unknown with something meaningful
-    /** @ignore */
-    render?: (column: DataTableColumnType) => ReactChild; // todo: future-reserved, for custom rendering functions
-    /** @ignore */
-    customProperties?: Record<ScalarType, unknown>; // todo: future-reserved
+    // renderer?: ComponentType<unknown>; // todo: future-reserved, for custom conditionRenderers. Replace unknown with something meaningful
+    // render?: (column: DataTableColumnType) => ReactChild; // todo: future-reserved, for custom rendering functions
+    // customProperties?: Record<ScalarType, unknown>; // todo: future-reserved
 };
 
 export type DataTableDataType = {
     /** Row identifier */
     id: ScalarType;
     key?: ScalarType;
-} & ObjectLiteralType;
+} & Record<string, any>;
 
 /** 👉 PROPS TYPE */
 type DataTableEffectivePropsType = Partial<{
     /**
-     * Defines the structure of the columns
-     * @armor-docs-expand DataTableColumnType
-     * */
+     * Defines the structure of the columns.
+     *
+     * ~~~typescript example title:"Render a custom cell based on the entire row data"
+     * <DataTable columns={[
+     *      {
+     *          title: 'Full name',
+     *          id: 'fullName',
+     *          formatDataCellContent: (value, { firstName, lastName }) => (<span>{firstName}{' '}{lastName}</span>),
+     *      },
+     * ]} />
+     * ~~~
+     *
+     * @armor-docs-expand DataTableColumnType, TableHeadCellSortType
+     */
     columns: DataTableColumnType[];
     /**
-     * Defines table data to be displayed
+     * Defines table data to be displayed.
+     *
      * @armor-docs-expand DataTableDataType
-     * */
+     */
     data: DataTableDataType[];
 
     // row sorting
@@ -129,22 +139,26 @@ type DataTableEffectivePropsType = Partial<{
     expandableSectionControllerColumnId: ScalarType;
 
     // page navigation
+    // todo: make one object for the page navigation, do not flatten the props!
     /** If set to true, the page navigation is displayed */
     enablePageNavigation: boolean;
     /** Defines how many items the dataset contains. This value typically comes from the API and is used to calculate the page count */
-    pageNavigationItemCount: PageNavigationPropsType['itemCount'];
+    pageNavigationItemCount: number;
     /** Sets the currently displayed page */
-    pageNavigationPageNumber: PageNavigationPropsType['pageNumber'];
+    pageNavigationPageNumber: number;
     /** Is triggered when a user navigates to the other page */
     onPageNavigationPageSelect: PageNavigationPropsType['onPageSelect'];
     /** Sets the page size */
-    pageNavigationPageSize: PageNavigationPropsType['pageSize'];
+    pageNavigationPageSize: number;
     /** If set to true, enables the selector of the available page sizes */
-    enablePageNavigationPageSizeSelector: PageNavigationPropsType['enablePageSizeSelector'];
+    enablePageNavigationPageSizeSelector: boolean;
     /** Is triggered when a user selects a different page size */
     onPageNavigationPageSizeChange: PageNavigationPropsType['onPageSizeChange'];
-    /** Defines a list of the available page sizes */
-    pageNavigationPageSizeList: PageNavigationPropsType['pageSizeList'];
+    /**
+     * Defines a list of the available page sizes
+     * @armor-docs-expand PageNavigationPageSizeListItemType
+     */
+    pageNavigationPageSizeList: PageNavigationPageSizeListItemType[];
 
     // virtualization
     /** If set to true, the table is rendered in the virtual mode. It means that in every single moment only a certain amount of rows is visible. Only enable this feature when there is no pagniation and the amount of data spills over 0.5k entries. */

@@ -6,7 +6,7 @@ import {
 import { MarginAttributesType } from '../../system';
 import { ScalarType } from '../../type';
 
-type PageNavigationPageSizeListItemType = {
+export type PageNavigationPageSizeListItemType = {
     /** Displayed label of the page size */
     label: ScalarType;
     /** Actual value of the page size */

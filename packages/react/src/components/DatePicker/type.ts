@@ -59,11 +59,11 @@ export type DatePickerEffectiveCommonPropsType = Partial<{
      * Specifies date ranges that are available for selection. Accepts dates in local timezone. A special value *current* means that this value will be replaced by the current datetime at run-time. *Null* means "infinity".
      *
      * ~~~typescript example title:"Allows future dates, starting from today"
-     * <#COMPONENT_NAME# allowedDateRanges=[['current', null]] />
+     * <#COMPONENT_NAME# allowedDateRanges={[['current', null]]} />
      * ~~~
      *
      * ~~~typescript example title:"Allows one day before and one day after the current one"
-     * <#COMPONENT_NAME# allowedDateRanges=[['current-1', 'current+1']] />
+     * <#COMPONENT_NAME# allowedDateRanges={[['current-1', 'current+1']]} />
      * ~~~
      *
      * @armor-docs-expand DateRangeEdgeType
