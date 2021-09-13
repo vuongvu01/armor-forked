@@ -1,17 +1,31 @@
 import React, { FC, Fragment } from 'react';
 import { Box, Grid } from '@material-ui/core';
 import { StaticQuery, graphql } from 'gatsby';
-import { StoryPageLayoutPropsType } from './type';
+import { ThemeProvider } from 'styled-components';
+import { StoryPageLayoutDataType, StoryPageLayoutPropsType } from './type';
 import { useStoryPageLayout } from './hooks/useStoryPageLayout';
 import { PageLayout } from '../PageLayout/PageLayout';
-import { PageOffset } from '../PageOffset';
-import { Typography } from '../Typography';
-import { StoryStoryLink } from './style';
+import { ThemeSelector } from './ThemeSelector';
+import {
+    StoryComponentLink,
+    StoryStoryLink,
+    StoryPageSidePanel,
+    StoryPageContainer,
+} from './style';
+import { prepareNavigation } from './utils/prepareNavigation';
+import { StoryPageContent } from './StoryPageContent';
 
 export const StoryPageLayout: FC<StoryPageLayoutPropsType> = props => {
-    const { title, pageLayoutProps, Story, storyLinks } = useStoryPageLayout(
-        props,
-    );
+    const {
+        pageLayoutProps,
+        storyLinks,
+        componentName,
+        storyPageContentProps,
+        themeSelectorProps,
+        theme,
+        hasTheme,
+        hasNoTheme,
+    } = useStoryPageLayout(props);
 
     return (
         <StaticQuery
@@ -26,36 +40,55 @@ export const StoryPageLayout: FC<StoryPageLayoutPropsType> = props => {
                     }
                 }
             `}
-            render={data => {
-                // console.log(data);
+            render={(data: StoryPageLayoutDataType) => {
+                const structure = prepareNavigation(
+                    data,
+                    componentName,
+                    storyLinks,
+                );
                 return (
                     <PageLayout {...pageLayoutProps}>
-                        <Grid container spacing={3} wrap="nowrap">
-                            <Grid item xs={3}>
+                        <StoryPageContainer container spacing={3} wrap="nowrap">
+                            <StoryPageSidePanel item xs={3}>
                                 <Box padding={5} paddingRight={0}>
-                                    {storyLinks.map(({ name, url }) => (
+                                    {structure.map(({ name, url, stories }) => (
                                         <Fragment key={name}>
-                                            <StoryStoryLink to={url}>
+                                            <StoryComponentLink to={url}>
                                                 {name}
-                                            </StoryStoryLink>
+                                            </StoryComponentLink>
+                                            {stories.map(
+                                                ({
+                                                    name: storyName,
+                                                    url: storyURL,
+                                                }) => (
+                                                    <StoryStoryLink
+                                                        to={storyURL}
+                                                        key={`${name}_${storyName}`}
+                                                    >
+                                                        {storyName}
+                                                    </StoryStoryLink>
+                                                ),
+                                            )}
                                         </Fragment>
                                     ))}
                                 </Box>
+                            </StoryPageSidePanel>
+                            <Grid item xs={9}>
+                                {hasTheme && (
+                                    <ThemeProvider theme={theme}>
+                                        <StoryPageContent
+                                            {...storyPageContentProps}
+                                        />
+                                    </ThemeProvider>
+                                )}
+                                {hasNoTheme && (
+                                    <StoryPageContent
+                                        {...storyPageContentProps}
+                                    />
+                                )}
                             </Grid>
-                            <Grid>
-                                <Box paddingLeft={5} paddingRight={5}>
-                                    <Typography
-                                        variant="h1"
-                                        component="h1"
-                                        enableVerticalGutter
-                                    >
-                                        {title}
-                                    </Typography>
-                                    {!!Story && <Story />}
-                                </Box>
-                            </Grid>
-                        </Grid>
-                        <PageOffset />
+                            <ThemeSelector {...themeSelectorProps} />
+                        </StoryPageContainer>
                     </PageLayout>
                 );
             }}

@@ -3,16 +3,23 @@ import { useEffect, useState } from 'react';
 export const useDisplayEffects = (open: boolean) => {
     const [display, setDisplay] = useState(false);
     const [effectToggle, setEffectToggle] = useState(false);
+
     useEffect(() => {
+        let isCurrentEffect = true;
+
         if (!display && open) {
             setDisplay(true);
-            setTimeout(() => setEffectToggle(true), 50);
+            setTimeout(() => isCurrentEffect && setEffectToggle(true), 50);
         }
 
         if (display && !open) {
             setEffectToggle(false);
-            setTimeout(() => setDisplay(false), 100);
+            setTimeout(() => isCurrentEffect && setDisplay(false), 100);
         }
+
+        return () => {
+            isCurrentEffect = false;
+        };
     }, [open]);
 
     return {

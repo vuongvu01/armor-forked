@@ -54,6 +54,10 @@ export type RootThemeType = { armor: ThemeType } & ObjectLiteralType;
 
 // TODO (nmelnikov 2020-07-14): need to ensure that this one is compliant with the newest token structure
 export type ThemeType = {
+    body: {
+        color?: string;
+        backgroundColor?: string;
+    };
     breakpoints: BreakpointsType;
     color: ObjectLiteralType;
     components: ObjectLiteralType;

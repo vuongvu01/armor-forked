@@ -42,4 +42,28 @@ export const zIndex = ({ zIndex: zIndexValue }: { zIndex?: number }) =>
 
 export const notLastChild = () => ':not(:last-child)';
 
+export const childrenNotLastChild = () => `> *${notLastChild()}`;
+
 export const round = () => 'border-radius: 9999px;';
+
+export const textDecorationNone = () => css`
+    text-decoration: none;
+    &:hover,
+    &:visited,
+    &:active,
+    &:focus {
+        text-decoration: none;
+    }
+`;
+
+type ColorArgumentType = string | ((arg: any) => string);
+
+export const enforceColor = (color: ColorArgumentType) => css`
+    color: ${color};
+    &:hover,
+    &:visited,
+    &:active,
+    &:focus {
+        color: ${color};
+    }
+`;

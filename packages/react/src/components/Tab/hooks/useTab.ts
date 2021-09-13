@@ -11,7 +11,7 @@ export const useTab = <E extends HTMLDivElement>(
         label,
         tabIndex,
         value,
-        tag: Tag = 'span',
+        tag: Tag = 'div',
         to,
         href,
         target,

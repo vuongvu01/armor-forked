@@ -5,7 +5,6 @@ import { useComponentTheme } from '../../utils/hooks';
 import { useTabsClassName } from './utils';
 import { TabsRoot } from './style';
 import { TabsPropsType } from './type';
-import { tabsDefaultTheme } from './theme';
 import { TABS_CLASS_PREFIX } from './constants';
 import TabsContext from './TabsContext';
 import { useTabs } from './hooks/useTabs';
@@ -17,7 +16,7 @@ export const Tabs = forwardRef<HTMLDivElement, TabsPropsType>(function Tabs(
     { className, ...restProps },
     ref,
 ) {
-    const theme = useComponentTheme(TABS_CLASS_PREFIX, tabsDefaultTheme);
+    const theme = useComponentTheme(TABS_CLASS_PREFIX);
     const { rootProps, contextValue, disabled } = useTabs(restProps, ref);
     const classOverride = useTabsClassName(
         TABS_CLASS_PREFIX,

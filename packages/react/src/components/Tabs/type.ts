@@ -22,13 +22,23 @@ type TabsEffectivePropsType = Partial<{
     activeTabIndex: number;
     defaultActiveTabIndex: number;
     onActiveTabIndexChange: (tabIndex: number) => void;
+    defaultActiveTab: number;
+    /**
+     * This property no longer has any effect, it stays to prevent TS crashes in legacy code.
+     *
+     * @deprecated
+     */
     removePaddingLeft: boolean;
+    /**
+     * This property no longer has any effect, it stays to prevent TS crashes in legacy code.
+     *
+     * @deprecated
+     */
     removePaddingRight: boolean;
     /**
      * @deprecated
      */
     onSwitch: (tabIndex: number) => void;
-    defaultActiveTab: number;
 }> &
     HTMLAttributes<HTMLElement> &
     MarginAttributesType;

@@ -1,18 +1,18 @@
 import { css } from 'styled-components';
 import { TabRootPropsType } from '../../../../components/Tab/type';
-import {
-    colorGrey05,
-    colorGrey30,
-    colorGrey50,
-    colorGrey60,
-    colorGrey80,
-} from '../../../../tokens';
+import { color, enforceColor } from '../../../../system';
 
-export const getTabOverride = ({ disabled, isActive }: TabRootPropsType) => {
+export const getTabOverride = ({ disabled }: TabRootPropsType) => {
     let result = css`
-        background-color: ${colorGrey80};
         .Tab-Label {
-            color: ${colorGrey30};
+            color: ${color('neutral.06')};
+            &:hover {
+                color: ${color('primary.light')};
+            }
+        }
+
+        &:after {
+            background-color: ${color('primary.lighter')};
         }
     `;
 
@@ -20,25 +20,7 @@ export const getTabOverride = ({ disabled, isActive }: TabRootPropsType) => {
         result = css`
             ${result};
             .Tab-Label {
-                color: ${colorGrey50};
-            }
-        `;
-    } else {
-        result = css`
-            ${result};
-            &:hover {
-                .Tab-Label {
-                    background-color: ${colorGrey60};
-                }
-            }
-        `;
-    }
-
-    if (isActive) {
-        result = css`
-            ${result};
-            .Tab-Label {
-                color: ${colorGrey05};
+                ${enforceColor(color('neutral.04'))};
             }
         `;
     }

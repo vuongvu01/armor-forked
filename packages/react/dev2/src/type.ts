@@ -49,3 +49,5 @@ export type ContentRecordImageType = {
         childImageSharp: Record<string, unknown>;
     } | null;
 };
+
+export type Unpack<T> = T extends (infer U)[] ? U : any;

@@ -295,8 +295,8 @@ export const defaultThemeStructure = {
             '11': colorGrey90,
         },
         visited: {
-            '02': colorPurple50,
             '01': colorPurple20,
+            '02': colorPurple50,
         },
     },
     shape: {

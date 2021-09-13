@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import PropTypes from 'prop-types';
 import { TabViewPropsType } from './type';
-import { tabViewDefaultTheme } from './theme';
 import { useComponentTheme } from '../../utils/hooks';
 import { TabViewRoot } from './style';
 import { TAB_VIEW_CLASS_PREFIX } from './constants';
@@ -21,7 +20,7 @@ export const TabView: FC<TabViewPropsType> = ({
         return null;
     }
 
-    const theme = useComponentTheme(TAB_VIEW_CLASS_PREFIX, tabViewDefaultTheme);
+    const theme = useComponentTheme(TAB_VIEW_CLASS_PREFIX);
 
     return value === selectedValue ? (
         <TabViewRoot
