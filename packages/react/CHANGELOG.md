@@ -1,3 +1,11 @@
+## @deliveryhero/armor [1.69.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.69.0...@deliveryhero/armor@1.69.1) (2021-09-13)
+
+
+### Bug Fixes
+
+* **tabs:** Tab component design synchonized with Figma [LD-527] ([#713](https://github.com/deliveryhero/armor/issues/713)) ([ce2ab17](https://github.com/deliveryhero/armor/commit/ce2ab17c438cf0abbf3e615dbd1d4367fa289d27))
+* **use-display-effects:** Prevent unmounted set-state ([#715](https://github.com/deliveryhero/armor/issues/715)) ([891b5c0](https://github.com/deliveryhero/armor/commit/891b5c0ad6b45e22d4118390ea4acedbcd44c9c9))
+
 # @deliveryhero/armor [1.69.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.68.0...@deliveryhero/armor@1.69.0) (2021-09-10)
 
 # @deliveryhero/armor [1.68.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.67.1...@deliveryhero/armor@1.68.0) (2021-09-06)
