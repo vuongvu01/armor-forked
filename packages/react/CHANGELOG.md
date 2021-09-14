@@ -1,3 +1,10 @@
+## @deliveryhero/armor [1.70.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.70.0...@deliveryhero/armor@1.70.1) (2021-09-14)
+
+
+### Bug Fixes
+
+* **stepper:** Stepper component included to the index file ([#719](https://github.com/deliveryhero/armor/issues/719)) ([566b598](https://github.com/deliveryhero/armor/commit/566b59880826fc08c500951ff2703bc6b97092fb))
+
 # @deliveryhero/armor [1.70.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.69.1...@deliveryhero/armor@1.70.0) (2021-09-14)
 
 
