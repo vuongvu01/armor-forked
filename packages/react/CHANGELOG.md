@@ -1,3 +1,10 @@
+# @deliveryhero/armor [1.70.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.69.1...@deliveryhero/armor@1.70.0) (2021-09-14)
+
+
+### Features
+
+* **stepper:** Stepper component introduced [LD-368] ([#710](https://github.com/deliveryhero/armor/issues/710)) ([2effc54](https://github.com/deliveryhero/armor/commit/2effc545412988e6956569ba22017fe39eaa73ac))
+
 ## @deliveryhero/armor [1.69.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.69.0...@deliveryhero/armor@1.69.1) (2021-09-13)
 
 
