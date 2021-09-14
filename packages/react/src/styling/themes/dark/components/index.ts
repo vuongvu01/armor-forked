@@ -50,6 +50,7 @@ import { getListItemOverride } from './List/ListItem';
 import { getCloseButtonOverride } from './CloseButton/CloseButton';
 import { getTableControllerCellOverride } from './Table/TableControllerCell';
 import { getActionSheetOverride } from './ActionSheet/ActionSheet';
+import { getStepOverride } from './Stepper/Step';
 import { getIndicatorOverride } from './Indicator';
 
 export const darkThemeComponentOverrides = {
@@ -102,5 +103,6 @@ export const darkThemeComponentOverrides = {
     Link: getLinkOverride,
     CloseButton: getCloseButtonOverride,
     ListItem: getListItemOverride,
+    Step: getStepOverride,
     Indicator: getIndicatorOverride,
 };
