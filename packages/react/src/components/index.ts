@@ -48,3 +48,5 @@ export * from './Filter';
 export * from './FontLoader';
 export * from './Divider';
 export * from './EmptyState';
+export * from './Stepper';
+export * from './Stepper/Step';
