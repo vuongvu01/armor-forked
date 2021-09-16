@@ -16,6 +16,9 @@ import {
     StepperPieceNumber,
 } from './style';
 
+/**
+ * @armor-docs-component
+ */
 export const Step = forwardRef<HTMLDivElement, StepPropsType>(function Step(
     { title, description, className, ...restProps },
     ref,

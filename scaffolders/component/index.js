@@ -46,4 +46,8 @@ module.exports.Generator = class Generator {
 
         return answers;
     }
+
+    async onAfterExecution() {
+        // todo: using this.answers add the component to the index file
+    }
 };

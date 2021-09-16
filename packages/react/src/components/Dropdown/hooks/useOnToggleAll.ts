@@ -83,5 +83,11 @@ export const useOnToggleAll = (
                 setInternalValue(enabledOptionValuesOnSelect);
             }
         },
-        [setInternalValue, internalOptions, internalValue],
+        [
+            setInternalValue,
+            internalOptions,
+            internalValue,
+            onChange,
+            setInitialSelection,
+        ],
     );
