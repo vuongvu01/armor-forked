@@ -93,7 +93,7 @@ export const useDropdownBeforeSection = <E extends HTMLDivElement>(
 
                       onToggleAll(false);
                   },
-        [disabled],
+        [disabled, onToggleAll],
     );
 
     const handleRemoveTag = (option: OptionObjectType) => () =>
