@@ -1,3 +1,10 @@
+## @deliveryhero/armor [1.70.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.70.1...@deliveryhero/armor@1.70.2) (2021-09-16)
+
+
+### Bug Fixes
+
+* **hooks:** Fix dependency arrays in hooks ([#724](https://github.com/deliveryhero/armor/issues/724)) ([3bcdd75](https://github.com/deliveryhero/armor/commit/3bcdd755df2bfbc597a4c9ee172adbdf7b403677))
+
 ## @deliveryhero/armor [1.70.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.70.0...@deliveryhero/armor@1.70.1) (2021-09-14)
 
 
