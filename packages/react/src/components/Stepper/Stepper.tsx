@@ -8,6 +8,9 @@ import { STEPPER_CLASS_PREFIX, stepperRoot } from './constants';
 import { StepperContext } from './StepperContext';
 import { StepperRoot } from './style';
 
+/**
+ * @armor-docs-component
+ */
 export const Stepper = forwardRef<HTMLDivElement, StepperPropsType>(
     function Stepper({ className, ...restProps }, ref) {
         const theme = useTheme().armor;
