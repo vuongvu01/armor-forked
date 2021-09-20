@@ -33,8 +33,10 @@ describe('<Tag />', () => {
         render(<Tag label={label} />);
 
         const header = screen.getByText(label);
-        expect(header).toBeInstanceOf(HTMLParagraphElement);
-        expect(header).toHaveClass('Typography-Root--paragraph');
+        expect(header).toBeInstanceOf(HTMLDivElement);
+        expect(header).toHaveClass(
+            'Tag-Label--default Tag-Label--delete Tag-Label--onHover',
+        );
     });
 
     it('should ensure that small tag type class is set', () => {
@@ -42,9 +44,9 @@ describe('<Tag />', () => {
         render(<Tag label={label} small />);
 
         const header = screen.getByText(label);
-        expect(header).toBeInstanceOf(HTMLParagraphElement);
+        expect(header).toBeInstanceOf(HTMLDivElement);
         expect(header).toHaveClass(
-            'Typography-Root--paragraph Tag-Label--small',
+            'Tag-Label--small Tag-Label--delete Tag-Label--onHover',
         );
     });
 

@@ -6,19 +6,19 @@ import {
     TagCloseIconContainerPropsType,
     TagCloseIconPropsType,
     TagRootPropsType,
-    TagTypographyPropsType,
+    TagTextPropsType,
 } from './type';
 import { TAG_DELETE_BEHAVIOUR_OPTIONS, TAG_TYPES } from './constants';
 import { transitionDurationInSec } from '../../constants';
-import { Typography } from '../Typography';
 import {
     borderRadius,
     color,
+    getComponentOverride,
+    marginAttributes,
+    propsBlocker,
     reset,
     spacing,
-    marginAttributes,
-    getComponentOverride,
-    propsBlocker,
+    typography,
 } from '../../system';
 
 const containerStyle = ({
@@ -65,17 +65,19 @@ const containerStyle = ({
         }
     }
 };
-const typographyStyle = ({
+const textStyle = ({
     smallVerticalPadding,
     deleteOption,
     theme: {
         componentOverrides: { Tag },
     },
-}: TagTypographyPropsType) => {
+}: TagTextPropsType) => {
     const result = css`
         && {
-            margin: ${spacing(smallVerticalPadding ? 0.5 : 1)} ${spacing(2)}
-                ${spacing(smallVerticalPadding ? 0.5 : 1)} ${spacing(2)};
+            margin: ${spacing(smallVerticalPadding ? 0.25 : 1)}
+                ${spacing(smallVerticalPadding ? 1 : 2)}
+                ${spacing(smallVerticalPadding ? 0.75 : 1)}
+                ${spacing(smallVerticalPadding ? 1 : 2)};
         }
     `;
 
@@ -184,8 +186,9 @@ export const TagRoot = styled.div.withConfig(propsBlocker)<TagRootPropsType>`
     ${getComponentOverride('Tag')};
 `;
 
-export const TagTypography = styled(Typography)<TagTypographyPropsType>`
-    ${typographyStyle}
+export const TagText = styled.div<TagTextPropsType>`
+    ${typography('paragraphSmall')};
+    ${textStyle}
 `;
 
 export const TagCloseIcon = styled(CancelIcon)<TagCloseIconPropsType>`
