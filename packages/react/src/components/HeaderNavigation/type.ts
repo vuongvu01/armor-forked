@@ -39,16 +39,12 @@ export type NavigationSelectorParamsType = {
     isMultiselect?: boolean;
     isExpanded?: boolean;
     disabled?: boolean;
-    defaultValue?:
-        | string
-        | ReadonlyArray<string>
-        | ReadonlyArray<number>
-        | number;
+    defaultValue?: ScalarType | ReadonlyArray<ScalarType>;
     formatOption?: OptionFormatType;
-    value?: number | number[];
+    value?: ScalarType | ReadonlyArray<ScalarType>;
     options?:
         | string[]
-        | { label: string; value: string | number; [key: string]: any }[]; // aka OptionType - defining explicitly to expose into docs
+        | { label: string; value: ScalarType; [key: string]: any }[]; // aka OptionType - defining explicitly to expose into docs
 };
 
 /** 👉 PROPS TYPE */
