@@ -1,3 +1,17 @@
+# @deliveryhero/armor [1.71.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.70.2...@deliveryhero/armor@1.71.0) (2021-09-23)
+
+
+### Bug Fixes
+
+* **tag:** fix vertical alignment of the label [LD-599] ([#725](https://github.com/deliveryhero/armor/issues/725)) ([97e137c](https://github.com/deliveryhero/armor/commit/97e137c04b49ea58cd7c79befe0c7f1ae699f07d))
+* **typography:** y ([#734](https://github.com/deliveryhero/armor/issues/734)) ([e1eea58](https://github.com/deliveryhero/armor/commit/e1eea58e12ebd0d4bee2f63c334c85d34e004277))
+
+
+### Features
+
+* **dropdown:** clear button alignment [LD-598] ([#726](https://github.com/deliveryhero/armor/issues/726)) ([b0c6c6e](https://github.com/deliveryhero/armor/commit/b0c6c6eb0da0f1cd151abd24844a0944e989d7df))
+* **headernavigation:** type fix ([#732](https://github.com/deliveryhero/armor/issues/732)) ([092249b](https://github.com/deliveryhero/armor/commit/092249bba0067f35c071a5f3a8da735e9b2ce24f))
+
 ## @deliveryhero/armor [1.70.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.70.1...@deliveryhero/armor@1.70.2) (2021-09-16)
 
 
