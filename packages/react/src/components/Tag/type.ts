@@ -74,7 +74,7 @@ export type TagCloseIconPropsType = Pick<
     'theme'
 >;
 
-export type TagTypographyPropsType = Partial<{
+export type TagTextPropsType = Partial<{
     smallVerticalPadding: boolean;
 }> &
     Pick<TagEffectivePropsType, 'deleteOption'> &

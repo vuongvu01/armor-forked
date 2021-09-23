@@ -191,7 +191,7 @@ export const DropdownBeforeSectionClearButton = styled(PackItem)<
     background-color: transparent;
     outline: none;
     flex: 0 0 auto;
-    margin-top: ${spacing(2.5)};
+    margin-top: ${spacing(1.75)};
     margin-left: ${spacing(2)};
     ${dropdownBeforeSectionClearButtonStyle}
 

@@ -6,12 +6,7 @@ import { isStatusTag, useTagClassName } from './utils';
 import { TagDeleteIconModeType, TagPropsType } from './type';
 import { tagDefaultTheme } from './theme';
 import { TAG_CLASS_PREFIX, TAG_DELETE_BEHAVIOUR_OPTIONS } from './constants';
-import {
-    TagCloseIcon,
-    TagCloseIconContainer,
-    TagRoot,
-    TagTypography,
-} from './style';
+import { TagCloseIcon, TagCloseIconContainer, TagRoot, TagText } from './style';
 import { useTag } from './utils/useTag';
 
 /**
@@ -44,15 +39,13 @@ export const Tag = forwardRef<HTMLDivElement, TagPropsType>(function Tag(
 
     return (
         <TagRoot {...rootProps} className={classOverride.Root} theme={theme}>
-            <TagTypography
+            <TagText
                 {...tagTypographyProps}
                 className={classOverride.Label}
                 theme={theme}
-                paragraph
-                small
             >
                 {content}
-            </TagTypography>
+            </TagText>
             {!isStatusTag(type) &&
             (deleteOption === TAG_DELETE_BEHAVIOUR_OPTIONS.ENABLED ||
                 (deleteOption === TAG_DELETE_BEHAVIOUR_OPTIONS.ON_HOVER &&
