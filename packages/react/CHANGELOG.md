@@ -1,3 +1,15 @@
+# @deliveryhero/armor [1.72.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.71.0...@deliveryhero/armor@1.72.0) (2021-09-28)
+
+
+### Bug Fixes
+
+* **tag:** Tag component className forwarding issue fixed [LD-615] ([e06da9e](https://github.com/deliveryhero/armor/commit/e06da9e0dfd32c105e0f9a85049ed10467021203))
+
+
+### Features
+
+* **iconbutton:** IconButton color attribute support ([2452340](https://github.com/deliveryhero/armor/commit/2452340e8efdb79620bf63c23f5ea6f8835c8603))
+
 # @deliveryhero/armor [1.71.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.70.2...@deliveryhero/armor@1.71.0) (2021-09-23)
 
 
