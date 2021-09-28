@@ -8,6 +8,7 @@ import {
     token,
     propsBlocker,
     getComponentOverride,
+    colorAttributes,
 } from '../../system';
 import { transitionDurationInSec } from '../../constants';
 
@@ -56,4 +57,5 @@ export const IconButtonRoot = styled.button.withConfig(propsBlocker)<
     ${getRootStyle};
     ${getComponentOverride('IconButton')};
     ${marginAttributes};
+    ${colorAttributes};
 `;

@@ -23,3 +23,19 @@ export const Light = () => {
         </IconButton>
     );
 };
+
+export const ColorInherit = () => {
+    return (
+        <div
+            style={{
+                color: 'red',
+                backgroundColor: 'black',
+                padding: '30px',
+            }}
+        >
+            <IconButton light color="inherit">
+                <ArrowUpIcon medium />
+            </IconButton>
+        </div>
+    );
+};

@@ -3,7 +3,7 @@ import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../type';
-import { MarginAttributesType } from '../../system';
+import { ColorAttributesType, MarginAttributesType } from '../../system';
 
 /** 👉 PROPS TYPE */
 type IconButtonEffectivePropsType = Partial<{
@@ -14,7 +14,8 @@ type IconButtonEffectivePropsType = Partial<{
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLButtonElement> & // includes all HTML Div attributes
-    MarginAttributesType;
+    MarginAttributesType &
+    ColorAttributesType;
 
 /* IconButton component prop type */
 export type IconButtonPropsType = IconButtonEffectivePropsType &

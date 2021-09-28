@@ -4,7 +4,21 @@ import { ThemeType } from '../../styling';
 
 export type ColorAttributesType = {
     /**
-     * Sets *CSS* `color` property of **.#COMPONENT_NAME#-Root** element. Can accept either a color `hex code`, or a Level-2 color token from a theme. Example: `color="primary.main"` will produce `color: #0b53bf`
+     * Sets *CSS* `color` property of **.#COMPONENT_NAME#-Root** element. Can accept:
+     *  * a hex code
+     *  * a Level-2 color token from a theme
+     *  * the _inherit_ keyword.
+     *
+     *  ~~~typescript example
+     *  <Typography color="primary.main">Hello</Typography>
+     *  ~~~
+     *
+     *  ~~~typescript example
+     *  <span style={{color: 'red', backgroundColor: 'black'}}>
+     *      <Typography color="inherit">Back in black and red</Typography>
+     *  </span>
+     *  ~~~
+     *
      * @armor-docs-group color
      */
     color?: string;
