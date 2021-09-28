@@ -54,16 +54,13 @@ const useTagClassName = (
                 }),
                 className,
             ),
-            Label: appendClassName(
-                getClassNameByComponent({
-                    component: 'Label',
-                    classPrefix,
-                    deleteOption,
-                    type,
-                    small,
-                }),
-                className,
-            ),
+            Label: getClassNameByComponent({
+                component: 'Label',
+                classPrefix,
+                deleteOption,
+                type,
+                small,
+            }),
             CloseIconContainer: getClassNameByComponent({
                 component: 'CloseIconContainer',
                 classPrefix,
