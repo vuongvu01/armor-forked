@@ -4,7 +4,9 @@ import { makeArmorSubTheme } from './makeArmorSubTheme';
 export const makeTheme = (
     declaration: RootThemeInputType = {},
     options?: ThemeOptionsType,
-): RootThemeType => ({
-    ...declaration,
-    armor: makeArmorSubTheme(declaration.armor, options),
-});
+): RootThemeType => {
+    return {
+        ...declaration,
+        armor: makeArmorSubTheme(declaration.armor, options),
+    };
+};
