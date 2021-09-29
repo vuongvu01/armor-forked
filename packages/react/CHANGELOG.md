@@ -1,3 +1,10 @@
+# @deliveryhero/armor [1.73.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.72.0...@deliveryhero/armor@1.73.0) (2021-09-29)
+
+
+### Features
+
+* **login:** page [LD-230] ([#693](https://github.com/deliveryhero/armor/issues/693)) ([78c552f](https://github.com/deliveryhero/armor/commit/78c552f827f35abd92fe6fa764dc4c000d868035))
+
 # @deliveryhero/armor [1.72.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.71.0...@deliveryhero/armor@1.72.0) (2021-09-28)
 
 
