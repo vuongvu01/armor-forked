@@ -4,3 +4,4 @@
 
 export * from './Indicator';
 export type { IndicatorPropsType } from './type';
+

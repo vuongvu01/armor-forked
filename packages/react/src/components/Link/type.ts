@@ -1,11 +1,16 @@
-import { AnchorHTMLAttributes } from 'react';
+import { AnchorHTMLAttributes, ComponentType } from 'react';
 import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../type';
 import { MarginAttributesType } from '../../system';
-import { ComponentBehaviourCustomTagType } from '../../system/types/ComponentBehaviourCustomTagType';
+import {
+    ComponentBehaviourCustomTagType,
+    ComponentBehaviourCustomTagPropertyType,
+} from '../../system/types/ComponentBehaviourCustomTagType';
 import { ComponentBehaviourLinkType } from '../../system/types/ComponentBehaviourLinkType';
+
+export type LinkTagType = ComponentBehaviourCustomTagPropertyType;
 
 /** 👉 PROPS TYPE */
 type LinkEffectivePropsType = Partial<{

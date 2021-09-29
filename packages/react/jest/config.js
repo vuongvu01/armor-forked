@@ -9,6 +9,7 @@ module.exports = {
     ],
     transform: {
         '^.+\\.tsx?$': 'ts-jest',
+        '.+\\.(css|scss|png|jpg|svg)$': 'jest-transform-stub',
     },
     testRegex: '\\.test\\.tsx?$',
 };
