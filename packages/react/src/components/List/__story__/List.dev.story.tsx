@@ -1,28 +1,19 @@
 /* eslint-disable no-console,import/no-unresolved */
 
 import React from 'react';
-
-import { withKnobs } from '@storybook/addon-knobs';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { MapIcon, ArrowRightIcon } from '@deliveryhero/armor-icons';
 
 import { withWrapper } from '../../../helpers/Wrapper';
-
 import { List } from '../List';
-
 import { ListItem } from '../ListItem/ListItem';
-
 import { Switch } from '../../Switch';
-
 import { Tag } from '../../Tag';
 
 export default {
     title: 'Components/List',
-
     component: List,
-
-    decorators: [withKnobs, withWrapper],
-
+    decorators: [withWrapper],
     parameters: {},
 };
 

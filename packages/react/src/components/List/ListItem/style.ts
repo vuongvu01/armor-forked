@@ -34,9 +34,6 @@ const getRootStyle = ({
             ${result};
             color: ${color('neutral.05')};
             cursor: not-allowed;
-            &:hover {
-                background: ${color('neutral.00')};
-            }
         `;
     } else {
         result = css`

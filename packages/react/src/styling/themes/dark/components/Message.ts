@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 import { colorGreen20, colorRed30, colorYellow20 } from '../../../../tokens';
 import { MessageRootPropsType } from '../../../../components/Message/type';
-import { token } from '../../../../system/mixins';
+import { token, color } from '../../../../system';
 import { getMessageLevel } from '../../../../components/Message/utils/getMessageLevel';
 
 const levelToColor = {
@@ -13,22 +13,18 @@ const levelToColor = {
 
 export const getMessageOverride = (props: MessageRootPropsType) => {
     const level = getMessageLevel(props);
-    const color = levelToColor[level];
+    const levelColor = levelToColor[level];
 
-    let result = css`
+    return css`
         background-color: ${token('body.backgroundColor')};
+        border-color: ${levelColor};
+
+        .Message-Icon {
+            color: ${levelColor};
+        }
+
+        .Message-Content {
+            color: ${color('neutral.06')};
+        }
     `;
-
-    if (color) {
-        result = css`
-            ${result};
-            border-color: ${color};
-
-            .Message-Icon {
-                color: ${color};
-            }
-        `;
-    }
-
-    return result;
 };

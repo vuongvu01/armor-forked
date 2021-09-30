@@ -1,10 +1,6 @@
 /* eslint-disable no-console */
 
 import React, { useRef, useState } from 'react';
-import {
-    withKnobs,
-    // eslint-disable-next-line import/no-unresolved
-} from '@storybook/addon-knobs';
 
 import styled from 'styled-components';
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -29,13 +25,13 @@ import { withWrapper } from '../../../helpers/Wrapper';
 export default {
     title: 'Components/TextInput',
     component: TextInput,
-    decorators: [withKnobs, withWrapper],
+    decorators: [withWrapper],
     parameters: {},
 };
 
 export const AllStates = () => (
     <Box marginTop={5}>
-        <Box>
+        <Box marginBottom={2}>
             <TextInput
                 label="Phone *"
                 name="your_price"
@@ -67,7 +63,7 @@ export const AllStates = () => (
                 marginRight={1}
             />
         </Box>
-        <Box>
+        <Box marginBottom={2}>
             <TextInput
                 label="Label"
                 name="your_price"
@@ -115,7 +111,7 @@ export const AllStates = () => (
                 disabled
             />
         </Box>
-        <Box>
+        <Box marginBottom={2}>
             <TextInput label="Label" name="your_price" marginRight={1} error />
             <TextInput
                 label="Phone *"
@@ -155,7 +151,7 @@ export const AllStates = () => (
                 error
             />
         </Box>
-        <Box>
+        <Box marginBottom={2}>
             <TextInput
                 label="Label"
                 name="your_price"
@@ -201,7 +197,7 @@ export const AllStates = () => (
                 outlined
             />
         </Box>
-        <Box marginTop={10}>
+        <Box marginBottom={2}>
             <TextInput
                 label="Label"
                 name="your_price"
@@ -245,7 +241,6 @@ export const Basic = () => {
             <Box
                 padding={3}
                 style={{
-                    backgroundColor: '#F4F4F8',
                     height: '500px',
                     width: '600px',
                 }}

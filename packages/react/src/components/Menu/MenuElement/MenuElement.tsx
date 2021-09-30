@@ -7,11 +7,11 @@ import {
     MenuElementRoot,
     MenuElementContent,
     MenuElementExpansionHandle,
-    MenuElementExpansionHandleArrow,
 } from './style';
 import { MenuElementPropsType } from './type';
 import { MENU_ELEMENT_CLASS_PREFIX } from './constants';
 import { useMenuElement } from './hooks/useMenuElement';
+import { ExpansionIndicator } from '../../ExpansionIndicator';
 
 /**
  * @armor-docs-component
@@ -27,7 +27,6 @@ export const MenuElement = forwardRef<HTMLDivElement, MenuElementPropsType>(
         const {
             rootProps,
             contentProps,
-            getExpansionHandleProps,
             getExpansionHandleArrowProps,
             Tag,
             enableExpansionHandle,
@@ -50,13 +49,11 @@ export const MenuElement = forwardRef<HTMLDivElement, MenuElementPropsType>(
                         </MenuElementContent>
                         {enableExpansionHandle && (
                             <MenuElementExpansionHandle
-                                {...getExpansionHandleProps()}
                                 theme={theme}
                                 className={classNameComponents.ExpansionHandle}
                             >
-                                <MenuElementExpansionHandleArrow
+                                <ExpansionIndicator
                                     {...getExpansionHandleArrowProps()}
-                                    theme={theme}
                                     className={
                                         classNameComponents.ExpansionHandleArrow
                                     }

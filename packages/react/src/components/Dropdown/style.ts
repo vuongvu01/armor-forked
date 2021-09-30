@@ -27,6 +27,7 @@ export const DropdownRoot = styled.div.withConfig(propsBlocker)<
 >`
     display: inline-block;
 
+    ${getComponentOverride('Dropdown')};
     ${marginAttributes};
     ${widthAttributes};
 `;

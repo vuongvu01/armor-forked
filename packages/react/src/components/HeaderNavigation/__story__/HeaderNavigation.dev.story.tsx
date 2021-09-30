@@ -8,9 +8,6 @@ import {
 } from '@deliveryhero/armor-icons';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { BrowserRouter, Link } from 'react-router-dom';
-
-// eslint-disable-next-line import/no-unresolved
-import { withKnobs } from '@storybook/addon-knobs';
 import { HeaderNavigation } from '../HeaderNavigation';
 import {
     HeaderNavigationMenuContent,
@@ -45,7 +42,7 @@ import { DataTable } from '../../DataTable';
 export default {
     title: 'Components/HeaderNavigation',
     component: HeaderNavigation,
-    decorators: [withKnobs, withWrapper],
+    decorators: [withWrapper],
     parameters: {},
 };
 

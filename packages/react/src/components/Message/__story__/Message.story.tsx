@@ -1,6 +1,4 @@
 import React from 'react';
-// eslint-disable-next-line import/no-unresolved
-import { withKnobs } from '@storybook/addon-knobs';
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { AddIcon } from '@deliveryhero/armor-icons';
@@ -16,7 +14,7 @@ import { Stack } from '../../Stack';
 export default {
     title: 'Components/Message',
     component: Message,
-    decorators: [withKnobs, withWrapper],
+    decorators: [withWrapper],
     parameters: {},
 };
 

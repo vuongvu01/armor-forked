@@ -1,7 +1,6 @@
 import { css } from 'styled-components';
-import { colorGrey10 } from '../../../../../tokens';
-import { MenuPropsType } from '../../../../../components/Menu/type';
-import { token } from '../../../../../system/mixins';
+import { MenuPropsType } from '../../../../../components';
+import { color, token } from '../../../../../system';
 
 export const getMenuOverride = ({ enableBottomSeparator }: MenuPropsType) => {
     let result = {};
@@ -13,7 +12,7 @@ export const getMenuOverride = ({ enableBottomSeparator }: MenuPropsType) => {
     if (enableBottomSeparator) {
         result = css`
             ${result};
-            border-color: ${colorGrey10};
+            border-color: ${color('neutral.08')};
         `;
     }
 

@@ -1,7 +1,6 @@
 /* eslint-disable no-console,import/no-unresolved */
 
 import React from 'react';
-import { withKnobs } from '@storybook/addon-knobs';
 import { withWrapper } from '../../../helpers/Wrapper';
 
 import { EmptyState } from '../EmptyState';
@@ -12,7 +11,7 @@ import { Stack, StackItem } from '../../Stack';
 export default {
     title: 'Components/EmptyState',
     component: EmptyState,
-    decorators: [withKnobs, withWrapper],
+    decorators: [withWrapper],
     parameters: {},
 };
 

@@ -10,7 +10,7 @@ export const useListItemClassNames = (
             Root: makeRootClassName(classPrefix, className),
             PrimaryListItem: makeBEM(classPrefix, 'PrimaryItem'),
             SecondaryListItem: makeBEM(classPrefix, 'SecondaryList'),
-            primaryIconContainer: makeBEM(classPrefix, 'primaryIcon'),
+            PrimaryIconContainer: makeBEM(classPrefix, 'PrimaryIcon'),
             PrimaryListItemContainer: makeBEM(
                 classPrefix,
                 'PrimaryItemContainer',

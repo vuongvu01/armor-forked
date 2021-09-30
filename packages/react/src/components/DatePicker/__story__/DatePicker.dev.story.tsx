@@ -1,7 +1,6 @@
 /* eslint-disable no-console,import/no-unresolved */
 
 import React, { useState } from 'react';
-import { withKnobs } from '@storybook/addon-knobs';
 import { withWrapper } from '../../../helpers/Wrapper';
 
 import { DatePicker, DatePickerPropsType } from '../DatePicker';
@@ -17,13 +16,13 @@ const currentDate = new Date();
 export default {
     title: 'Components/DatePicker',
     component: DatePicker,
-    decorators: [withKnobs, withWrapper],
+    decorators: [withWrapper],
     parameters: {},
 };
 
 export const Basic = () => {
     return (
-        <Box paddingTop={20} paddingLeft={100}>
+        <Box paddingTop={20}>
             <DatePicker data-testid-input="input42" />
         </Box>
     );

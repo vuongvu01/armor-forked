@@ -49,23 +49,32 @@ export const makeDatePickerOverride = () => {
             }
         }
 
-        .DatePickerTimeSelector-Input {
-            .TextInput-Input {
-                color: ${color('neutral.05')};
-            }
-        }
+        // .DatePickerTimeSelector-Input {
+        //     .TextInput-Input {
+        //         color: ${color('neutral.05')};
+        //     }
+        // }
 
         .DatePickerMonthYearSelector-Year:not(:first-child) {
             border-top: 1px solid ${color('neutral.01')};
         }
 
         .DatePickerMonthYearSelector-YearTitle {
-            color: ${color('neutral.11')};
+            color: ${color('neutral.06')};
             background-color: ${color('neutral.03')};
 
             &:hover {
                 background-color: ${color('neutral.05')};
             }
+        }
+
+        .DatePickerTopBar-MonthYearSelectorToggle {
+            color: ${color('neutral.06')};
+        }
+
+        .DatePickerTopBar-MonthNavigationButtonBackward,
+        .DatePickerTopBar-MonthNavigationButtonForward {
+            color: ${color('neutral.06')};
         }
     `;
 

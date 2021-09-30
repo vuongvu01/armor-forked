@@ -54,9 +54,6 @@ export type MessageExtraPropsType = ComponentElementStylePropsType;
 export type MessageIconPropsType = MessageEffectivePropsLevelType &
     ComponentElementStylePropsType;
 
-/* Message CloseButton node prop type */
-export type MessageCloseButtonPropsType = ComponentElementStylePropsType;
-
 /* Message Central node prop type */
 export type MessageCentralPropsType = ComponentElementStylePropsType;
 

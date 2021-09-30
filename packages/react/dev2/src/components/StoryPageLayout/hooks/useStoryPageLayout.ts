@@ -2,16 +2,18 @@ import { FC, useEffect, useState } from 'react';
 import { useNavigate } from '@reach/router';
 import { StoryPageLayoutPropsType } from '../type';
 import { useQueryParams } from '../../../hooks/useQueryParams';
-import { makeTheme } from '../../../armor/styling/theme/makeTheme';
-import { makeDarkTheme } from '../../../armor/styling/themes/dark';
-import { RootThemeType } from '../../../armor/styling/type';
+import { makeTheme, makeDarkTheme, RootThemeType } from '../../../../../src';
+import { useLocalStorage } from './useLocalStorage';
 
 const themes = {
     light: makeTheme(),
     dark: makeDarkTheme(),
 } as Record<string, RootThemeType>;
 
-export const useStoryPageLayout = ({ stories }: StoryPageLayoutPropsType) => {
+export const useStoryPageLayout = ({
+    stories,
+    containerMaxWidth,
+}: StoryPageLayoutPropsType) => {
     const params = useQueryParams();
     const navigate = useNavigate();
     const story = params.get('story');
@@ -50,8 +52,11 @@ export const useStoryPageLayout = ({ stories }: StoryPageLayoutPropsType) => {
         title = `${title} ➡️ ${storyList[story]}`;
     }
 
-    const [themeName, setThemeName] = useState<string | null>(null);
-    const theme = themeName ? themes[themeName] ?? null : null;
+    const [storedThemeName, setStoredThemeName] = useLocalStorage();
+    const [selectedThemeName, setSelectedThemeName] = useState<string>(
+        storedThemeName,
+    );
+    const theme = selectedThemeName ? themes[selectedThemeName] ?? null : null;
     const hasTheme = !!theme?.armor;
     const hasNoTheme = !hasTheme;
 
@@ -66,10 +71,14 @@ export const useStoryPageLayout = ({ stories }: StoryPageLayoutPropsType) => {
         storyPageContentProps: {
             title,
             Story: storyComponent,
+            maxWidth: containerMaxWidth,
         },
         themeSelectorProps: {
-            themeName,
-            onThemeChange: setThemeName,
+            themeName: selectedThemeName,
+            onThemeChange: (newThemeName: string | null) => {
+                setStoredThemeName(newThemeName ?? '');
+                setSelectedThemeName(newThemeName ?? '');
+            },
             themeNames: Object.keys(themes),
         },
         theme,

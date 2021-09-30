@@ -1,35 +1,21 @@
 import { css } from 'styled-components';
-import { colorBlue10, colorGrey60 } from '../../../../../tokens';
-import { MenuElementPropsType } from '../../../../../components/Menu/MenuElement/type';
-import { token } from '../../../../../system/mixins';
+import { MenuElementPropsType } from '../../../../../components';
+import { color, token } from '../../../../../system';
 
-export const getMenuElementOverride = ({
-    selected,
-    secondary,
-    tertiary,
-    depthLevel,
-}: MenuElementPropsType) => {
+export const getMenuElementOverride = ({ selected }: MenuElementPropsType) => {
     let result = {};
 
     result = css`
+        color: ${color('neutral.06')};
         &:hover {
-            background-color: ${colorGrey60};
+            background-color: ${color('neutral.09')};
         }
     `;
-
-    if (secondary || tertiary || depthLevel! > 1) {
-        result = css`
-            ${result};
-            .MenuElement-ExpansionHandle {
-                color: ${colorBlue10};
-            }
-        `;
-    }
 
     if (selected) {
         result = css`
             ${result};
-            background-color: ${colorGrey60};
+            background-color: ${color('neutral.09')};
         `;
     } else {
         result = css`

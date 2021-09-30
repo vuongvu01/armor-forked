@@ -1,7 +1,5 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { CancelIcon } from '@deliveryhero/armor-icons';
 
 import { useComponentTheme } from '../../utils/hooks';
 
@@ -10,7 +8,6 @@ import {
     MessageRoot,
     MessageIcon,
     MessageCentral,
-    MessageCloseButton,
     MessageContent,
     MessageActions,
     MessageExtra,
@@ -18,6 +15,7 @@ import {
 import { MessageIconPropsType, MessagePropsType } from './type';
 import { MESSAGE_CLASS_PREFIX } from './constants';
 import { useMessage } from './hooks/useMessage';
+import { CloseButton } from '../CloseButton';
 
 /**
  * @armor-docs-component
@@ -89,13 +87,11 @@ export const Message = forwardRef<HTMLDivElement, MessagePropsType>(
                     )}
                 </MessageCentral>
                 {showCloseButton && (
-                    <MessageCloseButton
+                    <CloseButton
                         {...getCloseButtonProps()}
-                        theme={theme}
+                        marginTop={3}
                         className={classNameComponents.CloseButton}
-                    >
-                        <CancelIcon />
-                    </MessageCloseButton>
+                    />
                 )}
             </MessageRoot>
         );

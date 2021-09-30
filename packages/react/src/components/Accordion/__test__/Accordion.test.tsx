@@ -40,9 +40,7 @@ describe('<Accordion />', () => {
         const headerTitleElement = screen.getByTestId(
             accordionHeaderTypography,
         );
-        expect(headerTitleElement).toHaveClass(
-            'AccordionHeader-HeaderTitle Typography-Root--label Typography-Root--large',
-        );
+        expect(headerTitleElement).toHaveClass('AccordionHeader-HeaderTitle');
 
         const headerIconElement = screen.getByTestId(accordionHeaderIcon);
         expect(headerIconElement).toHaveClass('AccordionHeader-IconContainer');
@@ -71,7 +69,7 @@ describe('<Accordion />', () => {
             accordionHeaderTypography,
         );
         expect(headerTitleElement).toHaveClass(
-            'AccordionHeader-HeaderTitle AccordionHeader-HeaderTitle--expanded Typography-Root--label Typography-Root--large',
+            'AccordionHeader-HeaderTitle AccordionHeader-HeaderTitle--expanded',
         );
 
         const headerIconElement = screen.getByTestId(accordionHeaderIcon);

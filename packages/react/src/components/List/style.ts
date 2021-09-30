@@ -5,8 +5,10 @@ import {
     propsBlocker,
     getComponentOverride,
     widthAttributes,
+    reset,
+    typography,
+    pixelToRem,
 } from '../../system';
-import { reset, typography, pixelToRem } from '../../system/mixins';
 
 const getRootStyle = ({ small }: ListRootPropsType) => {
     let result = {};

@@ -4,7 +4,6 @@ import { ReactElement } from 'react';
 import {
     borderRadius,
     color,
-    noTextInteraction,
     pixelToRem,
     spacing,
     typography,
@@ -17,13 +16,11 @@ import {
     MessageContentPropsType,
     MessageActionsPropsType,
     MessageIconPropsType,
-    MessageCloseButtonPropsType,
     MessageExtraPropsType,
     MessageCentralPropsType,
     MessageEffectivePropsLevelAndThemeType,
 } from './type';
 import { messageLevels } from './constants';
-import { fontSize03 } from '../../tokens';
 
 const getColorNameByMessageLevel = ({
     level,
@@ -88,7 +85,6 @@ export const MessageContent = styled.div.withConfig(propsBlocker)<
     flex-grow: 1;
     line-height: 1.3;
     color: ${color('neutral.11')};
-
     padding-top: ${spacing(4)};
     padding-bottom: ${spacing(4)};
 `;
@@ -98,7 +94,6 @@ export const MessageActions = styled.div.withConfig(propsBlocker)<
 >`
     flex-shrink: 0;
     align-self: center;
-
     margin-left: ${spacing(4)};
     padding-top: ${spacing(1)};
     padding-bottom: ${spacing(1)};
@@ -108,7 +103,6 @@ export const MessageExtra = styled.div.withConfig(propsBlocker)<
     MessageExtraPropsType
 >`
     flex-shrink: 0;
-
     margin-left: ${spacing(4)};
     padding-top: ${spacing(2)};
     padding-bottom: ${spacing(2)};
@@ -131,28 +125,8 @@ const getIconDynamicStyle = (props: MessageRootPropsType) => {
 
 export const MessageIcon = styled(MessageIconWrapper)<MessageIconPropsType>`
     flex: 0 0 auto;
-
     font-size: ${pixelToRem(24)};
-
     margin-right: ${spacing(2)};
-    padding-top: ${spacing(4)};
-    padding-bottom: ${spacing(4)};
-
+    padding: ${spacing(4)} 0;
     ${getIconDynamicStyle};
-`;
-
-export const MessageCloseButton = styled.a.withConfig(propsBlocker)<
-    MessageCloseButtonPropsType
->`
-    flex: 0 0 auto;
-    cursor: pointer;
-    ${noTextInteraction};
-
-    color: ${color('neutral.07')};
-    font-size: ${pixelToRem(fontSize03)};
-
-    padding-top: ${spacing(5)};
-    padding-left: ${spacing(2)};
-    padding-bottom: ${spacing(4)};
-    line-height: normal;
 `;

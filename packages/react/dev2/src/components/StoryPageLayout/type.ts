@@ -8,6 +8,7 @@ type ModuleType = {
 
 export type StoryPageLayoutPropsType = Partial<{
     stories: ModuleType;
+    containerMaxWidth: 'md' | 'lg' | 'sm' | 'xs' | 'xl';
 }> &
     HTMLAttributes<HTMLElement>;
 
