@@ -1,3 +1,10 @@
+## @deliveryhero/armor-icons [1.14.3](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.14.2...@deliveryhero/armor-icons@1.14.3) (2021-09-30)
+
+
+### Bug Fixes
+
+* **theme:** Dark Theme issues addressed, Dark Theme visual tests introduced [LD-604] ([47afb66](https://github.com/deliveryhero/armor/commit/47afb66cd29fc96a4721153582cf87fc7b7cda4e))
+
 ## @deliveryhero/armor-icons [1.14.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.14.1...@deliveryhero/armor-icons@1.14.2) (2021-09-06)
 
 ## @deliveryhero/armor-icons [1.14.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.14.0...@deliveryhero/armor-icons@1.14.1) (2021-08-18)
