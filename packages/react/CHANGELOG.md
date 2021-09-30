@@ -1,3 +1,18 @@
+## @deliveryhero/armor [1.73.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.73.0...@deliveryhero/armor@1.73.1) (2021-09-30)
+
+
+### Bug Fixes
+
+* **theme:** Dark Theme issues addressed, Dark Theme visual tests introduced [LD-604] ([47afb66](https://github.com/deliveryhero/armor/commit/47afb66cd29fc96a4721153582cf87fc7b7cda4e))
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor-icons:** upgraded to 1.14.3
+
 # @deliveryhero/armor [1.73.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.72.0...@deliveryhero/armor@1.73.0) (2021-09-29)
 
 
