@@ -1,8 +1,6 @@
 import React, { ChangeEvent, useState, MouseEvent } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { InfoIcon } from '@deliveryhero/armor-icons';
-// eslint-disable-next-line import/no-unresolved
-import { withKnobs } from '@storybook/addon-knobs';
 import { Accordion } from '../Accordion';
 import { AccordionContent } from '../AccordionContent';
 import { AccordionHeader } from '../AccordionHeader';
@@ -17,7 +15,7 @@ import { withWrapper } from '../../../helpers/Wrapper';
 export default {
     title: 'Components/Accordion',
     component: Accordion,
-    decorators: [withKnobs, withWrapper],
+    decorators: [withWrapper],
     parameters: {},
 };
 

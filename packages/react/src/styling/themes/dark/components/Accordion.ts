@@ -1,11 +1,17 @@
 import { css } from 'styled-components';
-import { colorGrey50, colorGrey60, colorGrey70 } from '../../../../tokens';
+import { colorGrey50 } from '../../../../tokens';
 import { AccordionPropsType } from '../../../../components/Accordion/type';
+import { color } from '../../../../system';
 
 export const getAccordionOverride = ({ disabled }: AccordionPropsType) => {
     let result = css`
-        border-top-color: ${colorGrey70};
-        border-bottom-color: ${colorGrey70};
+        border-top-color: ${color('neutral.02')};
+        border-bottom-color: ${color('neutral.02')};
+
+        .AccordionHeader-HeaderTitle,
+        .ExpansionIndicator-Icon {
+            color: ${color('neutral.06')};
+        }
     `;
 
     if (disabled) {
@@ -13,7 +19,7 @@ export const getAccordionOverride = ({ disabled }: AccordionPropsType) => {
             ${result};
 
             .AccordionHeader-Root {
-                background: ${colorGrey70};
+                background: ${color('neutral.02')};
             }
 
             .AccordionHeader-HeaderTitle {
@@ -30,7 +36,7 @@ export const getAccordionOverride = ({ disabled }: AccordionPropsType) => {
 
             .AccordionHeader-Root {
                 &:hover {
-                    background: ${colorGrey60};
+                    background: ${color('neutral.03')};
                 }
             }
         `;

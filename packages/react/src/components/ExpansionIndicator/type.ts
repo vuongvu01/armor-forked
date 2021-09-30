@@ -1,6 +1,6 @@
 import { HTMLAttributes } from 'react';
 
-import { MarginAttributesType } from '../../system';
+import { MarginAttributesType, PaddingAttributesType } from '../../system';
 import { ComponentElementStylePropsType } from '../type';
 import { ComponentBehaviourExpansionType } from '../../system/types/ComponentBehaviourExpansionType';
 
@@ -14,26 +14,32 @@ export type ClassBasedOnComponentType = {
 
 /** 👉 PROPS TYPE */
 export type ExpansionIndicatorEffectivePropsType = Partial<{
-    error: boolean;
+    expanded: boolean;
+    /**
+     * @deprecated
+     */
     isExpanded: boolean;
+    /**
+     * Since the separator was removed, this property does nothing, but left for backward compatibility.
+     * @deprecated
+     */
     displaySeparator: boolean;
     disabled: boolean;
 }> &
     HTMLAttributes<HTMLElement> &
+    PaddingAttributesType &
     MarginAttributesType;
+
+export type ExpansionIndicatorPropsType = ExpansionIndicatorEffectivePropsType;
 
 export type ExpansionIndicatorRootPropsType = ExpansionIndicatorEffectivePropsType &
     ComponentElementStylePropsType;
 
-export type ExpansionIndicatorContentPropsType = Pick<
-    ExpansionIndicatorEffectivePropsType,
-    'displaySeparator' | 'error'
-> &
-    ComponentElementStylePropsType;
+export type ExpansionIndicatorContentPropsType = ComponentElementStylePropsType;
 
 export type ExpansionIndicatorIconPropsType = Pick<
     ExpansionIndicatorEffectivePropsType,
-    'disabled' | 'error'
+    'disabled'
 > &
     ComponentBehaviourExpansionType &
     ComponentElementStylePropsType;

@@ -4,65 +4,66 @@ import { AccordionHeaderRootPropsType } from './type';
 import { Typography } from '../../Typography';
 import { mouseCursor } from '../../../styling';
 import { ExpansionIndicator } from '../../ExpansionIndicator';
-import { color, typography, propsBlocker } from '../../../system';
+import { color, typography, propsBlocker, spacing } from '../../../system';
 
-const accordionHeaderStyle = ({
-    disabled,
-    isExpanded,
-    theme: {
-        componentOverrides: {
-            AccordionHeader: { Root },
-        },
-    },
-}: AccordionHeaderRootPropsType) => {
+const getRootStyle = ({ disabled }: AccordionHeaderRootPropsType) => {
     if (disabled) {
-        return css` pointer-events: none; ${Root.base}${Root.disabled}`;
+        return css`
+            pointer-events: none;
+            background: ${color('neutral.03')};
+
+            &:hover {
+                background: ${color('neutral.03')};
+            }
+        `;
     }
 
-    return isExpanded ? css`${Root.base}${Root.expanded}` : Root.base;
+    return '';
 };
 
-const accordionHeaderTypographyStyle = ({
-    disabled,
-    theme: {
-        componentOverrides: {
-            AccordionHeader: { Typography: HeaderTypography },
-        },
-    },
-}: AccordionHeaderRootPropsType) => {
+const getHeaderElementsStyle = ({ disabled }: AccordionHeaderRootPropsType) => {
     if (disabled) {
-        return css`${HeaderTypography.base}${HeaderTypography.disabled}`;
+        return css`
+            color: ${color('neutral.05')};
+        `;
     }
 
-    return HeaderTypography.base;
+    return '';
 };
 
 /** 👉 ROOT ELEMENT */
 export const AccordionHeaderRoot = styled.div.withConfig(propsBlocker)<
     AccordionHeaderRootPropsType
 >`
+    ${typography('labelMedium')};
     align-items: center;
     box-sizing: border-box;
     display: inline-flex;
     min-height: 56px;
     justify-content: space-between;
 
-    ${typography('labelMedium')};
+    padding: ${spacing(4)} ${spacing(6)};
+    &:hover {
+        background: ${color('primary.lightest')};
+    }
+    &:focus {
+        outline-color: ${color('primary.dark')};
+    }
+
     ${mouseCursor};
-    ${accordionHeaderStyle};
+    ${getRootStyle};
 `;
 
-export const AccordionHeaderTypography = styled(Typography)<
-    AccordionHeaderRootPropsType
->`
-    ${accordionHeaderTypographyStyle};
-`;
-
-export const AccordionHeaderBody = styled(Typography)<
-    AccordionHeaderRootPropsType
->`
+export const AccordionHeaderBody = styled.div<AccordionHeaderRootPropsType>`
     align-items: center;
     display: inline-flex;
+`;
+
+export const AccordionHeaderTitle = styled.div<AccordionHeaderRootPropsType>`
+    ${typography('labelLarge')};
+    color: ${color('neutral.11')};
+    padding-right: ${spacing(3)};
+    ${getHeaderElementsStyle};
 `;
 
 const accordionExpansionIndicatorStyle = ({
@@ -90,5 +91,7 @@ export const AccordionHeaderExpansionIndicator = styled(ExpansionIndicator)<
 export const AccordionHeaderIcon = styled.div.withConfig(propsBlocker)<
     AccordionHeaderRootPropsType
 >`
-    ${accordionHeaderTypographyStyle};
+    color: ${color('neutral.11')};
+    padding-right: ${spacing(3)};
+    ${getHeaderElementsStyle};
 `;

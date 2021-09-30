@@ -52,6 +52,8 @@ import { getTableControllerCellOverride } from './Table/TableControllerCell';
 import { getActionSheetOverride } from './ActionSheet/ActionSheet';
 import { getStepOverride } from './Stepper/Step';
 import { getIndicatorOverride } from './Indicator';
+import { getEmptyStateOverride } from './EmptyState';
+import { getExpansionIndicatorOverride } from './ExpansionIndicator';
 
 export const darkThemeComponentOverrides = {
     Accordion: getAccordionOverride,
@@ -105,4 +107,6 @@ export const darkThemeComponentOverrides = {
     ListItem: getListItemOverride,
     Step: getStepOverride,
     Indicator: getIndicatorOverride,
+    EmptyState: getEmptyStateOverride,
+    ExpansionIndicator: getExpansionIndicatorOverride,
 };

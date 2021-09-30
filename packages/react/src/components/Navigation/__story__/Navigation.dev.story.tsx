@@ -1,13 +1,12 @@
 /* eslint-disable no-console,import/no-unresolved */
 
 import React, { useState } from 'react';
-import { withKnobs } from '@storybook/addon-knobs';
 import styled from 'styled-components';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { SearchIcon } from '@deliveryhero/armor-icons';
 
 import { Navigation } from '../Navigation';
-import { spacing } from '../../../system/mixins';
+import { spacing } from '../../../system';
 import { TextInput } from '../../TextInput';
 import { structure as demoStructure } from '../__test__/helpers';
 import { ScalarType } from '../../../type';
@@ -16,7 +15,7 @@ import { withWrapper } from '../../../helpers/Wrapper';
 export default {
     title: 'Components/Navigation',
     component: Navigation,
-    decorators: [withKnobs, withWrapper],
+    decorators: [withWrapper],
     parameters: {},
 };
 

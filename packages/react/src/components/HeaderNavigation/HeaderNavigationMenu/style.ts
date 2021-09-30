@@ -76,9 +76,6 @@ export const MenuExpansionIndicator = styled(ExpansionIndicator)<
         background-color: ${color('neutral.02')};
         width: 40px;
     }
-    .ExpansionIndicator-Icon {
-        color: ${color('neutral.11')};
-    }
 
     ${getComponentOverride('HeaderNavigationMenu')};
 `;

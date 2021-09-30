@@ -1,7 +1,6 @@
 /* eslint-disable no-console,import/no-unresolved */
 
 import React, { useMemo, useState } from 'react';
-import { withKnobs } from '@storybook/addon-knobs';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { add } from 'date-fns';
 import { withWrapper } from '../../../helpers/Wrapper';
@@ -16,13 +15,13 @@ import { FormField } from '../../FormField';
 export default {
     title: 'Components/DateRangePicker',
     component: DateRangePicker,
-    decorators: [withKnobs, withWrapper],
+    decorators: [withWrapper],
     parameters: {},
 };
 
 export const Basic = () => {
     return (
-        <Box paddingTop={20} paddingLeft={100}>
+        <Box paddingTop={20}>
             <DateRangePicker data-testid-input="input42" />
         </Box>
     );

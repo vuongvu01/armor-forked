@@ -28,7 +28,7 @@ export const HeaderNavigationMenu = forwardRef<
 >(function HeaderNavigationMenu(
     {
         className,
-        headerTitle = <DHLogoImage />,
+        headerTitle = <DHLogoImage color="currentColor" />,
         headerContent,
         tabIndex = 0,
         ...restProps

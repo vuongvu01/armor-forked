@@ -38,14 +38,6 @@ module.exports = {
                 path: `${__dirname}/static/assets`,
             },
         },
-
-        {
-            resolve: `gatsby-source-filesystem`,
-            options: {
-                name: `content`,
-                path: `${__dirname}/content`,
-            },
-        },
         'gatsby-plugin-react-helmet',
         'gatsby-plugin-image',
         'gatsby-plugin-sharp',

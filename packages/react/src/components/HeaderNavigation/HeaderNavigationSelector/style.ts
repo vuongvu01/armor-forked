@@ -96,8 +96,4 @@ export const SelectorLabel = styled(PackItem)<
 
 export const SelectorExpansionIndicator = styled(ExpansionIndicator)<
     HeaderNavigationSelectorRootPropsType
->`
-    .ExpansionIndicator-Icon {
-        color: ${color('neutral.11')};
-    }
-`;
+>``;

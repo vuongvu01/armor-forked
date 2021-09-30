@@ -13,14 +13,13 @@ export const SVGIcon: FunctionComponent<SVGIconPropsType> = ({
     color,
     ...restProps
 }) => {
-    const fillColor = color || 'currentColor';
     const theme = useTheme();
 
     return (
         <SVGIconRoot
             viewBox={viewBox}
             focusable="false"
-            color={fillColor}
+            color={color}
             iconWidth={width}
             iconHeight={height}
             theme={theme.armor}

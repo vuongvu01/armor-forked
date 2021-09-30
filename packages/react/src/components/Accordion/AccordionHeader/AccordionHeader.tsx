@@ -5,11 +5,10 @@ import {
     AccordionHeaderExpansionIndicator,
     AccordionHeaderIcon,
     AccordionHeaderRoot,
-    AccordionHeaderTypography,
+    AccordionHeaderTitle,
     AccordionHeaderBody,
 } from './style';
 import { AccordionHeaderPropsType } from './type';
-import { accordionHeaderDefaultTheme } from './theme';
 import {
     ACCORDION_HEADER_CLASS_PREFIX,
     accordionHeaderIcon,
@@ -29,10 +28,7 @@ export const AccordionHeader = forwardRef<
     HTMLDivElement,
     AccordionHeaderPropsType
 >(function AccordionHeader({ title, children, className, ...restProps }, ref) {
-    const theme = useComponentTheme(
-        ACCORDION_HEADER_CLASS_PREFIX,
-        accordionHeaderDefaultTheme,
-    );
+    const theme = useComponentTheme(ACCORDION_HEADER_CLASS_PREFIX);
     const { disabled, isExpanded, onToggle } = useContext(AccordionContext);
 
     const classOverride = useAccordionHeaderClassName(
@@ -84,16 +80,14 @@ export const AccordionHeader = forwardRef<
         >
             <AccordionHeaderBody theme={theme} className={classOverride.Body}>
                 {title && (
-                    <AccordionHeaderTypography
+                    <AccordionHeaderTitle
                         className={classOverride.Title}
                         data-testid={accordionHeaderTypography}
                         disabled={disabled}
-                        label
-                        large
                         theme={theme}
                     >
                         {title}
-                    </AccordionHeaderTypography>
+                    </AccordionHeaderTitle>
                 )}
                 {children}
             </AccordionHeaderBody>

@@ -1,10 +1,15 @@
 import { css } from 'styled-components';
-import { colorGrey30, colorGrey50, colorGrey60 } from '../../../../tokens';
+import { colorGrey50 } from '../../../../tokens';
+import { color } from '../../../../system';
 
 export const getPageNavigationOverride = () => {
     return css`
+        .PageNavigation-PageButton {
+            color: ${color('neutral.06')};
+        }
+
         .PageNavigation-ArrowButton[data-disabled=''] {
-            color: ${colorGrey30};
+            color: ${color('neutral.04')};
         }
         .PageNavigation-ArrowButton[data-disabled='1'] {
             color: ${colorGrey50};
@@ -12,7 +17,7 @@ export const getPageNavigationOverride = () => {
 
         .PageNavigation-PageButton[data-disabled=''] {
             &:hover {
-                background-color: ${colorGrey60};
+                background-color: ${color('neutral.03')};
             }
         }
     `;

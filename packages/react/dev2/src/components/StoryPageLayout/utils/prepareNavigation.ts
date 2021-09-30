@@ -9,8 +9,8 @@ export const prepareNavigation = (
     data: StoryPageLayoutDataType,
     componentName: string,
     storyLinks: NavigationStoryLinksType,
-) =>
-    data.allSitePage.edges
+) => {
+    const structure = data.allSitePage.edges
         .filter(edge => edge.node.path.startsWith('/stories'))
         .reduce((result: NavigationStructureType, edge) => {
             const match = edge.node.path.match(/\/stories\/([^\/]+)\//);
@@ -39,3 +39,13 @@ export const prepareNavigation = (
 
             return result;
         }, []);
+
+    structure.sort((a, b) => {
+        const { name: aName } = a;
+        const { name: bName } = b;
+
+        return aName.localeCompare(bName);
+    });
+
+    return structure;
+};

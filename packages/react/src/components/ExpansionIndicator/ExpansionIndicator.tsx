@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { ExpansionIndicatorEffectivePropsType } from './type';
+import { ExpansionIndicatorPropsType } from './type';
 import {
     ExpansionIndicatorContent,
     ExpansionIndicatorIcon,
@@ -18,23 +18,24 @@ import { useTheme } from '../../styling';
 /**
  * @armor-docs-component
  */
-export const ExpansionIndicator: FC<ExpansionIndicatorEffectivePropsType> = ({
+export const ExpansionIndicator: FC<ExpansionIndicatorPropsType> = ({
     className,
     disabled,
-    error,
-    displaySeparator,
     isExpanded,
+    expanded,
     onClick,
     tabIndex,
     ...restProps
 }) => {
     const theme = useTheme().armor;
 
+    const reallyExpanded = isExpanded ?? expanded;
+
     const classOverride = useExpansionIndicatorClassName(
         EXPANSION_INDICATOR_CLASS_PREFIX,
         className,
         disabled,
-        isExpanded,
+        reallyExpanded,
     );
 
     return (
@@ -50,16 +51,13 @@ export const ExpansionIndicator: FC<ExpansionIndicatorEffectivePropsType> = ({
             <ExpansionIndicatorContent
                 className={classOverride.Content}
                 data-testid={expansionIndicatorContent}
-                error={error}
-                displaySeparator={displaySeparator}
                 theme={theme}
             >
                 <ExpansionIndicatorIcon
                     className={classOverride.Icon}
                     data-testid={expansionIndicatorIcon}
                     disabled={disabled}
-                    error={error}
-                    expanded={isExpanded}
+                    expanded={reallyExpanded}
                     theme={theme}
                 />
             </ExpansionIndicatorContent>

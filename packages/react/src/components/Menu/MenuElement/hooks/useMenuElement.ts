@@ -34,12 +34,6 @@ export const useMenuElement = ({
         contentProps: {
             small: !!small,
         },
-        getExpansionHandleProps: () => ({
-            primary,
-            secondary,
-            tertiary,
-            depthLevel,
-        }),
         getExpansionHandleArrowProps: () => ({
             expanded,
         }),

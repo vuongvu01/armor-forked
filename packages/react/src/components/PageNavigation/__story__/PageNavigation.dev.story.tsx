@@ -1,7 +1,6 @@
 /* eslint-disable no-console,import/no-unresolved */
 
 import React, { useState } from 'react';
-import { withKnobs } from '@storybook/addon-knobs';
 
 import { PageNavigation } from '../PageNavigation';
 import { withWrapper } from '../../../helpers/Wrapper';
@@ -9,7 +8,7 @@ import { withWrapper } from '../../../helpers/Wrapper';
 export default {
     title: 'Components/PageNavigation',
     component: PageNavigation,
-    decorators: [withKnobs, withWrapper],
+    decorators: [withWrapper],
     parameters: {},
 };
 

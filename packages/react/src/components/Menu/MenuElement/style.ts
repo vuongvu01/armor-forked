@@ -142,24 +142,6 @@ export const MenuElementContent = styled.div.withConfig(propsBlocker)<
     ${getContentStyle};
 `;
 
-const getExpansionHandleStyle = ({
-    primary,
-    secondary,
-    tertiary,
-    depthLevel,
-}: MenuElementExpansionHandlePropsType) => {
-    let result = {};
-
-    if (primary || (!secondary && !tertiary) || depthLevel === 0) {
-        result = css`
-            ${result};
-            color: ${color('primary.main')};
-        `;
-    }
-
-    return result;
-};
-
 export const MenuElementExpansionHandle = styled.div.withConfig(propsBlocker)<
     MenuElementExpansionHandlePropsType
 >`
@@ -167,31 +149,4 @@ export const MenuElementExpansionHandle = styled.div.withConfig(propsBlocker)<
     align-self: stretch;
     cursor: pointer;
     padding: ${spacing(4)};
-    padding-top: ${spacing(5)};
-
-    ${getExpansionHandleStyle};
-`;
-
-const getExpansionHandleArrowDynamicStyle = ({
-    expanded,
-}: MenuElementExpansionHandleArrowPropsType) => {
-    let result = {};
-
-    if (expanded) {
-        result = css`
-            ${result};
-            transform: rotate(180deg);
-        `;
-    }
-
-    return result;
-};
-
-export const MenuElementExpansionHandleArrow = styled(ArrowDownIcon)<
-    MenuElementExpansionHandleArrowPropsType
->`
-    transition: transform ${transitionDurationInSec}s ease;
-    transform-origin: center;
-
-    ${getExpansionHandleArrowDynamicStyle}
 `;

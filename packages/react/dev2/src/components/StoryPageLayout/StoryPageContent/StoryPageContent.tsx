@@ -6,10 +6,11 @@ import { StoryPageContentRoot, StoryPageContentTitle } from './style';
 export const StoryPageContent: FC<StoryPageContentPropsType> = ({
     title,
     Story,
+    maxWidth,
 }) => {
     return (
         <StoryPageContentRoot>
-            <Container maxWidth="md">
+            <Container maxWidth={maxWidth ?? 'md'}>
                 <StoryPageContentTitle
                     variant="h1"
                     component="h1"

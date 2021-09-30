@@ -64,7 +64,7 @@ export const ListItem = forwardRef<HTMLDivElement, ListItemPropsType>(
                             {primaryIcon && (
                                 <PrimaryIconContainer
                                     theme={theme}
-                                    className={classNames.primaryIconContainer}
+                                    className={classNames.PrimaryIconContainer}
                                 >
                                     {!primaryIconWrapper ? (
                                         primaryIcon

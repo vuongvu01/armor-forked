@@ -10,8 +10,6 @@ const getSizingStyles = ({
     small,
     medium,
     large,
-    iconHeight,
-    iconWidth,
     fontSize,
 }: SVGIconRootPropsType) => {
     if (!theme) {
@@ -56,6 +54,7 @@ export const SVGIconRoot = styled.svg.withConfig(propsBlocker)<
     user-select: none;
     line-height: inherit;
     box-sizing: content-box;
+    fill: currentColor;
     ${({ iconWidth, iconHeight, display }) => css<SVGIconRootPropsType>`
         display: ${display};
         width: ${iconWidth};
