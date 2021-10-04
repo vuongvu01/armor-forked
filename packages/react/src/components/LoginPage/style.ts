@@ -9,11 +9,11 @@ import {
     spacing,
     typography,
 } from '../../system';
-import defaultBackgroundImage from './images/default.jpg';
 import { Card } from '../Card';
 import { fontWeightBold, fontWeightMedium } from '../../tokens';
 import { Divider } from '../Divider';
 import { Link } from '../Link';
+import { defaultBackground } from './images/background';
 
 /** 👉 ROOT ELEMENT */
 export const LoginPageRoot = styled.div.withConfig(propsBlocker)<
@@ -27,7 +27,7 @@ export const LoginPageRoot = styled.div.withConfig(propsBlocker)<
     padding: 0;
     display: flex;
     flex-direction: column;
-    background: url(${defaultBackgroundImage}) no-repeat center center fixed;
+    background: ${defaultBackground};
     background-size: cover;
     ${getComponentOverride('LoginPage')};
     ${marginAttributes};
