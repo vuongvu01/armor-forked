@@ -1,3 +1,10 @@
+# @deliveryhero/armor [1.74.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.73.1...@deliveryhero/armor@1.74.0) (2021-10-04)
+
+
+### Features
+
+* **loginpage:** updated the background image ([#743](https://github.com/deliveryhero/armor/issues/743)) ([5e10247](https://github.com/deliveryhero/armor/commit/5e10247d8effb0521bfc3f9c63703cfd1a81e929))
+
 ## @deliveryhero/armor [1.73.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.73.0...@deliveryhero/armor@1.73.1) (2021-09-30)
 
 
