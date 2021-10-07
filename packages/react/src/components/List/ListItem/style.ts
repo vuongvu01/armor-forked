@@ -19,9 +19,11 @@ import {
     pixelToRem,
 } from '../../../system';
 import { ListRootPropsType } from '../type';
+import { fontWeightMedium, fontWeightRegular } from '../../../tokens';
 
 const getRootStyle = ({
     disabled,
+    inactive,
     size,
     lead,
     subtitle,
@@ -29,11 +31,11 @@ const getRootStyle = ({
 }: ListItemRootPropsType) => {
     let result = {};
 
-    if (disabled) {
+    if (disabled || inactive) {
         result = css`
             ${result};
             color: ${color('neutral.05')};
-            cursor: not-allowed;
+            cursor: ${inactive ? 'pointer' : 'not-allowed'};
         `;
     } else {
         result = css`
@@ -63,32 +65,35 @@ const getRootStyle = ({
         result = css`
             ${result};
             min-height: ${spacing(8)};
-            padding: ${spacing(2)} ${spacing(2)};
+            padding: ${spacing(2)};
         `;
     } else if (size === 'medium') {
         result = css`
             ${result};
             min-height: ${spacing(6)};
-            padding: ${spacing(3)} ${spacing(3)};
+            padding: ${spacing(3)};
         `;
     } else if (size === 'large') {
         result = css`
             ${result};
             min-height: ${spacing(10)};
-            padding: ${spacing(4)} ${spacing(4)};
+            padding: ${spacing(4)};
         `;
     }
     if (lead || subtitle) {
         result = css`
             ${result};
             min-height: ${spacing(15.5)};
-            padding: ${spacing(4)} ${spacing(4)};
         `;
     }
     return result;
 };
 
-const getSecondaryListStyle = ({ lead, disabled }: ListItemRootPropsType) => {
+const getSecondaryListStyle = ({
+    lead,
+    disabled,
+    inactive,
+}: ListItemRootPropsType) => {
     let result = {};
     if (lead) {
         result = css`
@@ -97,10 +102,11 @@ const getSecondaryListStyle = ({ lead, disabled }: ListItemRootPropsType) => {
             align-self: flex-end;
         `;
     }
-    if (disabled) {
+    if (disabled || inactive) {
         result = css`
             ${result};
-            color: ${color('neutral.05')};
+            color: ${inactive ? color('neutral.07') : color('neutral.05')};
+            cursor: ${inactive ? 'pointer' : 'not-allowed'};
         `;
     } else {
         result = css`
@@ -111,12 +117,16 @@ const getSecondaryListStyle = ({ lead, disabled }: ListItemRootPropsType) => {
     return result;
 };
 
-const getLeadSubtitleStyle = ({ disabled }: ListItemRootPropsType) => {
+const getLeadSubtitleStyle = ({
+    disabled,
+    inactive,
+}: ListItemRootPropsType) => {
     let result = {};
-    if (disabled) {
+    if (disabled || inactive) {
         result = css`
             ${result};
-            color: ${color('neutral.05')};
+            cursor: ${inactive ? 'pointer' : 'not-allowed'};
+            color: ${inactive ? color('neutral.07') : color('neutral.05')};
         `;
     } else {
         result = css`
@@ -127,23 +137,48 @@ const getLeadSubtitleStyle = ({ disabled }: ListItemRootPropsType) => {
     return result;
 };
 
-const getPrimaryListStyle = ({ lead, disabled }: ListItemRootPropsType) => {
+const getActionsContainerStyle = ({
+    disabled,
+    inactive,
+}: ListItemRootPropsType) => {
+    let result = css`
+        color: ${color('neutral.07')};
+    `;
+
+    if (disabled || inactive) {
+        result = css`
+            ${result};
+            color: ${inactive ? color('neutral.07') : color('neutral.05')};
+        `;
+    }
+    return result;
+};
+
+const getPrimaryListStyle = ({
+    lead,
+    disabled,
+    inactive,
+}: ListItemRootPropsType) => {
     let result = {};
+
     if (lead) {
         result = css`
             ${result};
             margin-top: 0;
         `;
     }
-    if (disabled) {
+    if (disabled || inactive) {
         result = css`
             ${result};
-            color: ${color('neutral.05')};
+            color: ${inactive ? color('neutral.11') : color('neutral.05')};
+            cursor: ${inactive ? 'pointer' : 'not-allowed'};
+            font-weight: ${inactive ? fontWeightRegular : fontWeightMedium};
         `;
     } else {
         result = css`
             ${result};
             color: ${color('neutral.11')};
+            font-weight: ${fontWeightMedium};
         `;
     }
 
@@ -162,7 +197,7 @@ export const ListItemRoot = styled(Wrapper).withConfig(propsBlocker)<
     ListItemRootPropsType
 >`
     ${reset};
-    ${typography('paragraphMedium')};
+    ${typography('labelMedium')};
 
     display: flex;
     text-decoration: none;
@@ -185,9 +220,11 @@ export const PrimaryListItem = styled.div.withConfig(propsBlocker)<
 >`
     display: flex;
     flex-direction: row;
-    align-self: flex-start;
     justify-content: center;
+    align-self: center;
+    line-height: ${pixelToRem(24)};
     ${getPrimaryListStyle};
+    ${getComponentOverride('ListItemPrimarySection')};
 `;
 
 export const SecondaryListItem = styled.div.withConfig(propsBlocker)<
@@ -196,6 +233,7 @@ export const SecondaryListItem = styled.div.withConfig(propsBlocker)<
     display: flex;
     flex-direction: row;
     align-self: flex-start;
+    align-items: center;
     justify-content: center;
     color: ${color('neutral.07')};
     ${getSecondaryListStyle};
@@ -212,6 +250,7 @@ export const ActionsContainer = styled.div.withConfig(propsBlocker)<
     ActionsContainerPropsType
 >`
     margin-left: ${spacing(2)};
+    ${getActionsContainerStyle}
 `;
 
 export const PrimaryLeadSubtitle = styled.div.withConfig(propsBlocker)<
@@ -221,6 +260,7 @@ export const PrimaryLeadSubtitle = styled.div.withConfig(propsBlocker)<
     flex-direction: column;
     align-self: flex-start;
     font-size: ${pixelToRem(14)};
+    line-height: ${pixelToRem(20)};
     ${getLeadSubtitleStyle}
 `;
 

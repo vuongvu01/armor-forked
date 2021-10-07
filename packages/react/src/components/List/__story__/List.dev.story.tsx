@@ -2,11 +2,12 @@
 
 import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
+import { Link, BrowserRouter } from 'react-router-dom';
 import { MapIcon, ArrowRightIcon } from '@deliveryhero/armor-icons';
 
 import { withWrapper } from '../../../helpers/Wrapper';
 import { List } from '../List';
-import { ListItem } from '../ListItem/ListItem';
+import { ListItem } from '../ListItem';
 import { Switch } from '../../Switch';
 import { Tag } from '../../Tag';
 
@@ -216,12 +217,12 @@ export const SmallMediumLarge = () => {
     );
 };
 
-export const ListWithChevron = () => {
+export const ListWithInactiveItems = () => {
     return (
-        <>
+        <BrowserRouter>
             <List>
                 <ListItem
-                    subtitle="subtitle"
+                    subtitle="Sub-title"
                     enableLink={true}
                     href="https://www.deliveryhero.com"
                     target="_blank"
@@ -231,10 +232,11 @@ export const ListWithChevron = () => {
                 </ListItem>
 
                 <ListItem
-                    lead="lead"
-                    enableLink={true}
+                    enableLink
+                    inactive
                     href="https://www.deliveryhero.com"
                     target="_blank"
+                    secondaryItemText="Idle"
                     actions={<ArrowRightIcon small />}
                 >
                     With Chevron
@@ -242,16 +244,26 @@ export const ListWithChevron = () => {
 
                 <ListItem
                     lead="lead"
-                    disabled={true}
-                    enableLink={true}
+                    disabled
+                    enableLink
+                    secondaryItemText="Disabled"
                     href="https://www.deliveryhero.com"
                     target="_blank"
                     actions={<ArrowRightIcon small />}
                 >
                     With Chevron and disabled
                 </ListItem>
+                <ListItem
+                    enableLink
+                    inactive
+                    tag={Link}
+                    to="/pasta"
+                    actions={<ArrowRightIcon small />}
+                >
+                    With React router Link and inactive states
+                </ListItem>
             </List>
-        </>
+        </BrowserRouter>
     );
 };
 
@@ -318,7 +330,7 @@ export const OnlyPrimary = () => {
     );
 };
 
-export const primaryIconAllCases = () => {
+export const PrimaryIconAllCases = () => {
     return (
         <>
             <List>

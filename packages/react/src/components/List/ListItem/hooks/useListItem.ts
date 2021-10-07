@@ -6,9 +6,12 @@ export const useListItem = <E extends HTMLDivElement>(
     {
         children,
         disabled,
+        inactive,
+        tag,
+        to,
         primaryIcon,
         actions,
-        secondaryItemText,
+        secondaryItemText = inactive ? 'Inactive' : '',
         size,
         href,
         target,
@@ -23,8 +26,9 @@ export const useListItem = <E extends HTMLDivElement>(
     }: ListItemPropsType,
     ref: RefType<E>,
 ) => {
-    // put all your component logic here
     const innerRef = useRootRef<E>(ref);
+
+    const Tag = enableLink && (!disabled || inactive) ? tag ?? 'a' : 'div';
 
     return {
         rootProps: {
@@ -36,17 +40,21 @@ export const useListItem = <E extends HTMLDivElement>(
             disabled,
             ref,
             enableLink,
+            inactive,
         },
-        primaryListProps: { disabled },
+        primaryListProps: { disabled, inactive },
+        actionsContainerProps: { disabled, inactive },
         secondaryListProps: {
             lead,
             subtitle,
             disabled,
+            inactive,
         },
         primaryLeadSubtitle: {
             lead,
             subtitle,
             disabled,
+            inactive,
         },
         renderSubtitle: !!subtitle && !lead,
         renderLead: !!lead,
@@ -63,11 +71,11 @@ export const useListItem = <E extends HTMLDivElement>(
             href,
             target,
             rel,
+            to,
         },
-        Tag: enableLink && !disabled ? 'a' : 'div',
+        Tag,
         primaryIconBackgroundColor,
         primaryIconWrapper: (lead || subtitle) && primaryIconBackgroundColor,
-        disabled,
         primaryIconWrapperProps: {
             disabled,
             primaryIconBackgroundColor,

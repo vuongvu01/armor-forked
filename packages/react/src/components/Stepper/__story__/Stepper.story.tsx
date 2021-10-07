@@ -1,6 +1,4 @@
 import React from 'react';
-// eslint-disable-next-line import/no-unresolved
-import { withKnobs } from '@storybook/addon-knobs';
 
 import { Stepper } from '../Stepper';
 import { Step } from '../Step';
@@ -9,7 +7,7 @@ import { withWrapper } from '../../../helpers/Wrapper';
 export default {
     title: 'Components/Stepper',
     component: Stepper,
-    decorators: [withKnobs, withWrapper],
+    decorators: [withWrapper],
     parameters: {},
 };
 
