@@ -8,14 +8,14 @@ export const useListItemClassNames = (
     useMemo(() => {
         return {
             Root: makeRootClassName(classPrefix, className),
-            PrimaryListItem: makeBEM(classPrefix, 'PrimaryItem'),
-            SecondaryListItem: makeBEM(classPrefix, 'SecondaryList'),
-            PrimaryIconContainer: makeBEM(classPrefix, 'PrimaryIcon'),
+            PrimaryListItem: makeBEM(classPrefix, 'PrimaryListItem'),
+            SecondaryListItem: makeBEM(classPrefix, 'SecondaryListItem'),
+            PrimaryIconContainer: makeBEM(classPrefix, 'PrimaryIconContainer'),
             PrimaryListItemContainer: makeBEM(
                 classPrefix,
-                'PrimaryItemContainer',
+                'PrimaryListItemContainer',
             ),
-            PrimaryLeadSubtitle: makeBEM(classPrefix, 'LeadSubtitle'),
+            PrimaryLeadSubtitle: makeBEM(classPrefix, 'PrimaryLeadSubtitle'),
             ActionsContainer: makeBEM(classPrefix, 'ActionsContainer'),
             PrimaryIconWrapper: makeBEM(classPrefix, 'PrimaryIconWrapper'),
         };

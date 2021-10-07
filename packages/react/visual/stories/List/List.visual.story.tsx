@@ -1,13 +1,8 @@
 import React from 'react';
-
-import { List } from '../../../src/components/List';
-import { ListItem } from '../../../src/components/List/ListItem/ListItem';
-
-import { Switch } from '../../../src/components/Switch';
-
-import { Tag } from '../../../src/components/Tag';
-
 import { MapIcon, ArrowRightIcon } from '@deliveryhero/armor-icons';
+import { BrowserRouter, Link } from 'react-router-dom';
+
+import { List, ListItem, Switch, Tag } from '../../../src';
 
 export default {
     title: 'List',
@@ -53,6 +48,56 @@ export const DefaultLayout = () => {
                 </ListItem>
             </List>
         </>
+    );
+};
+
+export const ListWithInactiveItems = () => {
+    return (
+        <BrowserRouter>
+            <List>
+                <ListItem
+                    subtitle="Sub-title"
+                    enableLink={true}
+                    href="https://www.deliveryhero.com"
+                    target="_blank"
+                    actions={<ArrowRightIcon small />}
+                >
+                    With Chevron
+                </ListItem>
+
+                <ListItem
+                    enableLink
+                    inactive
+                    href="https://www.deliveryhero.com"
+                    target="_blank"
+                    secondaryItemText="Idle"
+                    actions={<ArrowRightIcon small />}
+                >
+                    With Chevron
+                </ListItem>
+
+                <ListItem
+                    lead="lead"
+                    disabled
+                    enableLink
+                    secondaryItemText="Disabled"
+                    href="https://www.deliveryhero.com"
+                    target="_blank"
+                    actions={<ArrowRightIcon small />}
+                >
+                    With Chevron and disabled
+                </ListItem>
+                <ListItem
+                    enableLink
+                    inactive
+                    tag={Link}
+                    to="/pasta"
+                    actions={<ArrowRightIcon small />}
+                >
+                    With React router Link and inactive states
+                </ListItem>
+            </List>
+        </BrowserRouter>
     );
 };
 

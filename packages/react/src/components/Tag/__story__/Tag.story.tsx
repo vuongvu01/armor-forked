@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-// eslint-disable-next-line import/no-unresolved
-import { withKnobs } from '@storybook/addon-knobs';
 
 import { GroupHelper } from '../../../helpers/GroupHelper';
 import { Tag } from '../Tag';
@@ -10,7 +8,7 @@ import { styled, Tooltip } from '../../../index';
 export default {
     title: 'Components/Tag',
     component: Tag,
-    decorators: [withKnobs, withWrapper],
+    decorators: [withWrapper],
     parameters: {},
 };
 

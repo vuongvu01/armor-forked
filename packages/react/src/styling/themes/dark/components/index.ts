@@ -47,6 +47,7 @@ import { getTableCheckboxCellOverride } from './Table/TableCheckboxCell';
 import { getTableHeadCellOverride } from './Table/TableHeadCell';
 import { getLinkOverride } from './Link';
 import { getListItemOverride } from './List/ListItem';
+import { getListItemPrimarySectionOverride } from './List/ListItemPrimarySection';
 import { getCloseButtonOverride } from './CloseButton/CloseButton';
 import { getTableControllerCellOverride } from './Table/TableControllerCell';
 import { getActionSheetOverride } from './ActionSheet/ActionSheet';
@@ -105,6 +106,7 @@ export const darkThemeComponentOverrides = {
     Link: getLinkOverride,
     CloseButton: getCloseButtonOverride,
     ListItem: getListItemOverride,
+    ListItemPrimarySection: getListItemPrimarySectionOverride,
     Step: getStepOverride,
     Indicator: getIndicatorOverride,
     EmptyState: getEmptyStateOverride,

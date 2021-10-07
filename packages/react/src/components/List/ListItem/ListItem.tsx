@@ -33,6 +33,7 @@ export const ListItem = forwardRef<HTMLDivElement, ListItemPropsType>(
             primaryListProps,
             primaryLeadSubtitle,
             secondaryListProps,
+            actionsContainerProps,
             renderSubtitle,
             renderLead,
             enableSecondaryItem,
@@ -119,6 +120,7 @@ export const ListItem = forwardRef<HTMLDivElement, ListItemPropsType>(
                                 {secondaryItemText}
                                 {!!actions && (
                                     <ActionsContainer
+                                        {...actionsContainerProps}
                                         theme={theme}
                                         className={classNames.ActionsContainer}
                                     >
@@ -145,14 +147,14 @@ ListItem.defaultProps = {
 /** prop-types are required here for run-time checks */
 ListItem.propTypes = {
     disabled: PropTypes.bool,
-    primaryIcon: PropTypes.elementType,
-    secondaryItemText: PropTypes.string,
+    primaryIcon: PropTypes.node,
+    secondaryItemText: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
     divider: PropTypes.bool,
     lead: PropTypes.string,
     subtitle: PropTypes.string,
     enableSecondaryItem: PropTypes.bool,
     enableLink: PropTypes.bool,
-    actions: PropTypes.elementType,
+    actions: PropTypes.node,
     primaryIconBackgroundColor: PropTypes.string,
     primaryIconWrapper: PropTypes.bool,
 };
