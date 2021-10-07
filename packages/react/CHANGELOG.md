@@ -1,3 +1,10 @@
+# @deliveryhero/armor [1.75.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.74.0...@deliveryhero/armor@1.75.0) (2021-10-07)
+
+
+### Features
+
+* **listitem:** support for custom tag [LD-612] ([#735](https://github.com/deliveryhero/armor/issues/735)) ([0532fd4](https://github.com/deliveryhero/armor/commit/0532fd4b7a8760a8865a3e36f9625c2d78bee98d))
+
 # @deliveryhero/armor [1.74.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.73.1...@deliveryhero/armor@1.74.0) (2021-10-04)
 
 
