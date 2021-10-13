@@ -5,13 +5,7 @@
  */
 
 import React from 'react';
-import { getRenderedEffectNodeIdCollector } from '@gannochenko/ui';
-import { Providers } from './src/components/Providers/Providers';
-import { ApplicationLayout } from './src/components';
-
-export const onRenderBody = ({ setPostBodyComponents }) => {
-    setPostBodyComponents([getRenderedEffectNodeIdCollector()]);
-};
+import { Providers, ApplicationLayout } from './src/components';
 
 export const wrapPageElement = ({ element, props }) => {
     return (

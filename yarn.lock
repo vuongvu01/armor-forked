@@ -891,6 +891,24 @@
     unique-filename "^1.1.1"
     which "^1.3.1"
 
+"@gannochenko/fea-cli@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@gannochenko/fea-cli/-/fea-cli-1.0.0.tgz#a3aef2befccafee6ca6b4e0fea4a95ae4b6e8089"
+  integrity sha512-0p/Gwx36K1ZgsSnvJhoRwhfAD2GUU8zHWXptvOOSiEOgoPPO1u4A5Pk5MHBp9Z0KFB3DmhcwafYrrYVbdBvrJA==
+  dependencies:
+    "@octokit/core" "^3.5.1"
+    case-formatter "^1.1.2"
+    chalk "^4.1.2"
+    clear "^0.1.0"
+    commander "^8.1.0"
+    debug "^4.3.2"
+    ejs "^3.1.6"
+    execa "^5.1.1"
+    figlet "^1.5.2"
+    find-up-all "^1.0.2"
+    fs-extra "^10.0.0"
+    inquirer "^8.1.2"
+
 "@gannochenko/gbelt@^1.0.13":
   version "1.0.13"
   resolved "https://registry.yarnpkg.com/@gannochenko/gbelt/-/gbelt-1.0.13.tgz#aa3f2e2d988ffb7df21f278ee3660862cbeccf9c"
@@ -903,23 +921,6 @@
     commander "^6.0.0"
     debug "^4.1.1"
     ejs "^3.1.6"
-    execa "^4.0.3"
-    figlet "^1.5.0"
-    find-up-all "^1.0.2"
-    fs-extra "^9.0.1"
-    inquirer "^7.3.3"
-
-"@gannochenko/gbelt@^1.0.5":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@gannochenko/gbelt/-/gbelt-1.0.5.tgz#bb102f5d2e902f98395e9f5c77b1d0756a6b9b43"
-  integrity sha512-Fl5oe+gKsyjcxLgAeSKcSR9UZVaQ0yIkKWBuGOWtyQpHtW49SNXBvAZKPLxCArQJc6AjpYydzEeVgF7LQBgG9w==
-  dependencies:
-    "@octokit/core" "^3.1.2"
-    case-formatter "^1.0.9"
-    chalk "^4.1.0"
-    clear "^0.1.0"
-    commander "^6.0.0"
-    debug "^4.1.1"
     execa "^4.0.3"
     figlet "^1.5.0"
     find-up-all "^1.0.2"
@@ -2484,6 +2485,19 @@
     before-after-hook "^2.1.0"
     universal-user-agent "^6.0.0"
 
+"@octokit/core@^3.5.1":
+  version "3.5.1"
+  resolved "https://registry.yarnpkg.com/@octokit/core/-/core-3.5.1.tgz#8601ceeb1ec0e1b1b8217b960a413ed8e947809b"
+  integrity sha512-omncwpLVxMP+GLpLPgeGJBF6IWJFjXDS5flY5VbppePYX9XehevbDykRH9PdCdvqt9TS5AOTiDide7h0qrkHjw==
+  dependencies:
+    "@octokit/auth-token" "^2.4.4"
+    "@octokit/graphql" "^4.5.8"
+    "@octokit/request" "^5.6.0"
+    "@octokit/request-error" "^2.0.5"
+    "@octokit/types" "^6.0.3"
+    before-after-hook "^2.2.0"
+    universal-user-agent "^6.0.0"
+
 "@octokit/endpoint@^6.0.1":
   version "6.0.5"
   resolved "https://registry.yarnpkg.com/@octokit/endpoint/-/endpoint-6.0.5.tgz#43a6adee813c5ffd2f719e20cfd14a1fee7c193a"
@@ -2510,6 +2524,11 @@
     "@octokit/request" "^5.3.0"
     "@octokit/types" "^6.0.3"
     universal-user-agent "^6.0.0"
+
+"@octokit/openapi-types@^10.6.4":
+  version "10.6.4"
+  resolved "https://registry.yarnpkg.com/@octokit/openapi-types/-/openapi-types-10.6.4.tgz#c8b5b1f5c60ab7c62858abe2ef57bc709f426a30"
+  integrity sha512-JVmwWzYTIs6jACYOwD6zu5rdrqGIYsiAsLzTCxdrWIPNKNVjEF6vPTL20shmgJ4qZsq7WPBcLXLsaQD+NLChfg==
 
 "@octokit/openapi-types@^4.0.0":
   version "4.0.1"
@@ -2574,6 +2593,15 @@
     deprecation "^2.0.0"
     once "^1.4.0"
 
+"@octokit/request-error@^2.0.5", "@octokit/request-error@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@octokit/request-error/-/request-error-2.1.0.tgz#9e150357831bfc788d13a4fd4b1913d60c74d677"
+  integrity sha512-1VIvgXxs9WHSjicsRwq8PlR2LR2x6DwsJAaFgzdi0JfJoGSO8mYI/cHJQ+9FbN21aa+DrgNLnwObmyeSC8Rmpg==
+  dependencies:
+    "@octokit/types" "^6.0.3"
+    deprecation "^2.0.0"
+    once "^1.4.0"
+
 "@octokit/request@^5.2.0", "@octokit/request@^5.3.0", "@octokit/request@^5.4.0":
   version "5.4.7"
   resolved "https://registry.yarnpkg.com/@octokit/request/-/request-5.4.7.tgz#fd703ee092e0463ceba49ff7a3e61cb4cf8a0fde"
@@ -2600,6 +2628,18 @@
     is-plain-object "^5.0.0"
     node-fetch "^2.6.1"
     once "^1.4.0"
+    universal-user-agent "^6.0.0"
+
+"@octokit/request@^5.6.0":
+  version "5.6.2"
+  resolved "https://registry.yarnpkg.com/@octokit/request/-/request-5.6.2.tgz#1aa74d5da7b9e04ac60ef232edd9a7438dcf32d8"
+  integrity sha512-je66CvSEVf0jCpRISxkUcCa0UkxmFs6eGDRSbfJtAVwbLH5ceqF+YEyC8lj8ystKyZTy8adWr0qmkY52EfOeLA==
+  dependencies:
+    "@octokit/endpoint" "^6.0.1"
+    "@octokit/request-error" "^2.1.0"
+    "@octokit/types" "^6.16.1"
+    is-plain-object "^5.0.0"
+    node-fetch "^2.6.1"
     universal-user-agent "^6.0.0"
 
 "@octokit/rest@^16.28.4":
@@ -2662,6 +2702,13 @@
   dependencies:
     "@octokit/openapi-types" "^4.0.0"
     "@types/node" ">= 8"
+
+"@octokit/types@^6.16.1":
+  version "6.31.3"
+  resolved "https://registry.yarnpkg.com/@octokit/types/-/types-6.31.3.tgz#14c2961baea853b2bf148d892256357a936343f8"
+  integrity sha512-IUG3uMpsLHrtEL6sCVXbxCgnbKcgpkS4K7gVEytLDvYYalkK3XcuMCHK1YPD8xJglSJAOAbL4MgXp47rS9G49w==
+  dependencies:
+    "@octokit/openapi-types" "^10.6.4"
 
 "@popperjs/core@^2.4.2":
   version "2.4.4"
@@ -4335,6 +4382,11 @@ before-after-hook@^2.0.0, before-after-hook@^2.1.0:
   resolved "https://registry.yarnpkg.com/before-after-hook/-/before-after-hook-2.1.0.tgz#b6c03487f44e24200dd30ca5e6a1979c5d2fb635"
   integrity sha512-IWIbu7pMqyw3EAJHzzHbWa85b6oud/yfKYg5rqB5hNE8CeMi3nX+2C2sj0HswfblST86hpVEOAb9x34NZd6P7A==
 
+before-after-hook@^2.2.0:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/before-after-hook/-/before-after-hook-2.2.2.tgz#a6e8ca41028d90ee2c24222f201c90956091613e"
+  integrity sha512-3pZEU3NT5BFUo/AD5ERPWOgQOCZITni6iavr5AUw5AUwQjMlI0kzu5btnyD39AF0gUEsDPwJT+oY1ORBJijPjQ==
+
 big.js@^5.2.2:
   version "5.2.2"
   resolved "https://registry.yarnpkg.com/big.js/-/big.js-5.2.2.tgz#65f0af382f578bcdc742bd9c281e9cb2d7768328"
@@ -4703,6 +4755,11 @@ case-formatter@^1.0.9:
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/case-formatter/-/case-formatter-1.0.9.tgz#60cc9043d28f18d40457978858064dc68b7b3b74"
   integrity sha512-KGHH2FKFZ7gtsBbjsCdEh76ZNCugTsAFnZFR11Acuniwz7i05nC1Rc7Dgj79dN+oID2HrCU9/KnB6jNfnsuQrA==
+
+case-formatter@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/case-formatter/-/case-formatter-1.1.2.tgz#f514039a0a82a0a07dd5193a8fd32d1cee136e56"
+  integrity sha512-s9+4ndMBLAXl4Rs1gQj2ipPGd+6/QFe//S978/eg2wEhVTlr9WW2aq64JUM/L00CDqSPkLVCy9ujrIU2FTxKJg==
 
 caseless@~0.12.0:
   version "0.12.0"

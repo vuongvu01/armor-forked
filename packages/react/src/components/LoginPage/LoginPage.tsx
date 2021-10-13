@@ -27,6 +27,9 @@ import { useComponentTheme } from '../../utils/hooks';
 import { Button } from '../Button';
 import { TextInput } from '../TextInput';
 
+/**
+ * @armor-docs-component
+ */
 export const LoginPage = forwardRef<HTMLDivElement, LoginPagePropsType>(
     function LoginPage({ className, ...props }, ref) {
         const theme = useComponentTheme(LOGINPAGE_CLASS_PREFIX);

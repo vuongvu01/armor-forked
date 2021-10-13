@@ -48,7 +48,7 @@ import { getTableHeadCellOverride } from './Table/TableHeadCell';
 import { getLinkOverride } from './Link';
 import { getListItemOverride } from './List/ListItem';
 import { getListItemPrimarySectionOverride } from './List/ListItemPrimarySection';
-import { getCloseButtonOverride } from './CloseButton/CloseButton';
+import { getCloseButtonOverride } from './CloseButton';
 import { getTableControllerCellOverride } from './Table/TableControllerCell';
 import { getActionSheetOverride } from './ActionSheet/ActionSheet';
 import { getStepOverride } from './Stepper/Step';

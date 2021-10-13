@@ -4,7 +4,7 @@ import { getClassNameByComponent } from '../../utils';
 import { appendClassName, makeBEM } from '../../../../utils';
 import { ACCORDION_HEADER_CLASS_PREFIX } from '../../constants';
 
-const useAccordionHeaderClassName = (
+export const useAccordionHeaderClassName = (
     classPrefix: string,
     className?: string,
     disabled?: boolean,
@@ -43,5 +43,3 @@ const useAccordionHeaderClassName = (
         }),
         [classPrefix, className, disabled, expanded],
     );
-
-export default useAccordionHeaderClassName;

@@ -29,6 +29,7 @@ type TypographyEffectivePropsType = Partial<{
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
     ComponentBehaviourLinkType &
     ComponentBehaviourCustomTagType &
+    ComponentBehaviourLinkType &
     ColorAttributesType &
     MarginAttributesType &
     TextAlignmentAttributesType;

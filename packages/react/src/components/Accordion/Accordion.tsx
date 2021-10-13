@@ -14,7 +14,7 @@ import { AccordionRoot } from './style';
 import { AccordionPropsType } from './type';
 import { accordionDefaultTheme } from './theme';
 import { ACCORDION_CLASS_PREFIX, accordionRoot } from './constants';
-import AccordionContext from './AccordionContext';
+import { AccordionContext } from './AccordionContext';
 
 /**
  * @armor-docs-component

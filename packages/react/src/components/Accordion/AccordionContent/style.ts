@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 import { AccordionContentRootPropsType } from './type';
 import { transitionDurationInSec } from '../../../constants';
-import { propsBlocker, typography } from '../../../system';
+import { paddingAttributes, propsBlocker, typography } from '../../../system';
 
 const accordionContentStyle = ({
     isExpanded,
@@ -38,4 +38,5 @@ export const AccordionContentRoot = styled.div.withConfig(propsBlocker)<
 
     ${typography('paragraphLarge')};
     ${accordionContentStyle};
+    ${paddingAttributes};
 `;
