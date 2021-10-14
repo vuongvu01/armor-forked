@@ -1,5 +1,6 @@
 import { AccordionEffectivePropsType } from '../type';
 import { ComponentElementStylePropsType } from '../../type';
+import { PaddingAttributesType } from '../../../system';
 
 export type AccordionContentPropsType = Partial<{
     /** @ignore */
@@ -7,7 +8,8 @@ export type AccordionContentPropsType = Partial<{
     /** @ignore */
     setIsExpanded: (isExpanded: boolean) => void;
 }> &
-    AccordionEffectivePropsType;
+    AccordionEffectivePropsType &
+    PaddingAttributesType;
 
 export type AccordionContentRootPropsType = AccordionContentPropsType &
     ComponentElementStylePropsType;

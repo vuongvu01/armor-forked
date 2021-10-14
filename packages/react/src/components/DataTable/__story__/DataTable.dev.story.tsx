@@ -1,7 +1,6 @@
 /* eslint-disable no-console,import/no-unresolved, import/no-extraneous-dependencies */
 
 import React, { useCallback, useContext, useRef, useState } from 'react';
-import { withKnobs } from '@storybook/addon-knobs';
 import cloneDeep from 'clone-deep';
 import styled from 'styled-components';
 import { columns, columnsWide, dataSource, dataSourceWide } from './demoData';
@@ -19,7 +18,7 @@ const initialRowSelection = ['2'];
 export default {
     title: 'Components/DataTable',
     component: DataTable,
-    decorators: [withKnobs, withWrapper],
+    decorators: [withWrapper],
     parameters: {},
 };
 

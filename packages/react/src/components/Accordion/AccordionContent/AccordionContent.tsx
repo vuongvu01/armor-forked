@@ -5,8 +5,8 @@ import { AccordionContentRoot } from './style';
 import { AccordionContentPropsType } from './type';
 import { accordionContentDefaultTheme } from './theme';
 import { ACCORDION_CONTENT_CLASS_PREFIX, accordionContent } from '../constants';
-import AccordionContext from '../AccordionContext';
-import useAccordionContentClassName from './hooks/useAccordionContentClassName';
+import { AccordionContext } from '../AccordionContext';
+import { useAccordionContentClassName } from './hooks/useAccordionContentClassName';
 
 /**
  * @armor-docs-component
@@ -32,7 +32,7 @@ export const AccordionContent = forwardRef<
         <AccordionContentRoot
             data-testid={accordionContent}
             {...restProps}
-            className={classOverride.Content}
+            className={classOverride.Root}
             disabled={disabled}
             isExpanded={isExpanded}
             ref={ref}

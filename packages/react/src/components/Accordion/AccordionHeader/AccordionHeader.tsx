@@ -16,8 +16,8 @@ import {
     accordionHeaderTypography,
 } from '../constants';
 import { DROPDOWN_ACTION_ITEM } from '../../Dropdown/constants';
-import AccordionContext from '../AccordionContext';
-import useAccordionHeaderClassName from './hooks/useAccordionHeaderClassName';
+import { AccordionContext } from '../AccordionContext';
+import { useAccordionHeaderClassName } from './hooks/useAccordionHeaderClassName';
 import { getWindow } from '../../../system/util/globals';
 import { useRootRef } from '../../../system';
 

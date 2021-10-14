@@ -57,6 +57,7 @@ export const AccordionHeaderRoot = styled.div.withConfig(propsBlocker)<
 export const AccordionHeaderBody = styled.div<AccordionHeaderRootPropsType>`
     align-items: center;
     display: inline-flex;
+    width: 100%;
 `;
 
 export const AccordionHeaderTitle = styled.div<AccordionHeaderRootPropsType>`

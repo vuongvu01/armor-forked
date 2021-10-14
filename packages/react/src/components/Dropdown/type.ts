@@ -97,6 +97,10 @@ export type DropdownGroupObjectType = DictionaryItemIDBased & ObjectLiteralType;
 export type DropdownEffectivePropsType = Partial<{
     error: boolean;
     displaySeparator: boolean;
+    /**
+     * @deprecated
+     * @see `defaultOpen` property
+     */
     isListExpanded: boolean;
     isSelected: boolean;
     enableSelectAllOption: boolean;
