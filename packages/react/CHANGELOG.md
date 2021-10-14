@@ -1,3 +1,10 @@
+## @deliveryhero/armor [1.75.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.75.0...@deliveryhero/armor@1.75.1) (2021-10-14)
+
+
+### Bug Fixes
+
+* **accordion:** body width ([#750](https://github.com/deliveryhero/armor/issues/750)) ([06a7e69](https://github.com/deliveryhero/armor/commit/06a7e69b36584c7927f629ab279bfa7082063931))
+
 # @deliveryhero/armor [1.75.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.74.0...@deliveryhero/armor@1.75.0) (2021-10-07)
 
 
