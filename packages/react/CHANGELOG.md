@@ -1,3 +1,10 @@
+## @deliveryhero/armor [1.76.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.76.0...@deliveryhero/armor@1.76.1) (2021-10-15)
+
+
+### Bug Fixes
+
+* **background:** sidesheet and dialog [LD-000] ([#753](https://github.com/deliveryhero/armor/issues/753)) ([6ea35c1](https://github.com/deliveryhero/armor/commit/6ea35c18c65310f88a9db7275180267bfda40d36))
+
 # @deliveryhero/armor [1.76.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.75.1...@deliveryhero/armor@1.76.0) (2021-10-15)
 
 
