@@ -1,8 +1,8 @@
 import { css } from 'styled-components';
-import { colorGrey70 } from '../../../../../tokens';
+import { color } from '../../../../../system/mixins/color';
 
 export const getDialogOverride = () => css`
     .Dialog-Window {
-        background-color: ${colorGrey70};
+        background-color: ${color('neutral.10')};
     }
 `;
