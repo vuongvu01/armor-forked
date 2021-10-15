@@ -2,17 +2,18 @@
 
 import React, { useRef } from 'react';
 
-import { cleanup, render } from '@testing-library/react';
+import { cleanup, fireEvent, render } from '@testing-library/react';
 import {
     renderHook,
     cleanup as cleanupHooks,
 } from '@testing-library/react-hooks';
 
 import { FilterEditor } from '../index';
+import { FilterConditionSchemaType } from '../../type';
 
 describe('<FilterEditor />', () => {
     afterEach(async () => {
-        cleanup();
+        await cleanup();
         await cleanupHooks();
     });
 
@@ -55,5 +56,41 @@ describe('<FilterEditor />', () => {
     it('should forward correct attributes', async () => {
         // @ts-ignore
         expect(FilterEditor).toSupportAttributeForwarding();
+    });
+
+    it('should support "enableCloseOnApply" property', async () => {
+        const onClose = jest.fn();
+
+        const filterSchema: FilterConditionSchemaType = {
+            conditions: [
+                {
+                    id: 'name',
+                    label: 'Name',
+                },
+            ],
+        };
+
+        const { getByText, rerender } = render(
+            <FilterEditor
+                schema={filterSchema}
+                onClose={onClose}
+                enableCloseOnApply={false}
+            />,
+        );
+
+        let applyButton = getByText('Apply');
+        expect(applyButton).toBeInTheDocument();
+
+        fireEvent.click(applyButton);
+        expect(onClose).not.toBeCalled();
+
+        rerender(<FilterEditor schema={filterSchema} onClose={onClose} />);
+
+        applyButton = getByText('Apply');
+        expect(applyButton).toBeInTheDocument();
+
+        fireEvent.click(applyButton);
+
+        expect(onClose).toBeCalled();
     });
 });

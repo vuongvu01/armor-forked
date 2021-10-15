@@ -165,6 +165,7 @@ export const DatePickerDaySelectorDayButton = styled.a.withConfig(propsBlocker)<
     })};
     border-radius: ${borderRadius('soft')};
     user-select: none;
+    text-decoration: none;
     ${getDayButtonStyle};
 `;
 

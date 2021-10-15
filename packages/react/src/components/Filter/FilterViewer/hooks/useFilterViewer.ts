@@ -9,6 +9,7 @@ import {
     useRootRef,
 } from '../../../../system';
 import {
+    FilterConditionSchemaElementType,
     FilterConditionSchemaType,
     FilterConditionValueType,
 } from '../../type';
@@ -30,6 +31,7 @@ export const useFilterViewer = <E extends HTMLElement>(
         filterOpen,
         resultCount,
         resultTotalCount,
+        filterActions,
         ...restProps
     }: FilterViewerPropsType,
     ref: RefType<E>,
@@ -117,14 +119,16 @@ export const useFilterViewer = <E extends HTMLElement>(
             onClick: setDialogOpenTrue,
         },
         confirmationDialogProps: {
-            open: dialogOpen,
-            onOpenChange: (newValue: boolean) => setDialogOpen(newValue),
-        },
-        clearFilterCancelButtonProps: {
-            onClick: setDialogCloseFalse,
-        },
-        clearFilterConfirmButtonProps: {
-            onClick: onClearFilterConfirmButtonClick,
+            clearFilterContextMenuProps: {
+                open: dialogOpen,
+                onOpenChange: (newValue: boolean) => setDialogOpen(newValue),
+            },
+            clearFilterCancelButtonProps: {
+                onClick: setDialogCloseFalse,
+            },
+            clearFilterConfirmButtonProps: {
+                onClick: onClearFilterConfirmButtonClick,
+            },
         },
         rootConditionsCount,
         showAddFilterButton: filterOpen ? false : empty,
@@ -141,6 +145,7 @@ export const useFilterViewer = <E extends HTMLElement>(
                 ? new Intl.NumberFormat().format(resultTotalCount)
                 : 0,
         schema: schemaSafe,
+        filterActions,
         isConditionValueEmpty: (
             condition: FilterConditionSchemaType,
             path: string,
@@ -158,8 +163,13 @@ export const useFilterViewer = <E extends HTMLElement>(
             );
         },
         getTagProps: (condition: FilterConditionSchemaType, path: string) => {
-            const conditionTypeId = condition.typeId || 'string';
-            const conditionType = typeIndex[conditionTypeId];
+            const {
+                typeId = 'string',
+                label,
+                name,
+                removable,
+            } = condition as FilterConditionSchemaElementType;
+            const conditionType = typeIndex[typeId];
 
             // todo: This whole approach only works with a flat schema (which we only support for now),
             // todo: and will not work otherwise.
@@ -180,7 +190,8 @@ export const useFilterViewer = <E extends HTMLElement>(
             );
 
             return {
-                label: condition.label || condition.name,
+                label: label ?? name,
+                enableCloseIcon: removable !== false,
                 value: tagValue,
                 onCloseButtonClick: onCloseTagButtonClick,
                 path,

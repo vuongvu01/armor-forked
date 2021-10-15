@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import {
     FilterLayoutRootPropsType,
     FilterLayoutLeftBarPropsType,
@@ -17,6 +17,19 @@ import {
     transition,
 } from '../../../system';
 
+const getRootStyle = ({ enableTopSeparator }: FilterLayoutRootPropsType) => {
+    let result = {};
+
+    if (enableTopSeparator !== false) {
+        result = css`
+            ${result};
+            border-top: 1px solid ${color('neutral.03')};
+        `;
+    }
+
+    return result;
+};
+
 /** 👉 ROOT ELEMENT */
 export const FilterLayoutRoot = styled.div.withConfig(propsBlocker)<
     FilterLayoutRootPropsType
@@ -24,8 +37,8 @@ export const FilterLayoutRoot = styled.div.withConfig(propsBlocker)<
     ${reset};
     ${typography('paragraphMedium')};
     display: flex;
-    border-top: 1px solid ${color('neutral.03')};
 
+    ${getRootStyle}
     ${getComponentOverride('FilterLayout')};
     ${marginAttributes};
     ${sizeAttributes};

@@ -34,6 +34,9 @@ type FilterViewerEffectivePropsType = Partial<{
     /** If defined, will cause the message about the total amount of results to appear */
     resultTotalCount: number;
 
+    /** Additional controls rendered to the right of the "Edit filters" and "Clear all" buttons */
+    filterActions: ReactChild;
+
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes

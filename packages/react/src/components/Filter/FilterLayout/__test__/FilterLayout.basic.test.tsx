@@ -9,6 +9,9 @@ import {
 } from '@testing-library/react-hooks';
 
 import { FilterLayout } from '../index';
+import { renderJSON } from '../../../../helpers/renderJSON';
+import { color } from '../../../../system';
+import { FilterConditionSchemaType } from '../../type';
 
 describe('<FilterLayout />', () => {
     afterEach(async () => {
@@ -55,5 +58,17 @@ describe('<FilterLayout />', () => {
     it('should forward correct attributes', async () => {
         // @ts-ignore
         expect(FilterLayout).toSupportAttributeForwarding();
+    });
+
+    it('should support "enableTopSeparator" property', async () => {
+        // @ts-ignore
+        let tree = renderJSON(FilterLayout, {
+            enableTopSeparator: false,
+        });
+        expect(tree).not.toHaveStyleRule('border-top', `1px solid #dbdbdb`);
+
+        // @ts-ignore
+        tree = renderJSON(FilterLayout);
+        expect(tree).toHaveStyleRule('border-top', `1px solid #dbdbdb`);
     });
 });
