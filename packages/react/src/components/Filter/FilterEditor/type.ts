@@ -91,6 +91,10 @@ type FilterEditorEffectivePropsType = Partial<{
      * Defines which kind of layout is used for the Editor.
      */
     layout: 'horizontal' | 'vertical';
+    /**
+     * If set to false, the "apply" action will not cause the "close" action.
+     */
+    enableCloseOnApply: boolean;
 
     /**
      * If defined, shows the displayed amount of results filtered by the filter.

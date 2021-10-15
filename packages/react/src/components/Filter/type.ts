@@ -36,21 +36,24 @@ export type FilterConditionValueType =
           conditions: FilterConditionValueType[];
       };
 
+export type FilterConditionSchemaElementType = {
+    id: string;
+
+    // these 4 parameters can definitely describe a condition
+    // we can have also presets for these 4, to select from a list
+    name?: string;
+    typeId?: string;
+    multiple?: boolean;
+    removable?: boolean;
+    label?: string;
+
+    groups?: never; // todo: future-reserved
+    conditions?: never;
+};
+
 /** 👉 Schema */
 export type FilterConditionSchemaType =
-    | {
-          id: string;
-
-          // these 4 parameters can definitely describe a condition
-          // we can have also presets for these 4, to select from a list
-          name?: string;
-          typeId?: string;
-          multiple?: boolean;
-          label?: string;
-
-          groups?: never; // todo: future-reserved
-          conditions?: never;
-      }
+    | FilterConditionSchemaElementType
     | {
           id?: never;
 

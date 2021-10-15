@@ -6,8 +6,8 @@ import { ObjectLiteralType } from '../type';
 export const renderJSON = (
     Element: ReactElement,
     props: ObjectLiteralType,
-    id: string,
-    wrapper: (node: ReactNode) => ReactElement,
+    id?: string,
+    wrapper?: (node: ReactNode) => ReactElement,
 ) => {
     // @ts-ignore
     let element = <Element {...props} />;

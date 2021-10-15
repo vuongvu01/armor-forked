@@ -20,6 +20,7 @@ export const FilterEditorRoot = styled.div.withConfig(propsBlocker)<
 >`
     ${reset};
     ${typography('paragraphMedium')};
+    min-width: ${spacing(75)};
     ${getComponentOverride('FilterEditor')};
     ${marginAttributes};
     ${paddingAttributes};

@@ -19,6 +19,7 @@ import { Link } from '../../Link';
 import { Button } from '../../Button';
 import { pluralize } from '../../../system/util/pluralize';
 import { ConditionTag } from '../../ConditionTag';
+import { ConfirmationDialog } from './ConfirmationDialog/ConfirmationDialog';
 
 /**
  * @armor-docs-component
@@ -37,8 +38,6 @@ export const FilterViewer = forwardRef<HTMLDivElement, FilterViewerPropsType>(
             getEditFilterButtonProps,
             clearFilterButtonProps,
             confirmationDialogProps,
-            clearFilterCancelButtonProps,
-            clearFilterConfirmButtonProps,
             getTagProps,
             rootConditionsCount,
             showSelectedFilter,
@@ -50,6 +49,7 @@ export const FilterViewer = forwardRef<HTMLDivElement, FilterViewerPropsType>(
             showAddFilterHint,
             resultCountFormatted,
             resultTotalCountFormatted,
+            filterActions,
         } = useFilterViewer<HTMLDivElement>(props, ref);
 
         return (
@@ -123,7 +123,9 @@ export const FilterViewer = forwardRef<HTMLDivElement, FilterViewerPropsType>(
                                 >
                                     Edit filters
                                 </Link>
-                                <ContextMenu
+                                <ConfirmationDialog
+                                    classNames={classNames}
+                                    {...confirmationDialogProps}
                                     trigger={
                                         <Link
                                             {...clearFilterButtonProps}
@@ -134,57 +136,8 @@ export const FilterViewer = forwardRef<HTMLDivElement, FilterViewerPropsType>(
                                             Clear all
                                         </Link>
                                     }
-                                    paddingY={6}
-                                    paddingX={4.5}
-                                    width={62.5}
-                                    className={
-                                        classNames.ClearFiltersConfirmation
-                                    }
-                                    {...confirmationDialogProps}
-                                >
-                                    <Typography
-                                        label
-                                        medium
-                                        className={
-                                            classNames.ClearFiltersConfirmationTitle
-                                        }
-                                    >
-                                        Clear your filters
-                                    </Typography>
-                                    <Typography
-                                        paragraph
-                                        medium
-                                        tag="div"
-                                        marginTop={1.5}
-                                        marginBottom={6}
-                                        className={
-                                            classNames.ClearFiltersConfirmationDescription
-                                        }
-                                    >
-                                        This will remove all your applied
-                                        filters. Are you sure?
-                                    </Typography>
-                                    <Button
-                                        tertiary
-                                        marginRight={1}
-                                        className={
-                                            classNames.ClearFiltersConfirmationCancelButton
-                                        }
-                                        {...clearFilterCancelButtonProps}
-                                    >
-                                        Cancel
-                                    </Button>
-                                    <Button
-                                        primary
-                                        danger
-                                        className={
-                                            classNames.ClearFiltersConfirmationConfirmButton
-                                        }
-                                        {...clearFilterConfirmButtonProps}
-                                    >
-                                        Yes, Clear it
-                                    </Button>
-                                </ContextMenu>
+                                />
+                                {filterActions}
                             </FilterViewerActions>
                         </FilterViewerTopBar>
                         <FilterViewConditions

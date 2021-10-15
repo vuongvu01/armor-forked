@@ -14,6 +14,8 @@ type FilterLayoutEffectivePropsType = Partial<{
     filterEditor: ReactChild;
     /** If set to "sideSheet", the FilterEditor will be displayed in a SideSheet on the right */
     filterEditorPlacement: 'sideSheet' | 'default';
+    /** If set to _false_, the component will not render the top border line. Otherwise, it is enabled by default. */
+    enableTopSeparator: boolean;
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes

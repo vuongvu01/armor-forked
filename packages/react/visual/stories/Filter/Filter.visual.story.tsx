@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React from 'react';
 
 import {
     FilterLayout,
@@ -9,8 +9,8 @@ import {
     TableRow,
     TableCell,
     TableBody,
-    useFilterURLStorage,
-    FilterConditionValueType,
+    FilterConditionSchemaType,
+    Link,
 } from '../../../src';
 import { filterSchema, filterValue, conditionTypes } from './schema';
 
@@ -243,5 +243,29 @@ export const FilterEditSideSheet = () => {
         >
             <FilterTable />
         </FilterLayout>
+    );
+};
+
+export const NoBorderTop = () => <FilterLayout enableTopSeparator={false} />;
+
+export const CustomFilterViewerActions = () => {
+    const localFilterValue = {
+        conditions: [{ id: 'name', name: 'name', value: 'Smirnoff' }],
+    };
+    const localFilterSchema: FilterConditionSchemaType = {
+        conditions: [
+            {
+                id: 'name',
+                label: 'Name',
+            },
+        ],
+    };
+
+    return (
+        <FilterViewer
+            schema={localFilterSchema}
+            value={localFilterValue}
+            filterActions={<Link>More</Link>}
+        />
     );
 };

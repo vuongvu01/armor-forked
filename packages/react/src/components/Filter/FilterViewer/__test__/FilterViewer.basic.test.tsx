@@ -9,6 +9,7 @@ import {
 } from '@testing-library/react-hooks';
 
 import { FilterViewer } from '../index';
+import { FilterConditionSchemaType } from '../../type';
 
 describe('<FilterViewer />', () => {
     afterEach(async () => {
@@ -55,5 +56,73 @@ describe('<FilterViewer />', () => {
     it('should forward correct attributes', async () => {
         // @ts-ignore
         expect(FilterViewer).toSupportAttributeForwarding();
+    });
+
+    it('should support non-removable values', async () => {
+        const filterSchema: FilterConditionSchemaType = {
+            conditions: [
+                {
+                    id: 'name',
+                    label: 'Name',
+                    removable: false,
+                },
+                {
+                    id: 'email',
+                    label: 'Email',
+                },
+            ],
+        };
+
+        const filterValue = {
+            conditions: [
+                { id: 'name', name: 'name', value: 'Smirnoff' },
+                { id: 'email', name: 'email', value: 'smirnoff@gmail.com' },
+            ],
+        };
+
+        const { getByText } = render(
+            <FilterViewer schema={filterSchema} value={filterValue} />,
+        );
+
+        const getCloseIconContainer = (text: string) => {
+            const labelNode = getByText(text);
+            expect(labelNode).toBeInTheDocument();
+
+            const tagNode = labelNode.closest('.ConditionTag-Root');
+            expect(tagNode).toBeInTheDocument();
+
+            return tagNode!.querySelector('.ConditionTag-CloseIconContainer');
+        };
+
+        expect(getCloseIconContainer('Name')).not.toBeInTheDocument();
+        expect(getCloseIconContainer('Email')).toBeInTheDocument();
+    });
+
+    it('should support "filterActions" property', async () => {
+        const filterValue = {
+            conditions: [{ id: 'name', name: 'name', value: 'Smirnoff' }],
+        };
+        const filterSchema: FilterConditionSchemaType = {
+            conditions: [
+                {
+                    id: 'name',
+                    label: 'Name',
+                },
+            ],
+        };
+
+        const { getByText } = render(
+            <FilterViewer
+                value={filterValue}
+                schema={filterSchema}
+                filterActions={<div>More</div>}
+            />,
+        );
+
+        const actionNode = getByText('More');
+        expect(actionNode).toBeInTheDocument();
+
+        const actionsNode = actionNode.closest('.FilterViewer-Actions');
+        expect(actionsNode).toBeInTheDocument();
     });
 });

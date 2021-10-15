@@ -38,6 +38,7 @@ export const useFilterEditor = <E extends HTMLElement>(
         enableClearAllButton,
         enableActions,
         enableHeader,
+        enableCloseOnApply,
         layout,
 
         resultCount,
@@ -92,10 +93,10 @@ export const useFilterEditor = <E extends HTMLElement>(
 
     const onApplyFilterButtonClick = useCallback(() => {
         setExternalValue(internalValue);
-        if (onClose) {
-            onClose();
+        if (enableCloseOnApply !== false) {
+            onClose?.();
         }
-    }, [setExternalValue, internalValue, onClose]);
+    }, [setExternalValue, internalValue, onClose, enableCloseOnApply]);
 
     const onClearFilterButtonClick = useCallback(() => {
         setInternalValue(initialValue ? cloneDeep(initialValue) : FILTER_EMPTY);

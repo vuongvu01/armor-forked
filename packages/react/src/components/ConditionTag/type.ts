@@ -10,6 +10,7 @@ type ConditionTagEffectivePropsType = Partial<{
     label: string;
     value: ReactChild | ReactChild[];
     onCloseButtonClick: (event: MouseEvent<HTMLElement>) => void;
+    /** If set to _false_, the component will not render the close button. */
     enableCloseIcon: boolean;
     path: string;
     // add other custom properties here

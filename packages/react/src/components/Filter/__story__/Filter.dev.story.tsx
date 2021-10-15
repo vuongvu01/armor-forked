@@ -4,6 +4,7 @@ import React, { useCallback, useState } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { format } from 'date-fns';
 
+import { EllipsisVerticalIcon } from '@deliveryhero/armor-icons';
 import { FilterLayout } from '../FilterLayout';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '../../Table';
 import { FilterConditionSchemaType, FilterConditionValueType } from '../type';
@@ -12,6 +13,9 @@ import {
     FilterEditor,
     FilterDateConditionType,
     FilterEnumConditionType,
+    Link,
+    ContextMenu,
+    IconButton,
 } from '../..';
 import { useFilterURLStorage } from '../hooks';
 import { withWrapper } from '../../../helpers/Wrapper';
@@ -266,6 +270,179 @@ export const SideSheet = () => {
                 filterOpen={open}
                 resultCount={8}
                 resultTotalCount={2500}
+            />
+            <FilterTable />
+        </FilterLayout>
+    );
+};
+
+export const NoTopLine = () => {
+    const [filterValue, setFilterValue] = useState<
+        FilterConditionValueType | undefined
+    >();
+
+    return (
+        <FilterLayout tall enableTopSeparator={false}>
+            <FilterEditor
+                schema={enumFilterSchema}
+                value={filterValue}
+                types={enumConditionTypes}
+                onValueChange={setFilterValue}
+                enableCloseButton={false}
+                paddingTop={6}
+                layout="horizontal"
+                resultCount={10}
+                resultTotalCount={2500}
+            />
+            <FilterTable />
+        </FilterLayout>
+    );
+};
+
+export const ClearableFalse = () => {
+    const localFilterSchema: FilterConditionSchemaType = {
+        conditions: [
+            {
+                id: 'name',
+                label: 'Name',
+                removable: false,
+            },
+            {
+                id: 'email',
+                label: 'Email',
+            },
+        ],
+    };
+
+    const [filterValue, setFilterValue] = useState<
+        FilterConditionValueType | undefined
+    >({
+        conditions: [
+            { id: 'name', name: 'name', value: 'Smirnoff' },
+            { id: 'email', name: 'email', value: 'smirnoff@gmail.com' },
+        ],
+    });
+    const [open, setOpen] = useState(false);
+
+    return (
+        <FilterLayout
+            filterOpen={open}
+            onFilterOpenChange={setOpen}
+            filterEditor={
+                <FilterEditor
+                    schema={localFilterSchema}
+                    value={filterValue}
+                    types={conditionTypes}
+                    onValueChange={setFilterValue}
+                    onClose={() => setOpen(false)}
+                    paddingTop={6}
+                    paddingLeft={2}
+                    paddingRight={6}
+                    paddingBottom={6}
+                />
+            }
+        >
+            <FilterViewer
+                schema={localFilterSchema}
+                value={filterValue}
+                types={conditionTypes}
+                onValueChange={setFilterValue}
+                marginTop={6}
+                onFilterOpenButtonClick={() => setOpen(true)}
+                filterOpen={open}
+                resultCount={8}
+                resultTotalCount={2500}
+            />
+            <FilterTable />
+        </FilterLayout>
+    );
+};
+
+export const WithActions = () => {
+    const menuElements = [
+        {
+            id: 'edit',
+            label: 'Edit',
+            props: { 'data-elementid': 'edit', onClick: () => {} },
+        },
+        {
+            id: 'delete',
+            label: 'Delete',
+            props: {
+                'data-elementid': 'delete',
+                onClick: () => {},
+                selected: true,
+            },
+        },
+    ];
+
+    const [filterValue, setFilterValue] = useState<
+        FilterConditionValueType | undefined
+    >({
+        conditions: [{ id: 'name', name: 'name', value: 'Smirnoff' }],
+    });
+    const [open, setOpen] = useState(false);
+
+    return (
+        <FilterLayout filterOpen={open} onFilterOpenChange={setOpen}>
+            <FilterViewer
+                schema={araraFilterSchema}
+                value={filterValue}
+                types={conditionTypes}
+                onValueChange={setFilterValue}
+                marginTop={6}
+                onFilterOpenButtonClick={() => setOpen(true)}
+                filterOpen={open}
+                resultCount={8}
+                resultTotalCount={2500}
+                filterActions={
+                    <>
+                        <ContextMenu
+                            trigger={<Link>More...</Link>}
+                            align="bottom-end"
+                            menuElements={menuElements}
+                            width={30}
+                        />
+                    </>
+                }
+            />
+            <FilterTable />
+        </FilterLayout>
+    );
+};
+
+export const DontCloseOnApply = () => {
+    const [open, setOpen] = useState(true);
+    const [filterValue, setFilterValue] = useState<
+        FilterConditionValueType | undefined
+    >();
+
+    return (
+        <FilterLayout
+            filterOpen={open}
+            onFilterOpenChange={setOpen}
+            filterEditor={
+                <FilterEditor
+                    schema={araraFilterSchema}
+                    onClose={() => setOpen(false)}
+                    paddingTop={6}
+                    paddingLeft={2}
+                    paddingRight={6}
+                    paddingBottom={6}
+                    enableCloseOnApply={false}
+                    value={filterValue}
+                    onValueChange={setFilterValue}
+                />
+            }
+        >
+            <FilterViewer
+                schema={araraFilterSchema}
+                value={filterValue}
+                types={conditionTypes}
+                onValueChange={setFilterValue}
+                marginTop={6}
+                onFilterOpenButtonClick={() => setOpen(true)}
+                filterOpen={open}
             />
             <FilterTable />
         </FilterLayout>
