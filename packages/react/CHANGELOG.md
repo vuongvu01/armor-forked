@@ -1,3 +1,10 @@
+# @deliveryhero/armor [1.76.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.75.1...@deliveryhero/armor@1.76.0) (2021-10-15)
+
+
+### Features
+
+* DatePicker improvements, Filter improvements [656] ([90e2fc3](https://github.com/deliveryhero/armor/commit/90e2fc39208e94c046890f932c894e709501f2fd))
+
 ## @deliveryhero/armor [1.75.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.75.0...@deliveryhero/armor@1.75.1) (2021-10-14)
 
 
