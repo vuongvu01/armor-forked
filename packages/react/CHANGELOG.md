@@ -1,3 +1,10 @@
+## @deliveryhero/armor [1.76.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.76.1...@deliveryhero/armor@1.76.2) (2021-10-18)
+
+
+### Bug Fixes
+
+* **listitem:** line height of secondarhy item ([#756](https://github.com/deliveryhero/armor/issues/756)) ([e7a6a65](https://github.com/deliveryhero/armor/commit/e7a6a65f804859a094a1200664e55e823d913f78))
+
 ## @deliveryhero/armor [1.76.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.76.0...@deliveryhero/armor@1.76.1) (2021-10-15)
 
 
