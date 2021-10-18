@@ -223,6 +223,7 @@ export const PrimaryListItem = styled.div.withConfig(propsBlocker)<
     justify-content: center;
     align-self: center;
     line-height: ${pixelToRem(24)};
+    padding: 0 ${spacing(2)} 0 0;
     ${getPrimaryListStyle};
     ${getComponentOverride('ListItemPrimarySection')};
 `;
@@ -235,6 +236,7 @@ export const SecondaryListItem = styled.div.withConfig(propsBlocker)<
     align-self: flex-start;
     align-items: center;
     justify-content: center;
+    line-height: ${pixelToRem(24)};
     color: ${color('neutral.07')};
     ${getSecondaryListStyle};
 `;

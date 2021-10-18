@@ -260,7 +260,9 @@ export const ListWithInactiveItems = () => {
                     to="/pasta"
                     actions={<ArrowRightIcon small />}
                 >
-                    With React router Link and inactive states
+                    With React router Link and inactive states, With React
+                    router Link and inactive states, With React router Link and
+                    inactive states, With React router Link and inactive states
                 </ListItem>
             </List>
         </BrowserRouter>
