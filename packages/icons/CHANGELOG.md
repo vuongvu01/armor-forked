@@ -1,3 +1,10 @@
+# @deliveryhero/armor-icons [1.15.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.14.3...@deliveryhero/armor-icons@1.15.0) (2021-10-19)
+
+
+### Features
+
+* **icons:** add new icons [AR-5] ([#758](https://github.com/deliveryhero/armor/issues/758)) ([6cb4dc4](https://github.com/deliveryhero/armor/commit/6cb4dc41538b5719490d9acf9858baf6cf51c3b6))
+
 ## @deliveryhero/armor-icons [1.14.3](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.14.2...@deliveryhero/armor-icons@1.14.3) (2021-09-30)
 
 
