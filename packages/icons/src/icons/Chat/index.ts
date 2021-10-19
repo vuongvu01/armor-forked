@@ -2,3 +2,4 @@
 
 export * from './BubbleText';
 export * from './Conversation';
+export * from './Quotation';

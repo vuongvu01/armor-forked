@@ -42,7 +42,10 @@ export const Basic = () => (
         <h2>Essentials</h2>
         <Icons>
             <Icon>
-                <I.AddIcon />
+                <I.PlusIcon />
+            </Icon>
+            <Icon>
+                <I.MinusIcon />
             </Icon>
             <Icon>
                 <I.ArrowUpTailCircleFilledIcon />
@@ -105,6 +108,9 @@ export const Basic = () => (
                 <I.TimeCircleIcon />
             </Icon>
             <Icon>
+                <I.TimeCircleFilledIcon />
+            </Icon>
+            <Icon>
                 <I.UserCircleIcon />
             </Icon>
             <Icon>
@@ -118,6 +124,18 @@ export const Basic = () => (
             </Icon>
             <Icon>
                 <I.PhoneNotificationIcon />
+            </Icon>
+            <Icon>
+                <I.KeyboardArrowNextIcon />
+            </Icon>
+            <Icon>
+                <I.ExpandWindowIcon />
+            </Icon>
+            <Icon>
+                <I.HomeIcon />
+            </Icon>
+            <Icon>
+                <I.MergeIcon />
             </Icon>
             <Icon>
                 <I.LensIcon />
@@ -162,6 +180,9 @@ export const Basic = () => (
                 <I.ArrowReturnRightIcon />
             </Icon>
             <Icon>
+                <I.ArrowReturnLeftIcon />
+            </Icon>
+            <Icon>
                 <I.ArrowDownFilledIcon />
             </Icon>
         </Icons>
@@ -175,6 +196,15 @@ export const Basic = () => (
             </Icon>
             <Icon>
                 <I.CancelCircleFilledIcon />
+            </Icon>
+        </Icons>
+        <h2>Emoji</h2>
+        <Icons>
+            <Icon>
+                <I.EmojiDisappointedIcon />
+            </Icon>
+            <Icon>
+                <I.EmojiConfettiIcon />
             </Icon>
         </Icons>
         <h2>Tick</h2>
@@ -243,6 +273,9 @@ export const Basic = () => (
                 <I.TextUnderlineIcon />
             </Icon>
             <Icon>
+                <I.TextStrikeThroughIcon />
+            </Icon>
+            <Icon>
                 <I.ArtboardExpandIcon />
             </Icon>
             <Icon>
@@ -275,6 +308,12 @@ export const Basic = () => (
             <Icon>
                 <I.WithClockIcon />
             </Icon>
+            <Icon>
+                <I.LocationRefreshIcon />
+            </Icon>
+            <Icon>
+                <I.SyncTimeResetIcon />
+            </Icon>
         </Icons>
         <h2>Devices</h2>
         <Icons>
@@ -285,6 +324,15 @@ export const Basic = () => (
                 <I.SmartphoneIcon />
             </Icon>
         </Icons>
+        <h2>Folder</h2>
+        <Icons>
+            <Icon>
+                <I.FolderIcon />
+            </Icon>
+            <Icon>
+                <I.FolderStarIcon />
+            </Icon>
+        </Icons>
         <h2>Chat</h2>
         <Icons>
             <Icon>
@@ -292,6 +340,9 @@ export const Basic = () => (
             </Icon>
             <Icon>
                 <I.ConversationIcon />
+            </Icon>
+            <Icon>
+                <I.QuotationIcon />
             </Icon>
         </Icons>
         <h2>Lock</h2>
@@ -301,6 +352,21 @@ export const Basic = () => (
             </Icon>
             <Icon>
                 <I.LockOpenIcon />
+            </Icon>
+        </Icons>
+        <h2>Files</h2>
+        <Icons>
+            <Icon>
+                <I.FileCommonTextIcon />
+            </Icon>
+            <Icon>
+                <I.FileImagePortraitIcon />
+            </Icon>
+            <Icon>
+                <I.FilePDFIcon />
+            </Icon>
+            <Icon>
+                <I.FileTaskPinIcon />
             </Icon>
         </Icons>
         <h2>Sort</h2>
@@ -322,6 +388,9 @@ export const Basic = () => (
             </Icon>
             <Icon>
                 <I.QuestionCircleFilledIcon />
+            </Icon>
+            <Icon>
+                <I.QuestionMarkOutlineIcon />
             </Icon>
         </Icons>
         <h2>Navigation</h2>
@@ -348,6 +417,18 @@ export const Basic = () => (
                 <I.PinMarkerIcon />
             </Icon>
         </Icons>
+        <h2>View</h2>
+        <Icons>
+            <Icon>
+                <I.IrisOnIcon />
+            </Icon>
+            <Icon>
+                <I.IrisOffIcon />
+            </Icon>
+            <Icon>
+                <I.IrisScanApprovedIcon />
+            </Icon>
+        </Icons>
         <h2>Etc</h2>
         <Icons>
             <Icon>
@@ -355,6 +436,12 @@ export const Basic = () => (
             </Icon>
             <Icon>
                 <I.FolderStarAlternateIcon />
+            </Icon>
+            <Icon>
+                <I.FileListToDoIcon />
+            </Icon>
+            <Icon>
+                <I.FileTaskListIcon />
             </Icon>
         </Icons>
     </>

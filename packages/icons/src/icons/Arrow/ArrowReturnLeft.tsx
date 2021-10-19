@@ -1,0 +1,25 @@
+import React, { FunctionComponent } from 'react';
+import {
+    SVGIconPropsType,
+    SVGIcon,
+    SVGIconGroup,
+    SVGIconPath,
+} from '../../components/SVGIcon';
+
+const ArrowReturnLeftIconShape = (
+    <SVGIconGroup>
+        <SVGIconPath d="M13.3577 17.313H10.1239C9.43858 17.313 8.88301 16.7343 8.88301 16.0204C8.88301 15.3065 9.43858 14.7278 10.1239 14.7278H13.3577C14.8186 14.7715 16.1869 13.9846 16.9297 12.6735C17.6725 11.3624 17.6725 9.73433 16.9297 8.42323C16.1869 7.11213 14.8186 6.32523 13.3577 6.36894H5.90403C5.7898 6.36894 5.69721 6.46539 5.69721 6.58437V9.28333C5.69714 9.63181 5.49558 9.94595 5.1865 10.0793C4.87742 10.2126 4.52166 10.139 4.28507 9.89258L0.242213 5.68213C-0.0807375 5.34563 -0.0807375 4.80015 0.242213 4.46364L4.28507 0.252335C4.52166 0.00595665 4.87742 -0.0677338 5.1865 0.0656147C5.49558 0.198963 5.69714 0.5131 5.69721 0.861582V3.56485C5.69721 3.68383 5.7898 3.78028 5.90403 3.78028H13.3577C15.7127 3.7249 17.912 5.00198 19.1051 7.11774C20.2983 9.2335 20.2983 11.8563 19.1051 13.9721C17.912 16.0878 15.7127 17.3649 13.3577 17.3095V17.313Z" />
+    </SVGIconGroup>
+);
+
+export const ArrowReturnLeftIcon: FunctionComponent<SVGIconPropsType> = props => {
+    const { className, ...restProps } = props;
+    return (
+        <SVGIcon
+            {...restProps}
+            className={`ArrowReturnLeftIcon ${className || ''}`}
+        >
+            {ArrowReturnLeftIconShape}
+        </SVGIcon>
+    );
+};
