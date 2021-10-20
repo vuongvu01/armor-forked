@@ -6,6 +6,8 @@ import {
 import { MarginAttributesType, PaddingAttributesType } from '../../../system';
 import {
     FilterConditionValueNewValueType,
+    FilterConditionSchemaElementOrGroupType,
+    FilterConditionValueElementOrGroupType,
     FilterConditionSchemaType,
     FilterConditionValueType,
 } from '../type';
@@ -13,16 +15,16 @@ import { FilterBaseConditionType } from '../conditionTypes/FilterBaseConditionTy
 
 export type FilterEditorConditionPropsType = {
     // things considering a particular field
-    condition: FilterConditionSchemaType;
+    condition: FilterConditionSchemaElementOrGroupType;
     conditionType: FilterBaseConditionType;
-    conditionValue: FilterConditionValueType | undefined;
+    conditionValue: FilterConditionValueElementOrGroupType | undefined;
     onConditionValueChange: (
         newValue: FilterConditionValueNewValueType,
     ) => void;
 
     // global-wide things
-    schema?: FilterConditionSchemaType; // todo: future-reserved
-    value?: FilterConditionValueType; // todo: future-reserved
+    schema?: FilterConditionSchemaElementOrGroupType; // todo: future-reserved
+    value?: FilterConditionValueElementOrGroupType; // todo: future-reserved
     onValueChange?: unknown; // todo: future-reserved: one field change can potentially affect other field in the filter
 };
 
@@ -55,6 +57,21 @@ type FilterEditorEffectivePropsType = Partial<{
      * Sets the initial value of a **value**. This property is ignored if the component works is in the *controlled mode*.
      */
     defaultValue: FilterConditionValueType;
+
+    /**
+     * Sets a value of a **value candidate** and enables the *controlled* mode. If the **value candidate** property is not defined, then the component works in the uncontrolled mode.
+     */
+    valueCandidate: FilterConditionValueType;
+    /**
+     * This callback gets called on each value update of the **value candidate**.
+     */
+    onValueCandidateChange: (
+        newValueCandidate: FilterConditionValueType,
+    ) => void;
+    /**
+     * Sets the initial value of a **value candidate**. This property is ignored if the component works is in the *controlled mode*.
+     */
+    defaultValueCandidate: FilterConditionValueType;
 
     /**
      * Declares a list of custom types to be used in the filter.
@@ -92,7 +109,7 @@ type FilterEditorEffectivePropsType = Partial<{
      */
     layout: 'horizontal' | 'vertical';
     /**
-     * If set to false, the "apply" action will not cause the "close" action.
+     * If set to false, the "apply" action will not trigger the "close" action.
      */
     enableCloseOnApply: boolean;
 

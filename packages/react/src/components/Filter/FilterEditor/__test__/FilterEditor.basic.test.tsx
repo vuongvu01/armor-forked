@@ -9,7 +9,7 @@ import {
 } from '@testing-library/react-hooks';
 
 import { FilterEditor } from '../index';
-import { FilterConditionSchemaType } from '../../type';
+import { FilterConditionSchemaElementOrGroupType } from '../../type';
 
 describe('<FilterEditor />', () => {
     afterEach(async () => {
@@ -61,7 +61,7 @@ describe('<FilterEditor />', () => {
     it('should support "enableCloseOnApply" property', async () => {
         const onClose = jest.fn();
 
-        const filterSchema: FilterConditionSchemaType = {
+        const filterSchema: FilterConditionSchemaElementOrGroupType = {
             conditions: [
                 {
                     id: 'name',

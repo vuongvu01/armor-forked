@@ -10,7 +10,7 @@ import {
 } from '../../../../system';
 import {
     FilterConditionSchemaElementType,
-    FilterConditionSchemaType,
+    FilterConditionSchemaElementOrGroupType,
     FilterConditionValueType,
 } from '../../type';
 import { getValueRenderFunction } from '../utils/getValueRenderFunction';
@@ -18,6 +18,7 @@ import { isConditionValueEmpty } from '../utils/isConditionValueEmpty';
 import { FILTER_EMPTY, SCHEMA_EMPTY } from '../../constants';
 import { useTypeIndex } from '../../hooks/useTypeIndex';
 import { getConditionType } from '../../utils/getConditionType';
+import { formatNumber } from '../../utils/formatNumber';
 
 export const useFilterViewer = <E extends HTMLElement>(
     {
@@ -136,18 +137,12 @@ export const useFilterViewer = <E extends HTMLElement>(
         showSelectedFilter: !empty,
         showResultCount: resultCount !== undefined,
         showResultTotalCount: resultTotalCount !== undefined,
-        resultCountFormatted:
-            resultCount !== undefined
-                ? new Intl.NumberFormat().format(resultCount)
-                : 0,
-        resultTotalCountFormatted:
-            resultTotalCount !== undefined
-                ? new Intl.NumberFormat().format(resultTotalCount)
-                : 0,
+        resultCountFormatted: formatNumber(resultCount),
+        resultTotalCountFormatted: formatNumber(resultTotalCount),
         schema: schemaSafe,
         filterActions,
         isConditionValueEmpty: (
-            condition: FilterConditionSchemaType,
+            condition: FilterConditionSchemaElementOrGroupType,
             path: string,
         ) => {
             const conditionType = getConditionType(condition, typeIndex);
@@ -162,7 +157,10 @@ export const useFilterViewer = <E extends HTMLElement>(
                 realValueSafe,
             );
         },
-        getTagProps: (condition: FilterConditionSchemaType, path: string) => {
+        getTagProps: (
+            condition: FilterConditionSchemaElementOrGroupType,
+            path: string,
+        ) => {
             const {
                 typeId = 'string',
                 label,

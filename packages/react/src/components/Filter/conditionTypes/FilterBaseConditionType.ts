@@ -1,16 +1,19 @@
-import { FilterConditionSchemaType, FilterConditionValueType } from '../type';
+import {
+    FilterConditionSchemaElementOrGroupType,
+    FilterConditionValueElementOrGroupType,
+} from '../type';
 
 type FilterAttributesType = Record<string, unknown>;
 
 export abstract class FilterBaseConditionType {
     constructor(
         readonly id: string,
-        readonly attributes: FilterAttributesType = {},
+        private readonly attributes: FilterAttributesType = {},
     ) {}
 
-    isValueEmpty(
-        condition: FilterConditionSchemaType,
-        conditionValue?: FilterConditionValueType,
+    public isValueEmpty(
+        condition: FilterConditionSchemaElementOrGroupType,
+        conditionValue?: FilterConditionValueElementOrGroupType,
     ) {
         const { multiple } = condition;
         const { value } = conditionValue || {};

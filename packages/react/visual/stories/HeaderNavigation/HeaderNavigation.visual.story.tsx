@@ -365,6 +365,23 @@ export const MultiplePreSelectedCountryEllipsisVisible = () => (
     />
 );
 
+export const MultiplePreSelectedCountryEllipsisVisibleNoAction = () => (
+    <HeaderNavigation
+        title="Vendor Monitor"
+        navigationMenuTitle={NavigationMenuTitle}
+        navigationMenuContent={NavigationMenuContentLogistics}
+        selector={
+            <HeaderNavigationSelector
+                navigationSelectorParams={{
+                    ...selectorParams,
+                    isMultiselect: true,
+                    defaultValue: [0, 1, 2, 3, 4],
+                }}
+            />
+        }
+    />
+);
+
 export const ExpandedCategorizedMenuOnLoad = () => (
     <HeaderNavigation
         title="Vendor Monitor"
