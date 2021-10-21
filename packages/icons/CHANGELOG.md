@@ -1,3 +1,10 @@
+## @deliveryhero/armor-icons [1.15.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.15.0...@deliveryhero/armor-icons@1.15.1) (2021-10-21)
+
+
+### Bug Fixes
+
+* **icons:** vertical alignment [LD-000] ([#761](https://github.com/deliveryhero/armor/issues/761)) ([882f77d](https://github.com/deliveryhero/armor/commit/882f77dfeab5dbfc9fa34aad9061a9458423a04c))
+
 # @deliveryhero/armor-icons [1.15.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.14.3...@deliveryhero/armor-icons@1.15.0) (2021-10-19)
 
 
