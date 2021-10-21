@@ -1,3 +1,10 @@
+# @deliveryhero/armor [1.77.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.76.3...@deliveryhero/armor@1.77.0) (2021-10-21)
+
+
+### Features
+
+* **filter:** FilterEditor field dependency, valueCandidate introduced [661] ([a56efd9](https://github.com/deliveryhero/armor/commit/a56efd990e2b9636f05aec1f601f0e381458cabb))
+
 ## @deliveryhero/armor [1.76.3](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.76.2...@deliveryhero/armor@1.76.3) (2021-10-19)
 
 
