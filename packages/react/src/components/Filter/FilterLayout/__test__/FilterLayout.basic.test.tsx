@@ -11,7 +11,7 @@ import {
 import { FilterLayout } from '../index';
 import { renderJSON } from '../../../../helpers/renderJSON';
 import { color } from '../../../../system';
-import { FilterConditionSchemaType } from '../../type';
+import { FilterConditionSchemaElementOrGroupType } from '../../type';
 
 describe('<FilterLayout />', () => {
     afterEach(async () => {

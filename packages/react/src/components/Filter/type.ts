@@ -1,4 +1,6 @@
 /** 👉 Value */
+import { MutuallyExclusive } from '../../type';
+
 type FilterConditionValueValueType = unknown;
 
 // todo: add more operations if necessary
@@ -16,25 +18,22 @@ export type FilterConditionValueNewValueType = {
     op?: FilterConditionValueOperationType;
 };
 
-export type FilterConditionValueType =
-    | {
-          id: string;
-          name: string;
-          value: FilterConditionValueValueType;
-          op?: FilterConditionValueOperationType;
+export type FilterConditionValueElementType = {
+    id: string;
+    name: string;
+    value: FilterConditionValueValueType;
+    op?: FilterConditionValueOperationType;
+};
 
-          logic?: never;
-          conditions?: never;
-      }
-    | {
-          id?: never;
-          name?: never;
-          value?: never;
-          op?: never;
+export type FilterConditionValueType = {
+    logic?: 'and' | 'or' | 'not';
+    conditions: FilterConditionValueElementOrGroupType[];
+};
 
-          logic?: 'and' | 'or' | 'not';
-          conditions: FilterConditionValueType[];
-      };
+export type FilterConditionValueElementOrGroupType = MutuallyExclusive<
+    FilterConditionValueElementType,
+    FilterConditionValueType
+>;
 
 export type FilterConditionSchemaElementType = {
     id: string;
@@ -46,26 +45,14 @@ export type FilterConditionSchemaElementType = {
     multiple?: boolean;
     removable?: boolean;
     label?: string;
+};
 
-    groups?: never; // todo: future-reserved
-    conditions?: never;
+export type FilterConditionSchemaType = {
+    conditions: FilterConditionSchemaElementOrGroupType[];
 };
 
 /** 👉 Schema */
-export type FilterConditionSchemaType =
-    | FilterConditionSchemaElementType
-    | {
-          id?: never;
-
-          name?: never;
-          typeId?: never;
-          multiple?: never;
-          label?: never;
-
-          attributes?: never;
-          internalizeValue?: never;
-          externalizeValue?: never;
-
-          groups?: never; // todo: future-reserved
-          conditions: FilterConditionSchemaType[];
-      };
+export type FilterConditionSchemaElementOrGroupType = MutuallyExclusive<
+    FilterConditionSchemaElementType,
+    FilterConditionSchemaType
+>;

@@ -43,3 +43,9 @@ export type DictionaryItemIDBased = {
 };
 
 export type ScaleType = 'small' | 'medium' | 'large';
+
+type Disallow<T> = {
+    [key in keyof T]?: never;
+};
+
+export type MutuallyExclusive<T, U> = (T & Disallow<U>) | (U & Disallow<T>);

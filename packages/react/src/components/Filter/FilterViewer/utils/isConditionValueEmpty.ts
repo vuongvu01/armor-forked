@@ -1,14 +1,14 @@
 import {
-    FilterConditionSchemaType,
-    FilterConditionValueType,
+    FilterConditionSchemaElementOrGroupType,
+    FilterConditionValueElementOrGroupType,
 } from '../../type';
 import { FilterBaseConditionType } from '../../conditionTypes/FilterBaseConditionType';
 
 export const isConditionValueEmpty = (
-    condition: FilterConditionSchemaType,
+    condition: FilterConditionSchemaElementOrGroupType,
     conditionType: FilterBaseConditionType,
     path?: string,
-    value?: FilterConditionValueType,
+    value?: FilterConditionValueElementOrGroupType,
 ) => {
     if (!path) {
         return true;

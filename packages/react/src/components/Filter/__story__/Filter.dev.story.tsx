@@ -4,10 +4,14 @@ import React, { useCallback, useState } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { format } from 'date-fns';
 
-import { EllipsisVerticalIcon } from '@deliveryhero/armor-icons';
 import { FilterLayout } from '../FilterLayout';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '../../Table';
-import { FilterConditionSchemaType, FilterConditionValueType } from '../type';
+import {
+    FilterConditionSchemaElementOrGroupType,
+    FilterConditionValueElementType,
+    FilterConditionValueType,
+    FilterConditionValueElementOrGroupType,
+} from '../type';
 import {
     FilterViewer,
     FilterEditor,
@@ -15,7 +19,6 @@ import {
     FilterEnumConditionType,
     Link,
     ContextMenu,
-    IconButton,
 } from '../..';
 import { useFilterURLStorage } from '../hooks';
 import { withWrapper } from '../../../helpers/Wrapper';
@@ -28,7 +31,7 @@ export default {
     parameters: {},
 };
 
-const araraFilterSchema: FilterConditionSchemaType = {
+const araraFilterSchema: FilterConditionSchemaElementOrGroupType = {
     conditions: [
         {
             id: 'name',
@@ -178,7 +181,7 @@ export const Basic = () => {
     );
 };
 
-const enumFilterSchema: FilterConditionSchemaType = {
+const enumFilterSchema: FilterConditionSchemaElementOrGroupType = {
     conditions: [
         {
             id: 'labels',
@@ -300,7 +303,7 @@ export const NoTopLine = () => {
 };
 
 export const ClearableFalse = () => {
-    const localFilterSchema: FilterConditionSchemaType = {
+    const localFilterSchema: FilterConditionSchemaElementOrGroupType = {
         conditions: [
             {
                 id: 'name',
@@ -437,6 +440,70 @@ export const DontCloseOnApply = () => {
         >
             <FilterViewer
                 schema={araraFilterSchema}
+                value={filterValue}
+                types={conditionTypes}
+                onValueChange={setFilterValue}
+                marginTop={6}
+                onFilterOpenButtonClick={() => setOpen(true)}
+                filterOpen={open}
+            />
+            <FilterTable />
+        </FilterLayout>
+    );
+};
+
+export const FieldDependency = () => {
+    const [open, setOpen] = useState(true);
+    const [filterValue, setFilterValue] = useState<
+        FilterConditionValueType | undefined
+    >();
+
+    const [candyVisibility, setCandyVisibility] = useState(false);
+
+    const localFilterSchema: FilterConditionSchemaElementOrGroupType = {
+        conditions: [
+            {
+                id: 'message',
+                label: 'Type "candy" to see 2nd field',
+                removable: false,
+            },
+            ...(candyVisibility
+                ? [
+                      {
+                          id: 'candy',
+                          label: 'Candy',
+                      },
+                  ]
+                : []),
+        ],
+    };
+
+    return (
+        <FilterLayout
+            filterOpen={open}
+            onFilterOpenChange={setOpen}
+            filterEditor={
+                <FilterEditor
+                    schema={localFilterSchema}
+                    onClose={() => setOpen(false)}
+                    paddingTop={6}
+                    paddingLeft={2}
+                    paddingRight={6}
+                    paddingBottom={6}
+                    enableCloseOnApply={false}
+                    value={filterValue}
+                    onValueChange={setFilterValue}
+                    onValueCandidateChange={valueCandidate => {
+                        if (valueCandidate && valueCandidate.conditions) {
+                            const val = valueCandidate.conditions![0].value;
+                            setCandyVisibility(val === 'candy');
+                        }
+                    }}
+                />
+            }
+        >
+            <FilterViewer
+                schema={localFilterSchema}
                 value={filterValue}
                 types={conditionTypes}
                 onValueChange={setFilterValue}

@@ -4,18 +4,22 @@ import {
     ComponentElementStylePropsType,
 } from '../../type';
 import { MarginAttributesType, PaddingAttributesType } from '../../../system';
-import { FilterConditionSchemaType, FilterConditionValueType } from '../type';
+import {
+    FilterConditionSchemaElementOrGroupType,
+    FilterConditionValueType,
+    FilterConditionValueElementOrGroupType,
+} from '../type';
 import { FilterBaseConditionType } from '../conditionTypes/FilterBaseConditionType';
 
 export type FilterViewerRenderFunctionType = (
-    condition: FilterConditionSchemaType,
+    condition: FilterConditionSchemaElementOrGroupType,
     conditionType: FilterBaseConditionType,
-    conditionValue: FilterConditionValueType | undefined,
+    conditionValue: FilterConditionValueElementOrGroupType | undefined,
 ) => ReactChild | ReactChild[];
 
 /** 👉 PROPS TYPE */
 type FilterViewerEffectivePropsType = Partial<{
-    schema: FilterConditionSchemaType;
+    schema: FilterConditionSchemaElementOrGroupType;
 
     value: FilterConditionValueType;
     onValueChange: (newValue: FilterConditionValueType) => void;

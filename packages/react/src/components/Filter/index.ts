@@ -5,4 +5,9 @@ export * from './FilterViewer';
 export * from './hooks';
 export * from './conditionTypes';
 
-export type { FilterConditionValueType, FilterConditionSchemaType } from './type';
+export type {
+    FilterConditionSchemaElementType,
+    FilterConditionSchemaType,
+    FilterConditionValueElementType,
+    FilterConditionValueType
+} from './type';

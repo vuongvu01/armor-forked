@@ -1,4 +1,7 @@
-import { FilterConditionSchemaType, FilterConditionValueType } from '../type';
+import {
+    FilterConditionSchemaElementOrGroupType,
+    FilterConditionValueElementOrGroupType,
+} from '../type';
 
 import { FilterBaseConditionType } from './FilterBaseConditionType';
 
@@ -13,8 +16,8 @@ export class FilterDateConditionType extends FilterBaseConditionType {
     }
 
     public isValueEmpty(
-        condition: FilterConditionSchemaType,
-        conditionValue?: FilterConditionValueType,
+        condition: FilterConditionSchemaElementOrGroupType,
+        conditionValue?: FilterConditionValueElementOrGroupType,
     ) {
         const { multiple } = condition;
         const { value } = conditionValue || {};

@@ -2,15 +2,12 @@ import cloneDeep from 'clone-deep';
 import { useCallback } from 'react';
 import { FilterEditorPropsType } from '../type';
 import { RefType } from '../../../../type';
-import {
-    useControlledState,
-    useDerivedState,
-    useRootRef,
-} from '../../../../system';
+import { useControlledState, useRootRef } from '../../../../system';
 import {
     FilterConditionValueNewValueType,
-    FilterConditionSchemaType,
+    FilterConditionSchemaElementOrGroupType,
     FilterConditionValueType,
+    FilterConditionSchemaType,
 } from '../../type';
 import { FILTER_EMPTY, SCHEMA_EMPTY } from '../../constants';
 import { useTypeIndex } from '../../hooks/useTypeIndex';
@@ -18,6 +15,7 @@ import { getConditionType } from '../../utils/getConditionType';
 import { FILTER_EDITOR_LAYOUT_HORIZONTAL } from '../constants';
 import { useFilterEditorSettings } from './useFilterEditorSettings';
 import { useFilterEditorEvents } from './useFilterEditorEvents';
+import { formatNumber } from '../../utils/formatNumber';
 
 export const useFilterEditor = <E extends HTMLElement>(
     {
@@ -28,6 +26,10 @@ export const useFilterEditor = <E extends HTMLElement>(
         value,
         onValueChange,
         defaultValue,
+
+        valueCandidate,
+        onValueCandidateChange,
+        defaultValueCandidate,
 
         types,
 
@@ -62,12 +64,18 @@ export const useFilterEditor = <E extends HTMLElement>(
 
     const typeIndex = useTypeIndex(types);
 
-    const [externalValue, setExternalValue] = useControlledState<
+    // currently applied value, controlled or uncontrolled
+    const [actualValue, setActualValue] = useControlledState<
         FilterConditionValueType
     >(defaultValue, value, onValueChange);
-    const [internalValue, setInternalValue] = useDerivedState<
+    // next value candidate, controlled or uncontrolled. If not set, then initially taken from the applied value
+    const [actualValueCandidate, setActualValueCandidate] = useControlledState<
         FilterConditionValueType
-    >(() => cloneDeep(externalValue), [externalValue]);
+    >(
+        defaultValueCandidate ?? actualValue,
+        valueCandidate,
+        onValueCandidateChange,
+    );
 
     const {
         showClearFilterButton,
@@ -86,20 +94,21 @@ export const useFilterEditor = <E extends HTMLElement>(
             : SCHEMA_EMPTY;
 
     // todo: refactor this mess
-    const internalValueSafe =
-        internalValue && internalValue.conditions
-            ? internalValue
+    const actualValueSafe =
+        actualValueCandidate && actualValueCandidate.conditions
+            ? actualValueCandidate
             : FILTER_EMPTY;
 
     const onApplyFilterButtonClick = useCallback(() => {
-        setExternalValue(internalValue);
+        setActualValue(actualValueCandidate);
         if (enableCloseOnApply !== false) {
             onClose?.();
         }
-    }, [setExternalValue, internalValue, onClose, enableCloseOnApply]);
+    }, [setActualValue, actualValueCandidate, onClose, enableCloseOnApply]);
 
     const onClearFilterButtonClick = useCallback(() => {
-        setInternalValue(initialValue ? cloneDeep(initialValue) : FILTER_EMPTY);
+        const nextValue = initialValue ? cloneDeep(initialValue) : FILTER_EMPTY;
+        setActualValueCandidate(nextValue);
     }, [initialValue]);
 
     useFilterEditorEvents(onApplyFilterButtonClick, onClearFilterButtonClick);
@@ -121,10 +130,11 @@ export const useFilterEditor = <E extends HTMLElement>(
         conditionsProps: {
             vertical: layoutVertical,
         },
-        getConditionType: (condition: FilterConditionSchemaType) =>
-            getConditionType(condition, typeIndex),
+        getConditionType: (
+            condition: FilterConditionSchemaElementOrGroupType,
+        ) => getConditionType(condition, typeIndex),
         getConditionProps: (
-            condition: FilterConditionSchemaType,
+            condition: FilterConditionSchemaElementOrGroupType,
             path: string,
         ) => {
             const conditionType = getConditionType(condition, typeIndex);
@@ -135,14 +145,14 @@ export const useFilterEditor = <E extends HTMLElement>(
 
             // todo: use _.get(realValue, path) later when we have a nested structure
             // todo: also, use memoization, be more clever than this!
-            const conditionValue = internalValueSafe.conditions!.find(
+            const conditionValue = actualValueSafe.conditions!.find(
                 item => item.name === path,
             );
 
             const onConditionValueChange = (
                 newFieldValue: FilterConditionValueNewValueType,
             ) => {
-                let nextValue = cloneDeep(internalValue);
+                let nextValue = cloneDeep(actualValueCandidate);
                 nextValue = nextValue || {};
                 nextValue.conditions = nextValue.conditions || [];
 
@@ -166,7 +176,7 @@ export const useFilterEditor = <E extends HTMLElement>(
                     });
                 }
 
-                setInternalValue(nextValue);
+                setActualValueCandidate(nextValue);
             };
 
             return {
@@ -186,14 +196,8 @@ export const useFilterEditor = <E extends HTMLElement>(
 
         showResultCount: resultCount !== undefined,
         showResultTotalCount: resultTotalCount !== undefined,
-        resultCountFormatted:
-            resultCount !== undefined
-                ? new Intl.NumberFormat().format(resultCount)
-                : 0,
-        resultTotalCountFormatted:
-            resultTotalCount !== undefined
-                ? new Intl.NumberFormat().format(resultTotalCount)
-                : 0,
+        resultCountFormatted: formatNumber(resultCount),
+        resultTotalCountFormatted: formatNumber(resultTotalCount),
         getResultCountProps: () => ({
             paragraph: true,
             medium: true,

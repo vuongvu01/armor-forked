@@ -1,12 +1,14 @@
 import { useCallback, useMemo } from 'react';
-import { FilterConditionValueType } from '../type';
+import { FilterConditionValueElementOrGroupType } from '../type';
 import { getWindow } from '../../../system/util/globals';
 import { consoleWarn } from '../../../system/util/consoleWarn';
 import { isFilterValueEmpty } from '../utils/isFilterValueEmpty';
 
 const win = getWindow();
 
-export const useFilterLocalStorage = <F extends FilterConditionValueType>(
+export const useFilterLocalStorage = <
+    F extends FilterConditionValueElementOrGroupType
+>(
     filterId: string,
 ): [F | undefined, (newValue?: F) => void] => {
     const setValue = useCallback(

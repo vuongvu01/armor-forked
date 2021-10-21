@@ -67,8 +67,16 @@ type DataTableEffectivePropsType = Partial<{
     /**
      * Defines the structure of the columns.
      *
-     * ~~~typescript example title:"Render a custom cell based on the entire row data"
+     * ~~~typescript example title:"formatDataCellContent property"
      * <DataTable columns={[
+     *      {
+     *          title: 'First name',
+     *          id: 'firstName',
+     *      },
+     *      {
+     *          title: 'Last name',
+     *          id: 'lastName',
+     *      },
      *      {
      *          title: 'Full name',
      *          id: 'fullName',

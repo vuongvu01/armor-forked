@@ -19,9 +19,7 @@ export const useControlledState = <P = unknown>(
 
     const setRealValue = useCallback(
         (newValue: P) => {
-            if (onChange) {
-                onChange(newValue);
-            }
+            onChange?.(newValue);
 
             if (value === undefined) {
                 setInternalValue(newValue);

@@ -9,7 +9,7 @@ import {
 } from '@testing-library/react-hooks';
 
 import { FilterViewer } from '../index';
-import { FilterConditionSchemaType } from '../../type';
+import { FilterConditionSchemaElementOrGroupType } from '../../type';
 
 describe('<FilterViewer />', () => {
     afterEach(async () => {
@@ -59,7 +59,7 @@ describe('<FilterViewer />', () => {
     });
 
     it('should support non-removable values', async () => {
-        const filterSchema: FilterConditionSchemaType = {
+        const filterSchema: FilterConditionSchemaElementOrGroupType = {
             conditions: [
                 {
                     id: 'name',
@@ -102,7 +102,7 @@ describe('<FilterViewer />', () => {
         const filterValue = {
             conditions: [{ id: 'name', name: 'name', value: 'Smirnoff' }],
         };
-        const filterSchema: FilterConditionSchemaType = {
+        const filterSchema: FilterConditionSchemaElementOrGroupType = {
             conditions: [
                 {
                     id: 'name',
