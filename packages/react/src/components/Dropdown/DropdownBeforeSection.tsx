@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { CancelIcon } from '@deliveryhero/armor-icons';
 import {
     DropdownBeforeSectionActionContainer,
     DropdownBeforeSectionClearButton,
@@ -8,6 +7,7 @@ import {
     DropdownBeforeSectionTagsContainer,
     DropdownBeforeSectionTagsWrapper,
     DropdownTag,
+    DropdownCancelIcon,
 } from './style';
 import { DROPDOWN_BEFORE_SECTION_CLASS_PREFIX } from './constants';
 import { useDropdownBeforeSection } from './hooks/useDropdownBeforeSection';
@@ -126,7 +126,7 @@ export const DropdownBeforeSection = forwardRef<
                         theme={theme}
                         className={classOverride.ClearButton}
                     >
-                        <CancelIcon />
+                        <DropdownCancelIcon />
                     </DropdownBeforeSectionClearButton>
                 ) : null}
             </DropdownBeforeSectionActionContainer>

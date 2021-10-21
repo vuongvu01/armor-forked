@@ -1,4 +1,6 @@
 import styled, { css } from 'styled-components';
+import { CancelIcon } from '@deliveryhero/armor-icons';
+import { SVGIconPropsType } from '@deliveryhero/armor-icons/src/components/SVGIcon';
 
 import {
     DropdownOptionListContainerPropsType,
@@ -217,6 +219,10 @@ export const DropdownTag = styled(Tag).attrs({ small: true })<
         margin-right: ${spacing(1)};
     }
     ${dropdownTagStyle};
+`;
+
+export const DropdownCancelIcon = styled(CancelIcon)<SVGIconPropsType>`
+    vertical-align: middle;
 `;
 
 export const DropdownArrow = styled.div``;
