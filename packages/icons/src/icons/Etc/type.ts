@@ -1,5 +1,5 @@
 import { SVGIconPropsType } from '../../components/SVGIcon';
 
-export type TextHighlightPropsType = {
-    highlight?: string;
+export type TextColorPropsType = {
+    textColor?: string;
 } & SVGIconPropsType;
