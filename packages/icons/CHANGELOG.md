@@ -1,3 +1,10 @@
+## @deliveryhero/armor-icons [1.16.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.16.0...@deliveryhero/armor-icons@1.16.1) (2021-10-22)
+
+
+### Bug Fixes
+
+* **icons:** renaming icon ([#769](https://github.com/deliveryhero/armor/issues/769)) ([8a1075c](https://github.com/deliveryhero/armor/commit/8a1075c5c0aa858a79bd16a4f64110a63e7ef36c))
+
 # @deliveryhero/armor-icons [1.16.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.15.1...@deliveryhero/armor-icons@1.16.0) (2021-10-22)
 
 
