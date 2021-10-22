@@ -4,3 +4,4 @@ export * from './FileListToDo';
 export * from './FolderStarAlternate';
 export * from './Lens';
 export * from './LensEmpty';
+export * from './TextHighlight';
