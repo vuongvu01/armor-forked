@@ -30,6 +30,7 @@ export * from './Radio';
 export * from './Search';
 export * from './SideSheet';
 export * from './Navigation';
+export * from './Skeleton';
 export * from './Stack';
 export * from './SVGIcon';
 export * from './Switch';
