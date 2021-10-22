@@ -1,3 +1,11 @@
+# @deliveryhero/armor-icons [1.16.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.15.1...@deliveryhero/armor-icons@1.16.0) (2021-10-22)
+
+
+### Features
+
+* **icons:** added download icon ([#764](https://github.com/deliveryhero/armor/issues/764)) ([86c048d](https://github.com/deliveryhero/armor/commit/86c048dd63084e26157caf43114e038c9687b56a))
+* **icons:** added text highlight icon for rich text editor [LD-000] ([#766](https://github.com/deliveryhero/armor/issues/766)) ([bd0ff14](https://github.com/deliveryhero/armor/commit/bd0ff14bcc578a2787646fa4e525b35c8fb736e7))
+
 ## @deliveryhero/armor-icons [1.15.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.15.0...@deliveryhero/armor-icons@1.15.1) (2021-10-21)
 
 
