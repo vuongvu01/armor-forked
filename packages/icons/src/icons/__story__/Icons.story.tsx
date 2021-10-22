@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import * as I from '..';
@@ -220,6 +220,12 @@ export const Basic = () => (
             </Icon>
             <Icon>
                 <I.TickThickIcon />
+            </Icon>
+        </Icons>
+        <h2>Download</h2>
+        <Icons>
+            <Icon>
+                <I.DownloadIcon />
             </Icon>
         </Icons>
         <h2>Upload</h2>
@@ -446,6 +452,36 @@ export const Basic = () => (
         </Icons>
     </>
 );
+
+export const TextEditor = () => {
+    const colors = ['#1c5ece', '#02a68e', '#f3b701', '#8bce4f', '#e1444b'];
+    const [highlight, setHighlight] = useState('#e1444b');
+    return (
+        <>
+            <p>Pick a color</p>
+            <div style={{ display: 'flex' }}>
+                {colors.map(color => (
+                    <div
+                        key={color}
+                        style={{
+                            height: '30px',
+                            width: '30px',
+                            margin: '12px',
+                            background: color,
+                            border: highlight === color ? '2px solid blue' : '',
+                            boxSizing: 'border-box',
+                        }}
+                        onClick={() => setHighlight(color)}
+                    />
+                ))}
+            </div>
+
+            <Icon>
+                <I.TextHighlightIcon highlight={highlight} />
+            </Icon>
+        </>
+    );
+};
 
 export const InText = () => (
     <>
