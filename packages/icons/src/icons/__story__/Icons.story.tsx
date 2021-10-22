@@ -455,7 +455,7 @@ export const Basic = () => (
 
 export const TextEditor = () => {
     const colors = ['#1c5ece', '#02a68e', '#f3b701', '#8bce4f', '#e1444b'];
-    const [highlight, setHighlight] = useState('#e1444b');
+    const [textColor, setTextColor] = useState('#e1444b');
     return (
         <>
             <p>Pick a color</p>
@@ -468,16 +468,16 @@ export const TextEditor = () => {
                             width: '30px',
                             margin: '12px',
                             background: color,
-                            border: highlight === color ? '2px solid blue' : '',
+                            border: textColor === color ? '2px solid blue' : '',
                             boxSizing: 'border-box',
                         }}
-                        onClick={() => setHighlight(color)}
+                        onClick={() => setTextColor(color)}
                     />
                 ))}
             </div>
 
             <Icon>
-                <I.TextHighlightIcon highlight={highlight} />
+                <I.TextColorIcon textColor={textColor} />
             </Icon>
         </>
     );

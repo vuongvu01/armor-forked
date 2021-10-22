@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from 'react';
 import { SVGIcon } from '../../components/SVGIcon';
-import { TextHighlightPropsType } from './type';
+import { TextColorPropsType } from './type';
 
-const TextHighlightIconShape: FunctionComponent<TextHighlightPropsType> = ({
-    highlight,
+const TextColorIconShape: FunctionComponent<TextColorPropsType> = ({
+    textColor,
 }) => (
     <>
         <svg
@@ -27,21 +27,18 @@ const TextHighlightIconShape: FunctionComponent<TextHighlightPropsType> = ({
             xmlns="http://www.w3.org/2000/svg"
         >
             <path
-                fill={highlight}
+                fill={textColor}
                 d="M19.1667 0.893066H0.833333C0.61232 0.893066 0.400358 0.982742 0.244078 1.14237C0.0877974 1.30199 0 1.51849 0 1.74424L0 4.14892C0 4.37466 0.0877974 4.59116 0.244078 4.75078C0.400358 4.91041 0.61232 5.00009 0.833333 5.00009H19.1667C19.3877 5.00009 19.5996 4.91041 19.7559 4.75078C19.9122 4.59116 20 4.37466 20 4.14892V1.74424C20 1.51849 19.9122 1.30199 19.7559 1.14237C19.5996 0.982742 19.3877 0.893066 19.1667 0.893066Z"
             />
         </svg>
     </>
 );
 
-export const TextHighlightIcon: FunctionComponent<TextHighlightPropsType> = props => {
-    const { className, highlight, ...restProps } = props;
+export const TextColorIcon: FunctionComponent<TextColorPropsType> = props => {
+    const { className, textColor, ...restProps } = props;
     return (
-        <SVGIcon
-            {...restProps}
-            className={`TextHighlightIcon ${className || ''}`}
-        >
-            <TextHighlightIconShape highlight={highlight} />
+        <SVGIcon {...restProps} className={`TextColorIcon ${className || ''}`}>
+            <TextColorIconShape textColor={textColor} />
         </SVGIcon>
     );
 };
