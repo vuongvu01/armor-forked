@@ -222,6 +222,12 @@ export const Basic = () => (
                 <I.TickThickIcon />
             </Icon>
         </Icons>
+        <h2>Download</h2>
+        <Icons>
+            <Icon>
+                <I.DownloadIcon />
+            </Icon>
+        </Icons>
         <h2>Upload</h2>
         <Icons>
             <Icon>
