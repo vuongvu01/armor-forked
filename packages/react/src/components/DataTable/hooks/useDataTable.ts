@@ -37,6 +37,8 @@ export const useDataTable = (
         averageItemHeight,
         parentContainerRef,
 
+        enableFixedLayout,
+
         ...restProps
     }: DataTablePropsType,
     ref: RefType<HTMLDivElement>,
@@ -126,6 +128,7 @@ export const useDataTable = (
         tableProps: {
             wide: true,
             stickyHead,
+            enableFixedLayout,
             ...tableProps,
             stickyColumns: stickyColumns.result.stickyColumns,
             horizontalScroll: stickyColumns.result.stickyColumns.length > 0,
@@ -169,6 +172,7 @@ export const useDataTable = (
                 expandedSectionIds.includes(item.id.toString());
 
             return {
+                ellipsis: column.ellipsis,
                 ...column.cellProps,
                 ...column.dataCellProps,
                 ...(column.getDataCellProps

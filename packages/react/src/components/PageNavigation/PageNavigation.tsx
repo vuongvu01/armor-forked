@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import { ArrowLeftIcon, ArrowRightIcon } from '@deliveryhero/armor-icons';
 
 import { useComponentTheme } from '../../utils/hooks';
-import { usePageNavigationClassNames } from './utils/usePageNavigationClassNames';
-import { usePageNavigation } from './utils/usePageNavigation';
+import { usePageNavigationClassNames } from './hooks/usePageNavigationClassNames';
+import { usePageNavigation } from './hooks/usePageNavigation';
 import {
     PageNavigationRoot,
     PageNavigationButtons,

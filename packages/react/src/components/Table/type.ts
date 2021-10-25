@@ -33,6 +33,9 @@ export type TableEffectivePropsType = Partial<{
      */
     stickyColumns: TableStickyColumnsMap;
     stickyHead: boolean;
+    /**
+     * If set to false, the table will not use the _table-layout: fixed_ CSS statement.
+     */
     enableFixedLayout: boolean;
     // add other custom properties here
 }> &

@@ -19,10 +19,12 @@ type PageNavigationEffectivePropsType = Partial<{
     itemCount: number;
     /** Currently selected page number. Starts from 1 */
     pageNumber: number;
+    /**
+     * Is called when a user navigates to another page
+     */
+    onPageNumberChange: (newPageNumber: number) => void;
     /** The amount of page numbers to be displayed to the left and to the right of the currently selected page number */
     displayRange: number;
-    /** Is called when a user navigates to a page number */
-    onPageSelect: (pageNumber: number) => void;
 
     // page size
     /** Defines the size of a page */
@@ -37,6 +39,12 @@ type PageNavigationEffectivePropsType = Partial<{
     /** Is called when a user selects a page size from the list */
     onPageSizeChange: (pageSize: number) => void;
 
+    /**
+     * Is called when a user navigates to another page
+     * @deprecated
+     * @see onPageNumberChange
+     */
+    onPageSelect: (pageNumber: number) => void;
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes

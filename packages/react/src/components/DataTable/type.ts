@@ -19,6 +19,8 @@ import { PageNavigationPageSizeListItemType } from '../PageNavigation/type';
 
 type CellPropsType = TableCellPropsType & Record<string, any>;
 
+export type DataTableSortType = TableHeadCellSortType;
+
 export type DataTableColumnType = {
     /** Column identifier */
     id: string;
@@ -29,7 +31,7 @@ export type DataTableColumnType = {
     /** Indicates whether this columnLayout is sortable or not */
     sortable?: boolean;
     /** Type of sorting for this column */
-    sortType?: TableHeadCellSortType;
+    sortType?: DataTableSortType;
     /** Properties to be forwarded to every header cell */
     headCellProps?: CellPropsType;
     /** Properties to be forwarded to every data cell */
@@ -51,6 +53,9 @@ export type DataTableColumnType = {
         column: DataTableColumnType,
     ) => ReactChild | ReactChild[];
 
+    // some helpful properties forwarded directly to the underlying table
+    ellipsis?: boolean;
+
     // renderer?: ComponentType<unknown>; // todo: future-reserved, for custom conditionRenderers. Replace unknown with something meaningful
     // render?: (column: DataTableColumnType) => ReactChild; // todo: future-reserved, for custom rendering functions
     // customProperties?: Record<ScalarType, unknown>; // todo: future-reserved
@@ -61,6 +66,16 @@ export type DataTableDataType = {
     id: ScalarType;
     key?: ScalarType;
 } & Record<string, any>;
+
+type DataTablePageNavigationPropsType = Partial<{
+    itemCount: number;
+    pageNumber: number;
+    onPageNumberChange: (newPageNumber: number) => void;
+    pageSize: number;
+    onPageSizeChange: (newPageSize: number) => void;
+    enablePageSizeSelector: boolean;
+    pageSizeList: { label: ScalarType; value: number }[];
+}>;
 
 /** 👉 PROPS TYPE */
 type DataTableEffectivePropsType = Partial<{
@@ -147,24 +162,56 @@ type DataTableEffectivePropsType = Partial<{
     expandableSectionControllerColumnId: ScalarType;
 
     // page navigation
-    // todo: make one object for the page navigation, do not flatten the props!
-    /** If set to true, the page navigation is displayed */
+    /**
+     * If set to true, the page navigation is displayed
+     */
     enablePageNavigation: boolean;
-    /** Defines how many items the dataset contains. This value typically comes from the API and is used to calculate the page count */
+    /**
+     * Properties forwarded to the underlying PageNavigation component
+     * @armor-docs-expand DataTablePageNavigationPropsType
+     */
+    pageNavigationProps: DataTablePageNavigationPropsType;
+    /**
+     * Defines how many items the dataset contains. This value typically comes from the API and is used to calculate the page count
+     * @deprecated
+     * @see pageNavigationProps
+     */
     pageNavigationItemCount: number;
-    /** Sets the currently displayed page */
+    /**
+     * Sets the currently displayed page
+     * @deprecated
+     * @see pageNavigationProps
+     */
     pageNavigationPageNumber: number;
-    /** Is triggered when a user navigates to the other page */
+    /**
+     * Is triggered when a user navigates to the other page
+     * @deprecated
+     * @see pageNavigationProps
+     */
     onPageNavigationPageSelect: PageNavigationPropsType['onPageSelect'];
-    /** Sets the page size */
+    /**
+     * Sets the page size
+     * @deprecated
+     * @see pageNavigationProps
+     */
     pageNavigationPageSize: number;
-    /** If set to true, enables the selector of the available page sizes */
+    /**
+     * If set to true, enables the selector of the available page sizes
+     * @deprecated
+     * @see pageNavigationProps
+     */
     enablePageNavigationPageSizeSelector: boolean;
-    /** Is triggered when a user selects a different page size */
+    /**
+     * Is triggered when a user selects a different page size
+     * @deprecated
+     * @see pageNavigationProps
+     */
     onPageNavigationPageSizeChange: PageNavigationPropsType['onPageSizeChange'];
     /**
      * Defines a list of the available page sizes
      * @armor-docs-expand PageNavigationPageSizeListItemType
+     * @deprecated
+     * @see pageNavigationProps
      */
     pageNavigationPageSizeList: PageNavigationPageSizeListItemType[];
 
@@ -178,6 +225,11 @@ type DataTableEffectivePropsType = Partial<{
 
     /** If set to true, the table header is displayed */
     enableHeader: boolean;
+
+    /**
+     * If set to false, the table will not use the _table-layout: fixed_ CSS statement.
+     */
+    enableFixedLayout: boolean;
 
     /**
      * Properties forwarded to the underlying table component
