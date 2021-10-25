@@ -1,3 +1,10 @@
+## @deliveryhero/armor [1.77.4](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.77.3...@deliveryhero/armor@1.77.4) (2021-10-25)
+
+
+### Bug Fixes
+
+* Tag, DataTable, PageNavigation minor improvements ([01fc690](https://github.com/deliveryhero/armor/commit/01fc690e7c769c6c1fabfcadd8589ca15258af49))
+
 ## @deliveryhero/armor [1.77.3](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.77.2...@deliveryhero/armor@1.77.3) (2021-10-22)
 
 
