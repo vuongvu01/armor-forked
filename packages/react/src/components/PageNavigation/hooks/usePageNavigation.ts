@@ -1,6 +1,6 @@
 import { MouseEvent, useCallback } from 'react';
 import { PageNavigationPropsType } from '../type';
-import { getPageNavigation } from './getPageNavigation';
+import { getPageNavigation } from '../utils/getPageNavigation';
 import { PseudoEventType } from '../../../type';
 import { DropdownValueType } from '../../Dropdown/type';
 
@@ -10,15 +10,18 @@ export const usePageNavigation = ({
     itemCount,
     displayRange,
     onPageSelect,
+    onPageNumberChange,
 
     // page size
     enablePageSizeSelector,
     onPageSizeChange,
     pageSizeList,
 }: PageNavigationPropsType) => {
+    const actualOnPageSelect = onPageSelect ?? onPageNumberChange;
+
     const onPageButtonClick = useCallback(
         (event: MouseEvent<HTMLButtonElement>) => {
-            if (!onPageSelect) {
+            if (!actualOnPageSelect) {
                 return;
             }
 
@@ -32,18 +35,16 @@ export const usePageNavigation = ({
             if (currentPageNumber !== null) {
                 const currentPageNumberSafe = parseInt(currentPageNumber, 10);
                 if (!Number.isNaN(currentPageNumberSafe)) {
-                    onPageSelect(currentPageNumberSafe);
+                    actualOnPageSelect(currentPageNumberSafe);
                 }
             }
         },
-        [onPageSelect],
+        [actualOnPageSelect],
     );
 
     const onPageSelectorChange = useCallback(
         (event: PseudoEventType<DropdownValueType>) => {
-            if (onPageSizeChange) {
-                onPageSizeChange(event.target.value as number);
-            }
+            onPageSizeChange?.(event.target.value as number);
         },
         [onPageSizeChange],
     );

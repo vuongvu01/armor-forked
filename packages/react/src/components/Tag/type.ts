@@ -14,6 +14,13 @@ export type TagIconDisabled = 'disabled';
 export type TagIconEnabled = 'enabled';
 export type TagIconOnHover = 'onHover';
 
+export enum TagTypeEnum {
+    approved = 'approved',
+    denied = 'denied',
+    new = 'new',
+    default = 'default',
+}
+
 export type TagType =
     | TagTypeDefault
     | TagTypeApproved
@@ -53,6 +60,10 @@ type TagEffectivePropsType = Partial<{
     disabled: boolean;
     label: ScalarType;
     small: boolean;
+    /**
+     * If set to false, the tag will occupy as much space as needed by its content.
+     */
+    enableContentWrapping: boolean;
 }> &
     HTMLAttributes<HTMLElement> &
     ComponentBehaviourLinkType &

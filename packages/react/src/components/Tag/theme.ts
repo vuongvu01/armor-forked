@@ -7,6 +7,7 @@ const colors = {
     enabled: '$color.primary.lightest',
 };
 
+/** @deprecated */
 export const tagDefaultTheme = {
     Root: {
         // @deprecated, maintained for backwards compatibility

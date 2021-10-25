@@ -21,26 +21,32 @@ import {
     typography,
 } from '../../system';
 
-const containerStyle = ({
+const getRootStyle = ({
     deleteOption,
     theme: {
         componentOverrides: { Tag },
     },
     type,
     small,
+    enableContentWrapping,
 }: TagRootPropsType) => {
+    let result = css`
+        height: ${spacing(small ? 6 : 7)};
+    `;
+
+    if (enableContentWrapping === false) {
+        result = css`
+            ${result};
+            overflow-y: visible;
+            white-space: nowrap;
+        `;
+    }
+
     const minStatusTagWidth = css`
         min-width: ${spacing(19)};
     `;
-    const result = css`
-        justify-content: center;
-        border-color: ${color('primary.lighter')};
-        border-radius: ${borderRadius('pill')};
-        height: ${spacing(small ? 6 : 7)};
-        padding-left: ${spacing(1)};
-        padding-right: ${spacing(1)};
-    `;
 
+    // todo: refactor this
     switch (type) {
         case TAG_TYPES.APPROVED:
             return css`${result}${minStatusTagWidth}${Tag.Root.base}${Tag.Root.approved}`;
@@ -164,7 +170,6 @@ export const TagCloseIconContainer = styled.div.withConfig(propsBlocker)<
 /** 👉 ROOT ELEMENT */
 export const TagRoot = styled.div.withConfig(propsBlocker)<TagRootPropsType>`
     ${reset()};
-    overflow-y: hidden;
     border-style: solid;
     border-width: 1px;
     box-sizing: border-box;
@@ -173,6 +178,12 @@ export const TagRoot = styled.div.withConfig(propsBlocker)<TagRootPropsType>`
     flex-flow: row nowrap;
     width: fit-content;
     user-select: none;
+    overflow-y: hidden;
+    justify-content: center;
+    border-color: ${color('primary.lighter')};
+    border-radius: ${borderRadius('pill')};
+    padding-left: ${spacing(1)};
+    padding-right: ${spacing(1)};
 
     &:hover ${TagCloseIconContainer} {
         transform: translateX(0);
@@ -180,7 +191,7 @@ export const TagRoot = styled.div.withConfig(propsBlocker)<TagRootPropsType>`
         transition: all ${transitionDurationInSec}s ease;
     }
 
-    ${containerStyle};
+    ${getRootStyle};
     ${marginAttributes};
 
     ${getComponentOverride('Tag')};

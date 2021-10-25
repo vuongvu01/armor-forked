@@ -5,7 +5,6 @@ import React, { FunctionComponent, useState, useCallback } from 'react';
 import { DeleteIcon } from '@deliveryhero/armor-icons';
 import { ThemeProvider } from 'styled-components';
 
-import { withKnobs } from '@storybook/addon-knobs';
 import { Table } from '../Table';
 import { TableHead } from '../TableHead';
 import { TableCell as Cell } from '../TableCell';
@@ -27,7 +26,7 @@ import { withWrapper } from '../../../helpers/Wrapper';
 export default {
     title: 'Components/Table',
     component: Table,
-    decorators: [withKnobs, withWrapper],
+    decorators: [withWrapper],
     parameters: {},
 };
 

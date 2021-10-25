@@ -1,6 +1,12 @@
 /* eslint-disable no-console,import/no-unresolved, import/no-extraneous-dependencies */
 
-import React, { useCallback, useContext, useRef, useState } from 'react';
+import React, {
+    useCallback,
+    useContext,
+    useRef,
+    useState,
+    useMemo,
+} from 'react';
 import cloneDeep from 'clone-deep';
 import styled from 'styled-components';
 import { columns, columnsWide, dataSource, dataSourceWide } from './demoData';
@@ -480,6 +486,39 @@ export const WithPageNavigation = () => {
             pageNavigationItemCount={300}
             pageNavigationPageNumber={page}
             onPageNavigationPageSelect={onPageChange}
+        />
+    );
+};
+
+export const WithPageNavigationPropsObject = () => {
+    const [data] = useState<typeof dataSource>(dataSource);
+
+    const [page, setPage] = useState(1);
+    const onPageChange = useCallback(
+        (pageNumber: number) => {
+            console.log(pageNumber);
+            setPage(pageNumber);
+        },
+        [setPage],
+    );
+
+    const pageNavigationProps = useMemo(
+        () => ({
+            itemCount: 300,
+            pageNumber: page,
+            onPageNumberChange: onPageChange,
+            enablePageSizeSelector: true,
+            onPageSizeChange: (newSize: number) => console.log(newSize),
+        }),
+        [page, setPage, onPageChange],
+    );
+
+    return (
+        <DataTable
+            columns={columns}
+            data={data}
+            enablePageNavigation
+            pageNavigationProps={pageNavigationProps}
         />
     );
 };

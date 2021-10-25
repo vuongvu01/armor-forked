@@ -1,6 +1,8 @@
 import { DataTablePropsType } from '../type';
 
 export const useDataTablePageNavigation = ({
+    pageNavigationProps,
+
     pageNavigationItemCount,
     pageNavigationPageNumber,
     onPageNavigationPageSelect,
@@ -20,11 +22,12 @@ export const useDataTablePageNavigation = ({
                 itemCount: pageNavigationItemCount,
                 pageNumber: pageNavigationPageNumber,
                 onPageSelect: onPageNavigationPageSelect,
-
                 pageSize: pageNavigationPageSize,
                 enablePageSizeSelector: enablePageNavigationPageSizeSelector,
                 onPageSizeChange: onPageNavigationPageSizeChange,
                 pageSizeList: pageNavigationPageSizeList,
+
+                ...pageNavigationProps,
             },
             enablePageNavigation,
         },
