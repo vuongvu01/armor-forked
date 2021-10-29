@@ -1,3 +1,10 @@
+# @deliveryhero/armor [1.78.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.77.4...@deliveryhero/armor@1.78.0) (2021-10-29)
+
+
+### Features
+
+* **filter:** Filter per-field initialValue ([7e186db](https://github.com/deliveryhero/armor/commit/7e186dbe7e16037898a3ce8ee835c06af3c082c8))
+
 ## @deliveryhero/armor [1.77.4](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.77.3...@deliveryhero/armor@1.77.4) (2021-10-25)
 
 
