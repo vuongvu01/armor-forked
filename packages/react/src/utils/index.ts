@@ -1,14 +1,5 @@
 import deepMerge from 'deepmerge';
-import { ObjectLiteralType, PropNameType } from '../type';
-import {
-    colorAttributesList,
-    displayAttributesList,
-    marginAttributesList,
-    paddingAttributesList,
-    sizeAttributesList,
-    styleAttributesList,
-    textAlignmentAttributesList,
-} from '../system';
+import { ObjectLiteralType } from '../type';
 
 export { default as generateId } from './generateId';
 export { default as getElementName } from './getElementName';

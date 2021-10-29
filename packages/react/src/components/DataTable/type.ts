@@ -21,7 +21,9 @@ type CellPropsType = TableCellPropsType & Record<string, any>;
 
 export type DataTableSortType = TableHeadCellSortType;
 
-export type DataTableColumnType = {
+export type DataTableColumnType<
+    D extends DataTableDataType = DataTableDataType
+> = {
     /** Column identifier */
     id: string;
     /** Column title */
@@ -43,14 +45,14 @@ export type DataTableColumnType = {
     /** Same as dataCellProps, but can be set individually for each table row */
     getDataCellProps?: (
         value: any,
-        item: DataTableDataType,
-        column: DataTableColumnType,
+        item: D,
+        column: DataTableColumnType<D>,
     ) => CellPropsType;
     /** Renders the content of a cell for each row individually */
     formatDataCellContent?: (
         value: any,
-        item: DataTableDataType,
-        column: DataTableColumnType,
+        item: D,
+        column: DataTableColumnType<D>,
     ) => ReactChild | ReactChild[];
 
     // some helpful properties forwarded directly to the underlying table

@@ -37,14 +37,12 @@ export type FilterConditionValueElementOrGroupType = MutuallyExclusive<
 
 export type FilterConditionSchemaElementType = {
     id: string;
-
-    // these 4 parameters can definitely describe a condition
-    // we can have also presets for these 4, to select from a list
     name?: string;
     typeId?: string;
     multiple?: boolean;
     removable?: boolean;
     label?: string;
+    initialValue?: unknown;
 };
 
 export type FilterConditionSchemaType = {

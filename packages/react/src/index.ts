@@ -6,4 +6,4 @@ export * from './tokens';
 export * from './styling';
 export * from './system';
 
-export type { UnpackedType, ScalarType } from './type';
+export type { UnpackedType, ScalarType, PseudoEventType } from './type';
