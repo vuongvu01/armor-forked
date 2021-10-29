@@ -51,6 +51,7 @@ export const FilterViewerActions = styled.div.withConfig(propsBlocker)<
 >`
     display: flex;
     justify-content: flex-end;
+    align-items: center;
     > ${notLastChild} {
         margin-right: ${spacing(8)};
     }

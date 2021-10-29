@@ -9,13 +9,14 @@ import {
     FilterConditionValueType,
     FilterConditionSchemaType,
 } from '../../type';
-import { FILTER_EMPTY, SCHEMA_EMPTY } from '../../constants';
+import { SCHEMA_EMPTY } from '../../constants';
 import { useTypeIndex } from '../../hooks/useTypeIndex';
 import { getConditionType } from '../../utils/getConditionType';
 import { FILTER_EDITOR_LAYOUT_HORIZONTAL } from '../constants';
 import { useFilterEditorSettings } from './useFilterEditorSettings';
 import { useFilterEditorEvents } from './useFilterEditorEvents';
 import { formatNumber } from '../../utils/formatNumber';
+import { getInitialValue } from '../utils/getInitialValue';
 
 export const useFilterEditor = <E extends HTMLElement>(
     {
@@ -97,7 +98,7 @@ export const useFilterEditor = <E extends HTMLElement>(
     const actualValueSafe =
         actualValueCandidate && actualValueCandidate.conditions
             ? actualValueCandidate
-            : FILTER_EMPTY;
+            : getInitialValue(externalSchemaSafe);
 
     const onApplyFilterButtonClick = useCallback(() => {
         setActualValue(actualValueCandidate);
@@ -107,9 +108,11 @@ export const useFilterEditor = <E extends HTMLElement>(
     }, [setActualValue, actualValueCandidate, onClose, enableCloseOnApply]);
 
     const onClearFilterButtonClick = useCallback(() => {
-        const nextValue = initialValue ? cloneDeep(initialValue) : FILTER_EMPTY;
+        const nextValue = initialValue
+            ? cloneDeep(initialValue)
+            : getInitialValue(externalSchemaSafe);
         setActualValueCandidate(nextValue);
-    }, [initialValue]);
+    }, [initialValue, externalSchemaSafe, setActualValueCandidate]);
 
     useFilterEditorEvents(onApplyFilterButtonClick, onClearFilterButtonClick);
 
