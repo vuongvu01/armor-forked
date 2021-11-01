@@ -1,4 +1,4 @@
-import { AnchorHTMLAttributes, ComponentType } from 'react';
+import { AnchorHTMLAttributes } from 'react';
 import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
@@ -27,6 +27,8 @@ type LinkEffectivePropsType = Partial<{
     inline: boolean;
     /** If set to *true*, the Link will be rendered as underlined */
     underline: boolean;
+    /** I set to *true* Link content will not wrap and ellipsis will appear on text overflow */
+    ellipsis: boolean;
 }> &
     ComponentBehaviourLinkType &
     Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'href' | 'target' | 'rel'> &

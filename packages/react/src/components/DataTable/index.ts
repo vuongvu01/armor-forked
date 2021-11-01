@@ -3,4 +3,11 @@
  */
 export * from './DataTable';
 export * from './DataTableContext';
-export type { DataTableColumnType, DataTableDataType, DataTablePropsType, DataTableSortType } from './type';
+export type {
+    DataTableColumnType,
+    DataTableDataType,
+    DataTablePropsType,
+    DataTableSortType,
+    DataTableSortOrderWay,
+    DataTableRowSortOrderType,
+} from './type';

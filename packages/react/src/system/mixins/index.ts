@@ -11,6 +11,7 @@ export * from './expansion';
 export * from './elevation';
 export * from './etc';
 export * from './getComponentOverride';
+export * from './ellipsis';
 export {
     breakpointUp,
     breakpointDown,

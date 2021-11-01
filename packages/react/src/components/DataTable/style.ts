@@ -40,3 +40,9 @@ export const DataTableVirtualPadding = styled.tr.withConfig(propsBlocker)<
     line-height: 0;
     height: ${({ height }) => height}px;
 `;
+
+export const DataTableEmptyStateContainer = styled.div.withConfig(propsBlocker)`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+`;

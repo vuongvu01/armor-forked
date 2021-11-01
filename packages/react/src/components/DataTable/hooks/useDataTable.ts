@@ -1,4 +1,4 @@
-import { RefObject, useMemo, useRef } from 'react';
+import React, { RefObject, useMemo, useRef } from 'react';
 import {
     DataTableColumnType,
     DataTableDataType,
@@ -19,6 +19,7 @@ import { TableCell, TableControllerCell, TableHeadCell } from '../../Table';
 import { useRootRef, useVirtualization } from '../../../system';
 import { RefType } from '../../../type';
 import { formatActionSheetLabel } from '../utils/formatActionSheetLabel';
+import { EmptyState, EmptyStatePropsType } from '../../EmptyState';
 
 export const useDataTable = (
     {
@@ -38,6 +39,8 @@ export const useDataTable = (
         parentContainerRef,
 
         enableFixedLayout,
+
+        empty,
 
         ...restProps
     }: DataTablePropsType,
@@ -141,17 +144,21 @@ export const useDataTable = (
                 'data-rowid': item.id,
             };
         },
-        getHeadCellProps: (column: DataTableColumnType) => {
+        getHeadCellProps: ({
+            id,
+            sortType,
+            cellProps,
+            headCellProps,
+            width,
+        }: DataTableColumnType) => {
             const isController =
-                enableExpandableSections &&
-                expandableSectionControllers[column.id];
+                enableExpandableSections && expandableSectionControllers[id];
             const paddingLeft = isController
                 ? DATA_TABLE_EXPANDABLE_SECTION_OFFSET_LEFT_BASE
                 : undefined;
 
-            const { id, sortType, cellProps, headCellProps } = column;
-
             return {
+                width,
                 ...cellProps,
                 ...headCellProps,
                 paddingLeft,
@@ -167,20 +174,32 @@ export const useDataTable = (
             column: DataTableColumnType,
             item: DataTableDataType,
         ) => {
+            const {
+                id,
+                cellProps,
+                dataCellProps,
+                getDataCellProps,
+                width,
+                ellipsis,
+                contentAlignY,
+            } = column;
+
+            const { id: itemId } = item;
+
             const isSectionExpanded =
                 enableExpandableSections &&
-                expandedSectionIds.includes(item.id.toString());
+                expandedSectionIds.includes(itemId.toString());
 
             return {
-                ellipsis: column.ellipsis,
-                ...column.cellProps,
-                ...column.dataCellProps,
-                ...(column.getDataCellProps
-                    ? column.getDataCellProps(item[column.id], item, column)
-                    : {}),
-                'data-rowid': item.id,
-                'data-columnid': column.id,
-                rowId: item.id,
+                ellipsis,
+                width,
+                contentAlignY,
+                ...cellProps,
+                ...dataCellProps,
+                ...(getDataCellProps?.(item[id], item, column) ?? {}),
+                'data-rowid': itemId,
+                'data-columnid': id,
+                rowId: itemId,
 
                 // if a cell contains an expansion controller
                 onTriggerClick: onExpansionSectionControllerTriggerClick,
@@ -225,5 +244,20 @@ export const useDataTable = (
         }),
         getRowNumber: (index: number) => index + virtualRangeStart,
         initialDataLength: dataSafe.length,
+
+        enableEmpty: !!empty,
+        enableBody: !empty,
+
+        getEmptyStateCellProps: () => ({
+            colSpan:
+                columnsSafe.length +
+                (rowSelection.result.enableRowSelection ? 1 : 0),
+        }),
+        getEmptyStateProps: () => ({
+            enableImage: false,
+            enableTitle: false,
+            descriptionPosition: 'middle' as EmptyStatePropsType['descriptionPosition'],
+            description: 'No data',
+        }),
     };
 };
