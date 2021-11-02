@@ -14,7 +14,6 @@ import { FilterViewerPropsType } from './type';
 import { FILTER_VIEWER_CLASS_PREFIX } from './constants';
 import { useComponentTheme } from '../../../utils/hooks';
 import { Typography } from '../../Typography';
-import { ContextMenu } from '../../ContextMenu';
 import { Link } from '../../Link';
 import { Button } from '../../Button';
 import { pluralize } from '../../../system/util/pluralize';

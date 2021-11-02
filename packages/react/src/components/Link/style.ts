@@ -10,6 +10,7 @@ import {
     propsBlocker,
     marginAttributes,
     getComponentOverride,
+    ellipsis as ellipsisCSS,
 } from '../../system';
 import {
     fontSize02,
@@ -25,6 +26,7 @@ const getRootStyle = ({
     pressed,
     disabled,
     underline,
+    ellipsis,
 }: LinkRootPropsType) => {
     let result = {};
 
@@ -69,6 +71,14 @@ const getRootStyle = ({
             }
         `;
     }
+
+    if (ellipsis) {
+        result = css`
+            ${result};
+            ${ellipsisCSS};
+        `;
+    }
+
     return result;
 };
 

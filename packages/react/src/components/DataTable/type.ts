@@ -5,10 +5,6 @@ import {
 } from '../type';
 import { RefType, ScalarType } from '../../type';
 import { TablePropsType, TableCellPropsType } from '../Table';
-import {
-    TableHeadCellRowSortOrderType,
-    TableHeadCellSortType,
-} from '../Table/TableHeadCell/type';
 import { PageNavigationPropsType } from '../PageNavigation';
 import {
     MarginAttributesType,
@@ -16,10 +12,13 @@ import {
     SizeAttributesType,
 } from '../../system';
 import { PageNavigationPageSizeListItemType } from '../PageNavigation/type';
+import { TableCellContentAlignmentAttributesType } from '../Table/TableCell/type';
 
 type CellPropsType = TableCellPropsType & Record<string, any>;
 
-export type DataTableSortType = TableHeadCellSortType;
+export type DataTableSortType = 'numerical' | 'alphabetical';
+export type DataTableSortOrderWay = 'asc' | 'desc';
+export type DataTableRowSortOrderType = [ScalarType, DataTableSortOrderWay][];
 
 export type DataTableColumnType<
     D extends DataTableDataType = DataTableDataType
@@ -55,12 +54,9 @@ export type DataTableColumnType<
         column: DataTableColumnType<D>,
     ) => ReactChild | ReactChild[];
 
-    // some helpful properties forwarded directly to the underlying table
     ellipsis?: boolean;
-
-    // renderer?: ComponentType<unknown>; // todo: future-reserved, for custom conditionRenderers. Replace unknown with something meaningful
-    // render?: (column: DataTableColumnType) => ReactChild; // todo: future-reserved, for custom rendering functions
-    // customProperties?: Record<ScalarType, unknown>; // todo: future-reserved
+    width?: ScalarType;
+    contentAlignY?: 'top' | 'center' | 'bottom';
 };
 
 export type DataTableDataType = {
@@ -114,19 +110,19 @@ type DataTableEffectivePropsType = Partial<{
 
     // row sorting
     /**
-     * @armor-docs-expand TableHeadCellRowSortOrderType, TableHeadCellSortOrderWay
+     * @armor-docs-expand DataTableRowSortOrderType, DataTableSortOrderWay
      */
-    rowSortOrder: TableHeadCellRowSortOrderType;
+    rowSortOrder: DataTableRowSortOrderType;
     /**
-     * @armor-docs-expand TableHeadCellRowSortOrderType, TableHeadCellSortOrderWay
+     * @armor-docs-expand DataTableRowSortOrderType, DataTableSortOrderWay
      */
-    defaultRowSortOrder: TableHeadCellRowSortOrderType;
+    defaultRowSortOrder: DataTableRowSortOrderType;
     /** If set to true, enables a neutral (unsorted) sorting state for a columnLayout */
     enableNeutralRowSorting: boolean;
     /**
-     * @armor-docs-expand TableHeadCellRowSortOrderType, TableHeadCellSortOrderWay
+     * @armor-docs-expand DataTableRowSortOrderType, DataTableSortOrderWay
      */
-    onRowSortOrderChange: (rowSortOrder: TableHeadCellRowSortOrderType) => void;
+    onRowSortOrderChange: (rowSortOrder: DataTableRowSortOrderType) => void;
 
     // row selection
     /** If set to true, rows become selectable, and the corresponding array of checkboxes appear on the left */
@@ -245,6 +241,11 @@ type DataTableEffectivePropsType = Partial<{
      * @ignore
      */
     loading: boolean;
+
+    /**
+     * If set to true, will display the message saying that the table is empty.
+     */
+    empty: boolean;
 
     // add other custom properties here
 }> &

@@ -14,6 +14,7 @@ import {
     typography,
     propsBlocker,
     getComponentOverride,
+    ellipsis as ellipsisCSS,
 } from '../../../system';
 import {
     componentSpacing04,
@@ -164,9 +165,7 @@ const getRootStyle = ({
     if (ellipsis) {
         result = css`
             ${result};
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            overflow: hidden;
+            ${ellipsisCSS};
         `;
     }
 

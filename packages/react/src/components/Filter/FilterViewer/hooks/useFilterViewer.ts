@@ -80,22 +80,6 @@ export const useFilterViewer = <E extends HTMLElement>(
         return count;
     }, [schema, realValue, typeIndex]);
 
-    const onCloseTagButtonClick = useCallback(
-        (event: MouseEvent<HTMLElement>) => {
-            const path = extractDataAttribute(event, 'path');
-
-            // todo: this function will not work with nested schemas
-            const newValue = { ...realValue };
-            if (newValue.conditions) {
-                newValue.conditions = newValue.conditions.filter(
-                    condition => condition.name !== path,
-                );
-            }
-            setRealValue(newValue);
-        },
-        [realValue, setRealValue],
-    );
-
     // todo: refactor this mess
     const schemaSafe = schema && schema.conditions ? schema : SCHEMA_EMPTY;
 
@@ -104,6 +88,40 @@ export const useFilterViewer = <E extends HTMLElement>(
         realValue && realValue.conditions ? realValue : FILTER_EMPTY;
 
     const empty = !rootConditionsCount;
+
+    const onCloseTagButtonClick = useCallback(
+        (event: MouseEvent<HTMLElement>) => {
+            const path = extractDataAttribute(event, 'path');
+
+            const schemaCondition = schemaSafe.conditions.find(
+                condition => condition.name === path,
+            );
+            const conditionInitialValue = schemaCondition?.initialValue;
+
+            // todo: this function will not work with nested schemas
+            const newValue = { ...realValue };
+            if (newValue.conditions) {
+                if (conditionInitialValue !== undefined) {
+                    // set that initial value
+                    newValue.conditions = newValue.conditions.map(condition =>
+                        condition.name === path
+                            ? {
+                                  ...condition,
+                                  value: conditionInitialValue,
+                              }
+                            : condition,
+                    );
+                } else {
+                    // remove the condition completely
+                    newValue.conditions = newValue.conditions.filter(
+                        condition => condition.name !== path,
+                    );
+                }
+            }
+            setRealValue(newValue);
+        },
+        [realValue, setRealValue, schemaSafe],
+    );
 
     return {
         rootProps: {

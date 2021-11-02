@@ -772,3 +772,7 @@ export const MassiveTableInAWrapper = () => {
         </>
     );
 };
+
+export const EmptyState = () => {
+    return <DataTable columns={columns} data={massiveData} empty />;
+};

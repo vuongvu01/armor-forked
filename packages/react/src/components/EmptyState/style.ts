@@ -19,6 +19,7 @@ import {
     spacing,
     color,
     pixelToRem,
+    sizeAttributes,
 } from '../../system';
 
 const sizes = { default: 160, small: 80 };
@@ -209,6 +210,7 @@ export const EmptyStateRoot = styled.div.withConfig(propsBlocker)<
     ${getAlignmentStyle};
     ${getComponentOverride('EmptyState')};
     ${marginAttributes};
+    ${sizeAttributes};
 `;
 export const EmptyStateTitle = styled.div.withConfig(propsBlocker)<
     EmptyStateTitlePropsType

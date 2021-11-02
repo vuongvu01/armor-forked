@@ -10,6 +10,9 @@ export const useDataTableClassNames = (
         return {
             Root: makeRootClassName(classPrefix, className),
             Footer: makeBEM(classPrefix, 'Footer'),
+            EmptyStateContainer: makeBEM(classPrefix, 'EmptyStateContainer'),
+            EmptyStateTableRow: makeBEM(classPrefix, 'EmptyStateTableRow'),
+            EmptyStateTableCell: makeBEM(classPrefix, 'EmptyStateTableCell'),
             VirtualPaddingTop: makeBEM(classPrefix, 'VirtualPaddingTop'),
             VirtualPaddingBottom: makeBEM(classPrefix, 'VirtualPaddingBottom'),
             Row: makeBEM(classPrefix, elementName),

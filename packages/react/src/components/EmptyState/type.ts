@@ -3,7 +3,7 @@ import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../type';
-import { MarginAttributesType } from '../../system';
+import { MarginAttributesType, SizeAttributesType } from '../../system';
 
 /** 👉 PROPS TYPE */
 type EmptyStateEffectivePropsType = Partial<{
@@ -25,7 +25,8 @@ type EmptyStateEffectivePropsType = Partial<{
     actions: ReactNode;
 }> &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div attributes
-    MarginAttributesType;
+    MarginAttributesType &
+    SizeAttributesType;
 
 export type EmptyStatePropsType = EmptyStateEffectivePropsType &
     ComponentStylePropsType;
