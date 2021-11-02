@@ -1,3 +1,10 @@
+# @deliveryhero/armor [1.79.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.78.0...@deliveryhero/armor@1.79.0) (2021-11-02)
+
+
+### Features
+
+* **datatable:** DataTable improvements: EmptyState ([0e3d824](https://github.com/deliveryhero/armor/commit/0e3d824583bb3aca779389f67183bc11f7a6f0cc))
+
 # @deliveryhero/armor [1.78.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.77.4...@deliveryhero/armor@1.78.0) (2021-10-29)
 
 
