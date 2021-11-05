@@ -76,5 +76,9 @@
         "ts-essentials": "^7.0.0",
         "ts-jest": "^26.2.0",
         "typescript": "^3.9.7"
+    },
+    "dependencies": {
+        "@deliveryhero/armor": "1.35.0",
+        "@deliveryhero/armor-icons": "1.10.0"
     }
 }

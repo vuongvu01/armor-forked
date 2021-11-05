@@ -135,6 +135,9 @@ export const Basic = () => (
                 <I.HomeIcon />
             </Icon>
             <Icon>
+                <I.SplitIcon />
+            </Icon>
+            <Icon>
                 <I.MergeIcon />
             </Icon>
             <Icon>
