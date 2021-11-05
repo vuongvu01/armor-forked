@@ -5,7 +5,9 @@ import {
     marginAttributes,
     paddingAttributes,
     typography,
+    spacing,
 } from '../../../system';
+import { componentSpacing06 } from '../../../tokens';
 
 const rootStyle = ({ isFixed }: SideSheetBodyRootPropsType) => css`
     ${isFixed ? 'overflow-y: auto;' : ''}
@@ -18,6 +20,7 @@ export const SideSheetBodyRoot = styled.div<SideSheetBodyRootPropsType>`
     flex-grow: 1;
     flex-wrap: wrap;
     margin: 0;
+    padding: 0 ${spacing(componentSpacing06)};
 
     ${rootStyle};
     ${marginAttributes};
