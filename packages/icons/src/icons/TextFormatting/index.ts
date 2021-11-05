@@ -10,6 +10,6 @@ export * from './ListBullet';
 export * from './ListNumber';
 export * from './TextBold';
 export * from './TextItalic';
-export * from './TextUnderline';
 export * from './TextStrikeThrough';
 export * from './Unlink';
+export * from './TextUnderline';
