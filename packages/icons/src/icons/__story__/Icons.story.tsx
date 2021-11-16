@@ -150,7 +150,16 @@ export const Basic = () => (
                 <I.LensEmptyIcon />
             </Icon>
             <Icon>
-                <I.LensEmptyIcon stroke="red" />
+                <I.FlagIcon stroke="red" />
+            </Icon>
+            <Icon>
+                <I.PlayCircleFilledIcon stroke="red" />
+            </Icon>
+            <Icon>
+                <I.StarFilledIcon stroke="red" />
+            </Icon>
+            <Icon>
+                <I.StarOutlineIcon stroke="red" />
             </Icon>
         </Icons>
         <h2>Arrow</h2>
@@ -376,6 +385,9 @@ export const Basic = () => (
             </Icon>
             <Icon>
                 <I.FileTaskPinIcon />
+            </Icon>
+            <Icon>
+                <I.ChecklistIcon />
             </Icon>
         </Icons>
         <h2>Sort</h2>
