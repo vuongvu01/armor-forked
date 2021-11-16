@@ -1,8 +1,10 @@
 import { SVGAttributes } from 'react';
-import { ScalarType } from '../../type';
-import { ThemeType } from '../../styling/type';
-import { MarginAttributesType } from '../../system/attributes/margin';
-import { ColorAttributesType } from '../../system/attributes/color';
+import {
+    ThemeType,
+    MarginPropsType,
+    ColorPropsType,
+    ScalarType,
+} from '@deliveryhero/armor-system';
 
 export type SVGIconPropsType = {
     title?: string;
@@ -16,8 +18,8 @@ export type SVGIconPropsType = {
     small?: boolean;
     medium?: boolean;
     large?: boolean;
-} & MarginAttributesType &
-    ColorAttributesType &
+} & MarginPropsType &
+    ColorPropsType &
     SVGAttributes<SVGElement>;
 
 export type SVGIconRootPropsType = Omit<

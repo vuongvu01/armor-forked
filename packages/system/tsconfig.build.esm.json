@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "module": "esnext",
+        "target": "es6",
+        "outDir": "./build.esm/",
+        "types": []
+    },
+    "extends": "./tsconfig.json"
+}

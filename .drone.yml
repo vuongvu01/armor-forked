@@ -20,8 +20,8 @@ steps:
     - name: build
       image: node:14
       environment:
-        GITHUB_TOKEN:
-          from_secret: CICD_PREV_DEPS_TOKEN
+          GITHUB_TOKEN:
+              from_secret: CICD_PREV_DEPS_TOKEN
       commands:
           - ./script/build-preview.sh
 
@@ -31,5 +31,5 @@ steps:
           bucket: production-eu-armor
           assume_role: 'arn:aws:iam::487596255802:role/k8s-staging-eu-drone'
           region: 'eu-west-1'
-          source: ./packages/react/dev/.out
+          source: ./packages/core/dev/.out
           target: /${DRONE_PULL_REQUEST}

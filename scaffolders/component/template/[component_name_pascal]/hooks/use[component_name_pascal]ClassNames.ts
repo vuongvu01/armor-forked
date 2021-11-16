@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { makeRootClassName, makeBEM } from '../../../utils';
+import { makeRootClassName, makeBEM } from '@deliveryhero/armor-system';
 
 export const use<%- component_name_pascal %>ClassNames = (
     classPrefix: string,

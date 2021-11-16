@@ -9,7 +9,7 @@ export class Project {
     constructor(private projectFolder: string) {
         const rootFile = join(
             projectFolder,
-            'packages/react/src/components/index.ts',
+            'packages/core/src/components/index.ts',
         );
 
         this.program = createProgram([rootFile], {
@@ -32,7 +32,7 @@ export class Project {
     public getRootSourceFile() {
         const rootFile = join(
             this.projectFolder,
-            'packages/react/src/components/index.ts',
+            'packages/core/src/components/index.ts',
         );
 
         return this.getSourceFile(rootFile);

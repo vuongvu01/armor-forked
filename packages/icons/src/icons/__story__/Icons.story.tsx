@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import * as I from '..';
 
-import { loremIpsum } from '../../../../react/src/helpers/LoremIpsum';
+import { loremIpsum } from '../../../../core/src/helpers/LoremIpsum';
 
 export default {
     title: 'Icons',

@@ -17,19 +17,14 @@ jobs:
 
         steps:
             - uses: actions/checkout@v2
-            - name: Install
-              run: yarn install
-              env:
-                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
+            - name: Install (common)
+              run: yarn
+            - name: Install peers (common)
+              run: yarn install-peers
+
             - name: Lint
               run: yarn lint
-              env:
-                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
             - name: Test
               run: yarn test
-              env:
-                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
             - name: Build
               run: yarn run build
-              env:
-                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}

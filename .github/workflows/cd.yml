@@ -11,72 +11,43 @@ on:
 jobs:
     publish:
         runs-on: ubuntu-latest
+        env:
+            GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
 
         steps:
             - uses: actions/checkout@v2
-            - name: Install common
-              run: yarn install
-              env:
-                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
-            - name: Install (icons)
-              working-directory: ./packages/icons
-              run: yarn install
-              env:
-                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
-            - name: Install peers (icons)
-              working-directory: ./packages/icons
-              run: yarn run install-peers
-              env:
-                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
+            - name: Install (common)
+              run: yarn
+            - name: Install peers (common)
+              run: yarn install-peers
+
+            - name: Build (system)
+              working-directory: ./packages/system
+              run: yarn run build
+
             - name: Build (icons)
               working-directory: ./packages/icons
               run: yarn run build
-              env:
-                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
-            - name: Install (react)
-              working-directory: ./packages/react
-              run: yarn install
-              env:
-                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
-            - name: Install peers (react)
-              working-directory: ./packages/react
-              run: yarn run install-peers
-              env:
-                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
-            - name: Build (react)
-              working-directory: ./packages/react
+
+            - name: Build (core)
+              working-directory: ./packages/core
               run: yarn run build
-              env:
-                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
-            - name: Install (vendors)
-              working-directory: ./packages/vendors
-              run: yarn install
-              env:
-                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
-            - name: Install peers (vendors)
-              working-directory: ./packages/vendors
-              run: yarn run install-peers
-              env:
-                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
+
+            - name: Build (brands)
+              working-directory: ./packages/brands
+              run: yarn run build
+
             - name: Build (vendors)
               working-directory: ./packages/vendors
               run: yarn run build
-              env:
-                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
-            - name: Install (props-parser)
-              working-directory: ./packages/props-parser
-              run: yarn install
-              env:
-                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
+
             - name: Build (props-parser)
               working-directory: ./packages/props-parser
               run: yarn run build
-              env:
-                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
+
             - name: Publish
               run: yarn multi-semantic-release
-              env:
-                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
+
             - name: Documentation re-deployment
               run: |
                   curl --request POST \

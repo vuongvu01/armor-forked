@@ -6,10 +6,10 @@ cd ${DIR}/../packages/icons
 yarn
 yarn install-peers
 yarn build
-cd ${DIR}/../packages/react
+cd ${DIR}/../packages/core
 yarn
 yarn install-peers
 rm -rf node_modules/@deliveryhero/armor-icons
-cd ${DIR}/../packages/react/dev
+cd ${DIR}/../packages/core/dev
 yarn
 yarn build

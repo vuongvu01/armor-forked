@@ -11,45 +11,32 @@ on:
 jobs:
     test:
         runs-on: ubuntu-latest
+        env:
+            GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
 
         steps:
             - uses: actions/checkout@v2
-            - name: Install common
-              run: yarn install
-              env:
-                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
-            - name: Install
-              working-directory: ./packages/icons
-              run: yarn install
-              env:
-                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
-            - name: Install peers
-              working-directory: ./packages/icons
-              run: yarn run install-peers
-              env:
-                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
+            - name: Install (common)
+              run: yarn
+            - name: Install peers (common)
+              run: yarn install-peers
+
+            - name: Build (system)
+              working-directory: ./packages/system
+              run: yarn build:cjs
+
             - name: Lint
               working-directory: ./packages/icons
               run: yarn run lint
-              env:
-                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
             - name: Test
               working-directory: ./packages/icons
               run: yarn run test
-              env:
-                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
-            - name: Test visual (install)
+            - name: Test visual install
               working-directory: ./packages/icons/visual
               run: yarn install
-              env:
-                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
             - name: Test visual
               working-directory: ./packages/icons
               run: yarn test:visual:cicd
-              env:
-                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
             - name: Build
               working-directory: ./packages/icons
               run: yarn run build
-              env:
-                  GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}

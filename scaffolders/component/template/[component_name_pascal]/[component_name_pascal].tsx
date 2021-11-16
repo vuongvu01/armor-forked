@@ -1,5 +1,6 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
+import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { use<%- component_name_pascal %>ClassNames } from './hooks/use<%- component_name_pascal %>ClassNames';
 import { use<%- component_name_pascal %> } from './hooks/use<%- component_name_pascal %>';
@@ -8,7 +9,6 @@ import { <%- component_name_pascal %>PropsType } from './type';
 import {
     <%- component_name_snake_uc %>_CLASS_PREFIX,
 } from './constants';
-import { useComponentTheme } from '../../utils/hooks';
 
 /**
  * @armor-docs-component
