@@ -13,3 +13,4 @@ export * from './TextItalic';
 export * from './TextStrikeThrough';
 export * from './TextUnderline';
 export * from './Unlink';
+export * from './TextUnderline';

@@ -386,9 +386,6 @@ export const Basic = () => (
             <Icon>
                 <I.FileTaskPinIcon />
             </Icon>
-            <Icon>
-                <I.ChecklistIcon />
-            </Icon>
         </Icons>
         <h2>Sort</h2>
         <Icons>
