@@ -115,3 +115,19 @@ export const Errored = () => {
         </Box>
     );
 };
+
+export const WithTimeSelector = () => {
+    const [value, setValue] = useState<Date | null | undefined>(
+        new Date(2021, 7, 10, 10, 10, 20, 100),
+    );
+
+    return (
+        <DatePicker
+            open
+            dateValue={value}
+            onDateValueChange={setValue}
+            enableTimePicker
+            enableMinWidthAutoCorrection={false}
+        />
+    );
+};

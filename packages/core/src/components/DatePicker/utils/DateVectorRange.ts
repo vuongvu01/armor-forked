@@ -166,6 +166,11 @@ export class DateVectorRange {
         );
     }
 
+    public toString() {
+        return `[${this.dateStart?.toString() ??
+            '∞'}, ${this.dateEnd?.toString() ?? '∞'}]`;
+    }
+
     private static createLocalDateAdvancedRangeEdge(
         dateEdge: DateRangeEdgeType,
         currentDateVector: DateVector,

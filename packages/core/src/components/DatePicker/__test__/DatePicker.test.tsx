@@ -2,7 +2,7 @@
 
 import React, { useRef } from 'react';
 
-import { cleanup, fireEvent, render } from '@testing-library/react';
+import { cleanup, fireEvent, prettyDOM, render } from '@testing-library/react';
 import {
     renderHook,
     cleanup as cleanupHooks,
@@ -155,6 +155,36 @@ describe('<DatePicker />', () => {
         const call = onDayMouseLeave.mock.calls[0];
 
         expect(makeDateString(call[0])).toEqual('7-12-2021');
+    });
+
+    it('should preserve time when picking dates', async () => {
+        const localDate = new Date(2021, 7, 10, 10, 20, 20, 100);
+        const onDateValueChange = jest.fn();
+
+        const { container } = render(
+            <DatePicker
+                open
+                dateValue={localDate}
+                onDateValueChange={onDateValueChange}
+                enableTimePicker
+            />,
+        );
+
+        const button = container.querySelector(
+            '.DatePickerDaySelector-Day[data-day="9"] .DatePickerDaySelector-DayButton',
+        );
+
+        act(() => {
+            fireEvent.click(button!);
+        });
+
+        expect(onDateValueChange).toHaveBeenCalled();
+        const arg = onDateValueChange.mock.calls[0][0];
+
+        const vect = DateVector.createFromLocalDate(arg);
+
+        expect(vect.hour).toEqual(10);
+        expect(vect.minute).toEqual(20);
     });
 
     // it('should support controlled/uncontrolled value', async () => {

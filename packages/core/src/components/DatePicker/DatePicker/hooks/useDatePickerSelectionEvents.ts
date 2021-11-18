@@ -30,7 +30,20 @@ export const useDatePickerSelectionEvents = ({
                 return;
             }
 
-            onChange(value.clone({ dateStart: vector, dateEnd: vector }));
+            let resultVector = vector;
+
+            // copy time from the existing value, if there is something
+            if (value.dateStart) {
+                const { minute, hour } = value.dateStart;
+                resultVector = resultVector.clone({
+                    minute,
+                    hour,
+                });
+            }
+
+            onChange(
+                value.clone({ dateStart: resultVector, dateEnd: resultVector }),
+            );
         },
         [value, onChange],
     );
