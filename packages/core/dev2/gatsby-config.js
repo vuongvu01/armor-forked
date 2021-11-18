@@ -38,7 +38,7 @@ module.exports = {
                 path: `${__dirname}/static/assets`,
             },
         },
-        'gatsby-plugin-core-helmet',
+        'gatsby-plugin-react-helmet',
         'gatsby-plugin-image',
         'gatsby-plugin-sharp',
         'gatsby-transformer-sharp',

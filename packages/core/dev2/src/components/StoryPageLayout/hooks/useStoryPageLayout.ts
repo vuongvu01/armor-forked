@@ -1,8 +1,10 @@
 import { FC, useEffect, useState } from 'react';
 import { useNavigate } from '@reach/router';
+import { makeTheme, RootThemeType } from '@deliveryhero/armor-system';
+import { makeDarkTheme } from '@deliveryhero/armor-brands';
+
 import { StoryPageLayoutPropsType } from '../type';
 import { useQueryParams } from '../../../hooks/useQueryParams';
-import { makeTheme, makeDarkTheme, RootThemeType } from '../../../../../src';
 import { useLocalStorage } from './useLocalStorage';
 
 const themes = {

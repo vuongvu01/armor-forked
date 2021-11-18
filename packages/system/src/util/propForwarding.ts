@@ -202,8 +202,12 @@ const allowedEventProps = {
     onTransitionEndCapture: true,
 };
 
-export const propsBlocker: StyledConfig<any> = {
-    shouldForwardProp: (propName, validate) => {
+export const propsBlocker = {
+    shouldForwardProp: (
+        propName: string | number | boolean | symbol,
+        // todo: tighten this any
+        validate: (propName: any) => boolean,
+    ) => {
         if (typeof propName !== 'string') {
             return false;
         }

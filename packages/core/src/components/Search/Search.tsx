@@ -107,14 +107,16 @@ Search.propTypes = {
     onItemSelect: PropTypes.func,
     options: PropTypes.arrayOf(
         PropTypes.shape({
-            value: getScalarPropType().isRequired,
+            value: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+                .isRequired,
             label: PropTypes.string.isRequired,
             // groupId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
         }).isRequired,
     ),
     groups: PropTypes.arrayOf(
         PropTypes.shape({
-            id: getScalarPropType().isRequired,
+            id: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+                .isRequired,
             label: PropTypes.string.isRequired,
         }).isRequired,
     ),

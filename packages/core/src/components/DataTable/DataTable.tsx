@@ -300,7 +300,8 @@ DataTable.propTypes = {
     ),
     data: PropTypes.arrayOf(
         PropTypes.shape({
-            id: getScalarPropType().isRequired,
+            id: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+                .isRequired,
         }).isRequired,
     ),
 

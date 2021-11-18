@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { BreakpointCodeType } from '../../../../../src/system/mixins/type';
+import { BreakpointCodeType } from '@deliveryhero/armor-system';
 
 export type StoryPageContentPropsType = {
     title: string;

@@ -30,7 +30,7 @@ export type FilterLayoutRootPropsType = FilterLayoutEffectivePropsType &
     ComponentElementStylePropsType;
 
 export type FilterLayoutLeftBarPropsType = {
-    open: boolean;
+    open?: boolean;
 } & ComponentElementStylePropsType;
 
 export type FilterLayoutLeftBarContainerPropsType = ComponentElementStylePropsType;

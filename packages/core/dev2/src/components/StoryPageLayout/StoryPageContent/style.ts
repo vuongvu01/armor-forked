@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { muiSpacing } from '@gannochenko/ui.styled-components';
-import { RootThemeType } from '../../../armor/styling/type';
+import { RootThemeType } from '@deliveryhero/armor-system';
 import { Typography } from '../../Typography';
 
 const getStoryPageContentRootStyle = ({ theme }: { theme: RootThemeType }) => {
