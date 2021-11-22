@@ -1,3 +1,25 @@
+# @deliveryhero/armor [1.80.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.79.0...@deliveryhero/armor@1.80.0) (2021-11-22)
+
+
+### Bug Fixes
+
+* **datepicker:** When selecting a day, the selected time remains the same in DatePicker [AR-14] ([05ea46c](https://github.com/deliveryhero/armor/commit/05ea46ce6f0c867e53f3b5b6446ec3440fd34cfd))
+* Post-revamp TypeScript type fixes ([7dd148e](https://github.com/deliveryhero/armor/commit/7dd148e723a1a348e26c1a8d8721e923179c56ec))
+
+
+### Features
+
+* **skeleton:** with animations and composable architecture [LD-164] ([#792](https://github.com/deliveryhero/armor/issues/792)) ([a1cf7b6](https://github.com/deliveryhero/armor/commit/a1cf7b699250abf11d7d6f6769535324fe154e11))
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor-icons:** upgraded to 1.17.0
+* **@deliveryhero/armor-system:** upgraded to 1.0.0
+
 # @deliveryhero/armor [1.79.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.78.0...@deliveryhero/armor@1.79.0) (2021-11-02)
 
 
