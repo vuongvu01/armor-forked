@@ -55,6 +55,7 @@ import { getStepOverride } from './Stepper/Step';
 import { getIndicatorOverride } from './Indicator';
 import { getEmptyStateOverride } from './EmptyState';
 import { getExpansionIndicatorOverride } from './ExpansionIndicator';
+import { getSkeleton } from './Skeleton';
 
 export const darkThemeComponentOverrides = {
     Accordion: getAccordionOverride,
@@ -87,6 +88,7 @@ export const darkThemeComponentOverrides = {
     Checkbox: getCheckboxOverride,
     Radio: getRadioOverride,
     Switch: getSwitchOverride,
+    Skeleton: getSkeleton,
     MenuElement: getMenuElementOverride,
     Menu: getMenuOverride,
     Backdrop: getBackdropOverride,

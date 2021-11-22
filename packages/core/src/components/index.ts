@@ -29,6 +29,7 @@ export * from './Radio';
 export * from './Search';
 export * from './SideSheet';
 export * from './Navigation';
+export * from './Skeleton';
 export * from './Stack';
 export * from './Switch';
 export * from './Tab';
