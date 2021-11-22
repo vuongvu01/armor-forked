@@ -1,4 +1,4 @@
-import { HTMLAttributes } from 'react';
+import { HTMLAttributes, ReactChild } from 'react';
 import {
     MarginPropsType,
     WidthPropsType,
@@ -16,8 +16,9 @@ export type DateValueRangeType = [Date, Date];
 export type DateValueAdvancedRangeType = [DateRangeEdgeType, DateRangeEdgeType];
 
 export type DatePickerEffectiveCommonPropsType = Partial<{
-    /** Being set to true, enables action buttons "Cancel" and "Ok" to confirm the choice before applying. */
+    /** Being set to true, enables action buttons "Cancel" and "Apply" to confirm the choice before applying. */
     enableActionButtons: boolean;
+
     /** Being set to true, enables a time picker widget that allows to select time. */
     enableTimePicker: boolean;
     /**

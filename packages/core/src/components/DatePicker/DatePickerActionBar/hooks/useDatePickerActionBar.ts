@@ -3,7 +3,13 @@ import { DatePickerActionBarPropsType } from '../type';
 import { RefType } from '../../../../type';
 
 export const useDatePickerActionBar = <E extends HTMLDivElement>(
-    { applyValue, setClose, ...restProps }: DatePickerActionBarPropsType,
+    {
+        applyValue,
+        setClose,
+        customActions,
+        enableApplyButtons,
+        ...restProps
+    }: DatePickerActionBarPropsType,
     ref: RefType<E>,
 ) => {
     const onApplyButtonClick = useCallback(() => {
@@ -23,8 +29,7 @@ export const useDatePickerActionBar = <E extends HTMLDivElement>(
         applyButtonProps: {
             onClick: onApplyButtonClick,
         },
-        cancelButtonProps: {
-            onClick: setClose,
-        },
+        customActions,
+        showApplyButton: !!enableApplyButtons,
     };
 };

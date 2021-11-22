@@ -24,6 +24,7 @@ export const useDatePicker = <E extends HTMLDivElement>(
         formatDateTime,
         onDayMouseEnter,
         onDayMouseLeave,
+        enableTodayButton,
         ...restProps
     }: DatePickerPropsType,
     ref: RefType<E>,
@@ -80,7 +81,7 @@ export const useDatePicker = <E extends HTMLDivElement>(
     );
 
     const {
-        onDateSelectorChange,
+        onDateTimeChange, // should be called to update the value (internal + external)
         onTimeSelectorValueChange,
         applyValue,
         enableActionButtons,
@@ -99,7 +100,7 @@ export const useDatePicker = <E extends HTMLDivElement>(
 
     const selectionEventProps = useDatePickerSelectionEvents({
         value: dirtyInternalValueVector,
-        onChange: onDateSelectorChange,
+        onChange: onDateTimeChange,
         onDayMouseEnter,
         onDayMouseLeave,
     });
@@ -111,6 +112,8 @@ export const useDatePicker = <E extends HTMLDivElement>(
     });
 
     const { inputProperties, inactive } = useInputProps(restProps);
+
+    const showActions = !!(enableActionButtons || enableTodayButton);
 
     return {
         rootProps: {
@@ -135,6 +138,7 @@ export const useDatePicker = <E extends HTMLDivElement>(
             onMonthYearToggleClick: onMonthYearSelectorToggle,
         },
         actionBarProps: {
+            enableApplyButtons: !!enableActionButtons,
             applyValue, // to copy dirty value to actual
             setClose, // to close the dropdown
         },
@@ -159,7 +163,36 @@ export const useDatePicker = <E extends HTMLDivElement>(
         displayMonthYearSelector: monthYearSelectorOpen,
         open: reallyOpen,
 
-        enableActionButtons,
-        enableTimePicker,
+        showActions,
+        showTodayButton: !!enableTodayButton,
+        showTimePicker: !!enableTimePicker,
+
+        getTodayButtonProps: () => {
+            const onTodayButtonClick = () => {
+                const newVector = new DateVectorRange(
+                    currentDateVector.clone(),
+                    currentDateVector.clone(),
+                );
+                onDateTimeChange(newVector); // change value
+                if (newVector.dateStart) {
+                    setDisplayedDateVector(newVector.dateStart); // update the display
+                }
+            };
+
+            if (enableActionButtons) {
+                return {
+                    tertiary: true,
+                    paddingX: 1,
+                    margin: -1,
+                    onClick: onTodayButtonClick,
+                };
+            }
+
+            return {
+                secondary: true,
+                wide: true,
+                onClick: onTodayButtonClick,
+            };
+        },
     };
 };

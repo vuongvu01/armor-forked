@@ -55,6 +55,7 @@ export const DatePickerDropdown = styled.div.withConfig(propsBlocker)<
     min-width: ${spacing(84)};
     ${zIndex};
     ${getComponentOverride('DatePickerDropdown')};
+    overflow: hidden;
 
     box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.12);
 `;

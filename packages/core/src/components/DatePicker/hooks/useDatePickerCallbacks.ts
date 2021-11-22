@@ -15,7 +15,7 @@ type DatePickerCallbacksType<V> = {
     dirtyInternalValueVector: DateVectorRange;
     externalizeValue: (
         value: DateVectorRange,
-        timeVector: TimeVector24,
+        timeVector?: TimeVector24,
     ) => V | undefined;
 };
 
@@ -36,6 +36,7 @@ export const useDatePickerCallbacks = <V>(
 ) => {
     const autoUpdateInternalValue = !enableActionButtons;
 
+    // todo: remove this function
     const onDateSelectorChange = useCallback(
         (newValueDateVectorRange: DateVectorRange) => {
             setDirtyInternalValueVector(newValueDateVectorRange);
@@ -53,6 +54,22 @@ export const useDatePickerCallbacks = <V>(
             setExternalValue,
             setDirtyInternalValueVector,
             timeSelectorValue,
+            autoUpdateInternalValue,
+        ],
+    );
+
+    // should be called to update the value (internal + external)
+    const onDateTimeChange = useCallback(
+        (newValueDateVectorRange: DateVectorRange) => {
+            setDirtyInternalValueVector(newValueDateVectorRange);
+
+            if (autoUpdateInternalValue) {
+                setExternalValue(externalizeValue(newValueDateVectorRange));
+            }
+        },
+        [
+            setExternalValue,
+            setDirtyInternalValueVector,
             autoUpdateInternalValue,
         ],
     );
@@ -87,6 +104,7 @@ export const useDatePickerCallbacks = <V>(
     return {
         restProps,
         onDateSelectorChange,
+        onDateTimeChange,
         onTimeSelectorValueChange,
         applyValue,
         enableActionButtons,

@@ -74,7 +74,8 @@ export const useDateRangePicker = <E extends HTMLDivElement>(
     );
 
     const {
-        onDateSelectorChange,
+        // onDateSelectorChange,
+        onDateTimeChange,
         onTimeSelectorValueChange,
         applyValue,
         enableActionButtons,
@@ -93,7 +94,7 @@ export const useDateRangePicker = <E extends HTMLDivElement>(
 
     const selectionEventProps = useDateRangePickerSelectionEvents({
         value: dirtyInternalValueVector,
-        onChange: onDateSelectorChange,
+        onChange: onDateTimeChange, // onDateSelectorChange,
     });
 
     const formattedValue = useFormattedValue({
@@ -127,6 +128,7 @@ export const useDateRangePicker = <E extends HTMLDivElement>(
             onMonthYearToggleClick: onMonthYearSelectorToggle,
         },
         actionBarProps: {
+            enableApplyButtons: !!enableActionButtons,
             applyValue, // to copy dirty value to actual
             setClose, // to close the dropdown
         },
@@ -151,7 +153,7 @@ export const useDateRangePicker = <E extends HTMLDivElement>(
         displayMonthYearSelector: monthYearSelectorOpen,
         open: reallyOpen,
 
-        enableActionButtons,
-        enableTimePicker,
+        showActions: !!enableActionButtons,
+        showTimePicker: !!enableTimePicker,
     };
 };

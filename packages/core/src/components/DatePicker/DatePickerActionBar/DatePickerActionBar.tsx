@@ -3,9 +3,10 @@ import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useDatePickerActionBarClassNames } from './hooks/useDatePickerActionBarClassNames';
 import { useDatePickerActionBar } from './hooks/useDatePickerActionBar';
-import { DatePickerActionBarRoot, DatePickerActionBarButton } from './style';
+import { DatePickerActionBarRoot, DatePickerActionBarActions } from './style';
 import { DatePickerActionBarPropsType } from './type';
 import { DATE_PICKER_ACTION_BAR_CLASS_PREFIX } from './constants';
+import { Button } from '../../Button';
 
 /**
  * @internal
@@ -22,8 +23,9 @@ export const DatePickerActionBar = forwardRef<
 
     const {
         rootProps,
-        cancelButtonProps,
         applyButtonProps,
+        customActions,
+        showApplyButton,
     } = useDatePickerActionBar(props, ref);
 
     return (
@@ -32,21 +34,24 @@ export const DatePickerActionBar = forwardRef<
             theme={theme}
             className={classNameComponents.Root}
         >
-            <DatePickerActionBarButton
-                {...cancelButtonProps}
-                marginRight={2}
-                theme={theme}
-                className={classNameComponents.ActionBarButton}
-            >
-                Cancel
-            </DatePickerActionBarButton>
-            <DatePickerActionBarButton
-                {...applyButtonProps}
-                theme={theme}
-                className={classNameComponents.ActionBarButton}
-            >
-                Ok
-            </DatePickerActionBarButton>
+            {showApplyButton && (
+                <>
+                    <DatePickerActionBarActions
+                        theme={theme}
+                        className={classNameComponents.Actions}
+                    >
+                        {customActions}
+                    </DatePickerActionBarActions>
+                    <Button
+                        {...applyButtonProps}
+                        className={classNameComponents.ActionBarButton}
+                        primary
+                    >
+                        Apply
+                    </Button>
+                </>
+            )}
+            {!showApplyButton && customActions}
         </DatePickerActionBarRoot>
     );
 });

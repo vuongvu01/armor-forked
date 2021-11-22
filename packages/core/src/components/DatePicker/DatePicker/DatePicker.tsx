@@ -18,6 +18,7 @@ import { DatePickerActionBar } from '../DatePickerActionBar';
 import { DatePickerMonthYearSelector } from '../DatePickerMonthYearSelector';
 import { DatePickerDaySelector } from '../DatePickerDaySelector';
 import { DatePickerTopBar } from '../DatePickerTopBar';
+import { Button } from '../../Button';
 
 /**
  * @armor-docs-component
@@ -46,8 +47,10 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerPropsType>(
             displayMonthYearSelector,
             open,
 
-            enableActionButtons,
-            enableTimePicker,
+            showActions,
+            showTimePicker,
+            showTodayButton,
+            getTodayButtonProps,
         } = useDatePicker(props, ref);
 
         return (
@@ -77,15 +80,27 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerPropsType>(
                             {!displayMonthYearSelector && (
                                 <DatePickerDaySelector {...daySelectorProps} />
                             )}
-                            {enableTimePicker && (
+                            {showTimePicker && (
                                 <DatePickerTimeSelector
                                     {...timeSelectorProps}
                                 />
                             )}
-                            {enableActionButtons && (
-                                <DatePickerActionBar {...actionBarProps} />
+                            {showActions && (
+                                <DatePickerActionBar
+                                    {...actionBarProps}
+                                    customActions={
+                                        <>
+                                            {showTodayButton && (
+                                                <Button
+                                                    {...getTodayButtonProps()}
+                                                >
+                                                    Today
+                                                </Button>
+                                            )}
+                                        </>
+                                    }
+                                />
                             )}
-
                             <DatePickerDropdownArrow
                                 {...arrowProps}
                                 theme={theme}

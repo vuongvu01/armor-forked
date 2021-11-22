@@ -49,11 +49,9 @@ export const makeDatePickerOverride = () => {
             }
         }
 
-        // .DatePickerTimeSelector-Input {
-        //     .TextInput-Input {
-        //         color: ${color('neutral.05')};
-        //     }
-        // }
+        .DatePickerActionBar-Root {
+            background-color: ${color('neutral.03')};
+        }
 
         .DatePickerMonthYearSelector-Year:not(:first-child) {
             border-top: 1px solid ${color('neutral.01')};

@@ -1,17 +1,15 @@
 import styled from 'styled-components';
 import {
-    pixelToRem,
     reset,
     spacing,
     typography,
     propsBlocker,
     getComponentOverride,
-    fontSize02,
-    fontSize03,
+    color,
+    notLastChild,
 } from '@deliveryhero/armor-system';
 
 import { DatePickerActionBarRootPropsType } from './type';
-import { Button } from '../../Button';
 
 /** 👉 ROOT ELEMENT */
 export const DatePickerActionBarRoot = styled.div.withConfig(propsBlocker)<
@@ -19,18 +17,19 @@ export const DatePickerActionBarRoot = styled.div.withConfig(propsBlocker)<
 >`
     ${reset};
     ${typography('paragraphMedium')};
-    padding: 0 ${spacing(4)} ${spacing(4)} ${spacing(4)};
+    padding: ${spacing(4)};
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
+    background-color: ${color('neutral.01')};
+    border-top: 1px solid ${color('neutral.03')};
 
     ${getComponentOverride('DatePickerActionBar')};
 `;
 
-export const DatePickerActionBarButton = styled(Button).attrs({
-    tertiary: true,
-})`
-    // todo: use regular typography here
-    font-size: ${pixelToRem(fontSize02)};
-    line-height: ${pixelToRem(fontSize03)};
+export const DatePickerActionBarActions = styled.div`
+    padding-right: ${spacing(2)};
+    > ${notLastChild} {
+        margin-right: ${spacing(2)};
+    }
 `;
