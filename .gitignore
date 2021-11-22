@@ -7,3 +7,4 @@ packages/**/build.esm/*
 .idea
 .DS_Store
 report.*.json
+.vscode

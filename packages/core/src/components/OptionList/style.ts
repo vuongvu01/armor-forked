@@ -246,6 +246,7 @@ export const OptionListItemGroupRoot = styled.div.withConfig(propsBlocker)<
     color: ${color('neutral.07')};
     ${getOptionListItemGroupRootStyle};
     ${getSearchSuggestionListGroupDynamicStyle};
+    ${getComponentOverride('OptionListItemGroup')}
 `;
 
 export const OptionListVirtualPadding = styled.div.withConfig(propsBlocker)<

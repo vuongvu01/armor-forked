@@ -40,6 +40,7 @@ import { getSideSheetOverride } from './SideSheet';
 import { getDropdownBeforeSectionClearButtonOverride } from './DropdownBeforeSectionClearButton';
 import { getOptionListItemOverride } from './OptionList/OptionListItem';
 import { getOptionListOverride } from './OptionList/OptionList';
+import { getOptionListItemGroupOverride } from './OptionList/OptionListItemGroup';
 import { makeDatePickerOverride } from './DatePicker';
 import { getContextMenuOverride } from './ContextMenu';
 import { getIconButtonOverride } from './IconButton';
@@ -66,6 +67,7 @@ export const darkThemeComponentOverrides = {
     DropdownBeforeSectionClearButton: getDropdownBeforeSectionClearButtonOverride,
     OptionListItem: getOptionListItemOverride,
     OptionList: getOptionListOverride,
+    OptionListItemGroup: getOptionListItemGroupOverride,
     HeaderNavigation: getHeaderNavigationOverride,
     HeaderNavigationActionItem: getHeaderNavigationActionItemOverride,
     HeaderNavigationItem: getHeaderNavigationItemOverride,
