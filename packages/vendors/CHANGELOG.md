@@ -1,3 +1,19 @@
+# @deliveryhero/armor-vendors [1.2.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.1.90...@deliveryhero/armor-vendors@1.2.0) (2021-11-22)
+
+
+### Features
+
+* **icons:** split and merge [AR-12] ([#777](https://github.com/deliveryhero/armor/issues/777)) ([eecbd68](https://github.com/deliveryhero/armor/commit/eecbd681d44366e3199475b018a2a78526f16ff6))
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor:** upgraded to 1.80.0
+* **@deliveryhero/armor-icons:** upgraded to 1.17.0
+
 ## @deliveryhero/armor-vendors [1.1.90](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.1.89...@deliveryhero/armor-vendors@1.1.90) (2021-11-02)
 
 
