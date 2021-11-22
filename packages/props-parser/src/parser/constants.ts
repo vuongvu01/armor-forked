@@ -1,6 +1,6 @@
 import { join } from 'path';
 
-export const PACKAGE_FOLDER = 'packages/react';
+export const PACKAGE_FOLDER = 'packages/core';
 export const COMPONENTS_FOLDER = join(PACKAGE_FOLDER, 'src/components');
 
 export const PROPERTY_PARSER_DEFAULT_GROUP = 'own';

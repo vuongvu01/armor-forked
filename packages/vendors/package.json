@@ -15,7 +15,6 @@
         "test:visual:update": "cd ./visual && yarn loki update",
         "test:visual:approve": "cd ./visual && yarn loki approve",
         "test:visual:cicd": "cd ./visual && yarn build-storybook && yarn loki --requireReference --reactUri file:./storybook-static",
-        "install-peers": "install-self-peers -- --ignore-scripts",
         "build": "rm -rf ./build/* && yarn run build:esm && yarn run build:cjs",
         "build:cjs": "rm -rf ./build.cjs/* && tsc -p ./tsconfig.build.cjs.json",
         "build:esm": "rm -rf ./build.esm/* && tsc -p ./tsconfig.build.esm.json",
@@ -29,8 +28,6 @@
         "setup": "./script/setup.sh"
     },
     "peerDependencies": {
-        "@deliveryhero/armor": "1.35.0",
-        "@deliveryhero/armor-icons": "1.10.0",
         "react": ">=16.8.0",
         "react-dom": ">=16.8.0",
         "react-is": ">=16.8.0",
@@ -39,13 +36,16 @@
     "publishConfig": {
         "access": "public"
     },
+    "dependencies": {
+        "@deliveryhero/armor": "*",
+        "@deliveryhero/armor-icons": "*"
+    },
     "devDependencies": {
         "@semantic-release/changelog": "^5.0.1",
         "@semantic-release/commit-analyzer": "^8.0.1",
         "@semantic-release/git": "^9.0.0",
         "@semantic-release/npm": "^7.0.5",
         "@semantic-release/release-notes-generator": "^9.0.1",
-        "@team-griffin/install-self-peers": "^1.1.1",
         "@testing-library/dom": "^7.22.2",
         "@testing-library/jest-dom": "^5.11.3",
         "@testing-library/react": "^10.4.8",

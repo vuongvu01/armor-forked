@@ -12,3 +12,7 @@ export default {
 export const Margins = () => (
     <CancelCircleFilledIcon marginLeft={2} marginRight={2} />
 );
+
+export const ColorAttribute = () => (
+    <CancelCircleFilledIcon color="primary.main" />
+);

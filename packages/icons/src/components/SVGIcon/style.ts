@@ -1,9 +1,11 @@
 import styled, { css } from 'styled-components';
+import {
+    marginProps,
+    colorProps,
+    propsBlocker,
+} from '@deliveryhero/armor-system';
 
-import { marginAttributes } from '../../system/attributes/margin';
 import { SVGIconRootPropsType } from './type';
-import { colorAttributes } from '../../system/attributes/color';
-import { propsBlocker } from '../../system/util/propForwarding';
 
 const getSizingStyles = ({
     theme,
@@ -61,6 +63,6 @@ export const SVGIconRoot = styled.svg.withConfig(propsBlocker)<
         height: ${iconHeight};
     `};
     ${getSizingStyles};
-    ${colorAttributes};
-    ${marginAttributes};
+    ${colorProps};
+    ${marginProps};
 `;

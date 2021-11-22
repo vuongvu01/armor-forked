@@ -6,6 +6,7 @@ import {
     HeaderNavigationMenuContentBody,
     HeaderNavigationMenuContentHeader,
 } from '@deliveryhero/armor';
+
 import { HeaderNavigationMenuContentPropsType } from './type';
 
 const menuContentBodyOptions = [

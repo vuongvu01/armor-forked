@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { HurrierLogoPropsType } from './type';
 
 export const HurrierLogo = ({

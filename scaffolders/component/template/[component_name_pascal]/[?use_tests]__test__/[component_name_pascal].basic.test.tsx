@@ -70,7 +70,7 @@ describe('<<%- component_name_pascal %> />', () => {
         // userEvent.type(input, 'Max Mustermann');
     });
 
-    it('should contain correct CSS classes and attributes', () => {
+    it('should contain correct CSS classes and properties', () => {
         const result = render(<<%- component_name_pascal %> />);
         // @ts-ignore
         expect(result.container).toHaveBEMStructure('<%- component_name_pascal %>', {
@@ -97,9 +97,9 @@ describe('<<%- component_name_pascal %> />', () => {
         );
     });
 
-    it('should support margin attributes', async () => {
+    it('should support margin properties', async () => {
         // @ts-ignore
-        expect(<%- component_name_pascal %>).toSupportMarginAttributes();
+        expect(<%- component_name_pascal %>).toSupportMarginProps();
     });
 
     it('should forward correct attributes', async () => {

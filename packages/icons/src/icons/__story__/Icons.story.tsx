@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import * as I from '..';
 
-import { loremIpsum } from '../../../../react/src/helpers/LoremIpsum';
+import { loremIpsum } from '../../../../core/src/helpers/LoremIpsum';
 
 export default {
     title: 'Icons',
@@ -150,7 +150,16 @@ export const Basic = () => (
                 <I.LensEmptyIcon />
             </Icon>
             <Icon>
-                <I.LensEmptyIcon stroke="red" />
+                <I.FlagIcon stroke="red" />
+            </Icon>
+            <Icon>
+                <I.PlayCircleFilledIcon stroke="red" />
+            </Icon>
+            <Icon>
+                <I.StarFilledIcon stroke="red" />
+            </Icon>
+            <Icon>
+                <I.StarOutlineIcon stroke="red" />
             </Icon>
         </Icons>
         <h2>Arrow</h2>

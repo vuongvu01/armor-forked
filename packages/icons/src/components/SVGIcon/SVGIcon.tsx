@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react';
+import { useTheme } from '@deliveryhero/armor-system';
 
 import { SVGIconPropsType } from './type';
 import { SVGIconRoot } from './style';
-import { useTheme } from '../../styling/useTheme';
 
 export const SVGIcon: FunctionComponent<SVGIconPropsType> = ({
     children,

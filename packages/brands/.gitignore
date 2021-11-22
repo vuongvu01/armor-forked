@@ -1,0 +1,8 @@
+.idea
+.out
+dev/build
+src/**/*.d.ts
+visual/**/*.d.ts
+!src/globals.d.ts
+package-lock.json
+storybook-static
