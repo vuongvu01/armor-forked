@@ -1,3 +1,5 @@
+# @deliveryhero/armor-props-parser [1.3.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-props-parser@1.2.0...@deliveryhero/armor-props-parser@1.3.0) (2021-11-22)
+
 # @deliveryhero/armor-props-parser [1.2.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-props-parser@1.1.2...@deliveryhero/armor-props-parser@1.2.0) (2021-09-06)
 
 
