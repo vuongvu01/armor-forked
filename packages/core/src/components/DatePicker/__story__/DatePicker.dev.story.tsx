@@ -131,3 +131,42 @@ export const WithTimeSelector = () => {
         />
     );
 };
+
+export const WithAllEnabled = () => {
+    const [value, setValue] = useState<Date | null | undefined>(
+        new Date(2021, 7, 10, 10, 10, 20, 100),
+    );
+    const [open, setOpen] = useState(true);
+
+    return (
+        <DatePicker
+            dateValue={value}
+            onDateValueChange={setValue}
+            enableTimePicker
+            enableMinWidthAutoCorrection={false}
+            enableActionButtons
+            enableTodayButton
+            open={open}
+            onOpenChange={setOpen}
+        />
+    );
+};
+
+export const WithTimeButtonEnabledActionsDisabled = () => {
+    const [value, setValue] = useState<Date | null | undefined>(
+        new Date(2021, 7, 10, 10, 10, 20, 100),
+    );
+    const [open, setOpen] = useState(true);
+
+    return (
+        <DatePicker
+            open={open}
+            onOpenChange={setOpen}
+            dateValue={value}
+            onDateValueChange={setValue}
+            enableTimePicker
+            enableMinWidthAutoCorrection={false}
+            enableTodayButton
+        />
+    );
+};

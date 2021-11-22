@@ -47,8 +47,8 @@ export const DateRangePicker = forwardRef<
         displayMonthYearSelector,
         open,
 
-        enableActionButtons,
-        enableTimePicker,
+        showActions,
+        showTimePicker,
     } = useDateRangePicker(props, ref);
 
     return (
@@ -79,10 +79,10 @@ export const DateRangePicker = forwardRef<
                         {!displayMonthYearSelector && (
                             <DatePickerDaySelector {...daySelectorProps} />
                         )}
-                        {enableTimePicker && (
+                        {showTimePicker && (
                             <DatePickerTimeSelector {...timeSelectorProps} />
                         )}
-                        {enableActionButtons && (
+                        {showActions && (
                             <DatePickerActionBar {...actionBarProps} />
                         )}
 

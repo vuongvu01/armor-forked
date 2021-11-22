@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { DATE_PICKER_INFINITY, DatePicker } from '../../../src/components';
 
@@ -51,3 +51,32 @@ export const DisabledDates = () => (
         allowedDateRanges={[['current+1', DATE_PICKER_INFINITY]]}
     />
 );
+
+export const WithAllEnabled = () => {
+    const localDate = new Date(2021, 7, 10, 10, 10, 20, 100);
+
+    return (
+        <DatePicker
+            dateValue={localDate}
+            enableTimePicker
+            enableMinWidthAutoCorrection={false}
+            enableActionButtons
+            enableTodayButton
+            open
+        />
+    );
+};
+
+export const WithTimeButtonEnabledActionsDisabled = () => {
+    const localDate = new Date(2021, 7, 10, 10, 10, 20, 100);
+
+    return (
+        <DatePicker
+            open
+            dateValue={localDate}
+            enableTimePicker
+            enableMinWidthAutoCorrection={false}
+            enableTodayButton
+        />
+    );
+};

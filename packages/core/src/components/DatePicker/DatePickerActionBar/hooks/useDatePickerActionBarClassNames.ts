@@ -9,5 +9,6 @@ export const useDatePickerActionBarClassNames = (
         return {
             Root: makeRootClassName(classPrefix, className),
             ActionBarButton: makeBEM(classPrefix, 'ActionBarButton'),
+            Actions: makeBEM(classPrefix, 'Actions'),
         };
     }, [classPrefix, className]);

@@ -46,7 +46,7 @@ jobs:
               run: yarn run build
 
             - name: Publish
-              run: yarn multi-semantic-release
+              run: yarn multi-semantic-release | tee ~/.release-output.txt
 
             - name: Documentation re-deployment
               run: |
@@ -54,3 +54,11 @@ jobs:
                   --header 'Authorization: token ${{ secrets.CICD_TOKEN }}' \
                   --url https://api.github.com/repos/deliveryhero/armor-docs/actions/workflows/cd.yml/dispatches \
                   --data '{"ref":"master"}'
+
+            - name: Text panic message
+              if: failure()
+              run: |
+                  curl --request POST \
+                  --header 'Content-type: application/json' \
+                  --url https://hooks.slack.com/services/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 \
+                  --data '{"channel" : "armor-devs", "text": "🚨🚨🚨 OMG. The Armor Release pipeline just failed! 🚨🚨🚨", "attachments": [{"text": ":fire:", "footer": "<https://github.com/deliveryhero/armor/actions|Check out right away!>", "mrkdwn_in": ["text"]}]}'

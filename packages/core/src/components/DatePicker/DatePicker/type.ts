@@ -12,6 +12,9 @@ import {
 export type DatePickerEffectivePropsType = DatePickerEffectiveGenericPropsType<
     DateValueType
 > &
+    Partial<{
+        enableTodayButton: boolean;
+    }> &
     DatePickerEffectiveCommonPropsType;
 
 export type DatePickerPropsType = DatePickerEffectivePropsType &
