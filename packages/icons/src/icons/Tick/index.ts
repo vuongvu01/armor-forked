@@ -2,5 +2,5 @@
 
 export * from './TickBox';
 export * from './TickCircleFilled';
-export * from './TickThick';
 export * from './TickDefault';
+export * from './TickThick';

@@ -3,6 +3,7 @@
 const promisify = require('util').promisify;
 
 const find = require('findit');
+const lodash = require('lodash');
 const mkdir = promisify(require('fs').mkdir);
 const unlink = promisify(require('fs').unlink);
 const readFile = promisify(require('fs').readFile);
@@ -18,9 +19,9 @@ const templateFolder = normalize(`${__dirname}/../templates/`);
 
 const NOTE = "/* This file is auto-generated, don't edit by hand! */\n\n";
 
-//////////////////////////////////////////////////
-//////////////////////////////////////////////////
-//////////////////////////////////////////////////
+// ////////////////////////////////////////////////
+// ////////////////////////////////////////////////
+// ////////////////////////////////////////////////
 
 const getFolderContent = async path => {
     const finder = find(path);
@@ -59,9 +60,9 @@ const rewriteFile = async (file, content) => {
     await writeFile(file, new Uint8Array(Buffer.from(content)));
 };
 
-//////////////////////////////////////////////////
-//////////////////////////////////////////////////
-//////////////////////////////////////////////////
+// ////////////////////////////////////////////////
+// ////////////////////////////////////////////////
+// ////////////////////////////////////////////////
 
 (async () => {
     const reactTemplate = (
@@ -71,7 +72,12 @@ const rewriteFile = async (file, content) => {
     const source = await getFolderContent(sourceFolder);
 
     // /Etc  is a special case
-    let mainIndexFile = "export * from './Etc';\n";
+    let mainIndexFileLines = [
+        {
+            folder: 'Etc',
+            js: "export * from './Etc';\n",
+        },
+    ];
 
     for (const folder of source.folders) {
         const folderName = join(destinationFolder, folder);
@@ -84,7 +90,7 @@ const rewriteFile = async (file, content) => {
         console.log('>>> ' + folder);
 
         // run files for each folder
-        let folderIndexFile = '';
+        let folderIndexFileLines = [];
         for (const file of source.files) {
             if (!file.startsWith(folder)) {
                 continue;
@@ -111,24 +117,38 @@ const rewriteFile = async (file, content) => {
 
                 await rewriteFile(dstFile, content);
 
-                folderIndexFile = `${folderIndexFile}export * from './${componentName}';\n`;
+                folderIndexFileLines.push({
+                    componentName,
+                    js: `export * from './${componentName}';\n`,
+                });
             } catch (e) {
                 console.log(`Cannot process file ${file}`);
                 console.log(e);
             }
         }
 
-        console.log('special case', folderIndexFile);
+        folderIndexFileLines = lodash.sortBy(
+            folderIndexFileLines,
+            'componentName',
+        );
 
         const folderIndexFilePath = join(destinationFolder, folder, 'index.ts');
-        await rewriteFile(folderIndexFilePath, `${NOTE}${folderIndexFile}`);
+        await rewriteFile(
+            folderIndexFilePath,
+            `${NOTE}${folderIndexFileLines.map(item => item.js).join('')}`,
+        );
 
-        mainIndexFile = `${mainIndexFile}export * from './${folder}';\n`;
+        mainIndexFileLines.push({
+            folder,
+            js: `export * from './${folder}';\n`,
+        });
     }
+
+    mainIndexFileLines = lodash.sortBy(mainIndexFileLines, 'folder');
 
     await rewriteFile(
         join(destinationFolder, 'index.ts'),
-        `${NOTE}${mainIndexFile}`,
+        `${NOTE}${mainIndexFileLines.map(item => item.js).join('')}`,
     );
 
     console.log('DONE');

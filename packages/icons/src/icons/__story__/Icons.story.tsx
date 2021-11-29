@@ -161,6 +161,9 @@ export const Basic = () => (
             <Icon>
                 <I.StarOutlineIcon stroke="red" />
             </Icon>
+            <Icon>
+                <I.IdeaStrategyIcon />
+            </Icon>
         </Icons>
         <h2>Arrow</h2>
         <Icons>
