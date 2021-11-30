@@ -1,3 +1,10 @@
+# @deliveryhero/armor-icons [1.18.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.17.0...@deliveryhero/armor-icons@1.18.0) (2021-11-30)
+
+
+### Features
+
+* **icon:** IdeaStrategy icon added [AR-16] ([866a72e](https://github.com/deliveryhero/armor/commit/866a72edd67faa59eebcf08756463c7c7e54f6e4))
+
 # @deliveryhero/armor-icons [1.17.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.16.1...@deliveryhero/armor-icons@1.17.0) (2021-11-22)
 
 
