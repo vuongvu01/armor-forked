@@ -317,6 +317,9 @@ export const Basic = () => (
             <Icon>
                 <I.WalletIcon />
             </Icon>
+            <Icon>
+                <I.DollarIcon />
+            </Icon>
         </Icons>
         <h2>Sync</h2>
         <Icons>
@@ -397,6 +400,9 @@ export const Basic = () => (
             </Icon>
             <Icon>
                 <I.ByNumberIcon />
+            </Icon>
+            <Icon>
+                <I.DefaultSortIcon />
             </Icon>
         </Icons>
         <h2>Help</h2>
