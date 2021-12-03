@@ -2,3 +2,4 @@
 
 export * from './ByLetter';
 export * from './ByNumber';
+export * from './DefaultSort';

@@ -2,5 +2,6 @@
 
 export * from './Cash';
 export * from './CreditCard';
+export * from './Dollar';
 export * from './Receipt';
 export * from './Wallet';
