@@ -1,3 +1,10 @@
+# @deliveryhero/armor-icons [1.19.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.18.0...@deliveryhero/armor-icons@1.19.0) (2021-12-03)
+
+
+### Features
+
+* **icons:** DefaultSort and Dollar icons added [AR-18] ([dcfa839](https://github.com/deliveryhero/armor/commit/dcfa8399a72f2f4ea6401b1997770e78aaebfe62))
+
 # @deliveryhero/armor-icons [1.18.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.17.0...@deliveryhero/armor-icons@1.18.0) (2021-11-30)
 
 
