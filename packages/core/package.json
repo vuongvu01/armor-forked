@@ -34,7 +34,6 @@
     "dependencies": {
         "@deliveryhero/armor-icons": "*",
         "@deliveryhero/armor-system": "*",
-        "@deliveryhero/logistics-eslint-config": "^2.0.0",
         "clone-deep": "^4.0.1",
         "prop-types": "^15.7.2",
         "query-string": "^7.0.0",
@@ -49,6 +48,7 @@
     },
     "devDependencies": {
         "@babel/core": "^7.8.6",
+        "@deliveryhero/logistics-eslint-config": "^2.0.0",
         "@gannochenko/fea-cli": "^1.0.0",
         "@generilla/cli": "^2.0.3",
         "@material-ui/core": "^4.9.7",
