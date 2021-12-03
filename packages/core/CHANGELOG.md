@@ -1,3 +1,18 @@
+## @deliveryhero/armor [1.81.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.81.1...@deliveryhero/armor@1.81.2) (2021-12-03)
+
+
+### Bug Fixes
+
+* **lint:** logistics-eslint-config as dev dep [LD-000] ([#804](https://github.com/deliveryhero/armor/issues/804)) ([071426d](https://github.com/deliveryhero/armor/commit/071426d90811570d07c83d03678e63f9481814c9))
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor-icons:** upgraded to 1.19.0
+
 ## @deliveryhero/armor [1.81.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.81.0...@deliveryhero/armor@1.81.1) (2021-11-30)
 
 
