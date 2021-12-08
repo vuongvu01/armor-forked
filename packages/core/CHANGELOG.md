@@ -1,3 +1,10 @@
+## @deliveryhero/armor [1.81.3](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.81.2...@deliveryhero/armor@1.81.3) (2021-12-08)
+
+
+### Bug Fixes
+
+* **loginpage:** height to scale to 100% of the parent [LD-669] ([#806](https://github.com/deliveryhero/armor/issues/806)) ([16c5856](https://github.com/deliveryhero/armor/commit/16c585633f1a79035ea95aa0535419b04fb54e3f))
+
 ## @deliveryhero/armor [1.81.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.81.1...@deliveryhero/armor@1.81.2) (2021-12-03)
 
 
