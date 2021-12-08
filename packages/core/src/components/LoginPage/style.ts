@@ -26,6 +26,8 @@ export const LoginPageRoot = styled.div.withConfig(propsBlocker)<
 
     min-height: ${spacing(192)};
     min-width: ${spacing(256)};
+    height: 100%;
+    width: 100%;
     padding: 0;
     display: flex;
     flex-direction: column;
