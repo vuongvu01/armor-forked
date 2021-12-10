@@ -5,6 +5,7 @@ const colors = {
     denied: '$color.error.lighter',
     new: '$color.warning.light',
     enabled: '$color.primary.lightest',
+    filled: '$color.primary.lightest',
 };
 
 /** @deprecated */
@@ -28,6 +29,10 @@ export const tagDefaultTheme = {
             backgroundColor: colors.enabled,
             borderColor: colors.enabled,
             paddingRight: componentSpacing01,
+        },
+        filled: {
+            backgroundColor: colors.filled,
+            borderColor: colors.filled,
         },
     },
     Typography: {

@@ -46,6 +46,17 @@ export const UserTag = () => {
                 />
                 <Tag label="Default" deleteOption="enabled" disabled small />
             </GroupHelper>
+
+            <GroupHelper gap={2}>
+                <p>Filled state - background always be filled</p>
+                <Tag
+                    label="Default"
+                    deleteOption="disabled"
+                    filled
+                    marginRight={3}
+                />
+                <Tag label="Default" deleteOption="disabled" filled small />
+            </GroupHelper>
         </>
     );
 };
