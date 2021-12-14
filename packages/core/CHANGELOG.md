@@ -1,3 +1,12 @@
+## @deliveryhero/armor [1.81.4](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.81.3...@deliveryhero/armor@1.81.4) (2021-12-14)
+
+
+### Bug Fixes
+
+* **button:** dev example was missing ([#812](https://github.com/deliveryhero/armor/issues/812)) ([a31d3da](https://github.com/deliveryhero/armor/commit/a31d3da04e9403150909f18e2bc787fecf827c74))
+* **header:** remove redundant header background color [LD-462] ([3c4f327](https://github.com/deliveryhero/armor/commit/3c4f3272481168aa2e1cb4e1f071ee2f350e527a))
+* **tag component:** add filled state for Tag component [LD-614] ([e139d9e](https://github.com/deliveryhero/armor/commit/e139d9e1d9d2601b3b3afd3067f94c7c2af23849))
+
 ## @deliveryhero/armor [1.81.3](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.81.2...@deliveryhero/armor@1.81.3) (2021-12-08)
 
 
