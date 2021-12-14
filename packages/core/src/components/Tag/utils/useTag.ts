@@ -16,6 +16,7 @@ export const useTag = <E extends HTMLDivElement>(
         disabled,
         deleteOption,
         small,
+        filled,
         ...restRootProps
     }: TagPropsType,
     ref: RefType<E>,
@@ -55,6 +56,7 @@ export const useTag = <E extends HTMLDivElement>(
             small,
             type,
             disabled,
+            filled,
         },
         tagCloseIconContainerProps: {
             deleteOption,
@@ -75,5 +77,6 @@ export const useTag = <E extends HTMLDivElement>(
         content,
         onCloseButtonClick,
         small,
+        filled,
     };
 };

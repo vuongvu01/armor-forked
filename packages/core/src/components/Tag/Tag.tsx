@@ -27,6 +27,7 @@ export const Tag = forwardRef<HTMLDivElement, TagPropsType>(function Tag(
         type,
         disabled,
         small,
+        filled,
     } = useTag(restProps, ref);
 
     const classOverride = useTagClassName(
@@ -35,6 +36,7 @@ export const Tag = forwardRef<HTMLDivElement, TagPropsType>(function Tag(
         deleteOption,
         type,
         small,
+        filled,
     );
 
     return (
@@ -75,4 +77,6 @@ Tag.propTypes = {
     label: PropTypes.string,
     onClose: PropTypes.func,
     type: PropTypes.oneOf(['default', 'approved', 'denied', 'new']),
+    small: PropTypes.bool,
+    filled: PropTypes.bool,
 };

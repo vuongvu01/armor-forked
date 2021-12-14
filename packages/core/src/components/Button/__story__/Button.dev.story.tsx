@@ -1,9 +1,4 @@
 import React, { ComponentType, useState } from 'react';
-import {
-    boolean,
-    select,
-    // eslint-disable-next-line import/no-unresolved
-} from '@storybook/addon-knobs';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { EditIcon } from '@deliveryhero/armor-icons';
 // eslint-disable-next-line import/no-unresolved
@@ -27,168 +22,146 @@ export default {
     parameters: {},
 };
 
-const defaultTheme = makeDefaultTheme();
-
-const optionsTag = {
-    Button: 'button',
-    A: 'a',
-    Span: 'span',
-    Div: 'div',
-};
-
-const optionsType = {
-    Primary: 'primary',
-    Secondary: 'secondary',
-    Tertiary: 'tertiary',
-    Danger: 'danger',
-};
-
-const getTypeAttributes = (type: string) => ({
-    primary: false,
-    secondary: false,
-    tertiary: false,
-    [type]: true,
-});
-
 const groupStyle = {
     display: 'flex',
     alignItems: 'flex-end',
 };
 
-export const AllStates = () => {
-    const [theme, setTheme] = useState(defaultTheme);
-
-    return (
-        <>
-            <GroupHelper styles={groupStyle}>
-                <Button primary>Primary</Button>
-                <Button primary>
-                    <EditIcon marginRight={2} />
-                    Primary with icon
-                </Button>
-                <Button primary>
-                    Primary with icon
-                    <EditIcon marginLeft={2} />
-                </Button>
-                <Button primary paddingX={3}>
-                    <EditIcon />
-                </Button>
-                <Button primary danger>
-                    Primary
-                </Button>
-                <Button primary small>
-                    Primary
-                </Button>
-            </GroupHelper>
-            <GroupHelper styles={groupStyle}>
-                <Button disabled primary>
-                    Primary
-                </Button>
-                <Button disabled primary>
-                    <EditIcon marginRight={2} />
-                    Primary with icon
-                </Button>
-                <Button disabled primary>
-                    Primary with icon
-                    <EditIcon marginLeft={2} />
-                </Button>
-                <Button disabled primary paddingX={3}>
-                    <EditIcon />
-                </Button>
-                <Button disabled primary danger>
-                    Primary
-                </Button>
-                <Button disabled primary small>
-                    Primary
-                </Button>
-            </GroupHelper>
-            <br />
-            <br />
-            <GroupHelper styles={groupStyle}>
-                <Button secondary>Secondary</Button>
-                <Button secondary>
-                    <EditIcon marginRight={2} />
-                    Secondary with icon
-                </Button>
-                <Button secondary>
-                    Secondary with icon
-                    <EditIcon marginLeft={2} />
-                </Button>
-                <Button secondary paddingX={3}>
-                    <EditIcon />
-                </Button>
-                <Button secondary danger>
-                    Secondary
-                </Button>
-                <Button secondary small>
-                    Secondary
-                </Button>
-            </GroupHelper>
-            <GroupHelper styles={groupStyle}>
-                <Button disabled secondary>
-                    Secondary
-                </Button>
-                <Button disabled secondary>
-                    <EditIcon marginRight={2} />
-                    Secondary with icon
-                </Button>
-                <Button disabled secondary>
-                    Secondary with icon
-                    <EditIcon marginLeft={2} />
-                </Button>
-                <Button disabled secondary paddingX={3}>
-                    <EditIcon />
-                </Button>
-                <Button disabled secondary small>
-                    Secondary
-                </Button>
-            </GroupHelper>
-            <br />
-            <br />
-            <GroupHelper styles={groupStyle}>
-                <Button tertiary>Tertiary</Button>
-                <Button tertiary>
-                    <EditIcon marginRight={2} />
-                    Tertiary with icon
-                </Button>
-                <Button tertiary>
-                    Tertiary with icon
-                    <EditIcon marginLeft={2} />
-                </Button>
-                <Button tertiary paddingX={3}>
-                    <EditIcon />
-                </Button>
-                <Button tertiary danger>
-                    Tertiary
-                </Button>
-            </GroupHelper>
-            <GroupHelper styles={groupStyle}>
-                <Button disabled tertiary>
-                    Tertiary
-                </Button>
-                <Button disabled tertiary>
-                    <EditIcon marginRight={2} />
-                    Tertiary with icon
-                </Button>
-                <Button disabled tertiary>
-                    Tertiary with icon
-                    <EditIcon marginLeft={2} />
-                </Button>
-                <Button disabled tertiary paddingX={3}>
-                    <EditIcon />
-                </Button>
-                <Button disabled tertiary danger>
-                    Tertiary
-                </Button>
-            </GroupHelper>
-        </>
-    );
-};
+export const AllStates = () => (
+    <>
+        <GroupHelper styles={groupStyle}>
+            <Button primary>Primary</Button>
+            <Button primary>
+                <EditIcon marginRight={2} />
+                Primary with icon
+            </Button>
+            <Button primary>
+                Primary with icon
+                <EditIcon marginLeft={2} />
+            </Button>
+            <Button primary paddingX={3}>
+                <EditIcon />
+            </Button>
+            <Button primary danger>
+                Primary
+            </Button>
+            <Button primary small>
+                Primary
+            </Button>
+        </GroupHelper>
+        <GroupHelper styles={groupStyle}>
+            <Button disabled primary>
+                Primary
+            </Button>
+            <Button disabled primary>
+                <EditIcon marginRight={2} />
+                Primary with icon
+            </Button>
+            <Button disabled primary>
+                Primary with icon
+                <EditIcon marginLeft={2} />
+            </Button>
+            <Button disabled primary paddingX={3}>
+                <EditIcon />
+            </Button>
+            <Button disabled primary danger>
+                Primary
+            </Button>
+            <Button disabled primary small>
+                Primary
+            </Button>
+        </GroupHelper>
+        <br />
+        <br />
+        <GroupHelper styles={groupStyle}>
+            <Button secondary>Secondary</Button>
+            <Button secondary>
+                <EditIcon marginRight={2} />
+                Secondary with icon
+            </Button>
+            <Button secondary>
+                Secondary with icon
+                <EditIcon marginLeft={2} />
+            </Button>
+            <Button secondary paddingX={3}>
+                <EditIcon />
+            </Button>
+            <Button secondary danger>
+                Secondary
+            </Button>
+            <Button secondary small>
+                Secondary
+            </Button>
+        </GroupHelper>
+        <GroupHelper styles={groupStyle}>
+            <Button disabled secondary>
+                Secondary
+            </Button>
+            <Button disabled secondary>
+                <EditIcon marginRight={2} />
+                Secondary with icon
+            </Button>
+            <Button disabled secondary>
+                Secondary with icon
+                <EditIcon marginLeft={2} />
+            </Button>
+            <Button disabled secondary paddingX={3}>
+                <EditIcon />
+            </Button>
+            <Button disabled secondary small>
+                Secondary
+            </Button>
+        </GroupHelper>
+        <br />
+        <br />
+        <GroupHelper styles={groupStyle}>
+            <Button tertiary>Tertiary</Button>
+            <Button tertiary>
+                <EditIcon marginRight={2} />
+                Tertiary with icon
+            </Button>
+            <Button tertiary>
+                Tertiary with icon
+                <EditIcon marginLeft={2} />
+            </Button>
+            <Button tertiary paddingX={3}>
+                <EditIcon />
+            </Button>
+            <Button tertiary danger>
+                Tertiary
+            </Button>
+        </GroupHelper>
+        <GroupHelper styles={groupStyle}>
+            <Button disabled tertiary>
+                Tertiary
+            </Button>
+            <Button disabled tertiary>
+                <EditIcon marginRight={2} />
+                Tertiary with icon
+            </Button>
+            <Button disabled tertiary>
+                Tertiary with icon
+                <EditIcon marginLeft={2} />
+            </Button>
+            <Button disabled tertiary paddingX={3}>
+                <EditIcon />
+            </Button>
+            <Button disabled tertiary danger>
+                Tertiary
+            </Button>
+        </GroupHelper>
+    </>
+);
 
 export const AsLink = () => (
-    <Button tag="a" href="https://www.google.com/" target="_blank">
-        Open Google
-    </Button>
+    <>
+        <Button tag="a" href="https://www.google.com/" target="_blank">
+            Open Google
+        </Button>
+        <Button disabled tag="a" href="https://www.google.com/" target="_blank">
+            Disabled Open Google
+        </Button>
+    </>
 );
 
 type ButtonTagType = string | ComponentType<any>;
@@ -196,61 +169,39 @@ type ButtonTagType = string | ComponentType<any>;
 export const Comparison = () => (
     // <div style={{ display: 'flex' }}>
     <div>
-        <Button
-            {...getTypeAttributes(select('Type', optionsType, 'primary'))}
-            tag={select('Tag', optionsTag, 'button') as ButtonTagType}
-            small={boolean('Small', false)}
-        >
+        <Button primary tag="button" small>
             No Icon
         </Button>
-        <Button
-            marginLeft={2}
-            {...getTypeAttributes(select('Type', optionsType, 'primary'))}
-            tag={select('Tag', optionsTag, 'button') as ButtonTagType}
-            small={boolean('Small', false)}
-        >
+        <Button marginLeft={2} primary tag="button" small>
             With MUI icon <EditIcon marginLeft={2} />
         </Button>
-        <Button
-            marginLeft={2}
-            {...getTypeAttributes(select('Type', optionsType, 'primary'))}
-            tag={select('Tag', optionsTag, 'button') as ButtonTagType}
-            small={boolean('Small', false)}
-        >
+        <Button marginLeft={2} primary tag="button" small>
             With MUI icon <EditIcon marginLeft={2} fontSize={20} />
         </Button>
-        <Button
-            marginLeft={2}
-            tag={select('Tag', optionsTag, 'button') as ButtonTagType}
-            small={boolean('Small', false)}
-        >
+        <Button marginLeft={2} tag="button" small>
             <EditIcon />
         </Button>
-        <Button
-            marginLeft={2}
-            tag={select('Tag', optionsTag, 'button') as ButtonTagType}
-            small={boolean('Small', false)}
-        >
+        <Button marginLeft={2} tag="button" small>
             <EditIcon />
         </Button>
-        <Button marginLeft={2} small={boolean('Small', false)}>
+        <Button marginLeft={2} small>
             Edit <EditIcon marginLeft={2} />
         </Button>
-        <Button marginLeft={2} small={boolean('Small', false)}>
+        <Button marginLeft={2} small>
             <EditIcon marginRight={2} />
         </Button>
-        <Button marginLeft={2} small={boolean('Small', false)}>
+        <Button marginLeft={2} small>
             <EditIcon marginRight={2} />
             Save
         </Button>
-        <Button marginLeft={2} small={boolean('Small', false)}>
+        <Button marginLeft={2} small>
             Save <EditIcon marginLeft={2} />
         </Button>
-        <Button marginLeft={2} small={boolean('Small', false)}>
+        <Button marginLeft={2} small>
             Add
             <EditIcon marginLeft={2} />
         </Button>
-        <Button marginLeft={2} small={boolean('Small', false)}>
+        <Button marginLeft={2} small>
             Remove <EditIcon marginLeft={2} />
         </Button>
     </div>
@@ -259,14 +210,14 @@ export const Comparison = () => (
 export const InText = () => (
     <>
         Feel free to{' '}
-        <Button small={boolean('Small', false)}>
+        <Button small>
             eat <EditIcon marginLeft={2} />
         </Button>{' '}
         <Button small>
             eat <EditIcon marginLeft={2} />
         </Button>{' '}
         that tasty pie and{' '}
-        <Button small={boolean('Small', false)}>
+        <Button small>
             <EditIcon marginRight={2} /> drink <EditIcon marginLeft={2} />
         </Button>{' '}
         some tea.
@@ -274,12 +225,7 @@ export const InText = () => (
 );
 
 export const IconAndText = () => (
-    <Button
-        {...getTypeAttributes(select('Type', optionsType, 'primary'))}
-        tag={select('Tag', optionsTag, 'button') as ButtonTagType}
-        wide={boolean('Wide', false)}
-        small={boolean('Small', false)}
-    >
+    <Button primary tag="button" wide small>
         <EditIcon marginRight={2} />
         Create workflow
     </Button>
@@ -307,12 +253,7 @@ const customTheme = makeTheme({
 
 export const WithCustomTheme = () => (
     <ThemeProvider theme={customTheme}>
-        <Button
-            {...getTypeAttributes(select('Type', optionsType, 'primary'))}
-            tag={select('Tag', optionsTag, 'button') as ButtonTagType}
-            wide={boolean('Wide', false)}
-            small={boolean('Small', false)}
-        >
+        <Button primary tag="button" wide small>
             <EditIcon marginRight={2} />
             With custom theme
         </Button>
@@ -322,13 +263,7 @@ export const WithCustomTheme = () => (
 export const WithCustomThemeAsLink = () => (
     <ThemeProvider theme={customTheme}>
         <BrowserRouter>
-            <Button
-                {...getTypeAttributes(select('Type', optionsType, 'primary'))}
-                wide={boolean('Wide', false)}
-                small={boolean('Small', false)}
-                tag={Link}
-                to="/homepage"
-            >
+            <Button primary wide small tag={Link} to="/homepage">
                 <EditIcon marginRight={2} />
                 With custom theme
             </Button>

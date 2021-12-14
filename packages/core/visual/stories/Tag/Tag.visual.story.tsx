@@ -48,3 +48,7 @@ export const CustomStatusTypeNew = () => <Tag type="new">Custom new</Tag>;
 export const TagWithZero = () => {
     return <Tag>{0}</Tag>;
 };
+
+export const TagWithFilledState = () => {
+    return <Tag label="Default" deleteOption="disabled" filled />;
+};

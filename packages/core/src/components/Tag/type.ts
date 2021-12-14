@@ -43,6 +43,7 @@ export type ClassBasedOnComponentType = {
     onClose?: (event: MouseEvent<HTMLDivElement>) => void;
     type?: TagType;
     small?: boolean;
+    filled?: boolean;
 };
 
 /** 👉 PROPS TYPE */
@@ -62,6 +63,7 @@ type TagEffectivePropsType = Partial<{
     disabled: boolean;
     label: ScalarType;
     small: boolean;
+    filled: boolean;
     /**
      * If set to false, the tag will occupy as much space as needed by its content.
      */

@@ -28,6 +28,7 @@ const getRootStyle = ({
     type,
     small,
     enableContentWrapping,
+    filled,
 }: TagRootPropsType) => {
     let result = css`
         height: ${spacing(small ? 6 : 7)};
@@ -54,6 +55,10 @@ const getRootStyle = ({
         case TAG_TYPES.NEW:
             return css`${result}${minStatusTagWidth}${Tag.Root.base}${Tag.Root.new}`;
         default: {
+            if (filled) {
+                return css`${result}${Tag.Root.base}${Tag.Root.filled}`;
+            }
+
             if (deleteOption === TAG_DELETE_BEHAVIOUR_OPTIONS.ENABLED) {
                 return css`${result}${Tag.Root.base}${Tag.Root.enabled}`;
             }
