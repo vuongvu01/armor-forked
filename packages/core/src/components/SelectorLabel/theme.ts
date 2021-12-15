@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/camelcase */
-
 import { componentSpacing04 } from '@deliveryhero/armor-system';
 
 const selectorLabelDefaultTheme = {

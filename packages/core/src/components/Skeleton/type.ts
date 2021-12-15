@@ -4,7 +4,7 @@ import {
     MarginPropsType,
     PaddingPropsType,
     WidthPropsType,
-    ScalarType
+    ScalarType,
 } from '@deliveryhero/armor-system';
 import {
     ComponentStylePropsType,

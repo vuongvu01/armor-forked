@@ -2,14 +2,11 @@ import { useCallback } from 'react';
 
 import { DateVectorRange } from '../utils/DateVectorRange';
 import { TimeVector24 } from '../utils/TimeVector24';
-import {
-    DatePickerEffectiveCommonPropsType,
-    DatePickerEffectiveGenericPropsType,
-} from '../type';
+import { DatePickerEffectiveCommonPropsType } from '../type';
 
-type DatePickerCallbacksType<V> = {
+type UseDatePickerCallbacksPropsType<V> = {
     setDirtyInternalValueVector: (value: DateVectorRange) => void;
-    setExternalValue: (value: V | undefined) => void;
+    setExternalValue: (value: V | undefined | null) => void;
     timeSelectorValue: TimeVector24;
     setTimeSelectorValue: (value: TimeVector24) => void;
     dirtyInternalValueVector: DateVectorRange;
@@ -17,9 +14,10 @@ type DatePickerCallbacksType<V> = {
         value: DateVectorRange,
         timeVector?: TimeVector24,
     ) => V | undefined;
+    enableApplyButton: boolean;
 };
 
-export const useDatePickerCallbacks = <V>(
+export const useCommonDatePickerCallbacks = <V>(
     {
         setDirtyInternalValueVector,
         setExternalValue,
@@ -27,36 +25,11 @@ export const useDatePickerCallbacks = <V>(
         setTimeSelectorValue,
         dirtyInternalValueVector,
         externalizeValue,
-    }: DatePickerCallbacksType<V>,
-    {
-        enableActionButtons,
-        ...restProps
-    }: DatePickerEffectiveGenericPropsType<V> &
-        DatePickerEffectiveCommonPropsType,
+        enableApplyButton,
+    }: UseDatePickerCallbacksPropsType<V>,
+    _: DatePickerEffectiveCommonPropsType,
 ) => {
-    const autoUpdateInternalValue = !enableActionButtons;
-
-    // todo: remove this function
-    const onDateSelectorChange = useCallback(
-        (newValueDateVectorRange: DateVectorRange) => {
-            setDirtyInternalValueVector(newValueDateVectorRange);
-
-            if (autoUpdateInternalValue) {
-                setExternalValue(
-                    externalizeValue(
-                        newValueDateVectorRange,
-                        timeSelectorValue,
-                    ),
-                );
-            }
-        },
-        [
-            setExternalValue,
-            setDirtyInternalValueVector,
-            timeSelectorValue,
-            autoUpdateInternalValue,
-        ],
-    );
+    const autoUpdateInternalValue = !enableApplyButton;
 
     // should be called to update the value (internal + external)
     const onDateTimeChange = useCallback(
@@ -68,9 +41,10 @@ export const useDatePickerCallbacks = <V>(
             }
         },
         [
-            setExternalValue,
             setDirtyInternalValueVector,
             autoUpdateInternalValue,
+            setExternalValue,
+            externalizeValue,
         ],
     );
 
@@ -88,10 +62,11 @@ export const useDatePickerCallbacks = <V>(
             }
         },
         [
-            dirtyInternalValueVector,
-            autoUpdateInternalValue,
             setTimeSelectorValue,
+            autoUpdateInternalValue,
             setExternalValue,
+            externalizeValue,
+            dirtyInternalValueVector,
         ],
     );
 
@@ -99,14 +74,22 @@ export const useDatePickerCallbacks = <V>(
         setExternalValue(
             externalizeValue(dirtyInternalValueVector, timeSelectorValue),
         );
-    }, [setExternalValue, dirtyInternalValueVector, timeSelectorValue]);
+    }, [
+        setExternalValue,
+        externalizeValue,
+        dirtyInternalValueVector,
+        timeSelectorValue,
+    ]);
+
+    const clearValue = useCallback(() => {
+        setDirtyInternalValueVector(DateVectorRange.createFromLocalDate());
+        setExternalValue(null);
+    }, [setDirtyInternalValueVector, setExternalValue]);
 
     return {
-        restProps,
-        onDateSelectorChange,
         onDateTimeChange,
         onTimeSelectorValueChange,
         applyValue,
-        enableActionButtons,
+        clearValue,
     };
 };

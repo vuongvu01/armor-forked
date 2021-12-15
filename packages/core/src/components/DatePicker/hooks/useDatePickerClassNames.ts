@@ -10,5 +10,7 @@ export const useDatePickerClassNames = (
             Root: makeRootClassName(classPrefix, className),
             Input: makeBEM(classPrefix, 'Input'),
             Dropdown: makeBEM(classPrefix, 'Dropdown'),
+            ButtonToday: makeBEM(classPrefix, 'ButtonToday'),
+            ButtonClearSelection: makeBEM(classPrefix, 'ButtonClearSelection'),
         };
     }, [classPrefix, className]);

@@ -50,3 +50,76 @@ export const DisabledDates = () => (
         allowedDateRanges={[['current+1', DATE_PICKER_INFINITY]]}
     />
 );
+
+export const WithAllEnabled = () => {
+    const localDate = new Date(2021, 7, 10, 10, 10, 20, 100);
+
+    return (
+        <DatePicker
+            dateValue={localDate}
+            enableTimePicker
+            enableMinWidthAutoCorrection={false}
+            enableApplyButton
+            enableTodayButton
+            enableClearSelectionButton
+            open
+        />
+    );
+};
+
+export const WithTimeButtonEnabledOnly = () => {
+    const localDate = new Date(2021, 7, 10, 10, 10, 20, 100);
+
+    return (
+        <DatePicker
+            open
+            dateValue={localDate}
+            enableTimePicker
+            enableMinWidthAutoCorrection={false}
+            enableTodayButton
+        />
+    );
+};
+
+export const WithApplyButtonEnabledOnly = () => {
+    const localDate = new Date(2021, 7, 10, 10, 10, 20, 100);
+
+    return (
+        <DatePicker
+            open
+            dateValue={localDate}
+            enableTimePicker
+            enableMinWidthAutoCorrection={false}
+            enableApplyButton
+        />
+    );
+};
+
+export const WithClearSelectionButtonEnabledOnly = () => {
+    const localDate = new Date(2021, 7, 10, 10, 10, 20, 100);
+
+    return (
+        <DatePicker
+            open
+            dateValue={localDate}
+            enableTimePicker
+            enableMinWidthAutoCorrection={false}
+            enableClearSelectionButton
+        />
+    );
+};
+
+export const WithTakenDays = () => {
+    const localDate = new Date(2021, 7, 10, 10, 10, 20, 100);
+
+    return (
+        <DatePicker
+            open
+            dateValue={localDate}
+            enableTimePicker
+            enableMinWidthAutoCorrection={false}
+            currentDate={localDate}
+            freeDateRanges={[['current-1', DATE_PICKER_INFINITY]]}
+        />
+    );
+};

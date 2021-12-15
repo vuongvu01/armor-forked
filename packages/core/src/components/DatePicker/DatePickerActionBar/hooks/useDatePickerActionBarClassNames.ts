@@ -6,9 +6,15 @@ export const useDatePickerActionBarClassNames = (
     className?: string,
 ) =>
     useMemo(() => {
+        const ActionBarButton = makeBEM(classPrefix, 'ActionBarButton');
+
         return {
             Root: makeRootClassName(classPrefix, className),
-            ActionBarButton: makeBEM(classPrefix, 'ActionBarButton'),
+            ActionBarButton,
+            ActionBarButtonApply: [
+                ActionBarButton,
+                makeBEM(classPrefix, 'ActionBarButtonApply'),
+            ].join(' '),
             Actions: makeBEM(classPrefix, 'Actions'),
         };
     }, [classPrefix, className]);

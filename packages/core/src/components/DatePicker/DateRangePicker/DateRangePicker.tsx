@@ -43,10 +43,8 @@ export const DateRangePicker = forwardRef<
         monthYearSelectorProps,
         actionBarProps,
         timeSelectorProps,
-
         displayMonthYearSelector,
         open,
-
         showActions,
         showTimePicker,
     } = useDateRangePicker(props, ref);

@@ -20,8 +20,8 @@ export const formatDateTimeVector = (
 
         const { formattedHour, formattedMinute, mode } = timeVector;
 
-        return `${formattedHour}:${formattedMinute} ${mode} ${day}/${month}/${year}`;
+        return `${day}.${month}.${year} ${formattedHour}:${formattedMinute} ${mode}`;
     }
 
-    return `${day}/${month}/${year}`;
+    return `${day}.${month}.${year}`;
 };

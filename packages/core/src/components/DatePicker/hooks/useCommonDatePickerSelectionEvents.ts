@@ -8,7 +8,7 @@ type SelectionPropType = {} & Pick<
     'onDayMouseEnter' | 'onDayMouseLeave'
 >;
 
-export const useDatePickerCommonSelectionEvents = ({
+export const useCommonDatePickerSelectionEvents = ({
     onDayMouseEnter,
     onDayMouseLeave,
 }: SelectionPropType) => {

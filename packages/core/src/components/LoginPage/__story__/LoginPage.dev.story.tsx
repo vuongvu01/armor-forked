@@ -1,9 +1,9 @@
 /* eslint-disable no-console,import/no-unresolved */
 import React from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import GoogleLogin, {
     GoogleLoginResponse,
     GoogleLoginResponseOffline,
-    // eslint-disable-next-line import/no-extraneous-dependencies
 } from 'react-google-login';
 
 import { withWrapper } from '../../../helpers/Wrapper';

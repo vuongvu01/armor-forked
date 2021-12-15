@@ -182,13 +182,11 @@ export const useDropdown = <E extends HTMLInputElement>(
         setIsOptionListShown(false);
     }, [setIsOptionListShown]);
 
-    if (!enableFooter) {
-        useOuterClick(
-            [containerRef, dropdownRef],
-            onOuterClick,
-            isOptionListShown,
-        );
-    }
+    useOuterClick(
+        [containerRef, dropdownRef],
+        onOuterClick,
+        isOptionListShown && !enableFooter,
+    );
 
     useDetectEscapeKeyPressed(
         containerRef,

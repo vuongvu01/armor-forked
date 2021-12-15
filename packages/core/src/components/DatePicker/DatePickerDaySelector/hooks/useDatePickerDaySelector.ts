@@ -10,7 +10,10 @@ import { DATE_PICKER_DAY_SELECTOR_WEEK_DAYS } from '../constants';
 import { useDatePickerDaySelectorSelection } from './useDatePickerDaySelectorSelection';
 
 export const useDatePickerDaySelector = <E extends HTMLDivElement>(
-    {
+    props: DatePickerDaySelectorPropsType,
+    ref: RefType<E>,
+) => {
+    const {
         displayedDateVector,
         currentDateVector,
         dirtyInternalValueVector,
@@ -18,10 +21,9 @@ export const useDatePickerDaySelector = <E extends HTMLDivElement>(
         selectionStartCandidate,
         selectionEndCandidate,
         isDateAllowed,
-        ...restProps
-    }: DatePickerDaySelectorPropsType,
-    ref: RefType<E>,
-) => {
+        isDateFree,
+    } = props;
+
     const calendar = useDatePickerDaySelectorCalendar(
         displayedDateVector,
         currentDateVector,
@@ -32,11 +34,12 @@ export const useDatePickerDaySelector = <E extends HTMLDivElement>(
         selectionStartCandidate,
         selectionEndCandidate,
         isDateAllowed,
+        isDateFree,
     );
 
     return {
         rootProps: {
-            ...restProps,
+            ...props,
             ref,
         },
         getDayProps: (
@@ -48,7 +51,7 @@ export const useDatePickerDaySelector = <E extends HTMLDivElement>(
                 month,
                 year,
                 displayedMonth,
-                buttonProps: { selected, allowed, rightEnd, leftEnd },
+                buttonProps: { selected, allowed, free, rightEnd, leftEnd },
             } = item;
 
             return {
@@ -79,6 +82,7 @@ export const useDatePickerDaySelector = <E extends HTMLDivElement>(
                 'data-year': year,
                 'data-displayed-month': displayedMonth ? '1' : '0',
                 'data-allowed': allowed ? '1' : '0',
+                'data-free': free ? '1' : '0',
             };
         },
 

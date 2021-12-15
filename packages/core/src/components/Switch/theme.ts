@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/camelcase */
-
 export const switchDefaultTheme = {
     Toggle: {
         base: { backgroundColor: '$color.neutral.00' },

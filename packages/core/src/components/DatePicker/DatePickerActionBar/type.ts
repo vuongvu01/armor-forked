@@ -1,23 +1,23 @@
-import { HTMLAttributes, ReactNode } from 'react';
+import { HTMLAttributes } from 'react';
 import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../../type';
 
-type DatePickerActionBarEffectivePropsType = Partial<{
-    applyValue: () => void;
-    setClose: () => void;
-}> &
-    HTMLAttributes<HTMLDivElement>; // includes all HTML Div properties
+type DatePickerActionBarEffectivePropsType = HTMLAttributes<HTMLDivElement>; // includes all HTML Div properties
 
 export type DatePickerActionBarPropsType = DatePickerActionBarEffectivePropsType &
     Partial<{
-        customActions: ReactNode;
-        enableApplyButtons: boolean;
+        enableApplyButton: boolean;
+        enableClearSelectionButton: boolean;
+        enableTodayButton: boolean;
+        enableCloseOnSelect: boolean;
+        applyValue: () => void;
+        clearValue: () => void;
+        setClose: () => void;
+        onTodayButtonClick: () => void;
     }> &
     ComponentStylePropsType;
 
 export type DatePickerActionBarRootPropsType = DatePickerActionBarEffectivePropsType &
     ComponentElementStylePropsType;
-
-// export type DatePickerActionBarSubNodePropsType = {} & ComponentElementStylePropsType;

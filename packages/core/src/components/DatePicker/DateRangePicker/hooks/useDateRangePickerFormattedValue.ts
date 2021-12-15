@@ -7,18 +7,12 @@ import { DateRangePickerPropsType } from '../type';
 
 type UseFormattedValueProps = {
     internalValue: DateVectorRange;
-} & Pick<
-    DatePickerEffectiveCommonPropsType,
-    'enableTimePicker' | 'formatDateTime'
-> &
-    Pick<DateRangePickerPropsType, 'formatDateTimeRange'>;
+} & Pick<DateRangePickerPropsType, 'formatDateTimeRange'>;
 
-export const useFormattedValue = ({
-    internalValue,
-    enableTimePicker,
-    formatDateTime,
-    formatDateTimeRange,
-}: UseFormattedValueProps) =>
+export const useDateRangePickerFormattedValue = (
+    { internalValue, formatDateTimeRange }: UseFormattedValueProps,
+    { enableTimePicker, formatDateTime }: DatePickerEffectiveCommonPropsType,
+) =>
     useMemo(() => {
         if (internalValue.isInfinite()) {
             return '';

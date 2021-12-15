@@ -1,18 +1,16 @@
 import { useMemo } from 'react';
 import { formatDateTimeVector } from '../../utils/formatDateTimeVector';
 import { DateVectorRange } from '../../utils/DateVectorRange';
-import { DatePickerPropsType } from '../type';
+import { DatePickerEffectiveCommonPropsType } from '../../type';
 
-type UseFormattedValueProps = { internalValue: DateVectorRange } & Pick<
-    DatePickerPropsType,
-    'enableTimePicker' | 'formatDateTime'
->;
+type UseDatePickerFormattedValueProps = {
+    internalValue: DateVectorRange;
+};
 
-export const useFormattedValue = ({
-    internalValue,
-    enableTimePicker,
-    formatDateTime,
-}: UseFormattedValueProps) =>
+export const useDatePickerFormattedValue = (
+    { internalValue }: UseDatePickerFormattedValueProps,
+    { enableTimePicker, formatDateTime }: DatePickerEffectiveCommonPropsType,
+) =>
     useMemo(() => {
         if (internalValue.isInfinite()) {
             return '';

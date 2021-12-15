@@ -1,18 +1,35 @@
 import { MouseEvent, useCallback, useEffect, useState } from 'react';
+import { eventBus } from '@deliveryhero/armor-system';
 
 import { DateVectorRange } from '../../utils/DateVectorRange';
 import { extractDataFromDOMEvent } from '../../utils/extractDataFromDOMEvent';
 import { DateVector } from '../../utils/DateVector';
+import { DateRangePickerPropsType } from '../type';
+import { DATE_RANGE_PICKER_CLOSE_PANEL } from '../constants';
+import { getLatestAvailableDate, isRangeLegit } from '../utils/range';
 
 type SelectionPropType = {
-    value: DateVectorRange;
     onChange: (value: DateVectorRange) => void;
+    isDateSelectable: (date: DateVector) => boolean;
+    panelId: string;
+    closeDropdown: () => void;
+    enableCloseOnSelect: boolean;
 };
 
-export const useDateRangePickerSelectionEvents = ({
-    value,
-    onChange,
-}: SelectionPropType) => {
+type ClosePanelEventDetailType = {
+    id: string;
+};
+
+export const useDateRangePickerSelectionEvents = (
+    {
+        onChange,
+        isDateSelectable,
+        panelId,
+        closeDropdown,
+        enableCloseOnSelect,
+    }: SelectionPropType,
+    _: DateRangePickerPropsType,
+) => {
     const [
         selectionStartCandidate,
         setSelectionStartCandidate,
@@ -23,108 +40,99 @@ export const useDateRangePickerSelectionEvents = ({
         setSelectionEndCandidate,
     ] = useState<DateVector | null>(null);
 
+    const onReallyChange = useCallback(
+        (start: DateVector, end: DateVector) => {
+            let newSelection = [start, end];
+            if (end.isSmallerThanOrEqual(start)) {
+                newSelection = [end, start];
+            }
+
+            onChange(new DateVectorRange(newSelection[0], newSelection[1]));
+            if (enableCloseOnSelect) {
+                closeDropdown();
+            }
+        },
+        [closeDropdown, enableCloseOnSelect, onChange],
+    );
+
+    const onClosePanel = useCallback(
+        ({ detail }: CustomEvent) => {
+            const { id } = detail as ClosePanelEventDetailType;
+            if (id === panelId) {
+                setSelectionStartCandidate(null);
+                setSelectionEndCandidate(null);
+            }
+        },
+        [panelId],
+    );
+
+    useEffect(() => {
+        eventBus.on(DATE_RANGE_PICKER_CLOSE_PANEL, onClosePanel);
+        return () => eventBus.off(DATE_RANGE_PICKER_CLOSE_PANEL, onClosePanel);
+    }, [onClosePanel]);
+
     const onClick = useCallback(
         (event: MouseEvent<HTMLButtonElement>) => {
             const data = extractDataFromDOMEvent(event);
-            if (!data || !data.displayedMonth) {
+            if (!data) {
                 return;
             }
 
-            const { vector, withShift } = data;
-            const { dateStart, dateEnd } = value;
-
-            if (withShift) {
-                // *** [ *** ] **X** <-- click (X) was to the right or in the middle
-                if (vector.isGreaterThanOrEqual(dateStart)) {
-                    onChange(value.clone({ dateStart, dateEnd: vector }));
-                } else {
-                    onChange(value.clone({ dateStart: vector, dateEnd }));
-                }
-            } else {
-                // on click we just collapse the selection to one specific day
-                onChange(value.clone({ dateStart: vector, dateEnd: vector }));
-            }
-        },
-        [value, onChange],
-    );
-
-    // we define selection start candidate when the mouse is downed on a calendar item
-    const onMouseDown = useCallback(
-        (event: MouseEvent<HTMLButtonElement>) => {
-            const data = extractDataFromDOMEvent(event);
-            if (!data || !data.displayedMonth) {
+            const { vector, displayedMonth } = data;
+            const allowed = isDateSelectable(vector);
+            if (!displayedMonth || !allowed) {
                 return;
             }
 
-            const { vector, withShift } = data;
-            const { dateStart, dateEnd } = value;
-
-            if (withShift) {
-                // *** [ *** ] **X** <-- click (X) was to the right or in the middle
-                if (vector.isGreaterThanOrEqual(dateStart)) {
-                    setSelectionStartCandidate(dateStart);
-                } else {
-                    setSelectionStartCandidate(dateEnd);
+            if (selectionStartCandidate) {
+                const endDate = vector.clone();
+                if (
+                    isRangeLegit(
+                        selectionStartCandidate,
+                        endDate,
+                        isDateSelectable,
+                    )
+                ) {
+                    onReallyChange(selectionStartCandidate, endDate);
+                    setSelectionStartCandidate(null);
+                    setSelectionEndCandidate(null);
                 }
             } else {
                 setSelectionStartCandidate(vector.clone());
             }
         },
-        [value, setSelectionStartCandidate],
+        [isDateSelectable, selectionStartCandidate, onReallyChange],
     );
 
-    // when the mouse is moving over a calendar item, we set it as selection end candidate in case if
-    // selection start candidate is defined
+    // when the mouse is moving over a calendar item, we set it as a selection end candidate
     const onMouseEnter = useCallback(
         (event: MouseEvent<HTMLButtonElement>) => {
             const data = extractDataFromDOMEvent(event);
-            if (!data || !data.displayedMonth) {
+            if (!data) {
+                return;
+            }
+
+            const { vector, displayedMonth } = data;
+            if (!displayedMonth) {
                 return;
             }
 
             if (selectionStartCandidate) {
-                setSelectionEndCandidate(data.vector);
+                setSelectionEndCandidate(
+                    getLatestAvailableDate(
+                        selectionStartCandidate,
+                        vector.clone(),
+                        isDateSelectable,
+                    ),
+                );
             }
         },
-        [selectionStartCandidate, setSelectionEndCandidate],
+        [isDateSelectable, selectionStartCandidate],
     );
-
-    // on any sort of mouse release we run onChange from selection candidates, if they are defined
-    useEffect(() => {
-        const discardSelection = () => {
-            if (selectionStartCandidate && selectionEndCandidate) {
-                let newSelection = [
-                    selectionStartCandidate,
-                    selectionEndCandidate,
-                ];
-                if (
-                    selectionEndCandidate.isSmallerThanOrEqual(
-                        selectionStartCandidate,
-                    )
-                ) {
-                    newSelection = [
-                        selectionEndCandidate,
-                        selectionStartCandidate,
-                    ];
-                }
-                onChange(new DateVectorRange(newSelection[0], newSelection[1]));
-            }
-
-            setSelectionStartCandidate(null);
-            setSelectionEndCandidate(null);
-        };
-
-        document.addEventListener('mouseup', discardSelection);
-
-        return () => {
-            document.removeEventListener('mouseup', discardSelection);
-        };
-    }, [selectionStartCandidate, selectionEndCandidate, onChange]);
 
     return {
         dayButtonProps: {
             onClick,
-            onMouseDown,
             onMouseEnter,
         },
         selectionStartCandidate,

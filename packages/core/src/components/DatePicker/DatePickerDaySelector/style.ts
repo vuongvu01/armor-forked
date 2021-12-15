@@ -25,8 +25,6 @@ export const DatePickerDaySelectorRoot = styled.div.withConfig(propsBlocker)<
     ${reset};
     ${typography('paragraphMedium')};
     padding: ${spacing(4)};
-    //min-height: ${spacing(84)};
-
     ${getComponentOverride('DatePickerDaySelector')};
 `;
 
@@ -70,6 +68,7 @@ export const DatePickerDaySelectorDay = styled.div.withConfig(propsBlocker)<
 const getDayButtonStyle = ({
     selected,
     allowed,
+    free,
     leftEnd,
     rightEnd,
     displayedMonth,
@@ -77,23 +76,42 @@ const getDayButtonStyle = ({
     let result = {};
 
     if (displayedMonth) {
-        result = css`
-            ${result};
-            cursor: ${allowed ? 'pointer' : 'not-allowed'};
-        `;
-
-        if (allowed || selected) {
+        if (allowed && free) {
             result = css`
                 ${result};
+                cursor: pointer;
                 &:hover {
-                    color: ${color('neutral.00')};
-                    background-color: ${color('primary.main')};
+                    color: ${color('neutral.11')};
+                    background-color: ${color('primary.02')};
                 }
             `;
+        } else {
+            result = css`
+                ${result};
+                color: ${color('neutral.07')};
+                cursor: not-allowed;
+            `;
+
+            if (!free) {
+                result = css`
+                    ${result};
+                    text-decoration: line-through;
+                `;
+            }
         }
 
         if (selected) {
-            // make corners sharp if the element is just a tail (or a head)
+            result = css`
+                ${result};
+                color: ${color('neutral.00')};
+                background-color: ${color('primary.main')};
+                &:hover {
+                    color: ${color('neutral.11')};
+                    background-color: ${color('primary.02')};
+                }
+            `;
+
+            // make corners sharp if the element is a tail, head or in the middle
             if (leftEnd && !rightEnd) {
                 result = css`
                     ${result};
@@ -101,7 +119,6 @@ const getDayButtonStyle = ({
                     border-top-right-radius: 0;
                 `;
             }
-
             if (rightEnd && !leftEnd) {
                 result = css`
                     ${result};
@@ -109,36 +126,23 @@ const getDayButtonStyle = ({
                     border-top-left-radius: 0;
                 `;
             }
-
-            // set background
             if (!rightEnd && !leftEnd) {
                 result = css`
                     ${result};
-                    background-color: ${color('primary.lightest')};
                     border-radius: 0;
                 `;
             }
 
-            if (rightEnd || leftEnd) {
+            // change the background if the element is in the middle
+            if (!rightEnd && !leftEnd) {
                 result = css`
                     ${result};
-                    color: ${color('neutral.00')};
-                    background-color: ${color('primary.main')};
-
-                    &:hover {
-                        background-color: ${color('primary.light')};
-                    }
+                    color: ${color('neutral.11')};
+                    background-color: ${color('primary.lightest')};
                 `;
             }
-        } else if (!allowed) {
-            result = css`
-                ${result};
-                color: ${color('neutral.07')};
-            `;
         }
-    }
-
-    if (!displayedMonth) {
+    } else {
         result = css`
             ${result};
             visibility: hidden;

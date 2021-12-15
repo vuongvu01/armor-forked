@@ -23,9 +23,14 @@ export const DatePickerActionBar = forwardRef<
 
     const {
         rootProps,
-        applyButtonProps,
-        customActions,
+        showBar,
+        getApplyButtonProps,
         showApplyButton,
+        showClearSelectionButton,
+        showTodayButtonRegular,
+        showTodayButtonWide,
+        getClearSelectionButtonProps,
+        getTodayButtonProps,
     } = useDatePickerActionBar(props, ref);
 
     return (
@@ -34,24 +39,53 @@ export const DatePickerActionBar = forwardRef<
             theme={theme}
             className={classNameComponents.Root}
         >
-            {showApplyButton && (
-                <>
-                    <DatePickerActionBarActions
-                        theme={theme}
-                        className={classNameComponents.Actions}
-                    >
-                        {customActions}
-                    </DatePickerActionBarActions>
-                    <Button
-                        {...applyButtonProps}
-                        className={classNameComponents.ActionBarButton}
-                        primary
-                    >
-                        Apply
-                    </Button>
-                </>
+            {showBar && (
+                <DatePickerActionBarActions
+                    theme={theme}
+                    className={classNameComponents.Actions}
+                >
+                    {showClearSelectionButton && (
+                        <Button
+                            className={classNameComponents.ActionBarButton}
+                            tertiary
+                            danger
+                            paddingX={1}
+                            {...getClearSelectionButtonProps()}
+                        >
+                            Clear
+                        </Button>
+                    )}
+                    {showTodayButtonRegular && (
+                        <Button
+                            className={classNameComponents.ActionBarButton}
+                            tertiary
+                            paddingX={1}
+                            {...getTodayButtonProps()}
+                        >
+                            Today
+                        </Button>
+                    )}
+                </DatePickerActionBarActions>
             )}
-            {!showApplyButton && customActions}
+            {showApplyButton && (
+                <Button
+                    {...getApplyButtonProps()}
+                    className={classNameComponents.ActionBarButtonApply}
+                    primary
+                >
+                    Apply
+                </Button>
+            )}
+            {showTodayButtonWide && (
+                <Button
+                    className={classNameComponents.ActionBarButton}
+                    secondary
+                    wide
+                    {...getTodayButtonProps()}
+                >
+                    Today
+                </Button>
+            )}
         </DatePickerActionBarRoot>
     );
 });

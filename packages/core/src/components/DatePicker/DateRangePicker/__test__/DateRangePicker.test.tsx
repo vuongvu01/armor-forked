@@ -8,8 +8,8 @@ import {
     cleanup as cleanupHooks,
 } from '@testing-library/react-hooks';
 
-import { DateRangePicker } from '..';
-import { COMMON_CLASSES } from './common';
+import { DateRangePicker } from '../..';
+import { COMMON_CLASSES } from '../../__test__/common';
 
 describe('<DateRangePicker />', () => {
     afterEach(async () => {

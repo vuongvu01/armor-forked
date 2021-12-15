@@ -2,14 +2,18 @@
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+yarn
+yarn install-peers
+
+cd ${DIR}/../packages/system
+yarn
+
 cd ${DIR}/../packages/icons
 yarn
-yarn install-peers
-yarn build
+
 cd ${DIR}/../packages/core
 yarn
-yarn install-peers
-rm -rf node_modules/@deliveryhero/armor-icons
+
 cd ${DIR}/../packages/core/dev
 yarn
 yarn build

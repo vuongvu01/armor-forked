@@ -1,5 +1,4 @@
 import React, { forwardRef } from 'react';
-import PropTypes from 'prop-types';
 import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useDatePickerDaySelectorClassNames } from './hooks/useDatePickerDaySelectorClassNames';

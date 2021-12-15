@@ -2,31 +2,32 @@ import { useMemo } from 'react';
 import { useControlledState } from '@deliveryhero/armor-system';
 
 import { DateRangePickerPropsType } from '../type';
-import { DateValueRangeType } from '../../type';
+import { DateValueRangeType, DateValueType } from '../../type';
 import { RefType } from '../../../../type';
 import { useDateRangePickerSelectionEvents } from './useDateRangePickerSelectionEvents';
-import { useDatePickerPanel } from '../../hooks/useDatePickerPanel';
-import { useDatePickerState } from '../../hooks/useDatePickerState';
-import { useDatePickerCallbacks } from '../../hooks/useDatePickerCallbacks';
+import { useCommonDatePickerPanel } from '../../hooks/useCommonDatePickerPanel';
+import { useCommonDatePickerState } from '../../hooks/useCommonDatePickerState';
+import { useCommonDatePickerCallbacks } from '../../hooks/useCommonDatePickerCallbacks';
 import { DateVectorRange } from '../../utils/DateVectorRange';
 import { externalizeValue } from '../utils/externalizeValue';
-import { useFormattedValue } from './useFormattedValue';
-import { useInputProps } from '../../hooks/useInputProps';
-
-const isDateAllowed = () => true;
+import { useDateRangePickerFormattedValue } from './useDateRangePickerFormattedValue';
+import { useCommonDatePickerInputProps } from '../../hooks/useCommonDatePickerInputProps';
+import { useCommonDatePickerAllowedDates } from '../../hooks/useCommonDatePickerAllowedDates';
+import { useCommonDatePickerActionButtons } from '../../hooks/useCommonDatePickerActionButtons';
+import { useCommonDatePickerCompatibility } from '../../hooks/useCommonDatePickerCompatibility';
 
 export const useDateRangePicker = <E extends HTMLDivElement>(
-    {
-        enableTimePicker,
+    props: DateRangePickerPropsType,
+    ref: RefType<E>,
+) => {
+    const {
         defaultDateValue,
         dateValue,
         onDateValueChange,
-        formatDateTime,
+        enableTimePicker,
         formatDateTimeRange,
-        ...restProps
-    }: DateRangePickerPropsType,
-    ref: RefType<E>,
-) => {
+    } = props;
+
     // controlled and uncontrolled state: dateValue, defaultDateValue and onDateValueChange mapped to internalValue
     const [externalValue, setExternalValue] = useControlledState<
         DateRangePickerPropsType['dateValue']
@@ -38,49 +39,50 @@ export const useDateRangePicker = <E extends HTMLDivElement>(
         [externalValue],
     );
 
+    const { enableApplyButton } = useCommonDatePickerCompatibility(props);
+
     const {
         rootRef,
         inputRef,
-
-        reallyOpen,
-        toggleOpen,
-        setClose,
-
+        dropdownOpen,
+        toggleDropdown,
+        closeDropdown,
         arrowProps,
         dropdownProps,
         portalProps,
-        restProps: panelRestProps,
-    } = useDatePickerPanel<DateValueRangeType, E>(restProps, ref);
+        panelId,
+    } = useCommonDatePickerPanel<DateValueRangeType, E>({ ref }, props);
 
     const {
         dirtyInternalValueVector,
         setDirtyInternalValueVector,
-
         timeSelectorValue,
         setTimeSelectorValue,
-
         displayedDateVector,
         setDisplayedDateVector,
-
         currentDateVector,
-
         monthYearSelectorOpen,
         onMonthYearSelectorToggle,
-
-        restProps: stateRestProps,
-    } = useDatePickerState<DateValueRangeType>(
-        { reallyOpen: !!reallyOpen, internalValue },
-        panelRestProps,
+    } = useCommonDatePickerState<DateValueRangeType>(
+        { dropdownOpen, internalValue },
+        props,
     );
 
     const {
-        // onDateSelectorChange,
+        isDateAllowed,
+        isDateFree,
+        isDateSelectable,
+    } = useCommonDatePickerAllowedDates<DateValueType>(
+        { dropdownOpen, currentDateVector },
+        props,
+    );
+
+    const {
         onDateTimeChange,
         onTimeSelectorValueChange,
         applyValue,
-        enableActionButtons,
-        restProps: callbacksRestProps,
-    } = useDatePickerCallbacks<DateValueRangeType>(
+        clearValue,
+    } = useCommonDatePickerCallbacks<DateValueRangeType>(
         {
             setDirtyInternalValueVector,
             setExternalValue,
@@ -88,27 +90,47 @@ export const useDateRangePicker = <E extends HTMLDivElement>(
             setTimeSelectorValue,
             dirtyInternalValueVector,
             externalizeValue,
+            enableApplyButton,
         },
-        stateRestProps,
+        props,
     );
 
-    const selectionEventProps = useDateRangePickerSelectionEvents({
-        value: dirtyInternalValueVector,
-        onChange: onDateTimeChange, // onDateSelectorChange,
-    });
+    const {
+        showActions,
+        actionBarProps,
+        enableCloseOnSelect,
+    } = useCommonDatePickerActionButtons(
+        { applyValue, clearValue, closeDropdown, enableApplyButton },
+        props,
+    );
 
-    const formattedValue = useFormattedValue({
-        internalValue,
-        enableTimePicker,
-        formatDateTime,
-        formatDateTimeRange,
-    });
+    const selectionEventProps = useDateRangePickerSelectionEvents(
+        {
+            panelId,
+            onChange: onDateTimeChange,
+            isDateSelectable,
+            enableCloseOnSelect,
+            closeDropdown,
+        },
+        props,
+    );
 
-    const { inputProperties, inactive } = useInputProps(restProps);
+    const formattedValue = useDateRangePickerFormattedValue(
+        {
+            internalValue,
+            formatDateTimeRange,
+        },
+        props,
+    );
+
+    const { inputProperties, inactive } = useCommonDatePickerInputProps(
+        {},
+        props,
+    );
 
     return {
         rootProps: {
-            ...callbacksRestProps,
+            ...props,
             enableTimePicker,
             ref: rootRef,
         },
@@ -116,7 +138,7 @@ export const useDateRangePicker = <E extends HTMLDivElement>(
             ...inputProperties,
             ref: inputRef,
             value: formattedValue,
-            onRootClick: inactive ? undefined : toggleOpen,
+            onRootClick: inactive ? undefined : toggleDropdown,
         },
         portalProps,
         dropdownProps,
@@ -127,16 +149,12 @@ export const useDateRangePicker = <E extends HTMLDivElement>(
             monthYearSelectorOpen,
             onMonthYearToggleClick: onMonthYearSelectorToggle,
         },
-        actionBarProps: {
-            enableApplyButtons: !!enableActionButtons,
-            applyValue, // to copy dirty value to actual
-            setClose, // to close the dropdown
-        },
         daySelectorProps: {
             displayedDateVector, // to indicate the currently displayed year and month
             dirtyInternalValueVector, // to indicate the selected day
             currentDateVector, // to indicate the current day in the matrix
             isDateAllowed,
+            isDateFree,
             ...selectionEventProps,
         },
         monthYearSelectorProps: {
@@ -151,9 +169,11 @@ export const useDateRangePicker = <E extends HTMLDivElement>(
         },
 
         displayMonthYearSelector: monthYearSelectorOpen,
-        open: reallyOpen,
+        open: dropdownOpen,
 
-        showActions: !!enableActionButtons,
         showTimePicker: !!enableTimePicker,
+
+        showActions,
+        actionBarProps,
     };
 };

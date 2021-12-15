@@ -12,4 +12,5 @@ module.exports = {
         '.+\\.(css|scss|png|jpg|svg)$': 'jest-transform-stub',
     },
     testRegex: '\\.test\\.tsx?$',
+    testEnvironment: 'jsdom'
 };

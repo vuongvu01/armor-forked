@@ -1,13 +1,18 @@
 import { DatePickerEffectiveCommonPropsType } from '../type';
 
-export const useInputProps = ({
-    label,
-    placeholder,
-    disabled,
-    readOnly,
-    error,
-    'data-testid-input': dataTestIdInput,
-}: DatePickerEffectiveCommonPropsType) => {
+type UseCommonDatePickerInputPropsPropsType = {};
+
+export const useCommonDatePickerInputProps = (
+    _: UseCommonDatePickerInputPropsPropsType,
+    {
+        label,
+        placeholder,
+        disabled,
+        readOnly,
+        error,
+        'data-testid-input': dataTestIdInput,
+    }: DatePickerEffectiveCommonPropsType,
+) => {
     return {
         inactive: disabled || readOnly,
         inputProperties: {

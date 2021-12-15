@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/camelcase */
 export const campaigns = [
     {
         attributes: {
