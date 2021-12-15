@@ -1,5 +1,5 @@
 import React, { Fragment, FunctionComponent } from 'react';
-import { useComponentTheme } from '@deliveryhero/armor-system';
+import { useComponentTheme, useSortedList } from '@deliveryhero/armor-system';
 
 import {
     OptionListGroupObjectType,
@@ -61,6 +61,7 @@ export const OptionList: FunctionComponent<OptionListPropsType> = ({
         disabled,
     );
 
+    const sortedOptions = useSortedList(dynamicInternalOptions, 'groupId');
     const displayedGroups: ObjectLiteralType = {};
 
     return internalOptions.length ? (
@@ -108,42 +109,40 @@ export const OptionList: FunctionComponent<OptionListPropsType> = ({
                         />
                     )}
 
-                    {dynamicInternalOptions.map(
-                        (option: OptionObjectType, index) => {
-                            const { value, groupId } = option;
-                            let group: OptionListGroupObjectType | null = null;
-                            if (
-                                groupId &&
-                                groupId in groupIndex &&
-                                !displayedGroups[groupId]
-                            ) {
-                                group = groupIndex[groupId];
-                                displayedGroups[groupId] = true;
-                            }
+                    {sortedOptions.map((option: OptionObjectType, index) => {
+                        const { value, groupId } = option;
+                        let group: OptionListGroupObjectType | null = null;
+                        if (
+                            groupId &&
+                            groupId in groupIndex &&
+                            !displayedGroups[groupId]
+                        ) {
+                            group = groupIndex[groupId];
+                            displayedGroups[groupId] = true;
+                        }
 
-                            return (
-                                <Fragment key={value}>
-                                    {!!group && (
-                                        <OptionListItemGroup
-                                            {...optionListItemGroupProps(group)}
-                                            enableSeparator={index > 0}
-                                            className={classOverride.ItemGroup}
-                                        >
-                                            {group.label}
-                                        </OptionListItemGroup>
-                                    )}
-                                    <OptionListItem
-                                        {...getOptionItemProps(option)}
-                                        className={`${classOverride.Item} ${
-                                            internalValue.includes(value)
-                                                ? 'active'
-                                                : ''
-                                        }`}
-                                    />
-                                </Fragment>
-                            );
-                        },
-                    )}
+                        return (
+                            <Fragment key={value}>
+                                {!!group && (
+                                    <OptionListItemGroup
+                                        {...optionListItemGroupProps(group)}
+                                        enableSeparator={index > 0}
+                                        className={classOverride.ItemGroup}
+                                    >
+                                        {group.label}
+                                    </OptionListItemGroup>
+                                )}
+                                <OptionListItem
+                                    {...getOptionItemProps(option)}
+                                    className={`${classOverride.Item} ${
+                                        internalValue.includes(value)
+                                            ? 'active'
+                                            : ''
+                                    }`}
+                                />
+                            </Fragment>
+                        );
+                    })}
 
                     {enableVirtualization && (
                         <OptionListVirtualPadding

@@ -648,6 +648,38 @@ export const WithGroups = () => {
     );
 };
 
+export const WithUnorderedGroupItems = () => {
+    const CO = [
+        { label: 'fi', value: 'fi', groupId: 'eu' },
+        { label: 'ar', value: 'ar', groupId: 'us' },
+        { label: 'de', value: 'de', groupId: 'eu' },
+        { label: 'te', value: 'te', groupId: 'us' },
+    ];
+    const RG = [
+        { id: 'us', label: 'us' },
+        { id: 'eu', label: 'eu' },
+    ];
+
+    return (
+        <Box paddingBottom={8}>
+            <Dropdown
+                isListExpanded
+                label="Countries"
+                name="countries"
+                options={CO}
+                groups={RG}
+                enableSearchOption
+                enableSelectAllOption
+                multiple
+                width="404px"
+                openTagsCount={2}
+                displaySeparator
+                placeholder="All Countries"
+            />
+        </Box>
+    );
+};
+
 export const WithConfirmationFooter = () => {
     const handleConfirmClick = () => {
         // eslint-disable-next-line no-console

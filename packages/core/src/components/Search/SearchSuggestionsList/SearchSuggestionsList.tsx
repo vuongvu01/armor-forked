@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import PropTypes from 'prop-types';
+import { useSortedList } from '@deliveryhero/armor-system';
 
 import { SearchEmptySuggestionsList } from '../SearchEmptySuggestionsList';
 import { SearchGroupObjectType, SuggestionObjectType } from '../type';
@@ -32,58 +33,59 @@ export const SearchSuggestionsList: FC<SearchSuggestionsListPropsType> = ({
     theme,
     groupClassName,
 }) => {
-    if (options && options.length) {
-        const displayedGroups: ObjectLiteralType = {};
-
-        return options.map((option: SuggestionObjectType, index: number) => {
-            const { label, groupId } = option;
-            let group: SearchGroupObjectType | null = null;
-            if (
-                groupIndex &&
-                groupId &&
-                groupId in groupIndex &&
-                !displayedGroups[groupId]
-            ) {
-                group = groupIndex[groupId];
-                displayedGroups[groupId] = true;
-            }
-
-            return (
-                <>
-                    {!!group && (
-                        <SearchSuggestionListGroup
-                            className={groupClassName}
-                            theme={theme}
-                            enableSeparator={index > 0}
-                        >
-                            {group.label}
-                        </SearchSuggestionListGroup>
-                    )}
-                    <SearchSuggestionItem
-                        key={label}
-                        option={option}
-                        optionIndex={index}
-                        suggestionIndex={index}
-                        handleSuggestionClick={handleSuggestionClick}
-                        additionalInfo={additionalInfo}
-                        renderItemAdditionalInfo={renderItemAdditionalInfo}
-                        icon={icon}
-                        renderItemIcon={renderItemIcon}
-                        cursor={cursor}
-                        searchQuery={searchQuery}
-                        theme={theme}
-                    />
-                </>
-            );
-        });
+    if (!options || !options.length) {
+        return (
+            <SearchEmptySuggestionsList
+                theme={theme}
+                noResultsLabel={noResultsLabel}
+            />
+        );
     }
 
-    return (
-        <SearchEmptySuggestionsList
-            theme={theme}
-            noResultsLabel={noResultsLabel}
-        />
-    );
+    const sortedOptions = useSortedList(options, 'groupId');
+    const displayedGroups: ObjectLiteralType = {};
+
+    return sortedOptions.map((option: SuggestionObjectType, index: number) => {
+        const { label, groupId } = option;
+        let group: SearchGroupObjectType | null = null;
+        if (
+            groupIndex &&
+            groupId &&
+            groupId in groupIndex &&
+            !displayedGroups[groupId]
+        ) {
+            group = groupIndex[groupId];
+            displayedGroups[groupId] = true;
+        }
+
+        return (
+            <>
+                {!!group && (
+                    <SearchSuggestionListGroup
+                        className={groupClassName}
+                        theme={theme}
+                        enableSeparator={index > 0}
+                    >
+                        {group.label}
+                    </SearchSuggestionListGroup>
+                )}
+                <SearchSuggestionItem
+                    key={label}
+                    option={option}
+                    optionIndex={index}
+                    suggestionIndex={index}
+                    handleSuggestionClick={handleSuggestionClick}
+                    additionalInfo={additionalInfo}
+                    renderItemAdditionalInfo={renderItemAdditionalInfo}
+                    icon={icon}
+                    renderItemIcon={renderItemIcon}
+                    cursor={cursor}
+                    searchQuery={searchQuery}
+                    theme={theme}
+                />
+            </>
+        );
+    });
 };
 
 SearchSuggestionsList.propTypes = {
