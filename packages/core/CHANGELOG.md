@@ -1,3 +1,17 @@
+# [1.82.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.81.4...@deliveryhero/armor@1.82.0) (2021-12-16)
+
+
+### Bug Fixes
+
+* **props-parser:** Props-parser updated to be able to process new file structure ([7a07033](https://github.com/deliveryhero/armor/commit/7a07033f34ddc315c1480b991448e9c8178c2265))
+* ESLint rules of hooks plugin swiched from warning to error, complaints resolved ([1f812fa](https://github.com/deliveryhero/armor/commit/1f812fa52743472c5e7738ba6993dcbf3cad5e1a))
+* **dropdown component:** Fix Dropdown grouped options [LD-597] ([ade45f6](https://github.com/deliveryhero/armor/commit/ade45f6763b8564f69c6f070116810a4c8b8f8b4))
+
+
+### Features
+
+* **datepicker:** DateRangePicker, DatePicker: API improvements: isDateAllowed, freeDateRanges, isDateFree, today button, close on select, clear selection  [LD-545] ([135a927](https://github.com/deliveryhero/armor/commit/135a92743ada5bc01d14bebc5becff47694847ba))
+
 ## @deliveryhero/armor [1.81.4](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.81.3...@deliveryhero/armor@1.81.4) (2021-12-14)
 
 
