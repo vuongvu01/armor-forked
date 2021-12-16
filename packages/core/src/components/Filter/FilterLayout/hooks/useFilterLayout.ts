@@ -46,13 +46,13 @@ export const useFilterLayout = <E extends HTMLElement>(
         // in order to update the internal state of the component, we have to use an event bus ever since.
         // nasty, but we need to keep backward compatibility :(
         () => eventBus.dispatch(FILTER_EDITOR_APPLY_FILTER_EVENT),
-        [eventBus],
+        [],
     );
 
     const onClearFilterButtonClick = useCallback(
         // same is for the "Clear all" button
         () => eventBus.dispatch(FILTER_EDITOR_CLEAR_FILTER_EVENT),
-        [eventBus],
+        [],
     );
 
     const filterEditorContextValue = useMemo(

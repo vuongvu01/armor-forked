@@ -20,7 +20,7 @@ export const Nodes: FunctionComponent<Props> = ({ blockName, nodes }) => {
                 };
             }),
         ];
-    }, [nodes]);
+    }, [blockName, nodes]);
 
     return (
         <Table>

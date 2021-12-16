@@ -31,5 +31,5 @@ export const usePanelWidth = (
                 observer.disconnect();
             }
         };
-    }, [containerRef.current, dropdownRef.current]);
+    }, [containerRef, dropdownRef]);
 };

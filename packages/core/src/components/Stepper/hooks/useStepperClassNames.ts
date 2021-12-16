@@ -20,4 +20,4 @@ export const useStepperClassNames = (
         }
 
         return `${baseClassNames} ${stateClassNames.join(' ')}`.trim();
-    }, [classPrefix, className, vertical]);
+    }, [classPrefix, className, vertical, minimal]);

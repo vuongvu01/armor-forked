@@ -32,4 +32,11 @@ export const useOnOptionListUpdate = (
         ) {
             setInternalValue([]);
         }
-    }, [internalOptions, dynamicInternalOptions, setInternalValue]);
+    }, [
+        internalOptions,
+        dynamicInternalOptions,
+        setInternalValue,
+        preserveSelection,
+        searchQuery,
+        isOptionListShown,
+    ]);

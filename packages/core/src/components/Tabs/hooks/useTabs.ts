@@ -41,7 +41,7 @@ export const useTabs = <E extends HTMLDivElement>(
         if (onSwitch && defaultActiveTab) {
             onSwitch(defaultActiveTab);
         }
-    }, []);
+    }, [defaultActiveTab, onSwitch]);
 
     const handleClick = useCallback(
         (
@@ -55,7 +55,7 @@ export const useTabs = <E extends HTMLDivElement>(
                 onSwitch(contentValue);
             }
         },
-        [onSwitch],
+        [onSwitch, setCurrentlyActiveTab],
     );
 
     return {

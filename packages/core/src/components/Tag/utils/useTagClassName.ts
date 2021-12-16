@@ -86,6 +86,6 @@ const useTagClassName = (
                 filled,
             }),
         };
-    }, [classPrefix, className, type, deleteOption]);
+    }, [classPrefix, deleteOption, type, small, filled, className]);
 
 export default useTagClassName;

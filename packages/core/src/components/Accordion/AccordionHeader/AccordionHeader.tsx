@@ -66,7 +66,7 @@ export const AccordionHeader = forwardRef<
         }
 
         return () => {};
-    }, [disabled, isExpanded]);
+    }, [disabled, enterKeyHandler, isExpanded]);
 
     return (
         <AccordionHeaderRoot

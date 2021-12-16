@@ -33,7 +33,7 @@ export const useCommonDatePickerState = <V>(
     // the date we have at the moment
     const currentDateVector = useMemo(
         () => DateVector.createFromLocalDate(currentDate),
-        [dropdownOpen, currentDate],
+        [currentDate],
     );
 
     const currentTimeVector = useMemo(

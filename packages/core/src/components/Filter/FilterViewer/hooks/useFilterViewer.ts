@@ -54,7 +54,7 @@ export const useFilterViewer = <E extends HTMLElement>(
     const onClearFilterConfirmButtonClick = useCallback(() => {
         setDialogCloseFalse();
         setRealValue(initialValue ? cloneDeep(initialValue) : FILTER_EMPTY);
-    }, [setDialogOpenTrue, setRealValue, initialValue]);
+    }, [setDialogCloseFalse, setRealValue, initialValue]);
 
     const typeIndex = useTypeIndex(types);
 

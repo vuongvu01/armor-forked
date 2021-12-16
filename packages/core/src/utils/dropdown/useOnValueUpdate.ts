@@ -75,5 +75,5 @@ export const useOnValueUpdate = (
 
             setInternalValue(nextValue);
         },
-        [onSelect, onChange, setInternalValue, name, initialSelection],
+        [onSelect, onChange, setInternalValue, name],
     );

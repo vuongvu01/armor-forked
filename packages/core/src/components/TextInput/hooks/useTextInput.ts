@@ -100,7 +100,7 @@ export const useTextInput = <E extends HTMLInputElement>(
                 internalInputRef.current!.focus();
             }
         },
-        [internalInputRef, enableFocusOnRootClick, onRootClick],
+        [enableFocusOnRootClick, onRootClick, rootRef, internalInputRef],
     );
 
     const Tag = multiline ? 'textarea' : 'input';

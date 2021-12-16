@@ -142,7 +142,7 @@ export const Basic = () => {
             setStoredValue(value);
             setFilterValue(value);
         },
-        [],
+        [setStoredValue],
     );
 
     return (
@@ -218,7 +218,7 @@ export const EnumProps = () => {
             setStoredValue(value);
             setFilterValue(value);
         },
-        [],
+        [setStoredValue],
     );
 
     return (

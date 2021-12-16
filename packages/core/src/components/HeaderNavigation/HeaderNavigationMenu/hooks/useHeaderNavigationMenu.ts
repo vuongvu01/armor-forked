@@ -47,12 +47,12 @@ export const useHeaderNavigationMenu = <E extends HTMLDivElement>(
     );
 
     useEffect(() => {
-        // eslint-disable-next-line no-unused-expressions
-        internalRef?.current?.addEventListener('click', handleMenuClick);
+        const internalRefCurrent = internalRef?.current;
+        internalRefCurrent?.addEventListener('click', handleMenuClick);
 
         return () => {
             // eslint-disable-next-line no-unused-expressions
-            internalRef?.current?.removeEventListener('click', handleMenuClick);
+            internalRefCurrent?.removeEventListener('click', handleMenuClick);
         };
     }, [internalRef, isExpanded, handleMenuClick]);
 

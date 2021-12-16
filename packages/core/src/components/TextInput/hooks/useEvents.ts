@@ -124,7 +124,7 @@ export const useEvents = ({
                 onFocus(event);
             }
         },
-        [isLabelInside, setLabelInside, onFocus, readOnly],
+        [onFocus],
     );
 
     const onInputBlur = useCallback(
@@ -135,7 +135,7 @@ export const useEvents = ({
                 onBlur(event);
             }
         },
-        [isLabelInside, placeholder, setFocused, setLabelInside, onBlur],
+        [setFocused, onBlur],
     );
 
     const onInputMouseOver = useCallback(
@@ -146,7 +146,7 @@ export const useEvents = ({
                 onMouseOver(event);
             }
         },
-        [],
+        [onMouseOver],
     );
 
     const onInputMouseOut = useCallback(
@@ -157,7 +157,7 @@ export const useEvents = ({
                 onMouseOut(event);
             }
         },
-        [],
+        [onMouseOut],
     );
 
     return {

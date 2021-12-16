@@ -110,7 +110,7 @@ export const useDropdown = <E extends HTMLInputElement>(
         if (enableFooter) {
             setInitialSelection(internalValue);
         }
-    }, [enableFooter]);
+    }, [enableFooter, internalValue]);
 
     useOnOptionListUpdate(
         internalOptions,
@@ -149,7 +149,7 @@ export const useDropdown = <E extends HTMLInputElement>(
         if (enableFooter && onCancelClick) {
             onCancelClick(initialSelection);
         }
-    }, [enableFooter, onCancelClick, initialSelection]);
+    }, [setInternalValue, initialSelection, enableFooter, onCancelClick]);
 
     const handleConfirmClick = useCallback(() => {
         setInitialSelection(internalValue);
@@ -166,6 +166,8 @@ export const useDropdown = <E extends HTMLInputElement>(
         }
     }, [internalInputRef]);
 
+    // todo: fix me
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const focusOnActionItemTrigger = () => {
         const node = internalInputRef.current as any;
 
@@ -202,7 +204,12 @@ export const useDropdown = <E extends HTMLInputElement>(
         setIsOptionListShown(!isOptionListShown);
 
         focusOnActionItemTrigger();
-    }, [setIsOptionListShown, isOptionListShown, disabled]);
+    }, [
+        disabled,
+        setIsOptionListShown,
+        isOptionListShown,
+        focusOnActionItemTrigger,
+    ]);
 
     const { panelProps, arrowProps } = usePopper(dropdownRef, containerRef, {
         align: 'bottom-start',

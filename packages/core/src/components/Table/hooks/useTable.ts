@@ -118,8 +118,10 @@ export const useTable = <E extends HTMLTableElement>(
                 });
             }
         }
-    }, []);
+    }, [rootReference, stickyColumns, tableContextValue]);
 
+    // todo: fix me
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const onLayoutUpdate = useCallback(
         throttle(TABLE_THROTTLE_PERIOD, false, onLayoutUpdateImmediate),
         [onLayoutUpdateImmediate],
@@ -137,7 +139,7 @@ export const useTable = <E extends HTMLTableElement>(
                 win.removeEventListener('resize', onLayoutUpdate);
             }
         };
-    }, []);
+    }, [onLayoutUpdate, onLayoutUpdateImmediate]);
 
     return {
         tableContextValue,

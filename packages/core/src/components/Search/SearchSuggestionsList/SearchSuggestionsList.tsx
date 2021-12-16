@@ -33,6 +33,8 @@ export const SearchSuggestionsList: FC<SearchSuggestionsListPropsType> = ({
     theme,
     groupClassName,
 }) => {
+    const sortedOptions = useSortedList(options ?? [], 'groupId');
+
     if (!options || !options.length) {
         return (
             <SearchEmptySuggestionsList
@@ -42,7 +44,6 @@ export const SearchSuggestionsList: FC<SearchSuggestionsListPropsType> = ({
         );
     }
 
-    const sortedOptions = useSortedList(options, 'groupId');
     const displayedGroups: ObjectLiteralType = {};
 
     return sortedOptions.map((option: SuggestionObjectType, index: number) => {

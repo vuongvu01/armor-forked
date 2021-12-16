@@ -22,5 +22,5 @@ export const useOnRemoveMultiple = (
 
             setInternalValue(nextValue);
         },
-        [setInternalValue, internalValue],
+        [internalValue, onChange, setInternalValue],
     );

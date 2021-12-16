@@ -35,5 +35,14 @@ export const useLinkClassNames = (
         return {
             Root: `${rootClassNames} ${rootStateClassNames.join(' ')}`.trim(),
         };
-    }, [classPrefix, className]);
+    }, [
+        classPrefix,
+        className,
+        small,
+        medium,
+        large,
+        underline,
+        disabled,
+        pressed,
+    ]);
 };

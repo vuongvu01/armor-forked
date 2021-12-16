@@ -511,7 +511,7 @@ export const WithPageNavigationPropsObject = () => {
             enablePageSizeSelector: true,
             onPageSizeChange: (newSize: number) => console.log(newSize),
         }),
-        [page, setPage, onPageChange],
+        [page, onPageChange],
     );
 
     return (

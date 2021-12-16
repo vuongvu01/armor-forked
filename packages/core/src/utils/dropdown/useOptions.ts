@@ -48,4 +48,4 @@ export const useOptions = (
             isFlat,
             internalOptions,
         };
-    }, [options]);
+    }, [formatOption, options]);

@@ -45,7 +45,7 @@ export const useCommonDatePickerSelectionEvents = ({
 
             onDayMouseLeave(vector.convertToLocalDate());
         },
-        [onDayMouseEnter],
+        [onDayMouseLeave],
     );
 
     return {

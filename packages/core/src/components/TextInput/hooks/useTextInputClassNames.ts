@@ -44,4 +44,12 @@ export const useTextInputClassNames = (
             Label: labelClassName,
             LabelBackground: makeBEM(classPrefix, 'LabelBackground'),
         };
-    }, [classPrefix, className, disabled, large, error, isLabelInside]);
+    }, [
+        classPrefix,
+        className,
+        disabled,
+        outlined,
+        large,
+        error,
+        isLabelInside,
+    ]);

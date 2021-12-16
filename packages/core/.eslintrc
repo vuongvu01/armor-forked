@@ -35,8 +35,7 @@
         "no-useless-constructor": "off",
         "import/extensions": "off",
         "react/prop-types": "off",
-        "react-hooks/exhaustive-deps": "warn",
-        "react-hooks/rules-of-hooks": "warn",
+        "react-hooks/exhaustive-deps": "error",
         "@typescript-eslint/camelcase": "warn"
     },
     "env": {

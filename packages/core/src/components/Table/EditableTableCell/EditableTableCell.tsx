@@ -22,7 +22,7 @@ export const EditableTableCell = forwardRef<
         if (edit) {
             setValue(defaultValue);
         }
-    }, [edit]);
+    }, [defaultValue, edit]);
 
     return (
         <TableCell

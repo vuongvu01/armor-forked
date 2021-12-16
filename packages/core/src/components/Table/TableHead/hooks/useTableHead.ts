@@ -33,6 +33,8 @@ export const useTableHead = <E extends HTMLTableSectionElement>(
 
     const rootReference = useRootRef<E>(ref);
 
+    // todo: fix me
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const onLayoutUpdate = useCallback(
         throttle(TABLE_THROTTLE_PERIOD, false, () => {
             if (!stickyHead) {
@@ -63,7 +65,7 @@ export const useTableHead = <E extends HTMLTableSectionElement>(
                 }
             }
         }),
-        [],
+        [rootReference, stickyHead, tableContextValue, updateTableContext],
     );
 
     useEffect(() => {

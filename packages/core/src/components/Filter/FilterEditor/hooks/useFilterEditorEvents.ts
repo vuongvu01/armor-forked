@@ -21,7 +21,7 @@ export const useFilterEditorEvents = (
                 FILTER_EDITOR_APPLY_FILTER_EVENT,
                 onApplyFilterButtonClick,
             );
-    }, [eventBus, onApplyFilterButtonClick]);
+    }, [onApplyFilterButtonClick]);
 
     // same is for the "Clear all" button
     useEffect(() => {
@@ -32,7 +32,7 @@ export const useFilterEditorEvents = (
                 FILTER_EDITOR_CLEAR_FILTER_EVENT,
                 onClearFilterButtonClick,
             );
-    }, [eventBus, onClearFilterButtonClick]);
+    }, [onClearFilterButtonClick]);
 
     return {};
 };
