@@ -61,6 +61,8 @@ export class Run implements CommandInstance {
     ) {}
 
     async execute() {
+        d('Starting');
+
         const {
             stats,
             projectFolder: projectFolderOption,
@@ -167,7 +169,6 @@ export class Run implements CommandInstance {
         if (output) {
             await writeFile(output, new Uint8Array(Buffer.from(data)));
         } else {
-            // eslint-disable-next-line no-console
             console.log(data);
         }
 

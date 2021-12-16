@@ -11,9 +11,8 @@ on:
 jobs:
     test:
         runs-on: ubuntu-latest
-        defaults:
-            run:
-                working-directory: './packages/props-parser'
+        env:
+            GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
 
         steps:
             - uses: actions/checkout@v2
@@ -23,8 +22,11 @@ jobs:
               run: yarn install-peers
 
             - name: Lint
+              working-directory: ./packages/props-parser
               run: yarn lint
             - name: Test
+              working-directory: ./packages/props-parser
               run: yarn test
             - name: Build
+              working-directory: ./packages/props-parser
               run: yarn run build

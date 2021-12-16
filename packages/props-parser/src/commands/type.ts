@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-expressions */
+
 import { Application } from '../lib/application';
 
 export type CommandArgumentsType = Record<string, string>;
@@ -20,7 +22,7 @@ export interface Command {
 
 export function Implements<T>() {
     return <U extends T>(constructor: U) => {
-        // eslint-disable-next-line no-unused-expressions
+        /* eslint-disable-next-line no-unused-expressions */
         constructor;
     };
 }

@@ -3,7 +3,6 @@
   "plugins": [
     "prettier",
     "import",
-
     "@typescript-eslint"
   ],
   "extends": [
@@ -12,7 +11,6 @@
     "prettier",
     "plugin:import/errors",
     "plugin:import/warnings",
-
     "plugin:@typescript-eslint/recommended"
   ],
   "rules": {
@@ -29,12 +27,12 @@
     "@typescript-eslint/ban-ts-ignore": "off",
     "no-useless-constructor": "off",
     "no-console": ["error", {
-      "allow": ["error"]
+      "allow": ["error", "log"]
     }],
-
     "import/extensions": "off",
     "@typescript-eslint/no-empty-function": "off",
-    "@typescript-eslint/ban-ts-comment": "off"
+    "@typescript-eslint/ban-ts-comment": "off",
+    "no-unused-expressions": "off"
   },
   "parserOptions": {
     "ecmaVersion": 6,
@@ -43,7 +41,6 @@
   "globals": {
   },
   "settings": {
-
     "import/resolver": {
       "node": {
         "extensions": [".js", ".ts", ".tsx"]
