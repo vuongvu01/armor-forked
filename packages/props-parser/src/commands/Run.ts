@@ -80,6 +80,7 @@ export class Run implements CommandInstance {
         try {
             await stat(projectFolder);
         } catch (error) {
+            // @ts-ignore
             if (error.code === 'ENOENT') {
                 console.error(`No such file or directory: ${projectFolder}`);
                 return;
