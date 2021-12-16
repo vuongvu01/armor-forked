@@ -1,3 +1,18 @@
+# @deliveryhero/armor-icons [1.20.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.19.0...@deliveryhero/armor-icons@1.20.0) (2021-12-16)
+
+
+### Features
+
+* **datepicker:** DateRangePicker, DatePicker: API improvements: isDateAllowed, freeDateRanges, isDateFree, today button, close on select, clear selection  [LD-545] ([135a927](https://github.com/deliveryhero/armor/commit/135a92743ada5bc01d14bebc5becff47694847ba))
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor-system:** upgraded to 1.1.0
+
 # @deliveryhero/armor-icons [1.19.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.18.0...@deliveryhero/armor-icons@1.19.0) (2021-12-03)
 
 
