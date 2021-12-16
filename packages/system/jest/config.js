@@ -12,4 +12,5 @@ module.exports = {
         '^.+\\.tsx?$': 'ts-jest',
     },
     testRegex: '\\.test\\.tsx?$',
+    testEnvironment: 'jsdom'
 };

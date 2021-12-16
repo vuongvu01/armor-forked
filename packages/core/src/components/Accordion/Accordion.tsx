@@ -62,7 +62,7 @@ export const Accordion = forwardRef<HTMLDivElement, AccordionPropsType>(
                 // todo: derived state anti-pattern, fix
                 setIsExpanded(expanded);
             }
-        }, [expanded]);
+        }, [expanded, isExpanded]);
 
         const contextValue = useMemo(
             () => ({

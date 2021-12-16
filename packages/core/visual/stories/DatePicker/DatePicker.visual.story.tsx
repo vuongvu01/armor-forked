@@ -1,10 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { DATE_PICKER_INFINITY, DatePicker } from '../../../src/components';
+import { DateVector } from '../../../src/components/DatePicker/utils/DateVector';
 
 export default {
     title: 'DatePicker',
     component: DatePicker,
+};
+
+const makeDateString = (date: Date) => {
+    const vect = DateVector.createFromLocalDate(date);
+
+    return [vect.month, vect.day, vect.year].join('-');
 };
 
 export const Basic = () => <DatePicker />;
@@ -60,14 +67,15 @@ export const WithAllEnabled = () => {
             dateValue={localDate}
             enableTimePicker
             enableMinWidthAutoCorrection={false}
-            enableActionButtons
+            enableApplyButton
             enableTodayButton
+            enableClearSelectionButton
             open
         />
     );
 };
 
-export const WithTimeButtonEnabledActionsDisabled = () => {
+export const WithTodayButtonEnabledOnly = () => {
     const localDate = new Date(2021, 7, 10, 10, 10, 20, 100);
 
     return (
@@ -77,6 +85,48 @@ export const WithTimeButtonEnabledActionsDisabled = () => {
             enableTimePicker
             enableMinWidthAutoCorrection={false}
             enableTodayButton
+        />
+    );
+};
+
+export const WithApplyButtonEnabledOnly = () => {
+    const localDate = new Date(2021, 7, 10, 10, 10, 20, 100);
+
+    return (
+        <DatePicker
+            open
+            dateValue={localDate}
+            enableTimePicker
+            enableMinWidthAutoCorrection={false}
+            enableApplyButton
+        />
+    );
+};
+
+export const WithClearSelectionButtonEnabledOnly = () => {
+    const localDate = new Date(2021, 7, 10, 10, 10, 20, 100);
+
+    return (
+        <DatePicker
+            open
+            dateValue={localDate}
+            enableTimePicker
+            enableMinWidthAutoCorrection={false}
+            enableClearSelectionButton
+        />
+    );
+};
+
+export const WithTakenDays = () => {
+    const localDate = new Date(2021, 7, 10, 10, 10, 20, 100);
+
+    return (
+        <DatePicker
+            open
+            dateValue={localDate}
+            enableTimePicker
+            enableMinWidthAutoCorrection={false}
+            isDateFree={dateItem => makeDateString(dateItem) !== '7-12-2021'}
         />
     );
 };

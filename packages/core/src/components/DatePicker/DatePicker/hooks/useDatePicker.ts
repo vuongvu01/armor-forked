@@ -4,31 +4,31 @@ import { useControlledState } from '@deliveryhero/armor-system';
 import { DatePickerPropsType } from '../type';
 import { DateValueType } from '../../type';
 import { RefType } from '../../../../type';
-import { useDatePickerPanel } from '../../hooks/useDatePickerPanel';
-import { useDatePickerState } from '../../hooks/useDatePickerState';
-import { useDatePickerCallbacks } from '../../hooks/useDatePickerCallbacks';
+import { useCommonDatePickerPanel } from '../../hooks/useCommonDatePickerPanel';
+import { useCommonDatePickerState } from '../../hooks/useCommonDatePickerState';
+import { useCommonDatePickerCallbacks } from '../../hooks/useCommonDatePickerCallbacks';
 import { DateVectorRange } from '../../utils/DateVectorRange';
 import { useDatePickerSelectionEvents } from './useDatePickerSelectionEvents';
-import { useDatePickerAllowedDates } from '../../hooks/useDatePickerAllowedDates';
+import { useCommonDatePickerAllowedDates } from '../../hooks/useCommonDatePickerAllowedDates';
 import { externalizeValue } from '../utils/externalizeValue';
-import { useFormattedValue } from './useFormattedValue';
-import { useInputProps } from '../../hooks/useInputProps';
+import { useDatePickerFormattedValue } from './useDatePickerFormattedValue';
+import { useCommonDatePickerInputProps } from '../../hooks/useCommonDatePickerInputProps';
+import { useDatePickerTodayButton } from './useDatePickerTodayButton';
+import { useCommonDatePickerActionButtons } from '../../hooks/useCommonDatePickerActionButtons';
+import { useCommonDatePickerCompatibility } from '../../hooks/useCommonDatePickerCompatibility';
 
 export const useDatePicker = <E extends HTMLDivElement>(
-    {
+    props: DatePickerPropsType,
+    ref: RefType<E>,
+) => {
+    const {
         enableTimePicker,
         enableMinWidthAutoCorrection,
         defaultDateValue,
         dateValue,
         onDateValueChange,
-        formatDateTime,
-        onDayMouseEnter,
-        onDayMouseLeave,
-        enableTodayButton,
-        ...restProps
-    }: DatePickerPropsType,
-    ref: RefType<E>,
-) => {
+    } = props;
+
     // controlled and uncontrolled state: dateValue, defaultDateValue and onDateValueChange mapped to internalValue
     const [externalValue, setExternalValue] = useControlledState<
         DatePickerPropsType['dateValue']
@@ -40,53 +40,49 @@ export const useDatePicker = <E extends HTMLDivElement>(
         [externalValue],
     );
 
+    const { enableApplyButton } = useCommonDatePickerCompatibility(props);
+
     const {
         rootRef,
         inputRef,
-
-        reallyOpen,
-        toggleOpen,
-        setClose,
-
+        dropdownOpen,
+        toggleDropdown,
+        closeDropdown,
         arrowProps,
         dropdownProps,
         portalProps,
-        restProps: panelRestProps,
-    } = useDatePickerPanel<DateValueType, E>(restProps, ref);
+    } = useCommonDatePickerPanel<DateValueType, E>({ ref }, props);
 
     const {
         dirtyInternalValueVector,
         setDirtyInternalValueVector,
-
         timeSelectorValue,
         setTimeSelectorValue,
-
         displayedDateVector,
         setDisplayedDateVector,
-
         currentDateVector,
-
         monthYearSelectorOpen,
         onMonthYearSelectorToggle,
-
-        restProps: stateRestProps,
-    } = useDatePickerState<DateValueType>(
-        { reallyOpen: !!reallyOpen, internalValue },
-        panelRestProps,
-    );
-
-    const { isDateAllowed } = useDatePickerAllowedDates<DateValueType>(
-        { reallyOpen: !!reallyOpen, currentDateVector },
-        restProps,
+    } = useCommonDatePickerState<DateValueType>(
+        { dropdownOpen, internalValue },
+        props,
     );
 
     const {
-        onDateTimeChange, // should be called to update the value (internal + external)
+        isDateAllowed,
+        isDateFree,
+        isDateSelectable,
+    } = useCommonDatePickerAllowedDates<DateValueType>(
+        { dropdownOpen, currentDateVector },
+        props,
+    );
+
+    const {
+        onDateTimeChange,
         onTimeSelectorValueChange,
         applyValue,
-        enableActionButtons,
-        restProps: callbacksRestProps,
-    } = useDatePickerCallbacks<DateValueType>(
+        clearValue,
+    } = useCommonDatePickerCallbacks<DateValueType>(
         {
             setDirtyInternalValueVector,
             setExternalValue,
@@ -94,30 +90,60 @@ export const useDatePicker = <E extends HTMLDivElement>(
             setTimeSelectorValue,
             dirtyInternalValueVector,
             externalizeValue,
+            enableApplyButton,
         },
-        stateRestProps,
+        props,
     );
 
-    const selectionEventProps = useDatePickerSelectionEvents({
-        value: dirtyInternalValueVector,
-        onChange: onDateTimeChange,
-        onDayMouseEnter,
-        onDayMouseLeave,
-    });
+    const { onTodayButtonClick } = useDatePickerTodayButton(
+        {
+            currentDateVector,
+            onDateTimeChange,
+            setDisplayedDateVector,
+        },
+        props,
+    );
 
-    const formattedValue = useFormattedValue({
-        internalValue,
-        enableTimePicker,
-        formatDateTime,
-    });
+    const {
+        showActions,
+        actionBarProps,
+        enableCloseOnSelect,
+    } = useCommonDatePickerActionButtons(
+        {
+            applyValue,
+            clearValue,
+            closeDropdown,
+            enableApplyButton,
+        },
+        props,
+    );
 
-    const { inputProperties, inactive } = useInputProps(restProps);
+    const selectionEventProps = useDatePickerSelectionEvents(
+        {
+            value: dirtyInternalValueVector,
+            onChange: onDateTimeChange,
+            isDateSelectable,
+            enableCloseOnSelect,
+            closeDropdown,
+        },
+        props,
+    );
 
-    const showActions = !!(enableActionButtons || enableTodayButton);
+    const formattedValue = useDatePickerFormattedValue(
+        {
+            internalValue,
+        },
+        props,
+    );
+
+    const { inputProperties, inactive } = useCommonDatePickerInputProps(
+        {},
+        props,
+    );
 
     return {
         rootProps: {
-            ...callbacksRestProps,
+            ...props,
             enableTimePicker,
             enableMinWidthAutoCorrection,
             ref: rootRef,
@@ -126,7 +152,7 @@ export const useDatePicker = <E extends HTMLDivElement>(
             ...inputProperties,
             ref: inputRef,
             value: formattedValue,
-            onRootClick: inactive ? undefined : toggleOpen,
+            onRootClick: inactive ? undefined : toggleDropdown,
         },
         portalProps,
         dropdownProps,
@@ -137,22 +163,17 @@ export const useDatePicker = <E extends HTMLDivElement>(
             monthYearSelectorOpen,
             onMonthYearToggleClick: onMonthYearSelectorToggle,
         },
-        actionBarProps: {
-            enableApplyButtons: !!enableActionButtons,
-            applyValue, // to copy dirty value to actual
-            setClose, // to close the dropdown
-        },
         daySelectorProps: {
             displayedDateVector, // to indicate the currently displayed year and month
             dirtyInternalValueVector, // to indicate the selected day
             currentDateVector, // to indicate the current day in the matrix
             isDateAllowed,
+            isDateFree,
             ...selectionEventProps,
         },
         monthYearSelectorProps: {
             displayedDateVector, // to indicate the currently displayed year and month
             onDisplayedDateVectorChange: setDisplayedDateVector, // to change the currently displayed year and month
-
             toggleMonthYearSelector: onMonthYearSelectorToggle,
         },
         timeSelectorProps: {
@@ -161,38 +182,14 @@ export const useDatePicker = <E extends HTMLDivElement>(
         },
 
         displayMonthYearSelector: monthYearSelectorOpen,
-        open: reallyOpen,
+        open: dropdownOpen,
 
-        showActions,
-        showTodayButton: !!enableTodayButton,
         showTimePicker: !!enableTimePicker,
 
-        getTodayButtonProps: () => {
-            const onTodayButtonClick = () => {
-                const newVector = new DateVectorRange(
-                    currentDateVector.clone(),
-                    currentDateVector.clone(),
-                );
-                onDateTimeChange(newVector); // change value
-                if (newVector.dateStart) {
-                    setDisplayedDateVector(newVector.dateStart); // update the display
-                }
-            };
-
-            if (enableActionButtons) {
-                return {
-                    tertiary: true,
-                    paddingX: 1,
-                    margin: -1,
-                    onClick: onTodayButtonClick,
-                };
-            }
-
-            return {
-                secondary: true,
-                wide: true,
-                onClick: onTodayButtonClick,
-            };
+        showActions,
+        actionBarProps: {
+            ...actionBarProps,
+            onTodayButtonClick,
         },
     };
 };

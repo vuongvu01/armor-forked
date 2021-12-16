@@ -1,6 +1,6 @@
 /* eslint-disable no-console,import/no-unresolved */
 
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useCallback } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { add } from 'date-fns';
 import { makeTheme, ThemeProvider } from '@deliveryhero/armor-system';
@@ -11,6 +11,7 @@ import { Box } from '../../Box';
 import { Button } from '../../Button';
 import { DateVector } from '../utils/DateVector';
 import { FormField } from '../../FormField';
+import { makeDateString } from '../__test__/util';
 
 export default {
     title: 'Components/DateRangePicker',
@@ -273,6 +274,79 @@ export const Errored = () => {
     return (
         <Box paddingTop={20} paddingLeft={100}>
             <DateRangePicker data-testid-input="input42" error />
+        </Box>
+    );
+};
+
+export const WithDisabledDates = () => {
+    const [dateRange, setDateRange] = useState<[Date, Date] | undefined | null>(
+        [new Date(), new Date()],
+    );
+
+    const onDateValueChange = (range?: [Date, Date] | null) => {
+        setDateRange(range);
+        if (range) {
+            console.log(`${range[0].toString()} ${range[1].toString()}`);
+        }
+    };
+
+    const map = useMemo<Record<string, boolean>>(() => ({}), []);
+    const freeMap = useMemo<Record<string, boolean>>(() => ({}), []);
+
+    const isDateAllowed = useCallback(
+        (date: Date) => {
+            const dateString = makeDateString(date);
+            if (!(dateString in map)) {
+                map[dateString] = Math.random() * 1000 > 500;
+            }
+
+            return map[dateString];
+        },
+        [map],
+    );
+
+    const isDateFree = useCallback(
+        (date: Date) => {
+            const dateString = makeDateString(date);
+            if (!(dateString in freeMap)) {
+                if (map[dateString]) {
+                    freeMap[dateString] = true;
+                } else {
+                    freeMap[dateString] = Math.random() * 1000 > 500;
+                }
+            }
+
+            return freeMap[dateString];
+        },
+        [map, freeMap],
+    );
+
+    return (
+        <Box paddingTop={20} paddingLeft={100}>
+            <DateRangePicker
+                dateValue={dateRange}
+                onDateValueChange={onDateValueChange}
+                isDateAllowed={isDateAllowed}
+                isDateFree={isDateFree}
+            />
+        </Box>
+    );
+};
+
+export const WithClearButton = () => {
+    const [dateRange, setDateRange] = useState<[Date, Date] | undefined | null>(
+        [new Date(), new Date()],
+    );
+
+    return (
+        <Box paddingTop={20} paddingLeft={100}>
+            <DateRangePicker
+                dateValue={dateRange}
+                onDateValueChange={setDateRange}
+                enableCloseOnSelect
+                enableClearSelectionButton
+                enableActionButtons
+            />
         </Box>
     );
 };

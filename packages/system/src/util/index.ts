@@ -16,4 +16,5 @@ export * from './PortalToBody';
 export * from './compatibility';
 export * from './eventBus';
 export * from './consoleWarn';
+export * from './throwError';
 export * from './getCompatiblePropValue';

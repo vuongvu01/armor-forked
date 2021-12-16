@@ -55,5 +55,16 @@ export const useTypographyClassNames = (
         return {
             Root: `${rootClassNames} ${rootStateClassNames.join(' ')}`.trim(),
         };
-    }, [classPrefix, className]);
+    }, [
+        classPrefix,
+        className,
+        paragraph,
+        label,
+        pageTitle,
+        sectionTitle,
+        subSectionTitle,
+        large,
+        medium,
+        small,
+    ]);
 };

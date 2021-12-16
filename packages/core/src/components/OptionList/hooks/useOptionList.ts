@@ -86,6 +86,8 @@ export const useOptionList = ({
         enableSearchOption,
     );
 
+    // todo: fix me
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const resetListState = () => {
         setSearchQuery('');
         onSearchChange();
@@ -115,13 +117,14 @@ export const useOptionList = ({
         },
         [
             internalOptions,
+            multiple,
+            blurInput,
             onValueUpdate,
             internalValue,
-            multiple,
             options,
             isFlat,
-            blurInput,
-            setSearchQuery,
+            setIsOptionListShown,
+            resetListState,
         ],
     );
 
@@ -140,7 +143,7 @@ export const useOptionList = ({
         onChange,
     );
 
-    useEffect(() => onSearchChange(), [searchQuery]);
+    useEffect(() => onSearchChange(), [onSearchChange, searchQuery]);
 
     const handleToggleAll = () => onToggleAll();
 
@@ -150,7 +153,7 @@ export const useOptionList = ({
 
             setSearchQuery(newSearchQuery);
         },
-        [setSearchQuery, setSearchQuery],
+        [setSearchQuery],
     );
 
     const handleToggleGroup = useCallback(

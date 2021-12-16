@@ -45,5 +45,11 @@ export const useOnSearchQueryChange = (
             }
             return () => {};
         },
-        [setSearchQuery, internalOptions, internalValue, defaultSearchQuery],
+        [
+            defaultSearchQuery,
+            enableSearchOption,
+            setSearchQuery,
+            internalOptions,
+            setInternalOptions,
+        ],
     );

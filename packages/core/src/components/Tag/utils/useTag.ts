@@ -44,7 +44,7 @@ export const useTag = <E extends HTMLDivElement>(
                 onDeselect(code);
             }
         },
-        [onClose, onDeselect],
+        [code, disabled, onClose, onDeselect],
     );
 
     return {

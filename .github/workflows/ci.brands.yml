@@ -7,6 +7,7 @@ on:
             - master
         paths:
             - 'packages/brands/**'
+            - 'packages/core/**'
 
 jobs:
     test:

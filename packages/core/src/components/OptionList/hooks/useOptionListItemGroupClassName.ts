@@ -4,7 +4,6 @@ import { appendClassName, makeBEM } from '@deliveryhero/armor-system';
 export const useOptionListItemGroupClassName = (
     classPrefix: string,
     className?: string,
-    disabled?: boolean,
 ) =>
     useMemo(
         () => ({
@@ -12,5 +11,5 @@ export const useOptionListItemGroupClassName = (
             Checkbox: makeBEM(classPrefix, 'Checkbox'),
             Typography: makeBEM(classPrefix, 'Typography'),
         }),
-        [classPrefix, className, disabled],
+        [classPrefix, className],
     );

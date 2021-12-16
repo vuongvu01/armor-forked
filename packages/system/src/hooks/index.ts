@@ -15,3 +15,4 @@ export * from './useScrollObserver';
 export * from './useVirtualization';
 export * from './useDetectClickOutsideComponent';
 export * from './useDetectEscapeKeyPressed';
+export * from './useSortedList';

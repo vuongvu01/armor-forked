@@ -82,4 +82,8 @@ export const useOnPopulateTagsAutomatically = (
         internalOpenTagsCount,
         isMaxWidthReached,
         singleLine,
+        beforeSectionContainerRef,
+        beforeSectionWrapperRef,
+        setInternalOpenTagsCount,
+        setIsMaxWidthReached,
     ]);

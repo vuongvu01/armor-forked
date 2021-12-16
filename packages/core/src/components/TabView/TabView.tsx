@@ -19,11 +19,11 @@ export const TabView: FC<TabViewPropsType> = ({
     className,
     ...restProps
 }) => {
+    const theme = useComponentTheme(TAB_VIEW_CLASS_PREFIX);
+
     if (typeof value === 'undefined' || typeof selectedValue === 'undefined') {
         return null;
     }
-
-    const theme = useComponentTheme(TAB_VIEW_CLASS_PREFIX);
 
     return value === selectedValue ? (
         <TabViewRoot

@@ -93,5 +93,11 @@ export const useOnToggleGroup = (
 
             setInternalValue?.(updatedOptionValues);
         },
-        [setInternalValue, internalOptions, internalValue, internalGroups],
+        [
+            internalOptions,
+            internalValue,
+            internalGroups,
+            onChange,
+            setInternalValue,
+        ],
     );

@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { usePopper } from '@deliveryhero/armor-system';
 
-export const useDatePickerPopper = () => {
+export const useCommonDatePickerPopper = () => {
     const dropdownRef = useRef<HTMLDivElement>(null);
     const triggerRef = useRef<HTMLInputElement>(null);
 

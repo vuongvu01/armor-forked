@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/camelcase */
 import {
     componentSpacing01,
     componentSpacing02,

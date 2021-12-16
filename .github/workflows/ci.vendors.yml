@@ -21,6 +21,10 @@ jobs:
             - name: Install peers (common)
               run: yarn install-peers
 
+            - name: Build (system)
+              working-directory: ./packages/system
+              run: yarn build:cjs
+
             - name: Build (icons)
               working-directory: ./packages/icons
               run: yarn build:cjs

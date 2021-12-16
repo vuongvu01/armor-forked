@@ -42,7 +42,7 @@ export const useDatePickerTimeSelector = <E extends HTMLDivElement>(
             const newHour = event.target.value;
             setHourValue(newHour);
         },
-        [value12],
+        [setHourValue],
     );
 
     const onMinuteInputChange = useCallback(
@@ -50,7 +50,7 @@ export const useDatePickerTimeSelector = <E extends HTMLDivElement>(
             const newMinute = event.target.value;
             setMinuteValue(newMinute);
         },
-        [],
+        [setMinuteValue],
     );
 
     const onTimeInputFocus = useCallback(

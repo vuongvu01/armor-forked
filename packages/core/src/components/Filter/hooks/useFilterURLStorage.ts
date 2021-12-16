@@ -36,7 +36,7 @@ export const useFilterURLStorage = <F extends FilterConditionValueType>(
 
             win.history.replaceState({}, '', serializedQuery || '?');
         },
-        [win, filterId],
+        [filterId],
     );
 
     const initialValue = useMemo(() => {
@@ -56,7 +56,7 @@ export const useFilterURLStorage = <F extends FilterConditionValueType>(
         }
 
         return result;
-    }, [win]);
+    }, [filterId]);
 
     return [initialValue, setValue];
 };

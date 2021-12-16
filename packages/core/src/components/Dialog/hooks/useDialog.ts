@@ -104,7 +104,7 @@ export const useDialog = <E extends HTMLElement>(
 
             onCloseInternal();
         },
-        [onClose, onCloseButtonClick, onCloseInternal],
+        [onCloseButtonClick, onCloseInternal],
     );
 
     const onKeyDown = useCallback(

@@ -64,28 +64,30 @@ export const useSearch = <E extends HTMLInputElement>(
 
     useEffect(() => {
         setSearchQuery(defaultQuery);
-    }, [defaultQuery]);
+    }, [defaultQuery, setSearchQuery]);
 
-    const setIsOptionsListShown = (isHidden = false) => {
-        setIsSuggestionsListShown(isHidden);
-        if (cursor !== initialCursor) {
-            setCursor(initialCursor);
-        }
-    };
+    const setIsOptionsListShown = useCallback(
+        (isHidden = false) => {
+            setIsSuggestionsListShown(isHidden);
+            if (cursor !== initialCursor) {
+                setCursor(initialCursor);
+            }
+        },
+        [cursor],
+    );
 
     // todo: setting isCondition to true is not the right approach, fix
     useDetectClickOutsideComponent(containerRef, setIsOptionsListShown, true);
 
     const scrollToCurrent = useCallback(() => {
-        const focused = document.querySelector('.suggestion-focused');
+        setTimeout(() => {
+            const focused = document.querySelector('.suggestion-focused');
 
-        if (focused) {
-            focused.scrollIntoView({ block: 'center' });
-        }
+            if (focused) {
+                focused.scrollIntoView({ block: 'center' });
+            }
+        }, 0);
     }, []);
-
-    const focusOnHighlightedSuggestion = () =>
-        setTimeout(() => scrollToCurrent(), 0);
 
     const handleArrowDownClick = useCallback(() => {
         if (options && options.length) {
@@ -98,10 +100,15 @@ export const useSearch = <E extends HTMLInputElement>(
                         : 0,
                 );
 
-                focusOnHighlightedSuggestion();
+                scrollToCurrent();
             }
         }
-    }, [options, isSuggestionsListShown]);
+    }, [
+        options,
+        isSuggestionsListShown,
+        setIsOptionsListShown,
+        scrollToCurrent,
+    ]);
 
     const handleArrowUpClick = useCallback(() => {
         if (options && options.length) {
@@ -112,10 +119,15 @@ export const useSearch = <E extends HTMLInputElement>(
                     prevState > 0 ? prevState - 1 : options.length - 1,
                 );
 
-                focusOnHighlightedSuggestion();
+                scrollToCurrent();
             }
         }
-    }, [options, isSuggestionsListShown]);
+    }, [
+        options,
+        isSuggestionsListShown,
+        setIsOptionsListShown,
+        scrollToCurrent,
+    ]);
 
     const handleEnterClick = useCallback(() => {
         if (options && options.length) {
@@ -128,7 +140,7 @@ export const useSearch = <E extends HTMLInputElement>(
 
             setIsOptionsListShown();
         }
-    }, [options, onItemSelect, cursor]);
+    }, [options, setSearchQuery, cursor, onItemSelect, setIsOptionsListShown]);
 
     const searchInputKeyHandler = useCallback(
         (event: KeyboardEvent) => {
@@ -152,24 +164,26 @@ export const useSearch = <E extends HTMLInputElement>(
         },
         [
             internalInputRef,
-            options,
             isSuggestionsListShown,
-            cursor,
-            onItemSelect,
+            setIsOptionsListShown,
+            handleArrowDownClick,
+            handleArrowUpClick,
+            handleEnterClick,
         ],
     );
 
     useEffect(() => {
         if (!disabled) {
+            const internalInputRefCurrent = internalInputRef?.current;
             // eslint-disable-next-line no-unused-expressions
-            internalInputRef?.current?.addEventListener(
+            internalInputRefCurrent?.addEventListener(
                 'keydown',
                 searchInputKeyHandler,
             );
 
             return () => {
                 // eslint-disable-next-line no-unused-expressions
-                internalInputRef?.current?.removeEventListener(
+                internalInputRefCurrent?.removeEventListener(
                     'keydown',
                     searchInputKeyHandler,
                 );
@@ -179,7 +193,16 @@ export const useSearch = <E extends HTMLInputElement>(
         setSearchQuery(defaultQuery);
 
         return () => {};
-    }, [disabled, internalInputRef, cursor, options, isSuggestionsListShown]);
+    }, [
+        disabled,
+        internalInputRef,
+        cursor,
+        options,
+        isSuggestionsListShown,
+        setSearchQuery,
+        defaultQuery,
+        searchInputKeyHandler,
+    ]);
 
     const handleChange = useCallback(
         (event: ChangeEvent<HTMLInputElement>) => {
@@ -229,7 +252,7 @@ export const useSearch = <E extends HTMLInputElement>(
                 setIsOptionsListShown();
             }
         },
-        [onItemSelect],
+        [onItemSelect, options, setIsOptionsListShown, setSearchQuery],
     );
 
     const groupIndex = useMemo<SearchGroupObjectIndexType>(() => {

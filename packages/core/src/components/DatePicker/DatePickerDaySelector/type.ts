@@ -4,7 +4,6 @@ import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../../type';
-import { ObjectLiteralType } from '../../../type';
 import { DateVectorStructureType } from '../utils/type';
 import { DateVector } from '../utils/DateVector';
 import { DateVectorRange } from '../utils/DateVectorRange';
@@ -20,6 +19,7 @@ export type DatePickerDaySelectorRangeItemType = {
 type DaySelectionStatus = {
     selected: boolean;
     allowed: boolean;
+    free: boolean;
     leftEnd: boolean;
     rightEnd: boolean;
     current: boolean;
@@ -30,13 +30,14 @@ type DaySelectionStatus = {
 type DatePickerDaySelectorEffectivePropsType = {
     selectionStartCandidate: DateVector | null;
     selectionEndCandidate: DateVector | null;
-    dayButtonProps: ObjectLiteralType;
+    dayButtonProps: Record<string, any>;
 
     currentDateVector: DateVector;
     dirtyInternalValueVector: DateVectorRange;
 
     displayedDateVector: DateVector;
     isDateAllowed: (date: DateVector) => boolean;
+    isDateFree: (date: DateVector) => boolean;
 
     // add other custom properties here
 } & HTMLAttributes<HTMLDivElement>; // includes all HTML Div properties

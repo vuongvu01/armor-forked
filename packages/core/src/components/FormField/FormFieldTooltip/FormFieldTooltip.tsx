@@ -26,7 +26,6 @@ export const FormFieldTooltip = forwardRef<
     const classNameComponents = useFormFieldTooltipClassNames(
         FORM_FIELD_TOOLTIP_CLASS_PREFIX,
         className,
-        visible,
     );
 
     return (

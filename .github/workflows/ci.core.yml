@@ -35,7 +35,7 @@ jobs:
             - name: Test
               working-directory: ./packages/core
               run: yarn run test
-            - name: Test visual (install)
+            - name: Test visual install
               working-directory: ./packages/core/visual
               run: yarn install
             - name: Test visual

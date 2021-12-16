@@ -59,8 +59,6 @@ export const useDataTable = (
         ...rowSorting.restProps,
     });
 
-    let actionSheetLabel = '' as string | undefined;
-
     const stickyColumns = useDataTableStickyColumns(columnsSafe, {
         enableRowSelection,
         ...rowSelection.restProps,
@@ -91,13 +89,10 @@ export const useDataTable = (
         },
     );
 
-    useMemo(() => {
-        actionSheetLabel = formatActionSheetLabel(
-            rowSelection.selectedRowIdsActual,
-        );
-
-        return actionSheetLabel;
-    }, [rowSelection]);
+    const actionSheetLabel = useMemo(
+        () => formatActionSheetLabel(rowSelection.selectedRowIdsActual),
+        [rowSelection],
+    );
 
     const columnCount = columnsSafe.length + (enableRowSelection ? 1 : 0);
     const enableFooter = pageNavigation.result.enablePageNavigation;

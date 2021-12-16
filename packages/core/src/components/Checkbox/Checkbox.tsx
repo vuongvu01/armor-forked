@@ -63,7 +63,7 @@ export const Checkbox = forwardRef<
 
             setNativelyChecked(event.target.checked);
         },
-        [onChange, setNativelyChecked, nativelyChecked],
+        [onChange, setNativelyChecked],
     );
 
     // this is only here to force SelectorLabel to use Typography

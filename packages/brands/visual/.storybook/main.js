@@ -1,9 +1,9 @@
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 module.exports = {
-    stories: ['../**/*.visual.story.tsx'],
+    stories: ['../stories/**/*.visual.story.tsx'],
     addons: ['@storybook/addon-viewport'],
-    webpackFinal: async config => {
+    webpackFinal: async (config) => {
         config.module.rules.push({
             test: /\.(ts|tsx)$/,
             use: [

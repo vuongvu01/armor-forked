@@ -100,7 +100,7 @@ export const DataTable = forwardRef<HTMLDivElement, DataTablePropsType>(
                 unselectRows,
                 data,
             };
-        }, [selectedRowIds, data]);
+        }, [selectedRowIds, unselectRows, data]);
 
         return (
             <DataTableContext.Provider value={contextValue}>

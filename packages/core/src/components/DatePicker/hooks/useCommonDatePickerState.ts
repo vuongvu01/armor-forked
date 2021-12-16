@@ -9,17 +9,16 @@ import { DateVectorRange } from '../utils/DateVectorRange';
 import { DateVector } from '../utils/DateVector';
 import { TimeVector24 } from '../utils/TimeVector24';
 
-type DatePickerStateType = {
-    reallyOpen: boolean;
+type UseCommonDatePickerStatePropsType = {
+    dropdownOpen: boolean;
     internalValue: DateVectorRange;
 };
 
-export const useDatePickerState = <V>(
-    { reallyOpen, internalValue }: DatePickerStateType,
+export const useCommonDatePickerState = <V>(
+    { dropdownOpen, internalValue }: UseCommonDatePickerStatePropsType,
     {
         defaultMonthYearSelectorOpen,
         currentDate,
-        ...restProps
     }: DatePickerEffectiveGenericPropsType<V> &
         DatePickerEffectiveCommonPropsType,
 ) => {
@@ -34,7 +33,7 @@ export const useDatePickerState = <V>(
     // the date we have at the moment
     const currentDateVector = useMemo(
         () => DateVector.createFromLocalDate(currentDate),
-        [reallyOpen, currentDate],
+        [currentDate],
     );
 
     const currentTimeVector = useMemo(
@@ -83,7 +82,5 @@ export const useDatePickerState = <V>(
 
         monthYearSelectorOpen,
         onMonthYearSelectorToggle,
-
-        restProps,
     };
 };

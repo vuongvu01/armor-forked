@@ -1,13 +1,21 @@
+type EventBusEventListenerType = (event: CustomEvent<unknown>) => void;
+
 /**
  * @internal
  */
 export const eventBus = {
-    on(event: string, callback: EventListenerOrEventListenerObject): void {
-        document.addEventListener(event, callback);
+    on(event: string, callback: EventBusEventListenerType): void {
+        document.addEventListener(
+            event,
+            callback as EventListenerOrEventListenerObject,
+        );
     },
 
-    off(event: string, callback: EventListenerOrEventListenerObject): void {
-        document.removeEventListener(event, callback);
+    off(event: string, callback: EventBusEventListenerType): void {
+        document.removeEventListener(
+            event,
+            callback as EventListenerOrEventListenerObject,
+        );
     },
 
     dispatch(event: string, data?: unknown): void {

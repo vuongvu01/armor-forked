@@ -34,141 +34,143 @@ const expandableSectionColumns = [
 ];
 
 describe('<DataTable />', () => {
-    afterEach(async () => {
-        cleanup();
-        await cleanupHooks();
-    });
+    describe('Expansion section', () => {
+        afterEach(async () => {
+            cleanup();
+            await cleanupHooks();
+        });
 
-    it('should support expandable section', async () => {
-        const { container, getByText } = render(
-            <DataTable
-                columns={expandableSectionColumns}
-                data={dataSource}
-                renderExpandableSection={item => (
-                    <span>
-                        {item.name} lives in {item.address}
-                    </span>
-                )}
-            />,
-        );
+        it('should support expandable section', async () => {
+            const { container, getByText } = render(
+                <DataTable
+                    columns={expandableSectionColumns}
+                    data={dataSource}
+                    renderExpandableSection={item => (
+                        <span>
+                            {item.name} lives in {item.address}
+                        </span>
+                    )}
+                />,
+            );
 
-        const section = getByText('Jill lives in Raccoon City');
-        expect(section).toBeInTheDocument();
+            const section = getByText('Jill lives in Raccoon City');
+            expect(section).toBeInTheDocument();
 
-        const sections = container.querySelectorAll(
-            '.TableExpandableSection-Root',
-        );
-        expect(sections.length).toEqual(3);
+            const sections = container.querySelectorAll(
+                '.TableExpandableSection-Root',
+            );
+            expect(sections.length).toEqual(3);
 
-        const controllers = container.querySelectorAll(
-            '.TableControllerCell-Root',
-        );
-        expect(controllers.length).toEqual(3);
-    });
+            const controllers = container.querySelectorAll(
+                '.TableControllerCell-Root',
+            );
+            expect(controllers.length).toEqual(3);
+        });
 
-    it('should expand a section by clicking on the controller, [uncontrolled]', async () => {
-        const onSectionExpansionChange = jest.fn();
-        const { container } = render(
-            <DataTable
-                columns={expandableSectionColumns}
-                data={dataSource}
-                defaultExpandedSectionIds={['2']}
-                renderExpandableSection={() => <span>1</span>}
-                onSectionExpansionChange={onSectionExpansionChange}
-            />,
-        );
+        it('should expand a section by clicking on the controller, [uncontrolled]', async () => {
+            const onSectionExpansionChange = jest.fn();
+            const { container } = render(
+                <DataTable
+                    columns={expandableSectionColumns}
+                    data={dataSource}
+                    defaultExpandedSectionIds={['2']}
+                    renderExpandableSection={() => <span>1</span>}
+                    onSectionExpansionChange={onSectionExpansionChange}
+                />,
+            );
 
-        const controller = container.querySelector(
-            '[data-rowid="3"] .TableControllerCell-Trigger',
-        );
+            const controller = container.querySelector(
+                '[data-rowid="3"] .TableControllerCell-Trigger',
+            );
 
-        fireEvent.click(controller!);
-        expect(onSectionExpansionChange).toHaveBeenCalledWith(['3', '2']);
-    });
+            fireEvent.click(controller!);
+            expect(onSectionExpansionChange).toHaveBeenCalledWith(['3', '2']);
+        });
 
-    it('should expand a section by clicking on the controller, [controlled]', async () => {
-        const onSectionExpansionChange = jest.fn();
-        const { container } = render(
-            <DataTable
-                columns={expandableSectionColumns}
-                data={dataSource}
-                expandedSectionIds={['2']}
-                renderExpandableSection={() => <span>1</span>}
-                onSectionExpansionChange={onSectionExpansionChange}
-            />,
-        );
+        it('should expand a section by clicking on the controller, [controlled]', async () => {
+            const onSectionExpansionChange = jest.fn();
+            const { container } = render(
+                <DataTable
+                    columns={expandableSectionColumns}
+                    data={dataSource}
+                    expandedSectionIds={['2']}
+                    renderExpandableSection={() => <span>1</span>}
+                    onSectionExpansionChange={onSectionExpansionChange}
+                />,
+            );
 
-        const controller = container.querySelector(
-            '[data-rowid="3"] .TableControllerCell-Trigger',
-        );
+            const controller = container.querySelector(
+                '[data-rowid="3"] .TableControllerCell-Trigger',
+            );
 
-        fireEvent.click(controller!);
-        expect(onSectionExpansionChange).toHaveBeenCalledWith(['3', '2']);
-    });
+            fireEvent.click(controller!);
+            expect(onSectionExpansionChange).toHaveBeenCalledWith(['3', '2']);
+        });
 
-    it('should collapse a section by clicking on the controller, [uncontrolled]', async () => {
-        const onSectionExpansionChange = jest.fn();
-        const { container } = render(
-            <DataTable
-                columns={expandableSectionColumns}
-                data={dataSource}
-                defaultExpandedSectionIds={['2', '3']}
-                renderExpandableSection={() => <span>1</span>}
-                onSectionExpansionChange={onSectionExpansionChange}
-            />,
-        );
+        it('should collapse a section by clicking on the controller, [uncontrolled]', async () => {
+            const onSectionExpansionChange = jest.fn();
+            const { container } = render(
+                <DataTable
+                    columns={expandableSectionColumns}
+                    data={dataSource}
+                    defaultExpandedSectionIds={['2', '3']}
+                    renderExpandableSection={() => <span>1</span>}
+                    onSectionExpansionChange={onSectionExpansionChange}
+                />,
+            );
 
-        const controller = container.querySelector(
-            '[data-rowid="3"] .TableControllerCell-Trigger',
-        );
+            const controller = container.querySelector(
+                '[data-rowid="3"] .TableControllerCell-Trigger',
+            );
 
-        fireEvent.click(controller!);
-        expect(onSectionExpansionChange).toHaveBeenCalledWith(['2']);
-    });
+            fireEvent.click(controller!);
+            expect(onSectionExpansionChange).toHaveBeenCalledWith(['2']);
+        });
 
-    it('should collapse a section by clicking on the controller, [controlled]', async () => {
-        const onSectionExpansionChange = jest.fn();
-        const { container } = render(
-            <DataTable
-                columns={expandableSectionColumns}
-                data={dataSource}
-                expandedSectionIds={['2', '3']}
-                renderExpandableSection={() => <span>1</span>}
-                onSectionExpansionChange={onSectionExpansionChange}
-            />,
-        );
+        it('should collapse a section by clicking on the controller, [controlled]', async () => {
+            const onSectionExpansionChange = jest.fn();
+            const { container } = render(
+                <DataTable
+                    columns={expandableSectionColumns}
+                    data={dataSource}
+                    expandedSectionIds={['2', '3']}
+                    renderExpandableSection={() => <span>1</span>}
+                    onSectionExpansionChange={onSectionExpansionChange}
+                />,
+            );
 
-        const controller = container.querySelector(
-            '[data-rowid="3"] .TableControllerCell-Trigger',
-        );
+            const controller = container.querySelector(
+                '[data-rowid="3"] .TableControllerCell-Trigger',
+            );
 
-        fireEvent.click(controller!);
-        expect(onSectionExpansionChange).toHaveBeenCalledWith(['2']);
-    });
+            fireEvent.click(controller!);
+            expect(onSectionExpansionChange).toHaveBeenCalledWith(['2']);
+        });
 
-    it('should expand a section by clicking on the controller when ID datatype is number', async () => {
-        const localDataSource = [...dataSource];
-        localDataSource[1] = {
-            ...localDataSource[1],
-            // @ts-ignore
-            id: 3,
-        };
+        it('should expand a section by clicking on the controller when ID datatype is number', async () => {
+            const localDataSource = [...dataSource];
+            localDataSource[1] = {
+                ...localDataSource[1],
+                // @ts-ignore
+                id: 3,
+            };
 
-        const onSectionExpansionChange = jest.fn();
-        const { container } = render(
-            <DataTable
-                columns={expandableSectionColumns}
-                data={localDataSource}
-                renderExpandableSection={() => <span>1</span>}
-                onSectionExpansionChange={onSectionExpansionChange}
-            />,
-        );
+            const onSectionExpansionChange = jest.fn();
+            const { container } = render(
+                <DataTable
+                    columns={expandableSectionColumns}
+                    data={localDataSource}
+                    renderExpandableSection={() => <span>1</span>}
+                    onSectionExpansionChange={onSectionExpansionChange}
+                />,
+            );
 
-        const controller = container.querySelector(
-            '[data-rowid="3"] .TableControllerCell-Trigger',
-        );
+            const controller = container.querySelector(
+                '[data-rowid="3"] .TableControllerCell-Trigger',
+            );
 
-        fireEvent.click(controller!);
-        expect(onSectionExpansionChange).toHaveBeenCalledWith(['3']);
+            fireEvent.click(controller!);
+            expect(onSectionExpansionChange).toHaveBeenCalledWith(['3']);
+        });
     });
 });

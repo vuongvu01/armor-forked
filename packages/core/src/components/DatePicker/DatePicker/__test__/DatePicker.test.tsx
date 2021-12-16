@@ -9,9 +9,10 @@ import {
 } from '@testing-library/react-hooks';
 import { act } from 'react-dom/test-utils';
 
-import { DATE_PICKER_INFINITY, DatePicker } from '..';
-import { COMMON_CLASSES } from './common';
-import { DateVector } from '../utils/DateVector';
+import { DATE_PICKER_INFINITY, DatePicker } from '../../index';
+import { COMMON_CLASSES } from '../../__test__/common';
+import { DateVector } from '../../utils/DateVector';
+import { makeDateString } from '../../__test__/util';
 
 describe('<DatePicker />', () => {
     afterEach(async () => {
@@ -74,38 +75,6 @@ describe('<DatePicker />', () => {
         // @ts-ignore
         expect(DatePicker).toSupportWidthAttributes();
     });
-
-    it('should support allowedDateRanges', async () => {
-        const localDate = new Date(2021, 7, 10, 10, 4, 0, 100);
-        const { container } = render(
-            <DatePicker
-                open
-                dateValue={localDate}
-                allowedDateRanges={[[localDate, DATE_PICKER_INFINITY]]}
-            />,
-        );
-
-        const isDayAllowed = (day: number) => {
-            const dayNode = container.querySelector(`[data-day="${day}"]`);
-            expect(dayNode).toBeInTheDocument();
-            const allowed = dayNode!.getAttribute('data-allowed');
-
-            return allowed === '1';
-        };
-
-        expect(isDayAllowed(7)).toBeFalsy();
-        expect(isDayAllowed(8)).toBeFalsy();
-        expect(isDayAllowed(9)).toBeFalsy();
-        expect(isDayAllowed(10)).toBeTruthy();
-        expect(isDayAllowed(11)).toBeTruthy();
-        expect(isDayAllowed(12)).toBeTruthy();
-    });
-
-    const makeDateString = (date: Date) => {
-        const vect = DateVector.createFromLocalDate(date);
-
-        return [vect.month, vect.day, vect.year].join('-');
-    };
 
     it('should support onDayMouseEnter()', async () => {
         const onDayMouseEnter = jest.fn();

@@ -61,6 +61,8 @@ export class Run implements CommandInstance {
     ) {}
 
     async execute() {
+        d('Starting');
+
         const {
             stats,
             projectFolder: projectFolderOption,
@@ -80,6 +82,7 @@ export class Run implements CommandInstance {
         try {
             await stat(projectFolder);
         } catch (error) {
+            // @ts-ignore
             if (error.code === 'ENOENT') {
                 console.error(`No such file or directory: ${projectFolder}`);
                 return;
@@ -166,7 +169,6 @@ export class Run implements CommandInstance {
         if (output) {
             await writeFile(output, new Uint8Array(Buffer.from(data)));
         } else {
-            // eslint-disable-next-line no-console
             console.log(data);
         }
 

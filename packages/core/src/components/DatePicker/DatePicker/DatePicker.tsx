@@ -18,7 +18,6 @@ import { DatePickerActionBar } from '../DatePickerActionBar';
 import { DatePickerMonthYearSelector } from '../DatePickerMonthYearSelector';
 import { DatePickerDaySelector } from '../DatePickerDaySelector';
 import { DatePickerTopBar } from '../DatePickerTopBar';
-import { Button } from '../../Button';
 
 /**
  * @armor-docs-component
@@ -49,8 +48,6 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerPropsType>(
 
             showActions,
             showTimePicker,
-            showTodayButton,
-            getTodayButtonProps,
         } = useDatePicker(props, ref);
 
         return (
@@ -86,20 +83,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerPropsType>(
                                 />
                             )}
                             {showActions && (
-                                <DatePickerActionBar
-                                    {...actionBarProps}
-                                    customActions={
-                                        <>
-                                            {showTodayButton && (
-                                                <Button
-                                                    {...getTodayButtonProps()}
-                                                >
-                                                    Today
-                                                </Button>
-                                            )}
-                                        </>
-                                    }
-                                />
+                                <DatePickerActionBar {...actionBarProps} />
                             )}
                             <DatePickerDropdownArrow
                                 {...arrowProps}

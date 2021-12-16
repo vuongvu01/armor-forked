@@ -13,20 +13,26 @@ export const useDatePickerDaySelectorSelection = (
     selectionStartCandidate: DateVector | null,
     selectionEndCandidate: DateVector | null,
     isDateAllowed: DatePickerDaySelectorPropsType['isDateAllowed'],
+    isDateFree: DatePickerDaySelectorPropsType['isDateFree'],
 ) =>
     useMemo(() => {
         const { dateStart, dateEnd } = dirtyInternalValueVector;
 
         let selectionStartDate = dateStart;
         let selectionEndDate = dateEnd;
-        if (selectionStartCandidate && selectionEndCandidate) {
+        if (selectionStartCandidate) {
             selectionStartDate = selectionStartCandidate;
-            selectionEndDate = selectionEndCandidate;
 
-            if (selectionEndDate.isSmallerThanOrEqual(selectionStartDate)) {
-                const cup = selectionStartDate;
-                selectionStartDate = selectionEndDate;
-                selectionEndDate = cup;
+            if (selectionEndCandidate) {
+                selectionEndDate = selectionEndCandidate;
+
+                if (selectionEndDate.isSmallerThanOrEqual(selectionStartDate)) {
+                    const cup = selectionStartDate;
+                    selectionStartDate = selectionEndDate;
+                    selectionEndDate = cup;
+                }
+            } else {
+                selectionEndDate = null;
             }
         }
 
@@ -42,12 +48,14 @@ export const useDatePickerDaySelectorSelection = (
             const { date, displayedMonth, current } = item;
 
             const allowed = isDateAllowed(date);
+            const free = isDateFree(date);
 
             return {
                 ...item,
                 buttonProps: {
                     selected,
                     allowed,
+                    free,
                     leftEnd,
                     rightEnd,
                     current,
@@ -56,6 +64,7 @@ export const useDatePickerDaySelectorSelection = (
                 paddingProps: {
                     selected,
                     allowed,
+                    free,
                     leftEnd,
                     rightEnd,
                     current,
@@ -64,9 +73,10 @@ export const useDatePickerDaySelectorSelection = (
             };
         });
     }, [
-        calendar,
         dirtyInternalValueVector,
         selectionStartCandidate,
+        calendar,
         selectionEndCandidate,
         isDateAllowed,
+        isDateFree,
     ]);

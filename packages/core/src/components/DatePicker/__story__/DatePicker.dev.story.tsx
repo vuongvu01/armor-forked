@@ -146,6 +146,7 @@ export const WithAllEnabled = () => {
             enableMinWidthAutoCorrection={false}
             enableActionButtons
             enableTodayButton
+            enableCloseOnSelect
             open={open}
             onOpenChange={setOpen}
         />
@@ -167,6 +168,70 @@ export const WithTimeButtonEnabledActionsDisabled = () => {
             enableTimePicker
             enableMinWidthAutoCorrection={false}
             enableTodayButton
+            enableCloseOnSelect
+        />
+    );
+};
+
+export const WithClearButton = () => {
+    const [value, setValue] = useState<Date | null | undefined>(
+        new Date(2021, 7, 10, 10, 10, 20, 100),
+    );
+    const [open, setOpen] = useState(true);
+
+    return (
+        <DatePicker
+            open={open}
+            onOpenChange={setOpen}
+            dateValue={value}
+            onDateValueChange={setValue}
+            enableTimePicker
+            enableMinWidthAutoCorrection={false}
+            enableClearSelectionButton
+        />
+    );
+};
+
+export const WithClearAndApply = () => {
+    const [value, setValue] = useState<Date | null | undefined>(
+        new Date(2021, 7, 10, 10, 10, 20, 100),
+    );
+    const [open, setOpen] = useState(true);
+
+    return (
+        <DatePicker
+            open={open}
+            onOpenChange={setOpen}
+            dateValue={value}
+            onDateValueChange={setValue}
+            enableTimePicker
+            enableMinWidthAutoCorrection={false}
+            enableClearSelectionButton
+            enableApplyButton
+        />
+    );
+};
+
+export const WithTodayAndApply = () => {
+    return <DatePicker open enableTodayButton enableApplyButton />;
+};
+
+export const WithTodayOnly = () => {
+    const [value, setValue] = useState<Date | null | undefined>(
+        new Date(2021, 7, 10, 10, 10, 20, 100),
+    );
+    const [open, setOpen] = useState(true);
+
+    return (
+        <DatePicker
+            open={open}
+            onOpenChange={setOpen}
+            dateValue={value}
+            onDateValueChange={setValue}
+            enableTimePicker
+            enableMinWidthAutoCorrection={false}
+            enableTodayButton
+            enableCloseOnSelect
         />
     );
 };

@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/camelcase */
-
 const makeLineHeight = (valueReference: string) => ({
     lineHeight: `$typography.${valueReference}.lineHeight`,
     '--typography--line-height': `$typography.${valueReference}.lineHeight`,

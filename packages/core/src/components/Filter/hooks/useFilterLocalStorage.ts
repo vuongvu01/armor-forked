@@ -30,7 +30,7 @@ export const useFilterLocalStorage = <
                 localStorage.setItem(filterKey, JSON.stringify(newValue));
             }
         },
-        [win, filterId],
+        [filterId],
     );
 
     const initialValue = useMemo(() => {
@@ -51,7 +51,7 @@ export const useFilterLocalStorage = <
         }
 
         return result;
-    }, [win]);
+    }, [filterId]);
 
     return [initialValue, setValue];
 };
