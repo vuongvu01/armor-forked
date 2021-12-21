@@ -6,13 +6,13 @@ yarn
 yarn install-peers
 
 cd ${DIR}/../packages/system
-yarn
+yarn build
 
 cd ${DIR}/../packages/icons
-yarn
+yarn build
 
 cd ${DIR}/../packages/core
-yarn
+yarn build
 
 cd ${DIR}/../packages/core/dev
 yarn
