@@ -10,10 +10,20 @@ import {
     useDetectClickOutsideComponent,
     useControlledState,
     useRootRef,
+    useScrollToNode,
+    useNavigationControl,
+    getWindow,
 } from '@deliveryhero/armor-system';
 
-import { initialCursor } from '../constants';
-import { SearchGroupObjectIndexType, SearchPropsType } from '../type';
+import {
+    INITIAL_CURSOR_POSITION,
+    SEARCH_ITEM_FOCUSED_CLASS,
+} from '../constants';
+import {
+    SearchGroupObjectIndexType,
+    SearchPropsType,
+    SuggestionObjectType,
+} from '../type';
 import { RefType } from '../../../type';
 
 export const useSearch = <E extends HTMLInputElement>(
@@ -45,7 +55,9 @@ export const useSearch = <E extends HTMLInputElement>(
     }: SearchPropsType,
     ref: RefType<E>,
 ) => {
-    const [cursor, setCursor] = useState<number>(initialCursor);
+    const [cursorPosition, setCursorPosition] = useState<number>(
+        INITIAL_CURSOR_POSITION,
+    );
     const [searchQuery, setSearchQuery] = useControlledState(
         defaultQuery,
         query,
@@ -66,143 +78,63 @@ export const useSearch = <E extends HTMLInputElement>(
         setSearchQuery(defaultQuery);
     }, [defaultQuery, setSearchQuery]);
 
-    const setIsOptionsListShown = useCallback(
-        (isHidden = false) => {
-            setIsSuggestionsListShown(isHidden);
-            if (cursor !== initialCursor) {
-                setCursor(initialCursor);
+    const setIsOptionsListShown = useCallback((isShow = false) => {
+        setIsSuggestionsListShown((isShowing) => {
+            if (!isShowing) {
+                setCursorPosition(INITIAL_CURSOR_POSITION);
             }
-        },
-        [cursor],
-    );
+            return isShow;
+        });
+    }, []);
 
     // todo: setting isCondition to true is not the right approach, fix
     useDetectClickOutsideComponent(containerRef, setIsOptionsListShown, true);
 
-    const scrollToCurrent = useCallback(() => {
-        setTimeout(() => {
-            const focused = document.querySelector('.suggestion-focused');
+    const scrollToCurrent = useScrollToNode({
+        className: SEARCH_ITEM_FOCUSED_CLASS,
+    });
 
-            if (focused) {
-                focused.scrollIntoView({ block: 'center' });
-            }
-        }, 0);
-    }, []);
-
-    const handleArrowDownClick = useCallback(() => {
-        if (options && options.length) {
-            if (!isSuggestionsListShown) {
-                setIsOptionsListShown(true);
-            } else {
-                setCursor(prevState =>
-                    options && prevState < options?.length - 1
-                        ? prevState + 1
-                        : 0,
-                );
-
-                scrollToCurrent();
-            }
-        }
-    }, [
-        options,
-        isSuggestionsListShown,
-        setIsOptionsListShown,
-        scrollToCurrent,
-    ]);
-
-    const handleArrowUpClick = useCallback(() => {
-        if (options && options.length) {
-            if (!isSuggestionsListShown) {
-                setIsOptionsListShown(true);
-            } else {
-                setCursor(prevState =>
-                    prevState > 0 ? prevState - 1 : options.length - 1,
-                );
-
-                scrollToCurrent();
-            }
-        }
-    }, [
-        options,
-        isSuggestionsListShown,
-        setIsOptionsListShown,
-        scrollToCurrent,
-    ]);
+    useEffect(() => {
+        scrollToCurrent();
+    }, [cursorPosition]); // eslint-disable-line react-hooks/exhaustive-deps
 
     const handleEnterClick = useCallback(() => {
-        if (options && options.length) {
-            setSearchQuery(options[cursor].label);
+        const win = getWindow();
+        if (!win) {
+            return;
+        }
+
+        const focusedElement = document.querySelector(
+            `.${SEARCH_ITEM_FOCUSED_CLASS}`,
+        );
+        const selectedLabel = focusedElement?.textContent;
+
+        if (options?.length && selectedLabel) {
+            setSearchQuery(selectedLabel);
             setIsSuggestionsListShown(false);
 
-            if (onItemSelect) {
-                onItemSelect(options[cursor]);
+            const selectedOption = options.find(
+                (option: { label: string }) => option.label === selectedLabel,
+            );
+
+            if (selectedOption) {
+                onItemSelect?.(selectedOption);
             }
 
             setIsOptionsListShown();
         }
-    }, [options, setSearchQuery, cursor, onItemSelect, setIsOptionsListShown]);
+    }, [options, setSearchQuery, onItemSelect, setIsOptionsListShown]);
 
-    const searchInputKeyHandler = useCallback(
-        (event: KeyboardEvent) => {
-            const { key, target } = event;
-
-            if (target === internalInputRef.current) {
-                if (key === 'Escape') {
-                    setIsOptionsListShown();
-                } else if (key === 'ArrowDown') {
-                    event.stopPropagation();
-                    handleArrowDownClick();
-                } else if (key === 'ArrowUp') {
-                    event.stopPropagation();
-                    handleArrowUpClick();
-                } else if (key === 'Enter' && isSuggestionsListShown) {
-                    handleEnterClick();
-                } else if (key) {
-                    setIsOptionsListShown(true);
-                }
-            }
-        },
-        [
-            internalInputRef,
-            isSuggestionsListShown,
-            setIsOptionsListShown,
-            handleArrowDownClick,
-            handleArrowUpClick,
-            handleEnterClick,
-        ],
-    );
-
-    useEffect(() => {
-        if (!disabled) {
-            const internalInputRefCurrent = internalInputRef?.current;
-            // eslint-disable-next-line no-unused-expressions
-            internalInputRefCurrent?.addEventListener(
-                'keydown',
-                searchInputKeyHandler,
-            );
-
-            return () => {
-                // eslint-disable-next-line no-unused-expressions
-                internalInputRefCurrent?.removeEventListener(
-                    'keydown',
-                    searchInputKeyHandler,
-                );
-            };
-        }
-
-        setSearchQuery(defaultQuery);
-
-        return () => {};
-    }, [
+    useNavigationControl({
+        yLength: options?.length || 0,
+        setCursorY: setCursorPosition,
+        targetElement: internalInputRef,
+        onEnterKeyPress: handleEnterClick,
+        onNavigationKeyPress: () => setIsOptionsListShown(true),
+        onEscapeKeyPress: () => setIsOptionsListShown(),
+        onOtherKeysPress: () => setIsOptionsListShown(true),
         disabled,
-        internalInputRef,
-        cursor,
-        options,
-        isSuggestionsListShown,
-        setSearchQuery,
-        defaultQuery,
-        searchInputKeyHandler,
-    ]);
+    });
 
     const handleChange = useCallback(
         (event: ChangeEvent<HTMLInputElement>) => {
@@ -240,19 +172,17 @@ export const useSearch = <E extends HTMLInputElement>(
     );
 
     const handleSuggestionClick = useCallback(
-        (event: React.MouseEvent<HTMLDivElement>, suggestionIndex: number) => {
-            if (options && options.length > 0) {
-                const currentQuery = options[suggestionIndex].label || '';
-                setSearchQuery(currentQuery);
+        (_, suggestionOption: SuggestionObjectType) => {
+            const currentQuery = suggestionOption.label || '';
+            setSearchQuery(currentQuery);
 
-                if (onItemSelect) {
-                    onItemSelect(options[suggestionIndex]);
-                }
-
-                setIsOptionsListShown();
+            if (onItemSelect) {
+                onItemSelect(suggestionOption);
             }
+
+            setIsOptionsListShown();
         },
-        [onItemSelect, options, setIsOptionsListShown, setSearchQuery],
+        [onItemSelect, setIsOptionsListShown, setSearchQuery],
     );
 
     const groupIndex = useMemo<SearchGroupObjectIndexType>(() => {
@@ -307,7 +237,7 @@ export const useSearch = <E extends HTMLInputElement>(
             handleSuggestionClick,
             icon,
             renderItemIcon,
-            cursor,
+            cursorPosition,
             searchQuery,
             noResultsLabel,
         },

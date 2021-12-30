@@ -40,9 +40,8 @@ export type InternalItemGroupObjectType = Record<
     InternalItemGroupObjectTypeInternal
 >;
 
-export type OptionListGroupObjectIndexType = ObjectLiteralType<
-    OptionListGroupObjectType
->;
+export type OptionListGroupObjectIndexType =
+    ObjectLiteralType<OptionListGroupObjectType>;
 
 /** 👉 PROPS TYPE */
 export type OptionListPropsType = {
@@ -75,6 +74,7 @@ export type OptionListPropsType = {
     renderItemAdditionalInfo?: (
         option: string | OptionObjectType,
     ) => ReactChild;
+    autoFocus?: boolean;
 } & Pick<
     DropdownEffectivePropsType,
     | 'options'
@@ -111,6 +111,9 @@ export type OptionListItemPropsType = {
     enableContentEllipsis?: boolean;
     multiple?: boolean;
     renderItemAdditionalInfo?: OptionListPropsType['renderItemAdditionalInfo'];
+    optionIndex?: number;
+    cursorPosition?: number;
+    isFocused?: boolean;
 } & HTMLAttributes<HTMLDivElement>;
 
 export type OptionListFooterPropsType = {
@@ -155,4 +158,5 @@ export type OptionListVirtualOffsetType = {
     height: number;
 } & ComponentElementStylePropsType;
 
-export type OptionListItemAdditionalInfoPropsType = ComponentElementStylePropsType;
+export type OptionListItemAdditionalInfoPropsType =
+    ComponentElementStylePropsType;

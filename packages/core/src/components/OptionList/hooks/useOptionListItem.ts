@@ -10,6 +10,8 @@ export const useOptionListItem = ({
     checkedIcon,
     enableContentEllipsis,
     renderItemAdditionalInfo,
+    cursorPosition,
+    optionIndex,
     ...restProps
 }: OptionListItemPropsType) => {
     const handleItemClick = useCallback(
@@ -30,6 +32,7 @@ export const useOptionListItem = ({
             isSelected,
             item,
             onClick: handleItemClick,
+            isFocused: cursorPosition === optionIndex,
         },
         checkboxProps: {
             checked: isSelected,

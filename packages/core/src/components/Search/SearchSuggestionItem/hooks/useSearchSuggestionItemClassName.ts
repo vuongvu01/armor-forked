@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { appendClassName, makeBEM } from '@deliveryhero/armor-system';
 
 import { ClassBasedOnComponentType } from '../type';
+import { SEARCH_ITEM_FOCUSED_CLASS } from '../../constants';
 
 const getClassNameByComponent = ({
     component,
@@ -13,14 +14,20 @@ const getClassNameByComponent = ({
 export const useSearchSuggestionItemClassName = (
     classPrefix: string,
     className?: string,
+    isFocused?: boolean,
 ) =>
     useMemo(() => {
+        const suggestionsItemClassName = appendClassName(
+            getClassNameByComponent({
+                component: 'SuggestionsItem',
+                classPrefix,
+            }),
+            isFocused ? SEARCH_ITEM_FOCUSED_CLASS : '',
+        );
+
         return {
             SuggestionsItem: appendClassName(
-                getClassNameByComponent({
-                    component: 'SuggestionsItem',
-                    classPrefix,
-                }),
+                suggestionsItemClassName,
                 className,
             ),
             SuggestionItemContainer: getClassNameByComponent({
@@ -44,4 +51,4 @@ export const useSearchSuggestionItemClassName = (
                 classPrefix,
             }),
         };
-    }, [classPrefix, className]);
+    }, [classPrefix, isFocused, className]);

@@ -27,7 +27,7 @@ export type SearchSuggestionItemPropsType = {
 > &
     Pick<
         SearchSuggestionsListPropsType,
-        'searchQuery' | 'icon' | 'cursor' | 'handleSuggestionClick'
+        'searchQuery' | 'icon' | 'cursorPosition' | 'handleSuggestionClick'
     > &
     HTMLAttributes<HTMLElement>;
 
@@ -39,5 +39,5 @@ export type SearchSuggestionsItemPropsType = {
     isHighlighted?: boolean;
 } & ComponentElementStylePropsType;
 
-export type SearchSuggestionItemLabelTypographyPropsType = SearchEffectivePropsType &
-    ComponentElementStylePropsType;
+export type SearchSuggestionItemLabelTypographyPropsType =
+    SearchEffectivePropsType & ComponentElementStylePropsType;

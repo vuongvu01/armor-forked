@@ -97,6 +97,7 @@ export const Dropdown = forwardRef<HTMLInputElement, DropdownPropsType>(
                                 <OptionList
                                     {...optionListProps}
                                     className={classOverride.OptionList}
+                                    autoFocus
                                 />
                                 <DropdownArrow {...arrowProps} />
                             </DropdownOptionListContainer>

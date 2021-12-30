@@ -5,18 +5,19 @@ import {
     SearchGroupObjectIndexType,
     SearchPropsType,
     SearchQueryType,
+    SuggestionObjectType,
 } from '../type';
 import { ComponentElementStylePropsType } from '../../type';
 
 export type SearchSuggestionsListPropsType = Partial<{
     groupIndex: SearchGroupObjectIndexType;
-    cursor?: number;
+    cursorPosition?: number;
     icon?: null | React.ReactElement;
     searchQuery?: SearchQueryType;
     noResultsLabel?: string;
     handleSuggestionClick: (
         event: React.MouseEvent<HTMLDivElement>,
-        suggestionIndex: number,
+        suggestionOption: SuggestionObjectType,
     ) => void;
     groupClassName?: string;
 }> &
