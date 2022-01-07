@@ -1,23 +1,19 @@
 import { css } from 'styled-components';
-import {
-    colorGrey60,
-    colorGrey30,
-    colorGrey00,
-} from '@deliveryhero/armor-system';
+import { color } from '@deliveryhero/armor-system';
 
 export const getOptionListItemGroupOverride = () => {
     return css`
-        border-top-color: ${colorGrey60};
+        border-top-color: ${color('neutral.08')};
 
         .OptionListItemGroup-Typography {
-            color: ${colorGrey30};
+            color: ${color('neutral.05')};
         }
 
         &:hover {
-            background: ${colorGrey60};
+            background: ${color('neutral.08')};
 
             .OptionListItemGroup-Typography {
-                color: ${colorGrey00};
+                color: ${color('neutral.00')};
             }
         }
     `;

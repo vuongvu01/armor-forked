@@ -97,6 +97,7 @@ export const Dropdown = forwardRef<HTMLInputElement, DropdownPropsType>(
                                 <OptionList
                                     {...optionListProps}
                                     className={classOverride.OptionList}
+                                    autoFocus
                                 />
                                 <DropdownArrow {...arrowProps} />
                             </DropdownOptionListContainer>
@@ -107,24 +108,3 @@ export const Dropdown = forwardRef<HTMLInputElement, DropdownPropsType>(
         );
     },
 );
-
-Dropdown.propTypes = {
-    disabled: PropTypes.bool,
-    error: PropTypes.bool,
-    multiple: PropTypes.bool,
-    isListExpanded: PropTypes.bool,
-    label: PropTypes.string,
-    onSelect: PropTypes.func,
-    onChange: PropTypes.func,
-    isActionSeparatorDisplayed: PropTypes.bool,
-    options: PropTypes.oneOfType([
-        PropTypes.arrayOf(PropTypes.string.isRequired),
-        PropTypes.arrayOf(
-            PropTypes.shape({
-                value: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
-                    .isRequired,
-                label: PropTypes.string.isRequired,
-            }).isRequired,
-        ),
-    ]),
-};

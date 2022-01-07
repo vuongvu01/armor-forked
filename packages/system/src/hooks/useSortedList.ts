@@ -25,7 +25,7 @@ export function sortBy(key: string) {
 }
 
 export function useSortedList<T>(list: T[], key: string): T[] {
-    const sortedList = useMemo(() => list.sort(sortBy(key)), [list, key]);
+    const sortedList = useMemo(() => [...list].sort(sortBy(key)), [list, key]);
 
     return sortedList;
 }

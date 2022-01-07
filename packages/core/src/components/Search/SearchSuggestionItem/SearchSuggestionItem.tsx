@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react';
 
 import { useSearchSuggestionItemClassName } from './hooks';
 import { SearchSuggestionItemPropsType } from './type';
+import { SuggestionObjectType } from '../type';
 import { highlightMatch } from '../utils/highlightMatch';
 import {
     SearchSuggestionItemLabelTypography,
@@ -13,7 +14,9 @@ import {
 } from './style';
 import { SEARCH_CLASS_PREFIX } from '../constants';
 
-export const SearchSuggestionItem: FunctionComponent<SearchSuggestionItemPropsType> = ({
+export const SearchSuggestionItem: FunctionComponent<
+    SearchSuggestionItemPropsType
+> = ({
     className,
     option,
     optionIndex,
@@ -31,35 +34,29 @@ export const SearchSuggestionItem: FunctionComponent<SearchSuggestionItemPropsTy
      * Use renderItemIcon
      */
     renderItemIcon,
-    cursor,
+    cursorPosition,
     searchQuery,
     theme,
 }) => {
     const classOverride = useSearchSuggestionItemClassName(
         SEARCH_CLASS_PREFIX,
         className,
+        cursorPosition === suggestionIndex,
     );
 
-    const handleOnClick = (index: number) => (
-        event: React.MouseEvent<HTMLDivElement>,
-    ) => {
-        if (handleSuggestionClick) {
-            handleSuggestionClick(event, index);
-        }
-    };
-
-    const getSuggestionItemClass = (index: number) =>
-        `${classOverride.SuggestionsItem} ${
-            cursor === index ? 'suggestion-focused' : ''
-        }`;
+    const handleOnClick =
+        (selectedOption: SuggestionObjectType) =>
+        (event: React.MouseEvent<HTMLDivElement>) => {
+            handleSuggestionClick?.(event, selectedOption);
+        };
 
     return (
         <SearchSuggestionItemRoot
-            className={getSuggestionItemClass(suggestionIndex)}
+            className={classOverride.SuggestionsItem}
             theme={theme}
         >
             <SearchSuggestionItemContainer
-                isHighlighted={cursor === suggestionIndex}
+                isHighlighted={cursorPosition === suggestionIndex}
                 className={classOverride.SuggestionItemContainer}
                 theme={theme}
             >
@@ -77,7 +74,7 @@ export const SearchSuggestionItem: FunctionComponent<SearchSuggestionItemPropsTy
                 )}
                 <SearchSuggestionsItemLabel
                     renderItemAdditionalInfo={renderItemAdditionalInfo}
-                    onClick={handleOnClick(suggestionIndex)}
+                    onClick={handleOnClick(option)}
                     className={classOverride.SuggestionsItemLabel}
                     theme={theme}
                 >

@@ -32,6 +32,9 @@ export const useDataTable = (
         enableRowSelection,
         stickyHead,
 
+        enableRowReordering,
+        onRowOrderChange,
+
         actions,
         enableActionSheet,
 
@@ -119,6 +122,9 @@ export const useDataTable = (
         ...rowSelection.result,
         ...expandableSections.result,
         ...pageNavigation.result,
+
+        enableRowReordering,
+        onRowOrderChange,
 
         selectedRowIds: rowSelection.selectedRowIds,
         unselectRows: rowSelection.unselectRows,
@@ -252,7 +258,8 @@ export const useDataTable = (
         getEmptyStateProps: () => ({
             enableImage: false,
             enableTitle: false,
-            descriptionPosition: 'middle' as EmptyStatePropsType['descriptionPosition'],
+            descriptionPosition:
+                'middle' as EmptyStatePropsType['descriptionPosition'],
             description: 'No data',
         }),
     };

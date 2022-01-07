@@ -48,9 +48,9 @@ const getOptionListStyle = ({
 };
 
 /** 👉 ROOT ELEMENT */
-export const OptionListRoot = styled.div.withConfig(propsBlocker)<
-    OptionListRootPropsType
->`
+export const OptionListRoot = styled.div.withConfig(
+    propsBlocker,
+)<OptionListRootPropsType>`
     ${reset};
     ${typography('paragraphMedium')};
     background-color: white;
@@ -67,9 +67,9 @@ export const OptionListRoot = styled.div.withConfig(propsBlocker)<
     ${getComponentOverride('OptionList')};
 `;
 
-export const OptionListContainer = styled.div.withConfig(propsBlocker)<
-    OptionListContainerPropsType
->`
+export const OptionListContainer = styled.div.withConfig(
+    propsBlocker,
+)<OptionListContainerPropsType>`
     overflow: auto;
 `;
 
@@ -80,9 +80,9 @@ export const OptionListBeforeSectionContainer = styled.div.withConfig(
     background: ${color('neutral.00')};
 `;
 
-export const OptionListSearchContainer = styled.div.withConfig(propsBlocker)<
-    OptionListSearchPropsType
->`
+export const OptionListSearchContainer = styled.div.withConfig(
+    propsBlocker,
+)<OptionListSearchPropsType>`
     padding: ${spacing(4)};
 `;
 
@@ -102,37 +102,48 @@ export const OptionListFooterContainer = styled.div.attrs({
     border-top: 1px solid ${color('neutral.03')};
 `;
 
+const focusedHoverState = css`
+    background-color: ${color('primary.01')};
+
+    .Checkbox-Checkmark:before {
+        border-color: ${color('primary.08')};
+    }
+`;
+
 const optionItemStyle = ({
-    isSelected,
     item: { disabled },
+    isFocused,
 }: OptionListItemPropsType) => {
     let result = css`
         background-color: ${color('neutral.00')};
         min-height: ${spacing(10)};
         padding: ${spacing(2)} ${spacing(4)};
         &:hover {
-            background-color: ${color('primary.lightest')};
+            ${focusedHoverState}
         }
     `;
 
-    if (isSelected) {
+    if (isFocused) {
         result = css`
             ${result};
-            background-color: ${color('primary.lightest')};
-            border-left-color: ${disabled
-                ? color('neutral.05')
-                : color('primary.main')};
+            ${focusedHoverState}
         `;
     }
 
     if (disabled) {
         result = css`
             ${result};
-            background-color: ${color('neutral.02')};
+            background-color: ${isFocused
+                ? color('primary.01')
+                : color('neutral.02')};
 
             cursor: not-allowed;
             &:hover {
                 background-color: ${color('neutral.02')};
+
+                .Checkbox-Checkmark:before {
+                    border-color: ${color('neutral.03')};
+                }
             }
         `;
     }
@@ -140,9 +151,9 @@ const optionItemStyle = ({
     return result;
 };
 
-export const OptionListItem = styled.div.withConfig(propsBlocker)<
-    OptionListItemPropsType
->`
+export const OptionListItem = styled.div.withConfig(
+    propsBlocker,
+)<OptionListItemPropsType>`
     align-items: center;
     box-sizing: border-box;
     cursor: pointer;
@@ -153,9 +164,9 @@ export const OptionListItem = styled.div.withConfig(propsBlocker)<
     ${getComponentOverride('OptionListItem')};
 `;
 
-export const OptionListItemTypography = styled(Typography)<
-    OptionListItemTypographyPropsType
->`
+export const OptionListItemTypography = styled(
+    Typography,
+)<OptionListItemTypographyPropsType>`
     flex-grow: 1;
     ${({ enableContentEllipsis }) =>
         enableContentEllipsis !== false
@@ -167,9 +178,9 @@ export const OptionListItemTypography = styled(Typography)<
             : ''};
 `;
 
-export const OptionListItemGroupTypography = styled(Typography)<
-    OptionListItemGroupTypographyPropsType
->`
+export const OptionListItemGroupTypography = styled(
+    Typography,
+)<OptionListItemGroupTypographyPropsType>`
     color: ${color('neutral.07')};
     ${({ enableContentEllipsis }) => {
         let result = css``;
@@ -205,7 +216,6 @@ const getSearchSuggestionListGroupDynamicStyle = ({
 const getOptionListItemGroupRootStyle = ({
     multiple,
     enableGroupSelection,
-    checked,
 }: OptionListItemGroupPropType) => {
     let result = css`
         padding: ${spacing(6)} ${spacing(4)} ${spacing(2)} ${spacing(4)};
@@ -227,31 +237,22 @@ const getOptionListItemGroupRootStyle = ({
         `;
     }
 
-    if (checked) {
-        result = css`
-            ${result};
-            background-color: ${color('primary.lightest')};
-            border-left-color: ${color('primary.main')};
-        `;
-    }
-
     return result;
 };
 
-export const OptionListItemGroupRoot = styled.div.withConfig(propsBlocker)<
-    OptionListItemGroupPropType
->`
-    ${typography('labelMedium')};
-    font-size: ${pixelToRem(14)};
+export const OptionListItemGroupRoot = styled.div.withConfig(
+    propsBlocker,
+)<OptionListItemGroupPropType>`
+    ${typography('labelSmall')};
     color: ${color('neutral.07')};
     ${getOptionListItemGroupRootStyle};
     ${getSearchSuggestionListGroupDynamicStyle};
     ${getComponentOverride('OptionListItemGroup')}
 `;
 
-export const OptionListVirtualPadding = styled.div.withConfig(propsBlocker)<
-    OptionListVirtualOffsetType
->`
+export const OptionListVirtualPadding = styled.div.withConfig(
+    propsBlocker,
+)<OptionListVirtualOffsetType>`
     margin: 0;
     padding: 0;
     font-size: 0;
@@ -259,6 +260,6 @@ export const OptionListVirtualPadding = styled.div.withConfig(propsBlocker)<
     height: ${({ height }) => height}px;
 `;
 
-export const OptionListItemAdditionalInfo = styled.div.withConfig(propsBlocker)<
-    OptionListItemAdditionalInfoPropsType
->``;
+export const OptionListItemAdditionalInfo = styled.div.withConfig(
+    propsBlocker,
+)<OptionListItemAdditionalInfoPropsType>``;

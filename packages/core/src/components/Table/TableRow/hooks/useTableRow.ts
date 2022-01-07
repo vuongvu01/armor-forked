@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 
+import mergeProps from 'merge-props';
 import {
     TABLE_HEAD,
     TABLE_FOOT,
@@ -12,6 +13,7 @@ import {
 } from '../../utils/type';
 import { TableRowPropsType } from '../type';
 import { TableStickyColumnsMapInternal } from '../../type';
+import { useIsHovered } from './useIsHovered';
 
 const EMPTY_STICKY_COLUMNS: TableStickyColumnsMapInternal = [];
 
@@ -35,12 +37,14 @@ export const useTableRow = ({
         data: { section },
     } = useContext<TableSectionContextValueType>(TableSectionContext);
 
+    const { onMouseEnter, onMouseLeave, isHovered } = useIsHovered();
+
     const isHeader = section === TABLE_HEAD;
     const isFooter = section === TABLE_FOOT;
 
     return {
         rootProps: {
-            ...restProps,
+            ...mergeProps(restProps, { onMouseEnter, onMouseLeave }),
             isHeader,
             isFooter,
         },
@@ -55,5 +59,6 @@ export const useTableRow = ({
             stickyLeftColumnVisible,
             stickyRightColumnVisible,
         },
+        isHovered,
     };
 };

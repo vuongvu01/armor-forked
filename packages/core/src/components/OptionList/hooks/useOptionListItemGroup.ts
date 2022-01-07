@@ -44,6 +44,7 @@ export const useOptionListItemGroup = ({
         },
         typographyProps: {
             paragraph: true,
+            small: true,
             tag: 'div',
             maxLines: 2,
             enableContentEllipsis,

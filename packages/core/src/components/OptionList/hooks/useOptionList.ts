@@ -6,7 +6,13 @@ import React, {
     useRef,
     useState,
 } from 'react';
-import { useVirtualization, ScalarType } from '@deliveryhero/armor-system';
+import {
+    useVirtualization,
+    ScalarType,
+    useScrollToNode,
+    useNavigationControl,
+    getWindow,
+} from '@deliveryhero/armor-system';
 
 import {
     InternalItemGroupObjectTypeInternal,
@@ -16,7 +22,11 @@ import {
     OptionObjectType,
 } from '../type';
 import { CheckedIconType } from '../../Checkbox/type';
-import { OPTION_LIST_ITEM } from '../constants';
+import {
+    OPTION_LIST_ITEM,
+    INITIAL_CURSOR_POSITION,
+    OPTION_LIST_ITEM_FOCUSED_CLASS,
+} from '../constants';
 import { useOnToggleAll } from '../../Dropdown/hooks';
 import { useOnSearchQueryChange } from './useOnSearchQueryChange';
 import { useOnToggleGroup } from '../../Dropdown/hooks/useOnToggleGroup';
@@ -51,11 +61,18 @@ export const useOptionList = ({
     enableGroupSelection,
     enableOptionContentEllipsis,
     renderItemAdditionalInfo,
+    autoFocus,
     ...restProps
 }: OptionListPropsType) => {
+    const [cursorPosition, setCursorPosition] = useState<number>(
+        INITIAL_CURSOR_POSITION,
+    );
     const [searchQuery, setSearchQuery] = useState(defaultSearchQuery);
     const listContainerRef = useRef<HTMLDivElement>(null);
     const listRef = useRef<HTMLDivElement>(null);
+    const searchInputRef = useRef<HTMLInputElement>(null);
+    const isSelectAllOptionRendered =
+        enableSelectAllOption && multiple && !searchQuery;
 
     const {
         data: virtualData,
@@ -152,6 +169,7 @@ export const useOptionList = ({
             const newSearchQuery = event.target.value || '';
 
             setSearchQuery(newSearchQuery);
+            setCursorPosition(INITIAL_CURSOR_POSITION);
         },
         [setSearchQuery],
     );
@@ -169,7 +187,7 @@ export const useOptionList = ({
 
     const selectAllCheckedIcon: CheckedIconType =
         internalOptions.filter(
-            option =>
+            (option) =>
                 !option?.disabled ||
                 (!!option?.disabled && internalValue.includes(option.value)),
         ).length === internalValue.length
@@ -212,6 +230,46 @@ export const useOptionList = ({
         [selectAllLabel],
     );
 
+    const scrollToCurrent = useScrollToNode({
+        className: OPTION_LIST_ITEM_FOCUSED_CLASS,
+    });
+
+    const handleEnterPress = useCallback(() => {
+        const win = getWindow();
+        if (!win) {
+            return;
+        }
+
+        const focusedElement = document.querySelector(
+            `.${OPTION_LIST_ITEM_FOCUSED_CLASS}`,
+        );
+        const selectedLabel = focusedElement?.textContent;
+
+        if (selectedLabel === selectAllLabel) {
+            onToggleAll();
+        } else if (options?.length && selectedLabel) {
+            const selectedOption = (options as OptionObjectType[]).find(
+                (option) => option.label === selectedLabel,
+            );
+            if (selectedOption && !selectedOption.disabled) {
+                onOptionSelect(selectedOption);
+            }
+        }
+    }, [selectAllLabel, options, onToggleAll, onOptionSelect]);
+
+    useEffect(() => {
+        scrollToCurrent();
+    }, [cursorPosition]); // eslint-disable-line react-hooks/exhaustive-deps
+
+    useNavigationControl({
+        yLength: isSelectAllOptionRendered
+            ? (options?.length || 0) + 1
+            : options?.length || 0,
+        setCursorY: setCursorPosition,
+        targetElement: searchInputRef,
+        onEnterKeyPress: handleEnterPress,
+    });
+
     return {
         rootProps: restProps,
         getOptionItemProps: (option: OptionObjectType) => ({
@@ -223,6 +281,7 @@ export const useOptionList = ({
             multiple,
             enableContentEllipsis: enableOptionContentEllipsis,
             renderItemAdditionalInfo,
+            cursorPosition,
         }),
         getSelectAllItemProps: () => ({
             item: selectAllItem,
@@ -230,11 +289,14 @@ export const useOptionList = ({
             isSelected: internalValue.length > 0,
             onOptionSelect: handleToggleAll,
             multiple,
+            cursorPosition,
         }),
         getOptionListSearchProps: () => ({
             placeholder: searchPlaceholder,
             onChange: handleSearchChange,
             defaultQuery: searchQuery,
+            autoFocus,
+            ref: searchInputRef,
         }),
         listContainerProps: {
             ref: listContainerRef,
@@ -276,8 +338,7 @@ export const useOptionList = ({
             onCancelClick: handleCancelButtonClick,
             onConfirmClick: handleConfirmButtonClick,
         },
-        isSelectAllOptionRendered:
-            enableSelectAllOption && multiple && !searchQuery,
+        isSelectAllOptionRendered,
         groupIndex,
     };
 };

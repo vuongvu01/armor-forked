@@ -21,11 +21,6 @@ export const OptionListItem: FunctionComponent<OptionListItemPropsType> = ({
 }) => {
     const theme = useComponentTheme(OPTION_LIST_ITEM_CLASS_PREFIX);
 
-    const classOverride = useOptionListItemClassName(
-        OPTION_LIST_ITEM_CLASS_PREFIX,
-        className,
-    );
-
     const {
         rootProps,
         checkboxProps,
@@ -35,6 +30,12 @@ export const OptionListItem: FunctionComponent<OptionListItemPropsType> = ({
         showAdditionalInfo,
         getAdditionalInfo,
     } = useOptionListItem(props);
+
+    const classOverride = useOptionListItemClassName(
+        OPTION_LIST_ITEM_CLASS_PREFIX,
+        className,
+        rootProps.isFocused,
+    );
 
     return (
         <OptionListItemRoot

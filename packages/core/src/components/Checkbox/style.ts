@@ -88,25 +88,14 @@ const checkmarkStyle = ({
                   transform: rotate(0);
               `;
 
-    return css`${checkmarkColor}${tickStyle}`;
+    return css`
+        ${checkmarkColor}${tickStyle}
+    `;
 };
 
-/** 👉 ROOT ELEMENT */
-export const CheckboxRoot = styled.label.withConfig(propsBlocker)<
-    CheckboxRootPropsType
->`
-    display: inline-flex;
-    margin: 0;
-    font-weight: ${fontWeightRegular};
-
-    ${mouseCursor};
-    ${getComponentOverride('Checkbox')};
-    ${marginProps};
-`;
-
-export const CheckboxCheckmark = styled.div.withConfig(propsBlocker)<
-    CheckboxCheckmarkPropsType
->`
+export const CheckboxCheckmark = styled.div.withConfig(
+    propsBlocker,
+)<CheckboxCheckmarkPropsType>`
     position: relative;
     width: ${sizes.checkbox.side}px;
     height: ${sizes.checkbox.side}px;
@@ -142,9 +131,30 @@ export const CheckboxCheckmark = styled.div.withConfig(propsBlocker)<
     ${pointerEvents};
 `;
 
-export const CheckboxInput = styled.input.withConfig(propsBlocker)<
-    CheckboxInputPropsType
->`
+/** 👉 ROOT ELEMENT */
+export const CheckboxRoot = styled.label.withConfig(
+    propsBlocker,
+)<CheckboxRootPropsType>`
+    display: inline-flex;
+    margin: 0;
+    font-weight: ${fontWeightRegular};
+
+    &:hover {
+        ${CheckboxCheckmark}:before {
+            border-width: 1px;
+            border-style: solid;
+            ${uncheckedHover}
+        }
+    }
+
+    ${mouseCursor};
+    ${getComponentOverride('Checkbox')};
+    ${marginProps};
+`;
+
+export const CheckboxInput = styled.input.withConfig(
+    propsBlocker,
+)<CheckboxInputPropsType>`
     opacity: 0;
     position: absolute;
     margin: 0;

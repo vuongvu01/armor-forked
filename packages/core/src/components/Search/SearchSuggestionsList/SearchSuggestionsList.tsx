@@ -27,7 +27,7 @@ export const SearchSuggestionsList: FC<SearchSuggestionsListPropsType> = ({
      */
     icon,
     renderItemIcon,
-    cursor,
+    cursorPosition,
     searchQuery,
     noResultsLabel,
     theme,
@@ -80,7 +80,7 @@ export const SearchSuggestionsList: FC<SearchSuggestionsListPropsType> = ({
                     renderItemAdditionalInfo={renderItemAdditionalInfo}
                     icon={icon}
                     renderItemIcon={renderItemIcon}
-                    cursor={cursor}
+                    cursorPosition={cursorPosition}
                     searchQuery={searchQuery}
                     theme={theme}
                 />
@@ -98,7 +98,7 @@ SearchSuggestionsList.propTypes = {
     additionalInfo: PropTypes.element,
     renderItemAdditionalInfo: PropTypes.func,
     icon: PropTypes.element,
-    cursor: PropTypes.number,
+    cursorPosition: PropTypes.number,
     searchQuery: PropTypes.string,
     options: PropTypes.arrayOf(
         PropTypes.shape({

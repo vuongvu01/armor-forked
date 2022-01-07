@@ -14,19 +14,21 @@ import { TableRowCells } from './TableRowCells';
 export const TableRow = forwardRef<HTMLTableRowElement, TableRowPropsType>(
     function TableRow({ className, children, ...restProps }, ref) {
         const theme = useComponentTheme(TABLE_ROW_CLASS_PREFIX);
+
+        const { rootProps, cellsProps, isHovered } = useTableRow(restProps);
+
         const classNameComponents = useTableRowClassNames(
             TABLE_ROW_CLASS_PREFIX,
             className,
+            isHovered,
         );
-
-        const { rootProps, cellsProps } = useTableRow(restProps);
 
         return (
             <TableRowRoot
-                data-testid={tableRowRootTestId}
                 {...rootProps}
-                theme={theme}
+                data-testid={tableRowRootTestId}
                 className={classNameComponents.Root}
+                theme={theme}
                 ref={ref}
             >
                 <TableRowCells {...cellsProps}>{children}</TableRowCells>
