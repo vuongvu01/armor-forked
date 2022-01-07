@@ -1,3 +1,16 @@
+# [1.83.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.82.0...@deliveryhero/armor@1.83.0) (2022-01-07)
+
+
+### Bug Fixes
+
+* **dropdown:** options.label prop-type ([#796](https://github.com/deliveryhero/armor/issues/796)) ([e862752](https://github.com/deliveryhero/armor/commit/e862752e31003c21452c9b383c713c80967db9de))
+* **search:** Search accessibility improvements [LD-555] ([57837b1](https://github.com/deliveryhero/armor/commit/57837b17a7cc4457f8eb0338f9296d1de455f085))
+
+
+### Features
+
+* **data-table:** implement row reordering through drag and drop ([#814](https://github.com/deliveryhero/armor/issues/814)) ([9b39d35](https://github.com/deliveryhero/armor/commit/9b39d35a4e554780cc4807902147be4a03f73103))
+
 # [1.82.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.81.4...@deliveryhero/armor@1.82.0) (2021-12-16)
 
 
