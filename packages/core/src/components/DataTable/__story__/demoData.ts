@@ -1,4 +1,6 @@
-export const columns = [
+import { DataTableColumnType } from '../type';
+
+export const columns: DataTableColumnType[] = [
     {
         title: 'Name',
         id: 'name',
@@ -36,6 +38,50 @@ export const dataSource = [
         address: '10 Downing Street',
     },
 ];
+
+export const longDataSource = [
+    ...dataSource,
+    {
+        id: '4',
+        name: 'Alejandro',
+        age: 30,
+        address: '100 Down St',
+    },
+    {
+        id: '5',
+        name: 'Karolina',
+        age: 22,
+        address: '111 Down St',
+    },
+    {
+        id: '6',
+        name: 'Violeta',
+        age: 19,
+        address: '123 Down St',
+    },
+    {
+        id: '7',
+        name: 'Sandra',
+        age: 55,
+        address: '223 Down St',
+    },
+    {
+        id: '8',
+        name: 'Elia',
+        age: 86,
+        address: '423 Down St',
+    },
+    {
+        id: '9',
+        name: 'Ramon',
+        age: 59,
+        address: '923 Down St',
+    },
+];
+
+export const dataSourceWithNumberIds = longDataSource.map(
+    ({ id, ...rest }) => ({ ...rest, id: Number(id) }),
+);
 
 export const columnsWide = [
     {

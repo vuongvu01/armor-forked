@@ -1,4 +1,4 @@
-import React, { forwardRef, Fragment, useMemo } from 'react';
+import React, { forwardRef, Fragment, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import {
     useComponentTheme,
@@ -22,6 +22,8 @@ import {
     DataTableVirtualPadding,
     DataTableFooter,
     DataTableEmptyStateContainer,
+    DataTableRowDragHandle,
+    DataTableDragHandleCell,
 } from './style';
 import { DATA_TABLE_CLASS_PREFIX } from './constants';
 import { useDataTableClassNames } from './hooks/useDataTableClassNames';
@@ -30,6 +32,8 @@ import { makeRowClassName } from './utils/makeRowClassName';
 import { ActionSheet } from '../ActionSheet';
 import { DataTableContext } from './DataTableContext';
 import { EmptyState } from '../EmptyState';
+import { DataTableDroppableContainer } from './DataTableDroppableContainer';
+import { DataTableDraggableRowContainer } from './DataTableDraggableRowContainer';
 
 /**
  * @armor-docs-component
@@ -55,6 +59,9 @@ export const DataTable = forwardRef<HTMLDivElement, DataTablePropsType>(
             enableRowSelection,
             getSelectAllCheckboxCellProps,
             getSelectRowCheckboxCellProps,
+
+            enableRowReordering,
+            onRowOrderChange,
 
             // action sheet
             isActionSheetVisible,
@@ -102,169 +109,215 @@ export const DataTable = forwardRef<HTMLDivElement, DataTablePropsType>(
             };
         }, [selectedRowIds, unselectRows, data]);
 
+        const renderRow = useCallback(
+            // eslint-disable-next-line react/display-name
+            (activeId: string, dragHandlerProps?: any) => () => {
+                const index = data.findIndex(
+                    ({ id }) => String(id) === activeId,
+                );
+                const item = data[index];
+
+                return (
+                    <TableRow
+                        {...getRowProps(item)}
+                        className={makeRowClassName(
+                            getRowNumber(index),
+                            initialDataLength,
+                            classNameComponents,
+                        )}
+                    >
+                        {enableRowReordering && (
+                            <DataTableDragHandleCell>
+                                <DataTableRowDragHandle {...dragHandlerProps} />
+                            </DataTableDragHandleCell>
+                        )}
+                        {enableRowSelection && (
+                            <TableCheckboxCell
+                                {...getSelectRowCheckboxCellProps(item.id)}
+                            />
+                        )}
+                        {columns.map((column) => {
+                            const TableCellComponent = getCellTag(column);
+
+                            return (
+                                <TableCellComponent
+                                    key={column.id}
+                                    {...getCellProps(column, item)}
+                                >
+                                    {column.formatDataCellContent
+                                        ? column.formatDataCellContent(
+                                              item[column.id],
+                                              item,
+                                              column,
+                                          )
+                                        : item[column.id]}
+                                </TableCellComponent>
+                            );
+                        })}
+                    </TableRow>
+                );
+            },
+            [
+                data,
+                columns,
+                initialDataLength,
+                classNameComponents,
+                enableRowSelection,
+                enableRowReordering,
+                getRowProps,
+                getRowNumber,
+                getCellProps,
+                getCellTag,
+                getSelectRowCheckboxCellProps,
+            ],
+        );
+
         return (
             <DataTableContext.Provider value={contextValue}>
-                <DataTableRoot
-                    {...rootProps}
-                    theme={theme}
-                    className={classNameComponents.Root}
+                <DataTableDroppableContainer
+                    enableRowReordering={enableRowReordering}
+                    data={data}
+                    tableProps={tableProps}
+                    renderRow={renderRow}
+                    onRowOrderChange={onRowOrderChange}
                 >
-                    {isActionSheetVisible && (
-                        <ActionSheet marginBottom={2} {...actionSheetProps}>
-                            {actions}
-                        </ActionSheet>
-                    )}
-                    <Table {...tableProps}>
-                        {enableHeader && (
-                            <TableHead>
-                                <TableRow>
-                                    {enableRowSelection && (
-                                        <TableCheckboxCell
-                                            {...getSelectAllCheckboxCellProps()}
-                                        />
-                                    )}
-                                    {columns.map(column => {
-                                        const TableHeadCellComponent = getHeadCellTag(
-                                            column,
-                                        );
-
-                                        return (
-                                            <TableHeadCellComponent
-                                                key={column.key || column.id}
-                                                {...getHeadCellProps(column)}
-                                            >
-                                                {column.title}
-                                            </TableHeadCellComponent>
-                                        );
-                                    })}
-                                </TableRow>
-                            </TableHead>
+                    <DataTableRoot
+                        {...rootProps}
+                        theme={theme}
+                        className={classNameComponents.Root}
+                    >
+                        {isActionSheetVisible && (
+                            <ActionSheet marginBottom={2} {...actionSheetProps}>
+                                {actions}
+                            </ActionSheet>
                         )}
-                        <TableBody {...tableBodyProps}>
-                            {enableEmpty && (
-                                <tr
-                                    className={
-                                        classNameComponents.EmptyStateTableRow
-                                    }
-                                >
-                                    <td
-                                        {...getEmptyStateCellProps()}
-                                        className={
-                                            classNameComponents.EmptyStateTableCell
-                                        }
-                                    >
-                                        <DataTableEmptyStateContainer
-                                            className={
-                                                classNameComponents.EmptyStateContainer
-                                            }
-                                        >
-                                            <EmptyState
-                                                marginY={3}
-                                                {...getEmptyStateProps()}
+                        <Table {...tableProps}>
+                            {enableHeader && (
+                                <TableHead>
+                                    <TableRow>
+                                        {enableRowReordering && (
+                                            <DataTableDragHandleCell />
+                                        )}
+                                        {enableRowSelection && (
+                                            <TableCheckboxCell
+                                                {...getSelectAllCheckboxCellProps()}
                                             />
-                                        </DataTableEmptyStateContainer>
-                                    </td>
-                                </tr>
-                            )}
-                            {enableBody && (
-                                <>
-                                    {enableVirtualization && (
-                                        <DataTableVirtualPadding
-                                            {...getVirtualTopSpaceProps()}
-                                            className={
-                                                classNameComponents.VirtualPaddingTop
-                                            }
-                                            theme={theme}
-                                        />
-                                    )}
-                                    {data.map((item, index) => {
-                                        const key = item.key || item.id;
+                                        )}
+                                        {columns.map((column) => {
+                                            const TableHeadCellComponent =
+                                                getHeadCellTag(column);
 
-                                        return (
-                                            <Fragment key={key}>
-                                                <TableRow
-                                                    {...getRowProps(item)}
-                                                    className={makeRowClassName(
-                                                        getRowNumber(index),
-                                                        initialDataLength,
-                                                        classNameComponents,
+                                            return (
+                                                <TableHeadCellComponent
+                                                    key={
+                                                        column.key || column.id
+                                                    }
+                                                    {...getHeadCellProps(
+                                                        column,
                                                     )}
                                                 >
-                                                    {enableRowSelection && (
-                                                        <TableCheckboxCell
-                                                            {...getSelectRowCheckboxCellProps(
-                                                                item.id,
-                                                            )}
-                                                        />
-                                                    )}
-                                                    {columns.map(column => {
-                                                        const TableCellComponent = getCellTag(
-                                                            column,
-                                                        );
-
-                                                        return (
-                                                            <TableCellComponent
-                                                                key={column.id}
-                                                                {...getCellProps(
-                                                                    column,
-                                                                    item,
-                                                                )}
-                                                            >
-                                                                {column.formatDataCellContent
-                                                                    ? column.formatDataCellContent(
-                                                                          item[
-                                                                              column
-                                                                                  .id
-                                                                          ],
-                                                                          item,
-                                                                          column,
-                                                                      )
-                                                                    : item[
-                                                                          column
-                                                                              .id
-                                                                      ]}
-                                                            </TableCellComponent>
-                                                        );
-                                                    })}
-                                                </TableRow>
-                                                {enableExpandableSections && (
-                                                    <TableExpandableSection
-                                                        {...getExpandableSectionProps(
-                                                            item,
-                                                        )}
-                                                    >
-                                                        {renderExpandableSection(
-                                                            item,
-                                                        )}
-                                                    </TableExpandableSection>
-                                                )}
-                                            </Fragment>
-                                        );
-                                    })}
-                                    {enableVirtualization && (
-                                        <DataTableVirtualPadding
-                                            {...getVirtualBottomSpaceProps()}
+                                                    {column.title}
+                                                </TableHeadCellComponent>
+                                            );
+                                        })}
+                                    </TableRow>
+                                </TableHead>
+                            )}
+                            <TableBody {...tableBodyProps}>
+                                {enableEmpty && (
+                                    <tr
+                                        className={
+                                            classNameComponents.EmptyStateTableRow
+                                        }
+                                    >
+                                        <td
+                                            {...getEmptyStateCellProps()}
                                             className={
-                                                classNameComponents.VirtualPaddingBottom
+                                                classNameComponents.EmptyStateTableCell
                                             }
-                                            theme={theme}
-                                        />
-                                    )}
-                                </>
-                            )}
-                        </TableBody>
-                    </Table>
-                    {enableFooter && (
-                        <DataTableFooter
-                            theme={theme}
-                            className={classNameComponents.Footer}
-                        >
-                            {enablePageNavigation && (
-                                <PageNavigation {...pageNavigationProps} />
-                            )}
-                        </DataTableFooter>
-                    )}
-                </DataTableRoot>
+                                        >
+                                            <DataTableEmptyStateContainer
+                                                className={
+                                                    classNameComponents.EmptyStateContainer
+                                                }
+                                            >
+                                                <EmptyState
+                                                    marginY={3}
+                                                    {...getEmptyStateProps()}
+                                                />
+                                            </DataTableEmptyStateContainer>
+                                        </td>
+                                    </tr>
+                                )}
+                                {enableBody && (
+                                    <>
+                                        {enableVirtualization && (
+                                            <DataTableVirtualPadding
+                                                {...getVirtualTopSpaceProps()}
+                                                className={
+                                                    classNameComponents.VirtualPaddingTop
+                                                }
+                                                theme={theme}
+                                            />
+                                        )}
+                                        {data.map((item) => {
+                                            const key = item.key || item.id;
+
+                                            return (
+                                                <Fragment key={key}>
+                                                    <DataTableDraggableRowContainer
+                                                        enableRowReordering={
+                                                            enableRowReordering
+                                                        }
+                                                        id={String(item.id)}
+                                                    >
+                                                        {(dragHandlerProps) =>
+                                                            renderRow(
+                                                                String(item.id),
+                                                                dragHandlerProps,
+                                                            )()
+                                                        }
+                                                    </DataTableDraggableRowContainer>
+
+                                                    {enableExpandableSections && (
+                                                        <TableExpandableSection
+                                                            {...getExpandableSectionProps(
+                                                                item,
+                                                            )}
+                                                        >
+                                                            {renderExpandableSection(
+                                                                item,
+                                                            )}
+                                                        </TableExpandableSection>
+                                                    )}
+                                                </Fragment>
+                                            );
+                                        })}
+                                        {enableVirtualization && (
+                                            <DataTableVirtualPadding
+                                                {...getVirtualBottomSpaceProps()}
+                                                className={
+                                                    classNameComponents.VirtualPaddingBottom
+                                                }
+                                                theme={theme}
+                                            />
+                                        )}
+                                    </>
+                                )}
+                            </TableBody>
+                        </Table>
+                        {enableFooter && (
+                            <DataTableFooter
+                                theme={theme}
+                                className={classNameComponents.Footer}
+                            >
+                                {enablePageNavigation && (
+                                    <PageNavigation {...pageNavigationProps} />
+                                )}
+                            </DataTableFooter>
+                        )}
+                    </DataTableRoot>
+                </DataTableDroppableContainer>
             </DataTableContext.Provider>
         );
     },

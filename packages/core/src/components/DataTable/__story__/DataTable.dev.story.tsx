@@ -7,14 +7,20 @@ import React, {
     useState,
     useMemo,
 } from 'react';
-import cloneDeep from 'clone-deep';
+import cloneDeep from 'lodash/cloneDeep';
 import styled from 'styled-components';
 import { ScalarType } from '@deliveryhero/armor-system';
 
-import { columns, columnsWide, dataSource, dataSourceWide } from './demoData';
+import {
+    columns,
+    columnsWide,
+    dataSource,
+    longDataSource,
+    dataSourceWide,
+    dataSourceWithNumberIds,
+} from './demoData';
 import { DataTable } from '../DataTable';
 import { getSortingFunction } from '../utils/getSortingFunction';
-import { ObjectLiteralType } from '../../../type';
 import { multiplyDataRows } from './utils';
 import { withWrapper } from '../../../helpers/Wrapper';
 import { Button } from '../../Button';
@@ -35,6 +41,84 @@ export const Basic = () => {
     return <DataTable columns={columns} data={data} />;
 };
 
+export const RowReordering = () => {
+    const [data, setData] = useState(dataSource);
+
+    return (
+        <DataTable
+            columns={columns}
+            data={data}
+            enableRowReordering
+            onRowOrderChange={setData as any}
+        />
+    );
+};
+
+export const RowReorderingWithNumberIds = () => {
+    const [data, setData] = useState(dataSourceWithNumberIds);
+
+    return (
+        <DataTable
+            columns={columns}
+            data={data}
+            enableRowReordering
+            onRowOrderChange={setData as any}
+        />
+    );
+};
+
+export const RowReorderingWithScroll = () => {
+    const [data, setData] = useState(longDataSource);
+
+    return (
+        <DataTable
+            stickyHead
+            columns={columns}
+            data={data}
+            enableRowReordering
+            onRowOrderChange={setData as any}
+        />
+    );
+};
+
+export const RowReorderingWithInteractiveContent = () => {
+    const [data, setData] = useState(dataSource);
+
+    const columnsInteractive = useMemo(() => {
+        const c = cloneDeep(columns);
+        c[1].formatDataCellContent = (value: string) => (
+            // eslint-disable-next-line no-alert
+            <button onClick={() => alert(value)}>{value}</button>
+        );
+        return c;
+    }, []);
+
+    return (
+        <DataTable
+            stickyHead
+            columns={columnsInteractive}
+            data={data}
+            enableRowReordering
+            onRowOrderChange={setData as any}
+        />
+    );
+};
+
+export const RowReorderingWithSelection = () => {
+    const [data, setData] = useState(longDataSource);
+
+    return (
+        <DataTable
+            stickyHead
+            columns={columns}
+            data={data}
+            enableRowSelection
+            enableRowReordering
+            onRowOrderChange={setData as any}
+        />
+    );
+};
+
 export const RowSortingUncontrolled = () => {
     const [data, setData] = useState<typeof dataSource>(dataSource);
 
@@ -43,7 +127,7 @@ export const RowSortingUncontrolled = () => {
             columns={columns}
             data={data}
             defaultRowSortOrder={[['age', 'asc']]}
-            onRowSortOrderChange={newWorldOrder => {
+            onRowSortOrderChange={(newWorldOrder) => {
                 if (newWorldOrder.length) {
                     const field = newWorldOrder[0][0];
                     const order = newWorldOrder[0][1];
@@ -79,7 +163,7 @@ export const RowSortingControlled = () => {
             columns={columns}
             data={data}
             rowSortOrder={sorting}
-            onRowSortOrderChange={newWorldOrder => {
+            onRowSortOrderChange={(newWorldOrder) => {
                 if (newWorldOrder.length) {
                     const field = newWorldOrder[0][0];
                     const order = newWorldOrder[0][1];
@@ -117,7 +201,7 @@ export const RowSortingNoUnsortedState = () => {
             data={data}
             defaultRowSortOrder={[['age', 'asc']]}
             enableNeutralRowSorting={false}
-            onRowSortOrderChange={newWorldOrder => {
+            onRowSortOrderChange={(newWorldOrder) => {
                 if (newWorldOrder.length) {
                     const field = newWorldOrder[0][0];
                     const order = newWorldOrder[0][1];
@@ -153,7 +237,7 @@ export const RowSelectionUncontrolled = () => {
             data={data}
             enableRowSelection
             defaultSelectedRowIds={['2']}
-            onRowSelectionChange={selection => {
+            onRowSelectionChange={(selection) => {
                 console.log('new selection');
                 console.log(selection);
             }}
@@ -168,7 +252,7 @@ const DeleteSelectedItemsButton = ({ children, setData }) => {
     const handleDelete = () => {
         const newData: any = [];
         // @ts-ignore
-        data.forEach(dataItem => {
+        data.forEach((dataItem) => {
             if (!selectedRowIds.includes(dataItem.id)) {
                 newData.push(dataItem);
             }
@@ -222,13 +306,12 @@ export const RowSelectionWithActionSheetUncontrolled = () => {
 
 export const RowSelectionWithActionSheetControlled = () => {
     const [data, setData] = useState<typeof dataSource>(dataSource);
-    const [selectedRows, setSelectedRows] = useState<ScalarType[]>(
-        initialRowSelection,
-    );
+    const [selectedRows, setSelectedRows] =
+        useState<ScalarType[]>(initialRowSelection);
 
     const handleDelete = () => {
         const newData: any = [];
-        data.forEach(dataItem => {
+        data.forEach((dataItem) => {
             if (!selectedRows.includes(dataItem.id)) {
                 newData.push(dataItem);
             }
@@ -243,7 +326,7 @@ export const RowSelectionWithActionSheetControlled = () => {
     };
 
     // @ts-ignore
-    const handleRowSelectionChange = selection => setSelectedRows(selection);
+    const handleRowSelectionChange = (selection) => setSelectedRows(selection);
 
     return (
         <DataTable
@@ -291,7 +374,7 @@ export const RowSelectionAndStickyHead = () => {
             data={data}
             enableRowSelection
             defaultSelectedRowIds={['2_0']}
-            onRowSelectionChange={selection => {
+            onRowSelectionChange={(selection) => {
                 console.log('new selection');
                 console.log(selection);
             }}
@@ -309,7 +392,7 @@ export const RowSelectionAndNoStickyHead = () => {
             data={data}
             enableRowSelection
             defaultSelectedRowIds={['2_0']}
-            onRowSelectionChange={selection => {
+            onRowSelectionChange={(selection) => {
                 console.log('new selection');
                 console.log(selection);
             }}
@@ -328,7 +411,7 @@ export const RowSelectionAndStickyColumns = () => {
             data={data}
             enableRowSelection
             defaultSelectedRowIds={['2_0']}
-            onRowSelectionChange={selection => {
+            onRowSelectionChange={(selection) => {
                 console.log('new selection');
                 console.log(selection);
             }}
@@ -348,7 +431,7 @@ export const RowSelectionAndNoStickyColumns = () => {
             data={data}
             enableRowSelection
             defaultSelectedRowIds={['2_0']}
-            onRowSelectionChange={selection => {
+            onRowSelectionChange={(selection) => {
                 console.log('new selection');
                 console.log(selection);
             }}
@@ -366,7 +449,7 @@ export const WithExtraRows = () => {
             data={data}
             defaultExpandedSectionIds={['3']}
             expandableSectionControllerColumnId="name"
-            renderExpandableSection={item => {
+            renderExpandableSection={(item) => {
                 return (
                     <>
                         {item.name} is {item.age} years old and he/she lives in{' '}
@@ -387,13 +470,13 @@ export const WithExtraRowsAndRowSelection = () => {
             data={data}
             enableRowSelection
             defaultSelectedRowIds={['2']}
-            onRowSelectionChange={selection => {
+            onRowSelectionChange={(selection) => {
                 console.log('new selection');
                 console.log(selection);
             }}
             defaultExpandedSectionIds={['3']}
             expandableSectionControllerColumnId="name"
-            renderExpandableSection={item => {
+            renderExpandableSection={(item) => {
                 return (
                     <>
                         {item.name} is {item.age} years old and he/she lives in{' '}
@@ -414,13 +497,13 @@ export const WithExtraRowsAndRowSelectionTriggerAge = () => {
             data={data}
             enableRowSelection
             defaultSelectedRowIds={['2']}
-            onRowSelectionChange={selection => {
+            onRowSelectionChange={(selection) => {
                 console.log('new selection');
                 console.log(selection);
             }}
             defaultExpandedSectionIds={['3']}
             expandableSectionControllerColumnId="age"
-            renderExpandableSection={item => {
+            renderExpandableSection={(item) => {
                 return (
                     <>
                         {item.name} is {item.age} years old and he/she lives in{' '}
@@ -447,12 +530,12 @@ export const WithRowSelectionAndMultipleExpansionControllers = () => {
             data={data}
             enableRowSelection
             defaultSelectedRowIds={['2']}
-            onRowSelectionChange={selection => {
+            onRowSelectionChange={(selection) => {
                 console.log('new selection');
                 console.log(selection);
             }}
             defaultExpandedSectionIds={['2']}
-            renderExpandableSection={item => {
+            renderExpandableSection={(item) => {
                 return (
                     <>
                         {item.name} is {item.age} years old and he/she lives in{' '}
@@ -460,7 +543,7 @@ export const WithRowSelectionAndMultipleExpansionControllers = () => {
                     </>
                 );
             }}
-            onSectionExpansionChange={expansion => {
+            onSectionExpansionChange={(expansion) => {
                 console.log(expansion);
             }}
         />
@@ -594,10 +677,7 @@ const columnsWithCustomProps = [
     {
         title: 'Name',
         id: 'name',
-        getDataCellProps: (
-            value: string,
-            item: { id: string | number } & ObjectLiteralType,
-        ) => {
+        getDataCellProps: (value: string) => {
             if (value.startsWith('M')) {
                 return {
                     enableTriggerVisibility: false,

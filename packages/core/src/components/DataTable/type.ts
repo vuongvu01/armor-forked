@@ -22,7 +22,7 @@ export type DataTableSortOrderWay = 'asc' | 'desc';
 export type DataTableRowSortOrderType = [ScalarType, DataTableSortOrderWay][];
 
 export type DataTableColumnType<
-    D extends DataTableDataType = DataTableDataType
+    D extends DataTableDataType = DataTableDataType,
 > = {
     /** Column identifier */
     id: string;
@@ -131,6 +131,14 @@ type DataTableEffectivePropsType = Partial<{
     selectedRowIds: ScalarType[];
     defaultSelectedRowIds: ScalarType[];
     onRowSelectionChange: (selectedRows: ScalarType[]) => void;
+
+    // row reordering
+    enableRowReordering: boolean;
+    onRowOrderChange: (
+        items: DataTableDataType[],
+        oldIndex: number,
+        newIndex: number,
+    ) => void;
 
     // action sheet
     /** If set to true, enables a sticky the ActionSheet above the table */

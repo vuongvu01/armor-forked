@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-// eslint-disable-next-line import/no-unresolved
-import { withKnobs } from '@storybook/addon-knobs';
 import styled from 'styled-components';
 
 import { GroupHelper } from '../../../helpers/GroupHelper';
@@ -11,7 +9,7 @@ import { Stack } from '../../Stack';
 export default {
     title: 'Components/Checkbox',
     component: Checkbox,
-    decorators: [withKnobs, withWrapper],
+    decorators: [withWrapper],
     parameters: {},
 };
 
