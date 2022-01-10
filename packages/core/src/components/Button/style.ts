@@ -38,10 +38,15 @@ const getTertiaryDangerInitialColors = () => css`
     color: ${color('error.main')};
 `;
 
-const getPrimarySecondaryDisabledColors = () => css`
+const getPrimaryDisabledColors = () => css`
     color: ${color('neutral.05')};
     border-color: ${color('neutral.03')};
     background-color: ${color('neutral.03')};
+`;
+
+const getSecondaryDisabledColors = () => css`
+    color: ${color('neutral.05')};
+    border-color: ${color('neutral.05')};
 `;
 
 const getDynamicStyle = ({
@@ -64,17 +69,17 @@ const getDynamicStyle = ({
             background-color: transparent;
 
             &:hover {
-                color: ${color('primary.light')};
-                border-color: ${color('primary.light')};
-                background-color: ${color('primary.lightest')};
+                color: ${color('primary.05')};
+                border-color: ${color('primary.05')};
             }
             &:focus {
-                color: ${color('primary.light')};
-                border-color: ${color('primary.light')};
+                color: ${color('primary.05')};
+                border-color: ${color('primary.05')};
             }
             &:active {
                 color: ${color('primary.dark')};
                 border-color: ${color('primary.dark')};
+                background-color: ${color('neutral.02')};
             }
             ${Button.Root.secondary};
         `;
@@ -87,6 +92,7 @@ const getDynamicStyle = ({
             }
             &:active {
                 color: ${color('primary.dark')};
+                background-color: ${color('neutral.02')};
             }
             &:focus:not(:active) {
                 ${getTertiaryInitialColors};
@@ -99,8 +105,8 @@ const getDynamicStyle = ({
             &:hover,
             &:focus {
                 color: ${color('neutral.00')};
-                border-color: ${color('primary.light')};
-                background-color: ${color('primary.light')};
+                border-color: ${color('primary.05')};
+                background-color: ${color('primary.05')};
             }
             &:active {
                 color: ${color('neutral.00')};
@@ -155,8 +161,8 @@ const getDynamicStyle = ({
                 ${getPrimaryDangerInitialColors};
                 &:hover,
                 &:focus {
-                    border-color: ${color('error.light')};
-                    background-color: ${color('error.light')};
+                    border-color: ${color('error.05')};
+                    background-color: ${color('error.05')};
                 }
                 &:active {
                     border-color: ${color('error.dark')};
@@ -196,15 +202,26 @@ const getDynamicStyle = ({
                     color: ${color('neutral.05')};
                 }
             `;
-        } else {
+        } else if (secondary) {
             result = css`
                 ${result};
-                ${getPrimarySecondaryDisabledColors};
+                ${getSecondaryDisabledColors};
                 &:hover,
                 &:focus,
                 &:active,
                 &:focus:not(:active) {
-                    ${getPrimarySecondaryDisabledColors};
+                    ${getSecondaryDisabledColors};
+                }
+            `;
+        } else {
+            result = css`
+                ${result};
+                ${getPrimaryDisabledColors};
+                &:hover,
+                &:focus,
+                &:active,
+                &:focus:not(:active) {
+                    ${getPrimaryDisabledColors};
                 }
             `;
         }
@@ -221,9 +238,9 @@ const Wrapper = ({
 }) => children({ ...restProps });
 
 /** 👉 ROOT ELEMENT */
-export const ButtonRoot = styled(Wrapper).withConfig(propsBlocker)<
-    ButtonRootPropsType
->`
+export const ButtonRoot = styled(Wrapper).withConfig(
+    propsBlocker,
+)<ButtonRootPropsType>`
     ${reset()};
     align-items: center;
     appearance: none;
