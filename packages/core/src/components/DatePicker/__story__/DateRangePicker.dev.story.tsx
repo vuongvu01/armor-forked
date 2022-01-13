@@ -261,7 +261,7 @@ export const AlwaysFiveDays = () => {
         <DateRangePicker
             enableMinWidthAutoCorrection={false}
             dateValue={value}
-            onDateValueChange={newValue => {
+            onDateValueChange={(newValue) => {
                 if (newValue) {
                     setDateStart(newValue[0]);
                 }
@@ -348,5 +348,28 @@ export const WithClearButton = () => {
                 enableActionButtons
             />
         </Box>
+    );
+};
+
+export const AlwaysFiveDaysOneClick = () => {
+    const [dateStart, setDateStart] = useState(new Date());
+    const value = useMemo(() => {
+        return [
+            dateStart,
+            add(dateStart, { days: 5 }),
+        ] as DateRangePickerPropsType['dateValue'];
+    }, [dateStart]);
+
+    return (
+        <DateRangePicker
+            enableMinWidthAutoCorrection={false}
+            enableOnChangeOnSingleClick={true}
+            dateValue={value}
+            onDateValueChange={(newValue) => {
+                if (newValue) {
+                    setDateStart(newValue[0]);
+                }
+            }}
+        />
     );
 };
