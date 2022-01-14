@@ -1,3 +1,15 @@
+# [1.3.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-brands@1.2.1...@deliveryhero/armor-brands@1.3.0) (2022-01-14)
+
+
+### Bug Fixes
+
+* **daterangepicker:** DateRangePicker enableOnChangeOnSingleClick property implemented [AR-28] ([8b5f388](https://github.com/deliveryhero/armor/commit/8b5f3886c0cb86e7d575ec481351ff66f514f7bd))
+
+
+### Features
+
+* **buttons:** updated pressed,active and disabled state for buttons [LD-630] ([#815](https://github.com/deliveryhero/armor/issues/815)) ([4efef1b](https://github.com/deliveryhero/armor/commit/4efef1bc7de1b6bcf36807f8a71654f845de20c9))
+
 ## [1.2.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-brands@1.2.0...@deliveryhero/armor-brands@1.2.1) (2022-01-07)
 
 
