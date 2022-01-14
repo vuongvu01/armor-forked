@@ -69,5 +69,28 @@ describe('<DateRangePicker />', () => {
             expect(makeDateString(callArg[0])).toEqual('7-9-2021');
             expect(makeDateString(callArg[1])).toEqual('7-19-2021');
         });
+
+        it('should select on single click', () => {
+            const onDateValueChange = jest.fn();
+
+            const { container } = render(
+                <DateRangePicker
+                    open
+                    enableOnChangeOnSingleClick
+                    onDateValueChange={onDateValueChange}
+                    currentDate={currentDate}
+                />,
+                {
+                    wrapper: DisablePortal,
+                },
+            );
+
+            pickADay(container, 9);
+            expect(onDateValueChange).toHaveBeenCalled();
+
+            const callArg = onDateValueChange.mock.calls[0][0];
+
+            expect(makeDateString(callArg[0])).toEqual('7-9-2021');
+        });
     });
 });

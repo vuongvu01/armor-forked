@@ -1,9 +1,10 @@
-import { css } from 'styled-components';
+import { css, FlattenSimpleInterpolation } from 'styled-components';
 import {
     colorGrey50,
     colorRed20,
     colorRed30,
     colorRed40,
+    color as colorUtil,
 } from '@deliveryhero/armor-system';
 import { ButtonPropsType } from '@deliveryhero/armor';
 
@@ -33,14 +34,51 @@ export const getButtonOverride = ({
         }
     `;
 
-    // remove background for all non-disabled S & T on hover
-    if (!reallyDisabled && (secondary || tertiary)) {
-        result = css`
-            ${result};
-            &:hover {
-                background-color: transparent;
-            }
-        `;
+    // button styles for P, S & T states
+    if (!reallyDisabled) {
+        if (primary) {
+            result = css`
+                ${result};
+                &:hover {
+                    background-color: ${colorUtil('primary.02')};
+                    border-color: ${colorUtil('primary.02')};
+                }
+                &:active {
+                    background-color: ${colorUtil('primary.04')};
+                    border-color: ${colorUtil('primary.04')};
+                }
+            ` as FlattenSimpleInterpolation;
+        }
+        if (secondary) {
+            result = css`
+                ${result};
+                &:hover {
+                    background-color: transparent;
+                    color: ${colorUtil('primary.02')};
+                    border-color: ${colorUtil('primary.02')};
+                }
+                &:active {
+                    background-color: ${colorUtil('neutral.11')};
+                    color: ${colorUtil('primary.02')};
+                    border-color: ${colorUtil('primary.02')};
+                }
+            ` as FlattenSimpleInterpolation;
+        }
+        if (tertiary) {
+            result = css`
+                ${result};
+                &:hover {
+                    background-color: transparent;
+                    color: ${colorUtil('primary.02')};
+                    border-color: transparent;
+                }
+                &:active {
+                    background-color: ${colorUtil('neutral.11')};
+                    color: ${colorUtil('primary.02')};
+                    border-color: ${colorUtil('neutral.11')};
+                }
+            ` as FlattenSimpleInterpolation;
+        }
     }
 
     // do complete color remap for the danger state

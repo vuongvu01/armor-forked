@@ -28,17 +28,13 @@ export const useDateRangePickerSelectionEvents = (
         closeDropdown,
         enableCloseOnSelect,
     }: SelectionPropType,
-    _: DateRangePickerPropsType,
+    { enableOnChangeOnSingleClick }: DateRangePickerPropsType,
 ) => {
-    const [
-        selectionStartCandidate,
-        setSelectionStartCandidate,
-    ] = useState<DateVector | null>(null);
+    const [selectionStartCandidate, setSelectionStartCandidate] =
+        useState<DateVector | null>(null);
 
-    const [
-        selectionEndCandidate,
-        setSelectionEndCandidate,
-    ] = useState<DateVector | null>(null);
+    const [selectionEndCandidate, setSelectionEndCandidate] =
+        useState<DateVector | null>(null);
 
     const onReallyChange = useCallback(
         (start: DateVector, end: DateVector) => {
@@ -84,24 +80,37 @@ export const useDateRangePickerSelectionEvents = (
                 return;
             }
 
-            if (selectionStartCandidate) {
-                const endDate = vector.clone();
-                if (
-                    isRangeLegit(
-                        selectionStartCandidate,
-                        endDate,
-                        isDateSelectable,
-                    )
-                ) {
-                    onReallyChange(selectionStartCandidate, endDate);
-                    setSelectionStartCandidate(null);
-                    setSelectionEndCandidate(null);
-                }
+            if (enableOnChangeOnSingleClick) {
+                onReallyChange(vector.clone(), vector.clone());
+                setSelectionStartCandidate(null);
+                setSelectionEndCandidate(null);
             } else {
-                setSelectionStartCandidate(vector.clone());
+                if (selectionStartCandidate) {
+                    // the beginning was already chosen
+                    const endDate = vector.clone();
+                    if (
+                        isRangeLegit(
+                            selectionStartCandidate,
+                            endDate,
+                            isDateSelectable,
+                        )
+                    ) {
+                        onReallyChange(selectionStartCandidate, endDate);
+                        setSelectionStartCandidate(null);
+                        setSelectionEndCandidate(null);
+                    }
+                } else {
+                    // set the beginning
+                    setSelectionStartCandidate(vector.clone());
+                }
             }
         },
-        [isDateSelectable, selectionStartCandidate, onReallyChange],
+        [
+            isDateSelectable,
+            selectionStartCandidate,
+            onReallyChange,
+            enableOnChangeOnSingleClick,
+        ],
     );
 
     // when the mouse is moving over a calendar item, we set it as a selection end candidate
