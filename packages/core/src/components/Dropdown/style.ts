@@ -23,9 +23,9 @@ import { Tag } from '../Tag';
 import { SINGLE_LINE_MAX_ALLOWED_HEIGHT } from './constants';
 
 /** 👉 ROOT ELEMENT */
-export const DropdownRoot = styled.div.withConfig(propsBlocker)<
-    DropdownRootPropsType
->`
+export const DropdownRoot = styled.div.withConfig(
+    propsBlocker,
+)<DropdownRootPropsType>`
     display: inline-block;
 
     ${getComponentOverride('Dropdown')};
@@ -33,9 +33,9 @@ export const DropdownRoot = styled.div.withConfig(propsBlocker)<
     ${widthProps};
 `;
 
-export const DropdownContainer = styled.div.withConfig(propsBlocker)<
-    DropdownRootPropsType
->`
+export const DropdownContainer = styled.div.withConfig(
+    propsBlocker,
+)<DropdownRootPropsType>`
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -49,10 +49,11 @@ const getOptionListContainerStyle = ({
     `;
 };
 
-export const DropdownOptionListContainer = styled.div.withConfig(propsBlocker)<
-    DropdownOptionListContainerPropsType
->`
+export const DropdownOptionListContainer = styled.div.withConfig(
+    propsBlocker,
+)<DropdownOptionListContainerPropsType>`
     ${getOptionListContainerStyle};
+    ${widthProps};
 `;
 
 const dropdownExpansionIndicatorContentStyle = ({
@@ -67,15 +68,15 @@ const dropdownExpansionIndicatorContentStyle = ({
               height: ${spacing(8)};
           `;
 
-export const ExpansionIndicatorContainer = styled.div.withConfig(propsBlocker)<
-    ExpansionIndicatorContainerPropsType
->`
+export const ExpansionIndicatorContainer = styled.div.withConfig(
+    propsBlocker,
+)<ExpansionIndicatorContainerPropsType>`
     align-self: stretch;
 `;
 
-export const DropdownExpansionIndicator = styled(ExpansionIndicator)<
-    ExpansionIndicatorContainerPropsType
->`
+export const DropdownExpansionIndicator = styled(
+    ExpansionIndicator,
+)<ExpansionIndicatorContainerPropsType>`
     cursor: pointer;
 
     .ExpansionIndicator-Content {
@@ -145,9 +146,9 @@ const dropdownBeforeSectionContainerStyle = ({
     return result;
 };
 
-export const DropdownBeforeSectionRoot = styled(Pack)<
-    DropdownTagsSectionPropsType
->`
+export const DropdownBeforeSectionRoot = styled(
+    Pack,
+)<DropdownTagsSectionPropsType>`
     padding-left: ${spacing(4)};
     padding-right: ${spacing(4)};
     min-width: ${spacing(40)};
@@ -157,9 +158,9 @@ export const DropdownBeforeSectionRoot = styled(Pack)<
     ${dropdownBeforeSectionContainerStyle}
 `;
 
-export const DropdownBeforeSectionTagsContainer = styled(PackItem)<
-    DropdownTagsSectionPropsType
->`
+export const DropdownBeforeSectionTagsContainer = styled(
+    PackItem,
+)<DropdownTagsSectionPropsType>`
     width: 100%;
     padding-top: ${spacing(1)};
     padding-bottom: ${spacing(1)};
@@ -171,9 +172,9 @@ export const DropdownBeforeSectionTagsWrapper = styled.div.withConfig(
     width: fit-content;
 `;
 
-export const DropdownBeforeSectionActionContainer = styled(PackItem)<
-    DropdownTagsSectionPropsType
->`
+export const DropdownBeforeSectionActionContainer = styled(
+    PackItem,
+)<DropdownTagsSectionPropsType>`
     width: ${spacing(4)};
 `;
 
@@ -185,9 +186,9 @@ const dropdownBeforeSectionClearButtonStyle = ({
         cursor: ${disabled ? 'default' : 'pointer'};
     `;
 
-export const DropdownBeforeSectionClearButton = styled(PackItem)<
-    DropdownTagsSectionPropsType
->`
+export const DropdownBeforeSectionClearButton = styled(
+    PackItem,
+)<DropdownTagsSectionPropsType>`
     position: absolute;
     border: 0 none;
     background-color: transparent;
@@ -206,9 +207,9 @@ const dropdownTagStyle = ({ disabled }: DropdownTagsSectionPropsType) => {
     `;
 };
 
-export const DropdownTag = styled(Tag).attrs({ small: true })<
-    DropdownTagsSectionPropsType
->`
+export const DropdownTag = styled(Tag).attrs({
+    small: true,
+})<DropdownTagsSectionPropsType>`
     margin-top: ${spacing(1)};
     margin-right: ${spacing(2)};
     margin-bottom: ${spacing(1)};

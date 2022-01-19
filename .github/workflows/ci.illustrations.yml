@@ -1,0 +1,42 @@
+name: CI.ILLUSTRATIONS
+
+on:
+    pull_request:
+        branches:
+            - dev
+            - master
+        paths:
+            - 'packages/illustrations/**'
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        env:
+            GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
+
+        steps:
+            - uses: actions/checkout@v2
+            - name: Install (common)
+              run: yarn
+            - name: Install peers (common)
+              run: yarn install-peers
+
+            - name: Build (system)
+              working-directory: ./packages/system
+              run: yarn build:cjs
+
+            - name: Lint
+              working-directory: ./packages/illustrations
+              run: yarn run lint
+            - name: Test
+              working-directory: ./packages/illustrations
+              run: yarn run test
+            - name: Test visual install
+              working-directory: ./packages/illustrations/visual
+              run: yarn install
+            - name: Test visual
+              working-directory: ./packages/illustrations
+              run: yarn test:visual:cicd
+            - name: Build
+              working-directory: ./packages/illustrations
+              run: yarn run build

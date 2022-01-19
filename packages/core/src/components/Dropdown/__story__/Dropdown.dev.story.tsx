@@ -1613,3 +1613,31 @@ export const WithFixedWidthAndLimitTagCount = () => {
         />
     );
 };
+
+export const WithMaxAndMinDropdownWidthOptions = () => {
+    const handleSelect = (option: any) => {
+        console.log('story handleSelect', { option });
+    };
+
+    return (
+        <>
+            <Typography paragraph>
+                Max Dropdown width = 600px; Min Dropdown width = 400px;
+            </Typography>
+            <Dropdown
+                isListExpanded
+                wide
+                margin={1}
+                onSelect={handleSelect}
+                options={characters}
+                label="Multiple options"
+                multiple
+                enableSelectAllOption
+                enableSearchOption
+                groups={factions}
+                maxDropdownWidth={150}
+                minDropdownWidth={100}
+            />
+        </>
+    );
+};

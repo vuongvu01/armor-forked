@@ -113,6 +113,10 @@ export const makeDarkTheme = () =>
                     '05': colorGrey40,
                     '06': colorGrey01,
                 },
+                illustration: {
+                    brand: colorBlue40,
+                    neutral: colorGrey01,
+                },
             },
 
             // the name of this structure is temporary, rename it to "components" when theme.ts is removed everywhere

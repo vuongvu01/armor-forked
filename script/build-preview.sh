@@ -17,3 +17,7 @@ yarn build
 cd ${DIR}/../packages/core/dev
 yarn
 yarn build
+
+cd ${DIR}/../packages/illustrations
+yarn
+yarn build
