@@ -76,7 +76,8 @@ export const useDropdown = <E extends HTMLInputElement>(
         placeholder,
         value,
         tabIndex,
-
+        maxDropdownWidth,
+        minDropdownWidth,
         ...restProps
     }: DropdownPropsType,
     ref: RefType<E>,
@@ -84,21 +85,21 @@ export const useDropdown = <E extends HTMLInputElement>(
     const internalInputRef = useRootRef<E>(ref);
     const containerRef = useRef(null);
     const dropdownRef = useRef<HTMLDivElement>(null);
-    const [initialSelection, setInitialSelection] = useState<
-        DropdownInternalValueType
-    >([]);
+    const [initialSelection, setInitialSelection] =
+        useState<DropdownInternalValueType>([]);
 
     const [internalValue, setInternalValue] = useValue(value, defaultValue);
     const [searchQuery, setSearchQuery] = useState(defaultSearchQuery);
-    const [internalGroups, setInternalGroups] = useState<
-        InternalItemGroupObjectType
-    >({});
+    const [internalGroups, setInternalGroups] =
+        useState<InternalItemGroupObjectType>({});
 
     const { internalOptions, isFlat } = useOptions(options, formatOption);
 
-    const [dynamicInternalOptions, setDynamicInternalOptions] = useDerivedState<
-        DropdownInternalOptionType
-    >(() => internalOptions, [internalOptions]);
+    const [dynamicInternalOptions, setDynamicInternalOptions] =
+        useDerivedState<DropdownInternalOptionType>(
+            () => internalOptions,
+            [internalOptions],
+        );
 
     const [isOptionListShown, setIsOptionListShown] = useControlledState(
         isListExpanded !== undefined ? isListExpanded : defaultOpen,
@@ -219,7 +220,7 @@ export const useDropdown = <E extends HTMLInputElement>(
 
     const { zIndex: realZIndex } = useOverlay(isOptionListShown, { zIndex });
 
-    usePanelWidth(containerRef, dropdownRef);
+    usePanelWidth(containerRef, dropdownRef, isOptionListShown);
 
     return {
         rootProps: restProps,
@@ -253,6 +254,8 @@ export const useDropdown = <E extends HTMLInputElement>(
         listContainerProps: {
             ref: dropdownRef,
             zIndex: realZIndex,
+            maxWidth: maxDropdownWidth,
+            minWidth: minDropdownWidth,
             ...panelProps,
         },
         optionListProps: {
