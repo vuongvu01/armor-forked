@@ -298,6 +298,10 @@ export const defaultThemeStructure = {
             '01': colorPurple20,
             '02': colorPurple50,
         },
+        illustration: {
+            brand: colorBlue30,
+            neutral: colorGrey60,
+        },
     },
     shape: {
         borderRadius: {

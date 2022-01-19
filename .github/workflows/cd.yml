@@ -45,6 +45,10 @@ jobs:
               working-directory: ./packages/props-parser
               run: yarn run build
 
+            - name: Build (illustrations)
+              working-directory: ./packages/illustrations
+              run: yarn run build
+
             - name: Publish
               run: yarn multi-semantic-release | tee ~/.release-output.txt
 
