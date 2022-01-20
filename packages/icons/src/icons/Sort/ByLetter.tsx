@@ -15,7 +15,10 @@ const ByLetterIconShape = (
 export const ByLetterIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`ByLetterIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`ByLetterIcon ${className || ''}`}
+        >
             {ByLetterIconShape}
         </SVGIcon>
     );

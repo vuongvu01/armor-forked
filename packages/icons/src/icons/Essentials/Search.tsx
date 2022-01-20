@@ -15,7 +15,10 @@ const SearchIconShape = (
 export const SearchIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`SearchIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`SearchIcon ${className || ''}`}
+        >
             {SearchIconShape}
         </SVGIcon>
     );

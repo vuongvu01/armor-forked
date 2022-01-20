@@ -15,7 +15,10 @@ const WalletIconShape = (
 export const WalletIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`WalletIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`WalletIcon ${className || ''}`}
+        >
             {WalletIconShape}
         </SVGIcon>
     );

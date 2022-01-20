@@ -15,7 +15,10 @@ const FlashIconShape = (
 export const FlashIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`FlashIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`FlashIcon ${className || ''}`}
+        >
             {FlashIconShape}
         </SVGIcon>
     );

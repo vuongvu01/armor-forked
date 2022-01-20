@@ -15,7 +15,10 @@ const AddIconShape = (
 export const AddIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`AddIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`AddIcon ${className || ''}`}
+        >
             {AddIconShape}
         </SVGIcon>
     );

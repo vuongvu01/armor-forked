@@ -15,7 +15,10 @@ const ReceiptIconShape = (
 export const ReceiptIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`ReceiptIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`ReceiptIcon ${className || ''}`}
+        >
             {ReceiptIconShape}
         </SVGIcon>
     );

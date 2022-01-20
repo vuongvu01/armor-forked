@@ -15,7 +15,10 @@ const MergeIconShape = (
 export const MergeIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`MergeIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`MergeIcon ${className || ''}`}
+        >
             {MergeIconShape}
         </SVGIcon>
     );

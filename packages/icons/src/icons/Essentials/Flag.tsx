@@ -15,7 +15,10 @@ const FlagIconShape = (
 export const FlagIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`FlagIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`FlagIcon ${className || ''}`}
+        >
             {FlagIconShape}
         </SVGIcon>
     );

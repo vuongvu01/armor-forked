@@ -15,7 +15,10 @@ const LogoutIconShape = (
 export const LogoutIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`LogoutIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`LogoutIcon ${className || ''}`}
+        >
             {LogoutIconShape}
         </SVGIcon>
     );

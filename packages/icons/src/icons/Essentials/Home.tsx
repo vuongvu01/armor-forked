@@ -15,7 +15,10 @@ const HomeIconShape = (
 export const HomeIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`HomeIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`HomeIcon ${className || ''}`}
+        >
             {HomeIconShape}
         </SVGIcon>
     );

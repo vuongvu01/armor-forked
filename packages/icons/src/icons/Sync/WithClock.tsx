@@ -15,7 +15,10 @@ const WithClockIconShape = (
 export const WithClockIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`WithClockIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`WithClockIcon ${className || ''}`}
+        >
             {WithClockIconShape}
         </SVGIcon>
     );

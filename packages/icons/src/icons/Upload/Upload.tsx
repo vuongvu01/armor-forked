@@ -15,7 +15,10 @@ const UploadIconShape = (
 export const UploadIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`UploadIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`UploadIcon ${className || ''}`}
+        >
             {UploadIconShape}
         </SVGIcon>
     );

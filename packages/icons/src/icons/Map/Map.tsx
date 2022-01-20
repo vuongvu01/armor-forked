@@ -15,7 +15,10 @@ const MapIconShape = (
 export const MapIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`MapIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`MapIcon ${className || ''}`}
+        >
             {MapIconShape}
         </SVGIcon>
     );

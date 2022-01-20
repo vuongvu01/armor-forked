@@ -15,7 +15,10 @@ const ForkKnifeIconShape = (
 export const ForkKnifeIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`ForkKnifeIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`ForkKnifeIcon ${className || ''}`}
+        >
             {ForkKnifeIconShape}
         </SVGIcon>
     );

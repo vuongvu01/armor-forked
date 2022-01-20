@@ -15,7 +15,10 @@ const CogIconShape = (
 export const CogIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`CogIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`CogIcon ${className || ''}`}
+        >
             {CogIconShape}
         </SVGIcon>
     );

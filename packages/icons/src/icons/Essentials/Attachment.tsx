@@ -15,7 +15,10 @@ const AttachmentIconShape = (
 export const AttachmentIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`AttachmentIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`AttachmentIcon ${className || ''}`}
+        >
             {AttachmentIconShape}
         </SVGIcon>
     );

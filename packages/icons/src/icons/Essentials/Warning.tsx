@@ -15,7 +15,10 @@ const WarningIconShape = (
 export const WarningIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`WarningIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`WarningIcon ${className || ''}`}
+        >
             {WarningIconShape}
         </SVGIcon>
     );

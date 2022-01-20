@@ -15,7 +15,10 @@ const SplitIconShape = (
 export const SplitIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`SplitIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`SplitIcon ${className || ''}`}
+        >
             {SplitIconShape}
         </SVGIcon>
     );

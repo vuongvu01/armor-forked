@@ -15,7 +15,10 @@ const TickBoxIconShape = (
 export const TickBoxIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`TickBoxIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`TickBoxIcon ${className || ''}`}
+        >
             {TickBoxIconShape}
         </SVGIcon>
     );

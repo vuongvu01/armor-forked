@@ -15,7 +15,10 @@ const QuotationIconShape = (
 export const QuotationIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`QuotationIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`QuotationIcon ${className || ''}`}
+        >
             {QuotationIconShape}
         </SVGIcon>
     );

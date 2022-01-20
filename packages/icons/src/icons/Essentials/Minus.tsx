@@ -15,7 +15,10 @@ const MinusIconShape = (
 export const MinusIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`MinusIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`MinusIcon ${className || ''}`}
+        >
             {MinusIconShape}
         </SVGIcon>
     );

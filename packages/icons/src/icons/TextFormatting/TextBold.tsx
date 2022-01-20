@@ -15,7 +15,10 @@ const TextBoldIconShape = (
 export const TextBoldIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`TextBoldIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`TextBoldIcon ${className || ''}`}
+        >
             {TextBoldIconShape}
         </SVGIcon>
     );

@@ -15,7 +15,10 @@ const ListBulletIconShape = (
 export const ListBulletIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`ListBulletIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`ListBulletIcon ${className || ''}`}
+        >
             {ListBulletIconShape}
         </SVGIcon>
     );
