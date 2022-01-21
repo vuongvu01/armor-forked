@@ -1,4 +1,17 @@
-## [1.3.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-props-parser@1.3.0...@deliveryhero/armor-props-parser@1.3.1) (2021-12-16)
+## [1.1.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-system@1.1.0...@deliveryhero/armor-system@1.1.1) (2022-01-07)
+
+
+### Bug Fixes
+
+* **dropdown:** options.label prop-type ([#796](https://github.com/deliveryhero/armor/issues/796)) ([e862752](https://github.com/deliveryhero/armor/commit/e862752e31003c21452c9b383c713c80967db9de))
+* **search:** Search accessibility improvements [LD-555] ([57837b1](https://github.com/deliveryhero/armor/commit/57837b17a7cc4457f8eb0338f9296d1de455f085))
+
+
+### Features
+
+* **data-table:** implement row reordering through drag and drop ([#814](https://github.com/deliveryhero/armor/issues/814)) ([9b39d35](https://github.com/deliveryhero/armor/commit/9b39d35a4e554780cc4807902147be4a03f73103))
+
+# [1.1.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-system@1.0.0...@deliveryhero/armor-system@1.1.0) (2021-12-16)
 
 
 ### Bug Fixes
@@ -21,38 +34,9 @@
 * **icon:** IdeaStrategy icon added [AR-16] ([866a72e](https://github.com/deliveryhero/armor/commit/866a72edd67faa59eebcf08756463c7c7e54f6e4))
 * **icons:** DefaultSort and Dollar icons added [AR-18] ([dcfa839](https://github.com/deliveryhero/armor/commit/dcfa8399a72f2f4ea6401b1997770e78aaebfe62))
 
-# @deliveryhero/armor-props-parser [1.3.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-props-parser@1.2.0...@deliveryhero/armor-props-parser@1.3.0) (2021-11-22)
-
-# @deliveryhero/armor-props-parser [1.2.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-props-parser@1.1.2...@deliveryhero/armor-props-parser@1.2.0) (2021-09-06)
-
-
-### Features
-
-* **docs:** Property parser tuple node traverse, DatePicker examples ([#709](https://github.com/deliveryhero/armor/issues/709)) ([d9f3efb](https://github.com/deliveryhero/armor/commit/d9f3efbdbb43225161c80f3c03fc7a59410ae16e))
-* **dropdown:** Support for grouped selection in Dropdown [LD-528] ([#640](https://github.com/deliveryhero/armor/issues/640)) ([627a6c9](https://github.com/deliveryhero/armor/commit/627a6c915061398509a5bd863edd632b273aa858))
-
-## @deliveryhero/armor-props-parser [1.1.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-props-parser@1.1.1...@deliveryhero/armor-props-parser@1.1.2) (2021-08-30)
+# @deliveryhero/armor-system 1.0.0 (2021-11-22)
 
 
 ### Bug Fixes
 
-* **props-parser:** Props Parser stats introduced ([#698](https://github.com/deliveryhero/armor/issues/698)) ([cf89d0f](https://github.com/deliveryhero/armor/commit/cf89d0f62d14a823e5349461268748e0c07d3825))
-
-## @deliveryhero/armor-props-parser [1.1.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-props-parser@1.1.0...@deliveryhero/armor-props-parser@1.1.1) (2021-08-30)
-
-
-### Bug Fixes
-
-* **property-parser:** Property parser minor fixes and improvements ([#696](https://github.com/deliveryhero/armor/issues/696)) ([f0b448f](https://github.com/deliveryhero/armor/commit/f0b448f4b971361dae75aa1a31b6e0c1d64371ec))
-
-# @deliveryhero/armor-props-parser [1.1.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-props-parser@1.0.1...@deliveryhero/armor-props-parser@1.1.0) (2021-08-27)
-
-## @deliveryhero/armor-props-parser [1.0.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-props-parser@1.0.0...@deliveryhero/armor-props-parser@1.0.1) (2021-08-24)
-
-
-### Bug Fixes
-
-* parser quick fix ([c872bd6](https://github.com/deliveryhero/armor/commit/c872bd60c9ce8128ad0f5f4c92ebadb9cc26c758))
-* parser quick fix x2 ([a54a6f6](https://github.com/deliveryhero/armor/commit/a54a6f6414248c35e3fc28a2a974188caf1fc900))
-
-# @deliveryhero/armor-props-parser 1.0.0 (2021-08-24)
+* Post-revamp TypeScript type fixes ([7dd148e](https://github.com/deliveryhero/armor/commit/7dd148e723a1a348e26c1a8d8721e923179c56ec))

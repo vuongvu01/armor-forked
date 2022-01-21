@@ -1,3 +1,58 @@
+## @deliveryhero/armor-icons [1.20.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.20.0...@deliveryhero/armor-icons@1.20.1) (2022-01-07)
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor-system:** upgraded to 1.1.1
+
+# @deliveryhero/armor-icons [1.20.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.19.0...@deliveryhero/armor-icons@1.20.0) (2021-12-16)
+
+
+### Features
+
+* **datepicker:** DateRangePicker, DatePicker: API improvements: isDateAllowed, freeDateRanges, isDateFree, today button, close on select, clear selection  [LD-545] ([135a927](https://github.com/deliveryhero/armor/commit/135a92743ada5bc01d14bebc5becff47694847ba))
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor-system:** upgraded to 1.1.0
+
+# @deliveryhero/armor-icons [1.19.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.18.0...@deliveryhero/armor-icons@1.19.0) (2021-12-03)
+
+
+### Features
+
+* **icons:** DefaultSort and Dollar icons added [AR-18] ([dcfa839](https://github.com/deliveryhero/armor/commit/dcfa8399a72f2f4ea6401b1997770e78aaebfe62))
+
+# @deliveryhero/armor-icons [1.18.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.17.0...@deliveryhero/armor-icons@1.18.0) (2021-11-30)
+
+
+### Features
+
+* **icon:** IdeaStrategy icon added [AR-16] ([866a72e](https://github.com/deliveryhero/armor/commit/866a72edd67faa59eebcf08756463c7c7e54f6e4))
+
+# @deliveryhero/armor-icons [1.17.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.16.1...@deliveryhero/armor-icons@1.17.0) (2021-11-22)
+
+
+### Features
+
+* **icons:** Flag, PlayCircleFilled, StarFilled, StarOutline, Checklist ([#780](https://github.com/deliveryhero/armor/issues/780)) ([5410c15](https://github.com/deliveryhero/armor/commit/5410c1554b6c4c8a1ee93949b17858cabd227e3e))
+* **icons:** split and merge [AR-12] ([#777](https://github.com/deliveryhero/armor/issues/777)) ([eecbd68](https://github.com/deliveryhero/armor/commit/eecbd681d44366e3199475b018a2a78526f16ff6))
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor-system:** upgraded to 1.0.0
+
 ## @deliveryhero/armor-icons [1.16.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.16.0...@deliveryhero/armor-icons@1.16.1) (2021-10-22)
 
 

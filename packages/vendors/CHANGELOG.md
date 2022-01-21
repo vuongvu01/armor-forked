@@ -1,3 +1,108 @@
+## @deliveryhero/armor-vendors [1.3.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.3.1...@deliveryhero/armor-vendors@1.3.2) (2022-01-14)
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor:** upgraded to 1.84.0
+
+## [1.3.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.3.0...@deliveryhero/armor-vendors@1.3.1) (2022-01-07)
+
+
+### Bug Fixes
+
+* **dropdown:** options.label prop-type ([#796](https://github.com/deliveryhero/armor/issues/796)) ([e862752](https://github.com/deliveryhero/armor/commit/e862752e31003c21452c9b383c713c80967db9de))
+* **search:** Search accessibility improvements [LD-555] ([57837b1](https://github.com/deliveryhero/armor/commit/57837b17a7cc4457f8eb0338f9296d1de455f085))
+
+
+### Features
+
+* **data-table:** implement row reordering through drag and drop ([#814](https://github.com/deliveryhero/armor/issues/814)) ([9b39d35](https://github.com/deliveryhero/armor/commit/9b39d35a4e554780cc4807902147be4a03f73103))
+
+# [1.3.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.2.5...@deliveryhero/armor-vendors@1.3.0) (2021-12-16)
+
+
+### Bug Fixes
+
+* **props-parser:** Props-parser updated to be able to process new file structure ([7a07033](https://github.com/deliveryhero/armor/commit/7a07033f34ddc315c1480b991448e9c8178c2265))
+* ESLint rules of hooks plugin swiched from warning to error, complaints resolved ([1f812fa](https://github.com/deliveryhero/armor/commit/1f812fa52743472c5e7738ba6993dcbf3cad5e1a))
+* **dropdown component:** Fix Dropdown grouped options [LD-597] ([ade45f6](https://github.com/deliveryhero/armor/commit/ade45f6763b8564f69c6f070116810a4c8b8f8b4))
+
+
+### Features
+
+* **datepicker:** DateRangePicker, DatePicker: API improvements: isDateAllowed, freeDateRanges, isDateFree, today button, close on select, clear selection  [LD-545] ([135a927](https://github.com/deliveryhero/armor/commit/135a92743ada5bc01d14bebc5becff47694847ba))
+
+## @deliveryhero/armor-vendors [1.2.5](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.2.4...@deliveryhero/armor-vendors@1.2.5) (2021-12-14)
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor:** upgraded to 1.81.4
+
+## @deliveryhero/armor-vendors [1.2.4](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.2.3...@deliveryhero/armor-vendors@1.2.4) (2021-12-08)
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor:** upgraded to 1.81.3
+
+## @deliveryhero/armor-vendors [1.2.3](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.2.2...@deliveryhero/armor-vendors@1.2.3) (2021-12-03)
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor:** upgraded to 1.81.2
+* **@deliveryhero/armor-icons:** upgraded to 1.19.0
+
+## @deliveryhero/armor-vendors [1.2.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.2.1...@deliveryhero/armor-vendors@1.2.2) (2021-11-30)
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor:** upgraded to 1.81.1
+* **@deliveryhero/armor-icons:** upgraded to 1.18.0
+
+## @deliveryhero/armor-vendors [1.2.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.2.0...@deliveryhero/armor-vendors@1.2.1) (2021-11-22)
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor:** upgraded to 1.81.0
+
+# @deliveryhero/armor-vendors [1.2.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.1.90...@deliveryhero/armor-vendors@1.2.0) (2021-11-22)
+
+
+### Features
+
+* **icons:** split and merge [AR-12] ([#777](https://github.com/deliveryhero/armor/issues/777)) ([eecbd68](https://github.com/deliveryhero/armor/commit/eecbd681d44366e3199475b018a2a78526f16ff6))
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor:** upgraded to 1.80.0
+* **@deliveryhero/armor-icons:** upgraded to 1.17.0
+
 ## @deliveryhero/armor-vendors [1.1.90](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.1.89...@deliveryhero/armor-vendors@1.1.90) (2021-11-02)
 
 
