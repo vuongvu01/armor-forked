@@ -13,4 +13,5 @@
 ## Contacts
 
  - [Sergei Gannochenko](mailto:sergei.gannochenko@deliveryhero.com)
- - [Nikolay Melnikov](mailto:nikolay.melnikov@deliveryhero.com)
+ - [Vuong Vu](mailto:vu.vuong@deliveryhero.com)
+ - [Vijay Singh](mailto:vijay.singh@deliveryhero.com)
