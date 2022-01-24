@@ -1,7 +1,7 @@
 {
-  "extends": "../tsconfig.json",
-  "compilerOptions": {
-      "module": "CommonJS",
-      "target": "ES2019"
-  }
+    "extends": "../tsconfig.json",
+    "compilerOptions": {
+        "module": "CommonJS",
+        "target": "ES2019"
+    }
 }
