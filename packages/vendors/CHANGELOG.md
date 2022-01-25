@@ -1,3 +1,16 @@
+## [1.3.3](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.3.2...@deliveryhero/armor-vendors@1.3.3) (2022-01-25)
+
+
+### Bug Fixes
+
+* **dropdown:** Update in the Dropdown component, dropdown always fits with the input field [AR-29] ([67d5f9e](https://github.com/deliveryhero/armor/commit/67d5f9eaac378bd80de36ccf6388260d0d17839e))
+
+
+### Features
+
+* **illustration-package:** new sub package[LD-561] ([#845](https://github.com/deliveryhero/armor/issues/845)) ([6b0e366](https://github.com/deliveryhero/armor/commit/6b0e366c4f671337b95ab7c6393dc1345855ba27))
+* **toast:** Add toast component [LD-430] ([c1ff5e8](https://github.com/deliveryhero/armor/commit/c1ff5e857870e8939a6b73c9c7195c7ffde064dd))
+
 ## @deliveryhero/armor-vendors [1.3.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.3.1...@deliveryhero/armor-vendors@1.3.2) (2022-01-14)
 
 
