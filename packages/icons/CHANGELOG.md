@@ -1,3 +1,18 @@
+## [1.20.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.20.1...@deliveryhero/armor-icons@1.20.2) (2022-01-25)
+
+
+### Bug Fixes
+
+* **daterangepicker:** DateRangePicker enableOnChangeOnSingleClick property implemented [AR-28] ([8b5f388](https://github.com/deliveryhero/armor/commit/8b5f3886c0cb86e7d575ec481351ff66f514f7bd))
+* **dropdown:** Update in the Dropdown component, dropdown always fits with the input field [AR-29] ([67d5f9e](https://github.com/deliveryhero/armor/commit/67d5f9eaac378bd80de36ccf6388260d0d17839e))
+
+
+### Features
+
+* **buttons:** updated pressed,active and disabled state for buttons [LD-630] ([#815](https://github.com/deliveryhero/armor/issues/815)) ([4efef1b](https://github.com/deliveryhero/armor/commit/4efef1bc7de1b6bcf36807f8a71654f845de20c9))
+* **illustration-package:** new sub package[LD-561] ([#845](https://github.com/deliveryhero/armor/issues/845)) ([6b0e366](https://github.com/deliveryhero/armor/commit/6b0e366c4f671337b95ab7c6393dc1345855ba27))
+* **toast:** Add toast component [LD-430] ([c1ff5e8](https://github.com/deliveryhero/armor/commit/c1ff5e857870e8939a6b73c9c7195c7ffde064dd))
+
 ## @deliveryhero/armor-icons [1.20.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.20.0...@deliveryhero/armor-icons@1.20.1) (2022-01-07)
 
 
