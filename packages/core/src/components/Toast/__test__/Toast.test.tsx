@@ -16,7 +16,7 @@ describe('<Toast />', () => {
         await cleanupHooks();
     });
 
-    it('should render itself without errors', async () => {
+    it('should render itself without any errors', async () => {
         render(<Toast id="id" message="message" />);
     });
 

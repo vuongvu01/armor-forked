@@ -8,7 +8,7 @@ describe('<Illustration />', () => {
         cleanup();
     });
 
-    it('renders itself without errors', async () => {
+    it('renders itself without any errors', async () => {
         render(<RestaurantIllustration />);
     });
 
