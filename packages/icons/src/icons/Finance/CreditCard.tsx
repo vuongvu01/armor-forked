@@ -15,7 +15,10 @@ const CreditCardIconShape = (
 export const CreditCardIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`CreditCardIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`CreditCardIcon ${className || ''}`}
+        >
             {CreditCardIconShape}
         </SVGIcon>
     );

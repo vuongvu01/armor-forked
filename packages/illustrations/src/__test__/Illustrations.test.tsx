@@ -12,7 +12,7 @@ describe('<Illustration />', () => {
         render(<RestaurantIllustration />);
     });
 
-    it('ensures that a className corresponding to the Icon name is set', async () => {
+    it('ensures that a className corresponding to the illustration name is set', async () => {
         const { container: restaurantIllustrationContainer } = render(
             <RestaurantIllustration />,
         );

@@ -15,7 +15,10 @@ const SmartphoneIconShape = (
 export const SmartphoneIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`SmartphoneIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`SmartphoneIcon ${className || ''}`}
+        >
             {SmartphoneIconShape}
         </SVGIcon>
     );

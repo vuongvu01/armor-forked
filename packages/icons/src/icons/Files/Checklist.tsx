@@ -15,7 +15,10 @@ const ChecklistIconShape = (
 export const ChecklistIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`ChecklistIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`ChecklistIcon ${className || ''}`}
+        >
             {ChecklistIconShape}
         </SVGIcon>
     );

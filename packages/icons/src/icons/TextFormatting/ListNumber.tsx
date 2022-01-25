@@ -15,7 +15,10 @@ const ListNumberIconShape = (
 export const ListNumberIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`ListNumberIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`ListNumberIcon ${className || ''}`}
+        >
             {ListNumberIconShape}
         </SVGIcon>
     );

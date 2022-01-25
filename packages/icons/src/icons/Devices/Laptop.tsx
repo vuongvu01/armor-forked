@@ -15,7 +15,10 @@ const LaptopIconShape = (
 export const LaptopIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`LaptopIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`LaptopIcon ${className || ''}`}
+        >
             {LaptopIconShape}
         </SVGIcon>
     );

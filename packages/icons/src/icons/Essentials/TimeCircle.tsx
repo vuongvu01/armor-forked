@@ -15,7 +15,10 @@ const TimeCircleIconShape = (
 export const TimeCircleIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`TimeCircleIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`TimeCircleIcon ${className || ''}`}
+        >
             {TimeCircleIconShape}
         </SVGIcon>
     );

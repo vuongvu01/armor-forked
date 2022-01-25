@@ -15,7 +15,10 @@ const UnlinkIconShape = (
 export const UnlinkIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`UnlinkIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`UnlinkIcon ${className || ''}`}
+        >
             {UnlinkIconShape}
         </SVGIcon>
     );

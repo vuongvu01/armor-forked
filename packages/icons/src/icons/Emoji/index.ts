@@ -2,3 +2,4 @@
 
 export * from './EmojiConfetti';
 export * from './EmojiDisappointed';
+export * from './EmojiSmile';

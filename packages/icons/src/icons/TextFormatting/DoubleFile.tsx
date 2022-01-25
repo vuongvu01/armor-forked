@@ -15,7 +15,10 @@ const DoubleFileIconShape = (
 export const DoubleFileIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`DoubleFileIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`DoubleFileIcon ${className || ''}`}
+        >
             {DoubleFileIconShape}
         </SVGIcon>
     );

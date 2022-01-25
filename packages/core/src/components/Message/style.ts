@@ -50,9 +50,9 @@ const getRootDynamicStyle = (props: MessageRootPropsType) => {
 };
 
 /** 👉 ROOT ELEMENT */
-export const MessageRoot = styled.div.withConfig(propsBlocker)<
-    MessageRootPropsType
->`
+export const MessageRoot = styled.div.withConfig(
+    propsBlocker,
+)<MessageRootPropsType>`
     ${typography('paragraphMedium')};
     box-sizing: border-box;
     border: 1px solid ${color('primary.main')};
@@ -71,17 +71,17 @@ export const MessageRoot = styled.div.withConfig(propsBlocker)<
     ${marginProps};
 `;
 
-export const MessageCentral = styled.div.withConfig(propsBlocker)<
-    MessageCentralPropsType
->`
+export const MessageCentral = styled.div.withConfig(
+    propsBlocker,
+)<MessageCentralPropsType>`
     flex-grow: 1;
     align-self: center;
     display: flex;
 `;
 
-export const MessageContent = styled.div.withConfig(propsBlocker)<
-    MessageContentPropsType
->`
+export const MessageContent = styled.div.withConfig(
+    propsBlocker,
+)<MessageContentPropsType>`
     flex-grow: 1;
     line-height: 1.3;
     color: ${color('neutral.11')};
@@ -89,9 +89,9 @@ export const MessageContent = styled.div.withConfig(propsBlocker)<
     padding-bottom: ${spacing(4)};
 `;
 
-export const MessageActions = styled.div.withConfig(propsBlocker)<
-    MessageActionsPropsType
->`
+export const MessageActions = styled.div.withConfig(
+    propsBlocker,
+)<MessageActionsPropsType>`
     flex-shrink: 0;
     align-self: center;
     margin-left: ${spacing(4)};
@@ -99,9 +99,9 @@ export const MessageActions = styled.div.withConfig(propsBlocker)<
     padding-bottom: ${spacing(1)};
 `;
 
-export const MessageExtra = styled.div.withConfig(propsBlocker)<
-    MessageExtraPropsType
->`
+export const MessageExtra = styled.div.withConfig(
+    propsBlocker,
+)<MessageExtraPropsType>`
     flex-shrink: 0;
     margin-left: ${spacing(4)};
     padding-top: ${spacing(2)};

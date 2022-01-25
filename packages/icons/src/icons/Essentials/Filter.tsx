@@ -15,7 +15,10 @@ const FilterIconShape = (
 export const FilterIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`FilterIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`FilterIcon ${className || ''}`}
+        >
             {FilterIconShape}
         </SVGIcon>
     );

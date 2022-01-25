@@ -15,7 +15,10 @@ const CancelIconShape = (
 export const CancelIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`CancelIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`CancelIcon ${className || ''}`}
+        >
             {CancelIconShape}
         </SVGIcon>
     );

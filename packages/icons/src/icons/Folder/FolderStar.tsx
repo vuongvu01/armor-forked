@@ -15,7 +15,10 @@ const FolderStarIconShape = (
 export const FolderStarIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`FolderStarIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`FolderStarIcon ${className || ''}`}
+        >
             {FolderStarIconShape}
         </SVGIcon>
     );

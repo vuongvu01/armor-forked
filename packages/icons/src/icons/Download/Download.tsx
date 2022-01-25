@@ -15,7 +15,10 @@ const DownloadIconShape = (
 export const DownloadIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`DownloadIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`DownloadIcon ${className || ''}`}
+        >
             {DownloadIconShape}
         </SVGIcon>
     );

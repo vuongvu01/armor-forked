@@ -15,7 +15,10 @@ const EditIconShape = (
 export const EditIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`EditIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`EditIcon ${className || ''}`}
+        >
             {EditIconShape}
         </SVGIcon>
     );

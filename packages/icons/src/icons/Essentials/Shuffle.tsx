@@ -15,7 +15,10 @@ const ShuffleIconShape = (
 export const ShuffleIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`ShuffleIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`ShuffleIcon ${className || ''}`}
+        >
             {ShuffleIconShape}
         </SVGIcon>
     );

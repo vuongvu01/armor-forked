@@ -15,7 +15,10 @@ const IrisOffIconShape = (
 export const IrisOffIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`IrisOffIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`IrisOffIcon ${className || ''}`}
+        >
             {IrisOffIconShape}
         </SVGIcon>
     );

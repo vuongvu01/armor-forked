@@ -15,7 +15,10 @@ const TickThickIconShape = (
 export const TickThickIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`TickThickIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`TickThickIcon ${className || ''}`}
+        >
             {TickThickIconShape}
         </SVGIcon>
     );

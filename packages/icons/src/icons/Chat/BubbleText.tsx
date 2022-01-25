@@ -15,7 +15,10 @@ const BubbleTextIconShape = (
 export const BubbleTextIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`BubbleTextIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`BubbleTextIcon ${className || ''}`}
+        >
             {BubbleTextIconShape}
         </SVGIcon>
     );

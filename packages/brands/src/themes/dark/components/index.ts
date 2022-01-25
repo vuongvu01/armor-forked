@@ -57,6 +57,8 @@ import { getIndicatorOverride } from './Indicator';
 import { getEmptyStateOverride } from './EmptyState';
 import { getExpansionIndicatorOverride } from './ExpansionIndicator';
 import { getSkeleton } from './Skeleton';
+import { getProgressBarOverride } from './ProgressBar';
+import { getToastOverride } from './Toast';
 
 export const darkThemeComponentOverrides = {
     Accordion: getAccordionOverride,
@@ -64,7 +66,8 @@ export const darkThemeComponentOverrides = {
     Button: getButtonOverride,
     Dialog: getDialogOverride,
     DialogTitle: getDialogTitleOverride,
-    DropdownBeforeSectionClearButton: getDropdownBeforeSectionClearButtonOverride,
+    DropdownBeforeSectionClearButton:
+        getDropdownBeforeSectionClearButtonOverride,
     OptionListItem: getOptionListItemOverride,
     OptionList: getOptionListOverride,
     OptionListItemGroup: getOptionListItemGroupOverride,
@@ -73,11 +76,14 @@ export const darkThemeComponentOverrides = {
     HeaderNavigationItem: getHeaderNavigationItemOverride,
     HeaderNavigationLink: getHeaderNavigationLinkOverride,
     HeaderNavigationMenu: getHeaderNavigationMenuOverride,
-    HeaderNavigationMenuContentBodyOptions: getHeaderNavigationMenuContentBodyOptionsOverride,
-    HeaderNavigationMenuContentHeader: getHeaderNavigationMenuContentHeaderOverride,
+    HeaderNavigationMenuContentBodyOptions:
+        getHeaderNavigationMenuContentBodyOptionsOverride,
+    HeaderNavigationMenuContentHeader:
+        getHeaderNavigationMenuContentHeaderOverride,
     HeaderNavigationSearch: getHeaderNavigationSearchOverride,
     HeaderNavigationSelector: getHeaderNavigationSelectorOverride,
-    HeaderNavigationSelectorDropdown: getHeaderNavigationSelectorDropdownOverride,
+    HeaderNavigationSelectorDropdown:
+        getHeaderNavigationSelectorDropdownOverride,
     HeaderNavigationTitle: getHeaderNavigationTitleOverride,
     PageNavigation: getPageNavigationOverride,
     Search: getSearchOverride,
@@ -115,4 +121,6 @@ export const darkThemeComponentOverrides = {
     Indicator: getIndicatorOverride,
     EmptyState: getEmptyStateOverride,
     ExpansionIndicator: getExpansionIndicatorOverride,
+    ProgressBar: getProgressBarOverride,
+    Toast: getToastOverride,
 };

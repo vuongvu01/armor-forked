@@ -15,7 +15,10 @@ const UserCircleIconShape = (
 export const UserCircleIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`UserCircleIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`UserCircleIcon ${className || ''}`}
+        >
             {UserCircleIconShape}
         </SVGIcon>
     );

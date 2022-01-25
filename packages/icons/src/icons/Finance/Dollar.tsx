@@ -15,7 +15,10 @@ const DollarIconShape = (
 export const DollarIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`DollarIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`DollarIcon ${className || ''}`}
+        >
             {DollarIconShape}
         </SVGIcon>
     );

@@ -15,7 +15,10 @@ const LockClosedIconShape = (
 export const LockClosedIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`LockClosedIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`LockClosedIcon ${className || ''}`}
+        >
             {LockClosedIconShape}
         </SVGIcon>
     );

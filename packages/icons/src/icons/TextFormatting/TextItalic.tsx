@@ -15,7 +15,10 @@ const TextItalicIconShape = (
 export const TextItalicIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`TextItalicIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`TextItalicIcon ${className || ''}`}
+        >
             {TextItalicIconShape}
         </SVGIcon>
     );

@@ -15,7 +15,10 @@ const ByNumberIconShape = (
 export const ByNumberIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`ByNumberIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`ByNumberIcon ${className || ''}`}
+        >
             {ByNumberIconShape}
         </SVGIcon>
     );

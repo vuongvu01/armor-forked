@@ -15,7 +15,10 @@ const LinkIconShape = (
 export const LinkIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`LinkIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`LinkIcon ${className || ''}`}
+        >
             {LinkIconShape}
         </SVGIcon>
     );

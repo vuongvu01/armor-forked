@@ -15,7 +15,10 @@ const AlignLeftIconShape = (
 export const AlignLeftIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`AlignLeftIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`AlignLeftIcon ${className || ''}`}
+        >
             {AlignLeftIconShape}
         </SVGIcon>
     );

@@ -132,8 +132,7 @@ const foodOptions = [
     { value: 1, label: 'Tacos' },
     {
         value: 2,
-        label:
-            'This is a very long label that needs to be truncated with an ellipsis',
+        label: 'This is a very long label that needs to be truncated with an ellipsis',
     },
     { value: 3, label: 'Risotto' },
     { value: 4, label: 'Pizza' },
@@ -200,7 +199,7 @@ const NavigationActionMultiple = (
         </HeaderNavigationActionItem>
         <HeaderNavigationActionItem
             onClick={() => {
-                console.log('Log out');
+                console.log('Log out!');
             }}
         >
             <LogoutIcon />
@@ -259,9 +258,8 @@ export const ExtensiveExample = () => {
         restaurantsMenuContentBodyOptions[0].options[3].label,
     );
     const [selectedValue, setSelectedValue] = useState<ScalarType>('value_3');
-    const [selectedLinkName, setSelectedLinkName] = useState<string>(
-        accountsLinkName,
-    );
+    const [selectedLinkName, setSelectedLinkName] =
+        useState<string>(accountsLinkName);
     const [searchQuery, setSearchQuery] = useState('');
     const [countrySelected, setCountrySelected] = useState('');
 
@@ -672,7 +670,7 @@ export const Arara = () => {
                 selector={
                     <HeaderNavigationSelector
                         navigationSelectorParams={selectorProps}
-                        onOptionSelect={country => {
+                        onOptionSelect={(country) => {
                             // @ts-ignore
                             setCurrentCountry(country.value);
                         }}
@@ -741,7 +739,7 @@ export const NoMenuUseCase = () => {
                 selector={
                     <HeaderNavigationSelector
                         navigationSelectorParams={selectorProps}
-                        onOptionSelect={country => {
+                        onOptionSelect={(country) => {
                             // @ts-ignore
                             setCurrentCountry(country.value);
                         }}

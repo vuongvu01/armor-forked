@@ -3,7 +3,7 @@ export const messageActionDefaultTheme = {
         base: {
             fontFamily: '$typography.paragraphMedium.fontFamily',
             color: '$color.primary.main',
-            fontWeight: '$typography.paragraphMedium.fontWeight',
+            fontWeight: '$typography.labelMedium.fontWeight',
             fontSize: '$typography.paragraphMedium.fontSize',
         },
     },

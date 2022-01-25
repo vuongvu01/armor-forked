@@ -15,7 +15,10 @@ const StarFilledIconShape = (
 export const StarFilledIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`StarFilledIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`StarFilledIcon ${className || ''}`}
+        >
             {StarFilledIconShape}
         </SVGIcon>
     );

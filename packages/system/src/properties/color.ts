@@ -28,6 +28,11 @@ export type ColorPropsType = Partial<{
      * @armor-docs-group color
      */
     hoverColor: string;
+    /**
+     * Sets *CSS* `backgroundColor` property of **.#COMPONENT_NAME#-Root** element.
+     * @armor-docs-group color
+     */
+    backgroundColor: string;
 }>;
 
 const replaceColor = (colorName: string, theme: ThemeType) => {
@@ -46,9 +51,12 @@ const replaceColor = (colorName: string, theme: ThemeType) => {
 export const colorProps = ({
     color,
     hoverColor,
+    backgroundColor,
     theme,
 }: ColorPropsType & { theme: ThemeType }): CSSChunkType => css`
     ${color !== undefined && `color: ${replaceColor(color, theme)};`}
+    ${backgroundColor !== undefined &&
+    `background-color: ${replaceColor(backgroundColor, theme)};`}
     ${hoverColor !== undefined &&
-        `&:hover { color: ${replaceColor(hoverColor, theme)}; }`}
+    `&:hover { color: ${replaceColor(hoverColor, theme)}; }`}
 `;

@@ -15,7 +15,10 @@ const EmailIconShape = (
 export const EmailIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`EmailIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`EmailIcon ${className || ''}`}
+        >
             {EmailIconShape}
         </SVGIcon>
     );

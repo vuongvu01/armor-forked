@@ -15,7 +15,10 @@ const PinIconShape = (
 export const PinIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`PinIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`PinIcon ${className || ''}`}
+        >
             {PinIconShape}
         </SVGIcon>
     );

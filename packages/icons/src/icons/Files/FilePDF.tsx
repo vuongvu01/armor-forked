@@ -15,7 +15,10 @@ const FilePDFIconShape = (
 export const FilePDFIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`FilePDFIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`FilePDFIcon ${className || ''}`}
+        >
             {FilePDFIconShape}
         </SVGIcon>
     );

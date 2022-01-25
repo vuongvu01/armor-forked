@@ -15,7 +15,10 @@ const CalendarIconShape = (
 export const CalendarIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`CalendarIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`CalendarIcon ${className || ''}`}
+        >
             {CalendarIconShape}
         </SVGIcon>
     );

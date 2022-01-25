@@ -15,7 +15,10 @@ const DeleteIconShape = (
 export const DeleteIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon {...restProps} className={`DeleteIcon ${className || ''}`}>
+        <SVGIcon
+            {...restProps}
+            className={`DeleteIcon ${className || ''}`}
+        >
             {DeleteIconShape}
         </SVGIcon>
     );

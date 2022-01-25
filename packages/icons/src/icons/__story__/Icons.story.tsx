@@ -164,6 +164,24 @@ export const Basic = () => (
             <Icon>
                 <I.IdeaStrategyIcon />
             </Icon>
+            <Icon>
+                <I.BagIcon />
+            </Icon>
+            <Icon>
+                <I.ButtonIcon />
+            </Icon>
+            <Icon>
+                <I.CameraIcon />
+            </Icon>
+            <Icon>
+                <I.DashIcon />
+            </Icon>
+            <Icon>
+                <I.PerformanceIcon />
+            </Icon>
+            <Icon>
+                <I.PlayYoutubeIcon />
+            </Icon>
         </Icons>
         <h2>Arrow</h2>
         <Icons>
@@ -200,6 +218,12 @@ export const Basic = () => (
             <Icon>
                 <I.ArrowDownFilledIcon />
             </Icon>
+            <Icon>
+                <I.ArrowLeftCircleFilledIcon />
+            </Icon>
+            <Icon>
+                <I.ArrowRightCircleFilledIcon />
+            </Icon>
         </Icons>
         <h2>Cancel</h2>
         <Icons>
@@ -220,6 +244,9 @@ export const Basic = () => (
             </Icon>
             <Icon>
                 <I.EmojiConfettiIcon />
+            </Icon>
+            <Icon>
+                <I.EmojiSmileIcon />
             </Icon>
         </Icons>
         <h2>Tick</h2>
@@ -368,6 +395,9 @@ export const Basic = () => (
             <Icon>
                 <I.QuotationIcon />
             </Icon>
+            <Icon>
+                <I.BubbleTextSolidIcon />
+            </Icon>
         </Icons>
         <h2>Lock</h2>
         <Icons>
@@ -391,6 +421,9 @@ export const Basic = () => (
             </Icon>
             <Icon>
                 <I.FileTaskPinIcon />
+            </Icon>
+            <Icon>
+                <I.ChecklistSolidIcon />
             </Icon>
         </Icons>
         <h2>Sort</h2>
@@ -471,6 +504,24 @@ export const Basic = () => (
                 <I.FileTaskListIcon />
             </Icon>
         </Icons>
+        <h2>Placeholder</h2>
+        <Icons>
+            <Icon>
+                <I.PlaceholderIcon />
+            </Icon>
+        </Icons>
+        <h2>Vehicles</h2>
+        <Icons>
+            <Icon>
+                <I.CarIcon />
+            </Icon>
+        </Icons>
+        <h2>Reward</h2>
+        <Icons>
+            <Icon>
+                <I.QuestStarIcon />
+            </Icon>
+        </Icons>
     </>
 );
 
@@ -481,7 +532,7 @@ export const TextEditor = () => {
         <>
             <p>Pick a color</p>
             <div style={{ display: 'flex' }}>
-                {colors.map(color => (
+                {colors.map((color) => (
                     <div
                         key={color}
                         style={{
