@@ -384,9 +384,9 @@
   integrity sha512-6V0qdPUaiVHH3RtZeLIsc+6pDhbYzHR8ogA8w+f+Wc77DuXto19g2QUwveINoS34Uw+W8/hQDGJCx+i4n7xcng==
 
 "@babel/parser@^7.16.10", "@babel/parser@^7.16.7":
-  version "7.16.10"
-  resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.16.10.tgz#aba1b1cb9696a24a19f59c41af9cf17d1c716a88"
-  integrity sha512-Sm/S9Or6nN8uiFsQU1yodyDW3MWXQhFeqzMPM+t8MJjM+pLsnFVxFZzkpXKvUXh+Gz9cbMoYYs484+Jw/NTEFQ==
+  version "7.16.12"
+  resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.16.12.tgz#9474794f9a650cf5e2f892444227f98e28cdf8b6"
+  integrity sha512-VfaV15po8RiZssrkPweyvbGVSe4x2y+aciFCgn0n0/SJMR22cwofRV1mtnJQYcSB1wUTaA/X1LnA3es66MCO5A==
 
 "@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression@^7.16.2":
   version "7.16.2"
@@ -1387,6 +1387,30 @@
   integrity sha512-LYDsySzMf7Z0zcupo4BF9yZfpVHw7SL5y7LAoJcvLKXDjaDbir9C8JAcgko5GcaEb6Kabnf17GDqdJw6GixqhQ==
   dependencies:
     prop-types "^15.7.2"
+
+"@deliveryhero/armor-illustrations@1.0.1":
+  version "1.0.1"
+  resolved "https://npm.pkg.github.com/download/@deliveryhero/armor-illustrations/1.0.1/0119f5d3becf1bb3d3343c052d097d59f9b44e31e9af6321a412d820d5a5c6a0#d5d4ffb1ac3b4c9bb4d2e3653bf17e3465216e0e"
+  integrity sha512-++c2RpqNsIGIGL6guvOxicxAKXJPMmlR4qp7zRGa8xPwoSKvvwwfZ5a0kP8E5Xc9HSemenf5Sz+A8DU3qc0VRQ==
+  dependencies:
+    "@deliveryhero/armor-system" "1.2.0"
+    prop-types "^15.7.2"
+
+"@deliveryhero/armor-system@1.2.0":
+  version "1.2.0"
+  resolved "https://npm.pkg.github.com/download/@deliveryhero/armor-system/1.2.0/5d17678ae0858a377923637b4b13f22549d0828ed917afc1ba353b9892ed1047#8f87d30bb6634fe925dc851807c7b6cd74e98e8d"
+  integrity sha512-xbjeOrc6LpMXPfoEbrc59u1wi5ZRpHxfIqyOAQuwA5DUwMWlrdRcjvs/shSFdedIQCdJS91L2cfr/7vxN9xxcw==
+  dependencies:
+    "@popperjs/core" "^2.10.2"
+    clone-deep "^4.0.1"
+    deep-freeze-strict "^1.1.1"
+    deepmerge "^4.2.2"
+    flat "^5.0.2"
+    lodash "^4.17.21"
+    prop-types "^15.7.2"
+    react-popper "^2.2.5"
+    throttle-debounce "^3.0.1"
+    traverse "^0.6.6"
 
 "@deliveryhero/armor@1.35.0":
   version "1.35.0"
