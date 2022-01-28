@@ -57,6 +57,7 @@ import { getIndicatorOverride } from './Indicator';
 import { getEmptyStateOverride } from './EmptyState';
 import { getExpansionIndicatorOverride } from './ExpansionIndicator';
 import { getSkeleton } from './Skeleton';
+import { getContentSwitcherOverride } from './ContentSwitcher';
 import { getProgressBarOverride } from './ProgressBar';
 import { getToastOverride } from './Toast';
 import { getFocusStateOverride } from './FocusState';
@@ -122,6 +123,7 @@ export const darkThemeComponentOverrides = {
     Indicator: getIndicatorOverride,
     EmptyState: getEmptyStateOverride,
     ExpansionIndicator: getExpansionIndicatorOverride,
+    ContentSwitcher: getContentSwitcherOverride,
     ProgressBar: getProgressBarOverride,
     Toast: getToastOverride,
     FocusState: getFocusStateOverride,
