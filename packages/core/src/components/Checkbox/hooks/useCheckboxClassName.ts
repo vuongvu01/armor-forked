@@ -37,6 +37,7 @@ export const useCheckboxClassName = (
                 error,
             }),
             Label: makeBEM(classPrefix, 'Label'),
+            Icon: makeBEM(classPrefix, 'Icon'),
         }),
         [classPrefix, className, disabled, checked, error],
     );

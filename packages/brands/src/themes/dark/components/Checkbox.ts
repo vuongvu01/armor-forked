@@ -62,9 +62,9 @@ export const getCheckboxOverride = ({
                         border-color: ${color('neutral.07')};
                         background-color: ${color('neutral.03')};
                     }
-                    &:after {
-                        color: ${color('neutral.05')};
-                    }
+                }
+                .Checkbox-Icon {
+                    color: ${color('neutral.05')};
                 }
             }
         ` as FlattenSimpleInterpolation;

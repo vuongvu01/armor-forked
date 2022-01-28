@@ -9,7 +9,9 @@ import {
     pointerEvents,
     durationNormal,
     getOutlineFocusStyleFromColor,
+    color,
 } from '@deliveryhero/armor-system';
+import { TickThickIcon, DashIcon } from '@deliveryhero/armor-icons';
 
 import {
     CheckboxCheckmarkPropsType,
@@ -20,12 +22,9 @@ import {
 const sizes = {
     checkbox: {
         side: 16,
+        icon: 10,
     },
 };
-
-const checkmarkRotation = ({ checkedIcon }: CheckboxInputPropsType) => css`
-    transform: ${checkedIcon === 'tick' ? ' rotate(45deg)' : ''};
-`;
 
 const checkedBefore = ({
     theme: {
@@ -75,42 +74,47 @@ const checkedFocusHover = ({
     },
 }: CheckboxInputPropsType) => Checkbox.Root.checked.focusHover;
 
-const checkmarkStyle = ({
-    theme: {
-        componentOverrides: { Checkbox },
-    },
-    checkedIcon,
+const getIconStyle = ({
     disabled,
-}: CheckboxCheckmarkPropsType) => {
-    const checkmarkColor = disabled
-        ? Checkbox.Root.checkmark.disabled
-        : Checkbox.Root.checkmark.base;
-
-    const tickStyle =
-        checkedIcon === 'tick'
-            ? `
-                  left: 5px;
-                  top: 3px;
-                  width: 4px;
-                  height: 7px;
-                  border-width: 0 1px 1px 0;
-                  border-style: solid;
-                  transform: rotate(45deg);
-              `
-            : `
-                  left: 4px;
-                  top: 7px;
-                  width: 8px;
-                  height: 1px;
-                  border-style: solid;
-                  border-width: 0 0 1px 0;
-                  transform: rotate(0);
-              `;
-
-    return css`
-        ${checkmarkColor}${tickStyle}
+    checked,
+}: {
+    disabled?: boolean;
+    checked?: boolean;
+}) => {
+    let result = css`
+        color: ${color('neutral.00')};
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: ${sizes.checkbox.icon}px;
+        height: ${sizes.checkbox.icon}px;
+        transform: translate(-50%, -50%);
     `;
+
+    if (!checked) {
+        result = css`
+            ${result};
+            display: none;
+        `;
+    }
+
+    if (disabled) {
+        result = css`
+            ${result};
+            color: ${color('neutral.03')};
+        `;
+    }
+
+    return result;
 };
+
+export const StyledCheckedIcon = styled(TickThickIcon)`
+    ${getIconStyle};
+`;
+
+export const StyledDashIcon = styled(DashIcon)`
+    ${getIconStyle};
+`;
 
 export const CheckboxCheckmark = styled.div.withConfig(
     propsBlocker,
@@ -137,14 +141,6 @@ export const CheckboxCheckmark = styled.div.withConfig(
         box-sizing: border-box;
         ${checkmarkBox};
         transition: all ${durationNormal}ms ease;
-    }
-
-    &::after {
-        content: '';
-        position: absolute;
-        transition: all ${durationNormal}ms ease;
-
-        ${checkmarkStyle};
     }
 
     ${pointerEvents};
@@ -175,12 +171,6 @@ export const CheckboxInput = styled.input.withConfig(
         ${checkedHover}
     }
 
-    &:checked + ${CheckboxCheckmark}:after {
-        opacity: 1;
-        transform: scale(1);
-        ${checkmarkRotation}
-    }
-
     &:checked + ${CheckboxCheckmark}:before {
         opacity: 1;
         box-sizing: border-box;
@@ -193,10 +183,6 @@ export const CheckboxInput = styled.input.withConfig(
         border-style: solid;
         box-sizing: border-box;
         ${disabledBefore}
-    }
-
-    &:not(:checked) + ${CheckboxCheckmark}:after {
-        opacity: 0;
     }
 
     &:focus-visible:checked + ${CheckboxCheckmark}:before {

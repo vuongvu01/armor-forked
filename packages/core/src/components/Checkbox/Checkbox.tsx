@@ -4,7 +4,13 @@ import { generateId, useComponentTheme } from '@deliveryhero/armor-system';
 
 import { SelectorLabel } from '../SelectorLabel';
 import { useCheckboxClassName } from './hooks/useCheckboxClassName';
-import { CheckboxInput, CheckboxCheckmark, CheckboxRoot } from './style';
+import {
+    CheckboxInput,
+    CheckboxCheckmark,
+    CheckboxRoot,
+    StyledDashIcon,
+    StyledCheckedIcon,
+} from './style';
 import { CheckboxPropsType } from './type';
 import { checkboxDefaultTheme } from './theme';
 import { CHECKBOX_CLASS_PREFIX, checkboxIdPrefix } from './constants';
@@ -102,7 +108,23 @@ export const Checkbox = forwardRef<
                 disabled={disabled}
                 theme={theme}
                 hasLabel={!!label}
-            />
+            >
+                {checkedIcon === 'dash' ? (
+                    <StyledDashIcon
+                        theme={theme}
+                        className={classOverride.Icon}
+                        disabled={disabled}
+                        checked={reallyChecked}
+                    />
+                ) : (
+                    <StyledCheckedIcon
+                        theme={theme}
+                        className={classOverride.Icon}
+                        disabled={disabled}
+                        checked={reallyChecked}
+                    />
+                )}
+            </CheckboxCheckmark>
             {!!label && (
                 <SelectorLabel
                     disabled={disabled}
