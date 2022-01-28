@@ -5,6 +5,7 @@ import {
     act,
     screen,
     waitFor,
+    fireEvent,
     waitForElementToBeRemoved,
 } from '@testing-library/react';
 import {
@@ -24,6 +25,32 @@ describe('useToastContainer', () => {
         act(() => {
             renderHook(() => useToastContainer());
         });
+    });
+
+    it('should add new toast', async () => {
+        const { result } = renderHook(() => useToastContainer());
+        const { makeToast } = result.current;
+        act(() => {
+            makeToast({ message: 'toast message' });
+        });
+        const myToast = await screen.findByText('toast message');
+
+        await waitFor(() => expect(myToast).toBeInTheDocument());
+    });
+
+    it('should remove toast by clicking close button', async () => {
+        const { result } = renderHook(() => useToastContainer());
+        const { makeToast } = result.current;
+        act(() => {
+            makeToast({ message: 'toast message' });
+        });
+        const myToast = await screen.findByText('toast message');
+        const closeBtn = await screen.findByTestId('Message-CloseButton');
+
+        fireEvent.click(closeBtn);
+
+        await waitForElementToBeRemoved(myToast, { timeout: 5000 });
+        expect(myToast).not.toBeInTheDocument();
     });
 
     it('should close toast automatically', async () => {

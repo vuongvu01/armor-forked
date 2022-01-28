@@ -91,6 +91,7 @@ export const Message = forwardRef<HTMLDivElement, MessagePropsType>(
                         marginTop={3}
                         marginLeft={2}
                         className={classNameComponents.CloseButton}
+                        data-testid={classNameComponents.CloseButton}
                     />
                 )}
             </MessageRoot>
