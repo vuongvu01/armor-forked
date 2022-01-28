@@ -8,6 +8,7 @@ import {
     mouseCursor,
     pointerEvents,
     durationNormal,
+    getOutlineFocusStyleFromColor,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -55,6 +56,24 @@ const checkmarkBox = ({
         componentOverrides: { Checkbox },
     },
 }: CheckboxCheckmarkPropsType) => Checkbox.Root.checkmark.box;
+
+const checkedFocus = ({
+    theme: {
+        componentOverrides: { Checkbox },
+    },
+}: CheckboxInputPropsType) => Checkbox.Root.checked.focus;
+
+const uncheckedFocus = ({
+    theme: {
+        componentOverrides: { Checkbox },
+    },
+}: CheckboxInputPropsType) => Checkbox.Root.unchecked.focus;
+
+const checkedFocusHover = ({
+    theme: {
+        componentOverrides: { Checkbox },
+    },
+}: CheckboxInputPropsType) => Checkbox.Root.checked.focusHover;
 
 const checkmarkStyle = ({
     theme: {
@@ -131,27 +150,6 @@ export const CheckboxCheckmark = styled.div.withConfig(
     ${pointerEvents};
 `;
 
-/** 👉 ROOT ELEMENT */
-export const CheckboxRoot = styled.label.withConfig(
-    propsBlocker,
-)<CheckboxRootPropsType>`
-    display: inline-flex;
-    margin: 0;
-    font-weight: ${fontWeightRegular};
-
-    &:hover {
-        ${CheckboxCheckmark}:before {
-            border-width: 1px;
-            border-style: solid;
-            ${uncheckedHover}
-        }
-    }
-
-    ${mouseCursor};
-    ${getComponentOverride('Checkbox')};
-    ${marginProps};
-`;
-
 export const CheckboxInput = styled.input.withConfig(
     propsBlocker,
 )<CheckboxInputPropsType>`
@@ -200,4 +198,43 @@ export const CheckboxInput = styled.input.withConfig(
     &:not(:checked) + ${CheckboxCheckmark}:after {
         opacity: 0;
     }
+
+    &:focus-visible:checked + ${CheckboxCheckmark}:before {
+        ${getOutlineFocusStyleFromColor('primary.07')};
+        ${checkedFocus};
+    }
+
+    &:focus-visible:not(:checked) + ${CheckboxCheckmark}:before {
+        ${getOutlineFocusStyleFromColor('primary.07')};
+        ${uncheckedFocus};
+    }
+`;
+
+/** 👉 ROOT ELEMENT */
+export const CheckboxRoot = styled.label.withConfig(
+    propsBlocker,
+)<CheckboxRootPropsType>`
+    display: inline-flex;
+    margin: 0;
+    font-weight: ${fontWeightRegular};
+
+    &:hover {
+        ${CheckboxInput} {
+            &:checked:not(:focus-visible):not(:disabled)
+                + ${CheckboxCheckmark}:before {
+                ${checkedHover}
+            }
+            &:checked:focus-visible:not(:disabled)
+                + ${CheckboxCheckmark}:before {
+                ${checkedFocusHover}
+            }
+            &:not(:checked):not(:disabled) + ${CheckboxCheckmark}:before {
+                ${uncheckedHover}
+            }
+        }
+    }
+
+    ${mouseCursor};
+    ${getComponentOverride('Checkbox')};
+    ${marginProps};
 `;

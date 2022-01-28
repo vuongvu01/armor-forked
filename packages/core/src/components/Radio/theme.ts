@@ -25,6 +25,9 @@ export const radioDefaultTheme = {
         hover: {
             borderColor: color.light,
         },
+        focus: {
+            borderColor: color.light,
+        },
     },
     Dot: {
         base: {

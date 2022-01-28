@@ -1,6 +1,12 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
-import { cleanup, act, screen, waitFor } from '@testing-library/react';
+import {
+    cleanup,
+    act,
+    screen,
+    waitFor,
+    waitForElementToBeRemoved,
+} from '@testing-library/react';
 import {
     renderHook,
     cleanup as cleanupHooks,
@@ -27,13 +33,14 @@ describe('useToastContainer', () => {
             makeToast({
                 message: 'toast message',
                 autoClose: true,
-                autoCloseTime: 1,
+                autoCloseTime: 100,
             });
         });
 
         const myToast = await screen.findByText('toast message');
 
-        await waitFor(() => expect(myToast).not.toBeInTheDocument());
+        await waitForElementToBeRemoved(myToast, { timeout: 5000 });
+        expect(myToast).not.toBeInTheDocument();
     });
 
     it('should disable auto close', async () => {

@@ -9,6 +9,7 @@ import {
     propsBlocker,
     zIndexSearchSuggestionsList,
     durationNormal,
+    focusWithin,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -54,9 +55,9 @@ const searchTextInputStyle = ({
 };
 
 /** 👉 ROOT ELEMENT */
-export const SearchRoot = styled.div.withConfig(propsBlocker)<
-    SearchRootPropsType
->`
+export const SearchRoot = styled.div.withConfig(
+    propsBlocker,
+)<SearchRootPropsType>`
     ${reset};
     cursor: default;
     display: inline-block;
@@ -69,9 +70,9 @@ export const SearchRoot = styled.div.withConfig(propsBlocker)<
     ${getComponentOverride('Search')};
 `;
 
-export const SearchSuggestionsContainer = styled.div.withConfig(propsBlocker)<
-    SearchSuggestionsContainerPropsType
->`
+export const SearchSuggestionsContainer = styled.div.withConfig(
+    propsBlocker,
+)<SearchSuggestionsContainerPropsType>`
     background-color: white;
     box-sizing: border-box;
     flex-direction: column;
@@ -95,4 +96,6 @@ export const SearchSuggestionsListContainer = styled.div.withConfig(
 
 export const SearchTextInput = styled(TextInput)<SearchRootPropsType>`
     ${searchTextInputStyle};
+    ${({ disabled, error }) =>
+        focusWithin({ disabled, error, noOutline: true })};
 `;

@@ -10,14 +10,15 @@ import {
     propsBlocker,
     getComponentOverride,
     marginProps,
+    focus,
 } from '@deliveryhero/armor-system';
 
 import { CloseButtonRootPropsType } from './type';
 
 /** 👉 ROOT ELEMENT */
-export const CloseButtonRoot = styled.div.withConfig(propsBlocker)<
-    CloseButtonRootPropsType
->`
+export const CloseButtonRoot = styled.div.withConfig(
+    propsBlocker,
+)<CloseButtonRootPropsType>`
     ${reset()};
     display: flex;
     justify-content: flex-end;
@@ -29,11 +30,13 @@ export const CloseButtonRoot = styled.div.withConfig(propsBlocker)<
     border: 0 none;
     outline: none;
     font-size: ${pixelToRem(16)};
+    border-radius: ${borderRadius('pill')};
+
     &:hover {
         background-color: ${color('neutral.02')};
-        border-radius: ${borderRadius('pill')};
     }
     ${getComponentOverride('CloseButton')};
+    ${focus()};
     ${marginProps};
 `;
 

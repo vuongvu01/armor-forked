@@ -1,6 +1,7 @@
 const color = {
     main: '$color.primary.main',
     light: '$color.primary.light',
+    hover: '$color.primary.05',
     dark: '$color.primary.dark',
     contrast: '$color.neutral.00',
     neutral01: '$color.neutral.01',
@@ -13,21 +14,30 @@ export const checkboxDefaultTheme = {
     Root: {
         checked: {
             base: {
-                border: color.main,
+                borderColor: color.main,
                 background: color.main,
             },
             hover: {
-                border: color.light,
-                background: color.light,
+                borderColor: color.hover,
+                background: color.hover,
             },
             disabled: {
                 background: color.neutral02,
                 borderColor: color.neutral03,
             },
+            focus: {
+                borderColor: color.contrast,
+            },
+            focusHover: {
+                background: color.hover,
+            },
         },
         unchecked: {
             hover: {
-                borderColor: color.dark,
+                borderColor: color.hover,
+            },
+            focus: {
+                borderColor: color.main,
             },
         },
         checkmark: {

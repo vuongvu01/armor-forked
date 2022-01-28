@@ -58,6 +58,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerPropsType>(
             >
                 <DatePickerInput
                     {...inputProps}
+                    theme={theme}
                     className={classNameComponents.Input}
                     after={<DatePickerInputIcon theme={theme} />}
                 />

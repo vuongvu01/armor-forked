@@ -9,6 +9,7 @@ import {
     getComponentOverride,
     colorProps,
     durationNormal,
+    focus,
 } from '@deliveryhero/armor-system';
 
 import { IconButtonRootPropsType } from './type';
@@ -38,9 +39,9 @@ const getRootStyle = ({ light, visible }: IconButtonRootPropsType) => {
 };
 
 /** 👉 ROOT ELEMENT */
-export const IconButtonRoot = styled.button.withConfig(propsBlocker)<
-    IconButtonRootPropsType
->`
+export const IconButtonRoot = styled.button.withConfig(
+    propsBlocker,
+)<IconButtonRootPropsType>`
     box-sizing: border-box;
     padding: ${spacing(1)};
     border-radius: ${borderRadius('soft')};
@@ -57,6 +58,7 @@ export const IconButtonRoot = styled.button.withConfig(propsBlocker)<
 
     ${getRootStyle};
     ${getComponentOverride('IconButton')};
+    ${focus()};
     ${marginProps};
     ${colorProps};
 `;

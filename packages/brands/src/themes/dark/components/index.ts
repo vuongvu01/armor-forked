@@ -59,6 +59,7 @@ import { getExpansionIndicatorOverride } from './ExpansionIndicator';
 import { getSkeleton } from './Skeleton';
 import { getProgressBarOverride } from './ProgressBar';
 import { getToastOverride } from './Toast';
+import { getFocusStateOverride } from './FocusState';
 
 export const darkThemeComponentOverrides = {
     Accordion: getAccordionOverride,
@@ -123,4 +124,5 @@ export const darkThemeComponentOverrides = {
     ExpansionIndicator: getExpansionIndicatorOverride,
     ProgressBar: getProgressBarOverride,
     Toast: getToastOverride,
+    FocusState: getFocusStateOverride,
 };

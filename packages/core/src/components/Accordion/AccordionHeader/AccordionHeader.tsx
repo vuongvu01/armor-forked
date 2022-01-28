@@ -77,7 +77,7 @@ export const AccordionHeader = forwardRef<
             isExpanded={isExpanded}
             onClick={onToggle}
             ref={internalInputRef}
-            tabIndex={0}
+            tabIndex={disabled ? -1 : 0}
             theme={theme}
         >
             <AccordionHeaderBody theme={theme} className={classOverride.Body}>

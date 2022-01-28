@@ -36,9 +36,9 @@ const getHeaderElementsStyle = ({ disabled }: AccordionHeaderRootPropsType) => {
 };
 
 /** 👉 ROOT ELEMENT */
-export const AccordionHeaderRoot = styled.div.withConfig(propsBlocker)<
-    AccordionHeaderRootPropsType
->`
+export const AccordionHeaderRoot = styled.div.withConfig(
+    propsBlocker,
+)<AccordionHeaderRootPropsType>`
     ${typography('labelMedium')};
     align-items: center;
     box-sizing: border-box;
@@ -49,9 +49,6 @@ export const AccordionHeaderRoot = styled.div.withConfig(propsBlocker)<
     padding: ${spacing(4)} ${spacing(6)};
     &:hover {
         background: ${color('primary.lightest')};
-    }
-    &:focus {
-        outline-color: ${color('primary.dark')};
     }
 
     ${mouseCursor};
@@ -83,9 +80,9 @@ const accordionExpansionIndicatorStyle = ({
         : {};
 };
 
-export const AccordionHeaderExpansionIndicator = styled(ExpansionIndicator)<
-    AccordionHeaderRootPropsType
->`
+export const AccordionHeaderExpansionIndicator = styled(
+    ExpansionIndicator,
+)<AccordionHeaderRootPropsType>`
     .AccordionHeader-ExpansionIndicator.ExpansionIndicator-Content {
         width: 56px;
     }
@@ -93,9 +90,9 @@ export const AccordionHeaderExpansionIndicator = styled(ExpansionIndicator)<
     ${accordionExpansionIndicatorStyle};
 `;
 
-export const AccordionHeaderIcon = styled.div.withConfig(propsBlocker)<
-    AccordionHeaderRootPropsType
->`
+export const AccordionHeaderIcon = styled.div.withConfig(
+    propsBlocker,
+)<AccordionHeaderRootPropsType>`
     color: ${color('neutral.11')};
     padding-right: ${spacing(3)};
     ${getHeaderElementsStyle};

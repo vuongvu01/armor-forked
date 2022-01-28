@@ -5,8 +5,9 @@ import { LinkPropsType } from '@deliveryhero/armor';
 export const getLinkOverride = ({ pressed, disabled }: LinkPropsType) => {
     let result = css`
         color: ${color('primary.lighter')};
-        &:focus {
-            color: ${color('primary.lighter')};
+        &:focus-visible {
+            background-color: ${color('primary.03', 0.2)};
+            outline-color: ${color('primary.03', 0.2)};
         }
         &:hover:active {
             color: ${colorBlue10};

@@ -1,18 +1,16 @@
-import React, { ComponentType, useState } from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
+/* eslint-disable import/no-extraneous-dependencies */
+import React, { ComponentType } from 'react';
 import { EditIcon } from '@deliveryhero/armor-icons';
-// eslint-disable-next-line import/no-unresolved
 import styled, { ThemeProvider } from 'styled-components';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { withStyles as withMaterialStyles } from '@material-ui/core/styles';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { BrowserRouter, Link } from 'react-router-dom';
-import { makeTheme, makeDefaultTheme } from '@deliveryhero/armor-system';
+import { makeTheme } from '@deliveryhero/armor-system';
 
 import { ObjectLiteralType } from '../../../type';
 import { GroupHelper } from '../../../helpers/GroupHelper';
 import { Button } from '../Button';
 import { Box } from '../../Box';
+import { Stack, StackItem } from '../../Stack';
 import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {

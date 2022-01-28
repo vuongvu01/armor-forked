@@ -7,6 +7,7 @@ import {
     spacing,
     propsBlocker,
     getComponentOverride,
+    focusWithin,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -121,6 +122,7 @@ const dropdownTextInputStyle = ({
 };
 
 export const DropdownTextInput = styled(TextInput)<DropdownTextInputPropsType>`
+    ${focusWithin({ noOutline: true })};
     ${dropdownTextRootStyle}
 
     .TextInput-Input {

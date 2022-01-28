@@ -61,6 +61,8 @@ describe('<ProgressBar />', () => {
 
         render(<ProgressBar autoRun duration={100} onFinish={mockFn} />);
 
-        await waitFor(() => expect(mockFn).toBeCalledTimes(1));
+        await waitFor(() => expect(mockFn).toBeCalledTimes(1), {
+            timeout: 5000,
+        });
     });
 });

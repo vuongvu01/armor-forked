@@ -12,6 +12,7 @@ import {
     transition,
     mouseCursor,
     durationNormal,
+    focus,
 } from '@deliveryhero/armor-system';
 
 import { TabTagPropsType, TabRootPropsType, TabLabelPropsType } from './type';
@@ -102,6 +103,7 @@ export const TabRoot = styled.div.withConfig(propsBlocker)<TabRootPropsType>`
     }
     ${getTabRootStyle};
     ${getComponentOverride('Tab')};
+    ${({ disabled }) => focus({ disabled })};
     ${marginProps};
 `;
 
@@ -112,9 +114,9 @@ const Wrapper = ({
     children: (props: TabTagPropsType) => ReactElement;
 }) => children(restProps);
 
-export const TabTagWrapper = styled(Wrapper).withConfig(propsBlocker)<
-    TabTagPropsType
->`
+export const TabTagWrapper = styled(Wrapper).withConfig(
+    propsBlocker,
+)<TabTagPropsType>`
     ${textDecorationNone};
     ${tabLabelContainerStyle};
 `;

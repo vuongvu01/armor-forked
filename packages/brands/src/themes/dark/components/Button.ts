@@ -1,19 +1,16 @@
 import { css, FlattenSimpleInterpolation } from 'styled-components';
 import {
-    colorGrey50,
-    colorRed20,
-    colorRed30,
-    colorRed40,
-    color as colorUtil,
+    color,
+    getOutlineFocusStyleFromColor,
 } from '@deliveryhero/armor-system';
 import { ButtonPropsType } from '@deliveryhero/armor';
 
-const setBorderAndBackgroundColors = (
-    color: string,
-    backgroundColor?: string,
+const getBorderAndBackgroundColors = (
+    colorString: string,
+    backgroundColorString?: string,
 ) => css`
-    background-color: ${backgroundColor || color};
-    border-color: ${color};
+    border-color: ${color(colorString)};
+    background-color: ${color(backgroundColorString || colorString)};
 `;
 
 export const getButtonOverride = ({
@@ -30,7 +27,7 @@ export const getButtonOverride = ({
     // set a different color for all disabled
     let result = css`
         &:disabled {
-            color: ${colorGrey50};
+            color: ${color('neutral.07')};
         }
     `;
 
@@ -40,12 +37,14 @@ export const getButtonOverride = ({
             result = css`
                 ${result};
                 &:hover {
-                    background-color: ${colorUtil('primary.02')};
-                    border-color: ${colorUtil('primary.02')};
+                    ${getBorderAndBackgroundColors('primary.02')};
                 }
                 &:active {
-                    background-color: ${colorUtil('primary.04')};
-                    border-color: ${colorUtil('primary.04')};
+                    ${getBorderAndBackgroundColors('primary.04')};
+                }
+                &:focus-visible {
+                    border-color: ${color('neutral.10')};
+                    ${getOutlineFocusStyleFromColor('primary.03')};
                 }
             ` as FlattenSimpleInterpolation;
         }
@@ -53,14 +52,19 @@ export const getButtonOverride = ({
             result = css`
                 ${result};
                 &:hover {
-                    background-color: transparent;
-                    color: ${colorUtil('primary.02')};
-                    border-color: ${colorUtil('primary.02')};
+                    color: ${color('primary.02')};
+                    ${getBorderAndBackgroundColors(
+                        'primary.02',
+                        'transparent',
+                    )};
                 }
                 &:active {
-                    background-color: ${colorUtil('neutral.11')};
-                    color: ${colorUtil('primary.02')};
-                    border-color: ${colorUtil('primary.02')};
+                    color: ${color('primary.04')};
+                    ${getBorderAndBackgroundColors('primary.04', 'neutral.11')};
+                }
+                &:focus-visible {
+                    border-color: ${color('primary.03')};
+                    ${getOutlineFocusStyleFromColor('primary.03')};
                 }
             ` as FlattenSimpleInterpolation;
         }
@@ -68,14 +72,16 @@ export const getButtonOverride = ({
             result = css`
                 ${result};
                 &:hover {
-                    background-color: transparent;
-                    color: ${colorUtil('primary.02')};
-                    border-color: transparent;
+                    color: ${color('primary.02')};
+                    ${getBorderAndBackgroundColors('transparent')};
                 }
                 &:active {
-                    background-color: ${colorUtil('neutral.11')};
-                    color: ${colorUtil('primary.02')};
-                    border-color: ${colorUtil('neutral.11')};
+                    color: ${color('primary.04')};
+                    ${getBorderAndBackgroundColors('neutral.11')};
+                }
+                &:focus-visible {
+                    border-color: ${color('primary.03')};
+                    ${getOutlineFocusStyleFromColor('primary.03')};
                 }
             ` as FlattenSimpleInterpolation;
         }
@@ -86,16 +92,16 @@ export const getButtonOverride = ({
         if (primary) {
             result = css`
                 ${result};
-                ${setBorderAndBackgroundColors(colorRed30)};
-                &:hover,
-                &:focus {
-                    ${setBorderAndBackgroundColors(colorRed20)};
+                ${getBorderAndBackgroundColors('error.04')};
+                &:hover {
+                    ${getBorderAndBackgroundColors('error.03')};
                 }
                 &:active {
-                    ${setBorderAndBackgroundColors(colorRed40)};
+                    ${getBorderAndBackgroundColors('error.05')};
                 }
-                &:focus:not(:active) {
-                    ${setBorderAndBackgroundColors(colorRed30)};
+                &:focus-visible {
+                    border-color: ${color('neutral.10')};
+                    ${getOutlineFocusStyleFromColor('error.04')};
                 }
             `;
         }
@@ -103,20 +109,19 @@ export const getButtonOverride = ({
         if (secondary) {
             result = css`
                 ${result};
-                ${setBorderAndBackgroundColors(colorRed30, 'transparent')};
-                color: ${colorRed30};
-                &:hover,
-                &:focus {
-                    ${setBorderAndBackgroundColors(colorRed20, 'transparent')};
-                    color: ${colorRed20};
+                ${getBorderAndBackgroundColors('error.04', 'transparent')};
+                color: ${color('error.04')};
+                &:hover {
+                    ${getBorderAndBackgroundColors('error.03', 'transparent')};
+                    color: ${color('error.03')};
                 }
                 &:active {
-                    ${setBorderAndBackgroundColors(colorRed40, 'transparent')};
-                    color: ${colorRed40};
+                    ${getBorderAndBackgroundColors('error.04', 'neutral.11')};
+                    color: ${color('error.05')};
                 }
-                &:focus:not(:active) {
-                    ${setBorderAndBackgroundColors(colorRed30, 'transparent')};
-                    color: ${colorRed30};
+                &:focus-visible {
+                    border-color: ${color('error.04')};
+                    ${getOutlineFocusStyleFromColor('error.04')};
                 }
             `;
         }
@@ -124,27 +129,19 @@ export const getButtonOverride = ({
         if (tertiary) {
             result = css`
                 ${result};
-                ${setBorderAndBackgroundColors('transparent', 'transparent')};
-                &:hover,
-                &:focus,
-                &:active,
-                &:focus:not(:active) {
-                    ${setBorderAndBackgroundColors(
-                        'transparent',
-                        'transparent',
-                    )};
-                }
-
-                color: ${colorRed30};
-                &:hover,
-                &:focus {
-                    color: ${colorRed20};
+                ${getBorderAndBackgroundColors('transparent')};
+                color: ${color('error.04')};
+                &:hover {
+                    ${getBorderAndBackgroundColors('transparent')};
+                    color: ${color('error.03')};
                 }
                 &:active {
-                    color: ${colorRed40};
+                    ${getBorderAndBackgroundColors('error.04', 'neutral.11')};
+                    color: ${color('error.05')};
                 }
-                &:focus:not(:active) {
-                    color: ${colorRed30};
+                &:focus-visible {
+                    border-color: ${color('error.04')};
+                    ${getOutlineFocusStyleFromColor('error.04')};
                 }
             `;
         }
@@ -154,7 +151,7 @@ export const getButtonOverride = ({
     if (reallyDisabled && (primary || secondary)) {
         result = css`
             ${result};
-            color: ${colorGrey50};
+            color: ${color('neutral.07')};
         `;
     }
 

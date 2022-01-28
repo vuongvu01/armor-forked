@@ -9,6 +9,7 @@ import {
     propsBlocker,
     durationNormal,
     borderRadius02,
+    focus,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -20,9 +21,9 @@ import {
 import { Dropdown } from '../Dropdown';
 
 /** 👉 ROOT ELEMENT */
-export const PageNavigationRoot = styled.div.withConfig(propsBlocker)<
-    PageNavigationRootPropsType
->`
+export const PageNavigationRoot = styled.div.withConfig(
+    propsBlocker,
+)<PageNavigationRootPropsType>`
     ${reset()};
     ${typography('paragraphMedium')};
     display: inline-flex;
@@ -32,6 +33,7 @@ export const PageNavigationRoot = styled.div.withConfig(propsBlocker)<
     align-items: center;
 
     ${getComponentOverride('PageNavigation')};
+    ${focus()};
     ${marginProps};
 `;
 
@@ -86,18 +88,18 @@ const getButtonStyle = ({
     return result;
 };
 
-export const PageNavigationButtons = styled.div.withConfig(propsBlocker)<
-    PageNavigationButtonsPropsType
->`
+export const PageNavigationButtons = styled.div.withConfig(
+    propsBlocker,
+)<PageNavigationButtonsPropsType>`
     ${reset()};
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
 `;
 
-export const PageNavigationPageButton = styled.button.withConfig(propsBlocker)<
-    PageNavigationPageButtonPropsType
->`
+export const PageNavigationPageButton = styled.button.withConfig(
+    propsBlocker,
+)<PageNavigationPageButtonPropsType>`
     ${reset()};
     font-family: inherit;
     font-size: inherit;
@@ -129,9 +131,9 @@ export const PageNavigationPageButton = styled.button.withConfig(propsBlocker)<
     ${getButtonStyle};
 `;
 
-export const PageNavigationPageSize = styled.div.withConfig(propsBlocker)<
-    PageNavigationSizePropsType
->`
+export const PageNavigationPageSize = styled.div.withConfig(
+    propsBlocker,
+)<PageNavigationSizePropsType>`
     ${reset()};
     color: ${color('neutral.05')};
     margin-right: ${spacing(10)};

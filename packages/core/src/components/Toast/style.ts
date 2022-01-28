@@ -10,6 +10,7 @@ import {
     widthProps,
     borderRadius,
     transition,
+    focus,
 } from '@deliveryhero/armor-system';
 
 import { ToastRootPropsType, ToastHookPropsType } from './type';
@@ -31,6 +32,9 @@ const getRootStyle = ({
         .Message-Root {
             border: none;
         }
+        .CloseButton-Root:focus-visible {
+            border-radius: ${borderRadius('soft')};
+        }
     `;
 
     if (level === ToastLevels.ERROR || error) {
@@ -44,6 +48,9 @@ const getRootStyle = ({
             .CloseButton-Root,
             .MessageAction-Root {
                 color: ${color('neutral.00')};
+            }
+            .CloseButton-Root {
+                ${focus({ mainColor: 'neutral.00' })};
             }
             .CloseButton-Root:hover {
                 background-color: ${color('error.04')};
@@ -61,6 +68,9 @@ const getRootStyle = ({
             .MessageAction-Root {
                 color: ${color('neutral.11')};
             }
+            .CloseButton-Root {
+                ${focus({ mainColor: 'neutral.11' })};
+            }
             .CloseButton-Root:hover {
                 background-color: ${color('warning.05')};
             }
@@ -77,6 +87,9 @@ const getRootStyle = ({
             .MessageAction-Root {
                 color: ${color('neutral.11')};
             }
+            .CloseButton-Root {
+                ${focus({ mainColor: 'neutral.11' })};
+            }
             .CloseButton-Root:hover {
                 background-color: ${color('success.04')};
             }
@@ -92,6 +105,9 @@ const getRootStyle = ({
             .CloseButton-Root,
             .MessageAction-Root {
                 color: ${color('neutral.00')};
+            }
+            .CloseButton-Root {
+                ${focus({ mainColor: 'neutral.00' })};
             }
             .CloseButton-Root:hover {
                 background-color: ${color('primary.03')};

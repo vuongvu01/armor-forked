@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { css } from 'styled-components';
-import { color } from '@deliveryhero/armor-system';
+import { color, focus } from '@deliveryhero/armor-system';
 import { ToastPropsType } from '@deliveryhero/armor';
 
 export const getToastOverride = ({
@@ -16,6 +16,9 @@ export const getToastOverride = ({
         .CloseButton-Root,
         .MessageAction-Root {
             color: ${color('neutral.11')};
+        }
+        .CloseButton-Root {
+            ${focus({ mainColor: 'neutral.11' })};
         }
     `;
 

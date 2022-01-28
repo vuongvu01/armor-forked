@@ -14,6 +14,8 @@ import {
     fontSize03,
     fontSize04,
     fontFamilyRoboto,
+    transition,
+    getOutlineFocusStyleFromColor,
 } from '@deliveryhero/armor-system';
 
 import { LinkRootPropsType } from './type';
@@ -89,9 +91,9 @@ const LinkTagWrapper = ({
 }) => children(restProps);
 
 /** 👉 ROOT ELEMENT */
-export const LinkRoot = styled(LinkTagWrapper).withConfig(propsBlocker)<
-    LinkRootPropsType
->`
+export const LinkRoot = styled(LinkTagWrapper).withConfig(
+    propsBlocker,
+)<LinkRootPropsType>`
     ${reset};
     font-family: ${fontFamilyRoboto};
     color: ${color('primary.main')};
@@ -100,18 +102,28 @@ export const LinkRoot = styled(LinkTagWrapper).withConfig(propsBlocker)<
     letter-spacing: ${spacing(0.1)};
     line-height: ${spacing(5)};
     border: 0 none;
-    &:focus {
-        border: 1px solid ${color('primary.main')};
-        border-radius: ${borderRadius('01')};
-    }
     display: inline;
     cursor: pointer;
+    height: fit-content;
+
+    &:focus-visible {
+        background-color: ${color('primary.02')};
+        border-radius: ${borderRadius('soft')};
+        outline: ${color('primary.02')} solid ${spacing(1)};
+    }
+
     &:visited {
         color: ${color('visited.05')};
     }
+
     &:hover {
         color: ${color('primary.light')};
     }
+
+    ${transition({
+        'background-color': true,
+        outline: true,
+    })};
     ${getRootStyle};
     ${marginProps};
     ${getComponentOverride('Link')};

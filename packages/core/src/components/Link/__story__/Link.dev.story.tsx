@@ -72,3 +72,12 @@ export const LinkWithRouter = () => (
         </Typography>
     </BrowserRouter>
 );
+
+export const Multiline = () => {
+    return (
+        <Link medium>
+            Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet, Lorem ipsum
+            dolor sit amet, Lorem ipsum dolor sit amet.
+        </Link>
+    );
+};
