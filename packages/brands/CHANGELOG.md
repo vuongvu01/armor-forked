@@ -1,3 +1,16 @@
+# [1.5.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-brands@1.4.0...@deliveryhero/armor-brands@1.5.0) (2022-02-01)
+
+
+### Bug Fixes
+
+* **checkbox:** Update checkbox icons [AR-27] ([37788b7](https://github.com/deliveryhero/armor/commit/37788b77bdcefcca03fc3bd7084a5f59ca116a74))
+
+
+### Features
+
+* **content-switcher:** new component[LD-546] ([#833](https://github.com/deliveryhero/armor/issues/833)) ([b88af53](https://github.com/deliveryhero/armor/commit/b88af5394f10b80c556b196feb27109f6651472b))
+* **vendor:** updated illustration in vendor[LD-547] ([#849](https://github.com/deliveryhero/armor/issues/849)) ([642bbd2](https://github.com/deliveryhero/armor/commit/642bbd20bbeca0a688d5580b20cb7971907a3774))
+
 # [1.4.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-brands@1.3.0...@deliveryhero/armor-brands@1.4.0) (2022-01-25)
 
 
