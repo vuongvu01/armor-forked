@@ -9,6 +9,8 @@ import {
     typography,
     fontWeightBold,
     fontWeightMedium,
+    focusWithin,
+    borderRadius,
 } from '@deliveryhero/armor-system';
 
 import { LoginPagePropsType, LoginPageRootPropsType } from './type';
@@ -18,9 +20,9 @@ import { Link } from '../Link';
 import { defaultBackground } from './images/background';
 
 /** 👉 ROOT ELEMENT */
-export const LoginPageRoot = styled.div.withConfig(propsBlocker)<
-    LoginPageRootPropsType
->`
+export const LoginPageRoot = styled.div.withConfig(
+    propsBlocker,
+)<LoginPageRootPropsType>`
     ${reset};
     ${typography('paragraphMedium')};
 
@@ -37,9 +39,9 @@ export const LoginPageRoot = styled.div.withConfig(propsBlocker)<
     ${marginProps};
 `;
 
-export const LoginPageWrapper = styled.div.withConfig(propsBlocker)<
-    LoginPagePropsType
->`
+export const LoginPageWrapper = styled.div.withConfig(
+    propsBlocker,
+)<LoginPagePropsType>`
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -49,9 +51,9 @@ export const LoginPageWrapper = styled.div.withConfig(propsBlocker)<
     flex-basis: auto;
 `;
 
-export const LoginPageContainer = styled(Card).withConfig(propsBlocker)<
-    LoginPagePropsType
->`
+export const LoginPageContainer = styled(Card).withConfig(
+    propsBlocker,
+)<LoginPagePropsType>`
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -108,7 +110,9 @@ export const SeparatorDivider = styled(Divider)<LoginPagePropsType>`
 `;
 
 export const OAuth2SignInContainer = styled.div<LoginPagePropsType>`
-    padding: ${spacing(4)} 0;
+    margin: ${spacing(4)} 0;
+    border-radius: ${borderRadius('sharp')};
+    ${focusWithin()};
 `;
 
 export const RegistrationOfferContainer = styled.div<LoginPagePropsType>`

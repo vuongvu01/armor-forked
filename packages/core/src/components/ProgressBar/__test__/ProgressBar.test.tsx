@@ -56,11 +56,37 @@ describe('<ProgressBar />', () => {
         expect(ProgressBar).toSupportAttributeForwarding();
     });
 
-    it('should trigger onFinished event in auto mode', async () => {
+    it('should trigger onFinished event when auto run', async () => {
         const mockFn = jest.fn();
 
         render(<ProgressBar autoRun duration={100} onFinish={mockFn} />);
 
-        await waitFor(() => expect(mockFn).toBeCalledTimes(1));
+        await waitFor(() => expect(mockFn).toBeCalledTimes(1), {
+            timeout: 5000,
+        });
+    });
+
+    it('should trigger onFinished event when auto run in reverse', async () => {
+        const mockFn = jest.fn();
+
+        render(
+            <ProgressBar autoRun reverse duration={100} onFinish={mockFn} />,
+        );
+
+        await waitFor(() => expect(mockFn).toBeCalledTimes(1), {
+            timeout: 5000,
+        });
+    });
+
+    it('should not trigger onFinished event when auto run and paused', async () => {
+        const mockFn = jest.fn();
+
+        render(
+            <ProgressBar autoRun isPaused duration={100} onFinish={mockFn} />,
+        );
+
+        await waitFor(() => expect(mockFn).not.toBeCalled(), {
+            timeout: 5000,
+        });
     });
 });

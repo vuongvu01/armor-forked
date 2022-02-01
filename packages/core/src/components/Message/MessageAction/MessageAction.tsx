@@ -33,6 +33,7 @@ export const MessageAction: FunctionComponent<MessageActionPropsType> = ({
             {...restProps}
             theme={theme}
             className={classNameComponents.Root}
+            tabIndex={0}
         >
             {(forwardedProps: ButtonPropsType) => (
                 <Tag {...forwardedProps}>{children}</Tag>

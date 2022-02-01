@@ -1,9 +1,8 @@
 import { css } from 'styled-components';
 import {
-    colorGrey00,
-    colorGrey70,
-    colorGrey50,
-    colorGrey60,
+    color,
+    spacing,
+    getOutlineFocusStyleFromColor,
 } from '@deliveryhero/armor-system';
 import { SwitchPropsType } from '@deliveryhero/armor';
 
@@ -17,9 +16,17 @@ export const getSwitchOverride = ({
     disabled,
 }: SwitchRootPropsType) => {
     let result = css`
-        .Switch-Label {
-            &:after {
-                background-color: ${colorGrey00} !important;
+        &&& {
+            .Switch-Label {
+                &:after {
+                    background-color: ${color('neutral.06')};
+                }
+            }
+        }
+        .Switch-CheckboxInput {
+            &:focus-visible + .Switch-Label {
+                ${getOutlineFocusStyleFromColor('neutral.10')};
+                box-shadow: 0 0 0 ${spacing(1)} ${color('primary.03', 0.4)};
             }
         }
     `;
@@ -27,21 +34,23 @@ export const getSwitchOverride = ({
     let labelBackgroundColorOverride = '';
     if (disabled) {
         if (checked) {
-            labelBackgroundColorOverride = colorGrey60;
+            labelBackgroundColorOverride = 'neutral.03';
         } else {
-            labelBackgroundColorOverride = colorGrey70;
+            labelBackgroundColorOverride = 'neutral.02';
         }
     } else {
         if (!checked) {
-            labelBackgroundColorOverride = colorGrey50;
+            labelBackgroundColorOverride = 'neutral.07';
         }
     }
 
     if (labelBackgroundColorOverride !== '') {
         result = css`
             ${result};
-            .Switch-Label {
-                background-color: ${labelBackgroundColorOverride} !important;
+            &&&& {
+                .Switch-Label {
+                    background-color: ${color(labelBackgroundColorOverride)};
+                }
             }
         `;
     }

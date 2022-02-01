@@ -8,6 +8,7 @@ import {
     zIndex,
     propsBlocker,
     getComponentOverride,
+    focusWithin,
 } from '@deliveryhero/armor-system';
 
 import { DatePickerArrowPropsType, DatePickerDropdownPropsType } from './type';
@@ -33,6 +34,8 @@ export const getRootStyle = ({
 };
 
 export const DatePickerInput = styled(TextInput)`
+    ${({ disabled, error }) =>
+        focusWithin({ disabled, error, noOutline: true })};
     width: 100%;
 `;
 
@@ -45,9 +48,9 @@ export const DatePickerInputIcon = styled(CalendarIcon).attrs({ medium: true })`
     }
 `;
 
-export const DatePickerDropdown = styled.div.withConfig(propsBlocker)<
-    DatePickerDropdownPropsType
->`
+export const DatePickerDropdown = styled.div.withConfig(
+    propsBlocker,
+)<DatePickerDropdownPropsType>`
     ${typography('paragraphMedium')};
     border-radius: ${borderRadius('soft')};
     color: ${color('neutral.07')};
@@ -62,9 +65,9 @@ export const DatePickerDropdown = styled.div.withConfig(propsBlocker)<
 
 // we have to keep the arrow, even though it is not in the design
 // if we don't have it, the popper library screws everything up
-export const DatePickerDropdownArrow = styled.div.withConfig(propsBlocker)<
-    DatePickerArrowPropsType
->`
+export const DatePickerDropdownArrow = styled.div.withConfig(
+    propsBlocker,
+)<DatePickerArrowPropsType>`
     height: 0;
     width: 0;
     visibility: hidden;

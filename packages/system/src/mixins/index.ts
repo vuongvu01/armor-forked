@@ -21,3 +21,4 @@ export {
 } from './breakpoints';
 export * from './mouseCursor';
 export * from './pointerEvents';
+export * from './focus';

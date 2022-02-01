@@ -216,14 +216,12 @@ export const ControlledExample = () => {
     const accordion2 = 'accordion2';
     const [currentlyExpanded, setCurrentlyExpanded] = useState(accordion0);
 
-    const handleToggle = (panel: string) => (
-        event: MouseEvent,
-        isExpanded: boolean,
-    ) => {
-        if (isExpanded) {
-            setCurrentlyExpanded(panel);
-        }
-    };
+    const handleToggle =
+        (panel: string) => (event: MouseEvent, isExpanded: boolean) => {
+            if (isExpanded) {
+                setCurrentlyExpanded(panel);
+            }
+        };
 
     return (
         <div style={{ width: '500px' }}>
@@ -258,14 +256,12 @@ export const CustomHeaderContents = () => {
     const accordion2 = 'accordion2';
     const [currentlyExpanded, setCurrentlyExpanded] = useState('');
 
-    const handleToggle = (panel: string) => (
-        event: MouseEvent,
-        isExpanded: boolean,
-    ) => {
-        if (isExpanded) {
-            setCurrentlyExpanded(panel);
-        }
-    };
+    const handleToggle =
+        (panel: string) => (event: MouseEvent, isExpanded: boolean) => {
+            if (isExpanded) {
+                setCurrentlyExpanded(panel);
+            }
+        };
 
     return (
         <div style={{ width: '500px' }}>
@@ -280,7 +276,7 @@ export const CustomHeaderContents = () => {
 
                     <Tooltip align="bottom" content="Hello world!">
                         <span style={{ height: '16px' }}>
-                            <InfoIcon marginLeft={3} />
+                            <InfoIcon marginLeft={3} tabIndex={0} />
                         </span>
                     </Tooltip>
                 </AccordionHeader>

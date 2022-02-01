@@ -39,7 +39,7 @@
     "dependencies": {
         "@deliveryhero/armor": "1.35.0",
         "@deliveryhero/armor-icons": "1.10.0",
-        "@deliveryhero/armor-illustrations": "*"
+        "@deliveryhero/armor-illustrations": "1.0.1"
     },
     "devDependencies": {
         "@semantic-release/changelog": "^5.0.1",

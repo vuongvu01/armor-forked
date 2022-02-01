@@ -48,6 +48,7 @@ export const useTab = <E extends HTMLDivElement>(
             disabled,
             isActive,
             onClick: handleSelect,
+            tabIndex: disabled ? -1 : 0,
         },
         tagProps: {
             to: disabled ? undefined : to,

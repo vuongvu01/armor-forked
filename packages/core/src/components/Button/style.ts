@@ -15,6 +15,7 @@ import {
     componentSpacing02,
     componentSpacing03,
     componentSpacing04,
+    getOutlineFocusStyleFromColor,
 } from '@deliveryhero/armor-system';
 
 import { ButtonRootPropsType } from './type';
@@ -72,9 +73,9 @@ const getDynamicStyle = ({
                 color: ${color('primary.05')};
                 border-color: ${color('primary.05')};
             }
-            &:focus {
-                color: ${color('primary.05')};
-                border-color: ${color('primary.05')};
+            &:focus-visible {
+                border-color: ${color('primary.07')};
+                ${getOutlineFocusStyleFromColor('primary.07')};
             }
             &:active {
                 color: ${color('primary.dark')};
@@ -86,35 +87,35 @@ const getDynamicStyle = ({
     } else if (tertiary) {
         result = css`
             ${getTertiaryInitialColors};
-            &:hover,
-            &:focus {
-                color: ${color('primary.light')};
+            &:hover {
+                color: ${color('primary.05')};
+            }
+            &:focus-visible {
+                border-color: ${color('primary.07')};
+                ${getOutlineFocusStyleFromColor('primary.07')};
             }
             &:active {
                 color: ${color('primary.dark')};
                 background-color: ${color('neutral.02')};
-            }
-            &:focus:not(:active) {
-                ${getTertiaryInitialColors};
             }
             ${Button.Root.tertiary};
         `;
     } else {
         result = css`
             ${getPrimaryInitialColors};
-            &:hover,
-            &:focus {
+            &:hover {
                 color: ${color('neutral.00')};
                 border-color: ${color('primary.05')};
                 background-color: ${color('primary.05')};
             }
+            &:focus-visible {
+                border-color: ${color('neutral.00')};
+                ${getOutlineFocusStyleFromColor('primary.07')};
+            }
             &:active {
                 color: ${color('neutral.00')};
-                border-color: ${color('primary.dark')};
-                background-color: ${color('primary.dark')};
-            }
-            &:focus:not(:active) {
-                ${getPrimaryInitialColors};
+                border-color: ${color('neutral.00')};
+                background-color: ${color('primary.08')};
             }
             ${Button.Root.primary};
         `;
@@ -127,14 +128,17 @@ const getDynamicStyle = ({
                 color: ${color('error.main')};
                 border-color: ${color('error.main')};
 
-                &:hover,
-                &:focus {
-                    color: ${color('error.light')};
-                    border-color: ${color('error.light')};
+                &:hover {
+                    color: ${color('error.05')};
+                    border-color: ${color('error.05')};
+                }
+                &:focus-visible {
+                    border-color: ${color('error.07')};
+                    ${getOutlineFocusStyleFromColor('error.07')};
                 }
                 &:active {
-                    color: ${color('error.dark')};
-                    border-color: ${color('error.dark')};
+                    color: ${color('error.08')};
+                    border-color: ${color('error.08')};
                 }
                 ${Button.Root.secondary__danger};
             `;
@@ -142,16 +146,18 @@ const getDynamicStyle = ({
             result = css`
                 ${result};
                 ${getTertiaryDangerInitialColors};
-                &:hover,
-                &:focus,
+                &:hover {
+                    color: ${color('error.05')};
+                }
                 &:active {
                     color: ${color('error.main')};
                 }
                 &:disabled {
                     color: ${color('neutral.05')};
                 }
-                &:focus:not(:active) {
-                    ${getTertiaryDangerInitialColors};
+                &:focus-visible {
+                    border-color: ${color('error.07')};
+                    ${getOutlineFocusStyleFromColor('error.07')};
                 }
                 ${Button.Root.tertiary__danger};
             `;
@@ -159,17 +165,17 @@ const getDynamicStyle = ({
             result = css`
                 ${result};
                 ${getPrimaryDangerInitialColors};
-                &:hover,
-                &:focus {
+                &:hover {
                     border-color: ${color('error.05')};
                     background-color: ${color('error.05')};
                 }
                 &:active {
-                    border-color: ${color('error.dark')};
-                    background-color: ${color('error.dark')};
+                    border-color: ${color('error.08')};
+                    background-color: ${color('error.08')};
                 }
-                &:focus:not(:active) {
-                    ${getPrimaryDangerInitialColors};
+                &:focus-visible {
+                    border-color: ${color('neutral.00')};
+                    ${getOutlineFocusStyleFromColor('error.07')};
                 }
                 ${Button.Root.primary__danger};
             `;
@@ -271,6 +277,7 @@ export const ButtonRoot = styled(Wrapper).withConfig(
         'background-color': true,
         'border-color': true,
         color: true,
+        outline: true,
     })};
 
     border-radius: ${token('shape.borderRadius.soft')};

@@ -1,6 +1,13 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
-import { cleanup, act, screen, waitFor } from '@testing-library/react';
+import {
+    cleanup,
+    act,
+    screen,
+    waitFor,
+    fireEvent,
+    waitForElementToBeRemoved,
+} from '@testing-library/react';
 import {
     renderHook,
     cleanup as cleanupHooks,
@@ -20,6 +27,32 @@ describe('useToastContainer', () => {
         });
     });
 
+    it('should add new toast', async () => {
+        const { result } = renderHook(() => useToastContainer());
+        const { makeToast } = result.current;
+        act(() => {
+            makeToast({ message: 'toast message' });
+        });
+        const myToast = await screen.findByText('toast message');
+
+        await waitFor(() => expect(myToast).toBeInTheDocument());
+    });
+
+    it('should remove toast by clicking close button', async () => {
+        const { result } = renderHook(() => useToastContainer());
+        const { makeToast } = result.current;
+        act(() => {
+            makeToast({ message: 'toast message' });
+        });
+        const myToast = await screen.findByText('toast message');
+        const closeBtn = await screen.findByTestId('Message-CloseButton');
+
+        fireEvent.click(closeBtn);
+
+        await waitForElementToBeRemoved(myToast, { timeout: 5000 });
+        expect(myToast).not.toBeInTheDocument();
+    });
+
     it('should close toast automatically', async () => {
         const { result } = renderHook(() => useToastContainer());
         const { makeToast } = result.current;
@@ -27,13 +60,14 @@ describe('useToastContainer', () => {
             makeToast({
                 message: 'toast message',
                 autoClose: true,
-                autoCloseTime: 1,
+                autoCloseTime: 100,
             });
         });
 
         const myToast = await screen.findByText('toast message');
 
-        await waitFor(() => expect(myToast).not.toBeInTheDocument());
+        await waitForElementToBeRemoved(myToast, { timeout: 5000 });
+        expect(myToast).not.toBeInTheDocument();
     });
 
     it('should disable auto close', async () => {

@@ -2,7 +2,7 @@
 
 import React, { useRef } from 'react';
 
-import { cleanup, render, screen } from '@testing-library/react';
+import { cleanup, render, screen, fireEvent } from '@testing-library/react';
 import {
     renderHook,
     cleanup as cleanupHooks,
@@ -72,5 +72,21 @@ describe('<Toast />', () => {
         rerender(<Toast id="id" message="message" autoClose={false} />);
         progressBar = screen.queryByTestId('ProgressBarRoot');
         expect(progressBar).not.toBeInTheDocument();
+    });
+
+    it('should handle message action click', async () => {
+        const mockFn = jest.fn();
+        render(
+            <Toast
+                id="id"
+                message="toast message"
+                action={{ label: 'action', onClick: mockFn }}
+            />,
+        );
+        const messageAction = await screen.findByText('action');
+        fireEvent.click(messageAction);
+
+        expect(messageAction).toBeInTheDocument();
+        expect(mockFn).toBeCalledTimes(1);
     });
 });

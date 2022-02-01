@@ -1,10 +1,7 @@
-import { css } from 'styled-components';
+import { css, FlattenSimpleInterpolation } from 'styled-components';
 import {
-    colorBlue10,
-    colorGrey40,
-    colorGrey50,
-    colorGrey60,
-    colorGrey80,
+    color,
+    getOutlineFocusStyleFromColor,
 } from '@deliveryhero/armor-system';
 import { ButtonPropsType } from '@deliveryhero/armor';
 
@@ -17,39 +14,60 @@ export const getCheckboxOverride = ({
     disabled,
     reallyChecked: checked,
 }: CheckboxRootPropsType) => {
-    let result = {};
+    let result = css`
+        .Checkbox-Input {
+            &:focus-visible + .Checkbox-Checkmark:before {
+                ${getOutlineFocusStyleFromColor('primary.03')}
+            }
+        }
+    ` as FlattenSimpleInterpolation;
+
+    if (!disabled) {
+        result = css`
+            ${result};
+            &:hover {
+                .Checkbox-Input {
+                    &:checked:not(:focus-visible) + .Checkbox-Checkmark:before {
+                        border-color: ${color('primary.02')};
+                        background-color: ${color('primary.02')};
+                    }
+                    &:checked:focus-visible + .Checkbox-Checkmark:before {
+                        background-color: ${color('primary.02')};
+                    }
+                    &:not(:checked) + .Checkbox-Checkmark:before {
+                        border-color: ${color('primary.02')};
+                    }
+                }
+            }
+        ` as FlattenSimpleInterpolation;
+    }
 
     if (!checked && !disabled) {
         result = css`
             ${result};
-            .Checkbox-Checkmark {
-                &:before {
-                    background: ${colorGrey80} !important;
+            &&& {
+                .Checkbox-Checkmark:before {
+                    background: ${color('neutral.01')};
                 }
             }
-            &:hover {
-                .Checkbox-Checkmark {
-                    &:before {
-                        border-color: ${colorBlue10} !important;
-                    }
-                }
-            }
-        `;
+        ` as FlattenSimpleInterpolation;
     }
 
     if (disabled) {
         result = css`
             ${result};
-            .Checkbox-Checkmark {
-                &:before {
-                    border-color: ${colorGrey50} !important;
-                    background-color: ${colorGrey60} !important;
+            &&& {
+                .Checkbox-Checkmark {
+                    &:before {
+                        border-color: ${color('neutral.07')};
+                        background-color: ${color('neutral.03')};
+                    }
                 }
-                &:after {
-                    color: ${colorGrey40} !important;
+                .Checkbox-Icon {
+                    color: ${color('neutral.05')};
                 }
             }
-        `;
+        ` as FlattenSimpleInterpolation;
     }
 
     return result;

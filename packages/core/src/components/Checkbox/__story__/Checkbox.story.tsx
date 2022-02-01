@@ -40,7 +40,7 @@ export const AllStates = () => {
             />
             <Checkbox
                 checked={checked}
-                // checkedIcon="dash"
+                checkedIcon="dash"
                 onChange={() => setChecked(!checked)}
                 label="Partially selected"
                 marginBottom={2}

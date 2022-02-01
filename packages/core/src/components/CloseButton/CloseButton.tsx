@@ -25,6 +25,7 @@ export const CloseButton = forwardRef<
             ref={ref}
             className={classNameComponents.Root}
             theme={theme}
+            tabIndex={0}
         >
             <CloseButtonIcon
                 className={classNameComponents.Icon}

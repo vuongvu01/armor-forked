@@ -8,6 +8,7 @@ import {
     getComponentOverride,
     propsBlocker,
     durationNormal,
+    focusWithin,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -67,9 +68,9 @@ const getRootDynamicStyle = (props: TextInputRootPropsType) => {
 };
 
 /** 👉 ROOT ELEMENT */
-export const TextInputRoot = styled.div.withConfig(propsBlocker)<
-    TextInputRootPropsType
->`
+export const TextInputRoot = styled.div.withConfig(
+    propsBlocker,
+)<TextInputRootPropsType>`
     box-sizing: border-box;
     position: relative;
     border-style: solid;
@@ -79,6 +80,8 @@ export const TextInputRoot = styled.div.withConfig(propsBlocker)<
 
     background-color: ${color('neutral.00')};
 
+    ${({ error, disabled }) =>
+        focusWithin({ error, disabled, noOutline: true })}
     ${getRootDynamicStyle};
     ${getComponentOverride('TextInput')};
     ${marginProps};
@@ -106,9 +109,9 @@ const getInnerContainerDynamicStyle = (
     return result;
 };
 
-export const TextInputInnerContainer = styled.div.withConfig(propsBlocker)<
-    TextInputInnerContainerPropsType
->`
+export const TextInputInnerContainer = styled.div.withConfig(
+    propsBlocker,
+)<TextInputInnerContainerPropsType>`
     display: flex;
     ${getInnerContainerDynamicStyle}
 `;
@@ -149,9 +152,9 @@ const Wrapper = ({
     children: (props: TextInputInputPropsType) => ReactElement;
 }) => children({ ...restProps });
 
-export const TextInputInput = styled(Wrapper).withConfig(propsBlocker)<
-    TextInputInputPropsType
->`
+export const TextInputInput = styled(Wrapper).withConfig(
+    propsBlocker,
+)<TextInputInputPropsType>`
     box-sizing: border-box;
     border: 0 none;
     outline: none;
@@ -200,9 +203,9 @@ const getLabelDynamicStyle = (props: TextInputInternalPropsWithThemeType) => {
     return result;
 };
 
-export const TextInputLabel = styled.label.withConfig(propsBlocker)<
-    TextInputLabelPropsType
->`
+export const TextInputLabel = styled.label.withConfig(
+    propsBlocker,
+)<TextInputLabelPropsType>`
     position: absolute;
     text-align: left;
     overflow-x: hidden;
@@ -226,22 +229,35 @@ const getLabelBackgroundDynamicStyle = (
         disabled,
     } = props;
 
-    const result = TextInput.LabelBackground.base;
+    let result = css`
+        ${TextInput.LabelBackground.base};
+        background: linear-gradient(
+            0,
+            ${color('neutral.00')} 88%,
+            transparent 32%
+        );
+    `;
+
+    if (disabled) {
+        result = css`
+            ${result};
+            background: linear-gradient(
+                0,
+                transparent 0 30%,
+                ${color('neutral.02')} 30% 70%,
+                transparent 70% 100%
+            );
+        `;
+    }
 
     return css`
         ${result};
-        background: linear-gradient(
-            0,
-            transparent 0 30%,
-            ${color(disabled ? 'neutral.02' : 'neutral.00')} 30% 70%,
-            transparent 70% 100%
-        );
         ${getDynamicStyle('LabelBackground', props)};
     `;
 };
 
-export const TextInputLabelBackground = styled.span.withConfig(propsBlocker)<
-    TextInputLabelBackgroundPropsType
->`
+export const TextInputLabelBackground = styled.span.withConfig(
+    propsBlocker,
+)<TextInputLabelBackgroundPropsType>`
     ${getLabelBackgroundDynamicStyle}
 `;

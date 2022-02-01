@@ -5,6 +5,7 @@ import {
     durationNormal,
     getComponentOverride,
     propsBlocker,
+    getFocusStyleFromColor,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -70,9 +71,9 @@ const disabledCheckedBackground = ({
 }: SwitchCheckboxInputPropsType) => Switch.Label.disabled__checked;
 
 /** 👉 ROOT ELEMENT */
-export const SwitchRoot = styled.label.withConfig(propsBlocker)<
-    SwitchRootPropsType
->`
+export const SwitchRoot = styled.label.withConfig(
+    propsBlocker,
+)<SwitchRootPropsType>`
     display: inline-flex;
     align-items: center;
 
@@ -80,9 +81,9 @@ export const SwitchRoot = styled.label.withConfig(propsBlocker)<
     ${mouseCursor};
 `;
 
-export const SwitchToggle = styled.span.withConfig(propsBlocker)<
-    SwitchTogglePropsType
->`
+export const SwitchToggle = styled.span.withConfig(
+    propsBlocker,
+)<SwitchTogglePropsType>`
     position: relative;
     display: inline-flex;
     border-radius: 9999px;
@@ -108,9 +109,9 @@ export const SwitchToggle = styled.span.withConfig(propsBlocker)<
     ${mouseCursor};
 `;
 
-export const SwitchCheckboxInput = styled.input.withConfig(propsBlocker)<
-    SwitchCheckboxInputPropsType
->`
+export const SwitchCheckboxInput = styled.input.withConfig(
+    propsBlocker,
+)<SwitchCheckboxInputPropsType>`
     opacity: 0;
     margin: 0;
     width: 0;
@@ -141,5 +142,9 @@ export const SwitchCheckboxInput = styled.input.withConfig(propsBlocker)<
 
     &:disabled + ${SwitchToggle}:after {
         ${disabledToggle};
+    }
+
+    &:focus-visible + ${SwitchToggle} {
+        ${getFocusStyleFromColor('primary.07', 'neutral.00')}
     }
 `;

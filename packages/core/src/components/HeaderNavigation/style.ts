@@ -21,9 +21,9 @@ const headerNavigationRootStyle = ({
 };
 
 /** 👉 ROOT ELEMENT */
-export const HeaderNavigationRoot = styled.div.withConfig(propsBlocker)<
-    HeaderNavigationRootPropsType
->`
+export const HeaderNavigationRoot = styled.div.withConfig(
+    propsBlocker,
+)<HeaderNavigationRootPropsType>`
     display: block;
     min-height: ${spacing(12)};
     border-bottom: 1px solid ${color('neutral.03')};
@@ -33,35 +33,35 @@ export const HeaderNavigationRoot = styled.div.withConfig(propsBlocker)<
     ${marginProps};
 `;
 
-export const HeaderNavigationTitleRoot = styled.div.withConfig(propsBlocker)<
-    HeaderNavigationTitleRootPropsType
->``;
+export const HeaderNavigationTitleRoot = styled.div.withConfig(
+    propsBlocker,
+)<HeaderNavigationTitleRootPropsType>``;
 
-export const HeaderNavigationContent = styled.div.withConfig(propsBlocker)<
-    HeaderNavigationRootPropsType
->`
+export const HeaderNavigationContent = styled.div.withConfig(
+    propsBlocker,
+)<HeaderNavigationRootPropsType>`
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
 `;
 
-export const HeaderNavigationContentItem = styled.div.withConfig(propsBlocker)<
-    HeaderNavigationRootPropsType
->``;
+export const HeaderNavigationContentItem = styled.div.withConfig(
+    propsBlocker,
+)<HeaderNavigationRootPropsType>``;
 
-export const HeaderNavigationContentLeft = styled.div.withConfig(propsBlocker)<
-    HeaderNavigationRootPropsType
->`
+export const HeaderNavigationContentLeft = styled.div.withConfig(
+    propsBlocker,
+)<HeaderNavigationRootPropsType>`
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
 `;
 
-export const HeaderNavigationContentRight = styled.div.withConfig(propsBlocker)<
-    HeaderNavigationRootPropsType
->`
+export const HeaderNavigationContentRight = styled.div.withConfig(
+    propsBlocker,
+)<HeaderNavigationRootPropsType>`
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;

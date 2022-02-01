@@ -5,6 +5,8 @@ import {
     propsBlocker,
     mouseCursor,
     durationNormal,
+    getOutlineFocusStyleFromColor,
+    transition,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -43,6 +45,12 @@ const containerStyleOnHover = ({
     },
 }: RadioInputPropsType) => Radio.Container.hover;
 
+const containerStyleOnFocus = ({
+    theme: {
+        componentOverrides: { Radio },
+    },
+}: RadioInputPropsType) => Radio.Container.focus;
+
 const dotStyleOnHover = ({
     theme: {
         componentOverrides: { Radio },
@@ -63,28 +71,39 @@ const radioRootStyle = ({
 }: RadioRootPropsType) => Radio.Root.base;
 
 /** 👉 ROOT ELEMENT */
-export const RadioRoot = styled.div.withConfig(propsBlocker)<
-    RadioRootPropsType
->`
+export const RadioRoot = styled.div.withConfig(
+    propsBlocker,
+)<RadioRootPropsType>`
     ${radioRootStyle};
     ${getComponentOverride('Radio')};
     ${marginProps};
 `;
 
-export const RadioMark = styled.label.withConfig(propsBlocker)<
-    RadioMarkPropsType
->`
+export const RadioMark = styled.label.withConfig(
+    propsBlocker,
+)<RadioMarkPropsType>`
     cursor: pointer;
     display: inline-flex;
     padding-left: ${sizes.container.side}px;
     position: relative;
 
+    &:before,
+    &:after {
+        ${transition({
+            outline: true,
+            'background-color': true,
+            'border-color': true,
+            transform: true,
+            opacity: true,
+        })}
+    }
+
     ${mouseCursor}
 `;
 
-export const RadioInput = styled.input.withConfig(propsBlocker)<
-    RadioInputPropsType
->`
+export const RadioInput = styled.input.withConfig(
+    propsBlocker,
+)<RadioInputPropsType>`
     height: 0;
     margin: 0;
     opacity: 0;
@@ -115,7 +134,6 @@ export const RadioInput = styled.input.withConfig(propsBlocker)<
         margin: auto;
         position: absolute;
         top: 0;
-        transition: all ${durationNormal}ms ease;
         width: ${sizes.dot.side}px;
 
         ${dotStyle}
@@ -144,5 +162,10 @@ export const RadioInput = styled.input.withConfig(propsBlocker)<
 
     &:not(:disabled):checked + ${RadioMark}:hover:after {
         ${dotStyleOnHover}
+    }
+
+    &:focus-visible + ${RadioMark}:before {
+        ${getOutlineFocusStyleFromColor('primary.07')}
+        ${containerStyleOnFocus}
     }
 `;

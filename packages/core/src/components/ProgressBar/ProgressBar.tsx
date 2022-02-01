@@ -2,8 +2,7 @@ import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { useComponentTheme } from '@deliveryhero/armor-system';
 
-import { useProgressBarClassNames } from './hooks/useProgressBarClassNames';
-import { useProgressBar } from './hooks/useProgressBar';
+import { useProgressBarClassNames, useProgressBar } from './hooks';
 import { ProgressBarRoot, ProgressBarIndicator } from './style';
 import { ProgressBarPropsType } from './type';
 import { PROGRESSBAR_CLASS_PREFIX, ProgressBarLevels } from './constants';

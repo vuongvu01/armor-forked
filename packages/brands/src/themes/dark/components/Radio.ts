@@ -1,34 +1,43 @@
 import { css } from 'styled-components';
 import {
-    colorGrey40,
-    colorGrey50,
-    colorGrey60,
-    colorGrey80,
+    color,
+    getOutlineFocusStyleFromColor,
 } from '@deliveryhero/armor-system';
 import { RadioPropsType } from '@deliveryhero/armor';
 
 export const getRadioOverride = ({ disabled }: RadioPropsType) => {
-    let result = {};
+    let result = css`
+        .Radio-Input {
+            &:focus-visible + .Radio-Label:before {
+                ${getOutlineFocusStyleFromColor('primary.03')};
+                border-color: ${color('primary.03')};
+            }
+        }
+    `;
 
     if (disabled) {
         result = css`
             ${result};
-            .Radio-Label {
-                &:before {
-                    border-color: ${colorGrey50} !important;
-                    background-color: ${colorGrey60} !important;
-                }
-                &:after {
-                    background-color: ${colorGrey40} !important;
+            &&& {
+                .Radio-Label {
+                    &:before {
+                        border-color: ${color('neutral.07')};
+                        background-color: ${color('neutral.03')};
+                    }
+                    &:after {
+                        background-color: ${color('neutral.05')};
+                    }
                 }
             }
         `;
     } else {
         result = css`
             ${result};
-            .Radio-Label {
-                &:before {
-                    background-color: ${colorGrey80} !important;
+            &&& {
+                .Radio-Label {
+                    &:before {
+                        background-color: ${color('neutral.10')};
+                    }
                 }
             }
         `;

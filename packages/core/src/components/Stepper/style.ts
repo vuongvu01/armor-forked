@@ -4,6 +4,7 @@ import {
     marginProps,
     sizeProps,
     propsBlocker,
+    focus,
 } from '@deliveryhero/armor-system';
 
 import { StepperRootPropsType } from './type';
@@ -27,13 +28,14 @@ const getStepperRootStyle = ({ vertical }: StepperRootPropsType) => {
 };
 
 // /** 👉 ROOT ELEMENT */
-export const StepperRoot = styled.div.withConfig(propsBlocker)<
-    StepperRootPropsType
->`
+export const StepperRoot = styled.div.withConfig(
+    propsBlocker,
+)<StepperRootPropsType>`
     display: flex;
     position: relative;
 
     ${getStepperRootStyle};
+    ${focus()}
     ${sizeProps};
     ${marginProps};
 `;
