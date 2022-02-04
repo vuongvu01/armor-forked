@@ -22,6 +22,9 @@ import { DHLogoImage } from './DHLogoImage';
 import { useHeaderNavigationMenu } from './hooks/useHeaderNavigationMenu';
 import { HeaderNavigationItem } from '../HeaderNavigationItem';
 
+/**
+ * @armor-docs-component
+ */
 export const HeaderNavigationMenu = forwardRef<
     HTMLDivElement,
     HeaderNavigationMenuPropsType
@@ -45,12 +48,8 @@ export const HeaderNavigationMenu = forwardRef<
         className,
     );
 
-    const {
-        internalRef,
-        isExpanded,
-        setIsExpanded,
-        handleMenuKeyPress,
-    } = useHeaderNavigationMenu(restProps, ref);
+    const { internalRef, isExpanded, setIsExpanded, handleMenuKeyPress } =
+        useHeaderNavigationMenu(restProps, ref);
 
     const contextValue = { isExpanded, setIsExpanded };
 

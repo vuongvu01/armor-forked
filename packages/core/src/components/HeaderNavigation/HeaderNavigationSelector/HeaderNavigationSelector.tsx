@@ -21,6 +21,9 @@ import { useHeaderNavigationSelectorClassName } from './hooks';
 import { Pack, PackItem } from '../../Pack';
 import { useHeaderNavigationSelector } from './hooks/useHeaderNavigationSelector';
 
+/**
+ * @armor-docs-component
+ */
 export const HeaderNavigationSelector = forwardRef<
     HTMLDivElement,
     HeaderNavigationSelectorPropsType
@@ -42,6 +45,9 @@ export const HeaderNavigationSelector = forwardRef<
         containerRef,
         label,
         selectedValueToDisplay,
+        isOpen,
+        selectedOptionsProps,
+        dropdownContainerProps,
     } = useHeaderNavigationSelector(restProps, ref);
 
     return (
@@ -59,6 +65,7 @@ export const HeaderNavigationSelector = forwardRef<
             >
                 <SelectedOptions
                     className={classOverride.SelectedOptionsContainer}
+                    {...selectedOptionsProps}
                 >
                     <Pack className={classOverride.SelectedOptions}>
                         <SelectorLabel
@@ -88,15 +95,18 @@ export const HeaderNavigationSelector = forwardRef<
                         theme={theme}
                         {...listContainerProps}
                     >
-                        <SelectorDropdownOptionListWrapper
-                            className={classOverride.OptionListWrapper}
-                            theme={theme}
-                        >
-                            <SelectorDropdownOptionList
-                                {...optionListProps}
-                                className={classOverride.OptionList}
-                            />
-                        </SelectorDropdownOptionListWrapper>
+                        {isOpen && (
+                            <SelectorDropdownOptionListWrapper
+                                className={classOverride.OptionListWrapper}
+                                theme={theme}
+                                {...dropdownContainerProps}
+                            >
+                                <SelectorDropdownOptionList
+                                    {...optionListProps}
+                                    className={classOverride.OptionList}
+                                />
+                            </SelectorDropdownOptionListWrapper>
+                        )}
                     </SelectorDropdownOptionListContainer>
                 </PortalToBody>
             </HeaderNavigationSelectorWrapper>

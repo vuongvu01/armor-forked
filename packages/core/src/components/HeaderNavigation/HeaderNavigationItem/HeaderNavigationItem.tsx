@@ -10,10 +10,12 @@ import {
 import { headerNavigationItemDefaultTheme } from './theme';
 import { useHeaderNavigationItemClassName } from './hooks';
 
-export const HeaderNavigationItem: FunctionComponent<HeaderNavigationItemPropsType> = ({
-    className,
-    ...restProps
-}) => {
+/**
+ * @armor-docs-component
+ */
+export const HeaderNavigationItem: FunctionComponent<
+    HeaderNavigationItemPropsType
+> = ({ className, ...restProps }) => {
     const theme = useComponentTheme(
         HEADER_NAVIGATION_ITEM_CLASS_PREFIX,
         headerNavigationItemDefaultTheme,

@@ -14,6 +14,9 @@ import { useHeaderNavigationLinkClassName } from './hooks';
 import { ButtonPropsType } from '../../../Button/type';
 import { useHeaderNavigationLink } from './hooks/useHeaderNavigationLink';
 
+/**
+ * @armor-docs-component
+ */
 export const HeaderNavigationLink = forwardRef<
     HTMLDivElement,
     HeaderNavigationLinkPropsType

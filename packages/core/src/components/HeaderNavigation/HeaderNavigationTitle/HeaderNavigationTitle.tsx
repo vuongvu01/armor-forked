@@ -15,6 +15,9 @@ import { HeaderNavigationTitlePropsType } from './type';
 import HeaderNavigationLinksContext from '../HeaderNavigationLinks/HeaderNavigationLinksContext';
 import { ButtonPropsType } from '../../Button/type';
 
+/**
+ * @armor-docs-component
+ */
 export const HeaderNavigationTitle = forwardRef<
     HTMLDivElement,
     HeaderNavigationTitlePropsType

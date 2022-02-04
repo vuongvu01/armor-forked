@@ -103,8 +103,7 @@ const foodOptions = [
     { value: 1, label: 'Tacos' },
     {
         value: 2,
-        label:
-            'This is a very long label that needs to be truncated with an ellipsis',
+        label: 'This is a very long label that needs to be truncated with an ellipsis',
     },
     { value: 3, label: 'Risotto' },
     { value: 4, label: 'Pizza' },
@@ -470,9 +469,8 @@ export const NavigationLinksWithReachRouterLink = () => {
     const workflowsLinkName = 'CAS_workflows';
 
     const [selectedValue, setSelectedValue] = useState<ScalarType>('value_3');
-    const [selectedLinkName, setSelectedLinkName] = useState<string>(
-        accountsLinkName,
-    );
+    const [selectedLinkName, setSelectedLinkName] =
+        useState<string>(accountsLinkName);
 
     const handleOptionSelect = (selectedItem: OptionType) => {
         console.log('handleOptionSelect', { selectedItem });
@@ -561,9 +559,8 @@ export const NavigationLinksWithHref = () => {
     const workflowsLinkName = 'CAS_workflows';
 
     const [selectedValue, setSelectedValue] = useState<ScalarType>('value_3');
-    const [selectedLinkName, setSelectedLinkName] = useState<string>(
-        accountsLinkName,
-    );
+    const [selectedLinkName, setSelectedLinkName] =
+        useState<string>(accountsLinkName);
 
     const handleOptionSelect = (selectedItem: OptionType) => {
         console.log('handleOptionSelect', { selectedItem });
@@ -801,9 +798,8 @@ export const WithNavigationTitleAsLink = () => {
     const workflowsLinkName = 'CAS_workflows';
 
     const [selectedValue, setSelectedValue] = useState<ScalarType>('value_3');
-    const [selectedLinkName, setSelectedLinkName] = useState<string>(
-        accountsLinkName,
-    );
+    const [selectedLinkName, setSelectedLinkName] =
+        useState<string>(accountsLinkName);
 
     const handleOptionSelect = (selectedItem: OptionType) => {
         console.log('handleOptionSelect', { selectedItem });
@@ -900,9 +896,8 @@ export const WithContentsReordered = () => {
     const workflowsLinkName = 'CAS_workflows';
 
     const [selectedValue, setSelectedValue] = useState<ScalarType>('value_3');
-    const [selectedLinkName, setSelectedLinkName] = useState<string>(
-        accountsLinkName,
-    );
+    const [selectedLinkName, setSelectedLinkName] =
+        useState<string>(accountsLinkName);
 
     const handleOptionSelect = (selectedItem: OptionType) => {
         console.log('handleOptionSelect', { selectedItem });
@@ -1044,7 +1039,7 @@ export const NoMenuUseCase = () => {
                 selector={
                     <HeaderNavigationSelector
                         navigationSelectorParams={selectorProps}
-                        onOptionSelect={country => {
+                        onOptionSelect={(country) => {
                             // @ts-ignore
                             setCurrentCountry(country.value);
                         }}
@@ -1207,3 +1202,21 @@ export const IsActiveCallback = () => {
         </BrowserRouter>
     );
 };
+
+export const WithSearchFilterEnableOnSelector = () => (
+    <HeaderNavigation
+        title="Vendor Monitor"
+        navigationMenuTitle={NavigationMenuTitle}
+        navigationMenuContent={NavigationMenuContentLogistics}
+        selector={
+            <HeaderNavigationSelector
+                navigationSelectorParams={{
+                    ...selectorParams,
+                    isExpanded: true,
+                }}
+                enableSearchOption
+            />
+        }
+        navigationAction={NavigationAction}
+    />
+);

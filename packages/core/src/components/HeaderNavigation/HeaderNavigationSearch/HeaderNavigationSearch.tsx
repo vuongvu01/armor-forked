@@ -10,6 +10,9 @@ import {
 } from './constants';
 import { useHeaderNavigationSearchClassName } from './hooks';
 
+/**
+ * @armor-docs-component
+ */
 export const HeaderNavigationSearch = forwardRef<
     HTMLInputElement,
     HeaderNavigationSearchPropsType

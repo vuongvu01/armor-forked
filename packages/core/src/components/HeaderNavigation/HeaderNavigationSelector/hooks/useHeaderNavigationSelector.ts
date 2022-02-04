@@ -9,8 +9,8 @@ import {
     useOverlay,
     usePopper,
     useRootRef,
-    useDetectClickOutsideComponent,
     useDetectEscapeKeyPressed,
+    useOuterClick,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -44,6 +44,9 @@ export const useHeaderNavigationSelector = <E extends HTMLDivElement>(
         enableSearchOption,
         enablePortal,
         zIndex,
+        dropdownWidth,
+        maxDropdownWidth,
+        minDropdownWidth,
         ...restProps
     }: HeaderNavigationSelectorPropsType,
     ref: RefType<E>,
@@ -53,7 +56,12 @@ export const useHeaderNavigationSelector = <E extends HTMLDivElement>(
 
     const [internalValue, setInternalValue] = useValue(value, defaultValue);
 
-    const { internalOptions, isFlat } = useOptions(options, formatOption);
+    const {
+        isFlat,
+        internalOptions,
+        dynamicInternalOptions,
+        setDynamicInternalOptions,
+    } = useOptions(options, formatOption);
 
     const onValueUpdate = useOnValueUpdate(
         setInternalValue,
@@ -77,11 +85,11 @@ export const useHeaderNavigationSelector = <E extends HTMLDivElement>(
 
     const { zIndex: realZIndex } = useOverlay(isOptionListShown, { zIndex });
 
-    useDetectClickOutsideComponent(
-        containerRef,
-        setIsOptionListShown,
-        isOptionListShown,
-    );
+    const onOuterClick = useCallback(() => {
+        setIsOptionListShown(false);
+    }, []);
+
+    useOuterClick([containerRef, dropdownRef], onOuterClick, isOptionListShown);
 
     useDetectEscapeKeyPressed(
         containerRef,
@@ -91,24 +99,21 @@ export const useHeaderNavigationSelector = <E extends HTMLDivElement>(
 
     const handleClick = useCallback(
         (event: MouseEvent<HTMLDivElement>) => {
-            setIsOptionListShown(!isOptionListShown);
-
-            if (onClick) {
-                onClick(event);
-            }
+            setIsOptionListShown((isShown) => !isShown);
+            onClick?.(event);
         },
-        [setIsOptionListShown, isOptionListShown, onClick],
+        [onClick],
     );
 
     const handleEnterKeyDown = useCallback(
         (event: KeyboardEvent<HTMLDivElement>) => {
             const { key } = event;
 
-            if (key === 'Enter' && setIsOptionListShown) {
-                setIsOptionListShown(!isOptionListShown);
+            if (key === 'Enter') {
+                setIsOptionListShown((isShown) => !isShown);
             }
         },
-        [setIsOptionListShown, isOptionListShown],
+        [],
     );
 
     return {
@@ -126,16 +131,21 @@ export const useHeaderNavigationSelector = <E extends HTMLDivElement>(
             disabled,
             enableSelectAllOption,
             enableSearchOption,
+            dynamicInternalOptions,
+            setInternalOptions: setDynamicInternalOptions,
+            autoFocus: true,
         },
         expansionIndicatorProps: {
             isExpanded: isOptionListShown,
         },
         selectorProps: {
             separator,
-            onClick: handleClick,
             onKeyDown: handleEnterKeyDown,
             tabIndex: 0,
             isOptionListShown,
+        },
+        selectedOptionsProps: {
+            onClick: handleClick,
         },
         containerRef,
         label,
@@ -148,5 +158,11 @@ export const useHeaderNavigationSelector = <E extends HTMLDivElement>(
             zIndex: realZIndex,
             ...panelProps,
         },
+        dropdownContainerProps: {
+            width: dropdownWidth,
+            maxWidth: maxDropdownWidth,
+            minWidth: minDropdownWidth,
+        },
+        isOpen: isOptionListShown,
     };
 };

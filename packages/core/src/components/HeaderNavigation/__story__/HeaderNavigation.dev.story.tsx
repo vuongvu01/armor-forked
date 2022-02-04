@@ -883,3 +883,24 @@ export const IsActiveCallback = () => {
         </BrowserRouter>
     );
 };
+
+export const WithSearchOptionEnableOnSelector = () => {
+    const handleOptionSelect = (selectedOption: DropdownSelectedOptionType) => {
+        console.log({ selectedOption });
+    };
+
+    return (
+        <HeaderNavigation
+            title="Vendor Monitor"
+            selector={
+                <HeaderNavigationSelector
+                    navigationSelectorParams={selectorParams}
+                    onOptionSelect={handleOptionSelect}
+                    enableSearchOption
+                    dropdownWidth={80}
+                />
+            }
+            navigationAction={NavigationAction}
+        />
+    );
+};
