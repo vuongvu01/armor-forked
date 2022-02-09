@@ -1,7 +1,6 @@
 /* eslint-disable no-console,import/no-unresolved */
 
 import React from 'react';
-import { text } from '@storybook/addon-knobs';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { MapIcon } from '@deliveryhero/armor-icons';
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -19,11 +18,11 @@ export default {
 };
 
 export const Small = () => {
-    return <Link small>{text('Children', 'Link here')}</Link>;
+    return <Link small>Link here</Link>;
 };
 
 export const Medium = () => {
-    return <Link medium>{text('Children', 'Link here')}</Link>;
+    return <Link medium>Link here</Link>;
 };
 
 export const Large = () => {

@@ -1,6 +1,4 @@
 import React from 'react';
-// eslint-disable-next-line import/no-unresolved
-import { withKnobs } from '@storybook/addon-knobs';
 
 import { GroupHelper } from '../../../helpers/GroupHelper';
 import { Tab } from '../Tab';
@@ -9,7 +7,7 @@ import { withWrapper } from '../../../helpers/Wrapper';
 export default {
     title: 'Components/Tab',
     component: Tab,
-    decorators: [withKnobs, withWrapper],
+    decorators: [withWrapper],
     parameters: {},
 };
 

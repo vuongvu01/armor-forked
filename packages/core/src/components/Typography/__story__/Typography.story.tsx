@@ -1,9 +1,4 @@
 import React from 'react';
-import {
-    withKnobs,
-    text,
-    // eslint-disable-next-line import/no-unresolved
-} from '@storybook/addon-knobs';
 import { loremIpsum } from '../../../helpers/LoremIpsum';
 import { Typography } from '../Typography';
 import { withWrapper } from '../../../helpers/Wrapper';
@@ -11,7 +6,7 @@ import { withWrapper } from '../../../helpers/Wrapper';
 export default {
     title: 'Components/Typography',
     component: Typography,
-    decorators: [withKnobs, withWrapper],
+    decorators: [withWrapper],
     parameters: {},
 };
 
@@ -45,9 +40,7 @@ export const AllStates = () => (
     </>
 );
 
-export const Basic = () => (
-    <Typography>{text('Children', 'Hello world!')}</Typography>
-);
+export const Basic = () => <Typography>Hello world!</Typography>;
 
 export const NoMargin = () => (
     <>

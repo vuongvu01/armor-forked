@@ -1,7 +1,6 @@
 /* eslint-disable no-console,import/no-unresolved */
 
 import React, { useState } from 'react';
-import { withKnobs } from '@storybook/addon-knobs';
 import { withWrapper } from '../../../helpers/Wrapper';
 import { Divider } from '../Divider';
 
@@ -13,7 +12,7 @@ import { Button } from '../../Button';
 export default {
     title: 'Components/Divider',
     component: Divider,
-    decorators: [withKnobs, withWrapper],
+    decorators: [withWrapper],
     parameters: {},
 };
 

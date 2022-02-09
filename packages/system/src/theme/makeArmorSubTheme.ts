@@ -37,10 +37,12 @@ export const makeArmorSubTheme = (
 
     theme.$initialized = true;
 
-    return (immutable
-        ? {
-              ...deepFreeze(theme),
-              componentOverrides: {},
-          }
-        : theme) as ThemeType;
+    return (
+        immutable
+            ? {
+                  ...deepFreeze(theme),
+                  componentOverrides: {},
+              }
+            : theme
+    ) as ThemeType;
 };
