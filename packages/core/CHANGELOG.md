@@ -1,3 +1,12 @@
+## [1.86.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.86.0...@deliveryhero/armor@1.86.1) (2022-02-09)
+
+
+### Bug Fixes
+
+* **dropdown:** Typing error in Dropdown [AR-38] ([7841da6](https://github.com/deliveryhero/armor/commit/7841da699ec20fdc7a7dc821804756f2e589d937))
+* **HeaderNavigationSelector:** Update HeaderNavigationSelector to support search filter [AR-32] ([755577b](https://github.com/deliveryhero/armor/commit/755577b8f92b1fcc0e4ce26fb9ee776f177fd01b))
+* **theme:** Performance optimisations related to theming [LD-726] ([d3962d0](https://github.com/deliveryhero/armor/commit/d3962d0988c5a7b1e546af0946ac07ec5786571c))
+
 # [1.86.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.85.0...@deliveryhero/armor@1.86.0) (2022-02-01)
 
 
