@@ -6,6 +6,7 @@
  */
 
 import { createMuiTheme } from '@material-ui/core';
+
 import { makeTheme } from '../makeTheme';
 import { legacyThemeVendorMonitor } from './mock';
 

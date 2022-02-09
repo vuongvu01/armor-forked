@@ -6,6 +6,7 @@ import {
     getComponentOverride,
     propsBlocker,
     zIndex,
+    widthProps,
 } from '@deliveryhero/armor-system';
 
 import { HeaderNavigationSelectorRootPropsType } from './type';
@@ -46,10 +47,11 @@ export const SelectorDropdownOptionListWrapper = styled.div.withConfig(
     position: absolute;
     right: 0;
     top: ${spacing(2)};
+    width: fit-content;
+    ${widthProps};
 `;
 
 export const SelectorDropdownOptionList = styled(OptionList)`
-    width: fit-content;
     position: relative;
 
     .HeaderNavigationSelector-OptionList {
@@ -59,9 +61,9 @@ export const SelectorDropdownOptionList = styled(OptionList)`
 
 /** 👉 ROOT ELEMENT */
 // NOTE: `:focus:not(:focus-visible)` allows for outline to appear when navigated via Tab, and omits it on mouse click
-export const HeaderNavigationSelectorRoot = styled(HeaderNavigationItem)<
-    HeaderNavigationSelectorRootPropsType
->`
+export const HeaderNavigationSelectorRoot = styled(
+    HeaderNavigationItem,
+)<HeaderNavigationSelectorRootPropsType>`
     padding-top: 0;
     padding-right: ${spacing(4)};
     padding-bottom: 0;
@@ -81,13 +83,13 @@ export const HeaderNavigationSelectorRoot = styled(HeaderNavigationItem)<
     ${getComponentOverride('HeaderNavigationSelector')};
 `;
 
-export const SelectedOptions = styled(StackItem)<
-    HeaderNavigationSelectorRootPropsType
->``;
+export const SelectedOptions = styled(
+    StackItem,
+)<HeaderNavigationSelectorRootPropsType>``;
 
-export const SelectorLabel = styled(PackItem)<
-    HeaderNavigationSelectorRootPropsType
->`
+export const SelectorLabel = styled(
+    PackItem,
+)<HeaderNavigationSelectorRootPropsType>`
     max-width: 200px;
     white-space: nowrap;
     overflow: hidden;
@@ -95,6 +97,6 @@ export const SelectorLabel = styled(PackItem)<
     ${typography('paragraphMedium')};
 `;
 
-export const SelectorExpansionIndicator = styled(ExpansionIndicator)<
-    HeaderNavigationSelectorRootPropsType
->``;
+export const SelectorExpansionIndicator = styled(
+    ExpansionIndicator,
+)<HeaderNavigationSelectorRootPropsType>``;

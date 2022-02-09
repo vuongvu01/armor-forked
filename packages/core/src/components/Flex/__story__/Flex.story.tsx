@@ -1,6 +1,5 @@
 import React from 'react';
 // eslint-disable-next-line import/no-unresolved
-import { withKnobs } from '@storybook/addon-knobs';
 import { Flex } from '../Flex';
 import { FlexItem } from '../FlexItem';
 import { withWrapper } from '../../../helpers/Wrapper';
@@ -8,7 +7,7 @@ import { withWrapper } from '../../../helpers/Wrapper';
 export default {
     title: 'Components/Flex',
     component: Flex,
-    decorators: [withKnobs, withWrapper],
+    decorators: [withWrapper],
     parameters: {},
 };
 

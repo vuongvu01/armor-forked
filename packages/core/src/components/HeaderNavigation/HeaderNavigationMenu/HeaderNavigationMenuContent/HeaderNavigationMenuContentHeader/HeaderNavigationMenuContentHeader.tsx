@@ -17,13 +17,12 @@ import { useHeaderNavigationMenuContentHeaderClassName } from './hooks';
 import { HeaderNavigationMenuContentHeaderPropsType } from './type';
 import { headerNavigationMenuContentHeaderTheme } from './theme';
 
-export const HeaderNavigationMenuContentHeader: FunctionComponent<HeaderNavigationMenuContentHeaderPropsType> = ({
-    className,
-    title,
-    label,
-    image,
-    ...restProps
-}) => {
+/**
+ * @armor-docs-component
+ */
+export const HeaderNavigationMenuContentHeader: FunctionComponent<
+    HeaderNavigationMenuContentHeaderPropsType
+> = ({ className, title, label, image, ...restProps }) => {
     const theme = useComponentTheme(
         HEADER_NAVIGATION_MENU_CONTENT_HEADER_CLASS_PREFIX,
         headerNavigationMenuContentHeaderTheme,

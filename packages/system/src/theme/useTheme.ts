@@ -1,7 +1,7 @@
 import { useContext, useMemo } from 'react';
 import { ThemeContext } from 'styled-components';
 
-import { makeDefaultTheme } from './makeDefaultTheme';
+import { makeDefaultThemeCached } from './makeDefaultTheme';
 
 import { RootThemeType } from './type';
 import { makeArmorSubTheme } from './makeArmorSubTheme';
@@ -20,6 +20,7 @@ export const useTheme = (theme?: RootThemeType): RootThemeType => {
                 !styledComponentsTheme.armor ||
                 !styledComponentsTheme.armor.$initialized
             ) {
+                // todo: use use makeTheme() here
                 styledComponentsTheme.armor = makeArmorSubTheme(
                     styledComponentsTheme.armor,
                 );
@@ -28,6 +29,6 @@ export const useTheme = (theme?: RootThemeType): RootThemeType => {
             return styledComponentsTheme;
         }
 
-        return makeDefaultTheme();
+        return makeDefaultThemeCached();
     }, [theme, styledComponentsTheme]);
 };

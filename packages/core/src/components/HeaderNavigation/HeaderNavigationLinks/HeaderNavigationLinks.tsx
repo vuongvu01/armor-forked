@@ -16,6 +16,9 @@ import { headerNavigationLinks } from './theme';
 import HeaderNavigationLinksContext from './HeaderNavigationLinksContext';
 import { useHeaderNavigationLinks } from './hooks/useHeaderNavigationLinks';
 
+/**
+ * @armor-docs-component
+ */
 export const HeaderNavigationLinks = forwardRef<
     HTMLDivElement,
     HeaderNavigationLinksPropsType
@@ -30,9 +33,8 @@ export const HeaderNavigationLinks = forwardRef<
         className,
     );
 
-    const { result, restProps: restRootProps } = useHeaderNavigationLinks(
-        restProps,
-    );
+    const { result, restProps: restRootProps } =
+        useHeaderNavigationLinks(restProps);
 
     return (
         <HeaderNavigationLinksContext.Provider

@@ -1,4 +1,4 @@
-import { InputHTMLAttributes, ReactNode } from 'react';
+import { HTMLAttributes, InputHTMLAttributes, ReactNode } from 'react';
 import {
     MarginPropsType,
     WidthPropsType,
@@ -195,9 +195,13 @@ export type DropdownEffectivePropsType = Partial<{
     ComponentBehaviourOpenStateType &
     ComponentBehaviourPortalType &
     ComponentBehaviourOverlayType &
-    Omit<
+    Pick<
         InputHTMLAttributes<HTMLInputElement>,
-        'value' | 'onChange' | 'defaultValue' | 'onSelect'
+        'autoFocus' | 'name' | 'disabled' | 'autoComplete'
+    > &
+    Omit<
+        HTMLAttributes<HTMLElement>,
+        'onChange' | 'defaultValue' | 'value' | 'onSelect'
     > &
     MarginPropsType &
     WidthPropsType;

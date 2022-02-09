@@ -26,13 +26,12 @@ import { headerNavigationMenuContentBodyOptionsTheme } from './theme';
 
 const setActiveClass = (isActive: boolean) => (isActive ? 'active' : '');
 
-export const HeaderNavigationMenuContentBodyOptions: FunctionComponent<HeaderNavigationMenuContentBodyOptionsPropsType> = ({
-    className,
-    options,
-    selectedValue,
-    onOptionSelect,
-    ...restProps
-}) => {
+/**
+ * @armor-docs-component
+ */
+export const HeaderNavigationMenuContentBodyOptions: FunctionComponent<
+    HeaderNavigationMenuContentBodyOptionsPropsType
+> = ({ className, options, selectedValue, onOptionSelect, ...restProps }) => {
     const { isExpanded, setIsExpanded } = useContext(
         HeaderNavigationMenuContentContext,
     );
@@ -60,9 +59,10 @@ export const HeaderNavigationMenuContentBodyOptions: FunctionComponent<HeaderNav
         }
     };
 
-    const handleOnClick = (selectedOption: OptionType) => (
-        event: React.MouseEvent<HTMLInputElement>,
-    ) => handleClick({ event, selectedOption });
+    const handleOnClick =
+        (selectedOption: OptionType) =>
+        (event: React.MouseEvent<HTMLInputElement>) =>
+            handleClick({ event, selectedOption });
 
     return (
         <HeaderNavigationMenuContentBodyOptionsRoot
@@ -71,76 +71,84 @@ export const HeaderNavigationMenuContentBodyOptions: FunctionComponent<HeaderNav
             theme={theme}
             className={classOverride.Root}
         >
-            {// @ts-ignore todo: fix this somehow
-            options.map(
-                (option: OptionObjectType | OptionCategoryObjectType) => {
-                    if (!option.category) {
-                        const { value, label } = option;
+            {
+                // @ts-ignore todo: fix this somehow
+                options.map(
+                    (option: OptionObjectType | OptionCategoryObjectType) => {
+                        if (!option.category) {
+                            const { value, label } = option;
 
-                        return (
-                            <HeaderNavigationMenuContentBodyOptionsItem
-                                theme={theme}
-                                className={`${
-                                    classOverride.Item
-                                } ${setActiveClass(selectedValue === value)}`}
-                                key={value}
-                                data-testid={
-                                    headerNavigationMenuContentBodyOptionsItem
-                                }
-                                onClick={handleOnClick(option)}
-                                isActive={selectedValue === value}
-                            >
-                                {label}
-                            </HeaderNavigationMenuContentBodyOptionsItem>
-                        );
-                    }
-
-                    const { value, label, options: items } = option;
-                    let optionItems = [];
-
-                    const categoryItem = (
-                        <HeaderNavigationMenuContentBodyOptionsCategory
-                            theme={theme}
-                            className={classOverride.Category}
-                            key={value}
-                            data-testid={
-                                headerNavigationMenuContentBodyOptionsCategory
-                            }
-                        >
-                            {label}
-                        </HeaderNavigationMenuContentBodyOptionsCategory>
-                    );
-
-                    if (items) {
-                        optionItems = items.map((item: OptionObjectType) => {
-                            const {
-                                value: optionValue,
-                                label: optionLabel,
-                            } = item;
                             return (
                                 <HeaderNavigationMenuContentBodyOptionsItem
                                     theme={theme}
                                     className={`${
                                         classOverride.Item
                                     } ${setActiveClass(
-                                        selectedValue === optionValue,
+                                        selectedValue === value,
                                     )}`}
-                                    key={optionValue}
+                                    key={value}
                                     data-testid={
                                         headerNavigationMenuContentBodyOptionsItem
                                     }
-                                    onClick={handleOnClick(item)}
-                                    isActive={selectedValue === optionValue}
+                                    onClick={handleOnClick(option)}
+                                    isActive={selectedValue === value}
                                 >
-                                    {optionLabel}
+                                    {label}
                                 </HeaderNavigationMenuContentBodyOptionsItem>
                             );
-                        });
-                    }
+                        }
 
-                    return [categoryItem, ...optionItems];
-                },
-            )}
+                        const { value, label, options: items } = option;
+                        let optionItems = [];
+
+                        const categoryItem = (
+                            <HeaderNavigationMenuContentBodyOptionsCategory
+                                theme={theme}
+                                className={classOverride.Category}
+                                key={value}
+                                data-testid={
+                                    headerNavigationMenuContentBodyOptionsCategory
+                                }
+                            >
+                                {label}
+                            </HeaderNavigationMenuContentBodyOptionsCategory>
+                        );
+
+                        if (items) {
+                            optionItems = items.map(
+                                (item: OptionObjectType) => {
+                                    const {
+                                        value: optionValue,
+                                        label: optionLabel,
+                                    } = item;
+                                    return (
+                                        <HeaderNavigationMenuContentBodyOptionsItem
+                                            theme={theme}
+                                            className={`${
+                                                classOverride.Item
+                                            } ${setActiveClass(
+                                                selectedValue === optionValue,
+                                            )}`}
+                                            key={optionValue}
+                                            data-testid={
+                                                headerNavigationMenuContentBodyOptionsItem
+                                            }
+                                            onClick={handleOnClick(item)}
+                                            isActive={
+                                                selectedValue === optionValue
+                                            }
+                                        >
+                                            {optionLabel}
+                                        </HeaderNavigationMenuContentBodyOptionsItem>
+                                    );
+                                },
+                            );
+                        }
+
+                        return [categoryItem, ...optionItems];
+                    },
+                )
+            }
         </HeaderNavigationMenuContentBodyOptionsRoot>
     );
 };

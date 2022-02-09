@@ -85,7 +85,7 @@ export const PageNavigation = forwardRef<
                 >
                     <ArrowLeftIcon />
                 </PageNavigationPageButton>
-                {displayedRange.map(pageNumber => (
+                {displayedRange.map((pageNumber) => (
                     <PageNavigationPageButton
                         key={pageNumber}
                         theme={theme}

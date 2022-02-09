@@ -1,7 +1,6 @@
 /* eslint-disable no-console,import/no-unresolved */
 
 import React from 'react';
-import { withKnobs, text } from '@storybook/addon-knobs';
 import styled from 'styled-components';
 
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -19,7 +18,7 @@ import { Typography } from '../../Typography';
 export default {
     title: 'Components/FileUploadButton',
     component: FileUploadButton,
-    decorators: [withKnobs, withWrapper],
+    decorators: [withWrapper],
     parameters: {},
 };
 
@@ -33,7 +32,7 @@ export const Basic = () => {
 
     return (
         <FileUploadButton onFileSelect={handleFileSelect} onClick={handleClick}>
-            {text('Button children', 'Upload file...')}
+            Upload file...
         </FileUploadButton>
     );
 };
@@ -75,15 +74,13 @@ export const CSVUpload = () => {
                 </Flex>
             </Box>
             <Flex justifyContent="flex-end" gutterSpacing={2}>
-                <Button tertiary>
-                    {text('Secondary button children', 'Download template')}
-                </Button>
+                <Button tertiary>Download template</Button>
                 <FileUploadButton
                     accept="text/csv"
                     onFileSelect={handleFileSelect}
                     onClick={handleClick}
                 >
-                    {text('Button children', 'Upload file...')}
+                    Upload file...
                 </FileUploadButton>
             </Flex>
         </Card>

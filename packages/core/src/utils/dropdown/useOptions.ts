@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 
 import {
     DropdownInternalOptionType,
@@ -10,21 +10,21 @@ import { OptionObjectType } from '../../components/OptionList/type';
 export const useOptions = (
     options?: OptionType,
     formatOption?: OptionFormatType,
-) =>
-    useMemo<{
-        isFlat: boolean;
-        internalOptions: DropdownInternalOptionType;
-    }>(() => {
-        let isFlat = false;
+) => {
+    const [dynamicInternalOptions, setDynamicInternalOptions] =
+        useState<DropdownInternalOptionType>([]);
+
+    const { isFlat, internalOptions } = useMemo(() => {
+        let isOptionFlat = false;
 
         if (!options || !Array.isArray(options)) {
             return {
-                isFlat,
+                isFlat: isOptionFlat,
                 internalOptions: [],
             };
         }
 
-        const internalOptions = options.map((option, index) => {
+        const formattedOptions = options.map((option, index) => {
             if (option && typeof option === 'object' && 'value' in option) {
                 let formattedOption: OptionObjectType = option;
 
@@ -37,7 +37,7 @@ export const useOptions = (
 
                 return formattedOption;
             }
-            isFlat = true;
+            isOptionFlat = true;
             return {
                 label: formatOption ? formatOption(option) : (option as string),
                 value: index,
@@ -45,7 +45,19 @@ export const useOptions = (
         });
 
         return {
-            isFlat,
-            internalOptions,
+            isFlat: isOptionFlat,
+            internalOptions: formattedOptions,
         };
     }, [formatOption, options]);
+
+    useEffect(() => {
+        setDynamicInternalOptions(internalOptions);
+    }, [internalOptions]);
+
+    return {
+        isFlat,
+        internalOptions,
+        dynamicInternalOptions,
+        setDynamicInternalOptions,
+    };
+};

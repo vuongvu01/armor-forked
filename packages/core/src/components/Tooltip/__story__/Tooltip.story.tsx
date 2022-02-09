@@ -1,11 +1,6 @@
 /* eslint-disable no-console */
 
 import React, { useEffect, useRef, useState } from 'react';
-import {
-    withKnobs,
-    text,
-    // eslint-disable-next-line import/no-unresolved
-} from '@storybook/addon-knobs';
 
 import { Tooltip } from '../Tooltip';
 import { Button } from '../../Button';
@@ -16,7 +11,7 @@ import { Checkbox } from '../../Checkbox';
 export default {
     title: 'Components/Tooltip',
     component: Tooltip,
-    decorators: [withKnobs, withWrapper],
+    decorators: [withWrapper],
     parameters: {},
 };
 
@@ -29,7 +24,7 @@ export const Basic = () => (
         <br />
         <br />
         <Button marginRight={2}>No tooltip</Button>
-        <Tooltip content={text('Children', 'Hello world!')} align="top">
+        <Tooltip content="Hello world!" align="top">
             <button
                 onMouseOver={() =>
                     // eslint-disable-next-line no-console
@@ -43,7 +38,7 @@ export const Basic = () => (
                 Default
             </button>
         </Tooltip>
-        <Tooltip content={text('Children', 'Hello world!')}>
+        <Tooltip content="Hello world!">
             <Button marginLeft={2}>Should be as well</Button>
         </Tooltip>
         <Tooltip content={'Sort by Ascending'} small>
@@ -267,19 +262,19 @@ export const OnFileUploader = () => {
                 onFileSelect={() => console.log('select')}
                 onClick={() => console.log('click')}
             >
-                {text('Button children', 'Upload file...')}
+                Upload file...
             </FileUploadButton>
             <Tooltip content="Dummy Text">
                 <FileUploadButton
                     onFileSelect={() => console.log('select')}
                     onClick={() => console.log('click on file upload')}
                 >
-                    {text('Button children', 'Upload file...')}
+                    Upload file...
                 </FileUploadButton>
             </Tooltip>
             <Tooltip content="Dummy Text">
                 <Button onClick={() => console.log('click on regular button')}>
-                    {text('Button children', 'Upload file...')}
+                    Upload file...
                 </Button>
             </Tooltip>
         </div>

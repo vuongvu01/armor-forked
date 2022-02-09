@@ -14,6 +14,9 @@ import {
     headerNavigationActionRoot,
 } from './constants';
 
+/**
+ * @armor-docs-component
+ */
 export const HeaderNavigationAction = forwardRef<
     HTMLDivElement,
     HeaderNavigationActionPropsType

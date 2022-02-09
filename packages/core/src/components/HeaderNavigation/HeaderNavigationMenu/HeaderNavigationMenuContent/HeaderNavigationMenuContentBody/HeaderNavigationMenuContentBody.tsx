@@ -11,13 +11,12 @@ import {
     headerNavigationMenuContentBodyRoot,
 } from './constants';
 
-export const HeaderNavigationMenuContentBody: FunctionComponent<HeaderNavigationMenuContentBodyPropsType> = ({
-    className,
-    options,
-    selectedValue,
-    onOptionSelect,
-    ...restProps
-}) => {
+/**
+ * @armor-docs-component
+ */
+export const HeaderNavigationMenuContentBody: FunctionComponent<
+    HeaderNavigationMenuContentBodyPropsType
+> = ({ className, options, selectedValue, onOptionSelect, ...restProps }) => {
     const theme = useComponentTheme(
         HEADER_NAVIGATION_MENU_CONTENT_BODY_CLASS_PREFIX,
     );

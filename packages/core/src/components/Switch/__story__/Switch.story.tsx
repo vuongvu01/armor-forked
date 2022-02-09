@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 // eslint-disable-next-line import/no-unresolved
-import { withKnobs } from '@storybook/addon-knobs';
 
 import { GroupHelper } from '../../../helpers/GroupHelper';
 import { Switch } from '../Switch';
@@ -10,7 +9,7 @@ import { withWrapper } from '../../../helpers/Wrapper';
 export default {
     title: 'Components/Switch',
     component: Switch,
-    decorators: [withKnobs, withWrapper],
+    decorators: [withWrapper],
     parameters: {},
 };
 

@@ -1,6 +1,5 @@
 import React from 'react';
 // eslint-disable-next-line import/no-unresolved
-import { withKnobs } from '@storybook/addon-knobs';
 import { Stack } from '../Stack';
 import { StackItem } from '../StackItem';
 import { withWrapper } from '../../../helpers/Wrapper';
@@ -8,7 +7,7 @@ import { withWrapper } from '../../../helpers/Wrapper';
 export default {
     title: 'Components/Stack',
     component: Stack,
-    decorators: [withKnobs, withWrapper],
+    decorators: [withWrapper],
     parameters: {},
 };
 

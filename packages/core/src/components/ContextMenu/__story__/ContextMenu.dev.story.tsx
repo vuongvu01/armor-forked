@@ -1,7 +1,6 @@
 /* eslint-disable no-console,import/no-unresolved */
 
 import React, { useState, MouseEvent } from 'react';
-import { withKnobs } from '@storybook/addon-knobs';
 import { EllipsisVerticalIcon } from '@deliveryhero/armor-icons';
 
 import { ContextMenu } from '../ContextMenu';
@@ -13,7 +12,7 @@ import { withWrapper } from '../../../helpers/Wrapper';
 export default {
     title: 'Components/ContextMenu',
     component: ContextMenu,
-    decorators: [withKnobs, withWrapper],
+    decorators: [withWrapper],
     parameters: {},
 };
 
@@ -42,7 +41,7 @@ export const Controlled = () => {
         <Box paddingTop={50} paddingLeft={50}>
             <ContextMenu
                 open={open}
-                onToggle={state => {
+                onToggle={(state) => {
                     console.log('TOGGLE');
                     console.log(state);
                     setOpen(state);
