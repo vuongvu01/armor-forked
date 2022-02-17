@@ -13,6 +13,7 @@ export * from './Dialog';
 export * from './Dropdown';
 export * from './DatePicker';
 export * from './ExpansionIndicator';
+export * from './FileCard';
 export * from './Flex';
 export * from './FormField';
 export * from './Grid';
