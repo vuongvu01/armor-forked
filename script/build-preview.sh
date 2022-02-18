@@ -21,3 +21,7 @@ yarn build
 cd ${DIR}/../packages/illustrations
 yarn
 yarn build
+
+cd ${DIR}/../packages/motion
+yarn
+yarn build

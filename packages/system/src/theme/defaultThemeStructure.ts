@@ -302,6 +302,9 @@ export const defaultThemeStructure = {
             brand: colorBlue30,
             neutral: colorGrey60,
         },
+        motion: {
+            brand: colorBlue60,
+        },
     },
     shape: {
         borderRadius: {

@@ -40,7 +40,8 @@
         "packages/brands",
         "packages/system",
         "packages/props-parser",
-        "packages/illustrations"
+        "packages/illustrations",
+        "packages/motion"
     ],
     "husky": {
         "hooks": {

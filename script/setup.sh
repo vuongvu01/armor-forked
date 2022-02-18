@@ -11,5 +11,6 @@ cd ${DIR}/../packages/vendors && yarn setup
 cd ${DIR}/../packages/props-parser && yarn setup
 cd ${DIR}/../packages/brands && yarn setup
 cd ${DIR}/../packages/illustrations && yarn setup
+cd ${DIR}/../packages/motion && yarn setup
 
 yarn install-peers
