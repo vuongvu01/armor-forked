@@ -115,7 +115,9 @@ export const makeDarkTheme = () =>
                 },
                 illustration: {
                     brand: colorBlue40,
-                    neutral: colorGrey01,
+                },
+                motion: {
+                    brand: colorBlue20,
                 },
             },
 
