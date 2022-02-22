@@ -1,3 +1,11 @@
+# [1.87.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.86.1...@deliveryhero/armor@1.87.0) (2022-02-22)
+
+
+### Features
+
+* **armor-motion:** animation package ([#880](https://github.com/deliveryhero/armor/issues/880)) ([b5b642e](https://github.com/deliveryhero/armor/commit/b5b642e6ee9ab47862b7e35439fe021b40b90781))
+* **fileuploader:** add FileCard component [LD-508] ([#819](https://github.com/deliveryhero/armor/issues/819)) ([74b440a](https://github.com/deliveryhero/armor/commit/74b440ab091e9c9e5ee10c87d05ca466d6ed1388))
+
 ## [1.86.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.86.0...@deliveryhero/armor@1.86.1) (2022-02-09)
 
 
