@@ -62,6 +62,7 @@ import { getContentSwitcherOverride } from './ContentSwitcher';
 import { getProgressBarOverride } from './ProgressBar';
 import { getToastOverride } from './Toast';
 import { getFocusStateOverride } from './FocusState';
+import { getFileUploaderOverride } from './FileUploader';
 
 export const darkThemeComponentOverrides = {
     Accordion: getAccordionOverride,
@@ -129,4 +130,5 @@ export const darkThemeComponentOverrides = {
     ProgressBar: getProgressBarOverride,
     Toast: getToastOverride,
     FocusState: getFocusStateOverride,
+    FileUploader: getFileUploaderOverride,
 };

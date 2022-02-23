@@ -16,6 +16,8 @@ export const useFileCardClassNames = (
                 'FormFieldErrorMessage',
             ),
             FileIcon: makeBEM(classPrefix, 'FileIcon'),
+            FileImageContainer: makeBEM(classPrefix, 'FileImageContainer'),
+            FileImage: makeBEM(classPrefix, 'FileImage'),
             CancelIcon: makeBEM(classPrefix, 'CancelIcon'),
             DeleteIcon: makeBEM(classPrefix, 'DeleteIcon'),
             FileName: makeBEM(classPrefix, 'FileName'),

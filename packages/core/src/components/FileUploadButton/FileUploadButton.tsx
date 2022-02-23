@@ -22,12 +22,8 @@ export const FileUploadButton = forwardRef<
         className,
     );
 
-    const {
-        rootProps,
-        fileInputProps,
-        buttonProps,
-        children,
-    } = useFileUploadButton<HTMLInputElement>(props, ref);
+    const { rootProps, fileInputProps, buttonProps, children } =
+        useFileUploadButton<HTMLInputElement>(props, ref);
 
     return (
         // @ts-ignore
@@ -39,7 +35,11 @@ export const FileUploadButton = forwardRef<
             <Button {...buttonProps} className={classNames.Button}>
                 {children}
             </Button>
-            <input {...fileInputProps} className={classNames.Input} />
+            <input
+                {...fileInputProps}
+                className={classNames.Input}
+                data-testid={classNames.Input}
+            />
         </FileUploadButtonRoot>
     );
 });

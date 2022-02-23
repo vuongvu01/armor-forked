@@ -49,13 +49,30 @@ const getBodyStyle = ({ error, uploadProgress }: FileCardRootPropsType) => {
     return result;
 };
 
+const getImageContainerStyle = ({ isUploading }: { isUploading?: boolean }) => {
+    const result = {};
+
+    if (isUploading) {
+        return css`
+            ${result};
+            background-color: ${color('neutral.03')};
+            svg {
+                color: ${color('neutral.05')};
+            }
+        `;
+    }
+
+    return result;
+};
+
 /** 👉 ROOT ELEMENT */
 export const FileCardRoot = styled.div.withConfig(
     propsBlocker,
 )<FileCardRootPropsType>`
     ${reset};
-    padding: ${spacing(2)};
     ${getComponentOverride('FileCard')};
+    ${marginProps};
+    ${widthProps};
 `;
 
 export const FileCardBody = styled.div.withConfig(
@@ -71,8 +88,6 @@ export const FileCardBody = styled.div.withConfig(
     overflow: hidden;
 
     ${getBodyStyle};
-    ${marginProps};
-    ${widthProps};
 `;
 
 export const FileCardLeftPortion = styled.div.withConfig(
@@ -133,11 +148,21 @@ export const FileCSVIcon = styled(CsvFileIcon).withConfig(
     ${leftIconStyles};
 `;
 
-export const FileImage = styled.img.withConfig(propsBlocker)`
+export const FileImageContainer = styled.div.withConfig(propsBlocker)<{
+    isUploading: boolean;
+}>`
     width: ${spacing(10)};
     height: ${spacing(10)};
     margin-right: ${spacing(3)};
-    border-radius: ${borderRadius('sharp')};
+    border-radius: ${borderRadius('soft')};
+    ${getImageContainerStyle}
+`;
+
+export const FileImage = styled.img.withConfig(propsBlocker)`
+    width: ${spacing(10)};
+    height: ${spacing(10)};
+    object-fit: cover;
+    border-radius: ${borderRadius('soft')};
 `;
 
 export const CancelIcon = styled(CancelIconArmor).withConfig(

@@ -16,8 +16,10 @@ import {
     FileName,
     FileExtension,
     FileSize,
+    FileImageContainer,
     FileImage,
     UploadBar,
+    FileImageIcon,
 } from './style';
 import { FileCardPropsType } from './type';
 import { FILECARD_CLASS_PREFIX } from './constants';
@@ -65,7 +67,25 @@ export const FileCard = forwardRef<HTMLDivElement, FileCardPropsType>(
                         className={classNames.LeftPortion}
                     >
                         {imageSrc ? (
-                            <FileImage theme={theme} src={imageSrc} />
+                            <FileImageContainer
+                                theme={theme}
+                                className={classNames.FileImageContainer}
+                                isUploading={isUploading}
+                            >
+                                {isUploading ? (
+                                    <FileImageIcon
+                                        theme={theme}
+                                        className={classNames.FileIcon}
+                                    />
+                                ) : (
+                                    <FileImage
+                                        theme={theme}
+                                        className={classNames.FileImage}
+                                        src={imageSrc}
+                                        alt={fileName}
+                                    />
+                                )}
+                            </FileImageContainer>
                         ) : (
                             <FileIcon
                                 theme={theme}
@@ -79,7 +99,7 @@ export const FileCard = forwardRef<HTMLDivElement, FileCardPropsType>(
                             theme={theme}
                             className={classNames.FileExtension}
                         >
-                            .{fileExtension}
+                            {fileExtension}
                         </FileExtension>
                         <FileSize theme={theme} className={classNames.FileSize}>
                             {fileSize}

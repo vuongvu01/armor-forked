@@ -29,7 +29,10 @@ const getFileCardBodyOverride = ({
 };
 
 export const getFileCardOverride = (props: FileCardBodyPropsType) => {
-    return css`
+    const { uploadProgress, error } = props;
+    const isUploading = (!!uploadProgress || uploadProgress === 0) && !error;
+
+    let result = css`
         .FileCard-Body {
             ${getFileCardBodyOverride(props)}
         }
@@ -54,4 +57,17 @@ export const getFileCardOverride = (props: FileCardBodyPropsType) => {
             color: ${color('neutral.05')};
         }
     `;
+
+    if (isUploading) {
+        result = css`
+            ${result};
+            .FileCard-FileImageContainer {
+                svg {
+                    color: ${color('neutral.04')};
+                }
+            }
+        `;
+    }
+
+    return result;
 };
