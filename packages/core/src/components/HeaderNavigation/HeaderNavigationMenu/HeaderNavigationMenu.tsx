@@ -16,7 +16,6 @@ import {
     MenuExpansionIndicator,
     MenuExpansionIndicatorItem,
 } from './style';
-import { headerNavigationMenuTheme } from './theme';
 import HeaderNavigationMenuContentContext from './HeaderNavigationMenuContent/HeaderNavigationMenuContentContext';
 import { DHLogoImage } from './DHLogoImage';
 import { useHeaderNavigationMenu } from './hooks/useHeaderNavigationMenu';
@@ -38,10 +37,7 @@ export const HeaderNavigationMenu = forwardRef<
     },
     ref,
 ) {
-    const theme = useComponentTheme(
-        HEADER_NAVIGATION_MENU_CLASS_PREFIX,
-        headerNavigationMenuTheme,
-    );
+    const theme = useComponentTheme(HEADER_NAVIGATION_MENU_CLASS_PREFIX);
 
     const classOverride = useHeaderNavigationMenuClassName(
         HEADER_NAVIGATION_MENU_CLASS_PREFIX,

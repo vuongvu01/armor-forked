@@ -34,7 +34,7 @@ const baseDialog = (
 describe('<Dialog />', () => {
     beforeAll(() => {
         // @ts-ignore
-        ReactDOM.createPortal = jest.fn(element => element);
+        ReactDOM.createPortal = jest.fn((element) => element);
     });
 
     afterEach(async () => {

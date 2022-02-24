@@ -7,9 +7,10 @@ import {
     fontWeightRegular,
     mouseCursor,
     pointerEvents,
-    durationNormal,
     getOutlineFocusStyleFromColor,
     color,
+    transition,
+    token,
 } from '@deliveryhero/armor-system';
 import { TickThickIcon, DashIcon } from '@deliveryhero/armor-icons';
 
@@ -26,53 +27,14 @@ const sizes = {
     },
 };
 
-const checkedBefore = ({
-    theme: {
-        componentOverrides: { Checkbox },
-    },
-}: CheckboxInputPropsType) => Checkbox.Root.checked.base;
+const checkedHover = () => css`
+    border-color: ${color('primary.05')};
+    background: ${color('primary.05')};
+`;
 
-const checkedHover = ({
-    theme: {
-        componentOverrides: { Checkbox },
-    },
-}: CheckboxInputPropsType) => Checkbox.Root.checked.hover;
-
-const uncheckedHover = ({
-    theme: {
-        componentOverrides: { Checkbox },
-    },
-}: CheckboxInputPropsType) => Checkbox.Root.unchecked.hover;
-
-const disabledBefore = ({
-    theme: {
-        componentOverrides: { Checkbox },
-    },
-}: CheckboxInputPropsType) => Checkbox.Root.checked.disabled;
-
-const checkmarkBox = ({
-    theme: {
-        componentOverrides: { Checkbox },
-    },
-}: CheckboxCheckmarkPropsType) => Checkbox.Root.checkmark.box;
-
-const checkedFocus = ({
-    theme: {
-        componentOverrides: { Checkbox },
-    },
-}: CheckboxInputPropsType) => Checkbox.Root.checked.focus;
-
-const uncheckedFocus = ({
-    theme: {
-        componentOverrides: { Checkbox },
-    },
-}: CheckboxInputPropsType) => Checkbox.Root.unchecked.focus;
-
-const checkedFocusHover = ({
-    theme: {
-        componentOverrides: { Checkbox },
-    },
-}: CheckboxInputPropsType) => Checkbox.Root.checked.focusHover;
+const uncheckedHover = () => css`
+    border-color: ${color('primary.05')};
+`;
 
 const getIconStyle = ({
     disabled,
@@ -137,10 +99,11 @@ export const CheckboxCheckmark = styled.div.withConfig(
         top: 0;
         width: ${sizes.checkbox.side}px;
         height: ${sizes.checkbox.side}px;
-        border-radius: 4px;
+        border-radius: ${token('shape.borderRadius.soft')};
         box-sizing: border-box;
-        ${checkmarkBox};
-        transition: all ${durationNormal}ms ease;
+        border: 1px solid ${color('neutral.03')};
+        background: ${color('neutral.00')};
+        ${transition({ all: true })};
     }
 
     ${pointerEvents};
@@ -174,7 +137,8 @@ export const CheckboxInput = styled.input.withConfig(
     &:checked + ${CheckboxCheckmark}:before {
         opacity: 1;
         box-sizing: border-box;
-        ${checkedBefore}
+        border-color: ${color('primary.main')};
+        background: ${color('primary.main')};
     }
 
     &:disabled + ${CheckboxCheckmark}:before {
@@ -182,17 +146,18 @@ export const CheckboxInput = styled.input.withConfig(
         border-width: 1px;
         border-style: solid;
         box-sizing: border-box;
-        ${disabledBefore}
+        border-color: ${color('neutral.03')};
+        background: ${color('neutral.02')};
     }
 
     &:focus-visible:checked + ${CheckboxCheckmark}:before {
         ${getOutlineFocusStyleFromColor('primary.07')};
-        ${checkedFocus};
+        border-color: ${color('neutral.00')};
     }
 
     &:focus-visible:not(:checked) + ${CheckboxCheckmark}:before {
         ${getOutlineFocusStyleFromColor('primary.07')};
-        ${uncheckedFocus};
+        border-color: ${color('primary.main')};
     }
 `;
 
@@ -212,7 +177,7 @@ export const CheckboxRoot = styled.label.withConfig(
             }
             &:checked:focus-visible:not(:disabled)
                 + ${CheckboxCheckmark}:before {
-                ${checkedFocusHover}
+                background: ${color('primary.05')};
             }
             &:not(:checked):not(:disabled) + ${CheckboxCheckmark}:before {
                 ${uncheckedHover}

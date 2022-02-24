@@ -75,11 +75,11 @@ export type HeaderNavigationPropsType = HeaderNavigationEffectivePropsType;
 export type HeaderNavigationRootPropsType = HeaderNavigationEffectivePropsType &
     ComponentElementStylePropsType;
 
-export type HeaderNavigationTitleRootPropsType = HeaderNavigationEffectivePropsType &
-    ComponentElementStylePropsType;
+export type HeaderNavigationTitleRootPropsType =
+    HeaderNavigationEffectivePropsType & ComponentElementStylePropsType;
 
-export type HeaderNavigationSelectorRootPropsType = HeaderNavigationEffectivePropsType &
-    ComponentElementStylePropsType;
+export type HeaderNavigationSelectorRootPropsType =
+    HeaderNavigationEffectivePropsType & ComponentElementStylePropsType;
 
 export type NavigationItemPropsType = HeaderNavigationEffectivePropsType &
     ComponentElementStylePropsType;

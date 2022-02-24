@@ -40,16 +40,15 @@ export const useFilterViewer = <E extends HTMLElement>(
 ) => {
     const innerRef = useRootRef<E>(ref);
 
-    const [realValue, setRealValue] = useControlledState<
-        FilterConditionValueType
-    >(defaultValue, value, onValueChange);
+    const [realValue, setRealValue] =
+        useControlledState<FilterConditionValueType>(
+            defaultValue,
+            value,
+            onValueChange,
+        );
 
-    const [
-        dialogOpen,
-        setDialogOpen,
-        setDialogOpenTrue,
-        setDialogCloseFalse,
-    ] = useFlagState(false);
+    const [dialogOpen, setDialogOpen, setDialogOpenTrue, setDialogCloseFalse] =
+        useFlagState(false);
 
     const onClearFilterConfirmButtonClick = useCallback(() => {
         setDialogCloseFalse();
@@ -62,7 +61,7 @@ export const useFilterViewer = <E extends HTMLElement>(
         let count = 0;
 
         if (schema && schema.conditions) {
-            schema.conditions.forEach(condition => {
+            schema.conditions.forEach((condition) => {
                 const conditionType = getConditionType(condition, typeIndex);
 
                 if (
@@ -95,7 +94,7 @@ export const useFilterViewer = <E extends HTMLElement>(
             const path = extractDataAttribute(event, 'path');
 
             const schemaCondition = schemaSafe.conditions.find(
-                condition => condition.name === path,
+                (condition) => condition.name === path,
             );
             const conditionInitialValue = schemaCondition?.initialValue;
 
@@ -108,7 +107,7 @@ export const useFilterViewer = <E extends HTMLElement>(
             if (newValue.conditions) {
                 if (conditionInitialValue !== undefined) {
                     // set that initial value
-                    newValue.conditions = newValue.conditions.map(condition =>
+                    newValue.conditions = newValue.conditions.map((condition) =>
                         condition.name === path
                             ? {
                                   ...condition,
@@ -119,7 +118,7 @@ export const useFilterViewer = <E extends HTMLElement>(
                 } else {
                     // remove the condition completely
                     newValue.conditions = newValue.conditions.filter(
-                        condition => condition.name !== path,
+                        (condition) => condition.name !== path,
                     );
                 }
             }
@@ -198,7 +197,7 @@ export const useFilterViewer = <E extends HTMLElement>(
             // todo: use _.get(realValue, path) later when we have a nested structure
             // todo: also, use memoization, be more clever than this!
             const conditionValue = realValueSafe.conditions!.find(
-                conditionValueItem => conditionValueItem.name === path,
+                (conditionValueItem) => conditionValueItem.name === path,
             );
 
             const renderValue = getValueRenderFunction(

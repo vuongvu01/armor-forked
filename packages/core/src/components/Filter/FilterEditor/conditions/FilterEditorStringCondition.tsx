@@ -4,11 +4,9 @@ import { ScalarType } from '@deliveryhero/armor-system';
 import { TextInput } from '../../../TextInput';
 import { FilterEditorConditionPropsType } from '../type';
 
-export const FilterEditorStringCondition: FC<FilterEditorConditionPropsType> = ({
-    condition,
-    conditionValue,
-    onConditionValueChange,
-}) => {
+export const FilterEditorStringCondition: FC<
+    FilterEditorConditionPropsType
+> = ({ condition, conditionValue, onConditionValueChange }) => {
     const { label } = condition;
     const { value } = conditionValue || {};
 

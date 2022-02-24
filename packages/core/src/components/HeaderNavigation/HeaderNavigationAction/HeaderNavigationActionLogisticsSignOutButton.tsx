@@ -15,9 +15,9 @@ const setURL = () => {
 /**
  * @deprecated see @deliveryhero/armor-vendors
  */
-export const HeaderNavigationActionLogisticsSignOutButton: FunctionComponent<HeaderNavigationActionItemPropsType> = ({
-    ...restProps
-}) => (
+export const HeaderNavigationActionLogisticsSignOutButton: FunctionComponent<
+    HeaderNavigationActionItemPropsType
+> = ({ ...restProps }) => (
     <HeaderNavigationActionItem {...restProps} onClick={setURL}>
         <LogoutIcon />
     </HeaderNavigationActionItem>

@@ -3,7 +3,9 @@ import {
     color,
     getComponentOverride,
     propsBlocker,
-    durationNormal,
+    spacing,
+    token,
+    transition,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -13,29 +15,21 @@ import {
 import { ExpansionIndicator } from '../../ExpansionIndicator';
 
 /** 👉 ROOT ELEMENT */
-export const HeaderNavigationMenuRoot = styled.div<
-    HeaderNavigationMenuRootPropsType
->`
+export const HeaderNavigationMenuRoot = styled.div<HeaderNavigationMenuRootPropsType>`
     cursor: pointer;
 `;
 
-const contentContainerStyle = ({
+const getContentContainerStyle = ({
     isExpanded,
-    theme: {
-        componentOverrides: { HeaderNavigationMenu },
-    },
 }: HeaderNavigationMenuContentContainerPropsType) => {
-    let result = HeaderNavigationMenu.ContentContainer.base;
-
     if (isExpanded) {
-        result = css`
-            ${result};
-            transition: all ${durationNormal}ms ease;
+        return css`
+            ${transition({ all: true })};
             opacity: 1;
         `;
     }
 
-    return result;
+    return '';
 };
 
 export const HeaderNavigationMenuContentContainer = styled.div.withConfig(
@@ -44,23 +38,17 @@ export const HeaderNavigationMenuContentContainer = styled.div.withConfig(
     position: absolute;
     opacity: 0;
     z-index: 2048;
-
-    ${contentContainerStyle};
+    background-color: ${color('neutral.00')};
+    box-shadow: ${token('elevation.large')};
+    margin-top: ${spacing(5)};
+    ${getContentContainerStyle};
 `;
 
-const expansionIndicatorItemStyle = ({
-    theme: {
-        componentOverrides: { HeaderNavigationMenu },
-    },
-}: HeaderNavigationMenuRootPropsType) => {
-    return HeaderNavigationMenu.ExpansionIndicatorItem.base;
-};
-
-export const MenuExpansionIndicatorItem = styled.div.withConfig(propsBlocker)<
-    HeaderNavigationMenuRootPropsType
->`
+export const MenuExpansionIndicatorItem = styled.div.withConfig(
+    propsBlocker,
+)<HeaderNavigationMenuRootPropsType>`
     outline: none;
-    ${expansionIndicatorItemStyle};
+    height: ${spacing(5)};
 `;
 
 export const HeaderNavigationMenuTitleContainer = styled.div.withConfig(
@@ -69,17 +57,16 @@ export const HeaderNavigationMenuTitleContainer = styled.div.withConfig(
     display: flex;
     align-items: center;
 `;
-export const HeaderNavigationMenuTitle = styled.div.withConfig(propsBlocker)<
-    HeaderNavigationMenuRootPropsType
->``;
+export const HeaderNavigationMenuTitle = styled.div.withConfig(
+    propsBlocker,
+)<HeaderNavigationMenuRootPropsType>``;
 
-export const MenuExpansionIndicator = styled(ExpansionIndicator)<
-    HeaderNavigationMenuRootPropsType
->`
+export const MenuExpansionIndicator = styled(
+    ExpansionIndicator,
+)<HeaderNavigationMenuRootPropsType>`
     .ExpansionIndicator-Content {
         background-color: ${color('neutral.02')};
         width: 40px;
     }
-
     ${getComponentOverride('HeaderNavigationMenu')};
 `;

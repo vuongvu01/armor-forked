@@ -18,14 +18,14 @@ export const useTableExpandableSection = ({
         if (RESIZE_OBSERVER_SUPPORTED && contentRef.current) {
             // todo: add type declarations for ResizeObserver
             // @ts-ignore
-            observer = new ResizeObserver(entries => {
+            observer = new ResizeObserver((entries) => {
                 const contentEntry = entries[0];
                 if (!contentEntry) {
                     return;
                 }
 
-                const contentNodeHeight = contentEntry.target.getBoundingClientRect()
-                    .height;
+                const contentNodeHeight =
+                    contentEntry.target.getBoundingClientRect().height;
                 setContainerHeight(contentNodeHeight);
             });
             observer.observe(contentRef.current);

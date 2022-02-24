@@ -11,7 +11,6 @@ import {
     TextInputRoot,
 } from './style';
 import { TextInputInputPropsType, TextInputPropsType } from './type';
-import { textInputDefaultTheme } from './theme';
 import {
     TEXT_INPUT_CLASS_PREFIX,
     textInputLabel,
@@ -25,10 +24,7 @@ import { useTextInput } from './hooks/useTextInput';
  */
 export const TextInput = forwardRef<HTMLInputElement, TextInputPropsType>(
     function TextInput({ className, ...restProps }, ref) {
-        const theme = useComponentTheme(
-            TEXT_INPUT_CLASS_PREFIX,
-            textInputDefaultTheme,
-        );
+        const theme = useComponentTheme(TEXT_INPUT_CLASS_PREFIX);
 
         const {
             rootProps,

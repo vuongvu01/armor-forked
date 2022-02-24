@@ -4,7 +4,6 @@ import { useComponentTheme } from '@deliveryhero/armor-system';
 import { useTableCellLabelClassNames } from './hooks/useTableCellLabelClassNames';
 import { TableCellLabelRoot } from './style';
 import { TableCellLabelPropsType } from './type';
-import { tableCellLabelDefaultTheme } from './theme';
 import {
     tableCellLabelRootTestId,
     TABLE_CELL_LABEL_CLASS_PREFIX,
@@ -17,10 +16,7 @@ export const TableCellLabel = forwardRef<
     HTMLDivElement,
     TableCellLabelPropsType
 >(function TableCellLabel({ className, ...restProps }, ref) {
-    const theme = useComponentTheme(
-        TABLE_CELL_LABEL_CLASS_PREFIX,
-        tableCellLabelDefaultTheme,
-    );
+    const theme = useComponentTheme(TABLE_CELL_LABEL_CLASS_PREFIX);
     const classNameComponents = useTableCellLabelClassNames(
         TABLE_CELL_LABEL_CLASS_PREFIX,
         className,

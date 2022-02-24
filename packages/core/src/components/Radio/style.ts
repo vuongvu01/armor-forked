@@ -1,12 +1,13 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import {
     marginProps,
     getComponentOverride,
     propsBlocker,
     mouseCursor,
-    durationNormal,
     getOutlineFocusStyleFromColor,
     transition,
+    color,
+    token,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -25,56 +26,34 @@ const sizes = {
     },
 };
 
-const containerStyle = ({
-    theme: {
-        componentOverrides: { Radio },
-    },
-    disabled,
-}: RadioInputPropsType) =>
-    disabled ? Radio.Container.disabled : Radio.Container.base;
+const getContainerStyle = ({ disabled }: RadioInputPropsType) => {
+    if (disabled) {
+        return css`
+            background-color: ${color('neutral.02')};
+        `;
+    }
 
-const containerStyleHighlighted = ({
-    theme: {
-        componentOverrides: { Radio },
-    },
-}: RadioInputPropsType) => Radio.Container.highlighted;
+    return css`
+        background-color: ${color('neutral.00')};
+    `;
+};
 
-const containerStyleOnHover = ({
-    theme: {
-        componentOverrides: { Radio },
-    },
-}: RadioInputPropsType) => Radio.Container.hover;
+const getDotStyle = ({ disabled }: RadioInputPropsType) => {
+    if (disabled) {
+        return css`
+            background-color: ${color('neutral.03')};
+        `;
+    }
 
-const containerStyleOnFocus = ({
-    theme: {
-        componentOverrides: { Radio },
-    },
-}: RadioInputPropsType) => Radio.Container.focus;
-
-const dotStyleOnHover = ({
-    theme: {
-        componentOverrides: { Radio },
-    },
-}: RadioInputPropsType) => Radio.Dot.hover;
-
-const dotStyle = ({
-    theme: {
-        componentOverrides: { Radio },
-    },
-    disabled,
-}: RadioInputPropsType) => (disabled ? Radio.Dot.disabled : Radio.Dot.base);
-
-const radioRootStyle = ({
-    theme: {
-        componentOverrides: { Radio },
-    },
-}: RadioRootPropsType) => Radio.Root.base;
+    return css`
+        background-color: ${color('primary.main')};
+    `;
+};
 
 /** 👉 ROOT ELEMENT */
 export const RadioRoot = styled.div.withConfig(
     propsBlocker,
 )<RadioRootPropsType>`
-    ${radioRootStyle};
     ${getComponentOverride('Radio')};
     ${marginProps};
 `;
@@ -98,7 +77,7 @@ export const RadioMark = styled.label.withConfig(
         })}
     }
 
-    ${mouseCursor}
+    ${mouseCursor};
 `;
 
 export const RadioInput = styled.input.withConfig(
@@ -122,8 +101,9 @@ export const RadioInput = styled.input.withConfig(
         position: absolute;
         top: 0;
         width: ${sizes.container.side}px;
-
-        ${containerStyle}
+        border-radius: ${token('shape.borderRadius.pill')};
+        border-color: ${color('neutral.03')};
+        ${getContainerStyle};
     }
 
     &:not(:checked) + ${RadioMark}:after, &:checked + ${RadioMark}:after {
@@ -135,8 +115,8 @@ export const RadioInput = styled.input.withConfig(
         position: absolute;
         top: 0;
         width: ${sizes.dot.side}px;
-
-        ${dotStyle}
+        border-radius: ${token('shape.borderRadius.pill')};
+        ${getDotStyle};
     }
 
     &:not(:checked) + ${RadioMark}:after {
@@ -150,22 +130,22 @@ export const RadioInput = styled.input.withConfig(
     }
 
     &:not(:disabled):checked + ${RadioMark}:before {
-        ${containerStyleHighlighted}
+        border-color: ${color('primary.main')};
     }
 
     &:not(:disabled):checked
         + ${RadioMark}:hover:before,
         &:not(:disabled):not(:checked)
         + ${RadioMark}:hover:before {
-        ${containerStyleOnHover}
+        border-color: ${color('primary.light')};
     }
 
     &:not(:disabled):checked + ${RadioMark}:hover:after {
-        ${dotStyleOnHover}
+        background-color: ${color('primary.light')};
     }
 
     &:focus-visible + ${RadioMark}:before {
         ${getOutlineFocusStyleFromColor('primary.07')}
-        ${containerStyleOnFocus}
+        border-color: ${color('primary.light')};
     }
 `;

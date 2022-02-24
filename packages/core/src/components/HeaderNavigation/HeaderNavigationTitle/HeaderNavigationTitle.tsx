@@ -36,7 +36,7 @@ export const HeaderNavigationTitle = forwardRef<
     },
     ref,
 ) {
-    const theme = useTheme();
+    const theme = useTheme().armor; // todo: fix this
 
     const classOverride = useHeaderNavigationTitleClassName(
         HEADER_NAVIGATION_TITLE_CLASS_PREFIX,

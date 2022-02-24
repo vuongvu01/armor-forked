@@ -27,9 +27,9 @@ const defaultLabelColorHover = color('neutral.11');
 const defaultActionColor = color('neutral.05');
 
 /** 👉 ROOT ELEMENT */
-export const SearchSuggestionItemRoot = styled.div.withConfig(propsBlocker)<
-    SearchSuggestionItemRootPropsType
->`
+export const SearchSuggestionItemRoot = styled.div.withConfig(
+    propsBlocker,
+)<SearchSuggestionItemRootPropsType>`
     .Search-SuggestionsItemIcon {
         color: ${defaultLabelColor};
     }
@@ -94,9 +94,9 @@ export const SearchSuggestionItemContainer = styled.div.withConfig(
     ${getComponentOverride('SearchSuggestionItem')};
 `;
 
-export const SearchSuggestionItemLabelTypography = styled(Typography)<
-    SearchSuggestionItemLabelTypographyPropsType
->`
+export const SearchSuggestionItemLabelTypography = styled(
+    Typography,
+)<SearchSuggestionItemLabelTypographyPropsType>`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -127,9 +127,9 @@ const searchSuggestionsItemIconStyle = ({
     return result;
 };
 
-export const SearchSuggestionsItemIcon = styled.div.withConfig(propsBlocker)<
-    SearchSuggestionsItemIconPropsType
->`
+export const SearchSuggestionsItemIcon = styled.div.withConfig(
+    propsBlocker,
+)<SearchSuggestionsItemIconPropsType>`
     align-items: center;
     box-sizing: border-box;
     display: flex;
@@ -150,9 +150,9 @@ const searchSuggestionsItemLabelStyle = ({
           `;
 };
 
-export const SearchSuggestionsItemLabel = styled.div.withConfig(propsBlocker)<
-    SearchSuggestionsItemLabelPropsType
->`
+export const SearchSuggestionsItemLabel = styled.div.withConfig(
+    propsBlocker,
+)<SearchSuggestionsItemLabelPropsType>`
     padding-right: ${spacing(2)};
     box-sizing: border-box;
     flex-grow: 1;
@@ -173,9 +173,9 @@ const searchSuggestionsItemActionStyle = ({
         : css``;
 };
 
-export const SearchSuggestionsItemAction = styled.div.withConfig(propsBlocker)<
-    SearchSuggestionsItemActionPropsType
->`
+export const SearchSuggestionsItemAction = styled.div.withConfig(
+    propsBlocker,
+)<SearchSuggestionsItemActionPropsType>`
     align-items: flex-start;
     box-sizing: border-box;
     overflow-x: hidden;

@@ -10,7 +10,6 @@ import {
 } from '@testing-library/react-hooks';
 import renderer from 'react-test-renderer';
 
-import { customTheme } from './helpers';
 import { Table } from '../..';
 
 describe('<Table />', () => {
@@ -39,22 +38,9 @@ describe('<Table />', () => {
         expect(result.current.current).toBeInstanceOf(HTMLElement);
     });
 
-    it('should support custom theme', () => {
-        let tree = renderer.create(<Table>With custom theme</Table>).toJSON();
-
+    it('should support component overridee', () => {
         // @ts-ignore
-        expect(tree).not.toHaveStyleRule('border-width', '2px');
-
-        tree = renderer
-            .create(
-                <ThemeProvider theme={customTheme}>
-                    <Table>With custom theme</Table>
-                </ThemeProvider>,
-            )
-            .toJSON();
-
-        // @ts-ignore
-        expect(tree).toHaveStyleRule('border-width', '2px');
+        expect(<Table>With custom theme</Table>).toSupportOverride('Table');
     });
 
     it('should support margin properties', async () => {

@@ -9,11 +9,9 @@ import {
     SearchEmptySuggestionsListRoot,
 } from './style';
 
-export const SearchEmptySuggestionsList: FunctionComponent<SearchEmptySuggestionsListPropsType> = ({
-    noResultsLabel = 'No results found',
-    className,
-    theme,
-}) => {
+export const SearchEmptySuggestionsList: FunctionComponent<
+    SearchEmptySuggestionsListPropsType
+> = ({ noResultsLabel = 'No results found', className, theme }) => {
     const classOverride = useSearchEmptySuggestionsListClassName(
         SEARCH_EMPTY_SUGGESTIONS_LIST_CLASS_PREFIX,
         className,

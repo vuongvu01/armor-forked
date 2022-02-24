@@ -37,10 +37,11 @@ export const useCommonDatePickerAllowedDates = <V>(
                     break;
                 }
 
-                const dateRange = DateVectorRange.createFromLocalDateAdvancedRange(
-                    range,
-                    currentDateVector,
-                );
+                const dateRange =
+                    DateVectorRange.createFromLocalDateAdvancedRange(
+                        range,
+                        currentDateVector,
+                    );
 
                 if (!dateRange.isIllegal()) {
                     ranges.push(dateRange);
@@ -85,10 +86,11 @@ export const useCommonDatePickerAllowedDates = <V>(
                     break;
                 }
 
-                const dateRange = DateVectorRange.createFromLocalDateAdvancedRange(
-                    range,
-                    currentDateVector,
-                );
+                const dateRange =
+                    DateVectorRange.createFromLocalDateAdvancedRange(
+                        range,
+                        currentDateVector,
+                    );
 
                 if (!dateRange.isIllegal()) {
                     ranges.push(dateRange);

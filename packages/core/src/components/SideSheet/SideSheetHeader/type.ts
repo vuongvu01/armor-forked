@@ -10,4 +10,5 @@ export type SideSheetHeaderPropsType = Partial<{
 
 export type SideSheetHeaderRootPropsType = ComponentElementStylePropsType;
 
-export type SideSheetHeaderDescriptionPropsType = ComponentElementStylePropsType;
+export type SideSheetHeaderDescriptionPropsType =
+    ComponentElementStylePropsType;

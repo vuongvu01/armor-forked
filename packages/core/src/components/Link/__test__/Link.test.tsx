@@ -77,9 +77,9 @@ describe('<Link />', () => {
         expect(Link).toSupportRestPropsForwarding('Link');
     });
 
-    it('should support custom theme', () => {
+    it('should support component override', () => {
         // @ts-ignore
-        expect(<Link>Hello</Link>).toSupportCustomTheme('Link');
+        expect(<Link>Hello</Link>).toSupportOverride('Link');
     });
 
     it('should support margin properties', async () => {

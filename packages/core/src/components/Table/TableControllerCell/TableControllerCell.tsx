@@ -29,11 +29,8 @@ export const TableControllerCell = forwardRef<
         className,
     );
 
-    const {
-        rootProps,
-        triggerProps,
-        triggerIconProps,
-    } = useTableControllerCell(restProps);
+    const { rootProps, triggerProps, triggerIconProps } =
+        useTableControllerCell(restProps);
 
     return (
         <TableControllerCellRoot

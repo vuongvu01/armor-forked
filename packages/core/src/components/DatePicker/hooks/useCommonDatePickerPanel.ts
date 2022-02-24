@@ -29,21 +29,12 @@ export const useCommonDatePickerPanel = <V, E extends HTMLDivElement>(
     }: DatePickerEffectiveGenericPropsType<V> &
         DatePickerEffectiveCommonPropsType,
 ) => {
-    const {
-        dropdownRef,
-        triggerRef,
-        dropdownProps,
-        arrowProps,
-    } = useCommonDatePickerPopper();
+    const { dropdownRef, triggerRef, dropdownProps, arrowProps } =
+        useCommonDatePickerPopper();
 
     // main panel open/close
-    const [
-        dropdownOpen,
-        ,
-        ,
-        closeDropdown,
-        toggleDropdown,
-    ] = useControlledFlagState(defaultOpen, open, onOpenChange);
+    const [dropdownOpen, , , closeDropdown, toggleDropdown] =
+        useControlledFlagState(defaultOpen, open, onOpenChange);
 
     const { zIndex: realZIndex, id: panelId } = useOverlay(dropdownOpen, {
         zIndex,

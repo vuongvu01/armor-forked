@@ -4,7 +4,6 @@ import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { isStatusTag, useTagClassName } from './utils';
 import { TagDeleteIconModeType, TagPropsType } from './type';
-import { tagDefaultTheme } from './theme';
 import { TAG_CLASS_PREFIX, TAG_DELETE_BEHAVIOUR_OPTIONS } from './constants';
 import { TagCloseIcon, TagCloseIconContainer, TagRoot, TagText } from './style';
 import { useTag } from './utils/useTag';
@@ -16,7 +15,7 @@ export const Tag = forwardRef<HTMLDivElement, TagPropsType>(function Tag(
     { className, ...restProps },
     ref,
 ) {
-    const theme = useComponentTheme(TAG_CLASS_PREFIX, tagDefaultTheme);
+    const theme = useComponentTheme(TAG_CLASS_PREFIX);
 
     const {
         rootProps,
@@ -68,7 +67,8 @@ export const Tag = forwardRef<HTMLDivElement, TagPropsType>(function Tag(
 });
 
 Tag.defaultProps = {
-    deleteOption: TAG_DELETE_BEHAVIOUR_OPTIONS.ON_HOVER as TagDeleteIconModeType,
+    deleteOption:
+        TAG_DELETE_BEHAVIOUR_OPTIONS.ON_HOVER as TagDeleteIconModeType,
     type: 'default',
 };
 

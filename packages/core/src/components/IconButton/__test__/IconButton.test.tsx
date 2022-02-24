@@ -8,16 +8,13 @@
  */
 
 import React, { useRef } from 'react';
-import { ThemeProvider } from 'styled-components';
 
 import { cleanup, render } from '@testing-library/react';
 import {
     renderHook,
     cleanup as cleanupHooks,
 } from '@testing-library/react-hooks';
-import renderer from 'react-test-renderer';
 
-import { customTheme } from './helpers';
 import { IconButton } from '..';
 
 describe('<IconButton />', () => {
@@ -50,24 +47,11 @@ describe('<IconButton />', () => {
         expect(IconButton).toSupportRestPropsForwarding('IconButton');
     });
 
-    it('should support custom theme', () => {
-        let tree = renderer
-            .create(<IconButton>With custom theme</IconButton>)
-            .toJSON();
-
-        // @ts-ignore
-        expect(tree).not.toHaveStyleRule('border-width', '2px');
-
-        tree = renderer
-            .create(
-                <ThemeProvider theme={customTheme}>
-                    <IconButton>With custom theme</IconButton>
-                </ThemeProvider>,
-            )
-            .toJSON();
-
-        // @ts-ignore
-        expect(tree).toHaveStyleRule('border-width', '2px');
+    it('should support component override', () => {
+        expect(
+            <IconButton>With custom theme</IconButton>,
+            // @ts-ignore
+        ).toSupportOverride('IconButton');
     });
 
     it('should support margin properties', async () => {

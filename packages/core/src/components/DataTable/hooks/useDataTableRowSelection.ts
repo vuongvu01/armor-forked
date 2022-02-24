@@ -37,7 +37,7 @@ export const useDataTableRowSelection = (
 
     const unselectRows = () => onRowSelectionChangeInternal([]);
 
-    const rowIds = useMemo(() => dataSafe.map(item => item.id), [dataSafe]);
+    const rowIds = useMemo(() => dataSafe.map((item) => item.id), [dataSafe]);
 
     const allRowsSelected =
         !!selectedRowIdsActual &&
@@ -81,7 +81,7 @@ export const useDataTableRowSelection = (
 
             onRowSelectionChangeInternal(
                 selected
-                    ? selectedRowIdsActual.filter(id => id !== rowId)
+                    ? selectedRowIdsActual.filter((id) => id !== rowId)
                     : [rowId, ...selectedRowIdsActual],
             );
         },

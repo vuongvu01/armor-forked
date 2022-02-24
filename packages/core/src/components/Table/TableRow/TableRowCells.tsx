@@ -19,7 +19,7 @@ export const TableRowCells: FunctionComponent<TableRowCellsPropTypes> = ({
     let index = 0;
     return (
         <>
-            {Children.map(children, child => {
+            {Children.map(children, (child) => {
                 if (!child) {
                     return null;
                 }

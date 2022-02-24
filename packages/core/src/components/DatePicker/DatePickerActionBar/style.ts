@@ -12,9 +12,9 @@ import {
 import { DatePickerActionBarRootPropsType } from './type';
 
 /** 👉 ROOT ELEMENT */
-export const DatePickerActionBarRoot = styled.div.withConfig(propsBlocker)<
-    DatePickerActionBarRootPropsType
->`
+export const DatePickerActionBarRoot = styled.div.withConfig(
+    propsBlocker,
+)<DatePickerActionBarRootPropsType>`
     ${reset};
     ${typography('paragraphMedium')};
     padding: ${spacing(4)};

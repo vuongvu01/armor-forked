@@ -315,8 +315,8 @@ export const defaultThemeStructure = {
         },
     },
     spacing: SPACING_FACTOR,
-    componentOverrides: {},
-    components: {},
+    componentCSS: {},
+    component: {},
     elevation: {
         small: boxShadowSmall,
         medium: boxShadowMedium,

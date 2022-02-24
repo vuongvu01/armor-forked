@@ -116,7 +116,7 @@ describe('<TextInput />: label', () => {
             const { getInput } = await expectInputLabelToChangeOnAction(
                 INSIDE,
                 OUTSIDE,
-                async input => {
+                async (input) => {
                     fireEvent.focus(input);
                 },
                 { value: '' },
@@ -129,7 +129,7 @@ describe('<TextInput />: label', () => {
             await expectInputLabelToChangeOnAction(
                 INSIDE,
                 OUTSIDE,
-                async input => {
+                async (input) => {
                     userEvent.type(input, 'Hello, World!');
                 },
             );
@@ -140,7 +140,7 @@ describe('<TextInput />: label', () => {
             await expectInputLabelToChangeOnAction(
                 OUTSIDE,
                 INSIDE,
-                async input => {
+                async (input) => {
                     userEvent.clear(input);
                     fireEvent.blur(input);
                 },

@@ -30,9 +30,9 @@ const getRootStyle = ({ displayMenuElements }: ContextMenuRootPropsType) => {
 };
 
 /** 👉 ROOT ELEMENT */
-export const ContextMenuRoot = styled.div.withConfig(propsBlocker)<
-    ContextMenuRootPropsType
->`
+export const ContextMenuRoot = styled.div.withConfig(
+    propsBlocker,
+)<ContextMenuRootPropsType>`
     box-sizing: border-box;
     margin: 0;
     text-align: left;
@@ -52,8 +52,8 @@ export const ContextMenuRoot = styled.div.withConfig(propsBlocker)<
     ${paddingProps};
 `;
 
-export const ContextMenuArrow = styled.div.withConfig(propsBlocker)<
-    ContextMenuSubNodePropsType
->`
+export const ContextMenuArrow = styled.div.withConfig(
+    propsBlocker,
+)<ContextMenuSubNodePropsType>`
     ${popperArrow}
 `;

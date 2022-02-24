@@ -80,7 +80,7 @@ const renderMenuElement = (
                     enableEffects={enableEffects}
                 >
                     {element.beforeItems}
-                    {element.items!.map(subItem =>
+                    {element.items!.map((subItem) =>
                         renderMenuElement(
                             subItem,
                             depthLevel + 1,
@@ -121,12 +121,8 @@ export const Navigation = forwardRef<HTMLDivElement, NavigationPropsType>(
             className,
         );
 
-        const {
-            onMenuElementClick,
-            items,
-            maxDepthLevel,
-            restRootProps,
-        } = useNavigation(restProps);
+        const { onMenuElementClick, items, maxDepthLevel, restRootProps } =
+            useNavigation(restProps);
 
         return (
             <NavigationRoot
@@ -137,7 +133,7 @@ export const Navigation = forwardRef<HTMLDivElement, NavigationPropsType>(
             >
                 <Menu enableBottomSeparator={enableBottomSeparator}>
                     {!!items &&
-                        items.map(item =>
+                        items.map((item) =>
                             renderMenuElement(
                                 item,
                                 0,

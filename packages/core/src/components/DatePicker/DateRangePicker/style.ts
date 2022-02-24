@@ -12,14 +12,13 @@ import { DateRangePickerPropsType } from './type';
 import { getRootStyle } from '../style';
 
 /** 👉 ROOT ELEMENT */
-export const DateRangePickerRoot = styled.div.withConfig(propsBlocker)<
-    DateRangePickerPropsType
->`
+export const DateRangePickerRoot = styled.div.withConfig(
+    propsBlocker,
+)<DateRangePickerPropsType>`
     ${reset()};
     ${typography('paragraphMedium')};
     display: inline-block;
     position: relative;
-
     ${getRootStyle};
     ${getComponentOverride('DateRangePicker')};
     ${marginProps};

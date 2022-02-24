@@ -12,8 +12,8 @@ type DatePickerTimeSelectorEffectivePropsType = {
 } & Omit<HTMLAttributes<HTMLDivElement>, 'onChange'>; // includes all HTML Div properties
 
 /* DatePickerTimeSelector component prop type */
-export type DatePickerTimeSelectorPropsType = DatePickerTimeSelectorEffectivePropsType &
-    ComponentStylePropsType;
+export type DatePickerTimeSelectorPropsType =
+    DatePickerTimeSelectorEffectivePropsType & ComponentStylePropsType;
 
 /* DatePickerTimeSelector Root node prop type */
 export type DatePickerTimeSelectorRootPropsType = Omit<

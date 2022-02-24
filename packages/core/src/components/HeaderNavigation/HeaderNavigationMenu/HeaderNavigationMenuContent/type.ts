@@ -10,15 +10,15 @@ export type ClassBasedOnComponentType = {
     component: string;
 };
 
-type HeaderNavigationMenuContentEffectivePropsType = HTMLAttributes<
-    HTMLElement
-> &
-    MarginPropsType;
+type HeaderNavigationMenuContentEffectivePropsType =
+    HTMLAttributes<HTMLElement> & MarginPropsType;
 
-export type HeaderNavigationMenuContentPropsType = HeaderNavigationMenuContentEffectivePropsType;
+export type HeaderNavigationMenuContentPropsType =
+    HeaderNavigationMenuContentEffectivePropsType;
 
-export type HeaderNavigationMenuContentRootPropsType = HeaderNavigationMenuContentEffectivePropsType &
-    ComponentElementStylePropsType;
+export type HeaderNavigationMenuContentRootPropsType =
+    HeaderNavigationMenuContentEffectivePropsType &
+        ComponentElementStylePropsType;
 
 type HeaderNavigationMenuContentHeaderEffectivePropsType = Partial<{
     title: string;
@@ -29,13 +29,15 @@ type HeaderNavigationMenuContentHeaderEffectivePropsType = Partial<{
     HTMLAttributes<HTMLElement> &
     MarginPropsType;
 
-export type HeaderNavigationMenuContentHeaderPropsType = HeaderNavigationMenuContentHeaderEffectivePropsType;
+export type HeaderNavigationMenuContentHeaderPropsType =
+    HeaderNavigationMenuContentHeaderEffectivePropsType;
 
 export type HeaderNavigationMenuContentBodyOptionsItemPropsType = {
     isActive: boolean;
 } & ComponentElementStylePropsType;
 
-export type HeaderNavigationMenuContentBodyOptionsCategoryPropsType = ComponentElementStylePropsType;
+export type HeaderNavigationMenuContentBodyOptionsCategoryPropsType =
+    ComponentElementStylePropsType;
 
 export type HeaderNavigationMenuContentContextType = {
     isExpanded?: boolean;

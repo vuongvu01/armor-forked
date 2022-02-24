@@ -59,12 +59,12 @@ describe('<TableBody />', () => {
         expect(result.current.current).toBeInstanceOf(HTMLElement);
     });
 
-    it('should support custom theme', () => {
+    it('should support component override', () => {
         expect(
             <table>
                 <TableBody>With custom theme</TableBody>
             </table>,
             // @ts-ignore
-        ).toSupportCustomTheme('TableBody', tree => tree.children[0]);
+        ).toSupportOverride('TableBody', (tree) => tree.children[0]);
     });
 });

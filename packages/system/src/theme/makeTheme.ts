@@ -7,6 +7,6 @@ export const makeTheme = (
 ): RootThemeType => {
     return {
         ...declaration,
-        armor: makeArmorSubTheme(declaration.armor, options),
+        armor: makeArmorSubTheme(declaration.armor),
     };
 };

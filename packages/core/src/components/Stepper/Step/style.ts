@@ -231,9 +231,9 @@ export const StepButton = styled.button`
     ${getStepButtonRootStyle};
 `;
 
-export const StepperPieceWrapper = styled.div.withConfig(propsBlocker)<
-    StepperPiecePropsType
->`
+export const StepperPieceWrapper = styled.div.withConfig(
+    propsBlocker,
+)<StepperPiecePropsType>`
     border-radius: 50%;
     border: 1px solid transparent;
     box-sizing: border-box;

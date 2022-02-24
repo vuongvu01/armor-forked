@@ -16,9 +16,9 @@ import {
 } from './type';
 
 /** 👉 ROOT ELEMENT */
-export const SideSheetHeaderRoot = styled.div.withConfig(propsBlocker)<
-    SideSheetHeaderRootPropsType
->`
+export const SideSheetHeaderRoot = styled.div.withConfig(
+    propsBlocker,
+)<SideSheetHeaderRootPropsType>`
     ${reset};
     ${typography('paragraphMedium')};
     flex-grow: 1;
@@ -33,9 +33,9 @@ export const SideSheetHeaderTitle = styled.div`
     margin-bottom: ${spacing(2)};
 `;
 
-export const SideSheetHeaderDescription = styled.div.withConfig(propsBlocker)<
-    SideSheetHeaderDescriptionPropsType
->`
+export const SideSheetHeaderDescription = styled.div.withConfig(
+    propsBlocker,
+)<SideSheetHeaderDescriptionPropsType>`
     ${typography('paragraphLarge')};
     color: ${color('neutral.07')};
     margin-bottom: 0;

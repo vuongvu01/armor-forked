@@ -5,7 +5,6 @@ import { useComponentTheme, PortalToBody } from '@deliveryhero/armor-system';
 import { useTooltipClassNames } from './hooks/useTooltipClassNames';
 import { TooltipRoot, TooltipArrow } from './style';
 import { TooltipPropsType } from './type';
-import { tooltipDefaultTheme } from './theme';
 import { TOOLTIP_CLASS_PREFIX } from './constants';
 import { useTooltip } from './hooks/useTooltip';
 
@@ -14,10 +13,7 @@ import { useTooltip } from './hooks/useTooltip';
  */
 export const Tooltip = forwardRef<HTMLDivElement, TooltipPropsType>(
     function Tooltip({ className, ...props }, ref) {
-        const theme = useComponentTheme(
-            TOOLTIP_CLASS_PREFIX,
-            tooltipDefaultTheme,
-        );
+        const theme = useComponentTheme(TOOLTIP_CLASS_PREFIX);
 
         const {
             align,

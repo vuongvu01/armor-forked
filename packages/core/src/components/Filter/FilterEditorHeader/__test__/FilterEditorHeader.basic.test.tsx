@@ -49,11 +49,11 @@ describe('<FilterEditorHeader />', () => {
         );
     });
 
-    it('should support custom theme', () => {
+    it('should support component override', () => {
         expect(
             <FilterEditorHeader>Hello</FilterEditorHeader>,
             // @ts-ignore
-        ).toSupportCustomTheme('FilterEditorHeader');
+        ).toSupportOverride('FilterEditorHeader');
     });
 
     it('should support margin properties', async () => {

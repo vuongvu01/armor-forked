@@ -10,9 +10,9 @@ import {
 import { FilterEditorActionsRootPropsType } from './type';
 
 /** 👉 ROOT ELEMENT */
-export const FilterEditorActionsRoot = styled.div.withConfig(propsBlocker)<
-    FilterEditorActionsRootPropsType
->`
+export const FilterEditorActionsRoot = styled.div.withConfig(
+    propsBlocker,
+)<FilterEditorActionsRootPropsType>`
     ${reset};
     ${typography('paragraphMedium')};
     display: flex;

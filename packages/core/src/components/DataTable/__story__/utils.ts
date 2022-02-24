@@ -8,7 +8,7 @@ export const multiplyDataRows = (
     for (let i = 0; i < blockCount; i += 1) {
         data = [
             ...data,
-            ...what.map(item => ({
+            ...what.map((item) => ({
                 ...item,
                 id: `${item.id}_${i}`,
             })),

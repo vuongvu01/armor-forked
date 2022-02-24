@@ -12,9 +12,6 @@ import {
     token,
     spacing,
     color,
-    componentSpacing02,
-    componentSpacing03,
-    componentSpacing04,
     getOutlineFocusStyleFromColor,
 } from '@deliveryhero/armor-system';
 
@@ -51,9 +48,6 @@ const getSecondaryDisabledColors = () => css`
 `;
 
 const getDynamicStyle = ({
-    theme: {
-        componentOverrides: { Button },
-    },
     secondary,
     tertiary,
     danger,
@@ -82,7 +76,6 @@ const getDynamicStyle = ({
                 border-color: ${color('primary.dark')};
                 background-color: ${color('neutral.02')};
             }
-            ${Button.Root.secondary};
         `;
     } else if (tertiary) {
         result = css`
@@ -98,7 +91,6 @@ const getDynamicStyle = ({
                 color: ${color('primary.dark')};
                 background-color: ${color('neutral.02')};
             }
-            ${Button.Root.tertiary};
         `;
     } else {
         result = css`
@@ -117,7 +109,6 @@ const getDynamicStyle = ({
                 border-color: ${color('neutral.00')};
                 background-color: ${color('primary.08')};
             }
-            ${Button.Root.primary};
         `;
     }
 
@@ -140,7 +131,6 @@ const getDynamicStyle = ({
                     color: ${color('error.08')};
                     border-color: ${color('error.08')};
                 }
-                ${Button.Root.secondary__danger};
             `;
         } else if (tertiary) {
             result = css`
@@ -159,7 +149,6 @@ const getDynamicStyle = ({
                     border-color: ${color('error.07')};
                     ${getOutlineFocusStyleFromColor('error.07')};
                 }
-                ${Button.Root.tertiary__danger};
             `;
         } else {
             result = css`
@@ -177,7 +166,6 @@ const getDynamicStyle = ({
                     border-color: ${color('neutral.00')};
                     ${getOutlineFocusStyleFromColor('error.07')};
                 }
-                ${Button.Root.primary__danger};
             `;
         }
     }
@@ -185,9 +173,8 @@ const getDynamicStyle = ({
     if (small) {
         result = css`
             ${result};
-            padding-top: ${componentSpacing02};
-            padding-bottom: ${componentSpacing02};
-            ${Button.Root.small};
+            padding-top: ${spacing(2)};
+            padding-bottom: ${spacing(2)};
         `;
     }
 
@@ -255,7 +242,7 @@ export const ButtonRoot = styled(Wrapper).withConfig(
     display: inline-flex;
     justify-content: center;
     outline: none;
-    padding: ${spacing(componentSpacing03)} ${spacing(componentSpacing04)};
+    padding: ${spacing(3)} ${spacing(4)};
     position: relative;
     text-align: center;
     text-decoration: none;
@@ -282,10 +269,6 @@ export const ButtonRoot = styled(Wrapper).withConfig(
 
     border-radius: ${token('shape.borderRadius.soft')};
     background-color: transparent;
-
-    font-family: ${token('typography.body.fontFamily')}, sans-serif; // deprecated
-    ${({ theme }: ButtonRootPropsType) =>
-        theme.componentOverrides.Button.Root.base}; // deprecated
 
     ${getDynamicStyle};
     ${getComponentOverride('Button')};

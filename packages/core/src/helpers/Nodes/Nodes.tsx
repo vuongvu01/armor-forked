@@ -12,7 +12,7 @@ export const Nodes: FunctionComponent<Props> = ({ blockName, nodes }) => {
                 description: 'Root element',
                 className: makeBEM(blockName, 'Root'),
             },
-            ...nodes.map(node => {
+            ...nodes.map((node) => {
                 return {
                     description: '-',
                     className: makeBEM(blockName, node.element, node.modifier),
@@ -32,7 +32,7 @@ export const Nodes: FunctionComponent<Props> = ({ blockName, nodes }) => {
                 </HeaderTR>
             </thead>
             <TBody>
-                {columns.map(column => (
+                {columns.map((column) => (
                     <TR key={column.className}>
                         <TD>{column.element}</TD>
                         <TD>.{column.className}</TD>

@@ -65,12 +65,12 @@ export const getLargeDemoData = (blockCount = 1) => {
     for (let i = 0; i < blockCount; i += 1) {
         data = [
             ...data,
-            ...demoData.map(item => ({
+            ...demoData.map((item) => ({
                 ...item,
                 key: `${item.key}_${i}`,
             })),
         ];
     }
 
-    return { data, keys: data.map(item => item.key) };
+    return { data, keys: data.map((item) => item.key) };
 };

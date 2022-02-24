@@ -40,9 +40,9 @@ describe('<Toast />', () => {
         expect(Toast).toSupportRestPropsForwarding('Toast');
     });
 
-    it('should support custom theme', () => {
+    it('should support component override', () => {
         // @ts-ignore
-        expect(<Toast>Hello</Toast>).toSupportCustomTheme('Toast');
+        expect(<Toast>Hello</Toast>).toSupportOverride('Toast');
     });
 
     it('should support margin properties', async () => {

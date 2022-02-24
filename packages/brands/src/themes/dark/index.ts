@@ -121,7 +121,6 @@ export const makeDarkTheme = () =>
                 },
             },
 
-            // the name of this structure is temporary, rename it to "components" when theme.ts is removed everywhere
-            __componentOverrides: darkThemeComponentOverrides,
+            componentCSS: darkThemeComponentOverrides,
         },
     });

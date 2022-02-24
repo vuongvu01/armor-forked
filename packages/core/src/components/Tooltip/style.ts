@@ -1,4 +1,4 @@
-import styled, { Interpolation } from 'styled-components';
+import styled, { css } from 'styled-components';
 import {
     widthProps,
     zIndex,
@@ -6,70 +6,80 @@ import {
     propsBlocker,
     popperArrow,
     popperArrowPlacement,
-    durationNormal,
+    typography,
+    token,
+    spacing,
+    color,
+    transition,
 } from '@deliveryhero/armor-system';
 
 import { TooltipArrowPropsType, TooltipRootPropsType } from './type';
 
-const getDynamicStyle = (
-    element: string,
-    { error, theme }: TooltipRootPropsType | TooltipArrowPropsType,
-): Interpolation<any> => {
-    const {
-        componentOverrides: { Tooltip },
-    } = theme;
-
+const getRootStyle = ({ error }: TooltipRootPropsType) => {
     if (error) {
-        return Tooltip[element].error;
+        return css`
+            color: ${color('neutral.00')};
+            background-color: ${color('error.main')};
+        `;
     }
 
-    return Tooltip[element].normal;
+    return css`
+        color: ${color('neutral.07')};
+        background-color: ${color('neutral.00')};
+    `;
 };
 
-const getRootStyle = (props: TooltipRootPropsType) =>
-    getDynamicStyle('Root', props);
+const getArrowStyle = ({ error }: TooltipArrowPropsType) => {
+    if (error) {
+        return css`
+            &:before {
+                background-color: ${color('error.main')};
+            }
+        `;
+    }
 
-const getArrowStyle = (props: TooltipArrowPropsType) =>
-    getDynamicStyle('Arrow', props);
+    return css`
+        &:before {
+            background-color: ${color('neutral.00')};
+        }
+    `;
+};
 
-const sizeStyle = ({ small, theme }: TooltipRootPropsType) => {
-    const {
-        componentOverrides: { Tooltip },
-    } = theme;
-
+const getSizeStyle = ({ small }: TooltipRootPropsType) => {
     if (small) {
-        return Tooltip.Root.small;
+        return css`
+            padding: ${spacing(2)};
+        `;
     }
 
     return '';
 };
 
 /** 👉 ROOT ELEMENT */
-export const TooltipRoot = styled.div.withConfig(propsBlocker)<
-    TooltipRootPropsType
->`
+export const TooltipRoot = styled.div.withConfig(
+    propsBlocker,
+)<TooltipRootPropsType>`
     position: absolute;
     top: 0;
     left: 0;
     text-align: left;
     box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.12);
-    transition: opacity ${durationNormal}ms ease;
+    ${transition({ opacity: true })};
     pointer-events: none;
-
     ${popperArrowPlacement('Tooltip-Arrow')};
-
-    ${({ theme }) => theme.componentOverrides.Tooltip.Root.base};
+    ${typography('paragraphMedium')};
+    border-radius: ${token('shape.borderRadius.soft')};
+    padding: ${spacing(3)};
     ${zIndex};
     ${getRootStyle};
-    ${sizeStyle};
+    ${getSizeStyle};
     ${getComponentOverride('Tooltip')};
     ${widthProps};
 `;
 
-export const TooltipArrow = styled.div.withConfig(propsBlocker)<
-    TooltipArrowPropsType
->`
+export const TooltipArrow = styled.div.withConfig(
+    propsBlocker,
+)<TooltipArrowPropsType>`
     ${popperArrow};
-    ${({ theme }) => theme.componentOverrides.Tooltip.Arrow.base};
     ${getArrowStyle};
 `;

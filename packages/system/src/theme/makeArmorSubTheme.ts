@@ -1,6 +1,5 @@
 import { flatten } from 'flat';
-import deepFreeze from 'deep-freeze-strict';
-import { ThemeInputType, ThemeOptionsType, ThemeType } from './type';
+import { ThemeInputType, ThemeType } from './type';
 import { merge } from '../util';
 import { defaultThemeStructure } from './defaultThemeStructure';
 import { makeSpacing } from './makeSpacing';
@@ -9,10 +8,7 @@ import { makeTypography } from './makeTypography';
 
 export const makeArmorSubTheme = (
     declaration: ThemeInputType = {},
-    options?: ThemeOptionsType,
 ): ThemeType => {
-    const immutable = !options || (options && options.immutable !== false);
-
     const theme = merge(defaultThemeStructure, declaration) as ThemeInputType;
 
     theme.spacing = makeSpacing(theme);
@@ -28,6 +24,7 @@ export const makeArmorSubTheme = (
         transition: theme.transition,
     }) as Record<string, unknown>;
 
+    // todo: remove this
     theme.referenceIndex = Object.keys(referenceIndex).reduce((result, key) => {
         return {
             [`$${key}`]: referenceIndex[key], // todo: when get rid of theme.ts, remove also "$"
@@ -35,14 +32,7 @@ export const makeArmorSubTheme = (
         };
     }, {});
 
-    theme.$initialized = true;
+    theme.$initialized = true; // todo: remove this
 
-    return (
-        immutable
-            ? {
-                  ...deepFreeze(theme),
-                  componentOverrides: {},
-              }
-            : theme
-    ) as ThemeType;
+    return theme as ThemeType;
 };

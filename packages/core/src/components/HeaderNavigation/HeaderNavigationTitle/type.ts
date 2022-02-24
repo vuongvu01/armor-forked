@@ -22,6 +22,8 @@ type HeaderNavigationTitleEffectivePropsType = Partial<{
     HTMLAttributes<HTMLElement> &
     MarginPropsType;
 
-export type HeaderNavigationTitlePropsType = HeaderNavigationTitleEffectivePropsType;
+export type HeaderNavigationTitlePropsType =
+    HeaderNavigationTitleEffectivePropsType;
 
-export type HeaderNavigationTitleRootPropsType = HeaderNavigationTitleEffectivePropsType;
+export type HeaderNavigationTitleRootPropsType =
+    HeaderNavigationTitleEffectivePropsType;

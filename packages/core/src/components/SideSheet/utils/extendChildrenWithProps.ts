@@ -26,7 +26,7 @@ export const extendChildrenWithProps = (
 
     let className: string;
 
-    return Children.map(children, child => {
+    return Children.map(children, (child) => {
         const childName = getElementName(child);
 
         if (

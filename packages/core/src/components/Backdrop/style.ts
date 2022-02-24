@@ -8,9 +8,9 @@ import {
 
 import { BackdropRootPropsType } from './type';
 
-export const BackdropRoot = styled.div.withConfig(propsBlocker)<
-    BackdropRootPropsType
->`
+export const BackdropRoot = styled.div.withConfig(
+    propsBlocker,
+)<BackdropRootPropsType>`
     ${fixedCover};
     z-index: inherit;
     ${({ display, effectToggle, disableEffects }: BackdropRootPropsType) => css`

@@ -1,9 +1,15 @@
-import styled, { css } from 'styled-components';
+import styled, {
+    css,
+    FlattenInterpolation,
+    ThemeProps,
+} from 'styled-components';
 import { CancelIcon } from '@deliveryhero/armor-icons';
 import {
     getComponentOverride,
     propsBlocker,
-    durationNormal,
+    color,
+    spacing,
+    transition,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -11,36 +17,21 @@ import {
     SearchInputClearIconPropsType,
 } from './type';
 
-const clearIconRootStyle = ({
-    theme: {
-        componentOverrides: { SearchClearAction },
-    },
-}: ClearIconContainerPropsType) => {
-    return SearchClearAction.ClearIconContainer.base;
-};
-
 const searchInputClearIconStyle = ({
     disabled,
     searchQuery,
-    theme: {
-        componentOverrides: { SearchClearAction },
-    },
 }: SearchInputClearIconPropsType) => {
-    let result = css`
-        cursor: pointer;
-        transition: all ${durationNormal}ms ease;
-        ${SearchClearAction.ClearIcon.base};
-    `;
+    let result = css`` as FlattenInterpolation<ThemeProps<any>>;
 
     if (disabled) {
         result = css`
             ${result};
-            ${SearchClearAction.ClearIcon.disabled}
+            color: ${color('neutral.02')};
         `;
     } else if (!searchQuery) {
         result = css`
             ${result};
-            ${SearchClearAction.ClearIcon.transparent};
+            color: ${color('neutral.00')};
             cursor: initial;
         `;
     }
@@ -49,17 +40,22 @@ const searchInputClearIconStyle = ({
 };
 
 /** 👉 ROOT ELEMENT */
-export const ClearIconRoot = styled.div.withConfig(propsBlocker)<
-    ClearIconContainerPropsType
->`
+export const ClearIconRoot = styled.div.withConfig(
+    propsBlocker,
+)<ClearIconContainerPropsType>`
     display: flex;
     align-items: center;
-    ${clearIconRootStyle};
+    padding-right: ${spacing(3.5)};
 `;
 
-export const SearchInputClearIcon = styled(CancelIcon)<
-    SearchInputClearIconPropsType
->`
+export const SearchInputClearIcon = styled(
+    CancelIcon,
+)<SearchInputClearIconPropsType>`
+    cursor: pointer;
+    ${transition({ all: true })};
+    color: ${color('neutral.07')};
+    width: ${spacing(3)};
+    height: ${spacing(3)};
     ${searchInputClearIconStyle};
     ${getComponentOverride('SearchClearAction')};
 `;

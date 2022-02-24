@@ -46,7 +46,7 @@ describe('<DatePicker />', () => {
                     open
                     dateValue={localDate}
                     currentDate={localDate}
-                    isDateAllowed={date => {
+                    isDateAllowed={(date) => {
                         return makeDateString(date) !== '7-12-2021';
                     }}
                 />,
@@ -66,7 +66,7 @@ describe('<DatePicker />', () => {
                     dateValue={localDate}
                     onDateValueChange={onChange}
                     currentDate={localDate}
-                    isDateAllowed={date => {
+                    isDateAllowed={(date) => {
                         return makeDateString(date) !== '7-12-2021';
                     }}
                 />,
@@ -136,7 +136,7 @@ describe('<DatePicker />', () => {
                     open
                     dateValue={localDate}
                     currentDate={localDate}
-                    isDateFree={date => {
+                    isDateFree={(date) => {
                         return makeDateString(date) !== '7-12-2021';
                     }}
                 />,
@@ -156,7 +156,7 @@ describe('<DatePicker />', () => {
                     dateValue={localDate}
                     onDateValueChange={onChange}
                     currentDate={localDate}
-                    isDateFree={date => {
+                    isDateFree={(date) => {
                         return makeDateString(date) !== '7-12-2021';
                     }}
                 />,

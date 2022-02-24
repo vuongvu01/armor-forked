@@ -16,7 +16,6 @@ export const CardRoot = styled.div.withConfig(propsBlocker)<CardRootPropsType>`
     background-color: ${color('neutral.00')};
     border-radius: ${borderRadius('soft')};
     box-shadow: ${token('elevation.small')};
-
     ${marginProps};
     ${paddingProps};
     ${sizeProps};

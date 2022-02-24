@@ -1,21 +1,18 @@
 import { FilterViewerRenderFunctionType } from '../type';
 
-export const renderFilterViewerNumberConditionValue: FilterViewerRenderFunctionType = (
-    condition,
-    conditionType,
-    conditionValue,
-) => {
-    const { multiple } = condition;
-    const { value } = conditionValue || {};
+export const renderFilterViewerNumberConditionValue: FilterViewerRenderFunctionType =
+    (condition, conditionType, conditionValue) => {
+        const { multiple } = condition;
+        const { value } = conditionValue || {};
 
-    if (multiple) {
-        // todo: do not support multiple numbers at the moment
-        return '';
-    }
+        if (multiple) {
+            // todo: do not support multiple numbers at the moment
+            return '';
+        }
 
-    if (value === undefined || value === null) {
-        return '';
-    }
+        if (value === undefined || value === null) {
+            return '';
+        }
 
-    return (value as string).toString();
-};
+        return (value as string).toString();
+    };

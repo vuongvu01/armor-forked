@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { getComponentOverride, spacing } from '@deliveryhero/armor-system';
 
 import {
     FormFieldTooltipIndicatorPropsType,
@@ -7,18 +8,12 @@ import {
 import { Tooltip } from '../../Tooltip';
 import { Indicator } from '../../Indicator';
 
-const getRootBaseStyle = ({ theme }: FormFieldTooltipRootPropsType) =>
-    theme.componentOverrides.FormFieldTooltip.Root.base;
-
 /** 👉 ROOT ELEMENT */
-export const FormFieldTooltipRoot = styled(Tooltip)<
-    FormFieldTooltipRootPropsType
->`
-    ${getRootBaseStyle};
+export const FormFieldTooltipRoot = styled(
+    Tooltip,
+)<FormFieldTooltipRootPropsType>`
+    ${getComponentOverride('FormFieldTooltip')};
 `;
-
-const getIndicatorBaseStyle = ({ theme }: FormFieldTooltipIndicatorPropsType) =>
-    theme.componentOverrides.FormFieldTooltip.Indicator.base;
 
 const getIndicatorDynamicStyle = ({
     visible,
@@ -30,11 +25,11 @@ const getIndicatorDynamicStyle = ({
               pointer-events: none;
           `;
 
-export const FormFieldTooltipIndicator = styled(Indicator)<
-    FormFieldTooltipIndicatorPropsType
->`
+export const FormFieldTooltipIndicator = styled(
+    Indicator,
+)<FormFieldTooltipIndicatorPropsType>`
     position: absolute;
-
-    ${getIndicatorBaseStyle};
+    top: ${spacing(-2)};
+    right: ${spacing(-2)};
     ${getIndicatorDynamicStyle};
 `;

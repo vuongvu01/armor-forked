@@ -5,9 +5,7 @@ import {
 } from './type';
 import { Stack } from '../../../../Stack';
 
-export const HeaderNavigationMenuContentBodyRoot = styled.div<
-    HeaderNavigationMenuContentBodyRootPropsType
->`
+export const HeaderNavigationMenuContentBodyRoot = styled.div<HeaderNavigationMenuContentBodyRootPropsType>`
     box-sizing: border-box;
     max-height: 400px;
     overflow-y: auto;
@@ -22,8 +20,8 @@ const contentBodyOptionsRootStyle = ({
 };
 
 /** 👉 ROOT ELEMENT */
-export const HeaderNavigationMenuContentBodyOptionsRoot = styled(Stack)<
-    HeaderNavigationMenuContentBodyOptionsRootPropsType
->`
+export const HeaderNavigationMenuContentBodyOptionsRoot = styled(
+    Stack,
+)<HeaderNavigationMenuContentBodyOptionsRootPropsType>`
     ${contentBodyOptionsRootStyle};
 `;

@@ -59,9 +59,9 @@ describe('<DatePicker />', () => {
         expect(DatePicker).toSupportRestPropsForwarding('DatePicker');
     });
 
-    it('should support custom theme', () => {
+    it('should support component override', () => {
         // @ts-ignore
-        expect(<DatePicker>With custom theme</DatePicker>).toSupportCustomTheme(
+        expect(<DatePicker>With custom theme</DatePicker>).toSupportOverride(
             'DatePicker',
         );
     });

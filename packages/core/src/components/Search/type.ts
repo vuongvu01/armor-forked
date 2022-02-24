@@ -23,9 +23,8 @@ export type SuggestionObjectType = {
 export type SearchGroupObjectType = DictionaryItemIDBasedType &
     ObjectLiteralType;
 
-export type SearchGroupObjectIndexType = ObjectLiteralType<
-    SearchGroupObjectType
->;
+export type SearchGroupObjectIndexType =
+    ObjectLiteralType<SearchGroupObjectType>;
 
 export type SearchQueryType = string | readonly string[];
 

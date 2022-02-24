@@ -5,7 +5,6 @@ import { useComponentTheme } from '@deliveryhero/armor-system';
 import { useTypographyClassNames } from './hooks/useTypographyClassNames';
 import { TypographyRoot } from './style';
 import { TypographyPropsType } from './type';
-import { typographyDefaultTheme } from './theme';
 import { TYPOGRAPHY_CLASS_PREFIX } from './constants';
 import { useTypography } from './hooks/useTypography';
 
@@ -14,10 +13,7 @@ import { useTypography } from './hooks/useTypography';
  */
 export const Typography = forwardRef<HTMLDivElement, TypographyPropsType>(
     function Typography({ className, children, ...props }, ref) {
-        const theme = useComponentTheme(
-            TYPOGRAPHY_CLASS_PREFIX,
-            typographyDefaultTheme,
-        );
+        const theme = useComponentTheme(TYPOGRAPHY_CLASS_PREFIX);
 
         const { rootProps, Tag } = useTypography(props, ref);
 

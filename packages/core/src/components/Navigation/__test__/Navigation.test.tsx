@@ -44,9 +44,9 @@ describe('<Navigation />', () => {
         expect(result.current.current).toBeInstanceOf(HTMLElement);
     });
 
-    it('should support custom theme', () => {
+    it('should support component override', () => {
         // @ts-ignore
-        expect(<Navigation>With custom theme</Navigation>).toSupportCustomTheme(
+        expect(<Navigation>With custom theme</Navigation>).toSupportOverride(
             'Navigation',
         );
     });

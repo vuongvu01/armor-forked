@@ -25,9 +25,8 @@ export const TableExpandableSection = forwardRef<
         className,
     );
 
-    const { rootProps, cellProps, contentProps } = useTableExpandableSection(
-        restProps,
-    );
+    const { rootProps, cellProps, contentProps } =
+        useTableExpandableSection(restProps);
 
     return (
         <TableExpandableSectionRoot

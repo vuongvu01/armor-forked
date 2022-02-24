@@ -41,7 +41,7 @@ describe('<FileUploader />', () => {
 
     it('should support custom theme', () => {
         // @ts-ignore
-        expect(<FileUploader>Hello</FileUploader>).toSupportCustomTheme(
+        expect(<FileUploader>Hello</FileUploader>).toSupportOverride(
             'FileUploader',
         );
     });

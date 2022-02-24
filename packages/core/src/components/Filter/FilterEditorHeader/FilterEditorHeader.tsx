@@ -19,11 +19,8 @@ export const FilterEditorHeader = forwardRef<
         className,
     );
 
-    const {
-        rootProps,
-        showClearFilterButton,
-        getClearFilterButtonProps,
-    } = useFilterEditorHeader<HTMLDivElement>(props, ref);
+    const { rootProps, showClearFilterButton, getClearFilterButtonProps } =
+        useFilterEditorHeader<HTMLDivElement>(props, ref);
 
     return (
         <FilterEditorHeaderRoot

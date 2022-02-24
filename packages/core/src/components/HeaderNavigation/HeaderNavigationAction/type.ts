@@ -12,15 +12,17 @@ export type ClassBasedOnComponentType = {
 type HeaderNavigationActionEffectivePropsType = HTMLAttributes<HTMLElement> &
     MarginPropsType;
 
-export type HeaderNavigationActionPropsType = HeaderNavigationActionEffectivePropsType;
+export type HeaderNavigationActionPropsType =
+    HeaderNavigationActionEffectivePropsType;
 
-export type HeaderNavigationActionRootPropsType = HeaderNavigationActionEffectivePropsType &
-    ComponentElementStylePropsType;
+export type HeaderNavigationActionRootPropsType =
+    HeaderNavigationActionEffectivePropsType & ComponentElementStylePropsType;
 
-export type HeaderNavigationActionContainerPropsType = HeaderNavigationActionEffectivePropsType &
-    ComponentElementStylePropsType;
+export type HeaderNavigationActionContainerPropsType =
+    HeaderNavigationActionEffectivePropsType & ComponentElementStylePropsType;
 
-export type HeaderNavigationActionItemPropsType = HeaderNavigationActionEffectivePropsType;
+export type HeaderNavigationActionItemPropsType =
+    HeaderNavigationActionEffectivePropsType;
 
-export type HeaderNavigationActionItemRootPropsType = HeaderNavigationActionEffectivePropsType &
-    ComponentElementStylePropsType;
+export type HeaderNavigationActionItemRootPropsType =
+    HeaderNavigationActionEffectivePropsType & ComponentElementStylePropsType;

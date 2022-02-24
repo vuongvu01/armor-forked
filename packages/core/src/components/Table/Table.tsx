@@ -5,7 +5,6 @@ import { useComponentTheme } from '@deliveryhero/armor-system';
 import { useTableClassNames } from './hooks/useTableClassNames';
 import { TableRoot } from './style';
 import { TablePropsType } from './type';
-import { tableDefaultTheme } from './theme';
 import { tableRootTestId, TABLE_CLASS_PREFIX } from './constants';
 import { TableContext } from './utils/TableContext';
 import { useTable } from './hooks/useTable';
@@ -18,7 +17,7 @@ export const Table = forwardRef<HTMLTableElement, TablePropsType>(
         { className, stickyColumns, stickyHead, ...restProps },
         ref,
     ) {
-        const theme = useComponentTheme(TABLE_CLASS_PREFIX, tableDefaultTheme);
+        const theme = useComponentTheme(TABLE_CLASS_PREFIX);
         const classNameComponents = useTableClassNames(
             TABLE_CLASS_PREFIX,
             className,

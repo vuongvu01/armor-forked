@@ -1,5 +1,9 @@
 import { ReactElement } from 'react';
-import styled, { css } from 'styled-components';
+import styled, {
+    css,
+    FlattenInterpolation,
+    ThemeProps,
+} from 'styled-components';
 import {
     color,
     heightProps,
@@ -9,6 +13,11 @@ import {
     propsBlocker,
     durationNormal,
     focusWithin,
+    typography,
+    token,
+    spacing,
+    transition,
+    typographyInherit,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -20,35 +29,13 @@ import {
     TextInputRootPropsType,
 } from './type';
 
-const getDynamicStyle = (
-    nodeName: string,
-    {
-        theme,
-        outlined,
-        error,
-        disabled,
-        large,
-    }: TextInputInternalPropsWithThemeType,
-) => {
-    const {
-        componentOverrides: { TextInput },
-    } = theme;
-
-    return css`
-        ${large ? TextInput[nodeName].large : ''}
-        ${outlined ? TextInput[nodeName].outlined : ''}
-        ${error ? TextInput[nodeName].error : ''}
-        ${disabled ? TextInput[nodeName].disabled : ''}
-    `;
-};
-
 const getRootDynamicStyle = (props: TextInputRootPropsType) => {
-    const { theme, displayMode, enableFocusOnRootClick } = props;
-    const {
-        componentOverrides: { TextInput },
-    } = theme;
+    const { displayMode, enableFocusOnRootClick, outlined, error, disabled } =
+        props;
 
-    let result = TextInput.Root.base;
+    let result = css`
+        display: ${displayMode === 'block' ? 'block' : 'inline-block'};
+    ` as FlattenInterpolation<ThemeProps<any>>;
 
     if (enableFocusOnRootClick) {
         result = css`
@@ -60,11 +47,29 @@ const getRootDynamicStyle = (props: TextInputRootPropsType) => {
         `;
     }
 
-    return css`
-        display: ${displayMode === 'block' ? 'block' : 'inline-block'};
-        ${result};
-        ${getDynamicStyle('Root', props)};
-    `;
+    if (outlined) {
+        result = css`
+            ${result};
+            border-color: ${color('primary.main')};
+        `;
+    }
+
+    if (error) {
+        result = css`
+            ${result};
+            border-color: ${color('error.main')};
+        `;
+    }
+
+    if (disabled) {
+        result = css`
+            ${result};
+            background-color: ${color('neutral.02')};
+            border-color: ${color('neutral.05')};
+        `;
+    }
+
+    return result;
 };
 
 /** 👉 ROOT ELEMENT */
@@ -77,11 +82,15 @@ export const TextInputRoot = styled.div.withConfig(
     border-width: 1px;
     transition: border ${durationNormal}ms ease;
     vertical-align: middle;
-
     background-color: ${color('neutral.00')};
+    ${typography('paragraphMedium')};
+    color: ${token('body.color')};
 
     ${({ error, disabled }) =>
-        focusWithin({ error, disabled, noOutline: true })}
+        focusWithin({ error, disabled, noOutline: true })};
+
+    border-color: ${color('neutral.05')};
+    border-radius: ${token('shape.borderRadius.soft')};
     ${getRootDynamicStyle};
     ${getComponentOverride('TextInput')};
     ${marginProps};
@@ -92,12 +101,9 @@ export const TextInputRoot = styled.div.withConfig(
 const getInnerContainerDynamicStyle = (
     props: TextInputInnerContainerPropsType,
 ) => {
-    const { theme, multiline } = props;
-    const {
-        componentOverrides: { TextInput },
-    } = theme;
+    const { multiline } = props;
 
-    let result = TextInput.InnerContainer.base;
+    let result = css``;
 
     if (!multiline) {
         result = css`
@@ -113,16 +119,13 @@ export const TextInputInnerContainer = styled.div.withConfig(
     propsBlocker,
 )<TextInputInnerContainerPropsType>`
     display: flex;
-    ${getInnerContainerDynamicStyle}
+    ${getInnerContainerDynamicStyle};
 `;
 
 const getInputDynamicStyle = (props: TextInputInputPropsType) => {
-    const { theme, multiline, disabled } = props;
-    const {
-        componentOverrides: { TextInput },
-    } = theme;
+    const { multiline, disabled, large } = props;
 
-    let result = TextInput.Input.base;
+    let result = css`` as FlattenInterpolation<ThemeProps<any>>;
 
     if (multiline) {
         // todo: do we really need this constraint?
@@ -139,10 +142,15 @@ const getInputDynamicStyle = (props: TextInputInputPropsType) => {
         `;
     }
 
-    return css`
-        ${result};
-        ${getDynamicStyle('Input', props)};
-    `;
+    if (large) {
+        result = css`
+            ${result};
+            padding-top: ${spacing(3)};
+            padding-bottom: ${spacing(3)};
+        `;
+    }
+
+    return result;
 };
 
 const Wrapper = ({
@@ -160,31 +168,42 @@ export const TextInputInput = styled(Wrapper).withConfig(
     outline: none;
     appearance: none;
     flex-grow: 1;
-    padding: 0;
     margin: 0;
     background-color: transparent;
     width: 100%;
+    padding: ${spacing(2)} ${spacing(4)};
+    border-radius: ${token('shape.borderRadius.soft')};
+    ${typographyInherit()};
+    color: ${token('body.color')};
+
+    &::placeholder {
+        color: ${color('neutral.07')};
+    }
+    &:disabled {
+        color: ${color('neutral.07')};
+    }
 
     ${getInputDynamicStyle};
 `;
 
 const getLabelDynamicStyle = (props: TextInputInternalPropsWithThemeType) => {
-    const {
-        theme: {
-            componentOverrides: { TextInput },
-        },
-        inside,
-        large,
-        disabled,
-        value,
-        defaultValue,
-        type,
-    } = props;
+    const { inside, large, disabled, value, defaultValue, type, error } = props;
 
-    let result = css`
-        ${TextInput.Label.base};
-        ${getDynamicStyle('Label', props)};
-    `;
+    let result = css`` as FlattenInterpolation<ThemeProps<any>>;
+
+    if (disabled) {
+        result = css`
+            ${result};
+            background: transparent;
+        `;
+    }
+
+    if (error) {
+        result = css`
+            ${result};
+            color: ${color('error.main')};
+        `;
+    }
 
     if (
         !(disabled && value) &&
@@ -195,9 +214,17 @@ const getLabelDynamicStyle = (props: TextInputInternalPropsWithThemeType) => {
     ) {
         result = css`
             ${result};
-            ${TextInput.Label.inside};
-            ${large ? TextInput.Label.inside__large : ''};
+            ${typography('paragraphMedium')};
+            color: ${color('neutral.07')};
+            top: 9px;
         `;
+
+        if (large) {
+            result = css`
+                ${result};
+                top: 12px;
+            `;
+        }
     }
 
     return result;
@@ -213,24 +240,25 @@ export const TextInputLabel = styled.label.withConfig(
     user-select: none;
     text-overflow: ellipsis;
     pointer-events: none;
-    transition: top ease ${durationNormal}ms, font-size ease ${durationNormal}ms,
-        color ease ${durationNormal}ms;
-
-    ${getLabelDynamicStyle}
+    ${transition({
+        top: true,
+        'font-size': true,
+        color: true,
+    })};
+    ${typography('labelSmall')};
+    color: ${color('neutral.07')};
+    margin-left: ${spacing(3)};
+    margin-right: ${spacing(3)};
+    top: -${spacing(2)};
+    ${getLabelDynamicStyle};
 `;
 
 const getLabelBackgroundDynamicStyle = (
     props: TextInputInternalPropsWithThemeType,
 ) => {
-    const {
-        theme: {
-            componentOverrides: { TextInput },
-        },
-        disabled,
-    } = props;
+    const { disabled } = props;
 
     let result = css`
-        ${TextInput.LabelBackground.base};
         background: linear-gradient(
             0,
             ${color('neutral.00')} 88%,
@@ -250,14 +278,13 @@ const getLabelBackgroundDynamicStyle = (
         `;
     }
 
-    return css`
-        ${result};
-        ${getDynamicStyle('LabelBackground', props)};
-    `;
+    return result;
 };
 
 export const TextInputLabelBackground = styled.span.withConfig(
     propsBlocker,
 )<TextInputLabelBackgroundPropsType>`
-    ${getLabelBackgroundDynamicStyle}
+    padding-left: ${spacing(1)};
+    padding-right: ${spacing(1)};
+    ${getLabelBackgroundDynamicStyle};
 `;

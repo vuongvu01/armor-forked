@@ -20,9 +20,9 @@ import { Card } from '../Card';
 import { CloseButton } from '../CloseButton';
 
 /** 👉 ROOT ELEMENT */
-export const DialogRoot = styled.div.withConfig(propsBlocker)<
-    DialogRootPropsType
->`
+export const DialogRoot = styled.div.withConfig(
+    propsBlocker,
+)<DialogRootPropsType>`
     ${reset};
     ${zIndex};
     ${getComponentOverride('Dialog')};
@@ -57,9 +57,9 @@ const getAlignmentContainerStyle = ({
     return result;
 };
 
-export const DialogAlignmentContainer = styled.div.withConfig(propsBlocker)<
-    DialogAlignmentContainerPropsType
->`
+export const DialogAlignmentContainer = styled.div.withConfig(
+    propsBlocker,
+)<DialogAlignmentContainerPropsType>`
     ${fixedCover};
     z-index: inherit;
     align-items: center;
@@ -106,9 +106,9 @@ export const DialogWindow = styled(Card)<DialogWindowPropsType>`
     ${getWindowStyle};
 `;
 
-export const DialogContent = styled.div.withConfig(propsBlocker)<
-    DialogContentPropsType
->`
+export const DialogContent = styled.div.withConfig(
+    propsBlocker,
+)<DialogContentPropsType>`
     display: flex;
     flex-direction: column;
     max-height: 100%;

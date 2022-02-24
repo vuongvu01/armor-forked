@@ -1,10 +1,11 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 const React = require('react');
+const { css } = require('styled-components');
 const { ThemeProvider, makeTheme } = require('@deliveryhero/armor-system');
 const renderer = require('react-test-renderer');
 
 expect.extend({
-    toSupportCustomTheme(Element, componentName, extractNode = null) {
+    toSupportOverride(Element, componentName, extractNode = null) {
         let tree = renderer.create(Element).toJSON();
         if (extractNode) {
             tree = extractNode(tree);
@@ -13,15 +14,16 @@ expect.extend({
         // @ts-ignore
         expect(tree).not.toHaveStyleRule('border-width', '2px');
 
-        const customTheme = makeTheme({
+        const customThemeData = {
             armor: {
-                components: {
-                    [componentName]: {
-                        borderWidth: '2px',
-                    },
+                componentCSS: {
+                    [componentName]: css`
+                        border-width: 2px;
+                    `,
                 },
             },
-        });
+        };
+        const customTheme = makeTheme(customThemeData);
 
         tree = renderer
             .create(

@@ -1,26 +1,15 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import {
     color,
     propsBlocker,
     token,
     marginProps,
     getComponentOverride,
-    durationNormal,
     focus,
+    transition,
 } from '@deliveryhero/armor-system';
 
 import { AccordionRootPropsType } from './type';
-
-const accordionStyle = ({
-    theme: {
-        componentOverrides: { Accordion },
-    },
-}: AccordionRootPropsType) => {
-    return css`
-        transition: all ${durationNormal}ms ease;
-        ${Accordion.Accordion.base};
-    `;
-};
 
 export const AccordionRoot = styled.div.withConfig(
     propsBlocker,
@@ -37,7 +26,9 @@ export const AccordionRoot = styled.div.withConfig(
     background-color: ${color('neutral.00')};
 
     ${({ disabled }) => focus({ disabled })}
-    ${accordionStyle};
+    ${transition({ all: true })}
+    border-bottom-color: ${color('neutral.03')};
+    border-top-color: ${color('neutral.03')};
     ${getComponentOverride('Accordion')};
     ${marginProps};
 `;

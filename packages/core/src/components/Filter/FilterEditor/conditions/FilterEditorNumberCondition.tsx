@@ -3,11 +3,9 @@ import React, { ChangeEvent, FC, useCallback } from 'react';
 import { TextInput } from '../../../TextInput';
 import { FilterEditorConditionPropsType } from '../type';
 
-export const FilterEditorNumberCondition: FC<FilterEditorConditionPropsType> = ({
-    condition,
-    conditionValue,
-    onConditionValueChange,
-}) => {
+export const FilterEditorNumberCondition: FC<
+    FilterEditorConditionPropsType
+> = ({ condition, conditionValue, onConditionValueChange }) => {
     const { label } = condition;
     const { value } = conditionValue || {};
 

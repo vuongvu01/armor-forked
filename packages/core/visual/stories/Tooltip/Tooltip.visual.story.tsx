@@ -1,4 +1,5 @@
 import React from 'react';
+import { DisablePortal } from '@deliveryhero/armor-system';
 
 import { Tooltip } from '../../../src/components/Tooltip';
 import { Button } from '../../../src/components/Button';
@@ -11,7 +12,7 @@ export default {
 
 export const PlacementTop = () => {
     return (
-        <>
+        <DisablePortal>
             <br />
             <br />
             <br />
@@ -21,33 +22,33 @@ export const PlacementTop = () => {
             <Tooltip align="top" content={'Top'} defaultOpen>
                 <Button>Top</Button>
             </Tooltip>
-        </>
+        </DisablePortal>
     );
 };
 
 export const PlacementBottom = () => {
     return (
-        <>
+        <DisablePortal>
             <Tooltip align="bottom" content={'Bottom'} defaultOpen>
                 <Button>Bottom</Button>
             </Tooltip>
-        </>
+        </DisablePortal>
     );
 };
 
 export const DisplayOnlyChildrenWhenNoContentSpecified = () => {
     return (
-        <>
+        <DisablePortal>
             <Tooltip align="bottom" defaultOpen>
                 <Button>Bottom</Button>
             </Tooltip>
-        </>
+        </DisablePortal>
     );
 };
 
 export const DefaultOpenSmall = () => {
     return (
-        <>
+        <DisablePortal>
             <br />
             <br />
             <br />
@@ -57,13 +58,13 @@ export const DefaultOpenSmall = () => {
             <Tooltip align="top" content={'Top'} small defaultOpen>
                 <Button>Top</Button>
             </Tooltip>
-        </>
+        </DisablePortal>
     );
 };
 
 export const ControlledBodyWidth = () => {
     return (
-        <>
+        <DisablePortal>
             <Tooltip
                 align="bottom"
                 content="From what i am seeing in the code, the small parameter is only responsible for decreasing the padding in the tooltip body. From what i am seeing in the code, the small parameter is only responsible for decreasing the padding in the tooltip body. From what i am seeing in the code, the small parameter is only responsible for decreasing the padding in the tooltip body"
@@ -72,13 +73,13 @@ export const ControlledBodyWidth = () => {
             >
                 <Button marginLeft={30}>Controlled width</Button>
             </Tooltip>
-        </>
+        </DisablePortal>
     );
 };
 
 export const OnCheckboxWithCustomOffset = () => {
     return (
-        <>
+        <DisablePortal>
             <br />
             <br />
             <br />
@@ -99,6 +100,6 @@ export const OnCheckboxWithCustomOffset = () => {
                     checked
                 />
             </Tooltip>
-        </>
+        </DisablePortal>
     );
 };

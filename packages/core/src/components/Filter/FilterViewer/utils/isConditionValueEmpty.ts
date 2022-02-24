@@ -20,7 +20,7 @@ export const isConditionValueEmpty = (
     // todo: use _.get(realValue, path) later when we have a nested structure
     // todo: also, use memoization, be more clever than this!
     const conditionValue = value?.conditions?.find(
-        conditionValueItem => conditionValueItem.name === path,
+        (conditionValueItem) => conditionValueItem.name === path,
     );
 
     return conditionType.isValueEmpty(condition, conditionValue);

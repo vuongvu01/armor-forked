@@ -15,13 +15,14 @@ type TableExpandableSectionEffectivePropsType = Partial<{
     TableRowPropsType;
 
 /* TableExpandableSection component prop type */
-export type TableExpandableSectionPropsType = TableExpandableSectionEffectivePropsType &
-    Partial<Pick<HTMLTableDataCellElement, 'colSpan'>> &
-    ComponentStylePropsType;
+export type TableExpandableSectionPropsType =
+    TableExpandableSectionEffectivePropsType &
+        Partial<Pick<HTMLTableDataCellElement, 'colSpan'>> &
+        ComponentStylePropsType;
 
 /* TableExpandableSection Root node prop type */
-export type TableExpandableSectionRootPropsType = TableExpandableSectionEffectivePropsType &
-    ComponentElementStylePropsType;
+export type TableExpandableSectionRootPropsType =
+    TableExpandableSectionEffectivePropsType & ComponentElementStylePropsType;
 
 export type TableExpandableSectionCellPropsType = Pick<
     TableExpandableSectionEffectivePropsType,

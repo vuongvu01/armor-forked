@@ -5,20 +5,14 @@ import {
     color,
     spacing,
     propsBlocker,
+    typography,
+    token,
 } from '@deliveryhero/armor-system';
 
 import {
     HeaderNavigationRootPropsType,
     HeaderNavigationTitleRootPropsType,
 } from './type';
-
-const headerNavigationRootStyle = ({
-    theme: {
-        componentOverrides: { HeaderNavigation },
-    },
-}: HeaderNavigationRootPropsType) => {
-    return HeaderNavigation.Root.base;
-};
 
 /** 👉 ROOT ELEMENT */
 export const HeaderNavigationRoot = styled.div.withConfig(
@@ -27,8 +21,11 @@ export const HeaderNavigationRoot = styled.div.withConfig(
     display: block;
     min-height: ${spacing(12)};
     border-bottom: 1px solid ${color('neutral.03')};
-
-    ${headerNavigationRootStyle};
+    background-color: ${color('neutral.02')};
+    color: ${token('body.color')};
+    padding-left: ${spacing(4)};
+    padding-right: 0;
+    ${typography('labelLarge')};
     ${getComponentOverride('HeaderNavigation')};
     ${marginProps};
 `;

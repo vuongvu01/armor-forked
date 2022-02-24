@@ -1,11 +1,11 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import {
     mouseCursor,
     pointerEvents,
-    durationNormal,
     getComponentOverride,
     propsBlocker,
     getFocusStyleFromColor,
+    transition,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -13,6 +13,7 @@ import {
     SwitchRootPropsType,
     SwitchTogglePropsType,
 } from './type';
+import { color } from '../../compatibility';
 
 const sizes = {
     dimensions: {
@@ -25,50 +26,15 @@ const sizes = {
     },
 };
 
-const switchColor = ({
-    theme: {
-        componentOverrides: { Switch },
-    },
-}: SwitchRootPropsType) => Switch.Label.base;
-
-const toggleDefault = ({
-    theme: {
-        componentOverrides: { Switch },
-    },
-}: SwitchRootPropsType) => Switch.Toggle.base;
-
-const disabledToggle = ({
-    theme: {
-        componentOverrides: { Switch },
-    },
+const getDisabledToggleStyle = ({
     checked,
     defaultChecked,
 }: SwitchCheckboxInputPropsType) =>
-    !(checked || defaultChecked) ? Switch.Toggle.disabled__checked : '';
-
-const checkedBackground = ({
-    theme: {
-        componentOverrides: { Switch },
-    },
-}: SwitchCheckboxInputPropsType) => Switch.Label.checked;
-
-const checkedHover = ({
-    theme: {
-        componentOverrides: { Switch },
-    },
-}: SwitchCheckboxInputPropsType) => Switch.Label.hover;
-
-const disabledBackground = ({
-    theme: {
-        componentOverrides: { Switch },
-    },
-}: SwitchCheckboxInputPropsType) => Switch.Label.disabled;
-
-const disabledCheckedBackground = ({
-    theme: {
-        componentOverrides: { Switch },
-    },
-}: SwitchCheckboxInputPropsType) => Switch.Label.disabled__checked;
+    !(checked || defaultChecked)
+        ? css`
+              background-color: ${color('neutral.02')};
+          `
+        : '';
 
 /** 👉 ROOT ELEMENT */
 export const SwitchRoot = styled.label.withConfig(
@@ -76,7 +42,6 @@ export const SwitchRoot = styled.label.withConfig(
 )<SwitchRootPropsType>`
     display: inline-flex;
     align-items: center;
-
     ${getComponentOverride('Switch')};
     ${mouseCursor};
 `;
@@ -87,7 +52,7 @@ export const SwitchToggle = styled.span.withConfig(
     position: relative;
     display: inline-flex;
     border-radius: 9999px;
-    transition: all ${durationNormal}ms ease;
+    ${transition({ all: true })};
     width: ${sizes.dimensions.width}px;
     height: ${sizes.dimensions.height}px;
 
@@ -99,13 +64,12 @@ export const SwitchToggle = styled.span.withConfig(
         width: ${sizes.toggle.side}px;
         height: ${sizes.toggle.side}px;
         border-radius: 9999px;
-        transition: all ${durationNormal}ms ease;
-
-        ${toggleDefault};
+        ${transition({ all: true })};
+        background-color: ${color('neutral.00')};
     }
 
     ${pointerEvents};
-    ${switchColor};
+    background-color: ${color('neutral.07')};
     ${mouseCursor};
 `;
 
@@ -120,11 +84,11 @@ export const SwitchCheckboxInput = styled.input.withConfig(
     position: absolute;
 
     &:checked + ${SwitchToggle} {
-        ${checkedBackground};
+        background-color: ${color('primary.main')};
     }
 
     &:checked + ${SwitchToggle}:hover {
-        ${checkedHover};
+        background-color: ${color('primary.light')};
     }
 
     &:checked + ${SwitchToggle}:after {
@@ -133,15 +97,15 @@ export const SwitchCheckboxInput = styled.input.withConfig(
     }
 
     &:disabled + ${SwitchToggle} {
-        ${disabledBackground};
+        background-color: ${color('neutral.03')};
     }
 
     &:disabled:checked + ${SwitchToggle} {
-        ${disabledCheckedBackground};
+        background-color: ${color('primary.lightest')};
     }
 
     &:disabled + ${SwitchToggle}:after {
-        ${disabledToggle};
+        ${getDisabledToggleStyle};
     }
 
     &:focus-visible + ${SwitchToggle} {

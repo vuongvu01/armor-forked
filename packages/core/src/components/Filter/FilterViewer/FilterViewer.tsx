@@ -142,7 +142,7 @@ export const FilterViewer = forwardRef<HTMLDivElement, FilterViewerPropsType>(
                             theme={theme}
                             className={classNames.Conditions}
                         >
-                            {schema.conditions!.map(condition => {
+                            {schema.conditions!.map((condition) => {
                                 if (!condition.id) {
                                     // todo: sub-filters are not currently supported
                                     return null;

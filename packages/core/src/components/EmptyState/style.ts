@@ -200,9 +200,9 @@ const getSVGStyle = ({ small }: { small?: boolean }) => {
 };
 
 /** 👉 ROOT ELEMENT */
-export const EmptyStateRoot = styled.div.withConfig(propsBlocker)<
-    EmptyStateRootPropsType
->`
+export const EmptyStateRoot = styled.div.withConfig(
+    propsBlocker,
+)<EmptyStateRootPropsType>`
     ${reset};
     ${typography('paragraphMedium')};
     display: flex;
@@ -213,9 +213,9 @@ export const EmptyStateRoot = styled.div.withConfig(propsBlocker)<
     ${marginProps};
     ${sizeProps};
 `;
-export const EmptyStateTitle = styled.div.withConfig(propsBlocker)<
-    EmptyStateTitlePropsType
->`
+export const EmptyStateTitle = styled.div.withConfig(
+    propsBlocker,
+)<EmptyStateTitlePropsType>`
     ${typography('paragraphMedium')};
     color: ${color('neutral.11')};
     font-size: ${pixelToRem(32)};
@@ -223,9 +223,9 @@ export const EmptyStateTitle = styled.div.withConfig(propsBlocker)<
     ${getTitleStyle};
     ${marginProps};
 `;
-export const EmptyStateDescription = styled.div.withConfig(propsBlocker)<
-    EmptyStateDescriptionPropsType
->`
+export const EmptyStateDescription = styled.div.withConfig(
+    propsBlocker,
+)<EmptyStateDescriptionPropsType>`
     ${typography('paragraphMedium')};
     color: ${color('neutral.11')};
     font-size: ${pixelToRem(16)};
@@ -234,31 +234,33 @@ export const EmptyStateDescription = styled.div.withConfig(propsBlocker)<
     ${getDescriptionStyle};
     ${marginProps};
 `;
-export const EmptyStateActionContainer = styled.div.withConfig(propsBlocker)<
-    EmptyStateActionContainerPropsType
->`
+export const EmptyStateActionContainer = styled.div.withConfig(
+    propsBlocker,
+)<EmptyStateActionContainerPropsType>`
     margin-top: ${spacing(8)};
     ${getActionsContainerStyle};
     ${marginProps};
 `;
-export const EmptyStateHorizontalLayout = styled.div.withConfig(propsBlocker)<
-    EmptyStateHorizontalPropsType
->`
+export const EmptyStateHorizontalLayout = styled.div.withConfig(
+    propsBlocker,
+)<EmptyStateHorizontalPropsType>`
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     max-width: ${spacing(130)};
 `;
-export const EmptyStateContainer = styled.div.withConfig(propsBlocker)<
-    EmptyStateContainerPropsType
->`
+export const EmptyStateContainer = styled.div.withConfig(
+    propsBlocker,
+)<EmptyStateContainerPropsType>`
     margin-left: ${spacing(10)};
-    ${// @ts-ignore
-    getEmptyStateContainerStyle};
+    ${
+        // @ts-ignore
+        getEmptyStateContainerStyle
+    };
 `;
-export const EmptyStateVerticalLayout = styled.div.withConfig(propsBlocker)<
-    EmptyStateVerticalPropsType
->`
+export const EmptyStateVerticalLayout = styled.div.withConfig(
+    propsBlocker,
+)<EmptyStateVerticalPropsType>`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -266,9 +268,9 @@ export const EmptyStateVerticalLayout = styled.div.withConfig(propsBlocker)<
     width: fit-content;
     ${getAlignmentStyle};
 `;
-export const EmptyStateImageContainer = styled.div.withConfig(propsBlocker)<
-    EmptyStateImageContainerPropsType
->`
+export const EmptyStateImageContainer = styled.div.withConfig(
+    propsBlocker,
+)<EmptyStateImageContainerPropsType>`
     display: flex;
     ${getImageStyle};
 `;

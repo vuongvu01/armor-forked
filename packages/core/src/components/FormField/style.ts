@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import {
+    getComponentOverride,
     marginProps,
     propsBlocker,
     spacing,
@@ -24,14 +25,14 @@ const getRootStyle = ({
 };
 
 /** 👉 ROOT ELEMENT */
-export const FormFieldRoot = styled.div.withConfig(propsBlocker)<
-    FormFieldRootPropsType
->`
+export const FormFieldRoot = styled.div.withConfig(
+    propsBlocker,
+)<FormFieldRootPropsType>`
     ${typography('paragraphMedium')};
     box-sizing: border-box;
     position: relative;
-    ${getRootStyle}
-    
-    ${marginProps}
-    ${widthProps}
+    ${getRootStyle};
+    ${getComponentOverride('FormField')};
+    ${marginProps};
+    ${widthProps};
 `;

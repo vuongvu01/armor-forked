@@ -41,9 +41,9 @@ describe('<FilterEditor />', () => {
         expect(FilterEditor).toSupportRestPropsForwarding('FilterEditor');
     });
 
-    it('should support custom theme', () => {
+    it('should support component override', () => {
         // @ts-ignore
-        expect(<FilterEditor>Hello</FilterEditor>).toSupportCustomTheme(
+        expect(<FilterEditor>Hello</FilterEditor>).toSupportOverride(
             'FilterEditor',
         );
     });

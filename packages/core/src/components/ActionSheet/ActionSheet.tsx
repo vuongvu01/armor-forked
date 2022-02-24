@@ -20,9 +20,8 @@ export const ActionSheet = forwardRef<HTMLDivElement, ActionSheetPropsType>(
             className,
         );
 
-        const { rootProps, labelContainerProps, label } = useActionSheet<
-            HTMLDivElement
-        >(props, ref);
+        const { rootProps, labelContainerProps, label } =
+            useActionSheet<HTMLDivElement>(props, ref);
 
         return (
             <ActionSheetRoot

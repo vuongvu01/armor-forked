@@ -1,20 +1,19 @@
 import styled, { css } from 'styled-components';
-import { marginProps, propsBlocker } from '@deliveryhero/armor-system';
+import {
+    color,
+    getComponentOverride,
+    marginProps,
+    propsBlocker,
+    typography,
+} from '@deliveryhero/armor-system';
 
 import { FormFieldMessageRootPropsType } from './type';
-
-const getRootBaseStyle = ({ theme }: FormFieldMessageRootPropsType) =>
-    theme.componentOverrides.FormFieldMessage.Root.base;
+import { spacing } from '../../../compatibility';
 
 const getRootDynamicStyle = ({
-    theme,
     error,
     oneLine,
 }: FormFieldMessageRootPropsType) => {
-    const {
-        componentOverrides: { FormFieldMessage },
-    } = theme;
-
     return css`
         ${oneLine
             ? css`
@@ -23,19 +22,25 @@ const getRootDynamicStyle = ({
                   text-overflow: ellipsis;
               `
             : ''};
-        ${error ? FormFieldMessage.Root.error : ''};
+        ${error
+            ? css`
+                  color: ${color('error.main')};
+              `
+            : ''};
     `;
 };
 
 /** 👉 ROOT ELEMENT */
-export const FormFieldMessageRoot = styled.div.withConfig(propsBlocker)<
-    FormFieldMessageRootPropsType
->`
+export const FormFieldMessageRoot = styled.div.withConfig(
+    propsBlocker,
+)<FormFieldMessageRootPropsType>`
     box-sizing: border-box;
     position: relative;
-
-    ${getRootBaseStyle};
+    ${typography('labelSmall')};
+    color: ${color('neutral.07')};
+    margin: ${spacing(2)};
     ${getRootDynamicStyle};
+    ${getComponentOverride('FormFieldMessage')};
     ${marginProps};
 `;
 

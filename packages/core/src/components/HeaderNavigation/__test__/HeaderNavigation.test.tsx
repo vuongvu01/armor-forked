@@ -31,9 +31,8 @@ describe('<HeaderNavigation />', () => {
     it('should ensure class names set', () => {
         render(<HeaderNavigation />);
 
-        const headerNavigationRootElement = screen.getByTestId(
-            headerNavigationRoot,
-        );
+        const headerNavigationRootElement =
+            screen.getByTestId(headerNavigationRoot);
         expect(headerNavigationRootElement).toBeInstanceOf(HTMLDivElement);
         expect(headerNavigationRootElement).toHaveClass(
             'HeaderNavigation-Root',

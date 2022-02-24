@@ -15,7 +15,6 @@ import {
 } from './style';
 import { useHeaderNavigationMenuContentHeaderClassName } from './hooks';
 import { HeaderNavigationMenuContentHeaderPropsType } from './type';
-import { headerNavigationMenuContentHeaderTheme } from './theme';
 
 /**
  * @armor-docs-component
@@ -25,7 +24,6 @@ export const HeaderNavigationMenuContentHeader: FunctionComponent<
 > = ({ className, title, label, image, ...restProps }) => {
     const theme = useComponentTheme(
         HEADER_NAVIGATION_MENU_CONTENT_HEADER_CLASS_PREFIX,
-        headerNavigationMenuContentHeaderTheme,
     );
 
     const classOverride = useHeaderNavigationMenuContentHeaderClassName(

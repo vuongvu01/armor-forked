@@ -2,8 +2,6 @@
 
 import React, { useRef } from 'react';
 import { cleanup, render } from '@testing-library/react';
-import renderer from 'react-test-renderer';
-import { ThemeProvider } from 'styled-components';
 import userEvent from '@testing-library/user-event';
 import {
     renderHook,
@@ -11,7 +9,6 @@ import {
 } from '@testing-library/react-hooks';
 
 import { Button } from '../..';
-import { armorTheme } from '../helpers/custom-theme';
 
 describe('<Button />', () => {
     afterEach(async () => {
@@ -61,22 +58,11 @@ describe('<Button />', () => {
         });
     });
 
-    it('should use custom theme', () => {
-        let tree = renderer.create(<Button>With custom theme</Button>).toJSON();
-
-        // @ts-ignore
-        expect(tree).not.toHaveStyleRule('border-width', '2px');
-
-        tree = renderer
-            .create(
-                <ThemeProvider theme={armorTheme}>
-                    <Button>With custom theme</Button>
-                </ThemeProvider>,
-            )
-            .toJSON();
-
-        // @ts-ignore
-        expect(tree).toHaveStyleRule('border-width', '2px');
+    it('should support component override', () => {
+        expect(
+            <Button>With custom theme</Button>,
+            // @ts-ignore
+        ).toSupportOverride('Button');
     });
 
     it('should render itself as different kind of tag', () => {

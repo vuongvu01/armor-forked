@@ -10,9 +10,9 @@ import {
 import { FilterEditorHeaderRootPropsType } from './type';
 
 /** 👉 ROOT ELEMENT */
-export const FilterEditorHeaderRoot = styled.div.withConfig(propsBlocker)<
-    FilterEditorHeaderRootPropsType
->`
+export const FilterEditorHeaderRoot = styled.div.withConfig(
+    propsBlocker,
+)<FilterEditorHeaderRootPropsType>`
     ${reset};
     ${typography('paragraphMedium')};
     display: flex;

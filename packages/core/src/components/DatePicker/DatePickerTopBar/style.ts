@@ -18,9 +18,9 @@ import {
 } from '../type';
 
 /** 👉 ROOT ELEMENT */
-export const DatePickerTopBarRoot = styled.div.withConfig(propsBlocker)<
-    DatePickerTopBarRootPropsType
->`
+export const DatePickerTopBarRoot = styled.div.withConfig(
+    propsBlocker,
+)<DatePickerTopBarRootPropsType>`
     display: flex;
     justify-content: space-between;
     align-items: center;

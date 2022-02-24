@@ -9,19 +9,17 @@ import {
 import { useSearchClearActionClassName } from './hooks';
 import { SearchClearActionPropsType } from './type';
 import { ClearIconRoot, SearchInputClearIcon } from './style';
-import { searchClearActionTheme } from './theme';
 
-export const SearchClearAction: FunctionComponent<SearchClearActionPropsType> = ({
+export const SearchClearAction: FunctionComponent<
+    SearchClearActionPropsType
+> = ({
     className,
     disableClearAction,
     handleClearQuery,
     disabled,
     searchQuery,
 }) => {
-    const theme = useComponentTheme(
-        SEARCH_CLEAR_ACTION_CLASS_PREFIX,
-        searchClearActionTheme,
-    );
+    const theme = useComponentTheme(SEARCH_CLEAR_ACTION_CLASS_PREFIX);
 
     const classOverride = useSearchClearActionClassName(
         SEARCH_CLEAR_ACTION_CLASS_PREFIX,

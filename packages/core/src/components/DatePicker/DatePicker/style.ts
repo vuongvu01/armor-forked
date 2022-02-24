@@ -11,9 +11,9 @@ import { DatePickerRootPropsType } from './type';
 import { getRootStyle } from '../style';
 
 /** 👉 ROOT ELEMENT */
-export const DatePickerRoot = styled.div.withConfig(propsBlocker)<
-    DatePickerRootPropsType
->`
+export const DatePickerRoot = styled.div.withConfig(
+    propsBlocker,
+)<DatePickerRootPropsType>`
     ${reset()};
     ${typography('paragraphMedium')};
     display: inline-block;

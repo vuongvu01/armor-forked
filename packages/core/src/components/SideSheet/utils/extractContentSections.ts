@@ -17,7 +17,7 @@ export const extractContentSections = (children: ChildrenType) => {
         return sections;
     }
 
-    Children.forEach(children, child => {
+    Children.forEach(children, (child) => {
         const childName = getElementName(child);
 
         if (childName === SIDE_SHEET_HEADER_CLASS_PREFIX) {

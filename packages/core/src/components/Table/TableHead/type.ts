@@ -6,9 +6,8 @@ import {
 } from '../../type';
 
 /** 👉 PROPS TYPE */
-export type TableHeadEffectivePropsType = HTMLAttributes<
-    HTMLTableSectionElement
->; // includes all HTML THead properties
+export type TableHeadEffectivePropsType =
+    HTMLAttributes<HTMLTableSectionElement>; // includes all HTML THead properties
 
 /* TableHead component prop type */
 export type TableHeadPropsType = TableHeadEffectivePropsType &

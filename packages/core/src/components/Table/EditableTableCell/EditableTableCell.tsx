@@ -13,7 +13,7 @@ export const EditableTableCell = forwardRef<
     HTMLTableCellElement,
     EditableTableCellPropsType
 >(function EditableTableCell(
-    { className, children, defaultValue, onChange, ...restProps },
+    { children, defaultValue, onChange, ...restProps },
     ref,
 ) {
     const [edit, setEdit] = useState(false);

@@ -1,5 +1,11 @@
 import styled, { css } from 'styled-components';
-import { color, getComponentOverride } from '@deliveryhero/armor-system';
+import {
+    color,
+    getComponentOverride,
+    spacing,
+    token,
+    typography,
+} from '@deliveryhero/armor-system';
 
 import { HeaderNavigationMenuContentBodyOptionsRootPropsType } from '../HeaderNavigationMenuContentBody/type';
 import {
@@ -8,25 +14,11 @@ import {
 } from '../type';
 import { Stack, StackItem } from '../../../../Stack';
 
-const contentBodyOptionsRootStyle = ({
-    theme: {
-        componentOverrides: { HeaderNavigationMenuContentBodyOptions },
-    },
-}: HeaderNavigationMenuContentBodyOptionsRootPropsType) => {
-    return HeaderNavigationMenuContentBodyOptions.Root.base;
-};
-
-const contentBodyOptionsItemStyle = ({
+const getContentBodyOptionsItemStyle = ({
     isActive,
-    theme: {
-        componentOverrides: { HeaderNavigationMenuContentBodyOptions },
-    },
 }: HeaderNavigationMenuContentBodyOptionsItemPropsType) => {
-    let result = HeaderNavigationMenuContentBodyOptions.Item.base;
-
     if (isActive) {
-        result = css`
-            ${result};
+        return css`
             border-left-width: 2px;
             border-left-style: solid;
             padding-left: 14px;
@@ -36,39 +28,39 @@ const contentBodyOptionsItemStyle = ({
         `;
     }
 
-    return result;
+    return '';
 };
 
-const contentBodyOptionsCategoryStyle = ({
-    theme: {
-        componentOverrides: { HeaderNavigationMenuContentBodyOptions },
-    },
-}: HeaderNavigationMenuContentBodyOptionsCategoryPropsType) => {
-    return HeaderNavigationMenuContentBodyOptions.Category.base;
-};
-
-export const HeaderNavigationMenuContentBodyOptionsItem = styled(StackItem)<
-    HeaderNavigationMenuContentBodyOptionsItemPropsType
->`
+export const HeaderNavigationMenuContentBodyOptionsItem = styled(
+    StackItem,
+)<HeaderNavigationMenuContentBodyOptionsItemPropsType>`
     cursor: pointer;
     box-sizing: border-box;
-
-    ${contentBodyOptionsItemStyle};
+    ${typography('paragraphMedium')};
+    color: ${color('neutral.07')};
+    padding: ${spacing(2)} ${spacing(4)};
+    &:hover {
+        border-left-color: ${color('primary.main')};
+        background-color: ${color('primary.lightest')};
+    }
+    ${getContentBodyOptionsItemStyle};
 `;
 
 /** 👉 ROOT ELEMENT */
-export const HeaderNavigationMenuContentBodyOptionsRoot = styled(Stack)<
-    HeaderNavigationMenuContentBodyOptionsRootPropsType
->`
-    ${contentBodyOptionsRootStyle}
+export const HeaderNavigationMenuContentBodyOptionsRoot = styled(
+    Stack,
+)<HeaderNavigationMenuContentBodyOptionsRootPropsType>`
+    padding-top: ${spacing(6)};
+    padding-bottom: ${spacing(6)};
     ${getComponentOverride('HeaderNavigationMenuContentBodyOptions')};
 `;
 
-export const HeaderNavigationMenuContentBodyOptionsCategory = styled(StackItem)<
-    HeaderNavigationMenuContentBodyOptionsCategoryPropsType
->`
+export const HeaderNavigationMenuContentBodyOptionsCategory = styled(
+    StackItem,
+)<HeaderNavigationMenuContentBodyOptionsCategoryPropsType>`
     cursor: default;
     text-transform: uppercase;
-
-    ${contentBodyOptionsCategoryStyle}
+    ${typography('labelSmall')};
+    color: ${token('body.color')};
+    padding: ${spacing(2)} ${spacing(4)};
 `;

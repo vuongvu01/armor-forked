@@ -597,7 +597,7 @@ export const AsFormField = () => {
             <br />
             <br />
             <br />
-            <form onSubmit={e => e.preventDefault()}>
+            <form onSubmit={(e) => e.preventDefault()}>
                 <FormField autoMargin>
                     <TextInput label="First name" name="first_name" wide />
                     <FormFieldMessage>{loremIpsum}</FormFieldMessage>
@@ -789,7 +789,7 @@ export const NumericControlled = () => {
                 type="number"
                 label="Label"
                 value={value}
-                onChange={e => {
+                onChange={(e) => {
                     setValue(parseInt(e.target.value, 10));
                     e.stopPropagation();
                 }}

@@ -5,7 +5,6 @@ import { useComponentTheme } from '@deliveryhero/armor-system';
 import { useFormFieldTooltipClassNames } from './hooks/useFormFieldTooltipClassNames';
 import { FormFieldTooltipRoot, FormFieldTooltipIndicator } from './style';
 import { FormFieldTooltipPropsType } from './type';
-import { formFieldTooltipDefaultTheme } from './theme';
 import { FORM_FIELD_TOOLTIP_CLASS_PREFIX } from './constants';
 
 /**
@@ -18,10 +17,7 @@ export const FormFieldTooltip = forwardRef<
     { className, children, visible, ...restProps },
     ref,
 ) {
-    const theme = useComponentTheme(
-        FORM_FIELD_TOOLTIP_CLASS_PREFIX,
-        formFieldTooltipDefaultTheme,
-    );
+    const theme = useComponentTheme(FORM_FIELD_TOOLTIP_CLASS_PREFIX);
 
     const classNameComponents = useFormFieldTooltipClassNames(
         FORM_FIELD_TOOLTIP_CLASS_PREFIX,

@@ -1,6 +1,12 @@
 import { ReactElement } from 'react';
 import styled, { css } from 'styled-components';
-import { getComponentOverride, propsBlocker } from '@deliveryhero/armor-system';
+import {
+    color,
+    getComponentOverride,
+    propsBlocker,
+    spacing,
+    token,
+} from '@deliveryhero/armor-system';
 
 import { HeaderNavigationLinkRootPropsType } from './type';
 
@@ -11,17 +17,9 @@ const HeaderNavigationLinkRootWrapper = ({
     children: (props: HeaderNavigationLinkRootPropsType) => ReactElement;
 }) => children({ ...restProps });
 
-const navigationLinkRootStyle = ({
-    isActive,
-    theme: {
-        componentOverrides: { HeaderNavigationLink },
-    },
-}: HeaderNavigationLinkRootPropsType) => {
-    let result = HeaderNavigationLink.Root.base;
-
+const getRootStyle = ({ isActive }: HeaderNavigationLinkRootPropsType) => {
     if (isActive) {
-        result = css`
-            ${result};
+        return css`
             position: relative;
             &:before {
                 content: '';
@@ -30,12 +28,12 @@ const navigationLinkRootStyle = ({
                 left: 0;
                 right: 0;
                 height: 2px;
+                background-color: ${color('primary.main')};
             }
-            ${HeaderNavigationLink.Root.active}
         `;
     }
 
-    return result;
+    return '';
 };
 
 /** 👉 ROOT ELEMENT */
@@ -46,16 +44,22 @@ export const HeaderNavigationLinkRoot = styled(
     border: none;
     box-sizing: border-box;
     display: inline-flex;
-
+    font-size: ${token('paragraphMedium.fontSize')};
+    font-weight: ${token('paragraphMedium.fontWeight')};
+    padding: ${spacing(3)} ${spacing(4)};
     text-decoration: none;
-    &:hover,
+    color: ${color('neutral.11')};
     &:visited,
     &:active,
-    &:focus {
+    &:focus,
+    &:hover {
         text-decoration: none;
+        color: ${color('neutral.11')};
     }
-
-    ${navigationLinkRootStyle};
-    ${getComponentOverride('HeaderNavigationLink')};
+    &:hover {
+        background-color: ${color('primary.lightest')};
+    }
     background-color: transparent;
+    ${getRootStyle};
+    ${getComponentOverride('HeaderNavigationLink')};
 `;

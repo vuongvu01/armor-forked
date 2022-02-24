@@ -20,14 +20,15 @@ type TableControllerCellEffectivePropsType = Partial<{
     TableCellPropsType;
 
 /* TableControllerCell component prop type */
-export type TableControllerCellPropsType = TableControllerCellEffectivePropsType &
-    ComponentStylePropsType;
+export type TableControllerCellPropsType =
+    TableControllerCellEffectivePropsType & ComponentStylePropsType;
 
 /* TableControllerCell Root node prop type */
-export type TableControllerCellRootPropsType = TableControllerCellEffectivePropsType &
-    ComponentElementStylePropsType;
+export type TableControllerCellRootPropsType =
+    TableControllerCellEffectivePropsType & ComponentElementStylePropsType;
 
-export type TableControllerCellContainerPropsType = {} & ComponentElementStylePropsType;
+export type TableControllerCellContainerPropsType =
+    {} & ComponentElementStylePropsType;
 
 export type TableControllerCellIconPropsType = Pick<
     TableControllerCellEffectivePropsType,

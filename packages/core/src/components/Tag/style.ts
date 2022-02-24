@@ -22,9 +22,6 @@ import { TAG_DELETE_BEHAVIOUR_OPTIONS, TAG_TYPES } from './constants';
 
 const getRootStyle = ({
     deleteOption,
-    theme: {
-        componentOverrides: { Tag },
-    },
     type,
     small,
     enableContentWrapping,
@@ -49,38 +46,59 @@ const getRootStyle = ({
     // todo: refactor this
     switch (type) {
         case TAG_TYPES.APPROVED:
-            return css`${result}${minStatusTagWidth}${Tag.Root.base}${Tag.Root.approved}`;
+            return css`
+                ${result};
+                ${minStatusTagWidth};
+                background-color: ${color('success.light')};
+                border-color: ${color('success.light')};
+            `;
         case TAG_TYPES.DENIED:
-            return css`${result}${minStatusTagWidth}${Tag.Root.base}${Tag.Root.denied}`;
+            return css`
+                ${result};
+                ${minStatusTagWidth};
+                background-color: ${color('error.lighter')};
+                border-color: ${color('error.lighter')};
+            `;
         case TAG_TYPES.NEW:
-            return css`${result}${minStatusTagWidth}${Tag.Root.base}${Tag.Root.new}`;
+            return css`
+                ${result};
+                ${minStatusTagWidth};
+                background-color: ${color('warning.light')};
+                border-color: ${color('warning.light')};
+            `;
         default: {
             if (filled) {
-                return css`${result}${Tag.Root.base}${Tag.Root.filled}`;
+                return css`
+                    ${result};
+                    background-color: ${color('primary.lightest')};
+                    border-color: ${color('primary.lightest')};
+                `;
             }
 
             if (deleteOption === TAG_DELETE_BEHAVIOUR_OPTIONS.ENABLED) {
-                return css`${result}${Tag.Root.base}${Tag.Root.enabled}`;
+                return css`
+                    ${result};
+                    background-color: ${color('primary.lightest')};
+                    border-color: ${color('primary.lightest')};
+                    padding-right: ${spacing(1)};
+                `;
             }
 
             if (deleteOption === TAG_DELETE_BEHAVIOUR_OPTIONS.DISABLED) {
-                return css`${result}${Tag.Root.base}`;
+                return result;
             }
 
             return css`
-                ${result}
-                ${Tag.Root.base};
+                ${result};
                 justify-content: flex-end;
             `;
         }
     }
 };
+
 const textStyle = ({
     smallVerticalPadding,
     deleteOption,
-    theme: {
-        componentOverrides: { Tag },
-    },
 }: TagTextPropsType) => {
     const result = css`
         && {
@@ -93,16 +111,12 @@ const textStyle = ({
 
     if (deleteOption === TAG_DELETE_BEHAVIOUR_OPTIONS.ENABLED) {
         return css`
-            ${result}
-            ${Tag.Typography.base}
-            ${Tag.Typography.enabled}
+            ${result};
+            margin-right: ${spacing(1)};
         `;
     }
 
-    return css`
-        ${result}
-        ${Tag.Typography.base}
-    `;
+    return result;
 };
 
 const closeIconContainerStyle = ({
@@ -158,17 +172,16 @@ const closeIconContainerStyle = ({
     return result;
 };
 
-export const TagCloseIconContainer = styled.div.withConfig(propsBlocker)<
-    TagCloseIconContainerPropsType
->`
+export const TagCloseIconContainer = styled.div.withConfig(
+    propsBlocker,
+)<TagCloseIconContainerPropsType>`
     box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0;
     outline: none;
-
-    ${closeIconContainerStyle}
+    ${closeIconContainerStyle};
 `;
 
 /** 👉 ROOT ELEMENT */
@@ -197,18 +210,16 @@ export const TagRoot = styled.div.withConfig(propsBlocker)<TagRootPropsType>`
 
     ${getRootStyle};
     ${marginProps};
-
     ${getComponentOverride('Tag')};
 `;
 
 export const TagText = styled.div<TagTextPropsType>`
     ${typography('paragraphSmall')};
-    ${textStyle}
+    ${textStyle};
 `;
 
 export const TagCloseIcon = styled(CancelIcon)<TagCloseIconPropsType>`
     outline: none;
-
     height: ${spacing(2)};
     width: ${spacing(2)};
 `;

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { HeaderNavigationPropsType } from './type';
-import { headerNavigationDefaultTheme } from './theme';
 import {
     HEADER_NAVIGATION_CLASS_PREFIX,
     headerNavigationRoot,
@@ -46,10 +45,7 @@ export const HeaderNavigation = forwardRef<
     },
     ref,
 ) {
-    const theme = useComponentTheme(
-        HEADER_NAVIGATION_CLASS_PREFIX,
-        headerNavigationDefaultTheme,
-    );
+    const theme = useComponentTheme(HEADER_NAVIGATION_CLASS_PREFIX);
 
     const classOverride = useHeaderNavigationClassName(
         HEADER_NAVIGATION_CLASS_PREFIX,

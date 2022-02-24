@@ -13,10 +13,9 @@ export const FilterEditorEnumCondition: FC<FilterEditorConditionPropsType> = ({
     onConditionValueChange,
 }) => {
     const { label, multiple } = condition;
-    const {
-        options,
-        dropdownAttributes,
-    } = (conditionType as FilterEnumConditionType).getAttributes();
+    const { options, dropdownAttributes } = (
+        conditionType as FilterEnumConditionType
+    ).getAttributes();
     const { value } = conditionValue || {};
 
     const {

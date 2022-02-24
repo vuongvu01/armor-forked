@@ -22,7 +22,7 @@ export const useSelectedValueToDisplay = (
         }
 
         return internalOptions
-            .filter(option => internalValue.includes(option.value))
-            .map(option => option.label)
+            .filter((option) => internalValue.includes(option.value))
+            .map((option) => option.label)
             .join(', ');
     }, [onRenderSelectedValue, internalValue, internalOptions]);

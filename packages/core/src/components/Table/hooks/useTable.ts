@@ -67,15 +67,14 @@ export const useTable = <E extends HTMLTableElement>(
         return result;
     }, [stickyColumns]);
 
-    const [tableContextValue, setTableContextValue] = useState<
-        TableContextValueType
-    >({
-        data: {
-            stickyColumns: stickyColumnsInternal,
-            stickyHead,
-        },
-        update: data => setTableContextValue(data),
-    });
+    const [tableContextValue, setTableContextValue] =
+        useState<TableContextValueType>({
+            data: {
+                stickyColumns: stickyColumnsInternal,
+                stickyHead,
+            },
+            update: (data) => setTableContextValue(data),
+        });
 
     const rootReference = useRootRef<E>(ref);
 

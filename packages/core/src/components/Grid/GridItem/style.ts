@@ -92,9 +92,9 @@ const gridItemRootStyle = ({
 };
 
 /** 👉 ROOT ELEMENT */
-export const GridItemRoot = styled.div.withConfig(propsBlocker)<
-    GridItemPropsType
->`
+export const GridItemRoot = styled.div.withConfig(
+    propsBlocker,
+)<GridItemPropsType>`
     box-sizing: border-box;
     width: 100%;
 

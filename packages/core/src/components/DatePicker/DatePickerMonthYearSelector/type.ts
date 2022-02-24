@@ -16,23 +16,26 @@ type DatePickerMonthYearSelectorEffectivePropsType = {
 } & HTMLAttributes<HTMLDivElement> & // includes all HTML Div properties
     MarginPropsType;
 
-export type DatePickerMonthYearSelectorPropsType = DatePickerMonthYearSelectorEffectivePropsType &
-    ComponentStylePropsType;
+export type DatePickerMonthYearSelectorPropsType =
+    DatePickerMonthYearSelectorEffectivePropsType & ComponentStylePropsType;
 
-export type DatePickerMonthYearSelectorRootPropsType = HTMLAttributes<
-    HTMLDivElement
-> &
+export type DatePickerMonthYearSelectorRootPropsType =
+    HTMLAttributes<HTMLDivElement> & ComponentElementStylePropsType;
+
+export type DatePickerMonthYearSelectorScrollPropsType =
     ComponentElementStylePropsType;
 
-export type DatePickerMonthYearSelectorScrollPropsType = ComponentElementStylePropsType;
+export type DatePickerMonthYearSelectorListPropsType =
+    ComponentElementStylePropsType;
 
-export type DatePickerMonthYearSelectorListPropsType = ComponentElementStylePropsType;
+export type DatePickerMonthYearSelectorYearPropsType =
+    ComponentElementStylePropsType;
 
-export type DatePickerMonthYearSelectorYearPropsType = ComponentElementStylePropsType;
+export type DatePickerMonthYearSelectorYearTitlePropsType =
+    ComponentElementStylePropsType;
 
-export type DatePickerMonthYearSelectorYearTitlePropsType = ComponentElementStylePropsType;
-
-export type DatePickerMonthYearSelectorMonthListPropsType = ComponentElementStylePropsType;
+export type DatePickerMonthYearSelectorMonthListPropsType =
+    ComponentElementStylePropsType;
 
 export type DatePickerMonthYearSelectorMonthPropsType = {
     selected: boolean;

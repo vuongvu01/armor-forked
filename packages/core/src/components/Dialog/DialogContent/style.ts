@@ -10,9 +10,9 @@ import {
 import { DialogContentRootPropsType } from './type';
 
 /** 👉 ROOT ELEMENT */
-export const DialogContentRoot = styled.div.withConfig(propsBlocker)<
-    DialogContentRootPropsType
->`
+export const DialogContentRoot = styled.div.withConfig(
+    propsBlocker,
+)<DialogContentRootPropsType>`
     ${typography('paragraphLarge')};
     ${({ enableVerticalScroll }) =>
         enableVerticalScroll ? 'overflow-y: auto;' : ''}
@@ -30,7 +30,6 @@ export const DialogContentRoot = styled.div.withConfig(propsBlocker)<
         padding-bottom: ${spacing(8)};
     }
 
-    ${({ theme }) => theme.componentOverrides.DialogContent.Root.base}
     ${getComponentOverride('DialogContent')};
     ${paddingProps};
 `;

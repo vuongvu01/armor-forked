@@ -9,5 +9,5 @@ export type {
     FilterConditionSchemaElementType,
     FilterConditionSchemaType,
     FilterConditionValueElementType,
-    FilterConditionValueType
+    FilterConditionValueType,
 } from './type';

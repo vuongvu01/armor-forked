@@ -24,9 +24,9 @@ const getRootDynamicStyle = ({ isHeader }: TableRowRootPropsType) => {
 };
 
 /** 👉 ROOT ELEMENT */
-export const TableRowRoot = styled.tr.withConfig(propsBlocker)<
-    TableRowRootPropsType
->`
+export const TableRowRoot = styled.tr.withConfig(
+    propsBlocker,
+)<TableRowRootPropsType>`
     &:not(:last-child) {
         border-bottom-width: 1px;
         border-bottom-style: solid;

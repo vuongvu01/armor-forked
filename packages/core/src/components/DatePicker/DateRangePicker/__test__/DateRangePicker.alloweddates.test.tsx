@@ -26,7 +26,7 @@ describe('<DateRangePicker />', () => {
                     open
                     onDateValueChange={onDateValueChange}
                     currentDate={currentDate}
-                    isDateAllowed={date => {
+                    isDateAllowed={(date) => {
                         return makeDateString(date) !== '7-12-2021';
                     }}
                 />,
@@ -58,7 +58,7 @@ describe('<DateRangePicker />', () => {
                     open
                     onDateValueChange={onDateValueChange}
                     currentDate={currentDate}
-                    isDateAllowed={date => {
+                    isDateAllowed={(date) => {
                         return makeDateString(date) !== '7-12-2021';
                     }}
                 />,
