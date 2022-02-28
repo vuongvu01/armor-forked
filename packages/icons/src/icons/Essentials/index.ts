@@ -21,6 +21,7 @@ export * from './ForkKnife';
 export * from './Home';
 export * from './IdeaStrategy';
 export * from './Info';
+export * from './InfoOutline';
 export * from './KeyboardArrowNext';
 export * from './Login';
 export * from './Logout';
