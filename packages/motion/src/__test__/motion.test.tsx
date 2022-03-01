@@ -8,7 +8,7 @@ describe('<Spinner />', () => {
         cleanup();
     });
 
-    it('renders itself without any errors', async () => {
+    it('renders itself without any errors !', async () => {
         render(<Spinner />);
     });
 
