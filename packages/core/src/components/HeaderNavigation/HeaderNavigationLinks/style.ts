@@ -1,25 +1,23 @@
 import styled from 'styled-components';
-import { propsBlocker } from '@deliveryhero/armor-system';
+import {
+    propsBlocker,
+    spacing,
+    token,
+    typography,
+} from '@deliveryhero/armor-system';
 
 import { HeaderNavigationLinksRootPropsType } from './type';
 import { HeaderNavigationItem } from '../HeaderNavigationItem';
 
-const itemLinksStyle = ({
-    theme: {
-        componentOverrides: { HeaderNavigationLinks },
-    },
-}: HeaderNavigationLinksRootPropsType) => {
-    return HeaderNavigationLinks.NavigationItem.base;
-};
-
 /** 👉 ROOT ELEMENT */
-export const HeaderNavigationLinksRoot = styled(HeaderNavigationItem)<
-    HeaderNavigationLinksRootPropsType
->`
+export const HeaderNavigationLinksRoot = styled(
+    HeaderNavigationItem,
+)<HeaderNavigationLinksRootPropsType>`
     padding-top: 0;
     padding-bottom: 0;
-
-    ${itemLinksStyle};
+    padding-left: ${spacing(6)};
+    ${typography('paragraphMedium')};
+    color: ${token('body.color')};
 `;
 
 export const HeaderNavigationLinksContainer = styled.div.withConfig(

@@ -10,7 +10,7 @@ export const extendChildrenWithProps = (
 ) => {
     const values: any[] = [];
 
-    const childrenWithExtendedProps = Children.map(children, child => {
+    const childrenWithExtendedProps = Children.map(children, (child) => {
         const childName = getElementName(child);
         const value = child?.props?.value;
 

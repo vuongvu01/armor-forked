@@ -42,15 +42,14 @@ type DatePickerDaySelectorEffectivePropsType = {
     // add other custom properties here
 } & HTMLAttributes<HTMLDivElement>; // includes all HTML Div properties
 
-export type DatePickerDaySelectorPropsType = DatePickerDaySelectorEffectivePropsType &
-    ComponentStylePropsType;
+export type DatePickerDaySelectorPropsType =
+    DatePickerDaySelectorEffectivePropsType & ComponentStylePropsType;
 
-export type DatePickerDaySelectorRootPropsType = HTMLAttributes<
-    HTMLDivElement
-> &
-    ComponentElementStylePropsType;
+export type DatePickerDaySelectorRootPropsType =
+    HTMLAttributes<HTMLDivElement> & ComponentElementStylePropsType;
 
-export type DatePickerDaySelectorDayPropsType = {} & ComponentElementStylePropsType;
+export type DatePickerDaySelectorDayPropsType =
+    {} & ComponentElementStylePropsType;
 
 export type DatePickerDaySelectorDayButtonPropsType = {} & DaySelectionStatus &
     ComponentElementStylePropsType;

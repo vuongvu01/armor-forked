@@ -60,8 +60,8 @@ export type ThemeType = {
     };
     breakpoints: BreakpointsType;
     color: Record<string, any>; // todo: tighten
-    components: Record<string, any>; // todo: tighten
-    componentOverrides: Record<string, any>; // todo: tighten
+    component: Record<string, any>; // todo: tighten
+    componentCSS: Record<string, any>; // todo: tighten
     shadow: Record<string, any>; // todo: tighten
     referenceIndex: Record<string, any>; // todo: tighten
     typography: TypographyType;
@@ -79,7 +79,8 @@ export type ThemeInputType = Partial<
     typography?: Partial<TypographyType>;
     breakpoints?: BreakpointsDeclarationType;
     spacing?: SpacingFunctionOrConstType;
-    components?: Record<string, any>; // todo: tighten
+    component?: Record<string, any>; // todo: tighten
+    componentCSS?: Record<string, any>; // todo: tighten
 } & Record<string, any>; // todo: tighten
 
 export type ThemeOptionsType = {

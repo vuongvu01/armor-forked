@@ -15,7 +15,7 @@ export const useOnRemoveMultiple = (
     useCallback<DropdownOnRemoveMultipleType>(
         (tagValuesToRemove: DropdownInternalValueType) => {
             const nextValue = internalValue.filter(
-                value => !tagValuesToRemove.includes(value),
+                (value) => !tagValuesToRemove.includes(value),
             );
 
             handleOnChange(nextValue, onChange);

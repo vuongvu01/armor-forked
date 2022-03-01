@@ -67,27 +67,26 @@ export const useFilterEditor = <E extends HTMLElement>(
     const typeIndex = useTypeIndex(types);
 
     // currently applied value, controlled or uncontrolled
-    const [actualValue, setActualValue] = useControlledState<
-        FilterConditionValueType
-    >(defaultValue, value, onValueChange);
+    const [actualValue, setActualValue] =
+        useControlledState<FilterConditionValueType>(
+            defaultValue,
+            value,
+            onValueChange,
+        );
     // next value candidate, controlled or uncontrolled. If not set, then initially taken from the applied value
-    const [actualValueCandidate, setActualValueCandidate] = useControlledState<
-        FilterConditionValueType
-    >(
-        defaultValueCandidate ?? actualValue,
-        valueCandidate,
-        onValueCandidateChange,
-    );
+    const [actualValueCandidate, setActualValueCandidate] =
+        useControlledState<FilterConditionValueType>(
+            defaultValueCandidate ?? actualValue,
+            valueCandidate,
+            onValueCandidateChange,
+        );
 
-    const {
-        showClearFilterButton,
-        showActions,
-        showHeader,
-    } = useFilterEditorSettings({
-        enableClearAllButton,
-        enableActions,
-        enableHeader,
-    });
+    const { showClearFilterButton, showActions, showHeader } =
+        useFilterEditorSettings({
+            enableClearAllButton,
+            enableActions,
+            enableHeader,
+        });
 
     // todo: refactor this mess
     const externalSchemaSafe =
@@ -150,7 +149,7 @@ export const useFilterEditor = <E extends HTMLElement>(
             // todo: use _.get(realValue, path) later when we have a nested structure
             // todo: also, use memoization, be more clever than this!
             const conditionValue = actualValueSafe.conditions!.find(
-                item => item.name === path,
+                (item) => item.name === path,
             );
 
             const onConditionValueChange = (
@@ -166,7 +165,7 @@ export const useFilterEditor = <E extends HTMLElement>(
 
                 // todo: use _.get(nextValue, path) later when we have a nested structure
                 const nextConditionValue = nextValue.conditions?.find(
-                    conditionValueItem => conditionValueItem.name === path,
+                    (conditionValueItem) => conditionValueItem.name === path,
                 );
                 if (nextConditionValue) {
                     if ('value' in newFieldValue) {

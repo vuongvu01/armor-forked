@@ -5,7 +5,7 @@ export const useDialogActionsClassName = (
     classPrefix: string,
     className?: string,
 ) =>
-    useMemo(() => makeRootClassName(classPrefix, className), [
-        classPrefix,
-        className,
-    ]);
+    useMemo(
+        () => makeRootClassName(classPrefix, className),
+        [classPrefix, className],
+    );

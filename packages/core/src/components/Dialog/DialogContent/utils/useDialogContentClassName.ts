@@ -5,7 +5,7 @@ export const useDialogContentClassName = (
     classPrefix: string,
     className?: string,
 ) =>
-    useMemo(() => makeRootClassName(classPrefix, className), [
-        classPrefix,
-        className,
-    ]);
+    useMemo(
+        () => makeRootClassName(classPrefix, className),
+        [classPrefix, className],
+    );

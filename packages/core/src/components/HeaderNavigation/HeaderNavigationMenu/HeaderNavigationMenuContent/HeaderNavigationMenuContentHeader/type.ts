@@ -18,10 +18,12 @@ type HeaderNavigationMenuContentHeaderEffectivePropsType = Partial<{
     HTMLAttributes<HTMLElement> &
     MarginPropsType;
 
-export type HeaderNavigationMenuContentHeaderPropsType = HeaderNavigationMenuContentHeaderEffectivePropsType;
+export type HeaderNavigationMenuContentHeaderPropsType =
+    HeaderNavigationMenuContentHeaderEffectivePropsType;
 
-export type HeaderNavigationMenuContentHeaderRootPropsType = HeaderNavigationMenuContentHeaderEffectivePropsType &
-    ComponentElementStylePropsType;
+export type HeaderNavigationMenuContentHeaderRootPropsType =
+    HeaderNavigationMenuContentHeaderEffectivePropsType &
+        ComponentElementStylePropsType;
 
 export type HeaderNavigationMenuContentHeaderTitlePropsType = {
     label: boolean;

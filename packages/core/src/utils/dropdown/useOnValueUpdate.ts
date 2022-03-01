@@ -42,7 +42,7 @@ export const useOnValueUpdate = (
             if (multiple) {
                 if (internalValue.includes(chosenItem)) {
                     nextValue = internalValue.filter(
-                        item => item !== chosenItem,
+                        (item) => item !== chosenItem,
                     );
                 } else {
                     nextValue = [...internalValue, chosenItem];

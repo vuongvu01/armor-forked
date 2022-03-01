@@ -9,9 +9,9 @@ import {
 import { NavigationRootPropsType } from './type';
 
 /** 👉 ROOT ELEMENT */
-export const NavigationRoot = styled.div.withConfig(propsBlocker)<
-    NavigationRootPropsType
->`
+export const NavigationRoot = styled.div.withConfig(
+    propsBlocker,
+)<NavigationRootPropsType>`
     box-sizing: border-box;
 
     ${getComponentOverride('Navigation')};

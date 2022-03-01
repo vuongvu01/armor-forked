@@ -21,9 +21,9 @@ import {
 import { TextInput } from '../../TextInput';
 
 /** 👉 ROOT ELEMENT */
-export const DatePickerTimeSelectorRoot = styled.div.withConfig(propsBlocker)<
-    DatePickerTimeSelectorRootPropsType
->`
+export const DatePickerTimeSelectorRoot = styled.div.withConfig(
+    propsBlocker,
+)<DatePickerTimeSelectorRootPropsType>`
     ${reset};
     ${typography('paragraphMedium')};
     padding: ${spacing(4)};

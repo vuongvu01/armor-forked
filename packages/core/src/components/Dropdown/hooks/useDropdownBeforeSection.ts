@@ -107,9 +107,9 @@ export const useDropdownBeforeSection = <E extends HTMLDivElement>(
             isFlat,
         );
 
-    const handleRemoveRemainingTags = (
-        tagValuesToRemove: DropdownInternalValueType,
-    ) => () => onRemoveMultiple(tagValuesToRemove);
+    const handleRemoveRemainingTags =
+        (tagValuesToRemove: DropdownInternalValueType) => () =>
+            onRemoveMultiple(tagValuesToRemove);
 
     const getAggregatedTagsLabel = useCallback(
         (remainingItemsCount: number) => {

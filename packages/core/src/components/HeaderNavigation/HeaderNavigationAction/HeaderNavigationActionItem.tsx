@@ -5,7 +5,6 @@ import { useComponentTheme } from '@deliveryhero/armor-system';
 import { HeaderNavigationActionItemPropsType } from './type';
 import { useHeaderNavigationActionClassName } from './hooks';
 import { HeaderNavigationActionItemRoot } from './style';
-import { headerNavigationActionTheme } from './theme';
 import {
     HEADER_NAVIGATION_ACTION_CLASS_PREFIX,
     headerNavigationActionItemRoot,
@@ -18,10 +17,7 @@ export const HeaderNavigationActionItem = forwardRef<
     { className, children, tabIndex = 0, ...restProps },
     ref,
 ) {
-    const theme = useComponentTheme(
-        HEADER_NAVIGATION_ACTION_CLASS_PREFIX,
-        headerNavigationActionTheme,
-    );
+    const theme = useComponentTheme(HEADER_NAVIGATION_ACTION_CLASS_PREFIX);
 
     const classOverride = useHeaderNavigationActionClassName(
         HEADER_NAVIGATION_ACTION_CLASS_PREFIX,

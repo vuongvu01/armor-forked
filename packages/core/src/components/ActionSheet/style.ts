@@ -28,9 +28,9 @@ const getLabelContainerStyle = ({ label }: ActionSheetRootPropsType) => {
 };
 
 /** 👉 ROOT ELEMENT */
-export const ActionSheetRoot = styled.div.withConfig(propsBlocker)<
-    ActionSheetRootPropsType
->`
+export const ActionSheetRoot = styled.div.withConfig(
+    propsBlocker,
+)<ActionSheetRootPropsType>`
     ${reset};
     align-items: center;
     background-color: ${color('primary.lightest')};
@@ -44,8 +44,8 @@ export const ActionSheetRoot = styled.div.withConfig(propsBlocker)<
     ${widthProps};
 `;
 
-export const ActionSheetLabelContainer = styled.div.withConfig(propsBlocker)<
-    ActionSheetLabelContainerPropsType
->`
+export const ActionSheetLabelContainer = styled.div.withConfig(
+    propsBlocker,
+)<ActionSheetLabelContainerPropsType>`
     ${getLabelContainerStyle};
 `;

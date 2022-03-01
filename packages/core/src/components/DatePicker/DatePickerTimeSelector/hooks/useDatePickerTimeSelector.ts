@@ -77,7 +77,7 @@ export const useDatePickerTimeSelector = <E extends HTMLDivElement>(
     );
 
     const onHourInputBlur = useCallback(
-        event => {
+        (event) => {
             const newHour = event.target.value;
             const newHourInt = getValidTimeFragment(newHour, 12);
 
@@ -89,7 +89,7 @@ export const useDatePickerTimeSelector = <E extends HTMLDivElement>(
     );
 
     const onMinuteInputBlur = useCallback(
-        event => {
+        (event) => {
             const newMinute = event.target.value;
             const newMinuteInt = getValidTimeFragment(newMinute, 59);
 

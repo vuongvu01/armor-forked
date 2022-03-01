@@ -16,7 +16,7 @@ const getAllGroupMembers = (
 ) => {
     const allGroupMemberOptions: ScalarType[] = [];
 
-    options.forEach(option => {
+    options.forEach((option) => {
         if (option.groupId === groupId && !option.disabled) {
             allGroupMemberOptions.push(option.value);
         }
@@ -59,16 +59,14 @@ export const useOnToggleGroup = (
                     internalGroups[groupId].selectedItemsCount
                 ) {
                     updatedOptionValues = updatedOptionValues.filter(
-                        value =>
+                        (value) =>
                             !internalGroups[groupId].selectedItemIds.includes(
                                 value,
                             ),
                     );
                 } else {
-                    const allGroupMemberOptions: ScalarType[] = getAllGroupMembers(
-                        groupId,
-                        internalOptions,
-                    );
+                    const allGroupMemberOptions: ScalarType[] =
+                        getAllGroupMembers(groupId, internalOptions);
 
                     updatedOptionValues = [
                         ...updatedOptionValues,

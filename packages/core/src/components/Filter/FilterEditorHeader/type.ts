@@ -19,5 +19,5 @@ type FilterEditorHeaderEffectivePropsType = Partial<{
 export type FilterEditorHeaderPropsType = FilterEditorHeaderEffectivePropsType &
     ComponentStylePropsType;
 
-export type FilterEditorHeaderRootPropsType = FilterEditorHeaderEffectivePropsType &
-    ComponentElementStylePropsType;
+export type FilterEditorHeaderRootPropsType =
+    FilterEditorHeaderEffectivePropsType & ComponentElementStylePropsType;

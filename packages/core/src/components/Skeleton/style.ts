@@ -49,9 +49,9 @@ const getRootStyle = ({ animated, rounded }: SkeletonRootPropsType) => {
     return result;
 };
 
-export const SkeletonRoot = styled.div.withConfig(propsBlocker)<
-    SkeletonRootPropsType
->`
+export const SkeletonRoot = styled.div.withConfig(
+    propsBlocker,
+)<SkeletonRootPropsType>`
     ${reset};
 
     margin: ${spacing(2)};

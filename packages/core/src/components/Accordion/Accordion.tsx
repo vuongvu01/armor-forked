@@ -12,7 +12,6 @@ import { useComponentTheme } from '@deliveryhero/armor-system';
 import { useAccordionClassName } from './utils';
 import { AccordionRoot } from './style';
 import { AccordionPropsType } from './type';
-import { accordionDefaultTheme } from './theme';
 import { ACCORDION_CLASS_PREFIX, accordionRoot } from './constants';
 import { AccordionContext } from './AccordionContext';
 
@@ -32,10 +31,7 @@ export const Accordion = forwardRef<HTMLDivElement, AccordionPropsType>(
         },
         ref,
     ) {
-        const theme = useComponentTheme(
-            ACCORDION_CLASS_PREFIX,
-            accordionDefaultTheme,
-        );
+        const theme = useComponentTheme(ACCORDION_CLASS_PREFIX);
 
         const [isExpanded, setIsExpanded] = useState(defaultExpanded);
 

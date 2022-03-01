@@ -17,9 +17,8 @@ export const Skeleton = forwardRef<HTMLDivElement, SkeletonPropsType>(
             className,
         );
 
-        const { imagePlaceholder, enableImage, rootProps } = useSkeleton<
-            HTMLDivElement
-        >(props, ref);
+        const { imagePlaceholder, enableImage, rootProps } =
+            useSkeleton<HTMLDivElement>(props, ref);
 
         return (
             <>

@@ -36,7 +36,7 @@ export const useDatePickerDaySelectorSelection = (
             }
         }
 
-        return calendar.map(item => {
+        return calendar.map((item) => {
             const vector = DateVector.createFromStructure(item);
             const leftEnd = vector.isEqualTo(selectionStartDate);
             const rightEnd = vector.isEqualTo(selectionEndDate);

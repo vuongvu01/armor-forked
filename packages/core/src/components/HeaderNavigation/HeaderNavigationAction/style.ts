@@ -1,5 +1,11 @@
 import styled from 'styled-components';
-import { getComponentOverride, propsBlocker } from '@deliveryhero/armor-system';
+import {
+    color,
+    getComponentOverride,
+    propsBlocker,
+    spacing,
+    token,
+} from '@deliveryhero/armor-system';
 
 import {
     HeaderNavigationActionContainerPropsType,
@@ -8,25 +14,14 @@ import {
 } from './type';
 import { HeaderNavigationItem } from '../HeaderNavigationItem';
 
-const actionRootStyle = ({
-    theme: {
-        componentOverrides: { HeaderNavigationAction },
-    },
-}: HeaderNavigationActionRootPropsType) => {
-    return HeaderNavigationAction.Root.base;
-};
-
 /** 👉 ROOT ELEMENT */
-export const HeaderNavigationActionRoot = styled(HeaderNavigationItem)<
-    HeaderNavigationActionRootPropsType
->`
-    padding-top: 0;
-    padding-bottom: 0;
+export const HeaderNavigationActionRoot = styled(
+    HeaderNavigationItem,
+)<HeaderNavigationActionRootPropsType>`
     display: flex;
     align-items: center;
     height: 48px;
-
-    ${actionRootStyle};
+    padding: 0 ${spacing(2)};
 `;
 
 export const HeaderNavigationActionContainer = styled.div.withConfig(
@@ -37,19 +32,16 @@ export const HeaderNavigationActionContainer = styled.div.withConfig(
     justify-content: space-between;
 `;
 
-const actionItemRootStyle = ({
-    theme: {
-        componentOverrides: { HeaderNavigationAction },
-    },
-}: HeaderNavigationActionItemRootPropsType) => {
-    return HeaderNavigationAction.Item.base;
-};
-
 export const HeaderNavigationActionItemRoot = styled.div.withConfig(
     propsBlocker,
 )<HeaderNavigationActionItemRootPropsType>`
     cursor: pointer;
-
-    ${actionItemRootStyle}
+    padding: ${spacing(2)} ${spacing(2)} 0 ${spacing(2)};
+    margin-right: ${spacing(2)};
+    margin-left: ${spacing(2)};
+    &:hover {
+        background: ${color('primary.lightest')};
+        border-radius: ${token('shape.borderRadius.soft')};
+    }
     ${getComponentOverride('HeaderNavigationActionItem')};
 `;

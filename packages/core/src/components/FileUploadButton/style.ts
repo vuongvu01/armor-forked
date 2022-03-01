@@ -9,9 +9,9 @@ import {
 import { FileUploadButtonRootPropsType } from './type';
 
 /** 👉 ROOT ELEMENT */
-export const FileUploadButtonRoot = styled.div.withConfig(propsBlocker)<
-    FileUploadButtonRootPropsType
->`
+export const FileUploadButtonRoot = styled.div.withConfig(
+    propsBlocker,
+)<FileUploadButtonRootPropsType>`
     ${reset};
     ${typography('paragraphMedium')};
     ${marginProps};

@@ -34,9 +34,9 @@ const getRootDynamicStyle = ({
 };
 
 /** 👉 ROOT ELEMENT */
-export const TableExpandableSectionRoot = styled(TableRow)<
-    TableExpandableSectionRootPropsType
->`
+export const TableExpandableSectionRoot = styled(
+    TableRow,
+)<TableExpandableSectionRootPropsType>`
     white-space: normal;
     background-color: ${color('neutral.00')};
     &:hover td {
@@ -60,9 +60,9 @@ const getCellStyle = ({ height }: TableExpandableSectionCellPropsType) => {
     return result;
 };
 
-export const TableExpandableSectionCell = styled(TableCell)<
-    TableExpandableSectionCellPropsType
->`
+export const TableExpandableSectionCell = styled(
+    TableCell,
+)<TableExpandableSectionCellPropsType>`
     position: relative;
     padding: 0;
     ${getCellStyle};

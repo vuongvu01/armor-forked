@@ -8,9 +8,8 @@ export const useStep = <E extends HTMLDivElement>(
     { warning, error, index, ...restProps }: StepPropsType,
     ref: RefType<E>,
 ) => {
-    const { currentIndex, handleClick, vertical, minimal } = useContext(
-        StepperContext,
-    );
+    const { currentIndex, handleClick, vertical, minimal } =
+        useContext(StepperContext);
     let variant = StepperPieceVariant.incomplete; // default
 
     if (index === undefined || currentIndex === undefined) {

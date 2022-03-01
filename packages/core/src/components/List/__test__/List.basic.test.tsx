@@ -140,10 +140,10 @@ describe('<List />', () => {
         expect(List).toSupportRestPropsForwarding('List');
     });
 
-    it('should support custom theme', () => {
+    it('should support component override', () => {
         // @ts-ignore
 
-        expect(<List>Hello</List>).toSupportCustomTheme('List');
+        expect(<List>Hello</List>).toSupportOverride('List');
     });
 
     it('should support margin properties', async () => {

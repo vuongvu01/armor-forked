@@ -11,7 +11,14 @@ import { ButtonPropsType } from '../Button';
 type FileUploadButtonEffectivePropsType = Partial<{
     accept: string;
     children: ReactNode | string;
+    multiple: boolean;
+    /**
+     * @deprecated
+     * use onFilesSelect instead
+     */
     onFileSelect: (file: File) => void;
+    /** Return one or multiple files on select */
+    onFilesSelect: (files: File[]) => void;
 }> &
     Pick<
         ButtonPropsType,

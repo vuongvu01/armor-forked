@@ -4,20 +4,16 @@ import {
     marginProps,
     widthProps,
     propsBlocker,
+    getComponentOverride,
 } from '@deliveryhero/armor-system';
 
 import { TableRootPropsType } from './type';
 
-const getRootDynamicStyle = ({
+const getDynamicStyle = ({
     horizontalScroll,
     enableFixedLayout,
-    theme,
 }: TableRootPropsType) => {
-    const {
-        componentOverrides: { Table },
-    } = theme;
-
-    let result = Table.Root.base;
+    let result = css``;
 
     if (horizontalScroll) {
         result = css`
@@ -39,13 +35,14 @@ const getRootDynamicStyle = ({
 };
 
 /** 👉 ROOT ELEMENT */
-export const TableRoot = styled.table.withConfig(propsBlocker)<
-    TableRootPropsType
->`
+export const TableRoot = styled.table.withConfig(
+    propsBlocker,
+)<TableRootPropsType>`
     box-sizing: border-box;
     border-collapse: collapse;
 
-    ${getRootDynamicStyle};
+    ${getDynamicStyle};
+    ${getComponentOverride('Table')};
     ${marginProps};
     ${widthProps};
     ${heightProps};

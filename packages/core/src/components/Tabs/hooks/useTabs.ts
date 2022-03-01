@@ -25,15 +25,14 @@ export const useTabs = <E extends HTMLDivElement>(
     }: TabsPropsType,
     ref: RefType<E>,
 ) => {
-    const [currentlyActiveTab, setCurrentlyActiveTab] = useControlledState<
-        number
-    >(
-        defaultActiveTabIndex !== undefined
-            ? defaultActiveTabIndex
-            : defaultActiveTab,
-        activeTabIndex,
-        onActiveTabIndexChange,
-    );
+    const [currentlyActiveTab, setCurrentlyActiveTab] =
+        useControlledState<number>(
+            defaultActiveTabIndex !== undefined
+                ? defaultActiveTabIndex
+                : defaultActiveTab,
+            activeTabIndex,
+            onActiveTabIndexChange,
+        );
 
     // todo: we should not trigger any on* event handlers on the first render, unconditionally
     // todo: somehow refactor this

@@ -32,7 +32,7 @@ export const useOnSearchQueryChange = (
                 setSearchQuery(query);
             }
 
-            const matchingOptions = internalOptions.filter(option => {
+            const matchingOptions = internalOptions.filter((option) => {
                 const label =
                     typeof option.label === 'string'
                         ? option.label.toLowerCase()

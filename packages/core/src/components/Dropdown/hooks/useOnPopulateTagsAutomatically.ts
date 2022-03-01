@@ -27,21 +27,18 @@ export const useOnPopulateTagsAutomatically = (
             beforeSectionContainerRef.current
         ) {
             // @ts-ignore
-            observer = new ResizeObserver(entries => {
+            observer = new ResizeObserver((entries) => {
                 const [tagContainer, tagWrapper] = entries;
 
                 if (!tagContainer || !tagWrapper) {
                     return;
                 }
 
-                const {
-                    width: containerNodeWidth,
-                } = tagContainer.target.getBoundingClientRect();
+                const { width: containerNodeWidth } =
+                    tagContainer.target.getBoundingClientRect();
 
-                const {
-                    width: wrapperNodeWidth,
-                    height: wrapperNodeHeight,
-                } = tagWrapper.target.getBoundingClientRect();
+                const { width: wrapperNodeWidth, height: wrapperNodeHeight } =
+                    tagWrapper.target.getBoundingClientRect();
 
                 const cumulativeMaxWidth =
                     wrapperNodeWidth + BUFFER_TAGS_WIDTH * 2;

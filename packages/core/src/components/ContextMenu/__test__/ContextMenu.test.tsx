@@ -55,7 +55,7 @@ describe('<ContextMenu />', () => {
     });
 
     // todo: fix this
-    it.skip('should support custom theme', () => {
+    it.skip('should support component override', () => {
         let tree = renderer
             .create(<ContextMenu open>With custom theme</ContextMenu>)
             .toJSON();

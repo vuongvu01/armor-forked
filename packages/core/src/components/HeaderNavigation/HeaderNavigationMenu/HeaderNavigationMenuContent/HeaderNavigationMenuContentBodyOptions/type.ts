@@ -36,4 +36,5 @@ type HeaderNavigationMenuContentHeaderEffectivePropsType = {
 } & HTMLAttributes<HTMLElement> &
     MarginPropsType;
 
-export type HeaderNavigationMenuContentBodyOptionsPropsType = HeaderNavigationMenuContentHeaderEffectivePropsType;
+export type HeaderNavigationMenuContentBodyOptionsPropsType =
+    HeaderNavigationMenuContentHeaderEffectivePropsType;

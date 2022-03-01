@@ -25,7 +25,6 @@ export const LoginPageRoot = styled.div.withConfig(
 )<LoginPageRootPropsType>`
     ${reset};
     ${typography('paragraphMedium')};
-
     min-height: ${spacing(192)};
     min-width: ${spacing(256)};
     height: 100%;

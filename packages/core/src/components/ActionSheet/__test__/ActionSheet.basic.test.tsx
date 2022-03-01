@@ -38,9 +38,9 @@ describe('<ActionSheet />', () => {
         expect(ActionSheet).toSupportRestPropsForwarding('ActionSheet');
     });
 
-    it('should support custom theme', () => {
+    it('should support component override', () => {
         // @ts-ignore
-        expect(<ActionSheet>Hello</ActionSheet>).toSupportCustomTheme(
+        expect(<ActionSheet>Hello</ActionSheet>).toSupportOverride(
             'ActionSheet',
         );
     });

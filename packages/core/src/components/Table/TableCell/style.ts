@@ -210,9 +210,9 @@ const Wrapper = ({
 }) => children({ ...restProps });
 
 /** 👉 ROOT ELEMENT */
-export const TableCellRoot = styled(Wrapper).withConfig(propsBlocker)<
-    TableCellRootPropsType
->`
+export const TableCellRoot = styled(Wrapper).withConfig(
+    propsBlocker,
+)<TableCellRootPropsType>`
     box-sizing: border-box;
 
     text-align: left;

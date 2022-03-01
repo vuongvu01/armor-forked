@@ -30,10 +30,11 @@ export type UseHeaderNavigationMenuPropsType = Partial<{
     setIsExpanded?: (isExpanded: boolean) => void;
 }>;
 
-export type HeaderNavigationMenuPropsType = HeaderNavigationMenuEffectivePropsType;
+export type HeaderNavigationMenuPropsType =
+    HeaderNavigationMenuEffectivePropsType;
 
-export type HeaderNavigationMenuRootPropsType = HeaderNavigationMenuEffectivePropsType &
-    ComponentElementStylePropsType;
+export type HeaderNavigationMenuRootPropsType =
+    HeaderNavigationMenuEffectivePropsType & ComponentElementStylePropsType;
 
 export type HeaderNavigationMenuContentContainerPropsType = {
     isExpanded?: boolean;

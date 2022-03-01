@@ -28,12 +28,8 @@ export const DatePickerDaySelector = forwardRef<
         className,
     );
 
-    const {
-        rootProps,
-        weekDays,
-        dayMatrix,
-        getDayProps,
-    } = useDatePickerDaySelector(props, ref);
+    const { rootProps, weekDays, dayMatrix, getDayProps } =
+        useDatePickerDaySelector(props, ref);
 
     return (
         <DatePickerDaySelectorRoot
@@ -45,7 +41,7 @@ export const DatePickerDaySelector = forwardRef<
                 theme={theme}
                 className={classNameComponents.Week}
             >
-                {weekDays.map(weekDay => (
+                {weekDays.map((weekDay) => (
                     <DatePickerDaySelectorWeekDay
                         key={weekDay.value}
                         theme={theme}
@@ -59,7 +55,7 @@ export const DatePickerDaySelector = forwardRef<
                 theme={theme}
                 className={classNameComponents.Days}
             >
-                {dayMatrix.map(day => (
+                {dayMatrix.map((day) => (
                     <DatePickerDaySelectorDay
                         key={day.id}
                         {...getDayProps(day, classNameComponents.Day)}

@@ -10,6 +10,8 @@ import {
     zIndexSearchSuggestionsList,
     durationNormal,
     focusWithin,
+    transition,
+    token,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -22,11 +24,12 @@ import { TextInput } from '../TextInput';
 const searchSuggestionsContainerStyle = ({
     searchQuery,
     suggestionListHeight,
-    theme: {
-        componentOverrides: { Search },
-    },
 }: SearchSuggestionsContainerPropsType) => {
-    let result = Search.SearchSuggestionsContainer.base;
+    let result = css`
+        box-shadow: ${token('elevation.medium')};
+        margin-top: ${spacing(1)};
+        margin-bottom: ${spacing(1)};
+    `;
 
     if (suggestionListHeight) {
         result = css`
@@ -39,19 +42,11 @@ const searchSuggestionsContainerStyle = ({
         result = css`
             ${result};
             height: fit-content;
-            transition: max-height ${durationNormal}ms ease;
+            ${transition({ 'max-height': true })};
         `;
     }
 
     return result;
-};
-
-const searchTextInputStyle = ({
-    theme: {
-        componentOverrides: { Search },
-    },
-}: SearchRootPropsType) => {
-    return Search.TextInput.base;
 };
 
 /** 👉 ROOT ELEMENT */
@@ -63,11 +58,9 @@ export const SearchRoot = styled.div.withConfig(
     display: inline-block;
     flex-flow: row nowrap;
     position: relative;
-
+    ${getComponentOverride('Search')};
     ${marginProps};
     ${widthProps};
-
-    ${getComponentOverride('Search')};
 `;
 
 export const SearchSuggestionsContainer = styled.div.withConfig(
@@ -83,7 +76,6 @@ export const SearchSuggestionsContainer = styled.div.withConfig(
     position: absolute;
     transition: ${durationNormal}ms;
     z-index: ${zIndexSearchSuggestionsList};
-
     ${searchSuggestionsContainerStyle};
 `;
 
@@ -95,7 +87,7 @@ export const SearchSuggestionsListContainer = styled.div.withConfig(
 `;
 
 export const SearchTextInput = styled(TextInput)<SearchRootPropsType>`
-    ${searchTextInputStyle};
+    font-weight: ${token('typography.paragraphMedium.fontWeight')};
     ${({ disabled, error }) =>
         focusWithin({ disabled, error, noOutline: true })};
 `;

@@ -30,7 +30,7 @@ export const useDataTableExpandableSections = (
             controllers[expandableSectionControllerColumnId] = true;
         }
 
-        columnsSafe.forEach(column => {
+        columnsSafe.forEach((column) => {
             if (column.expandableSectionController) {
                 controllers[column.id] = true;
             }
@@ -63,10 +63,8 @@ export const useDataTableExpandableSections = (
         reallyEnableExpandableSections = enableExpandableSections;
     }
 
-    const [
-        expandedSectionIdsInternal,
-        setExpandedSectionIdsInternal,
-    ] = useState<ScalarType[]>(defaultExpandedSectionIds || []); // controllable & uncontrollable
+    const [expandedSectionIdsInternal, setExpandedSectionIdsInternal] =
+        useState<ScalarType[]>(defaultExpandedSectionIds || []); // controllable & uncontrollable
     const expandedSectionIdsActual =
         expandedSectionIds || expandedSectionIdsInternal;
 
@@ -99,7 +97,7 @@ export const useDataTableExpandableSections = (
 
             onExpansionChangeInternal(
                 expanded
-                    ? expandedSectionIdsActual.filter(id => id !== rowId)
+                    ? expandedSectionIdsActual.filter((id) => id !== rowId)
                     : [rowId, ...expandedSectionIdsActual],
             );
         },

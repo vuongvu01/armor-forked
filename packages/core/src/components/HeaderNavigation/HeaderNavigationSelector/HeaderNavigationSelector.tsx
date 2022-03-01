@@ -28,7 +28,7 @@ export const HeaderNavigationSelector = forwardRef<
     HTMLDivElement,
     HeaderNavigationSelectorPropsType
 >(function HeaderNavigationSelector({ className, ...restProps }, ref) {
-    const theme = useTheme().armor;
+    const theme = useTheme().armor; // todo: fix this
 
     const classOverride = useHeaderNavigationSelectorClassName(
         HEADER_NAVIGATION_SELECTOR_CLASS_PREFIX,

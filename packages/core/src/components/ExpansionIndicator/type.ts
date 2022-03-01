@@ -35,8 +35,8 @@ export type ExpansionIndicatorEffectivePropsType = Partial<{
 
 export type ExpansionIndicatorPropsType = ExpansionIndicatorEffectivePropsType;
 
-export type ExpansionIndicatorRootPropsType = ExpansionIndicatorEffectivePropsType &
-    ComponentElementStylePropsType;
+export type ExpansionIndicatorRootPropsType =
+    ExpansionIndicatorEffectivePropsType & ComponentElementStylePropsType;
 
 export type ExpansionIndicatorContentPropsType = ComponentElementStylePropsType;
 

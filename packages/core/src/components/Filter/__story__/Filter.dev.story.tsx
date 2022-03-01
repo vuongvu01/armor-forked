@@ -199,7 +199,7 @@ const enumConditionTypes = [
         ],
         dropdownAttributes: {
             enableSearchOption: true,
-            renderItemAdditionalInfo: item =>
+            renderItemAdditionalInfo: (item) =>
                 new Intl.NumberFormat().format(
                     (item as OptionObjectType).price,
                 ),
@@ -491,7 +491,7 @@ export const FieldDependency = () => {
                     enableCloseOnApply={false}
                     value={filterValue}
                     onValueChange={setFilterValue}
-                    onValueCandidateChange={valueCandidate => {
+                    onValueCandidateChange={(valueCandidate) => {
                         if (valueCandidate && valueCandidate.conditions) {
                             const val = valueCandidate.conditions![0].value;
                             setCandyVisibility(val === 'candy');

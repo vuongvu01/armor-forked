@@ -7,7 +7,6 @@ import {
     HEADER_NAVIGATION_ITEM_CLASS_PREFIX,
     headerNavigationItemRoot,
 } from './constants';
-import { headerNavigationItemDefaultTheme } from './theme';
 import { useHeaderNavigationItemClassName } from './hooks';
 
 /**
@@ -16,10 +15,7 @@ import { useHeaderNavigationItemClassName } from './hooks';
 export const HeaderNavigationItem: FunctionComponent<
     HeaderNavigationItemPropsType
 > = ({ className, ...restProps }) => {
-    const theme = useComponentTheme(
-        HEADER_NAVIGATION_ITEM_CLASS_PREFIX,
-        headerNavigationItemDefaultTheme,
-    );
+    const theme = useComponentTheme(HEADER_NAVIGATION_ITEM_CLASS_PREFIX);
 
     const classOverride = useHeaderNavigationItemClassName(
         HEADER_NAVIGATION_ITEM_CLASS_PREFIX,

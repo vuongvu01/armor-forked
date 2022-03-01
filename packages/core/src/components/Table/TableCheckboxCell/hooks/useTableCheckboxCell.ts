@@ -23,7 +23,8 @@ export const useTableCheckboxCell = <E extends HTMLTableCellElement>(
         rootProps: {
             'data-testid': tableCheckboxCellRootTestId,
             ...restProps,
-            contentAlignX: 'center' as TableCellEffectivePropsType['contentAlignX'],
+            contentAlignX:
+                'center' as TableCellEffectivePropsType['contentAlignX'],
             ref,
             isHeader,
         },

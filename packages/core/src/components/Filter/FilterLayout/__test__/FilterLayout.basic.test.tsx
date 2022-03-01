@@ -41,9 +41,9 @@ describe('<FilterLayout />', () => {
         expect(FilterLayout).toSupportRestPropsForwarding('FilterLayout');
     });
 
-    it('should support custom theme', () => {
+    it('should support component override', () => {
         // @ts-ignore
-        expect(<FilterLayout>Hello</FilterLayout>).toSupportCustomTheme(
+        expect(<FilterLayout>Hello</FilterLayout>).toSupportOverride(
             'FilterLayout',
         );
     });

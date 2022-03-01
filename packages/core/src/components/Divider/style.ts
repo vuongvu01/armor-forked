@@ -22,9 +22,9 @@ const getOrientationStyle = ({ vertical }: DividerRootPropsType) => {
 };
 
 /** 👉 ROOT ELEMENT */
-export const DividerRoot = styled.div.withConfig(propsBlocker)<
-    DividerRootPropsType
->`
+export const DividerRoot = styled.div.withConfig(
+    propsBlocker,
+)<DividerRootPropsType>`
     ${reset};
     background-color: ${color('neutral.03')};
     ${getOrientationStyle};

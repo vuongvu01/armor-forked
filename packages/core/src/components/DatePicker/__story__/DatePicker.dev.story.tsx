@@ -101,7 +101,7 @@ export const WithDisabledDates = () => {
             dateValue={value}
             onDateValueChange={setValue}
             allowedDateRanges={allowedDateRanges}
-            onDayMouseEnter={date => {
+            onDayMouseEnter={(date) => {
                 console.log(date);
             }}
         />

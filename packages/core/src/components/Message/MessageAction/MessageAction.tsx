@@ -5,7 +5,6 @@ import { useComponentTheme } from '@deliveryhero/armor-system';
 import { useMessageActionClassNames } from './hooks/useMessageActionClassNames';
 import { MessageActionRoot } from './style';
 import { MessageActionPropsType } from './type';
-import { messageActionDefaultTheme } from './theme';
 import { MESSAGE_ACTION_CLASS_PREFIX } from './constants';
 import { ButtonPropsType } from '../../Button/type';
 
@@ -18,10 +17,7 @@ export const MessageAction: FunctionComponent<MessageActionPropsType> = ({
     children,
     ...restProps
 }) => {
-    const theme = useComponentTheme(
-        MESSAGE_ACTION_CLASS_PREFIX,
-        messageActionDefaultTheme,
-    );
+    const theme = useComponentTheme(MESSAGE_ACTION_CLASS_PREFIX);
 
     const classNameComponents = useMessageActionClassNames(
         MESSAGE_ACTION_CLASS_PREFIX,

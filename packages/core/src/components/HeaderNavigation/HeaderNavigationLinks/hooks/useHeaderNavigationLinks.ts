@@ -10,13 +10,11 @@ export const useHeaderNavigationLinks = ({
     pathname,
     ...restProps
 }: HeaderNavigationLinksPropsType) => {
-    const headerNavigationLinksContextValue = useMemo<
-        HeaderNavigationLinksContextType
-    >(() => ({ onLinkClick, locationTracking, pathname }), [
-        onLinkClick,
-        locationTracking,
-        pathname,
-    ]);
+    const headerNavigationLinksContextValue =
+        useMemo<HeaderNavigationLinksContextType>(
+            () => ({ onLinkClick, locationTracking, pathname }),
+            [onLinkClick, locationTracking, pathname],
+        );
 
     return {
         result: {

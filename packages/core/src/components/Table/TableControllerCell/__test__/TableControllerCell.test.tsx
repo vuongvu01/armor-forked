@@ -8,16 +8,12 @@
  */
 
 import React, { useRef } from 'react';
-import { ThemeProvider } from 'styled-components';
-
 import { cleanup, render } from '@testing-library/react';
 import {
     renderHook,
     cleanup as cleanupHooks,
 } from '@testing-library/react-hooks';
-import renderer from 'react-test-renderer';
 
-import { customTheme } from './helpers';
 import { TableControllerCell } from '..';
 
 describe('<TableControllerCell />', () => {
@@ -53,7 +49,7 @@ describe('<TableControllerCell />', () => {
         expect(TableControllerCell).toSupportRestPropsForwarding(
             'TableControllerCell',
             // @ts-ignore
-            children => (
+            (children) => (
                 <table>
                     <tbody>
                         <tr>{children}</tr>
@@ -63,26 +59,11 @@ describe('<TableControllerCell />', () => {
         );
     });
 
-    it('should support custom theme', () => {
-        let tree = renderer
-            .create(
-                <TableControllerCell>With custom theme</TableControllerCell>,
-            )
-            .toJSON();
-
-        // @ts-ignore
-        expect(tree).not.toHaveStyleRule('border-width', '2px');
-
-        tree = renderer
-            .create(
-                <ThemeProvider theme={customTheme}>
-                    <TableControllerCell>With custom theme</TableControllerCell>
-                </ThemeProvider>,
-            )
-            .toJSON();
-
-        // @ts-ignore
-        expect(tree).toHaveStyleRule('border-width', '2px');
+    it('should support component override', () => {
+        expect(
+            <TableControllerCell>With custom theme</TableControllerCell>,
+            // @ts-ignore
+        ).toSupportOverride('TableControllerCell');
     });
 
     it('should support padding properties', async () => {

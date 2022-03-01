@@ -53,7 +53,7 @@ describe('<EditableTableCell />', () => {
     //     expect(result.current.current).toBeInstanceOf(HTMLElement);
     // });
     //
-    // it('should support custom theme', () => {
+    // it('should support component override', () => {
     //     let tree = renderer
     //         .create(<EditableTableCell>With custom theme</EditableTableCell>)
     //         .toJSON();

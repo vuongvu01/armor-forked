@@ -9,7 +9,6 @@ import {
     DialogTitleText,
 } from './style';
 import { DialogTitlePropsType } from './type';
-import { dialogTitleDefaultTheme } from './theme';
 import { DIALOG_TITLE_CLASS_PREFIX, dialogTitleText } from './constants';
 
 const CLASS_PREFIX = 'DialogTitle';
@@ -23,10 +22,7 @@ export const DialogTitle: FunctionComponent<DialogTitlePropsType> = ({
     description,
     ...restProps
 }) => {
-    const theme = useComponentTheme(
-        DIALOG_TITLE_CLASS_PREFIX,
-        dialogTitleDefaultTheme,
-    );
+    const theme = useComponentTheme(DIALOG_TITLE_CLASS_PREFIX);
 
     const classNameComponents = useDialogTitleClassNames(
         CLASS_PREFIX,

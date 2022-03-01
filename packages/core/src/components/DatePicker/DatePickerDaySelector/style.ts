@@ -19,9 +19,9 @@ import {
 } from './type';
 
 /** 👉 ROOT ELEMENT */
-export const DatePickerDaySelectorRoot = styled.div.withConfig(propsBlocker)<
-    DatePickerDaySelectorRootPropsType
->`
+export const DatePickerDaySelectorRoot = styled.div.withConfig(
+    propsBlocker,
+)<DatePickerDaySelectorRootPropsType>`
     ${reset};
     ${typography('paragraphMedium')};
     padding: ${spacing(4)};
@@ -59,9 +59,9 @@ export const DatePickerDaySelectorDays = styled.div.withConfig(propsBlocker)`
     margin: 0 ${spacing(-0.5)};
 `;
 
-export const DatePickerDaySelectorDay = styled.div.withConfig(propsBlocker)<
-    DatePickerDaySelectorDayPropsType
->`
+export const DatePickerDaySelectorDay = styled.div.withConfig(
+    propsBlocker,
+)<DatePickerDaySelectorDayPropsType>`
     display: flex;
 `;
 
@@ -153,9 +153,9 @@ const getDayButtonStyle = ({
     return result;
 };
 
-export const DatePickerDaySelectorDayButton = styled.a.withConfig(propsBlocker)<
-    DatePickerDaySelectorDayButtonPropsType
->`
+export const DatePickerDaySelectorDayButton = styled.a.withConfig(
+    propsBlocker,
+)<DatePickerDaySelectorDayButtonPropsType>`
     width: ${spacing(10)};
     height: ${spacing(10)};
     color: ${color('neutral.11')};

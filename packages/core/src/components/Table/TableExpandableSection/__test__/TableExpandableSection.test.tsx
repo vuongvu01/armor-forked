@@ -8,24 +8,12 @@
  */
 
 import React, { useRef } from 'react';
-import { ThemeProvider } from 'styled-components';
-
-import {
-    // fireEvent,
-    cleanup,
-    render,
-    // prettyDOM,
-    // wait,
-    // waitForElement,
-} from '@testing-library/react';
+import { cleanup, render } from '@testing-library/react';
 import {
     renderHook,
     cleanup as cleanupHooks,
 } from '@testing-library/react-hooks';
-import renderer from 'react-test-renderer';
-// import userEvent from '@testing-library/user-event';
 
-import { customTheme } from './helpers';
 import { TableExpandableSection } from '..';
 
 describe('<TableExpandableSection />', () => {
@@ -55,29 +43,10 @@ describe('<TableExpandableSection />', () => {
         expect(result.current.current).toBeInstanceOf(HTMLElement);
     });
 
-    it('should support custom theme', () => {
-        let tree = renderer
-            .create(
-                <TableExpandableSection>
-                    With custom theme
-                </TableExpandableSection>,
-            )
-            .toJSON();
-
-        // @ts-ignore
-        expect(tree).not.toHaveStyleRule('border-width', '2px');
-
-        tree = renderer
-            .create(
-                <ThemeProvider theme={customTheme}>
-                    <TableExpandableSection>
-                        With custom theme
-                    </TableExpandableSection>
-                </ThemeProvider>,
-            )
-            .toJSON();
-
-        // @ts-ignore
-        expect(tree).toHaveStyleRule('border-width', '2px');
+    it('should support component override', () => {
+        expect(
+            <TableExpandableSection>With custom theme</TableExpandableSection>,
+            // @ts-ignore
+        ).toSupportOverride('TableExpandableSection');
     });
 });

@@ -16,8 +16,8 @@ type FilterEditorActionsEffectivePropsType = Partial<{
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div properties
     MarginPropsType;
 
-export type FilterEditorActionsPropsType = FilterEditorActionsEffectivePropsType &
-    ComponentStylePropsType;
+export type FilterEditorActionsPropsType =
+    FilterEditorActionsEffectivePropsType & ComponentStylePropsType;
 
-export type FilterEditorActionsRootPropsType = FilterEditorActionsEffectivePropsType &
-    ComponentElementStylePropsType;
+export type FilterEditorActionsRootPropsType =
+    FilterEditorActionsEffectivePropsType & ComponentElementStylePropsType;

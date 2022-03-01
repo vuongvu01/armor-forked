@@ -23,9 +23,8 @@ export const useCommonDatePickerState = <V>(
         DatePickerEffectiveCommonPropsType,
 ) => {
     // the date range touched (pre-selected) by a user. It keeps the value until a user mashes "Ok"
-    const [dirtyInternalValueVector, setDirtyInternalValueVector] = useState<
-        DateVectorRange
-    >(internalValue.clone());
+    const [dirtyInternalValueVector, setDirtyInternalValueVector] =
+        useState<DateVectorRange>(internalValue.clone());
     useEffect(() => {
         setDirtyInternalValueVector(internalValue.clone());
     }, [internalValue]);
@@ -48,25 +47,19 @@ export const useCommonDatePickerState = <V>(
             : currentDateVector.clone(),
     );
 
-    const [timeSelectorValue, setTimeSelectorValue] = useDerivedState<
-        TimeVector24
-    >(
-        () =>
-            dirtyInternalValueVector.dateStart
-                ? TimeVector24.createFromDateVector(
-                      dirtyInternalValueVector.dateStart,
-                  )
-                : currentTimeVector,
-        [dirtyInternalValueVector, currentTimeVector],
-    );
+    const [timeSelectorValue, setTimeSelectorValue] =
+        useDerivedState<TimeVector24>(
+            () =>
+                dirtyInternalValueVector.dateStart
+                    ? TimeVector24.createFromDateVector(
+                          dirtyInternalValueVector.dateStart,
+                      )
+                    : currentTimeVector,
+            [dirtyInternalValueVector, currentTimeVector],
+        );
 
-    const [
-        monthYearSelectorOpen,
-        ,
-        ,
-        ,
-        onMonthYearSelectorToggle,
-    ] = useFlagState(defaultMonthYearSelectorOpen);
+    const [monthYearSelectorOpen, , , , onMonthYearSelectorToggle] =
+        useFlagState(defaultMonthYearSelectorOpen);
 
     return {
         dirtyInternalValueVector,

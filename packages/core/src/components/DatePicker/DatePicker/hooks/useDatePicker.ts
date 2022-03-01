@@ -68,14 +68,11 @@ export const useDatePicker = <E extends HTMLDivElement>(
         props,
     );
 
-    const {
-        isDateAllowed,
-        isDateFree,
-        isDateSelectable,
-    } = useCommonDatePickerAllowedDates<DateValueType>(
-        { dropdownOpen, currentDateVector },
-        props,
-    );
+    const { isDateAllowed, isDateFree, isDateSelectable } =
+        useCommonDatePickerAllowedDates<DateValueType>(
+            { dropdownOpen, currentDateVector },
+            props,
+        );
 
     const {
         onDateTimeChange,
@@ -104,19 +101,16 @@ export const useDatePicker = <E extends HTMLDivElement>(
         props,
     );
 
-    const {
-        showActions,
-        actionBarProps,
-        enableCloseOnSelect,
-    } = useCommonDatePickerActionButtons(
-        {
-            applyValue,
-            clearValue,
-            closeDropdown,
-            enableApplyButton,
-        },
-        props,
-    );
+    const { showActions, actionBarProps, enableCloseOnSelect } =
+        useCommonDatePickerActionButtons(
+            {
+                applyValue,
+                clearValue,
+                closeDropdown,
+                enableApplyButton,
+            },
+            props,
+        );
 
     const selectionEventProps = useDatePickerSelectionEvents(
         {

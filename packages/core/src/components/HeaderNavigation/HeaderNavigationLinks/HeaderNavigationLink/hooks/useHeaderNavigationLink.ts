@@ -12,11 +12,8 @@ export const useHeaderNavigationLink = ({
     isActive,
     ...restProps
 }: HeaderNavigationLinkHookPropsType) => {
-    const {
-        onLinkClick,
-        locationTracking,
-        pathname,
-    } = headerNavigationLinksContext;
+    const { onLinkClick, locationTracking, pathname } =
+        headerNavigationLinksContext;
 
     const handleLinkClick = useCallback(
         (event: MouseEvent<HTMLElement>) => {

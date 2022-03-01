@@ -45,7 +45,7 @@ describe('<DataTable />', () => {
                 <DataTable
                     columns={expandableSectionColumns}
                     data={dataSource}
-                    renderExpandableSection={item => (
+                    renderExpandableSection={(item) => (
                         <span>
                             {item.name} lives in {item.address}
                         </span>

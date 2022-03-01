@@ -28,9 +28,9 @@ const packItemSearchStyle = ({
 
 // TODO (nmelnikov 2020-10-14): update this logic once this PR lands:
 // https://github.com/deliveryhero/armor/pull/270
-export const NavigationItemSearch = styled(HeaderNavigationItem)<
-    HeaderNavigationSearchRootPropsType
->`
+export const NavigationItemSearch = styled(
+    HeaderNavigationItem,
+)<HeaderNavigationSearchRootPropsType>`
     padding-top: 0;
     padding-bottom: 0;
     height: 48px;
@@ -46,9 +46,9 @@ export const NavigationItemSearch = styled(HeaderNavigationItem)<
 // TODO (nmelnikov 2020-10-14): update this logic once this PR lands:
 // https://github.com/deliveryhero/armor/pull/270
 /** 👉 ROOT ELEMENT */
-export const HeaderNavigationSearchRoot = styled(Search)<
-    HeaderNavigationSearchRootPropsType
->`
+export const HeaderNavigationSearchRoot = styled(
+    Search,
+)<HeaderNavigationSearchRootPropsType>`
     .TextInput-Root {
         margin-top: 4px;
         height: 40px;

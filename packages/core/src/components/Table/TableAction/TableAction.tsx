@@ -4,7 +4,6 @@ import { useComponentTheme } from '@deliveryhero/armor-system';
 import { useTableActionClassNames } from './hooks/useTableActionClassNames';
 import { TableActionRoot } from './style';
 import { TableActionPropsType } from './type';
-import { tableActionDefaultTheme } from './theme';
 import { tableActionRootTestId, TABLE_ACTION_CLASS_PREFIX } from './constants';
 
 /**
@@ -12,10 +11,7 @@ import { tableActionRootTestId, TABLE_ACTION_CLASS_PREFIX } from './constants';
  */
 export const TableAction = forwardRef<HTMLDivElement, TableActionPropsType>(
     function TableAction({ className, ...restProps }, ref) {
-        const theme = useComponentTheme(
-            TABLE_ACTION_CLASS_PREFIX,
-            tableActionDefaultTheme,
-        );
+        const theme = useComponentTheme(TABLE_ACTION_CLASS_PREFIX);
         const classNameComponents = useTableActionClassNames(
             TABLE_ACTION_CLASS_PREFIX,
             className,

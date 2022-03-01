@@ -3,7 +3,6 @@ import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { SelectorLabelRoot } from './style';
 import { SelectorLabelEffectivePropsType } from './type';
-import selectorLabelDefaultTheme from './theme';
 import { useSelectorLabelClassName } from './utils';
 import { Typography } from '../Typography';
 import { SELECTOR_LABEL_CLASS_PREFIX } from './constants';
@@ -16,10 +15,7 @@ export const SelectorLabel: FC<SelectorLabelEffectivePropsType> = ({
     disabled,
     typographyProps,
 }) => {
-    const theme = useComponentTheme(
-        SELECTOR_LABEL_CLASS_PREFIX,
-        selectorLabelDefaultTheme,
-    );
+    const theme = useComponentTheme(SELECTOR_LABEL_CLASS_PREFIX);
 
     const classOverride = useSelectorLabelClassName(
         SELECTOR_LABEL_CLASS_PREFIX,

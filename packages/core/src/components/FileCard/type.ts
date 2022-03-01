@@ -16,10 +16,10 @@ type FileCardEffectivePropsType = Partial<{
     fileSize: number;
     /** Can either use the image url or blob format */
     imageSrc: string | Blob;
-    /** Handle event when clicking on the Cancel button (cross icon) */
-    onCancelButtonClick: (id: string) => void;
-    /** Handle event when clicking on the Delete button (trash icon) */
-    onDeleteButtonClick: (id: string) => void;
+    /** Handle event when clicking on the Cancel button (cross icon) and fileId is set */
+    onCancelButtonClick: (fileId: string) => void;
+    /** Handle event when clicking on the Delete button (trash icon) and fileId is set */
+    onDeleteButtonClick: (fileId: string) => void;
     /** If set to true, renders the component as in the error state */
     error: boolean;
     /** Show error message in error state */

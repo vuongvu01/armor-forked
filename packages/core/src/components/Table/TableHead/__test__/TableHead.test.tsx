@@ -1,17 +1,13 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
 import React, { useRef } from 'react';
-import { ThemeProvider } from 'styled-components';
 
 import { cleanup, render } from '@testing-library/react';
 import {
     renderHook,
     cleanup as cleanupHooks,
 } from '@testing-library/react-hooks';
-import renderer from 'react-test-renderer';
-// import userEvent from '@testing-library/user-event';
 
-import { customTheme } from './helpers';
 import { TableHead } from '../..';
 
 describe('<TableHead />', () => {
@@ -52,29 +48,12 @@ describe('<TableHead />', () => {
         expect(result.current.current).toBeInstanceOf(HTMLElement);
     });
 
-    it('should support custom theme', () => {
-        let tree = renderer
-            .create(
-                <table>
-                    <TableHead>With custom theme</TableHead>
-                </table>,
-            )
-            .toJSON();
-
-        // @ts-ignore
-        expect(tree.children[0]).not.toHaveStyleRule('border-width', '2px');
-
-        tree = renderer
-            .create(
-                <ThemeProvider theme={customTheme}>
-                    <table>
-                        <TableHead>With custom theme</TableHead>
-                    </table>
-                </ThemeProvider>,
-            )
-            .toJSON();
-
-        // @ts-ignore
-        expect(tree.children[0]).toHaveStyleRule('border-width', '2px');
+    it('should support component override', () => {
+        expect(
+            <table>
+                <TableHead>With custom theme</TableHead>
+            </table>,
+            // @ts-ignore
+        ).toSupportOverride('TableHead', (tree) => tree.children[0]);
     });
 });

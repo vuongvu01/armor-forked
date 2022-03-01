@@ -47,8 +47,8 @@ export const useTableHead = <E extends HTMLTableSectionElement>(
                     return;
                 }
 
-                const headerTop = rootReference.current.getBoundingClientRect()
-                    .top;
+                const headerTop =
+                    rootReference.current.getBoundingClientRect().top;
                 const cellTop = firstCell.getBoundingClientRect().top;
 
                 const differentLevels = headerTop !== cellTop;

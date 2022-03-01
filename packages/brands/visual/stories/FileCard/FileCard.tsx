@@ -45,3 +45,14 @@ export const ErrorStateWithMessage = () => {
         />
     );
 };
+
+export const UploadImageInProgress = () => {
+    return (
+        <FileCard
+            fileName="Lorem_ipsum_dolor_sit_amet.png"
+            fileSize={10491049}
+            uploadProgress={44}
+            imageSrc="https://via.placeholder.com/300.png/09f/fffC/O%20https://placeholder.com/"
+        />
+    );
+};

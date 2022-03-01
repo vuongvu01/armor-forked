@@ -12,7 +12,6 @@ import {
     StyledCheckedIcon,
 } from './style';
 import { CheckboxPropsType } from './type';
-import { checkboxDefaultTheme } from './theme';
 import { CHECKBOX_CLASS_PREFIX, checkboxIdPrefix } from './constants';
 import { RefType } from '../../type';
 
@@ -40,10 +39,7 @@ export const Checkbox = forwardRef<
     },
     ref,
 ) {
-    const theme = useComponentTheme(
-        CHECKBOX_CLASS_PREFIX,
-        checkboxDefaultTheme,
-    );
+    const theme = useComponentTheme(CHECKBOX_CLASS_PREFIX);
     const id = generateId(propsId, checkboxIdPrefix);
 
     const classOverride = useCheckboxClassName(

@@ -12,6 +12,7 @@ const spacing = (value: ScalarType = 1, spacingFactor = 1) => {
 };
 
 export const makeSpacing = (theme: ThemeInputType): ResultType => {
+    // todo: remove this
     if (typeof theme.spacing === 'function') {
         return theme.spacing;
     }

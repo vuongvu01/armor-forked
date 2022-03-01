@@ -46,7 +46,7 @@ describe('<TableHeadCell />', () => {
         expect(result.current.current).toBeInstanceOf(HTMLElement);
     });
 
-    it('should support custom theme', () => {
+    it('should support component override', () => {
         expect(
             <table>
                 <thead>
@@ -56,10 +56,10 @@ describe('<TableHeadCell />', () => {
                 </thead>
             </table>,
             // @ts-ignore
-        ).toSupportCustomTheme(
+        ).toSupportOverride(
             'TableHeadCell',
             // @ts-ignore
-            tree => tree.children[0].children[0].children[0],
+            (tree) => tree.children[0].children[0].children[0],
         );
     });
 

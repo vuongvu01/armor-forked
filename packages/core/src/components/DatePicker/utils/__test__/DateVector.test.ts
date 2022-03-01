@@ -15,9 +15,8 @@ describe('DateVector', () => {
 
     it('should be created from a meta string', async () => {
         const localDateCurrent = makeDate(7);
-        const localDateCurrentVector = DateVector.createFromLocalDate(
-            localDateCurrent,
-        );
+        const localDateCurrentVector =
+            DateVector.createFromLocalDate(localDateCurrent);
 
         let vector = DateVector.createFromMetaString('current', {
             currentDateVector: localDateCurrentVector,

@@ -90,9 +90,9 @@ describe('<<%- component_name_pascal %> />', () => {
         expect(<%- component_name_pascal %>).toSupportRestPropsForwarding('<%- component_name_pascal %>');
     });
 
-    it('should support custom theme', () => {
+    it('should support component override', () => {
         // @ts-ignore
-        expect(<<%- component_name_pascal %>>Hello</<%- component_name_pascal %>>).toSupportCustomTheme(
+        expect(<<%- component_name_pascal %>>Hello</<%- component_name_pascal %>>).toSupportOverride(
             '<%- component_name_pascal %>',
         );
     });

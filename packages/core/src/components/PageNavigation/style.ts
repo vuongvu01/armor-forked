@@ -31,7 +31,6 @@ export const PageNavigationRoot = styled.div.withConfig(
     flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
-
     ${getComponentOverride('PageNavigation')};
     ${focus()};
     ${marginProps};

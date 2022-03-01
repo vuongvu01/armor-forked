@@ -5,7 +5,7 @@ export const calculateActiveGroupMemberCounts = (
 ) => {
     let groupMemberCounts: Record<string, number> = {};
 
-    internalOptions.forEach(member => {
+    internalOptions.forEach((member) => {
         if (member?.disabled) {
             return;
         }

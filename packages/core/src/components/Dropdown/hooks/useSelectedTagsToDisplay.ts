@@ -12,12 +12,12 @@ export const useSelectedTagsToDisplay = (
         }
 
         const internalOptionValues = internalOptions.map(
-            option => option.value,
+            (option) => option.value,
         );
 
         let matchingValueIndices: number[] = [];
 
-        internalValue.forEach(value => {
+        internalValue.forEach((value) => {
             const matchedIndex = internalOptionValues.indexOf(value);
 
             if (matchedIndex > -1) {
@@ -25,5 +25,5 @@ export const useSelectedTagsToDisplay = (
             }
         });
 
-        return matchingValueIndices.map(index => internalOptions[index]);
+        return matchingValueIndices.map((index) => internalOptions[index]);
     }, [internalValue, internalOptions]);

@@ -34,9 +34,9 @@ const getRootStyle = ({
 };
 
 // if a new node is to be created, don't forget to use shouldForwardProp similarly to this:
-export const PrimaryIconWrapperRoot = styled.div.withConfig(propsBlocker)<
-    PrimaryIconWrapperPropsType
->`
+export const PrimaryIconWrapperRoot = styled.div.withConfig(
+    propsBlocker,
+)<PrimaryIconWrapperPropsType>`
     ${reset};
     ${typography('paragraphMedium')};
 

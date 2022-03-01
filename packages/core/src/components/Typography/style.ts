@@ -6,100 +6,48 @@ import {
     textAlignmentProps,
     propsBlocker,
     getComponentOverride,
+    typography,
+    token,
+    color,
+    pixelToRemToken,
 } from '@deliveryhero/armor-system';
 
 import { TypographyRootPropsType } from './type';
+import { getTypographyName } from './utils/getTypographyName';
 
-const getRootBaseStyle = ({
-    disabled,
+const getRootStyle = ({
     error,
-    theme: {
-        componentOverrides: { Typography },
-    },
+    disabled,
+    ...props
 }: TypographyRootPropsType) => {
+    let textColor = token('body.color');
+
     if (error && disabled) {
-        return css`
-            ${Typography.Root.base} ${Typography.Root.error__disabled}
-        `;
+        textColor = color('error.lighter');
     }
 
     if (error) {
-        return css`
-            ${Typography.Root.base} ${Typography.Root.error}
-        `;
+        textColor = color('error.main');
     }
 
     if (disabled) {
-        return css`
-            ${Typography.Root.base} ${Typography.Root.disabled}
-        `;
+        textColor = color('neutral.05');
     }
 
-    return Typography.Root.base;
+    return css`
+        ${typography(getTypographyName(props))};
+        color: ${textColor};
+    `;
 };
 
-const getRootDynamicStyle = ({
-    theme,
-    pageTitle,
-    sectionTitle,
-    subSectionTitle,
-    label,
-    paragraph,
-    medium,
-    small,
-    large,
-}: TypographyRootPropsType) => {
-    const {
-        componentOverrides: {
-            Typography: { Root },
-        },
-    } = theme;
-
-    if (pageTitle) {
-        return Root.pageTitle;
-    }
-    if (sectionTitle) {
-        return Root.sectionTitle;
-    }
-    if (subSectionTitle) {
-        return Root.subSectionTitle;
-    }
-
-    if (label) {
-        if (large) {
-            return Root.label__large;
-        }
-        if (medium) {
-            return Root.label__medium;
-        }
-        if (small) {
-            return Root.label__small;
-        }
-
-        return Root.label__medium;
-    }
-
-    if (paragraph) {
-        if (large) {
-            return Root.paragraph__large;
-        }
-        if (medium) {
-            return Root.paragraph__medium;
-        }
-        if (small) {
-            return Root.paragraph__small;
-        }
-
-        return Root.paragraph__medium;
-    }
-
-    return {};
-};
-
-const getMaxLinesStyle = ({ maxLines }: TypographyRootPropsType) => {
+const getMaxLinesStyle = ({ maxLines, ...props }: TypographyRootPropsType) => {
     if (typeof maxLines !== 'undefined') {
         return css`
-            max-height: calc(var(--typography--line-height) * ${maxLines});
+            max-height: calc(
+                ${pixelToRemToken(
+                        `typography.${getTypographyName(props)}.lineHeight`,
+                    )} * ${Number(maxLines)}
+            );
             overflow-y: hidden;
         `;
     }
@@ -115,15 +63,13 @@ const Wrapper = ({
 }) => children({ ...restProps });
 
 /** 👉 ROOT ELEMENT */
-export const TypographyRoot = styled(Wrapper).withConfig(propsBlocker)<
-    TypographyRootPropsType
->`
+export const TypographyRoot = styled(Wrapper).withConfig(
+    propsBlocker,
+)<TypographyRootPropsType>`
     box-sizing: border-box;
     margin-inline-start: 0;
     margin-inline-end: 0;
-
-    ${getRootBaseStyle};
-    ${getRootDynamicStyle};
+    ${getRootStyle};
     ${getMaxLinesStyle};
     ${getComponentOverride('Typography')};
     ${marginProps};

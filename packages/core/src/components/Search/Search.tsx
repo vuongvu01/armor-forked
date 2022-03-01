@@ -1,13 +1,9 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import {
-    useComponentTheme,
-    getScalarPropType,
-} from '@deliveryhero/armor-system';
+import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useSearchClassName } from './hooks/useSearchClassName';
 import { SearchPropsType } from './type';
-import { searchTheme } from './theme';
 import { SEARCH_CLASS_PREFIX, searchRoot } from './constants';
 import {
     SearchRoot,
@@ -25,7 +21,7 @@ import { SearchClearAction } from './SearchClearAction';
  */
 export const Search = forwardRef<HTMLInputElement, SearchPropsType>(
     function Search({ className, ...restProps }, ref) {
-        const theme = useComponentTheme(SEARCH_CLASS_PREFIX, searchTheme);
+        const theme = useComponentTheme(SEARCH_CLASS_PREFIX);
 
         const {
             rootProps,

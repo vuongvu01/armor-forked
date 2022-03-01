@@ -1,9 +1,10 @@
 import { ThemeType } from '../theme';
 import { PropsWithThemeType } from './type';
 
-export const token = (name: string) => ({
-    theme,
-}: PropsWithThemeType): string => {
+export const getToken = (
+    { theme }: PropsWithThemeType,
+    name: string,
+): string => {
     if (theme) {
         const currentTheme = (theme.armor || theme) as ThemeType;
         const prefixedTokenName = `$${name}`; // todo: when get rid of theme.ts, remove also "$"
@@ -16,3 +17,8 @@ export const token = (name: string) => ({
 
     return name;
 };
+
+export const token =
+    (name: string) =>
+    (props: PropsWithThemeType): string =>
+        getToken(props, name);

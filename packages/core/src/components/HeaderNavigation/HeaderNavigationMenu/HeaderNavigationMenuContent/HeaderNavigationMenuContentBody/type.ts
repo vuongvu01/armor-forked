@@ -15,8 +15,11 @@ type HeaderNavigationMenuContentBodyEffectivePropsType = Partial<{
     HTMLAttributes<HTMLElement> &
     MarginPropsType;
 
-export type HeaderNavigationMenuContentBodyPropsType = HeaderNavigationMenuContentBodyEffectivePropsType;
+export type HeaderNavigationMenuContentBodyPropsType =
+    HeaderNavigationMenuContentBodyEffectivePropsType;
 
-export type HeaderNavigationMenuContentBodyRootPropsType = ComponentElementStylePropsType;
+export type HeaderNavigationMenuContentBodyRootPropsType =
+    ComponentElementStylePropsType;
 
-export type HeaderNavigationMenuContentBodyOptionsRootPropsType = ComponentElementStylePropsType;
+export type HeaderNavigationMenuContentBodyOptionsRootPropsType =
+    ComponentElementStylePropsType;

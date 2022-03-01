@@ -14,9 +14,8 @@ export const formatDateTimeVector = (
     const day = dateVector.formattedDay;
 
     if (enableTime) {
-        const timeVector = TimeVector24.createFromDateVector(
-            dateVector,
-        ).convertTo12();
+        const timeVector =
+            TimeVector24.createFromDateVector(dateVector).convertTo12();
 
         const { formattedHour, formattedMinute, mode } = timeVector;
 

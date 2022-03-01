@@ -265,10 +265,10 @@ export const SelectedExpandedItems = () => {
             selectedElementIds={selectedItemIds}
             expandedElementIds={expandedItemIds}
             maxWidth="300px"
-            onElementClick={id => {
+            onElementClick={(id) => {
                 if (expandedItemIds.includes(id)) {
                     setExpandedItemIds(
-                        expandedItemIds.filter(itemId => itemId !== id),
+                        expandedItemIds.filter((itemId) => itemId !== id),
                     );
                 } else {
                     setExpandedItemIds([id, ...expandedItemIds]);
@@ -304,7 +304,7 @@ export const CustomNavigation = () => {
             onElementClick={(id: string | number) => {
                 if (expandedItemIds.includes(id)) {
                     setExpandedItemIds(
-                        expandedItemIds.filter(itemId => itemId !== id),
+                        expandedItemIds.filter((itemId) => itemId !== id),
                     );
                 } else {
                     setExpandedItemIds([id, ...expandedItemIds]);

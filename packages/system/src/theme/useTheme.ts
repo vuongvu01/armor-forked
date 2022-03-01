@@ -18,9 +18,8 @@ export const useTheme = (theme?: RootThemeType): RootThemeType => {
             // if somebody provides a theme without armor sub-namespace, then we create one automatically
             if (
                 !styledComponentsTheme.armor ||
-                !styledComponentsTheme.armor.$initialized
+                !styledComponentsTheme.armor.$initialized // todo: remove this
             ) {
-                // todo: use use makeTheme() here
                 styledComponentsTheme.armor = makeArmorSubTheme(
                     styledComponentsTheme.armor,
                 );

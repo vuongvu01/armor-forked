@@ -7,7 +7,6 @@ import { SelectorLabel } from '../SelectorLabel';
 import { useRadioClassName } from './utils';
 import { RadioInput, RadioMark, RadioRoot } from './style';
 import { RadioPropsType } from './type';
-import { radioDefaultTheme } from './theme';
 import { RADIO_CLASS_PREFIX, radioIdPrefix, radioRoot } from './constants';
 
 /**
@@ -31,7 +30,7 @@ export const Radio = forwardRef<HTMLDivElement, RadioPropsType>(function Radio(
     },
     ref,
 ) {
-    const theme = useComponentTheme(RADIO_CLASS_PREFIX, radioDefaultTheme);
+    const theme = useComponentTheme(RADIO_CLASS_PREFIX);
     const id = generateId(propsId, radioIdPrefix);
     const isChecked = checked || value === selectedValue;
 

@@ -9,10 +9,9 @@ import {
 } from '../../type';
 
 /** 👉 PROPS TYPE */
-export type DatePickerEffectivePropsType = DatePickerEffectiveGenericPropsType<
-    DateValueType
-> &
-    DatePickerEffectiveCommonPropsType;
+export type DatePickerEffectivePropsType =
+    DatePickerEffectiveGenericPropsType<DateValueType> &
+        DatePickerEffectiveCommonPropsType;
 
 export type DatePickerPropsType = DatePickerEffectivePropsType &
     ComponentStylePropsType;

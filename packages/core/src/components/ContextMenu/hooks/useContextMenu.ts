@@ -80,7 +80,7 @@ export const useContextMenu = <E extends HTMLDivElement>(
             return menuElements;
         }
 
-        return menuElements.map(element => {
+        return menuElements.map((element) => {
             return {
                 ...element,
                 props: {

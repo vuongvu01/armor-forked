@@ -33,6 +33,8 @@ export type ConditionTagValueSegmentPropsType = {
     moreItems?: boolean;
 } & ComponentElementStylePropsType;
 
-export type ConditionTagCloseIconContainerPropsType = ComponentElementStylePropsType;
+export type ConditionTagCloseIconContainerPropsType =
+    ComponentElementStylePropsType;
 
-export type ConditionTagValueTailElementPropsType = ComponentElementStylePropsType;
+export type ConditionTagValueTailElementPropsType =
+    ComponentElementStylePropsType;

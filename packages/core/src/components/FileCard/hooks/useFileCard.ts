@@ -9,6 +9,7 @@ import {
     formatBytesToSize,
     getFileIconByExtension,
     convertBlobToBase64,
+    getFileNamesWithEllipsisSplit,
 } from '../utils';
 
 export const useFileCard = <E extends HTMLElement>(
@@ -34,6 +35,11 @@ export const useFileCard = <E extends HTMLElement>(
         [fileNameFull],
     );
 
+    const { nameFirstPart, nameLastPart } = useMemo(
+        () => getFileNamesWithEllipsisSplit(fileName, fileExtension),
+        [fileName, fileExtension],
+    );
+
     useEffect(() => {
         if (!imageSrc) {
             return;
@@ -55,21 +61,21 @@ export const useFileCard = <E extends HTMLElement>(
 
     return {
         rootProps: {
+            ...restProps,
             error,
             uploadProgress,
         },
         bodyProps: {
-            restProps,
             error,
             uploadProgress,
             ref: innerRef,
         },
         error,
         errorMessage,
-        isUploading: !!uploadProgress || uploadProgress === 0,
+        isUploading: (!!uploadProgress || uploadProgress === 0) && !error,
         fileSize: formatBytesToSize(fileSize),
-        fileName,
-        fileExtension,
+        fileName: nameFirstPart,
+        fileExtension: nameLastPart,
         imageSrc: internalImageSrc,
         FileIcon: getFileIconByExtension(fileExtension),
         getCancelButtonProps: () => ({

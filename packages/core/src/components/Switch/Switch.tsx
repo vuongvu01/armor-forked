@@ -6,7 +6,6 @@ import { SelectorLabel } from '../SelectorLabel';
 import { useSwitchClassName } from './hooks/useSwitchClassName';
 import { SwitchCheckboxInput, SwitchRoot, SwitchToggle } from './style';
 import { SwitchPropsType } from './type';
-import { switchDefaultTheme } from './theme';
 import { SWITCH_CLASS_PREFIX, switchIdPrefix } from './constants';
 
 /**
@@ -27,10 +26,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchPropsType>(
         },
         ref,
     ) {
-        const theme = useComponentTheme(
-            SWITCH_CLASS_PREFIX,
-            switchDefaultTheme,
-        );
+        const theme = useComponentTheme(SWITCH_CLASS_PREFIX);
         const id = generateId(propsId, switchIdPrefix);
 
         const classOverride = useSwitchClassName(

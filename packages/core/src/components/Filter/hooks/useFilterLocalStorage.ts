@@ -7,7 +7,7 @@ import { isFilterValueEmpty } from '../utils/isFilterValueEmpty';
 const win = getWindow();
 
 export const useFilterLocalStorage = <
-    F extends FilterConditionValueElementOrGroupType
+    F extends FilterConditionValueElementOrGroupType,
 >(
     filterId: string,
 ): [F | undefined, (newValue?: F) => void] => {

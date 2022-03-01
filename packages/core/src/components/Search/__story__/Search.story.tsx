@@ -23,8 +23,7 @@ const foodOptions = [
     { value: 1, label: 'Tacos', spiciness: 'Super hot and spicy option' },
     {
         value: 2,
-        label:
-            'This is a very long label that needs to be truncated with an ellipsis',
+        label: 'This is a very long label that needs to be truncated with an ellipsis',
         spiciness: 'Super hot and spicy option with extra action label',
     },
     { value: 3, label: 'Risotto', spiciness: 'Super hot and spicy option' },
@@ -273,7 +272,7 @@ const formatCampaigns = (campaignsList, query) =>
             (a, b) =>
                 Number(b.attributes.is_active) - Number(a.attributes.is_active),
         )
-        .filter(campaign => {
+        .filter((campaign) => {
             return campaign.attributes.name
                 .toLowerCase()
                 .includes(query.toLocaleLowerCase());
@@ -301,7 +300,7 @@ export const WithDeatchedResults = () => {
                 defaultQuery={search}
                 enableSuggestions={false}
             />
-            {campaignsToRender.map(campaign => (
+            {campaignsToRender.map((campaign) => (
                 <div key={campaign.attributes.name}>
                     {campaign.attributes.name}
                 </div>

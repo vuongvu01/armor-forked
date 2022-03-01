@@ -6,11 +6,10 @@ type FilterEditorSettingsContextValueType = {
     enableHeader?: boolean;
 };
 
-export const FilterEditorSettingsContext = React.createContext<
-    FilterEditorSettingsContextValueType
->({
-    // update: () => {},
-});
+export const FilterEditorSettingsContext =
+    React.createContext<FilterEditorSettingsContextValueType>({
+        // update: () => {},
+    });
 
 export const FilterEditorSettingsContextProvider =
     FilterEditorSettingsContext.Provider;

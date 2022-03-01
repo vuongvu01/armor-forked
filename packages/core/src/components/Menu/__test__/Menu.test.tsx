@@ -51,9 +51,9 @@ describe('<Menu />', () => {
         expect(result.current.current).toBeInstanceOf(HTMLElement);
     });
 
-    it('should support custom theme', () => {
+    it('should support component override', () => {
         // @ts-ignore
-        expect(<Menu>With custom theme</Menu>).toSupportCustomTheme('Menu');
+        expect(<Menu>With custom theme</Menu>).toSupportOverride('Menu');
     });
 
     it('should support margin properties', async () => {

@@ -23,13 +23,15 @@ const FileImageExtensions = [
 ];
 
 export const getFileIconByExtension = (extension = '') => {
-    if (extension === 'csv') {
+    const extensionLowerCase = extension.toLowerCase();
+
+    if (extensionLowerCase === 'csv') {
         return FileCSVIcon;
     }
-    if (extension === 'pdf') {
+    if (extensionLowerCase === 'pdf') {
         return FilePDFIcon;
     }
-    if (FileImageExtensions.includes(extension)) {
+    if (FileImageExtensions.includes(extensionLowerCase)) {
         return FileImageIcon;
     }
     return FileTextIcon;

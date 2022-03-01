@@ -20,7 +20,8 @@ type HeaderNavigationSearchEffectivePropsType = Partial<{
     HTMLAttributes<HTMLElement> &
     MarginPropsType;
 
-export type HeaderNavigationSearchPropsType = HeaderNavigationSearchEffectivePropsType;
+export type HeaderNavigationSearchPropsType =
+    HeaderNavigationSearchEffectivePropsType;
 
-export type HeaderNavigationSearchRootPropsType = HeaderNavigationSearchPropsType &
-    ComponentElementStylePropsType;
+export type HeaderNavigationSearchRootPropsType =
+    HeaderNavigationSearchPropsType & ComponentElementStylePropsType;

@@ -19,9 +19,9 @@ import { TableCell } from '../TableCell';
 import { IconButton } from '../../IconButton';
 
 /** 👉 ROOT ELEMENT */
-export const TableControllerCellRoot = styled(TableCell)<
-    TableControllerCellRootPropsType
->`
+export const TableControllerCellRoot = styled(
+    TableCell,
+)<TableControllerCellRootPropsType>`
     box-sizing: border-box;
     padding-top: ${spacing(4)};
     padding-bottom: ${spacing(4)};
@@ -31,9 +31,9 @@ export const TableControllerCellRoot = styled(TableCell)<
     ${paddingProps};
 `;
 
-export const TableControllerCellContainer = styled.div.withConfig(propsBlocker)<
-    TableControllerCellContainerPropsType
->`
+export const TableControllerCellContainer = styled.div.withConfig(
+    propsBlocker,
+)<TableControllerCellContainerPropsType>`
     box-sizing: border-box;
     display: flex;
     align-items: center;
@@ -47,9 +47,9 @@ export const TableControllerCellTrigger = styled(IconButton)`
     }
 `;
 
-export const TableControllerCellIcon = styled(ArrowDownIcon)<
-    TableControllerCellIconPropsType
->`
+export const TableControllerCellIcon = styled(
+    ArrowDownIcon,
+)<TableControllerCellIconPropsType>`
     ${transition({ transform: true, color: true })};
     ${expansion(180)};
 `;

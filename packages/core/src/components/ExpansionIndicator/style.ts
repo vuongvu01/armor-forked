@@ -31,9 +31,9 @@ const getRootStyle = ({ disabled }: ExpansionIndicatorRootPropsType) => {
 };
 
 /** 👉 ROOT ELEMENT */
-export const ExpansionIndicatorRoot = styled.div.withConfig(propsBlocker)<
-    ExpansionIndicatorRootPropsType
->`
+export const ExpansionIndicatorRoot = styled.div.withConfig(
+    propsBlocker,
+)<ExpansionIndicatorRootPropsType>`
     align-items: center;
     display: flex;
     height: 100%;
@@ -46,9 +46,9 @@ export const ExpansionIndicatorRoot = styled.div.withConfig(propsBlocker)<
     ${paddingProps};
 `;
 
-export const ExpansionIndicatorContent = styled.div.withConfig(propsBlocker)<
-    ExpansionIndicatorContentPropsType
->`
+export const ExpansionIndicatorContent = styled.div.withConfig(
+    propsBlocker,
+)<ExpansionIndicatorContentPropsType>`
     align-items: center;
     border-left-width: 1px;
     border-left-style: solid;
@@ -59,9 +59,9 @@ export const ExpansionIndicatorContent = styled.div.withConfig(propsBlocker)<
     width: 100%;
 `;
 
-export const ExpansionIndicatorIcon = styled(ArrowDownIcon)<
-    ExpansionIndicatorIconPropsType
->`
+export const ExpansionIndicatorIcon = styled(
+    ArrowDownIcon,
+)<ExpansionIndicatorIconPropsType>`
     ${transition({ transform: true })};
     ${expansion(180)};
 `;

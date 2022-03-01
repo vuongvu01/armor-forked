@@ -28,9 +28,8 @@ describe('DateVectorRange', () => {
 
     it('should support infinite initializers', async () => {
         const localDateCurrent = makeDate(7);
-        const localDateCurrentVector = DateVector.createFromLocalDate(
-            localDateCurrent,
-        );
+        const localDateCurrentVector =
+            DateVector.createFromLocalDate(localDateCurrent);
 
         const localDateA = makeDate(10);
         const localDateB = makeDate(12);
@@ -62,9 +61,8 @@ describe('DateVectorRange', () => {
 
     it('should support current date initializers', async () => {
         const localDateCurrent = makeDate(7);
-        const localDateCurrentVector = DateVector.createFromLocalDate(
-            localDateCurrent,
-        );
+        const localDateCurrentVector =
+            DateVector.createFromLocalDate(localDateCurrent);
 
         const range = DateVectorRange.createFromLocalDateAdvancedRange(
             ['current', 'current'],

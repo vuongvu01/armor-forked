@@ -124,9 +124,9 @@ export const FlexRoot = styled.div.withConfig(propsBlocker)<FlexRootPropsType>`
 `;
 
 /** 👉 ROOT ELEMENT */
-export const FlexItemRoot = styled.div.withConfig(propsBlocker)<
-    FlexItemPropsType
->`
+export const FlexItemRoot = styled.div.withConfig(
+    propsBlocker,
+)<FlexItemPropsType>`
     ${flexItemStyle}
     ${paddingProps}
     ${widthProps}

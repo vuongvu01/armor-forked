@@ -37,9 +37,10 @@ export const useFilterLayout = <E extends HTMLElement>(
         filterEditorPlacement ===
         FILTER_LAYOUT_FILTER_EDITOR_POSITION_SIDE_SHEET;
 
-    const onFilterEditorClose = useCallback(() => setReallyOpen(false), [
-        setReallyOpen,
-    ]);
+    const onFilterEditorClose = useCallback(
+        () => setReallyOpen(false),
+        [setReallyOpen],
+    );
 
     const onApplyFilterButtonClick = useCallback(
         // sometimes the Apply button is located outside of the FilterEditor component, not inside, like it is used to be

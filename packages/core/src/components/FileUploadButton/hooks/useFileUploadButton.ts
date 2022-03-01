@@ -17,6 +17,8 @@ export const useFileUploadButton = <E extends HTMLInputElement>(
         secondary,
         tertiary,
         danger,
+        multiple,
+        onFilesSelect,
         ...restProps
     }: FileUploadButtonPropsType,
     ref: RefType<E>,
@@ -25,7 +27,7 @@ export const useFileUploadButton = <E extends HTMLInputElement>(
     const internalInputRef = useRef<HTMLInputElement>(null);
 
     const handleClick = useCallback(
-        event => {
+        (event) => {
             if (!internalInputRef.current) {
                 return;
             }
@@ -48,12 +50,13 @@ export const useFileUploadButton = <E extends HTMLInputElement>(
     const handleChange = useCallback(
         (event: ChangeEvent) => {
             const target = event.target as HTMLInputElement;
-            if (onFileSelect && target) {
-                const file: File = (target.files as FileList)[0];
-                onFileSelect(file);
+            if (target) {
+                const fileList = target.files as FileList;
+                onFileSelect?.(fileList[0] as File);
+                onFilesSelect?.(Array.from(fileList));
             }
         },
-        [onFileSelect],
+        [onFileSelect, onFilesSelect],
     );
 
     return {
@@ -77,6 +80,7 @@ export const useFileUploadButton = <E extends HTMLInputElement>(
             hidden: true,
             onChange: handleChange,
             ref: internalInputRef,
+            multiple,
         },
         children,
     };

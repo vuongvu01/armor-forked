@@ -59,7 +59,7 @@ export const DatePickerMonthYearSelector = forwardRef<
                     theme={theme}
                     className={classNameComponents.List}
                 >
-                    {yearRange.map(year => (
+                    {yearRange.map((year) => (
                         <DatePickerMonthYearSelectorYear
                             theme={theme}
                             className={classNameComponents.Year}

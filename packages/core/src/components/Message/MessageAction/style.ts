@@ -1,6 +1,13 @@
 import { ReactElement } from 'react';
 import styled from 'styled-components';
-import { marginProps, propsBlocker, focus } from '@deliveryhero/armor-system';
+import {
+    marginProps,
+    propsBlocker,
+    focus,
+    token,
+    color,
+    pixelToRemToken,
+} from '@deliveryhero/armor-system';
 
 import { MessageActionRootPropsType } from './type';
 
@@ -18,9 +25,10 @@ export const MessageActionRoot = styled(Wrapper).withConfig(
     box-sizing: border-box;
     display: inline-block;
     cursor: pointer;
-
     ${focus()};
-    ${({ theme }: MessageActionRootPropsType) =>
-        theme.componentOverrides.MessageAction.Root.base}
+    font-family: ${token('typography.paragraphMedium.fontFamily')}, serif;
+    font-weight: ${token('typography.labelMedium.fontWeight')};
+    font-size: ${pixelToRemToken('typography.paragraphMedium.fontSize')};
+    color: ${color('primary.main')};
     ${marginProps};
 `;

@@ -21,7 +21,7 @@ export const useTypeIndex = (customTypes?: Array<FilterBaseConditionType>) =>
         const index: TypeIndexType = {};
 
         if (customTypes) {
-            customTypes.forEach(type => {
+            customTypes.forEach((type) => {
                 index[type.id] = type;
             });
         }

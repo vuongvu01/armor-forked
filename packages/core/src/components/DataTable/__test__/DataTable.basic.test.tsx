@@ -54,7 +54,7 @@ describe('<DataTable />', () => {
 
     it('should support headCellProps', async () => {
         const onRowSortOrderChange = jest.fn();
-        const onHeaderCellClick = jest.fn(event => {
+        const onHeaderCellClick = jest.fn((event) => {
             event.stopPropagation();
         });
 

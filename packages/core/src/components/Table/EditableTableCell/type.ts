@@ -17,5 +17,5 @@ export type EditableTableCellPropsType = EditableTableCellEffectivePropsType &
     ComponentStylePropsType;
 
 /* EditableTableCell Root node prop type */
-export type EditableTableCellRootPropsType = EditableTableCellEffectivePropsType &
-    ComponentElementStylePropsType;
+export type EditableTableCellRootPropsType =
+    EditableTableCellEffectivePropsType & ComponentElementStylePropsType;

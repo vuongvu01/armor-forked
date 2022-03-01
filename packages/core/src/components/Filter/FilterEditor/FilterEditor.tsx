@@ -54,7 +54,7 @@ export const FilterEditor = forwardRef<HTMLDivElement, FilterEditorPropsType>(
                     theme={theme}
                     className={classNames.Conditions}
                 >
-                    {schema.conditions!.map(condition => {
+                    {schema.conditions!.map((condition) => {
                         if (!condition.id) {
                             // todo: sub-filters are not currently supported
                             return null;

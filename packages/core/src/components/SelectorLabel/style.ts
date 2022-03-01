@@ -1,33 +1,42 @@
 import styled, { css } from 'styled-components';
-import { durationNormal, propsBlocker } from '@deliveryhero/armor-system';
+import {
+    color,
+    durationNormal,
+    propsBlocker,
+    spacing,
+} from '@deliveryhero/armor-system';
 
 import { SelectorLabelRootPropsType } from './type';
 
-const labelStyle = ({
-    theme: {
-        componentOverrides: { SelectorLabel },
-    },
-    disabled,
-    error,
-}: SelectorLabelRootPropsType) => {
-    let enhancements = '';
+const getStyle = ({ disabled, error }: SelectorLabelRootPropsType) => {
+    let result = css`
+        padding-left: ${spacing(4)};
+    `;
 
     if (disabled && error) {
-        enhancements = SelectorLabel.Label.disabled__error;
+        result = css`
+            ${result};
+            color: ${color('error.lighter')};
+        `;
     } else if (disabled) {
-        enhancements = SelectorLabel.Label.disabled;
+        result = css`
+            ${result};
+            color: ${color('neutral.05')};
+        `;
     } else if (error) {
-        enhancements = SelectorLabel.Label.error;
+        result = css`
+            ${result};
+            color: ${color('error.main')};
+        `;
     }
 
-    return css`${SelectorLabel.Label.base}${enhancements}`;
+    return result;
 };
 
 /** 👉 ROOT ELEMENT */
-export const SelectorLabelRoot = styled.div.withConfig(propsBlocker)<
-    SelectorLabelRootPropsType
->`
+export const SelectorLabelRoot = styled.div.withConfig(
+    propsBlocker,
+)<SelectorLabelRootPropsType>`
     transition: all ${durationNormal}ms ease;
-
-    ${labelStyle};
+    ${getStyle};
 `;

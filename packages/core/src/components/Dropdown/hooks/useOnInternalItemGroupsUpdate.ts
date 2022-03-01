@@ -16,18 +16,17 @@ export const useOnInternalItemGroupsUpdate = (
 ) =>
     useEffect(() => {
         if (enableGroupSelection) {
-            const groupMemberCounts = calculateActiveGroupMemberCounts(
-                internalOptions,
-            );
+            const groupMemberCounts =
+                calculateActiveGroupMemberCounts(internalOptions);
 
             let updatedInternalGroups: InternalItemGroupObjectType = {};
 
             if (!internalValue) {
                 setInternalGroups({});
             } else {
-                internalValue.forEach(selectedOptionId => {
+                internalValue.forEach((selectedOptionId) => {
                     const matchingOption = internalOptions.find(
-                        option => option.value === selectedOptionId,
+                        (option) => option.value === selectedOptionId,
                     );
 
                     const itemsGroupId = matchingOption?.groupId;

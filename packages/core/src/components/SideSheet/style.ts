@@ -58,17 +58,17 @@ const getWindowStyle = ({
 };
 
 /** 👉 ROOT ELEMENT */
-export const SideSheetRoot = styled.div.withConfig(propsBlocker)<
-    SideSheetRootPropsType
->`
+export const SideSheetRoot = styled.div.withConfig(
+    propsBlocker,
+)<SideSheetRootPropsType>`
     ${reset};
     ${zIndex};
     ${getComponentOverride('SideSheet')};
 `;
 
-export const SideSheetWindow = styled.div.withConfig(propsBlocker)<
-    SideSheetContainerPropsType
->`
+export const SideSheetWindow = styled.div.withConfig(
+    propsBlocker,
+)<SideSheetContainerPropsType>`
     display: flex;
     height: 100vh;
     overflow: hidden;
@@ -81,17 +81,17 @@ export const SideSheetWindow = styled.div.withConfig(propsBlocker)<
     ${getWindowStyle};
 `;
 
-export const SideSheetContent = styled.div.withConfig(propsBlocker)<
-    SideSheetContentPropsType
->`
+export const SideSheetContent = styled.div.withConfig(
+    propsBlocker,
+)<SideSheetContentPropsType>`
     display: flex;
     flex-direction: column;
     flex-grow: 1;
 `;
 
-export const SideSheetHeaderContainer = styled.div.withConfig(propsBlocker)<
-    SideSheetHeaderContainerPropsType
->`
+export const SideSheetHeaderContainer = styled.div.withConfig(
+    propsBlocker,
+)<SideSheetHeaderContainerPropsType>`
     display: flex;
     justify-content: flex-end;
     padding: ${spacing(componentSpacing06)} ${spacing(componentSpacing06)} 0

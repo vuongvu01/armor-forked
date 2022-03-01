@@ -16,9 +16,8 @@ export const useDataTableRowSorting = (
         ...restProps
     }: DataTablePropsType,
 ) => {
-    const [rowSortOrderInternal, setRowSortOrderInternal] = useState<
-        TableHeadCellRowSortOrderType
-    >(defaultRowSortOrder || []); // controllable & uncontrollable
+    const [rowSortOrderInternal, setRowSortOrderInternal] =
+        useState<TableHeadCellRowSortOrderType>(defaultRowSortOrder || []); // controllable & uncontrollable
     const rowSortOrderActual = rowSortOrder || rowSortOrderInternal;
     const onRowSortOrderChangeInternal = useCallback(
         (order: TableHeadCellRowSortOrderType) => {
@@ -44,7 +43,7 @@ export const useDataTableRowSorting = (
             }
 
             const column = columnsSafe.find(
-                columnItem => columnItem.id === columnId,
+                (columnItem) => columnItem.id === columnId,
             );
             if (!column) {
                 return;

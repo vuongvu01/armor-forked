@@ -1,46 +1,45 @@
 import styled, { css } from 'styled-components';
 import {
-    durationNormal,
     paddingProps,
     propsBlocker,
     typography,
+    spacing,
+    transition,
+    pixelToRemToken,
 } from '@deliveryhero/armor-system';
 
 import { AccordionContentRootPropsType } from './type';
 
-const accordionContentStyle = ({
-    isExpanded,
-    theme: {
-        componentOverrides: { AccordionContent },
-    },
-}: AccordionContentRootPropsType) => {
-    const base = css`
-        transition: all ${durationNormal}ms ease;
-        ${AccordionContent.Root.base};
+const getRootStyle = ({ isExpanded }: AccordionContentRootPropsType) => {
+    const result = css`
+        ${transition({ all: true })};
+        line-height: 0;
+        padding-right: ${spacing(6)};
+        padding-left: ${spacing(6)};
     `;
 
     if (isExpanded) {
         return css`
+            ${result};
             height: 100%;
             opacity: 1;
             visibility: inherit;
-            ${base}
-            ${isExpanded ? AccordionContent.Root.expanded : ''};
+            line-height: ${pixelToRemToken('typography.body.lineHeight')};
+            padding: ${spacing(6)};
         `;
     }
 
-    return base;
+    return result;
 };
 
 /** 👉 ROOT ELEMENT */
-export const AccordionContentRoot = styled.div.withConfig(propsBlocker)<
-    AccordionContentRootPropsType
->`
+export const AccordionContentRoot = styled.div.withConfig(
+    propsBlocker,
+)<AccordionContentRootPropsType>`
     height: 0;
     opacity: 0;
     visibility: hidden;
-
     ${typography('paragraphLarge')};
-    ${accordionContentStyle};
+    ${getRootStyle};
     ${paddingProps};
 `;

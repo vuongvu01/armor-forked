@@ -22,7 +22,6 @@ import {
 } from './constants';
 import HeaderNavigationMenuContentContext from '../HeaderNavigationMenuContentContext';
 import { useHeaderNavigationMenuContentBodyOptionsClassName } from './hooks';
-import { headerNavigationMenuContentBodyOptionsTheme } from './theme';
 
 const setActiveClass = (isActive: boolean) => (isActive ? 'active' : '');
 
@@ -38,7 +37,6 @@ export const HeaderNavigationMenuContentBodyOptions: FunctionComponent<
 
     const theme = useComponentTheme(
         HEADER_NAVIGATION_MENU_CONTENT_BODY_OPTIONS_CLASS_PREFIX,
-        headerNavigationMenuContentBodyOptionsTheme,
     );
 
     const classOverride = useHeaderNavigationMenuContentBodyOptionsClassName(
@@ -47,7 +45,6 @@ export const HeaderNavigationMenuContentBodyOptions: FunctionComponent<
     );
 
     const handleClick = ({
-        event,
         selectedOption,
     }: HandleOptionItemClickParamsType) => {
         if (onOptionSelect) {

@@ -39,9 +39,9 @@ describe('<ProgressBar />', () => {
         expect(ProgressBar).toSupportRestPropsForwarding('ProgressBar');
     });
 
-    it('should support custom theme', () => {
+    it('should support component override', () => {
         // @ts-ignore
-        expect(<ProgressBar>Hello</ProgressBar>).toSupportCustomTheme(
+        expect(<ProgressBar>Hello</ProgressBar>).toSupportOverride(
             'ProgressBar',
         );
     });

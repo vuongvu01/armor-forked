@@ -11,9 +11,9 @@ import {
 
 import { IndicatorRootPropsType } from './type';
 
-export const IndicatorRoot = styled.div.withConfig(propsBlocker)<
-    IndicatorRootPropsType
->`
+export const IndicatorRoot = styled.div.withConfig(
+    propsBlocker,
+)<IndicatorRootPropsType>`
     ${typography('labelSmall')};
     color: ${color('neutral.00')};
     background-color: ${color('error.main')};

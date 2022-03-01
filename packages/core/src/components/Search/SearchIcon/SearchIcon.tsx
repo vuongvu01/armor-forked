@@ -10,14 +10,13 @@ import {
 import { SearchIconPropsType } from './type';
 import { SEARCH_ICON_CLASS_PREFIX } from './constants';
 import { useSearchIconClassName } from './hooks';
-import { searchIconTheme } from './theme';
 
 export const SearchIcon: FunctionComponent<SearchIconPropsType> = ({
     className,
     isLoading,
     disabled,
 }) => {
-    const theme = useComponentTheme(SEARCH_ICON_CLASS_PREFIX, searchIconTheme);
+    const theme = useComponentTheme(SEARCH_ICON_CLASS_PREFIX);
 
     const classOverride = useSearchIconClassName(
         SEARCH_ICON_CLASS_PREFIX,

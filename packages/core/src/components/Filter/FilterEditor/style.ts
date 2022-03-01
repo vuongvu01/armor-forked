@@ -16,9 +16,9 @@ import {
 } from './type';
 
 /** 👉 ROOT ELEMENT */
-export const FilterEditorRoot = styled.div.withConfig(propsBlocker)<
-    FilterEditorRootPropsType
->`
+export const FilterEditorRoot = styled.div.withConfig(
+    propsBlocker,
+)<FilterEditorRootPropsType>`
     ${reset};
     ${typography('paragraphMedium')};
     min-width: ${spacing(75)};
@@ -56,9 +56,9 @@ const getConditionsStyle = ({ vertical }: FilterEditorConditionsPropsType) => {
     return result;
 };
 
-export const FilterEditorConditions = styled.div.withConfig(propsBlocker)<
-    FilterEditorConditionsPropsType
->`
+export const FilterEditorConditions = styled.div.withConfig(
+    propsBlocker,
+)<FilterEditorConditionsPropsType>`
     display: flex;
     ${getConditionsStyle};
 `;

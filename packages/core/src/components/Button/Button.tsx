@@ -5,7 +5,6 @@ import { useComponentTheme } from '@deliveryhero/armor-system';
 import { useButtonClassName } from './hooks/useButtonClassName';
 import { ButtonRoot } from './style';
 import { ButtonPropsType } from './type';
-import { buttonDefaultTheme } from './theme';
 import { BUTTON_CLASS_PREFIX } from './constants';
 import { useButton } from './hooks/useButton';
 
@@ -14,10 +13,7 @@ import { useButton } from './hooks/useButton';
  */
 export const Button = forwardRef<HTMLButtonElement, ButtonPropsType>(
     function Button({ className, children, ...props }, ref) {
-        const theme = useComponentTheme(
-            BUTTON_CLASS_PREFIX,
-            buttonDefaultTheme,
-        );
+        const theme = useComponentTheme(BUTTON_CLASS_PREFIX);
 
         const { rootProps, tagProps, classNameProps, Tag } = useButton(
             props,

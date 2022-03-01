@@ -15,7 +15,7 @@ export const useEventProxy = (
         onMouseOver = childrenElement.props.onMouseOver;
     }
     const onMouseOverProxy = useCallback(
-        event => {
+        (event) => {
             setOpen(true);
             if (onMouseOver) {
                 onMouseOver(event);
@@ -33,7 +33,7 @@ export const useEventProxy = (
         onMouseOut = childrenElement.props.onMouseOut;
     }
     const onMouseOutProxy = useCallback(
-        event => {
+        (event) => {
             setOpen(false);
             if (onMouseOut) {
                 onMouseOut(event);

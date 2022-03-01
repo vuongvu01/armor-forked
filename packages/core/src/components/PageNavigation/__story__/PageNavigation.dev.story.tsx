@@ -2,6 +2,8 @@
 
 import React, { useState } from 'react';
 
+import { makeTheme, ThemeProvider } from '@deliveryhero/armor-system';
+import { css } from 'styled-components';
 import { PageNavigation } from '../PageNavigation';
 import { withWrapper } from '../../../helpers/Wrapper';
 
@@ -48,4 +50,27 @@ export const NoParams = () => {
 
 export const OnePageTwoItems = () => {
     return <PageNavigation pageNumber={1} itemCount={2} />;
+};
+
+export const ThemeTheme = () => {
+    console.log(css`
+        border-width: 2px;
+    `);
+
+    const customThemeData = {
+        armor: {
+            componentCSS: {
+                PageNavigation: () => css`
+                    border-width: 2px;
+                `,
+            },
+        },
+    };
+    const customTheme = makeTheme(customThemeData);
+
+    return (
+        <ThemeProvider theme={customTheme}>
+            <PageNavigation pageNumber={1} itemCount={2} />
+        </ThemeProvider>
+    );
 };

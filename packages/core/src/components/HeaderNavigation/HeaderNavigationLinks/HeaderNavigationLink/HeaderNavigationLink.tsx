@@ -8,7 +8,6 @@ import {
     HEADER_NAVIGATION_LINK_CLASS_PREFIX,
     headerNavigationLinkRoot,
 } from './constants';
-import { headerNavigationLink } from './theme';
 import HeaderNavigationLinksContext from '../HeaderNavigationLinksContext';
 import { useHeaderNavigationLinkClassName } from './hooks';
 import { ButtonPropsType } from '../../../Button/type';
@@ -28,10 +27,7 @@ export const HeaderNavigationLink = forwardRef<
         HeaderNavigationLinksContext,
     );
 
-    const theme = useComponentTheme(
-        HEADER_NAVIGATION_LINK_CLASS_PREFIX,
-        headerNavigationLink,
-    );
+    const theme = useComponentTheme(HEADER_NAVIGATION_LINK_CLASS_PREFIX);
 
     const classOverride = useHeaderNavigationLinkClassName(
         HEADER_NAVIGATION_LINK_CLASS_PREFIX,

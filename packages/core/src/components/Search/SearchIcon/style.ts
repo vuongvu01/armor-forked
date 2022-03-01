@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { SearchIcon, UploadIcon } from '@deliveryhero/armor-icons';
-import { propsBlocker } from '@deliveryhero/armor-system';
+import { propsBlocker, color, spacing } from '@deliveryhero/armor-system';
 
 import {
     SearchIconContainerPropsType,
@@ -8,47 +8,27 @@ import {
     SearchInputSearchIconPropsType,
 } from './type';
 
-const searchIconRootStyle = ({
-    theme: {
-        componentOverrides: { SearchIcon: SearchIconTheme },
-    },
-}: SearchIconContainerPropsType) => {
-    return SearchIconTheme.SearchIconContainer.base;
-};
-
 /** 👉 ROOT ELEMENT */
-export const SearchIconRoot = styled.div.withConfig(propsBlocker)<
-    SearchIconContainerPropsType
->`
+export const SearchIconRoot = styled.div.withConfig(
+    propsBlocker,
+)<SearchIconContainerPropsType>`
     display: flex;
     align-items: center;
-    ${searchIconRootStyle};
+    padding-left: ${spacing(3.5)};
 `;
 
-const loadingIconIconStyle = ({
-    theme: {
-        componentOverrides: { SearchIcon: SearchIconTheme },
-    },
-}: SearchInputLoadingIconPropsType) => {
-    return SearchIconTheme.LoadingIcon.base;
-};
-
-export const SearchInputLoadingIcon = styled(UploadIcon)<
-    SearchInputLoadingIconPropsType
->`
-    ${loadingIconIconStyle}
+export const SearchInputLoadingIcon = styled(
+    UploadIcon,
+)<SearchInputLoadingIconPropsType>`
+    color: ${color('neutral.07')};
+    width: ${spacing(4)};
+    height: ${spacing(4)};
 `;
 
-const searchIconStyle = ({
-    theme: {
-        componentOverrides: { SearchIcon: SearchIconTheme },
-    },
-}: SearchInputSearchIconPropsType) => {
-    return SearchIconTheme.SearchIcon.base;
-};
-
-export const SearchInputSearchIcon = styled(SearchIcon)<
-    SearchInputSearchIconPropsType
->`
-    ${searchIconStyle}
+export const SearchInputSearchIcon = styled(
+    SearchIcon,
+)<SearchInputSearchIconPropsType>`
+    color: ${color('neutral.07')};
+    width: ${spacing(4)};
+    height: ${spacing(4)};
 `;

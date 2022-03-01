@@ -131,18 +131,18 @@ const getContentStyle = ({ small }: MenuElementContentPropsType) => {
     `;
 };
 
-export const MenuElementContent = styled.div.withConfig(propsBlocker)<
-    MenuElementContentPropsType
->`
+export const MenuElementContent = styled.div.withConfig(
+    propsBlocker,
+)<MenuElementContentPropsType>`
     flex-grow: 1;
     display: flex;
 
     ${getContentStyle};
 `;
 
-export const MenuElementExpansionHandle = styled.div.withConfig(propsBlocker)<
-    MenuElementExpansionHandlePropsType
->`
+export const MenuElementExpansionHandle = styled.div.withConfig(
+    propsBlocker,
+)<MenuElementExpansionHandlePropsType>`
     display: flex;
     align-self: stretch;
     cursor: pointer;

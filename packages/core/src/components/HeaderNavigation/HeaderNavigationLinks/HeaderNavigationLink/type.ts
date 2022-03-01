@@ -27,11 +27,13 @@ type HeaderNavigationLinkEffectivePropsType = Partial<{
     HTMLAttributes<HTMLElement> &
     MarginPropsType;
 
-export type HeaderNavigationLinkHookPropsType = HeaderNavigationLinkEffectivePropsType & {
-    headerNavigationLinksContext: HeaderNavigationLinksContextType;
-};
+export type HeaderNavigationLinkHookPropsType =
+    HeaderNavigationLinkEffectivePropsType & {
+        headerNavigationLinksContext: HeaderNavigationLinksContextType;
+    };
 
-export type HeaderNavigationLinkPropsType = HeaderNavigationLinkEffectivePropsType;
+export type HeaderNavigationLinkPropsType =
+    HeaderNavigationLinkEffectivePropsType;
 
 export type HeaderNavigationLinkRootPropsType = HeaderNavigationLinkPropsType &
     ComponentElementStylePropsType;

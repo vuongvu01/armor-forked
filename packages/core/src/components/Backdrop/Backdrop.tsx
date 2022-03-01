@@ -10,7 +10,7 @@ export const Backdrop: FC<BackdropPropsType> = ({
     className,
     ...restProps
 }) => {
-    const theme = useTheme();
+    const theme = useTheme().armor; // todo: fix this
 
     return (
         <BackdropRoot

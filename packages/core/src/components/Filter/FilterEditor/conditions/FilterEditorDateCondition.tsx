@@ -11,10 +11,9 @@ export const FilterEditorDateCondition: FC<FilterEditorConditionPropsType> = ({
     onConditionValueChange,
 }) => {
     const { label } = condition;
-    const {
-        enableTimePicker,
-        formatDateTime,
-    } = (conditionType as FilterDateConditionType).getAttributes();
+    const { enableTimePicker, formatDateTime } = (
+        conditionType as FilterDateConditionType
+    ).getAttributes();
     const { value } = conditionValue || {};
 
     // DatePicker can only accept Date object (at least for now), so we have to convert

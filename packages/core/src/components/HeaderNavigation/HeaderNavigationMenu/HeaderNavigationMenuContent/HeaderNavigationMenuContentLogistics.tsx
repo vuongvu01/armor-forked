@@ -52,9 +52,9 @@ const Drawing = styled.div`
 /**
  * @deprecated see @deliveryhero/armor-vendors
  */
-export const HeaderNavigationMenuContentLogistics: FunctionComponent<HeaderNavigationMenuContentPropsType> = ({
-    ...restProps
-}) => (
+export const HeaderNavigationMenuContentLogistics: FunctionComponent<
+    HeaderNavigationMenuContentPropsType
+> = ({ ...restProps }) => (
     <HeaderNavigationMenuContent {...restProps}>
         <HeaderNavigationMenuContentHeader
             title="Logistics"

@@ -20,7 +20,7 @@ export const HeaderNavigationSearch = forwardRef<
     { className, options, onChange, onItemSelect, separator, ...restProps },
     ref,
 ) {
-    const theme = useTheme();
+    const theme = useTheme().armor; // todo: fix this
 
     const classOverride = useHeaderNavigationSearchClassName(
         HEADER_NAVIGATION_SEARCH_CLASS_PREFIX,

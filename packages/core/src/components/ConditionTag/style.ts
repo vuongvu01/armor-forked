@@ -23,9 +23,9 @@ import {
 import { Link } from '../Link';
 
 /** 👉 ROOT ELEMENT */
-export const ConditionTagRoot = styled.div.withConfig(propsBlocker)<
-    ConditionTagRootPropsType
->`
+export const ConditionTagRoot = styled.div.withConfig(
+    propsBlocker,
+)<ConditionTagRootPropsType>`
     ${reset};
     ${typography('paragraphMedium')};
     width: fit-content;
@@ -48,9 +48,9 @@ export const ConditionTagRoot = styled.div.withConfig(propsBlocker)<
     ${marginProps};
 `;
 
-export const ConditionTagLabel = styled.div.withConfig(propsBlocker)<
-    ConditionTagLabelPropsType
->`
+export const ConditionTagLabel = styled.div.withConfig(
+    propsBlocker,
+)<ConditionTagLabelPropsType>`
     ${typography('labelSmall')};
     background-color: ${color('neutral.02')};
     padding: ${spacing(1)} ${spacing(2)};
@@ -60,15 +60,15 @@ export const ConditionTagLabel = styled.div.withConfig(propsBlocker)<
     user-select: none;
 `;
 
-export const ConditionTagValue = styled.div.withConfig(propsBlocker)<
-    ConditionTagValuePropsType
->`
+export const ConditionTagValue = styled.div.withConfig(
+    propsBlocker,
+)<ConditionTagValuePropsType>`
     display: flex;
 `;
 
-export const ConditionTagValueSegment = styled.div.withConfig(propsBlocker)<
-    ConditionTagValueSegmentPropsType
->`
+export const ConditionTagValueSegment = styled.div.withConfig(
+    propsBlocker,
+)<ConditionTagValueSegmentPropsType>`
     ${typography('paragraphSmall')};
     background-color: ${color('neutral.00')};
     padding: ${spacing(1)} ${spacing(2)};
@@ -93,9 +93,9 @@ export const ConditionTagValueMoreLink = styled(Link)`
     )}; // todo: just putting the color back, because typography drops it to back :(( remove after the refactoring
 `;
 
-export const ConditionTagValueTailElement = styled.div.withConfig(propsBlocker)<
-    ConditionTagValueTailElementPropsType
->``;
+export const ConditionTagValueTailElement = styled.div.withConfig(
+    propsBlocker,
+)<ConditionTagValueTailElementPropsType>``;
 
 export const ConditionTagCloseIconContainer = styled.div.withConfig(
     propsBlocker,

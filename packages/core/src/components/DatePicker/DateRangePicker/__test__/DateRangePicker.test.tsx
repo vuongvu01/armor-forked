@@ -56,11 +56,11 @@ describe('<DateRangePicker />', () => {
         expect(DateRangePicker).toSupportRestPropsForwarding('DateRangePicker');
     });
 
-    it('should support custom theme', () => {
+    it('should support component override', () => {
         expect(
             <DateRangePicker>With custom theme</DateRangePicker>,
             // @ts-ignore
-        ).toSupportCustomTheme('DateRangePicker');
+        ).toSupportOverride('DateRangePicker');
     });
 
     it('should support margin properties', async () => {

@@ -90,11 +90,11 @@ describe('<LoginPage />', () => {
         expect(LoginPage).toSupportRestPropsForwarding('LoginPage');
     });
 
-    it('should support custom theme', () => {
+    it('should support component override', () => {
         expect(
             <LoginPage>Hello</LoginPage>,
             // @ts-ignore
-        ).toSupportCustomTheme('LoginPage');
+        ).toSupportOverride('LoginPage');
     });
 
     it('should support margin properties', async () => {

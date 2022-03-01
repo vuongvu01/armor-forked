@@ -4,7 +4,6 @@ import { useComponentTheme } from '@deliveryhero/armor-system';
 import { useDialogContentClassName } from './utils/useDialogContentClassName';
 import { DialogContentRoot } from './style';
 import { DialogContentPropsType } from './type';
-import { dialogContentDefaultTheme } from './theme';
 import { DIALOG_CONTENT_CLASS_PREFIX } from './constants';
 
 const CLASS_PREFIX = 'DialogContent';
@@ -17,10 +16,7 @@ export const DialogContent: FunctionComponent<DialogContentPropsType> = ({
     children,
     ...restProps
 }) => {
-    const theme = useComponentTheme(
-        DIALOG_CONTENT_CLASS_PREFIX,
-        dialogContentDefaultTheme,
-    );
+    const theme = useComponentTheme(DIALOG_CONTENT_CLASS_PREFIX);
 
     const classNameRoot = useDialogContentClassName(CLASS_PREFIX, className);
 

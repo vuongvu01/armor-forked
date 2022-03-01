@@ -64,11 +64,9 @@ describe('<EmptyState />', () => {
         expect(EmptyState).toSupportRestPropsForwarding('EmptyState');
     });
 
-    it('should support custom theme', () => {
+    it('should support component override', () => {
         // @ts-ignore
-        expect(<EmptyState>Hello</EmptyState>).toSupportCustomTheme(
-            'EmptyState',
-        );
+        expect(<EmptyState>Hello</EmptyState>).toSupportOverride('EmptyState');
     });
 
     it('should support margin properties', async () => {

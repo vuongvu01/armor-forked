@@ -194,9 +194,9 @@ const Wrapper = ({
     children: (props: ListRootPropsType) => ReactElement;
 }) => children({ ...restProps });
 
-export const ListItemRoot = styled(Wrapper).withConfig(propsBlocker)<
-    ListItemRootPropsType
->`
+export const ListItemRoot = styled(Wrapper).withConfig(
+    propsBlocker,
+)<ListItemRootPropsType>`
     ${reset};
     ${typography('labelMedium')};
 
@@ -216,9 +216,9 @@ export const ListItemRoot = styled(Wrapper).withConfig(propsBlocker)<
     ${marginProps};
 `;
 
-export const PrimaryListItem = styled.div.withConfig(propsBlocker)<
-    ListItemRootPropsType
->`
+export const PrimaryListItem = styled.div.withConfig(
+    propsBlocker,
+)<ListItemRootPropsType>`
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -229,9 +229,9 @@ export const PrimaryListItem = styled.div.withConfig(propsBlocker)<
     ${getComponentOverride('ListItemPrimarySection')};
 `;
 
-export const SecondaryListItem = styled.div.withConfig(propsBlocker)<
-    ListItemRootPropsType
->`
+export const SecondaryListItem = styled.div.withConfig(
+    propsBlocker,
+)<ListItemRootPropsType>`
     display: flex;
     flex-direction: row;
     align-self: flex-start;
@@ -242,23 +242,23 @@ export const SecondaryListItem = styled.div.withConfig(propsBlocker)<
     ${getSecondaryListStyle};
 `;
 
-export const PrimaryIconContainer = styled.div.withConfig(propsBlocker)<
-    PrimaryIconContainerPropsType
->`
+export const PrimaryIconContainer = styled.div.withConfig(
+    propsBlocker,
+)<PrimaryIconContainerPropsType>`
     margin-right: ${spacing(4)};
     min-height: fit-content;
 `;
 
-export const ActionsContainer = styled.div.withConfig(propsBlocker)<
-    ActionsContainerPropsType
->`
+export const ActionsContainer = styled.div.withConfig(
+    propsBlocker,
+)<ActionsContainerPropsType>`
     margin-left: ${spacing(2)};
     ${getActionsContainerStyle}
 `;
 
-export const PrimaryLeadSubtitle = styled.div.withConfig(propsBlocker)<
-    LeadSubtitlePropsType
->`
+export const PrimaryLeadSubtitle = styled.div.withConfig(
+    propsBlocker,
+)<LeadSubtitlePropsType>`
     display: flex;
     flex-direction: column;
     align-self: flex-start;
@@ -267,9 +267,9 @@ export const PrimaryLeadSubtitle = styled.div.withConfig(propsBlocker)<
     ${getLeadSubtitleStyle}
 `;
 
-export const PrimaryListItemContainer = styled.div.withConfig(propsBlocker)<
-    PrimaryListItemContainerPropsType
->`
+export const PrimaryListItemContainer = styled.div.withConfig(
+    propsBlocker,
+)<PrimaryListItemContainerPropsType>`
     display: flex;
     flex-direction: column;
 `;
