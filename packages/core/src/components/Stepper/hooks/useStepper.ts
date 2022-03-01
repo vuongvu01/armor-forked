@@ -6,11 +6,11 @@ import { StepperPropsType } from '../type';
 export const useStepper = <E extends HTMLDivElement>(
     {
         children,
-
         activeIndex = 0,
         onActiveIndexChange,
         vertical,
         minimal,
+        readOnly,
         ...restProps
     }: StepperPropsType,
     ref: RefType<E>,
@@ -26,10 +26,7 @@ export const useStepper = <E extends HTMLDivElement>(
         stepIndex: number,
     ) => {
         setCurrentActiveTab(stepIndex);
-
-        if (onActiveIndexChange) {
-            onActiveIndexChange(stepIndex);
-        }
+        onActiveIndexChange?.(stepIndex);
     };
 
     return {
@@ -49,6 +46,7 @@ export const useStepper = <E extends HTMLDivElement>(
             vertical,
             minimal,
             handleClick,
+            isActivityLogView: readOnly,
         },
     };
 };

@@ -118,16 +118,17 @@ const flexItemStyle = ({
 export const FlexRoot = styled.div.withConfig(propsBlocker)<FlexRootPropsType>`
     display: flex;
 
-    ${flexRootStyle}
-    ${sizeProps}
-    ${marginProps}
+    ${flexRootStyle};
+    ${sizeProps};
+    ${marginProps};
 `;
 
 /** 👉 ROOT ELEMENT */
 export const FlexItemRoot = styled.div.withConfig(
     propsBlocker,
 )<FlexItemPropsType>`
-    ${flexItemStyle}
-    ${paddingProps}
-    ${widthProps}
+    ${flexItemStyle};
+    ${paddingProps};
+    ${widthProps};
+    ${marginProps};
 `;

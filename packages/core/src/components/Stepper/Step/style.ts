@@ -13,6 +13,7 @@ import {
     StepPropsType,
     StepperPiecePropsType,
     StepperPieceVariant,
+    StepRootPropsType,
 } from './type';
 
 const stepPieceClassName = makeBEM('Step', 'Piece');
@@ -21,11 +22,16 @@ const stepNumberClassName = makeBEM('Step', 'Number');
 const stepTitleClassName = makeBEM('Step', 'Title');
 const stepDescriptionClassName = makeBEM('Step', 'Description');
 const stepPieceWrapperClassName = makeBEM('Step', 'Wrapper');
+const stepButtonClassName = makeBEM('Step', 'Button');
 const completeClassName = makeBEM('Step', 'Root', 'complete');
 const incompleteClassName = makeBEM('Step', 'Root', 'incomplete');
 const activeClassName = makeBEM('Step', 'Root', 'active');
 const warningClassName = makeBEM('Step', 'Root', 'warning');
 const errorClassName = makeBEM('Step', 'Root', 'error');
+const logClassName = makeBEM('Step', 'Root', 'log');
+const successClassName = makeBEM('Step', 'Root', 'success');
+const infoClassName = makeBEM('Step', 'Root', 'info');
+const stepLineClassName = makeBEM('Step', 'Line');
 
 const getStepperPieceWrapperRootStyle = ({
     minimal,
@@ -56,36 +62,59 @@ const getStepperPieceWrapperRootStyle = ({
         `;
     }
 
-    if (variant === StepperPieceVariant.incomplete) {
-        backgroundAndBorderColor = css`
-            border-color: ${color('neutral.03')};
-        `;
-    } else if (variant === StepperPieceVariant.active) {
-        backgroundAndBorderColor = css`
-            background-color: ${color('primary.07')};
-            .${stepNumberClassName} {
-                color: ${color('neutral.00')};
-            }
-        `;
-    } else if (variant === StepperPieceVariant.complete) {
-        backgroundAndBorderColor = css`
-            background-color: ${color('primary.01')};
-        `;
-    } else if (variant === StepperPieceVariant.warning) {
-        backgroundAndBorderColor = css`
-            background-color: ${color('warning.02')};
-            .${stepNumberClassName} {
-                color: ${color('neutral.11')};
-            }
-        `;
-    } else if (variant === StepperPieceVariant.error) {
-        backgroundAndBorderColor = css`
-            background-color: ${color('error.01')};
-            .${stepNumberClassName} {
-                color: ${color('neutral.11')};
-            }
-        `;
+    switch (variant) {
+        case StepperPieceVariant.incomplete:
+            backgroundAndBorderColor = css`
+                border-color: ${color('neutral.03')};
+            `;
+            break;
+        case StepperPieceVariant.active:
+            backgroundAndBorderColor = css`
+                background-color: ${color('primary.07')};
+                .${stepNumberClassName} {
+                    color: ${color('neutral.00')};
+                }
+            `;
+            break;
+        case StepperPieceVariant.complete:
+            backgroundAndBorderColor = css`
+                background-color: ${color('primary.01')};
+            `;
+            break;
+        case StepperPieceVariant.warning:
+            backgroundAndBorderColor = css`
+                background-color: ${color('warning.02')};
+                .${stepNumberClassName} {
+                    color: ${color('neutral.11')};
+                }
+            `;
+            break;
+        case StepperPieceVariant.error:
+            backgroundAndBorderColor = css`
+                background-color: ${color('error.01')};
+                .${stepNumberClassName} {
+                    color: ${color('neutral.11')};
+                }
+            `;
+            break;
+        case StepperPieceVariant.info:
+            backgroundAndBorderColor = css`
+                background-color: ${color('primary.01')};
+            `;
+            break;
+        case StepperPieceVariant.success:
+            backgroundAndBorderColor = css`
+                background-color: ${color('success.02')};
+            `;
+            break;
+
+        default:
+            backgroundAndBorderColor = css`
+                border-color: ${color('neutral.03')};
+            `;
+            break;
     }
+
     return css`
         ${size};
         ${backgroundAndBorderColor};
@@ -123,10 +152,67 @@ const getStepButtonRootStyle = ({ vertical }: { vertical?: boolean }) => {
     return result;
 };
 
-const getStepRootStyle = ({ vertical }: any) => {
-    let result = {};
+const getStepRootStyle = ({
+    vertical,
+    isActivityLogView,
+}: StepRootPropsType) => {
+    let result = css`
+        position: relative;
+        margin: 0 ${spacing(2)};
+
+        :last-child .${stepLineClassName} {
+            display: none;
+        }
+        &.${warningClassName} .${stepLineClassName} {
+            background-color: ${color('warning.03')};
+        }
+        &.${errorClassName} .${stepLineClassName} {
+            background-color: ${color('error.02')};
+        }
+        &.${logClassName} .${stepLineClassName} {
+            background-color: ${color('neutral.03')};
+        }
+        &.${successClassName} .${stepLineClassName} {
+            background-color: ${color('success.03')};
+        }
+        &.${infoClassName} .${stepLineClassName} {
+            background-color: ${color('primary.03')};
+        }
+    `;
+
+    // set hover selector styles when the Stepper is not in ActivityLog view
+    if (!isActivityLogView) {
+        result = css`
+            ${result}
+            &:not(.${incompleteClassName}, .${activeClassName}) .${stepButtonClassName} {
+                cursor: pointer;
+                &:hover {
+                    .${stepTitleClassName} {
+                        color: ${color('primary.06')};
+                    }
+                }
+            }
+            &.${completeClassName}
+                .${stepButtonClassName}:hover
+                .${stepPieceWrapperClassName} {
+                border: 1px solid ${color('primary.06')};
+            }
+            &.${warningClassName}
+                .${stepButtonClassName}:hover
+                .${stepPieceWrapperClassName} {
+                border: 1px solid ${color('warning.07')};
+            }
+            &.${errorClassName}
+                .${stepButtonClassName}:hover
+                .${stepPieceWrapperClassName} {
+                border: 1px solid ${color('error.06')};
+            }
+        `;
+    }
+
     if (vertical) {
         result = css`
+            ${result}
             min-height: ${spacing(20)};
             margin-bottom: ${spacing(2)};
             .${stepPieceClassName} {
@@ -135,6 +221,7 @@ const getStepRootStyle = ({ vertical }: any) => {
         `;
     } else {
         result = css`
+            ${result}
             width: ${spacing(31)};
             .${stepPieceClassName} {
                 margin-right: ${spacing(1)};
@@ -142,20 +229,22 @@ const getStepRootStyle = ({ vertical }: any) => {
             }
         `;
     }
+
     return result;
 };
 
 const getStepperLineStyle = ({ vertical, variant }: any) => {
     let result = {};
     const background = css`
-        background-color: ${variant === StepperPieceVariant.incomplete
-            ? color('neutral.03')
-            : color('primary.07')};
+        background-color: ${variant === StepperPieceVariant.complete
+            ? color('primary.07')
+            : color('neutral.03')};
     `;
     if (vertical) {
         result = css`
             top: ${spacing(8)};
-            left: ${spacing(3)};
+            /* minus the line 1px width to make it center */
+            left: calc(${spacing(3)} - 1);
             width: 1px;
             bottom: 0;
             ${background};
@@ -163,7 +252,7 @@ const getStepperLineStyle = ({ vertical, variant }: any) => {
     } else {
         result = css`
             top: 50%;
-            // push to the exterm left and then the 8px for margin
+            /* push to the exterm left and then the 8px for margin */
             left: calc(100% + ${spacing(2)});
             width: ${spacing(25)};
             height: 1px;
@@ -181,42 +270,6 @@ export const StepperLine = styled.div`
 
 /** 👉 ROOT ELEMENT */
 export const StepRoot = styled.div.withConfig(propsBlocker)<StepPropsType>`
-    position: relative;
-    margin: 0 ${spacing(2)};
-
-    :last-child .${makeBEM('Step', 'Line')} {
-        display: none;
-    }
-    &:not(.${incompleteClassName}, .${activeClassName}) button {
-        cursor: pointer;
-        :hover {
-            .${stepTitleClassName} {
-                color: ${color('primary.06')};
-            }
-        }
-    }
-    &.${completeClassName}:hover
-        .${stepPieceClassName}
-        > .${stepPieceWrapperClassName} {
-        border: 1px solid ${color('primary.06')};
-    }
-    &.${warningClassName}:hover
-        .${stepPieceClassName}
-        > .${stepPieceWrapperClassName} {
-        border: 1px solid ${color('warning.07')};
-    }
-    &.${errorClassName}:hover
-        .${stepPieceClassName}
-        > .${stepPieceWrapperClassName} {
-        border: 1px solid ${color('error.06')};
-    }
-    &.${warningClassName} .${makeBEM('Step', 'Line')} {
-        background-color: ${color('warning.02')};
-    }
-    &.${errorClassName} .${makeBEM('Step', 'Line')} {
-        background-color: ${color('error.02')};
-    }
-
     ${getStepRootStyle};
     ${getComponentOverride('Step')};
 `;
@@ -229,6 +282,10 @@ export const StepButton = styled.button`
     width: 100%;
 
     ${getStepButtonRootStyle};
+`;
+
+export const StepContent = styled.div`
+    flex: 1 0;
 `;
 
 export const StepperPieceWrapper = styled.div.withConfig(

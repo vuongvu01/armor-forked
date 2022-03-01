@@ -24,6 +24,7 @@ export const useStepClassNames = (
             Number: makeBEM(classPrefix, 'Number'),
             Content: makeBEM(classPrefix, 'Content'),
             Title: makeBEM(classPrefix, 'Title'),
+            ExtraInfo: makeBEM(classPrefix, 'ExtraInfo'),
             Description: makeBEM(classPrefix, 'Description'),
             Line: makeBEM(classPrefix, 'Line'),
             Piece: makeBEM(classPrefix, 'Piece'),

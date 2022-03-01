@@ -41,10 +41,15 @@ Stepper.propTypes = {
     activeIndex: PropTypes.number,
     onActiveIndexChange: PropTypes.func,
     className: PropTypes.string,
+    /**
+      If set, the activity log (readOnly) view is active
+    */
+    readOnly: PropTypes.bool,
 };
 
 Stepper.defaultProps = {
     vertical: false,
     minimal: false,
     activeIndex: 0,
+    readOnly: false,
 };
