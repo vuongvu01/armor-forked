@@ -1,3 +1,15 @@
+# [1.7.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-brands@1.6.0...@deliveryhero/armor-brands@1.7.0) (2022-03-01)
+
+
+### Bug Fixes
+
+* **publish:** added build step for motion publish ([#897](https://github.com/deliveryhero/armor/issues/897)) ([c24f512](https://github.com/deliveryhero/armor/commit/c24f5125f23cae093f99ed503b224ffac417864e))
+
+
+### Features
+
+* **FileUploader:** Add FileUploader component [LD-508] ([10c2db7](https://github.com/deliveryhero/armor/commit/10c2db71bf3e839c22b34dc2822502ffe5a83bd3))
+
 # [1.6.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-brands@1.5.1...@deliveryhero/armor-brands@1.6.0) (2022-02-22)
 
 
