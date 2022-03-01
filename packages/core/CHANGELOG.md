@@ -1,3 +1,10 @@
+# [1.89.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.88.0...@deliveryhero/armor@1.89.0) (2022-03-01)
+
+
+### Features
+
+* **stepper:** Stepper Component as a Log  [AR-22] ([b048572](https://github.com/deliveryhero/armor/commit/b048572a9c43c459b5f256520fe218d0861cd0c7))
+
 # [1.88.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.87.0...@deliveryhero/armor@1.88.0) (2022-03-01)
 
 
