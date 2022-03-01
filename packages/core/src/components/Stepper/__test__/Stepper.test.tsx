@@ -159,4 +159,27 @@ describe('<Stepper />', () => {
         expect(thirdStep?.classList).toContain('Step-Root--incomplete');
         expect(fourthStep?.classList).toContain('Step-Root--incomplete');
     });
+
+    it('should contain correct status class in ActivityLog mode', () => {
+        const { container } = render(
+            <Stepper readOnly>
+                <Step title="Order" />
+                <Step title="Delivery" warning />
+                <Step title="Payment" error />
+                <Step title="Review" info />
+                <Step title="Review" success />
+            </Stepper>,
+        );
+        const firstStep = container.querySelector('.Step-Root:nth-child(1)');
+        const secondStep = container.querySelector('.Step-Root:nth-child(2)');
+        const thirdStep = container.querySelector('.Step-Root:nth-child(3)');
+        const fourthStep = container.querySelector('.Step-Root:nth-child(4)');
+        const fifthStep = container.querySelector('.Step-Root:nth-child(5)');
+
+        expect(firstStep?.classList).toContain('Step-Root--log');
+        expect(secondStep?.classList).toContain('Step-Root--warning');
+        expect(thirdStep?.classList).toContain('Step-Root--error');
+        expect(fourthStep?.classList).toContain('Step-Root--info');
+        expect(fifthStep?.classList).toContain('Step-Root--success');
+    });
 });

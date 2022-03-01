@@ -16,11 +16,11 @@ export type ClassBasedOnComponentType = {
 /** 👉 PROPS TYPE */
 type StepperEffectivePropsType = Partial<{
     /**
-       Either a vertical or horizontal stepper
+      Either a vertical or horizontal stepper
     */
     vertical: boolean;
     /**
-       A minial stepper
+      A minial stepper
     */
     minimal: boolean;
     /**
@@ -28,6 +28,10 @@ type StepperEffectivePropsType = Partial<{
     */
     activeIndex: number;
     onActiveIndexChange: (index: number) => void;
+    /**
+      If set, the activity log (readOnly) view is active
+    */
+    readOnly: boolean;
 }> &
     HTMLAttributes<HTMLElement> &
     MarginPropsType;
@@ -35,3 +39,15 @@ type StepperEffectivePropsType = Partial<{
 export type StepperPropsType = StepperEffectivePropsType;
 export type StepperRootPropsType = StepperEffectivePropsType &
     ComponentElementStylePropsType;
+
+export type StepperContextType = Partial<{
+    currentIndex: number;
+    vertical: boolean;
+    minimal: boolean;
+    isActivityLogView: boolean;
+    handleClick: (
+        event: React.MouseEvent<HTMLInputElement, MouseEvent>,
+        tabIndex: number,
+        contentValue?: number,
+    ) => void;
+}>;

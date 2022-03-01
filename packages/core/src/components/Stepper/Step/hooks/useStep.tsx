@@ -1,32 +1,61 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useCallback, useContext, useState, useEffect } from 'react';
 
 import { RefType } from '../../../../type';
 import { StepPropsType, StepperPieceVariant } from '../type';
 import { StepperContext } from '../../StepperContext';
+import { getStepVariantByStatus } from '../utils';
 
 export const useStep = <E extends HTMLDivElement>(
-    { warning, error, index, ...restProps }: StepPropsType,
+    {
+        warning,
+        error,
+        success,
+        info,
+        index,
+        icon,
+        title,
+        description,
+        extraInfo,
+        ...restProps
+    }: StepPropsType,
     ref: RefType<E>,
 ) => {
-    const { currentIndex, handleClick, vertical, minimal } =
+    const [variant, setVariant] = useState(StepperPieceVariant.incomplete); // default
+    const { currentIndex, handleClick, vertical, minimal, isActivityLogView } =
         useContext(StepperContext);
-    let variant = StepperPieceVariant.incomplete; // default
 
-    if (index === undefined || currentIndex === undefined) {
-        console.warn(`index: undefined`);
-    } else {
+    useEffect(() => {
+        if (isActivityLogView) {
+            setVariant(
+                getStepVariantByStatus({
+                    warning,
+                    error,
+                    success,
+                    info,
+                }),
+            );
+            return;
+        }
+
+        if (index === undefined || currentIndex === undefined) {
+            console.warn(`index: undefined`);
+            return;
+        }
+
         if (currentIndex === index - 1) {
-            variant = StepperPieceVariant.active;
+            setVariant(StepperPieceVariant.active);
         } else if (currentIndex > index - 1) {
             if (warning) {
-                variant = StepperPieceVariant.warning;
+                setVariant(StepperPieceVariant.warning);
             } else if (error) {
-                variant = StepperPieceVariant.error;
+                setVariant(StepperPieceVariant.error);
             } else {
-                variant = StepperPieceVariant.complete;
+                setVariant(StepperPieceVariant.complete);
             }
+        } else {
+            setVariant(StepperPieceVariant.incomplete);
         }
-    }
+    }, [currentIndex, error, index, info, isActivityLogView, success, warning]);
 
     const handleSelect = useCallback(
         (event: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
@@ -47,6 +76,7 @@ export const useStep = <E extends HTMLDivElement>(
             ref,
             vertical,
             onClick: handleSelect,
+            isActivityLogView,
         },
         stepperButtonProps: {
             vertical,
@@ -61,5 +91,12 @@ export const useStep = <E extends HTMLDivElement>(
             variant,
         },
         variant,
+        icon,
+        isIconShown: !!icon && !minimal,
+        title,
+        description,
+        extraInfo,
+        isExtraInfoShown: vertical && extraInfo,
+        vertical,
     };
 };

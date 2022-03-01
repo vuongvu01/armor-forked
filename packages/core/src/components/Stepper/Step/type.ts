@@ -1,4 +1,5 @@
-import { HTMLAttributes } from 'react';
+import { HTMLAttributes, ReactChild, ReactElement } from 'react';
+import { StepperContextType } from '../type';
 
 export enum StepperPieceVariant {
     active = 'active',
@@ -6,6 +7,9 @@ export enum StepperPieceVariant {
     incomplete = 'incomplete',
     warning = 'warning',
     error = 'error',
+    info = 'info',
+    success = 'success',
+    log = 'log',
 }
 
 type StepEffectivePropsType = Partial<{
@@ -14,9 +18,13 @@ type StepEffectivePropsType = Partial<{
     */
     title: string;
     /**
+      The step's extra info (only capable in vertical mode)
+    */
+    extraInfo: ReactChild;
+    /**
       The step's description
     */
-    description: string;
+    description: ReactChild;
     /**
       @ignore
     */
@@ -29,6 +37,18 @@ type StepEffectivePropsType = Partial<{
       If there is a error in the step
     */
     error: boolean;
+    /**
+      If there is a success in the step
+    */
+    success: boolean;
+    /**
+      If there is a info in the step
+    */
+    info: boolean;
+    /**
+      Set icon for each step instead of the default number
+    */
+    icon: ReactElement;
 }> &
     HTMLAttributes<HTMLElement>;
 
@@ -44,3 +64,5 @@ export type StepperLinePropsType = {
     vertical: boolean;
     variant: string;
 };
+
+export type StepRootPropsType = StepPropsType & StepperContextType;
