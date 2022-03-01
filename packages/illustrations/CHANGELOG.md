@@ -1,3 +1,13 @@
+## @deliveryhero/armor-illustrations [1.0.5](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-illustrations@1.0.4...@deliveryhero/armor-illustrations@1.0.5) (2022-03-01)
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor-system:** upgraded to 1.4.0
+
 ## @deliveryhero/armor-illustrations [1.0.4](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-illustrations@1.0.3...@deliveryhero/armor-illustrations@1.0.4) (2022-02-22)
 
 
