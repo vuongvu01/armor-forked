@@ -29,6 +29,10 @@ jobs:
               working-directory: ./packages/icons
               run: yarn build:cjs
 
+            - name: Build (illustrations)
+              working-directory: ./packages/illustrations
+              run: yarn build:cjs
+
             - name: Build (core)
               working-directory: ./packages/core
               run: yarn build:cjs
