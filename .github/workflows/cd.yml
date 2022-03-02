@@ -37,16 +37,16 @@ jobs:
               working-directory: ./packages/brands
               run: yarn run build
 
+            - name: Build (illustrations)
+              working-directory: ./packages/illustrations
+              run: yarn run build
+
             - name: Build (vendors)
               working-directory: ./packages/vendors
               run: yarn run build
 
             - name: Build (props-parser)
               working-directory: ./packages/props-parser
-              run: yarn run build
-
-            - name: Build (illustrations)
-              working-directory: ./packages/illustrations
               run: yarn run build
 
             - name: Build (motion)
