@@ -37,9 +37,9 @@
         "access": "public"
     },
     "dependencies": {
-        "@deliveryhero/armor": "1.35.0",
-        "@deliveryhero/armor-icons": "1.10.0",
-        "@deliveryhero/armor-illustrations": "1.0.1"
+        "@deliveryhero/armor": "*",
+        "@deliveryhero/armor-icons": "*",
+        "@deliveryhero/armor-illustrations": "*"
     },
     "devDependencies": {
         "@semantic-release/changelog": "^5.0.1",
