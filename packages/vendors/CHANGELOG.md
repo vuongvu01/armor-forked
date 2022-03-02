@@ -1,3 +1,10 @@
+## @deliveryhero/armor-vendors [1.4.5](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.4.4...@deliveryhero/armor-vendors@1.4.5) (2022-03-02)
+
+
+### Bug Fixes
+
+* **armor-docs:** Correct armor-vendors package dependencies ([00924a4](https://github.com/deliveryhero/armor/commit/00924a47c53f7d546c2118c2b38a954b71d9d1a2))
+
 ## @deliveryhero/armor-vendors [1.4.4](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.4.3...@deliveryhero/armor-vendors@1.4.4) (2022-03-01)
 
 
