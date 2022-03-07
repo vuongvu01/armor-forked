@@ -102,6 +102,7 @@ type FlexItemEffectivePropsType = Partial<{
 }> &
     HTMLAttributes<HTMLElement> &
     WidthPropsType &
+    MarginPropsType &
     PaddingPropsType;
 
 export type FlexPropsType = FlexEffectivePropsType;

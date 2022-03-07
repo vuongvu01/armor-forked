@@ -213,7 +213,9 @@ export type ExpansionIndicatorContainerPropsType = ObjectLiteralType;
 export type DropdownRootPropsType = DropdownEffectivePropsType &
     ComponentElementStylePropsType;
 
-export type DropdownOptionListContainerPropsType = { zIndex: number };
+export type DropdownOptionListContainerPropsType = {
+    zIndex: number;
+} & WidthPropsType;
 
 export type DropdownTextInputPropsType = {
     isCustomRenderer: boolean;

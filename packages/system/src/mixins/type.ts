@@ -1,8 +1,8 @@
-import { BreakpointsBaseType, RootThemeType, ThemeType } from '../theme';
+import { BreakpointsBaseType, ThemePropertyType } from '../theme';
 import { CSSChunkType } from '../type';
 
 export type PropsWithThemeType = Record<string, any> & {
-    theme?: ThemeType | RootThemeType;
+    theme?: ThemePropertyType;
 };
 
 export type BreakpointCodeType = 'xs' | 'sm' | 'md' | 'lg' | 'xl';

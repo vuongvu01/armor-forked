@@ -94,7 +94,6 @@ export const SelectorLabel = styled(
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    ${typography('paragraphMedium')};
 `;
 
 export const SelectorExpansionIndicator = styled(

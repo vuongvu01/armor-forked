@@ -1,28 +1,24 @@
 import { PropsWithThemeType } from './type';
+import { getAvailableTheme } from '../theme/util';
 
 export const typography =
-    (style: string) =>
+    (variantName: string) =>
     ({ theme }: PropsWithThemeType) => {
-        if (theme) {
-            const currentTheme = theme.armor || theme;
-            if (currentTheme.typography) {
-                const variant = currentTheme.typography[style];
-                if (variant) {
-                    return {
-                        ...variant,
-                        fontFamily: `${variant.fontFamily},sans-serif`,
-                        fontSize: currentTheme.typography.pixelToRem(
-                            variant.fontSize,
-                        ),
-                        lineHeight: currentTheme.typography.pixelToRem(
-                            variant.lineHeight,
-                        ),
-                    };
-                }
-            }
+        const currentTheme = getAvailableTheme(theme);
+
+        const variant = currentTheme.typography?.[variantName];
+        if (variant) {
+            return {
+                ...variant,
+                fontFamily: `${variant.fontFamily}, sans-serif`,
+                fontSize: currentTheme.typography.pixelToRem(variant.fontSize),
+                lineHeight: currentTheme.typography.pixelToRem(
+                    variant.lineHeight,
+                ),
+            };
         }
 
-        return style;
+        return '';
     };
 
 export const typographyInherit = () => ({

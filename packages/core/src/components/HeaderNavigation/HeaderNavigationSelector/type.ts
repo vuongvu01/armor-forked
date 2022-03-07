@@ -4,6 +4,7 @@ import {
     ScalarType,
     ComponentBehaviourPortalType,
     ComponentBehaviourOverlayType,
+    WidthPropsType,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -64,4 +65,5 @@ export type HeaderNavigationSelectorRootPropsType = {
     isOptionListShown?: boolean;
     separator?: boolean;
     zIndex?: number;
-} & ComponentElementStylePropsType;
+} & ComponentElementStylePropsType &
+    WidthPropsType;

@@ -314,7 +314,7 @@ export const defaultThemeStructure = {
             pill: borderRadiusPill,
         },
     },
-    spacing: SPACING_FACTOR,
+    spacingFactor: SPACING_FACTOR,
     componentCSS: {},
     component: {},
     elevation: {

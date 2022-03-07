@@ -38,7 +38,7 @@ export class OverlayManager {
     static removeOverlay(id: string): void {
         const overlay = this.getOverlay(id);
         if (overlay) {
-            this.stack = this.stack.filter(item => item.id !== id);
+            this.stack = this.stack.filter((item) => item.id !== id);
             if (overlay.blockWindowScroll) {
                 this.windowScrollBlocks -= 1;
             }
@@ -47,7 +47,7 @@ export class OverlayManager {
 
     static getOverlay(id: string): OverlayType | undefined {
         // todo: use hashing here to memoize, don't do search every time
-        return this.stack.find(item => item.id === id);
+        return this.stack.find((item) => item.id === id);
     }
 
     static getTopOverlay(): OverlayType | null {

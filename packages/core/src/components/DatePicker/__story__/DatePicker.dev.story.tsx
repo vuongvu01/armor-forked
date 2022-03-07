@@ -235,3 +235,18 @@ export const WithTodayOnly = () => {
         />
     );
 };
+
+const d = new Date('2021-10-02T05:05:23.292+08:00');
+
+export const DifferentTimezone = () => {
+    console.log(d.getTimezoneOffset() / 60);
+
+    return (
+        <DatePicker
+            wide
+            enableTimePicker
+            allowedDateRanges={[['current', null]]}
+            defaultDateValue={d}
+        />
+    );
+};

@@ -1,7 +1,6 @@
 import { css } from 'styled-components';
-import { replaceThemeToken } from '../theme/replaceThemeToken';
-import { ThemeType } from '../theme';
 import { CSSChunkType } from '../type';
+import { colorToken } from '../mixins';
 
 export type ColorPropsType = Partial<{
     /**
@@ -35,28 +34,23 @@ export type ColorPropsType = Partial<{
     backgroundColor: string;
 }>;
 
-const replaceColor = (colorName: string, theme: ThemeType) => {
-    if (colorName.startsWith('$')) {
-        return replaceThemeToken(colorName, theme).value;
-    }
-
-    const prefixedColorName = `$color.${colorName}`;
-    if (prefixedColorName in theme.referenceIndex) {
-        return theme.referenceIndex[prefixedColorName];
-    }
-
-    return colorName;
-};
-
 export const colorProps = ({
-    color,
+    color: textColor,
     hoverColor,
     backgroundColor,
-    theme,
-}: ColorPropsType & { theme: ThemeType }): CSSChunkType => css`
-    ${color !== undefined && `color: ${replaceColor(color, theme)};`}
+}: ColorPropsType): CSSChunkType => css`
+    ${textColor !== undefined &&
+    css`
+        color: ${colorToken(textColor)};
+    `}
     ${backgroundColor !== undefined &&
-    `background-color: ${replaceColor(backgroundColor, theme)};`}
+    css`
+        background-color: ${colorToken(backgroundColor)};
+    `}
     ${hoverColor !== undefined &&
-    `&:hover { color: ${replaceColor(hoverColor, theme)}; }`}
+    css`
+        &:hover {
+            color: ${colorToken(hoverColor)};
+        }
+    `}
 `;

@@ -221,7 +221,6 @@ export const EmptyStateTitle = styled.div.withConfig(
     font-size: ${pixelToRem(32)};
     max-height: ${pixelToRem(48)};
     ${getTitleStyle};
-    ${marginProps};
 `;
 export const EmptyStateDescription = styled.div.withConfig(
     propsBlocker,
@@ -232,14 +231,12 @@ export const EmptyStateDescription = styled.div.withConfig(
     max-height: ${spacing(60)};
     margin-top: ${spacing(4)};
     ${getDescriptionStyle};
-    ${marginProps};
 `;
 export const EmptyStateActionContainer = styled.div.withConfig(
     propsBlocker,
 )<EmptyStateActionContainerPropsType>`
     margin-top: ${spacing(8)};
     ${getActionsContainerStyle};
-    ${marginProps};
 `;
 export const EmptyStateHorizontalLayout = styled.div.withConfig(
     propsBlocker,

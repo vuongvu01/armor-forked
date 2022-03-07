@@ -5,12 +5,11 @@ module.exports = {
     setupFilesAfterEnv: [
         '@testing-library/jest-dom/extend-expect',
         'jest-styled-components',
-
         '<rootDir>/../jest/extend.js',
     ],
     transform: {
         '^.+\\.tsx?$': 'ts-jest',
     },
     testRegex: '\\.test\\.tsx?$',
-    testEnvironment: 'jsdom'
+    testEnvironment: 'jsdom',
 };

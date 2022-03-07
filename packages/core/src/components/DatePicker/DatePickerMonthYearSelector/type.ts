@@ -20,7 +20,9 @@ export type DatePickerMonthYearSelectorPropsType =
     DatePickerMonthYearSelectorEffectivePropsType & ComponentStylePropsType;
 
 export type DatePickerMonthYearSelectorRootPropsType =
-    HTMLAttributes<HTMLDivElement> & ComponentElementStylePropsType;
+    HTMLAttributes<HTMLDivElement> &
+        MarginPropsType &
+        ComponentElementStylePropsType;
 
 export type DatePickerMonthYearSelectorScrollPropsType =
     ComponentElementStylePropsType;

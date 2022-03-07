@@ -1,5 +1,7 @@
-import { ThemeType } from '../theme';
+import { css, FlattenInterpolation, ThemeProps } from 'styled-components';
+
 import { CSSChunkType, ScalarType } from '../type';
+import { spacing } from '../mixins';
 
 export type PaddingPropsType = Partial<{
     /**
@@ -39,10 +41,7 @@ export type PaddingPropsType = Partial<{
     paddingY: ScalarType;
 }>;
 
-type PropertiesType = { theme: ThemeType } & PaddingPropsType;
-
 export const paddingProps = ({
-    theme,
     padding,
     paddingTop,
     paddingBottom,
@@ -50,31 +49,54 @@ export const paddingProps = ({
     paddingRight,
     paddingY,
     paddingX,
-}: PropertiesType): CSSChunkType => {
-    let result = '';
+}: PaddingPropsType): CSSChunkType => {
+    let result = css`` as FlattenInterpolation<ThemeProps<any>>;
 
     if (typeof padding !== 'undefined') {
-        result += `padding: ${theme.spacing(padding)};`;
+        result = css`
+            ${result};
+            padding: ${spacing(padding)};
+        `;
     }
     if (typeof paddingTop !== 'undefined') {
-        result += `padding-top: ${theme.spacing(paddingTop)};`;
+        result = css`
+            ${result};
+            padding-top: ${spacing(paddingTop)};
+        `;
     }
     if (typeof paddingBottom !== 'undefined') {
-        result += `padding-bottom: ${theme.spacing(paddingBottom)};`;
+        result = css`
+            ${result};
+            padding-bottom: ${spacing(paddingBottom)};
+        `;
     }
     if (typeof paddingLeft !== 'undefined') {
-        result += `padding-left: ${theme.spacing(paddingLeft)};`;
+        result = css`
+            ${result};
+            padding-left: ${spacing(paddingLeft)};
+        `;
     }
     if (typeof paddingRight !== 'undefined') {
-        result += `padding-right: ${theme.spacing(paddingRight)};`;
+        result = css`
+            ${result};
+            padding-right: ${spacing(paddingRight)};
+        `;
     }
     if (typeof paddingX !== 'undefined') {
-        const value = theme.spacing(paddingX);
-        result += `padding-right: ${value}; padding-left: ${value};`;
+        const value = spacing(paddingX);
+        result = css`
+            ${result};
+            padding-right: ${value};
+            padding-left: ${value};
+        `;
     }
     if (typeof paddingY !== 'undefined') {
-        const value = theme.spacing(paddingY);
-        result += `padding-top: ${value}; padding-bottom: ${value};`;
+        const value = spacing(paddingY);
+        result = css`
+            ${result};
+            padding-top: ${value};
+            padding-bottom: ${value};
+        `;
     }
 
     return result;

@@ -4,7 +4,7 @@ import { throttle } from 'throttle-debounce';
 
 import { useTheme } from '../theme';
 import { MatchBreakpointFunctionType } from './type';
-import { BreakpointCodeType } from '../mixins/type';
+import { BreakpointCodeType } from '../mixins';
 import { getWindow } from '../util';
 
 const useBreakpoint = (

@@ -1,14 +1,16 @@
-import { RootThemeType, ThemeType } from '../theme';
+import { ThemePropertyType } from '../theme';
 
-export const expansion = (degree = 180) => ({
-    expanded,
-}: {
-    expanded?: boolean;
-    theme?: ThemeType | RootThemeType;
-}): string => {
-    if (expanded) {
-        return `transform: rotate(${degree}deg);`;
-    }
+export const expansion =
+    (degree = 180) =>
+    ({
+        expanded,
+    }: {
+        expanded?: boolean;
+        theme?: ThemePropertyType;
+    }): string => {
+        if (expanded) {
+            return `transform: rotate(${degree}deg);`;
+        }
 
-    return '';
-};
+        return '';
+    };

@@ -30,7 +30,6 @@ export const DatePickerMonthYearSelectorRoot = styled.div.withConfig(
     ${reset};
     ${typography('paragraphMedium')};
     padding: ${spacing(4)};
-
     ${getComponentOverride('DatePickerMonthYearSelector')};
     ${marginProps};
 `;

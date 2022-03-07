@@ -51,7 +51,7 @@ export const legacyThemeVendorMonitor = {
         typography: {
             fontFamily: 'Roboto, sans-serif',
         },
-        spacing: 4,
+        spacingFactor: 4,
         shape: {
             borderRadius: '4px',
         },

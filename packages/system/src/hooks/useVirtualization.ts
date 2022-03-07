@@ -46,7 +46,7 @@ const getListBox = <E extends HTMLElement>(ref: RefObject<E | undefined>) => {
 
 const useItemHeight = <
     D extends Record<string, unknown>,
-    E extends HTMLElement
+    E extends HTMLElement,
 >(
     enabled: boolean,
     data: D[],
@@ -55,9 +55,8 @@ const useItemHeight = <
     itemSelector?: string,
 ) => {
     const dataLength = data.length;
-    const [dynamicAverageItemHeight, setDynamicAverageItemHeight] = useState(
-        MIN_ITEM_HEIGHT,
-    );
+    const [dynamicAverageItemHeight, setDynamicAverageItemHeight] =
+        useState(MIN_ITEM_HEIGHT);
     useEffect(() => {
         if (
             !enabled ||
@@ -146,7 +145,7 @@ const makeState = <E extends HTMLElement>(
 
 export const useVirtualization = <
     D extends Record<string, unknown>,
-    E extends HTMLElement
+    E extends HTMLElement,
 >(
     enabled: boolean,
     containerRef: RefObject<E | undefined>,

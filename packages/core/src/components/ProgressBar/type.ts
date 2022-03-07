@@ -44,6 +44,7 @@ export type ProgressBarIndicatorPropsType = {
     progress: number;
     preset?: ProgressBarPresetType;
 } & ColorPropsType &
+    HeightPropsType &
     ComponentElementStylePropsType;
 
 export type ProgressBarPresetType =

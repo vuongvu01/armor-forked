@@ -51,8 +51,9 @@ describe('breakpoints', () => {
         it('should return media declaration', () => {
             const result = functions.down('lg');
             expect(result).toEqual(
-                `${defaultMediaPrefix} (max-width:${breakpointValues.lg -
-                    edgeValue}px)`,
+                `${defaultMediaPrefix} (max-width:${
+                    breakpointValues.lg - edgeValue
+                }px)`,
             );
         });
     });

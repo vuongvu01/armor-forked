@@ -1,5 +1,5 @@
 import { HTMLAttributes } from 'react';
-import { MarginPropsType } from '@deliveryhero/armor-system';
+import { MarginPropsType, WidthPropsType } from '@deliveryhero/armor-system';
 
 import { ComponentStylePropsType } from '../../type';
 
@@ -12,4 +12,5 @@ type PrimaryIconWrapperEffectivePropsType = Partial<{
     MarginPropsType;
 
 export type PrimaryIconWrapperPropsType = PrimaryIconWrapperEffectivePropsType &
-    ComponentStylePropsType;
+    ComponentStylePropsType &
+    WidthPropsType;
