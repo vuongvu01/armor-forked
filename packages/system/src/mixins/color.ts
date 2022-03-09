@@ -16,7 +16,9 @@ export const color =
         if (tokenName in currentTheme.referenceIndex) {
             const colorHex = currentTheme.referenceIndex[tokenName] as string;
 
-            return opacity ? withOpacity(colorHex, opacity) : colorHex;
+            return opacity || opacity === 0
+                ? withOpacity(colorHex, opacity)
+                : colorHex;
         }
 
         return name;

@@ -904,3 +904,46 @@ export const WithSearchOptionEnableOnSelector = () => {
         />
     );
 };
+
+export const WithLongListItemOnSelector = () => (
+    <HeaderNavigation
+        title="Vendor Monitor"
+        navigationMenuTitle={NavigationMenuTitle}
+        selector={
+            <HeaderNavigationSelector
+                navigationSelectorParams={{
+                    ...selectorParams,
+                    isExpanded: true,
+                    options: [
+                        { value: 0, label: 'Afghanistan' },
+                        { value: 1, label: 'Albania' },
+                        { value: 2, label: 'Algeria' },
+                        { value: 3, label: 'Andorra' },
+                        { value: 4, label: 'Angola' },
+                        { value: 5, label: 'Antigua and Barbuda' },
+                        { value: 6, label: 'Argentina' },
+                        { value: 7, label: 'Armenia' },
+                        { value: 8, label: 'Australia' },
+                        { value: 9, label: 'Austria' },
+                        { value: 10, label: 'Azerbaijan' },
+                        { value: 11, label: 'Bahamas' },
+                        { value: 12, label: 'Bahrain' },
+                        { value: 13, label: 'Bangladesh' },
+                        { value: 14, label: 'Barbados' },
+                        { value: 15, label: 'Belarus' },
+                        { value: 16, label: 'Belgium' },
+                        { value: 17, label: 'Belize' },
+                        { value: 18, label: 'Benin' },
+                        { value: 19, label: 'Bhutan' },
+                        { value: 20, label: 'Bolivia' },
+                        { value: 21, label: 'Bosnia and Herzegovina' },
+                        { value: 22, label: 'Botswana' },
+                        { value: 23, label: 'Brazil' },
+                        { value: 24, label: 'Brunei' },
+                    ],
+                }}
+            />
+        }
+        navigationAction={NavigationAction}
+    />
+);

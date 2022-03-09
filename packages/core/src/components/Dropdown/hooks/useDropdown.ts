@@ -78,6 +78,7 @@ export const useDropdown = <E extends HTMLInputElement>(
         tabIndex,
         maxDropdownWidth,
         minDropdownWidth,
+        maxDropdownHeight,
         ...restProps
     }: DropdownPropsType,
     ref: RefType<E>,
@@ -294,6 +295,7 @@ export const useDropdown = <E extends HTMLInputElement>(
             enableGroupSelection,
             enableOptionContentEllipsis,
             renderItemAdditionalInfo,
+            maxDropdownHeight,
         },
         arrowProps,
         dropdownExpansionIndicatorProps: {

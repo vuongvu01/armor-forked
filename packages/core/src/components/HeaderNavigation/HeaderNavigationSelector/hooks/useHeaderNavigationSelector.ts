@@ -47,6 +47,7 @@ export const useHeaderNavigationSelector = <E extends HTMLDivElement>(
         dropdownWidth,
         maxDropdownWidth,
         minDropdownWidth,
+        maxDropdownHeight,
         ...restProps
     }: HeaderNavigationSelectorPropsType,
     ref: RefType<E>,
@@ -134,6 +135,8 @@ export const useHeaderNavigationSelector = <E extends HTMLDivElement>(
             dynamicInternalOptions,
             setInternalOptions: setDynamicInternalOptions,
             autoFocus: true,
+            enableScrollGradientEffect: true,
+            maxDropdownHeight,
         },
         expansionIndicatorProps: {
             isExpanded: isOptionListShown,

@@ -191,6 +191,8 @@ export type DropdownEffectivePropsType = Partial<{
     maxDropdownWidth: ScalarType;
     /** If set, the dropdown width will never be smaller than this value */
     minDropdownWidth: ScalarType;
+    /** If set, the dropdown height will never exceed this value */
+    maxDropdownHeight: ScalarType;
 }> &
     ComponentBehaviourOpenStateType &
     ComponentBehaviourPortalType &

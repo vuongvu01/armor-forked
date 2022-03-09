@@ -21,6 +21,7 @@ import {
     OptionListPropsType,
     OptionObjectType,
 } from '../type';
+import { useShowGradientEffectOnScroll } from './useShowGradientEffectOnScroll';
 import { CheckedIconType } from '../../Checkbox/type';
 import {
     OPTION_LIST_ITEM,
@@ -62,13 +63,15 @@ export const useOptionList = ({
     enableOptionContentEllipsis,
     renderItemAdditionalInfo,
     autoFocus,
+    enableScrollGradientEffect,
+    maxDropdownHeight,
     ...restProps
 }: OptionListPropsType) => {
     const [cursorPosition, setCursorPosition] = useState<number>(
         INITIAL_CURSOR_POSITION,
     );
     const [searchQuery, setSearchQuery] = useState(defaultSearchQuery);
-    const listContainerRef = useRef<HTMLDivElement>(null);
+    const listContentRef = useRef<HTMLDivElement>(null);
     const listRef = useRef<HTMLDivElement>(null);
     const searchInputRef = useRef<HTMLInputElement>(null);
     const isSelectAllOptionRendered =
@@ -84,7 +87,7 @@ export const useOptionList = ({
         dynamicInternalOptions,
         {
             itemSelector: '.OptionListItem-Root',
-            parentContainerRef: listContainerRef as RefObject<HTMLElement>,
+            parentContainerRef: listContentRef as RefObject<HTMLElement>,
         },
     );
 
@@ -270,6 +273,12 @@ export const useOptionList = ({
         onEnterKeyPress: handleEnterPress,
     });
 
+    const { isTopGradientEffectShown, isBottomGradientEffectShown } =
+        useShowGradientEffectOnScroll(
+            !!enableScrollGradientEffect,
+            listContentRef,
+        );
+
     return {
         rootProps: restProps,
         getOptionItemProps: (option: OptionObjectType) => ({
@@ -298,8 +307,11 @@ export const useOptionList = ({
             autoFocus,
             ref: searchInputRef,
         }),
+        listContentProps: {
+            ref: listContentRef,
+        },
         listContainerProps: {
-            ref: listContainerRef,
+            maxHeight: maxDropdownHeight,
         },
         optionListItemGroupProps: (group: OptionListGroupObjectType) => ({
             multiple,
@@ -340,5 +352,11 @@ export const useOptionList = ({
         },
         isSelectAllOptionRendered,
         groupIndex,
+        getTopGadientProps: () => ({
+            isShown: isTopGradientEffectShown,
+        }),
+        getBottomGadientProps: () => ({
+            isShown: isBottomGradientEffectShown,
+        }),
     };
 };

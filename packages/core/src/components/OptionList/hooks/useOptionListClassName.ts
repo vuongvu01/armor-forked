@@ -50,6 +50,11 @@ export const useOptionListClassName = (
                 classPrefix,
                 disabled,
             }),
+            OptionListContent: classGeneratorBasedOnComponent({
+                component: 'OptionListContent',
+                classPrefix,
+                disabled,
+            }),
             VirtualPaddingTop: classGeneratorBasedOnComponent({
                 component: 'VirtualPaddingTop',
                 classPrefix,
@@ -77,6 +82,16 @@ export const useOptionListClassName = (
             }),
             Footer: classGeneratorBasedOnComponent({
                 component: 'Footer',
+                classPrefix,
+                disabled,
+            }),
+            TopGradient: classGeneratorBasedOnComponent({
+                component: 'TopGradient',
+                classPrefix,
+                disabled,
+            }),
+            BottomGradient: classGeneratorBasedOnComponent({
+                component: 'BottomGradient',
                 classPrefix,
                 disabled,
             }),
