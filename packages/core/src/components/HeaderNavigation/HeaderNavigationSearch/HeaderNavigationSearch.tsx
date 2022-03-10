@@ -29,7 +29,6 @@ export const HeaderNavigationSearch = forwardRef<
 
     return (
         <NavigationItemSearch
-            theme={theme}
             className={classOverride.ItemSearch}
             separator={separator}
         >
@@ -39,7 +38,6 @@ export const HeaderNavigationSearch = forwardRef<
                 options={options}
                 onChange={onChange}
                 onItemSelect={onItemSelect}
-                theme={theme}
                 className={classOverride.NavigationSearchRoot}
                 ref={ref}
             />

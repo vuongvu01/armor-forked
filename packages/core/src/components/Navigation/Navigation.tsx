@@ -1,6 +1,6 @@
 import React, { forwardRef, Fragment, MouseEvent } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme, ScalarType } from '@deliveryhero/armor-system';
+import { ScalarType } from '@deliveryhero/armor-system';
 
 import { useNavigationClassNames } from './hooks/useNavigationClassNames';
 import { useNavigation } from './hooks/useNavigation';
@@ -115,7 +115,6 @@ export const Navigation = forwardRef<HTMLDivElement, NavigationPropsType>(
         },
         ref,
     ) {
-        const theme = useComponentTheme(NAVIGATION_CLASS_PREFIX);
         const classNameComponents = useNavigationClassNames(
             NAVIGATION_CLASS_PREFIX,
             className,
@@ -127,7 +126,6 @@ export const Navigation = forwardRef<HTMLDivElement, NavigationPropsType>(
         return (
             <NavigationRoot
                 {...restRootProps}
-                theme={theme}
                 className={classNameComponents.Root}
                 ref={ref}
             >

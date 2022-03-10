@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme, PortalToBody } from '@deliveryhero/armor-system';
+import { PortalToBody } from '@deliveryhero/armor-system';
 
 import { useContextMenuClassNames } from './hooks/useContextMenuClassNames';
 import { useContextMenu } from './hooks/useContextMenu';
@@ -14,7 +14,6 @@ import { MenuElement } from '../Menu';
  */
 export const ContextMenu = forwardRef<HTMLDivElement, ContextMenuPropsType>(
     function ContextMenu({ className, ...props }, ref) {
-        const theme = useComponentTheme(CONTEXTMENU_CLASS_PREFIX);
         const classNameComponents = useContextMenuClassNames(
             CONTEXTMENU_CLASS_PREFIX,
             className,
@@ -39,11 +38,9 @@ export const ContextMenu = forwardRef<HTMLDivElement, ContextMenuPropsType>(
                     <PortalToBody {...portalProps}>
                         <ContextMenuRoot
                             {...rootProps}
-                            theme={theme}
                             className={classNameComponents.Root}
                         >
                             <ContextMenuArrow
-                                theme={theme}
                                 className={classNameComponents.Arrow}
                                 {...arrowProps}
                             />

@@ -1,5 +1,4 @@
 import React, { forwardRef } from 'react';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useTableCheckboxCellClassNames } from './hooks/useTableCheckboxCellClassNames';
 import { TableCheckboxCellRoot, TableCheckboxCellCheckbox } from './style';
@@ -14,8 +13,6 @@ export const TableCheckboxCell = forwardRef<
     HTMLTableCellElement,
     TableCheckboxCellPropsType
 >(function TableCheckboxCell({ className, ...props }, ref) {
-    const theme = useComponentTheme(TABLE_CHECKBOX_CELL_CLASS_PREFIX);
-
     const classNameComponents = useTableCheckboxCellClassNames(
         TABLE_CHECKBOX_CELL_CLASS_PREFIX,
         className,
@@ -26,10 +23,9 @@ export const TableCheckboxCell = forwardRef<
     return (
         <TableCheckboxCellRoot
             {...rootProps}
-            theme={theme}
             className={classNameComponents.Root}
         >
-            <TableCheckboxCellCheckbox {...checkboxProps} theme={theme} />
+            <TableCheckboxCellCheckbox {...checkboxProps} />
         </TableCheckboxCellRoot>
     );
 });

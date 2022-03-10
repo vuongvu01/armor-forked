@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import {
     HeaderNavigationLinksContainer,
@@ -22,8 +21,6 @@ export const HeaderNavigationLinks = forwardRef<
     HTMLDivElement,
     HeaderNavigationLinksPropsType
 >(function HeaderNavigationLinks({ className, children, ...restProps }, ref) {
-    const theme = useComponentTheme(HEADER_NAVIGATION_LINKS_CLASS_PREFIX);
-
     const classOverride = useHeaderNavigationLinksClassName(
         HEADER_NAVIGATION_LINKS_CLASS_PREFIX,
         className,
@@ -39,11 +36,9 @@ export const HeaderNavigationLinks = forwardRef<
             <HeaderNavigationLinksRoot
                 data-testid={headerNavigationLinksRoot}
                 {...restRootProps}
-                theme={theme}
                 className={classOverride.Root}
             >
                 <HeaderNavigationLinksContainer
-                    theme={theme}
                     className={classOverride.Container}
                 >
                     {children}

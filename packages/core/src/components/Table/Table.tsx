@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useTableClassNames } from './hooks/useTableClassNames';
 import { TableRoot } from './style';
@@ -17,7 +16,6 @@ export const Table = forwardRef<HTMLTableElement, TablePropsType>(
         { className, stickyColumns, stickyHead, ...restProps },
         ref,
     ) {
-        const theme = useComponentTheme(TABLE_CLASS_PREFIX);
         const classNameComponents = useTableClassNames(
             TABLE_CLASS_PREFIX,
             className,
@@ -36,7 +34,6 @@ export const Table = forwardRef<HTMLTableElement, TablePropsType>(
                 <TableRoot
                     data-testid={tableRootTestId}
                     {...restProps}
-                    theme={theme}
                     className={classNameComponents.Root}
                     ref={rootReference}
                     cellPadding="0"

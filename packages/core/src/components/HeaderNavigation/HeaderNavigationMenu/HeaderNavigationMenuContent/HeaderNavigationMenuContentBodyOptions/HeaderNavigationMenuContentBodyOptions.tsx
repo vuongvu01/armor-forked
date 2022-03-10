@@ -1,6 +1,5 @@
 import React, { FunctionComponent, useContext } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import {
     HandleOptionItemClickParamsType,
@@ -35,10 +34,6 @@ export const HeaderNavigationMenuContentBodyOptions: FunctionComponent<
         HeaderNavigationMenuContentContext,
     );
 
-    const theme = useComponentTheme(
-        HEADER_NAVIGATION_MENU_CONTENT_BODY_OPTIONS_CLASS_PREFIX,
-    );
-
     const classOverride = useHeaderNavigationMenuContentBodyOptionsClassName(
         HEADER_NAVIGATION_MENU_CONTENT_BODY_OPTIONS_CLASS_PREFIX,
         className,
@@ -63,7 +58,6 @@ export const HeaderNavigationMenuContentBodyOptions: FunctionComponent<
         <HeaderNavigationMenuContentBodyOptionsRoot
             data-testid={headerNavigationMenuContentBodyOptionsRoot}
             {...restProps}
-            theme={theme}
             className={classOverride.Root}
         >
             {
@@ -75,7 +69,6 @@ export const HeaderNavigationMenuContentBodyOptions: FunctionComponent<
 
                             return (
                                 <HeaderNavigationMenuContentBodyOptionsItem
-                                    theme={theme}
                                     className={`${
                                         classOverride.Item
                                     } ${setActiveClass(
@@ -98,7 +91,6 @@ export const HeaderNavigationMenuContentBodyOptions: FunctionComponent<
 
                         const categoryItem = (
                             <HeaderNavigationMenuContentBodyOptionsCategory
-                                theme={theme}
                                 className={classOverride.Category}
                                 key={value}
                                 data-testid={
@@ -118,7 +110,6 @@ export const HeaderNavigationMenuContentBodyOptions: FunctionComponent<
                                     } = item;
                                     return (
                                         <HeaderNavigationMenuContentBodyOptionsItem
-                                            theme={theme}
                                             className={`${
                                                 classOverride.Item
                                             } ${setActiveClass(

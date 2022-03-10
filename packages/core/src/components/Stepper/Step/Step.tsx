@@ -51,18 +51,15 @@ export const Step = forwardRef<HTMLDivElement, StepPropsType>(function Step(
         <StepRoot
             data-testid={stepRoot}
             {...rootProps}
-            theme={theme}
             className={classOverride.Root}
         >
             <StepButton
-                theme={theme}
                 className={classOverride.Button}
                 {...stepperButtonProps}
             >
-                <StepperPieceRoot theme={theme} className={classOverride.Piece}>
+                <StepperPieceRoot className={classOverride.Piece}>
                     <StepperPieceWrapper
                         {...stepperPieceProps}
-                        theme={theme}
                         className={classOverride.Wrapper}
                     >
                         {isIconShown && icon}
@@ -82,7 +79,6 @@ export const Step = forwardRef<HTMLDivElement, StepPropsType>(function Step(
                     </StepperPieceWrapper>
                     <StepperLine
                         {...stepperLineProps}
-                        theme={theme}
                         className={classOverride.Line}
                     />
                 </StepperPieceRoot>

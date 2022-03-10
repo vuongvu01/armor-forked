@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useSkeletonClassNames } from './hooks/useSkeletonClassNames';
 import { useSkeleton } from './hooks/useSkeleton';
@@ -11,7 +10,6 @@ import { ImageFileIcon } from './images/ImageFileIcon';
 
 export const Skeleton = forwardRef<HTMLDivElement, SkeletonPropsType>(
     function Skeleton({ className, ...props }, ref) {
-        const theme = useComponentTheme(SKELETON_CLASS_PREFIX);
         const classNames = useSkeletonClassNames(
             SKELETON_CLASS_PREFIX,
             className,
@@ -22,11 +20,7 @@ export const Skeleton = forwardRef<HTMLDivElement, SkeletonPropsType>(
 
         return (
             <>
-                <SkeletonRoot
-                    {...rootProps}
-                    theme={theme}
-                    className={classNames.Root}
-                >
+                <SkeletonRoot {...rootProps} className={classNames.Root}>
                     {imagePlaceholder && enableImage && <ImageFileIcon />}
                 </SkeletonRoot>
             </>

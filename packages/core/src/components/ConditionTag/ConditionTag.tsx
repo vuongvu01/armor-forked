@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import { CancelIcon } from '@deliveryhero/armor-icons';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 // import PropTypes from 'prop-types';
 
 import { useConditionTagClassNames } from './hooks/useConditionTagClassNames';
@@ -23,7 +22,6 @@ import { Tooltip } from '../Tooltip';
  */
 export const ConditionTag = forwardRef<HTMLDivElement, ConditionTagPropsType>(
     function ConditionTag({ className, ...props }, ref) {
-        const theme = useComponentTheme(CONDITION_TAG_CLASS_PREFIX);
         const classNames = useConditionTagClassNames(
             CONDITION_TAG_CLASS_PREFIX,
             className,
@@ -41,19 +39,14 @@ export const ConditionTag = forwardRef<HTMLDivElement, ConditionTagPropsType>(
         } = useConditionTag<HTMLDivElement>(props, ref);
 
         return (
-            <ConditionTagRoot
-                {...rootProps}
-                theme={theme}
-                className={classNames.Root}
-            >
-                <ConditionTagLabel theme={theme} className={classNames.Label}>
+            <ConditionTagRoot {...rootProps} className={classNames.Root}>
+                <ConditionTagLabel className={classNames.Label}>
                     {label}
                 </ConditionTagLabel>
-                <ConditionTagValue theme={theme} className={classNames.Value}>
+                <ConditionTagValue className={classNames.Value}>
                     {valueHead.map((item, index) => (
                         <ConditionTagValueSegment
                             key={index}
-                            theme={theme}
                             className={classNames.ValueSegment}
                         >
                             {item}
@@ -61,7 +54,6 @@ export const ConditionTag = forwardRef<HTMLDivElement, ConditionTagPropsType>(
                     ))}
                     {hasTail && (
                         <ConditionTagValueSegment
-                            theme={theme}
                             className={classNames.ValueSegment}
                             moreItems
                         >
@@ -71,7 +63,6 @@ export const ConditionTag = forwardRef<HTMLDivElement, ConditionTagPropsType>(
                                 trigger={
                                     <ConditionTagValueMoreLink
                                         tag="span"
-                                        theme={theme}
                                         className={classNames.ValueMoreLink}
                                     >
                                         {tailLength} more
@@ -80,7 +71,6 @@ export const ConditionTag = forwardRef<HTMLDivElement, ConditionTagPropsType>(
                             >
                                 {valueTail.map((item, index) => (
                                     <ConditionTagValueTailElement
-                                        theme={theme}
                                         className={classNames.ValueTailElement}
                                         key={index}
                                     >
@@ -94,7 +84,6 @@ export const ConditionTag = forwardRef<HTMLDivElement, ConditionTagPropsType>(
                 {enableCloseIcon && (
                     <ConditionTagCloseIconContainer
                         {...closeButtonProps}
-                        theme={theme}
                         className={classNames.CloseIconContainer}
                     >
                         <CancelIcon small />

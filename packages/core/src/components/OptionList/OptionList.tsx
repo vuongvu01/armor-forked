@@ -1,5 +1,5 @@
 import React, { Fragment, FunctionComponent } from 'react';
-import { useComponentTheme, useSortedList } from '@deliveryhero/armor-system';
+import { useSortedList } from '@deliveryhero/armor-system';
 
 import {
     OptionListGroupObjectType,
@@ -31,8 +31,6 @@ export const OptionList: FunctionComponent<OptionListPropsType> = ({
     className,
     ...props
 }) => {
-    const theme = useComponentTheme(OPTION_LIST_CLASS_PREFIX);
-
     const {
         rootProps,
         getOptionItemProps,
@@ -57,8 +55,8 @@ export const OptionList: FunctionComponent<OptionListPropsType> = ({
         optionListFooterProps,
         isSelectAllOptionRendered,
         groupIndex,
-        getTopGadientProps,
-        getBottomGadientProps,
+        getTopGradientProps,
+        getBottomGradientProps,
     } = useOptionList(props);
 
     const classOverride = useOptionListClassName(
@@ -71,24 +69,17 @@ export const OptionList: FunctionComponent<OptionListPropsType> = ({
     const displayedGroups: ObjectLiteralType = {};
 
     return internalOptions.length ? (
-        <OptionListRoot
-            {...rootProps}
-            className={classOverride.Root}
-            theme={theme}
-        >
+        <OptionListRoot {...rootProps} className={classOverride.Root}>
             {isOptionListHeaderRendered && (
                 <OptionListBeforeSectionContainer
-                    theme={theme}
                     className={classOverride.BeforeSectionContainer}
                 >
                     {enableSearchOption && (
                         <OptionListSearchContainer
-                            theme={theme}
                             className={classOverride.SearchContainer}
                         >
                             <OptionListSearch
                                 {...getOptionListSearchProps()}
-                                theme={theme}
                                 className={classOverride.Search}
                             />
                         </OptionListSearchContainer>
@@ -96,22 +87,18 @@ export const OptionList: FunctionComponent<OptionListPropsType> = ({
                 </OptionListBeforeSectionContainer>
             )}
             <OptionListContainer
-                theme={theme}
                 className={classOverride.OptionListContainer}
                 {...listContainerProps}
             >
                 <TopGradientEffect
-                    {...getTopGadientProps()}
-                    theme={theme}
+                    {...getTopGradientProps()}
                     className={classOverride.TopGradient}
                 />
                 <BottomGradientEffect
-                    {...getBottomGadientProps()}
-                    theme={theme}
+                    {...getBottomGradientProps()}
                     className={classOverride.BottomGradient}
                 />
                 <OptionListContent
-                    theme={theme}
                     className={classOverride.OptionListContent}
                     {...listContentProps}
                 >
@@ -127,7 +114,6 @@ export const OptionList: FunctionComponent<OptionListPropsType> = ({
                             <OptionListVirtualPadding
                                 {...getVirtualTopSpaceProps()}
                                 className={classOverride.VirtualPaddingTop}
-                                theme={theme}
                             />
                         )}
 
@@ -182,7 +168,6 @@ export const OptionList: FunctionComponent<OptionListPropsType> = ({
                             <OptionListVirtualPadding
                                 {...getVirtualBottomSpaceProps()}
                                 className={classOverride.VirtualPaddingBottom}
-                                theme={theme}
                             />
                         )}
                     </div>

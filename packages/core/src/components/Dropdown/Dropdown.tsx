@@ -50,12 +50,10 @@ export const Dropdown = forwardRef<HTMLInputElement, DropdownPropsType>(
 
         const renderActionItem = (
             <ExpansionIndicatorContainer
-                theme={theme}
                 className={classOverride.ExpansionIndicatorContainer}
             >
                 <DropdownExpansionIndicator
                     {...dropdownExpansionIndicatorProps}
-                    theme={theme}
                     className={classOverride.ExpansionIndicator}
                 />
             </ExpansionIndicatorContainer>
@@ -63,15 +61,10 @@ export const Dropdown = forwardRef<HTMLInputElement, DropdownPropsType>(
 
         return (
             // @ts-ignore todo: the fix is only available with loose of backward compatibility
-            <DropdownRoot
-                {...rootProps}
-                className={classOverride.Root}
-                theme={theme}
-            >
+            <DropdownRoot {...rootProps} className={classOverride.Root}>
                 <DropdownContainer
                     {...containerProps}
                     className={classOverride.Container}
-                    theme={theme}
                 >
                     <DropdownTextInput
                         {...textInputProps}
@@ -84,7 +77,6 @@ export const Dropdown = forwardRef<HTMLInputElement, DropdownPropsType>(
                         }
                         after={renderActionItem}
                         className={classOverride.TextInput}
-                        theme={theme}
                     />
                     <PortalToBody {...portalProps}>
                         {open && (
@@ -92,7 +84,6 @@ export const Dropdown = forwardRef<HTMLInputElement, DropdownPropsType>(
                                 data-testid={DROPDOWN_OPTION_LIST_CONTAINER}
                                 {...listContainerProps}
                                 className={classOverride.OptionListContainer}
-                                theme={theme}
                             >
                                 <OptionList
                                     {...optionListProps}

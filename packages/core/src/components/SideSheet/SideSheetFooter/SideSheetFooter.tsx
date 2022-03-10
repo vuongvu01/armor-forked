@@ -1,8 +1,5 @@
 import React, { FC } from 'react';
-import {
-    useComponentTheme,
-    makeRootClassName,
-} from '@deliveryhero/armor-system';
+import { makeRootClassName } from '@deliveryhero/armor-system';
 
 import { SideSheetFooterPropsType } from './type';
 import { SideSheetFooterRoot } from './style';
@@ -18,13 +15,10 @@ export const SideSheetFooter: FC<SideSheetFooterPropsType> = ({
     className,
     ...restProps
 }) => {
-    const theme = useComponentTheme(SIDE_SHEET_FOOTER_CLASS_PREFIX);
-
     return (
         <SideSheetFooterRoot
             data-testid={sideSheetFooter}
             {...restProps}
-            theme={theme}
             className={makeRootClassName(
                 SIDE_SHEET_FOOTER_CLASS_PREFIX,
                 className,

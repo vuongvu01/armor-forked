@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useTableExpandableSectionClassNames } from './hooks/useTableExpandableSectionClassNames';
 import { useTableExpandableSection } from './hooks/useTableExpandableSection';
@@ -19,7 +18,6 @@ export const TableExpandableSection = forwardRef<
     HTMLTableRowElement,
     TableExpandableSectionPropsType
 >(function TableExpandableSection({ className, children, ...restProps }, ref) {
-    const theme = useComponentTheme(TABLE_EXPANDABLE_SECTION_CLASS_PREFIX);
     const classNameComponents = useTableExpandableSectionClassNames(
         TABLE_EXPANDABLE_SECTION_CLASS_PREFIX,
         className,
@@ -31,18 +29,15 @@ export const TableExpandableSection = forwardRef<
     return (
         <TableExpandableSectionRoot
             {...rootProps}
-            theme={theme}
             className={classNameComponents.Root}
             ref={ref}
         >
             <TableExpandableSectionCell
                 {...cellProps}
-                theme={theme}
                 className={classNameComponents.Cell}
             >
                 <TableExpandableSectionContent
                     {...contentProps}
-                    theme={theme}
                     className={classNameComponents.Content}
                 >
                     {children}

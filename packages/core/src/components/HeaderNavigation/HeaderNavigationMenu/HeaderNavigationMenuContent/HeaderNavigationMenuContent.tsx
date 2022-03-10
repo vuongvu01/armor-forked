@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import { useComponentTheme, useRootRef } from '@deliveryhero/armor-system';
+import { useRootRef } from '@deliveryhero/armor-system';
 
 import {
     HEADER_NAVIGATION_MENU_CONTENT_CLASS_PREFIX,
@@ -18,10 +18,6 @@ export const HeaderNavigationMenuContent = forwardRef<
 ) {
     const menuContentRef = useRootRef<HTMLDivElement>(ref);
 
-    const theme = useComponentTheme(
-        HEADER_NAVIGATION_MENU_CONTENT_CLASS_PREFIX,
-    );
-
     const classOverride = useHeaderNavigationMenuContentClassName(
         HEADER_NAVIGATION_MENU_CONTENT_CLASS_PREFIX,
         className,
@@ -31,7 +27,6 @@ export const HeaderNavigationMenuContent = forwardRef<
         <HeaderNavigationMenuContentRoot
             data-testid={headerNavigationMenuContentRoot}
             {...restProps}
-            theme={theme}
             className={classOverride.Root}
             ref={menuContentRef}
         >

@@ -53,13 +53,11 @@ export const HeaderNavigationSelector = forwardRef<
     return (
         <HeaderNavigationSelectorRoot
             {...selectorProps}
-            theme={theme}
             className={classOverride.Root}
         >
             <HeaderNavigationSelectorWrapper
                 data-testid={headerNavigationSelectorRoot}
                 {...rootProps}
-                theme={theme}
                 className={classOverride.Wrapper}
                 ref={containerRef}
             >
@@ -81,7 +79,6 @@ export const HeaderNavigationSelector = forwardRef<
                             <SelectorExpansionIndicator
                                 {...expansionIndicatorProps}
                                 marginLeft={4}
-                                theme={theme}
                                 className={
                                     classOverride.SelectedOptionsExpansionIndicator
                                 }
@@ -92,13 +89,11 @@ export const HeaderNavigationSelector = forwardRef<
                 <PortalToBody {...portalProps}>
                     <SelectorDropdownOptionListContainer
                         className={classOverride.OptionListContainer}
-                        theme={theme}
                         {...listContainerProps}
                     >
                         {isOpen && (
                             <SelectorDropdownOptionListWrapper
                                 className={classOverride.OptionListWrapper}
-                                theme={theme}
                                 {...dropdownContainerProps}
                             >
                                 <SelectorDropdownOptionList

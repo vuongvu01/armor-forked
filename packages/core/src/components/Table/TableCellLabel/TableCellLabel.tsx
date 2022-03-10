@@ -1,5 +1,4 @@
 import React, { forwardRef } from 'react';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useTableCellLabelClassNames } from './hooks/useTableCellLabelClassNames';
 import { TableCellLabelRoot } from './style';
@@ -16,7 +15,6 @@ export const TableCellLabel = forwardRef<
     HTMLDivElement,
     TableCellLabelPropsType
 >(function TableCellLabel({ className, ...restProps }, ref) {
-    const theme = useComponentTheme(TABLE_CELL_LABEL_CLASS_PREFIX);
     const classNameComponents = useTableCellLabelClassNames(
         TABLE_CELL_LABEL_CLASS_PREFIX,
         className,
@@ -26,7 +24,6 @@ export const TableCellLabel = forwardRef<
         <TableCellLabelRoot
             data-testid={tableCellLabelRootTestId}
             {...restProps}
-            theme={theme}
             className={classNameComponents.Root}
             ref={ref}
         />

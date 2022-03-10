@@ -1,7 +1,6 @@
 import React, { forwardRef, Fragment, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import {
-    useComponentTheme,
     getArrayOfScalarPropType,
     getScalarPropType,
 } from '@deliveryhero/armor-system';
@@ -95,7 +94,6 @@ export const DataTable = forwardRef<HTMLDivElement, DataTablePropsType>(
             getEmptyStateProps,
         } = useDataTable(props, ref);
 
-        const theme = useComponentTheme(DATA_TABLE_CLASS_PREFIX);
         const classNameComponents = useDataTableClassNames(
             DATA_TABLE_CLASS_PREFIX,
             className,
@@ -183,7 +181,6 @@ export const DataTable = forwardRef<HTMLDivElement, DataTablePropsType>(
                 >
                     <DataTableRoot
                         {...rootProps}
-                        theme={theme}
                         className={classNameComponents.Root}
                     >
                         {isActionSheetVisible && (
@@ -257,7 +254,6 @@ export const DataTable = forwardRef<HTMLDivElement, DataTablePropsType>(
                                                 className={
                                                     classNameComponents.VirtualPaddingTop
                                                 }
-                                                theme={theme}
                                             />
                                         )}
                                         {data.map((item) => {
@@ -299,7 +295,6 @@ export const DataTable = forwardRef<HTMLDivElement, DataTablePropsType>(
                                                 className={
                                                     classNameComponents.VirtualPaddingBottom
                                                 }
-                                                theme={theme}
                                             />
                                         )}
                                     </>
@@ -308,7 +303,6 @@ export const DataTable = forwardRef<HTMLDivElement, DataTablePropsType>(
                         </Table>
                         {enableFooter && (
                             <DataTableFooter
-                                theme={theme}
                                 className={classNameComponents.Footer}
                             >
                                 {enablePageNavigation && (

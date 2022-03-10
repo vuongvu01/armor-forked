@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import {
     OptionListItemGroupRoot,
@@ -19,8 +18,6 @@ export const OptionListItemGroup: FC<OptionListItemGroupPropType> = ({
     children,
     ...props
 }) => {
-    const theme = useComponentTheme(OPTION_LIST_ITEM_GROUP_CLASS_PREFIX);
-
     const classOverride = useOptionListItemGroupClassName(
         OPTION_LIST_ITEM_GROUP_CLASS_PREFIX,
         className,
@@ -35,11 +32,7 @@ export const OptionListItemGroup: FC<OptionListItemGroupPropType> = ({
     } = useOptionListItemGroup(props);
 
     return (
-        <OptionListItemGroupRoot
-            {...rootProps}
-            theme={theme}
-            className={classOverride.Root}
-        >
+        <OptionListItemGroupRoot {...rootProps} className={classOverride.Root}>
             {multiple && enableGroupSelection && (
                 <Checkbox
                     {...checkboxProps}
@@ -48,7 +41,6 @@ export const OptionListItemGroup: FC<OptionListItemGroupPropType> = ({
             )}
             <OptionListItemGroupTypography
                 {...typographyProps}
-                theme={theme}
                 className={classOverride.Typography}
             >
                 {children}

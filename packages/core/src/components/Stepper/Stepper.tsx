@@ -27,7 +27,6 @@ export const Stepper = forwardRef<HTMLDivElement, StepperPropsType>(
                 <StepperRoot
                     data-testid={stepperRoot}
                     {...rootProps}
-                    theme={theme}
                     className={classNameRoot}
                 />
             </StepperContext.Provider>

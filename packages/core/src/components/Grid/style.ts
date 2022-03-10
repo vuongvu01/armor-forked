@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import {
     marginProps,
     propsBlocker,
+    RootThemeType,
     sizeProps,
     ThemeType,
 } from '@deliveryhero/armor-system';
@@ -34,8 +35,10 @@ const gridRootStyle = ({
     gutterSpacing,
     gutterSpacingVertical,
     gutterSpacingHorizontal,
-    theme: { spacing },
-}: GridPropsType & { theme: ThemeType }) => {
+    theme,
+}: GridPropsType & { theme: RootThemeType }) => {
+    const { spacing } = theme.armor;
+
     let result = {};
 
     const gutterSpacingX = gutterSpacingHorizontal || gutterSpacing;

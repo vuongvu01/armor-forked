@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { SelectorLabelRoot } from './style';
 import { SelectorLabelEffectivePropsType } from './type';
@@ -15,8 +14,6 @@ export const SelectorLabel: FC<SelectorLabelEffectivePropsType> = ({
     disabled,
     typographyProps,
 }) => {
-    const theme = useComponentTheme(SELECTOR_LABEL_CLASS_PREFIX);
-
     const classOverride = useSelectorLabelClassName(
         SELECTOR_LABEL_CLASS_PREFIX,
         className,
@@ -30,7 +27,6 @@ export const SelectorLabel: FC<SelectorLabelEffectivePropsType> = ({
             disabled={disabled}
             error={error}
             className={classOverride.Root}
-            theme={theme}
         >
             {typographyProps ? (
                 <Typography

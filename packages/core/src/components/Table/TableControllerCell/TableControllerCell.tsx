@@ -1,9 +1,6 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import {
-    useComponentTheme,
-    getScalarPropType,
-} from '@deliveryhero/armor-system';
+import { getScalarPropType } from '@deliveryhero/armor-system';
 
 import { useTableControllerCellClassNames } from './hooks/useTableControllerCellClassNames';
 import { useTableControllerCell } from './hooks/useTableControllerCell';
@@ -23,7 +20,6 @@ export const TableControllerCell = forwardRef<
     HTMLTableCellElement,
     TableControllerCellPropsType
 >(function TableControllerCell({ className, children, ...restProps }, ref) {
-    const theme = useComponentTheme(TABLE_CONTROLLER_CELL_CLASS_PREFIX);
     const classNameComponents = useTableControllerCellClassNames(
         TABLE_CONTROLLER_CELL_CLASS_PREFIX,
         className,
@@ -35,22 +31,18 @@ export const TableControllerCell = forwardRef<
     return (
         <TableControllerCellRoot
             {...rootProps}
-            theme={theme}
             className={classNameComponents.Root}
             ref={ref}
         >
             <TableControllerCellContainer
-                theme={theme}
                 className={classNameComponents.Container}
             >
                 <TableControllerCellTrigger
                     {...triggerProps}
-                    theme={theme}
                     className={classNameComponents.Trigger}
                 >
                     <TableControllerCellIcon
                         {...triggerIconProps}
-                        theme={theme}
                         className={classNameComponents.Icon}
                     />
                 </TableControllerCellTrigger>

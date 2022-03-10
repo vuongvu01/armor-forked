@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { HeaderNavigationPropsType } from './type';
 import {
@@ -45,8 +44,6 @@ export const HeaderNavigation = forwardRef<
     },
     ref,
 ) {
-    const theme = useComponentTheme(HEADER_NAVIGATION_CLASS_PREFIX);
-
     const classOverride = useHeaderNavigationClassName(
         HEADER_NAVIGATION_CLASS_PREFIX,
         className,
@@ -58,18 +55,14 @@ export const HeaderNavigation = forwardRef<
             {...restProps}
             className={classOverride.Root}
             ref={ref}
-            theme={theme}
         >
             <HeaderNavigationContent
-                theme={theme}
                 className={classOverride.HeaderNavigationContent}
             >
                 <HeaderNavigationContentItem
-                    theme={theme}
                     className={classOverride.HeaderNavigationContentItem}
                 >
                     <HeaderNavigationContentLeft
-                        theme={theme}
                         className={classOverride.HeaderNavigationContentLeft}
                     >
                         {(navigationMenuTitle || navigationMenuContent) && (
@@ -82,11 +75,9 @@ export const HeaderNavigation = forwardRef<
                         )}
                         {title && (
                             <HeaderNavigationItem
-                                theme={theme}
                                 className={classOverride.HeaderNavigationItem}
                             >
                                 <HeaderNavigationTitleRoot
-                                    theme={theme}
                                     className={classOverride.NavigationTitle}
                                 >
                                     {title}
@@ -97,11 +88,9 @@ export const HeaderNavigation = forwardRef<
                     </HeaderNavigationContentLeft>
                 </HeaderNavigationContentItem>
                 <HeaderNavigationContentItem
-                    theme={theme}
                     className={classOverride.HeaderNavigationContentItem}
                 >
                     <HeaderNavigationContentRight
-                        theme={theme}
                         className={classOverride.HeaderNavigationContentRight}
                     >
                         {search}

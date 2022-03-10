@@ -36,7 +36,6 @@ export const SearchSuggestionItem: FunctionComponent<
     renderItemIcon,
     cursorPosition,
     searchQuery,
-    theme,
 }) => {
     const classOverride = useSearchSuggestionItemClassName(
         SEARCH_CLASS_PREFIX,
@@ -51,21 +50,16 @@ export const SearchSuggestionItem: FunctionComponent<
         };
 
     return (
-        <SearchSuggestionItemRoot
-            className={classOverride.SuggestionsItem}
-            theme={theme}
-        >
+        <SearchSuggestionItemRoot className={classOverride.SuggestionsItem}>
             <SearchSuggestionItemContainer
                 isHighlighted={cursorPosition === suggestionIndex}
                 className={classOverride.SuggestionItemContainer}
-                theme={theme}
             >
                 {!!(icon || renderItemIcon) && (
                     <SearchSuggestionsItemIcon
                         icon={icon}
                         renderItemIcon={renderItemIcon}
                         className={classOverride.SuggestionsItemIcon}
-                        theme={theme}
                     >
                         {(renderItemIcon &&
                             renderItemIcon(option, optionIndex)) ||
@@ -76,13 +70,11 @@ export const SearchSuggestionItem: FunctionComponent<
                     renderItemAdditionalInfo={renderItemAdditionalInfo}
                     onClick={handleOnClick(option)}
                     className={classOverride.SuggestionsItemLabel}
-                    theme={theme}
                 >
                     <SearchSuggestionItemLabelTypography
                         className={classOverride.LabelTypography}
                         paragraph
                         medium
-                        theme={theme}
                     >
                         {highlightMatch(option.label, searchQuery)}
                     </SearchSuggestionItemLabelTypography>
@@ -91,7 +83,6 @@ export const SearchSuggestionItem: FunctionComponent<
                     <SearchSuggestionsItemAction
                         renderItemAdditionalInfo={renderItemAdditionalInfo}
                         className={classOverride.SuggestionsItemAction}
-                        theme={theme}
                     >
                         {(renderItemAdditionalInfo &&
                             renderItemAdditionalInfo(option)) ||

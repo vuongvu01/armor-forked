@@ -1,10 +1,6 @@
 import { useState, useCallback, createElement } from 'react';
 import { render } from 'react-dom';
-import {
-    getWindow,
-    generateId,
-    useComponentTheme,
-} from '@deliveryhero/armor-system';
+import { getWindow, generateId } from '@deliveryhero/armor-system';
 
 import { useToastPortal } from '.';
 import { ToastPropsType, ToastHookPropsType } from '../type';
@@ -15,14 +11,12 @@ import {
     DEFAULT_TOAST_POSITION,
     DEFAULT_GAP_SPACING,
     DEFAULT_PAUSE_ON_HOVER,
-    TOAST_CONTAINER_PREFIX,
 } from '../constants';
 import { ToastContainer } from '../ToastContainer';
 
 const win = getWindow();
 
 export const useToastContainer = (props?: ToastHookPropsType) => {
-    const theme = useComponentTheme(TOAST_CONTAINER_PREFIX);
     const [toasts, setToasts] = useState<ToastPropsType[]>([]);
     const [isPausedAutoClose, setPauseAutoClose] = useState(false);
     const { loaded, portalId } = useToastPortal(props?.zIndex);
@@ -50,13 +44,11 @@ export const useToastContainer = (props?: ToastHookPropsType) => {
 
     const containerProps = {
         rootProps: {
-            theme,
             gap,
             position,
             ...restProps,
         },
         getToastProps: (toast: ToastPropsType) => ({
-            theme,
             autoClose,
             autoCloseTime,
             showProgressBar,

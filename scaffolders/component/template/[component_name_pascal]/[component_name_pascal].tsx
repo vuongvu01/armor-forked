@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { use<%- component_name_pascal %>ClassNames } from './hooks/use<%- component_name_pascal %>ClassNames';
 import { use<%- component_name_pascal %> } from './hooks/use<%- component_name_pascal %>';
@@ -24,7 +23,6 @@ export const <%- component_name_pascal %> = forwardRef<
     },
     ref,
 ){
-    const theme = useComponentTheme(<%- component_name_snake_uc %>_CLASS_PREFIX);
     const classNames = use<%- component_name_pascal %>ClassNames(
         <%- component_name_snake_uc %>_CLASS_PREFIX,
         className,
@@ -35,7 +33,6 @@ export const <%- component_name_pascal %> = forwardRef<
     return (
         <<%- component_name_pascal %>Root
             {...rootProps}
-            theme={theme}
             className={classNames.Root}
         >
             {children}

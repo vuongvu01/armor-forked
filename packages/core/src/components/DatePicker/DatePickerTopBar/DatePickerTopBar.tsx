@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import { ArrowRightIcon } from '@deliveryhero/armor-icons';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useDatePickerTopBarClassNames } from './hooks/useDatePickerTopBarClassNames';
 import { useDatePickerTopBar } from './hooks/useDatePickerTopBar';
@@ -22,7 +21,6 @@ export const DatePickerTopBar = forwardRef<
     HTMLDivElement,
     DatePickerTopBarPropsType
 >(function DatePickerTopBar({ className, ...props }, ref) {
-    const theme = useComponentTheme(DATE_PICKER_TOP_BAR_CLASS_PREFIX);
     const classNameComponents = useDatePickerTopBarClassNames(
         DATE_PICKER_TOP_BAR_CLASS_PREFIX,
         className,
@@ -42,12 +40,10 @@ export const DatePickerTopBar = forwardRef<
     return (
         <DatePickerTopBarRoot
             {...rootProps}
-            theme={theme}
             className={classNameComponents.Root}
         >
             <DatePickerTopBarMonthYearSelectorToggle
                 {...monthYearSelectorToggleProps}
-                theme={theme}
                 className={classNameComponents.MonthYearSelectorToggle}
             >
                 {monthName} {year}
@@ -57,12 +53,10 @@ export const DatePickerTopBar = forwardRef<
                 />
             </DatePickerTopBarMonthYearSelectorToggle>
             <DatePickerTopBarMonthNavigation
-                theme={theme}
                 className={classNameComponents.MonthNavigation}
             >
                 <DatePickerTopBarMonthNavigationButtonBackward
                     {...monthNavigationButtonBackwardProps}
-                    theme={theme}
                     className={
                         classNameComponents.MonthNavigationButtonBackward
                     }
@@ -76,7 +70,6 @@ export const DatePickerTopBar = forwardRef<
                 </DatePickerTopBarMonthNavigationButtonBackward>
                 <DatePickerTopBarMonthNavigationButtonForward
                     {...monthNavigationButtonForwardProps}
-                    theme={theme}
                     className={classNameComponents.MonthNavigationButtonForward}
                 >
                     <ArrowRightIcon

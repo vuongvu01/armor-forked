@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import {
     SearchIconRoot,
@@ -16,8 +15,6 @@ export const SearchIcon: FunctionComponent<SearchIconPropsType> = ({
     isLoading,
     disabled,
 }) => {
-    const theme = useComponentTheme(SEARCH_ICON_CLASS_PREFIX);
-
     const classOverride = useSearchIconClassName(
         SEARCH_ICON_CLASS_PREFIX,
         className,
@@ -26,24 +23,12 @@ export const SearchIcon: FunctionComponent<SearchIconPropsType> = ({
 
     return isLoading ? (
         // TODO (nmelnikov 2020-08-31): replace with loading indicator once available
-        <SearchIconRoot
-            className={classOverride.BeforeIconContainer}
-            theme={theme}
-        >
-            <SearchInputLoadingIcon
-                className={classOverride.BeforeIcon}
-                theme={theme}
-            />
+        <SearchIconRoot className={classOverride.BeforeIconContainer}>
+            <SearchInputLoadingIcon className={classOverride.BeforeIcon} />
         </SearchIconRoot>
     ) : (
-        <SearchIconRoot
-            className={classOverride.BeforeIconContainer}
-            theme={theme}
-        >
-            <SearchInputSearchIcon
-                className={classOverride.BeforeIcon}
-                theme={theme}
-            />
+        <SearchIconRoot className={classOverride.BeforeIconContainer}>
+            <SearchInputSearchIcon className={classOverride.BeforeIcon} />
         </SearchIconRoot>
     );
 };

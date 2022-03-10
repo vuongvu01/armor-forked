@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useMenuClassNames } from './hooks/useMenuClassNames';
 import { MenuRoot } from './style';
@@ -14,13 +13,11 @@ export const Menu = forwardRef<HTMLDivElement, MenuPropsType>(function Menu(
     { className, ...restProps },
     ref,
 ) {
-    const theme = useComponentTheme(MENU_CLASS_PREFIX);
     const classNameComponents = useMenuClassNames(MENU_CLASS_PREFIX, className);
 
     return (
         <MenuRoot
             {...restProps}
-            theme={theme}
             className={classNameComponents.Root}
             ref={ref}
         />

@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme, PortalToBody } from '@deliveryhero/armor-system';
+import { PortalToBody } from '@deliveryhero/armor-system';
 
 import { useDialogClassNames } from './hooks/useDialogClassNames';
 import {
@@ -24,7 +24,6 @@ import { useDialog } from './hooks/useDialog';
  */
 export const Dialog = forwardRef<HTMLDivElement, DialogPropsType>(
     function Dialog({ className, children, ...props }, ref) {
-        const theme = useComponentTheme(DIALOG_CLASS_PREFIX);
         const classNames = useDialogClassNames(DIALOG_CLASS_PREFIX, className);
 
         const {
@@ -42,11 +41,7 @@ export const Dialog = forwardRef<HTMLDivElement, DialogPropsType>(
 
         return (
             <PortalToBody {...portalProps}>
-                <DialogRoot
-                    {...rootProps}
-                    theme={theme}
-                    className={classNames.Root}
-                >
+                <DialogRoot {...rootProps} className={classNames.Root}>
                     {enableBackdrop && (
                         <Backdrop
                             {...getBackdropProps()}
@@ -55,24 +50,20 @@ export const Dialog = forwardRef<HTMLDivElement, DialogPropsType>(
                     )}
                     <DialogAlignmentContainer
                         {...alignmentContainerProps}
-                        theme={theme}
                         className={classNames.AlignmentContainer}
                     >
                         <DialogWindow
                             {...windowProps}
-                            theme={theme}
                             className={classNames.Window}
                         >
                             {enableCloseButton && (
                                 <DialogCloseButton
                                     {...getCloseButtonProps()}
-                                    theme={theme}
                                     className={classNames.CloseButton}
                                 />
                             )}
                             <DialogContent
                                 {...contentProps}
-                                theme={theme}
                                 className={classNames.Content}
                             >
                                 {children}

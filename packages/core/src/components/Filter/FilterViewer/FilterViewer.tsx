@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import { useComponentTheme, pluralize } from '@deliveryhero/armor-system';
+import { pluralize } from '@deliveryhero/armor-system';
 
 import { useFilterViewerClassNames } from './hooks/useFilterViewerClassNames';
 import { useFilterViewer } from './hooks/useFilterViewer';
@@ -24,7 +24,6 @@ import { ConfirmationDialog } from './ConfirmationDialog/ConfirmationDialog';
  */
 export const FilterViewer = forwardRef<HTMLDivElement, FilterViewerPropsType>(
     function FilterViewer({ className, ...props }, ref) {
-        const theme = useComponentTheme(FILTER_VIEWER_CLASS_PREFIX);
         const classNames = useFilterViewerClassNames(
             FILTER_VIEWER_CLASS_PREFIX,
             className,
@@ -51,11 +50,7 @@ export const FilterViewer = forwardRef<HTMLDivElement, FilterViewerPropsType>(
         } = useFilterViewer<HTMLDivElement>(props, ref);
 
         return (
-            <FilterViewerRoot
-                {...rootProps}
-                theme={theme}
-                className={classNames.Root}
-            >
+            <FilterViewerRoot {...rootProps} className={classNames.Root}>
                 {showAddFilterButton && (
                     <Button
                         secondary
@@ -67,7 +62,6 @@ export const FilterViewer = forwardRef<HTMLDivElement, FilterViewerPropsType>(
                 )}
                 {showAddFilterHint && (
                     <FilterViewerAddFilterHint
-                        theme={theme}
                         className={classNames.AddFilterHint}
                     >
                         Add your filter to refine the results
@@ -75,12 +69,8 @@ export const FilterViewer = forwardRef<HTMLDivElement, FilterViewerPropsType>(
                 )}
                 {showSelectedFilter && (
                     <>
-                        <FilterViewerTopBar
-                            theme={theme}
-                            className={classNames.TopBar}
-                        >
+                        <FilterViewerTopBar className={classNames.TopBar}>
                             <FilterViewerTopBarSummary
-                                theme={theme}
                                 className={classNames.TopBarSummary}
                             >
                                 <Typography
@@ -111,10 +101,7 @@ export const FilterViewer = forwardRef<HTMLDivElement, FilterViewerPropsType>(
                                     </Typography>
                                 )}
                             </FilterViewerTopBarSummary>
-                            <FilterViewerActions
-                                theme={theme}
-                                className={classNames.Actions}
-                            >
+                            <FilterViewerActions className={classNames.Actions}>
                                 <Link
                                     {...getEditFilterButtonProps()}
                                     className={classNames.EditFiltersButton}
@@ -138,10 +125,7 @@ export const FilterViewer = forwardRef<HTMLDivElement, FilterViewerPropsType>(
                                 {filterActions}
                             </FilterViewerActions>
                         </FilterViewerTopBar>
-                        <FilterViewConditions
-                            theme={theme}
-                            className={classNames.Conditions}
-                        >
+                        <FilterViewConditions className={classNames.Conditions}>
                             {schema.conditions!.map((condition) => {
                                 if (!condition.id) {
                                     // todo: sub-filters are not currently supported

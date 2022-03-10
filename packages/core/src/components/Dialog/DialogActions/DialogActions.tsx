@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useDialogActionsClassName } from './utils/useDialogActionsClassName';
 import { DialogActionsRoot } from './style';
@@ -15,17 +14,9 @@ export const DialogActions: FunctionComponent<DialogActionsPropsType> = ({
     className,
     ...restProps
 }) => {
-    const theme = useComponentTheme(DIALOG_ACTIONS_CLASS_PREFIX);
-
     const classNameRoot = useDialogActionsClassName(CLASS_PREFIX, className);
 
-    return (
-        <DialogActionsRoot
-            {...restProps}
-            theme={theme}
-            className={classNameRoot}
-        />
-    );
+    return <DialogActionsRoot {...restProps} className={classNameRoot} />;
 };
 
 DialogActions.defaultProps = {};

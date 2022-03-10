@@ -7,7 +7,6 @@ import React, {
     useState,
 } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useAccordionClassName } from './utils';
 import { AccordionRoot } from './style';
@@ -31,8 +30,6 @@ export const Accordion = forwardRef<HTMLDivElement, AccordionPropsType>(
         },
         ref,
     ) {
-        const theme = useComponentTheme(ACCORDION_CLASS_PREFIX);
-
         const [isExpanded, setIsExpanded] = useState(defaultExpanded);
 
         const classOverride = useAccordionClassName(
@@ -77,7 +74,6 @@ export const Accordion = forwardRef<HTMLDivElement, AccordionPropsType>(
                     className={classOverride.Root}
                     isExpanded={isExpanded}
                     ref={ref}
-                    theme={theme}
                     disabled={disabled}
                 >
                     {children}

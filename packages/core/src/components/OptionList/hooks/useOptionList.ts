@@ -352,10 +352,10 @@ export const useOptionList = ({
         },
         isSelectAllOptionRendered,
         groupIndex,
-        getTopGadientProps: () => ({
+        getTopGradientProps: () => ({
             isShown: isTopGradientEffectShown,
         }),
-        getBottomGadientProps: () => ({
+        getBottomGradientProps: () => ({
             isShown: isBottomGradientEffectShown,
         }),
     };

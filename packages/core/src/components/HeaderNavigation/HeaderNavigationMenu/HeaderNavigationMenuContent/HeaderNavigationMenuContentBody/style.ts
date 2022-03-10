@@ -11,17 +11,7 @@ export const HeaderNavigationMenuContentBodyRoot = styled.div<HeaderNavigationMe
     overflow-y: auto;
 `;
 
-const contentBodyOptionsRootStyle = ({
-    theme: {
-        componentOverrides: { HeaderNavigationMenuContent },
-    },
-}: HeaderNavigationMenuContentBodyOptionsRootPropsType) => {
-    return HeaderNavigationMenuContent.BodyOptionsRoot.base;
-};
-
 /** 👉 ROOT ELEMENT */
 export const HeaderNavigationMenuContentBodyOptionsRoot = styled(
     Stack,
-)<HeaderNavigationMenuContentBodyOptionsRootPropsType>`
-    ${contentBodyOptionsRootStyle};
-`;
+)<HeaderNavigationMenuContentBodyOptionsRootPropsType>``;

@@ -1,5 +1,4 @@
 import React, { forwardRef } from 'react';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useDatePickerActionBarClassNames } from './hooks/useDatePickerActionBarClassNames';
 import { useDatePickerActionBar } from './hooks/useDatePickerActionBar';
@@ -15,7 +14,6 @@ export const DatePickerActionBar = forwardRef<
     HTMLDivElement,
     DatePickerActionBarPropsType
 >(function DatePickerActionBar({ className, ...props }, ref) {
-    const theme = useComponentTheme(DATE_PICKER_ACTION_BAR_CLASS_PREFIX);
     const classNameComponents = useDatePickerActionBarClassNames(
         DATE_PICKER_ACTION_BAR_CLASS_PREFIX,
         className,
@@ -36,12 +34,10 @@ export const DatePickerActionBar = forwardRef<
     return (
         <DatePickerActionBarRoot
             {...rootProps}
-            theme={theme}
             className={classNameComponents.Root}
         >
             {showBar && (
                 <DatePickerActionBarActions
-                    theme={theme}
                     className={classNameComponents.Actions}
                 >
                     {showClearSelectionButton && (

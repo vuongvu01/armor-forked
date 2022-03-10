@@ -7,7 +7,6 @@ import {
     // eslint-disable-next-line import/no-extraneous-dependencies
 } from '@deliveryhero/armor-icons';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useTableHeadCellClassNames } from './hooks/useTableHeadCellClassNames';
 import { TableHeadCellRoot } from './style';
@@ -27,7 +26,6 @@ export const TableHeadCell = forwardRef<
     HTMLTableCellElement,
     TableHeadCellPropsType
 >(function TableHeadCell({ className, children, ...props }, ref) {
-    const theme = useComponentTheme(TABLE_HEAD_CELL_CLASS_PREFIX);
     const classNameComponents = useTableHeadCellClassNames(
         TABLE_HEAD_CELL_CLASS_PREFIX,
         className,
@@ -43,11 +41,7 @@ export const TableHeadCell = forwardRef<
     } = useTableHeadCell(props, ref);
 
     return (
-        <TableHeadCellRoot
-            {...rootProps}
-            theme={theme}
-            className={classNameComponents.Root}
-        >
+        <TableHeadCellRoot {...rootProps} className={classNameComponents.Root}>
             <TableCellLabel>
                 {children}
                 {isIconAlphabetical && (

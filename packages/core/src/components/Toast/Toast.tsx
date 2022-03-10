@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { Message, MessageAction } from '../Message';
 import { ProgressBar } from '../ProgressBar';
@@ -21,7 +20,6 @@ export const Toast = forwardRef<HTMLDivElement, ToastPropsType>(function Toast(
     { className, children, ...props },
     ref,
 ) {
-    const theme = useComponentTheme(TOAST_CLASS_PREFIX);
     const classNames = useToastClassNames(TOAST_CLASS_PREFIX, className);
 
     const {
@@ -37,11 +35,7 @@ export const Toast = forwardRef<HTMLDivElement, ToastPropsType>(function Toast(
     } = useToast<HTMLDivElement>(props, ref);
 
     return (
-        <ToastRoot
-            {...rootProps}
-            theme={props.theme || theme}
-            className={classNames.Root}
-        >
+        <ToastRoot {...rootProps} className={classNames.Root}>
             <Message
                 {...getMessageProps()}
                 actions={

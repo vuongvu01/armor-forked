@@ -1,5 +1,4 @@
 import React, { forwardRef } from 'react';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { TableSectionContext } from '../utils/TableSectionContext';
 import { useTableFoot } from './hooks/useTableFoot';
@@ -16,7 +15,6 @@ export const TableFoot = forwardRef<
     HTMLTableSectionElement,
     TableFootPropsType
 >(function TableFoot({ className, ...restProps }, ref) {
-    const theme = useComponentTheme(TABLE_FOOT_CLASS_PREFIX);
     const classNameComponents = useTableFootClassNames(
         TABLE_FOOT_CLASS_PREFIX,
         className,
@@ -29,7 +27,6 @@ export const TableFoot = forwardRef<
             <TableFootRoot
                 data-testid={tableFootRootTestId}
                 {...restProps}
-                theme={theme}
                 className={classNameComponents.Root}
                 ref={ref}
             />

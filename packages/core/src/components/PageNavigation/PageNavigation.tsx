@@ -1,7 +1,6 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { ArrowLeftIcon, ArrowRightIcon } from '@deliveryhero/armor-icons';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { usePageNavigationClassNames } from './hooks/usePageNavigationClassNames';
 import { usePageNavigation } from './hooks/usePageNavigation';
@@ -26,7 +25,6 @@ export const PageNavigation = forwardRef<
     HTMLDivElement,
     PageNavigationPropsType
 >(function PageNavigation({ className, ...restProps }, ref) {
-    const theme = useComponentTheme(PAGE_NAVIGATION_CLASS_PREFIX);
     const classNameComponents = usePageNavigationClassNames(
         PAGE_NAVIGATION_CLASS_PREFIX,
         className,
@@ -52,29 +50,22 @@ export const PageNavigation = forwardRef<
         <PageNavigationRoot
             data-testid={pageNavigationRootTestId}
             {...restProps}
-            theme={theme}
             className={classNameComponents.Root}
             ref={ref}
         >
             {enablePageSizeSelector && (
                 <PageNavigationPageSize
-                    theme={theme}
                     className={classNameComponents.PageSize}
                 >
                     Rows per page:{' '}
                     <PageNavigationPageSizeSelector
-                        theme={theme}
                         className={classNameComponents.PageSizeSelector}
                         {...pageSizeSelectorProps}
                     />
                 </PageNavigationPageSize>
             )}
-            <PageNavigationButtons
-                theme={theme}
-                className={classNameComponents.Buttons}
-            >
+            <PageNavigationButtons className={classNameComponents.Buttons}>
                 <PageNavigationPageButton
-                    theme={theme}
                     className={classNameComponents.ArrowButton}
                     arrow
                     disabled={!previousPageArrowEnabled}
@@ -88,7 +79,6 @@ export const PageNavigation = forwardRef<
                 {displayedRange.map((pageNumber) => (
                     <PageNavigationPageButton
                         key={pageNumber}
-                        theme={theme}
                         className={classNameComponents.PageButton}
                         selected={pageNumber === currentPageNumber}
                         data-testid={pageNavigationPageButtonTestId}
@@ -100,7 +90,6 @@ export const PageNavigation = forwardRef<
                     </PageNavigationPageButton>
                 ))}
                 <PageNavigationPageButton
-                    theme={theme}
                     className={classNameComponents.ArrowButton}
                     arrow
                     disabled={!nextPageArrowEnabled}

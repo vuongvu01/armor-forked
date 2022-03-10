@@ -14,7 +14,6 @@ import {
 
 import {
     TagCloseIconContainerPropsType,
-    TagCloseIconPropsType,
     TagRootPropsType,
     TagTextPropsType,
 } from './type';
@@ -218,7 +217,7 @@ export const TagText = styled.div<TagTextPropsType>`
     ${textStyle};
 `;
 
-export const TagCloseIcon = styled(CancelIcon)<TagCloseIconPropsType>`
+export const TagCloseIcon = styled(CancelIcon)`
     outline: none;
     height: ${spacing(2)};
     width: ${spacing(2)};

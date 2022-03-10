@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useEmptyStateClassNames } from './hooks/useEmptyStateClassNames';
 import { useEmptyState } from './hooks/useEmptyState';
@@ -25,7 +24,6 @@ import { EMPTY_STATE_CLASS_PREFIX } from './constants';
  */
 export const EmptyState = forwardRef<HTMLDivElement, EmptyStatePropsType>(
     function EmptyState({ className, ...props }, ref) {
-        const theme = useComponentTheme(EMPTY_STATE_CLASS_PREFIX);
         const classNames = useEmptyStateClassNames(
             EMPTY_STATE_CLASS_PREFIX,
             className,
@@ -56,21 +54,15 @@ export const EmptyState = forwardRef<HTMLDivElement, EmptyStatePropsType>(
         } = useEmptyState(props, ref);
 
         return (
-            <EmptyStateRoot
-                {...rootProps}
-                theme={theme}
-                className={classNames.Root}
-            >
+            <EmptyStateRoot {...rootProps} className={classNames.Root}>
                 {layout === 'horizontal' && (
                     <EmptyStateHorizontalLayout
                         {...horizontalLayoutProps}
-                        theme={theme}
                         className={classNames.HorizontalLayout}
                     >
                         {!!enableImage && (
                             <EmptyStateImageContainer
                                 {...imageContainerProps}
-                                theme={theme}
                                 className={classNames.ImageContainer}
                             >
                                 {renderIndicator && <Indicator />}
@@ -83,13 +75,11 @@ export const EmptyState = forwardRef<HTMLDivElement, EmptyStatePropsType>(
                             </EmptyStateImageContainer>
                         )}
                         <EmptyStateContainer
-                            theme={theme}
                             className={classNames.EmptyStateContainer}
                         >
                             {!!enableTitle && (
                                 <EmptyStateTitle
                                     {...titleProps}
-                                    theme={theme}
                                     className={classNames.Title}
                                 >
                                     {title}
@@ -98,7 +88,6 @@ export const EmptyState = forwardRef<HTMLDivElement, EmptyStatePropsType>(
                             {!!enableDescription && (
                                 <EmptyStateDescription
                                     {...descriptionProps}
-                                    theme={theme}
                                     className={classNames.Description}
                                 >
                                     {description}
@@ -107,7 +96,6 @@ export const EmptyState = forwardRef<HTMLDivElement, EmptyStatePropsType>(
                             {!!enableActions && (
                                 <EmptyStateActionContainer
                                     {...actionsContainerProps}
-                                    theme={theme}
                                     className={classNames.ActionsContainer}
                                 >
                                     {actions}
@@ -119,13 +107,11 @@ export const EmptyState = forwardRef<HTMLDivElement, EmptyStatePropsType>(
                 {layout === 'vertical' && (
                     <EmptyStateVerticalLayout
                         {...verticalLayoutProps}
-                        theme={theme}
                         className={classNames.VerticalLayout}
                     >
                         {!!enableImage && (
                             <EmptyStateImageContainer
                                 {...imageContainerProps}
-                                theme={theme}
                                 className={classNames.ImageContainer}
                             >
                                 {renderIndicator && <Indicator />}
@@ -140,7 +126,6 @@ export const EmptyState = forwardRef<HTMLDivElement, EmptyStatePropsType>(
                         {!!enableTitle && (
                             <EmptyStateTitle
                                 {...titleProps}
-                                theme={theme}
                                 className={classNames.Title}
                             >
                                 {title}
@@ -149,7 +134,6 @@ export const EmptyState = forwardRef<HTMLDivElement, EmptyStatePropsType>(
                         {!!enableDescription && (
                             <EmptyStateDescription
                                 {...descriptionProps}
-                                theme={theme}
                                 className={classNames.Description}
                             >
                                 {description}
@@ -158,7 +142,6 @@ export const EmptyState = forwardRef<HTMLDivElement, EmptyStatePropsType>(
                         {!!enableActions && (
                             <EmptyStateActionContainer
                                 {...actionsContainerProps}
-                                theme={theme}
                                 className={classNames.ActionsContainer}
                             >
                                 {actions}

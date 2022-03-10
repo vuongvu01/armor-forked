@@ -1,5 +1,4 @@
 import React, { forwardRef } from 'react';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useIndicatorClassNames } from './hooks/useIndicatorClassNames';
 import { IndicatorRoot } from './style';
@@ -11,8 +10,6 @@ import { INDICATOR_CLASS_PREFIX } from './constants';
  */
 export const Indicator = forwardRef<HTMLDivElement, IndicatorPropsType>(
     function Indicator({ className, ...restProps }, ref) {
-        const theme = useComponentTheme(INDICATOR_CLASS_PREFIX);
-
         const classNameComponents = useIndicatorClassNames(
             INDICATOR_CLASS_PREFIX,
             className,
@@ -21,7 +18,6 @@ export const Indicator = forwardRef<HTMLDivElement, IndicatorPropsType>(
         return (
             <IndicatorRoot
                 {...restProps}
-                theme={theme}
                 className={classNameComponents.Root}
                 ref={ref}
             />

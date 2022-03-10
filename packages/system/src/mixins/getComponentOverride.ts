@@ -1,12 +1,10 @@
 import { PropsWithThemeType } from './type';
-// import { getAvailableTheme } from '../theme/util';
-import { ThemeType } from '../theme';
+import { getAvailableTheme } from '../theme/util';
 
 export const getComponentOverride =
     (componentName: string) =>
     ({ theme }: PropsWithThemeType) => {
-        const { componentCSS } = theme as ThemeType;
-        // const { componentCSS } = getAvailableTheme(theme); // todo: use this in the next PR
+        const { componentCSS } = getAvailableTheme(theme);
         if (componentCSS && componentName in componentCSS) {
             return componentCSS[componentName];
         }

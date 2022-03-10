@@ -1,9 +1,6 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import {
-    useComponentTheme,
-    getCompatiblePropValue,
-} from '@deliveryhero/armor-system';
+import { getCompatiblePropValue } from '@deliveryhero/armor-system';
 
 import { useFormFieldClassNames } from './hooks/useFormFieldClassNames';
 import { FormFieldRoot } from './style';
@@ -18,8 +15,6 @@ export const FormField = forwardRef<HTMLDivElement, FormFieldPropsType>(
         { className, autoMargin, enableVerticalOuterSpacing, ...restProps },
         ref,
     ) {
-        const theme = useComponentTheme(FORM_FIELD_CLASS_PREFIX);
-
         const classNameComponents = useFormFieldClassNames(
             FORM_FIELD_CLASS_PREFIX,
             className,
@@ -32,7 +27,6 @@ export const FormField = forwardRef<HTMLDivElement, FormFieldPropsType>(
                     enableVerticalOuterSpacing,
                     autoMargin,
                 )}
-                theme={theme}
                 className={classNameComponents.Root}
                 ref={ref}
             />

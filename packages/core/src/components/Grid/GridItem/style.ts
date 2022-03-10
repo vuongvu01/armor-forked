@@ -4,6 +4,7 @@ import {
     propsBlocker,
     ThemeType,
     BreakpointCodeType,
+    RootThemeType,
 } from '@deliveryhero/armor-system';
 
 import { GridItemPropsType, GridSizeType } from './type';
@@ -51,9 +52,11 @@ const gridItemRootStyle = ({
     gutterSpacing,
     gutterSpacingVertical,
     gutterSpacingHorizontal,
-    theme: { breakpoints, spacing },
+    theme: {
+        armor: { breakpoints, spacing },
+    },
     ...restProps
-}: GridItemPropsType & { theme: ThemeType }) => {
+}: GridItemPropsType & { theme: RootThemeType }) => {
     let result = {};
 
     const gutterSpacingX = gutterSpacingHorizontal || gutterSpacing;

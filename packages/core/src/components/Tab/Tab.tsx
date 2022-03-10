@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useTabClassName } from './utils';
 import { TabLabel, TabTagWrapper, TabRoot } from './style';
@@ -15,8 +14,6 @@ export const Tab = forwardRef<HTMLDivElement, TabPropsType>(function Tab(
     { className, ...restProps },
     ref,
 ) {
-    const theme = useComponentTheme(TAB_CLASS_PREFIX);
-
     const {
         rootProps,
         tagProps,
@@ -36,17 +33,12 @@ export const Tab = forwardRef<HTMLDivElement, TabPropsType>(function Tab(
     );
 
     return (
-        <TabRoot {...rootProps} className={classOverride.Root} theme={theme}>
-            <TabTagWrapper
-                {...tagProps}
-                className={classOverride.Tag}
-                theme={theme}
-            >
+        <TabRoot {...rootProps} className={classOverride.Root}>
+            <TabTagWrapper {...tagProps} className={classOverride.Tag}>
                 {(forwardedProps: TabTagPropsType) => (
                     <Tag {...forwardedProps}>
                         <TabLabel
                             {...tabLabelProps}
-                            theme={theme}
                             className={classOverride.Label}
                         >
                             {label || children}

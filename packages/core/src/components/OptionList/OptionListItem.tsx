@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import {
     OptionListItem as OptionListItemRoot,
@@ -19,8 +18,6 @@ export const OptionListItem: FunctionComponent<OptionListItemPropsType> = ({
     className,
     ...props
 }) => {
-    const theme = useComponentTheme(OPTION_LIST_ITEM_CLASS_PREFIX);
-
     const {
         rootProps,
         checkboxProps,
@@ -38,11 +35,7 @@ export const OptionListItem: FunctionComponent<OptionListItemPropsType> = ({
     );
 
     return (
-        <OptionListItemRoot
-            {...rootProps}
-            theme={theme}
-            className={classOverride.Root}
-        >
+        <OptionListItemRoot {...rootProps} className={classOverride.Root}>
             {multiple && (
                 <Checkbox
                     {...checkboxProps}
@@ -51,14 +44,12 @@ export const OptionListItem: FunctionComponent<OptionListItemPropsType> = ({
             )}
             <OptionListItemTypography
                 {...typographyProps}
-                theme={theme}
                 className={classOverride.Typography}
             >
                 {label}
             </OptionListItemTypography>
             {showAdditionalInfo && (
                 <OptionListItemAdditionalInfo
-                    theme={theme}
                     className={classOverride.AdditionalInfo}
                 >
                     {getAdditionalInfo()}

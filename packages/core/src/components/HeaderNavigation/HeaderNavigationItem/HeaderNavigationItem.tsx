@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { HeaderNavigationItemRoot } from './style';
 import { HeaderNavigationItemPropsType } from './type';
@@ -15,8 +14,6 @@ import { useHeaderNavigationItemClassName } from './hooks';
 export const HeaderNavigationItem: FunctionComponent<
     HeaderNavigationItemPropsType
 > = ({ className, ...restProps }) => {
-    const theme = useComponentTheme(HEADER_NAVIGATION_ITEM_CLASS_PREFIX);
-
     const classOverride = useHeaderNavigationItemClassName(
         HEADER_NAVIGATION_ITEM_CLASS_PREFIX,
         className,
@@ -26,7 +23,6 @@ export const HeaderNavigationItem: FunctionComponent<
         <HeaderNavigationItemRoot
             data-testid={headerNavigationItemRoot}
             {...restProps}
-            theme={theme}
             className={classOverride.Root}
         />
     );

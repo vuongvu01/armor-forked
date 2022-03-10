@@ -1,5 +1,4 @@
 import React, { forwardRef } from 'react';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useLoginPageClassNames } from './hooks/useLoginPageClassNames';
 import { useLoginPage } from './hooks/useLoginPage';
@@ -32,7 +31,6 @@ import { TextInput } from '../TextInput';
  */
 export const LoginPage = forwardRef<HTMLDivElement, LoginPagePropsType>(
     function LoginPage({ className, ...props }, ref) {
-        const theme = useComponentTheme(LOGINPAGE_CLASS_PREFIX);
         const classNames = useLoginPageClassNames(
             LOGINPAGE_CLASS_PREFIX,
             className,
@@ -59,45 +57,29 @@ export const LoginPage = forwardRef<HTMLDivElement, LoginPagePropsType>(
         } = useLoginPage(props, ref);
 
         return (
-            <LoginPageRoot
-                {...rootProps}
-                theme={theme}
-                className={classNames.Root}
-            >
-                <LoginPageWrapper className={classNames.Wrapper} theme={theme}>
-                    <LoginPageContainer
-                        className={classNames.Container}
-                        theme={theme}
-                    >
+            <LoginPageRoot {...rootProps} className={classNames.Root}>
+                <LoginPageWrapper className={classNames.Wrapper}>
+                    <LoginPageContainer className={classNames.Container}>
                         {!!header && (
-                            <LoginPageHeader
-                                className={classNames.Header}
-                                theme={theme}
-                            >
+                            <LoginPageHeader className={classNames.Header}>
                                 {header}
                             </LoginPageHeader>
                         )}
                         {!!title && (
-                            <LoginPageTitle
-                                className={classNames.Title}
-                                theme={theme}
-                            >
+                            <LoginPageTitle className={classNames.Title}>
                                 {title}
                             </LoginPageTitle>
                         )}
                         <LoginPageGreetingContainer
                             className={classNames.GreetingContainer}
-                            theme={theme}
                         >
                             <LoginPageGreetingTitle
                                 className={classNames.GreetingTitle}
-                                theme={theme}
                             >
                                 {greetingTitle}
                             </LoginPageGreetingTitle>
                             <LoginPageGreetingDescription
                                 className={classNames.GreetingDescription}
-                                theme={theme}
                             >
                                 {greetingDescription}
                             </LoginPageGreetingDescription>
@@ -106,7 +88,6 @@ export const LoginPage = forwardRef<HTMLDivElement, LoginPagePropsType>(
                             <>
                                 <LoginPageFormContainer
                                     className={classNames.FormContainer}
-                                    theme={theme}
                                 >
                                     <FormField
                                         className={classNames.EmailFormField}
@@ -163,7 +144,6 @@ export const LoginPage = forwardRef<HTMLDivElement, LoginPagePropsType>(
                                     className={classNames.SeparatorContainer}
                                 >
                                     <SeparatorDivider
-                                        theme={theme}
                                         className={classNames.Divider}
                                     />
                                     <Typography
@@ -175,31 +155,26 @@ export const LoginPage = forwardRef<HTMLDivElement, LoginPagePropsType>(
                                         or
                                     </Typography>
                                     <SeparatorDivider
-                                        theme={theme}
                                         className={classNames.Divider}
                                     />
                                 </SeparatorContainer>
                             </>
                         )}
                         <OAuth2SignInContainer
-                            theme={theme}
                             className={classNames.SignInContainer}
                         >
                             {oAuth2Buttons}
                         </OAuth2SignInContainer>
                         {!!enableRegistration && (
                             <RegistrationOfferContainer
-                                theme={theme}
                                 className={classNames.OfferContainer}
                             >
                                 <RegistrationOfferSupportiveText
-                                    theme={theme}
                                     className={classNames.OfferSupportiveText}
                                 >
                                     Don&apos;t have an account?
                                 </RegistrationOfferSupportiveText>
                                 <RegistrationOfferLink
-                                    theme={theme}
                                     className={classNames.OfferLink}
                                     {...registrationLinkProps}
                                 >

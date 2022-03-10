@@ -11,26 +11,21 @@ import {
 
 export const SearchEmptySuggestionsList: FunctionComponent<
     SearchEmptySuggestionsListPropsType
-> = ({ noResultsLabel = 'No results found', className, theme }) => {
+> = ({ noResultsLabel = 'No results found', className }) => {
     const classOverride = useSearchEmptySuggestionsListClassName(
         SEARCH_EMPTY_SUGGESTIONS_LIST_CLASS_PREFIX,
         className,
     );
 
     return (
-        <SearchEmptySuggestionsListRoot
-            className={classOverride.Root}
-            theme={theme}
-        >
+        <SearchEmptySuggestionsListRoot className={classOverride.Root}>
             <SearchEmptySuggestionsItemLabel
                 className={classOverride.ItemLabel}
-                theme={theme}
             >
                 <SearchEmptySuggestionsEmptyItemLabelTypography
                     className={classOverride.ItemLabelTypography}
                     paragraph
                     medium
-                    theme={theme}
                 >
                     {noResultsLabel}
                 </SearchEmptySuggestionsEmptyItemLabelTypography>
