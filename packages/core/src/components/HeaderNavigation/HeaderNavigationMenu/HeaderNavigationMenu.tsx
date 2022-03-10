@@ -44,8 +44,13 @@ export const HeaderNavigationMenu = forwardRef<
         className,
     );
 
-    const { internalRef, isExpanded, setIsExpanded, handleMenuKeyPress } =
-        useHeaderNavigationMenu(restProps, ref);
+    const {
+        menuTitleRef,
+        menuRootRef,
+        isExpanded,
+        setIsExpanded,
+        handleMenuKeyPress,
+    } = useHeaderNavigationMenu(restProps, ref);
 
     const contextValue = { isExpanded, setIsExpanded };
 
@@ -60,9 +65,10 @@ export const HeaderNavigationMenu = forwardRef<
                     {...restProps}
                     theme={theme}
                     className={classOverride.NavigationMenu}
+                    ref={menuRootRef}
                 >
                     <HeaderNavigationMenuTitleContainer
-                        ref={internalRef}
+                        ref={menuTitleRef}
                         theme={theme}
                         className={classOverride.TitleContainer}
                     >

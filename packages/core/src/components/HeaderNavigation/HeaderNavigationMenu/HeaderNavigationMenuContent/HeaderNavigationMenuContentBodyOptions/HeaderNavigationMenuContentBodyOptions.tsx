@@ -47,9 +47,7 @@ export const HeaderNavigationMenuContentBodyOptions: FunctionComponent<
     const handleClick = ({
         selectedOption,
     }: HandleOptionItemClickParamsType) => {
-        if (onOptionSelect) {
-            onOptionSelect(selectedOption);
-        }
+        onOptionSelect?.(selectedOption);
 
         if (isExpanded && setIsExpanded) {
             setTimeout(() => setIsExpanded(false), 0);
