@@ -10,6 +10,7 @@ import {
     notLastChild,
     round,
     transition,
+    token,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -28,6 +29,7 @@ export const ConditionTagRoot = styled.div.withConfig(
 )<ConditionTagRootPropsType>`
     ${reset};
     ${typography('paragraphMedium')};
+    color: ${token('body.color')};
     width: fit-content;
 
     overflow-y: hidden;
@@ -52,6 +54,7 @@ export const ConditionTagLabel = styled.div.withConfig(
     propsBlocker,
 )<ConditionTagLabelPropsType>`
     ${typography('labelSmall')};
+    color: ${token('body.color')};
     background-color: ${color('neutral.02')};
     padding: ${spacing(1)} ${spacing(2)};
     border-right: 1px solid ${color('neutral.03')};
@@ -70,6 +73,7 @@ export const ConditionTagValueSegment = styled.div.withConfig(
     propsBlocker,
 )<ConditionTagValueSegmentPropsType>`
     ${typography('paragraphSmall')};
+    color: ${token('body.color')};
     background-color: ${color('neutral.00')};
     padding: ${spacing(1)} ${spacing(2)};
     display: flex;

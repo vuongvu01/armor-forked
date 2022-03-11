@@ -7,6 +7,7 @@ import {
     reset,
     typography,
     pixelToRem,
+    token,
 } from '@deliveryhero/armor-system';
 
 import { ListRootPropsType } from './type';
@@ -18,12 +19,14 @@ const getRootStyle = ({ small }: ListRootPropsType) => {
         result = css`
             ${result};
             ${typography('paragraphSmall')};
+            color: ${token('body.color')};
             font-size: ${pixelToRem(14)};
         `;
     } else {
         result = css`
             ${result};
             ${typography('paragraphMedium')};
+            color: ${token('body.color')};
             font-size: ${pixelToRem(16)};
         `;
     }
@@ -35,6 +38,7 @@ const getRootStyle = ({ small }: ListRootPropsType) => {
 export const ListRoot = styled.div.withConfig(propsBlocker)<ListRootPropsType>`
     ${reset};
     ${typography('paragraphMedium')};
+    color: ${token('body.color')};
     ${getRootStyle};
     ${getComponentOverride('List')};
     ${marginProps};

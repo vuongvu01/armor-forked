@@ -9,6 +9,7 @@ import {
     color,
     pixelToRem,
     sizeProps,
+    token,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -205,6 +206,7 @@ export const EmptyStateRoot = styled.div.withConfig(
 )<EmptyStateRootPropsType>`
     ${reset};
     ${typography('paragraphMedium')};
+    color: ${token('body.color')};
     display: flex;
     flex-direction: column;
     width: fit-content;

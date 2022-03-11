@@ -5,6 +5,7 @@ import {
     typography,
     getComponentOverride,
     propsBlocker,
+    token,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -183,7 +184,7 @@ export const SearchSuggestionsItemAction = styled.div.withConfig(
     white-space: nowrap;
     text-align: right;
     padding-left: ${spacing(2)};
-
     ${typography('paragraphMedium')};
+    color: ${token('body.color')};
     ${searchSuggestionsItemActionStyle};
 `;

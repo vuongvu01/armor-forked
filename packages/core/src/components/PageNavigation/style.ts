@@ -10,6 +10,7 @@ import {
     durationNormal,
     borderRadius02,
     focus,
+    token,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -26,6 +27,7 @@ export const PageNavigationRoot = styled.div.withConfig(
 )<PageNavigationRootPropsType>`
     ${reset()};
     ${typography('paragraphMedium')};
+    color: ${token('body.color')};
     display: inline-flex;
     flex-direction: row;
     flex-wrap: nowrap;

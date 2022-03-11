@@ -11,6 +11,7 @@ import {
     propsBlocker,
     transition,
     getComponentOverride,
+    token,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -29,6 +30,7 @@ export const DatePickerMonthYearSelectorRoot = styled.div.withConfig(
 )<DatePickerMonthYearSelectorRootPropsType>`
     ${reset};
     ${typography('paragraphMedium')};
+    color: ${token('body.color')};
     padding: ${spacing(4)};
     ${getComponentOverride('DatePickerMonthYearSelector')};
     ${marginProps};
@@ -115,8 +117,8 @@ export const DatePickerMonthYearSelectorMonth = styled.button.withConfig(
     outline: none; // todo: fix this
     padding: ${spacing(3)} ${spacing(5.6)};
 
-    color: ${color('neutral.11')};
     ${typography('paragraphMedium')};
+    color: ${token('body.color')};
     line-height: ${pixelToRem(16)};
     ${transition({
         'background-color': 0.1,

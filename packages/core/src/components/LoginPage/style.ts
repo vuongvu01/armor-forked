@@ -11,6 +11,7 @@ import {
     fontWeightMedium,
     focusWithin,
     borderRadius,
+    token,
 } from '@deliveryhero/armor-system';
 
 import { LoginPagePropsType, LoginPageRootPropsType } from './type';
@@ -25,6 +26,7 @@ export const LoginPageRoot = styled.div.withConfig(
 )<LoginPageRootPropsType>`
     ${reset};
     ${typography('paragraphMedium')};
+    color: ${token('body.color')};
     min-height: ${spacing(192)};
     min-width: ${spacing(256)};
     height: 100%;
@@ -82,11 +84,13 @@ export const LoginPageGreetingContainer = styled.div<LoginPagePropsType>`
 
 export const LoginPageGreetingTitle = styled.div<LoginPagePropsType>`
     ${typography('sectionTitle')};
+    color: ${token('body.color')};
     margin: 0;
 `;
 
 export const LoginPageGreetingDescription = styled.div<LoginPagePropsType>`
     ${typography('paragraphLarge')};
+    color: ${token('body.color')};
     margin: ${spacing(2)} 0 ${spacing(1)} 0;
 `;
 
@@ -121,6 +125,7 @@ export const RegistrationOfferContainer = styled.div<LoginPagePropsType>`
 
 export const RegistrationOfferSupportiveText = styled.div<LoginPagePropsType>`
     ${typography('paragraphSmall')};
+    color: ${token('body.color')};
     margin: 0 ${spacing(2)} 0 0;
 `;
 

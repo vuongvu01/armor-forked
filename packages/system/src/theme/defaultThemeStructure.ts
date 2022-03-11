@@ -107,8 +107,6 @@ export const defaultThemeStructure = {
             fontWeight: fontWeightMedium,
             letterSpacing: letterSpacingSmall,
             lineHeight: lineHeight03,
-            // todo: remove the color from here, typography should be color-agnostic
-            color: colorGrey90,
         },
         pageTitle: {
             fontFamily: fontFamilyRoboto,
@@ -116,8 +114,6 @@ export const defaultThemeStructure = {
             fontWeight: fontWeightMedium,
             letterSpacing: letterSpacingNone,
             lineHeight: lineHeight05,
-            // todo: remove the color from here, typography should be color-agnostic
-            color: colorGrey90,
         },
         sectionTitle: {
             fontFamily: fontFamilyRoboto,
@@ -125,8 +121,6 @@ export const defaultThemeStructure = {
             fontWeight: fontWeightMedium,
             letterSpacing: letterSpacingSmall,
             lineHeight: lineHeight04,
-            // todo: remove the color from here, typography should be color-agnostic
-            color: colorGrey90,
         },
         subSectionTitle: {
             fontFamily: fontFamilyRoboto,
@@ -134,8 +128,6 @@ export const defaultThemeStructure = {
             fontWeight: fontWeightBold,
             letterSpacing: letterSpacingSmall,
             lineHeight: lineHeight03,
-            // todo: remove the color from here, typography should be color-agnostic
-            color: colorGrey90,
         },
         labelLarge: {
             fontFamily: fontFamilyRoboto,
@@ -143,8 +135,6 @@ export const defaultThemeStructure = {
             fontWeight: fontWeightMedium,
             letterSpacing: letterSpacingMedium,
             lineHeight: lineHeight03,
-            // todo: remove the color from here, typography should be color-agnostic
-            color: colorGrey90,
         },
         labelMedium: {
             fontFamily: fontFamilyRoboto,
@@ -152,8 +142,6 @@ export const defaultThemeStructure = {
             fontWeight: fontWeightMedium,
             letterSpacing: letterSpacingLarge,
             lineHeight: lineHeight01,
-            // todo: remove the color from here, typography should be color-agnostic
-            color: colorGrey90,
         },
         labelSmall: {
             fontFamily: fontFamilyRoboto,
@@ -161,8 +149,6 @@ export const defaultThemeStructure = {
             fontWeight: fontWeightMedium,
             letterSpacing: letterSpacingMedium,
             lineHeight: lineHeight01,
-            // todo: remove the color from here, typography should be color-agnostic
-            color: colorGrey90,
         },
         paragraphLarge: {
             fontFamily: fontFamilyRoboto,
@@ -170,8 +156,6 @@ export const defaultThemeStructure = {
             fontWeight: fontWeightRegular,
             letterSpacing: letterSpacingSmall,
             lineHeight: lineHeight03,
-            // todo: remove the color from here, typography should be color-agnostic
-            color: colorGrey90,
         },
         paragraphMedium: {
             fontFamily: fontFamilyRoboto,
@@ -179,8 +163,6 @@ export const defaultThemeStructure = {
             fontWeight: fontWeightRegular,
             letterSpacing: letterSpacingSmall,
             lineHeight: lineHeight03,
-            // todo: remove the color from here, typography should be color-agnostic
-            color: colorGrey90,
         },
         paragraphSmall: {
             fontFamily: fontFamilyRoboto,
@@ -188,8 +170,6 @@ export const defaultThemeStructure = {
             fontWeight: fontWeightRegular,
             letterSpacing: letterSpacingLarge,
             lineHeight: lineHeight02,
-            // todo: remove the color from here, typography should be color-agnostic
-            color: colorGrey90,
         },
     },
     color: {
@@ -204,13 +184,6 @@ export const defaultThemeStructure = {
             '08': colorBlue70,
             '09': colorBlue80,
             '10': colorBlue90,
-
-            // todo: left for backward compatibility, but needs to be removed
-            dark: colorBlue70,
-            main: colorBlue60,
-            light: colorBlue50,
-            lighter: colorBlue20,
-            lightest: colorBlue05,
         },
         accent: {
             '01': colorTurquoise05,
@@ -223,12 +196,6 @@ export const defaultThemeStructure = {
             '08': colorTurquoise70,
             '09': colorTurquoise80,
             '10': colorTurquoise90,
-
-            // todo: left for backward compatibility, but needs to be removed
-            darker: colorTurquoise90,
-            dark: colorTurquoise80,
-            main: colorTurquoise70,
-            light: colorTurquoise60,
         },
         success: {
             '01': colorGreen05,
@@ -241,10 +208,6 @@ export const defaultThemeStructure = {
             '08': colorGreen70,
             '09': colorGreen80,
             '10': colorGreen90,
-
-            // todo: left for backward compatibility, but needs to be removed
-            main: colorGreen60,
-            light: colorGreen10,
         },
         warning: {
             '01': colorYellow05,
@@ -257,10 +220,6 @@ export const defaultThemeStructure = {
             '08': colorYellow70,
             '09': colorYellow80,
             '10': colorYellow90,
-
-            // todo: left for backward compatibility, but needs to be removed
-            main: colorYellow60,
-            light: colorYellow10,
         },
         error: {
             '01': colorRed05,
@@ -273,12 +232,6 @@ export const defaultThemeStructure = {
             '08': colorRed70,
             '09': colorRed80,
             '10': colorRed90,
-
-            // todo: left for backward compatibility, but needs to be removed
-            dark: colorRed70,
-            main: colorRed60,
-            light: colorRed50,
-            lighter: colorRed10,
         },
         neutral: {
             '00': colorGrey00,

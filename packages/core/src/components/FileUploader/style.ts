@@ -8,6 +8,7 @@ import {
     spacing,
     color,
     widthProps,
+    token,
 } from '@deliveryhero/armor-system';
 import { FileUploaderRootPropsType } from './type';
 import { FileUploadButton } from '../FileUploadButton';
@@ -18,12 +19,14 @@ export const FileUploaderRoot = styled.div.withConfig(
 )<FileUploaderRootPropsType>`
     ${reset};
     ${typography('paragraphMedium')};
+    color: ${token('body.color')};
     ${getComponentOverride('FileUploader')};
     ${marginProps};
 `;
 
 export const Title = styled.div.withConfig(propsBlocker)`
     ${typography('sectionTitle')};
+    color: ${token('body.color')};
 `;
 
 export const Description = styled.div.withConfig(propsBlocker)`

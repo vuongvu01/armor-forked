@@ -12,6 +12,7 @@ import {
     getComponentOverride,
     fontSize02,
     durationNormal,
+    token,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -49,6 +50,7 @@ const getRootStyle = ({
         result = css`
             ${result};
             ${typography('paragraphLarge')};
+            color: ${token('body.color')};
             padding-left: ${spacing(16)};
             background-color: ${color('neutral.01')};
         `;
@@ -56,6 +58,7 @@ const getRootStyle = ({
         result = css`
             ${result};
             ${typography('paragraphLarge')};
+            color: ${token('body.color')};
             padding-left: ${spacing(20)};
             background-color: ${color('neutral.01')};
         `;
@@ -96,16 +99,14 @@ export const MenuElementRoot = styled(MenuElementRootWrapper).withConfig(
 )<MenuElementRootPropsType>`
     ${reset};
     ${typography('labelLarge')};
+    color: ${color('neutral.11')};
     padding-left: ${spacing(6)};
     padding-right: ${spacing(6)};
     display: flex;
     position: relative;
     cursor: pointer;
     text-decoration: none;
-
-    color: ${color('neutral.11')};
     background-color: ${color('neutral.00')};
-
     transition: background-color ${durationNormal}ms ease;
     &:before {
         background-color: ${color('primary.main')};

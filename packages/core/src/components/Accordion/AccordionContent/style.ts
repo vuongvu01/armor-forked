@@ -6,6 +6,7 @@ import {
     spacing,
     transition,
     pixelToRemToken,
+    token,
 } from '@deliveryhero/armor-system';
 
 import { AccordionContentRootPropsType } from './type';
@@ -40,6 +41,7 @@ export const AccordionContentRoot = styled.div.withConfig(
     opacity: 0;
     visibility: hidden;
     ${typography('paragraphLarge')};
+    color: ${token('body.color')};
     ${getRootStyle};
     ${paddingProps};
 `;

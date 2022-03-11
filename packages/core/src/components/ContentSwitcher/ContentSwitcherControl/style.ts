@@ -11,6 +11,7 @@ import {
     mouseCursor,
     transition,
     borderRadius,
+    token,
 } from '@deliveryhero/armor-system';
 import { ContentSwitcherControlRootPropsType } from './type';
 
@@ -108,6 +109,7 @@ export const ContentSwitcherControlRoot = styled.button.withConfig(
 )<ContentSwitcherControlRootPropsType>`
     ${reset};
     ${typography('paragraphMedium')};
+    color: ${token('body.color')};
     ${mouseCursor}
     ${getRootStyle}
     ${getDynamicStyle};

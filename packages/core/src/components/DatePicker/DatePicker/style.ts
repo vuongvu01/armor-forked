@@ -4,6 +4,7 @@ import {
     marginProps,
     propsBlocker,
     reset,
+    token,
     typography,
     widthProps,
 } from '@deliveryhero/armor-system';
@@ -16,6 +17,7 @@ export const DatePickerRoot = styled.div.withConfig(
 )<DatePickerRootPropsType>`
     ${reset()};
     ${typography('paragraphMedium')};
+    color: ${token('body.color')};
     display: inline-block;
     position: relative;
 

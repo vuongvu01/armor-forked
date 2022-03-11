@@ -7,6 +7,7 @@ import {
     typography,
     transition,
     getComponentOverride,
+    token,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -314,4 +315,5 @@ export const StepperPieceRoot = styled.div`
 
 export const StepperPieceNumber = styled.p`
     ${typography('paragraphMedium')};
+    color: ${token('body.color')};
 `;

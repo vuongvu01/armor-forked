@@ -10,6 +10,7 @@ import {
     spacing,
     typography,
     durationNormal,
+    token,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -214,6 +215,7 @@ export const TagRoot = styled.div.withConfig(propsBlocker)<TagRootPropsType>`
 
 export const TagText = styled.div<TagTextPropsType>`
     ${typography('paragraphSmall')};
+    color: ${token('body.color')};
     ${textStyle};
 `;
 

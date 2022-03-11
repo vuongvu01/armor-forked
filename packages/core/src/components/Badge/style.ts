@@ -11,7 +11,7 @@ export const BadgeRoot = styled.div.withConfig(
     propsBlocker,
 )<BadgeRootPropsType>`
     ${typography('labelMedium')};
-    font-size: 14px; // todo: remove this when label medium is fixed
     color: inherit;
+    font-size: 14px; // todo: remove this when label medium is fixed
     ${marginProps};
 `;

@@ -38,8 +38,8 @@ export const ContextMenuRoot = styled.div.withConfig(
     text-align: left;
 
     ${typography('paragraphLarge')};
-    border-radius: ${borderRadius('soft')};
     color: ${color('neutral.07')};
+    border-radius: ${borderRadius('soft')};
     background-color: ${color('neutral.00')};
 
     box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.12);

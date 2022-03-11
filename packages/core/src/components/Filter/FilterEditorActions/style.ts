@@ -5,6 +5,7 @@ import {
     getComponentOverride,
     reset,
     typography,
+    token,
 } from '@deliveryhero/armor-system';
 
 import { FilterEditorActionsRootPropsType } from './type';
@@ -15,6 +16,7 @@ export const FilterEditorActionsRoot = styled.div.withConfig(
 )<FilterEditorActionsRootPropsType>`
     ${reset};
     ${typography('paragraphMedium')};
+    color: ${token('body.color')};
     display: flex;
     ${getComponentOverride('FilterEditorActions')};
     ${marginProps};

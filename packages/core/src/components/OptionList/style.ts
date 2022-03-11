@@ -10,6 +10,7 @@ import {
     typography,
     transition,
     heightProps,
+    token,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -54,6 +55,7 @@ export const OptionListRoot = styled.div.withConfig(
 )<OptionListRootPropsType>`
     ${reset};
     ${typography('paragraphMedium')};
+    color: ${token('body.color')};
     background-color: ${color('neutral.00')};
     box-sizing: border-box;
     display: flex;
@@ -62,7 +64,6 @@ export const OptionListRoot = styled.div.withConfig(
     padding-top: 0;
     transition: ${durationNormal}ms;
     box-shadow: ${elevation('large')};
-
     ${getOptionListStyle};
     ${getComponentOverride('OptionList')};
 `;

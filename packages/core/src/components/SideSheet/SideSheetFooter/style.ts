@@ -4,7 +4,7 @@ import {
     getComponentOverride,
     spacing,
     typography,
-    componentSpacing06,
+    token,
 } from '@deliveryhero/armor-system';
 
 import { SideSheetFooterRootPropsType } from './type';
@@ -12,15 +12,14 @@ import { SideSheetFooterRootPropsType } from './type';
 /** 👉 ROOT ELEMENT */
 export const SideSheetFooterRoot = styled.div<SideSheetFooterRootPropsType>`
     ${typography('paragraphMedium')};
+    color: ${token('body.color')};
     align-items: center;
     justify-content: flex-end;
     box-sizing: border-box;
     display: flex;
     height: 64px;
-    margin: 0;
     border-top: 1px solid ${color('neutral.03')};
-    padding-top: ${spacing(componentSpacing06)};
-    margin: 0 ${spacing(componentSpacing06)} ${spacing(componentSpacing06)}
-        ${spacing(componentSpacing06)};
+    padding-top: ${spacing(6)};
+    margin: 0 ${spacing(6)} ${spacing(6)} ${spacing(6)};
     ${getComponentOverride('SideSheetFooter')};
 `;

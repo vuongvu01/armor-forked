@@ -5,6 +5,7 @@ import {
     propsBlocker,
     spacing,
     mouseCursor,
+    token,
 } from '@deliveryhero/armor-system';
 
 import { AccordionHeaderRootPropsType } from './type';
@@ -40,6 +41,7 @@ export const AccordionHeaderRoot = styled.div.withConfig(
     propsBlocker,
 )<AccordionHeaderRootPropsType>`
     ${typography('labelMedium')};
+    color: ${token('body.color')};
     align-items: center;
     box-sizing: border-box;
     display: inline-flex;

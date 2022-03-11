@@ -4,6 +4,7 @@ import {
     marginProps,
     propsBlocker,
     spacing,
+    token,
     typography,
     widthProps,
 } from '@deliveryhero/armor-system';
@@ -29,6 +30,7 @@ export const FormFieldRoot = styled.div.withConfig(
     propsBlocker,
 )<FormFieldRootPropsType>`
     ${typography('paragraphMedium')};
+    color: ${token('body.color')};
     box-sizing: border-box;
     position: relative;
     ${getRootStyle};

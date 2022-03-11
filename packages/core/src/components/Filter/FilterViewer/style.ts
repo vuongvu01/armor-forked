@@ -9,6 +9,7 @@ import {
     notLastChild,
     paddingProps,
     color,
+    token,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -26,6 +27,7 @@ export const FilterViewerRoot = styled.div.withConfig(
 )<FilterViewerRootPropsType>`
     ${reset};
     ${typography('paragraphMedium')};
+    color: ${token('body.color')};
     border-bottom: 1px solid ${color('neutral.03')};
     padding-bottom: ${spacing(6)};
 

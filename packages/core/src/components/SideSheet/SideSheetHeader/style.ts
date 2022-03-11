@@ -8,6 +8,7 @@ import {
     reset,
     spacing,
     typography,
+    token,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -21,6 +22,7 @@ export const SideSheetHeaderRoot = styled.div.withConfig(
 )<SideSheetHeaderRootPropsType>`
     ${reset};
     ${typography('paragraphMedium')};
+    color: ${token('body.color')};
     flex-grow: 1;
     padding-bottom: ${spacing(componentSpacing08)};
     padding-right: ${spacing(componentSpacing04)};
@@ -29,6 +31,7 @@ export const SideSheetHeaderRoot = styled.div.withConfig(
 
 export const SideSheetHeaderTitle = styled.div`
     ${typography('sectionTitle')};
+    color: ${token('body.color')};
     margin-top: 0;
     margin-bottom: ${spacing(2)};
 `;

@@ -9,6 +9,7 @@ import {
     color,
     sizeProps,
     transition,
+    token,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -37,6 +38,7 @@ export const FilterLayoutRoot = styled.div.withConfig(
 )<FilterLayoutRootPropsType>`
     ${reset};
     ${typography('paragraphMedium')};
+    color: ${token('body.color')};
     display: flex;
 
     ${getRootStyle}
