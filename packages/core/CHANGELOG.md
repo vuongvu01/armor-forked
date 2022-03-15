@@ -1,3 +1,17 @@
+# [1.90.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.89.0...@deliveryhero/armor@1.90.0) (2022-03-15)
+
+
+### Bug Fixes
+
+* **armor-docs:** Correct armor-vendors package dependencies ([00924a4](https://github.com/deliveryhero/armor/commit/00924a47c53f7d546c2118c2b38a954b71d9d1a2))
+* **armor-docs:** update vendors package dependencies ([#907](https://github.com/deliveryhero/armor/issues/907)) ([c1451c8](https://github.com/deliveryhero/armor/commit/c1451c8d13a175e8069fa5aedeb28f6324ee48b8))
+* **HeaderNavigation:** Header navigation component issue in rooster-dashboard [AR-47] ([d9ca07a](https://github.com/deliveryhero/armor/commit/d9ca07abd60ac58a7e945a62acd54317b41a8357))
+
+
+### Features
+
+* **HeaderNavigationSelector:** add scrolling effect to HeaderNavigationSelector [AR-35] ([447872b](https://github.com/deliveryhero/armor/commit/447872b14ab4ec9e4f1070f50cffd6ef2d92cce8))
+
 # [1.89.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.88.0...@deliveryhero/armor@1.89.0) (2022-03-01)
 
 
