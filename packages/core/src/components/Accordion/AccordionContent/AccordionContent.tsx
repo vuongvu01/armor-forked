@@ -1,5 +1,4 @@
 import React, { forwardRef, useContext } from 'react';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { AccordionContentRoot } from './style';
 import { AccordionContentPropsType } from './type';
@@ -14,7 +13,6 @@ export const AccordionContent = forwardRef<
     HTMLDivElement,
     AccordionContentPropsType
 >(function AccordionContent({ children, className, ...restProps }, ref) {
-    const theme = useComponentTheme(ACCORDION_CONTENT_CLASS_PREFIX);
     const { disabled, isExpanded } = useContext(AccordionContext);
 
     const classOverride = useAccordionContentClassName(
@@ -32,7 +30,6 @@ export const AccordionContent = forwardRef<
             disabled={disabled}
             isExpanded={isExpanded}
             ref={ref}
-            theme={theme}
         >
             {children}
         </AccordionContentRoot>

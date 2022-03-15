@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useFormFieldMessageClassNames } from './hooks/useFormFieldMessageClassNames';
 import { FormFieldMessageRoot, FormFieldMessageFakeChildren } from './style';
@@ -17,8 +16,6 @@ export const FormFieldMessage = forwardRef<
     { className, error, oneLine, children, ...restProps },
     ref,
 ) {
-    const theme = useComponentTheme(FORM_FIELD_MESSAGE_CLASS_PREFIX);
-
     const classNameComponents = useFormFieldMessageClassNames(
         FORM_FIELD_MESSAGE_CLASS_PREFIX,
         className,
@@ -28,7 +25,6 @@ export const FormFieldMessage = forwardRef<
     return (
         <FormFieldMessageRoot
             {...restProps}
-            theme={theme}
             error={error}
             oneLine={oneLine}
             className={classNameComponents.Root}

@@ -1,6 +1,6 @@
 import React, { forwardRef, useCallback, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme, generateId } from '@deliveryhero/armor-system';
+import { generateId } from '@deliveryhero/armor-system';
 
 import { SelectorLabel } from '../SelectorLabel';
 import { useSwitchClassName } from './hooks/useSwitchClassName';
@@ -26,7 +26,6 @@ export const Switch = forwardRef<HTMLInputElement, SwitchPropsType>(
         },
         ref,
     ) {
-        const theme = useComponentTheme(SWITCH_CLASS_PREFIX);
         const id = generateId(propsId, switchIdPrefix);
 
         const classOverride = useSwitchClassName(
@@ -65,7 +64,6 @@ export const Switch = forwardRef<HTMLInputElement, SwitchPropsType>(
             <SwitchRoot
                 disabled={disabled}
                 htmlFor={id}
-                theme={theme}
                 className={classOverride.Root}
                 reallyChecked={reallyChecked}
             >
@@ -78,13 +76,11 @@ export const Switch = forwardRef<HTMLInputElement, SwitchPropsType>(
                     onChange={handleOnChange}
                     ref={ref}
                     type="checkbox"
-                    theme={theme}
                     className={classOverride.CheckboxInput}
                 />
                 <SwitchToggle
                     className={classOverride.Label}
                     disabled={disabled}
-                    theme={theme}
                 />
                 {!!label && (
                     <SelectorLabel

@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useTableCellClassNames } from './hooks/useTableCellClassNames';
 import { TableCellRoot } from './style';
@@ -13,7 +12,6 @@ import { useTableCell } from './hooks/useTableCell';
  */
 export const TableCell = forwardRef<HTMLTableCellElement, TableCellPropsType>(
     function TableCell({ className, children, ...props }, ref) {
-        const theme = useComponentTheme(TABLE_CELL_CLASS_PREFIX);
         const classNameComponents = useTableCellClassNames(
             TABLE_CELL_CLASS_PREFIX,
             className,
@@ -23,11 +21,7 @@ export const TableCell = forwardRef<HTMLTableCellElement, TableCellPropsType>(
 
         // todo: forward only className here, it will be more efficient and neat
         return (
-            <TableCellRoot
-                {...rootProps}
-                theme={theme}
-                className={classNameComponents.Root}
-            >
+            <TableCellRoot {...rootProps} className={classNameComponents.Root}>
                 {(forwardedProps: TableCellRootPropsType) => (
                     <Tag {...forwardedProps} ref={ref}>
                         {children}

@@ -1,5 +1,4 @@
 import React, { forwardRef } from 'react';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { TableSectionContext } from '../utils/TableSectionContext';
 
@@ -16,7 +15,6 @@ export const TableHead = forwardRef<
     HTMLTableSectionElement,
     TableHeadPropsType
 >(function TableHead({ className, ...restProps }, ref) {
-    const theme = useComponentTheme(TABLE_HEAD_CLASS_PREFIX);
     const classNameComponents = useTableHeadClassNames(
         TABLE_HEAD_CLASS_PREFIX,
         className,
@@ -29,7 +27,6 @@ export const TableHead = forwardRef<
             <TableHeadRoot
                 data-testid={tableHeadRootTestId}
                 {...restProps}
-                theme={theme}
                 className={classNameComponents.Root}
                 ref={rootReference}
             />

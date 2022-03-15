@@ -1,7 +1,6 @@
 import React, { FunctionComponent, useEffect, useRef } from 'react';
 import lottie from 'lottie-web';
 
-import { useTheme } from '@deliveryhero/armor-system';
 import data from './data.json';
 import { ComponentElementStylePropsType } from '../type';
 import { SpinnerRoot } from './style';
@@ -11,7 +10,6 @@ export const Spinner: FunctionComponent<ComponentElementStylePropsType> = ({
     ...restProps
 }) => {
     const anime = useRef<null | HTMLDivElement>(null);
-    const theme = useTheme();
 
     useEffect(() => {
         if (anime.current) {
@@ -31,7 +29,6 @@ export const Spinner: FunctionComponent<ComponentElementStylePropsType> = ({
             {...restProps}
             className={`Spinner ${className || ''}`}
             ref={anime}
-            theme={theme.armor}
         />
     );
 };

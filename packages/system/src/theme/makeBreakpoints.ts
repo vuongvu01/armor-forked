@@ -1,8 +1,4 @@
-import {
-    BreakpointsDeclarationType,
-    BreakpointsType,
-    SpacingFunctionType,
-} from './type';
+import { BreakpointsType, SpacingFunctionType, ThemeType } from './type';
 import {
     breakpointBetween,
     breakpointDown,
@@ -20,9 +16,10 @@ import {
 import { ScalarType } from '../type';
 
 export const makeBreakpoints = (
-    breakpoints?: BreakpointsDeclarationType,
+    theme: ThemeType,
     unit = breakpointUnit,
 ): BreakpointsType => {
+    const { breakpoints } = theme;
     const { values = breakpointValues } = breakpoints || {};
 
     const base = {

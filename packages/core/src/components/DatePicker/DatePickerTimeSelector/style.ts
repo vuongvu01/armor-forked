@@ -12,6 +12,7 @@ import {
     borderRadius02,
     fontSize03,
     fontWeightMedium,
+    token,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -26,6 +27,7 @@ export const DatePickerTimeSelectorRoot = styled.div.withConfig(
 )<DatePickerTimeSelectorRootPropsType>`
     ${reset};
     ${typography('paragraphMedium')};
+    color: ${token('body.color')};
     padding: ${spacing(4)};
     border-top: 1px solid ${color('neutral.03')};
     display: flex;
@@ -42,6 +44,7 @@ export const DatePickerTimeSelectorClock = styled.div.withConfig(propsBlocker)`
 
 export const DatePickerTimeSelectorInput = styled(TextInput)`
     ${typography('paragraphMedium')};
+    color: ${token('body.color')};
     background-color: inherit;
     width: ${spacing(13)};
     .TextInput-Input {
@@ -85,13 +88,13 @@ export const DatePickerTimeSelectorButton = styled.button.withConfig(
 )<DatePickerTimeSelectorButtonPropsType>`
     // todo: use regular typography here
     ${typography('paragraphMedium')};
+    color: ${color('primary.main')};
     line-height: ${pixelToRem(fontSize03)};
     font-weight: ${fontWeightMedium};
 
     padding: ${spacing(3)} ${spacing(4)};
     border-radius: ${borderRadius(borderRadius02)};
     border: 1px solid transparent;
-    color: ${color('primary.main')};
     background-color: inherit;
     cursor: pointer;
     ${transition({

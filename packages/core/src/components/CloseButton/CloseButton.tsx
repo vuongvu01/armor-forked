@@ -1,5 +1,4 @@
 import React, { forwardRef } from 'react';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { CloseButtonEffectivePropsType } from './type';
 import { useCloseButtonClassName } from './hooks/useCloseButtonClassName';
@@ -17,20 +16,15 @@ export const CloseButton = forwardRef<
         CLOSE_BUTTON_CLASS_PREFIX,
         className,
     );
-    const theme = useComponentTheme(CLOSE_BUTTON_CLASS_PREFIX);
 
     return (
         <CloseButtonRoot
             {...restProps}
             ref={ref}
             className={classNameComponents.Root}
-            theme={theme}
             tabIndex={0}
         >
-            <CloseButtonIcon
-                className={classNameComponents.Icon}
-                theme={theme}
-            />
+            <CloseButtonIcon className={classNameComponents.Icon} />
         </CloseButtonRoot>
     );
 });

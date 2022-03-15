@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import { PortalToBody, useComponentTheme } from '@deliveryhero/armor-system';
+import { PortalToBody } from '@deliveryhero/armor-system';
 
 import { useDatePickerClassNames } from '../hooks/useDatePickerClassNames';
 import { useDateRangePicker } from './hooks/useDateRangePicker';
@@ -25,8 +25,6 @@ export const DateRangePicker = forwardRef<
     HTMLDivElement,
     DateRangePickerPropsType
 >(function DateRangePicker({ className, ...props }, ref) {
-    const theme = useComponentTheme(DATE_RANGE_PICKER_CLASS_PREFIX);
-
     const classNameComponents = useDatePickerClassNames(
         DATE_RANGE_PICKER_CLASS_PREFIX,
         className,
@@ -52,20 +50,17 @@ export const DateRangePicker = forwardRef<
     return (
         <DateRangePickerRoot
             {...rootProps}
-            theme={theme}
             className={classNameComponents.Root}
         >
             <DatePickerInput
                 {...inputProps}
-                theme={theme}
                 className={classNameComponents.Input}
-                after={<DatePickerInputIcon theme={theme} />}
+                after={<DatePickerInputIcon />}
             />
             {open && (
                 <PortalToBody {...portalProps}>
                     <DatePickerDropdown
                         {...dropdownProps}
-                        theme={theme}
                         className={classNameComponents.Dropdown}
                     >
                         <DatePickerTopBar {...topBarProps} />
@@ -84,10 +79,7 @@ export const DateRangePicker = forwardRef<
                             <DatePickerActionBar {...actionBarProps} />
                         )}
 
-                        <DatePickerDropdownArrow
-                            {...arrowProps}
-                            theme={theme}
-                        />
+                        <DatePickerDropdownArrow {...arrowProps} />
                     </DatePickerDropdown>
                 </PortalToBody>
             )}

@@ -1,5 +1,4 @@
 import React, { forwardRef } from 'react';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useDatePickerMonthYearSelectorClassNames } from './hooks/useDatePickerMonthYearSelectorClassNames';
 import { useDatePickerMonthYearSelector } from './hooks/useDatePickerMonthYearSelector';
@@ -22,9 +21,6 @@ export const DatePickerMonthYearSelector = forwardRef<
     HTMLDivElement,
     DatePickerMonthYearSelectorPropsType
 >(function DatePickerMonthYearSelector({ className, ...props }, ref) {
-    const theme = useComponentTheme(
-        DATE_PICKER_MONTH_YEAR_SELECTOR_CLASS_PREFIX,
-    );
     const classNameComponents = useDatePickerMonthYearSelectorClassNames(
         DATE_PICKER_MONTH_YEAR_SELECTOR_CLASS_PREFIX,
         className,
@@ -46,28 +42,23 @@ export const DatePickerMonthYearSelector = forwardRef<
     return (
         <DatePickerMonthYearSelectorRoot
             {...rootProps}
-            theme={theme}
             className={classNameComponents.Root}
         >
             <DatePickerMonthYearSelectorScroll
                 {...scrollProps}
-                theme={theme}
                 className={classNameComponents.Scroll}
             >
                 <DatePickerMonthYearSelectorList
                     {...listProps}
-                    theme={theme}
                     className={classNameComponents.List}
                 >
                     {yearRange.map((year) => (
                         <DatePickerMonthYearSelectorYear
-                            theme={theme}
                             className={classNameComponents.Year}
                             key={year}
                         >
                             <DatePickerMonthYearSelectorYearTitle
                                 {...yearTitleProps}
-                                theme={theme}
                                 className={classNameComponents.YearTitle}
                                 data-year={year}
                             >
@@ -75,13 +66,11 @@ export const DatePickerMonthYearSelector = forwardRef<
                             </DatePickerMonthYearSelectorYearTitle>
                             {openYear === year && (
                                 <DatePickerMonthYearSelectorMonthList
-                                    theme={theme}
                                     className={classNameComponents.MonthList}
                                 >
                                     {months.map((monthName, monthNumber) => (
                                         <DatePickerMonthYearSelectorMonth
                                             {...monthProps}
-                                            theme={theme}
                                             className={
                                                 classNameComponents.Month
                                             }

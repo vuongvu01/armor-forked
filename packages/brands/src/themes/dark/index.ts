@@ -27,100 +27,57 @@ import {
 
 import { darkThemeComponentOverrides } from './components';
 
-export const makeDarkTheme = () =>
-    makeTheme({
-        armor: {
-            body: {
-                color: colorGrey01,
-                backgroundColor: colorGrey80,
-            },
-            typography: {
-                body: {
-                    // todo: remove the color from here, typography should be color-agnostic
-                    color: colorGrey01,
-                },
-                pageTitle: {
-                    // todo: remove the color from here, typography should be color-agnostic
-                    color: colorGrey01,
-                },
-                sectionTitle: {
-                    // todo: remove the color from here, typography should be color-agnostic
-                    color: colorGrey01,
-                },
-                subSectionTitle: {
-                    // todo: remove the color from here, typography should be color-agnostic
-                    color: colorGrey01,
-                },
-                labelLarge: {
-                    // todo: remove the color from here, typography should be color-agnostic
-                    color: colorGrey01,
-                },
-                labelMedium: {
-                    // todo: remove the color from here, typography should be color-agnostic
-                    color: colorGrey01,
-                },
-                labelSmall: {
-                    // todo: remove the color from here, typography should be color-agnostic
-                    color: colorGrey01,
-                },
-                paragraphLarge: {
-                    // todo: remove the color from here, typography should be color-agnostic
-                    color: colorGrey01,
-                },
-                paragraphMedium: {
-                    // todo: remove the color from here, typography should be color-agnostic
-                    color: colorGrey01,
-                },
-                paragraphSmall: {
-                    // todo: remove the color from here, typography should be color-agnostic
-                    color: colorGrey01,
-                },
-            },
-            color: {
-                primary: {
-                    dark: colorBlue40,
-                    main: colorBlue20,
-                    light: colorBlue10,
-                    lighter: colorBlue20,
-                    lightest: colorBlue05,
-                },
-                accent: {
-                    darker: colorTurquoise90,
-                    dark: colorTurquoise80,
-                    main: colorTurquoise70,
-                    light: colorTurquoise60,
-                },
-                success: {
-                    main: colorGreen20,
-                    light: colorGreen10,
-                },
-                warning: {
-                    main: colorYellow60,
-                    light: colorYellow10,
-                },
-                error: {
-                    dark: colorRed70,
-                    main: colorRed60,
-                    light: colorRed50,
-                    lighter: colorRed10,
-                },
-                neutral: {
-                    '00': colorGrey90,
-                    '01': colorGrey80,
-                    '02': colorGrey70,
-                    '03': colorGrey60,
-                    '04': colorGrey30,
-                    '05': colorGrey40,
-                    '06': colorGrey01,
-                },
-                illustration: {
-                    brand: colorBlue40,
-                },
-                motion: {
-                    brand: colorBlue20,
-                },
-            },
-
-            componentCSS: darkThemeComponentOverrides,
+export const darkThemeStructure = {
+    body: {
+        color: colorGrey01,
+        backgroundColor: colorGrey80,
+    },
+    color: {
+        primary: {
+            dark: colorBlue40,
+            main: colorBlue20,
+            light: colorBlue10,
+            lighter: colorBlue20,
+            lightest: colorBlue05,
         },
-    });
+        accent: {
+            darker: colorTurquoise90,
+            dark: colorTurquoise80,
+            main: colorTurquoise70,
+            light: colorTurquoise60,
+        },
+        success: {
+            main: colorGreen20,
+            light: colorGreen10,
+        },
+        warning: {
+            main: colorYellow60,
+            light: colorYellow10,
+        },
+        error: {
+            dark: colorRed70,
+            main: colorRed60,
+            light: colorRed50,
+            lighter: colorRed10,
+        },
+        neutral: {
+            '00': colorGrey90,
+            '01': colorGrey80,
+            '02': colorGrey70,
+            '03': colorGrey60,
+            '04': colorGrey30,
+            '05': colorGrey40,
+            '06': colorGrey01,
+        },
+        illustration: {
+            brand: colorBlue40,
+        },
+        motion: {
+            brand: colorBlue20,
+        },
+    },
+
+    componentCSS: darkThemeComponentOverrides,
+};
+
+export const makeDarkTheme = () => makeTheme({ armor: darkThemeStructure });

@@ -32,9 +32,10 @@ export const useOverlay = (
         };
     }, [id, open, ...Object.values(parameters)]);
 
-    const isTopOverlay = useCallback(() => OverlayManager.isTopOverlay(id), [
-        id,
-    ]);
+    const isTopOverlay = useCallback(
+        () => OverlayManager.isTopOverlay(id),
+        [id],
+    );
 
     return {
         id,

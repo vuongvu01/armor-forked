@@ -1,5 +1,4 @@
 import React, { forwardRef } from 'react';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useFilterEditorActionsClassNames } from './hooks/useFilterEditorActionsClassNames';
 import { useFilterEditorActions } from './hooks/useFilterEditorActions';
@@ -12,7 +11,6 @@ export const FilterEditorActions = forwardRef<
     HTMLDivElement,
     FilterEditorActionsPropsType
 >(function FilterEditorActions({ className, ...props }, ref) {
-    const theme = useComponentTheme(FILTER_EDITOR_ACTIONS_CLASS_PREFIX);
     const classNames = useFilterEditorActionsClassNames(
         FILTER_EDITOR_ACTIONS_CLASS_PREFIX,
         className,
@@ -26,11 +24,7 @@ export const FilterEditorActions = forwardRef<
     } = useFilterEditorActions<HTMLDivElement>(props, ref);
 
     return (
-        <FilterEditorActionsRoot
-            {...rootProps}
-            theme={theme}
-            className={classNames.Root}
-        >
+        <FilterEditorActionsRoot {...rootProps} className={classNames.Root}>
             {showCloseButton && (
                 <Button
                     secondary

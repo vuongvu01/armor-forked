@@ -68,6 +68,7 @@ export const TooltipRoot = styled.div.withConfig(
     pointer-events: none;
     ${popperArrowPlacement('Tooltip-Arrow')};
     ${typography('paragraphMedium')};
+    color: ${token('body.color')};
     border-radius: ${token('shape.borderRadius.soft')};
     padding: ${spacing(3)};
     ${zIndex};

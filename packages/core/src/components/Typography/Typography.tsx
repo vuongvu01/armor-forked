@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useTypographyClassNames } from './hooks/useTypographyClassNames';
 import { TypographyRoot } from './style';
@@ -13,8 +12,6 @@ import { useTypography } from './hooks/useTypography';
  */
 export const Typography = forwardRef<HTMLDivElement, TypographyPropsType>(
     function Typography({ className, children, ...props }, ref) {
-        const theme = useComponentTheme(TYPOGRAPHY_CLASS_PREFIX);
-
         const { rootProps, Tag } = useTypography(props, ref);
 
         const classNameComponents = useTypographyClassNames(
@@ -24,11 +21,7 @@ export const Typography = forwardRef<HTMLDivElement, TypographyPropsType>(
         );
 
         return (
-            <TypographyRoot
-                {...rootProps}
-                className={classNameComponents.Root}
-                theme={theme}
-            >
+            <TypographyRoot {...rootProps} className={classNameComponents.Root}>
                 {(forwardedProps: TypographyPropsType) => (
                     <Tag {...forwardedProps}>{children}</Tag>
                 )}

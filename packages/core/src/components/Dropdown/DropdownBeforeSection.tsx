@@ -1,5 +1,4 @@
 import React, { forwardRef } from 'react';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 import {
@@ -22,8 +21,6 @@ export const DropdownBeforeSection = forwardRef<
     HTMLDivElement,
     DropdownBeforeSectionPropsType
 >(function DropdownBeforeSection({ className, ...props }, ref) {
-    const theme = useComponentTheme(DROPDOWN_BEFORE_SECTION_CLASS_PREFIX);
-
     const {
         rootProps,
         beforeSectionClearButtonProps,
@@ -77,7 +74,6 @@ export const DropdownBeforeSection = forwardRef<
                         remainingTagsValues,
                     )}
                     className={classOverride.DropdownTagRemainingItems}
-                    theme={theme}
                 />
             );
 
@@ -100,17 +96,14 @@ export const DropdownBeforeSection = forwardRef<
     return (
         <DropdownBeforeSectionRoot
             {...rootProps}
-            theme={theme}
             className={classOverride.Root}
         >
             <DropdownBeforeSectionTagsContainer
                 {...dropdownBeforeSectionTagsContainerProps}
-                theme={theme}
                 className={classOverride.TagsContainer}
             >
                 <DropdownBeforeSectionTagsWrapper
                     {...dropdownBeforeSectionTagsWrapperProps}
-                    theme={theme}
                     className={classOverride.TagsWrapper}
                 >
                     {renderTags()}
@@ -118,13 +111,11 @@ export const DropdownBeforeSection = forwardRef<
             </DropdownBeforeSectionTagsContainer>
 
             <DropdownBeforeSectionActionContainer
-                theme={theme}
                 className={classOverride.ActionContainer}
             >
                 {selectedTagsToDisplay?.length ? (
                     <DropdownBeforeSectionClearButton
                         {...beforeSectionClearButtonProps}
-                        theme={theme}
                         className={classOverride.ClearButton}
                     >
                         <DropdownCancelIcon />

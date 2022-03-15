@@ -9,6 +9,7 @@ import {
     color,
     borderRadius,
     widthProps,
+    token,
 } from '@deliveryhero/armor-system';
 import {
     CancelIcon as CancelIconArmor,
@@ -94,6 +95,7 @@ export const FileCardLeftPortion = styled.div.withConfig(
     propsBlocker,
 )<FileCardLeftPortionPropsType>`
     ${typography('paragraphLarge')};
+    color: ${token('body.color')};
     display: flex;
     align-items: center;
     min-width: 80%;

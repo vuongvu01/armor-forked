@@ -1,10 +1,10 @@
-import { TypographyInputType, TypographyType } from './type';
+import { ThemeType, TypographyType } from './type';
 import { fontSize02, fontSize03 } from '../tokens';
 import { ScalarType } from '../type';
 
-export const makeTypography = (
-    typography: TypographyInputType = {},
-): TypographyType => {
+export const makeTypography = (theme: ThemeType): TypographyType => {
+    const { typography } = theme;
+
     const fontSize = typography.fontSize || fontSize02;
     const htmlFontSize = typography.htmlFontSize || fontSize03;
     const factor = fontSize / fontSize02;

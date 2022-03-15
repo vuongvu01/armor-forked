@@ -1,6 +1,6 @@
 import React, { ChangeEvent, forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme, generateId } from '@deliveryhero/armor-system';
+import { generateId } from '@deliveryhero/armor-system';
 
 import { extractMarginProps } from '../../styling';
 import { SelectorLabel } from '../SelectorLabel';
@@ -30,7 +30,6 @@ export const Radio = forwardRef<HTMLDivElement, RadioPropsType>(function Radio(
     },
     ref,
 ) {
-    const theme = useComponentTheme(RADIO_CLASS_PREFIX);
     const id = generateId(propsId, radioIdPrefix);
     const isChecked = checked || value === selectedValue;
 
@@ -51,7 +50,6 @@ export const Radio = forwardRef<HTMLDivElement, RadioPropsType>(function Radio(
         <RadioRoot
             className={classOverride.Root}
             data-testid={radioRoot}
-            theme={theme}
             disabled={disabled}
             {...marginProps}
         >
@@ -64,7 +62,6 @@ export const Radio = forwardRef<HTMLDivElement, RadioPropsType>(function Radio(
                 name={name}
                 onChange={handleOnChange}
                 ref={ref}
-                theme={theme}
                 type="radio"
                 value={value}
             />
@@ -72,7 +69,6 @@ export const Radio = forwardRef<HTMLDivElement, RadioPropsType>(function Radio(
                 className={classOverride.Label}
                 disabled={disabled}
                 htmlFor={id}
-                theme={theme}
             >
                 <SelectorLabel
                     disabled={disabled}

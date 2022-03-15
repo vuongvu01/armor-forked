@@ -1,5 +1,5 @@
 import React, { HTMLAttributes, ReactChild } from 'react';
-import { ScalarType } from '@deliveryhero/armor-system';
+import { ScalarType, HeightPropsType } from '@deliveryhero/armor-system';
 
 import { DictionaryItemIDBasedType, ObjectLiteralType } from '../../type';
 import {
@@ -75,6 +75,8 @@ export type OptionListPropsType = {
         option: string | OptionObjectType,
     ) => ReactChild;
     autoFocus?: boolean;
+    enableScrollGradientEffect?: boolean;
+    maxDropdownHeight?: ScalarType;
 } & Pick<
     DropdownEffectivePropsType,
     | 'options'
@@ -98,7 +100,8 @@ export type OptionListRootPropsType = Pick<
 > &
     ComponentElementStylePropsType;
 
-export type OptionListContainerPropsType = ComponentElementStylePropsType;
+export type OptionListContainerPropsType = ComponentElementStylePropsType &
+    HeightPropsType;
 
 export type OptionListBeforeSectionContainerPropsType = {} & ObjectLiteralType;
 

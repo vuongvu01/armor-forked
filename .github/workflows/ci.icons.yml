@@ -6,6 +6,7 @@ on:
             - dev
             - master
         paths:
+            - 'packages/system/**'
             - 'packages/icons/**'
 
 jobs:

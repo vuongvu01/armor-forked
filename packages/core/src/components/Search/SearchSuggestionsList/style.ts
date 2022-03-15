@@ -29,7 +29,7 @@ export const SearchSuggestionListGroup = styled.div.withConfig(
 )<SearchSuggestionListGroupPropsType>`
     padding: ${spacing(6)} ${spacing(4)} ${spacing(2)} ${spacing(4)};
     ${typography('labelMedium')};
-    font-size: ${pixelToRem(14)};
     color: ${color('neutral.07')};
+    font-size: ${pixelToRem(14)};
     ${getSearchSuggestionListGroupDynamicStyle};
 `;

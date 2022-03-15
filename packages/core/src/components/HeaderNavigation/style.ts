@@ -22,10 +22,10 @@ export const HeaderNavigationRoot = styled.div.withConfig(
     min-height: ${spacing(12)};
     border-bottom: 1px solid ${color('neutral.03')};
     background-color: ${color('neutral.02')};
-    color: ${token('body.color')};
     padding-left: ${spacing(4)};
     padding-right: 0;
     ${typography('labelLarge')};
+    color: ${token('body.color')};
     ${getComponentOverride('HeaderNavigation')};
     ${marginProps};
 `;

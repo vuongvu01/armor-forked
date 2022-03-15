@@ -9,6 +9,7 @@ import {
     getComponentOverride,
     marginProps,
     propsBlocker,
+    token,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -54,18 +55,16 @@ export const MessageRoot = styled.div.withConfig(
     propsBlocker,
 )<MessageRootPropsType>`
     ${typography('paragraphMedium')};
+    color: ${token('body.color')};
     box-sizing: border-box;
     border: 1px solid ${color('primary.main')};
     display: flex;
     justify-content: space-between;
     position: relative;
-
     border-radius: ${borderRadius('soft')};
     background-color: ${color('neutral.00')};
-
     padding-left: ${spacing(4)};
     padding-right: ${spacing(4)};
-
     ${getRootDynamicStyle};
     ${getComponentOverride('Message')};
     ${marginProps};

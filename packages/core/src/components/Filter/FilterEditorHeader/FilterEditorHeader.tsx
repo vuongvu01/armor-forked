@@ -1,5 +1,4 @@
 import React, { forwardRef } from 'react';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useFilterEditorHeaderClassNames } from './hooks/useFilterEditorHeaderClassNames';
 import { useFilterEditorHeader } from './hooks/useFilterEditorHeader';
@@ -13,7 +12,6 @@ export const FilterEditorHeader = forwardRef<
     HTMLDivElement,
     FilterEditorHeaderPropsType
 >(function FilterEditorHeader({ className, ...props }, ref) {
-    const theme = useComponentTheme(FILTER_EDITOR_HEADER_CLASS_PREFIX);
     const classNames = useFilterEditorHeaderClassNames(
         FILTER_EDITOR_HEADER_CLASS_PREFIX,
         className,
@@ -23,11 +21,7 @@ export const FilterEditorHeader = forwardRef<
         useFilterEditorHeader<HTMLDivElement>(props, ref);
 
     return (
-        <FilterEditorHeaderRoot
-            {...rootProps}
-            theme={theme}
-            className={classNames.Root}
-        >
+        <FilterEditorHeaderRoot {...rootProps} className={classNames.Root}>
             <Typography sectionTitle tag="div" className={classNames.Title}>
                 Filter by
             </Typography>

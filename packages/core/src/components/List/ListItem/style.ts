@@ -11,6 +11,7 @@ import {
     pixelToRem,
     fontWeightMedium,
     fontWeightRegular,
+    token,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -199,6 +200,7 @@ export const ListItemRoot = styled(Wrapper).withConfig(
 )<ListItemRootPropsType>`
     ${reset};
     ${typography('labelMedium')};
+    color: ${token('body.color')};
 
     display: flex;
     text-decoration: none;

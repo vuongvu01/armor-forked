@@ -3,8 +3,8 @@ import {
     marginProps,
     paddingProps,
     typography,
-    componentSpacing06,
     spacing,
+    token,
 } from '@deliveryhero/armor-system';
 
 import { SideSheetBodyRootPropsType } from './type';
@@ -16,12 +16,12 @@ const rootStyle = ({ isFixed }: SideSheetBodyRootPropsType) => css`
 /** 👉 ROOT ELEMENT */
 export const SideSheetBodyRoot = styled.div<SideSheetBodyRootPropsType>`
     ${typography('paragraphMedium')};
+    color: ${token('body.color')};
     display: inline-block;
     flex-grow: 1;
     flex-wrap: wrap;
     margin: 0;
-    padding: 0 ${spacing(componentSpacing06)};
-
+    padding: 0 ${spacing(6)};
     ${rootStyle};
     ${marginProps};
     ${paddingProps};

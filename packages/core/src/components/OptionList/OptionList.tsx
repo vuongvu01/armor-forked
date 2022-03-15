@@ -1,5 +1,5 @@
 import React, { Fragment, FunctionComponent } from 'react';
-import { useComponentTheme, useSortedList } from '@deliveryhero/armor-system';
+import { useSortedList } from '@deliveryhero/armor-system';
 
 import {
     OptionListGroupObjectType,
@@ -13,6 +13,9 @@ import {
     OptionListSearch,
     OptionListSearchContainer,
     OptionListVirtualPadding,
+    OptionListContent,
+    TopGradientEffect,
+    BottomGradientEffect,
 } from './style';
 import { OPTION_LIST_CLASS_PREFIX } from './constants';
 import { OptionListItem } from './OptionListItem';
@@ -28,16 +31,15 @@ export const OptionList: FunctionComponent<OptionListPropsType> = ({
     className,
     ...props
 }) => {
-    const theme = useComponentTheme(OPTION_LIST_CLASS_PREFIX);
-
     const {
         rootProps,
         getOptionItemProps,
         getSelectAllItemProps,
         getOptionListSearchProps,
-        listContainerProps,
+        listContentProps,
         listProps,
         optionListItemGroupProps,
+        listContainerProps,
 
         enableVirtualization,
         getVirtualTopSpaceProps,
@@ -53,6 +55,8 @@ export const OptionList: FunctionComponent<OptionListPropsType> = ({
         optionListFooterProps,
         isSelectAllOptionRendered,
         groupIndex,
+        getTopGradientProps,
+        getBottomGradientProps,
     } = useOptionList(props);
 
     const classOverride = useOptionListClassName(
@@ -65,24 +69,17 @@ export const OptionList: FunctionComponent<OptionListPropsType> = ({
     const displayedGroups: ObjectLiteralType = {};
 
     return internalOptions.length ? (
-        <OptionListRoot
-            {...rootProps}
-            className={classOverride.Root}
-            theme={theme}
-        >
+        <OptionListRoot {...rootProps} className={classOverride.Root}>
             {isOptionListHeaderRendered && (
                 <OptionListBeforeSectionContainer
-                    theme={theme}
                     className={classOverride.BeforeSectionContainer}
                 >
                     {enableSearchOption && (
                         <OptionListSearchContainer
-                            theme={theme}
                             className={classOverride.SearchContainer}
                         >
                             <OptionListSearch
                                 {...getOptionListSearchProps()}
-                                theme={theme}
                                 className={classOverride.Search}
                             />
                         </OptionListSearchContainer>
@@ -90,74 +87,91 @@ export const OptionList: FunctionComponent<OptionListPropsType> = ({
                 </OptionListBeforeSectionContainer>
             )}
             <OptionListContainer
-                theme={theme}
                 className={classOverride.OptionListContainer}
                 {...listContainerProps}
             >
-                {isSelectAllOptionRendered && (
-                    <OptionListItem
-                        {...getSelectAllItemProps()}
-                        optionIndex={0}
-                        className={classOverride.SelectAllItem}
-                    />
-                )}
-                <div {...listProps}>
-                    {enableVirtualization && (
-                        <OptionListVirtualPadding
-                            {...getVirtualTopSpaceProps()}
-                            className={classOverride.VirtualPaddingTop}
-                            theme={theme}
+                <TopGradientEffect
+                    {...getTopGradientProps()}
+                    className={classOverride.TopGradient}
+                />
+                <BottomGradientEffect
+                    {...getBottomGradientProps()}
+                    className={classOverride.BottomGradient}
+                />
+                <OptionListContent
+                    className={classOverride.OptionListContent}
+                    {...listContentProps}
+                >
+                    {isSelectAllOptionRendered && (
+                        <OptionListItem
+                            {...getSelectAllItemProps()}
+                            optionIndex={0}
+                            className={classOverride.SelectAllItem}
                         />
                     )}
+                    <div {...listProps}>
+                        {enableVirtualization && (
+                            <OptionListVirtualPadding
+                                {...getVirtualTopSpaceProps()}
+                                className={classOverride.VirtualPaddingTop}
+                            />
+                        )}
 
-                    {sortedOptions.map((option: OptionObjectType, index) => {
-                        const { value, groupId } = option;
-                        let group: OptionListGroupObjectType | null = null;
-                        if (
-                            groupId &&
-                            groupId in groupIndex &&
-                            !displayedGroups[groupId]
-                        ) {
-                            group = groupIndex[groupId];
-                            displayedGroups[groupId] = true;
-                        }
+                        {sortedOptions.map(
+                            (option: OptionObjectType, index) => {
+                                const { value, groupId } = option;
+                                let group: OptionListGroupObjectType | null =
+                                    null;
+                                if (
+                                    groupId &&
+                                    groupId in groupIndex &&
+                                    !displayedGroups[groupId]
+                                ) {
+                                    group = groupIndex[groupId];
+                                    displayedGroups[groupId] = true;
+                                }
 
-                        return (
-                            <Fragment key={value}>
-                                {!!group && (
-                                    <OptionListItemGroup
-                                        {...optionListItemGroupProps(group)}
-                                        enableSeparator={index > 0}
-                                        className={classOverride.ItemGroup}
-                                    >
-                                        {group.label}
-                                    </OptionListItemGroup>
-                                )}
-                                <OptionListItem
-                                    {...getOptionItemProps(option)}
-                                    optionIndex={
-                                        isSelectAllOptionRendered
-                                            ? index + 1
-                                            : index
-                                    }
-                                    className={`${classOverride.Item} ${
-                                        internalValue.includes(value)
-                                            ? 'active'
-                                            : ''
-                                    }`}
-                                />
-                            </Fragment>
-                        );
-                    })}
+                                return (
+                                    <Fragment key={value}>
+                                        {!!group && (
+                                            <OptionListItemGroup
+                                                {...optionListItemGroupProps(
+                                                    group,
+                                                )}
+                                                enableSeparator={index > 0}
+                                                className={
+                                                    classOverride.ItemGroup
+                                                }
+                                            >
+                                                {group.label}
+                                            </OptionListItemGroup>
+                                        )}
+                                        <OptionListItem
+                                            {...getOptionItemProps(option)}
+                                            optionIndex={
+                                                isSelectAllOptionRendered
+                                                    ? index + 1
+                                                    : index
+                                            }
+                                            className={`${classOverride.Item} ${
+                                                internalValue.includes(value)
+                                                    ? 'active'
+                                                    : ''
+                                            }`}
+                                        />
+                                    </Fragment>
+                                );
+                            },
+                        )}
 
-                    {enableVirtualization && (
-                        <OptionListVirtualPadding
-                            {...getVirtualBottomSpaceProps()}
-                            className={classOverride.VirtualPaddingBottom}
-                            theme={theme}
-                        />
-                    )}
-                </div>
+                        {enableVirtualization && (
+                            <OptionListVirtualPadding
+                                {...getVirtualBottomSpaceProps()}
+                                className={classOverride.VirtualPaddingBottom}
+                            />
+                        )}
+                    </div>
+                </OptionListContent>
             </OptionListContainer>
             {isFooterRendered && (
                 <OptionListFooter

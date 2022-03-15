@@ -126,8 +126,9 @@ export const breakpointBetween = (
 
     return `${prefix} (min-width:${
         values[breakpointStart]
-    }${unit}) and (max-width:${values[keys[rightIndex + 1]] -
-        edgeValue}${unit})`;
+    }${unit}) and (max-width:${
+        values[keys[rightIndex + 1]] - edgeValue
+    }${unit})`;
 };
 
 export const breakpointOnly = (
@@ -137,15 +138,15 @@ export const breakpointOnly = (
 ): CSSChunkType =>
     breakpointBetween(themeBreakpoints, breakpoint, breakpoint, prefix);
 
-export const forwardBreakpoints = (
-    breakpoints: BreakpointsBaseType,
-    fn: BreakpointFunctionType,
-) => (code: BreakpointCodeType): CSSChunkType => fn(breakpoints, code);
+export const forwardBreakpoints =
+    (breakpoints: BreakpointsBaseType, fn: BreakpointFunctionType) =>
+    (code: BreakpointCodeType): CSSChunkType =>
+        fn(breakpoints, code);
 
-export const forwardBreakpointsTwoArgs = (
-    breakpoints: BreakpointsBaseType,
-    fn: BreakpointFunctionTwoArgsType,
-) => (
-    codeStart: BreakpointCodeType,
-    codeEnd: BreakpointCodeType,
-): CSSChunkType => fn(breakpoints, codeStart, codeEnd);
+export const forwardBreakpointsTwoArgs =
+    (breakpoints: BreakpointsBaseType, fn: BreakpointFunctionTwoArgsType) =>
+    (
+        codeStart: BreakpointCodeType,
+        codeEnd: BreakpointCodeType,
+    ): CSSChunkType =>
+        fn(breakpoints, codeStart, codeEnd);

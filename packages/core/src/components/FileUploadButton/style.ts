@@ -3,6 +3,7 @@ import {
     marginProps,
     propsBlocker,
     reset,
+    token,
     typography,
 } from '@deliveryhero/armor-system';
 
@@ -14,7 +15,7 @@ export const FileUploadButtonRoot = styled.div.withConfig(
 )<FileUploadButtonRootPropsType>`
     ${reset};
     ${typography('paragraphMedium')};
-    ${marginProps};
-
+    color: ${token('body.color')};
     display: inline-block;
+    ${marginProps};
 `;

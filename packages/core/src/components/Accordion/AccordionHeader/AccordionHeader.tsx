@@ -1,9 +1,5 @@
 import React, { forwardRef, useCallback, useContext, useEffect } from 'react';
-import {
-    useComponentTheme,
-    getWindow,
-    useRootRef,
-} from '@deliveryhero/armor-system';
+import { getWindow, useRootRef } from '@deliveryhero/armor-system';
 
 import {
     AccordionHeaderExpansionIndicator,
@@ -30,7 +26,6 @@ export const AccordionHeader = forwardRef<
     HTMLDivElement,
     AccordionHeaderPropsType
 >(function AccordionHeader({ title, children, className, ...restProps }, ref) {
-    const theme = useComponentTheme(ACCORDION_HEADER_CLASS_PREFIX);
     const { disabled, isExpanded, onToggle } = useContext(AccordionContext);
 
     const classOverride = useAccordionHeaderClassName(
@@ -78,15 +73,13 @@ export const AccordionHeader = forwardRef<
             onClick={onToggle}
             ref={internalInputRef}
             tabIndex={disabled ? -1 : 0}
-            theme={theme}
         >
-            <AccordionHeaderBody theme={theme} className={classOverride.Body}>
+            <AccordionHeaderBody className={classOverride.Body}>
                 {title && (
                     <AccordionHeaderTitle
                         className={classOverride.Title}
                         data-testid={accordionHeaderTypography}
                         disabled={disabled}
-                        theme={theme}
                     >
                         {title}
                     </AccordionHeaderTitle>
@@ -98,14 +91,12 @@ export const AccordionHeader = forwardRef<
                 data-testid={accordionHeaderIcon}
                 disabled={disabled}
                 isExpanded={isExpanded}
-                theme={theme}
             >
                 <AccordionHeaderExpansionIndicator
                     className={classOverride.ExpansionIndicator}
                     disabled={disabled}
                     isExpanded={isExpanded}
                     onClick={() => {}}
-                    theme={theme}
                     data-testid={DROPDOWN_ACTION_ITEM}
                 />
             </AccordionHeaderIcon>

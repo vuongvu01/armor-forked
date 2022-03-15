@@ -6,6 +6,7 @@ import {
     propsBlocker,
     reset,
     spacing,
+    token,
     typography,
     widthProps,
 } from '@deliveryhero/armor-system';
@@ -21,6 +22,7 @@ const getLabelContainerStyle = ({ label }: ActionSheetRootPropsType) => {
     if (typeof label === 'string') {
         result = css`
             ${typography('labelLarge')};
+            color: ${token('body.color')};
         `;
     }
 
@@ -38,6 +40,7 @@ export const ActionSheetRoot = styled.div.withConfig(
     justify-content: space-between;
     padding: ${spacing(4)} ${spacing(6)};
     ${typography('paragraphMedium')};
+    color: ${token('body.color')};
 
     ${getComponentOverride('ActionSheet')};
     ${marginProps};

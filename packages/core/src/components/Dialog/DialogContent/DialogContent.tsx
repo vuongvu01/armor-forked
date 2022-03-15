@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useDialogContentClassName } from './utils/useDialogContentClassName';
 import { DialogContentRoot } from './style';
@@ -16,16 +15,10 @@ export const DialogContent: FunctionComponent<DialogContentPropsType> = ({
     children,
     ...restProps
 }) => {
-    const theme = useComponentTheme(DIALOG_CONTENT_CLASS_PREFIX);
-
     const classNameRoot = useDialogContentClassName(CLASS_PREFIX, className);
 
     return (
-        <DialogContentRoot
-            {...restProps}
-            theme={theme}
-            className={classNameRoot}
-        >
+        <DialogContentRoot {...restProps} className={classNameRoot}>
             {children}
         </DialogContentRoot>
     );

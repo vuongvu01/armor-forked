@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import {
     SEARCH_CLEAR_ACTION_CLASS_PREFIX,
@@ -19,8 +18,6 @@ export const SearchClearAction: FunctionComponent<
     disabled,
     searchQuery,
 }) => {
-    const theme = useComponentTheme(SEARCH_CLEAR_ACTION_CLASS_PREFIX);
-
     const classOverride = useSearchClearActionClassName(
         SEARCH_CLEAR_ACTION_CLASS_PREFIX,
         className,
@@ -31,14 +28,12 @@ export const SearchClearAction: FunctionComponent<
         <ClearIconRoot
             className={classOverride.AfterIconContainer}
             onClick={handleClearQuery}
-            theme={theme}
         >
             <SearchInputClearIcon
                 className={classOverride.AfterIcon}
                 data-testid={searchInputClearIcon}
                 disabled={disabled}
                 searchQuery={searchQuery}
-                theme={theme}
             />
         </ClearIconRoot>
     );

@@ -15,7 +15,7 @@ export const makeStories = (
     const theme = makeTheme();
     const result: ImportsType = {};
 
-    Object.keys(imports).forEach(importName => {
+    Object.keys(imports).forEach((importName) => {
         if (importName !== 'default') {
             const StoryComponent = imports[importName] as StoryType;
             result[`${postfix}${importName}`] = function ModifiedStory() {

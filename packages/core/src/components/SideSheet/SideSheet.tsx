@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme, PortalToBody } from '@deliveryhero/armor-system';
+import { PortalToBody } from '@deliveryhero/armor-system';
 
 import { useSideSheetClassName } from './hooks/useSideSheetClassName';
 import { SideSheetPropsType } from './type';
@@ -22,8 +22,6 @@ import { extendChildrenWithProps, extractContentSections } from './utils';
  */
 export const SideSheet = forwardRef<HTMLDivElement, SideSheetPropsType>(
     function SideSheet({ className, children, ...props }, ref) {
-        const theme = useComponentTheme(SIDE_SHEET_CLASS_PREFIX);
-
         const {
             portalProps,
             rootProps,
@@ -50,7 +48,6 @@ export const SideSheet = forwardRef<HTMLDivElement, SideSheetPropsType>(
         const childrenWithExtendedProps = extendChildrenWithProps(children, {
             classOverride,
             isFixed,
-            theme,
         });
         const { header, body, footer } = extractContentSections(
             childrenWithExtendedProps,
@@ -58,11 +55,7 @@ export const SideSheet = forwardRef<HTMLDivElement, SideSheetPropsType>(
 
         return (
             <PortalToBody {...portalProps}>
-                <SideSheetRoot
-                    {...rootProps}
-                    className={classOverride.Root}
-                    theme={theme}
-                >
+                <SideSheetRoot {...rootProps} className={classOverride.Root}>
                     {enableBackdrop && (
                         <Backdrop
                             {...getBackdropProps()}
@@ -72,22 +65,18 @@ export const SideSheet = forwardRef<HTMLDivElement, SideSheetPropsType>(
                     <SideSheetWindow
                         {...windowProps}
                         className={classOverride.Window}
-                        theme={theme}
                     >
                         <SideSheetContent
                             {...contentProps}
                             className={classOverride.Content}
-                            theme={theme}
                         >
                             <SideSheetHeaderContainer
                                 {...headerContainerProps}
                                 className={classOverride.HeaderContainer}
-                                theme={theme}
                             >
                                 {header}
                                 {enableCloseButton ? (
                                     <SideSheetCloseButton
-                                        theme={theme}
                                         {...getCloseButtonProps()}
                                     />
                                 ) : null}

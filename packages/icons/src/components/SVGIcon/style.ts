@@ -22,36 +22,36 @@ const getSizingStyles = ({
 
     if (small) {
         return `
-            font-size: ${theme.typography.pixelToRem(12)};
-            padding: ${theme.spacing(1.5)};
+            font-size: ${theme.armor.typography.pixelToRem(12)};
+            padding: ${theme.armor.spacing(1.5)};
         `;
     }
 
     if (medium) {
         return `
-            font-size: ${theme.typography.pixelToRem(16)};
-            padding: ${theme.spacing(1)};
+            font-size: ${theme.armor.typography.pixelToRem(16)};
+            padding: ${theme.armor.spacing(1)};
         `;
     }
 
     if (large) {
         return `
-            font-size: ${theme.typography.pixelToRem(24)};
+            font-size: ${theme.armor.typography.pixelToRem(24)};
         `;
     }
 
     return `
         font-size: ${
             typeof fontSize !== 'undefined'
-                ? theme.typography.pixelToRem(fontSize)
+                ? theme.armor.typography.pixelToRem(fontSize)
                 : 'inherit'
         };
     `;
 };
 
-export const SVGIconRoot = styled.svg.withConfig(propsBlocker)<
-    SVGIconRootPropsType
->`
+export const SVGIconRoot = styled.svg.withConfig(
+    propsBlocker,
+)<SVGIconRootPropsType>`
     flex-shrink: 0;
     user-select: none;
     line-height: inherit;

@@ -1,5 +1,4 @@
 import React, { forwardRef } from 'react';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useDatePickerDaySelectorClassNames } from './hooks/useDatePickerDaySelectorClassNames';
 import { useDatePickerDaySelector } from './hooks/useDatePickerDaySelector';
@@ -22,7 +21,6 @@ export const DatePickerDaySelector = forwardRef<
     HTMLDivElement,
     DatePickerDaySelectorPropsType
 >(function DatePickerDaySelector({ className, ...props }, ref) {
-    const theme = useComponentTheme(DATE_PICKER_DAY_SELECTOR_CLASS_PREFIX);
     const classNameComponents = useDatePickerDaySelectorClassNames(
         DATE_PICKER_DAY_SELECTOR_CLASS_PREFIX,
         className,
@@ -34,42 +32,31 @@ export const DatePickerDaySelector = forwardRef<
     return (
         <DatePickerDaySelectorRoot
             {...rootProps}
-            theme={theme}
             className={classNameComponents.Root}
         >
-            <DatePickerDaySelectorWeek
-                theme={theme}
-                className={classNameComponents.Week}
-            >
+            <DatePickerDaySelectorWeek className={classNameComponents.Week}>
                 {weekDays.map((weekDay) => (
                     <DatePickerDaySelectorWeekDay
                         key={weekDay.value}
-                        theme={theme}
                         className={classNameComponents.WeekDay}
                     >
                         {weekDay.label}
                     </DatePickerDaySelectorWeekDay>
                 ))}
             </DatePickerDaySelectorWeek>
-            <DatePickerDaySelectorDays
-                theme={theme}
-                className={classNameComponents.Days}
-            >
+            <DatePickerDaySelectorDays className={classNameComponents.Days}>
                 {dayMatrix.map((day) => (
                     <DatePickerDaySelectorDay
                         key={day.id}
                         {...getDayProps(day, classNameComponents.Day)}
-                        theme={theme}
                     >
                         <DatePickerDaySelectorDayPadding
                             {...day.paddingProps}
                             left
-                            theme={theme}
                             className={classNameComponents.DayPaddingLeft}
                         />
                         <DatePickerDaySelectorDayButton
                             {...day.buttonProps}
-                            theme={theme}
                             className={classNameComponents.DayButton}
                         >
                             {day.day}
@@ -77,7 +64,6 @@ export const DatePickerDaySelector = forwardRef<
                         <DatePickerDaySelectorDayPadding
                             {...day.paddingProps}
                             right
-                            theme={theme}
                             className={classNameComponents.DayPaddingRight}
                         />
                     </DatePickerDaySelectorDay>

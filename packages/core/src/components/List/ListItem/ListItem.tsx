@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useListItemClassNames } from './hooks/useListItemClassNames';
 import { useListItem } from './hooks/useListItem';
@@ -22,7 +21,6 @@ import { PrimaryIconWrapper } from '../PrimaryIconWrapper/PrimaryIconWrapper';
  */
 export const ListItem = forwardRef<HTMLDivElement, ListItemPropsType>(
     function ListItem({ className, ...props }, ref) {
-        const theme = useComponentTheme(LIST_ITEM_CLASS_PREFIX);
         const classNames = useListItemClassNames(
             LIST_ITEM_CLASS_PREFIX,
             className,
@@ -50,21 +48,15 @@ export const ListItem = forwardRef<HTMLDivElement, ListItemPropsType>(
         } = useListItem(props, ref);
 
         return (
-            <ListItemRoot
-                {...rootProps}
-                theme={theme}
-                className={classNames.Root}
-            >
+            <ListItemRoot {...rootProps} className={classNames.Root}>
                 {(forwardedProps: ListItemPropsType) => (
                     <Tag {...forwardedProps} {...tagProps}>
                         <PrimaryListItem
                             {...primaryListProps}
-                            theme={theme}
                             className={classNames.PrimaryListItem}
                         >
                             {primaryIcon && (
                                 <PrimaryIconContainer
-                                    theme={theme}
                                     className={classNames.PrimaryIconContainer}
                                 >
                                     {!primaryIconWrapper ? (
@@ -83,13 +75,11 @@ export const ListItem = forwardRef<HTMLDivElement, ListItemPropsType>(
                             )}
 
                             <PrimaryListItemContainer
-                                theme={theme}
                                 className={classNames.PrimaryListItemContainer}
                             >
                                 {renderLead && (
                                     <PrimaryLeadSubtitle
                                         {...primaryLeadSubtitle}
-                                        theme={theme}
                                         className={
                                             classNames.PrimaryLeadSubtitle
                                         }
@@ -101,7 +91,6 @@ export const ListItem = forwardRef<HTMLDivElement, ListItemPropsType>(
                                 {renderSubtitle && (
                                     <PrimaryLeadSubtitle
                                         {...primaryLeadSubtitle}
-                                        theme={theme}
                                         className={
                                             classNames.PrimaryLeadSubtitle
                                         }
@@ -114,14 +103,12 @@ export const ListItem = forwardRef<HTMLDivElement, ListItemPropsType>(
                         {!!enableSecondaryItem && (
                             <SecondaryListItem
                                 {...secondaryListProps}
-                                theme={theme}
                                 className={classNames.SecondaryListItem}
                             >
                                 {secondaryItemText}
                                 {!!actions && (
                                     <ActionsContainer
                                         {...actionsContainerProps}
-                                        theme={theme}
                                         className={classNames.ActionsContainer}
                                     >
                                         {actions}

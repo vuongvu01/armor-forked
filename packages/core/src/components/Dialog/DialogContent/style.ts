@@ -5,6 +5,7 @@ import {
     spacing,
     propsBlocker,
     getComponentOverride,
+    token,
 } from '@deliveryhero/armor-system';
 
 import { DialogContentRootPropsType } from './type';
@@ -14,6 +15,7 @@ export const DialogContentRoot = styled.div.withConfig(
     propsBlocker,
 )<DialogContentRootPropsType>`
     ${typography('paragraphLarge')};
+    color: ${token('body.color')};
     ${({ enableVerticalScroll }) =>
         enableVerticalScroll ? 'overflow-y: auto;' : ''}
 

@@ -8,6 +8,7 @@ import {
     typography,
     spacing,
     color,
+    token,
 } from '@deliveryhero/armor-system';
 
 const getRootStyle = (props: <%- component_name_pascal %>RootPropsType) => {
@@ -30,7 +31,7 @@ export const <%- component_name_pascal %>Root = styled.div.withConfig(
 )<<%- component_name_pascal %>RootPropsType>`
     ${reset};
     ${typography('paragraphMedium')};
-
+    color: ${token('body.color')};
     ${getRootStyle};
     ${getComponentOverride('<%- component_name_pascal %>')};
     ${marginProps};

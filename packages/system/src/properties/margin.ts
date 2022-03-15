@@ -1,5 +1,7 @@
-import { ThemeType } from '../theme';
+import { css, FlattenInterpolation, ThemeProps } from 'styled-components';
+
 import { CSSChunkType, ScalarType } from '../type';
+import { spacing } from '../mixins';
 
 export type MarginPropsType = Partial<{
     /**
@@ -39,10 +41,7 @@ export type MarginPropsType = Partial<{
     marginY: ScalarType;
 }>;
 
-type PropertiesType = { theme: ThemeType } & MarginPropsType;
-
 export const marginProps = ({
-    theme,
     margin,
     marginTop,
     marginBottom,
@@ -50,31 +49,54 @@ export const marginProps = ({
     marginRight,
     marginX,
     marginY,
-}: PropertiesType): CSSChunkType => {
-    let result = '';
+}: MarginPropsType): CSSChunkType => {
+    let result = css`` as FlattenInterpolation<ThemeProps<any>>;
 
     if (typeof margin !== 'undefined') {
-        result += `margin: ${theme.spacing(margin)};`;
+        result = css`
+            ${result};
+            margin: ${spacing(margin)};
+        `;
     }
     if (typeof marginTop !== 'undefined') {
-        result += `margin-top: ${theme.spacing(marginTop)};`;
+        result = css`
+            ${result};
+            margin-top: ${spacing(marginTop)};
+        `;
     }
     if (typeof marginBottom !== 'undefined') {
-        result += `margin-bottom: ${theme.spacing(marginBottom)};`;
+        result = css`
+            ${result};
+            margin-bottom: ${spacing(marginBottom)};
+        `;
     }
     if (typeof marginLeft !== 'undefined') {
-        result += `margin-left: ${theme.spacing(marginLeft)};`;
+        result = css`
+            ${result};
+            margin-left: ${spacing(marginLeft)};
+        `;
     }
     if (typeof marginRight !== 'undefined') {
-        result += `margin-right: ${theme.spacing(marginRight)};`;
+        result = css`
+            ${result};
+            margin-right: ${spacing(marginRight)};
+        `;
     }
     if (typeof marginX !== 'undefined') {
-        const value = theme.spacing(marginX);
-        result += `margin-right: ${value}; margin-left: ${value};`;
+        const value = spacing(marginX);
+        result = css`
+            ${result};
+            margin-right: ${value};
+            margin-left: ${value};
+        `;
     }
     if (typeof marginY !== 'undefined') {
-        const value = theme.spacing(marginY);
-        result += `margin-top: ${value}; margin-bottom: ${value};`;
+        const value = spacing(marginY);
+        result = css`
+            ${result};
+            margin-top: ${value};
+            margin-bottom: ${value};
+        `;
     }
 
     return result;

@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useLinkClassNames } from './hooks/useLinkClassNames';
 import { useLink } from './hooks/useLink';
@@ -15,7 +14,6 @@ export const Link = forwardRef<HTMLAnchorElement, LinkPropsType>(function Link(
     { className, ...props },
     ref,
 ) {
-    const theme = useComponentTheme(LINK_CLASS_PREFIX);
     const classNameComponents = useLinkClassNames(
         LINK_CLASS_PREFIX,
         className,
@@ -25,11 +23,7 @@ export const Link = forwardRef<HTMLAnchorElement, LinkPropsType>(function Link(
     const { rootProps, children, Tag, tagProps } = useLink(props, ref);
 
     return (
-        <LinkRoot
-            {...rootProps}
-            theme={theme}
-            className={classNameComponents.Root}
-        >
+        <LinkRoot {...rootProps} className={classNameComponents.Root}>
             {(forwardedProps: LinkRootPropsType) => (
                 <Tag {...forwardedProps} {...tagProps}>
                     {children}

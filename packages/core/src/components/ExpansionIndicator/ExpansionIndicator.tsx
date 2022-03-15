@@ -46,19 +46,16 @@ export const ExpansionIndicator: FC<ExpansionIndicatorPropsType> = ({
             disabled={disabled}
             onClick={onClick}
             tabIndex={tabIndex}
-            theme={theme}
         >
             <ExpansionIndicatorContent
                 className={classOverride.Content}
                 data-testid={expansionIndicatorContent}
-                theme={theme}
             >
                 <ExpansionIndicatorIcon
                     className={classOverride.Icon}
                     data-testid={expansionIndicatorIcon}
                     disabled={disabled}
                     expanded={reallyExpanded}
-                    theme={theme}
                 />
             </ExpansionIndicatorContent>
         </ExpansionIndicatorRoot>

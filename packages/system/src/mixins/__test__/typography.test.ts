@@ -6,7 +6,7 @@ const theme = makeTheme();
 describe('typography', () => {
     it('should return typography object', async () => {
         expect(typography('paragraphLarge')({ theme })).toMatchObject({
-            fontFamily: 'Roboto,sans-serif',
+            fontFamily: 'Roboto, sans-serif',
             fontSize: '1rem',
             fontWeight: 400,
             letterSpacing: 0.2,

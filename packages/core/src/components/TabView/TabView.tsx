@@ -1,9 +1,6 @@
 import React, { FC } from 'react';
 import PropTypes from 'prop-types';
-import {
-    useComponentTheme,
-    makeRootClassName,
-} from '@deliveryhero/armor-system';
+import { makeRootClassName } from '@deliveryhero/armor-system';
 
 import { TabViewPropsType } from './type';
 import { TabViewRoot } from './style';
@@ -19,8 +16,6 @@ export const TabView: FC<TabViewPropsType> = ({
     className,
     ...restProps
 }) => {
-    const theme = useComponentTheme(TAB_VIEW_CLASS_PREFIX);
-
     if (typeof value === 'undefined' || typeof selectedValue === 'undefined') {
         return null;
     }
@@ -28,7 +23,6 @@ export const TabView: FC<TabViewPropsType> = ({
     return value === selectedValue ? (
         <TabViewRoot
             {...restProps}
-            theme={theme}
             className={makeRootClassName(TAB_VIEW_CLASS_PREFIX, className)}
         >
             {children}

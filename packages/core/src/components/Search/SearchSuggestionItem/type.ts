@@ -17,7 +17,6 @@ export type ClassBasedOnComponentType = {
 };
 
 export type SearchSuggestionItemPropsType = {
-    theme: ThemeType;
     suggestionIndex: number;
     option: SuggestionObjectType;
     optionIndex?: number;

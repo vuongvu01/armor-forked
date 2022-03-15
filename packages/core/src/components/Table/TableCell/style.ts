@@ -13,11 +13,11 @@ import {
     ellipsis as ellipsisCSS,
     LEFT,
     RIGHT,
-    componentSpacing04,
-    componentSpacing05,
     fontWeightMedium,
     zIndexTableHeader,
     durationNormal,
+    token,
+    transition,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -44,6 +44,7 @@ const getRootStyle = ({
             ${result};
             vertical-align: middle;
             ${typography('paragraphMedium')};
+            color: ${token('body.color')};
             font-weight: ${fontWeightMedium};
         `;
     }
@@ -214,15 +215,13 @@ export const TableCellRoot = styled(Wrapper).withConfig(
     propsBlocker,
 )<TableCellRootPropsType>`
     box-sizing: border-box;
-
     text-align: left;
     vertical-align: top;
-    transition: background-color 200ms ease;
+    ${transition({ 'background-color': true })};
     background-color: inherit;
-
     ${typography('paragraphLarge')};
-    padding: ${spacing(componentSpacing05)} ${spacing(componentSpacing04)};
-
+    color: ${token('body.color')};
+    padding: ${spacing(5)} ${spacing(4)};
     ${getRootStyle};
     ${getComponentOverride('TableCell')};
     ${paddingProps};

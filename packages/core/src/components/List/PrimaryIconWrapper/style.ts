@@ -9,6 +9,7 @@ import {
     color,
     spacing,
     borderRadius,
+    token,
 } from '@deliveryhero/armor-system';
 
 import { PrimaryIconWrapperPropsType } from './type';
@@ -39,6 +40,7 @@ export const PrimaryIconWrapperRoot = styled.div.withConfig(
 )<PrimaryIconWrapperPropsType>`
     ${reset};
     ${typography('paragraphMedium')};
+    color: ${token('body.color')};
 
     display: flex;
     flex-direction: column;

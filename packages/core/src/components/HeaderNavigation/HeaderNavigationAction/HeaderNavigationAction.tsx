@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { HeaderNavigationActionPropsType } from './type';
 import { useHeaderNavigationActionClassName } from './hooks';
@@ -20,8 +19,6 @@ export const HeaderNavigationAction = forwardRef<
     HTMLDivElement,
     HeaderNavigationActionPropsType
 >(function HeaderNavigationAction({ className, children, ...restProps }, ref) {
-    const theme = useComponentTheme(HEADER_NAVIGATION_ACTION_CLASS_PREFIX);
-
     const classOverride = useHeaderNavigationActionClassName(
         HEADER_NAVIGATION_ACTION_CLASS_PREFIX,
         className,
@@ -31,7 +28,6 @@ export const HeaderNavigationAction = forwardRef<
         <HeaderNavigationActionRoot
             data-testid={headerNavigationActionRoot}
             {...restProps}
-            theme={theme}
             className={classOverride.Action}
         >
             <HeaderNavigationActionContainer

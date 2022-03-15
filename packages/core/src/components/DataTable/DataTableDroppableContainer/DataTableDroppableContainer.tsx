@@ -15,7 +15,7 @@ import {
     verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
 import { Table } from '../../Table';
-import { DataTableDraggableRowPresenter } from '../DataTableDraggableRowPresenter/DataTableDraggableRowPresenter';
+import { DataTableDraggableRowPresenter } from '../DataTableDraggableRowPresenter';
 import { DataTablePropsType } from '../type';
 import { DragAndDropTableBody } from './style';
 

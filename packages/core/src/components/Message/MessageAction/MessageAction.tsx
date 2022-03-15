@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useMessageActionClassNames } from './hooks/useMessageActionClassNames';
 import { MessageActionRoot } from './style';
@@ -17,8 +16,6 @@ export const MessageAction: FunctionComponent<MessageActionPropsType> = ({
     children,
     ...restProps
 }) => {
-    const theme = useComponentTheme(MESSAGE_ACTION_CLASS_PREFIX);
-
     const classNameComponents = useMessageActionClassNames(
         MESSAGE_ACTION_CLASS_PREFIX,
         className,
@@ -27,7 +24,6 @@ export const MessageAction: FunctionComponent<MessageActionPropsType> = ({
     return (
         <MessageActionRoot
             {...restProps}
-            theme={theme}
             className={classNameComponents.Root}
             tabIndex={0}
         >

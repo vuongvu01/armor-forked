@@ -10,11 +10,11 @@ import {
     spacing,
     typography,
     durationNormal,
+    token,
 } from '@deliveryhero/armor-system';
 
 import {
     TagCloseIconContainerPropsType,
-    TagCloseIconPropsType,
     TagRootPropsType,
     TagTextPropsType,
 } from './type';
@@ -215,10 +215,11 @@ export const TagRoot = styled.div.withConfig(propsBlocker)<TagRootPropsType>`
 
 export const TagText = styled.div<TagTextPropsType>`
     ${typography('paragraphSmall')};
+    color: ${token('body.color')};
     ${textStyle};
 `;
 
-export const TagCloseIcon = styled(CancelIcon)<TagCloseIconPropsType>`
+export const TagCloseIcon = styled(CancelIcon)`
     outline: none;
     height: ${spacing(2)};
     width: ${spacing(2)};

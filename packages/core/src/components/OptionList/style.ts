@@ -3,12 +3,14 @@ import {
     color,
     elevation,
     getComponentOverride,
-    pixelToRem,
     propsBlocker,
     reset,
     spacing,
     durationNormal,
     typography,
+    transition,
+    heightProps,
+    token,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -53,16 +55,15 @@ export const OptionListRoot = styled.div.withConfig(
 )<OptionListRootPropsType>`
     ${reset};
     ${typography('paragraphMedium')};
-    background-color: white;
+    color: ${token('body.color')};
+    background-color: ${color('neutral.00')};
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    max-height: 400px;
     padding-bottom: 0;
     padding-top: 0;
     transition: ${durationNormal}ms;
     box-shadow: ${elevation('large')};
-
     ${getOptionListStyle};
     ${getComponentOverride('OptionList')};
 `;
@@ -70,7 +71,61 @@ export const OptionListRoot = styled.div.withConfig(
 export const OptionListContainer = styled.div.withConfig(
     propsBlocker,
 )<OptionListContainerPropsType>`
+    position: relative;
+    height: fit-content;
+    max-height: ${spacing(100)};
+    ${heightProps};
+`;
+
+export const OptionListContent = styled.div.withConfig(
+    propsBlocker,
+)<OptionListContainerPropsType>`
     overflow: auto;
+    max-height: inherit;
+`;
+
+const getGradientEffectStyle = ({ isShown }: { isShown?: boolean }) => {
+    let result = css`
+        position: absolute;
+        pointer-events: none;
+        width: 100%;
+        height: ${spacing(13)};
+        opacity: 0;
+        z-index: 1;
+        ${transition({ opacity: true })};
+    `;
+
+    if (isShown) {
+        result = css`
+            ${result};
+            opacity: 1;
+        `;
+    }
+
+    return result;
+};
+
+export const TopGradientEffect = styled.div.withConfig(propsBlocker)<{
+    isShown?: boolean;
+}>`
+    ${getGradientEffectStyle};
+    top: 0;
+    background: linear-gradient(
+        180deg,
+        ${color('neutral.00')} 0%,
+        ${color('neutral.00', 0)} 80%
+    );
+`;
+export const BottomGradientEffect = styled.div.withConfig(propsBlocker)<{
+    isShown?: boolean;
+}>`
+    ${getGradientEffectStyle};
+    bottom: 0;
+    background: linear-gradient(
+        180deg,
+        ${color('neutral.00', 0)} 0%,
+        ${color('neutral.00')} 80%
+    );
 `;
 
 export const OptionListBeforeSectionContainer = styled.div.withConfig(

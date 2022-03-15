@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { IconButton } from '../IconButton';
 import { useFileCardClassNames } from './hooks/useFileCardClassNames';
@@ -29,7 +28,6 @@ import { FILECARD_CLASS_PREFIX } from './constants';
  */
 export const FileCard = forwardRef<HTMLDivElement, FileCardPropsType>(
     function FileCard({ className, ...props }, ref) {
-        const theme = useComponentTheme(FILECARD_CLASS_PREFIX);
         const classNames = useFileCardClassNames(
             FILECARD_CLASS_PREFIX,
             className,
@@ -52,34 +50,20 @@ export const FileCard = forwardRef<HTMLDivElement, FileCardPropsType>(
         } = useFileCard<HTMLDivElement>(props, ref);
 
         return (
-            <FileCardRoot
-                {...rootProps}
-                theme={theme}
-                className={classNames.Root}
-            >
-                <FileCardBody
-                    {...bodyProps}
-                    theme={theme}
-                    className={classNames.Body}
-                >
-                    <FileCardLeftPortion
-                        theme={theme}
-                        className={classNames.LeftPortion}
-                    >
+            <FileCardRoot {...rootProps} className={classNames.Root}>
+                <FileCardBody {...bodyProps} className={classNames.Body}>
+                    <FileCardLeftPortion className={classNames.LeftPortion}>
                         {imageSrc ? (
                             <FileImageContainer
-                                theme={theme}
                                 className={classNames.FileImageContainer}
                                 isUploading={isUploading}
                             >
                                 {isUploading ? (
                                     <FileImageIcon
-                                        theme={theme}
                                         className={classNames.FileIcon}
                                     />
                                 ) : (
                                     <FileImage
-                                        theme={theme}
                                         className={classNames.FileImage}
                                         src={imageSrc}
                                         alt={fileName}
@@ -87,42 +71,27 @@ export const FileCard = forwardRef<HTMLDivElement, FileCardPropsType>(
                                 )}
                             </FileImageContainer>
                         ) : (
-                            <FileIcon
-                                theme={theme}
-                                className={classNames.FileIcon}
-                            />
+                            <FileIcon className={classNames.FileIcon} />
                         )}
-                        <FileName theme={theme} className={classNames.FileName}>
+                        <FileName className={classNames.FileName}>
                             {fileName}
                         </FileName>
-                        <FileExtension
-                            theme={theme}
-                            className={classNames.FileExtension}
-                        >
+                        <FileExtension className={classNames.FileExtension}>
                             {fileExtension}
                         </FileExtension>
-                        <FileSize theme={theme} className={classNames.FileSize}>
+                        <FileSize className={classNames.FileSize}>
                             {fileSize}
                         </FileSize>
                     </FileCardLeftPortion>
-                    <FileCardRightPortion
-                        theme={theme}
-                        className={classNames.RightPortion}
-                    >
+                    <FileCardRightPortion className={classNames.RightPortion}>
                         {isUploading && (
                             <IconButton {...getCancelButtonProps()}>
-                                <CancelIcon
-                                    theme={theme}
-                                    className={classNames.CancelIcon}
-                                />
+                                <CancelIcon className={classNames.CancelIcon} />
                             </IconButton>
                         )}
                         {(!isUploading || error) && (
                             <IconButton {...getDeleteButtonProps()}>
-                                <DeleteIcon
-                                    theme={theme}
-                                    className={classNames.DeleteIcon}
-                                />
+                                <DeleteIcon className={classNames.DeleteIcon} />
                             </IconButton>
                         )}
                     </FileCardRightPortion>
@@ -136,7 +105,6 @@ export const FileCard = forwardRef<HTMLDivElement, FileCardPropsType>(
                 {error && !!errorMessage && (
                     <FormFieldErrorMessage
                         oneLine
-                        theme={theme}
                         className={classNames.FormFieldErrorMessage}
                     >
                         {errorMessage}

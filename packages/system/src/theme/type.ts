@@ -1,11 +1,10 @@
-import { ScalarType } from '../type';
+import { DeepPartial, ScalarType } from '../type';
 import {
     BreakpointFunctionForwardedType,
     BreakpointFunctionTwoArgsForwardedType,
 } from '../mixins/type';
 
 export type SpacingFunctionType = (value: ScalarType) => ScalarType;
-export type SpacingFunctionOrConstType = SpacingFunctionType | number;
 
 type ShapeType = {
     borderRadius: {
@@ -37,7 +36,6 @@ export type BreakpointsType = BreakpointsBaseType & {
     between: BreakpointFunctionTwoArgsForwardedType;
     unit: string;
 };
-export type BreakpointsDeclarationType = Pick<BreakpointsType, 'values'>;
 
 export type TypographyType = {
     htmlFontSize: number;
@@ -67,22 +65,14 @@ export type ThemeType = {
     typography: TypographyType;
     spacing: SpacingFunctionType;
     shape: ShapeType;
+    spacingFactor?: number;
+    $initialized?: boolean;
 } & Record<string, any>; // todo: tighten
 
 export type RootThemeInputType = {
     armor?: ThemeInputType;
 } & Record<string, any>; // todo: tighten
 
-export type ThemeInputType = Partial<
-    Pick<ThemeType, 'mixins' | 'palette' | 'shape' | 'zIndex'>
-> & {
-    typography?: Partial<TypographyType>;
-    breakpoints?: BreakpointsDeclarationType;
-    spacing?: SpacingFunctionOrConstType;
-    component?: Record<string, any>; // todo: tighten
-    componentCSS?: Record<string, any>; // todo: tighten
-} & Record<string, any>; // todo: tighten
+export type ThemeInputType = DeepPartial<ThemeType>;
 
-export type ThemeOptionsType = {
-    immutable?: boolean;
-};
+export type ThemePropertyType = ThemeType | RootThemeType | null | undefined; // todo: remove ThemeType from here

@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useMessageClassNames } from './utils/useMessageClassNames';
 import {
@@ -21,8 +20,6 @@ import { CloseButton } from '../CloseButton';
  */
 export const Message = forwardRef<HTMLDivElement, MessagePropsType>(
     function Message({ className, children, ...props }, ref) {
-        const theme = useComponentTheme(MESSAGE_CLASS_PREFIX);
-
         const classNameComponents = useMessageClassNames(
             MESSAGE_CLASS_PREFIX,
             className,
@@ -42,14 +39,9 @@ export const Message = forwardRef<HTMLDivElement, MessagePropsType>(
         } = useMessage(props, ref);
 
         return (
-            <MessageRoot
-                {...rootProps}
-                theme={theme}
-                className={classNameComponents.Root}
-            >
+            <MessageRoot {...rootProps} className={classNameComponents.Root}>
                 {showIcon && (
                     <MessageIcon
-                        theme={theme}
                         className={classNameComponents.Icon}
                         {...getIconProps()}
                     >
@@ -58,29 +50,17 @@ export const Message = forwardRef<HTMLDivElement, MessagePropsType>(
                         )}
                     </MessageIcon>
                 )}
-                <MessageCentral
-                    theme={theme}
-                    className={classNameComponents.Central}
-                >
-                    <MessageContent
-                        theme={theme}
-                        className={classNameComponents.Content}
-                    >
+                <MessageCentral className={classNameComponents.Central}>
+                    <MessageContent className={classNameComponents.Content}>
                         {children}
                     </MessageContent>
                     {showActions && (
-                        <MessageActions
-                            theme={theme}
-                            className={classNameComponents.Actions}
-                        >
+                        <MessageActions className={classNameComponents.Actions}>
                             {actions}
                         </MessageActions>
                     )}
                     {showExtra && (
-                        <MessageExtra
-                            theme={theme}
-                            className={classNameComponents.Extra}
-                        >
+                        <MessageExtra className={classNameComponents.Extra}>
                             {extra}
                         </MessageExtra>
                     )}

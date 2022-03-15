@@ -1,5 +1,4 @@
 import React, { forwardRef, Ref } from 'react';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useFilterEditorClassNames } from './hooks/useFilterEditorClassNames';
 import { useFilterEditor } from './hooks/useFilterEditor';
@@ -17,7 +16,6 @@ import { FilterEditorHeader } from '../FilterEditorHeader';
  */
 export const FilterEditor = forwardRef<HTMLDivElement, FilterEditorPropsType>(
     function FilterEditor({ className, ...props }, ref: Ref<HTMLDivElement>) {
-        const theme = useComponentTheme(FILTER_EDITOR_CLASS_PREFIX);
         const classNames = useFilterEditorClassNames(
             FILTER_EDITOR_CLASS_PREFIX,
             className,
@@ -43,15 +41,10 @@ export const FilterEditor = forwardRef<HTMLDivElement, FilterEditorPropsType>(
         } = useFilterEditor<HTMLDivElement>(props, ref);
 
         return (
-            <FilterEditorRoot
-                {...rootProps}
-                theme={theme}
-                className={classNames.Root}
-            >
+            <FilterEditorRoot {...rootProps} className={classNames.Root}>
                 {showHeader && <FilterEditorHeader {...getHeaderProps()} />}
                 <FilterEditorConditions
                     {...conditionsProps}
-                    theme={theme}
                     className={classNames.Conditions}
                 >
                     {schema.conditions!.map((condition) => {

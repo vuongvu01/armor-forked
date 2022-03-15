@@ -72,7 +72,7 @@ export const EditableTableCell = forwardRef<
 
     // return (
     //     <EditableTableCellRoot
-    //         theme={theme}
+    //
     //         {...restProps}
     //         className={classNameComponents.Root}
     //         ref={ref}

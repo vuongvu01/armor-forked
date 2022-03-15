@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 // import PropTypes from 'prop-types';
-import { useComponentTheme, PortalToBody } from '@deliveryhero/armor-system';
+import { PortalToBody } from '@deliveryhero/armor-system';
 
 import { useDatePickerClassNames } from '../hooks/useDatePickerClassNames';
 import { useDatePicker } from './hooks/useDatePicker';
@@ -24,8 +24,6 @@ import { DatePickerTopBar } from '../DatePickerTopBar';
  */
 export const DatePicker = forwardRef<HTMLDivElement, DatePickerPropsType>(
     function DatePicker({ className, ...props }, ref) {
-        const theme = useComponentTheme(DATE_PICKER_CLASS_PREFIX);
-
         const classNameComponents = useDatePickerClassNames(
             DATE_PICKER_CLASS_PREFIX,
             className,
@@ -51,22 +49,16 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerPropsType>(
         } = useDatePicker(props, ref);
 
         return (
-            <DatePickerRoot
-                {...rootProps}
-                theme={theme}
-                className={classNameComponents.Root}
-            >
+            <DatePickerRoot {...rootProps} className={classNameComponents.Root}>
                 <DatePickerInput
                     {...inputProps}
-                    theme={theme}
                     className={classNameComponents.Input}
-                    after={<DatePickerInputIcon theme={theme} />}
+                    after={<DatePickerInputIcon />}
                 />
                 {open && (
                     <PortalToBody {...portalProps}>
                         <DatePickerDropdown
                             {...dropdownProps}
-                            theme={theme}
                             className={classNameComponents.Dropdown}
                         >
                             <DatePickerTopBar {...topBarProps} />
@@ -86,10 +78,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerPropsType>(
                             {showActions && (
                                 <DatePickerActionBar {...actionBarProps} />
                             )}
-                            <DatePickerDropdownArrow
-                                {...arrowProps}
-                                theme={theme}
-                            />
+                            <DatePickerDropdownArrow {...arrowProps} />
                         </DatePickerDropdown>
                     </PortalToBody>
                 )}

@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useProgressBarClassNames, useProgressBar } from './hooks';
 import { ProgressBarRoot, ProgressBarIndicator } from './style';
@@ -12,7 +11,6 @@ import { PROGRESSBAR_CLASS_PREFIX, ProgressBarLevels } from './constants';
  */
 export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarPropsType>(
     function ProgressBar({ className, ...props }, ref) {
-        const theme = useComponentTheme(PROGRESSBAR_CLASS_PREFIX);
         const classNames = useProgressBarClassNames(
             PROGRESSBAR_CLASS_PREFIX,
             className,
@@ -24,15 +22,10 @@ export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarPropsType>(
         );
 
         return (
-            <ProgressBarRoot
-                {...rootProps}
-                theme={theme}
-                className={classNames.Root}
-            >
+            <ProgressBarRoot {...rootProps} className={classNames.Root}>
                 <ProgressBarIndicator
                     {...getProgressProps()}
                     className={classNames.Indicator}
-                    theme={theme}
                 />
             </ProgressBarRoot>
         );

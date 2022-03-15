@@ -191,6 +191,8 @@ export type DropdownEffectivePropsType = Partial<{
     maxDropdownWidth: ScalarType;
     /** If set, the dropdown width will never be smaller than this value */
     minDropdownWidth: ScalarType;
+    /** If set, the dropdown height will never exceed this value */
+    maxDropdownHeight: ScalarType;
 }> &
     ComponentBehaviourOpenStateType &
     ComponentBehaviourPortalType &
@@ -213,7 +215,9 @@ export type ExpansionIndicatorContainerPropsType = ObjectLiteralType;
 export type DropdownRootPropsType = DropdownEffectivePropsType &
     ComponentElementStylePropsType;
 
-export type DropdownOptionListContainerPropsType = { zIndex: number };
+export type DropdownOptionListContainerPropsType = {
+    zIndex: number;
+} & WidthPropsType;
 
 export type DropdownTextInputPropsType = {
     isCustomRenderer: boolean;

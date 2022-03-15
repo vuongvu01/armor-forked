@@ -1,5 +1,4 @@
 import React, { forwardRef } from 'react';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { BadgePropsType } from './type';
 import { BadgeRoot } from './style';
@@ -13,17 +12,10 @@ export const Badge = forwardRef<HTMLDivElement, BadgePropsType>(function Badge(
     { className, children, ...restProps },
     ref,
 ) {
-    const theme = useComponentTheme(BADGE_CLASS_PREFIX);
-
     const classOverride = useBadgeClassName(BADGE_CLASS_PREFIX, className);
 
     return (
-        <BadgeRoot
-            {...restProps}
-            className={classOverride.Root}
-            theme={theme}
-            ref={ref}
-        >
+        <BadgeRoot {...restProps} className={classOverride.Root} ref={ref}>
             {children}
         </BadgeRoot>
     );

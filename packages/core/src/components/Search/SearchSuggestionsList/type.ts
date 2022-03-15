@@ -26,8 +26,7 @@ export type SearchSuggestionsListPropsType = Partial<{
         'renderItemAdditionalInfo' | 'renderItemIcon' | 'options'
     > &
     Pick<SearchEffectivePropsType, 'additionalInfo'> &
-    HTMLAttributes<HTMLElement> &
-    Pick<ComponentElementStylePropsType, 'theme'>;
+    HTMLAttributes<HTMLElement>;
 
 export type SearchSuggestionListGroupPropsType = {
     enableSeparator: boolean;

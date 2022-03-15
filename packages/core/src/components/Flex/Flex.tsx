@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useFlexClassName } from './utils';
 import { FlexPropsType } from './type';
@@ -22,14 +21,12 @@ export const Flex = forwardRef<HTMLDivElement, FlexPropsType>(function Flex(
     },
     ref,
 ) {
-    const theme = useComponentTheme(FLEX_CLASS_PREFIX);
     const classOverride = useFlexClassName(FLEX_CLASS_PREFIX, className);
 
     return (
         <FlexRoot
             data-testid={flexRoot}
             {...restProps}
-            theme={theme}
             className={classOverride.Root}
             direction={direction}
             flexWrap={flexWrap}

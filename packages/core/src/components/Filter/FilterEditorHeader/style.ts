@@ -5,6 +5,7 @@ import {
     getComponentOverride,
     reset,
     typography,
+    token,
 } from '@deliveryhero/armor-system';
 
 import { FilterEditorHeaderRootPropsType } from './type';
@@ -15,6 +16,7 @@ export const FilterEditorHeaderRoot = styled.div.withConfig(
 )<FilterEditorHeaderRootPropsType>`
     ${reset};
     ${typography('paragraphMedium')};
+    color: ${token('body.color')};
     display: flex;
     justify-content: ${({ leftAligned }) =>
         leftAligned ? 'flex-start' : 'space-between'};

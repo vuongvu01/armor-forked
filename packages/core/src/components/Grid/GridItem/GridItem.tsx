@@ -1,6 +1,6 @@
 import React, { forwardRef, useContext } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
+import { useTheme } from '@deliveryhero/armor-system';
 
 import { GRID_ITEM_CLASS_PREFIX, gridItemRoot } from './constants';
 import { GridItemPropsType } from './type';
@@ -13,7 +13,8 @@ import { GridItemRoot } from './style';
  */
 export const GridItem = forwardRef<HTMLDivElement, GridItemPropsType>(
     function GridItem({ className, ...restProps }, ref) {
-        const theme = useComponentTheme(GRID_ITEM_CLASS_PREFIX);
+        const theme = useTheme();
+
         const {
             gutterSpacing,
             gutterSpacingVertical,
@@ -29,10 +30,10 @@ export const GridItem = forwardRef<HTMLDivElement, GridItemPropsType>(
         return (
             <GridItemRoot
                 data-testid={gridItemRoot}
+                theme={theme}
                 {...restProps}
                 className={classOverride.Root}
                 ref={ref}
-                theme={theme}
                 gutterSpacing={gutterSpacing}
                 gutterSpacingVertical={gutterSpacingVertical}
                 gutterSpacingHorizontal={gutterSpacingHorizontal}

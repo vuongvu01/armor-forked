@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useContentSwitcherControlClassNames } from './hooks/useContentSwitcherControlClassNames';
 import { useContentSwitcherControl } from './hooks/useContentSwitcherControl';
@@ -18,7 +17,6 @@ export const ContentSwitcherControl = forwardRef<
     HTMLButtonElement,
     ContentSwitcherControlPropsType
 >(function Switch({ className, children, ...restProps }, ref) {
-    const theme = useComponentTheme(SWITCH_CONTROL_CLASS_PREFIX);
     const classNames = useContentSwitcherControlClassNames(
         SWITCH_CONTROL_CLASS_PREFIX,
         className,
@@ -31,7 +29,6 @@ export const ContentSwitcherControl = forwardRef<
     return (
         <ContentSwitcherControlRoot
             {...rootProps}
-            theme={theme}
             className={classNames.Root}
             data-testid={ContentSwitcherControlRootTestId}
         >

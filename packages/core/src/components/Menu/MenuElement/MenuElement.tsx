@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useMenuElementClassNames } from './utils/useMenuElementClassNames';
 import {
@@ -18,7 +17,6 @@ import { ExpansionIndicator } from '../../ExpansionIndicator';
  */
 export const MenuElement = forwardRef<HTMLDivElement, MenuElementPropsType>(
     function MenuElement({ className, children, ...props }, ref) {
-        const theme = useComponentTheme(MENU_ELEMENT_CLASS_PREFIX);
         const classNameComponents = useMenuElementClassNames(
             MENU_ELEMENT_CLASS_PREFIX,
             className,
@@ -35,21 +33,18 @@ export const MenuElement = forwardRef<HTMLDivElement, MenuElementPropsType>(
         return (
             <MenuElementRoot
                 {...rootProps}
-                theme={theme}
                 className={classNameComponents.Root}
             >
                 {(forwardedProps: MenuElementPropsType) => (
                     <Tag {...forwardedProps} ref={ref}>
                         <MenuElementContent
                             {...contentProps}
-                            theme={theme}
                             className={classNameComponents.Content}
                         >
                             {children}
                         </MenuElementContent>
                         {enableExpansionHandle && (
                             <MenuElementExpansionHandle
-                                theme={theme}
                                 className={classNameComponents.ExpansionHandle}
                             >
                                 <ExpansionIndicator

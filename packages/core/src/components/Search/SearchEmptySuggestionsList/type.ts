@@ -9,5 +9,4 @@ export type ClassBasedOnComponentType = {
 
 export type SearchEmptySuggestionsListPropsType = {
     noResultsLabel?: string;
-    theme: ThemeType;
 } & HTMLAttributes<HTMLElement>;

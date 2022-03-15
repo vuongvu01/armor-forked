@@ -49,29 +49,29 @@ const getFocusStyle = (props: Props): FlattenSimpleInterpolation => {
 
     if (mainColor) {
         result = css`
-            ${result}
-            ${getFocusStyleFromColor(mainColor)}
+            ${result};
+            ${getFocusStyleFromColor(mainColor)};
         `;
     } else if (error) {
         result = css`
-            ${result}
-            ${getFocusStyleFromColor('error.07')}
+            ${result};
+            ${getFocusStyleFromColor('error.07')};
         `;
     } else if (filled) {
         result = css`
-            ${result}
-            ${getFocusStyleFromColor('primary.07', 'neutral.00')}
+            ${result};
+            ${getFocusStyleFromColor('primary.07', 'neutral.00')};
         `;
     } else {
         result = css`
-            ${result}
-            ${getFocusStyleFromColor('primary.07')}
+            ${result};
+            ${getFocusStyleFromColor('primary.07')};
         `;
     }
 
     if (noOutline) {
         result = css`
-            ${result}
+            ${result};
             outline-width: 0;
         `;
     }

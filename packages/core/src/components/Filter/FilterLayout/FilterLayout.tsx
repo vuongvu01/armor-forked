@@ -1,5 +1,4 @@
 import React, { forwardRef } from 'react';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useFilterLayoutClassNames } from './hooks/useFilterLayoutClassNames';
 import { useFilterLayout } from './hooks/useFilterLayout';
@@ -26,7 +25,6 @@ import { FilterEditorHeader } from '../FilterEditorHeader';
  */
 export const FilterLayout = forwardRef<HTMLDivElement, FilterLayoutPropsType>(
     function FilterLayout({ className, children, ...props }, ref) {
-        const theme = useComponentTheme(FILTER_LAYOUT_CLASS_PREFIX);
         const classNames = useFilterLayoutClassNames(
             FILTER_LAYOUT_CLASS_PREFIX,
             className,
@@ -45,22 +43,16 @@ export const FilterLayout = forwardRef<HTMLDivElement, FilterLayoutPropsType>(
         } = useFilterLayout<HTMLDivElement>(props, ref);
 
         return (
-            <FilterLayoutRoot
-                {...rootProps}
-                theme={theme}
-                className={classNames.Root}
-            >
+            <FilterLayoutRoot {...rootProps} className={classNames.Root}>
                 <FilterEditorSettingsContextProvider
                     {...editorSettingsContextProviderProps}
                 >
                     {showLeftBar && (
                         <FilterLayoutLeftBar
                             {...getLeftBarProps()}
-                            theme={theme}
                             className={classNames.LeftBar}
                         >
                             <FilterLayoutLeftBarContainer
-                                theme={theme}
                                 className={classNames.LeftBarContainer}
                             >
                                 {filterEditor}
@@ -85,7 +77,7 @@ export const FilterLayout = forwardRef<HTMLDivElement, FilterLayoutPropsType>(
                         </SideSheet>
                     )}
                 </FilterEditorSettingsContextProvider>
-                <FilterLayoutMain theme={theme} className={classNames.Main}>
+                <FilterLayoutMain className={classNames.Main}>
                     {children}
                 </FilterLayoutMain>
             </FilterLayoutRoot>

@@ -1,5 +1,4 @@
 import React, { forwardRef } from 'react';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useTableBodyClassNames } from './hooks/useTableBodyClassNames';
 import { TableBodyRoot } from './style';
@@ -13,7 +12,6 @@ export const TableBody = forwardRef<
     HTMLTableSectionElement,
     TableBodyPropsType
 >(function TableBody({ className, ...restProps }, ref) {
-    const theme = useComponentTheme(TABLE_BODY_CLASS_PREFIX);
     const classNameComponents = useTableBodyClassNames(
         TABLE_BODY_CLASS_PREFIX,
         className,
@@ -23,7 +21,6 @@ export const TableBody = forwardRef<
         <TableBodyRoot
             data-testid={tableBodyRootTestId}
             {...restProps}
-            theme={theme}
             className={classNameComponents.Root}
             ref={ref}
         />

@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useDividerClassNames } from './hooks/useDividerClassNames';
 import { useDivider } from './hooks/useDivider';
@@ -13,7 +12,6 @@ import { DIVIDER_CLASS_PREFIX } from './constants';
  */
 export const Divider = forwardRef<HTMLDivElement, DividerPropsType>(
     function Divider({ className, children, ...props }, ref) {
-        const theme = useComponentTheme(DIVIDER_CLASS_PREFIX);
         const classNames = useDividerClassNames(
             DIVIDER_CLASS_PREFIX,
             className,
@@ -23,11 +21,7 @@ export const Divider = forwardRef<HTMLDivElement, DividerPropsType>(
         const { rootProps } = useDivider<HTMLDivElement>(props, ref);
 
         return (
-            <DividerRoot
-                {...rootProps}
-                theme={theme}
-                className={classNames.Root}
-            >
+            <DividerRoot {...rootProps} className={classNames.Root}>
                 {children}
             </DividerRoot>
         );

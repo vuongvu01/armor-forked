@@ -54,7 +54,6 @@ export const HeaderNavigationTitle = forwardRef<
             <HeaderNavigationTitleRoot
                 data-testid={headerNavigationTitleRoot}
                 {...restRootProps}
-                theme={theme}
                 className={classOverride.Root}
                 to={to}
                 href={href}

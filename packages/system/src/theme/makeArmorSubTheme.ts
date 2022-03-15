@@ -5,17 +5,19 @@ import { defaultThemeStructure } from './defaultThemeStructure';
 import { makeSpacing } from './makeSpacing';
 import { makeBreakpoints } from './makeBreakpoints';
 import { makeTypography } from './makeTypography';
+import { makeCompatibility } from './makeCompatibility';
 
 export const makeArmorSubTheme = (
     declaration: ThemeInputType = {},
 ): ThemeType => {
-    const theme = merge(defaultThemeStructure, declaration) as ThemeInputType;
+    const theme = merge(defaultThemeStructure, declaration) as ThemeType;
 
     theme.spacing = makeSpacing(theme);
-    theme.breakpoints = makeBreakpoints(theme.breakpoints);
-    theme.typography = makeTypography(theme.typography);
+    theme.breakpoints = makeBreakpoints(theme);
+    theme.typography = makeTypography(theme);
+    makeCompatibility(theme);
 
-    const referenceIndex = flatten({
+    theme.referenceIndex = flatten({
         body: theme.body,
         shape: theme.shape,
         typography: theme.typography,
@@ -24,15 +26,7 @@ export const makeArmorSubTheme = (
         transition: theme.transition,
     }) as Record<string, unknown>;
 
-    // todo: remove this
-    theme.referenceIndex = Object.keys(referenceIndex).reduce((result, key) => {
-        return {
-            [`$${key}`]: referenceIndex[key], // todo: when get rid of theme.ts, remove also "$"
-            ...result,
-        };
-    }, {});
+    theme.$initialized = true;
 
-    theme.$initialized = true; // todo: remove this
-
-    return theme as ThemeType;
+    return theme;
 };

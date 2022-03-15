@@ -1,5 +1,5 @@
 import { HTMLAttributes } from 'react';
-import { MarginPropsType } from '@deliveryhero/armor-system';
+import { MarginPropsType, SizePropsType } from '@deliveryhero/armor-system';
 
 import { ComponentElementStylePropsType } from '../type';
 import { StepperPieceVariant } from './Step/type';
@@ -34,7 +34,8 @@ type StepperEffectivePropsType = Partial<{
     readOnly: boolean;
 }> &
     HTMLAttributes<HTMLElement> &
-    MarginPropsType;
+    MarginPropsType &
+    SizePropsType;
 
 export type StepperPropsType = StepperEffectivePropsType;
 export type StepperRootPropsType = StepperEffectivePropsType &

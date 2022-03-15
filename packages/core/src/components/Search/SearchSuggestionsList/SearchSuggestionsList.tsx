@@ -30,18 +30,12 @@ export const SearchSuggestionsList: FC<SearchSuggestionsListPropsType> = ({
     cursorPosition,
     searchQuery,
     noResultsLabel,
-    theme,
     groupClassName,
 }) => {
     const sortedOptions = useSortedList(options ?? [], 'groupId');
 
     if (!options || !options.length) {
-        return (
-            <SearchEmptySuggestionsList
-                theme={theme}
-                noResultsLabel={noResultsLabel}
-            />
-        );
+        return <SearchEmptySuggestionsList noResultsLabel={noResultsLabel} />;
     }
 
     const displayedGroups: ObjectLiteralType = {};
@@ -64,7 +58,6 @@ export const SearchSuggestionsList: FC<SearchSuggestionsListPropsType> = ({
                 {!!group && (
                     <SearchSuggestionListGroup
                         className={groupClassName}
-                        theme={theme}
                         enableSeparator={index > 0}
                     >
                         {group.label}
@@ -82,7 +75,6 @@ export const SearchSuggestionsList: FC<SearchSuggestionsListPropsType> = ({
                     renderItemIcon={renderItemIcon}
                     cursorPosition={cursorPosition}
                     searchQuery={searchQuery}
-                    theme={theme}
                 />
             </>
         );

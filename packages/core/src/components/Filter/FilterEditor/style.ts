@@ -8,6 +8,7 @@ import {
     spacing,
     paddingProps,
     notLastChild,
+    token,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -21,6 +22,7 @@ export const FilterEditorRoot = styled.div.withConfig(
 )<FilterEditorRootPropsType>`
     ${reset};
     ${typography('paragraphMedium')};
+    color: ${token('body.color')};
     min-width: ${spacing(75)};
     ${getComponentOverride('FilterEditor')};
     ${marginProps};

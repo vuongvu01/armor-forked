@@ -4,6 +4,7 @@ import {
     ScalarType,
     ComponentBehaviourPortalType,
     ComponentBehaviourOverlayType,
+    WidthPropsType,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -52,6 +53,8 @@ type HeaderNavigationSelectorEffectivePropsType = {
     maxDropdownWidth?: ScalarType;
     /** If set, the dropdown width will never be smaller than this value */
     minDropdownWidth?: ScalarType;
+    /** If set, the dropdown height will never exceed this value */
+    maxDropdownHeight?: ScalarType;
 } & HTMLAttributes<HTMLElement> &
     MarginPropsType &
     ComponentBehaviourPortalType &
@@ -64,4 +67,5 @@ export type HeaderNavigationSelectorRootPropsType = {
     isOptionListShown?: boolean;
     separator?: boolean;
     zIndex?: number;
-} & ComponentElementStylePropsType;
+} & ComponentElementStylePropsType &
+    WidthPropsType;

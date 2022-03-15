@@ -9,6 +9,7 @@ import {
     getComponentOverride,
     transition,
     fontWeightMedium,
+    token,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -24,6 +25,7 @@ export const DatePickerDaySelectorRoot = styled.div.withConfig(
 )<DatePickerDaySelectorRootPropsType>`
     ${reset};
     ${typography('paragraphMedium')};
+    color: ${token('body.color')};
     padding: ${spacing(4)};
     ${getComponentOverride('DatePickerDaySelector')};
 `;
@@ -40,8 +42,8 @@ export const DatePickerDaySelectorWeek = styled.div.withConfig(propsBlocker)`
 export const DatePickerDaySelectorWeekDay = styled.div.withConfig(propsBlocker)`
     width: ${spacing(10)};
     height: ${spacing(10)};
-    color: ${color('neutral.11')};
     ${typography('paragraphSmall')};
+    color: ${token('body.color')};
     font-weight: ${fontWeightMedium};
     display: flex;
     align-items: center;
@@ -158,8 +160,8 @@ export const DatePickerDaySelectorDayButton = styled.a.withConfig(
 )<DatePickerDaySelectorDayButtonPropsType>`
     width: ${spacing(10)};
     height: ${spacing(10)};
-    color: ${color('neutral.11')};
     ${typography('paragraphSmall')};
+    color: ${token('body.color')};
     display: flex;
     align-items: center;
     justify-content: center;

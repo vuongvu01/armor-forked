@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useFormFieldTooltipClassNames } from './hooks/useFormFieldTooltipClassNames';
 import { FormFieldTooltipRoot, FormFieldTooltipIndicator } from './style';
@@ -17,8 +16,6 @@ export const FormFieldTooltip = forwardRef<
     { className, children, visible, ...restProps },
     ref,
 ) {
-    const theme = useComponentTheme(FORM_FIELD_TOOLTIP_CLASS_PREFIX);
-
     const classNameComponents = useFormFieldTooltipClassNames(
         FORM_FIELD_TOOLTIP_CLASS_PREFIX,
         className,
@@ -27,7 +24,6 @@ export const FormFieldTooltip = forwardRef<
     return (
         <FormFieldTooltipRoot
             {...restProps}
-            theme={theme}
             align="top-end"
             className={classNameComponents.Root}
             ref={ref}
@@ -35,7 +31,6 @@ export const FormFieldTooltip = forwardRef<
             error
         >
             <FormFieldTooltipIndicator
-                theme={theme}
                 visible={visible}
                 className={classNameComponents.Indicator}
             />

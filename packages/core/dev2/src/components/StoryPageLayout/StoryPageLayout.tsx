@@ -15,7 +15,7 @@ import {
 import { prepareNavigation } from './utils/prepareNavigation';
 import { StoryPageContent } from './StoryPageContent';
 
-export const StoryPageLayout: FC<StoryPageLayoutPropsType> = props => {
+export const StoryPageLayout: FC<StoryPageLayoutPropsType> = (props) => {
     const {
         pageLayoutProps,
         storyLinks,

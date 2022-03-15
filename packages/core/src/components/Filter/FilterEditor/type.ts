@@ -130,7 +130,9 @@ type FilterEditorEffectivePropsType = Partial<{
 export type FilterEditorPropsType = FilterEditorEffectivePropsType &
     ComponentStylePropsType;
 
-export type FilterEditorRootPropsType = ComponentElementStylePropsType;
+export type FilterEditorRootPropsType = ComponentElementStylePropsType &
+    MarginPropsType &
+    PaddingPropsType;
 
 export type FilterEditorHeaderPropsType = {
     leftAligned: boolean;

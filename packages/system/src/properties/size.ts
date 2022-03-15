@@ -1,5 +1,7 @@
-import { ThemeType } from '../theme';
+import { css } from 'styled-components';
+
 import { ScalarType } from '../type';
+import { spacingBreakpoint } from '../mixins';
 
 export type WidthPropsType = Partial<{
     /**
@@ -49,58 +51,51 @@ export type HeightPropsType = Partial<{
 
 export type SizePropsType = WidthPropsType & HeightPropsType;
 
-type WidthPropertiesType = { theme: ThemeType } & WidthPropsType;
-type HeightPropertiesType = { theme: ThemeType } & HeightPropsType;
-type SizePropertiesType = { theme: ThemeType } & SizePropsType;
-
-const makeCSS = (
-    theme: ThemeType,
-    cssParameter: string,
-    value?: ScalarType,
-) => {
+const makeCSS = (cssParameter: string, value?: ScalarType) => {
     if (typeof value !== 'undefined') {
         // this enables setting a breakpoint name as value of a size attribute
         // for instance, <Button maxWidth="sm">Foo</Button>
-        return `${cssParameter}: ${theme.breakpoints.mapCodeToValue(
-            value,
-            theme.spacing,
-        )};`;
+        return css`
+            ${cssParameter}: ${spacingBreakpoint(value)};
+        `;
     }
 
     return '';
 };
 
 export const widthProps = ({
-    theme,
     width,
     minWidth,
     maxWidth,
     wide,
-}: WidthPropertiesType) => `
-    ${makeCSS(theme, 'width', width)}
-    ${makeCSS(theme, 'min-width', minWidth)}
-    ${makeCSS(theme, 'max-width', maxWidth)}
-    ${wide ? 'width: 100%;' : ''}
+}: WidthPropsType) => css`
+    ${makeCSS('width', width)};
+    ${makeCSS('min-width', minWidth)};
+    ${makeCSS('max-width', maxWidth)};
+    ${wide ? 'width: 100%;' : ''};
 `;
 
 export const heightProps = ({
-    theme,
     height,
     minHeight,
     maxHeight,
     tall,
-}: HeightPropertiesType) => `
-    ${makeCSS(theme, 'height', height)}
-    ${makeCSS(theme, 'min-height', minHeight)}
-    ${makeCSS(theme, 'max-height', maxHeight)}
-    ${tall ? 'height: 100%;' : ''}
+}: HeightPropsType) => css`
+    ${makeCSS('height', height)};
+    ${makeCSS('min-height', minHeight)};
+    ${makeCSS('max-height', maxHeight)};
+    ${tall ? 'height: 100%;' : ''};
 `;
 
-export const sizeProps = (props: SizePropertiesType) => `
-    ${widthProps(props)}
-    ${heightProps(props)}
+export const sizeProps = (props: SizePropsType) => css`
+    ${widthProps(props)};
+    ${heightProps(props)};
 `;
 
+/**
+ * @deprecated
+ * @internal
+ */
 export const extractSizeProps = ({
     width,
     minWidth,

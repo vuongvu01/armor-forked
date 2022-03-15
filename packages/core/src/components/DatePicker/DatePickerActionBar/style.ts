@@ -7,6 +7,7 @@ import {
     getComponentOverride,
     color,
     notLastChild,
+    token,
 } from '@deliveryhero/armor-system';
 
 import { DatePickerActionBarRootPropsType } from './type';
@@ -17,6 +18,7 @@ export const DatePickerActionBarRoot = styled.div.withConfig(
 )<DatePickerActionBarRootPropsType>`
     ${reset};
     ${typography('paragraphMedium')};
+    color: ${token('body.color')};
     padding: ${spacing(4)};
     display: flex;
     justify-content: space-between;

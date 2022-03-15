@@ -260,6 +260,7 @@ export const ButtonRoot = styled(Wrapper).withConfig(
     }
 
     ${typography('labelMedium')};
+    color: ${token('body.color')};
     ${transition({
         'background-color': true,
         'border-color': true,

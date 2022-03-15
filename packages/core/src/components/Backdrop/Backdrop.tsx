@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import PropTypes from 'prop-types';
-import { useTheme } from '@deliveryhero/armor-system';
 
 import { BackdropRoot } from './style';
 import { BackdropPropsType } from './type';
@@ -10,15 +9,7 @@ export const Backdrop: FC<BackdropPropsType> = ({
     className,
     ...restProps
 }) => {
-    const theme = useTheme().armor; // todo: fix this
-
-    return (
-        <BackdropRoot
-            {...restProps}
-            className={`Backdrop ${className}`}
-            theme={theme}
-        />
-    );
+    return <BackdropRoot {...restProps} className={`Backdrop ${className}`} />;
 };
 
 Backdrop.displayName = BACKDROP_CLASS_PREFIX;

@@ -1,18 +1,14 @@
-import { ThemeType } from '../theme';
 import { PropsWithThemeType } from './type';
+import { getAvailableTheme } from '../theme/util';
 
 export const getToken = (
     { theme }: PropsWithThemeType,
     name: string,
 ): string => {
-    if (theme) {
-        const currentTheme = (theme.armor || theme) as ThemeType;
-        const prefixedTokenName = `$${name}`; // todo: when get rid of theme.ts, remove also "$"
-        if (prefixedTokenName in currentTheme.referenceIndex) {
-            return currentTheme.referenceIndex[prefixedTokenName];
-        }
+    const currentTheme = getAvailableTheme(theme);
 
-        return name;
+    if (name in currentTheme.referenceIndex) {
+        return currentTheme.referenceIndex[name];
     }
 
     return name;

@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useTabsClassName } from './utils';
 import { TabsRoot } from './style';
@@ -16,7 +15,6 @@ export const Tabs = forwardRef<HTMLDivElement, TabsPropsType>(function Tabs(
     { className, ...restProps },
     ref,
 ) {
-    const theme = useComponentTheme(TABS_CLASS_PREFIX);
     const { rootProps, contextValue, disabled } = useTabs(restProps, ref);
     const classOverride = useTabsClassName(
         TABS_CLASS_PREFIX,
@@ -26,11 +24,7 @@ export const Tabs = forwardRef<HTMLDivElement, TabsPropsType>(function Tabs(
 
     return (
         <TabsContext.Provider value={contextValue}>
-            <TabsRoot
-                {...rootProps}
-                className={classOverride.Root}
-                theme={theme}
-            />
+            <TabsRoot {...rootProps} className={classOverride.Root} />
         </TabsContext.Provider>
     );
 });

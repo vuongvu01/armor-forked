@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { isStatusTag, useTagClassName } from './utils';
 import { TagDeleteIconModeType, TagPropsType } from './type';
@@ -15,8 +14,6 @@ export const Tag = forwardRef<HTMLDivElement, TagPropsType>(function Tag(
     { className, ...restProps },
     ref,
 ) {
-    const theme = useComponentTheme(TAG_CLASS_PREFIX);
-
     const {
         rootProps,
         tagTypographyProps,
@@ -39,12 +36,8 @@ export const Tag = forwardRef<HTMLDivElement, TagPropsType>(function Tag(
     );
 
     return (
-        <TagRoot {...rootProps} className={classOverride.Root} theme={theme}>
-            <TagText
-                {...tagTypographyProps}
-                className={classOverride.Label}
-                theme={theme}
-            >
+        <TagRoot {...rootProps} className={classOverride.Root}>
+            <TagText {...tagTypographyProps} className={classOverride.Label}>
                 {content}
             </TagText>
             {!isStatusTag(type) &&
@@ -54,12 +47,8 @@ export const Tag = forwardRef<HTMLDivElement, TagPropsType>(function Tag(
                 <TagCloseIconContainer
                     {...tagCloseIconContainerProps}
                     className={classOverride.CloseIconContainer}
-                    theme={theme}
                 >
-                    <TagCloseIcon
-                        className={classOverride.CloseIcon}
-                        theme={theme}
-                    />
+                    <TagCloseIcon className={classOverride.CloseIcon} />
                 </TagCloseIconContainer>
             ) : null}
         </TagRoot>

@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useContentSwitcherClassNames } from './hooks/useContentSwitcherClassNames';
 import { useContentSwitcher } from './hooks/useContentSwitcher';
@@ -19,7 +18,6 @@ export const ContentSwitcher = forwardRef<
     HTMLDivElement,
     ContentSwitcherPropsType
 >(function ContentSwitcher({ className, children, ...props }, ref) {
-    const theme = useComponentTheme(CONTENTSWITCHER_CLASS_PREFIX);
     const classNames = useContentSwitcherClassNames(
         CONTENTSWITCHER_CLASS_PREFIX,
         className,
@@ -34,7 +32,6 @@ export const ContentSwitcher = forwardRef<
             <ContentSwitcherRoot
                 {...restProps}
                 data-testid={ContentSwitcherRootTestId}
-                theme={theme}
                 className={classNames.Root}
             >
                 {children}

@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { HeaderNavigationMenuPropsType } from './type';
 import {
@@ -37,44 +36,41 @@ export const HeaderNavigationMenu = forwardRef<
     },
     ref,
 ) {
-    const theme = useComponentTheme(HEADER_NAVIGATION_MENU_CLASS_PREFIX);
-
     const classOverride = useHeaderNavigationMenuClassName(
         HEADER_NAVIGATION_MENU_CLASS_PREFIX,
         className,
     );
 
-    const { internalRef, isExpanded, setIsExpanded, handleMenuKeyPress } =
-        useHeaderNavigationMenu(restProps, ref);
+    const {
+        menuTitleRef,
+        menuRootRef,
+        isExpanded,
+        setIsExpanded,
+        handleMenuKeyPress,
+    } = useHeaderNavigationMenu(restProps, ref);
 
     const contextValue = { isExpanded, setIsExpanded };
 
     return (
         <HeaderNavigationMenuContentContext.Provider value={contextValue}>
-            <HeaderNavigationItem
-                theme={theme}
-                className={classOverride.NavigationMenuItem}
-            >
+            <HeaderNavigationItem className={classOverride.NavigationMenuItem}>
                 <HeaderNavigationMenuRoot
                     data-testid={headerNavigationMenuRoot}
                     {...restProps}
-                    theme={theme}
                     className={classOverride.NavigationMenu}
+                    ref={menuRootRef}
                 >
                     <HeaderNavigationMenuTitleContainer
-                        ref={internalRef}
-                        theme={theme}
+                        ref={menuTitleRef}
                         className={classOverride.TitleContainer}
                     >
                         <HeaderNavigationMenuTitle
-                            theme={theme}
                             className={classOverride.NavigationMenuItem}
                         >
                             {headerTitle}
                         </HeaderNavigationMenuTitle>
                         {headerContent && (
                             <MenuExpansionIndicatorItem
-                                theme={theme}
                                 className={classOverride.NavigationMenuItem}
                                 tabIndex={tabIndex}
                                 onKeyPress={handleMenuKeyPress}
@@ -82,7 +78,6 @@ export const HeaderNavigationMenu = forwardRef<
                                 <MenuExpansionIndicator
                                     displaySeparator={false}
                                     isExpanded={isExpanded}
-                                    theme={theme}
                                     className={
                                         classOverride.MenuExpansionIndicator
                                     }
@@ -91,7 +86,6 @@ export const HeaderNavigationMenu = forwardRef<
                         )}
                     </HeaderNavigationMenuTitleContainer>
                     <HeaderNavigationMenuContentContainer
-                        theme={theme}
                         isExpanded={isExpanded}
                         className={classOverride.NavigationMenuContentContainer}
                     >

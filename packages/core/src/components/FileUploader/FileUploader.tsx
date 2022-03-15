@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
+
 import { UploadIcon } from '@deliveryhero/armor-icons';
 
 import { useFileUploaderClassNames } from './hooks/useFileUploaderClassNames';
@@ -14,7 +14,6 @@ import { FILE_UPLOADER_CLASS_PREFIX } from './constants';
  */
 export const FileUploader = forwardRef<HTMLDivElement, FileUploaderPropsType>(
     function FileUploader({ className, children, ...props }, ref) {
-        const theme = useComponentTheme(FILE_UPLOADER_CLASS_PREFIX);
         const classNames = useFileUploaderClassNames(
             FILE_UPLOADER_CLASS_PREFIX,
             className,
@@ -29,20 +28,13 @@ export const FileUploader = forwardRef<HTMLDivElement, FileUploaderPropsType>(
         } = useFileUploader<HTMLDivElement>(props, ref);
 
         return (
-            <FileUploaderRoot
-                {...rootProps}
-                theme={theme}
-                className={classNames.Root}
-            >
-                <Title theme={theme} className={classNames.Title}>
-                    {title}
-                </Title>
-                <Description theme={theme} className={classNames.Description}>
+            <FileUploaderRoot {...rootProps} className={classNames.Root}>
+                <Title className={classNames.Title}>{title}</Title>
+                <Description className={classNames.Description}>
                     {description}
                 </Description>
                 <UploadButton
                     {...getUploadButtonProps()}
-                    theme={theme}
                     className={classNames.UploadButton}
                 >
                     <UploadIcon />

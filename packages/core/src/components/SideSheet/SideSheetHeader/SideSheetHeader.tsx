@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { SideSheetHeaderPropsType } from './type';
 import {
@@ -20,7 +19,6 @@ export const SideSheetHeader: FC<SideSheetHeaderPropsType> = ({
     className,
     ...props
 }) => {
-    const theme = useComponentTheme(SIDE_SHEET_HEADER_CLASS_PREFIX);
     const classNames = useSideSheetHeaderClassNames(
         SIDE_SHEET_HEADER_CLASS_PREFIX,
         className,
@@ -36,25 +34,15 @@ export const SideSheetHeader: FC<SideSheetHeaderPropsType> = ({
     } = useSideSheetHeader(props);
 
     return (
-        <SideSheetHeaderRoot
-            {...rootProps}
-            className={classNames.Root}
-            theme={theme}
-        >
+        <SideSheetHeaderRoot {...rootProps} className={classNames.Root}>
             {children}
             {showTitle && (
-                <SideSheetHeaderTitle
-                    theme={theme}
-                    className={classNames.Title}
-                >
+                <SideSheetHeaderTitle className={classNames.Title}>
                     {title}
                 </SideSheetHeaderTitle>
             )}
             {showDescription && (
-                <SideSheetHeaderDescription
-                    theme={theme}
-                    className={classNames.Description}
-                >
+                <SideSheetHeaderDescription className={classNames.Description}>
                     {description}
                 </SideSheetHeaderDescription>
             )}

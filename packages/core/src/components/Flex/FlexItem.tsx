@@ -33,7 +33,6 @@ export const FlexItem = forwardRef<HTMLDivElement, FlexItemPropsType>(
             <FlexItemRoot
                 data-testid={flexItemRoot}
                 {...restProps}
-                theme={theme}
                 className={classOverride.Root}
                 flexGrow={flexGrow}
                 flexShrink={flexShrink}

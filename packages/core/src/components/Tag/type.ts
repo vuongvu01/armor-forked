@@ -84,13 +84,7 @@ export type TagCloseIconContainerPropsType = Pick<
 > &
     ComponentElementStylePropsType;
 
-export type TagCloseIconPropsType = Pick<
-    ComponentElementStylePropsType,
-    'theme'
->;
-
 export type TagTextPropsType = Partial<{
     smallVerticalPadding: boolean;
 }> &
-    Pick<TagEffectivePropsType, 'deleteOption'> &
-    Pick<ComponentElementStylePropsType, 'theme'>;
+    Pick<TagEffectivePropsType, 'deleteOption'>;

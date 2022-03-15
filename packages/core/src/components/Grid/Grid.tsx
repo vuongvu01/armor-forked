@@ -1,7 +1,7 @@
 import React, { forwardRef, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
+import { useTheme } from '@deliveryhero/armor-system';
 import { useGridClassName } from './utils';
 import { GridPropsType } from './type';
 import { GRID_CLASS_PREFIX, gridRoot } from './constants';
@@ -21,8 +21,7 @@ export const Grid = forwardRef<HTMLDivElement, GridPropsType>(function Grid(
     },
     ref,
 ) {
-    const theme = useComponentTheme(GRID_CLASS_PREFIX);
-
+    const theme = useTheme();
     const classOverride = useGridClassName(GRID_CLASS_PREFIX, className);
 
     const contextValue = useMemo(
@@ -38,13 +37,13 @@ export const Grid = forwardRef<HTMLDivElement, GridPropsType>(function Grid(
         <GridContext.Provider value={contextValue}>
             <GridRoot
                 data-testid={gridRoot}
+                theme={theme}
                 {...restProps}
                 className={classOverride.Root}
                 gutterSpacing={gutterSpacing}
                 gutterSpacingVertical={gutterSpacingVertical}
                 gutterSpacingHorizontal={gutterSpacingHorizontal}
                 ref={ref}
-                theme={theme}
             />
         </GridContext.Provider>
     );

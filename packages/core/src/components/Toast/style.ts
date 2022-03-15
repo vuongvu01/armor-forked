@@ -11,6 +11,7 @@ import {
     borderRadius,
     transition,
     focus,
+    token,
 } from '@deliveryhero/armor-system';
 
 import { ToastRootPropsType, ToastHookPropsType } from './type';
@@ -247,7 +248,7 @@ export const ToastRoot = styled.div.withConfig(
 )<ToastRootPropsType>`
     ${reset};
     ${typography('paragraphMedium')};
-
+    color: ${token('body.color')};
     ${getRootStyle};
     ${getComponentOverride('Toast')};
     ${marginProps};

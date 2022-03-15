@@ -1,14 +1,14 @@
 import { SVGAttributes } from 'react';
 import {
-    ThemeType,
     MarginPropsType,
     ColorPropsType,
     ScalarType,
+    RootThemeType,
 } from '@deliveryhero/armor-system';
 
 export type SVGIconPropsType = {
     title?: string;
-    theme?: ThemeType;
+    theme?: RootThemeType;
     width?: ScalarType;
     height?: ScalarType;
     fontSize?: ScalarType;

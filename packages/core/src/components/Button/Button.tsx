@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useButtonClassName } from './hooks/useButtonClassName';
 import { ButtonRoot } from './style';
@@ -13,8 +12,6 @@ import { useButton } from './hooks/useButton';
  */
 export const Button = forwardRef<HTMLButtonElement, ButtonPropsType>(
     function Button({ className, children, ...props }, ref) {
-        const theme = useComponentTheme(BUTTON_CLASS_PREFIX);
-
         const { rootProps, tagProps, classNameProps, Tag } = useButton(
             props,
             ref,
@@ -27,7 +24,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonPropsType>(
         );
 
         return (
-            <ButtonRoot {...rootProps} theme={theme} className={classNameRoot}>
+            <ButtonRoot {...rootProps} className={classNameRoot}>
                 {(forwardedProps: ButtonPropsType) => (
                     <Tag {...forwardedProps} {...tagProps}>
                         {children}

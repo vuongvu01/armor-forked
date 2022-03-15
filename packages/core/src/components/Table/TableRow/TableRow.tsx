@@ -1,5 +1,4 @@
 import React, { forwardRef } from 'react';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useTableRowClassNames } from './hooks/useTableRowClassNames';
 import { TableRowRoot } from './style';
@@ -13,8 +12,6 @@ import { TableRowCells } from './TableRowCells';
  */
 export const TableRow = forwardRef<HTMLTableRowElement, TableRowPropsType>(
     function TableRow({ className, children, ...restProps }, ref) {
-        const theme = useComponentTheme(TABLE_ROW_CLASS_PREFIX);
-
         const { rootProps, cellsProps, isHovered } = useTableRow(restProps);
 
         const classNameComponents = useTableRowClassNames(
@@ -28,7 +25,6 @@ export const TableRow = forwardRef<HTMLTableRowElement, TableRowPropsType>(
                 {...rootProps}
                 data-testid={tableRowRootTestId}
                 className={classNameComponents.Root}
-                theme={theme}
                 ref={ref}
             >
                 <TableRowCells {...cellsProps}>{children}</TableRowCells>

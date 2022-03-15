@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { BoxRoot } from './style';
 import { BoxPropsType } from './type';
@@ -14,16 +13,9 @@ export const Box: FunctionComponent<BoxPropsType> = ({
     className,
     ...restProps
 }) => {
-    const theme = useComponentTheme(BOX_CLASS_PREFIX);
     const classNameComponents = useBoxClassName(BOX_CLASS_PREFIX, className);
 
-    return (
-        <BoxRoot
-            {...restProps}
-            theme={theme}
-            className={classNameComponents.Root}
-        />
-    );
+    return <BoxRoot {...restProps} className={classNameComponents.Root} />;
 };
 
 Box.propTypes = {

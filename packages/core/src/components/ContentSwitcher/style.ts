@@ -8,6 +8,7 @@ import {
     color,
     widthProps,
     borderRadius,
+    token,
 } from '@deliveryhero/armor-system';
 import { ContentSwitcherRootPropsType } from './type';
 
@@ -28,6 +29,7 @@ export const ContentSwitcherRoot = styled.div.withConfig(
 )<ContentSwitcherRootPropsType>`
     ${reset};
     ${typography('paragraphMedium')};
+    color: ${token('body.color')};
     ${getRootStyle};
     ${getComponentOverride('ContentSwitcher')};
     ${marginProps};

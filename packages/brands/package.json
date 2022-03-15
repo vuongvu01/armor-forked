@@ -65,6 +65,7 @@
         "jest": "^26.4.0",
         "jest-chain": "^1.1.5",
         "jest-styled-components": "^7.0.2",
+        "lodash": "^4.17.21",
         "react-test-renderer": "^16.13.1",
         "semantic-release": "^17.1.1",
         "ts-essentials": "^7.0.0",

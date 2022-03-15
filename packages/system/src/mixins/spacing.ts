@@ -1,16 +1,19 @@
 import { ScalarType } from '../type';
 import { PropsWithThemeType } from './type';
+import { getAvailableTheme } from '../theme/util';
 
-export const spacing = (value: ScalarType = 1) => ({
-    theme,
-}: PropsWithThemeType): ScalarType => {
-    if (theme) {
-        if (theme.armor) {
-            return theme.armor.spacing(value);
-        }
+export const spacing =
+    (value: ScalarType = 1) =>
+    ({ theme }: PropsWithThemeType): ScalarType =>
+        getAvailableTheme(theme).spacing(value);
 
-        return theme.spacing(value);
-    }
+export const spacingBreakpoint =
+    (value: ScalarType) =>
+    ({ theme }: PropsWithThemeType): ScalarType => {
+        const currentTheme = getAvailableTheme(theme);
 
-    return value;
-};
+        return currentTheme.breakpoints.mapCodeToValue(
+            value,
+            currentTheme.spacing,
+        );
+    };

@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useDialogTitleClassNames } from './utils/useDialogTitleClassName';
 import {
@@ -22,19 +21,13 @@ export const DialogTitle: FunctionComponent<DialogTitlePropsType> = ({
     description,
     ...restProps
 }) => {
-    const theme = useComponentTheme(DIALOG_TITLE_CLASS_PREFIX);
-
     const classNameComponents = useDialogTitleClassNames(
         CLASS_PREFIX,
         className,
     );
 
     return (
-        <DialogTitleRoot
-            {...restProps}
-            theme={theme}
-            className={classNameComponents.Root}
-        >
+        <DialogTitleRoot {...restProps} className={classNameComponents.Root}>
             <DialogTitleText
                 className={classNameComponents.Text}
                 data-testid={dialogTitleText}
@@ -46,7 +39,6 @@ export const DialogTitle: FunctionComponent<DialogTitlePropsType> = ({
                 <DialogTitleDescription
                     paragraph
                     large
-                    theme={theme}
                     className={classNameComponents.Description}
                 >
                     {description}

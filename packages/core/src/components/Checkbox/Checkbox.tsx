@@ -1,6 +1,6 @@
 import React, { forwardRef, useMemo, useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { generateId, useComponentTheme } from '@deliveryhero/armor-system';
+import { generateId } from '@deliveryhero/armor-system';
 
 import { SelectorLabel } from '../SelectorLabel';
 import { useCheckboxClassName } from './hooks/useCheckboxClassName';
@@ -39,7 +39,6 @@ export const Checkbox = forwardRef<
     },
     ref,
 ) {
-    const theme = useComponentTheme(CHECKBOX_CLASS_PREFIX);
     const id = generateId(propsId, checkboxIdPrefix);
 
     const classOverride = useCheckboxClassName(
@@ -80,7 +79,6 @@ export const Checkbox = forwardRef<
             {...restProps}
             className={classOverride.Root}
             disabled={disabled}
-            theme={theme}
             htmlFor={id}
             reallyChecked={reallyChecked}
         >
@@ -94,7 +92,6 @@ export const Checkbox = forwardRef<
                 name={name}
                 onChange={handleOnChange}
                 ref={ref as RefType<HTMLInputElement>}
-                theme={theme}
                 type="checkbox"
             />
             <CheckboxCheckmark
@@ -102,19 +99,16 @@ export const Checkbox = forwardRef<
                 checkedIcon={checkedIcon}
                 className={classOverride.Checkmark}
                 disabled={disabled}
-                theme={theme}
                 hasLabel={!!label}
             >
                 {checkedIcon === 'dash' ? (
                     <StyledDashIcon
-                        theme={theme}
                         className={classOverride.Icon}
                         disabled={disabled}
                         checked={reallyChecked}
                     />
                 ) : (
                     <StyledCheckedIcon
-                        theme={theme}
                         className={classOverride.Icon}
                         disabled={disabled}
                         checked={reallyChecked}

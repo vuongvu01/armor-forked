@@ -1,5 +1,4 @@
 import React, { forwardRef } from 'react';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useTableActionClassNames } from './hooks/useTableActionClassNames';
 import { TableActionRoot } from './style';
@@ -11,7 +10,6 @@ import { tableActionRootTestId, TABLE_ACTION_CLASS_PREFIX } from './constants';
  */
 export const TableAction = forwardRef<HTMLDivElement, TableActionPropsType>(
     function TableAction({ className, ...restProps }, ref) {
-        const theme = useComponentTheme(TABLE_ACTION_CLASS_PREFIX);
         const classNameComponents = useTableActionClassNames(
             TABLE_ACTION_CLASS_PREFIX,
             className,
@@ -21,7 +19,6 @@ export const TableAction = forwardRef<HTMLDivElement, TableActionPropsType>(
             <TableActionRoot
                 data-testid={tableActionRootTestId}
                 {...restProps}
-                theme={theme}
                 className={classNameComponents.Root}
                 ref={ref}
             />

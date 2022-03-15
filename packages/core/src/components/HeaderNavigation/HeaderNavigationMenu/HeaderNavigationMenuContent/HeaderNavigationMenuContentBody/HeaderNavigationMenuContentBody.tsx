@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { HeaderNavigationMenuContentBodyRoot } from './style';
 import { HeaderNavigationMenuContentBodyPropsType } from './type';
@@ -17,10 +16,6 @@ import {
 export const HeaderNavigationMenuContentBody: FunctionComponent<
     HeaderNavigationMenuContentBodyPropsType
 > = ({ className, options, selectedValue, onOptionSelect, ...restProps }) => {
-    const theme = useComponentTheme(
-        HEADER_NAVIGATION_MENU_CONTENT_BODY_CLASS_PREFIX,
-    );
-
     const classOverride = useHeaderNavigationMenuContentBodyClassName(
         HEADER_NAVIGATION_MENU_CONTENT_BODY_CLASS_PREFIX,
         className,
@@ -30,7 +25,6 @@ export const HeaderNavigationMenuContentBody: FunctionComponent<
         <HeaderNavigationMenuContentBodyRoot
             data-testid={headerNavigationMenuContentBodyRoot}
             {...restProps}
-            theme={theme}
             className={classOverride.Root}
         >
             {options ? (

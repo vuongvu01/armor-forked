@@ -123,13 +123,13 @@ export const TabTagWrapper = styled(Wrapper).withConfig(
 
 export const TabLabel = styled.div<TabLabelPropsType>`
     ${typography('labelLarge')};
+    color: ${color('neutral.11')};
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
     text-align: center;
     display: flex;
     padding: ${spacing(1)} 0;
-    color: ${color('neutral.11')};
     &:hover {
         color: ${color('primary.06')};
     }

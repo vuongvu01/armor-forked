@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useListClassNames } from './hooks/useListClassNames';
 import { ListRoot } from './style';
@@ -14,13 +13,11 @@ export const List = forwardRef<HTMLDivElement, ListPropsType>(function List(
     { className, ...restProps },
     ref,
 ) {
-    const theme = useComponentTheme(LIST_CLASS_PREFIX);
     const classNameComponents = useListClassNames(LIST_CLASS_PREFIX, className);
 
     return (
         <ListRoot
             {...restProps}
-            theme={theme}
             className={classNameComponents.Root}
             ref={ref}
         />

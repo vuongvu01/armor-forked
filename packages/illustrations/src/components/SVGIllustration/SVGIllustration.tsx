@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react';
-import { useTheme } from '@deliveryhero/armor-system';
 
 import { SVGIllustrationPropsType } from './type';
 import { SVGIllustrationRoot } from './style';
@@ -13,8 +12,6 @@ export const SVGIllustration: FunctionComponent<SVGIllustrationPropsType> = ({
     color,
     ...restProps
 }) => {
-    const theme = useTheme();
-
     return (
         <SVGIllustrationRoot
             viewBox={viewBox}
@@ -22,7 +19,6 @@ export const SVGIllustration: FunctionComponent<SVGIllustrationPropsType> = ({
             color={color}
             illustrationWidth={width}
             illustrationHeight={height}
-            theme={theme.armor}
             {...restProps}
         >
             {!!title && <title>{title}</title>}

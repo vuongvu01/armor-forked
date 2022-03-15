@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme, PortalToBody } from '@deliveryhero/armor-system';
+import { PortalToBody } from '@deliveryhero/armor-system';
 
 import { useTooltipClassNames } from './hooks/useTooltipClassNames';
 import { TooltipRoot, TooltipArrow } from './style';
@@ -13,8 +13,6 @@ import { useTooltip } from './hooks/useTooltip';
  */
 export const Tooltip = forwardRef<HTMLDivElement, TooltipPropsType>(
     function Tooltip({ className, ...props }, ref) {
-        const theme = useComponentTheme(TOOLTIP_CLASS_PREFIX);
-
         const {
             align,
             open,
@@ -43,13 +41,11 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipPropsType>(
                     <PortalToBody {...portalProps}>
                         <TooltipRoot
                             {...rootProps}
-                            theme={theme}
                             className={classNameComponents.Root}
                         >
                             {content}
                             <TooltipArrow
                                 {...arrowProps}
-                                theme={theme}
                                 className={classNameComponents.Arrow}
                             />
                         </TooltipRoot>

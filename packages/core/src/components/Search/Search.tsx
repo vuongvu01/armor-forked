@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useSearchClassName } from './hooks/useSearchClassName';
 import { SearchPropsType } from './type';
@@ -21,8 +20,6 @@ import { SearchClearAction } from './SearchClearAction';
  */
 export const Search = forwardRef<HTMLInputElement, SearchPropsType>(
     function Search({ className, ...restProps }, ref) {
-        const theme = useComponentTheme(SEARCH_CLASS_PREFIX);
-
         const {
             rootProps,
             textInputProps,
@@ -48,7 +45,6 @@ export const Search = forwardRef<HTMLInputElement, SearchPropsType>(
                 data-testid={searchRoot}
                 {...rootProps}
                 className={classOverride.Root}
-                theme={theme}
                 disabled={disabled}
             >
                 <SearchTextInput
@@ -56,22 +52,18 @@ export const Search = forwardRef<HTMLInputElement, SearchPropsType>(
                     before={<SearchIcon {...searchIconProps} />}
                     after={<SearchClearAction {...searchClearActionProps} />}
                     className={classOverride.TextInput}
-                    theme={theme}
                 />
                 {isSuggestionsListShown ? (
                     <SearchSuggestionsContainer
                         {...suggestionsContainerProps}
                         className={classOverride.SuggestionsContainer}
-                        theme={theme}
                     >
                         <SearchSuggestionsListContainer
                             {...suggestionListContainerProps}
                             className={classOverride.SearchSuggestionsList}
-                            theme={theme}
                         >
                             <SearchSuggestionsList
                                 {...suggestionListProps}
-                                theme={theme}
                                 groupClassName={classOverride.ListItemGroup}
                             />
                         </SearchSuggestionsListContainer>

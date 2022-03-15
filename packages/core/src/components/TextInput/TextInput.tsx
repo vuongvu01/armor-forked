@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useComponentTheme } from '@deliveryhero/armor-system';
 
 import { useTextInputClassNames } from './hooks/useTextInputClassNames';
 import {
@@ -24,8 +23,6 @@ import { useTextInput } from './hooks/useTextInput';
  */
 export const TextInput = forwardRef<HTMLInputElement, TextInputPropsType>(
     function TextInput({ className, ...restProps }, ref) {
-        const theme = useComponentTheme(TEXT_INPUT_CLASS_PREFIX);
-
         const {
             rootProps,
             innerContainerProps,
@@ -63,17 +60,14 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputPropsType>(
                 data-testid={textInputRoot}
                 {...rootProps}
                 className={classNameComponents.Root}
-                theme={theme}
             >
                 <TextInputInnerContainer
                     {...innerContainerProps}
                     className={classNameComponents.InnerContainer}
-                    theme={theme}
                 >
                     {before}
                     <TextInputInput
                         {...inputProps}
-                        theme={theme}
                         className={classNameComponents.Input}
                     >
                         {(forwardedProps: TextInputInputPropsType) => (
@@ -91,13 +85,11 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputPropsType>(
                         data-testid={textInputLabel}
                         {...inputLabelProps}
                         className={classNameComponents.Label}
-                        theme={theme}
                     >
                         <TextInputLabelBackground
                             data-testid={textInputLabelBackground}
                             {...inputLabelBackgroundProps}
                             className={classNameComponents.LabelBackground}
-                            theme={theme}
                         >
                             {label}
                         </TextInputLabelBackground>

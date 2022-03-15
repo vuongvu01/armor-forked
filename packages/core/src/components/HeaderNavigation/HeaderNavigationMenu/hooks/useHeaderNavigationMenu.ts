@@ -1,7 +1,8 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState, useRef } from 'react';
 import {
     useRootRef,
     useDetectEscapeKeyPressed,
+    useDetectClickOutsideComponent,
 } from '@deliveryhero/armor-system';
 
 import { HeaderNavigationMenuPropsType } from '../type';
@@ -22,41 +23,43 @@ export const useHeaderNavigationMenu = <E extends HTMLDivElement>(
         defaultExpanded || isMenuExpanded,
     );
 
-    const internalRef = useRootRef<E>(ref);
+    const menuRootRef = useRootRef<E>(ref);
+    const menuTitleRef = useRef<E>(null);
 
-    const handleMenuClick = useCallback(
-        (event: MouseEvent) => {
+    const handleMenuClick = useCallback((event: MouseEvent) => {
+        event.preventDefault();
+        event.stopPropagation();
+
+        setIsExpanded((expanded) => !expanded);
+    }, []);
+
+    const handleMenuKeyPress = useCallback((event: React.KeyboardEvent) => {
+        if (event.key === 'Enter') {
             event.preventDefault();
             event.stopPropagation();
-
-            setIsExpanded(!isExpanded);
-        },
-        [isExpanded],
-    );
-
-    const handleMenuKeyPress = useCallback(
-        (event: React.KeyboardEvent) => {
-            if (event.key === 'Enter') {
-                event.preventDefault();
-                event.stopPropagation();
-
-                setIsExpanded(!isExpanded);
-            }
-        },
-        [setIsExpanded, isExpanded],
-    );
+            setIsExpanded((expanded) => !expanded);
+        }
+    }, []);
 
     useEffect(() => {
-        const internalRefCurrent = internalRef?.current;
+        const internalRefCurrent = menuTitleRef?.current;
         internalRefCurrent?.addEventListener('click', handleMenuClick);
 
         return () => {
             // eslint-disable-next-line no-unused-expressions
             internalRefCurrent?.removeEventListener('click', handleMenuClick);
         };
-    }, [internalRef, isExpanded, handleMenuClick]);
+    }, [menuTitleRef, isExpanded, handleMenuClick]);
 
-    useDetectEscapeKeyPressed(internalRef, setIsExpanded, isExpanded);
+    useDetectEscapeKeyPressed(menuTitleRef, setIsExpanded, isExpanded);
 
-    return { internalRef, isExpanded, setIsExpanded, handleMenuKeyPress };
+    useDetectClickOutsideComponent(menuRootRef, setIsExpanded, isExpanded);
+
+    return {
+        menuTitleRef,
+        menuRootRef,
+        isExpanded,
+        setIsExpanded,
+        handleMenuKeyPress,
+    };
 };

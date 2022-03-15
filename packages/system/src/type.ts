@@ -26,6 +26,13 @@ export type MutuallyExclusive<T, U> = (T & Disallow<U>) | (U & Disallow<T>);
 
 export type UnpackedType<T> = T extends (infer U)[] ? U : any;
 
+// eslint-disable-next-line @typescript-eslint/ban-types
+export type DeepPartial<T> = T extends object
+    ? {
+          [P in keyof T]?: DeepPartial<T[P]>;
+      }
+    : T;
+
 // todo: replace with ForwardedRef type from react when we update react
 export type RefType<T> =
     | ((instance: T | null) => void)
