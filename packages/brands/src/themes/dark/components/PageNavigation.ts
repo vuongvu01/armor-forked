@@ -19,5 +19,13 @@ export const getPageNavigationOverride = () => {
                 background-color: ${color('neutral.03')};
             }
         }
+
+        .TextInput-InnerContainer .ExpansionIndicator-Icon {
+            color: ${color('primary.03')};
+        }
+
+        .Dropdown-TextInput {
+            background-color: ${color('neutral.02')};
+        }
     `;
 };
