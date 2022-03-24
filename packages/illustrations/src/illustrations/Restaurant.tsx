@@ -29,7 +29,7 @@ export const RestaurantIllustration: FunctionComponent<
     const theme = useTheme();
 
     if (theme) {
-        const { brand, neutral } = theme?.armor?.color?.illustration;
+        const { brand, neutral } = theme?.armor?.color?.illustration || {};
 
         return (
             <SVGIllustration
