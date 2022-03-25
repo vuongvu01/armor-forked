@@ -12,6 +12,14 @@ export default {
 const Illustrations = styled.div`
     display: flex;
     flex-wrap: wrap;
+    gap: 12px;
+`;
+
+const Container = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 `;
 
 const Illustration = styled.div`
@@ -25,12 +33,22 @@ const Illustration = styled.div`
 `;
 
 export const Basic = () => (
-    <>
-        <h2>Restaurant</h2>
-        <Illustrations>
-            <Illustration>
-                <I.RestaurantIllustration width="100px" title="Restaurant" />
-            </Illustration>
-        </Illustrations>
-    </>
+    <Illustrations>
+        {Object.entries(I)
+            .sort()
+            .map(([illustrationName, IllustrationComponent]) => {
+                const realName = illustrationName.split('Illustration')[0];
+                return (
+                    <Container key={realName}>
+                        <Illustration>
+                            <IllustrationComponent
+                                width="100px"
+                                title={realName}
+                            />
+                        </Illustration>
+                        <h3>{realName}</h3>
+                    </Container>
+                );
+            })}
+    </Illustrations>
 );

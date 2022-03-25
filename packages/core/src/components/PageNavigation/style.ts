@@ -8,7 +8,7 @@ import {
     getComponentOverride,
     propsBlocker,
     durationNormal,
-    borderRadius02,
+    borderRadius,
     focus,
     token,
 } from '@deliveryhero/armor-system';
@@ -117,7 +117,7 @@ export const PageNavigationPageButton = styled.button.withConfig(
     display: flex;
     align-items: center;
     padding: ${spacing(1)} ${spacing(3)};
-    border-radius: ${borderRadius02};
+    border-radius: ${borderRadius('soft')};
     min-height: ${spacing(2)};
 
     &:hover {
@@ -143,5 +143,23 @@ export const PageNavigationPageSize = styled.div.withConfig(
 
 export const PageNavigationPageSizeSelector = styled(Dropdown)`
     margin-left: ${spacing(3)};
-    width: ${spacing(32)};
+
+    .Dropdown-TextInput {
+        border-color: ${color('neutral.03')};
+    }
+    .TextInput-Input {
+        padding: ${spacing(1.5)} 0 ${spacing(1.5)} ${spacing(2)};
+        width: ${spacing(8.5)};
+
+        &:focus {
+            outline: unset;
+            box-shadow: unset;
+        }
+    }
+    .ExpansionIndicator-Content {
+        width: ${spacing(8.5)};
+    }
+    .ExpansionIndicator-Icon {
+        color: ${color('primary.07')};
+    }
 `;

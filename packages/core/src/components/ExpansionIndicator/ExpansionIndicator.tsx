@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import { useTheme } from '@deliveryhero/armor-system';
 
 import { ExpansionIndicatorPropsType } from './type';
 import {
@@ -27,8 +26,6 @@ export const ExpansionIndicator: FC<ExpansionIndicatorPropsType> = ({
     tabIndex,
     ...restProps
 }) => {
-    const theme = useTheme().armor;
-
     const reallyExpanded = isExpanded ?? expanded;
 
     const classOverride = useExpansionIndicatorClassName(

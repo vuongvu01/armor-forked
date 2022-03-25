@@ -1,2 +1,4 @@
-/* This file is auto-generated, don't edit by hand! */
 export * from './Restaurant';
+export * from './Problem1';
+export * from './Armor1';
+export * from './Armor2';

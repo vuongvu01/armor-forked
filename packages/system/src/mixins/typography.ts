@@ -8,13 +8,21 @@ export const typography =
 
         const variant = currentTheme.typography?.[variantName];
         if (variant) {
+            const {
+                fontWeight,
+                letterSpacing,
+                lineHeight,
+                fontFamily,
+                fontSize,
+            } = variant;
+            const { pixelToRem } = currentTheme.typography;
+
             return {
-                ...variant,
-                fontFamily: `${variant.fontFamily}, sans-serif`,
-                fontSize: currentTheme.typography.pixelToRem(variant.fontSize),
-                lineHeight: currentTheme.typography.pixelToRem(
-                    variant.lineHeight,
-                ),
+                fontFamily: `${fontFamily}, sans-serif`,
+                fontSize: pixelToRem(fontSize),
+                fontWeight,
+                letterSpacing,
+                lineHeight: pixelToRem(lineHeight),
             };
         }
 

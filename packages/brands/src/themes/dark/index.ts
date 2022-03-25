@@ -7,6 +7,7 @@ import {
     colorGreen10,
     colorGreen20,
     colorGrey01,
+    colorGrey05,
     colorGrey30,
     colorGrey40,
     colorGrey60,
@@ -71,6 +72,7 @@ export const darkThemeStructure = {
         },
         illustration: {
             brand: colorBlue40,
+            neutral: colorGrey05,
         },
         motion: {
             brand: colorBlue20,
