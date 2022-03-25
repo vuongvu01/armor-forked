@@ -1,3 +1,16 @@
+# [1.2.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-illustrations@1.1.0...@deliveryhero/armor-illustrations@1.2.0) (2022-03-25)
+
+
+### Bug Fixes
+
+* **PageNavigation:** Inconsistency between pagination component; design and development [AR-54] ([4e76962](https://github.com/deliveryhero/armor/commit/4e76962ecc3781479468ec685e8a43b8e3bde0d9))
+* **theme:** Typography minor fixes ([54c703f](https://github.com/deliveryhero/armor/commit/54c703f2a2b088433e238eac48f64666d66ab276))
+
+
+### Features
+
+* **illustrations:** add new illustrations [AR-53] ([f6d0824](https://github.com/deliveryhero/armor/commit/f6d082479a38ca29ef7a79007199a04aebfde490))
+
 # [1.1.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-illustrations@1.0.5...@deliveryhero/armor-illustrations@1.1.0) (2022-03-15)
 
 
