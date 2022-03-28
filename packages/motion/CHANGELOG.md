@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-motion@1.1.1...@deliveryhero/armor-motion@1.1.2) (2022-03-28)
+
+
+### Features
+
+* **system:** new hook useDidUpdateEffect added ([#920](https://github.com/deliveryhero/armor/issues/920)) ([adb32bb](https://github.com/deliveryhero/armor/commit/adb32bb34ea723df835bd69f8b9d84567b541f13))
+
 ## @deliveryhero/armor-motion [1.1.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-motion@1.1.0...@deliveryhero/armor-motion@1.1.1) (2022-03-25)
 
 
