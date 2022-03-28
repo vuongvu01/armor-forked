@@ -1,3 +1,10 @@
+## [1.21.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.21.1...@deliveryhero/armor-icons@1.21.2) (2022-03-28)
+
+
+### Features
+
+* **system:** new hook useDidUpdateEffect added ([#920](https://github.com/deliveryhero/armor/issues/920)) ([adb32bb](https://github.com/deliveryhero/armor/commit/adb32bb34ea723df835bd69f8b9d84567b541f13))
+
 ## [1.21.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.21.0...@deliveryhero/armor-icons@1.21.1) (2022-03-25)
 
 
