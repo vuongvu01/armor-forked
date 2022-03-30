@@ -1,4 +1,5 @@
-import { useRootRef } from '@deliveryhero/armor-system';
+import { ChangeEvent } from 'react';
+import { useRootRef, useControlledState } from '@deliveryhero/armor-system';
 
 import { LoginPageEffectivePropsType } from '../type';
 import { RefType } from '../../../type';
@@ -32,6 +33,33 @@ export const useLoginPage = <E extends HTMLElement>(
     const innerRef = useRootRef<E>(ref);
     const isError = !!(errorEmail || errorPassword);
 
+    const [internalEmail, setInternalEmail] = useControlledState(
+        emailInputProps?.defaultValue,
+        emailInputProps?.value,
+    );
+
+    const [internalPassword, setInternalPassword] = useControlledState(
+        passwordInputProps?.defaultValue,
+        passwordInputProps?.value,
+    );
+
+    const handleSubmit = () => {
+        onSubmit?.({
+            email: internalEmail as string,
+            password: internalPassword as string,
+        });
+    };
+
+    const handleChangeEmail = (event: ChangeEvent<HTMLInputElement>) => {
+        emailInputProps?.onChange?.(event);
+        setInternalEmail(event.target.value);
+    };
+
+    const handleChangePassword = (event: ChangeEvent<HTMLInputElement>) => {
+        passwordInputProps?.onChange?.(event);
+        setInternalPassword(event.target.value);
+    };
+
     return {
         rootProps: {
             ...restProps,
@@ -41,6 +69,7 @@ export const useLoginPage = <E extends HTMLElement>(
             label: emailPlaceholder,
             wide: true,
             ...emailInputProps,
+            onChange: handleChangeEmail,
             isError,
         },
         emailFormFieldProps: {
@@ -51,6 +80,7 @@ export const useLoginPage = <E extends HTMLElement>(
             label: passwordPlaceholder,
             wide: true,
             ...passwordInputProps,
+            onChange: handleChangePassword,
             type: 'password',
             isError,
         },
@@ -61,7 +91,7 @@ export const useLoginPage = <E extends HTMLElement>(
         },
         loginButtonProps: {
             wide: true,
-            onClick: onSubmit,
+            onClick: handleSubmit,
             type: 'submit' as 'submit' | 'button' | 'reset' | undefined,
         },
         separatorTypographyProps: {

@@ -35,19 +35,25 @@ export type LoginPageEffectivePropsType = Partial<{
     /** Tells the browser where the linked document should be loaded (e.g., _self, _target, etc.) */
     registrationTarget: string;
     /** Defines the action that should be performed when the Login button is clicked */
-    onSubmit: () => void;
+    onSubmit: (data: { email: string; password: string }) => void;
     /** A node dedicated to custom SSO Option definition (e.g., one could use it to supply a GoogleLogin-type of button) */
     oAuth2Buttons: ReactNode;
     /** Set of custom props that should be passed through to the email input text input field */
-    emailInputProps: Pick<TextInputPropsType, 'error'>;
+    emailInputProps: Pick<
+        TextInputPropsType,
+        'error' | 'value' | 'defaultValue' | 'onChange'
+    >;
     /** Set of custom props that should be passed through to the password input text input field */
-    passwordInputProps: Pick<TextInputPropsType, 'error'>;
+    passwordInputProps: Pick<
+        TextInputPropsType,
+        'error' | 'value' | 'defaultValue' | 'onChange'
+    >;
     /** Error message that should be displayed below the email input field */
     errorEmail: string;
     /** Error message that should be displayed below the password input field */
     errorPassword: string;
 }> &
-    HTMLAttributes<HTMLDivElement> &
+    Omit<HTMLAttributes<HTMLDivElement>, 'onSubmit'> &
     MarginPropsType;
 
 export type LoginPagePropsType = LoginPageEffectivePropsType &
