@@ -65,6 +65,6 @@ describe('<TableHeadCell />', () => {
 
     it('should support padding properties', async () => {
         // @ts-ignore
-        expect(TableHeadCell).toSupportPaddingAttributes();
+        expect(TableHeadCell).toSupportPaddingProps();
     });
 });

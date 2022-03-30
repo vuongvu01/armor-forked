@@ -36,6 +36,6 @@ describe('<TextInput />', () => {
 
     it('should support width properties', async () => {
         // @ts-ignore
-        expect(TextInput).toSupportWidthAttributes();
+        expect(TextInput).toSupportWidthProps();
     });
 });

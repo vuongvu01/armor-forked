@@ -17,11 +17,11 @@ describe('<Pack />', () => {
 
     it('should support padding properties', async () => {
         // @ts-ignore
-        expect(PackItem).toSupportPaddingAttributes();
+        expect(PackItem).toSupportPaddingProps();
     });
 
     it('should support width properties', async () => {
         // @ts-ignore
-        expect(PackItem).toSupportWidthAttributes();
+        expect(PackItem).toSupportWidthProps();
     });
 });

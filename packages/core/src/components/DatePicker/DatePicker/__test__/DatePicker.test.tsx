@@ -73,7 +73,7 @@ describe('<DatePicker />', () => {
 
     it('should support width properties', async () => {
         // @ts-ignore
-        expect(DatePicker).toSupportWidthAttributes();
+        expect(DatePicker).toSupportWidthProps();
     });
 
     it('should support onDayMouseEnter()', async () => {

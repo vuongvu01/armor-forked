@@ -68,6 +68,6 @@ describe('<TableControllerCell />', () => {
 
     it('should support padding properties', async () => {
         // @ts-ignore
-        expect(TableControllerCell).toSupportPaddingAttributes();
+        expect(TableControllerCell).toSupportPaddingProps();
     });
 });

@@ -58,7 +58,7 @@ describe('<Navigation />', () => {
 
     it('should support width properties', async () => {
         // @ts-ignore
-        expect(Navigation).toSupportWidthAttributes();
+        expect(Navigation).toSupportWidthProps();
     });
 
     it('should call onElementClick', async () => {

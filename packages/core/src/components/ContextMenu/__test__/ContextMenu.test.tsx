@@ -78,13 +78,13 @@ describe('<ContextMenu />', () => {
     // todo: fix (need to pass "open" prop)
     it.skip('should support width properties', async () => {
         // @ts-ignore
-        expect(ContextMenu).toSupportWidthAttributes();
+        expect(ContextMenu).toSupportWidthProps();
     });
 
     // todo: fix (need to pass "open" prop)
     it.skip('should support height properties', async () => {
         // @ts-ignore
-        expect(ContextMenu).toSupportHeightAttributes();
+        expect(ContextMenu).toSupportHeightProps();
     });
 
     it('should support onMenuElementSelect', async () => {

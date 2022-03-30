@@ -2,15 +2,12 @@
 import React, { useRef } from 'react';
 
 import { cleanup, render } from '@testing-library/react';
-import {
-    cleanup as cleanupHooks,
-    renderHook,
-} from '@testing-library/react-hooks';
+import { cleanup as cleanupHooks } from '@testing-library/react-hooks';
 import { ActionSheet } from '..';
 
 describe('<ActionSheet />', () => {
     afterEach(async () => {
-        cleanup();
+        await cleanup();
         await cleanupHooks();
     });
 
@@ -23,14 +20,13 @@ describe('<ActionSheet />', () => {
         // @ts-ignore
         expect(result.container).toHaveBEMStructure('ActionSheet', {
             Root: [],
+            LabelContainer: [],
         });
     });
 
     it('should support forwardRef', () => {
-        const { result } = renderHook(() => useRef(null));
-        render(<ActionSheet ref={result.current} />);
-
-        expect(result.current.current).toBeInstanceOf(HTMLElement);
+        // @ts-ignore
+        expect(ActionSheet).toSupportRefForwarding();
     });
 
     it('should support rest props forwarding', async () => {
@@ -48,6 +44,11 @@ describe('<ActionSheet />', () => {
     it('should support margin properties', async () => {
         // @ts-ignore
         expect(ActionSheet).toSupportMarginProps();
+    });
+
+    it('should support width properties', async () => {
+        // @ts-ignore
+        expect(ActionSheet).toSupportWidthProps();
     });
 
     it('should forward correct properties', async () => {

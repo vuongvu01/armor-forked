@@ -6,7 +6,7 @@ const { renderJSON } = require('../../src/helpers/renderJSON');
 const UNNATURAL_VALUE = 999;
 
 expect.extend({
-    toSupportWidthAttributes(Component) {
+    toSupportWidthProps(Component) {
         let tree = renderJSON(Component, {
             width: UNNATURAL_VALUE,
             maxWidth: UNNATURAL_VALUE,

@@ -95,7 +95,7 @@ describe('<Button />', () => {
 
     it('should support width properties', async () => {
         // @ts-ignore
-        expect(Button).toSupportWidthAttributes();
+        expect(Button).toSupportWidthProps();
     });
 
     it('should support margin properties', async () => {
@@ -105,6 +105,6 @@ describe('<Button />', () => {
 
     it('should support padding properties', async () => {
         // @ts-ignore
-        expect(Button).toSupportPaddingAttributes();
+        expect(Button).toSupportPaddingProps();
     });
 });

@@ -79,7 +79,7 @@ describe('<TableRow />', () => {
 
     it('should support height properties', async () => {
         // @ts-ignore
-        expect(TableRow).toSupportHeightAttributes(
+        expect(TableRow).toSupportHeightProps(
             'TableRowRoot',
             (children: ReactChildren) => (
                 <table>
