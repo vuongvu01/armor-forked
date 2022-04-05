@@ -7,48 +7,48 @@ import {
     cleanup as cleanupHooks,
 } from '@testing-library/react-hooks';
 
-import { FileCard } from '..';
+import { Switch } from '..';
 
-describe('<FileCard />', () => {
+describe('<Switch />', () => {
     afterEach(async () => {
         await cleanup();
         await cleanupHooks();
     });
 
+    it('should render itself without errors', async () => {
+        render(<Switch />);
+    });
+
     it('should contain correct CSS classes and properties', () => {
-        const result = render(<FileCard />);
+        const result = render(<Switch />);
         // @ts-ignore
-        expect(result.container).toHaveBEMStructure('FileCard', {
+        expect(result.container).toHaveBEMStructure('Switch', {
             Root: [],
         });
     });
 
     it('should support forwardRef', () => {
         // @ts-ignore
-        expect(FileCard).toSupportRefForwarding();
+        expect(Switch).toSupportRefForwarding();
+    });
+
+    it('should support custom theme', () => {
+        // @ts-ignore
+        expect(<Switch>Hello</Switch>).toSupportOverride('Switch');
     });
 
     it('should support rest props forwarding', async () => {
         // @ts-ignore
-
-        expect(FileCard).toSupportRestPropsForwarding('FileCard');
-    });
-
-    it('should support component override', () => {
-        // @ts-ignore
-
-        expect(<FileCard>Hello</FileCard>).toSupportOverride('FileCard');
+        expect(Switch).toSupportRestPropsForwarding('Switch');
     });
 
     it('should support margin properties', async () => {
         // @ts-ignore
-
-        expect(FileCard).toSupportMarginProps();
+        expect(Switch).toSupportMarginProps();
     });
 
-    it('should forward correct properties', async () => {
+    it('should forward correct attributes', async () => {
         // @ts-ignore
-
-        expect(FileCard).toSupportAttributeForwarding();
+        expect(Switch).toSupportAttributeForwarding();
     });
 });

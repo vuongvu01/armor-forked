@@ -12,6 +12,7 @@ type SwitchEffectivePropsType = Partial<{
     label: ReactNode;
 }> &
     InputHTMLAttributes<HTMLInputElement> &
+    Omit<InputHTMLAttributes<HTMLLabelElement>, 'onChange'> &
     MarginPropsType;
 
 export type SwitchPropsType = SwitchEffectivePropsType;
@@ -19,7 +20,9 @@ export type SwitchPropsType = SwitchEffectivePropsType;
 export type SwitchRootPropsType = {
     disabled?: boolean;
     reallyChecked?: boolean;
-} & ComponentElementStylePropsType;
+} & InputHTMLAttributes<HTMLLabelElement> &
+    ComponentElementStylePropsType &
+    MarginPropsType;
 
 export type SwitchTogglePropsType = PointerEventsPropsType &
     ComponentElementStylePropsType;

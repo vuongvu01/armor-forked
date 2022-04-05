@@ -13,7 +13,6 @@ import { StepperRoot } from './style';
  */
 export const Stepper = forwardRef<HTMLDivElement, StepperPropsType>(
     function Stepper({ className, ...restProps }, ref) {
-        const theme = useTheme().armor;
         const { contextValue, rootProps } = useStepper(restProps, ref);
         const classNameRoot = useStepperClassNames(
             STEPPER_CLASS_PREFIX,

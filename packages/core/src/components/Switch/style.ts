@@ -6,6 +6,7 @@ import {
     propsBlocker,
     getFocusStyleFromColor,
     transition,
+    marginProps,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -44,6 +45,7 @@ export const SwitchRoot = styled.label.withConfig(
     align-items: center;
     ${getComponentOverride('Switch')};
     ${mouseCursor};
+    ${marginProps};
 `;
 
 export const SwitchToggle = styled.span.withConfig(

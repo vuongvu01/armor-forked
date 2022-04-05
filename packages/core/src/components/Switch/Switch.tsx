@@ -1,32 +1,26 @@
-import React, { forwardRef, useCallback, useMemo, useState } from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { generateId } from '@deliveryhero/armor-system';
 
 import { SelectorLabel } from '../SelectorLabel';
 import { useSwitchClassName } from './hooks/useSwitchClassName';
+import { useSwitch } from './hooks/useSwitch';
 import { SwitchCheckboxInput, SwitchRoot, SwitchToggle } from './style';
 import { SwitchPropsType } from './type';
-import { SWITCH_CLASS_PREFIX, switchIdPrefix } from './constants';
+import { SWITCH_CLASS_PREFIX } from './constants';
 
 /**
  * @armor-docs-component
  */
 export const Switch = forwardRef<HTMLInputElement, SwitchPropsType>(
-    function Switch(
-        {
-            checked,
-            defaultChecked,
-            className,
-            disabled,
-            error,
-            id: propsId,
+    function Switch({ className, ...props }, ref) {
+        const {
+            rootProps,
+            switchInputProps,
+            selectorLabelProps,
             label,
-            onChange,
-            ...restProps
-        },
-        ref,
-    ) {
-        const id = generateId(propsId, switchIdPrefix);
+            disabled,
+            checked,
+        } = useSwitch<HTMLInputElement>(props, ref);
 
         const classOverride = useSwitchClassName(
             SWITCH_CLASS_PREFIX,
@@ -35,59 +29,18 @@ export const Switch = forwardRef<HTMLInputElement, SwitchPropsType>(
             checked,
         );
 
-        // todo: clear up this mess with nativelyChecked and reallyChecked, use useControlledState() hook instead
-        const [nativelyChecked, setNativelyChecked] = useState<boolean>(
-            checked !== undefined ? !!checked : !!defaultChecked,
-        );
-        // // if checked is set, we consider the controlled mode, otherwise look at the native check/uncheck
-        const reallyChecked = checked !== undefined ? checked : nativelyChecked;
-
-        const handleOnChange = useCallback(
-            (event: React.ChangeEvent<HTMLInputElement>) => {
-                if (onChange) {
-                    onChange(event);
-                }
-
-                setNativelyChecked(event.target.checked);
-            },
-            [onChange, setNativelyChecked],
-        );
-
-        // this is only here to force SelectorLabel to use Typography
-        // todo: consider deprecating SelectorLabel in favour of a wrapping component around Checkbox/Radio
-        const typographyProps = useMemo(
-            () => ({ paragraph: true, large: true }),
-            [],
-        );
-
         return (
-            <SwitchRoot
-                disabled={disabled}
-                htmlFor={id}
-                className={classOverride.Root}
-                reallyChecked={reallyChecked}
-            >
+            <SwitchRoot className={classOverride.Root} {...rootProps}>
                 <SwitchCheckboxInput
-                    {...restProps}
-                    checked={checked}
-                    defaultChecked={defaultChecked}
-                    disabled={disabled}
-                    id={id}
-                    onChange={handleOnChange}
-                    ref={ref}
-                    type="checkbox"
                     className={classOverride.CheckboxInput}
+                    {...switchInputProps}
                 />
                 <SwitchToggle
                     className={classOverride.Label}
                     disabled={disabled}
                 />
                 {!!label && (
-                    <SelectorLabel
-                        disabled={disabled}
-                        error={error}
-                        typographyProps={typographyProps}
-                    >
+                    <SelectorLabel {...selectorLabelProps}>
                         {label}
                     </SelectorLabel>
                 )}

@@ -1,7 +1,6 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { TickThickIcon } from '@deliveryhero/armor-icons';
-import { useTheme } from '@deliveryhero/armor-system';
 
 import { Pack, PackItem } from '../../Pack';
 import { StepPropsType, StepperPieceVariant } from './type';
@@ -25,7 +24,6 @@ export const Step = forwardRef<HTMLDivElement, StepPropsType>(function Step(
     { className, ...restProps },
     ref,
 ) {
-    const theme = useTheme().armor;
     const {
         variant,
         rootProps,

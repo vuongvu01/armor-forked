@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { useRef } from 'react';
 
-import { fireEvent, cleanup, render } from '@testing-library/react';
+import { cleanup, render } from '@testing-library/react';
 import {
     renderHook,
     cleanup as cleanupHooks,
@@ -54,16 +54,5 @@ describe('<FileUploader />', () => {
     it('should forward correct attributes', async () => {
         // @ts-ignore
         expect(FileUploader).toSupportAttributeForwarding();
-    });
-
-    it('should trigger onFilesSelectMock event when select new file', () => {
-        const onFilesSelectMock = jest.fn();
-        const { getByTestId } = render(
-            <FileUploader onFilesSelect={onFilesSelectMock} />,
-        );
-
-        const fileUploadInput = getByTestId('FileUploadButton-Input');
-        fireEvent.change(fileUploadInput, { target: { files: [] } });
-        expect(onFilesSelectMock).toHaveBeenCalledTimes(1);
     });
 });

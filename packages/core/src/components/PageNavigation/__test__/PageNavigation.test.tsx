@@ -1,4 +1,4 @@
-/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable import/no-extraneous-dependencies, @typescript-eslint/no-non-null-assertion  */
 
 /**
  * https://github.com/sapegin/jest-cheat-sheet
