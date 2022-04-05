@@ -3,14 +3,14 @@
 import React from 'react';
 import { cleanup, render } from '@testing-library/react';
 
-import { FormFieldMessage } from '../../../index';
+import { FormFieldTooltip } from '../../../index';
 
-describe('<FormFieldMessage />', () => {
+describe('<FormFieldTooltip />', () => {
     afterEach(async () => {
-        cleanup();
+        await cleanup();
     });
 
     it('should render itself without errors', async () => {
-        render(<FormFieldMessage />);
+        render(<FormFieldTooltip />);
     });
 });
