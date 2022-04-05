@@ -1,4 +1,3 @@
-const React = require('react');
 const { makeTheme } = require('@deliveryhero/armor-system');
 
 const { renderJSON } = require('../../src/helpers/renderJSON');

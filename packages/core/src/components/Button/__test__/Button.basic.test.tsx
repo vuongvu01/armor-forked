@@ -1,18 +1,14 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
-import React, { useRef } from 'react';
+import React from 'react';
 import { cleanup, render } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import {
-    renderHook,
-    cleanup as cleanupHooks,
-} from '@testing-library/react-hooks';
+import { cleanup as cleanupHooks } from '@testing-library/react-hooks';
 
 import { Button } from '../..';
 
 describe('<Button />', () => {
     afterEach(async () => {
-        cleanup();
+        await cleanup();
         await cleanupHooks();
     });
 
@@ -58,39 +54,21 @@ describe('<Button />', () => {
         });
     });
 
+    it('should support forwardRef', () => {
+        // @ts-ignore
+        expect(Button).toSupportRefForwarding();
+    });
+
+    it('should support rest props forwarding', async () => {
+        // @ts-ignore
+        expect(Button).toSupportRestPropsForwarding('Button');
+    });
+
     it('should support component override', () => {
         expect(
             <Button>With custom theme</Button>,
             // @ts-ignore
         ).toSupportOverride('Button');
-    });
-
-    it('should render itself as different kind of tag', () => {
-        const result = render(<Button tag="a" href="https://google.com" />);
-        const element = result.container.querySelector('.Button-Root');
-        expect(element).toBeInstanceOf(HTMLAnchorElement);
-        expect(element).toHaveAttribute('href', 'https://google.com');
-    });
-
-    it('should support button properties', () => {
-        let result = render(<Button disabled />);
-        let element = result.container.querySelector('.Button-Root');
-        expect(element).toBeInstanceOf(HTMLButtonElement);
-        expect(element).toBeDisabled();
-
-        const onClick = jest.fn();
-        result = render(<Button onClick={onClick} type="submit" />);
-        element = result.container.querySelector('.Button-Root');
-        userEvent.click(element!);
-        expect(onClick).toHaveBeenCalled();
-        expect(element).toHaveAttribute('type', 'submit');
-    });
-
-    it('should support forwardRef', () => {
-        const { result } = renderHook(() => useRef<HTMLButtonElement>(null));
-        render(<Button ref={result.current} />);
-
-        expect(result.current.current).toBeInstanceOf(HTMLButtonElement);
     });
 
     it('should support width properties', async () => {

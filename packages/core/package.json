@@ -20,6 +20,7 @@
         "build:cjs": "rm -rf ./build.cjs/* && tsc -p ./tsconfig.build.cjs.json",
         "build:watch": "tsc -w -p ./tsconfig.build.cjs.json",
         "test": "jest -c ./jest/config.js --passWithNoTests",
+        "test:cache:clear": "jest -c ./jest/config.js --clearCache",
         "test:local": "yarn test --runInBand",
         "test:visual": "cd ./visual && yarn loki test ",
         "test:visual:update": "cd ./visual && yarn loki update",

@@ -6,6 +6,7 @@ expect.extend({
     toSupportRestPropsForwarding(Component, rootNodeName, wrapper = null) {
         const component = React.createElement(Component, {
             'data-surprise': "i've got a present for you",
+            className: 'Hello',
         });
         const { container } = render(wrapper ? wrapper(component) : component);
 
@@ -15,6 +16,10 @@ expect.extend({
         expect(root).toHaveAttribute(
             'data-surprise',
             "i've got a present for you",
+        );
+
+        expect(Array.from(root.classList)).toEqual(
+            expect.arrayContaining(['Hello']),
         );
 
         return {

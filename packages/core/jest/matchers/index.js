@@ -10,3 +10,5 @@ require('./toSupportOverride');
 require('./toHaveChildrenWithClassNames');
 require('./toSupportAttributeForwarding');
 require('./toSupportRefForwarding');
+require('./toSupportDisplayProps');
+require('./toSupportTextAlignmentProps');
