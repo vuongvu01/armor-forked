@@ -44,17 +44,17 @@ describe('<Container />', () => {
 
     it('should support width properties', async () => {
         // @ts-ignore
-        expect(Container).toSupportWidthAttributes();
+        expect(Container).toSupportWidthProps();
     });
 
     it('should support height properties', async () => {
         // @ts-ignore
-        expect(Container).toSupportHeightAttributes();
+        expect(Container).toSupportHeightProps();
     });
 
     it('should support padding properties', async () => {
         // @ts-ignore
-        expect(Container).toSupportPaddingAttributes();
+        expect(Container).toSupportPaddingProps();
     });
 
     it('should support margin properties', async () => {

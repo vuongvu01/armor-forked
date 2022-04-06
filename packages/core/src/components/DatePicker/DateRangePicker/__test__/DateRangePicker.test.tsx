@@ -70,7 +70,7 @@ describe('<DateRangePicker />', () => {
 
     it('should support width properties', async () => {
         // @ts-ignore
-        expect(DateRangePicker).toSupportWidthAttributes();
+        expect(DateRangePicker).toSupportWidthProps();
     });
 
     // it('should support controlled/uncontrolled value', async () => {

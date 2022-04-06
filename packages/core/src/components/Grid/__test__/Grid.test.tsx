@@ -29,11 +29,11 @@ describe('<Grid />', () => {
 
     it('should support height properties', async () => {
         // @ts-ignore
-        expect(Grid).toSupportHeightAttributes();
+        expect(Grid).toSupportHeightProps();
     });
 
     it('should support width properties', async () => {
         // @ts-ignore
-        expect(Grid).toSupportWidthAttributes();
+        expect(Grid).toSupportWidthProps();
     });
 });

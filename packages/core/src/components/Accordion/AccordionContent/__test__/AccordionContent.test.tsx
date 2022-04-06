@@ -22,7 +22,7 @@ describe('<AccordionContent />', () => {
 
     it('should support padding properties', async () => {
         // @ts-ignore
-        expect(AccordionContent).toSupportPaddingAttributes();
+        expect(AccordionContent).toSupportPaddingProps();
     });
 
     it('should support forwardRef', () => {

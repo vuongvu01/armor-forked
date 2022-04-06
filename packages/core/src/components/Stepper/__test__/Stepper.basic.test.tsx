@@ -7,48 +7,43 @@ import {
     cleanup as cleanupHooks,
 } from '@testing-library/react-hooks';
 
-import { FileCard } from '..';
+import { Stepper } from '..';
 
-describe('<FileCard />', () => {
+describe('<Stepper />', () => {
     afterEach(async () => {
         await cleanup();
         await cleanupHooks();
     });
 
+    it('should render itself without errors', async () => {
+        render(<Stepper />);
+    });
+
     it('should contain correct CSS classes and properties', () => {
-        const result = render(<FileCard />);
+        const result = render(<Stepper />);
         // @ts-ignore
-        expect(result.container).toHaveBEMStructure('FileCard', {
+        expect(result.container).toHaveBEMStructure('Stepper', {
             Root: [],
         });
     });
 
     it('should support forwardRef', () => {
         // @ts-ignore
-        expect(FileCard).toSupportRefForwarding();
+        expect(Stepper).toSupportRefForwarding();
     });
 
     it('should support rest props forwarding', async () => {
         // @ts-ignore
-
-        expect(FileCard).toSupportRestPropsForwarding('FileCard');
-    });
-
-    it('should support component override', () => {
-        // @ts-ignore
-
-        expect(<FileCard>Hello</FileCard>).toSupportOverride('FileCard');
+        expect(Stepper).toSupportRestPropsForwarding('Stepper');
     });
 
     it('should support margin properties', async () => {
         // @ts-ignore
-
-        expect(FileCard).toSupportMarginProps();
+        expect(Stepper).toSupportMarginProps();
     });
 
-    it('should forward correct properties', async () => {
+    it('should forward correct attributes', async () => {
         // @ts-ignore
-
-        expect(FileCard).toSupportAttributeForwarding();
+        expect(Stepper).toSupportAttributeForwarding();
     });
 });

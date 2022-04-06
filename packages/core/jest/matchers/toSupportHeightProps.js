@@ -6,7 +6,7 @@ const { renderJSON } = require('../../src/helpers/renderJSON');
 const UNNATURAL_VALUE = 999;
 
 expect.extend({
-    toSupportHeightAttributes(Component, id, wrapper) {
+    toSupportHeightProps(Component, id, wrapper) {
         let tree = renderJSON(
             Component,
             {

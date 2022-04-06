@@ -26,6 +26,10 @@ const assertFailInvalidMargin = {
         )}`,
 };
 
+/**
+ * @deprecated
+ * @use toSupportMarginProps()
+ */
 expect.extend({
     toSupportMarginAttribute(componentJSON, marginAttribute, marginValue) {
         if (!marginProps.includes(marginAttribute)) {

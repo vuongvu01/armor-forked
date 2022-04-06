@@ -3,7 +3,7 @@ import {
     muiSpacing,
     muiTypography,
 } from '@gannochenko/ui.styled-components';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Grid } from '@material-ui/core';
 import { Link } from '../Link';
 
@@ -11,6 +11,7 @@ export const StoryComponentLink = styled(Link)`
     ${muiTypography('body1')};
     display: block;
     margin-bottom: ${muiSpacing(2)};
+    text-decoration: unset;
 `;
 
 export const StoryStoryLink = styled(Link)`
@@ -18,6 +19,13 @@ export const StoryStoryLink = styled(Link)`
     display: block;
     margin-bottom: ${muiSpacing(2)};
     margin-left: ${muiSpacing(4)};
+    text-decoration: unset;
+
+    ${(p) =>
+        p.isActive &&
+        css`
+            font-weight: bold;
+        `}
 `;
 
 export const StoryPageContainer = styled(Grid)`

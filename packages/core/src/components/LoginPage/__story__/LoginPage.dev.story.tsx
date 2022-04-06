@@ -1,6 +1,5 @@
-/* eslint-disable no-console,import/no-unresolved */
-import React from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
+/* eslint-disable no-console,import/no-unresolved, import/no-extraneous-dependencies */
+import React, { useState } from 'react';
 import GoogleLogin, {
     GoogleLoginResponse,
     GoogleLoginResponseOffline,
@@ -33,7 +32,11 @@ export const Default = () => {
     );
 };
 
-export const WithForm = () => {
+export const WithFormUncontrolled = () => {
+    const handleClickSubmit = (data: { email: string; password: string }) => {
+        console.log(data);
+    };
+
     return (
         <LoginPage
             enableLoginForm
@@ -43,6 +46,40 @@ export const WithForm = () => {
             registrationTarget="_blank"
             enableRegistration
             oAuth2Buttons="Sign in button placeholder"
+            onSubmit={handleClickSubmit}
+        />
+    );
+};
+
+export const WithFormControlled = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleClickSubmit = () => {
+        console.log({
+            email,
+            password,
+        });
+    };
+
+    return (
+        <LoginPage
+            enableLoginForm
+            header="LOGO"
+            title="Your product name"
+            registrationHref={dhURL}
+            registrationTarget="_blank"
+            enableRegistration
+            oAuth2Buttons="Sign in button placeholder"
+            onSubmit={handleClickSubmit}
+            emailInputProps={{
+                value: email,
+                onChange: (e) => setEmail(e.target.value),
+            }}
+            passwordInputProps={{
+                value: password,
+                onChange: (e) => setPassword(e.target.value),
+            }}
         />
     );
 };

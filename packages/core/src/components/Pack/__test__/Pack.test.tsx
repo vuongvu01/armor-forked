@@ -70,11 +70,11 @@ describe('<Pack />', () => {
 
     it('should support width properties', async () => {
         // @ts-ignore
-        expect(Pack).toSupportWidthAttributes();
+        expect(Pack).toSupportWidthProps();
     });
 
     it('should support height properties', async () => {
         // @ts-ignore
-        expect(Pack).toSupportHeightAttributes();
+        expect(Pack).toSupportHeightProps();
     });
 });

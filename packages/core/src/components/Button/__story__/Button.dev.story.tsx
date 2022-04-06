@@ -162,8 +162,6 @@ export const AsLink = () => (
     </>
 );
 
-type ButtonTagType = string | ComponentType<any>;
-
 export const Comparison = () => (
     // <div style={{ display: 'flex' }}>
     <div>

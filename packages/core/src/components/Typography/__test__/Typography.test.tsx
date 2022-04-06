@@ -49,7 +49,7 @@ describe('<Typography />', () => {
 
     it('should support color properties', async () => {
         // @ts-ignore
-        expect(Typography).toSupportColorAttributes();
+        expect(Typography).toSupportColorProps();
     });
 
     it('should forward correct properties', async () => {

@@ -14,6 +14,11 @@ import {
 } from './style';
 import { prepareNavigation } from './utils/prepareNavigation';
 import { StoryPageContent } from './StoryPageContent';
+import {
+    checkLinkActive,
+    checkComponentActive,
+    sortActiveStory,
+} from './utils/sortActiveStory';
 
 export const StoryPageLayout: FC<StoryPageLayoutPropsType> = (props) => {
     const {
@@ -51,26 +56,37 @@ export const StoryPageLayout: FC<StoryPageLayoutPropsType> = (props) => {
                         <StoryPageContainer container spacing={3} wrap="nowrap">
                             <StoryPageSidePanel item xs={3}>
                                 <Box padding={5} paddingRight={0}>
-                                    {structure.map(({ name, url, stories }) => (
-                                        <Fragment key={name}>
-                                            <StoryComponentLink to={url}>
-                                                {name}
-                                            </StoryComponentLink>
-                                            {stories.map(
-                                                ({
-                                                    name: storyName,
-                                                    url: storyURL,
-                                                }) => (
-                                                    <StoryStoryLink
-                                                        to={storyURL}
-                                                        key={`${name}_${storyName}`}
-                                                    >
-                                                        {storyName}
-                                                    </StoryStoryLink>
-                                                ),
-                                            )}
-                                        </Fragment>
-                                    ))}
+                                    {structure
+                                        .sort(sortActiveStory)
+                                        .map(({ name, url, stories }) => (
+                                            <Fragment key={name}>
+                                                <StoryComponentLink to={url}>
+                                                    {name}
+                                                </StoryComponentLink>
+                                                {stories.map(
+                                                    ({
+                                                        name: storyName,
+                                                        url: storyURL,
+                                                    }) => (
+                                                        <StoryStoryLink
+                                                            to={storyURL}
+                                                            isActive={checkLinkActive(
+                                                                storyURL,
+                                                            )}
+                                                            key={`${name}_${storyName}`}
+                                                        >
+                                                            {checkLinkActive(
+                                                                storyURL,
+                                                            ) && '→ '}
+                                                            {storyName}
+                                                        </StoryStoryLink>
+                                                    ),
+                                                )}
+                                                {checkComponentActive({
+                                                    stories,
+                                                }) && <hr />}
+                                            </Fragment>
+                                        ))}
                                 </Box>
                             </StoryPageSidePanel>
                             <Grid item xs={9}>

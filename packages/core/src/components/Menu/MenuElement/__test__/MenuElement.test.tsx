@@ -68,7 +68,7 @@ describe('<MenuElement />', () => {
 
     it('should support padding properties', async () => {
         // @ts-ignore
-        expect(MenuElement).toSupportPaddingAttributes();
+        expect(MenuElement).toSupportPaddingProps();
     });
 
     it('should render itself as different kind of tag', () => {

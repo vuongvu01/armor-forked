@@ -27,14 +27,14 @@ describe('<Card />', () => {
 
     it('should support padding properties', async () => {
         // @ts-ignore
-        expect(Card).toSupportPaddingAttributes();
+        expect(Card).toSupportPaddingProps();
     });
 
     it('should support size properties', async () => {
         // @ts-ignore
-        expect(Card).toSupportHeightAttributes();
+        expect(Card).toSupportHeightProps();
         // @ts-ignore
-        expect(Card).toSupportWidthAttributes();
+        expect(Card).toSupportWidthProps();
     });
 
     it('should support forwardRef', () => {

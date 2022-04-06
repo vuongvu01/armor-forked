@@ -1,4 +1,3 @@
-const React = require('react');
 const { makeTheme } = require('@deliveryhero/armor-system');
 
 const { renderJSON } = require('../../src/helpers/renderJSON');
@@ -6,7 +5,7 @@ const { renderJSON } = require('../../src/helpers/renderJSON');
 const theme = makeTheme().armor;
 
 expect.extend({
-    toSupportColorAttributes(Component) {
+    toSupportColorProps(Component) {
         const colorA = '#aabbcc';
         const colorB = '#ccbbaa';
 

@@ -85,22 +85,22 @@ describe('<TableCell />', () => {
 
     it('should support padding properties', async () => {
         // @ts-ignore
-        expect(TableCell).toSupportPaddingAttributes();
+        expect(TableCell).toSupportPaddingProps();
     });
 
     it('should support width properties', async () => {
         // @ts-ignore
-        expect(TableCell).toSupportWidthAttributes();
+        expect(TableCell).toSupportWidthProps();
     });
 
     it('should support height properties', async () => {
         // @ts-ignore
-        expect(TableCell).toSupportHeightAttributes();
+        expect(TableCell).toSupportHeightProps();
     });
 
     it('should support color properties', async () => {
         // @ts-ignore
-        expect(TableCell).toSupportColorAttributes();
+        expect(TableCell).toSupportColorProps();
     });
 
     it('should have TD tag in body', async () => {

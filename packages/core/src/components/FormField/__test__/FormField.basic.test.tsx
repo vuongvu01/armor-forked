@@ -1,53 +1,48 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import React, { useRef } from 'react';
-
+import React from 'react';
 import { cleanup, render } from '@testing-library/react';
-import { cleanup as cleanupHooks } from '@testing-library/react-hooks';
-import { ActionSheet } from '..';
 
-describe('<ActionSheet />', () => {
+import { FormField } from '../..';
+
+describe('<FormField />', () => {
     afterEach(async () => {
         await cleanup();
-        await cleanupHooks();
     });
 
     it('should render itself without errors', async () => {
-        render(<ActionSheet />);
+        render(<FormField />);
     });
 
     it('should contain correct CSS classes and properties', () => {
-        const result = render(<ActionSheet />);
+        const result = render(<FormField />);
         // @ts-ignore
-        expect(result.container).toHaveBEMStructure('ActionSheet', {
+        expect(result.container).toHaveBEMStructure('FormField', {
             Root: [],
-            LabelContainer: [],
         });
     });
 
     it('should support forwardRef', () => {
         // @ts-ignore
-        expect(ActionSheet).toSupportRefForwarding();
+        expect(FormField).toSupportRefForwarding();
     });
 
     it('should support rest props forwarding', async () => {
         // @ts-ignore
-        expect(ActionSheet).toSupportRestPropsForwarding('ActionSheet');
+        expect(FormField).toSupportRestPropsForwarding('FormField');
     });
 
     it('should support component override', () => {
         // @ts-ignore
-        expect(<ActionSheet>Hello</ActionSheet>).toSupportOverride(
-            'ActionSheet',
-        );
+        expect(<FormField>Hello</FormField>).toSupportOverride('FormField');
     });
 
     it('should support margin properties', async () => {
         // @ts-ignore
-        expect(ActionSheet).toSupportMarginProps();
+        expect(FormField).toSupportMarginProps();
     });
 
     it('should support width properties', async () => {
         // @ts-ignore
-        expect(ActionSheet).toSupportWidthProps();
+        expect(FormField).toSupportWidthProps();
     });
 });

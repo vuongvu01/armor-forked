@@ -6,7 +6,7 @@ const { renderJSON } = require('../../src/helpers/renderJSON');
 const UNNATURAL_VALUE = 999;
 
 expect.extend({
-    toSupportPaddingAttributes(Component) {
+    toSupportPaddingProps(Component) {
         let tree = renderJSON(Component, {
             paddingTop: UNNATURAL_VALUE,
             paddingBottom: UNNATURAL_VALUE,
