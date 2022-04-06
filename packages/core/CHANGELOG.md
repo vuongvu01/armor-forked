@@ -1,3 +1,11 @@
+## [1.90.3](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.90.2...@deliveryhero/armor@1.90.3) (2022-04-06)
+
+
+### Bug Fixes
+
+* **dev2:** fix dev2 side view ([#926](https://github.com/deliveryhero/armor/issues/926)) ([34921af](https://github.com/deliveryhero/armor/commit/34921af5c895ce961f53029a29b3db8407a3154e))
+* **LoginPage:** LoginPage faulty API design [LD-734] ([7ef26ac](https://github.com/deliveryhero/armor/commit/7ef26acad4e7f53ad1e626fc375b0dd63a90d480))
+
 ## @deliveryhero/armor [1.90.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.90.1...@deliveryhero/armor@1.90.2) (2022-03-28)
 
 
