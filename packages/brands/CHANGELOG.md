@@ -1,3 +1,13 @@
+## @deliveryhero/armor-brands [1.10.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-brands@1.10.1...@deliveryhero/armor-brands@1.10.2) (2022-04-06)
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor:** upgraded to 1.90.3
+
 ## [1.10.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-brands@1.10.0...@deliveryhero/armor-brands@1.10.1) (2022-03-28)
 
 
