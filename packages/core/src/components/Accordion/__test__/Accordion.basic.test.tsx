@@ -4,48 +4,48 @@ import React from 'react';
 import { cleanup, render } from '@testing-library/react';
 import { cleanup as cleanupHooks } from '@testing-library/react-hooks';
 
-import { Switch } from '..';
+import { Accordion } from '..';
 
-describe('<Switch />', () => {
+describe('<Accordion />', () => {
     afterEach(async () => {
         await cleanup();
         await cleanupHooks();
     });
 
     it('should render itself without errors', async () => {
-        render(<Switch />);
+        render(<Accordion />);
     });
 
     it('should contain correct CSS classes and properties', () => {
-        const result = render(<Switch />);
+        const result = render(<Accordion />);
         // @ts-ignore
-        expect(result.container).toHaveBEMStructure('Switch', {
+        expect(result.container).toHaveBEMStructure('Accordion', {
             Root: [],
         });
     });
 
     it('should support forwardRef', () => {
         // @ts-ignore
-        expect(Switch).toSupportRefForwarding();
-    });
-
-    it('should support custom theme', () => {
-        // @ts-ignore
-        expect(<Switch>Hello</Switch>).toSupportOverride('Switch');
+        expect(Accordion).toSupportRefForwarding();
     });
 
     it('should support rest props forwarding', async () => {
         // @ts-ignore
-        expect(Switch).toSupportRestPropsForwarding('Switch');
+        expect(Accordion).toSupportRestPropsForwarding('Accordion');
     });
 
     it('should support margin properties', async () => {
         // @ts-ignore
-        expect(Switch).toSupportMarginProps();
+        expect(Accordion).toSupportMarginProps();
+    });
+
+    it('should support width properties', async () => {
+        // @ts-ignore
+        expect(Accordion).toSupportWidthProps();
     });
 
     it('should forward correct attributes', async () => {
         // @ts-ignore
-        expect(Switch).toSupportAttributeForwarding();
+        expect(Accordion).toSupportAttributeForwarding();
     });
 });

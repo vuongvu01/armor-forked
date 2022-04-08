@@ -1,6 +1,6 @@
-/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable @typescript-eslint/no-non-null-assertion, import/no-extraneous-dependencies */
 import React from 'react';
-import { cleanup, render, wait, waitForElement } from '@testing-library/react';
+import { cleanup, render, waitFor, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderer from 'react-test-renderer';
 
@@ -15,10 +15,6 @@ describe('<Dropdown />', () => {
         cleanup();
     });
 
-    it('should render itself without errors', async () => {
-        render(<Dropdown />);
-    });
-
     it('should support onSelect with options of type string[]', async () => {
         const options = ['Red', 'Blue', 'Green'];
         const onSelect = jest.fn();
@@ -27,16 +23,20 @@ describe('<Dropdown />', () => {
             <Dropdown options={options} onSelect={onSelect} />,
         );
         const input = container.querySelector('input');
-        userEvent.click(input!);
+        act(() => {
+            userEvent.click(input!);
+        });
 
-        const elements = await waitForElement(
-            () => getAllByTestId(OPTION_LIST_ITEM),
-            { container, timeout: 1000 },
-        );
+        const elements = await waitFor(() => getAllByTestId(OPTION_LIST_ITEM), {
+            container,
+            timeout: 1000,
+        });
 
-        userEvent.click(elements[1]);
+        act(() => {
+            userEvent.click(elements[1]);
+        });
 
-        await wait(() => expect(onSelect).toHaveBeenCalledWith('Blue', 1));
+        await waitFor(() => expect(onSelect).toHaveBeenCalledWith('Blue', 1));
     });
 
     it('should support onSelect with options of type {value, label}[]', async () => {
@@ -51,16 +51,20 @@ describe('<Dropdown />', () => {
             <Dropdown options={options} onSelect={onSelect} />,
         );
         const input = container.querySelector('input');
-        userEvent.click(input!);
+        act(() => {
+            userEvent.click(input!);
+        });
 
-        const elements = await waitForElement(
-            () => getAllByTestId(OPTION_LIST_ITEM),
-            { container, timeout: 1000 },
-        );
+        const elements = await waitFor(() => getAllByTestId(OPTION_LIST_ITEM), {
+            container,
+            timeout: 1000,
+        });
 
-        userEvent.click(elements[1]);
+        act(() => {
+            userEvent.click(elements[1]);
+        });
 
-        await wait(() =>
+        await waitFor(() =>
             expect(onSelect).toHaveBeenCalledWith(
                 { value: 'b', label: 'Blue', code: 'b' },
                 1,
@@ -76,16 +80,20 @@ describe('<Dropdown />', () => {
             <Dropdown options={options} onChange={onChange} />,
         );
         const input = container.querySelector('input');
-        userEvent.click(input!);
+        act(() => {
+            userEvent.click(input!);
+        });
 
-        const elements = await waitForElement(
-            () => getAllByTestId(OPTION_LIST_ITEM),
-            { container, timeout: 1000 },
-        );
+        const elements = await waitFor(() => getAllByTestId(OPTION_LIST_ITEM), {
+            container,
+            timeout: 1000,
+        });
 
-        userEvent.click(elements[1]);
+        act(() => {
+            userEvent.click(elements[1]);
+        });
 
-        await wait(() =>
+        await waitFor(() =>
             expect(onChange).toHaveBeenCalledWith({ target: { value: 1 } }),
         );
     });
@@ -102,16 +110,20 @@ describe('<Dropdown />', () => {
             <Dropdown options={options} onChange={onChange} />,
         );
         const input = container.querySelector('input');
-        userEvent.click(input!);
+        act(() => {
+            userEvent.click(input!);
+        });
 
-        const elements = await waitForElement(
-            () => getAllByTestId(OPTION_LIST_ITEM),
-            { container, timeout: 1000 },
-        );
+        const elements = await waitFor(() => getAllByTestId(OPTION_LIST_ITEM), {
+            container,
+            timeout: 1000,
+        });
 
-        userEvent.click(elements[1]);
+        act(() => {
+            userEvent.click(elements[1]);
+        });
 
-        await wait(() =>
+        await waitFor(() =>
             expect(onChange).toHaveBeenCalledWith({ target: { value: 'B' } }),
         );
     });
@@ -128,7 +140,7 @@ describe('<Dropdown />', () => {
         );
 
         const input = container.querySelector('input');
-        await wait(() => expect(input!.value).toEqual('Blue, Green'));
+        await waitFor(() => expect(input!.value).toEqual('Blue, Green'));
     });
 
     it('should render options as Tags for multi-select', () => {
@@ -150,7 +162,7 @@ describe('<Dropdown />', () => {
         );
     });
 
-    it('should render the search option with built-in suggestions hidden', () => {
+    it('should render the search option with built-in suggestions hidden', async () => {
         const options = [
             { label: 'Red', value: 'R' },
             { label: 'Blue', value: 'B' },
@@ -167,32 +179,41 @@ describe('<Dropdown />', () => {
         );
 
         const search = getByTestId(searchRoot);
-        expect(search).toHaveClass('Search-Root--hidden_suggestions');
+
+        await waitFor(() => {
+            expect(search).toHaveClass('Search-Root--hidden_suggestions');
+        });
     });
 
-    it.skip('should render only the options that match the search query', () => {
+    it('should render only the options that match the search query', async () => {
         const options = [
             { label: 'Red', value: 'R' },
             { label: 'Blue', value: 'B' },
             { label: 'Green', value: 'G' },
         ];
 
-        const { getAllByTestId } = render(
+        const { getAllByTestId, getByPlaceholderText } = render(
             <Dropdown
                 options={options}
                 value={['B', 'G']}
                 multiple
                 enableSearchOption
                 open
-                defaultSearchQuery="gr"
             />,
         );
 
+        const searchInput = getByPlaceholderText('Search');
+        act(() => {
+            userEvent.type(searchInput, 'gr');
+        });
+
         const matchingOptions = getAllByTestId(OPTION_LIST_ITEM);
-        expect(matchingOptions.length).toEqual(1);
+        await waitFor(() => {
+            expect(matchingOptions.length).toEqual(1);
+        });
     });
 
-    it('should render the select all option with support for custom label', () => {
+    it('should render the select all option with support for custom label', async () => {
         const options = [
             { label: 'Red', value: 'R' },
             { label: 'Blue', value: 'B' },
@@ -213,7 +234,9 @@ describe('<Dropdown />', () => {
         );
 
         const selectAllOption = getByText(selectAllLabel);
-        expect(selectAllOption).toHaveClass('OptionListItem-Typography');
+        await waitFor(() => {
+            expect(selectAllOption).toHaveClass('OptionListItem-Typography');
+        });
     });
 
     it('should render custom value display', async () => {
@@ -237,7 +260,7 @@ describe('<Dropdown />', () => {
         );
 
         const input = container.querySelector('input');
-        await wait(() => expect(input!.value).toEqual('2 of 3'));
+        await waitFor(() => expect(input!.value).toEqual('2 of 3'));
     });
 
     it('should NOT change its value without onChange in controlled mode', async () => {
@@ -251,22 +274,85 @@ describe('<Dropdown />', () => {
             <Dropdown options={options} value="G" />,
         );
         const input = container.querySelector('input');
-        userEvent.click(input!);
+        act(() => {
+            userEvent.click(input!);
+        });
 
-        const elements = await waitForElement(
-            () => getAllByTestId(OPTION_LIST_ITEM),
-            { container, timeout: 1000 },
-        );
+        const elements = await waitFor(() => getAllByTestId(OPTION_LIST_ITEM), {
+            container,
+            timeout: 1000,
+        });
 
-        userEvent.click(elements[1]);
+        act(() => {
+            userEvent.click(elements[1]);
+        });
 
         const inputControl = getByTestId(textInputInput) as HTMLInputElement;
-        await wait(() => expect(inputControl.value).toEqual('Green'));
+        await waitFor(() => expect(inputControl.value).toEqual('Green'));
     });
 
-    it('should support controlled mode multiple', async () => {});
+    it('should support controlled mode multiple', async () => {
+        const options = [
+            { label: 'Red', value: 'R' },
+            { label: 'Blue', value: 'B' },
+            { label: 'Green', value: 'G' },
+        ];
 
-    it('should support uncontrolled mode', async () => {});
+        const mockOnChange = jest.fn();
+
+        const { container, getByTestId, getAllByTestId } = render(
+            <Dropdown
+                options={options}
+                multiple
+                value={[]}
+                onChange={(e) => mockOnChange(e.target.value)}
+            />,
+        );
+        const input = container.querySelector('input');
+        userEvent.click(input!);
+
+        const elements = await waitFor(() => getAllByTestId(OPTION_LIST_ITEM), {
+            container,
+            timeout: 1000,
+        });
+
+        userEvent.click(elements[1]);
+        userEvent.click(elements[2]);
+
+        const inputControl = getByTestId(textInputInput) as HTMLInputElement;
+        expect(mockOnChange).toHaveBeenCalledTimes(2);
+        expect(mockOnChange).toHaveBeenNthCalledWith(1, ['B']);
+        expect(mockOnChange).toHaveBeenNthCalledWith(2, ['G']);
+        expect(inputControl.value).toEqual('');
+    });
+
+    it('should support uncontrolled mode', async () => {
+        const options = [
+            { label: 'Red', value: 'R' },
+            { label: 'Blue', value: 'B' },
+            { label: 'Green', value: 'G' },
+        ];
+
+        const { container, getByTestId, getAllByTestId } = render(
+            <Dropdown options={options} />,
+        );
+        const input = container.querySelector('input');
+        act(() => {
+            userEvent.click(input!);
+        });
+
+        const elements = await waitFor(() => getAllByTestId(OPTION_LIST_ITEM), {
+            container,
+            timeout: 1000,
+        });
+
+        act(() => {
+            userEvent.click(elements[2]);
+        });
+
+        const inputControl = getByTestId(textInputInput) as HTMLInputElement;
+        await waitFor(() => expect(inputControl.value).toEqual('Green'));
+    });
 
     it('should support uncontrolled mode multiple', async () => {
         const options = [
@@ -281,33 +367,15 @@ describe('<Dropdown />', () => {
         const input = container.querySelector('input');
         userEvent.click(input!);
 
-        const elements = await waitForElement(
-            () => getAllByTestId(OPTION_LIST_ITEM),
-            { container, timeout: 1000 },
-        );
+        const elements = await waitFor(() => getAllByTestId(OPTION_LIST_ITEM), {
+            container,
+            timeout: 1000,
+        });
 
         userEvent.click(elements[1]);
         userEvent.click(elements[2]);
 
         const inputControl = getByTestId(textInputInput) as HTMLInputElement;
-        await wait(() => expect(inputControl.value).toEqual('Blue, Green'));
-    });
-
-    it('ensures margin* property transference', () => {
-        const marginAttribute = 'marginY';
-        const marginValue = 4;
-
-        const result = renderer
-            .create(
-                <Dropdown
-                    {...{
-                        [marginAttribute]: marginValue,
-                    }}
-                />,
-            )
-            .toJSON();
-
-        // @ts-ignore
-        expect(result).toSupportMarginAttribute(marginAttribute, marginValue);
+        await waitFor(() => expect(inputControl.value).toEqual('Blue, Green'));
     });
 });

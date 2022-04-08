@@ -19,3 +19,4 @@ export * from './useSortedList';
 export * from './useEventListener';
 export * from './useScrollToNode';
 export * from './useNavigationControl';
+export * from './useDidUpdateEffect';

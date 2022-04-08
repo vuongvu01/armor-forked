@@ -4,48 +4,53 @@ import React from 'react';
 import { cleanup, render } from '@testing-library/react';
 import { cleanup as cleanupHooks } from '@testing-library/react-hooks';
 
-import { Switch } from '..';
+import { Flex } from '..';
 
-describe('<Switch />', () => {
+describe('<Flex />', () => {
     afterEach(async () => {
         await cleanup();
         await cleanupHooks();
     });
 
     it('should render itself without errors', async () => {
-        render(<Switch />);
+        render(<Flex />);
     });
 
     it('should contain correct CSS classes and properties', () => {
-        const result = render(<Switch />);
+        const result = render(<Flex />);
         // @ts-ignore
-        expect(result.container).toHaveBEMStructure('Switch', {
+        expect(result.container).toHaveBEMStructure('Flex', {
             Root: [],
         });
     });
 
     it('should support forwardRef', () => {
         // @ts-ignore
-        expect(Switch).toSupportRefForwarding();
-    });
-
-    it('should support custom theme', () => {
-        // @ts-ignore
-        expect(<Switch>Hello</Switch>).toSupportOverride('Switch');
+        expect(Flex).toSupportRefForwarding();
     });
 
     it('should support rest props forwarding', async () => {
         // @ts-ignore
-        expect(Switch).toSupportRestPropsForwarding('Switch');
+        expect(Flex).toSupportRestPropsForwarding('Flex');
     });
 
     it('should support margin properties', async () => {
         // @ts-ignore
-        expect(Switch).toSupportMarginProps();
+        expect(Flex).toSupportMarginProps();
+    });
+
+    it('should support width properties', async () => {
+        // @ts-ignore
+        expect(Flex).toSupportWidthProps();
+    });
+
+    it('should support height properties', async () => {
+        // @ts-ignore
+        expect(Flex).toSupportHeightProps();
     });
 
     it('should forward correct attributes', async () => {
         // @ts-ignore
-        expect(Switch).toSupportAttributeForwarding();
+        expect(Flex).toSupportAttributeForwarding();
     });
 });

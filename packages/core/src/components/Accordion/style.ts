@@ -7,6 +7,7 @@ import {
     getComponentOverride,
     focus,
     transition,
+    widthProps,
 } from '@deliveryhero/armor-system';
 
 import { AccordionRootPropsType } from './type';
@@ -31,4 +32,5 @@ export const AccordionRoot = styled.div.withConfig(
     border-top-color: ${color('neutral.03')};
     ${getComponentOverride('Accordion')};
     ${marginProps};
+    ${widthProps};
 `;

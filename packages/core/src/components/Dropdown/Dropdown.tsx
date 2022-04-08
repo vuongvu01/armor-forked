@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useTheme, PortalToBody } from '@deliveryhero/armor-system';
+import { PortalToBody } from '@deliveryhero/armor-system';
 
 import { useDropdown, useDropdownClassName } from './hooks';
 import {
@@ -25,8 +25,6 @@ import { DropdownBeforeSection } from './DropdownBeforeSection';
  */
 export const Dropdown = forwardRef<HTMLInputElement, DropdownPropsType>(
     function Dropdown({ className, ...props }, ref) {
-        const theme = useTheme().armor;
-
         const {
             rootProps,
             containerProps,

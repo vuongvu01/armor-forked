@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useTheme } from '@deliveryhero/armor-system';
 
 import { useFlexItemClassName } from './utils';
 import { FlexItemPropsType } from './type';
@@ -23,7 +22,6 @@ export const FlexItem = forwardRef<HTMLDivElement, FlexItemPropsType>(
         },
         ref,
     ) {
-        const theme = useTheme().armor;
         const classOverride = useFlexItemClassName(
             FLEX_ITEM_CLASS_PREFIX,
             className,
