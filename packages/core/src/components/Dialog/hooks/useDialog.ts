@@ -165,5 +165,7 @@ export const useDialog = <E extends HTMLElement>(
 
         enableCloseButton: reallyEnableCloseButton,
         enableBackdrop: reallyEnableBackdrop,
+
+        open: !!reallyOpen,
     };
 };

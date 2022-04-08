@@ -1,16 +1,15 @@
-import React, { FunctionComponent } from 'react';
+import React, { FC } from 'react';
 
 import { useDialogContentClassName } from './utils/useDialogContentClassName';
 import { DialogContentRoot } from './style';
 import { DialogContentPropsType } from './type';
-import { DIALOG_CONTENT_CLASS_PREFIX } from './constants';
 
 const CLASS_PREFIX = 'DialogContent';
 
 /**
  * @armor-docs-component
  */
-export const DialogContent: FunctionComponent<DialogContentPropsType> = ({
+export const DialogContent: FC<DialogContentPropsType> = ({
     className,
     children,
     ...restProps

@@ -1,5 +1,4 @@
 import React, { forwardRef } from 'react';
-import PropTypes from 'prop-types';
 import { PortalToBody } from '@deliveryhero/armor-system';
 
 import { useDialogClassNames } from './hooks/useDialogClassNames';
@@ -12,11 +11,7 @@ import {
 } from './style';
 import { DialogPropsType } from './type';
 import { Backdrop } from '../Backdrop';
-import {
-    DIALOG_CLASS_PREFIX,
-    DIALOG_SCROLL_DIALOG,
-    DIALOG_SCROLL_DOCUMENT,
-} from './constants';
+import { DIALOG_CLASS_PREFIX, DIALOG_SCROLL_DIALOG } from './constants';
 import { useDialog } from './hooks/useDialog';
 
 /**
@@ -24,8 +19,6 @@ import { useDialog } from './hooks/useDialog';
  */
 export const Dialog = forwardRef<HTMLDivElement, DialogPropsType>(
     function Dialog({ className, children, ...props }, ref) {
-        const classNames = useDialogClassNames(DIALOG_CLASS_PREFIX, className);
-
         const {
             portalProps,
             rootProps,
@@ -37,7 +30,14 @@ export const Dialog = forwardRef<HTMLDivElement, DialogPropsType>(
 
             enableCloseButton,
             enableBackdrop,
+            open,
         } = useDialog<HTMLDivElement>(props, ref);
+
+        const classNames = useDialogClassNames(
+            DIALOG_CLASS_PREFIX,
+            open,
+            className,
+        );
 
         return (
             <PortalToBody {...portalProps}>
@@ -82,26 +82,4 @@ Dialog.defaultProps = {
     disableCloseButton: false,
     disableCloseByEscape: false,
     scroll: DIALOG_SCROLL_DIALOG,
-};
-
-/** Support of prop-types is here for project that don't use TypeScript */
-Dialog.propTypes = {
-    /** A flag that triggers the dialog display */
-    open: PropTypes.bool,
-    /** A flag that tells the dialog to not to show overlay (backdrop) */
-    disableOverlay: PropTypes.bool,
-    /** A flag that tells the dialog to not to run transition effects on show / hide */
-    disableEffects: PropTypes.bool,
-    /** A flag that tells the dialog to not to show the close button */
-    disableCloseButton: PropTypes.bool,
-    /** A flag that tells the dialog to disable close by Escape button */
-    disableCloseByEscape: PropTypes.bool,
-    /** Allows to switch scroll type between "dialog" and "document" */
-    scroll: PropTypes.oneOf([DIALOG_SCROLL_DIALOG, DIALOG_SCROLL_DOCUMENT]),
-    /** A callback that is called when a user tries to close the dialog */
-    onClose: PropTypes.func,
-    /** Tells the dialog to occupy the entire width of it's parent (or expand to maxWidth constraint value) */
-    wide: PropTypes.bool,
-    /** Set maximum width of the dialog basing on the current theme.breakpoints */
-    maxWidth: PropTypes.string,
 };

@@ -12,10 +12,16 @@ import { DialogTitle } from '../../../index';
 
 describe('<DialogTitle />', () => {
     afterEach(async () => {
-        cleanup();
+        await cleanup();
     });
 
-    it('should render itself without errors', async () => {
-        render(<DialogTitle />);
+    it('should support description property', () => {
+        const { container, rerender, getByText } = render(<DialogTitle />);
+        expect(
+            container.querySelector('.DialogTitle-Description'),
+        ).not.toBeInTheDocument();
+
+        rerender(<DialogTitle description="Foo" />);
+        expect(getByText('Foo')).toBeInTheDocument();
     });
 });

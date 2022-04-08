@@ -38,13 +38,9 @@ describe('<Dialog />', () => {
     });
 
     afterEach(async () => {
-        cleanup();
+        await cleanup();
         // @ts-ignore
         ReactDOM.createPortal.mockClear();
-    });
-
-    it('should render itself without errors', async () => {
-        render(<Dialog />);
     });
 
     it('should ensure that title typography is as in the spec', () => {
