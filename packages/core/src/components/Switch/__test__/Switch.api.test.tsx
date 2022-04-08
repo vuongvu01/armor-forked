@@ -18,10 +18,10 @@ describe('<Switch />', () => {
     });
 
     it('should accept defaultChecked prop and trigger onChange on click uncontrolled', async () => {
-        const mockOnchange = jest.fn();
+        const mockOnChange = jest.fn();
         const { getByText } = render(
             <Switch
-                onChange={(e) => mockOnchange(e.target.checked)}
+                onChange={(e) => mockOnChange(e.target.checked)}
                 label="switch label"
                 defaultChecked={true}
             />,
@@ -29,15 +29,15 @@ describe('<Switch />', () => {
         const switchEle = getByText('switch label');
 
         fireEvent.click(switchEle);
-        expect(mockOnchange).toHaveBeenCalledTimes(1);
-        expect(mockOnchange).toHaveBeenCalledWith(false);
+        expect(mockOnChange).toHaveBeenCalledTimes(1);
+        expect(mockOnChange).toHaveBeenCalledWith(false);
     });
 
     it('should accept checked prop and trigger onChange on click controlled', async () => {
-        const mockOnchange = jest.fn();
+        const mockOnChange = jest.fn();
         const { getByText } = render(
             <Switch
-                onChange={(e) => mockOnchange(e.target.checked)}
+                onChange={(e) => mockOnChange(e.target.checked)}
                 label="switch label"
                 checked={false}
             />,
@@ -45,15 +45,15 @@ describe('<Switch />', () => {
         const switchEle = getByText('switch label');
 
         fireEvent.click(switchEle);
-        expect(mockOnchange).toHaveBeenCalledTimes(1);
-        expect(mockOnchange).toHaveBeenCalledWith(true);
+        expect(mockOnChange).toHaveBeenCalledTimes(1);
+        expect(mockOnChange).toHaveBeenCalledWith(true);
     });
 
     it('should accept disabled prop and do not trigger onChange on click', async () => {
-        const mockOnchange = jest.fn();
+        const mockOnChange = jest.fn();
         const { getByText } = render(
             <Switch
-                onChange={(e) => mockOnchange(e.target.checked)}
+                onChange={(e) => mockOnChange(e.target.checked)}
                 label="switch label"
                 disabled
             />,
@@ -61,6 +61,6 @@ describe('<Switch />', () => {
         const switchEle = getByText('switch label');
 
         fireEvent.click(switchEle);
-        expect(mockOnchange).not.toHaveBeenCalled();
+        expect(mockOnChange).not.toHaveBeenCalled();
     });
 });

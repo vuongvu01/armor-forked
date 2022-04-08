@@ -1,5 +1,5 @@
 import { ComponentType, HTMLAttributes, ReactChild, ReactNode } from 'react';
-import { MarginPropsType } from '@deliveryhero/armor-system';
+import { MarginPropsType, WidthPropsType } from '@deliveryhero/armor-system';
 
 import {
     ComponentStylePropsType,
@@ -31,7 +31,8 @@ type MessageEffectivePropsType = Partial<{
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div properties
-    MarginPropsType;
+    MarginPropsType &
+    WidthPropsType;
 
 /* Message component prop type */
 export type MessagePropsType = MessageEffectivePropsType &
