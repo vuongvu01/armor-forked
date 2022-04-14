@@ -10,6 +10,46 @@ import { CONTEXTMENU_CLASS_PREFIX } from './constants';
 import { MenuElement } from '../Menu';
 
 /**
+ * # ContextMenu
+ *
+ * Use them to show additional options and when you run out of space.
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/9007ed-context-menu/b/36609d)
+ *
+ * ## Examples
+ *
+ * ***
+ *
+ * ```
+ * import { ContextMenu, IconButton } from '@deliveryhero/armor';
+ * import { EllipsisVerticalIcon } from '@deliveryhero/armor-icons';
+ *
+ * <ContextMenu
+ *     trigger={
+ *         <IconButton>
+ *             <EllipsisVerticalIcon large />
+ *         </IconButton>
+ *     }
+ *     menuElements={[
+ *         {
+ *             id: 'save',
+ *             label: 'Save',
+ *             props: {
+ *                 onClick: () => alert('Saving'),
+ *             },
+ *         },
+ *         {
+ *             id: 'del',
+ *             label: 'Delete',
+ *             props: {
+ *                 onClick: () => alert('Delete'),
+ *             },
+ *         },
+ *     ]}
+ * />
+ * ```
+ * ***
+ *
  * @armor-docs-component
  */
 export const ContextMenu = forwardRef<HTMLDivElement, ContextMenuPropsType>(

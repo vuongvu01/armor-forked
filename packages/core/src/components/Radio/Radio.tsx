@@ -10,6 +10,40 @@ import { RadioPropsType } from './type';
 import { RADIO_CLASS_PREFIX, radioIdPrefix, radioRoot } from './constants';
 
 /**
+ * # Radio
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/0381e5-radio/b/527bb6)
+ *
+ * ## Examples
+ *
+ * ***
+ *
+ * ```
+ * import { useState } from 'react';
+ * import { Radio, RadioGroup } from '@deliveryhero/armor';
+ *
+ * const groupName = 'radioGroup';
+ * const [groupSelectedValue, setSelectedValueGroup] = useState('');
+ * const handleChange = (event) => {
+ *     const selectedValue = event.target.value;
+ *     if (selectedValue) {
+ *         setSelectedValueGroup(selectedValue);
+ *     }
+ * };
+ *
+ * <h4>Pick one of the options:</h4>
+ * <RadioGroup
+ *     name={groupName}
+ *     selectedValue={groupSelectedValue}
+ *     onChange={handleChange}
+ * >
+ *     <Radio value="pizza">Pizza</Radio>
+ *     <Radio value="pasta">Pasta</Radio>
+ *     <Radio value="risotto">Risotto</Radio>
+ * </RadioGroup>
+ * ```
+ * ***
+ *
  * @armor-docs-component
  */
 export const Radio = forwardRef<HTMLDivElement, RadioPropsType>(function Radio(

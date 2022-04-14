@@ -12,6 +12,39 @@ import {
 import { ContentSwitcherContext } from './ContentSwitcherContext';
 
 /**
+ * # ContentSwitcher
+ *
+ * These are used to display mutually related group of information or tasks in one view.
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/50aa27-content-switcher/b/527bb6)
+ *
+ * ## Examples
+ *
+ * ***
+ *
+ * ```
+ * import { ContentSwitcher, ContentSwitcherControl, Typography } from '@deliveryhero/armor';
+ *
+ * <ContentSwitcher
+ *   marginBottom={4}
+ *   onSwitchNameChange={(switchName: string) => {
+ *      console.log('On switch change 2:', switchName);
+ *   }}
+ *   width={75}
+ * >
+ *   <ContentSwitcherControl switchName="1">
+ *      <Typography>Option 1</Typography>
+ *   </ContentSwitcherControl>
+ *   <ContentSwitcherControl switchName="2">
+ *      <Typography>Option 2</Typography>
+ *   </ContentSwitcherControl>
+ *   <ContentSwitcherControl switchName="3">
+ *      <Typography>Option 3</Typography>
+ *   </ContentSwitcherControl>
+ * </ContentSwitcher>
+ * ```
+ * ***
+ *
  * @armor-docs-component
  */
 export const ContentSwitcher = forwardRef<

@@ -8,6 +8,38 @@ import { LinkPropsType, LinkRootPropsType } from './type';
 import { LINK_CLASS_PREFIX } from './constants';
 
 /**
+ * # Link
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/892a25-link/b/76988e)
+ *
+ * ## Examples
+ *
+ * ***
+ *
+ * ```
+ * import { Link, Typography } from '@deliveryhero/armor';
+ * import { MapIcon } from '@deliveryhero/armor-icons';
+ *
+ * <Link small>Small</Link>
+ * <Link medium>Medium</Link>
+ * <Link large>Large</Link>
+ * <Link large>Large</Link>
+ * <Link disabled>Disabled</Link>
+ * <Link underline>Underlined</Link>
+ * <Link>
+ *     <MapIcon marginRight={2}></MapIcon>
+ *     With icon
+ * </Link>
+ * <Typography>
+ *     Please follow the <Link>link</Link> to find out more Go to{' '}
+ *     <Link href="https://www.deliveryhero.com" target="_blank">
+ *         DeliveryHero
+ *     </Link>{' '}
+ *     to find out more
+ * </Typography>
+ * ```
+ * ***
+ *
  * @armor-docs-component
  */
 export const Link = forwardRef<HTMLAnchorElement, LinkPropsType>(function Link(

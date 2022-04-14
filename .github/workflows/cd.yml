@@ -53,6 +53,9 @@ jobs:
               working-directory: ./packages/motion
               run: yarn run build
 
+            - name: Remove comments
+              run: ./script/remove-comments.js
+
             - name: Publish
               run: yarn multi-semantic-release | tee ~/.release-output.txt
 

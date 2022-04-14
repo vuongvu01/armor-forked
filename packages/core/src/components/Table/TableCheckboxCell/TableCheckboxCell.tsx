@@ -7,6 +7,10 @@ import { TABLE_CHECKBOX_CELL_CLASS_PREFIX } from './constants';
 import { useTableCheckboxCell } from './hooks/useTableCheckboxCell';
 
 /**
+ * # TableCheckboxCell
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/21c7b5-table/b/527bb6)
+ *
  * @armor-docs-component
  */
 export const TableCheckboxCell = forwardRef<

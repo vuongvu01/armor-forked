@@ -7,6 +7,45 @@ import { PACK_ITEM_CLASS_PREFIX, packItemRoot } from './constants';
 import { FlexItem } from '../Flex';
 
 /**
+ * # PackItem
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/80e3d6-pack/b/93ded7)
+ *
+ * ## Examples
+ *
+ * ***
+ *
+ * ```
+ * import { Pack, PackItem } from '@deliveryhero/armor';
+ *
+ * const style1 = {
+ *     background: 'yellowgreen',
+ *     padding: '20px',
+ *     color: 'white',
+ * };
+ *
+ * const style2 = { background: 'green', padding: '20px', color: 'white' };
+ *
+ * const style3 = {
+ *     background: 'darkseagreen',
+ *     padding: '20px',
+ *     color: 'white',
+ * };
+ *
+ * <Pack>
+ *     <PackItem>
+ *         <div style={style1}>Item 1</div>
+ *     </PackItem>
+ *     <PackItem>
+ *         <div style={style2}>Item 2</div>
+ *     </PackItem>
+ *     <PackItem>
+ *         <div style={style3}>Item 3</div>
+ *     </PackItem>
+ * </Pack>
+ * ```
+ * ***
+ *
  * @armor-docs-component
  */
 export const PackItem = forwardRef<HTMLDivElement, PackItemPropsType>(

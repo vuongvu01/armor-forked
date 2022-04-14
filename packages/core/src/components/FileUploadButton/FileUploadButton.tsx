@@ -9,6 +9,8 @@ import { FILE_UPLOAD_BUTTON_CLASS_PREFIX } from './constants';
 import { Button } from '../Button';
 
 /**
+ * # FileUploadButton
+ *
  * @armor-docs-component
  */
 export const FileUploadButton = forwardRef<

@@ -7,6 +7,45 @@ import { FLEX_ITEM_CLASS_PREFIX, flexItemRoot } from './constants';
 import { FlexItemRoot } from './style';
 
 /**
+ * # FlexItem
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/04c651-flex/b/41637f)
+ *
+ * ## Examples
+ *
+ * ***
+ *
+ * ```
+ * import { Flex, FlexItem } from '@deliveryhero/armor';
+ *
+ * const style1 = {
+ *     background: 'yellowgreen',
+ *     padding: '20px',
+ *     color: 'white',
+ * };
+ *
+ * const style2 = { background: 'green', padding: '20px', color: 'white' };
+ *
+ * const style3 = {
+ *     background: 'darkseagreen',
+ *     padding: '20px',
+ *     color: 'white',
+ * };
+ *
+ * <Flex>
+ *     <FlexItem>
+ *         <div style={style1}>Row Item 1</div>
+ *     </FlexItem>
+ *     <FlexItem>
+ *         <div style={style2}>Row Item 2</div>
+ *     </FlexItem>
+ *     <FlexItem>
+ *         <div style={style3}>Row Item 3</div>
+ *     </FlexItem>
+ * </Flex>
+ * ```
+ * ***
+ *
  * @armor-docs-component
  */
 export const FlexItem = forwardRef<HTMLDivElement, FlexItemPropsType>(

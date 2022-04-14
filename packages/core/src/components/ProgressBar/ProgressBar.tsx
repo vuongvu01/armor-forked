@@ -7,6 +7,8 @@ import { ProgressBarPropsType } from './type';
 import { PROGRESSBAR_CLASS_PREFIX, ProgressBarLevels } from './constants';
 
 /**
+ * # ProgressBar
+ *
  * @armor-docs-component
  */
 export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarPropsType>(

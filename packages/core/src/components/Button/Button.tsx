@@ -8,6 +8,27 @@ import { BUTTON_CLASS_PREFIX } from './constants';
 import { useButton } from './hooks/useButton';
 
 /**
+ * # Button
+ *
+ * They are used to perform an action that triggers an event. A button will always be expressed as one of the types with an option that has a state and comes on a scale.
+ *
+ * [Docs](https://armor.deliveryhero.com/251886272/p/47a44c-button/b/09d7b1)
+ *
+ * ## Examples
+ *
+ * ~~~
+ * import { Button } from '@deliveryhero/armor';
+ *
+ * <Button marginRight={2}>Primary</Button>
+ * <Button secondary marginRight={2}>
+ *     Secondary
+ * </Button>
+ * <Button tertiary marginRight={2}>
+ *     Tertiary
+ * </Button>
+ * <Button danger>Danger</Button>
+ * ~~~
+ *
  * @armor-docs-component
  */
 export const Button = forwardRef<HTMLButtonElement, ButtonPropsType>(

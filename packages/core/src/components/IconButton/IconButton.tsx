@@ -7,6 +7,24 @@ import { IconButtonPropsType } from './type';
 import { ICON_BUTTON_CLASS_PREFIX } from './constants';
 
 /**
+ * # IconButton
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/43fdf6-icon-button/b/694dd6)
+ *
+ * ## Examples
+ *
+ * ***
+ *
+ * ```
+ * import { IconButton } from '@deliveryhero/armor';
+ * import { ArrowUpIcon } from '@deliveryhero/armor-icons';
+ *
+ * <IconButton>
+ *     <ArrowUpIcon medium />
+ * </IconButton>
+ * ```
+ * ***
+ *
  * @armor-docs-component
  */
 export const IconButton = forwardRef<HTMLButtonElement, IconButtonPropsType>(

@@ -19,6 +19,29 @@ import {
 } from './constants';
 
 /**
+ * # PageNavigation
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/432ee2-pagination/b/93e007)
+ *
+ * ## Examples
+ *
+ * ***
+ *
+ * ```
+ * import { useState } from 'react';
+ * import { PageNavigation } from '@deliveryhero/armor';
+ *
+ * const [pageNumber, setPageNumber] = useState(1);
+ *
+ * <PageNavigation
+ *     itemCount={100}
+ *     pageNumber={pageNumber}
+ *     pageSize={10}
+ *     onPageSelect={setPageNumber}
+ * />
+ * ```
+ * ***
+ *
  * @armor-docs-component
  */
 export const PageNavigation = forwardRef<

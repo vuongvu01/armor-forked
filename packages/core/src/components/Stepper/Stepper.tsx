@@ -9,6 +9,51 @@ import { StepperContext } from './StepperContext';
 import { StepperRoot } from './style';
 
 /**
+ * # Stepper
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/760eb3-stepper/b/66d64c)
+ *
+ * ## Examples
+ *
+ * ***
+ *
+ * ```
+ * import { useState } from 'react';
+ * import { Stepper, Step } from '@deliveryhero/armor';
+ *
+ * const [step, setStep] = useState(2);
+ * const onSomething = (index: any) => {
+ *     setStep(index);
+ * };
+ *
+ * <Stepper
+ *     marginBottom={8}
+ *     onActiveIndexChange={onSomething}
+ *     activeIndex={step}
+ * >
+ *     <Step title="Summary" description="Your order details" />
+ *     <Step
+ *         title="Delivery"
+ *         description="Where should we deliver this?"
+ *     />
+ *     <Step
+ *         title="Payment"
+ *         description="Pay with credit card or Crypto"
+ *     />
+ *     <Step
+ *         title="Review"
+ *         description="Make sure everything in order"
+ *     />
+ * </Stepper>
+ * <div style={{ marginLeft: 240 }}>
+ *     <button onClick={() => setStep(step > 0 ? step - 1 : step)}>
+ *         prev
+ *     </button>
+ *     <button onClick={() => setStep(step + 1)}>next</button>
+ * </div>
+ * ```
+ * ***
+ *
  * @armor-docs-component
  */
 export const Stepper = forwardRef<HTMLDivElement, StepperPropsType>(

@@ -13,7 +13,7 @@
         "isolatedModules": false,
         "experimentalDecorators": true,
         "lib": ["esnext.asynciterable", "esnext", "es2017", "dom"],
-        "removeComments": true,
+        "removeComments": false,
         "emitDecoratorMetadata": true,
         "sourceMap": true,
         "baseUrl": ".",

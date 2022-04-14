@@ -20,6 +20,10 @@ import { AccordionContext } from '../AccordionContext';
 import { useAccordionHeaderClassName } from './hooks/useAccordionHeaderClassName';
 
 /**
+ * # AccordionContent
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/40676d-accordion/b/198afb)
+ *
  * @armor-docs-component
  */
 export const AccordionHeader = forwardRef<

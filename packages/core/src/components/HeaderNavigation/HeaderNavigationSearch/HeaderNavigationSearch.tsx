@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useTheme } from '@deliveryhero/armor-system';
 
 import { HeaderNavigationSearchRoot, NavigationItemSearch } from './style';
 import { HeaderNavigationSearchPropsType } from './type';
@@ -11,6 +10,10 @@ import {
 import { useHeaderNavigationSearchClassName } from './hooks';
 
 /**
+ * # HeaderNavigationSearch
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/111bcf-header-navigation/b/440e0c)
+ *
  * @armor-docs-component
  */
 export const HeaderNavigationSearch = forwardRef<
@@ -20,8 +23,6 @@ export const HeaderNavigationSearch = forwardRef<
     { className, options, onChange, onItemSelect, separator, ...restProps },
     ref,
 ) {
-    const theme = useTheme().armor; // todo: fix this
-
     const classOverride = useHeaderNavigationSearchClassName(
         HEADER_NAVIGATION_SEARCH_CLASS_PREFIX,
         className,

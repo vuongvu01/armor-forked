@@ -13,6 +13,33 @@ import { useMenuElement } from './hooks/useMenuElement';
 import { ExpansionIndicator } from '../../ExpansionIndicator';
 
 /**
+ * # MenuElement
+ *
+ * They are containers to display the items as a single line of list.
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/390d51-menu/b/04b17e)
+ *
+ * ## Examples
+ *
+ * ***
+ *
+ * ```
+ * import { Menu, MenuElement } from '@deliveryhero/armor';
+ *
+ * <Menu>
+ *     <MenuElement>
+ *         Soup
+ *     </MenuElement>
+ *     <MenuElement selected>
+ *         Cookies
+ *     </MenuElement>
+ *     <MenuElement>
+ *         Stew
+ *     </MenuElement>
+ * </Menu>
+ * ```
+ * ***
+ *
  * @armor-docs-component
  */
 export const MenuElement = forwardRef<HTMLDivElement, MenuElementPropsType>(

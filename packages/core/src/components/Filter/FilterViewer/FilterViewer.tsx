@@ -20,6 +20,52 @@ import { ConditionTag } from '../../ConditionTag';
 import { ConfirmationDialog } from './ConfirmationDialog/ConfirmationDialog';
 
 /**
+ * # FilterViewer
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/082f5b-filter/b/221ef2)
+ *
+ * ## Examples
+ *
+ * ***
+ *
+ * ```
+ * import React, { useState, useCallback } from 'react';
+ * import { FilterViewer } from '@deliveryhero/armor';
+ *
+ * const filterSchema: FilterConditionSchemaType = {
+ *     conditions: [
+ *         {
+ *             id: 'name',
+ *             label: 'Name',
+ *         },
+ *         {
+ *             id: 'email',
+ *             label: 'Email',
+ *         },
+ *         {
+ *             id: 'phoneNumber',
+ *             label: 'Phone number',
+ *         },
+ *     ],
+ * };
+ *
+ * const [filterValue, setFilterValue] = useState<FilterConditionValueType | undefined>();
+ * const [filterOpen, setFilterOpen] = useState(false);
+ *
+ * <FilterViewer
+ *     schema={filterSchema}
+ *     value={filterValue}
+ *     types={conditionTypes}
+ *     onValueChange={setFilterValue}
+ *     marginTop={6}
+ *     onFilterOpenButtonClick={() => setFilterOpen(true)}
+ *     filterOpen={filterOpen}
+ *     resultCount={8}
+ *     resultTotalCount={2500}
+ * />
+ * ```
+ * ***
+ *
  * @armor-docs-component
  */
 export const FilterViewer = forwardRef<HTMLDivElement, FilterViewerPropsType>(

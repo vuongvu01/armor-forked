@@ -7,6 +7,10 @@ import { DialogContentPropsType } from './type';
 const CLASS_PREFIX = 'DialogContent';
 
 /**
+ * # COMPONENT
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/451847-dialog/b/09d7b1)
+ *
  * @armor-docs-component
  */
 export const DialogContent: FC<DialogContentPropsType> = ({

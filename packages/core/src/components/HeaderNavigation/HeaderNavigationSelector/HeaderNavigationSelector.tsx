@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useTheme, PortalToBody } from '@deliveryhero/armor-system';
+import { PortalToBody } from '@deliveryhero/armor-system';
 
 import {
     HeaderNavigationSelectorRoot,
@@ -22,14 +22,16 @@ import { Pack, PackItem } from '../../Pack';
 import { useHeaderNavigationSelector } from './hooks/useHeaderNavigationSelector';
 
 /**
+ * # HeaderNavigationSelector
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/111bcf-header-navigation/b/440e0c)
+ *
  * @armor-docs-component
  */
 export const HeaderNavigationSelector = forwardRef<
     HTMLDivElement,
     HeaderNavigationSelectorPropsType
 >(function HeaderNavigationSelector({ className, ...restProps }, ref) {
-    const theme = useTheme().armor; // todo: fix this
-
     const classOverride = useHeaderNavigationSelectorClassName(
         HEADER_NAVIGATION_SELECTOR_CLASS_PREFIX,
         className,

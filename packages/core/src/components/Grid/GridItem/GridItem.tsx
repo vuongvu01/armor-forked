@@ -9,6 +9,42 @@ import { GridContext } from '../utils/GridContext';
 import { GridItemRoot } from './style';
 
 /**
+ * # GridItem
+ *
+ * It's the base of how we design. The grid holds all the components, typography and patterns to create a well balanced visual representation of the solution.
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/56ab44-grid/b/868790)
+ *
+ * ## Examples
+ *
+ * ***
+ *
+ * ```
+ * import { Grid, GridItem } from '@deliveryhero/armor';
+ *
+ * const gridItemStyle = {
+ *     padding: '10px',
+ *     color: 'black',
+ *     borderWidth: '1px',
+ *     borderStyle: 'dashed',
+ *     borderColor: 'grey',
+ *     textAlign: 'center',
+ * };
+ *
+ * <Grid>
+ *     <GridItem style={gridItemStyle} xs={12} sm={8} md={4}>
+ *         xs=12 sm=8 md=4
+ *     </GridItem>
+ *     <GridItem style={gridItemStyle} xs={12} sm={4} md={4}>
+ *         xs=12 sm=4 md=4
+ *     </GridItem>
+ *     <GridItem style={gridItemStyle} xs={12} sm={4} md={4}>
+ *         xs=12 sm=4 md=4
+ *     </GridItem>
+ * </Grid>
+ * ```
+ * ***
+ *
  * @armor-docs-component
  */
 export const GridItem = forwardRef<HTMLDivElement, GridItemPropsType>(

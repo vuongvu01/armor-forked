@@ -19,6 +19,24 @@ import {
 import { useTextInput } from './hooks/useTextInput';
 
 /**
+ * # TextInput
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/83c7b3-text-input/b/31fc4f)
+ *
+ * ## Examples
+ *
+ * ***
+ *
+ * ```
+ * import { useState } from 'react';
+ * import { TextInput } from '@deliveryhero/armor';
+ *
+ * const [ value, setValue ] = useState('');
+ *
+ * <TextInput label="First name" name="first_name" value={value} onChange={(event) => setValue(event.target.value)} />
+ * ```
+ * ***
+ *
  * @armor-docs-component
  */
 export const TextInput = forwardRef<HTMLInputElement, TextInputPropsType>(

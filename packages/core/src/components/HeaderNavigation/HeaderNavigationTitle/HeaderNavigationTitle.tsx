@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { useTheme } from '@deliveryhero/armor-system';
 
 import {
     HEADER_NAVIGATION_TITLE_CLASS_PREFIX,
@@ -16,6 +15,10 @@ import HeaderNavigationLinksContext from '../HeaderNavigationLinks/HeaderNavigat
 import { ButtonPropsType } from '../../Button/type';
 
 /**
+ * # HeaderNavigationTitle
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/111bcf-header-navigation/b/440e0c)
+ *
  * @armor-docs-component
  */
 export const HeaderNavigationTitle = forwardRef<
@@ -36,8 +39,6 @@ export const HeaderNavigationTitle = forwardRef<
     },
     ref,
 ) {
-    const theme = useTheme().armor; // todo: fix this
-
     const classOverride = useHeaderNavigationTitleClassName(
         HEADER_NAVIGATION_TITLE_CLASS_PREFIX,
         className,

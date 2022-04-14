@@ -8,6 +8,28 @@ import { DividerPropsType } from './type';
 import { DIVIDER_CLASS_PREFIX } from './constants';
 
 /**
+ * # Divider
+ *
+ * Dividers should only be used where the user needs to see a clear definition between two content of a page.
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/7809b7-dividers/b/219d6b)
+ *
+ * ## Examples
+ *
+ * ***
+ *
+ * ```
+ * import { Divider } from '@deliveryhero/armor';
+ *
+ * <Divider
+ *     marginTop={10}
+ *     marginBottom={10}
+ *     marginLeft={10}
+ *     marginRight={10}
+ * />
+ * ```
+ * ***
+ *
  * @armor-docs-component
  */
 export const Divider = forwardRef<HTMLDivElement, DividerPropsType>(

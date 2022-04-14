@@ -8,11 +8,15 @@ import {
     DialogTitleText,
 } from './style';
 import { DialogTitlePropsType } from './type';
-import { DIALOG_TITLE_CLASS_PREFIX, dialogTitleText } from './constants';
+import { dialogTitleText } from './constants';
 
 const CLASS_PREFIX = 'DialogTitle';
 
 /**
+ * # COMPONENT
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/451847-dialog/b/09d7b1)
+ *
  * @armor-docs-component
  */
 export const DialogTitle: FunctionComponent<DialogTitlePropsType> = ({

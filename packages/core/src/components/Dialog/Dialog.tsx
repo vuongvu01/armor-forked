@@ -15,6 +15,40 @@ import { DIALOG_CLASS_PREFIX, DIALOG_SCROLL_DIALOG } from './constants';
 import { useDialog } from './hooks/useDialog';
 
 /**
+ * # Dialog
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/451847-dialog/b/09d7b1)
+ *
+ * ## Examples
+ *
+ * ***
+ *
+ * ```
+ * import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@deliveryhero/armor';
+ *
+ * <Button onClick={() => setOpen(true)}>Open modal!</Button>
+ * <Dialog open={open} onClose={onClose} maxWidth="sm">
+ *     <DialogTitle description="Assign a new id to this location">
+ *         New location
+ *     </DialogTitle>
+ *     <DialogContent>
+ *         Delivery Hero SE is a European multinational online
+ *         food-delivery service based in Berlin, Germany. The company
+ *         operates in 40+ countries internationally in Europe, Asia,
+ *         Latin America and the Middle East and partners with 500,000+
+ *         restaurants. Delivery Hero processed more than 666 million
+ *         orders in 2019
+ *     </DialogContent>
+ *     <DialogActions>
+ *         <Button tertiary onClick={onClose}>
+ *             Cancel
+ *         </Button>
+ *         <Button onClick={onClose}>Save</Button>
+ *     </DialogActions>
+ * </Dialog>
+ * ```
+ * ***
+ *
  * @armor-docs-component
  */
 export const Dialog = forwardRef<HTMLDivElement, DialogPropsType>(

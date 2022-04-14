@@ -16,6 +16,23 @@ import { useMessage } from './hooks/useMessage';
 import { CloseButton } from '../CloseButton';
 
 /**
+ * # Message
+ *
+ * They are used to give feedback to the user before or after taking an action
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/86d5d5-message/b/09d7b1)
+ *
+ * ## Examples
+ *
+ * ***
+ *
+ * ```
+ * import { Message } from '@deliveryhero/armor';
+ *
+ * <Message>You have 99 new cookies!</Message>
+ * ```
+ * ***
+ *
  * @armor-docs-component
  */
 export const Message = forwardRef<HTMLDivElement, MessagePropsType>(

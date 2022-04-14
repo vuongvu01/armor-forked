@@ -12,6 +12,60 @@ import { FilterEditorActions } from '../FilterEditorActions';
 import { FilterEditorHeader } from '../FilterEditorHeader';
 
 /**
+ * # FilterEditor
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/082f5b-filter/b/221ef2)
+ *
+ * ## Examples
+ *
+ * ***
+ *
+ * ```
+ * import { useState, useCallback } from 'react';
+ * import { FilterLayout, FilterEditor } from '@deliveryhero/armor';
+ *
+ * const filterSchema: FilterConditionSchemaType = {
+ *     conditions: [
+ *         {
+ *             id: 'name',
+ *             label: 'Name',
+ *         },
+ *         {
+ *             id: 'email',
+ *             label: 'Email',
+ *         },
+ *         {
+ *             id: 'phoneNumber',
+ *             label: 'Phone number',
+ *         },
+ *     ],
+ * };
+ *
+ * const [filterValue, setFilterValue] = useState<FilterConditionValueType | undefined>();
+ * const [filterOpen, setFilterOpen] = useState(false);
+ *
+ * <FilterLayout
+ *     tall
+ *     filterOpen={filterOpen}
+ *     filterEditor={
+ *         <FilterEditor
+ *             schema={filterSchema}
+ *             value={filterValue}
+ *             types={conditionTypes}
+ *             onValueChange={setFilterValue}
+ *             onClose={() => setFilterOpen(false)}
+ *             paddingTop={6}
+ *             paddingLeft={2}
+ *             paddingRight={6}
+ *             paddingBottom={6}
+ *         />
+ *     }
+ *     >
+ *     Data grid here...
+ * </FilterLayout>
+ * ```
+ * ***
+ *
  * @armor-docs-component
  */
 export const FilterEditor = forwardRef<HTMLDivElement, FilterEditorPropsType>(

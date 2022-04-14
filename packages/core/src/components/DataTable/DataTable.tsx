@@ -35,6 +35,62 @@ import { DataTableDroppableContainer } from './DataTableDroppableContainer';
 import { DataTableDraggableRowContainer } from './DataTableDraggableRowContainer';
 
 /**
+ * # DataTable
+ *
+ * This is a wrapper around the Table component. While the Table provides only a visual part, the DataTable acts as a layer of business logic and provides: row selection, row sorting.
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/47e813-data-table/b/682086)
+ *
+ * ## Examples
+ *
+ * ***
+ *
+ * ```
+ * import { DataTable } from '@deliveryhero/armor';
+ *
+ * const columns = [
+ *     {
+ *         title: 'Name',
+ *         id: 'name',
+ *     },
+ *     {
+ *         title: 'Age',
+ *         id: 'age',
+ *         sortable: true,
+ *         formatDataCellContent: (value: string) => `${value} years`,
+ *     },
+ *     {
+ *         title: 'Address',
+ *         sortable: true,
+ *         id: 'address',
+ *     },
+ * ];
+ *
+ * const data = [
+ *     {
+ *         id: '1',
+ *         name: 'Mike',
+ *         age: 32,
+ *         address: '10 Downing Street',
+ *     },
+ *     {
+ *         id: '3',
+ *         name: 'Jill',
+ *         age: 19,
+ *         address: 'Raccoon City',
+ *     },
+ *     {
+ *         id: '2',
+ *         name: 'John',
+ *         age: 42,
+ *         address: '10 Downing Street',
+ *     },
+ * ];;
+ *
+ * <DataTable columns={columns} data={data} />
+ * ```
+ * ***
+ *
  * @armor-docs-component
  */
 export const DataTable = forwardRef<HTMLDivElement, DataTablePropsType>(
