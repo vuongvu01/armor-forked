@@ -14,6 +14,10 @@ import { TableControllerCellPropsType } from './type';
 import { TABLE_CONTROLLER_CELL_CLASS_PREFIX } from './constants';
 
 /**
+ * # TableControllerCell
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/21c7b5-table/b/527bb6)
+ *
  * @armor-docs-component
  */
 export const TableControllerCell = forwardRef<

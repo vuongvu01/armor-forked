@@ -1,36 +1,48 @@
-import React, {
-    forwardRef,
-    MouseEvent,
-    useCallback,
-    useEffect,
-    useMemo,
-    useState,
-} from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
-import { useAccordionClassName } from './utils';
+import { useAccordionClassName } from './hooks/useAccordionClassName';
+import { useAccordion } from './hooks/useAccordion';
 import { AccordionRoot } from './style';
 import { AccordionPropsType } from './type';
 import { ACCORDION_CLASS_PREFIX, accordionRoot } from './constants';
 import { AccordionContext } from './AccordionContext';
 
 /**
+ * # Accordion
+ *
+ * Accordion is used to allow the user to focus on one section of a content while keep the others hidden.
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/40676d-accordion/b/198afb)
+ *
+ * ## Examples
+ *
+ * ***
+ *
+ * ```
+ * import { Accordion, AccordionHeader, AccordionContent } from '@deliveryhero/armor';
+ *
+ * const handleOnToggle = () => console.log('Toggle');
+ *
+ * <Accordion onToggle={handleOnToggle}>
+ *     <AccordionHeader title="Support" />
+ *     <AccordionContent>Support content</AccordionContent>
+ * </Accordion>
+ * <Accordion onToggle={handleOnToggle}>
+ *     <AccordionHeader
+ *         title="Settings"
+ *     />
+ *     <AccordionContent>Settings content</AccordionContent>
+ * </Accordion>
+ * ```
+ * ***
+ *
  * @armor-docs-component
  */
 export const Accordion = forwardRef<HTMLDivElement, AccordionPropsType>(
-    function Accordion(
-        {
-            children,
-            className,
-            disabled,
-            expanded,
-            defaultExpanded,
-            onToggle,
-            ...restProps
-        },
-        ref,
-    ) {
-        const [isExpanded, setIsExpanded] = useState(defaultExpanded);
+    function Accordion({ children, className, ...props }, ref) {
+        const { rootProps, contextProps, disabled, isExpanded } =
+            useAccordion<HTMLDivElement>(props, ref);
 
         const classOverride = useAccordionClassName(
             ACCORDION_CLASS_PREFIX,
@@ -39,42 +51,12 @@ export const Accordion = forwardRef<HTMLDivElement, AccordionPropsType>(
             isExpanded,
         );
 
-        const handleHeaderToggle = useCallback(
-            (event: MouseEvent<HTMLDivElement>) => {
-                setIsExpanded(!isExpanded);
-
-                if (onToggle) {
-                    onToggle(event, !isExpanded);
-                }
-            },
-            [isExpanded, onToggle],
-        );
-
-        useEffect(() => {
-            if (typeof expanded === 'boolean' && expanded !== isExpanded) {
-                // todo: derived state anti-pattern, fix
-                setIsExpanded(expanded);
-            }
-        }, [expanded, isExpanded]);
-
-        const contextValue = useMemo(
-            () => ({
-                disabled,
-                isExpanded,
-                onToggle: handleHeaderToggle,
-            }),
-            [disabled, isExpanded, handleHeaderToggle],
-        );
-
         return (
-            <AccordionContext.Provider value={contextValue}>
+            <AccordionContext.Provider {...contextProps}>
                 <AccordionRoot
+                    {...rootProps}
                     data-testid={accordionRoot}
-                    {...restProps}
                     className={classOverride.Root}
-                    isExpanded={isExpanded}
-                    ref={ref}
-                    disabled={disabled}
                 >
                     {children}
                 </AccordionRoot>

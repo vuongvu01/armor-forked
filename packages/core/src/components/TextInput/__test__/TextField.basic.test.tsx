@@ -15,11 +15,9 @@ describe('<TextInput />', () => {
         render(<TextInput />);
     });
 
-    it('should support forwardRef to input', () => {
-        const { result } = renderHook(() => useRef<HTMLInputElement>(null));
-        render(<TextInput ref={result.current} />);
-
-        expect(result.current.current).toBeInstanceOf(HTMLInputElement);
+    it('should support forwardRef', () => {
+        // @ts-ignore
+        expect(TextInput).toSupportRefForwarding();
     });
 
     it('should support forwardRef to root', () => {
@@ -37,5 +35,25 @@ describe('<TextInput />', () => {
     it('should support width properties', async () => {
         // @ts-ignore
         expect(TextInput).toSupportWidthProps();
+    });
+
+    it('should support height properties', async () => {
+        // @ts-ignore
+        expect(TextInput).toSupportHeightProps();
+    });
+
+    it('should support rest props forwarding', async () => {
+        // @ts-ignore
+        expect(TextInput).toSupportRestPropsForwarding('TextInput');
+    });
+
+    it('should forward correct properties', async () => {
+        // @ts-ignore
+        expect(TextInput).toSupportAttributeForwarding();
+    });
+
+    it('should support component override', () => {
+        // @ts-ignore
+        expect(<TextInput />).toSupportOverride('TextInput');
     });
 });

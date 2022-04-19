@@ -35,6 +35,10 @@ const Icon = styled.div`
     width: 3rem;
     background-color: #f7f7f7;
     color: #050505;
+
+    svg {
+        border: 1px solid red;
+    }
 `;
 
 export const Basic = () => (
@@ -300,12 +304,6 @@ export const Basic = () => (
                 <I.AlignRightIcon />
             </Icon>
             <Icon>
-                <I.LinkIcon />
-            </Icon>
-            <Icon>
-                <I.UnlinkIcon />
-            </Icon>
-            <Icon>
                 <I.ListBulletIcon />
             </Icon>
             <Icon>
@@ -328,6 +326,18 @@ export const Basic = () => (
             </Icon>
             <Icon>
                 <I.DoubleFileIcon />
+            </Icon>
+        </Icons>
+        <h2>Link</h2>
+        <Icons>
+            <Icon>
+                <I.LinkIcon />
+            </Icon>
+            <Icon>
+                <I.UnlinkIcon />
+            </Icon>
+            <Icon>
+                <I.ExternalLinkIcon />
             </Icon>
         </Icons>
         <h2>Finance</h2>

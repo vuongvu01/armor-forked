@@ -1,7 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
-import { cleanup, render, screen } from '@testing-library/react';
-import renderer from 'react-test-renderer';
+import { cleanup, render, screen, fireEvent } from '@testing-library/react';
 
 import { Accordion } from '../Accordion';
 import {
@@ -17,10 +16,6 @@ import { AccordionContent } from '../AccordionContent';
 describe('<Accordion />', () => {
     afterEach(async () => {
         cleanup();
-    });
-
-    it('should render itself without errors', async () => {
-        render(<Accordion />);
     });
 
     it('should ensure that all Accordion sections have corresponding class names set', async () => {
@@ -83,20 +78,73 @@ describe('<Accordion />', () => {
         );
     });
 
-    it('ensures margin* property transference', () => {
-        const marginAttribute = 'marginY';
-        const marginValue = 4;
+    it('should trigger onToggle handler uncontrolled', () => {
+        const mockOnToggle = jest.fn();
 
-        const result = renderer
-            .create(
-                <Accordion {...{ [marginAttribute]: marginValue }}>
-                    <AccordionHeader title="Developers" />
-                    <AccordionContent>Get coffee</AccordionContent>
-                </Accordion>,
-            )
-            .toJSON();
+        const { getByText } = render(
+            <Accordion onToggle={(_, expanded) => mockOnToggle(expanded)}>
+                <AccordionHeader title="accordion_header" />
+                <AccordionContent>Get coffee</AccordionContent>
+            </Accordion>,
+        );
 
-        // @ts-ignore
-        expect(result).toSupportMarginAttribute(marginAttribute, marginValue);
+        fireEvent.click(getByText('accordion_header'));
+
+        expect(mockOnToggle).toHaveBeenCalledTimes(1);
+        expect(mockOnToggle).toHaveBeenCalledWith(true);
+    });
+
+    it('should accept defaultExpanded and trigger onToggle handler uncontrolled', () => {
+        const mockOnToggle = jest.fn();
+
+        const { getByText } = render(
+            <Accordion
+                defaultExpanded
+                onToggle={(_, expanded) => mockOnToggle(expanded)}
+            >
+                <AccordionHeader title="accordion_header" />
+                <AccordionContent>Get coffee</AccordionContent>
+            </Accordion>,
+        );
+
+        fireEvent.click(getByText('accordion_header'));
+
+        expect(mockOnToggle).toHaveBeenCalledTimes(1);
+        expect(mockOnToggle).toHaveBeenCalledWith(false);
+    });
+
+    it('should trigger onToggle handler controlled', () => {
+        const mockOnToggle = jest.fn();
+
+        const { getByText } = render(
+            <Accordion
+                expanded
+                onToggle={(_, expanded) => mockOnToggle(expanded)}
+            >
+                <AccordionHeader title="accordion_header" />
+                <AccordionContent>Get coffee</AccordionContent>
+            </Accordion>,
+        );
+
+        fireEvent.click(getByText('accordion_header'));
+        fireEvent.click(getByText('accordion_header'));
+
+        expect(mockOnToggle).toHaveBeenCalledTimes(2);
+        expect(mockOnToggle).toHaveBeenNthCalledWith(1, false);
+        expect(mockOnToggle).toHaveBeenNthCalledWith(2, false);
+    });
+
+    it('should accept disabled prop', () => {
+        const mockOnToggle = jest.fn();
+
+        const { getByText } = render(
+            <Accordion disabled onToggle={mockOnToggle}>
+                <AccordionHeader title="accordion_header" />
+                <AccordionContent>Get coffee</AccordionContent>
+            </Accordion>,
+        );
+
+        fireEvent.click(getByText('accordion_header'));
+        expect(mockOnToggle).not.toHaveBeenCalled();
     });
 });

@@ -20,6 +20,23 @@ import { Indicator } from '../Indicator';
 import { EMPTY_STATE_CLASS_PREFIX } from './constants';
 
 /**
+ * # EmptyState
+ *
+ * Used to convey a message to the user when there's no content
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/612512-empty-state/b/61ff10)
+ *
+ * ## Examples
+ *
+ * ***
+ *
+ * ```
+ * import { EmptyState } from '@deliveryhero/armor';
+ *
+ * <EmptyState />
+ * ```
+ * ***
+ *
  * @armor-docs-component
  */
 export const EmptyState = forwardRef<HTMLDivElement, EmptyStatePropsType>(

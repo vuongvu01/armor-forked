@@ -9,6 +9,25 @@ import { TOOLTIP_CLASS_PREFIX } from './constants';
 import { useTooltip } from './hooks/useTooltip';
 
 /**
+ * # Tooltip
+ *
+ * These are used to provide addition information about a particular item. They are triggered either by click or hover on an info-icon
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/634a2f-tooltip/b/527bb6)
+ *
+ * ## Examples
+ *
+ * ***
+ *
+ * ```
+ * import { Tooltip, Button } from '@deliveryhero/armor';
+ *
+ * <Tooltip content="You got free cookies">
+ *     <Button>Click me!</Button>
+ * </Tooltip>
+ * ```
+ * ***
+ *
  * @armor-docs-component
  */
 export const Tooltip = forwardRef<HTMLDivElement, TooltipPropsType>(

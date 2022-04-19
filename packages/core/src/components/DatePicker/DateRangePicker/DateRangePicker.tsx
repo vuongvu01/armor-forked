@@ -19,6 +19,24 @@ import { DatePickerTopBar } from '../DatePickerTopBar';
 import { DatePickerTimeSelector } from '../DatePickerTimeSelector';
 
 /**
+ * # DateRangePicker
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/489489-date-range-picker/b/65de07)
+ *
+ * ## Examples
+ *
+ * ***
+ *
+ * ```
+ * import { useState } from 'react';
+ * import { DateRangePicker } from '@deliveryhero/armor';
+ *
+ * const [value, setValue] = useState<[Date, Date]>();
+ *
+ * <DateRangePicker dateValue={value} onDateValueChange={setValue} />
+ * ```
+ * ***
+ *
  * @armor-docs-component
  */
 export const DateRangePicker = forwardRef<

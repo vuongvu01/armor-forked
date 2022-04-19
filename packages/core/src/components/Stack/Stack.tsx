@@ -7,6 +7,45 @@ import { STACK_CLASS_PREFIX, stackRoot } from './constants';
 import { Flex } from '../Flex';
 
 /**
+ * # Stack
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/03c9ab-stack/b/280576)
+ *
+ * ## Examples
+ *
+ * ***
+ *
+ * ```
+ * import { Stack, StackItem } from '@deliveryhero/armor';
+ *
+ * const style1 = {
+ *     background: 'yellowgreen',
+ *     padding: '20px',
+ *     color: 'white',
+ * };
+ *
+ * const style2 = { background: 'green', padding: '20px', color: 'white' };
+ *
+ * const style3 = {
+ *     background: 'darkseagreen',
+ *     padding: '20px',
+ *     color: 'white',
+ * };
+ *
+ * <Stack>
+ *     <StackItem>
+ *         <div style={style1}>Item 1</div>
+ *     </StackItem>
+ *     <StackItem>
+ *         <div style={style2}>Item 2</div>
+ *     </StackItem>
+ *     <StackItem>
+ *         <div style={style3}>Item 3</div>
+ *     </StackItem>
+ * </Stack>
+ * ```
+ * ***
+ *
  * @armor-docs-component
  */
 export const Stack = forwardRef<HTMLDivElement, StackPropsType>(function Stack(

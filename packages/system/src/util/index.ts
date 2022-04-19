@@ -18,3 +18,4 @@ export * from './eventBus';
 export * from './consoleWarn';
 export * from './throwError';
 export * from './getCompatiblePropValue';
+export * from './stripHTMLTags';

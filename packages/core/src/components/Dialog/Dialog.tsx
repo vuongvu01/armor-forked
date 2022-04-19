@@ -1,5 +1,4 @@
 import React, { forwardRef } from 'react';
-import PropTypes from 'prop-types';
 import { PortalToBody } from '@deliveryhero/armor-system';
 
 import { useDialogClassNames } from './hooks/useDialogClassNames';
@@ -12,20 +11,48 @@ import {
 } from './style';
 import { DialogPropsType } from './type';
 import { Backdrop } from '../Backdrop';
-import {
-    DIALOG_CLASS_PREFIX,
-    DIALOG_SCROLL_DIALOG,
-    DIALOG_SCROLL_DOCUMENT,
-} from './constants';
+import { DIALOG_CLASS_PREFIX, DIALOG_SCROLL_DIALOG } from './constants';
 import { useDialog } from './hooks/useDialog';
 
 /**
+ * # Dialog
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/451847-dialog/b/09d7b1)
+ *
+ * ## Examples
+ *
+ * ***
+ *
+ * ```
+ * import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@deliveryhero/armor';
+ *
+ * <Button onClick={() => setOpen(true)}>Open modal!</Button>
+ * <Dialog open={open} onClose={onClose} maxWidth="sm">
+ *     <DialogTitle description="Assign a new id to this location">
+ *         New location
+ *     </DialogTitle>
+ *     <DialogContent>
+ *         Delivery Hero SE is a European multinational online
+ *         food-delivery service based in Berlin, Germany. The company
+ *         operates in 40+ countries internationally in Europe, Asia,
+ *         Latin America and the Middle East and partners with 500,000+
+ *         restaurants. Delivery Hero processed more than 666 million
+ *         orders in 2019
+ *     </DialogContent>
+ *     <DialogActions>
+ *         <Button tertiary onClick={onClose}>
+ *             Cancel
+ *         </Button>
+ *         <Button onClick={onClose}>Save</Button>
+ *     </DialogActions>
+ * </Dialog>
+ * ```
+ * ***
+ *
  * @armor-docs-component
  */
 export const Dialog = forwardRef<HTMLDivElement, DialogPropsType>(
     function Dialog({ className, children, ...props }, ref) {
-        const classNames = useDialogClassNames(DIALOG_CLASS_PREFIX, className);
-
         const {
             portalProps,
             rootProps,
@@ -37,7 +64,14 @@ export const Dialog = forwardRef<HTMLDivElement, DialogPropsType>(
 
             enableCloseButton,
             enableBackdrop,
+            open,
         } = useDialog<HTMLDivElement>(props, ref);
+
+        const classNames = useDialogClassNames(
+            DIALOG_CLASS_PREFIX,
+            open,
+            className,
+        );
 
         return (
             <PortalToBody {...portalProps}>
@@ -82,26 +116,4 @@ Dialog.defaultProps = {
     disableCloseButton: false,
     disableCloseByEscape: false,
     scroll: DIALOG_SCROLL_DIALOG,
-};
-
-/** Support of prop-types is here for project that don't use TypeScript */
-Dialog.propTypes = {
-    /** A flag that triggers the dialog display */
-    open: PropTypes.bool,
-    /** A flag that tells the dialog to not to show overlay (backdrop) */
-    disableOverlay: PropTypes.bool,
-    /** A flag that tells the dialog to not to run transition effects on show / hide */
-    disableEffects: PropTypes.bool,
-    /** A flag that tells the dialog to not to show the close button */
-    disableCloseButton: PropTypes.bool,
-    /** A flag that tells the dialog to disable close by Escape button */
-    disableCloseByEscape: PropTypes.bool,
-    /** Allows to switch scroll type between "dialog" and "document" */
-    scroll: PropTypes.oneOf([DIALOG_SCROLL_DIALOG, DIALOG_SCROLL_DOCUMENT]),
-    /** A callback that is called when a user tries to close the dialog */
-    onClose: PropTypes.func,
-    /** Tells the dialog to occupy the entire width of it's parent (or expand to maxWidth constraint value) */
-    wide: PropTypes.bool,
-    /** Set maximum width of the dialog basing on the current theme.breakpoints */
-    maxWidth: PropTypes.string,
 };

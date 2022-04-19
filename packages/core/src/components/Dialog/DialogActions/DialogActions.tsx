@@ -1,16 +1,19 @@
-import React, { FunctionComponent } from 'react';
+import React, { FC } from 'react';
 
 import { useDialogActionsClassName } from './utils/useDialogActionsClassName';
 import { DialogActionsRoot } from './style';
 import { DialogActionsPropsType } from './type';
-import { DIALOG_ACTIONS_CLASS_PREFIX } from './constants';
 
 const CLASS_PREFIX = 'DialogActions';
 
 /**
+ * # COMPONENT
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/451847-dialog/b/09d7b1)
+ *
  * @armor-docs-component
  */
-export const DialogActions: FunctionComponent<DialogActionsPropsType> = ({
+export const DialogActions: FC<DialogActionsPropsType> = ({
     className,
     ...restProps
 }) => {

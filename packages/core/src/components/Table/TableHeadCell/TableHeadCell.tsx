@@ -20,6 +20,10 @@ import {
 import { TableCellLabel } from '../TableCellLabel';
 
 /**
+ * # TableHeadCell
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/21c7b5-table/b/527bb6)
+ *
  * @armor-docs-component
  */
 export const TableHeadCell = forwardRef<

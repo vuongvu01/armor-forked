@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
-import { useTheme } from '@deliveryhero/armor-system';
 
 import { DropdownTagsPropsType } from './type';
 import { OptionObjectType } from '../OptionList/type';
@@ -14,8 +13,6 @@ export const DropdownTags: FunctionComponent<DropdownTagsPropsType> = ({
     tagsToDisplay,
     propsFn,
 }) => {
-    const theme = useTheme().armor;
-
     const classOverride = useDropdownTagsClassName(
         DROPDOWN_TAGS_CLASS_PREFIX,
         className,

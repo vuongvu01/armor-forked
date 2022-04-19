@@ -9,6 +9,24 @@ import { SwitchPropsType } from './type';
 import { SWITCH_CLASS_PREFIX } from './constants';
 
 /**
+ * # Switch
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/9122b6-switch/b/527bb6)
+ *
+ * ## Examples
+ *
+ * ***
+ *
+ * ```
+ * import { Switch } from '@deliveryhero/armor';
+ *
+ * <Switch label="Default" />
+ * <Switch defaultChecked label="Switched by default" />
+ * <Switch disabled label="OFF, disabled" />
+ * <Switch checked disabled label="ON, disabled" />
+ * ```
+ * ***
+ *
  * @armor-docs-component
  */
 export const Switch = forwardRef<HTMLInputElement, SwitchPropsType>(

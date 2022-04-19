@@ -11,6 +11,10 @@ import {
 } from './constants';
 
 /**
+ * # ContentSwitcherControl
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/50aa27-content-switcher/b/527bb6)
+ *
  * @armor-docs-component
  */
 export const ContentSwitcherControl = forwardRef<

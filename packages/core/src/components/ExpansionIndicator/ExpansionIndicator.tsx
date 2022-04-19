@@ -15,6 +15,27 @@ import {
 } from './constants';
 
 /**
+ * # ExpansionIndicator
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/206761-expansion-indicator/b/722ea7)
+ *
+ * ## Examples
+ *
+ * ***
+ *
+ * ```
+ * import React, { useState } from 'react';
+ * import { ExpansionIndicator } from '@deliveryhero/armor';
+ *
+ * const [expanded, setExpanded] = useState(false);
+ *
+ * <ExpansionIndicator
+ *     isExpanded={expanded}
+ *     onClick={() => setExpanded(!expanded)}
+ * />
+ * ```
+ * ***
+ *
  * @armor-docs-component
  */
 export const ExpansionIndicator: FC<ExpansionIndicatorPropsType> = ({

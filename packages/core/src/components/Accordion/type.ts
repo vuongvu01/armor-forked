@@ -1,5 +1,5 @@
 import { HTMLAttributes, MouseEvent } from 'react';
-import { MarginPropsType } from '@deliveryhero/armor-system';
+import { MarginPropsType, WidthPropsType } from '@deliveryhero/armor-system';
 
 import { ComponentElementStylePropsType } from '../type';
 
@@ -30,7 +30,8 @@ export type AccordionEffectivePropsType = Partial<{
     onToggle: (event: MouseEvent<HTMLDivElement>, expanded: boolean) => void;
 }> &
     HTMLAttributes<HTMLElement> &
-    MarginPropsType;
+    MarginPropsType &
+    WidthPropsType;
 
 export type AccordionPropsType = AccordionEffectivePropsType;
 

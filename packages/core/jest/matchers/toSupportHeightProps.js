@@ -1,7 +1,7 @@
 const React = require('react');
 const { SPACING_FACTOR } = require('@deliveryhero/armor-system');
 
-const { renderJSON } = require('../../src/helpers/renderJSON');
+const { renderJSON, renderJSONAlt } = require('../../src/helpers/renderJSON');
 
 const UNNATURAL_VALUE = 999;
 
@@ -37,6 +37,42 @@ expect.extend({
             },
             id,
             wrapper,
+        );
+        expect(tree).toHaveStyleRule('height', '100%');
+
+        return {
+            pass: true,
+            message: () => '',
+        };
+    },
+
+    toSupportHeightPropsAlt(Element, filterProps) {
+        let tree = renderJSONAlt(
+            React.cloneElement(Element, {
+                height: UNNATURAL_VALUE,
+                maxHeight: UNNATURAL_VALUE,
+                minHeight: UNNATURAL_VALUE,
+            }),
+            filterProps,
+        );
+        expect(tree).toHaveStyleRule(
+            'height',
+            `${SPACING_FACTOR * UNNATURAL_VALUE}px`,
+        );
+        expect(tree).toHaveStyleRule(
+            'max-height',
+            `${SPACING_FACTOR * UNNATURAL_VALUE}px`,
+        );
+        expect(tree).toHaveStyleRule(
+            'min-height',
+            `${SPACING_FACTOR * UNNATURAL_VALUE}px`,
+        );
+
+        tree = renderJSONAlt(
+            React.cloneElement(Element, {
+                tall: true,
+            }),
+            filterProps,
         );
         expect(tree).toHaveStyleRule('height', '100%');
 

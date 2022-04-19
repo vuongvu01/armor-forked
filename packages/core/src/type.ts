@@ -1,13 +1,7 @@
 import { MutableRefObject, ReactText } from 'react';
 import { ScalarType } from '@deliveryhero/armor-system';
 
-/**
- * @deprecated
- * @use Record<string, any>
- */
-export type ObjectLiteralType<P = any> = {
-    [k: string]: P;
-};
+export type ObjectLiteralType<P = any> = Record<string, P>;
 
 /*
  * @deprecated

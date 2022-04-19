@@ -8,6 +8,35 @@ import { TagCloseIcon, TagCloseIconContainer, TagRoot, TagText } from './style';
 import { useTag } from './utils/useTag';
 
 /**
+ * # Tag
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/37a5b1-tag/b/09d7b1)
+ *
+ * ## Examples
+ *
+ * ***
+ *
+ * ```
+ * import { Tag } from '@deliveryhero/armor';
+ *
+ * <Tag label="Default" deleteOption="disabled" marginRight={3} />
+ * <Tag label="Small" deleteOption="disabled" small />
+ * <Tag label="Default" marginRight={3} />
+ * <Tag label="Small" small />
+ * <Tag label="Default" marginRight={3} disabled />
+ * <Tag label="Small" disabled small />
+ * <Tag label="Default" deleteOption="enabled" marginRight={3} />
+ * <Tag label="Small" deleteOption="enabled" small />
+ * <Tag
+ *     label="Default"
+ *     deleteOption="enabled"
+ *     marginRight={3}
+ *     disabled
+ * />
+ * <Tag label="Default" deleteOption="enabled" disabled small />
+ * ```
+ * ***
+ *
  * @armor-docs-component
  */
 export const Tag = forwardRef<HTMLDivElement, TagPropsType>(function Tag(

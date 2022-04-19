@@ -1,11 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import React, { useRef } from 'react';
+import React from 'react';
 
 import { cleanup, render } from '@testing-library/react';
-import {
-    renderHook,
-    cleanup as cleanupHooks,
-} from '@testing-library/react-hooks';
+import { cleanup as cleanupHooks } from '@testing-library/react-hooks';
 
 import { Switch } from '..';
 

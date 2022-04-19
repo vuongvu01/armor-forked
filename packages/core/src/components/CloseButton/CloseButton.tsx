@@ -6,6 +6,11 @@ import { CLOSE_BUTTON_CLASS_PREFIX } from './constants';
 import { CloseButtonIcon, CloseButtonRoot } from './style';
 
 /**
+ * # CloseButton
+ *
+ * # 🚨🚨🚨 Important: this functionality is internal! It can be changed without prior notice and without backward compatibility support. Please don't use it in the code of your own project.
+ *
+ * @internal
  * @armor-docs-component
  */
 export const CloseButton = forwardRef<

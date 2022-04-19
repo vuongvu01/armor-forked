@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
 import { appendClassName } from '@deliveryhero/armor-system';
 
-import getClassNameByComponent from './getClassNameByComponent';
+import getClassNameByComponent from '../utils/getClassNameByComponent';
 
-const useAccordionClassName = (
+export const useAccordionClassName = (
     classPrefix: string,
     className?: string,
     disabled?: boolean,
@@ -23,5 +23,3 @@ const useAccordionClassName = (
         }),
         [classPrefix, className, disabled, expanded],
     );
-
-export default useAccordionClassName;

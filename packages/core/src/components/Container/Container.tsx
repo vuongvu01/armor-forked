@@ -7,6 +7,23 @@ import { ContainerPropsType } from './type';
 import { CONTAINER_CLASS_PREFIX } from './constants';
 
 /**
+ * # Container
+ *
+ * Used to align the content in the center, and limits its width to a certain maximum value.
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/62ac46-container/b/41ce23)
+ *
+ * ## Examples
+ *
+ * ***
+ *
+ * ```
+ * import { Container } from '@deliveryhero/armor';
+ *
+ * <Container maxWidth="md">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Container>
+ * ```
+ * ***
+ *
  * @armor-docs-component
  */
 export const Container = forwardRef<HTMLDivElement, ContainerPropsType>(

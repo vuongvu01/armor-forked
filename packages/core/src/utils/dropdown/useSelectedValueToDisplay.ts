@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { stripHTMLTagsMemoized as stripHTMLTags } from '@deliveryhero/armor-system';
 
 import {
     DropdownInternalOptionType,
@@ -23,6 +24,6 @@ export const useSelectedValueToDisplay = (
 
         return internalOptions
             .filter((option) => internalValue.includes(option.value))
-            .map((option) => option.label)
+            .map((option) => stripHTMLTags(option.label))
             .join(', ');
     }, [onRenderSelectedValue, internalValue, internalOptions]);

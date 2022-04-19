@@ -16,6 +16,49 @@ import { SearchIcon } from './SearchIcon';
 import { SearchClearAction } from './SearchClearAction';
 
 /**
+ * # Search
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/348c10-search/b/01a238)
+ *
+ * ## Examples
+ *
+ * ***
+ *
+ * ```
+ * import { ChangeEvent, useState } from 'react';
+ * import { Search } from '@deliveryhero/armor';
+ * import { InfoIcon, PinMarkerIcon } from '@deliveryhero/armor-icons';
+ *
+ * const foodOptions = [
+ *     { value: 0, label: 'Biryani' },
+ *     { value: 1, label: 'Tacos' },
+ *     { value: 2, label: 'Pho' },
+ *     { value: 3, label: 'Risotto' },
+ *     { value: 4, label: 'Pizza' },
+ *     { value: 5, label: 'Enchiladas' },
+ * ];
+ *
+ * const [searchQuery, setSearchQuery] = useState('');
+ *
+ * const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
+ *     const query = event?.target?.value || '';
+ *     setSearchQuery(query);
+ * };
+ *
+ * const handleOnSelect = (option: { label: string }) => {
+ *     setSearchQuery(option.label);
+ * };
+ *
+ * <Search
+ *     additionalInfo={<InfoIcon width="12px" height="12px" />}
+ *     onChange={handleOnChange}
+ *     onItemSelect={handleOnSelect}
+ *     options={searchQuery && searchQuery.length ? foodOptions : []}
+ *     icon={<PinMarkerIcon width="12px" height="12px" />}
+ * />
+ * ```
+ * ***
+ *
  * @armor-docs-component
  */
 export const Search = forwardRef<HTMLInputElement, SearchPropsType>(

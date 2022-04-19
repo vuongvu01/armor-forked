@@ -7,6 +7,26 @@ import { ListPropsType } from './type';
 import { LIST_CLASS_PREFIX } from './constants';
 
 /**
+ * # List
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/220cd6-list/b/76988e)
+ *
+ * ## Examples
+ *
+ * ***
+ *
+ * ```
+ * import { List, ListItem } from '@deliveryhero/armor';
+ *
+ * <List>
+ *     <ListItem enableSecondaryItem={false}>Primary Only</ListItem>
+ *     <ListItem secondaryItemText='Secondary Text'>Primary and Secondary</ListItem>
+ *     <ListItem divider={true} secondaryItemText='Secondary Text'>With divider</ListItem>
+ *     <ListItem disabled={true} secondaryItemText='Secondary Text'>Disabled</ListItem>
+ * </List>
+ * ```
+ * ***
+ *
  * @armor-docs-component
  */
 export const List = forwardRef<HTMLDivElement, ListPropsType>(function List(

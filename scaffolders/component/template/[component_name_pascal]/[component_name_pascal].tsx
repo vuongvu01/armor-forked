@@ -10,6 +10,21 @@ import {
 } from './constants';
 
 /**
+ * # <%- component_name_pascal %>
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/XXXXX/b/YYYYYYY)
+ *
+ * ## Examples
+ *
+ * ***
+ *
+ * ```
+ * import { <%- component_name_pascal %> } from '@deliveryhero/armor';
+ *
+ * <<%- component_name_pascal %> />
+ * ```
+ * ***
+ *
  * @armor-docs-component
  */
 export const <%- component_name_pascal %> = forwardRef<

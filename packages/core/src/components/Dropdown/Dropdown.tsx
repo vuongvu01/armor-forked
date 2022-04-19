@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
-import PropTypes from 'prop-types';
-import { useTheme, PortalToBody } from '@deliveryhero/armor-system';
+import { PortalToBody } from '@deliveryhero/armor-system';
 
 import { useDropdown, useDropdownClassName } from './hooks';
 import {
@@ -21,12 +20,43 @@ import { OptionList } from '../OptionList';
 import { DropdownBeforeSection } from './DropdownBeforeSection';
 
 /**
+ * # Dropdown
+ *
+ * These are useful to choose a menu from the options menu and is only triggered by user
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/934025-dropdown/b/34f42f)
+ *
+ * ## Examples
+ *
+ * ***
+ *
+ * ```
+ * import { Dropdown } from '@deliveryhero/armor';
+ *
+ * const foodOptions = [
+ *     { value: 0, label: 'Biryani' },
+ *     { value: 1, label: 'Tacos' },
+ *     { value: 2, label: 'Pho' },
+ *     { value: 3, label: 'Pâté of roasted indigenous legumes' },
+ *     { value: 42, label: 'Pizza' },
+ *     { value: 5, label: 'Enchiladas' },
+ *     { value: 6, label: 'Börek' },
+ *     { value: 7, label: 'Quiche' },
+ *     { value: 8, label: 'Köfte' },
+ * ];
+ *
+ * <Dropdown
+ *     options={foodOptions}
+ *     label="Dish type"
+ *     multiple
+ * />
+ * ```
+ * ***
+ *
  * @armor-docs-component
  */
 export const Dropdown = forwardRef<HTMLInputElement, DropdownPropsType>(
     function Dropdown({ className, ...props }, ref) {
-        const theme = useTheme().armor;
-
         const {
             rootProps,
             containerProps,

@@ -101,6 +101,144 @@ const renderMenuElement = (
 };
 
 /**
+ * # Navigation
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/74fc22-navigation/b/359f2d)
+ *
+ * ## Examples
+ *
+ * ***
+ *
+ * ```
+ * import { Navigation } from '@deliveryhero/armor';
+ *
+ * const [structure, setStructure] = useState([
+ *     {
+ *         id: 'mammals',
+ *         label: 'Mammals',
+ *         expanded: true,
+ *         selected: true,
+ *         items: [
+ *             {
+ *                 id: 'cats',
+ *                 label: 'Cats',
+ *                 expanded: false,
+ *                 items: [
+ *                     {
+ *                         id: 'tiger',
+ *                         label: 'Tiger',
+ *                     },
+ *                     {
+ *                         id: 'lion',
+ *                         label: 'Lion',
+ *                     },
+ *                 ],
+ *             },
+ *             {
+ *                 id: 'dogs',
+ *                 label: 'Dogs',
+ *                 expanded: false,
+ *                 items: [
+ *                     {
+ *                         id: 'firefox',
+ *                         label: 'Fire Fox',
+ *                     },
+ *                     {
+ *                         id: 'wolf',
+ *                         label: 'Wolf',
+ *                     },
+ *                 ],
+ *             },
+ *         ],
+ *     },
+ * ]);
+ *
+ * const [structureB, setStructureB] = useState([
+ *     {
+ *         id: 'birds',
+ *         label: 'Birds',
+ *         expanded: false,
+ *         items: [
+ *             {
+ *                 id: 'hawks',
+ *                 label: 'Hawks',
+ *                 expanded: false,
+ *                 items: [
+ *                     {
+ *                         id: 'smallhawk',
+ *                         label: 'Small Hawk',
+ *                     },
+ *                     {
+ *                         id: 'hugehawk',
+ *                         label: 'Huge Hawk',
+ *                     },
+ *                 ],
+ *             },
+ *             {
+ *                 id: 'eagles',
+ *                 label: 'Eagles',
+ *                 expanded: false,
+ *                 items: [
+ *                     {
+ *                         id: 'baldeagle',
+ *                         label: 'Bald Eagle',
+ *                     },
+ *                     {
+ *                         id: 'whiteeagle',
+ *                         label: 'White Eagle',
+ *                     },
+ *                 ],
+ *             },
+ *         ],
+ *     },
+ * ]);
+ *
+ * return (
+ *     <>
+ *         <Navigation
+ *             items={structure}
+ *             maxDepthLevel={4}
+ *             width="400px"
+ *             enableBottomSeparator
+ *             onElementClick={(id, item) => {
+ *                 // eslint-disable-next-line no-param-reassign
+ *                 item.expanded = !item.expanded;
+ *
+ *                 if (id === 'tiger' && !item.items) {
+ *                     // eslint-disable-next-line no-param-reassign
+ *                     item.items = [
+ *                         { id: 'monkeys', label: 'Monkeys' },
+ *                         { id: 'donkeys', label: 'Donkeys' },
+ *                     ];
+ *                 }
+ *
+ *                 setStructure([...structure]);
+ *             }}
+ *         />
+ *         <Navigation
+ *             items={structureB}
+ *             maxDepthLevel={4}
+ *             width="400px"
+ *             onElementClick={(id, item) => {
+ *                 // eslint-disable-next-line no-param-reassign
+ *                 item.expanded = !item.expanded;
+ *
+ *                 if (id === 'tiger' && !item.items) {
+ *                     // eslint-disable-next-line no-param-reassign
+ *                     item.items = [
+ *                         { id: 'monkeys', label: 'Monkeys' },
+ *                         { id: 'donkeys', label: 'Donkeys' },
+ *                     ];
+ *                 }
+ *
+ *                 setStructureB([...structureB]);
+ *             }}
+ *         />
+ *     </>
+ * );
+ * ```
+ * ***
+ *
  * @armor-docs-component
  */
 export const Navigation = forwardRef<HTMLDivElement, NavigationPropsType>(

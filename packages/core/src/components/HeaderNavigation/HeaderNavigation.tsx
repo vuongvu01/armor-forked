@@ -19,6 +19,10 @@ import { HeaderNavigationMenu } from './HeaderNavigationMenu';
 import { HeaderNavigationItem } from './HeaderNavigationItem';
 
 /**
+ * # HeaderNavigation
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/111bcf-header-navigation/b/440e0c)
+ *
  * @armor-docs-component
  */
 export const HeaderNavigation = forwardRef<

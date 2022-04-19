@@ -13,6 +13,33 @@ import { useSideSheetHeaderClassNames } from './hooks/useSideSheetHeaderClassNam
 export const SIDE_SHEET_HEADER_CLASS_PREFIX = 'SideSheetHeader';
 
 /**
+ * # SideSheetHeader
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/9776c7-side-sheet/b/09d7b1)
+ *
+ * ## Examples
+ *
+ * ***
+ *
+ * ```
+ * import { SideSheet, SideSheetHeader, SideSheetBody, SideSheetFooter, Button } from '@deliveryhero/armor';
+ *
+ * const [open, setOpen] = useState(false);
+ * const onClose = () => setOpen(false);
+ *
+ * <SideSheet open={open} onClose={onClose}>
+ *     <SideSheetHeader
+ *         title="Header title"
+ *         description="Header description"
+ *     />
+ *     <SideSheetBody>Body content</SideSheetBody>
+ *     <SideSheetFooter>Footer actions</SideSheetFooter>
+ * </SideSheet>
+ *
+ * <Button onClick={() => setOpen(true)}>Show Layout</Button>
+ * ```
+ * ***
+ *
  * @armor-docs-component
  */
 export const SideSheetHeader: FC<SideSheetHeaderPropsType> = ({

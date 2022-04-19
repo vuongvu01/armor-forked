@@ -10,6 +10,7 @@ import {
     marginProps,
     propsBlocker,
     token,
+    widthProps,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -68,6 +69,7 @@ export const MessageRoot = styled.div.withConfig(
     ${getRootDynamicStyle};
     ${getComponentOverride('Message')};
     ${marginProps};
+    ${widthProps};
 `;
 
 export const MessageCentral = styled.div.withConfig(

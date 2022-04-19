@@ -18,6 +18,8 @@ import { CONDITION_TAG_CLASS_PREFIX } from './constants';
 import { Tooltip } from '../Tooltip';
 
 /**
+ * # ConditionTag
+ *
  * @armor-docs-component
  */
 export const ConditionTag = forwardRef<HTMLDivElement, ConditionTagPropsType>(

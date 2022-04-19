@@ -7,6 +7,10 @@ import { AccordionContext } from '../AccordionContext';
 import { useAccordionContentClassName } from './hooks/useAccordionContentClassName';
 
 /**
+ * # AccordionContent
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/40676d-accordion/b/198afb)
+ *
  * @armor-docs-component
  */
 export const AccordionContent = forwardRef<

@@ -102,8 +102,8 @@ export const DialogWindow = styled(Card)<DialogWindowPropsType>`
     min-height: ${spacing(23)};
     min-width: ${spacing(100)};
 
-    ${sizeProps};
     ${getWindowStyle};
+    ${sizeProps};
 `;
 
 export const DialogContent = styled.div.withConfig(

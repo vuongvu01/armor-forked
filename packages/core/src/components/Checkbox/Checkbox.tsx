@@ -16,6 +16,78 @@ import { CHECKBOX_CLASS_PREFIX, checkboxIdPrefix } from './constants';
 import { RefType } from '../../type';
 
 /**
+ * # Checkbox
+ *
+ * Checkbox is used for making multiple selection in a list. A user can either choose one or more before triggering an event or even choose none.
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/498b57-checkbox/b/527bb6)
+ *
+ * ## Examples
+ *
+ * ***
+ *
+ * ```
+ * import React, { useState } from 'react';
+ * import { Checkbox, Stack } from '@deliveryhero/armor';
+ *
+ * const [checked, setChecked] = useState<boolean>(false);
+ *
+ * <Stack>
+ *     <Checkbox
+ *         onChange={() => {}}
+ *         label="Unchecked"
+ *         marginBottom={2}
+ *     />
+ *     <Checkbox
+ *         defaultChecked
+ *         onChange={() => {}}
+ *         label="Checked [uncontrolled]"
+ *         marginBottom={2}
+ *     />
+ *     <Checkbox
+ *         defaultChecked
+ *         checkedIcon="dash"
+ *         onChange={() => {}}
+ *         label="Partially selected [uncontrolled]"
+ *         marginBottom={2}
+ *     />
+ *     <Checkbox
+ *         checked={checked}
+ *         onChange={() => setChecked(!checked)}
+ *         label="Checked"
+ *         marginBottom={2}
+ *     />
+ *     <Checkbox
+ *         checked={checked}
+ *         onChange={() => setChecked(!checked)}
+ *         label="Partially selected"
+ *         marginBottom={2}
+ *     />
+ *     <Checkbox
+ *         onChange={() => {}}
+ *         label="Unchecked disabled"
+ *         marginBottom={2}
+ *         disabled
+ *     />
+ *     <Checkbox
+ *         defaultChecked
+ *         onChange={() => {}}
+ *         label="Checked disabled"
+ *         marginBottom={2}
+ *         disabled
+ *     />
+ *     <Checkbox
+ *         defaultChecked
+ *         checkedIcon="dash"
+ *         onChange={() => {}}
+ *         label="Partially selected disabled"
+ *         marginBottom={2}
+ *         disabled
+ *     />
+ * </Stack>
+ * ```
+ * ***
+ *
  * @armor-docs-component
  */
 export const Checkbox = forwardRef<

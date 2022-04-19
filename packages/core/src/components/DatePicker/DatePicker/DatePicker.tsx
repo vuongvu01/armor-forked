@@ -20,6 +20,24 @@ import { DatePickerDaySelector } from '../DatePickerDaySelector';
 import { DatePickerTopBar } from '../DatePickerTopBar';
 
 /**
+ * # DatePicker
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/0591e9-date-picker/b/35ef35)
+ *
+ * ## Examples
+ *
+ * ***
+ *
+ * ```
+ * import { useState } from 'react';
+ * import { DatePicker } from '@deliveryhero/armor';
+ *
+ * const [value, setValue] = useState<Date>();
+ *
+ * <DatePicker dateValue={value} onDateValueChange={setValue} />
+ * ```
+ * ***
+ *
  * @armor-docs-component
  */
 export const DatePicker = forwardRef<HTMLDivElement, DatePickerPropsType>(

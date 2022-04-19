@@ -24,6 +24,41 @@ import { FileCardPropsType } from './type';
 import { FILECARD_CLASS_PREFIX } from './constants';
 
 /**
+ * # FileCard
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/71d773-file-card/b/206bd6)
+ *
+ * ## Examples
+ *
+ * ***
+ *
+ * ```
+ * import React from 'react';
+ * import { FileCard } from '@deliveryhero/armor';
+ *
+ * const handleClickCancel = (id: string) => {
+ *   console.log({ cancelId: id });
+ * };
+ *
+ * const handleClickDelete = (id: string) => {
+ *   console.log({ deleteId: id });
+ * };
+ *
+ * export const Example = () => {
+ *   return (
+ *     <FileCard
+ *         fileId="file-01"
+ *         onCancelButtonClick={handleClickCancel}
+ *         onDeleteButtonClick={handleClickDelete}
+ *         fileName="Lorem_ipsum_dolor_sit_amet.txt"
+ *         fileSize={10491049}
+ *         uploadProgress={42}
+ *     />
+ *   );
+ * };
+ * ```
+ * ***
+ *
  * @armor-docs-component
  */
 export const FileCard = forwardRef<HTMLDivElement, FileCardPropsType>(

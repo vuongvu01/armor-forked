@@ -8,6 +8,29 @@ import { TYPOGRAPHY_CLASS_PREFIX } from './constants';
 import { useTypography } from './hooks/useTypography';
 
 /**
+ * # Typography
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/6198e0-typography/b/63beb3)
+ *
+ * ## Examples
+ *
+ * ***
+ *
+ * ```
+ * import { Typography } from '@deliveryhero/armor';
+ *
+ * <Typography pageTitle>
+ *     Welcome to Black Mesa
+ * </Typography>
+ * <Typography sectionTitle>
+ *     The temperature on the surface is 62 degrees
+ * </Typography>
+ * <Typography subSectionTitle>
+ *     This train arrives at Sector C
+ * </Typography>
+ * ```
+ * ***
+ *
  * @armor-docs-component
  */
 export const Typography = forwardRef<HTMLDivElement, TypographyPropsType>(

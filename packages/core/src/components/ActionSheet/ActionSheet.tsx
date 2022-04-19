@@ -9,6 +9,28 @@ import { ActionSheetPropsType } from './type';
 import { ACTIONSHEET_CLASS_PREFIX } from './constants';
 
 /**
+ * # ActionSheet
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/069232-action-sheet/b/59fd67)
+ *
+ * ## Examples
+ *
+ * ***
+ *
+ * ```
+ * import { ActionSheet, Button } from '@deliveryhero/armor';
+ *
+ * <ActionSheet label="2 items selected" margin={4}>
+ *     <div>
+ *         <Button tertiary marginRight={4}>
+ *             Cancel
+ *         </Button>
+ *         <Button>Delete</Button>
+ *     </div>
+ * </ActionSheet>
+ * ```
+ * ***
+ *
  * @armor-docs-component
  */
 export const ActionSheet = forwardRef<HTMLDivElement, ActionSheetPropsType>(

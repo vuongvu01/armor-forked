@@ -12,6 +12,7 @@ export * from './Files';
 export * from './Finance';
 export * from './Folder';
 export * from './Help';
+export * from './Link';
 export * from './Lock';
 export * from './Map';
 export * from './NavigationMenu';

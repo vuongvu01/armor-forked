@@ -27,6 +27,35 @@ import { Button } from '../Button';
 import { TextInput } from '../TextInput';
 
 /**
+ * # LoginPage
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/3419ad-login-page/b/221ef2)
+ *
+ * ## Examples
+ *
+ * ***
+ *
+ * ```
+ * import { LoginPage } from '@deliveryhero/armor';
+ *
+ * const handleClickSubmit = (data: { email: string; password: string }) => {
+ *   const { email, password } = data;
+ *   console.log({ email, password });
+ * };
+ *
+ * <LoginPage
+ *     enableLoginForm
+ *     header="LOGO"
+ *     title="Your product name"
+ *     registrationHref="https://www.deliveryhero.com"
+ *     registrationTarget="_blank"
+ *     enableRegistration
+ *     oAuth2Buttons="Sign in button placeholder"
+ *     onSubmit={handleClickSubmit}
+ * />
+ * ```
+ * ***
+ *
  * @armor-docs-component
  */
 export const LoginPage = forwardRef<HTMLDivElement, LoginPagePropsType>(

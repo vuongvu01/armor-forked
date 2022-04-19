@@ -6,6 +6,23 @@ import { useBadgeClassName } from './utils';
 import { BADGE_CLASS_PREFIX } from './constants';
 
 /**
+ * # Badge
+ *
+ * Mostly used in tabs to display the number of items needing user's attention.
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/166a81-badge/b/282244)
+ *
+ * ## Examples
+ *
+ * ***
+ *
+ * ```
+ * import { Badge } from '@deliveryhero/armor';
+ *
+ * <Badge>This is a badge</Badge>
+ * ```
+ * ***
+ *
  * @armor-docs-component
  */
 export const Badge = forwardRef<HTMLDivElement, BadgePropsType>(function Badge(

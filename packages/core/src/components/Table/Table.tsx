@@ -9,6 +9,44 @@ import { TableContext } from './utils/TableContext';
 import { useTable } from './hooks/useTable';
 
 /**
+ * # Table
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/21c7b5-table/b/527bb6)
+ *
+ * ## Examples
+ *
+ * ***
+ *
+ * ```
+ * import {
+ *     Table,
+ *     TableHead,
+ *     TableBody,
+ *     TableRow,
+ *     TableCell,
+ * } from '@deliveryhero/armor';
+ *
+ * <Table>
+ *     <TableHead>
+ *         <TableRow>
+ *             <TableCell>Food Companies</TableCell>
+ *             <TableCell>Scheme ID</TableCell>
+ *         </TableRow>
+ *     </TableHead>
+ *     <TableBody>
+ *         <TableRow>
+ *             <TableCell>Kitchen Garden POS</TableCell>
+ *             <TableCell>Scheme B</TableCell>
+ *         </TableRow>
+ *         <TableRow>
+ *             <TableCell>KFC HK</TableCell>
+ *             <TableCell>Scheme F</TableCell>
+ *         </TableRow>
+ *     </TableBody>
+ * </Table>
+ * ```
+ * ***
+ *
  * @armor-docs-component
  */
 export const Table = forwardRef<HTMLTableElement, TablePropsType>(

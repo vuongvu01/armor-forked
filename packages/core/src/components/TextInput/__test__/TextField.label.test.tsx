@@ -1,4 +1,4 @@
-/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable @typescript-eslint/no-non-null-assertion, import/no-extraneous-dependencies */
 
 import React from 'react';
 import { cleanup, render, wait, fireEvent } from '@testing-library/react';
@@ -40,8 +40,9 @@ const expectInputLabelToChangeOnAction = async (
     insideAfter: boolean,
     act: (input: HTMLInputElement) => Promise<void>,
     props?: ObjectLiteralType,
+    defaultInputObject?: ObjectLiteralType,
 ) => {
-    const { container, getInput, getLabel } = renderTextInput(props);
+    const { getInput, getLabel } = defaultInputObject || renderTextInput(props);
     const isLabelInsideBefore = getLabel().classList.contains(
         'TextInput-Label--inside',
     );
@@ -70,13 +71,11 @@ const expectInputLabelToChangeOnProps = async (
     const isLabelInsideBefore = getLabelBefore().classList.contains(
         'TextInput-Label--inside',
     );
-    // console.log(prettyDOM(container));
 
     const { getLabel: getLabelAfter } = renderTextInput(propsAfter);
     const isLabelInsideAfter = getLabelAfter().classList.contains(
         'TextInput-Label--inside',
     );
-    // console.log(prettyDOM(container));
 
     expect(isLabelInsideBefore).toEqual(insideBefore);
     expect(isLabelInsideAfter).toEqual(insideAfter);
@@ -111,9 +110,8 @@ describe('<TextInput />: label', () => {
     });
 
     describe('Transition state', () => {
-        // todo: fix this test
-        it.skip('should move Inside -> Outside on focus, and back on blur', async () => {
-            const { getInput } = await expectInputLabelToChangeOnAction(
+        it('should move Inside -> Outside on focus, and back on blur', async () => {
+            const defaultInputObject = await expectInputLabelToChangeOnAction(
                 INSIDE,
                 OUTSIDE,
                 async (input) => {
@@ -122,7 +120,15 @@ describe('<TextInput />: label', () => {
                 { value: '' },
             );
 
-            // fireEvent.blur(getInput());
+            await expectInputLabelToChangeOnAction(
+                OUTSIDE,
+                INSIDE,
+                async (input) => {
+                    fireEvent.blur(input);
+                },
+                { value: '' },
+                defaultInputObject,
+            );
         });
 
         it('should move Inside -> Outside on text input [uncontrolled]', async () => {
@@ -135,8 +141,7 @@ describe('<TextInput />: label', () => {
             );
         });
 
-        // todo: this test started failing after another package update. Uncomment after some time and check if it works
-        it.skip('should move Outside -> Inside on text deletion [uncontrolled]', async () => {
+        it('should move Outside -> Inside on text deletion [uncontrolled]', async () => {
             await expectInputLabelToChangeOnAction(
                 OUTSIDE,
                 INSIDE,
@@ -145,6 +150,17 @@ describe('<TextInput />: label', () => {
                     fireEvent.blur(input);
                 },
                 { defaultValue: 'Foo' },
+            );
+        });
+
+        it('should not move label when disableLabelEffect is true', async () => {
+            await expectInputLabelToChangeOnAction(
+                OUTSIDE,
+                OUTSIDE,
+                async (input) => {
+                    fireEvent.focus(input);
+                },
+                { disableLabelEffect: true, value: '' },
             );
         });
 

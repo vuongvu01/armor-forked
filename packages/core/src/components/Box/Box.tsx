@@ -7,6 +7,31 @@ import { BOX_CLASS_PREFIX } from './constants';
 import { useBoxClassName } from './utils/useBoxClassName';
 
 /**
+ * # Box
+ *
+ * Box is used to wrap around and provide margins, paddings and also actual content.
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/30fb7c-box/b/30ddfb)
+ *
+ * ## Examples
+ *
+ * ***
+ *
+ * ```
+ * import { Box } from '@deliveryhero/armor';
+ *
+ * <div style={{ border: '1px solid green' }}>
+ *     <Box
+ *         padding="2rem"
+ *         margin={20}
+ *         style={{ border: '1px solid red' }}
+ *     >
+ *         80px margin, 2rem padding
+ *     </Box>
+ * </div>
+ * ```
+ * ***
+ *
  * @armor-docs-component
  */
 export const Box: FunctionComponent<BoxPropsType> = ({

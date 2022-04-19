@@ -6,6 +6,23 @@ import { IndicatorPropsType } from './type';
 import { INDICATOR_CLASS_PREFIX } from './constants';
 
 /**
+ * # Indicator
+ *
+ * Used signify or draw user's attention
+ *
+ * ## [Documentation](https://armor.deliveryhero.com/251886272/p/9288f3-indicator/b/39a126)
+ *
+ * ## Examples
+ *
+ * ***
+ *
+ * ```
+ * import { Indicator } from '@deliveryhero/armor';
+ *
+ * <Indicator />
+ * ```
+ * ***
+ *
  * @armor-docs-component
  */
 export const Indicator = forwardRef<HTMLDivElement, IndicatorPropsType>(
