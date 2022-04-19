@@ -1,3 +1,13 @@
+## @deliveryhero/armor-motion [1.1.3](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-motion@1.1.2...@deliveryhero/armor-motion@1.1.3) (2022-04-19)
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor-system:** upgraded to 1.6.1
+
 ## [1.1.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-motion@1.1.1...@deliveryhero/armor-motion@1.1.2) (2022-03-28)
 
 
