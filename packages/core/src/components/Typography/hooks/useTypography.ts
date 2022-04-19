@@ -4,16 +4,14 @@ import { TypographyPropsType } from '../type';
 import { getTagName } from '../utils/getTagName';
 
 export const useTypography = (
-    { disabled, error, ...restProps }: TypographyPropsType,
+    props: TypographyPropsType,
     ref: Ref<unknown>,
 ) => {
-    const Tag = getTagName(restProps);
+    const Tag = getTagName(props);
 
     return {
-        rootProps: {
-            ...restProps,
-            disabled,
-            error,
+        rootProps: props,
+        tagProps: {
             ref,
         },
         Tag,
