@@ -1,3 +1,17 @@
+## [1.4.10](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.4.9...@deliveryhero/armor-vendors@1.4.10) (2022-04-19)
+
+
+### Bug Fixes
+
+* **dropdown:** Fix Dropdown to support custom option label [AR-62] ([2e8a898](https://github.com/deliveryhero/armor/commit/2e8a8986a6aec9feba68b672b2402e903bd03f3c))
+* **icons:** Fix icons are not center aligned [LD-731] ([ca13e5d](https://github.com/deliveryhero/armor/commit/ca13e5db7008a1a2321a7883c799fa50833b5598))
+* **icons:** update visual tests regarding to the icons change ([#948](https://github.com/deliveryhero/armor/issues/948)) ([6df99cc](https://github.com/deliveryhero/armor/commit/6df99cc6a90e60981405676fa90eb667f165e2b4))
+
+
+### Features
+
+* **datepicker:** mask input ([#954](https://github.com/deliveryhero/armor/issues/954)) ([03b9a76](https://github.com/deliveryhero/armor/commit/03b9a76ad4a73db47066d03f9baf7c926bd778a2))
+
 ## [1.4.9](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.4.8...@deliveryhero/armor-vendors@1.4.9) (2022-04-06)
 
 
