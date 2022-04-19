@@ -51,6 +51,7 @@ export const DateRangePicker = forwardRef<
     const {
         rootProps,
         inputProps,
+        inputMaskProps,
         portalProps,
         dropdownProps,
         arrowProps,
@@ -63,6 +64,7 @@ export const DateRangePicker = forwardRef<
         open,
         showActions,
         showTimePicker,
+        showMaskedInput,
     } = useDateRangePicker(props, ref);
 
     return (
@@ -71,10 +73,13 @@ export const DateRangePicker = forwardRef<
             className={classNameComponents.Root}
         >
             <DatePickerInput
-                {...inputProps}
+                {...(showMaskedInput ? inputMaskProps : inputProps)}
+                type="text"
                 className={classNameComponents.Input}
                 after={<DatePickerInputIcon />}
+                ref={inputProps.ref}
             />
+
             {open && (
                 <PortalToBody {...portalProps}>
                     <DatePickerDropdown

@@ -1,5 +1,4 @@
 import React, { forwardRef } from 'react';
-// import PropTypes from 'prop-types';
 import { PortalToBody } from '@deliveryhero/armor-system';
 
 import { useDatePickerClassNames } from '../hooks/useDatePickerClassNames';
@@ -51,6 +50,8 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerPropsType>(
             portalProps,
             rootProps,
             inputProps,
+            inputMaskProps,
+            showMaskedInput,
             dropdownProps,
             arrowProps,
             topBarProps,
@@ -69,10 +70,13 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerPropsType>(
         return (
             <DatePickerRoot {...rootProps} className={classNameComponents.Root}>
                 <DatePickerInput
-                    {...inputProps}
+                    {...(showMaskedInput ? inputMaskProps : inputProps)}
+                    type="text"
                     className={classNameComponents.Input}
                     after={<DatePickerInputIcon />}
+                    ref={inputProps.ref}
                 />
+
                 {open && (
                     <PortalToBody {...portalProps}>
                         <DatePickerDropdown

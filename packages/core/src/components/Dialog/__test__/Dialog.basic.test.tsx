@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { cleanup, render } from '@testing-library/react';
 
-import { Dialog, DialogTitle } from '../..';
+import { Dialog } from '../..';
 
 describe('<Dialog />', () => {
     beforeAll(() => {

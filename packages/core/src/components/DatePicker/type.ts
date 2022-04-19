@@ -5,6 +5,7 @@ import {
     ComponentBehaviourOpenStateType,
     ComponentBehaviourOverlayType,
     ComponentBehaviourPortalType,
+    MutuallyExclusive,
 } from '@deliveryhero/armor-system';
 
 import { ComponentElementStylePropsType } from '../type';
@@ -14,6 +15,29 @@ export type DateRangeEdgeType = Date | string | null;
 export type DateValueType = Date;
 export type DateValueRangeType = [Date, Date];
 export type DateValueAdvancedRangeType = [DateRangeEdgeType, DateRangeEdgeType];
+
+export type FormatDateTimeProps = Partial<{
+    /**
+     * Allows arbitrary formatting the selected date. Libraries like date-fns or momentjs can be used to perform the formatting through this callback.
+     *
+     * ~~~typescript example
+     * import { format } from 'date-fns';
+     *
+     * <#COMPONENT_NAME#
+     *      formatDateTime: (value: unknown) => format(
+     *          value instanceof Date ? value : new Date(value as string),
+     *          'hh:mm dd.MM.yyyy'
+     *      ),
+     * />
+     * ~~~
+     */
+    formatDateTime: (value: Date) => string;
+}>;
+
+export type InputMaskEnabledProps = Partial<{
+    /** Enable input mask for datepicker */
+    inputMaskEnabled: boolean;
+}>;
 
 export type DatePickerEffectiveCommonPropsType = Partial<{
     /**
@@ -41,21 +65,6 @@ export type DatePickerEffectiveCommonPropsType = Partial<{
      * @deprecated
      * */
     enableMinWidthAutoCorrection: boolean;
-    /**
-     * Allows arbitrary formatting the selected date. Libraries like date-fns or momentjs can be used to perform the formatting through this callback.
-     *
-     * ~~~typescript example
-     * import { format } from 'date-fns';
-     *
-     * <#COMPONENT_NAME#
-     *      formatDateTime: (value: unknown) => format(
-     *          value instanceof Date ? value : new Date(value as string),
-     *          'hh:mm dd.MM.yyyy'
-     *      ),
-     * />
-     * ~~~
-     */
-    formatDateTime: (value: Date) => string;
 
     /** Sets input label. */
     label: string;
@@ -132,6 +141,7 @@ export type DatePickerEffectiveCommonPropsType = Partial<{
 
     // add other custom properties here
 }> &
+    MutuallyExclusive<FormatDateTimeProps, InputMaskEnabledProps> &
     ComponentBehaviourOpenStateType &
     ComponentBehaviourOverlayType &
     ComponentBehaviourPortalType &

@@ -35,7 +35,7 @@ import { useTypography } from './hooks/useTypography';
  */
 export const Typography = forwardRef<HTMLDivElement, TypographyPropsType>(
     function Typography({ className, children, ...props }, ref) {
-        const { rootProps, Tag } = useTypography(props, ref);
+        const { rootProps, tagProps, Tag } = useTypography(props, ref);
 
         const classNameComponents = useTypographyClassNames(
             TYPOGRAPHY_CLASS_PREFIX,
@@ -46,7 +46,9 @@ export const Typography = forwardRef<HTMLDivElement, TypographyPropsType>(
         return (
             <TypographyRoot {...rootProps} className={classNameComponents.Root}>
                 {(forwardedProps: TypographyPropsType) => (
-                    <Tag {...forwardedProps}>{children}</Tag>
+                    <Tag {...forwardedProps} {...tagProps}>
+                        {children}
+                    </Tag>
                 )}
             </TypographyRoot>
         );

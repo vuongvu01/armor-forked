@@ -16,6 +16,7 @@ import { useCommonDatePickerInputProps } from '../../hooks/useCommonDatePickerIn
 import { useDatePickerTodayButton } from './useDatePickerTodayButton';
 import { useCommonDatePickerActionButtons } from '../../hooks/useCommonDatePickerActionButtons';
 import { useCommonDatePickerCompatibility } from '../../hooks/useCommonDatePickerCompatibility';
+import { useDatePickerMaskedInput } from './useDatePickerMaskedInput';
 
 export const useDatePicker = <E extends HTMLDivElement>(
     props: DatePickerPropsType,
@@ -135,6 +136,23 @@ export const useDatePicker = <E extends HTMLDivElement>(
         props,
     );
 
+    const { value, showMaskedInput, onChange, onFocus } =
+        useDatePickerMaskedInput(
+            {
+                formattedValue,
+                inactive,
+                toggleDropdown,
+                setDisplayedDateVector,
+                onDateTimeChange,
+                enableTimePicker,
+                isDateSelectable,
+                onTimeSelectorValueChange,
+                dropdownOpen,
+            },
+
+            props,
+        );
+
     return {
         rootProps: {
             ...props,
@@ -144,16 +162,23 @@ export const useDatePicker = <E extends HTMLDivElement>(
         },
         inputProps: {
             ...inputProperties,
+            onRootClick: inactive ? undefined : toggleDropdown,
             ref: inputRef,
             value: formattedValue,
-            onRootClick: inactive ? undefined : toggleDropdown,
         },
+        inputMaskProps: {
+            ...inputProperties,
+            value,
+            onChange,
+            onFocus,
+        },
+        showMaskedInput,
         portalProps,
         dropdownProps,
         arrowProps,
         topBarProps: {
             displayedDateVector, // to show the currently displayed year and month
-            onDisplayedDateVectorChange: setDisplayedDateVector, // to shit months back and forward
+            onDisplayedDateVectorChange: setDisplayedDateVector, // to shift months back and forward
             monthYearSelectorOpen,
             onMonthYearToggleClick: onMonthYearSelectorToggle,
         },

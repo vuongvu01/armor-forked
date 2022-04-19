@@ -93,3 +93,9 @@ export const KindsOfProps = () => (
         Hello world!
     </Typography>
 );
+
+export const MaxLines = () => (
+    <Typography maxLines={2} paragraph>
+        Hello world!
+    </Typography>
+);

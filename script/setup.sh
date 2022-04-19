@@ -13,4 +13,6 @@ cd ${DIR}/../packages/brands && yarn setup
 cd ${DIR}/../packages/illustrations && yarn setup
 cd ${DIR}/../packages/motion && yarn setup
 
+cd ${DIR}
+
 yarn install-peers

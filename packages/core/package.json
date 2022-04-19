@@ -46,6 +46,7 @@
         "prop-types": "^15.7.2",
         "query-string": "^7.0.0",
         "react-transition-group": "^4.4.2",
+        "rifm": "^0.12.1",
         "throttle-debounce": "2.1.0"
     },
     "repository": {

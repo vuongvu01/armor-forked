@@ -28,6 +28,17 @@ export const Basic = () => {
     );
 };
 
+export const WithMaskedInput = () => {
+    return (
+        <Box paddingTop={20}>
+            <DateRangePicker
+                data-testid-input="input43"
+                inputMaskEnabled={true}
+            />
+        </Box>
+    );
+};
+
 export const Controlled = () => {
     const [dateRange, setDateRange] = useState<[Date, Date] | undefined | null>(
         [new Date(), new Date()],
