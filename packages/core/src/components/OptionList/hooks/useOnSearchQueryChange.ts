@@ -1,4 +1,5 @@
 import { useCallback } from 'react';
+import { stripHTMLTagsMemoized as stripHTMLTags } from '@deliveryhero/armor-system';
 
 import {
     DropdownInternalOptionType,
@@ -33,11 +34,8 @@ export const useOnSearchQueryChange = (
             }
 
             const matchingOptions = internalOptions.filter((option) => {
-                const label =
-                    typeof option.label === 'string'
-                        ? option.label.toLowerCase()
-                        : option.label;
-                return label.toString().indexOf(query) !== -1;
+                const label = stripHTMLTags(option.label);
+                return label.toLowerCase().indexOf(query) !== -1;
             });
 
             if (setInternalOptions) {

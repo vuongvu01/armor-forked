@@ -1641,3 +1641,66 @@ export const WithMaxAndMinDropdownWidthOptions = () => {
         </>
     );
 };
+
+export const CustomOptionLabelStyle = () => {
+    const WithStyle: React.FC = ({ children }) => (
+        <span style={{ border: '1px solid red' }}>{children}</span>
+    );
+
+    const foodCustomLabelOptions = [
+        { value: -100, label: <WithStyle>All food</WithStyle> },
+        { value: 0, label: <WithStyle>Biryani</WithStyle> },
+        { value: 1, label: <WithStyle>Tacos</WithStyle> },
+        { value: 2, label: <WithStyle>Pho</WithStyle> },
+        {
+            value: 3,
+            label: <WithStyle>Pâté of roasted indigenous legumes</WithStyle>,
+            disabled: true,
+        },
+        { value: 4, label: <WithStyle>Pizza</WithStyle> },
+        { value: 5, label: <WithStyle>Enchiladas</WithStyle> },
+        { value: 6, label: <WithStyle>Börek</WithStyle> },
+        { value: 7, label: <WithStyle>Quiche</WithStyle> },
+        { value: 8, label: <WithStyle>Köfte</WithStyle> },
+        { value: 9, label: <WithStyle>Pad Thai</WithStyle> },
+        { value: 10, label: <WithStyle>Churrasco</WithStyle> },
+        { value: 11, label: <WithStyle>Baozi</WithStyle> },
+        { value: 12, label: <WithStyle>Ceviche</WithStyle> },
+        { value: 13, label: <WithStyle>Mac & Cheese</WithStyle> },
+        { value: 14, label: <WithStyle>Paella</WithStyle> },
+        { value: 15, label: <WithStyle>Dim sum</WithStyle> },
+        { value: 16, label: <WithStyle>Hamburger</WithStyle> },
+        { value: 17, label: <WithStyle>Ramen</WithStyle> },
+        { value: 18, label: <WithStyle>Sushi</WithStyle> },
+        { value: 19, label: <WithStyle>Burrito</WithStyle> },
+    ];
+    const [selectedOption, setSelectedOption] = useState<{
+        value: string;
+        label: React.ReactChild;
+    }>();
+    const handleSelect = (option: any) => {
+        setSelectedOption(option);
+    };
+
+    return (
+        <>
+            <GroupHelper gap={2}>
+                <Box padding={3} style={{ ...boxStyle, width: '300px' }}>
+                    <Dropdown
+                        options={foodCustomLabelOptions}
+                        onSelect={handleSelect}
+                        value={selectedOption?.value}
+                        label="Dish type"
+                        enableSearchOption
+                    />
+                    <Typography paragraph>
+                        Selected label: {selectedOption?.label}
+                    </Typography>
+                    <Typography paragraph>
+                        Selected value: {JSON.stringify(selectedOption?.value)}
+                    </Typography>
+                </Box>
+            </GroupHelper>
+        </>
+    );
+};

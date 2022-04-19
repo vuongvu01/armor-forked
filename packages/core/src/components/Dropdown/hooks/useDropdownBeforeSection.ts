@@ -3,6 +3,7 @@ import {
     noop,
     stringEllipsisAtMaxCharacters,
     useRootRef,
+    stripHTMLTagsMemoized as stripHTMLTags,
 } from '@deliveryhero/armor-system';
 
 import { useOnValueUpdate } from '../../../utils/dropdown';
@@ -137,13 +138,10 @@ export const useDropdownBeforeSection = <E extends HTMLDivElement>(
             onClick: handleRemoveAllTags,
         },
         getDropdownTagProps: (option: OptionObjectType) => {
-            let { label } = option;
-            if (typeof label === 'string' || typeof label === 'number') {
-                label = stringEllipsisAtMaxCharacters(
-                    option.label.toString(),
-                    tagLabelMaxLength,
-                );
-            }
+            const label = stringEllipsisAtMaxCharacters(
+                stripHTMLTags(option.label),
+                tagLabelMaxLength,
+            );
 
             return {
                 deleteOption: 'enabled',
