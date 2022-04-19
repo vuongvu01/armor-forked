@@ -9,6 +9,14 @@ export const makeDateString = (date: Date) => {
     return [vect.month, vect.day, vect.year].join('-');
 };
 
+export const makeDateTimeString = (date: Date) => {
+    const vect = DateVector.createFromLocalDate(date);
+    const dateInternal = [vect.month, vect.day, vect.year].join('-');
+    const { formattedHour, formattedMinute } = vect;
+    const timeInternal = `${formattedHour}:${formattedMinute}`;
+    return `${dateInternal} ${timeInternal}`;
+};
+
 export const pickADay = (container: HTMLElement, day: number) => {
     const dayNode = container.querySelector(`[data-day="${day}"]`);
     expect(dayNode).toBeInTheDocument();

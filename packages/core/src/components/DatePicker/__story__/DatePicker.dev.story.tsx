@@ -10,6 +10,7 @@ import { Dropdown } from '../../Dropdown';
 import { Box } from '../../Box';
 import { FormField, FormFieldMessage, FormFieldTooltip } from '../../FormField';
 import { DATE_PICKER_INFINITY } from '../constants';
+import { Typography } from '../../Typography';
 
 const currentDate = new Date();
 
@@ -25,6 +26,47 @@ export const Basic = () => {
         <Box paddingTop={20}>
             <DatePicker data-testid-input="input42" />
         </Box>
+    );
+};
+
+export const WithMaskedInput = () => {
+    const allowedDateRanges = [
+        ['current+1', DATE_PICKER_INFINITY],
+        // ['current', null],
+        // ['current-3', 'current+3'],
+        // ['current-1', null],
+        // ['current*2', null],
+        // ['bullshit', null],
+    ] as DatePickerPropsType['allowedDateRanges'];
+    return (
+        <>
+            <Box marginBottom={2}>
+                <Typography> Default</Typography>
+                <DatePicker
+                    data-testid-input="input43"
+                    inputMaskEnabled={true}
+                />
+            </Box>
+            <Box marginBottom={2}>
+                <Typography> Time picker enabled</Typography>
+
+                <DatePicker
+                    data-testid-input="input43"
+                    inputMaskEnabled={true}
+                    enableTimePicker
+                />
+            </Box>
+            <Box marginBottom={2}>
+                <Typography>Time picker enabled with Allowed Ranges</Typography>
+
+                <DatePicker
+                    data-testid-input="input43"
+                    inputMaskEnabled={true}
+                    enableTimePicker
+                    allowedDateRanges={allowedDateRanges}
+                />
+            </Box>
+        </>
     );
 };
 

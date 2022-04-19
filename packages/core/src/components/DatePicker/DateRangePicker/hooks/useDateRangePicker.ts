@@ -15,6 +15,7 @@ import { useCommonDatePickerInputProps } from '../../hooks/useCommonDatePickerIn
 import { useCommonDatePickerAllowedDates } from '../../hooks/useCommonDatePickerAllowedDates';
 import { useCommonDatePickerActionButtons } from '../../hooks/useCommonDatePickerActionButtons';
 import { useCommonDatePickerCompatibility } from '../../hooks/useCommonDatePickerCompatibility';
+import { useDateRangePickerMaskedInput } from './useDateRangePickerMaskedInput';
 
 export const useDateRangePicker = <E extends HTMLDivElement>(
     props: DateRangePickerPropsType,
@@ -122,6 +123,20 @@ export const useDateRangePicker = <E extends HTMLDivElement>(
         props,
     );
 
+    const { value, onChange, onFocus, showMaskedInput } =
+        useDateRangePickerMaskedInput(
+            {
+                formattedValue,
+                inactive,
+                toggleDropdown,
+                setDisplayedDateVector,
+                onDateTimeChange,
+                isDateSelectable,
+                dropdownOpen,
+            },
+            props,
+        );
+
     return {
         rootProps: {
             ...props,
@@ -134,6 +149,15 @@ export const useDateRangePicker = <E extends HTMLDivElement>(
             value: formattedValue,
             onRootClick: inactive ? undefined : toggleDropdown,
         },
+        inputMaskProps: {
+            ...inputProperties,
+            value,
+
+            showMaskedInput,
+            onChange,
+            onFocus,
+        },
+        showMaskedInput,
         portalProps,
         dropdownProps,
         arrowProps,

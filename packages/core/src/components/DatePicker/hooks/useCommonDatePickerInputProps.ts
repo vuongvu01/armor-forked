@@ -11,12 +11,13 @@ export const useCommonDatePickerInputProps = (
         readOnly,
         error,
         'data-testid-input': dataTestIdInput,
+        inputMaskEnabled,
     }: DatePickerEffectiveCommonPropsType,
 ) => {
     return {
         inactive: disabled || readOnly,
         inputProperties: {
-            readOnly: true,
+            readOnly: !inputMaskEnabled,
             error,
             disabled,
             label,
