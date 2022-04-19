@@ -1,3 +1,19 @@
+## [1.6.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-system@1.6.0...@deliveryhero/armor-system@1.6.1) (2022-04-19)
+
+
+### Bug Fixes
+
+* **dev2:** fix dev2 side view ([#926](https://github.com/deliveryhero/armor/issues/926)) ([34921af](https://github.com/deliveryhero/armor/commit/34921af5c895ce961f53029a29b3db8407a3154e))
+* **dropdown:** Fix Dropdown to support custom option label [AR-62] ([2e8a898](https://github.com/deliveryhero/armor/commit/2e8a8986a6aec9feba68b672b2402e903bd03f3c))
+* **icons:** Fix icons are not center aligned [LD-731] ([ca13e5d](https://github.com/deliveryhero/armor/commit/ca13e5db7008a1a2321a7883c799fa50833b5598))
+* **icons:** update visual tests regarding to the icons change ([#948](https://github.com/deliveryhero/armor/issues/948)) ([6df99cc](https://github.com/deliveryhero/armor/commit/6df99cc6a90e60981405676fa90eb667f165e2b4))
+* **LoginPage:** LoginPage faulty API design [LD-734] ([7ef26ac](https://github.com/deliveryhero/armor/commit/7ef26acad4e7f53ad1e626fc375b0dd63a90d480))
+
+
+### Features
+
+* **datepicker:** mask input ([#954](https://github.com/deliveryhero/armor/issues/954)) ([03b9a76](https://github.com/deliveryhero/armor/commit/03b9a76ad4a73db47066d03f9baf7c926bd778a2))
+
 # [1.6.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-system@1.5.1...@deliveryhero/armor-system@1.6.0) (2022-03-28)
 
 
