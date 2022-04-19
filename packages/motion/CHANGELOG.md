@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-motion@1.1.3...@deliveryhero/armor-motion@1.2.0) (2022-04-19)
+
+
+### Features
+
+* **datepicker:** mask input ([#954](https://github.com/deliveryhero/armor/issues/954)) ([03b9a76](https://github.com/deliveryhero/armor/commit/03b9a76ad4a73db47066d03f9baf7c926bd778a2))
+
 ## @deliveryhero/armor-motion [1.1.3](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-motion@1.1.2...@deliveryhero/armor-motion@1.1.3) (2022-04-19)
 
 
