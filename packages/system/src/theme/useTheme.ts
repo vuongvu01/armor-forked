@@ -24,5 +24,6 @@ export const useTheme = (theme?: RootThemeType): RootThemeType => {
 
         // no provider - just return the cached default theme
         return makeDefaultThemeCached();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [theme, styledComponentsTheme]);
 };

@@ -1,8 +1,8 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 
 import { BadgePropsType } from './type';
 import { BadgeRoot } from './style';
-import { useBadgeClassName } from './utils';
+import { useBadgeClassName } from './hooks/useBadgeClassName';
 import { BADGE_CLASS_PREFIX } from './constants';
 
 /**
@@ -37,3 +37,5 @@ export const Badge = forwardRef<HTMLDivElement, BadgePropsType>(function Badge(
         </BadgeRoot>
     );
 });
+
+export const MemoizedBadge = memo(Badge);

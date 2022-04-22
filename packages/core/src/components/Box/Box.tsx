@@ -1,10 +1,10 @@
-import React, { FunctionComponent } from 'react';
+import React, { FC, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { BoxRoot } from './style';
 import { BoxPropsType } from './type';
 import { BOX_CLASS_PREFIX } from './constants';
-import { useBoxClassName } from './utils/useBoxClassName';
+import { useBoxClassName } from './hooks/useBoxClassName';
 
 /**
  * # Box
@@ -34,10 +34,7 @@ import { useBoxClassName } from './utils/useBoxClassName';
  *
  * @armor-docs-component
  */
-export const Box: FunctionComponent<BoxPropsType> = ({
-    className,
-    ...restProps
-}) => {
+export const Box: FC<BoxPropsType> = ({ className, ...restProps }) => {
     const classNameComponents = useBoxClassName(BOX_CLASS_PREFIX, className);
 
     return <BoxRoot {...restProps} className={classNameComponents.Root} />;
@@ -102,3 +99,5 @@ Box.propTypes = {
         'inline',
     ]),
 };
+
+export const MemoizedBox = memo(Box);

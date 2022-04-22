@@ -31,5 +31,6 @@ export const useOuterClick = (
         return () => {
             document.removeEventListener('mousedown', onOuterClick);
         };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [...scopeNodes, onClick, enabled]);
 };

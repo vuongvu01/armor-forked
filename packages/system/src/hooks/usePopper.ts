@@ -65,7 +65,7 @@ export const usePopper = (
         }
 
         return result;
-    }, [offset, allowedAutoPlacements, arrowRef, align]);
+    }, [arrowRef, arrowPadding, offset, align, allowedAutoPlacements]);
 
     const { styles, attributes } = useReactPopper(
         triggerRef.current,

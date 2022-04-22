@@ -29,7 +29,7 @@ const sizes = {
 
 const checkedHover = () => css`
     border-color: ${color('primary.05')};
-    background: ${color('primary.05')};
+    background-color: ${color('primary.05')};
 `;
 
 const uncheckedHover = () => css`
@@ -102,7 +102,7 @@ export const CheckboxCheckmark = styled.div.withConfig(
         border-radius: ${token('shape.borderRadius.soft')};
         box-sizing: border-box;
         border: 1px solid ${color('neutral.03')};
-        background: ${color('neutral.00')};
+        background-color: ${color('neutral.00')};
         ${transition({ all: true })};
     }
 
@@ -138,7 +138,7 @@ export const CheckboxInput = styled.input.withConfig(
         opacity: 1;
         box-sizing: border-box;
         border-color: ${color('primary.main')};
-        background: ${color('primary.main')};
+        background-color: ${color('primary.main')};
     }
 
     &:disabled + ${CheckboxCheckmark}:before {
@@ -147,7 +147,7 @@ export const CheckboxInput = styled.input.withConfig(
         border-style: solid;
         box-sizing: border-box;
         border-color: ${color('neutral.03')};
-        background: ${color('neutral.02')};
+        background-color: ${color('neutral.02')};
     }
 
     &:focus-visible:checked + ${CheckboxCheckmark}:before {
@@ -177,7 +177,7 @@ export const CheckboxRoot = styled.label.withConfig(
             }
             &:checked:focus-visible:not(:disabled)
                 + ${CheckboxCheckmark}:before {
-                background: ${color('primary.05')};
+                background-color: ${color('primary.05')};
             }
             &:not(:checked):not(:disabled) + ${CheckboxCheckmark}:before {
                 ${uncheckedHover}

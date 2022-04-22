@@ -36,7 +36,7 @@ const useBreakpoint = (
         return () => {
             win.removeEventListener('resize', handler);
         };
-    }, [code, theme, win]);
+    }, [code, matchFunction, theme, value, win]);
 
     if (!win) {
         return false;

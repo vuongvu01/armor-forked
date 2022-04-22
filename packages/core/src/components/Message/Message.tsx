@@ -13,7 +13,7 @@ import {
 import { MessageIconPropsType, MessagePropsType } from './type';
 import { MESSAGE_CLASS_PREFIX } from './constants';
 import { useMessage } from './hooks/useMessage';
-import { CloseButton } from '../CloseButton';
+import { MemoizedCloseButton as CloseButton } from '../CloseButton';
 
 /**
  * # Message

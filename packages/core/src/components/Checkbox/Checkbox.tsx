@@ -1,6 +1,5 @@
-import React, { forwardRef, useMemo, useState, useCallback } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
-import { generateId } from '@deliveryhero/armor-system';
 
 import { SelectorLabel } from '../SelectorLabel';
 import { useCheckboxClassName } from './hooks/useCheckboxClassName';
@@ -12,7 +11,8 @@ import {
     StyledCheckedIcon,
 } from './style';
 import { CheckboxPropsType } from './type';
-import { CHECKBOX_CLASS_PREFIX, checkboxIdPrefix } from './constants';
+import { useCheckbox } from './hooks/useCheckbox';
+import { CHECKBOX_CLASS_PREFIX } from './constants';
 import { RefType } from '../../type';
 
 /**
@@ -93,25 +93,19 @@ import { RefType } from '../../type';
 export const Checkbox = forwardRef<
     HTMLLabelElement | HTMLInputElement,
     CheckboxPropsType
->(function Checkbox(
-    {
-        checked,
-        checkedIcon,
-        className,
-        defaultChecked,
-        disabled,
-        error,
-        // todo: forward all input-specific props directly to the input node, as it is done in <TextInput>
-        // todo: packages/core/src/components/TextInput/hooks/useTextInput.ts:24
-        id: propsId,
-        name,
+>(function Checkbox({ className, ...props }, ref) {
+    const {
+        rootProps,
+        checkboxInputProps,
+        checkboxCheckmarkProps,
+        selectorLabelProps,
+        iconProps,
         label,
-        onChange,
-        ...restProps
-    },
-    ref,
-) {
-    const id = generateId(propsId, checkboxIdPrefix);
+        disabled,
+        checked,
+        error,
+        checkedIcon,
+    } = useCheckbox<HTMLInputElement>(props, ref as RefType<HTMLInputElement>);
 
     const classOverride = useCheckboxClassName(
         CHECKBOX_CLASS_PREFIX,
@@ -121,78 +115,32 @@ export const Checkbox = forwardRef<
         error,
     );
 
-    // todo: clear up this mess with nativelyChecked and reallyChecked
-    const [nativelyChecked, setNativelyChecked] = useState<boolean>(
-        checked !== undefined ? !!checked : !!defaultChecked,
-    );
-    // if checked is set, we consider the controlled mode, otherwise look at the native check/uncheck
-    const reallyChecked = checked !== undefined ? checked : nativelyChecked;
-
-    const handleOnChange = useCallback(
-        (event: React.ChangeEvent<HTMLInputElement>) => {
-            if (onChange) {
-                onChange(event);
-            }
-
-            setNativelyChecked(event.target.checked);
-        },
-        [onChange, setNativelyChecked],
-    );
-
-    // this is only here to force SelectorLabel to use Typography
-    // todo: consider deprecating SelectorLabel in favour of a wrapping component around Checkbox/Radio
-    const typographyProps = useMemo(
-        () => ({ paragraph: true, large: true }),
-        [],
-    );
-
     return (
-        <CheckboxRoot
-            {...restProps}
-            className={classOverride.Root}
-            disabled={disabled}
-            htmlFor={id}
-            reallyChecked={reallyChecked}
-        >
+        <CheckboxRoot {...rootProps} className={classOverride.Root}>
             <CheckboxInput
                 className={classOverride.Input}
-                checked={checked}
-                defaultChecked={defaultChecked}
-                checkedIcon={checkedIcon}
-                disabled={disabled}
-                id={id}
-                name={name}
-                onChange={handleOnChange}
-                ref={ref as RefType<HTMLInputElement>}
-                type="checkbox"
+                {...checkboxInputProps}
             />
             <CheckboxCheckmark
-                checked={checked}
-                checkedIcon={checkedIcon}
                 className={classOverride.Checkmark}
-                disabled={disabled}
-                hasLabel={!!label}
+                {...checkboxCheckmarkProps}
             >
                 {checkedIcon === 'dash' ? (
                     <StyledDashIcon
                         className={classOverride.Icon}
-                        disabled={disabled}
-                        checked={reallyChecked}
+                        {...iconProps}
                     />
                 ) : (
                     <StyledCheckedIcon
                         className={classOverride.Icon}
-                        disabled={disabled}
-                        checked={reallyChecked}
+                        {...iconProps}
                     />
                 )}
             </CheckboxCheckmark>
             {!!label && (
                 <SelectorLabel
-                    disabled={disabled}
-                    error={error}
                     className={classOverride.Label}
-                    typographyProps={typographyProps}
+                    {...selectorLabelProps}
                 >
                     {label}
                 </SelectorLabel>
@@ -217,3 +165,5 @@ Checkbox.propTypes = {
     label: PropTypes.string,
     onChange: PropTypes.func,
 };
+
+export const MemoizedCheckbox = memo(Checkbox);

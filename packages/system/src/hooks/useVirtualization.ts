@@ -192,27 +192,21 @@ export const useVirtualization = <
             itemHeight,
         );
         if (newState) {
-            if (
-                state &&
-                newState.topOffset === state.topOffset &&
-                newState.bottomOffset === state.bottomOffset &&
-                newState.rangeStart === state.rangeStart &&
-                newState.rangeEnd === state.rangeEnd
-            ) {
-                return;
-            }
+            setState((currentState) => {
+                if (
+                    currentState &&
+                    newState.topOffset === currentState.topOffset &&
+                    newState.bottomOffset === currentState.bottomOffset &&
+                    newState.rangeStart === currentState.rangeStart &&
+                    newState.rangeEnd === currentState.rangeEnd
+                ) {
+                    return currentState;
+                }
 
-            setState(newState);
+                return newState;
+            });
         }
-    }, [
-        enabled,
-        setState,
-        data,
-        containerRef,
-        itemHeight,
-        windowHeight,
-        windowOffset,
-    ]);
+    }, [enabled, data, containerRef, itemHeight, windowHeight, windowOffset]);
 
     const realState =
         state || makeState(enabled, null, windowHeight, data.length);

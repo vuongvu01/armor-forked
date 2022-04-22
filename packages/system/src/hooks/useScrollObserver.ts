@@ -36,21 +36,24 @@ export const useScrollObserver = (
             }
             onScrollChange(scrollTop);
         }
-    }, [onScrollChange, win, containerRef]);
+    }, [onScrollChange, containerRef]);
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const onChangeInternalDecorated = useCallback(
         throttle(throttleDelay || 0, false, onChangeInternal),
         [onChangeInternal, throttleDelay],
     );
 
     useEffect(() => {
+        const containerNode = containerRef?.current;
+
         if (enabled) {
             if (enableInitialCall) {
                 onChangeInternal();
             }
 
-            if (containerRef && containerRef.current) {
-                containerRef.current.addEventListener(
+            if (containerNode) {
+                containerNode.addEventListener(
                     'scroll',
                     onChangeInternalDecorated,
                 );
@@ -68,8 +71,8 @@ export const useScrollObserver = (
                     );
                 }
 
-                if (containerRef && containerRef.current) {
-                    containerRef.current.removeEventListener(
+                if (containerNode) {
+                    containerNode.removeEventListener(
                         'scroll',
                         onChangeInternalDecorated,
                     );
@@ -77,10 +80,10 @@ export const useScrollObserver = (
             }
         };
     }, [
-        win,
         containerRef,
         enabled,
         onChangeInternalDecorated,
         enableInitialCall,
+        onChangeInternal,
     ]);
 };

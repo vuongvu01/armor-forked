@@ -1,4 +1,10 @@
-import React, { forwardRef, useCallback, useContext, useEffect } from 'react';
+import React, {
+    forwardRef,
+    useCallback,
+    useContext,
+    useEffect,
+    memo,
+} from 'react';
 import { getWindow, useRootRef } from '@deliveryhero/armor-system';
 
 import {
@@ -107,3 +113,5 @@ export const AccordionHeader = forwardRef<
         </AccordionHeaderRoot>
     );
 });
+
+export const MemoizedAccordionHeader = memo(AccordionHeader);

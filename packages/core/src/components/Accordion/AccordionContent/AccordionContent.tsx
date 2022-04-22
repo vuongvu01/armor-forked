@@ -1,4 +1,4 @@
-import React, { forwardRef, useContext } from 'react';
+import React, { forwardRef, useContext, memo } from 'react';
 
 import { AccordionContentRoot } from './style';
 import { AccordionContentPropsType } from './type';
@@ -39,3 +39,5 @@ export const AccordionContent = forwardRef<
         </AccordionContentRoot>
     );
 });
+
+export const MemoizedAccordionContent = memo(AccordionContent);

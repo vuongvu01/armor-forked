@@ -52,6 +52,7 @@ export const useVerticalScrollBoundariesObserver = (
     onHitTop?: () => void,
     onHitBottom?: () => void,
 ): ResultType => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const detectProximityDecorated = useCallback(
         throttle(500, detectProximity),
         [],

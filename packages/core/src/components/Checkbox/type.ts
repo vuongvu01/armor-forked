@@ -21,9 +21,8 @@ type CheckboxEffectivePropsType = Partial<{
 
 export type CheckboxPropsType = CheckboxEffectivePropsType;
 
-export type CheckboxRootPropsType = CheckboxEffectivePropsType & {
-    reallyChecked: boolean;
-} & ComponentElementStylePropsType;
+export type CheckboxRootPropsType = CheckboxEffectivePropsType &
+    ComponentElementStylePropsType;
 
 export type CheckboxInputPropsType = Pick<
     CheckboxEffectivePropsType,

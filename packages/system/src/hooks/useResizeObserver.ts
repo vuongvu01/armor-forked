@@ -33,8 +33,9 @@ export const useResizeObserver = (
 
             onHeightChange(height);
         }
-    }, [onHeightChange, win, containerRef]);
+    }, [onHeightChange, containerRef]);
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const onChangeInternalDecorated = useCallback(
         throttle(throttleDelay || 0, false, onChangeInternal),
         [onChangeInternal, throttleDelay],
@@ -76,10 +77,10 @@ export const useResizeObserver = (
             }
         };
     }, [
-        win,
         enabled,
         onChangeInternalDecorated,
         enableInitialCall,
         containerRef,
+        onChangeInternal,
     ]);
 };

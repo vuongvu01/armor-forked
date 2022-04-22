@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { useActionSheetClassNames } from './hooks/useActionSheetClassNames';
@@ -66,3 +66,5 @@ ActionSheet.propTypes = {
     /** Example description */
     label: PropTypes.string,
 };
+
+export const MemoizedActionSheet = memo(ActionSheet);

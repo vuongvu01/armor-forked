@@ -8,6 +8,7 @@ export const useDerivedState = <P = unknown>(
     const [value, setValue] = useState<P>(setter());
     useEffect(() => {
         setValue(setter());
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [setValue, ...dependencies]);
 
     return [value, setValue];
