@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 import {
-    ByLetterIcon,
-    ByNumberIcon,
+    SortAlphabetIcon,
+    SortNumberIcon,
     ArrowUpTailIcon,
     ArrowDownTailIcon,
     // eslint-disable-next-line import/no-extraneous-dependencies
@@ -49,13 +49,13 @@ export const TableHeadCell = forwardRef<
             <TableCellLabel>
                 {children}
                 {isIconAlphabetical && (
-                    <ByLetterIcon
+                    <SortAlphabetIcon
                         marginLeft={2}
                         className={classNameComponents.AlphabeticalIcon}
                     />
                 )}
                 {isIconNumerical && (
-                    <ByNumberIcon
+                    <SortNumberIcon
                         marginLeft={2}
                         className={classNameComponents.NumericalIcon}
                     />

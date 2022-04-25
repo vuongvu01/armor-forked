@@ -8,7 +8,7 @@ import {
 
 const <%- name %>IconShape = (
     <SVGIconGroup>
-        <SVGIconPath d="<%- shape %>"<% if(transform) { %>transform="<%- transform %>"<% } %> />
+        <% paths.forEach(function(path) { %><SVGIconPath d="<%- path.d %>"<% if(path.transform) { %>transform="<%- path.transform %>"<% } %> /><% }); %>
     </SVGIconGroup>
 );
 

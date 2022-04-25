@@ -3,7 +3,7 @@ import {
     LockClosedIcon,
     TickThickIcon,
     CancelIcon,
-    OneDirectionIcon,
+    SyncOneDirectionIcon,
 } from '@deliveryhero/armor-icons';
 import { Typography } from '../../Typography';
 import { Box } from '../../Box';
@@ -155,7 +155,7 @@ export const StepperAsActivityLog = () => {
                         title="Resubmit Document"
                         description={ContentExample}
                         extraInfo="01.01.2022, 12:00"
-                        icon={<OneDirectionIcon medium />}
+                        icon={<SyncOneDirectionIcon medium />}
                         warning
                     />
                     <Step

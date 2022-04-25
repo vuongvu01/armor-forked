@@ -18,7 +18,7 @@ import {
     SVGIconPropsType,
     FileImagePortraitIcon,
     FilePDFIcon as FilePDFIconArmor,
-    CsvFileIcon,
+    FileCSVIcon as FileCSVIconArmor,
 } from '@deliveryhero/armor-icons';
 
 import { ProgressBar } from '../ProgressBar';
@@ -144,7 +144,7 @@ export const FilePDFIcon = styled(FilePDFIconArmor).withConfig(
     ${leftIconStyles};
 `;
 
-export const FileCSVIcon = styled(CsvFileIcon).withConfig(
+export const FileCSVIcon = styled(FileCSVIconArmor).withConfig(
     propsBlocker,
 )<SVGIconPropsType>`
     ${leftIconStyles};

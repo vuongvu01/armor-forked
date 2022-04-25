@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, ReactElement } from 'react';
 import styled from 'styled-components';
 
 import * as I from '..';
@@ -35,13 +35,9 @@ const Icon = styled.div`
     width: 3rem;
     background-color: #f7f7f7;
     color: #050505;
-
-    svg {
-        border: 1px solid red;
-    }
 `;
 
-export const Basic = () => (
+export const Basic = (): ReactElement => (
     <>
         <h2>Essentials</h2>
         <Icons>
@@ -49,16 +45,22 @@ export const Basic = () => (
                 <I.PlusIcon />
             </Icon>
             <Icon>
+                <I.ArtboardExpandIcon />
+            </Icon>
+            <Icon>
+                <I.ShoppingBagCheckIcon />
+            </Icon>
+            <Icon>
+                <I.ReferFriendIcon />
+            </Icon>
+            <Icon>
+                <I.ReceiptIcon />
+            </Icon>
+            <Icon>
                 <I.MinusIcon />
             </Icon>
             <Icon>
-                <I.ArrowUpTailCircleFilledIcon />
-            </Icon>
-            <Icon>
                 <I.AttachmentIcon />
-            </Icon>
-            <Icon>
-                <I.CalendarIcon />
             </Icon>
             <Icon>
                 <I.CopyIcon />
@@ -85,22 +87,10 @@ export const Basic = () => (
                 <I.InfoIcon />
             </Icon>
             <Icon>
-                <I.LoginIcon />
-            </Icon>
-            <Icon>
-                <I.LogoutIcon />
-            </Icon>
-            <Icon>
-                <I.MotorcycleDeliveryIcon />
-            </Icon>
-            <Icon>
                 <I.PhoneRingingIcon />
             </Icon>
             <Icon>
                 <I.PlayIcon />
-            </Icon>
-            <Icon>
-                <I.SearchIcon />
             </Icon>
             <Icon>
                 <I.ShopIcon />
@@ -186,6 +176,36 @@ export const Basic = () => (
             <Icon>
                 <I.PlayYoutubeIcon />
             </Icon>
+            <Icon>
+                <I.PerksIcon />
+            </Icon>
+            <Icon>
+                <I.UserPrivacyIcon />
+            </Icon>
+            <Icon>
+                <I.FireIcon />
+            </Icon>
+            <Icon>
+                <I.PinCodeIcon />
+            </Icon>
+            <Icon>
+                <I.AppVersionIcon />
+            </Icon>
+            <Icon>
+                <I.NotificationIcon />
+            </Icon>
+            <Icon>
+                <I.UserFeedbackIcon />
+            </Icon>
+            <Icon>
+                <I.TutorialIcon />
+            </Icon>
+            <Icon>
+                <I.PersonaIcon />
+            </Icon>
+            <Icon>
+                <I.FoodOrderIcon />
+            </Icon>
         </Icons>
         <h2>Arrow</h2>
         <Icons>
@@ -220,7 +240,13 @@ export const Basic = () => (
                 <I.ArrowReturnLeftIcon />
             </Icon>
             <Icon>
+                <I.ArrowUpTailCircleFilledIcon />
+            </Icon>
+            <Icon>
                 <I.ArrowDownFilledIcon />
+            </Icon>
+            <Icon>
+                <I.ArrowUpFilledIcon />
             </Icon>
             <Icon>
                 <I.ArrowLeftCircleFilledIcon />
@@ -239,6 +265,39 @@ export const Basic = () => (
             </Icon>
             <Icon>
                 <I.CancelCircleFilledIcon />
+            </Icon>
+        </Icons>
+        <h2>Calendar</h2>
+        <Icons>
+            <Icon>
+                <I.CalendarIcon />
+            </Icon>
+            <Icon>
+                <I.CalendarAbsenceIcon />
+            </Icon>
+            <Icon>
+                <I.CalendarCheckIcon />
+            </Icon>
+            <Icon>
+                <I.CalendarClockIcon />
+            </Icon>
+            <Icon>
+                <I.CalendarSearchIcon />
+            </Icon>
+            <Icon>
+                <I.CalendarSyncIcon />
+            </Icon>
+            <Icon>
+                <I.CalendarUnavailableIcon />
+            </Icon>
+        </Icons>
+        <h2>Logout</h2>
+        <Icons>
+            <Icon>
+                <I.LoginIcon />
+            </Icon>
+            <Icon>
+                <I.LogoutIcon />
             </Icon>
         </Icons>
         <h2>Emoji</h2>
@@ -273,14 +332,20 @@ export const Basic = () => (
             <Icon>
                 <I.DownloadIcon />
             </Icon>
+            <Icon>
+                <I.CloudDownloadIcon />
+            </Icon>
         </Icons>
         <h2>Upload</h2>
         <Icons>
             <Icon>
+                <I.UploadIcon />
+            </Icon>
+            <Icon>
                 <I.ImageUploadIcon />
             </Icon>
             <Icon>
-                <I.UploadIcon />
+                <I.CloudUploadIcon />
             </Icon>
         </Icons>
         <h2>Settings</h2>
@@ -322,14 +387,8 @@ export const Basic = () => (
                 <I.TextStrikeThroughIcon />
             </Icon>
             <Icon>
-                <I.ArtboardExpandIcon />
+                <I.TextColorIcon textColor="black" />
             </Icon>
-            <Icon>
-                <I.DoubleFileIcon />
-            </Icon>
-        </Icons>
-        <h2>Link</h2>
-        <Icons>
             <Icon>
                 <I.LinkIcon />
             </Icon>
@@ -340,37 +399,52 @@ export const Basic = () => (
                 <I.ExternalLinkIcon />
             </Icon>
         </Icons>
+        <h2>Search</h2>
+        <Icons>
+            <Icon>
+                <I.SearchIcon />
+            </Icon>
+        </Icons>
         <h2>Finance</h2>
         <Icons>
             <Icon>
                 <I.CashIcon />
             </Icon>
             <Icon>
+                <I.CoinIcon />
+            </Icon>
+            <Icon>
+                <I.CoinWithHeartIcon />
+            </Icon>
+            <Icon>
                 <I.CreditCardIcon />
             </Icon>
             <Icon>
-                <I.ReceiptIcon />
+                <I.DollarIcon />
+            </Icon>
+            <Icon>
+                <I.PaymentIcon />
+            </Icon>
+            <Icon>
+                <I.ReferralPaymentIcon />
             </Icon>
             <Icon>
                 <I.WalletIcon />
-            </Icon>
-            <Icon>
-                <I.DollarIcon />
             </Icon>
         </Icons>
         <h2>Sync</h2>
         <Icons>
             <Icon>
-                <I.OneDirectionIcon />
+                <I.SyncOneDirectionIcon />
             </Icon>
             <Icon>
-                <I.TwoDirectionIcon />
+                <I.SyncTwoDirectionIcon />
             </Icon>
             <Icon>
-                <I.WithClockIcon />
+                <I.SyncWithClockIcon />
             </Icon>
             <Icon>
-                <I.LocationRefreshIcon />
+                <I.SyncLocationRefreshIcon />
             </Icon>
             <Icon>
                 <I.SyncTimeResetIcon />
@@ -421,31 +495,49 @@ export const Basic = () => (
         <h2>Files</h2>
         <Icons>
             <Icon>
+                <I.ChecklistOutlineIcon />
+            </Icon>
+            <Icon>
+                <I.ChecklistSolidIcon />
+            </Icon>
+            <Icon>
                 <I.FileCommonTextIcon />
+            </Icon>
+            <Icon>
+                <I.FileCSVIcon />
+            </Icon>
+            <Icon>
+                <I.FileDuplicateIcon />
             </Icon>
             <Icon>
                 <I.FileImagePortraitIcon />
             </Icon>
             <Icon>
+                <I.FileListToDoIcon />
+            </Icon>
+            <Icon>
                 <I.FilePDFIcon />
+            </Icon>
+            <Icon>
+                <I.FileTaskListIcon />
             </Icon>
             <Icon>
                 <I.FileTaskPinIcon />
             </Icon>
             <Icon>
-                <I.ChecklistSolidIcon />
+                <I.FileTextEditIcon />
             </Icon>
         </Icons>
         <h2>Sort</h2>
         <Icons>
             <Icon>
-                <I.ByLetterIcon />
+                <I.SortAlphabetIcon />
             </Icon>
             <Icon>
-                <I.ByNumberIcon />
+                <I.SortNumberIcon />
             </Icon>
             <Icon>
-                <I.DefaultSortIcon />
+                <I.SortDefaultIcon />
             </Icon>
         </Icons>
         <h2>Help</h2>
@@ -486,6 +578,9 @@ export const Basic = () => (
             <Icon>
                 <I.PinMarkerIcon />
             </Icon>
+            <Icon>
+                <I.NavigateIcon />
+            </Icon>
         </Icons>
         <h2>View</h2>
         <Icons>
@@ -499,35 +594,35 @@ export const Basic = () => (
                 <I.IrisScanApprovedIcon />
             </Icon>
         </Icons>
-        <h2>Etc</h2>
-        <Icons>
-            <Icon>
-                <I.CsvFileIcon />
-            </Icon>
-            <Icon>
-                <I.FolderStarAlternateIcon />
-            </Icon>
-            <Icon>
-                <I.FileListToDoIcon />
-            </Icon>
-            <Icon>
-                <I.FileTaskListIcon />
-            </Icon>
-        </Icons>
         <h2>Placeholder</h2>
         <Icons>
             <Icon>
                 <I.PlaceholderIcon />
             </Icon>
+            <Icon>
+                <I.IconPlaceholderIcon />
+            </Icon>
         </Icons>
         <h2>Vehicles</h2>
         <Icons>
             <Icon>
+                <I.BikeIcon />
+            </Icon>
+            <Icon>
                 <I.CarIcon />
+            </Icon>
+            <Icon>
+                <I.MotorcycleDeliveryIcon />
             </Icon>
         </Icons>
         <h2>Reward</h2>
         <Icons>
+            <Icon>
+                <I.BatchIcon />
+            </Icon>
+            <Icon>
+                <I.QuestCompleteIcon />
+            </Icon>
             <Icon>
                 <I.QuestStarIcon />
             </Icon>
@@ -535,7 +630,7 @@ export const Basic = () => (
     </>
 );
 
-export const TextEditor = () => {
+export const TextEditor = (): ReactElement => {
     const colors = ['#1c5ece', '#02a68e', '#f3b701', '#8bce4f', '#e1444b'];
     const [textColor, setTextColor] = useState('#e1444b');
     return (
@@ -565,7 +660,7 @@ export const TextEditor = () => {
     );
 };
 
-export const InText = () => (
+export const InText = (): ReactElement => (
     <>
         <I.ArrowUpIcon />
         {loremIpsum}
@@ -575,7 +670,7 @@ export const InText = () => (
     </>
 );
 
-export const Sizes = () => {
+export const Sizes = (): ReactElement => {
     return (
         <>
             <div>
@@ -596,7 +691,7 @@ export const Sizes = () => {
     );
 };
 
-export const CustomClass = () => {
+export const CustomClass = (): ReactElement => {
     return (
         <div>
             <I.AddIcon className="PlusSign" />
