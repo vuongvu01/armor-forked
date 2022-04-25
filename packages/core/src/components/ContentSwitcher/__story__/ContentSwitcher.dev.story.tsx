@@ -1,7 +1,7 @@
 /* eslint-disable no-console,import/no-unresolved */
 
 import React, { useState } from 'react';
-import { PlaceholderIcon } from '@deliveryhero/armor-icons';
+import { IconPlaceholderIcon as PlaceholderIcon } from '@deliveryhero/armor-icons';
 import { withWrapper } from '../../../helpers/Wrapper';
 
 import { ContentSwitcher } from '../ContentSwitcher';

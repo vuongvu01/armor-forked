@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { useButtonClassName } from './hooks/useButtonClassName';
@@ -95,3 +95,5 @@ Button.propTypes = {
     /** HTML Button disabled */
     disabled: PropTypes.bool,
 };
+
+export const MemoizedButton = memo(Button);

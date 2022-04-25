@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 
 import { CloseButtonEffectivePropsType } from './type';
 import { useCloseButtonClassName } from './hooks/useCloseButtonClassName';
@@ -33,3 +33,5 @@ export const CloseButton = forwardRef<
         </CloseButtonRoot>
     );
 });
+
+export const MemoizedCloseButton = memo(CloseButton);

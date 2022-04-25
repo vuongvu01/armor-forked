@@ -1,5 +1,4 @@
-import React, { forwardRef } from 'react';
-// import PropTypes from 'prop-types';
+import React, { forwardRef, memo } from 'react';
 
 import { useCardClassName } from './hooks/useCardClassName';
 import { CardRoot } from './style';
@@ -35,7 +34,4 @@ export const Card = forwardRef<HTMLDivElement, CardPropsType>(function Card(
     return <CardRoot {...restProps} className={classNameRoot} ref={ref} />;
 });
 
-Card.defaultProps = {};
-
-/** Support of prop-types is here for project that don't use TypeScript */
-Card.propTypes = {};
+export const MemoizedCard = memo(Card);

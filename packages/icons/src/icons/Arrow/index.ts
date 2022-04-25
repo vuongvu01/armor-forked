@@ -12,4 +12,6 @@ export * from './ArrowRight';
 export * from './ArrowRightCircleFilled';
 export * from './ArrowRightTail';
 export * from './ArrowUp';
+export * from './ArrowUpFilled';
 export * from './ArrowUpTail';
+export * from './ArrowUpTailCircleFilled';

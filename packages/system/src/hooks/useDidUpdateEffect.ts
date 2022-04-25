@@ -22,5 +22,6 @@ export const useDidUpdateEffect = (
             return callback();
         }
         didMountRef.current = true;
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, deps);
 };

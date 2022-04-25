@@ -25,6 +25,7 @@ export const useDisplayEffects = (open: boolean): ReturnValueType => {
         return () => {
             isCurrentEffect = false;
         };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [open]);
 
     return {

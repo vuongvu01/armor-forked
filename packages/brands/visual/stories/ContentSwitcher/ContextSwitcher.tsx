@@ -6,7 +6,7 @@ import {
     ContentSwitcherControl,
     Typography,
 } from '@deliveryhero/armor';
-import { PlaceholderIcon } from '@deliveryhero/armor-icons';
+import { IconPlaceholderIcon as PlaceholderIcon } from '@deliveryhero/armor-icons';
 
 export default {
     title: 'ContentSwitcher',

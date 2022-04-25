@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { use<%- component_name_pascal %>ClassNames } from './hooks/use<%- component_name_pascal %>ClassNames';
@@ -64,3 +64,5 @@ export const <%- component_name_pascal %> = forwardRef<
     /** Example description */
     // exampleProperty: PropTypes.bool,
 };
+
+export const Memoized<%- component_name_pascal %> = memo(<%- component_name_pascal %>);

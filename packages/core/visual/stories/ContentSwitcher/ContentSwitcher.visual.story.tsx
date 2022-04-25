@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PlaceholderIcon } from '@deliveryhero/armor-icons';
+import { IconPlaceholderIcon as PlaceholderIcon } from '@deliveryhero/armor-icons';
 
 import {
     ContentSwitcher,

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { BackdropRoot } from './style';
@@ -21,3 +21,5 @@ Backdrop.defaultProps = {
 Backdrop.propTypes = {
     id: PropTypes.string,
 };
+
+export const MemoizedBackdrop = memo(Backdrop);

@@ -30,6 +30,7 @@ export const useOverlay = (
                 body.style.overflowY = 'visible';
             }
         };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [id, open, ...Object.values(parameters)]);
 
     const isTopOverlay = useCallback(

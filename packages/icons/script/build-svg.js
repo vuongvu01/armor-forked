@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const promisify = require('util').promisify;
+const { promisify } = require('util');
 
 const find = require('findit');
 const lodash = require('lodash');
@@ -9,8 +9,8 @@ const unlink = promisify(require('fs').unlink);
 const readFile = promisify(require('fs').readFile);
 const writeFile = promisify(require('fs').writeFile);
 const { basename, extname, normalize, join } = require('path');
-const render = require('ejs').render;
-const parse = require('svg-parser').parse;
+const { render } = require('ejs');
+const { parse } = require('svg-parser');
 const createHtmlDom = require('htmldom');
 
 const sourceFolder = normalize(`${__dirname}/../svg/`);
@@ -23,13 +23,13 @@ const NOTE = "/* This file is auto-generated, don't edit by hand! */\n\n";
 // ////////////////////////////////////////////////
 // ////////////////////////////////////////////////
 
-const getFolderContent = async path => {
+const getFolderContent = async (path) => {
     const finder = find(path);
     const folders = [];
     const files = [];
 
     // todo: add timeout here with Promise.race()
-    const onEnd = new Promise(resolve => {
+    const onEnd = new Promise((resolve) => {
         finder.on('end', () => {
             resolve({
                 folders,
@@ -45,7 +45,7 @@ const getFolderContent = async path => {
         }
     });
 
-    finder.on('file', file => {
+    finder.on('file', (file) => {
         const relative = file.substr(path.length, file.length - path.length);
         if (relative) {
             files.push(relative);
@@ -81,13 +81,13 @@ const rewriteFile = async (file, content) => {
 
     for (const folder of source.folders) {
         const folderName = join(destinationFolder, folder);
-        await mkdir(folderName).catch(e => {
+        await mkdir(folderName).catch((e) => {
             console.log(
                 `Was not able to make a directory ${folderName}: ${e.message}`,
             );
         });
 
-        console.log('>>> ' + folder);
+        console.log(`>>> ${folder}`);
 
         // run files for each folder
         let folderIndexFileLines = [];
@@ -105,14 +105,16 @@ const rewriteFile = async (file, content) => {
                 const fileContents = (await readFile(srcFile)).toString('utf8');
                 const $ = createHtmlDom(fileContents);
                 const p = $('svg').find('path');
+                const paths = [];
 
-                const d = p.attr('d');
-                const transform = p.attr('transform');
+                for (let i = 0; i < p.length; i++) {
+                    const { d, transform } = p[i].attributes;
+                    paths.push({ d, transform });
+                }
 
                 const content = render(reactTemplate, {
                     name: componentName,
-                    shape: d,
-                    transform,
+                    paths,
                 });
 
                 await rewriteFile(dstFile, content);
@@ -135,7 +137,7 @@ const rewriteFile = async (file, content) => {
         const folderIndexFilePath = join(destinationFolder, folder, 'index.ts');
         await rewriteFile(
             folderIndexFilePath,
-            `${NOTE}${folderIndexFileLines.map(item => item.js).join('')}`,
+            `${NOTE}${folderIndexFileLines.map((item) => item.js).join('')}`,
         );
 
         mainIndexFileLines.push({
@@ -148,7 +150,7 @@ const rewriteFile = async (file, content) => {
 
     await rewriteFile(
         join(destinationFolder, 'index.ts'),
-        `${NOTE}${mainIndexFileLines.map(item => item.js).join('')}`,
+        `${NOTE}${mainIndexFileLines.map((item) => item.js).join('')}`,
     );
 
     console.log('DONE');

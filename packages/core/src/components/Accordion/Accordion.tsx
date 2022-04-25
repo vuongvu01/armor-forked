@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { useAccordionClassName } from './hooks/useAccordionClassName';
@@ -77,3 +77,5 @@ Accordion.propTypes = {
     expanded: PropTypes.bool,
     onToggle: PropTypes.func,
 };
+
+export const MemoizedAccordion = memo(Accordion);

@@ -1,5 +1,5 @@
 /* This file is auto-generated, don't edit by hand! */
 
-export * from './ByLetter';
-export * from './ByNumber';
-export * from './DefaultSort';
+export * from './SortAlphabet';
+export * from './SortDefault';
+export * from './SortNumber';
