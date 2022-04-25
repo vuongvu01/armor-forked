@@ -1,3 +1,10 @@
+## [1.4.11](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.4.10...@deliveryhero/armor-vendors@1.4.11) (2022-04-25)
+
+
+### Features
+
+* **icons:** Add missing icons  [LD-779] ([f1a11e4](https://github.com/deliveryhero/armor/commit/f1a11e43d9574aa4d2ee7a9629d82d5274982802))
+
 ## [1.4.10](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.4.9...@deliveryhero/armor-vendors@1.4.10) (2022-04-19)
 
 
