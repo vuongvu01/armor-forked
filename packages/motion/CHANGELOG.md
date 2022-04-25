@@ -1,3 +1,10 @@
+## @deliveryhero/armor-motion [1.2.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-motion@1.2.1...@deliveryhero/armor-motion@1.2.2) (2022-04-25)
+
+
+### Bug Fixes
+
+* **spinner:** each spinner instance now have unique name ([#960](https://github.com/deliveryhero/armor/issues/960)) ([8eea60c](https://github.com/deliveryhero/armor/commit/8eea60c0173d2e4d6a4b411b4fe0202b190fa751))
+
 ## @deliveryhero/armor-motion [1.2.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-motion@1.2.0...@deliveryhero/armor-motion@1.2.1) (2022-04-25)
 
 
