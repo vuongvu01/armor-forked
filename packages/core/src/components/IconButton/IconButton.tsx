@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { useIconButtonClassNames } from './hooks/useIconButtonClassNames';
@@ -52,3 +52,5 @@ IconButton.defaultProps = {
 IconButton.propTypes = {
     light: PropTypes.bool,
 };
+
+export const MemoizedIconButton = memo(IconButton);

@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FC, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { useDialogTitleClassNames } from './utils/useDialogTitleClassName';
@@ -8,9 +8,10 @@ import {
     DialogTitleText,
 } from './style';
 import { DialogTitlePropsType } from './type';
-import { dialogTitleText } from './constants';
-
-const CLASS_PREFIX = 'DialogTitle';
+import {
+    dialogTitleText,
+    DIALOG_TITLE_CLASS_PREFIX as CLASS_PREFIX,
+} from './constants';
 
 /**
  * # COMPONENT
@@ -19,7 +20,7 @@ const CLASS_PREFIX = 'DialogTitle';
  *
  * @armor-docs-component
  */
-export const DialogTitle: FunctionComponent<DialogTitlePropsType> = ({
+export const DialogTitle: FC<DialogTitlePropsType> = ({
     className,
     children,
     description,
@@ -59,3 +60,5 @@ DialogTitle.propTypes = {
     /** A value of brief description displayed above the title. Can be any valid ReactNode. */
     description: PropTypes.node,
 };
+
+export const MemoizedDialogTitle = memo(DialogTitle);

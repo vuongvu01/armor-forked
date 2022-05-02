@@ -92,9 +92,7 @@ export const useOptionList = ({
     );
 
     useEffect(() => {
-        if (setSearch) {
-            setSearch(searchQuery);
-        }
+        setSearch?.(searchQuery);
     }, [searchQuery, setSearch]);
 
     const onSearchChange = useOnSearchQueryChange(
@@ -106,12 +104,10 @@ export const useOptionList = ({
         enableSearchOption,
     );
 
-    // todo: fix me
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    const resetListState = () => {
+    const resetListState = useCallback(() => {
         setSearchQuery('');
         onSearchChange();
-    };
+    }, [onSearchChange]);
 
     const onOptionSelect = useCallback(
         (item: OptionObjectType) => {

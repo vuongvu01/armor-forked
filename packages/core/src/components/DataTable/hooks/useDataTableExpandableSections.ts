@@ -1,16 +1,11 @@
 import { MouseEvent, useCallback, useMemo, useState } from 'react';
 import { ScalarType } from '@deliveryhero/armor-system';
 
-import {
-    DataTableColumnType,
-    DataTableDataType,
-    DataTablePropsType,
-} from '../type';
+import { DataTableColumnType, DataTablePropsType } from '../type';
 import { ObjectLiteralType } from '../../../type';
 
-export const renderExpandableSectionEmpty = (data: DataTableDataType) => '';
-export const renderExpandableTriggerEmpty = (data: DataTableDataType) =>
-    undefined;
+export const renderExpandableSectionEmpty = () => '';
+export const renderExpandableTriggerEmpty = () => undefined;
 
 export const useDataTableExpandableSections = (
     columnsSafe: DataTableColumnType[],
@@ -74,9 +69,8 @@ export const useDataTableExpandableSections = (
             if (!expandedSectionIds) {
                 setExpandedSectionIdsInternal(expansion);
             }
-            if (onSectionExpansionChange) {
-                onSectionExpansionChange(expansion);
-            }
+
+            onSectionExpansionChange?.(expansion);
         },
         [onSectionExpansionChange, expandedSectionIds],
     );

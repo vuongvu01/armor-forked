@@ -41,34 +41,42 @@ export const useDatePickerMonthYearSelector = <E extends HTMLDivElement>(
     }, [displayedYear]);
 
     const expandDisplayedRangeTop = useCallback(() => {
-        const year = displayedRange[0];
-        const previousYear = year - 1;
-        const expansionRange: number[] = [];
-        for (
-            let i = previousYear;
-            i >= previousYear - YEAR_SELECTOR_RANGE_DELTA;
-            i -= 1
-        ) {
-            expansionRange.unshift(i);
-        }
+        const getNewDisplayRangeTop = (currentDisplayRange: number[]) => {
+            const year = currentDisplayRange[0];
+            const previousYear = year - 1;
+            const expansionRange: number[] = [];
+            for (
+                let i = previousYear;
+                i >= previousYear - YEAR_SELECTOR_RANGE_DELTA;
+                i -= 1
+            ) {
+                expansionRange.unshift(i);
+            }
 
-        setDisplayedRange([...expansionRange, ...displayedRange]);
-    }, [setDisplayedRange, displayedRange]);
+            return [...expansionRange, ...currentDisplayRange];
+        };
+
+        setDisplayedRange(getNewDisplayRangeTop);
+    }, []);
 
     const expandDisplayedRangeBottom = useCallback(() => {
-        const year = displayedRange[displayedRange.length - 1];
-        const nextYear = year + 1;
-        const expansionRange: number[] = [];
-        for (
-            let i = nextYear;
-            i <= nextYear + YEAR_SELECTOR_RANGE_DELTA;
-            i += 1
-        ) {
-            expansionRange.push(i);
-        }
+        const getNewDisplayRangeBottom = (currentDisplayRange: number[]) => {
+            const year = currentDisplayRange[currentDisplayRange.length - 1];
+            const nextYear = year + 1;
+            const expansionRange: number[] = [];
+            for (
+                let i = nextYear;
+                i <= nextYear + YEAR_SELECTOR_RANGE_DELTA;
+                i += 1
+            ) {
+                expansionRange.push(i);
+            }
 
-        setDisplayedRange([...displayedRange, ...expansionRange]);
-    }, [setDisplayedRange, displayedRange]);
+            return [...currentDisplayRange, ...expansionRange];
+        };
+
+        setDisplayedRange(getNewDisplayRangeBottom);
+    }, []);
 
     const scrollRef = useRef<HTMLDivElement>(null);
     const listRef = useRef<HTMLDivElement>(null);
@@ -77,7 +85,7 @@ export const useDatePickerMonthYearSelector = <E extends HTMLDivElement>(
         if (scrollRef.current) {
             scrollRef.current.scrollTop = YEAR_SELECTOR_SCROLL_TOP;
         }
-    }, [scrollRef]);
+    }, []);
 
     const boundariesObserverProps = useVerticalScrollBoundariesObserver(
         scrollRef,
@@ -107,18 +115,16 @@ export const useDatePickerMonthYearSelector = <E extends HTMLDivElement>(
 
     const [openYear, setOpenYear] = useState(displayedYear);
 
-    const onYearClick = useCallback(
-        (event: MouseEvent<HTMLButtonElement>) => {
-            const year = parseInt(
-                event.currentTarget.getAttribute('data-year')!,
-                10,
-            );
-            if (!Number.isNaN(year)) {
-                setOpenYear(year);
-            }
-        },
-        [setOpenYear],
-    );
+    const onYearClick = useCallback((event: MouseEvent<HTMLButtonElement>) => {
+        const year = parseInt(
+            event.currentTarget.getAttribute('data-year') || '',
+            10,
+        );
+
+        if (!Number.isNaN(year)) {
+            setOpenYear(year);
+        }
+    }, []);
 
     return {
         rootProps: {

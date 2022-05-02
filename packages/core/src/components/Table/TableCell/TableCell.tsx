@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { useTableCellClassNames } from './hooks/useTableCellClassNames';
@@ -90,3 +90,5 @@ TableCell.propTypes = {
     disabled: PropTypes.bool,
     ellipsis: PropTypes.bool,
 };
+
+export const MemoizedTableCell = memo(TableCell);

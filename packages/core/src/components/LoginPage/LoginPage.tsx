@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 
 import { useLoginPageClassNames } from './hooks/useLoginPageClassNames';
 import { useLoginPage } from './hooks/useLoginPage';
@@ -227,3 +227,5 @@ LoginPage.propTypes = {
     /** Example description */
     // exampleProperty: PropTypes.bool,
 };
+
+export const MemoizedLoginPage = memo(LoginPage);

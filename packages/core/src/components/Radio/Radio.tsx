@@ -1,4 +1,4 @@
-import React, { ChangeEvent, forwardRef } from 'react';
+import React, { ChangeEvent, forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 import { generateId } from '@deliveryhero/armor-system';
 
@@ -139,3 +139,5 @@ Radio.propTypes = {
     typographyProps: PropTypes.object,
     value: PropTypes.string,
 };
+
+export const MemoizedRadio = memo(Radio);

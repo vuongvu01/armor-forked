@@ -1,6 +1,5 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
-import { useTheme } from '@deliveryhero/armor-system';
 
 import { useStepperClassNames, useStepper } from './hooks';
 import { StepperPropsType } from './type';
@@ -96,3 +95,5 @@ Stepper.defaultProps = {
     activeIndex: 0,
     readOnly: false,
 };
+
+export const MemoizedStepper = memo(Stepper);

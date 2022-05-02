@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { useLinkClassNames } from './hooks/useLinkClassNames';
@@ -87,3 +87,5 @@ Link.propTypes = {
     to: PropTypes.string,
     tag: PropTypes.oneOfType([PropTypes.elementType, PropTypes.string]),
 };
+
+export const MemoizedLink = memo(Link);

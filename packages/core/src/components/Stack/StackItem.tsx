@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { useStackItemClassName } from './hooks';
@@ -98,3 +98,5 @@ StackItem.propTypes = {
         'stretch',
     ]),
 };
+
+export const MemoizedStackItem = memo(StackItem);

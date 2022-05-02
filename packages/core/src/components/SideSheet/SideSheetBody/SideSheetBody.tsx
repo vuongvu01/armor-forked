@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FC, memo } from 'react';
 import PropTypes from 'prop-types';
 import { makeRootClassName } from '@deliveryhero/armor-system';
 
@@ -38,7 +38,7 @@ export const SIDE_SHEET_BODY_CLASS_PREFIX = 'SideSheetBody';
  *
  * @armor-docs-component
  */
-export const SideSheetBody: FunctionComponent<SideSheetBodyPropsType> = ({
+export const SideSheetBody: FC<SideSheetBodyPropsType> = ({
     children,
     isFixed,
     className,
@@ -64,3 +64,5 @@ SideSheetBody.displayName = SIDE_SHEET_BODY_CLASS_PREFIX;
 SideSheetBody.propTypes = {
     isFixed: PropTypes.bool,
 };
+
+export const MemoizedSideSheetBody = memo(SideSheetBody);

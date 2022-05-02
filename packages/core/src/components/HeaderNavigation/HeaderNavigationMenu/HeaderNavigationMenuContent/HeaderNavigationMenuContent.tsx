@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import { useRootRef } from '@deliveryhero/armor-system';
 
 import {
@@ -38,3 +38,7 @@ export const HeaderNavigationMenuContent = forwardRef<
 HeaderNavigationMenuContent.defaultProps = {};
 
 HeaderNavigationMenuContent.propTypes = {};
+
+export const MemoizedHeaderNavigationMenuContent = memo(
+    HeaderNavigationMenuContent,
+);

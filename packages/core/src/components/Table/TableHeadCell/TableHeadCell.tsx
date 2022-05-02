@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import {
     SortAlphabetIcon,
     SortNumberIcon,
@@ -90,3 +90,5 @@ TableHeadCell.propTypes = {
         TABLE_HEAD_CELL_SORTING_TYPE_ALPHABETICAL,
     ]),
 };
+
+export const MemoizedTableHeadCell = memo(TableHeadCell);

@@ -76,9 +76,7 @@ export const useDialog = <E extends HTMLElement>(
 
     const onCloseInternal = useCallback(() => {
         if (isTopOverlay()) {
-            if (onClose) {
-                onClose();
-            }
+            onClose?.();
             setClose();
         }
     }, [onClose, setClose, isTopOverlay]);

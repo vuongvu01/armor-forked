@@ -1,4 +1,4 @@
-import React, { Children, FunctionComponent, ReactElement } from 'react';
+import React, { Children, FC, ReactElement, memo } from 'react';
 import { LEFT, RIGHT } from '@deliveryhero/armor-system';
 
 import { TableRowCellsPropTypes } from './type';
@@ -7,7 +7,7 @@ import {
     TableCellStickyOffset,
 } from '../TableCell/type';
 
-export const TableRowCells: FunctionComponent<TableRowCellsPropTypes> = ({
+export const TableRowCells: FC<TableRowCellsPropTypes> = ({
     children,
     stickyColumns,
     stickyTopVisible,
@@ -54,3 +54,5 @@ export const TableRowCells: FunctionComponent<TableRowCellsPropTypes> = ({
         </>
     );
 };
+
+export const MemoizedTableRowCells = memo(TableRowCells);

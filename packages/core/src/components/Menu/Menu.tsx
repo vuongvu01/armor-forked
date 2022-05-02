@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { useMenuClassNames } from './hooks/useMenuClassNames';
@@ -60,3 +60,5 @@ Menu.defaultProps = {
 Menu.propTypes = {
     enableBottomSeparator: PropTypes.bool,
 };
+
+export const MemoizedMenu = memo(Menu);

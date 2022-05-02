@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { useTabsClassName } from './utils';
@@ -76,3 +76,5 @@ Tabs.propTypes = {
     wide: PropTypes.bool,
     onSwitch: PropTypes.func,
 };
+
+export const MemoizedTabs = memo(Tabs);

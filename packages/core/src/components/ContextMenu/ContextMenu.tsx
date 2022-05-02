@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 import { PortalToBody } from '@deliveryhero/armor-system';
 
@@ -115,3 +115,5 @@ ContextMenu.propTypes = {
     onToggle: PropTypes.func,
     // align: PropTypes.string,
 };
+
+export const MemoizedContextMenu = memo(ContextMenu);

@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { SelectorLabel } from '../SelectorLabel';
@@ -81,3 +81,5 @@ Switch.propTypes = {
     label: PropTypes.string,
     onChange: PropTypes.func,
 };
+
+export const MemoizedSwitch = memo(Switch);

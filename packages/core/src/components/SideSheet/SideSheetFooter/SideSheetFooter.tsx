@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 import { makeRootClassName } from '@deliveryhero/armor-system';
 
 import { SideSheetFooterPropsType } from './type';
@@ -57,3 +57,5 @@ export const SideSheetFooter: FC<SideSheetFooterPropsType> = ({
 };
 
 SideSheetFooter.displayName = SIDE_SHEET_FOOTER_CLASS_PREFIX;
+
+export const MemoizedSideSheetFooter = memo(SideSheetFooter);

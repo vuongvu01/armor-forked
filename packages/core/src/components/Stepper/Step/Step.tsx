@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 import { TickThickIcon } from '@deliveryhero/armor-icons';
 
@@ -197,3 +197,5 @@ Step.propTypes = {
 Step.defaultProps = {
     index: 0,
 };
+
+export const MemoizedStep = memo(Step);

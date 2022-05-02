@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 
 import { useTableCellLabelClassNames } from './hooks/useTableCellLabelClassNames';
 import { TableCellLabelRoot } from './style';
@@ -82,3 +82,5 @@ TableCellLabel.defaultProps = {};
 
 /** prop-types are required here for run-time checks */
 TableCellLabel.propTypes = {};
+
+export const MemoizedTableCellLabel = memo(TableCellLabel);

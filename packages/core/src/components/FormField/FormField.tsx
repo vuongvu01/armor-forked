@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 import { getCompatiblePropValue } from '@deliveryhero/armor-system';
 
@@ -62,3 +62,5 @@ FormField.defaultProps = {
 FormField.propTypes = {
     autoMargin: PropTypes.bool,
 };
+
+export const MemoizedFormField = memo(FormField);

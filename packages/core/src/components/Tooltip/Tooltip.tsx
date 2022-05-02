@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 import { PortalToBody } from '@deliveryhero/armor-system';
 
@@ -94,3 +94,5 @@ Tooltip.propTypes = {
     ]),
     small: PropTypes.bool,
 };
+
+export const MemoizedTooltip = memo(Tooltip);

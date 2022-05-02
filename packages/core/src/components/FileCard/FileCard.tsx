@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { IconButton } from '../IconButton';
@@ -166,3 +166,5 @@ FileCard.propTypes = {
     onCancelButtonClick: PropTypes.func,
     onDeleteButtonClick: PropTypes.func,
 };
+
+export const MemoizedFileCard = memo(FileCard);

@@ -83,9 +83,7 @@ export const useTextInput = <E extends HTMLInputElement>(
                 return;
             }
 
-            if (onRootClick) {
-                onRootClick(event);
-            }
+            onRootClick?.(event);
 
             if (
                 event.target !== rootRef.current &&
@@ -94,11 +92,7 @@ export const useTextInput = <E extends HTMLInputElement>(
                 return;
             }
 
-            if (internalInputRef.current) {
-                // todo: tighten this
-                // @ts-ignore
-                internalInputRef.current!.focus();
-            }
+            internalInputRef.current?.focus();
         },
         [enableFocusOnRootClick, onRootClick, rootRef, internalInputRef],
     );

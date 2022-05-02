@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { useEmptyStateClassNames } from './hooks/useEmptyStateClassNames';
@@ -199,3 +199,5 @@ EmptyState.propTypes = {
     small: PropTypes.bool,
     enableIndicator: PropTypes.bool,
 };
+
+export const MemoizedEmptyState = memo(EmptyState);

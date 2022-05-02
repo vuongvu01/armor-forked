@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import { PortalToBody } from '@deliveryhero/armor-system';
 
 import { useDropdown, useDropdownClassName } from './hooks';
@@ -129,3 +129,5 @@ export const Dropdown = forwardRef<HTMLInputElement, DropdownPropsType>(
         );
     },
 );
+
+export const MemoizedDropdown = memo(Dropdown);

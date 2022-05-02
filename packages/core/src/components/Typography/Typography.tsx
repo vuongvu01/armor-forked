@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { useTypographyClassNames } from './hooks/useTypographyClassNames';
@@ -81,3 +81,5 @@ Typography.propTypes = {
     /** Tag name or component */
     tag: PropTypes.oneOfType([PropTypes.elementType, PropTypes.string]),
 };
+
+export const MemoizedTypography = memo(Typography);

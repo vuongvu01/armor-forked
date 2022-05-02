@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 
 import { DropdownInternalOptionType, DropdownInternalValueType } from '../type';
+import { OptionObjectType } from '../../OptionList/type';
 
 export const useSelectedTagsToDisplay = (
     internalValue: DropdownInternalValueType,
@@ -15,15 +16,15 @@ export const useSelectedTagsToDisplay = (
             (option) => option.value,
         );
 
-        let matchingValueIndices: number[] = [];
+        const matchingOptions: OptionObjectType[] = [];
 
         internalValue.forEach((value) => {
             const matchedIndex = internalOptionValues.indexOf(value);
 
             if (matchedIndex > -1) {
-                matchingValueIndices = [...matchingValueIndices, matchedIndex];
+                matchingOptions.push(internalOptions[matchedIndex]);
             }
         });
 
-        return matchingValueIndices.map((index) => internalOptions[index]);
+        return matchingOptions;
     }, [internalValue, internalOptions]);

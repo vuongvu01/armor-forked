@@ -1,4 +1,4 @@
-import React, { forwardRef, Ref } from 'react';
+import React, { forwardRef, Ref, memo } from 'react';
 
 import { useFilterEditorClassNames } from './hooks/useFilterEditorClassNames';
 import { useFilterEditor } from './hooks/useFilterEditor';
@@ -8,8 +8,8 @@ import { FILTER_EDITOR_CLASS_PREFIX } from './constants';
 import { Typography } from '../../Typography';
 import { Button, FormField } from '../..';
 import { getDefaultConditionRenderer } from './utils/getDefaultConditionRenderer';
-import { FilterEditorActions } from '../FilterEditorActions';
-import { FilterEditorHeader } from '../FilterEditorHeader';
+import { MemoizedFilterEditorActions as FilterEditorActions } from '../FilterEditorActions';
+import { MemoizedFilterEditorHeader as FilterEditorHeader } from '../FilterEditorHeader';
 
 /**
  * # FilterEditor
@@ -162,3 +162,5 @@ export const FilterEditor = forwardRef<HTMLDivElement, FilterEditorPropsType>(
 );
 
 FilterEditor.defaultProps = {};
+
+export const MemoizedFilterEditor = memo(FilterEditor);

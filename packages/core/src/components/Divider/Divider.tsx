@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { useDividerClassNames } from './hooks/useDividerClassNames';
@@ -59,3 +59,5 @@ Divider.propTypes = {
     horizontal: PropTypes.bool,
     vertical: PropTypes.bool,
 };
+
+export const MemoizedDivider = memo(Divider);

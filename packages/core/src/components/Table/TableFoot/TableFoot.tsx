@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 
 import { TableSectionContext } from '../utils/TableSectionContext';
 import { useTableFoot } from './hooks/useTableFoot';
@@ -82,3 +82,5 @@ TableFoot.defaultProps = {};
 
 /** prop-types are required here for run-time checks */
 TableFoot.propTypes = {};
+
+export const MemoizedTableFoot = memo(TableFoot);

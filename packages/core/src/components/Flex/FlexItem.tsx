@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { useFlexItemClassName } from './utils';
@@ -98,3 +98,5 @@ FlexItem.propTypes = {
         'stretch',
     ]),
 };
+
+export const MemoizedFlexItem = memo(FlexItem);

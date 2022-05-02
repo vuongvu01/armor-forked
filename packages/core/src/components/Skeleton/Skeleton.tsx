@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { useSkeletonClassNames } from './hooks/useSkeletonClassNames';
@@ -35,3 +35,5 @@ Skeleton.defaultProps = {
 Skeleton.propTypes = {
     animated: PropTypes.bool,
 };
+
+export const MemoizedSkeleton = memo(Skeleton);

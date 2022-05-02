@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 
 import { useTableActionClassNames } from './hooks/useTableActionClassNames';
 import { TableActionRoot } from './style';
@@ -95,3 +95,5 @@ TableAction.defaultProps = {};
 
 /** prop-types are required here for run-time checks */
 TableAction.propTypes = {};
+
+export const MemoizedTableAction = memo(TableAction);

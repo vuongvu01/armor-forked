@@ -1,16 +1,16 @@
+import { useContext } from 'react';
 import { useRootRef } from '@deliveryhero/armor-system';
 
-import { useContext } from 'react';
 import { ContentSwitcherControlPropsType } from '../type';
 import { RefType } from '../../../../type';
 import { ContentSwitcherContext } from '../../ContentSwitcherContext';
 
 export const useContentSwitcherControl = <E extends HTMLElement>(
-    props: ContentSwitcherControlPropsType,
+    { switchName, ...restProps }: ContentSwitcherControlPropsType,
     ref: RefType<E>,
 ) => {
     const innerRef = useRootRef<E>(ref);
-    const { switchName, ...restProps } = props;
+
     const {
         onSwitchNameChange,
         switchName: selectedSwitchName,

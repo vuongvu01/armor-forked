@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { useMessageClassNames } from './utils/useMessageClassNames';
@@ -13,7 +13,7 @@ import {
 import { MessageIconPropsType, MessagePropsType } from './type';
 import { MESSAGE_CLASS_PREFIX } from './constants';
 import { useMessage } from './hooks/useMessage';
-import { MemoizedCloseButton as CloseButton } from '../CloseButton';
+import { CloseButton } from '../CloseButton';
 
 /**
  * # Message
@@ -128,3 +128,5 @@ Message.propTypes = {
     /** A callback that is called when a user tries to close the message */
     onClose: PropTypes.func,
 };
+
+export const MemoizedMessage = memo(Message);

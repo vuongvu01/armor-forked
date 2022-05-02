@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 import { getScalarPropType } from '@deliveryhero/armor-system';
 
@@ -66,3 +66,5 @@ TableControllerCell.propTypes = {
     rowId: getScalarPropType(),
     // onExpansionButtonClick: PropTypes.func,
 };
+
+export const MemoizedTableControllerCell = memo(TableControllerCell);

@@ -1,4 +1,4 @@
-import React, { forwardRef, useMemo } from 'react';
+import React, { forwardRef, useMemo, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { useTheme } from '@deliveryhero/armor-system';
@@ -97,3 +97,5 @@ Grid.propTypes = {
     gutterSpacingVertical: PropTypes.number,
     gutterSpacingHorizontal: PropTypes.number,
 };
+
+export const MemoizedGrid = memo(Grid);

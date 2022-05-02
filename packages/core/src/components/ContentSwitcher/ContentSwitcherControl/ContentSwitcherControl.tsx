@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { useContentSwitcherControlClassNames } from './hooks/useContentSwitcherControlClassNames';
@@ -50,3 +50,5 @@ ContentSwitcherControl.propTypes = {
     /** Reserved - Sets the flag on the next switch that comes after selected switch */
     afterSelected: PropTypes.bool,
 };
+
+export const MemoizedContentSwitcherControl = memo(ContentSwitcherControl);

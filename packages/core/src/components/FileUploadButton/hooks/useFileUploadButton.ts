@@ -32,17 +32,12 @@ export const useFileUploadButton = <E extends HTMLInputElement>(
                 return;
             }
 
+            onClick?.(event);
+
             const node = internalInputRef.current;
-
-            if (onClick) {
-                onClick(event);
+            if (node && !disabled) {
+                node.click();
             }
-
-            if (!node || disabled) {
-                return;
-            }
-
-            node.click();
         },
         [disabled, onClick],
     );

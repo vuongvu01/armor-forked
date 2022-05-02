@@ -1,12 +1,16 @@
+import { useMemo } from 'react';
 import { DatePickerEffectiveCommonPropsType } from '../type';
 
 export const useCommonDatePickerCompatibility = ({
     enableApplyButton,
     enableActionButtons,
 }: DatePickerEffectiveCommonPropsType) => {
-    return {
-        enableApplyButton: !!(enableActionButtons !== undefined
-            ? enableActionButtons
-            : enableApplyButton),
-    };
+    return useMemo(
+        () => ({
+            enableApplyButton: !!(enableActionButtons !== undefined
+                ? enableActionButtons
+                : enableApplyButton),
+        }),
+        [enableActionButtons, enableApplyButton],
+    );
 };

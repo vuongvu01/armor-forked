@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { useProgressBarClassNames, useProgressBar } from './hooks';
@@ -59,3 +59,5 @@ ProgressBar.propTypes = {
     /** A callback is fired whenever the Progressbar's progress reaches 100% (or 0% for the reversed mode). */
     onFinish: PropTypes.func,
 };
+
+export const MemoizedProgressBar = memo(ProgressBar);

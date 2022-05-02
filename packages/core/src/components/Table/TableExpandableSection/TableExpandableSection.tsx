@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { useTableExpandableSectionClassNames } from './hooks/useTableExpandableSectionClassNames';
@@ -61,3 +61,5 @@ TableExpandableSection.propTypes = {
     expanded: PropTypes.bool,
     offsetLeft: PropTypes.number,
 };
+
+export const MemoizedTableExpandableSection = memo(TableExpandableSection);

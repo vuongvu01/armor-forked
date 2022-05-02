@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 
 import { useFilterLayoutClassNames } from './hooks/useFilterLayoutClassNames';
 import { useFilterLayout } from './hooks/useFilterLayout';
@@ -17,8 +17,8 @@ import {
     SideSheetHeader,
 } from '../../SideSheet';
 import { FilterEditorSettingsContextProvider } from '../FilterEditor/utils/FilterEditorSettingsContext';
-import { FilterEditorActions } from '../FilterEditorActions';
-import { FilterEditorHeader } from '../FilterEditorHeader';
+import { MemoizedFilterEditorActions as FilterEditorActions } from '../FilterEditorActions';
+import { MemoizedFilterEditorHeader as FilterEditorHeader } from '../FilterEditorHeader';
 
 /**
  * # FilterLayout
@@ -151,3 +151,5 @@ FilterLayout.defaultProps = {};
 
 /** prop-types are required here for run-time checks */
 FilterLayout.propTypes = {};
+
+export const MemoizedFilterLayout = memo(FilterLayout);

@@ -1,6 +1,5 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import { CancelIcon } from '@deliveryhero/armor-icons';
-// import PropTypes from 'prop-types';
 
 import { useConditionTagClassNames } from './hooks/useConditionTagClassNames';
 import { useConditionTag } from './hooks/useConditionTag';
@@ -102,3 +101,5 @@ ConditionTag.defaultProps = {
 
 /** prop-types are required here for run-time checks */
 ConditionTag.propTypes = {};
+
+export const MemoizedConditionTag = memo(ConditionTag);

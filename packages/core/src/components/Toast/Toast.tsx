@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { Message, MessageAction } from '../Message';
@@ -139,3 +139,5 @@ Toast.propTypes = {
         ToastPositions.BOTTOM_LEFT,
     ]),
 };
+
+export const MemoizedToast = memo(Toast);

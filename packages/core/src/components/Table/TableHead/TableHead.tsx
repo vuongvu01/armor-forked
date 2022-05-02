@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 
 import { TableSectionContext } from '../utils/TableSectionContext';
 
@@ -76,3 +76,5 @@ TableHead.defaultProps = {};
 
 /** prop-types are required here for run-time checks */
 TableHead.propTypes = {};
+
+export const MemoizedTableHead = memo(TableHead);

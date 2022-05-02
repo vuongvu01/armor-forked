@@ -70,7 +70,7 @@ export const useContextMenu = <E extends HTMLDivElement>(
             ref: triggerRef,
             onClick: onClickProxy,
         });
-    }, [trigger, triggerRef, onClickProxy]);
+    }, [onClickProxy, trigger]);
 
     const displayChildren = !!children;
     const displayMenuElements = !displayChildren && !!menuElements;
@@ -86,9 +86,7 @@ export const useContextMenu = <E extends HTMLDivElement>(
                 props: {
                     ...element.props,
                     onClick: (event: MouseEvent<HTMLDivElement>) => {
-                        if (element.props && element.props.onClick) {
-                            element.props.onClick(event);
-                        }
+                        element.props?.onClick?.(event);
 
                         if (event.isPropagationStopped()) {
                             return;

@@ -1,7 +1,8 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import { PortalToBody } from '@deliveryhero/armor-system';
 
 import { useDialogClassNames } from './hooks/useDialogClassNames';
+import { useDialog } from './hooks/useDialog';
 import {
     DialogAlignmentContainer,
     DialogRoot,
@@ -12,7 +13,6 @@ import {
 import { DialogPropsType } from './type';
 import { Backdrop } from '../Backdrop';
 import { DIALOG_CLASS_PREFIX, DIALOG_SCROLL_DIALOG } from './constants';
-import { useDialog } from './hooks/useDialog';
 
 /**
  * # Dialog
@@ -117,3 +117,5 @@ Dialog.defaultProps = {
     disableCloseByEscape: false,
     scroll: DIALOG_SCROLL_DIALOG,
 };
+
+export const MemoizedDialog = memo(Dialog);

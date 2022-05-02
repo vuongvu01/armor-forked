@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -85,3 +85,5 @@ HeaderNavigationTitle.propTypes = {
     rel: PropTypes.string,
     onLinkClick: PropTypes.func,
 };
+
+export const MemoizedHeaderNavigationTitle = memo(HeaderNavigationTitle);

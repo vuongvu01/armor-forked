@@ -1,4 +1,4 @@
-import React, { forwardRef, useContext } from 'react';
+import React, { forwardRef, useContext, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { HeaderNavigationLinkRoot } from './style';
@@ -68,3 +68,5 @@ HeaderNavigationLink.propTypes = {
     target: PropTypes.string,
     rel: PropTypes.string,
 };
+
+export const MemoizedHeaderNavigationLink = memo(HeaderNavigationLink);

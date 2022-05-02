@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { useTabClassName } from './utils';
@@ -105,3 +105,5 @@ Tab.propTypes = {
     // tabIndex: PropTypes.number, // TODO (nmelnikov 2020-07-21): we need to hide internal props from storybook docs
     value: PropTypes.number,
 };
+
+export const MemoizedTab = memo(Tab);

@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { useMenuElementClassNames } from './utils/useMenuElementClassNames';
@@ -10,7 +10,7 @@ import {
 import { MenuElementPropsType } from './type';
 import { MENU_ELEMENT_CLASS_PREFIX } from './constants';
 import { useMenuElement } from './hooks/useMenuElement';
-import { ExpansionIndicator } from '../../ExpansionIndicator';
+import { MemoizedExpansionIndicator as ExpansionIndicator } from '../../ExpansionIndicator';
 
 /**
  * # MenuElement
@@ -111,3 +111,5 @@ MenuElement.propTypes = {
     target: PropTypes.string,
     rel: PropTypes.string,
 };
+
+export const MemoizedMenuElement = memo(MenuElement);

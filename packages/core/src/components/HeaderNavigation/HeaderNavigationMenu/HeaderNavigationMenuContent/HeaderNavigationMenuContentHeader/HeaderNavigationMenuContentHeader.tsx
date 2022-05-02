@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FC, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -22,7 +22,7 @@ import { HeaderNavigationMenuContentHeaderPropsType } from './type';
  *
  * @armor-docs-component
  */
-export const HeaderNavigationMenuContentHeader: FunctionComponent<
+export const HeaderNavigationMenuContentHeader: FC<
     HeaderNavigationMenuContentHeaderPropsType
 > = ({ className, title, label, image, ...restProps }) => {
     const classOverride = useHeaderNavigationMenuContentHeaderClassName(
@@ -82,3 +82,7 @@ HeaderNavigationMenuContentHeader.propTypes = {
     label: PropTypes.string,
     image: PropTypes.node,
 };
+
+export const MemoizedHeaderNavigationMenuContentHeader = memo(
+    HeaderNavigationMenuContentHeader,
+);

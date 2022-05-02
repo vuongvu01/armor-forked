@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 
 import { useFilterEditorActionsClassNames } from './hooks/useFilterEditorActionsClassNames';
 import { useFilterEditorActions } from './hooks/useFilterEditorActions';
@@ -47,3 +47,5 @@ export const FilterEditorActions = forwardRef<
 });
 
 FilterEditorActions.defaultProps = {};
+
+export const MemoizedFilterEditorActions = memo(FilterEditorActions);

@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 
 import { useDatePickerDaySelectorClassNames } from './hooks/useDatePickerDaySelectorClassNames';
 import { useDatePickerDaySelector } from './hooks/useDatePickerDaySelector';
@@ -17,63 +17,69 @@ import { DATE_PICKER_DAY_SELECTOR_CLASS_PREFIX } from './constants';
 /**
  * @internal
  */
-export const DatePickerDaySelector = forwardRef<
-    HTMLDivElement,
-    DatePickerDaySelectorPropsType
->(function DatePickerDaySelector({ className, ...props }, ref) {
-    const classNameComponents = useDatePickerDaySelectorClassNames(
-        DATE_PICKER_DAY_SELECTOR_CLASS_PREFIX,
-        className,
-    );
+export const DatePickerDaySelector = memo(
+    forwardRef<HTMLDivElement, DatePickerDaySelectorPropsType>(
+        function DatePickerDaySelector({ className, ...props }, ref) {
+            const classNameComponents = useDatePickerDaySelectorClassNames(
+                DATE_PICKER_DAY_SELECTOR_CLASS_PREFIX,
+                className,
+            );
 
-    const { rootProps, weekDays, dayMatrix, getDayProps } =
-        useDatePickerDaySelector(props, ref);
+            const { rootProps, weekDays, dayMatrix, getDayProps } =
+                useDatePickerDaySelector(props, ref);
 
-    return (
-        <DatePickerDaySelectorRoot
-            {...rootProps}
-            className={classNameComponents.Root}
-        >
-            <DatePickerDaySelectorWeek className={classNameComponents.Week}>
-                {weekDays.map((weekDay) => (
-                    <DatePickerDaySelectorWeekDay
-                        key={weekDay.value}
-                        className={classNameComponents.WeekDay}
+            return (
+                <DatePickerDaySelectorRoot
+                    {...rootProps}
+                    className={classNameComponents.Root}
+                >
+                    <DatePickerDaySelectorWeek
+                        className={classNameComponents.Week}
                     >
-                        {weekDay.label}
-                    </DatePickerDaySelectorWeekDay>
-                ))}
-            </DatePickerDaySelectorWeek>
-            <DatePickerDaySelectorDays className={classNameComponents.Days}>
-                {dayMatrix.map((day) => (
-                    <DatePickerDaySelectorDay
-                        key={day.id}
-                        {...getDayProps(day, classNameComponents.Day)}
+                        {weekDays.map((weekDay) => (
+                            <DatePickerDaySelectorWeekDay
+                                key={weekDay.value}
+                                className={classNameComponents.WeekDay}
+                            >
+                                {weekDay.label}
+                            </DatePickerDaySelectorWeekDay>
+                        ))}
+                    </DatePickerDaySelectorWeek>
+                    <DatePickerDaySelectorDays
+                        className={classNameComponents.Days}
                     >
-                        <DatePickerDaySelectorDayPadding
-                            {...day.paddingProps}
-                            left
-                            className={classNameComponents.DayPaddingLeft}
-                        />
-                        <DatePickerDaySelectorDayButton
-                            {...day.buttonProps}
-                            className={classNameComponents.DayButton}
-                        >
-                            {day.day}
-                        </DatePickerDaySelectorDayButton>
-                        <DatePickerDaySelectorDayPadding
-                            {...day.paddingProps}
-                            right
-                            className={classNameComponents.DayPaddingRight}
-                        />
-                    </DatePickerDaySelectorDay>
-                ))}
-            </DatePickerDaySelectorDays>
-        </DatePickerDaySelectorRoot>
-    );
-});
+                        {dayMatrix.map((day) => (
+                            <DatePickerDaySelectorDay
+                                key={day.id}
+                                {...getDayProps(day, classNameComponents.Day)}
+                            >
+                                <DatePickerDaySelectorDayPadding
+                                    {...day.paddingProps}
+                                    left
+                                    className={
+                                        classNameComponents.DayPaddingLeft
+                                    }
+                                />
+                                <DatePickerDaySelectorDayButton
+                                    {...day.buttonProps}
+                                    className={classNameComponents.DayButton}
+                                >
+                                    {day.day}
+                                </DatePickerDaySelectorDayButton>
+                                <DatePickerDaySelectorDayPadding
+                                    {...day.paddingProps}
+                                    right
+                                    className={
+                                        classNameComponents.DayPaddingRight
+                                    }
+                                />
+                            </DatePickerDaySelectorDay>
+                        ))}
+                    </DatePickerDaySelectorDays>
+                </DatePickerDaySelectorRoot>
+            );
+        },
+    ),
+);
 
-DatePickerDaySelector.defaultProps = {};
-
-/** prop-types are required here for run-time checks */
-DatePickerDaySelector.propTypes = {};
+DatePickerDaySelector.displayName = DATE_PICKER_DAY_SELECTOR_CLASS_PREFIX;

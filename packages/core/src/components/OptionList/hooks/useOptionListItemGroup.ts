@@ -12,9 +12,7 @@ export const useOptionListItemGroup = ({
     ...restProps
 }: OptionListItemGroupPropType) => {
     const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
-        if (onClick) {
-            onClick(event);
-        }
+        onClick?.(event);
     };
 
     const selectedItemsCount = internalGroup?.selectedItemsCount;

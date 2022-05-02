@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import { ArrowRightIcon } from '@deliveryhero/armor-icons';
 
 import { useDatePickerTopBarClassNames } from './hooks/useDatePickerTopBarClassNames';
@@ -17,74 +17,76 @@ import { DATE_PICKER_TOP_BAR_CLASS_PREFIX } from './constants';
 /**
  * @internal
  */
-export const DatePickerTopBar = forwardRef<
-    HTMLDivElement,
-    DatePickerTopBarPropsType
->(function DatePickerTopBar({ className, ...props }, ref) {
-    const classNameComponents = useDatePickerTopBarClassNames(
-        DATE_PICKER_TOP_BAR_CLASS_PREFIX,
-        className,
-    );
+export const DatePickerTopBar = memo(
+    forwardRef<HTMLDivElement, DatePickerTopBarPropsType>(
+        function DatePickerTopBar({ className, ...props }, ref) {
+            const classNameComponents = useDatePickerTopBarClassNames(
+                DATE_PICKER_TOP_BAR_CLASS_PREFIX,
+                className,
+            );
 
-    const {
-        rootProps,
-        monthYearSelectorToggleProps,
-        monthYearSelectorToggleArrowProps,
-        monthNavigationButtonBackwardProps,
-        monthNavigationButtonForwardProps,
+            const {
+                rootProps,
+                monthYearSelectorToggleProps,
+                monthYearSelectorToggleArrowProps,
+                monthNavigationButtonBackwardProps,
+                monthNavigationButtonForwardProps,
 
-        year,
-        monthName,
-    } = useDatePickerTopBar(props, ref);
+                year,
+                monthName,
+            } = useDatePickerTopBar(props, ref);
 
-    return (
-        <DatePickerTopBarRoot
-            {...rootProps}
-            className={classNameComponents.Root}
-        >
-            <DatePickerTopBarMonthYearSelectorToggle
-                {...monthYearSelectorToggleProps}
-                className={classNameComponents.MonthYearSelectorToggle}
-            >
-                {monthName} {year}
-                <DatePickerTopBarMonthYearSelectorToggleArrow
-                    {...monthYearSelectorToggleArrowProps}
-                    className={classNameComponents.MonthYearSelectorToggleArrow}
-                />
-            </DatePickerTopBarMonthYearSelectorToggle>
-            <DatePickerTopBarMonthNavigation
-                className={classNameComponents.MonthNavigation}
-            >
-                <DatePickerTopBarMonthNavigationButtonBackward
-                    {...monthNavigationButtonBackwardProps}
-                    className={
-                        classNameComponents.MonthNavigationButtonBackward
-                    }
+            return (
+                <DatePickerTopBarRoot
+                    {...rootProps}
+                    className={classNameComponents.Root}
                 >
-                    <ArrowRightIcon
-                        medium
-                        className={
-                            classNameComponents.MonthNavigationButtonArrow
-                        }
-                    />
-                </DatePickerTopBarMonthNavigationButtonBackward>
-                <DatePickerTopBarMonthNavigationButtonForward
-                    {...monthNavigationButtonForwardProps}
-                    className={classNameComponents.MonthNavigationButtonForward}
-                >
-                    <ArrowRightIcon
-                        medium
-                        className={
-                            classNameComponents.MonthNavigationButtonArrow
-                        }
-                    />
-                </DatePickerTopBarMonthNavigationButtonForward>
-            </DatePickerTopBarMonthNavigation>
-        </DatePickerTopBarRoot>
-    );
-});
+                    <DatePickerTopBarMonthYearSelectorToggle
+                        {...monthYearSelectorToggleProps}
+                        className={classNameComponents.MonthYearSelectorToggle}
+                    >
+                        {monthName} {year}
+                        <DatePickerTopBarMonthYearSelectorToggleArrow
+                            {...monthYearSelectorToggleArrowProps}
+                            className={
+                                classNameComponents.MonthYearSelectorToggleArrow
+                            }
+                        />
+                    </DatePickerTopBarMonthYearSelectorToggle>
+                    <DatePickerTopBarMonthNavigation
+                        className={classNameComponents.MonthNavigation}
+                    >
+                        <DatePickerTopBarMonthNavigationButtonBackward
+                            {...monthNavigationButtonBackwardProps}
+                            className={
+                                classNameComponents.MonthNavigationButtonBackward
+                            }
+                        >
+                            <ArrowRightIcon
+                                medium
+                                className={
+                                    classNameComponents.MonthNavigationButtonArrow
+                                }
+                            />
+                        </DatePickerTopBarMonthNavigationButtonBackward>
+                        <DatePickerTopBarMonthNavigationButtonForward
+                            {...monthNavigationButtonForwardProps}
+                            className={
+                                classNameComponents.MonthNavigationButtonForward
+                            }
+                        >
+                            <ArrowRightIcon
+                                medium
+                                className={
+                                    classNameComponents.MonthNavigationButtonArrow
+                                }
+                            />
+                        </DatePickerTopBarMonthNavigationButtonForward>
+                    </DatePickerTopBarMonthNavigation>
+                </DatePickerTopBarRoot>
+            );
+        },
+    ),
+);
 
-DatePickerTopBar.defaultProps = {};
-
-/** prop-types are required here for run-time checks */
-DatePickerTopBar.propTypes = {};
+DatePickerTopBar.displayName = DATE_PICKER_TOP_BAR_CLASS_PREFIX;

@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { useFormFieldTooltipClassNames } from './hooks/useFormFieldTooltipClassNames';
@@ -76,3 +76,5 @@ FormFieldTooltip.propTypes = {
     /** Example description */
     visible: PropTypes.bool,
 };
+
+export const MemoizedFormFieldTooltip = memo(FormFieldTooltip);
