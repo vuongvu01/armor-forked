@@ -1,15 +1,15 @@
 import styled from 'styled-components';
 import React from 'react';
 
-// @ts-ignore
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const bgTile = require('./tile.jpg');
+import bgTile from './tile.jpg';
 
 export const Wrapper = styled.div`
     width: 100%;
     height: 100%;
+    min-height: 100vh;
     padding: 2rem;
-    background-color: ${({ theme }) => theme.backgroundColor};
+    background-color: ${({ theme }) => theme.armor.body.backgroundColor};
+    transition: background-color 0.3s;
     box-sizing: border-box;
     ${({ theme }) =>
         theme.backgroundChecker ? `background-image: url(${bgTile});` : ''}

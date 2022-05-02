@@ -2,16 +2,19 @@ import { addDecorator } from '@storybook/react';
 import { withThemesProvider } from 'storybook-addon-styled-component-theme';
 
 import { makeDefaultTheme } from '../../src';
+import { makeDarkTheme } from '@deliveryhero/armor-brands';
 
 const themes = [
     {
         name: 'Default',
-        backgroundColor: '#fff',
         ...makeDefaultTheme(),
     },
     {
+        name: 'Dark theme',
+        ...makeDarkTheme(),
+    },
+    {
         name: 'Checker',
-        backgroundColor: '#fff',
         backgroundChecker: true,
         ...makeDefaultTheme(),
     },
