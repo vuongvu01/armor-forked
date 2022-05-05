@@ -123,6 +123,7 @@ export const useHeaderNavigationSelector = <E extends HTMLDivElement>(
             multiple: isMultiselect,
             formatOption,
             internalValue,
+            setInternalValue,
             onValueUpdate,
             isFlat,
             options,

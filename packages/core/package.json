@@ -22,7 +22,7 @@
         "test": "jest -c ./jest/config.js --passWithNoTests",
         "test:cache:clear": "jest -c ./jest/config.js --clearCache",
         "test:local": "yarn test --runInBand",
-        "test:visual": "cd ./visual && yarn loki test ",
+        "test:visual": "cd ./visual && yarn loki test",
         "test:visual:update": "cd ./visual && yarn loki update",
         "test:visual:approve": "cd ./visual && yarn loki approve",
         "test:visual:cicd": "cd ./visual && yarn build-storybook && yarn loki --requireReference --reactUri file:./storybook-static",
