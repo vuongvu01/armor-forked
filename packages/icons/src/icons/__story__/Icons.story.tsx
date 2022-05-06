@@ -206,6 +206,9 @@ export const Basic = (): ReactElement => (
             <Icon>
                 <I.FoodOrderIcon />
             </Icon>
+            <Icon>
+                <I.SMSIcon />
+            </Icon>
         </Icons>
         <h2>Arrow</h2>
         <Icons>
