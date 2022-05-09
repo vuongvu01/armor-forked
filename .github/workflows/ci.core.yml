@@ -7,6 +7,7 @@ on:
             - master
         paths:
             - 'packages/core/**'
+            - 'packages/system/**'
 
 jobs:
     test:

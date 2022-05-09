@@ -8,6 +8,7 @@ on:
         paths:
             - 'packages/brands/**'
             - 'packages/core/**'
+            - 'packages/system/**'
 
 jobs:
     test:
