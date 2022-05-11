@@ -1,3 +1,19 @@
+# @deliveryhero/armor-datatable 1.0.0 (2022-05-11)
+
+
+### Features
+
+* **powerup:** new components package ([#969](https://github.com/deliveryhero/armor/issues/969)) ([5853c14](https://github.com/deliveryhero/armor/commit/5853c1440e83aed8a7394431a4ec9cefbec28cec))
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor-icons:** upgraded to 1.24.0
+* **@deliveryhero/armor:** upgraded to 1.94.0
+
 # [1.84.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.83.0...@deliveryhero/armor@1.84.0) (2022-01-14)
 
 
