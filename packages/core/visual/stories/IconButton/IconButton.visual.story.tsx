@@ -24,6 +24,14 @@ export const Light = () => {
     );
 };
 
+export const Disabled = () => {
+    return (
+        <IconButton disabled>
+            <ArrowUpIcon medium />
+        </IconButton>
+    );
+};
+
 export const ColorInherit = () => {
     return (
         <div

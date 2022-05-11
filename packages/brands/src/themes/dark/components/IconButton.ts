@@ -1,10 +1,13 @@
 import { css } from 'styled-components';
-import { colorGrey60 } from '@deliveryhero/armor-system';
+import { color } from '@deliveryhero/armor-system';
+import { IconButtonPropsType } from '@deliveryhero/armor';
 
-export const getIconButtonOverride = () => {
-    return css`
-        &:hover {
-            background-color: ${colorGrey60};
-        }
-    `;
+export const getIconButtonOverride = ({ disabled }: IconButtonPropsType) => {
+    return disabled
+        ? null
+        : css`
+              &:hover {
+                  background-color: ${color('neutral.03')};
+              }
+          `;
 };
