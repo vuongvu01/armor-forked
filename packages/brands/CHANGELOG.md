@@ -1,3 +1,16 @@
+## [1.11.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-brands@1.11.1...@deliveryhero/armor-brands@1.11.2) (2022-05-11)
+
+
+### Bug Fixes
+
+* **IconButton:** Disabled prop on IconButton [AR-58] ([#965](https://github.com/deliveryhero/armor/issues/965)) ([1a1ec59](https://github.com/deliveryhero/armor/commit/1a1ec591b97f7e0ac3b8ed9265430f8b289bc453))
+
+
+### Features
+
+* **icon:** add new translate icon [AR-76] ([#982](https://github.com/deliveryhero/armor/issues/982)) ([4dd23d0](https://github.com/deliveryhero/armor/commit/4dd23d00a482d1d2d08b783cdfea348b443a20e5))
+* **powerup:** new components package ([#969](https://github.com/deliveryhero/armor/issues/969)) ([5853c14](https://github.com/deliveryhero/armor/commit/5853c1440e83aed8a7394431a4ec9cefbec28cec))
+
 ## @deliveryhero/armor-brands [1.11.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-brands@1.11.0...@deliveryhero/armor-brands@1.11.1) (2022-05-11)
 
 
