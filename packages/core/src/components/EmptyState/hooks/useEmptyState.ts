@@ -25,8 +25,6 @@ export const useEmptyState = <E extends HTMLDivElement>(
     }: EmptyStatePropsType,
     ref: RefType<E>,
 ) => {
-    // put all your component logic here
-
     return {
         rootProps: {
             ...restProps,

@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { useFormFieldMessageClassNames } from './hooks/useFormFieldMessageClassNames';
@@ -67,3 +67,5 @@ FormFieldMessage.propTypes = {
     /** Reserve just one line for the message, cut the rest */
     oneLine: PropTypes.bool,
 };
+
+export const MemoizedFormFieldMessage = memo(FormFieldMessage);

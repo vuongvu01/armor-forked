@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { DataTablePropsType } from '../type';
 
 export const useDataTablePageNavigation = ({
@@ -16,21 +17,36 @@ export const useDataTablePageNavigation = ({
 
     ...restProps
 }: DataTablePropsType) => {
-    return {
-        result: {
-            pageNavigationProps: {
-                itemCount: pageNavigationItemCount,
-                pageNumber: pageNavigationPageNumber,
-                onPageSelect: onPageNavigationPageSelect,
-                pageSize: pageNavigationPageSize,
-                enablePageSizeSelector: enablePageNavigationPageSizeSelector,
-                onPageSizeChange: onPageNavigationPageSizeChange,
-                pageSizeList: pageNavigationPageSizeList,
+    return useMemo(
+        () => ({
+            result: {
+                pageNavigationProps: {
+                    itemCount: pageNavigationItemCount,
+                    pageNumber: pageNavigationPageNumber,
+                    onPageSelect: onPageNavigationPageSelect,
+                    pageSize: pageNavigationPageSize,
+                    enablePageSizeSelector:
+                        enablePageNavigationPageSizeSelector,
+                    onPageSizeChange: onPageNavigationPageSizeChange,
+                    pageSizeList: pageNavigationPageSizeList,
 
-                ...pageNavigationProps,
+                    ...pageNavigationProps,
+                },
+                enablePageNavigation,
             },
+            restProps,
+        }),
+        [
             enablePageNavigation,
-        },
-        restProps,
-    };
+            enablePageNavigationPageSizeSelector,
+            onPageNavigationPageSelect,
+            onPageNavigationPageSizeChange,
+            pageNavigationItemCount,
+            pageNavigationPageNumber,
+            pageNavigationPageSize,
+            pageNavigationPageSizeList,
+            pageNavigationProps,
+            restProps,
+        ],
+    );
 };

@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useContext } from 'react';
+import React, { FC, useContext, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -31,7 +31,7 @@ const setActiveClass = (isActive: boolean) => (isActive ? 'active' : '');
  *
  * @armor-docs-component
  */
-export const HeaderNavigationMenuContentBodyOptions: FunctionComponent<
+export const HeaderNavigationMenuContentBodyOptions: FC<
     HeaderNavigationMenuContentBodyOptionsPropsType
 > = ({ className, options, selectedValue, onOptionSelect, ...restProps }) => {
     const { isExpanded, setIsExpanded } = useContext(
@@ -175,3 +175,7 @@ HeaderNavigationMenuContentBodyOptions.propTypes = {
     //     ),
     // ]),
 };
+
+export const MemoizedHeaderNavigationMenuContentBodyOptions = memo(
+    HeaderNavigationMenuContentBodyOptions,
+);

@@ -1,25 +1,6 @@
 /* eslint-disable no-param-reassign */
 
 import { ThemeType } from './type';
-import {
-    colorBlue05,
-    colorBlue20,
-    colorBlue50,
-    colorBlue60,
-    colorBlue70,
-    colorGreen10,
-    colorGreen60,
-    colorRed10,
-    colorRed50,
-    colorRed60,
-    colorRed70,
-    colorTurquoise60,
-    colorTurquoise70,
-    colorTurquoise80,
-    colorTurquoise90,
-    colorYellow10,
-    colorYellow60,
-} from '../tokens';
 
 export const makeCompatibility = (theme: ThemeType): void => {
     const bodyColor = theme.body.color;
@@ -55,38 +36,40 @@ export const makeCompatibility = (theme: ThemeType): void => {
         theme.typography.paragraphSmall.color = bodyColor;
     }
 
+    const colors = theme.color;
+
     theme.color = {
         ...theme.color,
         primary: {
-            dark: colorBlue70,
-            main: colorBlue60,
-            light: colorBlue50,
-            lighter: colorBlue20,
-            lightest: colorBlue05,
+            dark: colors.primary['08'], // colorBlue70,
+            main: colors.primary['07'], // colorBlue60,
+            light: colors.primary['06'], // colorBlue50,
+            lighter: colors.primary['03'], // colorBlue20,
+            lightest: colors.primary['01'], // colorBlue05,
             ...(theme.color?.primary ?? {}),
         },
         accent: {
-            darker: colorTurquoise90,
-            dark: colorTurquoise80,
-            main: colorTurquoise70,
-            light: colorTurquoise60,
+            darker: colors.accent['10'], // colorTurquoise90,
+            dark: colors.accent['09'], // colorTurquoise80,
+            main: colors.accent['08'], // colorTurquoise70,
+            light: colors.accent['07'], // colorTurquoise60,
             ...(theme.color?.accent ?? {}),
         },
         success: {
-            main: colorGreen60,
-            light: colorGreen10,
+            main: colors.success['07'], // colorGreen60,
+            light: colors.success['02'], // colorGreen10,
             ...(theme.color?.success ?? {}),
         },
         warning: {
-            main: colorYellow60,
-            light: colorYellow10,
+            main: colors.warning['07'], // colorYellow60,
+            light: colors.warning['02'], // colorYellow10,
             ...(theme.color?.warning ?? {}),
         },
         error: {
-            dark: colorRed70,
-            main: colorRed60,
-            light: colorRed50,
-            lighter: colorRed10,
+            dark: colors.error['08'], // colorRed70,
+            main: colors.error['07'], // colorRed60,
+            light: colors.error['06'], // colorRed50,
+            lighter: colors.error['02'], // colorRed10,
             ...(theme.color?.error ?? {}),
         },
     };

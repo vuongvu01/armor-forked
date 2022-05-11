@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { usePackClassName } from './hooks';
@@ -101,3 +101,5 @@ Pack.propTypes = {
     ]),
     flexWrap: PropTypes.oneOf(['nowrap', 'wrap', 'wrap-reverse']),
 };
+
+export const MemoizedPack = memo(Pack);

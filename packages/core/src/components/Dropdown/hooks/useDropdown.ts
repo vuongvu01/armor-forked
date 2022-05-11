@@ -128,7 +128,6 @@ export const useDropdown = <E extends HTMLInputElement>(
         onSelect,
         onChange,
         name,
-        initialSelection,
     );
 
     useOnInternalItemGroupsUpdate(

@@ -17,9 +17,7 @@ export const useEventProxy = (
     const onMouseOverProxy = useCallback(
         (event) => {
             setOpen(true);
-            if (onMouseOver) {
-                onMouseOver(event);
-            }
+            onMouseOver?.(event);
         },
         [onMouseOver, setOpen],
     );
@@ -35,9 +33,7 @@ export const useEventProxy = (
     const onMouseOutProxy = useCallback(
         (event) => {
             setOpen(false);
-            if (onMouseOut) {
-                onMouseOut(event);
-            }
+            onMouseOut?.(event);
         },
         [onMouseOut, setOpen],
     );

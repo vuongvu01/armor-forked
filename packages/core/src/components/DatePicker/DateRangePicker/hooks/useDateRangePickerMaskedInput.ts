@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useRifm } from 'rifm';
 
+import { useDidUpdateEffect } from '@deliveryhero/armor-system';
 import { DateRangePickerPropsType } from '../type';
 import { DateVector } from '../../utils/DateVector';
 import { getDatePartsFromString } from '../../utils/getDatePartsFromString';
 import { DATERANGEPICKER_DATE_MASK_ACCEPTED_INPUT } from '../constants';
-import { useDidUpdateEffect } from '../../hooks/useDidUpdateEffect';
 import { DateVectorRange } from '../../utils/DateVectorRange';
 import { formatDateTimeMask } from '../utils/formatDateTimeMask';
 import { getDateTimeMask } from '../utils/getDateTimeMask';
@@ -34,7 +34,7 @@ export const useDateRangePickerMaskedInput = (
 ) => {
     const { inputMaskEnabled, formatDateTime } = props;
 
-    const [inputMaskValue, setInputMaskValue] = useState<string>('');
+    const [inputMaskValue, setInputMaskValue] = useState('');
 
     const showMaskedInput = inputMaskEnabled && !formatDateTime;
 

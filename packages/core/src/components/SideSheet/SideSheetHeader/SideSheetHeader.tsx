@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { SideSheetHeaderPropsType } from './type';
@@ -83,3 +83,5 @@ SideSheetHeader.propTypes = {
     description: PropTypes.string,
     title: PropTypes.string,
 };
+
+export const MemoizedSideSheetHeader = memo(SideSheetHeader);

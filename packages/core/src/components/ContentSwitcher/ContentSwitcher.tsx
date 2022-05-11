@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { useContentSwitcherClassNames } from './hooks/useContentSwitcherClassNames';
@@ -86,3 +86,5 @@ ContentSwitcher.propTypes = {
     /** Switch with the name passed here will be shown as selected for first load */
     defaultSwitchName: PropTypes.string,
 };
+
+export const MemoizedContentSwitcher = memo(ContentSwitcher);

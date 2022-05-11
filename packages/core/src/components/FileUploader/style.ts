@@ -7,7 +7,6 @@ import {
     typography,
     spacing,
     color,
-    widthProps,
     token,
 } from '@deliveryhero/armor-system';
 import { FileUploaderRootPropsType } from './type';

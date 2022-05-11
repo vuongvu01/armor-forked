@@ -35,14 +35,10 @@ export const useTag = <E extends HTMLDivElement>(
             }
             event.stopPropagation();
 
-            if (onClose) {
-                onClose(event);
-            }
+            onClose?.(event);
 
             // need to maintain backward compatibility with onClose
-            if (onDeselect) {
-                onDeselect(code);
-            }
+            onDeselect?.(code);
         },
         [code, disabled, onClose, onDeselect],
     );

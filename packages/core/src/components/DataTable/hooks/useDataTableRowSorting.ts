@@ -25,15 +25,13 @@ export const useDataTableRowSorting = (
             if (!rowSortOrder) {
                 setRowSortOrderInternal(order);
             }
-            if (onRowSortOrderChange) {
-                onRowSortOrderChange(order);
-            }
+            onRowSortOrderChange?.(order);
         },
         [onRowSortOrderChange, rowSortOrder, setRowSortOrderInternal],
     );
 
     const onHeadCellClick = useCallback(
-        (event: MouseEvent<HTMLTableHeaderCellElement>) => {
+        (event: MouseEvent<HTMLTableCellElement>) => {
             const node = event.currentTarget as HTMLElement;
             const columnId = node.getAttribute('data-columnid');
             const sortable = node.getAttribute('data-sortable');

@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { useRef } from 'react';
 import { cleanup, render, screen } from '@testing-library/react';
+
 import {
     cleanup as cleanupHooks,
     renderHook,

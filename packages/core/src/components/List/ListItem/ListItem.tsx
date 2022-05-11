@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { useListItemClassNames } from './hooks/useListItemClassNames';
@@ -165,3 +165,5 @@ ListItem.propTypes = {
     primaryIconBackgroundColor: PropTypes.string,
     primaryIconWrapper: PropTypes.bool,
 };
+
+export const MemoizedListItem = memo(ListItem);

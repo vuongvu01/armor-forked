@@ -1,21 +1,20 @@
+import { useMemo, Children, ReactElement } from 'react';
 import { useRootRef, useControlledState } from '@deliveryhero/armor-system';
-import { useCallback, useMemo, Children } from 'react';
+
 import { ContentSwitcherPropsType } from '../type';
 import { RefType } from '../../../type';
 import { ContentSwitcherControlPropsType } from '../ContentSwitcherControl/type';
 
 export const useContentSwitcher = <E extends HTMLElement>(
-    props: ContentSwitcherPropsType,
-    ref: RefType<E>,
-) => {
-    const innerRef = useRootRef<E>(ref);
-    const {
+    {
         onSwitchNameChange: onSwitchNameChangeCb,
         switchName: selectedSwitchNameProp,
         defaultSwitchName,
         children,
         ...restProps
-    } = props;
+    }: ContentSwitcherPropsType,
+    ref: RefType<E>,
+) => {
     const [selectedSwitchName, setSelectedSwitchName] = useControlledState(
         defaultSwitchName,
         selectedSwitchNameProp,
@@ -26,9 +25,9 @@ export const useContentSwitcher = <E extends HTMLElement>(
         const childrenIndexMap: Record<string, number> = {};
 
         Children.map(
-            children as React.ReactElement<ContentSwitcherControlPropsType>[],
+            children as ReactElement<ContentSwitcherControlPropsType>[],
             (
-                child: React.ReactElement<ContentSwitcherControlPropsType>,
+                child: ReactElement<ContentSwitcherControlPropsType>,
                 index: number,
             ) => {
                 childrenIndexMap[child?.props?.switchName as string] = index;
@@ -40,10 +39,11 @@ export const useContentSwitcher = <E extends HTMLElement>(
             childrenIndexMap,
         };
     }, [selectedSwitchName, setSelectedSwitchName, children]);
+
     return {
         rootProps: {
             ...restProps,
-            ref: innerRef,
+            ref,
         },
         contextValue,
     };

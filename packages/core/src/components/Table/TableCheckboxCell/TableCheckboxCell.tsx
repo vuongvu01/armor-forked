@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 
 import { useTableCheckboxCellClassNames } from './hooks/useTableCheckboxCellClassNames';
 import { TableCheckboxCellRoot, TableCheckboxCellCheckbox } from './style';
@@ -38,3 +38,5 @@ TableCheckboxCell.defaultProps = {};
 
 /** prop-types are required here for run-time checks */
 TableCheckboxCell.propTypes = {};
+
+export const MemoizedTableCheckboxCell = memo(TableCheckboxCell);

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 
 import { ExpansionIndicatorPropsType } from './type';
 import {
@@ -83,3 +83,5 @@ export const ExpansionIndicator: FC<ExpansionIndicatorPropsType> = ({
 ExpansionIndicator.defaultProps = {
     displaySeparator: false,
 };
+
+export const MemoizedExpansionIndicator = memo(ExpansionIndicator);

@@ -13,25 +13,26 @@ import { CloseButtonIcon, CloseButtonRoot } from './style';
  * @internal
  * @armor-docs-component
  */
-export const CloseButton = forwardRef<
-    HTMLDivElement,
-    CloseButtonEffectivePropsType
->(function CloseButton({ className, ...restProps }, ref) {
-    const classNameComponents = useCloseButtonClassName(
-        CLOSE_BUTTON_CLASS_PREFIX,
-        className,
-    );
+export const CloseButton = memo(
+    forwardRef<HTMLDivElement, CloseButtonEffectivePropsType>(
+        function CloseButton({ className, ...restProps }, ref) {
+            const classNameComponents = useCloseButtonClassName(
+                CLOSE_BUTTON_CLASS_PREFIX,
+                className,
+            );
 
-    return (
-        <CloseButtonRoot
-            {...restProps}
-            ref={ref}
-            className={classNameComponents.Root}
-            tabIndex={0}
-        >
-            <CloseButtonIcon className={classNameComponents.Icon} />
-        </CloseButtonRoot>
-    );
-});
+            return (
+                <CloseButtonRoot
+                    {...restProps}
+                    ref={ref}
+                    className={classNameComponents.Root}
+                    tabIndex={0}
+                >
+                    <CloseButtonIcon className={classNameComponents.Icon} />
+                </CloseButtonRoot>
+            );
+        },
+    ),
+);
 
-export const MemoizedCloseButton = memo(CloseButton);
+CloseButton.displayName = CLOSE_BUTTON_CLASS_PREFIX;

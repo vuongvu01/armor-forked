@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 
 import { useIndicatorClassNames } from './hooks/useIndicatorClassNames';
 import { IndicatorRoot } from './style';
@@ -46,3 +46,5 @@ Indicator.defaultProps = {};
 
 /** Support of prop-types is here for project that don't use TypeScript */
 Indicator.propTypes = {};
+
+export const MemoizedIndicator = memo(Indicator);

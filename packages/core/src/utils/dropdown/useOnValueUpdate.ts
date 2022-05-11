@@ -20,7 +20,6 @@ export const useOnValueUpdate = (
     onSelect?: DropDownOnSelectType,
     onChange?: DropdownOnChangeType,
     name?: string,
-    initialSelection?: DropdownInternalValueType,
 ) =>
     useCallback<DropdownOnValueUpdateType>(
         (

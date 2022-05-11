@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { useFileUploadButtonClassNames } from './hooks/useFileUploadButtonClassNames';
@@ -69,3 +69,5 @@ FileUploadButton.propTypes = {
     wide: PropTypes.bool,
     disabled: PropTypes.bool,
 };
+
+export const MemoizedFileUploadButton = memo(FileUploadButton);

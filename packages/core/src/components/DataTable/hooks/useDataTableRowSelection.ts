@@ -28,9 +28,7 @@ export const useDataTableRowSelection = (
             if (!selectedRowIds) {
                 setSelectedRowIdsInternal(selection);
             }
-            if (onRowSelectionChange) {
-                onRowSelectionChange(selection);
-            }
+            onRowSelectionChange?.(selection);
         },
         [onRowSelectionChange, selectedRowIds],
     );
@@ -66,7 +64,7 @@ export const useDataTableRowSelection = (
     ]);
 
     const onDataSelectorCellClick = useCallback(
-        (event: MouseEvent<HTMLTableDataCellElement>) => {
+        (event: MouseEvent<HTMLTableCellElement>) => {
             if (!enableRowSelection) {
                 return;
             }

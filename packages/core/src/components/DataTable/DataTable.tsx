@@ -1,4 +1,4 @@
-import React, { forwardRef, Fragment, useCallback, useMemo } from 'react';
+import React, { forwardRef, Fragment, useCallback, useMemo, memo } from 'react';
 import PropTypes from 'prop-types';
 import {
     getArrayOfScalarPropType,
@@ -30,7 +30,7 @@ import { PageNavigation } from '../PageNavigation';
 import { makeRowClassName } from './utils/makeRowClassName';
 import { ActionSheet } from '../ActionSheet';
 import { DataTableContext } from './DataTableContext';
-import { EmptyState } from '../EmptyState';
+import { MemoizedEmptyState as EmptyState } from '../EmptyState';
 import { DataTableDroppableContainer } from './DataTableDroppableContainer';
 import { DataTableDraggableRowContainer } from './DataTableDraggableRowContainer';
 
@@ -429,3 +429,5 @@ DataTable.propTypes = {
     // page navigation
     enablePageNavigation: PropTypes.bool,
 };
+
+export const MemoizedDataTable = memo(DataTable);

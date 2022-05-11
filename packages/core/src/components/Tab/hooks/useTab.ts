@@ -33,9 +33,7 @@ export const useTab = <E extends HTMLDivElement>(
                 handleClick(event, tabIndex, matchingContentViewValue);
             }
 
-            if (onClick) {
-                onClick(event);
-            }
+            onClick?.(event);
         },
         [disabled, handleClick, tabIndex, onClick, matchingContentViewValue],
     );

@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { useTextInputClassNames } from './hooks/useTextInputClassNames';
@@ -154,3 +154,5 @@ TextInput.propTypes = {
     large: PropTypes.bool,
     outlined: PropTypes.bool,
 };
+
+export const MemoizedTextInput = memo(TextInput);

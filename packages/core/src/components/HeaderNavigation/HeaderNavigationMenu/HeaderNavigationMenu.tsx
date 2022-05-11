@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { HeaderNavigationMenuPropsType } from './type';
@@ -117,3 +117,5 @@ HeaderNavigationMenu.propTypes = {
     defaultExpanded: PropTypes.bool,
     tabIndex: PropTypes.number,
 };
+
+export const MemoizedHeaderNavigationMenu = memo(HeaderNavigationMenu);

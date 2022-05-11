@@ -78,9 +78,7 @@ export const useSideSheet = <E extends HTMLDivElement>(
 
     const onCloseInternal = useCallback(() => {
         if (isTopOverlay()) {
-            if (onClose) {
-                onClose();
-            }
+            onClose?.();
             setClose();
         }
     }, [onClose, setClose, isTopOverlay]);

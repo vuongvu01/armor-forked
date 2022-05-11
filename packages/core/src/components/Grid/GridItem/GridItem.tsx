@@ -1,4 +1,4 @@
-import React, { forwardRef, useContext } from 'react';
+import React, { forwardRef, useContext, memo } from 'react';
 import PropTypes from 'prop-types';
 import { useTheme } from '@deliveryhero/armor-system';
 
@@ -122,3 +122,5 @@ GridItem.propTypes = {
         2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
     ]),
 };
+
+export const MemoizedGridItem = memo(GridItem);

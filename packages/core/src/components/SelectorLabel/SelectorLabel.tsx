@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 
 import { SelectorLabelRoot } from './style';
 import { SelectorLabelEffectivePropsType } from './type';
@@ -46,3 +46,5 @@ export const SelectorLabel: FC<SelectorLabelEffectivePropsType> = ({
 };
 
 SelectorLabel.displayName = SELECTOR_LABEL_CLASS_PREFIX;
+
+export const MemoizedSelectorLabel = memo(SelectorLabel);

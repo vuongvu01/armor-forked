@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { EmptyStateIllustrationSVG } from './style';
 
-export const EmptyStateIllustration = ({ small }: { small?: boolean }) => {
+export const EmptyStateIllustration = memo(({ small }: { small?: boolean }) => {
     return (
         <EmptyStateIllustrationSVG
             small={small}
@@ -34,4 +34,6 @@ export const EmptyStateIllustration = ({ small }: { small?: boolean }) => {
             </g>
         </EmptyStateIllustrationSVG>
     );
-};
+});
+
+EmptyStateIllustration.displayName = 'EmptyStateIllustration';

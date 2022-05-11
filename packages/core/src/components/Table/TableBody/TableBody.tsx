@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 
 import { useTableBodyClassNames } from './hooks/useTableBodyClassNames';
 import { TableBodyRoot } from './style';
@@ -69,3 +69,5 @@ TableBody.defaultProps = {};
 
 /** prop-types are required here for run-time checks */
 TableBody.propTypes = {};
+
+export const MemoizedTableBody = memo(TableBody);

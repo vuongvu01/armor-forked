@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 import PropTypes from 'prop-types';
 import { makeRootClassName } from '@deliveryhero/armor-system';
 
@@ -76,3 +76,5 @@ TabView.propTypes = {
     selectedValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     value: PropTypes.number,
 };
+
+export const MemoizedTabView = memo(TabView);

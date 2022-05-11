@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { useFlexClassName } from './utils';
@@ -130,3 +130,5 @@ Flex.propTypes = {
     ]),
     flexWrap: PropTypes.oneOf(['nowrap', 'wrap', 'wrap-reverse']),
 };
+
+export const MemoizedFlex = memo(Flex);

@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FC, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { useMessageActionClassNames } from './hooks/useMessageActionClassNames';
@@ -27,7 +27,7 @@ import { ButtonPropsType } from '../../Button/type';
  *
  * @armor-docs-component
  */
-export const MessageAction: FunctionComponent<MessageActionPropsType> = ({
+export const MessageAction: FC<MessageActionPropsType> = ({
     className,
     tag: Tag = 'div',
     children,
@@ -60,3 +60,5 @@ MessageAction.propTypes = {
     /** Tag name or component */
     tag: PropTypes.oneOfType([PropTypes.elementType, PropTypes.string]),
 };
+
+export const MemoizedMessageAction = memo(MessageAction);

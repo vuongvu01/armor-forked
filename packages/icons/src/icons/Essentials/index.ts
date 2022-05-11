@@ -40,6 +40,7 @@ export * from './PlayYoutube';
 export * from './Plus';
 export * from './Receipt';
 export * from './ReferFriend';
+export * from './SMS';
 export * from './Shop';
 export * from './ShoppingBagCheck';
 export * from './Shuffle';

@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { HeaderNavigationSearchRoot, NavigationItemSearch } from './style';
@@ -62,3 +62,5 @@ HeaderNavigationSearch.propTypes = {
     onItemSelect: PropTypes.func,
     separator: PropTypes.bool,
 };
+
+export const MemoizedHeaderNavigationSearch = memo(HeaderNavigationSearch);

@@ -1,10 +1,9 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 
 import { useDialogContentClassName } from './utils/useDialogContentClassName';
 import { DialogContentRoot } from './style';
 import { DialogContentPropsType } from './type';
-
-const CLASS_PREFIX = 'DialogContent';
+import { DIALOG_CONTENT_CLASS_PREFIX as CLASS_PREFIX } from './constants';
 
 /**
  * # COMPONENT
@@ -33,3 +32,5 @@ DialogContent.defaultProps = {
 
 /** Support of prop-types is here for project that don't use TypeScript */
 DialogContent.propTypes = {};
+
+export const MemoizedDialogContent = memo(DialogContent);

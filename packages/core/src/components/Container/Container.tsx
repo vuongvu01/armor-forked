@@ -1,5 +1,4 @@
-import React, { forwardRef } from 'react';
-// import PropTypes from 'prop-types';
+import React, { forwardRef, memo } from 'react';
 
 import { useContainerClassNames } from './hooks/useContainerClassNames';
 import { ContainerRoot } from './style';
@@ -49,3 +48,5 @@ Container.defaultProps = {};
 
 /** prop-types are required here for run-time checks */
 Container.propTypes = {};
+
+export const MemoizedContainer = memo(Container);

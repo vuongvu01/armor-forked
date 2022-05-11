@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { isStatusTag, useTagClassName } from './utils';
@@ -98,3 +98,5 @@ Tag.propTypes = {
     small: PropTypes.bool,
     filled: PropTypes.bool,
 };
+
+export const MemoizedTag = memo(Tag);

@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, memo } from 'react';
 
 import { HeaderNavigationItemRoot } from './style';
 import { HeaderNavigationItemPropsType } from './type';
@@ -31,3 +31,5 @@ export const HeaderNavigationItem: FunctionComponent<
         />
     );
 };
+
+export const MemoizedHeaderNavigationItem = memo(HeaderNavigationItem);

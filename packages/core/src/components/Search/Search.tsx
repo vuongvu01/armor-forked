@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { useSearchClassName } from './hooks/useSearchClassName';
@@ -162,3 +162,5 @@ Search.propTypes = {
         PropTypes.number,
     ]),
 };
+
+export const MemoizedSearch = memo(Search);

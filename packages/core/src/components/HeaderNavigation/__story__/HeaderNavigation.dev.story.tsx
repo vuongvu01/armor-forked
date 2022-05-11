@@ -215,7 +215,7 @@ const selectorParams = {
         { value: 1, label: 'Laos' },
         { value: 2, label: 'Sweden' },
         { value: 3, label: 'Vietnam' },
-        { value: 4, label: 'United States of America' },
+        { value: 4, label: 'United States of America', disabled: true },
     ],
 };
 
@@ -493,6 +493,7 @@ export const MultiselectCountryPlatformSelector = () => {
                         ...selectorParams,
                         isMultiselect: true,
                     }}
+                    enableSelectAllOption
                     onOptionSelect={handleOptionSelect}
                 />
             }
@@ -500,6 +501,51 @@ export const MultiselectCountryPlatformSelector = () => {
         />
     );
 };
+
+export const MultiselectCountryPlatformSelectorWithSelectAllOptionEnabled =
+    () => {
+        const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
+            const query = event?.target?.value || '';
+
+            console.log({ query });
+        };
+
+        const handleSearchItemSelect = (option: SuggestionObjectType) => {
+            console.log({ option });
+        };
+
+        const handleOptionSelect = (
+            selectedOption: DropdownSelectedOptionType,
+        ) => {
+            console.log({ selectedOption });
+        };
+
+        return (
+            <HeaderNavigation
+                title="Vendor Monitor"
+                navigationMenuTitle={NavigationMenuTitle}
+                navigationMenuContent={NavigationMenuContent}
+                search={
+                    <HeaderNavigationSearch
+                        options={foodOptions}
+                        onChange={handleSearchChange}
+                        onItemSelect={handleSearchItemSelect}
+                    />
+                }
+                selector={
+                    <HeaderNavigationSelector
+                        navigationSelectorParams={{
+                            ...selectorParams,
+                            isMultiselect: true,
+                        }}
+                        enableSelectAllOption
+                        onOptionSelect={handleOptionSelect}
+                    />
+                }
+                navigationAction={NavigationAction}
+            />
+        );
+    };
 
 export const WithCustomSelectionRenderer = () => {
     const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {

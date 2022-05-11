@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import { pluralize } from '@deliveryhero/armor-system';
 
 import { useFilterViewerClassNames } from './hooks/useFilterViewerClassNames';
@@ -16,7 +16,7 @@ import { FILTER_VIEWER_CLASS_PREFIX } from './constants';
 import { Typography } from '../../Typography';
 import { Link } from '../../Link';
 import { Button } from '../../Button';
-import { ConditionTag } from '../../ConditionTag';
+import { MemoizedConditionTag as ConditionTag } from '../../ConditionTag';
 import { ConfirmationDialog } from './ConfirmationDialog/ConfirmationDialog';
 
 /**
@@ -201,7 +201,4 @@ export const FilterViewer = forwardRef<HTMLDivElement, FilterViewerPropsType>(
     },
 );
 
-FilterViewer.defaultProps = {};
-
-/** prop-types are required here for run-time checks */
-FilterViewer.propTypes = {};
+export const MemoizedFilterViewer = memo(FilterViewer);

@@ -81,9 +81,7 @@ export const useNavigation = ({
                 return;
             }
 
-            if (onElementClick) {
-                onElementClick(itemId, itemReference);
-            }
+            onElementClick?.(itemId, itemReference);
         },
         [onElementClick, references],
     );

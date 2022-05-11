@@ -1,4 +1,4 @@
-import React, { forwardRef, Fragment, MouseEvent } from 'react';
+import React, { forwardRef, Fragment, MouseEvent, memo } from 'react';
 import PropTypes from 'prop-types';
 import { ScalarType } from '@deliveryhero/armor-system';
 
@@ -300,3 +300,5 @@ Navigation.propTypes = {
     maxDepthLevel: PropTypes.number,
     enableBottomSeparator: PropTypes.bool,
 };
+
+export const MemoizedNavigation = memo(Navigation);

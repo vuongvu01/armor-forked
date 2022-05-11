@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { usePackItemClassName } from './hooks';
@@ -98,3 +98,5 @@ PackItem.propTypes = {
         'stretch',
     ]),
 };
+
+export const MemoizedPackItem = memo(PackItem);

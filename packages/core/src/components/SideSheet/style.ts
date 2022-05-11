@@ -21,7 +21,7 @@ import {
 } from './type';
 import { minWidth, widthWide, widthDefault } from './constants';
 
-import { MemoizedCloseButton as CloseButton } from '../CloseButton';
+import { CloseButton } from '../CloseButton';
 
 const calculateWidth = (
     effectToggle?: boolean,

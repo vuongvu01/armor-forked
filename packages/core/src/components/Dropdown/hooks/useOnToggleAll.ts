@@ -18,8 +18,8 @@ export const useOnToggleAll = (
     internalValue: DropdownInternalValueType,
     onChange?: (event: DropdownOnChangeEventType) => void,
     setInitialSelection?: (nextValue: DropdownInternalValueType) => void,
-) =>
-    useCallback<DropdownOnToggleAllType>(
+) => {
+    const onToggleAll = useCallback<DropdownOnToggleAllType>(
         (selectAll = true) => {
             const preselectedDisabledOptionItems: Array<ScalarType> = [];
             const unselectedDisabledOptionItems: Array<ScalarType> = [];
@@ -36,6 +36,7 @@ export const useOnToggleAll = (
 
             if (!selectAll) {
                 handleOnChange([], onChange);
+
                 if (setInitialSelection) {
                     setInitialSelection([...preselectedDisabledOptionItems]);
                 }
@@ -61,9 +62,11 @@ export const useOnToggleAll = (
                 }
 
                 handleOnChange(updatedOptionValues, onChange);
+
                 if (setInternalValue) {
                     setInternalValue(updatedOptionValues);
                 }
+
                 return;
             }
 
@@ -92,3 +95,6 @@ export const useOnToggleAll = (
             setInitialSelection,
         ],
     );
+
+    return onToggleAll;
+};

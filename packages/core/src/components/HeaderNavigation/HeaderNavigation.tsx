@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { HeaderNavigationPropsType } from './type';
@@ -15,8 +15,8 @@ import {
     HeaderNavigationTitleRoot,
 } from './style';
 import { useHeaderNavigationClassName } from './hooks';
-import { HeaderNavigationMenu } from './HeaderNavigationMenu';
-import { HeaderNavigationItem } from './HeaderNavigationItem';
+import { MemoizedHeaderNavigationMenu as HeaderNavigationMenu } from './HeaderNavigationMenu';
+import { MemoizedHeaderNavigationItem as HeaderNavigationItem } from './HeaderNavigationItem';
 
 /**
  * # HeaderNavigation
@@ -138,3 +138,5 @@ HeaderNavigation.propTypes = {
     links: PropTypes.node,
     selector: PropTypes.node,
 };
+
+export const MemoizedHeaderNavigation = memo(HeaderNavigation);

@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { useListClassNames } from './hooks/useListClassNames';
@@ -52,3 +52,5 @@ List.defaultProps = {
 List.propTypes = {
     small: PropTypes.bool,
 };
+
+export const MemoizedList = memo(List);

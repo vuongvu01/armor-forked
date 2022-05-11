@@ -205,6 +205,25 @@ export const ExpandedSelector = () => (
     />
 );
 
+export const ExpandedSelectorWithSelectAllOption = () => (
+    <HeaderNavigation
+        title="Vendor Monitor"
+        navigationMenuTitle={NavigationMenuTitle}
+        navigationMenuContent={NavigationMenuContentLogistics}
+        selector={
+            <HeaderNavigationSelector
+                navigationSelectorParams={{
+                    ...selectorParams,
+                    isMultiselect: true,
+                    isExpanded: true,
+                }}
+                enableSelectAllOption
+            />
+        }
+        navigationAction={NavigationAction}
+    />
+);
+
 export const PreSelectedCountry = () => (
     <HeaderNavigation
         title="Vendor Monitor"

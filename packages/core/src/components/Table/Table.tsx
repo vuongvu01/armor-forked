@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { useTableClassNames } from './hooks/useTableClassNames';
@@ -94,3 +94,5 @@ Table.propTypes = {
     horizontalScroll: PropTypes.bool,
     stickyHead: PropTypes.bool,
 };
+
+export const MemoizedTable = memo(Table);

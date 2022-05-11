@@ -1,10 +1,9 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 
 import { useDialogActionsClassName } from './utils/useDialogActionsClassName';
 import { DialogActionsRoot } from './style';
 import { DialogActionsPropsType } from './type';
-
-const CLASS_PREFIX = 'DialogActions';
+import { DIALOG_ACTIONS_CLASS_PREFIX as CLASS_PREFIX } from './constants';
 
 /**
  * # COMPONENT
@@ -26,3 +25,5 @@ DialogActions.defaultProps = {};
 
 /** Support of prop-types is here for project that don't use TypeScript */
 DialogActions.propTypes = {};
+
+export const MemoizedDialogActions = memo(DialogActions);

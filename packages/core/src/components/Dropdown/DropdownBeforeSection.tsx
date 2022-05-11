@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 import {
@@ -17,111 +17,114 @@ import { useDropdownBeforeSectionClassName } from './hooks';
 import { OptionObjectType } from '../OptionList/type';
 import { DropdownTags } from './DropdownTags';
 
-export const DropdownBeforeSection = forwardRef<
-    HTMLDivElement,
-    DropdownBeforeSectionPropsType
->(function DropdownBeforeSection({ className, ...props }, ref) {
-    const {
-        rootProps,
-        beforeSectionClearButtonProps,
-        getDropdownTagProps,
-        getDropdownRemainingTagsProps,
-        dropdownBeforeSectionTagsContainerProps,
-        dropdownBeforeSectionTagsWrapperProps,
-        dropdownTagsProps,
+export const DropdownBeforeSection = memo(
+    forwardRef<HTMLDivElement, DropdownBeforeSectionPropsType>(
+        function DropdownBeforeSection({ className, ...props }, ref) {
+            const {
+                rootProps,
+                beforeSectionClearButtonProps,
+                getDropdownTagProps,
+                getDropdownRemainingTagsProps,
+                dropdownBeforeSectionTagsContainerProps,
+                dropdownBeforeSectionTagsWrapperProps,
+                dropdownTagsProps,
 
-        disabled,
-        isBeforeSectionRendered,
-        selectedTagsToDisplay,
-        internalOpenTagsCount,
-    } = useDropdownBeforeSection(props, ref);
-
-    const classOverride = useDropdownBeforeSectionClassName(
-        DROPDOWN_BEFORE_SECTION_CLASS_PREFIX,
-        className,
-        disabled,
-    );
-
-    if (!isBeforeSectionRendered) {
-        return null;
-    }
-
-    const renderTags = () => {
-        if (internalOpenTagsCount > 0) {
-            const remainingItemsCount =
-                selectedTagsToDisplay.length - internalOpenTagsCount;
-            const tagsToRender = selectedTagsToDisplay.slice(
-                0,
+                disabled,
+                isBeforeSectionRendered,
+                selectedTagsToDisplay,
                 internalOpenTagsCount,
-            );
-            const remainingTagsValues = selectedTagsToDisplay
-                .slice(internalOpenTagsCount)
-                .map((option: OptionObjectType) => option.value);
+            } = useDropdownBeforeSection(props, ref);
 
-            const openTags = (
-                <DropdownTags
-                    {...dropdownTagsProps}
-                    className={className}
-                    tagsToDisplay={tagsToRender}
-                    propsFn={getDropdownTagProps}
-                />
+            const classOverride = useDropdownBeforeSectionClassName(
+                DROPDOWN_BEFORE_SECTION_CLASS_PREFIX,
+                className,
+                disabled,
             );
 
-            const remainingItemsTag = (
-                <DropdownTag
-                    {...getDropdownRemainingTagsProps(
-                        remainingItemsCount,
-                        remainingTagsValues,
-                    )}
-                    className={classOverride.DropdownTagRemainingItems}
-                />
-            );
+            if (!isBeforeSectionRendered) {
+                return null;
+            }
 
-            return [
-                openTags,
-                remainingItemsCount > 0 ? remainingItemsTag : null,
-            ];
-        }
+            const renderTags = () => {
+                if (internalOpenTagsCount > 0) {
+                    const remainingItemsCount =
+                        selectedTagsToDisplay.length - internalOpenTagsCount;
+                    const tagsToRender = selectedTagsToDisplay.slice(
+                        0,
+                        internalOpenTagsCount,
+                    );
+                    const remainingTagsValues = selectedTagsToDisplay
+                        .slice(internalOpenTagsCount)
+                        .map((option: OptionObjectType) => option.value);
 
-        return (
-            <DropdownTags
-                {...dropdownTagsProps}
-                className={className}
-                tagsToDisplay={selectedTagsToDisplay}
-                propsFn={getDropdownTagProps}
-            />
-        );
-    };
+                    const openTags = (
+                        <DropdownTags
+                            {...dropdownTagsProps}
+                            className={className}
+                            tagsToDisplay={tagsToRender}
+                            propsFn={getDropdownTagProps}
+                        />
+                    );
 
-    return (
-        <DropdownBeforeSectionRoot
-            {...rootProps}
-            className={classOverride.Root}
-        >
-            <DropdownBeforeSectionTagsContainer
-                {...dropdownBeforeSectionTagsContainerProps}
-                className={classOverride.TagsContainer}
-            >
-                <DropdownBeforeSectionTagsWrapper
-                    {...dropdownBeforeSectionTagsWrapperProps}
-                    className={classOverride.TagsWrapper}
+                    const remainingItemsTag = (
+                        <DropdownTag
+                            {...getDropdownRemainingTagsProps(
+                                remainingItemsCount,
+                                remainingTagsValues,
+                            )}
+                            className={classOverride.DropdownTagRemainingItems}
+                        />
+                    );
+
+                    return [
+                        openTags,
+                        remainingItemsCount > 0 ? remainingItemsTag : null,
+                    ];
+                }
+
+                return (
+                    <DropdownTags
+                        {...dropdownTagsProps}
+                        className={className}
+                        tagsToDisplay={selectedTagsToDisplay}
+                        propsFn={getDropdownTagProps}
+                    />
+                );
+            };
+
+            return (
+                <DropdownBeforeSectionRoot
+                    {...rootProps}
+                    className={classOverride.Root}
                 >
-                    {renderTags()}
-                </DropdownBeforeSectionTagsWrapper>
-            </DropdownBeforeSectionTagsContainer>
-
-            <DropdownBeforeSectionActionContainer
-                className={classOverride.ActionContainer}
-            >
-                {selectedTagsToDisplay?.length ? (
-                    <DropdownBeforeSectionClearButton
-                        {...beforeSectionClearButtonProps}
-                        className={classOverride.ClearButton}
+                    <DropdownBeforeSectionTagsContainer
+                        {...dropdownBeforeSectionTagsContainerProps}
+                        className={classOverride.TagsContainer}
                     >
-                        <DropdownCancelIcon />
-                    </DropdownBeforeSectionClearButton>
-                ) : null}
-            </DropdownBeforeSectionActionContainer>
-        </DropdownBeforeSectionRoot>
-    );
-});
+                        <DropdownBeforeSectionTagsWrapper
+                            {...dropdownBeforeSectionTagsWrapperProps}
+                            className={classOverride.TagsWrapper}
+                        >
+                            {renderTags()}
+                        </DropdownBeforeSectionTagsWrapper>
+                    </DropdownBeforeSectionTagsContainer>
+
+                    <DropdownBeforeSectionActionContainer
+                        className={classOverride.ActionContainer}
+                    >
+                        {selectedTagsToDisplay?.length ? (
+                            <DropdownBeforeSectionClearButton
+                                {...beforeSectionClearButtonProps}
+                                className={classOverride.ClearButton}
+                            >
+                                <DropdownCancelIcon />
+                            </DropdownBeforeSectionClearButton>
+                        ) : null}
+                    </DropdownBeforeSectionActionContainer>
+                </DropdownBeforeSectionRoot>
+            );
+        },
+    ),
+);
+
+DropdownBeforeSection.displayName = DROPDOWN_BEFORE_SECTION_CLASS_PREFIX;

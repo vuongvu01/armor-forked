@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FC, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { HeaderNavigationMenuContentBodyRoot } from './style';
@@ -17,7 +17,7 @@ import {
  *
  * @armor-docs-component
  */
-export const HeaderNavigationMenuContentBody: FunctionComponent<
+export const HeaderNavigationMenuContentBody: FC<
     HeaderNavigationMenuContentBodyPropsType
 > = ({ className, options, selectedValue, onOptionSelect, ...restProps }) => {
     const classOverride = useHeaderNavigationMenuContentBodyClassName(
@@ -74,3 +74,7 @@ HeaderNavigationMenuContentBody.propTypes = {
         ),
     ]),
 };
+
+export const MemoizedHeaderNavigationMenuContentBody = memo(
+    HeaderNavigationMenuContentBody,
+);

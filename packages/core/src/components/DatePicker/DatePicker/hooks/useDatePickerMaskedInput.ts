@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useRifm } from 'rifm';
 
+import { useDidUpdateEffect } from '@deliveryhero/armor-system';
 import { DatePickerPropsType } from '../type';
 import { DateVector } from '../../utils/DateVector';
 import {
@@ -14,7 +15,6 @@ import { TimeVector24 } from '../../utils/TimeVector24';
 import { TimeVector12, TimeVector12ModeType } from '../../utils/TimeVector12';
 import { formatDateTimeMask } from '../utils/formatDateTimeMask';
 import { getDateTimeMask } from '../utils/getDateTimeMask';
-import { useDidUpdateEffect } from '../../hooks/useDidUpdateEffect';
 
 type UseDatePickerMaskedInputProps = {
     formattedValue: string;

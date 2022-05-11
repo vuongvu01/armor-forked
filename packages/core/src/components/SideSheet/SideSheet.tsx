@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 import { PortalToBody } from '@deliveryhero/armor-system';
 
@@ -141,3 +141,5 @@ SideSheet.propTypes = {
     /** Tells the dialog to occupy the larger or the smaller line segment according to the ~ of the Golden Ration */
     wide: PropTypes.bool,
 };
+
+export const MemoizedSideSheet = memo(SideSheet);

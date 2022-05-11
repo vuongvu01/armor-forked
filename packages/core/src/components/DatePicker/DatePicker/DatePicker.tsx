@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import { PortalToBody } from '@deliveryhero/armor-system';
 
 import { useDatePickerClassNames } from '../hooks/useDatePickerClassNames';
@@ -113,3 +113,5 @@ DatePicker.defaultProps = {};
 
 /** prop-types are required here for run-time checks */
 DatePicker.propTypes = {};
+
+export const MemoizedDatePicker = memo(DatePicker);
