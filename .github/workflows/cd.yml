@@ -53,6 +53,10 @@ jobs:
               working-directory: ./packages/motion
               run: yarn run build
 
+            - name: Build (Extras)
+              working-directory: ./packages/extras
+              run: ./script/build.sh
+
             - name: Remove comments
               run: ./script/remove-comments.js
 

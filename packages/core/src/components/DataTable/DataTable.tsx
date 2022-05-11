@@ -92,6 +92,12 @@ import { DataTableDraggableRowContainer } from './DataTableDraggableRowContainer
  * ***
  *
  * @armor-docs-component
+ *
+ * @deprecated
+ * Please import this component from "@deliveryhero/armor-datatable".
+ * In armor release on 10.08.2021 this component will be removed from "@deliveryhero/armor".
+ * This is being done to decrease the size of "@deliveryhero/armor" package.
+ * Refer to LD-749 Jira for more details regarding this change.
  */
 export const DataTable = forwardRef<HTMLDivElement, DataTablePropsType>(
     function DataTable({ className, ...props }, ref) {

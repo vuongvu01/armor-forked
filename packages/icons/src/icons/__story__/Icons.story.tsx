@@ -209,6 +209,9 @@ export const Basic = (): ReactElement => (
             <Icon>
                 <I.SMSIcon />
             </Icon>
+            <Icon>
+                <I.TranslateIcon />
+            </Icon>
         </Icons>
         <h2>Arrow</h2>
         <Icons>

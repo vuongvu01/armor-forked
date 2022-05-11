@@ -50,6 +50,7 @@ export * from './StarOutline';
 export * from './TimeCircle';
 export * from './TimeCircleFilled';
 export * from './TimeSeparator';
+export * from './Translate';
 export * from './Tutorial';
 export * from './UserCircle';
 export * from './UserFeedback';

@@ -12,6 +12,8 @@ type IconButtonEffectivePropsType = Partial<{
     light: boolean;
     /** Being set to false, renders the component as invisible */
     visible: boolean;
+    /** Being set to true, renders the component as disabled */
+    disabled: boolean;
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLButtonElement> & // includes all HTML Div properties

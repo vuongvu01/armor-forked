@@ -9,12 +9,14 @@
 
 import React, { useRef } from 'react';
 
-import { cleanup, render } from '@testing-library/react';
+import { cleanup, render, screen } from '@testing-library/react';
 import {
     renderHook,
     cleanup as cleanupHooks,
 } from '@testing-library/react-hooks';
 
+import { ArrowUpIcon } from '@deliveryhero/armor-icons';
+import userEvent from '@testing-library/user-event';
 import { IconButton } from '..';
 
 describe('<IconButton />', () => {
@@ -57,5 +59,21 @@ describe('<IconButton />', () => {
     it('should support margin properties', async () => {
         // @ts-ignore
         expect(IconButton).toSupportMarginProps();
+    });
+
+    it('should support disabled property', async () => {
+        const handleOnClick = jest.fn();
+
+        render(
+            <IconButton disabled onClick={handleOnClick}>
+                <ArrowUpIcon medium />
+            </IconButton>,
+        );
+
+        const iconButton = screen.getByRole('button');
+
+        userEvent.click(iconButton);
+
+        expect(handleOnClick).not.toHaveBeenCalled();
     });
 });

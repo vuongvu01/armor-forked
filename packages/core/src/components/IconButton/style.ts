@@ -14,7 +14,17 @@ import {
 
 import { IconButtonRootPropsType } from './type';
 
-const getRootStyle = ({ light, visible }: IconButtonRootPropsType) => {
+const getPrimaryDisabledColors = () => css`
+    color: ${color('neutral.05')};
+    border-color: ${color('neutral.03')};
+    background-color: ${color('neutral.03')};
+`;
+
+const getRootStyle = ({
+    light,
+    visible,
+    disabled,
+}: IconButtonRootPropsType) => {
     let result = {};
 
     if (light) {
@@ -32,6 +42,16 @@ const getRootStyle = ({ light, visible }: IconButtonRootPropsType) => {
         result = css`
             ${result};
             visibility: hidden;
+        `;
+    }
+
+    if (disabled) {
+        result = css`
+            ${result};
+            cursor: not-allowed;
+            svg {
+                color: ${color('neutral.05')};
+            }
         `;
     }
 

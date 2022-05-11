@@ -46,11 +46,13 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonPropsType>(
 
 IconButton.defaultProps = {
     light: false,
+    disabled: false,
 };
 
 /** prop-types are required here for run-time checks */
 IconButton.propTypes = {
     light: PropTypes.bool,
+    disabled: PropTypes.bool,
 };
 
 export const MemoizedIconButton = memo(IconButton);
