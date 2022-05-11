@@ -33,15 +33,27 @@ jobs:
             - name: Lint
               working-directory: ./packages/core
               run: yarn run lint
+
             - name: Test
               working-directory: ./packages/core
               run: yarn run test
+
+            - name: Test integration install
+              working-directory: ./packages/core/integration
+              run: yarn install
+
+            - name: Test integration
+              working-directory: ./packages/core
+              run: yarn test:integration:cicd
+
             - name: Test visual install
               working-directory: ./packages/core/visual
               run: yarn install
+
             - name: Test visual
               working-directory: ./packages/core
               run: yarn test:visual:cicd
+
             - name: Build
               working-directory: ./packages/core
               run: yarn run build
