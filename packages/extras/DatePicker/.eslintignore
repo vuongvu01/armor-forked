@@ -1,0 +1,4 @@
+build/
+coverage/
+*.test.js
+*.d.ts

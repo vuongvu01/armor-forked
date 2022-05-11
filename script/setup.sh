@@ -12,6 +12,7 @@ cd ${DIR}/../packages/props-parser && yarn setup
 cd ${DIR}/../packages/brands && yarn setup
 cd ${DIR}/../packages/illustrations && yarn setup
 cd ${DIR}/../packages/motion && yarn setup
+cd ${DIR}/../packages/extras && ./script/setup.sh
 
 cd ${DIR}
 

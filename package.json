@@ -43,7 +43,9 @@
         "packages/system",
         "packages/props-parser",
         "packages/illustrations",
-        "packages/motion"
+        "packages/motion",
+        "packages/extras/DataTable",
+        "packages/extras/DatePicker"
     ],
     "husky": {
         "hooks": {
