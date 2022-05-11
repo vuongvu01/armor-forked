@@ -1,3 +1,17 @@
+## [1.2.3](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-motion@1.2.2...@deliveryhero/armor-motion@1.2.3) (2022-05-11)
+
+
+### Bug Fixes
+
+* **HeaderNavigation:** Select all options in HeaderNavigationSelector is not working [LD-729] ([#971](https://github.com/deliveryhero/armor/issues/971)) ([fb99739](https://github.com/deliveryhero/armor/commit/fb997396a65c662f25394568a314504da1c26d49))
+* **preview:** fix preview env build ([#972](https://github.com/deliveryhero/armor/issues/972)) ([766d9f7](https://github.com/deliveryhero/armor/commit/766d9f702c3427a0912c79cb6451099c285c8c73))
+* **theme:** Theme refactoring: map deprecated theme L2 tokens to the actual ones [LD-781] ([cc5ff2e](https://github.com/deliveryhero/armor/commit/cc5ff2e838264a08e60ca4552743006fe843f7a1))
+
+
+### Features
+
+* **icons:** Add new SMS icon [AR-72] ([#976](https://github.com/deliveryhero/armor/issues/976)) ([9f1bcc6](https://github.com/deliveryhero/armor/commit/9f1bcc63bdf3f20acb0aba72fd6ebc34bb9e562d))
+
 ## @deliveryhero/armor-motion [1.2.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-motion@1.2.1...@deliveryhero/armor-motion@1.2.2) (2022-04-25)
 
 
