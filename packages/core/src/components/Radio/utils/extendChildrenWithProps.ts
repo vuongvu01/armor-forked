@@ -13,6 +13,7 @@ export const extendChildrenWithProps = (
     const childrenWithExtendedProps = Children.map(children, (child) => {
         const childName = getElementName(child);
         const value = child?.props?.value;
+        const disabled = child?.props?.disabled;
 
         if (childName !== RADIO_CLASS_PREFIX) {
             console.error(
@@ -32,7 +33,10 @@ export const extendChildrenWithProps = (
 
         values.push(value);
 
-        return React.cloneElement(child, additionalProps);
+        return React.cloneElement(child, {
+            ...additionalProps,
+            disabled,
+        });
     });
 
     const uniqueValues = Array.from(new Set(values));
