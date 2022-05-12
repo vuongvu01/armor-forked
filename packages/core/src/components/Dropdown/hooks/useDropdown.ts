@@ -20,8 +20,9 @@ import {
     DropdownInternalOptionType,
     DropdownInternalValueType,
     DropdownPropsType,
+    DropdownValueType,
 } from '../type';
-import { RefType } from '../../../type';
+import { PseudoEventType, RefType } from '../../../type';
 import { useOnOptionListUpdate } from './useOnOptionListUpdate';
 import { usePanelWidth } from './usePanelWidth';
 import { MAX_OPTIONS_SELECT_ALL_THRESHOLD } from '../../OptionList/constants';
@@ -222,6 +223,21 @@ export const useDropdown = <E extends HTMLInputElement>(
 
     usePanelWidth(containerRef, dropdownRef, isOptionListShown);
 
+    const onChangeProxy = useCallback(
+        (newValue: PseudoEventType<DropdownValueType>) => {
+            if (onChange) {
+                onChange({
+                    ...newValue,
+                    target: {
+                        ...newValue.target,
+                        name,
+                    },
+                });
+            }
+        },
+        [onChange, name],
+    );
+
     return {
         rootProps: restProps,
         containerProps: {
@@ -268,7 +284,7 @@ export const useDropdown = <E extends HTMLInputElement>(
             setInternalValue,
             setIsOptionListShown,
             onValueUpdate,
-            onChange,
+            onChange: onChangeProxy,
             isFlat,
             internalOptions,
             dynamicInternalOptions,
@@ -318,7 +334,7 @@ export const useDropdown = <E extends HTMLInputElement>(
             setInternalValue,
             setInitialSelection,
             onSelect,
-            onChange,
+            onChange: onChangeProxy,
             options,
             isFlat,
             tagLabelMaxLength,

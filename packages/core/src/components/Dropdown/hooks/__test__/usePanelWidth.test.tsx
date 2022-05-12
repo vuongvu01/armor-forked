@@ -7,7 +7,7 @@ import {
     cleanup as cleanupHooks,
 } from '@testing-library/react-hooks';
 
-import { usePanelWidth } from '../hooks/usePanelWidth';
+import { usePanelWidth } from '../usePanelWidth';
 
 jest.mock('@deliveryhero/armor-system', () => ({
     RESIZE_OBSERVER_SUPPORTED: true,
