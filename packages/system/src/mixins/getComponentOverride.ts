@@ -5,6 +5,7 @@ export const getComponentOverride =
     (componentName: string) =>
     ({ theme }: PropsWithThemeType) => {
         const { componentCSS } = getAvailableTheme(theme);
+
         if (componentCSS && componentName in componentCSS) {
             return componentCSS[componentName];
         }

@@ -9,9 +9,13 @@ import {
     propsBlocker,
     reset,
     spacing,
+    makeDefaultTheme,
 } from '@deliveryhero/armor-system';
 import styled, { css, keyframes } from 'styled-components';
 import { SkeletonRootPropsType } from './type';
+import { getIconSize } from './utils';
+
+const theme = makeDefaultTheme();
 
 const loading = keyframes`
   0%{transform: translateX(-100%)}
@@ -35,7 +39,7 @@ const getRootStyle = ({ animated, rounded }: SkeletonRootPropsType) => {
                 background: linear-gradient(
                     90deg,
                     transparent,
-                    ${color('neutral.02')},
+                    ${color('neutral.00')},
                     transparent
                 );
                 content: '';
@@ -49,13 +53,31 @@ const getRootStyle = ({ animated, rounded }: SkeletonRootPropsType) => {
     return result;
 };
 
+const getSkeletonPlaceholderImageStyle = ({
+    width,
+    height,
+}: SkeletonRootPropsType) => {
+    const rootSize =
+        typeof width !== 'undefined' && width === height ? width : undefined;
+
+    const iconSize = getIconSize(rootSize);
+
+    return css`
+        .FileImagePortraitIcon {
+            width: ${spacing(iconSize)};
+            height: ${spacing(iconSize)};
+        }
+    `;
+};
+
 export const SkeletonRoot = styled.div.withConfig(
     propsBlocker,
 )<SkeletonRootPropsType>`
     ${reset};
 
     margin: ${spacing(2)};
-    background-color: ${color('neutral.03')};
+    background-color: ${color('neutral.02')};
+    color: ${color('neutral.03')};
     position: relative;
     display: flex;
     justify-content: center;
@@ -64,10 +86,13 @@ export const SkeletonRoot = styled.div.withConfig(
     overflow: hidden;
     width: fit-content;
 
-    ${getRootStyle}
-    ${getComponentOverride('Skeleton')};
+    ${getRootStyle};
     ${paddingProps};
     ${marginProps};
     ${heightProps};
     ${widthProps};
+
+    ${getSkeletonPlaceholderImageStyle};
+
+    ${getComponentOverride('Skeleton')};
 `;

@@ -1,22 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
-/**
- * https://github.com/sapegin/jest-cheat-sheet
- * https://testing-library.com/docs/react-testing-library/cheatsheet
- * https://github.com/testing-library/jest-dom
- * https://jestjs.io/docs/en/mock-functions
- */
-
 import React, { useRef } from 'react';
 
-import {
-    // fireEvent,
-    cleanup,
-    render,
-    // prettyDOM,
-    // wait,
-    // waitForElement,
-} from '@testing-library/react';
+import { cleanup, render } from '@testing-library/react';
 import {
     renderHook,
     cleanup as cleanupHooks,
@@ -24,6 +10,7 @@ import {
 import renderer from 'react-test-renderer';
 
 import { Skeleton } from '..';
+import { SKELETON_IMAGE_PLACEHOLDER_SIZE_MAP } from '../constants';
 
 describe('<Skeleton />', () => {
     afterEach(async () => {
@@ -75,5 +62,37 @@ describe('<Skeleton />', () => {
     it('should forward correct attributes', async () => {
         // @ts-ignore
         expect(Skeleton).toSupportAttributeForwarding();
+    });
+
+    it('should render image placeholder in large size by default', () => {
+        const { container } = render(<Skeleton imagePlaceholder />);
+
+        const icon = container.querySelector(
+            '.FileImagePortraitIcon',
+        ) as Element;
+
+        const size = `${SKELETON_IMAGE_PLACEHOLDER_SIZE_MAP.large * 4}px`;
+
+        expect(icon).toHaveStyle({
+            width: size,
+            height: size,
+        });
+    });
+
+    it('should render image placeholder in small size when container size is <= 32px', () => {
+        const { container } = render(
+            <Skeleton width={8} height={8} imagePlaceholder />,
+        );
+
+        const icon = container.querySelector(
+            '.FileImagePortraitIcon',
+        ) as Element;
+
+        const size = `${SKELETON_IMAGE_PLACEHOLDER_SIZE_MAP.small * 4}px`;
+
+        expect(icon).toHaveStyle({
+            width: size,
+            height: size,
+        });
     });
 });

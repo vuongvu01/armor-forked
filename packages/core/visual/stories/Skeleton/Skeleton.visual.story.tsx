@@ -34,6 +34,22 @@ export const ImagePlaceholders = () => {
                 imagePlaceholder
                 animated={false}
             />
+
+            <Skeleton
+                width={8}
+                height={8}
+                imagePlaceholder
+                marginY={2}
+                animated={false}
+            />
+            <Skeleton
+                width={8}
+                height={8}
+                rounded
+                imagePlaceholder
+                marginY={2}
+                animated={false}
+            />
         </>
     );
 };
