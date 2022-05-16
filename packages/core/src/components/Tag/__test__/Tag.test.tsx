@@ -10,13 +10,13 @@ import renderer from 'react-test-renderer';
 import { Tag } from '../Tag';
 import { tagCloseIconContainer, tagRoot } from '../constants';
 
-describe('<Tag />', () => {
+describe('<Tag /> ', () => {
     afterEach(async () => {
         cleanup();
         await cleanupHooks();
     });
 
-    it('should render itself without errors', async () => {
+    it('should render itself without errors ', async () => {
         render(<Tag label="Sample" />);
     });
 
@@ -39,7 +39,7 @@ describe('<Tag />', () => {
         );
     });
 
-    it('should ensure that small tag type class is set', () => {
+    it('should ensure that small tag type class is  set ', () => {
         const label = 'Sample';
         render(<Tag label={label} small />);
 
