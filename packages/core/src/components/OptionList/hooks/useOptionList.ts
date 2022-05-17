@@ -91,6 +91,22 @@ export const useOptionList = ({
         },
     );
 
+    // Auto-focus search input after
+    // initial render
+    useEffect(() => {
+        if (!autoFocus) {
+            return;
+        }
+
+        const { current: element } = searchInputRef;
+
+        // We have to use `preventScroll` option
+        // in order to prevent browser scrolling to the top
+        element?.focus({
+            preventScroll: true,
+        });
+    }, [autoFocus]);
+
     useEffect(() => {
         setSearch?.(searchQuery);
     }, [searchQuery, setSearch]);
@@ -300,7 +316,6 @@ export const useOptionList = ({
             placeholder: searchPlaceholder,
             onChange: handleSearchChange,
             defaultQuery: searchQuery,
-            autoFocus,
             ref: searchInputRef,
         }),
         listContentProps: {

@@ -155,6 +155,7 @@ export const useDropdown = <E extends HTMLInputElement>(
 
     const handleConfirmClick = useCallback(() => {
         setInitialSelection(internalValue);
+
         if (enableFooter && onConfirmClick) {
             onConfirmClick(internalValue);
         }
@@ -168,19 +169,16 @@ export const useDropdown = <E extends HTMLInputElement>(
         }
     }, [internalInputRef]);
 
-    // todo: fix me
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    const focusOnActionItemTrigger = () => {
-        const node = internalInputRef.current as any;
+    const focusOnActionItemTrigger = useCallback(() => {
+        const { current: node } = internalInputRef;
 
         if (!isOptionListShown) {
-            if (node && node.focus) {
-                node.focus();
-            }
-        } else {
-            blurInput();
+            node?.focus();
+            return;
         }
-    };
+
+        blurInput();
+    }, [blurInput, internalInputRef, isOptionListShown]);
 
     const onOuterClick = useCallback(() => {
         setIsOptionListShown(false);
@@ -225,15 +223,13 @@ export const useDropdown = <E extends HTMLInputElement>(
 
     const onChangeProxy = useCallback(
         (newValue: PseudoEventType<DropdownValueType>) => {
-            if (onChange) {
-                onChange({
-                    ...newValue,
-                    target: {
-                        ...newValue.target,
-                        name,
-                    },
-                });
-            }
+            onChange?.({
+                ...newValue,
+                target: {
+                    ...newValue.target,
+                    name,
+                },
+            });
         },
         [onChange, name],
     );

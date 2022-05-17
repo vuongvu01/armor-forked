@@ -221,7 +221,6 @@ export const UncontrolledWithSearch = () => {
                         defaultValue={initialSelectionIndex}
                         label="Dish type"
                         enableSearchOption
-                        enableSelectAllOption
                     />
                     <Typography paragraph>
                         Selected value: {JSON.stringify(selectedOption)}
