@@ -51,6 +51,7 @@ export const useSearch = <E extends HTMLInputElement>(
         additionalInfo,
         renderItemAdditionalInfo,
 
+        large,
         ...restProps
     }: SearchPropsType,
     ref: RefType<E>,
@@ -212,6 +213,7 @@ export const useSearch = <E extends HTMLInputElement>(
             value: searchQuery,
             wide: true,
             autoFocus,
+            large,
         },
         searchIconProps: {
             disabled,

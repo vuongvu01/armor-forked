@@ -9,10 +9,10 @@ import {
     widthProps,
     transition,
     typography,
-    token,
     spacing,
     color,
     getOutlineFocusStyleFromColor,
+    borderRadius,
 } from '@deliveryhero/armor-system';
 
 import { ButtonRootPropsType } from './type';
@@ -95,6 +95,8 @@ const getDynamicStyle = ({
     } else {
         result = css`
             ${getPrimaryInitialColors};
+            border-width: 0;
+
             &:hover {
                 color: ${color('neutral.00')};
                 border-color: ${color('primary.05')};
@@ -173,8 +175,8 @@ const getDynamicStyle = ({
     if (small) {
         result = css`
             ${result};
-            padding-top: ${spacing(2)};
-            padding-bottom: ${spacing(2)};
+            padding: ${spacing(2)} ${spacing(3)};
+            height: ${spacing(10)};
         `;
     }
 
@@ -249,6 +251,7 @@ export const ButtonRoot = styled(Wrapper).withConfig(
     letter-spacing: 0;
     user-select: none;
     vertical-align: middle;
+    height: ${spacing(12)};
 
     &:hover,
     &:focus,
@@ -259,8 +262,7 @@ export const ButtonRoot = styled(Wrapper).withConfig(
         outline: none;
     }
 
-    ${typography('labelMedium')};
-    color: ${token('body.color')};
+    ${typography('labelLarge')};
     ${transition({
         'background-color': true,
         'border-color': true,
@@ -268,7 +270,7 @@ export const ButtonRoot = styled(Wrapper).withConfig(
         outline: true,
     })};
 
-    border-radius: ${token('shape.borderRadius.soft')};
+    border-radius: ${borderRadius('soft')};
     background-color: transparent;
 
     ${getDynamicStyle};

@@ -29,3 +29,5 @@ export const NoMinWidthAutoCorrection = () => {
         </Box>
     );
 };
+
+export const Large = () => <DateRangePicker large />;

@@ -63,6 +63,7 @@ export const useDropdown = <E extends HTMLInputElement>(
         renderItemAdditionalInfo,
         enableGroupSelection,
         'data-testid-input': dataTestIdInput,
+        large,
 
         // open/close state
         open,
@@ -259,6 +260,7 @@ export const useDropdown = <E extends HTMLInputElement>(
             placeholder,
             tabIndex,
             multiple,
+            large,
         },
         portalProps: {
             enablePortal,

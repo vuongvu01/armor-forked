@@ -16,6 +16,8 @@ const makeDateString = (date: Date) => {
 
 export const Basic = () => <DatePicker />;
 
+export const Large = () => <DatePicker large />;
+
 export const WithLabel = () => <DatePicker label="Foo" />;
 
 export const WithPlaceholder = () => (
@@ -126,7 +128,7 @@ export const WithTakenDays = () => {
             dateValue={localDate}
             enableTimePicker
             enableMinWidthAutoCorrection={false}
-            isDateFree={dateItem => makeDateString(dateItem) !== '7-12-2021'}
+            isDateFree={(dateItem) => makeDateString(dateItem) !== '7-12-2021'}
         />
     );
 };

@@ -1,5 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import React, { ComponentType } from 'react';
+import React from 'react';
 import { EditIcon } from '@deliveryhero/armor-icons';
 import styled, { ThemeProvider } from 'styled-components';
 import { withStyles as withMaterialStyles } from '@material-ui/core/styles';
@@ -10,7 +10,6 @@ import { ObjectLiteralType } from '../../../type';
 import { GroupHelper } from '../../../helpers/GroupHelper';
 import { Button } from '../Button';
 import { Box } from '../../Box';
-import { Stack, StackItem } from '../../Stack';
 import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
@@ -37,7 +36,7 @@ export const AllStates = () => (
                 Primary with icon
                 <EditIcon marginLeft={2} />
             </Button>
-            <Button primary paddingX={3}>
+            <Button primary>
                 <EditIcon />
             </Button>
             <Button primary danger>
@@ -45,6 +44,9 @@ export const AllStates = () => (
             </Button>
             <Button primary small>
                 Primary
+            </Button>
+            <Button small>
+                <EditIcon />
             </Button>
         </GroupHelper>
         <GroupHelper styles={groupStyle}>
@@ -59,7 +61,7 @@ export const AllStates = () => (
                 Primary with icon
                 <EditIcon marginLeft={2} />
             </Button>
-            <Button disabled primary paddingX={3}>
+            <Button disabled primary>
                 <EditIcon />
             </Button>
             <Button disabled primary danger>
@@ -67,6 +69,9 @@ export const AllStates = () => (
             </Button>
             <Button disabled primary small>
                 Primary
+            </Button>
+            <Button disabled primary small>
+                <EditIcon />
             </Button>
         </GroupHelper>
         <br />
@@ -81,7 +86,7 @@ export const AllStates = () => (
                 Secondary with icon
                 <EditIcon marginLeft={2} />
             </Button>
-            <Button secondary paddingX={3}>
+            <Button secondary>
                 <EditIcon />
             </Button>
             <Button secondary danger>
@@ -89,6 +94,9 @@ export const AllStates = () => (
             </Button>
             <Button secondary small>
                 Secondary
+            </Button>
+            <Button secondary small>
+                <EditIcon />
             </Button>
         </GroupHelper>
         <GroupHelper styles={groupStyle}>
@@ -103,7 +111,7 @@ export const AllStates = () => (
                 Secondary with icon
                 <EditIcon marginLeft={2} />
             </Button>
-            <Button disabled secondary paddingX={3}>
+            <Button disabled secondary>
                 <EditIcon />
             </Button>
             <Button disabled secondary small>
@@ -122,7 +130,7 @@ export const AllStates = () => (
                 Tertiary with icon
                 <EditIcon marginLeft={2} />
             </Button>
-            <Button tertiary paddingX={3}>
+            <Button tertiary>
                 <EditIcon />
             </Button>
             <Button tertiary danger>
@@ -141,7 +149,7 @@ export const AllStates = () => (
                 Tertiary with icon
                 <EditIcon marginLeft={2} />
             </Button>
-            <Button disabled tertiary paddingX={3}>
+            <Button disabled tertiary>
                 <EditIcon />
             </Button>
             <Button disabled tertiary danger>

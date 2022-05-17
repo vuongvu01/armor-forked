@@ -95,6 +95,9 @@ export type SearchEffectivePropsType = Partial<{
     enableSuggestions: boolean;
     isLoading: boolean;
     suggestionListHeight: ScalarType;
+
+    /** If set to true, the spacing of the component will be increased to match the *large* scale */
+    large: boolean;
 }> &
     Pick<InputHTMLAttributes<HTMLInputElement>, 'autoFocus'> &
     HTMLAttributes<HTMLElement> &

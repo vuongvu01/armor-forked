@@ -12,6 +12,7 @@ import { Button } from '../../Button';
 import { DateVector } from '../utils/DateVector';
 import { FormField } from '../../FormField';
 import { makeDateString } from '../__test__/util';
+import { Typography } from '../../Typography';
 
 export default {
     title: 'Components/DateRangePicker',
@@ -25,6 +26,21 @@ export const Basic = () => {
         <Box paddingTop={20}>
             <DateRangePicker data-testid-input="input42" />
         </Box>
+    );
+};
+
+export const Large = () => {
+    return (
+        <>
+            <Box paddingTop={20}>
+                <Typography>Large input</Typography>
+                <DateRangePicker data-testid-input="input42" large />
+            </Box>
+            <Box paddingTop={20}>
+                <Typography>Normal input</Typography>
+                <DateRangePicker data-testid-input="input42" />
+            </Box>
+        </>
     );
 };
 
