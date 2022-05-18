@@ -1,3 +1,22 @@
+## [1.7.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-system@1.7.1...@deliveryhero/armor-system@1.7.2) (2022-05-18)
+
+
+### Bug Fixes
+
+* **button & inputs:** Fix Button and inputs style mismatched [LD-789] ([f95f179](https://github.com/deliveryhero/armor/commit/f95f1796d1ee79d146134593edadf2d2151222b5))
+* **dropdown:** Dropdown onChange event receives name argument in all cases [AR-84] ([a48338d](https://github.com/deliveryhero/armor/commit/a48338dd8f43c5809589e6d78cfaa859c85fb661))
+* **dropdown:** Dropdown with Search functionality on focus always scroll the page to the top [AR-73] ([#994](https://github.com/deliveryhero/armor/issues/994)) ([18242c2](https://github.com/deliveryhero/armor/commit/18242c290273a7d9a934bdc03e8a4e839f6bd9f0))
+* **IconButton:** Disabled prop on IconButton [AR-58] ([#965](https://github.com/deliveryhero/armor/issues/965)) ([1a1ec59](https://github.com/deliveryhero/armor/commit/1a1ec591b97f7e0ac3b8ed9265430f8b289bc453))
+* **skeleton:** background colors are not consistent and image placeholder is out of sync [LD-724] ([#981](https://github.com/deliveryhero/armor/issues/981)) ([b4a1d41](https://github.com/deliveryhero/armor/commit/b4a1d41490c662f35e7c12b3d7a42835fcb6f506))
+* **tooltip:** Sync Tooltip design between Figma and code [LD-791] ([2792211](https://github.com/deliveryhero/armor/commit/279221177963cc0cabb325f0d95ac2ab18033ec4))
+
+
+### Features
+
+* **codacy:** testing analysis[LD-755] ([#992](https://github.com/deliveryhero/armor/issues/992)) ([33ae909](https://github.com/deliveryhero/armor/commit/33ae90958a5a809f4b83c01b7980ac681ed87ddc))
+* **icon:** add new translate icon [AR-76] ([#982](https://github.com/deliveryhero/armor/issues/982)) ([4dd23d0](https://github.com/deliveryhero/armor/commit/4dd23d00a482d1d2d08b783cdfea348b443a20e5))
+* **powerup:** new components package ([#969](https://github.com/deliveryhero/armor/issues/969)) ([5853c14](https://github.com/deliveryhero/armor/commit/5853c1440e83aed8a7394431a4ec9cefbec28cec))
+
 ## [1.7.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-system@1.7.0...@deliveryhero/armor-system@1.7.1) (2022-05-11)
 
 
