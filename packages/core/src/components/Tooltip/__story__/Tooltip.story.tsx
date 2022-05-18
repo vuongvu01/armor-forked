@@ -47,6 +47,23 @@ export const Basic = () => (
     </>
 );
 
+export const Error = () => (
+    <>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <Tooltip content="Hello world! Hello world!" error>
+            <Button marginRight={2}>Error tooltip</Button>
+        </Tooltip>
+        <Tooltip content="Hello world! Hello world!" error small>
+            <Button marginRight={2}>Error small tooltip</Button>
+        </Tooltip>
+    </>
+);
+
 export const Empty = () => (
     <>
         <Button marginRight={2}>Left</Button>

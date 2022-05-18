@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useCallback, useState } from 'react';
 
-import { Search } from '../../../src/components/Search';
 import { InfoIcon, CogIcon } from '@deliveryhero/armor-icons';
+import { Search } from '../../../src/components/Search';
 import { SuggestionObjectType } from '../../../src/components/Search/type';
 import { campaigns } from '../../../src/components/Search/__story__/constants';
 
@@ -12,7 +12,7 @@ const formatCampaigns = (campaignsList, query) =>
             (a, b) =>
                 Number(b.attributes.is_active) - Number(a.attributes.is_active),
         )
-        .filter(campaign => {
+        .filter((campaign) => {
             return campaign.attributes.name
                 .toLowerCase()
                 .includes(query.toLocaleLowerCase());
@@ -27,14 +27,15 @@ const foodOptions = [
     { value: 0, label: 'Biryani' },
     {
         value: 1,
-        label:
-            'This is a very long label that needs to be truncated with an ellipsis',
+        label: 'This is a very long label that needs to be truncated with an ellipsis',
     },
     { value: 2, label: 'Pho' },
     { value: 3, label: 'Risotto' },
 ];
 
 export const DefaultSearch = () => <Search />;
+
+export const Large = () => <Search large />;
 
 export const SearchWithInput = () => <Search defaultQuery="Query" />;
 
@@ -159,8 +160,7 @@ export const customSuggestionListHeight = () => {
         { value: 1, label: 'Tacos', spiciness: 'Super hot and spicy option' },
         {
             value: 2,
-            label:
-                'This is a very long label that needs to be truncated with an ellipsis',
+            label: 'This is a very long label that needs to be truncated with an ellipsis',
             spiciness: 'Super hot and spicy option with extra action label',
         },
         { value: 3, label: 'Risotto', spiciness: 'Super hot and spicy option' },
@@ -236,8 +236,7 @@ export const DynamicItemIconAndInfo = () => {
         { value: 1, label: 'Tacos', spiciness: 'Super hot and spicy option' },
         {
             value: 2,
-            label:
-                'This is a very long label that needs to be truncated with an ellipsis',
+            label: 'This is a very long label that needs to be truncated with an ellipsis',
             spiciness: 'Super hot and spicy option with extra action label',
         },
         { value: 3, label: 'Risotto', spiciness: 'Super hot and spicy option' },
@@ -318,7 +317,7 @@ export const WithDeatchedResults = () => {
                 defaultQuery={search}
                 enableSuggestions={false}
             />
-            {campaignsToRender.map(campaign => (
+            {campaignsToRender.map((campaign) => (
                 <div>{campaign.attributes.name}</div>
             ))}
         </>
@@ -346,7 +345,7 @@ export const WithDeatchedResultsFiltered = () => {
                 defaultQuery={search}
                 enableSuggestions={false}
             />
-            {campaignsToRender.map(campaign => (
+            {campaignsToRender.map((campaign) => (
                 <div>{campaign.attributes.name}</div>
             ))}
         </>

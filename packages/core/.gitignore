@@ -9,3 +9,4 @@ visual/**/*.d.ts
 package-lock.json
 storybook-static
 dev3
+coverage

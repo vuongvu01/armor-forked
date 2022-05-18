@@ -20,8 +20,9 @@ import {
     DropdownInternalOptionType,
     DropdownInternalValueType,
     DropdownPropsType,
+    DropdownValueType,
 } from '../type';
-import { RefType } from '../../../type';
+import { PseudoEventType, RefType } from '../../../type';
 import { useOnOptionListUpdate } from './useOnOptionListUpdate';
 import { usePanelWidth } from './usePanelWidth';
 import { MAX_OPTIONS_SELECT_ALL_THRESHOLD } from '../../OptionList/constants';
@@ -62,6 +63,7 @@ export const useDropdown = <E extends HTMLInputElement>(
         renderItemAdditionalInfo,
         enableGroupSelection,
         'data-testid-input': dataTestIdInput,
+        large,
 
         // open/close state
         open,
@@ -154,6 +156,7 @@ export const useDropdown = <E extends HTMLInputElement>(
 
     const handleConfirmClick = useCallback(() => {
         setInitialSelection(internalValue);
+
         if (enableFooter && onConfirmClick) {
             onConfirmClick(internalValue);
         }
@@ -167,19 +170,16 @@ export const useDropdown = <E extends HTMLInputElement>(
         }
     }, [internalInputRef]);
 
-    // todo: fix me
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    const focusOnActionItemTrigger = () => {
-        const node = internalInputRef.current as any;
+    const focusOnActionItemTrigger = useCallback(() => {
+        const { current: node } = internalInputRef;
 
         if (!isOptionListShown) {
-            if (node && node.focus) {
-                node.focus();
-            }
-        } else {
-            blurInput();
+            node?.focus();
+            return;
         }
-    };
+
+        blurInput();
+    }, [blurInput, internalInputRef, isOptionListShown]);
 
     const onOuterClick = useCallback(() => {
         setIsOptionListShown(false);
@@ -222,6 +222,19 @@ export const useDropdown = <E extends HTMLInputElement>(
 
     usePanelWidth(containerRef, dropdownRef, isOptionListShown);
 
+    const onChangeProxy = useCallback(
+        (newValue: PseudoEventType<DropdownValueType>) => {
+            onChange?.({
+                ...newValue,
+                target: {
+                    ...newValue.target,
+                    name,
+                },
+            });
+        },
+        [onChange, name],
+    );
+
     return {
         rootProps: restProps,
         containerProps: {
@@ -247,6 +260,7 @@ export const useDropdown = <E extends HTMLInputElement>(
             placeholder,
             tabIndex,
             multiple,
+            large,
         },
         portalProps: {
             enablePortal,
@@ -268,7 +282,7 @@ export const useDropdown = <E extends HTMLInputElement>(
             setInternalValue,
             setIsOptionListShown,
             onValueUpdate,
-            onChange,
+            onChange: onChangeProxy,
             isFlat,
             internalOptions,
             dynamicInternalOptions,
@@ -318,7 +332,7 @@ export const useDropdown = <E extends HTMLInputElement>(
             setInternalValue,
             setInitialSelection,
             onSelect,
-            onChange,
+            onChange: onChangeProxy,
             options,
             isFlat,
             tagLabelMaxLength,

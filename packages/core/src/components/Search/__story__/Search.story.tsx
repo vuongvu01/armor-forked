@@ -88,6 +88,17 @@ export const DefaultSearch = () => {
     );
 };
 
+export const Large = () => {
+    return (
+        <>
+            <p>Large Input</p>
+            <Search large />
+            <p>Normal Input</p>
+            <Search />
+        </>
+    );
+};
+
 export const DeprecatedAdditionalInfoAndIcon = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {

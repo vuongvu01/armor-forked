@@ -5,7 +5,7 @@ import React, { useMemo, useState, useCallback } from 'react';
 import { add } from 'date-fns';
 import { makeTheme, ThemeProvider } from '@deliveryhero/armor-system';
 
-import { Box, Button, FormField } from '@deliveryhero/armor';
+import { Box, Button, FormField, Typography } from '@deliveryhero/armor';
 import { withWrapper } from '../../../helpers/Wrapper';
 import { DatePicker, DateRangePicker, DateRangePickerPropsType } from '..';
 import { DateVector } from '../utils/DateVector';
@@ -23,6 +23,21 @@ export const Basic = () => {
         <Box paddingTop={20}>
             <DateRangePicker data-testid-input="input42" />
         </Box>
+    );
+};
+
+export const Large = () => {
+    return (
+        <>
+            <Box paddingTop={20}>
+                <Typography>Large input</Typography>
+                <DateRangePicker data-testid-input="input42" large />
+            </Box>
+            <Box paddingTop={20}>
+                <Typography>Normal input</Typography>
+                <DateRangePicker data-testid-input="input42" />
+            </Box>
+        </>
     );
 };
 

@@ -1,5 +1,7 @@
 import React from 'react';
 import { addDecorator } from '@storybook/react';
+import { ThemeProvider, makeDefaultTheme } from '@deliveryhero/armor-system';
+
 import 'loki/configure-react';
 
 import { FontLoader } from '../../src';
@@ -27,7 +29,7 @@ export const parameters = {
     },
 };
 
-const fontDecorator = Story => (
+const fontDecorator = (Story) => (
     <>
         <FontLoader />
         <Story />
@@ -35,3 +37,13 @@ const fontDecorator = Story => (
 );
 
 addDecorator(fontDecorator);
+
+const theme = makeDefaultTheme();
+
+const themeDecorator = (Story) => (
+    <ThemeProvider theme={theme}>
+        <Story />
+    </ThemeProvider>
+);
+
+addDecorator(themeDecorator);

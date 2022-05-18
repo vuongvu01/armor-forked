@@ -4,7 +4,7 @@ import { RefType } from '../../../type';
 
 export const useSkeleton = <E extends HTMLElement>(
     {
-        imagePlaceholder,
+        imagePlaceholder: baseImagePlaceholder,
         width,
         height,
         rounded,
@@ -14,16 +14,21 @@ export const useSkeleton = <E extends HTMLElement>(
 ) => {
     const innerRef = useRootRef<E>(ref);
 
+    const isImagePlaceholder = Boolean(baseImagePlaceholder);
+
+    const isEqualSize = width === height;
+
     return {
         rootProps: {
             ...restProps,
-            imagePlaceholder,
             rounded,
             width,
             height,
             ref: innerRef,
         },
-        imagePlaceholder,
-        enableImage: width === height,
+        imagePlaceholder:
+            isImagePlaceholder && isEqualSize
+                ? baseImagePlaceholder
+                : undefined,
     };
 };

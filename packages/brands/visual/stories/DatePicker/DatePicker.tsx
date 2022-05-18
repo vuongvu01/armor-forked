@@ -8,6 +8,8 @@ export default {
 
 export const Basic = () => <DatePicker />;
 
+export const Large = () => <DatePicker large />;
+
 export const WithLabel = () => <DatePicker label="Foo" />;
 
 export const WithPlaceholder = () => (

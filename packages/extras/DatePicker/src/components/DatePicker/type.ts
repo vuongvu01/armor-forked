@@ -136,7 +136,8 @@ export type DatePickerEffectiveCommonPropsType = Partial<{
      */
     inputMaskEnabled: boolean;
 
-    // add other custom properties here
+    /** If set to true, the spacing of the component will be increased to match the *large* scale */
+    large: boolean;
 }> &
     ComponentBehaviourOpenStateType &
     ComponentBehaviourOverlayType &

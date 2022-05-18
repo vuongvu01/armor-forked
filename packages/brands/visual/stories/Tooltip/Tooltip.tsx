@@ -100,3 +100,19 @@ export const OnCheckboxWithCustomOffset = () => {
         </DisablePortal>
     );
 };
+
+export const DefaultOpenError = () => {
+    return (
+        <DisablePortal>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <Tooltip content={'Error'} error defaultOpen>
+                <Button>Error</Button>
+            </Tooltip>
+        </DisablePortal>
+    );
+};

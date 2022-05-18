@@ -9,6 +9,8 @@ export default {
 
 export const Basic = () => <Button primary>Hello</Button>;
 
+export const Small = () => <Button small>Hello</Button>;
+
 export const LikeDisabled = () => (
     <>
         <div>

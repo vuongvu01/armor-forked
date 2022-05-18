@@ -29,6 +29,21 @@ export const Basic = () => {
     );
 };
 
+export const Large = () => {
+    return (
+        <>
+            <Box paddingTop={20}>
+                <Typography>Large input</Typography>
+                <DatePicker data-testid-input="input42" large />
+            </Box>
+            <Box paddingTop={20}>
+                <Typography>Normal input</Typography>
+                <DatePicker data-testid-input="input42" />
+            </Box>
+        </>
+    );
+};
+
 export const WithMaskedInput = () => {
     const allowedDateRanges = [
         ['current+1', DATE_PICKER_INFINITY],

@@ -32,8 +32,8 @@ export const useOnOptionListUpdate = (
     searchQuery?: string,
     isOptionListShown?: boolean,
     preserveSelection?: boolean,
-) =>
-    useEffect(() => {
+) => {
+    return useEffect(() => {
         if (
             !preserveSelection &&
             (!searchQuery || !isOptionListShown) &&
@@ -51,3 +51,4 @@ export const useOnOptionListUpdate = (
         searchQuery,
         isOptionListShown,
     ]);
+};

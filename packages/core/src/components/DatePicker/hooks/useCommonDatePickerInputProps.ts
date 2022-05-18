@@ -12,6 +12,7 @@ export const useCommonDatePickerInputProps = (
         error,
         'data-testid-input': dataTestIdInput,
         inputMaskEnabled,
+        large,
     }: DatePickerEffectiveCommonPropsType,
 ) => {
     return {
@@ -25,6 +26,7 @@ export const useCommonDatePickerInputProps = (
             enableRootRef: true,
             enableFocusOnRootClick: true,
             'data-testid-input': dataTestIdInput,
+            large,
         },
     };
 };

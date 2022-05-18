@@ -8,7 +8,6 @@ on:
         paths:
             - 'packages/core/**'
             - 'packages/system/**'
-
 jobs:
     test:
         runs-on: ubuntu-latest

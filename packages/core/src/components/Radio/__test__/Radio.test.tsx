@@ -3,6 +3,7 @@ import React from 'react';
 import { cleanup, render, screen } from '@testing-library/react';
 import { cleanup as cleanupHooks } from '@testing-library/react-hooks';
 import renderer from 'react-test-renderer';
+import userEvent from '@testing-library/user-event';
 
 import { Radio } from '../Radio';
 import { RadioGroup } from '../RadioGroup';
@@ -25,6 +26,15 @@ const baseRadioExample = (props: RadioPropsType) => (
 const radioWithCustomTypographyType = (type: object | undefined) => (
     <RadioGroup name="name0" typographyProps={type}>
         <Radio value="0">{label}</Radio>
+        <Radio value="1">Pasta</Radio>
+    </RadioGroup>
+);
+
+const radioWithDisabledItem = (props: RadioPropsType) => (
+    <RadioGroup name="name0" {...props}>
+        <Radio value="0" disabled>
+            {label}
+        </Radio>
         <Radio value="1">Pasta</Radio>
     </RadioGroup>
 );
@@ -93,5 +103,38 @@ describe('<Radio />', () => {
             marginAttribute,
             marginValue,
         );
+    });
+
+    it('ensures each children will accept disabled attribute', () => {
+        const result = render(radioWithDisabledItem({}));
+
+        // @ts-ignore
+        expect(result.container).toHaveBEMStructure('Radio', {
+            Root: ['disabled'],
+        });
+    });
+
+    it('Should not call onchange callback upon clicking disabled button', () => {
+        const fn = jest.fn();
+        render(radioWithDisabledItem({ onChange: fn }));
+        const radioItemLabel = screen.getByText(label);
+
+        userEvent.click(radioItemLabel);
+
+        // @ts-ignore
+        expect(fn).not.toHaveBeenCalled();
+    });
+
+    it('Should not select disabled button', () => {
+        const fn = jest.fn();
+        const { container } = render(radioWithDisabledItem({ onChange: fn }));
+        const radioItemLabel = screen.getByText(label);
+        userEvent.click(radioItemLabel);
+        const radioItemChecked = container.querySelector(
+            '.Radio-Root--checked',
+        );
+
+        // @ts-ignore
+        expect(radioItemChecked).not.toBeInTheDocument();
     });
 });

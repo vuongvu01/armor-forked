@@ -121,6 +121,20 @@ export const MinimumConfiguration = () => {
     );
 };
 
+export const Large = () => {
+    return (
+        <>
+            <Dropdown
+                margin={1}
+                options={foodOptions}
+                label="Large input"
+                large
+            />
+            <Dropdown margin={1} options={foodOptions} label="Normal input" />
+        </>
+    );
+};
+
 export const CustomOptionItemsFormat = () => {
     const [selectedOption, setSelectedOption] = useState();
     const handleSelect = (option: any) => {
@@ -221,7 +235,6 @@ export const UncontrolledWithSearch = () => {
                         defaultValue={initialSelectionIndex}
                         label="Dish type"
                         enableSearchOption
-                        enableSelectAllOption
                     />
                     <Typography paragraph>
                         Selected value: {JSON.stringify(selectedOption)}
