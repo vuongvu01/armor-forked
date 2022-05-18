@@ -92,7 +92,7 @@ describe('<Tag /> ', () => {
         expect(containerElement).toHaveClass('Tag-Root--denied');
     });
 
-    it('should ensure that status Tag `new` has corresponding class names set', async () => {
+    it('should ensure that status Tag `new` has corresponding class names set ', async () => {
         render(<Tag type="new" />);
 
         const containerElement = screen.getByTestId(tagRoot);

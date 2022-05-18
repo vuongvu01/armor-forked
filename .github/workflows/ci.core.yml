@@ -8,8 +8,6 @@ on:
         paths:
             - 'packages/core/**'
             - 'packages/system/**'
-env:
-    CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
 jobs:
     test:
         runs-on: ubuntu-latest
@@ -35,13 +33,9 @@ jobs:
               working-directory: ./packages/core
               run: yarn run lint
 
-            - name: Test and coverage
+            - name: Test
               working-directory: ./packages/core
-              run: yarn run test --coverage
-
-            - name: Codacy Coverage Reporter
-              working-directory: ./packages/core
-              run: bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r ./src/coverage/lcov.info
+              run: yarn run test
 
             - name: Test integration install
               working-directory: ./packages/core/integration

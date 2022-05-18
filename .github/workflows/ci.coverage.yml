@@ -1,0 +1,35 @@
+name: CI.COVERAGE
+
+on:
+    push:
+        branches:
+            - dev
+        paths:
+            - 'packages/core/**'
+            - 'packages/system/**'
+env:
+    CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        env:
+            GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
+
+        steps:
+            - uses: actions/checkout@v2
+            - name: Install (common)
+              run: yarn
+            - name: Install peers (common)
+              run: yarn install-peers
+            - name: Build (system)
+              working-directory: ./packages/system
+              run: yarn build:cjs
+            - name: Build (icons)
+              working-directory: ./packages/icons
+              run: yarn build:cjs
+            - name: Test and coverage
+              working-directory: ./packages/core
+              run: yarn run test --coverage
+            - name: Codacy Coverage Reporter
+              working-directory: ./packages/core
+              run: bash <(curl -Ls https://coverage.codacy.com/get.sh)
