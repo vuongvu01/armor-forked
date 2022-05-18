@@ -1,3 +1,19 @@
+## [1.4.14](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.4.13...@deliveryhero/armor-vendors@1.4.14) (2022-05-18)
+
+
+### Bug Fixes
+
+* **button & inputs:** Fix Button and inputs style mismatched [LD-789] ([f95f179](https://github.com/deliveryhero/armor/commit/f95f1796d1ee79d146134593edadf2d2151222b5))
+* **dropdown:** Dropdown onChange event receives name argument in all cases [AR-84] ([a48338d](https://github.com/deliveryhero/armor/commit/a48338dd8f43c5809589e6d78cfaa859c85fb661))
+* **dropdown:** Dropdown with Search functionality on focus always scroll the page to the top [AR-73] ([#994](https://github.com/deliveryhero/armor/issues/994)) ([18242c2](https://github.com/deliveryhero/armor/commit/18242c290273a7d9a934bdc03e8a4e839f6bd9f0))
+* **skeleton:** background colors are not consistent and image placeholder is out of sync [LD-724] ([#981](https://github.com/deliveryhero/armor/issues/981)) ([b4a1d41](https://github.com/deliveryhero/armor/commit/b4a1d41490c662f35e7c12b3d7a42835fcb6f506))
+* **tooltip:** Sync Tooltip design between Figma and code [LD-791] ([2792211](https://github.com/deliveryhero/armor/commit/279221177963cc0cabb325f0d95ac2ab18033ec4))
+
+
+### Features
+
+* **codacy:** testing analysis[LD-755] ([#992](https://github.com/deliveryhero/armor/issues/992)) ([33ae909](https://github.com/deliveryhero/armor/commit/33ae90958a5a809f4b83c01b7980ac681ed87ddc))
+
 ## [1.4.13](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.4.12...@deliveryhero/armor-vendors@1.4.13) (2022-05-11)
 
 
