@@ -12,6 +12,7 @@ import {
     renderHook,
     cleanup as cleanupHooks,
 } from '@testing-library/react-hooks';
+import userEvent from '@testing-library/user-event';
 
 import { useToastContainer } from '../hooks';
 
@@ -81,5 +82,29 @@ describe('useToastContainer', () => {
         const myToast = await screen.findByText('toast message');
 
         await waitFor(() => expect(myToast).toBeInTheDocument());
+    });
+
+    it('should call onClose', async () => {
+        const { result } = renderHook(useToastContainer);
+        const { makeToast } = result.current;
+
+        const onClose = jest.fn();
+
+        act(() => {
+            makeToast({ message: 'Message', onClose });
+        });
+
+        const toast = await screen.findByText('Message');
+
+        await waitFor(() => expect(toast).toBeInTheDocument());
+
+        const closeButton = await screen.getByTestId('Message-CloseButton');
+
+        userEvent.click(closeButton);
+
+        await waitFor(() => {
+            expect(toast).not.toBeInTheDocument();
+            expect(onClose).toHaveBeenCalledTimes(1);
+        });
     });
 });
