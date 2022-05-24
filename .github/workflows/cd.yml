@@ -70,6 +70,13 @@ jobs:
                   --url https://api.github.com/repos/deliveryhero/armor-docs/actions/workflows/cd.yml/dispatches \
                   --data '{"ref":"master"}'
 
+            - name: Armor play re-deployment
+              run: |
+                curl --request POST \
+                --header 'Authorization: token ${{ secrets.CICD_TOKEN }}' \
+                --url https://api.github.com/repos/deliveryhero/armor-play-v2/actions/workflows/cd.yml/dispatches \
+                --data '{"ref":"main"}'
+
             - name: Text panic message
               if: failure()
               run: |
