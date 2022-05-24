@@ -1,10 +1,11 @@
 import { css } from 'styled-components';
 import { color } from '@deliveryhero/armor-system';
-import { StepRootPropsType } from '@deliveryhero/armor';
 
-export const getStepOverride = (props: StepRootPropsType) => {
-    const { isActivityLogView } = props;
-
+export const getStepOverride = ({
+    isActivityLogView,
+}: {
+    isActivityLogView: boolean;
+}) => {
     let result = css`
         .Step-Line {
             background-color: ${color('primary.03')};

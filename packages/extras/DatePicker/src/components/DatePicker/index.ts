@@ -4,3 +4,10 @@
 export * from './DatePicker';
 export * from './DateRangePicker';
 export { DATE_PICKER_INFINITY } from './constants';
+
+export type {
+    DateRangeEdgeType,
+    DateValueType,
+    DateValueRangeType,
+    DateValueAdvancedRangeType,
+} from './type';
