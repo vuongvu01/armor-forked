@@ -78,7 +78,7 @@ Switch.propTypes = {
     disabled: PropTypes.bool,
     error: PropTypes.bool,
     id: PropTypes.string,
-    label: PropTypes.string,
+    label: PropTypes.node,
     onChange: PropTypes.func,
 };
 
