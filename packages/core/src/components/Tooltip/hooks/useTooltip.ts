@@ -25,6 +25,7 @@ export const useTooltip = <E extends HTMLDivElement>(
         onToggle,
 
         error,
+        disableInteractive,
 
         // popper and portaling
         align,
@@ -38,6 +39,9 @@ export const useTooltip = <E extends HTMLDivElement>(
     }: TooltipPropsType,
     ref: RefType<E>,
 ) => {
+    const panelRef = useRootRef<E>(ref);
+    const triggerRef = useRef<HTMLDivElement>(null);
+
     const realTrigger = trigger || (children as ReactElement);
     const realContent = trigger ? (children as ReactElement) : content;
 
@@ -49,10 +53,9 @@ export const useTooltip = <E extends HTMLDivElement>(
     const { onMouseOverProxy, onMouseOutProxy } = useEventProxy(
         children,
         setReallyOpen,
+        panelRef,
+        disableInteractive,
     );
-
-    const panelRef = useRootRef<E>(ref);
-    const triggerRef = useRef<HTMLDivElement>(null);
 
     const { arrowProps, panelProps } = usePopper(panelRef, triggerRef, {
         align,

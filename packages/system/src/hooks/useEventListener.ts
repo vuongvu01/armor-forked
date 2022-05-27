@@ -40,5 +40,5 @@ export const useEventListener = (
         return () => {
             node?.removeEventListener?.(eventName, eventListener);
         };
-    }, [eventName, element, disabled]);
+    }, [eventName, element?.current, disabled]); // eslint-disable-line react-hooks/exhaustive-deps
 };

@@ -3,7 +3,7 @@ import React from 'react';
 import { userEvent, waitFor, within, screen } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 
-import { isInViewport } from './util';
+import { isInViewport } from '../util';
 import { Dropdown } from '../../../src/components/Dropdown';
 
 export const DropdownVeryFarFromTheTopWithSearchOption = () => {

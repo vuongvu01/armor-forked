@@ -305,3 +305,26 @@ export const OnDisabledButton = () => {
         </Tooltip>
     );
 };
+
+export const TooltipInteractive = () => (
+    <>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <Tooltip
+            content={
+                <div>
+                    This tooltip is <button>interactive</button>
+                </div>
+            }
+        >
+            <Button marginLeft={2}>Default - interactive</Button>
+        </Tooltip>
+        <Tooltip content="This tooltip will close" disableInteractive>
+            <Button marginLeft={2}>Disable Interactive</Button>
+        </Tooltip>
+    </>
+);
