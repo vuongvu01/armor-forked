@@ -1,3 +1,19 @@
+# [1.8.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-system@1.7.2...@deliveryhero/armor-system@1.8.0) (2022-05-27)
+
+
+### Bug Fixes
+
+* **stepper:** change the step description wrapper and fix the messed up order ([#1005](https://github.com/deliveryhero/armor/issues/1005)) ([730ec96](https://github.com/deliveryhero/armor/commit/730ec965fbe0ee1844d08e0400ba9491f3617603))
+* **switch:** Fix proptype ([#999](https://github.com/deliveryhero/armor/issues/999)) ([53e31f4](https://github.com/deliveryhero/armor/commit/53e31f47115c48211b89de9ca080b0bbc7e6fbb7))
+* **Toast:** Passing onClose callback prevent Toaster from being closed [AR-89] ([#1000](https://github.com/deliveryhero/armor/issues/1000)) ([749e4be](https://github.com/deliveryhero/armor/commit/749e4beb2b78537b2e463dbbfc17ddb336d96976))
+* **type:** Expose types for non-component props [AR-65] ([707613d](https://github.com/deliveryhero/armor/commit/707613d1114c88751da999aa30c5d8bbb8586b2a))
+
+
+### Features
+
+* **illustration:** new illustrations add and github workkflow ([#997](https://github.com/deliveryhero/armor/issues/997)) ([9770d77](https://github.com/deliveryhero/armor/commit/9770d778c91b974a2702284e896adefb52148183))
+* **tooltip:** support interactive tooltip as default [AR-57] ([a7b59ec](https://github.com/deliveryhero/armor/commit/a7b59ec6676305d5ef6503f1dd467aa8df922ad3))
+
 ## [1.7.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-system@1.7.1...@deliveryhero/armor-system@1.7.2) (2022-05-18)
 
 
