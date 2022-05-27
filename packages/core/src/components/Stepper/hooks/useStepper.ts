@@ -35,11 +35,13 @@ export const useStepper = <E extends HTMLDivElement>(
             vertical,
             minimal,
             ref,
-            children: React.Children.map(children, (child, index) => {
-                return React.cloneElement(child as ReactElement, {
-                    index: index + 1,
-                });
-            }),
+            children: React.Children.toArray(children)
+                .filter(React.isValidElement)
+                .map((child, index) => {
+                    return React.cloneElement(child as ReactElement, {
+                        index: index + 1,
+                    });
+                }),
         },
         contextValue: {
             currentIndex,

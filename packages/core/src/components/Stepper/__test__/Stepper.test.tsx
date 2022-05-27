@@ -182,4 +182,27 @@ describe('<Stepper />', () => {
         expect(fourthStep?.classList).toContain('Step-Root--info');
         expect(fifthStep?.classList).toContain('Step-Root--success');
     });
+
+    it('should render the correct order in case of `null` passed as child', () => {
+        const { container } = render(
+            <Stepper readOnly>
+                {null}
+                <Step title="Delivery" />
+                <Step title="Payment" />
+                <Step title="Review" />
+                <Step title="Review" />
+            </Stepper>,
+        );
+        
+        const firstStep = container.querySelector('.Step-Root:nth-child(1)');
+        const secondStep = container.querySelector('.Step-Root:nth-child(2)');
+        const thirdStep = container.querySelector('.Step-Root:nth-child(3)');
+        const fourthStep = container.querySelector('.Step-Root:nth-child(4)');
+
+        expect(container.querySelectorAll('.Step-Root').length).toEqual(4);
+        expect(firstStep?.querySelector('.Step-Number')).toHaveTextContent('1');
+        expect(secondStep?.querySelector('.Step-Number')).toHaveTextContent('2');
+        expect(thirdStep?.querySelector('.Step-Number')).toHaveTextContent('3');
+        expect(fourthStep?.querySelector('.Step-Number')).toHaveTextContent('4');
+    });
 });

@@ -6,3 +6,7 @@ export function isInViewport(element: Element): boolean {
 
     return top >= 0 && left >= 0 && bottom <= height && right <= width;
 }
+
+export function sleep(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+}

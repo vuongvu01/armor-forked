@@ -58,7 +58,7 @@ export const MinimalVerticalLayout = () => (
 
 export const StepperAsActivityLog = () => {
     const ContentExample = (
-        <div>
+        <div style={{ float: 'left' }}>
             Lorem ipsum dolor sit amet
             <br />
             Lorem ipsum dolor sit amet

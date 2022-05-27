@@ -67,7 +67,6 @@ export const TooltipRoot = styled.div.withConfig(
     left: 0;
     text-align: left;
     ${transition({ opacity: true })};
-    pointer-events: none;
     ${popperArrowPlacement('Tooltip-Arrow')};
     ${typography('paragraphSmall')};
     color: ${token('body.color')};
