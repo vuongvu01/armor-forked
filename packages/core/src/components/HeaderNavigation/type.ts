@@ -2,7 +2,10 @@ import { HTMLAttributes, ReactNode } from 'react';
 import { MarginPropsType, ScalarType } from '@deliveryhero/armor-system';
 
 import { ObjectLiteralType } from '../../type';
-import { ComponentElementStylePropsType } from '../type';
+import {
+    ComponentElementStylePropsType,
+    ComponentStylePropsType,
+} from '../type';
 import { JustifyContentType } from '../Flex/type';
 import {
     DropdownSelectedOptionType,
@@ -70,7 +73,8 @@ type HeaderNavigationEffectivePropsType = Partial<{
     Omit<HTMLAttributes<HTMLElement>, 'title'> &
     MarginPropsType;
 
-export type HeaderNavigationPropsType = HeaderNavigationEffectivePropsType;
+export type HeaderNavigationPropsType = HeaderNavigationEffectivePropsType &
+    ComponentStylePropsType;
 
 export type HeaderNavigationRootPropsType = HeaderNavigationEffectivePropsType &
     ComponentElementStylePropsType;

@@ -1,2 +1,7 @@
 export * from './Tag';
-export type { TagPropsType, TagTypeEnum } from './type';
+export type {
+    TagDeleteIconModeType,
+    TagPropsType,
+    TagType,
+    TagTypeEnum,
+} from './type';

@@ -10,4 +10,6 @@ export type {
     FilterConditionSchemaType,
     FilterConditionValueElementType,
     FilterConditionValueType,
+    FilterConditionValueElementOrGroupType,
+    FilterConditionSchemaElementOrGroupType,
 } from './type';

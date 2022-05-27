@@ -4,4 +4,8 @@
 
 export * from './Toast';
 export { useToastContainer as useToast } from './hooks/useToastContainer';
-export type { ToastPropsType, ToastHookPropsType } from './type';
+export type {
+    ToastPropsType,
+    ToastHookPropsType,
+    ToastPositionType,
+} from './type';

@@ -14,12 +14,6 @@ import {
 
 import { IconButtonRootPropsType } from './type';
 
-const getPrimaryDisabledColors = () => css`
-    color: ${color('neutral.05')};
-    border-color: ${color('neutral.03')};
-    background-color: ${color('neutral.03')};
-`;
-
 const getRootStyle = ({
     light,
     visible,

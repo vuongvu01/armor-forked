@@ -2,6 +2,11 @@ name: CI.COVERAGE
 
 on:
     push:
+        branches:
+            - dev
+        paths:
+            - 'packages/core/**'
+            - 'packages/system/**'
     pull_request:
         branches:
             - dev

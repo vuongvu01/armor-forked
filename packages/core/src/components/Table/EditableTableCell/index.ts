@@ -3,3 +3,5 @@
  */
 
 export * from './EditableTableCell';
+
+export type { EditableTableCellPropsType } from './type';

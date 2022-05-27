@@ -3,3 +3,5 @@
  */
 
 export * from './FileUploadButton';
+
+export type { FileUploadButtonPropsType } from './type';

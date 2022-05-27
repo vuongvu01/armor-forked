@@ -3,4 +3,4 @@
  */
 
 export * from './ProgressBar';
-export type { ProgressBarPropsType } from './type';
+export type { ProgressBarPropsType, ProgressBarPresetType } from './type';

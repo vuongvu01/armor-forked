@@ -7,7 +7,7 @@ import {
     SVGIllustrationPath,
 } from '../components/SVGIllustration';
 
-const Armor2Shape: FunctionComponent<{
+const ArmorDesignAndCodeShape: FunctionComponent<{
     brandColor: string;
     neutralColor: string;
 }> = ({ brandColor, neutralColor }) => (
@@ -23,7 +23,7 @@ const Armor2Shape: FunctionComponent<{
     </SVGIllustrationGroup>
 );
 
-export const Armor2Illustration: FunctionComponent<
+export const ArmorDesignAndCodeIllustration: FunctionComponent<
     SVGIllustrationPropsType
 > = ({ className, ...restProps }) => {
     const theme = useTheme();
@@ -34,10 +34,13 @@ export const Armor2Illustration: FunctionComponent<
         return (
             <SVGIllustration
                 viewBox="0 0 120 120"
-                className={`Armor2Illustration ${className || ''}`}
+                className={`ArmorDesignAndCodeIllustration ${className || ''}`}
                 {...restProps}
             >
-                <Armor2Shape brandColor={brand} neutralColor={neutral} />
+                <ArmorDesignAndCodeShape
+                    brandColor={brand}
+                    neutralColor={neutral}
+                />
             </SVGIllustration>
         );
     }

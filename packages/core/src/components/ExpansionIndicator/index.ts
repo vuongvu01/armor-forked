@@ -1,4 +1,4 @@
-import { ExpansionIndicatorEffectivePropsType as PropsTypeExpansionIndicator } from './type';
+import { ExpansionIndicatorPropsType as PropsTypeExpansionIndicator } from './type';
 
 export * from './ExpansionIndicator';
 export type ExpansionIndicatorPropsType = PropsTypeExpansionIndicator;

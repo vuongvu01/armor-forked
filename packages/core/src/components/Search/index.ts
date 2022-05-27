@@ -1,4 +1,3 @@
-import { SearchPropsType as PropsTypeSearch } from './type';
-
 export * from './Search';
-export type SearchPropsType = PropsTypeSearch;
+
+export type { SearchPropsType, SuggestionObjectType } from './type';

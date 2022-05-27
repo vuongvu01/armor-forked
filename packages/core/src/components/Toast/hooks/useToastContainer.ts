@@ -55,11 +55,11 @@ export const useToastContainer = (props?: ToastHookPropsType) => {
             isPaused: isPausedAutoClose,
             setPauseAutoClose: (isPaused: boolean) =>
                 autoClose && pauseOnHover && setPauseAutoClose(isPaused),
+            ...toast,
             onClose: () => {
                 removeToast(toast.id);
                 toast.onClose?.();
             },
-            ...toast,
         }),
         toasts,
     };
