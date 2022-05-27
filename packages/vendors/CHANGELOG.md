@@ -1,3 +1,17 @@
+## [1.4.15](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.4.14...@deliveryhero/armor-vendors@1.4.15) (2022-05-27)
+
+
+### Bug Fixes
+
+* **switch:** Fix proptype ([#999](https://github.com/deliveryhero/armor/issues/999)) ([53e31f4](https://github.com/deliveryhero/armor/commit/53e31f47115c48211b89de9ca080b0bbc7e6fbb7))
+* **Toast:** Passing onClose callback prevent Toaster from being closed [AR-89] ([#1000](https://github.com/deliveryhero/armor/issues/1000)) ([749e4be](https://github.com/deliveryhero/armor/commit/749e4beb2b78537b2e463dbbfc17ddb336d96976))
+* **type:** Expose types for non-component props [AR-65] ([707613d](https://github.com/deliveryhero/armor/commit/707613d1114c88751da999aa30c5d8bbb8586b2a))
+
+
+### Features
+
+* **illustration:** new illustrations add and github workkflow ([#997](https://github.com/deliveryhero/armor/issues/997)) ([9770d77](https://github.com/deliveryhero/armor/commit/9770d778c91b974a2702284e896adefb52148183))
+
 ## [1.4.14](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.4.13...@deliveryhero/armor-vendors@1.4.14) (2022-05-18)
 
 
