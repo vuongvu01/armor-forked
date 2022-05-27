@@ -1,3 +1,15 @@
+# [1.96.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.95.1...@deliveryhero/armor@1.96.0) (2022-05-27)
+
+
+### Bug Fixes
+
+* **stepper:** change the step description wrapper and fix the messed up order ([#1005](https://github.com/deliveryhero/armor/issues/1005)) ([730ec96](https://github.com/deliveryhero/armor/commit/730ec965fbe0ee1844d08e0400ba9491f3617603))
+
+
+### Features
+
+* **tooltip:** support interactive tooltip as default [AR-57] ([a7b59ec](https://github.com/deliveryhero/armor/commit/a7b59ec6676305d5ef6503f1dd467aa8df922ad3))
+
 ## [1.95.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.95.0...@deliveryhero/armor@1.95.1) (2022-05-27)
 
 
