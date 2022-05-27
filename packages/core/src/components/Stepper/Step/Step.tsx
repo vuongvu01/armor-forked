@@ -1,4 +1,4 @@
-import React, { forwardRef, memo } from 'react';
+import React, { isValidElement, forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 import { TickThickIcon } from '@deliveryhero/armor-icons';
 
@@ -89,7 +89,6 @@ export const Step = forwardRef<HTMLDivElement, StepPropsType>(function Step(
         className,
         variant,
     );
-
     return (
         <StepRoot
             data-testid={stepRoot}
@@ -159,15 +158,19 @@ export const Step = forwardRef<HTMLDivElement, StepPropsType>(function Step(
                             </PackItem>
                         )}
                     </Pack>
-                    <Typography
-                        className={classOverride.Description}
-                        paragraph
-                        small
-                        margin={0}
-                        color="neutral.05"
-                    >
-                        {description}
-                    </Typography>
+                    {isValidElement(description) ? (
+                        description
+                    ) : (
+                        <Typography
+                            className={classOverride.Description}
+                            paragraph
+                            small
+                            margin={0}
+                            color="neutral.05"
+                        >
+                            {description}
+                        </Typography>
+                    )}
                 </StepContent>
             </StepButton>
         </StepRoot>
