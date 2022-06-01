@@ -1,4 +1,10 @@
-import { useState, useCallback, createElement } from 'react';
+import {
+    useState,
+    useCallback,
+    createElement,
+    useEffect,
+    useMemo,
+} from 'react';
 import { render } from 'react-dom';
 import { getWindow, generateId } from '@deliveryhero/armor-system';
 
@@ -42,34 +48,50 @@ export const useToastContainer = (props?: ToastHookPropsType) => {
         ]);
     }, []);
 
-    const containerProps = {
-        rootProps: {
-            gap,
-            position,
-            ...restProps,
-        },
-        getToastProps: (toast: ToastPropsType) => ({
+    const containerProps = useMemo(
+        () => ({
+            rootProps: {
+                gap,
+                position,
+                ...restProps,
+            },
+            getToastProps: (toast: ToastPropsType) => ({
+                autoClose,
+                autoCloseTime,
+                showProgressBar,
+                isPaused: isPausedAutoClose,
+                setPauseAutoClose: (isPaused: boolean) =>
+                    autoClose && pauseOnHover && setPauseAutoClose(isPaused),
+                ...toast,
+                onClose: () => {
+                    removeToast(toast.id);
+                    toast.onClose?.();
+                },
+            }),
+            toasts,
+        }),
+        [
             autoClose,
             autoCloseTime,
+            gap,
+            isPausedAutoClose,
+            pauseOnHover,
+            position,
+            removeToast,
+            restProps,
             showProgressBar,
-            isPaused: isPausedAutoClose,
-            setPauseAutoClose: (isPaused: boolean) =>
-                autoClose && pauseOnHover && setPauseAutoClose(isPaused),
-            ...toast,
-            onClose: () => {
-                removeToast(toast.id);
-                toast.onClose?.();
-            },
-        }),
-        toasts,
-    };
+            toasts,
+        ],
+    );
 
-    if (loaded && win) {
-        render(
-            createElement(ToastContainer, { ...containerProps }),
-            document.getElementById(portalId),
-        );
-    }
+    useEffect(() => {
+        if (loaded && win) {
+            render(
+                createElement(ToastContainer, { ...containerProps }),
+                document.getElementById(portalId),
+            );
+        }
+    }, [containerProps, loaded, portalId]);
 
     return { makeToast };
 };
