@@ -42,6 +42,9 @@ type FilterViewerEffectivePropsType = Partial<{
     /** Additional controls rendered to the right of the "Edit filters" and "Clear all" buttons */
     filterActions: ReactChild;
 
+    /** Is called when a user clicks on the "Clear all" button */
+    onClearAllFilterButtonClick: () => void;
+
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div properties
