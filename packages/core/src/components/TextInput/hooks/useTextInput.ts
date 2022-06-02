@@ -1,5 +1,5 @@
-import { MouseEvent, useCallback, useRef } from 'react';
-import { useRootRef } from '@deliveryhero/armor-system';
+import { MouseEvent, useCallback, useRef, useMemo } from 'react';
+import { generateId, useRootRef } from '@deliveryhero/armor-system';
 
 import { TextInputPropsType } from '../type';
 import { useEvents } from './useEvents';
@@ -23,6 +23,7 @@ export const useTextInput = <E extends HTMLInputElement>(
         onRootClick,
 
         // input-specific props need to be passed to Input component instead
+        id: baseId,
         autoComplete,
         autoFocus,
         defaultValue,
@@ -51,6 +52,11 @@ export const useTextInput = <E extends HTMLInputElement>(
     }: TextInputPropsType,
     ref: RefType<E>,
 ) => {
+    const id = useMemo(
+        () => baseId ?? generateId(undefined, 'field-'),
+        [baseId],
+    );
+
     const {
         isMouseInside,
         isLabelInside,
@@ -119,6 +125,7 @@ export const useTextInput = <E extends HTMLInputElement>(
         },
         inputProps: {
             // native
+            id,
             autoComplete,
             autoFocus,
             defaultValue,
@@ -156,6 +163,7 @@ export const useTextInput = <E extends HTMLInputElement>(
             value,
             defaultValue,
             type,
+            htmlFor: id,
         },
         inputLabelBackgroundProps: {
             disabled,
