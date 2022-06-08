@@ -1,3 +1,18 @@
+# [1.9.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-system@1.8.0...@deliveryhero/armor-system@1.9.0) (2022-06-08)
+
+
+### Bug Fixes
+
+* **TextInput:** The `for` attribute is missing for TextInput [AR-95] ([#1020](https://github.com/deliveryhero/armor/issues/1020)) ([28a41c8](https://github.com/deliveryhero/armor/commit/28a41c8cf94240de14183f25f1914634e37378c8))
+* **toast:** Fix useToast hook warning render method should be pure [AR-87] ([67c7df9](https://github.com/deliveryhero/armor/commit/67c7df9262ed8acf7ef4e48cb0530b2ef47ad9fd))
+
+
+### Features
+
+* **filter:** Clear All action should reset both places storage and UI fields [ar-70] ([d2e796d](https://github.com/deliveryhero/armor/commit/d2e796d2911b03d60ca24390255ba71a3a26a2ba))
+* **illustration:** Wakaow! A new illustration has been requested [AR-93] ([#1012](https://github.com/deliveryhero/armor/issues/1012)) ([586fa89](https://github.com/deliveryhero/armor/commit/586fa89e14c955af0e16e8e70a7c703397eb4a81))
+* **spacing mixin:** Spacing function API could be easier to use [LD-807] ([#1010](https://github.com/deliveryhero/armor/issues/1010)) ([ab1668a](https://github.com/deliveryhero/armor/commit/ab1668a53f87c8d1c28e5c4a35fe56b699ff8b81))
+
 # [1.8.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-system@1.7.2...@deliveryhero/armor-system@1.8.0) (2022-05-27)
 
 
