@@ -122,6 +122,9 @@ type FilterEditorEffectivePropsType = Partial<{
      * If defined, shows the total amount of results filtered by the filter.
      */
     resultTotalCount: number;
+
+    /** Is called when a user clicks on the "Clear all" button */
+    onClearAllFilterButtonClick: () => void;
 }> &
     HTMLAttributes<HTMLDivElement> &
     PaddingPropsType &

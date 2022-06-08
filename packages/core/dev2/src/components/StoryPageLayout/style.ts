@@ -14,7 +14,9 @@ export const StoryComponentLink = styled(Link)`
     text-decoration: unset;
 `;
 
-export const StoryStoryLink = styled(Link)`
+export const StoryStoryLink = styled(Link).withConfig({
+    shouldForwardProp: (property) => property !== 'isActive',
+})`
     ${muiTypography('small')};
     display: block;
     margin-bottom: ${muiSpacing(2)};

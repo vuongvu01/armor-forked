@@ -26,7 +26,7 @@ type TooltipEffectivePropsType = Partial<{
      * */
     onToggle: (open: boolean) => void;
 
-    // Makes a tooltip not interactive, it will close even when user hovers over the tooltip
+    /** Makes a tooltip not interactive, it will close even when user hovers over the tooltip */
     disableInteractive: boolean;
 }> &
     ComponentBehaviourOpenStateType &

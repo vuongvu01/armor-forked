@@ -173,6 +173,9 @@ export const Basic = () => {
                 filterOpen={open}
                 resultCount={8}
                 resultTotalCount={2500}
+                onClearAllFilterButtonClick={() =>
+                    setFilterValueCommon({ conditions: [] })
+                }
             />
             <FilterTable />
         </FilterLayout>

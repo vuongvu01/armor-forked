@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
 import React, { useRef } from 'react';
-import { cleanup, render } from '@testing-library/react';
+import { cleanup, render, screen } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 
 import { TextInput } from '../..';
@@ -55,5 +55,30 @@ describe('<TextInput />', () => {
     it('should support component override', () => {
         // @ts-ignore
         expect(<TextInput />).toSupportOverride('TextInput');
+    });
+
+    it('should associate label with input when no id was passed', () => {
+        const { label } = {
+            label: 'Label',
+        };
+
+        render(<TextInput label={label} />);
+
+        const input = screen.getByLabelText(label);
+
+        expect(input).toBeInTheDocument();
+    });
+
+    it('should associate label with input when an id was passed', () => {
+        const { label, id } = {
+            label: 'Label',
+            id: 'MyFieldId',
+        };
+
+        render(<TextInput id={id} label={label} />);
+
+        const input = screen.getByLabelText(label);
+
+        expect(input).toBeInTheDocument();
     });
 });

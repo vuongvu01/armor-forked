@@ -47,6 +47,7 @@ export const useFilterEditor = <E extends HTMLElement>(
 
         resultCount,
         resultTotalCount,
+        onClearAllFilterButtonClick,
 
         ...restProps
     }: FilterEditorPropsType,
@@ -76,8 +77,8 @@ export const useFilterEditor = <E extends HTMLElement>(
     // next value candidate, controlled or uncontrolled. If not set, then initially taken from the applied value
     const [actualValueCandidate, setActualValueCandidate] =
         useControlledState<FilterConditionValueType>(
-            defaultValueCandidate ?? actualValue,
-            valueCandidate,
+            defaultValueCandidate,
+            valueCandidate ?? actualValue,
             onValueCandidateChange,
         );
 
@@ -112,7 +113,13 @@ export const useFilterEditor = <E extends HTMLElement>(
             ? cloneDeep(initialValue)
             : getInitialValue(externalSchemaSafe);
         setActualValueCandidate(nextValue);
-    }, [initialValue, externalSchemaSafe, setActualValueCandidate]);
+        onClearAllFilterButtonClick?.();
+    }, [
+        initialValue,
+        externalSchemaSafe,
+        setActualValueCandidate,
+        onClearAllFilterButtonClick,
+    ]);
 
     useFilterEditorEvents(onApplyFilterButtonClick, onClearFilterButtonClick);
 
