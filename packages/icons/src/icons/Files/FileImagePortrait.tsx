@@ -12,11 +12,8 @@ const FileImagePortraitIconShape = (
     </SVGIconGroup>
 );
 
-export const FileImagePortraitIcon: FunctionComponent<SVGIconPropsType> = (
-    props,
-) => {
+export const FileImagePortraitIcon: FunctionComponent<SVGIconPropsType> = props => {
     const { className, ...restProps } = props;
-
     return (
         <SVGIcon
             {...restProps}

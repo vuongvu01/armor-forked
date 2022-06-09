@@ -212,6 +212,45 @@ export const Basic = (): ReactElement => (
             <Icon>
                 <I.TranslateIcon />
             </Icon>
+            <Icon>
+                <I.AccordionIcon />
+            </Icon>
+            <Icon>
+                <I.AnchorIcon />
+            </Icon>
+            <Icon>
+                <I.DiagramSplitIcon />
+            </Icon>
+            <Icon>
+                <I.FormIcon />
+            </Icon>
+            <Icon>
+                <I.HalfTimeIcon />
+            </Icon>
+            <Icon>
+                <I.HeadingIcon />
+            </Icon>
+            <Icon>
+                <I.HttpIcon />
+            </Icon>
+            <Icon>
+                <I.LayoutBlockGroupIcon />
+            </Icon>
+            <Icon>
+                <I.LayoutLeftMenuIcon />
+            </Icon>
+            <Icon>
+                <I.ModuleTreeIcon />
+            </Icon>
+            <Icon>
+                <I.NetworkServerIcon />
+            </Icon>
+            <Icon>
+                <I.OrderListIcon />
+            </Icon>
+            <Icon>
+                <I.PaginateIcon />
+            </Icon>
         </Icons>
         <h2>Arrow</h2>
         <Icons>
@@ -517,6 +556,9 @@ export const Basic = (): ReactElement => (
             </Icon>
             <Icon>
                 <I.FileImagePortraitIcon />
+            </Icon>
+            <Icon>
+                <I.FileImageLandscapeIcon />
             </Icon>
             <Icon>
                 <I.FileListToDoIcon />
