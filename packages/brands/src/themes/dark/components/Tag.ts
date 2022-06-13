@@ -13,11 +13,17 @@ const TAG_TYPES = {
     APPROVED: 'approved',
     DENIED: 'denied',
     NEW: 'new',
+    ON_HOLD: 'on-hold',
 };
 
 const isStatusTag = (type?: TagPropsType['type']) =>
     !!type &&
-    [TAG_TYPES.APPROVED, TAG_TYPES.DENIED, TAG_TYPES.NEW].includes(type);
+    [
+        TAG_TYPES.APPROVED,
+        TAG_TYPES.DENIED,
+        TAG_TYPES.NEW,
+        TAG_TYPES.ON_HOLD,
+    ].includes(type);
 
 export const TAG_DELETE_BEHAVIOUR_OPTIONS = {
     ENABLED: 'enabled',

@@ -9,6 +9,8 @@ const getStatusTagLabel = (type?: TagType) => {
             return TAG_STATUS_LABELS.DENIED;
         case TAG_TYPES.NEW:
             return TAG_STATUS_LABELS.NEW;
+        case TAG_TYPES.ON_HOLD:
+            return TAG_STATUS_LABELS.ON_HOLD;
         default:
             return undefined;
     }

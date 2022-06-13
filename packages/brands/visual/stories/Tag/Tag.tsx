@@ -44,6 +44,10 @@ export const CustomStatusTypeDenied = () => (
 
 export const CustomStatusTypeNew = () => <Tag type="new">Custom new</Tag>;
 
+export const CustomStatusTypeOnHold = () => <Tag type="on-hold">Hold</Tag>;
+
+export const StatusTagIndicator = () => <Tag type="on-hold" indicator="99">Indicate</Tag>;
+
 export const TagWithZero = () => {
     return <Tag>{0}</Tag>;
 };

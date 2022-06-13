@@ -5,6 +5,7 @@ export const TAG_TYPES = {
     APPROVED: 'approved',
     DENIED: 'denied',
     NEW: 'new',
+    ON_HOLD: 'on-hold',
 };
 
 export const TAG_DELETE_BEHAVIOUR_OPTIONS = {
@@ -17,6 +18,7 @@ export const TAG_STATUS_LABELS = {
     APPROVED: 'Approved',
     DENIED: 'Denied',
     NEW: 'New',
+    ON_HOLD: 'On Hold',
 };
 
 export const tagRoot = 'TagRoot';
