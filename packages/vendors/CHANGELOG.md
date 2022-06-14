@@ -1,3 +1,16 @@
+## [1.4.18](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.4.17...@deliveryhero/armor-vendors@1.4.18) (2022-06-14)
+
+
+### Bug Fixes
+
+* **Icon:** update play icon ([#1038](https://github.com/deliveryhero/armor/issues/1038)) ([cc54d74](https://github.com/deliveryhero/armor/commit/cc54d7479e8784cf7ceb8bdd2a1bce76632ca508))
+
+
+### Features
+
+* **Icons:** add bunch of new icons ([#1032](https://github.com/deliveryhero/armor/issues/1032)) ([f622e7e](https://github.com/deliveryhero/armor/commit/f622e7e8052b66ea1874169c5fad68976719e380))
+* **Tag:** create new tag variants  ([#1029](https://github.com/deliveryhero/armor/issues/1029)) ([4876f2d](https://github.com/deliveryhero/armor/commit/4876f2d9b3ff86c704a52e06b1712f3fae60f76e))
+
 ## [1.4.17](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.4.16...@deliveryhero/armor-vendors@1.4.17) (2022-06-08)
 
 
