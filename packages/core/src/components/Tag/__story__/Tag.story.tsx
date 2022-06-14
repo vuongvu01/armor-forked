@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import { FileTaskListIcon} from '@deliveryhero/armor-icons';
 import { GroupHelper } from '../../../helpers/GroupHelper';
 import { Tag } from '../Tag';
 import { withWrapper } from '../../../helpers/Wrapper';
@@ -196,6 +197,191 @@ export const StatusIndicatorComponent = () => {
                 </Tooltip>
             ))}
         </StyledSection>
+    );
+};
+
+export const SmallStatusTags = () => {
+    return (
+        <>
+            <GroupHelper gap={2}>
+                <p>Small tags with indicators</p>
+                <Tag
+                    type="denied"
+                    label="Default"
+                    deleteOption="disabled"
+                    marginRight={3}
+                    small
+                >
+                    Status
+                </Tag>
+                <Tag
+                    type="approved"
+                    label="Default"
+                    deleteOption="disabled"
+                    marginRight={3}
+                    small
+                >
+                    Status
+                </Tag>
+                <Tag
+                    type="new"
+                    label="Default"
+                    deleteOption="disabled"
+                    marginRight={3}
+                    small
+                >
+                    Status
+                </Tag>
+                <Tag
+                    type="on-hold"
+                    label="Default"
+                    deleteOption="disabled"
+                    marginRight={3}
+                    small
+                >
+                    Status
+                </Tag>
+            </GroupHelper>
+        </>
+    );
+};
+
+export const TagWithIndicators = () => {
+    return (
+        <>
+            <GroupHelper gap={2}>
+                <p>Left indicators</p>
+                <Tag
+                    type="denied"
+                    label="Default"
+                    deleteOption="disabled"
+                    marginRight={3}
+                    indicator="99"
+                >
+                    Status
+                </Tag>
+                <Tag
+                    type="approved"
+                    label="Default"
+                    deleteOption="disabled"
+                    marginRight={3}
+                    indicator="99"
+                >
+                    Status
+                </Tag>
+                <Tag
+                    type="new"
+                    label="Default"
+                    deleteOption="disabled"
+                    marginRight={3}
+                    indicator="99"
+                >
+                    Status
+                </Tag>
+                <Tag
+                    type="on-hold"
+                    label="Default"
+                    deleteOption="disabled"
+                    marginRight={3}
+                    indicator="99"
+                >
+                    Status
+                </Tag>
+            </GroupHelper>
+            <GroupHelper gap={2}>
+                <p>Small tags with indicators</p>
+                <Tag
+                    type="denied"
+                    label="Default"
+                    deleteOption="disabled"
+                    marginRight={3}
+                    indicator="99"
+                    small
+                >
+                    Status
+                </Tag>
+                <Tag
+                    type="approved"
+                    label="Default"
+                    deleteOption="disabled"
+                    marginRight={3}
+                    indicator="99"
+                    small
+                >
+                    Status
+                </Tag>
+            </GroupHelper>
+        </>
+    );
+};
+
+
+export const TagWithIcons = () => {
+    return (
+        <>
+            <GroupHelper gap={2}>
+                <p>Left icon</p>
+                <Tag
+                    type="denied"
+                    label="Default"
+                    deleteOption="disabled"
+                    marginRight={3}
+                    icon={<FileTaskListIcon />}
+                >
+                    Status
+                </Tag>
+                <Tag
+                    type="approved"
+                    label="Default"
+                    deleteOption="disabled"
+                    marginRight={3}
+                    icon={<FileTaskListIcon />}
+                >
+                    Status
+                </Tag>
+                <Tag
+                    type="new"
+                    label="Default"
+                    deleteOption="disabled"
+                    marginRight={3}
+                    icon={<FileTaskListIcon />}
+                >
+                    Status
+                </Tag>
+                <Tag
+                    type="on-hold"
+                    label="Default"
+                    deleteOption="disabled"
+                    marginRight={3}
+                    icon={<FileTaskListIcon />}
+                >
+                    Status
+                </Tag>
+            </GroupHelper>
+            <GroupHelper gap={2}>
+                <p>Small tags with icons</p>
+                <Tag
+                    type="denied"
+                    label="Default"
+                    deleteOption="disabled"
+                    marginRight={3}
+                    icon={<FileTaskListIcon />}
+                    small
+                >
+                    Status
+                </Tag>
+                <Tag
+                    type="approved"
+                    label="Default"
+                    deleteOption="disabled"
+                    marginRight={3}
+                    icon={<FileTaskListIcon />}
+                    small
+                >
+                    Status
+                </Tag>
+            </GroupHelper>
+        </>
     );
 };
 

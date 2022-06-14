@@ -15,6 +15,8 @@ import {
 
 import {
     TagCloseIconContainerPropsType,
+    TagIconContainerPropsType,
+    TagIndicatorContainerPropsType,
     TagRootPropsType,
     TagTextPropsType,
 } from './type';
@@ -26,6 +28,8 @@ const getRootStyle = ({
     small,
     enableContentWrapping,
     filled,
+    icon,
+    indicator,
 }: TagRootPropsType) => {
     let result = css`
         height: ${spacing(small ? 6 : 7)};
@@ -36,6 +40,13 @@ const getRootStyle = ({
             ${result};
             overflow-y: visible;
             white-space: nowrap;
+        `;
+    }
+
+    if (!!(icon || indicator) && small) {
+        result = css`
+            ${result};
+            padding-left: ${spacing(0.5)};
         `;
     }
 
@@ -65,6 +76,13 @@ const getRootStyle = ({
                 ${minStatusTagWidth};
                 background-color: ${color('warning.light')};
                 border-color: ${color('warning.light')};
+            `;
+        case TAG_TYPES.ON_HOLD:
+            return css`
+                ${result};
+                ${minStatusTagWidth};
+                background-color: ${color('primary.02')};
+                border-color: ${color('primary.02')};
             `;
         default: {
             if (filled) {
@@ -223,4 +241,46 @@ export const TagCloseIcon = styled(CancelIcon)`
     outline: none;
     height: ${spacing(2)};
     width: ${spacing(2)};
+`;
+
+const tagIndicatorSpacing = ({ small }: TagIndicatorContainerPropsType) => {
+    return css`
+        padding-right: ${small ? spacing(1) : spacing(2)};
+        padding-left: ${small ? spacing(1) : spacing(2)};
+        margin-top: ${small ? spacing(0.5) : spacing(1)};
+        margin-bottom: ${small ? spacing(0.5) : spacing(1)};
+        margin-right: ${small ? spacing(0.5) : spacing(0)};
+    `;
+};
+
+export const TagIndicatorContainer = styled.div<TagIndicatorContainerPropsType>`
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-color: ${color('primary.lightest')};
+    border-radius: ${borderRadius('pill')};
+    background-color: ${color('white')};
+    color: ${color('neutral.11')};
+    ${typography('paragraphSmall')};
+    ${tagIndicatorSpacing};
+`;
+
+const tagIconSpacing = ({ small }: TagIconContainerPropsType) => {
+    return css`
+        font-size: 12px;
+        margin-left: ${small ? spacing(1) : spacing(2)};
+        margin-top: ${spacing(1)};
+        margin-bottom: ${spacing(1)};
+        margin-right: ${small ? spacing(1) : spacing(0)};
+    `;
+};
+
+export const TagIconContainer = styled.div<TagIconContainerPropsType>`
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: ${color('neutral.11')};
+    ${tagIconSpacing}
 `;

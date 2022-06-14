@@ -7,6 +7,7 @@ import {
 } from '@testing-library/react-hooks';
 import renderer from 'react-test-renderer';
 
+import { ArrowUpIcon } from '@deliveryhero/armor-icons';
 import { Tag } from '../Tag';
 import { tagCloseIconContainer, tagRoot } from '../constants';
 
@@ -109,5 +110,32 @@ describe('<Tag /> ', () => {
 
         // @ts-ignore
         expect(result).toSupportMarginAttribute(marginAttribute, marginValue);
+    });
+
+    it('should ensure that status Tag `on-hold` has corresponding class names set ', async () => {
+        render(<Tag type="on-hold" />);
+
+        const containerElement = screen.getByTestId(tagRoot);
+        expect(containerElement).toHaveClass('Tag-Root--on-hold');
+    });
+
+    it('should have indicator container  and should have correct indicator value', () => {
+        render(<Tag type="on-hold" indicator="99" label="test" />);
+
+        const containerElement = screen.getByTestId(tagRoot);
+
+        const indicatorContainer = containerElement.firstChild;
+        expect(indicatorContainer).toBeInstanceOf(HTMLDivElement);
+        expect(indicatorContainer).toHaveTextContent('99');
+    });
+
+    it('should have  icon container and contain svg', () => {
+        render(<Tag type="on-hold" icon={<ArrowUpIcon />} />);
+
+        const containerElement = screen.getByTestId(tagRoot);
+        const iconContainer = containerElement.firstChild;
+        const iconSvg = iconContainer?.firstChild;
+        expect(iconContainer).toBeInstanceOf(HTMLDivElement);
+        expect(iconSvg).toBeInstanceOf(SVGSVGElement);
     });
 });

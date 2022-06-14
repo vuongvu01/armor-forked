@@ -5,6 +5,7 @@ export * from './ChecklistSolid';
 export * from './FileCSV';
 export * from './FileCommonText';
 export * from './FileDuplicate';
+export * from './FileImageLandscape';
 export * from './FileImagePortrait';
 export * from './FileListToDo';
 export * from './FilePDF';

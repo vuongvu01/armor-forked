@@ -4,7 +4,14 @@ import PropTypes from 'prop-types';
 import { isStatusTag, useTagClassName } from './utils';
 import { TagDeleteIconModeType, TagPropsType } from './type';
 import { TAG_CLASS_PREFIX, TAG_DELETE_BEHAVIOUR_OPTIONS } from './constants';
-import { TagCloseIcon, TagCloseIconContainer, TagRoot, TagText } from './style';
+import {
+    TagCloseIcon,
+    TagCloseIconContainer,
+    TagRoot,
+    TagText,
+    TagIndicatorContainer,
+    TagIconContainer,
+} from './style';
 import { useTag } from './utils/useTag';
 
 /**
@@ -53,6 +60,10 @@ export const Tag = forwardRef<HTMLDivElement, TagPropsType>(function Tag(
         disabled,
         small,
         filled,
+        indicator,
+        indicatorContainerProps,
+        icon,
+        iconContainerProps,
     } = useTag(restProps, ref);
 
     const classOverride = useTagClassName(
@@ -64,12 +75,24 @@ export const Tag = forwardRef<HTMLDivElement, TagPropsType>(function Tag(
         filled,
     );
 
+    const tagTypeStatus = isStatusTag(type);
+
     return (
         <TagRoot {...rootProps} className={classOverride.Root}>
+            {indicator && tagTypeStatus && (
+                <TagIndicatorContainer {...indicatorContainerProps}>
+                    {indicator}
+                </TagIndicatorContainer>
+            )}
+            {icon && tagTypeStatus && !indicator && (
+                <TagIconContainer {...iconContainerProps}>
+                    {icon}
+                </TagIconContainer>
+            )}
             <TagText {...tagTypographyProps} className={classOverride.Label}>
                 {content}
             </TagText>
-            {!isStatusTag(type) &&
+            {!tagTypeStatus &&
             (deleteOption === TAG_DELETE_BEHAVIOUR_OPTIONS.ENABLED ||
                 (deleteOption === TAG_DELETE_BEHAVIOUR_OPTIONS.ON_HOVER &&
                     !disabled)) ? (

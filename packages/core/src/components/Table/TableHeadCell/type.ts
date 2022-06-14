@@ -18,7 +18,9 @@ export type TableHeadCellRowSortOrderType = [
 type TableHeadCellEffectivePropsType = Partial<{
     columnId: ScalarType;
 
-    // sorting
+    /**
+     * This API is for the visual purpose only, if you want to have an out-of-the-box working sort function, please use the `DataTable` component instead.
+     */
     sortable: boolean;
     /**
      * @armor-docs-expand TableHeadCellSortType
