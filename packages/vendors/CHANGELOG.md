@@ -1,3 +1,10 @@
+## [1.4.19](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.4.18...@deliveryhero/armor-vendors@1.4.19) (2022-06-15)
+
+
+### Bug Fixes
+
+* **Tag:** fix type def ([#1041](https://github.com/deliveryhero/armor/issues/1041)) ([0cff4e8](https://github.com/deliveryhero/armor/commit/0cff4e88640d09e6b3f3e5a22ef2f117bade2c69))
+
 ## [1.4.18](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.4.17...@deliveryhero/armor-vendors@1.4.18) (2022-06-14)
 
 
