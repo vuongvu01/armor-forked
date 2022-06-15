@@ -1,3 +1,10 @@
+## [1.0.6](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datatable@1.0.5...@deliveryhero/armor-datatable@1.0.6) (2022-06-15)
+
+
+### Bug Fixes
+
+* **Tag:** fix type def ([#1041](https://github.com/deliveryhero/armor/issues/1041)) ([0cff4e8](https://github.com/deliveryhero/armor/commit/0cff4e88640d09e6b3f3e5a22ef2f117bade2c69))
+
 ## [1.0.5](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datatable@1.0.4...@deliveryhero/armor-datatable@1.0.5) (2022-06-14)
 
 
