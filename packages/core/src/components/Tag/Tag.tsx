@@ -108,8 +108,7 @@ export const Tag = forwardRef<HTMLDivElement, TagPropsType>(function Tag(
 });
 
 Tag.defaultProps = {
-    deleteOption:
-        TAG_DELETE_BEHAVIOUR_OPTIONS.ON_HOVER as TagDeleteIconModeType,
+    deleteOption: 'onHover',
     type: 'default',
 };
 
@@ -117,7 +116,7 @@ Tag.propTypes = {
     deleteOption: PropTypes.oneOf(['disabled', 'enabled', 'onHover']),
     label: PropTypes.string,
     onClose: PropTypes.func,
-    type: PropTypes.oneOf(['default', 'approved', 'denied', 'new']),
+    type: PropTypes.oneOf(['default', 'approved', 'denied', 'new', 'on-hold']),
     small: PropTypes.bool,
     filled: PropTypes.bool,
 };
