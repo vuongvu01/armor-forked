@@ -60,7 +60,7 @@ type TagEffectivePropsType = Partial<{
     onClose: (event: MouseEvent<HTMLDivElement>) => void;
     onDeselect: (tagCode?: ScalarType) => void;
     /**
-     * @armor-docs-expand TagType, TagTypeDefault, TagTypeApproved, TagTypeDenied, TagTypeNew
+     * @armor-docs-expand TagType, TagTypeDefault, TagTypeApproved, TagTypeDenied, TagTypeNew, TagTypeOnHold
      */
     type: TagType;
     disabled: boolean;
