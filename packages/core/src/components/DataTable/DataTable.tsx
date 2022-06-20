@@ -201,7 +201,7 @@ export const DataTable = forwardRef<HTMLDivElement, DataTablePropsType>(
 
                             return (
                                 <TableCellComponent
-                                    key={column.id}
+                                    key={column.key || column.id}
                                     {...getCellProps(column, item)}
                                 >
                                     {column.formatDataCellContent

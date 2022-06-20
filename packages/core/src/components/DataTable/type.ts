@@ -28,6 +28,7 @@ export type DataTableColumnType<
     id: string;
     /** Column title */
     title?: ReactChild;
+    /** React identifier for optimization purposes, if not set, default value is the id */
     key?: string;
 
     /** Indicates whether this columnLayout is sortable or not */
