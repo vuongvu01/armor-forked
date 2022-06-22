@@ -1,3 +1,12 @@
+## [1.25.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.25.0...@deliveryhero/armor-icons@1.25.1) (2022-06-22)
+
+
+### Bug Fixes
+
+* **DataTable:** Column config key should be considered as unique key for Data Table. [AR-103] ([#1046](https://github.com/deliveryhero/armor/issues/1046)) ([dfb7a21](https://github.com/deliveryhero/armor/commit/dfb7a218f905af0828e9f39ee03789f32d552fed))
+* **Link:** The link component does not have the right font-weight defined [AR-102] ([#1048](https://github.com/deliveryhero/armor/issues/1048)) ([fe378c1](https://github.com/deliveryhero/armor/commit/fe378c1f2b41a9481d47503f20b78e05bc28ece7))
+* **Tag:** fix type def ([#1041](https://github.com/deliveryhero/armor/issues/1041)) ([0cff4e8](https://github.com/deliveryhero/armor/commit/0cff4e88640d09e6b3f3e5a22ef2f117bade2c69))
+
 # [1.25.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.24.3...@deliveryhero/armor-icons@1.25.0) (2022-06-14)
 
 
