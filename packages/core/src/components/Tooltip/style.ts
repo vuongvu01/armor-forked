@@ -49,12 +49,12 @@ const getArrowStyle = ({ error }: TooltipArrowPropsType) => {
 const getSizeStyle = ({ small }: TooltipRootPropsType) => {
     if (small) {
         return css`
-            padding: ${spacing(1)} ${spacing(2)};
+            padding: ${spacing(1, 2)};
         `;
     }
 
     return css`
-        padding: ${spacing(2)} ${spacing(3)};
+        padding: ${spacing(2, 3)};
     `;
 };
 

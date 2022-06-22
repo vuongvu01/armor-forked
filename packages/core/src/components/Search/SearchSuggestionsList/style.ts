@@ -27,7 +27,7 @@ const getSearchSuggestionListGroupDynamicStyle = ({
 export const SearchSuggestionListGroup = styled.div.withConfig(
     propsBlocker,
 )<SearchSuggestionListGroupPropsType>`
-    padding: ${spacing(6)} ${spacing(4)} ${spacing(2)} ${spacing(4)};
+    padding: ${spacing(6, 4, 2)};
     ${typography('labelMedium')};
     color: ${color('neutral.07')};
     font-size: ${pixelToRem(14)};

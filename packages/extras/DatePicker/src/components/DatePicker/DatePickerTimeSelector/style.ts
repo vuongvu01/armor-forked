@@ -92,7 +92,7 @@ export const DatePickerTimeSelectorButton = styled.button.withConfig(
     line-height: ${pixelToRem(fontSize03)};
     font-weight: ${fontWeightMedium};
 
-    padding: ${spacing(3)} ${spacing(4)};
+    padding: ${spacing(3, 4)};
     border-radius: ${borderRadius(borderRadius02)};
     border: 1px solid transparent;
     background-color: inherit;

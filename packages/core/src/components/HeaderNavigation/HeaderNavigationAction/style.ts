@@ -36,7 +36,7 @@ export const HeaderNavigationActionItemRoot = styled.div.withConfig(
     propsBlocker,
 )<HeaderNavigationActionItemRootPropsType>`
     cursor: pointer;
-    padding: ${spacing(2)} ${spacing(2)} 0 ${spacing(2)};
+    padding: ${spacing(2, 2, 0, 2)};
     margin-right: ${spacing(2)};
     margin-left: ${spacing(2)};
     &:hover {

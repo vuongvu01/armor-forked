@@ -193,7 +193,7 @@ export const NoEffects = () => {
 };
 
 const AraraSearchContainer = styled.div`
-    padding: ${spacing(2)} ${spacing(5)};
+    padding: ${spacing(2, 5)};
 `;
 
 export const Arara = () => {

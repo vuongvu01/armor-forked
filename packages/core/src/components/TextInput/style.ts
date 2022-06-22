@@ -171,7 +171,7 @@ export const TextInputInput = styled(Wrapper).withConfig(
     margin: 0;
     background-color: transparent;
     width: 100%;
-    padding: ${spacing(2)} ${spacing(4)};
+    padding: ${spacing(2, 4)};
     border-radius: ${token('shape.borderRadius.soft')};
     ${typographyInherit()};
     color: ${token('body.color')};

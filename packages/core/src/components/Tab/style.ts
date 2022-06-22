@@ -129,7 +129,7 @@ export const TabLabel = styled.div<TabLabelPropsType>`
     box-sizing: border-box;
     text-align: center;
     display: flex;
-    padding: ${spacing(1)} 0;
+    padding: ${spacing(1, 0)};
     &:hover {
         color: ${color('primary.06')};
     }

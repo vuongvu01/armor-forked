@@ -115,7 +115,7 @@ export const DatePickerMonthYearSelectorMonth = styled.button.withConfig(
     ${reset()};
     ${buttonReset()};
     outline: none; // todo: fix this
-    padding: ${spacing(3)} ${spacing(5.6)};
+    padding: ${spacing(3, 5.6)};
 
     ${typography('paragraphMedium')};
     color: ${token('body.color')};

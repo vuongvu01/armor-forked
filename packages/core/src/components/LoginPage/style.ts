@@ -60,7 +60,7 @@ export const LoginPageContainer = styled(Card).withConfig(
     flex-direction: column;
     align-items: center;
     max-width: ${spacing(108)};
-    padding: ${spacing(13)} ${spacing(22)};
+    padding: ${spacing(13, 22)};
 `;
 
 export const LoginPageHeader = styled.div<LoginPagePropsType>`
@@ -76,7 +76,7 @@ export const LoginPageTitle = styled.div<LoginPagePropsType>`
 `;
 
 export const LoginPageGreetingContainer = styled.div<LoginPagePropsType>`
-    padding: ${spacing(12)} 0 0 0;
+    padding: ${spacing(12, 0, 0, 0)};
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -91,11 +91,11 @@ export const LoginPageGreetingTitle = styled.div<LoginPagePropsType>`
 export const LoginPageGreetingDescription = styled.div<LoginPagePropsType>`
     ${typography('paragraphLarge')};
     color: ${token('body.color')};
-    margin: ${spacing(2)} 0 ${spacing(1)} 0;
+    margin: ${spacing(2, 0, 1)};
 `;
 
 export const LoginPageFormContainer = styled.div<LoginPagePropsType>`
-    padding: ${spacing(4)} 0;
+    padding: ${spacing(4, 0)};
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -113,7 +113,7 @@ export const SeparatorDivider = styled(Divider)<LoginPagePropsType>`
 `;
 
 export const OAuth2SignInContainer = styled.div<LoginPagePropsType>`
-    margin: ${spacing(4)} 0;
+    margin: ${spacing(4, 0)};
     border-radius: ${borderRadius('sharp')};
     ${focusWithin()};
 `;
@@ -126,7 +126,7 @@ export const RegistrationOfferContainer = styled.div<LoginPagePropsType>`
 export const RegistrationOfferSupportiveText = styled.div<LoginPagePropsType>`
     ${typography('paragraphSmall')};
     color: ${token('body.color')};
-    margin: 0 ${spacing(2)} 0 0;
+    margin: ${spacing(0, 2, 0, 0)};
 `;
 
 export const RegistrationOfferLink = styled(Link)<LoginPagePropsType>`

@@ -19,7 +19,7 @@ export const HeaderNavigationMenuContentHeaderRoot = styled.div.withConfig(
     box-sizing: border-box;
     height: 64px;
     background-color: ${color('neutral.02')};
-    padding: ${spacing(2)} ${spacing(4)};
+    padding: ${spacing(2, 4)};
     ${getComponentOverride('HeaderNavigationMenuContentHeader')};
 `;
 

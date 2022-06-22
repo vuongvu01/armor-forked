@@ -48,7 +48,7 @@ export const AccordionHeaderRoot = styled.div.withConfig(
     min-height: 56px;
     justify-content: space-between;
 
-    padding: ${spacing(4)} ${spacing(6)};
+    padding: ${spacing(4, 6)};
     &:hover {
         background: ${color('primary.lightest')};
     }

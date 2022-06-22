@@ -24,7 +24,7 @@ export const DatePickerTopBarRoot = styled.div.withConfig(
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: ${spacing(4)} ${spacing(5)} 0 ${spacing(6)};
+    padding: ${spacing(4, 5, 0, 6)};
     ${getComponentOverride('DatePickerTopBar')};
 `;
 

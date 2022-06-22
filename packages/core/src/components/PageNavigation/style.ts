@@ -116,7 +116,7 @@ export const PageNavigationPageButton = styled.button.withConfig(
     transition: background-color ${durationNormal}ms ease-out;
     display: flex;
     align-items: center;
-    padding: ${spacing(1)} ${spacing(3)};
+    padding: ${spacing(1, 3)};
     border-radius: ${borderRadius('soft')};
     min-height: ${spacing(2)};
 
@@ -148,7 +148,7 @@ export const PageNavigationPageSizeSelector = styled(Dropdown)`
         border-color: ${color('neutral.03')};
     }
     .TextInput-Input {
-        padding: ${spacing(1.5)} 0 ${spacing(1.5)} ${spacing(2)};
+        padding: ${spacing(1.5, 0, 1.5, 2)};
         width: ${spacing(8.5)};
 
         &:focus {

@@ -20,6 +20,6 @@ export const SideSheetFooterRoot = styled.div<SideSheetFooterRootPropsType>`
     height: 64px;
     border-top: 1px solid ${color('neutral.03')};
     padding-top: ${spacing(6)};
-    margin: 0 ${spacing(6)} ${spacing(6)} ${spacing(6)};
+    margin: ${spacing(0, 6, 6)};
     ${getComponentOverride('SideSheetFooter')};
 `;
