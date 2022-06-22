@@ -221,7 +221,7 @@ export const TableCellRoot = styled(Wrapper).withConfig(
     background-color: inherit;
     ${typography('paragraphLarge')};
     color: ${token('body.color')};
-    padding: ${spacing(5)} ${spacing(4)};
+    padding: ${spacing(5, 4)};
     ${getRootStyle};
     ${getComponentOverride('TableCell')};
     ${paddingProps};

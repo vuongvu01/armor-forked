@@ -175,7 +175,7 @@ const getDynamicStyle = ({
     if (small) {
         result = css`
             ${result};
-            padding: ${spacing(2)} ${spacing(3)};
+            padding: ${spacing(2, 3)};
             height: ${spacing(10)};
         `;
     }
@@ -244,7 +244,7 @@ export const ButtonRoot = styled(Wrapper).withConfig(
     display: inline-flex;
     justify-content: center;
     outline: none;
-    padding: ${spacing(3)} ${spacing(4)};
+    padding: ${spacing(3, 4)};
     position: relative;
     text-align: center;
     text-decoration: none;

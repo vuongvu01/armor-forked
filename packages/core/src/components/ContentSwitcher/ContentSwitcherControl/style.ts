@@ -16,7 +16,7 @@ import {
 import { ContentSwitcherControlRootPropsType } from './type';
 
 const getRootStyle = () => css`
-    padding: ${spacing(componentSpacing02)} ${spacing(componentSpacing04)};
+    padding: ${spacing(componentSpacing02, componentSpacing04)};
     background-color: ${color('neutral.00')};
     position: relative;
     display: flex;

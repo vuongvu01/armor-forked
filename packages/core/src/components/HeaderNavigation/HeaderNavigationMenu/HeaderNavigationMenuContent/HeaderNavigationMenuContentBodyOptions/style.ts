@@ -38,7 +38,7 @@ export const HeaderNavigationMenuContentBodyOptionsItem = styled(
     box-sizing: border-box;
     ${typography('paragraphMedium')};
     color: ${color('neutral.07')};
-    padding: ${spacing(2)} ${spacing(4)};
+    padding: ${spacing(2, 4)};
     &:hover {
         border-left-color: ${color('primary.main')};
         background-color: ${color('primary.lightest')};
@@ -62,5 +62,5 @@ export const HeaderNavigationMenuContentBodyOptionsCategory = styled(
     text-transform: uppercase;
     ${typography('labelSmall')};
     color: ${token('body.color')};
-    padding: ${spacing(2)} ${spacing(4)};
+    padding: ${spacing(2, 4)};
 `;

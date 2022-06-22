@@ -12,13 +12,10 @@ const PlayIconShape = (
     </SVGIconGroup>
 );
 
-export const PlayIcon: FunctionComponent<SVGIconPropsType> = props => {
+export const PlayIcon: FunctionComponent<SVGIconPropsType> = (props) => {
     const { className, ...restProps } = props;
     return (
-        <SVGIcon
-            {...restProps}
-            className={`PlayIcon ${className || ''}`}
-        >
+        <SVGIcon {...restProps} className={`PlayIcon ${className || ''}`}>
             {PlayIconShape}
         </SVGIcon>
     );

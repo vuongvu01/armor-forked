@@ -12,6 +12,6 @@ export const HeaderNavigationItemRoot = styled.div.withConfig(
     propsBlocker,
 )<HeaderNavigationItemRootPropsType>`
     white-space: nowrap;
-    padding: ${spacing(3)} ${spacing(2)};
+    padding: ${spacing(3, 2)};
     ${getComponentOverride('HeaderNavigationItem')};
 `;

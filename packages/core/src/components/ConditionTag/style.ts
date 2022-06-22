@@ -56,7 +56,7 @@ export const ConditionTagLabel = styled.div.withConfig(
     ${typography('labelSmall')};
     color: ${token('body.color')};
     background-color: ${color('neutral.02')};
-    padding: ${spacing(1)} ${spacing(2)};
+    padding: ${spacing(1, 2)};
     border-right: 1px solid ${color('neutral.03')};
     display: flex;
     align-items: center;
@@ -75,7 +75,7 @@ export const ConditionTagValueSegment = styled.div.withConfig(
     ${typography('paragraphSmall')};
     color: ${token('body.color')};
     background-color: ${color('neutral.00')};
-    padding: ${spacing(1)} ${spacing(2)};
+    padding: ${spacing(1, 2)};
     display: flex;
     align-items: center;
     min-width: ${spacing(4)};

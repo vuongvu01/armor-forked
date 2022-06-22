@@ -46,7 +46,7 @@ export const HeaderNavigationLinkRoot = styled(
     display: inline-flex;
     font-size: ${token('paragraphMedium.fontSize')};
     font-weight: ${token('paragraphMedium.fontWeight')};
-    padding: ${spacing(3)} ${spacing(4)};
+    padding: ${spacing(3, 4)};
     text-decoration: none;
     color: ${color('neutral.11')};
     &:visited,

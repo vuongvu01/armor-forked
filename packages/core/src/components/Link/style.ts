@@ -5,17 +5,13 @@ import {
     color,
     reset,
     spacing,
-    pixelToRem,
     propsBlocker,
     marginProps,
     getComponentOverride,
     ellipsis as ellipsisCSS,
-    fontSize02,
-    fontSize03,
-    fontSize04,
-    fontFamilyRoboto,
+    typography,
     transition,
-    getOutlineFocusStyleFromColor,
+    fontFamilyRoboto,
 } from '@deliveryhero/armor-system';
 
 import { LinkRootPropsType } from './type';
@@ -31,20 +27,24 @@ const getRootStyle = ({
 }: LinkRootPropsType) => {
     let result = {};
 
+    result = css`
+        font-family: ${fontFamilyRoboto};
+    `;
+
     if (small) {
         result = css`
             ${result};
-            font-size: ${pixelToRem(fontSize02)};
+            ${typography('paragraphSmall')}
         `;
     } else if (medium) {
         result = css`
             ${result};
-            font-size: ${pixelToRem(fontSize03)};
+            ${typography('paragraphMedium')}
         `;
     } else if (large) {
         result = css`
             ${result};
-            font-size: ${pixelToRem(fontSize04)};
+            ${typography('paragraphLarge')}
         `;
     }
 
@@ -95,13 +95,12 @@ export const LinkRoot = styled(LinkTagWrapper).withConfig(
     propsBlocker,
 )<LinkRootPropsType>`
     ${reset};
-    font-family: ${fontFamilyRoboto};
     color: ${color('primary.main')};
     position: relative;
     text-decoration: none;
     letter-spacing: ${spacing(0.1)};
     line-height: ${spacing(5)};
-    border: 0 none;
+    border: none;
     display: inline;
     cursor: pointer;
     height: fit-content;

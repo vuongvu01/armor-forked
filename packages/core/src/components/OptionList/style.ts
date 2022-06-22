@@ -172,7 +172,7 @@ const optionItemStyle = ({
     let result = css`
         background-color: ${color('neutral.00')};
         min-height: ${spacing(10)};
-        padding: ${spacing(2)} ${spacing(4)};
+        padding: ${spacing(2, 4)};
         &:hover {
             ${focusedHoverState}
         }
@@ -273,13 +273,13 @@ const getOptionListItemGroupRootStyle = ({
     enableGroupSelection,
 }: OptionListItemGroupPropType) => {
     let result = css`
-        padding: ${spacing(6)} ${spacing(4)} ${spacing(2)} ${spacing(4)};
+        padding: ${spacing(6, 4, 2)};
     `;
 
     if (multiple && enableGroupSelection) {
         result = css`
             ${result};
-            padding: ${spacing(3)} ${spacing(4)};
+            padding: ${spacing(3, 4)};
             text-transform: uppercase;
             align-items: center;
             box-sizing: border-box;

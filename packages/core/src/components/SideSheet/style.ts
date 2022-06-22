@@ -94,8 +94,7 @@ export const SideSheetHeaderContainer = styled.div.withConfig(
 )<SideSheetHeaderContainerPropsType>`
     display: flex;
     justify-content: flex-end;
-    padding: ${spacing(componentSpacing06)} ${spacing(componentSpacing06)} 0
-        ${spacing(componentSpacing06)};
+    padding: ${spacing(componentSpacing06, componentSpacing06, 0)};
 `;
 
 export const SideSheetCloseButton = styled(CloseButton)`

@@ -69,7 +69,7 @@ export const DataTableRowDragHandle = styled.span`
     .TableRow--hovered &,
     .TableRow--hovered &::before {
         background-image: radial-gradient(black 40%, transparent 40%);
-        background-size: ${spacing(1)} ${spacing(1)};
+        background-size: ${spacing(1, 1)};
         background-position: 100% 0;
         background-repeat: repeat-y;
     }

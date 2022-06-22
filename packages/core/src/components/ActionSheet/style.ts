@@ -38,7 +38,7 @@ export const ActionSheetRoot = styled.div.withConfig(
     background-color: ${color('primary.lightest')};
     display: flex;
     justify-content: space-between;
-    padding: ${spacing(4)} ${spacing(6)};
+    padding: ${spacing(4, 6)};
     ${typography('paragraphMedium')};
     color: ${token('body.color')};
 

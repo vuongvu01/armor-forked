@@ -94,8 +94,7 @@ const getContentDynamicStyle = ({
     if (enableDefaultPadding) {
         result = css`
             ${result};
-            padding: ${spacing(componentSpacing05)}
-                ${spacing(componentSpacing04)};
+            padding: ${spacing(componentSpacing05, componentSpacing04)};
         `;
     }
 
