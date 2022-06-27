@@ -8,14 +8,27 @@ import {
 
 import { TableRowRootPropsType } from './type';
 
-const getRootDynamicStyle = ({ isHeader }: TableRowRootPropsType) => {
+const getRootDynamicStyle = ({
+    isHeader,
+    enableRowClick,
+}: TableRowRootPropsType) => {
     let result = {};
 
     if (!isHeader) {
         result = css`
             ${result};
             &:hover td {
-                background-color: ${color('primary.lightest')};
+                background-color: ${color('primary.07', 0.04)};
+            }
+        `;
+    }
+
+    if (enableRowClick) {
+        result = css`
+            ${result};
+            cursor: pointer;
+            &:active td {
+                background-color: ${color('primary.07', 0.08)};
             }
         `;
     }

@@ -144,6 +144,7 @@ export const useDataTable = (
         getRowProps: (item: DataTableDataType) => {
             return {
                 'data-rowid': item.id,
+                onClick: item?.onClick,
             };
         },
         getHeadCellProps: ({

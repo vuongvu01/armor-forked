@@ -3,6 +3,7 @@
 import React, { ReactChildren, useRef } from 'react';
 
 import { cleanup, render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import {
     renderHook,
     cleanup as cleanupHooks,
@@ -87,5 +88,18 @@ describe('<TableRow />', () => {
                 </table>
             ),
         );
+    });
+
+    it('should handle onClick event', async () => {
+        const mockOnClick = jest.fn();
+
+        const { getByText } = render(
+            <TableRow onClick={mockOnClick}>
+                <td>test_text</td>
+            </TableRow>,
+        );
+
+        userEvent.click(getByText('test_text'));
+        expect(mockOnClick).toHaveBeenCalledTimes(1);
     });
 });

@@ -1,12 +1,12 @@
 import { RefObject, useMemo, useRef } from 'react';
 import { useRootRef, useVirtualization } from '@deliveryhero/armor-system';
-
 import {
-    EmptyStatePropsType,
     TableCell,
     TableControllerCell,
     TableHeadCell,
+    EmptyStatePropsType,
 } from '@deliveryhero/armor';
+
 import {
     DataTableColumnType,
     DataTableDataType,
@@ -148,6 +148,7 @@ export const useDataTable = (
         getRowProps: (item: DataTableDataType) => {
             return {
                 'data-rowid': item.id,
+                onClick: item?.onClick,
             };
         },
         getHeadCellProps: ({

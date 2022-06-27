@@ -18,6 +18,8 @@ import {
     longDataSource,
     dataSourceWide,
     dataSourceWithNumberIds,
+    columnsWithUrl,
+    dataSourceWithUrl,
 } from './demoData';
 import { DataTable } from '../DataTable';
 import { getSortingFunction } from '../utils/getSortingFunction';
@@ -856,4 +858,8 @@ export const MassiveTableInAWrapper = () => {
 
 export const EmptyState = () => {
     return <DataTable columns={columns} data={massiveData} empty />;
+};
+
+export const EnableRowClick = () => {
+    return <DataTable columns={columnsWithUrl} data={dataSourceWithUrl} />;
 };

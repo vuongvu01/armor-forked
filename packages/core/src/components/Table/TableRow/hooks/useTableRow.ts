@@ -20,6 +20,7 @@ const EMPTY_STICKY_COLUMNS: TableStickyColumnsMapInternal = [];
 export const useTableRow = ({
     enableStickyTop,
     enableStickyColumns,
+    onClick,
     ...restProps
 }: TableRowPropsType) => {
     // sticky header and rows
@@ -47,6 +48,8 @@ export const useTableRow = ({
             ...mergeProps(restProps, { onMouseEnter, onMouseLeave }),
             isHeader,
             isFooter,
+            onClick,
+            enableRowClick: !!onClick,
         },
         cellsProps: {
             isHeader,
