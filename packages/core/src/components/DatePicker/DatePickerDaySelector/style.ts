@@ -155,6 +155,42 @@ const getDayButtonStyle = ({
     return result;
 };
 
+const getTodayButtonStyle = ({
+    selected,
+    current,
+}: DatePickerDaySelectorDayButtonPropsType) => {
+    if (!current) {
+        return css``;
+    }
+
+    return css`
+        position: relative;
+
+        &:after {
+            content: '';
+
+            position: absolute;
+
+            bottom: ${spacing(1.5)};
+            left: ${spacing(3)};
+            right: ${spacing(3)};
+
+            height: ${spacing(0.5)};
+
+            background: ${selected ? color('neutral.00') : color('primary.07')};
+            border-radius: ${borderRadius('round')};
+        }
+
+        &:hover:after {
+            background: ${color('primary.07')};
+        }
+
+        .DatePickerDaySelector-Day--selectedMiddle &:after {
+            background: ${color('primary.07')};
+        }
+    `;
+};
+
 export const DatePickerDaySelectorDayButton = styled.a.withConfig(
     propsBlocker,
 )<DatePickerDaySelectorDayButtonPropsType>`
@@ -174,6 +210,7 @@ export const DatePickerDaySelectorDayButton = styled.a.withConfig(
     user-select: none;
     text-decoration: none;
     ${getDayButtonStyle};
+    ${getTodayButtonStyle};
 `;
 
 const getDayPaddingStyle = ({

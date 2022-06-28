@@ -51,6 +51,7 @@ export const useDatePickerDaySelector = <E extends HTMLDivElement>(
                 month,
                 year,
                 displayedMonth,
+                current,
                 buttonProps: { selected, allowed, free, rightEnd, leftEnd },
             } = item;
 
@@ -76,6 +77,10 @@ export const useDatePickerDaySelector = <E extends HTMLDivElement>(
                     baseClassName,
                     'allowed',
                     allowed,
+                )} ${appendBEMModifierOnCondition(
+                    baseClassName,
+                    'current',
+                    current,
                 )}`,
                 'data-day': day,
                 'data-month': month,
