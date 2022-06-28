@@ -1,3 +1,16 @@
+# [1.13.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-brands@1.12.2...@deliveryhero/armor-brands@1.13.0) (2022-06-28)
+
+
+### Bug Fixes
+
+* **Form:** Refining the Inactive Checkbox Component in Dark Theme [LD-535] ([#1054](https://github.com/deliveryhero/armor/issues/1054)) ([4ff6175](https://github.com/deliveryhero/armor/commit/4ff6175a7187ee0c110e786c67ae7ac526759caa))
+
+
+### Features
+
+* **DataTable:** Support row onClick event for DataTable [AR-101] ([268ce63](https://github.com/deliveryhero/armor/commit/268ce63efdc4fc37b3d56a08e2217556a35034db))
+* **DatePicker:** request a highlight for Today date in date picker [AR-110] ([#1055](https://github.com/deliveryhero/armor/issues/1055)) ([53fe7e9](https://github.com/deliveryhero/armor/commit/53fe7e9ed08a825e4d78a0e818c8aab6e3c20616))
+
 ## [1.12.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-brands@1.12.1...@deliveryhero/armor-brands@1.12.2) (2022-06-22)
 
 
