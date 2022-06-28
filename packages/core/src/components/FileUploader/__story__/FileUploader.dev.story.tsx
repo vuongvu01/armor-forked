@@ -156,7 +156,7 @@ export const DefaultView = () => {
         >
             {uploadFiles.map((file) => (
                 <FileCard
-                    key={file.id}
+                    key={file.fileId}
                     marginTop={4}
                     width={75}
                     onCancelButtonClick={handleFileCancel}
@@ -190,7 +190,7 @@ export const CustomTitleAndDescription = () => {
         >
             {uploadFiles.map((file) => (
                 <FileCard
-                    key={file.id}
+                    key={file.fileId}
                     marginTop={4}
                     width={75}
                     onCancelButtonClick={handleFileCancel}
@@ -228,7 +228,7 @@ export const CustomLabelWithSecondaryButton = () => {
         >
             {uploadFiles.map((file) => (
                 <FileCard
-                    key={file.id}
+                    key={file.fileId}
                     marginTop={4}
                     width={75}
                     onCancelButtonClick={handleFileCancel}
@@ -262,7 +262,7 @@ export const WithResponsiveFileCard = () => {
         >
             {uploadFiles.map((file) => (
                 <FileCard
-                    key={file.id}
+                    key={file.fileId}
                     marginTop={4}
                     width="50%"
                     onCancelButtonClick={handleFileCancel}
@@ -296,7 +296,7 @@ export const SingleUpload = () => {
         >
             {uploadFiles.map((file) => (
                 <FileCard
-                    key={file.id}
+                    key={file.fileId}
                     marginTop={4}
                     width={75}
                     onCancelButtonClick={handleFileCancel}
@@ -331,7 +331,7 @@ export const MultipleUploads = () => {
         >
             {uploadFiles.map((file) => (
                 <FileCard
-                    key={file.id}
+                    key={file.fileId}
                     marginTop={4}
                     width={75}
                     onCancelButtonClick={handleFileCancel}
@@ -386,7 +386,7 @@ export const UploadError = () => {
         >
             {uploadFiles.map((file) => (
                 <FileCard
-                    key={file.id}
+                    key={file.fileId}
                     marginTop={4}
                     width={75}
                     onDeleteButtonClick={handleFileDelete}

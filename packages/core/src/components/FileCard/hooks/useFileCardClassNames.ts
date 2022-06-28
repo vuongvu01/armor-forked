@@ -20,6 +20,8 @@ export const useFileCardClassNames = (
             FileImage: makeBEM(classPrefix, 'FileImage'),
             CancelIcon: makeBEM(classPrefix, 'CancelIcon'),
             DeleteIcon: makeBEM(classPrefix, 'DeleteIcon'),
+            CancelButton: makeBEM(classPrefix, 'CancelButton'),
+            DeleteButton: makeBEM(classPrefix, 'DeleteButton'),
             FileName: makeBEM(classPrefix, 'FileName'),
             FileExtension: makeBEM(classPrefix, 'FileExtension'),
             FileSize: makeBEM(classPrefix, 'FileSize'),
