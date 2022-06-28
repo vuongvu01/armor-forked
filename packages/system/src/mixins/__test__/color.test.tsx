@@ -133,4 +133,38 @@ describe('color', () => {
         // @ts-ignore
         expect(tree).toHaveStyleRule('color', 'orange');
     });
+
+    const data = [
+        [0, '00'],
+        [0.1, '1a'],
+        [0.2, '33'],
+        [0.3, '4d'],
+        [0.4, '66'],
+        [0.5, '80'],
+        [0.6, '99'],
+        [0.7, 'b3'],
+        [0.8, 'cc'],
+        [0.9, 'e6'],
+        [1, 'ff'],
+    ];
+
+    it.each(data)(
+        'should return color with %s opacity in #rrggbbaa format',
+        (opacity, hexResult) => {
+            const customTheme = makeTheme({
+                armor: {
+                    color: {
+                        primary: {
+                            '07': '#1c5ece',
+                        },
+                    },
+                },
+            });
+
+            const expected = `#1c5ece${hexResult}`;
+            const result = color('primary.07', opacity as number)(customTheme);
+
+            expect(result).toBe(expected);
+        },
+    );
 });

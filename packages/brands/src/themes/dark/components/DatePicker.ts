@@ -1,5 +1,14 @@
 import { css } from 'styled-components';
-import { color } from '@deliveryhero/armor-system';
+import {
+    color,
+    colorBlue10,
+    colorBlue20,
+    colorBlue30,
+    colorGrey00,
+    colorGrey50,
+    colorGrey60,
+    colorGrey80,
+} from '@deliveryhero/armor-system';
 
 export const makeDatePickerOverride = () => {
     const getDropdownOverride = () => css`
@@ -8,43 +17,61 @@ export const makeDatePickerOverride = () => {
         .DatePickerDaySelector-Day--displayedMonth {
             &.DatePickerDaySelector-Day--selectedLeftEnd {
                 .DatePickerDaySelector-DayButton {
-                    color: ${color('neutral.00')};
-                    background-color: ${color('primary.main')};
+                    color: ${colorGrey80};
+                    background-color: ${colorBlue10};
                 }
 
                 &:not(.DatePickerDaySelector-Day--selectedRightEnd) {
                     .DatePickerDaySelector-DayPaddingRight {
-                        background-color: ${color('primary.light')};
+                        background-color: ${colorGrey60};
                     }
                 }
             }
 
             &.DatePickerDaySelector-Day--selectedMiddle {
                 .DatePickerDaySelector-DayButton {
-                    color: ${color('neutral.00')};
-                    background-color: ${color('primary.light')};
+                    color: ${colorGrey00};
+                    background-color: ${colorGrey60};
 
                     &:hover {
-                        background-color: ${color('primary.main')};
+                        background-color: ${colorGrey50};
                     }
                 }
 
                 .DatePickerDaySelector-DayPaddingLeft,
                 .DatePickerDaySelector-DayPaddingRight {
-                    background-color: ${color('primary.light')};
+                    background-color: ${colorGrey60};
                 }
             }
 
             &.DatePickerDaySelector-Day--selectedRightEnd {
                 .DatePickerDaySelector-DayButton {
-                    color: ${color('neutral.00')};
-                    background-color: ${color('primary.main')};
+                    color: ${colorGrey80};
+                    background-color: ${colorBlue10};
                 }
 
                 &:not(.DatePickerDaySelector-Day--selectedLeftEnd) {
                     .DatePickerDaySelector-DayPaddingLeft {
-                        background-color: ${color('primary.light')};
+                        background-color: ${colorGrey60};
                     }
+                }
+            }
+
+            &.DatePickerDaySelector-Day--current {
+                .DatePickerDaySelector-DayButton:after {
+                    background-color: ${colorBlue20};
+                }
+
+                &.DatePickerDaySelector-Day--selectedLeftEnd,
+                &.DatePickerDaySelector-Day--selectedRightEnd {
+                    .DatePickerDaySelector-DayButton:after {
+                        background-color: ${colorBlue30};
+                    }
+                }
+
+                &:not(.DatePickerDaySelector-Day--selectedMiddle):hover
+                    .DatePickerDaySelector-DayButton:after {
+                    background-color: ${colorBlue30};
                 }
             }
         }

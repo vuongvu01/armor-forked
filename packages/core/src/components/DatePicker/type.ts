@@ -26,6 +26,7 @@ export type DatePickerEffectiveCommonPropsType = Partial<{
     enableClearSelectionButton: boolean;
     /**
      * If set to true, the "today" button will appear.
+     *  __NOTE__ - This property only works with DatePicker, thus for DateRangePicker you should avoid it
      */
     enableTodayButton: boolean;
 

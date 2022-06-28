@@ -2,6 +2,9 @@ import { css, FlattenSimpleInterpolation } from 'styled-components';
 import {
     color,
     getOutlineFocusStyleFromColor,
+    colorGrey50,
+    colorGrey70,
+    colorGrey40,
 } from '@deliveryhero/armor-system';
 import { CheckboxPropsType } from '@deliveryhero/armor';
 
@@ -23,10 +26,12 @@ export const getCheckboxOverride = ({
                     border-color: ${color('primary.02')};
                     background-color: ${color('primary.02')};
                 }
+
                 &:checked:focus-visible:not(:disabled)
                     + .Checkbox-Checkmark:before {
                     background-color: ${color('primary.02')};
                 }
+
                 &:not(:checked):not(:disabled) + .Checkbox-Checkmark:before {
                     border-color: ${color('primary.02')};
                 }
@@ -37,6 +42,7 @@ export const getCheckboxOverride = ({
     if (!checked && !disabled) {
         result = css`
             ${result};
+
             .Checkbox-Checkmark:before {
                 background: ${color('neutral.01')};
             }
@@ -46,14 +52,16 @@ export const getCheckboxOverride = ({
     if (disabled) {
         result = css`
             ${result};
+
             .Checkbox-Input:disabled + .Checkbox-Checkmark {
                 &:before {
-                    border-color: ${color('neutral.07')};
-                    background-color: ${color('neutral.03')};
+                    border-color: ${colorGrey50};
+                    background-color: ${colorGrey70};
                 }
             }
+
             .Checkbox-Icon {
-                color: ${color('neutral.05')};
+                color: ${colorGrey40};
             }
         ` as FlattenSimpleInterpolation;
     }

@@ -1,9 +1,14 @@
 import { PropsWithThemeType } from './type';
 import { getAvailableTheme } from '../theme/util';
 
+/**
+ * Convert color from hex value with opacity to #rrggbbaa notion, accept opacity value from 0 to 1
+ */
 const withOpacity = (colorHex: string, opacity: number) => {
-    const opacityHex = (opacity + 0x10000).toString(16).slice(-2).toUpperCase();
-    return `${colorHex}${opacityHex}`;
+    const opacityHex = Math.round(opacity * 255).toString(16);
+    return `${colorHex}${
+        opacityHex.length === 1 ? `0${opacityHex}` : opacityHex
+    }`;
 };
 
 export const color =

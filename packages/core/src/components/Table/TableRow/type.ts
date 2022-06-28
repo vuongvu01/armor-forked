@@ -21,8 +21,9 @@ export type TableRowPropsType = TableRowEffectivePropsType &
     ComponentStylePropsType;
 
 /* TableRow Root node prop type */
-export type TableRowRootPropsType = TableRowEffectivePropsType &
-    Pick<UseTableRowType, 'isHeader'> &
+export type TableRowRootPropsType = TableRowEffectivePropsType & {
+    enableRowClick: boolean;
+} & Pick<UseTableRowType, 'isHeader'> &
     ComponentElementStylePropsType;
 
 export type TableRowCellsPropTypes = Pick<

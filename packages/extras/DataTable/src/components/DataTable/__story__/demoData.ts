@@ -183,3 +183,52 @@ export const dataSourceWide = [
         address2: '10 Downing Street',
     },
 ];
+
+export const columnsWithUrl = [
+    {
+        title: 'Order Code',
+        id: 'platformReferenceId',
+    },
+    {
+        title: 'Payment Method',
+        id: 'paymentInfo',
+        key: 'paymentMethod',
+        formatDataCellContent: (paymentInfo: any) => paymentInfo.paymentMethod,
+    },
+    {
+        title: 'Payment Method',
+        id: 'paymentInfo',
+        key: 'paymentContext',
+        formatDataCellContent: (paymentInfo: any) => paymentInfo.paymentContext,
+    },
+];
+
+export const dataSourceWithUrl = [
+    {
+        id: '1',
+        platformReferenceId: 'Mike',
+        paymentInfo: {
+            paymentMethod: 31,
+            paymentContext: 32,
+        },
+        onClick: () => window.open('https://www.google.com/'),
+    },
+    {
+        id: '3',
+        platformReferenceId: 'Jill',
+        paymentInfo: {
+            paymentMethod: 22,
+            paymentContext: 33,
+        },
+        onClick: () => window.open('https://www.google.com/'),
+    },
+    {
+        id: '2',
+        platformReferenceId: 'John',
+        paymentInfo: {
+            paymentMethod: 55,
+            paymentContext: 66,
+        },
+        onClick: () => window.open('https://www.google.com/'),
+    },
+];

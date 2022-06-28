@@ -3,6 +3,8 @@ import {
     color,
     spacing,
     getOutlineFocusStyleFromColor,
+    colorGrey70,
+    colorGrey40,
 } from '@deliveryhero/armor-system';
 import { SwitchPropsType } from '@deliveryhero/armor';
 
@@ -23,6 +25,7 @@ export const getSwitchOverride = ({
                 }
             }
         }
+
         .Switch-CheckboxInput {
             &:focus-visible + .Switch-Label {
                 ${getOutlineFocusStyleFromColor('neutral.10')};
@@ -31,25 +34,29 @@ export const getSwitchOverride = ({
         }
     `;
 
-    let labelBackgroundColorOverride = '';
     if (disabled) {
-        if (checked) {
-            labelBackgroundColorOverride = 'neutral.03';
-        } else {
-            labelBackgroundColorOverride = 'neutral.02';
-        }
-    } else {
-        if (!checked) {
-            labelBackgroundColorOverride = 'neutral.07';
-        }
-    }
-
-    if (labelBackgroundColorOverride !== '') {
         result = css`
             ${result};
+
             &&&& {
                 .Switch-Label {
-                    background-color: ${color(labelBackgroundColorOverride)};
+                    background-color: ${colorGrey70};
+
+                    &:after {
+                        background-color: ${colorGrey40};
+                    }
+                }
+            }
+        `;
+    }
+
+    if (!checked && !disabled) {
+        result = css`
+            ${result};
+
+            &&&& {
+                .Switch-Label {
+                    background-color: ${color('neutral.07')};
                 }
             }
         `;
