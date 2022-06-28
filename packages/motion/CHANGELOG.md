@@ -1,3 +1,22 @@
+## [1.2.7](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-motion@1.2.6...@deliveryhero/armor-motion@1.2.7) (2022-06-28)
+
+
+### Bug Fixes
+
+* **DataTable:** Column config key should be considered as unique key for Data Table. [AR-103] ([#1046](https://github.com/deliveryhero/armor/issues/1046)) ([dfb7a21](https://github.com/deliveryhero/armor/commit/dfb7a218f905af0828e9f39ee03789f32d552fed))
+* **Form:** Refining the Inactive Checkbox Component in Dark Theme [LD-535] ([#1054](https://github.com/deliveryhero/armor/issues/1054)) ([4ff6175](https://github.com/deliveryhero/armor/commit/4ff6175a7187ee0c110e786c67ae7ac526759caa))
+* **Icon:** update play icon ([#1038](https://github.com/deliveryhero/armor/issues/1038)) ([cc54d74](https://github.com/deliveryhero/armor/commit/cc54d7479e8784cf7ceb8bdd2a1bce76632ca508))
+* **Link:** The link component does not have the right font-weight defined [AR-102] ([#1048](https://github.com/deliveryhero/armor/issues/1048)) ([fe378c1](https://github.com/deliveryhero/armor/commit/fe378c1f2b41a9481d47503f20b78e05bc28ece7))
+* **Tag:** fix type def ([#1041](https://github.com/deliveryhero/armor/issues/1041)) ([0cff4e8](https://github.com/deliveryhero/armor/commit/0cff4e88640d09e6b3f3e5a22ef2f117bade2c69))
+
+
+### Features
+
+* **DataTable:** Support row onClick event for DataTable [AR-101] ([268ce63](https://github.com/deliveryhero/armor/commit/268ce63efdc4fc37b3d56a08e2217556a35034db))
+* **DatePicker:** request a highlight for Today date in date picker [AR-110] ([#1055](https://github.com/deliveryhero/armor/issues/1055)) ([53fe7e9](https://github.com/deliveryhero/armor/commit/53fe7e9ed08a825e4d78a0e818c8aab6e3c20616))
+* **Icons:** add bunch of new icons ([#1032](https://github.com/deliveryhero/armor/issues/1032)) ([f622e7e](https://github.com/deliveryhero/armor/commit/f622e7e8052b66ea1874169c5fad68976719e380))
+* **Tag:** create new tag variants  ([#1029](https://github.com/deliveryhero/armor/issues/1029)) ([4876f2d](https://github.com/deliveryhero/armor/commit/4876f2d9b3ff86c704a52e06b1712f3fae60f76e))
+
 ## @deliveryhero/armor-motion [1.2.6](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-motion@1.2.5...@deliveryhero/armor-motion@1.2.6) (2022-06-08)
 
 
