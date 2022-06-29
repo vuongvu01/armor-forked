@@ -76,4 +76,16 @@ describe('<IconButton />', () => {
 
         expect(handleOnClick).not.toHaveBeenCalled();
     });
+
+    it('should by default have type=button as attribute', () => {
+        render(
+            <IconButton>
+                <ArrowUpIcon medium />
+            </IconButton>,
+        );
+
+        const iconButton = screen.getByRole('button');
+
+        expect(iconButton).toHaveAttribute('type', 'button');
+    });
 });

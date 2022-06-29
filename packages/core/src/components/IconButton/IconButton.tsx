@@ -45,6 +45,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonPropsType>(
 );
 
 IconButton.defaultProps = {
+    type: 'button',
     light: false,
     disabled: false,
 };
