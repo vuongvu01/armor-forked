@@ -1,3 +1,13 @@
+## [1.2.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datatable@1.2.0...@deliveryhero/armor-datatable@1.2.1) (2022-06-29)
+
+
+### Bug Fixes
+
+* **datatable:** In DataTable the onRowSortOrderChange function is always called twice [AR-118] ([032b63b](https://github.com/deliveryhero/armor/commit/032b63b23ecacbc62049e05a462a55cd8a940f0a))
+* **DatePicker:** When clicked on the calendar icon in the date picker component, the calendar does not open [AR-115] ([#1061](https://github.com/deliveryhero/armor/issues/1061)) ([3bd9e65](https://github.com/deliveryhero/armor/commit/3bd9e654db35a27e2c2f8c7c690d6b5ff987f131))
+* **FileUploader:** FileUploader allow select same file [AR-108] ([b4163fe](https://github.com/deliveryhero/armor/commit/b4163fe161018ed47d1e55071b18129879f55b17))
+* **IconButton:** IconButton does not support type prop and submit form [AR-123] ([#1063](https://github.com/deliveryhero/armor/issues/1063)) ([faefa68](https://github.com/deliveryhero/armor/commit/faefa68137bf11b17b7ce9ba1603d015991020aa))
+
 # [1.2.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datatable@1.1.0...@deliveryhero/armor-datatable@1.2.0) (2022-06-28)
 
 
