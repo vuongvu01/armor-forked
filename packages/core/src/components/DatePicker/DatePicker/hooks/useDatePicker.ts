@@ -153,6 +153,8 @@ export const useDatePicker = <E extends HTMLDivElement>(
             props,
         );
 
+    const onRootClick = inactive ? undefined : toggleDropdown;
+
     return {
         rootProps: {
             ...props,
@@ -162,12 +164,13 @@ export const useDatePicker = <E extends HTMLDivElement>(
         },
         inputProps: {
             ...inputProperties,
-            onRootClick: inactive ? undefined : toggleDropdown,
+            onRootClick,
             ref: inputRef,
             value: formattedValue,
         },
         inputMaskProps: {
             ...inputProperties,
+            onRootClick,
             value,
             onChange,
             onFocus,

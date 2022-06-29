@@ -1,4 +1,4 @@
-import { HTMLAttributes } from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 import { ColorPropsType, MarginPropsType } from '@deliveryhero/armor-system';
 
 import {
@@ -16,7 +16,7 @@ type IconButtonEffectivePropsType = Partial<{
     disabled: boolean;
     // add other custom properties here
 }> &
-    HTMLAttributes<HTMLButtonElement> & // includes all HTML Div properties
+    ComponentPropsWithoutRef<'button'> &
     MarginPropsType &
     ColorPropsType;
 

@@ -76,6 +76,9 @@ export const useFileUploadButton = <E extends HTMLInputElement>(
             onChange: handleChange,
             ref: internalInputRef,
             multiple,
+           // set input value to an empty string will allow the onChange event
+           // to fire when selecting the same file twice
+           value: '', 
         },
         children,
     };

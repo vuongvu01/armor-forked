@@ -120,12 +120,20 @@ export const FileCard = forwardRef<HTMLDivElement, FileCardPropsType>(
                     </FileCardLeftPortion>
                     <FileCardRightPortion className={classNames.RightPortion}>
                         {isUploading && (
-                            <IconButton {...getCancelButtonProps()}>
+                            <IconButton
+                                {...getCancelButtonProps()}
+                                className={classNames.CancelButton}
+                                data-testid={classNames.CancelButton}
+                            >
                                 <CancelIcon className={classNames.CancelIcon} />
                             </IconButton>
                         )}
                         {(!isUploading || error) && (
-                            <IconButton {...getDeleteButtonProps()}>
+                            <IconButton
+                                {...getDeleteButtonProps()}
+                                className={classNames.DeleteButton}
+                                data-testid={classNames.DeleteButton}
+                            >
                                 <DeleteIcon className={classNames.DeleteIcon} />
                             </IconButton>
                         )}

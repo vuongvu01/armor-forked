@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import { cleanup, render } from '@testing-library/react';
+import { cleanup, render, waitFor } from '@testing-library/react';
 import { cleanup as cleanupHooks } from '@testing-library/react-hooks';
 import { act } from 'react-dom/test-utils';
 
@@ -103,5 +103,29 @@ describe('<DatePicker inputMaskEnabled />', () => {
         });
 
         expect(onDateValueChangeHandler).not.toHaveBeenCalled();
+    });
+
+    it('should toggle the visibility of the calendar when clicking on the calendar icon', async () => {
+        const { container } = render(<DatePicker inputMaskEnabled />);
+
+        const calendarIcon = container.querySelector('.CalendarIcon')!;
+
+        // show calendar
+        userEvent.click(calendarIcon);
+
+        await waitFor(() => {
+            const calendar = container.querySelector('.DatePicker-Dropdown')!;
+
+            expect(calendar).toBeVisible();
+        });
+
+        // hide calendar
+        userEvent.click(calendarIcon);
+
+        await waitFor(() => {
+            const calendar = container.querySelector('.DatePicker-Dropdown')!;
+
+            expect(calendar).not.toBeInTheDocument();
+        });
     });
 });

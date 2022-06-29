@@ -80,13 +80,8 @@ export const useDataTableRowSorting = (
             }
 
             onRowSortOrderChangeInternal(nextOrder);
-
-            if (onRowSortOrderChange) {
-                onRowSortOrderChange(nextOrder);
-            }
         },
         [
-            onRowSortOrderChange,
             rowSortOrderActual,
             onRowSortOrderChangeInternal,
             enableNeutralRowSorting,
