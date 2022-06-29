@@ -9,7 +9,8 @@
 
 import React from 'react';
 
-import { cleanup, fireEvent, render } from '@testing-library/react';
+import { cleanup, render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { cleanup as cleanupHooks } from '@testing-library/react-hooks';
 
 import { DataTable } from '../..';
@@ -37,7 +38,7 @@ describe('<DataTable />', () => {
                 'thead th[data-columnid="age"]',
             );
 
-            fireEvent.click(cell!);
+            userEvent.click(cell!);
             expect(onRowSortOrderChange).toHaveBeenCalledWith([
                 ['age', 'desc'],
             ]);
@@ -58,7 +59,7 @@ describe('<DataTable />', () => {
                 'thead th[data-columnid="age"]',
             );
 
-            fireEvent.click(cell!);
+            userEvent.click(cell!);
             expect(onRowSortOrderChange).toHaveBeenCalledWith([
                 ['age', 'desc'],
             ]);
@@ -79,7 +80,7 @@ describe('<DataTable />', () => {
                 'thead th[data-columnid="age"]',
             );
 
-            fireEvent.click(cell!);
+            userEvent.click(cell!);
             expect(onRowSortOrderChange).toHaveBeenCalledWith([]);
         });
 
@@ -98,7 +99,7 @@ describe('<DataTable />', () => {
                 'thead th[data-columnid="age"]',
             );
 
-            fireEvent.click(cell!);
+            userEvent.click(cell!);
             expect(onRowSortOrderChange).toHaveBeenCalledWith([]);
         });
 
@@ -117,7 +118,7 @@ describe('<DataTable />', () => {
                 'thead th[data-columnid="age"]',
             );
 
-            fireEvent.click(cell!);
+            userEvent.click(cell!);
             expect(onRowSortOrderChange).toHaveBeenCalledWith([['age', 'asc']]);
         });
 
@@ -136,7 +137,7 @@ describe('<DataTable />', () => {
                 'thead th[data-columnid="age"]',
             );
 
-            fireEvent.click(cell!);
+            userEvent.click(cell!);
             expect(onRowSortOrderChange).toHaveBeenCalledWith([['age', 'asc']]);
         });
 
@@ -155,7 +156,7 @@ describe('<DataTable />', () => {
                 'thead th[data-columnid="address"]',
             );
 
-            fireEvent.click(cell!);
+            userEvent.click(cell!);
             expect(onRowSortOrderChange).toHaveBeenCalledWith([
                 ['address', 'asc'],
             ]);
@@ -176,7 +177,7 @@ describe('<DataTable />', () => {
                 'thead th[data-columnid="address"]',
             );
 
-            fireEvent.click(cell!);
+            userEvent.click(cell!);
             expect(onRowSortOrderChange).toHaveBeenCalledWith([
                 ['address', 'asc'],
             ]);
@@ -198,7 +199,7 @@ describe('<DataTable />', () => {
                 'thead th[data-columnid="age"]',
             );
 
-            fireEvent.click(cell!);
+            userEvent.click(cell!);
             expect(onRowSortOrderChange).toHaveBeenCalledWith([['age', 'asc']]);
         });
 
@@ -218,8 +219,30 @@ describe('<DataTable />', () => {
                 'thead th[data-columnid="age"]',
             );
 
-            fireEvent.click(cell!);
+            userEvent.click(cell!);
             expect(onRowSortOrderChange).toHaveBeenCalledWith([['age', 'asc']]);
+        });
+
+        it('should call onRowSortOrderChange once', async () => {
+            const onRowSortOrderChange = jest.fn();
+            const { container } = render(
+                <DataTable
+                    columns={columns}
+                    data={dataSource}
+                    onRowSortOrderChange={onRowSortOrderChange}
+                    defaultRowSortOrder={[['age', 'asc']]}
+                />,
+            );
+
+            const cell = container.querySelector(
+                'thead th[data-columnid="age"]',
+            );
+
+            userEvent.click(cell!);
+            expect(onRowSortOrderChange).toHaveBeenCalledTimes(1);
+
+            userEvent.click(cell!);
+            expect(onRowSortOrderChange).toHaveBeenCalledTimes(2);
         });
     });
 });
