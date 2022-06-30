@@ -2,13 +2,8 @@ require('dotenv').config({
     path: `.env.${process.env.NODE_ENV}`,
 });
 
-const {
-    title,
-    description,
-    keywords,
-    author,
-    baseURL,
-} = require('./src/meta/site').site;
+const { title, description, keywords, author, baseURL } =
+    require('./src/meta/site').site;
 const { palette } = require('./src/style/palette');
 
 module.exports = {
@@ -24,10 +19,7 @@ module.exports = {
         {
             resolve: 'gatsby-plugin-google-fonts',
             options: {
-                fonts: [
-                    'roboto:300,400',
-                    // 'source sans pro:300,400,400i,700'
-                ],
+                fonts: ['roboto:300,400,500'],
                 display: 'swap',
             },
         },
@@ -95,7 +87,7 @@ module.exports = {
             options: {
                 name: title,
                 short_name: title,
-                description: description,
+                description,
                 start_url: '/',
                 background_color: '#fff',
                 theme_color: '#333',

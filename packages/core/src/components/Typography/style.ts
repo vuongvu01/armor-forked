@@ -34,8 +34,10 @@ const getRootStyle = ({
         textColor = color('neutral.05');
     }
 
+    const variant = getTypographyName(props);
+
     return css`
-        ${typography(getTypographyName(props))};
+        ${typography(variant)};
         color: ${textColor};
     `;
 };

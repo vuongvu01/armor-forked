@@ -138,7 +138,7 @@ export const defaultThemeStructure = {
         },
         labelMedium: {
             fontFamily: fontFamilyRoboto,
-            fontSize: fontSize03,
+            fontSize: fontSize02,
             fontWeight: fontWeightMedium,
             letterSpacing: letterSpacingLarge,
             lineHeight: lineHeight01,

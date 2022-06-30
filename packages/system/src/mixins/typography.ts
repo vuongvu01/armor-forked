@@ -7,26 +7,23 @@ export const typography =
         const currentTheme = getAvailableTheme(theme);
 
         const variant = currentTheme.typography?.[variantName];
-        if (variant) {
-            const {
-                fontWeight,
-                letterSpacing,
-                lineHeight,
-                fontFamily,
-                fontSize,
-            } = variant;
-            const { pixelToRem } = currentTheme.typography;
 
-            return {
-                fontFamily: `${fontFamily}, sans-serif`,
-                fontSize: pixelToRem(fontSize),
-                fontWeight,
-                letterSpacing,
-                lineHeight: pixelToRem(lineHeight),
-            };
+        if (!variant) {
+            return '';
         }
 
-        return '';
+        const { fontWeight, letterSpacing, lineHeight, fontFamily, fontSize } =
+            variant;
+
+        const { pixelToRem } = currentTheme.typography;
+
+        return {
+            fontFamily: `${fontFamily}, sans-serif`,
+            fontSize: pixelToRem(fontSize),
+            fontWeight,
+            letterSpacing,
+            lineHeight: pixelToRem(lineHeight),
+        };
     };
 
 export const typographyInherit = () => ({
