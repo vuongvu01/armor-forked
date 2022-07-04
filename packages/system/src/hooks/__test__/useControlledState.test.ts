@@ -69,4 +69,21 @@ describe('useControlledState', () => {
 
         expect(onChange).toBeCalledWith('b');
     });
+
+    it('should return new value when defaultValue is updated', async () => {
+        let defaultValue = 'a';
+
+        const { result, rerender } = renderHook(() =>
+            useControlledState(defaultValue),
+        );
+
+        expect(result.current[0]).toEqual('a');
+
+        act(() => {
+            defaultValue = 'b';
+            rerender();
+        });
+
+        expect(result.current[0]).toEqual('b');
+    });
 });

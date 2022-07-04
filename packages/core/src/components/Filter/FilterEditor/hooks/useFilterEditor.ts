@@ -77,8 +77,8 @@ export const useFilterEditor = <E extends HTMLElement>(
     // next value candidate, controlled or uncontrolled. If not set, then initially taken from the applied value
     const [actualValueCandidate, setActualValueCandidate] =
         useControlledState<FilterConditionValueType>(
-            defaultValueCandidate,
-            valueCandidate ?? actualValue,
+            defaultValueCandidate ?? actualValue,
+            valueCandidate,
             onValueCandidateChange,
         );
 

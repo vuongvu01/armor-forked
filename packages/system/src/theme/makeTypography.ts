@@ -8,6 +8,7 @@ export const makeTypography = (theme: ThemeType): TypographyType => {
     const fontSize = typography.fontSize || fontSize02;
     const htmlFontSize = typography.htmlFontSize || fontSize03;
     const factor = fontSize / fontSize02;
+
     return {
         ...typography,
         fontFamily: typography.fontFamily || 'Roboto, sans-serif',
