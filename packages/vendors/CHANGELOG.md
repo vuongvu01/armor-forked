@@ -1,3 +1,11 @@
+## [1.4.23](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.4.22...@deliveryhero/armor-vendors@1.4.23) (2022-07-04)
+
+
+### Bug Fixes
+
+* **filter:** fix cant select filter after clear all ([#1066](https://github.com/deliveryhero/armor/issues/1066)) ([b7830f6](https://github.com/deliveryhero/armor/commit/b7830f63abd45a37739be264b1af94f293fdd2b0))
+* **Typography:** Typography component with medium variant does not match font-size [AR-124] ([#1064](https://github.com/deliveryhero/armor/issues/1064)) ([31b0ea6](https://github.com/deliveryhero/armor/commit/31b0ea6f940e5b0774e2a8ae64f51c1c1a92fb10))
+
 ## [1.4.22](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.4.21...@deliveryhero/armor-vendors@1.4.22) (2022-06-29)
 
 
