@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-
+import { useDidUpdateEffect } from '.';
 /**
  * Use this hook to implement controlled/uncontrolled pattern for any type of {defaultValue, value, onChange} props.
  * @param defaultValue
@@ -27,6 +27,8 @@ export const useControlledState = <P = unknown>(
         },
         [setInternalValue, onChange, value],
     );
+
+    useDidUpdateEffect(() => setInternalValue(defaultValue), [defaultValue]);
 
     return [realValue, setRealValue, isControlled];
 };

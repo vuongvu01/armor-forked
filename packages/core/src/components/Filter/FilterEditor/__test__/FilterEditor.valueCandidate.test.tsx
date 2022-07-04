@@ -148,7 +148,7 @@ describe('<FilterEditor />', () => {
             />,
         );
 
-        expect(input!.value).toEqual('Max Mustermann');
+        expect(input!.value).toEqual('John Smith');
     });
 
     it('should support "value" to "valueCandidate" property value transference on first render', async () => {
