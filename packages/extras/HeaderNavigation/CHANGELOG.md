@@ -1,3 +1,10 @@
+# @deliveryhero/armor-headernavigation 1.0.0 (2022-07-06)
+
+
+### Features
+
+* **new header navigation:** ops portal [LD-506] ([#1059](https://github.com/deliveryhero/armor/issues/1059)) ([8a1fd8d](https://github.com/deliveryhero/armor/commit/8a1fd8d4aac604756cca03211b8e7d2716b7c385))
+
 # [1.84.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.83.0...@deliveryhero/armor@1.84.0) (2022-01-14)
 
 
