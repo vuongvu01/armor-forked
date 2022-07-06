@@ -45,7 +45,8 @@
         "packages/illustrations",
         "packages/motion",
         "packages/extras/DataTable",
-        "packages/extras/DatePicker"
+        "packages/extras/DatePicker",
+        "packages/extras/HeaderNavigation"
     ],
     "husky": {
         "hooks": {
