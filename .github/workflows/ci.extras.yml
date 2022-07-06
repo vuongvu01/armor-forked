@@ -35,6 +35,9 @@ jobs:
             - name: Test
               working-directory: ./packages/extras
               run: ./script/test.sh
+            - name: Test integration install and run
+              working-directory: ./packages/extras
+              run: ./script/testintegration.sh
             - name: Test visual install and run
               working-directory: ./packages/extras
               run: ./script/testvisual.sh

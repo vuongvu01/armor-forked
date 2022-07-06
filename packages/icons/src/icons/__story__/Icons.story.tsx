@@ -662,6 +662,9 @@ export const Basic = (): ReactElement => (
             <Icon>
                 <I.MotorcycleDeliveryIcon />
             </Icon>
+            <Icon>
+                <I.WalkerIcon />
+            </Icon>
         </Icons>
         <h2>Reward</h2>
         <Icons>

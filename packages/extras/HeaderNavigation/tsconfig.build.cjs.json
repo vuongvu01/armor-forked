@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "module": "CommonJS",
+        "target": "ES2019",
+        "outDir": "./build.cjs/",
+        "types": []
+    },
+    "extends": "./tsconfig.json",
+    "exclude": [
+        "node_modules",
+        "build",
+        "build.cjs",
+        "build.esm",
+        "**/**/*.test.ts",
+        "**/**/*.test.tsx",
+        "**/**/*.story.ts",
+        "**/**/*.story.tsx",
+        "**/**/__test__/**",
+        "**/**/__story__/**"
+    ]
+}
