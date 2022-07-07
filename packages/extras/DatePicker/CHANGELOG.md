@@ -1,3 +1,13 @@
+## @deliveryhero/armor-datepicker [1.2.3](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datepicker@1.2.2...@deliveryhero/armor-datepicker@1.2.3) (2022-07-07)
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor:** upgraded to 1.100.3
+
 ## [1.2.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datepicker@1.2.1...@deliveryhero/armor-datepicker@1.2.2) (2022-07-04)
 
 
