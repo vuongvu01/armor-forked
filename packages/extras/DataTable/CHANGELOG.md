@@ -1,3 +1,15 @@
+## [1.2.3](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datatable@1.2.2...@deliveryhero/armor-datatable@1.2.3) (2022-07-07)
+
+
+### Bug Fixes
+
+* **Table:** Transparent fixed column in table on hover [AR-131] ([#1079](https://github.com/deliveryhero/armor/issues/1079)) ([2549809](https://github.com/deliveryhero/armor/commit/2549809bb11a9f4d678c72a91de902f4d47644ce))
+
+
+### Features
+
+* **new header navigation:** ops portal [LD-506] ([#1059](https://github.com/deliveryhero/armor/issues/1059)) ([8a1fd8d](https://github.com/deliveryhero/armor/commit/8a1fd8d4aac604756cca03211b8e7d2716b7c385))
+
 ## [1.2.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datatable@1.2.1...@deliveryhero/armor-datatable@1.2.2) (2022-07-04)
 
 
