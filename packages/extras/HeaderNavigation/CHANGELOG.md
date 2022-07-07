@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-headernavigation@1.0.0...@deliveryhero/armor-headernavigation@1.0.1) (2022-07-07)
+
+
+### Bug Fixes
+
+* **Table:** Transparent fixed column in table on hover [AR-131] ([#1079](https://github.com/deliveryhero/armor/issues/1079)) ([2549809](https://github.com/deliveryhero/armor/commit/2549809bb11a9f4d678c72a91de902f4d47644ce))
+
 # @deliveryhero/armor-headernavigation 1.0.0 (2022-07-06)
 
 
