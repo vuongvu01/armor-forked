@@ -17,8 +17,9 @@ const getRootDynamicStyle = ({
     if (!isHeader) {
         result = css`
             ${result};
+
             &:hover td {
-                background-color: ${color('primary.07', 0.04)};
+                background-color: ${color('primary.01')};
             }
         `;
     }
@@ -27,8 +28,9 @@ const getRootDynamicStyle = ({
         result = css`
             ${result};
             cursor: pointer;
+
             &:active td {
-                background-color: ${color('primary.07', 0.08)};
+                background-color: ${color('primary.02')};
             }
         `;
     }
@@ -46,7 +48,7 @@ export const TableRowRoot = styled.tr.withConfig(
     }
 
     border-color: ${color('neutral.03')};
-    background-color: ${color('neutral.01')};
+    background-color: ${color('neutral.00')};
 
     ${getRootDynamicStyle};
     ${getComponentOverride('TableRow')};
