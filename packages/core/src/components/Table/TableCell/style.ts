@@ -55,6 +55,7 @@ const getRootStyle = ({
             position: sticky;
             z-index: ${zIndexTableHeader};
             top: 0;
+
             &::after {
                 ${stickyShadowVisible ? "content: ''" : ''};
                 position: absolute;
@@ -75,6 +76,7 @@ const getRootStyle = ({
             result = css`
                 ${result};
                 background-color: ${color('neutral.00')};
+
                 &::after {
                     border-color: ${color('neutral.03')};
                     box-shadow: inset 0 10px 5px -5px rgba(0, 0, 0, 0.08);
@@ -109,6 +111,7 @@ const getRootStyle = ({
             result = css`
                 ${result};
                 background-color: ${color('neutral.00')};
+
                 &::after {
                     border-color: ${color('neutral.03')};
                     box-shadow: inset 10px 0 8px -8px rgba(0, 0, 0, 0.15);
@@ -122,6 +125,7 @@ const getRootStyle = ({
             ${result};
             position: sticky;
             ${stickyAlignment}: ${stickyOffset}px;
+
             &::after {
                 ${stickyShadowVisible ? "content: ''" : ''};
                 position: absolute;
@@ -137,15 +141,37 @@ const getRootStyle = ({
                 transition: box-shadow ${durationNormal}ms ease,
                     border-color ${durationNormal}ms ease;
             }
+
+            &::before {
+                content: '';
+                display: none;
+                z-index: -1;
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                background-color: ${color('neutral.00')};
+                transition: background-color ${durationNormal}ms ease;
+            }
+
+            .TableRow--hovered &:not(th)::before {
+                background-color: ${color('primary.01')};
+            }
         `;
 
         if (stickyVisible) {
             result = css`
                 ${result};
                 background-color: ${color('neutral.00')};
+
                 &::after {
                     border-color: ${color('neutral.03')};
                     box-shadow: inset -10px 0 8px -8px rgba(0, 0, 0, 0.15);
+                }
+
+                &::before {
+                    display: block;
                 }
             `;
         }
