@@ -9,11 +9,6 @@ import {
 
 import { HeaderNavigationProfileButtonPropsType } from './type';
 
-/**
- * # HeaderNavigationProfileButton
- *
- * @armor-docs-component
- */
 export const HeaderNavigationProfileButton = forwardRef<
     HTMLDivElement,
     HeaderNavigationProfileButtonPropsType

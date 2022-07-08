@@ -14,7 +14,7 @@ import {
     HEADER_NAVIGATION_SELECTOR_ITEM_ROOT,
 } from './constants';
 import { useHeaderNavigationSelectorClassName } from './hooks';
-import { HeaderNavigationSelectorOptionsListItemPropsType } from './type';
+import { HeaderNavigationSelectorItemPropsType } from './type';
 
 /**
  * # HeaderNavigationSelectorItem
@@ -23,7 +23,7 @@ import { HeaderNavigationSelectorOptionsListItemPropsType } from './type';
  */
 export const HeaderNavigationSelectorItem = forwardRef<
     HTMLDivElement,
-    HeaderNavigationSelectorOptionsListItemPropsType
+    HeaderNavigationSelectorItemPropsType
 >(function HeaderNavigationSelectorItem({ icon, label }, ref) {
     const classOverride = useHeaderNavigationSelectorClassName(
         HEADER_NAVIGATION_SELECTOR_CLASS_PREFIX,
