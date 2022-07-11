@@ -108,6 +108,7 @@ export const Step = forwardRef<HTMLDivElement, StepPropsType>(function Step(
                         {!isIconShown &&
                             (StepperPieceVariant.complete === variant ? (
                                 <TickThickIcon
+                                    small
                                     className={classOverride.Icon}
                                     color="primary.07"
                                 />

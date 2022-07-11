@@ -39,7 +39,7 @@ export const DatePickerInput = styled(TextInput)`
     width: 100%;
 `;
 
-export const DatePickerInputIcon = styled(CalendarIcon).attrs({ medium: true })`
+export const DatePickerInputIcon = styled(CalendarIcon).attrs({ small: true })`
     margin-right: ${spacing(2)};
 
     // todo: fix this

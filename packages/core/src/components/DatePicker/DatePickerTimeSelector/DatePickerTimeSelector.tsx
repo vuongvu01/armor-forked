@@ -45,6 +45,7 @@ export const DatePickerTimeSelector = memo(
                             className={classNameComponents.InputHours}
                         />{' '}
                         <TimeSeparatorIcon
+                            small
                             className={classNameComponents.TimeSeparatorIcon}
                         />{' '}
                         <DatePickerTimeSelectorInput

@@ -48,6 +48,8 @@ export const DatePickerTopBar = memo(
                         {monthName} {year}
                         <DatePickerTopBarMonthYearSelectorToggleArrow
                             {...monthYearSelectorToggleArrowProps}
+                            small
+                            marginLeft={1}
                             className={
                                 classNameComponents.MonthYearSelectorToggleArrow
                             }
@@ -63,7 +65,7 @@ export const DatePickerTopBar = memo(
                             }
                         >
                             <ArrowRightIcon
-                                medium
+                                small
                                 className={
                                     classNameComponents.MonthNavigationButtonArrow
                                 }
@@ -76,7 +78,7 @@ export const DatePickerTopBar = memo(
                             }
                         >
                             <ArrowRightIcon
-                                medium
+                                small
                                 className={
                                     classNameComponents.MonthNavigationButtonArrow
                                 }

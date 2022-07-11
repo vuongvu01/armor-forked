@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { cleanup, render } from '@testing-library/react';
-import { AddIcon, EditIcon } from '../icons/Essentials';
+import { ArrowDownIcon, ArrowUpIcon } from '../icons/Arrow';
 
 describe('<Icon />', () => {
     afterEach(async () => {
@@ -9,27 +9,27 @@ describe('<Icon />', () => {
     });
 
     it('renders itself without errors', async () => {
-        render(<AddIcon />);
+        render(<ArrowDownIcon />);
     });
 
     it('ensures that a className corresponding to the Icon name is set', async () => {
-        const { container: addIconContainer } = render(<AddIcon />);
-        const addIcon = addIconContainer.querySelector('.AddIcon');
+        const { container: addIconContainer } = render(<ArrowDownIcon />);
+        const arrowDownIcon = addIconContainer.querySelector('.ArrowDownIcon');
 
-        expect(addIcon).not.toBeNull();
-        expect(addIcon).toBeInstanceOf(SVGSVGElement);
+        expect(arrowDownIcon).not.toBeNull();
+        expect(arrowDownIcon).toBeInstanceOf(SVGSVGElement);
 
-        const { container: editIconContainer } = render(<EditIcon />);
-        const editIcon = editIconContainer.querySelector('.EditIcon');
+        const { container: arrowUpIconContainer } = render(<ArrowUpIcon />);
+        const arrowUpIcon = arrowUpIconContainer.querySelector('.ArrowUpIcon');
 
-        expect(editIcon).not.toBeNull();
-        expect(addIcon).toBeInstanceOf(SVGSVGElement);
+        expect(arrowUpIcon).not.toBeNull();
+        expect(arrowUpIcon).toBeInstanceOf(SVGSVGElement);
     });
 
     it('allows to extend className with a custom value', async () => {
-        const { container } = render(<AddIcon className="PlusSign" />);
-        const addIcon = container.querySelector('.AddIcon.PlusSign');
+        const { container } = render(<ArrowDownIcon className="MyArrow" />);
+        const arrowDownIcon = container.querySelector('.ArrowDownIcon.MyArrow');
 
-        expect(addIcon).not.toBeNull();
+        expect(arrowDownIcon).not.toBeNull();
     });
 });

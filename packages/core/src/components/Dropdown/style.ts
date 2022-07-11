@@ -63,7 +63,6 @@ const dropdownExpansionIndicatorContentStyle = ({
     multiple
         ? css`
               align-items: flex-start;
-              margin-top: ${spacing(2.5)};
           `
         : css`
               height: ${spacing(8)};
@@ -223,8 +222,6 @@ export const DropdownTag = styled(Tag).attrs({
     ${dropdownTagStyle};
 `;
 
-export const DropdownCancelIcon = styled(CancelIcon)<SVGIconPropsType>`
-    vertical-align: middle;
-`;
+export const DropdownCancelIcon = CancelIcon;
 
 export const DropdownArrow = styled.div``;

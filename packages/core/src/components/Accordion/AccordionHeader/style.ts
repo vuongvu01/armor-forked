@@ -96,6 +96,5 @@ export const AccordionHeaderIcon = styled.div.withConfig(
     propsBlocker,
 )<AccordionHeaderRootPropsType>`
     color: ${color('neutral.11')};
-    padding-right: ${spacing(3)};
     ${getHeaderElementsStyle};
 `;

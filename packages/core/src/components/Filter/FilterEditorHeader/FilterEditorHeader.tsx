@@ -22,7 +22,7 @@ export const FilterEditorHeader = forwardRef<
 
     return (
         <FilterEditorHeaderRoot {...rootProps} className={classNames.Root}>
-            <Typography sectionTitle tag="div" className={classNames.Title}>
+            <Typography subSectionTitle tag="div" className={classNames.Title}>
                 Filter by
             </Typography>
             {showClearFilterButton && (

@@ -1,0 +1,78 @@
+import React, {  ReactElement } from 'react';
+import styled from 'styled-components';
+
+import * as I from '..';
+
+export default {
+    title: 'Icons',
+    parameters: {},
+};
+
+const Icons = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+
+    & > * {
+        margin-bottom: 24px;
+    }
+`;
+
+export const AllCategoriesWithIconSizeVariants = (): ReactElement => (
+    <>
+      <% categories.forEach(function(category) { %>
+        <h2><%- category.name %></h2>
+
+        <% category.icons.forEach(function(icon) { %>
+          <h3><%- icon %></h3>
+          <Icons>
+            <I.<%- icon %>Icon small />
+            <I.<%- icon %>Icon medium />
+            <I.<%- icon %>Icon large />
+          </Icons>
+        <% }); %>
+      <% }); %>
+    </>
+);
+
+export const EtcCategory = (): ReactElement => (
+    <>
+      <h2>Etc</h2>
+
+      <h3>Lens</h3>
+      <Icons>
+        <I.LensIcon small />
+        <I.LensIcon medium />
+        <I.LensIcon large />
+      </Icons>
+
+      <h3>LensEmpty</h3>
+      <Icons>
+        <I.LensEmptyIcon small />
+        <I.LensEmptyIcon medium />
+        <I.LensEmptyIcon large />
+      </Icons>
+
+      <h3>TextColor</h3>
+      <Icons>
+        <I.TextColorIcon small />
+        <I.TextColorIcon medium />
+        <I.TextColorIcon large />
+      </Icons>
+
+      <h3>TextColor with color</h3>
+      <Icons>
+        <I.TextColorIcon large textColor="red" />
+      </Icons>
+    </>
+);
+
+export const IconWithColor = (): ReactElement => (
+    <I.ArrowUpIcon color="primary.main" large />
+);
+
+export const IconInheritsFontSizeByDefault = (): ReactElement => (
+    <div style={{fontSize: '3rem'}}>
+      <I.ArrowUpIcon /> Quick brown fox jumps over a lazy dog
+    </div>
+);

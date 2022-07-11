@@ -57,7 +57,6 @@ export const IconButtonRoot = styled.button.withConfig(
     propsBlocker,
 )<IconButtonRootPropsType>`
     box-sizing: border-box;
-    padding: ${spacing(1)};
     border-radius: ${borderRadius('soft')};
     display: inline-flex;
     align-items: center;
@@ -65,6 +64,9 @@ export const IconButtonRoot = styled.button.withConfig(
     cursor: pointer;
     appearance: none;
     border: 0 none;
+    padding: 0;
+    width: ${spacing(8)};
+    height: ${spacing(8)};
 
     transition: background-color ${durationNormal}ms ease-in;
     background-color: transparent;

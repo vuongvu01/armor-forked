@@ -95,6 +95,7 @@ export const FileCard = forwardRef<HTMLDivElement, FileCardPropsType>(
                             >
                                 {isUploading ? (
                                     <FileImageIcon
+                                        large
                                         className={classNames.FileIcon}
                                     />
                                 ) : (
@@ -106,7 +107,14 @@ export const FileCard = forwardRef<HTMLDivElement, FileCardPropsType>(
                                 )}
                             </FileImageContainer>
                         ) : (
-                            <FileIcon className={classNames.FileIcon} />
+                            <FileImageContainer
+                                className={classNames.FileImageContainer}
+                            >
+                                <FileIcon
+                                    large
+                                    className={classNames.FileIcon}
+                                />
+                            </FileImageContainer>
                         )}
                         <FileName className={classNames.FileName}>
                             {fileName}
@@ -125,7 +133,10 @@ export const FileCard = forwardRef<HTMLDivElement, FileCardPropsType>(
                                 className={classNames.CancelButton}
                                 data-testid={classNames.CancelButton}
                             >
-                                <CancelIcon className={classNames.CancelIcon} />
+                                <CancelIcon
+                                    small
+                                    className={classNames.CancelIcon}
+                                />
                             </IconButton>
                         )}
                         {(!isUploading || error) && (
@@ -134,7 +145,10 @@ export const FileCard = forwardRef<HTMLDivElement, FileCardPropsType>(
                                 className={classNames.DeleteButton}
                                 data-testid={classNames.DeleteButton}
                             >
-                                <DeleteIcon className={classNames.DeleteIcon} />
+                                <DeleteIcon
+                                    medium
+                                    className={classNames.DeleteIcon}
+                                />
                             </IconButton>
                         )}
                     </FileCardRightPortion>

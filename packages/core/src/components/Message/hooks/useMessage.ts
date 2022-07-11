@@ -49,6 +49,7 @@ export const useMessage = <E extends HTMLDivElement>(
             warning,
             info,
             success,
+            medium: true,
         }),
         IconTag,
         showIcon: !disableIcon,

@@ -1,4 +1,6 @@
-import React, { FunctionComponent } from 'react';
+/* This file is auto-generated, don't edit by hand! */
+
+import React, { FunctionComponent, Fragment } from 'react';
 import {
     SVGIconPropsType,
     SVGIcon,
@@ -6,20 +8,43 @@ import {
     SVGIconPath,
 } from '../../components/SVGIcon';
 
-const NotificationIconShape = (
-    <SVGIconGroup>
+const NotificationLarge = (
+    <Fragment>
         <SVGIconPath d="M19.8333 16.5833C19.143 16.5833 18.5833 16.0237 18.5833 15.3333V11.2817C18.6828 8.01197 16.3828 5.15831 13.1667 4.56083V2.83333C13.1667 2.3731 12.7936 2 12.3333 2C11.8731 2 11.5 2.3731 11.5 2.83333V4.56083C8.28382 5.15831 5.98391 8.01197 6.08333 11.2817V15.3333C6.08333 16.0237 5.52369 16.5833 4.83333 16.5833C4.3731 16.5833 4 16.9564 4 17.4167C4 17.8769 4.3731 18.25 4.83333 18.25H19.8333C20.2936 18.25 20.6667 17.8769 20.6667 17.4167C20.6667 16.9564 20.2936 16.5833 19.8333 16.5833ZM14.1967 19.5H10.47C10.3641 19.5002 10.2752 19.5798 10.2633 19.685C10.2543 19.7619 10.2498 19.8392 10.25 19.9167C10.25 21.0673 11.1827 22 12.3333 22C13.4839 22 14.4167 21.0673 14.4167 19.9167C14.4169 19.8392 14.4124 19.7619 14.4033 19.685C14.3922 19.5794 14.3029 19.4994 14.1967 19.5Z" />
-    </SVGIconGroup>
+    </Fragment>
 );
 
-export const NotificationIcon: FunctionComponent<SVGIconPropsType> = props => {
+const NotificationMedium = (
+    <Fragment>
+        <SVGIconPath d="M17.6667 15.6667C17.1144 15.6667 16.6667 15.219 16.6667 14.6667V11.4253C16.7462 8.80958 14.9063 6.52665 12.3333 6.04867V4.66667C12.3333 4.29848 12.0349 4 11.6667 4C11.2985 4 11 4.29848 11 4.66667V6.04867C8.42706 6.52665 6.58713 8.80958 6.66667 11.4253V14.6667C6.66667 15.219 6.21895 15.6667 5.66667 15.6667C5.29848 15.6667 5 15.9651 5 16.3333C5 16.7015 5.29848 17 5.66667 17H17.6667C18.0349 17 18.3333 16.7015 18.3333 16.3333C18.3333 15.9651 18.0349 15.6667 17.6667 15.6667ZM13.1573 18H10.176C10.0913 18.0002 10.0202 18.0638 10.0107 18.148C10.0034 18.2095 9.99985 18.2714 10 18.3333C10 19.2538 10.7462 20 11.6667 20C12.5871 20 13.3333 19.2538 13.3333 18.3333C13.3335 18.2714 13.3299 18.2095 13.3227 18.148C13.3138 18.0635 13.2423 17.9995 13.1573 18Z" />
+    </Fragment>
+);
+
+const NotificationSmall = (
+    <Fragment>
+        <SVGIconPath d="M16.5 14.75C16.0858 14.75 15.75 14.4142 15.75 14V11.569C15.8097 9.60718 14.4297 7.89499 12.5 7.5365V6.5C12.5 6.22386 12.2761 6 12 6C11.7239 6 11.5 6.22386 11.5 6.5V7.5365C9.57029 7.89499 8.19034 9.60718 8.25 11.569V14C8.25 14.4142 7.91421 14.75 7.5 14.75C7.22386 14.75 7 14.9739 7 15.25C7 15.5261 7.22386 15.75 7.5 15.75H16.5C16.7761 15.75 17 15.5261 17 15.25C17 14.9739 16.7761 14.75 16.5 14.75ZM13.118 16.5H10.882C10.8185 16.5001 10.7651 16.5479 10.758 16.611C10.7526 16.6571 10.7499 16.7036 10.75 16.75C10.75 17.4404 11.3096 18 12 18C12.6904 18 13.25 17.4404 13.25 16.75C13.2501 16.7036 13.2475 16.6571 13.242 16.611C13.2353 16.5476 13.1817 16.4997 13.118 16.5Z" />
+    </Fragment>
+);
+
+export const NotificationIcon: FunctionComponent<SVGIconPropsType> = (
+    props,
+) => {
     const { className, ...restProps } = props;
+    const { small, medium, large } = props;
+    const hasNoSize = !small && !medium && !large;
+
     return (
         <SVGIcon
             {...restProps}
             className={`NotificationIcon ${className || ''}`}
         >
-            {NotificationIconShape}
+            <SVGIconGroup>
+                {small && NotificationSmall}
+                {medium && NotificationMedium}
+                {(large || hasNoSize) && NotificationLarge}
+            </SVGIconGroup>
         </SVGIcon>
     );
 };
+
+NotificationIcon.displayName = 'NotificationIcon';

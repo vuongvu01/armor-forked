@@ -65,3 +65,7 @@ export const ExpansionIndicatorIcon = styled(
     ${transition({ transform: true })};
     ${expansion(180)};
 `;
+
+ExpansionIndicatorIcon.defaultProps = {
+    small: true,
+};

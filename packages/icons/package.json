@@ -11,11 +11,6 @@
     ],
     "scripts": {
         "dev": "./script/dev.sh",
-        "visual": "cd ./visual && yarn start",
-        "test:visual": "cd ./visual && yarn loki test",
-        "test:visual:update": "cd ./visual && yarn loki update",
-        "test:visual:approve": "cd ./visual && yarn loki approve",
-        "test:visual:cicd": "cd ./visual && yarn build-storybook && yarn loki --requireReference --reactUri file:./storybook-static",
         "build": "rm -rf ./build/* && yarn run build:esm && yarn run build:cjs",
         "build:cjs": "rm -rf ./build.cjs/* && yarn tsc -p ./tsconfig.build.cjs.json",
         "build:esm": "rm -rf ./build.esm/* && yarn tsc -p ./tsconfig.build.esm.json",
@@ -26,11 +21,18 @@
         "lint": "eslint ./src --ext .js,.ts,.jsx,.tsx",
         "lint:fix": "eslint ./src --fix --ext .js,.ts,.jsx,.tsx",
         "release": "./script/release.sh",
-        "setup": "./script/setup.sh"
+        "setup": "./script/setup.sh",
+        "cleanup:icons": "rm -rf ./src/icons/*",
+        "fix-lint:icons": "eslint ./src/icons --fix --ext .ts,.tsx",
+        "pregenerate:icons": "yarn cleanup:icons",
+        "generate:icons": "ts-node ./script/icon-generator",
+        "postgenerate:icons": "yarn fix-lint:icons"
     },
     "dependencies": {
         "@deliveryhero/armor-system": "*",
-        "prop-types": "^15.7.2"
+        "prop-types": "^15.7.2",
+        "ejs": "^3.1.5",
+        "dom-parser": "^0.1.6"
     },
     "peerDependencies": {
         "react": ">=16.8.0",
@@ -51,11 +53,12 @@
         "@testing-library/react": "^10.4.8",
         "@testing-library/react-hooks": "^3.4.1",
         "@testing-library/user-event": "^12.1.1",
+        "@types/dom-parser": "^0.1.1",
+        "@types/ejs": "^3.1.1",
         "@types/jest": "^26.0.10",
         "@types/styled-components": "^5.1.2",
         "@typescript-eslint/eslint-plugin": "^3.9.1",
         "@typescript-eslint/parser": "^3.9.1",
-        "ejs": "^3.1.5",
         "eslint": "^7.7.0",
         "eslint-config-airbnb-base": "^14.2.0",
         "eslint-config-prettier": "^6.11.0",
@@ -64,17 +67,15 @@
         "eslint-plugin-prettier": "^3.1.4",
         "eslint-plugin-react": "^7.20.6",
         "eslint-plugin-react-hooks": "^4.1.0",
-        "findit": "^2.0.0",
-        "htmldom": "^4.0.11",
         "jest": "^26.4.0",
         "jest-chain": "^1.1.5",
         "jest-styled-components": "^7.0.2",
         "lodash": "^4.17.21",
         "react-test-renderer": "^16.13.1",
         "semantic-release": "^17.1.1",
-        "svg-parser": "^2.0.4",
         "ts-essentials": "^7.0.0",
         "ts-jest": "^26.2.0",
+        "ts-node": "^10.8.2",
         "typescript": "^3.9.7"
     }
 }

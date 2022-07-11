@@ -1,4 +1,6 @@
-import React, { FunctionComponent } from 'react';
+/* This file is auto-generated, don't edit by hand! */
+
+import React, { FunctionComponent, Fragment } from 'react';
 import {
     SVGIconPropsType,
     SVGIcon,
@@ -6,20 +8,38 @@ import {
     SVGIconPath,
 } from '../../components/SVGIcon';
 
-const MergeIconShape = (
-    <SVGIconGroup>
+const MergeLarge = (
+    <Fragment>
         <SVGIconPath d="M18.5179 4.0101L12.8147 9.84429C12.3642 10.3051 11.6358 10.3051 11.1901 9.84429L5.48206 4.0101C4.75838 3.26979 5.27119 2 6.2968 2H17.7032C18.7288 2 19.2416 3.26979 18.5179 4.0101ZM18.6632 19.94L12.8142 13.9608C12.3522 13.4885 11.6051 13.4885 11.148 13.9608L5.29411 19.94C4.55193 20.6987 5.07785 22 6.12968 22H17.8276C18.8795 22 19.4054 20.6987 18.6632 19.94ZM2.83557 11.0441C2.3741 11.0441 2 11.4265 2 11.8983C2 12.37 2.3741 12.7524 2.83557 12.7524H21.1644C21.6259 12.7524 22 12.37 22 11.8983C22 11.4265 21.6259 11.0441 21.1644 11.0441H2.83557Z" />
-    </SVGIconGroup>
+    </Fragment>
 );
 
-export const MergeIcon: FunctionComponent<SVGIconPropsType> = props => {
+const MergeMedium = (
+    <Fragment>
+        <SVGIconPath d="M17.2144 5.60808L12.6518 10.2754C12.2914 10.6441 11.7086 10.6441 11.352 10.2754L6.78565 5.60808C6.2067 5.01584 6.61695 4 7.43744 4H16.5626C17.3831 4 17.7933 5.01584 17.2144 5.60808ZM17.3306 18.352L12.6514 13.5686C12.2818 13.1908 11.6841 13.1908 11.3184 13.5686L6.63529 18.352C6.04155 18.9589 6.46228 20 7.30374 20H16.6621C17.5036 20 17.9243 18.9589 17.3306 18.352ZM4.66845 11.2353C4.29928 11.2353 4 11.5412 4 11.9186C4 12.296 4.29928 12.6019 4.66845 12.6019H19.3315C19.7007 12.6019 20 12.296 20 11.9186C20 11.5412 19.7007 11.2353 19.3315 11.2353H4.66845Z" />
+    </Fragment>
+);
+
+const MergeSmall = (
+    <Fragment>
+        <SVGIconPath d="M15.9108 7.20606L12.4888 10.7066C12.2185 10.9831 11.7815 10.9831 11.514 10.7066L8.08924 7.20606C7.65503 6.76188 7.96271 6 8.57808 6H15.4219C16.0373 6 16.345 6.76188 15.9108 7.20606ZM15.9979 16.764L12.4885 13.1765C12.2113 12.8931 11.7631 12.8931 11.4888 13.1765L7.97647 16.764C7.53116 17.2192 7.84671 18 8.47781 18H15.4966C16.1277 18 16.4432 17.2192 15.9979 16.764ZM6.50134 11.4265C6.22446 11.4265 6 11.6559 6 11.939C6 12.222 6.22446 12.4515 6.50134 12.4515H17.4987C17.7755 12.4515 18 12.222 18 11.939C18 11.6559 17.7755 11.4265 17.4987 11.4265H6.50134Z" />
+    </Fragment>
+);
+
+export const MergeIcon: FunctionComponent<SVGIconPropsType> = (props) => {
     const { className, ...restProps } = props;
+    const { small, medium, large } = props;
+    const hasNoSize = !small && !medium && !large;
+
     return (
-        <SVGIcon
-            {...restProps}
-            className={`MergeIcon ${className || ''}`}
-        >
-            {MergeIconShape}
+        <SVGIcon {...restProps} className={`MergeIcon ${className || ''}`}>
+            <SVGIconGroup>
+                {small && MergeSmall}
+                {medium && MergeMedium}
+                {(large || hasNoSize) && MergeLarge}
+            </SVGIconGroup>
         </SVGIcon>
     );
 };
+
+MergeIcon.displayName = 'MergeIcon';

@@ -87,7 +87,13 @@ export const SearchSuggestionsListContainer = styled.div.withConfig(
 `;
 
 export const SearchTextInput = styled(TextInput)<SearchRootPropsType>`
+    padding-left: 0;
     font-weight: ${token('typography.paragraphMedium.fontWeight')};
+
+    .TextInput-Input {
+        padding-left: ${spacing(2)};
+    }
+
     ${({ disabled, error }) =>
         focusWithin({ disabled, error, noOutline: true })};
 `;

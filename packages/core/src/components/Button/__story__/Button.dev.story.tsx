@@ -29,15 +29,15 @@ export const AllStates = () => (
         <GroupHelper styles={groupStyle}>
             <Button primary>Primary</Button>
             <Button primary>
-                <EditIcon marginRight={2} />
+                <EditIcon small marginRight={2} />
                 Primary with icon
             </Button>
             <Button primary>
                 Primary with icon
-                <EditIcon marginLeft={2} />
+                <EditIcon small marginLeft={2} />
             </Button>
             <Button primary>
-                <EditIcon />
+                <EditIcon small />
             </Button>
             <Button primary danger>
                 Primary
@@ -46,7 +46,7 @@ export const AllStates = () => (
                 Primary
             </Button>
             <Button small>
-                <EditIcon />
+                <EditIcon small />
             </Button>
         </GroupHelper>
         <GroupHelper styles={groupStyle}>
@@ -54,15 +54,15 @@ export const AllStates = () => (
                 Primary
             </Button>
             <Button disabled primary>
-                <EditIcon marginRight={2} />
+                <EditIcon small marginRight={2} />
                 Primary with icon
             </Button>
             <Button disabled primary>
                 Primary with icon
-                <EditIcon marginLeft={2} />
+                <EditIcon small marginLeft={2} />
             </Button>
             <Button disabled primary>
-                <EditIcon />
+                <EditIcon small />
             </Button>
             <Button disabled primary danger>
                 Primary
@@ -71,7 +71,7 @@ export const AllStates = () => (
                 Primary
             </Button>
             <Button disabled primary small>
-                <EditIcon />
+                <EditIcon small />
             </Button>
         </GroupHelper>
         <br />
@@ -79,15 +79,15 @@ export const AllStates = () => (
         <GroupHelper styles={groupStyle}>
             <Button secondary>Secondary</Button>
             <Button secondary>
-                <EditIcon marginRight={2} />
+                <EditIcon small marginRight={2} />
                 Secondary with icon
             </Button>
             <Button secondary>
                 Secondary with icon
-                <EditIcon marginLeft={2} />
+                <EditIcon small marginLeft={2} />
             </Button>
             <Button secondary>
-                <EditIcon />
+                <EditIcon small />
             </Button>
             <Button secondary danger>
                 Secondary
@@ -96,7 +96,7 @@ export const AllStates = () => (
                 Secondary
             </Button>
             <Button secondary small>
-                <EditIcon />
+                <EditIcon small />
             </Button>
         </GroupHelper>
         <GroupHelper styles={groupStyle}>
@@ -104,15 +104,15 @@ export const AllStates = () => (
                 Secondary
             </Button>
             <Button disabled secondary>
-                <EditIcon marginRight={2} />
+                <EditIcon small marginRight={2} />
                 Secondary with icon
             </Button>
             <Button disabled secondary>
                 Secondary with icon
-                <EditIcon marginLeft={2} />
+                <EditIcon small marginLeft={2} />
             </Button>
             <Button disabled secondary>
-                <EditIcon />
+                <EditIcon small />
             </Button>
             <Button disabled secondary small>
                 Secondary
@@ -123,15 +123,15 @@ export const AllStates = () => (
         <GroupHelper styles={groupStyle}>
             <Button tertiary>Tertiary</Button>
             <Button tertiary>
-                <EditIcon marginRight={2} />
+                <EditIcon small marginRight={2} />
                 Tertiary with icon
             </Button>
             <Button tertiary>
                 Tertiary with icon
-                <EditIcon marginLeft={2} />
+                <EditIcon small marginLeft={2} />
             </Button>
             <Button tertiary>
-                <EditIcon />
+                <EditIcon small />
             </Button>
             <Button tertiary danger>
                 Tertiary
@@ -142,15 +142,15 @@ export const AllStates = () => (
                 Tertiary
             </Button>
             <Button disabled tertiary>
-                <EditIcon marginRight={2} />
+                <EditIcon small marginRight={2} />
                 Tertiary with icon
             </Button>
             <Button disabled tertiary>
                 Tertiary with icon
-                <EditIcon marginLeft={2} />
+                <EditIcon small marginLeft={2} />
             </Button>
             <Button disabled tertiary>
-                <EditIcon />
+                <EditIcon small />
             </Button>
             <Button disabled tertiary danger>
                 Tertiary
@@ -177,36 +177,36 @@ export const Comparison = () => (
             No Icon
         </Button>
         <Button marginLeft={2} primary tag="button" small>
-            With MUI icon <EditIcon marginLeft={2} />
+            With MUI icon <EditIcon small marginLeft={2} />
         </Button>
         <Button marginLeft={2} primary tag="button" small>
-            With MUI icon <EditIcon marginLeft={2} fontSize={20} />
+            With MUI icon <EditIcon small marginLeft={2} fontSize={20} />
         </Button>
         <Button marginLeft={2} tag="button" small>
-            <EditIcon />
+            <EditIcon small />
         </Button>
         <Button marginLeft={2} tag="button" small>
-            <EditIcon />
+            <EditIcon small />
         </Button>
         <Button marginLeft={2} small>
-            Edit <EditIcon marginLeft={2} />
+            Edit <EditIcon small marginLeft={2} />
         </Button>
         <Button marginLeft={2} small>
-            <EditIcon marginRight={2} />
+            <EditIcon small marginRight={2} />
         </Button>
         <Button marginLeft={2} small>
-            <EditIcon marginRight={2} />
+            <EditIcon small marginRight={2} />
             Save
         </Button>
         <Button marginLeft={2} small>
-            Save <EditIcon marginLeft={2} />
+            Save <EditIcon small marginLeft={2} />
         </Button>
         <Button marginLeft={2} small>
             Add
-            <EditIcon marginLeft={2} />
+            <EditIcon small marginLeft={2} />
         </Button>
         <Button marginLeft={2} small>
-            Remove <EditIcon marginLeft={2} />
+            Remove <EditIcon small marginLeft={2} />
         </Button>
     </div>
 );
@@ -215,14 +215,14 @@ export const InText = () => (
     <>
         Feel free to{' '}
         <Button small>
-            eat <EditIcon marginLeft={2} />
+            eat <EditIcon small marginLeft={2} />
         </Button>{' '}
         <Button small>
-            eat <EditIcon marginLeft={2} />
+            eat <EditIcon small marginLeft={2} />
         </Button>{' '}
         that tasty pie and{' '}
         <Button small>
-            <EditIcon marginRight={2} /> drink <EditIcon marginLeft={2} />
+            <EditIcon marginRight={2} /> drink <EditIcon small marginLeft={2} />
         </Button>{' '}
         some tea.
     </>
@@ -230,7 +230,7 @@ export const InText = () => (
 
 export const IconAndText = () => (
     <Button primary tag="button" wide small>
-        <EditIcon marginRight={2} />
+        <EditIcon small marginRight={2} />
         Create workflow
     </Button>
 );
@@ -258,7 +258,7 @@ const customTheme = makeTheme({
 export const WithCustomTheme = () => (
     <ThemeProvider theme={customTheme}>
         <Button primary tag="button" wide small>
-            <EditIcon marginRight={2} />
+            <EditIcon small marginRight={2} />
             With custom theme
         </Button>
     </ThemeProvider>
@@ -268,7 +268,7 @@ export const WithCustomThemeAsLink = () => (
     <ThemeProvider theme={customTheme}>
         <BrowserRouter>
             <Button primary wide small tag={Link} to="/homepage">
-                <EditIcon marginRight={2} />
+                <EditIcon small marginRight={2} />
                 With custom theme
             </Button>
         </BrowserRouter>
