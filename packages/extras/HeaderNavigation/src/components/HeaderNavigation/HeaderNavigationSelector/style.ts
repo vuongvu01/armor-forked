@@ -22,8 +22,8 @@ import {
     Typography,
 } from '@deliveryhero/armor';
 import {
-    HeaderNavigationSelectorOptionsListItemRootPropsType,
-    HeaderNavigationSelectorOptionsListItemWrapperPropsType,
+    HeaderNavigationSelectorItemRootPropsType,
+    HeaderNavigationSelectorItemWrapperPropsType,
     HeaderNavigationSelectorRootPropsType,
 } from './type';
 import { HeaderNavigationItem } from '../HeaderNavigationItem';
@@ -117,7 +117,7 @@ export const SelectorLabel = styled(
 
 export const SelectorOptionListItemLabelRoot = styled(
     Flex,
-)<HeaderNavigationSelectorOptionsListItemRootPropsType>`
+)<HeaderNavigationSelectorItemRootPropsType>`
     min-width: ${spacing(75)};
     padding: ${({ isIconPresent }) =>
         isIconPresent ? spacing(2, 0) : spacing(0)};
@@ -125,7 +125,7 @@ export const SelectorOptionListItemLabelRoot = styled(
 
 export const SelectorOptionListItemLabelWrapper = styled(
     Flex,
-)<HeaderNavigationSelectorOptionsListItemWrapperPropsType>`
+)<HeaderNavigationSelectorItemWrapperPropsType>`
     border-left: 2px solid transparent;
     height: ${spacing(10)};
 `;

@@ -5,14 +5,12 @@ import { SourceFile } from './SourceFile';
 export class Project {
     private program: Program;
     private knownFiles: Record<string, SourceFile> = {};
+    private rootFile: string;
 
-    constructor(private projectFolder: string) {
-        const rootFile = join(
-            projectFolder,
-            'packages/core/src/components/index.ts',
-        );
+    constructor(private projectFolder: string, rootFilePath: string) {
+        this.rootFile = join(this.projectFolder, rootFilePath);
 
-        this.program = createProgram([rootFile], {
+        this.program = createProgram([this.rootFile], {
             allowJs: true,
             jsx: JsxEmit.React,
         });
@@ -30,11 +28,6 @@ export class Project {
     }
 
     public getRootSourceFile() {
-        const rootFile = join(
-            this.projectFolder,
-            'packages/core/src/components/index.ts',
-        );
-
-        return this.getSourceFile(rootFile);
+        return this.getSourceFile(this.rootFile);
     }
 }

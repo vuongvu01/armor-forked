@@ -1,6 +1,6 @@
-export * from './HeaderNavigationSelector';
 export * from './HeaderNavigationSelectorItem';
+export * from './HeaderNavigationSelector';
 export type {
     HeaderNavigationSelectorPropsType,
-    HeaderNavigationSelectorOptionsListItemPropsType,
+    HeaderNavigationSelectorItemPropsType,
 } from './type';

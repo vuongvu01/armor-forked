@@ -75,16 +75,16 @@ export type HeaderNavigationSelectorRootPropsType = {
 } & ComponentElementStylePropsType &
     WidthPropsType;
 
-export type HeaderNavigationSelectorOptionsListItemRootPropsType = Partial<{
+export type HeaderNavigationSelectorItemRootPropsType = Partial<{
     isIconPresent: boolean;
 }> &
     ComponentElementStylePropsType &
     WidthPropsType;
 
-export type HeaderNavigationSelectorOptionsListItemWrapperPropsType =
+export type HeaderNavigationSelectorItemWrapperPropsType =
     ComponentElementStylePropsType & WidthPropsType;
 
-export type HeaderNavigationSelectorOptionsListItemPropsType = Partial<{
+export type HeaderNavigationSelectorItemPropsType = Partial<{
     icon: ReactNode;
     label: string;
 }>;

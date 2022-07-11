@@ -15,6 +15,7 @@ import { DocumentationBuilder } from '../parser/DocumentationBuilder';
 import { ComponentListType } from '../parser/type';
 import { ComponentCrawler } from '../parser/ComponentCrawler';
 import { DefaultValueCrawler } from '../parser/DefaultValueCrawler';
+import { PROJECT_LIST } from '../parser/constants';
 
 const d = debug('run');
 
@@ -92,60 +93,64 @@ export class Run implements CommandInstance {
         d('Project folder:', projectFolder);
 
         const { component } = this.args;
+        const data: { [key: string]: ComponentListType } = {};
+        PROJECT_LIST.forEach(({ path, dataObjectName }) => {
+            const program = new Project(projectFolder, path);
+            const componentCrawler = new ComponentCrawler(program);
+            const defaultValueCrawler = new DefaultValueCrawler(program);
+            const typeDeclarationCrawler = new TypeDeclarationCrawler(program);
+            const componentList = componentCrawler.crawl();
 
-        const result: ComponentListType = [];
-
-        const program = new Project(projectFolder);
-        const componentCrawler = new ComponentCrawler(program);
-        const defaultValueCrawler = new DefaultValueCrawler(program);
-        const typeDeclarationCrawler = new TypeDeclarationCrawler(program);
-        const componentList = componentCrawler.crawl();
-
-        if (componentList.length) {
-            componentList.forEach(
-                ({
-                    name: componentName,
-                    typingsAbsolutePath,
-                    absolutePath,
-                }) => {
-                    if (component && component !== componentName) {
-                        return;
-                    }
-
-                    const expandedData = typeDeclarationCrawler.crawl(
-                        componentName,
+            if (componentList.length) {
+                componentList.forEach(
+                    ({
+                        name: componentName,
                         typingsAbsolutePath,
-                        [
-                            `${componentName}EffectivePropsType`,
-                            ...standardTypes,
-                        ],
-                    );
+                        absolutePath,
+                    }) => {
+                        if (component && component !== componentName) {
+                            return;
+                        }
 
-                    if (expandedData) {
-                        const flattener = new Flattener(program);
-                        const flatData = flattener.flatten(expandedData);
-
-                        const builder = new DocumentationBuilder();
-
-                        const defaultValues = defaultValueCrawler.crawl(
+                        const expandedData = typeDeclarationCrawler.crawl(
                             componentName,
-                            absolutePath,
+                            typingsAbsolutePath,
+                            [
+                                `${componentName}EffectivePropsType`,
+                                ...standardTypes,
+                            ],
                         );
 
-                        const formattedData = builder.generate(
-                            flatData,
-                            componentName,
-                            defaultValues,
-                        );
+                        if (expandedData) {
+                            const flattener = new Flattener(program);
+                            const flatData = flattener.flatten(expandedData);
 
-                        result.push({
-                            name: componentName,
-                            properties: formattedData,
-                        });
-                    }
-                },
-            );
-        }
+                            const builder = new DocumentationBuilder();
+
+                            const defaultValues = defaultValueCrawler.crawl(
+                                componentName,
+                                absolutePath,
+                            );
+
+                            const formattedData = builder.generate(
+                                flatData,
+                                componentName,
+                                defaultValues,
+                            );
+
+                            if (!data[dataObjectName]) {
+                                data[dataObjectName] = [];
+                            }
+
+                            data[dataObjectName].push({
+                                name: componentName,
+                                properties: formattedData,
+                            });
+                        }
+                    },
+                );
+            }
+        });
 
         const printSeparator = () => {
             console.error(
@@ -155,19 +160,27 @@ export class Run implements CommandInstance {
 
         if (stats) {
             printSeparator();
-            console.error(` ✅ Found ${result.length} components:\n`);
-            result.forEach(({ name, properties }) =>
-                console.error(`    ➡️  ${name} (props: ${properties.length})`),
-            );
+            const projects = Object.keys(data);
+            let length = 0;
+            projects.forEach((project) => {
+                data[project].forEach(({ name, properties }) => {
+                    console.error(
+                        `    ➡️  ${name} (props: ${properties.length})`,
+                    );
+                    length += 1;
+                });
+            });
+            console.error(` ✅ Found ${length} components. \n`);
             printSeparator();
         }
 
-        const data = JSON.stringify({
-            components: result,
-        });
+        const stringifiedData = JSON.stringify({ ...data });
 
         if (output) {
-            await writeFile(output, new Uint8Array(Buffer.from(data)));
+            await writeFile(
+                output,
+                new Uint8Array(Buffer.from(stringifiedData)),
+            );
         } else {
             console.log(data);
         }

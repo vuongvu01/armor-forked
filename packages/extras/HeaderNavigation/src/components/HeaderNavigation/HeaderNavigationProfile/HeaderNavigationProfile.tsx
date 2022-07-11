@@ -16,6 +16,11 @@ import useHeaderNavigationProfile from './hooks/useHeaderNavigationProfile';
 import { HeaderNavigationProfileButton } from './HeaderNavigationProfileButton';
 import { HeaderNavigationProfileMenu } from './HeaderNavigationProfileMenu';
 
+/**
+ * # HeaderNavigationProfile
+ *
+ * @armor-docs-component
+ */
 export const HeaderNavigationProfile = forwardRef<
     HTMLDivElement,
     HeaderNavigationProfilePropsType

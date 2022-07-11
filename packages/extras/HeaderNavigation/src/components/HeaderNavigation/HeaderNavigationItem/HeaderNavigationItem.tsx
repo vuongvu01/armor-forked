@@ -8,12 +8,6 @@ import {
 } from './constants';
 import { useHeaderNavigationItemClassName } from './hooks';
 
-/**
- * # HeaderNavigationItem
- *
- *
- * @armor-docs-component
- */
 export const HeaderNavigationItem: FunctionComponent<
     HeaderNavigationItemPropsType
 > = ({ className, ...restProps }) => {
