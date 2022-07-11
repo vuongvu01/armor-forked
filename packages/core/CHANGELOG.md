@@ -1,3 +1,16 @@
+## [1.100.4](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.100.3...@deliveryhero/armor@1.100.4) (2022-07-11)
+
+
+### Bug Fixes
+
+* **DataTable:** allow horizontalScroll ([#1088](https://github.com/deliveryhero/armor/issues/1088)) ([708f94a](https://github.com/deliveryhero/armor/commit/708f94abeeea090136fb245ef8a3788b3f41b1de))
+* **icons:** fix the icon size inconsistencies [LD-813] ([#1070](https://github.com/deliveryhero/armor/issues/1070)) ([e3f92fe](https://github.com/deliveryhero/armor/commit/e3f92fe05141f81f5d3cb9f8ef9954d8e023cc3d))
+
+
+### Features
+
+* **props parser:** add support for reading extra components [LD-837] ([#1083](https://github.com/deliveryhero/armor/issues/1083)) ([97e3487](https://github.com/deliveryhero/armor/commit/97e348712bb8960169cb7f4938c1a4ab50a8959d))
+
 ## [1.100.3](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.100.2...@deliveryhero/armor@1.100.3) (2022-07-07)
 
 
