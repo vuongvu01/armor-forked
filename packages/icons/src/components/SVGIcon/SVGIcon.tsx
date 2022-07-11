@@ -13,6 +13,10 @@ export const SVGIcon: FunctionComponent<SVGIconPropsType> = ({
     color,
     ...restProps
 }) => {
+    const { small, medium, large } = restProps;
+
+    const hasSize = small || medium || large;
+
     const theme = useTheme();
 
     return (
@@ -20,8 +24,8 @@ export const SVGIcon: FunctionComponent<SVGIconPropsType> = ({
             viewBox={viewBox}
             focusable="false"
             color={color}
-            iconWidth={width}
-            iconHeight={height}
+            iconWidth={hasSize ? '24px' : width}
+            iconHeight={hasSize ? '24px' : height}
             theme={theme}
             {...restProps}
         >

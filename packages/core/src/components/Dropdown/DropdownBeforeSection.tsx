@@ -117,7 +117,7 @@ export const DropdownBeforeSection = memo(
                                 {...beforeSectionClearButtonProps}
                                 className={classOverride.ClearButton}
                             >
-                                <DropdownCancelIcon />
+                                <DropdownCancelIcon small />
                             </DropdownBeforeSectionClearButton>
                         ) : null}
                     </DropdownBeforeSectionActionContainer>

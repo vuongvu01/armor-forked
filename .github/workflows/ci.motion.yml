@@ -15,19 +15,25 @@ jobs:
             GITHUB_TOKEN: ${{ secrets.CICD_TOKEN }}
         steps:
             - uses: actions/checkout@v2
+
             - name: Install (common)
               run: yarn
+
             - name: Install peers (common)
               run: yarn install-peers
+
             - name: Build (system)
               working-directory: ./packages/system
               run: yarn build:cjs
+
             - name: Lint
               working-directory: ./packages/motion
               run: yarn run lint
+
             - name: Test
               working-directory: ./packages/motion
               run: yarn run test
+
             - name: Build
               working-directory: ./packages/motion
               run: yarn run build

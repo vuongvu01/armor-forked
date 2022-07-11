@@ -9,6 +9,7 @@ import {
     MessageContent,
     MessageActions,
     MessageExtra,
+    MessageCloseButtonContainer,
 } from './style';
 import { MessageIconPropsType, MessagePropsType } from './type';
 import { MESSAGE_CLASS_PREFIX } from './constants';
@@ -82,14 +83,15 @@ export const Message = forwardRef<HTMLDivElement, MessagePropsType>(
                         </MessageExtra>
                     )}
                 </MessageCentral>
+
                 {showCloseButton && (
-                    <CloseButton
-                        {...getCloseButtonProps()}
-                        marginTop={3}
-                        marginLeft={2}
-                        className={classNameComponents.CloseButton}
-                        data-testid={classNameComponents.CloseButton}
-                    />
+                    <MessageCloseButtonContainer>
+                        <CloseButton
+                            {...getCloseButtonProps()}
+                            className={classNameComponents.CloseButton}
+                            data-testid={classNameComponents.CloseButton}
+                        />
+                    </MessageCloseButtonContainer>
                 )}
             </MessageRoot>
         );

@@ -18,8 +18,10 @@ jobs:
 
         steps:
             - uses: actions/checkout@v2
+
             - name: Install (common)
               run: yarn
+
             - name: Install peers (common)
               run: yarn install-peers
 
@@ -38,15 +40,19 @@ jobs:
             - name: Lint
               working-directory: ./packages/brands
               run: yarn run lint
+
             - name: Test
               working-directory: ./packages/brands
               run: yarn run test
+
             - name: Test visual install
               working-directory: ./packages/brands/visual
               run: yarn install
+
             - name: Test visual
               working-directory: ./packages/brands
               run: yarn test:visual:cicd
+
             - name: Build
               working-directory: ./packages/brands
               run: yarn run build

@@ -108,51 +108,41 @@ export const FileCardRightPortion = styled.div.withConfig(
     align-items: center;
 `;
 
-const getIconStyles = (size: number, colorText: string) => css`
-    height: ${spacing(size)};
-    width: ${spacing(size)};
+const getIconStyles = (colorText: string) => css`
     color: ${color(colorText)};
 `;
 
 const leftIconStyles = css`
-    ${getIconStyles(6, 'neutral.11')};
-    padding: ${spacing(2)};
-    margin-right: ${spacing(2)};
+    ${getIconStyles('neutral.11')};
 `;
 
-const getRightIconStyles = (size: number, colorText: string) => css`
-    ${getIconStyles(size, colorText)};
-    padding: ${spacing(1)};
-    border-radius: ${borderRadius('soft')};
+const getRightIconStyles = (colorText: string) => css`
+    ${getIconStyles(colorText)};
 `;
 
-export const FileTextIcon = styled(FileCommonTextIcon).withConfig(
-    propsBlocker,
-)<SVGIconPropsType>`
+export const FileTextIcon = styled(FileCommonTextIcon)`
+    ${leftIconStyles}
+`;
+
+export const FileImageIcon = styled(FileImagePortraitIcon)`
     ${leftIconStyles};
 `;
 
-export const FileImageIcon = styled(FileImagePortraitIcon).withConfig(
-    propsBlocker,
-)<SVGIconPropsType>`
+export const FilePDFIcon = styled(FilePDFIconArmor)`
     ${leftIconStyles};
 `;
 
-export const FilePDFIcon = styled(FilePDFIconArmor).withConfig(
-    propsBlocker,
-)<SVGIconPropsType>`
-    ${leftIconStyles};
-`;
-
-export const FileCSVIcon = styled(FileCSVIconArmor).withConfig(
-    propsBlocker,
-)<SVGIconPropsType>`
+export const FileCSVIcon = styled(FileCSVIconArmor)`
     ${leftIconStyles};
 `;
 
 export const FileImageContainer = styled.div.withConfig(propsBlocker)<{
-    isUploading: boolean;
+    isUploading?: boolean;
 }>`
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
     width: ${spacing(10)};
     height: ${spacing(10)};
     margin-right: ${spacing(3)};
@@ -167,16 +157,12 @@ export const FileImage = styled.img.withConfig(propsBlocker)`
     border-radius: ${borderRadius('soft')};
 `;
 
-export const CancelIcon = styled(CancelIconArmor).withConfig(
-    propsBlocker,
-)<SVGIconPropsType>`
-    ${getRightIconStyles(4, 'primary.07')};
+export const CancelIcon = styled(CancelIconArmor)`
+    ${getRightIconStyles('primary.07')};
 `;
 
-export const DeleteIcon = styled(DeleteIconArmor).withConfig(
-    propsBlocker,
-)<SVGIconPropsType>`
-    ${getRightIconStyles(4, 'error.07')};
+export const DeleteIcon = styled(DeleteIconArmor)`
+    ${getRightIconStyles('error.07')};
 `;
 
 export const FormFieldErrorMessage = styled(FormFieldMessage).withConfig(

@@ -1,4 +1,6 @@
-import React, { FunctionComponent } from 'react';
+/* This file is auto-generated, don't edit by hand! */
+
+import React, { FunctionComponent, Fragment } from 'react';
 import {
     SVGIconPropsType,
     SVGIcon,
@@ -6,20 +8,38 @@ import {
     SVGIconPath,
 } from '../../components/SVGIcon';
 
-const ArrowUpIconShape = (
-    <SVGIconGroup>
-        <SVGIconPath d="M18.500887,12 C18.5015696,12.5527013 18.2641769,13.0789216 17.8493735,13.4441849 L8.53442245,21.6390365 C7.8924401,22.1777278 6.93782279,22.105393 6.38434148,21.4761172 C5.83086017,20.8468414 5.88096595,19.8907996 6.49719454,19.3228278 L14.6427651,12.1570311 C14.687999,12.1173814 14.713938,12.0601515 14.713938,12 C14.713938,11.9398485 14.687999,11.8826186 14.6427651,11.8429689 L6.49719454,4.67717216 C5.88096595,4.1092004 5.83086017,3.15315859 6.38434148,2.52388279 C6.93782279,1.894607 7.8924401,1.82227223 8.53442245,2.36096346 L17.8460324,10.5533092 C18.26184,10.919198 18.5003596,11.4461316 18.500887,12 Z"transform="translate(12.250444, 12.000000) scale(-1, -1) rotate(-270.000000) translate(-12.250444, -12.000000) " />
-    </SVGIconGroup>
+const ArrowUpLarge = (
+    <Fragment>
+        <SVGIconPath d="M12.2504 5.74956C12.8031 5.74888 13.3294 5.98627 13.6946 6.40107L21.8895 15.716C22.4282 16.358 22.3558 17.3126 21.7266 17.8661C21.0973 18.4196 20.1412 18.3695 19.5733 17.7532L12.4075 9.60768C12.3678 9.56245 12.3106 9.53651 12.2504 9.53651C12.1903 9.53651 12.1331 9.56245 12.0934 9.60768L4.92761 17.7532C4.35964 18.3695 3.4036 18.4196 2.77433 17.8661C2.14505 17.3126 2.07271 16.358 2.61141 15.716L10.8038 6.40441C11.1696 5.9886 11.6966 5.75009 12.2504 5.74956Z" />
+    </Fragment>
 );
 
-export const ArrowUpIcon: FunctionComponent<SVGIconPropsType> = props => {
+const ArrowUpMedium = (
+    <Fragment>
+        <SVGIconPath d="M11.9996 6.99965C12.4418 6.9991 12.8628 7.18902 13.155 7.52086L19.7109 14.9728C20.1418 15.4864 20.0839 16.2501 19.5805 16.6929C19.0771 17.1357 18.3123 17.0956 17.8579 16.6026L12.1253 10.0861C12.0935 10.05 12.0478 10.0292 11.9996 10.0292C11.9515 10.0292 11.9057 10.05 11.874 10.0861L6.14137 16.6026C5.68699 17.0956 4.92216 17.1357 4.41874 16.6929C3.91532 16.2501 3.85745 15.4864 4.2884 14.9728L10.8423 7.52353C11.135 7.19089 11.5565 7.00007 11.9996 6.99965Z" />
+    </Fragment>
+);
+
+const ArrowUpSmall = (
+    <Fragment>
+        <SVGIconPath d="M12.2497 8.24974C12.5813 8.24933 12.8971 8.39177 13.1162 8.64065L18.0331 14.2296C18.3564 14.6148 18.313 15.1876 17.9354 15.5197C17.5578 15.8518 16.9842 15.8217 16.6434 15.452L12.3439 10.5646C12.3202 10.5375 12.2858 10.5219 12.2497 10.5219C12.2136 10.5219 12.1793 10.5375 12.1555 10.5646L7.85603 15.452C7.51525 15.8217 6.94162 15.8518 6.56405 15.5197C6.18649 15.1876 6.14309 14.6148 6.4663 14.2296L11.3817 8.64265C11.6012 8.39317 11.9174 8.25006 12.2497 8.24974Z" />
+    </Fragment>
+);
+
+export const ArrowUpIcon: FunctionComponent<SVGIconPropsType> = (props) => {
     const { className, ...restProps } = props;
+    const { small, medium, large } = props;
+    const hasNoSize = !small && !medium && !large;
+
     return (
-        <SVGIcon
-            {...restProps}
-            className={`ArrowUpIcon ${className || ''}`}
-        >
-            {ArrowUpIconShape}
+        <SVGIcon {...restProps} className={`ArrowUpIcon ${className || ''}`}>
+            <SVGIconGroup>
+                {small && ArrowUpSmall}
+                {medium && ArrowUpMedium}
+                {(large || hasNoSize) && ArrowUpLarge}
+            </SVGIconGroup>
         </SVGIcon>
     );
 };
+
+ArrowUpIcon.displayName = 'ArrowUpIcon';

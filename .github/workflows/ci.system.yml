@@ -16,17 +16,21 @@ jobs:
 
         steps:
             - uses: actions/checkout@v2
+
             - name: Install (common)
               run: yarn
+
             - name: Install peers (common)
               run: yarn install-peers
 
             - name: Lint
               working-directory: ./packages/system
               run: yarn run lint
+
             - name: Test
               working-directory: ./packages/system
               run: yarn run test
+
             - name: Build
               working-directory: ./packages/system
               run: yarn run build

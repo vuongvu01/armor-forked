@@ -183,7 +183,7 @@ const NavigationMenuContent2 = (
 const NavigationAction = (
     <HeaderNavigationAction>
         <HeaderNavigationActionItem onClick={() => {}}>
-            <LogoutIcon />
+            <LogoutIcon small />
         </HeaderNavigationActionItem>
     </HeaderNavigationAction>
 );

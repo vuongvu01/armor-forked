@@ -41,9 +41,9 @@ export const TableControllerCellContainer = styled.div.withConfig(
 
 export const TableControllerCellTrigger = styled(IconButton)`
     color: ${color('primary.main')};
+
     &:hover {
-        background-color: ${color('primary.lighter')};
-        color: ${color('neutral.00')};
+        background-color: ${color('neutral.00')};
     }
 `;
 

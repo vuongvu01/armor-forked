@@ -2,11 +2,7 @@ import styled from 'styled-components';
 import { SearchIcon, UploadIcon } from '@deliveryhero/armor-icons';
 import { propsBlocker, color, spacing } from '@deliveryhero/armor-system';
 
-import {
-    SearchIconContainerPropsType,
-    SearchInputLoadingIconPropsType,
-    SearchInputSearchIconPropsType,
-} from './type';
+import { SearchIconContainerPropsType } from './type';
 
 /** 👉 ROOT ELEMENT */
 export const SearchIconRoot = styled.div.withConfig(
@@ -14,21 +10,16 @@ export const SearchIconRoot = styled.div.withConfig(
 )<SearchIconContainerPropsType>`
     display: flex;
     align-items: center;
-    padding-left: ${spacing(3.5)};
+    flex: 0 0 auto;
+    margin-left: ${spacing(3)};
 `;
 
-export const SearchInputLoadingIcon = styled(
-    UploadIcon,
-)<SearchInputLoadingIconPropsType>`
+export const SearchInputLoadingIcon = styled(UploadIcon).attrs({ small: true })`
     color: ${color('neutral.07')};
-    width: ${spacing(4)};
-    height: ${spacing(4)};
 `;
 
-export const SearchInputSearchIcon = styled(
-    SearchIcon,
-)<SearchInputSearchIconPropsType>`
+export const SearchInputSearchIcon = styled(SearchIcon).attrs({
+    small: true,
+})`
     color: ${color('neutral.07')};
-    width: ${spacing(4)};
-    height: ${spacing(4)};
 `;

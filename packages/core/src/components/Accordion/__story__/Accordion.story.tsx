@@ -275,9 +275,9 @@ export const CustomHeaderContents = () => {
                     </Typography>
 
                     <Tooltip align="bottom" content="Hello world!">
-                        <span style={{ height: '16px' }}>
-                            <InfoIcon marginLeft={3} tabIndex={0} />
-                        </span>
+                        <div>
+                            <InfoIcon small />
+                        </div>
                     </Tooltip>
                 </AccordionHeader>
                 <AccordionContent>Content 0</AccordionContent>

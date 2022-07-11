@@ -37,7 +37,7 @@ export const LinkWithIcon = () => {
     return (
         <>
             <Link>
-                <MapIcon marginRight={2}></MapIcon>
+                <MapIcon marginRight={2} />
                 Link here
             </Link>
         </>

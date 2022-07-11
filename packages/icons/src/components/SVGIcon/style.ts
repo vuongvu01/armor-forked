@@ -7,46 +7,26 @@ import {
 
 import { SVGIconRootPropsType } from './type';
 
-const getSizingStyles = ({
-    theme,
-    small,
-    medium,
-    large,
-    fontSize,
-}: SVGIconRootPropsType) => {
-    if (!theme) {
-        return `
-            font-size: inherit;
-        `;
-    }
-
-    if (small) {
-        return `
-            font-size: ${theme.armor.typography.pixelToRem(12)};
-            padding: ${theme.armor.spacing(1.5)};
-        `;
-    }
-
-    if (medium) {
-        return `
-            font-size: ${theme.armor.typography.pixelToRem(16)};
-            padding: ${theme.armor.spacing(1)};
-        `;
-    }
-
-    if (large) {
-        return `
-            font-size: ${theme.armor.typography.pixelToRem(24)};
-        `;
-    }
-
-    return `
-        font-size: ${
-            typeof fontSize !== 'undefined'
-                ? theme.armor.typography.pixelToRem(fontSize)
-                : 'inherit'
-        };
+const getSizingStyles = ({ theme, fontSize }: SVGIconRootPropsType) => {
+    const defaultFontSize = css`
+        font-size: inherit;
     `;
+
+    if (!theme) {
+        return defaultFontSize;
+    }
+
+    const {
+        typography: { pixelToRem },
+    } = theme.armor;
+
+    if (fontSize) {
+        return css`
+            font-size: ${pixelToRem(fontSize)};
+        `;
+    }
+
+    return defaultFontSize;
 };
 
 export const SVGIconRoot = styled.svg.withConfig(
@@ -57,6 +37,7 @@ export const SVGIconRoot = styled.svg.withConfig(
     line-height: inherit;
     box-sizing: content-box;
     fill: currentColor;
+    vertical-align: middle;
     ${({ iconWidth, iconHeight, display }) => css<SVGIconRootPropsType>`
         display: ${display};
         width: ${iconWidth};

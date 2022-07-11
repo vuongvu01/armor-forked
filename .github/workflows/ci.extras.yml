@@ -16,31 +16,41 @@ jobs:
 
         steps:
             - uses: actions/checkout@v2
+
             - name: Install (common)
               run: yarn
+
             - name: Install peers (common)
               run: yarn install-peers
+
             - name: Build (system)
               working-directory: ./packages/system
               run: yarn build:cjs
+
             - name: Build (icons)
               working-directory: ./packages/icons
               run: yarn build:cjs
+
             - name: Build (core)
               working-directory: ./packages/core
               run: yarn build:cjs
+
             - name: Lint
               working-directory: ./packages/extras
               run: ./script/lint.sh
+
             - name: Test
               working-directory: ./packages/extras
               run: ./script/test.sh
+
             - name: Test integration install and run
               working-directory: ./packages/extras
               run: ./script/testintegration.sh
+
             - name: Test visual install and run
               working-directory: ./packages/extras
               run: ./script/testvisual.sh
+
             - name: Build
               working-directory: ./packages/extras
               run: ./script/build.sh

@@ -23,7 +23,7 @@ import {
 const sizes = {
     checkbox: {
         side: 16,
-        icon: 10,
+        icon: 12,
     },
 };
 
@@ -74,9 +74,17 @@ export const StyledCheckedIcon = styled(TickThickIcon)`
     ${getIconStyle};
 `;
 
+StyledCheckedIcon.defaultProps = {
+    medium: true,
+};
+
 export const StyledDashIcon = styled(DashIcon)`
     ${getIconStyle};
 `;
+
+StyledDashIcon.defaultProps = {
+    medium: true,
+};
 
 export const CheckboxCheckmark = styled.div.withConfig(
     propsBlocker,
@@ -84,6 +92,7 @@ export const CheckboxCheckmark = styled.div.withConfig(
     position: relative;
     width: ${sizes.checkbox.side}px;
     height: ${sizes.checkbox.side}px;
+    overflow: hidden;
 
     ${({ hasLabel }: CheckboxCheckmarkPropsType) =>
         hasLabel

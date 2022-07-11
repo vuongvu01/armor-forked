@@ -28,42 +28,49 @@ export const AllStates = () => (
 );
 
 export const Basic = () => (
-    <Message
-        disableCloseButton={false}
-        actions={<MessageAction>See details</MessageAction>}
-        extra={<Rick />}
-        level="error"
-        disableIcon
-    >
+    <Message level="error">
         <Typography label medium marginBottom={2}>
             Error message
         </Typography>
-        {loremIpsum}
-        <Box>
-            <MessageAction marginTop={2} marginRight={4}>
-                See details
-            </MessageAction>
-            <MessageAction>Report</MessageAction>
-        </Box>
+
+        <Typography paragraph medium>
+            {loremIpsum}
+        </Typography>
     </Message>
 );
 
-export const Complete = () => {
+export const LabelAndTextWithMessageActions = () => {
     return (
         <Message error>
             <Typography label medium marginBottom={2}>
                 System failure
             </Typography>
-            <Typography paragraph>
+
+            <Typography paragraph medium>
                 We ran out of cake. <br />
                 Please consider ordering more from one of our partner bakeries
                 or get the ingredients from the D-Mart and bake at home.
             </Typography>
 
-            <Box>
+            <Box marginTop={2}>
                 <MessageAction marginRight={4}>Order cake</MessageAction>
                 <MessageAction>Order ingredients</MessageAction>
             </Box>
+        </Message>
+    );
+};
+
+export const LabelAndActions = () => {
+    return (
+        <Message
+            error
+            disableIcon
+            disableCloseButton
+            actions={<MessageAction>Action</MessageAction>}
+        >
+            <Typography paragraph medium>
+                This is an error message written in one or two lines.
+            </Typography>
         </Message>
     );
 };

@@ -124,8 +124,9 @@ export const DatePickerTopBarMonthNavigationButtonForward = styled.button.withCo
 export const DatePickerTopBarMonthNavigationButtonBackward = styled(
     DatePickerTopBarMonthNavigationButtonForward,
 )<DatePickerTopBarMonthNavigationButtonForwardPropsType>`
+    margin-right: ${spacing(6)};
+
     svg {
         transform: rotate(0.5turn);
     }
-    margin-right: ${spacing(5)};
 `;

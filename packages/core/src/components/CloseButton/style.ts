@@ -40,7 +40,4 @@ export const CloseButtonRoot = styled.div.withConfig(
     ${marginProps};
 `;
 
-export const CloseButtonIcon = styled(CancelIcon)`
-    outline: none;
-    margin: ${spacing(2)};
-`;
+export const CloseButtonIcon = styled(CancelIcon).attrs({ small: true })``;

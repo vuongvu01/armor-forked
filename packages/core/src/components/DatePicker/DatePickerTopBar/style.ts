@@ -115,6 +115,7 @@ export const DatePickerTopBarMonthNavigationButtonForward = styled.button.withCo
     cursor: pointer;
     border: 0 none;
     appearance: none;
+    padding: 0;
     background-color: transparent;
     color: ${color('neutral.11')};
 
@@ -124,8 +125,9 @@ export const DatePickerTopBarMonthNavigationButtonForward = styled.button.withCo
 export const DatePickerTopBarMonthNavigationButtonBackward = styled(
     DatePickerTopBarMonthNavigationButtonForward,
 )<DatePickerTopBarMonthNavigationButtonForwardPropsType>`
+    margin-right: ${spacing(6)};
+
     svg {
         transform: rotate(0.5turn);
     }
-    margin-right: ${spacing(5)};
 `;

@@ -23,6 +23,7 @@ import {
     MessageEffectivePropsLevelAndThemeType,
 } from './type';
 import { messageLevels } from './constants';
+import { TypographyRoot } from '../Typography/style';
 
 const getColorNameByMessageLevel = ({
     level,
@@ -61,6 +62,7 @@ export const MessageRoot = styled.div.withConfig(
     border: 1px solid ${color('primary.main')};
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
     position: relative;
     border-radius: ${borderRadius('soft')};
     background-color: ${color('neutral.00')};
@@ -84,29 +86,37 @@ export const MessageContent = styled.div.withConfig(
     propsBlocker,
 )<MessageContentPropsType>`
     flex-grow: 1;
-    line-height: 1.3;
+    line-height: 1.5;
     color: ${color('neutral.11')};
-    padding-top: ${spacing(4)};
-    padding-bottom: ${spacing(4)};
+    padding: ${spacing(4, 0)};
+
+    ${TypographyRoot} {
+        line-height: ${pixelToRem(24)};
+        margin: 0;
+        margin-top: 2px;
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
 `;
 
 export const MessageActions = styled.div.withConfig(
     propsBlocker,
 )<MessageActionsPropsType>`
     flex-shrink: 0;
-    align-self: center;
+    align-self: flex-start;
     margin-left: ${spacing(4)};
-    padding-top: ${spacing(1)};
-    padding-bottom: ${spacing(1)};
+    padding: ${spacing(4, 0)};
 `;
 
 export const MessageExtra = styled.div.withConfig(
     propsBlocker,
 )<MessageExtraPropsType>`
     flex-shrink: 0;
+    align-self: flex-start;
     margin-left: ${spacing(4)};
-    padding-top: ${spacing(2)};
-    padding-bottom: ${spacing(2)};
+    padding: ${spacing(4, 0)};
 `;
 
 const MessageIconWrapper = ({
@@ -126,8 +136,11 @@ const getIconDynamicStyle = (props: MessageRootPropsType) => {
 
 export const MessageIcon = styled(MessageIconWrapper)<MessageIconPropsType>`
     flex: 0 0 auto;
-    font-size: ${pixelToRem(24)};
     margin-right: ${spacing(2)};
-    padding: ${spacing(4)} 0;
+    padding: ${spacing(4, 0)};
     ${getIconDynamicStyle};
+`;
+
+export const MessageCloseButtonContainer = styled.div`
+    padding: ${spacing(4, 0)};
 `;

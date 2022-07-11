@@ -97,7 +97,7 @@ export const PageNavigation = forwardRef<
                     data-pagenumber={previousPageNumber}
                     onClick={onPageButtonClick}
                 >
-                    <ArrowLeftIcon />
+                    <ArrowLeftIcon small />
                 </PageNavigationPageButton>
                 {displayedRange.map((pageNumber) => (
                     <PageNavigationPageButton
@@ -121,7 +121,7 @@ export const PageNavigation = forwardRef<
                     data-pagenumber={nextPageNumber}
                     onClick={onPageButtonClick}
                 >
-                    <ArrowRightIcon />
+                    <ArrowRightIcon small />
                 </PageNavigationPageButton>
             </PageNavigationButtons>
         </PageNavigationRoot>

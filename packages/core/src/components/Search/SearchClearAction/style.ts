@@ -45,17 +45,15 @@ export const ClearIconRoot = styled.div.withConfig(
 )<ClearIconContainerPropsType>`
     display: flex;
     align-items: center;
-    padding-right: ${spacing(3.5)};
+    margin-right: ${spacing(3)};
 `;
 
-export const SearchInputClearIcon = styled(
-    CancelIcon,
-)<SearchInputClearIconPropsType>`
+export const SearchInputClearIcon = styled(CancelIcon).attrs({
+    small: true,
+})<SearchInputClearIconPropsType>`
     cursor: pointer;
     ${transition({ all: true })};
     color: ${color('neutral.07')};
-    width: ${spacing(3)};
-    height: ${spacing(3)};
     ${searchInputClearIconStyle};
     ${getComponentOverride('SearchClearAction')};
 `;

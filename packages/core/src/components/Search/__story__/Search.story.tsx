@@ -77,9 +77,9 @@ export const DefaultSearch = () => {
                     optionIndex?: number,
                 ) =>
                     optionIndex && optionIndex % 2 === 1 ? (
-                        <InfoIcon width="12px" height="12px" />
+                        <InfoIcon small />
                     ) : (
-                        <CogIcon width="12px" height="12px" />
+                        <CogIcon small />
                     )
                 }
             />

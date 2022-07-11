@@ -1,0 +1,38 @@
+import React, { FunctionComponent, Fragment } from 'react';
+import {
+    SVGIconPropsType,
+    SVGIcon,
+    SVGIconGroup,
+    SVGIconPath,
+} from '../../components/SVGIcon';
+
+<% sizes.forEach(function(item) { %>
+    const <%- name %><%- item.size %> = (
+        <Fragment>
+            <% item.paths.forEach(function({ d, transform }) { %>
+                <SVGIconPath d="<%- d %>"<% if (transform) { %> transform="<%- transform %>"<% } %> />
+            <% }); %>
+        </Fragment>
+    );
+<% }); %>
+
+export const <%- name %>Icon: FunctionComponent<SVGIconPropsType> = props => {
+    const { className, ...restProps } = props;
+    const { small, medium, large } = props;
+    const hasNoSize = !small && !medium && !large;
+
+    return (
+        <SVGIcon
+            {...restProps}
+            className={`<%- name %>Icon ${className || ''}`}
+        >
+            <SVGIconGroup>
+                {small && <%- name %>Small}
+                {medium && <%- name %>Medium}
+                {(large || hasNoSize) && <%- name %>Large}
+            </SVGIconGroup>
+        </SVGIcon>
+    );
+};
+
+<%- name %>Icon.displayName = '<%- name %>Icon';

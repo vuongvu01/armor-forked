@@ -15,8 +15,7 @@ const makeTheme = (): MUIThemeType => {
     const themeDeclaration = {
         palette,
         typography: {
-            fontFamily:
-                '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif',
+            fontFamily: 'Roboto, sans-serif',
             h1: {
                 fontSize: `calc(${headerFSBase} * 0.8)`,
                 lineHeight: '48px',

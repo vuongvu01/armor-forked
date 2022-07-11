@@ -218,7 +218,7 @@ export const Arara = () => {
                     <TextInput
                         wide
                         placeholder="Search"
-                        after={<SearchIcon marginRight={4} />}
+                        after={<SearchIcon small marginRight={4} />}
                     />
                 </AraraSearchContainer>
             ),

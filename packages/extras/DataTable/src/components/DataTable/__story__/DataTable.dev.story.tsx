@@ -43,6 +43,18 @@ export const Basic = () => {
     return <DataTable columns={columns} data={data} />;
 };
 
+export const HorizontalScroll = () => {
+    const [data] = useState(dataSourceWide);
+
+    return (
+        <DataTable
+            columns={columnsWide}
+            data={data}
+            tableProps={{ horizontalScroll: true }}
+        />
+    );
+};
+
 export const RowReordering = () => {
     const [data, setData] = useState(dataSource);
 
