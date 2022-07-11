@@ -1,3 +1,10 @@
+# @deliveryhero/armor-headernavigation [1.1.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-headernavigation@1.0.1...@deliveryhero/armor-headernavigation@1.1.0) (2022-07-11)
+
+
+### Features
+
+* **props parser:** add support for reading extra components [LD-837] ([#1083](https://github.com/deliveryhero/armor/issues/1083)) ([97e3487](https://github.com/deliveryhero/armor/commit/97e348712bb8960169cb7f4938c1a4ab50a8959d))
+
 ## [1.0.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-headernavigation@1.0.0...@deliveryhero/armor-headernavigation@1.0.1) (2022-07-07)
 
 
