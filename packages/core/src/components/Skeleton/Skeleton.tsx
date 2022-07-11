@@ -8,6 +8,11 @@ import { SkeletonRoot } from './style';
 import { SkeletonPropsType } from './type';
 import { SKELETON_CLASS_PREFIX } from './constants';
 
+/**
+ * # Skeleton
+ *
+ * @armor-docs-component
+ */
 export const Skeleton = forwardRef<HTMLDivElement, SkeletonPropsType>(
     function Skeleton({ className, ...props }, ref) {
         const classNames = useSkeletonClassNames(
