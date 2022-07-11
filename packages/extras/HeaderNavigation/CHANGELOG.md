@@ -1,3 +1,11 @@
+## [1.1.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-headernavigation@1.1.0...@deliveryhero/armor-headernavigation@1.1.1) (2022-07-11)
+
+
+### Bug Fixes
+
+* **DataTable:** allow horizontalScroll ([#1088](https://github.com/deliveryhero/armor/issues/1088)) ([708f94a](https://github.com/deliveryhero/armor/commit/708f94abeeea090136fb245ef8a3788b3f41b1de))
+* **icons:** fix the icon size inconsistencies [LD-813] ([#1070](https://github.com/deliveryhero/armor/issues/1070)) ([e3f92fe](https://github.com/deliveryhero/armor/commit/e3f92fe05141f81f5d3cb9f8ef9954d8e023cc3d))
+
 # @deliveryhero/armor-headernavigation [1.1.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-headernavigation@1.0.1...@deliveryhero/armor-headernavigation@1.1.0) (2022-07-11)
 
 
