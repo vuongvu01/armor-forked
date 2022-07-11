@@ -113,6 +113,10 @@ export const useDataTable = (
 
     const { rowSortOrder, onHeadCellClick } = rowSorting.result;
 
+    const hasHorizontalScroll =
+        stickyColumns.result.stickyColumns.length > 0 ||
+        tableProps?.horizontalScroll;
+
     return {
         columns: columnsSafe,
         data: virtualData,
@@ -140,7 +144,7 @@ export const useDataTable = (
             enableFixedLayout,
             ...tableProps,
             stickyColumns: stickyColumns.result.stickyColumns,
-            horizontalScroll: stickyColumns.result.stickyColumns.length > 0,
+            horizontalScroll: hasHorizontalScroll,
         },
         tableBodyProps: {
             ref: tableBodyRef,
