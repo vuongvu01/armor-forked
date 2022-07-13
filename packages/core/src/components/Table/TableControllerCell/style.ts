@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { ArrowDownIcon } from '@deliveryhero/armor-icons';
 import {
     color,
@@ -26,6 +26,12 @@ export const TableControllerCellRoot = styled(
     padding-top: ${spacing(4)};
     padding-bottom: ${spacing(4)};
     padding-left: ${spacing(2.5)};
+
+    ${({ width }) =>
+        width &&
+        css`
+            display: inline-block;
+        `}
 
     ${getComponentOverride('TableControllerCell')};
     ${paddingProps};

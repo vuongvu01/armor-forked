@@ -4,7 +4,6 @@ import {
     SortNumberIcon,
     ArrowUpTailIcon,
     ArrowDownTailIcon,
-    // eslint-disable-next-line import/no-extraneous-dependencies
 } from '@deliveryhero/armor-icons';
 import PropTypes from 'prop-types';
 
