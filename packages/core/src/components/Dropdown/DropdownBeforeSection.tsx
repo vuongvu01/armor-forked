@@ -8,7 +8,6 @@ import {
     DropdownBeforeSectionTagsContainer,
     DropdownBeforeSectionTagsWrapper,
     DropdownTag,
-    DropdownCancelIcon,
 } from './style';
 import { DROPDOWN_BEFORE_SECTION_CLASS_PREFIX } from './constants';
 import { useDropdownBeforeSection } from './hooks/useDropdownBeforeSection';
@@ -16,6 +15,7 @@ import { DropdownBeforeSectionPropsType } from './type';
 import { useDropdownBeforeSectionClassName } from './hooks';
 import { OptionObjectType } from '../OptionList/type';
 import { DropdownTags } from './DropdownTags';
+import { ClearButton } from '../ClearButton';
 
 export const DropdownBeforeSection = memo(
     forwardRef<HTMLDivElement, DropdownBeforeSectionPropsType>(
@@ -112,12 +112,12 @@ export const DropdownBeforeSection = memo(
                     <DropdownBeforeSectionActionContainer
                         className={classOverride.ActionContainer}
                     >
-                        {selectedTagsToDisplay?.length ? (
+                        {selectedTagsToDisplay?.length && !disabled ? (
                             <DropdownBeforeSectionClearButton
                                 {...beforeSectionClearButtonProps}
                                 className={classOverride.ClearButton}
                             >
-                                <DropdownCancelIcon small />
+                                <ClearButton iconSize="medium" />
                             </DropdownBeforeSectionClearButton>
                         ) : null}
                     </DropdownBeforeSectionActionContainer>

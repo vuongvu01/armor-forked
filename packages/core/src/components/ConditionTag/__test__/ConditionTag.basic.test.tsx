@@ -39,13 +39,6 @@ describe('<ConditionTag />', () => {
         expect(ConditionTag).toSupportRestPropsForwarding('ConditionTag');
     });
 
-    it('should support component override', () => {
-        // @ts-ignore
-        expect(<ConditionTag>Hello</ConditionTag>).toSupportOverride(
-            'ConditionTag',
-        );
-    });
-
     it('should support margin properties', async () => {
         // @ts-ignore
         expect(ConditionTag).toSupportMarginProps();

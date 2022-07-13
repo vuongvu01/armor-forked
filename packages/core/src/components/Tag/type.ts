@@ -83,7 +83,7 @@ export type TagPropsType = TagEffectivePropsType;
 export type TagRootPropsType = TagEffectivePropsType &
     ComponentElementStylePropsType;
 
-export type TagCloseIconContainerPropsType = Pick<
+export type TagClearButtonContainerPropsType = Pick<
     TagEffectivePropsType,
     'deleteOption' | 'onClick' | 'tabIndex' | 'type' | 'disabled' | 'small'
 > &
@@ -91,6 +91,7 @@ export type TagCloseIconContainerPropsType = Pick<
 
 export type TagTextPropsType = Partial<{
     smallVerticalPadding: boolean;
+    isDisabled: boolean;
 }> &
     Pick<TagEffectivePropsType, 'deleteOption'>;
 

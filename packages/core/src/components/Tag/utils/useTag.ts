@@ -58,7 +58,7 @@ export const useTag = <E extends HTMLDivElement>(
             icon,
             indicator,
         },
-        tagCloseIconContainerProps: {
+        tagClearButtonProps: {
             deleteOption,
             small,
             onClick: onCloseButtonClick,
@@ -67,8 +67,9 @@ export const useTag = <E extends HTMLDivElement>(
             tabIndex: 0,
             'data-testid': tagCloseIconContainer,
         },
-        tagTypographyProps: {
+        tagTextProps: {
             deleteOption,
+            isDisabled: disabled,
             smallVerticalPadding: small, // not to conflict with the Typography small prop
         },
         indicatorContainerProps: {

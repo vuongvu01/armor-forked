@@ -21,6 +21,3 @@ export type SearchClearActionPropsType = Partial<{
 
 export type ClearIconContainerPropsType = SearchClearActionPropsType &
     ComponentElementStylePropsType;
-
-export type SearchInputClearIconPropsType = SearchClearActionPropsType &
-    ComponentElementStylePropsType;

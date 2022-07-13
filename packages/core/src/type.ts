@@ -29,3 +29,5 @@ export type DictionaryItemIDBasedType = {
     id: ScalarType;
     label: string;
 };
+
+export type WithChildren<T = {}> = T & { children: React.ReactNode };
