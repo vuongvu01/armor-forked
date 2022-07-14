@@ -26,6 +26,7 @@ export const useDatePickerMonthYearSelector = <E extends HTMLDivElement>(
         displayedDateVector,
         onDisplayedDateVectorChange,
         toggleMonthYearSelector,
+        yearRange,
         ...restProps
     }: DatePickerMonthYearSelectorPropsType,
     ref: RefType<E>,
@@ -146,7 +147,7 @@ export const useDatePickerMonthYearSelector = <E extends HTMLDivElement>(
         },
 
         months: MONTH_NAMES_SHORT,
-        yearRange: displayedRange,
+        yearRange: yearRange || displayedRange,
         displayedYear,
         displayedMonth,
 

@@ -28,6 +28,7 @@ export const useDatePicker = <E extends HTMLDivElement>(
         defaultDateValue,
         dateValue,
         onDateValueChange,
+        yearRange,
     } = props;
 
     // controlled and uncontrolled state: dateValue, defaultDateValue and onDateValueChange mapped to internalValue
@@ -197,6 +198,7 @@ export const useDatePicker = <E extends HTMLDivElement>(
             displayedDateVector, // to indicate the currently displayed year and month
             onDisplayedDateVectorChange: setDisplayedDateVector, // to change the currently displayed year and month
             toggleMonthYearSelector: onMonthYearSelectorToggle,
+            yearRange,
         },
         timeSelectorProps: {
             value: timeSelectorValue,
