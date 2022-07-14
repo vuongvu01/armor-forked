@@ -60,6 +60,8 @@ type HeaderNavigationSelectorEffectivePropsType = {
     iconAlign?: 'left' | 'right';
     /** Icon component as reactnode */
     selectorIcon: ReactNode;
+    /** Show Dropdown content */
+    showDropDownContent?: boolean;
 } & HTMLAttributes<HTMLElement> &
     MarginPropsType &
     ComponentBehaviourPortalType &
@@ -68,11 +70,13 @@ type HeaderNavigationSelectorEffectivePropsType = {
 export type HeaderNavigationSelectorPropsType =
     HeaderNavigationSelectorEffectivePropsType;
 
-export type HeaderNavigationSelectorRootPropsType = {
-    isOptionListShown?: boolean;
-    separator?: boolean;
-    zIndex?: number;
-} & ComponentElementStylePropsType &
+export type HeaderNavigationSelectorRootPropsType = Partial<{
+    isOptionListShown: boolean;
+    separator: boolean;
+    zIndex: number;
+    showDropDownContent: boolean;
+}> &
+    ComponentElementStylePropsType &
     WidthPropsType;
 
 export type HeaderNavigationSelectorItemRootPropsType = Partial<{

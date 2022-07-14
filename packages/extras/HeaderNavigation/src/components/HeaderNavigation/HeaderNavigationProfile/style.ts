@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import {
     color,
     propsBlocker,
@@ -41,6 +41,11 @@ export const HeaderNavigationProfileButtonRoot = styled.div.withConfig(
     align-items: center;
     width: ${spacing(9)};
     height: ${spacing(9)};
+    ${({ open }) =>
+        open &&
+        css`
+            background-color: ${color('neutral.02')};
+        `}
     &:hover {
         background-color: ${color('primary.01')};
         border-color: transparent;

@@ -33,6 +33,8 @@ export const HeaderNavigationProfile = forwardRef<
         menuLinks,
         selectorOptions,
         selectorLabel,
+        open,
+        onOpenChange,
         ...restProps
     },
     ref,
@@ -42,41 +44,54 @@ export const HeaderNavigationProfile = forwardRef<
         className,
     );
 
-    const { selectedValue: selectedValueProp, setSelectedValue } =
-        useHeaderNavigationProfile({
-            selectedValue,
-            onSelectedValueChange,
-        });
+    const {
+        selectedValue: selectedValueProp,
+        setSelectedValue,
+        openState,
+        setOpenState,
+    } = useHeaderNavigationProfile({
+        selectedValue,
+        onSelectedValueChange,
+        open,
+        onOpenChange,
+    });
 
     return (
-        <HeaderNavigationProfileRoot
-            {...restProps}
-            className={classOverride.NavigationProfile}
-        >
-            <HeaderNavigationProfileWrapper
-                data-testid={HEADER_NAVIGATION_PROFILE_ROOT}
-                ref={ref}
-                className={classOverride.NavigationProfileWrapper}
+        <>
+            <HeaderNavigationProfileRoot
+                {...restProps}
+                className={classOverride.NavigationProfile}
             >
-                <ContextMenu
-                    trigger={
-                        <HeaderNavigationProfileButton
-                            usernameInitials={usernameInitials}
-                            tabIndex={0}
-                        />
-                    }
-                    align="bottom-start"
+                <HeaderNavigationProfileWrapper
+                    data-testid={HEADER_NAVIGATION_PROFILE_ROOT}
+                    ref={ref}
+                    className={classOverride.NavigationProfileWrapper}
                 >
-                    <HeaderNavigationProfileMenu
-                        selectedValue={selectedValueProp}
-                        onSelectedValueChange={setSelectedValue}
-                        menuLinks={menuLinks}
-                        selectorOptions={selectorOptions}
-                        selectorLabel={selectorLabel}
-                    />
-                </ContextMenu>
-            </HeaderNavigationProfileWrapper>
-        </HeaderNavigationProfileRoot>
+                    <ContextMenu
+                        trigger={
+                            <HeaderNavigationProfileButton
+                                usernameInitials={usernameInitials}
+                                tabIndex={0}
+                                open={openState}
+                            />
+                        }
+                        open={openState}
+                        align="bottom-start"
+                        onOpenChange={(openVal) => {
+                            setOpenState(openVal);
+                        }}
+                    >
+                        <HeaderNavigationProfileMenu
+                            selectedValue={selectedValueProp}
+                            onSelectedValueChange={setSelectedValue}
+                            menuLinks={menuLinks}
+                            selectorOptions={selectorOptions}
+                            selectorLabel={selectorLabel}
+                        />
+                    </ContextMenu>
+                </HeaderNavigationProfileWrapper>
+            </HeaderNavigationProfileRoot>
+        </>
     );
 });
 
@@ -84,7 +99,7 @@ HeaderNavigationProfile.displayName = HEADER_NAVIGATION_PROFILE_CLASS_PREFIX;
 
 HeaderNavigationProfile.propTypes = {
     children: PropTypes.element,
-    selectedValue: PropTypes.string,
+    selectedValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     onSelectedValueChange: PropTypes.func,
     usernameInitials: PropTypes.string,
     menuLinks: PropTypes.array,

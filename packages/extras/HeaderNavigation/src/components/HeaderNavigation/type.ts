@@ -65,12 +65,16 @@ export type NavigationSelectorParamsType = {
 
 /** 👉 PROPS TYPE */
 type HeaderNavigationEffectivePropsType = Partial<{
+    /** React node that is displayed on left most part containing title logo */
     title: ReactNode;
-    defaultExpanded: boolean;
+    /** React node that is displayed on right most part containing selector dropdowns */
     selector: ReactNode;
+    /** Color for top border of navigation */
     brandColor: string;
+    /** Profile area content */
     profile: ReactNode;
-    pluginMenu: ReactNode;
+    /** Show border at bottom of header navigation */
+    showBottomBorder: boolean;
 }> &
     Omit<HTMLAttributes<HTMLElement>, 'title'> &
     MarginPropsType;

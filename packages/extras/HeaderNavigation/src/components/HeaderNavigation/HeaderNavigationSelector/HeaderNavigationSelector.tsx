@@ -51,6 +51,7 @@ export const HeaderNavigationSelector = forwardRef<
     } = useHeaderNavigationSelector(restProps, ref);
 
     const { iconAlign, Icon } = selectorIcon;
+    const { showDropDownContent } = rootProps;
 
     return (
         <HeaderNavigationSelectorRoot
@@ -98,7 +99,7 @@ export const HeaderNavigationSelector = forwardRef<
                         className={classOverride.OptionListContainer}
                         {...listContainerProps}
                     >
-                        {isOpen && (
+                        {isOpen && showDropDownContent && (
                             <>
                                 <ContextMenuArrow
                                     className={classOverride.Arrow}
@@ -134,6 +135,7 @@ HeaderNavigationSelector.propTypes = {
     onOptionSelect: PropTypes.func,
     separator: PropTypes.bool,
     selectorIcon: PropTypes.node,
+    showDropDownContent: PropTypes.bool,
 };
 
 HeaderNavigationSelector.displayName = HEADER_NAVIGATION_SELECTOR_CLASS_PREFIX;

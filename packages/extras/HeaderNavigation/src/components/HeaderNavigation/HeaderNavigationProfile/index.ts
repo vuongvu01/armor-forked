@@ -6,4 +6,5 @@ export * from './HeaderNavigationProfile';
 export type {
     HeaderNavigationProfilePropsType,
     HeaderNavigationProfileMenuItemPropsType,
+    HeaderNavigationProfileMenuLink,
 } from './type';

@@ -3,7 +3,12 @@ import React, { useState } from 'react';
 import { IconPlaceholderIcon, PinMarkerIcon } from '@deliveryhero/armor-icons';
 import { LEFT } from '@deliveryhero/armor-system';
 
-import { ExpansionIndicator } from '@deliveryhero/armor';
+import {
+    DropdownSelectedOptionType,
+    DropdownValueType,
+    ExpansionIndicator,
+    OptionObjectType,
+} from '@deliveryhero/armor';
 import {
     HeaderNavigation,
     HeaderNavigationSelector,
@@ -18,10 +23,6 @@ export default {
 };
 
 export const OpsPortalUseCase = () => {
-    const [currentCountry, setCurrentCountry] = useState<number>(2);
-    const [currentPlugin, setCurrentPlugin] = useState<number>(2);
-    const [currentLanguage, setCurrentLanguage] = useState<number>(2);
-
     const countries = [
         {
             value: -1,
@@ -85,82 +86,102 @@ export const OpsPortalUseCase = () => {
         { value: 1, label: 'Deutsch', code: 'de' },
         { value: 3, label: 'Italian', code: 'it' },
     ];
+    const [currentCountry, setCurrentCountry] =
+        useState<DropdownSelectedOptionType>(countries[0]);
+    const [currentPlugin, setCurrentPlugin] =
+        useState<DropdownSelectedOptionType>(plugins[0]);
+    const [currentLanguage, setCurrentLanguage] =
+        useState<DropdownValueType>(2);
+
+    const [open, setOpen] = useState(false);
 
     const selectorCountryProps = {
         label: 'Country',
         options: countries,
-        value: currentCountry,
+        value: (currentCountry as OptionObjectType).value,
     };
 
     const selectorPluginProps = {
         label: 'Plugins',
         options: plugins,
-        value: currentPlugin,
+        value: (currentPlugin as OptionObjectType).value,
     };
 
     return (
-        <HeaderNavigation
-            title={<DHLogo />}
-            brandColor="#D81E27"
-            selector={
-                <>
-                    <HeaderNavigationSelector
-                        navigationSelectorParams={selectorPluginProps}
-                        onOptionSelect={(plugin) => {
-                            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                            // @ts-ignore
-                            setCurrentPlugin(plugin.value);
+        <>
+            <HeaderNavigation
+                title={<DHLogo />}
+                brandColor="#D81E27"
+                selector={
+                    <>
+                        <HeaderNavigationSelector
+                            navigationSelectorParams={selectorPluginProps}
+                            onOptionSelect={(
+                                plugin: DropdownSelectedOptionType,
+                            ) => {
+                                setCurrentPlugin(plugin);
+                            }}
+                            selectorIcon={<ExpansionIndicator />}
+                        />
+                        <HeaderNavigationSelector
+                            navigationSelectorParams={selectorCountryProps}
+                            enableSearchOption
+                            onOptionSelect={(
+                                country: DropdownSelectedOptionType,
+                            ) => {
+                                setCurrentCountry(country);
+                            }}
+                            iconAlign={LEFT}
+                            selectorIcon={<PinMarkerIcon />}
+                        />
+                    </>
+                }
+                profile={
+                    <HeaderNavigationProfile
+                        usernameInitials="VS"
+                        selectorLabel="Language"
+                        selectedValue={currentLanguage}
+                        onSelectedValueChange={(lang) => {
+                            setCurrentLanguage(lang);
                         }}
-                        selectorIcon={<ExpansionIndicator />}
-                    />
-                    <HeaderNavigationSelector
-                        navigationSelectorParams={selectorCountryProps}
-                        enableSearchOption
-                        onOptionSelect={(country) => {
-                            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                            // @ts-ignore
-                            setCurrentCountry(country.value);
+                        selectorOptions={language}
+                        open={open}
+                        onOpenChange={(openVal) => {
+                            setOpen(openVal);
                         }}
-                        iconAlign={LEFT}
-                        selectorIcon={<PinMarkerIcon />}
+                        menuLinks={[
+                            {
+                                id: 1,
+                                linkLabel: 'Development',
+                                linkAction: () => {
+                                    alert('linkaction 1');
+                                },
+                            },
+                            {
+                                id: 2,
+                                linkLabel: 'GDPR policy',
+                                href: 'https://google.com',
+                                target: '_blank',
+                            },
+                            {
+                                id: 3,
+                                linkLabel: (
+                                    <span data-test-id="test-jsx">JSX tag</span>
+                                ),
+                                href: 'https://google.com',
+                                target: '_blank',
+                            },
+                            {
+                                id: 4,
+                                linkLabel: 'Logout',
+                                linkAction: () => {
+                                    alert('linkaction 3');
+                                },
+                            },
+                        ]}
                     />
-                </>
-            }
-            profile={
-                <HeaderNavigationProfile
-                    usernameInitials="VS"
-                    selectorLabel="Language"
-                    selectedValue={currentLanguage}
-                    onSelectedValueChange={(lang) => {
-                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                        // @ts-ignore
-                        setCurrentLanguage(lang);
-                    }}
-                    selectorOptions={language}
-                    menuLinks={[
-                        {
-                            id: 1,
-                            linkLabel: 'Development',
-                            linkAction: () => {
-                                alert('linkaction 1');
-                            },
-                        },
-                        {
-                            id: 2,
-                            linkLabel: 'GDPR policy',
-                            href: 'https://google.com',
-                            target: '_blank',
-                        },
-                        {
-                            id: 3,
-                            linkLabel: 'Logout',
-                            linkAction: () => {
-                                alert('linkaction 3');
-                            },
-                        },
-                    ]}
-                />
-            }
-        />
+                }
+            />
+        </>
     );
 };

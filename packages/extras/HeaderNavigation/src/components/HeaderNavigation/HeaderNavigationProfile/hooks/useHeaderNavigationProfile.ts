@@ -4,6 +4,8 @@ import { UseHeaderNavigationProfileProps } from '../type';
 const useHeaderNavigationProfile = ({
     selectedValue: selectedValueProp,
     onSelectedValueChange,
+    open,
+    onOpenChange,
 }: UseHeaderNavigationProfileProps) => {
     const [selectedValue, setSelectedValue] = useControlledState(
         '',
@@ -11,9 +13,17 @@ const useHeaderNavigationProfile = ({
         onSelectedValueChange,
     );
 
+    const [openState, setOpenState] = useControlledState(
+        false,
+        open,
+        onOpenChange,
+    );
+
     return {
         selectedValue,
         setSelectedValue,
+        setOpenState,
+        openState,
     };
 };
 

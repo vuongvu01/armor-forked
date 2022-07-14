@@ -72,7 +72,7 @@ HeaderNavigationProfileMenuItem.displayName =
 
 HeaderNavigationProfileMenuItem.propTypes = {
     children: PropTypes.element,
-    linkLabel: PropTypes.string,
+    linkLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     linkAction: PropTypes.func,
     separator: PropTypes.bool,
     href: PropTypes.string,

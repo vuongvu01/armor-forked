@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import {
     color,
     spacing,
@@ -87,7 +87,11 @@ export const HeaderNavigationSelectorRoot = styled(
 )<HeaderNavigationSelectorRootPropsType>`
     padding: ${spacing(0, 4)};
     height: ${spacing(12)};
-    cursor: pointer;
+    ${({ showDropDownContent }) =>
+        showDropDownContent &&
+        css`
+            cursor: pointer;
+        `}
     display: flex;
     align-items: center;
 
