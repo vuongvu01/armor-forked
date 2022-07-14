@@ -1,5 +1,4 @@
 import React, { forwardRef, memo } from 'react';
-import { CancelIcon } from '@deliveryhero/armor-icons';
 
 import { useConditionTagClassNames } from './hooks/useConditionTagClassNames';
 import { useConditionTag } from './hooks/useConditionTag';
@@ -15,6 +14,7 @@ import {
 import { ConditionTagPropsType } from './type';
 import { CONDITION_TAG_CLASS_PREFIX } from './constants';
 import { Tooltip } from '../Tooltip';
+import { ClearButton } from '../ClearButton';
 
 /**
  * # ConditionTag
@@ -87,7 +87,7 @@ export const ConditionTag = forwardRef<HTMLDivElement, ConditionTagPropsType>(
                         {...closeButtonProps}
                         className={classNames.CloseIconContainer}
                     >
-                        <CancelIcon small />
+                        <ClearButton />
                     </ConditionTagCloseIconContainer>
                 )}
             </ConditionTagRoot>

@@ -65,7 +65,7 @@ describe('<Search />', () => {
         render(<Search defaultQuery="birya" options={foodOptions} />);
 
         const match = screen.getByTestId(searchInputClearIcon);
-        expect(match).toBeInstanceOf(SVGSVGElement);
+        expect(match).toBeInstanceOf(HTMLButtonElement);
         expect(match).toHaveClass('SearchClearAction-AfterIcon');
     });
 

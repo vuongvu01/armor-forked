@@ -3,7 +3,6 @@ import { CancelIcon, SVGIconPropsType } from '@deliveryhero/armor-icons';
 import {
     marginProps,
     widthProps,
-    color,
     spacing,
     propsBlocker,
     getComponentOverride,
@@ -151,7 +150,6 @@ export const DropdownBeforeSectionRoot = styled(
     Pack,
 )<DropdownTagsSectionPropsType>`
     padding-left: ${spacing(4)};
-    padding-right: ${spacing(4)};
     min-width: ${spacing(40)};
     min-height: ${spacing(10)};
     width: 100%;
@@ -176,16 +174,9 @@ export const DropdownBeforeSectionTagsWrapper = styled.div.withConfig(
 export const DropdownBeforeSectionActionContainer = styled(
     PackItem,
 )<DropdownTagsSectionPropsType>`
-    width: ${spacing(4)};
+    box-sizing: border-box;
+    width: ${spacing(6)};
 `;
-
-const dropdownBeforeSectionClearButtonStyle = ({
-    disabled,
-}: DropdownTagsSectionPropsType) =>
-    css`
-        color: ${disabled ? color('neutral.05') : color('neutral.11')};
-        cursor: ${disabled ? 'default' : 'pointer'};
-    `;
 
 export const DropdownBeforeSectionClearButton = styled(
     PackItem,
@@ -196,10 +187,6 @@ export const DropdownBeforeSectionClearButton = styled(
     outline: none;
     flex: 0 0 auto;
     margin-top: ${spacing(1.75)};
-    margin-left: ${spacing(2)};
-    ${dropdownBeforeSectionClearButtonStyle}
-
-    ${getComponentOverride('DropdownBeforeSectionClearButton')};
 `;
 
 const dropdownTagStyle = ({ disabled }: DropdownTagsSectionPropsType) => {

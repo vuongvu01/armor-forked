@@ -21,6 +21,8 @@ import {
     dataSourceWithNumberIds,
     columnsWithUrl,
     dataSourceWithUrl,
+    columnsWideWithWidth,
+    dataSourceWideWithLongName,
 } from './demoData';
 import { DataTable } from '../DataTable';
 import { getSortingFunction } from '../utils/getSortingFunction';
@@ -431,7 +433,75 @@ export const RowSelectionAndStickyColumns = () => {
             }}
             stickyLeftColumn
             stickyRightColumn
-            width="50rem"
+            width="100%"
+        />
+    );
+};
+
+const StyledDataTable = styled(DataTable)`
+    .Table-Root {
+        border: 1px solid #dbdbdb;
+    }
+
+    .TableHead-Root {
+        position: relative;
+
+        &:after {
+            content: '';
+
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            height: 4px;
+            background: #dbdbdb;
+        }
+    }
+
+    th.TableCell-Root {
+        background: #f4f4f4;
+
+        &::before {
+            background: #f4f4f4;
+        }
+    }
+
+    .TableCell-Root--sticky::after {
+        box-shadow: none;
+        border: none;
+        background: #dbdbdb;
+        width: 4px;
+        height: 100%;
+    }
+
+    th.TableCell-Root--stickyRightColumn::after,
+    td.TableCell-Root--stickyRightColumn::after {
+        left: 0;
+    }
+
+    th.TableCell-Root--stickyLeftColumn::after,
+    td.TableCell-Root--stickyLeftColumn::after {
+        right: 0;
+    }
+
+    .TableBody-Root .TableCell-Root {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+`;
+
+export const CustomStyledWithStickyColumns = () => {
+    const [data] = useState<typeof largeData2>(dataSourceWideWithLongName);
+
+    return (
+        <StyledDataTable
+            columns={columnsWideWithWidth}
+            data={data}
+            width="100%"
+            stickyLeftColumn
+            stickyRightColumn
         />
     );
 };

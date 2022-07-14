@@ -27,11 +27,16 @@ export const reset = (): CSSChunkType => css`
 
 export const buttonReset = (): CSSChunkType => css`
     appearance: none;
-    border: 0 none;
+    border: none;
     background-color: transparent;
     border-radius: 0;
     display: block;
+    cursor: pointer;
     padding: 0;
+
+    &[disabled] {
+        cursor: default;
+    }
 `;
 
 export const zIndex = ({

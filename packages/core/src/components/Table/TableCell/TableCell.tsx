@@ -49,13 +49,18 @@ import { useTableCell } from './hooks/useTableCell';
  * @armor-docs-component
  */
 export const TableCell = forwardRef<HTMLTableCellElement, TableCellPropsType>(
-    function TableCell({ className, children, ...props }, ref) {
+    function TableCell({ className, children, ...restProps }, ref) {
+        const { stickyAlignment, stickyVisible, stickyTop } = restProps;
+
         const classNameComponents = useTableCellClassNames(
             TABLE_CELL_CLASS_PREFIX,
             className,
+            stickyAlignment,
+            stickyVisible,
+            stickyTop,
         );
 
-        const { rootProps, Tag } = useTableCell(props);
+        const { rootProps, Tag } = useTableCell(restProps);
 
         // todo: forward only className here, it will be more efficient and neat
         return (

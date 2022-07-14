@@ -2,7 +2,6 @@ import styled, { css } from 'styled-components';
 import {
     marginProps,
     propsBlocker,
-    getComponentOverride,
     reset,
     typography,
     spacing,
@@ -46,7 +45,6 @@ export const ConditionTagRoot = styled.div.withConfig(
         }
     }
 
-    ${getComponentOverride('ConditionTag')};
     ${marginProps};
 `;
 
@@ -110,18 +108,8 @@ export const ConditionTagCloseIconContainer = styled.div.withConfig(
     justify-content: center;
     opacity: 0;
     transform: translateX(${spacing(6)});
-    ${transition({ opacity: true, transform: true, 'background-color': true })};
-    outline: none;
-    background-color: ${color('primary.lightest')};
-    color: ${color('error.light')};
-    //align-self: center;
+    ${transition({ opacity: true, transform: true })};
     position: absolute;
     top: 2px;
     right: 3px;
-    cursor: pointer;
-
-    &:hover {
-        background-color: ${color('neutral.02')};
-    }
-    ${round};
 `;

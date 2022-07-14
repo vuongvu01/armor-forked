@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { FileTaskListIcon} from '@deliveryhero/armor-icons';
+import { FileTaskListIcon } from '@deliveryhero/armor-icons';
 import { GroupHelper } from '../../../helpers/GroupHelper';
 import { Tag } from '../Tag';
 import { withWrapper } from '../../../helpers/Wrapper';
@@ -104,11 +104,28 @@ export const InteractiveExample = () => {
                         marginRight={3}
                     />
                 )}
+                {isOpen1 && (
+                    <Tag
+                        label="Close me"
+                        deleteOption="enabled"
+                        onClose={() => setIsOpen1(false)}
+                        marginRight={3}
+                        small
+                    />
+                )}
                 {isOpen2 && (
                     <Tag
                         label="Close me"
                         onClose={() => setIsOpen2(false)}
                         marginRight={3}
+                    />
+                )}
+                {isOpen2 && (
+                    <Tag
+                        label="Close me"
+                        onClose={() => setIsOpen2(false)}
+                        marginRight={3}
+                        small
                     />
                 )}
                 {isOpen3 && (
@@ -314,7 +331,6 @@ export const TagWithIndicators = () => {
         </>
     );
 };
-
 
 export const TagWithIcons = () => {
     return (

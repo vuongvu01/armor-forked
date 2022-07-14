@@ -192,19 +192,18 @@ export const DataTable = forwardRef<HTMLDivElement, DataTablePropsType>(
                         )}
                         {columns.map((column) => {
                             const TableCellComponent = getCellTag(column);
+                            const cellProps = getCellProps(column, item);
 
                             return (
                                 <TableCellComponent
                                     key={column.key || column.id}
-                                    {...getCellProps(column, item)}
+                                    {...cellProps}
                                 >
-                                    {column.formatDataCellContent
-                                        ? column.formatDataCellContent(
-                                              item[column.id],
-                                              item,
-                                              column,
-                                          )
-                                        : item[column.id]}
+                                    {column.formatDataCellContent?.(
+                                        item[column.id],
+                                        item,
+                                        column,
+                                    ) ?? item[column.id]}
                                 </TableCellComponent>
                             );
                         })}

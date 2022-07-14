@@ -2,17 +2,17 @@ import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { isStatusTag, useTagClassName } from './utils';
-import { TagDeleteIconModeType, TagPropsType } from './type';
-import { TAG_CLASS_PREFIX, TAG_DELETE_BEHAVIOUR_OPTIONS } from './constants';
+import { TagPropsType } from './type';
+import { TAG_CLASS_PREFIX, TAG_CLEAR_BUTTON_PROPS_MAP } from './constants';
 import {
-    TagCloseIcon,
-    TagCloseIconContainer,
+    TagClearButtonContainer,
     TagRoot,
     TagText,
     TagIndicatorContainer,
     TagIconContainer,
 } from './style';
 import { useTag } from './utils/useTag';
+import { ClearButton } from '../ClearButton';
 
 /**
  * # Tag
@@ -52,8 +52,8 @@ export const Tag = forwardRef<HTMLDivElement, TagPropsType>(function Tag(
 ) {
     const {
         rootProps,
-        tagTypographyProps,
-        tagCloseIconContainerProps,
+        tagTextProps,
+        tagClearButtonProps,
         content,
         deleteOption,
         type,
@@ -77,32 +77,51 @@ export const Tag = forwardRef<HTMLDivElement, TagPropsType>(function Tag(
 
     const tagTypeStatus = isStatusTag(type);
 
+    const showIndicator = Boolean(indicator && tagTypeStatus);
+
+    const showIcon = Boolean(icon && tagTypeStatus && !indicator);
+
+    const showClearButton = Boolean(
+        !tagTypeStatus &&
+            !disabled &&
+            (deleteOption === 'enabled' || deleteOption === 'onHover'),
+    );
+
+    const clearButtonProps =
+        deleteOption && deleteOption in TAG_CLEAR_BUTTON_PROPS_MAP
+            ? TAG_CLEAR_BUTTON_PROPS_MAP[deleteOption]
+            : {};
+
     return (
         <TagRoot {...rootProps} className={classOverride.Root}>
-            {indicator && tagTypeStatus && (
+            {showIndicator && (
                 <TagIndicatorContainer {...indicatorContainerProps}>
                     {indicator}
                 </TagIndicatorContainer>
             )}
-            {icon && tagTypeStatus && !indicator && (
+
+            {showIcon && (
                 <TagIconContainer {...iconContainerProps}>
                     {icon}
                 </TagIconContainer>
             )}
-            <TagText {...tagTypographyProps} className={classOverride.Label}>
+
+            <TagText {...tagTextProps} className={classOverride.Label}>
                 {content}
             </TagText>
-            {!tagTypeStatus &&
-            (deleteOption === TAG_DELETE_BEHAVIOUR_OPTIONS.ENABLED ||
-                (deleteOption === TAG_DELETE_BEHAVIOUR_OPTIONS.ON_HOVER &&
-                    !disabled)) ? (
-                <TagCloseIconContainer
-                    {...tagCloseIconContainerProps}
+
+            {showClearButton && (
+                <TagClearButtonContainer
+                    {...tagClearButtonProps}
                     className={classOverride.CloseIconContainer}
                 >
-                    <TagCloseIcon className={classOverride.CloseIcon} />
-                </TagCloseIconContainer>
-            ) : null}
+                    <ClearButton
+                        {...clearButtonProps}
+                        size={small ? 'medium' : undefined}
+                        className={classOverride.CloseIcon}
+                    />
+                </TagClearButtonContainer>
+            )}
         </TagRoot>
     );
 });

@@ -26,7 +26,6 @@ import { getTableCellOverride } from './Table/TableCell';
 import { getTableExpandableSectionOverride } from './Table/TableExpandableSection';
 import { getMessageOverride } from './Message';
 import {
-    getSearchClearActionOverride,
     getSearchEmptySuggestionsListOverride,
     getSearchOverride,
     getSearchSuggestionItemOverride,
@@ -37,7 +36,6 @@ import { getTooltipOverride } from './Tooltip';
 import { getBackdropOverride } from './Backdrop';
 import { getDialogOverride, getDialogTitleOverride } from './Dialog';
 import { getSideSheetOverride } from './SideSheet';
-import { getDropdownBeforeSectionClearButtonOverride } from './DropdownBeforeSectionClearButton';
 import { getOptionListItemOverride } from './OptionList/OptionListItem';
 import { getOptionListOverride } from './OptionList/OptionList';
 import { getOptionListItemGroupOverride } from './OptionList/OptionListItemGroup';
@@ -63,6 +61,7 @@ import { getProgressBarOverride } from './ProgressBar';
 import { getToastOverride } from './Toast';
 import { getFocusStateOverride } from './FocusState';
 import { getFileUploaderOverride } from './FileUploader';
+import { getClearButtonOverride } from './ClearButton';
 
 export const darkThemeComponentOverrides = {
     Accordion: getAccordionOverride,
@@ -70,8 +69,6 @@ export const darkThemeComponentOverrides = {
     Button: getButtonOverride,
     Dialog: getDialogOverride,
     DialogTitle: getDialogTitleOverride,
-    DropdownBeforeSectionClearButton:
-        getDropdownBeforeSectionClearButtonOverride,
     OptionListItem: getOptionListItemOverride,
     OptionList: getOptionListOverride,
     OptionListItemGroup: getOptionListItemGroupOverride,
@@ -91,7 +88,6 @@ export const darkThemeComponentOverrides = {
     HeaderNavigationTitle: getHeaderNavigationTitleOverride,
     PageNavigation: getPageNavigationOverride,
     Search: getSearchOverride,
-    SearchClearAction: getSearchClearActionOverride,
     SearchEmptySuggestionsList: getSearchEmptySuggestionsListOverride,
     SearchSuggestionItem: getSearchSuggestionItemOverride,
     SideSheet: getSideSheetOverride,
@@ -131,4 +127,5 @@ export const darkThemeComponentOverrides = {
     Toast: getToastOverride,
     FocusState: getFocusStateOverride,
     FileUploader: getFileUploaderOverride,
+    ClearButton: getClearButtonOverride,
 };

@@ -5,6 +5,7 @@ import {
     colorGrey40,
     colorGrey80,
     colorGrey90,
+    colorGrey00,
 } from '@deliveryhero/armor-system';
 import { TagPropsType } from '@deliveryhero/armor';
 
@@ -31,37 +32,33 @@ export const TAG_DELETE_BEHAVIOUR_OPTIONS = {
     ON_HOVER: 'onHover',
 };
 
-export const getTagOverride = ({
-    type,
-    deleteOption,
-    disabled,
-}: TagPropsType) => {
-    let result = css`
-        .Tag-CloseIconContainer {
-            color: ${colorGrey40};
-            &:hover {
-                background-color: ${disabled ? 'transparent' : colorBlue10};
-                color: ${disabled ? colorGrey40 : colorGrey90};
-            }
-        }
+export const getTagOverride = ({ type, filled }: TagPropsType) => {
+    if (filled) {
+        return css`
+            background-color: ${colorBlue10};
 
+            .Tag-Label {
+                color: ${colorGrey90};
+            }
+        `;
+    }
+
+    let result = css`
         .Tag-Label {
-            color: ${colorBlue20};
+            color: ${colorGrey00};
         }
     `;
 
     if (!isStatusTag(type)) {
         result = css`
             ${result};
-            background-color: ${deleteOption ===
-            TAG_DELETE_BEHAVIOUR_OPTIONS.ON_HOVER
-                ? 'transparent'
-                : 'rgba(146, 186, 246, 0.2)'};
             border-color: ${colorBlue20};
+            background-color: ${colorGrey80};
         `;
     } else {
         result = css`
             ${result};
+
             .Tag-Label {
                 color: ${colorGrey80};
             }

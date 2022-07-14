@@ -55,3 +55,4 @@ export * from './ContentSwitcher';
 export * from './Toast';
 export * from './ProgressBar';
 export * from './FileUploader';
+export * from './ClearButton';
