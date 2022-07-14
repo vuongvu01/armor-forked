@@ -1,3 +1,15 @@
+## [1.2.5](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datatable@1.2.4...@deliveryhero/armor-datatable@1.2.5) (2022-07-14)
+
+
+### Bug Fixes
+
+* **DataTable:** support columns width, add classNames and add styled example [LD-842] ([#1099](https://github.com/deliveryhero/armor/issues/1099)) ([ef2562f](https://github.com/deliveryhero/armor/commit/ef2562f6c5b52a965a16ead1613f477bf65cc1c6))
+
+
+### Features
+
+* **ClearButton:** implement new clear button in several places [LD-649] ([#1098](https://github.com/deliveryhero/armor/issues/1098)) ([9e2f04e](https://github.com/deliveryhero/armor/commit/9e2f04e364dac904c21317ac7e9ac0c4a37ecb99)), closes [#1047](https://github.com/deliveryhero/armor/issues/1047)
+
 ## [1.2.4](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datatable@1.2.3...@deliveryhero/armor-datatable@1.2.4) (2022-07-11)
 
 
