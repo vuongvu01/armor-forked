@@ -1,3 +1,20 @@
+## [1.4.3](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-illustrations@1.4.2...@deliveryhero/armor-illustrations@1.4.3) (2022-07-14)
+
+
+### Bug Fixes
+
+* **DataTable:** allow horizontalScroll ([#1088](https://github.com/deliveryhero/armor/issues/1088)) ([708f94a](https://github.com/deliveryhero/armor/commit/708f94abeeea090136fb245ef8a3788b3f41b1de))
+* **DataTable:** support columns width, add classNames and add styled example [LD-842] ([#1099](https://github.com/deliveryhero/armor/issues/1099)) ([ef2562f](https://github.com/deliveryhero/armor/commit/ef2562f6c5b52a965a16ead1613f477bf65cc1c6))
+* **icons:** fix the icon size inconsistencies [LD-813] ([#1070](https://github.com/deliveryhero/armor/issues/1070)) ([e3f92fe](https://github.com/deliveryhero/armor/commit/e3f92fe05141f81f5d3cb9f8ef9954d8e023cc3d))
+* **Table:** Transparent fixed column in table on hover [AR-131] ([#1079](https://github.com/deliveryhero/armor/issues/1079)) ([2549809](https://github.com/deliveryhero/armor/commit/2549809bb11a9f4d678c72a91de902f4d47644ce))
+
+
+### Features
+
+* **ClearButton:** implement new clear button in several places [LD-649] ([#1098](https://github.com/deliveryhero/armor/issues/1098)) ([9e2f04e](https://github.com/deliveryhero/armor/commit/9e2f04e364dac904c21317ac7e9ac0c4a37ecb99)), closes [#1047](https://github.com/deliveryhero/armor/issues/1047)
+* **new header navigation:** ops portal [LD-506] ([#1059](https://github.com/deliveryhero/armor/issues/1059)) ([8a1fd8d](https://github.com/deliveryhero/armor/commit/8a1fd8d4aac604756cca03211b8e7d2716b7c385))
+* **props parser:** add support for reading extra components [LD-837] ([#1083](https://github.com/deliveryhero/armor/issues/1083)) ([97e3487](https://github.com/deliveryhero/armor/commit/97e348712bb8960169cb7f4938c1a4ab50a8959d))
+
 ## [1.4.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-illustrations@1.4.1...@deliveryhero/armor-illustrations@1.4.2) (2022-07-04)
 
 
