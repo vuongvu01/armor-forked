@@ -1,3 +1,16 @@
+# [1.3.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datepicker@1.2.5...@deliveryhero/armor-datepicker@1.3.0) (2022-07-15)
+
+
+### Bug Fixes
+
+* **Accordion:** fix animation when expanding/collapsing content ([#1101](https://github.com/deliveryhero/armor/issues/1101)) ([b1ab4bb](https://github.com/deliveryhero/armor/commit/b1ab4bb914391298f1dac3f744c88fd3996610e2))
+* **ops portal navigation:** post release fixes [LD-841] ([#1103](https://github.com/deliveryhero/armor/issues/1103)) ([3951c41](https://github.com/deliveryhero/armor/commit/3951c4118e3d3c4d46aff4c41eae02822451483a))
+
+
+### Features
+
+* **DatePicker:** Add property yearRange ([#1102](https://github.com/deliveryhero/armor/issues/1102)) ([4869242](https://github.com/deliveryhero/armor/commit/48692421ad9836138d15b8fb9cff2e1931eb9355))
+
 ## [1.2.5](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datepicker@1.2.4...@deliveryhero/armor-datepicker@1.2.5) (2022-07-14)
 
 
