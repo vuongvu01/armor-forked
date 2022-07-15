@@ -28,7 +28,20 @@ export default {
 export const Basic = () => {
     return (
         <Box paddingTop={20}>
-            <DatePicker data-testid-input="input42" />
+            <DatePicker data-testid-input="input42" yearRange={[1999]} />
+        </Box>
+    );
+};
+
+export const BasicWithPredefinedYearRange = () => {
+    return (
+        <Box paddingTop={20}>
+            <DatePicker
+                data-testid-input="input42"
+                yearRange={Array(50)
+                    .fill(0)
+                    .map((_, index) => index + 1990)}
+            />
         </Box>
     );
 };

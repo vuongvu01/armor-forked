@@ -54,7 +54,7 @@ export const HeaderNavigationProfileMenu = forwardRef<
                 ({ id, linkLabel, linkAction, href, target }, index) => (
                     <HeaderNavigationProfileMenuItem
                         key={id}
-                        linkLabel={linkLabel as string}
+                        linkLabel={linkLabel}
                         linkAction={linkAction}
                         separator={index < menuLinks.length - 1}
                         href={href}
@@ -73,7 +73,7 @@ HeaderNavigationProfileMenu.propTypes = {
     selectorOptions: PropTypes.array,
     selectorLabel: PropTypes.string,
     onSelectedValueChange: PropTypes.func,
-    selectedValue: PropTypes.string,
+    selectedValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 export const MemoizedHeaderNavigationProfileMenu = memo(

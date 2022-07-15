@@ -12,6 +12,7 @@ type DatePickerMonthYearSelectorEffectivePropsType = {
 
     displayedDateVector: DateVector;
     onDisplayedDateVectorChange: (newVector: DateVector) => void;
+    yearRange?: number[];
     // add other custom properties here
 } & HTMLAttributes<HTMLDivElement> & // includes all HTML Div properties
     MarginPropsType;

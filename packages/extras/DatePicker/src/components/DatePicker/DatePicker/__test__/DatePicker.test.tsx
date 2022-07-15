@@ -2,14 +2,14 @@
 
 import React, { useRef } from 'react';
 
-import { cleanup, fireEvent, prettyDOM, render } from '@testing-library/react';
+import { cleanup, fireEvent, render } from '@testing-library/react';
 import {
     renderHook,
     cleanup as cleanupHooks,
 } from '@testing-library/react-hooks';
 import { act } from 'react-dom/test-utils';
 
-import { DATE_PICKER_INFINITY, DatePicker } from '../../index';
+import { DatePicker } from '../../index';
 import { COMMON_CLASSES } from '../../__test__/common';
 import { DateVector } from '../../utils/DateVector';
 import { makeDateString } from '../../__test__/util';
@@ -154,6 +154,28 @@ describe('<DatePicker />', () => {
 
         expect(vect.hour).toEqual(10);
         expect(vect.minute).toEqual(20);
+    });
+
+    it('should support yearRange property', () => {
+        const { container } = render(
+            <DatePicker open yearRange={[1900, 1901]} />,
+        );
+
+        act(() => {
+            fireEvent.click(
+                container.querySelector(
+                    '.DatePickerTopBar-MonthYearSelectorToggle',
+                )!,
+            );
+        });
+
+        expect(
+            container.querySelector('[data-year="1900"]'),
+        ).toBeInTheDocument();
+
+        expect(
+            container.querySelector('[data-year="1901"]'),
+        ).toBeInTheDocument();
     });
 
     // it('should support controlled/uncontrolled value', async () => {

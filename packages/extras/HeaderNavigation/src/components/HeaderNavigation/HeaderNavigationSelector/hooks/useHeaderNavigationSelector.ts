@@ -126,8 +126,10 @@ export const useHeaderNavigationSelector = <E extends HTMLDivElement>(
         ...(iconAlign === RIGHT ? { marginLeft: 2 } : { marginRight: 2 }),
     });
 
+    const { showDropDownContent = true } = restProps;
+
     return {
-        rootProps: restProps,
+        rootProps: { ...restProps, showDropDownContent },
         optionListProps: {
             multiple: isMultiselect,
             formatOption,
@@ -145,7 +147,7 @@ export const useHeaderNavigationSelector = <E extends HTMLDivElement>(
             dynamicInternalOptions,
             setInternalOptions: setDynamicInternalOptions,
             autoFocus: true,
-            enableScrollGradientEffect: true,
+            enableScrollGradientEffect: false,
             maxDropdownHeight,
         },
         expansionIndicatorProps: {
@@ -156,6 +158,7 @@ export const useHeaderNavigationSelector = <E extends HTMLDivElement>(
             onKeyDown: handleEnterKeyDown,
             tabIndex: 0,
             isOptionListShown,
+            showDropDownContent,
         },
         selectedOptionsProps: {
             onClick: handleClick,

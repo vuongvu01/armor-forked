@@ -154,6 +154,7 @@ export type DatePickerEffectiveGenericPropsType<V> = Partial<{
     onDateValueChange: (dateValue: V | undefined | null) => void;
     dateValue: V | null;
     defaultDateValue: V | null;
+    yearRange?: number[];
 }>;
 
 export type DatePickerDropdownPropsType = {

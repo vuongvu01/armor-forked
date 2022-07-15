@@ -1,6 +1,7 @@
 import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
+import { Divider } from '@deliveryhero/armor';
 import { HeaderNavigationPropsType } from './type';
 import { HEADER_NAVIGATION_CLASS_PREFIX } from './constants';
 import {
@@ -33,6 +34,8 @@ export const HeaderNavigation = forwardRef<
         restProps,
         ref,
     );
+
+    const { showBottomBorder = true } = rootProps;
 
     return (
         <HeaderNavigationRoot className={classOverride.Root} {...rootProps}>
@@ -71,6 +74,7 @@ export const HeaderNavigation = forwardRef<
                     </HeaderNavigationContentRight>
                 </HeaderNavigationContentItem>
             </HeaderNavigationContent>
+            {showBottomBorder && <Divider />}
         </HeaderNavigationRoot>
     );
 });

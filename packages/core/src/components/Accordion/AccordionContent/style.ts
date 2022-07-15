@@ -22,9 +22,8 @@ const getRootStyle = ({ isExpanded }: AccordionContentRootPropsType) => {
     if (isExpanded) {
         return css`
             ${result};
-            height: 100%;
+            max-height: max-content;
             opacity: 1;
-            visibility: inherit;
             line-height: ${pixelToRemToken('typography.body.lineHeight')};
             padding: ${spacing(6)};
         `;
@@ -37,11 +36,11 @@ const getRootStyle = ({ isExpanded }: AccordionContentRootPropsType) => {
 export const AccordionContentRoot = styled.div.withConfig(
     propsBlocker,
 )<AccordionContentRootPropsType>`
-    height: 0;
+    max-height: 0;
     opacity: 0;
-    visibility: hidden;
     ${typography('paragraphLarge')};
     color: ${token('body.color')};
+    overflow: hidden;
     ${getRootStyle};
     ${paddingProps};
 `;
