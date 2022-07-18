@@ -9,6 +9,7 @@ import {
     useDetectEscapeKeyPressed,
 } from '@deliveryhero/armor-system';
 
+import { ClearButtonPropsType } from '../../ClearButton';
 import {
     useOnValueUpdate,
     useOptions,
@@ -235,10 +236,26 @@ export const useDropdown = <E extends HTMLInputElement>(
         [onChange, name],
     );
 
+    const onClearMultiple = useCallback(() => {
+        if (multiple && internalValue.length > 0) {
+            setInternalValue([]);
+        }
+    }, [internalValue.length, multiple, setInternalValue]);
+
+    const onContainerClick = (event: React.SyntheticEvent<Element>) => {
+        const element = event.target as Element;
+
+        if (element.classList.contains('TextInput-InnerContainer')) {
+            onOptionListVisibilityTriggerClick();
+        }
+    };
+
     return {
         rootProps: restProps,
         containerProps: {
             ref: containerRef,
+            disabled,
+            onClick: onContainerClick,
         },
         textInputProps: {
             onClick: onOptionListVisibilityTriggerClick,
@@ -340,6 +357,10 @@ export const useDropdown = <E extends HTMLInputElement>(
             renderAggregatedTagsLabel,
             singleLine,
         },
+        clearButtonProps: {
+            iconSize: 'medium',
+            onClick: onClearMultiple,
+        } as ClearButtonPropsType,
 
         disabled,
         multiple,

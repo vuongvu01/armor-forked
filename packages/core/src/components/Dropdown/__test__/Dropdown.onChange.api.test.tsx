@@ -223,9 +223,8 @@ describe('<Dropdown />', () => {
         onChange.mockClear();
 
         // checking for "Deselect all"
-        const clearAll = container.querySelector(
-            '.DropdownBeforeSection-ClearButton',
-        );
+        const clearAll = container.querySelector('.ClearButton-Root');
+
         act(() => {
             userEvent.click(clearAll!);
         });

@@ -133,10 +133,6 @@ export const useDropdownBeforeSection = <E extends HTMLDivElement>(
             ref: containerRef,
             singleLine,
         },
-        beforeSectionClearButtonProps: {
-            disabled,
-            onClick: handleRemoveAllTags,
-        },
         getDropdownTagProps: (option: OptionObjectType) => {
             const label = stringEllipsisAtMaxCharacters(
                 stripHTMLTags(option.label),

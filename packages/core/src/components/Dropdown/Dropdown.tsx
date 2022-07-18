@@ -9,7 +9,7 @@ import {
     DropdownRoot,
     DropdownTextInput,
     DropdownArrow,
-    ExpansionIndicatorContainer,
+    ActionsContainer,
 } from './style';
 import { DropdownPropsType } from './type';
 import {
@@ -18,6 +18,7 @@ import {
 } from './constants';
 import { OptionList } from '../OptionList';
 import { DropdownBeforeSection } from './DropdownBeforeSection';
+import { ClearButton } from '../ClearButton';
 
 /**
  * # Dropdown
@@ -70,6 +71,8 @@ export const Dropdown = forwardRef<HTMLInputElement, DropdownPropsType>(
             disabled,
             internalValue,
             open,
+            multiple,
+            clearButtonProps,
         } = useDropdown(props, ref);
 
         const classOverride = useDropdownClassName(
@@ -78,15 +81,21 @@ export const Dropdown = forwardRef<HTMLInputElement, DropdownPropsType>(
             disabled,
         );
 
+        const shouldDisplayClearButton =
+            multiple && !disabled && internalValue.length;
+
         const renderActionItem = (
-            <ExpansionIndicatorContainer
+            <ActionsContainer
                 className={classOverride.ExpansionIndicatorContainer}
             >
+                {shouldDisplayClearButton ? (
+                    <ClearButton {...clearButtonProps} />
+                ) : null}
                 <DropdownExpansionIndicator
                     {...dropdownExpansionIndicatorProps}
                     className={classOverride.ExpansionIndicator}
                 />
-            </ExpansionIndicatorContainer>
+            </ActionsContainer>
         );
 
         return (
