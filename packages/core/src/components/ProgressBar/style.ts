@@ -80,7 +80,7 @@ export const ProgressBarIndicator = styled.div.withConfig(
     propsBlocker,
 )<ProgressBarIndicatorPropsType>`
     ${reset};
-    ${transition({ width: true })};
+    ${transition({ width: true, backgroundColor: true })};
     ${getProgressIndicatorStyle};
     ${heightProps};
 `;
