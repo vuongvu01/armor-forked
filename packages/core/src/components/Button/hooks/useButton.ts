@@ -3,6 +3,10 @@ import { useRootRef } from '@deliveryhero/armor-system';
 import { RefType } from '../../../type';
 import { ButtonPropsType } from '../type';
 
+const preventDefault = (event: React.SyntheticEvent) => {
+    event.preventDefault();
+};
+
 export const useButton = <E extends HTMLElement>(
     {
         disabled,
@@ -20,7 +24,15 @@ export const useButton = <E extends HTMLElement>(
     ref: RefType<E>,
 ) => {
     const innerRef = useRootRef<E>(ref);
-    const sortOfDisabled = disabled || likeDisabled;
+
+    const isDisabled = disabled || likeDisabled;
+
+    const Tag = tag || 'button';
+
+    const isNotButtonTag = Tag !== 'button';
+
+    const onClick =
+        isNotButtonTag && isDisabled ? preventDefault : restProps?.onClick;
 
     return {
         rootProps: {
@@ -33,13 +45,14 @@ export const useButton = <E extends HTMLElement>(
             secondary,
             tertiary,
             danger,
-            tabIndex: sortOfDisabled ? -1 : tabIndex,
+            tabIndex: isDisabled ? -1 : tabIndex,
+            onClick,
         },
         tagProps: {
             ref: innerRef,
         },
         classNameProps: [
-            sortOfDisabled,
+            isDisabled,
             small,
             wide,
             primary,
@@ -47,6 +60,6 @@ export const useButton = <E extends HTMLElement>(
             tertiary,
             danger,
         ],
-        Tag: tag || 'button',
+        Tag,
     };
 };
