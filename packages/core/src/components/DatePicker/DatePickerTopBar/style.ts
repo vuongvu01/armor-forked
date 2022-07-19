@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { ArrowDownFilledIcon } from '@deliveryhero/armor-icons';
+import { ArrowDownIcon } from '@deliveryhero/armor-icons';
 import {
     transition,
     getComponentOverride,
@@ -74,7 +74,7 @@ const getMonthYearSelectorToggleArrowStyle = ({
 };
 
 export const DatePickerTopBarMonthYearSelectorToggleArrow = styled(
-    ArrowDownFilledIcon,
+    ArrowDownIcon,
 )<DatePickerTopBarMonthYearSelectorToggleArrowPropsType>`
     transition: transform ${durationNormal}ms ease;
     ${getMonthYearSelectorToggleArrowStyle};

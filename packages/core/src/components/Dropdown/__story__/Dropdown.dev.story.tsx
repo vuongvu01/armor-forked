@@ -258,13 +258,11 @@ export const FullWidth = () => {
     const handleSelect = (option: any) => {
         setSelectedOption(option);
     };
-    const [selectedItemIndex, setSelectedItemIndex] = useState<number[]>(
-        initialSelectionMultiple,
-    );
+    const [selectedItemIndex] = useState<number[]>(initialSelectionMultiple);
     const selectedFoodOptions = selectedItemIndex.map(
         (index) => foodOptionsString[index],
     );
-    const [selectedOptions, setSelectedOptions] =
+    const [selectedOptions] =
         useState<DropdownSelectedOptionType[]>(selectedFoodOptions);
 
     return (

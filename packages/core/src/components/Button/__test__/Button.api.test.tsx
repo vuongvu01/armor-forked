@@ -44,6 +44,29 @@ describe('<Button />', () => {
         expect(element).toBeDisabled();
     });
 
+    it('should support disabled property when rendering anchor tag', () => {
+        const handleClick = jest.fn();
+
+        const { getByText } = render(
+            <Button
+                tag="a"
+                href="https://google.de"
+                onClick={handleClick}
+                disabled
+            >
+                Disabled
+            </Button>,
+        );
+
+        const element = getByText('Disabled');
+
+        expect(element).toBeInstanceOf(HTMLAnchorElement);
+
+        userEvent.click(element);
+
+        expect(handleClick).not.toHaveBeenCalled();
+    });
+
     it('should support likeDisabled property', () => {
         const { getByText } = render(<Button likeDisabled>Disabled</Button>);
         const element = getByText('Disabled');

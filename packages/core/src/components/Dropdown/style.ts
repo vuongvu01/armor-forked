@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { CancelIcon, SVGIconPropsType } from '@deliveryhero/armor-icons';
+import { CancelIcon } from '@deliveryhero/armor-icons';
 import {
     marginProps,
     widthProps,
@@ -7,6 +7,7 @@ import {
     propsBlocker,
     getComponentOverride,
     focusWithin,
+    mouseCursor,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -39,6 +40,7 @@ export const DropdownContainer = styled.div.withConfig(
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    ${mouseCursor}
 `;
 
 const getOptionListContainerStyle = ({
@@ -56,34 +58,15 @@ export const DropdownOptionListContainer = styled.div.withConfig(
     ${widthProps};
 `;
 
-const dropdownExpansionIndicatorContentStyle = ({
-    multiple,
-}: ExpansionIndicatorContainerPropsType) =>
-    multiple
-        ? css`
-              align-items: flex-start;
-          `
-        : css`
-              height: ${spacing(8)};
-          `;
-
-export const ExpansionIndicatorContainer = styled.div.withConfig(
-    propsBlocker,
-)<ExpansionIndicatorContainerPropsType>`
-    align-self: stretch;
+export const ActionsContainer = styled.div.withConfig(propsBlocker)`
+    display: flex;
+    align-self: flex-start;
+    margin: ${spacing(2, 3, 'auto', 0)};
 `;
 
 export const DropdownExpansionIndicator = styled(
     ExpansionIndicator,
-)<ExpansionIndicatorContainerPropsType>`
-    cursor: pointer;
-
-    .ExpansionIndicator-Content {
-        width: ${spacing(14)};
-
-        ${dropdownExpansionIndicatorContentStyle}
-    }
-`;
+)<ExpansionIndicatorContainerPropsType>``;
 
 const dropdownTextRootStyle = ({ multiple }: DropdownTextInputPropsType) => {
     let result = {};
@@ -99,13 +82,12 @@ const dropdownTextRootStyle = ({ multiple }: DropdownTextInputPropsType) => {
 };
 
 const dropdownTextInputStyle = ({
-    disabled,
     multiple,
     isCustomRenderer,
     internalValue,
 }: DropdownTextInputPropsType) => {
     let result = css`
-        cursor: ${disabled ? 'default' : 'pointer'};
+        ${mouseCursor}
     `;
 
     if (multiple && !isCustomRenderer && internalValue.length) {
@@ -116,6 +98,7 @@ const dropdownTextInputStyle = ({
             width: 0;
         `;
     }
+
     return result;
 };
 
@@ -129,11 +112,10 @@ export const DropdownTextInput = styled(TextInput)<DropdownTextInputPropsType>`
 `;
 
 const dropdownBeforeSectionContainerStyle = ({
-    disabled,
     singleLine,
 }: DropdownTagsSectionPropsType) => {
     let result = css`
-        cursor: ${disabled ? 'default' : 'pointer'};
+        ${mouseCursor}
     `;
 
     if (singleLine) {
@@ -189,12 +171,6 @@ export const DropdownBeforeSectionClearButton = styled(
     margin-top: ${spacing(1.75)};
 `;
 
-const dropdownTagStyle = ({ disabled }: DropdownTagsSectionPropsType) => {
-    return css`
-        cursor: ${disabled ? 'default' : 'pointer'};
-    `;
-};
-
 export const DropdownTag = styled(Tag).attrs({
     small: true,
 })<DropdownTagsSectionPropsType>`
@@ -206,7 +182,8 @@ export const DropdownTag = styled(Tag).attrs({
         margin-left: ${spacing(1)};
         margin-right: ${spacing(1)};
     }
-    ${dropdownTagStyle};
+
+    ${mouseCursor}
 `;
 
 export const DropdownCancelIcon = CancelIcon;

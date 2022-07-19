@@ -2,8 +2,6 @@ import React, { forwardRef, memo } from 'react';
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 import {
-    DropdownBeforeSectionActionContainer,
-    DropdownBeforeSectionClearButton,
     DropdownBeforeSectionRoot,
     DropdownBeforeSectionTagsContainer,
     DropdownBeforeSectionTagsWrapper,
@@ -15,14 +13,12 @@ import { DropdownBeforeSectionPropsType } from './type';
 import { useDropdownBeforeSectionClassName } from './hooks';
 import { OptionObjectType } from '../OptionList/type';
 import { DropdownTags } from './DropdownTags';
-import { ClearButton } from '../ClearButton';
 
 export const DropdownBeforeSection = memo(
     forwardRef<HTMLDivElement, DropdownBeforeSectionPropsType>(
         function DropdownBeforeSection({ className, ...props }, ref) {
             const {
                 rootProps,
-                beforeSectionClearButtonProps,
                 getDropdownTagProps,
                 getDropdownRemainingTagsProps,
                 dropdownBeforeSectionTagsContainerProps,
@@ -108,19 +104,6 @@ export const DropdownBeforeSection = memo(
                             {renderTags()}
                         </DropdownBeforeSectionTagsWrapper>
                     </DropdownBeforeSectionTagsContainer>
-
-                    <DropdownBeforeSectionActionContainer
-                        className={classOverride.ActionContainer}
-                    >
-                        {selectedTagsToDisplay?.length && !disabled ? (
-                            <DropdownBeforeSectionClearButton
-                                {...beforeSectionClearButtonProps}
-                                className={classOverride.ClearButton}
-                            >
-                                <ClearButton iconSize="medium" />
-                            </DropdownBeforeSectionClearButton>
-                        ) : null}
-                    </DropdownBeforeSectionActionContainer>
                 </DropdownBeforeSectionRoot>
             );
         },

@@ -9,13 +9,10 @@ import {
     propsBlocker,
     reset,
     spacing,
-    makeDefaultTheme,
 } from '@deliveryhero/armor-system';
 import styled, { css, keyframes } from 'styled-components';
 import { SkeletonRootPropsType } from './type';
 import { getIconSize } from './utils';
-
-const theme = makeDefaultTheme();
 
 const loading = keyframes`
   0%{transform: translateX(-100%)}
@@ -28,6 +25,7 @@ const getRootStyle = ({ animated, rounded }: SkeletonRootPropsType) => {
         border-radius: ${rounded ? spacing(9999) : borderRadius('soft')};
         min-width: ${spacing(5)};
         min-height: ${spacing(5)};
+        -webkit-mask-image: -webkit-radial-gradient(white, black);
     `;
 
     if (animated) {
@@ -38,9 +36,9 @@ const getRootStyle = ({ animated, rounded }: SkeletonRootPropsType) => {
                     ${loading};
                 background: linear-gradient(
                     90deg,
-                    transparent,
+                    ${color('neutral.00', 0)},
                     ${color('neutral.00')},
-                    transparent
+                    ${color('neutral.00', 0)}
                 );
                 content: '';
                 position: absolute;
