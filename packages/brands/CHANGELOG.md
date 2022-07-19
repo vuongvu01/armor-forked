@@ -1,3 +1,14 @@
+## [1.14.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-brands@1.14.1...@deliveryhero/armor-brands@1.14.2) (2022-07-19)
+
+
+### Bug Fixes
+
+* **Button:** when used as a link - disable state doesn't propagate [LD-456] ([#1107](https://github.com/deliveryhero/armor/issues/1107)) ([3a57b9d](https://github.com/deliveryhero/armor/commit/3a57b9dd2b120464d22f7eb6710aabddbc792fe5))
+* **DatePicker:** Date picker month dropdown icon fix [LD-846] ([#1106](https://github.com/deliveryhero/armor/issues/1106)) ([3ecdfa9](https://github.com/deliveryhero/armor/commit/3ecdfa9b435b725e142f9e2932325b32e288d321))
+* **Dropdown:** Clear button is placed too far from the chevron [LD-845] ([#1105](https://github.com/deliveryhero/armor/issues/1105)) ([618e8a8](https://github.com/deliveryhero/armor/commit/618e8a870c9b05ad1726f37e6ae5ee3e80507ee1))
+* **ProgressBar:** Transition for background when preset is changed dynamically ([#1065](https://github.com/deliveryhero/armor/issues/1065)) ([64bf02a](https://github.com/deliveryhero/armor/commit/64bf02a8a70f75289bb102875b82be10883a00ae))
+* **skeleton:** safari issue ([#1109](https://github.com/deliveryhero/armor/issues/1109)) ([bcfa067](https://github.com/deliveryhero/armor/commit/bcfa067cbf329dadca0c85f94235dfb7477c4c08))
+
 ## @deliveryhero/armor-brands [1.14.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-brands@1.14.0...@deliveryhero/armor-brands@1.14.1) (2022-07-15)
 
 
