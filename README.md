@@ -4,14 +4,16 @@
 <p align="center">
   <h3 align="center">⚙️ + 🖍️ + 🍪 + 🗄️ + 🌐 + 🔎 = 😎</h3>
   <h3 align="center">DeliveryHero's &laquo;Armor&raquo; Design System</h3>
-
-  <p align="center">
-    <a href="https://armor.deliveryhero.com/251886272/p/9993b1-introduction">The documentation is available here</a>
-  </p>
 </p>
 
 ## Contacts
 
- - [Sergei Gannochenko](mailto:sergei.gannochenko@deliveryhero.com)
+ - [Dominik Mertz](mailto:dominik.mertz@deliveryhero.com)
  - [Vuong Vu](mailto:vu.vuong@deliveryhero.com)
  - [Vijay Singh](mailto:vijay.singh@deliveryhero.com)
+ - [Anita Kiss](mailto:anita.kiss@deliveryhero.com)
+
+## Resources
+- [Project introduction](https://armor.deliveryhero.com/251886272/p/9993b1-introduction)
+- [Armor workflow](https://armor.deliveryhero.com/251886272/p/27b187-engineers/b/75d58d)
+- [Engineering contribution process](https://armor.deliveryhero.com/251886272/p/19e45f-workflow)
