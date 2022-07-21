@@ -1,3 +1,10 @@
+## [1.1.5](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-headernavigation@1.1.4...@deliveryhero/armor-headernavigation@1.1.5) (2022-07-21)
+
+
+### Bug Fixes
+
+* **Dropdown:** ClearButton is not working properly [AR-141] ([#1121](https://github.com/deliveryhero/armor/issues/1121)) ([0e07e3d](https://github.com/deliveryhero/armor/commit/0e07e3de22c0ee79040bd821fe185102f3bdec31))
+
 ## [1.1.4](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-headernavigation@1.1.3...@deliveryhero/armor-headernavigation@1.1.4) (2022-07-19)
 
 
