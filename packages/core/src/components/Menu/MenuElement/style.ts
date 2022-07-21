@@ -13,6 +13,7 @@ import {
     fontSize02,
     durationNormal,
     token,
+    pointerEvents,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -38,12 +39,13 @@ const getRootStyle = ({
     const borderWidth = small ? 0.5 : 1;
 
     let result = css`
+        background-color: ${color('neutral.00')};
+
         &:hover {
             background-color: ${color('primary.lightest')};
-            &:before {
-                width: ${spacing(borderWidth)};
-            }
         }
+
+        ${pointerEvents({ disabled: selected && !enableExpansionHandle })}
     `;
 
     if (secondary) {
@@ -52,7 +54,6 @@ const getRootStyle = ({
             ${typography('paragraphLarge')};
             color: ${token('body.color')};
             padding-left: ${spacing(16)};
-            background-color: ${color('neutral.01')};
         `;
     } else if (tertiary) {
         result = css`
@@ -60,7 +61,6 @@ const getRootStyle = ({
             ${typography('paragraphLarge')};
             color: ${token('body.color')};
             padding-left: ${spacing(20)};
-            background-color: ${color('neutral.01')};
         `;
     }
 
@@ -84,11 +84,25 @@ const getRootStyle = ({
     if (selected) {
         result = css`
             ${result};
+
+            &:hover {
+                background-color: ${color('neutral.00')};
+            }
+
             &:before {
                 width: ${spacing(borderWidth)};
             }
-            background-color: ${color('primary.lightest')};
         `;
+
+        if (enableExpansionHandle) {
+            result = css`
+                ${result};
+
+                &:hover {
+                    background-color: ${color('primary.lightest')};
+                }
+            `;
+        }
     }
 
     return result;
@@ -108,6 +122,7 @@ export const MenuElementRoot = styled(MenuElementRootWrapper).withConfig(
     text-decoration: none;
     background-color: ${color('neutral.00')};
     transition: background-color ${durationNormal}ms ease;
+
     &:before {
         background-color: ${color('primary.main')};
         content: '';
@@ -126,6 +141,7 @@ export const MenuElementRoot = styled(MenuElementRootWrapper).withConfig(
 
 const getContentStyle = ({ small }: MenuElementContentPropsType) => {
     const spacingY = small ? 2 : 4;
+
     return css`
         padding-top: ${spacing(spacingY)};
         padding-bottom: ${spacing(spacingY)};

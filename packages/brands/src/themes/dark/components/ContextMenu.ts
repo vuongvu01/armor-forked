@@ -1,7 +1,10 @@
 import { css } from 'styled-components';
-import { colorGrey70 } from '@deliveryhero/armor-system';
+import { colorGrey70, colorGrey60 } from '@deliveryhero/armor-system';
+import { MenuElementPropsType } from '@deliveryhero/armor';
 
-export const getContextMenuOverride = () => {
+export const getContextMenuOverride = ({
+    selected,
+}: MenuElementPropsType) => {
     return css`
         background-color: ${colorGrey70};
 
@@ -13,6 +16,12 @@ export const getContextMenuOverride = () => {
 
         .MenuElement-Root {
             background-color: ${colorGrey70};
+
+            &:hover {
+                background-color: ${selected
+                    ? colorGrey70
+                    : colorGrey60};
+            }
         }
     `;
 };

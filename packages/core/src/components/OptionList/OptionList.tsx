@@ -46,7 +46,6 @@ export const OptionList: FC<OptionListPropsType> = memo(
             internalOptions,
             dynamicInternalOptions,
             disabled,
-            internalValue,
             enableSearchOption,
             isOptionListHeaderRendered,
             isFooterRendered,
@@ -129,6 +128,11 @@ export const OptionList: FC<OptionListPropsType> = memo(
                                         displayedGroups[groupId] = true;
                                     }
 
+                                    const optionItemProps =
+                                        getOptionItemProps(option);
+
+                                    const { isSelected } = optionItemProps;
+
                                     return (
                                         <Fragment key={value}>
                                             {!!group && (
@@ -145,7 +149,7 @@ export const OptionList: FC<OptionListPropsType> = memo(
                                                 </OptionListItemGroup>
                                             )}
                                             <OptionListItem
-                                                {...getOptionItemProps(option)}
+                                                {...optionItemProps}
                                                 optionIndex={
                                                     isSelectAllOptionRendered
                                                         ? index + 1
@@ -154,11 +158,7 @@ export const OptionList: FC<OptionListPropsType> = memo(
                                                 className={`${
                                                     classOverride.Item
                                                 } ${
-                                                    internalValue.includes(
-                                                        value,
-                                                    )
-                                                        ? 'active'
-                                                        : ''
+                                                    isSelected ? 'active' : ''
                                                 }`}
                                             />
                                         </Fragment>
