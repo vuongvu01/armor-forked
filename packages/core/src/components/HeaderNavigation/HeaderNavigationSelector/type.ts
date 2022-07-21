@@ -47,11 +47,20 @@ type HeaderNavigationSelectorEffectivePropsType = {
     enableSearchOption?: boolean;
     /** The z-index attribute of the dropdown container */
     zIndex?: number;
-    /** Set the dropdown container width, fit-content by default */
+    /**
+     * Set the dropdown container width, fit-content by default
+     * @deprecated
+     */
     dropdownWidth?: ScalarType;
-    /** If set, the dropdown width will never exceed this value */
+    /**
+     * If set, the dropdown width will never exceed this value
+     * @deprecated
+     */
     maxDropdownWidth?: ScalarType;
-    /** If set, the dropdown width will never be smaller than this value */
+    /**
+     * If set, the dropdown width will never be smaller than this value
+     * @deprecated
+     */
     minDropdownWidth?: ScalarType;
     /** If set, the dropdown height will never exceed this value */
     maxDropdownHeight?: ScalarType;

@@ -4,6 +4,7 @@ import {
     KeyboardEvent,
     useState,
     useRef,
+    useEffect,
 } from 'react';
 import {
     useOverlay,
@@ -44,9 +45,6 @@ export const useHeaderNavigationSelector = <E extends HTMLDivElement>(
         enableSearchOption,
         enablePortal,
         zIndex,
-        dropdownWidth,
-        maxDropdownWidth,
-        minDropdownWidth,
         maxDropdownHeight,
         ...restProps
     }: HeaderNavigationSelectorPropsType,
@@ -117,6 +115,20 @@ export const useHeaderNavigationSelector = <E extends HTMLDivElement>(
         [],
     );
 
+    // Keep dropdown width in sync with
+    // the width of the container
+    useEffect(() => {
+        const container = containerRef.current?.parentElement;
+
+        const { current: dropdown } = dropdownRef;
+
+        if (!dropdown || !container) {
+            return;
+        }
+
+        dropdown.style.width = `${container.offsetWidth}px`;
+    });
+
     return {
         rootProps: restProps,
         optionListProps: {
@@ -160,12 +172,8 @@ export const useHeaderNavigationSelector = <E extends HTMLDivElement>(
         listContainerProps: {
             ref: dropdownRef,
             zIndex: realZIndex,
+            containerRef,
             ...panelProps,
-        },
-        dropdownContainerProps: {
-            width: dropdownWidth,
-            maxWidth: maxDropdownWidth,
-            minWidth: minDropdownWidth,
         },
         isOpen: isOptionListShown,
     };

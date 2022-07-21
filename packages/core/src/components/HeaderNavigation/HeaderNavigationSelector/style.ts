@@ -2,11 +2,9 @@ import styled, { css } from 'styled-components';
 import {
     color,
     spacing,
-    typography,
     getComponentOverride,
     propsBlocker,
     zIndex,
-    widthProps,
 } from '@deliveryhero/armor-system';
 
 import { HeaderNavigationSelectorRootPropsType } from './type';
@@ -38,21 +36,16 @@ const itemSelectorStyle = ({
 export const SelectorDropdownOptionListContainer = styled.div.withConfig(
     propsBlocker,
 )<HeaderNavigationSelectorRootPropsType>`
-    position: relative;
     ${zIndex};
-`;
-export const SelectorDropdownOptionListWrapper = styled.div.withConfig(
-    propsBlocker,
-)<HeaderNavigationSelectorRootPropsType>`
-    position: absolute;
-    right: 0;
-    top: ${spacing(2)};
-    width: fit-content;
-    ${widthProps};
 `;
 
 export const SelectorDropdownOptionList = styled(OptionList)`
-    position: relative;
+    width: 100%;
+    min-width: fit-content;
+
+    right: -${spacing(4)};
+    left: auto;
+    top: ${spacing(3.25)};
 
     .HeaderNavigationSelector-OptionList {
         width: 100%;
