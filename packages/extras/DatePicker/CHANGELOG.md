@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datepicker@1.3.1...@deliveryhero/armor-datepicker@1.3.2) (2022-07-21)
+
+
+### Bug Fixes
+
+* **Dropdown:** ClearButton is not working properly [AR-141] ([#1121](https://github.com/deliveryhero/armor/issues/1121)) ([0e07e3d](https://github.com/deliveryhero/armor/commit/0e07e3de22c0ee79040bd821fe185102f3bdec31))
+
 ## [1.3.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datepicker@1.3.0...@deliveryhero/armor-datepicker@1.3.1) (2022-07-19)
 
 
