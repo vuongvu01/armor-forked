@@ -1,6 +1,5 @@
-import { MouseEvent, useCallback, useMemo, useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import {
-    noop,
     stringEllipsisAtMaxCharacters,
     useRootRef,
     stripHTMLTagsMemoized as stripHTMLTags,
@@ -14,7 +13,6 @@ import {
 } from '../type';
 import { useSelectedTagsToDisplay } from './useSelectedTagsToDisplay';
 import { OptionObjectType } from '../../OptionList/type';
-import { useOnToggleAll } from './useOnToggleAll';
 import { useOnRemoveMultiple } from './useOnRemoveMultiple';
 import { useOnPopulateTagsAutomatically } from './useOnPopulateTagsAutomatically';
 
@@ -24,7 +22,6 @@ export const useDropdownBeforeSection = <E extends HTMLDivElement>(
         onClick,
         internalValue,
         setInternalValue,
-        setInitialSelection,
         onSelect,
         onChange,
         internalOptions,
@@ -61,14 +58,6 @@ export const useDropdownBeforeSection = <E extends HTMLDivElement>(
         onChange,
     );
 
-    const onToggleAll = useOnToggleAll(
-        setInternalValue,
-        internalOptions,
-        internalValue,
-        onChange,
-        setInitialSelection,
-    );
-
     const onRemoveMultiple = useOnRemoveMultiple(
         setInternalValue,
         internalValue,
@@ -84,18 +73,6 @@ export const useDropdownBeforeSection = <E extends HTMLDivElement>(
         internalOpenTagsCount,
         setInternalOpenTagsCount,
         singleLine,
-    );
-
-    const handleRemoveAllTags = useMemo(
-        () =>
-            disabled
-                ? noop
-                : (event: MouseEvent<HTMLDivElement>) => {
-                      event.stopPropagation();
-
-                      onToggleAll(false);
-                  },
-        [disabled, onToggleAll],
     );
 
     const handleRemoveTag = (option: OptionObjectType) => () =>

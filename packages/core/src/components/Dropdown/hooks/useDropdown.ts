@@ -29,6 +29,7 @@ import { usePanelWidth } from './usePanelWidth';
 import { MAX_OPTIONS_SELECT_ALL_THRESHOLD } from '../../OptionList/constants';
 import { InternalItemGroupObjectType } from '../../OptionList/type';
 import { useOnInternalItemGroupsUpdate } from './useOnInternalItemGroupsUpdate';
+import { useOnToggleAll } from './useOnToggleAll';
 
 export const useDropdown = <E extends HTMLInputElement>(
     {
@@ -236,12 +237,6 @@ export const useDropdown = <E extends HTMLInputElement>(
         [onChange, name],
     );
 
-    const onClearMultiple = useCallback(() => {
-        if (multiple && internalValue.length > 0) {
-            setInternalValue([]);
-        }
-    }, [internalValue.length, multiple, setInternalValue]);
-
     const onContainerClick = (event: React.SyntheticEvent<Element>) => {
         const element = event.target as Element;
 
@@ -249,6 +244,16 @@ export const useDropdown = <E extends HTMLInputElement>(
             onOptionListVisibilityTriggerClick();
         }
     };
+
+    const onToggleAll = useOnToggleAll(
+        setInternalValue,
+        internalOptions,
+        internalValue,
+        onChange,
+        setInitialSelection,
+    );
+
+    const onRemoveAllTags = () => onToggleAll(false);
 
     return {
         rootProps: restProps,
@@ -359,7 +364,7 @@ export const useDropdown = <E extends HTMLInputElement>(
         },
         clearButtonProps: {
             iconSize: 'medium',
-            onClick: onClearMultiple,
+            onClick: onRemoveAllTags,
         } as ClearButtonPropsType,
 
         disabled,

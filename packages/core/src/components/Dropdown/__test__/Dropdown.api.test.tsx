@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion, import/no-extraneous-dependencies */
 import React from 'react';
-import { cleanup, render, waitFor, act } from '@testing-library/react';
+import { cleanup, render, waitFor, act, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { Dropdown } from '../Dropdown';
@@ -248,5 +248,63 @@ describe('<Dropdown />', () => {
 
         const inputControl = getByTestId(textInputInput) as HTMLInputElement;
         await waitFor(() => expect(inputControl.value).toEqual('Blue, Green'));
+    });
+
+    it('should be possible to clear the options in uncontrolled mode', () => {
+        const options = [
+            { label: 'Red', value: 'R' },
+            { label: 'Blue', value: 'B' },
+            { label: 'Green', value: 'G' },
+        ];
+
+        const handleChange = jest.fn();
+
+        const { container } = render(
+            <Dropdown
+                options={options}
+                multiple
+                defaultValue={[options[0].value]}
+                onChange={handleChange}
+            />,
+        );
+
+        const label = screen.getByText(options[0].label);
+
+        expect(label).toBeVisible();
+
+        const clearButton = container.querySelector('.ClearButton-Root')!;
+
+        userEvent.click(clearButton);
+
+        expect(handleChange).toHaveBeenCalledWith({ target: { value: [] } });
+    });
+
+    it('should be possible to clear the options in controlled mode', () => {
+        const options = [
+            { label: 'Red', value: 'R' },
+            { label: 'Blue', value: 'B' },
+            { label: 'Green', value: 'G' },
+        ];
+
+        const handleChange = jest.fn();
+
+        const { container } = render(
+            <Dropdown
+                options={options}
+                multiple
+                value={[options[0].value]}
+                onChange={handleChange}
+            />,
+        );
+
+        const label = screen.getByText(options[0].label);
+
+        expect(label).toBeVisible();
+
+        const clearButton = container.querySelector('.ClearButton-Root')!;
+
+        userEvent.click(clearButton);
+
+        expect(handleChange).toHaveBeenCalledWith({ target: { value: [] } });
     });
 });
