@@ -1,3 +1,10 @@
+## [1.4.29](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.4.28...@deliveryhero/armor-vendors@1.4.29) (2022-07-21)
+
+
+### Bug Fixes
+
+* **Dropdown:** ClearButton is not working properly [AR-141] ([#1121](https://github.com/deliveryhero/armor/issues/1121)) ([0e07e3d](https://github.com/deliveryhero/armor/commit/0e07e3de22c0ee79040bd821fe185102f3bdec31))
+
 ## [1.4.28](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.4.27...@deliveryhero/armor-vendors@1.4.28) (2022-07-19)
 
 
