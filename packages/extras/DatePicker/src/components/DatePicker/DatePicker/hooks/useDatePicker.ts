@@ -121,6 +121,8 @@ export const useDatePicker = <E extends HTMLDivElement>(
             isDateSelectable,
             enableCloseOnSelect,
             closeDropdown,
+            enableTimePicker,
+            timeSelectorValue,
         },
         props,
     );
