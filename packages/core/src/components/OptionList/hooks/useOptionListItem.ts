@@ -33,6 +33,7 @@ export const useOptionListItem = ({
             item,
             onClick: handleItemClick,
             isFocused: cursorPosition === optionIndex,
+            multiple,
         },
         checkboxProps: {
             checked: isSelected,

@@ -30,7 +30,6 @@ const getRootStyle = ({
     if (secondary || tertiary) {
         result = css`
             ${result};
-            background-color: ${color('neutral.01')};
         `;
     }
 

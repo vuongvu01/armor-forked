@@ -55,10 +55,6 @@ export const useHeaderNavigationSelectorClassName = (
                 component: 'OptionListContainer',
                 classPrefix,
             }),
-            OptionListWrapper: getClassNameByComponent({
-                component: 'OptionListWrapper',
-                classPrefix,
-            }),
             OptionList: getClassNameByComponent({
                 component: 'OptionList',
                 classPrefix,

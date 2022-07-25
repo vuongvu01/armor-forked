@@ -1,5 +1,11 @@
 import { css } from 'styled-components';
-import { colorGrey60WithOpacity, color } from '@deliveryhero/armor-system';
+import {
+    color,
+    colorGrey60,
+    colorBlue20,
+    colorGrey70,
+    colorGrey30,
+} from '@deliveryhero/armor-system';
 import { OptionListItemPropsType } from '@deliveryhero/armor';
 
 const focusedHoverState = css`
@@ -13,17 +19,30 @@ const focusedHoverState = css`
 export const getOptionListItemOverride = ({
     isFocused,
     isSelected,
+    multiple,
     item: { disabled },
 }: OptionListItemPropsType) => {
+    const isActive = isSelected && !disabled && !multiple;
+
     let result = css`
-        background-color: ${disabled
-            ? colorGrey60WithOpacity /*  an exception case for the lack of intermediate color: ; */
-            : color('neutral.09')};
+        background-color: ${colorGrey70};
 
         &:hover {
             ${focusedHoverState}
         }
     `;
+
+    if (disabled) {
+        result = css`
+            ${result};
+
+            color: ${colorGrey30};
+
+            &:hover {
+                background-color: ${colorGrey70};
+            }
+        `;
+    }
 
     if (isFocused) {
         result = css`
@@ -32,10 +51,17 @@ export const getOptionListItemOverride = ({
         `;
     }
 
-    if (isSelected && disabled) {
+    if (isActive) {
         result = css`
             ${result};
-            background-color: ${colorGrey60WithOpacity};
+
+            &:hover {
+                background-color: ${colorGrey60};
+            }
+
+            &::before {
+                background: ${colorBlue20};
+            }
         `;
     }
 

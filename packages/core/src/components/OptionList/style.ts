@@ -11,6 +11,7 @@ import {
     transition,
     heightProps,
     token,
+    pointerEvents,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -87,11 +88,11 @@ export const OptionListContent = styled.div.withConfig(
 const getGradientEffectStyle = ({ isShown }: { isShown?: boolean }) => {
     let result = css`
         position: absolute;
-        pointer-events: none;
         width: 100%;
         height: ${spacing(13)};
         opacity: 0;
         z-index: 1;
+        ${pointerEvents({ disabled: true })}
         ${transition({ opacity: true })};
     `;
 
@@ -168,11 +169,20 @@ const focusedHoverState = css`
 const optionItemStyle = ({
     item: { disabled },
     isFocused,
+    isSelected,
+    multiple,
 }: OptionListItemPropsType) => {
+    const isActive = isSelected && !disabled && !multiple;
+
     let result = css`
         background-color: ${color('neutral.00')};
         min-height: ${spacing(10)};
         padding: ${spacing(2, 4)};
+
+        ${transition({
+            'background-color': true,
+        })}
+
         &:hover {
             ${focusedHoverState}
         }
@@ -185,14 +195,43 @@ const optionItemStyle = ({
         `;
     }
 
+    if (isActive) {
+        result = css`
+            ${result};
+
+            position: relative;
+            ${pointerEvents({ disabled: true })}
+
+            &:hover {
+                background-color: ${color('neutral.00')};
+            }
+
+            &::before {
+                content: '';
+
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+
+                width: ${spacing(0.5)};
+                background: ${color('primary.07')};
+            }
+        `;
+    }
+
     if (disabled) {
         result = css`
             ${result};
+
             background-color: ${isFocused
                 ? color('primary.01')
                 : color('neutral.02')};
 
+            color: ${color('neutral.05')};
+
             cursor: not-allowed;
+
             &:hover {
                 background-color: ${color('neutral.02')};
 
@@ -213,7 +252,6 @@ export const OptionListItem = styled.div.withConfig(
     box-sizing: border-box;
     cursor: pointer;
     display: flex;
-    border-left: 2px solid transparent;
 
     ${optionItemStyle};
     ${getComponentOverride('OptionListItem')};
@@ -279,13 +317,14 @@ const getOptionListItemGroupRootStyle = ({
     if (multiple && enableGroupSelection) {
         result = css`
             ${result};
+
             padding: ${spacing(3, 4)};
             text-transform: uppercase;
             align-items: center;
             box-sizing: border-box;
             cursor: pointer;
             display: flex;
-            border-left: 2px solid transparent;
+
             &:hover {
                 background-color: ${color('primary.lightest')};
             }

@@ -8,7 +8,6 @@ import {
     SelectedOptions,
     SelectorDropdownOptionList,
     SelectorDropdownOptionListContainer,
-    SelectorDropdownOptionListWrapper,
     SelectorExpansionIndicator,
     SelectorLabel,
 } from './style';
@@ -49,7 +48,6 @@ export const HeaderNavigationSelector = forwardRef<
         selectedValueToDisplay,
         isOpen,
         selectedOptionsProps,
-        dropdownContainerProps,
     } = useHeaderNavigationSelector(restProps, ref);
 
     return (
@@ -94,15 +92,10 @@ export const HeaderNavigationSelector = forwardRef<
                         {...listContainerProps}
                     >
                         {isOpen && (
-                            <SelectorDropdownOptionListWrapper
-                                className={classOverride.OptionListWrapper}
-                                {...dropdownContainerProps}
-                            >
-                                <SelectorDropdownOptionList
-                                    {...optionListProps}
-                                    className={classOverride.OptionList}
-                                />
-                            </SelectorDropdownOptionListWrapper>
+                            <SelectorDropdownOptionList
+                                {...optionListProps}
+                                className={classOverride.OptionList}
+                            />
                         )}
                     </SelectorDropdownOptionListContainer>
                 </PortalToBody>

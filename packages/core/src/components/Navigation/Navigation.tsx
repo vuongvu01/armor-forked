@@ -80,7 +80,7 @@ const renderMenuElement = (
                     enableEffects={enableEffects}
                 >
                     {element.beforeItems}
-                    {element.items!.map((subItem) =>
+                    {element.items?.map((subItem) =>
                         renderMenuElement(
                             subItem,
                             depthLevel + 1,

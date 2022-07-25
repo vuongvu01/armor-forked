@@ -4,6 +4,7 @@ import { extractDataFromDOMEvent } from '../../utils/extractDataFromDOMEvent';
 import { DatePickerEffectiveCommonPropsType } from '../../type';
 import { useCommonDatePickerSelectionEvents } from '../../hooks/useCommonDatePickerSelectionEvents';
 import { DateVector } from '../../utils/DateVector';
+import { TimeVector24 } from '../../utils/TimeVector24';
 
 type UseDatePickerSelectionPropsType = {
     value: DateVectorRange;
@@ -11,6 +12,8 @@ type UseDatePickerSelectionPropsType = {
     enableCloseOnSelect: boolean;
     closeDropdown: () => void;
     isDateSelectable: (date: DateVector) => boolean;
+    enableTimePicker?: boolean;
+    timeSelectorValue: TimeVector24;
 };
 
 export const useDatePickerSelectionEvents = (
@@ -20,6 +23,8 @@ export const useDatePickerSelectionEvents = (
         enableCloseOnSelect,
         closeDropdown,
         isDateSelectable,
+        enableTimePicker,
+        timeSelectorValue,
     }: UseDatePickerSelectionPropsType,
     {
         onDayMouseEnter,
@@ -51,6 +56,12 @@ export const useDatePickerSelectionEvents = (
                     minute,
                     hour,
                 });
+            } else if (enableTimePicker) {
+                const { minute, hour } = timeSelectorValue;
+                resultVector = resultVector.clone({
+                    minute,
+                    hour,
+                });
             }
 
             onChange(
@@ -60,7 +71,15 @@ export const useDatePickerSelectionEvents = (
                 closeDropdown();
             }
         },
-        [isDateSelectable, value, onChange, enableCloseOnSelect, closeDropdown],
+        [
+            isDateSelectable,
+            value,
+            onChange,
+            enableCloseOnSelect,
+            closeDropdown,
+            enableTimePicker,
+            timeSelectorValue,
+        ],
     );
 
     const commonEvents = useCommonDatePickerSelectionEvents({

@@ -62,14 +62,17 @@ export const Controlled = () => {
 
 export const Menu = () => {
     const [open, setOpen] = useState(false);
+    const [selected, setSelected] = useState<string | null>(null);
 
     const onElementClick = (event: MouseEvent<HTMLElement>) => {
         const id = (event.currentTarget as HTMLElement).getAttribute(
             'data-elementid',
         );
-        console.log(`Selected ${id}`);
+
+        setSelected(id);
         setOpen(false);
     };
+
     const menuElements = [
         {
             id: 'edit',
@@ -81,7 +84,13 @@ export const Menu = () => {
             label: 'Delete',
             props: { 'data-elementid': 'delete', onClick: onElementClick },
         },
-    ];
+    ].map((item) => ({
+        ...item,
+        props: {
+            ...item.props,
+            selected: item.id === selected,
+        },
+    }));
 
     return (
         <Box paddingTop={50} paddingLeft={50}>

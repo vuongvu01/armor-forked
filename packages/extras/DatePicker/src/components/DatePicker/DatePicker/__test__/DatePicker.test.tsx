@@ -156,6 +156,38 @@ describe('<DatePicker />', () => {
         expect(vect.minute).toEqual(20);
     });
 
+    it('should select current time when initial value is null and enableTimePicker is true', async () => {
+        const localDate = null;
+        const onDateValueChange = jest.fn();
+
+        const { container } = render(
+            <DatePicker
+                open
+                dateValue={localDate}
+                onDateValueChange={onDateValueChange}
+                enableTimePicker
+            />,
+        );
+
+        const button = container.querySelector(
+            '.DatePickerDaySelector-Day[data-day="9"] .DatePickerDaySelector-DayButton',
+        );
+
+        act(() => {
+            fireEvent.click(button!);
+        });
+
+        expect(onDateValueChange).toHaveBeenCalled();
+        const arg = onDateValueChange.mock.calls[0][0];
+
+        const vect = DateVector.createFromLocalDate(arg);
+
+        const currentDate = new Date();
+
+        expect(vect.hour).toEqual(currentDate.getHours());
+        expect(vect.minute).toEqual(currentDate.getMinutes());
+    });
+
     it('should support yearRange property', () => {
         const { container } = render(
             <DatePicker open yearRange={[1900, 1901]} />,
