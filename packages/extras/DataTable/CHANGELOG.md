@@ -1,3 +1,13 @@
+## @deliveryhero/armor-datatable [1.2.9](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datatable@1.2.8...@deliveryhero/armor-datatable@1.2.9) (2022-07-25)
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor:** upgraded to 1.101.4
+
 ## @deliveryhero/armor-datatable [1.2.8](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datatable@1.2.7...@deliveryhero/armor-datatable@1.2.8) (2022-07-21)
 
 
