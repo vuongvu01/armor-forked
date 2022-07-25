@@ -6,21 +6,7 @@ import { cleanup, render, screen, act } from '@testing-library/react';
 import { cleanup as cleanupHooks } from '@testing-library/react-hooks';
 
 import { ToastContainer } from '../ToastContainer';
-import { ToastPositionType, ToastPropsType } from '../type';
-
-const defaultProps = {
-    rootProps: {
-        gap: '12px',
-        position: 'topRight' as ToastPositionType,
-    },
-    getToastProps: (toast: ToastPropsType) => ({
-        autoCloseTime: 100,
-        showProgressBar: true,
-        autoClose: true,
-        ...toast,
-    }),
-    toasts: [],
-};
+import { toastStore } from '../ToastStore';
 
 describe('<ToastContainer />', () => {
     afterEach(async () => {
@@ -29,7 +15,7 @@ describe('<ToastContainer />', () => {
     });
 
     it('should render itself without errors', async () => {
-        render(<ToastContainer {...defaultProps} />);
+        render(<ToastContainer />);
     });
 
     it('should render toast messages', async () => {
@@ -41,11 +27,10 @@ describe('<ToastContainer />', () => {
             { id: '5', message: 'message 5' },
         ];
 
+        toasts.forEach(toastStore.makeToast);
+
         act(() => {
-            render(
-                // @ts-ignore
-                <ToastContainer {...defaultProps} toasts={toasts} />,
-            );
+            render(<ToastContainer />);
         });
 
         for (let i = 0; i < toasts.length; i += 1) {

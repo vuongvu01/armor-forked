@@ -30,7 +30,7 @@ export const Basic = () => {
 export const AllLevels = () => {
     const { makeToast } = useToast();
 
-    const makeLevelToast = (level: string) =>
+    const makeLevelToast = (level: 'error' | 'warning' | 'info' | 'success') =>
         makeToast({
             level,
             message: 'This is awesome!',
@@ -341,6 +341,43 @@ export const CustomMessages = () => {
     );
 };
 
+export const MultipleInstances = () => {
+    const { makeToast } = useToast();
+    const { makeToast: makeToast2 } = useToast();
+
+    return (
+        <>
+            <GroupHelper gap={2}>
+                <p>Long Toast</p>
+                <Button
+                    onClick={() =>
+                        makeToast({
+                            level: 'success',
+                            message: 'This is from the first useToast instance',
+                        })
+                    }
+                >
+                    Show 1st Toast
+                </Button>
+            </GroupHelper>
+            <GroupHelper gap={2}>
+                <p>Short Toast</p>
+                <Button
+                    onClick={() =>
+                        makeToast2({
+                            level: 'error',
+                            message:
+                                'This is from the second useToast instance',
+                        })
+                    }
+                >
+                    Show 2nd Toast
+                </Button>
+            </GroupHelper>
+        </>
+    );
+};
+
 export const Playground = () => {
     const { makeToast: makeToastTopRight } = useToast({ position: 'topRight' });
     const { makeToast: makeToastTopLeft } = useToast({ position: 'topLeft' });
@@ -351,7 +388,9 @@ export const Playground = () => {
         position: 'bottomLeft',
     });
 
-    const [level, setLevel] = useState('info');
+    const [level, setLevel] = useState<
+        'error' | 'warning' | 'info' | 'success'
+    >('info');
     const [message, setMessage] = useState('This is a Toast');
     const [position, setPosition] = useState('topRight');
     const [autoClose, setAutoClose] = useState(true);
@@ -520,6 +559,16 @@ export const Playground = () => {
                 </label>
             </GroupHelper>
             <GroupHelper gap={2}>
+                <label>
+                    <input
+                        type="checkbox"
+                        checked={pauseOnHover}
+                        onChange={(e) => setPauseOnHover(e.target.checked)}
+                    />{' '}
+                    Pause On Hover
+                </label>
+            </GroupHelper>
+            <GroupHelper gap={2}>
                 <Button
                     onClick={() =>
                         makeToast({
@@ -530,13 +579,14 @@ export const Playground = () => {
                             autoCloseTime,
                             disableCloseButton,
                             disableIcon,
+                            pauseOnHover,
                             action: action
                                 ? {
                                       label: 'Click',
                                       onClick: () =>
                                           console.log('Action clicked'),
                                   }
-                                : null,
+                                : undefined,
                         })
                     }
                 >
