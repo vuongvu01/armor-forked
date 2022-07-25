@@ -1,3 +1,12 @@
+## [1.3.3](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datepicker@1.3.2...@deliveryhero/armor-datepicker@1.3.3) (2022-07-25)
+
+
+### Bug Fixes
+
+* **DatePicker:** DateTime picker time reset on first try ([#1111](https://github.com/deliveryhero/armor/issues/1111)) ([d40dc03](https://github.com/deliveryhero/armor/commit/d40dc03bbea83e706c34ffffab1fce26f9eb67bb))
+* **HeaderNavigation:** Dropdown of Navigation not the right width [AR-44] ([#1115](https://github.com/deliveryhero/armor/issues/1115)) ([cee8db5](https://github.com/deliveryhero/armor/commit/cee8db5d8ccdb699685a2a68d5efe2b4ccf2276f))
+* **Navigation:** Navigation improvements [LD-436] ([#1110](https://github.com/deliveryhero/armor/issues/1110)) ([dad89d2](https://github.com/deliveryhero/armor/commit/dad89d22d40e73c883c2cbd528914bad67a89dda))
+
 ## [1.3.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datepicker@1.3.1...@deliveryhero/armor-datepicker@1.3.2) (2022-07-21)
 
 
