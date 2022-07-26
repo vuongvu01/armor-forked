@@ -1,4 +1,10 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import {
+    useCallback,
+    useEffect,
+    useRef,
+    useState,
+    isValidElement,
+} from 'react';
 import {
     useControlledState,
     useDerivedState,
@@ -30,6 +36,7 @@ import { MAX_OPTIONS_SELECT_ALL_THRESHOLD } from '../../OptionList/constants';
 import { InternalItemGroupObjectType } from '../../OptionList/type';
 import { useOnInternalItemGroupsUpdate } from './useOnInternalItemGroupsUpdate';
 import { useOnToggleAll } from './useOnToggleAll';
+import { EMPTY_LABEL_VALUE } from '../constants';
 
 export const useDropdown = <E extends HTMLInputElement>(
     {
@@ -254,6 +261,11 @@ export const useDropdown = <E extends HTMLInputElement>(
     );
 
     const onRemoveAllTags = () => onToggleAll(false);
+    const isRenderedSelectedValueAsNode = isValidElement(
+        selectedValueToDisplay,
+    );
+    const isBeforeSectionRendered =
+        (multiple && !onRenderSelectedValue) || isRenderedSelectedValueAsNode;
 
     return {
         rootProps: restProps,
@@ -265,7 +277,9 @@ export const useDropdown = <E extends HTMLInputElement>(
         textInputProps: {
             onClick: onOptionListVisibilityTriggerClick,
             ref: internalInputRef,
-            value: selectedValueToDisplay,
+            value: isRenderedSelectedValueAsNode
+                ? EMPTY_LABEL_VALUE
+                : `${selectedValueToDisplay}`,
             internalValue,
             disabled,
             error,
@@ -283,6 +297,8 @@ export const useDropdown = <E extends HTMLInputElement>(
             tabIndex,
             multiple,
             large,
+            disableLabelEffect:
+                isRenderedSelectedValueAsNode && !!internalValue.length,
         },
         portalProps: {
             enablePortal,
@@ -350,7 +366,6 @@ export const useDropdown = <E extends HTMLInputElement>(
             internalValue,
             internalOptions,
             multiple,
-            onRenderSelectedValue,
             setInternalValue,
             setInitialSelection,
             onSelect,
@@ -361,6 +376,9 @@ export const useDropdown = <E extends HTMLInputElement>(
             openTagsCount,
             renderAggregatedTagsLabel,
             singleLine,
+            selectedValueToDisplay,
+            isRendered: isBeforeSectionRendered,
+            isRenderedSelectedValueAsNode,
         },
         clearButtonProps: {
             iconSize: 'medium',
@@ -368,9 +386,8 @@ export const useDropdown = <E extends HTMLInputElement>(
         } as ClearButtonPropsType,
 
         disabled,
-        multiple,
-        onRenderSelectedValue,
         internalValue,
         open: isOptionListShown,
+        shouldDisplayClearButton: multiple && !disabled && internalValue.length,
     };
 };

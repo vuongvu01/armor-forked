@@ -134,6 +134,35 @@ describe('<Dropdown />', () => {
         await waitFor(() => expect(input!.value).toEqual('2 of 3'));
     });
 
+    it('should render custom value display as Node', async () => {
+        const options = [
+            { label: 'Red', value: 'R' },
+            { label: 'Blue', value: 'B' },
+            { label: 'Green', value: 'G' },
+        ];
+
+        const { getByTestId } = render(
+            <Dropdown
+                options={options}
+                value={['B', 'G']}
+                onRenderSelectedValue={(
+                    value: ReadonlyArray<unknown>,
+                    internalOptions: ReadonlyArray<unknown>,
+                ) => {
+                    return (
+                        <div data-testid="display-node-test">
+                            {value.length} of {internalOptions.length}
+                        </div>
+                    );
+                }}
+            />,
+        );
+
+        const displayNode = getByTestId('display-node-test');
+
+        await waitFor(() => expect(displayNode.textContent).toEqual('2 of 3'));
+    });
+
     it('should NOT change its value without onChange in controlled mode', async () => {
         const options = [
             { label: 'Red', value: 'R' },

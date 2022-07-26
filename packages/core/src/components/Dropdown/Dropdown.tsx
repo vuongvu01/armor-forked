@@ -71,8 +71,8 @@ export const Dropdown = forwardRef<HTMLInputElement, DropdownPropsType>(
             disabled,
             internalValue,
             open,
-            multiple,
             clearButtonProps,
+            shouldDisplayClearButton,
         } = useDropdown(props, ref);
 
         const classOverride = useDropdownClassName(
@@ -80,9 +80,6 @@ export const Dropdown = forwardRef<HTMLInputElement, DropdownPropsType>(
             className,
             disabled,
         );
-
-        const shouldDisplayClearButton =
-            multiple && !disabled && internalValue.length;
 
         const renderActionItem = (
             <ActionsContainer

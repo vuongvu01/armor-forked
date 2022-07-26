@@ -1694,24 +1694,34 @@ export const CustomOptionLabelStyle = () => {
     };
 
     return (
-        <>
-            <GroupHelper gap={2}>
-                <Box padding={3} style={{ ...boxStyle, width: '300px' }}>
-                    <Dropdown
-                        options={foodCustomLabelOptions}
-                        onSelect={handleSelect}
-                        value={selectedOption?.value}
-                        label="Dish type"
-                        enableSearchOption
-                    />
-                    <Typography paragraph>
-                        Selected label: {selectedOption?.label}
-                    </Typography>
-                    <Typography paragraph>
-                        Selected value: {JSON.stringify(selectedOption?.value)}
-                    </Typography>
-                </Box>
-            </GroupHelper>
-        </>
+        <GroupHelper gap={2}>
+            <Box padding={3} style={{ ...boxStyle, width: '300px' }}>
+                <Dropdown
+                    options={foodCustomLabelOptions}
+                    onSelect={handleSelect}
+                    value={selectedOption?.value}
+                    label="Dish type"
+                    enableSearchOption
+                    onRenderSelectedValue={(value, allOptions) => {
+                        const { label: selectedLabel } =
+                            allOptions.find(
+                                (option) => option.value === value[0],
+                            ) || {};
+
+                        return (
+                            <div style={{ padding: '4px 0' }}>
+                                {selectedLabel}
+                            </div>
+                        );
+                    }}
+                />
+                <Typography paragraph>
+                    Selected label: {selectedOption?.label}
+                </Typography>
+                <Typography paragraph>
+                    Selected value: {JSON.stringify(selectedOption?.value)}
+                </Typography>
+            </Box>
+        </GroupHelper>
     );
 };

@@ -139,17 +139,13 @@ export const DropdownBeforeSectionRoot = styled(
     ${dropdownBeforeSectionContainerStyle}
 `;
 
-export const DropdownBeforeSectionTagsContainer = styled(
-    PackItem,
-)<DropdownTagsSectionPropsType>`
+export const DropdownBeforeSectionContainer = styled(PackItem)`
     width: 100%;
     padding-top: ${spacing(1)};
     padding-bottom: ${spacing(1)};
 `;
 
-export const DropdownBeforeSectionTagsWrapper = styled.div.withConfig(
-    propsBlocker,
-)<DropdownTagsSectionPropsType>`
+export const DropdownBeforeSectionWrapper = styled.div.withConfig(propsBlocker)`
     width: fit-content;
 `;
 
