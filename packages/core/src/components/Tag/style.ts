@@ -23,9 +23,80 @@ import { TAG_DELETE_BEHAVIOUR_OPTIONS, TAG_TYPES } from './constants';
 
 const makeBorder = (borderColor: string) => () =>
     css`
-        box-shadow: 0 0 0 0.5px ${color(borderColor)},
-            inset 0 0 0 0.5px ${color(borderColor)};
+        box-shadow: inset 0 0 0 1px ${color(borderColor)};
     `;
+
+const textStyle = ({
+    smallVerticalPadding,
+    deleteOption,
+    isDisabled,
+}: TagTextPropsType) => {
+    const result = css`
+        && {
+            margin: 0 ${spacing(smallVerticalPadding ? 1 : 2)};
+        }
+    `;
+
+    if (!isDisabled && deleteOption === TAG_DELETE_BEHAVIOUR_OPTIONS.ENABLED) {
+        return css`
+            ${result};
+
+            && {
+                margin-right: ${spacing(1)};
+            }
+        `;
+    }
+
+    return result;
+};
+
+export const TagText = styled.div<TagTextPropsType>`
+    ${typography('paragraphSmall')};
+    color: ${token('body.color')};
+    ${textStyle};
+`;
+
+const tagIndicatorSpacing = ({ small }: TagIndicatorContainerPropsType) => {
+    return css`
+        padding-right: ${small ? spacing(1) : spacing(2)};
+        padding-left: ${small ? spacing(1) : spacing(2)};
+        margin-top: ${small ? spacing(0.5) : spacing(1)};
+        margin-bottom: ${small ? spacing(0.5) : spacing(1)};
+        margin-right: ${small ? spacing(0.5) : spacing(0)};
+    `;
+};
+
+export const TagIndicatorContainer = styled.div<TagIndicatorContainerPropsType>`
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-color: ${color('primary.lightest')};
+    border-radius: ${borderRadius('pill')};
+    background-color: ${color('white')};
+    color: ${color('neutral.11')};
+    ${typography('paragraphSmall')};
+    ${tagIndicatorSpacing};
+`;
+
+const tagIconSpacing = ({ small }: TagIconContainerPropsType) => {
+    return css`
+        font-size: 12px;
+        margin-left: ${small ? spacing(1) : spacing(2)};
+        margin-top: ${spacing(1)};
+        margin-bottom: ${spacing(1)};
+        margin-right: ${small ? spacing(1) : spacing(0)};
+    `;
+};
+
+export const TagIconContainer = styled.div<TagIconContainerPropsType>`
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: ${color('neutral.11')};
+    ${tagIconSpacing}
+`;
 
 const getRootStyle = ({
     deleteOption,
@@ -35,6 +106,7 @@ const getRootStyle = ({
     filled,
     icon,
     indicator,
+    disabled,
 }: TagRootPropsType) => {
     let result = css`
         height: ${spacing(small ? 6 : 7)};
@@ -59,6 +131,31 @@ const getRootStyle = ({
         min-width: ${spacing(19)};
     `;
 
+    if (disabled) {
+        const backgroundColor = color('neutral.03', 0.4);
+        const textColor = color('neutral.07');
+
+        result = css`
+            ${result};
+
+            && {
+                background-color: ${backgroundColor};
+                border-color: ${backgroundColor};
+                color: ${textColor};
+                box-shadow: none;
+
+                ${TagText},
+                ${TagIconContainer} {
+                    color: ${textColor};
+                }
+
+                ${TagIndicatorContainer} {
+                    color: ${textColor};
+                }
+            }
+        `;
+    }
+
     // todo: refactor this
     switch (type) {
         case TAG_TYPES.APPROVED:
@@ -66,28 +163,28 @@ const getRootStyle = ({
                 ${result};
                 ${minStatusTagWidth};
                 background-color: ${color('success.light')};
-                ${makeBorder('success.light')}
+                box-shadow: none;
             `;
         case TAG_TYPES.DENIED:
             return css`
                 ${result};
                 ${minStatusTagWidth};
                 background-color: ${color('error.lighter')};
-                ${makeBorder('error.lighter')}
+                box-shadow: none;
             `;
         case TAG_TYPES.NEW:
             return css`
                 ${result};
                 ${minStatusTagWidth};
                 background-color: ${color('warning.light')};
-                ${makeBorder('warning.light')}
+                box-shadow: none;
             `;
         case TAG_TYPES.ON_HOLD:
             return css`
                 ${result};
                 ${minStatusTagWidth};
                 background-color: ${color('primary.02')};
-                ${makeBorder('primary.02')}
+                box-shadow: none;
             `;
         default: {
             result = css`
@@ -99,14 +196,12 @@ const getRootStyle = ({
                 return css`
                     ${result};
                     background-color: ${color('primary.lightest')};
-                    ${makeBorder('primary.03')}
                 `;
             }
 
             if (deleteOption === 'enabled') {
                 return css`
                     ${result};
-                    ${makeBorder('primary.03')}
                     padding-right: ${spacing(1)};
                 `;
             }
@@ -121,30 +216,6 @@ const getRootStyle = ({
             `;
         }
     }
-};
-
-const textStyle = ({
-    smallVerticalPadding,
-    deleteOption,
-    isDisabled,
-}: TagTextPropsType) => {
-    const result = css`
-        && {
-            margin: 0 ${spacing(smallVerticalPadding ? 1 : 2)};
-        }
-    `;
-
-    if (!isDisabled && deleteOption === TAG_DELETE_BEHAVIOUR_OPTIONS.ENABLED) {
-        return css`
-            ${result};
-
-            && {
-                margin-right: ${spacing(1)};
-            }
-        `;
-    }
-
-    return result;
 };
 
 const clearButtonContainerStyle = ({
@@ -227,52 +298,4 @@ export const TagRoot = styled.div.withConfig(propsBlocker)<TagRootPropsType>`
     ${getRootStyle};
     ${marginProps};
     ${getComponentOverride('Tag')};
-`;
-
-export const TagText = styled.div<TagTextPropsType>`
-    ${typography('paragraphSmall')};
-    color: ${token('body.color')};
-    ${textStyle};
-`;
-
-const tagIndicatorSpacing = ({ small }: TagIndicatorContainerPropsType) => {
-    return css`
-        padding-right: ${small ? spacing(1) : spacing(2)};
-        padding-left: ${small ? spacing(1) : spacing(2)};
-        margin-top: ${small ? spacing(0.5) : spacing(1)};
-        margin-bottom: ${small ? spacing(0.5) : spacing(1)};
-        margin-right: ${small ? spacing(0.5) : spacing(0)};
-    `;
-};
-
-export const TagIndicatorContainer = styled.div<TagIndicatorContainerPropsType>`
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-color: ${color('primary.lightest')};
-    border-radius: ${borderRadius('pill')};
-    background-color: ${color('white')};
-    color: ${color('neutral.11')};
-    ${typography('paragraphSmall')};
-    ${tagIndicatorSpacing};
-`;
-
-const tagIconSpacing = ({ small }: TagIconContainerPropsType) => {
-    return css`
-        font-size: 12px;
-        margin-left: ${small ? spacing(1) : spacing(2)};
-        margin-top: ${spacing(1)};
-        margin-bottom: ${spacing(1)};
-        margin-right: ${small ? spacing(1) : spacing(0)};
-    `;
-};
-
-export const TagIconContainer = styled.div<TagIconContainerPropsType>`
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: ${color('neutral.11')};
-    ${tagIconSpacing}
 `;

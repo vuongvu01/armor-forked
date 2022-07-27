@@ -2,10 +2,12 @@ import { css } from 'styled-components';
 import {
     colorBlue10,
     colorBlue20,
-    colorGrey40,
     colorGrey80,
     colorGrey90,
     colorGrey00,
+    colorGrey60,
+    colorGrey50,
+    colorGrey20,
 } from '@deliveryhero/armor-system';
 import { TagPropsType } from '@deliveryhero/armor';
 
@@ -32,7 +34,30 @@ export const TAG_DELETE_BEHAVIOUR_OPTIONS = {
     ON_HOVER: 'onHover',
 };
 
-export const getTagOverride = ({ type, filled }: TagPropsType) => {
+export const getTagOverride = ({ type, filled, disabled }: TagPropsType) => {
+    if (disabled) {
+        const backgroundColor = colorGrey60;
+        const textColor = colorGrey20;
+
+        return css`
+            &&& {
+                background-color: ${backgroundColor};
+                border-color: ${backgroundColor};
+                color: ${textColor};
+
+                .Tag-Label,
+                .Tag-Icon,
+                .Tag-Indicator {
+                    color: ${textColor};
+                }
+
+                .Tag-Indicator {
+                    background-color: ${colorGrey50};
+                }
+            }
+        `;
+    }
+
     if (filled) {
         return css`
             background-color: ${colorBlue10};

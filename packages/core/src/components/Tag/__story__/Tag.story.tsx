@@ -68,20 +68,38 @@ export const StatusTag = () => {
             <GroupHelper gap={2}>
                 <GroupHelper gap={2}>
                     <Tag type="approved">Approved</Tag>{' '}
+                    <Tag type="approved" disabled>
+                        Approved
+                    </Tag>{' '}
                     <Tag type="approved" small>
                         Approved small
                     </Tag>
                 </GroupHelper>
                 <GroupHelper gap={2}>
                     <Tag type="denied">Denied</Tag>{' '}
+                    <Tag type="denied" disabled>
+                        Denied
+                    </Tag>{' '}
                     <Tag type="denied" small>
                         Denied small
                     </Tag>
                 </GroupHelper>
                 <GroupHelper gap={2}>
                     <Tag type="new">New</Tag>{' '}
+                    <Tag type="new" disabled>
+                        New
+                    </Tag>{' '}
                     <Tag type="new" small>
                         New small
+                    </Tag>
+                </GroupHelper>
+                <GroupHelper gap={2}>
+                    <Tag type="on-hold">On hold</Tag>{' '}
+                    <Tag type="on-hold" disabled>
+                        On hold
+                    </Tag>{' '}
+                    <Tag type="on-hold" small>
+                        On hold
                     </Tag>
                 </GroupHelper>
             </GroupHelper>
@@ -93,6 +111,8 @@ export const InteractiveExample = () => {
     const [isOpen1, setIsOpen1] = useState(true);
     const [isOpen2, setIsOpen2] = useState(true);
     const [isOpen3, setIsOpen3] = useState(true);
+    const [isOpen4, setIsOpen4] = useState(true);
+
     return (
         <>
             <GroupHelper gap={2}>
@@ -104,6 +124,7 @@ export const InteractiveExample = () => {
                         marginRight={3}
                     />
                 )}
+
                 {isOpen1 && (
                     <Tag
                         label="Close me"
@@ -139,6 +160,15 @@ export const InteractiveExample = () => {
                     <Tag
                         label="Close me too!"
                         onClose={() => setIsOpen3(false)}
+                        marginRight={3}
+                    />
+                )}
+                {isOpen4 && (
+                    <Tag
+                        label="You can't close me"
+                        deleteOption="enabled"
+                        onClose={() => setIsOpen4(false)}
+                        disabled
                     />
                 )}
             </GroupHelper>
@@ -304,6 +334,16 @@ export const TagWithIndicators = () => {
                 >
                     Status
                 </Tag>
+                <Tag
+                    type="on-hold"
+                    label="Default"
+                    deleteOption="disabled"
+                    marginRight={3}
+                    indicator="99"
+                    disabled
+                >
+                    Status
+                </Tag>
             </GroupHelper>
             <GroupHelper gap={2}>
                 <p>Small tags with indicators</p>
@@ -370,6 +410,16 @@ export const TagWithIcons = () => {
                     deleteOption="disabled"
                     marginRight={3}
                     icon={<FileTaskListIcon />}
+                >
+                    Status
+                </Tag>
+                <Tag
+                    type="on-hold"
+                    label="Default"
+                    deleteOption="disabled"
+                    marginRight={3}
+                    icon={<FileTaskListIcon />}
+                    disabled
                 >
                     Status
                 </Tag>

@@ -147,6 +147,7 @@ export const PageNavigationPageSizeSelector = styled(Dropdown)`
     .Dropdown-TextInput {
         border-color: ${color('neutral.03')};
     }
+
     .TextInput-Input {
         padding: ${spacing(1.5, 0, 1.5, 2)};
         width: ${spacing(8.5)};
@@ -156,9 +157,13 @@ export const PageNavigationPageSizeSelector = styled(Dropdown)`
             box-shadow: unset;
         }
     }
+
     .ExpansionIndicator-Content {
-        width: ${spacing(8.5)};
+        position: relative;
+        right: -${spacing(1)};
+        top: -${spacing(0.5)};
     }
+
     .ExpansionIndicator-Icon {
         color: ${color('primary.07')};
     }

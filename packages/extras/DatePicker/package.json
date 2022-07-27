@@ -25,7 +25,7 @@
         "test:visual": "cd ./visual && yarn loki test ",
         "test:visual:update": "cd ./visual && yarn loki update",
         "test:visual:approve": "cd ./visual && yarn loki approve",
-        "test:visual:cicd": "cd ./visual && yarn build-storybook && yarn loki --requireReference --reactUri file:./storybook-static",
+        "test:visual:cicd": "cd ./visual && yarn build-storybook --quiet && yarn loki --requireReference --reactUri file:./storybook-static",
         "test:dev": "jest -c ./jest/config.js --watch",
         "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register ../../node_modules/.bin/jest -c ./jest/config.js --runInBand",
         "lint": "eslint ./src --ext .js,.ts,.jsx,.tsx",

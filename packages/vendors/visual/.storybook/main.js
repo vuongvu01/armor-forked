@@ -1,19 +1,27 @@
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
-
 module.exports = {
-    stories: ['../**/*.visual.story.tsx'],
-    addons: [],
-    webpackFinal: async config => {
+    stories: ['../stories/**/*.visual.story.tsx'],
+    addons: ['@storybook/addon-viewport'],
+
+    typescript: {
+        check: false,
+        reactDocgen: false,
+    },
+
+    webpackFinal: async (config) => {
+        config.resolve.extensions.push('.ts', '.tsx');
+
         config.module.rules.push({
             test: /\.(ts|tsx)$/,
             use: [
                 {
                     loader: require.resolve('ts-loader'),
+                    options: {
+                        transpileOnly: true,
+                    },
                 },
             ],
         });
-        config.resolve.extensions.push('.ts', '.tsx');
-        config.resolve.plugins = [new TsconfigPathsPlugin({})];
+
         return config;
     },
 };
