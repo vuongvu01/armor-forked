@@ -1,5 +1,5 @@
 import {
-    HTMLAttributes,
+    ComponentPropsWithoutRef,
 } from 'react';
 import {
     MarginPropsType,
@@ -12,10 +12,9 @@ import {
 
 /** 👉 PROPS TYPE */
 type <%- component_name_pascal %>EffectivePropsType = Partial<{
-    // exampleProperty: boolean;
-    // add other custom properties here
+    // TODO: Add types here
 }> &
-    HTMLAttributes<HTMLDivElement> & // includes all HTML Div properties
+ComponentPropsWithoutRef<'div'> &
     MarginPropsType;
 
 export type <%- component_name_pascal %>PropsType = <%- component_name_pascal %>EffectivePropsType &
@@ -23,4 +22,3 @@ export type <%- component_name_pascal %>PropsType = <%- component_name_pascal %>
 
 export type <%- component_name_pascal %>RootPropsType = <%- component_name_pascal %>EffectivePropsType & ComponentElementStylePropsType;
 
-// export type <%- component_name_pascal %>SubNodePropsType = { /* ... add props here or remove this block ...*/ } & ComponentElementStylePropsType;
