@@ -3,6 +3,7 @@ export const DROPDOWN_BEFORE_SECTION_CLASS_PREFIX = 'DropdownBeforeSection';
 export const DROPDOWN_TAGS_CLASS_PREFIX = 'DropdownTags';
 export const DEFAULT_LABEL = '';
 export const EMPTY_LABEL_VALUE = '';
+export const WHITESPACE_LABEL_VALUE = ' ';
 
 export const DROPDOWN_ACTION_ITEM = 'DropdownActionItem';
 export const DROPDOWN_CONTAINER = 'DropdownContainer';

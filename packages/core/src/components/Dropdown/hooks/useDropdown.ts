@@ -36,7 +36,7 @@ import { MAX_OPTIONS_SELECT_ALL_THRESHOLD } from '../../OptionList/constants';
 import { InternalItemGroupObjectType } from '../../OptionList/type';
 import { useOnInternalItemGroupsUpdate } from './useOnInternalItemGroupsUpdate';
 import { useOnToggleAll } from './useOnToggleAll';
-import { EMPTY_LABEL_VALUE } from '../constants';
+import { EMPTY_LABEL_VALUE, WHITESPACE_LABEL_VALUE } from '../constants';
 
 export const useDropdown = <E extends HTMLInputElement>(
     {
@@ -267,6 +267,11 @@ export const useDropdown = <E extends HTMLInputElement>(
     const isBeforeSectionRendered =
         (multiple && !onRenderSelectedValue) || isRenderedSelectedValueAsNode;
 
+    const textInputValue =
+        isOptionListShown && !selectedValueToDisplay && !enableSearchOption
+            ? WHITESPACE_LABEL_VALUE
+            : selectedValueToDisplay;
+
     return {
         rootProps: restProps,
         containerProps: {
@@ -279,7 +284,7 @@ export const useDropdown = <E extends HTMLInputElement>(
             ref: internalInputRef,
             value: isRenderedSelectedValueAsNode
                 ? EMPTY_LABEL_VALUE
-                : `${selectedValueToDisplay}`,
+                : `${textInputValue}`,
             internalValue,
             disabled,
             error,

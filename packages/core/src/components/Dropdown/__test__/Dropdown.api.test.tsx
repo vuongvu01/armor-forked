@@ -223,7 +223,7 @@ describe('<Dropdown />', () => {
         expect(mockOnChange).toHaveBeenCalledTimes(2);
         expect(mockOnChange).toHaveBeenNthCalledWith(1, ['B']);
         expect(mockOnChange).toHaveBeenNthCalledWith(2, ['G']);
-        expect(inputControl.value).toEqual('');
+        expect(inputControl.value).toEqual(' ');
     });
 
     it('should support uncontrolled mode', async () => {
