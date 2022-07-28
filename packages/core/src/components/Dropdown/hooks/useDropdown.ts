@@ -300,6 +300,7 @@ export const useDropdown = <E extends HTMLInputElement>(
             name,
             displayMode: 'block',
             isCustomRenderer: !!onRenderSelectedValue,
+            isRenderedSelectedValueAsNode,
             'data-testid-input': dataTestIdInput,
 
             // other native props
