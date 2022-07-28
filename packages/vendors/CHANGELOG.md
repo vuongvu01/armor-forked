@@ -1,3 +1,17 @@
+# [1.5.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.4.30...@deliveryhero/armor-vendors@1.5.0) (2022-07-28)
+
+
+### Bug Fixes
+
+* **dropdown:** janky label [LD-337] ([#1138](https://github.com/deliveryhero/armor/issues/1138)) ([bcc5580](https://github.com/deliveryhero/armor/commit/bcc5580da48eca5069e0becf6ff753916737f9c5))
+* **toast:** Multiple instances of useToast doesn't work well with each other [AR-129] ([b9273b3](https://github.com/deliveryhero/armor/commit/b9273b3a36418b9c6a1018ab3ddbdb181aa404d8))
+
+
+### Features
+
+* **dropdown:** Allow render selected value as node [AR-140] ([416d1fa](https://github.com/deliveryhero/armor/commit/416d1fabdf34157f58253842e5310ed276ea5bdb))
+* **Tag:** Add disabled state and improve visual regression testing [LD-287] ([#1140](https://github.com/deliveryhero/armor/issues/1140)) ([63b87ce](https://github.com/deliveryhero/armor/commit/63b87ce01fff47d3dd53bfa5545a62b47244f31b))
+
 ## [1.4.30](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.4.29...@deliveryhero/armor-vendors@1.4.30) (2022-07-25)
 
 
