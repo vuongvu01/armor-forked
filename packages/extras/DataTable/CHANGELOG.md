@@ -1,3 +1,19 @@
+# @deliveryhero/armor-datatable [1.3.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datatable@1.2.9...@deliveryhero/armor-datatable@1.3.0) (2022-07-28)
+
+
+### Features
+
+* **Tag:** Add disabled state and improve visual regression testing [LD-287] ([#1140](https://github.com/deliveryhero/armor/issues/1140)) ([63b87ce](https://github.com/deliveryhero/armor/commit/63b87ce01fff47d3dd53bfa5545a62b47244f31b))
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor:** upgraded to 1.102.0
+* **@deliveryhero/armor-illustrations:** upgraded to 1.5.0
+
 ## @deliveryhero/armor-datatable [1.2.9](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datatable@1.2.8...@deliveryhero/armor-datatable@1.2.9) (2022-07-25)
 
 
