@@ -36,7 +36,7 @@ import { MAX_OPTIONS_SELECT_ALL_THRESHOLD } from '../../OptionList/constants';
 import { InternalItemGroupObjectType } from '../../OptionList/type';
 import { useOnInternalItemGroupsUpdate } from './useOnInternalItemGroupsUpdate';
 import { useOnToggleAll } from './useOnToggleAll';
-import { WHITESPACE_LABEL_VALUE } from '../constants';
+import { WHITESPACE_LABEL_VALUE, EMPTY_LABEL_VALUE } from '../constants';
 
 export const useDropdown = <E extends HTMLInputElement>(
     {
@@ -267,10 +267,20 @@ export const useDropdown = <E extends HTMLInputElement>(
     const isBeforeSectionRendered =
         (multiple && !onRenderSelectedValue) || isRenderedSelectedValueAsNode;
 
-    const textInputValue =
-        isOptionListShown && !selectedValueToDisplay
-            ? WHITESPACE_LABEL_VALUE
-            : selectedValueToDisplay;
+    const getTextInputValue = () => {
+        if (
+            isOptionListShown &&
+            (!selectedValueToDisplay || isRenderedSelectedValueAsNode)
+        ) {
+            return WHITESPACE_LABEL_VALUE;
+        }
+
+        if (isRenderedSelectedValueAsNode) {
+            return EMPTY_LABEL_VALUE;
+        }
+
+        return `${selectedValueToDisplay}`;
+    };
 
     return {
         rootProps: restProps,
@@ -282,9 +292,7 @@ export const useDropdown = <E extends HTMLInputElement>(
         textInputProps: {
             onClick: onOptionListVisibilityTriggerClick,
             ref: internalInputRef,
-            value: isRenderedSelectedValueAsNode
-                ? WHITESPACE_LABEL_VALUE
-                : `${textInputValue}`,
+            value: getTextInputValue(),
             internalValue,
             disabled,
             error,
@@ -393,6 +401,7 @@ export const useDropdown = <E extends HTMLInputElement>(
         disabled,
         internalValue,
         open: isOptionListShown,
-        shouldDisplayClearButton: multiple && !disabled && internalValue.length,
+        shouldDisplayClearButton:
+            multiple && !disabled && !!internalValue.length,
     };
 };
