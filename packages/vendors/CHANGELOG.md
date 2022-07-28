@@ -1,3 +1,5 @@
+## [1.5.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.5.0...@deliveryhero/armor-vendors@1.5.1) (2022-07-28)
+
 # [1.5.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.4.30...@deliveryhero/armor-vendors@1.5.0) (2022-07-28)
 
 
