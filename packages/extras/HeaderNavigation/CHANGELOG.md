@@ -1,3 +1,5 @@
+## [1.2.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-headernavigation@1.2.0...@deliveryhero/armor-headernavigation@1.2.1) (2022-07-28)
+
 # [1.2.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-headernavigation@1.1.6...@deliveryhero/armor-headernavigation@1.2.0) (2022-07-28)
 
 
