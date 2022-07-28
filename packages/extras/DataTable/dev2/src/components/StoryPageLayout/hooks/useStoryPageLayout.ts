@@ -48,7 +48,7 @@ export const useStoryPageLayout = ({
         url: `?story=${storyName}`,
     }));
 
-    let storyComponent: FC | null = null;
+    let storyComponent: FC<React.PropsWithChildren<unknown>> | null = null;
     if (story && stories && story in stories) {
         storyComponent = stories[story];
         title = `${title} ➡️ ${storyList[story]}`;

@@ -15,7 +15,7 @@ import {
 import { SEARCH_CLASS_PREFIX } from '../constants';
 
 export const SearchSuggestionItem: FunctionComponent<
-    SearchSuggestionItemPropsType
+    React.PropsWithChildren<SearchSuggestionItemPropsType>
 > = ({
     className,
     option,

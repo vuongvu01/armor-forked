@@ -26,7 +26,7 @@ const CameraSmall = (
     </Fragment>
 );
 
-export const CameraIcon: FunctionComponent<SVGIconPropsType> = (props) => {
+export const CameraIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

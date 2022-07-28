@@ -26,7 +26,7 @@ const PlayYoutubeSmall = (
     </Fragment>
 );
 
-export const PlayYoutubeIcon: FunctionComponent<SVGIconPropsType> = (props) => {
+export const PlayYoutubeIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

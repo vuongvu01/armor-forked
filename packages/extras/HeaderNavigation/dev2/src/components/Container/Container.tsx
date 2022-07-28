@@ -9,7 +9,7 @@ const ContainerRoot = styled(MUIContainer)`
     padding-right: ${muiSpacing(5)};
 `;
 
-export const Container: FC<ContainerPropsType> = ({ children, ...props }) => {
+export const Container: FC<React.PropsWithChildren<ContainerPropsType>> = ({ children, ...props }) => {
     return <ContainerRoot {...props}>{children as any}</ContainerRoot>;
 };
 

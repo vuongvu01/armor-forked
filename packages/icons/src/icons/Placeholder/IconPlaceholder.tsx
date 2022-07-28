@@ -26,7 +26,7 @@ const IconPlaceholderSmall = (
     </Fragment>
 );
 
-export const IconPlaceholderIcon: FunctionComponent<SVGIconPropsType> = (
+export const IconPlaceholderIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
     props,
 ) => {
     const { className, ...restProps } = props;

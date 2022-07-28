@@ -43,7 +43,7 @@ export const RADIO_GROUP_CLASS_PREFIX = 'RadioGroup';
  *
  * @armor-docs-component
  */
-export const RadioGroup: FC<RadioGroupPropsType> = ({
+export const RadioGroup: FC<React.PropsWithChildren<RadioGroupPropsType>> = ({
     children,
     name,
     onChange,

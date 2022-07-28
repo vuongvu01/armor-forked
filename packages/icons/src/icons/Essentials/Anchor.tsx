@@ -26,7 +26,7 @@ const AnchorSmall = (
     </Fragment>
 );
 
-export const AnchorIcon: FunctionComponent<SVGIconPropsType> = (props) => {
+export const AnchorIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

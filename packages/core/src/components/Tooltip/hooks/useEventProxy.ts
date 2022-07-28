@@ -20,7 +20,7 @@ export const useEventProxy = (
     const onMouseOut = childrenElement?.props?.onMouseOut;
 
     const onMouseOverProxy = useCallback(
-        (event) => {
+        (event: any) => {
             if (leaveTimer.current) {
                 clearTimeout(leaveTimer.current);
             }
@@ -31,7 +31,7 @@ export const useEventProxy = (
     );
 
     const onMouseOutProxy = useCallback(
-        (event) => {
+        (event: any) => {
             leaveTimer.current = setTimeout(() => {
                 setOpen(false);
                 onMouseOut?.(event);

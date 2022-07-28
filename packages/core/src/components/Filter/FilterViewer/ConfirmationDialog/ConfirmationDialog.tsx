@@ -5,7 +5,9 @@ import { Button } from '../../../Button';
 import { MemoizedContextMenu as ContextMenu } from '../../../ContextMenu';
 import { ConfirmationDialogPropsType } from './type';
 
-export const ConfirmationDialog: FC<ConfirmationDialogPropsType> = memo(
+export const ConfirmationDialog: FC<
+    React.PropsWithChildren<ConfirmationDialogPropsType>
+> = memo(
     ({
         classNames,
         clearFilterContextMenuProps,

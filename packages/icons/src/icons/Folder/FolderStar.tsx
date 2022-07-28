@@ -26,7 +26,7 @@ const FolderStarSmall = (
     </Fragment>
 );
 
-export const FolderStarIcon: FunctionComponent<SVGIconPropsType> = (props) => {
+export const FolderStarIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

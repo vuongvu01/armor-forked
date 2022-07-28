@@ -6,14 +6,9 @@ import { useSelectorLabelClassName } from './utils';
 import { Typography } from '../Typography';
 import { SELECTOR_LABEL_CLASS_PREFIX } from './constants';
 
-export const SelectorLabel: FC<SelectorLabelEffectivePropsType> = ({
-    checked,
-    children,
-    className,
-    error,
-    disabled,
-    typographyProps,
-}) => {
+export const SelectorLabel: FC<
+    React.PropsWithChildren<SelectorLabelEffectivePropsType>
+> = ({ checked, children, className, error, disabled, typographyProps }) => {
     const classOverride = useSelectorLabelClassName(
         SELECTOR_LABEL_CLASS_PREFIX,
         className,

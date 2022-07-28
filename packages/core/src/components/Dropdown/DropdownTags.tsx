@@ -7,8 +7,8 @@ import { DROPDOWN_TAGS_CLASS_PREFIX } from './constants';
 import { useDropdownTagsClassName } from './hooks/useDropdownTagsClassName';
 import { DropdownTag } from './style';
 
-export const DropdownTags: FC<DropdownTagsPropsType> = memo(
-    ({ className, disabled, tagsToDisplay, propsFn }) => {
+export const DropdownTags: FC<React.PropsWithChildren<DropdownTagsPropsType>> =
+    memo(({ className, disabled, tagsToDisplay, propsFn }) => {
         const classOverride = useDropdownTagsClassName(
             DROPDOWN_TAGS_CLASS_PREFIX,
             className,
@@ -28,8 +28,7 @@ export const DropdownTags: FC<DropdownTagsPropsType> = memo(
                 ))}
             </>
         );
-    },
-);
+    });
 
 DropdownTags.propTypes = {
     tagsToDisplay: PropTypes.array.isRequired,

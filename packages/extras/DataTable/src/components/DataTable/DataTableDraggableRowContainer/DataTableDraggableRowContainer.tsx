@@ -11,7 +11,7 @@ type DataTableDraggableRowContainerProps = {
 };
 
 export const DataTableDraggableRowContainer: FC<
-    DataTableDraggableRowContainerProps
+    React.PropsWithChildren<DataTableDraggableRowContainerProps>
 > = ({ children, enableRowReordering, id }) => {
     const { attributes, listeners, transform, transition, setNodeRef } =
         useSortable({ id });

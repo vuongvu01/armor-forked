@@ -26,7 +26,7 @@ const AlignCenterSmall = (
     </Fragment>
 );
 
-export const AlignCenterIcon: FunctionComponent<SVGIconPropsType> = (props) => {
+export const AlignCenterIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

@@ -26,7 +26,7 @@ const QuestCompleteSmall = (
     </Fragment>
 );
 
-export const QuestCompleteIcon: FunctionComponent<SVGIconPropsType> = (
+export const QuestCompleteIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
     props,
 ) => {
     const { className, ...restProps } = props;

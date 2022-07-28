@@ -26,7 +26,7 @@ const ReferralPaymentSmall = (
     </Fragment>
 );
 
-export const ReferralPaymentIcon: FunctionComponent<SVGIconPropsType> = (
+export const ReferralPaymentIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
     props,
 ) => {
     const { className, ...restProps } = props;

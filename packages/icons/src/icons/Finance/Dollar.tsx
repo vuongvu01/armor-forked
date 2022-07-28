@@ -26,7 +26,7 @@ const DollarSmall = (
     </Fragment>
 );
 
-export const DollarIcon: FunctionComponent<SVGIconPropsType> = (props) => {
+export const DollarIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

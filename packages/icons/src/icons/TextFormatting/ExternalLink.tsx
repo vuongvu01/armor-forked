@@ -26,7 +26,7 @@ const ExternalLinkSmall = (
     </Fragment>
 );
 
-export const ExternalLinkIcon: FunctionComponent<SVGIconPropsType> = (
+export const ExternalLinkIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
     props,
 ) => {
     const { className, ...restProps } = props;

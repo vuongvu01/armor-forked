@@ -3,7 +3,7 @@ import { StoryPageContentPropsType } from './type';
 import { Container } from '../../Container';
 import { StoryPageContentRoot, StoryPageContentTitle } from './style';
 
-export const StoryPageContent: FC<StoryPageContentPropsType> = ({
+export const StoryPageContent: FC<React.PropsWithChildren<StoryPageContentPropsType>> = ({
     title,
     Story,
     maxWidth,

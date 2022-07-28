@@ -26,7 +26,7 @@ const CalendarAbsenceSmall = (
     </Fragment>
 );
 
-export const CalendarAbsenceIcon: FunctionComponent<SVGIconPropsType> = (
+export const CalendarAbsenceIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
     props,
 ) => {
     const { className, ...restProps } = props;

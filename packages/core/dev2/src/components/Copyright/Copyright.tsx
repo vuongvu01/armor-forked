@@ -4,7 +4,7 @@ import { Link } from '../';
 import { CopyrightRoot } from './style';
 import { CopyrightPropsType } from './type';
 
-export const Copyright: FC<CopyrightPropsType> = ({
+export const Copyright: FC<React.PropsWithChildren<CopyrightPropsType>> = ({
     author,
     source,
     sourceText,

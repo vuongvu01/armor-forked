@@ -26,7 +26,7 @@ const PersonaSmall = (
     </Fragment>
 );
 
-export const PersonaIcon: FunctionComponent<SVGIconPropsType> = (props) => {
+export const PersonaIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

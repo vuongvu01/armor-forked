@@ -26,7 +26,7 @@ const TranslateSmall = (
     </Fragment>
 );
 
-export const TranslateIcon: FunctionComponent<SVGIconPropsType> = (props) => {
+export const TranslateIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

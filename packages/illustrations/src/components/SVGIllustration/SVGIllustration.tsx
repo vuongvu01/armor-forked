@@ -3,7 +3,7 @@ import React, { FunctionComponent } from 'react';
 import { SVGIllustrationPropsType } from './type';
 import { SVGIllustrationRoot } from './style';
 
-export const SVGIllustration: FunctionComponent<SVGIllustrationPropsType> = ({
+export const SVGIllustration: FunctionComponent<React.PropsWithChildren<SVGIllustrationPropsType>> = ({
     children,
     title,
     viewBox,
@@ -27,16 +27,16 @@ export const SVGIllustration: FunctionComponent<SVGIllustrationPropsType> = ({
     );
 };
 
-export const SVGIllustrationGroup: FunctionComponent = ({ children }) => (
+export const SVGIllustrationGroup: FunctionComponent<React.PropsWithChildren<unknown>> = ({ children }) => (
     <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         {children}
     </g>
 );
 
-export const SVGIllustrationPath: FunctionComponent<{
+export const SVGIllustrationPath: FunctionComponent<React.PropsWithChildren<{
     d: string;
     fill: string;
-}> = ({ d, fill }) => <path d={d} fill={fill}></path>;
+}>> = ({ d, fill }) => <path d={d} fill={fill}></path>;
 
 SVGIllustration.defaultProps = {
     display: 'inline-block',

@@ -26,7 +26,7 @@ const CustomerSupportSmall = (
     </Fragment>
 );
 
-export const CustomerSupportIcon: FunctionComponent<SVGIconPropsType> = (
+export const CustomerSupportIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
     props,
 ) => {
     const { className, ...restProps } = props;

@@ -12,10 +12,9 @@ import { DIALOG_ACTIONS_CLASS_PREFIX as CLASS_PREFIX } from './constants';
  *
  * @armor-docs-component
  */
-export const DialogActions: FC<DialogActionsPropsType> = ({
-    className,
-    ...restProps
-}) => {
+export const DialogActions: FC<
+    React.PropsWithChildren<DialogActionsPropsType>
+> = ({ className, ...restProps }) => {
     const classNameRoot = useDialogActionsClassName(CLASS_PREFIX, className);
 
     return <DialogActionsRoot {...restProps} className={classNameRoot} />;

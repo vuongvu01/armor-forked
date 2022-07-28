@@ -26,7 +26,7 @@ const AddSmall = (
     </Fragment>
 );
 
-export const AddIcon: FunctionComponent<SVGIconPropsType> = (props) => {
+export const AddIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

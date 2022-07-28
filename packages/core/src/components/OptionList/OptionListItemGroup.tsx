@@ -13,11 +13,9 @@ import { useOptionListItemGroup } from './hooks/useOptionListItemGroup';
 /**
  * @internal
  */
-export const OptionListItemGroup: FC<OptionListItemGroupPropType> = ({
-    className,
-    children,
-    ...props
-}) => {
+export const OptionListItemGroup: FC<
+    React.PropsWithChildren<OptionListItemGroupPropType>
+> = ({ className, children, ...props }) => {
     const classOverride = useOptionListItemGroupClassName(
         OPTION_LIST_ITEM_GROUP_CLASS_PREFIX,
         className,

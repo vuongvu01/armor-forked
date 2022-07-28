@@ -26,7 +26,7 @@ const StarFilledSmall = (
     </Fragment>
 );
 
-export const StarFilledIcon: FunctionComponent<SVGIconPropsType> = (props) => {
+export const StarFilledIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

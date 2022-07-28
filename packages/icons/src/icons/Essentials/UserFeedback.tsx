@@ -26,7 +26,7 @@ const UserFeedbackSmall = (
     </Fragment>
 );
 
-export const UserFeedbackIcon: FunctionComponent<SVGIconPropsType> = (
+export const UserFeedbackIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
     props,
 ) => {
     const { className, ...restProps } = props;

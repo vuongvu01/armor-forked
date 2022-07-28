@@ -7,7 +7,9 @@ import {
     TableCellStickyOffset,
 } from '../TableCell/type';
 
-export const TableRowCells: FC<TableRowCellsPropTypes> = ({
+export const TableRowCells: FC<
+    React.PropsWithChildren<TableRowCellsPropTypes>
+> = ({
     children,
     stickyColumns,
     stickyTopVisible,

@@ -26,7 +26,7 @@ const ConversationSmall = (
     </Fragment>
 );
 
-export const ConversationIcon: FunctionComponent<SVGIconPropsType> = (
+export const ConversationIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
     props,
 ) => {
     const { className, ...restProps } = props;

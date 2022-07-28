@@ -26,7 +26,7 @@ const ChecklistOutlineSmall = (
     </Fragment>
 );
 
-export const ChecklistOutlineIcon: FunctionComponent<SVGIconPropsType> = (
+export const ChecklistOutlineIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
     props,
 ) => {
     const { className, ...restProps } = props;

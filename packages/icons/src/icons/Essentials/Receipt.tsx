@@ -26,7 +26,7 @@ const ReceiptSmall = (
     </Fragment>
 );
 
-export const ReceiptIcon: FunctionComponent<SVGIconPropsType> = (props) => {
+export const ReceiptIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

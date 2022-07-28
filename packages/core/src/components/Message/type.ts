@@ -23,7 +23,7 @@ type MessageEffectivePropsType = Partial<{
     warning: boolean;
     info: boolean;
     success: boolean;
-    iconTag: ComponentType<unknown>;
+    iconTag: ComponentType<React.PropsWithChildren<unknown>>;
     /**
      * @ignore
      */

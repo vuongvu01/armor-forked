@@ -12,11 +12,9 @@ import { DIALOG_CONTENT_CLASS_PREFIX as CLASS_PREFIX } from './constants';
  *
  * @armor-docs-component
  */
-export const DialogContent: FC<DialogContentPropsType> = ({
-    className,
-    children,
-    ...restProps
-}) => {
+export const DialogContent: FC<
+    React.PropsWithChildren<DialogContentPropsType>
+> = ({ className, children, ...restProps }) => {
     const classNameRoot = useDialogContentClassName(CLASS_PREFIX, className);
 
     return (

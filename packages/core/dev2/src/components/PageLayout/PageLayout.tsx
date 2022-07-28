@@ -8,7 +8,7 @@ import { Typography } from '../Typography';
  * This is a page-level layout. It goes inside of the ApplicationLayout and
  * defines a common structure of each page of the project.
  */
-export const PageLayout: FC<PageLayoutPropsType> = props => {
+export const PageLayout: FC<React.PropsWithChildren<PageLayoutPropsType>> = props => {
     const {
         children,
         // location: { pathname = '' } = {},

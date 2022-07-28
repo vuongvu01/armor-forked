@@ -18,7 +18,7 @@ import {
  * @armor-docs-component
  */
 export const HeaderNavigationMenuContentBody: FC<
-    HeaderNavigationMenuContentBodyPropsType
+    React.PropsWithChildren<HeaderNavigationMenuContentBodyPropsType>
 > = ({ className, options, selectedValue, onOptionSelect, ...restProps }) => {
     const classOverride = useHeaderNavigationMenuContentBodyClassName(
         HEADER_NAVIGATION_MENU_CONTENT_BODY_CLASS_PREFIX,

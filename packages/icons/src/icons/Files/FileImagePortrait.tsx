@@ -26,7 +26,7 @@ const FileImagePortraitSmall = (
     </Fragment>
 );
 
-export const FileImagePortraitIcon: FunctionComponent<SVGIconPropsType> = (
+export const FileImagePortraitIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
     props,
 ) => {
     const { className, ...restProps } = props;

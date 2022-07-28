@@ -16,10 +16,12 @@ export const loremIpsum = `Lorem Ipsum is simply dummy text of the printing and 
             Aldus PageMaker including versions of Lorem Ipsum.`;
 
 export const LoremIpsum: FunctionComponent<
-    {
-        short?: boolean;
-        children?: ReactNode;
-    } & HTMLAttributes<HTMLElement>
+    React.PropsWithChildren<
+        {
+            short?: boolean;
+            children?: ReactNode;
+        } & HTMLAttributes<HTMLElement>
+    >
 > = ({ short, children, ...rest }) => (
     <>
         {!short && <h1>What is Lorem Ipsum?</h1>}

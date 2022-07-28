@@ -13,7 +13,7 @@ const valueDisabled = { enabled: false };
 
 const globalFlags = getFlags();
 
-export const PortalToBody: FC<PortalToBodyPropsType> = ({
+export const PortalToBody: FC<React.PropsWithChildren<PortalToBodyPropsType>> = ({
     children,
     enablePortal,
 }) => {
@@ -35,7 +35,7 @@ PortalToBody.defaultProps = {
     enablePortal: true,
 };
 
-export const DisablePortal: FC = ({ children }) => {
+export const DisablePortal: FC<React.PropsWithChildren<unknown>> = ({ children }) => {
     return (
         <PortalContext.Provider value={valueDisabled}>
             {children}

@@ -5,7 +5,7 @@ import { NotFoundFramePropsType } from './type';
 import { Link } from '../Link';
 import { Copyright } from '../Copyright';
 
-export const NotFound: FC<NotFoundFramePropsType> = ({
+export const NotFound: FC<React.PropsWithChildren<NotFoundFramePropsType>> = ({
     children,
     ...restProps
 }) => {

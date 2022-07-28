@@ -3,7 +3,7 @@ import { HeaderPropsType } from './type';
 import { Menu } from '../Menu';
 import { MenuOffset, HeaderRoot } from './style';
 
-export const Header: FC<HeaderPropsType> = () => (
+export const Header: FC<React.PropsWithChildren<HeaderPropsType>> = () => (
     <HeaderRoot>
         <MenuOffset />
         <Menu />

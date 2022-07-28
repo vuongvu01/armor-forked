@@ -26,7 +26,7 @@ const ChecklistSolidSmall = (
     </Fragment>
 );
 
-export const ChecklistSolidIcon: FunctionComponent<SVGIconPropsType> = (
+export const ChecklistSolidIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
     props,
 ) => {
     const { className, ...restProps } = props;

@@ -6,12 +6,9 @@ import { FilterEditorConditionPropsType } from '../type';
 import { DropdownValueType } from '../../../Dropdown/type';
 import { FilterEnumConditionType } from '../../conditionTypes';
 
-export const FilterEditorEnumCondition: FC<FilterEditorConditionPropsType> = ({
-    condition,
-    conditionType,
-    conditionValue,
-    onConditionValueChange,
-}) => {
+export const FilterEditorEnumCondition: FC<
+    React.PropsWithChildren<FilterEditorConditionPropsType>
+> = ({ condition, conditionType, conditionValue, onConditionValueChange }) => {
     const { label, multiple } = condition;
     const { options, dropdownAttributes } = (
         conditionType as FilterEnumConditionType

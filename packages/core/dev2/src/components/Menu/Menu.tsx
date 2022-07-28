@@ -18,7 +18,7 @@ import { site } from '../../meta/site';
 
 import { MenuPropsType } from './type';
 
-export const Menu: FC<MenuPropsType> = () => {
+export const Menu: FC<React.PropsWithChildren<MenuPropsType>> = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const onHamburgerClick = useCallback(() => {
         setMobileMenuOpen(!mobileMenuOpen);

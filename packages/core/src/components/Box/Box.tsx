@@ -34,7 +34,10 @@ import { useBoxClassName } from './hooks/useBoxClassName';
  *
  * @armor-docs-component
  */
-export const Box: FC<BoxPropsType> = ({ className, ...restProps }) => {
+export const Box: FC<React.PropsWithChildren<BoxPropsType>> = ({
+    className,
+    ...restProps
+}) => {
     const classNameComponents = useBoxClassName(BOX_CLASS_PREFIX, className);
 
     return <BoxRoot {...restProps} className={classNameComponents.Root} />;

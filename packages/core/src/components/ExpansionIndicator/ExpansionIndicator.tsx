@@ -38,7 +38,9 @@ import {
  *
  * @armor-docs-component
  */
-export const ExpansionIndicator: FC<ExpansionIndicatorPropsType> = ({
+export const ExpansionIndicator: FC<
+    React.PropsWithChildren<ExpansionIndicatorPropsType>
+> = ({
     className,
     disabled,
     isExpanded,

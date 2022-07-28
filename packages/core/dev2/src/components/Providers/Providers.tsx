@@ -15,7 +15,7 @@ const queryClient = new QueryClient();
 /**
  * This is a top-level wrapper, it wraps everything else, including the ApplicationLayout.
  */
-export const Providers: FC = ({ children }) => {
+export const Providers: FC<React.PropsWithChildren<unknown>> = ({ children }) => {
     return (
         <SimpleReactLightbox>
             <MUIThemeProvider theme={theme}>

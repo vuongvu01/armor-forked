@@ -23,7 +23,7 @@ import { HeaderNavigationMenuContentHeaderPropsType } from './type';
  * @armor-docs-component
  */
 export const HeaderNavigationMenuContentHeader: FC<
-    HeaderNavigationMenuContentHeaderPropsType
+    React.PropsWithChildren<HeaderNavigationMenuContentHeaderPropsType>
 > = ({ className, title, label, image, ...restProps }) => {
     const classOverride = useHeaderNavigationMenuContentHeaderClassName(
         HEADER_NAVIGATION_MENU_CONTENT_HEADER_CLASS_PREFIX,

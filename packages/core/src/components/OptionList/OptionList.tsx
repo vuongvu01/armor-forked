@@ -27,8 +27,8 @@ import { OptionListItemGroup } from './OptionListItemGroup';
 /**
  * @internal
  */
-export const OptionList: FC<OptionListPropsType> = memo(
-    ({ className, ...props }) => {
+export const OptionList: FC<React.PropsWithChildren<OptionListPropsType>> =
+    memo(({ className, ...props }) => {
         const {
             rootProps,
             getOptionItemProps,
@@ -185,7 +185,6 @@ export const OptionList: FC<OptionListPropsType> = memo(
                 )}
             </OptionListRoot>
         ) : null;
-    },
-);
+    });
 
 OptionList.displayName = OPTION_LIST_CLASS_PREFIX;

@@ -48,7 +48,7 @@ import { TAB_VIEW_CLASS_PREFIX } from './constants';
  *
  * @armor-docs-component
  */
-export const TabView: FC<TabViewPropsType> = ({
+export const TabView: FC<React.PropsWithChildren<TabViewPropsType>> = ({
     children,
     value,
     selectedValue,

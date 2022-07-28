@@ -14,10 +14,9 @@ import { useOptionListItemClassName } from './hooks/useOptionListItemClassName';
 /**
  * @internal
  */
-export const OptionListItem: FunctionComponent<OptionListItemPropsType> = ({
-    className,
-    ...props
-}) => {
+export const OptionListItem: FunctionComponent<
+    React.PropsWithChildren<OptionListItemPropsType>
+> = ({ className, ...props }) => {
     const {
         rootProps,
         checkboxProps,

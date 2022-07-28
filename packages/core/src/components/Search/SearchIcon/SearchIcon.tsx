@@ -10,11 +10,9 @@ import { SearchIconPropsType } from './type';
 import { SEARCH_ICON_CLASS_PREFIX } from './constants';
 import { useSearchIconClassName } from './hooks';
 
-export const SearchIcon: FunctionComponent<SearchIconPropsType> = ({
-    className,
-    isLoading,
-    disabled,
-}) => {
+export const SearchIcon: FunctionComponent<
+    React.PropsWithChildren<SearchIconPropsType>
+> = ({ className, isLoading, disabled }) => {
     const classOverride = useSearchIconClassName(
         SEARCH_ICON_CLASS_PREFIX,
         className,

@@ -4,7 +4,10 @@ import { makeBEM } from '@deliveryhero/armor-system';
 import { Props } from './type';
 import { Table, HeaderTR, TH, TR, TBody, TD } from './style';
 
-export const Nodes: FunctionComponent<Props> = ({ blockName, nodes }) => {
+export const Nodes: FunctionComponent<React.PropsWithChildren<Props>> = ({
+    blockName,
+    nodes,
+}) => {
     const columns = useMemo(() => {
         return [
             {

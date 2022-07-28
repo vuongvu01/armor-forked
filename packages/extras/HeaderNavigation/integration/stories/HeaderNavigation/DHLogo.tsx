@@ -1,6 +1,6 @@
 import React from 'react';
 
-const DHLogo: React.FC = () => (
+const DHLogo: React.FC<React.PropsWithChildren<unknown>> = () => (
     <div>
         <svg
             width="110"

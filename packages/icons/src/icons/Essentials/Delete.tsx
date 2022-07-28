@@ -26,7 +26,7 @@ const DeleteSmall = (
     </Fragment>
 );
 
-export const DeleteIcon: FunctionComponent<SVGIconPropsType> = (props) => {
+export const DeleteIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

@@ -26,7 +26,7 @@ const ArrowReturnLeftSmall = (
     </Fragment>
 );
 
-export const ArrowReturnLeftIcon: FunctionComponent<SVGIconPropsType> = (
+export const ArrowReturnLeftIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
     props,
 ) => {
     const { className, ...restProps } = props;

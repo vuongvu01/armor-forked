@@ -2,7 +2,7 @@ import { ComponentType } from 'react';
 
 export type ComponentBehaviourCustomTagPropertyType =
     | string
-    | ComponentType<any>;
+    | ComponentType<React.PropsWithChildren<any>>;
 
 export type ComponentBehaviourCustomTagType = Partial<{
     /**

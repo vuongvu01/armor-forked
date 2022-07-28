@@ -26,7 +26,7 @@ const BubbleTextSolidSmall = (
     </Fragment>
 );
 
-export const BubbleTextSolidIcon: FunctionComponent<SVGIconPropsType> = (
+export const BubbleTextSolidIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
     props,
 ) => {
     const { className, ...restProps } = props;

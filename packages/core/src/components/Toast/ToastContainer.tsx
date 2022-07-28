@@ -9,7 +9,9 @@ import { Toast } from './Toast';
 import { ToastContainerRoot } from './style';
 import { useToastStore } from './ToastStore';
 
-export const ToastContainer: FC<ToastContainerPropsType> = ({ gap }) => {
+export const ToastContainer: FC<
+    React.PropsWithChildren<ToastContainerPropsType>
+> = ({ gap }) => {
     const classNames = useToastClassNames(TOAST_CONTAINER_PREFIX);
     const { toasts, isPausedAutoClose } = useToastStore();
 

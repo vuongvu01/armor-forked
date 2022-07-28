@@ -5,7 +5,7 @@ import { ThemeSelectorRoot, ThemeSelectorButton } from './style';
 import { ThemeSelectorProps } from './type';
 import { ucFirst } from '../../../util/etc';
 
-export const ThemeSelector: FC<ThemeSelectorProps> = ({
+export const ThemeSelector: FC<React.PropsWithChildren<ThemeSelectorProps>> = ({
     themeName,
     themeNames,
     onThemeChange,

@@ -28,7 +28,7 @@ const DashSmall = (
     </Fragment>
 );
 
-export const DashIcon: FunctionComponent<SVGIconPropsType> = (props) => {
+export const DashIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

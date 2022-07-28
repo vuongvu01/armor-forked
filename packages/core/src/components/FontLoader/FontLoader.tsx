@@ -19,7 +19,7 @@ import { useFontLoader } from './hooks/useFontLoader';
  *
  * @armor-docs-component
  */
-export const FontLoader: FC = () => {
+export const FontLoader: FC<React.PropsWithChildren<unknown>> = () => {
     useFontLoader();
 
     return null;

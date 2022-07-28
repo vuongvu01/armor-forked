@@ -26,7 +26,7 @@ const EllipsisVerticalSmall = (
     </Fragment>
 );
 
-export const EllipsisVerticalIcon: FunctionComponent<SVGIconPropsType> = (
+export const EllipsisVerticalIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
     props,
 ) => {
     const { className, ...restProps } = props;

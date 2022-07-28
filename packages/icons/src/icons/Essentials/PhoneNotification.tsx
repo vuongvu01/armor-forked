@@ -26,7 +26,7 @@ const PhoneNotificationSmall = (
     </Fragment>
 );
 
-export const PhoneNotificationIcon: FunctionComponent<SVGIconPropsType> = (
+export const PhoneNotificationIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
     props,
 ) => {
     const { className, ...restProps } = props;

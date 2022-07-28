@@ -26,7 +26,7 @@ const InfoOutlineSmall = (
     </Fragment>
 );
 
-export const InfoOutlineIcon: FunctionComponent<SVGIconPropsType> = (props) => {
+export const InfoOutlineIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

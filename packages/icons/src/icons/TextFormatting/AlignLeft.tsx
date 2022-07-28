@@ -26,7 +26,7 @@ const AlignLeftSmall = (
     </Fragment>
 );
 
-export const AlignLeftIcon: FunctionComponent<SVGIconPropsType> = (props) => {
+export const AlignLeftIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

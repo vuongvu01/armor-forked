@@ -42,10 +42,9 @@ export const SIDE_SHEET_HEADER_CLASS_PREFIX = 'SideSheetHeader';
  *
  * @armor-docs-component
  */
-export const SideSheetHeader: FC<SideSheetHeaderPropsType> = ({
-    className,
-    ...props
-}) => {
+export const SideSheetHeader: FC<
+    React.PropsWithChildren<SideSheetHeaderPropsType>
+> = ({ className, ...props }) => {
     const classNames = useSideSheetHeaderClassNames(
         SIDE_SHEET_HEADER_CLASS_PREFIX,
         className,

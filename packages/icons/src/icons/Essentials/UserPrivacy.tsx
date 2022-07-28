@@ -38,7 +38,7 @@ const UserPrivacySmall = (
     </Fragment>
 );
 
-export const UserPrivacyIcon: FunctionComponent<SVGIconPropsType> = (props) => {
+export const UserPrivacyIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

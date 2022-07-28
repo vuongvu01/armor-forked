@@ -26,7 +26,7 @@ const SyncTimeResetSmall = (
     </Fragment>
 );
 
-export const SyncTimeResetIcon: FunctionComponent<SVGIconPropsType> = (
+export const SyncTimeResetIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
     props,
 ) => {
     const { className, ...restProps } = props;

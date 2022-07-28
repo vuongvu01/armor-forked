@@ -26,7 +26,7 @@ const NotificationSmall = (
     </Fragment>
 );
 
-export const NotificationIcon: FunctionComponent<SVGIconPropsType> = (
+export const NotificationIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
     props,
 ) => {
     const { className, ...restProps } = props;

@@ -65,9 +65,7 @@ const onOptionSelect = (item: any) => {
     }
 };
 
-export const HeaderNavigationMenuContentLogistics: FunctionComponent<
-    HeaderNavigationMenuContentPropsType
-> = ({ displayedApplicationCodes, ...restProps }) => {
+export const HeaderNavigationMenuContentLogistics: FunctionComponent<React.PropsWithChildren<HeaderNavigationMenuContentPropsType>> = ({ displayedApplicationCodes, ...restProps }) => {
     const items = useMemo(() => {
         if (!displayedApplicationCodes) {
             return menuContentBodyOptions;

@@ -10,10 +10,9 @@ import { useOptionListFooter } from './hooks/useOptionListFooter';
 /**
  * @internal
  */
-export const OptionListFooter: FunctionComponent<OptionListFooterPropsType> = ({
-    className,
-    ...props
-}) => {
+export const OptionListFooter: FunctionComponent<
+    React.PropsWithChildren<OptionListFooterPropsType>
+> = ({ className, ...props }) => {
     const classOverride = useOptionListFooterClassName(
         OPTION_LIST_FOOTER_CLASS_PREFIX,
         className,

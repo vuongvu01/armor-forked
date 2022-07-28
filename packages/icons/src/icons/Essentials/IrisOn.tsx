@@ -26,7 +26,7 @@ const IrisOnSmall = (
     </Fragment>
 );
 
-export const IrisOnIcon: FunctionComponent<SVGIconPropsType> = (props) => {
+export const IrisOnIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

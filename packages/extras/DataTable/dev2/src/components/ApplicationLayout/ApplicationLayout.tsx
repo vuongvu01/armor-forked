@@ -7,7 +7,7 @@ import { Header, Footer } from '../';
  * This is a top-level UI layout, it wraps every other visible element of the project.
  * Above it there is the Providers wrapper only.
  */
-export const ApplicationLayout: FC<LayoutPropsType> = ({ children }) => {
+export const ApplicationLayout: FC<React.PropsWithChildren<LayoutPropsType>> = ({ children }) => {
     return (
         <ApplicationLayoutRoot>
             <Header />

@@ -26,7 +26,7 @@ const OrderListSmall = (
     </Fragment>
 );
 
-export const OrderListIcon: FunctionComponent<SVGIconPropsType> = (props) => {
+export const OrderListIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

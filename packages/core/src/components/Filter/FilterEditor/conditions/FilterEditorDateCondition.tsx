@@ -4,12 +4,9 @@ import { DatePicker, DatePickerPropsType } from '../../../DatePicker';
 import { FilterEditorConditionPropsType } from '../type';
 import { FilterDateConditionType } from '../../conditionTypes';
 
-export const FilterEditorDateCondition: FC<FilterEditorConditionPropsType> = ({
-    condition,
-    conditionType,
-    conditionValue,
-    onConditionValueChange,
-}) => {
+export const FilterEditorDateCondition: FC<
+    React.PropsWithChildren<FilterEditorConditionPropsType>
+> = ({ condition, conditionType, conditionValue, onConditionValueChange }) => {
     const { label } = condition;
     const { enableTimePicker, formatDateTime } = (
         conditionType as FilterDateConditionType

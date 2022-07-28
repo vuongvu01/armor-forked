@@ -4,7 +4,7 @@ import { TextInput } from '../../../TextInput';
 import { FilterEditorConditionPropsType } from '../type';
 
 export const FilterEditorNumberCondition: FC<
-    FilterEditorConditionPropsType
+    React.PropsWithChildren<FilterEditorConditionPropsType>
 > = ({ condition, conditionValue, onConditionValueChange }) => {
     const { label } = condition;
     const { value } = conditionValue || {};

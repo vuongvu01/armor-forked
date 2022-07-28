@@ -26,7 +26,7 @@ const EmojiConfettiSmall = (
     </Fragment>
 );
 
-export const EmojiConfettiIcon: FunctionComponent<SVGIconPropsType> = (
+export const EmojiConfettiIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
     props,
 ) => {
     const { className, ...restProps } = props;

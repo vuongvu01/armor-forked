@@ -4,7 +4,7 @@ import React, { useState, FC } from 'react';
 import { useDidUpdateEffect } from '../useDidUpdateEffect';
 
 describe('useDidUpdateEffect', () => {
-    let App: FC;
+    let App: FC<React.PropsWithChildren<unknown>>;
     beforeEach(() => {
         App = function TestApp() {
             const [value, setValue] = useState(0);

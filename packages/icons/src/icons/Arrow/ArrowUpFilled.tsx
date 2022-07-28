@@ -26,7 +26,7 @@ const ArrowUpFilledSmall = (
     </Fragment>
 );
 
-export const ArrowUpFilledIcon: FunctionComponent<SVGIconPropsType> = (
+export const ArrowUpFilledIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
     props,
 ) => {
     const { className, ...restProps } = props;

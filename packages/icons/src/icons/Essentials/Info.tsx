@@ -26,7 +26,7 @@ const InfoSmall = (
     </Fragment>
 );
 
-export const InfoIcon: FunctionComponent<SVGIconPropsType> = (props) => {
+export const InfoIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

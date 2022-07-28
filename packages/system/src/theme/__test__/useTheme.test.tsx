@@ -44,7 +44,7 @@ describe('useTheme()', () => {
         expect(customTheme).toMatchObject(localTheme);
         expect(customTheme.armor).toMatchObject(defaultThemeStructure);
 
-        const wrapper: FC = ({ children }) => (
+        const wrapper: FC<React.PropsWithChildren<unknown>> = ({ children }) => (
             // @ts-ignore
             <ThemeProvider theme={customTheme}>{children}</ThemeProvider>
         );
@@ -63,7 +63,7 @@ describe('useTheme()', () => {
         expect(customTheme.armor.$initialized).toBeTruthy();
         expect(customTheme.armor).toMatchObject(defaultThemeStructure);
 
-        const wrapper: FC = ({ children }) => (
+        const wrapper: FC<React.PropsWithChildren<unknown>> = ({ children }) => (
             // @ts-ignore
             <ThemeProvider theme={customTheme}>{children}</ThemeProvider>
         );
@@ -79,7 +79,7 @@ describe('useTheme()', () => {
     it('should initialise a non-initialised theme and return via provider', async () => {
         const localTheme = { armor: { foo: 'wheel' } };
 
-        const wrapper: FC = ({ children }) => (
+        const wrapper: FC<React.PropsWithChildren<unknown>> = ({ children }) => (
             // @ts-ignore
             <ThemeProvider theme={localTheme}>{children}</ThemeProvider>
         );
@@ -96,7 +96,7 @@ describe('useTheme()', () => {
     it('should initialise an empty non-initialised theme and return via provider', async () => {
         const localTheme = {};
 
-        const wrapper: FC = ({ children }) => (
+        const wrapper: FC<React.PropsWithChildren<unknown>> = ({ children }) => (
             // @ts-ignore
             <ThemeProvider theme={localTheme}>{children}</ThemeProvider>
         );
