@@ -36,7 +36,7 @@ import { MAX_OPTIONS_SELECT_ALL_THRESHOLD } from '../../OptionList/constants';
 import { InternalItemGroupObjectType } from '../../OptionList/type';
 import { useOnInternalItemGroupsUpdate } from './useOnInternalItemGroupsUpdate';
 import { useOnToggleAll } from './useOnToggleAll';
-import { EMPTY_LABEL_VALUE, WHITESPACE_LABEL_VALUE } from '../constants';
+import { WHITESPACE_LABEL_VALUE } from '../constants';
 
 export const useDropdown = <E extends HTMLInputElement>(
     {
@@ -268,7 +268,7 @@ export const useDropdown = <E extends HTMLInputElement>(
         (multiple && !onRenderSelectedValue) || isRenderedSelectedValueAsNode;
 
     const textInputValue =
-        isOptionListShown && !selectedValueToDisplay && !enableSearchOption
+        isOptionListShown && !selectedValueToDisplay
             ? WHITESPACE_LABEL_VALUE
             : selectedValueToDisplay;
 
@@ -283,7 +283,7 @@ export const useDropdown = <E extends HTMLInputElement>(
             onClick: onOptionListVisibilityTriggerClick,
             ref: internalInputRef,
             value: isRenderedSelectedValueAsNode
-                ? EMPTY_LABEL_VALUE
+                ? WHITESPACE_LABEL_VALUE
                 : `${textInputValue}`,
             internalValue,
             disabled,
