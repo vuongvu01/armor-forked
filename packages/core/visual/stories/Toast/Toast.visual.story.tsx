@@ -23,7 +23,7 @@ export const Basic = () => {
             <Toast
                 message="Messsage"
                 level="success"
-                action={{ label: 'Click' }}
+                action={{ label: 'Click', onClick: () => {} }}
             />
             <Toast
                 message="This is a long message. This is a long message. This is a long message. This is a long message. This is a long message. This is a long message. This is a long message. This is a long message."

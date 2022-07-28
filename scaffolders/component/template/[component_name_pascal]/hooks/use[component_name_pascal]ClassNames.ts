@@ -11,6 +11,8 @@ export const use<%- component_name_pascal %>ClassNames = (
                 classPrefix,
                 className,
             ),
+            // TODO: add all child nodes here or remove comment
+            //
             // SubNode: makeBEM(
             //     classPrefix,
             //     'SubNode',

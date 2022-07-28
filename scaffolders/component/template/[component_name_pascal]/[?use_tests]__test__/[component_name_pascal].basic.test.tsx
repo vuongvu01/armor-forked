@@ -1,12 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
-/**
- * https://github.com/sapegin/jest-cheat-sheet
- * https://testing-library.com/docs/react-testing-library/cheatsheet
- * https://github.com/testing-library/jest-dom
- * https://jestjs.io/docs/en/mock-functions
- */
-
 import React, { useRef } from 'react';
 
 import {

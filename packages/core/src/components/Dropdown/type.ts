@@ -1,4 +1,9 @@
-import { HTMLAttributes, InputHTMLAttributes, ReactNode } from 'react';
+import {
+    HTMLAttributes,
+    InputHTMLAttributes,
+    ReactNode,
+    ReactChild,
+} from 'react';
 import {
     MarginPropsType,
     WidthPropsType,
@@ -72,6 +77,9 @@ export type DropdownBeforeSectionPropsType = {
     setInternalValue: (nextValue: DropdownInternalValueType) => void;
     setInitialSelection: (nextValue: DropdownInternalValueType) => void;
     isFlat: boolean;
+    isRendered: boolean;
+    isRenderedSelectedValueAsNode: boolean;
+    selectedValueToDisplay: ReactChild;
 } & Pick<
     DropdownEffectivePropsType,
     | 'onRenderSelectedValue'
@@ -165,7 +173,7 @@ export type DropdownEffectivePropsType = Partial<{
     onRenderSelectedValue: (
         value: DropdownInternalValueType,
         options: DropdownInternalOptionType,
-    ) => string;
+    ) => ReactChild;
     /**
      * @armor-docs-expand OptionFormatType
      */

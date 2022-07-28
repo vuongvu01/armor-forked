@@ -85,6 +85,14 @@ const useTagClassName = (
                 small,
                 filled,
             }),
+            Indicator: getClassNameByComponent({
+                component: 'Indicator',
+                classPrefix,
+            }),
+            Icon: getClassNameByComponent({
+                component: 'Icon',
+                classPrefix,
+            }),
         };
     }, [classPrefix, deleteOption, type, small, filled, className]);
 

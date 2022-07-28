@@ -1,10 +1,9 @@
 import React, { forwardRef, memo } from 'react';
 
-// eslint-disable-next-line import/no-extraneous-dependencies
 import {
     DropdownBeforeSectionRoot,
-    DropdownBeforeSectionTagsContainer,
-    DropdownBeforeSectionTagsWrapper,
+    DropdownBeforeSectionContainer,
+    DropdownBeforeSectionWrapper,
     DropdownTag,
 } from './style';
 import { DROPDOWN_BEFORE_SECTION_CLASS_PREFIX } from './constants';
@@ -21,14 +20,16 @@ export const DropdownBeforeSection = memo(
                 rootProps,
                 getDropdownTagProps,
                 getDropdownRemainingTagsProps,
-                dropdownBeforeSectionTagsContainerProps,
-                dropdownBeforeSectionTagsWrapperProps,
+                dropdownBeforeSectionContainerProps,
+                dropdownBeforeSectionWrapperProps,
                 dropdownTagsProps,
 
                 disabled,
-                isBeforeSectionRendered,
+                isRendered,
+                isRenderedSelectedValueAsNode,
                 selectedTagsToDisplay,
                 internalOpenTagsCount,
+                selectedValueToDisplay,
             } = useDropdownBeforeSection(props, ref);
 
             const classOverride = useDropdownBeforeSectionClassName(
@@ -37,7 +38,7 @@ export const DropdownBeforeSection = memo(
                 disabled,
             );
 
-            if (!isBeforeSectionRendered) {
+            if (!isRendered) {
                 return null;
             }
 
@@ -93,17 +94,19 @@ export const DropdownBeforeSection = memo(
                     {...rootProps}
                     className={classOverride.Root}
                 >
-                    <DropdownBeforeSectionTagsContainer
-                        {...dropdownBeforeSectionTagsContainerProps}
+                    <DropdownBeforeSectionContainer
+                        {...dropdownBeforeSectionContainerProps}
                         className={classOverride.TagsContainer}
                     >
-                        <DropdownBeforeSectionTagsWrapper
-                            {...dropdownBeforeSectionTagsWrapperProps}
+                        <DropdownBeforeSectionWrapper
+                            {...dropdownBeforeSectionWrapperProps}
                             className={classOverride.TagsWrapper}
                         >
-                            {renderTags()}
-                        </DropdownBeforeSectionTagsWrapper>
-                    </DropdownBeforeSectionTagsContainer>
+                            {isRenderedSelectedValueAsNode
+                                ? selectedValueToDisplay
+                                : renderTags()}
+                        </DropdownBeforeSectionWrapper>
+                    </DropdownBeforeSectionContainer>
                 </DropdownBeforeSectionRoot>
             );
         },

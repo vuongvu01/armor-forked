@@ -20,7 +20,7 @@
         "test:visual": "cd ./visual && yarn loki test ",
         "test:visual:update": "cd ./visual && yarn loki update",
         "test:visual:approve": "cd ./visual && yarn loki approve",
-        "test:visual:cicd": "cd ./visual && yarn build-storybook && yarn loki --requireReference --reactUri file:./storybook-static",
+        "test:visual:cicd": "cd ./visual && yarn build-storybook --quiet && yarn loki --requireReference --reactUri file:./storybook-static",
         "lint": "eslint ./src --ext .js,.ts,.jsx,.tsx",
         "lint:fix": "eslint ./src --fix --ext .js,.ts,.jsx,.tsx",
         "release": "./script/release.sh",

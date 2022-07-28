@@ -28,11 +28,13 @@ export const useDropdownBeforeSection = <E extends HTMLDivElement>(
         options,
         isFlat,
         multiple,
-        onRenderSelectedValue,
         tagLabelMaxLength,
         openTagsCount = 1,
         renderAggregatedTagsLabel,
         singleLine,
+        isRendered,
+        isRenderedSelectedValueAsNode,
+        selectedValueToDisplay,
         ...restProps
     }: DropdownBeforeSectionPropsType,
     ref: RefType<E>,
@@ -133,10 +135,10 @@ export const useDropdownBeforeSection = <E extends HTMLDivElement>(
             label: getAggregatedTagsLabel(remainingItemsCount),
             onClose: handleRemoveRemainingTags(tagsValues),
         }),
-        dropdownBeforeSectionTagsContainerProps: {
+        dropdownBeforeSectionContainerProps: {
             ref: beforeSectionContainerRef,
         },
-        dropdownBeforeSectionTagsWrapperProps: {
+        dropdownBeforeSectionWrapperProps: {
             ref: beforeSectionWrapperRef,
         },
         dropdownTagsProps: {
@@ -144,8 +146,10 @@ export const useDropdownBeforeSection = <E extends HTMLDivElement>(
             key: 'expanded_tags',
         },
         disabled,
-        isBeforeSectionRendered: multiple && !onRenderSelectedValue,
+        isRendered,
+        isRenderedSelectedValueAsNode,
         selectedTagsToDisplay,
         internalOpenTagsCount,
+        selectedValueToDisplay,
     };
 };

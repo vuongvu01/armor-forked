@@ -15,11 +15,13 @@ import {
 import userEvent from '@testing-library/user-event';
 
 import { useToastContainer } from '../hooks';
+import { toastStore } from '../ToastStore';
 
 describe('useToastContainer', () => {
     afterEach(async () => {
         await cleanup();
         await cleanupHooks();
+        toastStore.clear();
     });
 
     it('should not crash', async () => {
@@ -98,9 +100,9 @@ describe('useToastContainer', () => {
 
         await waitFor(() => expect(toast).toBeInTheDocument());
 
-        const closeButton = await screen.getByTestId('Message-CloseButton');
+        const closeButtons = await screen.getAllByTestId('Message-CloseButton');
 
-        userEvent.click(closeButton);
+        userEvent.click(closeButtons[0]);
 
         await waitFor(() => {
             expect(toast).not.toBeInTheDocument();

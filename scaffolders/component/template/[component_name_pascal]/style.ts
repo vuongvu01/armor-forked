@@ -6,23 +6,11 @@ import {
     getComponentOverride,
     reset,
     typography,
-    spacing,
-    color,
     token,
 } from '@deliveryhero/armor-system';
 
 const getRootStyle = (props: <%- component_name_pascal %>RootPropsType) => {
-
-    let result = {};
-
-    // if (exampleProperty) {
-    //     result = css`
-    //         ${result};
-    //         color: red;
-    //     `;
-    // }
-
-    return result;
+   return css``;
 };
 
 /** 👉 ROOT ELEMENT */

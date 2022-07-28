@@ -95,13 +95,19 @@ export const Tag = forwardRef<HTMLDivElement, TagPropsType>(function Tag(
     return (
         <TagRoot {...rootProps} className={classOverride.Root}>
             {showIndicator && (
-                <TagIndicatorContainer {...indicatorContainerProps}>
+                <TagIndicatorContainer
+                    {...indicatorContainerProps}
+                    className={classOverride.Indicator}
+                >
                     {indicator}
                 </TagIndicatorContainer>
             )}
 
             {showIcon && (
-                <TagIconContainer {...iconContainerProps}>
+                <TagIconContainer
+                    {...iconContainerProps}
+                    className={classOverride.Icon}
+                >
                     {icon}
                 </TagIconContainer>
             )}

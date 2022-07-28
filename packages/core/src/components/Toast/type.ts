@@ -2,7 +2,6 @@ import { HTMLAttributes } from 'react';
 import {
     MarginPropsType,
     WidthPropsType,
-    ThemeType,
     ScalarType,
 } from '@deliveryhero/armor-system';
 
@@ -48,10 +47,13 @@ type ToastEffectivePropsType = Partial<{
     isPaused: boolean;
     /** Set the pause status to the toast container */
     setPauseAutoClose: (isPause: boolean) => void;
+    /** Position of the toast */
+    position: ToastPositionType;
+    /** Pause the progress bar when hovering on toast */
+    pauseOnHover: boolean;
 }> &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div properties
-    MarginPropsType &
-    ThemeType;
+    MarginPropsType;
 
 export type ToastPropsType = ToastEffectivePropsType & ComponentStylePropsType;
 
@@ -84,14 +86,5 @@ export type ToastHookPropsType = Partial<{
     MarginPropsType;
 
 export type ToastContainerPropsType = {
-    rootProps: {
-        gap: ScalarType;
-        position: ToastPositionType;
-    };
-    getToastProps: (toast: ToastPropsType) => {
-        autoCloseTime: number;
-        showProgressBar: boolean;
-        autoClose: boolean;
-    };
-    toasts: ToastPropsType[];
+    gap?: ScalarType;
 };

@@ -14,7 +14,7 @@
         "test:visual": "cd ./visual && yarn loki test",
         "test:visual:update": "cd ./visual && yarn loki update",
         "test:visual:approve": "cd ./visual && yarn loki approve",
-        "test:visual:cicd": "cd ./visual && yarn build-storybook && yarn loki --requireReference --reactUri file:./storybook-static",
+        "test:visual:cicd": "cd ./visual && yarn build-storybook --quiet && yarn loki --requireReference --reactUri file:./storybook-static",
         "build": "rm -rf ./build/* && yarn run build:esm && yarn run build:cjs",
         "build:cjs": "rm -rf ./build.cjs/* && tsc -p ./tsconfig.build.cjs.json",
         "build:esm": "rm -rf ./build.esm/* && tsc -p ./tsconfig.build.esm.json",

@@ -1,97 +1,59 @@
-import {
-    useState,
-    useCallback,
-    createElement,
-    useEffect,
-    useMemo,
-} from 'react';
+import { createElement, useEffect } from 'react';
 import { render } from 'react-dom';
-import { getWindow, generateId } from '@deliveryhero/armor-system';
+import { getWindow, zIndexToast, ScalarType } from '@deliveryhero/armor-system';
 
-import { useToastPortal } from '.';
 import { ToastPropsType, ToastHookPropsType } from '../type';
-import {
-    DEFAULT_AUTO_CLOSE,
-    DEFAULT_AUTO_CLOSE_TIME,
-    DEFAULT_PROGRESS_BAR_SHOW,
-    DEFAULT_TOAST_POSITION,
-    DEFAULT_GAP_SPACING,
-    DEFAULT_PAUSE_ON_HOVER,
-} from '../constants';
+import { TOAST_PORTAL_CONTAINER_ID } from '../constants';
+import { toastStore } from '../ToastStore';
 import { ToastContainer } from '../ToastContainer';
 
-const win = getWindow();
+type RenderToastContainer = {
+    zIndex?: number;
+    gap?: ScalarType;
+};
+
+const renderToastContainer = ({ zIndex, gap }: RenderToastContainer) => {
+    const portalId = TOAST_PORTAL_CONTAINER_ID;
+
+    const window = getWindow();
+    if (!window) {
+        return;
+    }
+
+    const doesExist = !!document.getElementById(portalId);
+
+    if (doesExist) {
+        return;
+    }
+
+    const container = document.createElement('div');
+    container.setAttribute('id', portalId);
+    container.setAttribute('data-testid', portalId);
+    container.setAttribute(
+        'style',
+        `position: fixed; z-index: ${zIndex || zIndexToast}`,
+    );
+    document.body.prepend(container);
+
+    render(
+        createElement(ToastContainer, { gap }),
+        document.getElementById(portalId),
+    );
+};
 
 export const useToastContainer = (props?: ToastHookPropsType) => {
-    const [toasts, setToasts] = useState<ToastPropsType[]>([]);
-    const [isPausedAutoClose, setPauseAutoClose] = useState(false);
-    const { loaded, portalId } = useToastPortal(props?.zIndex);
+    const { gap, zIndex, ...restProps } = props || {};
 
-    const {
-        autoClose = DEFAULT_AUTO_CLOSE,
-        autoCloseTime = DEFAULT_AUTO_CLOSE_TIME,
-        showProgressBar = DEFAULT_PROGRESS_BAR_SHOW,
-        position = DEFAULT_TOAST_POSITION,
-        gap = DEFAULT_GAP_SPACING,
-        pauseOnHover = DEFAULT_PAUSE_ON_HOVER,
-        ...restProps
-    } = props || {};
-
-    const removeToast = useCallback((id) => {
-        setToasts((allToasts) => allToasts.filter((toast) => toast.id !== id));
-    }, []);
-
-    const makeToast = useCallback((toast) => {
-        setToasts((allToasts) => [
-            { ...toast, id: generateId() },
-            ...allToasts,
-        ]);
-    }, []);
-
-    const containerProps = useMemo(
-        () => ({
-            rootProps: {
-                gap,
-                position,
-                ...restProps,
-            },
-            getToastProps: (toast: ToastPropsType) => ({
-                autoClose,
-                autoCloseTime,
-                showProgressBar,
-                isPaused: isPausedAutoClose,
-                setPauseAutoClose: (isPaused: boolean) =>
-                    autoClose && pauseOnHover && setPauseAutoClose(isPaused),
-                ...toast,
-                onClose: () => {
-                    removeToast(toast.id);
-                    toast.onClose?.();
-                },
-            }),
-            toasts,
-        }),
-        [
-            autoClose,
-            autoCloseTime,
-            gap,
-            isPausedAutoClose,
-            pauseOnHover,
-            position,
-            removeToast,
-            restProps,
-            showProgressBar,
-            toasts,
-        ],
-    );
+    const makeToast = (newToast: ToastPropsType) => {
+        toastStore.makeToast({
+            ...restProps,
+            ...newToast,
+        });
+    };
 
     useEffect(() => {
-        if (loaded && win) {
-            render(
-                createElement(ToastContainer, { ...containerProps }),
-                document.getElementById(portalId),
-            );
-        }
-    }, [containerProps, loaded, portalId]);
+        renderToastContainer({ zIndex, gap });
+    }, [gap, zIndex]);
 
     return { makeToast };
 };

@@ -6,12 +6,7 @@ import { ProgressBar } from '../ProgressBar';
 import { useToast, useToastClassNames } from './hooks';
 import { ToastRoot, ProgressBarContainer } from './style';
 import { ToastPropsType } from './type';
-import {
-    TOAST_CLASS_PREFIX,
-    ToastLevels,
-    progressBarRootTestId,
-    ToastPositions,
-} from './constants';
+import { TOAST_CLASS_PREFIX, progressBarRootTestId } from './constants';
 
 /**
  * # Toast
@@ -98,12 +93,7 @@ Toast.propTypes = {
     /** The toast message */
     message: PropTypes.string.isRequired,
     /** Toast level */
-    level: PropTypes.oneOf([
-        ToastLevels.SUCCESS,
-        ToastLevels.INFO,
-        ToastLevels.WARNING,
-        ToastLevels.ERROR,
-    ]),
+    level: PropTypes.oneOf(['error', 'warning', 'info', 'success']),
     /** Toast level: error */
     error: PropTypes.bool,
     /** Toast level: warning */
@@ -133,10 +123,10 @@ Toast.propTypes = {
     setPauseAutoClose: PropTypes.func,
     /** Position of the toast */
     position: PropTypes.oneOf([
-        ToastPositions.TOP_RIGHT,
-        ToastPositions.TOP_LEFT,
-        ToastPositions.BOTTOM_RIGHT,
-        ToastPositions.BOTTOM_LEFT,
+        'topRight',
+        'topLeft',
+        'bottomRight',
+        'bottomLeft',
     ]),
 };
 

@@ -31,19 +31,21 @@ export const <%- component_name_pascal %> = forwardRef<
     HTMLDivElement,
     <%- component_name_pascal %>PropsType
 >(function <%- component_name_pascal %>(
-    {
-        className,
-        children,
-        ...props
-    },
+    props,
     ref,
 ){
+    const {
+        className,
+        children,
+        ...restProps
+    } = props
+
     const classNames = use<%- component_name_pascal %>ClassNames(
         <%- component_name_snake_uc %>_CLASS_PREFIX,
         className,
     );
 
-    const { rootProps } = use<%- component_name_pascal %><HTMLDivElement>(props, ref);
+    const { rootProps } = use<%- component_name_pascal %><HTMLDivElement>(restProps, ref);
 
     return (
         <<%- component_name_pascal %>Root
@@ -56,13 +58,14 @@ export const <%- component_name_pascal %> = forwardRef<
 });
 
 <%- component_name_pascal %>.defaultProps = {
-    // exampleProperty: true,
+    // TODO: add default props and remove comment
 };
 
 /** prop-types are required here for run-time checks */
 <%- component_name_pascal %>.propTypes = {
-    /** Example description */
-    // exampleProperty: PropTypes.bool,
+    // TODO: add prop-types and remove comment
 };
+
+<%- component_name_pascal %>.displayName = '<%- component_name_pascal %>';
 
 export const Memoized<%- component_name_pascal %> = memo(<%- component_name_pascal %>);

@@ -8,6 +8,7 @@ export const DEFAULT_PROGRESS_BAR_SHOW = true;
 export const DEFAULT_PAUSE_ON_HOVER = true;
 export const DEFAULT_TOAST_POSITION = 'topRight';
 export const DEFAULT_GAP_SPACING = '12px';
+export const TOAST_PORTAL_CONTAINER_ID = 'ToastPortalContainer';
 
 export const ToastLevels = {
     INFO: 'info',
