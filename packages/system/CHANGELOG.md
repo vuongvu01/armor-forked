@@ -1,3 +1,29 @@
+## [1.11.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-system@1.11.0...@deliveryhero/armor-system@1.11.1) (2022-07-28)
+
+
+### Bug Fixes
+
+* **Accordion:** fix animation when expanding/collapsing content ([#1101](https://github.com/deliveryhero/armor/issues/1101)) ([b1ab4bb](https://github.com/deliveryhero/armor/commit/b1ab4bb914391298f1dac3f744c88fd3996610e2))
+* **Button:** when used as a link - disable state doesn't propagate [LD-456] ([#1107](https://github.com/deliveryhero/armor/issues/1107)) ([3a57b9d](https://github.com/deliveryhero/armor/commit/3a57b9dd2b120464d22f7eb6710aabddbc792fe5))
+* **DatePicker:** Date picker month dropdown icon fix [LD-846] ([#1106](https://github.com/deliveryhero/armor/issues/1106)) ([3ecdfa9](https://github.com/deliveryhero/armor/commit/3ecdfa9b435b725e142f9e2932325b32e288d321))
+* **DatePicker:** DateTime picker time reset on first try ([#1111](https://github.com/deliveryhero/armor/issues/1111)) ([d40dc03](https://github.com/deliveryhero/armor/commit/d40dc03bbea83e706c34ffffab1fce26f9eb67bb))
+* **dropdown:** janky label [LD-337] ([#1138](https://github.com/deliveryhero/armor/issues/1138)) ([bcc5580](https://github.com/deliveryhero/armor/commit/bcc5580da48eca5069e0becf6ff753916737f9c5))
+* **Dropdown:** Clear button is placed too far from the chevron [LD-845] ([#1105](https://github.com/deliveryhero/armor/issues/1105)) ([618e8a8](https://github.com/deliveryhero/armor/commit/618e8a870c9b05ad1726f37e6ae5ee3e80507ee1))
+* **Dropdown:** ClearButton is not working properly [AR-141] ([#1121](https://github.com/deliveryhero/armor/issues/1121)) ([0e07e3d](https://github.com/deliveryhero/armor/commit/0e07e3de22c0ee79040bd821fe185102f3bdec31))
+* **HeaderNavigation:** Dropdown of Navigation not the right width [AR-44] ([#1115](https://github.com/deliveryhero/armor/issues/1115)) ([cee8db5](https://github.com/deliveryhero/armor/commit/cee8db5d8ccdb699685a2a68d5efe2b4ccf2276f))
+* **Navigation:** Navigation improvements [LD-436] ([#1110](https://github.com/deliveryhero/armor/issues/1110)) ([dad89d2](https://github.com/deliveryhero/armor/commit/dad89d22d40e73c883c2cbd528914bad67a89dda))
+* **ops portal navigation:** post release fixes [LD-841] ([#1103](https://github.com/deliveryhero/armor/issues/1103)) ([3951c41](https://github.com/deliveryhero/armor/commit/3951c4118e3d3c4d46aff4c41eae02822451483a))
+* **ProgressBar:** Transition for background when preset is changed dynamically ([#1065](https://github.com/deliveryhero/armor/issues/1065)) ([64bf02a](https://github.com/deliveryhero/armor/commit/64bf02a8a70f75289bb102875b82be10883a00ae))
+* **skeleton:** safari issue ([#1109](https://github.com/deliveryhero/armor/issues/1109)) ([bcfa067](https://github.com/deliveryhero/armor/commit/bcfa067cbf329dadca0c85f94235dfb7477c4c08))
+* **toast:** Multiple instances of useToast doesn't work well with each other [AR-129] ([b9273b3](https://github.com/deliveryhero/armor/commit/b9273b3a36418b9c6a1018ab3ddbdb181aa404d8))
+
+
+### Features
+
+* **DatePicker:** Add property yearRange ([#1102](https://github.com/deliveryhero/armor/issues/1102)) ([4869242](https://github.com/deliveryhero/armor/commit/48692421ad9836138d15b8fb9cff2e1931eb9355))
+* **dropdown:** Allow render selected value as node [AR-140] ([416d1fa](https://github.com/deliveryhero/armor/commit/416d1fabdf34157f58253842e5310ed276ea5bdb))
+* **Tag:** Add disabled state and improve visual regression testing [LD-287] ([#1140](https://github.com/deliveryhero/armor/issues/1140)) ([63b87ce](https://github.com/deliveryhero/armor/commit/63b87ce01fff47d3dd53bfa5545a62b47244f31b))
+
 # [1.11.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-system@1.10.1...@deliveryhero/armor-system@1.11.0) (2022-07-14)
 
 
