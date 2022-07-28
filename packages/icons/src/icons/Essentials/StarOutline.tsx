@@ -26,7 +26,7 @@ const StarOutlineSmall = (
     </Fragment>
 );
 
-export const StarOutlineIcon: FunctionComponent<SVGIconPropsType> = (props) => {
+export const StarOutlineIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

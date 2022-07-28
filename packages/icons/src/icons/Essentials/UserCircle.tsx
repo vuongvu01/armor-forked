@@ -26,7 +26,7 @@ const UserCircleSmall = (
     </Fragment>
 );
 
-export const UserCircleIcon: FunctionComponent<SVGIconPropsType> = (props) => {
+export const UserCircleIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

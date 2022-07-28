@@ -20,9 +20,6 @@ jobs:
             - name: Install (common)
               run: yarn
 
-            - name: Install peers (common)
-              run: yarn install-peers
-
             - name: Lint
               working-directory: ./packages/props-parser
               run: yarn lint

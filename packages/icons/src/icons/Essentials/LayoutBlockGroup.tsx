@@ -26,7 +26,7 @@ const LayoutBlockGroupSmall = (
     </Fragment>
 );
 
-export const LayoutBlockGroupIcon: FunctionComponent<SVGIconPropsType> = (
+export const LayoutBlockGroupIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
     props,
 ) => {
     const { className, ...restProps } = props;

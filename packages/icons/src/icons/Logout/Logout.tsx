@@ -26,7 +26,7 @@ const LogoutSmall = (
     </Fragment>
 );
 
-export const LogoutIcon: FunctionComponent<SVGIconPropsType> = (props) => {
+export const LogoutIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

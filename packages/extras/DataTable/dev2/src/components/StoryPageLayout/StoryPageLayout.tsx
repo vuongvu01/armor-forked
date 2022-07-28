@@ -20,7 +20,7 @@ import {
     sortActiveStory,
 } from './utils/sortActiveStory';
 
-export const StoryPageLayout: FC<StoryPageLayoutPropsType> = (props) => {
+export const StoryPageLayout: FC<React.PropsWithChildren<StoryPageLayoutPropsType>> = (props) => {
     const {
         pageLayoutProps,
         storyLinks,

@@ -26,7 +26,7 @@ const QuotationSmall = (
     </Fragment>
 );
 
-export const QuotationIcon: FunctionComponent<SVGIconPropsType> = (props) => {
+export const QuotationIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

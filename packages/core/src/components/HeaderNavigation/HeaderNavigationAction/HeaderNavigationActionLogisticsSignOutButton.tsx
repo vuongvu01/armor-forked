@@ -16,7 +16,7 @@ const setURL = () => {
  * @deprecated see @deliveryhero/armor-vendors
  */
 export const HeaderNavigationActionLogisticsSignOutButton: FunctionComponent<
-    HeaderNavigationActionItemPropsType
+    React.PropsWithChildren<HeaderNavigationActionItemPropsType>
 > = ({ ...restProps }) => (
     <HeaderNavigationActionItem {...restProps} onClick={setURL}>
         <LogoutIcon />

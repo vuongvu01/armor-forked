@@ -26,7 +26,7 @@ const HalfTimeSmall = (
     </Fragment>
 );
 
-export const HalfTimeIcon: FunctionComponent<SVGIconPropsType> = (props) => {
+export const HalfTimeIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

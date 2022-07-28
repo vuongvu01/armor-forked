@@ -38,12 +38,9 @@ export const SIDE_SHEET_BODY_CLASS_PREFIX = 'SideSheetBody';
  *
  * @armor-docs-component
  */
-export const SideSheetBody: FC<SideSheetBodyPropsType> = ({
-    children,
-    isFixed,
-    className,
-    ...restProps
-}) => {
+export const SideSheetBody: FC<
+    React.PropsWithChildren<SideSheetBodyPropsType>
+> = ({ children, isFixed, className, ...restProps }) => {
     return (
         <SideSheetBodyRoot
             data-testid={sideSheetBody}

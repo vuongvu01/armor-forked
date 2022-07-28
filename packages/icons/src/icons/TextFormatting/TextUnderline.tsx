@@ -26,7 +26,7 @@ const TextUnderlineSmall = (
     </Fragment>
 );
 
-export const TextUnderlineIcon: FunctionComponent<SVGIconPropsType> = (
+export const TextUnderlineIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
     props,
 ) => {
     const { className, ...restProps } = props;

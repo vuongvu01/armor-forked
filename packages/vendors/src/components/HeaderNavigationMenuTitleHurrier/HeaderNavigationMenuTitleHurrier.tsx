@@ -4,7 +4,7 @@ import React, { FunctionComponent } from 'react';
 import { HeaderNavigationMenuTitleHurrierPropsType } from './type';
 import { HurrierLogo } from './HurrierLogo';
 
-export const HeaderNavigationMenuTitleHurrier: FunctionComponent<HeaderNavigationMenuTitleHurrierPropsType> = () => (
+export const HeaderNavigationMenuTitleHurrier: FunctionComponent<React.PropsWithChildren<HeaderNavigationMenuTitleHurrierPropsType>> = () => (
     <HurrierLogo />
 );
 

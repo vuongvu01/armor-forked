@@ -7,7 +7,7 @@ import { HeaderNavigationActionItemPropsType } from './type';
 
 const setURL = () => window.location.assign('/users/sign_out');
 
-export const HeaderNavigationActionLogisticsSignOutButton: FunctionComponent<HeaderNavigationActionItemPropsType> = ({
+export const HeaderNavigationActionLogisticsSignOutButton: FunctionComponent<React.PropsWithChildren<HeaderNavigationActionItemPropsType>> = ({
     ...restProps
 }) => (
     <HeaderNavigationActionItem {...restProps} onClick={setURL}>

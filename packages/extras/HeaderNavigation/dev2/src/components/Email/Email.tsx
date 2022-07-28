@@ -4,7 +4,7 @@ import { emailFirstPart, emailSecondPart } from '../../meta/email';
 import { EmailRoot } from './style';
 import { EmailPropsType } from './type';
 
-export const Email: FC<EmailPropsType> = ({ ...restProps }) => {
+export const Email: FC<React.PropsWithChildren<EmailPropsType>> = ({ ...restProps }) => {
     const [email, setEmail] = useState('');
     const [domain, setDomain] = useState('');
     useEffect(() => {

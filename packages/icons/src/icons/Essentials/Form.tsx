@@ -26,7 +26,7 @@ const FormSmall = (
     </Fragment>
 );
 
-export const FormIcon: FunctionComponent<SVGIconPropsType> = (props) => {
+export const FormIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

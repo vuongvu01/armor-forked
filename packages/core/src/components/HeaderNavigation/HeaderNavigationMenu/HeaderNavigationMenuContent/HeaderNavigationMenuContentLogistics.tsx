@@ -53,7 +53,7 @@ const Drawing = styled.div`
  * @deprecated see @deliveryhero/armor-vendors
  */
 export const HeaderNavigationMenuContentLogistics: FunctionComponent<
-    HeaderNavigationMenuContentPropsType
+    React.PropsWithChildren<HeaderNavigationMenuContentPropsType>
 > = ({ ...restProps }) => (
     <HeaderNavigationMenuContent {...restProps}>
         <HeaderNavigationMenuContentHeader

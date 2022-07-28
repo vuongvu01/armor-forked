@@ -26,7 +26,7 @@ const PlaceholderSmall = (
     </Fragment>
 );
 
-export const PlaceholderIcon: FunctionComponent<SVGIconPropsType> = (props) => {
+export const PlaceholderIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

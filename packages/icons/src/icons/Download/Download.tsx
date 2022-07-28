@@ -26,7 +26,7 @@ const DownloadSmall = (
     </Fragment>
 );
 
-export const DownloadIcon: FunctionComponent<SVGIconPropsType> = (props) => {
+export const DownloadIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

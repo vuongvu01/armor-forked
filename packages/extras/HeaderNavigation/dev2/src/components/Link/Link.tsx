@@ -45,7 +45,7 @@ export const LinkStyled = styled.a.withConfig(getPropBlocker(customProps))<
     ${(props: LinkPropsType) => fgColors(props)};
 `;
 
-export const Link: FC<LinkPropsType> = props => {
+export const Link: FC<React.PropsWithChildren<LinkPropsType>> = props => {
     const { to, href, target } = props;
     const link = to || href || '';
 

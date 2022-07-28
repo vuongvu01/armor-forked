@@ -16,7 +16,7 @@ import { useHeaderNavigationItemClassName } from './hooks';
  * @armor-docs-component
  */
 export const HeaderNavigationItem: FunctionComponent<
-    HeaderNavigationItemPropsType
+    React.PropsWithChildren<HeaderNavigationItemPropsType>
 > = ({ className, ...restProps }) => {
     const classOverride = useHeaderNavigationItemClassName(
         HEADER_NAVIGATION_ITEM_CLASS_PREFIX,

@@ -173,7 +173,7 @@ export const useSearch = <E extends HTMLInputElement>(
     );
 
     const handleSuggestionClick = useCallback(
-        (_, suggestionOption: SuggestionObjectType) => {
+        (_: any, suggestionOption: SuggestionObjectType) => {
             const currentQuery = suggestionOption.label || '';
             setSearchQuery(currentQuery);
 

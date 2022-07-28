@@ -26,7 +26,7 @@ const ShuffleSmall = (
     </Fragment>
 );
 
-export const ShuffleIcon: FunctionComponent<SVGIconPropsType> = (props) => {
+export const ShuffleIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

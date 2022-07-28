@@ -26,7 +26,7 @@ const EmojiSmileSmall = (
     </Fragment>
 );
 
-export const EmojiSmileIcon: FunctionComponent<SVGIconPropsType> = (props) => {
+export const EmojiSmileIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

@@ -4,7 +4,7 @@ import { useTheme } from '@deliveryhero/armor-system';
 import { SVGIconPropsType } from './type';
 import { SVGIconRoot } from './style';
 
-export const SVGIcon: FunctionComponent<SVGIconPropsType> = ({
+export const SVGIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = ({
     children,
     title,
     viewBox,
@@ -35,16 +35,16 @@ export const SVGIcon: FunctionComponent<SVGIconPropsType> = ({
     );
 };
 
-export const SVGIconGroup: FunctionComponent = ({ children }) => (
+export const SVGIconGroup: FunctionComponent<React.PropsWithChildren<unknown>> = ({ children }) => (
     <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         {children}
     </g>
 );
 
-export const SVGIconPath: FunctionComponent<{
+export const SVGIconPath: FunctionComponent<React.PropsWithChildren<{
     d: string;
     transform?: string;
-}> = ({ d, transform }) => (
+}>> = ({ d, transform }) => (
     <path d={d} transform={transform} fill="currentColor"></path>
 );
 

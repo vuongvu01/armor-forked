@@ -26,7 +26,7 @@ const LinkSmall = (
     </Fragment>
 );
 
-export const LinkIcon: FunctionComponent<SVGIconPropsType> = (props) => {
+export const LinkIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

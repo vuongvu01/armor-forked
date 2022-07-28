@@ -26,7 +26,7 @@ const EllipsisHorizontalSmall = (
     </Fragment>
 );
 
-export const EllipsisHorizontalIcon: FunctionComponent<SVGIconPropsType> = (
+export const EllipsisHorizontalIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
     props,
 ) => {
     const { className, ...restProps } = props;

@@ -20,7 +20,7 @@ import {
  *
  * @armor-docs-component
  */
-export const DialogTitle: FC<DialogTitlePropsType> = ({
+export const DialogTitle: FC<React.PropsWithChildren<DialogTitlePropsType>> = ({
     className,
     children,
     description,

@@ -32,7 +32,7 @@ const setActiveClass = (isActive: boolean) => (isActive ? 'active' : '');
  * @armor-docs-component
  */
 export const HeaderNavigationMenuContentBodyOptions: FC<
-    HeaderNavigationMenuContentBodyOptionsPropsType
+    React.PropsWithChildren<HeaderNavigationMenuContentBodyOptionsPropsType>
 > = ({ className, options, selectedValue, onOptionSelect, ...restProps }) => {
     const { isExpanded, setIsExpanded } = useContext(
         HeaderNavigationMenuContentContext,

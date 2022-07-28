@@ -26,7 +26,7 @@ const TextItalicSmall = (
     </Fragment>
 );
 
-export const TextItalicIcon: FunctionComponent<SVGIconPropsType> = (props) => {
+export const TextItalicIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

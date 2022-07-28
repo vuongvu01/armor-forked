@@ -3,7 +3,7 @@ import Helmet from 'react-helmet';
 import { SEOPropsType } from './type';
 import { Query } from './query';
 
-export const SEO: FC<SEOPropsType> = ({
+export const SEO: FC<React.PropsWithChildren<SEOPropsType>> = ({
     description = '',
     lang = 'en',
     meta = [],

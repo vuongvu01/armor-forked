@@ -26,7 +26,7 @@ const QuestionMarkOutlineSmall = (
     </Fragment>
 );
 
-export const QuestionMarkOutlineIcon: FunctionComponent<SVGIconPropsType> = (
+export const QuestionMarkOutlineIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
     props,
 ) => {
     const { className, ...restProps } = props;

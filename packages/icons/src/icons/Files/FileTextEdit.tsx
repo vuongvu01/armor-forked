@@ -26,7 +26,7 @@ const FileTextEditSmall = (
     </Fragment>
 );
 
-export const FileTextEditIcon: FunctionComponent<SVGIconPropsType> = (
+export const FileTextEditIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
     props,
 ) => {
     const { className, ...restProps } = props;

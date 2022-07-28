@@ -15,5 +15,3 @@ cd ${DIR}/../packages/motion && yarn setup
 cd ${DIR}/../packages/extras && ./script/setup.sh
 
 cd ${DIR}
-
-yarn install-peers

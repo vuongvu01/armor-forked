@@ -26,7 +26,7 @@ const TickThickSmall = (
     </Fragment>
 );
 
-export const TickThickIcon: FunctionComponent<SVGIconPropsType> = (props) => {
+export const TickThickIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

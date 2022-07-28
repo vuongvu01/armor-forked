@@ -37,11 +37,9 @@ export const SIDE_SHEET_FOOTER_CLASS_PREFIX = 'SideSheetFooter';
  *
  * @armor-docs-component
  */
-export const SideSheetFooter: FC<SideSheetFooterPropsType> = ({
-    children,
-    className,
-    ...restProps
-}) => {
+export const SideSheetFooter: FC<
+    React.PropsWithChildren<SideSheetFooterPropsType>
+> = ({ children, className, ...restProps }) => {
     return (
         <SideSheetFooterRoot
             data-testid={sideSheetFooter}

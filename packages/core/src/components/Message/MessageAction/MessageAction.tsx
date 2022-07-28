@@ -27,12 +27,9 @@ import { ButtonPropsType } from '../../Button/type';
  *
  * @armor-docs-component
  */
-export const MessageAction: FC<MessageActionPropsType> = ({
-    className,
-    tag: Tag = 'div',
-    children,
-    ...restProps
-}) => {
+export const MessageAction: FC<
+    React.PropsWithChildren<MessageActionPropsType>
+> = ({ className, tag: Tag = 'div', children, ...restProps }) => {
     const classNameComponents = useMessageActionClassNames(
         MESSAGE_ACTION_CLASS_PREFIX,
         className,

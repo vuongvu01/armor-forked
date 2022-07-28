@@ -11,7 +11,7 @@ import { ClearIconRoot } from './style';
 import { ClearButton } from '../../ClearButton';
 
 export const SearchClearAction: FunctionComponent<
-    SearchClearActionPropsType
+    React.PropsWithChildren<SearchClearActionPropsType>
 > = ({
     className,
     disableClearAction,

@@ -26,7 +26,7 @@ const CancelSmall = (
     </Fragment>
 );
 
-export const CancelIcon: FunctionComponent<SVGIconPropsType> = (props) => {
+export const CancelIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

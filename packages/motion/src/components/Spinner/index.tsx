@@ -6,7 +6,7 @@ import data from './data.json';
 import { ComponentElementStylePropsType } from '../type';
 import { SpinnerRoot } from './style';
 
-export const Spinner: FunctionComponent<ComponentElementStylePropsType> = ({
+export const Spinner: FunctionComponent<React.PropsWithChildren<ComponentElementStylePropsType>> = ({
     className,
     ...restProps
 }) => {

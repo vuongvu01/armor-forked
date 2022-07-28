@@ -33,7 +33,7 @@ const dndModifiers = [
 ];
 
 export const DataTableDroppableContainer: FC<
-    DataTableDroppableContainerProps
+    React.PropsWithChildren<DataTableDroppableContainerProps>
 > = ({
     children,
     enableRowReordering,

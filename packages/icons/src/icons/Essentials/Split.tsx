@@ -26,7 +26,7 @@ const SplitSmall = (
     </Fragment>
 );
 
-export const SplitIcon: FunctionComponent<SVGIconPropsType> = (props) => {
+export const SplitIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

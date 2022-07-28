@@ -4,7 +4,6 @@
     "scripts": {
         "build": "lerna run build --npm-client=yarn",
         "bootstrap": "lerna bootstrap --npm-client=yarn",
-        "install-peers": "install-self-peers -- --ignore-scripts -W",
         "test": "lerna run test --npm-client=yarn",
         "lint": "lerna run lint --npm-client=yarn",
         "setup": "script/setup.sh"
@@ -12,12 +11,10 @@
     "keywords": [],
     "author": "",
     "devDependencies": {
-        "@team-griffin/install-self-peers": "^1.1.1",
-        "@types/react": "^17.0.37",
+        "@types/react": "^17.0.43",
         "@types/react-dom": "^17.0.11",
         "@types/react-is": "^17.0.3",
         "@types/react-router-dom": "^5.3.2",
-        "@types/react-test-renderer": "^17.0.1",
         "@types/styled-components": "^5.1.18",
         "decomment": "^0.9.5",
         "glob": "^7.2.0",
@@ -28,22 +25,14 @@
         "pretty-quick": "^3.1.2",
         "ts-jest": "^27.1.3"
     },
-    "peerDependencies": {
-        "react": "^17.0.0",
-        "react-dom": "^17.0.0",
-        "react-is": "^17.0.0",
-        "styled-components": ">=5.1.0"
+    "resolutions": {
+        "**/@types/react": "^17.0.43",
+        "**/@types/react-is": "^17.0.3",
+        "**/react-is": "^18.2.0"
     },
     "private": true,
     "workspaces": [
-        "packages/core",
-        "packages/icons",
-        "packages/vendors",
-        "packages/brands",
-        "packages/system",
-        "packages/props-parser",
-        "packages/illustrations",
-        "packages/motion",
+        "packages/*",
         "packages/extras/DataTable",
         "packages/extras/DatePicker",
         "packages/extras/HeaderNavigation"
@@ -53,5 +42,9 @@
             "pre-commit": "pretty-quick --staged"
         }
     },
-    "dependencies": {}
+    "dependencies": {
+        "react": "^18.0.0",
+        "react-dom": "^18.0.0",
+        "styled-components": ">=5.1.18"
+    }
 }

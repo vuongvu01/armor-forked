@@ -3,6 +3,6 @@ import { BreakpointCodeType } from '@deliveryhero/armor-system';
 
 export type StoryPageContentPropsType = {
     title: string;
-    Story: FC | null;
+    Story: FC<React.PropsWithChildren<unknown>> | null;
     maxWidth?: BreakpointCodeType;
 };

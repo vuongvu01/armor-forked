@@ -10,7 +10,7 @@ import {
 } from './style';
 
 export const SearchEmptySuggestionsList: FunctionComponent<
-    SearchEmptySuggestionsListPropsType
+    React.PropsWithChildren<SearchEmptySuggestionsListPropsType>
 > = ({ noResultsLabel = 'No results found', className }) => {
     const classOverride = useSearchEmptySuggestionsListClassName(
         SEARCH_EMPTY_SUGGESTIONS_LIST_CLASS_PREFIX,

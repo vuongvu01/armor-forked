@@ -11,7 +11,9 @@ import { SearchSuggestionListGroup } from './style';
 
 // TODO (nmelnikov 2020-10-01): tighten types via the existing SuggestionsListPropsType
 // @ts-ignore
-export const SearchSuggestionsList: FC<SearchSuggestionsListPropsType> = ({
+export const SearchSuggestionsList: FC<
+    React.PropsWithChildren<SearchSuggestionsListPropsType>
+> = ({
     options,
     groupIndex,
     handleSuggestionClick,

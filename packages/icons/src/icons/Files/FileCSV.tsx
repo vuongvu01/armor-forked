@@ -26,7 +26,7 @@ const FileCSVSmall = (
     </Fragment>
 );
 
-export const FileCSVIcon: FunctionComponent<SVGIconPropsType> = (props) => {
+export const FileCSVIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

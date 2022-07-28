@@ -76,9 +76,9 @@ export const Basic = () => {
     );
 };
 
-const BeautifulName: FunctionComponent = ({ children }) => (
-    <span>💞 {children} 💞</span>
-);
+const BeautifulName: FunctionComponent<React.PropsWithChildren<unknown>> = ({
+    children,
+}) => <span>💞 {children} 💞</span>;
 
 export const EditableCells = () => {
     const [edit, setEdit] = useState(false);

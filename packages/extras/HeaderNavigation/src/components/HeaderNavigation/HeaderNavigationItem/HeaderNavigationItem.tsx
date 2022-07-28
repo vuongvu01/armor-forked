@@ -9,7 +9,7 @@ import {
 import { useHeaderNavigationItemClassName } from './hooks';
 
 export const HeaderNavigationItem: FunctionComponent<
-    HeaderNavigationItemPropsType
+    React.PropsWithChildren<HeaderNavigationItemPropsType>
 > = ({ className, ...restProps }) => {
     const classOverride = useHeaderNavigationItemClassName(
         HEADER_NAVIGATION_ITEM_CLASS_PREFIX,

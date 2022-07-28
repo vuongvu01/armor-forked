@@ -26,7 +26,7 @@ const UnlinkSmall = (
     </Fragment>
 );
 
-export const UnlinkIcon: FunctionComponent<SVGIconPropsType> = (props) => {
+export const UnlinkIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

@@ -26,7 +26,7 @@ const CalendarSearchSmall = (
     </Fragment>
 );
 
-export const CalendarSearchIcon: FunctionComponent<SVGIconPropsType> = (
+export const CalendarSearchIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
     props,
 ) => {
     const { className, ...restProps } = props;

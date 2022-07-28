@@ -26,7 +26,7 @@ const TickDefaultSmall = (
     </Fragment>
 );
 
-export const TickDefaultIcon: FunctionComponent<SVGIconPropsType> = (props) => {
+export const TickDefaultIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

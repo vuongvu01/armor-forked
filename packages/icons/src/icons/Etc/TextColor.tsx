@@ -4,7 +4,7 @@ import React, { FunctionComponent } from 'react';
 import { SVGIcon } from '../../components/SVGIcon';
 import { TextColorPropsType } from './type';
 
-const TextColorIconShapeSmall: FunctionComponent<TextColorPropsType> = ({
+const TextColorIconShapeSmall: FunctionComponent<React.PropsWithChildren<TextColorPropsType>> = ({
     textColor,
 }) => (
     <>
@@ -19,7 +19,7 @@ const TextColorIconShapeSmall: FunctionComponent<TextColorPropsType> = ({
     </>
 );
 
-const TextColorIconShapeMedium: FunctionComponent<TextColorPropsType> = ({
+const TextColorIconShapeMedium: FunctionComponent<React.PropsWithChildren<TextColorPropsType>> = ({
     textColor,
 }) => (
     <>
@@ -34,7 +34,7 @@ const TextColorIconShapeMedium: FunctionComponent<TextColorPropsType> = ({
     </>
 );
 
-const TextColorIconShapeLarge: FunctionComponent<TextColorPropsType> = ({
+const TextColorIconShapeLarge: FunctionComponent<React.PropsWithChildren<TextColorPropsType>> = ({
     textColor,
 }) => (
     <>
@@ -49,7 +49,7 @@ const TextColorIconShapeLarge: FunctionComponent<TextColorPropsType> = ({
     </>
 );
 
-export const TextColorIcon: FunctionComponent<TextColorPropsType> = (props) => {
+export const TextColorIcon: FunctionComponent<React.PropsWithChildren<TextColorPropsType>> = (props) => {
     const { className, textColor, ...restProps } = props;
 
     const { small, medium, large } = restProps;

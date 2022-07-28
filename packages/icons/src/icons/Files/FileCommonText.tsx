@@ -26,7 +26,7 @@ const FileCommonTextSmall = (
     </Fragment>
 );
 
-export const FileCommonTextIcon: FunctionComponent<SVGIconPropsType> = (
+export const FileCommonTextIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
     props,
 ) => {
     const { className, ...restProps } = props;

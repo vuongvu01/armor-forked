@@ -15,6 +15,6 @@ const detailsQuery = graphql`
     }
 `;
 
-export const Query: FunctionComponent<QueryProps> = ({ children }) => {
+export const Query: FunctionComponent<React.PropsWithChildren<QueryProps>> = ({ children }) => {
     return <StaticQuery query={detailsQuery} render={data => children(data)} />;
 };

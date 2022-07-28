@@ -3,7 +3,7 @@ import React, { FC, useMemo } from 'react';
 import { TypographyPropsType } from './type';
 import { TypographyRoot, TypographyAnchor } from './style';
 
-export const Typography: FC<TypographyPropsType> = ({
+export const Typography: FC<React.PropsWithChildren<TypographyPropsType>> = ({
     children,
     ...restProps
 }) => {

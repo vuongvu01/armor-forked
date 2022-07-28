@@ -26,7 +26,7 @@ const MergeSmall = (
     </Fragment>
 );
 
-export const MergeIcon: FunctionComponent<SVGIconPropsType> = (props) => {
+export const MergeIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

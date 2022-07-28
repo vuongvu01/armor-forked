@@ -26,7 +26,7 @@ const CalendarSmall = (
     </Fragment>
 );
 
-export const CalendarIcon: FunctionComponent<SVGIconPropsType> = (props) => {
+export const CalendarIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

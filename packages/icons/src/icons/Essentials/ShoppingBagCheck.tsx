@@ -26,7 +26,7 @@ const ShoppingBagCheckSmall = (
     </Fragment>
 );
 
-export const ShoppingBagCheckIcon: FunctionComponent<SVGIconPropsType> = (
+export const ShoppingBagCheckIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
     props,
 ) => {
     const { className, ...restProps } = props;

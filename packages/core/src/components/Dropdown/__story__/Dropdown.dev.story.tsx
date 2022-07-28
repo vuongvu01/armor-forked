@@ -1654,9 +1654,9 @@ export const WithMaxAndMinDropdownWidthOptions = () => {
 };
 
 export const CustomOptionLabelStyle = () => {
-    const WithStyle: React.FC = ({ children }) => (
-        <span style={{ border: '1px solid red' }}>{children}</span>
-    );
+    const WithStyle: React.FC<React.PropsWithChildren<unknown>> = ({
+        children,
+    }) => <span style={{ border: '1px solid red' }}>{children}</span>;
 
     const foodCustomLabelOptions = [
         { value: -100, label: <WithStyle>All food</WithStyle> },

@@ -27,7 +27,7 @@ export const useFileUploadButton = <E extends HTMLInputElement>(
     const internalInputRef = useRef<HTMLInputElement>(null);
 
     const handleClick = useCallback(
-        (event) => {
+        (event: any) => {
             if (!internalInputRef.current) {
                 return;
             }
