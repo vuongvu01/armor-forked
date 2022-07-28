@@ -1,3 +1,5 @@
+## [1.4.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datepicker@1.4.0...@deliveryhero/armor-datepicker@1.4.1) (2022-07-28)
+
 # [1.4.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datepicker@1.3.3...@deliveryhero/armor-datepicker@1.4.0) (2022-07-28)
 
 
