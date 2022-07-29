@@ -85,12 +85,17 @@ const dropdownTextInputStyle = ({
     multiple,
     isCustomRenderer,
     internalValue,
+    isRenderedSelectedValueAsNode,
 }: DropdownTextInputPropsType) => {
     let result = css`
         ${mouseCursor}
     `;
 
-    if (multiple && !isCustomRenderer && internalValue.length) {
+    const shouldMinimizeInput =
+        !!internalValue.length &&
+        ((multiple && !isCustomRenderer) || isRenderedSelectedValueAsNode);
+
+    if (shouldMinimizeInput) {
         result = css`
             ${result};
             padding-right: 0;

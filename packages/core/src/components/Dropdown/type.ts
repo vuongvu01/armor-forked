@@ -232,5 +232,6 @@ export type DropdownOptionListContainerPropsType = {
 
 export type DropdownTextInputPropsType = {
     isCustomRenderer: boolean;
+    isRenderedSelectedValueAsNode: boolean;
     internalValue: DropdownInternalValueType;
 } & Pick<TextInputPropsType, 'disabled' | 'multiple'>;
