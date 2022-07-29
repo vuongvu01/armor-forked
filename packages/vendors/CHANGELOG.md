@@ -1,3 +1,12 @@
+## [1.5.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.5.1...@deliveryhero/armor-vendors@1.5.2) (2022-07-29)
+
+
+### Bug Fixes
+
+* **dropdown:** fix dropdown label always up when rendered as node ([92d8d5a](https://github.com/deliveryhero/armor/commit/92d8d5abc8bde26ad980de9a0d99b861c0597a32))
+* **dropdown:** janky label [LD-337]  ([#1143](https://github.com/deliveryhero/armor/issues/1143)) ([747e95d](https://github.com/deliveryhero/armor/commit/747e95daee331406e60d530c8852af3a63aec2ef))
+* **dropdown:** minimize input element when not in use ([#1148](https://github.com/deliveryhero/armor/issues/1148)) ([8ae3e3f](https://github.com/deliveryhero/armor/commit/8ae3e3f928facf6b2e1fdb40f6e6f8f83bb4cc7a))
+
 ## [1.5.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.5.0...@deliveryhero/armor-vendors@1.5.1) (2022-07-28)
 
 # [1.5.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-vendors@1.4.30...@deliveryhero/armor-vendors@1.5.0) (2022-07-28)
