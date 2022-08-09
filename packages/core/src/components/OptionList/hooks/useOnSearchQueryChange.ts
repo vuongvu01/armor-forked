@@ -1,14 +1,16 @@
 import { useCallback } from 'react';
 import { stripHTMLTagsMemoized as stripHTMLTags } from '@deliveryhero/armor-system';
 
-import {
-    DropdownInternalOptionType,
-    DropdownInternalValueType,
-} from '../../Dropdown/type';
-import { DropdownOnSearchQueryChangeType } from '../type';
+import { DropdownInternalOptionType } from '../../Dropdown/type';
+import { OptionObjectType, DropdownOnSearchQueryChangeType } from '../type';
+
+const checkMatchQuery = (query: string) => (option: OptionObjectType) => {
+    const label = stripHTMLTags(option.label).toLowerCase();
+    const value = `${option.value}`.toLowerCase();
+    return label.includes(query) || value.includes(query);
+};
 
 export const useOnSearchQueryChange = (
-    internalValue: DropdownInternalValueType,
     internalOptions: DropdownInternalOptionType,
     setInternalOptions?: (nextOptions: DropdownInternalOptionType) => void,
     setSearchQuery?: (searchQuery: string) => void,
@@ -21,26 +23,18 @@ export const useOnSearchQueryChange = (
                 return () => {};
             }
             if (!searchQuery) {
-                if (setInternalOptions) {
-                    setInternalOptions(internalOptions);
-                }
+                setInternalOptions?.(internalOptions);
                 return () => {};
             }
 
             const query = searchQuery.toLowerCase();
+            setSearchQuery?.(query);
 
-            if (setSearchQuery) {
-                setSearchQuery(query);
-            }
+            const matchingOptions = internalOptions.filter(
+                checkMatchQuery(query),
+            );
 
-            const matchingOptions = internalOptions.filter((option) => {
-                const label = stripHTMLTags(option.label);
-                return label.toLowerCase().indexOf(query) !== -1;
-            });
-
-            if (setInternalOptions) {
-                setInternalOptions(matchingOptions);
-            }
+            setInternalOptions?.(matchingOptions);
             return () => {};
         },
         [

@@ -112,7 +112,6 @@ export const useOptionList = ({
     }, [searchQuery, setSearch]);
 
     const onSearchChange = useOnSearchQueryChange(
-        internalValue,
         internalOptions,
         setInternalOptions,
         setSearch,
