@@ -26,7 +26,7 @@ const SmartphoneSmall = (
     </Fragment>
 );
 
-export const SmartphoneIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
+export const SmartphoneIcon: FunctionComponent<SVGIconPropsType> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

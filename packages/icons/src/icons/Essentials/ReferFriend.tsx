@@ -26,7 +26,7 @@ const ReferFriendSmall = (
     </Fragment>
 );
 
-export const ReferFriendIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
+export const ReferFriendIcon: FunctionComponent<SVGIconPropsType> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

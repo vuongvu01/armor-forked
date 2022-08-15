@@ -26,7 +26,7 @@ const TextStrikeThroughSmall = (
     </Fragment>
 );
 
-export const TextStrikeThroughIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
+export const TextStrikeThroughIcon: FunctionComponent<SVGIconPropsType> = (
     props,
 ) => {
     const { className, ...restProps } = props;

@@ -26,7 +26,7 @@ const FileDuplicateSmall = (
     </Fragment>
 );
 
-export const FileDuplicateIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
+export const FileDuplicateIcon: FunctionComponent<SVGIconPropsType> = (
     props,
 ) => {
     const { className, ...restProps } = props;

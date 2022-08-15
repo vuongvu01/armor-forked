@@ -26,7 +26,7 @@ const DiagramSplitSmall = (
     </Fragment>
 );
 
-export const DiagramSplitIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
+export const DiagramSplitIcon: FunctionComponent<SVGIconPropsType> = (
     props,
 ) => {
     const { className, ...restProps } = props;

@@ -26,7 +26,7 @@ const CopySmall = (
     </Fragment>
 );
 
-export const CopyIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
+export const CopyIcon: FunctionComponent<SVGIconPropsType> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

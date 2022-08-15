@@ -26,7 +26,7 @@ const SearchSmall = (
     </Fragment>
 );
 
-export const SearchIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
+export const SearchIcon: FunctionComponent<SVGIconPropsType> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

@@ -26,7 +26,7 @@ const LoginSmall = (
     </Fragment>
 );
 
-export const LoginIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
+export const LoginIcon: FunctionComponent<SVGIconPropsType> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

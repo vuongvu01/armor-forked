@@ -26,7 +26,7 @@ const PinMarkerSmall = (
     </Fragment>
 );
 
-export const PinMarkerIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
+export const PinMarkerIcon: FunctionComponent<SVGIconPropsType> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

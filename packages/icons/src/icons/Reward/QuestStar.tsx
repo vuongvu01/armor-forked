@@ -26,7 +26,7 @@ const QuestStarSmall = (
     </Fragment>
 );
 
-export const QuestStarIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
+export const QuestStarIcon: FunctionComponent<SVGIconPropsType> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

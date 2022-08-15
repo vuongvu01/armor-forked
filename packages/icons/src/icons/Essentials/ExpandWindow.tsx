@@ -26,7 +26,7 @@ const ExpandWindowSmall = (
     </Fragment>
 );
 
-export const ExpandWindowIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
+export const ExpandWindowIcon: FunctionComponent<SVGIconPropsType> = (
     props,
 ) => {
     const { className, ...restProps } = props;

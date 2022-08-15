@@ -26,7 +26,7 @@ const TextBoldSmall = (
     </Fragment>
 );
 
-export const TextBoldIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
+export const TextBoldIcon: FunctionComponent<SVGIconPropsType> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

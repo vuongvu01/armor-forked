@@ -26,7 +26,7 @@ const FileTaskListSmall = (
     </Fragment>
 );
 
-export const FileTaskListIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
+export const FileTaskListIcon: FunctionComponent<SVGIconPropsType> = (
     props,
 ) => {
     const { className, ...restProps } = props;

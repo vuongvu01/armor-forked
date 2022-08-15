@@ -26,7 +26,7 @@ const AccordionSmall = (
     </Fragment>
 );
 
-export const AccordionIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
+export const AccordionIcon: FunctionComponent<SVGIconPropsType> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

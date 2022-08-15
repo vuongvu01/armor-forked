@@ -26,7 +26,7 @@ const PhoneRingingSmall = (
     </Fragment>
 );
 
-export const PhoneRingingIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
+export const PhoneRingingIcon: FunctionComponent<SVGIconPropsType> = (
     props,
 ) => {
     const { className, ...restProps } = props;

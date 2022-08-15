@@ -26,7 +26,7 @@ const DeleteCircleSmall = (
     </Fragment>
 );
 
-export const DeleteCircleIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
+export const DeleteCircleIcon: FunctionComponent<SVGIconPropsType> = (
     props,
 ) => {
     const { className, ...restProps } = props;

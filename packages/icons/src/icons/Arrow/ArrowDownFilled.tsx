@@ -26,7 +26,7 @@ const ArrowDownFilledSmall = (
     </Fragment>
 );
 
-export const ArrowDownFilledIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
+export const ArrowDownFilledIcon: FunctionComponent<SVGIconPropsType> = (
     props,
 ) => {
     const { className, ...restProps } = props;

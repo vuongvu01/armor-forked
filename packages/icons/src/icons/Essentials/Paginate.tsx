@@ -26,7 +26,7 @@ const PaginateSmall = (
     </Fragment>
 );
 
-export const PaginateIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
+export const PaginateIcon: FunctionComponent<SVGIconPropsType> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

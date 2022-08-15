@@ -26,7 +26,7 @@ const TimeSeparatorSmall = (
     </Fragment>
 );
 
-export const TimeSeparatorIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
+export const TimeSeparatorIcon: FunctionComponent<SVGIconPropsType> = (
     props,
 ) => {
     const { className, ...restProps } = props;

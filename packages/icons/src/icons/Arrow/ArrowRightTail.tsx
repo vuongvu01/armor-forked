@@ -26,7 +26,7 @@ const ArrowRightTailSmall = (
     </Fragment>
 );
 
-export const ArrowRightTailIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
+export const ArrowRightTailIcon: FunctionComponent<SVGIconPropsType> = (
     props,
 ) => {
     const { className, ...restProps } = props;

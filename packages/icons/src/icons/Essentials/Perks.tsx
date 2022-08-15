@@ -26,7 +26,7 @@ const PerksSmall = (
     </Fragment>
 );
 
-export const PerksIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
+export const PerksIcon: FunctionComponent<SVGIconPropsType> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

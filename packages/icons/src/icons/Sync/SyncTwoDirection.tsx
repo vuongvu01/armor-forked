@@ -26,7 +26,7 @@ const SyncTwoDirectionSmall = (
     </Fragment>
 );
 
-export const SyncTwoDirectionIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
+export const SyncTwoDirectionIcon: FunctionComponent<SVGIconPropsType> = (
     props,
 ) => {
     const { className, ...restProps } = props;

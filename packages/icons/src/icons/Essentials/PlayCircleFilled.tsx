@@ -26,7 +26,7 @@ const PlayCircleFilledSmall = (
     </Fragment>
 );
 
-export const PlayCircleFilledIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
+export const PlayCircleFilledIcon: FunctionComponent<SVGIconPropsType> = (
     props,
 ) => {
     const { className, ...restProps } = props;

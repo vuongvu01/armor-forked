@@ -26,7 +26,7 @@ const PinSmall = (
     </Fragment>
 );
 
-export const PinIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
+export const PinIcon: FunctionComponent<SVGIconPropsType> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

@@ -26,7 +26,7 @@ const TickCircleFilledSmall = (
     </Fragment>
 );
 
-export const TickCircleFilledIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
+export const TickCircleFilledIcon: FunctionComponent<SVGIconPropsType> = (
     props,
 ) => {
     const { className, ...restProps } = props;

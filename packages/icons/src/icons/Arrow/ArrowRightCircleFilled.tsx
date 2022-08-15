@@ -26,7 +26,7 @@ const ArrowRightCircleFilledSmall = (
     </Fragment>
 );
 
-export const ArrowRightCircleFilledIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
+export const ArrowRightCircleFilledIcon: FunctionComponent<SVGIconPropsType> = (
     props,
 ) => {
     const { className, ...restProps } = props;

@@ -26,7 +26,7 @@ const SMSSmall = (
     </Fragment>
 );
 
-export const SMSIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
+export const SMSIcon: FunctionComponent<SVGIconPropsType> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

@@ -26,7 +26,7 @@ const ImageUploadSmall = (
     </Fragment>
 );
 
-export const ImageUploadIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
+export const ImageUploadIcon: FunctionComponent<SVGIconPropsType> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;
