@@ -1,3 +1,11 @@
+## [1.3.3](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datatable@1.3.2...@deliveryhero/armor-datatable@1.3.3) (2022-08-15)
+
+
+### Features
+
+* **dropdown:** Dropdown able to search by value [AR-149] ([7c412b6](https://github.com/deliveryhero/armor/commit/7c412b69ba77fac1c80701f3217c2e29cbc17537))
+* **icons:** add bunch of new icons (helpcenter) and remove PropsWithChildren from icon component type ([#1163](https://github.com/deliveryhero/armor/issues/1163)) ([027d194](https://github.com/deliveryhero/armor/commit/027d19484eead88cc1f46f8436ceaa383b4f04ac))
+
 ## [1.3.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datatable@1.3.1...@deliveryhero/armor-datatable@1.3.2) (2022-07-29)
 
 
