@@ -26,7 +26,7 @@ const SyncWithClockSmall = (
     </Fragment>
 );
 
-export const SyncWithClockIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
+export const SyncWithClockIcon: FunctionComponent<SVGIconPropsType> = (
     props,
 ) => {
     const { className, ...restProps } = props;

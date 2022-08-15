@@ -26,7 +26,7 @@ const NetworkServerSmall = (
     </Fragment>
 );
 
-export const NetworkServerIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
+export const NetworkServerIcon: FunctionComponent<SVGIconPropsType> = (
     props,
 ) => {
     const { className, ...restProps } = props;

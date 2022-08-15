@@ -26,7 +26,7 @@ const CloudDownloadSmall = (
     </Fragment>
 );
 
-export const CloudDownloadIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
+export const CloudDownloadIcon: FunctionComponent<SVGIconPropsType> = (
     props,
 ) => {
     const { className, ...restProps } = props;

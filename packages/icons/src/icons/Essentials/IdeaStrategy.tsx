@@ -26,7 +26,7 @@ const IdeaStrategySmall = (
     </Fragment>
 );
 
-export const IdeaStrategyIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
+export const IdeaStrategyIcon: FunctionComponent<SVGIconPropsType> = (
     props,
 ) => {
     const { className, ...restProps } = props;

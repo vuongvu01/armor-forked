@@ -26,7 +26,7 @@ const HamburgerMenuSmall = (
     </Fragment>
 );
 
-export const HamburgerMenuIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
+export const HamburgerMenuIcon: FunctionComponent<SVGIconPropsType> = (
     props,
 ) => {
     const { className, ...restProps } = props;

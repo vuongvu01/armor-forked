@@ -152,6 +152,13 @@ export const AllCategoriesWithIconSizeVariants = (): ReactElement => (
             <I.CalendarClockIcon large />
         </Icons>
 
+        <h3>CalendarDate</h3>
+        <Icons>
+            <I.CalendarDateIcon small />
+            <I.CalendarDateIcon medium />
+            <I.CalendarDateIcon large />
+        </Icons>
+
         <h3>Calendar</h3>
         <Icons>
             <I.CalendarIcon small />
@@ -584,6 +591,20 @@ export const AllCategoriesWithIconSizeVariants = (): ReactElement => (
             <I.NotificationIcon large />
         </Icons>
 
+        <h3>NumericInput</h3>
+        <Icons>
+            <I.NumericInputIcon small />
+            <I.NumericInputIcon medium />
+            <I.NumericInputIcon large />
+        </Icons>
+
+        <h3>OrderConfirmed</h3>
+        <Icons>
+            <I.OrderConfirmedIcon small />
+            <I.OrderConfirmedIcon medium />
+            <I.OrderConfirmedIcon large />
+        </Icons>
+
         <h3>OrderList</h3>
         <Icons>
             <I.OrderListIcon small />
@@ -666,6 +687,13 @@ export const AllCategoriesWithIconSizeVariants = (): ReactElement => (
             <I.PlusIcon small />
             <I.PlusIcon medium />
             <I.PlusIcon large />
+        </Icons>
+
+        <h3>RadioButton</h3>
+        <Icons>
+            <I.RadioButtonIcon small />
+            <I.RadioButtonIcon medium />
+            <I.RadioButtonIcon large />
         </Icons>
 
         <h3>Receipt</h3>
@@ -1244,6 +1272,13 @@ export const AllCategoriesWithIconSizeVariants = (): ReactElement => (
             <I.ListNumberIcon large />
         </Icons>
 
+        <h3>Style</h3>
+        <Icons>
+            <I.StyleIcon small />
+            <I.StyleIcon medium />
+            <I.StyleIcon large />
+        </Icons>
+
         <h3>TextBold</h3>
         <Icons>
             <I.TextBoldIcon small />
@@ -1270,6 +1305,13 @@ export const AllCategoriesWithIconSizeVariants = (): ReactElement => (
             <I.TextUnderlineIcon small />
             <I.TextUnderlineIcon medium />
             <I.TextUnderlineIcon large />
+        </Icons>
+
+        <h3>Typeface</h3>
+        <Icons>
+            <I.TypefaceIcon small />
+            <I.TypefaceIcon medium />
+            <I.TypefaceIcon large />
         </Icons>
 
         <h3>Unlink</h3>
@@ -1318,11 +1360,25 @@ export const AllCategoriesWithIconSizeVariants = (): ReactElement => (
             <I.CloudUploadIcon large />
         </Icons>
 
+        <h3>FileUpload</h3>
+        <Icons>
+            <I.FileUploadIcon small />
+            <I.FileUploadIcon medium />
+            <I.FileUploadIcon large />
+        </Icons>
+
         <h3>ImageUpload</h3>
         <Icons>
             <I.ImageUploadIcon small />
             <I.ImageUploadIcon medium />
             <I.ImageUploadIcon large />
+        </Icons>
+
+        <h3>MultipleImageUpload</h3>
+        <Icons>
+            <I.MultipleImageUploadIcon small />
+            <I.MultipleImageUploadIcon medium />
+            <I.MultipleImageUploadIcon large />
         </Icons>
 
         <h3>Upload</h3>

@@ -32,7 +32,7 @@ const CalendarSyncSmall = (
     </Fragment>
 );
 
-export const CalendarSyncIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
+export const CalendarSyncIcon: FunctionComponent<SVGIconPropsType> = (
     props,
 ) => {
     const { className, ...restProps } = props;

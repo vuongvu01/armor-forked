@@ -26,7 +26,7 @@ const SyncLocationRefreshSmall = (
     </Fragment>
 );
 
-export const SyncLocationRefreshIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
+export const SyncLocationRefreshIcon: FunctionComponent<SVGIconPropsType> = (
     props,
 ) => {
     const { className, ...restProps } = props;

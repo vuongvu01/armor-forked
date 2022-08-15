@@ -26,7 +26,7 @@ const SortAlphabetSmall = (
     </Fragment>
 );
 
-export const SortAlphabetIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
+export const SortAlphabetIcon: FunctionComponent<SVGIconPropsType> = (
     props,
 ) => {
     const { className, ...restProps } = props;

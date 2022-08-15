@@ -26,7 +26,7 @@ const ArrowUpTailSmall = (
     </Fragment>
 );
 
-export const ArrowUpTailIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
+export const ArrowUpTailIcon: FunctionComponent<SVGIconPropsType> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

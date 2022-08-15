@@ -26,7 +26,7 @@ const MotorcycleDeliverySmall = (
     </Fragment>
 );
 
-export const MotorcycleDeliveryIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
+export const MotorcycleDeliveryIcon: FunctionComponent<SVGIconPropsType> = (
     props,
 ) => {
     const { className, ...restProps } = props;

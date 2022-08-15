@@ -26,7 +26,7 @@ const FoodOrderSmall = (
     </Fragment>
 );
 
-export const FoodOrderIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
+export const FoodOrderIcon: FunctionComponent<SVGIconPropsType> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

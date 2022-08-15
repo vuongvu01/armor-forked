@@ -26,7 +26,7 @@ const TutorialSmall = (
     </Fragment>
 );
 
-export const TutorialIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
+export const TutorialIcon: FunctionComponent<SVGIconPropsType> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

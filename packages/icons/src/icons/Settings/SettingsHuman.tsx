@@ -26,7 +26,7 @@ const SettingsHumanSmall = (
     </Fragment>
 );
 
-export const SettingsHumanIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
+export const SettingsHumanIcon: FunctionComponent<SVGIconPropsType> = (
     props,
 ) => {
     const { className, ...restProps } = props;

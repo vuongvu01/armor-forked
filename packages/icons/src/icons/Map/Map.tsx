@@ -26,7 +26,7 @@ const MapSmall = (
     </Fragment>
 );
 
-export const MapIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
+export const MapIcon: FunctionComponent<SVGIconPropsType> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

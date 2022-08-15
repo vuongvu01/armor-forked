@@ -26,7 +26,7 @@ const FileImageLandscapeSmall = (
     </Fragment>
 );
 
-export const FileImageLandscapeIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
+export const FileImageLandscapeIcon: FunctionComponent<SVGIconPropsType> = (
     props,
 ) => {
     const { className, ...restProps } = props;

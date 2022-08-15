@@ -26,7 +26,7 @@ const EditSmall = (
     </Fragment>
 );
 
-export const EditIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
+export const EditIcon: FunctionComponent<SVGIconPropsType> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

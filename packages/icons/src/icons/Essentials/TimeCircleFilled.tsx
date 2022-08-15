@@ -26,7 +26,7 @@ const TimeCircleFilledSmall = (
     </Fragment>
 );
 
-export const TimeCircleFilledIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
+export const TimeCircleFilledIcon: FunctionComponent<SVGIconPropsType> = (
     props,
 ) => {
     const { className, ...restProps } = props;

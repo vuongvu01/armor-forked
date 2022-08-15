@@ -26,7 +26,7 @@ const QuestionChatSmall = (
     </Fragment>
 );
 
-export const QuestionChatIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
+export const QuestionChatIcon: FunctionComponent<SVGIconPropsType> = (
     props,
 ) => {
     const { className, ...restProps } = props;

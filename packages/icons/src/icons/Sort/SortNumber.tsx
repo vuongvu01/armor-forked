@@ -26,7 +26,7 @@ const SortNumberSmall = (
     </Fragment>
 );
 
-export const SortNumberIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
+export const SortNumberIcon: FunctionComponent<SVGIconPropsType> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

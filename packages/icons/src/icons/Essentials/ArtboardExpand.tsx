@@ -26,7 +26,7 @@ const ArtboardExpandSmall = (
     </Fragment>
 );
 
-export const ArtboardExpandIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
+export const ArtboardExpandIcon: FunctionComponent<SVGIconPropsType> = (
     props,
 ) => {
     const { className, ...restProps } = props;

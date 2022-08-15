@@ -26,7 +26,7 @@ const HeadingSmall = (
     </Fragment>
 );
 
-export const HeadingIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
+export const HeadingIcon: FunctionComponent<SVGIconPropsType> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

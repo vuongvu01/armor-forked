@@ -26,7 +26,7 @@ const IrisScanApprovedSmall = (
     </Fragment>
 );
 
-export const IrisScanApprovedIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
+export const IrisScanApprovedIcon: FunctionComponent<SVGIconPropsType> = (
     props,
 ) => {
     const { className, ...restProps } = props;

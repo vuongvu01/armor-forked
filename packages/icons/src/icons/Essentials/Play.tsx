@@ -26,7 +26,7 @@ const PlaySmall = (
     </Fragment>
 );
 
-export const PlayIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
+export const PlayIcon: FunctionComponent<SVGIconPropsType> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

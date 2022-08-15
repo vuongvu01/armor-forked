@@ -26,7 +26,7 @@ const FlagSmall = (
     </Fragment>
 );
 
-export const FlagIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
+export const FlagIcon: FunctionComponent<SVGIconPropsType> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

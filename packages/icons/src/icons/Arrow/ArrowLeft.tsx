@@ -26,7 +26,7 @@ const ArrowLeftSmall = (
     </Fragment>
 );
 
-export const ArrowLeftIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
+export const ArrowLeftIcon: FunctionComponent<SVGIconPropsType> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

@@ -26,7 +26,9 @@ const ArrowUpTailCircleFilledSmall = (
     </Fragment>
 );
 
-export const ArrowUpTailCircleFilledIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
+export const ArrowUpTailCircleFilledIcon: FunctionComponent<
+    SVGIconPropsType
+> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

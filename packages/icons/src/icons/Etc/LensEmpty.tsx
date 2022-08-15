@@ -15,7 +15,9 @@ const LensEmptyIconShapeLarge = ({ fill = 'none', stroke = '#A3A3A3' }) => (
     <circle cx="12" cy="12" r="9.5" fill={fill} stroke={stroke} />
 );
 
-export const LensEmptyIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
+export const LensEmptyIcon: FunctionComponent<
+    React.PropsWithChildren<SVGIconPropsType>
+> = (props) => {
     const { className, fill, stroke, ...restProps } = props;
 
     const { small, medium, large } = restProps;

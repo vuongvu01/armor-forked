@@ -26,7 +26,7 @@ const LayoutLeftMenuSmall = (
     </Fragment>
 );
 
-export const LayoutLeftMenuIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
+export const LayoutLeftMenuIcon: FunctionComponent<SVGIconPropsType> = (
     props,
 ) => {
     const { className, ...restProps } = props;

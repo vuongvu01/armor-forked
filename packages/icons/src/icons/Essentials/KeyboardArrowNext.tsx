@@ -26,7 +26,7 @@ const KeyboardArrowNextSmall = (
     </Fragment>
 );
 
-export const KeyboardArrowNextIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
+export const KeyboardArrowNextIcon: FunctionComponent<SVGIconPropsType> = (
     props,
 ) => {
     const { className, ...restProps } = props;

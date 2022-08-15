@@ -50,7 +50,7 @@ const CoinWithHeartSmall = (
     </Fragment>
 );
 
-export const CoinWithHeartIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
+export const CoinWithHeartIcon: FunctionComponent<SVGIconPropsType> = (
     props,
 ) => {
     const { className, ...restProps } = props;

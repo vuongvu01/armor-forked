@@ -26,7 +26,7 @@ const BubbleTextSmall = (
     </Fragment>
 );
 
-export const BubbleTextIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
+export const BubbleTextIcon: FunctionComponent<SVGIconPropsType> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

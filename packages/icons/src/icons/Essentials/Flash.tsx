@@ -26,7 +26,7 @@ const FlashSmall = (
     </Fragment>
 );
 
-export const FlashIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (props) => {
+export const FlashIcon: FunctionComponent<SVGIconPropsType> = (props) => {
     const { className, ...restProps } = props;
     const { small, medium, large } = props;
     const hasNoSize = !small && !medium && !large;

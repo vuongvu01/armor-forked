@@ -26,7 +26,7 @@ const CancelCircleSmall = (
     </Fragment>
 );
 
-export const CancelCircleIcon: FunctionComponent<React.PropsWithChildren<SVGIconPropsType>> = (
+export const CancelCircleIcon: FunctionComponent<SVGIconPropsType> = (
     props,
 ) => {
     const { className, ...restProps } = props;
