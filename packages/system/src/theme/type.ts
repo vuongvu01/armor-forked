@@ -76,3 +76,8 @@ export type RootThemeInputType = {
 export type ThemeInputType = DeepPartial<ThemeType>;
 
 export type ThemePropertyType = ThemeType | RootThemeType | null | undefined; // todo: remove ThemeType from here
+
+export type ThemeProviderPropsType = React.PropsWithChildren<{
+    theme: RootThemeType;
+    disableGlobalStyle?: true;
+}>;
