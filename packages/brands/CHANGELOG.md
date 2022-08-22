@@ -1,3 +1,10 @@
+## [1.16.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-brands@1.16.0...@deliveryhero/armor-brands@1.16.1) (2022-08-22)
+
+
+### Bug Fixes
+
+* **Navigation:** active link is not clickable ([#1170](https://github.com/deliveryhero/armor/issues/1170)) ([db11a89](https://github.com/deliveryhero/armor/commit/db11a898726ed8e3ab0598a618c600013947e67c))
+
 # [1.16.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-brands@1.15.3...@deliveryhero/armor-brands@1.16.0) (2022-08-22)
 
 
