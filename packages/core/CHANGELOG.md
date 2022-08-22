@@ -1,3 +1,10 @@
+## [1.103.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.103.1...@deliveryhero/armor@1.103.2) (2022-08-22)
+
+
+### Bug Fixes
+
+* **Navigation:** active link is not clickable ([#1170](https://github.com/deliveryhero/armor/issues/1170)) ([db11a89](https://github.com/deliveryhero/armor/commit/db11a898726ed8e3ab0598a618c600013947e67c))
+
 ## [1.103.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.103.0...@deliveryhero/armor@1.103.1) (2022-08-22)
 
 
