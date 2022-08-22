@@ -1,3 +1,10 @@
+## [1.2.4](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-headernavigation@1.2.3...@deliveryhero/armor-headernavigation@1.2.4) (2022-08-22)
+
+
+### Features
+
+* **ThemeProvider:** Default Theme Background Color [AR-153] ([#1166](https://github.com/deliveryhero/armor/issues/1166)) ([a2037b3](https://github.com/deliveryhero/armor/commit/a2037b38d25f3cd85ed916e53d414114cd609bf9))
+
 ## [1.2.3](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-headernavigation@1.2.2...@deliveryhero/armor-headernavigation@1.2.3) (2022-08-15)
 
 
