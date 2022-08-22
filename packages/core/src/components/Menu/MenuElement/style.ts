@@ -13,7 +13,6 @@ import {
     fontSize02,
     durationNormal,
     token,
-    pointerEvents,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -44,8 +43,6 @@ const getRootStyle = ({
         &:hover {
             background-color: ${color('primary.lightest')};
         }
-
-        ${pointerEvents({ disabled: selected && !enableExpansionHandle })}
     `;
 
     if (secondary) {
