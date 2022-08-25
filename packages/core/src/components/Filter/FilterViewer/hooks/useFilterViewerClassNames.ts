@@ -9,6 +9,10 @@ export const useFilterViewerClassNames = (
         return {
             Root: makeRootClassName(classPrefix, className),
             AddFiltersButton: makeBEM(classPrefix, 'AddFiltersButton'),
+            AddFiltersButtonWrapper: makeBEM(
+                classPrefix,
+                'AddFiltersButtonWrapper',
+            ),
             TopBar: makeBEM(classPrefix, 'TopBar'),
             TopBarSummary: makeBEM(classPrefix, 'Summary'),
             TopBarTitle: makeBEM(classPrefix, 'TopBarTitle'),

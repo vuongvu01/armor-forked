@@ -33,8 +33,11 @@ export const useFilterViewer = <E extends HTMLElement>(
         filterOpen,
         resultCount,
         resultTotalCount,
-        filterActions,
         onClearAllFilterButtonClick,
+        filterActions,
+        beforeFilterActions,
+        afterFilterActions,
+        afterAddFilterButton,
         ...restProps
     }: FilterViewerPropsType,
     ref: RefType<E>,
@@ -170,6 +173,9 @@ export const useFilterViewer = <E extends HTMLElement>(
         resultTotalCountFormatted: formatNumber(resultTotalCount),
         schema: schemaSafe,
         filterActions,
+        beforeFilterActions,
+        afterFilterActions,
+        afterAddFilterButton,
         isConditionValueEmpty: (
             condition: FilterConditionSchemaElementOrGroupType,
             path: string,

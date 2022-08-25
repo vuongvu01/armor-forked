@@ -15,8 +15,6 @@ import {
     FilterEditor,
     FilterDateConditionType,
     FilterEnumConditionType,
-    Link,
-    ContextMenu,
 } from '../..';
 import { useFilterURLStorage } from '../hooks';
 import { withWrapper } from '../../../helpers/Wrapper';
@@ -363,29 +361,14 @@ export const ClearableFalse = () => {
 };
 
 export const WithActions = () => {
-    const menuElements = [
-        {
-            id: 'edit',
-            label: 'Edit',
-            props: { 'data-elementid': 'edit', onClick: () => {} },
-        },
-        {
-            id: 'delete',
-            label: 'Delete',
-            props: {
-                'data-elementid': 'delete',
-                onClick: () => {},
-                selected: true,
-            },
-        },
-    ];
-
     const [filterValue, setFilterValue] = useState<
         FilterConditionValueType | undefined
     >({
         conditions: [{ id: 'name', name: 'name', value: 'Smirnoff' }],
     });
     const [open, setOpen] = useState(false);
+
+    const customButton = <button>Action</button>;
 
     return (
         <FilterLayout filterOpen={open} onFilterOpenChange={setOpen}>
@@ -399,16 +382,9 @@ export const WithActions = () => {
                 filterOpen={open}
                 resultCount={8}
                 resultTotalCount={2500}
-                filterActions={
-                    <>
-                        <ContextMenu
-                            trigger={<Link>More...</Link>}
-                            align="bottom-end"
-                            menuElements={menuElements}
-                            width={30}
-                        />
-                    </>
-                }
+                afterAddFilterButton={customButton}
+                beforeFilterActions={customButton}
+                afterFilterActions={customButton}
             />
             <FilterTable />
         </FilterLayout>

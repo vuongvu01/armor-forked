@@ -82,6 +82,49 @@ describe('<FilterViewer />', () => {
         expect(actionsNode).toBeInTheDocument();
     });
 
+    it('should support "beforeFilterActions" and "afterFilterActions" property', async () => {
+        const filterValue = {
+            conditions: [{ id: 'name', name: 'name', value: 'Smirnoff' }],
+        };
+        const filterSchema: FilterConditionSchemaElementOrGroupType = {
+            conditions: [
+                {
+                    id: 'name',
+                    label: 'Name',
+                },
+            ],
+        };
+
+        const { getByText } = render(
+            <FilterViewer
+                value={filterValue}
+                schema={filterSchema}
+                beforeFilterActions={<div>Before</div>}
+                afterFilterActions={<div>After</div>}
+            />,
+        );
+
+        const beforeFilterActions = getByText('Before');
+        expect(beforeFilterActions).toBeInTheDocument();
+
+        const afterFilterActions = getByText('After');
+        expect(afterFilterActions).toBeInTheDocument();
+    });
+
+    it('should support "afterAddFilterButton" property', async () => {
+        const { getByText } = render(
+            <FilterViewer afterAddFilterButton={<div>Button</div>} />,
+        );
+
+        const afterAddFilterButton = getByText('Button');
+        expect(afterAddFilterButton).toBeInTheDocument();
+
+        const afterAddFilterButtonParent = afterAddFilterButton.closest(
+            '.FilterViewer-AddFiltersButtonWrapper',
+        );
+        expect(afterAddFilterButtonParent).toBeInTheDocument();
+    });
+
     it('should support "onClearAllFilterButtonClick" property', async () => {
         const filterValue = {
             conditions: [{ id: 'name', name: 'name', value: 'Smirnoff' }],
