@@ -1,0 +1,42 @@
+import React, { FC } from 'react';
+import { useTheme } from '@deliveryhero/armor-system';
+import {
+    SVGIllustration,
+    SVGIllustrationGroup,
+    SVGIllustrationPath,
+    SVGIllustrationPropsType,
+} from '../../components/SVGIllustration';
+
+const <%- name %>Shape: FC<{
+    brandColor: string;
+    neutralColor: string;
+}> = ({ brandColor, neutralColor }) => (
+    <SVGIllustrationGroup>
+        <% paths.forEach(function({ d, transform, fill }) { %>
+            <SVGIllustrationPath
+              d="<%- d %>"
+              fill={<%- fill %>}
+              <% if (transform) { %> transform="<%- transform %>"<% } %> />
+        <% }); %>
+    </SVGIllustrationGroup>
+);
+
+export const <%- name %>Illustration: FC<SVGIllustrationPropsType> = ({
+  className,
+  ...restProps
+}) => {
+    const theme = useTheme();
+    const { brand, neutral } = theme?.armor?.color?.illustration || {};
+
+    return (
+        <SVGIllustration
+            viewBox="0 0 120 120"
+            className={`<%- name %>Illustration ${className || ''}`}
+            {...restProps}
+        >
+            <<%- name %>Shape brandColor={brand} neutralColor={neutral} />
+        </SVGIllustration>
+    );
+};
+
+<%- name %>Illustration.displayName = '<%- name %>Illustration';

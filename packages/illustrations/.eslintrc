@@ -27,7 +27,6 @@
   "rules": {
     "prettier/prettier": "warn",
     "import/prefer-default-export": "off",
-    // "no-param-reassign": "off",
     "class-methods-use-this": "off",
     "no-use-before-define": ["error", { "functions": false }],
     "@typescript-eslint/explicit-function-return-type": "off",
@@ -40,10 +39,9 @@
     "no-console": ["error", {
       "allow": ["error"]
     }],
-
     "react/prop-types": "off",
-
-    "import/extensions": "off"
+    "import/extensions": "off",
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
   },
   "parserOptions": {
     "ecmaVersion": 6,

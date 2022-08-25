@@ -252,7 +252,7 @@ export const defaultThemeStructure = {
             '02': colorPurple50,
         },
         illustration: {
-            brand: colorBlue30,
+            brand: colorBlue40,
             neutral: colorGrey60,
         },
         motion: {

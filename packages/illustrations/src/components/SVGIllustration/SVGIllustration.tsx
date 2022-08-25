@@ -1,17 +1,11 @@
-import React, { FunctionComponent } from 'react';
+import React, { FC, PropsWithChildren } from 'react';
 
 import { SVGIllustrationPropsType } from './type';
 import { SVGIllustrationRoot } from './style';
 
-export const SVGIllustration: FunctionComponent<React.PropsWithChildren<SVGIllustrationPropsType>> = ({
-    children,
-    title,
-    viewBox,
-    width,
-    height,
-    color,
-    ...restProps
-}) => {
+export const SVGIllustration: FC<
+    PropsWithChildren<SVGIllustrationPropsType>
+> = ({ children, title, viewBox, width, height, color, ...restProps }) => {
     return (
         <SVGIllustrationRoot
             viewBox={viewBox}
@@ -27,16 +21,20 @@ export const SVGIllustration: FunctionComponent<React.PropsWithChildren<SVGIllus
     );
 };
 
-export const SVGIllustrationGroup: FunctionComponent<React.PropsWithChildren<unknown>> = ({ children }) => (
+export const SVGIllustrationGroup: FC<PropsWithChildren<unknown>> = ({
+    children,
+}) => (
     <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         {children}
     </g>
 );
 
-export const SVGIllustrationPath: FunctionComponent<React.PropsWithChildren<{
-    d: string;
-    fill: string;
-}>> = ({ d, fill }) => <path d={d} fill={fill}></path>;
+export const SVGIllustrationPath: FC<
+    PropsWithChildren<{
+        d: string;
+        fill: string;
+    }>
+> = ({ d, fill }) => <path d={d} fill={fill}></path>;
 
 SVGIllustration.defaultProps = {
     display: 'inline-block',

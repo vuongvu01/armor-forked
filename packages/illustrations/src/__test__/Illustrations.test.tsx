@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { cleanup, render } from '@testing-library/react';
-import { RestaurantIllustration } from '../illustrations';
+import { ArmorLibraryIllustration } from '../illustrations';
 
 describe('<Illustration />', () => {
     afterEach(async () => {
@@ -9,30 +9,30 @@ describe('<Illustration />', () => {
     });
 
     it('renders itself without any errors', async () => {
-        render(<RestaurantIllustration />);
+        render(<ArmorLibraryIllustration />);
     });
 
     it('ensures that a className corresponding to the illustration name is set', async () => {
-        const { container: restaurantIllustrationContainer } = render(
-            <RestaurantIllustration />,
+        const { container: armorLibraryIllustrationContainer } = render(
+            <ArmorLibraryIllustration />,
         );
-        const restaurantIllustration =
-            restaurantIllustrationContainer.querySelector(
-                '.RestaurantIllustration',
+        const armorLibraryIllustration =
+            armorLibraryIllustrationContainer.querySelector(
+                '.ArmorLibraryIllustration',
             );
 
-        expect(restaurantIllustration).not.toBeNull();
-        expect(restaurantIllustration).toBeInstanceOf(SVGSVGElement);
+        expect(armorLibraryIllustration).not.toBeNull();
+        expect(armorLibraryIllustration).toBeInstanceOf(SVGSVGElement);
     });
 
     it('allows to extend className with a custom value', async () => {
         const { container } = render(
-            <RestaurantIllustration className="ExtraClass" />,
+            <ArmorLibraryIllustration className="ExtraClass" />,
         );
-        const restaurantIllustration = container.querySelector(
-            '.RestaurantIllustration.ExtraClass',
+        const armorLibraryIllustration = container.querySelector(
+            '.ArmorLibraryIllustration.ExtraClass',
         );
 
-        expect(restaurantIllustration).not.toBeNull();
+        expect(armorLibraryIllustration).not.toBeNull();
     });
 });
