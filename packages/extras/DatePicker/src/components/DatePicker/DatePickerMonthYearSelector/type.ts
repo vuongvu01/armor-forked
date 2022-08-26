@@ -6,6 +6,7 @@ import {
     ComponentElementStylePropsType,
 } from '../../type';
 import { DateVector } from '../utils/DateVector';
+import { DateVectorRange } from '../utils/DateVectorRange';
 
 type DatePickerMonthYearSelectorEffectivePropsType = {
     toggleMonthYearSelector: () => void;
@@ -13,6 +14,8 @@ type DatePickerMonthYearSelectorEffectivePropsType = {
     displayedDateVector: DateVector;
     onDisplayedDateVectorChange: (newVector: DateVector) => void;
     yearRange?: number[];
+    enableMonthYearPickerMode?: boolean;
+    onDateTimeChange?: (newValue: DateVectorRange) => void;
     // add other custom properties here
 } & HTMLAttributes<HTMLDivElement> & // includes all HTML Div properties
     MarginPropsType;

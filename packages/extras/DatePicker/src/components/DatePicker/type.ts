@@ -138,6 +138,12 @@ export type DatePickerEffectiveCommonPropsType = Partial<{
 
     /** If set to true, the spacing of the component will be increased to match the *large* scale */
     large: boolean;
+
+    /**
+     * Enabling it will only show month and year selector without date selector view
+     *  __NOTE__ - If __inputMaskEnabled__ is passed along with the prop __enableMonthYearPickerMode__ then __inputMaskEnabled__ will be ignored.
+     */
+    enableMonthYearPickerMode: boolean;
 }> &
     ComponentBehaviourOpenStateType &
     ComponentBehaviourOverlayType &

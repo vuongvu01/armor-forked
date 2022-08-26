@@ -11,6 +11,7 @@ import {
     YEAR_SELECTOR_RANGE_DELTA,
     YEAR_SELECTOR_SCROLL_TOP,
 } from '../constants';
+import { DateVectorRange } from '../../utils/DateVectorRange';
 
 const getInitialYearRange = (year: number) => {
     const yearRange: number[] = [];
@@ -27,6 +28,8 @@ export const useDatePickerMonthYearSelector = <E extends HTMLDivElement>(
         onDisplayedDateVectorChange,
         toggleMonthYearSelector,
         yearRange,
+        enableMonthYearPickerMode,
+        onDateTimeChange,
         ...restProps
     }: DatePickerMonthYearSelectorPropsType,
     ref: RefType<E>,
@@ -101,16 +104,32 @@ export const useDatePickerMonthYearSelector = <E extends HTMLDivElement>(
             const year = extractNumericDataAttribute(event, 'year');
 
             if (month !== null && year !== null) {
-                onDisplayedDateVectorChange(
-                    displayedDateVector.clone({ year, month, day: 1 }),
-                );
+                const displayedDateVectorCloned = displayedDateVector.clone({
+                    year,
+                    month,
+                    day: 1,
+                });
+
+                onDisplayedDateVectorChange(displayedDateVectorCloned);
+
+                if (enableMonthYearPickerMode) {
+                    const newDateVectorRange = new DateVectorRange(
+                        displayedDateVectorCloned,
+                    );
+                    onDateTimeChange?.(newDateVectorRange);
+                }
             }
-            toggleMonthYearSelector();
+
+            if (!enableMonthYearPickerMode) {
+                toggleMonthYearSelector();
+            }
         },
         [
             displayedDateVector,
             onDisplayedDateVectorChange,
             toggleMonthYearSelector,
+            enableMonthYearPickerMode,
+            onDateTimeChange,
         ],
     );
 

@@ -19,6 +19,7 @@ export const useCommonDatePickerState = <V>(
     {
         defaultMonthYearSelectorOpen,
         currentDate,
+        enableMonthYearPickerMode,
     }: DatePickerEffectiveGenericPropsType<V> &
         DatePickerEffectiveCommonPropsType,
 ) => {
@@ -59,7 +60,7 @@ export const useCommonDatePickerState = <V>(
         );
 
     const [monthYearSelectorOpen, , , , onMonthYearSelectorToggle] =
-        useFlagState(defaultMonthYearSelectorOpen);
+        useFlagState(defaultMonthYearSelectorOpen || enableMonthYearPickerMode);
 
     return {
         dirtyInternalValueVector,

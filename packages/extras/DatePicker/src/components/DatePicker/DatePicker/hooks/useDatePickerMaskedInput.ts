@@ -26,6 +26,7 @@ type UseDatePickerMaskedInputProps = {
     isDateSelectable: (date: DateVector) => boolean;
     onTimeSelectorValueChange: (newTimeSelectorValue: TimeVector24) => void;
     dropdownOpen: boolean;
+    enableMonthYearPickerMode?: boolean;
 };
 
 export const useDatePickerMaskedInput = (
@@ -39,6 +40,7 @@ export const useDatePickerMaskedInput = (
         isDateSelectable,
         onTimeSelectorValueChange,
         dropdownOpen,
+        enableMonthYearPickerMode,
     }: UseDatePickerMaskedInputProps,
     props: DatePickerPropsType,
 ) => {
@@ -46,7 +48,8 @@ export const useDatePickerMaskedInput = (
 
     const [inputMaskValue, setInputMaskValue] = useState<string>('');
 
-    const showMaskedInput = inputMaskEnabled && !formatDateTime;
+    const showMaskedInput =
+        inputMaskEnabled && !formatDateTime && !enableMonthYearPickerMode;
 
     const { value, onChange } = useRifm({
         value: inputMaskValue,

@@ -67,6 +67,8 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerPropsType>(
             showTimePicker,
         } = useDatePicker(props, ref);
 
+        const { enableMonthYearPickerMode } = monthYearSelectorProps;
+
         return (
             <DatePickerRoot {...rootProps} className={classNameComponents.Root}>
                 <DatePickerInput
@@ -83,7 +85,9 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerPropsType>(
                             {...dropdownProps}
                             className={classNameComponents.Dropdown}
                         >
-                            <DatePickerTopBar {...topBarProps} />
+                            {!enableMonthYearPickerMode && (
+                                <DatePickerTopBar {...topBarProps} />
+                            )}
                             {displayMonthYearSelector && (
                                 <DatePickerMonthYearSelector
                                     {...monthYearSelectorProps}
