@@ -1,3 +1,16 @@
+## @deliveryhero/armor-headernavigation [1.2.6](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-headernavigation@1.2.5...@deliveryhero/armor-headernavigation@1.2.6) (2022-08-29)
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor-icons:** upgraded to 1.26.2
+* **@deliveryhero/armor:** upgraded to 1.104.0
+* **@deliveryhero/armor-illustrations:** upgraded to 1.6.0
+* **@deliveryhero/armor-system:** upgraded to 1.13.0
+
 ## [1.2.5](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-headernavigation@1.2.4...@deliveryhero/armor-headernavigation@1.2.5) (2022-08-22)
 
 
