@@ -1,3 +1,17 @@
+## [1.26.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.26.1...@deliveryhero/armor-icons@1.26.2) (2022-08-29)
+
+
+### Bug Fixes
+
+* **Navigation:** active link is not clickable ([#1170](https://github.com/deliveryhero/armor/issues/1170)) ([db11a89](https://github.com/deliveryhero/armor/commit/db11a898726ed8e3ab0598a618c600013947e67c))
+
+
+### Features
+
+* **Filter:** Allow the user to add content on the right side on the Filter, before the Clear all link. [AR-158] ([#1175](https://github.com/deliveryhero/armor/issues/1175)) ([cce40bd](https://github.com/deliveryhero/armor/commit/cce40bd7a7664c38e3953d595af437e7462d8de9))
+* **illustration:** Add import script [LD-736] ([#1174](https://github.com/deliveryhero/armor/issues/1174)) ([752fd0a](https://github.com/deliveryhero/armor/commit/752fd0a00120d7dcf4de371a684771efde0e0549))
+* **monthyear:** picker for agent campaigns center [AR-154] ([#1176](https://github.com/deliveryhero/armor/issues/1176)) ([69845ed](https://github.com/deliveryhero/armor/commit/69845edf4e48e0a5b23dd1acde18f642a6ac4f5d))
+
 ## [1.26.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-icons@1.26.0...@deliveryhero/armor-icons@1.26.1) (2022-08-22)
 
 
