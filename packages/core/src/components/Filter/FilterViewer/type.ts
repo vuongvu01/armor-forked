@@ -39,8 +39,26 @@ type FilterViewerEffectivePropsType = Partial<{
     /** If defined, will cause the message about the total amount of results to appear */
     resultTotalCount: number;
 
-    /** Additional controls rendered to the right of the "Edit filters" and "Clear all" buttons */
+    /**
+     * @deprecated Use `afterFilterActions` instead
+     * Additional controls rendered to the right of the "Edit filters" and "Clear all" buttons
+     * */
     filterActions: ReactChild;
+
+    /**
+     * Additional controls rendered before "Edit filters" and "Clear all" buttons
+     * */
+    beforeFilterActions: ReactChild;
+
+    /**
+     * Additional controls rendered after "Edit filters" and "Clear all" buttons
+     * */
+    afterFilterActions: ReactChild;
+
+    /**
+     * Additional controls rendered after "Add filters" button
+     * */
+    afterAddFilterButton: ReactChild;
 
     /** Is called when a user clicks on the "Clear all" button */
     onClearAllFilterButtonClick: () => void;

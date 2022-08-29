@@ -1,6 +1,6 @@
 /* eslint-disable no-console,import/no-unresolved */
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import {
     TextInput,
@@ -322,5 +322,23 @@ export const DifferentTimezone = () => {
             allowedDateRanges={[['current', null]]}
             defaultDateValue={d}
         />
+    );
+};
+
+export const MonthYearSelector = () => {
+    const [value, setValue] = useState<Date | null | undefined>(currentDate);
+
+    return (
+        <Box paddingTop={20}>
+            <DatePicker
+                data-testid-input="input42"
+                enableMonthYearPickerMode={true}
+                formatDateTime={(selectedDate) => {
+                    return `${selectedDate?.getMonth() + 1}.${selectedDate.getFullYear()}`;
+                }}
+                dateValue={value}
+                onDateValueChange={setValue}
+            />
+        </Box>
     );
 };

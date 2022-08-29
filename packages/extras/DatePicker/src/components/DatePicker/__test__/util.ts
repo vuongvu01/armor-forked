@@ -17,14 +17,23 @@ export const makeDateTimeString = (date: Date) => {
     return `${dateInternal} ${timeInternal}`;
 };
 
-export const pickADay = (container: HTMLElement, day: number) => {
-    const dayNode = container.querySelector(`[data-day="${day}"]`);
-    expect(dayNode).toBeInTheDocument();
+export const clickElement = (container: HTMLElement, selector: string) => {
+    const node = container.querySelector(selector);
+    expect(node).toBeInTheDocument();
 
     act(() => {
-        fireEvent.click(dayNode!);
+        fireEvent.click(node!);
     });
 };
+
+export const pickADay = (container: HTMLElement, day: number) =>
+    clickElement(container, `[data-day="${day}"]`);
+
+export const pickAYear = (container: HTMLElement, year: number) =>
+    clickElement(container, `[data-year="${year}"]`);
+
+export const pickAMonth = (container: HTMLElement, month: number) =>
+    clickElement(container, `[data-month="${month}"]`);
 
 export const mashTodayButton = (
     getByText: (selector: string) => HTMLElement,

@@ -14,6 +14,7 @@ import {
 import { FilterViewerPropsType } from './type';
 import { FILTER_VIEWER_CLASS_PREFIX } from './constants';
 import { Typography } from '../../Typography';
+import { Flex } from '../../Flex';
 import { Link } from '../../Link';
 import { Button } from '../../Button';
 import { MemoizedConditionTag as ConditionTag } from '../../ConditionTag';
@@ -93,18 +94,28 @@ export const FilterViewer = forwardRef<HTMLDivElement, FilterViewerPropsType>(
             resultCountFormatted,
             resultTotalCountFormatted,
             filterActions,
+            beforeFilterActions,
+            afterFilterActions,
+            afterAddFilterButton,
         } = useFilterViewer<HTMLDivElement>(props, ref);
 
         return (
             <FilterViewerRoot {...rootProps} className={classNames.Root}>
                 {showAddFilterButton && (
-                    <Button
-                        secondary
-                        {...getOpenFilterButtonProps()}
-                        className={classNames.AddFiltersButton}
+                    <Flex
+                        className={classNames.AddFiltersButtonWrapper}
+                        alignItems="center"
+                        justifyContent="space-between"
                     >
-                        Add filters
-                    </Button>
+                        <Button
+                            secondary
+                            {...getOpenFilterButtonProps()}
+                            className={classNames.AddFiltersButton}
+                        >
+                            Add filters
+                        </Button>
+                        {afterAddFilterButton}
+                    </Flex>
                 )}
                 {showAddFilterHint && (
                     <FilterViewerAddFilterHint
@@ -148,6 +159,7 @@ export const FilterViewer = forwardRef<HTMLDivElement, FilterViewerPropsType>(
                                 )}
                             </FilterViewerTopBarSummary>
                             <FilterViewerActions className={classNames.Actions}>
+                                {beforeFilterActions}
                                 <Link
                                     {...getEditFilterButtonProps()}
                                     className={classNames.EditFiltersButton}
@@ -169,6 +181,7 @@ export const FilterViewer = forwardRef<HTMLDivElement, FilterViewerPropsType>(
                                     }
                                 />
                                 {filterActions}
+                                {afterFilterActions}
                             </FilterViewerActions>
                         </FilterViewerTopBar>
                         <FilterViewConditions className={classNames.Conditions}>
@@ -180,6 +193,7 @@ export const FilterViewer = forwardRef<HTMLDivElement, FilterViewerPropsType>(
 
                                 // dont render empty conditions
                                 const path = condition.name || condition.id;
+
                                 if (isConditionValueEmpty(condition, path)) {
                                     return null;
                                 }
