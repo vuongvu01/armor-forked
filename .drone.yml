@@ -3,15 +3,6 @@ kind: pipeline
 type: kubernetes
 name: build
 
-tolerations:
-    - effect: NoSchedule
-      key: app
-      operator: Exists
-node_selector:
-    app: drone
-
-service_account_name: 'drone-logistics-staging'
-
 trigger:
     event:
         - pull_request
@@ -29,7 +20,7 @@ steps:
       image: 940776968316.dkr.ecr.eu-west-1.amazonaws.com/drone/s3:latest
       settings:
           bucket: production-eu-armor
-          assume_role: 'arn:aws:iam::487596255802:role/k8s-staging-eu-drone'
+          assume_role: 'arn:aws:iam::683110685365:role/drone-armor'
           region: 'eu-west-1'
           source: ./packages/core/dev/.out
           target: /${DRONE_PULL_REQUEST}
