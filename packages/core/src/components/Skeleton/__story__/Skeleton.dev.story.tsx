@@ -9,7 +9,7 @@ import { Card } from '../../Card';
 import { Accordion, AccordionContent, AccordionHeader } from '../../Accordion';
 
 export default {
-    title: 'Components/Skeleton',
+    title: 'Core/Skeleton',
     component: Skeleton,
 };
 

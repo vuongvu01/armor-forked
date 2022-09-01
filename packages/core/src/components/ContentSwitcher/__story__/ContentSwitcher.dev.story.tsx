@@ -13,7 +13,7 @@ import { TextInput } from '../../TextInput';
 import { Flex, FlexItem } from '../../Flex';
 
 export default {
-    title: 'Components/ContentSwitcher',
+    title: 'Core/ContentSwitcher',
     component: ContentSwitcher,
     decorators: [withWrapper],
     parameters: {},

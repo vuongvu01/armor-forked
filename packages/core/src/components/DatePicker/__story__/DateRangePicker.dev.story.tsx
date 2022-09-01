@@ -15,7 +15,7 @@ import { makeDateString } from '../__test__/util';
 import { Typography } from '../../Typography';
 
 export default {
-    title: 'Components/DateRangePicker',
+    title: 'Deprecated/DateRangePicker',
     component: DateRangePicker,
     decorators: [withWrapper],
     parameters: {},

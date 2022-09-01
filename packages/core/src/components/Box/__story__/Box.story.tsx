@@ -4,7 +4,7 @@ import { Box } from '../Box';
 import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
-    title: 'Components/Box',
+    title: 'Core/Box',
     component: Box,
     decorators: [withWrapper],
     parameters: {},

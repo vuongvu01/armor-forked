@@ -41,7 +41,7 @@ import { columns, dataSource } from '../../DataTable/__story__/demoData';
 import { DataTable } from '../../DataTable';
 
 export default {
-    title: 'Components/HeaderNavigation',
+    title: 'Core/HeaderNavigation',
     component: HeaderNavigation,
     decorators: [withWrapper],
     parameters: {},

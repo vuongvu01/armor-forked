@@ -12,7 +12,7 @@ import { structure as demoStructure } from '../__test__/helpers';
 import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
-    title: 'Components/Navigation',
+    title: 'Core/Navigation',
     component: Navigation,
     decorators: [withWrapper],
     parameters: {},

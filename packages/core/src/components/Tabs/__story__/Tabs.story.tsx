@@ -13,7 +13,7 @@ import { Pack, PackItem } from '../../Pack';
 import { Indicator } from '../../Indicator';
 
 export default {
-    title: 'Components/Tabs',
+    title: 'Core/Tabs',
     component: Tabs,
     decorators: [withWrapper],
     parameters: {},

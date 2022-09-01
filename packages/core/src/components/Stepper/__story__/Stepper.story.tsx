@@ -12,7 +12,7 @@ import { Step } from '../Step';
 import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
-    title: 'Components/Stepper',
+    title: 'Core/Stepper',
     component: Stepper,
     decorators: [withWrapper],
     parameters: {},

@@ -5,7 +5,7 @@ import { StackItem } from '../StackItem';
 import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
-    title: 'Components/Stack',
+    title: 'Core/Stack',
     component: Stack,
     decorators: [withWrapper],
     parameters: {},

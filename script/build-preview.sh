@@ -16,6 +16,9 @@ yarn build
 cd ${DIR}/../packages/brands
 yarn build
 
+cd ${DIR}/../packages/extras
+./script/build.sh
+
 cd ${DIR}/../packages/core/dev
 yarn
 yarn build

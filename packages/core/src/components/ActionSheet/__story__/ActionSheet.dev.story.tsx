@@ -9,7 +9,7 @@ import { Button } from '../../Button';
 import { IconButton } from '../../IconButton';
 
 export default {
-    title: 'Components/ActionSheet',
+    title: 'Core/ActionSheet',
     component: ActionSheet,
 };
 

@@ -5,7 +5,7 @@ import { Tab } from '../Tab';
 import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
-    title: 'Components/Tab',
+    title: 'Core/Tab',
     component: Tab,
     decorators: [withWrapper],
     parameters: {},

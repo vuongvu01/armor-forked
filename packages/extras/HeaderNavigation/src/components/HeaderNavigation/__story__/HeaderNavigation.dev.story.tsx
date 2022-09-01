@@ -22,7 +22,7 @@ import { HeaderNavigationSelectorItem } from '../HeaderNavigationSelector/Header
 import DHLogo from './DHLogo';
 
 export default {
-    title: 'Components/HeaderNavigation',
+    title: 'Extras/HeaderNavigation',
     component: HeaderNavigation,
     decorators: [withWrapper],
     parameters: {},

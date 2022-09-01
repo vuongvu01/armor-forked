@@ -23,7 +23,7 @@ import { GroupHelper } from '../../../helpers/GroupHelper';
 import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
-    title: 'Components/TextInput',
+    title: 'Core/TextInput',
     component: TextInput,
     decorators: [withWrapper],
     parameters: {},

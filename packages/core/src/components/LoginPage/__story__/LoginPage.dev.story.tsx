@@ -10,7 +10,7 @@ import { DASLogo } from './DASLogo';
 import { LoginPage } from '../LoginPage';
 
 export default {
-    title: 'Components/LoginPage',
+    title: 'Core/LoginPage',
     component: LoginPage,
     decorators: [withWrapper],
     parameters: {},

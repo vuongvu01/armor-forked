@@ -8,7 +8,7 @@ import { Button } from '../../Button';
 import { Toast, useToast } from '..';
 
 export default {
-    title: 'Components/Toast',
+    title: 'Core/Toast',
     component: Toast,
     decorators: [withWrapper],
     parameters: {},

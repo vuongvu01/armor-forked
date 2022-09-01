@@ -13,7 +13,7 @@ import { Tooltip } from '../../Tooltip';
 import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
-    title: 'Components/Accordion',
+    title: 'Core/Accordion',
     component: Accordion,
     decorators: [withWrapper],
     parameters: {},

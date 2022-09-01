@@ -5,7 +5,7 @@ import { PackItem } from '../PackItem';
 import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
-    title: 'Components/Pack',
+    title: 'Core/Pack',
     component: Pack,
     decorators: [withWrapper],
     parameters: {},

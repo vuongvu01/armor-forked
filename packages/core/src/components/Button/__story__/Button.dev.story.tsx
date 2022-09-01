@@ -13,7 +13,7 @@ import { Box } from '../../Box';
 import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
-    title: 'Components/Button',
+    title: 'Core/Button',
     component: Button,
     decorators: [withWrapper],
     parameters: {},

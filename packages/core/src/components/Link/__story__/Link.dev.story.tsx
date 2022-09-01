@@ -11,7 +11,7 @@ import { Typography } from '../../Typography';
 import { Link } from '../Link';
 
 export default {
-    title: 'Components/Link',
+    title: 'Core/Link',
     component: Link,
     decorators: [withWrapper],
     parameters: {},

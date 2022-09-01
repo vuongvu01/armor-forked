@@ -12,7 +12,7 @@ import { withWrapper } from '../../../helpers/Wrapper';
 import { Stack } from '../../Stack';
 
 export default {
-    title: 'Components/Message',
+    title: 'Core/Message',
     component: Message,
     decorators: [withWrapper],
     parameters: {},

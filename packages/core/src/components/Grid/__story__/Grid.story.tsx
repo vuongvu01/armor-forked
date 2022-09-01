@@ -7,7 +7,7 @@ import { withWrapper } from '../../../helpers/Wrapper';
 import { Stack, StackItem } from '../../Stack';
 
 export default {
-    title: 'Components/Grid',
+    title: 'Core/Grid',
     component: Grid,
     decorators: [withWrapper],
 };

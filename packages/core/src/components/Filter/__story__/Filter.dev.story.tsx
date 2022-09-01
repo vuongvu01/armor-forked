@@ -21,7 +21,7 @@ import { withWrapper } from '../../../helpers/Wrapper';
 import { OptionObjectType } from '../../OptionList/type';
 
 export default {
-    title: 'Components/Filter',
+    title: 'Core/Filter',
     component: FilterLayout,
     decorators: [withWrapper],
     parameters: {},

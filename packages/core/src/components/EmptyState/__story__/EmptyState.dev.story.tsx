@@ -9,7 +9,7 @@ import { Link } from '../../Link';
 import { Stack, StackItem } from '../../Stack';
 
 export default {
-    title: 'Components/EmptyState',
+    title: 'Core/EmptyState',
     component: EmptyState,
     decorators: [withWrapper],
     parameters: {},

@@ -9,7 +9,7 @@ import { withWrapper } from '../../../helpers/Wrapper';
 import { Checkbox } from '../../Checkbox';
 
 export default {
-    title: 'Components/Tooltip',
+    title: 'Core/Tooltip',
     component: Tooltip,
     decorators: [withWrapper],
     parameters: {},

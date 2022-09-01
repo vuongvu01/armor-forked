@@ -10,7 +10,7 @@ import { DialogContent } from '../../Dialog/DialogContent';
 import { Button } from '../../Button';
 
 export default {
-    title: 'Components/Divider',
+    title: 'Core/Divider',
     component: Divider,
     decorators: [withWrapper],
     parameters: {},

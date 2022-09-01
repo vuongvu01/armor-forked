@@ -5,7 +5,7 @@ import { CloseButton } from '../CloseButton';
 import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
-    title: 'Components/CloseButton',
+    title: 'Core/CloseButton',
     component: CloseButton,
     decorators: [withWrapper],
     parameters: {},

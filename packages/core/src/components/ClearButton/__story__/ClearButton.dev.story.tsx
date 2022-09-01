@@ -5,7 +5,7 @@ import { GroupHelper } from '../../../helpers/GroupHelper';
 import { ClearButton } from '../ClearButton';
 
 export default {
-    title: 'Components/ClearButton',
+    title: 'Core/ClearButton',
     component: ClearButton,
     decorators: [withWrapper],
     parameters: {},

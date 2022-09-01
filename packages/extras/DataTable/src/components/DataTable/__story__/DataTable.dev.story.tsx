@@ -33,7 +33,7 @@ import { DataTableContext } from '../DataTableContext';
 const initialRowSelection = ['2'];
 
 export default {
-    title: 'Components/DataTable',
+    title: 'Extras/DataTable',
     component: DataTable,
     decorators: [withWrapper],
     parameters: {},

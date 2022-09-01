@@ -2,7 +2,7 @@ import React from 'react';
 import { ConditionTag } from '../ConditionTag';
 
 export default {
-    title: 'Components/ConditionTag',
+    title: 'Core/ConditionTag',
     component: ConditionTag,
 };
 

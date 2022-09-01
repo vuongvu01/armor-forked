@@ -15,7 +15,7 @@ import { Tooltip } from '../../Tooltip';
 import { ContextMenu } from '../../ContextMenu';
 
 export default {
-    title: 'Components/Dialog',
+    title: 'Core/Dialog',
     component: Dialog,
     decorators: [withWrapper],
     parameters: {},

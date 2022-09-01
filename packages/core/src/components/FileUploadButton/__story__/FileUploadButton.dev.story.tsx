@@ -16,7 +16,7 @@ import { Flex, FlexItem } from '../../Flex';
 import { Typography } from '../../Typography';
 
 export default {
-    title: 'Components/FileUploadButton',
+    title: 'Core/FileUploadButton',
     component: FileUploadButton,
     decorators: [withWrapper],
     parameters: {},

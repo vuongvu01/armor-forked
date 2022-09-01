@@ -27,7 +27,7 @@ import { TableControllerCell } from '../TableControllerCell';
 import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
-    title: 'Components/Table',
+    title: 'Core/Table',
     component: Table,
     decorators: [withWrapper],
     parameters: {},

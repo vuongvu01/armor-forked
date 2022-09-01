@@ -6,7 +6,7 @@ import { withWrapper } from '../../../helpers/Wrapper';
 import { FileCard } from '../FileCard';
 
 export default {
-    title: 'Components/FileCard',
+    title: 'Core/FileCard',
     component: FileCard,
     decorators: [withWrapper],
     parameters: {},

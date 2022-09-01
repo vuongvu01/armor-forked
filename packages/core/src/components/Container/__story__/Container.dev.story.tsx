@@ -7,7 +7,7 @@ import { withWrapper } from '../../../helpers/Wrapper';
 import { Container } from '../Container';
 
 export default {
-    title: 'Components/Container',
+    title: 'Core/Container',
     component: Container,
     decorators: [withWrapper],
     parameters: {},

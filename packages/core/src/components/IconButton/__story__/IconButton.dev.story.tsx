@@ -8,7 +8,7 @@ import { IconButton } from '../IconButton';
 import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
-    title: 'Components/IconButton',
+    title: 'Core/IconButton',
     component: IconButton,
     decorators: [withWrapper],
     parameters: {},

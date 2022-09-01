@@ -4,7 +4,7 @@ import { Indicator } from '../Indicator';
 import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
-    title: 'Components/Indicator',
+    title: 'Core/Indicator',
     component: Indicator,
     decorators: [withWrapper],
     parameters: {},

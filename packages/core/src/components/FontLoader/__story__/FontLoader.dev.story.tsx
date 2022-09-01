@@ -7,7 +7,7 @@ import { FontLoader } from '../FontLoader';
 import { Button } from '../../Button';
 
 export default {
-    title: 'Components/FontLoader',
+    title: 'Core/FontLoader',
     component: FontLoader,
     decorators: [withWrapper],
     parameters: {},

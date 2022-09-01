@@ -8,7 +8,7 @@ import { Dropdown } from '../../Dropdown';
 import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
-    title: 'Components/Radio',
+    title: 'Core/Radio',
     component: Radio,
     decorators: [withWrapper],
     parameters: {},

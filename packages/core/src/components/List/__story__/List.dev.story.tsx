@@ -12,7 +12,7 @@ import { Switch } from '../../Switch';
 import { Tag } from '../../Tag';
 
 export default {
-    title: 'Components/List',
+    title: 'Core/List',
     component: List,
     decorators: [withWrapper],
     parameters: {},

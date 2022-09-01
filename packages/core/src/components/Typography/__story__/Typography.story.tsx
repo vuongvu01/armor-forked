@@ -4,7 +4,7 @@ import { Typography } from '../Typography';
 import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
-    title: 'Components/Typography',
+    title: 'Core/Typography',
     component: Typography,
     decorators: [withWrapper],
     parameters: {},

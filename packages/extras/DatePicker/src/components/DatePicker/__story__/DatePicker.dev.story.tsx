@@ -19,7 +19,7 @@ import { withWrapper } from '../../../helpers/Wrapper';
 const currentDate = new Date();
 
 export default {
-    title: 'Components/DatePicker',
+    title: 'Extras/DatePicker',
     component: DatePicker,
     decorators: [withWrapper],
     parameters: {},
@@ -334,7 +334,9 @@ export const MonthYearSelector = () => {
                 data-testid-input="input42"
                 enableMonthYearPickerMode={true}
                 formatDateTime={(selectedDate) => {
-                    return `${selectedDate?.getMonth() + 1}.${selectedDate.getFullYear()}`;
+                    return `${
+                        selectedDate?.getMonth() + 1
+                    }.${selectedDate.getFullYear()}`;
                 }}
                 dateValue={value}
                 onDateValueChange={setValue}

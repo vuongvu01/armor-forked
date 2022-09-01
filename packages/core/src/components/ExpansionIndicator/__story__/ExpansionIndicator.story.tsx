@@ -4,7 +4,7 @@ import { ExpansionIndicator } from '../ExpansionIndicator';
 import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
-    title: 'Components/ExpansionIndicator',
+    title: 'Core/ExpansionIndicator',
     component: ExpansionIndicator,
     decorators: [withWrapper],
     parameters: {},

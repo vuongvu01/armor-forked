@@ -7,7 +7,7 @@ import { withWrapper } from '../../../helpers/Wrapper';
 import { styled, Tooltip } from '../../../index';
 
 export default {
-    title: 'Components/Tag',
+    title: 'Core/Tag',
     component: Tag,
     decorators: [withWrapper],
     parameters: {},

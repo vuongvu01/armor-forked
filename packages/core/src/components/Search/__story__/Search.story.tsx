@@ -10,7 +10,7 @@ import { Typography } from '../../Typography';
 import { Button } from '../../Button';
 
 export default {
-    title: 'Components/Search',
+    title: 'Core/Search',
     component: Search,
 };
 

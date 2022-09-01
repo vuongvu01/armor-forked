@@ -15,7 +15,7 @@ import { Typography } from '../../Typography';
 const currentDate = new Date();
 
 export default {
-    title: 'Components/DatePicker',
+    title: 'Deprecated/DatePicker',
     component: DatePicker,
     decorators: [withWrapper],
     parameters: {},

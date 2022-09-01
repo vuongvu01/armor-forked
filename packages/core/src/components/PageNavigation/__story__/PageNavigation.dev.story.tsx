@@ -8,7 +8,7 @@ import { PageNavigation } from '../PageNavigation';
 import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
-    title: 'Components/PageNavigation',
+    title: 'Core/PageNavigation',
     component: PageNavigation,
     decorators: [withWrapper],
     parameters: {},

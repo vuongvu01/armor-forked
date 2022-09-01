@@ -12,7 +12,7 @@ import { DateVector } from '../utils/DateVector';
 import { makeDateString } from '../__test__/util';
 
 export default {
-    title: 'Components/DateRangePicker',
+    title: 'Extras/DateRangePicker',
     component: DateRangePicker,
     decorators: [withWrapper],
     parameters: {},

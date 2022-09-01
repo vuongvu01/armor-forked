@@ -8,7 +8,7 @@ import { Stack } from '../../Stack';
 import { Typography } from '../../Typography';
 
 export default {
-    title: 'Components/ProgressBar',
+    title: 'Core/ProgressBar',
     component: ProgressBar,
     decorators: [withWrapper],
     parameters: {},

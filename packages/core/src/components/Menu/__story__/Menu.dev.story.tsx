@@ -10,7 +10,7 @@ import { Grid, GridItem } from '../../Grid';
 import { loremIpsum } from '../../../helpers/LoremIpsum';
 
 export default {
-    title: 'Components/Menu',
+    title: 'Core/Menu',
     component: Menu,
     decorators: [withWrapper],
     parameters: {},

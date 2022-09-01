@@ -7,7 +7,7 @@ import { Button } from '../../Button';
 import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
-    title: 'Components/Switch',
+    title: 'Core/Switch',
     component: Switch,
     decorators: [withWrapper],
     parameters: {},

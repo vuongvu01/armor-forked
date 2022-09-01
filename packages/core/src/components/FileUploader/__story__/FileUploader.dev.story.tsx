@@ -11,7 +11,7 @@ import { FileCardPropsType } from '../../FileCard/type';
 import { Link } from '../../Link';
 
 export default {
-    title: 'Components/FileUploader',
+    title: 'Core/FileUploader',
     component: FileUploader,
     decorators: [withWrapper],
     parameters: {},

@@ -10,7 +10,7 @@ import { MenuElement } from '../../Menu/MenuElement';
 import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
-    title: 'Components/ContextMenu',
+    title: 'Core/ContextMenu',
     component: ContextMenu,
     decorators: [withWrapper],
     parameters: {},

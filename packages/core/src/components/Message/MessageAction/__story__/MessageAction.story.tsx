@@ -3,7 +3,7 @@ import React from 'react';
 import { MessageAction } from '../MessageAction';
 
 export default {
-    title: 'Components/MessageAction',
+    title: 'Core/MessageAction',
     component: MessageAction,
     parameters: {},
 };

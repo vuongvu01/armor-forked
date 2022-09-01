@@ -13,7 +13,7 @@ import { withWrapper } from '../../../helpers/Wrapper';
 import { LoremIpsum } from '../../../helpers/LoremIpsum';
 
 export default {
-    title: 'Components/SideSheet',
+    title: 'Core/SideSheet',
     component: SideSheet,
     decorators: [withWrapper],
     parameters: {},

@@ -7,7 +7,7 @@ import { withWrapper } from '../../../helpers/Wrapper';
 import { Stack } from '../../Stack';
 
 export default {
-    title: 'Components/Checkbox',
+    title: 'Core/Checkbox',
     component: Checkbox,
     decorators: [withWrapper],
     parameters: {},

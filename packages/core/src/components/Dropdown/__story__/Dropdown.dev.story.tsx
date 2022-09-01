@@ -26,7 +26,7 @@ const thousandsOfOptionsList = Array.apply(0, Array(15000)).map((_, index) => ({
 }));
 
 export default {
-    title: 'Components/Dropdown',
+    title: 'Core/Dropdown',
     component: Dropdown,
     decorators: [withWrapper],
     parameters: {},

@@ -4,7 +4,7 @@ import { Card } from '../Card';
 import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
-    title: 'Components/Card',
+    title: 'Core/Card',
     component: Card,
     decorators: [withWrapper],
     parameters: {},
