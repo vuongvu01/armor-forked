@@ -20,15 +20,10 @@ import {
     Pack,
     PackItem,
     Tag,
-    DataTable,
 } from '../../../src/components';
 import { Image2 } from '../../../src/components/HeaderNavigation/__story__/Image2';
 import { Image } from '../../../src/components/HeaderNavigation/__story__/Image';
 import { OptionType } from '../../../src/components/HeaderNavigation/HeaderNavigationMenu/HeaderNavigationMenuContent/HeaderNavigationMenuContentBodyOptions/type';
-import {
-    columns,
-    dataSource,
-} from '../../../src/components/DataTable/__story__/demoData';
 
 export default {
     title: 'HeaderNavigation',
@@ -1044,83 +1039,6 @@ export const NoMenuUseCase = () => {
                     </HeaderNavigationAction>
                 }
             />
-        </BrowserRouter>
-    );
-};
-
-export const WithHeaderNavigation = () => {
-    const wrapperRef = useRef(null);
-
-    return (
-        <BrowserRouter>
-            <HeaderNavigation
-                title={
-                    <HeaderNavigationTitle
-                        tag={Link}
-                        to="/home"
-                        name="Homr"
-                        onLinkClick={() => {}}
-                    >
-                        Our product
-                    </HeaderNavigationTitle>
-                }
-                selector={
-                    <HeaderNavigationSelector
-                        navigationSelectorParams={{
-                            label: 'Select Country',
-                            options: [
-                                { value: 0, label: 'Japan' },
-                                { value: 1, label: 'Laos' },
-                                { value: 2, label: 'Sweden' },
-                                { value: 3, label: 'Vietnam' },
-                                { value: 4, label: 'United States of America' },
-                            ],
-                        }}
-                    />
-                }
-                navigationAction={
-                    <HeaderNavigationAction>
-                        <HeaderNavigationActionItem onClick={() => {}}>
-                            <LogoutIcon />
-                        </HeaderNavigationActionItem>
-                    </HeaderNavigationAction>
-                }
-            />
-            <div
-                style={{
-                    overflowY: 'scroll',
-                    height: '20rem',
-                    marginTop: '1rem',
-                }}
-                ref={wrapperRef}
-            >
-                <DataTable
-                    columns={columns}
-                    stickyHead
-                    data={[
-                        {
-                            id: '1',
-                            name: 'Mike',
-                            age: 32,
-                            address: '10 Downing Street',
-                        },
-                        {
-                            id: '3',
-                            name: 'Jill',
-                            age: 19,
-                            address: 'Raccoon City',
-                        },
-                        {
-                            id: '2',
-                            name: 'John',
-                            age: 42,
-                            address: '10 Downing Street',
-                        },
-                    ]}
-                    enableVirtualization
-                    parentContainerRef={wrapperRef}
-                />
-            </div>
         </BrowserRouter>
     );
 };

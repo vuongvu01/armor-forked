@@ -32,6 +32,10 @@ jobs:
               working-directory: ./packages/core
               run: yarn build:cjs
 
+            - name: Build (Date Picker) required for Filter component
+              working-directory: ./packages/extras/DatePicker
+              run: yarn build:cjs
+
             - name: Lint
               working-directory: ./packages/extras
               run: ./script/lint.sh

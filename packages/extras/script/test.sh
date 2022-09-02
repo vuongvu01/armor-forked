@@ -5,4 +5,5 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd ${DIR}/../DataTable && yarn test
 cd ${DIR}/../DatePicker && yarn test
 cd ${DIR}/../HeaderNavigation && yarn test
+cd ${DIR}/../Filter && yarn test
 

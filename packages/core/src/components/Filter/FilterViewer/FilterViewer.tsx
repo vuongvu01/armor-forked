@@ -68,6 +68,10 @@ import { ConfirmationDialog } from './ConfirmationDialog/ConfirmationDialog';
  * ***
  *
  * @armor-docs-component
+ *
+ * @deprecated
+ * Please import this component from "@deliveryhero/armor-filter".
+ * In armor release on date 1 December 2022 this component will be removed from "@deliveryhero/armor".
  */
 export const FilterViewer = forwardRef<HTMLDivElement, FilterViewerPropsType>(
     function FilterViewer({ className, ...props }, ref) {

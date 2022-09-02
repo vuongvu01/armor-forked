@@ -35,7 +35,8 @@
         "packages/*",
         "packages/extras/DataTable",
         "packages/extras/DatePicker",
-        "packages/extras/HeaderNavigation"
+        "packages/extras/HeaderNavigation",
+        "packages/extras/Filter"
     ],
     "husky": {
         "hooks": {

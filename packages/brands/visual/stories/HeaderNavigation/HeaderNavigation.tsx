@@ -19,8 +19,9 @@ import {
     Pack,
     PackItem,
     Tag,
-    DataTable,
 } from '@deliveryhero/armor';
+
+import { DataTable } from '@deliveryhero/armor-datatable';
 
 import { Image2 } from './Image2';
 import { Image } from './Image';

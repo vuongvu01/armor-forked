@@ -1,0 +1,128 @@
+{
+    "name": "@deliveryhero/armor-filter",
+    "version": "0.0.1",
+    "main": "build.cjs/index.js",
+    "module": "build.esm/index.js",
+    "typings": "build.cjs/index.d.ts",
+    "files": [
+        "build.esm/",
+        "build.cjs/"
+    ],
+    "license": "MIT",
+    "scripts": {
+        "commit": "npx git-cz",
+        "dev": "./script/dev.sh",
+        "dev2": "cd ./dev2; yarn dev",
+        "visual": "cd ./visual && yarn start",
+        "setup": "./script/setup.sh",
+        "build": "yarn run build:esm && yarn run build:cjs",
+        "build:esm": "rm -rf ./build.esm/* && tsc -p tsconfig.build.esm.json",
+        "build:cjs": "rm -rf ./build.cjs/* && tsc -p ./tsconfig.build.cjs.json",
+        "build:watch": "tsc -w -p ./tsconfig.build.cjs.json",
+        "test": "jest -c ./jest/config.js --passWithNoTests",
+        "test:cache:clear": "jest -c ./jest/config.js --clearCache",
+        "test:local": "yarn test --runInBand",
+        "test:visual": "cd ./visual && yarn loki test ",
+        "test:visual:update": "cd ./visual && yarn loki update",
+        "test:visual:approve": "cd ./visual && yarn loki approve",
+        "test:visual:cicd": "cd ./visual && yarn build-storybook --quiet && yarn loki --requireReference --reactUri file:./storybook-static",
+        "test:dev": "jest -c ./jest/config.js --watch",
+        "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register ../../node_modules/.bin/jest -c ./jest/config.js --runInBand",
+        "lint": "eslint ./src --ext .js,.ts,.jsx,.tsx",
+        "lint:fix": "eslint ./src --fix --ext .js,.ts,.jsx,.tsx",
+        "release": "./script/release.sh",
+        "scaffold": "generilla run ../../scaffolders/component -o ./src/components",
+        "integration": "cd ./integration && yarn start",
+        "test:integration": "cd ./integration && yarn test",
+        "test:integration:cicd": "cd ./integration && yarn test:cicd"
+    },
+    "dependencies": {
+        "@deliveryhero/armor-icons": "*",
+        "@deliveryhero/armor": "*",
+        "@deliveryhero/armor-system": "*",
+        "@deliveryhero/armor-datepicker": "*",
+        "prop-types": "^15.7.2",
+        "clone-deep": "^4.0.1",
+        "query-string": "^7.0.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:deliveryhero/armor.git"
+    },
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com/"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.8.6",
+        "@deliveryhero/logistics-eslint-config": "^2.0.0",
+        "@gannochenko/fea-cli": "^1.0.0",
+        "@generilla/cli": "^2.0.3",
+        "@material-ui/core": "^4.9.7",
+        "@semantic-release/changelog": "^5.0.1",
+        "@semantic-release/git": "^9.0.0",
+        "@semantic-release/npm": "^7.0.5",
+        "@semantic-release/release-notes-generator": "^9.0.1",
+        "@testing-library/dom": "^6.13.0",
+        "@testing-library/jest-dom": "^5.1.1",
+        "@testing-library/react": "^10.4.8",
+        "@testing-library/react-hooks": "^3.4.1",
+        "@testing-library/user-event": "^10.0.0",
+        "@types/clone-deep": "^4.0.1",
+        "@types/deep-freeze-strict": "^1.1.0",
+        "@types/flat": "^5.0.0",
+        "@types/jest": "^25.1.3",
+        "@types/lodash": "^4.14.175",
+        "@types/lodash.intersection": "^4.4.6",
+        "@types/lodash.uniqueid": "^4.0.6",
+        "@types/node": "^14.14.12",
+        "@types/styled-components": "^5.1.18",
+        "@types/throttle-debounce": "^2.1.0",
+        "@types/traverse": "^0.6.32",
+        "@typescript-eslint/eslint-plugin": "^2.21.0",
+        "@typescript-eslint/parser": "^2.21.0",
+        "babel-loader": "^8.0.6",
+        "commitlint": "^9.0.1",
+        "core-js": "^3.6.5",
+        "date-fns": "^2.21.3",
+        "eslint": "^7.32.0",
+        "eslint-config-airbnb-base": "^14.0.0",
+        "eslint-config-prettier": "^6.10.0",
+        "eslint-plugin-import": "^2.20.1",
+        "eslint-plugin-jsx-a11y": "^6.2.3",
+        "eslint-plugin-prettier": "^3.1.2",
+        "eslint-plugin-react": "^7.18.3",
+        "eslint-plugin-react-hooks": "^4.3.0",
+        "jest-chain": "^1.1.5",
+        "jest-styled-components": "7.0.2",
+        "jest-transform-stub": "^2.0.0",
+        "react-docgen-typescript-loader": "^3.6.0",
+        "react-google-login": "^5.2.2",
+        "react-router-dom": "^5.1.2",
+        "react-test-renderer": "^18.0.0",
+        "semantic-release": "^17.0.7",
+        "ts-essentials": "^6.0.5",
+        "typescript": "^3.8.2"
+    },
+    "peerDependencies": {
+        "@types/react": "^17.0.43 || ^18.0.0",
+        "react": "^17.0.0 || ^18.0.0",
+        "react-dom": "^17.0.0 || ^18.0.0",
+        "react-is": "^17.0.0 || ^18.0.0",
+        "styled-components": ">=5.1.18"
+    },
+    "peerDependenciesMeta": {
+        "@types/react": {
+            "optional": true
+        }
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "pretty-quick --staged"
+        }
+    },
+    "config": {
+        "commitizen": {
+            "path": "@commitlint/prompt"
+        }
+    }
+}

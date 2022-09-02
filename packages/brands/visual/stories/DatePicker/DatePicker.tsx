@@ -1,5 +1,8 @@
 import React from 'react';
-import { DATE_PICKER_INFINITY, DatePicker } from '@deliveryhero/armor';
+import {
+    DATE_PICKER_INFINITY,
+    DatePicker,
+} from '@deliveryhero/armor-datepicker';
 
 export default {
     title: 'DatePicker',

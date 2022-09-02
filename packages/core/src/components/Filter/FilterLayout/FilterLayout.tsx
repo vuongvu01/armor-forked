@@ -84,6 +84,10 @@ import { MemoizedFilterEditorHeader as FilterEditorHeader } from '../FilterEdito
  * ```
  *
  * @armor-docs-component
+ *
+ * @deprecated
+ * Please import this component from "@deliveryhero/armor-filter".
+ * In armor release on date 1 December 2022 this component will be removed from "@deliveryhero/armor".
  */
 export const FilterLayout = forwardRef<HTMLDivElement, FilterLayoutPropsType>(
     function FilterLayout({ className, children, ...props }, ref) {

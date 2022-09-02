@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { DataTable } from '@deliveryhero/armor';
+import { DataTable } from '@deliveryhero/armor-datatable';
 
 import {
     dataSource,
@@ -70,7 +70,7 @@ export const StickyRightColumn = () => (
 export const StickyRightColumnInvisible = () => {
     const ref = useRef(null);
     useEffect(() => {
-        const root = (ref.current as unknown) as HTMLDivElement;
+        const root = ref.current as unknown as HTMLDivElement;
         if (root) {
             const table = root.querySelector('table');
             // TODO (nmelnikov 2020-12-18): for some reason the snapshot is being taken before the end of the
@@ -106,7 +106,7 @@ export const StickyLeftColumnInvisible = () => (
 export const StickyLeftColumn = () => {
     const ref = useRef(null);
     useEffect(() => {
-        const root = (ref.current as unknown) as HTMLDivElement;
+        const root = ref.current as unknown as HTMLDivElement;
         if (root) {
             const table = root.querySelector('table');
             // @ts-ignore
@@ -128,7 +128,7 @@ export const StickyLeftColumn = () => {
 export const StickyLeftColumnWithCheckboxes = () => {
     const ref = useRef(null);
     useEffect(() => {
-        const root = (ref.current as unknown) as HTMLDivElement;
+        const root = ref.current as unknown as HTMLDivElement;
         if (root) {
             const table = root.querySelector('table');
             // @ts-ignore
@@ -189,7 +189,7 @@ export const ExpandableSection = () => {
             defaultRowSortOrder={[['age', 'desc']]}
             defaultExpandedSectionIds={['3']}
             expandableSectionControllerColumnId="name"
-            renderExpandableSection={item => {
+            renderExpandableSection={(item) => {
                 return (
                     <>
                         {item.name} is {item.age} years old and he/she lives in{' '}
@@ -209,7 +209,7 @@ export const ExpandableSectionTriggerMiddle = () => {
             defaultRowSortOrder={[['age', 'desc']]}
             defaultExpandedSectionIds={['3']}
             expandableSectionControllerColumnId="age"
-            renderExpandableSection={item => {
+            renderExpandableSection={(item) => {
                 return (
                     <>
                         {item.name} is {item.age} years old and he/she lives in{' '}
@@ -230,7 +230,7 @@ export const ExpandableSectionAndSelectableRows = () => {
             enableRowSelection
             defaultExpandedSectionIds={['3']}
             expandableSectionControllerColumnId="name"
-            renderExpandableSection={item => {
+            renderExpandableSection={(item) => {
                 return (
                     <>
                         {item.name} is {item.age} years old and he/she lives in{' '}
@@ -285,7 +285,7 @@ export const ConditionalExpansionTrigger = () => (
         columns={columnsWithConditionalExpansionTrigger}
         data={dataSource}
         enableExpandableSections
-        renderExpandableSection={item => {
+        renderExpandableSection={(item) => {
             return (
                 <>
                     {item.name} is {item.age} years old and he/she lives in{' '}

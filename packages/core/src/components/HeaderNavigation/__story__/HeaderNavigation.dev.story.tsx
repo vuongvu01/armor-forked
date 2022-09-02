@@ -37,8 +37,6 @@ import { Pack, PackItem } from '../../Pack';
 import { withWrapper } from '../../../helpers/Wrapper';
 import { Navigation } from '../../Navigation';
 import { Tag } from '../../Tag';
-import { columns, dataSource } from '../../DataTable/__story__/demoData';
-import { DataTable } from '../../DataTable';
 
 export default {
     title: 'Core/HeaderNavigation',
@@ -799,64 +797,6 @@ export const NoMenuUseCase = () => {
                     </HeaderNavigationAction>
                 }
             />
-        </BrowserRouter>
-    );
-};
-
-export const WithHeaderNavigation = () => {
-    const wrapperRef = useRef(null);
-    const [data] = useState<typeof dataSource>(dataSource);
-
-    return (
-        <BrowserRouter>
-            <HeaderNavigation
-                title={
-                    <HeaderNavigationTitle
-                        tag={Link}
-                        to="/home"
-                        name="Homr"
-                        onLinkClick={() => {}}
-                    >
-                        Our product
-                    </HeaderNavigationTitle>
-                }
-                selector={
-                    <HeaderNavigationSelector
-                        navigationSelectorParams={{
-                            label: 'Country',
-                            options: [
-                                { value: 0, label: 'Japan' },
-                                { value: 1, label: 'Laos' },
-                                { value: 2, label: 'Sweden' },
-                                { value: 3, label: 'Vietnam' },
-                                { value: 4, label: 'United States of America' },
-                            ],
-                        }}
-                    />
-                }
-                navigationAction={
-                    <HeaderNavigationAction>
-                        <HeaderNavigationActionItem onClick={() => {}}>
-                            <LogoutIcon />
-                        </HeaderNavigationActionItem>
-                    </HeaderNavigationAction>
-                }
-            />
-            <div
-                style={{
-                    overflowY: 'scroll',
-                    height: '20rem',
-                    marginTop: '1rem',
-                }}
-                ref={wrapperRef}
-            >
-                <DataTable
-                    columns={columns}
-                    data={data}
-                    enableVirtualization
-                    parentContainerRef={wrapperRef}
-                />
-            </div>
         </BrowserRouter>
     );
 };

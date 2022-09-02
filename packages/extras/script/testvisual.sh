@@ -10,3 +10,6 @@ cd ${DIR}/../DatePicker && yarn test:visual:cicd
 
 cd ${DIR}/../HeaderNavigation/visual && yarn install 
 cd ${DIR}/../HeaderNavigation && yarn test:visual:cicd
+
+cd ${DIR}/../Filter/visual && yarn install 
+cd ${DIR}/../Filter && yarn test:visual:cicd
