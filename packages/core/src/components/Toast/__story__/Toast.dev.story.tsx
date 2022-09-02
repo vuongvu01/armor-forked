@@ -584,7 +584,7 @@ export const Playground = () => {
                                 ? {
                                       label: 'Click',
                                       onClick: () =>
-                                          console.log('Action clicked'),
+                                          console.log('Action clicked!'),
                                   }
                                 : undefined,
                         })

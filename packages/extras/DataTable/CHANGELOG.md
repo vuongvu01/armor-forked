@@ -1,3 +1,276 @@
+## [1.3.6](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datatable@1.3.5...@deliveryhero/armor-datatable@1.3.6) (2022-08-29)
+
+
+### Features
+
+* **Filter:** Allow the user to add content on the right side on the Filter, before the Clear all link. [AR-158] ([#1175](https://github.com/deliveryhero/armor/issues/1175)) ([cce40bd](https://github.com/deliveryhero/armor/commit/cce40bd7a7664c38e3953d595af437e7462d8de9))
+* **illustration:** Add import script [LD-736] ([#1174](https://github.com/deliveryhero/armor/issues/1174)) ([752fd0a](https://github.com/deliveryhero/armor/commit/752fd0a00120d7dcf4de371a684771efde0e0549))
+* **monthyear:** picker for agent campaigns center [AR-154] ([#1176](https://github.com/deliveryhero/armor/issues/1176)) ([69845ed](https://github.com/deliveryhero/armor/commit/69845edf4e48e0a5b23dd1acde18f642a6ac4f5d))
+
+## [1.3.5](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datatable@1.3.4...@deliveryhero/armor-datatable@1.3.5) (2022-08-22)
+
+
+### Bug Fixes
+
+* **Navigation:** active link is not clickable ([#1170](https://github.com/deliveryhero/armor/issues/1170)) ([db11a89](https://github.com/deliveryhero/armor/commit/db11a898726ed8e3ab0598a618c600013947e67c))
+
+## @deliveryhero/armor-datatable [1.3.4](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datatable@1.3.3...@deliveryhero/armor-datatable@1.3.4) (2022-08-22)
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor-icons:** upgraded to 1.26.1
+* **@deliveryhero/armor:** upgraded to 1.103.1
+* **@deliveryhero/armor-illustrations:** upgraded to 1.5.2
+* **@deliveryhero/armor-system:** upgraded to 1.12.0
+
+## [1.3.3](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datatable@1.3.2...@deliveryhero/armor-datatable@1.3.3) (2022-08-15)
+
+
+### Features
+
+* **dropdown:** Dropdown able to search by value [AR-149] ([7c412b6](https://github.com/deliveryhero/armor/commit/7c412b69ba77fac1c80701f3217c2e29cbc17537))
+* **icons:** add bunch of new icons (helpcenter) and remove PropsWithChildren from icon component type ([#1163](https://github.com/deliveryhero/armor/issues/1163)) ([027d194](https://github.com/deliveryhero/armor/commit/027d19484eead88cc1f46f8436ceaa383b4f04ac))
+
+## [1.3.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datatable@1.3.1...@deliveryhero/armor-datatable@1.3.2) (2022-07-29)
+
+
+### Bug Fixes
+
+* **dropdown:** fix dropdown label always up when rendered as node ([92d8d5a](https://github.com/deliveryhero/armor/commit/92d8d5abc8bde26ad980de9a0d99b861c0597a32))
+* **dropdown:** janky label [LD-337]  ([#1143](https://github.com/deliveryhero/armor/issues/1143)) ([747e95d](https://github.com/deliveryhero/armor/commit/747e95daee331406e60d530c8852af3a63aec2ef))
+* **dropdown:** minimize input element when not in use ([#1148](https://github.com/deliveryhero/armor/issues/1148)) ([8ae3e3f](https://github.com/deliveryhero/armor/commit/8ae3e3f928facf6b2e1fdb40f6e6f8f83bb4cc7a))
+
+## [1.3.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datatable@1.3.0...@deliveryhero/armor-datatable@1.3.1) (2022-07-28)
+
+# @deliveryhero/armor-datatable [1.3.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datatable@1.2.9...@deliveryhero/armor-datatable@1.3.0) (2022-07-28)
+
+
+### Features
+
+* **Tag:** Add disabled state and improve visual regression testing [LD-287] ([#1140](https://github.com/deliveryhero/armor/issues/1140)) ([63b87ce](https://github.com/deliveryhero/armor/commit/63b87ce01fff47d3dd53bfa5545a62b47244f31b))
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor:** upgraded to 1.102.0
+* **@deliveryhero/armor-illustrations:** upgraded to 1.5.0
+
+## @deliveryhero/armor-datatable [1.2.9](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datatable@1.2.8...@deliveryhero/armor-datatable@1.2.9) (2022-07-25)
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor:** upgraded to 1.101.4
+
+## @deliveryhero/armor-datatable [1.2.8](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datatable@1.2.7...@deliveryhero/armor-datatable@1.2.8) (2022-07-21)
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor:** upgraded to 1.101.3
+
+## @deliveryhero/armor-datatable [1.2.7](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datatable@1.2.6...@deliveryhero/armor-datatable@1.2.7) (2022-07-19)
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor:** upgraded to 1.101.2
+
+## [1.2.6](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datatable@1.2.5...@deliveryhero/armor-datatable@1.2.6) (2022-07-15)
+
+
+### Bug Fixes
+
+* **Accordion:** fix animation when expanding/collapsing content ([#1101](https://github.com/deliveryhero/armor/issues/1101)) ([b1ab4bb](https://github.com/deliveryhero/armor/commit/b1ab4bb914391298f1dac3f744c88fd3996610e2))
+* **ops portal navigation:** post release fixes [LD-841] ([#1103](https://github.com/deliveryhero/armor/issues/1103)) ([3951c41](https://github.com/deliveryhero/armor/commit/3951c4118e3d3c4d46aff4c41eae02822451483a))
+
+
+### Features
+
+* **DatePicker:** Add property yearRange ([#1102](https://github.com/deliveryhero/armor/issues/1102)) ([4869242](https://github.com/deliveryhero/armor/commit/48692421ad9836138d15b8fb9cff2e1931eb9355))
+
+## [1.2.5](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datatable@1.2.4...@deliveryhero/armor-datatable@1.2.5) (2022-07-14)
+
+
+### Bug Fixes
+
+* **DataTable:** support columns width, add classNames and add styled example [LD-842] ([#1099](https://github.com/deliveryhero/armor/issues/1099)) ([ef2562f](https://github.com/deliveryhero/armor/commit/ef2562f6c5b52a965a16ead1613f477bf65cc1c6))
+
+
+### Features
+
+* **ClearButton:** implement new clear button in several places [LD-649] ([#1098](https://github.com/deliveryhero/armor/issues/1098)) ([9e2f04e](https://github.com/deliveryhero/armor/commit/9e2f04e364dac904c21317ac7e9ac0c4a37ecb99)), closes [#1047](https://github.com/deliveryhero/armor/issues/1047)
+
+## [1.2.4](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datatable@1.2.3...@deliveryhero/armor-datatable@1.2.4) (2022-07-11)
+
+
+### Bug Fixes
+
+* **DataTable:** allow horizontalScroll ([#1088](https://github.com/deliveryhero/armor/issues/1088)) ([708f94a](https://github.com/deliveryhero/armor/commit/708f94abeeea090136fb245ef8a3788b3f41b1de))
+* **icons:** fix the icon size inconsistencies [LD-813] ([#1070](https://github.com/deliveryhero/armor/issues/1070)) ([e3f92fe](https://github.com/deliveryhero/armor/commit/e3f92fe05141f81f5d3cb9f8ef9954d8e023cc3d))
+
+
+### Features
+
+* **props parser:** add support for reading extra components [LD-837] ([#1083](https://github.com/deliveryhero/armor/issues/1083)) ([97e3487](https://github.com/deliveryhero/armor/commit/97e348712bb8960169cb7f4938c1a4ab50a8959d))
+
+## [1.2.3](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datatable@1.2.2...@deliveryhero/armor-datatable@1.2.3) (2022-07-07)
+
+
+### Bug Fixes
+
+* **Table:** Transparent fixed column in table on hover [AR-131] ([#1079](https://github.com/deliveryhero/armor/issues/1079)) ([2549809](https://github.com/deliveryhero/armor/commit/2549809bb11a9f4d678c72a91de902f4d47644ce))
+
+
+### Features
+
+* **new header navigation:** ops portal [LD-506] ([#1059](https://github.com/deliveryhero/armor/issues/1059)) ([8a1fd8d](https://github.com/deliveryhero/armor/commit/8a1fd8d4aac604756cca03211b8e7d2716b7c385))
+
+## [1.2.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datatable@1.2.1...@deliveryhero/armor-datatable@1.2.2) (2022-07-04)
+
+
+### Bug Fixes
+
+* **filter:** fix cant select filter after clear all ([#1066](https://github.com/deliveryhero/armor/issues/1066)) ([b7830f6](https://github.com/deliveryhero/armor/commit/b7830f63abd45a37739be264b1af94f293fdd2b0))
+* **Typography:** Typography component with medium variant does not match font-size [AR-124] ([#1064](https://github.com/deliveryhero/armor/issues/1064)) ([31b0ea6](https://github.com/deliveryhero/armor/commit/31b0ea6f940e5b0774e2a8ae64f51c1c1a92fb10))
+
+## [1.2.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datatable@1.2.0...@deliveryhero/armor-datatable@1.2.1) (2022-06-29)
+
+
+### Bug Fixes
+
+* **datatable:** In DataTable the onRowSortOrderChange function is always called twice [AR-118] ([032b63b](https://github.com/deliveryhero/armor/commit/032b63b23ecacbc62049e05a462a55cd8a940f0a))
+* **DatePicker:** When clicked on the calendar icon in the date picker component, the calendar does not open [AR-115] ([#1061](https://github.com/deliveryhero/armor/issues/1061)) ([3bd9e65](https://github.com/deliveryhero/armor/commit/3bd9e654db35a27e2c2f8c7c690d6b5ff987f131))
+* **FileUploader:** FileUploader allow select same file [AR-108] ([b4163fe](https://github.com/deliveryhero/armor/commit/b4163fe161018ed47d1e55071b18129879f55b17))
+* **IconButton:** IconButton does not support type prop and submit form [AR-123] ([#1063](https://github.com/deliveryhero/armor/issues/1063)) ([faefa68](https://github.com/deliveryhero/armor/commit/faefa68137bf11b17b7ce9ba1603d015991020aa))
+
+# [1.2.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datatable@1.1.0...@deliveryhero/armor-datatable@1.2.0) (2022-06-28)
+
+
+### Bug Fixes
+
+* **Form:** Refining the Inactive Checkbox Component in Dark Theme [LD-535] ([#1054](https://github.com/deliveryhero/armor/issues/1054)) ([4ff6175](https://github.com/deliveryhero/armor/commit/4ff6175a7187ee0c110e786c67ae7ac526759caa))
+
+
+### Features
+
+* **DataTable:** Support row onClick event for DataTable [AR-101] ([268ce63](https://github.com/deliveryhero/armor/commit/268ce63efdc4fc37b3d56a08e2217556a35034db))
+* **DatePicker:** request a highlight for Today date in date picker [AR-110] ([#1055](https://github.com/deliveryhero/armor/issues/1055)) ([53fe7e9](https://github.com/deliveryhero/armor/commit/53fe7e9ed08a825e4d78a0e818c8aab6e3c20616))
+
+# [1.1.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datatable@1.0.6...@deliveryhero/armor-datatable@1.1.0) (2022-06-22)
+
+
+### Bug Fixes
+
+* **DataTable:** Column config key should be considered as unique key for Data Table. [AR-103] ([#1046](https://github.com/deliveryhero/armor/issues/1046)) ([dfb7a21](https://github.com/deliveryhero/armor/commit/dfb7a218f905af0828e9f39ee03789f32d552fed))
+* **Link:** The link component does not have the right font-weight defined [AR-102] ([#1048](https://github.com/deliveryhero/armor/issues/1048)) ([fe378c1](https://github.com/deliveryhero/armor/commit/fe378c1f2b41a9481d47503f20b78e05bc28ece7))
+
+## [1.0.6](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datatable@1.0.5...@deliveryhero/armor-datatable@1.0.6) (2022-06-15)
+
+
+### Bug Fixes
+
+* **Tag:** fix type def ([#1041](https://github.com/deliveryhero/armor/issues/1041)) ([0cff4e8](https://github.com/deliveryhero/armor/commit/0cff4e88640d09e6b3f3e5a22ef2f117bade2c69))
+
+## [1.0.5](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datatable@1.0.4...@deliveryhero/armor-datatable@1.0.5) (2022-06-14)
+
+
+### Bug Fixes
+
+* **Icon:** update play icon ([#1038](https://github.com/deliveryhero/armor/issues/1038)) ([cc54d74](https://github.com/deliveryhero/armor/commit/cc54d7479e8784cf7ceb8bdd2a1bce76632ca508))
+
+
+### Features
+
+* **Icons:** add bunch of new icons ([#1032](https://github.com/deliveryhero/armor/issues/1032)) ([f622e7e](https://github.com/deliveryhero/armor/commit/f622e7e8052b66ea1874169c5fad68976719e380))
+* **Tag:** create new tag variants  ([#1029](https://github.com/deliveryhero/armor/issues/1029)) ([4876f2d](https://github.com/deliveryhero/armor/commit/4876f2d9b3ff86c704a52e06b1712f3fae60f76e))
+
+## [1.0.4](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datatable@1.0.3...@deliveryhero/armor-datatable@1.0.4) (2022-06-08)
+
+
+### Bug Fixes
+
+* **TextInput:** The `for` attribute is missing for TextInput [AR-95] ([#1020](https://github.com/deliveryhero/armor/issues/1020)) ([28a41c8](https://github.com/deliveryhero/armor/commit/28a41c8cf94240de14183f25f1914634e37378c8))
+* **toast:** Fix useToast hook warning render method should be pure [AR-87] ([67c7df9](https://github.com/deliveryhero/armor/commit/67c7df9262ed8acf7ef4e48cb0530b2ef47ad9fd))
+
+
+### Features
+
+* **filter:** Clear All action should reset both places storage and UI fields [ar-70] ([d2e796d](https://github.com/deliveryhero/armor/commit/d2e796d2911b03d60ca24390255ba71a3a26a2ba))
+* **illustration:** Wakaow! A new illustration has been requested [AR-93] ([#1012](https://github.com/deliveryhero/armor/issues/1012)) ([586fa89](https://github.com/deliveryhero/armor/commit/586fa89e14c955af0e16e8e70a7c703397eb4a81))
+* **spacing mixin:** Spacing function API could be easier to use [LD-807] ([#1010](https://github.com/deliveryhero/armor/issues/1010)) ([ab1668a](https://github.com/deliveryhero/armor/commit/ab1668a53f87c8d1c28e5c4a35fe56b699ff8b81))
+
+## [1.0.3](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datatable@1.0.2...@deliveryhero/armor-datatable@1.0.3) (2022-05-27)
+
+
+### Bug Fixes
+
+* **stepper:** change the step description wrapper and fix the messed up order ([#1005](https://github.com/deliveryhero/armor/issues/1005)) ([730ec96](https://github.com/deliveryhero/armor/commit/730ec965fbe0ee1844d08e0400ba9491f3617603))
+
+
+### Features
+
+* **tooltip:** support interactive tooltip as default [AR-57] ([a7b59ec](https://github.com/deliveryhero/armor/commit/a7b59ec6676305d5ef6503f1dd467aa8df922ad3))
+
+## @deliveryhero/armor-datatable [1.0.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datatable@1.0.1...@deliveryhero/armor-datatable@1.0.2) (2022-05-27)
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor:** upgraded to 1.95.1
+* **@deliveryhero/armor-illustrations:** upgraded to 1.3.0
+
+## [1.0.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-datatable@1.0.0...@deliveryhero/armor-datatable@1.0.1) (2022-05-18)
+
+
+### Bug Fixes
+
+* **button & inputs:** Fix Button and inputs style mismatched [LD-789] ([f95f179](https://github.com/deliveryhero/armor/commit/f95f1796d1ee79d146134593edadf2d2151222b5))
+* **dropdown:** Dropdown onChange event receives name argument in all cases [AR-84] ([a48338d](https://github.com/deliveryhero/armor/commit/a48338dd8f43c5809589e6d78cfaa859c85fb661))
+* **dropdown:** Dropdown with Search functionality on focus always scroll the page to the top [AR-73] ([#994](https://github.com/deliveryhero/armor/issues/994)) ([18242c2](https://github.com/deliveryhero/armor/commit/18242c290273a7d9a934bdc03e8a4e839f6bd9f0))
+* **skeleton:** background colors are not consistent and image placeholder is out of sync [LD-724] ([#981](https://github.com/deliveryhero/armor/issues/981)) ([b4a1d41](https://github.com/deliveryhero/armor/commit/b4a1d41490c662f35e7c12b3d7a42835fcb6f506))
+* **tooltip:** Sync Tooltip design between Figma and code [LD-791] ([2792211](https://github.com/deliveryhero/armor/commit/279221177963cc0cabb325f0d95ac2ab18033ec4))
+
+
+### Features
+
+* **codacy:** testing analysis[LD-755] ([#992](https://github.com/deliveryhero/armor/issues/992)) ([33ae909](https://github.com/deliveryhero/armor/commit/33ae90958a5a809f4b83c01b7980ac681ed87ddc))
+
+# @deliveryhero/armor-datatable 1.0.0 (2022-05-11)
+
+
+### Features
+
+* **powerup:** new components package ([#969](https://github.com/deliveryhero/armor/issues/969)) ([5853c14](https://github.com/deliveryhero/armor/commit/5853c1440e83aed8a7394431a4ec9cefbec28cec))
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor-icons:** upgraded to 1.24.0
+* **@deliveryhero/armor:** upgraded to 1.94.0
+
 # [1.84.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.83.0...@deliveryhero/armor@1.84.0) (2022-01-14)
 
 

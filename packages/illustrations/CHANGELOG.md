@@ -1,4 +1,4 @@
-# [1.13.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-system@1.12.0...@deliveryhero/armor-system@1.13.0) (2022-08-29)
+# [1.6.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-illustrations@1.5.2...@deliveryhero/armor-illustrations@1.6.0) (2022-08-29)
 
 
 ### Bug Fixes
@@ -12,7 +12,7 @@
 * **illustration:** Add import script [LD-736] ([#1174](https://github.com/deliveryhero/armor/issues/1174)) ([752fd0a](https://github.com/deliveryhero/armor/commit/752fd0a00120d7dcf4de371a684771efde0e0549))
 * **monthyear:** picker for agent campaigns center [AR-154] ([#1176](https://github.com/deliveryhero/armor/issues/1176)) ([69845ed](https://github.com/deliveryhero/armor/commit/69845edf4e48e0a5b23dd1acde18f642a6ac4f5d))
 
-# [1.12.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-system@1.11.1...@deliveryhero/armor-system@1.12.0) (2022-08-22)
+## [1.5.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-illustrations@1.5.1...@deliveryhero/armor-illustrations@1.5.2) (2022-08-22)
 
 
 ### Bug Fixes
@@ -28,7 +28,9 @@
 * **icons:** add bunch of new icons (helpcenter) and remove PropsWithChildren from icon component type ([#1163](https://github.com/deliveryhero/armor/issues/1163)) ([027d194](https://github.com/deliveryhero/armor/commit/027d19484eead88cc1f46f8436ceaa383b4f04ac))
 * **ThemeProvider:** Default Theme Background Color [AR-153] ([#1166](https://github.com/deliveryhero/armor/issues/1166)) ([a2037b3](https://github.com/deliveryhero/armor/commit/a2037b38d25f3cd85ed916e53d414114cd609bf9))
 
-## [1.11.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-system@1.11.0...@deliveryhero/armor-system@1.11.1) (2022-07-28)
+## [1.5.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-illustrations@1.5.0...@deliveryhero/armor-illustrations@1.5.1) (2022-07-28)
+
+# [1.5.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-illustrations@1.4.3...@deliveryhero/armor-illustrations@1.5.0) (2022-07-28)
 
 
 ### Bug Fixes
@@ -54,7 +56,7 @@
 * **dropdown:** Allow render selected value as node [AR-140] ([416d1fa](https://github.com/deliveryhero/armor/commit/416d1fabdf34157f58253842e5310ed276ea5bdb))
 * **Tag:** Add disabled state and improve visual regression testing [LD-287] ([#1140](https://github.com/deliveryhero/armor/issues/1140)) ([63b87ce](https://github.com/deliveryhero/armor/commit/63b87ce01fff47d3dd53bfa5545a62b47244f31b))
 
-# [1.11.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-system@1.10.1...@deliveryhero/armor-system@1.11.0) (2022-07-14)
+## [1.4.3](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-illustrations@1.4.2...@deliveryhero/armor-illustrations@1.4.3) (2022-07-14)
 
 
 ### Bug Fixes
@@ -71,7 +73,7 @@
 * **new header navigation:** ops portal [LD-506] ([#1059](https://github.com/deliveryhero/armor/issues/1059)) ([8a1fd8d](https://github.com/deliveryhero/armor/commit/8a1fd8d4aac604756cca03211b8e7d2716b7c385))
 * **props parser:** add support for reading extra components [LD-837] ([#1083](https://github.com/deliveryhero/armor/issues/1083)) ([97e3487](https://github.com/deliveryhero/armor/commit/97e348712bb8960169cb7f4938c1a4ab50a8959d))
 
-## [1.10.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-system@1.10.0...@deliveryhero/armor-system@1.10.1) (2022-07-04)
+## [1.4.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-illustrations@1.4.1...@deliveryhero/armor-illustrations@1.4.2) (2022-07-04)
 
 
 ### Bug Fixes
@@ -83,7 +85,7 @@
 * **IconButton:** IconButton does not support type prop and submit form [AR-123] ([#1063](https://github.com/deliveryhero/armor/issues/1063)) ([faefa68](https://github.com/deliveryhero/armor/commit/faefa68137bf11b17b7ce9ba1603d015991020aa))
 * **Typography:** Typography component with medium variant does not match font-size [AR-124] ([#1064](https://github.com/deliveryhero/armor/issues/1064)) ([31b0ea6](https://github.com/deliveryhero/armor/commit/31b0ea6f940e5b0774e2a8ae64f51c1c1a92fb10))
 
-# [1.10.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-system@1.9.0...@deliveryhero/armor-system@1.10.0) (2022-06-28)
+## [1.4.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-illustrations@1.4.0...@deliveryhero/armor-illustrations@1.4.1) (2022-06-28)
 
 
 ### Bug Fixes
@@ -102,7 +104,7 @@
 * **Icons:** add bunch of new icons ([#1032](https://github.com/deliveryhero/armor/issues/1032)) ([f622e7e](https://github.com/deliveryhero/armor/commit/f622e7e8052b66ea1874169c5fad68976719e380))
 * **Tag:** create new tag variants  ([#1029](https://github.com/deliveryhero/armor/issues/1029)) ([4876f2d](https://github.com/deliveryhero/armor/commit/4876f2d9b3ff86c704a52e06b1712f3fae60f76e))
 
-# [1.9.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-system@1.8.0...@deliveryhero/armor-system@1.9.0) (2022-06-08)
+# [1.4.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-illustrations@1.3.1...@deliveryhero/armor-illustrations@1.4.0) (2022-06-08)
 
 
 ### Bug Fixes
@@ -117,12 +119,23 @@
 * **illustration:** Wakaow! A new illustration has been requested [AR-93] ([#1012](https://github.com/deliveryhero/armor/issues/1012)) ([586fa89](https://github.com/deliveryhero/armor/commit/586fa89e14c955af0e16e8e70a7c703397eb4a81))
 * **spacing mixin:** Spacing function API could be easier to use [LD-807] ([#1010](https://github.com/deliveryhero/armor/issues/1010)) ([ab1668a](https://github.com/deliveryhero/armor/commit/ab1668a53f87c8d1c28e5c4a35fe56b699ff8b81))
 
-# [1.8.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-system@1.7.2...@deliveryhero/armor-system@1.8.0) (2022-05-27)
+## [1.3.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-illustrations@1.3.0...@deliveryhero/armor-illustrations@1.3.1) (2022-05-27)
 
 
 ### Bug Fixes
 
 * **stepper:** change the step description wrapper and fix the messed up order ([#1005](https://github.com/deliveryhero/armor/issues/1005)) ([730ec96](https://github.com/deliveryhero/armor/commit/730ec965fbe0ee1844d08e0400ba9491f3617603))
+
+
+### Features
+
+* **tooltip:** support interactive tooltip as default [AR-57] ([a7b59ec](https://github.com/deliveryhero/armor/commit/a7b59ec6676305d5ef6503f1dd467aa8df922ad3))
+
+# [1.3.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-illustrations@1.2.5...@deliveryhero/armor-illustrations@1.3.0) (2022-05-27)
+
+
+### Bug Fixes
+
 * **switch:** Fix proptype ([#999](https://github.com/deliveryhero/armor/issues/999)) ([53e31f4](https://github.com/deliveryhero/armor/commit/53e31f47115c48211b89de9ca080b0bbc7e6fbb7))
 * **Toast:** Passing onClose callback prevent Toaster from being closed [AR-89] ([#1000](https://github.com/deliveryhero/armor/issues/1000)) ([749e4be](https://github.com/deliveryhero/armor/commit/749e4beb2b78537b2e463dbbfc17ddb336d96976))
 * **type:** Expose types for non-component props [AR-65] ([707613d](https://github.com/deliveryhero/armor/commit/707613d1114c88751da999aa30c5d8bbb8586b2a))
@@ -131,9 +144,8 @@
 ### Features
 
 * **illustration:** new illustrations add and github workkflow ([#997](https://github.com/deliveryhero/armor/issues/997)) ([9770d77](https://github.com/deliveryhero/armor/commit/9770d778c91b974a2702284e896adefb52148183))
-* **tooltip:** support interactive tooltip as default [AR-57] ([a7b59ec](https://github.com/deliveryhero/armor/commit/a7b59ec6676305d5ef6503f1dd467aa8df922ad3))
 
-## [1.7.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-system@1.7.1...@deliveryhero/armor-system@1.7.2) (2022-05-18)
+## [1.2.5](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-illustrations@1.2.4...@deliveryhero/armor-illustrations@1.2.5) (2022-05-18)
 
 
 ### Bug Fixes
@@ -152,7 +164,7 @@
 * **icon:** add new translate icon [AR-76] ([#982](https://github.com/deliveryhero/armor/issues/982)) ([4dd23d0](https://github.com/deliveryhero/armor/commit/4dd23d00a482d1d2d08b783cdfea348b443a20e5))
 * **powerup:** new components package ([#969](https://github.com/deliveryhero/armor/issues/969)) ([5853c14](https://github.com/deliveryhero/armor/commit/5853c1440e83aed8a7394431a4ec9cefbec28cec))
 
-## [1.7.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-system@1.7.0...@deliveryhero/armor-system@1.7.1) (2022-05-11)
+## [1.2.4](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-illustrations@1.2.3...@deliveryhero/armor-illustrations@1.2.4) (2022-05-11)
 
 
 ### Bug Fixes
@@ -167,37 +179,31 @@
 
 * **icons:** Add new SMS icon [AR-72] ([#976](https://github.com/deliveryhero/armor/issues/976)) ([9f1bcc6](https://github.com/deliveryhero/armor/commit/9f1bcc63bdf3f20acb0aba72fd6ebc34bb9e562d))
 
-# [1.7.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-system@1.6.1...@deliveryhero/armor-system@1.7.0) (2022-04-25)
+## [1.2.3](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-illustrations@1.2.2...@deliveryhero/armor-illustrations@1.2.3) (2022-04-25)
 
 
 ### Features
 
 * **icons:** Add missing icons  [LD-779] ([f1a11e4](https://github.com/deliveryhero/armor/commit/f1a11e43d9574aa4d2ee7a9629d82d5274982802))
 
-## [1.6.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-system@1.6.0...@deliveryhero/armor-system@1.6.1) (2022-04-19)
+## @deliveryhero/armor-illustrations [1.2.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-illustrations@1.2.1...@deliveryhero/armor-illustrations@1.2.2) (2022-04-19)
 
 
-### Bug Fixes
-
-* **dev2:** fix dev2 side view ([#926](https://github.com/deliveryhero/armor/issues/926)) ([34921af](https://github.com/deliveryhero/armor/commit/34921af5c895ce961f53029a29b3db8407a3154e))
-* **dropdown:** Fix Dropdown to support custom option label [AR-62] ([2e8a898](https://github.com/deliveryhero/armor/commit/2e8a8986a6aec9feba68b672b2402e903bd03f3c))
-* **icons:** Fix icons are not center aligned [LD-731] ([ca13e5d](https://github.com/deliveryhero/armor/commit/ca13e5db7008a1a2321a7883c799fa50833b5598))
-* **icons:** update visual tests regarding to the icons change ([#948](https://github.com/deliveryhero/armor/issues/948)) ([6df99cc](https://github.com/deliveryhero/armor/commit/6df99cc6a90e60981405676fa90eb667f165e2b4))
-* **LoginPage:** LoginPage faulty API design [LD-734] ([7ef26ac](https://github.com/deliveryhero/armor/commit/7ef26acad4e7f53ad1e626fc375b0dd63a90d480))
 
 
-### Features
 
-* **datepicker:** mask input ([#954](https://github.com/deliveryhero/armor/issues/954)) ([03b9a76](https://github.com/deliveryhero/armor/commit/03b9a76ad4a73db47066d03f9baf7c926bd778a2))
+### Dependencies
 
-# [1.6.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-system@1.5.1...@deliveryhero/armor-system@1.6.0) (2022-03-28)
+* **@deliveryhero/armor-system:** upgraded to 1.6.1
+
+## [1.2.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-illustrations@1.2.0...@deliveryhero/armor-illustrations@1.2.1) (2022-03-28)
 
 
 ### Features
 
 * **system:** new hook useDidUpdateEffect added ([#920](https://github.com/deliveryhero/armor/issues/920)) ([adb32bb](https://github.com/deliveryhero/armor/commit/adb32bb34ea723df835bd69f8b9d84567b541f13))
 
-## [1.5.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-system@1.5.0...@deliveryhero/armor-system@1.5.1) (2022-03-25)
+# [1.2.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-illustrations@1.1.0...@deliveryhero/armor-illustrations@1.2.0) (2022-03-25)
 
 
 ### Bug Fixes
@@ -210,7 +216,7 @@
 
 * **illustrations:** add new illustrations [AR-53] ([f6d0824](https://github.com/deliveryhero/armor/commit/f6d082479a38ca29ef7a79007199a04aebfde490))
 
-# [1.5.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-system@1.4.0...@deliveryhero/armor-system@1.5.0) (2022-03-15)
+# [1.1.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-illustrations@1.0.5...@deliveryhero/armor-illustrations@1.1.0) (2022-03-15)
 
 
 ### Bug Fixes
@@ -225,102 +231,67 @@
 * **HeaderNavigationSelector:** add scrolling effect to HeaderNavigationSelector [AR-35] ([447872b](https://github.com/deliveryhero/armor/commit/447872b14ab4ec9e4f1070f50cffd6ef2d92cce8))
 * **stepper:** Stepper Component as a Log  [AR-22] ([b048572](https://github.com/deliveryhero/armor/commit/b048572a9c43c459b5f256520fe218d0861cd0c7))
 
-# [1.4.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-system@1.3.0...@deliveryhero/armor-system@1.4.0) (2022-03-01)
+## @deliveryhero/armor-illustrations [1.0.5](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-illustrations@1.0.4...@deliveryhero/armor-illustrations@1.0.5) (2022-03-01)
 
 
-### Bug Fixes
 
-* **publish:** added build step for motion publish ([#897](https://github.com/deliveryhero/armor/issues/897)) ([c24f512](https://github.com/deliveryhero/armor/commit/c24f5125f23cae093f99ed503b224ffac417864e))
+
+
+### Dependencies
+
+* **@deliveryhero/armor-system:** upgraded to 1.4.0
+
+## @deliveryhero/armor-illustrations [1.0.4](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-illustrations@1.0.3...@deliveryhero/armor-illustrations@1.0.4) (2022-02-22)
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor-system:** upgraded to 1.3.0
+
+## @deliveryhero/armor-illustrations [1.0.3](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-illustrations@1.0.2...@deliveryhero/armor-illustrations@1.0.3) (2022-02-09)
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor-system:** upgraded to 1.2.2
+
+## @deliveryhero/armor-illustrations [1.0.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-illustrations@1.0.1...@deliveryhero/armor-illustrations@1.0.2) (2022-02-01)
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor-system:** upgraded to 1.2.1
+
+## @deliveryhero/armor-illustrations [1.0.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-illustrations@1.0.0...@deliveryhero/armor-illustrations@1.0.1) (2022-01-25)
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor-system:** upgraded to 1.2.0
+
+# @deliveryhero/armor-illustrations 1.0.0 (2022-01-25)
 
 
 ### Features
 
-* **FileUploader:** Add FileUploader component [LD-508] ([10c2db7](https://github.com/deliveryhero/armor/commit/10c2db71bf3e839c22b34dc2822502ffe5a83bd3))
-
-# [1.3.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-system@1.2.2...@deliveryhero/armor-system@1.3.0) (2022-02-22)
-
-
-### Features
-
-* **armor-motion:** animation package ([#880](https://github.com/deliveryhero/armor/issues/880)) ([b5b642e](https://github.com/deliveryhero/armor/commit/b5b642e6ee9ab47862b7e35439fe021b40b90781))
-* **fileuploader:** add FileCard component [LD-508] ([#819](https://github.com/deliveryhero/armor/issues/819)) ([74b440a](https://github.com/deliveryhero/armor/commit/74b440ab091e9c9e5ee10c87d05ca466d6ed1388))
-
-## [1.2.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-system@1.2.1...@deliveryhero/armor-system@1.2.2) (2022-02-09)
-
-
-### Bug Fixes
-
-* **dropdown:** Typing error in Dropdown [AR-38] ([7841da6](https://github.com/deliveryhero/armor/commit/7841da699ec20fdc7a7dc821804756f2e589d937))
-* **HeaderNavigationSelector:** Update HeaderNavigationSelector to support search filter [AR-32] ([755577b](https://github.com/deliveryhero/armor/commit/755577b8f92b1fcc0e4ce26fb9ee776f177fd01b))
-* **theme:** Performance optimisations related to theming [LD-726] ([d3962d0](https://github.com/deliveryhero/armor/commit/d3962d0988c5a7b1e546af0946ac07ec5786571c))
-
-## [1.2.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-system@1.2.0...@deliveryhero/armor-system@1.2.1) (2022-02-01)
-
-
-### Bug Fixes
-
-* **checkbox:** Update checkbox icons [AR-27] ([37788b7](https://github.com/deliveryhero/armor/commit/37788b77bdcefcca03fc3bd7084a5f59ca116a74))
-
-
-### Features
-
-* **content-switcher:** new component[LD-546] ([#833](https://github.com/deliveryhero/armor/issues/833)) ([b88af53](https://github.com/deliveryhero/armor/commit/b88af5394f10b80c556b196feb27109f6651472b))
-* **vendor:** updated illustration in vendor[LD-547] ([#849](https://github.com/deliveryhero/armor/issues/849)) ([642bbd2](https://github.com/deliveryhero/armor/commit/642bbd20bbeca0a688d5580b20cb7971907a3774))
-
-# [1.2.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-system@1.1.1...@deliveryhero/armor-system@1.2.0) (2022-01-25)
-
-
-### Bug Fixes
-
-* **daterangepicker:** DateRangePicker enableOnChangeOnSingleClick property implemented [AR-28] ([8b5f388](https://github.com/deliveryhero/armor/commit/8b5f3886c0cb86e7d575ec481351ff66f514f7bd))
-* **dropdown:** Update in the Dropdown component, dropdown always fits with the input field [AR-29] ([67d5f9e](https://github.com/deliveryhero/armor/commit/67d5f9eaac378bd80de36ccf6388260d0d17839e))
-
-
-### Features
-
-* **buttons:** updated pressed,active and disabled state for buttons [LD-630] ([#815](https://github.com/deliveryhero/armor/issues/815)) ([4efef1b](https://github.com/deliveryhero/armor/commit/4efef1bc7de1b6bcf36807f8a71654f845de20c9))
 * **illustration-package:** new sub package[LD-561] ([#845](https://github.com/deliveryhero/armor/issues/845)) ([6b0e366](https://github.com/deliveryhero/armor/commit/6b0e366c4f671337b95ab7c6393dc1345855ba27))
-* **toast:** Add toast component [LD-430] ([c1ff5e8](https://github.com/deliveryhero/armor/commit/c1ff5e857870e8939a6b73c9c7195c7ffde064dd))
-
-## [1.1.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-system@1.1.0...@deliveryhero/armor-system@1.1.1) (2022-01-07)
 
 
-### Bug Fixes
-
-* **dropdown:** options.label prop-type ([#796](https://github.com/deliveryhero/armor/issues/796)) ([e862752](https://github.com/deliveryhero/armor/commit/e862752e31003c21452c9b383c713c80967db9de))
-* **search:** Search accessibility improvements [LD-555] ([57837b1](https://github.com/deliveryhero/armor/commit/57837b17a7cc4457f8eb0338f9296d1de455f085))
 
 
-### Features
 
-* **data-table:** implement row reordering through drag and drop ([#814](https://github.com/deliveryhero/armor/issues/814)) ([9b39d35](https://github.com/deliveryhero/armor/commit/9b39d35a4e554780cc4807902147be4a03f73103))
+### Dependencies
 
-# [1.1.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-system@1.0.0...@deliveryhero/armor-system@1.1.0) (2021-12-16)
-
-
-### Bug Fixes
-
-* **props-parser:** Props-parser updated to be able to process new file structure ([7a07033](https://github.com/deliveryhero/armor/commit/7a07033f34ddc315c1480b991448e9c8178c2265))
-* ESLint rules of hooks plugin swiched from warning to error, complaints resolved ([1f812fa](https://github.com/deliveryhero/armor/commit/1f812fa52743472c5e7738ba6993dcbf3cad5e1a))
-* **button:** dev example was missing ([#812](https://github.com/deliveryhero/armor/issues/812)) ([a31d3da](https://github.com/deliveryhero/armor/commit/a31d3da04e9403150909f18e2bc787fecf827c74))
-* **dropdown:** issues with dark theme [AR-15] ([#790](https://github.com/deliveryhero/armor/issues/790)) ([316b0d9](https://github.com/deliveryhero/armor/commit/316b0d966f2d8d14202a59a8d4e7c977c76dd561))
-* **dropdown component:** Fix Dropdown grouped options [LD-597] ([ade45f6](https://github.com/deliveryhero/armor/commit/ade45f6763b8564f69c6f070116810a4c8b8f8b4))
-* **header:** remove redundant header background color [LD-462] ([3c4f327](https://github.com/deliveryhero/armor/commit/3c4f3272481168aa2e1cb4e1f071ee2f350e527a))
-* **lint:** logistics-eslint-config as dev dep [LD-000] ([#804](https://github.com/deliveryhero/armor/issues/804)) ([071426d](https://github.com/deliveryhero/armor/commit/071426d90811570d07c83d03678e63f9481814c9))
-* **loginpage:** height to scale to 100% of the parent [LD-669] ([#806](https://github.com/deliveryhero/armor/issues/806)) ([16c5856](https://github.com/deliveryhero/armor/commit/16c585633f1a79035ea95aa0535419b04fb54e3f))
-* **tag component:** add filled state for Tag component [LD-614] ([e139d9e](https://github.com/deliveryhero/armor/commit/e139d9e1d9d2601b3b3afd3067f94c7c2af23849))
-
-
-### Features
-
-* **datepicker:** DateRangePicker, DatePicker: API improvements: isDateAllowed, freeDateRanges, isDateFree, today button, close on select, clear selection  [LD-545] ([135a927](https://github.com/deliveryhero/armor/commit/135a92743ada5bc01d14bebc5becff47694847ba))
-* **datepicker:** Enable "Todays date" to be chosen by default on date selector in calendar component [AR-13] ([#791](https://github.com/deliveryhero/armor/issues/791)) ([45df7a5](https://github.com/deliveryhero/armor/commit/45df7a591a68ba53a5353e7e4c0ea1eff6753826))
-* **icon:** IdeaStrategy icon added [AR-16] ([866a72e](https://github.com/deliveryhero/armor/commit/866a72edd67faa59eebcf08756463c7c7e54f6e4))
-* **icons:** DefaultSort and Dollar icons added [AR-18] ([dcfa839](https://github.com/deliveryhero/armor/commit/dcfa8399a72f2f4ea6401b1997770e78aaebfe62))
-
-# @deliveryhero/armor-system 1.0.0 (2021-11-22)
-
-
-### Bug Fixes
-
-* Post-revamp TypeScript type fixes ([7dd148e](https://github.com/deliveryhero/armor/commit/7dd148e723a1a348e26c1a8d8721e923179c56ec))
+* **@deliveryhero/armor-system:** upgraded to 1.2.0

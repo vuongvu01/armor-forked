@@ -1,3 +1,146 @@
+## @deliveryhero/armor-headernavigation [1.2.6](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-headernavigation@1.2.5...@deliveryhero/armor-headernavigation@1.2.6) (2022-08-29)
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor-icons:** upgraded to 1.26.2
+* **@deliveryhero/armor:** upgraded to 1.104.0
+* **@deliveryhero/armor-illustrations:** upgraded to 1.6.0
+* **@deliveryhero/armor-system:** upgraded to 1.13.0
+
+## [1.2.5](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-headernavigation@1.2.4...@deliveryhero/armor-headernavigation@1.2.5) (2022-08-22)
+
+
+### Bug Fixes
+
+* **Navigation:** active link is not clickable ([#1170](https://github.com/deliveryhero/armor/issues/1170)) ([db11a89](https://github.com/deliveryhero/armor/commit/db11a898726ed8e3ab0598a618c600013947e67c))
+
+## [1.2.4](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-headernavigation@1.2.3...@deliveryhero/armor-headernavigation@1.2.4) (2022-08-22)
+
+
+### Features
+
+* **ThemeProvider:** Default Theme Background Color [AR-153] ([#1166](https://github.com/deliveryhero/armor/issues/1166)) ([a2037b3](https://github.com/deliveryhero/armor/commit/a2037b38d25f3cd85ed916e53d414114cd609bf9))
+
+## [1.2.3](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-headernavigation@1.2.2...@deliveryhero/armor-headernavigation@1.2.3) (2022-08-15)
+
+
+### Features
+
+* **dropdown:** Dropdown able to search by value [AR-149] ([7c412b6](https://github.com/deliveryhero/armor/commit/7c412b69ba77fac1c80701f3217c2e29cbc17537))
+* **icons:** add bunch of new icons (helpcenter) and remove PropsWithChildren from icon component type ([#1163](https://github.com/deliveryhero/armor/issues/1163)) ([027d194](https://github.com/deliveryhero/armor/commit/027d19484eead88cc1f46f8436ceaa383b4f04ac))
+
+## @deliveryhero/armor-headernavigation [1.2.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-headernavigation@1.2.1...@deliveryhero/armor-headernavigation@1.2.2) (2022-07-29)
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor:** upgraded to 1.102.2
+
+## [1.2.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-headernavigation@1.2.0...@deliveryhero/armor-headernavigation@1.2.1) (2022-07-28)
+
+# [1.2.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-headernavigation@1.1.6...@deliveryhero/armor-headernavigation@1.2.0) (2022-07-28)
+
+
+### Bug Fixes
+
+* **dropdown:** janky label [LD-337] ([#1138](https://github.com/deliveryhero/armor/issues/1138)) ([bcc5580](https://github.com/deliveryhero/armor/commit/bcc5580da48eca5069e0becf6ff753916737f9c5))
+* **toast:** Multiple instances of useToast doesn't work well with each other [AR-129] ([b9273b3](https://github.com/deliveryhero/armor/commit/b9273b3a36418b9c6a1018ab3ddbdb181aa404d8))
+
+
+### Features
+
+* **dropdown:** Allow render selected value as node [AR-140] ([416d1fa](https://github.com/deliveryhero/armor/commit/416d1fabdf34157f58253842e5310ed276ea5bdb))
+* **Tag:** Add disabled state and improve visual regression testing [LD-287] ([#1140](https://github.com/deliveryhero/armor/issues/1140)) ([63b87ce](https://github.com/deliveryhero/armor/commit/63b87ce01fff47d3dd53bfa5545a62b47244f31b))
+
+## [1.1.6](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-headernavigation@1.1.5...@deliveryhero/armor-headernavigation@1.1.6) (2022-07-25)
+
+
+### Bug Fixes
+
+* **DatePicker:** DateTime picker time reset on first try ([#1111](https://github.com/deliveryhero/armor/issues/1111)) ([d40dc03](https://github.com/deliveryhero/armor/commit/d40dc03bbea83e706c34ffffab1fce26f9eb67bb))
+* **HeaderNavigation:** Dropdown of Navigation not the right width [AR-44] ([#1115](https://github.com/deliveryhero/armor/issues/1115)) ([cee8db5](https://github.com/deliveryhero/armor/commit/cee8db5d8ccdb699685a2a68d5efe2b4ccf2276f))
+* **Navigation:** Navigation improvements [LD-436] ([#1110](https://github.com/deliveryhero/armor/issues/1110)) ([dad89d2](https://github.com/deliveryhero/armor/commit/dad89d22d40e73c883c2cbd528914bad67a89dda))
+
+## [1.1.5](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-headernavigation@1.1.4...@deliveryhero/armor-headernavigation@1.1.5) (2022-07-21)
+
+
+### Bug Fixes
+
+* **Dropdown:** ClearButton is not working properly [AR-141] ([#1121](https://github.com/deliveryhero/armor/issues/1121)) ([0e07e3d](https://github.com/deliveryhero/armor/commit/0e07e3de22c0ee79040bd821fe185102f3bdec31))
+
+## [1.1.4](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-headernavigation@1.1.3...@deliveryhero/armor-headernavigation@1.1.4) (2022-07-19)
+
+
+### Bug Fixes
+
+* **Button:** when used as a link - disable state doesn't propagate [LD-456] ([#1107](https://github.com/deliveryhero/armor/issues/1107)) ([3a57b9d](https://github.com/deliveryhero/armor/commit/3a57b9dd2b120464d22f7eb6710aabddbc792fe5))
+* **DatePicker:** Date picker month dropdown icon fix [LD-846] ([#1106](https://github.com/deliveryhero/armor/issues/1106)) ([3ecdfa9](https://github.com/deliveryhero/armor/commit/3ecdfa9b435b725e142f9e2932325b32e288d321))
+* **Dropdown:** Clear button is placed too far from the chevron [LD-845] ([#1105](https://github.com/deliveryhero/armor/issues/1105)) ([618e8a8](https://github.com/deliveryhero/armor/commit/618e8a870c9b05ad1726f37e6ae5ee3e80507ee1))
+* **ProgressBar:** Transition for background when preset is changed dynamically ([#1065](https://github.com/deliveryhero/armor/issues/1065)) ([64bf02a](https://github.com/deliveryhero/armor/commit/64bf02a8a70f75289bb102875b82be10883a00ae))
+* **skeleton:** safari issue ([#1109](https://github.com/deliveryhero/armor/issues/1109)) ([bcfa067](https://github.com/deliveryhero/armor/commit/bcfa067cbf329dadca0c85f94235dfb7477c4c08))
+
+## [1.1.3](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-headernavigation@1.1.2...@deliveryhero/armor-headernavigation@1.1.3) (2022-07-15)
+
+
+### Bug Fixes
+
+* **Accordion:** fix animation when expanding/collapsing content ([#1101](https://github.com/deliveryhero/armor/issues/1101)) ([b1ab4bb](https://github.com/deliveryhero/armor/commit/b1ab4bb914391298f1dac3f744c88fd3996610e2))
+* **ops portal navigation:** post release fixes [LD-841] ([#1103](https://github.com/deliveryhero/armor/issues/1103)) ([3951c41](https://github.com/deliveryhero/armor/commit/3951c4118e3d3c4d46aff4c41eae02822451483a))
+
+
+### Features
+
+* **DatePicker:** Add property yearRange ([#1102](https://github.com/deliveryhero/armor/issues/1102)) ([4869242](https://github.com/deliveryhero/armor/commit/48692421ad9836138d15b8fb9cff2e1931eb9355))
+
+## @deliveryhero/armor-headernavigation [1.1.2](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-headernavigation@1.1.1...@deliveryhero/armor-headernavigation@1.1.2) (2022-07-14)
+
+
+
+
+
+### Dependencies
+
+* **@deliveryhero/armor-icons:** upgraded to 1.25.5
+* **@deliveryhero/armor:** upgraded to 1.101.0
+* **@deliveryhero/armor-illustrations:** upgraded to 1.4.3
+* **@deliveryhero/armor-system:** upgraded to 1.11.0
+
+## [1.1.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-headernavigation@1.1.0...@deliveryhero/armor-headernavigation@1.1.1) (2022-07-11)
+
+
+### Bug Fixes
+
+* **DataTable:** allow horizontalScroll ([#1088](https://github.com/deliveryhero/armor/issues/1088)) ([708f94a](https://github.com/deliveryhero/armor/commit/708f94abeeea090136fb245ef8a3788b3f41b1de))
+* **icons:** fix the icon size inconsistencies [LD-813] ([#1070](https://github.com/deliveryhero/armor/issues/1070)) ([e3f92fe](https://github.com/deliveryhero/armor/commit/e3f92fe05141f81f5d3cb9f8ef9954d8e023cc3d))
+
+# @deliveryhero/armor-headernavigation [1.1.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-headernavigation@1.0.1...@deliveryhero/armor-headernavigation@1.1.0) (2022-07-11)
+
+
+### Features
+
+* **props parser:** add support for reading extra components [LD-837] ([#1083](https://github.com/deliveryhero/armor/issues/1083)) ([97e3487](https://github.com/deliveryhero/armor/commit/97e348712bb8960169cb7f4938c1a4ab50a8959d))
+
+## [1.0.1](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor-headernavigation@1.0.0...@deliveryhero/armor-headernavigation@1.0.1) (2022-07-07)
+
+
+### Bug Fixes
+
+* **Table:** Transparent fixed column in table on hover [AR-131] ([#1079](https://github.com/deliveryhero/armor/issues/1079)) ([2549809](https://github.com/deliveryhero/armor/commit/2549809bb11a9f4d678c72a91de902f4d47644ce))
+
+# @deliveryhero/armor-headernavigation 1.0.0 (2022-07-06)
+
+
+### Features
+
+* **new header navigation:** ops portal [LD-506] ([#1059](https://github.com/deliveryhero/armor/issues/1059)) ([8a1fd8d](https://github.com/deliveryhero/armor/commit/8a1fd8d4aac604756cca03211b8e7d2716b7c385))
+
 # [1.84.0](https://github.com/deliveryhero/armor/compare/@deliveryhero/armor@1.83.0...@deliveryhero/armor@1.84.0) (2022-01-14)
 
 

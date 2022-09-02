@@ -3,7 +3,7 @@ kind: pipeline
 type: kubernetes
 name: build
 
-service_account_name: "drone-armor"
+service_account_name: 'drone-armor'
 
 trigger:
     event:
