@@ -18,11 +18,11 @@ steps:
       commands:
           - ./script/build-preview.sh
 
-    - name: upload files to s3
-      image: 940776968316.dkr.ecr.eu-west-1.amazonaws.com/drone/s3:latest
-      settings:
-          bucket: production-eu-armor
-          assume_role: 'arn:aws:iam::683110685365:role/drone-armor'
-          region: 'eu-west-1'
-          source: ./packages/core/dev/.out
-          target: /${DRONE_PULL_REQUEST}
+          - name: upload files to s3
+            image: 940776968316.dkr.ecr.eu-west-1.amazonaws.com/drone/s3:latest
+            settings:
+                bucket: production-eu-armor
+                assume_role: 'arn:aws:iam::683110685365:role/drone-armor'
+                region: 'eu-west-1'
+                source: ./packages/core/dev/.out
+                target: /${DRONE_PULL_REQUEST}
