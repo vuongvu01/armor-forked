@@ -21,7 +21,7 @@ export const useStoryPageLayout = ({
     const story = params.get('story');
 
     const list: string[] = stories
-        ? Object.keys(stories).filter(name => name !== 'default')
+        ? Object.keys(stories).filter((name) => name !== 'default')
         : [];
 
     useEffect(() => {
@@ -30,7 +30,10 @@ export const useStoryPageLayout = ({
         }
     }, [story, navigate, list]);
 
-    let title = (stories?.default.title ?? '').replace('Components/', '');
+    let title = (stories?.default.title ?? '').replace(
+        /(Components\/|Extras\/|Deprecated\/)/,
+        '',
+    );
     const componentName = title;
 
     const storyList = list.reduce<Record<string, string>>(
@@ -43,7 +46,7 @@ export const useStoryPageLayout = ({
         {},
     );
 
-    const storyLinks = Object.keys(storyList).map(storyName => ({
+    const storyLinks = Object.keys(storyList).map((storyName) => ({
         name: storyList[storyName],
         url: `?story=${storyName}`,
     }));
@@ -55,9 +58,8 @@ export const useStoryPageLayout = ({
     }
 
     const [storedThemeName, setStoredThemeName] = useLocalStorage();
-    const [selectedThemeName, setSelectedThemeName] = useState<string>(
-        storedThemeName,
-    );
+    const [selectedThemeName, setSelectedThemeName] =
+        useState<string>(storedThemeName);
     const theme = selectedThemeName ? themes[selectedThemeName] ?? null : null;
     const hasTheme = !!theme?.armor;
     const hasNoTheme = !hasTheme;
