@@ -5,7 +5,7 @@ import {
     getComponentOverride,
     propsBlocker,
     spacing,
-    token,
+    typography,
 } from '@deliveryhero/armor-system';
 
 import { HeaderNavigationLinkRootPropsType } from './type';
@@ -44,11 +44,12 @@ export const HeaderNavigationLinkRoot = styled(
     border: none;
     box-sizing: border-box;
     display: inline-flex;
-    font-size: ${token('paragraphMedium.fontSize')};
-    font-weight: ${token('paragraphMedium.fontWeight')};
     padding: ${spacing(3, 4)};
     text-decoration: none;
     color: ${color('neutral.11')};
+    background-color: transparent;
+    ${typography('paragraphMedium')};
+
     &:visited,
     &:active,
     &:focus,
@@ -56,10 +57,11 @@ export const HeaderNavigationLinkRoot = styled(
         text-decoration: none;
         color: ${color('neutral.11')};
     }
+
     &:hover {
         background-color: ${color('primary.lightest')};
     }
-    background-color: transparent;
+
     ${getRootStyle};
     ${getComponentOverride('HeaderNavigationLink')};
 `;
