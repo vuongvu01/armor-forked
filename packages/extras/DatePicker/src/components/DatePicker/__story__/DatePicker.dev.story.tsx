@@ -1,6 +1,6 @@
 /* eslint-disable no-console,import/no-unresolved */
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import {
     TextInput,
@@ -340,6 +340,26 @@ export const MonthYearSelector = () => {
                 }}
                 dateValue={value}
                 onDateValueChange={setValue}
+            />
+        </Box>
+    );
+};
+
+export const WithDisabledMonths = () => {
+    const [value, setValue] = useState<Date | null | undefined>(currentDate);
+
+    return (
+        <Box paddingTop={20}>
+            <DatePicker
+                dateValue={value}
+                onDateValueChange={setValue}
+                isMonthAllowed={(year) => {
+                    if (year >= 2022) {
+                        return true;
+                    }
+
+                    return false;
+                }}
             />
         </Box>
     );

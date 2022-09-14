@@ -95,6 +95,7 @@ export const DatePickerMonthYearSelectorMonthList = styled.div.withConfig(
 
 const getMonthStyle = ({
     selected,
+    disabled,
 }: DatePickerMonthYearSelectorMonthPropsType) => {
     let result = {};
 
@@ -103,6 +104,18 @@ const getMonthStyle = ({
             ${result};
             color: ${color('neutral.00')};
             background-color: ${color('primary.main')};
+        `;
+    }
+
+    if (disabled) {
+        result = css`
+            ${result};
+            color: ${color('neutral.07')};
+            background: transparent;
+
+            && {
+                cursor: not-allowed;
+            }
         `;
     }
 
@@ -124,10 +137,12 @@ export const DatePickerMonthYearSelectorMonth = styled.button.withConfig(
         'background-color': 0.1,
         color: 0.1,
     })};
-    &:hover {
+
+    &:enabled:hover {
         color: ${color('neutral.00')};
         background-color: ${color('primary.main')};
     }
+
     border-radius: ${borderRadius('round')};
     user-select: none;
     display: block;

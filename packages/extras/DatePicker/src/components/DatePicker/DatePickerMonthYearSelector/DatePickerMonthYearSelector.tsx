@@ -37,6 +37,7 @@ export const DatePickerMonthYearSelector = memo(
                 displayedYear,
                 displayedMonth,
                 openYear,
+                isMonthAllowed,
             } = useDatePickerMonthYearSelector(props, ref);
 
             return (
@@ -73,25 +74,39 @@ export const DatePickerMonthYearSelector = memo(
                                             }
                                         >
                                             {months.map(
-                                                (monthName, monthNumber) => (
-                                                    <DatePickerMonthYearSelectorMonth
-                                                        {...monthProps}
-                                                        className={
-                                                            classNameComponents.Month
-                                                        }
-                                                        key={monthName}
-                                                        data-month={monthNumber}
-                                                        data-year={year}
-                                                        selected={
-                                                            monthNumber ===
-                                                                displayedMonth &&
-                                                            year ===
-                                                                displayedYear
-                                                        }
-                                                    >
-                                                        {monthName}
-                                                    </DatePickerMonthYearSelectorMonth>
-                                                ),
+                                                (monthName, monthNumber) => {
+                                                    const isAllowed = Boolean(
+                                                        isMonthAllowed?.(
+                                                            year,
+                                                            monthNumber,
+                                                        ),
+                                                    );
+
+                                                    return (
+                                                        <DatePickerMonthYearSelectorMonth
+                                                            {...monthProps}
+                                                            className={
+                                                                classNameComponents.Month
+                                                            }
+                                                            key={monthName}
+                                                            data-month={
+                                                                monthNumber
+                                                            }
+                                                            data-year={year}
+                                                            selected={
+                                                                monthNumber ===
+                                                                    displayedMonth &&
+                                                                year ===
+                                                                    displayedYear
+                                                            }
+                                                            disabled={
+                                                                !isAllowed
+                                                            }
+                                                        >
+                                                            {monthName}
+                                                        </DatePickerMonthYearSelectorMonth>
+                                                    );
+                                                },
                                             )}
                                         </DatePickerMonthYearSelectorMonthList>
                                     )}

@@ -7,17 +7,19 @@ import {
 } from '../../type';
 import { DateVector } from '../utils/DateVector';
 import { DateVectorRange } from '../utils/DateVectorRange';
+import { DatePickerEffectiveCommonPropsType } from '../type';
 
 type DatePickerMonthYearSelectorEffectivePropsType = {
     toggleMonthYearSelector: () => void;
-
     displayedDateVector: DateVector;
     onDisplayedDateVectorChange: (newVector: DateVector) => void;
-    yearRange?: number[];
-    enableMonthYearPickerMode?: boolean;
     onDateTimeChange?: (newValue: DateVectorRange) => void;
     // add other custom properties here
-} & HTMLAttributes<HTMLDivElement> & // includes all HTML Div properties
+} & Pick<
+    DatePickerEffectiveCommonPropsType,
+    'enableMonthYearPickerMode' | 'isMonthAllowed' | 'yearRange'
+> &
+    HTMLAttributes<HTMLDivElement> & // includes all HTML Div properties
     MarginPropsType;
 
 export type DatePickerMonthYearSelectorPropsType =
@@ -45,4 +47,5 @@ export type DatePickerMonthYearSelectorMonthListPropsType =
 
 export type DatePickerMonthYearSelectorMonthPropsType = {
     selected: boolean;
+    disabled: boolean;
 } & ComponentElementStylePropsType;

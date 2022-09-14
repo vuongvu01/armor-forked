@@ -82,6 +82,11 @@ export type DatePickerEffectiveCommonPropsType = Partial<{
     isDateAllowed: (date: Date) => boolean;
 
     /**
+     * A callback function called for every month in the calendar month picker to indicate if the month is *allowed* or not. "Not allowed" months are rendered as unselectable.
+     */
+    isMonthAllowed: (year: number, month: number) => boolean;
+
+    /**
      * Specifies date ranges that are available for selection. Accepts dates in local timezone. A special value *current* means that this value will be replaced by the current datetime at run-time. *Null* means "infinity".
      *
      * If this property is defined, all dates that are outside of the specified range are rendered as unselectable and stroke-through.
@@ -144,6 +149,9 @@ export type DatePickerEffectiveCommonPropsType = Partial<{
      *  __NOTE__ - If __inputMaskEnabled__ is passed along with the prop __enableMonthYearPickerMode__ then __inputMaskEnabled__ will be ignored.
      */
     enableMonthYearPickerMode: boolean;
+
+    /** If you pass an array of years then the years displayed in the year/month picker will be reflecting this. */
+    yearRange: number[];
 }> &
     ComponentBehaviourOpenStateType &
     ComponentBehaviourOverlayType &
@@ -160,7 +168,6 @@ export type DatePickerEffectiveGenericPropsType<V> = Partial<{
     onDateValueChange: (dateValue: V | undefined | null) => void;
     dateValue: V | null;
     defaultDateValue: V | null;
-    yearRange?: number[];
 }>;
 
 export type DatePickerDropdownPropsType = {

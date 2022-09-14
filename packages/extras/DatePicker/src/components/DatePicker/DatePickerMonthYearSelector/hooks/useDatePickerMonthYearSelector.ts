@@ -10,6 +10,7 @@ import {
     MONTH_NAMES_SHORT,
     YEAR_SELECTOR_RANGE_DELTA,
     YEAR_SELECTOR_SCROLL_TOP,
+    YEAR_SELECTOR_MONTH_ALLOWED_DEFAULT_CALLBACK,
 } from '../constants';
 import { DateVectorRange } from '../../utils/DateVectorRange';
 
@@ -30,6 +31,7 @@ export const useDatePickerMonthYearSelector = <E extends HTMLDivElement>(
         yearRange,
         enableMonthYearPickerMode,
         onDateTimeChange,
+        isMonthAllowed,
         ...restProps
     }: DatePickerMonthYearSelectorPropsType,
     ref: RefType<E>,
@@ -171,5 +173,8 @@ export const useDatePickerMonthYearSelector = <E extends HTMLDivElement>(
         displayedMonth,
 
         openYear,
+
+        isMonthAllowed:
+            isMonthAllowed ?? YEAR_SELECTOR_MONTH_ALLOWED_DEFAULT_CALLBACK,
     };
 };

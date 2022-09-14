@@ -30,6 +30,7 @@ export const useDatePicker = <E extends HTMLDivElement>(
         onDateValueChange,
         yearRange,
         enableMonthYearPickerMode,
+        isMonthAllowed,
     } = props;
 
     // controlled and uncontrolled state: dateValue, defaultDateValue and onDateValueChange mapped to internalValue
@@ -205,6 +206,7 @@ export const useDatePicker = <E extends HTMLDivElement>(
             yearRange,
             enableMonthYearPickerMode,
             onDateTimeChange,
+            isMonthAllowed,
         },
         timeSelectorProps: {
             value: timeSelectorValue,
