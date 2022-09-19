@@ -29,7 +29,7 @@ export const DatePickerMonthYearSelectorRoot = styled.div.withConfig(
     propsBlocker,
 )<DatePickerMonthYearSelectorRootPropsType>`
     ${reset};
-    ${typography('paragraphMedium')};
+    ${typography('labelMedium')};
     color: ${token('body.color')};
     padding: ${spacing(4)};
     ${getComponentOverride('DatePickerMonthYearSelector')};
@@ -78,6 +78,7 @@ export const DatePickerMonthYearSelectorYearTitle = styled.button.withConfig(
     ${transition({
         'background-color': 0.1,
     })};
+    ${typography('labelMedium')};
 `;
 
 export const DatePickerMonthYearSelectorMonthList = styled.div.withConfig(
@@ -105,6 +106,14 @@ const getMonthStyle = ({
             color: ${color('neutral.00')};
             background-color: ${color('primary.main')};
         `;
+    } else {
+        result = css`
+            ${result}
+            &:hover {
+                color: ${color('neutral.11')};
+                background-color: ${color('primary.02')};
+            }
+        `;
     }
 
     if (disabled) {
@@ -130,7 +139,7 @@ export const DatePickerMonthYearSelectorMonth = styled.button.withConfig(
     outline: none; // todo: fix this
     padding: ${spacing(3, 5.6)};
 
-    ${typography('paragraphMedium')};
+    ${typography('labelMedium')};
     color: ${token('body.color')};
     line-height: ${pixelToRem(16)};
     ${transition({

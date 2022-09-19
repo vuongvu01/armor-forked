@@ -147,7 +147,7 @@ const getDayButtonStyle = ({
     } else {
         result = css`
             ${result};
-            visibility: hidden;
+            color: ${color('neutral.05')};
             pointer-events: none;
         `;
     }

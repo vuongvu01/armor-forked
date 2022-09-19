@@ -176,11 +176,11 @@ export const useDatePicker = <E extends HTMLDivElement>(
         },
         inputMaskProps: {
             ...inputProperties,
-            onRootClick,
             value,
             onChange,
             onFocus,
         },
+        onInputIconClick: onRootClick,
         showMaskedInput,
         portalProps,
         dropdownProps,

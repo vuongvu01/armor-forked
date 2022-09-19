@@ -37,6 +37,9 @@ import { FORM_FIELD_TOOLTIP_CLASS_PREFIX } from './constants';
  * ***
  *
  * @armor-docs-component
+ *
+ * @deprecated
+ * This component is deprecated, please consider using the Tooltip component instead.
  */
 export const FormFieldTooltip = forwardRef<
     HTMLDivElement,

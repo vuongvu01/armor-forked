@@ -109,7 +109,9 @@ export const MenuElementRoot = styled(MenuElementRootWrapper).withConfig(
     propsBlocker,
 )<MenuElementRootPropsType>`
     ${reset};
-    ${typography('labelLarge')};
+    ${({ small, typographyProp }) => {
+        return (!small || !typographyProp) && typography('paragraphMedium');
+    }};
     color: ${color('neutral.11')};
     padding-left: ${spacing(6)};
     padding-right: ${spacing(6)};

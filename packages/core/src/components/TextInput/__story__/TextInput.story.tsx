@@ -11,16 +11,16 @@ import {
     Box,
     FormFieldMessage,
     FormField,
-    FormFieldTooltip,
     Tag,
     Pack,
     PackItem,
     IconButton,
 } from '../..';
 import { loremIpsum } from '../../../helpers/LoremIpsum';
-import { TextInput } from '../TextInput';
 import { GroupHelper } from '../../../helpers/GroupHelper';
 import { withWrapper } from '../../../helpers/Wrapper';
+import { TextInput } from '../TextInput';
+import { TextInputAction } from '../TextInputAction';
 
 export default {
     title: 'Core/TextInput',
@@ -31,67 +31,60 @@ export default {
 
 export const AllStates = () => (
     <Box marginTop={5}>
-        <Box marginBottom={2}>
-            <TextInput
-                label="Phone *"
-                name="your_price"
-                marginRight={1}
-                data-testid-input="input42"
-            />
+        <Box marginBottom={4}>
+            <TextInput label="Phone *" name="your_price" margin={1} />
             <TextInput
                 label="Address *"
                 placeholder="Please specify"
                 name="your_price"
-                marginRight={1}
+                margin={1}
             />
             <TextInput
                 placeholder="Label"
                 name="your_price"
                 defaultValue="1000"
-                marginRight={1}
+                margin={1}
             />
-            <TextInput placeholder="Label" name="your_price" marginRight={1} />
+            <TextInput placeholder="Placeholder" name="your_price" margin={1} />
 
-            <Button marginRight={1}>Submit</Button>
+            <Button small margin={1}>
+                Submit
+            </Button>
 
-            <TextInput label="Label" name="your_price" large marginRight={1} />
+            <TextInput label="Label" name="your_price" large margin={1} />
             <TextInput
                 label="Label"
                 name="your_price"
                 defaultValue="1000"
                 large
-                marginRight={1}
+                margin={1}
             />
         </Box>
-        <Box marginBottom={2}>
-            <TextInput
-                label="Label"
-                name="your_price"
-                marginRight={1}
-                disabled
-            />
+        <Box marginBottom={4}>
+            <TextInput label="Label" name="your_price" margin={1} disabled />
             <TextInput
                 label="Label"
                 name="your_price"
                 defaultValue="1000"
-                marginRight={1}
+                margin={1}
                 disabled
             />
             <TextInput
-                placeholder="Label"
+                placeholder="Placeholder"
                 name="your_price"
                 defaultValue="1000"
-                marginRight={1}
+                margin={1}
                 disabled
             />
             <TextInput
-                placeholder="Label"
+                placeholder="Placeholder"
                 name="your_price"
-                marginRight={1}
+                value="Filled input"
+                margin={1}
                 disabled
             />
 
-            <Button marginRight={1} disabled>
+            <Button small margin={1} disabled>
                 Submit
             </Button>
 
@@ -99,7 +92,7 @@ export const AllStates = () => (
                 label="Label"
                 name="your_price"
                 large
-                marginRight={1}
+                margin={1}
                 disabled
             />
             <TextInput
@@ -107,85 +100,78 @@ export const AllStates = () => (
                 name="your_price"
                 defaultValue="1000"
                 large
-                marginRight={1}
+                margin={1}
                 disabled
             />
         </Box>
-        <Box marginBottom={2}>
-            <TextInput label="Label" name="your_price" marginRight={1} error />
+        <Box marginBottom={4}>
+            <TextInput label="Label" name="your_price" margin={1} error />
             <TextInput
                 label="Phone *"
-                placeholder="Mobile"
-                marginRight={1}
+                placeholder="Placeholder"
+                margin={1}
                 error
             />
             <TextInput
-                placeholder="Label"
+                placeholder="Placeholder"
                 name="your_price"
                 defaultValue="1000"
-                marginRight={1}
+                margin={1}
                 error
             />
             <TextInput
-                placeholder="Label"
+                placeholder="Placeholder"
                 name="your_price"
-                marginRight={1}
+                margin={1}
                 error
             />
 
-            <Button marginRight={1}>Submit</Button>
+            <Button small margin={1}>
+                Submit
+            </Button>
 
-            <TextInput
-                label="Label"
-                name="your_price"
-                large
-                marginRight={1}
-                error
-            />
+            <TextInput label="Label" name="your_price" large margin={1} error />
             <TextInput
                 label="Label"
                 name="your_price"
                 defaultValue="1000"
                 large
-                marginRight={1}
+                margin={1}
                 error
             />
         </Box>
-        <Box marginBottom={2}>
-            <TextInput
-                label="Label"
-                name="your_price"
-                marginRight={1}
-                outlined
-            />
+        <Box marginBottom={4}>
+            <TextInput label="Label" name="your_price" margin={1} outlined />
             <TextInput
                 label="Label"
                 name="your_price"
                 defaultValue="1000"
-                marginRight={1}
+                margin={1}
+                outlined
+            />
+            <TextInput
+                placeholder="Placeholder"
+                name="your_price"
+                defaultValue="1000"
+                margin={1}
                 outlined
             />
             <TextInput
                 placeholder="Label"
                 name="your_price"
-                defaultValue="1000"
-                marginRight={1}
-                outlined
-            />
-            <TextInput
-                placeholder="Label"
-                name="your_price"
-                marginRight={1}
+                margin={1}
                 outlined
             />
 
-            <Button marginRight={1}>Submit</Button>
+            <Button small margin={1}>
+                Submit
+            </Button>
 
             <TextInput
                 label="Label"
                 name="your_price"
                 large
-                marginRight={1}
+                margin={1}
                 outlined
             />
             <TextInput
@@ -193,32 +179,29 @@ export const AllStates = () => (
                 name="your_price"
                 defaultValue="1000"
                 large
-                marginRight={1}
+                margin={1}
                 outlined
             />
         </Box>
-        <Box marginBottom={2}>
-            <TextInput
-                label="Label"
-                name="your_price"
-                marginRight={1}
-                multiline
-            />
+        <Box marginBottom={4}>
+            <TextInput label="Label" name="your_price" margin={1} multiline />
             <TextInput
                 label="Label"
                 name="your_price"
                 defaultValue="1000"
-                marginRight={1}
+                margin={1}
                 multiline
             />
 
-            <Button marginRight={1}>Submit</Button>
+            <Button small margin={1}>
+                Submit
+            </Button>
 
             <TextInput
                 label="Label"
                 name="your_price"
                 large
-                marginRight={1}
+                margin={1}
                 multiline
             />
             <TextInput
@@ -226,7 +209,7 @@ export const AllStates = () => (
                 name="your_price"
                 defaultValue="1000"
                 large
-                marginRight={1}
+                margin={1}
                 multiline
             />
         </Box>
@@ -266,25 +249,6 @@ export const Basic = () => {
         </GroupHelper>
     );
 };
-
-// export const NoLabel = () => {
-//     const textInputRef = useRef(null);
-//
-//     return (
-//         <GroupHelper gap={2}>
-//             <Box
-//                 padding={3}
-//                 style={{
-//                     backgroundColor: '#F4F4F8',
-//                     height: '500px',
-//                     width: '600px',
-//                 }}
-//             >
-//                 <TextInput />
-//             </Box>
-//         </GroupHelper>
-//     );
-// };
 
 export const ExternalControl = () => {
     const textInputRef = useRef(null);
@@ -379,35 +343,6 @@ export const LabelAnimation = () => (
             marginBottom={10}
             displayMode="block"
         />
-    </>
-);
-
-export const LabelOverflow = () => (
-    <>
-        <Box width="100px">
-            <TextInput
-                defaultValue="10 USD"
-                label="Name your price"
-                placeholder="...and type it here..."
-                name="your_price"
-                marginTop={5}
-            />
-        </Box>
-        <Box width="100px">
-            <TextInput
-                label="Name your price"
-                placeholder="...and type it here..."
-                name="your_price"
-                marginTop={5}
-            />
-        </Box>
-        <Box width="100px">
-            <TextInput
-                label="Name your price"
-                name="your_price"
-                marginTop={5}
-            />
-        </Box>
     </>
 );
 
@@ -589,43 +524,22 @@ export const Large = () => (
 );
 
 export const AsFormField = () => {
-    const [errored, setErrored] = useState(false);
-
     return (
-        <Box width="50%">
-            <br />
-            <br />
-            <br />
-            <br />
+        <Box width="50%" marginTop={20}>
             <form onSubmit={(e) => e.preventDefault()}>
-                <FormField autoMargin>
+                <FormField marginBottom={2}>
                     <TextInput label="First name" name="first_name" wide />
-                    <FormFieldMessage>{loremIpsum}</FormFieldMessage>
                 </FormField>
-                <FormField autoMargin>
-                    <TextInput
-                        label="Last name"
-                        name="last_name"
-                        error={errored}
-                        wide
-                    />
+                <FormField marginBottom={2}>
+                    <TextInput label="Middle name" name="first_name" wide />
+                    <FormFieldMessage oneLine>{loremIpsum}</FormFieldMessage>
+                </FormField>
+                <FormField marginBottom={2}>
+                    <TextInput label="Last name" name="last_name" error wide />
                     <FormFieldMessage error oneLine>
-                        {errored ? loremIpsum : null}
+                        {loremIpsum}
                     </FormFieldMessage>
-                    <FormFieldTooltip visible={errored}>
-                        Not the droids you are looking for
-                    </FormFieldTooltip>
                 </FormField>
-                <Button onClick={() => setErrored(true)} type="submit">
-                    Submit
-                </Button>
-                <Button
-                    secondary
-                    onClick={() => setErrored(false)}
-                    marginLeft={2}
-                >
-                    Cancel
-                </Button>
             </form>
         </Box>
     );
@@ -822,4 +736,22 @@ export const TypeTime = () => {
 
 export const Uncontrolled = () => {
     return <TextInput label="foo" defaultValue="Hz" />;
+};
+
+export const WithAction = () => {
+    return (
+        <TextInput
+            label="foo"
+            defaultValue="Hz"
+            after={
+                <TextInputAction
+                    marginRight={4}
+                    // eslint-disable-next-line no-alert
+                    onClick={() => alert('You clicked the action')}
+                >
+                    Action
+                </TextInputAction>
+            }
+        />
+    );
 };

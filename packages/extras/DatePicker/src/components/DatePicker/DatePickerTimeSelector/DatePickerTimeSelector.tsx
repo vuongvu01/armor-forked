@@ -1,17 +1,21 @@
 import React, { forwardRef, memo } from 'react';
 import { TimeSeparatorIcon } from '@deliveryhero/armor-icons';
 
+import { ContentSwitcher, ContentSwitcherControl } from '@deliveryhero/armor';
 import { useDatePickerTimeSelectorClassNames } from './hooks/useDatePickerTimeSelectorClassNames';
 import { useDatePickerTimeSelector } from './hooks/useDatePickerTimeSelector';
 import {
-    DatePickerTimeSelectorButton,
     DatePickerTimeSelectorClock,
     DatePickerTimeSelectorDayPeriodSelector,
     DatePickerTimeSelectorInput,
     DatePickerTimeSelectorRoot,
 } from './style';
 import { DatePickerTimeSelectorPropsType } from './type';
-import { DATE_PICKER_TIME_SELECTOR_CLASS_PREFIX } from './constants';
+import {
+    DATE_PICKER_TIME_SELECTOR_CLASS_PREFIX,
+    DATE_PICKER_TIME_SELECTOR_MODE_AM,
+    DATE_PICKER_TIME_SELECTOR_MODE_PM,
+} from './constants';
 
 /**
  * @internal
@@ -28,8 +32,7 @@ export const DatePickerTimeSelector = memo(
                 rootProps,
                 hourInputProps,
                 minuteInputProps,
-                buttonAMProps,
-                buttonPMProps,
+                buttonDayPeriodProps,
             } = useDatePickerTimeSelector(props, ref);
 
             return (
@@ -56,18 +59,18 @@ export const DatePickerTimeSelector = memo(
                     <DatePickerTimeSelectorDayPeriodSelector
                         className={classNameComponents.DayPeriodSelector}
                     >
-                        <DatePickerTimeSelectorButton
-                            {...buttonAMProps}
-                            className={classNameComponents.ButtonAM}
-                        >
-                            AM
-                        </DatePickerTimeSelectorButton>
-                        <DatePickerTimeSelectorButton
-                            {...buttonPMProps}
-                            className={classNameComponents.ButtonPM}
-                        >
-                            PM
-                        </DatePickerTimeSelectorButton>
+                        <ContentSwitcher {...buttonDayPeriodProps}>
+                            <ContentSwitcherControl
+                                switchName={DATE_PICKER_TIME_SELECTOR_MODE_AM}
+                            >
+                                {DATE_PICKER_TIME_SELECTOR_MODE_AM.toUpperCase()}
+                            </ContentSwitcherControl>
+                            <ContentSwitcherControl
+                                switchName={DATE_PICKER_TIME_SELECTOR_MODE_PM}
+                            >
+                                {DATE_PICKER_TIME_SELECTOR_MODE_PM.toUpperCase()}
+                            </ContentSwitcherControl>
+                        </ContentSwitcher>
                     </DatePickerTimeSelectorDayPeriodSelector>
                 </DatePickerTimeSelectorRoot>
             );

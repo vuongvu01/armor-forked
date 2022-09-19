@@ -11,19 +11,17 @@ import {
     widthProps,
     getComponentOverride,
     propsBlocker,
-    durationNormal,
     focusWithin,
     typography,
     token,
     spacing,
     transition,
-    typographyInherit,
+    borderRadius,
 } from '@deliveryhero/armor-system';
 
 import {
     TextInputInnerContainerPropsType,
     TextInputInputPropsType,
-    TextInputInternalPropsWithThemeType,
     TextInputLabelBackgroundPropsType,
     TextInputLabelPropsType,
     TextInputRootPropsType,
@@ -34,7 +32,7 @@ const getRootDynamicStyle = (props: TextInputRootPropsType) => {
         props;
 
     let result = css`
-        display: ${displayMode === 'block' ? 'block' : 'inline-block'};
+        display: ${displayMode === 'block' ? displayMode : 'inline-block'};
     ` as FlattenInterpolation<ThemeProps<any>>;
 
     if (enableFocusOnRootClick) {
@@ -50,14 +48,14 @@ const getRootDynamicStyle = (props: TextInputRootPropsType) => {
     if (outlined) {
         result = css`
             ${result};
-            border-color: ${color('primary.main')};
+            border-color: ${color('primary.07')};
         `;
     }
 
     if (error) {
         result = css`
             ${result};
-            border-color: ${color('error.main')};
+            border-color: ${color('error.08')};
         `;
     }
 
@@ -65,7 +63,7 @@ const getRootDynamicStyle = (props: TextInputRootPropsType) => {
         result = css`
             ${result};
             background-color: ${color('neutral.02')};
-            border-color: ${color('neutral.05')};
+            border-color: ${color('neutral.03')};
         `;
     }
 
@@ -78,19 +76,16 @@ export const TextInputRoot = styled.div.withConfig(
 )<TextInputRootPropsType>`
     box-sizing: border-box;
     position: relative;
-    border-style: solid;
-    border-width: 1px;
-    transition: border ${durationNormal}ms ease;
     vertical-align: middle;
+    border: 1px solid ${color('neutral.03')};
+    border-radius: ${borderRadius('soft')};
     background-color: ${color('neutral.00')};
     ${typography('paragraphMedium')};
     color: ${token('body.color')};
 
     ${({ error, disabled }) =>
         focusWithin({ error, disabled, noOutline: true })};
-
-    border-color: ${color('neutral.05')};
-    border-radius: ${token('shape.borderRadius.soft')};
+    ${transition({ border: true })};
     ${getRootDynamicStyle};
     ${getComponentOverride('TextInput')};
     ${marginProps};
@@ -98,40 +93,26 @@ export const TextInputRoot = styled.div.withConfig(
     ${heightProps};
 `;
 
-const getInnerContainerDynamicStyle = (
-    props: TextInputInnerContainerPropsType,
-) => {
-    const { multiline } = props;
-
-    let result = css``;
-
-    if (!multiline) {
-        result = css`
-            ${result};
-            align-items: center;
-        `;
-    }
-
-    return result;
-};
-
 export const TextInputInnerContainer = styled.div.withConfig(
     propsBlocker,
-)<TextInputInnerContainerPropsType>`
-    display: flex;
-    ${getInnerContainerDynamicStyle};
-`;
+)<TextInputInnerContainerPropsType>(
+    ({ multiline }) => css`
+        display: flex;
+        align-items: ${multiline ? 'unset' : 'center'};
+    `,
+);
 
 const getInputDynamicStyle = (props: TextInputInputPropsType) => {
-    const { multiline, disabled, large } = props;
+    const { multiline, disabled, large, hasBeforeSection, hasAfterSection } =
+        props;
 
-    let result = css`` as FlattenInterpolation<ThemeProps<any>>;
+    let result = {};
 
     if (multiline) {
-        // todo: do we really need this constraint?
         result = css`
             ${result};
-            min-width: ${multiline ? '100px' : 0};
+            min-width: ${spacing(25)};
+            min-height: ${spacing(10)};
         `;
     }
 
@@ -145,8 +126,21 @@ const getInputDynamicStyle = (props: TextInputInputPropsType) => {
     if (large) {
         result = css`
             ${result};
-            padding-top: ${spacing(3)};
-            padding-bottom: ${spacing(3)};
+            padding: ${spacing(3, 4)};
+        `;
+    }
+
+    if (hasBeforeSection) {
+        result = css`
+            ${result};
+            padding-left: ${spacing(3)};
+        `;
+    }
+
+    if (hasAfterSection) {
+        result = css`
+            ${result};
+            padding-right: ${spacing(3)};
         `;
     }
 
@@ -164,7 +158,7 @@ export const TextInputInput = styled(Wrapper).withConfig(
     propsBlocker,
 )<TextInputInputPropsType>`
     box-sizing: border-box;
-    border: 0 none;
+    border: none;
     outline: none;
     appearance: none;
     flex-grow: 1;
@@ -172,9 +166,9 @@ export const TextInputInput = styled(Wrapper).withConfig(
     background-color: transparent;
     width: 100%;
     padding: ${spacing(2, 4)};
-    border-radius: ${token('shape.borderRadius.soft')};
-    ${typographyInherit()};
+    border-radius: ${borderRadius('soft')};
     color: ${token('body.color')};
+    ${typography('paragraphLarge')};
 
     &::placeholder {
         color: ${color('neutral.07')};
@@ -186,43 +180,23 @@ export const TextInputInput = styled(Wrapper).withConfig(
     ${getInputDynamicStyle};
 `;
 
-const getLabelDynamicStyle = (props: TextInputInternalPropsWithThemeType) => {
-    const { inside, large, disabled, value, defaultValue, type, error } = props;
+const getLabelDynamicStyle = (props: TextInputLabelPropsType) => {
+    const { isLabelInside, large } = props;
 
-    let result = css`` as FlattenInterpolation<ThemeProps<any>>;
+    let result = {};
 
-    if (disabled) {
-        result = css`
-            ${result};
-            background: transparent;
-        `;
-    }
-
-    if (error) {
-        result = css`
-            ${result};
-            color: ${color('error.main')};
-        `;
-    }
-
-    if (
-        !(disabled && value) &&
-        (type !== 'number' ||
-            (typeof value === 'undefined' &&
-                typeof defaultValue === 'undefined')) &&
-        inside
-    ) {
+    if (isLabelInside) {
         result = css`
             ${result};
             ${typography('paragraphMedium')};
             color: ${color('neutral.07')};
-            top: 9px;
+            top: ${spacing(2)};
         `;
 
         if (large) {
             result = css`
                 ${result};
-                top: 12px;
+                top: ${spacing(3)};
             `;
         }
     }
@@ -247,17 +221,14 @@ export const TextInputLabel = styled.label.withConfig(
     })};
     ${typography('labelSmall')};
     color: ${color('neutral.07')};
-    margin-left: ${spacing(3)};
-    margin-right: ${spacing(3)};
+    margin: ${spacing(0, 3)};
     top: -${spacing(2)};
     ${getLabelDynamicStyle};
 `;
 
-const getLabelBackgroundDynamicStyle = (
-    props: TextInputInternalPropsWithThemeType,
-) => {
-    const { disabled } = props;
-
+const getLabelBackgroundDynamicStyle = ({
+    disabled,
+}: TextInputLabelBackgroundPropsType) => {
     let result = css`
         background: linear-gradient(
             0,
@@ -284,7 +255,6 @@ const getLabelBackgroundDynamicStyle = (
 export const TextInputLabelBackground = styled.span.withConfig(
     propsBlocker,
 )<TextInputLabelBackgroundPropsType>`
-    padding-left: ${spacing(1)};
-    padding-right: ${spacing(1)};
+    padding: ${spacing(0, 1)};
     ${getLabelBackgroundDynamicStyle};
 `;

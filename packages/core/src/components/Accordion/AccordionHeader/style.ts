@@ -6,6 +6,8 @@ import {
     spacing,
     mouseCursor,
     token,
+    transition,
+    borderRadius,
 } from '@deliveryhero/armor-system';
 
 import { AccordionHeaderRootPropsType } from './type';
@@ -15,11 +17,7 @@ const getRootStyle = ({ disabled }: AccordionHeaderRootPropsType) => {
     if (disabled) {
         return css`
             pointer-events: none;
-            background: ${color('neutral.03')};
-
-            &:hover {
-                background: ${color('neutral.03')};
-            }
+            background-color: ${color('neutral.03')};
         `;
     }
 
@@ -29,7 +27,7 @@ const getRootStyle = ({ disabled }: AccordionHeaderRootPropsType) => {
 const getHeaderElementsStyle = ({ disabled }: AccordionHeaderRootPropsType) => {
     if (disabled) {
         return css`
-            color: ${color('neutral.05')};
+            color: ${color('neutral.07')};
         `;
     }
 
@@ -40,19 +38,24 @@ const getHeaderElementsStyle = ({ disabled }: AccordionHeaderRootPropsType) => {
 export const AccordionHeaderRoot = styled.div.withConfig(
     propsBlocker,
 )<AccordionHeaderRootPropsType>`
-    ${typography('labelMedium')};
+    ${typography('labelLarge')};
     color: ${token('body.color')};
-    align-items: center;
     box-sizing: border-box;
     display: inline-flex;
-    min-height: 56px;
+    align-items: center;
     justify-content: space-between;
-
+    min-height: ${spacing(14)};
     padding: ${spacing(4, 6)};
+
     &:hover {
-        background: ${color('primary.lightest')};
+        background-color: ${color('primary.lightest')};
     }
 
+    &:focus-visible {
+        border-radius: ${borderRadius('sharp')};
+    }
+
+    ${transition({ 'background-color': true })}
     ${mouseCursor};
     ${getRootStyle};
 `;
@@ -64,7 +67,6 @@ export const AccordionHeaderBody = styled.div<AccordionHeaderRootPropsType>`
 `;
 
 export const AccordionHeaderTitle = styled.div<AccordionHeaderRootPropsType>`
-    ${typography('labelLarge')};
     color: ${color('neutral.11')};
     padding-right: ${spacing(3)};
     ${getHeaderElementsStyle};
@@ -76,7 +78,7 @@ const accordionExpansionIndicatorStyle = ({
     return disabled
         ? css`
               .ExpansionIndicator-Icon {
-                  color: ${color('neutral.05')};
+                  color: ${color('neutral.07')};
               }
           `
         : {};
@@ -86,7 +88,7 @@ export const AccordionHeaderExpansionIndicator = styled(
     ExpansionIndicator,
 )<AccordionHeaderRootPropsType>`
     .AccordionHeader-ExpansionIndicator.ExpansionIndicator-Content {
-        width: 56px;
+        width: ${spacing(14)};
     }
 
     ${accordionExpansionIndicatorStyle};

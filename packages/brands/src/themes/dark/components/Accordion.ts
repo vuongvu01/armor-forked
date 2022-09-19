@@ -1,42 +1,36 @@
 import { css } from 'styled-components';
-import { colorGrey50, color } from '@deliveryhero/armor-system';
+import {
+    colorGrey50,
+    colorGrey70,
+    colorGrey80,
+    colorGrey30,
+    colorGrey60,
+    colorGrey01,
+} from '@deliveryhero/armor-system';
 import { AccordionPropsType } from '@deliveryhero/armor';
 
 export const getAccordionOverride = ({ disabled }: AccordionPropsType) => {
     let result = css`
-        border-top-color: ${color('neutral.02')};
-        border-bottom-color: ${color('neutral.02')};
+        border-color: ${colorGrey60};
+        background-color: ${colorGrey80};
 
+        .AccordionHeader-Root:hover {
+            background-color: ${colorGrey70};
+        }
         .AccordionHeader-HeaderTitle,
         .ExpansionIndicator-Icon {
-            color: ${color('neutral.06')};
+            color: ${colorGrey01};
         }
     `;
 
     if (disabled) {
         result = css`
             ${result};
+            background-color: ${colorGrey50};
 
-            .AccordionHeader-Root {
-                background: ${color('neutral.02')};
-            }
-
-            .AccordionHeader-HeaderTitle {
-                color: ${colorGrey50};
-            }
-
-            .ExpansionIndicator-Icon {
-                color: ${colorGrey50};
-            }
-        `;
-    } else {
-        result = css`
-            ${result};
-
-            .AccordionHeader-Root {
-                &:hover {
-                    background: ${color('neutral.03')};
-                }
+            .AccordionHeader-HeaderTitle,
+            .ExpansionIndicator-Icon.ExpansionIndicator-Icon--disabled {
+                color: ${colorGrey30};
             }
         `;
     }

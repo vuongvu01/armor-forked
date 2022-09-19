@@ -52,7 +52,7 @@ export const DatePickerDropdown = styled.div.withConfig(
 )<DatePickerDropdownPropsType>`
     ${typography('paragraphMedium')};
     color: ${color('neutral.07')};
-    border-radius: ${borderRadius('soft')};
+    border-radius: ${borderRadius('round')};
     background-color: ${color('neutral.00')};
     min-width: ${spacing(84)};
     ${zIndex};

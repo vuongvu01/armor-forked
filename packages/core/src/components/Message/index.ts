@@ -3,5 +3,5 @@
  */
 
 export * from './Message';
-export type { MessagePropsType } from './type';
 export * from './MessageAction';
+export type { MessagePropsType, MessageLevelType } from './type';

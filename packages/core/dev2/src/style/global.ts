@@ -1,14 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
-import {
-    muiTypography,
-    muiColor,
-    muiToken,
-    MUIThemeType,
-} from '@gannochenko/ui.styled-components';
 
 export const GlobalStyle = createGlobalStyle<{ theme: MUIThemeType }>`
     html {
-        font-size: ${muiToken('typography.htmlFontSize')}px;
+        font-family: Roboto, sans-serif;
         cursor: default;
         -moz-tab-size: 4;
         tab-size: 4;
@@ -20,9 +14,6 @@ export const GlobalStyle = createGlobalStyle<{ theme: MUIThemeType }>`
     body {
         padding: 0 !important;
         margin: 0 !important;
-        color: ${muiColor('text.primary')};
-        background-color: ${muiColor('background.default')};
-        ${muiTypography('body1')};
         min-width: 320px;
         overflow-x: hidden;
     }
@@ -36,13 +27,13 @@ export const GlobalStyle = createGlobalStyle<{ theme: MUIThemeType }>`
     ::after {
       box-sizing: border-box;
     }
-    
+
     ::before,
     ::after {
       text-decoration: inherit;
       vertical-align: inherit;
     }
-    
+
     dl dl,
     dl ol,
     dl ul,
@@ -84,13 +75,13 @@ export const GlobalStyle = createGlobalStyle<{ theme: MUIThemeType }>`
     strong {
       font-weight: bolder;
     }
-    
+
     code,
     kbd,
     samp {
       font-family: monospace, monospace;
     }
-    
+
     small {
       font-size: 80%;
     }
@@ -103,101 +94,101 @@ export const GlobalStyle = createGlobalStyle<{ theme: MUIThemeType }>`
     video {
       vertical-align: middle;
     }
-    
+
     audio,
     video {
       display: inline-block;
     }
-    
+
     audio:not([controls]) {
       display: none;
       height: 0;
     }
-    
+
     img {
       border-style: none;
     }
-    
+
     svg:not([fill]) {
       fill: currentColor;
     }
-    
+
     svg:not(:root) {
       overflow: hidden;
     }
-    
+
     button,
     input,
     select {
       margin: 0;
     }
-    
+
     button, a, input, textarea {
         outline: none;
     }
-    
+
     button {
       overflow: visible;
       text-transform: none;
     }
-    
+
     button,
     [type="button"],
     [type="reset"],
     [type="submit"] {
         -webkit-appearance: button;
     }
-    
+
     input {
       overflow: visible;
     }
-    
+
     select {
       text-transform: none;
     }
-    
+
     textarea {
       margin: 0;
       overflow: auto;
       resize: vertical;
     }
-    
+
     [type="checkbox"],
     [type="radio"] {
       padding: 0;
     }
-    
+
     ::-webkit-input-placeholder {
       color: inherit;
       opacity: 0.54;
     }
-    
+
     ::-webkit-file-upload-button {
       -webkit-appearance: button;
       font: inherit;
     }
-    
+
     ::-moz-focus-inner {
       border-style: none;
       padding: 0;
     }
-    
+
     :-moz-focusring {
       outline: 1px dotted ButtonText;
     }
-    
+
     :-moz-ui-invalid {
       box-shadow: none;
     }
-    
+
     summary {
       display: list-item;
     }
-    
+
     canvas {
       display: inline-block;
     }
-    
+
     a,
     area,
     button,
@@ -210,7 +201,7 @@ export const GlobalStyle = createGlobalStyle<{ theme: MUIThemeType }>`
       -ms-touch-action: manipulation;
       touch-action: manipulation;
     }
-    
+
     [hidden] {
       display: none;
     }
@@ -218,16 +209,16 @@ export const GlobalStyle = createGlobalStyle<{ theme: MUIThemeType }>`
     [aria-busy="true"] {
       cursor: progress;
     }
-    
+
     [aria-disabled="true"],
     [disabled] {
       cursor: not-allowed;
     }
-    
+
     [aria-hidden="false"][hidden] {
       display: initial;
     }
-    
+
     [aria-hidden="false"][hidden]:not(:focus) {
       clip: rect(0, 0, 0, 0);
       position: absolute;

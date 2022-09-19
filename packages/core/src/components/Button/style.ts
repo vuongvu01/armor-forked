@@ -11,8 +11,9 @@ import {
     typography,
     spacing,
     color,
-    getOutlineFocusStyleFromColor,
     borderRadius,
+    getFocusStyleFromColor,
+    getOutlineFocusStyleFromColor,
 } from '@deliveryhero/armor-system';
 
 import { ButtonRootPropsType } from './type';
@@ -63,33 +64,42 @@ const getDynamicStyle = ({
             border-color: ${color('primary.main')};
             background-color: transparent;
 
-            &:hover {
-                color: ${color('primary.05')};
-                border-color: ${color('primary.05')};
-            }
-            &:focus-visible {
-                border-color: ${color('primary.07')};
-                ${getOutlineFocusStyleFromColor('primary.07')};
-            }
-            &:active {
-                color: ${color('primary.dark')};
-                border-color: ${color('primary.dark')};
-                background-color: ${color('neutral.02')};
+            &:enabled {
+                &:hover {
+                    color: ${color('primary.05')};
+                    border-color: ${color('primary.05')};
+                }
+
+                &:focus-visible {
+                    border-color: ${color('primary.07')};
+                    ${getOutlineFocusStyleFromColor('primary.07')};
+                }
+
+                &:active {
+                    color: ${color('primary.10')};
+                    border-color: ${color('primary.10')};
+                    background-color: ${color('neutral.02')};
+                }
             }
         `;
     } else if (tertiary) {
         result = css`
             ${getTertiaryInitialColors};
-            &:hover {
-                color: ${color('primary.05')};
-            }
-            &:focus-visible {
-                border-color: ${color('primary.07')};
-                ${getOutlineFocusStyleFromColor('primary.07')};
-            }
-            &:active {
-                color: ${color('primary.dark')};
-                background-color: ${color('neutral.02')};
+
+            &:enabled {
+                &:hover {
+                    color: ${color('primary.05')};
+                }
+
+                &:focus-visible {
+                    border-color: ${color('primary.07')};
+                    ${getOutlineFocusStyleFromColor('primary.07')};
+                }
+
+                &:active {
+                    color: ${color('primary.10')};
+                    background-color: ${color('neutral.02')};
+                }
             }
         `;
     } else {
@@ -97,76 +107,72 @@ const getDynamicStyle = ({
             ${getPrimaryInitialColors};
             border-width: 0;
 
-            &:hover {
-                color: ${color('neutral.00')};
-                border-color: ${color('primary.05')};
-                background-color: ${color('primary.05')};
-            }
-            &:focus-visible {
-                border-color: ${color('neutral.00')};
-                ${getOutlineFocusStyleFromColor('primary.07')};
-            }
-            &:active {
-                color: ${color('neutral.00')};
-                border-color: ${color('neutral.00')};
-                background-color: ${color('primary.08')};
+            &:enabled {
+                &:hover {
+                    color: ${color('neutral.00')};
+                    border-color: ${color('primary.05')};
+                    background-color: ${color('primary.05')};
+                }
+
+                &:focus-visible {
+                    border-color: ${color('neutral.00')};
+                    ${getFocusStyleFromColor('primary.07', 'neutral.00')};
+                }
+
+                &:active {
+                    color: ${color('neutral.00')};
+                    border-color: ${color('neutral.00')};
+                    background-color: ${color('primary.08')};
+                }
             }
         `;
     }
 
     if (danger) {
-        if (secondary) {
-            result = css`
-                ${result};
-                color: ${color('error.main')};
-                border-color: ${color('error.main')};
-
-                &:hover {
-                    color: ${color('error.05')};
-                    border-color: ${color('error.05')};
-                }
-                &:focus-visible {
-                    border-color: ${color('error.07')};
-                    ${getOutlineFocusStyleFromColor('error.07')};
-                }
-                &:active {
-                    color: ${color('error.08')};
-                    border-color: ${color('error.08')};
-                }
-            `;
-        } else if (tertiary) {
+        if (tertiary) {
             result = css`
                 ${result};
                 ${getTertiaryDangerInitialColors};
-                &:hover {
-                    color: ${color('error.05')};
-                }
-                &:active {
-                    color: ${color('error.main')};
-                }
+
                 &:disabled {
                     color: ${color('neutral.05')};
                 }
-                &:focus-visible {
-                    border-color: ${color('error.07')};
-                    ${getOutlineFocusStyleFromColor('error.07')};
+
+                &:enabled {
+                    &:hover {
+                        color: ${color('error.05')};
+                    }
+
+                    &:active {
+                        color: ${color('error.08')};
+                    }
+
+                    &:focus-visible {
+                        border-color: ${color('error.07')};
+                        ${getOutlineFocusStyleFromColor('error.07')};
+                    }
                 }
             `;
         } else {
             result = css`
                 ${result};
                 ${getPrimaryDangerInitialColors};
-                &:hover {
-                    border-color: ${color('error.05')};
-                    background-color: ${color('error.05')};
-                }
-                &:active {
-                    border-color: ${color('error.08')};
-                    background-color: ${color('error.08')};
-                }
-                &:focus-visible {
-                    border-color: ${color('neutral.00')};
-                    ${getOutlineFocusStyleFromColor('error.07')};
+
+                &:enabled {
+                    &:hover {
+                        border-color: ${color('error.05')};
+                        background-color: ${color('error.05')};
+                    }
+
+                    &:active {
+                        border-color: ${color('error.08')};
+                        background-color: ${color('error.08')};
+                    }
+
+                    &:focus-visible {
+                        border-color: ${color('neutral.00')};
+                        ${getFocusStyleFromColor('error.07', 'neutral.00')};
+                    }
                 }
             `;
         }
@@ -190,33 +196,42 @@ const getDynamicStyle = ({
             result = css`
                 ${result};
                 color: ${color('neutral.05')};
-                &:hover,
-                &:focus,
-                &:active,
-                &:focus:not(:active) {
-                    color: ${color('neutral.05')};
+
+                &:enabled {
+                    &:hover,
+                    &:focus,
+                    &:active,
+                    &:focus:not(:active) {
+                        color: ${color('neutral.05')};
+                    }
                 }
             `;
         } else if (secondary) {
             result = css`
                 ${result};
                 ${getSecondaryDisabledColors};
-                &:hover,
-                &:focus,
-                &:active,
-                &:focus:not(:active) {
-                    ${getSecondaryDisabledColors};
+
+                &:enabled {
+                    &:hover,
+                    &:focus,
+                    &:active,
+                    &:focus:not(:active) {
+                        ${getSecondaryDisabledColors};
+                    }
                 }
             `;
         } else {
             result = css`
                 ${result};
                 ${getPrimaryDisabledColors};
-                &:hover,
-                &:focus,
-                &:active,
-                &:focus:not(:active) {
-                    ${getPrimaryDisabledColors};
+
+                &:enabled {
+                    &:hover,
+                    &:focus,
+                    &:active,
+                    &:focus:not(:active) {
+                        ${getPrimaryDisabledColors};
+                    }
                 }
             `;
         }

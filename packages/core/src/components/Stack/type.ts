@@ -1,5 +1,9 @@
 import { HTMLAttributes } from 'react';
-import { MarginPropsType, PaddingPropsType } from '@deliveryhero/armor-system';
+import {
+    MarginPropsType,
+    PaddingPropsType,
+    WidthPropsType,
+} from '@deliveryhero/armor-system';
 
 import { AlignSelfType, FlexEffectivePropsType } from '../Flex/type';
 
@@ -20,7 +24,8 @@ type StackEffectivePropsType = Partial<{
     > &
     HTMLAttributes<HTMLElement> &
     PaddingPropsType &
-    MarginPropsType;
+    MarginPropsType &
+    WidthPropsType;
 
 type StackItemEffectivePropsType = Partial<{
     flexGrow: number;

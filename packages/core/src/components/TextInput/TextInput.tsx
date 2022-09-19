@@ -9,7 +9,7 @@ import {
     TextInputLabelBackground,
     TextInputRoot,
 } from './style';
-import { TextInputInputPropsType, TextInputPropsType } from './type';
+import { TextInputPropsType } from './type';
 import {
     TEXT_INPUT_CLASS_PREFIX,
     textInputLabel,
@@ -47,18 +47,15 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputPropsType>(
             inputProps,
             inputLabelProps,
             inputLabelBackgroundProps,
-
             Tag,
             before,
             after,
             label,
             isLabelInside,
-
             disabled,
             outlined,
             large,
             error,
-
             internalInputRef,
         } = useTextInput(restProps, ref);
 
@@ -73,7 +70,6 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputPropsType>(
         );
 
         return (
-            // @ts-ignore todo: the fix is only available with loose of backward compatibility
             <TextInputRoot
                 data-testid={textInputRoot}
                 {...rootProps}
@@ -88,12 +84,9 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputPropsType>(
                         {...inputProps}
                         className={classNameComponents.Input}
                     >
-                        {(forwardedProps: TextInputInputPropsType) => (
-                            <Tag
-                                {...forwardedProps}
-                                // @ts-ignore
-                                ref={internalInputRef}
-                            />
+                        {(forwardedProps) => (
+                            // @ts-ignore
+                            <Tag {...forwardedProps} ref={internalInputRef} />
                         )}
                     </TextInputInput>
                     {after}
@@ -123,7 +116,7 @@ TextInput.defaultProps = {
     disableLabelEffect: false,
     multiline: false,
     error: false,
-    large: false, // default is medium (small in design)
+    large: false,
     outlined: false,
     enableFocusOnRootClick: false,
     onChange: () => {},

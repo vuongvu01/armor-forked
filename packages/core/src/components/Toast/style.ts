@@ -15,7 +15,7 @@ import {
 } from '@deliveryhero/armor-system';
 
 import { ToastRootPropsType, ToastHookPropsType } from './type';
-import { ToastLevels, ToastPositions } from './constants';
+import { ToastLevels, ToastPositions, DEFAULT_GAP_SPACING } from './constants';
 
 const getRootStyle = ({
     level,
@@ -35,6 +35,10 @@ const getRootStyle = ({
         }
         .CloseButton-Root:focus-visible {
             border-radius: ${borderRadius('soft')};
+        }
+        .Message-Content {
+            display: flex;
+            align-items: center;
         }
     `;
 
@@ -130,7 +134,7 @@ const getContainerStyle = ({ position, gap }: ToastHookPropsType) => {
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            gap: ${gap || spacing(3)};
+            gap: ${spacing(gap || DEFAULT_GAP_SPACING)};
         }
         .ToastContainer-Item {
             ${transition({

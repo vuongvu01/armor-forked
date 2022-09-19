@@ -13,7 +13,6 @@ import {
     ellipsis as ellipsisCSS,
     LEFT,
     RIGHT,
-    fontWeightMedium,
     zIndexTableHeader,
     durationNormal,
     token,
@@ -44,9 +43,9 @@ const getRootStyle = ({
         result = css`
             ${result};
             vertical-align: middle;
-            ${typography('paragraphMedium')};
+            ${typography('labelMedium')};
             color: ${token('body.color')};
-            font-weight: ${fontWeightMedium};
+            padding: ${spacing(4)};
         `;
 
         if (width) {
@@ -191,7 +190,7 @@ const getRootStyle = ({
             ${result};
             cursor: not-allowed;
             background-color: ${color('neutral.02')};
-            color: ${color('neutral.03')};
+            color: ${color('neutral.05')};
 
             &:hover {
                 background-color: ${color('neutral.02')};
@@ -253,7 +252,6 @@ export const TableCellRoot = styled(Wrapper).withConfig(
     text-align: left;
     vertical-align: top;
     ${transition({ 'background-color': true })};
-    background-color: inherit;
     ${typography('paragraphLarge')};
     color: ${token('body.color')};
     padding: ${spacing(5, 4)};

@@ -17,14 +17,6 @@ export const useDatePickerTimeSelectorClassNames = (
                 classPrefix,
                 'InputMinutes',
             )}`,
-            ButtonAM: `${makeBEM(classPrefix, 'Button')} ${makeBEM(
-                classPrefix,
-                'ButtonAM',
-            )}`,
-            ButtonPM: `${makeBEM(classPrefix, 'Button')} ${makeBEM(
-                classPrefix,
-                'ButtonPM',
-            )}`,
             TimeSeparatorIcon: makeBEM(classPrefix, 'TimeSeparatorIcon'),
             DayPeriodSelector: makeBEM(classPrefix, 'DayPeriodSelector'),
         };

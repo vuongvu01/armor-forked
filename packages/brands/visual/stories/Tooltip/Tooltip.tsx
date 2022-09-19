@@ -1,118 +1,90 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
-import { Tooltip, Button, Checkbox } from '@deliveryhero/armor';
-import { DisablePortal } from '@deliveryhero/armor-system';
+import { Tooltip, IconButton } from '@deliveryhero/armor';
+import { PlaceholderIcon } from '@deliveryhero/armor-icons';
+
+const withCanvas = (Story: any) => (
+    <div
+        style={{
+            padding: '300px',
+        }}
+    >
+        <Story />
+    </div>
+);
 
 export default {
     title: 'Tooltip',
     component: Tooltip,
+    decorators: [withCanvas],
 };
 
-export const PlacementTop = () => {
-    return (
-        <DisablePortal>
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <Tooltip align="top" content={'Top'} defaultOpen>
-                <Button>Top</Button>
-            </Tooltip>
-        </DisablePortal>
-    );
-};
+export const Small = () => (
+    <Tooltip content="Small" small open>
+        <IconButton light>
+            <PlaceholderIcon small />
+        </IconButton>
+    </Tooltip>
+);
 
-export const PlacementBottom = () => {
-    return (
-        <DisablePortal>
-            <Tooltip align="bottom" content={'Bottom'} defaultOpen>
-                <Button>Bottom</Button>
-            </Tooltip>
-        </DisablePortal>
-    );
-};
+export const Regular = () => (
+    <Tooltip content="Regular" open>
+        <IconButton light>
+            <PlaceholderIcon small />
+        </IconButton>
+    </Tooltip>
+);
 
-export const DisplayOnlyChildrenWhenNoContentSpecified = () => {
-    return (
-        <DisablePortal>
-            <Tooltip align="bottom" defaultOpen>
-                <Button>Bottom</Button>
-            </Tooltip>
-        </DisablePortal>
-    );
-};
+export const Error = () => (
+    <Tooltip content="Error" error open>
+        <IconButton light>
+            <PlaceholderIcon small />
+        </IconButton>
+    </Tooltip>
+);
 
-export const DefaultOpenSmall = () => {
-    return (
-        <DisablePortal>
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <Tooltip align="top" content={'Top'} small defaultOpen>
-                <Button>Top</Button>
-            </Tooltip>
-        </DisablePortal>
-    );
-};
+export const MaxWidth = () => (
+    <Tooltip
+        content="From what i am seeing in the code, the small parameter is only responsible for decreasing the padding in the tooltip body. From what i am seeing in the code, the small parameter is only responsible for decreasing the padding in the tooltip body. From what i am seeing in the code, the small parameter is only responsible for decreasing the padding in the tooltip body"
+        defaultOpen
+        maxWidth="300px"
+    >
+        <IconButton light>
+            <PlaceholderIcon small />
+        </IconButton>
+    </Tooltip>
+);
 
-export const ControlledBodyWidth = () => {
-    return (
-        <DisablePortal>
-            <Tooltip
-                align="bottom"
-                content="From what i am seeing in the code, the small parameter is only responsible for decreasing the padding in the tooltip body. From what i am seeing in the code, the small parameter is only responsible for decreasing the padding in the tooltip body. From what i am seeing in the code, the small parameter is only responsible for decreasing the padding in the tooltip body"
-                defaultOpen
-                maxWidth="300px"
-            >
-                <Button marginLeft={30}>Controlled width</Button>
-            </Tooltip>
-        </DisablePortal>
-    );
-};
+export const CustomOffset = () => (
+    <Tooltip content="Tooltip" defaultOpen offset={[0, 15]}>
+        <IconButton light>
+            <PlaceholderIcon small />
+        </IconButton>
+    </Tooltip>
+);
 
-export const OnCheckboxWithCustomOffset = () => {
-    return (
-        <DisablePortal>
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <Tooltip
-                content="This week contains at least one sub-category without availability"
-                align="top-start"
-                arrowPadding={10}
-                offset={[-10, 10]}
-                open
-            >
-                <Checkbox
-                    disabled
-                    style={{ marginRight: '1rem', paddingTop: '0.2rem' }}
-                    checked
-                />
-            </Tooltip>
-        </DisablePortal>
+// eslint-disable-next-line react/display-name
+const makeAlign = (align: any) => () =>
+    (
+        <Tooltip content={align} align={align} open>
+            <IconButton light>
+                <PlaceholderIcon small />
+            </IconButton>
+        </Tooltip>
     );
-};
 
-export const DefaultOpenError = () => {
-    return (
-        <DisablePortal>
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <Tooltip content={'Error'} error defaultOpen>
-                <Button>Error</Button>
-            </Tooltip>
-        </DisablePortal>
-    );
-};
+export const AlignTopStart = makeAlign('top-start');
+export const AlignTop = makeAlign('top');
+export const AlignTopEnd = makeAlign('top-end');
+
+export const AlignRightStart = makeAlign('right-start');
+export const AlignRight = makeAlign('right');
+export const AlignRightEnd = makeAlign('right-end');
+
+export const AlignBottomStart = makeAlign('bottom-start');
+export const AlignBottom = makeAlign('bottom');
+export const AlignBottomEnd = makeAlign('bottom-end');
+
+export const AlignLeftStart = makeAlign('left-start');
+export const AlignLeft = makeAlign('left');
+export const AlignLeftEnd = makeAlign('left-end');

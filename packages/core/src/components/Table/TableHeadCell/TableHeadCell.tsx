@@ -36,6 +36,7 @@ export const TableHeadCell = forwardRef<
 
     const {
         rootProps,
+        sortingIconProps,
 
         isAscending,
         isDescending,
@@ -49,25 +50,29 @@ export const TableHeadCell = forwardRef<
                 {children}
                 {isIconAlphabetical && (
                     <SortAlphabetIcon
-                        marginLeft={2}
+                        {...sortingIconProps}
+                        medium
                         className={classNameComponents.AlphabeticalIcon}
                     />
                 )}
                 {isIconNumerical && (
                     <SortNumberIcon
-                        marginLeft={2}
+                        {...sortingIconProps}
+                        medium
                         className={classNameComponents.NumericalIcon}
                     />
                 )}
                 {isAscending && (
                     <ArrowUpTailIcon
-                        marginLeft={2}
+                        {...sortingIconProps}
+                        small
                         className={classNameComponents.ArrowUpIcon}
                     />
                 )}
                 {isDescending && (
                     <ArrowDownTailIcon
-                        marginLeft={2}
+                        {...sortingIconProps}
+                        small
                         className={classNameComponents.ArrowDownIcon}
                     />
                 )}

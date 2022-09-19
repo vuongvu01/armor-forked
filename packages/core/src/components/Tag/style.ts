@@ -10,6 +10,8 @@ import {
     typography,
     durationNormal,
     token,
+    widthProps,
+    ellipsis,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -20,11 +22,6 @@ import {
     TagTextPropsType,
 } from './type';
 import { TAG_DELETE_BEHAVIOUR_OPTIONS, TAG_TYPES } from './constants';
-
-const makeBorder = (borderColor: string) => () =>
-    css`
-        box-shadow: inset 0 0 0 1px ${color(borderColor)};
-    `;
 
 const textStyle = ({
     smallVerticalPadding,
@@ -53,16 +50,17 @@ const textStyle = ({
 export const TagText = styled.div<TagTextPropsType>`
     ${typography('paragraphSmall')};
     color: ${token('body.color')};
+    ${ellipsis};
     ${textStyle};
 `;
 
 const tagIndicatorSpacing = ({ small }: TagIndicatorContainerPropsType) => {
     return css`
-        padding-right: ${small ? spacing(1) : spacing(2)};
-        padding-left: ${small ? spacing(1) : spacing(2)};
-        margin-top: ${small ? spacing(0.5) : spacing(1)};
-        margin-bottom: ${small ? spacing(0.5) : spacing(1)};
-        margin-right: ${small ? spacing(0.5) : spacing(0)};
+        padding-right: ${spacing(1.5)};
+        padding-left: ${spacing(1.5)};
+        margin-top: ${spacing(small ? 0.5 : 1)};
+        margin-bottom: ${spacing(small ? 0.5 : 1)};
+        margin-right: ${spacing(small ? 0.5 : 0)};
     `;
 };
 
@@ -82,10 +80,10 @@ export const TagIndicatorContainer = styled.div<TagIndicatorContainerPropsType>`
 const tagIconSpacing = ({ small }: TagIconContainerPropsType) => {
     return css`
         font-size: 12px;
-        margin-left: ${small ? spacing(1) : spacing(2)};
+        margin-left: ${spacing(small ? 1 : 2)};
         margin-top: ${spacing(1)};
         margin-bottom: ${spacing(1)};
-        margin-right: ${small ? spacing(1) : spacing(0)};
+        margin-right: ${spacing(small ? 1 : 0)};
     `;
 };
 
@@ -120,17 +118,6 @@ const getRootStyle = ({
         `;
     }
 
-    if (!!(icon || indicator) && small) {
-        result = css`
-            ${result};
-            padding-left: ${spacing(0.5)};
-        `;
-    }
-
-    const minStatusTagWidth = css`
-        min-width: ${spacing(19)};
-    `;
-
     if (disabled) {
         const backgroundColor = color('neutral.03', 0.4);
         const textColor = color('neutral.07');
@@ -142,7 +129,6 @@ const getRootStyle = ({
                 background-color: ${backgroundColor};
                 border-color: ${backgroundColor};
                 color: ${textColor};
-                box-shadow: none;
 
                 ${TagText},
                 ${TagIconContainer} {
@@ -156,35 +142,30 @@ const getRootStyle = ({
         `;
     }
 
-    // todo: refactor this
     switch (type) {
         case TAG_TYPES.APPROVED:
             return css`
                 ${result};
-                ${minStatusTagWidth};
+                border: none;
                 background-color: ${color('success.light')};
-                box-shadow: none;
             `;
         case TAG_TYPES.DENIED:
             return css`
                 ${result};
-                ${minStatusTagWidth};
+                border: none;
                 background-color: ${color('error.lighter')};
-                box-shadow: none;
             `;
         case TAG_TYPES.NEW:
             return css`
                 ${result};
-                ${minStatusTagWidth};
+                border: none;
                 background-color: ${color('warning.light')};
-                box-shadow: none;
             `;
         case TAG_TYPES.ON_HOLD:
             return css`
                 ${result};
-                ${minStatusTagWidth};
+                border: none;
                 background-color: ${color('primary.02')};
-                box-shadow: none;
             `;
         default: {
             result = css`
@@ -233,7 +214,7 @@ const clearButtonContainerStyle = ({
         return css`
             ${result};
             position: relative;
-            margin-right: ${small ? '-4px' : '-2px'};
+            margin-right: ${spacing(small ? -1 : -0.5)};
             opacity: 1;
         `;
     }
@@ -241,7 +222,7 @@ const clearButtonContainerStyle = ({
     if (deleteOption === TAG_DELETE_BEHAVIOUR_OPTIONS.ON_HOVER) {
         result = css`
             ${result};
-            margin-left: 8px;
+            margin-left: ${spacing(2)};
             position: absolute;
         `;
 
@@ -274,7 +255,7 @@ export const TagClearButtonContainer = styled.div.withConfig(
 export const TagRoot = styled.div.withConfig(propsBlocker)<TagRootPropsType>`
     ${reset()};
     position: relative;
-    ${makeBorder('primary.lighter')}
+    border: 1px solid ${color('primary.lighter')};
     box-sizing: border-box;
     cursor: default;
     display: inline-flex;
@@ -286,8 +267,7 @@ export const TagRoot = styled.div.withConfig(propsBlocker)<TagRootPropsType>`
     justify-content: center;
     background: ${color('neutral.00')};
     border-radius: ${borderRadius('pill')};
-    padding-left: ${spacing(1)};
-    padding-right: ${spacing(1)};
+    padding: ${spacing(0, 1)};
 
     &.Tag-Root--onHover:hover ${TagClearButtonContainer} {
         transform: translateX(${({ small }) => (small ? '4px' : '2px')});
@@ -297,5 +277,6 @@ export const TagRoot = styled.div.withConfig(propsBlocker)<TagRootPropsType>`
 
     ${getRootStyle};
     ${marginProps};
+    ${widthProps};
     ${getComponentOverride('Tag')};
 `;

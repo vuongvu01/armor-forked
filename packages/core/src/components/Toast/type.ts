@@ -3,6 +3,7 @@ import {
     MarginPropsType,
     WidthPropsType,
     ScalarType,
+    RootThemeType,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -87,4 +88,5 @@ export type ToastHookPropsType = Partial<{
 
 export type ToastContainerPropsType = {
     gap?: ScalarType;
+    theme?: RootThemeType;
 };

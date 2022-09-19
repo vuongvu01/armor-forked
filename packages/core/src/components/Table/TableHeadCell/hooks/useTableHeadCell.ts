@@ -27,10 +27,8 @@ export const useTableHeadCell = <E extends HTMLTableCellElement>(
             return [false, false, false];
         }
 
-        // todo: support sorting by several columns
         const isColumnSelected = rowSortOrder[0][0] === columnId;
 
-        // todo: support sorting by several columns
         return [
             isColumnSelected,
             isColumnSelected &&
@@ -45,6 +43,10 @@ export const useTableHeadCell = <E extends HTMLTableCellElement>(
     const isIconAlphabetical =
         !isSelected && rowSortType !== TABLE_HEAD_CELL_SORTING_TYPE_NUMERICAL;
 
+    const sortingIconProps = {
+        marginLeft: 2,
+    };
+
     return {
         rootProps: {
             'data-testid': tableHeadCellRootTestId,
@@ -55,6 +57,8 @@ export const useTableHeadCell = <E extends HTMLTableCellElement>(
             sortingEnabled,
             'data-sortable': sortingEnabled ? '1' : '0',
         },
+
+        sortingIconProps,
 
         isSelected,
         isIconNumerical,

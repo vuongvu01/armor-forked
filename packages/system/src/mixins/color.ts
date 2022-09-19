@@ -1,5 +1,6 @@
 import { PropsWithThemeType } from './type';
 import { getAvailableTheme } from '../theme/util';
+import * as colors from '../tokens/color';
 
 /**
  * Convert color from hex value with opacity to #rrggbbaa notion, accept opacity value from 0 to 1
@@ -20,6 +21,14 @@ export const color =
 
         if (tokenName in currentTheme.referenceIndex) {
             const colorHex = currentTheme.referenceIndex[tokenName] as string;
+
+            return opacity || opacity === 0
+                ? withOpacity(colorHex, opacity)
+                : colorHex;
+        }
+
+        if (name in colors) {
+            const colorHex = (colors as any)[name];
 
             return opacity || opacity === 0
                 ? withOpacity(colorHex, opacity)

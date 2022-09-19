@@ -153,6 +153,10 @@ Search.propTypes = {
     ),
     placeholder: PropTypes.string,
     enableSuggestions: PropTypes.bool,
+    /**
+     * @deprecated
+     * No built-in loading state
+     */
     isLoading: PropTypes.bool,
     /**
      * height of the list in in 4px unit increments

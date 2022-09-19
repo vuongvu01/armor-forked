@@ -104,7 +104,7 @@ export const FileUploader = forwardRef<HTMLDivElement, FileUploaderPropsType>(
                     className={classNames.UploadButton}
                 >
                     <UploadIcon small />
-                    &nbsp;{uploadButtonLabel}
+                    {uploadButtonLabel}
                 </UploadButton>
                 <div className={classNames.FileListContainer}>{children}</div>
             </FileUploaderRoot>

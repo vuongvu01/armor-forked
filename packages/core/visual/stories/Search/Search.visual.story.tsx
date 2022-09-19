@@ -120,10 +120,6 @@ export const NoResultsFoundCustomPlaceholder = () => (
     />
 );
 
-export const LoadingState = () => (
-    <Search defaultQuery="Temp placeholder icon" isLoading />
-);
-
 const faction = [
     {
         id: 'zerg',

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Tag } from '@deliveryhero/armor';
+import { IconPlaceholderIcon } from '@deliveryhero/armor-icons';
 
 export default {
     title: 'Tag',
@@ -46,8 +47,47 @@ export const CustomStatusTypeNew = () => <Tag type="new">Custom new</Tag>;
 
 export const CustomStatusTypeOnHold = () => <Tag type="on-hold">Hold</Tag>;
 
-export const StatusTagIndicator = () => <Tag type="on-hold" indicator="99">Indicate</Tag>;
+export const StatusTagIndicator = () => (
+    <Tag type="on-hold" indicator="99">
+        Indicate
+    </Tag>
+);
 
 export const TagWithZero = () => {
     return <Tag>{0}</Tag>;
+};
+
+export const TagWithFilledState = () => {
+    return <Tag label="Default" deleteOption="disabled" filled />;
+};
+
+export const TagWithFilledStateDisabled = () => {
+    return <Tag label="Default" deleteOption="disabled" filled disabled />;
+};
+
+export const TagWithIcon = () => {
+    return (
+        <Tag
+            type="approved"
+            label="Default"
+            deleteOption="disabled"
+            icon={<IconPlaceholderIcon />}
+        >
+            Status
+        </Tag>
+    );
+};
+
+export const TagWithIconSmall = () => {
+    return (
+        <Tag
+            type="approved"
+            label="Default"
+            deleteOption="disabled"
+            icon={<IconPlaceholderIcon />}
+            small
+        >
+            Status
+        </Tag>
+    );
 };

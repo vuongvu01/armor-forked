@@ -91,6 +91,10 @@ export const ContextMenu = forwardRef<HTMLDivElement, ContextMenuPropsType>(
                                         <MenuElement
                                             {...elementProps}
                                             key={id}
+                                            typographyProp={{
+                                                paragraph: true,
+                                                medium: true,
+                                            }}
                                             small
                                         >
                                             {label}

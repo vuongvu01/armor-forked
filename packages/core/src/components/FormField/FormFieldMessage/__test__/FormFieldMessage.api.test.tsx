@@ -23,6 +23,6 @@ describe('<FormFieldMessage />', () => {
     it('should support error property', async () => {
         const element = <FormFieldMessage error>Content</FormFieldMessage>;
         const tree = renderer.create(element).toJSON();
-        expect(tree).toHaveStyleRule('color', theme.armor.color.error.main);
+        expect(tree).toHaveStyleRule('color', theme.armor.color.error['08']);
     });
 });

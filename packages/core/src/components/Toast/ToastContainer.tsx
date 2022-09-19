@@ -1,6 +1,10 @@
 import React, { FC } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { durationNormal } from '@deliveryhero/armor-system';
+import {
+    durationNormal,
+    ThemeProvider,
+    makeDefaultTheme,
+} from '@deliveryhero/armor-system';
 
 import { useToastClassNames } from './hooks';
 import { ToastPositionType, ToastContainerPropsType } from './type';
@@ -11,12 +15,13 @@ import { useToastStore } from './ToastStore';
 
 export const ToastContainer: FC<
     React.PropsWithChildren<ToastContainerPropsType>
-> = ({ gap }) => {
+> = ({ theme, gap }) => {
     const classNames = useToastClassNames(TOAST_CONTAINER_PREFIX);
     const { toasts, isPausedAutoClose } = useToastStore();
+    const defaultTheme = makeDefaultTheme();
 
     return (
-        <>
+        <ThemeProvider theme={theme || defaultTheme}>
             {(Object.keys(toasts) as ToastPositionType[]).map((position) => (
                 <ToastContainerRoot
                     className={classNames.Root}
@@ -39,6 +44,6 @@ export const ToastContainer: FC<
                     </TransitionGroup>
                 </ToastContainerRoot>
             ))}
-        </>
+        </ThemeProvider>
     );
 };

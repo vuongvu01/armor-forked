@@ -12,6 +12,8 @@ import {
     focusWithin,
     transition,
     token,
+    color,
+    typography,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -66,7 +68,7 @@ export const SearchRoot = styled.div.withConfig(
 export const SearchSuggestionsContainer = styled.div.withConfig(
     propsBlocker,
 )<SearchSuggestionsContainerPropsType>`
-    background-color: white;
+    background-color: ${color('neutral.00')};
     box-sizing: border-box;
     flex-direction: column;
     height: 0;
@@ -87,10 +89,8 @@ export const SearchSuggestionsListContainer = styled.div.withConfig(
 `;
 
 export const SearchTextInput = styled(TextInput)<SearchRootPropsType>`
-    padding-left: 0;
-    font-weight: ${token('typography.paragraphMedium.fontWeight')};
-
     .TextInput-Input {
+        ${typography('paragraphMedium')};
         padding-left: ${spacing(2)};
     }
 

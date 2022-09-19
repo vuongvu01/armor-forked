@@ -27,8 +27,18 @@ export const Uncontrolled = () => {
                 }
                 align="bottom"
             >
-                <MenuElement>Edit</MenuElement>
-                <MenuElement>Delete</MenuElement>
+                <MenuElement
+                    typographyProp={{ paragraph: true, medium: true }}
+                    small
+                >
+                    Edit
+                </MenuElement>
+                <MenuElement
+                    typographyProp={{ paragraph: true, medium: true }}
+                    small
+                >
+                    Delete
+                </MenuElement>
             </ContextMenu>
         </Box>
     );
@@ -53,8 +63,20 @@ export const Controlled = () => {
                 }
                 align="bottom"
             >
-                <MenuElement onClick={() => setOpen(false)}>Edit</MenuElement>
-                <MenuElement onClick={() => setOpen(false)}>Delete</MenuElement>
+                <MenuElement
+                    onClick={() => setOpen(false)}
+                    typographyProp={{ paragraph: true, medium: true }}
+                    small
+                >
+                    Edit
+                </MenuElement>
+                <MenuElement
+                    onClick={() => setOpen(false)}
+                    typographyProp={{ paragraph: true, medium: true }}
+                    small
+                >
+                    Delete
+                </MenuElement>
             </ContextMenu>
         </Box>
     );
@@ -122,7 +144,7 @@ export const AlwaysOpen = () => {
                 }
                 align="bottom"
             >
-                I will always be with you
+                <MenuElement>I will always be with you</MenuElement>
             </ContextMenu>
         </Box>
     );
@@ -140,7 +162,7 @@ export const DefaultOpen = () => {
                 }
                 align="bottom"
             >
-                I am open by default
+                <MenuElement>I am open by default</MenuElement>
             </ContextMenu>
         </Box>
     );

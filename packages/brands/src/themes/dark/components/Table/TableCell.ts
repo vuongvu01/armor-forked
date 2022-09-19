@@ -1,13 +1,21 @@
 import { css } from 'styled-components';
-import { colorGrey70, RIGHT } from '@deliveryhero/armor-system';
+import {
+    colorGrey01,
+    colorGrey50,
+    colorGrey70,
+    RIGHT,
+} from '@deliveryhero/armor-system';
 import { TableCellPropsType } from '@deliveryhero/armor';
 
 export const getTableCellOverride = ({
     stickyVisible,
     stickyTop,
     stickyAlignment,
+    disabled,
 }: TableCellPropsType) => {
-    let result = {};
+    let result = css`
+        color: ${disabled ? colorGrey50 : colorGrey01};
+    `;
 
     if (stickyVisible && (stickyTop || stickyAlignment)) {
         result = css`

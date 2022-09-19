@@ -1,19 +1,6 @@
 import { css } from 'styled-components';
-import {
-    colorGreen20,
-    colorRed30,
-    colorYellow20,
-    token,
-    color,
-} from '@deliveryhero/armor-system';
+import { token, color } from '@deliveryhero/armor-system';
 import { MessagePropsType } from '@deliveryhero/armor';
-
-const messageLevels = {
-    info: 'info',
-    success: 'success',
-    warning: 'warning',
-    error: 'error',
-};
 
 const getMessageColor = ({
     level,
@@ -21,17 +8,17 @@ const getMessageColor = ({
     success,
     warning,
 }: MessagePropsType) => {
-    if (level === messageLevels.error || error) {
-        return colorRed30;
+    if (level === 'error' || error) {
+        return 'error.04';
     }
-    if (level === messageLevels.success || success) {
-        return colorGreen20;
+    if (level === 'success' || success) {
+        return 'success.02';
     }
-    if (level === messageLevels.warning || warning) {
-        return colorYellow20;
+    if (level === 'warning' || warning) {
+        return 'warning.02';
     }
 
-    return null;
+    return 'primary.03';
 };
 
 export const getMessageOverride = (props: MessagePropsType) => {
@@ -39,10 +26,10 @@ export const getMessageOverride = (props: MessagePropsType) => {
 
     return css`
         background-color: ${token('body.backgroundColor')};
-        border-color: ${levelColor};
+        border-color: ${color(levelColor)};
 
         .Message-Icon {
-            color: ${levelColor};
+            color: ${color(levelColor)};
         }
 
         .Message-Content {

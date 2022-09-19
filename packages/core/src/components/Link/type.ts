@@ -21,12 +21,21 @@ type LinkEffectivePropsType = Partial<{
     medium: boolean;
     /** If set to *true*, the Link will be rendered as *large* */
     large: boolean;
+    /**
+     * @deprecated Using this prop has no effect.
+     * */
     focused: boolean;
+    /**
+     * @deprecated Using this prop has no effect.
+     * */
     pressed: boolean;
     /** If set to *true*, the Link will be rendered as disabled */
     disabled: boolean;
-    inline: boolean;
     /** If set to *true*, the Link will be rendered as underlined */
+    inline: boolean;
+    /**
+     * @deprecated Use `inline` instead
+     * */
     underline: boolean;
     /** I set to *true* Link content will not wrap and ellipsis will appear on text overflow */
     ellipsis: boolean;

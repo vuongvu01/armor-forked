@@ -5,7 +5,7 @@ import { PortalToBody } from '@deliveryhero/armor-system';
 import { useTooltipClassNames } from './hooks/useTooltipClassNames';
 import { TooltipRoot, TooltipArrow } from './style';
 import { TooltipPropsType } from './type';
-import { TOOLTIP_CLASS_PREFIX } from './constants';
+import { TOOLTIP_ALIGN_PLACEMENTS, TOOLTIP_CLASS_PREFIX } from './constants';
 import { useTooltip } from './hooks/useTooltip';
 
 /**
@@ -84,14 +84,7 @@ Tooltip.defaultProps = {
 /** Support of prop-types is here for project that don't use TypeScript */
 Tooltip.propTypes = {
     /** Tooltip alignment */
-    align: PropTypes.oneOf([
-        'top',
-        'top-start',
-        'top-end',
-        'bottom',
-        'bottom-start',
-        'bottom-end',
-    ]),
+    align: PropTypes.oneOf(TOOLTIP_ALIGN_PLACEMENTS),
     small: PropTypes.bool,
 };
 

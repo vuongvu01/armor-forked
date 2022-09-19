@@ -2,8 +2,6 @@ export * from './ApplicationLayout';
 export * from './Container';
 export * from './Copyright';
 export * from './Email';
-export * from './Footer';
-export * from './Header';
 export * from './HR';
 export * from './ImageGallery';
 export * from './InlineCode';

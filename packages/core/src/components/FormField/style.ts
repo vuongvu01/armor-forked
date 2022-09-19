@@ -17,7 +17,7 @@ const getRootStyle = ({
     if (enableVerticalOuterSpacing) {
         return css`
             &:not(:last-child) {
-                margin-bottom: ${spacing(1.25)};
+                margin-bottom: ${spacing(2)};
             }
         `;
     }

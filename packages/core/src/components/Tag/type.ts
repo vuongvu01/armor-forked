@@ -3,6 +3,7 @@ import {
     MarginPropsType,
     ComponentBehaviourLinkType,
     ScalarType,
+    WidthPropsType,
 } from '@deliveryhero/armor-system';
 
 import { ComponentElementStylePropsType } from '../type';
@@ -66,6 +67,10 @@ type TagEffectivePropsType = Partial<{
     disabled: boolean;
     label: ScalarType;
     small: boolean;
+    /**
+     * @deprecated
+     * This state is deprecated and will be removed in a future release.
+     */
     filled: boolean;
     /**
      * If set to false, the tag will occupy as much space as needed by its content.
@@ -76,6 +81,7 @@ type TagEffectivePropsType = Partial<{
 }> &
     HTMLAttributes<HTMLElement> &
     ComponentBehaviourLinkType &
+    WidthPropsType &
     MarginPropsType;
 
 export type TagPropsType = TagEffectivePropsType;

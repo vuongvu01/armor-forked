@@ -1,11 +1,5 @@
-import React, {
-    forwardRef,
-    useCallback,
-    useContext,
-    useEffect,
-    memo,
-} from 'react';
-import { getWindow, useRootRef } from '@deliveryhero/armor-system';
+import React, { forwardRef, useCallback, useContext, memo } from 'react';
+import { useRootRef, useEventListener } from '@deliveryhero/armor-system';
 
 import {
     AccordionHeaderExpansionIndicator,
@@ -45,33 +39,21 @@ export const AccordionHeader = forwardRef<
         isExpanded,
     );
 
-    const internalInputRef = useRootRef<HTMLDivElement>(ref);
+    const internalHeaderRootRef = useRootRef<HTMLDivElement>(ref);
 
     const enterKeyHandler = useCallback(
         (event: KeyboardEvent) => {
             const { key, target } = event;
 
-            if (target === internalInputRef.current && key === 'Enter') {
-                if (onToggle) {
-                    // @ts-ignore
-                    onToggle(event);
-                }
+            if (target === internalHeaderRootRef.current && key === 'Enter') {
+                // @ts-ignore
+                onToggle?.(event);
             }
         },
-        [internalInputRef, onToggle],
+        [internalHeaderRootRef, onToggle],
     );
 
-    useEffect(() => {
-        const win = getWindow();
-        if (win && !disabled) {
-            win.addEventListener('keyup', enterKeyHandler);
-            return () => {
-                win.removeEventListener('keyup', enterKeyHandler);
-            };
-        }
-
-        return () => {};
-    }, [disabled, enterKeyHandler, isExpanded]);
+    useEventListener('keyup', enterKeyHandler, internalHeaderRootRef, disabled);
 
     return (
         <AccordionHeaderRoot
@@ -81,7 +63,7 @@ export const AccordionHeader = forwardRef<
             disabled={disabled}
             isExpanded={isExpanded}
             onClick={onToggle}
-            ref={internalInputRef}
+            ref={internalHeaderRootRef}
             tabIndex={disabled ? -1 : 0}
         >
             <AccordionHeaderBody className={classOverride.Body}>

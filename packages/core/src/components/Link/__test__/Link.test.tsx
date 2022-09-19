@@ -2,11 +2,12 @@
 
 import React, { useRef } from 'react';
 
-import { cleanup, render } from '@testing-library/react';
+import { cleanup, render, screen } from '@testing-library/react';
 import {
     renderHook,
     cleanup as cleanupHooks,
 } from '@testing-library/react-hooks';
+import userEvent from '@testing-library/user-event';
 import { Link } from '../Link';
 
 describe('<Link />', () => {
@@ -85,5 +86,21 @@ describe('<Link />', () => {
     it('should support margin properties', async () => {
         // @ts-ignore
         expect(Link).toSupportMarginProps();
+    });
+
+    it('should not be interactive when disabled', () => {
+        const onClick = jest.fn();
+
+        render(
+            <Link onClick={onClick} disabled>
+                Link
+            </Link>,
+        );
+
+        const link = screen.getByText('Link');
+
+        userEvent.click(link);
+
+        expect(onClick).not.toHaveBeenCalled();
     });
 });

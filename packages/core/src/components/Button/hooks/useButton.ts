@@ -1,7 +1,12 @@
-import { useRootRef } from '@deliveryhero/armor-system';
+import {
+    useRootRef,
+    getChildrenWithIconProps,
+} from '@deliveryhero/armor-system';
 
 import { RefType } from '../../../type';
+import { BUTTON_ICON_DEFAULT_SIZE } from '../constants';
 import { ButtonPropsType } from '../type';
+import { getIconMargin } from '../utils';
 
 const preventDefault = (event: React.SyntheticEvent) => {
     event.preventDefault();
@@ -19,11 +24,20 @@ export const useButton = <E extends HTMLElement>(
         tag,
         likeDisabled,
         tabIndex,
+        children: baseChildren,
         ...restProps
     }: ButtonPropsType,
     ref: RefType<E>,
 ) => {
     const innerRef = useRootRef<E>(ref);
+
+    const children = getChildrenWithIconProps(
+        baseChildren,
+        (childrenCount, iconIndex) => ({
+            ...BUTTON_ICON_DEFAULT_SIZE,
+            ...getIconMargin(childrenCount, iconIndex),
+        }),
+    );
 
     const isDisabled = disabled || likeDisabled;
 
@@ -61,5 +75,6 @@ export const useButton = <E extends HTMLElement>(
             danger,
         ],
         Tag,
+        children,
     };
 };

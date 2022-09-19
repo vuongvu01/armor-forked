@@ -1,9 +1,9 @@
 import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
-import { isStatusTag, useTagClassName } from './utils';
+import { useTagClassName } from './utils';
 import { TagPropsType } from './type';
-import { TAG_CLASS_PREFIX, TAG_CLEAR_BUTTON_PROPS_MAP } from './constants';
+import { TAG_CLASS_PREFIX } from './constants';
 import {
     TagClearButtonContainer,
     TagRoot,
@@ -57,13 +57,16 @@ export const Tag = forwardRef<HTMLDivElement, TagPropsType>(function Tag(
         content,
         deleteOption,
         type,
-        disabled,
         small,
         filled,
         indicator,
         indicatorContainerProps,
         icon,
         iconContainerProps,
+        showIndicator,
+        showIcon,
+        showClearButton,
+        clearButtonProps,
     } = useTag(restProps, ref);
 
     const classOverride = useTagClassName(
@@ -74,23 +77,6 @@ export const Tag = forwardRef<HTMLDivElement, TagPropsType>(function Tag(
         small,
         filled,
     );
-
-    const tagTypeStatus = isStatusTag(type);
-
-    const showIndicator = Boolean(indicator && tagTypeStatus);
-
-    const showIcon = Boolean(icon && tagTypeStatus && !indicator);
-
-    const showClearButton = Boolean(
-        !tagTypeStatus &&
-            !disabled &&
-            (deleteOption === 'enabled' || deleteOption === 'onHover'),
-    );
-
-    const clearButtonProps =
-        deleteOption && deleteOption in TAG_CLEAR_BUTTON_PROPS_MAP
-            ? TAG_CLEAR_BUTTON_PROPS_MAP[deleteOption]
-            : {};
 
     return (
         <TagRoot {...rootProps} className={classOverride.Root}>

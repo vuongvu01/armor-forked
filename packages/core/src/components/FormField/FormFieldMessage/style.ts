@@ -14,20 +14,25 @@ const getRootDynamicStyle = ({
     error,
     oneLine,
 }: FormFieldMessageRootPropsType) => {
-    return css`
-        ${oneLine
-            ? css`
-                  white-space: nowrap;
-                  overflow-x: hidden;
-                  text-overflow: ellipsis;
-              `
-            : ''};
-        ${error
-            ? css`
-                  color: ${color('error.main')};
-              `
-            : ''};
-    `;
+    let result = {};
+
+    if (oneLine) {
+        result = css`
+            ${result};
+            white-space: nowrap;
+            overflow-x: hidden;
+            text-overflow: ellipsis;
+        `;
+    }
+
+    if (error) {
+        result = css`
+            ${result};
+            color: ${color('error.08')};
+        `;
+    }
+
+    return result;
 };
 
 /** 👉 ROOT ELEMENT */
@@ -36,9 +41,9 @@ export const FormFieldMessageRoot = styled.div.withConfig(
 )<FormFieldMessageRootPropsType>`
     box-sizing: border-box;
     position: relative;
-    ${typography('labelSmall')};
+    ${typography('paragraphSmall')};
     color: ${color('neutral.07')};
-    margin: ${spacing(2)};
+    margin-top: ${spacing(2)};
     ${getRootDynamicStyle};
     ${getComponentOverride('FormFieldMessage')};
     ${marginProps};

@@ -144,13 +144,9 @@ export const PageNavigationPageSize = styled.div.withConfig(
 export const PageNavigationPageSizeSelector = styled(Dropdown)`
     margin-left: ${spacing(3)};
 
-    .Dropdown-TextInput {
-        border-color: ${color('neutral.03')};
-    }
-
     .TextInput-Input {
         padding: ${spacing(1.5, 0, 1.5, 2)};
-        width: ${spacing(8.5)};
+        width: ${spacing(9)};
 
         &:focus {
             outline: unset;

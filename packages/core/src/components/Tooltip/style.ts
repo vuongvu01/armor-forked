@@ -12,6 +12,7 @@ import {
     color,
     transition,
     borderRadius,
+    reset,
 } from '@deliveryhero/armor-system';
 
 import { TooltipArrowPropsType, TooltipRootPropsType } from './type';
@@ -83,4 +84,14 @@ export const TooltipArrow = styled.div.withConfig(
 )<TooltipArrowPropsType>`
     ${popperArrow};
     ${getArrowStyle};
+`;
+
+export const TriggerWrapper = styled.div.withConfig(propsBlocker)`
+    ${reset}
+
+    display: inline-block;
+
+    & > * {
+        pointer-events: none;
+    }
 `;

@@ -23,7 +23,7 @@ export const DatePickerActionBarRoot = styled.div.withConfig(
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: ${color('neutral.01')};
+    background-color: ${color('neutral.02')};
     border-top: 1px solid ${color('neutral.03')};
 
     ${getComponentOverride('DatePickerActionBar')};

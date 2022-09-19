@@ -219,7 +219,7 @@ export const AutoCloseAndProgressBar = () => {
 };
 
 export const CustomPositions = () => {
-    const { makeToast: makeToastGap } = useToast({ gap: '20px' });
+    const { makeToast: makeToastGap } = useToast({ gap: '40px' });
 
     const { makeToast: makeToastMargin } = useToast({
         position: 'topLeft',

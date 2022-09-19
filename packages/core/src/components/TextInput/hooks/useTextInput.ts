@@ -153,11 +153,13 @@ export const useTextInput = <E extends HTMLInputElement>(
             onBlur: onInputBlur,
             onFocus: onInputFocus,
             onChange: onInputChange,
+            hasBeforeSection: !!before,
+            hasAfterSection: !!after,
         },
         inputLabelProps: {
             disabled,
             error,
-            inside: isLabelInside,
+            isLabelInside,
             large,
             outlined: isOutlined,
             value,
@@ -168,7 +170,6 @@ export const useTextInput = <E extends HTMLInputElement>(
         inputLabelBackgroundProps: {
             disabled,
         },
-
         isLabelInside,
         Tag,
         before,
@@ -178,7 +179,6 @@ export const useTextInput = <E extends HTMLInputElement>(
         large,
         label,
         error,
-
         internalInputRef,
     };
 };

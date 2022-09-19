@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { FileTaskListIcon } from '@deliveryhero/armor-icons';
+import { IconPlaceholderIcon } from '@deliveryhero/armor-icons';
 import { GroupHelper } from '../../../helpers/GroupHelper';
 import { Tag } from '../Tag';
 import { withWrapper } from '../../../helpers/Wrapper';
@@ -27,36 +27,9 @@ export const UserTag = () => {
                 <Tag label="Small" small />
             </GroupHelper>
             <GroupHelper gap={2}>
-                <p>Disabled state - delete button does not appear onHover</p>
-                <Tag label="Default" marginRight={3} disabled />
-                <Tag label="Small" disabled small />
-            </GroupHelper>
-            <GroupHelper gap={2}>
                 <p>Delete button always enabled</p>
                 <Tag label="Default" deleteOption="enabled" marginRight={3} />
                 <Tag label="Small" deleteOption="enabled" small />
-            </GroupHelper>
-
-            <GroupHelper gap={2}>
-                <p>Disabled state - delete button shows no user feedback</p>
-                <Tag
-                    label="Default"
-                    deleteOption="enabled"
-                    marginRight={3}
-                    disabled
-                />
-                <Tag label="Default" deleteOption="enabled" disabled small />
-            </GroupHelper>
-
-            <GroupHelper gap={2}>
-                <p>Filled state - background always be filled</p>
-                <Tag
-                    label="Default"
-                    deleteOption="disabled"
-                    filled
-                    marginRight={3}
-                />
-                <Tag label="Default" deleteOption="disabled" filled small />
             </GroupHelper>
         </>
     );
@@ -179,13 +152,12 @@ export const InteractiveExample = () => {
 export const Squeeze = () => {
     return (
         <>
-            <div style={{ width: '200px', wordBreak: 'break-word' }}>
-                <Tag type="approved">ApprovedApprovedApprovedApproved</Tag>
-            </div>
-            <br />
-            <div style={{ width: '200px', wordBreak: 'break-word' }}>
-                <Tag type="approved">Approved Approved Approved Approved</Tag>
-            </div>
+            <Tag width={40} type="approved">
+                ApprovedApprovedApprovedApproved
+            </Tag>{' '}
+            <Tag width={40} type="approved">
+                Approved Approved Approved Approved
+            </Tag>
         </>
     );
 };
@@ -382,7 +354,7 @@ export const TagWithIcons = () => {
                     label="Default"
                     deleteOption="disabled"
                     marginRight={3}
-                    icon={<FileTaskListIcon />}
+                    icon={<IconPlaceholderIcon />}
                 >
                     Status
                 </Tag>
@@ -391,7 +363,7 @@ export const TagWithIcons = () => {
                     label="Default"
                     deleteOption="disabled"
                     marginRight={3}
-                    icon={<FileTaskListIcon />}
+                    icon={<IconPlaceholderIcon />}
                 >
                     Status
                 </Tag>
@@ -400,7 +372,7 @@ export const TagWithIcons = () => {
                     label="Default"
                     deleteOption="disabled"
                     marginRight={3}
-                    icon={<FileTaskListIcon />}
+                    icon={<IconPlaceholderIcon />}
                 >
                     Status
                 </Tag>
@@ -409,7 +381,7 @@ export const TagWithIcons = () => {
                     label="Default"
                     deleteOption="disabled"
                     marginRight={3}
-                    icon={<FileTaskListIcon />}
+                    icon={<IconPlaceholderIcon />}
                 >
                     Status
                 </Tag>
@@ -418,7 +390,7 @@ export const TagWithIcons = () => {
                     label="Default"
                     deleteOption="disabled"
                     marginRight={3}
-                    icon={<FileTaskListIcon />}
+                    icon={<IconPlaceholderIcon />}
                     disabled
                 >
                     Status
@@ -431,7 +403,7 @@ export const TagWithIcons = () => {
                     label="Default"
                     deleteOption="disabled"
                     marginRight={3}
-                    icon={<FileTaskListIcon />}
+                    icon={<IconPlaceholderIcon />}
                     small
                 >
                     Status
@@ -441,7 +413,7 @@ export const TagWithIcons = () => {
                     label="Default"
                     deleteOption="disabled"
                     marginRight={3}
-                    icon={<FileTaskListIcon />}
+                    icon={<IconPlaceholderIcon />}
                     small
                 >
                     Status

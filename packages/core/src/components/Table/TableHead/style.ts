@@ -8,4 +8,8 @@ export const TableHeadRoot = styled.thead.withConfig(
     propsBlocker,
 )<TableHeadRootPropsType>`
     ${getComponentOverride('TableHead')};
+
+    & > tr {
+        border-bottom: none;
+    }
 `;

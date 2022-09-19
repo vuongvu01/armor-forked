@@ -33,13 +33,14 @@ export const Basic = () => {
                 <ListItem
                     secondaryItemText="Secondary"
                     divider={true}
+                    size="small"
                     actions={
                         <>
-                            <MapIcon />
+                            <MapIcon small />
 
-                            <MapIcon />
+                            <MapIcon small marginLeft={2} />
 
-                            <MapIcon />
+                            <MapIcon small marginLeft={2} />
                         </>
                     }
                 >
@@ -184,6 +185,10 @@ export const SmallMediumLarge = () => {
                 >
                     Small
                 </ListItem>
+
+                <ListItem secondaryItemText="secondary" size="small">
+                    Small
+                </ListItem>
             </List>
 
             <br />
@@ -198,6 +203,9 @@ export const SmallMediumLarge = () => {
                 </ListItem>
 
                 <ListItem size="medium">Medium</ListItem>
+                <ListItem size="medium" secondaryItemText="secondary">
+                    Medium
+                </ListItem>
             </List>
 
             <br />
@@ -212,6 +220,9 @@ export const SmallMediumLarge = () => {
                 </ListItem>
 
                 <ListItem size="large">Large</ListItem>
+                <ListItem size="large" secondaryItemText="secondary">
+                    Large
+                </ListItem>
             </List>
         </>
     );

@@ -8,10 +8,12 @@ import { TextInput } from '../../TextInput';
 import { campaigns } from './constants';
 import { Typography } from '../../Typography';
 import { Button } from '../../Button';
+import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
     title: 'Core/Search',
     component: Search,
+    decorators: [withWrapper],
 };
 
 const foodOptions = [

@@ -15,7 +15,7 @@ describe('<FormField />', () => {
             <FormField enableVerticalOuterSpacing>Content</FormField>
         );
         const tree = renderer.create(element).toJSON();
-        expect(tree).toHaveStyleRule('margin-bottom', '5px', {
+        expect(tree).toHaveStyleRule('margin-bottom', '8px', {
             modifier: '&:not(:last-child)',
         });
     });

@@ -32,11 +32,9 @@ import { useButton } from './hooks/useButton';
  * @armor-docs-component
  */
 export const Button = forwardRef<HTMLButtonElement, ButtonPropsType>(
-    function Button({ className, children, ...props }, ref) {
-        const { rootProps, tagProps, classNameProps, Tag } = useButton(
-            props,
-            ref,
-        );
+    function Button({ className, ...props }, ref) {
+        const { rootProps, tagProps, classNameProps, Tag, children } =
+            useButton(props, ref);
 
         const classNameRoot = useButtonClassName(
             BUTTON_CLASS_PREFIX,
@@ -95,5 +93,7 @@ Button.propTypes = {
     /** HTML Button disabled */
     disabled: PropTypes.bool,
 };
+
+Button.displayName = BUTTON_CLASS_PREFIX;
 
 export const MemoizedButton = memo(Button);

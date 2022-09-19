@@ -46,7 +46,8 @@
         "query-string": "^7.0.0",
         "react-transition-group": "^4.4.2",
         "rifm": "^0.12.1",
-        "throttle-debounce": "2.1.0"
+        "throttle-debounce": "2.1.0",
+        "@popperjs/core": "^2.4.2"
     },
     "repository": {
         "type": "git",
@@ -60,16 +61,15 @@
         "@deliveryhero/logistics-eslint-config": "^2.0.0",
         "@gannochenko/fea-cli": "^1.0.0",
         "@generilla/cli": "^2.0.3",
-        "@material-ui/core": "^4.9.7",
         "@semantic-release/changelog": "^5.0.1",
         "@semantic-release/git": "^9.0.0",
         "@semantic-release/npm": "^7.0.5",
         "@semantic-release/release-notes-generator": "^9.0.1",
-        "@testing-library/dom": "^6.13.0",
+        "@testing-library/dom": "^8.16.0",
         "@testing-library/jest-dom": "^5.1.1",
         "@testing-library/react": "^10.4.8",
         "@testing-library/react-hooks": "^3.4.1",
-        "@testing-library/user-event": "^10.0.0",
+        "@testing-library/user-event": "^13.0.0",
         "@types/clone-deep": "^4.0.1",
         "@types/deep-freeze-strict": "^1.1.0",
         "@types/flat": "^5.0.0",

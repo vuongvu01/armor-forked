@@ -62,6 +62,8 @@ import { getToastOverride } from './Toast';
 import { getFocusStateOverride } from './FocusState';
 import { getFileUploaderOverride } from './FileUploader';
 import { getClearButtonOverride } from './ClearButton';
+import { getFormFieldMessageOverride } from './FormFieldMessage';
+import { getConditionTagOverride } from './ConditionTag';
 
 export const darkThemeComponentOverrides = {
     Accordion: getAccordionOverride,
@@ -128,4 +130,6 @@ export const darkThemeComponentOverrides = {
     FocusState: getFocusStateOverride,
     FileUploader: getFileUploaderOverride,
     ClearButton: getClearButtonOverride,
+    FormFieldMessage: getFormFieldMessageOverride,
+    ConditionTag: getConditionTagOverride,
 };

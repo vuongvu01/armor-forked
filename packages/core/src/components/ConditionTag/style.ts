@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import {
     marginProps,
     propsBlocker,
@@ -10,6 +10,7 @@ import {
     round,
     transition,
     token,
+    getComponentOverride,
 } from '@deliveryhero/armor-system';
 
 import {
@@ -30,13 +31,13 @@ export const ConditionTagRoot = styled.div.withConfig(
     ${typography('paragraphMedium')};
     color: ${token('body.color')};
     width: fit-content;
-
-    overflow-y: hidden;
+    overflow: hidden;
     border: 1px solid ${color('neutral.03')};
     display: inline-flex;
     flex-flow: row nowrap;
     position: relative;
     ${round};
+    ${marginProps};
 
     &:hover {
         .ConditionTag-CloseIconContainer {
@@ -44,8 +45,7 @@ export const ConditionTagRoot = styled.div.withConfig(
             transform: translateX(0);
         }
     }
-
-    ${marginProps};
+    ${getComponentOverride('ConditionTag')};
 `;
 
 export const ConditionTagLabel = styled.div.withConfig(
@@ -80,19 +80,11 @@ export const ConditionTagValueSegment = styled.div.withConfig(
     &${notLastChild} {
         border-right: 1px solid ${color('neutral.03')};
     }
-    ${({ moreItems }) =>
-        moreItems
-            ? css`
-                  padding-right: ${spacing(6)};
-              `
-            : ''};
 `;
 
 export const ConditionTagValueMoreLink = styled(Link)`
     ${typography('labelSmall')};
-    color: ${color(
-        'primary.main',
-    )}; // todo: just putting the color back, because typography drops it to back :(( remove after the refactoring
+    color: ${color('primary.main')};
 `;
 
 export const ConditionTagValueTailElement = styled.div.withConfig(
@@ -110,6 +102,6 @@ export const ConditionTagCloseIconContainer = styled.div.withConfig(
     transform: translateX(${spacing(6)});
     ${transition({ opacity: true, transform: true })};
     position: absolute;
-    top: 2px;
-    right: 3px;
+    top: ${spacing(0.5)};
+    right: ${spacing(0.75)};
 `;

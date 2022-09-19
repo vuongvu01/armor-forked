@@ -62,6 +62,3 @@ export type MessageEffectivePropsLevelType = Pick<
     MessageEffectivePropsType,
     'level' | 'error' | 'warning' | 'info' | 'success'
 >;
-
-export type MessageEffectivePropsLevelAndThemeType =
-    MessageEffectivePropsLevelType;

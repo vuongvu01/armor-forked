@@ -3,6 +3,7 @@ import { useRootRef } from '@deliveryhero/armor-system';
 
 import { ConditionTagPropsType } from '../type';
 import { RefType } from '../../../type';
+import { MAX_VISIBLE_TAGS } from '../constants';
 
 export const useConditionTag = <E extends HTMLElement>(
     {
@@ -19,8 +20,8 @@ export const useConditionTag = <E extends HTMLElement>(
 
     const [valueHead, valueTail] = useMemo(() => {
         const fullValue = Array.isArray(value) ? value : [value];
-        if (fullValue.length > 2) {
-            const head = fullValue.splice(0, 2);
+        if (fullValue.length > MAX_VISIBLE_TAGS) {
+            const head = fullValue.splice(0, MAX_VISIBLE_TAGS);
             return [head, fullValue];
         }
 

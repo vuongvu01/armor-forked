@@ -59,12 +59,11 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerPropsType>(
             monthYearSelectorProps,
             actionBarProps,
             timeSelectorProps,
-
             displayMonthYearSelector,
             open,
-
             showActions,
             showTimePicker,
+            onInputIconClick,
         } = useDatePicker(props, ref);
 
         const { enableMonthYearPickerMode } = monthYearSelectorProps;
@@ -75,7 +74,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerPropsType>(
                     {...(showMaskedInput ? inputMaskProps : inputProps)}
                     type="text"
                     className={classNameComponents.Input}
-                    after={<DatePickerInputIcon />}
+                    after={<DatePickerInputIcon onClick={onInputIconClick} />}
                     ref={inputProps.ref}
                 />
 

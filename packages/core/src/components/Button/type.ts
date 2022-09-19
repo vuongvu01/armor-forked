@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes } from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 import {
     MarginPropsType,
     PaddingPropsType,
@@ -23,11 +23,12 @@ type ButtonEffectivePropsType = Partial<{
     danger: boolean;
     /** If set to *true*, the Button will be rendered as *small*, which means that the *spacing* will be reduced accordingly. */
     small: boolean;
-    /** If set to *true*, the Button will be rendered as *disabled*, but without having actual HTML attribute defined. It may be helpful when you need to render a disabled button while still having *DOM* events working. */
+    /**
+     * @deprecated Use the *disabled* property instead.
+     * */
     likeDisabled: boolean;
-    // add other custom properties here
 }> &
-    ButtonHTMLAttributes<HTMLButtonElement> & // includes all HTML Button properties
+    ComponentPropsWithoutRef<'button'> &
     ComponentBehaviourCustomTagType &
     ComponentBehaviourLinkType &
     WidthPropsType &

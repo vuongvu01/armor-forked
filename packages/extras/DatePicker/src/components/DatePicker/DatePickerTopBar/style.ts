@@ -8,6 +8,7 @@ import {
     spacing,
     propsBlocker,
     durationNormal,
+    typography,
 } from '@deliveryhero/armor-system';
 
 import { DatePickerTopBarRootPropsType } from './type';
@@ -28,21 +29,6 @@ export const DatePickerTopBarRoot = styled.div.withConfig(
     ${getComponentOverride('DatePickerTopBar')};
 `;
 
-const getMonthYearSelectorToggleStyle = ({
-    open,
-}: DatePickerTopBarMonthYearSelectorTogglePropsType) => {
-    let result = {};
-
-    if (open) {
-        result = css`
-            ${result};
-            color: ${color('neutral.05')};
-        `;
-    }
-
-    return result;
-};
-
 export const DatePickerTopBarMonthYearSelectorToggle = styled.a.withConfig(
     propsBlocker,
 )<DatePickerTopBarMonthYearSelectorTogglePropsType>`
@@ -52,10 +38,10 @@ export const DatePickerTopBarMonthYearSelectorToggle = styled.a.withConfig(
     cursor: pointer;
     user-select: none;
     color: ${color('neutral.11')};
+    ${typography('labelMedium')};
     ${transition({
         color: 0.1,
     })};
-    ${getMonthYearSelectorToggleStyle};
 `;
 
 const getMonthYearSelectorToggleArrowStyle = ({

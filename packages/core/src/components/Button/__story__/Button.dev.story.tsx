@@ -1,15 +1,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
-import { EditIcon } from '@deliveryhero/armor-icons';
-import styled, { ThemeProvider } from 'styled-components';
-import { withStyles as withMaterialStyles } from '@material-ui/core/styles';
-import { BrowserRouter, Link } from 'react-router-dom';
-import { makeTheme } from '@deliveryhero/armor-system';
+import { IconPlaceholderIcon } from '@deliveryhero/armor-icons';
 
-import { ObjectLiteralType } from '../../../type';
-import { GroupHelper } from '../../../helpers/GroupHelper';
+import { Flex } from '../../Flex';
 import { Button } from '../Button';
-import { Box } from '../../Box';
 import { withWrapper } from '../../../helpers/Wrapper';
 
 export default {
@@ -19,341 +13,253 @@ export default {
     parameters: {},
 };
 
-const groupStyle = {
-    display: 'flex',
-    alignItems: 'flex-end',
+const flexProps = {
+    gutterSpacing: 8,
 };
 
-export const AllStates = () => (
-    <>
-        <GroupHelper styles={groupStyle}>
+export const Primary = () => {
+    return (
+        <Flex {...flexProps}>
             <Button primary>Primary</Button>
             <Button primary>
-                <EditIcon small marginRight={2} />
-                Primary with icon
+                <IconPlaceholderIcon /> Primary
             </Button>
             <Button primary>
-                Primary with icon
-                <EditIcon small marginLeft={2} />
+                Primary <IconPlaceholderIcon />
             </Button>
             <Button primary>
-                <EditIcon small />
+                <IconPlaceholderIcon />
             </Button>
-            <Button primary danger>
+        </Flex>
+    );
+};
+
+export const PrimaryDisabled = () => {
+    return (
+        <Flex {...flexProps}>
+            <Button primary disabled>
                 Primary
             </Button>
+            <Button primary disabled>
+                <IconPlaceholderIcon /> Primary
+            </Button>
+            <Button primary disabled>
+                Primary <IconPlaceholderIcon />
+            </Button>
+            <Button primary disabled>
+                <IconPlaceholderIcon />
+            </Button>
+        </Flex>
+    );
+};
+
+export const PrimarySmall = () => {
+    return (
+        <Flex {...flexProps}>
             <Button primary small>
                 Primary
             </Button>
-            <Button small>
-                <EditIcon small />
+            <Button primary small>
+                <IconPlaceholderIcon /> Primary
             </Button>
-        </GroupHelper>
-        <GroupHelper styles={groupStyle}>
-            <Button disabled primary>
+            <Button primary small>
+                Primary <IconPlaceholderIcon />
+            </Button>
+            <Button primary small>
+                <IconPlaceholderIcon />
+            </Button>
+        </Flex>
+    );
+};
+
+export const PrimarySmallDisabled = () => {
+    return (
+        <Flex {...flexProps}>
+            <Button primary small disabled>
                 Primary
             </Button>
-            <Button disabled primary>
-                <EditIcon small marginRight={2} />
-                Primary with icon
+            <Button primary small disabled>
+                <IconPlaceholderIcon /> Primary
             </Button>
-            <Button disabled primary>
-                Primary with icon
-                <EditIcon small marginLeft={2} />
+            <Button primary small disabled>
+                Primary <IconPlaceholderIcon />
             </Button>
-            <Button disabled primary>
-                <EditIcon small />
+            <Button primary small disabled>
+                <IconPlaceholderIcon />
             </Button>
-            <Button disabled primary danger>
-                Primary
-            </Button>
-            <Button disabled primary small>
-                Primary
-            </Button>
-            <Button disabled primary small>
-                <EditIcon small />
-            </Button>
-        </GroupHelper>
-        <br />
-        <br />
-        <GroupHelper styles={groupStyle}>
+        </Flex>
+    );
+};
+
+export const Secondary = () => {
+    return (
+        <Flex {...flexProps}>
             <Button secondary>Secondary</Button>
             <Button secondary>
-                <EditIcon small marginRight={2} />
-                Secondary with icon
+                <IconPlaceholderIcon /> Secondary
             </Button>
             <Button secondary>
-                Secondary with icon
-                <EditIcon small marginLeft={2} />
+                Secondary <IconPlaceholderIcon />
             </Button>
             <Button secondary>
-                <EditIcon small />
+                <IconPlaceholderIcon />
             </Button>
-            <Button secondary danger>
+        </Flex>
+    );
+};
+
+export const SecondaryDisabled = () => {
+    return (
+        <Flex {...flexProps}>
+            <Button secondary disabled>
                 Secondary
             </Button>
+            <Button secondary disabled>
+                <IconPlaceholderIcon /> Secondary
+            </Button>
+            <Button secondary disabled>
+                Secondary <IconPlaceholderIcon />
+            </Button>
+            <Button secondary disabled>
+                <IconPlaceholderIcon />
+            </Button>
+        </Flex>
+    );
+};
+
+export const SecondarySmall = () => {
+    return (
+        <Flex {...flexProps}>
             <Button secondary small>
                 Secondary
             </Button>
             <Button secondary small>
-                <EditIcon small />
+                <IconPlaceholderIcon /> Secondary
             </Button>
-        </GroupHelper>
-        <GroupHelper styles={groupStyle}>
-            <Button disabled secondary>
+            <Button secondary small>
+                Secondary <IconPlaceholderIcon />
+            </Button>
+            <Button secondary small>
+                <IconPlaceholderIcon />
+            </Button>
+        </Flex>
+    );
+};
+
+export const SecondarySmallDisabled = () => {
+    return (
+        <Flex {...flexProps}>
+            <Button secondary small disabled>
                 Secondary
             </Button>
-            <Button disabled secondary>
-                <EditIcon small marginRight={2} />
-                Secondary with icon
+            <Button secondary small disabled>
+                <IconPlaceholderIcon /> Secondary
             </Button>
-            <Button disabled secondary>
-                Secondary with icon
-                <EditIcon small marginLeft={2} />
+            <Button secondary small disabled>
+                Secondary <IconPlaceholderIcon />
             </Button>
-            <Button disabled secondary>
-                <EditIcon small />
+            <Button secondary small disabled>
+                <IconPlaceholderIcon />
             </Button>
-            <Button disabled secondary small>
-                Secondary
-            </Button>
-        </GroupHelper>
-        <br />
-        <br />
-        <GroupHelper styles={groupStyle}>
+        </Flex>
+    );
+};
+
+export const Tertiary = () => {
+    return (
+        <Flex {...flexProps}>
             <Button tertiary>Tertiary</Button>
             <Button tertiary>
-                <EditIcon small marginRight={2} />
-                Tertiary with icon
+                <IconPlaceholderIcon /> Tertiary
             </Button>
             <Button tertiary>
-                Tertiary with icon
-                <EditIcon small marginLeft={2} />
+                Tertiary <IconPlaceholderIcon />
             </Button>
             <Button tertiary>
-                <EditIcon small />
+                <IconPlaceholderIcon />
+            </Button>
+        </Flex>
+    );
+};
+
+export const TertiaryDisabled = () => {
+    return (
+        <Flex {...flexProps}>
+            <Button tertiary disabled>
+                Tertiary
+            </Button>
+            <Button tertiary disabled>
+                <IconPlaceholderIcon /> Tertiary
+            </Button>
+            <Button tertiary disabled>
+                Tertiary <IconPlaceholderIcon />
+            </Button>
+            <Button tertiary disabled>
+                <IconPlaceholderIcon />
+            </Button>
+        </Flex>
+    );
+};
+
+export const TertiarySmall = () => {
+    return (
+        <Flex {...flexProps}>
+            <Button tertiary small>
+                Tertiary
+            </Button>
+            <Button tertiary small>
+                <IconPlaceholderIcon /> Tertiary
+            </Button>
+            <Button tertiary small>
+                Tertiary <IconPlaceholderIcon />
+            </Button>
+            <Button tertiary small>
+                <IconPlaceholderIcon />
+            </Button>
+        </Flex>
+    );
+};
+
+export const TertiarySmallDisabled = () => {
+    return (
+        <Flex {...flexProps}>
+            <Button tertiary small disabled>
+                Tertiary
+            </Button>
+            <Button tertiary small disabled>
+                <IconPlaceholderIcon /> Tertiary
+            </Button>
+            <Button tertiary small disabled>
+                Tertiary <IconPlaceholderIcon />
+            </Button>
+            <Button tertiary small disabled>
+                <IconPlaceholderIcon />
+            </Button>
+        </Flex>
+    );
+};
+
+export const Danger = () => {
+    return (
+        <Flex {...flexProps}>
+            <Button primary danger>
+                Primary
+            </Button>
+            <Button primary danger disabled>
+                Primary
             </Button>
             <Button tertiary danger>
                 Tertiary
             </Button>
-        </GroupHelper>
-        <GroupHelper styles={groupStyle}>
-            <Button disabled tertiary>
+            <Button tertiary danger disabled>
                 Tertiary
             </Button>
-            <Button disabled tertiary>
-                <EditIcon small marginRight={2} />
-                Tertiary with icon
-            </Button>
-            <Button disabled tertiary>
-                Tertiary with icon
-                <EditIcon small marginLeft={2} />
-            </Button>
-            <Button disabled tertiary>
-                <EditIcon small />
-            </Button>
-            <Button disabled tertiary danger>
-                Tertiary
-            </Button>
-        </GroupHelper>
-    </>
-);
+        </Flex>
+    );
+};
 
-export const AsLink = () => (
-    <>
-        <Button tag="a" href="https://www.google.com/" target="_blank">
-            Open Google
-        </Button>
-        <Button disabled tag="a" href="https://www.google.com/" target="_blank">
-            Disabled Open Google
-        </Button>
-    </>
-);
-
-export const Comparison = () => (
-    // <div style={{ display: 'flex' }}>
-    <div>
-        <Button primary tag="button" small>
-            No Icon
-        </Button>
-        <Button marginLeft={2} primary tag="button" small>
-            With MUI icon <EditIcon small marginLeft={2} />
-        </Button>
-        <Button marginLeft={2} primary tag="button" small>
-            With MUI icon <EditIcon small marginLeft={2} fontSize={20} />
-        </Button>
-        <Button marginLeft={2} tag="button" small>
-            <EditIcon small />
-        </Button>
-        <Button marginLeft={2} tag="button" small>
-            <EditIcon small />
-        </Button>
-        <Button marginLeft={2} small>
-            Edit <EditIcon small marginLeft={2} />
-        </Button>
-        <Button marginLeft={2} small>
-            <EditIcon small marginRight={2} />
-        </Button>
-        <Button marginLeft={2} small>
-            <EditIcon small marginRight={2} />
-            Save
-        </Button>
-        <Button marginLeft={2} small>
-            Save <EditIcon small marginLeft={2} />
-        </Button>
-        <Button marginLeft={2} small>
-            Add
-            <EditIcon small marginLeft={2} />
-        </Button>
-        <Button marginLeft={2} small>
-            Remove <EditIcon small marginLeft={2} />
-        </Button>
-    </div>
-);
-
-export const InText = () => (
-    <>
-        Feel free to{' '}
-        <Button small>
-            eat <EditIcon small marginLeft={2} />
-        </Button>{' '}
-        <Button small>
-            eat <EditIcon small marginLeft={2} />
-        </Button>{' '}
-        that tasty pie and{' '}
-        <Button small>
-            <EditIcon marginRight={2} /> drink <EditIcon small marginLeft={2} />
-        </Button>{' '}
-        some tea.
-    </>
-);
-
-export const IconAndText = () => (
-    <Button primary tag="button" wide small>
-        <EditIcon small marginRight={2} />
+export const Wide = () => (
+    <Button primary small wide>
         Create workflow
     </Button>
-);
-
-const customTheme = makeTheme({
-    armor: {
-        components: {
-            Button: {
-                Root: {
-                    base: {
-                        fontWeight: 'bold',
-                    },
-                    primary: {
-                        borderColor: 'red',
-                        '&:hover': {
-                            borderColor: 'yellow',
-                        },
-                    },
-                },
-            },
-        },
-    },
-});
-
-export const WithCustomTheme = () => (
-    <ThemeProvider theme={customTheme}>
-        <Button primary tag="button" wide small>
-            <EditIcon small marginRight={2} />
-            With custom theme
-        </Button>
-    </ThemeProvider>
-);
-
-export const WithCustomThemeAsLink = () => (
-    <ThemeProvider theme={customTheme}>
-        <BrowserRouter>
-            <Button primary wide small tag={Link} to="/homepage">
-                <EditIcon small marginRight={2} />
-                With custom theme
-            </Button>
-        </BrowserRouter>
-    </ThemeProvider>
-);
-
-export const AsRouterLink = () => (
-    <BrowserRouter>
-        <Button tag={Link} to="/homepage">
-            No route to host!
-        </Button>
-    </BrowserRouter>
-);
-
-export const WithClassName = () => (
-    <BrowserRouter>
-        <Button className="custom-button">I am custom</Button>
-        <style
-            dangerouslySetInnerHTML={{
-                __html: `.custom-button { border: 1px solid red; };`,
-            }}
-        />
-    </BrowserRouter>
-);
-
-const CustomButtonWrapper = ({ classes }: { classes: ObjectLiteralType }) => (
-    <Button className={classes.customButton}>I am custom</Button>
-);
-
-const CustomButtonMUI = withMaterialStyles({
-    customButton: {
-        border: '1px solid red',
-    },
-})(CustomButtonWrapper);
-
-export const WithMUIStyles = () => <CustomButtonMUI />;
-
-export const WithCustomAttributes = () => (
-    <Button marginLeft={2}>With custom attributes</Button>
-);
-
-const BlockWithBorder = styled(Box)`
-    border-right: 1px solid white;
-    align-self: stretch;
-    display: flex;
-    align-items: center;
-`;
-
-export const WithCustomSide = () => (
-    <Button marginLeft={2} paddingLeft={0} paddingY={0}>
-        <BlockWithBorder marginRight={2} paddingRight={2} paddingLeft={3}>
-            With
-        </BlockWithBorder>
-        <Box paddingY={3}>custom side</Box>
-    </Button>
-);
-
-export const LikeDisabled = () => (
-    <>
-        <div>
-            <Button primary>Normal</Button>
-            <Button disabled primary>
-                Disabled
-            </Button>
-            <Button likeDisabled primary>
-                Like disabled
-            </Button>
-        </div>
-        <div>
-            <Button secondary>Normal</Button>
-            <Button disabled secondary>
-                Disabled
-            </Button>
-            <Button likeDisabled secondary>
-                Like disabled
-            </Button>
-        </div>
-        <div>
-            <Button tertiary>Normal</Button>
-            <Button disabled tertiary>
-                Disabled
-            </Button>
-            <Button likeDisabled tertiary>
-                Like disabled
-            </Button>
-        </div>
-    </>
 );

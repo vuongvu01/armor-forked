@@ -67,11 +67,6 @@ type TextInputInternalPropsType = {
     outlined?: boolean;
 } & Pick<TextInputEffectivePropsType, 'disabled' | 'large' | 'error' | 'wide'>;
 
-export type TextInputInternalPropsWithThemeType = {
-    inside?: boolean;
-} & TextInputInternalPropsType &
-    Pick<TextInputRootPropsType, 'value' | 'defaultValue' | 'type'>;
-
 /* TextInput Root node prop type */
 export type TextInputRootPropsType = TextInputEffectivePropsType &
     TextInputInternalPropsType &
@@ -84,7 +79,10 @@ export type TextInputInnerContainerPropsType = Pick<
     ComponentElementStylePropsType;
 
 /* TextInput Input node prop type */
-export type TextInputInputPropsType = TextInputEffectivePropsType &
+export type TextInputInputPropsType = {
+    hasBeforeSection?: boolean;
+    hasAfterSection?: boolean;
+} & TextInputEffectivePropsType &
     ComponentElementStylePropsType;
 
 /* TextInput Label node prop type */
@@ -92,7 +90,7 @@ export type TextInputLabelPropsType = Pick<
     TextInputEffectivePropsType,
     'value'
 > & {
-    inside: boolean;
+    isLabelInside?: boolean;
 } & TextInputInternalPropsType &
     ComponentElementStylePropsType;
 

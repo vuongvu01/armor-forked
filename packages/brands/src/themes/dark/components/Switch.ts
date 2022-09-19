@@ -1,66 +1,54 @@
 import { css } from 'styled-components';
 import {
     color,
-    spacing,
-    getOutlineFocusStyleFromColor,
-    colorGrey70,
-    colorGrey40,
+    colorGrey00,
+    colorGrey30,
+    colorGrey50,
+    colorGrey60,
+    colorGrey80,
+    getFocusStyleFromColor,
 } from '@deliveryhero/armor-system';
-import { SwitchPropsType } from '@deliveryhero/armor';
 
-type SwitchRootPropsType = SwitchPropsType &
-    Partial<{
-        reallyChecked: boolean;
-    }>;
-
-export const getSwitchOverride = ({
-    reallyChecked: checked,
-    disabled,
-}: SwitchRootPropsType) => {
-    let result = css`
-        &&& {
-            .Switch-Label {
-                &:after {
-                    background-color: ${color('neutral.06')};
-                }
+export const getSwitchOverride = () => {
+    const result = css`
+        .Switch-Label {
+            background-color: ${colorGrey50};
+            &:after {
+                background-color: ${colorGrey00};
             }
+        }
+
+        .Switch-CheckboxInput:checked:disabled + .Switch-Label {
+            background-color: ${colorGrey50};
+            &:after {
+                background-color: ${colorGrey30};
+            }
+        }
+
+        .Switch-CheckboxInput:not(:checked):disabled + .Switch-Label {
+            background-color: ${colorGrey60};
+            &:after {
+                background-color: ${colorGrey30};
+            }
+        }
+
+        .Switch-CheckboxInput:checked + .Switch-Label {
+            background-color: ${color('primary.03')};
+            &:hover {
+                background-color: ${color('primary.02')};
+            }
+        }
+
+        .Switch-CheckboxInput:not(:checked) + .Switch-Label:hover {
+            background-color: ${colorGrey30};
         }
 
         .Switch-CheckboxInput {
             &:focus-visible + .Switch-Label {
-                ${getOutlineFocusStyleFromColor('neutral.10')};
-                box-shadow: 0 0 0 ${spacing(1)} ${color('primary.03', 0.4)};
+                ${getFocusStyleFromColor('primary.03', colorGrey80)}
             }
         }
     `;
-
-    if (disabled) {
-        result = css`
-            ${result};
-
-            &&&& {
-                .Switch-Label {
-                    background-color: ${colorGrey70};
-
-                    &:after {
-                        background-color: ${colorGrey40};
-                    }
-                }
-            }
-        `;
-    }
-
-    if (!checked && !disabled) {
-        result = css`
-            ${result};
-
-            &&&& {
-                .Switch-Label {
-                    background-color: ${color('neutral.07')};
-                }
-            }
-        `;
-    }
 
     return result;
 };

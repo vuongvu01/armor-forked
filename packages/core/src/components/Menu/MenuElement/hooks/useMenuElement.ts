@@ -1,3 +1,4 @@
+import { MENU_ELEMENT_DEFAULT_TYPOGRAPHY_PROPS } from '../constants';
 import { MenuElementPropsType } from '../type';
 
 export const useMenuElement = ({
@@ -10,9 +11,9 @@ export const useMenuElement = ({
     depthLevel,
     tag: Tag = 'div',
     selected,
+    typographyProp = MENU_ELEMENT_DEFAULT_TYPOGRAPHY_PROPS,
     ...restProps
 }: MenuElementPropsType) => {
-    // const ariaExpanded = expanded ? 'true' : 'false';
     const dataExpanded = expanded ? '1' : '0';
     const dataSelected = selected ? '1' : '0';
 
@@ -27,12 +28,13 @@ export const useMenuElement = ({
             expanded,
             selected,
             small,
-            // 'aria-expanded': ariaExpanded,
+            typographyProp,
             'data-expanded': dataExpanded,
             'data-selected': dataSelected,
         },
         contentProps: {
             small: !!small,
+            ...typographyProp,
         },
         getExpansionHandleArrowProps: () => ({
             expanded,

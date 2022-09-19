@@ -50,6 +50,7 @@ export const useTooltip = <E extends HTMLDivElement>(
         open,
         onToggle !== undefined ? onToggle : onOpenChange,
     );
+
     const { onMouseOverProxy, onMouseOutProxy } = useEventProxy(
         children,
         setReallyOpen,
@@ -63,6 +64,7 @@ export const useTooltip = <E extends HTMLDivElement>(
         allowedAutoPlacements,
         arrowPadding,
     });
+
     const { zIndex: realZIndex } = useOverlay(reallyOpen, { zIndex });
 
     const validTrigger = validateTrigger(realTrigger);

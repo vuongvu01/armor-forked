@@ -15,8 +15,7 @@ const getRootStyle = ({ isExpanded }: AccordionContentRootPropsType) => {
     const result = css`
         ${transition({ all: true })};
         line-height: 0;
-        padding-right: ${spacing(6)};
-        padding-left: ${spacing(6)};
+        padding: 0 ${spacing(6)};
     `;
 
     if (isExpanded) {

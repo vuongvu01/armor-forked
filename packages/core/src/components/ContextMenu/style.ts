@@ -11,6 +11,7 @@ import {
     paddingProps,
     popperArrow,
     popperArrowPlacement,
+    elevation,
 } from '@deliveryhero/armor-system';
 
 import { ContextMenuRootPropsType, ContextMenuSubNodePropsType } from './type';
@@ -21,8 +22,8 @@ const getRootStyle = ({ displayMenuElements }: ContextMenuRootPropsType) => {
     if (displayMenuElements) {
         result = css`
             ${result};
-            padding-top: ${spacing(2)};
-            padding-bottom: ${spacing(2)};
+            padding-top: ${spacing(4)};
+            padding-bottom: ${spacing(4)};
         `;
     }
 
@@ -41,9 +42,7 @@ export const ContextMenuRoot = styled.div.withConfig(
     color: ${color('neutral.07')};
     border-radius: ${borderRadius('soft')};
     background-color: ${color('neutral.00')};
-
-    box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.12);
-
+    box-shadow: ${elevation('small')};
     ${popperArrowPlacement('ContextMenu-Arrow')};
     ${zIndex};
     ${getRootStyle};

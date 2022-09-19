@@ -1,4 +1,5 @@
 import React from 'react';
+import { IconPlaceholderIcon } from '@deliveryhero/armor-icons';
 
 import { Tag } from '../../../src/components/Tag';
 
@@ -113,4 +114,31 @@ export const TagWithFilledState = () => {
 
 export const TagWithFilledStateDisabled = () => {
     return <Tag label="Default" deleteOption="disabled" filled disabled />;
+};
+
+export const TagWithIcon = () => {
+    return (
+        <Tag
+            type="approved"
+            label="Default"
+            deleteOption="disabled"
+            icon={<IconPlaceholderIcon />}
+        >
+            Status
+        </Tag>
+    );
+};
+
+export const TagWithIconSmall = () => {
+    return (
+        <Tag
+            type="approved"
+            label="Default"
+            deleteOption="disabled"
+            icon={<IconPlaceholderIcon />}
+            small
+        >
+            Status
+        </Tag>
+    );
 };

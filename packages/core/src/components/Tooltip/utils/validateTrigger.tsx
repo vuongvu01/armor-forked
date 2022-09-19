@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react';
 import { isFragment } from 'react-is';
 import { consoleWarn } from '@deliveryhero/armor-system';
+import { TriggerWrapper } from '../style';
 
 export const validateTrigger = (trigger: ReactElement): ReactElement | null => {
     if (!trigger) {
@@ -26,6 +27,12 @@ export const validateTrigger = (trigger: ReactElement): ReactElement | null => {
 
     if (typeof trigger === 'string' || typeof trigger === 'number') {
         return <span>{trigger}</span>;
+    }
+
+    // when trigger is a disabled element (e.g. <button disabled>)
+    // we need to wrap it in a div, otherwise the tooltip will not be triggered
+    if (trigger && (trigger as any)?.props?.disabled) {
+        return <TriggerWrapper>{trigger}</TriggerWrapper>;
     }
 
     return trigger;

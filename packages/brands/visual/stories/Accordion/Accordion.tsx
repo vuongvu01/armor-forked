@@ -11,10 +11,20 @@ export default {
 };
 
 export const Basic = () => (
-    <Accordion>
-        <AccordionHeader title="Test" onClick={() => {}} />
-        <AccordionContent>Content</AccordionContent>
-    </Accordion>
+    <>
+        <Accordion>
+            <AccordionHeader title="Test" onClick={() => {}} />
+            <AccordionContent>Content</AccordionContent>
+        </Accordion>
+        <Accordion>
+            <AccordionHeader title="Test 1" onClick={() => {}} />
+            <AccordionContent>Content 1</AccordionContent>
+        </Accordion>
+        <Accordion>
+            <AccordionHeader title="Test 2" onClick={() => {}} />
+            <AccordionContent>Content 2</AccordionContent>
+        </Accordion>
+    </>
 );
 
 export const Disabled = () => (

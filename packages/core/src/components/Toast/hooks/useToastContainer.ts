@@ -1,6 +1,12 @@
 import { createElement, useEffect } from 'react';
 import { render } from 'react-dom';
-import { getWindow, zIndexToast, ScalarType } from '@deliveryhero/armor-system';
+import {
+    getWindow,
+    zIndexToast,
+    RootThemeType,
+    ScalarType,
+} from '@deliveryhero/armor-system';
+import { useTheme } from 'styled-components';
 
 import { ToastPropsType, ToastHookPropsType } from '../type';
 import { TOAST_PORTAL_CONTAINER_ID } from '../constants';
@@ -10,9 +16,10 @@ import { ToastContainer } from '../ToastContainer';
 type RenderToastContainer = {
     zIndex?: number;
     gap?: ScalarType;
+    theme: RootThemeType;
 };
 
-const renderToastContainer = ({ zIndex, gap }: RenderToastContainer) => {
+const renderToastContainer = ({ zIndex, gap, theme }: RenderToastContainer) => {
     const portalId = TOAST_PORTAL_CONTAINER_ID;
 
     const window = getWindow();
@@ -20,29 +27,25 @@ const renderToastContainer = ({ zIndex, gap }: RenderToastContainer) => {
         return;
     }
 
-    const doesExist = !!document.getElementById(portalId);
+    let toastContainer = document.getElementById(portalId);
 
-    if (doesExist) {
-        return;
+    if (!toastContainer) {
+        toastContainer = document.createElement('div');
+        toastContainer.setAttribute('id', portalId);
+        toastContainer.setAttribute('data-testid', portalId);
+        document.body.prepend(toastContainer);
+        toastContainer.setAttribute(
+            'style',
+            `position: fixed; z-index: ${zIndex || zIndexToast}`,
+        );
     }
 
-    const container = document.createElement('div');
-    container.setAttribute('id', portalId);
-    container.setAttribute('data-testid', portalId);
-    container.setAttribute(
-        'style',
-        `position: fixed; z-index: ${zIndex || zIndexToast}`,
-    );
-    document.body.prepend(container);
-
-    render(
-        createElement(ToastContainer, { gap }),
-        document.getElementById(portalId),
-    );
+    render(createElement(ToastContainer, { theme, gap }), toastContainer);
 };
 
 export const useToastContainer = (props?: ToastHookPropsType) => {
     const { gap, zIndex, ...restProps } = props || {};
+    const theme = useTheme() as RootThemeType;
 
     const makeToast = (newToast: ToastPropsType) => {
         toastStore.makeToast({
@@ -52,8 +55,8 @@ export const useToastContainer = (props?: ToastHookPropsType) => {
     };
 
     useEffect(() => {
-        renderToastContainer({ zIndex, gap });
-    }, [gap, zIndex]);
+        renderToastContainer({ zIndex, gap, theme });
+    }, [gap, theme, zIndex]);
 
     return { makeToast };
 };

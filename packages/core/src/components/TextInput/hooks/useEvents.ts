@@ -68,7 +68,6 @@ export const useEvents = ({
     const [isLabelInside, setLabelInside] = useState(
         isLabelPositionInside({
             value,
-            defaultValue,
             placeholder,
             disableLabelEffect,
             isFocused,
@@ -81,7 +80,6 @@ export const useEvents = ({
         setLabelInside(
             isLabelPositionInside({
                 value,
-                defaultValue,
                 isFocused,
                 placeholder,
                 disableLabelEffect,

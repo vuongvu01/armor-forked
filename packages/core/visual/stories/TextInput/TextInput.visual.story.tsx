@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { TextInput } from '../../../src/components/TextInput';
+import { TextInput, TextInputAction } from '../../../src/components/TextInput';
 
 export default {
     title: 'TextInput',
@@ -202,7 +202,7 @@ export const NumericControlled = () => {
                 type="number"
                 label="Label"
                 value={value}
-                onChange={e => {
+                onChange={(e) => {
                     setValue(parseInt(e.target.value, 10));
                     e.stopPropagation();
                 }}
@@ -222,5 +222,15 @@ export const NumericControlled = () => {
                 min={0}
             />
         </>
+    );
+};
+
+export const WithAction = () => {
+    return (
+        <TextInput
+            label="foo"
+            defaultValue="Hz"
+            after={<TextInputAction marginRight={4}>Action</TextInputAction>}
+        />
     );
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Box, DateRangePicker, FormField } from '@deliveryhero/armor';
+import { Box, FormField } from '@deliveryhero/armor';
+import { DateRangePicker } from '../../../src/components';
 
 export default {
     title: 'DateRangePicker',

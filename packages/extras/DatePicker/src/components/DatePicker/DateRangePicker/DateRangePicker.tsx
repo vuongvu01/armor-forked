@@ -29,7 +29,7 @@ import { DatePickerTimeSelector } from '../DatePickerTimeSelector';
  *
  * ```
  * import { useState } from 'react';
- * import { DateRangePicker } from '@deliveryhero/armor';
+ * import { DateRangePicker } from '@deliveryhero/armor-datepicker';
  *
  * const [value, setValue] = useState<[Date, Date]>();
  *

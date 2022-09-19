@@ -10,7 +10,6 @@ export type ClassBasedOnComponentType = {
 };
 
 export type SearchIconPropsType = Partial<{
-    isLoading: boolean;
     disabled: boolean;
 }> &
     HTMLAttributes<HTMLElement>;
@@ -19,7 +18,4 @@ export type SearchIconContainerPropsType = SearchIconPropsType &
     ComponentElementStylePropsType;
 
 export type SearchInputSearchIconPropsType = SearchIconPropsType &
-    ComponentElementStylePropsType;
-
-export type SearchInputLoadingIconPropsType = SearchIconPropsType &
     ComponentElementStylePropsType;

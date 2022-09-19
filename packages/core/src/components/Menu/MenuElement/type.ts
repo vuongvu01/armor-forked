@@ -10,6 +10,7 @@ import {
     ComponentStylePropsType,
     ComponentElementStylePropsType,
 } from '../../type';
+import { TypographyPropsType } from '../../Typography';
 
 type MenuElementEffectivePropsType = Partial<{
     /** If set to *true*, the MenuElement will be rendered as *primary*. This is the default even if the property is not set */
@@ -32,6 +33,8 @@ type MenuElementEffectivePropsType = Partial<{
     enableExpansionHandle: boolean;
     /** If set to *true*, the MenuElement expansion handle will be rendered as *expanded*. This property takes effect only if **enableExpansionHandle** property is set to *true* */
     expanded: boolean;
+    /** Typography props */
+    typographyProp: TypographyPropsType;
     // add other custom properties here
 }> &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div properties
@@ -51,6 +54,7 @@ export type MenuElementRootPropsType = MenuElementEffectivePropsType &
 /* MenuElement Content node prop type */
 export type MenuElementContentPropsType = {
     small: boolean;
+    menuElementTypography?: TypographyPropsType;
 } & ComponentElementStylePropsType;
 
 /* MenuElement ExpansionHandle node prop type */

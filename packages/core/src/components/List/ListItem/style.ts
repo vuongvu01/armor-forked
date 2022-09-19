@@ -9,8 +9,6 @@ import {
     typography,
     spacing,
     pixelToRem,
-    fontWeightMedium,
-    fontWeightRegular,
     token,
 } from '@deliveryhero/armor-system';
 
@@ -66,20 +64,21 @@ const getRootStyle = ({
     if (size === 'small') {
         result = css`
             ${result};
-            min-height: ${spacing(8)};
-            padding: ${spacing(2)};
+            min-height: ${spacing(6)};
+            padding: ${spacing(2, 4)};
         `;
     } else if (size === 'medium') {
         result = css`
             ${result};
             min-height: ${spacing(6)};
-            padding: ${spacing(3)};
+            padding: ${spacing(3, 4)};
         `;
     } else if (size === 'large') {
         result = css`
             ${result};
             min-height: ${spacing(10)};
             padding: ${spacing(4)};
+            ${typography('paragraphLarge')};
         `;
     }
     if (lead || subtitle) {
@@ -174,13 +173,11 @@ const getPrimaryListStyle = ({
             ${result};
             color: ${inactive ? color('neutral.11') : color('neutral.05')};
             cursor: ${inactive ? 'pointer' : 'not-allowed'};
-            font-weight: ${inactive ? fontWeightRegular : fontWeightMedium};
         `;
     } else {
         result = css`
             ${result};
             color: ${color('neutral.11')};
-            font-weight: ${fontWeightMedium};
         `;
     }
 
@@ -199,9 +196,8 @@ export const ListItemRoot = styled(Wrapper).withConfig(
     propsBlocker,
 )<ListItemRootPropsType>`
     ${reset};
-    ${typography('labelMedium')};
+    ${typography('paragraphMedium')};
     color: ${token('body.color')};
-
     display: flex;
     text-decoration: none;
     flex-direction: row;
@@ -212,7 +208,6 @@ export const ListItemRoot = styled(Wrapper).withConfig(
     font-size: inherit;
     border-radius: 0;
     background: ${color('neutral.00')};
-
     ${getRootStyle};
     ${getComponentOverride('ListItem')};
     ${marginProps};
@@ -247,6 +242,8 @@ export const SecondaryListItem = styled.div.withConfig(
 export const PrimaryIconContainer = styled.div.withConfig(
     propsBlocker,
 )<PrimaryIconContainerPropsType>`
+    display: flex;
+    align-items: center;
     margin-right: ${spacing(4)};
     min-height: fit-content;
 `;
@@ -254,6 +251,7 @@ export const PrimaryIconContainer = styled.div.withConfig(
 export const ActionsContainer = styled.div.withConfig(
     propsBlocker,
 )<ActionsContainerPropsType>`
+    display: flex;
     margin-left: ${spacing(2)};
     ${getActionsContainerStyle}
 `;

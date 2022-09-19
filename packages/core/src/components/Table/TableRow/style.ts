@@ -42,13 +42,11 @@ const getRootDynamicStyle = ({
 export const TableRowRoot = styled.tr.withConfig(
     propsBlocker,
 )<TableRowRootPropsType>`
-    &:not(:last-child) {
-        border-bottom-width: 1px;
-        border-bottom-style: solid;
-    }
-
-    border-color: ${color('neutral.03')};
     background-color: ${color('neutral.00')};
+
+    &:not(:last-child) {
+        border-bottom: 1px solid ${color('neutral.03')};
+    }
 
     ${getRootDynamicStyle};
     ${getComponentOverride('TableRow')};

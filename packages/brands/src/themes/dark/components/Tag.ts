@@ -7,7 +7,7 @@ import {
     colorGrey00,
     colorGrey60,
     colorGrey50,
-    colorGrey20,
+    colorGrey10,
 } from '@deliveryhero/armor-system';
 import { TagPropsType } from '@deliveryhero/armor';
 
@@ -37,7 +37,7 @@ export const TAG_DELETE_BEHAVIOUR_OPTIONS = {
 export const getTagOverride = ({ type, filled, disabled }: TagPropsType) => {
     if (disabled) {
         const backgroundColor = colorGrey60;
-        const textColor = colorGrey20;
+        const textColor = colorGrey10;
 
         return css`
             &&& {

@@ -10,7 +10,7 @@ import {
     getOutlineFocusStyleFromColor,
     color,
     transition,
-    token,
+    borderRadius,
 } from '@deliveryhero/armor-system';
 import { TickThickIcon, DashIcon } from '@deliveryhero/armor-icons';
 
@@ -92,7 +92,6 @@ export const CheckboxCheckmark = styled.div.withConfig(
     position: relative;
     width: ${sizes.checkbox.side}px;
     height: ${sizes.checkbox.side}px;
-    overflow: hidden;
 
     ${({ hasLabel }: CheckboxCheckmarkPropsType) =>
         hasLabel
@@ -108,7 +107,7 @@ export const CheckboxCheckmark = styled.div.withConfig(
         top: 0;
         width: ${sizes.checkbox.side}px;
         height: ${sizes.checkbox.side}px;
-        border-radius: ${token('shape.borderRadius.soft')};
+        border-radius: ${borderRadius('soft')};
         box-sizing: border-box;
         border: 1px solid ${color('neutral.03')};
         background-color: ${color('neutral.00')};

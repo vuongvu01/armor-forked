@@ -1,11 +1,9 @@
 import React from 'react';
-
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { AddIcon } from '@deliveryhero/armor-icons';
+
 import { Message } from '../Message';
 import { Typography } from '../../Typography';
 import { MessageAction } from '../MessageAction';
-import { Rick } from '../../../helpers/Rick';
 import { Box } from '../../Box';
 import { loremIpsum } from '../../../helpers/LoremIpsum';
 import { withWrapper } from '../../../helpers/Wrapper';
@@ -53,7 +51,7 @@ export const LabelAndTextWithMessageActions = () => {
             </Typography>
 
             <Box marginTop={2}>
-                <MessageAction marginRight={4}>Order cake</MessageAction>
+                <MessageAction marginRight={8}>Order cake</MessageAction>
                 <MessageAction>Order ingredients</MessageAction>
             </Box>
         </Message>

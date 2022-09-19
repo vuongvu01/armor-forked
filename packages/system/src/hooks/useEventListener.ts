@@ -27,6 +27,7 @@ export const useEventListener = (
 
     useEffect(() => {
         const isSupported = !disabled && element?.current?.addEventListener;
+
         if (!isSupported) {
             return;
         }

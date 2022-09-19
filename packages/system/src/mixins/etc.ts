@@ -3,23 +3,22 @@ import { CSSChunkType } from '../type';
 
 export const noTextInteraction = (): CSSChunkType => css`
     text-decoration: none;
+    outline: none;
+    user-select: none;
+
     &:hover,
     &:focus,
     &:active,
     &:visited {
         text-decoration: none;
     }
-    outline: none;
-    user-select: none;
 `;
 
-// todo: maybe also reset colors to body.color and body.backgroundColor here
 export const reset = (): CSSChunkType => css`
     box-sizing: border-box;
     text-align: left;
     margin: 0;
     padding: 0;
-
     word-break: normal;
     overflow-wrap: normal;
     white-space: normal;

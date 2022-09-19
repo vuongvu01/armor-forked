@@ -2,7 +2,11 @@ import { MouseEvent, useCallback } from 'react';
 
 import { TagPropsType } from '../type';
 import { getStatusTagLabel, isStatusTag } from './index';
-import { tagCloseIconContainer, tagRoot } from '../constants';
+import {
+    tagCloseIconContainer,
+    tagRoot,
+    TAG_CLEAR_BUTTON_PROPS_MAP,
+} from '../constants';
 import { RefType } from '../../../type';
 
 export const useTag = <E extends HTMLDivElement>(
@@ -23,11 +27,7 @@ export const useTag = <E extends HTMLDivElement>(
     }: TagPropsType,
     ref: RefType<E>,
 ) => {
-    let realLabel = label;
-
-    if (isStatusTag(type)) {
-        realLabel = getStatusTagLabel(type);
-    }
+    const realLabel = isStatusTag(type) ? getStatusTagLabel(type) : label;
     const content = children !== undefined ? children : realLabel;
 
     const onCloseButtonClick = useCallback(
@@ -44,6 +44,23 @@ export const useTag = <E extends HTMLDivElement>(
         },
         [code, disabled, onClose, onDeselect],
     );
+
+    const tagTypeStatus = isStatusTag(type);
+
+    const showIndicator = Boolean(indicator && tagTypeStatus);
+
+    const showIcon = Boolean(icon && tagTypeStatus && !indicator);
+
+    const showClearButton = Boolean(
+        !tagTypeStatus &&
+            !disabled &&
+            (deleteOption === 'enabled' || deleteOption === 'onHover'),
+    );
+
+    const clearButtonProps =
+        deleteOption && deleteOption in TAG_CLEAR_BUTTON_PROPS_MAP
+            ? TAG_CLEAR_BUTTON_PROPS_MAP[deleteOption]
+            : {};
 
     return {
         rootProps: {
@@ -78,7 +95,6 @@ export const useTag = <E extends HTMLDivElement>(
         iconContainerProps: {
             small,
         },
-        disabled,
         deleteOption,
         type,
         content,
@@ -87,5 +103,9 @@ export const useTag = <E extends HTMLDivElement>(
         filled,
         icon,
         indicator,
+        showIndicator,
+        showIcon,
+        showClearButton,
+        clearButtonProps,
     };
 };

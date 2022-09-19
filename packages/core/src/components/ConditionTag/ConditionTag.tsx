@@ -56,7 +56,6 @@ export const ConditionTag = forwardRef<HTMLDivElement, ConditionTagPropsType>(
                     {hasTail && (
                         <ConditionTagValueSegment
                             className={classNames.ValueSegment}
-                            moreItems
                         >
                             <Tooltip
                                 minWidth={20}

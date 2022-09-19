@@ -7,7 +7,6 @@ const getStoryPageContentRootStyle = ({ theme }: { theme: RootThemeType }) => {
     if (theme.armor) {
         return css`
             color: ${theme.armor.body.color};
-            background-color: ${theme.armor.body.backgroundColor};
         `;
     }
     return '';

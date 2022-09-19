@@ -8,8 +8,17 @@ export const popperArrowPlacement = (
     &[data-popper-placement^='top'] > .${arrowClassName} {
         bottom: -8px;
     }
+
+    &[data-popper-placement^='right'] > .${arrowClassName} {
+        left: -8px;
+    }
+
     &[data-popper-placement^='bottom'] > .${arrowClassName} {
         top: -8px;
+    }
+
+    &[data-popper-placement^='left'] > .${arrowClassName} {
+        right: -8px;
     }
 `;
 

@@ -6,13 +6,8 @@ import {
     useMemo,
 } from 'react';
 import { useDerivedState } from '@deliveryhero/armor-system';
-
 import { DatePickerTimeSelectorPropsType } from '../type';
 import { RefType } from '../../../../type';
-import {
-    DATE_PICKER_TIME_SELECTOR_MODE_AM,
-    DATE_PICKER_TIME_SELECTOR_MODE_PM,
-} from '../constants';
 import { TimeVector12ModeType } from '../../utils/TimeVector12';
 import { getValidTimeFragment } from '../utils/getValidTimeFragment';
 
@@ -100,23 +95,13 @@ export const useDatePickerTimeSelector = <E extends HTMLDivElement>(
         [onChange, value12],
     );
 
-    const onAMButtonClick = useCallback(() => {
-        setMode(DATE_PICKER_TIME_SELECTOR_MODE_AM);
-        onChange(
-            value12
-                .clone({ mode: DATE_PICKER_TIME_SELECTOR_MODE_AM })
-                .convertTo24(),
-        );
-    }, [onChange, setMode, value12]);
-
-    const onPMButtonClick = useCallback(() => {
-        setMode(DATE_PICKER_TIME_SELECTOR_MODE_PM);
-        onChange(
-            value12
-                .clone({ mode: DATE_PICKER_TIME_SELECTOR_MODE_PM })
-                .convertTo24(),
-        );
-    }, [onChange, setMode, value12]);
+    const onDayPeriodChange = useCallback(
+        (modeVal: TimeVector12ModeType) => {
+            setMode(modeVal);
+            onChange(value12.clone({ mode: modeVal }).convertTo24());
+        },
+        [onChange, setMode, value12],
+    );
 
     return {
         rootProps: {
@@ -139,16 +124,10 @@ export const useDatePickerTimeSelector = <E extends HTMLDivElement>(
             onKeyDown: onTimeInputKeyDown,
             maxLength: 2,
         },
-
-        buttonAMProps: {
-            selected: mode === DATE_PICKER_TIME_SELECTOR_MODE_AM,
-            onClick: onAMButtonClick,
+        buttonDayPeriodProps: {
+            switchName: mode,
+            onSwitchNameChange: (modeVal: string) =>
+                onDayPeriodChange(modeVal as TimeVector12ModeType),
         },
-        buttonPMProps: {
-            selected: mode === DATE_PICKER_TIME_SELECTOR_MODE_PM,
-            onClick: onPMButtonClick,
-        },
-
-        mode,
     };
 };
