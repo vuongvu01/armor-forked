@@ -1,6 +1,6 @@
 expect.extend({
     toHaveChildrenWithClassNames(component, list = {}) {
-        list.forEach(className => {
+        list.forEach((className) => {
             const node = component.querySelector(`.${className}`);
             expect(node).toBeInTheDocument();
         });

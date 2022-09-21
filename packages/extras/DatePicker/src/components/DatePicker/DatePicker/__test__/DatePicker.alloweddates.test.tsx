@@ -4,7 +4,6 @@ import React from 'react';
 
 import { cleanup, render } from '@testing-library/react';
 import { cleanup as cleanupHooks } from '@testing-library/react-hooks';
-// import { act } from 'react-dom/test-utils';
 import { DatePicker } from '../DatePicker';
 import {
     isDayAllowed,

@@ -51,4 +51,14 @@ describe('DateVector', () => {
         });
         expect(vector).toBeNull();
     });
+
+    it('should compare date range correctly', async () => {
+        const vectorStart = DateVector.createFromLocalDate(
+            new Date(2022, 7, 31), // 31 Aug 2022
+        );
+        const vectorEnd = DateVector.createFromLocalDate(new Date(2022, 8, 1)); // 1 Sep 2022
+
+        expect(vectorStart.isSmallerThanOrEqual(vectorEnd)).toEqual(true);
+        expect(vectorStart.isGreaterThanOrEqual(vectorEnd)).toEqual(false);
+    });
 });

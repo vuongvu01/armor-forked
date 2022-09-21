@@ -215,6 +215,6 @@ export class DateVector {
 
     private getWeight() {
         const { year, month, day } = this;
-        return year * 365 + month * 30 + day;
+        return new Date(year, month, day).getTime(); // get rid of time different when comparing dates
     }
 }

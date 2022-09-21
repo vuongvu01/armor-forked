@@ -22,7 +22,6 @@ export const COMMON_CLASSES = [
     'DatePickerTimeSelector-Input',
     'DatePickerTimeSelector-TimeSeparatorIcon',
     'DatePickerTimeSelector-DayPeriodSelector',
-    'DatePickerTimeSelector-Button',
 
     // buttons
     'DatePickerActionBar-Root',
