@@ -1,4 +1,4 @@
-import { HTMLAttributes } from 'react';
+import { ComponentPropsWithRef } from 'react';
 import { MarginPropsType, PaddingPropsType } from '@deliveryhero/armor-system';
 
 import {
@@ -126,7 +126,7 @@ type FilterEditorEffectivePropsType = Partial<{
     /** Is called when a user clicks on the "Clear all" button */
     onClearAllFilterButtonClick: () => void;
 }> &
-    HTMLAttributes<HTMLDivElement> &
+    ComponentPropsWithRef<'form'> &
     PaddingPropsType &
     MarginPropsType;
 

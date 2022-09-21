@@ -67,8 +67,8 @@ import { MemoizedFilterEditorHeader as FilterEditorHeader } from '../FilterEdito
  *
  * @armor-docs-component
  */
-export const FilterEditor = forwardRef<HTMLDivElement, FilterEditorPropsType>(
-    function FilterEditor({ className, ...props }, ref: Ref<HTMLDivElement>) {
+export const FilterEditor = forwardRef<HTMLFormElement, FilterEditorPropsType>(
+    function FilterEditor({ className, ...props }, ref: Ref<HTMLFormElement>) {
         const classNames = useFilterEditorClassNames(
             FILTER_EDITOR_CLASS_PREFIX,
             className,
@@ -80,7 +80,7 @@ export const FilterEditor = forwardRef<HTMLDivElement, FilterEditorPropsType>(
             schema,
             getHeaderProps,
             conditionsProps,
-            getApplyFilterButtonProps,
+            applyFilterButtonProps,
             getConditionType,
             showSeparatedActions,
             showInlineActions,
@@ -91,7 +91,7 @@ export const FilterEditor = forwardRef<HTMLDivElement, FilterEditorPropsType>(
             resultTotalCountFormatted,
             getResultCountProps,
             getActionProps,
-        } = useFilterEditor<HTMLDivElement>(props, ref);
+        } = useFilterEditor<HTMLFormElement>(props, ref);
 
         return (
             <FilterEditorRoot {...rootProps} className={classNames.Root}>
@@ -130,7 +130,7 @@ export const FilterEditor = forwardRef<HTMLDivElement, FilterEditorPropsType>(
 
                     {showInlineActions && (
                         <Button
-                            {...getApplyFilterButtonProps()}
+                            {...applyFilterButtonProps}
                             className={classNames.ApplyButton}
                             secondary
                         >
@@ -159,7 +159,5 @@ export const FilterEditor = forwardRef<HTMLDivElement, FilterEditorPropsType>(
         );
     },
 );
-
-FilterEditor.defaultProps = {};
 
 export const MemoizedFilterEditor = memo(FilterEditor);

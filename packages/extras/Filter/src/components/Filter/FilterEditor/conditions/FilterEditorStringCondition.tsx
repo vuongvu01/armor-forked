@@ -25,7 +25,7 @@ export const FilterEditorStringCondition: FC<
             label={label}
             value={(value as ScalarType) || ''}
             onChange={onChange}
-            autoComplete="nope"
+            autoComplete="off"
         />
     );
 };

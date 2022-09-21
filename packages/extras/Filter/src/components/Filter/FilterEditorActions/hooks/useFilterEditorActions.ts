@@ -7,14 +7,11 @@ export const useFilterEditorActions = <E extends HTMLElement>(
     {
         showCloseButton,
         onCloseButtonClick,
-        onApplyFilterButtonClick,
         ...restProps
     }: FilterEditorActionsPropsType,
     ref: ForwardedRef<E>,
 ) => {
     const innerRef = useRootRef<E>(ref);
-
-    // put all your component logic here
 
     return {
         rootProps: {
@@ -25,8 +22,5 @@ export const useFilterEditorActions = <E extends HTMLElement>(
         getCloseButtonProps: () => ({
             onClick: onCloseButtonClick,
         }),
-        applyFilterButtonProps: {
-            onClick: onApplyFilterButtonClick,
-        },
     };
 };

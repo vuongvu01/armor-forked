@@ -17,7 +17,7 @@ import {
 } from './type';
 
 /** 👉 ROOT ELEMENT */
-export const FilterEditorRoot = styled.div.withConfig(
+export const FilterEditorRoot = styled.form.withConfig(
     propsBlocker,
 )<FilterEditorRootPropsType>`
     ${reset};

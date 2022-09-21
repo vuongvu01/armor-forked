@@ -16,12 +16,8 @@ export const FilterEditorActions = forwardRef<
         className,
     );
 
-    const {
-        rootProps,
-        showCloseButton,
-        getCloseButtonProps,
-        applyFilterButtonProps,
-    } = useFilterEditorActions<HTMLDivElement>(props, ref);
+    const { rootProps, showCloseButton, getCloseButtonProps } =
+        useFilterEditorActions<HTMLDivElement>(props, ref);
 
     return (
         <FilterEditorActionsRoot {...rootProps} className={classNames.Root}>
@@ -35,17 +31,11 @@ export const FilterEditorActions = forwardRef<
                     Close
                 </Button>
             )}
-            <Button
-                wide
-                {...applyFilterButtonProps}
-                className={classNames.ApplyButton}
-            >
+            <Button type="submit" wide className={classNames.ApplyButton}>
                 Apply
             </Button>
         </FilterEditorActionsRoot>
     );
 });
-
-FilterEditorActions.defaultProps = {};
 
 export const MemoizedFilterEditorActions = memo(FilterEditorActions);

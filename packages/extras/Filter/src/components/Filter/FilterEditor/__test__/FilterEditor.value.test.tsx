@@ -2,7 +2,13 @@
 
 import React from 'react';
 
-import { cleanup, fireEvent, render } from '@testing-library/react';
+import {
+    cleanup,
+    render,
+    screen,
+    waitFor,
+    fireEvent,
+} from '@testing-library/react';
 import { cleanup as cleanupHooks } from '@testing-library/react-hooks';
 import userEvent from '@testing-library/user-event';
 
@@ -18,20 +24,6 @@ const filterSchema: FilterConditionSchemaElementOrGroupType = {
     ],
 };
 
-const getElementByText = (
-    getByText: (text: string) => HTMLElement,
-    text: string,
-    selector: string,
-) => {
-    const element = getByText(text);
-    expect(element).toBeInTheDocument();
-
-    const parentElement = element.closest(selector);
-    expect(parentElement).toBeInTheDocument();
-
-    return parentElement;
-};
-
 describe('<FilterEditor />', () => {
     afterEach(async () => {
         await cleanup();
@@ -40,37 +32,63 @@ describe('<FilterEditor />', () => {
 
     it('should support "onValueChange" property [uncontrolled]', async () => {
         const onValueChange = jest.fn();
-        const { getByText } = render(
+
+        render(
             <FilterEditor
                 schema={filterSchema}
                 onValueChange={onValueChange}
             />,
         );
 
-        const textInput = getElementByText(
-            getByText,
-            'Name',
-            '.TextInput-Root',
+        const input = screen.getByRole('textbox');
+
+        userEvent.type(input, 'Max Mustermann');
+
+        const applyButton = screen.getByText('Apply');
+
+        userEvent.click(applyButton);
+
+        expect(onValueChange).toHaveBeenCalledWith(
+            expect.objectContaining({
+                conditions: [
+                    {
+                        id: 'name',
+                        name: 'name',
+                        value: 'Max Mustermann',
+                    },
+                ],
+            }),
         );
-        const input = textInput!.querySelector('input');
-        expect(input).toBeInTheDocument();
+    });
 
-        userEvent.type(input!, 'Max Mustermann');
+    it('should be possible to submit the form by hitting ENTER key', async () => {
+        const onValueChange = jest.fn();
 
-        const applyButton = getByText('Apply');
-        expect(applyButton).toBeInTheDocument();
+        render(
+            <FilterEditor
+                schema={filterSchema}
+                onValueChange={onValueChange}
+            />,
+        );
 
-        fireEvent.click(applyButton);
+        const input = screen.getByRole('textbox');
 
-        expect(onValueChange).toBeCalled();
-        expect(onValueChange.mock.calls[0][0]).toMatchObject({
-            conditions: [
-                {
-                    id: 'name',
-                    name: 'name',
-                    value: 'Max Mustermann',
-                },
-            ],
+        userEvent.type(input, 'John Doe');
+
+        fireEvent.submit(input);
+
+        await waitFor(() => {
+            expect(onValueChange).toHaveBeenCalledWith(
+                expect.objectContaining({
+                    conditions: [
+                        {
+                            id: 'name',
+                            name: 'name',
+                            value: 'John Doe',
+                        },
+                    ],
+                }),
+            );
         });
     });
 });

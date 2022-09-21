@@ -59,10 +59,6 @@ export const useFilterEditor = <E extends HTMLElement>(
         schema,
         onSchemaChange,
     );
-    // const [internalSchema] = useDerivedState<FilterConditionSchemaType>(
-    //     () => cloneDeep(externalSchema),
-    //     [externalSchema],
-    // );
 
     const typeIndex = useTypeIndex(types);
 
@@ -73,6 +69,7 @@ export const useFilterEditor = <E extends HTMLElement>(
             value,
             onValueChange,
         );
+
     // next value candidate, controlled or uncontrolled. If not set, then initially taken from the applied value
     const [actualValueCandidate, setActualValueCandidate] =
         useControlledState<FilterConditionValueType>(
@@ -100,12 +97,13 @@ export const useFilterEditor = <E extends HTMLElement>(
             ? actualValueCandidate
             : getInitialValue(externalSchemaSafe);
 
-    const onApplyFilterButtonClick = useCallback(() => {
-        setActualValue(actualValueCandidate!); // todo: fix this !
+    const applyFilter = useCallback(() => {
+        setActualValue(actualValueCandidate!);
+
         if (enableCloseOnApply !== false) {
             onClose?.();
         }
-    }, [setActualValue, actualValueCandidate, onClose, enableCloseOnApply]);
+    }, [actualValueCandidate, enableCloseOnApply, onClose, setActualValue]);
 
     const onClearFilterButtonClick = useCallback(() => {
         const nextValue = initialValue
@@ -120,15 +118,26 @@ export const useFilterEditor = <E extends HTMLElement>(
         onClearAllFilterButtonClick,
     ]);
 
-    useFilterEditorEvents(onApplyFilterButtonClick, onClearFilterButtonClick);
+    useFilterEditorEvents(applyFilter, onClearFilterButtonClick);
 
     const layoutHorizontal = layout === FILTER_EDITOR_LAYOUT_HORIZONTAL;
     const layoutVertical = layout !== FILTER_EDITOR_LAYOUT_HORIZONTAL;
+
+    const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
+        event.preventDefault();
+
+        applyFilter();
+    };
+
+    const applyFilterButtonProps: React.ComponentPropsWithoutRef<'button'> = {
+        type: 'submit',
+    };
 
     return {
         rootProps: {
             ...restProps,
             ref: innerRef,
+            onSubmit: handleSubmit,
         },
         getHeaderProps: () => ({
             leftAligned: layoutHorizontal,
@@ -200,9 +209,7 @@ export const useFilterEditor = <E extends HTMLElement>(
             };
         },
         schema: externalSchemaSafe,
-        getApplyFilterButtonProps: () => ({
-            onClick: onApplyFilterButtonClick,
-        }),
+        applyFilterButtonProps,
 
         showSeparatedActions: showActions && layoutVertical,
         showInlineActions: showActions && layoutHorizontal,
@@ -221,7 +228,7 @@ export const useFilterEditor = <E extends HTMLElement>(
         getActionProps: () => ({
             showCloseButton: enableCloseButton !== false,
             onCloseButtonClick: onClose,
-            onApplyFilterButtonClick,
+            onApplyFilterButtonClick: applyFilter,
             marginTop: 8,
         }),
         showHeader,
