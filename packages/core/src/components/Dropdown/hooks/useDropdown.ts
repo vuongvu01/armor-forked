@@ -55,7 +55,7 @@ export const useDropdown = <E extends HTMLInputElement>(
         enableSearchOption,
         enableOptionContentEllipsis,
         enableFooter,
-        preserveSelection,
+        preserveSelection = true,
         onCancelClick,
         onConfirmClick,
         footerContent,

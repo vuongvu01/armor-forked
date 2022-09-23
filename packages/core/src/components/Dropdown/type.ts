@@ -123,7 +123,8 @@ export type DropdownEffectivePropsType = Partial<{
     enableVirtualization: boolean;
     enableOptionContentEllipsis: boolean;
     enableFooter: boolean;
-    preserveSelection: boolean; // this should be used only when the new data set is a superset of the original set
+    /** If set, the dropdown will preserve the current selection when the options change, true by default */
+    preserveSelection: boolean;
     /**
      * @armor-docs-expand DropdownInternalValueType
      */
