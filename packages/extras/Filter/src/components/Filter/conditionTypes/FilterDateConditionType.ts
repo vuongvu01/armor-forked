@@ -8,6 +8,7 @@ import { FilterBaseConditionType } from './FilterBaseConditionType';
 type FilterDateConditionAttributeType = {
     enableTimePicker?: boolean;
     formatDateTime?: (value: Date) => string;
+    enableMonthYearPickerMode?: boolean;
 };
 
 export class FilterDateConditionType extends FilterBaseConditionType {

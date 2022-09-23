@@ -11,7 +11,7 @@ export const FilterEditorDateCondition: FC<
     React.PropsWithChildren<FilterEditorConditionPropsType>
 > = ({ condition, conditionType, conditionValue, onConditionValueChange }) => {
     const { label } = condition;
-    const { enableTimePicker, formatDateTime } = (
+    const { enableTimePicker, formatDateTime, enableMonthYearPickerMode } = (
         conditionType as FilterDateConditionType
     ).getAttributes();
     const { value } = conditionValue || {};
@@ -51,6 +51,7 @@ export const FilterEditorDateCondition: FC<
             onDateValueChange={onDateValueChange}
             enableTimePicker={enableTimePicker}
             formatDateTime={formatDateTime}
+            enableMonthYearPickerMode={enableMonthYearPickerMode}
         />
     );
 };
