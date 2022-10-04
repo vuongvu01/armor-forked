@@ -717,6 +717,13 @@ export const AllCategoriesWithIconSizeVariants = (): ReactElement => (
             <I.SMSIcon large />
         </Icons>
 
+        <h3>ShipmentBox</h3>
+        <Icons>
+            <I.ShipmentBoxIcon small />
+            <I.ShipmentBoxIcon medium />
+            <I.ShipmentBoxIcon large />
+        </Icons>
+
         <h3>Shop</h3>
         <Icons>
             <I.ShopIcon small />
@@ -1409,6 +1416,13 @@ export const AllCategoriesWithIconSizeVariants = (): ReactElement => (
             <I.MotorcycleDeliveryIcon small />
             <I.MotorcycleDeliveryIcon medium />
             <I.MotorcycleDeliveryIcon large />
+        </Icons>
+
+        <h3>Truck</h3>
+        <Icons>
+            <I.TruckIcon small />
+            <I.TruckIcon medium />
+            <I.TruckIcon large />
         </Icons>
 
         <h3>Walking</h3>

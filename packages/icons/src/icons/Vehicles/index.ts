@@ -3,4 +3,5 @@
 export * from './Bike';
 export * from './Car';
 export * from './MotorcycleDelivery';
+export * from './Truck';
 export * from './Walking';
