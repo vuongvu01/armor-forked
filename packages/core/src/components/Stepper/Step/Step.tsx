@@ -2,6 +2,7 @@ import React, { isValidElement, forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 import { TickThickIcon } from '@deliveryhero/armor-icons';
 
+import { WithoutChildren } from '../../../type';
 import { Pack, PackItem } from '../../Pack';
 import { StepPropsType, StepperPieceVariant } from './type';
 import { useStepClassNames, useStep } from './hooks';
@@ -65,118 +66,119 @@ import {
  *
  * @armor-docs-component
  */
-export const Step = forwardRef<HTMLDivElement, StepPropsType>(function Step(
-    { className, ...restProps },
-    ref,
-) {
-    const {
-        variant,
-        rootProps,
-        stepperButtonProps,
-        stepperLineProps,
-        stepperPieceProps,
-        icon,
-        isIconShown,
-        title,
-        description,
-        extraInfo,
-        isExtraInfoShown,
-        vertical,
-    } = useStep(restProps, ref);
+export const Step = forwardRef<HTMLDivElement, WithoutChildren<StepPropsType>>(
+    function Step({ className, ...restProps }, ref) {
+        const {
+            variant,
+            rootProps,
+            stepperButtonProps,
+            stepperLineProps,
+            stepperPieceProps,
+            icon,
+            isIconShown,
+            title,
+            description,
+            extraInfo,
+            isExtraInfoShown,
+            vertical,
+        } = useStep(restProps, ref);
 
-    const classOverride = useStepClassNames(
-        STEP_CLASS_PREFIX,
-        className,
-        variant,
-    );
-    return (
-        <StepRoot
-            data-testid={stepRoot}
-            {...rootProps}
-            className={classOverride.Root}
-        >
-            <StepButton
-                className={classOverride.Button}
-                {...stepperButtonProps}
+        const classOverride = useStepClassNames(
+            STEP_CLASS_PREFIX,
+            className,
+            variant,
+        );
+        return (
+            <StepRoot
+                data-testid={stepRoot}
+                {...rootProps}
+                className={classOverride.Root}
             >
-                <StepperPieceRoot className={classOverride.Piece}>
-                    <StepperPieceWrapper
-                        {...stepperPieceProps}
-                        className={classOverride.Wrapper}
-                    >
-                        {isIconShown && icon}
-                        {!isIconShown &&
-                            (StepperPieceVariant.complete === variant ? (
-                                <TickThickIcon
-                                    small
-                                    className={classOverride.Icon}
-                                    color="primary.07"
-                                />
-                            ) : (
-                                <StepperPieceNumber
-                                    className={classOverride.Number}
-                                >
-                                    {stepperPieceProps.index}
-                                </StepperPieceNumber>
-                            ))}
-                    </StepperPieceWrapper>
-                    <StepperLine
-                        {...stepperLineProps}
-                        className={classOverride.Line}
-                    />
-                </StepperPieceRoot>
-                <StepContent className={classOverride.Content}>
-                    <Pack
-                        alignItems="center"
-                        justifyContent={vertical ? 'space-between' : 'center'}
-                    >
-                        <PackItem flexGrow={1} flexShrink={1}>
-                            <Typography
-                                className={classOverride.Title}
-                                paragraph
-                                medium
-                                margin={0}
-                            >
-                                {title}
-                            </Typography>
-                        </PackItem>
-                        {isExtraInfoShown && (
-                            <PackItem
-                                alignSelf="flex-start"
-                                flexShrink={0}
-                                marginLeft={2}
-                                marginTop={0.5}
-                            >
+                <StepButton
+                    className={classOverride.Button}
+                    {...stepperButtonProps}
+                >
+                    <StepperPieceRoot className={classOverride.Piece}>
+                        <StepperPieceWrapper
+                            {...stepperPieceProps}
+                            className={classOverride.Wrapper}
+                        >
+                            {isIconShown && icon}
+                            {!isIconShown &&
+                                (StepperPieceVariant.complete === variant ? (
+                                    <TickThickIcon
+                                        small
+                                        className={classOverride.Icon}
+                                        color="primary.07"
+                                    />
+                                ) : (
+                                    <StepperPieceNumber
+                                        className={classOverride.Number}
+                                    >
+                                        {stepperPieceProps.index}
+                                    </StepperPieceNumber>
+                                ))}
+                        </StepperPieceWrapper>
+                        <StepperLine
+                            {...stepperLineProps}
+                            className={classOverride.Line}
+                        />
+                    </StepperPieceRoot>
+                    <StepContent className={classOverride.Content}>
+                        <Pack
+                            alignItems="center"
+                            justifyContent={
+                                vertical ? 'space-between' : 'center'
+                            }
+                        >
+                            <PackItem flexGrow={1} flexShrink={1}>
                                 <Typography
-                                    className={classOverride.ExtraInfo}
+                                    className={classOverride.Title}
                                     paragraph
-                                    small
+                                    medium
                                     margin={0}
-                                    color="neutral.05"
                                 >
-                                    {extraInfo}
+                                    {title}
                                 </Typography>
                             </PackItem>
+                            {isExtraInfoShown && (
+                                <PackItem
+                                    alignSelf="flex-start"
+                                    flexShrink={0}
+                                    marginLeft={2}
+                                    marginTop={0.5}
+                                >
+                                    <Typography
+                                        className={classOverride.ExtraInfo}
+                                        paragraph
+                                        small
+                                        margin={0}
+                                        color="neutral.05"
+                                    >
+                                        {extraInfo}
+                                    </Typography>
+                                </PackItem>
+                            )}
+                        </Pack>
+                        {isValidElement(description) ? (
+                            description
+                        ) : (
+                            <Typography
+                                className={classOverride.Description}
+                                paragraph
+                                small
+                                margin={0}
+                                color="neutral.05"
+                            >
+                                {description}
+                            </Typography>
                         )}
-                    </Pack>
-                    {isValidElement(description) ? (
-                        description
-                    ) : (
-                        <Typography
-                            className={classOverride.Description}
-                            paragraph
-                            small
-                            margin={0}
-                            color="neutral.05"
-                        >
-                            {description}
-                        </Typography>
-                    )}
-                </StepContent>
-            </StepButton>
-        </StepRoot>
-    );
-});
+                    </StepContent>
+                </StepButton>
+            </StepRoot>
+        );
+    },
+);
 
 Step.propTypes = {
     /** The step's title */

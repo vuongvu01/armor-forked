@@ -31,3 +31,5 @@ export type DictionaryItemIDBasedType = {
 };
 
 export type WithChildren<T = {}> = T & { children: React.ReactNode };
+
+export type WithoutChildren<T = {}> = T & { children?: never };
