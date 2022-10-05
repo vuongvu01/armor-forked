@@ -23,6 +23,7 @@ export const useFileCard = <E extends HTMLElement>(
         errorMessage,
         onCancelButtonClick,
         onDeleteButtonClick,
+        hideCancelButton,
         ...restProps
     }: FileCardPropsType,
     ref: RefType<E>,
@@ -59,6 +60,8 @@ export const useFileCard = <E extends HTMLElement>(
         }
     }, [imageSrc]);
 
+    const isUploading = (!!uploadProgress || uploadProgress === 0) && !error;
+
     return {
         rootProps: {
             ...restProps,
@@ -72,8 +75,8 @@ export const useFileCard = <E extends HTMLElement>(
         },
         error,
         errorMessage,
-        isUploading: (!!uploadProgress || uploadProgress === 0) && !error,
-        fileSize: formatBytesToSize(fileSize),
+        isUploading,
+        fileSize: Boolean(fileSize) && formatBytesToSize(fileSize),
         fileName: nameFirstPart,
         fileExtension: nameLastPart,
         imageSrc: internalImageSrc,
@@ -90,5 +93,7 @@ export const useFileCard = <E extends HTMLElement>(
             progress: uploadProgress,
             preset: ProgressBarLevels.FILE_UPLOAD,
         }),
+        showCancelButton: Boolean(isUploading && !hideCancelButton),
+        showDeleteButton: Boolean(!isUploading || error),
     };
 };

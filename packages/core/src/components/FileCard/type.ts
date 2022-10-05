@@ -26,6 +26,8 @@ type FileCardEffectivePropsType = Partial<{
     errorMessage: string;
     /** The upload progress (between 1-100%) */
     uploadProgress: number;
+    /** Hide cancel button when upload is in progress */
+    hideCancelButton: true;
 }> &
     HTMLAttributes<HTMLDivElement> &
     MarginPropsType &

@@ -82,6 +82,8 @@ export const FileCard = forwardRef<HTMLDivElement, FileCardPropsType>(
             getUploadBarProps,
             getCancelButtonProps,
             getDeleteButtonProps,
+            showCancelButton,
+            showDeleteButton,
         } = useFileCard<HTMLDivElement>(props, ref);
 
         return (
@@ -122,12 +124,14 @@ export const FileCard = forwardRef<HTMLDivElement, FileCardPropsType>(
                         <FileExtension className={classNames.FileExtension}>
                             {fileExtension}
                         </FileExtension>
-                        <FileSize className={classNames.FileSize}>
-                            {fileSize}
-                        </FileSize>
+                        {fileSize && (
+                            <FileSize className={classNames.FileSize}>
+                                {fileSize}
+                            </FileSize>
+                        )}
                     </FileCardLeftPortion>
                     <FileCardRightPortion className={classNames.RightPortion}>
-                        {isUploading && (
+                        {showCancelButton && (
                             <IconButton
                                 {...getCancelButtonProps()}
                                 className={classNames.CancelButton}
@@ -139,7 +143,7 @@ export const FileCard = forwardRef<HTMLDivElement, FileCardPropsType>(
                                 />
                             </IconButton>
                         )}
-                        {(!isUploading || error) && (
+                        {showDeleteButton && (
                             <IconButton
                                 {...getDeleteButtonProps()}
                                 className={classNames.DeleteButton}

@@ -137,3 +137,28 @@ export const ImagePreview = () => {
         </>
     );
 };
+
+export const HideFileSize = () => {
+    return (
+        <FileCard
+            fileId="file-01"
+            onCancelButtonClick={handleClickCancel}
+            onDeleteButtonClick={handleClickDelete}
+            fileName="Lorem_ipsum_dolor_sit_amet.txt"
+        />
+    );
+};
+
+export const HideCancelButton = () => {
+    return (
+        <FileCard
+            fileId="file-01"
+            onCancelButtonClick={handleClickCancel}
+            onDeleteButtonClick={handleClickDelete}
+            fileName="Lorem_ipsum_dolor_sit_amet.txt"
+            fileSize={10491049}
+            uploadProgress={59}
+            hideCancelButton
+        />
+    );
+};
