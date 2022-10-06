@@ -32,6 +32,10 @@ const useHeaderNavigationProfileClassName = (
                 }),
                 className,
             ),
+            NavigationProfileDropdownOptionListWrapper: getClassNameByComponent({
+                component: 'NavigationProfileDropdownOptionListWrapper',
+                classPrefix,
+            }),
             NavigationProfileMenuItem: getClassNameByComponent({
                 component: 'NavigationProfileMenuItem',
                 classPrefix,

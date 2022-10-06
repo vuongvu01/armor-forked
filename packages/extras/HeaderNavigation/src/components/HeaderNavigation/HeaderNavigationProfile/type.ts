@@ -32,6 +32,8 @@ export type HeaderNavigationProfilePropsType =
             open: boolean;
             /** Callback to fire in case of controlled mode when dropdown is close */
             onOpenChange: (openValue: boolean) => void;
+            /** The z-index attribute of the dropdown container */
+            zIndex?: number;
         }>;
 
 export type HeaderNavigationProfileRootPropsType =
@@ -95,4 +97,5 @@ export type UseHeaderNavigationProfileProps = Partial<{
     selectedValue: DropdownValueType;
     open: boolean;
     onOpenChange: (openValue: boolean) => void;
+    zIndex?: number;
 }>;

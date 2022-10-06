@@ -1,12 +1,12 @@
 import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
-import { ContextMenu } from '@deliveryhero/armor';
 import { HeaderNavigationProfilePropsType } from './type';
 import { useHeaderNavigationProfileClassName } from './hooks';
 import {
     HeaderNavigationProfileRoot,
     HeaderNavigationProfileWrapper,
+    HeaderNavigationProfileDropdownOptionListWrapper,
 } from './style';
 import {
     HEADER_NAVIGATION_PROFILE_CLASS_PREFIX,
@@ -35,6 +35,7 @@ export const HeaderNavigationProfile = forwardRef<
         selectorLabel,
         open,
         onOpenChange,
+        zIndex,
         ...restProps
     },
     ref,
@@ -49,11 +50,13 @@ export const HeaderNavigationProfile = forwardRef<
         setSelectedValue,
         openState,
         setOpenState,
+        listContainerProps,
     } = useHeaderNavigationProfile({
         selectedValue,
         onSelectedValueChange,
         open,
         onOpenChange,
+        zIndex,
     });
 
     return (
@@ -67,7 +70,7 @@ export const HeaderNavigationProfile = forwardRef<
                     ref={ref}
                     className={classOverride.NavigationProfileWrapper}
                 >
-                    <ContextMenu
+                    <HeaderNavigationProfileDropdownOptionListWrapper
                         trigger={
                             <HeaderNavigationProfileButton
                                 usernameInitials={usernameInitials}
@@ -80,6 +83,8 @@ export const HeaderNavigationProfile = forwardRef<
                         onOpenChange={(openVal) => {
                             setOpenState(openVal);
                         }}
+                        className={classOverride.NavigationProfileDropdownOptionListWrapper}
+                        {...listContainerProps}
                     >
                         <HeaderNavigationProfileMenu
                             selectedValue={selectedValueProp}
@@ -88,7 +93,7 @@ export const HeaderNavigationProfile = forwardRef<
                             selectorOptions={selectorOptions}
                             selectorLabel={selectorLabel}
                         />
-                    </ContextMenu>
+                    </HeaderNavigationProfileDropdownOptionListWrapper>
                 </HeaderNavigationProfileWrapper>
             </HeaderNavigationProfileRoot>
         </>

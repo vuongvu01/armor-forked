@@ -4,9 +4,10 @@ import {
     propsBlocker,
     spacing,
     typography,
+    zIndex,
 } from '@deliveryhero/armor-system';
 
-import { Link, Stack, StackItem } from '@deliveryhero/armor';
+import { ContextMenu, Link, Stack, StackItem } from '@deliveryhero/armor';
 import {
     HeaderNavigationProfileMenuItemRootPropsType,
     HeaderNavigationProfileRootPropsType,
@@ -27,6 +28,10 @@ export const HeaderNavigationProfileRoot = styled(
 `;
 
 export const HeaderNavigationProfileWrapper = styled(Stack)``;
+
+export const HeaderNavigationProfileDropdownOptionListWrapper = styled(ContextMenu)`
+    ${zIndex};
+`;
 
 export const HeaderNavigationProfileButtonRoot = styled.div.withConfig(
     propsBlocker,

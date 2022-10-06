@@ -6,6 +6,7 @@ const useHeaderNavigationProfile = ({
     onSelectedValueChange,
     open,
     onOpenChange,
+    zIndex,
 }: UseHeaderNavigationProfileProps) => {
     const [selectedValue, setSelectedValue] = useControlledState(
         '',
@@ -24,6 +25,9 @@ const useHeaderNavigationProfile = ({
         setSelectedValue,
         setOpenState,
         openState,
+        listContainerProps: {
+            zIndex
+        },
     };
 };
 
