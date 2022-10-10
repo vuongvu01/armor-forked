@@ -100,7 +100,7 @@ export const useTooltip = <E extends HTMLDivElement>(
         },
 
         content: realContent,
-        open: reallyOpen,
+        isOpen: reallyOpen && !!realContent,
 
         align,
         validTrigger,

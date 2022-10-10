@@ -79,6 +79,24 @@ export const TooltipRoot = styled.div.withConfig(
     ${widthProps};
 `;
 
+export const TooltipContainer = styled.div.withConfig(propsBlocker)`
+    .Tooltip-Container {
+        ${transition({ opacity: true })};
+    }
+    .Tooltip-Container.enter {
+        opacity: 0;
+    }
+    .Tooltip-Container.enter-active {
+        opacity: 1;
+    }
+    .Tooltip-Container.exit {
+        opacity: 1;
+    }
+    .Tooltip-Container.exit-active {
+        opacity: 0;
+    }
+`;
+
 export const TooltipArrow = styled.div.withConfig(
     propsBlocker,
 )<TooltipArrowPropsType>`

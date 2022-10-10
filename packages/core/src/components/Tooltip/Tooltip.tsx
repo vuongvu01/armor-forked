@@ -1,9 +1,10 @@
 import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
-import { PortalToBody } from '@deliveryhero/armor-system';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { PortalToBody, durationNormal } from '@deliveryhero/armor-system';
 
 import { useTooltipClassNames } from './hooks/useTooltipClassNames';
-import { TooltipRoot, TooltipArrow } from './style';
+import { TooltipRoot, TooltipContainer, TooltipArrow } from './style';
 import { TooltipPropsType } from './type';
 import { TOOLTIP_ALIGN_PLACEMENTS, TOOLTIP_CLASS_PREFIX } from './constants';
 import { useTooltip } from './hooks/useTooltip';
@@ -34,7 +35,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipPropsType>(
     function Tooltip({ className, ...props }, ref) {
         const {
             align,
-            open,
+            isOpen,
             trigger,
             validTrigger,
             content,
@@ -43,7 +44,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipPropsType>(
             arrowProps,
         } = useTooltip(props, ref);
 
-        const classNameComponents = useTooltipClassNames(
+        const classNames = useTooltipClassNames(
             TOOLTIP_CLASS_PREFIX,
             className,
             align,
@@ -56,20 +57,29 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipPropsType>(
         return (
             <>
                 {trigger}
-                {open && !!content && (
-                    <PortalToBody {...portalProps}>
-                        <TooltipRoot
-                            {...rootProps}
-                            className={classNameComponents.Root}
-                        >
-                            {content}
-                            <TooltipArrow
-                                {...arrowProps}
-                                className={classNameComponents.Arrow}
-                            />
-                        </TooltipRoot>
-                    </PortalToBody>
-                )}
+                <PortalToBody {...portalProps}>
+                    <TooltipContainer>
+                        <TransitionGroup>
+                            {isOpen && (
+                                <CSSTransition
+                                    timeout={durationNormal}
+                                    className={classNames.Container}
+                                >
+                                    <TooltipRoot
+                                        {...rootProps}
+                                        className={classNames.Root}
+                                    >
+                                        {content}
+                                        <TooltipArrow
+                                            {...arrowProps}
+                                            className={classNames.Arrow}
+                                        />
+                                    </TooltipRoot>
+                                </CSSTransition>
+                            )}
+                        </TransitionGroup>
+                    </TooltipContainer>
+                </PortalToBody>
             </>
         );
     },

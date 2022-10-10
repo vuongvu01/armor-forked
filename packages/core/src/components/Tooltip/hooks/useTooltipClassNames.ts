@@ -26,5 +26,6 @@ export const useTooltipClassNames = (
         return {
             Root: `${rootClassNames} ${rootStateClassNames.join(' ')}`.trim(),
             Arrow: makeBEM(classPrefix, 'Arrow'),
+            Container: makeBEM(classPrefix, 'Container'),
         };
     }, [classPrefix, className, align]);
