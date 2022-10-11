@@ -12,6 +12,8 @@ import {
     ComponentElementStylePropsType,
 } from '../type';
 
+type WordBreakType = 'break-all' | 'break-word' | 'inherit' | 'initial' | 'keep-all' | 'normal' | 'revert' | 'unset'
+
 /** 👉 PROPS TYPE */
 type TypographyEffectivePropsType = Partial<{
     pageTitle: boolean;
@@ -26,6 +28,7 @@ type TypographyEffectivePropsType = Partial<{
     disabled: boolean;
     error: boolean;
     // add other custom properties here
+    wordBreak?: WordBreakType;
 }> &
     HTMLAttributes<HTMLDivElement> & // includes all HTML Div properties
     ComponentBehaviourLinkType &

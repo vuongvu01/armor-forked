@@ -42,6 +42,14 @@ const getRootStyle = ({
     `;
 };
 
+const getWordBreakStyle = ({ wordBreak }: TypographyRootPropsType) => {
+    if (!wordBreak) return ''
+
+    return css`
+        word-break: ${wordBreak};
+    `;
+};
+
 const getMaxLinesStyle = ({ maxLines, ...props }: TypographyRootPropsType) => {
     if (typeof maxLines !== 'undefined') {
         return css`
@@ -77,4 +85,5 @@ export const TypographyRoot = styled(Wrapper).withConfig(
     ${marginProps};
     ${colorProps};
     ${textAlignmentProps};
+    ${getWordBreakStyle};
 `;
