@@ -12,7 +12,7 @@ type SwitchEffectivePropsType = Partial<{
     label: ReactNode;
 }> &
     InputHTMLAttributes<HTMLInputElement> &
-    Omit<InputHTMLAttributes<HTMLLabelElement>, 'onChange'> &
+    Omit<InputHTMLAttributes<HTMLLabelElement>, 'onChange' | 'enterKeyHint'> &
     MarginPropsType;
 
 export type SwitchPropsType = SwitchEffectivePropsType;
