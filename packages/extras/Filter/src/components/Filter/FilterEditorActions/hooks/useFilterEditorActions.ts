@@ -1,7 +1,8 @@
+import { ForwardedRef, ComponentPropsWithoutRef } from 'react';
 import { useRootRef } from '@deliveryhero/armor-system';
-import { ForwardedRef } from 'react';
 
 import { FilterEditorActionsPropsType } from '../type';
+import { FILTER_EDITOR_FORM_ID } from '../../constants';
 
 export const useFilterEditorActions = <E extends HTMLElement>(
     {
@@ -13,14 +14,20 @@ export const useFilterEditorActions = <E extends HTMLElement>(
 ) => {
     const innerRef = useRootRef<E>(ref);
 
+    const applyFilterButtonProps: ComponentPropsWithoutRef<'button'> = {
+        type: 'submit',
+        form: FILTER_EDITOR_FORM_ID,
+    };
+
     return {
         rootProps: {
             ...restProps,
             ref: innerRef,
         },
-        showCloseButton: !!showCloseButton,
+        showCloseButton: Boolean(showCloseButton),
         getCloseButtonProps: () => ({
             onClick: onCloseButtonClick,
         }),
+        applyFilterButtonProps,
     };
 };

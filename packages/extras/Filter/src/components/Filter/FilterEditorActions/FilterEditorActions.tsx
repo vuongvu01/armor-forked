@@ -16,8 +16,12 @@ export const FilterEditorActions = forwardRef<
         className,
     );
 
-    const { rootProps, showCloseButton, getCloseButtonProps } =
-        useFilterEditorActions<HTMLDivElement>(props, ref);
+    const {
+        rootProps,
+        showCloseButton,
+        getCloseButtonProps,
+        applyFilterButtonProps,
+    } = useFilterEditorActions<HTMLDivElement>(props, ref);
 
     return (
         <FilterEditorActionsRoot {...rootProps} className={classNames.Root}>
@@ -31,7 +35,11 @@ export const FilterEditorActions = forwardRef<
                     Close
                 </Button>
             )}
-            <Button type="submit" wide className={classNames.ApplyButton}>
+            <Button
+                {...applyFilterButtonProps}
+                wide
+                className={classNames.ApplyButton}
+            >
                 Apply
             </Button>
         </FilterEditorActionsRoot>

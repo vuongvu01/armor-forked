@@ -9,7 +9,7 @@ import {
     FilterConditionValueType,
     FilterConditionSchemaType,
 } from '../../type';
-import { SCHEMA_EMPTY } from '../../constants';
+import { SCHEMA_EMPTY, FILTER_EDITOR_FORM_ID } from '../../constants';
 import { useTypeIndex } from '../../hooks/useTypeIndex';
 import { getConditionType } from '../../utils/getConditionType';
 import { FILTER_EDITOR_LAYOUT_HORIZONTAL } from '../constants';
@@ -138,6 +138,7 @@ export const useFilterEditor = <E extends HTMLElement>(
             ...restProps,
             ref: innerRef,
             onSubmit: handleSubmit,
+            id: FILTER_EDITOR_FORM_ID,
         },
         getHeaderProps: () => ({
             leftAligned: layoutHorizontal,
