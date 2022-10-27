@@ -4,12 +4,11 @@ type FilterEditorSettingsContextValueType = {
     enableClearAllButton?: boolean;
     enableActions?: boolean;
     enableHeader?: boolean;
+    filterEditorId?: string;
 };
 
 export const FilterEditorSettingsContext =
-    React.createContext<FilterEditorSettingsContextValueType>({
-        // update: () => {},
-    });
+    React.createContext<FilterEditorSettingsContextValueType>({});
 
 export const FilterEditorSettingsContextProvider =
     FilterEditorSettingsContext.Provider;

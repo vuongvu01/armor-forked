@@ -2,7 +2,7 @@ import { ForwardedRef, ComponentPropsWithoutRef } from 'react';
 import { useRootRef } from '@deliveryhero/armor-system';
 
 import { FilterEditorActionsPropsType } from '../type';
-import { FILTER_EDITOR_FORM_ID } from '../../constants';
+import { useFilterEditorSettingsContext } from '../../FilterEditor/utils/FilterEditorSettingsContext';
 
 export const useFilterEditorActions = <E extends HTMLElement>(
     {
@@ -13,10 +13,11 @@ export const useFilterEditorActions = <E extends HTMLElement>(
     ref: ForwardedRef<E>,
 ) => {
     const innerRef = useRootRef<E>(ref);
+    const { filterEditorId } = useFilterEditorSettingsContext();
 
     const applyFilterButtonProps: ComponentPropsWithoutRef<'button'> = {
         type: 'submit',
-        form: FILTER_EDITOR_FORM_ID,
+        form: filterEditorId,
     };
 
     return {

@@ -4,6 +4,7 @@ import {
     useRootRef,
     eventBus,
     SCALE_SMALL,
+    generateId,
 } from '@deliveryhero/armor-system';
 
 import { FilterLayoutPropsType } from '../type';
@@ -59,6 +60,7 @@ export const useFilterLayout = <E extends HTMLElement>(
         () => ({
             enableActions: !showSideSheet,
             enableHeader: !showSideSheet,
+            filterEditorId: `FilterEditorForm-${generateId()}`,
         }),
         [showSideSheet],
     );
