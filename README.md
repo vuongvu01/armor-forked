@@ -8,9 +8,9 @@
 
 ## Contacts
 
- - [Dominik Mertz](mailto:dominik.mertz@deliveryhero.com)
  - [Vuong Vu](mailto:vu.vuong@deliveryhero.com)
  - [Vijay Singh](mailto:vijay.singh@deliveryhero.com)
+ - [Ashkan Ahrabi](mailto:ashkan.ahrabi@deliveryhero.com)
  - [Anita Kiss](mailto:anita.kiss@deliveryhero.com)
 
 ## Resources
