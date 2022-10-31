@@ -77,6 +77,7 @@ export const darkThemeStructure = {
         },
         motion: {
             brand: colorBlue20,
+            neutral: colorGrey90,
         },
     },
 

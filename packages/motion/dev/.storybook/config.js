@@ -1,9 +1,18 @@
-import { addParameters } from '@storybook/react';
-import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
-addParameters({
-    viewport: {
-        viewports: {
-            ...INITIAL_VIEWPORTS,
-        },
+import { addParameters, addDecorator } from '@storybook/react';
+import { withThemesProvider } from 'storybook-addon-styled-component-theme';
+
+import { makeDefaultTheme } from '@deliveryhero/armor-system';
+import { makeDarkTheme } from '@deliveryhero/armor-brands';
+
+const themes = [
+    {
+        name: 'Default',
+        ...makeDefaultTheme(),
     },
-});
+    {
+        name: 'Dark theme',
+        ...makeDarkTheme(),
+    },
+];
+
+addDecorator(withThemesProvider(themes));

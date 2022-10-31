@@ -1,29 +1,29 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { cleanup, render } from '@testing-library/react';
-import { Spinner } from '../components';
+import * as Motion from '../components';
 
-describe('<Spinner />', () => {
+describe.each(Object.entries(Motion))('Motion', (motionName, Component) => {
     afterEach(async () => {
         cleanup();
     });
 
     it('renders itself without any errors !', async () => {
-        render(<Spinner />);
+        render(<Component />);
     });
 
-    it('ensures that a className corresponding to the Spinner name is set', async () => {
-        const { container: SpinnerContainer } = render(<Spinner />);
-        const spinner = SpinnerContainer.querySelector('.Spinner');
+    it(`ensures that a className corresponding to the ${motionName} name is set`, async () => {
+        const { container } = render(<Component />);
+        const motion = container.querySelector(`.${motionName}`);
 
-        expect(spinner).not.toBeNull();
-        expect(spinner).toBeInstanceOf(HTMLDivElement);
+        expect(motion).not.toBeNull();
+        expect(motion).toBeInstanceOf(HTMLDivElement);
     });
 
     it('allows to extend className with a custom value', async () => {
-        const { container } = render(<Spinner className="ExtraClass" />);
-        const spinner = container.querySelector('.Spinner.ExtraClass');
+        const { container } = render(<Component className="ExtraClass" />);
+        const motion = container.querySelector(`.${motionName}.ExtraClass`);
 
-        expect(spinner).not.toBeNull();
+        expect(motion).not.toBeNull();
     });
 });

@@ -1,17 +1,20 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import styled from 'styled-components';
+import { withWrapper } from './helpers/Wrapper';
 
 import * as M from '..';
 
 export default {
     title: 'Motion',
-    component: M.Spinner,
+    decorators: [withWrapper],
     parameters: {},
 };
 
-const Motions = styled.div`
+const Container = styled.div`
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
+    color: ${({ theme }) => theme.armor.body.color};
 `;
 
 const Motion = styled.div`
@@ -19,18 +22,43 @@ const Motion = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0.5rem;
-    background-color: #f7f7f7;
-    color: #050505;
+    margin: 0.5rem;
 `;
 
-export const Basic = () => (
+export const Basic = (): ReactElement => (
     <>
-        <h2>Spinner</h2>
-        <Motions>
-            <Motion>
-                <M.Spinner width="50px" />
-            </Motion>
-        </Motions>
+        {Object.entries(M).map(([motionName, Component]) => (
+            <Container key={motionName}>
+                <Motion>
+                    <Component width="100px" />
+                </Motion>
+                <h2>{motionName}</h2>
+            </Container>
+        ))}
     </>
 );
+
+export const CustomLoadingSpinner = (): ReactElement => {
+    return (
+        <>
+            <Container>
+                <Motion>
+                    <M.LoadingSpinner
+                        width="100px"
+                        primaryColor="#FFFFFF"
+                        secondaryColor="#D6D6D6"
+                    />
+                </Motion>
+            </Container>
+            <Container style={{ background: '#242424' }}>
+                <Motion>
+                    <M.LoadingSpinner
+                        width="100px"
+                        primaryColor="#FFFFFF"
+                        secondaryColor="#2C2C2C"
+                    />
+                </Motion>
+            </Container>
+        </>
+    );
+};

@@ -3,13 +3,12 @@ import lottie from 'lottie-web';
 
 import { generateId } from '@deliveryhero/armor-system';
 import data from './data.json';
-import { ComponentElementStylePropsType } from '../type';
+import { LoadingSpinnerPropsType } from './type';
 import { SpinnerRoot } from './style';
 
-export const Spinner: FunctionComponent<React.PropsWithChildren<ComponentElementStylePropsType>> = ({
-    className,
-    ...restProps
-}) => {
+export const LoadingSpinner: FunctionComponent<
+    React.PropsWithChildren<LoadingSpinnerPropsType>
+> = ({ className, ...restProps }) => {
     const anime = useRef<null | HTMLDivElement>(null);
     const name = useMemo(() => generateId(), []);
 
@@ -30,7 +29,7 @@ export const Spinner: FunctionComponent<React.PropsWithChildren<ComponentElement
     return (
         <SpinnerRoot
             {...restProps}
-            className={`Spinner ${className || ''}`}
+            className={`LoadingSpinner ${className || ''}`}
             ref={anime}
         />
     );

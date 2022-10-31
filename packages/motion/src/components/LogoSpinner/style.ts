@@ -3,8 +3,8 @@ import { color, widthProps } from '@deliveryhero/armor-system';
 import { ComponentElementStylePropsType } from '../type';
 
 export const SpinnerRoot = styled.div<ComponentElementStylePropsType>`
-    .spinnerbody path,
-    .spinnerhead path {
+    .SpinnerBody path,
+    .SpinnerHead path {
         stroke: ${color('motion.brand')};
     }
     ${widthProps};

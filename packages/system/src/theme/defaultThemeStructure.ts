@@ -257,6 +257,7 @@ export const defaultThemeStructure = {
         },
         motion: {
             brand: colorBlue60,
+            neutral: colorGrey10,
         },
     },
     shape: {
