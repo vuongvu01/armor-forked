@@ -38,6 +38,10 @@ jobs:
               working-directory: ./packages/extras
               run: ./script/build.sh
 
+            - name: Build (motion)
+              working-directory: ./packages/motion
+              run: yarn build:cjs
+
             - name: Lint
               working-directory: ./packages/brands
               run: yarn run lint

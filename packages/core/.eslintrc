@@ -36,7 +36,9 @@
         "import/extensions": "off",
         "react/prop-types": "off",
         "react-hooks/exhaustive-deps": "error",
-        "@typescript-eslint/camelcase": "warn"
+        "@typescript-eslint/camelcase": "warn",
+        "import/no-extraneous-dependencies": "warn",
+        "import/no-unresolved": "warn"
     },
     "env": {
         "es2021": true,

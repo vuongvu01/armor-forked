@@ -9,6 +9,7 @@ import {
     SearchSuggestionsContainer,
     SearchSuggestionsListContainer,
     SearchTextInput,
+    LoadingContainer,
 } from './style';
 import { useSearch } from './hooks/useSearch';
 import { SearchSuggestionsList } from './SearchSuggestionsList';
@@ -74,6 +75,8 @@ export const Search = forwardRef<HTMLInputElement, SearchPropsType>(
 
             disabled,
             isSuggestionsListShown,
+            isLoading,
+            loadingPlaceholder,
         } = useSearch(restProps, ref);
 
         const classOverride = useSearchClassName(
@@ -101,15 +104,21 @@ export const Search = forwardRef<HTMLInputElement, SearchPropsType>(
                         {...suggestionsContainerProps}
                         className={classOverride.SuggestionsContainer}
                     >
-                        <SearchSuggestionsListContainer
-                            {...suggestionListContainerProps}
-                            className={classOverride.SearchSuggestionsList}
-                        >
-                            <SearchSuggestionsList
-                                {...suggestionListProps}
-                                groupClassName={classOverride.ListItemGroup}
-                            />
-                        </SearchSuggestionsListContainer>
+                        {isLoading ? (
+                            <LoadingContainer>
+                                {loadingPlaceholder || 'Loading results...'}
+                            </LoadingContainer>
+                        ) : (
+                            <SearchSuggestionsListContainer
+                                {...suggestionListContainerProps}
+                                className={classOverride.SearchSuggestionsList}
+                            >
+                                <SearchSuggestionsList
+                                    {...suggestionListProps}
+                                    groupClassName={classOverride.ListItemGroup}
+                                />
+                            </SearchSuggestionsListContainer>
+                        )}
                     </SearchSuggestionsContainer>
                 ) : null}
             </SearchRoot>
@@ -153,10 +162,6 @@ Search.propTypes = {
     ),
     placeholder: PropTypes.string,
     enableSuggestions: PropTypes.bool,
-    /**
-     * @deprecated
-     * No built-in loading state
-     */
     isLoading: PropTypes.bool,
     /**
      * height of the list in in 4px unit increments

@@ -4,6 +4,7 @@ import {
     InputHTMLAttributes,
     ReactChild,
     ReactElement,
+    ReactNode,
 } from 'react';
 import {
     MarginPropsType,
@@ -93,11 +94,15 @@ export type SearchEffectivePropsType = Partial<{
     placeholder: string;
     noResultsLabel?: string;
     enableSuggestions: boolean;
-    isLoading: boolean;
     suggestionListHeight: ScalarType;
 
     /** If set to true, the spacing of the component will be increased to match the *large* scale */
     large: boolean;
+
+    /** Show loading state */
+    isLoading: boolean;
+    /** Custom loading indicator, if not set, a default text 'Loading results...' will be used */
+    loadingPlaceholder?: ReactNode;
 }> &
     Pick<InputHTMLAttributes<HTMLInputElement>, 'autoFocus'> &
     HTMLAttributes<HTMLElement> &

@@ -52,6 +52,7 @@ export const useSearch = <E extends HTMLInputElement>(
         renderItemAdditionalInfo,
 
         large,
+        loadingPlaceholder,
         ...restProps
     }: SearchPropsType,
     ref: RefType<E>,
@@ -217,7 +218,6 @@ export const useSearch = <E extends HTMLInputElement>(
         },
         searchIconProps: {
             disabled,
-            isLoading,
         },
         searchClearActionProps: {
             disableClearAction: disabled || disableClearAction,
@@ -243,8 +243,10 @@ export const useSearch = <E extends HTMLInputElement>(
             searchQuery,
             noResultsLabel,
         },
-
         disabled,
-        isSuggestionsListShown: isSuggestionsListShown && enableSuggestions,
+        isSuggestionsListShown:
+            (isSuggestionsListShown || isLoading) && enableSuggestions,
+        isLoading,
+        loadingPlaceholder,
     };
 };

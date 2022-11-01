@@ -97,3 +97,11 @@ export const SearchTextInput = styled(TextInput)<SearchRootPropsType>`
     ${({ disabled, error }) =>
         focusWithin({ disabled, error, noOutline: true })};
 `;
+
+export const LoadingContainer = styled.div`
+    padding: ${spacing(4)};
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    ${typography('paragraphSmall')};
+`;

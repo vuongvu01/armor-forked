@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useCallback, useState } from 'react';
 
 import { InfoIcon, CogIcon } from '@deliveryhero/armor-icons';
+import { LoadingSpinner } from '@deliveryhero/armor-motion';
 import { Search } from '../../../src/components/Search';
 import { SuggestionObjectType } from '../../../src/components/Search/type';
 import { campaigns } from '../../../src/components/Search/__story__/constants';
@@ -319,6 +320,7 @@ export const WithDeatchedResults = () => {
         </>
     );
 };
+
 export const WithDeatchedResultsFiltered = () => {
     const [search, setSearch] = useState('test');
 
@@ -344,6 +346,19 @@ export const WithDeatchedResultsFiltered = () => {
             {campaignsToRender.map((campaign) => (
                 <div>{campaign.attributes.name}</div>
             ))}
+        </>
+    );
+};
+
+export const LoadingState = () => {
+    return (
+        <>
+            <Search isLoading defaultQuery="search" />{' '}
+            <Search
+                isLoading
+                defaultQuery="search"
+                loadingPlaceholder={<LoadingSpinner width={16} />}
+            />
         </>
     );
 };

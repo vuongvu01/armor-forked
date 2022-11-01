@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useCallback, useState } from 'react';
 import { InfoIcon, CogIcon } from '@deliveryhero/armor-icons';
-
+import { LoadingSpinner } from '@deliveryhero/armor-motion';
 import { Search } from '../Search';
 import { SearchQueryType, SuggestionObjectType } from '../type';
 import { FormField, FormFieldMessage } from '../../FormField';
@@ -9,6 +9,7 @@ import { campaigns } from './constants';
 import { Typography } from '../../Typography';
 import { Button } from '../../Button';
 import { withWrapper } from '../../../helpers/Wrapper';
+import { Flex, FlexItem } from '../../Flex';
 
 export default {
     title: 'Core/Search',
@@ -371,6 +372,30 @@ export const ResetSearchOnSelect = () => {
             <Typography paragraph small>
                 Accepted option: {JSON.stringify(acceptedOption)}
             </Typography>
+        </>
+    );
+};
+
+export const LoadingState = () => {
+    const LoadingIndicator = (
+        <Flex direction="column" alignItems="center">
+            <FlexItem>
+                <LoadingSpinner width={16} />
+            </FlexItem>
+            <FlexItem>
+                <Typography paragraph small margin={0}>
+                    Loading results...
+                </Typography>
+            </FlexItem>
+        </Flex>
+    );
+
+    return (
+        <>
+            <Typography>Default loading</Typography>
+            <Search isLoading />
+            <Typography marginTop={10}>With custom loading</Typography>
+            <Search isLoading loadingPlaceholder={LoadingIndicator} />
         </>
     );
 };
