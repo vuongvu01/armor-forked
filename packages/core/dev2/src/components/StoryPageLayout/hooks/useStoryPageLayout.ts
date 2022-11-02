@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useState, useMemo } from 'react';
 import { useNavigate } from '@reach/router';
 import { makeTheme, RootThemeType } from '@deliveryhero/armor-system';
 import { makeDarkTheme } from '@deliveryhero/armor-brands';
@@ -20,9 +20,13 @@ export const useStoryPageLayout = ({
     const navigate = useNavigate();
     const story = params.get('story');
 
-    const list: string[] = stories
-        ? Object.keys(stories).filter(name => name !== 'default')
-        : [];
+    const list: string[] = useMemo(
+        () =>
+            stories
+                ? Object.keys(stories).filter((name) => name !== 'default')
+                : [],
+        [stories],
+    );
 
     useEffect(() => {
         if (!story || !list.includes(story)) {
@@ -30,7 +34,10 @@ export const useStoryPageLayout = ({
         }
     }, [story, navigate, list]);
 
-    let title = (stories?.default.title ?? '').replace('Components/', '');
+    let title = (stories?.default.title ?? '').replace(
+        /(Core\/|Extras\/|Deprecated\/)/,
+        '',
+    );
     const componentName = title;
 
     const storyList = list.reduce<Record<string, string>>(
@@ -43,7 +50,7 @@ export const useStoryPageLayout = ({
         {},
     );
 
-    const storyLinks = Object.keys(storyList).map(storyName => ({
+    const storyLinks = Object.keys(storyList).map((storyName) => ({
         name: storyList[storyName],
         url: `?story=${storyName}`,
     }));
@@ -55,9 +62,8 @@ export const useStoryPageLayout = ({
     }
 
     const [storedThemeName, setStoredThemeName] = useLocalStorage();
-    const [selectedThemeName, setSelectedThemeName] = useState<string>(
-        storedThemeName,
-    );
+    const [selectedThemeName, setSelectedThemeName] =
+        useState<string>(storedThemeName);
     const theme = selectedThemeName ? themes[selectedThemeName] ?? null : null;
     const hasTheme = !!theme?.armor;
     const hasNoTheme = !hasTheme;

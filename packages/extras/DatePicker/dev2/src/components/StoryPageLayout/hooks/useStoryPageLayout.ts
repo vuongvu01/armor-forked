@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useState, useMemo } from 'react';
 import { useNavigate } from '@reach/router';
 import { makeTheme, RootThemeType } from '@deliveryhero/armor-system';
 import { makeDarkTheme } from '@deliveryhero/armor-brands';
@@ -20,9 +20,13 @@ export const useStoryPageLayout = ({
     const navigate = useNavigate();
     const story = params.get('story');
 
-    const list: string[] = stories
-        ? Object.keys(stories).filter((name) => name !== 'default')
-        : [];
+    const list: string[] = useMemo(
+        () =>
+            stories
+                ? Object.keys(stories).filter((name) => name !== 'default')
+                : [],
+        [stories],
+    );
 
     useEffect(() => {
         if (!story || !list.includes(story)) {
@@ -31,7 +35,7 @@ export const useStoryPageLayout = ({
     }, [story, navigate, list]);
 
     let title = (stories?.default.title ?? '').replace(
-        /(Components\/|Extras\/|Deprecated\/)/,
+        /(Core\/|Extras\/|Deprecated\/)/,
         '',
     );
     const componentName = title;
