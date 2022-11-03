@@ -35,7 +35,6 @@ const getRootStyle = ({
     ellipsis,
     enableContentWordBreak,
     enableContentWrap,
-    width,
 }: TableCellRootPropsType) => {
     let result = {};
 
@@ -47,13 +46,6 @@ const getRootStyle = ({
             color: ${token('body.color')};
             padding: ${spacing(4)};
         `;
-
-        if (width) {
-            result = css`
-                ${result};
-                display: inline-block;
-            `;
-        }
     }
 
     if (stickyTop) {
@@ -255,12 +247,6 @@ export const TableCellRoot = styled(Wrapper).withConfig(
     ${typography('paragraphLarge')};
     color: ${token('body.color')};
     padding: ${spacing(5, 4)};
-
-    ${({ width }) =>
-        width &&
-        css`
-            display: inline-block;
-        `}
 
     ${getRootStyle};
     ${getComponentOverride('TableCell')};
