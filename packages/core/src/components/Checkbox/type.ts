@@ -16,7 +16,7 @@ type CheckboxEffectivePropsType = Partial<{
     label: string;
     // add other custom properties here
 }> &
-    InputHTMLAttributes<HTMLLabelElement> &
+    Omit<InputHTMLAttributes<HTMLLabelElement>, 'onChange'> &
     MarginPropsType;
 
 export type CheckboxPropsType = CheckboxEffectivePropsType;
