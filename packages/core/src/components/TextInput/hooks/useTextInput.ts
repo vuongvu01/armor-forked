@@ -47,7 +47,7 @@ export const useTextInput = <E extends HTMLInputElement>(
         tabIndex,
         required,
         'data-testid-input': dataTestIdInput,
-
+        step,
         ...restRootProps
     }: TextInputPropsType,
     ref: RefType<E>,
@@ -145,6 +145,7 @@ export const useTextInput = <E extends HTMLInputElement>(
             tabIndex,
             required,
             'data-testid': dataTestIdInput || textInputInput,
+            step,
 
             // custom
             multiline,

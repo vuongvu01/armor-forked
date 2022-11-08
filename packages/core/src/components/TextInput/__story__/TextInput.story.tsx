@@ -162,11 +162,9 @@ export const AllStates = () => (
                 margin={1}
                 outlined
             />
-
             <Button small margin={1}>
                 Submit
             </Button>
-
             <TextInput
                 label="Label"
                 name="your_price"
@@ -753,5 +751,34 @@ export const WithAction = () => {
                 </TextInputAction>
             }
         />
+    );
+};
+
+export const StepExample = () => {
+    const textInputRef = useRef(null);
+
+    return (
+        <GroupHelper gap={2}>
+            <Box
+                padding={3}
+                style={{
+                    height: '500px',
+                    width: '600px',
+                }}
+            >
+                <TextInput
+                    label="Name your price"
+                    placeholder="Name your price"
+                    name="your_price"
+                    marginTop={10}
+                    displayMode="block"
+                    ref={textInputRef}
+                    type="number"
+                    min="0"
+                    step="0.5"
+                    max="10"
+                />
+            </Box>
+        </GroupHelper>
     );
 };
