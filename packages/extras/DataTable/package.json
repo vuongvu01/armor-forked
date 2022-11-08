@@ -40,9 +40,7 @@
         "@dnd-kit/modifiers": "^4.0.0",
         "@dnd-kit/sortable": "^5.1.0",
         "@dnd-kit/utilities": "^3.0.1",
-        "prop-types": "^15.7.2",
-        "query-string": "^7.0.0",
-        "throttle-debounce": "2.1.0"
+        "prop-types": "^15.7.2"
     },
     "repository": {
         "type": "git",
@@ -75,7 +73,6 @@
         "@types/lodash.uniqueid": "^4.0.6",
         "@types/node": "^14.14.12",
         "@types/styled-components": "^5.1.18",
-        "@types/throttle-debounce": "^2.1.0",
         "@types/traverse": "^0.6.32",
         "@typescript-eslint/eslint-plugin": "^2.21.0",
         "@typescript-eslint/parser": "^2.21.0",
