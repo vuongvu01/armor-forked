@@ -68,6 +68,7 @@ export const PageNavigation = forwardRef<
 
         enablePageSizeSelector,
     } = usePageNavigation(restProps);
+    const pageButtonType = "button";
 
     return (
         <PageNavigationRoot
@@ -95,6 +96,7 @@ export const PageNavigation = forwardRef<
                     data-testid={pageNavigationPageButtonTestId}
                     data-disabled={previousPageArrowEnabled ? '' : '1'}
                     data-pagenumber={previousPageNumber}
+                    type={pageButtonType}
                     onClick={onPageButtonClick}
                 >
                     <ArrowLeftIcon small />
@@ -107,6 +109,7 @@ export const PageNavigation = forwardRef<
                         data-testid={pageNavigationPageButtonTestId}
                         data-disabled=""
                         data-pagenumber={pageNumber}
+                        type={pageButtonType}
                         onClick={onPageButtonClick}
                     >
                         {pageNumber}
@@ -119,6 +122,7 @@ export const PageNavigation = forwardRef<
                     data-testid={pageNavigationPageButtonTestId}
                     data-disabled={nextPageArrowEnabled ? '' : '1'}
                     data-pagenumber={nextPageNumber}
+                    type={pageButtonType}
                     onClick={onPageButtonClick}
                 >
                     <ArrowRightIcon small />
