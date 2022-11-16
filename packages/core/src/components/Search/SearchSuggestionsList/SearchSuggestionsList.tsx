@@ -56,7 +56,7 @@ export const SearchSuggestionsList: FC<
         }
 
         return (
-            <>
+            <React.Fragment key={`${!!group && group.label}-${label}`}>
                 {!!group && (
                     <SearchSuggestionListGroup
                         className={groupClassName}
@@ -66,7 +66,6 @@ export const SearchSuggestionsList: FC<
                     </SearchSuggestionListGroup>
                 )}
                 <SearchSuggestionItem
-                    key={label}
                     option={option}
                     optionIndex={index}
                     suggestionIndex={index}
@@ -78,7 +77,7 @@ export const SearchSuggestionsList: FC<
                     cursorPosition={cursorPosition}
                     searchQuery={searchQuery}
                 />
-            </>
+            </React.Fragment>
         );
     });
 };
