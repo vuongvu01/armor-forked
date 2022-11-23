@@ -11,6 +11,8 @@
     ],
     "scripts": {
         "dev": "./script/dev.sh",
+        "transform-tokens": "token-transformer data/tokens.json data/tokens-transformed.json Global,Light,Dark,Desktop,Tablet,Mobile",
+        "build-tokens": "yarn transform-tokens && style-dictionary build --config ./data/config.js",
         "build": "rm -rf ./build/* && yarn run build:esm && yarn run build:cjs",
         "build:cjs": "rm -rf ./build.cjs/* && tsc -p ./tsconfig.build.cjs.json",
         "build:esm": "rm -rf ./build.esm/* && tsc -p ./tsconfig.build.esm.json",
@@ -21,10 +23,6 @@
         "lint:fix": "eslint ./src --fix --ext .js,.ts,.jsx,.tsx",
         "release": "./script/release.sh",
         "setup": "./script/setup.sh"
-    },
-    "dependencies": {
-        "@deliveryhero/armor-system": "*",
-        "prop-types": "^15.7.2"
     },
     "peerDependencies": {
         "@types/react": "^17.0.43 || ^18.0.0",
@@ -67,6 +65,8 @@
         "semantic-release": "^17.1.1",
         "ts-essentials": "^7.0.0",
         "ts-jest": "^26.2.0",
-        "typescript": "^3.9.7"
+        "typescript": "^3.9.7",
+        "style-dictionary": "^3.7.1",
+        "token-transformer": "^0.0.25"
     }
 }
