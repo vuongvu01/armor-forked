@@ -5,8 +5,7 @@
     "main": "build/js/index.js",
     "module": "build/js/index.js",
     "files": [
-        "build/",
-        "build/js"
+        "build/"
     ],
     "scripts": {
         "dev": "./script/dev.sh",
