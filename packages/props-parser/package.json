@@ -10,6 +10,7 @@
     },
     "scripts": {
         "dev": "DEBUG=* ts-node src/index.ts",
+        "dev:run": "yarn dev run",
         "debug": "node --inspect-brk -r ts-node/register src/index.ts",
         "link-global": "./script/link.sh",
         "build": "rm -rf ./build/* && yarn run build:cjs",
