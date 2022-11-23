@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { EditIcon } from '@deliveryhero/armor-icons';
 
 import {
@@ -493,6 +493,39 @@ export const ColSpanned = () => (
                 <TableCell>Cell text</TableCell>
                 <TableCell>Cell text</TableCell>
                 <TableCell>Cell text</TableCell>
+            </TableRow>
+        </TableBody>
+    </Table>
+);
+
+export const CellMaxLines = () => (
+    <Table>
+        <TableHead>
+            <TableRow>
+                <TableCell width="20%">One</TableCell>
+                <TableCell width="20%">Two</TableCell>
+                <TableCell width="20%">Three</TableCell>
+                <TableCell width="20%">Four</TableCell>
+                <TableCell width="20%">Five</TableCell>
+            </TableRow>
+        </TableHead>
+        <TableBody>
+            <TableRow>
+                <TableCell maxLines={1}>
+                    <span>{loremIpsum}</span>
+                </TableCell>
+                <TableCell maxLines={2}>
+                    <span>{loremIpsum}</span>
+                </TableCell>
+                <TableCell maxLines={3}>
+                    <span>{loremIpsum}</span>
+                </TableCell>
+                <TableCell maxLines={4}>
+                    <span>{loremIpsum}</span>
+                </TableCell>
+                <TableCell maxLines={5}>
+                    <span>{loremIpsum}</span>
+                </TableCell>
             </TableRow>
         </TableBody>
     </Table>

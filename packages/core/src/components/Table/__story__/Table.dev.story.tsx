@@ -526,3 +526,50 @@ export const WithCustomTheme = () => (
         </table>
     </ThemeProvider>
 );
+
+export const WithMaxLinesCell = () => {
+    return (
+        <Table width="100%">
+            <TableHead>
+                <Row>
+                    <Cell>Food Companies</Cell>
+                    <Cell width="16%">Scheme ID</Cell>
+                    <Cell>City</Cell>
+                    <Cell>Full Name</Cell>
+                    <Cell>ID</Cell>
+                    <Cell>Phone number</Cell>
+                </Row>
+            </TableHead>
+            <Body>
+                <Row>
+                    <Cell maxLines={1}>
+                        <span>{loremIpsum}</span>
+                    </Cell>
+                    <Cell maxLines={2}>
+                        <span>{loremIpsum}</span>
+                    </Cell>
+                    <Cell maxLines={3}>
+                        <span>{loremIpsum}</span>
+                    </Cell>
+                    <Cell maxLines={4}>
+                        <span>{loremIpsum}</span>
+                    </Cell>
+                    <Cell maxLines={5}>
+                        <span>{loremIpsum}</span>
+                    </Cell>
+                    <Cell maxLines={6}>
+                        <span>{loremIpsum}</span>
+                    </Cell>
+                </Row>
+                <Row>
+                    <Cell>1111</Cell>
+                    <Cell>Scheme F</Cell>
+                    <Cell>Gothenburg</Cell>
+                    <Cell>Emlen Beaver</Cell>
+                    <Cell>Bar</Cell>
+                    <Cell>998-703-1496</Cell>
+                </Row>
+            </Body>
+        </Table>
+    );
+};

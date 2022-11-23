@@ -5,6 +5,7 @@ import { tableCellRootTestId } from '../constants';
 
 export const useTableCell = ({
     isHeader,
+    maxLines,
     ...restProps
 }: TableCellPropsType) => {
     const tagName = isHeader ? 'th' : 'td';
@@ -16,5 +17,14 @@ export const useTableCell = ({
             isHeader,
         },
         Tag: tagName as ComponentBehaviourCustomTagPropertyType,
+        isShowTruncatedText: Boolean(maxLines),
+        truncatedTextProps: {
+            truncated: true,
+            numOfLines: maxLines,
+            typographyProps: {
+                paragraph: true,
+                large: true,
+            },
+        },
     };
 };

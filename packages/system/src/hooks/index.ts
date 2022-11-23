@@ -20,3 +20,4 @@ export * from './useEventListener';
 export * from './useScrollToNode';
 export * from './useNavigationControl';
 export * from './useDidUpdateEffect';
+export * from './useWindowSize';

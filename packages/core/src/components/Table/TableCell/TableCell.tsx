@@ -6,6 +6,7 @@ import { TableCellRoot } from './style';
 import { TableCellPropsType, TableCellRootPropsType } from './type';
 import { TABLE_CELL_CLASS_PREFIX } from './constants';
 import { useTableCell } from './hooks/useTableCell';
+import { MultilineTruncateParagraph } from '../../MultilineTruncateParagraph';
 
 /**
  * # TableCell
@@ -60,14 +61,21 @@ export const TableCell = forwardRef<HTMLTableCellElement, TableCellPropsType>(
             stickyTop,
         );
 
-        const { rootProps, Tag } = useTableCell(restProps);
+        const { rootProps, Tag, isShowTruncatedText, truncatedTextProps } =
+            useTableCell(restProps);
 
         // todo: forward only className here, it will be more efficient and neat
         return (
             <TableCellRoot {...rootProps} className={classNameComponents.Root}>
                 {(forwardedProps: TableCellRootPropsType) => (
                     <Tag {...forwardedProps} ref={ref}>
-                        {children}
+                        {isShowTruncatedText ? (
+                            <MultilineTruncateParagraph {...truncatedTextProps}>
+                                {children}
+                            </MultilineTruncateParagraph>
+                        ) : (
+                            children
+                        )}
                     </Tag>
                 )}
             </TableCellRoot>

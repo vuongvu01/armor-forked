@@ -43,7 +43,7 @@ const getRootStyle = ({
 };
 
 const getWordBreakStyle = ({ wordBreak }: TypographyRootPropsType) => {
-    if (!wordBreak) return ''
+    if (!wordBreak) return '';
 
     return css`
         word-break: ${wordBreak};

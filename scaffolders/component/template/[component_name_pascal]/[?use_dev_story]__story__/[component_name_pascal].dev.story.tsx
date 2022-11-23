@@ -6,7 +6,7 @@ import {withWrapper} from '../../../helpers/Wrapper';
 import { <%- component_name_pascal %> } from '../<%- component_name_pascal %>';
 
 export default {
-    title: 'Components/<%- component_name_pascal %>',
+    title: 'Core/<%- component_name_pascal %>',
     component: <%- component_name_pascal %>,
     decorators: [withWrapper],
     parameters: {},

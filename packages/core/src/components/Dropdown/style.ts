@@ -108,7 +108,8 @@ const dropdownTextInputStyle = ({
 };
 
 export const DropdownTextInput = styled(TextInput)<DropdownTextInputPropsType>`
-    ${focusWithin({ noOutline: true })};
+    ${({ disabled, error }) =>
+        focusWithin({ noOutline: true, disabled, error })};
     ${dropdownTextRootStyle}
 
     .TextInput-Input {

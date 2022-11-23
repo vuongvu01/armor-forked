@@ -32,7 +32,10 @@ export type TableCellEffectivePropsType = Partial<{
     ellipsis?: boolean;
     enableContentWordBreak?: boolean;
     enableContentWrap?: boolean;
-    // add other custom properties here
+    /** If set, only show maximum lines allowed follow up with an ellipsis ('...')
+     *  __NOTE__ - enable maxLines will effect user custom style for the cell
+     */
+    maxLines?: number;
 }> &
     TdHTMLAttributes<HTMLTableDataCellElement | HTMLTableHeaderCellElement> & // includes all HTML Td | Th properties
     PaddingPropsType &
