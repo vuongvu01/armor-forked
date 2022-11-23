@@ -15,7 +15,6 @@ import { ContentSwitcherRootPropsType } from './type';
 const getRootStyle = () => {
     const result = css`
         display: inline-flex;
-        border: 1px solid ${color('neutral.03')};
         border-radius: ${borderRadius('soft')};
         background-color: ${color('neutral.00')};
     `;

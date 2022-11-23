@@ -21,7 +21,7 @@ const getRootStyle = () => css`
     position: relative;
     display: flex;
     align-items: center;
-    border: 1px solid transparent;
+    border: 1px solid ${color('neutral.03')};
     flex-grow: 1;
     justify-content: center;
     & > * {
@@ -52,12 +52,16 @@ const getRootStyle = () => css`
     &:first-of-type {
         border-top-left-radius: ${borderRadius('soft')};
         border-bottom-left-radius: ${borderRadius('soft')};
-        border-left: unset;
+        border-right: 1px solid transparent;
     }
     &:last-of-type {
         border-top-right-radius: ${borderRadius('soft')};
         border-bottom-right-radius: ${borderRadius('soft')};
-        border-right: unset;
+        border-left:  1px solid transparent;
+    }
+    &:not(:first-of-type):not(:last-of-type) {
+        border-left:  1px solid transparent;
+        border-right:  1px solid transparent;
     }
     ${transition({
         'background-color': true,
@@ -74,8 +78,6 @@ const getDynamicStyle = (props: ContentSwitcherControlRootPropsType) => {
             color: ${color('primary.07')};
             background-color: ${color('primary.01')};
             border: 1px solid ${color('primary.07')};
-            margin-top: -1px;
-            margin-bottom: -1px;
             & > * {
                 color: ${color('primary.07')} !important;
             }
@@ -83,12 +85,13 @@ const getDynamicStyle = (props: ContentSwitcherControlRootPropsType) => {
                 content: none;
             }
             &:first-of-type {
-                border-left: 1px solid ${color('primary.07')};
-                margin-left: -1px;
+                border: 1px solid ${color('primary.07')};
             }
             &:last-of-type {
-                border-right: 1px solid ${color('primary.07')};
-                margin-right: -1px;
+                border: 1px solid ${color('primary.07')};
+            }
+            &:not(:first-of-type):not(:last-of-type) {
+                border: 1px solid ${color('primary.07')};
             }
         `;
     }
