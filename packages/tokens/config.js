@@ -3,7 +3,7 @@ module.exports = {
     platforms: {
         scss: {
             transformGroup: 'scss',
-            buildPath: 'src/tokens/scss/',
+            buildPath: 'build/scss/',
             files: [
                 {
                     destination: '_variables.scss',
@@ -13,7 +13,7 @@ module.exports = {
         },
         css: {
             transformGroup: 'css',
-            buildPath: 'src/tokens/css/',
+            buildPath: 'build/css/',
             files: [
                 {
                     destination: '_variables.css',
@@ -23,11 +23,11 @@ module.exports = {
         },
         js: {
             transformGroup: 'js',
-            buildPath: 'src/tokens/js/',
+            buildPath: 'build/js/',
             files: [
                 {
                     format: 'javascript/es6',
-                    destination: 'index.ts',
+                    destination: 'index.js',
                 },
             ],
         },
