@@ -2,16 +2,20 @@
     "name": "@deliveryhero/armor-tokens",
     "version": "0.0.1",
     "license": "UNLICENSED",
-    "main": "build/js/index.js",
-    "module": "build/js/index.js",
+    "main": "build.cjs/index.js",
+    "module": "build.esm/index.js",
+    "typings": "build.cjs/index.d.ts",
     "files": [
-        "build/"
+        "build.esm/",
+        "build.cjs/"
     ],
     "scripts": {
         "dev": "./script/dev.sh",
         "transform-tokens": "token-transformer data/tokens.json data/tokens-transformed.json Global,Light,Dark,Desktop,Tablet,Mobile",
         "build-tokens": "yarn transform-tokens && style-dictionary build --config config.js",
-        "build": "rm -rf ./build/* && yarn build-tokens",
+        "build:cjs": "rm -rf ./build.cjs/* && tsc -p ./tsconfig.build.cjs.json",
+        "build:esm": "rm -rf ./build.esm/* && tsc -p ./tsconfig.build.esm.json",
+        "build": "rm -rf ./build/* && yarn build-tokens && yarn run build:esm && yarn run build:cjs",
         "release": "./script/release.sh",
         "setup": "./script/setup.sh"
     },

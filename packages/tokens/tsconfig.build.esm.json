@@ -1,0 +1,6 @@
+{
+    "compilerOptions": {
+        "outDir": "./build.esm/",
+    },
+    "extends": "./tsconfig.json",
+}
