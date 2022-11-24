@@ -27,7 +27,7 @@ module.exports = {
             files: [
                 {
                     format: 'javascript/es6',
-                    destination: 'index.js',
+                    destination: 'index.ts',
                 },
             ],
         },
