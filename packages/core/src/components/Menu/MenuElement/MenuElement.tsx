@@ -96,6 +96,7 @@ MenuElement.defaultProps = {
     selected: false,
     enableExpansionHandle: false,
     expanded: false,
+    disabled: false,
 };
 
 /** prop-types are required here for run-time checks */
@@ -110,6 +111,7 @@ MenuElement.propTypes = {
     href: PropTypes.string,
     target: PropTypes.string,
     rel: PropTypes.string,
+    disabled: PropTypes.bool,
 };
 
 export const MemoizedMenuElement = memo(MenuElement);

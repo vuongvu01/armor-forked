@@ -199,3 +199,64 @@ export const ElementSelect = () => {
         </Box>
     );
 };
+
+export const DisabledMenuItem = () => {
+    const [selected, setSelected] = useState<string | null>(null);
+
+    const onElementClick = (event: MouseEvent<HTMLElement>) => {
+        const id = (event.currentTarget as HTMLElement).getAttribute(
+            'data-elementid',
+        );
+
+        setSelected(id);
+    };
+    const menuElements = [
+        {
+            id: 'dashboard',
+            label: 'Dashboard',
+            props: {
+                'data-elementid': 'dashboard',
+                onClick: onElementClick,
+            },
+        },
+        {
+            id: 'profile',
+            label: 'Profile',
+            props: {
+                'data-elementid': 'profile',
+                onClick: onElementClick,
+                disabled: true,
+            },
+        },
+        {
+            id: 'settings',
+            label: 'Settings',
+            props: { 'data-elementid': 'settings', onClick: onElementClick },
+        },
+        {
+            id: 'logout',
+            label: 'Logout',
+            props: { 'data-elementid': 'logout', onClick: onElementClick },
+        },
+    ].map((item) => ({
+        ...item,
+        props: {
+            ...item.props,
+            selected: item.id === selected,
+        },
+    }));
+    return (
+        <Box paddingTop={50} paddingLeft={50}>
+            <ContextMenu
+                trigger={
+                    <IconButton>
+                        <EllipsisVerticalIcon large />
+                    </IconButton>
+                }
+                align="bottom"
+                menuElements={menuElements}
+                width={50}
+            />
+        </Box>
+    );
+};

@@ -21,6 +21,8 @@ type MenuElementEffectivePropsType = Partial<{
     tertiary: boolean;
     /** If set to *true*, the MenuElement will be rendered as *selected* */
     selected: boolean;
+    /** If set to *true*, the MenuElement will be *disabled* and *NOT* clickable */
+    disabled: boolean;
     /** If set to *true*, the MenuElement will be rendered as *small* (with reduced paddings and typography). This property works only if the MenuElement is neither *secondary* nor *tertiary* */
     small: boolean;
     /**

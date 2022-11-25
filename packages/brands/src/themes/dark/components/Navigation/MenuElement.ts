@@ -1,8 +1,9 @@
 import { css } from 'styled-components';
 import {
     colorGrey01,
-    colorGrey80,
     colorGrey70,
+    colorGrey60,
+    colorGrey30,
 } from '@deliveryhero/armor-system';
 import { MenuElementPropsType } from '@deliveryhero/armor';
 
@@ -14,20 +15,29 @@ const hover = (backgroundColor: string) => css`
 
 const getHover = ({
     selected,
+    disabled,
     enableExpansionHandle,
 }: MenuElementPropsType) => {
     if (selected && !enableExpansionHandle) {
-        return hover(colorGrey80);
+        return hover(colorGrey70);
     }
-
-    return hover(colorGrey70);
+    if (disabled) {
+        return hover(colorGrey70);
+    }
+    return hover(colorGrey60);
 };
 
-export const getMenuElementOverride = () => {
+export const getMenuElementOverride = ({ disabled }: MenuElementPropsType) => {
+    if (disabled) {
+        return css`
+            color: ${colorGrey30};
+            background-color: ${colorGrey70};
+            ${getHover}
+        `;
+    }
     return css`
         color: ${colorGrey01};
-        background-color: ${colorGrey80};
-
+        background-color: ${colorGrey70};
         ${getHover}
     `;
 };

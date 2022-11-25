@@ -37,6 +37,13 @@ const menuElements = [
             selected: true,
         },
     },
+    {
+        id: 'disabled',
+        label: 'Disabled',
+        props: {
+            disabled: true,
+        },
+    },
 ];
 
 export const AsMenu = () => (

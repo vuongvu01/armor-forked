@@ -28,12 +28,21 @@ const MenuElementRootWrapper = ({
     children: (props: MenuElementRootPropsType) => ReactElement;
 }) => children({ ...restProps });
 
+const getPrimaryDisabledColors = () => css`
+    color: ${color('neutral.05')};
+    background-color: ${color('neutral.02')};
+    &:hover {
+        background-color: ${color('neutral.02')};
+    }
+`;
+
 const getRootStyle = ({
     enableExpansionHandle,
     secondary,
     tertiary,
     selected,
     small,
+    disabled,
 }: MenuElementRootPropsType) => {
     const borderWidth = small ? 0.5 : 1;
 
@@ -100,6 +109,13 @@ const getRootStyle = ({
                 }
             `;
         }
+    }
+    if (disabled) {
+        result = css`
+            ${result};
+            cursor: not-allowed;
+            ${getPrimaryDisabledColors};
+        `;
     }
 
     return result;

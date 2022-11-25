@@ -17,6 +17,7 @@ import {
     // wait,
     // waitForElement,
 } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import {
     renderHook,
     cleanup as cleanupHooks,
@@ -78,5 +79,16 @@ describe('<MenuElement />', () => {
         const element = result.container.querySelector('.MenuElement-Root');
         expect(element).toBeInstanceOf(HTMLAnchorElement);
         expect(element).toHaveAttribute('href', 'https://google.com');
+    });
+
+    it('should support disabled property (not clickable!)', () => {
+        const handleClick = jest.fn();
+
+        const { getByText } = render(
+            <MenuElement disabled>Disabled</MenuElement>,
+        );
+        const element = getByText('Disabled');
+        userEvent.click(element);
+        expect(handleClick).not.toHaveBeenCalled();
     });
 });

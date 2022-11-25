@@ -1,6 +1,10 @@
 import { MENU_ELEMENT_DEFAULT_TYPOGRAPHY_PROPS } from '../constants';
 import { MenuElementPropsType } from '../type';
 
+const preventDefault = (event: React.SyntheticEvent) => {
+    event.preventDefault();
+};
+
 export const useMenuElement = ({
     enableExpansionHandle,
     expanded,
@@ -11,11 +15,14 @@ export const useMenuElement = ({
     depthLevel,
     tag: Tag = 'div',
     selected,
+    disabled,
     typographyProp = MENU_ELEMENT_DEFAULT_TYPOGRAPHY_PROPS,
     ...restProps
 }: MenuElementPropsType) => {
     const dataExpanded = expanded ? '1' : '0';
     const dataSelected = selected ? '1' : '0';
+
+    const onClick = disabled ? preventDefault : restProps?.onClick;
 
     return {
         rootProps: {
@@ -27,10 +34,12 @@ export const useMenuElement = ({
             enableExpansionHandle,
             expanded,
             selected,
+            disabled,
             small,
             typographyProp,
             'data-expanded': dataExpanded,
             'data-selected': dataSelected,
+            onClick,
         },
         contentProps: {
             small: !!small,
