@@ -35,7 +35,7 @@ module.exports = {
     platforms: {
         scss: {
             transformGroup: 'scss',
-            buildPath: 'src/scss/',
+            buildPath: 'tokens/scss/',
             files: [
                 {
                     destination: '_variables.scss',
@@ -48,7 +48,7 @@ module.exports = {
         },
         css: {
             transformGroup: 'css',
-            buildPath: 'src/css/',
+            buildPath: 'tokens/css/',
             files: [
                 {
                     destination: '_variables.css',
@@ -61,7 +61,7 @@ module.exports = {
         },
         js: {
             transformGroup: 'js',
-            buildPath: 'src/',
+            buildPath: 'tokens/',
             files: [
                 {
                     format: 'javascript/es6',

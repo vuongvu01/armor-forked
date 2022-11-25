@@ -44,5 +44,5 @@
         "**/**/__test__/**",
         "**/**/__story__/**"
     ],
-    "include": ["src/**/*", "src/globals.d.ts"]
+    "include": ["tokens/**/*", "tokens/globals.d.ts"]
 }
