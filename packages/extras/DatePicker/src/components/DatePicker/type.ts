@@ -1,4 +1,4 @@
-import { HTMLAttributes } from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 import {
     MarginPropsType,
     WidthPropsType,
@@ -152,6 +152,7 @@ export type DatePickerEffectiveCommonPropsType = Partial<{
 
     /** If you pass an array of years then the years displayed in the year/month picker will be reflecting this. */
     yearRange: number[];
+    headSlot: ReactNode;
 }> &
     ComponentBehaviourOpenStateType &
     ComponentBehaviourOverlayType &

@@ -73,6 +73,18 @@ describe('<DateRangePicker />', () => {
         expect(DateRangePicker).toSupportWidthProps();
     });
 
+    it('should render correct Head slot', () => {
+        const mockHeadSlot = <p>Test text</p>;
+        const result = render(
+            <DateRangePicker
+                open
+                headSlot={mockHeadSlot}
+            />,
+        );
+        // @ts-ignore
+        expect(result.getByText('Test text')).toBeInTheDocument();
+    });
+
     // it('should support controlled/uncontrolled value', async () => {
     //     // todo
     // });

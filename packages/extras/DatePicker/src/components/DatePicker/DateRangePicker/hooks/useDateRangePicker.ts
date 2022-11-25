@@ -27,6 +27,7 @@ export const useDateRangePicker = <E extends HTMLDivElement>(
         onDateValueChange,
         enableTimePicker,
         formatDateTimeRange,
+        headSlot,
     } = props;
 
     // controlled and uncontrolled state: dateValue, defaultDateValue and onDateValueChange mapped to internalValue
@@ -190,6 +191,10 @@ export const useDateRangePicker = <E extends HTMLDivElement>(
         open: dropdownOpen,
 
         showTimePicker: !!enableTimePicker,
+        shouldShowHeadSlot: Boolean(headSlot),
+        headSlotProps: {
+            content: headSlot,
+        },
 
         showActions,
         actionBarProps,

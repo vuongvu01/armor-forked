@@ -5,7 +5,14 @@ import React, { useMemo, useState, useCallback } from 'react';
 import { add } from 'date-fns';
 import { makeTheme, ThemeProvider } from '@deliveryhero/armor-system';
 
-import { Box, Button, FormField, Typography } from '@deliveryhero/armor';
+import {
+    Box,
+    Button,
+    FormField,
+    Typography,
+    ContentSwitcher,
+    ContentSwitcherControl,
+} from '@deliveryhero/armor';
 import { withWrapper } from '../../../helpers/Wrapper';
 import { DatePicker, DateRangePicker, DateRangePickerPropsType } from '..';
 import { DateVector } from '../utils/DateVector';
@@ -394,6 +401,67 @@ export const AlwaysFiveDaysOneClick = () => {
                     setDateStart(newValue[0]);
                 }
             }}
+        />
+    );
+};
+
+export const WithHeadSlotControlled = () => {
+    const [dateRange, setDateRange] = useState<[Date, Date] | undefined | null>(
+        null,
+    );
+
+    const handleDateValueChange = (range?: [Date, Date] | null) => {
+        setDateRange(range);
+    };
+
+    const headSlot = (
+        <ContentSwitcher
+            defaultSwitchName="3"
+            onSwitchNameChange={(switchName: string) => {
+                const currentDate = new Date();
+                switch (switchName) {
+                    case '1':
+                        handleDateValueChange([
+                            new Date(
+                                currentDate.setDate(currentDate.getDate() - 7),
+                            ),
+                            new Date(),
+                        ]);
+                        break;
+                    case '2':
+                        handleDateValueChange([
+                            new Date(
+                                currentDate.setDate(currentDate.getDate() - 30),
+                            ),
+                            new Date(),
+                        ]);
+                        break;
+                    case '3':
+                        handleDateValueChange(null);
+                        break;
+                    default:
+                        handleDateValueChange(null);
+                        break;
+                }
+            }}
+        >
+            <ContentSwitcherControl switchName="1">
+                <Typography small>Last 7 days</Typography>
+            </ContentSwitcherControl>
+            <ContentSwitcherControl switchName="2">
+                <Typography small>Last 30 days</Typography>
+            </ContentSwitcherControl>
+            <ContentSwitcherControl switchName="3">
+                <Typography small>Custom</Typography>
+            </ContentSwitcherControl>
+        </ContentSwitcher>
+    );
+
+    return (
+        <DateRangePicker
+            dateValue={dateRange}
+            headSlot={headSlot}
+            onDateValueChange={handleDateValueChange}
         />
     );
 };

@@ -17,6 +17,7 @@ import { DatePickerMonthYearSelector } from '../DatePickerMonthYearSelector';
 import { DatePickerDaySelector } from '../DatePickerDaySelector';
 import { DatePickerTopBar } from '../DatePickerTopBar';
 import { DatePickerTimeSelector } from '../DatePickerTimeSelector';
+import { DatePickerHeadSlot } from '../DatePickerHeadSlot';
 
 /**
  * # DateRangePicker
@@ -65,6 +66,8 @@ export const DateRangePicker = forwardRef<
         showActions,
         showTimePicker,
         showMaskedInput,
+        shouldShowHeadSlot,
+        headSlotProps,
     } = useDateRangePicker(props, ref);
 
     return (
@@ -86,6 +89,9 @@ export const DateRangePicker = forwardRef<
                         {...dropdownProps}
                         className={classNameComponents.Dropdown}
                     >
+                        {shouldShowHeadSlot && (
+                            <DatePickerHeadSlot {...headSlotProps} />
+                        )}
                         <DatePickerTopBar {...topBarProps} />
                         {displayMonthYearSelector && (
                             <DatePickerMonthYearSelector
