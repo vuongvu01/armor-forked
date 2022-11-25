@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 24 Nov 2022 17:32:48 GMT
+ * Generated on Fri, 25 Nov 2022 12:37:31 GMT
  */
 
 export const ColorRed10 = "#f7c9cb";
@@ -75,3 +75,19 @@ export const ColorPurple70 = "#6d3dc2";
 export const ColorPurple80 = "#563099";
 export const ColorPurple90 = "#4b2a84";
 export const ColorPurple05 = "#f7f5fc";
+export const FontFamilyDefaultLtr = "Roboto";
+export const FontFamilyDefaultRtl = "NotoSans";
+export const FontSizeTiny = 10;
+export const FontSizeXsmall = 12;
+export const FontSizeSmall = 14;
+export const FontSizeMedium = 16;
+export const FontSizeLarge = 20;
+export const FontSizeXlarge = 24;
+export const FontSize2xlarge = 32;
+export const FontSize3xlarge = 40;
+export const FontSize4xlarge = 48;
+export const FontWeightRegular = 400;
+export const FontWeightMedium = 500;
+export const FontWeightBold = 700;
+export const FontWeightBlack = 900;
+export const LineHeightXsmall = "125%";

@@ -5,12 +5,12 @@
 const tokenFilter = (cat) => (token) => token.attributes.category === cat;
 
 module.exports = {
-    source: ['./tokens-transformed.json'],
+    source: ['data/tokens-transformed.json'],
     format: {
         cssLiterals: (opts) => {
             // const { dictionary, file } = opts;
             // let output = formatHelpers.fileHeader(file);
-            const output = `export const test = () => {}`;
+            const output = `export * from './js'`;
 
             // dictionary.allTokens.forEach((token) => {
             //     const { path, original } = token;
@@ -40,6 +40,9 @@ module.exports = {
                 {
                     destination: '_variables.scss',
                     format: 'scss/variables',
+                    options: {
+                        outputReferences: true,
+                    },
                 },
             ],
         },
@@ -50,6 +53,9 @@ module.exports = {
                 {
                     destination: '_variables.css',
                     format: 'css/variables',
+                    options: {
+                        outputReferences: true,
+                    },
                 },
             ],
         },
