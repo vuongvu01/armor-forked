@@ -1,8 +1,5 @@
-// import StyleDictionary from 'style-dictionary';
-
-// const { formatHelpers } = StyleDictionary;
-
-const tokenFilter = (cat) => (token) => token.attributes.category === cat;
+const { formatHelpers } = require('style-dictionary');
+const { AllCategories, getIndexContent, tokenFilter } = require('./helper');
 
 module.exports = {
     source: ['data/tokens-transformed.json'],
@@ -28,6 +25,12 @@ module.exports = {
 
             //     output += `export const ${name} = css\`${original.value}\`;\n`;
             // });
+
+            return output;
+        },
+        indexFile: ({ file, dictionary }) => {
+            let output = formatHelpers.fileHeader(file);
+            output += getIndexContent();
 
             return output;
         },
@@ -63,17 +66,13 @@ module.exports = {
             transformGroup: 'js',
             buildPath: 'src/',
             files: [
-                {
+                ...Object.entries(AllCategories).map(([_, category]) => ({
+                    filter: tokenFilter(category),
                     format: 'javascript/es6',
-                    destination: 'js/index.ts',
-                },
+                    destination: `js/${category}.ts`,
+                })),
                 {
-                    filter: tokenFilter('color'),
-                    format: 'javascript/es6',
-                    destination: 'js/colors.ts',
-                },
-                {
-                    format: 'cssLiterals',
+                    format: 'indexFile',
                     destination: 'index.ts',
                 },
             ],
