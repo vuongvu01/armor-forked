@@ -97,7 +97,9 @@ export const useSearch = <E extends HTMLInputElement>(
     });
 
     useEffect(() => {
-        scrollToCurrent();
+        if (searchQuery && searchQuery.length) {
+            scrollToCurrent();
+        }
     }, [cursorPosition]); // eslint-disable-line react-hooks/exhaustive-deps
 
     const handleEnterClick = useCallback(() => {
