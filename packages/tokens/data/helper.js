@@ -1,38 +1,55 @@
-const AllCategories = {
-    COLOR: 'color',
-    FONT_FAMILY: 'fontFamily',
-    FONT_SIZE: 'fontSize',
-    FONT_WEIGHT: 'fontWeight',
-    LINE_HEIGHT: 'lineHeight',
+const ALL_CATEGORIES = [
+    'Color',
+    'FontFamily',
+    'FontSize',
+    'FontWeight',
+    'LineHeight',
+    'Spacing',
+    'BorderRadius',
+    'BorderWidth',
+    'Elevation',
+    'Opacity',
+    'Duration',
+    'Breakpoint',
+    'Others',
+];
 
-    // uncategorized
-    OTHERS: 'others',
+const checkMatchCategory = (category) => (tokenName) => {
+    const re = new RegExp(`^${category}`, 'i');
+    return tokenName.match(re);
 };
 
-const getIndexContent = () => {
-    const categoryList = Object.values(AllCategories);
+const tokenFilter = (category) => (token) => {
+    const tokenFullName = token.name;
+
+    if (category === 'Others') {
+        return !ALL_CATEGORIES.some((cat) =>
+            checkMatchCategory(cat)(tokenFullName),
+        );
+    }
+
+    return Boolean(checkMatchCategory(category)(tokenFullName));
+};
+
+const getIndexContent = (allTokens) => {
     let output = '';
-    categoryList.forEach((cat) => {
-        output += `
-export * from './js/${cat}';
-export * as ${cat} from './js/${cat}';
-        `;
+
+    const availableCategories = ALL_CATEGORIES.filter((cat) => {
+        return allTokens.some((token) => tokenFilter(cat)(token));
     });
+
+    availableCategories.forEach((cat) => {
+        output += `export * from './js/${cat}';\n`;
+    });
+    availableCategories.forEach((cat) => {
+        output += `export * as ${cat} from './js/${cat}';\n`;
+    });
+
     return output;
 };
 
-const tokenFilter = (cat) => (token) => {
-    const tokenCategory = token.attributes.category;
-
-    if (cat === AllCategories.OTHERS) {
-        return !Object.values(AllCategories).includes(tokenCategory);
-    }
-
-    return tokenCategory === cat;
-};
-
 module.exports = {
-    AllCategories,
+    ALL_CATEGORIES,
     getIndexContent,
     tokenFilter,
 };

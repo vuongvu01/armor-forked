@@ -17,7 +17,7 @@
         "build-tokens": "yarn transform-tokens && style-dictionary build --config data/config.js",
         "build:cjs": "rm -rf ./build.cjs/* && tsc -p ./tsconfig.build.cjs.json",
         "build:esm": "rm -rf ./build.esm/* && tsc -p ./tsconfig.build.esm.json",
-        "build": "rm -rf ./build/* && yarn build-tokens && yarn run build:esm && yarn run build:cjs",
+        "build": "rm -rf ./src/tokens/* && yarn build-tokens && yarn run build:esm && yarn run build:cjs",
         "release": "./script/release.sh",
         "setup": "./script/setup.sh"
     },

@@ -1,44 +1,19 @@
 const { formatHelpers } = require('style-dictionary');
-const { AllCategories, getIndexContent, tokenFilter } = require('./helper');
+const { ALL_CATEGORIES, getIndexContent, tokenFilter } = require('./helper');
 
 module.exports = {
     source: ['data/tokens-transformed.json'],
     format: {
-        cssLiterals: (opts) => {
-            // const { dictionary, file } = opts;
-            // let output = formatHelpers.fileHeader(file);
-            const output = `export * from './js'`;
-
-            // dictionary.allTokens.forEach((token) => {
-            //     const { path, original } = token;
-
-            //     // Use the path of the token to create the variable name, skip the first item
-            //     const [, ..._path] = path;
-            //     const name = _path.reduce((acc, str, index) => {
-            //         // converts to camelCase
-            //         const _str =
-            //             index === 0
-            //                 ? str
-            //                 : str.charAt(0).toUpperCase() + str.slice(1);
-            //         return acc.concat(_str);
-            //     }, '');
-
-            //     output += `export const ${name} = css\`${original.value}\`;\n`;
-            // });
-
-            return output;
-        },
         indexFile: ({ file, dictionary }) => {
             let output = formatHelpers.fileHeader(file);
-            output += getIndexContent();
-
+            output += getIndexContent(dictionary.allTokens);
             return output;
         },
     },
     platforms: {
         scss: {
             transformGroup: 'scss',
-            buildPath: 'src/scss/',
+            buildPath: 'src/tokens/scss/',
             files: [
                 {
                     destination: '_variables.scss',
@@ -51,7 +26,7 @@ module.exports = {
         },
         css: {
             transformGroup: 'css',
-            buildPath: 'src/css/',
+            buildPath: 'src/tokens/css/',
             files: [
                 {
                     destination: '_variables.css',
@@ -64,9 +39,9 @@ module.exports = {
         },
         js: {
             transformGroup: 'js',
-            buildPath: 'src/',
+            buildPath: 'src/tokens/',
             files: [
-                ...Object.entries(AllCategories).map(([_, category]) => ({
+                ...ALL_CATEGORIES.map((category) => ({
                     filter: tokenFilter(category),
                     format: 'javascript/es6',
                     destination: `js/${category}.ts`,
