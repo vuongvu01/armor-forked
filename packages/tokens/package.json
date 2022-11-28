@@ -7,7 +7,9 @@
     "typings": "build.cjs/index.d.ts",
     "files": [
         "build.esm/",
-        "build.cjs/"
+        "build.cjs/",
+        "src/css",
+        "src/scss"
     ],
     "scripts": {
         "dev": "./script/dev.sh",

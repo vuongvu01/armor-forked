@@ -8,4 +8,4 @@ src/**/*.d.ts
 !src/globals.d.ts
 storybook-static
 data/tokens-transformed.json
-tokens/
+src/
