@@ -13,5 +13,6 @@ cd ${DIR}/../packages/brands && yarn setup
 cd ${DIR}/../packages/illustrations && yarn setup
 cd ${DIR}/../packages/motion && yarn setup
 cd ${DIR}/../packages/extras && ./script/setup.sh
+cd ${DIR}/../packages/tokens && yarn setup
 
 cd ${DIR}
