@@ -56,6 +56,10 @@ jobs:
               working-directory: ./packages/extras
               run: ./script/build.sh
 
+            - name: Build (tokens)
+              working-directory: ./packages/tokens
+              run: yarn run build
+
             - name: Remove comments
               run: ./script/remove-comments.js
 
