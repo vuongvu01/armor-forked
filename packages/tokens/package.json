@@ -1,0 +1,37 @@
+{
+    "name": "@deliveryhero/armor-tokens",
+    "version": "0.0.1",
+    "license": "UNLICENSED",
+    "main": "build.cjs/index.js",
+    "module": "build.esm/index.js",
+    "typings": "build.cjs/index.d.ts",
+    "files": [
+        "build.esm/",
+        "build.cjs/",
+        "src/css",
+        "src/scss"
+    ],
+    "scripts": {
+        "dev": "yarn build-tokens && ./script/dev.sh",
+        "transform-tokens": "token-transformer data/tokens.json data/tokens-transformed.json Global,Light,Dark,Desktop,Tablet,Mobile",
+        "build-tokens": "yarn transform-tokens && style-dictionary build --config data/config.js",
+        "build:cjs": "rm -rf ./build.cjs/* && tsc -p ./tsconfig.build.cjs.json",
+        "build:esm": "rm -rf ./build.esm/* && tsc -p ./tsconfig.build.esm.json",
+        "build": "rm -rf ./src/tokens/* && yarn build-tokens && yarn run build:esm && yarn run build:cjs",
+        "release": "./script/release.sh",
+        "setup": "./script/setup.sh"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "devDependencies": {
+        "@semantic-release/changelog": "^5.0.1",
+        "@semantic-release/commit-analyzer": "^8.0.1",
+        "@semantic-release/git": "^9.0.0",
+        "@semantic-release/npm": "^7.0.5",
+        "@semantic-release/release-notes-generator": "^9.0.1",
+        "semantic-release": "^17.1.1",
+        "style-dictionary": "^3.7.1",
+        "token-transformer": "^0.0.25"
+    }
+}
