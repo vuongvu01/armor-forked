@@ -31,7 +31,7 @@ const tokenFilter = (category) => (token) => {
     return Boolean(checkMatchCategory(category)(tokenFullName));
 };
 
-const getIndexContent = (allTokens) => {
+const generateIndexContent = (allTokens) => {
     let output = '';
 
     const availableCategories = ALL_CATEGORIES.filter((cat) => {
@@ -50,6 +50,6 @@ const getIndexContent = (allTokens) => {
 
 module.exports = {
     ALL_CATEGORIES,
-    getIndexContent,
+    generateIndexContent,
     tokenFilter,
 };

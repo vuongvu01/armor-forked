@@ -1,12 +1,16 @@
 const { formatHelpers } = require('style-dictionary');
-const { ALL_CATEGORIES, getIndexContent, tokenFilter } = require('./helper');
+const {
+    ALL_CATEGORIES,
+    generateIndexContent,
+    tokenFilter,
+} = require('./helper');
 
 module.exports = {
     source: ['data/tokens-transformed.json'],
     format: {
         indexFile: ({ file, dictionary }) => {
             let output = formatHelpers.fileHeader(file);
-            output += getIndexContent(dictionary.allTokens);
+            output += generateIndexContent(dictionary.allTokens);
             return output;
         },
     },
