@@ -1,18 +1,14 @@
+import React from 'react';
 import { addParameters, addDecorator } from '@storybook/react';
 import { withThemesProvider } from 'storybook-addon-styled-component-theme';
 
-import { makeDefaultTheme } from '@deliveryhero/armor-system';
-import { makeDarkTheme } from '@deliveryhero/armor-brands';
+import { FontLoader } from '@deliveryhero/armor';
 
-const themes = [
-    {
-        name: 'Default',
-        ...makeDefaultTheme(),
-    },
-    {
-        name: 'Dark theme',
-        ...makeDarkTheme(),
-    },
-];
+const fontDecorator = (Story) => (
+    <>
+        <FontLoader />
+        <Story />
+    </>
+);
 
-addDecorator(withThemesProvider(themes));
+addDecorator(fontDecorator);
