@@ -3,7 +3,7 @@ const ALL_CATEGORIES = [
     'FontFamily',
     'FontSize',
     'FontWeight',
-    'LineHeight',
+    'FontLineHeight',
     'Spacing',
     'BorderRadius',
     'BorderWidth',
