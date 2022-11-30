@@ -1,5 +1,4 @@
 import React, { ChangeEvent, useState, MouseEvent } from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { InfoIcon } from '@deliveryhero/armor-icons';
 import { Accordion } from '../Accordion';
 import { AccordionContent } from '../AccordionContent';
